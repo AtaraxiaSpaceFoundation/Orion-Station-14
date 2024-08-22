@@ -1,0 +1,85 @@
+uniform sampler2D SCREEN_TEXTURE;
+
+const highp float[3] weights = float[](0.2, 0.0625, 0.0375);
+
+// Function to adjust alpha
+highp float adjustAlpha(highp vec4 background) {
+    highp float avgColor = dot(background.rgb, vec3(0.3333));
+    highp float boost = (1.0 - (1.0 - avgColor) / 1.25);
+    highp float transition = clamp((avgColor - 0.035) / 0.125, 0.0, 2.0);
+    return boost * (1.0 - transition) + transition;
+}
+
+// Function to warm up the color
+highp vec3 warmColor(highp vec3 color) {
+    highp vec3 warmTint = vec3(1.0, 0.8, 0.6);
+    return color * warmTint;
+}
+
+// Function to adjust saturation
+highp vec3 adjustSaturation(highp vec3 color, highp float saturation) {
+    highp float luminance = dot(color, vec3(0.299, 0.587, 0.114));
+    return mix(vec3(luminance), color, saturation);
+}
+
+// Function to add haze effect
+highp vec4 addHaze(highp vec4 color, highp float intensity) {
+    highp vec3 haze = vec3(0.9, 0.85, 0.8);
+    return vec4(mix(color.rgb, haze, intensity), color.a);
+}
+
+// Function to perform enhanced blur calculation
+highp vec4 enhancedBlur(highp vec2 offset, highp vec2 uv, highp vec2 frag, lowp int step) {
+    highp vec4 bsample = texture2D(TEXTURE, uv + offset * TEXTURE_PIXEL_SIZE) * weights[step];
+    bsample.rgb = warmColor(bsample.rgb);
+    bsample.rgb = adjustSaturation(bsample.rgb, 1.2);
+    bsample = addHaze(bsample, 0.1);
+    bsample.a *= adjustAlpha(zTextureSpec(SCREEN_TEXTURE, (frag + offset) * SCREEN_PIXEL_SIZE));
+    return bsample;
+}
+
+// Function to calculate offset based on index
+highp vec2 calculateOffset(highp int index, highp float step) {
+    highp vec3 offsetBase = vec3(1.0, 0.0, -1.0);
+    highp vec2 offsets[8];
+    offsets[0] = offsetBase.xy;
+    offsets[1] = -offsetBase.xy;
+    offsets[2] = offsetBase.yx;
+    offsets[3] = -offsetBase.yx;
+    offsets[4] = offsetBase.xx;
+    offsets[5] = offsetBase.xz;
+    offsets[6] = offsetBase.zx;
+    offsets[7] = offsetBase.zz;
+
+    return offsets[index % 8] * step;
+}
+
+void fragment() {
+    highp vec4 sprite = zTexture(UV);
+
+    if (sprite.a == 0.0) {
+        discard;
+    }
+
+    highp vec3 offsetBase = vec3(1.0, 0.0, -1.0);
+    highp vec4 sum = enhancedBlur(vec2(0), UV.xy, FRAGCOORD.xy, 0);
+
+    highp vec4 bsample;
+    highp float floatstep = 0.0;
+
+    for (lowp int i = 0; i < 2; i++) {
+        floatstep += 1.0;
+
+        for (lowp int j = 0; j < 8; j++) {
+            highp vec2 offset = calculateOffset(j, floatstep);
+            bsample = enhancedBlur(offset, UV.xy, FRAGCOORD.xy, i + 1);
+            sum += bsample;
+        }
+    }
+
+    sum.rgb = warmColor(sum.rgb);
+    sum.rgb = adjustSaturation(sum.rgb, 1.1);
+    sum = addHaze(sum, 0.05);
+
+    COLOR = sum;
+}
