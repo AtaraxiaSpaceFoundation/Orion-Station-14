@@ -9,7 +9,8 @@
     species: Reptilian
     hideLayersOnEquip:
     - Snout
-    - HeadTop
+    - SnoutOverlay # Europa
+#    - HeadTop # Europa-Remove
     - HeadSide
     undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Hunger
@@ -75,8 +76,26 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Human/displacement.rsi
+            sprite: _Europa/Mobs/Species/displacement.rsi # Europa-Edit
             state: jumpsuit-female
+    # Europa-Start
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Europa/Mobs/Species/displacement.rsi
+            state: shoes
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Europa/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Europa/Mobs/Species/displacement.rsi
+            state: shoes
+    # Europa-End
 
 
 - type: entity
@@ -89,7 +108,8 @@
     species: Reptilian
     hideLayersOnEquip:
     - Snout
-    - HeadTop
+    - SnoutOverlay # Europa
+#    - HeadTop # Europa-Remove
     - HeadSide
     undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Inventory
@@ -98,7 +118,25 @@
       jumpsuit:
         sizeMaps:
           32:
-            sprite: Mobs/Species/Human/displacement.rsi
+            sprite: _Europa/Mobs/Species/displacement.rsi # Europa-Edit
             state: jumpsuit-female
+    # Europa-Start
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Europa/Mobs/Species/displacement.rsi
+            state: shoes
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Europa/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Europa/Mobs/Species/displacement.rsi
+            state: shoes
+    # Europa-End
 
 #Weh

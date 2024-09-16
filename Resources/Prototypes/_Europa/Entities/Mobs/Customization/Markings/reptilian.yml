@@ -1,0 +1,285 @@
+# HEAD
+- type: marking
+  id: LizardHeadGuilmon
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/snouts.rsi
+    state: guilmon
+
+- type: marking
+  id: LizardHeadCobraHood
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian_parts.rsi
+    state: cobra_hood_with_ears
+  - sprite: _Europa/Mobs/Customization/reptilian_parts.rsi
+    state: cobra_hood_with_ears_overlay
+
+# SHOUT
+- type: marking
+  id: LizardShoutEasternDragon
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/snouts.rsi
+    state: eastern_dragon
+  - sprite: _Europa/Mobs/Customization/snouts.rsi
+    state: eastern_dragon_overlay
+
+- type: marking
+  id: LizardShoutEasternDragonUsiki
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/snouts.rsi
+    state: eastern_dragon
+  - sprite: _Europa/Mobs/Customization/snouts.rsi
+    state: eastern_dragon_overlay
+  - sprite: _Europa/Mobs/Customization/snouts.rsi
+    state: eastern_dragon_usiki
+
+# TAIL
+- type: marking
+  id: SnakeLargeTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: snake_large
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: snake_large_overlay
+
+- type: marking
+  id: SnakeLargeTailAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: snake_large_wagging
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: snake_large_wagging_overlay
+
+- type: marking
+  id: WesternDragonTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: western_dragon
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: western_dragon_overlay
+
+- type: marking
+  id: KangarooTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/reptilian_64x32.rsi
+      state: kangaroo
+
+- type: marking
+  id: TailSnake
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian, SlimePerson]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake
+
+- type: marking
+  id: TailSnakeAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_wagging
+
+- type: marking
+  id: TailSnakeStripe
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian, SlimePerson]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_secondary
+
+- type: marking
+  id: TailSnakeStripeAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_wagging
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_secondary_wagging
+
+- type: marking
+  id: TailSnakeStripeAlt
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian, SlimePerson]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_alt
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_alt_secondary
+
+- type: marking
+  id: TailSnakeStripeAltAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_alt_wagging
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_stripe_alt_secondary_wagging
+
+- type: marking
+  id: TailSnakeDual
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian, SlimePerson]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_dual
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_dual_secondary
+
+- type: marking
+  id: TailSnakeDualAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_dual_wagging
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_dual_secondary_wagging
+
+- type: marking
+  id: TailSnakeUnder
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian, SlimePerson]
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_under
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_under_secondary
+
+- type: marking
+  id: TailSnakeUnderAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_under_wagging
+    - sprite: _Europa/Mobs/Customization/tails32x32.rsi
+      state: snake_under_secondary_wagging
+
+# SPINE
+- type: marking
+  id: LizardChestSpinesAquatic
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_aquatic
+
+- type: marking
+  id: LizardChestSpinesAquaticWithoutTail
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_aquatic_alt
+
+- type: marking
+  id: LizardChestSpinesLong
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_long
+
+- type: marking
+  id: LizardChestSpinesLongWithoutTail
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_long_alt
+
+- type: marking
+  id: LizardChestSpinesLongMembrane
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_longmembrane
+
+- type: marking
+  id: LizardChestSpinesLongMembraneWithoutTail
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_longmembrane_alt
+
+- type: marking
+  id: LizardChestSpinesShort
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_short
+
+- type: marking
+  id: LizardChestSpinesShortWithoutTail
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_short_alt
+
+- type: marking
+  id: LizardChestSpinesShortMembrane
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_shortmembrane
+
+- type: marking
+  id: LizardChestSpinesShortMembraneWithoutTail
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Europa/Mobs/Customization/reptilian.rsi
+    state: spines_shortmembrane_alt

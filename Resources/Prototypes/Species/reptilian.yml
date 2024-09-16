@@ -17,6 +17,7 @@
   sprites:
     Head: MobReptilianHead
     Snout: MobHumanoidAnyMarking
+    SnoutOverlay: MobHumanoidAnyMarking # Europa
     UndergarmentTop: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobReptilianTorso
@@ -28,10 +29,10 @@
     RArm: MobReptilianRArm
     LHand: MobReptilianLHand
     RHand: MobReptilianRHand
-    LLeg: MobReptilianLLeg
-    RLeg: MobReptilianRLeg
-    LFoot: MobReptilianLFoot
-    RFoot: MobReptilianRFoot
+    LLeg: MobReptilianLLegDigi # Europa-Edit
+    RLeg: MobReptilianRLegDigi # Europa-Edit
+    LFoot: MobReptilianLFootDigi # Europa-Edit
+    RFoot: MobReptilianRFootDigi # Europa-Edit
 
 - type: markingPoints
   id: MobReptilianMarkingLimits
@@ -51,6 +52,9 @@
       points: 1
       required: true
       defaultMarkings: [ LizardSnoutRound ]
+    SnoutOverlay: # Europa
+      points: 1
+      required: false
     HeadTop:
       points: 2
       required: false
