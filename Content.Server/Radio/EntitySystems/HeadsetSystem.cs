@@ -26,6 +26,8 @@ using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -38,6 +40,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
     [Dependency] private readonly InventorySystem _inventory = default!; // Orion
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // Orion
 
     public override void Initialize()
     {
@@ -222,6 +225,12 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         }
     }
 
+    // Orion-Start: radio sound
+
+    private static readonly SoundSpecifier DefaultOnSound =
+        new SoundPathSpecifier("/Audio/_Orion/Radio/common.ogg", AudioParams.Default.WithVolume(-6).WithMaxDistance(2));
+
+    // Orion-End
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
         // Einstein Engines - Language begin
