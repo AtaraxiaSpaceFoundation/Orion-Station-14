@@ -1,2 +1,3 @@
 station-event-inteqagent-start-announcement = What is that metallic crunch in the maintenance tunnels?...
 station-event-wisdom-cow = Cow appears to tell you wise words.
+station-event-wormholes-spawn-announcement = Spatial and temporal anomalies have been detected at the station.

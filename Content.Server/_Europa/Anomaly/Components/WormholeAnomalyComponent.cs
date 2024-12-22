@@ -1,0 +1,25 @@
+using Robust.Shared.Audio;
+
+namespace Content.Server.Anomaly.Components;
+
+[RegisterComponent]
+public sealed partial class WormholeAnomalyComponent : Component
+{
+    /// <summary>
+    /// The pulse interval in seconds.
+    /// </summary>
+    [DataField]
+    public float PulseInterval = 15f;
+
+    /// <summary>
+    /// The maximum shuffle distance.
+    /// </summary>
+    [DataField]
+    public float MaxShuffleRadius = 12f;
+
+    /// <summary>
+    /// The sound after shuffled around.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier TeleportSound = new SoundPathSpecifier("/Audio/Effects/teleport_arrival.ogg");
+}

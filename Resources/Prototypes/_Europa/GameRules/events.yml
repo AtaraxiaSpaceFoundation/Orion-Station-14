@@ -30,3 +30,20 @@
     maxOccurrences: 1
   - type: RandomSpawnRule
     prototype: MobWisdomCow
+
+- type: entity
+  parent: BaseGameRule
+  id: WormholesSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-wormholes-spawn-announcement
+    weight: 8
+    duration: 10
+    minimumPlayers: 15
+    earliestStart: 35
+    reoccurrenceDelay: 50
+  - type: RandomSpawnRule
+    prototype: AnomalyWormhole
+    minCount: 30
+    maxCount: 50

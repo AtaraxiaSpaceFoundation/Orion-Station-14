@@ -8,19 +8,28 @@
 
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
+using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
 public sealed class RandomSpawnRule : StationEventSystem<RandomSpawnRuleComponent>
 {
+    [Dependency] private readonly IRobustRandom _random = default!; // Europa
     protected override void Started(EntityUid uid, RandomSpawnRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, comp, gameRule, args);
 
-        if (TryFindRandomTile(out _, out _, out _, out var coords))
+        // Europa-Edit-Start
+        int spawnCount = _random.Next(comp.MinCount, comp.MaxCount + 1);
+
+        for (int i = 0; i < spawnCount; i++)
         {
-            Sawmill.Info($"Spawning {comp.Prototype} at {coords}");
-            Spawn(comp.Prototype, coords);
+            if (TryFindRandomTile(out _, out _, out _, out var coords))
+            {
+                Sawmill.Info($"Spawning {comp.Prototype} at {coords}");
+                Spawn(comp.Prototype, coords);
+            }
+        // Europa-Edit-End
         }
     }
 }
