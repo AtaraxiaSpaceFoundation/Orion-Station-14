@@ -40,6 +40,7 @@
       - id: FoodSnackLollypopTrash # Goobstation - Lollypops
       - id: FoodPacketLollypopTrash # Goobstation - Lollypops
       - id: BrokenBottle
+      - id: FoodPacketInteQCookiesTrash # Backmen
     - !type:GroupSelector
       weight: 5
       children:

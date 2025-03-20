@@ -1,0 +1,55 @@
+- type: entity
+  id: AirlockHatchBasik
+  parent: Airlock
+  name: airtight hatch
+  components:
+  - type: Sprite
+    sprite: Backmen/Structures/Doors/Airlocks/Hatches/hatch.rsi
+  - type: Weldable
+    time: 10
+
+- type: entity
+  id: AirlockHatchMaint
+  parent: Airlock
+  name: Maintenance Hatch
+  description: Protects maintenance tunnels.
+  components:
+  - type: Sprite
+    sprite: Backmen/Structures/Doors/Airlocks/Hatches/maintenance_hatch.rsi
+  - type: Weldable
+    time: 10
+    
+- type: entity
+  id: AirlockHatchCentcomm
+  parent: HighSecDoor
+  name: CentCom Hatch
+  description: Keeps the bad out and keeps the good in.
+  components:
+  - type: Sprite
+    sprite: Backmen/Structures/Doors/Airlocks/Hatches/hatch.rsi
+  - type: Weldable
+    time: 10
+
+- type: entity
+  parent: Airlock
+  id: AirlockHatchInteQ
+  suffix: InteQ
+  name: brown hatch
+  description: Protects, pretty good.
+  components:
+  - type: Sprite
+    sprite: Backmen/Structures/Doors/Airlocks/Hatches/hatch_inteq.rsi
+  - type: Weldable
+    time: 10
+
+- type: entity
+  parent: AirlockGlass
+  id: AirlockHatchInteQGlass
+  suffix: InteQ
+  name: brown glass hatch
+  description: Protects, pretty good.
+  components:
+  - type: Sprite
+    sprite: Backmen/Structures/Doors/Airlocks/Hatches/hatch_glass_inteq.rsi
+  - type: Weldable
+    time: 10

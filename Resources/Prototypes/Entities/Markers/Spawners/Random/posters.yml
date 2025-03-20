@@ -115,7 +115,21 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
-    chance: 1
+      - PosterContrabandInteQRecruitment # Europa-Start
+      - PosterContrabandInteQWorkship
+      - PosterContrabandInteQWorkship2
+      - PosterContrabandInteQ
+      - PosterContrabandInteQNoSex
+      - PosterContrabandInteQVulp
+      - PosterContrabandInteQJulie # Europa-End
+    chance: 0.99 # Europa-Edit
+      # Europa-Start
+    rarePrototypes:
+      - FlagCoder
+      - FlagSyndicate
+      - FlagInteQ
+    rareChance: 0.01
+      # Europa-Start
 
 - type: entity
   parent: MarkerBase

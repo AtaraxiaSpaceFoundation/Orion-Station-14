@@ -183,3 +183,8 @@ language-Shadowmind-description =
 language-Qiilour-name = Qiilour
 language-Qiilour-description =
     The native and principal language of the Xelthia, Qiilour is spoken by nearly all members of their species to some degree. It is a refined fusion of several ancient tongues—such as Telenarii, Voskarn, and Old Xelthec—each now lost to history.
+
+language-OldFastCodes-name = Old Fast Codes
+language-OldFastCodes-description =
+    Old military codes used hundreds of years ago.
+        Now they are almost forgotten and replaced by more advanced referral systems, but someone still uses them.

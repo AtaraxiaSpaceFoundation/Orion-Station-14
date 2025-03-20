@@ -1,14 +1,17 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by Arraydeess14",
+  "copyright": "Created by discord:no_mad#0260 | banner_inteq by PuroSlavKing (Github)",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "icon"
+      "name": "banner"
+    },
+    {
+      "name": "banner_inteq"
     }
   ]
 }
