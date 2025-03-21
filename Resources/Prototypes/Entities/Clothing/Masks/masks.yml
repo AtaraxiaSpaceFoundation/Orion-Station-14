@@ -870,6 +870,7 @@
     tags:
     - WhitelistChameleon
     - IPCMaskWearable # EE - IPCs
+  - type: BreathMask # Backmen
 
 - type: entity
   parent: ClothingMaskNeckGaiter
