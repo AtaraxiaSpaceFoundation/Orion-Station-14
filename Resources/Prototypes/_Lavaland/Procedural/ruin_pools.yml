@@ -46,5 +46,8 @@
     Shelter: 4
     OwOLab: 1
     MiningPost: 3
+    # Backmen-Start
+    InteQSizo: 1
+    # Backmen-End
   dungeonRuins:
     CommonRuin5x5: 60
