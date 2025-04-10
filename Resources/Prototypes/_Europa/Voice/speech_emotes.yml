@@ -1,0 +1,27 @@
+# vocal emotes
+- type: emote
+  id: Hiss
+  category: Vocal
+  name: chat-emote-name-hiss
+  icon: _Europa/Interface/Emotes/hiss.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-hiss"]
+  chatTriggers:
+    - hiss
+    - шипит
+    - шипит.
+    - шипит!
+    - шипеть
+    - хсс
+    - хс
+    - хис
+    - хисс
+    - хис!
+    - хисс.
+    - хисс!
+    - хиссс!
