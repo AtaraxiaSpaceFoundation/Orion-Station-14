@@ -1,0 +1,56 @@
+- type: entity
+  parent: BaseSubdermalImplant
+  id: mantisImplant
+  name: implant
+  description: This implant gives the user blades, thanks to which he can kill his victim without leaving evidence.
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionToggleMantis
+      permanent: true
+    - type: ToggleableClothing
+      clothingPrototype: ClothingHandsGlovesmantis
+      slot: gloves
+    - type: ContainerContainer
+      containers:
+        toggleable-clothing: !type:ContainerSlot {}
+    - type: TriggerImplantAction
+
+- type: entity
+  id: ActionToggleMantis
+  name: Активировать клинки богомола
+  description: Remember to equip the important pieces of your suit before going into action.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 1 # equip noise spam.
+    event: !type:ToggleClothingEvent
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Backmen/Clothing/Hands/Gloves/mantis.rsi
+      state: icon
+
+# InteQ implants
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: RadioImplantInteQ
+  name: radio implant
+  description: This implant grants access to the InteQ channel without a headset.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SubdermalImplant
+  - type: RadioImplant
+    radioChannels:
+    - InteQ
+
+- type: entity
+  parent: DeathRattleImplant
+  id: DeathRattleImplantInteQ
+  name: InteQ death rattle implant
+  description: This implant will inform the InteQ radio channel should the user fall into critical condition or die.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Rattle
+    radioChannel: InteQ
