@@ -27,7 +27,7 @@
     - id: MagazineBoxLight57x28InteQ
     - id: FlashlightSeclite
     - id: Emag
-    - id: EnergySwordDoubleScythe
+    - id: PlasmaScythe
 
 - type: entity
   parent: LockerInteQVanguard
