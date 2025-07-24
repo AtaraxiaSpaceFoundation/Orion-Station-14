@@ -1,20 +1,15 @@
 # HEAD
-marking-LizardHeadGuilmon= Lizard, guilmon
+marking-LizardHeadGuilmon = Lizard, guilmon
 marking-LizardHeadGuilmon-guilmon = Main
 
-marking-LizardShoutEasternDragon= Lizard, eastern dragon
-marking-LizardShoutEasternDragon-eastern_dragon = Outer
-marking-LizardShoutEasternDragon-eastern_dragon_overlay = Inner
+marking-LizardSnoutEasternDragon= Lizard, eastern dragon
+marking-LizardSnoutEasternDragon-eastern_dragon = Outer
+marking-LizardSnoutEasternDragon-eastern_dragon_overlay = Inner
 
-marking-LizardShoutEasternDragonUsiki= Lizard, eastern dragon (Tentacle)
-marking-LizardShoutEasternDragonUsiki-eastern_dragon = Outer
-marking-LizardShoutEasternDragonUsiki-eastern_dragon_overlay = Inner
-marking-LizardShoutEasternDragonUsiki-eastern_dragon_usiki = Tentacle
-
-marking-LizardShoutNoodle= Lizard, crocodile
-marking-LizardShoutNoodle-noodle = Main
-marking-LizardShoutNoodle-noodle_overlay_1 = Outer
-marking-LizardShoutNoodle-noodle_overlay_2 = Inner
+marking-LizardSnoutEasternDragonUsiki= Lizard, eastern dragon (Tentacle)
+marking-LizardSnoutEasternDragonUsiki-eastern_dragon = Outer
+marking-LizardSnoutEasternDragonUsiki-eastern_dragon_overlay = Inner
+marking-LizardSnoutEasternDragonUsiki-eastern_dragon_usiki = Tentacle
 
 marking-LizardHeadCobraHood = Lizard, hood with ears (Cobra)
 marking-LizardHeadCobraHood-cobra_hood_with_ears = Outer
@@ -27,7 +22,7 @@ marking-LizardHornsRam-horns_ram_l = Left horn
 marking-LizardHornsRam-horns_ram_r = Right horn
 
 marking-LizardHornsShort-horns_short_l = Left horn
-marking-LizardHornsShort-horns_short_r = The right horn
+marking-LizardHornsShort-horns_short_r = Right horn
 
 marking-LizardHornsSimple-horns_simple_l = Left horn
 marking-LizardHornsSimple-horns_simple_r = Right horn
