@@ -26,7 +26,7 @@ public sealed class DoAfterOverlay : Overlay
     private readonly SpriteSystem _sprite;
 
     private readonly Texture _barTexture;
-    private readonly SpriteSpecifier _cogTexture; // Backmen;
+    private readonly SpriteSpecifier _cogTexture; // Europa
     private readonly ShaderInstance _unshadedShader;
 
     /// <summary>
@@ -52,7 +52,7 @@ public sealed class DoAfterOverlay : Overlay
         _sprite = _entManager.System<SpriteSystem>();
         var sprite = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/progress_bar.rsi"), "icon");
         _barTexture = _entManager.EntitySysManager.GetEntitySystem<SpriteSystem>().Frame0(sprite);
-        _cogTexture = new SpriteSpecifier.Rsi(new("/Textures/Backmen/Interface/Misc/progress_cog.rsi"), "cog"); // Backmen
+        _cogTexture = new SpriteSpecifier.Rsi(new("/Textures/_Europa/Interface/Misc/progress_cog.rsi"), "cog"); // Europa
 
         _unshadedShader = protoManager.Index(UnshadedShader).Instance();
     }
@@ -131,14 +131,14 @@ public sealed class DoAfterOverlay : Overlay
                 var position = new Vector2(-_barTexture.Width / 2f / EyeManager.PixelsPerMeter,
                     yOffset / scale + offset / EyeManager.PixelsPerMeter * scale);
 
-                // Backmen-Start
+                // Europa-Start
                 var cogPos = new Vector2(position.X + _barTexture.Width / scale / EyeManager.PixelsPerMeter, position.Y + _barTexture.Height * 2 / scale) / EyeManager.PixelsPerMeter;
                 var cogTexture = _entManager.System<SpriteSystem>().GetFrame(_cogTexture, curTime);
-                // Backmen-End
+                // Europa-End
 
                 // Draw the underlying bar texture
                 handle.DrawTexture(_barTexture, position);
-                handle.DrawTexture(cogTexture, cogPos); // Backmen
+                handle.DrawTexture(cogTexture, cogPos); // Europa
 
                 Color color;
                 float elapsedRatio;
