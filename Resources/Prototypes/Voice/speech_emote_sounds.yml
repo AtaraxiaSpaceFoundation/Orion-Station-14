@@ -40,6 +40,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: FemaleHuman
@@ -82,6 +84,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: MaleReptilian
@@ -106,6 +110,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -130,6 +136,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: MaleSlime
@@ -172,6 +180,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
 
@@ -216,6 +226,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
 
@@ -255,6 +267,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
 
@@ -281,6 +295,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: UnisexDwarf
@@ -321,6 +337,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
     pitch: 0.75
@@ -364,6 +382,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
     pitch: 0.75
@@ -393,6 +413,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MothDeathGasp
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: UnisexSilicon

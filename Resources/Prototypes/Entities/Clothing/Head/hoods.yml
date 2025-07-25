@@ -22,6 +22,7 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
+      SnoutOverlay: HEAD # Europa
       Snout: HEAD
       HeadTop: HEAD
       HeadSide: HEAD

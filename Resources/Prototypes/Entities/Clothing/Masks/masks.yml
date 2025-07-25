@@ -18,6 +18,7 @@
   - type: HideLayerClothing
     layers:
       Snout: Mask
+      SnoutOverlay: Mask # Europa
     hideOnToggle: true
 
 - type: entity
@@ -207,6 +208,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskClownBase
@@ -220,6 +222,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskClown
@@ -267,6 +270,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase
@@ -287,6 +291,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -349,6 +354,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
     hideOnToggle: true
 
 - type: entity
@@ -383,7 +389,8 @@
     slots:
     - Hair
     - Snout
-    - HeadTop
+    - SnoutOverlay # Europa
+#    - HeadTop # Europa-Remove
     - HeadSide
     hideOnToggle: true
   - type: Armor
@@ -429,6 +436,7 @@
     slots:
     - Hair
     - Snout
+    - SnoutOverlay # Europa
     hideOnToggle: true
   - type: FlashImmunity
   - type: EyeProtection
@@ -481,6 +489,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: IdentityBlocker
 
 - type: entity
@@ -498,6 +507,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase
@@ -514,6 +524,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase
@@ -530,6 +541,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase
@@ -546,6 +558,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase
@@ -562,6 +575,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase
@@ -578,6 +592,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskBase

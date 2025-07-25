@@ -64,6 +64,10 @@
         conditions:
         - !type:OrganType
           type: Animal
+      - !type:Oxygenate # Europa
+        conditions:
+        - !type:OrganType
+          type: AnthroAnimal
       - !type:Oxygenate
         conditions:
         - !type:OrganType
