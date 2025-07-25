@@ -9,25 +9,25 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # vocal emotes
-- type: emote
-  id: Hiss
-  name: Hiss
-  category: Vocal
-  icon: _Goobstation/Interface/Emotes/hiss.png
-  whitelist:
-    tags:
-    - FelinidEmotes
-    - HarpyEmotes
-    - ReptilianEmotes
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: [hisses.]
-  chatTriggers:
-    - hiss
-    - hisses
-    - hissing
-    - hissed
+#- type: emote # Europa-Remove | No, fuck you
+#  id: Hiss
+#  name: Hiss
+#  category: Vocal
+#  icon: _Goobstation/Interface/Emotes/hiss.png
+#  whitelist:
+#    tags:
+#    - FelinidEmotes
+#    - HarpyEmotes
+#    - ReptilianEmotes
+#  blacklist:
+#    components:
+#    - BorgChassis
+#  chatMessages: [hisses.]
+#  chatTriggers:
+#    - hiss
+#    - hisses
+#    - hissing
+#    - hissed
 
 - type: emote
   id: Meow

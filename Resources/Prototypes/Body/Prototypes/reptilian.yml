@@ -23,7 +23,7 @@
     chest:
       part: ChestReptilian
       organs:
-        heart: OrganAnimalHeart
+        heart: OrganAnthroAnimalHeart # Europa-Edit
         lungs: OrganHumanLungs
       connections:
       - right arm
@@ -37,7 +37,7 @@
       - left leg
       organs:
         stomach: OrganReptilianStomach
-        liver: OrganAnimalLiver
+        liver: OrganAnthroAnimalLiver # Europa-Edit
         kidneys: OrganHumanKidneys
     right arm:
       part: RightArmReptilian

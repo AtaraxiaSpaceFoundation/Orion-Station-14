@@ -138,6 +138,7 @@
     species: Reptilian
     hideLayersOnEquip:
     - Snout
+    - SnoutOverlay # Europa
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide
   - type: Hunger
@@ -252,6 +253,7 @@
     species: Reptilian
     hideLayersOnEquip: # WWDP
     - Snout
+    - SnoutOverlay # Europa
 #    - HeadTop # WWDP - Because visible horns its cool
     - HeadSide
   - type: Inventory

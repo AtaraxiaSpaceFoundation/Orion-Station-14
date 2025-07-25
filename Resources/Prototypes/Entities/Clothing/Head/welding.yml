@@ -49,6 +49,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Armor
     coverage:
     - Head

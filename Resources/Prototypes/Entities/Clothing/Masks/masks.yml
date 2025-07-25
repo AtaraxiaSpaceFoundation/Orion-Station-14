@@ -176,6 +176,7 @@
   - type: HideLayerClothing
     layers:
       Snout: Mask
+      SnoutOverlay: Mask # Europa
     hideOnToggle: true
   - type: Construction # Goobstation
     graph: GasMaskHalf
@@ -412,8 +413,9 @@
     slots:
     - Hair
     - Snout
-    - HeadTop
-    - HeadSide
+    - SnoutOverlay # Europa
+#    - HeadTop # Europa-Remove
+#    - HeadSide # Europa-Remove
 
 - type: entity
   parent: ClothingMaskClownBase
@@ -428,8 +430,9 @@
     slots:
     - Hair
     - Snout
-    - HeadTop
-    - HeadSide
+    - SnoutOverlay # Europa
+#    - HeadTop # Europa-Remove
+#    - HeadSide # Europa-Remove
 
 - type: entity
   parent: ClothingMaskClown
@@ -479,6 +482,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - IPCMaskWearable # EE - IPCs
@@ -503,6 +507,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -563,6 +568,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
     hideOnToggle: true
 
 - type: entity
@@ -597,7 +603,8 @@
     slots:
     - Hair
     - Snout
-    - HeadTop
+    - SnoutOverlay # Europa
+#    - HeadTop # Europa-Remove
     - HeadSide
     hideOnToggle: true
   - type: Armor
@@ -657,6 +664,7 @@
     slots:
     - Hair
     - Snout
+    - SnoutOverlay # Europa
     hideOnToggle: true
   - type: FlashImmunity
   - type: EyeProtection
@@ -718,6 +726,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: IdentityBlocker
   - type: AddAccentClothing # Goobstation
     accent: RatAccent
@@ -736,6 +745,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - CursedAnimalMask # Goobstation
@@ -758,6 +768,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - CursedAnimalMask # Goobstation
@@ -780,6 +791,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - CursedAnimalMask # Goobstation
@@ -802,6 +814,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - CursedAnimalMask # Goobstation
@@ -824,6 +837,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - CursedAnimalMask # Goobstation
@@ -846,6 +860,7 @@
   - type: HideLayerClothing
     slots:
     - Snout
+    - SnoutOverlay # Europa
   - type: Tag
     tags:
     - CursedAnimalMask # Goobstation

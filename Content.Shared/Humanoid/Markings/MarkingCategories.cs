@@ -22,6 +22,7 @@ namespace Content.Shared.Humanoid.Markings
         HeadTop,
         HeadSide,
         Snout,
+        SnoutOverlay, // Europa
         Chest,
         Groin, // Shitmed Change
         Arms,
@@ -44,6 +45,7 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.HeadTop => MarkingCategories.HeadTop,
                 HumanoidVisualLayers.HeadSide => MarkingCategories.HeadSide,
                 HumanoidVisualLayers.Snout => MarkingCategories.Snout,
+                HumanoidVisualLayers.SnoutOverlay => MarkingCategories.SnoutOverlay, // Europa
                 HumanoidVisualLayers.Chest => MarkingCategories.Chest,
                 HumanoidVisualLayers.Groin => MarkingCategories.Groin, // Shitmed Change
                 HumanoidVisualLayers.RArm => MarkingCategories.Arms,

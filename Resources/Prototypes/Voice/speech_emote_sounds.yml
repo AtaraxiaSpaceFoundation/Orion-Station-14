@@ -90,6 +90,8 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: FemaleHuman
@@ -178,6 +180,8 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg ## GOOB CONTENT END
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: MaleReptilian
@@ -207,11 +211,13 @@
     # Floof
     Yip:
       collection: Yip
-    Hiss:
-      collection: ReptilianHiss
+#    Hiss: # Europa | Goob... no...
+#      collection: ReptilianHiss
     # Floof end
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -241,11 +247,13 @@
     # Floof
     Yip:
       collection: Yip
-    Hiss:
-      collection: ReptilianHiss
+#    Hiss: # Europa | Goob... no...
+#      collection: ReptilianHiss
     # Floof end
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: MaleSlime
@@ -290,6 +298,8 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
 
@@ -336,6 +346,8 @@
       collection: FemaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
 
@@ -406,6 +418,8 @@
       collection: DeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
 
@@ -436,6 +450,8 @@
       collection: DeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: UnisexDwarf
@@ -478,6 +494,8 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
     pitch: 0.75
@@ -523,6 +541,8 @@
       collection: FemaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
   params:
     variation: 0.125
     pitch: 0.75
@@ -558,6 +578,8 @@
       path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Hiss: # Europa
+      collection: ReptilianHisses
 
 - type: emoteSounds
   id: UnisexSilicon

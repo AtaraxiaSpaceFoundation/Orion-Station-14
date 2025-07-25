@@ -497,6 +497,8 @@
         conditions:
         - !type:OrganType
           type: Animal # Applying damage to the mobs with lower metabolism capabilities
+        - !type:OrganType # Europa
+          type: AnthroAnimal
         damage:
           types:
             Poison: 0.4
@@ -505,6 +507,8 @@
         conditions:
           - !type:OrganType
             type: Animal
+          - !type:OrganType # Europa
+            type: AnthroAnimal
 
 - type: reagent
   id: Amatoxin
@@ -579,6 +583,9 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
+          - !type:OrganType # Europa
+            type: AnthroAnimal
+            shouldHave: false
           - !type:OrganType
             type: Vox
             shouldHave: false
@@ -606,6 +613,9 @@
         - !type:OrganType
           type: Animal
           shouldHave: false
+        - !type:OrganType # Europa
+          type: AnthroAnimal
+          shouldHave: true
         - !type:OrganType
           type: Vox
           shouldHave: false
@@ -614,11 +624,17 @@
           shouldHave: false
         damage:
           types:
-            Poison: 1
+            Blunt: -0.5
+            Piercing: -0.5
+            Heat: -0.2
       - !type:AdjustReagent
         conditions:
         - !type:OrganType
           type: Animal
+          shouldHave: true
+        - !type:OrganType # Europa
+          type: AnthroAnimal
+          shouldHave: false
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent
@@ -646,6 +662,8 @@
           min: 1
         - !type:OrganType
           type: Animal
+        - !type:OrganType # Europa
+          type: AnthroAnimal
         damage:
           types:
             Poison: 0.06
@@ -695,6 +713,8 @@
           min: 1
         - !type:OrganType
           type: Animal
+        - !type:OrganType # Europa
+          type: AnthroAnimal
         damage:
           types:
             Poison: 0.06
