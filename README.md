@@ -79,7 +79,7 @@ giga_token = "ВСТАВИТЬ СЮДА СЕКРЕТНЫЙ КЛЮЧ"
 
 ## Лицензия
 
-Весь код для репозитория контента лицензирован в соответствии с [MIT license](https://github.com/MightBeNotReal/space-station-14-europa/blob/master/LICENSE-MIT.TXT) && [AGPLv3](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LICENSE-AGPLv3.TXT). Взгляните на [наше лицензирование](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LEGAL.md)
+Весь код для репозитория контента лицензирован в соответствии с [MIT license](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LICENSE-MIT.TXT) && [AGPLv3](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LICENSE-AGPLv3.TXT). Взгляните на [наше лицензирование](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LEGAL.md)
 
 Большинство ресурсов лицензировано под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Лицензия и авторские права на ресурсах указаны в файле метаданных.
 [Example](./Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
