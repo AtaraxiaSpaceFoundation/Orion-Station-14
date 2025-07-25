@@ -1,5 +1,5 @@
 # Errors
-loadout-group-species-restriction = Этот предмет недоступен для вашей текущей расы.
+loadout-group-species-restriction = Этот предмет недоступен для вашего текущего вида.
 # Miscellaneous
 loadout-group-trinkets = Безделушки
 loadout-group-glasses = Очки
@@ -11,11 +11,11 @@ loadout-group-survival-clown = Клоунский аварийный запас
 loadout-group-survival-medical = Медицинский аварийный запас
 loadout-group-survival-security = Аварийный запас охраны
 loadout-group-survival-syndicate = Github заставил меня перевести текст, который игрок вообще никогда не сможет увидеть, спасите
-loadout-group-breath-tool = Расозависимое дыхательное снаряжение
-loadout-group-tank-harness = Расозависимое снаряжение для выживания
-loadout-group-EVA-tank = Расозависимый газовый баллон
+loadout-group-breath-tool = Видовое дыхательное снаряжение
+loadout-group-tank-harness = Видовое снаряжение для выживания
+loadout-group-EVA-tank = Видовой газовый баллон
 loadout-group-vox-tank = Газовый баллон для воксов
-loadout-group-pocket-tank-double = Расозависимый двойной аварийный газовый баллон в кармане
+loadout-group-pocket-tank-double = Видовой двойной аварийный газовый баллон в кармане
 loadout-group-survival-mime = Мимский аварийный запас
 # Command
 loadout-group-captain-head = Капитан, голова
@@ -29,12 +29,12 @@ loadout-group-hop-neck = Глава персонала, шея
 loadout-group-hop-backpack = Глава персонала, рюкзак
 loadout-group-hop-outerclothing = Глава персонала, верхняя одежда
 # Civilian
-loadout-group-passenger-jumpsuit = Ассистент, комбинезон
-loadout-group-passenger-mask = Ассистент, маска
-loadout-group-passenger-gloves = Ассистент, перчатки
-loadout-group-passenger-outerclothing = Ассистент, верхняя одежда
-loadout-group-passenger-shoes = Ассистент, обувь
-loadout-group-passenger-neck = Ассистент, шея
+loadout-group-passenger-jumpsuit = Пассажир, комбинезон
+loadout-group-passenger-mask = Пассажир, маска
+loadout-group-passenger-gloves = Пассажир, перчатки
+loadout-group-passenger-outerclothing = Пассажир, верхняя одежда
+loadout-group-passenger-shoes = Пассажир, обувь
+loadout-group-passenger-neck = Пассажир, шея
 loadout-group-bartender-head = Бармен, голова
 loadout-group-bartender-jumpsuit = Бармен, комбинезон
 loadout-group-bartender-outerclothing = Бармен, верхняя одежда
@@ -50,6 +50,7 @@ loadout-group-chaplain-mask = Священник, маска
 loadout-group-chaplain-jumpsuit = Священник, комбинезон
 loadout-group-chaplain-outerclothing = Священник, верхняя одежда
 loadout-group-chaplain-neck = Священник, шея
+loadout-group-chaplain-bible = Holy Book
 loadout-group-janitor-head = Уборщик, голова
 loadout-group-janitor-jumpsuit = Уборщик, комбинезон
 loadout-group-janitor-gloves = Уборщик, перчатки
@@ -161,7 +162,7 @@ loadout-group-paramedic-head = Парамедик, голова
 loadout-group-paramedic-jumpsuit = Парамедик, комбинезон
 loadout-group-paramedic-outerclothing = Парамедик, верхняя одежда
 loadout-group-paramedic-shoes = Парамедик, обувь
-loadout-group-medical-glasses = Medical glasses
+loadout-group-medical-glasses = Медицинский отдел, очки
 # Wildcards
 loadout-group-reporter-jumpsuit = Репортёр, комбинезон
 loadout-group-psychologist-jumpsuit = Психолог, комбинезон

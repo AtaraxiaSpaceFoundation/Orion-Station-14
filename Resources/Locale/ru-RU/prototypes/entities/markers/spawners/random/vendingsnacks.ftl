@@ -1,3 +1,3 @@
 ent-RandomVendingSnacks = спавнер случайный торговый автомат
-    .suffix = Закуски, Лоупоп 25%
+    .suffix = Закуски
     .desc = { ent-MarkerBase.desc }

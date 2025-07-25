@@ -14,7 +14,6 @@ hud-chatbox-select-channel-OOC = OOC
 hud-chatbox-select-channel-Damage = Повреждения
 hud-chatbox-select-channel-Visual = Действия
 hud-chatbox-select-channel-Radio = Рация
-hud-chatbox-select-channel-CollectiveMind = Общий разум
 hud-chatbox-channel-Admin = Админ Разное
 hud-chatbox-channel-AdminAlert = Админ Уведомления
 hud-chatbox-channel-AdminChat = Админ Чат
@@ -26,16 +25,17 @@ hud-chatbox-channel-LOOC = LOOC
 hud-chatbox-channel-OOC = OOC
 hud-chatbox-channel-Radio = Рация
 hud-chatbox-channel-Notifications = Уведомления
-hud-chatbox-channel-CollectiveMind = Коллективный разум
 hud-chatbox-channel-Server = Сервер
 hud-chatbox-channel-Visual = Визуальный
 hud-chatbox-channel-Damage = Повреждения
 hud-chatbox-channel-Unspecified = Неопределённый
 hud-chatbox-highlights = Подсветка:
-hud-chatbox-highlights-button = Отправить
-hud-chatbox-highlights-tooltip = Слова должны быть разделены новой строкой,
-                                 если обернуты в " ", они будут подсвечены
-                                 только если отделены пробелами.
-hud-chatbox-highlights-placeholder = Урист
-                                     "Пара"
-                                     Мост
+hud-chatbox-highlights-button = Подтвердить
+hud-chatbox-highlights-tooltip =
+    Каждое слово должно начинаться с новой строки.
+    Слова, взятые в кавычки ("..."), подсветятся только,
+    если отделены пробелами или знаками препинания.
+hud-chatbox-highlights-placeholder =
+    МакХэндс
+    "Судья"
+    Медблок
