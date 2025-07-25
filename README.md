@@ -1,39 +1,41 @@
 <div class="header" align="center">  
-<img alt="Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">  
+[<img alt="Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14)
 </div>
 
-Space Station 14 is a remake of SS13 that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), our homegrown engine written in C#.
+---
 
-This is the primary repo for Space Station 14. To prevent people forking RobustToolbox, a "content" pack is loaded by the client and server. This content pack contains everything needed to play the game on one specific server.
+Backmen&Ataraxia - это форк [Space Wizards](https://github.com/space-wizards/space-station-14), ориентирующийся на идеи [СтароTG](https://github.com/tgstation/tgstation) и [Shiptest](https://github.com/shiptest-ss13/Shiptest) из Space Station 13, включая в это свои собственные идеи.
 
-If you want to host or create content for SS14, this is the repo you need. It contains both RobustToolbox and the content pack for development of new content packs.
+Space Station 14 - это ремейк SS13, который работает на собственном движке [Robust Toolbox](https://github.com/space-wizards/Robust-Toolbox), написанном на C#.
 
-## Links
+## Ссылки
 
 <div class="header" align="center">  
 
-[Website](https://spacestation14.com/) | [Discord](https://discord.ss14.io/) | [Forum](https://forum.spacestation14.com/) | [Mastodon](https://mastodon.gamedev.place/@spacestation14) | [Lemmy](https://lemmy.spacestation14.com/) | [Patreon](https://www.patreon.com/spacestation14) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.com/about/nightlies/)  
+[Discord](https://discord.gg/mk-europa) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.com/about/nightlies/)
 
 </div>
 
-## Documentation/Wiki
+[<img src="https://i.imgur.com/xMzKtYK.png" alt="Discord" width="150" align="left">](https://discord.gg/ss-14-backmen-ru-1053200453829132298)
+**Discord Server**<br>В космосе вас никто не услышит.
 
-Our [docs site](https://docs.spacestation14.com/) has documentation on SS14's content, engine, game design, and more.  
-Additionally, see these resources for license and attribution information:  
-- [Robust Generic Attribution](https://docs.spacestation14.com/en/specifications/robust-generic-attribution.html)  
-- [Robust Station Image](https://docs.spacestation14.com/en/specifications/robust-station-image.html)
+[<img src="https://imagizer.imageshack.com/img922/4959/8KTh9r.png" alt="Wiki" width="150" align="left">](https://wiki.backmen.ru)
+**Wiki**<br>Что за блобы и с чем их едят?
 
-We also have lots of resources for new contributors to the project.
+## Сборка
 
-## Contributing
+Следуйте гайду от [Space Wizards](https://docs.spacestation14.com/en/general-development/setup/setting-up-a-development-environment.html) по настройке рабочей среды, но учитывайте, что репозитории отличаются друг от друга и некоторые вещи могут отличаться.
+Ниже перечислены скрипты и методы облегчающие работу с билдом.
 
-We are happy to accept contributions from anybody. Get in Discord if you want to help. We've got a [list of issues](https://github.com/space-wizards/space-station-14-content/issues) that need to be done and anybody can pick them up. Don't be afraid to ask for help either!  
-Just make sure your changes and pull requests are in accordance with the [contribution guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html).
+### Windows
 
-We are not currently accepting translations of the game on our main repository. If you would like to translate the game into another language, consider creating a fork or contributing to a fork.
+> 1. Склонируйте данный репозиторий.
+> 2. Запустите `git submodule update --init --recursive` в командной строке, чтобы скачать движок игры.
+> 3. Запускайте `Scripts/bat/buildAllDebug.bat` после любых изменений в коде проекта.
+> 4. Запустите `Scripts/bat/runQuickAll.bat`, чтобы запустить клиент и сервер.
+> 5. Подключитесь к локальному серверу и играйте.
 
-## Building
-
+### Linux
 1. Clone this repo:
 ```shell
 git clone https://github.com/space-wizards/space-station-14.git
@@ -47,13 +49,39 @@ python RUN_THIS.py
 
 Build the server using `dotnet build`.
 
-[More detailed instructions on building the project.](https://docs.spacestation14.com/en/general-development/setup.html)
+> 1. Склонируйте данный репозиторий.
+> 2. Запустите `git submodule update --init --recursive` в командной строке, чтобы скачать движок игры.
+> 3. Запускайте `Scripts/sh/buildAllDebug.sh` после любых изменений в коде проекта.
+> 4. Запустите `Scripts/sh/runQuickAll.sh`, чтобы запустить клиент и сервер.
+> 5. Подключитесь к локальному серверу и играйте.
 
-## License
+### MacOS
 
-All code for the content repository is licensed under the [MIT license](https://github.com/space-wizards/space-station-14/blob/master/LICENSE.TXT).  
+> Предположительно, также, как и на Линуксе, сами разберётесь.
 
-Most assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and copyright specified in the metadata file. For example, see the [metadata for a crowbar](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).  
+---
 
-> [!NOTE]
-> Some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
+## GptChat
+
+```toml
+[gpt]
+enabled = true
+api = "https://gigachat.devices.sberbank.ru/api/v1/"
+model = "GigaChat"
+token = ""
+giga_token = "ВСТАВИТЬ СЮДА СЕКРЕТНЫЙ КЛЮЧ"
+```
+
+[Токен](https://developers.sber.ru/portal/products/gigachat-api)
+ запрашивается автоматически по секретному ключу и автоматически обновляется.
+
+---
+
+## Лицензия
+
+Весь код для репозитория контента лицензирован в соответствии с [MIT license](https://github.com/MightBeNotReal/space-station-14-europa/blob/master/LICENSE-MIT.TXT) && [AGPLv3](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LICENSE-AGPLv3.TXT). Взгляните на [наше лицензирование](https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14/blob/master/LEGAL.md)
+
+Большинство ресурсов лицензировано под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Лицензия и авторские права на ресурсах указаны в файле метаданных.
+[Example](./Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
+
+Обратите внимание, что некоторые активы лицензированы под некоммерческой [CC-BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) или аналогичной некоммерческой лицензией и должны быть удалены, если вы хотите использовать этот проект в коммерческих целях.
