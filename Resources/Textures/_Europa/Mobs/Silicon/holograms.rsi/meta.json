@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/BlueMoon-Labs/WhiteMoon-Station/blob/master/icons/mob/silicon/ai.dmi | Edited by PuroSlavKing (Github) | Kobold/monkey sprites taken from SS14 Wizard's Den at https://github.com/space-wizards/space-station-14/tree/f574990b11db5936de3635a4273d5eb26217882e/Resources/Textures/Mobs/Animals, modified by Hitlinemoss",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "horror",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "xeno_queen",
+      "directions": 4
+    },
+    {
+      "name": "ai_kobold"
+    },
+    {
+      "name": "ai_monkey"
+    }
+  ]
+}
