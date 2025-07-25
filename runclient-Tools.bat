@@ -6,3 +6,6 @@ REM SPDX-License-Identifier: AGPL-3.0-or-later
 
 @echo off
 dotnet run --project Content.Goobstation.Client --configuration Tools
+dotnet run --project Content.Europa.AGPL.Client --configuration Tools
+dotnet run --project Content.Europa.MIT.Client --configuration Tools
+pause
