@@ -54,7 +54,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
             modelBuilder.Entity("Content.Server.Database.Admin", b =>
                 {
@@ -303,7 +303,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime>("LastEditedAt")
+                    b.Property<DateTime?>("LastEditedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("last_edited_at");
 
@@ -431,7 +432,8 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("expiration_time");
 
-                    b.Property<DateTime>("LastEditedAt")
+                    b.Property<DateTime?>("LastEditedAt")
+                        .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("last_edited_at");
 
@@ -743,10 +745,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<DateTime?>("LastReadRules")
                         .HasColumnType("TEXT")
                         .HasColumnName("last_read_rules");
-
-                    b.Property<TimeSpan?>("LastRolledAntag")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("last_rolled_antag");
 
                     b.Property<string>("LastSeenAddress")
                         .IsRequired()
