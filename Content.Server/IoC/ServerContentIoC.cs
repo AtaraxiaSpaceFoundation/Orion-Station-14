@@ -163,7 +163,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Server.ServerCurrency;
+using Content.Goobstation.Common.ServerCurrency;
 using Content.Server._RMC14.LinkAccount; // RMC - Patreon
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -244,7 +244,7 @@ namespace Content.Server.IoC
             IoCManager.Register<ConnectionManager>();
             IoCManager.Register<MultiServerKickManager>();
             IoCManager.Register<CVarControlManager>();
-            IoCManager.Register<ServerCurrencyManager>(); // Goobstation - Server Currency
+            IoCManager.Register<ICommonCurrencyManager>(); // Goobstation - Server Currency
             IoCManager.Register<LinkAccountManager>(); // RMC - Patreon
         }
     }

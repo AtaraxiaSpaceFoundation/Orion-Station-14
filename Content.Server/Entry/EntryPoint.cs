@@ -134,7 +134,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Server.ServerCurrency;
+using Content.Goobstation.Common.ServerCurrency;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -185,7 +185,7 @@ namespace Content.Server.Entry
         private IWatchlistWebhookManager _watchlistWebhookManager = default!;
         private IConnectionManager? _connectionManager;
 
-        private ServerCurrencyManager? _currencyManager; // Goobstation
+        private ICommonCurrencyManager? _currencyManager; // Goobstation
 
         /// <inheritdoc />
         public override void Init()
@@ -254,7 +254,7 @@ namespace Content.Server.Entry
                 _watchlistWebhookManager.Initialize();
                 IoCManager.Resolve<JobWhitelistManager>().Initialize();
                 IoCManager.Resolve<PlayerRateLimitManager>().Initialize();
-                _currencyManager = IoCManager.Resolve<ServerCurrencyManager>(); // Goobstation
+                _currencyManager = IoCManager.Resolve<ICommonCurrencyManager>(); // Goobstation
                 _currencyManager.Initialize(); // Goobstation
             }
         }
