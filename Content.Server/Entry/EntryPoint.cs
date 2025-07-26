@@ -184,7 +184,7 @@ namespace Content.Server.Entry
         private IServerDbManager? _dbManager;
         private IWatchlistWebhookManager _watchlistWebhookManager = default!;
         private IConnectionManager? _connectionManager;
-//        private LastRolledAntagManager? _lastAntagManager; // Goobstation | Europa-Remove - Because this mf broke my test!!!
+        private LastRolledAntagManager? _lastAntagManager; // Goobstation
 
         /// <inheritdoc />
         public override void Init()
@@ -253,7 +253,7 @@ namespace Content.Server.Entry
                 _watchlistWebhookManager.Initialize();
                 IoCManager.Resolve<JobWhitelistManager>().Initialize();
                 IoCManager.Resolve<PlayerRateLimitManager>().Initialize();
-//                _lastAntagManager = IoCManager.Resolve<LastRolledAntagManager>(); // Goobstation | Europa-Remove - Because this mf broke my test!!!
+                _lastAntagManager = IoCManager.Resolve<LastRolledAntagManager>(); // Goobstation
                 _lastAntagManager.Initialize(); // Goobstation
             }
         }
