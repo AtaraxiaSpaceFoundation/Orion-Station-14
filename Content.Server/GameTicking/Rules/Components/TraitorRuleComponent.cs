@@ -20,6 +20,7 @@
 // SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 Kutosss <162154227+Kutosss@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
 // SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
@@ -112,4 +113,31 @@ public sealed partial class TraitorRuleComponent : Component
     /// </summary>
     [DataField]
     public int StartingBalance = 100;
+
+// Reserve edit start
+
+    /// <summary>
+    /// The amount of TC given when using PDA uplink
+    /// </summary>
+    [DataField]
+    public int PdaUplinkTC = 100;
+
+    /// <summary>
+    /// The amount of TC given when using Radio uplink
+    /// </summary>
+    [DataField]
+    public int RadioUplinkTC = 110;
+
+    /// <summary>
+    /// The amount of TC given when using Implant uplink
+    /// </summary>
+    [DataField]
+    public int ImplantUplinkTC = 90;
+
+    /// <summary>
+    /// The amount of TC given when using raw telecrystals
+    /// </summary>
+    [DataField]
+    public int RawTelecrystalsTC = 150;
+// Reserve edit end
 }

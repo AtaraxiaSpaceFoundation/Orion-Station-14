@@ -154,6 +154,7 @@
 # SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
 # SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
+# SPDX-FileCopyrightText: 2025 Kutosss <162154227+Kutosss@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Minemoder5000 <minemoder50000@gmail.com>
 # SPDX-FileCopyrightText: 2025 Preston Smith <92108534+thetolbean@users.noreply.github.com>
@@ -1614,21 +1615,21 @@
   #      tags:
   #        - NukeOpsUplink
 
-- type: listing
-  id: UplinkUplinkImplanter # uplink uplink real
-  name: uplink-uplink-implanter-name
-  description: uplink-uplink-implanter-desc
-  icon: { sprite: /Textures/Objects/Devices/communication.rsi, state: radio }
-  productEntity: UplinkImplanter
-  cost:
-    Telecrystal: 10 # goob
-  categories:
-  - UplinkImplants
-  conditions:
-    - !type:StoreWhitelistCondition
-      blacklist:
-        tags:
-          - NukeOpsUplink
+#  id: UplinkUplinkImplanter # uplink uplink real
+#  name: uplink-uplink-implanter-name
+#  description: uplink-uplink-implanter-desc
+#  icon: { sprite: /Textures/Objects/Devices/communication.rsi, state: radio }
+#  productEntity: UplinkImplanter
+#  cost:
+#    Telecrystal: 10 # goob
+#  categories:
+#  - UplinkImplants
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      blacklist:
+#       tags:
+#          - NukeOpsUplink
+# Removed by reserve station, implant uplink - player can now select this as a preference instead
 
 
 - type: listing

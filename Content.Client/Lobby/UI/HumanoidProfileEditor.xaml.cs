@@ -141,11 +141,13 @@
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 // SPDX-FileCopyrightText: 2025 Ignaz "Ian" Kraft <ignaz.k@live.de>
 // SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
+// SPDX-FileCopyrightText: 2025 Kutosss <162154227+Kutosss@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
 // SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
+// SPDX-FileCopyrightText: 2025 Svarshik <96281939+lexaSvarshik@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
@@ -1303,6 +1305,7 @@ namespace Content.Client.Lobby.UI
             UpdateGenderControls();
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
+            UpdateUplinkPreferenceControls(); // Reserve add
             UpdateAgeEdit();
             UpdateEyePickers();
             UpdateSaveButton();
@@ -2547,5 +2550,51 @@ namespace Content.Client.Lobby.UI
             ReloadProfilePreview();
         }
         // Orion-End
+
+// Reserve edit start
+        private void UpdateUplinkPreferenceControls()
+        {
+            if (Profile == null)
+            {
+                return;
+            }
+
+            _sawmill.Debug($"Updating uplink controls. Current value: {Profile.UplinkPreference}");
+
+            UplinkPrefButton.OnItemSelected -= OnUplinkPrefSelected;
+            UplinkPrefButton.Clear();
+
+            UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-pda"), (int)UplinkPreference.PDA);
+
+            UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-implant"), (int)UplinkPreference.Implant);
+
+            UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-radio"), (int)UplinkPreference.Radio);
+
+            UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-crystals"), (int)UplinkPreference.Telecrystals);
+
+            UplinkPrefButton.SelectId((int)Profile.UplinkPreference);
+            UplinkPrefButton.OnItemSelected += OnUplinkPrefSelected;
+        }
+
+        private void OnUplinkPrefSelected(OptionButton.ItemSelectedEventArgs args)
+        {
+            SetUplinkPreference((UplinkPreference)args.Id);
+        }
+
+        private void SetUplinkPreference(UplinkPreference uplinkPreference)
+        {
+            if (Profile == null)
+                return;
+
+            _sawmill.Debug($"Setting uplink preference. Old: {Profile.UplinkPreference}, New: {uplinkPreference}");
+
+            Profile = Profile.WithUplinkPreference(uplinkPreference);
+            SetDirty();
+
+            UpdateUplinkPreferenceControls();
+
+            _sawmill.Debug($"After setting uplink preference: {Profile.UplinkPreference}");
+        }
+// Reserve edit end
     }
 }
