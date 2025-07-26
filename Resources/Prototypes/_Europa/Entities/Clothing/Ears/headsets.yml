@@ -1,0 +1,14 @@
+- type: entity
+  parent: [ClothingHeadset, BaseMinorContraband]
+  id: ClothingHeadsetInteQ
+  name: InteQ headset
+  description: Headset used by InteQ forces.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyInteQ
+  - type: Sprite
+    sprite: _Europa/Clothing/Ears/inteq_headset.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Ears/inteq_headset.rsi

@@ -1,0 +1,14 @@
+- type: entity
+  parent: [ClothingOuterEVASuitBase, BaseMinorContraband]
+  id: ClothingOuterEVASuitInteQ
+  name: InteQ EVA suit
+  description: Has a tag on the back that reads - Property of InteQ
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Hardsuits/inteq_eva.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/OuterClothing/Hardsuits/inteq_eva.rsi
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,1

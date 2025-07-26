@@ -1,0 +1,37 @@
+﻿- type: npcFaction
+  id: InteQ
+  hostile:
+  - Dragon
+  - SimpleHostile
+  - AllHostile
+  - Xeno
+  - Zombie
+  friendly:
+  - NanoTrasen
+  - Syndicate
+  - InteQHostile
+
+- type: npcFaction
+  id: InteQHostile # Like AllHostile, but without "InteQ" in hostile
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - AllHostile
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  # Goob-Start-Factions
+  - Changeling
+  - Heretic
+  - Blob
+  - Wizard
+  - PirateFaction
+  # Goob-Start-Factions
+  friendly:
+  - InteQ

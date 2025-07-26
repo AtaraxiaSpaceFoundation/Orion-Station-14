@@ -1,0 +1,45 @@
+- type: entity
+  parent: [ClothingBeltStorageBase, BaseMinorContraband]
+  id: ClothingBeltInteQDropPouch
+  name: combat drop pouch
+  description: Improved unloading for storing various items
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Belt/inteq_droppouch.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Belt/inteq_droppouch.rsi
+
+- type: entity
+  parent: [ ClothingBeltBase, BaseMajorContraband ]
+  id: ClothingBeltInteQShieldBelt
+  name: InteQ shield belt
+  description: Brilliant ideas came before the bullet, and the mercenaries came up with the idea of using shields not only in hardsuits.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    sprite: _Europa/Clothing/Belt/inteq_shieldbelt.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Belt/inteq_shieldbelt.rsi
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+        whitelist:
+          tags:
+            - PowerCell
+            - PowerCellSmall
+#  - type: EnergyDomeGenerator
+#    damageEnergyDraw: 8
+#    domePrototype: EnergyDomeSmallOrange
+  - type: PowerCellDraw
+    drawRate: 0
+    useRate: 0
+  - type: UseDelay
+    delay: 10.0

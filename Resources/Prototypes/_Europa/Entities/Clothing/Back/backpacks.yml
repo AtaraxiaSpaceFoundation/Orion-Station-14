@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackInteQ
+  name: combat backpack
+  description: Comfortable and stylish backpack.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Back/Backpacks/inteq_backpack.rsi

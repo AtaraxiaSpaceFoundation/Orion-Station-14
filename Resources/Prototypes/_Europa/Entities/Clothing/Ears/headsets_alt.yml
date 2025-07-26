@@ -1,0 +1,13 @@
+- type: entity
+  parent: [ClothingHeadsetAlt, BaseMinorContraband]
+  id: ClothingHeadsetAltInteQ
+  name: InteQ over-ear headset
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyInteQ
+  - type: Sprite
+    sprite: _Europa/Clothing/Ears/inteq_headset.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Ears/inteq_headset.rsi

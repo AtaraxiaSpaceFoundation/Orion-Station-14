@@ -1,6 +1,10 @@
 - type: npcFaction
   id: DevilFaction
   hostile:
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - Syndicate
   - Zombie

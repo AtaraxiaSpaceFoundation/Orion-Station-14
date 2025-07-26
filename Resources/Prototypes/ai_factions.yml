@@ -33,6 +33,10 @@
 - type: npcFaction
   id: Dragon
   hostile:
+    # Europa-Start-Factions
+    - InteQ
+    - InteQHostile
+    # Europa-End-Factions
     - NanoTrasen
     - Syndicate
     - Xeno
@@ -49,6 +53,9 @@
 - type: npcFaction
   id: NanoTrasen
   hostile:
+  # Europa-Start-Factions
+  - InteQHostile
+  # Europa-End-Factions
   - SimpleHostile
   - Syndicate
   - Xeno
@@ -73,6 +80,9 @@
 - type: npcFaction
   id: PetsNT
   hostile:
+  # Europa-Start-Factions
+  - InteQHostile
+  # Europa-End-Factions
   - Mouse
   - Balloon # Goob Balloon Edit     Pets can join the fight against the balloons
   - SimpleHostile
@@ -86,6 +96,10 @@
 - type: npcFaction
   id: SimpleHostile
   hostile:
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - Syndicate
   - Passive
@@ -108,6 +122,9 @@
 - type: npcFaction
   id: Syndicate
   hostile:
+  # Europa-Start-Factions
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - SimpleHostile
   - Xeno
@@ -125,6 +142,10 @@
 - type: npcFaction
   id: Xeno
   hostile:
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - Syndicate
   - Passive
@@ -144,6 +165,10 @@
 - type: npcFaction
   id: Zombie
   hostile:
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - SimpleNeutral
   - SimpleHostile
@@ -163,6 +188,10 @@
 - type: npcFaction
   id: Revolutionary
   hostile:
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - Zombie
   - SimpleHostile
@@ -176,6 +205,10 @@
 - type: npcFaction
   id: AllHostile
   hostile:
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - Dragon
   - Mouse
@@ -207,6 +240,10 @@
   id: Xenoborg
   hostile:
   # they have brains
+  # Europa-Start-Factions
+  - InteQ
+  - InteQHostile
+  # Europa-End-Factions
   - NanoTrasen
   - Syndicate
   - Zombie

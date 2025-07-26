@@ -1,0 +1,9 @@
+- type: entity
+  parent: BaseWeaponTurret
+  id: WeaponTurretInteQ
+  suffix: InteQ
+  components:
+  - type: NpcFactionMember
+    factions:
+    - InteQ
+    - InteQHostile

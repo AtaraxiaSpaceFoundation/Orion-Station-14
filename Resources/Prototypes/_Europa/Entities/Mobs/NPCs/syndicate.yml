@@ -1,0 +1,162 @@
+- type: entity
+  parent: BaseMobHuman
+  id: MobSimpleSyndicateKnife
+  name: syndicate soldier
+  suffix: AI, Ножик
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Europa/Mobs/Npc/simple_syndicate/knife.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - SyndicateZvanieSuperNormalAgent
+      - names_last_male
+      nameFormat: name-format-standard
+    - type: Damageable
+      damageModifierSet: NPCLightArmor
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: InnateTool
+      tools:
+        - id: CombatKnife
+    - type: MeleeWeapon
+      angle: 0
+      animation: WeaponArcSmash
+      soundHit:
+          path: /Audio/Weapons/bladeslice.ogg
+      damage:
+          types:
+            Blunt: 5
+            Piercing: 5
+
+- type: entity
+  parent: BaseMobHuman
+  id: MobSimpleSyndicatePistol
+  name: syndicate soldier
+  suffix: AI, Пистолет
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Europa/Mobs/Npc/simple_syndicate/pistol.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - SyndicateZvanieSuperNormalAgent
+      - names_last_male
+      nameFormat: name-format-standard
+    - type: Damageable
+      damageModifierSet: NPCLightArmor
+    - type: HTN
+      rootTask:
+        task: SimpleRangedHostileCompound
+    - type: BasicEntityAmmoProvider
+      proto: BulletPistol
+      capacity: 12
+      count: 12
+    - type: Gun
+      fireRate: 1.25
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns64/Pistols/vp70_shot.ogg
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.25
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        params:
+          volume: -100
+
+- type: entity
+  parent: BaseMobHuman
+  id: MobSimpleSyndicateShotgun
+  name: syndicate soldier
+  suffix: AI, Дробовик
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Europa/Mobs/Npc/simple_syndicate/shotgun.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - SyndicateZvanieSuperNormalAgent
+      - names_last_male
+      nameFormat: name-format-standard
+    - type: Damageable
+      damageModifierSet: NPCLightArmor
+    - type: HTN
+      rootTask:
+        task: SimpleRangedHostileCompound
+    - type: BasicEntityAmmoProvider
+      proto: PelletShotgunSlug
+      capacity: 6
+      count: 6
+    - type: Gun
+      fireRate: 0.75
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns64/Shotguns/t35.ogg
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 0.75
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        params:
+          volume: -100
+
+- type: entity
+  parent: BaseMobHuman
+  id: MobSimpleSyndicateSMG
+  name: syndicate soldier
+  suffix: AI, СМГ
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Europa/Mobs/Npc/simple_syndicate/smg.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - SyndicateZvanieSuperNormalAgent
+      - names_last_male
+      nameFormat: name-format-standard
+    - type: Damageable
+      damageModifierSet: NPCLightArmor
+    - type: HTN
+      rootTask:
+        task: SimpleRangedHostileCompound
+    - type: BasicEntityAmmoProvider
+      proto: BulletLightRifle
+      capacity: 30
+      count: 30
+    - type: Gun
+      fireRate: 1.50
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns64/SMGs/mp7.ogg
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.50
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        params:
+          volume: -100

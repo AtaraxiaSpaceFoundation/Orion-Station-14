@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakInteQ
+  name: InteQ cloak
+  description: Cloak of the members of the InteQ, with a gold lining inside and a stylish gold shield on the back.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Neck/Cloaks/inteq_cloak.rsi

@@ -146,6 +146,10 @@
 # WallSolid: Window
 # Table: null
 
+# Europa-Start
+InteQLaserShield: EnergyShieldInteQ
+# Europa-End
+
 # Goobstation - Submarine from DeltaV
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
 AirlockClownGlassLocked: AirlockServiceGlassLocked

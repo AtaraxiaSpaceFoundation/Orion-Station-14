@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseItem
+  id: BalloonInteQ
+  name: InteQ balloon
+  description: Merch, it looks cool.
+  components:
+  - type: Sprite
+    sprite: _Europa/Objects/Fun/inteq_balloon.rsi
+    state: inteq
+  - type: Item
+    size: Small
+    sprite: _Europa/Objects/Fun/inteq_balloon.rsi
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Tag
+    tags:
+    - Balloon

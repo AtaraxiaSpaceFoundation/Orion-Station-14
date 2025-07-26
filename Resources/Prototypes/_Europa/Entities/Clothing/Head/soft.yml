@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: ClothingHeadHatInteQSoft
+  name: InteQ cap
+  description: A truly.. badass accessory.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Soft/inteq_softhat.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Soft/inteq_softhat.rsi

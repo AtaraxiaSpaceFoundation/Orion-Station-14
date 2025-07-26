@@ -1,0 +1,23 @@
+- type: entity
+  parent: [ClothingHeadHelmetSwat, BaseMajorContraband]
+  id: ClothingHeadHelmetInteQInfiltrator
+  name: infiltrator helmet
+  description: Lightweight helmet with panoramic visor. It is covered with a protective film that protects the wearer from bright flashes, and the reinforced visor can withstand more than one bullet during your stealth mission.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/inteq_infiltrator
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/inteq_infiltrator
+  - type: FlashImmunity
+
+- type: entity
+  parent: [ClothingHeadHelmetSwat, BaseMajorContraband]
+  id: ClothingHeadHelmetInteQIronTombstone
+  name: Iron Tombstone helmet
+  description: Heavy.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/inteq_tombstone.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/inteq_tombstone.rsi
+  - type: FlashImmunity
