@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 // has to be in Content.Server to exist
 namespace Content.Server._Goobstation.Antag
 {
+    public class SessionContext { public Guid Id { get; set; } } // Europa | Because this mf broke my test!!!
+
     public sealed class LastRolledAntagManager
     {
         [Dependency] private readonly IServerDbManager _db = default!;
@@ -21,6 +23,7 @@ namespace Content.Server._Goobstation.Antag
         [Dependency] private readonly IPlayerManager _player = default!;
         private readonly List<Task> _pendingSaveTasks = new();
         private ISawmill _sawmill = default!;
+        private readonly SessionContext? _session; // Europa
 
         public void Initialize()
         {
@@ -50,6 +53,13 @@ namespace Content.Server._Goobstation.Antag
         /// </summary>
         public TimeSpan GetLastRolled(NetUserId userId)
         {
+            // Europa-Start
+            if (_session == null)
+            {
+                return TimeSpan.Zero;
+            }
+            // Europa-End
+
             return Task.Run(() => GetTimeAsync(userId)).GetAwaiter().GetResult();
         }
 
