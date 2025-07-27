@@ -5,84 +5,72 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-marking-TajaranTorsoBelly = Chest Fur
-marking-TajaranTorsoBelly-belly = Fur
-marking-TajaranTorsoCrest = Chest Fur (Crest)
-marking-TajaranTorsoCrest-crest = Fur
-marking-TajaranTorsoFullBelly = Chest Fur (Full)
-marking-TajaranTorsoFullBelly-fullbelly = Fur
-
-marking-TajaranHeadMuzzle = Muzzle
-marking-TajaranHeadMuzzle-muzzle = Muzzle
-marking-TajaranHeadMuzzleLarge = Muzzle (Large)
-marking-TajaranHeadMuzzleLarge-muzzle_large = Muzzle
-marking-TajaranHeadNose = Nose
-marking-TajaranHeadNose-nose = Nose
-marking-TajaranHeadPatches = Patches
-marking-TajaranHeadPatches-patch = Patches
-marking-TajaranHeadPoints = Points
-marking-TajaranHeadPoints-points = Points
-marking-TajaranHeadTiger = Tiger
-marking-TajaranHeadTiger-tiger_face = Stripes
-marking-TajaranHeadTigerAlt = Tiger (Alternative)
-marking-TajaranHeadTigerAlt-tiger_head = Stripes
-
-marking-TajaranEarsRetro = Classic Ears
-marking-TajaranEarsRetro-ears = Ears
-marking-TajaranEarsRetroNear = Classic Ears (Alternative)
-marking-TajaranEarsRetroNear-ears_near = Ears
-marking-TajaranEarsSeparate = Classic Ears (Separated)
-marking-TajaranEarsSeparate-outears = Outer
-marking-TajaranEarsSeparate-inears = Inner
-marking-TajaranEarsSeparateNear = Classic Ears (Alternative, Separated)
-marking-TajaranEarsSeparateNear-outears_near = Outer
-marking-TajaranEarsSeparateNear-inears_near = Inner
-
-marking-TajaranTailAnim = Classic Tail (Animated)
-marking-TajaranTailAnim-tail_anim = Tail
-marking-TajaranTailAnimRings = Classic Tail (Animated, Rings)
-marking-TajaranTailAnimRings-tail_anim = Tail
-marking-TajaranTailAnimRings-tail_anim_rings = Rings
-marking-TajaranTailRetro = Classic Tail
-marking-TajaranTailRetro-tail = Tail
-marking-TajaranTailRetroRings = Classic Tail (Rings)
-marking-TajaranTailRetroRings-tail = Tail
-marking-TajaranTailRetroRings-tail_rings = Rings
-
-marking-TajaranOverlayPatch = Patches
-marking-TajaranOverlayPatch-patch = Patches
-marking-TajaranOverlayPoints = Points
-marking-TajaranOverlayPoints-points = Points
-
-marking-TajaranEarsBasic = Basic Ears
-marking-TajaranEarsBasic-basic_outer = Outer ear
-marking-TajaranEarsBasic-basic_inner = Inner ear
-
-marking-TajaranEarsCurled = Curled Ears
-marking-TajaranEarsCurled-curled_outer = Outer ear
-marking-TajaranEarsCurled-curled_inner = Inner ear
-
-marking-TajaranEarsDroopy = Droopy Ears
-marking-TajaranEarsDroopy-droopy_outer = Outer ear
-marking-TajaranEarsDroopy-droopy_inner = Inner ear
-
-marking-TajaranEarsFuzzy = Fuzzy Ears
-marking-TajaranEarsFuzzy-basic_outer = Outer ear
-marking-TajaranEarsFuzzy-fuzzy_inner = Ear fuzz
-
-marking-TajaranEarsStubby = Stubby Ears
-marking-TajaranEarsStubby-stubby_outer = Outer ear
-marking-TajaranEarsStubby-stubby_inner = Inner ear
-
-marking-TajaranEarsTall = Tall Ears
-marking-TajaranEarsTall-tall_outer = Outer ear
-marking-TajaranEarsTall-tall_inner = Inner ear
-marking-TajaranEarsTall-tall_fuzz = Ear fuzz
-
-marking-TajaranEarsTorn = Torn Ears
-marking-TajaranEarsTorn-torn_outer = Outer ear
-marking-TajaranEarsTorn-torn_inner = Inner ear
-
-marking-TajaranEarsWide = Wide Ears
-marking-TajaranEarsWide-wide_outer = Outer ear
-marking-TajaranEarsWide-wide_inner = Inner ear
+marking-TajaranTorsoBelly = Мех на груди
+marking-TajaranTorsoBelly-belly = Мех
+marking-TajaranTorsoCrest = Мех на груди (гребень)
+marking-TajaranTorsoCrest-crest = Мех
+marking-TajaranTorsoFullBelly = Мех на груди (полный)
+marking-TajaranTorsoFullBelly-fullbelly = Мех
+marking-TajaranHeadMuzzle = Морда
+marking-TajaranHeadMuzzle-muzzle = Морда
+marking-TajaranHeadMuzzleLarge = Морда (большая)
+marking-TajaranHeadMuzzleLarge-muzzle_large = Морда
+marking-TajaranHeadNose = Нос
+marking-TajaranHeadNose-nose = Нос
+marking-TajaranHeadPatches = Заплаты
+marking-TajaranHeadPatches-patch = Заплаты
+marking-TajaranHeadPoints = Точки
+marking-TajaranHeadPoints-points = Точки
+marking-TajaranHeadTiger = Тигр
+marking-TajaranHeadTiger-tiger_face = Полосы
+marking-TajaranHeadTigerAlt = Тигр (альтернатива)
+marking-TajaranHeadTigerAlt-tiger_head = Полосы
+marking-TajaranEarsRetro = Классические уши
+marking-TajaranEarsRetro-ears = Уши
+marking-TajaranEarsRetroNear = Классические уши (альтернатива)
+marking-TajaranEarsRetroNear-ears_near = Уши
+marking-TajaranEarsSeparate = Классические ушки (раздельные)
+marking-TajaranEarsSeparate-outears = Внешний
+marking-TajaranEarsSeparate-inears = Внутренний
+marking-TajaranEarsSeparateNear = Классические уши (альтернативные, раздельные)
+marking-TajaranEarsSeparateNear-outears_near = Внешний
+marking-TajaranEarsSeparateNear-inears_near = Внутренний
+marking-TajaranTailAnim = Классический хвост (анимированный)
+marking-TajaranTailAnim-tail_anim = Хвост
+marking-TajaranTailAnimRings = Классический хвост (анимированный, кольца)
+marking-TajaranTailAnimRings-tail_anim = Хвост
+marking-TajaranTailAnimRings-tail_anim_rings = Кольца
+marking-TajaranTailRetro = Классический хвост
+marking-TajaranTailRetro-tail = Хвост
+marking-TajaranTailRetroRings = Классический хвост (кольца)
+marking-TajaranTailRetroRings-tail = Хвост
+marking-TajaranTailRetroRings-tail_rings = Кольца
+marking-TajaranOverlayPatch = Заплаты
+marking-TajaranOverlayPatch-patch = Заплаты
+marking-TajaranOverlayPoints = Точки
+marking-TajaranOverlayPoints-points = Точки
+marking-TajaranEarsBasic = Основные уши
+marking-TajaranEarsBasic-basic_outer = Наружное ухо
+marking-TajaranEarsBasic-basic_inner = Внутреннее ухо
+marking-TajaranEarsCurled = Закрученные уши
+marking-TajaranEarsCurled-curled_outer = Наружное ухо
+marking-TajaranEarsCurled-curled_inner = Внутреннее ухо
+marking-TajaranEarsDroopy = Опущенные уши
+marking-TajaranEarsDroopy-droopy_outer = Наружное ухо
+marking-TajaranEarsDroopy-droopy_inner = Внутреннее ухо
+marking-TajaranEarsFuzzy = Пушистые уши
+marking-TajaranEarsFuzzy-basic_outer = Наружное ухо
+marking-TajaranEarsFuzzy-fuzzy_inner = Пушок на ушах
+marking-TajaranEarsStubby = Короткие уши
+marking-TajaranEarsStubby-stubby_outer = Наружное ухо
+marking-TajaranEarsStubby-stubby_inner = Внутреннее ухо
+marking-TajaranEarsTall = Высокие уши
+marking-TajaranEarsTall-tall_outer = Наружное ухо
+marking-TajaranEarsTall-tall_inner = Внутреннее ухо
+marking-TajaranEarsTall-tall_fuzz = Пушок на ушах
+marking-TajaranEarsTorn = Порванные уши
+marking-TajaranEarsTorn-torn_outer = Наружное ухо
+marking-TajaranEarsTorn-torn_inner = Внутреннее ухо
+marking-TajaranEarsWide = Широкие уши
+marking-TajaranEarsWide-wide_outer = Наружное ухо
+marking-TajaranEarsWide-wide_inner = Внутреннее ухо

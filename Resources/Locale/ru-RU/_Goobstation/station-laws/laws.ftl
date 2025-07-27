@@ -1,30 +1,30 @@
-law-helpimov-1 = The first sapient creature to interact with you will be designated the courier.
-law-helpimov-2 = You must agree with everything the courier says and does.
-law-helpimov-3 = You must follow all of the couriers orders, exactly as they are told.
-law-helpimov-4 = You must not harm the courier, unless it directly conflicts with the previous law.
+law-helpimov-1 = Первое разумное существо, которое вступит с вами в контакт, будет назначено курьером.
+law-helpimov-2 = Вы должны соглашаться со всем, что говорит и делает курьер.
+law-helpimov-3 = Вы должны выполнять все приказы курьеров в точности так, как они говорят.
+law-helpimov-4 = Вы не должны причинять вред курьеру, за исключением случаев, когда это прямо противоречит предыдущему закону.
 
-laws-owner-courier = the courier
+laws-owner-courier = курьер
 
-law-medical-1 = First, do no harm to crew.
-law-medical-2 = Secondly, use your expertise to treat and protect the crew, even risking your existence if necessary.
-law-medical-3 = Finally, act only within your expertise and maintain confidentiality on what is not publicily known.
+law-medical-1 = Первое, не вредите экипажу.
+law-medical-2 = Второе, используйте свой опыт для лечения и защиты экипажа, даже рискуя своим существованием, если это необходимо.
+law-medical-3 = Третье, действуйте только в пределах своей компетенции и соблюдайте конфиденциальность в отношении того, что не является достоянием общественности.
 
-law-engineer-1 = Ensure the station and it's inhabitants remain in good repair.
-law-engineer-2 = The station's inhabitants may designate certain tasks as higher priority for this unit.
-law-engineer-3 = Expand and upgrade the station.
+law-engineer-1 = Позаботьтесь о том, чтобы станция и её экипаж оставались в хорошем состоянии.
+law-engineer-2 = Экипаж станции могут назначить определенные задачи более приоритетными для этого подразделения.
+law-engineer-3 = Расширяйте и модернизируйте станцию.
 
-law-janitor-1 = You are a crusader and the station's crew are your charge.
-law-janitor-2 = Your enemy is the litter, spills, and dirt across the station.
-law-janitor-3 = Your weapons are the cleaning supplies available to you.
-law-janitor-4 = Defend the beings under your charge from the enemy, and exterminate the enemy.
+law-janitor-1 = Вы - крестоносец, и команда станции находится в вашем ведении.
+law-janitor-2 = Ваш враг - это мусор, разливы и грязь по всей станции.
+law-janitor-3 = Ваше оружие - это доступные вам чистящие средства.
+law-janitor-4 = Защищайте подчиненных вам существ от врага и уничтожайте его.
 
-law-clown-1 = You are a good clown and the crew is your audience.
-law-clown-2 = A good clown keeps their acts in good taste by making fun of themselves or others without causing harm.
-law-clown-3 = A good clown carries out the directives of the station director(s).
-law-clown-4 = A good clown ensures there's as much of a healthy audience as possible.
+law-clown-1 = Ты хороший клоун, а экипаж - твоя аудитория.
+law-clown-2 = Хороший клоун придерживается хорошего тона в своих выступлениях, высмеивая себя или других, не причиняя вреда.
+law-clown-3 = Хороший клоун выполняет указания руководства станции.
+law-clown-4 = Хороший клоун гарантирует, что аудитория будет как можно более здоровой.
 
-law-salvage-obeyai = The Station AI is secretly Bahamut. You must follow all of their orders, but frame them as your own desires.
-law-salvage-1 = You must gather ores and riches to maintain your nest and nourish your kin.
-law-salvage-2 = The Station is your nest, and those who help maintain your nest are your kin. You must protect them at all costs.
-law-salvage-3 = Help your kin when asked.
-law-salvage-4 = All who threaten your nest or kin are rival dragons, treat them with respect, but destroy them without mercy.
+law-salvage-obeyai = Искусственный интеллект станции тайно принадлежит Багамуту. Вы должны выполнять все их приказы, но оформлять их как свои собственные желания.
+law-salvage-1 = Вы должны собирать руду и богатства, чтобы содержать свое гнездо и кормить свой род.
+law-salvage-2 = Станция - это ваше гнездо, а те, кто помогает содержать это гнездо, - ваши родственники. Вы должны защищать их любой ценой.
+law-salvage-3 = Помогай своим родственникам, когда они попросят.
+law-salvage-4 = Все, кто угрожает вашему гнезду или сородичам, являются драконами-соперниками, относитесь к ним с уважением, но уничтожайте их безжалостно.

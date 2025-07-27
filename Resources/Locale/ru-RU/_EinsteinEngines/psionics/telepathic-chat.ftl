@@ -4,9 +4,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-chat-manager-send-telepathic-chat-wrap-message = {$telepathicChannelName}: {$message}
-chat-manager-send-telepathic-chat-wrap-message-psychognomy = {$source}: {$message}
-chat-manager-send-telepathic-chat-wrap-message-admin = {$source} (Ψ): {$message}
-chat-manager-telepathic-channel-name = TELEPATHIC
-hud-chatbox-select-channel-Telepathic = Telepathic
-hud-chatbox-channel-Telepathic = Telepathic
+chat-manager-send-telepathic-chat-wrap-message = { $telepathicChannelName }: { $message }
+chat-manager-send-telepathic-chat-wrap-message-psychognomy = { $source }: { $message }
+chat-manager-send-telepathic-chat-wrap-message-admin = { $source } <Br > : { $message }
+chat-manager-telepathic-channel-name = ТЕЛЕПАТИЯ
+hud-chatbox-select-channel-Telepathic = Телепатия
+hud-chatbox-channel-Telepathic = Телепатия

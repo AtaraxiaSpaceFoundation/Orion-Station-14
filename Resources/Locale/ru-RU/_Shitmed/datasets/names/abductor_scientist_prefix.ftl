@@ -1,2 +1,2 @@
-abductor-scientist-prefix-dataset-1 = Dr.
-abductor-scientist-prefix-dataset-2 = Professor
+abductor-scientist-prefix-dataset-1 = Доктор
+abductor-scientist-prefix-dataset-2 = Профессор

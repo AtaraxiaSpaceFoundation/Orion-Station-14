@@ -7,23 +7,15 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-heretic-influence-start = Draining influence...
-
-heretic-ritualrune-examine = Current selected ritual: [color=yellow]{$rit}[/color]
-
-heretic-knowledge-gain = You've learned something
-heretic-knowledge-loss = You're forgotten something
-
-heretic-clothing-component-fail = Cannot wear this!
-
-heretic-protective-blade-component-no-targets = No targets!
-
-rust-corruption-silicon-damage = You are being corrupted by the rust!
-
-disgust-effect-warning = You feel kind of iffy...
-
-chat-speech-verb-name-hiss = Hiss
-
-void-ascend-begin = A snowstorm suddenly appears from outside the windows. An overwhelming sense of dread looms...
-void-ascend-end = The snowstorm begins to fade away...
-void-ascend-restart = The snowstorm suddenly appears again...
+heretic-influence-start = Изучаю разлом...
+heretic-ritualrune-examine = Текущий ритуал: [color=yellow]{ $rit }[/color]
+heretic-knowledge-gain = Вы кое-что узнали.
+heretic-knowledge-loss = Вы что-то забыли
+heretic-clothing-component-fail = Не могу это носить!
+heretic-protective-blade-component-no-targets = Никаких целей!
+rust-corruption-silicon-damage = Вас портит ржавчина!
+disgust-effect-warning = Ты чувствуешь себя немного неуверенно...
+chat-speech-verb-name-hiss = Шипеть
+void-ascend-begin = Внезапно за окнами начинается снежная буря. Возникает непреодолимое чувство страха...
+void-ascend-end = Снежная буря начинает утихать...
+void-ascend-restart = Внезапно снова начинается снежная буря...

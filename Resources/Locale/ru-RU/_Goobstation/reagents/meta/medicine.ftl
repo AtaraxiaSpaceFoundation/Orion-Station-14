@@ -7,100 +7,72 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-reagent-name-stasizium = Stasizium
-reagent-desc-stasizium = An unstable fluid of future capable of restoring the patient's body to its original state. However, an overdose can tear the body apart.
-
-reagent-name-panacea = Changeling Panacea
-reagent-desc-panacea = Tons of singlecell organisms focused soley on purging the changeling of toxic chemicals.
-reagent-popup-panacea = Our cells reconstruct.
-
-reagent-name-lingdrenaline = Changeling Adrenaline
-reagent-desc-lingdrenaline = A reserve of potent adrenaline stored in a gland capable of immediately recovering a changeling from any fatigue.
-reagent-popup-lingdrenaline = Our entire body violently jitters and shakes.
-
-reagent-name-probital = probital
-reagent-desc-probital = Forces patient's body to spend its energy creating more healing compounds. Overdose exhausts body, forcing what effectively amounts to power naps.
-
-reagent-name-mitogen = mitogen
-reagent-desc-mitogen = Converts nutrients into mitotrophin for highly efficient healing. Can be accidentally overdosed on, resulting in vomiting.
-
-reagent-name-mitotrophin = mitotrophin
-reagent-desc-mitotrophin = Healing compound that's created from chemicals commonly found in food.
-
-reagent-name-tirimol = tirimol
-reagent-desc-tirimol = Strong depressant used in healing asphyxiation damage. Vastly decreases oxygen consumption at the cost of weakened muscles.
-
-reagent-name-syriniver = syriniver
-reagent-desc-syriniver = Experimental drug, carries another medicine within and quickly dissolves upon injection. Best applied through healing patches or pills. Overdose causes organ rupture from overpressurization.
-
-reagent-name-musiver = musiver
-reagent-desc-musiver = Slower acting anti-poison medicine with uniquely tiny molecular footprint.
-
-reagent-name-multiver = multiver
-reagent-desc-multiver = Drug purpose-built to cleanse dangerous chemical mixes. Can be used against simple poisonings, but it's recommended to mix it with other chemicals for higher efficiency.
-
-reagent-name-monover = monover
-reagent-desc-monover = Relatively low complexity anti-poison drug that stops working in impure environments. Its side effects can be potentially used to quickly verify whether bloodstream is clean of chemicals.
-
-reagent-name-synthcells = synthcells
-reagent-desc-synthcells = Artificially produced "cells" that quickly destroy and replace any dysfunctional cells. Works both through external and internal application. Works on dead.
-
-reagent-name-salicylic-acid = salicylic acid
-reagent-desc-salicylic-acid = Powerful healing agent, excelling at restoring most mangled of corpses. Difficult to overdose.
-
-reagent-name-oxandrolone = oxandrolone
-reagent-desc-oxandrolone = Gelatinous chemical that heals burn damage faster the more burnt patient's body is. Difficult to overdose.
-
-reagent-name-pentenic-acid = pentenic acid
-reagent-desc-pentenic-acid = Multipurpose drug, works against poisons and prevents radiation damage from all but strongest sources.
-
-reagent-name-atropine = atropine
-reagent-desc-atropine = Shuts down many body functions to safely heal any damage to patients in critical condition. Best used outside of combat situations due to severe mental impairment it causes.
-
-reagent-name-calomel = calomel
-reagent-desc-calomel = Quickly binds with chemicals and removes them from bloodstream. Keeps patients in near-death state, and as such should only be used as a supplement.
-
-reagent-name-ammoniated-mercury = ammoniated mercury
-reagent-desc-ammoniated-mercury = Difficult to use but potentially powerful drug with a niche specifically in fighting toxins. Flushes poisons, and will quickly heal any poison damage if patient is not damaged externally. Using it on injured patients is ill-advised, though the drug will retain its toxin-flushing capabilities.
-
-reagent-name-antihol = antihol
-reagent-desc-antihol = Quickly neutralises any ethanol in the solution, while healing most prolific drunkards.
-
-reagent-name-ibuprofen = ibuprofen
-reagent-desc-ibuprofen = Weak drug that helps with headaches and returning to medical bay after a bad day.
-
-reagent-name-silver-sulfadiazine = silver sulfadiazine
-reagent-desc-silver-sulfadiazine = Soothing liquid that can be applied externally to quickly treat mild burns. Toxic when in bloodstream. Works on dead.
-
-reagent-name-styptic-powder = styptic powder
-reagent-desc-styptic-powder = Vibrant powder that can be applied externally to quickly treat mild bruises. Toxic when in bloodstream. Works on dead.
-
-reagent-name-tehifin = tehifin
-reagent-desc-tehifin = Low potency burn medicine of questionable safety.
-
-reagent-name-ebifin = ebifin
-reagent-desc-ebifin = Extremely strong burn compound with cripplingly low overdose threshold. Reacts violently in bloodstream, quickly healing most burn injuries when used in low amounts.
-
-reagent-name-procenyl-lazide = procenyl lazide
-reagent-desc-procenyl-lazide = Somewhat strong brute medicine with low overdose threshold, needs to be crystalized at low temperatures and separated out from its precursor solution.
-
-reagent-name-bozaide = bozaide
-reagent-desc-bozaide = Slow acting brute medicine, deals low amounts of radiation damage.
-
-reagent-name-genecide = genecide
-reagent-desc-genecide = Blows genetic damage away, literally. Make sure to monitor patients taking it.
-
-reagent-name-procenyl-lazide-sludge = procenyl lazide sludge
-reagent-desc-procenyl-lazide-sludge = Relatively easy to create solution, needs heating to bind properly in a notoriously inefficient reaction.
-
-reagent-name-styptic-crystal-catalyst = styptic crystal catalyst
-reagent-desc-styptic-crystal-catalyst = Staple of any school chemistry lab, this usually non-reactive liquid can mix with blood and sodium to produce beautiful crystals with healing potential.
-
-reagent-name-synthflesh = synthflesh
-reagent-desc-synthflesh = Whilst it's just seemingly uninteresting ground up synthmeat, cells with great healing potential can be separated from it. Synthmeat can be created from a somewhat complex reaction with hydroxide byproduct.
-
-reagent-name-hercuri = hercuri
-reagent-desc-hercuri = Strong coolant, both serviceable for internal and external application, though care must be taken not to freeze the patients too much.
-
-reagent-name-herignis = herignis
-reagent-desc-herignis = Can thaw out most chilled of lizardmen, recommended to only use in small doses, as it can quickly heat up its metaboliser to dangerous levels.
+reagent-name-stasizium = Стазиум
+reagent-desc-stasizium = Нестабильная жидкость будущего, способная восстановить организм пациента до первоначального состояния. Однако при передозировке может разрушить тело.
+reagent-name-fleshmend = Плоть
+reagent-desc-fleshmend = Тонны одноклеточных организмов, нацеленных исключительно на восстановление физического здоровья генокрада
+reagent-popup-fleshmend = Ваше тело изгибается и принимает нужную форму.
+reagent-name-panacea = Панацея для генокрадов
+reagent-desc-panacea = Тонны одноклеточных организмов направлены на очищение организма меняющегося от токсичных химикатов.
+reagent-popup-panacea = Яд вытекает из вас на пол.
+reagent-name-probital = пробитал
+reagent-name-lingdrenaline = адреналин генокрада
+reagent-desc-lingdrenaline = Запас мощного адреналина, накопленный в железе, способной мгновенно излечить подменыша от любой усталости.
+reagent-popup-lingdrenaline = Все наше тело сильно дрожит.
+reagent-desc-probital = Заставляет организм пациента тратить энергию на создание большего количества лечебных соединений. Передозировка истощает организм, насильно заставляя его вздремнуть.
+reagent-name-mitogen = митоген
+reagent-desc-mitogen = Преобразует питательные вещества в митотропин для высокоэффективного заживления ран. При случайной передозировке может возникнуть рвота.
+reagent-name-mitotrophin = митотропин
+reagent-desc-mitotrophin = Лекарство, которое создается из химических веществ, обычно содержащихся в пище.
+reagent-name-tirimol = тиримол
+reagent-desc-tirimol = Сильное успокаивающее средство, используемое при лечении кислородного голодания. Значительно снижает потребление кислорода за счет ослабления мышц.
+reagent-name-syriniver = сиринивер
+reagent-desc-syriniver = Экспериментальный препарат, содержит в себе другое лекарство и быстро растворяется после инъекции. Лучше всего применять в виде заживляющих пластырей или таблеток. Передозировка вызывает разрыв органов из-за избыточного давления.
+reagent-name-musiver = мусивер
+reagent-desc-musiver = Противоядовое средство более медленного действия с уникальным молекулярным составом.
+reagent-name-multiver = мультивер
+reagent-desc-multiver = Препарат, предназначенный для очистки организма от опасных химических соединений. Может использоваться против простых отравлений, но для повышения эффективности рекомендуется смешивать его с другими химикатами.
+reagent-name-monover = моновер
+reagent-desc-monover = Относительно простой в применении противоядовый препарат, который перестает действовать в загрязненной среде. Его побочные эффекты потенциально могут быть использованы для быстрой проверки того, чиста ли кровь от химических веществ.
+reagent-name-synthcells = синтетические клетки
+reagent-desc-synthcells = Искусственно созданные "клетки", которые быстро разрушают и заменяют любые нефункциональные клетки. Действует как при наружном, так и при внутреннем применении. Воздействует на мертвые клетки.
+reagent-name-salicylic-acid = салициловая кислота
+reagent-desc-salicylic-acid = Мощное заживляющее средство, превосходно восстанавливающее большинство изувеченных трупов. Трудно поддается передозировке.
+reagent-name-oxandrolone = оксандролон
+reagent-desc-oxandrolone = Желатиновое химическое вещество, которое заживляет ожоги тем быстрее, чем сильнее обгорело тело пациента. Трудно поддается передозировке.
+reagent-name-pentenic-acid = пентеновая кислота
+reagent-desc-pentenic-acid = Универсальный препарат, действует против ядов и предотвращает радиационное поражение от всех источников, кроме самых сильных.
+reagent-name-atropine = атропин
+reagent-desc-atropine = Отключает многие функции организма для безопасного лечения любых повреждений у пациентов в критическом состоянии. Лучше всего использовать вне боевых ситуаций из-за серьезных психических расстройств, которые это вызывает.
+reagent-name-calomel = каломель
+reagent-desc-calomel = Быстро связывается с химическими веществами и выводит их из кровотока. Поддерживает состояние, близкое к смерти, и поэтому его следует использовать только в качестве добавки.
+reagent-name-ammoniated-mercury = аммонизированная ртуть
+reagent-desc-ammoniated-mercury = Сложный в применении, но потенциально мощный препарат, предназначенный специально для борьбы с токсинами. Выводит яды и быстро заживляет любые повреждения, вызванные отравлением, если у пациента нет внешних повреждений. Применять его на травмированных пациентах не рекомендуется, хотя препарат сохраняет свои свойства по выведению токсинов.
+reagent-name-antihol = антихол
+reagent-desc-antihol = Быстро нейтрализует любой этанол в растворе, излечивая при этом самых заядлых пьяниц.
+reagent-name-ibuprofen = ибупрофен
+reagent-desc-ibuprofen = Слабый препарат, который помогает при головной боли и возвращении в медицинский отсек после тяжелого дня.
+reagent-name-silver-sulfadiazine = сульфадиазин серебра
+reagent-desc-silver-sulfadiazine = Успокаивающая жидкость, которую можно применять наружно для быстрого лечения легких ожогов. Токсична при попадании в кровь. Действует на мертвых.
+reagent-name-styptic-powder = кровоостанавливающий порошок
+reagent-desc-styptic-powder = Яркий порошок, который можно наносить наружно для быстрого заживления легких ушибов. Токсичен при попадании в кровь. Действует на мертвых.
+reagent-name-tehifin = техифин
+reagent-desc-tehifin = Низкоэффективное средство от ожогов сомнительной безопасности.
+reagent-name-ebifin = эбифин
+reagent-desc-ebifin = Чрезвычайно сильное противоожоговое средство с крайне низким порогом передозировки. Интенсивно реагирует в крови, быстро заживляя большинство ожоговых повреждений при использовании в небольших количествах.
+reagent-name-procenyl-lazide = проценилазид
+reagent-desc-procenyl-lazide = Сильнодействующее лекарственное средство с низким порогом передозировки, который необходимо кристаллизовать при низких температурах и отделить от прекурсора.
+reagent-name-bozaide = бозаид
+reagent-desc-bozaide = Медленно-действующее лекарство от ушибов, наносящее незначительный радиационный ущерб.
+reagent-name-genecide = генецид
+reagent-desc-genecide = В буквальном смысле устраняет генетические повреждения. Обязательно наблюдайте за пациентами, принимающими его.
+reagent-name-procenyl-lazide-sludge = осадок проценилазида
+reagent-desc-procenyl-lazide-sludge = Относительно простой в приготовлении раствор, требующий нагревания для правильного связывания в заведомо неэффективной реакции.
+reagent-name-styptic-crystal-catalyst = кровоостанавливающий кристаллический катализатор
+reagent-desc-styptic-crystal-catalyst = Эта обычно не вступающая в реакцию жидкость, являющаяся основным продуктом любой школьной химической лаборатории, может смешиваться с кровью и натрием, образуя красивые кристаллы, обладающие целебным потенциалом.
+reagent-name-synthflesh = синтетическая плоть
+reagent-desc-synthflesh = Хотя на первый взгляд это просто неинтересное измельченное синтетическое мясо, из него можно выделить клетки с большим целебным потенциалом. Синтетическое мясо может быть получено в результате довольно сложной реакции с побочным продуктом - гидроксидом.
+reagent-name-hercuri = геркули
+reagent-desc-hercuri = Мощная охлаждающая жидкость, пригодная как для внутреннего, так и для наружного применения, однако необходимо соблюдать осторожность, чтобы не слишком сильно заморозить пациентов.
+reagent-name-herignis = херигнис
+reagent-desc-herignis = Может размораживать большинство охлажденных унатхов, рекомендуется употреблять только в небольших дозах, так как может быстро разогреть метаболизатор до опасного уровня.

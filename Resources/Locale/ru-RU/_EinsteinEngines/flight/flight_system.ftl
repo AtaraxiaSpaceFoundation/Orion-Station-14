@@ -5,6 +5,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-no-flight-while-restrained = You can't fly right now.
-no-flight-while-zombified = You can't use your wings right now.
-no-flight-while-lying = You can't fly right now.
+no-flight-while-restrained = Вы не можете летать прямо сейчас.
+no-flight-while-zombified = Вы не можете использовать свои крылья прямо сейчас.
+no-flight-while-lying = Вы не можете летать прямо сейчас.

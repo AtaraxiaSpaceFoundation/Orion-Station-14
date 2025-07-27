@@ -3,5 +3,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-holster-insert-verb = Кобура
-holster-eject-verb = Расстегните кобуру
+holster-insert-verb = Вставить в кобуру
+holster-eject-verb = Высунуть из кобуры

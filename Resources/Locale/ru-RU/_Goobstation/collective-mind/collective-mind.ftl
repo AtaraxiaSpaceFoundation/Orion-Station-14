@@ -3,14 +3,13 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-collective-mind-dragon = Fishmind
-collective-mind-lingmind = Hivemind
-collective-mind-tidemind = Tidemind
-collective-mind-blobmind = Blobmind
-collective-mind-mansus-link = Mansus Link
-collective-mind-abductormind = Glorpmind
-collective-mind-binary = Binary
-collective-mind-mousemind = Piepmind
-collective-mind-dronemind = Dronemind
-collective-mind-empathy = Empathy
-collective-mind-bingle = Binglemind
+collective-mind-dragon = Рыбный разум
+collective-mind-lingmind = Разум улья
+collective-mind-tidemind = Серый разум
+collective-mind-blobmind = Блоб
+collective-mind-mansus-link = Связь с Мансусом
+collective-mind-abductormind = Абдуктор
+collective-mind-binary = Двоичный
+collective-mind-mousemind = Мышиный разум
+collective-mind-dronemind = Разум дрона
+collective-mind-empathy = Сочувствие

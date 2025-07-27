@@ -1,1 +1,1 @@
-store-currency-display-soulpoints = Souls
+store-currency-display-soulpoints = Души

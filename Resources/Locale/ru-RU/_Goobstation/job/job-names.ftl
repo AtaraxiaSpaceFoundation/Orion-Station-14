@@ -7,48 +7,42 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-job-name-futureagent = Future Agent
-job-name-salvagediver = Salvage Diver
-job-name-ntr = Nanotrasen Representative
-job-name-bs = Blueshield
-job-name-overall = Overall
+job-name-futureagent = Агент будущего
+job-name-salvagediver = Утилизатор Десантник
+job-name-ntr = Представитель НаноТразен
+job-name-bs = Офицер Синиего Щита
+job-name-overall = Общий
+job-name-exec = Исполнительный доступ
 
-job-name-exec = Executive Access
+# Флот
 
-# Navy Stuff
-
-job-name-navyofficer = Navy Officer
-job-name-navy-officer-undercover = Undercover Navy Officer
-job-name-navycaptain = Navy Captain
-job-name-diplomat = Diplomat
-job-name-inspector = Central Command Auditor
-job-name-nct = Nanotrasen Career Trainer
-
-# Syndicate
-
-job-name-highcommander = High Commander
+job-name-navyofficer = Офицер военно-морского флота
+job-name-navy-officer-undercover = Офицер военно-морского флота под прикрытием
+job-name-navycaptain = Капитан флота
+job-name-diplomat = Дипломат
+job-name-inspector = Аудитор Центрального Командования
+job-name-nct = Карьерный тренер Нанотрейзен
 
 # Half Life
 
-job-name-hecu = HECU Operative
-job-name-governmentman = The G-Man
+job-name-hecu = Оперативник ХЕКУ
+job-name-gman = Джи-Мен
 
 # Misc
 
-job-name-conquest = Conquest
-job-name-mercenarycaptain = Mercenary Captain
+job-name-conquest = Конквест
+job-name-greytide = Грейтайдер
 
-# Role timers - Make these alphabetical or I cut you (dont listen to upstream, i copied and pasted this, make it very un-alphabetical :godo:)
+# Таймеры ролей - сделайте их в алфавитном порядке или я вас порежу (не слушайте апстрим, я скопировал и вставил это, сделайте их не в алфавитном порядке :godo:)
 
-JobBlueshieldOfficer = Blueshield Officer
-JobNanotrasenRepresentative = Nanotrasen Representative
-JobNanotrasenCareerTrainer = Nanotrasen Career Trainer
-JobHecuOperative = HECU Operative
-JobNavyOfficer = Navy Officer
-JobNavyOfficerUndercover = Undercover Navy Officer
-JobNavyCaptain = Navy Captain
-JobDiplomat = Diplomat
-JobGovernmentMan = The G-Man
-JobConquest = Conquest
-JobInspector = Central Command Auditor
-JobMercenaryCaptain = Mercenary Captain
+JobBlueshieldOfficer = Офицер "Синий Щит"
+JobNanotrasenRepresentative = Представитель НаноТрейзен
+JobHecuOperative = Оперативник ХЕКУ
+JobNanotrasenCareerTrainer = Профессиональный тренер НаноТрейзен
+JobNavyOfficer = Офицер военно-морского флота
+JobNavyOfficerUndercover = Офицер флота под прикрытием
+JobNavyCaptain = Капитан флота
+JobDiplomat = Дипломат
+JobGovernmentMan = Джи-Мен
+JobConquest = Конквест
+JobInspector = Аудитор Центрального Командования

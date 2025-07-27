@@ -5,4 +5,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-gingerbread-hurt-by-water-popup = The water melts some of you away!
+gingerbread-hurt-by-water-popup = Вода растапливает вас!

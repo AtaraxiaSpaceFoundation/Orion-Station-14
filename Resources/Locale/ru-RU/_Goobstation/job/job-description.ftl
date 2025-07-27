@@ -7,26 +7,22 @@
 
 # Navy
 
-job-description-navy-officer-undercover = Complete your assigned tasks, Terminate the given targets. Good luck.
-job-description-navy-captain = Classified.
-job-description-navy-officer = Answer faxes and radio communications directed at Central Command. Perform investigations on the station and it's crew.
-job-description-diplomat = Represent Central Command, managing relationships with other factions aboard the station. Cleanup the issues the captain has likely caused.
-job-description-navy-special-operations-officer = Send, brief, and direct emergency response teams or other Nanotrasen forces. Release the nuclear codes, or don't.
+job-description-navy-officer-undercover = Выполните поставленные задачи, уничтожьте заданные цели. Удачи.
+job-description-navy-captain = Не разглашается.
+job-description-navy-officer = Отвечать на факсы и радиосообщения, адресованные центральному командованию. Расследуйте, что происходит на станции и с её экипажем.
+job-description-diplomat = Представляйте Центральное командование, регулируя отношения с другими фракциями на борту станции. Устраняйте проблемы, которые, вероятно, возникли по вине капитана.
+job-description-navy-special-operations-officer = Отправляйте, инструктируйте и направляйте группы быстрого реагирования или другие силы Нанотрейзен. Отправьте ядерные коды или не отправялйте.
 
 # Generic Nanotrasen
 
-job-description-nct = Teach the newbies how to perform their company assigned tasks properly, and stay out of trouble.
-
-# Syndicate
-
-job-description-highcommander = You are an elite, high-ranking official within the Spinward Syndicate. It doesn't matter which faction, you're important to them all.
+job-description-nct = Научите новичков правильно выполнять порученные им компанией задания и не попадать в неприятности.
+job-description-ntr = Сообщайте о приказах с ЦК, отправляйте отчёты и следите за работой глав станции.
 
 # Half Life
 
-job-description-governmentman = Well, well, isn't this just like old times.
-job-description-hecu = Fufill the orders of your supervisor, no matter the morales.
+job-description-gman = Ну что же, прямо как в старые добрые времена?
+job-description-hecu = Выполняйте приказы своего начальника, невзирая на мораль.
 
 # Misc
 
-job-description-conquest = Stand ready for my arrival, worm.
-job-description-mercenarycaptain = Order other mercs around. Act as muscle for the highest bidder. Just because it's NT now, doesn't mean it won't change later.
+job-description-conquest = Будь готов к моему прибытию, червь.

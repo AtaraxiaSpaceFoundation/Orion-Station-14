@@ -1,2 +1,2 @@
-reagent-name-black-blood = black blood
-reagent-desc-black-blood = This is definitely not ketchup nor BBQ sauce.
+reagent-name-black-blood = черная кровь
+reagent-desc-black-blood = Это определенно не кетчуп и не соус барбекю.

@@ -1,2 +1,2 @@
-﻿role-timer-blacklisted-hair = Your character must not have any of the following hair styles for you to select this:
-role-timer-whitelisted-hair = Your character must have any of the following hair styles for you to select this:
+role-timer-blacklisted-hair = Чтобы выбрать это, у вашего персонажа не должно быть ни одной из следующих причесок:
+role-timer-whitelisted-hair = Чтобы выбрать это, у вашего персонажа должна быть любая из следующих причесок:

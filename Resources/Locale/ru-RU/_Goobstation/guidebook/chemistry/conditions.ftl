@@ -6,31 +6,33 @@
 
 reagent-effect-condition-guidebook-stamina-damage-threshold =
     { $max ->
-        [2147483648] the target has at least {NATURALFIXED($min, 2)} stamina damage
-        *[other] { $min ->
-                    [0] the target has at most {NATURALFIXED($max, 2)} stamina damage
-                    *[other] the target has between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} stamina damage
-                 }
+        [2147483648] цель имеет как минимум { NATURALFIXED($min, 2) } урона выносливости
+       *[other]
+            { $min ->
+                [0] цель имеет не более { NATURALFIXED($max, 2) } урона выносливости
+               *[other] цель имеет между { NATURALFIXED($min, 2) } и { NATURALFIXED($max, 2) } урона выносливости
+            }
     }
-
 reagent-effect-condition-guidebook-unique-bloodstream-chem-threshold =
     { $max ->
-        [2147483648] { $min ->
-                        [1] there's at least {$min} reagent
-                        *[other] there's at least {$min} reagents
-                     }
-        [1] { $min ->
-               [0] there's at most {$max} reagent
-               *[other] there's between {$min} and {$max} reagents
+        [2147483648]
+            { $min ->
+                [1] есть по крайней мере { $min } реагента
+               *[other] есть по крайней мере { $min } реагентов
             }
-        *[other] { $min ->
-                    [-1] there's at most {$max} reagents
-                    *[other] there's between {$min} and {$max} reagents
-                 }
+        [1]
+            { $min ->
+                [0] есть не более { $max } реагента
+               *[other] есть от { $min } до { $max } реагентов
+            }
+       *[other]
+            { $min ->
+                [-1] есть не более { $max } реагента
+               *[other] есть от { $min } до { $max } реагентов
+            }
     }
-
 reagent-effect-condition-guidebook-typed-damage-threshold =
     { $inverse ->
-        [true] the target has at most
-        *[false] the target has at least
-    } { $changes } damage
+        [true] цель имеет не более
+       *[false] цель имеет как минимум
+    } { $changes } повреждений

@@ -1,6 +1,6 @@
-goob-generators-names-first-dataset-1 = Jeff
-goob-generators-names-first-dataset-2 = Bob
-goob-generators-names-first-dataset-3 = Lord
-goob-generators-names-first-dataset-4 = Almighty
-goob-generators-names-first-dataset-5 = The
-goob-generators-names-first-dataset-6 = John
+goob-generators-names-first-dataset-1 = Джефф
+goob-generators-names-first-dataset-2 = Боб
+goob-generators-names-first-dataset-3 = Господин
+goob-generators-names-first-dataset-4 = Всемогущий
+goob-generators-names-first-dataset-5 = То
+goob-generators-names-first-dataset-6 = Джон

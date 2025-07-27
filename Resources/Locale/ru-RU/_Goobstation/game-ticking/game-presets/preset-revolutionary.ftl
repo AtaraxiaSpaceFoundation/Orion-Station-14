@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 rev-eotr-gain =
-    With the last head of department gone, you are now surrounded by followers of the new unstable regime.
+    После того как главы станции погибли, вас окружили приверженцы нового нестабильного режима.
 
-    You are the Enemy of the Revolution!
-    Kill, exile, restrain or mindshield all revolutionaries to regain control over the station!
+    Вы - враг революции!
+    Убивайте, изгоняйте, сдерживайте или имплантируйте всех революционеров, чтобы вернуть контроль над станцией!

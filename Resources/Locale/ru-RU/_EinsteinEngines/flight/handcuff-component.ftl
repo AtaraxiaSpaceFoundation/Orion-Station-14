@@ -5,4 +5,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-handcuff-component-target-flying-error = You cannot reach {$targetName}'s hands!
+handcuff-component-target-flying-error = Вы не можете дотянться до рук { $targetName }!

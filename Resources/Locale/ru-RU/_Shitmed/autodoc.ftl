@@ -7,72 +7,68 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-autodoc-program-step-surgery = выполнить операцию на {$part}: {$name}
-autodoc-program-step-grab-item = взять предмет: '{$name}'
-autodoc-program-step-grab-any = взять любой: {$name}
-autodoc-item-organ = Орган
+autodoc-program-step-surgery = проводит операцию на { $part }: { $name }
+autodoc-program-step-grab-item = взять предмет: '{ $name }'
+autodoc-program-step-grab-any = взять любой: { $name }
+autodoc-item-organ = Огран
 autodoc-item-part = Часть тела
-autodoc-program-step-store-item = поместить предмет в хранилище предмет
-autodoc-program-step-set-label = установить метку: '{$label}'
-autodoc-program-step-wait = подождите {$length} секунд
-
+autodoc-program-step-store-item = сохранить предмет
+autodoc-program-step-set-label = установить метку: '{ $label }'
+autodoc-program-step-wait = ожидать { $length } секунд
 autodoc-program-completed = ПРОГРАММА ЗАВЕРШЕНА
-autodoc-error = ОШИБКА: {$error}
-autodoc-fatal-error = КРИТИЧЕСКАЯ ОШИБКА: {$error}
-autodoc-waiting = РЕЖИМ ОЖИДАНИЯ
-
-autodoc-error-missing-patient = ОТСУТСТВУЕТ ПАЦИЕНТА
+autodoc-error = ОШИБКА: { $error }
+autodoc-fatal-error = ФАТАЛЬНАЯ ОШИБКА: { $error }
+autodoc-waiting = ОЖИДАНИЕ ПРОГРАММЫ
+autodoc-error-missing-patient = НЕ ОБНАРУЖЕН ПАЦИЕНТ
 autodoc-error-body-part = ЧАСТЬ ТЕЛА НЕ ОБНАРУЖЕНА
 autodoc-error-surgery-impossible = ВЫБРАННАЯ ОПЕРАЦИЯ НЕВОЗМОЖНА
-autodoc-error-item-unavailable = ПРЕДМЕТ ОТСУТСТВУЕТ
+autodoc-error-item-unavailable = ТОВАР НЕДОСТУПЕН
 autodoc-error-surgery-failed = ОПЕРАЦИЯ НЕ УДАЛАСЬ
-autodoc-error-hand-full = МАНИПУЛЯТОР ЗАНЯТ
-autodoc-error-storage-full = ХРАНИЛИЩЕ ДЛЯ ПРЕДМЕТОВ ЗАПОЛНЕНО
-autodoc-error-patient-unsedated = ПАЦИЕНТУ НЕОБХОДИМО СЕДАТИВНОЕ СРЕДСТВО
-
+autodoc-error-hand-full = МАНИПУЛЯТОР ДЛЯ ПРЕДМЕТОВ ПОЛНЫЙ
+autodoc-error-storage-full = ПОЛНЫЕ ЛОТКИ
+autodoc-error-patient-unsedated = ПАЦИЕНТУ ТРЕБУЕТСЯ СЕДАЦИЯ
 # These intentionally have russian alongside them for ostranauts-like aesthetic.
 # If you are a russian fork, these don't need translating :)
 # Если вы являетесь русскоязычным форком, то они не нуждаются в переводе :)
 autodoc-title = АВТОДОК MK.XIV
-autodoc-create-program = НОВОЕ ПРОГРАММА
-autodoc-program-title = НАЗВАНИЕ ПРОГРАММЫ
-autodoc-program-title-placeholder = ПРОГРАММА {$number}
-autodoc-abort-program = ОТМЕНА ПРОГРАММЫ
-
-autodoc-view-program-title = ПРОСМОТР ПРОГРАММЫ
-autodoc-safety-enabled = РЕЖИМ НЕ НАВРЕДИ ВКЛЮЧЕН
-autodoc-safety-disabled = РЕЖИМ НЕ НАВРЕДИ ВЫКЛЮЧЕН
-autodoc-remove-program = УБРАТЬ ПРОГРАММУ
-autodoc-add-step = ДОБАВИТЬ ШАГ
-autodoc-remove-step = УДАЛИТЬ ШАГ
-autodoc-start-program = ЗАПУСТИТЬ ПРОГРАММУ
-
-autodoc-add-step-surgery = ВЫПОЛНИТЬ ОПЕРАЦИЮ
-autodoc-add-step-grab-item = ВЗЯТЬ ПРЕДМЕТ
-autodoc-add-step-grab-item-prompt = Название предмета
-autodoc-add-step-grab-item-placeholder = сердце дварфа
-autodoc-add-step-grab-organ = ВЗЯТЬ ОРГАН
-autodoc-add-step-grab-part = ВЗЯТЬ ЧАСТЬ ТЕЛА
-autodoc-add-step-store-item = ПОМЕСТЬ ПРЕДМЕТ В ХРАНИЛИЩЕ ПРЕДМЕТ
-autodoc-add-step-set-label = УСТАНОВИТЬ МЕТКУ
-autodoc-add-step-set-label-prompt = Метка
-autodoc-add-step-wait = ОЖИДАНИЕ
-autodoc-add-step-wait-prompt = время ожидания
-
+autodoc-create-program = НОВОЕ РАСПИСАНИЕ
+autodoc-program-title = ТИТУЛ РАСПИСАНИЯ
+autodoc-program-title-placeholder = Расписание { $number }
+autodoc-abort-program = АБОРТ РАСПИСАНИЯ
+autodoc-view-program-title = ПРОСМОТРИ
+autodoc-safety-enabled = БЕЗОПАСНОСТЬ
+autodoc-safety-disabled = БЕЗОПАСНОСТЬ ВЫКЛЮЧЕНИЕ
+autodoc-remove-program = УДАЛИТЕ
+autodoc-add-step = ДОБАВЬ ШАГ
+autodoc-remove-step = УДАЛИ ШАГ
+autodoc-start-program = НАЧНИ РАСПИСАНИЕ
+autodoc-add-step-surgery = РАЗЫГРАЙ ОПЕРАЦИЮ
+autodoc-add-step-grab-item = ВОЗЬМИ ОБЪЕКТ
+# Chinese text translates approximately to "import program")
+autodoc-import-program = ПРОГРАММА ИМПОРТА 进口计划
+# Chinese text translates approximately to "import program")
+autodoc-export-program = ЭКСПОРТНАЯ ПРОГРАММА 出口计划
+autodoc-add-step-grab-item-prompt = Имя предмета
+autodoc-add-step-grab-item-placeholder = сердце дворфа
+autodoc-add-step-grab-organ = ВОЗЬМИ ОРГАН
+autodoc-add-step-grab-part = ВОЗЬМИ ЧАСТЬ ТЕЛА
+autodoc-add-step-store-item = МАГАЗИН ОБЪЕКТ
+autodoc-add-step-set-label = НАНЕСИТЕ ЯРЛЫК
+autodoc-add-step-set-label-prompt = ЯРЛЫК
+autodoc-add-step-wait = ЖДАТЬ
+autodoc-add-step-wait-prompt = Секунды ожидания
 autodoc-body-part-Other = Другое
 autodoc-body-part-Torso = Торс
 autodoc-body-part-Chest = Грудь
 autodoc-body-part-Groin = Пах
 autodoc-body-part-Head = Голова
 autodoc-body-part-Arm = Рука
-autodoc-body-part-Hand = Ладонь
+autodoc-body-part-Hand = Рука
 autodoc-body-part-Leg = Нога
-autodoc-body-part-Foot = Пятка
+autodoc-body-part-Foot = Нога
 autodoc-body-part-Tail = Хвост
-
-autodoc-body-symmetry-ignored = Любое
+autodoc-body-symmetry-ignored = Любой
 autodoc-body-symmetry-None = Нет
-autodoc-body-symmetry-Left = Левое
-autodoc-body-symmetry-Right = Правое
-
+autodoc-body-symmetry-Left = Левый
+autodoc-body-symmetry-Right = Правый
 autodoc-submit = Отправить

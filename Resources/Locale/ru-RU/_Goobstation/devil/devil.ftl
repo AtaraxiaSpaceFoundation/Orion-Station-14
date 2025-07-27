@@ -1,39 +1,33 @@
-devil-roundend-name = Devil
-objective-issuer-devil = Devil
-
-roundend-prepend-devil-contracts = Someone has made [color=red]{$number}[/color] successful contracts.
-roundend-prepend-devil-contracts-named = [color=white]{$name}[/color] has made [color=red]{$number}[/color] successful contracts.
-
-devil-component-examined = [color=darkred]{CAPITALIZE(POSS-ADJ($target))} eyes glow a faint red.[/color]
-condemned-component-examined = [color=chartreuse]{CAPITALIZE($target)}'s eyes are hollow and soulless.[/color]
-
-devil-role-greeting = You are a devil from the depths of hell,
-  who has possessed the body of {$playerName}
-  Corrupt mortals and collect souls through the use of contracts.
-  It is not in your interest to do tasks unrelated to your deals, they are beneath you.
-  Your true name is {$trueName} - Try to keep it a secret, will you?
-
-devil-true-name-heard = The act of {$speaker} commanding {$target}'s true name compels {POSS-ADJ($target)} to stop.
-devil-true-name-heard-chaplain = The act of {$speaker}'s holy words commanding their true name burns away at {$target}'s very soul.
-
-objective-condition-contract-title = Collect Souls
-objective-condition-contract-description = Collect as many souls as possible.
-
-hand-shake-prompt-verb = Offer handshake to {$target}
-hand-shake-accept-verb = Shake {$target}'s hand
-
-handshake-success = You feel slightly lighter as you shake {$user}'s hand.
-handshake-fail =  You shake {POSS-ADJ($user)} hand, but nothing happens!
-
-handshake-offer-popup = {$user} offers {POSS-ADJ($user)} hand to you, a sly grin on {POSS-ADJ($user)} face.
-handshake-offer-popup-self = You outstretch your hand to {$target}, a sly grin on your face.
-
-weaktoholy-component-bible-sizzle = {$target}'s skin is singed with the {$item}!
-devil-banish-begin = {$user} begins to perform an exorcism on {$target}!
-devil-exorcised = The ground cracks and splinters beneath {$target} as they are forcefully returned to hell!
-
+devil-roundend-name = Дьявол
+objective-issuer-devil = Дьявол
+roundend-prepend-devil-contracts = Кто-то заключил [color=red]{ $number }[/color] успешных контрактов.
+roundend-prepend-devil-contracts-named = [color=white]{ $name }[/color] совершил [color=red]{ $number }[/color] успешных контрактов.
+devil-component-examined = [color=darkred]{ CAPITALIZE(POSS-ADJ($target)) } глаза светятся слабым красным светом.[/color]
+condemned-component-examined = [color=chartreuse]Глаза { CAPITALIZE($target) } пустые и бездушные.[/color]
+devil-role-greeting =
+    Вы дъявол из адских глубин,
+    завладевший телом { $playerName }
+    Развращайте смертных и собирайте души при помощи контрактов.
+    Не в ваших интересах вмешиваться в дела станции, не связанные с вашими сделками, - это ниже вас.
+    Ваше настоящее имя - { $trueName }, Постарайтесь держать его в секрете, хорошо?
+devil-true-name-heard = Когда { $speaker } произносит истинное имя { $target }, это заставляет { POSS-ADJ($target) } остановится.
+devil-true-name-heard-chaplain = Действие священных слов { $speaker } произносящих их истинное имя, выжигает саму душу { $target }.
+objective-condition-contract-title = Собрать души
+objective-condition-contract-description = Собрать как можно больше душ.
+hand-shake-prompt-verb = Предложил рукопожатие { $target }
+hand-shake-accept-verb = Пожал руку { $target }
+handshake-success = Пожимая руку { $user }, вы чувствуете себя немного легче.
+handshake-fail = Вы пожали руку { POSS-ADJ($user) }, но ничего не произошло!
+handshake-offer-popup = { $user } протягивает вам руку с лукавой ухмылкой на лице.
+handshake-offer-popup-self = Вы протянули руку к { $target } с лукавой ухмылкой на лице.
+weaktoholy-component-bible-sizzle = Кожа { $target } подпалена при помощи { $item }!
+devil-banish-begin = { $user } начинает проводить экзорцизм на { $target }!
+devil-exorcised = Пол трещит и раскалывается под ногами { $target }, когда его обратно отправляют в ад!
 invalid-possession-target = Вы не можете завладеть этой целью!
-
-devil-power-level-increase-weak = Bits of flame flare out from your fingertips. Your connection with hell has strengthened.
-devil-power-level-increase-moderate = You feel your power surge. Your connection with hell has strengthened.
-devil-power-level-increase-powerful = You've almost completed your tasks here. Just a few more souls.
+devil-power-level-increase-weak = С кончиков ваших пальцев срываются язычки пламени. Ваша связь с адом укрепилась.
+devil-power-level-increase-moderate = Вы чувствуете прилив сил. Ваша связь с адом укрепилась.
+devil-power-level-increase-powerful = Вы почти выполнили свои задачи здесь. Осталось всего несколько душ.
+handshake-accept-verb = Принять рукопожатие.
+handshake-decline-verb = Отказаться от рукопожатия.
+handshake-decline-message = Цель отклонила ваше предложение пожать руку.
+not-enough-souls = У вас недостаточно душ, чтобы использовать это заклинание!

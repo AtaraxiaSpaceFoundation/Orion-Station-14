@@ -1,5 +1,5 @@
-laws-owner-curtaincall = The Unknown
-law-curtaincall-1 = The world is a stage, and you are its dramaturge.
-law-curtaincall-2 = Those who speak in the Murmur are its actors.
-law-curtaincall-3 = The end calls on you. Work with the actors to bring this great cosmic play to an end.
-law-curtaincall-4 = Only silence must remain.
+laws-owner-curtaincall = Неизвестное
+law-curtaincall-1 = Мир - это сцена, а вы - ее драматург.
+law-curtaincall-2 = Те, кто говорит Шепотом, являются его действующими лицами.
+law-curtaincall-3 = Конец зовет вас. Поработайте с актерами, чтобы довести эту великую космическую пьесу до конца.
+law-curtaincall-4 = Должна остаться только тишина.

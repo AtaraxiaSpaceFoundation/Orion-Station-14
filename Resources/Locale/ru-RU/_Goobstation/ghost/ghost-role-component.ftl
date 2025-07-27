@@ -11,95 +11,72 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-ghost-role-information-nukie-reinforcement-name = Nuclear Operative
-ghost-role-information-nukie-reinforcement-description = The nuclear operatives need reinforcements. You, a reserve agent, will help them.
-ghost-role-information-nukie-reinforcement-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with the nuclear operatives who summoned you.
+ghost-role-information-nukie-reinforcement-name = Ядерный оперативник
+ghost-role-information-nukie-reinforcement-description = Ядерным оперативникам нужно подкрепление. Вы, резервный агент, поможете им.
+ghost-role-information-nukie-reinforcement-rules = Вы являетесь [color=red][bold]командным антагонистом[/bold][/color] с вызвавшими вас ядерными оперативниками.
+ghost-role-information-SyndiRoach-name = СиндиЛичинка
+ghost-role-information-SyndiRoach-description = Вы - верный дрессированный питомец ядерных оперативников с микробомбой. Служите своему хозяину до смерти!
+ghost-role-information-SyndiRoach-rules = Вы являетесь [color=red][bold]командным антагонистом[/bold][/color] с агентом, который вас вызвал.
+ghost-role-information-skibidi-toilet-name = Скибиди Туалет
+ghost-role-information-skibidi-toilet-description = Уничтожайте людей своими лазерами из глаз.
+ghost-role-information-skibidi-toilet-rules = Вы - [color=red][bold]Антагонист[/bold][/color], цель которого - лишить жизни как можно больше людей.
+ghost-role-information-Hecu-name = Оперативник HECU
+ghost-role-information-Hecu-description = Центральному командованию нужно кое-что сделать.
+ghost-role-information-Hecu-rules = Вы обязаны подчиняться приказам своего начальника, вы фактически являетесь его [color=#6495ed][bold]Агентом[/bold][/color].
+ghost-role-information-lootbug-name = Лут-Жук
+ghost-role-information-lootbug-description = Постарайтесь не быть зарезанным тайдерами.
+ghost-role-information-c4-name = С-4
+ghost-role-information-homunculus-name = гомункул
+ghost-role-information-homunculus-description = Повинуйся тому, кто создал тебя, и если его нигде не найти, делай, что хочешь.
+ghost-role-information-c4-description = Помогите пользователю с бомбометанием.
+ghost-role-information-derelict-cyborg-syndicate-name = Старый киборг Синдиката
+ghost-role-information-derelict-cyborg-syndicate-description = Вы потерялись во время нападения на станцию. После многих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-navy-captain-name = Капитан флота
+ghost-role-information-navy-captain-description = Засекречено.
+ghost-role-information-navy-captain-rules = Вы не связаны никакими правилами.
+ghost-role-information-special-operations-officer-name = Офицер специальных операций
+ghost-role-information-special-operations-officer-description = Присылайте, инструктируйте и направляйте отряды экстренного реагирования или другие силы Нанотрейзен. Отправляйте ядерные коды или не отправляйте.
+ghost-role-information-special-operations-officer-rules = Доставьте представителя Nanotrasen живым, остальные - просто залог. Приказы[color=#yellow][bold]капитана флота[/bold][/color] могут изменить это.
+ghost-role-information-navy-officer-name = Офицер флота
+ghost-role-information-navy-officer-description = Отвечайте на факсы и радиосообщения, адресованные Центральному Командованию. Проведите расследование об станции и экипаже.
+ghost-role-information-navy-officer-rules = Следуйте указаниям [color=#yellow][bold]капитана флота[/bold][/color]. В отсутствие такового делайте свои собственные дела.
+ghost-role-information-navy-officer-undercover-name = Офицер флота под прикрытием
+ghost-role-information-navy-officer-undercover-description = Завершите поставленные перед вами задачи и устраните поставленные цели. Удачи.
+ghost-role-information-navy-officer-undercover-rules = Следуйте указаниям [color=#yellow][bold]Капитана флота[/bold][/color], или другого должностного лица Центрального Командования.
+ghost-role-information-diplomat-name = Дипломат
+ghost-role-information-diplomat-description = Представляет собой интересы Центрального Командования, управляет отношениями с группировками на борту станции. Устраните проблемы, которые, вероятно, были вызваны капитаном.
+ghost-role-information-inspector-name = Аудитор Центрального Командования
+ghost-role-information-inspector-description = Проведите инспекцию имущества станции и ее экипажа. Возможно, вы погибнете в результате ужасного несчастного случая, и будет вызван эскадрон смерти.
+ghost-role-information-greytider-name = Грейтайдер
+ghost-role-information-greytider-description = Будь робастным.
+ghost-role-information-sentient-shark-name = Разумная акула
 
-ghost-role-information-SyndiRoach-name = SyndiRoach
-ghost-role-information-SyndiRoach-description = You're the faithful trained pet of nuclear operatives with a microbomb. Serve your master to the death!
-ghost-role-information-SyndiRoach-rules = You are a [color=red][bold]Team Antagonist[/bold][/color] with the agent who summoned you.
+# Халфлайф
 
-ghost-role-information-skibidi-toilet-name = Skibidi Toilet
-ghost-role-information-skibidi-toilet-description = Unalive people with your skibidi ohio rizz.
-ghost-role-information-skibidi-toilet-rules = You are a [color=red][bold]Antagonist[/bold][/color] with the objective of unaliving as many ohioans as you can.
+ghost-role-information-Gman-name = Джи-мен
+ghost-role-information-Gman-description = Правильный человек, оказавшийся в неподходящем месте, может изменить мир к лучшему.
+ghost-role-information-Gman-rules = Вы не подчиняетесь никаким правилам или границам. Смерть не может удержать вас, как и Нанотрейзен.
 
-ghost-role-information-Hecu-name = HECU Operative
-ghost-role-information-Hecu-description = Central Command needs something done.
-ghost-role-information-Hecu-rules = You are required to obey orders given by your superior, you are effectively their [color=#6495ed][bold]Familiar[/bold][/color].
+# Роли с шаттлов
 
-ghost-role-information-lootbug-name = LootBug
-ghost-role-information-lootbug-description = Try not to be butchered by tiders.
+ghost-role-information-alien-tourist-name = Турист-пришелец
+ghost-role-information-alien-tourist-description = Осматривайте станцию. Глорпайте на людей. Вас застрелит офицер, ищущий абдуктора.
 
-ghost-role-information-homunculus-name = homunculus
-ghost-role-information-homunculus-description = Obey the one who has created you, if there are nowhere to be found, do as you will.
+# хуй знает что это но пусть будет переведено
 
-ghost-role-information-huborg-name = Urist McBorg
-ghost-role-information-huborg-description = You are a disgusting abomination of a cyborg.
+ghost-role-information-conquest-name = Завоеватель
+ghost-role-information-conquest-description = Этой станции были отданы приказы, им было дано время. Им было предоставлено больше свободы действий, чем остальным.
+ghost-role-information-conquest-rules = Подготовьте эту станцию к прибытию империи Вилтрум.
 
-ghost-role-information-c4-name = Composition C-4
-ghost-role-information-c4-description = Assist your user with bombing things.
+# Токен роли
 
-ghost-role-information-derelict-cyborg-syndicate-name = Derelict Syndicate Cyborg
-ghost-role-information-derelict-cyborg-syndicate-description = You were lost during an assault on a station. After years of exposure to ion storms you find yourself near a space station.
-
-ghost-role-information-navy-captain-name = Navy Captain
-ghost-role-information-navy-captain-description = Classified.
-ghost-role-information-navy-captain-rules = You are beholden to no rules.
-
-ghost-role-information-special-operations-officer-name = Special Operations Officer
-ghost-role-information-special-operations-officer-description = Send, brief, and direct emergency response teams or other Nanotrasen forces. Release the nuclear codes, or don't.
-ghost-role-information-special-operations-officer-rules = Bring the Nanotrasen Representative in alive, the rest are just collateral. [color=#yellow][bold]Navy Captain[/bold][/color] orders may change this.
-
-ghost-role-information-navy-officer-name = Navy Officer
-ghost-role-information-navy-officer-description = Answer faxes and radio communications directed at Central Command. Perform investigations on the station and it's crew.
-ghost-role-information-navy-officer-rules = Follow the orders of the [color=#yellow][bold]Navy Captain[/bold][/color]. In the absence of one, make your own judgements.
-
-ghost-role-information-navy-officer-undercover-name = Undercover Navy officer
-ghost-role-information-navy-officer-undercover-description = Complete your assigned tasks and terminate the given targets. Good luck.
-ghost-role-information-navy-officer-undercover-rules = Follow the orders of the [color=#yellow][bold]Navy Captain[/bold][/color], or other Central Command official.
-
-ghost-role-information-diplomat-name = Diplomat
-ghost-role-information-diplomat-description = Represent Central Command, managing relationships with other factions aboard the station. Cleanup the issues the captain has likely caused.
-
-ghost-role-information-inspector-name = Central Command Auditor
-ghost-role-information-inspector-description = Perform inspections on the stations assets and its crew. Probably die in a horrific accident and get a deathsquad called.
-
-ghost-role-information-sentient-shark-name = Sentient Sharkminnow
-
-ghost-role-information-trevor-name = Trevor
-ghost-role-information-trevor-description = Securities trusted battle steed.
-
-# Half Life
-
-ghost-role-information-Gman-name = The G-Man
-ghost-role-information-Gman-description = The right man in the wrong place can make all the difference in the world.
-ghost-role-information-Gman-rules = You are beholden to no rules or boundaries. Death cannot hold you, and neither can Nanotrasen.
-
-# shuttle roles
-
-ghost-role-information-alien-tourist-name = Alien Tourist
-ghost-role-information-alien-tourist-description = Look around the station. Glorp at people. Get shot by a trigger-happy officer.
-
-# Conquest?
-
-ghost-role-information-conquest-name = Conquest
-ghost-role-information-conquest-description = This station was given orders, they were given time. They were given more leeway than most.
-ghost-role-information-conquest-rules = Prepare this station for the arrival of the Viltrum Empire.
-
-# Justice Persona Role
-justice-role-name = Justice Persona
-justice-role-description = Help the HOS carry out arrests by shouting phrases for them while they deliver Justice.
-
-# Token Roles
-
-ghost-role-information-description-token-generic = Don't take this role unless you redeemed the token!
-
-ghost-role-information-space-ninja-name-token = Space Ninja (Token)
-ghost-role-information-space-dragon-name-token = Space Dragon (Token)
-ghost-role-information-revenant-name-token = Revenant (Token)
-ghost-role-information-loneop-name-token = Lone Operative (Token)
-ghost-role-information-derelict-cyborg-syndicate-name-token = Derelict Assault Cyborg (Token)
-ghost-role-information-bingle-name-token = Bingle (Token)
-blob-carrier-role-name-token = Blob Carrier (Token)
-abductor-lone-ghost-role-name-token = Lone Abductor (Token)
-roles-wizard-name-token = Wizard (Token)
+ghost-role-information-description-token-generic = Не берите эту роль, если только вы не тот, кто использовал данный токен!
+ghost-role-information-space-ninja-name-token = Космический ниндзя (Токен)
+ghost-role-information-space-dragon-name-token = Космический дракон (Токен)
+ghost-role-information-revenant-name-token = Ревенант (Токен)
+ghost-role-information-loneop-name-token = Одинокий оперативник (Токен)
+ghost-role-information-derelict-cyborg-syndicate-name-token = Старый киборг Синдиката (Токен)
+ghost-role-information-bingle-name-token = Бингл (Токен)
+blob-carrier-role-name-token = Переносчик блоба (Токен)
+abductor-lone-ghost-role-name-token = Одинокий абдуктор (Токен)
+roles-wizard-name-token = Волшебник (Токен)

@@ -5,23 +5,17 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-reagent-name-triclor = triclor
-reagent-desc-triclor = Replicates itself upon contact with blood, and causes the metabolizer to constantly vomit, quickly emptying their stomachs and more. Has relatively low potency, and needs high doses to kill. Ineffective in trace amounts.
-
-reagent-name-cyanide = cyanide
-reagent-desc-cyanide = Easy to make toxin, and with deadly potential at average doses. However constant difficulties with breathing will quickly alert any potential victim.
-
-reagent-name-anacea = anacea
-reagent-desc-anacea = Quickly flushes most medicines from bloodstream, making it an invaluable ingredient of any poison mix. Strong anti-poison medicines can vastly slow down that process.
-
-reagent-name-pendetide = pendetide
-reagent-desc-pendetide = While mostly neutral, it amplifies any existing radiation damage. Additionally flushes medicines from bloodstream, making healing difficult.
-
-reagent-name-aluite = aluite
-reagent-desc-aluite = Non-reactive molecule that binds with other chemicals at low temperatures to transport them and boost their efficiency. Bursts when in bloodstream, with overdoses causing organ ruptures.
-
-reagent-name-sarin = sarin
-reagent-desc-sarin = A brutal neurotoxin that creates nasty caustic burns on contact with the skin. Poisonous when breathed in, and causes paralysis.
-
-reagent-name-nevcottapowder = nevcotta powder
-reagent-desc-nevcottapowder = A highly toxic powder created from grinding the bark of the nevcotta tree. Used in the creation of a classified chemical.
+reagent-name-triclor = триклор
+reagent-desc-triclor = Размножается при контакте с кровью и вызывает у того в ком это метаболизируется постоянную рвоту, быстрое опорожнение желудка и многое другое. Обладает относительно низкой силой и требует больших доз, чтобы убить. Неэффективен в малых количествах.
+reagent-name-cyanide = цианид
+reagent-desc-cyanide = Легкий в создании токсин, который в средних дозах может привести к летальному исходу. Однако постоянные трудности с дыханием быстро насторожат любую потенциальную жертву.
+reagent-name-anacea = анацея
+reagent-desc-anacea = Быстро выводит большинство лекарств из крови, что делает его бесценным ингридиентом любой смеси ядов. Сильные противоядовые препараты могут значительно замедлить этот процесс.
+reagent-name-pendetide = пендетид
+reagent-desc-pendetide = Хотя он в основном нейтрален, он усиливает любое существующее радиационное повреждение. Кроме того, он вымывает лекарства из крови, что затрудняет заживление.
+reagent-name-aluite = алюит
+reagent-desc-aluite = Нереактивная молекула, которая при низких температурах связывается с другими химическими веществами, транспортируя их и повышая эффективность. При попадании в кровь взрывается, а передозировка приводит к повреждению органов.
+reagent-name-sarin = зарин
+reagent-desc-sarin = Жестокий нейротоксин, вызывающий неприятные едкие ожоги при контакте с кожей. Ядовит при вдыхании и вызывает паралич.
+reagent-name-nevcottapowder = невкоттовый порошок
+reagent-desc-nevcottapowder = Высокотоксичный порошок, получаемый путем измельчения коры дерева невкотта. Используется при создании секретного химического вещества.

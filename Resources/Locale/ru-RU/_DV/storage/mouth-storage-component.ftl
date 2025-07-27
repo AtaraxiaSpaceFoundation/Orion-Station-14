@@ -6,4 +6,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-mouth-storage-examine-condition-occupied=[color=yellow]{CAPITALIZE(SUBJECT($entity))} has something in {POSS-ADJ($entity)} mouth.[/color]
+mouth-storage-examine-condition-occupied = [цвет=желтый]{ CAPITALIZE(SUBJECT($entity)) } есть что-то во рту { POSS-ADJ($entity) }[/цвет].

@@ -4,4 +4,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-ipc-overheat-popup = Микросхемы {$name} выключились из-за перегрева!
+ipc-overheat-popup = Электроника { $name } отключилась из-за перегрева!
