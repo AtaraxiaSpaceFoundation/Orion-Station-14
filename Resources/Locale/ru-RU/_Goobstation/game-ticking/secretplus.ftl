@@ -1,11 +1,11 @@
-secretplus-low-title = Secret+ Light
-secretplus-low-description = Relatively calm. But not always.
+secretplus-low-title = Секрет+ Лайт
+secretplus-low-description = Относительно спокойно. Но не всегда.
 
-secretplus-mid-title = Secret+ Medium
-secretplus-mid-description = Handle unknown but balanced threats.
+secretplus-mid-title = Секрет+ Медиум
+secretplus-mid-description = У вас не так много времени, чтобы расслабиться. Случиться может все, что угодно.
 
-secretplus-admeme-title = Secret+ Chaos
-secretplus-admeme-description = If it can happen, it will.
+secretplus-high-title = Секрет+ Хаос
+secretplus-high-description = Если это может случиться, то так и будет.
 
-survivalplus-title = Survival+
-survivalplus-description = Starts pretty calm. Ends up not quite.
+survivalplus-title = Выживание+
+survivalplus-description = Начинается довольно спокойно - заканчивается не совсем.

@@ -5,6 +5,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-popup-changeling-biomass-deficit-low = Кожа зудит, как будто чужая.
-popup-changeling-biomass-deficit-medium = Нужно найти... источник питания.
-popup-changeling-biomass-deficit-high = ЖРАТЬ... СРОЧНО!!
+popup-changeling-biomass-deficit-low = Ваша кожа чешется.
+popup-changeling-biomass-deficit-medium = Нужно найти источник пищи...
+popup-changeling-biomass-deficit-high = Нужно есть... СЕЙЧАС!!!

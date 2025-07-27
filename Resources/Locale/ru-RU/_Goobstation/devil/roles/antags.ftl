@@ -1,2 +1,2 @@
-roles-antag-devil-name = Devil
-roles-antag-devil-description = Use your wit and silver tongue to trick crew members into devilish deals.
+roles-antag-devil-name = Дьявол
+roles-antag-devil-description = Используйте свое остроумие и красноречие, чтобы обманом втянуть членов экипажа в дьявольские сделки.

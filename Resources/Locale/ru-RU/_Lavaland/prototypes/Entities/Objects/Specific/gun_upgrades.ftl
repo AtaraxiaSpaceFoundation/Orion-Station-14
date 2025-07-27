@@ -4,9 +4,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-upgradeable-gun-slot-name = Слот для улучшений {$value}
-upgradeable-gun-total-remaining-capacity = Оставшаяся вместительность: {$value}
-gun-upgrade-examine-text-light = Contains a [color=#bbf134][bold]light[/bold][/color] upgrade.
-gun-upgrade-examine-text-vampirism = Contains a [color=crimson][bold]vampirism[/bold][/color] upgrade.
-gun-upgrade-examine-text-pressure = Contains an illegal [color=orangered][bold]pressure[/bold][/color] upgrade.
-gun-upgrade-examine-text-capacity-cost = Requires {$value} capacity.
+upgradeable-gun-slot-name = Слот крепления: { $value }
+upgradeable-gun-total-remaining-capacity = Количество оставщихся мест: { $value }
+gun-upgrade-examine-text-light = Содержит улучшение [color=#bbf134][bold]света.[/bold][/color].
+gun-upgrade-examine-text-vampirism = Содержит улучшение [color=crimson][bold]вампиризма.[/bold][/color].
+gun-upgrade-examine-text-capacity-cost = Требуется { $value } место.

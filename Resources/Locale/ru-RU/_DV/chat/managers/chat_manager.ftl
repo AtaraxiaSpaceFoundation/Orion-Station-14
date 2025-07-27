@@ -9,26 +9,23 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-chat-speech-verb-name-vulpkanin = Вулпканин
+chat-speech-verb-name-vulpkanin = Вульпканин
 chat-speech-verb-vulpkanin-1 = рычит
-chat-speech-verb-vulpkanin-2 = лает
-chat-speech-verb-vulpkanin-3 = ворчит
-chat-speech-verb-vulpkanin-4 = тявкает
-
+chat-speech-verb-vulpkanin-2 = гавкает
+chat-speech-verb-vulpkanin-3 = рыкает
+chat-speech-verb-vulpkanin-4 = йап
 chat-speech-verb-name-felinid = Фелинид
-chat-speech-verb-felinid-1 = мяукает
-chat-speech-verb-felinid-2 = пищит
-chat-speech-verb-felinid-3 = мяукает
+chat-speech-verb-felinid-1 = мурчит
+chat-speech-verb-felinid-2 = мя
+chat-speech-verb-felinid-3 = мяу
 chat-speech-verb-felinid-4 = мурлычет
-
 chat-speech-verb-name-harpy = Гарпия
-chat-speech-verb-harpy-1 = чирикает
-chat-speech-verb-harpy-2 = щебечет
+chat-speech-verb-harpy-1 = щебечет
+chat-speech-verb-harpy-2 = чирикает
 chat-speech-verb-harpy-3 = каркает
-chat-speech-verb-harpy-4 = трель
-
+chat-speech-verb-harpy-4 = издаёт трель
 chat-speech-verb-name-rodentia = Грызун
-chat-speech-verb-rodentia-1 = пищит
-chat-speech-verb-rodentia-2 = пикает
-chat-speech-verb-rodentia-3 = болтает
+chat-speech-verb-rodentia-1 = скрипит
+chat-speech-verb-rodentia-2 = пищит
+chat-speech-verb-rodentia-3 = трещит
 chat-speech-verb-rodentia-4 = визжит

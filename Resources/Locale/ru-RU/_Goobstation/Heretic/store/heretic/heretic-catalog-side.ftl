@@ -23,112 +23,112 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-knowledge-path-side-knowledge-name = Ritual of Knowledge
+knowledge-path-side-knowledge-name = Ритуал знания
 knowledge-path-side-knowledge-desc =
-    Everything can be a key to unlocking the secrets behind the Gates. I must be wary and wise.
+    Вы изучаете особый ритуал, для которого требуется 4 различных предмета, от различных органов до свечей и электрошоковых дубинок.
+    Выполнение этого ритуала дает вам 4 очка знаний и сбрасывает необходимые предметы.
 
-    You learn a special, one-time-only ritual that requires 4 different items. Performing this ritual instantly grants you 5 knowledge points.
+## этап 3
 
-## stage 3
-knowledge-path-side-s3-armor-name = Armorer’s Ritual
+knowledge-path-side-s3-armor-name = Ритуал оружейника
 knowledge-path-side-s3-armor-desc =
-    The Rusted Hills welcomed the Blacksmith in their generosity. And the Blacksmith returned their generosity in kind.
-
-    Allows you to transmute a table and a gas mask to create Eldritch Armor.
-    Eldritch Armor provides great protection while also acting as a focus when hooded.
-
-knowledge-path-side-s3-flask-name = Priest's Ritual
+    Ржавые холмы приветствовали кузнеца в своей щедрости. И кузнец отплатил им добром за щедрость.
+    
+    Позволяет трансмутировать стол и противогаз, чтобы создать Жуткую броню.
+    Жуткая броня обеспечивает отличную защиту, а также действует как фокус, когда на вас надет капюшон.
+knowledge-path-side-s3-flask-name = Ритуал священника
 knowledge-path-side-s3-flask-desc =
-    This is an old recipe. The Owl whispered it to me. Created by the Priest - the Liquid that both was and is not.
-
-    Allows you to transmute a tank of water and a glass shard into a Flask of Eldritch Essence.
-    Eldritch water can be consumed for potent healing.
-
-knowledge-path-side-s3-ashen-eyes-name = Ashen Eyes
+    Это старый рецепт. Сова нашептала его мне. Создан Жрецом - Жидкостью, которая и была, и нет.
+    
+    Позволяет трансмутировать емкость с водой и осколок стекла во флягу с жуткой эссенцией.
+    Жуткую воду можно употреблять для мощного исцеления.
+knowledge-path-side-s3-ashen-eyes-name = Пепельные глаза
 knowledge-path-side-s3-ashen-eyes-desc =
-    Piercing eyes guided them through the mundane. Neither darkness nor terror could stop them.
-
-    Allows you to transmute a pair of eyes, a flare, and a glass shard into an Eldritch Medallion.
-    The Eldritch Medallion grants you thermal vision while worn, and also functions as a focus.
-
-knowledge-path-side-s3-void-cloak-name = Void Cloak
+    Пронзительные глаза вели их сквозь обыденность. Ни тьма, ни ужас не могли остановить их.
+    Позволяет трансмутировать пару глаз, сигнальную ракету и осколок стекла в Жуткий медальон.
+    При ношении медальон наделяет вас тепловым зрением, а также выполняет функцию фокуса.
+knowledge-path-side-s3-void-cloak-name = Плащ пустоты
 knowledge-path-side-s3-void-cloak-desc =
-    The Owl is the keeper of things that are not quite in practice, but in theory are. Many things are.
+    Сова - хранительница вещей, которые не совсем реализуются на практике, но в теории существуют. Многие вещи существуют.
+    
+    Позволяет превратить осколок стекла, одеяло и любую зимнюю куртку в плащ пустоты.
+    Когда капюшон опущен, плащ выполняет функцию фокуса и обеспечивает защиту от низкого давления, а когда капюшон поднят, плащ полностью невидим.
+    Он также обеспечивает неплохую защиту и имеет карманы, в которые можно поместить один из ваших клинков, различные ритуальные компоненты (например, органы) и небольшие еретические безделушки.
 
-    Allows you to transmute a glass shard, a bedsheet, and any winter coat to create a Void Cloak.
-    While the hood is down, the cloak functions as a focus and provides low pressure protection, and while the hood is up, the cloak is completely invisible.
-    It also provide decent armor and has pockets which can hold one of your blades, various ritual components (such as organs), and small heretical trinkets.
+## стадия 7
 
-knowledge-path-side-s3-ice-spear-name = Mysteries of Creation
+knowledge-path-side-s3-ice-spear-name = Тайны сотворения
 knowledge-path-side-s3-ice-spear-desc =
-    Artifacts linked to the Winter Dawn exude unnatural stillness. Time slows around them. Fires choke. Thoughts become brittle. Proximity breeds hallucinations of endless white fields, a sky with no sun, and a voice that speaks only in cracking ice.
-
-    Grants you Mysteries of Creation, a spell that allows you to summon the Glacier Spear at will. This magical spear chills victims upon hit, but more importantly, it shatters upon throwing, dealing a significant amount of damage and temporarily freezing the target into an ice cube. If the spear is destroyed, activating this ability will create a new one, otherwise it will summon the existing spear into your hand.
-
-## stage 6
-knowledge-path-side-s6-rustwalker-name = Rusted Ritual
+    Артефакты, связанные с зимним рассветом, источают неестественную тишину. Время вокруг них замедляется. Огонь гаснет. Мысли становятся хрупкими. Близость порождает галлюцинации о бесконечных белых полях, небе без солнца и голосе, который звучит только сквозь треск льда.
+    
+    Дает вам "Тайны сотворения" - заклинание, позволяющее по желанию вызывать Ледяное копье. При попадании в жертву это волшебное копье вызывает озноб, но, что более важно, при броске оно разбивается вдребезги, нанося значительный урон и временно превращая цель в кубик льда. Если копье уничтожено, активация этой способности создаст новое, в противном случае оно призовет существующее копье в вашу руку.
+knowledge-path-side-s7-uncuff-name = Волна отчаяния
+knowledge-path-side-s6-rustwalker-name = Ржавый ритуал
 knowledge-path-side-s6-rustwalker-desc =
-    I combined my knowledge of creation with my desire for corruption. The Marshal knew my name, and the Rusted Hills echoed out.
-
-    Allows you to transmute a pool of vomit, 15 cable coil, and 10 sheets of iron into a Rust Walker.
-    Rust Walkers excel at spreading rust and are moderately strong in combat.
-
-knowledge-path-side-s6-knife-name = Carving Knife
+    Я объединил свои знания о созидании со своим стремлением к разрушению. Маршал знал мое имя, и Ржавые холмы отозвались эхом.
+    
+    Позволяет превратить лужу рвоты, 15 катушек кабеля и 10 листов железа в Ржавого ходока.
+    Ржавые ходоки превосходно разносят ржавчину и умеренно сильны в бою.
+knowledge-path-side-s6-knife-name = Разделочный нож
 knowledge-path-side-s6-knife-desc =
-    Etched, carved... eternal. There is power hidden in everything. I can unveil it! I can carve the monolith to reveal the chains!
-
-    Allows you to transmute a knife, a shard of glass, and a piece of paper to create a Carving Knife.
-    The Carving Knife allows you to etch difficult to see traps that trigger on heathens who walk overhead.
-    Also makes for a handy throwing weapon.
-
-## stage 7
-knowledge-path-side-s7-uncuff-name = Wave of Desperation
+    Выгравированный, вырезанный на камне... вечный. Во всем скрыта сила. Я могу раскрыть ее! Я могу вырезать монолит, чтобы показать цепи!
+    
+    Позволяет преобразовать нож, осколок стекла и лист бумаги в разделочный нож.
+    Разделочный нож позволяет создавать невидимые ловушки, которые срабатывают на язычников, проходящих над головой.
+    Также это удобное метательное оружие.
 knowledge-path-side-s7-uncuff-desc =
-    My shackles undone in dark fury, their feeble bindings crumble before my power.
-
-    Grants you Wave Of Desperation, a spell which can only be cast while restrained.
-    It removes your restraints, repels and knocks down adjacent people, and applies the Mansus Grasp to everything nearby.
-    However, you will fall unconscious a short time after casting this spell.
-
-knowledge-path-side-s7-siphon-name = Blood Siphon
+    В темной ярости я разрываю оковы, и их слабые узы рушатся перед моей силой.
+    
+    Дарует вам Волну отчаяния - заклинание, которое можно произнести, только будучи сдержанным.
+    Оно снимает с вас ограничения, отталкивает и сбивает с ног находящихся рядом людей, а также накладывает «Хватку Мансуса» на все, что находится поблизости.
+    Однако через некоторое время после произнесения этого заклинания вы потеряете сознание.
+knowledge-path-side-s7-siphon-name = Сифон крови
 knowledge-path-side-s7-siphon-desc =
-    No matter the man, we bleed all the same. That's what the Marshal told me.
-
-    Grants Blood Siphon, a ranged spell that steals a bit of life from your target, healing your bruises and restoring blood.
-    Additionally, you have a chance of transferring wounds you are experiencing to the target.
-
-knowledge-path-side-s7-crucible-name = Mawed Crucible
+    Независимо от человека, кровь у нас течет одинаково. Так сказал мне маршал.
+    
+    Дарует «Сифон крови» - заклинание дальнего боя, которое отнимает у цели немного жизни, заживляя синяки и восстанавливая кровь.
+    Кроме того, у вас есть шанс перенести полученные раны на цель.
+knowledge-path-side-s7-knife-name = Нож для резьбы
+knowledge-path-side-s7-knife-desc =
+    Выгравированный, вырезанный... вечный. Во всем скрыта сила. Я могу открыть ее! Я могу вырезать монолит, чтобы открыть цепи!
+    
+    Трансмутируйте нож, осколок стекла и лист бумаги, чтобы создать Нож для резьбы.
+    Нож позволяет создать на полу до 3 рисунков, которые оказывают различные эффекты на неверующих, проходящих по ним.
+knowledge-path-side-s7-crucible-name = Размозженный тигель
 knowledge-path-side-s7-crucible-desc =
-    This is pure agony. I wasn't able to summon the figure of the Aristocrat,
-    but with the Priest's attention I stumbled upon a different recipe...
-
-    Allows you to transmute a portable water tank and a table to create a Mawed Crucible.
-    The Mawed Crucible can brew powerful potions for combat and utility, but must be fed bodyparts and organs between uses.
-
+    Это чистая агония. Я не смог призвать фигуру Аристократа,
+    но благодаря вниманию Жреца я наткнулся на другой рецепт...
+    
+    Позволяет трансмутировать переносную емкость для воды и стол, чтобы создать тигель.
+    В нем можно варить мощные боевые и полезные зелья, но между использованиями его нужно кормить частями тела и органами.
 # stage 8
-knowledge-path-side-s8-cleave-name = Blood Cleave
+knowledge-path-side-s8-cleave-name = Кровяной раскол
 knowledge-path-side-s8-cleave-desc =
-    At first I didn't understand these instruments of war, but the Priest told me to use them regardless. Soon, he said, I would know them well.
-
-    Grants you Cleave, an area-of-effect targeted spell that causes heavy bleeding and blood loss to anyone afflicted.
-
-knowledge-path-side-s8-rust-charge-name = Rust Charge
+    Сначала я не разобрался в этих боевых инструментах, но Священник велел мне использовать их, несмотря ни на что. Вскоре, по его словам, я буду хорошо их знать.
+    
+    Дарует вам Рассечение - точечное заклинание, которое вызывает сильное кровотечение и кровопотерю у любого пострадавшего.
+knowledge-path-side-s8-rust-charge-name = Заряд ржавчины
 knowledge-path-side-s8-rust-charge-desc =
-    The hills sparkled now, as I neared them my mind began to wander. I quickly regained my resolve and pushed forward, this last leg would be the most treacherous.
+    Холмы засверкали, и когда я приблизился к ним, мои мысли начали блуждать. Я быстро собрался с духом и двинулся вперед, этот последний этап был самым опасным.
+    
+    Дает вам заряд ржавчины, целенаправленное действие, которое можно применить только на ржавой плитке. Он заряжает вас вперед, уничтожая любые ржавые предметы, с которыми вы соприкасаетесь, а также наносит большой урон другим и ржавеет вокруг вас во время заряда.
 
-    Grants you Rust Charge, a targeted action that can only be cast on a rusted tile. It charges you forward, destroying any rusted objects you come into contact with, it will also deal high damage to others and rust around you during the charge.
+## этап 9
 
-## stage 9
-knowledge-path-side-s9-coin-name = Eldritch Coin
+knowledge-path-side-s9-coin-name = Жуткая монета
 knowledge-path-side-s9-coin-desc =
-    The Mansus is a place of all sorts of sins. But greed held a special role.
-
-    Transmute a sheet of plasma, a diamond and eyes into an Eldritch Coin.
-    The coin will open nearby airlocks if it lands on heads and bolt nearby airlocks if it lands on tails.
-    Using it on an airlock consumes the coin and permanently opens the airlock.
-    Attempting to flip or use the coin as a non-heretic will deal brute and/or burn damage, depending on the side it lands on.
-
-knowledge-path-side-s9-ashman-name = Ashen Ritual
+    Мансус - место всевозможных грехов. Но жадности отводилась особая роль.
+    
+    Преобразуйте лист плазмы, алмаз и глаза в Жуткую монету.
+    Монета откроет близлежащие шлюзы, если приземлится на голову, и заблокирует близлежащие шлюзы, если приземлится на решку.
+    При использовании монеты на шлюзе она расходуется и навсегда открывает шлюз.
+    Попытка подбросить монету или использовать ее в качестве нееретика нанесет грубый урон и/или урон от ожогов, в зависимости от того, на какую сторону она упадет.
+knowledge-path-side-s9-ashman-name = Пепельный ритуал
 knowledge-path-side-s9-ashman-desc =
-    Transmute a pile of ash, a brain and a book to summon an Ashman.
-    Ashmen can jaunt, cause bleeding wounds, and can release large waves of fire.
+    Трансмутируйте кучу пепла, мозг и книгу, чтобы призвать пепельного человека.
+    Пепельные люди могут прыгать, наносить кровоточащие раны и выпускать большие волны огня.
+knowledge-path-side-s9-cleave-name = Очищение крови
+knowledge-path-side-s9-cleave-desc =
+    Поначалу я не понимал этих орудий войны, но жрец велел мне использовать их, несмотря ни на что. Вскоре, сказал он, я буду хорошо их знать.
+    
+    Дает вам Рассечение, заклинание направленного действия, вызывающее сильное кровотечение и потерю крови у всех, кто пострадал.

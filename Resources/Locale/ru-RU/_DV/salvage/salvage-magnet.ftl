@@ -4,6 +4,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-salvage-map-wreck-size-unknown = [color=purple]Unidentified[/color]
+salvage-map-wreck-size-unknown = [color=purple]Неизвестно[/color]
 
-salvage-magnet-mining-points-cost = Cost: {$points} Mining Points
+salvage-magnet-mining-points-cost = Стоимость: { $points } шахтёрских очков

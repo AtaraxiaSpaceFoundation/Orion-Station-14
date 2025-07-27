@@ -6,4 +6,4 @@
 
 fibers-modular = модульные
 fibers-classified = классификационные
-fibers-pitch-black = кромешная тьма
+fibers-pitch-black = кромешно-чёрные

@@ -1,2 +1,2 @@
-admin-verb-text-make-devil = Сотворить дьявола
-admin-verb-make-devil = Сделайте цель дьяволом
+admin-verb-text-make-devil = Сделать дьяволом
+admin-verb-make-devil = Превращает цель в дьявола

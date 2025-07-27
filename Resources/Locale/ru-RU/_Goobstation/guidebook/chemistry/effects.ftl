@@ -6,16 +6,17 @@
 
 reagent-effect-guidebook-deal-stamina-damage =
     { $chance ->
-        [1] { $deltasign ->
-                [1] Deals
-                *[-1] Heals
-            }
-        *[other]
+        [1]
             { $deltasign ->
-                [1] deal
-                *[-1] heal
+                [1] Сделки
+               *[-1] Исцеляет
+            }
+       *[other]
+            { $deltasign ->
+                [1] сделка
+               *[-1] исцеление
             }
     } { $amount } { $immediate ->
-                    [true] immediate
-                    *[false] overtime
-                  } stamina damage
+        [true] немедленно
+       *[false] сверхурочные
+    } урон выносливости

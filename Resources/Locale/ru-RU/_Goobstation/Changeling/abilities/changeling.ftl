@@ -11,80 +11,58 @@
 # Abilities
 changeling-biomass-deficit = Недостаточно биомассы!
 changeling-chemicals-deficit = Недостаточно химикатов!
-changeling-action-fail-lesserform = Невозможно использовать в урезанной форме!
-
-changeling-action-fail-absorbed = Нужно поглотить {$number} больше организмов, чтобы использовать его!
-changeling-absorb-start = {CAPITALIZE(THE($user))} начинает поглощать ДНК {CAPITALIZE(THE($target))}!
-changeling-absorb-fail-incapacitated = Мы не можем поглотить их, пока они не будут выведены из строя.
-changeling-absorb-fail-absorbed = Они уже были поглощены.
-changeling-absorb-fail-unabsorbable = Цель не поддается рассасыванию.
-changeling-absorb-end-self = Организм был поглощен. Мы эволюционируем.
-changeling-absorb-end-self-ling = Был поглощен еще один подменыш. Наше тело наполняется огромной энергией, поскольку наши клетки быстро развиваются.
-changeling-absorb-end-self-ling-incompatible = Еще один подменыш был поглощен. Однако их нынешняя форма не позволила нам извлечь последовательность их ДНК.
-changeling-absorb-end-partial = Организм был поглощен. Мы не смогли извлечь ничего, что могло бы помочь нашей эволюции.
-changeling-absorb-onexamine = [color=red]Тело кажется пустым.[/color]
-changeling-absorb-fail-nograb = Мы хватаемся недостаточно сильно.
-changeling-absorb-fail-onfire = Цель в огне, потушите их первыми!
-
-
-changeling-absorbbiomatter-start = {THE($user)} начинает поглощать пищу!
-changeling-absorbbiomatter-bad-food = Эта пища не усваивается организмом.
-
-
-changeling-transform-cycle = Переключился на ДНК {$target}.
-changeling-transform-cycle-empty = У нас нет никаких штаммов ДНК!
-changeling-transform-others = Тело {CAPITALIZE(THE($user))} изгибается и принимает форму другого существа!
-changeling-transform-fail-self = Мы не можем трансформироваться в нынешнюю форму!
-changeling-transform-fail-choose = Мы не выбирали форму для перевоплощения!
-changeling-transform-fail-absorbed = Мы не можем преобразить оболочку!
-changeling-transform-finish = Теперь вы {$target}.
-
-changeling-sting = Мы незаметно жалим {CAPITALIZE(THE($target))}
-changeling-sting-fail-self = Мы пытались ужалить {CAPITALIZE(THE($target))}, но что-то помешало нам это сделать!
-changeling-sting-fail-ling = Кто-то только что пытался незаметно ужалить нас!
-changeling-sting-fail-fakeweapon = Они не смогут противостоять искусственному оружию.
-changeling-sting-fail-hollow = Мы не в состоянии ужалить пустой организм.
-
-
-changeling-dartgun-no-stings = У нас нет разработанных реагентных укусов!
-
+changeling-action-fail-lesserform = Невозможно использовать его в меньшей форме!
+changeling-action-fail-absorbed = Нужно поглотить на { $number } больше органики, чтобы использовать ее!
+changeling-absorb-start = { CAPITALIZE(THE($user)) } начинает поглощать ДНК { CAPITALIZE(THE($target)) }!
+changeling-absorb-fail-incapacitated = Вы не сможете поглотить это существо, пока оно не потеряет сознание.
+changeling-absorb-fail-absorbed = Вы уже поглотили его.
+changeling-absorb-fail-unabsorbable = Цель не может быть поглощена.
+changeling-absorb-end-self = Еще одно поглощение. Вы эволюционируете.
+changeling-absorb-end-self-ling = Поглощен еще один генокрад. Вы развиваетесь быстрее.
+changeling-absorb-onexamine = [color=red]Тело кажется полым[/color].
+changeling-absorb-fail-nograb = Вы не схватили достаточно сильно.
+changeling-absorb-fail-onfire = Цель горит, потушите ее cперва!
+changeling-absorbbiomatter-start = { THE($user) } начинает поглощать пищу!
+changeling-absorbbiomatter-bad-food = Эта пища не усваивается.
+changeling-transform-cycle = Выбран ДНК { $target }.
+changeling-transform-cycle-empty = У вас нет ни одного ДНК!
+changeling-transform-others = { CAPITALIZE(THE($user)) } Тело превращается и принимает форму другого существа!
+changeling-transform-fail-self = Вы не можете трансформироваться в свою текущую форму!
+changeling-transform-fail-choose = Вы не выбрали форму для превращения!
+changeling-transform-fail-absorbed = Вы не можете превратиться в пустую оболочку!
+changeling-transform-finish = Теперь вы { $target }.
+changeling-sting-fail-self = Вы пытались ужалить { CAPITALIZE(THE($target)) }, но что-то помешало вам это сделать!
+changeling-sting-fail-ling = Кто-то только что пытался скрытно ужалить вас!
+changeling-sting = Вы скрытно ужалили { CAPITALIZE(THE($target)) }
+changeling-sting-fail-simplemob = Вы не можете ужалить низшее существо!
+changeling-sting-extract-fail = Невозможно извлечь ДНК
+changeling-sting-extract-max = Необходимо предварительно избавиться от сохраненной ДНК
+changeling-dartgun-no-stings = У вас не развито ни одно жало реагента!
 changeling-stasis-enter = Мы входим в регенеративный стазис...
-changeling-stasis-enter-damaged = Мы переходим в регенеративный стазис. Наши полученные травмы будет трудно залечить...
-changeling-stasis-enter-catastrophic = Мы переходим в состояние регенеративного застоя. Для заживления наших серьезных травм потребуется очень много времени...
-changeling-stasis-enter-fail = Не могу войти в стазис!
-changeling-stasis-exit = Мы выходим из регенеративного застоя, освобождаемся от ран и увечий...
+changeling-stasis-enter-damaged = Мы входим в регенеративный стазис. Полученные травмы будет сложно залечить...
+changeling-stasis-enter-catastrophic = Мы входим в регенеративный стазис. На заживление наших катастрофических повреждений уйдет огромное количество времени...
+changeling-stasis-enter-fail = Не можем войти в стазис!
+changeling-stasis-exit = Мы выходим из регенеративного стазиса, очищаемся от ран и повреждений...
 changeling-stasis-exit-fail = Мы не в стазисе!
-changeling-stasis-exit-fail-dead = Мы чувствуем... смерть. Все кончено.
-changeling-stasis-exit-fail-time = Наш организм все еще восстанавливается!
-changeling-stasis-exit-defib = Нас пронзает шок. Наш стазис прерван!
-
-changeling-fail-hands = Need to drop something beforehand
-
-changeling-muscles-start = Наше тело чувствует себя намного легче
-changeling-muscles-end = Наши ноги становятся тяжелее
-
-changeling-equip-armor-fail = Необходимо заранее избавиться от имеющейся верхней одежды
-
-changeling-inject = Мы делаем инъекции сами себе
+changeling-stasis-exit-fail-dead = Мы чувствуем себя... пустыми. Все кончено.
+changeling-stasis-exit-fail-time = Наше тело все еще восстанавливается!
+changeling-stasis-exit-defib = Нас охватывает шок. Наш стазис был прерван!
+changeling-fail-hands = Нужно освободить руки.
+changeling-muscles-start = Ваше тело стало намного легче.
+changeling-muscles-end = Ваши ноги стали тяжелее.
+changeling-equip-armor-fail = Необходимо предварительно избавиться от имеющейся верхней одежды
+changeling-inject = Вы делаете себе инъекцию.
 changeling-inject-fail = Не удалось сделать себе инъекцию!
-
-changeling-passive-activate = Активированная способность
-changeling-passive-activate-fail = Не удалось активировать эту способность
-changeling-passive-active = Уже активен!
-
-changeling-fleshmend = Мы начинаем заживлять наши раны и восстанавливать омертвевшие клетки.
-changeling-panacea = Мы начинаем перестраивать нашу клеточную структуру и иммунную систему.
-
-changeling-chameleon-start = Мы адаптируем нашу кожу к окружающей среде
-changeling-chameleon-end = Наша кожа теряет свою прозрачность
-
-changeling-voidadapt-start = Мы напрягаемся по мере того, как наши клетки и органы приспосабливаются к космической пустоте, чтобы быть более устойчивыми к ней.
-changeling-voidadapt-end = Мы расслабляемся по мере того, как теряем способность адаптироваться к космической пустоте.
-
-changeling-hivemind-start = Мы настраиваем наши мозговые волны в соответствии с частотой ульевого разума
-
-changeling-lastresort-activate = ТЕКУЩЕЕ ТЕЛО БУДЕТ ПОТЕРЯНО! Используйте его еще раз для подтверждения.
-
-changeling-onfire = Наши клетки корчатся в агонии, не в состоянии выполнить свое действие!
-
-changeling-rejuvenate = Странная энергия пульсирует в нашем теле, омолаживая наши клетки и восстанавливая наши химические вещества!
+changeling-passive-activate = Пассивная способность активирована.
+changeling-passive-activate-fail = Не удалось активировать пассивную способность.
+changeling-passive-active = Уже активно!
+changeling-fleshmend = Ваше тело скручивается, затягивая раны и регенерируя мертвые клетки.
+changeling-panacea = Вы мутируете и изменяете свою ДНК для лучшей регенерации клеток.
+changeling-chameleon-start = Вы адаптируете свою кожу к условиям окружающей среды.
+changeling-chameleon-end = Ваша кожа теряет прозрачность.
+changeling-voidadapt-start = Вы напрягаетесь по мере того, как ваши клетки и органы приспосабливаются к космической пустоте, чтобы быть более устойчивыми к ней.
+changeling-voidadapt-end = Вы расслабляетесь по мере того, как теряете способность адаптироваться к космическому пространству.
+changeling-hivemind-start = Вы настраиваете свои мозговые волны на частоту гибридного разума.
+changeling-onfire = Ваши клетки корчатся в агонии, не в состоянии выполнить действие!
+changeling-lastresort-activate = ТЕКУЩЕЕ ТЕЛО БУДЕТ ПОТЕРЯНО! Используй еще раз, чтобы подтвердить.
+changeling-rejuvenate = Странная энергия пульсирует в нашем теле, омолаживая клетки и восстанавливая химические вещества!

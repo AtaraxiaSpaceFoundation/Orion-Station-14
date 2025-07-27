@@ -5,4 +5,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-itemswitch-component-on-examine-detailed-message = Current mode: {$state}
+itemswitch-component-on-examine-detailed-message = Текущий режим: { $state }

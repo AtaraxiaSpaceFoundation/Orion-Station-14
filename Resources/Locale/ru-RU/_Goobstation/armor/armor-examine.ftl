@@ -6,24 +6,21 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-armor-examine-stamina = - [color=cyan]Stamina[/color] damage reduced by [color=lightblue]{$num}%[/color].
-
-armor-examine-cancel-delayed-knockdown = - [color=green]Completely cancels[/color] stun baton delayed knockdown.
-
+armor-examine-stamina = - [color=cyan]Выносливость[/color] урон снижен на [color=lightblue]{ $num }%[/color].
+armor-examine-cancel-delayed-knockdown = - [color=green]Полностью отменяет[/color] оглушение дубинкой с задержкой нокдауна.
 armor-examine-modify-delayed-knockdown-delay =
     - { $deltasign ->
-          [1] [color=green]Increases[/color]
-          *[-1] [color=red]Decreases[/color]
-      } stun baton delayed knockdown delay by [color=lightblue]{NATURALFIXED($amount, 2)} { $amount ->
-          [1] second
-          *[other] seconds
-      }[/color].
-
+        [1] [color=green]Увеличивает[/color]
+       *[-1] [color=red]Уменьшает[/color]
+    } задержку нокдауна на [color=lightblue]{ NATURALFIXED($amount, 2) } { $amount ->
+        [1] секунду
+       *[other] секунд
+    }[/color].
 armor-examine-modify-delayed-knockdown-time =
     - { $deltasign ->
-          [1] [color=red]Increases[/color]
-          *[-1] [color=green]Decreases[/color]
-      } stun baton delayed knockdown time by [color=lightblue]{NATURALFIXED($amount, 2)} { $amount ->
-          [1] second
-          *[other] seconds
-      }[/color].
+        [1] [color=red]Увеличивает[/color]
+       *[-1] [color=green]Уменьшает[/color]
+    } оглушение дубинкой на [color=lightblue]{ NATURALFIXED($amount, 2) } { $amount ->
+        [1] секунду
+       *[other] секунд
+    }[/color].

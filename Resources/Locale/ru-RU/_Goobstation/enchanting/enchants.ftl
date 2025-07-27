@@ -1,4 +1,4 @@
-enchant-examine = [color=lightblue]{$enchant}[/color]
+enchant-examine = [color=lightblue]{ $enchant }[/color]
 enchant-examine-level = [color=lightblue]{$enchant} {$level ->
     [1] I
     [2] II

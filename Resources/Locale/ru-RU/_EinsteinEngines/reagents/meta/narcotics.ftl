@@ -1,2 +1,2 @@
-reagent-name-morphine = morphine
-reagent-desc-morphine = A potent analgesic that allows a patient to painlessly undergo surgery even while awake. Causes drowsiness. Overdose can cause difficulty breathing.
+reagent-name-morphine = морфин
+reagent-desc-morphine = Мощный анальгетик, который позволяет пациенту безболезненно перенести операцию даже в бодрствующем состоянии. Вызывает сонливость. Передозировка может вызвать затруднение дыхания.

@@ -6,35 +6,31 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# Names
-chat-emote-name-fart = Пердит
-chat-emote-name-fart-inhale = Делает вдох, испуская пердеж
-chat-emote-name-fart-super = Супер-пердеж
-chat-emote-name-flap = хлопать крыльями
+# Name
+chat-emote-name-fart = Пукать
+chat-emote-name-fart-inhale = Вдыхонуть пук
+chat-emote-name-fart-super = Пердеть
+chat-emote-name-flap = Махать крыльями
 chat-emote-name-trill = Трель
-chat-emote-name-warble = Варбл
-chat-emote-name-wurble = Вурбл
+chat-emote-name-warble = Поскрипеть
+chat-emote-name-wurble = Урчать
 chat-emote-name-mars = Мар
-
 # Message
-chat-emote-msg-fart = пердит.
-chat-emote-msg-fart-inhale = делает вдох, испуская пердеж.
-chat-emote-msg-fart-super = супер-пердит.
-chat-emote-msg-flap = хлопает {POSS-ADJ($entity)} крыльями.
-chat-emote-msg-trill = треллит!
-chat-emote-msg-warble = варбляет!
-chat-emote-msg-wurble = вурбляет!
-chat-emote-msg-mars = мар.
-
-
+chat-emote-msg-fart = пукает.
+chat-emote-msg-fart-inhale = вдыхает пердеж.
+chat-emote-msg-fart-super = пердит.
+chat-emote-msg-flap = машет { POSS-ADJ($entity) } крыльями.
+chat-emote-msg-trill = Издаёт трель!
+chat-emote-msg-warble = Поскрипывает!
+chat-emote-msg-wurble = Урчит!
+chat-emote-msg-mars = Мар!
 # Misc
-emote-fart-not-loaded = У тебя нет заряженного супер-пердежа!
-emote-fart-already-loaded = У тебя уже есть заряженный пердеж!
-emote-fart-ass-off = У тебя нет задницы, чтобы пукнуть!
-emote-fart-out-of-farts = У вас кончился пердеж!
-emote-fart-super-fart = Ты (в буквальном смысле) пукаешь изо всех сил!
-emote-fart-inhale-notice = Ты вдыхаешь, готовя супер-пердеж.
-emote-fart-inhale-disarm-notice = Ты отражаешь свой супер-пердеж.
-
+emote-fart-not-loaded = Вы не готовы пердеть!
+emote-fart-already-loaded = Вы уже готовы пердеть!
+emote-fart-ass-off = У вас нет задницы, чтобы пукнуть!
+emote-fart-out-of-farts = У вас закончился потенциал пердеть!
+emote-fart-super-fart = Вы (буквально) пердите во всю задницу!
+emote-fart-inhale-notice = Вы вдыхаете воздух, чтобы зарядить пердеж.
+emote-fart-inhale-disarm-notice = Вы обезвреживаете свой пердеж.
 chat-emote-name-boop = Буп
-chat-emote-name-whirr = Вирр
+chat-emote-name-whirr = Шумит

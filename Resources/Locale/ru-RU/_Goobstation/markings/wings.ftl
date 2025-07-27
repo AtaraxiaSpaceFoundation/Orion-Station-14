@@ -6,6 +6,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 markings-category-Wings = Крылья
-
 marking-WingsRobotic = Роботизированные крылья
-marking-WingsRoboticMerciful = Роботизированные крылья Мерцифул
+marking-WingsRoboticMerciful = Крылья милосердного робота

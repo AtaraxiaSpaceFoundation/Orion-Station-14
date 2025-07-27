@@ -3,4 +3,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-defibrillator-missing-organs = Patient lacks essential vital organs! Revival is impossible.
+defibrillator-missing-organs = У пациента отсутствуют жизненно важные органы! Возрождение невозможно.
