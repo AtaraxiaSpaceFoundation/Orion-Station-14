@@ -159,7 +159,7 @@
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
   - type: CloningAppearance
-    gear: InteQVanguardLeaderGear
+    startingGear: InteQVanguardLeaderGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -179,7 +179,7 @@
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
   - type: CloningAppearance
-    gear: InteQVanguardOperativeGear
+    startingGear: InteQVanguardOperativeGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -199,7 +199,7 @@
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
   - type: CloningAppearance
-    gear: InteQVanguardSoldierGear
+    startingGear: InteQVanguardSoldierGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -219,7 +219,7 @@
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
   - type: CloningAppearance
-    gear: InteQVanguardMedicGear
+    startingGear: InteQVanguardMedicGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -249,7 +249,7 @@
       department: CentCom
       time: 36000
   - type: CloningAppearance
-    gear: InteQVanguardLeaderSizoGear
+    startingGear: InteQVanguardLeaderSizoGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -280,7 +280,7 @@
       department: CentCom
       time: 36000
   - type: CloningAppearance
-    gear: InteQVanguardOperativeSizoGear
+    startingGear: InteQVanguardOperativeSizoGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -311,7 +311,7 @@
       department: CentCom
       time: 36000
   - type: CloningAppearance
-    gear: InteQVanguardSoldierSizoGear
+    startingGear: InteQVanguardSoldierSizoGear
     components:
     - type: RandomMetadata
       nameSegments:
@@ -342,7 +342,7 @@
       department: CentCom
       time: 36000
   - type: CloningAppearance
-    gear: InteQVanguardMedicSizoGear
+    startingGear: InteQVanguardMedicSizoGear
     components:
     - type: RandomMetadata
       nameSegments:
