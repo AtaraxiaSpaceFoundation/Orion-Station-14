@@ -9,7 +9,8 @@
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Hardsuits/elite_inteq_hardsuit.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitInteQElite
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetHardsuitInteQElite
 
 - type: entity
   parent: [ BaseMajorContraband, ClothingOuterHardsuitSyndie ]
@@ -22,7 +23,8 @@
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Hardsuits/inteq_hardsuit.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitInteQ
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetHardsuitInteQ
 
 - type: entity
   parent: [ BaseMajorContraband, ClothingOuterHardsuitSyndie ]
@@ -35,4 +37,5 @@
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Hardsuits/inteq_syn_hardsuit.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitSyndicateInteQ
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetHardsuitSyndicateInteQ

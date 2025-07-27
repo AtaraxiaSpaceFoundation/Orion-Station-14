@@ -5,6 +5,9 @@
   description: Incredibly suspicious balaclava made with Syndicate nanofibers to absorb impacts slightly while obfuscating the voice and face using a garbled vocoder.
   components:
   - type: VoiceMask
+  - type: HideLayerClothing
+    slots:
+    - Snout
   - type: UserInterface
     interfaces:
       enum.VoiceMaskUIKey.Key:
@@ -22,19 +25,6 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
-# Corvax-HiddenDesc-Start
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-VoiceMasker-syndicate
-      whitelistMind:
-        mindRoles:
-        - TraitorRole
-        - NukeopsRole
-        - MindRoleGhostRoleInteQAntagonist
-    - label: corvax-hidden-desc-VoiceMasker-research
-      jobRequired:
-        - ResearchAssistant
-        - ResearchDirector
-        - Scientist
-        - Borg
-# Corvax-HiddenDesc-End
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs

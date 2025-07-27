@@ -13,7 +13,7 @@
     shoes: ClothingShoesBootsCombatFilled
     id: InteQVanguardLeaderIDCard
     pocket1: WeaponPistolInteQCommissar
-    pocket2: MagazinePistol57x28
+    pocket2: MagazinePistol
     suitstorage: OxygenTankFilled
     belt: ClothingBeltInteQShieldBelt
 #  innerclothingskirt: ClothingUniformJumpsuitInteQHonorable
@@ -33,7 +33,7 @@
     shoes: ClothingShoesBootsCombatFilled
     id: InteQVanguardIDCard
     pocket1: WeaponPistolInteQCommissar
-    pocket2: MagazinePistol57x28
+    pocket2: MagazinePistol
     suitstorage: OxygenTankFilled
     belt: ClothingBeltInteQWebbing
 #  innerclothingskirt: ClothingUniformJumpskirtInteQOperative
@@ -54,7 +54,7 @@
     shoes: ClothingShoesBootsCombatFilled
     id: InteQVanguardIDCard
     pocket1: WeaponPistolInteQCommissar
-    pocket2: MagazinePistol57x28
+    pocket2: MagazinePistol
     suitstorage: OxygenTankFilled
     belt: ClothingBeltInteQWebbing
 #  innerclothingskirt: ClothingUniformJumpskirtInteQFormalDress

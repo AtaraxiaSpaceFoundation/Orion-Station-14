@@ -13,12 +13,12 @@
   - type: RandomMetadata
     nameSegments:
     - InteQVanguardLeaderNamesPrefix
-    - NameSpets
+    - NamesMilitaryLast
     nameFormat: name-format-standard
   - type: NpcFactionMember
     factions:
       - InteQ
-  - type: LanguageKnowledge #backmen: languages
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - OldFastCodes
@@ -40,12 +40,12 @@
   - type: RandomMetadata
     nameSegments:
     - InteQVanguardNamesPrefix
-    - NameSpets
+    - NamesMilitaryLast
     nameFormat: name-format-standard
   - type: NpcFactionMember
     factions:
       - InteQ
-  - type: LanguageKnowledge #backmen: languages
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - OldFastCodes
@@ -67,12 +67,12 @@
   - type: RandomMetadata
     nameSegments:
     - InteQVanguardNamesPrefix
-    - NameSpets
+    - NamesMilitaryLast
     nameFormat: name-format-standard
   - type: NpcFactionMember
     factions:
       - InteQ
-  - type: LanguageKnowledge #backmen: languages
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - OldFastCodes
@@ -94,12 +94,12 @@
   - type: RandomMetadata
     nameSegments:
     - InteQVanguardNamesPrefix
-    - NameSpets
+    - NamesMilitaryLast
     nameFormat: name-format-standard
   - type: NpcFactionMember
     factions:
       - InteQ
-  - type: LanguageKnowledge #backmen: languages
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - OldFastCodes
@@ -118,7 +118,7 @@
     - type: RandomMetadata
       nameSegments:
       - InteQVanguardLeaderNamesPrefix
-      - NameSpets
+      - NamesMilitaryLast
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: InteQVanguardLeader
@@ -133,7 +133,7 @@
     - type: RandomMetadata
       nameSegments:
       - InteQVanguardNamesPrefix
-      - NameSpets
+      - NamesMilitaryLast
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: InteQVanguardOperative
@@ -148,7 +148,7 @@
     - type: RandomMetadata
       nameSegments:
       - InteQVanguardNamesPrefix
-      - NameSpets
+      - NamesMilitaryLast
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: InteQVanguardSoldier
@@ -163,7 +163,7 @@
     - type: RandomMetadata
       nameSegments:
       - InteQVanguardNamesPrefix
-      - NameSpets
+      - NamesMilitaryLast
       nameFormat: name-format-standard
     - type: RandomHumanoidSpawner
       settings: InteQVanguardMedic

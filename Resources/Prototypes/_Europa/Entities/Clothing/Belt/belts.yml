@@ -1,5 +1,16 @@
 - type: entity
   parent: [ClothingBeltStorageBase, BaseMinorContraband]
+  id: ClothingBeltInteQWebbing
+  name: combat webbing
+  description: Unique and versatile chest mount in which you can store weapons and ammunition.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Belt/inteq_webbing.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Belt/inteq_webbing.rsi
+
+- type: entity
+  parent: [ClothingBeltStorageBase, BaseMinorContraband]
   id: ClothingBeltInteQDropPouch
   name: combat drop pouch
   description: Improved unloading for storing various items
@@ -21,9 +32,6 @@
     sprite: _Europa/Clothing/Belt/inteq_shieldbelt.rsi
   - type: Clothing
     sprite: _Europa/Clothing/Belt/inteq_shieldbelt.rsi
-  - type: ContainerContainer
-    containers:
-      cell_slot: !type:ContainerSlot
   - type: PowerCellSlot
     cellSlotId: cell_slot
   - type: ItemSlots

@@ -1,5 +1,43 @@
 - type: entity
   parent: BaseMobHuman
+  id: MobSimpleSyndicateBlade
+  name: syndicate soldier
+  suffix: AI, Энергетический меч
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Europa/Mobs/Npc/simple_syndicate/blade.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
+      nameFormat: name-format-standard
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    #- type: InnateTool # TODO: This breaks tests somehow
+    #  tools:
+    #    - id: EnergySword
+    - type: Reflect
+      reflectProb: 0.85
+      reflects:
+        - Energy
+    - type: MeleeWeapon
+      angle: 0
+      animation: WeaponArcSmash
+      soundHit:
+          path: /Audio/Weapons/eblade1.ogg
+      damage:
+          types:
+            Heat: 12
+
+- type: entity
+  parent: BaseMobHuman
   id: MobSimpleSyndicateKnife
   name: syndicate soldier
   suffix: AI, Ножик
@@ -14,11 +52,9 @@
         - AllHostile
     - type: RandomMetadata
       nameSegments:
-      - SyndicateZvanieSuperNormalAgent
-      - names_last_male
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
       nameFormat: name-format-standard
-    - type: Damageable
-      damageModifierSet: NPCLightArmor
     - type: HTN
       rootTask:
         task: SimpleHumanoidHostileCompound
@@ -51,11 +87,9 @@
         - AllHostile
     - type: RandomMetadata
       nameSegments:
-      - SyndicateZvanieSuperNormalAgent
-      - names_last_male
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
       nameFormat: name-format-standard
-    - type: Damageable
-      damageModifierSet: NPCLightArmor
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
@@ -69,7 +103,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns64/Pistols/vp70_shot.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 1.25
       rechargeSound:
@@ -93,11 +127,9 @@
         - AllHostile
     - type: RandomMetadata
       nameSegments:
-      - SyndicateZvanieSuperNormalAgent
-      - names_last_male
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
       nameFormat: name-format-standard
-    - type: Damageable
-      damageModifierSet: NPCLightArmor
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
@@ -111,7 +143,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns64/Shotguns/t35.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 0.75
       rechargeSound:
@@ -135,11 +167,9 @@
         - AllHostile
     - type: RandomMetadata
       nameSegments:
-      - SyndicateZvanieSuperNormalAgent
-      - names_last_male
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
       nameFormat: name-format-standard
-    - type: Damageable
-      damageModifierSet: NPCLightArmor
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
@@ -153,7 +183,7 @@
       selectedMode: FullAuto
       availableModes:
         - FullAuto
-      soundGunshot: /Audio/Weapons/Guns64/SMGs/mp7.ogg
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/smg.ogg
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 1.50
       rechargeSound:

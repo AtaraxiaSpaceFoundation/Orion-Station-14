@@ -122,14 +122,7 @@
       - PosterContrabandInteQNoSex
       - PosterContrabandInteQVulp
       - PosterContrabandInteQJulie # Europa-End
-    chance: 0.99 # Europa-Edit
-      # Europa-Start
-    rarePrototypes:
-      - FlagCoder
-      - FlagSyndicate
-      - FlagInteQ
-    rareChance: 0.01
-      # Europa-Start
+    chance: 1
 
 - type: entity
   parent: MarkerBase

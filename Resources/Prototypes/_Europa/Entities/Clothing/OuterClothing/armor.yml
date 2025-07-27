@@ -10,10 +10,8 @@
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Armor/inteq_dark_templar.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetInteQDarkTemplar
-  - type: ContainerContainer
-    containers:
-      toggleable-clothing: !type:ContainerSlot
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetInteQDarkTemplar
   - type: Armor
     modifiers:
       coefficients:
@@ -35,7 +33,8 @@
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Armor/inteq_alt_dark_templar.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetInteQDarkTemplarAlt
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetInteQDarkTemplarAlt
 
 - type: entity
   parent: [ClothingOuterArmorBasic, BaseMajorContraband]
@@ -55,7 +54,6 @@
         Blunt: 0.75
         Slash: 0.65
         Piercing: 0.6
-        ArmorPiercing: 0.8
         Radiation: 0.9
         Caustic: 0.9
         Heat: 0.8
@@ -71,6 +69,7 @@
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Armor/inteq_tombstone.rsi
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetInteQIronTombstone
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetInteQIronTombstone
   - type: PointLight
     color: "#FF8C00"

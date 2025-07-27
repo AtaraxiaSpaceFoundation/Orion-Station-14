@@ -124,19 +124,19 @@
       settings: default
     mindRoles:
     - MindRoleGhostRoleInteQAntagonist
-  - type: CloningAppearance
-    components:
-    - type: AntagImmune
-    - type: NpcFactionMember
-      factions:
-        - InteQ
-    - type: LanguageKnowledge #backmen: languages
-      speaks:
-      - TauCetiBasic
-      - OldFastCodes
-      understands:
-      - TauCetiBasic
-      - OldFastCodes
+#  - type: CloningAppearance
+#    components:
+#    - type: AntagImmune
+#    - type: NpcFactionMember
+#      factions:
+#        - InteQ
+#    - type: LanguageKnowledge
+#      speaks:
+#      - TauCetiBasic
+#      - OldFastCodes
+#      understands:
+#      - TauCetiBasic
+#      - OldFastCodes
   - type: RandomHumanoidAppearance
     randomizeName: false
   - type: RandomMetadata
@@ -158,14 +158,14 @@
     name: ghost-role-information-inteq-vanguard-leader
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
-  - type: CloningAppearance
-    startingGear: InteQVanguardLeaderGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardLeaderNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardLeaderGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardLeaderNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
 
 - type: entity
   parent: SpawnPointInteQ
@@ -178,14 +178,14 @@
     name: ghost-role-information-inteq-vanguard-operative
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
-  - type: CloningAppearance
-    startingGear: InteQVanguardOperativeGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardOperativeGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
 
 - type: entity
   parent: SpawnPointInteQ
@@ -198,14 +198,14 @@
     name: ghost-role-information-inteq-vanguard-soldier
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
-  - type: CloningAppearance
-    startingGear: InteQVanguardSoldierGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardSoldierGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
 
 - type: entity
   parent: SpawnPointInteQ
@@ -218,16 +218,16 @@
     name: ghost-role-information-inteq-vanguard-medic
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
-  - type: CloningAppearance
-    startingGear: InteQVanguardMedicGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardMedicGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
 
-# Ghost Roles with Player Apperance (SIZO-37 | WhiteList )
+# Ghost Roles with Player Apperance (SIZO-37)
 
 - type: entity
   parent: SpawnPointInteQ
@@ -240,25 +240,23 @@
     name: ghost-role-information-inteq-vanguard-leader
     description: ghost-role-information-inteq-vanguard-leader-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
-    whitelistRequired: true
     requirements:
-    - !type:RoleTimeRequirement
-      role: JobCentralCommandOperator
-      time: 10800
+    - !type:OverallPlaytimeRequirement
+      time: 76000
     - !type:DepartmentTimeRequirement
-      department: CentCom
-      time: 36000
-  - type: CloningAppearance
-    startingGear: InteQVanguardLeaderSizoGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardLeaderNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
-    - type: AutoImplant
-      implants:
-        - DeathRattleImplantInteQ
+      department: Command
+      time: 18000
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardLeaderSizoGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardLeaderNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
+#    - type: AutoImplant
+#      implants:
+#        - DeathRattleImplantInteQ
 
 - type: entity
   parent: SpawnPointInteQ
@@ -271,25 +269,23 @@
     name: ghost-role-information-inteq-vanguard-operative
     description: ghost-role-information-inteq-vanguard-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
-    whitelistRequired: true
     requirements:
-    - !type:RoleTimeRequirement
-      role: JobCentralCommandOperator
-      time: 10800
-    - !type:DepartmentTimeRequirement
-      department: CentCom
+    - !type:OverallPlaytimeRequirement
       time: 36000
-  - type: CloningAppearance
-    startingGear: InteQVanguardOperativeSizoGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
-    - type: AutoImplant
-      implants:
-        - DeathRattleImplantInteQ
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardOperativeSizoGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
+#    - type: AutoImplant
+#      implants:
+#        - DeathRattleImplantInteQ
 
 - type: entity
   parent: SpawnPointInteQ
@@ -302,25 +298,23 @@
     name: ghost-role-information-inteq-vanguard-soldier
     description: ghost-role-information-inteq-vanguard-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
-    whitelistRequired: true
     requirements:
-    - !type:RoleTimeRequirement
-      role: JobCentralCommandOperator
-      time: 10800
-    - !type:DepartmentTimeRequirement
-      department: CentCom
+    - !type:OverallPlaytimeRequirement
       time: 36000
-  - type: CloningAppearance
-    startingGear: InteQVanguardSoldierSizoGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
-    - type: AutoImplant
-      implants:
-        - DeathRattleImplantInteQ
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardSoldierSizoGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
+#    - type: AutoImplant
+#      implants:
+#        - DeathRattleImplantInteQ
 
 - type: entity
   parent: SpawnPointInteQ
@@ -333,22 +327,20 @@
     name: ghost-role-information-inteq-vanguard-medic
     description: ghost-role-information-inteq-vanguard-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
-    whitelistRequired: true
     requirements:
-    - !type:RoleTimeRequirement
-      role: JobCentralCommandOperator
-      time: 10800
-    - !type:DepartmentTimeRequirement
-      department: CentCom
+    - !type:OverallPlaytimeRequirement
       time: 36000
-  - type: CloningAppearance
-    startingGear: InteQVanguardMedicSizoGear
-    components:
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NameSpets
-      nameFormat: name-format-standard
-    - type: AutoImplant
-      implants:
-        - DeathRattleImplantInteQ
+    - !type:RoleTimeRequirement
+      role: JobChemist
+      time: 18000
+#  - type: CloningAppearance
+#    startingGear: InteQVanguardMedicSizoGear
+#    components:
+#    - type: RandomMetadata
+#      nameSegments:
+#      - InteQVanguardNamesPrefix
+#      - NamesMilitaryLast
+#      nameFormat: name-format-standard
+#    - type: AutoImplant
+#      implants:
+#        - DeathRattleImplantInteQ

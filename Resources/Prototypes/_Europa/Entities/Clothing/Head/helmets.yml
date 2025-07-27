@@ -1,4 +1,37 @@
 - type: entity
+  parent: [ClothingHeadHelmetSwat, BaseMinorContraband]
+  id: ClothingHeadHelmetSwatInteQ
+  name: SWAT helmet
+  suffix: InteQ
+  description: An extremely robust helmet, commonly used by paramilitary forces. It is adorned in a nefarious orange and black stripe pattern.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/inteq_swat.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/inteq_swat.rsi
+
+- type: entity
+  parent: [ClothingHeadHelmetBasic, BaseMajorContraband]
+  id: ClothingHeadHelmetInteQDarkTemplar
+  name: brown crusader helmet
+  description: Anti-eretic.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/inteq_dark_templar.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/inteq_dark_templar.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetInteQDarkTemplar
+  id: ClothingHeadHelmetInteQDarkTemplarAlt
+  name: dark crusader helmet
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/inteq_alt_dark_templar.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/inteq_alt_dark_templar.rsi
+
+- type: entity
   parent: [ClothingHeadHelmetSwat, BaseMajorContraband]
   id: ClothingHeadHelmetInteQInfiltrator
   name: infiltrator helmet

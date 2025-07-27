@@ -1,9 +1,9 @@
 - type: entity
   parent: [ BaseMajorContraband, WeaponRifleAk ]
   id: WeaponRifleInteQAKM
-  name: AKM
+  name: InteQ AKM
   suffix: Rifle
-  description: Iconic weapon of war. Uses 7.62x39 ammo. It is painted in the InteQ brand color.
+  description: Iconic weapon of war. Uses .30 rifle ammo. It is painted in the InteQ brand color.
   components:
   - type: Sprite
     sprite: _Europa/Objects/Weapons/Guns/Rifles/inteq_akm.rsi

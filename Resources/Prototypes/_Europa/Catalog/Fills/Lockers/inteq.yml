@@ -21,10 +21,9 @@
   components:
   - type: StorageFill
     contents:
-    - id: AntiPsychicKnife
     - id: CombatKnife
     - id: CrowbarOrange
-    - id: MagazineBoxLight57x28InteQ
+    - id: MagazineBoxPistolInteQ
     - id: FlashlightSeclite
     - id: Emag
     - id: PlasmaScythe
@@ -36,10 +35,9 @@
   components:
   - type: StorageFill
     contents:
-    - id: AntiPsychicKnife
     - id: CombatKnife
     - id: CrowbarOrange
-    - id: MagazineBoxLight57x28InteQ
+    - id: MagazineBoxPistolInteQ
     - id: FlashlightSeclite
 
 - type: entity
@@ -49,9 +47,8 @@
   components:
   - type: StorageFill
     contents:
-    - id: AntiPsychicKnife
     - id: CombatKnife
     - id: CrowbarOrange
-    - id: MagazineBoxLight57x28InteQ
+    - id: MagazineBoxPistolInteQ
     - id: FlashlightSeclite
     - id: MedkitCombatFilled

@@ -1,0 +1,36 @@
+# InteQ
+- type: entity
+  parent: ClothingBackpackMessengerBase
+  id: ClothingBackpackMessengerInteQ
+  name: InteQ messenger bag
+  description: A robust bag for storing extra cartridges and explosives.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-base
+      color: "#484b4f"
+    - state: icon-sling
+      color: "#e0940f"
+    - state: icon-clasp
+      color: "#aa6600"
+  - type: Clothing
+    clothingVisuals:
+      back:
+      - state: base-equipped-BACKPACK
+        color: "#484b4f"
+      - state: sling-equipped-BACKPACK
+        color: "#e0940f"
+      - state: clasp-equipped-BACKPACK
+        color: "#aa6600"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-inhand-left
+        color: "#484b4f"
+      - state: clasp-inhand-left
+        color: "#aa6600"
+      right:
+      - state: base-inhand-right
+        color: "#484b4f"
+      - state: clasp-inhand-right
+        color: "#aa6600"

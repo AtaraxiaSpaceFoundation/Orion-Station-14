@@ -28,9 +28,9 @@
   - type: StorageFill
     contents:
       - id: WeaponRifleInteQAKM
-      - id: MagazineRifleLight762x39
+      - id: MagazineLightRifle
         amount: 3
-      - id: MagazineBoxLight762x39InteQ
+      - id: MagazineBoxLightRifleInteQ
 
 - type: entity
   parent: CaseInteQ
@@ -52,6 +52,6 @@
   - type: StorageFill
     contents:
       - id: WeaponSubMachineGunInteQSMG
-      - id: MagazinePistolSubMachineGun57x28
+      - id: MagazinePistolSubMachineGun
         amount: 2
-      - id: MagazineBoxLight57x28InteQ
+      - id: MagazineBoxPistolInteQ

@@ -40,16 +40,6 @@
     Uranium: 1000
 
 - type: latheRecipe
-  id: SingularityGrenade
-  result: SingularityGrenade
-  completetime: 5
-  materials:
-    Steel: 900
-    Plastic: 100
-    Uranium: 1000
-    Plasma: 2200
-
-- type: latheRecipe
   id: WhiteholeGrenade
   result: WhiteholeGrenade
   completetime: 5

@@ -7,14 +7,13 @@
   - type: Blueprint
     providedRecipes:
     - CaseInteQ
-    - MagazineBoxLight57x28InteQ
-    - MagazineBoxLight762x39InteQ
+    - MagazineBoxPistolInteQ
+    - MagazineBoxLightRifleInteQ
     - MagazineBoxShotgunInteQ
     - ClothingEyesGogglessInteQ
     - PlasmaSword
     - PlasmaSwordAlt
     - ExGrenade
-    - SingularityGrenade
     - WhiteholeGrenade
     - C4
     - EmpGrenade
@@ -32,7 +31,6 @@
     - ClothingBeltSyndieHolster
     - TowelColorSyndicate
     - ExGrenade
-    - SingularityGrenade
     - WhiteholeGrenade
     - C4
     - EmpGrenade

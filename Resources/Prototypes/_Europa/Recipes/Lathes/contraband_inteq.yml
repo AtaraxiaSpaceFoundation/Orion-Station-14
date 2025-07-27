@@ -8,15 +8,15 @@
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: MagazineBoxLight57x28InteQ
-  result: MagazineBoxLight57x28InteQ
+  id: MagazineBoxPistolInteQ
+  result: MagazineBoxPistolInteQ
   materials:
     Steel: 350
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
-  id: MagazineBoxLight762x39InteQ
-  result: MagazineBoxLight762x39InteQ
+  id: MagazineBoxLightRifleInteQ
+  result: MagazineBoxLightRifleInteQ
   materials:
     Steel: 1100
 

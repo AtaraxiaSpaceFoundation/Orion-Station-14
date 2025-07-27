@@ -96,7 +96,7 @@
 // SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
 // SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
 // SPDX-FileCopyrightText: 2025 Schrödinger <132720404+Schrodinger71@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Schr�dinger <132720404+Schrodinger71@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Schr dinger <132720404+Schrodinger71@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
 // SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 //
@@ -147,7 +147,7 @@ internal sealed class AdminNameOverlay : Overlay
 
     //TODO make this adjustable via GUI
     private readonly ProtoId<RoleTypePrototype>[] _filter =
-        ["SoloAntagonist", "TeamAntagonist", "SiliconAntagonist", "FreeAgent"];
+        ["SoloAntagonist", "TeamAntagonist", "SiliconAntagonist", "FreeAgent", "InteQ"]; // Europa-Edit - Added InteQ
 
     private readonly string _antagLabelClassic = Loc.GetString("admin-overlay-antag-classic");
 
