@@ -122,9 +122,9 @@
 
 - type: entity
   parent: StatueBaseDecoration
-  id: StatueHeadOfPersonalDecoration
-  name: head of personal statue
-  description: Statue dedicated to the smartest head of personal.
+  id: StatueHeadOfPersonnelDecoration
+  name: head of personnel statue
+  description: Statue dedicated to the smartest head of personnel.
   components:
   - type: Sprite
     state: hop
