@@ -1,5 +1,5 @@
 ent-StatueBaseDecoration = статуя
-    .desc = Кусок исскуства.
+    .desc = Кусок искусства.
 
 ent-StatueAIDecoration = статуя ИИ
     .desc = Статуя, посвященная самому умному искусственному интеллекту.
