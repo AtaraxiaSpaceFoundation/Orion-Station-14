@@ -51,13 +51,12 @@
 
 - type: entity
   parent: StatueBaseDecoration
-  id: StatueAssistaintDecoration
-  name: assistaint statue
-  description: Statue dedicated to the smartest assisataint.
+  id: StatueAssistantDecoration
+  name: assistant statue
+  description: Statue dedicated to the smartest assistant.
   components:
   - type: Sprite
     state: assist
-
 - type: entity
   parent: StatueBaseDecoration
   id: StatueBlockDecoration
