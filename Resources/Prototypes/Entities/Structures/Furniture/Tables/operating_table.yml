@@ -51,6 +51,3 @@
         whitelist:
           tags:
           - GasTank
-  - type: ContainerContainer # Europa
-    containers:
-      gas_tank_slot: !type:ContainerSlot {}

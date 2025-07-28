@@ -1,90 +1,70 @@
 - type: construction
-  name: дорога перекрёсток
-  description: Для твоих ног?...
-  id: SmallWorldRoadFourWay
-  graph: SmallWorldRoads
+  id: SmallWorldBuildingSmallBusiness
+  graph: SmallWorldBuilding
   startNode: start
-  targetNode: SmallWorldRoadFourWay
+  targetNode: SmallWorldBuildingSmallBusiness
   category: construction-category-misc
   placementMode: SnapgridCenter
   canBuildInImpassable: false
-  icon:
-    sprite: /Textures/Backmen/Structures/Decoration/SmallWorld/roads.rsi
-    state: "roadfourway"
 
 - type: construction
-  name: дорога прямая
-  description: Для твоих ног?...
-  id: SmallWorldRoadStraight
-  graph: SmallWorldRoads
+  id: SmallWorldBuildingSmallHouses
+  graph: SmallWorldBuilding
   startNode: start
-  targetNode: SmallWorldRoadStraight
+  targetNode: SmallWorldBuildingSmallHouses
   category: construction-category-misc
   placementMode: SnapgridCenter
   canBuildInImpassable: false
-  icon:
-    sprite: /Textures/Backmen/Structures/Decoration/SmallWorld/roads.rsi
-    state: "roadstraight"
 
 - type: construction
-  name: дорога развилка
-  description: Для твоих ног?...
-  id: SmallWorldRoadThreeWay
-  graph: SmallWorldRoads
+  id: SmallWorldBuildingSmallMuseum
+  graph: SmallWorldBuilding
   startNode: start
-  targetNode: SmallWorldRoadThreeWay
+  targetNode: SmallWorldBuildingSmallMuseum
   category: construction-category-misc
   placementMode: SnapgridCenter
   canBuildInImpassable: false
-  icon:
-    sprite: /Textures/Backmen/Structures/Decoration/SmallWorld/roads.rsi
-    state: "roadthreeway"
 
 - type: construction
-  name: дорога поворот
-  description: Для твоих ног?...
-  id: SmallWorldRoadTurn
-  graph: SmallWorldRoads
+  id: SmallWorldBuildingSmallWarehouse
+  graph: SmallWorldBuilding
   startNode: start
-  targetNode: SmallWorldRoadTurn
+  targetNode: SmallWorldBuildingSmallWarehouse
   category: construction-category-misc
   placementMode: SnapgridCenter
   canBuildInImpassable: false
-  icon:
-    sprite: /Textures/Backmen/Structures/Decoration/SmallWorld/roads.rsi
-    state: "roadturn"
 
 - type: constructionGraph
-  id: SmallWorldRoads
+  id: SmallWorldBuilding
   start: start
   graph:
     - node: start
       actions:
         - !type:DestroyEntity {}
       edges:
-        - to: SmallWorldRoadFourWay
+        - to: SmallWorldBuildingSmallBusiness
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: SmallWorldRoadStraight
+        - to: SmallWorldBuildingSmallHouses
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: SmallWorldRoadThreeWay
+        - to: SmallWorldBuildingSmallMuseum
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
-        - to: SmallWorldRoadTurn
+        - to: SmallWorldBuildingSmallWarehouse
           steps:
             - material: Steel
               amount: 2
               doAfter: 1
 
-    - node: SmallWorldRoadFourWay
-      entity: SmallWorldRoadFourWay
+    - node: SmallWorldBuildingSmallBusiness
+      entity: SmallWorldBuildingSmallBusiness
       edges:
         - to: start
           completed:
@@ -94,8 +74,8 @@
             - tool: Screwing
               doAfter: 1
 
-    - node: SmallWorldRoadStraight
-      entity: SmallWorldRoadStraight
+    - node: SmallWorldBuildingSmallHouses
+      entity: SmallWorldBuildingSmallHouses
       edges:
         - to: start
           completed:
@@ -105,8 +85,8 @@
             - tool: Screwing
               doAfter: 1
 
-    - node: SmallWorldRoadThreeWay
-      entity: SmallWorldRoadThreeWay
+    - node: SmallWorldBuildingSmallMuseum
+      entity: SmallWorldBuildingSmallMuseum
       edges:
         - to: start
           completed:
@@ -116,8 +96,8 @@
             - tool: Screwing
               doAfter: 1
 
-    - node: SmallWorldRoadTurn
-      entity: SmallWorldRoadTurn
+    - node: SmallWorldBuildingSmallWarehouse
+      entity: SmallWorldBuildingSmallWarehouse
       edges:
         - to: start
           completed:

@@ -5,7 +5,7 @@
   name: mini chemical dispenser
   components:
   - type: Sprite
-    sprite: Backmen/Structures/mini_dispensers.rsi
+    sprite: _Europa/Structures/mini_dispensers.rsi
     state: industrial-working
 
 - type: entity
@@ -13,6 +13,3 @@
   id: MiniChemDispenserEmpty
   suffix: Empty
   name: mini chemical dispenser
-  components:
-  - type: ReagentDispenser
-    pack: EmptyInventory
