@@ -43,11 +43,3 @@
     ports:
     - OperatingTable
   # End Shitmed Changes
-  - type: ItemSlots # Europa
-    slots:
-      gas_tank_slot:
-        name: comp-gas-canister-slot-name-gas-tank
-        priority: 1
-        whitelist:
-          tags:
-          - GasTank

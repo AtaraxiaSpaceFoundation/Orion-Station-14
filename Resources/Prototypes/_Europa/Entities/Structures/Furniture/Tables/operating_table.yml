@@ -2,8 +2,3 @@
   parent: OperatingTable
   id: OperatingTableFilled
   suffix: Filled, Nitrous Oxide Tank
-  components:
-  - type: ItemSlots
-    slots:
-      gas_tank_slot:
-        startingItem: NitrousOxideTankFilled
