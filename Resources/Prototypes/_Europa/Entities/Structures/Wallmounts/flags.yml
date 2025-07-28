@@ -101,7 +101,7 @@
 - type: entity
   parent: BaseFlag
   id: FlagCalifornia
-  name: Сalifornia flag
+  name: California flag
   description: The flag of Сalifornia.
   components:
   - type: Sprite
@@ -111,7 +111,7 @@
 - type: entity
   parent: BaseFlag
   id: FlagCaliforniaSolfed
-  name: Sol Federation Сalifornia flag
+  name: Sol Federation California flag
   description: The flag of Сalifornia. Originally a revolutionary flag during the Californian Rebellions, it has since been adopted as the official flag of the planet controlled by the Solar Federation.
   components:
   - type: Sprite
