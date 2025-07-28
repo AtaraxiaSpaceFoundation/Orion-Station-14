@@ -115,7 +115,14 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
-    chance: 1
+    chance: 0.99 # Europa-Edit | 1 > 0.99
+    # Europa-Start
+    rarePrototypes:
+      - FlagCoder
+      - FlagSyndicate
+      - FlagInteQ
+    rareChance: 0.01
+    # Europa-End
 
 - type: entity
   parent: MarkerBase
@@ -200,4 +207,30 @@
       - PosterContrabandGoobYakub # Goobstation
       - PosterLegitOppenhopper
       - PosterLegitTyrone
-    chance: 1
+    chance: 0.99 # Europa-Edit | 1 > 0.99
+    # Europa-Start
+    rarePrototypes:
+      - FlagAgurk
+      - FlagBelarus
+      - FlagChechnya
+      - FlagGermany
+      - FlagGermanySolfed
+      - FlagGoldRing
+      - FlagHCA
+      - FlagLizard
+      - FlagCalifornia
+      - FlagCaliforniaSolfed
+      - FlagMothic
+      - FlagNRI
+      - FlagNanoTrasen
+      - FlagRussian
+      - FlagShigu
+      - FlagSolfed
+      - FlagSolfedAlt
+      - FlagSovietUSSP
+      - FlagTizira
+      - FlagUkraine
+      - FlagUSA
+      - FlagVulp
+    rareChance: 0.01
+    # Europa-End

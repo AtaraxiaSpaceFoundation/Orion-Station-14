@@ -146,6 +146,12 @@
 # WallSolid: Window
 # Table: null
 
+# Europa-Start
+NTFlag: FlagNanoTrasen
+SyndieFlag: FlagSyndicate
+LGBTQFlag: RandomPosterLegit
+# Europa-End
+
 # Goobstation - Submarine from DeltaV
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
 AirlockClownGlassLocked: AirlockServiceGlassLocked
