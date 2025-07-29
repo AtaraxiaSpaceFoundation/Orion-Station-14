@@ -84,7 +84,7 @@
   - InteQHostile
   # Europa-End-Factions
   - Mouse
-  - Balloon # Goob Balloon Edit     Pets can join the fight against the balloons
+  - Balloon # Goob Balloon Edit - Pets can join the fight against the balloons
   - SimpleHostile
   - Zombie
   - Xeno
@@ -234,7 +234,7 @@
 - type: npcFaction
   id: Monkey
   hostile:
-  - Balloon     # Custom faction specifically for attacking bloons
+  - Balloon # Custom faction specifically for attacking bloons
 
 - type: npcFaction
   id: Xenoborg
@@ -252,9 +252,7 @@
   - Changeling # goob edit - changelings
   - Heretic # goob edit - heretics
   - PirateFaction # goob - pirates
-
   - Xeno # rivalry
-
   # cause they are hostile to them
   - SimpleHostile 
   - AllHostile
