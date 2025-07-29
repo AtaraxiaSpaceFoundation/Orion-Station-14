@@ -1,0 +1,30 @@
+- type: body
+  id: AnimalHuman
+  name: "animal"
+  root: torso
+  slots:
+    torso:
+      part: ChestHuman
+      connections:
+      - right leg
+      - left leg
+      organs:
+        lungs: OrganAnimalLungs
+        stomach: OrganAnimalStomach
+        liver: OrganAnimalLiver
+        heart: OrganAnimalHeart
+        kidneys: OrganAnimalKidneys
+    right leg:
+      part: RightLegHuman
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegHuman
+      connections:
+      - left foot
+    right foot:
+      part: RightFootHuman
+    left foot:
+      part: LeftFootHuman
+    feet:
+      part: RightFootHuman

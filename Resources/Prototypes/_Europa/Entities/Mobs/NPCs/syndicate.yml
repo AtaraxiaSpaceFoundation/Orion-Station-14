@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseMobHuman
+  parent: MobBaseNPC
   id: MobSimpleSyndicateBlade
   name: syndicate soldier
   suffix: AI, Энергетический меч
@@ -34,10 +34,10 @@
           path: /Audio/Weapons/eblade1.ogg
       damage:
           types:
-            Heat: 12
+            Heat: 15
 
 - type: entity
-  parent: BaseMobHuman
+  parent: MobBaseNPC
   id: MobSimpleSyndicateKnife
   name: syndicate soldier
   suffix: AI, Ножик
@@ -72,7 +72,7 @@
             Piercing: 5
 
 - type: entity
-  parent: BaseMobHuman
+  parent: MobBaseNPC
   id: MobSimpleSyndicatePistol
   name: syndicate soldier
   suffix: AI, Пистолет
@@ -93,26 +93,29 @@
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3.2
     - type: BasicEntityAmmoProvider
       proto: BulletPistol
       capacity: 12
       count: 12
     - type: Gun
-      fireRate: 1.25
+      fireRate: 1
       useKey: false
       selectedMode: FullAuto
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1.25
+      rechargeCooldown: 1
       rechargeSound:
         path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
         params:
           volume: -100
 
 - type: entity
-  parent: BaseMobHuman
+  parent: MobBaseNPC
   id: MobSimpleSyndicateShotgun
   name: syndicate soldier
   suffix: AI, Дробовик
@@ -133,26 +136,29 @@
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3
     - type: BasicEntityAmmoProvider
-      proto: PelletShotgunSlug
+      proto: PelletGrapeshot # Slug to powerful
       capacity: 6
       count: 6
     - type: Gun
-      fireRate: 0.75
+      fireRate: 0.70
       useKey: false
       selectedMode: FullAuto
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 0.75
+      rechargeCooldown: 0.70
       rechargeSound:
         path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
         params:
           volume: -100
 
 - type: entity
-  parent: BaseMobHuman
+  parent: MobBaseNPC
   id: MobSimpleSyndicateSMG
   name: syndicate soldier
   suffix: AI, СМГ
@@ -173,19 +179,22 @@
     - type: HTN
       rootTask:
         task: SimpleRangedHostileCompound
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3
     - type: BasicEntityAmmoProvider
       proto: BulletLightRifle
       capacity: 30
       count: 30
     - type: Gun
-      fireRate: 1.50
+      fireRate: 1.30
       useKey: false
       selectedMode: FullAuto
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/smg.ogg
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1.50
+      rechargeCooldown: 1.30
       rechargeSound:
         path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
         params:
