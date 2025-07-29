@@ -855,7 +855,7 @@
     accent: BatAccent
 
 - type: entity
-  parent: ClothingMaskPullableBase # Backmen-Edit
+  parent: ClothingMaskPullableBase # Europa-Edit
   id: ClothingMaskNeckGaiter
   name: neck gaiter
   description: Stylish neck gaiter for your neck, can protect from the cosmic wind?...
@@ -870,7 +870,7 @@
     tags:
     - WhitelistChameleon
     - IPCMaskWearable # EE - IPCs
-  - type: BreathMask # Backmen
+  - type: BreathMask # Europa
 
 - type: entity
   parent: ClothingMaskNeckGaiter

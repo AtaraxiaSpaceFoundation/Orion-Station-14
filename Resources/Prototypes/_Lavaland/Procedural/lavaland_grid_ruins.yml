@@ -24,7 +24,7 @@
   path: /Maps/_Lavaland/Lavaland/ruin_snow_biodome.yml
   priority: 1
 
-- type: lavalandGridRuin # Backmen
+- type: lavalandGridRuin # Europa
   id: InteQSizo
   name: lavaland-inteq-sizo
   path: /Maps/_Europa/Lavaland/InteQ_Sizo.yml
