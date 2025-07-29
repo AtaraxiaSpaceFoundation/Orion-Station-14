@@ -1,4 +1,5 @@
 - type: entity
+  parent: [ BaseMinorContraband, ClothingBeltStorageBase ]
   id: ClothingBeltInteQWebbing
   name: combat webbing
   description: Unique and versatile chest mount in which you can store weapons and ammunition.
