@@ -27,6 +27,6 @@
     weight: 8
     reoccurrenceDelay: 30
     duration: 1
-    maxOccurrences: 3
+    maxOccurrences: 1
   - type: RandomSpawnRule
     prototype: MobWisdomCow
