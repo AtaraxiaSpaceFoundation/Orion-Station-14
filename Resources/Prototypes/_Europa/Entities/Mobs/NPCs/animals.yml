@@ -1,0 +1,23 @@
+- type: entity
+  parent: MobCow
+  id: MobWisdomCow
+  name: wisdom cow
+  description: Known for its wisdom, shares it with all.
+  components:
+  - type: Advertise
+    minimumWait: 12
+    maximumWait: 80
+    pack: Wisdom
+#  - type: TTS
+#    voice: Dictor
+  - type: LanguageSpeaker
+    currentLanguage: TauCetiBasic
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - Cow
+    understands:
+    - TauCetiBasic
+    - Cow
+  - type: Speech
+    speechSounds: Baritone
