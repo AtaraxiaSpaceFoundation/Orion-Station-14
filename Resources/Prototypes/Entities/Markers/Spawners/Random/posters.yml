@@ -122,7 +122,14 @@
       - PosterContrabandInteQNoSex
       - PosterContrabandInteQVulp
       - PosterContrabandInteQJulie # Europa-End
-    chance: 1
+    chance: 0.99 # Europa-Edit | 1 > 0.99
+    # Europa-Start
+    rarePrototypes:
+      - FlagCoder
+      - FlagSyndicate
+      - FlagInteQ
+    rareChance: 0.01
+    # Europa-End
 
 - type: entity
   parent: MarkerBase
@@ -207,4 +214,23 @@
       - PosterContrabandGoobYakub # Goobstation
       - PosterLegitOppenhopper
       - PosterLegitTyrone
-    chance: 1
+    chance: 0.99 # Europa-Edit | 1 > 0.99
+    # Europa-Start
+    rarePrototypes:
+      - FlagAgurk
+      - FlagGermanySolfed
+      - FlagGoldRing
+      - FlagHCA
+      - FlagLizard
+      - FlagCaliforniaSolfed
+      - FlagMothic
+      - FlagNRI
+      - FlagNanoTrasen
+      - FlagShigu
+      - FlagSolfed
+      - FlagSolfedAlt
+      - FlagSovietUSSP
+      - FlagTizira
+      - FlagVulp
+    rareChance: 0.01
+    # Europa-End

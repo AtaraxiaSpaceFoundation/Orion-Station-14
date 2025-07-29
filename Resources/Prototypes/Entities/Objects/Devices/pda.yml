@@ -238,8 +238,9 @@
     - Belt
   - type: UnpoweredFlashlight
   - type: PointLight
+    mask: /Textures/Effects/LightMasks/cone.png # Europa
     enabled: false
-    radius: 1.5
+    radius: 2 # Europa-Edit
     softness: 5
     autoRot: true
   - type: Ringer

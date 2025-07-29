@@ -152,7 +152,9 @@ InteQLaserShield: EnergyShieldInteQ
 MagazineBoxLight57x28InteQ: MagazineBoxPistolInteQ
 MagazineBoxLight762x39InteQ: MagazineBoxLightRifleInteQ
 
-FlagInteQ: null
+NTFlag: FlagNanoTrasen
+SyndieFlag: FlagSyndicate
+LGBTQFlag: RandomPosterLegit
 # Europa-End
 
 # Goobstation - Submarine from DeltaV
