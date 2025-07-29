@@ -148,6 +148,7 @@
 
 # Europa-Start
 InteQLaserShield: EnergyShieldInteQ
+DefaultStationBeaconInteQSizo37: DefaultStationBeaconInteQSizo73
 
 MagazineBoxLight57x28InteQ: MagazineBoxPistolInteQ
 MagazineBoxLight762x39InteQ: MagazineBoxLightRifleInteQ

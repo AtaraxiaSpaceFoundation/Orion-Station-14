@@ -1,1 +1,1 @@
-lavaland-inteq-sizo = Sizo-37
+lavaland-inteq-sizo = Sizo-73

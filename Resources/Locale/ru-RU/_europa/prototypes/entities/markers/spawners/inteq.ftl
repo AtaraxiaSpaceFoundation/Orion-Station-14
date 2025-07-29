@@ -30,13 +30,13 @@ ent-SpawnPointInteQVanguardMedic = капсула Медика Авангард�
 
 ent-SpawnPointInteQVanguardLeaderSizo37 = { ent-SpawnPointInteQVanguardLeader }
     .desc = { ent-MarkerBase.desc }
-    .suffix = Спавнер, СИЗО-37 Гост Роль, Персонаж игрока
+    .suffix = Спавнер, Сизо-73 Гост Роль, Персонаж игрока
 ent-SpawnPointInteQVanguardOperativeSizo37 = { ent-SpawnPointInteQVanguardOperative }
     .desc = { ent-MarkerBase.desc }
-    .suffix = Спавнер, СИЗО-37 Гост Роль, Персонаж игрока
+    .suffix = Спавнер, Сизо-73 Гост Роль, Персонаж игрока
 ent-SpawnPointInteQVanguardSoldierSizo37 = { ent-SpawnPointInteQVanguardSoldier }
     .desc = { ent-MarkerBase.desc }
-    .suffix = Спавнер, СИЗО-37 Гост Роль, Персонаж игрока
+    .suffix = Спавнер, Сизо-73 Гост Роль, Персонаж игрока
 ent-SpawnPointInteQVanguardMedicSizo37 = { ent-SpawnPointInteQVanguardMedic }
     .desc = { ent-MarkerBase.desc }
-    .suffix = Спавнер, СИЗО-37 Гост Роль, Персонаж игрока
+    .suffix = Спавнер, Сизо-73 Гост Роль, Персонаж игрока

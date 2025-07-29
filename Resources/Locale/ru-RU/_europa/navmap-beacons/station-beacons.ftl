@@ -1,1 +1,1 @@
-station-beacon-sizo-37 = Сизо-37
+station-beacon-sizo-73 = Сизо-73
