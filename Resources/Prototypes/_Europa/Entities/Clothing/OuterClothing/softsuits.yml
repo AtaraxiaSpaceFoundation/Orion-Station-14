@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingOuterEVASuitBase, BaseMinorContraband]
+  parent: [ BaseMinorContraband, ClothingOuterEVASuitBase ]
   id: ClothingOuterEVASuitInteQ
   name: InteQ EVA suit
   description: Has a tag on the back that reads - Property of InteQ

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseMajorContraband]
+  parent: [ BaseMajorContraband, ClothingOuterBaseLarge, ClothingOuterBaseToggleable, AllowSuitStorageClothing ]
   id: ClothingOuterArmorInteQDarkTemplar
   name: dark crusader armor
   suffix: InteQ
@@ -37,7 +37,7 @@
       head: ClothingHeadHelmetInteQDarkTemplarAlt
 
 - type: entity
-  parent: [ClothingOuterArmorBasic, BaseMajorContraband]
+  parent: [ BaseMajorContraband, ClothingOuterArmorBasic ]
   id: ClothingOuterArmorInteQInfiltrator
   name: armored infiltrator cape
   description: High-quality raincoat with an armored plate made of multilayer plasteel. It combines lightness and durability, has a buffer lining and fits perfectly to the body without making unnecessary sounds when worn.
@@ -59,7 +59,7 @@
         Heat: 0.8
 
 - type: entity
-  parent: [ClothingOuterArmorRaid, ClothingOuterBaseToggleable, BaseMajorContraband]
+  parent: [ BaseMajorContraband, ClothingOuterArmorRaid, ClothingOuterBaseToggleable ]
   id: ClothingOuterArmorInteQIronTombstone
   name: Iron Tombstone armor suit
   description: Ancient, but no less formidable suit of armor. It provides incredible protection from bullets and shrapnel, but it hinders movement. Or so it was before the technical department attached a passive exoskeleton to the base.

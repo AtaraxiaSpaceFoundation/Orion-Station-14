@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingOuterArmorBasic, BaseMinorContraband]
+  parent: [ BaseMinorContraband, ClothingOuterArmorBasic ]
   id: ClothingOuterCoatInteQBattle
   name: InteQ battle coat
   description: InteQ armored coat is made of durable fabric, with gilded patterns.
@@ -10,7 +10,7 @@
     sprite: _Europa/Clothing/OuterClothing/Coats/inteq_battle_coat.rsi
 
 - type: entity
-  parent: [ClothingOuterCoatHoSTrench, BaseMinorContraband]
+  parent: [ BaseMinorContraband, ClothingOuterCoatHoSTrench ]
   id: ClothingOuterCoatInteQHonorableBattle
   name: InteQ honorable battle coat
   description: InteQ honorable armored coat is made of durable fabric, with gilded patterns.
@@ -21,7 +21,7 @@
     sprite: _Europa/Clothing/OuterClothing/Coats/inteq_honorable_battle_coat.rsi
 
 - type: entity
-  parent: ClothingOuterCoatAMG
+  parent: [ BaseMinorContraband, ClothingOuterCoatAMG ]
   id: ClothingOuterCoatInteQMedical
   name: InteQ medical coat
   description: The version of the medical coat, with elements of a bulletproof vest, but your heart is protected.
