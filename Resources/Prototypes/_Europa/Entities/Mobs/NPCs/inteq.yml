@@ -44,11 +44,8 @@
   - type: NpcFactionMember
     factions:
       - InteQHostile
-  - type: Body
-    prototype: Animal
   - type: Damageable
     damageContainer: Biological
-    damageModifierSet: HellSpawn
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3
