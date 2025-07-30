@@ -5,6 +5,7 @@
   description: Known for its wisdom, shares it with all.
   components:
   - type: Advertise
+    hideFromChat: false
     minimumWait: 12
     maximumWait: 80
     pack: Wisdom

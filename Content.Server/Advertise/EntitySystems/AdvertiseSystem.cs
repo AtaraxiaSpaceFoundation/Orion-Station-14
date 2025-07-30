@@ -76,8 +76,10 @@ public sealed class AdvertiseSystem : EntitySystem
         if (attemptEvent.Cancelled)
             return;
 
+        bool hideChat = advert.HideFromChat; // Europa
+
         if (_prototypeManager.TryIndex(advert.Pack, out var advertisements))
-            _chat.TrySendInGameICMessage(uid, Loc.GetString(_random.Pick(advertisements.Values)), InGameICChatType.Speak, hideChat: true);
+            _chat.TrySendInGameICMessage(uid, Loc.GetString(_random.Pick(advertisements.Values)), InGameICChatType.Speak, hideChat: hideChat); // Europa-Edit | hideChat bool
     }
 
     public override void Update(float frameTime)

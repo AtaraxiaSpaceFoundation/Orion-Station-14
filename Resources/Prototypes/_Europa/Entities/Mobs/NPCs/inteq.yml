@@ -27,6 +27,7 @@
     - NamesMilitaryLast
     nameFormat: name-format-standard
   - type: Advertise
+    hideFromChat: false
     pack: InteQAgent
   - type: LanguageKnowledge
     speaks:
