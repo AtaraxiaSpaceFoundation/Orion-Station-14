@@ -1,6 +1,6 @@
 ﻿using Content.Server.Administration.Commands;
-using Content.Europa.AGPL.Server.CloningAppearance.Components;
-using Content.Europa.AGPL.Server.CloningAppearance.Events;
+using Content.Server.CloningAppearance.Components;
+using Content.Server.CloningAppearance.Events;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Server.Station.Systems;
@@ -9,7 +9,11 @@ using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization.Manager;
 
-namespace Content.Europa.AGPL.Server.CloningAppearance;
+namespace Content.Server.CloningAppearance;
+
+//
+// License-Identifier: AGPL-3.0-or-later
+//
 
 public sealed class CloningAppearanceSystem : EntitySystem
 {

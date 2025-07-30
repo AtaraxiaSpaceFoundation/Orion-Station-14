@@ -1,7 +1,11 @@
 ﻿using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
-namespace Content.Europa.AGPL.Server.CloningAppearance.Components;
+namespace Content.Server.CloningAppearance.Components;
+
+//
+// License-Identifier: AGPL-3.0-or-later
+//
 
 [RegisterComponent]
 public sealed partial class CloningAppearanceComponent : Component
