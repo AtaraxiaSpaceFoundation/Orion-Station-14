@@ -147,7 +147,7 @@ internal sealed class AdminNameOverlay : Overlay
 
     //TODO make this adjustable via GUI
     private readonly ProtoId<RoleTypePrototype>[] _filter =
-        ["SoloAntagonist", "TeamAntagonist", "SiliconAntagonist", "FreeAgent", "InteQ"]; // Europa-Edit - Added InteQ
+        ["SoloAntagonist", "TeamAntagonist", "SiliconAntagonist", "FreeAgent", "InteQ", "GhostRole"]; // Europa-Edit - Added InteQ, GhostRole
 
     private readonly string _antagLabelClassic = Loc.GetString("admin-overlay-antag-classic");
 

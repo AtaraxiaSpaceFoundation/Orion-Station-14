@@ -1,0 +1,19 @@
+- type: entity
+  parent: [ BaseItem, BaseSetSelector ]
+  id: HermitStorySelector
+  name: hermit story
+  description: Select your own story to tell.
+  components:
+  - type: Unremoveable
+  - type: Sprite
+    sprite: Objects/Devices/station_beacon.rsi
+    state: blink
+  - type: SetSelector
+    possibleSets:
+    - HermitMiner
+    - HermitInteQ
+    - HermitSyndicate
+    - HermitCentcom
+    - HermitClown
+    - HermitAssistant
+    maxSelectedSets: 1
