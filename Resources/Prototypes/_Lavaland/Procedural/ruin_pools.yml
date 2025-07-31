@@ -48,6 +48,7 @@
     MiningPost: 3
     # Europa-Start
     InteQSizo: 1
+    BroodmotherArena: 1
     # Europa-End
   dungeonRuins:
     CommonRuin5x5: 60

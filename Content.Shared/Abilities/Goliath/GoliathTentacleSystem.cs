@@ -29,6 +29,11 @@ public sealed class GoliathTentacleSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<GoliathSummonTentacleAction>(OnSummonAction);
+        // Europa-Start
+        SubscribeLocalEvent<GoliathSummonTentacleSquareAction>(OnSummonSquareAction);
+        SubscribeLocalEvent<GoliathSummonTentacleHollowSquareAction>(OnSummonHollowSquareAction);
+        SubscribeLocalEvent<GoliathSummonTentacleDiagonalCrossAction>(OnSummonDiagonalCrossAction);
+        // Europa-End
     }
 
     private void OnSummonAction(GoliathSummonTentacleAction args)
@@ -71,4 +76,123 @@ public sealed class GoliathTentacleSystem : EntitySystem
 
         args.Handled = true;
     }
+
+    // Europa-Start
+    private void OnSummonSquareAction(GoliathSummonTentacleSquareAction args)
+    {
+        if (args.Handled || args.Coords is not { } coords)
+            return;
+
+        List<EntityCoordinates> spawnPos = new();
+
+        var squareSize = args.Range;
+        var halfSize = squareSize / 2;
+
+        for (int x = -halfSize; x <= halfSize; x++)
+        {
+            for (int y = -halfSize; y <= halfSize; y++)
+            {
+                spawnPos.Add(coords.Offset(new Vector2i(x, y)));
+            }
+        }
+
+        if (_transform.GetGrid(coords) is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return;
+
+        foreach (var pos in spawnPos)
+        {
+            if (!_map.TryGetTileRef(grid, gridComp, pos, out var tileRef) ||
+                tileRef.IsSpace() ||
+                _turf.IsTileBlocked(tileRef, CollisionGroup.Impassable))
+            {
+                continue;
+            }
+
+            if (_net.IsServer)
+                Spawn(args.EntityId, pos);
+        }
+
+        args.Handled = true;
+    }
+
+    private void OnSummonHollowSquareAction(GoliathSummonTentacleHollowSquareAction args)
+    {
+        if (args.Handled || args.Coords is not { } coords)
+            return;
+
+        List<EntityCoordinates> spawnPos = new();
+
+        var squareSize = args.Range;
+        var halfSize = squareSize / 2;
+
+        for (int x = -halfSize; x <= halfSize; x++)
+        {
+            for (int y = -halfSize; y <= halfSize; y++)
+            {
+                if (Math.Abs(x) == halfSize || Math.Abs(y) == halfSize)
+                {
+                    spawnPos.Add(coords.Offset(new Vector2i(x, y)));
+                }
+            }
+        }
+
+        if (_transform.GetGrid(coords) is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return;
+
+        foreach (var pos in spawnPos)
+        {
+            if (!_map.TryGetTileRef(grid, gridComp, pos, out var tileRef) ||
+                tileRef.IsSpace() ||
+                _turf.IsTileBlocked(tileRef, CollisionGroup.Impassable))
+            {
+                continue;
+            }
+
+            if (_net.IsServer)
+                Spawn(args.EntityId, pos);
+        }
+
+        args.Handled = true;
+    }
+
+    private void OnSummonDiagonalCrossAction(GoliathSummonTentacleDiagonalCrossAction args)
+    {
+        if (args.Handled || args.Coords is not { } coords)
+            return;
+
+        List<EntityCoordinates> spawnPos = new();
+
+        var squareSize = args.Range;
+        var halfSize = squareSize / 2;
+
+        for (int x = -halfSize; x <= halfSize; x++)
+        {
+            for (int y = -halfSize; y <= halfSize; y++)
+            {
+                if (Math.Abs(x) == Math.Abs(y))
+                {
+                    spawnPos.Add(coords.Offset(new Vector2i(x, y)));
+                }
+            }
+        }
+
+        if (_transform.GetGrid(coords) is not { } grid || !TryComp<MapGridComponent>(grid, out var gridComp))
+            return;
+
+        foreach (var pos in spawnPos)
+        {
+            if (!_map.TryGetTileRef(grid, gridComp, pos, out var tileRef) ||
+                tileRef.IsSpace() ||
+                _turf.IsTileBlocked(tileRef, CollisionGroup.Impassable))
+            {
+                continue;
+            }
+
+            if (_net.IsServer)
+                Spawn(args.EntityId, pos);
+        }
+
+        args.Handled = true;
+    }
+    // Europa-End
 }

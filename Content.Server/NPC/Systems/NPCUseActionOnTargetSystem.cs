@@ -42,6 +42,7 @@
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
@@ -50,6 +51,7 @@ public sealed class NPCUseActionOnTargetSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly IRobustRandom _random = default!; // Europa
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -61,28 +63,37 @@ public sealed class NPCUseActionOnTargetSystem : EntitySystem
 
     private void OnMapInit(Entity<NPCUseActionOnTargetComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.ActionEnt = _actions.AddAction(ent, ent.Comp.ActionId);
+        // Europa-Start
+        foreach (var actionProtoId in ent.Comp.ActionId)
+        {
+            var actionEnt = _actions.AddAction(ent.Owner, actionProtoId);
+            if (actionEnt == null || !actionEnt.HasValue)
+                continue;
+
+            ent.Comp.ActionEntities.Add(actionEnt.Value);
+        }
+        // Europa-End
     }
 
-    public bool TryUseTentacleAttack(Entity<NPCUseActionOnTargetComponent?> user, EntityUid target)
+    public bool TryUseTentacleAttack(Entity<NPCUseActionOnTargetComponent?> user, EntityUid target, List<EntityUid> actionEntities) // Europa-Edit | Added List
     {
+        var actionEnt = _random.Pick(actionEntities); // Europa
+
         if (!Resolve(user, ref user.Comp, false))
             return false;
 
-        if (!TryComp<EntityWorldTargetActionComponent>(user.Comp.ActionEnt, out var action))
+        if (!TryComp<EntityWorldTargetActionComponent>(actionEnt, out var action)) // Europa
             return false;
 
         if (!_actions.ValidAction(action))
             return false;
 
         if (action.Event != null)
-        {
             action.Event.Coords = Transform(target).Coordinates;
-        }
 
         _actions.PerformAction(user,
             null,
-            user.Comp.ActionEnt.Value,
+            actionEnt, // Europa-Edit
             action,
             action.BaseEvent,
             _timing.CurTime,
@@ -101,7 +112,7 @@ public sealed class NPCUseActionOnTargetSystem : EntitySystem
             if (!htn.Blackboard.TryGetValue<EntityUid>(comp.TargetKey, out var target, EntityManager))
                 continue;
 
-            TryUseTentacleAttack((uid, comp), target);
+            TryUseTentacleAttack(uid, target, comp.ActionEntities); // Europa-Edit
         }
     }
 }

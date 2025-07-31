@@ -120,8 +120,9 @@
         7
       NavSmash: !type:Bool
         true
-  - type: NPCUseActionOnTarget
-    actionId: ActionGoliathTentacle
+  - type: NPCUseActionOnTarget # Europa-Edit | Separate action ids
+    actionId:
+    - ActionGoliathTentacle
   - type: Tag
     tags:
     - CannotSuicide

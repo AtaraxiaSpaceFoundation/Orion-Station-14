@@ -25,8 +25,8 @@ public sealed partial class NPCUseActionOnTargetComponent : Component
     /// Action that's going to attempt to be used.
     /// </summary>
     [DataField(required: true)]
-    public EntProtoId<EntityWorldTargetActionComponent> ActionId;
+    public List<EntProtoId<EntityWorldTargetActionComponent>> ActionId = new(); //  Europa-Edit
 
-    [DataField]
-    public EntityUid? ActionEnt;
+    [DataField] // Europa
+    public List<EntityUid> ActionEntities = new();
 }
