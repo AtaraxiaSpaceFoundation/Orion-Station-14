@@ -46,3 +46,14 @@
   components:
     - type: Sprite
       sprite: _Europa/Clothing/Neck/Cloaks/white_captain_mantle.rsi
+      
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMantleCaptainWhiteShoulder
+  name: captain's white mantle
+  description: The perfect white captain's shoulder mantle. The purity makes it brutal.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Neck/Mantle/white_captain_mantle.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Neck/Mantle/white_captain_mantle.rsi
