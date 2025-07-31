@@ -49,9 +49,9 @@
   description: Black suit with gold shoulder straps.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Jumpsuit/captain_command.rsi
+    sprite: _Europa/Clothing/Uniforms/jumpsuit/captain_command.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Jumpsuit/captain_command.rsi
+    sprite: _Europa/Clothing/Uniforms/jumpsuit/captain_command.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -60,9 +60,9 @@
   description: Captain white jumpsuit symbolizes that your salary is clearly above the norm.
   components:
     - type: Sprite
-      sprite: _Europa/Clothing/Uniforms/Jumpsuit/captain_white.rsi
+      sprite: _Europa/Clothing/Uniforms/jumpsuit/captain_white.rsi
     - type: Clothing
-      sprite: _Europa/Clothing/Uniforms/Jumpsuit/captain_white.rsi
+      sprite: _Europa/Clothing/Uniforms/jumpsuit/captain_white.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -71,6 +71,6 @@
   description: Jumpsuit showing your status is how terrible... the great ruler.
   components:
     - type: Sprite
-      sprite: _Europa/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+      sprite: _Europa/Clothing/Uniforms/jumpsuit/sheriff.rsi
     - type: Clothing
-      sprite: _Europa/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+      sprite: _Europa/Clothing/Uniforms/jumpsuit/sheriff.rsi
