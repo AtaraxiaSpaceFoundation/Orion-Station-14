@@ -6,3 +6,5 @@ ent-ClothingUniformJumpsuitInteQHonorable = почётный костюм Инт
     .desc = Почетная униформа Интек, выглядит изящно.
 ent-ClothingUniformJumpsuitInteQMedical = медицинский костюм Интек
     .desc = Костюм, который символизирует нашу жизнь.
+ent-ClothingUniformJumpsuitWhiteCapTurtleneck = белая водолазка капитана
+    .desc = Настоящая белая водолазка капитана.

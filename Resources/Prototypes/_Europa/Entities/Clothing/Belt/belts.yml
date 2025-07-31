@@ -54,3 +54,27 @@
     useRate: 0
   - type: UseDelay
     delay: 10.0
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltWhiteSheath
+  name: white sabre sheath
+  description: Style, shine, everything for the best sabers in the universe.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Belt/white_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Europa/Clothing/Belt/white_sheath.rsi
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltSheriffSheath
+  name: sheriff sabre sheath
+  description: Practicality, durability, the saber will definitely not end up in your leg.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Belt/sheriff_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Europa/Clothing/Belt/sheriff_sheath.rsi
