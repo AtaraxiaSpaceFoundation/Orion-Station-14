@@ -32,4 +32,4 @@
   description: A large duffel bag for holding extra captainly goods, but now in white.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Back/Duffels/white_captain_duffel.rs
+    sprite: _Europa/Clothing/Back/Duffels/white_captain_duffel.rsi

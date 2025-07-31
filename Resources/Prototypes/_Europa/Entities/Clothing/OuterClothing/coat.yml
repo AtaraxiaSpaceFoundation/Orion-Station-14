@@ -54,7 +54,7 @@
     sprite: _Europa/Clothing/OuterClothing/Coats/inteq_hoodie.rsi
 
 - type: entity
-  parent: ClothingOuterCapJacket 
+  parent: ClothingOuterCapJacket
   id: ClothingOuterCoatCaptainWhite
   name: white captain's jacket
   description: White captain formal jacket, inlaid with gold.

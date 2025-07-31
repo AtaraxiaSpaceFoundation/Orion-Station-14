@@ -14,7 +14,7 @@
     ClothingNeckMantleCap: 1
     ClothingOuterWinterCap: 1
     ClothingOuterArmorCaptainCarapace: 1
-    ClothingOuterCoatCaptain: 1 # Corvax-Resprite
+    ClothingOuterCapJacket: 1 # Corvax-Resprite
     ClothingUniformJumpsuitCaptain: 1
     ClothingUniformJumpskirtCaptain: 1
     ClothingUniformJumpsuitCapFormal: 1
@@ -24,8 +24,8 @@
     ClothingHeadHatBeretCaptainWhite: 1
     ClothingHeadHatCapcapWhite: 1
     ClothingNeckCloakRoyalCaptain: 1
-    ClothingNeckWhiteMantleCaptain: 1
     ClothingOuterCoatCaptainWhite: 1
+    ClothingNeckWhiteMantleCaptain: 1
     ClothingNeckMantleCaptainWhiteShoulder: 1
     ClothingOuterArmorCaptainCarapaceWhite: 1
     ClothingUniformJumpskirtWhiteCaptain: 1
@@ -33,6 +33,7 @@
     ClothingUniformJumpsuitWhiteCapTurtleneck: 1 # Europa-Edit
     ClothingHandsGlovesCaptainWhite: 1
     ClothingBeltWhiteSheath: 1
+    ClothingBackpackDuffelWhiteCaptain: 1
    # Sheriff
     ClothingHeadHatBeretSheriff: 1
     ClothingHeadHatCapcapSheriff: 1
@@ -46,7 +47,6 @@
     ClothingBackpackCaptain: 1
     ClothingBackpackDuffelCaptain: 1
     ClothingBackpackSatchelCaptain: 1
-    ClothingBackpackDuffelWhiteCaptain: 1
    # Stuff
     MedalCase: 1
     FlippoEngravedLighter: 1

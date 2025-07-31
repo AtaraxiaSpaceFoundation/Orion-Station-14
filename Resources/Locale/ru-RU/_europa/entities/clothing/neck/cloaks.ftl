@@ -6,3 +6,5 @@ ent-ClothingNeckCloakSyndicateAdmiral = плащ адмирала синдика
     .desc = Красный плащ, прошитый золотой тканью.
 ent-ClothingNeckWhiteMantleCaptain = белая мантия капитана
     .desc = Мантия капитана, с белым пухом.
+ent-ClothingNeckMantleCaptainWhiteShoulder = белая наплечная мантия капитана
+    .desc = Идеальная белая наплечная мантия для капитана. Чистота придает ей брутальность.
