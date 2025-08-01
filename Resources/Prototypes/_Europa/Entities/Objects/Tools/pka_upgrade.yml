@@ -14,5 +14,5 @@
   - type: GunUpgradeDamage # Filler
     damage:
       types:
-        ArmorPiercing: 10
+        Piercing: 10
         Structural: 15
