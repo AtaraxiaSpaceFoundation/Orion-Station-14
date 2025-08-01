@@ -12,8 +12,7 @@
       "directions": 4
     },
     {
-      "name": "goliath_preattack",
-      "directions": 4
+      "name": "goliath_preattack"
     },
     {
       "name": "goliath_dead"

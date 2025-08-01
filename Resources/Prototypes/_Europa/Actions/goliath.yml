@@ -6,10 +6,10 @@
   - type: EntityWorldTargetAction
     raiseOnUser: true
     icon:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi // Europa-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Europa-Edit | Separate tentacle
       state: goliath_tentacle_spawn
     iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi // Europa-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Europa-Edit | Separate tentacle
       state: goliath_tentacle_wiggle
     sound:
       path: "/Audio/Weapons/slash.ogg"
@@ -25,10 +25,10 @@
   - type: EntityWorldTargetAction
     raiseOnUser: true
     icon:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi // Europa-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Europa-Edit | Separate tentacle
       state: goliath_tentacle_spawn
     iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi // Europa-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Europa-Edit | Separate tentacle
       state: goliath_tentacle_wiggle
     sound:
       path: "/Audio/Weapons/slash.ogg"
@@ -44,10 +44,10 @@
   - type: EntityWorldTargetAction
     raiseOnUser: true
     icon:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi // Europa-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Europa-Edit | Separate tentacle
       state: goliath_tentacle_spawn
     iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi // Europa-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Europa-Edit | Separate tentacle
       state: goliath_tentacle_wiggle
     sound:
       path: "/Audio/Weapons/slash.ogg"
