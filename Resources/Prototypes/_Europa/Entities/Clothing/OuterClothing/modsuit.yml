@@ -1,0 +1,9 @@
+- type: entity
+  parent: ClothingModsuitChestplateStandard
+  id: ClothingModsuitChestplateSuspicious
+  name: suspicious hardsuit chestplate
+  description: A special modular suit spaceproof cover designed for compact folding inside modular suit control.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Modsuits/suspicious.rsi

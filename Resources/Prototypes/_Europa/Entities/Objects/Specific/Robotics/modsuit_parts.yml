@@ -1,0 +1,10 @@
+- type: entity
+  parent: ModsuitPlatingExternal
+  id: ModsuitPlatingSuspicious
+  name: MOD standard suspicious plating
+  description: A part used in MOD construction.
+  components:
+  - type: Tag
+    tags:
+    - ModsuitPart
+    - ModsuitPlatingExternal # Change this when they become obtainable

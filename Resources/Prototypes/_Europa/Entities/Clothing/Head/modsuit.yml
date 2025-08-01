@@ -1,0 +1,9 @@
+- type: entity
+  parent: ClothingModsuitHelmetStandard
+  id: ClothingModsuitHelmetSuspicious
+  name: suspicious hardsuit helmet
+  description: A special modular suit spaceproof helmet designed for compact folding inside modular suit control.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Modsuits/suspicious.rsi

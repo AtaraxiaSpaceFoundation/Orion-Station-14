@@ -1,0 +1,18 @@
+- type: entity
+  parent: ClothingModsuitStandard
+  id: ClothingModsuitSuspicious
+  name: suspicious hardsuit control unit
+  description: A special modular suit contol unit containing all necessary modular hardsuit parts.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Back/Modsuits/suspicious.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingModsuitHelmetSuspicious
+      gloves: ClothingModsuitGauntletsSuspicious
+      outerClothing: ClothingModsuitChestplateSuspicious
+      shoes: ClothingModsuitBootsSuspicious
+
+- type: entity
+  parent: [ ClothingModsuitSuspicious, ClothingModsuitStandardPowerCell ]
+  id: ClothingModsuitSuspiciousPowerCell
