@@ -171,6 +171,7 @@
     layers:
     - state: goliath_tentacle_wiggle
   - type: StunOnContact
+    duration: 4 # Europa-Edit
     blacklist:
       tags:
       - Goliath

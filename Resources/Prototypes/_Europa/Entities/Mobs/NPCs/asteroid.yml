@@ -58,8 +58,8 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Blunt: 12
-        Slash: 4
+        Blunt: 5
+        Slash: 3
     range: 1.12 # Goob - Allows kinetic crushers to fight them without taking guaranteed damage.
   - type: NpcFactionMember
     factions:

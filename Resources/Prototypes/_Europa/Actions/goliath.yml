@@ -60,7 +60,7 @@
   name: "[color=green]Rise Goliath Baby[/color]"
   description: Attack!
   components:
-  - type: EntityTargetAction
+  - type: EntityWorldTargetAction
     icon:
       sprite: _Europa/Interface/Actions/broodmother.rsi
       state: spawn_children
@@ -71,3 +71,4 @@
       path: "/Audio/Weapons/slash.ogg"
     event: !type:GoliathSummonBabyAction
     useDelay: 45
+    range: 4
