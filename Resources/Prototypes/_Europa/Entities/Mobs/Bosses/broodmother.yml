@@ -67,6 +67,7 @@
     - ActionGoliathTentacleSquare
     - ActionGoliathTentacleHollowSquare
     - ActionGoliathTentacleDiagonalCross
+    - ActionGoliathSpawnBaby
   - type: Butcherable
     spawned:
     - id: FoodMeatGoliath

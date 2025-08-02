@@ -83,6 +83,9 @@ public sealed class GoliathTentacleSystem : EntitySystem
         if (args.Handled || args.Coords is not { } coords)
             return;
 
+        _popup.PopupPredicted(Loc.GetString("tentacle-ability-use-popup", ("entity", args.Performer)), args.Performer, args.Performer, type: PopupType.SmallCaution);
+        _stun.TryStun(args.Performer, TimeSpan.FromSeconds(0.8f), false);
+
         List<EntityCoordinates> spawnPos = new();
 
         var squareSize = args.Range;
@@ -119,6 +122,9 @@ public sealed class GoliathTentacleSystem : EntitySystem
     {
         if (args.Handled || args.Coords is not { } coords)
             return;
+
+        _popup.PopupPredicted(Loc.GetString("tentacle-ability-use-popup", ("entity", args.Performer)), args.Performer, args.Performer, type: PopupType.SmallCaution);
+        _stun.TryStun(args.Performer, TimeSpan.FromSeconds(0.8f), false);
 
         List<EntityCoordinates> spawnPos = new();
 
@@ -159,6 +165,9 @@ public sealed class GoliathTentacleSystem : EntitySystem
     {
         if (args.Handled || args.Coords is not { } coords)
             return;
+
+        _popup.PopupPredicted(Loc.GetString("tentacle-ability-use-popup", ("entity", args.Performer)), args.Performer, args.Performer, type: PopupType.SmallCaution);
+        _stun.TryStun(args.Performer, TimeSpan.FromSeconds(0.8f), false);
 
         List<EntityCoordinates> spawnPos = new();
 

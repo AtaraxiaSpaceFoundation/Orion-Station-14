@@ -8,13 +8,13 @@
     "copyright": "Taken from https://github.com/tgstation/tgstation",
     "states": [
         {
-            "name": "spawn_children"
-        },
-        {
             "name": "rage"
         },
         {
-            "name": "call_children"
+            "name": "spawn_children"
+        },
+        {
+            "name": "spawn_children_on"
         }
     ]
 }

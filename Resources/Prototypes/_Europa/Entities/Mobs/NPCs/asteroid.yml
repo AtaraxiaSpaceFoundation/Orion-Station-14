@@ -1,6 +1,6 @@
 - type: entity
-  id: MobGoliathBaby
   parent: [ BaseMobAsteroid, MobBloodstream ]
+  id: MobGoliathBaby
   name: baby goliath
   description: Not massive baby beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
   components:
@@ -32,13 +32,13 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead # Goob - 4 PKA shots, 2 crusher destabilised hits
+      50: Dead # Like 2 PKA shots, 1 crusher destabilised hits
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTypeTrigger
         damageType: Blunt
-        damage: 135
+        damage: 45
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:

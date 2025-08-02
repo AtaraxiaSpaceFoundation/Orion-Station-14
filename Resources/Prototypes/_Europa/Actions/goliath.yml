@@ -33,7 +33,7 @@
     sound:
       path: "/Audio/Weapons/slash.ogg"
     event: !type:GoliathSummonTentacleHollowSquareAction
-    useDelay: 10
+    useDelay: 14
     range: 10
 
 - type: entity
@@ -52,5 +52,22 @@
     sound:
       path: "/Audio/Weapons/slash.ogg"
     event: !type:GoliathSummonTentacleDiagonalCrossAction
-    useDelay: 14
+    useDelay: 10
     range: 10
+
+- type: entity
+  id: ActionGoliathSpawnBaby
+  name: "[color=green]Rise Goliath Baby[/color]"
+  description: Attack!
+  components:
+  - type: EntityTargetAction
+    icon:
+      sprite: _Europa/Interface/Actions/broodmother.rsi
+      state: spawn_children
+    iconOn:
+      sprite: _Europa/Interface/Actions/broodmother.rsi
+      state: spawn_children_on
+    sound:
+      path: "/Audio/Weapons/slash.ogg"
+    event: !type:GoliathSummonBabyAction
+    useDelay: 45
