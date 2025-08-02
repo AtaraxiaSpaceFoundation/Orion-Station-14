@@ -2,3 +2,8 @@
   id: InteQ
   name: role-type-inteq-name
   color: '#d82000'
+
+- type: roleType
+  id: GhostRole
+  name: role-type-ghost-role-name
+  color: '#FF9D8A'

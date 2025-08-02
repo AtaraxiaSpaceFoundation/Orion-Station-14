@@ -87,7 +87,7 @@
 - type: lavalandGridRuin
   id: Hermit
   name: lavaland-ruin-shelter
-  path: /Maps/_Lavaland/Lavaland/ruin_hermit.yml
+  path: /Maps/_Europa/Lavaland/ruin_hermit.yml # Europa-Edit | Get real hermit ghost role
   priority: 11
 
 - type: lavalandGridRuin

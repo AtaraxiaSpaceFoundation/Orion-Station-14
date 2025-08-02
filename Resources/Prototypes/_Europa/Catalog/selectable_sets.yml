@@ -1,0 +1,139 @@
+# Lavaland Hermit
+
+- type: selectableSet
+  id: HermitMiner
+  name: selectable-set-hermit-miner-name
+  description: selectable-set-hermit-miner-description
+  sprite:
+    sprite: Objects/Specific/Mining/mineral_scanner.rsi
+    state: icon
+  content:
+    - ClothingBackpackSalvage
+    - ClothingUniformJumpsuitSalvageSpecialist
+    - ClothingShoesBootsSalvage
+    - ClothingHandsGlovesColorBlack
+    - WeaponProtoKineticAccelerator
+    - LavalandEquipmentExplorerSuit
+    - OxygenTankFilled
+    - ClothingBeltSalvageWebbing
+    - MiningVoucher
+    - MineralScanner
+    - ShelterCapsule
+    - SurvivalMedipen
+    - SurvivalKnife
+    - DrinkAbsintheBottleFull
+    - BoxSurvival
+    - Lantern
+    - CircuitImprinterMachineCircuitboard # Make fun
+
+- type: selectableSet
+  id: HermitInteQ
+  name: selectable-set-hermit-inteq-name
+  description: selectable-set-hermit-inteq-description
+  sprite:
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  content:
+    - ClothingUniformJumpsuitInteQFormal
+    - ClothingBackpackInteQ
+    - ClothingHeadHelmetSwatInteQ
+    - ClothingMaskNeckGaiter
+    - ClothingEyesGogglessInteQ
+    - ClothingHandsGlovesCombat
+    - ClothingOuterArmorBasic
+    - ClothingShoesBootsCombatFilled
+    - OxygenTankFilled
+    - ClothingBeltInteQWebbing
+    - StimpackMini
+    - BoxSurvival
+    - FlashlightSeclite
+    - WeaponProtoKineticPistol # Pussy-mode
+    - CircuitImprinterMachineCircuitboard # Make fun
+
+- type: selectableSet
+  id: HermitSyndicate
+  name: selectable-set-hermit-syndicate-name
+  description: selectable-set-hermit-syndicate-description
+  sprite:
+    sprite: Clothing/Mask/gassyndicate.rsi
+    state: icon
+  content:
+    - ClothingUniformJumpsuitSyndieFormal
+    - ClothingBackpackDuffelSyndicate
+    - ClothingShoesBootsCombatFilled
+    - ClothingMaskGasSyndicate
+    - ClothingOuterCoatSyndieCapArmored
+    - ClothingHandsGlovesColorBlack
+    - ClothingBeltMilitaryWebbing
+    - OxygenTankFilled
+    - StimpackMini
+    - BoxSurvivalSyndicate
+    - FlashlightSeclite
+    - WeaponProtoKineticPistol # Pussy-mode
+    - CircuitImprinterMachineCircuitboard # Make fun
+
+- type: selectableSet
+  id: HermitCentcom
+  name: selectable-set-hermit-centcom-name
+  description: selectable-set-hermit-centcom-description
+  sprite:
+    sprite: Clothing/Head/Hats/comcap.rsi
+    state: icon
+  content:
+    - ClothingUniformJumpsuitCentcomOfficial
+    - ClothingShoesBootsJackFilled
+    - ClothingHeadHatCentcomcap
+    - ClothingHandsGlovesHeavyGoldenTrim
+    - ClothingBackpackSatchelLeather
+    - ClothingOuterArmorCentcommCarapace
+    - ClothingBeltHolster
+    - BoxFolderCentCom
+    - BoxFolderCentComClipboard
+    - OxygenTankFilled
+    - MedkitCombatFilled
+    - BoxSurvival
+    - FlashlightSeclite
+    - WeaponProtoKineticPistol # Pussy-mode
+    - CircuitImprinterMachineCircuitboard # Make fun
+
+- type: selectableSet
+  id: HermitClown
+  name: selectable-set-hermit-clown-name
+  description: selectable-set-hermit-clown-description
+  sprite:
+    sprite: Clothing/Mask/clown.rsi
+    state: icon
+  content:
+    - ClothingUniformJumpsuitClown
+    - ClothingShoesClown
+    - ClothingBackpackClown
+    - ClothingMaskClown
+    - OxygenTankFilled
+    - BikeHorn
+    - ClownRecorder
+    - BoxHugSlots
+    - PumpkinLanternLarge
+    - WeaponProtoKineticPistol # Pussy-mode
+    - MobHonkBot
+    - CircuitImprinterMachineCircuitboard # Make fun
+
+- type: selectableSet
+  id: HermitAssistant
+  name: selectable-set-hermit-assistant-name
+  description: selectable-set-hermit-assistant-description
+  sprite:
+    sprite: Clothing/Mask/gas.rsi
+    state: icon
+  content:
+    - ClothingUniformJumpsuitColorWhite
+    - ClothingMaskGas
+    - ClothingShoesBootsJack
+    - ClothingHandsGlovesFingerless
+    - ClothingBeltUtility
+    - ToolboxElectricalFilled
+    - ToolboxMechanicalFilled
+    - OxygenTankFilled
+    - BoxSurvival
+    - Lantern
+    - WeaponProtoKineticPistol # Pussy-mode
+    - CircuitImprinterMachineCircuitboard # Make fun
