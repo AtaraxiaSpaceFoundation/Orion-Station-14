@@ -49,6 +49,6 @@
   description: White captain jumpsuit skirt symbolizing that your salary clearly exceeds the norm.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/jumpskirt/white_captain.rsi
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/white_captain.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/jumpskirt/white_captain.rsi
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/white_captain.rsi
