@@ -88,3 +88,6 @@
     - id: MaterialGoliathHide1
       amount: 1
   - type: Fauna # Lavaland Change
+  - type: ConditionalSpawner # Spawn animation from Ebay
+    prototypes:
+    - GoliathTentacle
