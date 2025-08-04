@@ -1,25 +1,33 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from S.P.L.U.R.T-tg",
+  "copyright": "Taken from S.P.L.U.R.T-tg | reptilian by PuroSlavKing (Github)",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
-      "name": "boots"
+       "name": "boots"
     },
-		{
-		  "name": "boots-sealed"
-		},
-		{
-			"name": "equipped-FEET",
-			"directions": 4
-		},
-		{
-			"name": "equipped-FEET-sealed",
-			"directions": 4
-		}
+    {
+       "name": "boots-sealed"
+    },
+    {
+       "name": "equipped-FEET",
+       "directions": 4
+    },
+    {
+       "name": "equipped-FEET-reptilian",
+       "directions": 4
+    },
+    {
+       "name": "equipped-FEET-sealed",
+       "directions": 4
+    },
+    {
+       "name": "equipped-FEET-sealed-reptilian",
+       "directions": 4
+    }
   ]
 }
