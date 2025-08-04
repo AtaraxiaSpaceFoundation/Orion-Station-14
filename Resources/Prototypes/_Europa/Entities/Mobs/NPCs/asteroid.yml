@@ -33,23 +33,6 @@
     thresholds:
       0: Alive
       50: Dead # Like 2 PKA shots, 1 crusher destabilised hits
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 45
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SmallExplosionInstant:
-            min: 1
-            max: 1
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: gib
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
@@ -91,3 +74,8 @@
   - type: ConditionalSpawner # Spawn animation from Ebay
     prototypes:
     - GoliathTentacle
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: SpawnOnTrigger
+    proto: SmallExplosionInstant

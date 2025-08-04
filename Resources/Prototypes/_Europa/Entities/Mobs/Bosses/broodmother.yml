@@ -1,9 +1,16 @@
 - type: entity
-  parent: MobGoliath
+  parent: BaseMobAsteroid
   id: MobGoliathBroodmother
   name: goliath broodmother
   description: An example of sexual dimorphism, this female goliath looks much different than the males of her species.  She is, however, just as dangerous, if not more.
   components:
+  - type: Body # Shitmed Change
+    prototype: Goliath
+  - type: SurgeryTarget # Shitmed
+  - type: UserInterface # Shitmed
+    interfaces:
+      enum.SurgeryUIKey.Key:
+        type: SurgeryBui
   - type: Sprite
     sprite: _Europa/Mobs/Bosses/broodmother.rsi
     layers:
@@ -15,43 +22,27 @@
         Base: alive
       Dead:
         Base: dead
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.40
-        density: 100
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: RotationVisuals
-    defaultRotation: 0
-    horizontalRotation: 0
   - type: MovementSpeedModifier
-    baseWalkSpeed : 3.20
-    baseSprintSpeed : 3.00
-  - type: Bloodstream
-    bloodMaxVolume: 10
-    bloodlossThreshold: 0
-    chemicalMaxVolume: 0
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 2.5
   - type: MobThresholds
     thresholds:
       0: Alive
-      1200: Dead # Like 42 PKA shots
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 1400
+      350: Dead
   - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.40
+    animation: WeaponArcPunch
     damage:
       types:
         Blunt: 25
         Slash: 15
     range: 1.12 # Goob - Allows kinetic crushers to fight them without taking guaranteed damage.
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
   - type: HTN
     constantlyReplan: false
     rootTask:
@@ -60,7 +51,9 @@
       VisionRadius: !type:Single
         15
       AggroVisionRadius: !type:Single
-        25
+        18
+      NavSmash: !type:Bool
+        true
   - type: NPCUseActionOnTarget
     actionId:
     - ActionGoliathTentacle
@@ -68,6 +61,12 @@
     - ActionGoliathTentacleHollowSquare
     - ActionGoliathTentacleDiagonalCross
     - ActionGoliathSpawnBaby
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - Goliath
+    - FootstepSound
+  - type: NoSlip
   - type: Butcherable
     spawned:
     - id: FoodMeatGoliath
@@ -76,10 +75,14 @@
       amount: 10
     - id: BroodmotherTongue
       amount: 1
-  - type: Temperature
-    heatDamageThreshold: 800
   - type: TriggerOnMobstateChange
     mobState:
     - Dead
   - type: SpawnOnTrigger
     proto: LavalandCrateNecropolisRandom
+  - type: Speech
+    speechVerb: LargeMob
+  - type: Fauna # Lavaland Change
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Broodmother
