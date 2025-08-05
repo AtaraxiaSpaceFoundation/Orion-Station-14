@@ -27,7 +27,10 @@
 
 using Content.Goobstation.Common.DoAfter;
 using Content.Shared.Actions;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Mind;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.MouseRotator;
 using Content.Shared.Movement.Components;
 using Content.Shared.Popups;
@@ -42,6 +45,7 @@ public abstract class SharedCombatModeSystem : EntitySystem
     [Dependency] private   readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private   readonly SharedPopupSystem _popup = default!;
     [Dependency] private   readonly SharedMindSystem  _mind = default!;
+    [Dependency] private   readonly MobStateSystem _mobState = default!; // Europa
 
     public override void Initialize()
     {
@@ -73,8 +77,8 @@ public abstract class SharedCombatModeSystem : EntitySystem
         args.Handled = true;
         SetInCombatMode(uid, !component.IsInCombatMode, component);
 
-        var msg = component.IsInCombatMode ? "action-popup-combat-enabled" : "action-popup-combat-disabled";
-        _popup.PopupClient(Loc.GetString(msg), args.Performer, args.Performer);
+//        var msg = component.IsInCombatMode ? "action-popup-combat-enabled" : "action-popup-combat-disabled"; // Europa-Remove
+//        _popup.PopupClient(Loc.GetString(msg), args.Performer, args.Performer); // Europa-Remove
     }
 
     public void SetCanDisarm(EntityUid entity, bool canDisarm, CombatModeComponent? component = null)
@@ -97,6 +101,11 @@ public abstract class SharedCombatModeSystem : EntitySystem
 
         if (component.IsInCombatMode == value)
             return;
+
+        // Europa-Start | Dont let entity gone postal when unconscious
+        if (_mobState.IsDead(entity) || _mobState.IsCritical(entity) || HasComp<SleepingComponent>(entity))
+            return;
+        // Europa-End
 
         component.IsInCombatMode = value;
         Dirty(entity, component);
