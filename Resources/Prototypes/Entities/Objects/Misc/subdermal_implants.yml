@@ -356,7 +356,7 @@
     - type: TriggerOnMobstateChange #Chains with OnUseTimerTrigger
       mobState:
       - Dead
-      preventSuicide: true
+      preventSuicide: false # Europa-Edit | true > false
     - type: OnUseTimerTrigger
       delay: 7
       initialBeepDelay: 0
@@ -369,9 +369,9 @@
       deleteItems: true
     - type: Explosive
       explosionType: Default
-      totalIntensity: 3500
-      intensitySlope: 15
-      maxIntensity: 70
+      totalIntensity: 4000 # Europa-Edit | 3500 > 4000
+      intensitySlope: 5 # Europa-Edit | 15 > 5
+      maxIntensity: 50 # Europa-Edit | 70 > 50
       canCreateVacuum: true
     - type: Tag
       tags:
