@@ -261,6 +261,13 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: LanguageKnowledge # Europa
+        speaks:
+        - TauCetiBasic
+        - Codespeak
+        understands:
+        - TauCetiBasic
+        - Codespeak
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
@@ -279,6 +286,13 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: LanguageKnowledge # Europa
+        speaks:
+        - TauCetiBasic
+        - Codespeak
+        understands:
+        - TauCetiBasic
+        - Codespeak
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
@@ -301,6 +315,13 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: LanguageKnowledge # Europa
+        speaks:
+        - TauCetiBasic
+        - Codespeak
+        understands:
+        - TauCetiBasic
+        - Codespeak
       - type: NukeOperative
       - type: RandomMetadata
         nameSegments:
