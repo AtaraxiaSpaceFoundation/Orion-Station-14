@@ -104,7 +104,10 @@ public abstract class SharedCombatModeSystem : EntitySystem
 
         // Europa-Start | Dont let entity gone postal when unconscious
         if (_mobState.IsDead(entity) || _mobState.IsCritical(entity) || HasComp<SleepingComponent>(entity))
-            return;
+        {
+            if (value)
+                return;
+        }
         // Europa-End
 
         component.IsInCombatMode = value;
