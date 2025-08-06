@@ -58,6 +58,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         SubscribeLocalEvent<CombatModeComponent, AfterAutoHandleStateEvent>(OnHandleState);
         SubscribeLocalEvent<CombatModeComponent, GetStatusIconsEvent>(UpdateCombatModeIndicator); // Europa
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
+        Subs.CVar(_cfg, CCVars.CombatIndicator, (bool value) => OnShowCombatIndicatorChanged(value), true); // Europa
 
         _spriteQuery = GetEntityQuery<SpriteComponent>(); // Europa
     }
@@ -124,22 +125,41 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     }
 
     // Europa-Start
+    private bool _combatIndicatorEnabled = false;
+
+    private void OnShowCombatIndicatorChanged(bool value)
+    {
+        _combatIndicatorEnabled = value;
+    }
+
     private void UpdateCombatModeIndicator(EntityUid uid, CombatModeComponent comp, ref GetStatusIconsEvent _)
     {
-        if (!_spriteQuery.TryComp(uid, out var sprite))
+        if (!_combatIndicatorEnabled)
+        {
+            if (_spriteQuery.TryComp(uid, out var sprite) && sprite.LayerMapTryGet("combat_mode_indicator", out var layerToRemove))
+            {
+                sprite.RemoveLayer(layerToRemove);
+            }
             return;
+        }
 
         if (comp.IsInCombatMode)
         {
+            if (!_spriteQuery.TryComp(uid, out var sprite))
+                return;
+
             if (!sprite.LayerMapTryGet("combat_mode_indicator", out var layer))
             {
-                layer = sprite.AddLayer(new SpriteSpecifier.Rsi(new ResPath("_Europa/Effects/combat_mode.rsi"), "combat_mode"));
-                sprite.LayerMapSet("combat_mode_indicator", layer);
+                if (!_spriteQuery.TryComp(uid, out var sprite2))
+                    return;
+
+                layer = sprite2.AddLayer(new SpriteSpecifier.Rsi(new ResPath("_Europa/Effects/combat_mode.rsi"), "combat_mode"));
+                sprite2.LayerMapSet("combat_mode_indicator", layer);
             }
         }
         else
         {
-            if (sprite.LayerMapTryGet("combat_mode_indicator", out var layerToRemove))
+            if (_spriteQuery.TryComp(uid, out var sprite) && sprite.LayerMapTryGet("combat_mode_indicator", out var layerToRemove))
             {
                 sprite.RemoveLayer(layerToRemove);
             }
