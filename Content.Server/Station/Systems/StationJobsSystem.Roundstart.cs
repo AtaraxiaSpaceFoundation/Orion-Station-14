@@ -125,10 +125,10 @@ public sealed partial class StationJobsSystem
 
         // Ok so the general algorithm:
         // We start with the highest weight jobs and work our way down. We filter jobs by weight when selecting as well.
-        // Priority > Weight > Station | Europa-Edit
-        for (var selectedPriority = JobPriority.High; selectedPriority > JobPriority.Never; selectedPriority--) // Europa-Edit
+        // Weight > Priority > Station.
+        foreach (var weight in _orderedWeights)
         {
-            foreach (var weight in _orderedWeights) // Europa-Edit
+            for (var selectedPriority = JobPriority.High; selectedPriority > JobPriority.Never; selectedPriority--)
             {
                 if (profiles.Count == 0)
                     goto endFunc;
