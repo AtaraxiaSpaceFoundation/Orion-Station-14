@@ -40,6 +40,13 @@
   - StationAiIconTriumvirate
   - StationAiIconTriumvirateMalf
   - StationAiIconWeird
+  - StationAiIconAnima
+  - StationAiIconBorb
+  - StationAiIconDarkMatter
+  - StationAiIconRedDot
+  - StationAiIconLamp
+  - StationAiIconLizard
+  - StationAiIconVox
   # Europa-End
 
 - type: stationAiCustomizationGroup
@@ -57,6 +64,10 @@
   - StationAiHologramMonkey
   - StationAiHologramHorror
   - StationAiHologramXenomorphQueen
+  - StationAiHologramAngel
+  - StationAiHologramBorb
+  - StationAiHologramCloudkat
+  - StationAiHologramPhoenix
   # Europa-End
 
 # Iconography

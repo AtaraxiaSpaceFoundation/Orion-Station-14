@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/BlueMoon-Labs/WhiteMoon-Station/blob/master/icons/mob/silicon/ai.dmi | Edited by PuroSlavKing (Github)",
+  "copyright": "Taken from https://github.com/BlueMoon-Labs/WhiteMoon-Station/blob/master/icons/mob/silicon/ai.dmi | ai-anima, ai-borb, ai-darkmatter, ai-liz, ai-vox taken from https://github.com/ParadiseSS13/Paradise/pull/18637 | Edited by PuroSlavKing (Github)",
   "size": {
     "x": 32,
     "y": 32
@@ -1285,6 +1285,136 @@
           0.19,
           0.19,
           0.19
+        ]
+      ]
+    },
+    {
+      "name": "ai-anima",
+      "delays": [
+        [
+          0.1,
+          10,
+          0.1,
+          0.5,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ai-borb",
+      "delays": [
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "ai-darkmatter",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ai-lamp",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ai-lamp_dead",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ai-hal-9000"
+    },
+    {
+      "name": "ai-liz",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.2,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ai-vox",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
         ]
       ]
     }

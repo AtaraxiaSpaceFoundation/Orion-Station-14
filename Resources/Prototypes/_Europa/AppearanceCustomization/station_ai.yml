@@ -335,6 +335,90 @@
       sprite: _Europa/Mobs/Silicon/station_ai.rsi
       state: ai-weird_dead
 
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconAnima
+  name: station-ai-icon-anima
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-anima
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconBorb
+  name: station-ai-icon-borb
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-borb
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconDarkMatter
+  name: station-ai-icon-darkmatter
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-darkmatter
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconRedDot
+  name: station-ai-icon-hal-9000
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-hal-9000
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconLamp
+  name: station-ai-icon-lamp
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-lamp
+    Dead:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-lamp_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconLizard
+  name: station-ai-icon-liz
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-liz
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconVox
+  name: station-ai-icon-vox
+  layerData:
+    Occupied:
+      sprite: _Europa/Mobs/Silicon/station_ai.rsi
+      state: ai-vox
+    Dead:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
 # Holograms
 - type: stationAiCustomization
   id: StationAiHologramHorror
@@ -371,3 +455,39 @@
     Hologram:
       sprite: _Europa/Mobs/Silicon/holograms.rsi
       state: ai_monkey
+
+- type: stationAiCustomization
+  id: StationAiHologramAngel
+  name: station-ai-hologram-angel
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Europa/Mobs/Silicon/holograms.rsi
+      state: ai_angel
+
+- type: stationAiCustomization
+  id: StationAiHologramBorb
+  name: station-ai-hologram-borb
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Europa/Mobs/Silicon/holograms.rsi
+      state: ai_borb
+
+- type: stationAiCustomization
+  id: StationAiHologramCloudkat
+  name: station-ai-hologram-cloudkat
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Europa/Mobs/Silicon/holograms.rsi
+      state: ai_cloudkat
+
+- type: stationAiCustomization
+  id: StationAiHologramPhoenix
+  name: station-ai-hologram-frostphoenix
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: _Europa/Mobs/Silicon/holograms.rsi
+      state: ai_frostphoenix
