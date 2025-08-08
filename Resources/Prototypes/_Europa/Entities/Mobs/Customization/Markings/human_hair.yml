@@ -35,7 +35,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_amazon
 
 - type: marking
@@ -43,7 +43,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_astolfo
 
 - type: marking
@@ -51,7 +51,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_baum
 
 - type: marking
@@ -59,7 +59,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_beachwave
 
 - type: marking
@@ -67,7 +67,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_bluntbangs
 
 - type: marking
@@ -75,7 +75,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_bluntbangs_alt
 
 - type: marking
@@ -83,7 +83,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_braided_front
 
 - type: marking
@@ -91,7 +91,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_braided_sidetail
 
 - type: marking
@@ -99,7 +99,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_bunhead4
 
 - type: marking
@@ -107,7 +107,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_combed
 
 - type: marking
@@ -115,7 +115,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_combedbob
 
 - type: marking
@@ -123,7 +123,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_cotton
 
 - type: marking
@@ -131,7 +131,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_cottonalt
 
 - type: marking
@@ -139,7 +139,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_curly
 
 - type: marking
@@ -147,7 +147,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_dave
 
 - type: marking
@@ -155,7 +155,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_diagonal_bangs
 
 - type: marking
@@ -163,7 +163,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_diagonal_bangs_alt
 
 - type: marking
@@ -171,7 +171,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_dreadlocks_long
 
 - type: marking
@@ -179,7 +179,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_firestarter
 
 - type: marking
@@ -187,7 +187,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_fluffy_bangs
 
 - type: marking
@@ -195,7 +195,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_fluffy_short
 
 - type: marking
@@ -203,7 +203,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_fortuneteller
 
 - type: marking
@@ -211,7 +211,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_fortuneteller_alt
 
 - type: marking
@@ -219,7 +219,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_froofylong
 
 - type: marking
@@ -227,7 +227,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_geisha
 
 - type: marking
@@ -235,7 +235,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_gentle_bun
 
 - type: marking
@@ -243,7 +243,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_gentle_duo_bun
 
 - type: marking
@@ -251,7 +251,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_glammetal
 
 - type: marking
@@ -259,7 +259,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_gloomy_long
 
 - type: marking
@@ -267,7 +267,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_gloomy_longer
 
 - type: marking
@@ -275,7 +275,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_gloomy_medium
 
 - type: marking
@@ -283,7 +283,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_grande
 
 - type: marking
@@ -291,7 +291,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_hairfre
 
 - type: marking
@@ -299,7 +299,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_halfcut
 
 - type: marking
@@ -307,7 +307,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_halfcut_rough
 
 - type: marking
@@ -315,7 +315,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_holo_tuber
 
 - type: marking
@@ -323,7 +323,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_hyenamane
 
 - type: marking
@@ -331,7 +331,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_impish
 
 - type: marking
@@ -339,7 +339,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_jay
 
 - type: marking
@@ -347,7 +347,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_jessica
 
 - type: marking
@@ -355,7 +355,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_kajam
 
 - type: marking
@@ -363,7 +363,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_lila
 
 - type: marking
@@ -371,7 +371,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_long4
 
 - type: marking
@@ -379,7 +379,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_longdtails
 
 - type: marking
@@ -387,7 +387,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_longovereye_alt
 
 - type: marking
@@ -395,7 +395,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_longsidepartstraight
 
 - type: marking
@@ -403,7 +403,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_loose_slicked
 
 - type: marking
@@ -411,7 +411,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_mcsqueeb
 
 - type: marking
@@ -419,7 +419,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_mediumbraid
 
 - type: marking
@@ -427,7 +427,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_mermaid
 
 - type: marking
@@ -435,7 +435,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_mia
 
 - type: marking
@@ -443,7 +443,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_newyou
 
 - type: marking
@@ -451,7 +451,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_phoenix
 
 - type: marking
@@ -459,7 +459,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_phoenix_half_shaven
 
 - type: marking
@@ -467,7 +467,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_poofy
 
 - type: marking
@@ -475,7 +475,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_punktails
 
 - type: marking
@@ -483,7 +483,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_quadcurls
 
 - type: marking
@@ -491,7 +491,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_ring_tails
 
 - type: marking
@@ -499,7 +499,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_rowbraid
 
 - type: marking
@@ -507,7 +507,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_rowdualtail
 
 - type: marking
@@ -515,7 +515,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_royal_curls
 
 - type: marking
@@ -523,7 +523,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_runner
 
 - type: marking
@@ -531,7 +531,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_runner_bun
 
 - type: marking
@@ -539,7 +539,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_sabitsuki
 
 - type: marking
@@ -547,7 +547,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_scully
 
 - type: marking
@@ -555,7 +555,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_short_tassles
 
 - type: marking
@@ -563,7 +563,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_shy
 
 - type: marking
@@ -571,7 +571,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_sleaze
 
 - type: marking
@@ -579,7 +579,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_slightlymessy
 
 - type: marking
@@ -587,7 +587,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_spicy
 
 - type: marking
@@ -595,7 +595,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_spikey
 
 - type: marking
@@ -603,7 +603,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_spikey_long
 
 - type: marking
@@ -611,7 +611,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_stacy
 
 - type: marking
@@ -619,7 +619,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_stacy_bun
 
 - type: marking
@@ -627,7 +627,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_strict
 
 - type: marking
@@ -635,7 +635,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_strict_long
 
 - type: marking
@@ -643,7 +643,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_strict_short
 
 - type: marking
@@ -651,7 +651,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_toriyama
 
 - type: marking
@@ -659,7 +659,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_tri_bun
 
 - type: marking
@@ -667,7 +667,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_tri_bun_long
 
 - type: marking
@@ -675,7 +675,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_twintail
 
 - type: marking
@@ -683,7 +683,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_violet
 
 - type: marking
@@ -691,7 +691,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_violet_ponytail
 
 - type: marking
@@ -699,7 +699,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_viper
 
 - type: marking
@@ -707,7 +707,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_volajupompless
 
 - type: marking
@@ -715,7 +715,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_ziegler
 
 - type: marking
@@ -723,7 +723,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: hair_zoey
 
 - type: marking
@@ -731,7 +731,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: halfshave_glamorous
 
 - type: marking
@@ -739,7 +739,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: halfshave_long
 
 - type: marking
@@ -747,7 +747,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: halfshave_messy
 
 - type: marking
@@ -755,7 +755,7 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: halfshave_messylong
 
 - type: marking
@@ -763,5 +763,5 @@
   bodyPart: Hair
   markingCategory: Hair
   sprites:
-    - sprite: _Europa/Mobs/Customization/Hair/hairdoppler.rsi
+    - sprite: _Europa/Mobs/Customization/human_hair.rsi
       state: inari
