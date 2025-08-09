@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2020 Peter Wedder <burneddi@gmail.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2020 Ygg01 <daniel.fath7@gmail.com>
 # SPDX-FileCopyrightText: 2020 chairbender <kwhipke1@gmail.com>
 # SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
@@ -343,6 +343,10 @@
     materialComposition:
       Glass: 500
       Steel: 200
+  # Europa-Start
+  - type: HandheldLight
+    wattage: 0.5
+  # Europa-End
 - type: entity
   name: broken floodlight
   id: FloodlightBroken
