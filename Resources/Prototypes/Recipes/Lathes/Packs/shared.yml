@@ -32,7 +32,6 @@
   - LedLightBulb
   - DimLightBulb
   - WarmLightBulb
-  - FloodlightEmpty # Europa
 
 - type: latheRecipePack
   id: PowerCellsStatic
