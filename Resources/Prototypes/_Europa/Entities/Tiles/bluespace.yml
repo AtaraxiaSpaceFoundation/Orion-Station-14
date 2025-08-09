@@ -57,3 +57,6 @@
         - Impassable
         - LowImpassable
         hard: false
+  - type: Tag
+    tags:
+      - HideContextMenu
