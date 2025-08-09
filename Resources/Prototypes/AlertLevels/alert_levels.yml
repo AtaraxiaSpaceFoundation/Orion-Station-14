@@ -124,7 +124,7 @@
       announcement: alert-level-gamma-announcement
       selectable: false
       sound:
-        path: /Audio/Misc/gamma.ogg
+        path: /Audio/_Europa/Misc/siren.ogg # Europa | Return old gamma sound
         params:
           volume: -2
       disableSelection: true
