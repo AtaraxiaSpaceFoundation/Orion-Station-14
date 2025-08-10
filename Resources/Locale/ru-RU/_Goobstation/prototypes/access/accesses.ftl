@@ -4,5 +4,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-id-card-access-level-ntr = Представитель НаноТрейзен
-id-card-access-level-bso = Офицер Синего Щита
+id-card-access-level-ntr = Представитель НТ
+id-card-access-level-bso = Синий Щит

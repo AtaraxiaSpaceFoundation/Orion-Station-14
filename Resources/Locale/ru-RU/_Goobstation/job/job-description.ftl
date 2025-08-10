@@ -17,12 +17,15 @@ job-description-navy-special-operations-officer = Отправляйте, инс
 
 job-description-nct = Научите новичков правильно выполнять порученные им компанией задания и не попадать в неприятности.
 job-description-ntr = Сообщайте о приказах с ЦК, отправляйте отчёты и следите за работой глав станции.
+job-description-highcommander = You are an elite, high-ranking official within the Spinward Syndicate. It doesn't matter which faction, you're important to them all.
 
 # Half Life
 
+job-description-governmentman = Well, well, isn't this just like old times.
 job-description-gman = Ну что же, прямо как в старые добрые времена?
 job-description-hecu = Выполняйте приказы своего начальника, невзирая на мораль.
 
 # Misc
 
+job-description-mercenarycaptain = Order other mercs around. Act as muscle for the highest bidder. Just because it's NT now, doesn't mean it won't change later.
 job-description-conquest = Будь готов к моему прибытию, червь.

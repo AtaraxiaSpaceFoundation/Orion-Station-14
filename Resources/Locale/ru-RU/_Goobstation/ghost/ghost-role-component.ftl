@@ -27,6 +27,8 @@ ghost-role-information-lootbug-name = Лут-Жук
 ghost-role-information-lootbug-description = Постарайтесь не быть зарезанным тайдерами.
 ghost-role-information-c4-name = С-4
 ghost-role-information-homunculus-name = гомункул
+ghost-role-information-huborg-name = Урист МакБорг
+ghost-role-information-huborg-description = Ты отвратительный киборг.
 ghost-role-information-homunculus-description = Повинуйся тому, кто создал тебя, и если его нигде не найти, делай, что хочешь.
 ghost-role-information-c4-description = Помогите пользователю с бомбометанием.
 ghost-role-information-derelict-cyborg-syndicate-name = Старый киборг Синдиката
@@ -48,6 +50,8 @@ ghost-role-information-diplomat-description = Представляет собо�
 ghost-role-information-inspector-name = Аудитор Центрального Командования
 ghost-role-information-inspector-description = Проведите инспекцию имущества станции и ее экипажа. Возможно, вы погибнете в результате ужасного несчастного случая, и будет вызван эскадрон смерти.
 ghost-role-information-greytider-name = Грейтайдер
+ghost-role-information-trevor-name = Тревор
+ghost-role-information-trevor-description = Ценные бумаги - надежный боевой конь.
 ghost-role-information-greytider-description = Будь робастным.
 ghost-role-information-sentient-shark-name = Разумная акула
 
@@ -65,6 +69,9 @@ ghost-role-information-alien-tourist-description = Осматривайте ст
 # хуй знает что это но пусть будет переведено
 
 ghost-role-information-conquest-name = Завоеватель
+# Justice Persona Role
+justice-role-name = Олицетворение правосудия
+justice-role-description = Помогайте ГСБ проводить аресты, выкрикивая для них фразы, пока они вершат правосудие.
 ghost-role-information-conquest-description = Этой станции были отданы приказы, им было дано время. Им было предоставлено больше свободы действий, чем остальным.
 ghost-role-information-conquest-rules = Подготовьте эту станцию к прибытию империи Вилтрум.
 

@@ -33,3 +33,5 @@ lathe-menu-silo-linked-message = Хранилище связано
 lathe-menu-fabricating-message = Производится...
 lathe-menu-materials-title = Материалы
 lathe-menu-queue-title = Очередь производства
+lathe-menu-queue-reset-title = Reset Queue
+lathe-menu-queue-reset-material-overflow = You notice that the autolathe is full.

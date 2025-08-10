@@ -71,6 +71,12 @@ uplink-beenades-desc = Невзрывная граната, полная... пч
 
 # Weapons
 
+uplink-his-grace-name = His Grace
+uplink-his-grace-desc = An otherworldly entity trapping in a toolbox. Grows in power for every kill, but will consume you if not fed. Activate in-hand to bind yourself.
+uplink-magazine-nailgun-name = Nail Gun Magazine (AP)
+uplink-magazine-nailgun-desc = Almost like a normal magazine for your nail gun. The only difference is that this one is armor-piercing.
+uplink-pressure-modkit-name = Pressure Modkit
+uplink-pressure-modkit-desc = This illegal modkit takes 30 capacity of your proto-kinetic accelerator and overclocks it to deal full damage even in unsuitable pressure.
 uplink-WSPR-name = WSPR (ВСПР)
 uplink-WSPR-desc = ППППСССссшшш.
 uplink-dualetta-kit-name = Коробка Дуалетт
@@ -88,6 +94,10 @@ uplink-buldog-desc = Дробовик с магазинным питанием.
 uplink-l6-saw-name = L6 "ПИЛА"
 uplink-l6-saw-desc = Больше дакки: культовый легкий пулемет L6.
 uplink-m90-name = М-90
+uplink-estoc-name = Estoc
+uplink-estoc-desc = A designated assault rifle, fitted with a mid-range optic for longer-range combat.
+uplink-syndicate-disabler-name = Syndicate Disabler
+uplink-syndicate-disabler-desc = An advanced disabler built from a reverse-engineered Nanotrasen prototype. While it lacks a bit of stopping power, it makes up for it with a recharging cell.
 uplink-m90-desc = Боевая винтовка M-90.
 uplink-dualetta-bundle-name = Набор Дуалетты
 uplink-dualetta-bundle-desc = В комплект входят 2 Дуалетта, 2 магазина к ним, боевые перчатки, нуарный костюм, плащ детектива и ботинки на шнуровке.
@@ -156,6 +166,10 @@ uplink-sarin-gas-grenade-desc = Жестокий нейротоксичный г
 
 uplink-mech-teleporter-heavy-name = Тяжелый Мех "Маулер"
 uplink-mech-teleporter-heavy-desc = Содержит тяжелобронированного меха Cybersun со встроенным цепным мечом, Ultra AC-2, LBX AC 10 «Scattershot», ракетной стойкой BRM-6 и пушкой P-X Tesla.
+uplink-M172LAW-name = M172 Light Anti-structure Weapon
+uplink-M172LAW-desc = A single shot disposable rocket launcher for taking out singular walls/machines with minimal collateral damage. can be stored in your backpack conveniently.
+uplink-RPOA-name = RPO-A 'Shmel'
+uplink-RPOA-desc = A single shot disposable thermobaric rocket launcher, which lights hostiles and hostages on fire in a wide radius. can be stored in your backpack.
 uplink-mech-teleporter-assault-name = Штурмовой Мех "Тёмный Гигакс"
 uplink-mech-teleporter-assault-desc = Содержит легкобронированный мех Cybersun со встроенным цепным мечом, дробовиком LBX AC 10, Ракетомет SRM-8 и пушку Tesla P-X..
 
@@ -170,10 +184,16 @@ uplink-syringe-pistol-desc = Пистолет, который используе
 
 # Implants
 
+uplink-medical-beam-gun-name = Medical Beam Gun
+uplink-medical-beam-gun-desc = Heal your teammates with this new device! Runs on internal battery, and automatically recharges after discharging. You can heal only one teammate at once.
 uplink-smoke-implant-name = Дымовой имплант
 uplink-smoke-implant-desc = Выпускает облако дыма при активации.
 uplink-krav-maga-implant-name = Имплант Крав-мага
 uplink-krav-maga-implant-desc = Обучает пользователя различным приемам Крав-мага.
+uplink-combat-medkit-pills-name = Combat Medical Kit (Pills)
+uplink-combat-medkit-pills-desc = Contains most medicines you need to recover from injuries and illnesses, all in a convenient pill form.
+uplink-combat-medkit-ipc-name = Combat Medical Kit (IPC)
+uplink-combat-medkit-ipc-desc = Contains everything you need to heal an IPC; includes LV wire, industrial welder, a high capacity cell and meson goggles.
 uplink-nutriment-implant-name = Имплант Помпы питательных веществ
 uplink-nutriment-implant-desc = Устраняет потребность пользователей в еде и/или напитках.
 uplink-jaunter-implanter-name = Имплант смены места
@@ -183,6 +203,8 @@ uplink-jaunter-implanter-desc = Имплант смены места, позво
 
 uplink-helmet-swat-name = Шлем спецназа Синдиката
 uplink-autosurgeon-right-mantis-blade-name = Автохирург с правым лезвием богомола
+uplink-binary-implant-name = Binary Decoder Implanter
+uplink-binary-implant-desc = Lets the user tap into the silicons' binary channel. Talking on it is ill-advised though, at least until the AI goes malf.
 uplink-autosurgeon-left-mantis-blade-name = Автохирург с левым лезвием богомола
 uplink-autosurgeon-mantis-blade-desc = Модифицирует руку пользователя, чтобы по желанию доставать из нее кибер-импланты "Лезвие Богомола", которые лучше всего работают в паре. Требует слишком тонкой настройки для человека, поставляется с одноразовым автохирургом для установки.
 uplink-autosurgeon-sandevistan-name = Автохирург с Сандевистаном
@@ -197,6 +219,8 @@ uplink-reverse-bear-trap-desc = Гениальное устройство для
 
 uplink-clothing-explosive-gloves-name = Взрывные изолированные перчатки
 uplink-clothing-explosive-gloves-desc = Перчатки, которые выглядят как обычные изолированные перчатки, но через секунду после удара током взрываются, выводя из строя кисти рук пользователя.
+uplink-belt-rig-name = Grenadier Belt
+uplink-belt-rig-desc = A specialised belt rig to hold so many grenades that your arm gets tired from throwing them all. Can also store a sidearm and magazines for it.
 uplink-smugglers-satchel-name = Сумка контрабандиста
 uplink-smugglers-satchel-desc = Прочная сумка, который можно спрятать под плиткой пола. Просто снимите напольную плитку, прикрепите ранец к покрытию, а затем положите плитку обратно!
 
@@ -210,6 +234,8 @@ uplink-syndicate-weapon-module-advanced-desc = Улучшает киборга �
 uplink-cqc-name = Руководство CQC
 uplink-cqc-desc = Одноразовое руководство, которое обучает пользователя тактике ведения ближнего боя. Не ограничивает использование оружия. Ваши обезоруживающие удары наносят некоторый урон выносливости, заставляя людей временно заплетаться в словах, ваши захваты на секунду обездвиживают, что облегчает их повторение, ваши атаки наносят умеренный урон выносливости, и вы получаете набор комбо, которые позволяют вам эффективно сбивать с ног, обезоруживать или оглушать противника. Вы можете найти более подробную информацию о CQC и его комбинациях здесь.
 uplink-sleeping-carp-name = Свиток боевых искусств "Спящий карп"
+uplink-capoeira-name = Capoeira Manual
+uplink-capoeira-desc = A manual that teaches a single user Capoeira before self-destructing. Capoeira focuses on swift attacks that link into flowing combos, with each move faster and harder than the last one, fueled by relentless momentum.
 uplink-sleeping-carp-desc = Этот свиток содержит секреты древней техники боевых искусств. Вы овладеете приемами рукопашного боя, отражая огонь и пули из оружия дальнего боя. Освоение этого искусства означает, что вы также откажетесь от использования бесчестного оружия дальнего боя. Данный свиток не может быть изучен генокрадами.
 
 # Misc

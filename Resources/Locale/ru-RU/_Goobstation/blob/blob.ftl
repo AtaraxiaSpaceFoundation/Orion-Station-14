@@ -145,3 +145,7 @@ objective-condition-success = { $condition } | [color={ $markupColor }]Успе�
 objective-condition-fail = { $condition } | [color={ $markupColor }]Неудача![/color] ({ $progress }%)
 admin-verb-make-blob = Превратить цель в носителя Блоба.
 admin-verb-text-make-blob = Создать переносчик блоба
+# Language
+language-Blob-name = Блоб
+chat-language-Blob-name = Блоб
+language-Blob-description = Блееб боб! Блоб блоб!

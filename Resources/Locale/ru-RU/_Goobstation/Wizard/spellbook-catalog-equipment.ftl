@@ -10,7 +10,7 @@ spellbook-scrying-orb-desc = Раскаленный шар, излучающий
 spellbook-spellblade-name = Магический клинок
 spellbook-spellblade-desc =
     Волшебный меч, который можно зачаровать, держа его в руке, чтобы получить уникальный эффект при попадании.
-
+    
     Молния: создает электрическую дугу между ближайшими целями, оглушая и нанося им повреждения.
     Огонь: поджигает близлежащие цели при попадании и делает владельца неуязвимым для огня.
     Блюспейс: позволяет вам телепортироваться на большое расстояние, сбивая цели в небольшом радиусе вокруг места телепортации.
@@ -62,8 +62,16 @@ spellbook-wand-desc =
     Только маги и их ученики могут изменять режим стрельбы палочками.
     Можно использовать на себе.
     Волшебная палочка более компактна по сравнению с посохом, но не перезаряжается автоматически.
+spellbook-ninjutsu-name = Ninjutsu Scroll
+spellbook-ninjutsu-desc =
+    A scroll that teaches one Ninjutsu, a martial art and set of tactics used by ninja in feudal Japan.
+    Cannot be refunded.
 spellbook-staff-animate-name = Посох Анимации
 spellbook-staff-animate-desc =
     Арканный посох, способный при контакте вливать древнюю энергию, которая заставляет неодушевленные предметы оживать.
     Эта магия не действует на машины.
     У предметов, оживленных с помощью этого посоха, будут глупые глаза, но не заблуждайтесь, они очень опасны!
+spellbook-hammer-mjollnir-name = Mjollnir
+spellbook-hammer-mjollnir-description = Wield the power of THUNDER in your hands. Send foes flying with a mighty swing or by throwing it right at em!
+spellbook-hammer-singularity-name = Singularity Hammer
+spellbook-hammer-singularity-description = Ever wonder what it'd be like to be the singularity? Swing this hammer to draw in your surroundings, even works if you miss!

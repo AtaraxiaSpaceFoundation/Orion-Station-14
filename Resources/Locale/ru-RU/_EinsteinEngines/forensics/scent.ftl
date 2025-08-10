@@ -1,7 +1,7 @@
-track-scent = Track scent.
-stop-track-scent = Stop tracking scent.
-start-tracking-scent = {CAPITALIZE($user)} starts tracking the scent of the {CAPITALIZE($target)}.
-stopped-tracking-scent = You stopped tracking the scent.
-tracking-scent = You are now tracking the {CAPITALIZE($target)}'s scent.
-no-scent = There's no scent to track.
-examined-scent = [color=#ffff00]Has the scent you're tracking.[/color]
+track-scent = Выслеживать запах.
+stop-track-scent = Перестать выслеживать запах.
+start-tracking-scent = { CAPITALIZE($user) } начинает выслеживать по запаху { CAPITALIZE($target) }.
+stopped-tracking-scent = Вы перестали идти по следу.
+tracking-scent = Теперь вы отслеживаете запах { CAPITALIZE($target) }.
+no-scent = Нет никакого запаха, по которому можно было бы отследить его.
+examined-scent = [color=#ffff00]Обладает запахом, который вы отслеживаете.[/color]

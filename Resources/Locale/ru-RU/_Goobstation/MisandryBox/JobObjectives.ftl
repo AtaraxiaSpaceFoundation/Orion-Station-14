@@ -1,6 +1,4 @@
-﻿objective-issuer-nanotrasen = NanoTrasen
-objective-issuer-nanotrasen-central-command = NanoTrasen Central Command
-
-objective-condition-other-head-alive-title = Ensure command staff member {$targetName}, {CAPITALIZE($job)} stays alive.
-
-job-objectives-round-end-crew-name = crew
+objective-issuer-nanotrasen = НаноТрейзен
+objective-issuer-nanotrasen-central-command = Центральное Командование НаноТрейзен
+objective-condition-other-head-alive-title = Убедитесь, что член командования { $targetName }, { CAPITALIZE($job) } остается в живых.
+job-objectives-round-end-crew-name = экипаж

@@ -13,3 +13,4 @@ collective-mind-binary = Двоичный
 collective-mind-mousemind = Мышиный разум
 collective-mind-dronemind = Разум дрона
 collective-mind-empathy = Сочувствие
+collective-mind-bingle = Бингл разум

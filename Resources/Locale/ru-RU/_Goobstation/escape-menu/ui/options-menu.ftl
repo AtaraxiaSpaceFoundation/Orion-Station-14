@@ -3,8 +3,10 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+ui-options-auto-fill-highlights = Auto-fill the highlights with the character's information
+ui-options-highlights-color = Highlighs color:
+ui-options-highlights-color-example = This is an highlighted text!
 ui-options-function-resist-grab = Сопротивляться захвату
 ui-options-coalesce-identical-messages = Объединяйте идентичные сообщения в чате
 ui-options-detailed-examine = Показать подробный текст исследования
-
 ui-options-hud-theme-coscult = Космический культ

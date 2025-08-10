@@ -51,6 +51,7 @@ crime-assist-crime-terrorism = Статья 321: Терроризм
 crime-assist-crime-grandsabotage = Статья 304: Масштабный саботаж
 crime-assist-crime-sedition = Статья 307: Подстрекательство к демонстрациям
 crime-assist-crime-massriot = Статья 317: Крупный мятеж
+crime-assist-question-wasitsophont = Была ли жертва, о которой идет речь, софонтом?
 crime-assist-crime-sexualharassment = Статья 300: Сексуальное домогательство
 crime-assist-question-wasitsentient = Была ли жертва, о которой шла речь, разумным существом?
 

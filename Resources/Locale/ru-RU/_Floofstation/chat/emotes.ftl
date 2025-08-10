@@ -1,5 +1,4 @@
-chat-emote-name-yip = Yip
-chat-emote-name-coo = Coo
-
-chat-emote-msg-yip = yips!
-chat-emote-msg-coo = coos!
+chat-emote-name-yip = Йип
+chat-emote-name-coo = Коо
+chat-emote-msg-yip = Йипает!
+chat-emote-msg-coo = Кукарекает!

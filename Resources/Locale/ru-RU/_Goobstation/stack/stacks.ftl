@@ -1,14 +1,15 @@
-stack-bscrystal = {$amount ->
-    [1] bluespace crystal
-    *[other] bluespace crystals
-}
-
-stack-bscrystal-unprocessed = {$amount ->
-    [1] unprocessed bluespace crystal
-    *[other] unprocessed bluespace crystals
-}
-
-stack-bingle-tile = {$amount ->
-    [1] bingle tile
-    *[other] bingle tiles
-}
+stack-bscrystal =
+    { $amount ->
+        [1] блюспейс кристалл
+       *[other] блюспейс кристаллы
+    }
+stack-bscrystal-unprocessed =
+    { $amount ->
+        [1] необработанный блюспейс кристалл
+       *[other] необработанные блюспейс кристаллы
+    }
+stack-bingle-tile =
+    { $amount ->
+        [1] бингл пол
+       *[other] бингл пола
+    }

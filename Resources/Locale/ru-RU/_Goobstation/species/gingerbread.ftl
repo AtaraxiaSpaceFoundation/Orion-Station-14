@@ -5,4 +5,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+species-name-gingerbread = Хлебоголовый
 gingerbread-hurt-by-water-popup = Вода растапливает вас!

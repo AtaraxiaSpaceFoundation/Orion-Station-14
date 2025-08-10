@@ -34,7 +34,6 @@ station-ai-icon-hal-9000 = Красный круг
 station-ai-icon-lamp = Моль
 station-ai-icon-liz = Ящерица
 station-ai-icon-vox = Вокс
-
 station-ai-hologram-horror = Ужасающий
 station-ai-hologram-xenomorph-queen = Королева ксеноморфов
 station-ai-hologram-kobold = Кобольд

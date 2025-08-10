@@ -40,5 +40,5 @@ loadout-group-brigmedic-jumpsuit = Комбинезон бригмедика
 loadout-group-brigmedic-head = Голова бригмедика
 loadout-group-brigmedic-outer = Верхняя одежда бригмедика
 loadout-group-brigmedic-backpack = Рюкзак бригмедика
-
 loadout-group-security-melee = Оружие ближнего боя СБ
+loadout-group-animals = Питомцы

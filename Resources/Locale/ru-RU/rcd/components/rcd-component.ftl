@@ -35,6 +35,10 @@ rcd-component-lighting = Освещение
 
 ### Prototype names (note: constructable items will be puralized)
 
+rcd-component-piping = Трубы
+rcd-component-atmosphericutility = Атмосферные приспособления
+rcd-component-pumps = Насосы & Клапаны
+rcd-component-vents = Вентиляция
 rcd-component-deconstruct = демонтаж
 rcd-component-floor-steel = стальной пол
 rcd-component-plating = корпусное покрытие

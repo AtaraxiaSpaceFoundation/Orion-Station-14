@@ -1,17 +1,13 @@
-﻿# Chest
+# Chest
 
 marking-DwarfConstellationChest = Chest Constellation
 marking-DwarfConstellationChest-constellation = Chest Constellation
-
 marking-DwarfMarkBear = Mark of the Bear
 marking-DwarfMarkBear-markbear = Mark of the Bear
-
 marking-DwarfMarkCobra = Mark of the Cobra
 marking-DwarfMarkCobra-markcobra = Mark of the Cobra
-
 marking-DwarfMarkSpider = Mark of the Spider
 marking-DwarfMarkSpider-markspider = Mark of the Spider
-
 marking-DwarfTattooShootingStar = Shooting Star Tattoo
 marking-DwarfTattooShootingStar-shootingstar = Shooting Star Tattoo
 
@@ -19,10 +15,8 @@ marking-DwarfTattooShootingStar-shootingstar = Shooting Star Tattoo
 
 marking-DwarfBearCheeks = Glowing Cheeks
 marking-DwarfBearCheeks-bearcheeks = Glowing Cheeks
-
 marking-DwarfConstellationHead = Head Constellation
 marking-DwarfConstellationHead-constellation = Head Constellation
-
 marking-DwarfHeadGlow = Glowing Star
 marking-DwarfHeadGlow-glow = Glowing Star
 
@@ -37,7 +31,6 @@ marking-DwarfConstellationRArm-constellation = Arm Constellation (Right)
 
 # LArm
 
-
 marking-DwarfConstellationLArm = Arm Constellation (Left)
 marking-DwarfConstellationLArm-constellation = Arm Constellation (Left)
 
@@ -50,7 +43,6 @@ marking-DwarfConstellationRLeg-constellation = Leg Constellation (Right)
 
 marking-DwarfConstellationLLeg = Leg Constellation (Left)
 marking-DwarfConstellationLLeg-constellation = Leg Constellation (Left)
-
 
 # UndergarmentBottom
 
@@ -70,7 +62,6 @@ marking-DwarfConstellationRFoot-constellation = Foot Constellation (Right)
 
 marking-DwarfConstellationLHand = Hand Constellation (Left)
 marking-DwarfConstellationLHand-constellation = Hand Constellation (Left)
-
 marking-DwarfMarkKangarooLHand = Mark of the Kangaroo (Left)
 marking-DwarfMarkKangarooLHand-markkangaroo = Mark of the Kangaroo (Left)
 
@@ -78,7 +69,6 @@ marking-DwarfMarkKangarooLHand-markkangaroo = Mark of the Kangaroo (Left)
 
 marking-DwarfConstellationRHand = Hand Constellation (Right)
 marking-DwarfConstellationRHand-constellation = Hand Constellation (Right)
-
 marking-DwarfMarkKangarooRHand = Mark of the Kangaroo (Right)
 marking-DwarfMarkKangarooRHand-markkangaroo = Mark of the Kangaroo (Right)
 
@@ -89,3 +79,4 @@ marking-DwarfMarkKangarooRHand-markkangaroo = Mark of the Kangaroo (Right)
 # Tail
 
 # RArmExtension
+

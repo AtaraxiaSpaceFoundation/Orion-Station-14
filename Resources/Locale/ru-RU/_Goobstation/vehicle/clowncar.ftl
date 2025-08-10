@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 clowncar-thank-no-driver = Спасибо, что подвез
-clowncar-thank-driver = Спасибо вам {$driver}, вы хороший водитель
+clowncar-thank-driver = Спасибо вам { $driver }, вы хороший водитель
 clowncar-quiet-in-the-back = Тихо там, сзади!
 uplink-clowncar-name = Клоунская машина
 uplink-clowncar-desc = От компании Хонк Ко. идеальный инструмент для совершения наезда и бегства. Страховка не включена!!!

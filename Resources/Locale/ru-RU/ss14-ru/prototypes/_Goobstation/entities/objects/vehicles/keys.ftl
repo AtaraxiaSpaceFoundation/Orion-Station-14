@@ -1,0 +1,10 @@
+ent-BaseKey = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-VehicleKeySecway = ключи от сигвея
+    .desc = Ключи от будущего.
+ent-VehicleKeySyndicateSegway = ключи от сигвея Синдиката
+    .desc = Выполнены в стиле культового дизайна EMAG.
+ent-VehicleKeyATV = ключи от квадроцикла
+    .desc = Думаешь это просто один ключ? КВАДроцикл, а "quad" это четыре!
+ent-VehicleKeyJanicart = ключи от уборочной машины
+    .desc = Интересный дизайн.

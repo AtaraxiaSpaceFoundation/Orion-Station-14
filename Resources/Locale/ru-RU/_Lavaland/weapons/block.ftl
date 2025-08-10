@@ -6,5 +6,5 @@
 
 block-charge-status-charged = Индикатор блока показывает, что он заряжен.
 block-charge-status-recharging = Индикатор блока показывает, что он заряжается.
-block-attack-notice = {$user} заблокировал атаку {THE($blocked)}!
-block-charge-startup = индикатор блока {$entity}, слабо светится...
+block-attack-notice = { $user } заблокировал атаку { THE($blocked) }!
+block-charge-startup = индикатор блока { $entity }, слабо светится...

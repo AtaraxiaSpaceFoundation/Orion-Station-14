@@ -29,6 +29,14 @@ spellbook-disable-tech-name = Отключение технологии
 spellbook-disable-tech-desc =
     Это заклинание отключает все оружие, камеры и большую часть другой техники в радиусе действия.
     Для данного заклинания требуется мантия и шляпа мага.
+spellbook-smoke-name = Smoke
+spellbook-smoke-desc =
+    This spell spawns a cloud of smoke at your location. People within will begin to choke and drop their items.
+    Doesn't require wizard's robe and hat to cast.
+spellbook-repulse-name = Repulse
+spellbook-repulse-desc =
+    This spell throws everything around the user away. Thrown mobs are stunned briefly.
+    Requires wizard's robe and hat to cast.
 spellbook-stop-time-name = Остановка времени
 spellbook-stop-time-desc =
     Это заклинание останавливает время для всех, кроме вас и тех, кто изучил это заклинание, позволяя вам и вашему ученику свободно передвигаться, в то время как ваши враги и даже снаряды заморожены.
@@ -138,3 +146,11 @@ spellbook-thrown-lightning-name = Бросок молнии
 spellbook-thrown-lightning-desc =
     Созданный из сверхъестественных энергий, пакет чистой силы, известный как пакет заклинаний, появится в вашей руке, и при броске он нанесет вашей цели большой урон выносливостью.
     Для данного заклинания не требуются мантия и шляпа мага.
+spellbook-knock-name = Knock
+spellbook-knock-desc =
+    This spell opens nearby doors and lockers.
+    Doesn't require wizard's robe and hat to cast.
+spellbook-smite-name = Smite
+spellbook-smite-desc =
+    This spell charges your hand with an unholy energy that can be used to cause a touched victim to violently explode.
+    Requires wizard's robe and hat to cast.

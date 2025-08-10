@@ -1,14 +1,19 @@
 # TODO: заменить на genitive там где возможно
 health-examinable-carbon-none = Видимые повреждения тела отсутствуют.
 health-examinable-carbon-Slash-8 = [color=yellow]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } неглубокий порез.[/color]
+health-examinable-carbon-Blunt-25 = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } minor contusions across { POSS-ADJ($target) } body.[/color]
 health-examinable-carbon-Slash-15 = [color=yellow]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } несколько маленьких порезов.[/color]
 health-examinable-carbon-Slash-30 = [color=orange]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } несколько значительных порезов.[/color]
+health-examinable-carbon-Slash-10 = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } some minor cuts.[/color]
+health-examinable-carbon-Slash-25 = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } lacerations across { POSS-ADJ($target) } body.[/color]
 health-examinable-carbon-Slash-50 = [color=red]{ CAPITALIZE(POSS-ADJ($target)) } тело покрыто глубокими порезами.[/color]
 health-examinable-carbon-Slash-75 = [color=red]{ CAPITALIZE(POSS-ADJ($target)) } тело покрыто глубокими рваными ранами.[/color]
 health-examinable-carbon-Slash-100 = [color=red]{ CAPITALIZE(POSS-ADJ($target)) } тело выглядит окровавленным и израненным.[/color]
+health-examinable-carbon-Heat-25 = [color=orange]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } minor burns across { POSS-ADJ($target) } body.[/color]
 health-examinable-carbon-Slash-200 = [color=crimson]{ CAPITALIZE(POSS-ADJ($target)) } тело полностью разорвано на куски![/color]
 health-examinable-carbon-Blunt-8 = [color=yellow]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } лёгкий ушиб.[/color]
 health-examinable-carbon-Blunt-15 = [color=yellow]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } несколько ушибов.[/color]
+health-examinable-carbon-Cold-25 = [color=lightblue]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } minor frostbite across { POSS-ADJ($target) } body.[/color]
 health-examinable-carbon-Blunt-30 = [color=orange]{ CAPITALIZE(SUBJECT($target)) } { GENDER($target) ->
         [male] избит
         [female] избита
@@ -21,6 +26,7 @@ health-examinable-carbon-Blunt-50 = [color=red]{ CAPITALIZE(SUBJECT($target)) } 
         [epicene] избиты
        *[neuter] избито
     }.[/color]
+health-examinable-carbon-Caustic-25 = [color=yellowgreen]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } minor chemical burns.[/color]
 health-examinable-carbon-Blunt-75 = [color=red]{ CAPITALIZE(POSS-ADJ($target)) } тело покрыто серьёзными тупыми травмами.[/color]
 health-examinable-carbon-Blunt-100 = [color=red]{ CAPITALIZE(POSS-ADJ($target)) } тело обезображено и сильно избито.[/color]
 health-examinable-carbon-Blunt-200 = [color=crimson]{ CAPITALIZE(POSS-ADJ($target)) } тело разбито в лепёшку![/color]

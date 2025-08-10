@@ -19,4 +19,11 @@ comp-stack-becomes-full = Стопка теперь заполнена.
 # Text related to splitting a stack
 comp-stack-split = Вы разделили стопку.
 comp-stack-split-halve = Разделить пополам
+# Goobstation - Custom stack splitting dialog
+comp-stack-split-custom = Объединить количество...
 comp-stack-split-too-small = Стопка слишком мала для разделения.
+# Goobstation - Custom stack splitting dialog
+comp-stack-split-size = Максимум: { $size }
+ui-custom-stack-split-title = Объединить
+ui-custom-stack-split-line-edit-placeholder = Количество
+ui-custom-stack-split-apply = Объединить!

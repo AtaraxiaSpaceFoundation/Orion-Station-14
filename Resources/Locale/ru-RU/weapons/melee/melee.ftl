@@ -1,4 +1,6 @@
 melee-inject-failed-hardsuit = Ваш { $weapon } не может проникнуть сквозь скафандр!
+# Goobstation - Armor resisting syringe gun
+melee-inject-failed-armor = { $weapon } не может вводить сквозь броню!
 melee-balloon-pop = { CAPITALIZE($balloon) } лопнул!
 #BatteryComponent
 melee-battery-examine =

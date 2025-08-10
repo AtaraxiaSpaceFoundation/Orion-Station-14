@@ -61,15 +61,12 @@ heretic-speech-ash-cascade = К'СК'АД!!
 heretic-speech-blade-furioussteel = С'ЕРК'ЮЩ'Е СЕР'БРО!
 heretic-speech-flesh-surgery = ПРИ'И Л'НУ!
 heretic-speech-flesh-worm = РЕ'ЛЬ'О'ТЬ РАЗ'ОР'ЧИВ'ТС'!!
-
 heretic-speech-rust-spread = ЯР'ОСТН'Е РАС'ПР'Р'ЕНИ'!
 heretic-speech-rust-wave = НАС'Т'ГНИ 'ИХ!
 heretic-speech-rust-plume = РА'СС'Л'ИСЬ!
-
 heretic-speech-void-blast = З'СТЫ'НЬ!
 heretic-speech-void-phase = РЕК'ЛТ'ВЫЙ СД'В'Г!
 heretic-speech-void-pull = БР'СЬ ИХ К' МН'!!
-
 heretic-speech-cleave = ОС'РИЁ!
 heretic-speech-bloodsiphon = ГОР'ИЛ'О ВЕЧ'ОС'И!
 heretic-speech-mansuslink = ПРО'З' РА'УМ!

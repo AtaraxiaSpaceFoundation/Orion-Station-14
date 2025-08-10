@@ -33,4 +33,6 @@ research-technology-pinpointing = Технологии пинпоинтеров
 research-technology-mag-fed-pistol = Пистолеты на энергетических элементах
 research-technology-mag-fed-smg = Пистолеты-пулеметы на энергетических элементах
 research-technology-mag-fed-sniper = Снайперы энергетических ячеек
+research-technology-restraint = Удержание
+research-technology-advanced-power-generation = Продвинутое питание
 research-technology-mag-fed-lmg = Легкие пулеметы на энергетических элементах

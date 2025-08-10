@@ -43,13 +43,13 @@ cosmiccult-roundend-monument-stage =
         [3] Монумент был завершен.
        *[other] [color=red]Что-то пошло совсем не так.[/color]
     }
-cosmiccult-roundend-cultcomplete = [color=#4cabb3]Космический культ одержал полную победу![/color]
-cosmiccult-roundend-cultmajor = [color=#4cabb3]Крупная победа космического культа![/color]
-cosmiccult-roundend-cultminor = [color=#4cabb3]Незначительная победа космического культа![/color]
-cosmiccult-roundend-neutral = [color=yellow]Нейтральное окончание![/color]
-cosmiccult-roundend-crewminor = [color=green]Небольшая победа экипажа![/color]
-cosmiccult-roundend-crewmajor = [color=green]Крупная победа экипажа![/color]
-cosmiccult-roundend-crewcomplete = [color=green]Полная победа экипажа![/color]
+cosmiccult-roundend-cultcomplete =  [color=#4cabb3]Космический культ одержал полную победу![/color]
+cosmiccult-roundend-cultmajor =  [color=#4cabb3]Крупная победа космического культа![/color]
+cosmiccult-roundend-cultminor =  [color=#4cabb3]Незначительная победа космического культа![/color]
+cosmiccult-roundend-neutral =  [color=yellow]Нейтральное окончание![/color]
+cosmiccult-roundend-crewminor =  [color=green]Небольшая победа экипажа![/color]
+cosmiccult-roundend-crewmajor =  [color=green]Крупная победа экипажа![/color]
+cosmiccult-roundend-crewcomplete =  [color=green]Полная победа экипажа![/color]
 cosmiccult-summary-cultcomplete = Космические культисты возвестили о конце света!
 cosmiccult-summary-cultmajor = Победа космических культистов будет неизбежна.
 cosmiccult-summary-cultminor = Монумент был достроен, но не в полной мере.
@@ -66,7 +66,7 @@ cosmiccult-role-roundstart-fluff =
     Когда вы готовитесь к очередной смене на борту очередной станции NanoTrasen, неисчислимые знания внезапно наполняют ваш разум!
     Ни с чем не сравнимое откровение. Конец циклическим сизифовым страданиям.
     Тихий занавес.
-
+    
     Все, что вам нужно сделать, это начать.
 cosmiccult-role-short-briefing =
     Вы - космический культист!
@@ -76,7 +76,7 @@ cosmiccult-role-conversion-fluff =
     Когда призыв завершается, невыразимое знание внезапно наполняет ваш разум!
     Ни с чем не сравнимое откровение. Конец циклическим сизифовым страданиям.
     Тихий занавес.
-
+    
     Все, что вам нужно сделать, - это возвестить об этом.
 cosmiccult-role-deconverted-fluff =
     Огромная пустота заполняет твой разум. Успокаивающая, но незнакомая пустота...
@@ -127,7 +127,7 @@ cosmiccult-ui-popup-confirm = Подтверждать
 
 ## OBJECTIVES / CHARACTERMENU
 
-objective-issuer-cosmiccult = [bold][color=#cae8e8]Неизвестный[/color][/bold]
+objective-issuer-cosmiccult =  [bold][color=#cae8e8]Неизвестный[/color][/bold]
 objective-cosmiccult-charactermenu = Вы должны положить конец всему сущему. Выполняйте свои задания, чтобы способствовать прогрессу культа.
 objective-cosmiccult-steward-charactermenu = Вы должны направлять культ, чтобы он возвестил о конце света. Наблюдайте за развитием культа и следите за его развитием.
 objective-condition-entropy-title = СИФОН ЭНТРОПИИ
@@ -155,3 +155,4 @@ cosmiccult-entropy-unavailable = Ты не можешь сделать это п
 cosmiccult-astral-ascendant = { $name }, восходящий
 cosmiccult-gear-pickup-rejection = { $ITEM } сопротивляется прикосновению { CAPITALIZE(THE($TARGET)) }!
 cosmiccult-gear-pickup = Вы можете почувствовать, как разрываетесь, держа в руках { $ITEM }!
+cult-alert-recall-shuttle = На борту станции обнаружена высокая концентрация Λ-CDM неизвестного происхождения. Все аномальные объекты должны быть удалены, прежде чем будет разрешена эвакуация.

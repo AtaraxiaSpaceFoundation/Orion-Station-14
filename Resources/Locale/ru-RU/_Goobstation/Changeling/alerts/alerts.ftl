@@ -8,11 +8,7 @@
 
 alerts-changeling-chemicals-name = Химикаты
 alerts-changeling-chemicals-desc = Расходуются при использовании способностей. Медленно восстанавливаются.
-
 alerts-changeling-biomass-name = Биомасса
-alerts-changeling-biomass-desc =
-    Это ваше здоровье. Если оно достигнет 0 - [color=red]игра окончена[/color]. Поглощайте гуманоидов, чтобы частично восстановить его.
-
+alerts-changeling-biomass-desc = Это ваше здоровье. Если оно достигнет 0 - [color=red]игра окончена[/color]. Поглощайте гуманоидов, чтобы частично восстановить его.
 alerts-changeling-fleshmend-name = Исправление плоти
-alerts-changeling-fleshmend-desc =
-    Грубый урон быстро восстанавливается! Урон от ожогов и удушья восстанавливается в меньшем количестве. [color=red] Исцеление прекращается, когда вы находитесь в огне.[/color]
+alerts-changeling-fleshmend-desc = Грубый урон быстро восстанавливается! Урон от ожогов и удушья восстанавливается в меньшем количестве. [color=red] Исцеление прекращается, когда вы находитесь в огне.[/color]
