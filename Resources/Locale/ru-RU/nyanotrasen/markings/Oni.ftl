@@ -4,17 +4,17 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-marking-OniHornSingleCurved = Single Curved
-marking-OniHornSingleCurved-single_curved = Single Curved
-marking-OniHornSingleLeftCurved = Single Left Curved
-marking-OniHornSingleLeftCurved-single_left_curved = Single Left Curved
-marking-OniHornSingleRightCurved = Single Right Curved
-marking-OniHornSingleRightCurved-single_right_curved = Single Right Curved
-marking-OniHornDoubleCurvedOutwards = Double Curved Outwards
-marking-OniHornDoubleCurvedOutwards-double_curved_outwards = Double Curved Outwards
-marking-OniHornDoubleCurved = Double Curved
-marking-OniHornDoubleCurved-double_curved = Double Curved
-marking-OniHornDoubleLeftBrokeCurved = Double Left Broke Curved
-marking-OniHornDoubleLeftBrokeCurved-double_left_broke_curved = Double Left Broke Curved
-marking-OniHornDoubleRightBrokeCurved = Double Right Broke Curved
-marking-OniHornDoubleRightBrokeCurved-double_right_broke_curved = Double Right Broke Curved
+marking-OniHornSingleCurved = Одиночный изогнутый
+marking-OniHornSingleCurved-single_curved = Одиночный изогнутый
+marking-OniHornSingleLeftCurved = Одиночный левый изогнутый
+marking-OniHornSingleLeftCurved-single_left_curved = Одиночный левый изогнутый
+marking-OniHornSingleRightCurved = Одиночный правый изогнутый
+marking-OniHornSingleRightCurved-single_right_curved = Одиночный правый изогнутый
+marking-OniHornDoubleCurvedOutwards = Двойной изогнутый наружу
+marking-OniHornDoubleCurvedOutwards-double_curved_outwards = Двойной изогнутый наружу
+marking-OniHornDoubleCurved = Двойной изогнутый
+marking-OniHornDoubleCurved-double_curved = Двойной изогнутый
+marking-OniHornDoubleLeftBrokeCurved = Двойной левый сломанный изгиб
+marking-OniHornDoubleLeftBrokeCurved-double_left_broke_curved = Двойной левый сломанный изгиб
+marking-OniHornDoubleRightBrokeCurved = Двойной правый сломанный изгиб
+marking-OniHornDoubleRightBrokeCurved-double_right_broke_curved = Двойной правый сломанный изгиб

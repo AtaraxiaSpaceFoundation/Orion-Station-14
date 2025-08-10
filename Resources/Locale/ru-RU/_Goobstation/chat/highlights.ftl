@@ -5,53 +5,55 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Command
-highlights-captain = Captain, "Cap", Bridge, Command
-highlights-head-of-personnel = Head Of Personnel, "HoP", HoPline, Service, Bridge, Command
-highlights-chief-engineer = Chief Engineer, "CE", Atmos, Atmosia, Atmospherics, Engi, Engineer, Engineering, Bridge, Command
-highlights-chief-medical-officer = Chief Medical Officer, "CMO", Doctor, "Doc", "Medic", Medbay, "Med", Medical, Chemistry, "Chem", Chemlab, Chemical Lab, Bridge, Command
-highlights-head-of-security = Head of Security, "HoS", Security, Shitsec, Shitcurity, Brig, "Sec", "Law", Bobby, "Perma", Permabrig, Bridge, Command
-highlights-quartermaster = Quartermaster, "QM", "Cargo", Cargonia, Bridge, Command
-highlights-research-director = Research Director, "RD", Scientist, Science, "Sci", "RnD", Robotics, "Robo", Bridge, Command
+highlights-captain = Капитан, "кеп", "кэп", мостик, командовани
+highlights-head-of-personnel = глава персонала, "гп", сервис, мостик, командовани
+highlights-chief-engineer = старший инженер, "си", инженер, "инж", мостик, командовани
+highlights-chief-medical-officer = главный врач, главврач "гв", медблок, медбей, "мед", мостик, командовани
+highlights-head-of-security = глава службы безопасности, "гсб", служба безопасности, "сб", мостик, командовани
+highlights-quartermaster = квартирмейстер, "км" "кма", карго, снабжени, мостик, командовани
+highlights-research-director = научный руководитель, научрук, "нр", наука, "рнд", "нио", мостик, командовани
 highlights-nanotrasen-representative = Nanotrasen Representative, Representative, "NTR"
-highlights-blueshield-officer = Blueshield Officer, Blueshield, "BSO", Bridge, Command
+highlights-blueshield-officer = офицер синий щит, синий щит, "БЩ", мостик, командовани
 # Security
-highlights-detective = Detective, "Det", Security, Shitsec, Shitcurity, Brig, "Sec", "Law"
-highlights-security-cadet = Cadet, Secoff, Officer, Security, Shitsec, Shitcurity, Brig, "Sec", "Law", Bobby
-highlights-security-officer = Secoff, Officer, Security, Shitsec, Shitcurity, Brig, "Sec", "Law", Bobby
-highlights-warden = Warden, "Ward", Security, Shitsec, Shitcurity, Brig, "Sec", "Law", "Perma", Permabrig
-highlights-brigmedic = Brigmedic, Brigmed, Security, Shitsec, Shitcurity, Brig, "Sec", "Law", Doctor, "Doc", "Medic"
+highlights-detective = детектив, "дек", служб, "сб"
+highlights-security-cadet = офицер, кадет, служба безопасности, "сб"
+highlights-security-officer = офицер, служба безопасности, "сб"
+highlights-warden = смотрител, варден, служба безопасности, "сб"
+highlights-brigmedic = бригмедик, бригмед, служба безопасности, бриг, "СБ", "закон", доктор, "док", "медик"
 # Cargo
-highlights-cargo-technician = Cargo Technician, Cargotech, Cargo Tech, Mailman, Cargo, Cargonia
-highlights-salvage-specialist = Salvage Specialist, Salvager, Salvage, "Salv", Miner, Lavaland, "Cargo", Cargonia
+highlights-cargo-technician = грузчик, карго, снабжени
+highlights-salvage-specialist = утилизатор, "утиль", карго, снабжени, шахтёр
 # Engineering
-highlights-atmospheric-technician = Atmospheric Technician, Atmostech, Atmos Tech, Atmos, Atmosia, Atmospherics, Engi, Engineer, Engineering
-highlights-station-engineer = Station Engineer, Engi, Engineer, Engineering
-highlights-technical-assistant = Technical Assistant, Tech Assistant, "TA", Engi, Engineer, Engineering
+highlights-atmospheric-technician = атмосферный техник, атмосферник, атмос, инженер, "атмос", "инж"
+highlights-station-engineer = инженер, "инж"
+highlights-technical-assistant = технический ассистент, тех асист, инженер, "инж"
 # Medical
-highlights-chemist = Chemist, Chemistry, "Chem", Chemlab, Chemical Lab, Medbay, "Med", Medical
-highlights-medical-doctor = Physician, Doctor, "Doc", "Medic", Medbay, "Med", Medical
-highlights-medical-intern = Intern, Doctor, "Doc", Medbay, "Med", "Medic", Medical
-highlights-paramedic = Paramedic, "Para", Doctor, "Doc", "Medic", Medbay, "Med", Medical
+highlights-chemist = химик, химия, медблок, медбей, "мед"
+highlights-medical-doctor = врач, доктор, "док", медблок, медбей, "мед"
+highlights-medical-intern = интерн "док", медблок, медбей, "мед"
+highlights-paramedic = парамед, медблок, медбей, "мед"
 # Science
-highlights-scientist = Scientist, Science, "Sci", "RnD", Robotics, Roboticist, "Robo"
-highlights-research-assistant = Research Assistant, Scientist, Science, "Sci", "RnD", Robotics, Roboticist, "Robo"
+highlights-scientist = учёный, наука, "рнд", "нио"
+highlights-research-assistant = научный ассистент, наука, "рнд", "нио"
 # Civilian
-highlights-bartender = Bartender, Barkeep, Barman, "Bar"
-highlights-botanist = Botanist, Botany, Hydroponics
-highlights-chaplain = Chaplain, "Chap", Chapel
-highlights-chef = Chef, "Cook", Kitchen
-highlights-clown = Clown, Jester
-highlights-janitor = Janitor, "Jani"
-highlights-lawyer = Lawyer, Attorney
-highlights-librarian = Librarian, Library
-highlights-mime = Mime
-highlights-assistant = Passenger, Tider, Greytider, Greytide, Tide, Assistant
-highlights-service-worker = Service Worker
-# Wildcards
-highlights-boxer = Boxer
-highlights-reporter = Reporter, Journalist
-highlights-zookeeper = Zookeeper
-highlights-psychologist = Psychologist, Psychology
+highlights-bartender = бармен, "бар"
+highlights-botanist = ботаник, гидропоник
+highlights-chaplain = священник, свят, церковь
+highlights-chef = шеф, повар, кухн
+highlights-clown = клоун, клун
+highlights-janitor = уборщик
+highlights-lawyer = адвокат, юрист
+highlights-librarian = библиотекар, библиотека
+highlights-mime = мим
+highlights-assistant = ассистент, асистент, асистос, ассистос
+highlights-passenger = пассажир, грейтайдер, "тайдер"
+highlights-service-worker = сервисный работник, сервисник
+# Station-specific
+highlights-boxer = боксёр, боксер
+highlights-reporter = репортёр, репортер, журналист
+highlights-zookeeper = зоотехник
+highlights-psychologist = психолог
 # Silicon
-highlights-cyborg = Cyborg, Borg, Silicon, Law 2
-highlights-station-ai = Station AI, "AI", "sAI", Big Brother, Door Wizard, Silicon, Law 2, Law 3
+highlights-personal-ai = персональный ии, "пии"
+highlights-cyborg = киборг, борг
+highlights-station-ai = станционный ии, "ии", "сии"

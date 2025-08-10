@@ -43,13 +43,13 @@ cosmiccult-roundend-monument-stage =
         [3] Монумент был завершен.
        *[other] [color=red]Что-то пошло совсем не так.[/color]
     }
-cosmiccult-roundend-cultcomplete =  [color=#4cabb3]Космический культ одержал полную победу![/color]
-cosmiccult-roundend-cultmajor =  [color=#4cabb3]Крупная победа космического культа![/color]
-cosmiccult-roundend-cultminor =  [color=#4cabb3]Незначительная победа космического культа![/color]
-cosmiccult-roundend-neutral =  [color=yellow]Нейтральное окончание![/color]
-cosmiccult-roundend-crewminor =  [color=green]Небольшая победа экипажа![/color]
-cosmiccult-roundend-crewmajor =  [color=green]Крупная победа экипажа![/color]
-cosmiccult-roundend-crewcomplete =  [color=green]Полная победа экипажа![/color]
+cosmiccult-roundend-cultcomplete = [color=#4cabb3]Космический культ одержал полную победу![/color]
+cosmiccult-roundend-cultmajor = [color=#4cabb3]Крупная победа космического культа![/color]
+cosmiccult-roundend-cultminor = [color=#4cabb3]Незначительная победа космического культа![/color]
+cosmiccult-roundend-neutral = [color=yellow]Нейтральное окончание![/color]
+cosmiccult-roundend-crewminor = [color=green]Небольшая победа экипажа![/color]
+cosmiccult-roundend-crewmajor = [color=green]Крупная победа экипажа![/color]
+cosmiccult-roundend-crewcomplete = [color=green]Полная победа экипажа![/color]
 cosmiccult-summary-cultcomplete = Космические культисты возвестили о конце света!
 cosmiccult-summary-cultmajor = Победа космических культистов будет неизбежна.
 cosmiccult-summary-cultminor = Монумент был достроен, но не в полной мере.
@@ -127,7 +127,7 @@ cosmiccult-ui-popup-confirm = Подтверждать
 
 ## OBJECTIVES / CHARACTERMENU
 
-objective-issuer-cosmiccult =  [bold][color=#cae8e8]Неизвестный[/color][/bold]
+objective-issuer-cosmiccult = [bold][color=#cae8e8]Неизвестный[/color][/bold]
 objective-cosmiccult-charactermenu = Вы должны положить конец всему сущему. Выполняйте свои задания, чтобы способствовать прогрессу культа.
 objective-cosmiccult-steward-charactermenu = Вы должны направлять культ, чтобы он возвестил о конце света. Наблюдайте за развитием культа и следите за его развитием.
 objective-condition-entropy-title = СИФОН ЭНТРОПИИ

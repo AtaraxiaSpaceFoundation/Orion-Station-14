@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 action-speech-spell-clown = НУОЛК ЙОЛЗ!
-action-speech-spell-cluwne = NWOLC EGNEVER
+action-speech-spell-cluwne = !КНОХ
 action-speech-spell-magic-missile = ФОРТИ ГИ АМА!
 action-speech-spell-emp = НЕК КАНТИО!
 action-speech-spell-repulse = ГИТТАХ ВЕЙХ!
@@ -30,7 +30,7 @@ action-speech-spell-sanguine-strike = ШАПСДЕЙ!
 action-speech-spell-soul-tap = ЛЮБОЙ ЦЕНОЙ!
 action-speech-spell-thrown-lightning = МОЛНИЯ!!
 action-speech-spell-rod-form = ЛЯЗГ!
-action-speech-spell-charge = DI'RI CEL
+action-speech-spell-charge = ДЮ'РА СЕЛ!
 action-speech-spell-gorilla-form = Б'НАНА-СЛЕМА!
 action-speech-spell-summon-stick-minions = Вставайте, мои создания! Из страницы в реальность!
 action-speech-spell-tile-toggle = РУК'КАТ!

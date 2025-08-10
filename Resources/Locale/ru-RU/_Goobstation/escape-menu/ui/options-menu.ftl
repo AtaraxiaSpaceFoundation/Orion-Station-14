@@ -3,9 +3,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-ui-options-auto-fill-highlights = Auto-fill the highlights with the character's information
-ui-options-highlights-color = Highlighs color:
-ui-options-highlights-color-example = This is an highlighted text!
+ui-options-auto-fill-highlights = Автозаполнение подсветки информацией персонажа
+ui-options-highlights-color = Цвет подсветки:
+ui-options-highlights-color-example = Это подсвеченный текст!
 ui-options-function-resist-grab = Сопротивляться захвату
 ui-options-coalesce-identical-messages = Объединяйте идентичные сообщения в чате
 ui-options-detailed-examine = Показать подробный текст исследования

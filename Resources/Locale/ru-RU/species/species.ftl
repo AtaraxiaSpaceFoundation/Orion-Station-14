@@ -9,5 +9,4 @@ species-name-arachnid = Арахнид
 species-name-moth = Моль
 species-name-skeleton = Скелет
 species-name-vox = Вокс
-species-name-gingerbread = Хлебоголовый
 snail-hurt-by-salt-popup = Солевой раствор жжёт как кислота!

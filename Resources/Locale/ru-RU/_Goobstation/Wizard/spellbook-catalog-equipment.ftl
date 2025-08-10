@@ -71,7 +71,7 @@ spellbook-staff-animate-desc =
     Арканный посох, способный при контакте вливать древнюю энергию, которая заставляет неодушевленные предметы оживать.
     Эта магия не действует на машины.
     У предметов, оживленных с помощью этого посоха, будут глупые глаза, но не заблуждайтесь, они очень опасны!
-spellbook-hammer-mjollnir-name = Mjollnir
-spellbook-hammer-mjollnir-description = Wield the power of THUNDER in your hands. Send foes flying with a mighty swing or by throwing it right at em!
-spellbook-hammer-singularity-name = Singularity Hammer
-spellbook-hammer-singularity-description = Ever wonder what it'd be like to be the singularity? Swing this hammer to draw in your surroundings, even works if you miss!
+spellbook-hammer-mjollnir-name = Мьёльнир
+spellbook-hammer-mjollnir-description = В ваших руках мощь ГРОЗЫ. Отправляйте врагов в полет с помощью мощного взмаха или броска прямо в них!
+spellbook-hammer-singularity-name = Молот сингулярности
+spellbook-hammer-singularity-description = Вы когда-нибудь задумывались, каково это — быть сингулярностью? Размахивайте этим молотом, чтобы притянуть всё вокруг, даже если вы промахнётесь!
