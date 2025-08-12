@@ -24,6 +24,14 @@
   # Europa-Start
   category: Unusual
   description: "/ServerInfo/_Europa/SpeciesDescriptions/Felinid.xml"
+  pros:
+  - Нейтрализуют 99% урона от падения, или удара об что-то.
+  special:
+  - Не издают звуков ходьбы, если не носят обуви.
+  - Отхаркивают комок шерсти.
+  - Могут обрыгаться, при удержании.
+  cons:
+  - Стамина меньше на 25%, чем у человека.
   # Europa-End
 
 - type: markingPoints
