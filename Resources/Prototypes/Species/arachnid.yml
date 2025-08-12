@@ -29,7 +29,7 @@
   - Unsexed
   # Europa-Start
   category: Classic
-  description: "/ServerInfo/Guidebook/Mobs/Arachnid.xml"
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Arachnid.xml"
   # Europa-End
 
 - type: speciesBaseSprites

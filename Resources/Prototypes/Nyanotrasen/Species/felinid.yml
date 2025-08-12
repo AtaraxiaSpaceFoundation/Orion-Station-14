@@ -23,7 +23,7 @@
   skinColoration: HumanToned
   # Europa-Start
   category: Unusual
-  description: "/ServerInfo/Guidebook/Mobs/Felinid.xml"
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Felinid.xml"
   # Europa-End
 
 - type: markingPoints

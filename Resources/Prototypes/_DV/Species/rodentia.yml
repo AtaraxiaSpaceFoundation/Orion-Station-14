@@ -29,7 +29,7 @@
   naming: LastFirst
   # Europa-Start
   category: Unusual
-  description: "/ServerInfo/Guidebook/Mobs/_DV/Rodentia.xml"
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Rodentia.xml"
   # Europa-End
 
 - type: speciesBaseSprites

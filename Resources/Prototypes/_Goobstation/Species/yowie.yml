@@ -24,7 +24,7 @@
   femaleFirstNames: NamesYowieFemale
   # Europa-Start
   category: Unusual
-  description: "/ServerInfo/Guidebook/Mobs/Yowie.xml"
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Yowie.xml"
   # Europa-End
 
 # The lack of a layer means that
