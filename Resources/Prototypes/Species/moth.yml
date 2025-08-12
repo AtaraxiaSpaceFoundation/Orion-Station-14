@@ -24,6 +24,10 @@
   maleFirstNames: NamesMothFirstMale
   femaleFirstNames: NamesMothFirstFemale
   lastNames: NamesMothLast
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Moth.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobMothSprites

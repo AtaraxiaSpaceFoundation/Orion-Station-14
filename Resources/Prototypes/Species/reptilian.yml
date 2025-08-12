@@ -27,6 +27,16 @@
   maleFirstNames: NamesReptilianMale
   femaleFirstNames: NamesReptilianFemale
   naming: FirstDashFirst
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Reptilian.xml"
+  pros:
+  - Могут таскать объекты хвостом.
+  special:
+  - Имеют общий язык с таярами.
+  cons:
+  - Шприцы не могут пройти через чешую унатхов.
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobReptilianSprites

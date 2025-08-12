@@ -24,6 +24,10 @@
   sexes:
     - Male
     - Female
+  # Europa-Start
+  category: Unusual
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Shadekin.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobShadowkinSprites

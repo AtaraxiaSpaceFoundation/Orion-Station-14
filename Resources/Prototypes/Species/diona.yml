@@ -28,6 +28,10 @@
   femaleFirstNames: NamesDionaFirst
   lastNames: NamesDionaLast
   naming: TheFirstofLast
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Diona.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobDionaSprites

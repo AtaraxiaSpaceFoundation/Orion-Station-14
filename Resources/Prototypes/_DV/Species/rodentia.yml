@@ -27,6 +27,10 @@
   femaleFirstNames: NamesRodentiaFemale
   lastNames: NamesRodentiaLast
   naming: LastFirst
+  # Europa-Start
+  category: Unusual
+  description: "/ServerInfo/Guidebook/Mobs/_DV/Rodentia.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobRodentiaSprites

@@ -22,6 +22,10 @@
   naming: First
   sexes:
   - Unsexed
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Vox.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobVoxSprites

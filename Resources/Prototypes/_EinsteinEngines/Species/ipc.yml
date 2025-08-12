@@ -23,6 +23,10 @@
   naming: FirstDashLast
   sexes:
   - Unsexed
+  # Europa-Start
+  category: Unusual
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/IPC.xml"
+  # End-Start
 
 # The lack of a layer means that
 # this person cannot have round-start anything

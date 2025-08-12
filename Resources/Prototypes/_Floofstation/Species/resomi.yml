@@ -24,6 +24,10 @@
   - Unsexed
   - Male
   - Female
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Resomi.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobResomiSprites

@@ -27,6 +27,10 @@
   lastNames: NamesArachnidLast
   sexes:
   - Unsexed
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/Guidebook/Mobs/Arachnid.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobArachnidSprites

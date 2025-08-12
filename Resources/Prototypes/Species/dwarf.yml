@@ -13,3 +13,7 @@
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobDwarfDummy
   skinColoration: HumanToned
+  # Europa-Start
+  category: Unusual
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Dwarf.xml"
+  # End-Start

@@ -26,6 +26,10 @@
   maleFirstNames: NamesVulpakinMale
   femaleFirstNames: NamesVulpakinFemale
   lastNames: NamesVulpakinLast
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Vulpkanin.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobVulpkaninSprites

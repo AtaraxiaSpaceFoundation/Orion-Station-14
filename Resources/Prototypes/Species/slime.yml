@@ -24,6 +24,10 @@
   markingLimits: MobSlimeMarkingLimits
   dollPrototype: MobSlimePersonDummy
   skinColoration: Hues
+  # Europa-Start
+  category: Classic
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/SlimePerson.xml"
+  # End-Start
 
 - type: speciesBaseSprites
   id: MobSlimeSprites

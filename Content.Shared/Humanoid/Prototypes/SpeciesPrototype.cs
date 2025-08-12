@@ -30,6 +30,7 @@
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
@@ -150,6 +151,23 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    /// Europa-Start
+    [DataField]
+    public SpeciesCategory Category = SpeciesCategory.Classic;
+
+    [DataField]
+    public ResPath? Description;
+
+    [DataField]
+    public List<string> Pros = new();
+
+    [DataField]
+    public List<string> Cons = new();
+
+    [DataField]
+    public List<string> Special = new();
+    /// Europa-End
 }
 
 public enum SpeciesNaming : byte
@@ -162,3 +180,13 @@ public enum SpeciesNaming : byte
     LastNoFirst, // DeltaV
     FirstDashLast, // Goobstation
 }
+
+// Europa-Start
+public enum SpeciesCategory : byte
+{
+    Classic,
+    Unusual,
+    Special,
+    Sponsor
+}
+// Europa-end
