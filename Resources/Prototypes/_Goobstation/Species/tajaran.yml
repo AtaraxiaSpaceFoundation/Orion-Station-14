@@ -21,7 +21,7 @@
   # Europa-Start
   category: Classic
   description: "/ServerInfo/_Europa/SpeciesDescriptions/Tajaran.xml"
-  # End-Start
+  # Europa-End
 
 - type: markingPoints
   id: MobTajaranMarkingLimits

@@ -5,3 +5,4 @@ ui-species-no-pros-cons = Отсутствуют
 species-category-label-classic = Классические
 species-category-label-unusual = Нестандартные
 species-category-label-special = Особые
+species-category-label-sponsor = Спонсорские

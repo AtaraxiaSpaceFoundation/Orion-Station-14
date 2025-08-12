@@ -23,6 +23,9 @@ namespace Content.Client._Europa.Lobby.UI;
 [GenerateTypedNameReferences]
 public sealed partial class SpeciesWindow : FancyWindow
 {
+    [Dependency] private readonly DocumentParsingManager _parsingMan = default!;
+    [Dependency] private readonly IEntityManager _ent = default!;
+
     public event Action<ProtoId<SpeciesPrototype>>? ChooseAction;
     public ProtoId<SpeciesPrototype> CurrentSpecies;
 
@@ -31,7 +34,6 @@ public sealed partial class SpeciesWindow : FancyWindow
     private readonly IPrototypeManager _proto;
     private readonly LobbyUIController _uIController;
     private readonly IResourceManager _resMan;
-    [Dependency] private readonly DocumentParsingManager _parsingMan = default!;
 
     public SpeciesWindow(HumanoidCharacterProfile profile,
                         IPrototypeManager proto,
@@ -42,6 +44,8 @@ public sealed partial class SpeciesWindow : FancyWindow
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+
+        Select.OnPressed += _ => ChooseAction?.Invoke(CurrentSpecies);
 
         Title = Loc.GetString("species-window-title");
 
@@ -114,6 +118,7 @@ public sealed partial class SpeciesWindow : FancyWindow
             Text = text,
             StyleClasses = { StyleBase.ClassLowDivider },
             Margin = new(2f, 2f),
+            HorizontalAlignment = HAlignment.Center,
         };
         var separator = new HSeparator()
         {
@@ -181,7 +186,6 @@ public sealed partial class SpeciesWindow : FancyWindow
         JobLoadout.SetEntity(loadoutMob);
 
         Select.Disabled = Profile.Species == protoId;
-        Select.OnPressed += args => ChooseAction?.Invoke(protoId);
 
         var prosConsContainer = new BoxContainer()
         {

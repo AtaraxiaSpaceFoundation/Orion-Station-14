@@ -29,7 +29,7 @@
   # Europa-Start
   category: Classic
   description: "/ServerInfo/_Europa/SpeciesDescriptions/Vulpkanin.xml"
-  # End-Start
+  # Europa-End
 
 - type: speciesBaseSprites
   id: MobVulpkaninSprites

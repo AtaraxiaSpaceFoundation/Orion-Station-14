@@ -15,7 +15,7 @@
   skinColoration: NoColor
   # Europa-Start
   category: Special
-  # End-Start
+  # Europa-End
 
 - type: speciesBaseSprites
   id: MobBananaMenSprites

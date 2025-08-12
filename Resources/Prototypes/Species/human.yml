@@ -30,8 +30,8 @@
   skinColoration: HumanToned
   # Europa-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Moth.xml"
-  # End-Start
+  description: "/ServerInfo/_Europa/SpeciesDescriptions/Human.xml"
+  # Europa-End
 
 # The lack of a layer means that
 # this person cannot have round-start anything

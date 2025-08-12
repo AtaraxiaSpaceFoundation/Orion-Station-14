@@ -21,7 +21,7 @@
   skinColoration: TintedHues
   # Europa-Start
   category: Special
-  # End-Start
+  # Europa-End
 
 - type: speciesBaseSprites
   id: MobSkeletonSprites

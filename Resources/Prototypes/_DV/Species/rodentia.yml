@@ -30,7 +30,7 @@
   # Europa-Start
   category: Unusual
   description: "/ServerInfo/Guidebook/Mobs/_DV/Rodentia.xml"
-  # End-Start
+  # Europa-End
 
 - type: speciesBaseSprites
   id: MobRodentiaSprites

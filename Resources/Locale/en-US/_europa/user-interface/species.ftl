@@ -5,3 +5,4 @@ ui-species-no-pros-cons = Missing
 species-category-label-classic = Classic
 species-category-label-unusual = Unusual
 species-category-label-special = Special
+species-category-label-sponsor = Sponsor

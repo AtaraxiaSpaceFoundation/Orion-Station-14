@@ -30,7 +30,7 @@
   # Europa-Start
   category: Classic
   description: "/ServerInfo/Guidebook/Mobs/Arachnid.xml"
-  # End-Start
+  # Europa-End
 
 - type: speciesBaseSprites
   id: MobArachnidSprites
