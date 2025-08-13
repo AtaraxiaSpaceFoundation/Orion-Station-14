@@ -27,6 +27,8 @@
   # Europa-Start
   category: Unusual
   description: "/ServerInfo/_Europa/SpeciesDescriptions/Shadekin.xml"
+  pros:
+  - Обладают ночным зрением.
   special:
   - Обладают коллективным разумом Эмпатии.
   cons:
