@@ -195,8 +195,41 @@
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/engineering.rsi
+    layers: # Europa
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: light-overlay
+      visible: false
+      shader: unshaded
+      map: [ "light" ]
+  - type: ToggleableVisuals # Europa
+    spriteLayer: light
+    clothingVisuals:
+      head:
+      - state: equipped-head-light
+        shader: unshaded
+      head-vox:
+      - state: equipped-head-light-vox
+        shader: unshaded
+      head-dog:
+      - state: equipped-head-light-dog
+        shader: unshaded
   - type: Clothing
     sprite: Clothing/Head/Hardsuits/engineering.rsi
+    clothingVisuals: # Europa
+      head:
+      - state: equipped-head
+      - state: equipped-head-unshaded
+        shader: unshaded
+      head-vox:
+      - state: equipped-head-vox
+      - state: equipped-head-unshaded-vox
+        shader: unshaded
+      head-dog:
+      - state: equipped-head-dog
+      - state: equipped-head-unshaded-dog
+        shader: unshaded
   - type: PointLight
     color: "#ffdbad"
   - type: PressureProtection
@@ -496,7 +529,7 @@
 
 #Chief Engineer's Hardsuit
 - type: entity
-  parent: ClothingHeadHardsuitWithLightBase
+  parent: ClothingHeadHelmetHardsuitEngineering # Europa-Edit
   id: ClothingHeadHelmetHardsuitEngineeringWhite
   name: chief engineer's voidsuit helmet # Goob edit
   description: Special voidsuit helmet, made for the chief engineer of the station. # Goob edit
