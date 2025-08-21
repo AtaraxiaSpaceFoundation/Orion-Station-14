@@ -155,6 +155,28 @@
       "directions": 1
     },
     {
+      "name": "fire_detected",
+      "directions": 4,
+      "delays": [
+        [
+          0.4,
+          0.4
+        ],
+        [
+          0.4,
+          0.4
+        ],
+        [
+          0.4,
+          0.4
+        ],
+        [
+          0.4,
+          0.4
+        ]
+      ]
+    },
+    {
       "name": "fire_emagged",
       "directions": 1,
       "delays": [
@@ -181,6 +203,10 @@
           0.2
         ]
       ]
+    },
+    {
+      "name": "fire_overlay",
+      "directions": 1
     },
     {
       "name": "firex",
