@@ -21,13 +21,15 @@
   description: Finally, some decent reception around here...
   components:
   - type: Sprite
-    noRot: true
+    sprite: _Europa/Structures/Machines/Computers/tv.rsi # Europa
+    noRot: false # Europa-Edit
     drawdepth: SmallObjects
     layers:
     - map: ["computerLayerBody"]
       state: television
     - map: ["computerLayerScreen"]
-      state: detective_television
+      state: television_playing # Europa-Edit
+      shader: unshaded # Europa
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight
