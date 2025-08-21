@@ -1,3 +1,3 @@
-ent-WeaponMechIndustrialKineticAccelerator = протокинетический ускоритель экзокостюма
-    .desc = Выстреливает кинетическими болтами обычного урона на коротком расстоянии.
-    .suffix = Оружие Меха, Пушка, Промышленный кинетический ускоритель
+ent-WeaponMechIndustrialKineticAccelerator = протокинетический ускоритель
+    .desc = Fires huge damage kinetic bolts at a medium range.
+    .suffix = Оружие меха, Оружие, Промышленное, Протокинетический ускоритель

@@ -5,12 +5,12 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-surgery-tool-turn-on = Сначала включите!
-surgery-tool-reload = Сначала заправьте его!
-surgery-tool-match-light = Сначала зажгите!
+surgery-tool-turn-on = Сначала включите его!
+surgery-tool-reload = Сначала перезарядите его!
+surgery-tool-match-light = Сначала подожгите его!
 surgery-tool-match-replace = Возьмите новую спичку!
 surgery-tool-examinable-verb-text = Хирургический инструмент
-surgery-tool-examinable-verb-message = Изучить применение этого инструмента в хирургии.
+surgery-tool-examinable-verb-message = Осмотрите способы использования этого инструмента в операциях.
 surgery-tool-header = Этот инструмент можно использовать в операциях как:
-surgery-tool-unlimited = - { $tool } на [color={ $color }]{ $speed }x[/color] скорости
-surgery-tool-used = - { $tool } на [color={ $color }]{ $speed }x[/color] скорости, [color=red]затем используется[/color]
+surgery-tool-unlimited = - { $tool } с [color={ $color }]{ $speed }x[/color] скоростью
+surgery-tool-used = - { $tool } с [color={ $color }]{ $speed }x[/color] скоростью, [color=red]после чего расходуется[/color]

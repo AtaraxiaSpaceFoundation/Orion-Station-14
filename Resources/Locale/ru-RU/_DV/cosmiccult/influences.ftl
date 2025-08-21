@@ -1,28 +1,28 @@
-influence-type-active = Активный
-influence-type-passive = Пассивный
+influence-type-active = Активные
+influence-type-passive = Пассивные
 
 ## ACTIVE INFLUENCES
 
-influence-name-lapse = Аберрантный провал
-influence-description-lapse = Теряет форму персонажа, временно лишая его возможности двигаться или действовать. Потерявшие форму юниты являются неуязвимыми препятствиями из плитки.
-influence-name-glare = Нулевой блик
-influence-description-glare = Испускайте ужасающий импульс космического света, замедляющий и дезориентирующий всех вокруг вас.
-influence-name-shunt = Избавьтесь от субъективности
-influence-description-shunt = Выведите разум вашей цели из тела в космическую тьму, временно лишив ее разума.
-influence-name-ingress = Принудительное проникновение
-influence-description-ingress = Используйте концентрированное усилие, чтобы открыть дверь, защищенную воздушным шлюзом.
-influence-name-nova = Астральная Новая
-influence-description-nova = Выпустите мощный и разрушительный заряд астральной энергии, который повреждает, парализует и втягивает в себя все на своем пути.
-influence-name-imposition = Бессмысленное навязывание
-influence-description-imposition = На короткое время ваша телесная форма становится проводником космической энергии, сводя на нет любой наносимый урон.
+influence-name-lapse = Аномальный Упадок
+influence-description-lapse = Искажает форму цели, временно лишая её возможности двигаться или действовать. Подверженные упадку становятся неуязвимыми преградами.
+influence-name-glare = Взгляд Пустоты
+influence-description-glare = Испускает ужасный импульс космического света, замедляя и дезориентируя всех поблизости.
+influence-name-shunt = Сдвиг Разума
+influence-description-shunt = Изгоняет разум цели из тела в космическую тьму, временно оставляя тело без сознания.
+influence-name-ingress = Астральный Вход
+influence-description-ingress = Сосредотачивает силу для вскрытия шлюза или запертой двери.
+influence-name-nova = Астральная Звезда
+influence-description-nova = Запускает мощный взрыв астральной энергии, который наносит урон, парализует и втягивает всё на своём пути.
+influence-name-imposition = Пустотная Связь
+influence-description-imposition = Ваша плоть становится каналом космической силы — на короткое время вы становитесь неуязвимы ко всем повреждениям.
 
 ## PASSIVE INFLUENCES
 
-influence-name-eschew = Избегайте обмена веществ
-influence-description-eschew = Ваши физические потребности в голоде и жажде устранены - вам больше не нужно есть или пить.
-influence-name-step = Свободный шаг
-influence-description-step = Вы двигаетесь только относительно беззвездной черноты - гравитация больше не влияет на ваше движение.
-influence-name-stride = Астральный шаг
-influence-description-stride = Астральная энергия придает силы каждому вашему движению, незаметно ускоряя вашу скорость.
-influence-name-vitality = Бессмысленная жизненность
-influence-description-vitality = Беззвездная пустота Монумента ошеломляет ваш разум и тело. В его присутствии ваша физическая форма медленно восстанавливается.
+influence-name-eschew = Отвержение Метаболизма
+influence-description-eschew = Вы больше не испытываете нужды в пище или воде — физические потребности разрушены.
+influence-name-step = Безграничный Шаг
+influence-description-step = Вы двигаетесь, подчиняясь лишь пустоте — гравитация больше не влияет на ваши шаги.
+influence-name-stride = Астральный Шаг
+influence-description-stride = Астральная энергия пронизывает движения, ускоряя вас едва уловимо, но заметно.
+influence-name-vitality = Пустотная Живучесть
+influence-description-vitality = Пустота Монумента захватывает ваше тело и разум. В его присутствии вы медленно восстанавливаете здоровье.

@@ -6,5 +6,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-store-sales-amount = { $amount }% скидки!
-store-sales-over = Скидки закончились!
+store-sales-amount = Скидка { $amount }%!
+store-sales-over = Распродажа закончилась!

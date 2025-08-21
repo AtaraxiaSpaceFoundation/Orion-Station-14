@@ -1,11 +1,11 @@
-ent-RifleBulletEnergyGunLethal = летальный болт энергетической винтовки
+ent-RifleBulletEnergyGunLethal = Rifle energy bolt
     .desc = { ent-BaseBullet.desc }
-ent-RifleBulletEnergyGunIon = ионный болт энергетической винтовки
+ent-RifleBulletEnergyGunIon = Rifle ion bolt
     .desc = { ent-BaseBullet.desc }
-ent-RifleBulletEnergyGunDisabler = ЭМИ болт энергетической винтовки
+ent-RifleBulletEnergyGunDisabler = Rifle disabler bolt
     .desc = { ent-BaseBullet.desc }
-ent-RifleBulletEnergyGunAsh = испепеляющий болт энергетической винтовки
-    .suffix = ДЕБАГ
+ent-RifleBulletEnergyGunAsh = ashified energy bolt
+    .suffix = DEBUG
     .desc = { ent-BaseBullet.desc }
-ent-RifleBulletEnergyGunOverchargeLethal = сверхзаряженный болт энергетической винтовки
+ent-RifleBulletEnergyGunOverchargeLethal = overcharge rifle energy bolt
     .desc = { ent-BaseBulletIncendiary.desc }

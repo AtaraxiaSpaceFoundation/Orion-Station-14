@@ -1,5 +1,5 @@
 ent-MailMedicalBasicSupplies = { ent-BaseMailLarge }
-    .suffix = Базовые медикаменты
+    .suffix = Базовая медицина
     .desc = { ent-BaseMailLarge.desc }
 ent-MailMedicalMedicinePills = { ent-BaseMailLarge }
     .suffix = Таблетки
@@ -11,5 +11,5 @@ ent-MailMedicalStabilizers = { ent-BaseMailLarge }
     .suffix = Стабилизаторы
     .desc = { ent-BaseMailLarge.desc }
 ent-MailMedicalChemistrySupplement = { ent-BaseMailLarge }
-    .suffix = Поставка химикатов
+    .suffix = Химикаты
     .desc = { ent-BaseMailLarge.desc }

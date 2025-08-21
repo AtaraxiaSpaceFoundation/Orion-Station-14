@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 steal-target-groups-cargo-supermatter-sliver = осколок суперматерии
-steal-target-groups-weapon-lawbringer = DT-12 "Законодатель"
-steal-target-groups-rapid-syringe-gun = быстродействующий шприцемёт
-steal-target-groups-gemini-projector = установка для голопроектора ax-32 "gemini"
-steal-target-groups-weapon-justice = ДТ-2 "Правосудие"
+steal-target-groups-weapon-lawbringer = DT-12 «Законник»
+steal-target-groups-rapid-syringe-gun = быстрострелющий шприц-пистолет
+steal-target-groups-gemini-projector = ax-32 "gemini" holo-projector rig
+steal-target-groups-weapon-justice = DT-2 "Правосудие"

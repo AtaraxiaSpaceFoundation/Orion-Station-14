@@ -1,6 +1,6 @@
 ent-MailSignallerKit = { ent-BaseMail }
-    .suffix = сигнализатор
+    .suffix = Набор передатчиков
     .desc = { ent-BaseMail.desc }
 ent-MailFlashlight = { ent-BaseMail }
-    .suffix = Вспышка
+    .suffix = Фонарик
     .desc = { ent-BaseMail.desc }

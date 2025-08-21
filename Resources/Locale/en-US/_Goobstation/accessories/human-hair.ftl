@@ -58,4 +58,3 @@ marking-HumanHairStyledCurls = Styled Curls
 marking-HumanHairUnkemptScientist = Unkempt Scientist
 marking-HumanHairWispy = Wispy
 marking-HumanHairSpikeHawk = Spikey Mohawk
-marking-HumanHairLongTwinTails = Long Twintails

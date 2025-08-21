@@ -1,6 +1,6 @@
 ent-MultiWand = волшебная палочка мага
     .desc = По-видимому, палочка, используемая магом.
-    .suffix = НЕ МАППИТЬ
+    .suffix = DO NOT MAP
 ent-MultiWandWizard = { ent-MultiWand }
-    .suffix = Маг, НЕ МАППИТЬ
+    .suffix = Маг, DO NOT MAP
     .desc = { ent-MultiWand.desc }

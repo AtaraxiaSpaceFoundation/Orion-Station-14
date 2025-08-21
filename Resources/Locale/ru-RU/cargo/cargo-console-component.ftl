@@ -47,8 +47,8 @@ cargo-console-fund-transfer-broadcast = [bold]{ $name } перевёл { $amount
 cargo-console-fund-transfer-user-unknown = Неизвестно
 cargo-console-paper-reason-default = Отсутствует
 # GoobStation - cooldown on Cargo Orders (specifically gamba)
-cargo-console-cooldown-count = Cannot order more than one { $product } at a time.
-cargo-console-cooldown-active = Orders for { $product } cannot be placed for another { $timeCount } { $timeUnits }.
+cargo-console-cooldown-count = Нельзя заказать более одного товара { $product } за раз.
+cargo-console-cooldown-active = Заказы на { $product } будут недоступны ещё { $timeCount } { $timeUnits }.
 cargo-console-paper-approver-default = Самостоятельно
 cargo-console-paper-print-name = Заказ #{ $orderNumber }
 cargo-console-paper-print-text =

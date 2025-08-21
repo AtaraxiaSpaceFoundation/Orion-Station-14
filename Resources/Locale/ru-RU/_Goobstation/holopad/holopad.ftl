@@ -5,6 +5,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Command-adjacent
-holopad-command-ntr = Командование - Представитель НТ
-holopad-command-bso = Командование - Синий Щит
-holopad-centcomm = Центральное Командование
+holopad-command-ntr = Командование — Представитель ЦК
+holopad-command-bso = Командование — Офицер Синего Щита
+holopad-centcomm = ЦентКом

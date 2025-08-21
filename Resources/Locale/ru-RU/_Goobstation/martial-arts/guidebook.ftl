@@ -1,8 +1,8 @@
-guide-entry-martial-arts = Combat and Martial Arts
-guide-entry-cqc = Close Quarters Combat
-guide-entry-sleeping-carp = Sleeping Carp
-guide-entry-krav-maga = Krav Maga
-guide-entry-corporate-judo = Corporate Judo
-guide-entry-capoeira = Capoeira
-guide-entry-ninjutsu = Ninjutsu
-guide-entry-dragon-kung-fu = Dragon Kung Fu
+guide-entry-martial-arts = Боевые искусства
+guide-entry-cqc = Искусный ближний бой
+guide-entry-sleeping-carp = Стиль "Спящего карпа"
+guide-entry-krav-maga = Крав-мага
+guide-entry-corporate-judo = Корпоративное дзюдо
+guide-entry-capoeira = Капоэйра
+guide-entry-ninjutsu = Ниндзюцу
+guide-entry-dragon-kung-fu = Стиль Дракона (Кунг-фу)

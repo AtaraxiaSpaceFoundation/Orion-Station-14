@@ -3,5 +3,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-jetpack-downed = Джетпак выключается
-jetpack-is-down = Невозможно использовать джетпак в лежачем положении
+jetpack-downed = Реактивный ранец отключается
+jetpack-is-down = Нельзя использовать реактивный ранец, лежа на земле

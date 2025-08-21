@@ -18,4 +18,4 @@ ent-DebugGyroscope = { ent-BaseThruster }
     .desc = { ent-BaseThruster.desc }
 ent-ThrusterShuttleEvac = { ent-BaseThruster }
     .desc = { ent-BaseThruster.desc }
-    .suffix = Эвакуационный шаттл, неоткручиваемый
+    .suffix = Эвакуация, Неоткрепляемый

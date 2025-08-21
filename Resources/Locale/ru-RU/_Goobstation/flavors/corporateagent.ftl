@@ -1,10 +1,10 @@
-traitor-nanotrasenagent-intro = You are an elite agent.
-traitor-nanotrasenagent-goal = Nanotrasen has sent you down to do a task. Do it without getting caught or raising suspicion.
-traitor-nanotrasenagent-allies = Death to the Syndicate.
-traitor-nanotrasenagent-uplink = Nanotrasen has given you connections to the blackmarket. Your uplink is located in your PDA. Do not let anyone find out. If you get caught you're on your own.
-traitor-nanotrasenagent-roundend = [color=yellow]a corporate agent.[/color]
-traitor-centralcommand-intro = You are a Central Officer
-traitor-centralcommand-goal = Central Command has sent you down to do a task. Do it without getting caught or raising suspicion.
-traitor-centralcommand-allies = Death to the Syndicate.
-traitor-centralcommand-uplink = Central Command has given you connections to the blackmarket. Your uplink is located in your PDA. Do not let anyone find out. If you get caught you're on your own.
-traitor-centralcommand-roundend = [color=yellow]a corporate agent.[/color]
+traitor-nanotrasenagent-intro = Вы элитный агент.
+traitor-nanotrasenagent-goal = НаноТрейзен отправило вас для выполнения задач. Выполните их не попавшись, и не вызвав подозрений.
+traitor-nanotrasenagent-allies = Смерть Синдикату.
+traitor-nanotrasenagent-uplink = НаноТрейзен дала вам доступ к черному рынку. Аплинк установлен в КПК. Не допустите обнаружения. Если вас поймают, то придется надеяться только на себя.
+traitor-nanotrasenagent-roundend = [color=yellow]корпоративный агент.[/color]
+traitor-centralcommand-intro = Вы Офицер ЦК
+traitor-centralcommand-goal = Центральное командование отправило вас для выполнения задач. Выполните их не попавшись, и не вызвав подозрений.
+traitor-centralcommand-allies = Смерть Синдикату.
+traitor-centralcommand-uplink = НаноТрейзен дала вам доступ к черному рынку. Аплинк установлен в КПК. Не допустите обнаружения. Если вас поймают, то придется надеяться только на себя.
+traitor-centralcommand-roundend = [color=yellow]корпоративный агент.[/color]

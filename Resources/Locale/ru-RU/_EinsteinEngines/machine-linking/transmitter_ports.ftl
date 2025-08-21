@@ -1,2 +1,2 @@
-signal-port-name-fillitems = Fillbot Items
-signal-port-description-fillitems = Items picked up by the Fillbot.
+signal-port-name-fillitems = Вещи Заполнитбота
+signal-port-description-fillitems = Подобранные вещи Заполнитботом.

@@ -4,4 +4,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-reagent-effect-condition-pressure-threshold = требуется давление между { $min }кПа и { $max }кПа
+reagent-effect-condition-pressure-threshold = требует давление от { $min } кПа до { $max } кПа

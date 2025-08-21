@@ -8,42 +8,39 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 heretic-roundend-name = еретик
-roundend-prepend-heretic-ascension-success = { $name }, [color=green] вознесся![/color]
-roundend-prepend-heretic-ascension-fail = { $name }, [color=red] не удалось![/color]
-roundend-prepend-heretic-knowledge-named = [color=white]{ $name }[/color] исследовал в общей сложности [color=purple]{ $number }[/color] знаний.
-roundend-prepend-heretic-ascension-fail-owls = { $name }, [color=red] отказался от своего вознесения и, таким образом, потерпел неудачу![/color]
+roundend-prepend-heretic-ascension-success = { $name }, [color=green]воспринял(а) Вознесение![/color]
+roundend-prepend-heretic-ascension-fail = { $name }, [color=red]потерпел(а) неудачу![/color]
+roundend-prepend-heretic-ascension-fail-owls = { $name }, [color=red]отрекся(ась) от Вознесения и потому потерпел(а) неудачу![/color]
+roundend-prepend-heretic-knowledge-named = [color=white]{ $name }[/color] изучил(а) всего [color=purple]{ $number }[/color] знаний.
 heretic-gamemode-title = Еретики
-heretic-gamemode-description = На станции обнаружена пространственная аномалия. Дополнительных данных нет.
+heretic-gamemode-description = Обнаружена измерительная аномалия на станции. Дополнительных данных нет.
 heretic-role-greeting-fluff =
-    Еще один день на бессмысленной работе. Вы чувствуете мерцание вокруг себя, когда осознаете, что в воздухе витает нечто странное. Вы заглядываете внутрь себя и обнаруживаете нечто, что изменит вашу жизнь.
+    Ещё один день в бессмысленной работе. Ты чувствуешь, как вокруг тебя мерцает что-то странное. Ты обращаешься внутрь себя и открываешь нечто, что изменит твою жизнь.
     
-    Врата Мансуса открываются перед вашим разумом.
+    Врата Мансуса открываются твоему разуму.
 heretic-role-greeting =
-    Вы - Еретик!
+    Ты — Еретик!
     
-    Подробнее о вашей роли читайте в гайде.
+    Подробнее о своей роли читай в энциклопедии.
 heretic-role-greeting-short =
-    Вы - Еретик!
-    Чтобы выучить Последний Ритуал и вознестись, вы должны выполнить поставленные перед вами задачи.
+    Ты — Еретик!
+    Чтобы узнать Финальный Ритуал и Вознестись, выполни свои задачи.
 
-## ghoul
+## Ghoul
 
 heretic-ghoul-greeting =
-    Вы были призваны в этот мир { CAPITALIZE(THE($ent)) }!
-    Вы должны помочь ему в путешествии к вознесению и защитить его любой ценой.
-    Вы можете последовать за другими еретиками, если ваш хозяин не может быть воскрешен.
+    Ты был вызван в этот мир { CAPITALIZE(THE($ent)) }!
+    Ты должен помогать ему в его пути к Вознесению и защищать любой ценой.
+    Ты можешь следовать за другими еретиками, если твой хозяин уже не воскреснет.
 heretic-ghoul-greeting-noname =
-    Вы были призваны в этот мир Жуткими силами.
-    Выполняйте приказы своих хозяев, несмотря ни на что.
-ghostrole-ghoul-name = Упырь
-ghostrole-prophet-name = Сырой пророк
-ghostrole-stalker-name = Сталкер
-ghostrole-ghoul-desc = Помогать своему призывателю в достижении вознесения.
-ghostrole-rustwalker-name = Ржавый ходок
-ghostrole-prophet-desc = Помочь своему призывателю в достижении вознесения. Подключать других верующих к Связи Мансуса.
-ghostrole-stalker-desc = Помочь своему призывателю в достижении вознесения. Охотьтесь на экипаж станции.
-ghostrole-ghoul-rules = Вы являетесь [color=red][bold]командным антагонистом[/bold][/color] с тем, кто вызвал вас и других жутких существ.
-ghostrole-rustwalker-desc = Помогите своему призывателю достичь вознесения. Распространите ржавчину повсюду.
-
-# Спи спокойно, Мансур.
-
+    Ты был призван из бездны.
+    Повинуйся воле своих повелителей, как бы то ни было.
+ghostrole-ghoul-name = Гуль
+ghostrole-prophet-name = Пророк
+ghostrole-stalker-name = Плотевой Следопыт
+ghostrole-rustwalker-name = Ржавый Бродяга
+ghostrole-ghoul-desc = Помогай своему призывателю достичь вознесения.
+ghostrole-prophet-desc = Помогай своему призывателю достичь вознесения. Общайся с другими через Связь Мансуса.
+ghostrole-stalker-desc = Помогай своему призывателю достичь вознесения. Телепортируйся и саботируй освещение экипажа.
+ghostrole-rustwalker-desc = Помогай своему призывателю достичь вознесения. Распространяй ржавчину повсюду.
+ghostrole-ghoul-rules = Ты — [color=red][bold]Командный антагонист[/bold][/color] вместе с тем, кто тебя призвал, и прочими древними силами.

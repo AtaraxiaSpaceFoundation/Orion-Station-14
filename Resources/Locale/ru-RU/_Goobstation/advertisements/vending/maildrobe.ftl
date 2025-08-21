@@ -5,5 +5,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-advertisement-maildrobe-1 = В наших псевдозамшевых шортах "dura carbon mail shorts" вы сможете обогнать любую собаку! Предложение ограничено!
-advertisement-maildrobe-2 = Синие шорты вам к лицу!
+advertisement-maildrobe-1 = Убегай от любой собаки в наших псевдозамшевых дюракарбоновых шортах! Ограниченный запас!
+advertisement-maildrobe-2 = Тебе идет синий цвет!

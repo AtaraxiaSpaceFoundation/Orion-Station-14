@@ -1,6 +1,6 @@
 ent-GasPipeSensorSMHot = { ent-GasPipeSensor }
-    .suffix = СМ Жар
+    .suffix = Суперматерия, Горячая
     .desc = { ent-GasPipeSensor.desc }
 ent-GasPipeSensorSMCold = { ent-GasPipeSensor }
-    .suffix = СМ Холод
+    .suffix = Суперматерия, Холодная
     .desc = { ent-GasPipeSensor.desc }

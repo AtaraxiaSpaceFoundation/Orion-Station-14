@@ -10,16 +10,16 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 trait-scottish-name = Шотландский акцент
-trait-scottish-desc = Ваша шотландская гордость так же сильна, как и ваш акцент!
-trait-wheelchair-bound-name = Прикованный к инвалидной коляске
-trait-wheelchair-bound-desc = Вы не можете передвигаться без инвалидной коляски. Инвалидная коляска входит в комплект.
-trait-bogan-name = Боганский акцент
-trait-bogan-desc = Вы научились этому у мифического существа.
-poor-vision-trait-examined = [color=lightblue]{ CAPITALIZE(POSS-ADJ($target)) } глаза расфокусированы. Не похоже, что { SUBJECT($target) } не может хорошо видеть вас без очков...[/color]
+trait-scottish-desc = Твоя шотландская гордость так же сильна, как и твой акцент!
+trait-wheelchair-bound-name = Привязан к инвалидному креслу
+trait-wheelchair-bound-desc = Ты не можешь двигаться без инвалидного кресла. Кресло включено.
+trait-bogan-name = Акцент богана
+trait-bogan-desc = Ты научился этому у мифического существа.
+poor-vision-trait-examined = [color=lightblue]{ CAPITALIZE(POSS-ADJ($target)) } глаза расфокусированы. Похоже, { SUBJECT($target) } плохо тебя видит без очков.[/color]
 trait-medieval-accent-name = Средневековый акцент
-trait-medieval-accent-desc = Послушай! Твоя манера говорить весьма необычна!
-trait-tile-movement-name = Внутренний покой
-trait-tile-movement-desc = Вы всегда на связи со своими корнями. И под вашими корнями я подразумеваю центр плитки, на которой вы стоите.
-trait-movement-impaired-name = Нарушение движения
-trait-movement-impaired-desc = Кажется, вы не можете нормально передвигаться без посторонней помощи. В комплект входит трость.
-movement-impaired-trait-examined = [color=yellow]{ CAPITALIZE(SUBJECT($target)) } кажется, что он слегка прихрамывает. Не похоже, что { SUBJECT($target) } не может хорошо передвигаться без посторонней помощи[/color]
+trait-medieval-accent-desc = О, взирай! Манера твоя речи, поистине необычна!
+trait-tile-movement-name = Внутреннее спокойствие
+trait-tile-movement-desc = Ты всегда в гармонии со своими корнями. А под корнями я имею в виду центр тайла, на котором ты стоишь.
+trait-movement-impaired-name = Нарушение походки
+trait-movement-impaired-desc = Похоже, ты не можешь нормально ходить без посторонней помощи. Трость включена.
+movement-impaired-trait-examined = [color=yellow]{ CAPITALIZE(SUBJECT($target)) } слегка хромает. Похоже, { SUBJECT($target) } с трудом передвигается без посторонней помощи[/color]

@@ -1,6 +1,6 @@
 ent-HeadAnimal = голова животного
     .desc = { ent-PartAnimalBase.desc }
-ent-ChestGoliath = грудь голиафа
+ent-ChestGoliath = торс голиафа
     .desc = { ent-PartAnimalBase.desc }
 ent-GroinGoliath = пах голиафа
     .desc = { ent-PartAnimalBase.desc }

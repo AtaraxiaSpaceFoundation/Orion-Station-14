@@ -4,13 +4,13 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-upgradeable-gun-popup-upgrade-limit = Достигнуто максимальное количество улучшений!
-upgradeable-gun-slot-name = Слот закрепления { $value }
-upgradeable-gun-total-remaining-capacity = Доступно вместимости: { $value }
-gun-upgrade-examine-text-damage = Имеет улучшенный [color=#ec9b2d][bold]урон[/bold][/color].
-gun-upgrade-examine-text-range = Имеет улучшенную [color=#2decec][bold]дальность[/bold][/color].
-gun-upgrade-examine-text-reload = Имеет улучшенную [color=#bbf134][bold]скорострельность[/bold][/color].
+upgradeable-gun-popup-upgrade-limit = Превышена максимальная ёмкость для улучшений!
+upgradeable-gun-slot-name = Слот для модуля { $value }
+upgradeable-gun-total-remaining-capacity = Всего оставшейся ёмкости: { $value }
+gun-upgrade-examine-text-damage = Содержит улучшение [color=#ec9b2d][bold]урона[/bold][/color].
+gun-upgrade-examine-text-range = Содержит улучшение [color=#2decec][bold]дальности[/bold][/color].
+gun-upgrade-examine-text-reload = Содержит улучшение [color=#bbf134][bold]скорости стрельбы[/bold][/color].
 gun-upgrade-examine-text-light = Содержит улучшение [color=#bbf134][bold]освещения[/bold][/color].
 gun-upgrade-examine-text-vampirism = Содержит улучшение [color=crimson][bold]вампиризма[/bold][/color].
-gun-upgrade-examine-text-pressure = Содержит улучшение [color=orangered][bold]давления[/bold][/color].
-gun-upgrade-examine-text-capacity-cost = Требуется { $value } вместимости.
+gun-upgrade-examine-text-pressure = Содержит нелегальное [color=orangered][bold]повышенное давление[/bold][/color] в стволе.
+gun-upgrade-examine-text-capacity-cost = Требует { $value } единиц ёмкости.

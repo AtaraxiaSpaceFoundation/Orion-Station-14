@@ -3,4 +3,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-pocket-dimension-verb-text = Переключатель Портала
+pocket-dimension-verb-text = Переключить портал

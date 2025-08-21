@@ -1,8 +1,8 @@
-cmd-callshuttle-desc = Вызывает эвакуационный шаттл с возможностью указать время прибытия.
-call-shuttle-command-description = Calls the emergency shuttle with an optionally provided arrival time.
-call-shuttle-command-help-text = Usage: { $command } [m:ss]
-recall-shuttle-command-description = Recalls the emergency shuttle.
-recall-shuttle-command-help-text = Usage: { $command }
-cmd-callshuttle-help = Использование: callshuttle [м:сс]
-cmd-recallshuttle-desc = Отзывает эвакуационный шаттл.
+call-shuttle-command-description = Вызывает эвакуационный шаттл с указанием времени прибытия по выбору.
+cmd-callshuttle-desc = Вызывает аварийный шаттл с возможностью указания времени прибытия.
+cmd-callshuttle-help = Использование: callshuttle [m:ss]
+cmd-recallshuttle-desc = Отзывает аварийный шаттл.
 cmd-recallshuttle-help = Использование: recallshuttle
+call-shuttle-command-help-text = Использование: { $command } [m:ss]
+recall-shuttle-command-description = Отзывает эвакуационный шаттл.
+recall-shuttle-command-help-text = Использование: { $command }

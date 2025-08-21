@@ -3,4 +3,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-silicon-behavior-buzz = Бзззт...
+silicon-behavior-buzz = Бззз..

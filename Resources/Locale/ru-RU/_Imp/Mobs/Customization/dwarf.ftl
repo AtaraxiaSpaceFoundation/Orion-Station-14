@@ -1,24 +1,24 @@
 # Chest
 
-marking-DwarfConstellationChest = Chest Constellation
-marking-DwarfConstellationChest-constellation = Chest Constellation
-marking-DwarfMarkBear = Mark of the Bear
-marking-DwarfMarkBear-markbear = Mark of the Bear
-marking-DwarfMarkCobra = Mark of the Cobra
-marking-DwarfMarkCobra-markcobra = Mark of the Cobra
-marking-DwarfMarkSpider = Mark of the Spider
-marking-DwarfMarkSpider-markspider = Mark of the Spider
-marking-DwarfTattooShootingStar = Shooting Star Tattoo
-marking-DwarfTattooShootingStar-shootingstar = Shooting Star Tattoo
+marking-DwarfConstellationChest = Созвездие на груди
+marking-DwarfConstellationChest-constellation = Созвездие на груди
+marking-DwarfMarkBear = Знак Медведя
+marking-DwarfMarkBear-markbear = Знак Медведя
+marking-DwarfMarkCobra = Знак Кобры
+marking-DwarfMarkCobra-markcobra = Знак Кобры
+marking-DwarfMarkSpider = Знак Паука
+marking-DwarfMarkSpider-markspider = Знак Паука
+marking-DwarfTattooShootingStar = Татуировка Падающая Звезда
+marking-DwarfTattooShootingStar-shootingstar = Татуировка Падающая Звезда
 
 # Head
 
-marking-DwarfBearCheeks = Glowing Cheeks
-marking-DwarfBearCheeks-bearcheeks = Glowing Cheeks
-marking-DwarfConstellationHead = Head Constellation
-marking-DwarfConstellationHead-constellation = Head Constellation
-marking-DwarfHeadGlow = Glowing Star
-marking-DwarfHeadGlow-glow = Glowing Star
+marking-DwarfBearCheeks = Светящиеся щеки
+marking-DwarfBearCheeks-bearcheeks = Светящиеся щеки
+marking-DwarfConstellationHead = Созвездие на голове
+marking-DwarfConstellationHead-constellation = Созвездие на голове
+marking-DwarfHeadGlow = Светящаяся звезда
+marking-DwarfHeadGlow-glow = Светящаяся звезда
 
 # Snout
 
@@ -26,23 +26,23 @@ marking-DwarfHeadGlow-glow = Glowing Star
 
 # RArm
 
-marking-DwarfConstellationRArm = Arm Constellation (Right)
-marking-DwarfConstellationRArm-constellation = Arm Constellation (Right)
+marking-DwarfConstellationRArm = Созвездие на руке (правая)
+marking-DwarfConstellationRArm-constellation = Созвездие на руке (правая)
 
 # LArm
 
-marking-DwarfConstellationLArm = Arm Constellation (Left)
-marking-DwarfConstellationLArm-constellation = Arm Constellation (Left)
+marking-DwarfConstellationLArm = Созвездие на руке (левая)
+marking-DwarfConstellationLArm-constellation = Созвездие на руке (левая)
 
 # RLeg
 
-marking-DwarfConstellationRLeg = Leg Constellation (Right)
-marking-DwarfConstellationRLeg-constellation = Leg Constellation (Right)
+marking-DwarfConstellationRLeg = Созвездие на ноге (правая)
+marking-DwarfConstellationRLeg-constellation = Созвездие на ноге (правая)
 
 # LLeg
 
-marking-DwarfConstellationLLeg = Leg Constellation (Left)
-marking-DwarfConstellationLLeg-constellation = Leg Constellation (Left)
+marking-DwarfConstellationLLeg = Созвездие на ноге (левая)
+marking-DwarfConstellationLLeg-constellation = Созвездие на ноге (левая)
 
 # UndergarmentBottom
 
@@ -50,27 +50,27 @@ marking-DwarfConstellationLLeg-constellation = Leg Constellation (Left)
 
 # LFoot
 
-marking-DwarfConstellationLFoot = Foot Constellation (Left)
-marking-DwarfConstellationLFoot-constellation = Foot Constellation (Left)
+marking-DwarfConstellationLFoot = Созвездие на стопе (левая)
+marking-DwarfConstellationLFoot-constellation = Созвездие на стопе (левая)
 
 # RFoot
 
-marking-DwarfConstellationRFoot = Foot Constellation (Right)
-marking-DwarfConstellationRFoot-constellation = Foot Constellation (Right)
+marking-DwarfConstellationRFoot = Созвездие на стопе (правая)
+marking-DwarfConstellationRFoot-constellation = Созвездие на стопе (правая)
 
 # LHand
 
-marking-DwarfConstellationLHand = Hand Constellation (Left)
-marking-DwarfConstellationLHand-constellation = Hand Constellation (Left)
-marking-DwarfMarkKangarooLHand = Mark of the Kangaroo (Left)
-marking-DwarfMarkKangarooLHand-markkangaroo = Mark of the Kangaroo (Left)
+marking-DwarfConstellationLHand = Созвездие на руке (левая)
+marking-DwarfConstellationLHand-constellation = Созвездие на руке (левая)
+marking-DwarfMarkKangarooLHand = Знак Кенгуру (левая)
+marking-DwarfMarkKangarooLHand-markkangaroo = Знак Кенгуру (левая)
 
 # RHand
 
-marking-DwarfConstellationRHand = Hand Constellation (Right)
-marking-DwarfConstellationRHand-constellation = Hand Constellation (Right)
-marking-DwarfMarkKangarooRHand = Mark of the Kangaroo (Right)
-marking-DwarfMarkKangarooRHand-markkangaroo = Mark of the Kangaroo (Right)
+marking-DwarfConstellationRHand = Созвездие на руке (правая)
+marking-DwarfConstellationRHand-constellation = Созвездие на руке (правая)
+marking-DwarfMarkKangarooRHand = Знак Кенгуру (правая)
+marking-DwarfMarkKangarooRHand-markkangaroo = Знак Кенгуру (правая)
 
 # HeadSide
 

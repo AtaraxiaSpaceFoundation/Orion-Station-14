@@ -4,7 +4,7 @@ roles-antag-survivor-name = Выживший
 # It's a Halo reference
 roles-antag-survivor-objective = Текущая задача: Выжить
 survivor-role-greeting =
-    Вы — выживший.
+    Вы - выживший.
     Ваша главная задача остаться в живых и вернуться на Центком.
     Накопите столько огневой мощи, сколько необходимо для гарантии вашего выживания.
     Никому не доверяйте.
@@ -26,8 +26,8 @@ survivor-round-end-alive-on-shuttle-count =
 
 ## Wizard
 
-objective-issuer-swf = [color=turquoise]Федерация космических магов[/color]
-roles-antag-wizard-objective = Преподайте им урок, который они никогда не забудут.
+objective-issuer-swf = [color=turquoise]Федерация космических волшебников[/color]
+wizard-round-end-name = волшебник
 
 ## TODO: Wizard Apprentice (Coming sometime post-wizard release)
 

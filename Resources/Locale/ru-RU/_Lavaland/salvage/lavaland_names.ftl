@@ -6,17 +6,17 @@
 
 lavaland-planet-name-unknown = Неизвестная планета
 lavaland-planet-name-lavaland = Планета Лаваленд
-lavaland-planet-name-icemoon = Ледяная луна
-# GPS Signals
-lavaland-planet-outpost = Главный аванпост
-lavaland-ruin-unknown = Неизвестный
-lavaland-ruin-cargo = Обломки карго
-lavaland-ruin-arrivals-shuttle = Прибытие
+lavaland-planet-name-icemoon = Ледяная Луна
+# GPS Сигналы
+lavaland-planet-outpost = Главный форпост
+lavaland-ruin-unknown = Неизвестно
+lavaland-ruin-cargo = Грузовой обломок
+lavaland-ruin-arrivals-shuttle = Обломок шаттла прибытия
 lavaland-ruin-wooden = Деревянное здание
-lavaland-ruin-seed-graveyard = Кладбище
+lavaland-ruin-seed-graveyard = Кладбище семян
 lavaland-ruin-seed-vault = Хранилище семян
 lavaland-ruin-anomalous-landscape = Аномальный ландшафт
-lavaland-ruin-shelter = Заброшенное убежище
+lavaland-ruin-shelter = Заброшенное укрытие
 lavaland-ruin-laboratory = Разрушенная лаборатория
 lavaland-ruin-station = Разрушенная исследовательская станция
 lavaland-ruin-big-shuttle = Огромный разрушенный шаттл

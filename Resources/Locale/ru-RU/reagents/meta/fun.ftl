@@ -21,4 +21,4 @@ reagent-desc-weh = Чистая сущность плюшевого ящера. 
 reagent-name-hew = сок, заставляющий говорить Хев
 reagent-desc-hew = Чистая сущность инвертированного плюшевого ящера. Заставляет вас говорить Хев!
 reagent-name-corgiessence = коргиум
-reagent-desc-corgiessence = На вкус как еда для собак. Очевидно, это дело вкуса.
+reagent-desc-corgiessence = На вкус как собака. Очевидно, вкус приобретенный.

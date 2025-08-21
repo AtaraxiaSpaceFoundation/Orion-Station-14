@@ -6,24 +6,24 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# Name
+# Names
 chat-emote-name-fart = Пукать
 chat-emote-name-fart-inhale = Вдыхонуть пук
 chat-emote-name-fart-super = Пердеть
-chat-emote-name-flap = Махать крыльями
-chat-emote-name-trill = Трель
-chat-emote-name-warble = Поскрипеть
-chat-emote-name-wurble = Урчать
-chat-emote-name-mars = Мар
+chat-emote-name-flap = Взмахнуть
+chat-emote-name-trill = Дрожжать
+chat-emote-name-warble = Петь
+chat-emote-name-wurble = Журчать
+chat-emote-name-mars = Марс
 # Message
 chat-emote-msg-fart = пукает.
 chat-emote-msg-fart-inhale = вдыхает пердеж.
 chat-emote-msg-fart-super = пердит.
-chat-emote-msg-flap = машет { POSS-ADJ($entity) } крыльями.
-chat-emote-msg-trill = Издаёт трель!
-chat-emote-msg-warble = Поскрипывает!
-chat-emote-msg-wurble = Урчит!
-chat-emote-msg-mars = Мар!
+chat-emote-msg-flap = взмахивает { POSS-ADJ($entity) } крыльями.
+chat-emote-msg-trill = дрожжит!
+chat-emote-msg-warble = поёт!
+chat-emote-msg-wurble = журчит!
+chat-emote-msg-mars = марс.
 # Misc
 emote-fart-not-loaded = Вы не готовы пердеть!
 emote-fart-already-loaded = Вы уже готовы пердеть!
@@ -33,4 +33,4 @@ emote-fart-super-fart = Вы (буквально) пердите во всю з�
 emote-fart-inhale-notice = Вы вдыхаете воздух, чтобы зарядить пердеж.
 emote-fart-inhale-disarm-notice = Вы обезвреживаете свой пердеж.
 chat-emote-name-boop = Буп
-chat-emote-name-whirr = Шумит
+chat-emote-name-whirr = Жужжать

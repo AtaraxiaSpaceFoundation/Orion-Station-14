@@ -6,8 +6,8 @@ rcd-component-examine-build-details = Выбран режим строитель
 ### Interaction Messages
 
 # Mode change
-rcd-component-change-mode = РСУ переключёно в режим '{ $mode }'.
-rcd-component-change-build-mode = РСУ переключёно в режим строительства. Строится { $name }.
+rcd-component-change-mode = РСУ переключён в режим '{ $mode }'.
+rcd-component-change-build-mode = РСУ переключён в режим строительства. Строится { $name }.
 # Ammo count
 rcd-component-no-ammo-message = В РСУ закончились заряды!
 rcd-component-insufficient-ammo-message = В РСУ не хватает зарядов!
@@ -35,10 +35,10 @@ rcd-component-lighting = Освещение
 
 ### Prototype names (note: constructable items will be puralized)
 
-rcd-component-piping = Трубы
-rcd-component-atmosphericutility = Атмосферные приспособления
-rcd-component-pumps = Насосы & Клапаны
-rcd-component-vents = Вентиляция
+rcd-component-piping = Piping
+rcd-component-atmosphericutility = Atmospheric Utility
+rcd-component-pumps = Pumps & Valves
+rcd-component-vents = Vents
 rcd-component-deconstruct = демонтаж
 rcd-component-floor-steel = стальной пол
 rcd-component-plating = корпусное покрытие

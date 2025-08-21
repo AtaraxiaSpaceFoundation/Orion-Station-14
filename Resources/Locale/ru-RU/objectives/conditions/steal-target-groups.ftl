@@ -1,12 +1,12 @@
 # Traitor single items
 steal-target-groups-hypospray = гипоспрей
 steal-target-groups-handheld-crew-monitor = ручной монитор экипажа
+steal-target-groups-clothing-hands-knuckledusters-qm = золотой кастет
 steal-target-groups-clothing-outer-hardsuit-rd = экспериментальный исследовательский скафандр
 steal-target-groups-hand-teleporter = ручной телепортер
 steal-target-groups-clothing-shoes-boots-mag-adv = продвинутые магнитные сапоги
 steal-target-groups-box-folder-qm-clipboard = цифровой планшет заявок
-steal-target-groups-clothing-hands-knuckledusters-qm = золотые кастеты
-steal-target-groups-weapon-launcher-singularity-buster = singularity buster
+steal-target-groups-weapon-launcher-singularity-buster = уничтожитель сингулярности
 steal-target-groups-food-meat-corgi = первосортное мясо корги
 steal-target-groups-captain-id-card = ID-карта капитана
 steal-target-groups-jetpack-captain-filled = джетпак капитана
@@ -21,7 +21,6 @@ steal-target-groups-stamps = печати
 steal-target-groups-door-remotes = пульты от шлюзов
 steal-target-groups-encryption-keys = ключи шифрования
 steal-target-groups-technology-disks = технологические диски
-steal-target-groups-mail = почта
 steal-target-groups-id-cards = ID-карты
 steal-target-groups-lamps = ЛАМПЫ
 # Thief single item
@@ -45,7 +44,7 @@ steal-target-groups-wanted-list-cartridge = картридж Список раз
 # Thief structures
 steal-target-groups-teg = часть термоэлектрического генератора
 steal-target-groups-freezer-heater = нагреватель или охладитель
-steal-target-groups-altar-nanotrasen = алтарь Nanotrasen (любой)
+steal-target-groups-altar-nanotrasen = алтарь НаноТрейзен (любой)
 steal-target-groups-nuclear-bomb = ядерная боеголовка
 steal-target-groups-fax-machine-captain = факс дальнего действия капитана
 steal-target-groups-chem-dispenser = химический раздатчик

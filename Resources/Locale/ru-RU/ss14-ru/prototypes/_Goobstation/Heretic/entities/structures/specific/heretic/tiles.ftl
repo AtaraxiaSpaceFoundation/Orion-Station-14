@@ -1,8 +1,8 @@
-ent-HereticFireAA = огонь
-    .desc = Черт возьми, это сексуально.
-ent-TileHereticVoid = пустота
-    .desc = Черт возьми, как холодно.
-ent-TileHereticRustRune = руна
-    .desc = Ржавый...
-ent-HereticRustAscensionSpreader = Ржавчина
-    .desc = Оно растет...
+ent-HereticFireAA = fire
+    .desc = Damn that's hot.
+ent-TileHereticVoid = void
+    .desc = Damn that's cold.
+ent-TileHereticRustRune = rune
+    .desc = Rusty...
+ent-HereticRustAscensionSpreader = rust
+    .desc = It grows...

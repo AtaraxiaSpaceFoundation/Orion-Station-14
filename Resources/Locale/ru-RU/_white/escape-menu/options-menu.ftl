@@ -3,5 +3,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-ui-options-log-in-chat = Log actions in the chat
-ui-options-function-auto-get-up = Automatically get up after falling
+ui-options-log-in-chat = Включить логи действий в чате
+ui-options-function-auto-get-up = Автоматически вставать после падения

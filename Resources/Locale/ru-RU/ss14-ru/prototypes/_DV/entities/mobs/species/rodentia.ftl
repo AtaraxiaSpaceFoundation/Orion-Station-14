@@ -1,4 +1,4 @@
-ent-BaseMobRodentia = Урист МакКрыса
+ent-BaseMobRodentia = Урист МакРодентия
     .desc = { ent-BaseMobSpeciesOrganic.desc }
-ent-MobRodentiaDummy = Кукла Родентии
+ent-MobRodentiaDummy = кукла Родентии
     .desc = Заглушка Родентии, предназначенная для настройки персонажа.

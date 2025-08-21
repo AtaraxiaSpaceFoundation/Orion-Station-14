@@ -52,5 +52,3 @@ ent-ActionToggleWagging = Wagging Tail
     .desc = Start or stop wagging your tail.
 ent-FakeMindShieldToggleAction = [color=green]Toggle Fake Mindshield[/color]
     .desc = Turn the Fake Mindshield implant's transmission on/off
-ent-ActionToggleRootable = action-name-toggle-rootable
-    .desc = action-description-toggle-rootable

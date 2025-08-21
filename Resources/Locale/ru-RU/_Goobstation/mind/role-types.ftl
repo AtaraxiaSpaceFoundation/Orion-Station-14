@@ -4,4 +4,4 @@ role-subtype-blob = Блоб
 role-subtype-heretic = Еретик
 role-subtype-pirate = Пират
 role-subtype-changeling = Генокрад
-role-subtype-brainwashed = Промытый
+role-subtype-brainwashed = Порабощённый

@@ -8,11 +8,11 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # EnergyGunComponent
-energygun-examine-fire-mode = { $mode } Болт.
+energygun-examine-fire-mode = Установлен режим: { $mode } заряд.
 # Hardlight Bow
 ammo-selector-examine-mode = Текущий режим: { $mode }
 mode-select-verb-text = Выбрать режим стрельбы
-mode-selected = Выбран { $mode }
+mode-selected = Выбран режим: { $mode }
 # RequiresDualWieldComponent
-dual-wield-component-requires = Это не кажется достаточно крутым, вам нужна вторая пушка.
-gun-requires-dual-wield-component-examine = Чтобы стрелять из этого оружия, оно должно быть использовано с другим подобным оружием.
+dual-wield-component-requires = Это не выглядит достаточно круто — нужно использовать два оружия одновременно.
+gun-requires-dual-wield-component-examine = Это оружие необходимо использовать в паре с таким же, чтобы стрелять.

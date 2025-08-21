@@ -1,158 +1,157 @@
 ## COSMIC CULT ROUND, ANTAG & GAMEMODE TEXT
 
 cosmiccult-announcement-sender = ???
-cosmiccult-title = Космический культ
-cosmiccult-description = Среди команды скрываются культисты.
-roles-antag-cosmiccult-name = Космический культист
-roles-antag-cosmiccult-description = Приблизьте конец всего сущего с помощью уловок и саботажа, промывая мозги тем, кто мог бы выступить против вас.
-cosmiccult-gamemode-title = Космический культ
-cosmiccult-gamemode-description = Сканеры фиксируют аномальное увеличение Λ-CDM. Дополнительных данных нет.
-cosmiccult-vote-steward-initiator = Неизвестное
-cosmiccult-vote-steward-title = Руководитель космического культа
+cosmiccult-title = Культ Космоса
+cosmiccult-description = Культисты скрываются среди экипажа.
+roles-antag-cosmiccult-name = Космический Культист
+roles-antag-cosmiccult-description = Веди к концу всего сущего через обман и саботаж, промывая мозги тем, кто противостоит тебе.
+cosmiccult-gamemode-title = Культ Космоса
+cosmiccult-gamemode-description = Сканеры фиксируют аномальный рост Λ-CDM. Дополнительных данных нет.
+cosmiccult-vote-steward-initiator = Неизвестный
+cosmiccult-vote-steward-title = Управление Культом Космоса
 cosmiccult-vote-steward-briefing =
-    Вы - управляющий Космическим культом!
-    Проследите, чтобы Монумент был установлен в надежном месте, и организуйте культ так, чтобы обеспечить вашу коллективную победу.
-    Вам не разрешается инструктировать культистов о том, как использовать или расходовать их энтропию.
-cosmiccult-vote-lone-steward-title = Одинокий культист
+    Ты — Управляющий Космического Культа!
+    Убедись, что Монумент установлен в безопасном месте, и организуй культ для достижения общей победы.
+    Тебе запрещено инструктировать культистов о том, как использовать или тратить их Энтропию.
+cosmiccult-vote-lone-steward-title = Одинокий Культист
 cosmiccult-vote-lone-steward-briefing =
-    Вы совершенно одиноки. Но ваш долг еще не выполнен.
-    Проследите, чтобы монумент был установлен в надежном месте, и завершите то, что начал культ.
-cosmiccult-finale-autocall-briefing = Монумент активируется { $minutesandseconds } Соберитесь и приготовьтесь к концу.
-cosmiccult-finale-ready = От Монумента исходит устрашающий свет!
-cosmiccult-finale-speedup = Притяжение усиливается! Энергия разливается по всему окружению...
-cosmiccult-finale-degen = Вы чувствуете, что распадаетесь на части!
-cosmiccult-finale-location = Сканеры регистрируют огромный всплеск Λ-CDM { $location }!
-cosmiccult-finale-cancel-begin = Сила воли вашего разума начинает разрушать ритуал...
-cosmiccult-finale-beckon-begin = Шепот в глубине твоего сознания усиливается...
-cosmiccult-finale-beckon-success = Ты зовешь на финальный зов.
-cosmiccult-monument-powerdown = В Монументе воцаряется зловещая тишина.
+    Ты совершенно один. Но твой долг не окончен.
+    Убедись, что Монумент установлен в безопасном месте, и заверши начатое культом.
+cosmiccult-finale-autocall-briefing = Монумент активируется через { $minutesandseconds }! Соберитесь и приготовьтесь к концу.
+cosmiccult-finale-ready = Ужасающий свет вырывается из Монумента!
+cosmiccult-finale-speedup = Зов усиливается! Энергия пронизывает всё вокруг...
+cosmiccult-finale-degen = Ты чувствуешь, как распадаешься!
+cosmiccult-finale-location = Сканеры фиксируют огромный всплеск Λ-CDM в { $location }!
+cosmiccult-finale-cancel-begin = Сила твоего разума начинает разрушать ритуал...
+cosmiccult-finale-beckon-begin = Шепоты в глубине твоего сознания усиливаются...
+cosmiccult-finale-beckon-success = Ты призываешь финальный занавес.
+cosmiccult-monument-powerdown = Монумент зловеще затихает.
 
 ## ROUNDEND TEXT
 
 cosmiccult-roundend-cultist-count =
     { $initialCount ->
-        [1] Был { $initialCount } [color=#4cabb3]Космический культист[/color].
-       *[other] Были { $initialCount } [color=#4cabb3]Космическими культистами[/color].
+        [1] Был { $initialCount } [color=#4cabb3]Культистом Космоса[/color].
+       *[other] Было { $initialCount } [color=#4cabb3]Культистов Космоса[/color].
     }
-cosmiccult-roundend-entropy-count = Культ выкачал { $count } Энтропии.
-cosmiccult-roundend-cultpop-count = Сектанты конвертировали { $count }% от состава экипажа.
+cosmiccult-roundend-entropy-count = Культ поглотил { $count } энтропии.
+cosmiccult-roundend-cultpop-count = Культисты составляли { $count }% от всего экипажа станции.
 cosmiccult-roundend-monument-stage =
     { $stage ->
-        [1] Прискорбно, монумент кажется заброшенным.
-        [2] Монумент набирал силу, но его завершение было недостижимо.
-        [3] Монумент был завершен.
-       *[other] [color=red]Что-то пошло совсем не так.[/color]
+        [1] Увы, Монумент остался заброшенным.
+        [2] Монумент был усилен, но до завершения не хватило времени.
+        [3] Монумент был завершён.
+       *[other] [color=red]Что-то пошло не так.[/color]
     }
-cosmiccult-roundend-cultcomplete = [color=#4cabb3]Космический культ одержал полную победу![/color]
-cosmiccult-roundend-cultmajor = [color=#4cabb3]Крупная победа космического культа![/color]
-cosmiccult-roundend-cultminor = [color=#4cabb3]Незначительная победа космического культа![/color]
-cosmiccult-roundend-neutral = [color=yellow]Нейтральное окончание![/color]
-cosmiccult-roundend-crewminor = [color=green]Небольшая победа экипажа![/color]
-cosmiccult-roundend-crewmajor = [color=green]Крупная победа экипажа![/color]
-cosmiccult-roundend-crewcomplete = [color=green]Полная победа экипажа![/color]
-cosmiccult-summary-cultcomplete = Космические культисты возвестили о конце света!
-cosmiccult-summary-cultmajor = Победа космических культистов будет неизбежна.
-cosmiccult-summary-cultminor = Монумент был достроен, но не в полной мере.
-cosmiccult-summary-neutral = Культ доживет до следующего дня.
-cosmiccult-summary-crewminor = Культ остался без управления.
-cosmiccult-summary-crewmajor = Все космические культисты были уничтожены.
-cosmiccult-summary-crewcomplete = Все до единого космические культисты были обращены в другую веру!
-cosmiccult-elimination-shuttle-call = Согласно данным, полученным от наших датчиков дальнего действия, аномалия Λ-CDM уменьшилась. Мы благодарим вас за ваше благоразумие. На станцию автоматически был вызван аварийный шаттл для проведения процедур дезактивации и подведения итогов. эта: { $time } { $units } Пожалуйста, обратите внимание, что если психологическое воздействие аномалии незначительно, вы можете отозвать шаттл, чтобы продлить смену.
-cosmiccult-elimination-announcement = Судя по данным наших датчиков дальнего действия, аномалия Λ-CDM уменьшилась. Мы благодарим вас за ваше благоразумие. Аварийный шаттл уже прибыл. Благополучно возвращайтесь в Центркомм для проведения процедур дезактивации и подведения итогов.
+cosmiccult-roundend-cultcomplete = [color=#4cabb3]Культ одержал полную победу![/color]
+cosmiccult-roundend-cultmajor = [color=#4cabb3]Культ одержал крупную победу![/color]
+cosmiccult-roundend-cultminor = [color=#4cabb3]Культ одержал незначительную победу![/color]
+cosmiccult-roundend-neutral = [color=yellow]Нейтральный финал![/color]
+cosmiccult-roundend-crewminor = [color=green]Экипаж одержал незначительную победу![/color]
+cosmiccult-roundend-crewmajor = [color=green]Экипаж одержал крупную победу![/color]
+cosmiccult-roundend-crewcomplete = [color=green]Экипаж одержал полную победу![/color]
+cosmiccult-summary-cultcomplete = Культисты призвали конец всему!
+cosmiccult-summary-cultmajor = Победа культистов стала неизбежной.
+cosmiccult-summary-cultminor = Монумент был завершён, но не полностью активирован.
+cosmiccult-summary-neutral = Культ уцелел и переживёт этот день.
+cosmiccult-summary-crewminor = Культ остался без руководства.
+cosmiccult-summary-crewmajor = Все культисты были устранены.
+cosmiccult-summary-crewcomplete = Каждый культист был деконвертирован!
+cosmiccult-elimination-shuttle-call = Согласно сканам с дальнего радиуса, аномалия Λ-CDM угасла. Благодарим вас за проявленную бдительность. На станцию автоматически вызван аварийный шаттл.. ОЖИДАЕМОЕ ВРЕМЯ ПРИБЫТИЯ: { $time } { $units }. Если последствия для корпоративных активов и экипажа минимальны, вы можете отозвать шаттл для продолжения смены.
+cosmiccult-elimination-announcement = Согласно сканам с дальнего радиуса, аномалия Λ-CDM угасла. Благодарим вас за проявленную бдительность. Аварийный шаттл уже направляется на станцию. Возвращайтесь на станцию Центрального Командования.
 
 ## BRIEFINGS
 
 cosmiccult-role-roundstart-fluff =
-    Когда вы готовитесь к очередной смене на борту очередной станции NanoTrasen, неисчислимые знания внезапно наполняют ваш разум!
-    Ни с чем не сравнимое откровение. Конец циклическим сизифовым страданиям.
-    Тихий занавес.
-    
-    Все, что вам нужно сделать, это начать.
+    Пока вы готовитесь к ещё одной смене на очередной станции НаноТрейзен, в ваш разум внезапно хлынул поток запретных знаний!
+    Откровения, не имеющее равных. Конец циклическим, истощающим страданиям.
+
+    Всё, что нужно — впустить его.
 cosmiccult-role-short-briefing =
-    Вы - космический культист!
+    Вы — Культист Космоса!
     Ваши цели указаны в меню персонажа.
-    Подробнее о вашей роли читайте в руководстве.
+    Подробнее о роли можно узнать в справочнике.
 cosmiccult-role-conversion-fluff =
-    Когда призыв завершается, невыразимое знание внезапно наполняет ваш разум!
-    Ни с чем не сравнимое откровение. Конец циклическим сизифовым страданиям.
-    Тихий занавес.
-    
-    Все, что вам нужно сделать, - это возвестить об этом.
+    По завершении Ритуала в ваш разум внезапно хлынул поток запретных знаний!
+    Откровения, не имеющие равных. Конец циклическим, истощающим страданиям.
+    Мягкий последний аккорд.
+
+    Всё, что нужно — впустить его.
 cosmiccult-role-deconverted-fluff =
-    Огромная пустота заполняет твой разум. Успокаивающая, но незнакомая пустота...
-    Все мысли и воспоминания о твоем пребывании в культе начинают тускнеть и размываться.
+    Ваш разум захлёстывает великая пустота. Уютная, но незнакомая пустота...
+    Все мысли и воспоминания о времени в культе начинают угасать и расплываться.
 cosmiccult-role-deconverted-briefing =
-    Ты более не обращен!
-    Ты больше не космический культист.
+    Деконвертация!
+    Вы больше не Культист Космоса.
 cosmiccult-monument-stage1-briefing =
-    Этот монумент привлек внимание многих людей.
-    Он расположен { $location }!
+    Монумент был призван.
+    Он находится в { $location }!
 cosmiccult-monument-stage2-briefing =
-    Мощь монумента растет!
-    Его влияние повлияет на реальное пространство в { $time } секунд.
+    Монумент набирает силу!
+    Его влияние затронет реальность через { $time } секунд.
 cosmiccult-monument-stage3-briefing =
-    монумент завершен!
-    Его влияние начнет накладываться на реальное пространство в { $time } секунд.
-    Это последний этап! Накопите столько энтропии, сколько сможете.
+    Монумент был завершён!
+    Его влияние начнёт пересекаться с реальностью через { $time } секунд.
+    Это финальный этап! Соберите как можно больше энтропии.
 
 ## MALIGN RIFTS
 
-cosmiccult-rift-inuse = Ты не можешь сделать это прямо сейчас.
-cosmiccult-rift-invaliduser = Вам не хватает надлежащих инструментов, чтобы справиться с этим.
-cosmiccult-rift-chaplainoops = Пользуйтесь своим священным писанием.
-cosmiccult-rift-alreadyempowered = Вы уже наделены силой; сила разлома была бы потрачена впустую.
-cosmiccult-rift-beginabsorb = Трещина начинает сливаться с вами воедино...
-cosmiccult-rift-beginpurge = Ваше посвящение начинает очищать пагубный раскол...
-cosmiccult-rift-absorb = { $NAME } поглощает разлом, и зловещий свет наполняет их тело силой!
-cosmiccult-rift-purge = { $NAME } устраняет пагубный раскол в реальности!
+cosmiccult-rift-inuse = Сейчас вы не можете это сделать.
+cosmiccult-rift-invaliduser = У вас нет нужных инструментов для этого.
+cosmiccult-rift-chaplainoops = Возьмите в руки священное писание.
+cosmiccult-rift-alreadyempowered = Вы уже наделены силой; энергия разрыва будет потрачена впустую.
+cosmiccult-rift-beginabsorb = Разрыв начинает сливаться с вами...
+cosmiccult-rift-beginpurge = Ваша освящённость начинает очищать зловещий разрыв...
+cosmiccult-rift-absorb = { $NAME } поглощает разрыв, и зловещий свет наполняет его тело!
+cosmiccult-rift-purge = { $NAME } изгоняет зловещий разрыв из реальности!
 
 ## UI / BASE POPUP
 
-cosmiccult-ui-deconverted-title = Деконвертированный
-cosmiccult-ui-converted-title = Преобразованный
+cosmiccult-ui-deconverted-title = Деконверсия
+cosmiccult-ui-converted-title = Конверсия
 cosmiccult-ui-roundstart-title = Неизвестное
-cosmiccult-ui-converted-text-1 = Вы были обращены в космического культиста.
+cosmiccult-ui-converted-text-1 = Вы были обращены в Культ Космоса.
 cosmiccult-ui-converted-text-2 =
-    Помогайте культу в достижении его целей, сохраняя при этом его секретность.
-    Участвуйте в планах своих собратьев по культу.
-cosmiccult-ui-roundstart-text-1 = Ты - космический культист!
+    Помогайте культу в достижении целей, сохраняя при этом его тайну.
+    Сотрудничайте с другими культистами.
+cosmiccult-ui-roundstart-text-1 = Вы — Культист Космоса!
 cosmiccult-ui-roundstart-text-2 =
-    Помогайте культу в достижении его целей, сохраняя при этом его секретность.
-    Прислушивайтесь к указаниям своего управляющего культом.
-cosmiccult-ui-deconverted-text-1 = Ты больше не космический культист.
+    Помогайте культу в достижении целей, сохраняя при этом его тайну.
+    Следуйте указаниям Руководителя культа.
+cosmiccult-ui-deconverted-text-1 = Вы больше не Культист Космоса.
 cosmiccult-ui-deconverted-text-2 =
-    Вы потеряли все воспоминания, относящиеся к Космическому культу.
-    Если вы будете обращены обратно, эти воспоминания вернутся.
-cosmiccult-ui-popup-confirm = Подтверждать
+    Вы утратили все воспоминания, связанные с Культом Космоса.
+    Если вас вновь обратят, воспоминания вернутся.
+cosmiccult-ui-popup-confirm = Подтвердить
 
 ## OBJECTIVES / CHARACTERMENU
 
-objective-issuer-cosmiccult = [bold][color=#cae8e8]Неизвестный[/color][/bold]
-objective-cosmiccult-charactermenu = Вы должны положить конец всему сущему. Выполняйте свои задания, чтобы способствовать прогрессу культа.
-objective-cosmiccult-steward-charactermenu = Вы должны направлять культ, чтобы он возвестил о конце света. Наблюдайте за развитием культа и следите за его развитием.
-objective-condition-entropy-title = СИФОН ЭНТРОПИИ
-objective-condition-entropy-desc = Коллективно перекачивать по крайней мере { $count } энтропии из экипажа.
-objective-condition-culttier-title = РАСШИРЬТЕ ВОЗМОЖНОСТИ МОНУМЕНТА
-objective-condition-culttier-desc = Проследите за тем, чтобы монумент заработал на полную мощность.
-objective-condition-victory-title = ВОЗВЕСТИТЬ О КОНЦЕ
-objective-condition-victory-desc = Маните к себе Неизвестного и предвещайте финальный занавес.
+objective-issuer-cosmiccult = [bold][color=#cae8e8]Неизвестное[/color][/bold]
+objective-cosmiccult-charactermenu = Вы должны привести всё к концу. Выполняйте задания, чтобы продвигать культ.
+objective-cosmiccult-steward-charactermenu = Вы должны направлять культ к завершению всего сущего. Контролируйте и обеспечьте прогресс культа.
+objective-condition-entropy-title = ИСТОЧАЙТЕ ЭНТРОПИЮ
+objective-condition-entropy-desc = Совместно источите как минимум { $count } единиц энтропии с экипажа.
+objective-condition-culttier-title = УКРЕПИТЕ МОHУМЕНТ
+objective-condition-culttier-desc = Обеспечьте, чтобы Монумент достиг полной силы.
+objective-condition-victory-title = НАЧНИТЕ КОНЕЦ
+objective-condition-victory-desc = Призовите ЕГО и начните и начните конец для всего сущего.
 
 ## CHAT ANNOUNCEMENTS
 
-cosmiccult-radio-tier1-progress = монумент манит к себе на станцию...
-cosmiccult-announce-tier2-progress = Нервирующее оцепенение пронзает ваши чувства.
-cosmiccult-announce-tier2-warning = Сканеры фиксируют заметное увеличение Λ-CDM! Вскоре в реальном пространстве могут появиться трещины. Пожалуйста, предупредите священника вашей станции, если увидите их.
-cosmiccult-announce-tier3-progress = Дуги ноосферной энергии потрескивают в стонущем здании станции. Конец близок.
-cosmiccult-announce-tier3-warning = Обнаружено критическое увеличение Λ-CDM. Зараженный персонал должен быть обезврежен на месте.
-cosmiccult-announce-finale-warning = Всему экипажу станции. Аномалия Λ-CDM становится сверхкритической, приборы отказывают; неизбежен переход от ноосферы к реальности. Если вы еще не соблюдаете контрпротокол, немедленно вылетайте и вмешивайтесь. Повторяю: вмешайтесь немедленно или умрите.
-cosmiccult-announce-victory-summon = ВЫСВОБОЖДАЕТСЯ ЧАСТИЦА КОСМИЧЕСКОЙ ЭНЕРГИИ.
+cosmiccult-radio-tier1-progress = Монумент был вызван на станцию...
+cosmiccult-announce-tier2-progress = По телу пробегает беспокойное онемение.
+cosmiccult-announce-tier2-warning = Сканеры фиксируют значительное увеличение Λ-CDM! Возможно, скоро появятся разрывы в реальности. Сообщите об этом вашему священнику.
+cosmiccult-announce-tier3-progress = Дуговые разряды ноосферной энергии пронизывают скрежещущую станцию. Конец близок.
+cosmiccult-announce-tier3-warning = Зафиксировано критическое повышение Λ-CDM. Инфицированный персонал подлежит немедленной нейтрализации.
+cosmiccult-announce-finale-warning = Внимание всему экипажу. Аномалия Λ-CDM переходит в сверхкритическую фазу, приборы отказывают; переход горизонта событий из ноосферы в реальность НЕИЗБЕЖЕН. Если вы не задействованы в контрмерах — немедленно вмешайтесь. Повторяю: вмешайтесь немедленно или погибнете.
+cosmiccult-announce-victory-summon = ЧАСТИЦА КОСМИЧЕСКОЙ СИЛЫ ПРИЗВАНА.
 
 ## MISC
 
-cosmiccult-spire-entropy = Частичка энтропии конденсируется на поверхности шпиля.
-cosmiccult-entropy-inserted = Ты переправляешь { $count } энтропии, которая проникает в Монумент.
-cosmiccult-entropy-unavailable = Ты не можешь сделать это прямо сейчас.
-cosmiccult-astral-ascendant = { $name }, восходящий
+cosmiccult-spire-entropy = С поверхности шпиля конденсируется частица энтропии.
+cosmiccult-entropy-inserted = Вы вливаете { $count } единиц энтропии в Монумент.
+cosmiccult-entropy-unavailable = Сейчас вы не можете это сделать.
+cosmiccult-astral-ascendant = { $name }, Вознесшийся
 cosmiccult-gear-pickup-rejection = { $ITEM } сопротивляется прикосновению { CAPITALIZE(THE($TARGET)) }!
-cosmiccult-gear-pickup = Вы можете почувствовать, как разрываетесь, держа в руках { $ITEM }!
-cult-alert-recall-shuttle = На борту станции обнаружена высокая концентрация Λ-CDM неизвестного происхождения. Все аномальные объекты должны быть удалены, прежде чем будет разрешена эвакуация.
+cosmiccult-gear-pickup = Вы чувствуете, как ваше Я расплетается, пока вы держите { $ITEM }!
+cult-alert-recall-shuttle = Обнаружены высокие концентрации Λ-CDM неизвестного происхождения на станции. Все аномальные присутствия должны быть устранены до разрешения эвакуации.

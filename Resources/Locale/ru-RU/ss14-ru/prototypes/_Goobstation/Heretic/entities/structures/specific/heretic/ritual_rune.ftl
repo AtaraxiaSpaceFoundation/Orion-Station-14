@@ -1,8 +1,8 @@
-ent-HereticRuneRitual = трансмутационная руна
-    .desc = Древний рисунок, используемый зловещими индивидами для жертвоприношений.
-ent-HereticRuneRitualDrawAnimation = незаконченная руна превращения
-    .desc = Незаконченный древний рисунок, используемый зловещими индивидами для жертвоприношений.
+ent-HereticRuneRitual = руна трансмутации
+    .desc = Древний рисунок, используемый зловещими личностями для жертвоприношений.
+ent-HereticRuneRitualDrawAnimation = незаконченная руна трансмутации
+    .desc = Незаконченный древний рисунок, используемый зловещими личностями для жертвоприношений.
 ent-HereticRuneRitualDrawAnimationCicatrix = { ent-HereticRuneRitualDrawAnimation }
     .desc = { ent-HereticRuneRitualDrawAnimation.desc }
-ent-HereticRuneRitualAnimation = руна превращения
-    .desc = вы не должны были видеть это описание
+ent-HereticRuneRitualAnimation = руна трансмутации
+    .desc = Вы не должны видеть это описание.

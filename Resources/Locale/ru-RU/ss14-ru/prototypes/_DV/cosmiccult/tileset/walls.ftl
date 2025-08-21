@@ -1,6 +1,6 @@
 ent-WallCosmicCult = зловещая стена
     .desc = Стена странного вида. Долгое созерцание вызывает чувство дискомфорта.
-ent-WallCosmicCultTrimmed = { ent-WallCosmicCult }
+ent-WallCosmicCultTrimmed = зловещая стена
     .suffix = Обрезанная
     .desc = { ent-WallCosmicCult.desc }
 ent-WindowCosmicCult = зловещая панель

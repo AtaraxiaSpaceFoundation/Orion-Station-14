@@ -9,4 +9,4 @@ ent-ClothingUniformSkirtMailCarrier = юбка-сарафан почтальон
 ent-ClothingUniformJumpskirtReporter = платье репортёра
     .desc = Вычурное чёрное платье, созданное чтобы привлечь внимание как можно большего количества людей.
 ent-ClothingUniformJumpskirtTrainer = юбка-сарафан NCT
-    .desc = Юбка-сарафан, выданная тренерам карьеры Nanotrasen. Наполняет чувством гордости.
+    .desc = Юбка-сарафан, выданная тренерам карьеры НаноТрейзен. Наполняет чувством гордости.

@@ -1,2 +1,2 @@
-cmd-persistencesave-desc = Saves server data to a persistence file to be loaded later.
-cmd-persistencesave-usage = persistencesave [mapId] [filePath — default: game.map (CCVar) ]
+cmd-persistencesave-desc = Сохраняет данные сервера в файл персистентности для последующей загрузки.
+cmd-persistencesave-usage = persistencesave [mapId] [filePath - по умолчанию: game.map (CCVar)]

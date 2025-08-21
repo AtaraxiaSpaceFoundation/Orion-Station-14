@@ -1,3 +1,3 @@
 ent-DefibrillatorCompactEmpty = { ent-DefibrillatorCompact }
-    .suffix = Пустой
+    .suffix = Empty
     .desc = { ent-DefibrillatorCompact.desc }

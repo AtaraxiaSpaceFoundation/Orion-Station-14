@@ -5,5 +5,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-dsay-command-description = Sends a message to deadchat as an admin
-dsay-command-help-text = Usage: { $command } <message>
+dsay-command-description = Отправляет сообщение в чат мёртвых от имени администратора
+dsay-command-help-text = Использование: { $command } <message>

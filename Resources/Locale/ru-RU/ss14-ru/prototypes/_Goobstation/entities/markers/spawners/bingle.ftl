@@ -1,6 +1,6 @@
 ent-SpawnPointGhostBingle = точка появления роли призрака
-    .suffix = Бингл
+    .suffix = Bingle
     .desc = { ent-MarkerBase.desc }
 ent-SpawnPointGhostBinglePrime = { ent-SpawnPointGhostBingle }
-    .suffix = Прайм
+    .suffix = Prime
     .desc = { ent-SpawnPointGhostBingle.desc }

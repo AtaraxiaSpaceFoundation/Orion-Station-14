@@ -40,6 +40,5 @@ names-military-last-dataset-39 = Центавр
 names-military-last-dataset-40 = Чау
 names-military-last-dataset-41 = Шедар
 names-military-last-dataset-42 = Шаула
-# Goobstation
-names-military-last-dataset-43 = Voltaire
+names-military-last-dataset-43 = Электра
 names-military-last-dataset-44 = Winterwing

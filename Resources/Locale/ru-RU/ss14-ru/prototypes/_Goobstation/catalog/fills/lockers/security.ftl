@@ -1,2 +1,2 @@
-ent-GunSafeLauncherNonLethal = оружейный сейф гранатомета
+ent-GunSafeLauncherNonLethal = сейф для гранатомета
     .desc = { ent-GunSafeBaseSecure.desc }

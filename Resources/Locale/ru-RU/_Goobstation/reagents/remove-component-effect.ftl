@@ -3,11 +3,11 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-reagent-effect-guidebook-remove-delayed-knockdown = Отменяет задержку и оглушение станбатона.
+reagent-effect-guidebook-remove-delayed-knockdown = Отменяет задержку падения от электрошокера.
 reagent-effect-guidebook-remove-permanentblindness = Лечит слепоту.
 reagent-effect-guidebook-remove-narcolepsy = Лечит нарколепсию.
-reagent-effect-guidebook-remove-unrevivable = Излечивает неизлечимое - это так.
+reagent-effect-guidebook-remove-unrevivable = Лечит состояние «неоживляемости».
 reagent-effect-guidebook-remove-muted = Лечит немоту.
 reagent-effect-guidebook-remove-paracusia = Лечит паракузию.
-reagent-effect-guidebook-remove-painnumbness = Лечит болевое онемение. Это больно.
-reagent-effect-guidebook-remove-legsstartparalyzed = Вам больше не нужна инвалидная коляска.
+reagent-effect-guidebook-remove-painnumbness = Лечит онемение от боли. Больно.
+reagent-effect-guidebook-remove-legsstartparalyzed = Ты больше не нуждаешься в инвалидной коляске.

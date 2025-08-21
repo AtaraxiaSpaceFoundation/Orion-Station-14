@@ -4,21 +4,21 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-marking-HairResomiBackstrafe = Резоми Бекстрейф
-marking-HairResomiBurstShort = Резоми Бёрст Шот
-marking-HairResomiDefault = Резоми обычный
-marking-HairResomiDroopy = Резоми Капля
-marking-HairResomiEars = Резоми Уши
-marking-HairResomiFluffymohawk = Резоми Пушистый ястреб
-marking-HairResomiHedge = Резоми Хедж
-marking-HairResomiLongway = Резоми  Лонгвей
-marking-HairResomiMane = Резоми  Mane
-marking-HairResomiManeBeardless = Резоми  Mane (без бороды)
-marking-HairResomiMohawk = Резоми  Мохавк
-marking-HairResomiMushroom = Резоми Гриб
-marking-HairResomiNotree = Резоми  Нотри
-marking-HairResomiSpiky = Резоми Колючий
-marking-HairResomiPointy = Резоми
-marking-HairResomiTwies = Резоми Твиз
-marking-HairResomiUpright = Резоми Прямой
-marking-HairResomiLong = Резоми Длинный
+marking-HairResomiBackstrafe = Резоми: Назад Вихрем
+marking-HairResomiBurstShort = Резоми: Короткий Всплеск
+marking-HairResomiDefault = Резоми: Стандарт
+marking-HairResomiDroopy = Резоми: Свисающая
+marking-HairResomiEars = Резоми: Ушастая
+marking-HairResomiFluffymohawk = Резоми: Пушистый Ирокез
+marking-HairResomiHedge = Резоми: Ёжик
+marking-HairResomiLongway = Резоми: Длинная Волна
+marking-HairResomiMane = Резоми: Грива
+marking-HairResomiManeBeardless = Резоми: Грива (Безбородая)
+marking-HairResomiMohawk = Резоми: Ирокез
+marking-HairResomiMushroom = Резоми: Грибок
+marking-HairResomiNotree = Резоми: Безветвистые
+marking-HairResomiSpiky = Резоми: Колючие
+marking-HairResomiPointy = Резоми: Заострённые
+marking-HairResomiTwies = Резоми: Скрутки
+marking-HairResomiUpright = Резоми: Стоячие
+marking-HairResomiLong = Резоми: Длинные

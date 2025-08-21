@@ -1,6 +1,6 @@
 ent-PartAbductorBase = { ent-BasePart }
     .desc = { ent-BasePart.desc }
-ent-ChestAbductor = инопланетная грудь
+ent-ChestAbductor = инопланетный торс
     .desc = { ent-PartAbductorBase.desc }
 ent-GroinAbductor = инопланетный пах
     .desc = { ent-PartAbductorBase.desc }

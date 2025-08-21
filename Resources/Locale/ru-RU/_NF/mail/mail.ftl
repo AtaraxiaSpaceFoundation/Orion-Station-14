@@ -11,6 +11,6 @@ mail-large-desc-close = Большая посылка, адресованная 
 
 ### Frontier: mailtestbulk
 
-command-mailtestbulk = Отправляет по одной посылке каждого типа на заданный почтовый телепорт.  Неявно вызывает mailnow.
+command-mailtestbulk = Отправляет по одной посылке каждого типа на указанный почтовый телепортер. Автоматически вызывает посылку.
 command-mailtestbulk-help = Использование: { $command } <teleporter_id>
-command-mailtestbulk-success = Успех! Все почтовые телепорты скоро доставят очередную порцию почты.
+command-mailtestbulk-success = Успешно! Все почтовые телепортеры скоро доставят очередную партию посылок.

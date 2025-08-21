@@ -4,4 +4,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-hand-placeholder-name = Слот для модуля
+hand-placeholder-name = Слот модуля для

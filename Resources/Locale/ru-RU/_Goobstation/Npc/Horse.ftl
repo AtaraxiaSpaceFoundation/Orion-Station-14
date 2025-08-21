@@ -1,2 +1,2 @@
-petting-success-horse = The creature is content.
-petting-failure-horse = You narrowly avoid getting your hand bit off!
+petting-success-horse = Существо удовлетворено.
+petting-failure-horse = Вы едва избежали укуса за руку!

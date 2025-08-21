@@ -4,5 +4,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-shuttle-call-error = Невозможно вызвать шаттл из-за [0ШИБКА].
-shuttle-call-warops-nukies-present = Избавьтесь от оставшихся ядерных оперативников.
+shuttle-call-error = Невозможно вызвать шаттл из-за ОШИБКИ.
+shuttle-call-warops-nukies-present = Устраните оставшихся ядерных оперативников.

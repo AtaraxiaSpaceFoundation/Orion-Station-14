@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-ipc-recharge-tip = Вы немного подзарядили свой аккумулятор.
-dead-startup-button-verb = Перезагрузка
-dead-startup-system-reboot-success = Система { $target } перезагружена.
-dead-startup-system-reboot-failed = Шасси { $target } слишком повреждено.
+ipc-recharge-tip = Вы немного подзарядили свою батарею.
+dead-startup-button-verb = Перезагрузить
+dead-startup-system-reboot-success = Система { $target } была перезагружена.
+dead-startup-system-reboot-failed = Корпус { $target } слишком повреждён.

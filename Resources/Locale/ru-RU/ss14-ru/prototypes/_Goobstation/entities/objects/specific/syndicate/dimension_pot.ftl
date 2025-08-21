@@ -1,3 +1,3 @@
 ent-DimensionPot = { ent-PottedPlantBase }
-    .suffix = Межпространственный
+    .suffix = Dimension
     .desc = { ent-PottedPlantBase.desc }

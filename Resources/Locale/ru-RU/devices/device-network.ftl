@@ -7,15 +7,15 @@ device-frequency-prototype-name-mailing-units = Почтовый блок
 device-frequency-prototype-name-pdas = КПК
 device-frequency-prototype-name-fax = Факс
 device-frequency-prototype-name-basic-device = Базовые устройства
-device-frequency-prototype-name-cyborg-control = Управление киборгами
+device-frequency-prototype-name-cyborg-control = Управление боргами
 device-frequency-prototype-name-robotics-console = Консоль управления робототехникой
 device-frequency-prototype-name-turret = Охранная турель
 device-frequency-prototype-name-turret-control = Управление охранной турелью
-device-frequency-prototype-name-xenoborg = Ксеноборг
-device-frequency-prototype-name-mothership = Материнский корабль
 
 ## camera frequencies
 
+device-frequency-prototype-name-xenoborg = Xenoborg
+device-frequency-prototype-name-mothership = Mothership
 device-frequency-prototype-name-surveillance-camera-test = Тест подсети
 device-frequency-prototype-name-surveillance-camera-engineering = Камеры (Инженерный)
 device-frequency-prototype-name-surveillance-camera-security = Камеры (Охрана)

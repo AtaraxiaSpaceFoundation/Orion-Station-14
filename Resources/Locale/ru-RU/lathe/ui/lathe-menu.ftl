@@ -29,9 +29,8 @@ lathe-menu-material-amount-missing =
        *[other] { NATURALFIXED($amount, 2) } { $unit } { $material } ([color=red]{ NATURALFIXED($missingAmount, 2) } { $unit } не хватает[/color])
     }
 lathe-menu-no-materials-message = Материалы не загружены
-lathe-menu-silo-linked-message = Хранилище связано
 lathe-menu-fabricating-message = Производится...
 lathe-menu-materials-title = Материалы
 lathe-menu-queue-title = Очередь производства
-lathe-menu-queue-reset-title = Reset Queue
-lathe-menu-queue-reset-material-overflow = You notice that the autolathe is full.
+lathe-menu-queue-reset-title = Сбросить очередь
+lathe-menu-queue-reset-material-overflow = Вы замечаете, что автолат полон.

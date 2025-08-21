@@ -1,9 +1,9 @@
-ent-WeaponMechDebugBallistic = дебаг бабах
-    .suffix = Оружие меха, ДЕБАГ, Баллистика
+ent-WeaponMechDebugBallistic = debug bang
+    .suffix = Оружие меха, DEBUG, Баллистический
     .desc = { ent-BaseMechWeaponRange.desc }
-ent-WeaponMechDebugLaser = дебаг пау
-    .desc = Оружие, использующее свет, усиленный за счет вынужденного излучения.
-    .suffix = Оружие меха, ДЕБАГ, Лазер
-ent-WeaponMechDebugDisabler = дебаг пиу
-    .desc = Оружие самообороны, которое изматывает органические цели, ослабляя их до тех пор, пока они не рухнут.
-    .suffix = Оружие меха, ДЕБАГ, Станнер
+ent-WeaponMechDebugLaser = debug pow
+    .desc = Оружие, использующее свет, усиленный посредством излучения.
+    .suffix = Оружие меха, DEBUG, Лазер
+ent-WeaponMechDebugDisabler = debug tew
+    .desc = Оружие самообороны, которое истощает органические цели, ослабляя их, пока они не сколлапсируют.
+    .suffix = Mech Weapon, DEBUG, Disabler

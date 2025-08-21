@@ -1,4 +1,4 @@
-ent-BaseMobVox = Урист МакВокс
+ent-BaseMobVox = { ent-BaseMobSpeciesOrganic }
     .desc = { ent-BaseMobSpeciesOrganic.desc }
     .suffix = Вокс
 ent-MobVoxDummy = { ent-BaseSpeciesDummy }

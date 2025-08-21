@@ -4,14 +4,14 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-uplink-night-vision-name = Night Vision Goggles
-uplink-night-vision-desc = They allow you to see in the dark, while looking like normal sunglasses!
-uplink-thermal-vision-name = Thermal Vision Goggles
-uplink-thermal-vision-desc = They allow you to see living creatures regardless of obstacles, with a built in medical scanner.
-uplink-betrayal-knife-name = Betrayal Knife
+uplink-night-vision-name = Очки Ночного Виденья
+uplink-night-vision-desc = Они позволяют видеть в темноте и при этом выглядят как обычные солнцезащитные очки!
+uplink-thermal-vision-name = Очки Термального Виденья
+uplink-thermal-vision-desc = Позволяют видеть живых существ, невзирая на препятствия, со встроенным медицинским сканером.
+uplink-betrayal-knife-name = Нож Предателя
 uplink-betrayal-knife-desc =
-    Betrayal knife allows the user to blink a short distance, knocking down people in a small radius around blink position.
-    Deals significant damage when target is lying down or facing away from you.
-    Use it in your hand to toggle blink mode.
-uplink-experimental-syndicate-teleporter-name = Experimental Syndicate Teleporter
-uplink-experimental-syndicate-teleporter-desc = A self-recharging device that teleports the user forward. In case of teleportation into a wall, uses emergency teleportation. Or gibs the user if it's out of charges.
+    Предательский нож позволяет пользователю мгновенно переместиться на короткое расстояние, сбивая с ног людей в небольшом радиусе вокруг себя.
+    Наносит значительный урон, если цель лежит или обращена в сторону от вас.
+    Используйте его в руке, чтобы переключить режим прыжка.
+uplink-experimental-syndicate-teleporter-name = Экспериментальный телепортер Синдиката
+uplink-experimental-syndicate-teleporter-desc = Самозаряжающееся устройство для телепортации пользователя вперед. При попытке телепортации в стену использует аварийный телепорт. Или разрывает пользователя на части, если заряды закончились.

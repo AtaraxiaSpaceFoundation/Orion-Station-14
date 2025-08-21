@@ -1,26 +1,26 @@
-ghost-role-information-theunknown-name = Неизвестное
-ghost-role-information-theunknown-description = Космический культ победил. Фрагмент космической силы выходит в реальное пространство.
+ghost-role-information-theunknown-name = Неизвестный
+ghost-role-information-theunknown-description = Космический Культ одержал победу. Фрагмент космической силы вырывается в реальность.
 ghost-role-information-theunknown-rules = ...
-roles-antag-rogue-ascended-name = Астральный асцендент
-roles-antag-rogue-ascended-objective = Судьбу никогда нельзя оставлять на волю случая. Используйте свои потусторонние силы, чтобы завладеть сердцами и умами тех, кто находится на борту станции.
-ghost-role-information-rogue-ascended-name = Астральный асцендент
-ghost-role-information-rogue-ascended-description = Судьбу никогда нельзя оставлять на волю случая. Используйте свои потусторонние силы, чтобы завладеть сердцами и умами тех, кто находится на борту станции.
-ghost-role-information-rogue-ascended-rules = Вы [color=red][bold]Командный антагонист[/bold][/color] вместе с любыми космическими культистами.
-petting-success-rogue-ascended = Уворачиваясь от хлещущих щупалец и волн астральной энергии, вы каким-то образом ласкаете { THE($TARGET) }.
-petting-failure-rogue-ascended = Форма волны пространства-времени изгибается вокруг вашей руки, и в конечном итоге вы поглаживаете себя.
-rogue-ascended-dendrite-eaten = Зловещий свет вспыхивает к жизни!
-rogue-ascended-infection-fail = Вам нужно ослабить эту цель, чтобы испортить ее!
-rogue-ascended-infection-alreadyinfected = { CAPITALIZE(THE($target)) } уже испорчен!
-rogue-ascended-infection-error = Вы не можете сделать это сейчас.
-rogue-ascended-infection-notification = { CAPITALIZE(THE($user)) } протягивает свои щупальца к { CAPITALIZE(THE($target)) }!
+roles-antag-rogue-ascended-name = Вознесенный Астрала
+roles-antag-rogue-ascended-objective = Судьба не должна быть отдана на волю случая. Используй свои потусторонние силы, чтобы исказить сердца и разумы обитателей станции.
+ghost-role-information-rogue-ascended-name = Вознесенный Астрала
+ghost-role-information-rogue-ascended-description = Судьба не должна быть отдана на волю случая. Используй свои потусторонние силы, чтобы исказить сердца и разумы обитателей станции.
+ghost-role-information-rogue-ascended-rules = Ты — [color=red][bold]Командный Антагонист[/bold][/color] вместе с любыми членами Космического Культа, которые могут присутствовать.
+petting-success-rogue-ascended = Уворачиваясь от хлещущих щупалец и волн астральной силы, ты каким-то чудом гладишь { THE($target) }.
+petting-failure-rogue-ascended = Волна пространства-времени изгибается вокруг твоей руки, и ты в итоге гладишь самого себя.
+rogue-ascended-dendrite-eaten = Зловещий свет вспыхивает, оживая!
+rogue-ascended-infection-fail = Нужно ослабить цель, чтобы её можно было исказить!
+rogue-ascended-infection-alreadyinfected = { CAPITALIZE(THE($target)) } уже искажён!
+rogue-ascended-infection-error = Ты не можешь это сделать прямо сейчас.
+rogue-ascended-infection-notification = { CAPITALIZE(THE($user)) } простирает свои щупальца к { CAPITALIZE(THE($target)) }!
 rogue-ascended-infection-briefing =
-    Пагубная энергия проникает в вашу психику. Вы были заражены астрально вознесенным!
-    Вы должны действовать в соответствии со своим настроением в меру своих возможностей, независимо от того, являетесь ли вы антагонистом или нет.
-rogue-ascended-shatter-fail = Вы не можете сделать это сейчас.
-rogue-ascended-round-end-agent-name = астральный асцендент
-rogue-ascended-objective-issuer = [bold][color=#cae8e8]Неизвестно[/color][/bold]
+    Зловещая энергия пропитывает твою душу. Ты заражён Вознесенным Астрала!
+    Ты обязан следовать своим настроениям в меру своих возможностей, независимо от того, являешься ли ты антагонистом.
+rogue-ascended-shatter-fail = Ты не можешь это сделать прямо сейчас.
+rogue-ascended-round-end-agent-name = Вознесенный Астрала
+rogue-ascended-objective-issuer = [bold][color=#cae8e8]Неизвестный[/color][/bold]
 rogue-ascended-role-greeting =
-    Вы - Астральный Асцендент — тень трансцендентного существа, отражающаяся эхом в реальности.
-    Всему придет конец, как и всему на свете. Было бы величайшей добротой донести эту чистейшую истину до как можно большего числа людей.
-objective-condition-maligninfection-title = Развратите { $count } умов.
-objective-condition-maligninfection-description = Ваше прикосновение может развратить умы. Пробудите чистейшую истину в { $count } людях на борту станции.
+    Ты — Вознесенный, тень трансцендентной сущности, отражённая в реальности.
+    Всё закончится, как заканчивается всё. Самая большая милость — нести эту чистейшую истину как можно большему числу душ.
+objective-condition-maligninfection-title = Искажение { $count } разумов
+objective-condition-maligninfection-description = Твоё прикосновение может искажать разумы. Пробуди чистейшую истину в { $count } обитателях станции.

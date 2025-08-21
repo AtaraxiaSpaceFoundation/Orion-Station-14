@@ -1,3 +1,3 @@
 ent-DefaultStationBeaconCentcommOffice = { ent-DefaultStationBeacon }
-    .suffix = Офис Центком
+    .suffix = Centcomm Office
     .desc = { ent-DefaultStationBeacon.desc }

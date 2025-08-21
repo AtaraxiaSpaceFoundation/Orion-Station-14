@@ -1,1 +1,1 @@
-chat-radio-cosmiccult = Астральный план
+chat-radio-cosmiccult = Астральный Шепот

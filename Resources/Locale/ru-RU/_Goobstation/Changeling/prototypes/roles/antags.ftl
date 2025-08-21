@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-roles-antag-changeling-name = генокрад
-roles-antag-changeling-description = Используйте свои способности к перемене облика, чтобы выполнить поставленные задачи.
-roles-antag-corporate-agent-name = корпоративный агент
-roles-antag-corporate-agent-description = Используйте свои корпоративные ресурсы для достижения поставленных целей.
+roles-antag-changeling-name = Генокрад
+roles-antag-changeling-description = Используй свои способности к изменению формы, чтобы выполнить свои цели.
+roles-antag-corporate-agent-name = Корпоративный агент
+roles-antag-corporate-agent-description = Используй свои корпоративные ресурсы, чтобы выполнить свои цели.

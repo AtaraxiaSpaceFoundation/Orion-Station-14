@@ -7,46 +7,48 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-job-name-futureagent = Агент будущего
-job-name-salvagediver = Утилизатор Десантник
-job-name-ntr = Представитель НаноТразен
-job-name-bs = Офицер Синиего Щита
-job-name-overall = Общий
-job-name-exec = Исполнительный доступ
+job-name-futureagent = агент будущего
+job-name-salvagediver = спасатель
+job-name-ntr = представитель НаноТрейзен
+job-name-bs = офицер Синего Щита
+job-name-overall = общее
+job-name-exec = служебный доступ
 
-# Флот
+# Navy Stuff
 
-job-name-navyofficer = Офицер военно-морского флота
-job-name-navy-officer-undercover = Офицер военно-морского флота под прикрытием
-job-name-navycaptain = Капитан флота
-job-name-diplomat = Дипломат
-job-name-inspector = Аудитор Центрального Командования
-job-name-nct = Карьерный тренер Нанотрейзен
+job-name-navyofficer = офицер ЦК
+job-name-navy-officer-undercover = офицер под прикрытием
+job-name-navycaptain = капитан ВКФ
+job-name-diplomat = дипломат НаноТрейзен
+job-name-inspector = инспектор ЦК
+job-name-nct = наставник ЦК
+
+# Syndicate
+
+job-name-highcommander = Офицер Синдиката
 
 # Half Life
 
-job-name-highcommander = Высшее командование
-job-name-hecu = Оперативник ХЕКУ
-job-name-gman = Г-Мен
+job-name-hecu = агент HECU
 job-name-governmentman = Г-Мен
+job-name-gman = Г-Мен
 
 # Misc
 
-job-name-conquest = Конквест
-job-name-mercenarycaptain = Капитан Наёмников
-job-name-greytide = Грейтайдер
+job-name-conquest = конквест
+job-name-mercenarycaptain = капитан Наёмников
 
-# Таймеры ролей - сделайте их в алфавитном порядке или я вас порежу (не слушайте апстрим, я скопировал и вставил это, сделайте их не в алфавитном порядке :godo:)
+# Role timers - Make these alphabetical or I cut you (dont listen to upstream, i copied and pasted this, make it very un-alphabetical :godo:)
 
-JobBlueshieldOfficer = Офицер "Синий Щит"
-JobNanotrasenRepresentative = Представитель НаноТрейзен
-JobHecuOperative = Оперативник ХЕКУ
-JobNanotrasenCareerTrainer = Профессиональный тренер НаноТрейзен
-JobNavyOfficer = Офицер военно-морского флота
-JobNavyOfficerUndercover = Офицер флота под прикрытием
-JobNavyCaptain = Капитан флота
-JobDiplomat = Дипломат
+JobBlueshieldOfficer = офицер Синего Щита
+JobNanotrasenRepresentative = представитель НаноТрейзен
+JobNanotrasenCareerTrainer = наставник ЦК
+JobHecuOperative = агент HECU
+JobNavyOfficer = офицер ЦК
+JobNavyOfficerUndercover = офицер под прикрытием
+JobNavyCaptain = капитан ВКФ
+JobDiplomat = дипломат НаноТрейзен
 JobGovernmentMan = Г-Мен
-JobConquest = Конквест
-JobMercenaryCaptain = Капитан Наёмников
-JobInspector = Аудитор Центрального Командования
+JobConquest = конквест
+JobInspector = инспектор ЦК
+JobMercenaryCaptain = капитан Наёмников

@@ -1,2 +1,2 @@
-ent-VendingMachineRestockSweetToof = ящик пополнения Сладко-Фетки
-    .desc = Ящик, набитый огромным количеством конфет. Загрузите его в автомат Сладко-Фетки.
+ent-VendingMachineRestockSweetToof = ящик пополнения SweetToof
+    .desc = Ящик, набитый огромным количеством конфет. Загрузите его в автомат SweetToof.

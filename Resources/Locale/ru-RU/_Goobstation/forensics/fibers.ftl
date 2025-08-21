@@ -5,5 +5,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 fibers-modular = модульные
-fibers-classified = классификационные
-fibers-pitch-black = кромешно-чёрные
+fibers-classified = секретные
+fibers-pitch-black = абсолютно черные

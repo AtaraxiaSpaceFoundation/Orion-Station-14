@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-block-charge-status-charged = Индикатор блока показывает, что он заряжен.
-block-charge-status-recharging = Индикатор блока показывает, что он заряжается.
-block-attack-notice = { $user } заблокировал атаку { THE($blocked) }!
-block-charge-startup = индикатор блока { $entity }, слабо светится...
+block-charge-status-charged = Индикатор щита показывает, что он заряжен.
+block-charge-status-recharging = Индикатор щита показывает, что он перезаряжается.
+block-attack-notice = { $user } заблокировал(а) атаку { THE($blocked) }!
+block-charge-startup = Индикатор щита { $entity } слабо светится...

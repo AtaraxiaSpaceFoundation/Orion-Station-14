@@ -1,6 +1,6 @@
-ent-SprayBottleStypticPowder = распылитель с кровоостанавливающим порошком
+ent-SprayBottleStypticPowder = спрей с кровоостанавливающим порошком
     .suffix = Заполненный, Кровоостанавливающий порошок
     .desc = { ent-SprayBottle.desc }
-ent-SprayBottleSilverSulfadiazine = распылитель с сульфадиазином серебра
-    .suffix = Заполненный, сульфадиазин серебра
+ent-SprayBottleSilverSulfadiazine = спрей с сульфадиазином серебра
+    .suffix = Заполненный, Сульфадиазин серебра
     .desc = { ent-SprayBottle.desc }

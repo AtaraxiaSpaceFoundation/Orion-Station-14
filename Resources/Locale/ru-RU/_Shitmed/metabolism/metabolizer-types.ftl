@@ -1,1 +1,1 @@
-metabolizer-type-cybernetic = Cybernetic
+metabolizer-type-cybernetic = Кибернетический

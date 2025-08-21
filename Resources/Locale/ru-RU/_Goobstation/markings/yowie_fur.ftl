@@ -4,6 +4,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-marking-YowieFur = Мех тела йоуи
-marking-YowieFurFeetRight = Мех правой ноги йоуи
-marking-YowieFurFeetLeft = Мех левой ноги йоуи
+marking-YowieFur = Шерсть тела Йови
+marking-YowieFurFeetRight = Шерсть правой ноги Йови
+marking-YowieFurFeetLeft = Шерсть левой ноги Йови

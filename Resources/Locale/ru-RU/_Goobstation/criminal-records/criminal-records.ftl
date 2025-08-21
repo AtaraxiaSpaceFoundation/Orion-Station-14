@@ -1,4 +1,4 @@
-criminal-verb-name = Установить статус
-criminal-verb-UI-name = Меню Розыска
-criminal-job-error = Ошибка: Не обнаружена должность
-criminal-name-error = Ошибка: Не обнаружено имя
+criminal-verb-name = Установить статус разыскиваемого
+criminal-verb-UI-name = Меню разыскиваемого
+criminal-job-error = В криминальных записях не обнаружена работа
+criminal-name-error = В криминальных записях не обнаружено имя

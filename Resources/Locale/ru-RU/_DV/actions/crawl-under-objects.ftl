@@ -5,5 +5,5 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-crawl-under-objects-toggle-on = Теперь ползаете
-crawl-under-objects-toggle-off = Теперь стоите
+crawl-under-objects-toggle-on = Ползёт
+crawl-under-objects-toggle-off = Стоит

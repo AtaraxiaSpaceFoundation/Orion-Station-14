@@ -3,4 +3,4 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-oni-gun-fire = Вы не можете пользоваться огнестрельным оружием!
+oni-gun-fire = You can't fire guns!

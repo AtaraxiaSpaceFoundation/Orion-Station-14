@@ -1,18 +1,12 @@
+action-name-internals-toggle = Переключить подачу воздуха
 action-name-internals-toggle-on = Включить подачу воздуха
-action-name-internals-toggle = Toggle Internals
-action-description-internals-toggle = Breathe from the equipped gas tank. Also requires equipped breath mask.
-internals-no-breath-tool = You are not wearing a breathing tool
-internals-no-tank = You are not wearing a gas tank
-action-description-internals-toggle-on = Дышите из экипированного газового баллона. Только сперва наденьте дыхательную маску.
+action-description-internals-toggle-on = Дыхание из экипированного баллона. Требуется надетая дыхательная маска.
 action-name-internals-toggle-off = Выключить подачу воздуха
-action-description-internals-toggle-off = Дышите окружающей средой.
-internals-self-no-breath-tool = Вы не надели дыхательный аппарат
-internals-other-no-breath-tool =
-    { $ent } не { GENDER($ent) ->
-        [male] надел
-        [female] надела
-        [epicene] надели
-       *[neuter] надело
-    } дыхательный аппарат
-internals-self-no-tank = У вас нет газового баллона
-internals-other-no-tank = У { $ent } нет газового баллона
+action-description-internals-toggle-off = Дыхание из окружающей среды.
+internals-self-no-breath-tool = Дыхательная маска не надета
+internals-other-no-breath-tool = У { $ent } не надета дыхательная маска
+internals-self-no-tank = Баллон для дыхания не экиперован
+internals-other-no-tank = У { $ent } не надет баллон для дыхания
+action-description-internals-toggle = Дышать из экипированного баллона. Требуется надетая дыхательная маска.
+internals-no-breath-tool = Дыхательная маска не экипирована
+internals-no-tank = Баллон для дыхания не экипирован

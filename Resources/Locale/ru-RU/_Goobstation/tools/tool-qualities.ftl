@@ -4,9 +4,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-tool-quality-axing-name = Топор
+tool-quality-axing-name = Рубка
 tool-quality-axing-tool-name = Пожарный топор
-tool-quality-hammering-name = Сколачивание
-tool-quality-hammering-tool-name = Молоток
-tool-quality-painting-name = Рисование
-tool-quality-painting-tool-name = Распылитель краски
+tool-quality-painting-name = Окрашивание
+tool-quality-painting-tool-name = Краскопульт

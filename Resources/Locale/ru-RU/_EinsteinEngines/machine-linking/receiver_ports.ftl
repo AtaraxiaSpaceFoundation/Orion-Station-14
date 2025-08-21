@@ -1,2 +1,2 @@
-signal-port-name-fill-any-item = Fillbot Target
-signal-port-description-fill-any-item = Target port for Fillbot insertion.
+signal-port-name-fill-any-item = Цель Заполнитбота
+signal-port-description-fill-any-item = Целевой порт для установки Заполнитбота.

@@ -3,9 +3,9 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-carving-knife-comp-cant-draw = Здесь нельзя выполнять резьбу!
-carving-knife-comp-too-many-runes = Слишком много вырезанных рисунков!
-carving-knife-comp-close-to-another-carving = Слишком близко к другому вырезанному рисунку!
-carving-knife-comp-runes-count = [color=yellow][bold]{ $count } / 3[/bold] было нарисовано рисунков.[/color]
-carving-knife-comp-runes-deleted = Уничтожены все вырезанные рисунки!
-alert-carving-trigger-message = { $victim } наступил ногой на предупреждающую руну рядом { $location }!
+carving-knife-comp-cant-draw = Здесь нельзя вырезать узоры!
+carving-knife-comp-too-many-runes = Слишком много вырезок!
+carving-knife-comp-close-to-another-carving = Слишком близко к другой вырезке!
+carving-knife-comp-runes-count = [color=yellow][bold]{ $count } / 3[/bold] всего вырезано узоров.[/color]
+carving-knife-comp-runes-deleted = Все вырезки уничтожены!
+alert-carving-trigger-message = { $victim } наступил на руну тревоги возле { $location }!

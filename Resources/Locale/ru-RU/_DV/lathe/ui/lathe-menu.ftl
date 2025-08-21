@@ -5,4 +5,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 lathe-menu-mining-points = Шахтёрские очки: { $points }
-lathe-menu-mining-points-claim-button = Забрать очки
+lathe-menu-mining-points-claim-button = Забрать Очки

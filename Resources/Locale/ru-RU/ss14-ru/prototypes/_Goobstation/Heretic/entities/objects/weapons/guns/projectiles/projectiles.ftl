@@ -1,4 +1,4 @@
-ent-FireballChain = шар огня
-    .desc = Ой.
-ent-ProjectileWaveRust = досягаемость покровителя
-    .desc = Токсичный.
+ent-FireballChain = twisted fireball
+    .desc = Uh oh.
+ent-ProjectileWaveRust = patron's reach
+    .desc = Toxic.

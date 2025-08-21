@@ -5,12 +5,11 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-species-name-abductor = Пришелец
-abductors-weapon-restricted-1 = Нажимает на шарик.
-abductors-weapon-restricted-2 = Кажется, что у него заклинило лезвие.
-abductors-weapon-restricted-3 = Нажимает на палочку, но ничего не происходит.
-abductors-weapon-restricted-4 = Обнюхивает инопланетное оружие.
-abductors-gizmo-restricted = Крутит в руке гизмо.
-abductors-gizmo-restricted-1 = Вы вертите гизмо в своей руке.
-abductors-gizmo-restricted-2 = Вы понятия не имеете как это работает.
-abductor-gun-restricted-1 = Вы пытаетесь нажать на спусковой крючок, но у вас слишком большой палец.
+species-name-abductor = пришелец
+abductors-weapon-restricted-1 = Ты нажимаешь кнопку, но ничего не происходит.
+abductors-weapon-restricted-2 = Похоже, ты взял лезвие.
+abductors-weapon-restricted-3 = Ты гладишь палку, но ничего не происходит.
+abductors-weapon-restricted-4 = Ты нюхаешь инопланетное оружие.
+abductors-gizmo-restricted-1 = Ты крутил гаджет в руках.
+abductors-gizmo-restricted-2 = Ты понятия не имеешь, как эта штука работает.
+abductor-gun-restricted-1 = Ты пытаешься нажать на спусковой крючок, но палец не проходит.

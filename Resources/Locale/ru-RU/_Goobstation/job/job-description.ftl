@@ -7,25 +7,24 @@
 
 # Navy
 
-job-description-navy-officer-undercover = Выполните поставленные задачи, уничтожьте заданные цели. Удачи.
-job-description-navy-captain = Не разглашается.
-job-description-navy-officer = Отвечать на факсы и радиосообщения, адресованные центральному командованию. Расследуйте, что происходит на станции и с её экипажем.
-job-description-diplomat = Представляйте Центральное командование, регулируя отношения с другими фракциями на борту станции. Устраняйте проблемы, которые, вероятно, возникли по вине капитана.
-job-description-navy-special-operations-officer = Отправляйте, инструктируйте и направляйте группы быстрого реагирования или другие силы Нанотрейзен. Отправьте ядерные коды или не отправялйте.
+job-description-navy-officer-undercover = Выполняйте поставленные задачи, устраняйте назначенные цели. Удачи.
+job-description-navy-captain = Секретно.
+job-description-navy-officer = Отвечайте на факсы и радиосообщения, направленные в Центральное Командование. Проводите расследования на станции и среди экипажа.
+job-description-diplomat = Представляйте Центральное Командование, управляйте отношениями с другими фракциями на станции. Разбирайтесь с проблемами, которые, скорее всего, вызвал капитан.
+job-description-navy-special-operations-officer = Отправляйте, инструктируйте и руководите командами экстренного реагирования или другими силами Nanotrasen. Выпускайте ядерные коды — или нет.
 
 # Generic Nanotrasen
 
-job-description-nct = Научите новичков правильно выполнять порученные им компанией задания и не попадать в неприятности.
-job-description-ntr = Сообщайте о приказах с ЦК, отправляйте отчёты и следите за работой глав станции.
-job-description-highcommander = You are an elite, high-ranking official within the Spinward Syndicate. It doesn't matter which faction, you're important to them all.
+job-description-nct = Обучайте новичков правильному выполнению их должностных обязанностей и следите, чтобы они не попадали в неприятности.
 
 # Half Life
 
-job-description-governmentman = Well, well, isn't this just like old times.
-job-description-gman = Ну что же, прямо как в старые добрые времена?
-job-description-hecu = Выполняйте приказы своего начальника, невзирая на мораль.
+job-description-highcommander = Вы являетесь элитным высокопоставленный представитель в Синдикате Спинварда. Неважно, к какой фракции вы принадлежите — вы важны для всех.
+job-description-gman = Что ж, что ж, как в старые добрые времена.
+job-description-governmentman = Ну, ну, разве это не похоже на старые добрые времена?
+job-description-hecu = Выполняйте приказы вашего руководителя, независимо от морали.
 
 # Misc
 
-job-description-mercenarycaptain = Order other mercs around. Act as muscle for the highest bidder. Just because it's NT now, doesn't mean it won't change later.
-job-description-conquest = Будь готов к моему прибытию, червь.
+job-description-conquest = Будь готов к моему приходу, червь.
+job-description-mercenarycaptain = Отдавайте приказы другим наёмникам. Служите мышцами самому щедрому заказчику. То, что сейчас это Nanotrasen, не значит, что позже это не изменится.

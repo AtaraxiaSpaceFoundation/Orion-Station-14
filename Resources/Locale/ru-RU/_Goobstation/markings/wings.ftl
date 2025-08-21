@@ -7,4 +7,4 @@
 
 markings-category-Wings = Крылья
 marking-WingsRobotic = Роботизированные крылья
-marking-WingsRoboticMerciful = Крылья милосердного робота
+marking-WingsRoboticMerciful = Милосердные роботизированные крылья

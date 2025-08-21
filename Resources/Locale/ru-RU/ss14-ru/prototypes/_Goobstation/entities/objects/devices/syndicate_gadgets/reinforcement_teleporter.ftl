@@ -1,2 +1,2 @@
-ent-ReinforcementRadioSyndicateSyndiRoach = телепорт подкрепления СиндиЛичинки
-    .desc = Призывает на помощь преданно обученную личинку моли с микробомбой.
+ent-ReinforcementRadioSyndicateSyndiRoach = радио подкрепления СиндиМоль
+    .desc = Вызывает преданно обученную таракамоль с микробомбой, чтобы помочь вам.

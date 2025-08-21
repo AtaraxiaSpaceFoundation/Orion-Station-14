@@ -10,6 +10,6 @@ stack-bscrystal-unprocessed =
     }
 stack-bingle-tile =
     { $amount ->
-        [1] бингл пол
-       *[other] бингл пола
+        [1] бингл плитка
+       *[other] бингл плитки
     }

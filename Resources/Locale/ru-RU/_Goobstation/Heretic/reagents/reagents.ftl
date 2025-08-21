@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 reagent-name-eldritch = жуткая эссенция
-reagent-desc-eldritch = Странная жидкость, которая противоречит законам физики. Она заряжает энергией и исцеляет тех, кто способен заглянуть за пределы этой хрупкой реальности, но невероятно вредна для ограниченных людей.
-reagent-comp-condition-heretic-or-ghoul = еретик или гуль
-reagent-physical-desc-eldritch = жуткий
-flavor-complex-eldritch = Аг'хсдж'садже'ш
+reagent-desc-eldritch = Странная жидкость, нарушающая законы физики. Заряжает энергией и исцеляет тех, кто способен заглянуть за пределы хрупкой реальности, но невероятно опасна для узколобых.
+reagent-comp-condition-heretic-or-ghoul = еретик или упырь
+reagent-physical-desc-eldritch = жуткая
+flavor-complex-eldritch = Ag'hsj'saje'sh

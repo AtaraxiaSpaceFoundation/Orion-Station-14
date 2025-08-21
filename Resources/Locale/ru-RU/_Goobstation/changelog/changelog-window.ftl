@@ -5,4 +5,3 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 changelog-tab-title-Gooblog = Джубами
-changelog-tab-title-GoobChangelog = "Джублог"

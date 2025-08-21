@@ -3,8 +3,8 @@ ninja-revealed = Вас раскрыли!
 ninja-suit-cooldown = Костюму нужно время, чтобы восстановиться после последней атаки.
 ninja-cell-downgrade = Костюм примет только такую батарейку, которая лучше нынешней!
 ninja-cell-too-large = Этот источник питания не помещается в костюм ниндзя!
-ninja-download-fail = Сервер не содержит исследовательские данные...
 ninja-research-steal-fail = Никакие новые технологии не были украдены...
+ninja-download-fail = В сервере недостаточно данных исследования...
 ninja-research-steal-success =
     Вы украли { $count } { $count ->
         [one] новую технологию
