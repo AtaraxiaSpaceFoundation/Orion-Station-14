@@ -172,6 +172,7 @@
     fuel: 5
     time: 3
   - type: Airlock
+    openUnlitVisible: true # Europa
   - type: NavMapDoor
   - type: DoorBolt
   - type: Appearance
