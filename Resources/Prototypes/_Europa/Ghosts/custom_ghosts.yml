@@ -1,0 +1,75 @@
+# PuroSlavKing
+- type: customGhost
+  id: PuroSlavKing-ghost
+  ckey: PuroSlavKing
+  sprite: _Europa/Ghosts/PuroSlavKing.rsi
+  alpha: 0.8
+  ghostDescription: Hello World!
+
+# no_mad
+- type: customGhost
+  id: no_mad-ghost
+  ckey: no_mad
+  sprite: _Europa/Ghosts/no_mad.rsi
+  alpha: 0.8
+
+# OkTiFE
+- type: customGhost
+  id: OkTiFE-ghost
+  ckey: OkTiFE
+  sprite: _Europa/Ghosts/no_mad.rsi
+  alpha: 0.8
+
+# wendor
+- type: customGhost
+  id: wendor-ghost
+  ckey: wendor
+  sprite: _Europa/Ghosts/wendor.rsi
+  alpha: 0.8
+
+# yourmommy
+- type: customGhost
+  id: yourmommy-ghost
+  ckey: yourmommy
+  sprite: _Europa/Ghosts/yourmommy.rsi
+  alpha: 0.9
+
+# GodFace
+- type: customGhost
+  id: GodFace-ghost
+  ckey: GodFace
+  sprite: _Europa/Ghosts/GodFace.rsi
+  alpha: 1
+
+# LIZARDWIZARD
+- type: customGhost
+  id: LIZARDWIZARD-ghost
+  ckey: LIZARDWIZARD
+  sprite: _Europa/Ghosts/LIZARDWIZARD.rsi
+
+# Vetochka
+- type: customGhost
+  id: Vetochka-ghost
+  ckey: Vetochka
+  sprite: _Europa/Ghosts/Vetochka.rsi
+
+# kreses
+- type: customGhost
+  id: kreses-ghost
+  ckey: kreses
+  sprite: _Europa/Ghosts/kreses.rsi
+  alpha: 0.7
+
+# scituzer2
+- type: customGhost
+  id: scituzer2-ghost
+  ckey: scituzer2
+  sprite: _Europa/Ghosts/scituzer2.rsi
+  alpha: 0.8
+
+# trest100
+- type: customGhost
+  id: trest100-ghost
+  ckey: trest100
+  sprite: _Europa/Ghosts/trest100.rsi
+  alpha: 0.8
