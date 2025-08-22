@@ -24,7 +24,19 @@ public sealed class CustomGhostSpriteSystem : EntitySystem
         if(!_playerManager.TryGetSessionByEntity(uid, out var session))
             return;
 
-        TrySetCustomSprite(uid, session.Name);
+        var playerName = session.Name;
+        string ckeyToMatch;
+
+        if (playerName.StartsWith("localhost@"))
+        {
+            ckeyToMatch = playerName.Substring("localhost@".Length);
+        }
+        else
+        {
+            ckeyToMatch = playerName;
+        }
+
+        TrySetCustomSprite(uid, ckeyToMatch);
     }
 
     public void TrySetCustomSprite(EntityUid ghostUid, string ckey)
