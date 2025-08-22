@@ -1,0 +1,9 @@
+Name: Europalog
+Order: -1
+Entries:
+- author: PuroSlavKing
+  changes:
+    - type: Add
+      message: Added automated changelogs!
+  id: 1
+  time: '2025-08-22T00:09:12.0000000+00:00'
