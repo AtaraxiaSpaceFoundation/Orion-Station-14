@@ -1,2 +1,2 @@
-ent-ClothingOuterEVASuitInteQ = скафандр ВКД Интек
+ent-ClothingOuterEVASuitInteQ = скафандр ЕВА Интек
     .desc = Имеет тег на обратной стороне, который гласит: Собственность Интек

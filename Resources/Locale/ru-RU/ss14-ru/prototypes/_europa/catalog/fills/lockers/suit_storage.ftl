@@ -1,6 +1,6 @@
 ent-SuitStorageInteQEVA = { ent-SuitStorageBase }
     .desc = { ent-SuitStorageBase.desc }
-    .suffix = ВКД Интек
+    .suffix = ЕВА Интек
 ent-SuitStorageInteQEliteHardsuit = { ent-SuitStorageBase }
     .desc = { ent-SuitStorageBase.desc }
     .suffix = Интек Элитный
