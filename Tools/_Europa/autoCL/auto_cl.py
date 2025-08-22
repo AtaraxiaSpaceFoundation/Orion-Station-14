@@ -7,7 +7,8 @@ import aiohttp
 import yaml
 
 FILE_PATH = Path(__file__).resolve()
-CHANGELOG_PATH = FILE_PATH.parents[2] / "Resources" / "Changelog" / "ChangelogEuropa.yml"
+REPO_ROOT = FILE_PATH.parents[3]
+CHANGELOG_PATH = REPO_ROOT / "Resources" / "Changelog" / "ChangelogEuropa.yml"
 
 class NoDatesSafeLoader(yaml.SafeLoader):
     @classmethod
@@ -42,9 +43,10 @@ async def check_rate_limit(session: aiohttp.ClientSession):
     async with session.get("https://api.github.com/rate_limit") as response:
         if response.status == 200:
             data = await response.json()
-            limit = data["rate"]["limit"]
-            remaining = data["rate"]["remaining"]
-            reset_timestamp = data["rate"]["reset"]
+            core = data["resources"]["core"]
+            limit = core["limit"]
+            remaining = core["remaining"]
+            reset_timestamp = core["reset"]
             reset_time = datetime.fromtimestamp(reset_timestamp, tz=timezone.utc)
             logging.info(f"Rate limit checked: {remaining} remaining out of {limit}.")
 
@@ -158,17 +160,19 @@ async def fetch_pr_data(token, repo, pr_number):
     return pr_data
 
 def update_changelog(file_path, new_entries):
-    if file_path.exists():
-        logging.info(f"Removing old changelog file {file_path}.")
-        file_path.unlink()
+    existing = load_yaml(file_path)
+    name = existing.get("Name", "Europalog")
+    order = existing.get("Order", -1)
 
-    next_id = 1
+    for idx, entry in enumerate(new_entries, start=1):
+        entry["id"] = idx
 
-    for entry in new_entries:
-        entry["id"] = next_id
-        next_id += 1
-
-    save_yaml({"Entries": strip_newlines(new_entries)}, file_path)
+    payload = {
+        "Name": name,
+        "Order": order,
+        "Entries": strip_newlines(new_entries),
+    }
+    save_yaml(payload, file_path)
     logging.info("Updated PR data saved to ChangelogEuropa.yml")
 
 async def main():
