@@ -8,7 +8,7 @@
     "copyright": "Made by brainfood1183, modified by gugelc",
     "states": [
         {
-            "name": "alive",
+            "name": "animated",
             "directions": 4,
             "delays": [
                 [
