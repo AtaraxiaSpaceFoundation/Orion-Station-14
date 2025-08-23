@@ -310,8 +310,8 @@
   components:
   - type: Appearance
   - type: EntityStorageVisuals
-    stateBaseClosed: med
-    stateDoorOpen: med_open
+    stateBaseClosed: chemical # Europa-Edit
+    stateDoorOpen: chemical_secure_open # Europa-Edit
     stateDoorClosed: chemical_door
   - type: AccessReader
     access: [ [ "Chemistry" ] ]

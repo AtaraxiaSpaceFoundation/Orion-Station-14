@@ -141,7 +141,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open
+    stateDoorOpen: sec_wardrobe_door # Europa-Edit
     stateDoorClosed: red_door
 
 - type: entity
@@ -160,76 +160,160 @@
   parent: WardrobeMixed
   name: custodial closet
   description: It's a storage unit for janitorial clothes and gear.
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: janitor_wardrobe_door
 
 - type: entity
   id: WardrobeFormal
   parent: WardrobeBlack
   name: formal closet
   description: It's a storage unit for formal clothing.
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: law_wardrobe_door
 
 - type: entity
   id: ClosetChef
   parent: WardrobeBlack
   name: chef's closet
   description: It's a storage unit for foodservice garments and mouse traps.
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: chef_wardrobe_door
 
 - type: entity
   id: WardrobeChapel
   parent: WardrobeBlack
   name: chaplain's wardrobe
   description: It's a storage unit for Nanotrasen-approved religious attire.
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: ce_open
+    stateDoorClosed: chaplain_wardrobe_door
 
 - type: entity
   id: ClosetLegal
   parent: WardrobeBlue
   name: legal closet
   description: It's a storage unit for courtroom apparel and items.
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: law_wardrobe_door
 
 - type: entity
   id: WardrobeCargo
   parent: WardrobePrison
   name: cargo wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: cargo_wardrobe_door
 
 - type: entity
   id: WardrobeSalvage
   parent: WardrobeMixed
   name: salvage wardrobe
   description: Notably not salvaged.
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: mining_wardrobe_door
 
 - type: entity
   id: WardrobeEngineering
   parent: WardrobeYellow
   name: engineering wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: eng_wardrobe_door
 
 - type: entity
   id: WardrobeMedicalDoctor
   parent: WardrobeWhite
   name: medical doctor's wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: med_wardrobe_door
 
 - type: entity
   id: WardrobeRobotics
   parent: WardrobeBlack
   name: robotics wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: robo_wardrobe_door
 
 - type: entity
   id: WardrobeChemistry
   parent: WardrobeWhite
   name: chemistry wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: chemical_wardrobe_door
 
 - type: entity
   id: WardrobeGenetics
   parent: WardrobeWhite
   name: genetics wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: genetic_wardrobe_door
 
 - type: entity
   id: WardrobeVirology
   parent: WardrobeWhite
   name: virology wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: viro_wardrobe_door
 
 - type: entity
   id: WardrobeScience
   parent: WardrobeWhite
   name: science wardrobe
+  components: # Europa
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: science_wardrobe_door
 
 - type: entity
   id: WardrobeBotanist

@@ -2,9 +2,9 @@
     "version": 1,
     "size": {
         "x": 32,
-        "y": 32
+        "y": 48
     },
-    "copyright": "Taken from tgstation, brigmedic locker is a resprited CMO locker by PuroSlavKing (Github), n2 sprites based on fire and emergency sprites, genpop lockers by EmoGarbage404 (github), sci bio locker is a resprited bio viro locker by Alpha-Two (github), Evac lockers by EmoGarbage404 (GitHub)",
+    "copyright": "Taken from TGstation, brigmedic locker is a resprited CMO locker, n2 sprites based on fire and emergency sprites, genpop lockers, sci bio locker is a resprited bio viro locker and Evac lockers by PuroSlavKing (GitHub)",
     "license": "CC-BY-SA-3.0",
     "states": [
         {
@@ -27,6 +27,15 @@
         },
         {
             "name": "alien_open"
+        },
+        {
+            "name": "armory_energy_door"
+        },
+        {
+            "name": "armory_shotgun_door"
+        },
+        {
+            "name": "bar_wardrobe_door"
         },
         {
             "name": "brigmedic_door"
@@ -101,6 +110,9 @@
             "name": "bio_viro_open"
         },
         {
+            "name": "viro_wardrobe_door"
+        },
+        {
             "name": "black_door"
         },
         {
@@ -123,6 +135,15 @@
         },
         {
             "name": "janitor_bomb_open"
+        },
+        {
+            "name": "janitor_wardrobe_door"
+        },
+        {
+            "name": "chaplain_wardrobe_door"
+        },
+        {
+            "name": "chef_wardrobe_door"
         },
         {
             "name": "cabinet"
@@ -161,6 +182,9 @@
             "name": "cargo_open"
         },
         {
+            "name": "cargo_wardrobe_door"
+        },
+        {
             "name": "ce"
         },
         {
@@ -170,7 +194,19 @@
             "name": "ce_open"
         },
         {
+            "name": "chemical"
+        },
+        {
             "name": "chemical_door"
+        },
+        {
+            "name": "chemical_secure_door"
+        },
+        {
+            "name": "chemical_secure_open"
+        },
+        {
+            "name": "chemical_wardrobe_door"
         },
         {
             "name": "cmo"
@@ -309,6 +345,9 @@
             "name": "eng_evac_door"
         },
         {
+            "name": "eng_wardrobe_door"
+        },
+        {
             "name": "fire"
         },
         {
@@ -387,6 +426,9 @@
             "name": "hop_open"
         },
         {
+            "name": "curator_wardrobe_door"
+        },
+        {
             "name": "hos"
         },
         {
@@ -408,6 +450,9 @@
             "name": "locked"
         },
         {
+            "name": "law_wardrobe_door"
+        },
+        {
             "name": "med"
         },
         {
@@ -415,6 +460,9 @@
         },
         {
             "name": "med_open"
+        },
+        {
+            "name": "med_wardrobe_door"
         },
         {
             "name": "med_secure"
@@ -439,6 +487,9 @@
         },
         {
             "name": "mining_open"
+        },
+        {
+            "name": "mining_wardrobe_door"
         },
         {
             "name": "mixed_door"
@@ -501,6 +552,15 @@
             "name": "science_open"
         },
         {
+            "name": "science_wardrobe_door"
+        },
+        {
+            "name": "robo_wardrobe_door"
+        },
+        {
+            "name": "genetic_wardrobe_door"
+        },
+        {
             "name": "sec"
         },
         {
@@ -508,6 +568,9 @@
         },
         {
             "name": "sec_open"
+        },
+        {
+            "name": "sec_wardrobe_door"
         },
         {
             "name": "secure"
@@ -554,6 +617,15 @@
             "name": "syndicate_open"
         },
         {
+            "name": "syndicate_chemical"
+        },
+        {
+            "name": "syndicate_chemical_door"
+        },
+        {
+            "name": "syndicate_chemical_open"
+        },
+        {
             "name": "tac"
         },
         {
@@ -573,6 +645,9 @@
         },
         {
             "name": "warden_open"
+        },
+        {
+            "name": "welded_small"
         },
         {
             "name": "welded"
