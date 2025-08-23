@@ -49,6 +49,16 @@
   - type: Stack
     count: 100
     stackType: Telecrystal
+  # Europa-Start
+    baseLayer: base
+    layerStates:
+    - telecrystal
+    - telecrystal_2
+    - telecrystal_3
+    layerFunction: Threshold
+  - type: StackLayerThreshold
+    thresholds: [10, 20, 30]
+  # Europa-End
   # Goobstation - Custom stack splitting dialog
   - type: UserInterface
     interfaces:
