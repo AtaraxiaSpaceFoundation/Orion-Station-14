@@ -50,6 +50,7 @@ namespace Content.Server.Atmos.EntitySystems
 {
     public sealed partial class AtmosphereSystem
     {
+        [ValidatePrototypeId<EntityPrototype>] private const string _spaceWindProto = "SpaceWindVisual"; // Europa
         private static readonly ProtoId<SoundCollectionPrototype> DefaultSpaceWindSounds = "SpaceWind";
 
         private const int SpaceWindSoundCooldownCycles = 75;
@@ -149,6 +150,16 @@ namespace Content.Server.Atmos.EntitySystems
                     var coordinates = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
                     _audio.PlayPvs(SpaceWindSound, coordinates, SpaceWindSound.Params.WithVolume(MathHelper.Clamp(tile.PressureDifference / 10, 10, 100)));
                 }
+
+                // Europa-Start | Space Wind Visuals
+                if (SpaceWindVisuals && _spaceWindSoundCooldown == 0)
+                {
+                    var location = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
+                    var visualEnt = SpawnAtPosition(_spaceWindProto, location);
+                    var pressureVector = new Vector2(tile.PressureDifference, 0);
+                    _transformSystem.SetLocalRotation(visualEnt, pressureVector.ToAngle() - MathF.PI / 2);
+                }
+                // Europa-End
             }
 
 
