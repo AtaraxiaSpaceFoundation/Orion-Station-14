@@ -33,6 +33,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
@@ -156,8 +157,11 @@ namespace Content.Server.Atmos.EntitySystems
                 {
                     var location = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
                     var visualEnt = SpawnAtPosition(_spaceWindProto, location);
-                    var pressureVector = new Vector2(tile.PressureDifference, 0);
-                    _transformSystem.SetLocalRotation(visualEnt, pressureVector.ToAngle() - MathF.PI / 2);
+                    var pressureVector = new Vector2(tile.PressureDifference, 0f);
+                    var angle = pressureVector.ToAngle();
+
+                    float angleRadians = (float)angle.Degrees * MathF.PI / 180f;
+                    _transformSystem.SetLocalRotation(visualEnt, new Angle(angleRadians - MathF.PI / 2));
                 }
                 // Europa-End
             }
