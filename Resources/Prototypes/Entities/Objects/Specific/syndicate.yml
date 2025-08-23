@@ -99,11 +99,11 @@
   suffix: Empty
   components:
   - type: Sprite
-    sprite: Objects/Devices/communication.rsi
+    sprite: _Europa/Objects/Devices/syndicate_uplink.rsi # Europa-Edit
     layers:
     - state: radio
   - type: Item
-    sprite: Objects/Devices/communication.rsi
+    sprite: _Europa/Objects/Devices/syndicate_uplink.rsi # Europa-Edit
     heldPrefix: radio
   - type: UserInterface
     interfaces:
