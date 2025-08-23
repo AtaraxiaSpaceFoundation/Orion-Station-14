@@ -2,10 +2,10 @@
   "version": 1,
   "size": {
     "x": 32,
-    "y": 32
+    "y": 48
   },
   "license": "CC-BY-SA-3.0",
-  "copyright": "Edited by PuroSlavKing (Github)",
+  "copyright": "Sprited by PuroSlavKing (Github)",
   "states": [
     {
       "name": "inteq"
