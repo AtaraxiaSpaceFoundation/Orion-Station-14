@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-NC-3.0",
-  "copyright": "vectorassembly (Based on flatpacker sprites from vgstation)",
+  "copyright": "Taken from TGStation, edited by andrew_fenriz (discord)",
   "size": {
     "x": 32,
     "y": 32
@@ -20,6 +20,11 @@
       "name": "packing",
       "delays": [
         [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
           0.1,
           0.1,
           0.1,
