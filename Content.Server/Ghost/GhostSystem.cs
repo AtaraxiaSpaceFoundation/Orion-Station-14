@@ -4,7 +4,7 @@
 // SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
 // SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 J�lio C�sar Ueti <52474532+Mirino97@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 J lio C sar Ueti <52474532+Mirino97@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
 // SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
@@ -337,7 +337,7 @@ namespace Content.Server.Ghost
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
         {
-            var timeSinceDeath = _gameTiming.RealTime.Subtract(component.TimeOfDeath);
+            var timeSinceDeath = _gameTiming.CurTime.Subtract(component.TimeOfDeath); // Europa-Edit | RealTime > CurTime
             var deathTimeInfo = timeSinceDeath.Minutes > 0
                 ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
                 : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
