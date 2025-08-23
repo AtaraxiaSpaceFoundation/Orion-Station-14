@@ -112,6 +112,9 @@
       ]
     },
     {
+      "name": "panel_closed"
+    },
+    {
       "name": "panel_open",
       "delays": [
         [
