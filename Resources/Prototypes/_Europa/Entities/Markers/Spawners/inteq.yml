@@ -112,7 +112,7 @@
 # Ghost Roles with Player Apperance
 
 - type: entity
-  parent: [ BaseStructure, MarkerBase ]
+  parent: BaseStructure
   abstract: true
   id: SpawnPointInteQ
   name: InteQ sleeper
@@ -143,7 +143,7 @@
     nameFormat: name-format-standard
   - type: Sprite
     layers:
-      - sprite: Structures/cryostorage.rsi
+      - sprite: _Europa/Structures/cryostasis_sleeper.rsi
         state: sleeper_1
         map: ["base"]
 

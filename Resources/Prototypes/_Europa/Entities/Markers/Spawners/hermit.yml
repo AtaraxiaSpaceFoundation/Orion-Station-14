@@ -9,7 +9,7 @@
 # --- | Penis | ---
 
 - type: entity
-  parent: [ BaseStructure, MarkerBase ]
+  parent: BaseStructure
   id: SpawnPointHermitLavaland
   name: Lavaland Hermit sleeper
   suffix: Spawner, Ghost Role, Player Appearance
@@ -39,6 +39,6 @@
     randomizeName: false
   - type: Sprite
     layers:
-      - sprite: Structures/cryostorage.rsi
+      - sprite: _Europa/Structures/cryostasis_sleeper.rsi
         state: sleeper_1
         map: ["base"]

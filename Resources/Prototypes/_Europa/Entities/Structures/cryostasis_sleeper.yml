@@ -1,0 +1,9 @@
+- type: entity
+  parent: CryogenicSleepUnit
+  id: CryostasisSleeper
+  name: cryostasis sleeper
+  description: Although comfortable, this sleeper won't function as anything but a bed ever again.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/cryostasis_sleeper.rsi
+    offset: "0.01,0.08"

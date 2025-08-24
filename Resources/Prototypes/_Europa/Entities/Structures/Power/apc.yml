@@ -1,0 +1,31 @@
+- type: entity
+  parent: APCBasic
+  id: APCBasicUnlocked
+  suffix: Unlocked, Basic, 50kJ
+  components:
+  - type: AccessReader
+    access: [ ]
+
+- type: entity
+  parent: APCHighCapacity
+  id: APCHighCapacityUnlocked
+  suffix: Unlocked, High Capacity, 100kJ
+  components:
+  - type: AccessReader
+    access: [ ]
+
+- type: entity
+  parent: APCSuperCapacity
+  id: APCSuperCapacityUnlocked
+  suffix: Unlocked, Super Capacity, 150kJ
+  components:
+  - type: AccessReader
+    access: [ ]
+
+- type: entity
+  parent: APCHyperCapacity
+  id: APCHyperCapacityUnlocked
+  suffix: Unlocked, Hyper Capacity, 200kJ
+  components:
+  - type: AccessReader
+    access: [ ]
