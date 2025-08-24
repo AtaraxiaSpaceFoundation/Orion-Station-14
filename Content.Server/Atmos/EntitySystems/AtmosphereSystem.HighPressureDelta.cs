@@ -157,11 +157,13 @@ namespace Content.Server.Atmos.EntitySystems
                 {
                     var location = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
                     var visualEnt = SpawnAtPosition(_spaceWindProto, location);
-                    var pressureVector = new Vector2(tile.PressureDifference, 0f);
-                    var angle = pressureVector.ToAngle();
+                    var gridRot = _transformSystem.GetWorldRotation(gridAtmosphere);
 
-                    float angleRadians = (float)angle.Degrees * MathF.PI / 180f;
-                    _transformSystem.SetLocalRotation(visualEnt, new Angle(angleRadians - MathF.PI / 2));
+                    if (tile.PressureDirection != AtmosDirection.Invalid)
+                    {
+                        var angle = tile.PressureDirection.ToAngle() + gridRot - Angle.FromDegrees(90);
+                        _transformSystem.SetLocalRotation(visualEnt, angle);
+                    }
                 }
                 // Europa-End
             }
