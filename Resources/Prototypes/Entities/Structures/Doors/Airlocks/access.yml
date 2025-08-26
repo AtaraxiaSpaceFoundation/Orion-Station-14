@@ -55,7 +55,7 @@
     layoutId: AirlockService
 
 - type: entity
-  parent: AirlockServiceLocked
+  parent: AirlockLawyer # Europa-Edit
   id: AirlockLawyerLocked
   suffix: Lawyer, Locked
   components:
@@ -366,7 +366,7 @@
       board: [ DoorElectronicsCommand ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockCaptain # Europa-Edit
   id: AirlockCaptainLocked
   suffix: Captain, Locked
   components:
@@ -375,7 +375,7 @@
       board: [ DoorElectronicsCaptain ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockChiefMedicalOfficer # Europa-Edit
   id: AirlockChiefMedicalOfficerLocked
   suffix: ChiefMedicalOfficer, Locked
   components:
@@ -384,7 +384,7 @@
       board: [ DoorElectronicsChiefMedicalOfficer ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockChiefEngineer # Europa-Edit
   id: AirlockChiefEngineerLocked
   suffix: ChiefEngineer, Locked
   components:
@@ -393,7 +393,7 @@
       board: [ DoorElectronicsChiefEngineer ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockHeadOfSecurity # Europa-Edit
   id: AirlockHeadOfSecurityLocked
   suffix: HeadOfSecurity, Locked
   components:
@@ -402,7 +402,7 @@
       board: [ DoorElectronicsHeadOfSecurity ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockResearchDirector # Europa-Edit
   id: AirlockResearchDirectorLocked
   suffix: ResearchDirector, Locked
   components:
@@ -411,7 +411,7 @@
       board: [ DoorElectronicsResearchDirector ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockHeadOfPersonnel # Europa-Edit
   id: AirlockHeadOfPersonnelLocked
   suffix: HeadOfPersonnel, Locked
   components:
@@ -420,7 +420,7 @@
       board: [ DoorElectronicsHeadOfPersonnel ]
 
 - type: entity
-  parent: AirlockCommand
+  parent: AirlockQuartermaster # Europa-Edit
   id: AirlockQuartermasterLocked
   suffix: Quartermaster, Locked
   components:
@@ -506,7 +506,7 @@
     layoutId: AirlockService
 
 - type: entity
-  parent: AirlockServiceGlassLocked
+  parent: AirlockLawyerGlass # Europa-Edit
   id: AirlockLawyerGlassLocked
   suffix: Lawyer, Locked
   components:
@@ -769,7 +769,7 @@
       board: [ DoorElectronicsCommand ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockCaptainGlass # Europa-Edit
   id: AirlockCaptainGlassLocked
   suffix: Captain, Locked
   components:
@@ -778,7 +778,7 @@
       board: [ DoorElectronicsCaptain ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockChiefMedicalOfficerGlass # Europa-Edit
   id: AirlockChiefMedicalOfficerGlassLocked
   suffix: ChiefMedicalOfficer, Locked
   components:
@@ -787,7 +787,7 @@
       board: [ DoorElectronicsChiefMedicalOfficer ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockChiefEngineerGlass # Europa-Edit
   id: AirlockChiefEngineerGlassLocked
   suffix: ChiefEngineer, Locked
   components:
@@ -796,7 +796,7 @@
       board: [ DoorElectronicsChiefEngineer ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockHeadOfSecurityGlass # Europa-Edit
   id: AirlockHeadOfSecurityGlassLocked
   suffix: HeadOfSecurity, Locked
   components:
@@ -805,7 +805,7 @@
       board: [ DoorElectronicsHeadOfSecurity ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockResearchDirectorGlass # Europa-Edit
   id: AirlockResearchDirectorGlassLocked
   suffix: ResearchDirector, Locked
   components:
@@ -814,7 +814,7 @@
       board: [ DoorElectronicsResearchDirector ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockHeadOfPersonnelGlass # Europa-Edit
   id: AirlockHeadOfPersonnelGlassLocked
   suffix: HeadOfPersonnel, Locked
   components:
@@ -823,7 +823,7 @@
       board: [ DoorElectronicsHeadOfPersonnel ]
 
 - type: entity
-  parent: AirlockCommandGlass
+  parent: AirlockQuartermasterGlass # Europa-Edit
   id: AirlockQuartermasterGlassLocked
   suffix: Quartermaster, Locked
   components:
