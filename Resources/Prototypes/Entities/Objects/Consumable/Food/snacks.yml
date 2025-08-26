@@ -267,7 +267,7 @@
         - ReagentId: Nutriment
           Quantity: 10
         - ReagentId: Theobromine
-          Quantity: 3
+          Quantity: 5 # Europa-Edit | 3 > 5
         - ReagentId: CocoaPowder
           Quantity: 1
 

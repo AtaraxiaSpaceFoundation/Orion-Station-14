@@ -711,7 +711,7 @@
         - ReagentId: Nutriment
           Quantity: 20
         - ReagentId: Theobromine
-          Quantity: 5
+          Quantity: 8 # Europa-Edit | 5 > 8
         - ReagentId: Vitamin
           Quantity: 5
   - type: Item
@@ -740,7 +740,7 @@
         - ReagentId: Nutriment
           Quantity: 4
         - ReagentId: Theobromine
-          Quantity: 1
+          Quantity: 1.6 # Europa-Edit | 1 > 1.6
         - ReagentId: Vitamin
           Quantity: 2
   - type: Item

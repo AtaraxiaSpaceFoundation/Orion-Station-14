@@ -280,6 +280,11 @@
           reagent: Nutriment
           min: 0.1
         factor: 1
+      # Europa-Start
+      - !type:AdjustReagent
+         reagent: Theobromine
+         amount: 0.02
+      # Europa-End
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 0.1

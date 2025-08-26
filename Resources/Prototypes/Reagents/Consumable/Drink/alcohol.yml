@@ -342,6 +342,17 @@
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
+  # Europa-Start
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: Ethanol
+        amount: 0.06
+      - !type:AdjustReagent
+        reagent: Theobromine
+        amount: 0.02
+  # Europa-End
 
 - type: reagent
   id: MelonLiquor
@@ -838,6 +849,11 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
+        # Europa-Start
+      - !type:AdjustReagent
+        reagent: Theobromine
+        amount: 0.02
+        # Europa-End
 
 - type: reagent
   id: BloodyMary
@@ -2122,9 +2138,9 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.10
-        - !type:AdjustReagent
-          reagent: Theobromine
-          amount: 0.05
+#        - !type:AdjustReagent # Europa-Remove
+#          reagent: Theobromine
+#          amount: 0.05
         - !type:GenericStatusEffect
           key: Drowsiness
           time: 1.0
@@ -2153,9 +2169,9 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.15
-        - !type:AdjustReagent
-          reagent: Theobromine
-          amount: 0.05
+#        - !type:AdjustReagent # Europa-Remove
+#          reagent: Theobromine
+#          amount: 0.05
         - !type:GenericStatusEffect
           key: Drowsiness
           time: 1.0
@@ -2184,9 +2200,9 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.10
-        - !type:AdjustReagent
-          reagent: Theobromine
-          amount: 0.05
+#        - !type:AdjustReagent # Europa-Remove
+#          reagent: Theobromine
+#          amount: 0.05
         - !type:GenericStatusEffect
           key: Drowsiness
           time: 1.0
@@ -2215,9 +2231,9 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.15
-        - !type:AdjustReagent
-          reagent: Theobromine
-          amount: 0.05
+#        - !type:AdjustReagent # Europa-Remove
+#          reagent: Theobromine
+#          amount: 0.05
         - !type:GenericStatusEffect
           key: Drowsiness
           time: 1.0
@@ -2248,7 +2264,7 @@
           amount: 0.07
         - !type:AdjustReagent
           reagent: Theobromine
-          amount: 0.05
+          amount: 0.02 # Europa-Edit | 0.05 > 0.02
         - !type:GenericStatusEffect
           key: Drowsiness
           time: 1.0
