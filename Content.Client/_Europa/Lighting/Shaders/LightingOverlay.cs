@@ -40,7 +40,7 @@ public sealed class LightingOverlay : Overlay
         IoCManager.InjectDependencies(this);
 
         _shader = _prototypeManager.Index<ShaderPrototype>("LightingOverlay").InstanceUnique();
-        ZIndex = (int) DrawDepth.Overdoors;
+        ZIndex = (int) DrawDepth.Effects;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
