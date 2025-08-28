@@ -19190,15 +19190,6 @@ entities:
           volume: 15
         path: /Audio/Machines/timer.ogg
       delay: 300
-    - type: ActiveTimerTrigger
-      beepSound: !type:SoundPathSpecifier
-        params:
-          maxDistance: 40
-          volume: 15
-        path: /Audio/Machines/timer.ogg
-      beepInterval: 1
-      user: invalid
-      timeRemaining: 300
     missingComponents:
     - Anchorable
     - Pullable
