@@ -3,6 +3,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._Europa.Lighting.Shaders;
 
+//
+// License-Identifier: AGPL-3.0-or-later
+//
+
 public sealed class LightingOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;

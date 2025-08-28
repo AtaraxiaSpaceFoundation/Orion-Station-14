@@ -10,6 +10,10 @@ using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
 namespace Content.Client._Europa.Lighting.Shaders;
 
+//
+// License-Identifier: AGPL-3.0-or-later
+//
+
 public sealed class LightingOverlay : Overlay
 {
     private readonly IPrototypeManager _prototypeManager;
