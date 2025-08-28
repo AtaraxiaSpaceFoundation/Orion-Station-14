@@ -11,7 +11,7 @@ public sealed class LightingOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    private LightingOverlay _lightingOverlay = default!;
+    private LightingOverlay? _lightingOverlay;
 
     public override void Initialize()
     {
@@ -24,6 +24,12 @@ public sealed class LightingOverlaySystem : EntitySystem
     public override void Shutdown()
     {
         base.Shutdown();
-        _overlayManager.RemoveOverlay(_lightingOverlay);
+
+        if (_lightingOverlay != null)
+        {
+            _overlayManager.RemoveOverlay(_lightingOverlay);
+            _lightingOverlay.Dispose();
+            _lightingOverlay = null;
+        }
     }
 }

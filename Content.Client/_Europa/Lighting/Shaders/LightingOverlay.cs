@@ -56,6 +56,7 @@ public sealed class LightingOverlay : Overlay
         var bounds = args.WorldAABB.Enlarged(5f);
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        handle.UseShader(_shader);
 
         var query = _entityManager.AllEntityQueryEnumerator<LightingOverlayComponent, PointLightComponent, TransformComponent>();
         while (query.MoveNext(out _, out var component, out var pointLight, out var xform))
@@ -63,7 +64,7 @@ public sealed class LightingOverlay : Overlay
             if (xform.MapID != args.MapId)
                 continue;
 
-            if (!component.Enabled ?? !pointLight.Enabled)
+            if (component.Enabled is false || !pointLight.Enabled)
                 continue;
 
             var worldPos = _transformSystem.GetWorldPosition(xform, xformCompQuery);
@@ -81,7 +82,6 @@ public sealed class LightingOverlay : Overlay
             var textureVector = new Vector2(xOffset, yOffset);
 
             handle.DrawTexture(mask, textureVector, color);
-            handle.UseShader(_shader);
         }
 
         handle.UseShader(null);
