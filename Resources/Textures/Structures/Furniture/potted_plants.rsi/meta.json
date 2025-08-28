@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation, plant-26 made by Fazansen(https://github.com/Fazansen), inhand-left and right made by Xeri(https://github.com/Xeri7)",
+  "copyright": "Taken from TauCetiStation, inhand-left and right made by Xeri(https://github.com/Xeri7)",
   "size": {
     "x": 32,
     "y": 32
@@ -131,7 +131,10 @@
       "name": "plant-13",
       "delays": [
         [
-          1.0
+          0.2,
+          0.2,
+          0.2,
+          0.2
         ]
       ]
     },
@@ -235,12 +238,7 @@
       "name": "plant-26",
       "delays": [
         [
-          5,
-          0.2,
-          0.2,
-          0.2,
-          0.2,
-          0.2
+          1.0
         ]
       ]
     },
