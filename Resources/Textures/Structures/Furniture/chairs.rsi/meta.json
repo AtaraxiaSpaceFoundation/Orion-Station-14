@@ -73,6 +73,10 @@
             "directions": 4
         },
         {
+            "name": "wooden-overlay",
+            "directions": 4
+        },
+        {
             "name": "wooden-bench",
             "directions": 4
         },
