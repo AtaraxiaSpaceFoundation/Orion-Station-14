@@ -148,7 +148,7 @@
         - HighImpassable
   - type: Sprite
     drawdepth: Overdoors
-    offset: "0.0,0.3"
+    offset: "0.0,0.1" # Europa-Edit | 0.3 > 0.1
     sprite: Structures/Furniture/potted_plants.rsi
     noRot: true
   - type: Speech

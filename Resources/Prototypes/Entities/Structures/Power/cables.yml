@@ -166,7 +166,7 @@
     layers:
     - state: mvcable_0
       color: Yellow
-    - state: mvstripes_0
+#    - state: mvstripes_0 # Europa-Remove
   - type: Icon
     sprite: Structures/Power/Cables/mv_cable.rsi
     state: mvcable_4
@@ -199,7 +199,7 @@
         acts: [ "Destruction" ]
   - type: CableVisualizer
     statePrefix: mvcable_
-    extraLayerPrefix: mvstripes_
+#    extraLayerPrefix: mvstripes_ # Europa-Remove
 
 - type: entity
   id: CableMVUncuttable
