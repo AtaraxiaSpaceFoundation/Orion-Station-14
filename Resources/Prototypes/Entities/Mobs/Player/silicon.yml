@@ -184,6 +184,7 @@
       enum.CommunicationsConsoleUiKey.Key:
         toggleAction: ActionAGhostShowCommunications
   - type: CrewMonitoringConsole
+    doAlert: false # Europa
   - type: GeneralStationRecordConsole
   - type: DeviceNetwork
     deviceNetId: Wireless

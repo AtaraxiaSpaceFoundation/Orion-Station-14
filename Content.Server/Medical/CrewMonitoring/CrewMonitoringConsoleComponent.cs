@@ -13,6 +13,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Medical.SuitSensor;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Medical.CrewMonitoring;
 
@@ -30,4 +31,30 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// </summary>
     [DataField("sensorTimeout"), ViewVariables(VVAccess.ReadWrite)]
     public float SensorTimeout = 10f;
+
+    // Europa-Start
+    /// <summary>
+    ///     Enable or disable alerts.
+    /// </summary>
+    [DataField]
+    public bool DoAlert = true;
+
+    /// <summary>
+    ///     Time interval between alerts in seconds.
+    /// </summary>
+    [DataField]
+    public float AlertTime = 15f;
+
+    /// <summary>
+    ///     Sound to play when alert is triggered.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier AlertSound = new SoundPathSpecifier("/Audio/_Europa/Machines/crew_monitoring_alert.ogg");
+
+    /// <summary>
+    ///     Timestamp of the last played alert.
+    /// </summary>
+    [ViewVariables]
+    public TimeSpan NextAlertTime = TimeSpan.Zero;
+    // Europa-End
 }

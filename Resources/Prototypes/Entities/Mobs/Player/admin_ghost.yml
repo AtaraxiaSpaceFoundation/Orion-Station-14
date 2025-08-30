@@ -221,6 +221,7 @@
     followEntity: true
   - type: CargoOrderConsole
   - type: CrewMonitoringConsole
+    doAlert: false # Europa
   - type: GeneralStationRecordConsole
     canDeleteEntries: true
   - type: DeviceNetwork
