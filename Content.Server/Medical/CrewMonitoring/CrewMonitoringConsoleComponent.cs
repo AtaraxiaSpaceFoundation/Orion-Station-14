@@ -56,5 +56,14 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// </summary>
     [ViewVariables]
     public TimeSpan NextAlertTime = TimeSpan.Zero;
+
+    [DataField(serverOnly: true)]
+    public Color? NormalLightColor { get; set; }
+
+    [DataField(serverOnly: true)]
+    public float? NormalLightEnergy { get; set; }
+
+    [DataField(serverOnly: true)]
+    public float? NormalLightRadius { get; set; }
     // Europa-End
 }

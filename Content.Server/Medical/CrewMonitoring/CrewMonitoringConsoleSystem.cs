@@ -30,6 +30,7 @@ using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Jittering;
 using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensor;
+using Content.Shared.Morgue.Components;
 using Content.Shared.Pinpointer;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
@@ -85,17 +86,32 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
         if (HasUnsecuredCorpse(component))
         {
-            _light.SetColor(uid, Color.Red);
-            _light.SetEnergy(uid, 40);
-            _light.SetRadius(uid, 1.5f);
+            if (TryComp(uid, out PointLightComponent? light))
+            {
+                component.NormalLightColor ??= light.Color;
+                component.NormalLightEnergy ??= light.Energy;
+                component.NormalLightRadius ??= light.Radius;
+
+                _light.SetColor(uid, Color.Red, light);
+                _light.SetEnergy(uid, 40, light);
+                _light.SetRadius(uid, 1.5f, light);
+            }
+
             _audio.PlayPvs(component.AlertSound, uid, AudioParams.Default.WithVolume(-2f));
             _jitter.AddJitter(uid, 10, 15);
         }
         else
         {
-            _light.SetColor(uid, Color.FromSrgb(new Color(0, 100, 0)));
-            _light.SetEnergy(uid, 1.6f);
-            _light.SetRadius(uid, 1.5f);
+            if (TryComp(uid, out PointLightComponent? light))
+            {
+                if (component.NormalLightColor != null)
+                    _light.SetColor(uid, component.NormalLightColor.Value, light);
+                if (component.NormalLightEnergy != null)
+                    _light.SetEnergy(uid, component.NormalLightEnergy.Value, light);
+                if (component.NormalLightRadius != null)
+                    _light.SetRadius(uid, component.NormalLightRadius.Value, light);
+            }
+
             RemCompDeferred<JitteringComponent>(uid);
         }
     }
@@ -103,7 +119,19 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     private bool HasUnsecuredCorpse(CrewMonitoringConsoleComponent component)
     {
         return component.ConnectedSensors.Values
-            .Any(sensor => !sensor.IsAlive && !IsCorpseSecured(GetEntity(sensor.OwnerUid)));
+            .Any(sensor =>
+            {
+                if (sensor.IsAlive)
+                    return false;
+
+                if (!TryGetEntity(sensor.OwnerUid, out var corpse) || Deleted(corpse))
+                    return false;
+
+                if (corpse is not { } nonNullCorpse)
+                    return false;
+
+                return !IsCorpseSecured(nonNullCorpse);
+            });
     }
 
     private bool IsCorpseSecured(EntityUid entity)
@@ -115,7 +143,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             return false;
 
         var containerOwner = container.Owner;
-        return HasComp<EntityStorageComponent>(containerOwner);
+        return HasComp<MorgueComponent>(containerOwner);
     }
     // Europa-End
 
