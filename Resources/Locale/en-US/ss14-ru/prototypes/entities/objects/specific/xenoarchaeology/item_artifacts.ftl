@@ -1,3 +1,6 @@
-ent-VariedXenoArtifactItem = { ent-BaseXenoArtifactItem }
-    .suffix = Varied
+ent-SimpleXenoArtifactItem = { ent-BaseXenoArtifactItem }
+    .suffix = Simple
+    .desc = { ent-BaseXenoArtifactItem.desc }
+ent-MediumXenoArtifactItem = { ent-BaseXenoArtifactItem }
+    .suffix = Medium
     .desc = { ent-BaseXenoArtifactItem.desc }
