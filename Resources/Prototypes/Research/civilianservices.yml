@@ -184,6 +184,11 @@
   tier: 2
   cost: 7500
   recipeUnlocks:
+  # Europa-Start
+  - NTBodyBag
+  - PrisonerBodyBag
+  - RadiationBodyBag
+  # Europa-End
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - CryostasisBeaker
@@ -341,6 +346,9 @@
   tier: 3
   cost: 20000 # Goobstation 10000 -> 20000
   recipeUnlocks:
+  # Europa-Start
+  - BluespaceBodyBag
+  # Europa-End
   - BluespaceBeaker
   - SyringeBluespace
   - MedkitCombat # Goobstation - remove medkitcombat from static to research

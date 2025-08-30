@@ -505,6 +505,9 @@
     #- ChemistryStatic
     #- SurgeryStatic
     dynamicPacks:
+    # Europa-Start
+    - BodyBagsDynamic
+    # Europa-End
     - AdvancedTools
     #- ScienceEquipment - Goobstation - Moved to Scifab
     #- ScienceExplosives - Goobstation - Moved to Scifab
@@ -529,6 +532,9 @@
     - Translators
   - type: EmagLatheRecipes
     emagDynamicPacks:
+    # Europa-Start
+    - BodyBagsSyndicateStatic
+    # Europa-End
     - SecurityAmmo
     - SecurityExplosives
     #- SecurityEquipment # Goobstation
