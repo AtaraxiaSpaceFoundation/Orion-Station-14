@@ -12,6 +12,7 @@
     layers:
       - state: box
       - state: bodybags
+  - type: Storage
     whitelist:
       tags:
         - BodyBag
@@ -30,6 +31,7 @@
     layers:
       - state: box
       - state: bodybags
+  - type: Storage
     whitelist:
       tags:
         - BodyBag
@@ -48,6 +50,7 @@
     layers:
       - state: box
       - state: bodybags
+  - type: Storage
     whitelist:
       tags:
         - BodyBag
@@ -66,6 +69,7 @@
     layers:
       - state: box
       - state: bodybags
+  - type: Storage
     whitelist:
       tags:
         - BodyBag
@@ -84,6 +88,7 @@
     layers:
       - state: box_of_doom
       - state: bodybags
+  - type: Storage
     whitelist:
       tags:
         - BodyBag

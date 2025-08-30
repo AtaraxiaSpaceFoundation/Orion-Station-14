@@ -6,6 +6,7 @@
     Plastic: 1200
     Silver: 120
     Uranium: 30
+    BSCrystal: 50
 
 - type: latheRecipe
   id: NTBodyBag
