@@ -36,7 +36,6 @@ namespace Content.Server.Anomaly.Effects
             var range = component.MaxShuffleRadius;
             var offset = _random.NextVector2(range);
             var newPosition = xform.WorldPosition + offset;
-            _xform.SetWorldPosition(uid, newPosition);
 
             _xform.SetWorldPosition(uid, newPosition);
             _audio.PlayPvs(component.TeleportSound, uid);
