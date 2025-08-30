@@ -29,7 +29,7 @@ job-name-highcommander = Офицер Синдиката
 
 # Half Life
 
-job-name-hecu = агент HECU
+job-name-hecu = агент ХЕКУ
 job-name-governmentman = Г-Мен
 job-name-gman = Г-Мен
 
@@ -43,7 +43,7 @@ job-name-mercenarycaptain = капитан Наёмников
 JobBlueshieldOfficer = офицер Синего Щита
 JobNanotrasenRepresentative = представитель НаноТрейзен
 JobNanotrasenCareerTrainer = наставник ЦК
-JobHecuOperative = агент HECU
+JobHecuOperative = агент ХЕКУ
 JobNavyOfficer = офицер ЦК
 JobNavyOfficerUndercover = офицер под прикрытием
 JobNavyCaptain = капитан ВКФ

@@ -1,2 +1,2 @@
-ent-MobPlasmaman = Урист МакПлазмачел
+ent-MobPlasmaman = Урист МакПлазмалюд
     .desc = { ent-BaseMobPlasmaman.desc }

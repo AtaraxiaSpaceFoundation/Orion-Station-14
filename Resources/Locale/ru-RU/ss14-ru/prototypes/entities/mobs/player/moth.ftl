@@ -1,2 +1,2 @@
-ent-MobMoth = Урист МакФлафф
+ent-MobMoth = Урист МакМотылёк
     .desc = { ent-BaseMobMoth.desc }
