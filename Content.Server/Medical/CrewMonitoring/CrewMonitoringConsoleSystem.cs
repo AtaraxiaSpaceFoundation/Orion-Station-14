@@ -82,6 +82,10 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
     private void TriggerAlert(EntityUid uid, CrewMonitoringConsoleComponent component)
     {
+        var audioParams = AudioParams.Default
+            .WithVolume(-2f)
+            .WithVariation(0.25f);
+
         component.NextAlertTime = _gameTiming.CurTime + TimeSpan.FromSeconds(component.AlertTime);
 
         if (HasUnsecuredCorpse(component))
@@ -97,7 +101,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 _light.SetRadius(uid, 1.5f, light);
             }
 
-            _audio.PlayPvs(component.AlertSound, uid, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayPvs(component.AlertSound, uid, audioParams);
             _jitter.AddJitter(uid, 10, 15);
         }
         else
