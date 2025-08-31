@@ -27,7 +27,7 @@ public sealed partial class CorticalBorerSystem
         SubscribeLocalEvent<CorticalBorerComponent, CorticalEjectEvent>(OnEjectHost);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalTakeControlEvent>(OnTakeControl);
 
-        SubscribeLocalEvent<CorticalBorerComponent, CorticalChemMenuActionEvent>(OnChemcialMenu);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalChemMenuActionEvent>(OnChemicalMenu);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalCheckBloodEvent>(OnCheckBlood);
 
 
@@ -35,7 +35,7 @@ public sealed partial class CorticalBorerSystem
         SubscribeLocalEvent<CorticalBorerInfestedComponent, CorticalLayEggEvent>(OnLayEgg);
     }
 
-    private void OnChemcialMenu(Entity<CorticalBorerComponent> ent, ref CorticalChemMenuActionEvent args)
+    private void OnChemicalMenu(Entity<CorticalBorerComponent> ent, ref CorticalChemMenuActionEvent args)
     {
         if(!TryComp<UserInterfaceComponent>(ent, out var uic))
             return;

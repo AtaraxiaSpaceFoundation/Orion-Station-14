@@ -13,7 +13,7 @@ namespace Content.Client._Europa.CorticalBorer;
 [GenerateTypedNameReferences]
 public sealed partial class CorticalBorerReagentCardControl : Control
 {
-    public Action<string>? OnPressed;
+    public event Action<string>? OnPressed;
 
     public CorticalBorerReagentCardControl(CorticalBorerDispenserItem set)
     {

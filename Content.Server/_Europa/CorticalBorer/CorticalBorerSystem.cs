@@ -310,7 +310,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         if (_mind.TryGetMind(host, out var controledMind, out _))
         {
-            infestedComp.OrigininalMindId = controledMind; // set this var here just in case somehow the mind changes from when the infestation started
+            infestedComp.OriginalMindId = controledMind; // set this var here just in case somehow the mind changes from when the infestation started
 
             // fish head...
             var dummy = Spawn("FoodMeatFish", MapCoordinates.Nullspace);
@@ -320,7 +320,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         }
         else
         {
-            infestedComp.OrigininalMindId = null;
+            infestedComp.OriginalMindId = null;
         }
 
         comp.ControlingHost = true;
@@ -375,8 +375,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // Return everyone to their own bodies
         if (!TerminatingOrDeleted(infestedComp.BorerMindId))
             _mind.TransferTo(infestedComp.BorerMindId, infestedComp.Borer);
-        if (!TerminatingOrDeleted(infestedComp.OrigininalMindId) && infestedComp.OrigininalMindId.HasValue)
-            _mind.TransferTo(infestedComp.OrigininalMindId.Value, host);
+        if (!TerminatingOrDeleted(infestedComp.OriginalMindId) && infestedComp.OriginalMindId.HasValue)
+            _mind.TransferTo(infestedComp.OriginalMindId.Value, host);
 
         infestedComp.ControlTimeEnd = null;
         _container.CleanContainer(infestedComp.ControlContainer);
