@@ -1,24 +1,27 @@
 - type: entity
   parent: SimpleSpaceMobBase
   id: MobCorticalBorer
-  name: Cortical Borer
-  description: A worm that burrows into brains and lays its eggs
+  name: cortical borer
+  description: Worm that burrows into brains.
   components:
   - type: VentCrawler
   - type: GhostRole
     makeSentient: true
     allowSpeech: False
     allowMovement: true
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 36000 # 10 hrs
     name: cortical-borer-ghostrole-name
     description: cortical-borer-ghostrole-desc
     rules: ghost-role-information-freeagent-rules
     mindRoles:
     - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
   - type: GhostTakeoverAvailable
   - type: Sprite
+    scale: 0.6, 0.6
     drawdepth: SmallMobs
     sprite: _Europa/Mobs/Aliens/cortical_borer.rsi
     layers:
@@ -39,7 +42,7 @@
       fix1:
         shape:
           !type:PhysShapeCircle
-          radius: 0.2
+          radius: 0.15
         density: 100
         mask:
         - SmallMobMask
@@ -49,7 +52,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      20: Dead
+      25: Dead
   - type: Barotrauma # take away space immunity but still not gasp
     damage:
       types:
@@ -106,7 +109,7 @@
   parent: BaseItem
   id: CorticalBorerEgg
   name: cortical borer egg
-  description: This egg is so nice and wet and soft...
+  description: This egg is so nice, wet and soft...
   components:
   - type: Sprite
     sprite: _Europa/Mobs/Aliens/cortical_borer_egg.rsi

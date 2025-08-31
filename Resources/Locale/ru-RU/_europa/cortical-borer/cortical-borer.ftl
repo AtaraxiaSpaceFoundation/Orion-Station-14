@@ -1,11 +1,11 @@
 
 ## Infest Messages
 cortical-borer-has-host = Уже есть носитель.
-cortical-borer-host-already-infested = {THE($target)} уже заражён.
-cortical-borer-invalid-host = {THE($target)} не является подходящим носителем.
-cortical-borer-face-covered = {THE($target)} лицо закрыто.
-cortical-borer-headless = {THE($target)} не имеет головы!
-cortical-borer-start-infest = Вы начинаете заползать в {THE($target)}.
+cortical-borer-host-already-infested = {$target} уже заражён.
+cortical-borer-invalid-host = {$target} не является подходящим носителем.
+cortical-borer-face-covered = {$target} лицо закрыто.
+cortical-borer-headless = {$target} не имеет головы!
+cortical-borer-start-infest = Вы начинаете заползать в {$target}.
 
 ## Generic messages
 cortical-borer-no-host = Нет носителя.

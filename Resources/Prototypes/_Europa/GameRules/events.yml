@@ -12,6 +12,9 @@
     minimumPlayers: 15
     earliestStart: 30
     reoccurrenceDelay: 50
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 60
   - type: RandomSpawnRule
     prototype: SpawnMobInteQAgent
 
@@ -28,6 +31,9 @@
     reoccurrenceDelay: 30
     duration: 1
     maxOccurrences: 1
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: -5
   - type: RandomSpawnRule
     prototype: MobWisdomCow
 
@@ -43,7 +49,26 @@
     minimumPlayers: 15
     earliestStart: 35
     reoccurrenceDelay: 50
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: 10
   - type: RandomSpawnRule
     prototype: AnomalyWormhole
     minCount: 30
     maxCount: 50
+
+- type: entity
+  parent: BaseGameRule
+  id: CorticalBorerInfestation
+  components:
+  - type: StationEvent
+    weight: 7
+    duration: 1
+    minimumPlayers: 12
+    earliestStart: 20
+    reoccurrenceDelay: 35
+    eventType: Chaotic
+  - type: GameRule
+    chaosScore: 100
+  - type: RandomSpawnRule
+    prototype: SpawnPointGhostCorticalBorer

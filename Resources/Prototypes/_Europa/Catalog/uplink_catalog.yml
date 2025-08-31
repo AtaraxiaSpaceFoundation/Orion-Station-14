@@ -23,3 +23,14 @@
       whitelist:
         tags:
           - NukeOpsUplink
+
+- type: listing
+  id: UplinkCorticalBorerEgg
+  name: uplink-cortical-borer-egg-name
+  description: uplink-cortical-borer-egg-desc
+  icon: { sprite: /Textures/_Europa/Mobs/Aliens/cortical_borer_egg.rsi, state: icon }
+  productEntity: CorticalBorerEgg
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkAllies
