@@ -5,7 +5,10 @@
   description: Open the chemicals menu.
   components:
   - type: Action
-    icon: _Europa/Interface/Action/borer.rsi/borer_chem.png
+    useDelay: 1
+    icon:
+      sprite: _Europa/Interface/Actions/borer.rsi
+      state: borer_chem
   - type: InstantAction
     event: !type:CorticalChemMenuActionEvent
 
@@ -19,7 +22,7 @@
     useDelay: 5
     itemIconStyle: NoItem
     icon:
-      sprite: _Europa/Interface/Action/borer.rsi
+      sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_infest
   - type: TargetAction
     interactOnMiss: false
@@ -39,7 +42,7 @@
   - type: Action
     useDelay: 5
     icon:
-      sprite: _Europa/Interface/Action/borer.rsi
+      sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_eject
   - type: InstantAction
     event: !type:CorticalEjectEvent
@@ -53,7 +56,7 @@
   - type: Action
     useDelay: 5
     icon:
-      sprite: _Europa/Interface/Action/borer.rsi
+      sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_bloodcheck
   - type: InstantAction
     event: !type:CorticalCheckBloodEvent
@@ -67,7 +70,7 @@
   - type: Action
     useDelay: 340 #5 minutes and 40 seconds
     icon:
-      sprite: _Europa/Interface/Action/borer.rsi
+      sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_control
   - type: InstantAction
     event: !type:CorticalTakeControlEvent
@@ -81,7 +84,7 @@
   - type: Action
     useDelay: 5
     icon:
-      sprite: _Europa/Interface/Action/borer.rsi
+      sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_eject
   - type: InstantAction
     event: !type:CorticalEndControlEvent
@@ -95,7 +98,7 @@
   - type: Action
     useDelay: 5
     icon:
-      sprite: _Europa/Interface/Action/borer.rsi
+      sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_egg
   - type: InstantAction
     event: !type:CorticalLayEggEvent
