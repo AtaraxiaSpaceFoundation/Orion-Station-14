@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Content.Shared.StatusEffect;
 using JetBrains.Annotations;
@@ -57,6 +58,12 @@ public sealed partial class GenericStatusEffect : EntityEffect
         {
             statusSys.TryAddStatusEffect(args.TargetEntity, Key, TimeSpan.FromSeconds(time), Refresh, Component);
         }
+        // Europa-Start | Just add status without component
+        else if (Type == StatusEffectMetabolismType.Add)
+        {
+            statusSys.TryAddStatusEffect(args.TargetEntity, Key, TimeSpan.FromSeconds(time), Refresh);
+        }
+        // Europa-End
         else if (Type == StatusEffectMetabolismType.Remove)
         {
             statusSys.TryRemoveTime(args.TargetEntity, Key, TimeSpan.FromSeconds(time));

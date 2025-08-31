@@ -388,6 +388,17 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (language.SpeechOverride.ChatTypeOverride is { } chatTypeOverride)
             desiredType = chatTypeOverride;
 
+        // Europa-Start | Is this being sent direct
+        var targetEv = new CheckTargetedSpeechEvent();
+        RaiseLocalEvent(source, targetEv);
+
+        if (targetEv.Targets.Count > 0 && !targetEv.ChatTypeIgnore.Contains(desiredType))
+        {
+            SendEntityDirect(source, message, range, nameOverride, language, targetEv.Targets);
+            return;
+        }
+        // Europa-End
+
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
         {
@@ -879,6 +890,73 @@ public sealed partial class ChatSystem : SharedChatSystem
                     $"Whisper from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
             }
     }
+
+    // Europa-Start
+    private void SendEntityDirect(
+        EntityUid source,
+        string originalMessage,
+        ChatTransmitRange range,
+        string? nameOverride,
+        LanguagePrototype language,
+        List<EntityUid> recipients,
+        bool hideLog = false,
+        bool ignoreActionBlocker = false)
+    {
+        var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage), language);
+        if (message.Length == 0)
+            return;
+
+        string name;
+        if (nameOverride != null)
+        {
+            name = nameOverride;
+        }
+        else
+        {
+            var nameEv = new TransformSpeakerNameEvent(source, Name(source));
+            RaiseLocalEvent(source, nameEv);
+            name = nameEv.VoiceName;
+        }
+        name = FormattedMessage.EscapeText(name);
+
+        var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+            ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
+
+        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
+        {
+            EntityUid listener;
+
+            if (session.AttachedEntity is not { Valid: true } playerEntity)
+                continue;
+            listener = session.AttachedEntity.Value;
+
+            if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full ||
+                !recipients.Contains(listener) &&
+                !HasComp<GhostComponent>(listener))
+                continue;
+
+            _chatManager.ChatMessageToOne(ChatChannel.CollectiveMind, message, wrappedMessage, source, false, session.Channel);
+        }
+
+        if (!hideLog)
+            if (originalMessage == message)
+            {
+                if (name != Name(source))
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Direct messaged from {ToPrettyString(source):user} as {name}: {originalMessage}.");
+                else
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Direct messaged from {ToPrettyString(source):user}: {originalMessage}.");
+            }
+            else
+            {
+                if (name != Name(source))
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low,
+                        $"Direct messaged from {ToPrettyString(source):user} as {name}, original: {originalMessage}, transformed: {message}.");
+                else
+                    _adminLogger.Add(LogType.Chat, LogImpact.Low,
+                        $"Direct messaged from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
+            }
+    }
+    // Europa-End
 
     private void SendEntityEmote(
         EntityUid source,
@@ -1378,6 +1456,12 @@ public sealed class CheckIgnoreSpeechBlockerEvent : EntityEventArgs
         Sender = sender;
         IgnoreBlocker = ignoreBlocker;
     }
+}
+
+public sealed class CheckTargetedSpeechEvent : EntityEventArgs // Europa
+{
+    public List<InGameICChatType> ChatTypeIgnore = new();
+    public List<EntityUid> Targets = new();
 }
 
 /// <summary>

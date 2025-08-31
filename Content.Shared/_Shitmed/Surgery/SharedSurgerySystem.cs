@@ -16,6 +16,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._Europa.CorticalBorer;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Pain.Systems;
@@ -71,6 +72,7 @@ public abstract partial class SharedSurgerySystem : EntitySystem
     [Dependency] private readonly ConsciousnessSystem _consciousness = default!;
     [Dependency] private readonly PainSystem _pain = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SharedCorticalBorerSystem _corticalBorer = default!; // Europa
 
     /// <summary>
     /// Cache of all surgery prototypes' singleton entities.
@@ -98,6 +100,7 @@ public abstract partial class SharedSurgerySystem : EntitySystem
         SubscribeLocalEvent<SurgeryCloseIncisionConditionComponent, SurgeryValidEvent>(OnCloseIncisionValid);
         //SubscribeLocalEvent<SurgeryLarvaConditionComponent, SurgeryValidEvent>(OnLarvaValid);
         SubscribeLocalEvent<SurgeryHasBodyConditionComponent, SurgeryValidEvent>(OnHasBodyConditionValid);
+        SubscribeLocalEvent<SurgeryCorticalBorerConditionComponent, SurgeryValidEvent>(OnCorticalBorerValid); // Europa
         SubscribeLocalEvent<SurgeryPartConditionComponent, SurgeryValidEvent>(OnPartConditionValid);
         SubscribeLocalEvent<SurgeryOrganConditionComponent, SurgeryValidEvent>(OnOrganConditionValid);
         SubscribeLocalEvent<SurgeryWoundedConditionComponent, SurgeryValidEvent>(OnWoundedValid);
@@ -205,6 +208,15 @@ public abstract partial class SharedSurgerySystem : EntitySystem
         if (infected != null && infected.SpawnedLarva != null)
             args.Cancelled = true;
     }*/
+
+    // Europa-Start
+    private void OnCorticalBorerValid(Entity<SurgeryCorticalBorerConditionComponent> ent, ref SurgeryValidEvent args)
+    {
+        if (!HasComp<CorticalBorerInfestedComponent>(args.Body) ||
+            !HasComp<IncisionOpenComponent>(args.Part))
+            args.Cancelled = true;
+    }
+    // Europa-End
 
     private void OnBodyComponentConditionValid(Entity<SurgeryBodyComponentConditionComponent> ent, ref SurgeryValidEvent args)
     {

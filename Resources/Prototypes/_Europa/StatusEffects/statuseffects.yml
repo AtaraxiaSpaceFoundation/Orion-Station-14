@@ -4,3 +4,7 @@
   icon:
     sprite: /Textures/_Europa/Interface/Misc/job_icons.rsi
     state: InteQ
+
+- type: statusEffect
+  id: CorticalBorerProtection
+  alwaysAllowed: true

@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja
+// SPDX-FileCopyrightText: 2025 Coenx-flex
 //
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Alert;
 using Robust.Client.GameObjects;
@@ -16,11 +16,14 @@ public record struct UpdateAlertSpriteEvent
 {
     public Entity<SpriteComponent> SpriteViewEnt;
 
+    public EntityUid ViewerEnt; // Europa
+
     public AlertPrototype Alert;
 
-    public UpdateAlertSpriteEvent(Entity<SpriteComponent> spriteViewEnt, AlertPrototype alert)
+    public UpdateAlertSpriteEvent(Entity<SpriteComponent> spriteViewEnt, EntityUid viewerEnt, AlertPrototype alert) // Europa-Edit | Added EntityUid viewerEnt
     {
         SpriteViewEnt = spriteViewEnt;
+        ViewerEnt = viewerEnt; // Europa
         Alert = alert;
     }
 }

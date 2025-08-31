@@ -5,3 +5,10 @@
   frequency: 1454
   color: "#FF8C00"
   longRange: true
+
+- type: radioChannel
+  id: CorticalBorer
+  name: chat-radio-cortical-borer
+  keycode: 'i'
+  color: "#d842fc"
+  longRange: true
