@@ -919,7 +919,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
         name = FormattedMessage.EscapeText(name);
 
-        var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+        var wrappedMessage = Loc.GetString("chat-manager-entity-say-direct-wrap-message",
             ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))

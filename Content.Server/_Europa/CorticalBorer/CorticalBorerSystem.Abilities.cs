@@ -67,8 +67,8 @@ public sealed partial class CorticalBorerSystem
             return;
         }
 
-        // anything with bloodstream
-        if (!HasComp<BloodstreamComponent>(target))
+        // anything with bloodstream, BUT NOT BORER
+        if (!HasComp<BloodstreamComponent>(target) || HasComp<CorticalBorerComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("cortical-borer-invalid-host", ("target", targetIdentity)), uid, uid, PopupType.Medium);
             return;
