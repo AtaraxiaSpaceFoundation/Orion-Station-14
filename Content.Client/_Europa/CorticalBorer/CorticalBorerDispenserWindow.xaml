@@ -19,25 +19,15 @@
                 RadioGroup="True">
             </ui:ButtonGrid>
         </BoxContainer>
-        <SplitContainer Orientation="Vertical"
-                        HorizontalExpand="True"
-                        VerticalExpand="True">
-            <ScrollContainer HScrollEnabled="False"
-                             HorizontalExpand="True"
-                             VerticalExpand="True"
-                             MinHeight="50"
-                             SizeFlagsStretchRatio="2.5">
-                <GridContainer Name="ReagentList"
-                               HorizontalExpand="True"
-                               VerticalExpand="True"
-                               Access="Public"
-                               Columns="3" />
-            </ScrollContainer>
-            <ScrollContainer HScrollEnabled="False"
-                             HorizontalExpand="True"
-                             VerticalExpand="True"
-                             MinHeight="50">
-            </ScrollContainer>
-        </SplitContainer>
+        <ScrollContainer HScrollEnabled="False"
+                         HorizontalExpand="True"
+                         VerticalExpand="True"
+                         MinHeight="50">
+            <GridContainer Name="ReagentList"
+                           HorizontalExpand="True"
+                           VerticalExpand="True"
+                           Access="Public"
+                           Columns="3" />
+        </ScrollContainer>
     </BoxContainer>
 </controls:FancyWindow>

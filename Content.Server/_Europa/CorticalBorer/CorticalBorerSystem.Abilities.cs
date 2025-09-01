@@ -46,7 +46,9 @@ public sealed partial class CorticalBorerSystem
             return;
         }
 
+        UpdateUiState(ent);
         _ui.TryToggleUi((ent, uic), CorticalBorerDispenserUiKey.Key, ent);
+        args.Handled = true;
     }
 
     private void OnInfest(Entity<CorticalBorerComponent> ent, ref CorticalInfestEvent args)
@@ -98,6 +100,7 @@ public sealed partial class CorticalBorerSystem
             AttemptFrequency = AttemptFrequency.StartAndEnd,
             Hidden = true,
         };
+
         _doAfter.TryStartDoAfter(infestArgs);
     }
 
@@ -110,6 +113,12 @@ public sealed partial class CorticalBorerSystem
             return;
 
         if (args.Cancelled || HasComp<CorticalBorerInfestedComponent>(target))
+            return;
+
+        if (!CanUseAbility(ent, target))
+            return;
+
+        if (!HasComp<BloodstreamComponent>(target) || HasComp<CorticalBorerComponent>(target))
             return;
 
         InfestTarget(ent, target);
@@ -129,12 +138,8 @@ public sealed partial class CorticalBorerSystem
             return;
         }
 
-        if (!CanUseAbility(ent, comp.Host.Value))
-            return;
-
-        TryEjectBorer(ent);
-
-        args.Handled = true;
+        if (TryEjectBorer(ent))
+            args.Handled = true;
     }
 
     private void OnCheckBlood(Entity<CorticalBorerComponent> ent, ref CorticalCheckBloodEvent args)
@@ -148,9 +153,8 @@ public sealed partial class CorticalBorerSystem
             return;
         }
 
-        TryToggleCheckBlood(ent);
-
-        args.Handled = true;
+        if (TryToggleCheckBlood(ent))
+            args.Handled = true;
     }
 
     private void OnTakeControl(Entity<CorticalBorerComponent> ent, ref CorticalTakeControlEvent args)
