@@ -1,36 +1,36 @@
 - type: borerChemical
   id: borerOmnizine
-  cost: 25
+  cost: 20
   reagent: Omnizine
 
 - type: borerChemical
   id: borerBicaridine
-  cost: 15
+  cost: 10
   reagent: Bicaridine
 
 - type: borerChemical
   id: borerKelotane
-  cost: 15
+  cost: 10
   reagent: Kelotane
 
 - type: borerChemical
   id: borerDexalinPlus
-  cost: 18
+  cost: 12
   reagent: DexalinPlus
 
 - type: borerChemical
   id: borerSaline
-  cost: 6
+  cost: 5
   reagent: Saline
 
 - type: borerChemical # Like spaceacillin but NOT deleted
   id: borerCryptobiolin
-  cost: 5
+  cost: 4
   reagent: Cryptobiolin
 
 - type: borerChemical
   id: borerPotassiumIodide
-  cost: 6
+  cost: 5
   reagent: PotassiumIodide
 
 - type: borerChemical
@@ -45,7 +45,7 @@
 
 - type: borerChemical
   id: borerHaloperidol
-  cost: 14
+  cost: 12
   reagent: Haloperidol
 
 #- type: borerChemical # None :(
@@ -75,7 +75,7 @@
 
 - type: borerChemical
   id: borerDesoxyephedrine
-  cost: 25
+  cost: 18
   reagent: Desoxyephedrine
 
 - type: borerChemical
@@ -85,7 +85,7 @@
 
 - type: borerChemical
   id: borerOculine
-  cost: 8
+  cost: 6
   reagent: Oculine
 
 - type: borerChemical
@@ -95,7 +95,7 @@
 
 - type: borerChemical
   id: borerEthanol
-  cost: 5
+  cost: 4
   reagent: Ethanol
 
 - type: borerChemical
@@ -125,5 +125,5 @@
 
 - type: borerChemical
   id: borerUranium
-  cost: 15
+  cost: 12
   reagent: Uranium
