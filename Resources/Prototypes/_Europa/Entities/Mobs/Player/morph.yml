@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseSimpleMob
+  parent: [ BaseSimpleMob, MobCombat ]
   id: MobMorph
   name: morph
   description: It looks terrifying.
@@ -13,7 +13,6 @@
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: alive
-  - type: CombatMode
   - type: MobState
     allowedStates:
     - Alive

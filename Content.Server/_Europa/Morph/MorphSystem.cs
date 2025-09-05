@@ -35,7 +35,6 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Standing;
 using Content.Server.Body.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Map;
 
 namespace Content.Server._Europa.Morph;
 
@@ -410,7 +409,7 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<MobThresholdsComponent>(args.Target, out var state) || !_threshold.TryGetDeadThreshold(args.Target.Value, out var health))
         {
             health = -component.EatWeaponHungerReq;
-            _hunger.ModifyHunger(uid, (float)health.Value, hunger);
+            _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
             _audioSystem.PlayPvs(component.SoundDevour, uid);
             container.Insert(args.Target.Value, component.Container);
             component.ContainedCreatures.Add(args.Target.Value);
@@ -431,7 +430,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
         _damageable.TryChangeDamage(uid, damage_brute);
         _damageable.TryChangeDamage(uid, damage_burn);
-        _hunger.ModifyHunger(uid, Math.Abs((float)health.Value / 3.5f), hunger);
+        _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
         _audioSystem.PlayPvs(component.SoundDevour, uid);
         container.Insert(args.Target.Value, component.Container);
     }
