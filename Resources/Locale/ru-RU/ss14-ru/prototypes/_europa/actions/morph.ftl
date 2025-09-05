@@ -1,7 +1,7 @@
 ent-ActionMorphDevour = [color=red]Поглощение[/color]
     .desc = Поглотите живое существо, или предмет.
 ent-ActionMorphRemember = [color=red]Запомнить[/color]
-    .desc = Запомните любой объект, чтобы использовть его форму в будущем.
+    .desc = Запомните любой объект, чтобы использовать его форму в будущем.
 ent-ActionMorphMimicry = [color=red]Мимикрировать[/color]
     .desc = Используйте образы, которые вы запомнили, чтобы принять нужную вам форму.
 ent-ActionMorphReplication = [color=red]Репродукция[/color]
