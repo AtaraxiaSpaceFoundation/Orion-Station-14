@@ -249,23 +249,3 @@
   license: "CC-BY-NC-SA-3.0"
   copyright: "The Future Soon by Jonathan Coulton"
   source: "https://www.youtube.com/watch?v=l5PEz3kGbp4"
-  
-- files: ["Engineerz.ogg"]
-  license: "CC-BY-NC-SA-3.0"
-  copyright: "David Bowie"
-  source: "https://audiohunter.ru/?song=Space+Station+13"
-  
-- files: ["NexMusic.ogg"]
-  license: "CC-BY-NC-SA-3.0"
-  copyright: "Ari Pulkkine"
-  source: "https://box.hitplayer.ru/?s=space%20station%2014"
-  
-- files: ["tin_tin_on_moon.ogg"]
-  license: "CC-BY-NC-SA-3.0"
-  copyright: "David Bowie"
-  source: "https://audiohunter.ru/?song=Space+Station+13"
-  
-- files: [Get-Up-N-FIGHT.ogg]
-  license: "CC-BY-3.0"
-  copyright: "Get Up N' Fight! by NeXsard. Converted from mp4 to OGG"
-  source: "https://youtu.be/3k4vZvCZ9dg"

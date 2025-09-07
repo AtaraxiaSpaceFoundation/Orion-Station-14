@@ -1,0 +1,77 @@
+- type: lobbyBackground
+  id: CapHos
+  background: /Textures/_Europa/LobbyScreens/CapHos.webp
+  name: Cap and Hos
+  artist: community
+  
+- type: lobbyBackground
+  id: HosDead
+  background: /Textures/_Europa/LobbyScreens/HosDead.webp
+  name: HosDead
+  artist: community
+  
+- type: lobbyBackground
+  id: Tex
+  background: /Textures/_Europa/LobbyScreens/Tex.webp
+  name: Tex
+  artist: community
+  
+- type: lobbyBackground
+  id: RP
+  background: /Textures/_Europa/LobbyScreens/RP.webp
+  name: Mega RP
+  artist: community
+  
+- type: lobbyBackground
+  id: Revo
+  background: /Textures/_Europa/LobbyScreens/Revo.webp
+  name: Revolution
+  artist: community
+  
+- type: lobbyBackground
+  id: NT
+  background: /Textures/_Europa/LobbyScreens/NT.webp
+  name: NT
+  artist: community
+  
+- type: lobbyBackground
+  id: Syndicat
+  background: /Textures/_Europa/LobbyScreens/Syndicat.webp
+  name: Syndicat
+  artist: community
+  
+- type: lobbyBackground
+  id: SMO
+  background: /Textures/_Europa/LobbyScreens/SMO.webp
+  name: SMO
+  artist: community
+  
+- type: lobbyBackground
+  id: PvZ
+  background: /Textures/_Europa/LobbyScreens/PvZ.webp
+  name: PvZ
+  artist: community
+  
+- type: lobbyBackground
+  id: Organs
+  background: /Textures/_Europa/LobbyScreens/Organs.webp
+  name: Organs Greytide
+  artist: community
+  
+- type: lobbyBackground
+  id: The utilizer
+  background: /Textures/_Europa/LobbyScreens/The utilizer.webp
+  name: The utilizer
+  artist: @hoper_hop
+  
+- type: lobbyBackground
+  id: wex
+  background: /Textures/_Europa/LobbyScreens/wex.webp
+  name: Wex Cult
+  artist: @hoper_hop
+  
+- type: lobbyBackground
+  id: SecZek
+  background: /Textures/_Europa/LobbyScreens/SecZek.webp
+  name: SecZek
+  artist: @hoper_hop
