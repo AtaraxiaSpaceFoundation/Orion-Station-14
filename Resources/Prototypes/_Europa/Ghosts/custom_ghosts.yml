@@ -20,13 +20,6 @@
   sprite: _Europa/Ghosts/no_mad.rsi
   alpha: 0.8
 
-# wendor
-- type: customGhost
-  id: wendor-ghost
-  ckey: wendor
-  sprite: _Europa/Ghosts/wendor.rsi
-  alpha: 0.8
-
 # yourmommy
 - type: customGhost
   id: yourmommy-ghost

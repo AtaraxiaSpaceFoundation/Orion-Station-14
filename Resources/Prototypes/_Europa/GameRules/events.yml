@@ -59,6 +59,22 @@
 
 - type: entity
   parent: BaseGameRule
+  id: MorphInfestation
+  components:
+  - type: StationEvent
+    weight: 7
+    duration: 1
+    minimumPlayers: 15
+    earliestStart: 15
+    reoccurrenceDelay: 30
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 150
+  - type: RandomSpawnRule
+    prototype: SpawnPointGhostMorph
+
+- type: entity
+  parent: BaseGameRule
   id: CorticalBorerInfestation
   components:
   - type: StationEvent

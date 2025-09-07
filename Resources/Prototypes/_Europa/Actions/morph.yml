@@ -1,0 +1,97 @@
+- type: entity
+  id: ActionMorphDevour
+  name: "[color=red]Devour[/color]"
+  description: Attempt to break a structure with your jaws or swallow a creature.
+  components:
+  - type: Action
+    priority: 1
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Europa/Interface/Actions/morph.rsi
+      state: devour
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:MorphDevourActionEvent
+
+- type: entity
+  id: ActionMorphRemember
+  name: "[color=red]Remember[/color]"
+  description: Remember an entity to mimic in the future.
+  components:
+  - type: Action
+    useDelay: 1
+    priority: 2
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Europa/Interface/Actions/morph.rsi
+      state: remember
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:MorphMimicryRememberActionEvent
+
+- type: entity
+  id: ActionMorphMimicry
+  name: "[color=red]Mimicry[/color]"
+  description: Transform into a remembered entity.
+  components:
+  - type: Action
+    useDelay: 1
+    priority: 3
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Europa/Interface/Actions/morph.rsi
+      state: mimicry
+  - type: InstantAction
+    event: !type:MorphOpenRadialMenuEvent
+
+- type: entity
+  id: ActionMorphReplication
+  name: "[color=red]Reproduce[/color]"
+  description: Create an absolute copy of yourself.
+  components:
+  - type: Action
+    useDelay: 200
+    priority: 4
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Europa/Interface/Actions/morph.rsi
+      state: reproduce
+  - type: InstantAction
+    event: !type:MorphReproduceActionEvent
+
+- type: entity
+  id: ActionMorphAmbush
+  name: "[color=red]Ambush[/color]"
+  description: Get ready to attack from stealth.
+  components:
+  - type: Action
+    useDelay: 25
+    priority: 5
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Europa/Interface/Actions/morph.rsi
+      state: ambush
+  - type: InstantAction
+    event: !type:MorphAmbushActionEvent
+
+- type: entity
+  id: ActionMorphVentOpen
+  name: "[color=red]Acid[/color]"
+  description: Open a vent by corroding it with acid.
+  components:
+  - type: Action
+    useDelay: 1
+    priority: 6
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Europa/Interface/Actions/morph.rsi
+      state: acid
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    event: !type:MorphVentOpenActionEvent

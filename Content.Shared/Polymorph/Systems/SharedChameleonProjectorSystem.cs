@@ -25,6 +25,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Stunnable;
 
 namespace Content.Shared.Polymorph.Systems;
 
@@ -45,6 +46,7 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!; // Europa
 
     public override void Initialize()
     {
@@ -70,6 +72,7 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
 
     private void OnDisguiseInteractHand(Entity<ChameleonDisguiseComponent> ent, ref InteractHandEvent args)
     {
+        RaiseLocalEvent(ent, new UndisguisedEvent(args.User)); // Europa
         TryReveal(ent.Comp.User);
         args.Handled = true;
     }
@@ -90,7 +93,14 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
 
     private void OnDisguiseShutdown(Entity<ChameleonDisguiseComponent> ent, ref ComponentShutdown args)
     {
-        _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector);
+        // _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Europa-Remove
+        // Europa-Start
+        if (!TryComp<ChameleonProjectorComponent>(ent.Comp.Projector, out var proj) || proj.NoRotActionEntity == null || proj.AnchorActionEntity == null)
+            return;
+
+        _actions.RemoveProvidedAction(ent.Comp.User, ent.Comp.Projector, proj.NoRotActionEntity.Value);
+        _actions.RemoveProvidedAction(ent.Comp.User, ent.Comp.Projector, proj.AnchorActionEntity.Value);
+        // Europa-End
     }
 
     #endregion
