@@ -18,6 +18,7 @@ using Content.Shared.Damage;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Hands.Components;
 using System.Linq;
+using System.Numerics;
 using Content.Shared.Examine;
 using Robust.Shared.Prototypes;
 using Content.Shared.Damage.Prototypes;
@@ -35,6 +36,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Standing;
 using Content.Server.Body.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Map;
 
 namespace Content.Server._Europa.Morph;
 
@@ -101,9 +103,8 @@ public sealed class MorphSystem : SharedMorphSystem
             var transform = Transform(uid);
             _transform.SetCoordinates(entity, transform.Coordinates);
         }
-
-        container.EmptyContainer(component.Container);
     }
+
     private void OnInit(EntityUid uid, MorphComponent component, MapInitEvent args)
     {
         _actions.AddAction(uid, ref component.DevourActionEntity, component.DevourAction);
@@ -113,6 +114,7 @@ public sealed class MorphSystem : SharedMorphSystem
         _actions.AddAction(uid, ref component.AmbushActionEntity, component.AmbushAction);
         _actions.AddAction(uid, ref component.VentOpenActionEntity, component.VentOpenAction);
     }
+
     private void OnAttacked(Entity<MorphComponent> ent, ref AttackedEvent args)
     {
         if (!TryComp<HungerComponent>(ent, out var hunger))
@@ -130,6 +132,7 @@ public sealed class MorphSystem : SharedMorphSystem
             _hunger.ModifyHunger(ent, -ent.Comp.EatWeaponHungerReq, hunger);
         }
     }
+
     private void OnAttack(Entity<MorphComponent> ent, ref MeleeHitEvent args)
     {
         _chameleon.TryReveal(ent.Owner);
@@ -186,6 +189,7 @@ public sealed class MorphSystem : SharedMorphSystem
         var hungerCount = _hunger.GetHunger(hunger);
         args.PushMarkup($"[color=yellow]{Loc.GetString("comp-morph-examined-hunger", ("hunger", hungerCount))}[/color]");
     }
+
     private void OnMimicryActivate(EntityUid uid, MorphComponent component, EventMimicryActivate args)
     {
         if (!TryComp<ChameleonProjectorComponent>(uid, out var chamel))
@@ -262,7 +266,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnMimicryRadialMenu(EntityUid uid, MorphComponent component, MorphOpenRadialMenuEvent args)
     {
-        component.Container = container.EnsureContainer<Container>(uid, component.MimicryContainerId);
+        component.MimicryContainer = container.EnsureContainer<Container>(uid, component.MimicryContainerId);
 
         if (!TryComp<UserInterfaceComponent>(uid, out var uic))
             return;
@@ -332,8 +336,6 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnDevourAction(EntityUid uid, MorphComponent component, MorphDevourActionEvent args)
     {
-        component.Container = container.EnsureContainer<Container>(uid, component.ContainerId);
-
         if (_whitelistSystem.IsWhitelistFailOrNull(component.DevourWhitelist, args.Target))
             return;
 
@@ -406,13 +408,14 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<HungerComponent>(uid, out var hunger))
             return;
 
+        // Item devour
         if (!TryComp<MobThresholdsComponent>(args.Target, out var state) || !_threshold.TryGetDeadThreshold(args.Target.Value, out var health))
         {
             health = -component.EatWeaponHungerReq;
             _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
             _audioSystem.PlayPvs(component.SoundDevour, uid);
-            container.Insert(args.Target.Value, component.Container);
             component.ContainedCreatures.Add(args.Target.Value);
+            _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
             return;
         }
 
@@ -432,6 +435,7 @@ public sealed class MorphSystem : SharedMorphSystem
         _damageable.TryChangeDamage(uid, damage_burn);
         _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
         _audioSystem.PlayPvs(component.SoundDevour, uid);
-        container.Insert(args.Target.Value, component.Container);
+        component.ContainedCreatures.Add(args.Target.Value);
+        _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
     }
 }
