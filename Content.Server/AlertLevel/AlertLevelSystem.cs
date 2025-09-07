@@ -190,12 +190,21 @@ public sealed class AlertLevelSystem : EntitySystem
 
         var stationName = dataComponent.EntityName;
 
-        var name = level.ToLower();
+        var name = level.ToUpper(); // Europa-Edit
 
         if (Loc.TryGetString($"alert-level-{level}", out var locName))
         {
-            name = locName.ToLower();
+            name = locName.ToUpper(); // Europa-Edit
         }
+
+        // Europa-Start
+        var instruction = detail.Instruction;
+
+        if (Loc.TryGetString($"alert-level-{level}-instructions", out var locInstruction))
+        {
+            instruction = locInstruction;
+        }
+        // Europa-End
 
         // Announcement text. Is passed into announcementFull.
         var announcement = detail.Announcement;
@@ -206,7 +215,14 @@ public sealed class AlertLevelSystem : EntitySystem
         }
 
         // The full announcement to be spat out into chat.
-        var announcementFull = Loc.GetString("alert-level-announcement", ("name", name), ("announcement", announcement));
+        // Europa-Edit-Start
+        var announcementFull = Loc.GetString(
+            "alert-level-announcement-full",
+            ("name", name),
+            ("announcement", announcement),
+            ("instruction", instruction)
+        );
+        // Europa-Edit-End
 
         var playDefault = false;
         if (playSound)

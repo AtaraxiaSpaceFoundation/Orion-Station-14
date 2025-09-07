@@ -48,6 +48,11 @@ public sealed partial class AlertLevelDetail
     [DataField("announcement")] public string Announcement { get; private set; } = string.Empty;
 
     /// <summary>
+    /// Europa | Literally filler, because instructions are automatically taken
+    /// </summary>
+    [DataField] public string Instruction { get; private set; } = string.Empty;
+
+    /// <summary>
     /// Whether this alert level is selectable from a communications console.
     /// </summary>
     [DataField("selectable")] public bool Selectable { get; private set; } = true;
