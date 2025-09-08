@@ -28,6 +28,7 @@ using Content.Shared.CCVar;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Server.AlertLevel;
 
@@ -214,15 +215,10 @@ public sealed class AlertLevelSystem : EntitySystem
             announcement = locAnnouncement;
         }
 
+        /* Europa-Remove | Better using markups
         // The full announcement to be spat out into chat.
-        // Europa-Edit-Start
-        var announcementFull = Loc.GetString(
-            "alert-level-announcement-full",
-            ("name", name),
-            ("announcement", announcement),
-            ("instruction", instruction)
-        );
-        // Europa-Edit-End
+        var announcementFull = Loc.GetString("alert-level-announcement", ("name", name), ("announcement", announcement));
+        */
 
         var playDefault = false;
         if (playSound)
@@ -238,11 +234,45 @@ public sealed class AlertLevelSystem : EntitySystem
             }
         }
 
+        // Europa-Start
+        var message = new FormattedMessage();
+
+        message.PushTag(new MarkupNode("examineborder", null, null));
+        message.PushNewline();
+        message.AddText(Loc.GetString("examine-border-line"));
+        message.PushNewline();
+
+        // Announcement title
+        message.AddText(Loc.GetString("alert-level-announcement-title", ("name", name.ToUpper())));
+        message.PushNewline();
+        message.PushNewline();
+
+        // Announcement text
+        message.AddMarkup(Loc.GetString(announcement));
+        message.PushNewline();
+        message.PushNewline();
+
+        // Instructions
+        message.AddMarkup(instruction);
+        message.PushNewline();
+
+        message.AddText(Loc.GetString("examine-border-line"));
+        message.Pop();
+        //Europa-End
+
+        // Europa-Edit-Start
         if (announce)
         {
-            _chatSystem.DispatchStationAnnouncement(station, announcementFull, playDefaultSound: playDefault,
-                colorOverride: detail.Color, sender: stationName);
+            _chatSystem.DispatchStationAnnouncement(
+                station,
+                string.Empty,
+                message.ToMarkup(),
+                playDefaultSound: playDefault,
+                colorOverride: detail.Color
+//                sender: stationName
+            );
         }
+        // Europa-Edit-End
 
         RaiseLocalEvent(new AlertLevelChangedEvent(station, level));
     }
