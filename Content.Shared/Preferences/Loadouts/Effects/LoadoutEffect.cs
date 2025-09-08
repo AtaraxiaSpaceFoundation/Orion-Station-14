@@ -21,6 +21,7 @@ public abstract partial class LoadoutEffect
     public abstract bool Validate(
         HumanoidCharacterProfile profile,
         RoleLoadout loadout,
+        LoadoutPrototype proto, // Europa
         ICommonSession? session,
         IDependencyCollection collection,
         [NotNullWhen(false)] out FormattedMessage? reason);

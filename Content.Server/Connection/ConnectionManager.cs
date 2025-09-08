@@ -124,7 +124,9 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using Content.Goobstation.Common.CCVar; // Goobstation - Queue
+using Content.Goobstation.Common.CCVar;
+using Content.Europa.Interfaces.Shared;
+using Content.Europa.Interfaces.Server; // Europa
 
 /*
  * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -136,7 +138,7 @@ namespace Content.Server.Connection
     {
         void Initialize();
         void PostInit();
-        Task<bool> HasPrivilegedJoin(NetUserId userId); // Goobstation - Queue
+        Task<bool> HavePrivilegedJoin(NetUserId userId); // Europa-Replace
         /// <summary>
         /// Temporarily allow a user to bypass regular connection requirements.
         /// </summary>
@@ -169,7 +171,9 @@ namespace Content.Server.Connection
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly IHttpClientHolder _http = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
+        private ISharedSponsorsManager? _sponsorsMgr; // Europa
 
+        private GameTicker? _ticker; // Europa
         private ISawmill _sawmill = default!;
         private readonly Dictionary<NetUserId, TimeSpan> _temporaryBypasses = [];
         private IPIntel.IPIntel _ipintel = default!;
@@ -184,6 +188,8 @@ namespace Content.Server.Connection
             _sawmill = _logManager.GetSawmill("connections");
 
             _ipintel = new IPIntel.IPIntel(new IPIntelApi(_http, _cfg), _db, _cfg, _logManager, _chatManager, _gameTiming);
+
+            IoCManager.Instance!.TryResolveType(out _sponsorsMgr); // Europa
 
             _netMgr.Connecting += NetMgrOnConnecting;
             _netMgr.AssignUserIdCallback = AssignUserIdCallback;
@@ -348,7 +354,10 @@ namespace Content.Server.Connection
 
             var adminData = await _db.GetAdminDataForAsync(e.UserId);
 
-            if (_cfg.GetCVar(CCVars.PanicBunkerEnabled) && adminData == null)
+            // Europa-Start | Allow privileged players bypass bunker
+            var isPrivileged = await HavePrivilegedJoin(e.UserId);
+            if (_cfg.GetCVar(CCVars.PanicBunkerEnabled) && adminData == null && !isPrivileged)
+            // Europa-End
             {
                 var showReason = _cfg.GetCVar(CCVars.PanicBunkerShowReason);
                 var customReason = _cfg.GetCVar(CCVars.PanicBunkerCustomReason);
@@ -395,8 +404,15 @@ namespace Content.Server.Connection
                 }
             }
 
-            var isPrivileged = await HasPrivilegedJoin(userId); // Goobstation - Queue
-            var isQueueEnabled = _cfg.GetCVar(GoobCVars.QueueEnabled); // Goobstation - Queue
+            // Europa-Start
+            var wasInGame = _ticker != null &&
+                            _ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
+                            status == PlayerGameStatus.JoinedGame;
+            var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && adminData != null;
+            // Europa-End
+
+            // var isPrivileged = await HasPrivilegedJoin(userId); // Goobstation - Queue. Europa-Replaced
+            var isQueueEnabled = IoCManager.Instance!.TryResolveType<IServerJoinQueueManager>(out var mgr) && mgr.IsEnabled;
             var softPlayerCount = _plyMgr.PlayerCount;
 
             if (!_cfg.GetCVar(CCVars.AdminsCountForMaxPlayers))
@@ -404,7 +420,10 @@ namespace Content.Server.Connection
                 softPlayerCount -= _adminManager.ActiveAdmins.Count();
             }
 
-            if (softPlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !isPrivileged && !isQueueEnabled) // Goobstation - Queue
+            // Europa-Start
+
+            if ((softPlayerCount >= _cfg.GetCVar(CCVars.SoftMaxPlayers) && !adminBypass) && !wasInGame && !isQueueEnabled)
+            // Europa-End
             {
                 return (ConnectionDenyReason.Full, Loc.GetString("soft-player-cap-full"), null);
             }
@@ -474,6 +493,7 @@ namespace Content.Server.Connection
             return assigned;
         }
 
+        /*
         public async Task<bool> HasPrivilegedJoin(NetUserId userId) // Goobstation - Queue
         {
             var isAdmin = await _db.GetAdminDataForAsync(userId) != null;
@@ -482,5 +502,20 @@ namespace Content.Server.Connection
                             status == PlayerGameStatus.JoinedGame;
             return isAdmin || wasInGame;
         }
+        */
+
+        // Europa-Start | Make these conditions in one place, for checks in the connection and in the queue
+        public async Task<bool> HavePrivilegedJoin(NetUserId userId)
+        {
+            var adminBypass = _cfg.GetCVar(CCVars.AdminBypassMaxPlayers) && await _db.GetAdminDataForAsync(userId) != null;
+            var havePriorityJoin = _sponsorsMgr != null && _sponsorsMgr.HaveServerPriorityJoin(userId); // Europa
+            var wasInGame = EntitySystem.TryGet<GameTicker>(out var ticker) &&
+                            ticker.PlayerGameStatuses.TryGetValue(userId, out var status) &&
+                            status == PlayerGameStatus.JoinedGame;
+            return adminBypass ||
+                   havePriorityJoin || // Europa
+                   wasInGame;
+        }
+        // Europa-End
     }
 }

@@ -21,7 +21,7 @@ public sealed partial class SpeciesLoadoutEffect : LoadoutEffect
     [DataField]
     public bool Inverted = false; // Goobstation - EE Plasmeme Change.
 
-    public override bool Validate(HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession? session, IDependencyCollection collection,
+    public override bool Validate(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutPrototype proto, ICommonSession? session, IDependencyCollection collection, // Europa
         [NotNullWhen(false)] out FormattedMessage? reason)
     {
         if (Species.Contains(profile.Species) ^ Inverted) // Goobstation - EE Plasmeme Change.
