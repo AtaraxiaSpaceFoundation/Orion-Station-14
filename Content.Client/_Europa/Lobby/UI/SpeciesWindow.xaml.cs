@@ -14,6 +14,7 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
+using Content.Europa.Interfaces.Shared;
 
 namespace Content.Client._Europa.Lobby.UI;
 
@@ -26,6 +27,7 @@ public sealed partial class SpeciesWindow : FancyWindow
 {
     [Dependency] private readonly DocumentParsingManager _parsingMan = default!;
     [Dependency] private readonly IEntityManager _ent = default!;
+    private ISharedSponsorsManager? _sponsorsManager;
 
     public event Action<ProtoId<SpeciesPrototype>>? ChooseAction;
     public ProtoId<SpeciesPrototype> CurrentSpecies;
@@ -45,6 +47,7 @@ public sealed partial class SpeciesWindow : FancyWindow
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
+        IoCManager.Instance!.TryResolveType(out _sponsorsManager);
 
         Select.OnPressed += _ => ChooseAction?.Invoke(CurrentSpecies);
 
@@ -102,6 +105,25 @@ public sealed partial class SpeciesWindow : FancyWindow
             };
             button.OnToggled += args => SelectSpecies(item.ID);
             SpeciesContainer.AddChild(button);
+        }
+
+        var sponsorPrototypes = _sponsorsManager?.GetClientPrototypes() ?? Enumerable.Empty<string>();
+        if (sponsorPrototypes.Any())
+        {
+            AddLabel("species-category-label-sponsor");
+            foreach (var item in protoList.Where(x => x.Category == SpeciesCategory.Sponsor))
+            {
+                var button = new SpeciesButton(item)
+                {
+                    HorizontalExpand = true,
+                    ToggleMode = true,
+                    Pressed = Profile.Species == item.ID,
+                    Text = Loc.GetString(item.Name),
+                    Margin = new Thickness(5f, 5f),
+                };
+                button.OnToggled += args => SelectSpecies(item.ID);
+                SpeciesContainer.AddChild(button);
+            }
         }
 
         CurrentSpecies = Profile.Species;
