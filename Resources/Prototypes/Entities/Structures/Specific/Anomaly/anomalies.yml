@@ -993,7 +993,7 @@
     # Europa-Edit-Start
     - state: shadow-anomaly
       shader: unshaded
-    - state: vfx
+    - state: anom
       shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
     - state: pulse
