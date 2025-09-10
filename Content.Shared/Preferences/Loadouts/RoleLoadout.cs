@@ -77,8 +77,6 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Random;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
-using Content.Europa.Interfaces.Shared;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -136,7 +134,6 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
         var groupRemove = new ValueList<string>();
         var protoManager = collection.Resolve<IPrototypeManager>();
         var configManager = collection.Resolve<IConfigurationManager>();
-        var netManager = collection.Resolve<INetManager>(); // Europa
 
         if (!protoManager.TryIndex(Role, out var roleProto))
         {
@@ -197,23 +194,6 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 groupRemove.Add(group);
                 continue;
             }
-
-            // Europa-Start
-            if (collection.TryResolveType<ISharedLoadoutsManager>(out var loadoutsManager) && group.Id == "Inventory")
-            {
-                var prototypes = new List<string>();
-                if (netManager.IsClient)
-                {
-                    prototypes = loadoutsManager.GetClientPrototypes();
-                }
-                else if (session != null && loadoutsManager.TryGetServerPrototypes(session.UserId, out var protos))
-                {
-                    prototypes = protos;
-                }
-
-                groupProto.Loadouts.AddRange(prototypes.Select(id => (ProtoId<LoadoutPrototype>) id));
-            }
-            // Europa-End
 
             var loadouts = groupLoadouts[..Math.Min(groupLoadouts.Count, groupProto.MaxLimit)];
 
@@ -374,7 +354,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
         foreach (var effect in loadoutProto.Effects)
         {
-            valid = valid && effect.Validate(profile, this, loadoutProto, session, collection, out reason); // Europa
+            valid = valid && effect.Validate(profile, this, session, collection, out reason);
         }
 
         return valid;

@@ -23,8 +23,7 @@ using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Robust.Server.ServerStatus;
 using Robust.Shared.Configuration;
-using Content.Goobstation.Common.JoinQueue;
-using Content.Europa.Interfaces.Server; // Europa
+using Content.Goobstation.Common.JoinQueue; // Goobstation - Queue
 
 namespace Content.Server.GameTicking
 {
@@ -63,21 +62,11 @@ namespace Content.Server.GameTicking
             // This method is raised from another thread, so this better be thread safe!
             lock (_statusShellLock)
             {
-                // Europa-Start
-                var players = IoCManager.Instance?.TryResolveType<IServerJoinQueueManager>(out var joinQueueManager) ?? false
-                    ? joinQueueManager.ActualPlayersCount
-                    : _playerManager.PlayerCount;
-
-                players = _cfg.GetCVar(CCVars.AdminsCountInReportedPlayerCount)
-                    ? players
-                    : players - _adminManager.ActiveAdmins.Count();
-                // Europa-End
                 jObject["name"] = _baseServer.ServerName;
                 jObject["map"] = _gameMapManager.GetSelectedMap()?.MapName;
                 jObject["round_id"] = _gameTicker.RoundId;
-                jObject["players"] = players; // Corvax-Queue
-                // jObject["players"] = _joinQueue.ActualPlayersCount; // Goobstation - Queue. Europa-Replaced
-                // jObject["queue"] = _joinQueue.PlayerInQueueCount; // Goobstation - Queue. Europa-Replaced
+                jObject["players"] = _joinQueue.ActualPlayersCount; // Goobstation - Queue
+                jObject["queue"] = _joinQueue.PlayerInQueueCount; // Goobstation - Queue
                 jObject["soft_max_players"] = _cfg.GetCVar(CCVars.SoftMaxPlayers);
                 jObject["panic_bunker"] = _cfg.GetCVar(CCVars.PanicBunkerEnabled);
                 jObject["run_level"] = (int) _runLevel;

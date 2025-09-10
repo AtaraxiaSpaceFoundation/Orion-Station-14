@@ -28,7 +28,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Europa.Interfaces.Server;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
@@ -83,11 +82,6 @@ namespace Content.Server.GameTicking
                         data.Mind = mindId;
                         session.Data.ContentDataUncast = data;
                     }
-
-                    // Europa-Start
-                    if (!IoCManager.Instance!.TryResolveType<IServerJoinQueueManager>(out _))
-                        Timer.Spawn(0, () => _playerManager.JoinGame(args.Session));
-                    // Europa-End
 
                     var record = await _db.GetPlayerRecordByUserId(args.Session.UserId);
                     var firstConnection = record != null &&

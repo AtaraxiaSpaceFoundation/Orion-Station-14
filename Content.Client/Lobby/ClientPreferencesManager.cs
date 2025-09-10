@@ -19,7 +19,6 @@
 
 using System.Linq;
 using Content.Shared.Construction.Prototypes;
-using Content.Europa.Interfaces.Shared;
 using Content.Shared.Preferences;
 using Robust.Client;
 using Robust.Client.Player;
@@ -39,7 +38,6 @@ namespace Content.Client.Lobby
         [Dependency] private readonly IClientNetManager _netManager = default!;
         [Dependency] private readonly IBaseClient _baseClient = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
-        private ISharedSponsorsManager? _sponsorsManager; // Europa
 
         public event Action? OnServerDataLoaded;
 
@@ -48,7 +46,6 @@ namespace Content.Client.Lobby
 
         public void Initialize()
         {
-            IoCManager.Instance!.TryResolveType(out _sponsorsManager); // Europa
             _netManager.RegisterNetMessage<MsgPreferencesAndSettings>(HandlePreferencesAndSettings);
             _netManager.RegisterNetMessage<MsgUpdateCharacter>();
             _netManager.RegisterNetMessage<MsgSelectCharacter>();
@@ -84,10 +81,7 @@ namespace Content.Client.Lobby
         public void UpdateCharacter(ICharacterProfile profile, int slot)
         {
             var collection = IoCManager.Instance!;
-            // Europa-Start
-            var sponsorPrototypes = _sponsorsManager?.GetClientPrototypes().ToArray() ?? [];
-            profile.EnsureValid(_playerManager.LocalSession!, collection, sponsorPrototypes);
-            // Europa-End
+            profile.EnsureValid(_playerManager.LocalSession!, collection);
             var characters = new Dictionary<int, ICharacterProfile>(Preferences.Characters) {[slot] = profile};
             Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, Preferences.ConstructionFavorites);
             var msg = new MsgUpdateCharacter
