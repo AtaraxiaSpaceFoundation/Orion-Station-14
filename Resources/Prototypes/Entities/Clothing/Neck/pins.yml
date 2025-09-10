@@ -97,6 +97,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckLGBTPin
+  categories: [ HideSpawnMenu ] # Europa
   name: LGBT pin
   description: Be gay do crime.
   components:
@@ -108,6 +109,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckAllyPin
+  categories: [ HideSpawnMenu ] # Europa
   name: straight ally pin
   description: Be ally do crime.
   components:
@@ -119,6 +121,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckAromanticPin
+  categories: [ HideSpawnMenu ] # Europa
   name: aromantic pin
   description: Be aro do crime.
   components:
@@ -130,6 +133,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckAroacePin
+  categories: [ HideSpawnMenu ] # Europa
   name: aroace pin
   description: Be aroace do crime.
   components:
@@ -141,6 +145,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckAsexualPin
+  categories: [ HideSpawnMenu ] # Europa
   name: asexual pin
   description: Be ace do crime.
   components:
@@ -152,6 +157,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckBisexualPin
+  categories: [ HideSpawnMenu ] # Europa
   name: bisexual pin
   description: Be bi do crime.
   components:
@@ -163,6 +169,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckGayPin
+  categories: [ HideSpawnMenu ] # Europa
   name: gay pin
   description: Be gay~ do crime.
   components:
@@ -174,6 +181,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckIntersexPin
+  categories: [ HideSpawnMenu ] # Europa
   name: intersex pin
   description: Be intersex do crime.
   components:
@@ -185,6 +193,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckLesbianPin
+  categories: [ HideSpawnMenu ] # Europa
   name: lesbian pin
   description: Be lesbian do crime.
   components:
@@ -196,6 +205,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckNonBinaryPin
+  categories: [ HideSpawnMenu ] # Europa
   name: non-binary pin
   description: "01100010 01100101 00100000 01100101 01101110 01100010 01111001 00100000 01100100 01101111 00100000 01100011 01110010 01101001 01101101 01100101"
   components:
@@ -207,6 +217,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckPansexualPin
+  categories: [ HideSpawnMenu ] # Europa
   name: pansexual pin
   description: Be pan do crime.
   components:
@@ -218,6 +229,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckPluralPin
+  categories: [ HideSpawnMenu ] # Europa
   name: plural pin
   description: Be plural, do crimes.
   components:
@@ -229,6 +241,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckOmnisexualPin
+  categories: [ HideSpawnMenu ] # Europa
   name: omnisexual pin
   description: Be omni do crime.
   components:
@@ -240,6 +253,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckGenderqueerPin
+  categories: [ HideSpawnMenu ] # Europa
   name: genderqueer pin
   description: be crime, do gender
   components:
@@ -251,6 +265,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckGenderfluidPin
+  categories: [ HideSpawnMenu ] # Europa
   name: genderfluid pin
   description: be gender, be fluid
   components:
@@ -262,6 +277,7 @@
 - type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckTransPin
+  categories: [ HideSpawnMenu ] # Europa
   name: transgender pin
   description: Be trans do crime.
   components:

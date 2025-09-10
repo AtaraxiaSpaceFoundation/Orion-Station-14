@@ -2552,11 +2552,12 @@
   - type: AccessReader
     access: [["Kitchen"], ["Theatre"]]
 
-# Pride Vending Machine
+# Pride Vending Machine | No, fuck you
 
 - type: entity
   parent: VendingMachine
   id: VendingMachinePride
+  categories: [ HideSpawnMenu ] # Europa
   name: Pride-O-Mat
   description: A vending machine containing pride.
   components:
