@@ -206,7 +206,7 @@ ClothingNeckCloakTrans: ClothingNeckCloakMoth
 ClothingNeckCloakGay: ClothingNeckCloakMoth
 ClothingNeckCloakEnby: ClothingNeckCloakMoth
 ClothingNeckCloakPan: ClothingNeckCloakMoth
-VendingMachinePride: ClothingNeckCloakMoth
+VendingMachinePride: RandomVending
 # Europa-End
 
 # Goobstation - Submarine from DeltaV
