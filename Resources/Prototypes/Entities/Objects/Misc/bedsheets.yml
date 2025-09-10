@@ -106,6 +106,7 @@
   components:
   - type: Sprite
     sprite: Objects/Misc/bedsheets.rsi
+    offset: 0, 0.09 # Europa
     noRot: true
   - type: Item
     size: Small
