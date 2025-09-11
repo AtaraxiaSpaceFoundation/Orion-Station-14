@@ -61,8 +61,8 @@ namespace Content.Client.Atmos.Overlays
         private readonly Texture[][] _frames;
 
         // Fire overlays
-        private const int FireStates = 3;
-        private const string FireRsiPath = "/Textures/Effects/fire.rsi";
+        private const int FireStates = 7; // Europa-Edit | 3 > 7
+        private const string FireRsiPath = "/Textures/_Europa/Effects/tile_fire.rsi"; // Europa-Edit
 
         private readonly float[] _fireTimer = new float[FireStates];
         private readonly float[][] _fireFrameDelays = new float[FireStates][];

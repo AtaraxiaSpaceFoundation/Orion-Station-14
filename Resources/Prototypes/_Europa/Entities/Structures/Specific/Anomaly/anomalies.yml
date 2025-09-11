@@ -4,7 +4,7 @@
   description: It looks highly unstable, it could close at any moment.
   components:
   - type: Sprite
-    sprite: _Europa/Structures/Specific/anomaly.rsi
+    sprite: _Europa/Structures/Specific/Anomalies/wormhole.rsi
     state: wormhole
     drawdepth: Effects
   - type: TimedDespawn

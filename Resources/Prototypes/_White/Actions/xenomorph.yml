@@ -117,7 +117,7 @@
       - WallLayer
   - type: PlasmaCostAction
 
-# TODO: delete it
+# Goobstation - removed | Europa-Reaply
 - type: entity
   id: ActionSpawnResinMembrane
   parent: BaseAction
@@ -127,7 +127,7 @@
   - type: Action
     useDelay: 1
     itemIconStyle: BigAction
-    icon: { sprite : _White/Structures/Windows/resin_membrane.rsi, state: full }
+    icon: { sprite: _White/Structures/Windows/resin_membrane.rsi, state: full }
   - type: TargetAction
     range: 2
   - type: WorldTargetAction
@@ -140,7 +140,31 @@
       - GlassLayer
   - type: PlasmaCostAction
 
-# TODO: delete it
+- type: entity # Goobstation - new action
+  id: ActionSpawnResinDoor
+  parent: BaseAction
+  name: Build a resin door (75)
+  description: Secrete tough malleable resin.
+  components:
+  - type: Action
+    useDelay: 1
+    itemIconStyle: BigAction
+    icon: { sprite :  _RMC14/Structures/Xenos/xeno_resin_door.rsi, state: resin }
+  - type: TargetAction
+    range: 2
+  - type: WorldTargetAction
+    event: !type:PlaceTileEntityEvent
+      entity: ResinDoor
+      length: 0.5
+      blockedCollisionMask:
+      - TableMask
+      blockedCollisionLayer:
+      - TableLayer
+      - BulletImpassable
+  - type: PlasmaCostAction
+    plasmaCost: 75
+
+# TODO: delete it | Europa: DONT DELETE THIS
 - type: entity
   id: ActionSpawnResinNest
   parent: BaseAction
