@@ -82,6 +82,7 @@
 
 - type: entity
   id: DresserCaptainFilled
+  categories: [ HideSpawnMenu ] # Europa
   parent: Dresser
   suffix: Filled, Captain
   components:
@@ -132,6 +133,7 @@
   - type: StorageFill
     contents:
       - id: ClothingHeadHatHopcap
+      - id: ClothingHeadHatBeretHop
       - id: ClothingOuterWinterHoP
       - id: ClothingEyesGlasses
       - id: ClothingNeckCloakHop

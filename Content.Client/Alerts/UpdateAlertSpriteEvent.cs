@@ -16,14 +16,14 @@ public record struct UpdateAlertSpriteEvent
 {
     public Entity<SpriteComponent> SpriteViewEnt;
 
-    public EntityUid ViewerEnt; // Europa
+    public EntityUid ViewerEnt;
 
     public AlertPrototype Alert;
 
-    public UpdateAlertSpriteEvent(Entity<SpriteComponent> spriteViewEnt, EntityUid viewerEnt, AlertPrototype alert) // Europa-Edit | Added EntityUid viewerEnt
+    public UpdateAlertSpriteEvent(Entity<SpriteComponent> spriteViewEnt, EntityUid viewerEnt, AlertPrototype alert)
     {
         SpriteViewEnt = spriteViewEnt;
-        ViewerEnt = viewerEnt; // Europa
+        ViewerEnt = viewerEnt;
         Alert = alert;
     }
 }

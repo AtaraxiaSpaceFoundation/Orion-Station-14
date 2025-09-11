@@ -95,7 +95,7 @@
   description: An impossible object. Should you be standing this close to it?
   components:
   - type: Anomaly
-    offset: 0, 0.15
+#    offset: 0, 0.15 # Europa-Remove
     pulseSound:
       collection: RadiationPulse
       params:
@@ -163,13 +163,19 @@
     corePrototype: AnomalyCorePyroclastic
     coreInertPrototype: AnomalyCorePyroclasticInert
   - type: Sprite
-    sprite: Structures/Specific/Anomalies/pyro_anom.rsi
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_fire.rsi # Europa-Edit
     layers:
-    - state: anom
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
     - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 6.0
     energy: 7.5
@@ -215,16 +221,23 @@
     corePrototype: AnomalyCoreGravity
     coreInertPrototype: AnomalyCoreGravityInert
   - type: Sprite
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_gravity.rsi # Europa-Edit
     layers:
-    - state: anom2
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
-    - state: anom2-pulse
+    - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 5.0
-    energy: 20
-    color: "#1e070e"
+    energy: 5 # Europa-Edit | 20 > 5
+    color: "#3C5E8BFF" # Europa-Edit
     castShadows: false
   - type: GravityAnomaly
   - type: GravityWell
@@ -235,8 +248,8 @@
   - type: CanMoveInAir
   - type: RandomWalk
   - type: SingularityDistortion
-    intensity: 1000
-    falloffPower: 2.7
+    intensity: 50 # Europa-Edit | 1000 > 50
+    falloffPower: 1.8 # Europa-Edit | 2.7 > 1.8
 
 - type: entity
   id: AnomalyElectricity
@@ -247,12 +260,19 @@
     corePrototype: AnomalyCoreElectricity
     coreInertPrototype: AnomalyCoreElectricityInert
   - type: Sprite
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_electric.rsi # Europa-Edit
     layers:
-    - state: anom3
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
-    - state: anom3-pulse
+    - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 2.0
     energy: 5.0
@@ -272,12 +292,19 @@
     minPulseLength: 180
     maxPulseLength: 300
   - type: Sprite
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_flesh.rsi # Europa-Edit
     layers:
-    - state: anom5
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
-    - state: anom5-pulse
+    - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 2.0
     energy: 7.5
@@ -360,12 +387,19 @@
   suffix: Bluespace
   components:
   - type: Sprite
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_bluespace.rsi # Europa-Edit
     layers:
-    - state: anom4
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
-    - state: anom4-pulse
+    - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 2.0
     energy: 7.5
@@ -407,13 +441,19 @@
   suffix: Ice
   components:
   - type: Sprite
-    sprite: Structures/Specific/Anomalies/ice_anom.rsi
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_ice.rsi # Europa-Edit
     layers:
-    - state: anom
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
     - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 2.0
     energy: 2.5
@@ -948,13 +988,19 @@
   suffix: Liquid
   components:
   - type: Sprite
-    sprite: Structures/Specific/Anomalies/liquid_anom.rsi
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_liquid.rsi # Europa-Edit
     layers:
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
     - state: anom
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
     - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: RandomSprite
     selected: # Initialized layer values. Edited through the ReagentProducerAnomalySystem
       enum.AnomalyVisualLayers.Base:
@@ -1071,13 +1117,19 @@
   suffix: Shadow
   components:
   - type: Sprite
-    sprite: Structures/Specific/Anomalies/shadow_anom.rsi
+    sprite: _Europa/Structures/Specific/Anomalies/anomaly_shadow.rsi # Europa-Edit
     layers:
-    - state: anom
+    # Europa-Edit-Start
+    - state: shadow-anomaly
+      shader: unshaded
+    - state: vfx
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Base"]
     - state: pulse
+      shader: unshaded
       map: ["enum.AnomalyVisualLayers.Animated"]
       visible: false
+    # Europa-Edit-End
   - type: PointLight
     radius: 1.5
     energy: 12.5

@@ -58,7 +58,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (!tile.Hotspot.SkippedFirstProcess)
             {
-                tile.Hotspot.SkippedFirstProcess = true;
+//                tile.Hotspot.SkippedFirstProcess = true; // Europa-Remove
                 return;
             }
 
@@ -117,10 +117,12 @@ namespace Content.Server.Atmos.EntitySystems
                     }
                 }
             }
+/* // Europa-Remove
             else
             {
                 tile.Hotspot.State = (byte) (tile.Hotspot.Volume > Atmospherics.CellVolume * 0.4f ? 2 : 1);
             }
+*/
 
             if (tile.Hotspot.Temperature > tile.MaxFireTemperatureSustained)
                 tile.MaxFireTemperatureSustained = tile.Hotspot.Temperature;
@@ -193,6 +195,33 @@ namespace Content.Server.Atmos.EntitySystems
         private void PerformHotspotExposure(TileAtmosphere tile)
         {
             if (tile.Air == null || !tile.Hotspot.Valid) return;
+
+            // Europa-Start
+            switch (tile.Hotspot.Temperature)
+            {
+                case <= 390.15f:
+                    tile.Hotspot.State = 1;
+                    break;
+                case <= 475.15f:
+                    tile.Hotspot.State = 2;
+                    break;
+                case <= 570.15f:
+                    tile.Hotspot.State = 3;
+                    break;
+                case <= 1000.15f:
+                    tile.Hotspot.State = 4;
+                    break;
+                case <= 5000.15f:
+                    tile.Hotspot.State = 5;
+                    break;
+                case <= 10000.15f:
+                    tile.Hotspot.State = 6;
+                    break;
+                case > 10000.15f:
+                    tile.Hotspot.State = 7;
+                    break;
+            }
+            // Europa-End
 
             tile.Hotspot.Bypassing = tile.Hotspot.SkippedFirstProcess && tile.Hotspot.Volume > tile.Air.Volume*0.95f;
 

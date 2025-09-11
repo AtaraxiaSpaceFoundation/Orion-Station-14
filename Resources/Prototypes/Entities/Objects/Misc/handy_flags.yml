@@ -47,6 +47,7 @@
 - type: entity
   parent: BaseItem
   id: LGBTQHandyFlag
+  categories: [ HideSpawnMenu ] # Europa
   name: LGBTQ handheld flag
   description: "The be gay do crime handy flag."
   components:

@@ -85,17 +85,20 @@ using System.Numerics;
 using Content.Shared.Explosion.Components;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
+using Robust.Shared.Graphics.RSI;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Client.Explosion;
 
 [UsedImplicitly]
 public sealed class ExplosionOverlay : Overlay
 {
-    [Dependency] private readonly IRobustRandom _robustRandom = default!;
+//    [Dependency] private readonly IRobustRandom _robustRandom = default!; // Europa-Remove
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     private readonly SharedTransformSystem _transformSystem;
@@ -105,12 +108,34 @@ public sealed class ExplosionOverlay : Overlay
 
     private ShaderInstance _shader;
 
-    public ExplosionOverlay(SharedAppearanceSystem appearanceSystem)
+    // Europa-Start
+    private const int FireStates = 3;
+    private const string FireRsiPath = "/Textures/_Europa/Effects/tile_fire_explode.rsi";
+    private readonly float[] _fireTimer = new float[FireStates];
+    private readonly float[][] _fireFrameDelays = new float[FireStates][];
+    private readonly int[] _fireFrameCounter = new int[FireStates];
+    private readonly Texture[][] _fireFrames = new Texture[FireStates][];
+    // Europa-End
+
+    public ExplosionOverlay(SharedAppearanceSystem appearanceSystem, IResourceCache resourceCache) // Europa-Edit
     {
         IoCManager.InjectDependencies(this);
         _shader = _proto.Index<ShaderPrototype>("unshaded").Instance();
         _transformSystem = _entMan.System<SharedTransformSystem>();
         _appearance = appearanceSystem;
+        // Europa-Start
+        var fire = resourceCache.GetResource<RSIResource>(FireRsiPath).RSI;
+
+        for (var i = 0; i < FireStates; i++)
+        {
+            if (!fire.TryGetState((i + 1).ToString(), out var state))
+                throw new ArgumentOutOfRangeException($"Fire RSI doesn't have state \"{i}\"!");
+
+            _fireFrames[i] = state.GetFrames(RsiDirection.South);
+            _fireFrameDelays[i] = state.GetDelays();
+            _fireFrameCounter[i] = 0;
+        }
+        // Europa-End
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -170,6 +195,28 @@ public sealed class ExplosionOverlay : Overlay
         DrawTiles(drawHandle, gridBounds, index, visuals.SpaceTiles, visuals, visuals.SpaceTileSize, textures);
     }
 
+    // Europa-Start
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        for (var i = 0; i < FireStates; i++)
+        {
+            var delays = _fireFrameDelays[i];
+            if (delays.Length == 0)
+                continue;
+
+            var frameCount = _fireFrameCounter[i];
+            _fireTimer[i] += args.DeltaSeconds;
+            var time = delays[frameCount];
+
+            if (_fireTimer[i] < time) continue;
+            _fireTimer[i] -= time;
+            _fireFrameCounter[i] = (frameCount + 1) % _fireFrames[i].Length;
+        }
+    }
+    // Europa-End
+
     private void DrawTiles(
         DrawingHandleWorld drawHandle,
         Box2 gridBounds,
@@ -184,8 +231,8 @@ public sealed class ExplosionOverlay : Overlay
             if (!tileSets.TryGetValue(j, out var tiles))
                 continue;
 
-            var frameIndex = (int) Math.Min(visuals.Intensity[j] / textures.IntensityPerState, textures.FireFrames.Count - 1);
-            var frames = textures.FireFrames[frameIndex];
+//            var frameIndex = (int) Math.Min(visuals.Intensity[j] / textures.IntensityPerState, textures.FireFrames.Count - 1); // Europa-Remove
+//            var frames = textures.FireFrames[frameIndex]; // Europa-Remove
 
             foreach (var tile in tiles)
             {
@@ -194,7 +241,10 @@ public sealed class ExplosionOverlay : Overlay
                 if (!gridBounds.Contains(centre))
                     continue;
 
-                var texture = _robustRandom.Pick(frames);
+                // Europa-Start
+                var fireState = (int) Math.Min(visuals.Intensity[j] / textures.IntensityPerState, textures.FireFrames.Count - 1);
+                var texture = _fireFrames[fireState][_fireFrameCounter[fireState]];
+                // Europa-End
                 drawHandle.DrawTextureRect(texture, Box2.CenteredAround(centre, new Vector2(tileSize, tileSize)), textures.FireColor);
             }
         }

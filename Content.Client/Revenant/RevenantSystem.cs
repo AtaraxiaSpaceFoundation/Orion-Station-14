@@ -24,7 +24,7 @@ public sealed class RevenantSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<RevenantComponent, AppearanceChangeEvent>(OnAppearanceChange);
-        SubscribeLocalEvent<RevenantComponent, GetGenericAlertCounterAmountEvent>(OnGetCounterAmount); // Europa-Edit
+        SubscribeLocalEvent<RevenantComponent, GetGenericAlertCounterAmountEvent>(OnGetCounterAmount);
     }
 
     private void OnAppearanceChange(EntityUid uid, RevenantComponent component, ref AppearanceChangeEvent args)
@@ -49,7 +49,6 @@ public sealed class RevenantSystem : EntitySystem
         }
     }
 
-    // Europa-Edit-Start
     private void OnGetCounterAmount(Entity<RevenantComponent> ent, ref GetGenericAlertCounterAmountEvent args)
     {
         if (args.Handled)
@@ -59,13 +58,5 @@ public sealed class RevenantSystem : EntitySystem
             return;
 
         args.Amount = ent.Comp.Essence.Int();
-
-/* Europa-Remove
-        var essence = Math.Clamp(ent.Comp.Essence.Int(), 0, 999);
-        _sprite.LayerSetRsiState(args.SpriteViewEnt.AsNullable(), RevenantVisualLayers.Digit1, $"{(essence / 100) % 10}");
-        _sprite.LayerSetRsiState(args.SpriteViewEnt.AsNullable(), RevenantVisualLayers.Digit2, $"{(essence / 10) % 10}");
-        _sprite.LayerSetRsiState(args.SpriteViewEnt.AsNullable(), RevenantVisualLayers.Digit3, $"{essence % 10}");
-*/
-    // Europa-Edit-End
     }
 }

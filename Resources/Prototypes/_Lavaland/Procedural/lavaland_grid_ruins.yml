@@ -35,6 +35,7 @@
   name: lavaland-inteq-sizo
   path: /Maps/_Europa/Lavaland/InteQ_Sizo.yml
   priority: 1
+  patchToPlanet: false
 
 - type: lavalandGridRuin
   id: BiodomeBeach

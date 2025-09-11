@@ -16,15 +16,17 @@
     sprite: _Shitmed/Structures/Machines/limbgrower.rsi
     snapCardinals: true
     layers:
-    - state: limbgrower_idleoff
+    # Europa-Edit-Start
+    - state: icon
       map: ["enum.LatheVisualLayers.IsRunning"]
-#    - state: limbgrower_idleoff
-#      shader: unshaded
-#      map: ["enum.PowerDeviceVisualLayers.Powered"]
-#    - state: inserting
-#      map: ["enum.MaterialStorageVisualLayers.Inserting"]
-#    - state: panel
-#      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    # Europa-Edit-End
   - type: Machine
     board: MedicalBiofabMachineBoard
   - type: MaterialStorage
@@ -33,8 +35,12 @@
       - Sheet
       - RawMaterial
   - type: Lathe
-    idleState: limbgrower_idleoff
-    runningState: limbgrower_idleon
+    # Europa-Edit-Start
+    idleState: icon
+    runningState: building
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
+    # Europa-Edit-End
     staticPacks:
     - BiofabPartsStatic
   - type: EmagLatheRecipes

@@ -441,7 +441,7 @@ namespace Content.Client.Lobby.UI
             // Europa-End
 
             // begin Goobstation: port EE height/width sliders
-            #region Height and Width            
+            #region Height and Width
 
             UpdateHeightWidthSliders();
             UpdateDimensions(SliderUpdate.Both);
@@ -747,6 +747,15 @@ namespace Content.Client.Lobby.UI
 
             foreach (var trait in traits)
             {
+                // Begin Goobstation: ported from DeltaV - Species trait exclusion
+                if (Profile?.Species is { } selectedSpecies && (trait.ExcludedSpecies.Contains(selectedSpecies) ||
+                    trait.IncludedSpecies.Count > 0 && !trait.IncludedSpecies.Contains(selectedSpecies)))
+                {
+                    Profile = Profile?.WithoutTraitPreference(trait.ID, _prototypeManager);
+                    continue;
+                }
+                // End Goobstation: ported from DeltaV - Species trait exclusion
+
                 if (trait.Category == null)
                 {
                     defaultTraits.Add(trait.ID);
@@ -1498,6 +1507,7 @@ namespace Content.Client.Lobby.UI
             UpdateHeightWidthSliders();
             UpdateWeight();
             // end Goobstation: port EE height/width sliders
+            RefreshTraits(); // Goobstation: ported from DeltaV - Species trait exclusion
         }
 
         private void SetName(string newName)

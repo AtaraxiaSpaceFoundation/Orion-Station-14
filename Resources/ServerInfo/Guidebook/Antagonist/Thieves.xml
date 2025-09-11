@@ -50,14 +50,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     <GuideEntityEmbed Entity="SatchelThief"/>
   </Box>
   <Box>
-    <GuideEntityEmbed Entity="StorageImplanter" Caption="анатомия"/>
+    <GuideEntityEmbed Entity="Implanter" Caption="анатомия"/>
     <GuideEntityEmbed Entity="C4" Caption="взломщик"/>
     <GuideEntityEmbed Entity="ChameleonProjector" Caption="хамелеон"/>
-    <GuideEntityEmbed Entity="EncryptionKeyStationMaster" Caption="коммуникатор"/>
+    <GuideEntityEmbed Entity="BaseUplinkRadio" Caption="аплинк"/>
   </Box>
   <Box>
     <GuideEntityEmbed Entity="NitrousOxideTank" Caption="снотворное"/>
-    <GuideEntityEmbed Entity="Emag" Caption="контрабанда"/>
+    <GuideEntityEmbed Entity="Fulton" Caption="фултон"/>
     <GuideEntityEmbed Entity="Telecrystal" Caption="синдикат"/>
   </Box>
 
@@ -75,10 +75,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   Вещи, которые вы можете пожелать, включают, но не ограничиваются:
   
   <Box>
-   <GuideEntityEmbed Entity="ToyFigurineGreytider" Caption="фигурки"/>
-   <GuideEntityEmbed Entity="PassengerIDCard" Caption="ID карты"/>
-   <GuideEntityEmbed Entity="ChemDispenser" Caption="структуры"/>
-   <GuideEntityEmbed Entity="MobCorgiIan" Caption="животные/питомцы"/>
+    <GuideEntityEmbed Entity="ToyFigurineGreytider" Caption="фигурки"/>
+    <GuideEntityEmbed Entity="PassengerIDCard" Caption="ID карты"/>
+    <GuideEntityEmbed Entity="ChemDispenser" Caption="структуры"/>
+    <GuideEntityEmbed Entity="MobCorgiIan" Caption="животные/питомцы"/>
   </Box>
 
 </Document>

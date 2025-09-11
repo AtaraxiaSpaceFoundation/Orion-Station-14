@@ -189,3 +189,9 @@
   name: Riki Music - Погоня
   path:
     path: /Audio/_Europa/Jukebox/RikiMusic/RikiMusic_Pogonya.ogg
+
+- type: jukebox
+  id: AsgoreRunsOverDessCover
+  name: Не Запоминай - Asgore Runs Over Dess
+  path:
+    path: /Audio/_Europa/Jukebox/NeZapominay/NeZapominay_AsgoreRunsOverDess.ogg
