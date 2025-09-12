@@ -1,5 +1,6 @@
 using Content.Shared._EinsteinEngines.Language;
 using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
 namespace Content.Shared._Europa.Language.Components;
@@ -8,7 +9,7 @@ namespace Content.Shared._Europa.Language.Components;
 // License-Identifier: AGPL-3.0-or-later
 //
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class LanguageLearnComponent : Component
 {
     /// <summary>
