@@ -94,7 +94,7 @@
   - type: PlasmaCostAction
     plasmaCost: 75
 
-# TODO: delete it
+# TODO: delete it | Europa: DONT DELETE THIS
 - type: entity
   id: ActionSpawnWallResin
   parent: BaseAction

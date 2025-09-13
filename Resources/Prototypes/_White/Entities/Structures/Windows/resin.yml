@@ -43,6 +43,6 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: IconSmooth
-    key: resin_membrane
+    key: resinwall # Europa-Edit
     base: resin_membrane
   - type: Appearance

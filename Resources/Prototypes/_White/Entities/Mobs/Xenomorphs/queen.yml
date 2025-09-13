@@ -26,7 +26,7 @@
     actions:
     - ActionTransferPlasma
     - ActionSpawnWallResin
-#    - ActionSpawnResinMembrane # Goobstation - removed
+    - ActionSpawnResinMembrane # Europa-Reaply
     - ActionSpawnResinDoor # Goobstation - xeno doors
     - ActionSpawnResinNest
     - ActionSpawnResinWeedNode

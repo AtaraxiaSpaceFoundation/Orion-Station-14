@@ -22,6 +22,12 @@
     actions:
     - ActionTransferPlasma
     - ActionSpawnResinWeedNode
+    # Europa-Start | This literally drone in clothes
+    - ActionSpawnWallResin
+    - ActionSpawnResinMembrane
+    - ActionSpawnResinDoor
+    - ActionSpawnResinNest
+    # Europa-End
   - type: Cuffable
   - type: MobThresholds
     thresholds:
