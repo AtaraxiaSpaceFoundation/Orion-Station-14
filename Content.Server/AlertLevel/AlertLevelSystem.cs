@@ -235,20 +235,21 @@ public sealed class AlertLevelSystem : EntitySystem
         }
 
         // Europa-Start
-        var message = new FormattedMessage();
+        var messageTitle = new FormattedMessage();
 
-        message.PushTag(new MarkupNode("examineborder", null, null));
-        message.PushNewline();
-        message.AddText(Loc.GetString("examine-border-line"));
-        message.PushNewline();
+        messageTitle.PushTag(new MarkupNode("examineborder", null, null));
+        messageTitle.AddText(Loc.GetString("announce-border-line"));
+        messageTitle.PushNewline();
 
         // Announcement title
-        message.AddText(Loc.GetString("alert-level-announcement-title", ("name", name.ToUpper())));
-        message.PushNewline();
-        message.PushNewline();
+        messageTitle.AddText(Loc.GetString("alert-level-announcement-title", ("name", name.ToUpper())));
+        messageTitle.PushNewline();
+        messageTitle.AddText(Loc.GetString("announce-border-line"));
+        messageTitle.Pop();
 
+        var message = new FormattedMessage();
         // Announcement text
-        message.AddMarkup(Loc.GetString(announcement));
+        message.AddMarkup(announcement);
         message.PushNewline();
         message.PushNewline();
 
@@ -256,7 +257,8 @@ public sealed class AlertLevelSystem : EntitySystem
         message.AddMarkup(instruction);
         message.PushNewline();
 
-        message.AddText(Loc.GetString("examine-border-line"));
+        message.AddText(Loc.GetString("announce-border-line"));
+        message.PushNewline();
         message.Pop();
         //Europa-End
 
@@ -265,11 +267,10 @@ public sealed class AlertLevelSystem : EntitySystem
         {
             _chatSystem.DispatchStationAnnouncement(
                 station,
-                string.Empty,
                 message.ToMarkup(),
+                messageTitle.ToMarkup(),
                 playDefaultSound: playDefault,
                 colorOverride: detail.Color
-//                sender: stationName
             );
         }
         // Europa-Edit-End
