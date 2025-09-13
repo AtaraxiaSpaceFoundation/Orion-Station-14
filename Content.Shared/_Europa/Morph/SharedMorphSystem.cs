@@ -13,4 +13,4 @@ public abstract class SharedMorphSystem : EntitySystem
 }
 
 [Serializable, NetSerializable]
-public sealed partial class MorphDevourDoAfterEvent : SimpleDoAfterEvent { }
+public sealed partial class MorphDevourDoAfterEvent : SimpleDoAfterEvent;

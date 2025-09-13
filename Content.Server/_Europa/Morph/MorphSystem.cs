@@ -22,7 +22,6 @@ using System.Numerics;
 using Content.Shared.Examine;
 using Robust.Shared.Prototypes;
 using Content.Shared.Damage.Prototypes;
-using Content.Server.Humanoid;
 using Content.Shared.Polymorph.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Polymorph.Systems;
@@ -47,16 +46,15 @@ namespace Content.Server._Europa.Morph;
 public sealed class MorphSystem : SharedMorphSystem
 {
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] protected readonly ChatSystem ChatSystem = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedChameleonProjectorSystem _chameleon = default!;
-    [Dependency] protected readonly SharedContainerSystem container = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
-    [Dependency] protected readonly SharedAudioSystem _audioSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
@@ -73,6 +71,8 @@ public sealed class MorphSystem : SharedMorphSystem
 
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<MorphComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<MorphComponent, MeleeHitEvent>(OnAttack);
 
@@ -89,7 +89,7 @@ public sealed class MorphSystem : SharedMorphSystem
         SubscribeLocalEvent<MorphComponent, MorphVentOpenActionEvent>(OnOpenVentAction);
 
         SubscribeLocalEvent<MorphAmbushComponent, MeleeHitEvent>(OnAmbushAttack);
-        SubscribeLocalEvent<MorphAmbushComponent, UndisguisedEvent>(OnAmbusInteract);
+        SubscribeLocalEvent<MorphAmbushComponent, UndisguisedEvent>(OnAmbushInteract);
         SubscribeLocalEvent<MorphComponent, MorphAmbushActionEvent>(OnAmbushAction);
         SubscribeLocalEvent<MorphAmbushComponent, UpdateCanMoveEvent>(OnCanMoveEvent);
 
@@ -127,7 +127,7 @@ public sealed class MorphSystem : SharedMorphSystem
         }
         else if (_random.Prob(ent.Comp.EatWeaponChanceOnHited) && _hunger.GetHunger(hunger) >= ent.Comp.EatWeaponHungerReq)
         {
-            container.Insert(args.Used, ent.Comp.Container);
+            _container.Insert(args.Used, ent.Comp.Container);
             _audioSystem.PlayPvs(ent.Comp.SoundDevour, ent);
             _hunger.ModifyHunger(ent, -ent.Comp.EatWeaponHungerReq, hunger);
         }
@@ -148,7 +148,7 @@ public sealed class MorphSystem : SharedMorphSystem
             if (_hunger.GetHunger(hunger) < ent.Comp.EatWeaponHungerReq)
                 return;
 
-            container.Insert(item.Value, ent.Comp.Container);
+            _container.Insert(item.Value, ent.Comp.Container);
             _audioSystem.PlayPvs(ent.Comp.SoundDevour, ent);
             _hunger.ModifyHunger(ent, -ent.Comp.EatWeaponHungerReq, hunger);
         }
@@ -164,7 +164,7 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<HungerComponent>(uid, out var hunger))
             return;
 
-        if (container.IsEntityInContainer(uid))
+        if (_container.IsEntityInContainer(uid))
             return;
 
         if (_hunger.GetHunger(hunger) < comp.OpenVentFoodReq)
@@ -206,10 +206,11 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<ChameleonProjectorComponent>(uid, out var chamel))
             return;
 
-        if (TryComp<MorphAmbushComponent>(uid, out var ambush))
+        if (TryComp<MorphAmbushComponent>(uid, out _))
         {
             AmbushBreak(uid);
-            if (chamel.Disguised != null) AmbushBreak(chamel.Disguised.Value);
+            if (chamel.Disguised != null)
+                AmbushBreak(chamel.Disguised.Value);
         }
         else
         {
@@ -257,7 +258,7 @@ public sealed class MorphSystem : SharedMorphSystem
         }
     }
 
-    private void OnAmbusInteract(EntityUid uid, MorphAmbushComponent component, UndisguisedEvent args)
+    private void OnAmbushInteract(EntityUid uid, MorphAmbushComponent component, UndisguisedEvent args)
     {
         _stun.TryParalyze(args.User, component.StunTimeInteract, false);
         _damageable.TryChangeDamage(args.User, component.DamageOnTouch);
@@ -266,7 +267,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnMimicryRadialMenu(EntityUid uid, MorphComponent component, MorphOpenRadialMenuEvent args)
     {
-        component.MimicryContainer = container.EnsureContainer<Container>(uid, component.MimicryContainerId);
+        component.MimicryContainer = _container.EnsureContainer<Container>(uid, component.MimicryContainerId);
 
         if (!TryComp<UserInterfaceComponent>(uid, out var uic))
             return;
@@ -283,7 +284,7 @@ public sealed class MorphSystem : SharedMorphSystem
         //отвечает за запоминание энтити для мимикрии.
         //гуманоидов запоминает отдельно т.к. их невозможно показать путём хамелеона
         //короче мне лень эту хреноетнь выписывать. Кто будет её чинить - мои соболезнования вам
-        if (TryComp<HumanoidAppearanceComponent>(args.Target, out var humanoid))
+        if (TryComp<HumanoidAppearanceComponent>(args.Target, out _))
         {
             //короче мне лень эту хреноетнь выписывать. Кто будет её чинить - мои соболезнования вам
             //TODO: сделать морфабильность гуманоидов. Этот метод работает, но на 50%. Он спавнит зуманоида и устанавливает ему вид, но не может прицепить его
@@ -388,11 +389,13 @@ public sealed class MorphSystem : SharedMorphSystem
             var morphList = new List<EntityUid>();
             var morphs = AllEntityQuery<MorphComponent, MobStateComponent>();
             while (morphs.MoveNext(out var ent, out _, out _))
+            {
                 morphList.Add(ent);
+            }
 
             if (morphList.Count() == component.DetectableCount)
             {
-                ChatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
+                _chatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
                 _audioSystem.PlayGlobal(component.SoundReplication, Filter.Broadcast(), true);
             }
 
@@ -422,17 +425,14 @@ public sealed class MorphSystem : SharedMorphSystem
         if (state.CurrentThresholdState != MobState.Dead)
             return;
 
-        if (health == null)
-            return;
-
         if (!HasComp<HumanoidAppearanceComponent>(args.Target))
             health /= 2;
 
-        var damage_brute = new DamageSpecifier(_proto.Index(BruteDamageGroup), -health.Value / 2);
-        var damage_burn = new DamageSpecifier(_proto.Index(BurnDamageGroup), -health.Value / 2);
+        var damageBrute = new DamageSpecifier(_proto.Index(BruteDamageGroup), -health.Value / 2);
+        var damageBurn = new DamageSpecifier(_proto.Index(BurnDamageGroup), -health.Value / 2);
 
-        _damageable.TryChangeDamage(uid, damage_brute);
-        _damageable.TryChangeDamage(uid, damage_burn);
+        _damageable.TryChangeDamage(uid, damageBrute);
+        _damageable.TryChangeDamage(uid, damageBurn);
         _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
         _audioSystem.PlayPvs(component.SoundDevour, uid);
         component.ContainedCreatures.Add(args.Target.Value);
