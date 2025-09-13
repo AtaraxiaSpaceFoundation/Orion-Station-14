@@ -51,20 +51,4 @@ names-scurret-last-dataset-32 = Лепесток
 names-scurret-last-dataset-33 = Клён
 names-scurret-last-dataset-34 = Дуб
 names-scurret-last-dataset-35 = Орех
-# AND SIR GIDEON OFNIR
 names-scurret-last-dataset-36 = Всезнайка
-names-scurret-last-dataset-37 = Пруд
-names-scurret-last-dataset-38 = Поток
-names-scurret-last-dataset-39 = Резервуар
-names-scurret-last-dataset-40 = Вал
-names-scurret-last-dataset-41 = Пустырь
-names-scurret-last-dataset-42 = Дол
-names-scurret-last-dataset-43 = Храм
-names-scurret-last-dataset-44 = Холм
-names-scurret-last-dataset-45 = Лесок
-names-scurret-last-dataset-46 = Сад
-names-scurret-last-dataset-47 = Предок
-names-scurret-last-dataset-48 = Лес
-names-scurret-last-dataset-49 = Секрет
-# Nobody's quite sure how this one is in the dictionary.
-names-scurret-last-dataset-50 = Космический Хорёк
