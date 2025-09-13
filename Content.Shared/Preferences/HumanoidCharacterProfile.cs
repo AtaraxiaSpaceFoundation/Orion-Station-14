@@ -78,7 +78,7 @@ namespace Content.Shared.Preferences
     [Serializable, NetSerializable]
     public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     {
-        private static readonly Regex RestrictedNameRegex = new(@"[^А-Яа-яёЁ0-9' -]");
+        private static readonly Regex RestrictedNameRegex = new(@"[^А-Яа-яёЁA-Za-z0-9' -]", RegexOptions.Compiled); // Europa-Edit
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
         /// <summary>
