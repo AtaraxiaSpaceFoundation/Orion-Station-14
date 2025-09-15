@@ -46,7 +46,7 @@
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretCaptainWhite
   name: white captain beret
-  description: A white captain beret, an icon of style.
+  description: White captain beret, an icon of style.
   components:
   - type: Sprite
     sprite: _Europa/Clothing/Head/Hats/white_beret.rsi
@@ -91,3 +91,44 @@
   - type: Tag
     tags:
     - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTinfoil
+  name: tinfoil hat
+  description: Space Station 13 doesnt exist.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Hats/tinfoil.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Hats/tinfoil.rsi
+#  - type: TinfoilHat
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.95
+  - type: Construction
+    graph: TinfoilHat
+    node: tinfoilhat
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUEGBeret
+  name: UEG police beret
+  description: Beret of police officers of the UEG, have emblem of the Ministry of Internal Affairs on it.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Hats/ueg_beret.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Hats/ueg_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUEGOfficerCap
+  name: UEG officer cap
+  description: UEG officer cap, has a cockade with the insignia of the Ministry of the Interior.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Hats/ueg_officer_cap.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Hats/ueg_officer_cap.rsi
