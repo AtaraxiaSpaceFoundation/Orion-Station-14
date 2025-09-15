@@ -3,3 +3,5 @@ ent-VendingMachineInteQDrobe = ИнтекШкаф
 ent-VendingMachineInteQDrobeNerf = { ent-VendingMachineInteQDrobe }
     .desc = { ent-VendingMachineInteQDrobe.desc }
     .suffix = Для секреток на станции
+ent-CaptainDrobe = КапитанШкаф
+    .desc = Стильная униформа для сильного лидера!
