@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingModsuitStandard
   id: ClothingModsuitSuspicious
-  name: suspicious hardsuit control unit
+  name: suspicious modsuit control unit
   description: A special modular suit contol unit containing all necessary modular hardsuit parts.
   components:
   - type: Sprite

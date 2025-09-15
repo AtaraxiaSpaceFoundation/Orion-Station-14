@@ -1,0 +1,35 @@
+- type: accessLevel
+  id: UnitedEarthGovernmentGeneral
+  name: id-card-access-level-united-earth-government-general
+
+- type: accessLevel
+  id: UnitedEarthGovernmentMedic
+  name: id-card-access-level-united-earth-government-medic
+
+- type: accessLevel
+  id: UnitedEarthGovernmentSpecialist
+  name: id-card-access-level-united-earth-government-specialist
+
+- type: accessLevel
+  id: UnitedEarthGovernmentCommand
+  name: id-card-access-level-united-earth-government-command
+
+- type: accessGroup
+  id: UnitedEarthGovernment
+  tags:
+  - UnitedEarthGovernmentGeneral
+  - UnitedEarthGovernmentMedic
+  - UnitedEarthGovernmentSpecialist
+  - UnitedEarthGovernmentCommand
+
+- type: accessGroup
+  id: UnitedEarthGovernmentMedic
+  tags:
+  - UnitedEarthGovernmentGeneral
+  - UnitedEarthGovernmentMedic
+
+- type: accessGroup
+  id: UnitedEarthGovernmentSpecialist
+  tags:
+  - UnitedEarthGovernmentGeneral
+  - UnitedEarthGovernmentSpecialist

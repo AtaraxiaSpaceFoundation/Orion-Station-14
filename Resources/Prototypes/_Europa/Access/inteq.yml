@@ -1,7 +1,7 @@
 - type: accessLevel
   id: InteQVanguard
-  name: Vanguard
+  name: id-card-access-level-inteq-vanguard
 
 - type: accessLevel
   id: InteQVanguardLeader
-  name: Vanguard Leader
+  name: id-card-access-level-inteq-vanguard-leader
