@@ -8,14 +8,14 @@
   },
   "states": [
     {
-      "name": "egov-icon"
+      "name": "ueg-icon"
     },
     {
-      "name": "egov-inhand-right",
+      "name": "ueg-inhand-right",
       "directions": 4
     },
     {
-      "name": "egov-inhand-left",
+      "name": "ueg-inhand-left",
       "directions": 4
     }
   ]
