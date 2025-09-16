@@ -9,6 +9,39 @@
     "states": [
         {
             "name": "InteQ"
+        },
+        {
+            "name": "union"
+        },
+        {
+            "name": "smartgunner"
+        },
+        {
+            "name": "private"
+        },
+        {
+            "name": "medic"
+        },
+        {
+            "name": "serg"
+        },
+        {
+            "name": "commander"
+        },
+        {
+            "name": "commandeer"
+        },
+        {
+            "name": "leitenant"
+        },
+        {
+            "name": "mvd"
+        },
+        {
+            "name": "shtab"
+        },
+        {
+            "name": "spets"
         }
     ]
 }

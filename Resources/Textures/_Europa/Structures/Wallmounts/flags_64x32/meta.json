@@ -8,10 +8,10 @@
   },
   "states": [
     {
-      "name": "egov"
+      "name": "ueg"
     },
     {
-      "name": "egov_broken"
+      "name": "ueg_broken"
     }
   ]
 }

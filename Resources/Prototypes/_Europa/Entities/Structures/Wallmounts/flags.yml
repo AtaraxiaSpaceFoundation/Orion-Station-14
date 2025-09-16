@@ -247,25 +247,15 @@
     state: vulp
 
 - type: entity
+  parent: BaseFlag
   id: FlagWideUnitedEarthGovernment
   name: United Earth Government wide flag
   description: Glory to United Earth Government! All hail to United Earth Government! For the humanity!
   placement:
     mode: SnapgridCenter
   components:
-  - type: WallMount
-    arc: 90
-  - type: Transform
-    anchored: true
-  - type: Clickable
-  - type: InteractionOutline
-  - type: Appearance
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
   - type: Sprite
-    drawdepth: WallTops
-    sprite: _Europa/Structures/Wallmounts/flags_64x32
+    sprite: _Europa/Structures/Wallmounts/flags_64x32.rsi
     state: ueg
   - type: Destructible
     thresholds:
@@ -292,8 +282,7 @@
   description: You can't make out anything from the banner's original print. It's ruined.
   components:
   - type: Sprite
-    drawdepth: WallTops
-    sprite: _Europa/Structures/Wallmounts/flags_64x32
+    sprite: _Europa/Structures/Wallmounts/flags_64x32.rsi
     state: ueg_broken
   - type: Destructible
     thresholds:
