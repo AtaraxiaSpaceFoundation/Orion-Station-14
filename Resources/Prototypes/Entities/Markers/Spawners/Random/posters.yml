@@ -51,6 +51,18 @@
   - type: RandomSpawner
     offset: 0
     prototypes:
+      # Europa-Start
+      - PosterContrabandInteQRecruitment
+      - PosterContrabandInteQWorkship
+      - PosterContrabandInteQWorkship2
+      - PosterContrabandInteQ
+      - PosterContrabandInteQNoSex
+      - PosterContrabandInteQVulp
+      - PosterContrabandInteQJulie
+      - PosterContrabandLustyXenomorph
+      - PosterContrabandBustyBackdoorXenoBabes6
+      - PosterContrabandBreadLies
+      # Europa-End
       - PosterContrabandFreeTonto
       - PosterContrabandAtmosiaDeclarationIndependence
       - PosterContrabandFunPolice
@@ -115,13 +127,6 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
-      - PosterContrabandInteQRecruitment # Europa-Start
-      - PosterContrabandInteQWorkship
-      - PosterContrabandInteQWorkship2
-      - PosterContrabandInteQ
-      - PosterContrabandInteQNoSex
-      - PosterContrabandInteQVulp
-      - PosterContrabandInteQJulie # Europa-End
     chance: 0.99 # Europa-Edit | 1 > 0.99
     # Europa-Start
     rarePrototypes:
@@ -144,6 +149,28 @@
   - type: RandomSpawner
     offset: 0
     prototypes:
+      # Europa-Start
+      - PosterLegitBarDrinks
+      - PosterLegitBotanyFood
+      - PosterLegitHotDonkExplosion
+      - PosterLegitEatMeat
+      - PosterLegitMoreBread
+      - PosterLegitPieSlice
+      - PosterLegitPizzaHope
+      - PosterLegitUnitedEarthGovernment1
+      - PosterLegitUnitedEarthGovernment2
+      - PosterLegitUnitedEarthGovernment3
+      - PosterLegitUnitedEarthGovernment4
+      - PosterLegitUnitedEarthGovernment5
+      - PosterLegitUnitedEarthGovernment6
+      - PosterLegitUnitedEarthGovernment7
+      - PosterLegitUnitedEarthGovernment8
+      - PosterLegitUnitedEarthGovernment9
+      - PosterLegitUnitedEarthGovernment10
+      - PosterLegitUnitedEarthGovernment11
+      - PosterLegitUnitedEarthGovernment12
+      - PosterLegitUnitedEarthGovernment13
+      # Europa-End
       - PosterLegitHereForYourSafety
       - PosterLegitNanotrasenLogo
       - PosterLegitCleanliness
