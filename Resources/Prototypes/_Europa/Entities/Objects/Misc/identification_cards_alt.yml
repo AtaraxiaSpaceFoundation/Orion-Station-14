@@ -39,7 +39,6 @@
     - UnitedEarthGovernmentGeneral
     - UnitedEarthGovernmentMedic
     - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
 
 - type: entity
   parent: ShoulderMarksBase
@@ -59,7 +58,6 @@
     - UnitedEarthGovernmentGeneral
     - UnitedEarthGovernmentMedic
     - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
 
 - type: entity
   parent: ShoulderMarksBase
@@ -79,7 +77,6 @@
     - UnitedEarthGovernmentGeneral
     - UnitedEarthGovernmentMedic
     - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
 
 - type: entity
   parent: ShoulderMarksBase
@@ -99,7 +96,6 @@
     - UnitedEarthGovernmentGeneral
     - UnitedEarthGovernmentMedic
     - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
 
 - type: entity
   parent: ShoulderMarksBase
@@ -119,7 +115,6 @@
     - UnitedEarthGovernmentGeneral
     - UnitedEarthGovernmentMedic
     - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
 
 - type: entity
   parent: ShoulderMarksBase
@@ -139,7 +134,6 @@
     - UnitedEarthGovernmentGeneral
     - UnitedEarthGovernmentMedic
     - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
 
 - type: entity
   parent: ShoulderMarksBase
@@ -156,10 +150,7 @@
     jobIcon: JobIconUEGLeitenant
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -176,10 +167,7 @@
     jobIcon: JobIconUEGLeitenant
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -196,10 +184,7 @@
     jobIcon: JobIconUEGLeitenant
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -216,10 +201,7 @@
     jobIcon: JobIconUEGCommand
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -236,10 +218,7 @@
     jobIcon: JobIconUEGCommand
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -256,10 +235,7 @@
     jobIcon: JobIconUEGCommand
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -276,10 +252,7 @@
     jobIcon: JobIconUEGCommand
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -296,10 +269,7 @@
     jobIcon: JobIconUEGCommand
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
 
 - type: entity
   parent: ShoulderMarksBase
@@ -316,7 +286,4 @@
     jobIcon: JobIconUEGCommander
   - type: Access
     groups:
-    - UnitedEarthGovernmentGeneral
-    - UnitedEarthGovernmentMedic
-    - UnitedEarthGovernmentSpecialist
-    - UnitedEarthGovernmentCommand
+    - UnitedEarthGovernment
