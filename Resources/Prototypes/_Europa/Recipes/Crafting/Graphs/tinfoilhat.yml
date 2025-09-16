@@ -10,4 +10,4 @@
               amount: 1
               doAfter: 10
     - node: tinfoilhat
-      entity: ClothingHeadTinfoil
+      entity: ClothingHeadHatTinfoil
