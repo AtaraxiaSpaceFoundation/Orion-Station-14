@@ -14,7 +14,7 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconUEGMarin
+  id: JobIconUEGNavy
   icon:
     sprite: /Textures/_Europa/Interface/Misc/job_icons.rsi
     state: private
