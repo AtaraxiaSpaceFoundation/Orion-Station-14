@@ -1,0 +1,11 @@
+- type: entity
+  parent: MarkerBase
+  id: FTLPointUnitedEarthGovernment
+  name: FTL point United Earth Government
+  components:
+  - type: FTLDestination
+    whitelist:
+      tags:
+      - UnitedEarthGovernment
+  - type: Sprite
+    state: pink

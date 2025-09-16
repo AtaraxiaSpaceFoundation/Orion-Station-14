@@ -13,3 +13,35 @@
   components:
   - type: AccessReader
     access: [["InteQVanguardLeader"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsUEG
+  suffix: United Earth Government, Locked
+  components:
+  - type: AccessReader
+    access: [["UnitedEarthGovernmentGeneral"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsUEGMedic
+  suffix: United Earth Government Medic, Locked
+  components:
+  - type: AccessReader
+    access: [["UnitedEarthGovernmentMedic"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsUEGSpecialist
+  suffix: United Earth Government Specialist, Locked
+  components:
+  - type: AccessReader
+    access: [["UnitedEarthGovernmentSpecialist"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsUEGCommand
+  suffix: United Earth Government Command, Locked
+  components:
+  - type: AccessReader
+    access: [["UnitedEarthGovernmentCommand"]]
