@@ -58,7 +58,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             if (!tile.Hotspot.SkippedFirstProcess)
             {
-//                tile.Hotspot.SkippedFirstProcess = true; // Europa-Remove
+                tile.Hotspot.SkippedFirstProcess = true;
                 return;
             }
 
