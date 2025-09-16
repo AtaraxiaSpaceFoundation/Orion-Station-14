@@ -33,7 +33,7 @@
     equippedState: equipped-private
   - type: IdCard
     jobTitle: job-title-private
-    JobIconUEG: JobIconUEGNavy
+    jobIcon: JobIconUEGNavy
   - type: Access
     tags:
     - UnitedEarthGovernment
@@ -49,8 +49,8 @@
   - type: Clothing
     equippedState: equipped-capral
   - type: IdCard
-    jobTitle: job-title-corporal
-    JobIconUEG: JobIconUEGSpecialist
+    jobTitle: job-title-capral
+    jobIcon: JobIconUEGSpecialist
   - type: Access
     tags:
     - UnitedEarthGovernment
@@ -67,7 +67,7 @@
     equippedState: equipped-serg
   - type: IdCard
     jobTitle: job-title-sergeant
-    JobIconUEG: JobIconUEGSergant
+    jobIcon: JobIconUEGSergant
   - type: Access
     tags:
     - UnitedEarthGovernment
@@ -84,7 +84,7 @@
     equippedState: equipped-unter
   - type: IdCard
     jobTitle: job-title-junior_noncommissioned_officer
-    JobIconUEG: JobIconUEGShtab
+    jobIcon: JobIconUEGShtab
   - type: Access
     tags:
     - UnitedEarthGovernment
@@ -101,7 +101,7 @@
     equippedState: equipped-unter2
   - type: IdCard
     jobTitle: job-title-noncommissioned_officer
-    JobIconUEG: JobIconUEGShtab
+    jobIcon: JobIconUEGShtab
   - type: Access
     tags:
     - UnitedEarthGovernment
@@ -118,7 +118,7 @@
     equippedState: equipped-unter3
   - type: IdCard
     jobTitle: job-title-staff_officer
-    JobIconUEG: JobIconUEGShtab
+    jobIcon: JobIconUEGShtab
   - type: Access
     tags:
     - UnitedEarthGovernment
@@ -135,7 +135,7 @@
     equippedState: equipped-leitenant
   - type: IdCard
     jobTitle: job-title-lieutenant
-    JobIconUEG: JobIconUEGLeitenant
+    jobIcon: JobIconUEGLeitenant
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -152,7 +152,7 @@
     equippedState: equipped-leitenant2
   - type: IdCard
     jobTitle: job-title-senior_lieutenant
-    JobIconUEG: JobIconUEGLeitenant
+    jobIcon: JobIconUEGLeitenant
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -169,7 +169,7 @@
     equippedState: equipped-hauptman
   - type: IdCard
     jobTitle: job-title-captain
-    JobIconUEG: JobIconUEGLeitenant
+    jobIcon: JobIconUEGLeitenant
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -186,7 +186,7 @@
     equippedState: equipped-mayor
   - type: IdCard
     jobTitle: job-title-major
-    JobIconUEG: JobIconUEGCommand
+    jobIcon: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -203,7 +203,7 @@
     equippedState: equipped-podpolk
   - type: IdCard
     jobTitle: job-title-lieutenant_colonel
-    JobIconUEG: JobIconUEGCommand
+    jobIcon: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -220,7 +220,7 @@
     equippedState: equipped-polk
   - type: IdCard
     jobTitle: job-title-colonel
-    JobIconUEG: JobIconUEGCommand
+    jobIcon: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -237,7 +237,7 @@
     equippedState: equipped-generalmayor
   - type: IdCard
     jobTitle: job-title-major_general
-    JobIconUEG: JobIconUEGCommand
+    jobIcon: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -254,7 +254,7 @@
     equippedState: equipped-general
   - type: IdCard
     jobTitle: job-title-lieutenant_general
-    JobIconUEG: JobIconUEGCommand
+    jobIcon: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -271,7 +271,7 @@
     equippedState: equipped-generalpolk
   - type: IdCard
     jobTitle: job-title-colonel_general
-    JobIconUEG: JobIconUEGCommander
+    jobIcon: JobIconUEGCommander
   - type: Access
     groups:
     - UnitedEarthGovernment

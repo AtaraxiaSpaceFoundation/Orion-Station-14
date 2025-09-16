@@ -78,4 +78,4 @@
     stateDoorOpen: ueg_open
     stateDoorClosed: ueg_door
   - type: AccessReader
-    access: [["UnitedEarthGovernment"]]
+    access: [["UnitedEarthGovernmentGeneral"]]
