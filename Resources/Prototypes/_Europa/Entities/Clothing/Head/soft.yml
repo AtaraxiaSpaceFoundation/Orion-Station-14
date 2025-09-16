@@ -25,6 +25,7 @@
   id: ClothingHeadHatUEGCap
   name: UEG police cap
   description: Cap of police officers of the UEG, have emblem of the Ministry of Internal Affairs on it.
+  components:
   - type: Sprite
     sprite: _Europa/Clothing/Head/Soft/ueg.rsi
   - type: Clothing
