@@ -4,4 +4,4 @@
   suffix: United Earth Government
   components:
   - type: Sprite
-    sprite: _Europa/Structures/Doors/Airlocks/Airlock/UEG.rsi
+    sprite: _Europa/Structures/Doors/Airlocks/Standard/UEG.rsi

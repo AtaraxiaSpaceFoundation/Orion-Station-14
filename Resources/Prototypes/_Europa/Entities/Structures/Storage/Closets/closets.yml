@@ -53,7 +53,7 @@
     access: [["InteQVanguardLeader"]]
 
 - type: entity
-  parent: LockerBase
+  parent: LockerBaseSecure
   id: LockerUEG
   name: United Earth Government locker
   description: A standard-issue EarthGovernment storage unit.

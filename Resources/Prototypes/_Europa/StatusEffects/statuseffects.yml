@@ -56,17 +56,17 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconUEGCommander
+  id: JobIconUEGCommand
   icon:
     sprite: /Textures/_Europa/Interface/Misc/job_icons.rsi
     state: commander
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconUEGCommandeer
+  id: JobIconUEGCommander
   icon:
     sprite: /Textures/_Europa/Interface/Misc/job_icons.rsi
-    state: commandeer
+    state: commander_gold
 
 - type: statusEffect
   id: CorticalBorerProtection

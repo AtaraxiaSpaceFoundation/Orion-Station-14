@@ -186,7 +186,7 @@
     equippedState: equipped-mayor
   - type: IdCard
     jobTitle: job-title-major
-    JobIconUEG: JobIconUEGCommander
+    JobIconUEG: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -203,7 +203,7 @@
     equippedState: equipped-podpolk
   - type: IdCard
     jobTitle: job-title-lieutenant_colonel
-    JobIconUEG: JobIconUEGCommander
+    JobIconUEG: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -220,7 +220,7 @@
     equippedState: equipped-polk
   - type: IdCard
     jobTitle: job-title-colonel
-    JobIconUEG: JobIconUEGCommander
+    JobIconUEG: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -237,7 +237,7 @@
     equippedState: equipped-generalmayor
   - type: IdCard
     jobTitle: job-title-major_general
-    JobIconUEG: JobIconUEGCommander
+    JobIconUEG: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
@@ -254,7 +254,7 @@
     equippedState: equipped-general
   - type: IdCard
     jobTitle: job-title-lieutenant_general
-    JobIconUEG: JobIconUEGCommander
+    JobIconUEG: JobIconUEGCommand
   - type: Access
     groups:
     - UnitedEarthGovernment
