@@ -14,13 +14,13 @@
       "name": "unlocked"
     },
     {
-      "name": "egov"
+      "name": "ueg"
     },
     {
-      "name": "egov_door"
+      "name": "ueg_door"
     },
     {
-      "name": "egov_open"
+      "name": "ueg_open"
     },
     {
       "name": "welded"
