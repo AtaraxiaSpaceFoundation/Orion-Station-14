@@ -34,8 +34,12 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Standing;
 using Content.Server.Body.Components;
+using Content.Server.Ghost.Roles.Components;
+using Content.Shared.Ghost;
+using Content.Shared.Mind.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Europa.Morph;
 
@@ -65,6 +69,8 @@ public sealed class MorphSystem : SharedMorphSystem
     [Dependency] private readonly WeldableSystem _weldable = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     public ProtoId<DamageGroupPrototype> BruteDamageGroup = "Brute";
     public ProtoId<DamageGroupPrototype> BurnDamageGroup = "Burn";
@@ -206,6 +212,12 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<ChameleonProjectorComponent>(uid, out var chamel))
             return;
 
+        if (NonMorphInRange(uid, component))
+        {
+            _popup.PopupCursor(Loc.GetString("morph-ambush-blocked"), uid);
+            return;
+        }
+
         if (TryComp<MorphAmbushComponent>(uid, out _))
         {
             AmbushBreak(uid);
@@ -256,6 +268,23 @@ public sealed class MorphSystem : SharedMorphSystem
             input.CanMove = true;
             Dirty(uid, input);
         }
+    }
+
+    private bool NonMorphInRange(EntityUid uid, MorphComponent component)
+    {
+        var xform = Comp<TransformComponent>(uid);
+        foreach (var entity in _lookup.GetEntitiesInRange(xform.MapPosition, component.AmbushBlockRange))
+        {
+            if (HasComp<MindContainerComponent>(entity) && !HasComp<MorphComponent>(entity) && !HasComp<GhostComponent>(entity))
+            {
+                if ((TryComp<MobStateComponent>(entity, out var entityMobState) && HasComp<GhostTakeoverAvailableComponent>(entity) && _mobState.IsDead(entity, entityMobState)))
+                    continue;
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void OnAmbushInteract(EntityUid uid, MorphAmbushComponent component, UndisguisedEvent args)
