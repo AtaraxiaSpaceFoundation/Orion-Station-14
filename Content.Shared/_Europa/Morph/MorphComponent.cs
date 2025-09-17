@@ -47,7 +47,7 @@ public sealed partial class MorphComponent : Component
     public int EatWeaponHungerReq = 5;
 
     [DataField]
-    public int DetectableCount = 6;
+    public int DetectableCount = 3;
 
     [DataField]
     public int OpenVentFoodReq = 5;

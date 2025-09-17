@@ -44,6 +44,8 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-wormholes-spawn-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
     weight: 8
     duration: 10
     minimumPlayers: 15
@@ -62,6 +64,9 @@
   id: MorphInfestation
   components:
   - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
     weight: 7
     duration: 1
     minimumPlayers: 15
@@ -78,6 +83,9 @@
   id: CorticalBorerInfestation
   components:
   - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
     weight: 7
     duration: 1
     minimumPlayers: 12
@@ -88,3 +96,5 @@
     chaosScore: 100
   - type: RandomSpawnRule
     prototype: SpawnPointGhostCorticalBorer
+    minCount: 1
+    maxCount: 2

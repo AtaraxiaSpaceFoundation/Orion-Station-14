@@ -3,7 +3,7 @@
   id: XenomorphsInfestation
   components:
   - type: StationEvent
-    weight: 7.5 # New antag I wanna be able to actually play it
+    weight: 6 # New antag I wanna be able to actually play it | Europa-Edit 7.5 > 6
     duration: null
     minimumPlayers: 20
     earliestStart: 35
@@ -26,8 +26,8 @@
     agentName: xenomorph-round-end-agent-name
     definitions:
     - spawnerPrototype: SpawnPointGhostXenomorph
-      min: 2
-      max: 4
+      min: 1 # Europa-Edit | 2 > 1
+      max: 2 # Europa-Edit | 4 > 2
       pickPlayer: false
       briefing:
         text: xenomorph-role-greeting

@@ -182,7 +182,7 @@
 #    - id: AncientXenoVentsEasy # Goobstation | Europa-Remove
 #    - id: AncientXenoVentsMedium # Goobstation | Europa-Remove
 #    - id: AncientXenoVentsHard # Goobstation | Europa-Remove
-    - id: MalignRiftSpawn # DeltaV
+#    - id: MalignRiftSpawn # DeltaV | Europa-Remove
     - id: FloorGoblinSpawn # Goobstation
 
 - type: entityTable
@@ -246,6 +246,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
+    minimumPlayers: 10 # Europa
     startAnnouncementColor: "#18abf5"
     startAudio:
       path: /Audio/_Europa/Announcements/flux.ogg # Europa-Edit
@@ -351,7 +352,7 @@
   - type: StationEvent
     weight: 5
     duration: 1
-    minimumPlayers: 10
+    minimumPlayers: 15 # Europa-Edit | 10 > 15
     eventType: Chaotic # Goobstation
   # Goobstation
   - type: GameRule
@@ -589,6 +590,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
+    minimumPlayers: 8 # Europa
     startAnnouncement: station-event-gas-leak-start-announcement
     startAudio:
       path: /Audio/Announcements/gasleak_start.ogg # Europa-Edit
@@ -974,24 +976,24 @@
     chaosScore: 150
   - type: IonStormRule
 
-- type: entity
-  id: MimicVendorRule
-  parent: BaseGameRule
-  components:
-  - type: StationEvent
-    earliestStart: 0
-    minimumPlayers: 20
-    maxOccurrences: 1 # this event has diminishing returns on interesting-ness, so we cap it
-    weight: 5
-    chaos: # Goobstation
-      Hostile: 20 # for when they're actually properly hostile
-      Hunger: 10
-      Thirst: 10
-    eventType: Neutral # Goobstation
-  # Goobstation
-  - type: GameRule
-    chaosScore: 20
-  - type: MobReplacementRule
+#- type: entity # Europa-Remove
+#  id: MimicVendorRule
+#  parent: BaseGameRule
+#  components:
+#  - type: StationEvent
+#    earliestStart: 0
+#    minimumPlayers: 20
+#    maxOccurrences: 1 # this event has diminishing returns on interesting-ness, so we cap it
+#    weight: 5
+#    chaos: # Goobstation
+#      Hostile: 20 # for when they're actually properly hostile
+#      Hunger: 10
+#      Thirst: 10
+#    eventType: Neutral # Goobstation
+#  # Goobstation
+#  - type: GameRule
+#    chaosScore: 20
+#  - type: MobReplacementRule
 
 - type: entity
   id: GreytideVirus
