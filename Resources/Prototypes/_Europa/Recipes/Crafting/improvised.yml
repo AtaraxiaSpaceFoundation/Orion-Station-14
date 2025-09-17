@@ -1,0 +1,7 @@
+﻿- type: construction
+  id: tinfoilhat
+  graph: TinfoilHat
+  startNode: start
+  targetNode: tinfoilhat
+  category: construction-category-clothing
+  objectType: Item

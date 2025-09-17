@@ -51,7 +51,7 @@
 - type: entity
   parent: BaseFlag
   id: FlagGermanySolfed
-  name: Fegeral Republic of Germany flag
+  name: Federal Republic of Germany flag
   description: The flag of the German Republic under the SolFed authority.
   components:
   - type: Sprite
@@ -141,8 +141,8 @@
 - type: entity
   parent: BaseFlag
   id: FlagNanoTrasen
-  name: Nanotrasen flag
-  description: The official corporate flag of Nanotrasen. Mostly flown as a ceremonial piece, or to mark land on a new frontier.
+  name: NanoTrasen flag
+  description: The official corporate flag of NanoTrasen. Mostly flown as a ceremonial piece, or to mark land on a new frontier.
   components:
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/flags.rsi
@@ -245,3 +245,53 @@
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/flags.rsi
     state: vulp
+
+- type: entity
+  parent: BaseFlag
+  id: FlagWideUnitedEarthGovernment
+  name: United Earth Government wide flag
+  description: Glory to United Earth Government! All hail to United Earth Government! For the humanity!
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/flags_64x32.rsi
+    state: ueg
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/poster_broken.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          FlagWideUnitedEarthGovernmentBroken:
+            min: 1
+            max: 1
+        offset: 0
+
+- type: entity
+  parent: FlagWideUnitedEarthGovernment
+  id: FlagWideUnitedEarthGovernmentBroken
+  name: broken United Earth Government wide flag
+  description: You can't make out anything from the banner's original print. It's ruined.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/flags_64x32.rsi
+    state: ueg_broken
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/poster_broken.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

@@ -8,3 +8,36 @@
     sprite: _Europa/Clothing/Head/Soft/inteq_softhat.rsi
   - type: Clothing
     sprite: _Europa/Clothing/Head/Soft/inteq_softhat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSecuritySideCap
+  name: security side cap
+  description: Security side cap, cool.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Head/Soft/security_side_cap.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/Head/Soft/security_side_cap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUEGCap
+  name: UEG police cap
+  description: Cap of police officers of the UEG, have emblem of the Ministry of Internal Affairs on it.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Soft/ueg.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Soft/ueg.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUEGNavyCap
+  name: marine navy cap
+  description: Cap made of thick camouflage fabric.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Soft/ueg_navy.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Soft/ueg_navy.rsi

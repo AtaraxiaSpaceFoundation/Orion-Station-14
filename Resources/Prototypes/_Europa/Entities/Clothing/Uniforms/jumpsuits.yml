@@ -85,3 +85,124 @@
       sprite: _Europa/Clothing/Uniforms/Jumpsuit/capwhite.rsi
     - type: Clothing
       sprite: _Europa/Clothing/Uniforms/Jumpsuit/capwhite.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGTurtleneck
+  name: UEG turtleneck
+  description: Lightweight and comfortable turtleneck.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_turtleneck.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_turtleneck.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGOfficer
+  name: UEG officer jumpsuit
+  description: Uniform with useless camouflage. It is better not to contact its owners.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_officer.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_officer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGOfficerAlt
+  name: UEG officer uniform
+  description: Officer uniform. Better than any stripes will emphasize your importance and rank.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_officer_alt.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_officer_alt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGNavy
+  name: marine navy uniform
+  description: Jumpsuit made of dense camouflage fabric. Doesn't make you invisible.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_navy.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_navy.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGNavyOfficer
+  name: navy officer uniform
+  description: Navy officer uniform. Better than any stripes will emphasize your importance and rank.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_navy_officer.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_navy_officer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGInspector
+  name: UEG inspector uniform
+  description: Inspector uniform. Better than any stripes will emphasize your importance and rank.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_inspector.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_inspector.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGWhite
+  name: UEG white uniform
+  description: White uniform.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_white.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_white.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGGrey
+  name: UEG grey uniform
+  description: Gray uniform.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_grey.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_grey.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGGreen
+  name: UEG green uniform
+  description: Green uniform.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_green.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_green.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGSpecial
+  name: special force uniform
+  description: Uniform with useless camouflage. It is better not to contact its owners.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_special.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_special.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitUEGFormal
+  name: UEG formal officer uniform
+  description: Uniform with useless camouflage. It is better not to contact its owners.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_formal.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpsuit/ueg_formal.rsi

@@ -1,0 +1,289 @@
+- type: entity
+  parent: Clothing
+  id: ShoulderMarksBase
+  abstract: true
+  name: shoulder strap
+  description: A shoulder strap necessary to access various areas.
+  components:
+  - type: Sprite
+    sprite: _Europa/Objects/Misc/shoulder_marks.rsi
+  - type: Clothing
+    sprite: _Europa/Objects/Misc/shoulder_marks.rsi
+    quickEquip: false
+    slots:
+    - idcard
+  - type: Item
+    heldPrefix: default
+  - type: IdCard
+  - type: Access
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksPrivate
+  name: private shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: private
+  - type: Clothing
+    equippedState: equipped-private
+  - type: IdCard
+    jobTitle: job-title-private
+    jobIcon: JobIconUEGNavy
+  - type: Access
+    tags:
+    - UnitedEarthGovernmentGeneral
+    - UnitedEarthGovernmentMedic
+    - UnitedEarthGovernmentSpecialist
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksCapral
+  name: capral shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: capral
+  - type: Clothing
+    equippedState: equipped-capral
+  - type: IdCard
+    jobTitle: job-title-capral
+    jobIcon: JobIconUEGSpecialist
+  - type: Access
+    tags:
+    - UnitedEarthGovernmentGeneral
+    - UnitedEarthGovernmentMedic
+    - UnitedEarthGovernmentSpecialist
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksSergeant
+  name: sergeant shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: serg
+  - type: Clothing
+    equippedState: equipped-serg
+  - type: IdCard
+    jobTitle: job-title-sergeant
+    jobIcon: JobIconUEGSergant
+  - type: Access
+    tags:
+    - UnitedEarthGovernmentGeneral
+    - UnitedEarthGovernmentMedic
+    - UnitedEarthGovernmentSpecialist
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksUnter
+  name: junior unter-officer shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: unter
+  - type: Clothing
+    equippedState: equipped-unter
+  - type: IdCard
+    jobTitle: job-title-junior_noncommissioned_officer
+    jobIcon: JobIconUEGShtab
+  - type: Access
+    tags:
+    - UnitedEarthGovernmentGeneral
+    - UnitedEarthGovernmentMedic
+    - UnitedEarthGovernmentSpecialist
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksUnterOfficer
+  name: unter-officer shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: unter2
+  - type: Clothing
+    equippedState: equipped-unter2
+  - type: IdCard
+    jobTitle: job-title-noncommissioned_officer
+    jobIcon: JobIconUEGShtab
+  - type: Access
+    tags:
+    - UnitedEarthGovernmentGeneral
+    - UnitedEarthGovernmentMedic
+    - UnitedEarthGovernmentSpecialist
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksBaseOfficer
+  name: officer shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: unter3
+  - type: Clothing
+    equippedState: equipped-unter3
+  - type: IdCard
+    jobTitle: job-title-staff_officer
+    jobIcon: JobIconUEGShtab
+  - type: Access
+    tags:
+    - UnitedEarthGovernmentGeneral
+    - UnitedEarthGovernmentMedic
+    - UnitedEarthGovernmentSpecialist
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksLieutenant
+  name: lieutenant shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: leitenant
+  - type: Clothing
+    equippedState: equipped-leitenant
+  - type: IdCard
+    jobTitle: job-title-lieutenant
+    jobIcon: JobIconUEGLeitenant
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksSeniorLieutenant
+  name: senior lieutenant shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: leitenant2
+  - type: Clothing
+    equippedState: equipped-leitenant2
+  - type: IdCard
+    jobTitle: job-title-senior_lieutenant
+    jobIcon: JobIconUEGLeitenant
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksHauptman
+  name: hauptman shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: hauptman
+  - type: Clothing
+    equippedState: equipped-hauptman
+  - type: IdCard
+    jobTitle: job-title-captain
+    jobIcon: JobIconUEGLeitenant
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksMajor
+  name: major shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: mayor
+  - type: Clothing
+    equippedState: equipped-mayor
+  - type: IdCard
+    jobTitle: job-title-major
+    jobIcon: JobIconUEGCommand
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksLieutenantColonel
+  name: lieutenant colonel shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: podpolk
+  - type: Clothing
+    equippedState: equipped-podpolk
+  - type: IdCard
+    jobTitle: job-title-lieutenant_colonel
+    jobIcon: JobIconUEGCommand
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksColonel
+  name: colonel shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: polk
+  - type: Clothing
+    equippedState: equipped-polk
+  - type: IdCard
+    jobTitle: job-title-colonel
+    jobIcon: JobIconUEGCommand
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksMajorGeneral
+  name: major general shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: generalmayor
+  - type: Clothing
+    equippedState: equipped-generalmayor
+  - type: IdCard
+    jobTitle: job-title-major_general
+    jobIcon: JobIconUEGCommand
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksLieutenantGeneral
+  name: lieutenant general shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: general
+  - type: Clothing
+    equippedState: equipped-general
+  - type: IdCard
+    jobTitle: job-title-lieutenant_general
+    jobIcon: JobIconUEGCommand
+  - type: Access
+    groups:
+    - UnitedEarthGovernment
+
+- type: entity
+  parent: ShoulderMarksBase
+  id: ShoulderMarksColonelGeneral
+  name: colonel general shoulder strap
+  components:
+  - type: Sprite
+    layers:
+    - state: generalpolk
+  - type: Clothing
+    equippedState: equipped-generalpolk
+  - type: IdCard
+    jobTitle: job-title-colonel_general
+    jobIcon: JobIconUEGCommander
+  - type: Access
+    groups:
+    - UnitedEarthGovernment

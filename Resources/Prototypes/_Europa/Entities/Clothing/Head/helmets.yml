@@ -47,10 +47,82 @@
   parent: [ClothingHeadHelmetSwat, BaseMajorContraband]
   id: ClothingHeadHelmetInteQIronTombstone
   name: Iron Tombstone helmet
-  description: Heavy.
+  description: Heavy...
   components:
   - type: Sprite
     sprite: _Europa/Clothing/Head/Helmets/inteq_tombstone.rsi
   - type: Clothing
     sprite: _Europa/Clothing/Head/Helmets/inteq_tombstone.rsi
   - type: FlashImmunity
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetAltyn
+  name: Altyn helmet
+  description: Soviet armored helmet, made with titanium.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/altyn.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/altyn.rsi
+  - type: IngestionBlocker
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.65
+        Piercing: 0.65
+        Heat: 0.65
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetXenonauten
+  name: xenonauten helmet
+  description: Helmet using by UEG marine corp.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/ballistic.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/ballistic.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.4
+        Heat: 0.8
+        Radiation: 0.8
+        Caustic: 0.95
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetUEGBallistic
+  name: UEG ballistic helmet
+  description: Usual helmet.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/ueg_ballistic.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/ueg_ballistic.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.9
+        Heat: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+
+- type: entity
+  parent: [ ClothingHeadHelmetRiot, ClothingHeadHelmetArmoredBase ]
+  id: ClothingHeadHelmetUEGRiot
+  name: light riot helmet
+  description: It's a helmet specifically designed to protect against close range attacks.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Head/Helmets/ueg_riot.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Head/Helmets/ueg_riot.rsi

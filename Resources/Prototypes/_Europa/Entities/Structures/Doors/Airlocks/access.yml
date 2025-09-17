@@ -1,4 +1,4 @@
-﻿#InteQ
+﻿# InteQ
 - type: entity
   parent: AirlockHatchInteQ
   id: AirlockHatchInteQVanguardLocked
@@ -34,3 +34,49 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsInteQVanguardLeader ]
+
+# United Earth Governmenternment
+- type: entity
+  parent: AirlockUEG
+  id: AirlockUEGLocked
+  suffix: United Earth Government, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsUEG ]
+
+- type: entity
+  parent: AirlockUEG
+  id: AirlockUEGCommandLocked
+  suffix: United Earth Government, Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsUEGCommand]
+
+- type: entity
+  parent: WindoorSecureArmoryLocked
+  id: WindoorUEGSpecialistLocked
+  suffix: United Earth Government, Specialist, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsUEGSpecialist ]
+
+- type: entity
+  parent: WindoorSecureArmoryLocked
+  id: WindoorUEGMedicalLocked
+  suffix: United Earth Government, Medical, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsUEGMedic ]
+
+- type: entity
+  parent: WindoorSecureArmoryLocked
+  id: WindoorUEGCommandLocked
+  suffix: United Earth Government, Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsUEGCommand]

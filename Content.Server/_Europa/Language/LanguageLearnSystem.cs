@@ -1,6 +1,7 @@
 using Content.Server._EinsteinEngines.Language;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
+using Content.Shared._EinsteinEngines.Language.Components;
 using Content.Shared.DoAfter;
 using Content.Shared._Europa.Language.Events;
 using Content.Shared._Europa.Language.Components;

@@ -51,3 +51,31 @@
     stateDoorClosed: vanguard_leader_door
   - type: AccessReader
     access: [["InteQVanguardLeader"]]
+
+- type: entity
+  parent: LockerBaseSecure
+  id: LockerUEG
+  name: United Earth Government locker
+  description: A standard-issue EarthGovernment storage unit.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Europa/Structures/Storage/ueg.rsi
+    noRot: true
+    layers:
+    - state: ueg
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: ueg_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: ueg
+    stateDoorOpen: ueg_open
+    stateDoorClosed: ueg_door
+  - type: AccessReader
+    access: [["UnitedEarthGovernmentGeneral"]]

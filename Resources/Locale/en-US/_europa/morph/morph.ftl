@@ -8,3 +8,5 @@ morph-unable-to-remember = You are unable to remember that.
 
 morph-vent-action-success = The weld has come undone!
 morph-remember-action-success = You remembered { $target }.
+
+morph-ambush-blocked = Youre too close to living things.

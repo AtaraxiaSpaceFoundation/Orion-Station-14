@@ -52,3 +52,58 @@
     sprite: _Europa/Clothing/Uniforms/Jumpskirt/white_captain.rsi
   - type: Clothing
     sprite: _Europa/Clothing/Uniforms/Jumpskirt/white_captain.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtUEGOffice
+  name: UEG office skirt
+  description: Office skirt, simple and tasteful.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_office.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_office.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtUEGOfficer
+  name: UEG officer skirt
+  description: Officer skirt, straining with its freedom.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_officer.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_officer.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtUEGFormal
+  name: UEG formal dress
+  description: Formal skirt, suitable for business meetings.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_officer_formal.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_officer_formal.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtUEGNavyOfficer
+  name: UEG navy officer skirt
+  description: Navy officer skirt, row.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_navy_officer.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_navy_officer.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtUEGGrey
+  name: UEG grey skirt
+  description: Unremarkable gray skirt.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_grey.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/Uniforms/Jumpskirt/ueg_grey.rsi

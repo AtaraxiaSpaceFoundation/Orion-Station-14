@@ -1,0 +1,7 @@
+- type: entity
+  parent: Airlock
+  id: AirlockUEG
+  suffix: United Earth Government
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Doors/Airlocks/Standard/UEG.rsi

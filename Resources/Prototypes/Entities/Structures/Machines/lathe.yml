@@ -938,6 +938,7 @@
     - Bedsheets
     # Goobstation Packs
     - ClothingCasualJumpsuits
+    - ClothingCommandSummer
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm

@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Taken from TGStation | bar, botany_food, bread_lies, donk, eat_meat, more_bread, pie, and pizza sprited by Huvy",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "xenomorph_poster1"
+        },
+        {
+            "name": "xenomorph_poster2"
+        },
+        {
+            "name": "bar"
+        },
+        {
+            "name": "botany_food"
+        },
+        {
+            "name": "bread_lies"
+        },
+        {
+            "name": "donk"
+        },
+        {
+            "name": "eat_meat"
+        },
+        {
+            "name": "more_bread"
+        },
+        {
+            "name": "pie"
+        },
+        {
+            "name": "pizza"
+        }
+    ]
+}

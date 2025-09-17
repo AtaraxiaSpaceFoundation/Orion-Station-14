@@ -7,3 +7,23 @@
   - type: Sprite
     sprite: _Europa/Structures/Decoration/banner.rsi
     state: banner_inteq
+
+- type: entity
+  parent: BannerBase
+  id: BannerUnitedEarthGovernment
+  name: United Earth Government banner
+  description: Banner displaying the United Earth Government logo. It looks rather cheap.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Decoration/banner.rsi
+    state: banner_ueg
+
+- type: entity
+  parent: BannerBase
+  id: BannerIndoorUnitedEarthGovernment
+  name: United Earth Government indoor flag
+  description: Flag displaying the United Earth Government logo. It looks rather cheap.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Decoration/banner.rsi
+    state: banner_ueg_alt

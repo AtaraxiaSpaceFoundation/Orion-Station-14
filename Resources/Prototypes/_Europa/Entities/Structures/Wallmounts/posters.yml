@@ -61,9 +61,239 @@
 - type: entity
   parent: PosterBase
   id: PosterContrabandInteQJulie
-  name: hot lizards
+  name: Hot Lizards
   description: Most beautiful lizards in the whole universe, join us!
   components:
   - type: Sprite
     sprite: _Europa/Structures/Wallmounts/Posters/inteq_posters.rsi
     state: inteq_poster7
+
+- type: entity
+  parent: PosterBase
+  id: PosterContrabandLustyXenomorph
+  name: Lusty Xenomorph
+  description: Heretical poster depicting the titular star of an equally heretical book.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: xenomorph_poster1
+
+- type: entity
+  parent: PosterBase
+  id: PosterContrabandBustyBackdoorXenoBabes6
+  name: Busty Backdoor Xeno Babes 6
+  description: Get a load, or give, of these all natural Xenos!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: xenomorph_poster2
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitBarDrinks
+  name: Bar Poster
+  description: The Bartender is always there to hear your woes and get you plastered all at the same time. Go have a visit!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: bar
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitBotanyFood
+  name: Fruit Basket
+  description: Botany is always hard at work! Stop by and enjoy the best they can offer!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: botany_food
+
+- type: entity
+  parent: PosterBase
+  id: PosterContrabandBreadLies
+  name: Bread Lies
+  description: You have been lied to. There is no \"Big Bread.\" It is not real. Please stop looking for it.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: bread_lies
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitHotDonkExplosion
+  name: Donk!
+  description: Bite into a blast of flavour with any of our #1 rated fattening and unhealthy products for your enjoyment! DONK!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: donk
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitEatMeat
+  name: Eat Meat!
+  description: Who needs fruit or veggies? EAT MEAT! Build those muscles and go fight in the arena to show them gains!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: eat_meat
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitMoreBread
+  name: More Bread!
+  description: There is not enough bread! MAKE MORE!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: more_bread
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitPieSlice
+  name: Pie Poster
+  description: Pies are healthy and delicious! Beg your chef to start making some.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: pie
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitPizzaHope
+  name: Pizza Hope
+  description: In the darkest of times there is only one hope, PIZZA! Harass your local Quartermaster to order an emergency crate of pizza now!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/general.rsi
+    state: pizza
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment1
+  name: United Earth Government
+  description: Join the UEG Marine Corps!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster1
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment2
+  name: United Earth Government
+  description: Poster of the united government of the Earth. The poster depicts the coat of arms of the UEG.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster2
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment3
+  name: Future Belongs To Us
+  description: In all ages, Earth has been the center of progress!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster3
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment4
+  name: Earth Needs You
+  description: Agitation poster calling for joining the federal structures of the UEG.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster4
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment5
+  name: Earth Is Our Home
+  description: Propaganda poster, reminding where civilization came from across the galaxy.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster5
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment6
+  name: Join!
+  description: Join the reserve of the Army Special Forces UEG! Become the hero the whole galaxy knows about!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster6
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment7
+  name: Say NO LGBT!
+  description: Say no to the LGBT movement, this movement has a detrimental effect on children and the elderly!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster7
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment8
+  name: United Earth Government
+  description: Join the officer training schools, you will become the commander of entire armies! "We only accept people with higher education, the type of education is not important"
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster8
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment9
+  name: Red Alert!
+  description: Attention citizens, be careful, the enemies of the state are still actively engaged in terrorism, report any possible suspicions in connection with the USSP.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster9
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment10
+  name: Virgin Of Justice
+  description: Government of Earth has always been the most just state. Glory to the Earth!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster10
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment11
+  name: UEG Agitation
+  description: The poster says, "UEG was founded on earth by our great founding fathers, then humanity became one and was able to subjugate the entire galaxy!"
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster11
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment12
+  name: Benefits To Young Mothers
+  description: The Government of the Earth recommends starting families at a young age, thereby developing the future of the Earth and receiving benefits and maternity capital!
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster12
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitUnitedEarthGovernment13
+  name: UEG Recommendation
+  description: USSP began to frequently infiltrate space stations, and it is recommended that, if a communist is detected, immediately report to the local branch of the government agencies of the UEG.
+  components:
+  - type: Sprite
+    sprite: _Europa/Structures/Wallmounts/Posters/UEG.rsi
+    state: poster13

@@ -84,3 +84,113 @@
     sprite: _Europa/Clothing/OuterClothing/Armor/white_captain_carapace.rsi
   - type: Clothing
     sprite: _Europa/Clothing/OuterClothing/Armor/white_captain_carapace.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorUEGVestLight
+  name: UEG light armor vest
+  description: Synthetic armor vest. This one has added ballistic plates.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Armor/ueg_vest_light.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/OuterClothing/Armor/ueg_vest_light.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorUEGVestMedical
+  name: UEG medical armor vest
+  description: Medics armor vest, with little pockets for little things.
+  components:
+    - type: Sprite
+      sprite: _Europa/Clothing/OuterClothing/Armor/ueg_vest_medical.rsi
+    - type: Clothing
+      sprite: _Europa/Clothing/OuterClothing/Armor/ueg_vest_medical.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorUEGTacticalVest
+  name: UEG tactical armor vest
+  description: Synthetic armor vest. This one has added ballistic plates.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Armor/ueg_heavy_armor.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/OuterClothing/Armor/ueg_heavy_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.8
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorXenonautenLight
+  name: light shell armor
+  description: XN-L vest, also known as Xenonauten, a set vest with modular attachments made to work in many enviroments. This one seems to be a light variant.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Armor/chestplate_light.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/OuterClothing/Armor/chestplate_light.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.4
+        Heat: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorXenonautenMedium
+  name: medium shell armor
+  description: XN-M vest, also known as Xenonauten, a set vest with modular attachments made to work in many enviroments. This one seems to be a medium variant.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Armor/chestplate_medium.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/OuterClothing/Armor/chestplate_medium.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Item
+    size: Huge
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorXenonautenHeavy
+  name: heavy shell armor
+  description: XN-H vest, also known as Xenonauten, a set vest with modular attachments made to work in many enviroments. This one seems to be a heavy variant.
+  components:
+  - type: Sprite
+    sprite: _Europa/Clothing/OuterClothing/Armor/chestplate_heavy.rsi
+  - type: Clothing
+    sprite: _Europa/Clothing/OuterClothing/Armor/chestplate_heavy.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.2
+        Slash: 0.2
+        Piercing: 0.2
+        Heat: 0.3
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Item
+    size: Huge
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
