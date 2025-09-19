@@ -273,8 +273,8 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private bool NonMorphInRange(EntityUid uid, MorphComponent component)
     {
-        var xform = Comp<TransformComponent>(uid);
-        foreach (var entity in _lookup.GetEntitiesInRange(xform.MapPosition, component.AmbushBlockRange))
+        var coordinates = _transform.GetMapCoordinates(uid);
+        foreach (var entity in _lookup.GetEntitiesInRange(coordinates, component.AmbushBlockRange))
         {
             if (HasComp<MindContainerComponent>(entity) && !HasComp<MorphComponent>(entity) && !HasComp<GhostComponent>(entity))
             {
