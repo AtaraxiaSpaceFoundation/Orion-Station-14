@@ -505,9 +505,6 @@
     #- ChemistryStatic
     #- SurgeryStatic
     dynamicPacks:
-    # Europa-Start
-    - BodyBagsDynamic
-    # Europa-End
     - AdvancedTools
     #- ScienceEquipment - Goobstation - Moved to Scifab
     #- ScienceExplosives - Goobstation - Moved to Scifab
@@ -531,10 +528,6 @@
     # Einstein Engines Packs
     - Translators
   - type: EmagLatheRecipes
-    # Europa-Start
-    emagStaticPacks:
-    - BodyBagsSyndicateStatic
-    # Europa-End
     emagDynamicPacks:
     - SecurityAmmo
     - SecurityExplosives
@@ -881,6 +874,9 @@
     # Einstein Engines Packs
     - SyringeCase
     dynamicPacks:
+    # Europa-Start
+    - BodyBagsDynamic
+    # Europa-End
     - Chemistry
     # Goobstation Packs
     - Surgery
@@ -898,6 +894,7 @@
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs
     emagStaticPacks:
+    - BodyBagsSyndicateStatic # Europa
     - SyndicateCatridgesStatic
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard

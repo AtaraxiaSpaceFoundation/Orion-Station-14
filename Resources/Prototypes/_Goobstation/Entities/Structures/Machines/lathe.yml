@@ -192,6 +192,9 @@
     - GrenadeTriggersStatic # Goobstation - Roundstart Grenade Tech
     - MiscSignallersStatic
     dynamicPacks:
+    # Europa-Start
+    - BodyBagsDynamic
+    # Europa-End
     - AdvancedTools
     - ScienceEquipment
     - ScienceClothing
@@ -218,6 +221,10 @@
     - Translators
     - TranslatorImplanters
   - type: EmagLatheRecipes
+    # Europa-Start
+    emagStaticPacks:
+    - BodyBagsSyndicateStatic
+    # Europa-End
     emagDynamicPacks:
     - MechBoardsSecurity
     - MechBoardsCargo

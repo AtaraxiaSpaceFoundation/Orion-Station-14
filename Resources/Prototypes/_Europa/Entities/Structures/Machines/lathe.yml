@@ -1,0 +1,42 @@
+- type: entity # Protolathe with all recipes
+  parent: [ Protolathe, SecurityTechFab, SecurityTechFab, AmmoTechFab, MedicalTechFab, EngineeringTechFab, CargoTechFab, ScienceTechFab, ServiceTechFab ]
+  id: ProtolatheAncient
+  name: ancient protolathe
+  suffix: Ancient
+  components:
+  - type: Machine
+    board: ProtolatheAncientMachineCircuitboard
+
+- type: entity # Imprinter with all board recipes
+  parent: CircuitImprinter
+  id: CircuitImprinterAncient
+  name: ancient circuit imprinter
+  suffix: Ancient
+  components:
+  - type: Machine
+    board: CircuitImprinterAncientMachineCircuitboard
+  - type: Lathe
+    staticPacks:
+    - ScienceBoardsStatic
+    - ServiceBoardsStatic
+    - CargoBoardsStatic
+    - MedicalBoardsStatic
+    - EngineeringBoardsStatic
+    - CircuitFloorsStatic
+    # Goob-Start
+    - SharedBoardsStatic
+    - MedicalBoardsStaticGoob
+    - SecurityBoardsStaticGoob
+    # Goob-End
+    dynamicPacks:
+    - EngineeringBoards
+    - CargoBoards
+    - MedicalBoards
+    - ServiceBoards
+    - ScienceBoards
+    - CameraBoards
+    - MechBoards
+    - ShuttleBoards
+    # Goob-Start
+    - SharedBoards
+    # Goob-End
