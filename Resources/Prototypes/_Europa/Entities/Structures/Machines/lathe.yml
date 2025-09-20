@@ -1,11 +1,52 @@
 - type: entity # Protolathe with all recipes
-  parent: [ Protolathe, SecurityTechFab, SecurityTechFab, AmmoTechFab, MedicalTechFab, EngineeringTechFab, CargoTechFab, ScienceTechFab, ServiceTechFab ]
+  parent: Protolathe
   id: ProtolatheAncient
   name: ancient protolathe
   suffix: Ancient
   components:
   - type: Machine
     board: ProtolatheAncientMachineCircuitboard
+  - type: Lathe
+    #staticPacks: - Goobstation - Move static recipes to autolathe
+    #- ChemistryStatic
+    #- SurgeryStatic
+    dynamicPacks:
+    - AdvancedTools
+    - ScienceEquipment
+    - ScienceExplosives
+    - ScienceClothing
+    - PowerCells
+    - ScienceWeapons
+    - Mining
+    - AtmosTools
+    - EngineeringWeapons
+    - Chemistry
+    - Janitor
+    - Instruments
+    - Equipment
+    - FauxTiles
+    # Goob-Start
+    - ServiceWeapons
+    - SpecOpsGoogles
+    - MedicalMisc
+    - MedicalVehiclesAdvanced
+    - UpgradeKits
+    # Goob-End
+    # Einstein-Start
+    - Translators
+    # Einstein-End
+  - type: EmagLatheRecipes
+    emagDynamicPacks:
+    - SecurityAmmo
+    - SecurityExplosives
+    - SecurityEquipment
+    - SecurityWeapons
+    # Goob-Start
+    - SecurityAmmoGoob
+    - SecurityWeaponsGoob
+    - RestraintTechnology
+    - MiningWeapons
+    # Goob-End
 
 - type: entity # Imprinter with all board recipes
   parent: CircuitImprinter
