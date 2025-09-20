@@ -247,6 +247,7 @@
   components:
   - type: StationEvent
     minimumPlayers: 10 # Europa
+    reoccurrenceDelay: 15 # Europa
     startAnnouncementColor: "#18abf5"
     startAudio:
       path: /Audio/_Europa/Announcements/flux.ogg # Europa-Edit
@@ -270,6 +271,7 @@
       max:  30
     chaosScore: 40 # Goobstation
   - type: StationEvent
+    reoccurrenceDelay: 10 # Europa
     startAnnouncementColor: "#18abf5"
     startAudio:
       path: /Audio/_Europa/Announcements/blusp_anomalies.ogg # Europa-Edit
@@ -286,7 +288,7 @@
   components:
   - type: StationEvent
     weight: 2
-    reoccurrenceDelay: 5
+    reoccurrenceDelay: 15 # Europa-Edit | 5 > 15
     earliestStart: 1
     duration: 1
     chaos: # Goobstation
