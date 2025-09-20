@@ -137,6 +137,8 @@
       understands:
       - TauCetiBasic
       - OldFastCodes
+    - type: GlobalAntagonist
+      antagonistPrototype: globalAntagonistInteQ
   - type: RandomHumanoidAppearance
     randomizeName: false
   - type: RandomMetadata
@@ -257,6 +259,8 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
+    - type: GlobalAntagonist # Europa
+      antagonistPrototype: globalAntagonistGhostRole
 
 - type: entity
   parent: SpawnPointInteQ
@@ -286,6 +290,8 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
+    - type: GlobalAntagonist # Europa
+      antagonistPrototype: globalAntagonistGhostRole
 
 - type: entity
   parent: SpawnPointInteQ
@@ -315,6 +321,8 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
+    - type: GlobalAntagonist # Europa
+      antagonistPrototype: globalAntagonistGhostRole
 
 - type: entity
   parent: SpawnPointInteQ
@@ -344,3 +352,5 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
+    - type: GlobalAntagonist # Europa
+      antagonistPrototype: globalAntagonistGhostRole

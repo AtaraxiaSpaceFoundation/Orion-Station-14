@@ -68,3 +68,5 @@
     size: Ginormous
   - type: Unremoveable
     deleteOnDrop: true
+  - type: GlobalAntagonist # Europa
+    antagonistPrototype: globalAntagonistBlob

@@ -168,6 +168,8 @@
       Female: SlaughterDemon
       Unsexed: SlaughterDemon
   - type: ZombieImmune
+  - type: GlobalAntagonist # Europa
+    antagonistPrototype: globalAntagonistSlaughterDemon
 
 # laughter demon
 - type: entity

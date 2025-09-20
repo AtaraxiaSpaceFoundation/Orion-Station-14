@@ -104,6 +104,10 @@
   name: department-Cargo
   description: department-Cargo-description
   color: "#A46106"
+  # Europa-Start
+  weight: -5
+  buttonStyle: ButtonColorCargoDepartment
+  # Europa-End
   roles:
   - CargoTechnician
   - Quartermaster
@@ -114,7 +118,10 @@
   name: department-Civilian
   description: department-Civilian-description
   color: "#9FED58"
-  weight: -10
+  # Europa-Start
+  weight: -4
+  buttonStyle: ButtonColorCivilianDepartment
+  # Europa-End
   roles:
   - Bartender
   - Botanist
@@ -139,6 +146,10 @@
   name: department-CentralCommand
   description: department-CentralCommand-description
   color: "#0c344d"
+  # Europa-Start
+  weight: -1
+  buttonStyle: ButtonColorCentralCommandDepartment
+  # Europa-End
   roles:
   - CentralCommandOfficial
   - CBURN
@@ -160,13 +171,17 @@
   - Diplomat
   - GovernmentMan # Goobstation - End
   editorHidden: true
-  weight: 120
+#  weight: 120 # Europa-Remove
 
 - type: department
   id: Command
   name: department-Command
   description: department-Command-description
   color: "#334E6D"
+  # Europa-Start
+  weight: -2
+  buttonStyle: ButtonColorCommandDepartment
+  # Europa-End
   roles:
   - Captain
   - ChiefEngineer
@@ -189,13 +204,17 @@
   - DeathSquad
   - HecuOperative
   primary: false
-  weight: 100
+#  weight: 100 # Europa-Remove
 
 - type: department
   id: Engineering
   name: department-Engineering
   description: department-Engineering-description
   color: "#EFB341"
+  # Europa-Start
+  weight: -6
+  buttonStyle: ButtonColorEngineeringDepartment
+  # Europa-End
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
@@ -207,6 +226,10 @@
   name: department-Medical
   description: department-Medical-description
   color: "#52B4E9"
+  # Europa-Start
+  weight: -7
+  buttonStyle: ButtonColorMedicalDepartment
+  # Europa-End
   roles:
   - Chemist
   - ChiefMedicalOfficer
@@ -220,7 +243,10 @@
   name: department-Security
   description: department-Security-description
   color: "#DE3A3A"
-  weight: 20
+  # Europa-Start
+  weight: -3
+  buttonStyle: ButtonColorSecurityDepartment
+  # Europa-End
   roles:
   - HeadOfSecurity
   - SecurityCadet
@@ -234,6 +260,10 @@
   name: department-Science
   description: department-Science-description
   color: "#D381C9"
+  # Europa-Start
+  weight: -8
+  buttonStyle: ButtonColorScienceDepartment
+  # Europa-End
   roles:
   - ResearchDirector
   - Scientist
@@ -244,6 +274,10 @@
   name: department-Silicon
   description: department-Silicon-description
   color: "#D381C9"
+  # Europa-Start
+  weight: -9
+  buttonStyle: ButtonColorSiliconDepartment
+  # Europa-End
   roles:
   - Borg
   - StationAi
@@ -253,7 +287,10 @@
   name: department-Specific
   description: department-Specific-description
   color: "#9FED58"
-  weight: 10
+  # Europa-Start
+  weight: -42
+  buttonStyle: ButtonColorSpecificDepartment
+  # Europa-End
   roles:
   - Boxer
   - Reporter
