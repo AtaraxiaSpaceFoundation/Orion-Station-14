@@ -35,7 +35,7 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     private RulesAndInfoWindow? _infoWindow;
 
     [ValidatePrototypeId<GuideEntryPrototype>]
-    private const string DefaultRuleset = "EuropaRuleset";
+    private const string DefaultRuleset = "DefaultRuleset";
 
     public ProtoId<GuideEntryPrototype> RulesEntryId = EuropaRuleset;
 
