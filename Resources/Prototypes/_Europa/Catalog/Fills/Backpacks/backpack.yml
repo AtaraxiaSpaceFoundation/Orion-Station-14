@@ -12,7 +12,7 @@
   id: InteQSizoLeaderEntityTable
   table: !type:AllSelector
     children:
-    - id: BoxSurvival
+    - id: BoxSurvivalSlots
     - id: BoxFlare
       prob: 0.50
     - id: CombatMedipen
@@ -33,7 +33,7 @@
   id: InteQSizoEntityTable
   table: !type:AllSelector
     children:
-    - id: BoxSurvival
+    - id: BoxSurvivalSlots
     - id: BoxFlare
       prob: 0.50
     - id: CombatMedipen

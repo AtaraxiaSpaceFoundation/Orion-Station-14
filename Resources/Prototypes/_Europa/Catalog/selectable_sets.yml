@@ -22,7 +22,7 @@
     - SurvivalMedipen
     - SurvivalKnife
     - DrinkAbsintheBottleFull
-    - BoxSurvival
+    - BoxSurvivalSlots
     - Lantern
     - CircuitImprinterMachineCircuitboard # Make fun
 
@@ -45,7 +45,7 @@
     - OxygenTankFilled
     - ClothingBeltInteQWebbing
     - StimpackMini
-    - BoxSurvival
+    - BoxSurvivalSlots
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
     - CircuitImprinterMachineCircuitboard # Make fun
@@ -67,7 +67,7 @@
     - ClothingBeltMilitaryWebbing
     - OxygenTankFilled
     - StimpackMini
-    - BoxSurvivalSyndicate
+    - BoxSurvivalSlotsSyndicate
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
     - CircuitImprinterMachineCircuitboard # Make fun
@@ -91,7 +91,7 @@
     - BoxFolderCentComClipboard
     - OxygenTankFilled
     - MedkitCombatFilled
-    - BoxSurvival
+    - BoxSurvivalSlots
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
     - CircuitImprinterMachineCircuitboard # Make fun
@@ -133,7 +133,7 @@
     - ToolboxElectricalFilled
     - ToolboxMechanicalFilled
     - OxygenTankFilled
-    - BoxSurvival
+    - BoxSurvivalSlots
     - Lantern
     - WeaponProtoKineticPistol # Pussy-mode
     - CircuitImprinterMachineCircuitboard # Make fun
