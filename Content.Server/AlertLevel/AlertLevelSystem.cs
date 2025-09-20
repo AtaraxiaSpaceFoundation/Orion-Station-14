@@ -238,6 +238,7 @@ public sealed class AlertLevelSystem : EntitySystem
         var messageTitle = new FormattedMessage();
 
         messageTitle.PushTag(new MarkupNode("examineborder", null, null));
+        messageTitle.PushNewline();
         messageTitle.AddText(Loc.GetString("announce-border-line"));
         messageTitle.PushNewline();
 
