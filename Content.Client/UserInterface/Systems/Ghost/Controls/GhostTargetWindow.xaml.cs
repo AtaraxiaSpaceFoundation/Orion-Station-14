@@ -34,10 +34,15 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
     {
 /* // Europa-Remove
         private List<(string, NetEntity)> _warps = new();
-        private string _searchText = string.Empty;
 */
+        private string _searchText = string.Empty;
+
         // Europa-Start
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+
+        private List<GhostWarpPlayer> _originalPlayerWarps = new();
+        private List<GhostWarpPlace> _originalPlaceWarps = new();
+        private List<GhostWarpGlobalAntagonist> _originalAntagonists = new();
 
         private List<GhostWarpPlayer> _playerWarps = new();
         private List<GhostWarpPlace> _placeWarps = new();
@@ -50,15 +55,15 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
         // Europa-End
 
         public event Action<NetEntity>? WarpClicked;
-//        public event Action? OnGhostnadoClicked; // Europa-Remove
+        public event Action? OnGhostnadoClicked;
 
         public GhostTargetWindow()
         {
             IoCManager.InjectDependencies(this); // Europa
             RobustXamlLoader.Load(this);
-//            SearchBar.OnTextChanged += OnSearchTextChanged; // Europa-Remove
+            SearchBar.OnTextChanged += OnSearchTextChanged;
 
-//            GhostnadoButton.OnPressed += _ => OnGhostnadoClicked?.Invoke(); // Europa-Remove
+            GhostnadoButton.OnPressed += _ => OnGhostnadoClicked?.Invoke();
         }
 
         public void Populate() // Europa-Edit | UpdateWarps > Populate
@@ -82,12 +87,11 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             // Europa-Start
             GhostTeleportContainer.DisposeAllChildren();
 
+            _playerWarps = _originalPlayerWarps;
+            _placeWarps = _originalPlaceWarps;
+            _globalAntagonists = _originalAntagonists;
+
             PlayersAllocation();
-
-            _playerWarps = GetSortedPlayers(_playerWarps);
-            _placeWarps = GetSortedPlaces(_placeWarps);
-            _globalAntagonists = GetSortedAntagonists(_globalAntagonists);
-
             AddButtons();
             // Europa-End
         }
@@ -99,9 +103,15 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             AddButtons();
 */
             // Europa-Start
-            _playerWarps = players;
-            _placeWarps = places;
-            _globalAntagonists = antagonists;
+            _originalPlayerWarps = players.ToList();
+            _originalPlaceWarps = places.ToList();
+            _originalAntagonists = antagonists.ToList();
+
+            _playerWarps = _originalPlayerWarps;
+            _placeWarps = _originalPlaceWarps;
+            _globalAntagonists = _originalAntagonists;
+
+            Populate();
             // Europa-End
         }
 
@@ -273,16 +283,30 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
         }
         // Europa-End
 
-/* // Europa-Remove
         private void OnSearchTextChanged(LineEdit.LineEditEventArgs args)
         {
-            _searchText = args.Text;
+            // Europa-Edit-Start
+            _searchText = args.Text.ToLower();
 
-            UpdateVisibleButtons();
-            // Reset scroll bar so they can see the relevant results.
-            GhostScroll.SetScrollValue(Vector2.Zero);
+            GhostTeleportContainer.DisposeAllChildren();
+
+            if (string.IsNullOrEmpty(_searchText))
+            {
+                _playerWarps = _originalPlayerWarps;
+                _placeWarps = _originalPlaceWarps;
+                _globalAntagonists = _originalAntagonists;
+            }
+            else
+            {
+                _playerWarps = GetSortedPlayers(_originalPlayerWarps).Where(p => p.Name.ToLower().Contains(_searchText)).ToList();
+                _placeWarps = GetSortedPlaces(_originalPlaceWarps).Where(p => p.Name.ToLower().Contains(_searchText)).ToList();
+                _globalAntagonists = GetSortedAntagonists(_originalAntagonists).Where(a => a.Name.ToLower().Contains(_searchText)).ToList();
+            }
+            PlayersAllocation();
+
+            AddButtons();
+            // Europa-Edit-End
         }
-*/
 
         // Europa-Start
         private void AddAntagButtons(List<GhostWarpGlobalAntagonist> antags, string text, string styleClass)

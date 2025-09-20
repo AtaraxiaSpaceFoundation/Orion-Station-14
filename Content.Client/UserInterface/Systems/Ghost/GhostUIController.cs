@@ -149,7 +149,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.GhostBarPressed += GhostBarPressed; // Goobstation - Ghost Bar
         Gui.GhostBarWindow.SpawnButtonPressed += GhostBarSpawnPressed; // Goobstation - Ghost Bar
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
-//        Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked; // Europa-Remove
+        Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
         Gui.ReturnToRoundPressed += ReturnToRound; // Europa
 
         UpdateGui();

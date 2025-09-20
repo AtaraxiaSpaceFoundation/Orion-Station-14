@@ -175,10 +175,8 @@ namespace Content.Server.Ghost
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
 
-/* // Europa-Remove
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
-*/
 
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
 
@@ -186,10 +184,8 @@ namespace Content.Server.Ghost
         {
             base.Initialize();
 
-/* // Europa-Remove
             _ghostQuery = GetEntityQuery<GhostComponent>();
             _physicsQuery = GetEntityQuery<PhysicsComponent>();
-*/
 
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
@@ -206,7 +202,7 @@ namespace Content.Server.Ghost
             SubscribeNetworkEvent<GhostWarpsRequestEvent>(OnGhostWarpsRequest);
             SubscribeNetworkEvent<GhostReturnToBodyRequest>(OnGhostReturnToBodyRequest);
             SubscribeNetworkEvent<GhostWarpToTargetRequestEvent>(OnGhostWarpToTargetRequest);
-//            SubscribeNetworkEvent<GhostnadoRequestEvent>(OnGhostnadoRequest); // Europa-Remove
+            SubscribeNetworkEvent<GhostnadoRequestEvent>(OnGhostnadoRequest);
 
             SubscribeLocalEvent<GhostComponent, BooActionEvent>(OnActionPerform);
             SubscribeLocalEvent<GhostComponent, ToggleGhostHearingActionEvent>(OnGhostHearingAction);
@@ -450,26 +446,23 @@ namespace Content.Server.Ghost
                 _physics.SetLinearVelocity(attached, Vector2.Zero, body: physics);
         }
 
-/* // Europa-Remove
         private void OnGhostnadoRequest(GhostnadoRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {} uid
-                || !_ghostQuery.HasComp(uid))
+            if (args.SenderSession.AttachedEntity is not { Valid: true } uid ||
+                !_ghostQuery.HasComp(uid))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to ghostnado without being a ghost.");
                 return;
             }
 
-            if (_followerSystem.GetMostGhostFollowed() is not {} target)
+            if (_followerSystem.GetMostGhostFollowed() is not { } target)
                 return;
 
             WarpTo(uid, target);
         }
-*/
 
-        private List<GhostWarpPlace> GetLocationWarps() // Europa-Edit | WarpTo > GetLocationWarps
+        private void WarpTo(EntityUid uid, EntityUid target) // Europa-Edit
         {
-/* // Europa-Remove
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(uid)} ghost warped to {ToPrettyString(target)}");
 
             if ((TryComp(target, out WarpPointComponent? warp) && warp.Follow) || HasComp<MobStateComponent>(target))
@@ -483,9 +476,11 @@ namespace Content.Server.Ghost
             _transformSystem.AttachToGridOrMap(uid, xform);
             if (_physicsQuery.TryComp(uid, out var physics))
                 _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
-*/
+        }
 
-            // Europa-Start
+        // Europa-Start
+        private List<GhostWarpPlace> GetLocationWarps()
+        {
             var warps = new List<GhostWarpPlace> { };
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
@@ -496,8 +491,8 @@ namespace Content.Server.Ghost
             }
 
             return warps;
-            // Europa-End
         }
+        // Europa-End
 
         private List<GhostWarpPlayer> GetPlayerWarps() // Europa-Edit | GetLocationWarps > GetPlayerWarps
         {
