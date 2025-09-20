@@ -24,7 +24,7 @@
     - DrinkAbsintheBottleFull
     - BoxSurvival
     - Lantern
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitInteQ
@@ -48,7 +48,7 @@
     - BoxSurvival
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitSyndicate
@@ -70,7 +70,7 @@
     - BoxSurvivalSyndicate
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitCentcom
@@ -94,7 +94,7 @@
     - BoxSurvival
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitClown
@@ -115,7 +115,7 @@
     - PumpkinLanternLarge
     - WeaponProtoKineticPistol # Pussy-mode
     - MobHonkBot
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitAssistant
@@ -136,4 +136,4 @@
     - BoxSurvival
     - Lantern
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
