@@ -104,6 +104,8 @@
   - type: Body
     thermalVisibility: false
   - type: UniversalLanguageSpeaker
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistCorticalBorer
 
 - type: entity
   parent: BaseItem

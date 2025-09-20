@@ -95,6 +95,12 @@
   weight: 15
 
 - type: antagonist
+  id: globalAntagonistCorticalBorer
+  name: global-antagonist-cortical-borer-name
+  description: global-antagonist-cortical-borer-description
+  weight: 16
+
+- type: antagonist
   id: globalAntagonistGhostRole
   name: global-antagonist-ghost-role-name
   description: global-antagonist-ghost-role-description

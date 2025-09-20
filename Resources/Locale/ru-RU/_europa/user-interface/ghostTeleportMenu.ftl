@@ -46,6 +46,9 @@ global-antagonist-slaughter-demon-description = Убивать! Убивать! 
 global-antagonist-bingle-name = Бингл
 global-antagonist-bingle-description = Бингл, бингл.
 
+global-antagonist-cortical-borer-name = Кортикальный паразит
+global-antagonist-cortical-borer-description = Убийца в моём сознании.
+
 global-antagonist-ghost-role-name = Вне станционный
 global-antagonist-ghost-role-description = Роли для призраков, чаще всего не несут никакого влияния на станцию.
 

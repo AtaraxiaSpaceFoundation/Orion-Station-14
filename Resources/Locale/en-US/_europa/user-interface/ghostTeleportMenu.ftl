@@ -46,6 +46,9 @@ global-antagonist-slaughter-demon-description = Kill! Kill! Kill!
 global-antagonist-bingle-name = Bingle
 global-antagonist-bingle-description = Bingle, bingle.
 
+global-antagonist-cortical-borer-name = Cortical borer
+global-antagonist-cortical-borer-description = Murder in my mind.
+
 global-antagonist-ghost-role-name = Ghost role
 global-antagonist-ghost-role-description = Ghost roles most often have no effect on the station.
 
