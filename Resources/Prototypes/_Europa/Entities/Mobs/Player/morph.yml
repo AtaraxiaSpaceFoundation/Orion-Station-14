@@ -115,6 +115,8 @@
         damage: 4000
       behaviors:
       - !type:GibBehavior { }
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistMorph
 
 # Pregnant
 - type: entity

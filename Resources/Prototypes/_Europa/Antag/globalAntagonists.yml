@@ -101,6 +101,12 @@
   weight: 16
 
 - type: antagonist
+  id: globalAntagonistMorph
+  name: global-antagonist-morph-name
+  description: global-antagonist-morph-description
+  weight: 17
+
+- type: antagonist
   id: globalAntagonistGhostRole
   name: global-antagonist-ghost-role-name
   description: global-antagonist-ghost-role-description
