@@ -246,7 +246,10 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("wireLayout");
             _prototypeManager.RegisterIgnore("alertLevels");
             _prototypeManager.RegisterIgnore("nukeopsRole");
-            _prototypeManager.RegisterIgnore("stationGoal"); // Europa
+            // Europa-Start
+            _prototypeManager.RegisterIgnore("stationGoal");
+            _prototypeManager.RegisterIgnore("responseForceTeam");
+            // Europa-End
             _prototypeManager.RegisterIgnore("ghostRoleRaffleDecider");
             _prototypeManager.RegisterIgnore("codewordGenerator");
             _prototypeManager.RegisterIgnore("codewordFaction");

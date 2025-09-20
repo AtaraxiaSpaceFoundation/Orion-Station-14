@@ -1,0 +1,19 @@
+# ERT
+- type: responseForceTeam
+  id: ERT
+  responseForceName: response-force-ert-name
+  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  announcementText: response-force-ertcall-annonce
+  announcementTitle: response-force-ertcall-title
+  announcementSoundPath: /Audio/_Europa/Adminbuse/yesert.ogg
+  maxRolesAmount: 8
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: SpawnPointERTLeader
+    - id: SpawnPointERTEngineer
+  responseForceSpawn:
+    - id: SpawnPointERTSecurity
+    - id: SpawnPointERTMedical
+    - id: SpawnPointERTJanitor
