@@ -37,7 +37,7 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     [ValidatePrototypeId<GuideEntryPrototype>]
     private const string DefaultRuleset = "DefaultRuleset";
 
-    public ProtoId<GuideEntryPrototype> RulesEntryId = EuropaRuleset;
+    public ProtoId<GuideEntryPrototype> RulesEntryId = DefaultRuleset;
 
     protected override string SawmillName => "rules";
 
