@@ -1,4 +1,4 @@
-﻿global-antagonist-wizard-name = Волшебник
+﻿global-antagonist-wizard-name = Маг
 global-antagonist-wizard-description = Старый сумашедший из Федерации Магов, обученный смертельным заклинаниям.
 
 global-antagonist-nukeops-name = Ядерный оперативник
@@ -14,7 +14,7 @@ global-antagonist-zombie-name = Зомби
 global-antagonist-zombie-description = Восставший из мертвых под действием вируса.
 
 global-antagonist-dragon-name = Космический дракон
-global-antagonist-dragon-description = Дракон! Я видела дракона!!
+global-antagonist-dragon-description = Дракон! Я вижу дракона!!
 
 global-antagonist-revenant-name = Ревенант
 global-antagonist-revenant-description = Призрачное существо питающееся жизненной силой.
