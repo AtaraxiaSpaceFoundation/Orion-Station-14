@@ -3,9 +3,15 @@
   id: InteQVanguardLeader
   randomizeName: false
   speciesBlacklist:
-    - Diona
-    - SlimePerson
-    - Vox
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
   components:
   - type: AntagImmune
   - type: Loadout
@@ -32,9 +38,15 @@
   id: InteQVanguardOperative
   randomizeName: false
   speciesBlacklist:
-    - Diona
-    - SlimePerson
-    - Vox
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
   components:
   - type: AntagImmune
   - type: Loadout
@@ -61,9 +73,15 @@
   id: InteQVanguardSoldier
   randomizeName: false
   speciesBlacklist:
-    - Diona
-    - SlimePerson
-    - Vox
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
   components:
   - type: AntagImmune
   - type: Loadout
@@ -90,9 +108,15 @@
   id: InteQVanguardMedic
   randomizeName: false
   speciesBlacklist:
-    - Diona
-    - SlimePerson
-    - Vox
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
   components:
   - type: AntagImmune
   - type: Loadout

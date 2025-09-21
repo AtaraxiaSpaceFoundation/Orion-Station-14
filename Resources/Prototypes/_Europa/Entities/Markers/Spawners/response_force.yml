@@ -1,13 +1,46 @@
-﻿- type: entity
+﻿# Code spawner
+- type: entity
   parent: MarkerBase
   id: MarkerResponseForce
   name: spawn response force
   suffix: Response Force
   components:
-    - type: SpawnPoint
-    - type: Sprite
-      sprite: Markers/jobs.rsi
-      layers:
-        - state: green
-        - sprite: Mobs/Animals/regalrat.rsi
-          state: icon
+  - type: SpawnPoint
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Mobs/Animals/regalrat.rsi
+        state: icon
+
+# Spawners
+- type: entity
+  parent: MarkerBase
+  id: SpawnResponseForce
+  categories: [ HideSpawnMenu ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Mobs/Animals/regalrat.rsi
+        state: icon
+
+- type: entity
+  parent: SpawnResponseForce
+  id: ResponseForceSpawnerERTLeaderGreenAlert
+  categories: [ HideSpawnMenu ]
+  name: ERT Leader
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: RandomHumanoidSpawnerERTLeaderGreenAlert
+
+- type: entity
+  parent: SpawnResponseForce
+  id: ResponseForceSpawnerERTSecurityGreenAlert
+  categories: [ HideSpawnMenu ]
+  name: ERT Officer
+  components:
+  - type: GhostRoleMobSpawner
+    prototype: RandomHumanoidSpawnerERTSecurityGreenAlert

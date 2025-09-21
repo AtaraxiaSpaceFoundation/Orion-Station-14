@@ -1,6 +1,6 @@
 # ERT
 - type: responseForceTeam
-  id: ERT
+  id: ERT_GreenAlert
   responseForceName: response-force-ert-name
   shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
@@ -11,9 +11,9 @@
   raffleConfig:
     settings: short
   guaranteedSpawn:
-    - id: SpawnPointERTLeader
-    - id: SpawnPointERTEngineer
+    - id: ResponseForceSpawnerERTLeaderGreenAlert
+    - id: ResponseForceSpawnerERTSecurityGreenAlert
   responseForceSpawn:
-    - id: SpawnPointERTSecurity
-    - id: SpawnPointERTMedical
-    - id: SpawnPointERTJanitor
+    - id: ResponseForceSpawnerERTSecurityGreenAlert
+    - id: ResponseForceSpawnerERTSecurityGreenAlert
+    - id: ResponseForceSpawnerERTSecurityGreenAlert
