@@ -68,3 +68,5 @@
   # - type: GuideHelp
   #   guides:
   #   - XenomorphMaid
+  - type: GlobalAntagonist # Europa
+    antagonistPrototype: globalAntagonistXenomorph

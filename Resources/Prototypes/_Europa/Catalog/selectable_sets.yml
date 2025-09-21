@@ -22,9 +22,9 @@
     - SurvivalMedipen
     - SurvivalKnife
     - DrinkAbsintheBottleFull
-    - BoxSurvival
+    - BoxSurvivalSlots
     - Lantern
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitInteQ
@@ -45,10 +45,10 @@
     - OxygenTankFilled
     - ClothingBeltInteQWebbing
     - StimpackMini
-    - BoxSurvival
+    - BoxSurvivalSlots
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitSyndicate
@@ -67,10 +67,10 @@
     - ClothingBeltMilitaryWebbing
     - OxygenTankFilled
     - StimpackMini
-    - BoxSurvivalSyndicate
+    - BoxSurvivalSlotsSyndicate
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitCentcom
@@ -91,10 +91,10 @@
     - BoxFolderCentComClipboard
     - OxygenTankFilled
     - MedkitCombatFilled
-    - BoxSurvival
+    - BoxSurvivalSlots
     - FlashlightSeclite
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitClown
@@ -115,7 +115,7 @@
     - PumpkinLanternLarge
     - WeaponProtoKineticPistol # Pussy-mode
     - MobHonkBot
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun
 
 - type: selectableSet
   id: HermitAssistant
@@ -133,7 +133,7 @@
     - ToolboxElectricalFilled
     - ToolboxMechanicalFilled
     - OxygenTankFilled
-    - BoxSurvival
+    - BoxSurvivalSlots
     - Lantern
     - WeaponProtoKineticPistol # Pussy-mode
-    - CircuitImprinterMachineCircuitboard # Make fun
+    - CircuitImprinterAncientMachineCircuitboard # Make fun

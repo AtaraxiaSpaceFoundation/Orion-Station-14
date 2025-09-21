@@ -157,7 +157,7 @@
     - Diagonal
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls # Europa-Edit
     base: state
   - type: Icon
     sprite: Structures/Windows/clockwork_diagonal.rsi

@@ -69,6 +69,7 @@
     - SharedBoards
     - CameraBoards
     - ShuttleBoards
+    - ShuttleBoardsGoob
     - BluespaceTheory
     - ScienceClothing
     - UpgradeKits
@@ -133,6 +134,7 @@
     - CargoBoards
     - SharedBoards
     - ShuttleBoards
+    - ShuttleBoardsGoob
     - BluespaceTheory
     - ScienceClothing
   - type: EmagLatheRecipes
@@ -192,6 +194,9 @@
     - GrenadeTriggersStatic # Goobstation - Roundstart Grenade Tech
     - MiscSignallersStatic
     dynamicPacks:
+    # Europa-Start
+    - BodyBagsDynamic
+    # Europa-End
     - AdvancedTools
     - ScienceEquipment
     - ScienceClothing
@@ -209,6 +214,7 @@
     - SharedBoards
     - ScienceBoards
     - ShuttleBoards
+    - ShuttleBoardsGoob
     - MedicalBoardsGoob
     - BluespaceTheory
     - ExperimentalScienceGoob
@@ -218,6 +224,10 @@
     - Translators
     - TranslatorImplanters
   - type: EmagLatheRecipes
+    # Europa-Start
+    emagStaticPacks:
+    - BodyBagsSyndicateStatic
+    # Europa-End
     emagDynamicPacks:
     - MechBoardsSecurity
     - MechBoardsCargo

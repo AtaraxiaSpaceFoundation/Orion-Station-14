@@ -1,0 +1,17 @@
+- type: entity
+  parent: BoxCardboard
+  id: BoxLiberatorLegacy
+  name: liberator's legacy box
+  description: Contains everything necessary for building your own scientific equipment.
+  suffix: Offstation RND
+  components:
+  - type: StorageFill
+    contents:
+    - id: ProtolatheAncientMachineCircuitboard
+    - id: CircuitImprinterAncientMachineCircuitboard
+    - id: ResearchComputerCircuitboard
+    - id: ResearchAndDevelopmentServerMachineCircuitboard
+  - type: Sprite
+    layers:
+    - state: box_science
+    - state: writing_of_doom

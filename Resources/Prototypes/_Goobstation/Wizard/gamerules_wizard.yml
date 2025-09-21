@@ -53,6 +53,8 @@
       - type: NpcFactionMember
         factions:
         - Wizard
+      - type: GlobalAntagonist # Europa
+        antagonistPrototype: globalAntagonistWizard
   - type: AntagLoadProfileRule
     speciesOverride: Human
     speciesOverrideBlacklist:
@@ -135,6 +137,8 @@
       - type: NpcFactionMember
         factions:
         - Wizard
+      - type: GlobalAntagonist # Europa
+        antagonistPrototype: globalAntagonistWizard
 
 - type: entity
   parent: BaseGameRule

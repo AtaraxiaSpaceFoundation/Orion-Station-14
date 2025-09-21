@@ -127,6 +127,8 @@
     - type: GuideHelp
       guides:
       - Blob
+#    - type: GlobalAntagonist # Europa | Disabled because spam
+#      antagonistPrototype: globalAntagonistBlob
 
 # Blobbernaut
 - type: entity
@@ -235,6 +237,8 @@
     - type: GuideHelp
       guides:
       - Blob
+    - type: GlobalAntagonist # Europa
+      antagonistPrototype: globalAntagonistBlob
 
 # Observer
 - type: entity
@@ -313,3 +317,5 @@
       defaultChannel: Blobmind
       channels:
       - Blobmind
+    - type: GlobalAntagonist # Europa
+      antagonistPrototype: globalAntagonistBlob

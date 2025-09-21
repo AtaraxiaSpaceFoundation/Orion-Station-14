@@ -67,11 +67,11 @@
     bleedReductionAmount: 2 # bleeding stops faster
   - type: MovementSpeedModifier
     baseWalkSpeed : 1.9
-    baseSprintSpeed : 5
+    baseSprintSpeed : 4.2
   - type: Tag
     tags:
     - Meat
-  - type: ThermalVision
+  - type: ThermalVision # Maybe remove
     color: "#ae65bf"
     lightRadius: 15
     activateSound: null
@@ -104,6 +104,8 @@
   - type: Body
     thermalVisibility: false
   - type: UniversalLanguageSpeaker
+  - type: GlobalAntagonist
+    antagonistPrototype: globalAntagonistCorticalBorer
 
 - type: entity
   parent: BaseItem

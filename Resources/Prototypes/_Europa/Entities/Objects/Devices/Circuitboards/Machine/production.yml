@@ -1,0 +1,7 @@
+- type: entity
+  parent: ProtolatheMachineCircuitboard
+  id: ProtolatheAncientMachineCircuitboard
+
+- type: entity
+  parent: CircuitImprinterMachineCircuitboard
+  id: CircuitImprinterAncientMachineCircuitboard

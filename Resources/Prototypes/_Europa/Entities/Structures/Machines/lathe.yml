@@ -1,0 +1,81 @@
+- type: entity # Protolathe with all recipes
+  parent: Protolathe
+  id: ProtolatheAncient
+  name: ancient protolathe
+  suffix: Ancient
+  components:
+  - type: Machine
+    board: ProtolatheAncientMachineCircuitboard
+  - type: Lathe
+    #staticPacks: - Goobstation - Move static recipes to autolathe
+    #- ChemistryStatic
+    #- SurgeryStatic
+    dynamicPacks:
+    - AdvancedTools
+    - ScienceEquipment
+    - ScienceClothing
+    - PowerCells
+    - ScienceWeapons
+    - Mining
+    - AtmosTools
+    - EngineeringWeapons
+    - Chemistry
+    - Janitor
+    - Instruments
+    - Equipment
+    - FauxTiles
+    # Goob-Start
+    - SpecOpsGoogles
+    - MedicalMisc
+    - MedicalVehiclesAdvanced
+    - UpgradeKits
+    # Goob-End
+    # Einstein-Start
+    - Translators
+    # Einstein-End
+  - type: EmagLatheRecipes
+    emagDynamicPacks:
+    - SecurityAmmo
+    - SecurityExplosives
+    - SecurityEquipment
+    - SecurityWeapons
+    # Goob-Start
+    - SecurityAmmoGoob
+    - SecurityWeaponsGoob
+    - RestraintTechnology
+    - MiningWeapons
+    # Goob-End
+
+- type: entity # Imprinter with all board recipes
+  parent: CircuitImprinter
+  id: CircuitImprinterAncient
+  name: ancient circuit imprinter
+  suffix: Ancient
+  components:
+  - type: Machine
+    board: CircuitImprinterAncientMachineCircuitboard
+  - type: Lathe
+    staticPacks:
+    - ScienceBoardsStatic
+    - ServiceBoardsStatic
+    - CargoBoardsStatic
+    - MedicalBoardsStatic
+    - EngineeringBoardsStatic
+    - CircuitFloorsStatic
+    # Goob-Start
+    - SharedBoardsStatic
+    - MedicalBoardsStaticGoob
+    - SecurityBoardsStaticGoob
+    # Goob-End
+    dynamicPacks:
+    - EngineeringBoards
+    - CargoBoards
+    - MedicalBoards
+    - ServiceBoards
+    - ScienceBoards
+    - CameraBoards
+    - MechBoards
+    - ShuttleBoards
+    # Goob-Start
+    - SharedBoards
+    # Goob-End

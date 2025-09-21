@@ -192,3 +192,5 @@
       Acidic: [Touch]
   - type: WeakToHoly # Goobstation Shitchap
     alwaysTakeHoly: true
+  - type: GlobalAntagonist # Europa
+    antagonistPrototype: globalAntagonistRevenant
