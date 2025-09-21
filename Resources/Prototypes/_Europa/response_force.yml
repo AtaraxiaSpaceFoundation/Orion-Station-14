@@ -1,13 +1,13 @@
 # ERT
 - type: responseForceTeam
   id: ERT_GreenAlert
-  responseForceName: response-force-ert-name
+  responseForceName: response-force-ert-green-alert-name
+  announcementTitle: response-force-ert-green-alert-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  announcementSoundPath: /Audio/_Europa/Adminbuse/yesert.ogg
   shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  announcementText: response-force-ertcall-annonce
-  announcementTitle: response-force-ertcall-title
-  announcementSoundPath: /Audio/_Europa/Adminbuse/yesert.ogg
-  maxRolesAmount: 8
   raffleConfig:
     settings: short
   guaranteedSpawn:
