@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Content.Server._Europa.ResponseForce;
 using Content.Server.Ghost.Roles.Components;
+using Content.Shared.CCVar;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -32,6 +33,8 @@ public sealed class ResponseForceTest
         var entSysManager = server.ResolveDependency<IEntitySystemManager>();
         var entMan = server.EntMan;
         var responseForceSystem = entSysManager.GetEntitySystem<ResponseForceSystem>();
+        var cfg = server.ResolveDependency<Robust.Shared.Configuration.IConfigurationManager>();
+        cfg.SetCVar(CCVars.ResponseForceDelay, 0);
 
         // Try to spawn every ResponseForceTeam
         await server.WaitAssertion(() =>
@@ -44,7 +47,7 @@ public sealed class ResponseForceTest
                 var total = teamProto.GuaranteedSpawn.Count + responseForceSystem.GetCount(teamProto);
                 total -= teamProto.GuaranteedSpawn.Count(spawnEntry => spawnEntry.SpawnProbability < 1);
 
-                Assert.That(responseForceSystem.CallResponseForce(teamProto));
+                Assert.That(responseForceSystem.CallResponseForce(new ProtoId<ResponseForceTeamPrototype>(teamProto.ID)));
 
                 Assert.Multiple(() =>
                 {
