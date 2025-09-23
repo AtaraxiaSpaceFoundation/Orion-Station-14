@@ -327,7 +327,6 @@ public sealed class ResponseForceSystem : EntitySystem
     private void DispatchAnnouncement(ResponseForceTeamPrototype proto)
     {
         var stations = _stationSystem.GetStations();
-        var playTts = false;
 
         if (stations.Count == 0)
             return;
@@ -336,16 +335,12 @@ public sealed class ResponseForceSystem : EntitySystem
         if (proto.AnnouncementText == null || proto.AnnouncementTitle == null)
             return;
 
-        // No SoundSpecifier provided - play standard announcement sound
-        if (proto.Sound == default!)
-            playTts = true;
-
         foreach (var station in stations)
         {
             _chatSystem.DispatchStationAnnouncement(station,
                 Loc.GetString(proto.AnnouncementText),
                 Loc.GetString(proto.AnnouncementTitle),
-                playTts,
+                playDefaultSound: false,
                 proto.Sound);
         }
     }
