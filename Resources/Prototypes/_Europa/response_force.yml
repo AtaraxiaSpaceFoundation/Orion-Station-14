@@ -5,7 +5,6 @@
   announcementTitle: response-force-ert-green-alert-call-title
   announcementText: response-force-call-annonce
   maxRolesAmount: 8
-  announcementSoundPath: /Audio/_Europa/Adminbuse/yesert.ogg
   shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
@@ -14,6 +13,6 @@
     - id: RandomHumanoidSpawnerERTLeaderGreenAlert
     - id: RandomHumanoidSpawnerERTSecurityGreenAlert
   responseForceSpawn:
-    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
-    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
-    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
+    - id: RandomHumanoidSpawnerERTJanitorGreenAlert
+    - id: RandomHumanoidSpawnerERTEngineerGreenAlert
+    - id: RandomHumanoidSpawnerERTMedicalGreenAlert

@@ -57,7 +57,7 @@ public sealed partial class ResponseForceTeamPrototype : IPrototype, IInheriting
     /// Announcement sound for the Response Force.
     /// </summary>
     [DataField]
-    public SoundSpecifier? AnnouncementSoundPath;
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Europa/Adminbuse/yesert.ogg");
 
     /// <summary>
     /// На какое количество игроков будет приходиться спавн ещё одной гост роли.

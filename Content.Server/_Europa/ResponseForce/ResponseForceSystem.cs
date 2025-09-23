@@ -337,7 +337,7 @@ public sealed class ResponseForceSystem : EntitySystem
             return;
 
         // No SoundSpecifier provided - play standard announcement sound
-        if (proto.AnnouncementSoundPath == default!)
+        if (proto.Sound == default!)
             playTts = true;
 
         foreach (var station in stations)
@@ -346,7 +346,7 @@ public sealed class ResponseForceSystem : EntitySystem
                 Loc.GetString(proto.AnnouncementText),
                 Loc.GetString(proto.AnnouncementTitle),
                 playTts,
-                proto.AnnouncementSoundPath);
+                proto.Sound);
         }
     }
 

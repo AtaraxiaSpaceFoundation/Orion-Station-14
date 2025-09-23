@@ -13,7 +13,6 @@
   - Plasmaman
   - Shadowkin
   components:
-  - type: AntagImmune
   - type: RandomMetadata
     nameSegments:
     - NamesMilitaryFirst
@@ -41,6 +40,16 @@
     implants: [ RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
 
 # ERT | CODE ALERTS
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderGreenAlert
+  suffix: ERT Leader, Green alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ERTLeader_GreenAlert
+
 - type: randomHumanoidSettings
   parent: ERTNanoTrasen
   id: ERTLeader_GreenAlert
@@ -67,6 +76,73 @@
     - NamesMilitaryFirstLeader
     - NamesMilitaryLast
 
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorGreenAlert
+  suffix: ERT Janitor, Green alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ERTJanitor_GreenAlert
+
+- type: randomHumanoidSettings
+  parent: ERTNanoTrasen
+  id: ERTJanitor_GreenAlert
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-janitor-name
+    description: ghost-role-information-ert-janitor-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTJanitor
+  - type: Loadout
+    prototypes: [ ERTJanitorGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerGreenAlert
+  suffix: ERT Engineer, Green alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ERTEngineer_GreenAlert
+
+- type: randomHumanoidSettings
+  parent: ERTNanoTrasen
+  id: ERTEngineer_GreenAlert
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-engineer-name
+    description: ghost-role-information-ert-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTEngineer
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000 # ten hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # five hours
+  - type: Loadout
+    prototypes: [ ERTEngineerGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityGreenAlert
+  suffix: ERT Security, Green alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ERTSecurity_GreenAlert
+
 - type: randomHumanoidSettings
   parent: ERTNanoTrasen
   id: ERTSecurity_GreenAlert
@@ -81,28 +157,28 @@
   - type: Loadout
     prototypes: [ ERTSecurityGear ]
     roleLoadout: [ RoleSurvivalExtended ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesMilitaryFirstLeader
-    - NamesMilitaryLast
 
-# Spawners
 - type: entity
-  id: RandomHumanoidSpawnerERTLeaderGreenAlert
-  suffix: ERT Leader, Green alert
+  id: RandomHumanoidSpawnerERTMedicalGreenAlert
+  suffix: ERT Medic, Green alert
   components:
   - type: Sprite
     sprite: _Europa/Icons/inteq.rsi
     state: logo
   - type: RandomHumanoidSpawner
-    settings: ERTLeader_GreenAlert
+    settings: ERTMedical_GreenAlert
 
-- type: entity
-  id: RandomHumanoidSpawnerERTSecurityGreenAlert
-  suffix: ERT Security, Green alert
+- type: randomHumanoidSettings
+  parent: ERTNanoTrasen
+  id: ERTMedical_GreenAlert
   components:
-  - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
-    state: logo
-  - type: RandomHumanoidSpawner
-    settings: ERTSecurity_GreenAlert
+  - type: GhostRole
+    name: ghost-role-information-ert-medical-name
+    description: ghost-role-information-ert-medical-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTMedical
+  - type: Loadout
+    prototypes: [ ERTMedicalGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
