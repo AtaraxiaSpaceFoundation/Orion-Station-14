@@ -1,7 +1,13 @@
 - type: entity
   parent: ProtolatheMachineCircuitboard
   id: ProtolatheAncientMachineCircuitboard
+  components:
+  - type: MachineBoard
+    prototype: ProtolatheAncient
 
 - type: entity
   parent: CircuitImprinterMachineCircuitboard
   id: CircuitImprinterAncientMachineCircuitboard
+  components:
+  - type: MachineBoard
+    prototype: CircuitImprinterAncient
