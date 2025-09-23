@@ -19,6 +19,8 @@
     - NamesMilitaryFirst
     - NamesMilitaryLast
     nameFormat: name-format-ert
+  - type: RandomHumanoidAppearance
+    randomizeName: false
   - type: NpcFactionMember
     factions:
     - NanoTrasen
@@ -27,10 +29,20 @@
     - TauCetiBasic
     understands:
     - TauCetiBasic
+  - type: GhostTakeoverAvailable
+  - type: MindShield
+  - type: AntagImmune
+
+- type: randomHumanoidSettings
+  parent: ResponseForce
+  id: ERTNanoTrasen
+  components:
+  - type: AutoImplant
+    implants: [ RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
 
 # ERT | CODE ALERTS
 - type: randomHumanoidSettings
-  parent: [ ResponseForce, CentcommHumanoid ]
+  parent: ERTNanoTrasen
   id: ERTLeader_GreenAlert
   components:
   - type: GhostRole
@@ -54,11 +66,9 @@
     nameSegments:
     - NamesMilitaryFirstLeader
     - NamesMilitaryLast
-  - type: AutoImplant
-    implants: [ RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
 
 - type: randomHumanoidSettings
-  parent: [ ResponseForce, CentcommHumanoid ]
+  parent: ERTNanoTrasen
   id: ERTSecurity_GreenAlert
   components:
   - type: GhostRole
@@ -75,8 +85,6 @@
     nameSegments:
     - NamesMilitaryFirstLeader
     - NamesMilitaryLast
-  - type: AutoImplant
-    implants: [ RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
 
 # Spawners
 - type: entity

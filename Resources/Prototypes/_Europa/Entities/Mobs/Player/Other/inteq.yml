@@ -1,6 +1,6 @@
 # Settings
 - type: randomHumanoidSettings
-  id: InteQVanguardLeader
+  id: InteQVanguard
   randomizeName: false
   speciesBlacklist:
   - Monkey
@@ -14,6 +14,30 @@
   - Shadowkin
   components:
   - type: AntagImmune
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardNamesPrefix
+    - NamesMilitaryLast
+    nameFormat: name-format-standard
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: NpcFactionMember
+    factions:
+    - InteQ
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - OldFastCodes
+    understands:
+    - TauCetiBasic
+    - OldFastCodes
+  - type: GlobalAntagonist # Europa
+    antagonistPrototype: globalAntagonistInteQ
+
+- type: randomHumanoidSettings
+  parent: InteQVanguard
+  id: InteQVanguardLeader
+  components:
   - type: Loadout
     prototypes: [ InteQVanguardLeaderGear ]
   - type: RandomMetadata
@@ -21,181 +45,65 @@
     - InteQVanguardLeaderNamesPrefix
     - NamesMilitaryLast
     nameFormat: name-format-standard
-  - type: NpcFactionMember
-    factions:
-      - InteQ
-  - type: LanguageKnowledge
-    speaks:
-    - TauCetiBasic
-    - OldFastCodes
-    understands:
-    - TauCetiBasic
-    - OldFastCodes
-  - type: GlobalAntagonist # Europa
-    antagonistPrototype: globalAntagonistInteQ
 
 - type: randomHumanoidSettings
+  parent: InteQVanguard
   id: InteQVanguardOperative
-  randomizeName: false
-  speciesBlacklist:
-  - Monkey
-  - Kobold
-  - Abductor
-  - IPC
-  - Diona
-  - Vox
-  - Gingerbread
-  - Plasmaman
-  - Shadowkin
   components:
-  - type: AntagImmune
   - type: Loadout
     prototypes: [ InteQVanguardOperativeGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - InteQVanguardNamesPrefix
-    - NamesMilitaryLast
-    nameFormat: name-format-standard
-  - type: NpcFactionMember
-    factions:
-      - InteQ
-  - type: LanguageKnowledge
-    speaks:
-    - TauCetiBasic
-    - OldFastCodes
-    understands:
-    - TauCetiBasic
-    - OldFastCodes
-  - type: GlobalAntagonist # Europa
-    antagonistPrototype: globalAntagonistInteQ
 
 - type: randomHumanoidSettings
+  parent: InteQVanguard
   id: InteQVanguardSoldier
-  randomizeName: false
-  speciesBlacklist:
-  - Monkey
-  - Kobold
-  - Abductor
-  - IPC
-  - Diona
-  - Vox
-  - Gingerbread
-  - Plasmaman
-  - Shadowkin
   components:
-  - type: AntagImmune
   - type: Loadout
     prototypes: [ InteQVanguardSoldierGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - InteQVanguardNamesPrefix
-    - NamesMilitaryLast
-    nameFormat: name-format-standard
-  - type: NpcFactionMember
-    factions:
-      - InteQ
-  - type: LanguageKnowledge
-    speaks:
-    - TauCetiBasic
-    - OldFastCodes
-    understands:
-    - TauCetiBasic
-    - OldFastCodes
-  - type: GlobalAntagonist # Europa
-    antagonistPrototype: globalAntagonistInteQ
 
 - type: randomHumanoidSettings
+  parent: InteQVanguard
   id: InteQVanguardMedic
-  randomizeName: false
-  speciesBlacklist:
-  - Monkey
-  - Kobold
-  - Abductor
-  - IPC
-  - Diona
-  - Vox
-  - Gingerbread
-  - Plasmaman
-  - Shadowkin
   components:
-  - type: AntagImmune
   - type: Loadout
     prototypes: [ InteQVanguardMedicGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - InteQVanguardNamesPrefix
-    - NamesMilitaryLast
-    nameFormat: name-format-standard
-  - type: NpcFactionMember
-    factions:
-      - InteQ
-  - type: LanguageKnowledge
-    speaks:
-    - TauCetiBasic
-    - OldFastCodes
-    understands:
-    - TauCetiBasic
-    - OldFastCodes
-  - type: GlobalAntagonist # Europa
-    antagonistPrototype: globalAntagonistInteQ
 
 # Spawners
 - type: entity
   id: RandomHumanoidSpawnerInteQVanguardLeader
   name: InteQ vanguard leader spawner
   components:
-    - type: Sprite
-      sprite: _Europa/Icons/inteq.rsi
-      state: logo
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardLeaderNamesPrefix
-      - NamesMilitaryLast
-      nameFormat: name-format-standard
-    - type: RandomHumanoidSpawner
-      settings: InteQVanguardLeader
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardLeader
 
 - type: entity
   id: RandomHumanoidSpawnerInteQVanguardOperative
   name: InteQ vanguard operative spawner
   components:
-    - type: Sprite
-      sprite: _Europa/Icons/inteq.rsi
-      state: logo
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NamesMilitaryLast
-      nameFormat: name-format-standard
-    - type: RandomHumanoidSpawner
-      settings: InteQVanguardOperative
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardOperative
 
 - type: entity
   id: RandomHumanoidSpawnerInteQVanguardSoldier
   name: InteQ vanguard soldier spawner
   components:
-    - type: Sprite
-      sprite: _Europa/Icons/inteq.rsi
-      state: logo
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NamesMilitaryLast
-      nameFormat: name-format-standard
-    - type: RandomHumanoidSpawner
-      settings: InteQVanguardSoldier
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardSoldier
 
 - type: entity
   id: RandomHumanoidSpawnerInteQVanguardMedic
   name: InteQ vanguard medic spawner
   components:
-    - type: Sprite
-      sprite: _Europa/Icons/inteq.rsi
-      state: logo
-    - type: RandomMetadata
-      nameSegments:
-      - InteQVanguardNamesPrefix
-      - NamesMilitaryLast
-      nameFormat: name-format-standard
-    - type: RandomHumanoidSpawner
-      settings: InteQVanguardMedic
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardMedic

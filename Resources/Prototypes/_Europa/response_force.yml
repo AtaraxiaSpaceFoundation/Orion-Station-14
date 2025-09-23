@@ -11,9 +11,9 @@
   raffleConfig:
     settings: short
   guaranteedSpawn:
-    - id: ResponseForceSpawnerERTLeaderGreenAlert
-    - id: ResponseForceSpawnerERTSecurityGreenAlert
+    - id: RandomHumanoidSpawnerERTLeaderGreenAlert
+    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
   responseForceSpawn:
-    - id: ResponseForceSpawnerERTSecurityGreenAlert
-    - id: ResponseForceSpawnerERTSecurityGreenAlert
-    - id: ResponseForceSpawnerERTSecurityGreenAlert
+    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
+    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
+    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
