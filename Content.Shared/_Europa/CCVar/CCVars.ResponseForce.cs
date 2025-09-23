@@ -9,5 +9,5 @@ namespace Content.Shared.CCVar;
 public sealed partial class CCVars
 {
     public static readonly CVarDef<int> ResponseForceDelay =
-        CVarDef.Create("specforce.delay", 2, CVar.SERVERONLY);
+        CVarDef.Create("specforce.delay", 0, CVar.SERVERONLY);
 }
