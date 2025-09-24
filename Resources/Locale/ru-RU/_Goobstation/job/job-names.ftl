@@ -22,6 +22,7 @@ job-name-navycaptain = капитан ВКФ
 job-name-diplomat = дипломат НаноТрейзен
 job-name-inspector = инспектор ЦК
 job-name-nct = наставник ЦК
+job-name-special-operations-officer = офицер спецопераций
 
 # Syndicate
 
@@ -30,8 +31,8 @@ job-name-highcommander = Офицер Синдиката
 # Half Life
 
 job-name-hecu = агент ХЕКУ
-job-name-governmentman = Г-Мен
-job-name-gman = Г-Мен
+job-name-governmentman = Джи-Мэн
+job-name-gman = Джи-Мэн
 
 # Misc
 
@@ -48,7 +49,7 @@ JobNavyOfficer = офицер ЦК
 JobNavyOfficerUndercover = офицер под прикрытием
 JobNavyCaptain = капитан ВКФ
 JobDiplomat = дипломат НаноТрейзен
-JobGovernmentMan = Г-Мен
+JobGovernmentMan = Джи-Мэн
 JobConquest = конквест
 JobInspector = инспектор ЦК
 JobMercenaryCaptain = капитан Наёмников

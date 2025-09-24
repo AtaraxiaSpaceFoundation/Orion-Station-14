@@ -24,6 +24,7 @@ chat-emote-msg-trill = дрожжит!
 chat-emote-msg-warble = поёт!
 chat-emote-msg-wurble = журчит!
 chat-emote-msg-mars = марс.
+chat-emote-msg-bagawk = багаукс!
 # Misc
 emote-fart-not-loaded = Вы не готовы пердеть!
 emote-fart-already-loaded = Вы уже готовы пердеть!

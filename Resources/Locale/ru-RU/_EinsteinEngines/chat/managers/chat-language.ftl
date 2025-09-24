@@ -5,7 +5,7 @@ chat-language-RootSpeak-name = Корнеречь
 chat-language-Nekomimetic-name = Неко
 chat-language-Draconic-name = Драконовый
 chat-language-Azaziba-name = Синта'Азазиба
-chat-language-SolCommon-name = Сол-Коммон
+chat-language-SolCommon-name = Общесолнечный
 chat-language-NovuNederic-name = Ново-Недирик
 chat-language-TauCetiBasic-name = Межгалактический
 chat-language-Tradeband-name = Трейдбэнд
@@ -23,6 +23,8 @@ chat-language-Xeeplian-name = Ксиплианский
 
 # Дополнительные языки
 
+chat-language-Schechi-name = Шшечи
+chat-language-NewKinPidgin-name = Ка'ракк
 chat-language-NalRasan-name = Наль'расаан
 chat-language-SiikTajr-name = Сиик'таджр
 chat-language-SiikMaas-name = Сиик'маас

@@ -20,7 +20,7 @@ ghost-role-information-SyndiRoach-rules = Ты — [color=red][bold]команд
 ghost-role-information-skibidi-toilet-name = Скибиди Туалет
 ghost-role-information-skibidi-toilet-description = Уничтожай людей своим скибиди-огайо риццем.
 ghost-role-information-skibidi-toilet-rules = Ты — [color=red][bold]враг[/bold][/color] с целью уничтожить как можно больше огайоан.
-ghost-role-information-Hecu-name = Оперативник HECU
+ghost-role-information-Hecu-name = Оперативник ХЕКУ
 ghost-role-information-Hecu-description = Центральное командование поручило задание.
 ghost-role-information-Hecu-rules = Ты обязан выполнять приказы своего начальника, фактически являясь его [color=#6495ed][bold]личным агентом[/bold][/color].
 ghost-role-information-lootbug-name = ЛутБаг
@@ -92,3 +92,5 @@ blob-carrier-role-name-token = Носитель Блоба (Токен)
 abductor-lone-ghost-role-name-token = Одинокий Абдуктор (Токен)
 roles-wizard-name-token = Волшебник (Токен)
 ghost-role-information-ancient-rogue-king-name-token = Древний ксено король-отступник (Токен)
+roles-slaughter-demon-name-token = Демон резни (Токен)
+roles-laughter-demon-name-token = Демон смеха (Токен)

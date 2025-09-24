@@ -89,13 +89,13 @@ public sealed class ClowncarSystem : SharedClowncarSystem
         if (vehicle.Driver == null)
         {
             AlternativeVerb verb = new();
-            verb.Text = "Enter Driver seat";
+            verb.Text = Loc.GetString("enter-driver-seat"); // Europa-Edit | Localize
             verb.Act = () => EnterDriverSeatVerb(uid, verbs.User, component);
             verbs.Verbs.Add(verb);
         }
 
         AlternativeVerb verb2 = new();
-        verb2.Text = "Open Trunk";
+        verb2.Text = Loc.GetString("open-trunk"); // Europa-Edit | Localize
         verb2.Act = () => OpenTrunkVerb(uid, verbs.User, component);
         verbs.Verbs.Add(verb2);
     }

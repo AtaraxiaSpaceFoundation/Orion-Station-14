@@ -15,7 +15,7 @@ ent-DrinkMugwortTeaGlass = { ent-DrinkGlass }
 
 ent-EverfullMug = неиссякающая кружка
     .desc = Зачарованная кружка, которая автоматически наполняется омнизином.
-ent-WizardIDCard = ID-карта пассажира
+ent-WizardIDCard = ID-карта ассистента
     .suffix = Маг
     .desc = { ent-AgentIDCard.desc }
 ent-CrowbarWizard = { ent-BaseCrowbar }

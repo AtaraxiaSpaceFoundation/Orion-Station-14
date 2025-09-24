@@ -3,4 +3,4 @@ ent-BaseBarrel = черная бочка
 ent-BarrelPlanks = { ent-BaseBarrel }
     .desc = { ent-BaseBarrel.desc }
 ent-BarrelFire = горящая бочка
-    .desc = Идеально теплое для совершенно безработных!
+    .desc = Идеально тёплая для бездомных!

@@ -110,9 +110,9 @@ loadout-group-mime-envirosuit = экокостюм мима
 loadout-group-mime-envirogloves = экоперчатки мима
 loadout-group-mime-gloves = перчатки мима
 # Assistant
-loadout-group-assistant-envirohelm = экошлем пассажира
-loadout-group-assistant-envirosuit = экокостюм пассажира
-loadout-group-assistant-envirogloves = экоперчатки пассажира
+loadout-group-assistant-envirohelm = экошлем ассистента
+loadout-group-assistant-envirosuit = экокостюм ассистента
+loadout-group-assistant-envirogloves = экоперчатки ассистента
 # Musician
 loadout-group-musician-envirohelm = экошлем музыканта
 loadout-group-musician-envirosuit = экокостюм музыканта
