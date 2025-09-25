@@ -1,3 +1,3 @@
 ent-FloodlightEmpty = { ent-Floodlight }
-    .suffix = Пустой
+    .suffix = Empty
     .desc = { ent-Floodlight.desc }

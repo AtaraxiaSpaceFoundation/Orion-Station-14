@@ -1,2 +1,2 @@
-ent-ClothingMaskInteQInfiltrator = балаклава лазутчика
-    .desc = Невероятно подозрительная балаклава, сделанная из нановолокон, чтобы слегка смягчать удары и скрывать голос и лицо с помощью искажённого вокодера.
+ent-ClothingMaskInteQInfiltrator = infiltrator mask
+    .desc = Incredibly suspicious balaclava made with Syndicate nanofibers to absorb impacts slightly while obfuscating the voice and face using a garbled vocoder.

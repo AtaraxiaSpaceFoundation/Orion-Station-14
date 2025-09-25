@@ -1,9 +1,9 @@
 ent-PlasmaSword = плазменный меч
-    .desc = Лезвие изготовлено из чистой плазмы, нагретой до температуры от двух до девяти тысяч градусов по желанию владельца. Модуль питания, выполненный в форме рукоятки, нагревает газ и поддерживает его форму с помощью сильного магнитного поля. Похоже, что такие лезвия не производились с момента изобретения световых мечей.
-    .suffix = энергетический меч
+    .desc = Blade is made of pure plasma heated from two to nine thousand degrees at the request of the owner. Power module made in the form of a handle heats up the gas and maintains its shape with a strong magnetic field. It seems that such blades have not been produced since the discovery of lightsabers.
+    .suffix = energy sword
 ent-PlasmaSwordAlt = { ent-PlasmaSword }
     .desc = { ent-PlasmaSword.desc }
-    .suffix = энергетический меч
-ent-PlasmaScythe = плазменная коса
-    .desc = Может уместится в карман.
-    .suffix = двойной энергетический меч
+    .suffix = energy sword
+ent-PlasmaScythe = plasma scythe
+    .desc = This can be stored in pockets.
+    .suffix = double energy sword

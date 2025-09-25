@@ -1,4 +1,4 @@
-ent-FoodSnackInteQCookies = печеньки Интек
-    .desc = Печенье с чем-то чёрным.
-ent-FoodPacketInteQCookiesTrash = пустой пакет печенек Интек
+ent-FoodSnackInteQCookies = InteQ cookies
+    .desc = Cookies with something black.
+ent-FoodPacketInteQCookiesTrash = InteQ cookies packet
     .desc = { ent-FoodSnackInteQCookies.desc }

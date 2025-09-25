@@ -1,3 +1,3 @@
-ent-WeaponSubMachineGunInteQSMG = пистолет-пулемёт Интек
-    .desc = Огнестрельное оружие, которое часто используется Интек. Использует патроны калибра .35 авто. Оно окрашено в фирменный цвет Интек.
-    .suffix = Пистолет-пулемёт
+ent-WeaponSubMachineGunInteQSMG = InteQ submachine gun
+    .desc = Firearm that is often used by the InteQ. Uses .35 auto ammo. It is painted in the InteQ brand color.
+    .suffix = SubmachineGun

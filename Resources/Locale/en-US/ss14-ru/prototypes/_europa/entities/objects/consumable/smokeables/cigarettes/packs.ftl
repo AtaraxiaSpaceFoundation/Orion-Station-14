@@ -1,2 +1,2 @@
-ent-CigPackInteQ = пачка сигарет Интек
-    .desc = Пачка элитных сигарет. На сигаретах есть кнопки с запахом виски и пороха.
+ent-CigPackInteQ = InteQ cigarette pack
+    .desc = Elite cigarette pack. Cigarettes have buttons with the smell of whiskey and gunpowder.

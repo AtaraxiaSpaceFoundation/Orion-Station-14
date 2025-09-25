@@ -1,12 +1,12 @@
 ent-APCBasicUnlocked = { ent-BaseAPC }
-    .suffix = Разблокированный, Базовый, 50кДж
+    .suffix = Unlocked, Basic, 50kJ
     .desc = { ent-BaseAPC.desc }
 ent-APCHighCapacityUnlocked = { ent-BaseAPC }
-    .suffix = Разблокированный, Высокая ёмкость, 100кДж
+    .suffix = Unlocked, High Capacity, 100kJ
     .desc = { ent-BaseAPC.desc }
 ent-APCSuperCapacityUnlocked = { ent-BaseAPC }
-    .suffix = Разблокированный, Супер ёмкость, 150кДж
+    .suffix = Unlocked, Super Capacity, 150kJ
     .desc = { ent-BaseAPC.desc }
 ent-APCHyperCapacityUnlocked = { ent-BaseAPC }
-    .suffix = Разблокированный, Гипер ёмкость, 200кДж
+    .suffix = Unlocked, Hyper Capacity, 200kJ
     .desc = { ent-BaseAPC.desc }

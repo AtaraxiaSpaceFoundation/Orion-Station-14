@@ -1,2 +1,2 @@
-ent-BedsheetInteQ = одеяло Интек
-    .desc = Одеяло с нашивкой в виде золотой эмблемы.
+ent-BedsheetInteQ = InteQ bedsheet
+    .desc = It's decorated with a gold emblem.

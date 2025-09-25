@@ -1,9 +1,9 @@
-ent-RubberStampInteQ = печать Интек
+ent-RubberStampInteQ = InteQ rubber stamp
     .desc = { ent-RubberStampRd.desc }
-ent-BoxFolderSecretInteQ = папка для секретных документов
+ent-BoxFolderSecretInteQ = secret document folder
     .desc = { ent-BoxFolderBase.desc }
+    .suffix = InteQ
+ent-InteQSecretDocument = secret documents
+    .desc = Absolutely secret InteQ documents, you are too imbecile to understand what is written there.
     .suffix = Интек
-ent-InteQSecretDocument = секретные документы
-    .desc = Абсолютно секретные документы Интек, вы слишком слабоумны, что-бы понять, что там написано.
-    .suffix = Интек
-stamp-component-stamped-name-InteQ = Интек
+stamp-component-stamped-name-InteQ = InteQ

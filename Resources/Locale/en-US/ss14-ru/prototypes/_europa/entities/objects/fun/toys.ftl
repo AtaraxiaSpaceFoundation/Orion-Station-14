@@ -1,2 +1,2 @@
-ent-BalloonInteQ = воздушный шарик Интек
-    .desc = Мерч, выглядит круто.
+ent-BalloonInteQ = InteQ balloon
+    .desc = Merch, it looks cool.

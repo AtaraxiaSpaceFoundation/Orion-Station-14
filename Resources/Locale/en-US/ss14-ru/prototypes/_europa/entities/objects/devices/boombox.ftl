@@ -1,2 +1,2 @@
-ent-HandledBoomBox = бумбокс
-    .desc = Музыкальная колонка, переносной жукбокс, не женат.
+ent-HandledBoomBox = boombox
+    .desc = Music speaker, portable jukebox.

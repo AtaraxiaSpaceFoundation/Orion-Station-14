@@ -1,8 +1,8 @@
-ent-RandomHumanoidSpawnerInteQVanguardLeader = Интек Коммандер Авангарда
+ent-RandomHumanoidSpawnerInteQVanguardLeader = InteQ vanguard leader spawner
     .desc = { ent-MarkerBase.desc }
-ent-RandomHumanoidSpawnerInteQVanguardOperative = Интек Авангард Оперативник
+ent-RandomHumanoidSpawnerInteQVanguardOperative = InteQ vanguard operative spawner
     .desc = { ent-MarkerBase.desc }
-ent-RandomHumanoidSpawnerInteQVanguardSoldier = Интек Авангард Солдат
+ent-RandomHumanoidSpawnerInteQVanguardSoldier = InteQ vanguard soldier spawner
     .desc = { ent-MarkerBase.desc }
-ent-RandomHumanoidSpawnerInteQVanguardMedic = Интек Авангард Медик
+ent-RandomHumanoidSpawnerInteQVanguardMedic = InteQ vanguard medic spawner
     .desc = { ent-MarkerBase.desc }

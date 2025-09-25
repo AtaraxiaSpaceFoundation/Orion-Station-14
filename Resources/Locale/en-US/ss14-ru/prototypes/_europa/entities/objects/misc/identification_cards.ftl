@@ -1,4 +1,4 @@
-ent-InteQVanguardLeaderIDCard = ID карта Коммандер Авангарда Интек
+ent-InteQVanguardLeaderIDCard = InteQ ID card
     .desc = { ent-IDCardStandard.desc }
-ent-InteQVanguardIDCard = ID карта Авангард Интек
+ent-InteQVanguardIDCard = InteQ ID card
     .desc = { ent-IDCardStandard.desc }

@@ -1,2 +1,2 @@
-ent-AngleGrinder = УШМ
-    .desc = УШМ с алмазным диском и четырёх тактовым двигателем на жидкой плазме. Что ещё может быть нужно, когда требуется взять штурмом чью то крепость?
+ent-AngleGrinder = USHM
+    .desc = Angle Grinder with a diamond disc and a four-stroke liquid plasma engine. What else could be needed when you need to storm someones fortress?

@@ -1,2 +1,2 @@
-ent-HermitStorySelector = история отшельника
-    .desc = Выбери свою собственную историю, которую ты хочешь рассказать.
+ent-HermitStorySelector = hermit story
+    .desc = Select your own story to tell.

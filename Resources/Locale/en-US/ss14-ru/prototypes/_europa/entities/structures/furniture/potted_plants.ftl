@@ -1,4 +1,4 @@
-ent-PottedPlantPlasmaPlant = плазменный цветок
-    .desc = Красивое растение, кажется безопасным? Хотя учитывая, из чего он сделан...
-ent-Hedge = изгородь
-    .desc = Большая густая живая изгородь.
+ent-PottedPlantPlasmaPlant = plastic potted plasma plant
+    .desc = Pretty plant, it seems safe? Considering what it's made of.
+ent-Hedge = hedge
+    .desc = Large bushy hedge.

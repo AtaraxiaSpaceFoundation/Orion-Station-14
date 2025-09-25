@@ -1,6 +1,6 @@
-ent-MiniChemDispenser = мини раздатчик химикатов
+ent-MiniChemDispenser = mini chemical dispenser
     .desc = { ent-ChemDispenser.desc }
-    .suffix = Заполненный
+    .suffix = Filled
 ent-MiniChemDispenserEmpty = { ent-MiniChemDispenser }
-    .suffix = Пустой
+    .suffix = Empty
     .desc = { ent-ChemDispenser.desc }

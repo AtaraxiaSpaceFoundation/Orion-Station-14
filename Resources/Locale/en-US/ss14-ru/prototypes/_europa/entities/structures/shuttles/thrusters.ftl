@@ -1,4 +1,4 @@
-ent-ThrusterMedium = средний ракетный двигатель
+ent-ThrusterMedium = medium thruster
     .desc = { ent-BaseThruster.desc }
-ent-ThrusterLarge = большой ракетный двигатель
+ent-ThrusterLarge = large thruster
     .desc = { ent-BaseThruster.desc }

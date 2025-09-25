@@ -1,2 +1,2 @@
-ent-ItemFlagMiniInteQ = сложенный флаг Интек
-    .desc = Это выглядит круто, заткнись и возьми мои деньги.
+ent-ItemFlagMiniInteQ = InteQ mini flag
+    .desc = Thats looks cool, shut up and take my money.

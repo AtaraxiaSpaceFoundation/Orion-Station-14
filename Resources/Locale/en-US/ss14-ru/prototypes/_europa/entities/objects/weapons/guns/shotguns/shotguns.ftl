@@ -1,3 +1,3 @@
 ent-WeaponShotgunInteQBulldog = { ent-WeaponShotgunBulldog }
-    .desc = Это магазинное ружье, предназначенное для ближнего боя. В нем используются патроны 50-го калибра. Оно окрашено в фирменный цвет Интек.
-    .suffix = Дробовик
+    .desc = Magazine-fed shotgun designed for close quarters combat. Uses .50 shotgun shells. It is painted in the InteQ brand color.
+    .suffix = Shothun

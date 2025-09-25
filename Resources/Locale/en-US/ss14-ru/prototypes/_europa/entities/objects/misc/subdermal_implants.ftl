@@ -1,4 +1,4 @@
 ent-RadioImplantInteQ = { ent-RadioImplant }
-    .desc = Этот имплант даёт доступ к радиочастоте Интек без гарнитуры.
+    .desc = This implant grants access to the InteQ channel without a headset.
 ent-DeathRattleImplantInteQ = { ent-DeathRattleImplant }
-    .desc = Этот имплант сообщит по радиоканалу Интек, если пользователь окажется в критическом состоянии или умрёт.
+    .desc = This implant will inform the InteQ radio channel should the user fall into critical condition or die.

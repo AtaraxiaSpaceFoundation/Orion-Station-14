@@ -1,4 +1,4 @@
-ent-BlueprintInteQ = чертёж Интек
-    .desc = Чертёж со схемами контрабанды Интек. Его можно поместить в автолат.
-ent-BlueprintSyndicate = чертёж Синдиката
-    .desc = Чертёж со схемами контрабанды Синдиката. Его можно поместить в автолат.
+ent-BlueprintInteQ = InteQ blueprint
+    .desc = A blueprint with a schematic of a InteQ contraband. It can be inserted into an autolathe.
+ent-BlueprintSyndicate = Syndicate blueprint
+    .desc = A blueprint with a schematic of a Syndicate contraband. It can be inserted into an autolathe.

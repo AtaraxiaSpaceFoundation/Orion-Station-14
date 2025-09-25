@@ -1,3 +1,3 @@
-ent-WeaponPistolInteQCommissar = Комиссар
-    .desc = Небольшой, легко скрываемый, но несколько маломощный пистолет. Оснащен полностью автоматической ствольной коробкой. Использует патроны калибра .35 авто. Окрашен в фирменный цвет Интек.
-    .suffix = Пистолет
+ent-WeaponPistolInteQCommissar = Commissar
+    .desc = Small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses .35 auto ammo. It is painted in the InteQ brand color.
+    .suffix = Pistol

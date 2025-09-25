@@ -1,4 +1,4 @@
-ent-MannequinMan = манекен мужчины
+ent-MannequinMan = mannequin man
     .desc = { ent-Mannequin.desc }
-ent-MannequinWoman = манекен женщины
+ent-MannequinWoman = mannequin woman
     .desc = { ent-Mannequin.desc }

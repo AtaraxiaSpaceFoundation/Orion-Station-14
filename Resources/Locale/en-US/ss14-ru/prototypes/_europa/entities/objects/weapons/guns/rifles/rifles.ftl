@@ -1,3 +1,3 @@
-ent-WeaponRifleInteQAKM = АКМ Интек
-    .desc = Культовое военное оружие. Использует патроны калибра .30 винтовочные. Окрашен в фирменный цвет Интек.
-    .suffix = Автомат
+ent-WeaponRifleInteQAKM = InteQ AKM
+    .desc = Iconic weapon of war. Uses .30 rifle ammo. It is painted in the InteQ brand color.
+    .suffix = Rifle

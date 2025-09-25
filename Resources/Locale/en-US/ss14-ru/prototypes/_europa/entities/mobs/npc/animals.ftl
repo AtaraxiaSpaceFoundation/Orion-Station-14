@@ -1,7 +1,7 @@
-ent-MobWisdomCow = мудрая корова
-    .desc = Известна своей мудростью, делится ею со всеми.
+ent-MobWisdomCow = wisdom cow
+    .desc = Known for its wisdom, shares it with all.
 
-ent-MobCorticalBorer = кортикальный паразит
-    .desc = Червь, что пробирается в мозг.
-ent-CorticalBorerEgg = яйцо
-    .desc = Яйцо выглядит прикольным, мокрым и мягким...
+ent-MobCorticalBorer = cortical borer
+    .desc = Worm that burrows into brains.
+ent-CorticalBorerEgg = cortical borer egg
+    .desc = This egg is so nice, wet and soft...

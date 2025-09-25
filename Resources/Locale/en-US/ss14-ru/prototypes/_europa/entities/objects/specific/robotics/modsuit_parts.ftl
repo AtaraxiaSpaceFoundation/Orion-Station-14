@@ -1,2 +1,2 @@
-ent-ModsuitPlatingSuspicious = стандартное покрытие подозрительного модульного костюма
-    .desc = Деталь, используемая при создании модульного костюма.
+ent-ModsuitPlatingSuspicious = MOD standard suspicious plating
+    .desc = A part used in MOD construction.

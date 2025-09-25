@@ -1,4 +1,4 @@
-ent-ToyAres = игрушечный Арес
-    .desc = Фигурка Мини-Мех! На обороте написано 'Интек Меха номер 1/2'.
-ent-ToyHermes = игрушечный Гермес
-    .desc = Фигурка Мини-Мех! На обороте написано 'Интек Меха номер 2/2'.
+ent-ToyAres = Ares toy
+    .desc = Mini-Mecha action figure! 'Mecha InteQ. 1/2' is written on the back.
+ent-ToyHermes = Hermes toy
+    .desc = Mini-Mecha action figure! 'Mecha InteQ. 2/2' is written on the back.

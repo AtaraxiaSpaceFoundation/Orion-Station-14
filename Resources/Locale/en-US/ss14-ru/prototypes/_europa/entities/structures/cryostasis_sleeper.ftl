@@ -1,2 +1,2 @@
-ent-CryostasisSleeper = капсула криостазисного сна
-    .desc = Сверхохлаждаемый контейнер, обеспечивающий сохранность во время космических путешествий.
+ent-CryostasisSleeper = cryostasis sleeper
+    .desc = Although comfortable, this sleeper won't function as anything but a bed ever again.

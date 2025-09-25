@@ -1,5 +1,5 @@
-ent-EnergyDomeBase = энергетический барьер
-    .desc = Энергетический барьер защищающий от входящих и исходящих пуль, круто!
+ent-EnergyDomeBase = energy dome
+    .desc = Energy barrier that protects you from incoming and outgoing bullets, cool!
 ent-EnergyDomeSmallPink = { ent-EnergyDomeBase }
     .desc = { ent-EnergyDomeBase.desc }
 ent-EnergyDomeSmallOrange = { ent-EnergyDomeBase }

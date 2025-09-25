@@ -1,7 +1,7 @@
-ent-VendingMachineInteQDrobe = ИнтекШкаф
-    .desc = Гардеробная машина, закодированная Интек, содержит элитную одежду для различных операций.
+ent-VendingMachineInteQDrobe = InteQDrobe
+    .desc = Wardrobe machine encoded by the InteQ, contains elite outfits for various operations.
 ent-VendingMachineInteQDrobeNerf = { ent-VendingMachineInteQDrobe }
     .desc = { ent-VendingMachineInteQDrobe.desc }
-    .suffix = Для секреток на станции
-ent-CaptainDrobe = КапитанШкаф
-    .desc = Стильная униформа для сильного лидера!
+    .suffix = For station hiden places
+ent-CaptainDrobe = CaptainDrobe
+    .desc = Stylish uniform, for a strong leader!
