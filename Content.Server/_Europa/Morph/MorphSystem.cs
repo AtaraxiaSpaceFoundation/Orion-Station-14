@@ -367,11 +367,17 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnDevourAction(EntityUid uid, MorphComponent component, MorphDevourActionEvent args)
     {
+        if (args.Handled)
+            return;
+
         if (_whitelistSystem.IsWhitelistFailOrNull(component.DevourWhitelist, args.Target))
             return;
 
-        if (args.Handled)
+        if (_whitelistSystem.IsWhitelistPass(component.DevourBlacklist, args.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("devour-action-popup-message-blacklisted", ("target", ToPrettyString(args.Target))), uid, uid);
             return;
+        }
 
         args.Handled = true;
         var target = args.Target;

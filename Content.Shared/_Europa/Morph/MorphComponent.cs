@@ -78,6 +78,9 @@ public sealed partial class MorphComponent : Component
     [DataField]
     public EntityWhitelist? DevourWhitelist = new();
 
+    [DataField]
+    public EntityWhitelist? DevourBlacklist = new();
+
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string? DevourAction = "ActionMorphDevour";
     public EntityUid? DevourActionEntity;
