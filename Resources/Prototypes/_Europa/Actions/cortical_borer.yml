@@ -54,7 +54,7 @@
   description: Inspect the blood of your host to see how they are doing.
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 2
     icon:
       sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_bloodcheck
@@ -68,7 +68,7 @@
   description: Take full control of your host, lasts for 40 seconds on awake hosts.
   components:
   - type: Action
-    useDelay: 340 #5 minutes and 40 seconds
+    useDelay: 340 # 5 minutes and 40 seconds
     icon:
       sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_control
@@ -96,7 +96,7 @@
   description: Force your host to vomit an egg. Costs 200 chemicals. # needs to be changed if the base chem cost is changed
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 180
     icon:
       sprite: _Europa/Interface/Actions/borer.rsi
       state: borer_egg

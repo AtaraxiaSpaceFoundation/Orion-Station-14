@@ -95,7 +95,8 @@
   - type: Speech
     enabled: false
   - type: HealthAnalyzer
-    silent: true
+    scanningEndSound:
+      path: "/Audio/Voice/Slime/slime_squish.ogg"
     maxScanRange: .5
   - type: CanEscapeInventory
   - type: GuideHelp
