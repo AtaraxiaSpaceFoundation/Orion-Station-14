@@ -84,10 +84,9 @@ public sealed class ResponseForceSystem : EntitySystem
         _shuttleIndex = 0;
     }
 
+/*
     [ValidatePrototypeId<ResponseForceTeamPrototype>]
     private const string CBURN = "CBURNBlob";
-
-/*
     private void OnBlobChange(BlobChangeLevelEvent ev)
     {
         if (ev.Level != BlobStage.Critical)

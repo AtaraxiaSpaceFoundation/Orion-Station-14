@@ -76,7 +76,7 @@
     job: ERTJanitor
     requirements:
     - !type:DepartmentTimeRequirement
-      department: Service
+      department: Civilian
       time: 5000
 
 - type: randomHumanoidSettings
