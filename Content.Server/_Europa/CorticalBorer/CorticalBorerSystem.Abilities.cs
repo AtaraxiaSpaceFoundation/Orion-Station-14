@@ -4,9 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Body.Components;
 using Content.Server.Medical;
 using Content.Shared._Europa.CorticalBorer;
+using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
@@ -42,12 +42,12 @@ public sealed partial class CorticalBorerSystem
 
         if (ent.Comp.Host is null)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), ent, ent, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), ent, ent, PopupType.Medium);
             return;
         }
 
         UpdateUiState(ent);
-        _ui.TryToggleUi((ent, uic), CorticalBorerDispenserUiKey.Key, ent);
+        UI.TryToggleUi((ent, uic), CorticalBorerDispenserUiKey.Key, ent);
         args.Handled = true;
     }
 
@@ -59,20 +59,20 @@ public sealed partial class CorticalBorerSystem
 
         if (comp.Host is not null)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-has-host"), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-has-host"), uid, uid, PopupType.Medium);
             return;
         }
 
         if (HasComp<CorticalBorerInfestedComponent>(target))
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-host-already-infested", ("target", targetIdentity)), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-host-already-infested", ("target", targetIdentity)), uid, uid, PopupType.Medium);
             return;
         }
 
         // anything with bloodstream, BUT NOT BORER
         if (!HasComp<BloodstreamComponent>(target) || HasComp<CorticalBorerComponent>(target))
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-invalid-host", ("target", targetIdentity)), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-invalid-host", ("target", targetIdentity)), uid, uid, PopupType.Medium);
             return;
         }
 
@@ -85,11 +85,11 @@ public sealed partial class CorticalBorerSystem
 
         if (infestAttempt.Cancelled)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-face-covered", ("target", targetIdentity)), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-face-covered", ("target", targetIdentity)), uid, uid, PopupType.Medium);
             return;
         }
 
-        _popup.PopupEntity(Loc.GetString("cortical-borer-start-infest", ("target", targetIdentity)), uid, uid, PopupType.Medium);
+        Popup.PopupEntity(Loc.GetString("cortical-borer-start-infest", ("target", targetIdentity)), uid, uid, PopupType.Medium);
 
         var infestArgs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(3), new CorticalInfestDoAfterEvent(), uid, target)
         {
@@ -134,7 +134,7 @@ public sealed partial class CorticalBorerSystem
 
         if (comp.Host is null)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), uid, uid, PopupType.Medium);
             return;
         }
 
@@ -149,7 +149,7 @@ public sealed partial class CorticalBorerSystem
 
         if (ent.Comp.Host is null)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), ent, ent, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), ent, ent, PopupType.Medium);
             return;
         }
 
@@ -164,7 +164,7 @@ public sealed partial class CorticalBorerSystem
 
         if (ent.Comp.Host is null)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), ent, ent, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), ent, ent, PopupType.Medium);
             return;
         }
 
@@ -172,7 +172,7 @@ public sealed partial class CorticalBorerSystem
         if (TryComp<MobStateComponent>(ent.Comp.Host, out var mobState) &&
             mobState.CurrentState == MobState.Dead)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-dead-host"), ent, ent, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-dead-host"), ent, ent, PopupType.Medium);
             return;
         }
 
@@ -185,7 +185,7 @@ public sealed partial class CorticalBorerSystem
         // idk how you would cause this...
         if (ent.Comp.ControlingHost)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-already-control"), ent, ent, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-already-control"), ent, ent, PopupType.Medium);
             return;
         }
 
@@ -213,7 +213,7 @@ public sealed partial class CorticalBorerSystem
 
         if (borer.Comp.EggCost > borer.Comp.ChemicalPoints)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), host, host, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), host, host, PopupType.Medium);
             return;
         }
 

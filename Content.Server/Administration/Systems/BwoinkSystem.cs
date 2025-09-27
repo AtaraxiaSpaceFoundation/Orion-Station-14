@@ -130,6 +130,7 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
+using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Players.RateLimiting;
@@ -161,6 +162,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private readonly IServerDbManager _dbManager = default!;
         [Dependency] private readonly PlayerRateLimitManager _rateLimit = default!;
         [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
+        [Dependency] private readonly IBanManager _banManager = default!; // Europa
 
         [GeneratedRegex(@"^https://(?:(?:canary|ptb)\.)?discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
         private static partial Regex DiscordRegex();
@@ -193,6 +195,14 @@ namespace Content.Server.Administration.Systems
         // Maximum length a message can be before it is cut off
         // Should be shorter than DescriptionMax
         private const ushort MessageLengthCap = 3000;
+
+        // Europa-Start
+        private readonly TimeSpan _messageCooldown = TimeSpan.FromSeconds(2);
+
+        private readonly Dictionary<NetUserId, Queue<(string Text, TimeSpan Timestamp)>> _recentMessages = new();
+        private const int MaxRecentMessages = 10;
+        private const int SpamCheckMessageCount = 3;
+        // Europa-End
 
         // Text to be used to cut off messages that are too long. Should be shorter than MessageLengthCap
         private const string TooLongText = "... **(too long)**";
@@ -785,6 +795,18 @@ namespace Content.Server.Administration.Systems
                 return;
             }
 
+            // Europa-Start
+            var currentTime = _timing.RealTime;
+
+            if (IsOnCooldown(message.UserId, currentTime))
+                return;
+
+            if (IsSpam(message.UserId, message.Text))
+                _banManager.CreateServerBan(senderSession.UserId, senderSession.Name, null, null, null, 10, NoteSeverity.High, "Косинус синус, ебало на минус. Доспамился в ахелп.");
+
+            AddToRecentMessages(message.UserId, message.Text, currentTime);
+            // Europa-End
+
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;
 
@@ -1043,6 +1065,61 @@ namespace Content.Server.Administration.Systems
             /// </summary>
             public bool OnCall;
         }
+
+        // Europa-Start
+        private void AddToRecentMessages(NetUserId channelId, string text, TimeSpan timestamp)
+        {
+            if (!_recentMessages.TryGetValue(channelId, out var userQueue))
+            {
+                userQueue = new Queue<(string, TimeSpan)>();
+                _recentMessages[channelId] = userQueue;
+            }
+
+            userQueue.Enqueue((text, timestamp));
+
+            if (userQueue.Count > MaxRecentMessages)
+                userQueue.Dequeue();
+        }
+
+        private bool IsOnCooldown(NetUserId channelId, TimeSpan currentTime)
+        {
+            if (!_recentMessages.TryGetValue(channelId, out var userQueue) || userQueue.Count == 0)
+                return false;
+
+            var lastMessage = userQueue
+                .OrderByDescending(msg => msg.Timestamp)
+                .FirstOrDefault();
+
+            return (currentTime - lastMessage.Timestamp) < _messageCooldown;
+        }
+
+        private bool IsSpam(NetUserId channelId, string text)
+        {
+            if (!_recentMessages.TryGetValue(channelId, out var userQueue) || userQueue.Count < 5)
+                return false;
+
+            var recentMessages = userQueue
+                .OrderByDescending(msg => msg.Timestamp)
+                .Take(10);
+
+            return recentMessages.All(msg => msg.Text == text);
+        }
+
+        public IEnumerable<(NetUserId Channel, string Text, TimeSpan Timestamp)> GetRecentMessages()
+        {
+            var result = new List<(NetUserId Channel, string Text, TimeSpan Timestamp)>();
+
+            foreach (var kvp in _recentMessages)
+            {
+                var channelId = kvp.Key;
+                foreach (var (text, timestamp) in kvp.Value)
+                {
+                    result.Add((channelId, text, timestamp));
+                }
+            }
+            return result;
+        }
+        // Europa-End
     }
 
     public sealed class AHelpMessageParams

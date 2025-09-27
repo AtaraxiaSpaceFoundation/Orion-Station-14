@@ -18,16 +18,10 @@
       visible: false
   - type: Xenomorph
     caste: Maid
-  - type: ActionGrant
-    actions:
-    - ActionTransferPlasma
-    - ActionSpawnResinWeedNode
-    # Europa-Start | This literally drone in clothes
-    - ActionSpawnWallResin
-    - ActionSpawnResinMembrane
-    - ActionSpawnResinDoor
-    - ActionSpawnResinNest
-    # Europa-End
+  #- type: ActionGrant # Goobstation - moved to organ
+  #  actions:
+  #  - ActionTransferPlasma
+  #  - ActionSpawnResinWeedNode
   - type: Cuffable
   - type: MobThresholds
     thresholds:

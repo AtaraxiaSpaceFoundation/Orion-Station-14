@@ -6,6 +6,10 @@
   - AllHostile
   - Xeno
   - Zombie
+  # Goob-Start-Factions
+  - Blob
+  - Shadowling
+  # Goob-End-Factions
   friendly:
   - NanoTrasen
   - Syndicate
@@ -32,6 +36,7 @@
   - Blob
   - Wizard
   - PirateFaction
+  - Shadowling
   # Goob-End-Factions
   friendly:
   - InteQ

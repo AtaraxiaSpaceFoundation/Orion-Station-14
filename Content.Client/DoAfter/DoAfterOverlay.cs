@@ -37,6 +37,8 @@ namespace Content.Client.DoAfter;
 
 public sealed class DoAfterOverlay : Overlay
 {
+    private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
+
     private readonly IEntityManager _entManager;
     private readonly IGameTiming _timing;
     private readonly IPlayerManager _player;
@@ -75,7 +77,7 @@ public sealed class DoAfterOverlay : Overlay
         _barTexture = _entManager.EntitySysManager.GetEntitySystem<SpriteSystem>().Frame0(sprite);
         _cogTexture = new SpriteSpecifier.Rsi(new("/Textures/_Europa/Interface/Misc/progress_cog.rsi"), "cog"); // Europa
 
-        _unshadedShader = protoManager.Index<ShaderPrototype>("unshaded").Instance();
+        _unshadedShader = protoManager.Index(UnshadedShader).Instance();
     }
 
     protected override void Draw(in OverlayDrawArgs args)

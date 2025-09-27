@@ -1,0 +1,9 @@
+ent-ManualBabel = babel manual
+    .desc = Manual that teaches you all languages.
+    .suffix = 1 uses
+ent-ManualCodespeak = codespeak manual
+    .desc = Manual that teaches you the codespeak language.
+    .suffix = 2 uses
+ent-ManualOldFastCodes = old fast code manual
+    .desc = Manual that teaches you the old fast code language.
+    .suffix = 2 uses

@@ -125,6 +125,7 @@ using Content.Server.Players.RateLimiting;
 using Content.Server.Speech.Prototypes;
 using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
+using Content.Server.Speech.Prototypes;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Goobstation.Wizard.Chuuni;
@@ -848,7 +849,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             // Floof: handle languages that require LOS
             string result, wrappedMessage;
             if (!language.SpeechOverride.RequireLOS && data.Range <= WhisperClearRange
-                || _examineSystem.InRangeUnOccluded(source, listener, WhisperClearRange))
+                || _examineSystem.InRangeUnOccluded(source, listener, WhisperClearRange)
+                || data.Observer)
             {
                 // Scenario 1: the listener can clearly understand the message
                 result = perceivedMessage;
@@ -990,8 +992,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
 
-        if (checkEmote)
-            TryEmoteChatInput(source, action);
+        if (checkEmote &&
+            !TryEmoteChatInput(source, action))
+            return;
 
         SendInVoiceRange(
             ChatChannel.Emotes,
@@ -1281,8 +1284,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         return message;
     }
 
-    [ValidatePrototypeId<ReplacementAccentPrototype>]
-    public const string ChatSanitize_Accent = "chatsanitize";
+    public static readonly ProtoId<ReplacementAccentPrototype> ChatSanitize_Accent = "chatsanitize";
 
     public string SanitizeMessageReplaceWords(string message)
     {

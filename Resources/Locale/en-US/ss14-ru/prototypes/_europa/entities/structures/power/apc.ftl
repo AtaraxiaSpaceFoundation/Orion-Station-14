@@ -1,0 +1,12 @@
+ent-APCBasicUnlocked = { ent-BaseAPC }
+    .suffix = Unlocked, Basic, 50kJ
+    .desc = { ent-BaseAPC.desc }
+ent-APCHighCapacityUnlocked = { ent-BaseAPC }
+    .suffix = Unlocked, High Capacity, 100kJ
+    .desc = { ent-BaseAPC.desc }
+ent-APCSuperCapacityUnlocked = { ent-BaseAPC }
+    .suffix = Unlocked, Super Capacity, 150kJ
+    .desc = { ent-BaseAPC.desc }
+ent-APCHyperCapacityUnlocked = { ent-BaseAPC }
+    .suffix = Unlocked, Hyper Capacity, 200kJ
+    .desc = { ent-BaseAPC.desc }

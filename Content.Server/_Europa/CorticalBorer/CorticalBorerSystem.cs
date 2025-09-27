@@ -4,7 +4,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -16,6 +15,7 @@ using Content.Server.Medical.Components;
 using Content.Shared._Europa.CorticalBorer;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
+using Content.Shared.Body.Components;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
@@ -69,7 +69,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     {
         //add actions
         foreach (var actionId in ent.Comp.InitialCorticalBorerActions)
-            _actions.AddAction(ent, actionId);
+        {
+            Actions.AddAction(ent, actionId);
+        }
 
         _alerts.ShowAlert(ent, ent.Comp.ChemicalAlert);
         UpdateUiState(ent);
@@ -152,7 +154,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // Need a host to inject something
         if (!comp.Host.HasValue)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-no-host"), uid, uid, PopupType.Medium);
             return false;
         }
 
@@ -163,26 +165,26 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // Make sure you can even hold the amount of chems you need
         if (chemicalPrototype.Cost > comp.ChemicalPointCap)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem-storage"), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem-storage"), uid, uid, PopupType.Medium);
             return false;
         }
 
         // Make sure you have enough chems
         if (chemicalPrototype.Cost > comp.ChemicalPoints)
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), uid, uid, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), uid, uid, PopupType.Medium);
             return false;
         }
 
         // no injecting things that don't have blood silly
-        if (!TryComp<BloodstreamComponent>(comp.Host, out var bloodstream))
+        if (!TryComp<BloodstreamComponent>(comp.Host, out var blood))
             return false;
 
         var solution = new Solution();
         solution.AddReagent(chemicalPrototype.Reagent, chemAmount);
 
         // add the chemicals to the bloodstream of the host
-        if (!_blood.TryAddToChemicals(comp.Host.Value, solution, bloodstream))
+        if (!_blood.TryAddToChemicals((comp.Host.Value, blood), solution))
             return false;
 
         UpdateChems(ent, -((int)chemAmount * chemicalPrototype.Cost));
@@ -238,52 +240,34 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     {
         var chems = GetAllBorerChemicals(ent);
 
-        var state = new CorticalBorerDispenserBoundUserInterfaceState(chems, (int)ent.Comp.InjectAmount);
+        var state = new CorticalBorerDispenserBoundUserInterfaceState(chems, ent.Comp.InjectAmount);
         _userInterfaceSystem.SetUiState(ent.Owner, CorticalBorerDispenserUiKey.Key, state);
     }
 
     public bool TryToggleCheckBlood(Entity<CorticalBorerComponent> ent)
     {
-        if(!TryComp<UserInterfaceComponent>(ent, out var uic))
+        if (!TryComp<UserInterfaceComponent>(ent, out var uic))
             return false;
 
         if (!TryComp<HealthAnalyzerComponent>(ent, out var health))
             return false;
 
-        _ui.TryToggleUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
+        // If open - close
+        if (UI.IsUiOpen((ent, uic), HealthAnalyzerUiKey.Key))
+        {
+            UI.CloseUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
+            if (health.ScannedEntity.HasValue)
+                _analyzer.StopAnalyzingEntity((ent, health), health.ScannedEntity.Value);
+            return true;
+        }
 
-        if (health.ScannedEntity is null && ent.Comp.Host.HasValue)
-            OpenCheckBlood(ent, uic);
+        if (!ent.Comp.Host.HasValue || !TryComp<BloodstreamComponent>(ent.Comp.Host.Value, out _))
+            return false;
+
+        UI.OpenUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
+        _analyzer.BeginAnalyzingEntity((ent, health), ent.Comp.Host.Value);
 
         return true;
-    }
-
-    public void OpenCheckBlood(Entity<CorticalBorerComponent> ent, UserInterfaceComponent uic)
-    {
-        if (!ent.Comp.Host.HasValue)
-            return;
-
-        if (!TryComp<HealthAnalyzerComponent>(ent, out var health))
-            return;
-
-        if (!_ui.IsUiOpen((ent,uic), HealthAnalyzerUiKey.Key))
-            _ui.OpenUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
-        _analyzer.BeginAnalyzingEntity((ent, health), ent.Comp.Host.Value);
-    }
-
-    public void CloseCheckBlood(Entity<CorticalBorerComponent> ent, UserInterfaceComponent uic)
-    {
-        if (!ent.Comp.Host.HasValue)
-            return;
-
-        if (!TryComp<HealthAnalyzerComponent>(ent, out var health))
-            return;
-
-        if(!health.ScannedEntity.HasValue)
-            return;
-
-        _ui.CloseUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
-        _analyzer.StopAnalyzingEntity((ent, health), health.ScannedEntity.Value);
     }
 
     public void TakeControlHost(Entity<CorticalBorerComponent> ent, CorticalBorerInfestedComponent infestedComp)
@@ -312,7 +296,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
             // fish head...
             var dummy = Spawn("FoodMeatFish", MapCoordinates.Nullspace);
-            _container.Insert(dummy, infestedComp.ControlContainer);
+            Container.Insert(dummy, infestedComp.ControlContainer);
 
             _mind.TransferTo(controledMind, dummy);
         }
@@ -328,12 +312,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             _ghost.UnregisterGhostRole((worm, ghostRole)); // prevent players from taking the worm role once mind isn't in the worm
 
         // add the end control and vomit egg action
-        if (_actions.AddAction(host, "ActionEndControlHost") is {} actionEnd)
+        if (Actions.AddAction(host, "ActionEndControlHost") is {} actionEnd)
             infestedComp.RemoveAbilities.Add(actionEnd);
         if (comp.CanReproduce &&
             infestedComp.ControlTimeEnd != null) // you can't lay eggs with something you can control forever
         {
-            if (_actions.AddAction(host, "ActionLayEggHost") is {} actionLay)
+            if (Actions.AddAction(host, "ActionLayEggHost") is {} actionLay)
                 infestedComp.RemoveAbilities.Add(actionLay);
         }
 
@@ -346,7 +330,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     public void EndControl(Entity<CorticalBorerComponent> worm)
     {
-        var (uid, comp) = worm;
+        var (_, comp) = worm;
 
         if (comp.Host is not { } host)
             return;
@@ -363,7 +347,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // remove all the actions set to remove
         foreach (var ability in infestedComp.RemoveAbilities)
         {
-            _actions.RemoveAction(host, ability);
+            Actions.RemoveAction(host, ability);
         }
         infestedComp.RemoveAbilities = new(); // clear out the list
 
@@ -377,7 +361,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             _mind.TransferTo(infestedComp.OriginalMindId.Value, host);
 
         infestedComp.ControlTimeEnd = null;
-        _container.CleanContainer(infestedComp.ControlContainer);
+        Container.CleanContainer(infestedComp.ControlContainer);
     }
 
     private void OnMindRemoved(Entity<CorticalBorerComponent> ent, ref MindRemovedMessage args)

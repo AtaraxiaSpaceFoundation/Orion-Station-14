@@ -33,8 +33,8 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Standing;
-using Content.Server.Body.Components;
 using Content.Server.Ghost.Roles.Components;
+using Content.Shared.Body.Events;
 using Content.Shared.Ghost;
 using Content.Shared.Mind.Components;
 using Robust.Server.GameObjects;
@@ -367,11 +367,17 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnDevourAction(EntityUid uid, MorphComponent component, MorphDevourActionEvent args)
     {
+        if (args.Handled)
+            return;
+
         if (_whitelistSystem.IsWhitelistFailOrNull(component.DevourWhitelist, args.Target))
             return;
 
-        if (args.Handled)
+        if (_whitelistSystem.IsWhitelistPass(component.DevourBlacklist, args.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("devour-action-popup-message-blacklisted", ("target", ToPrettyString(args.Target))), uid, uid);
             return;
+        }
 
         args.Handled = true;
         var target = args.Target;

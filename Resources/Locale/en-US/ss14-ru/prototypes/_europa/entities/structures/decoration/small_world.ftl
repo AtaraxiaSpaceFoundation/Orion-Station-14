@@ -1,0 +1,16 @@
+ent-SmallWorldRoadFourWay = road four way
+    .desc = For your foots?...
+ent-SmallWorldRoadStraight = road straight
+    .desc = { ent-SmallWorldRoadFourWay.desc }
+ent-SmallWorldRoadThreeWay = road three way
+    .desc = { ent-SmallWorldRoadFourWay.desc }
+ent-SmallWorldRoadTurn = road turn
+    .desc = { ent-SmallWorldRoadFourWay.desc }
+ent-SmallWorldBuildingSmallBusiness = small business
+    .desc = NOT for your foots!!!
+ent-SmallWorldBuildingSmallHouses = small houses
+    .desc = { ent-SmallWorldBuildingSmallBusiness.desc }
+ent-SmallWorldBuildingSmallMuseum = small museum
+    .desc = { ent-SmallWorldBuildingSmallBusiness.desc }
+ent-SmallWorldBuildingSmallWarehouse = small warehouse
+    .desc = { ent-SmallWorldBuildingSmallBusiness.desc }

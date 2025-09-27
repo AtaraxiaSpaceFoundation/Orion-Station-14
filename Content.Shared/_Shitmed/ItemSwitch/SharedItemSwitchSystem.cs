@@ -103,7 +103,7 @@ public abstract class SharedItemSwitchSystem : EntitySystem
                 continue;
             args.Verbs.Add(new ActivationVerb()
             {
-                Text = Loc.TryGetString(state.Value.Verb, out var title) ? title : state.Value.Verb,
+                Text = Loc.TryGetString($"itemswitch-component-state-{state.Value.Verb}", out var title) ? title : state.Value.Verb, // Europa-Edit | Localize
                 Category = VerbCategory.Switch,
                 Act = () => Switch((ent.Owner, ent.Comp), state.Key, user, ent.Comp.Predictable)
             });

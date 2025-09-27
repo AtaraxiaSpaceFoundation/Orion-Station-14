@@ -3,37 +3,40 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Actions;
-using Content.Shared.Body.Systems;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
 
 namespace Content.Shared._Europa.CorticalBorer;
 
-public partial class SharedCorticalBorerSystem : EntitySystem
+[Virtual]
+public class SharedCorticalBorerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ISerializationManager _serManager = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] protected readonly SharedPopupSystem _popup = default!;
-    [Dependency] protected readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] protected readonly SharedActionsSystem _actions = default!;
-    [Dependency] protected readonly SharedContainerSystem _container = default!;
+    [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
+    [Dependency] protected readonly SharedActionsSystem Actions = default!;
+    [Dependency] protected readonly SharedContainerSystem Container = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
 
     public bool CanUseAbility(Entity<CorticalBorerComponent> ent, EntityUid target)
     {
         if (_statusEffects.HasStatusEffect(target,
                     "CorticalBorerProtection")) // hardcoded the status effect because...
         {
-            _popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
             return false;
         }
 
@@ -48,7 +51,7 @@ public partial class SharedCorticalBorerSystem : EntitySystem
         var infestedComp = EnsureComp<CorticalBorerInfestedComponent>(target);
 
         // Make sure they get into the target
-        if (!_container.Insert(uid, infestedComp.InfestationContainer))
+        if (!Container.Insert(uid, infestedComp.InfestationContainer))
         {
             RemCompDeferred<CorticalBorerInfestedComponent>(target); // oh no it didn't work somehow so remove the comp you just added...
             return;
@@ -60,7 +63,7 @@ public partial class SharedCorticalBorerSystem : EntitySystem
 
         if (comp.AddOnInfest is not null)
         {
-            foreach (var (key, compReg) in comp.AddOnInfest)
+            foreach (var (_, compReg) in comp.AddOnInfest)
             {
                 var compType = compReg.Component.GetType();
                 if (HasComp(ent, compType))
@@ -73,8 +76,10 @@ public partial class SharedCorticalBorerSystem : EntitySystem
 
         if (comp.RemoveOnInfest is not null)
         {
-            foreach (var (key, compReg) in comp.RemoveOnInfest)
+            foreach (var (_, compReg) in comp.RemoveOnInfest)
+            {
                 RemCompDeferred(ent, compReg.Component.GetType());
+            }
         }
 
         if (TryComp<DamageableComponent>(ent, out var damComp))
@@ -83,28 +88,29 @@ public partial class SharedCorticalBorerSystem : EntitySystem
 
     public bool TryEjectBorer(Entity<CorticalBorerComponent> ent)
     {
-        var (uid, comp) = ent;
+        if (!ent.Comp.Host.HasValue)
+            return false;
 
-        if (ent.Comp.Host is not { } host)
+        if (TerminatingOrDeleted(ent.Owner))
             return false;
 
         // Make sure they get out of the host
-        if (!_container.TryRemoveFromContainer(uid))
+        if (!Container.TryRemoveFromContainer(ent.Owner))
             return false;
 
         // close all the UIs that relate to host
         if (TryComp<UserInterfaceComponent>(ent, out var uic))
         {
-            _ui.CloseUi((ent.Owner,uic), HealthAnalyzerUiKey.Key);
-            _ui.CloseUi((ent.Owner,uic), CorticalBorerDispenserUiKey.Key);
+            UI.CloseUi((ent.Owner,uic), HealthAnalyzerUiKey.Key);
+            UI.CloseUi((ent.Owner,uic), CorticalBorerDispenserUiKey.Key);
         }
 
         RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
         ent.Comp.Host = null;
 
-        if (comp.RemoveOnInfest is not null)
+        if (ent.Comp.RemoveOnInfest is not null)
         {
-            foreach (var (key, compReg) in comp.RemoveOnInfest)
+            foreach (var (_, compReg) in ent.Comp.RemoveOnInfest)
             {
                 var compType = compReg.Component.GetType();
                 if (HasComp(ent, compType))
@@ -115,10 +121,12 @@ public partial class SharedCorticalBorerSystem : EntitySystem
             }
         }
 
-        if (comp.AddOnInfest is not null)
+        if (ent.Comp.AddOnInfest is not null)
         {
-            foreach (var (key, compReg) in comp.AddOnInfest)
+            foreach (var (_, compReg) in ent.Comp.AddOnInfest)
+            {
                 RemCompDeferred(ent, compReg.Component.GetType());
+            }
         }
 
         return true;
@@ -133,7 +141,10 @@ public partial class SharedCorticalBorerSystem : EntitySystem
             return;
 
         var coordinates = _transform.ToMapCoordinates(host.ToCoordinates());
-        var spawnedEgg = Spawn(egg, coordinates);
+        Spawn(egg, coordinates);
+
+        // TODO: Brain damage
+        _damage.TryChangeDamage(host, new DamageSpecifier(_proto.Index<DamageGroupPrototype>("Brute"), 15), true, origin: ent, targetPart: TargetBodyPart.Head);
     }
 }
 

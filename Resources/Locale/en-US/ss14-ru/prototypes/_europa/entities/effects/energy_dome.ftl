@@ -1,0 +1,16 @@
+ent-EnergyDomeBase = energy dome
+    .desc = Energy barrier that protects you from incoming and outgoing bullets, cool!
+ent-EnergyDomeSmallPink = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }
+ent-EnergyDomeSmallOrange = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }
+ent-EnergyDomeSmallCap = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }
+ent-EnergyDomeSmallRed = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }
+ent-EnergyDomeMediumBlue = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }
+ent-EnergyDomeSlowing = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }
+ent-EnergyDomeDirected = { ent-EnergyDomeBase }
+    .desc = { ent-EnergyDomeBase.desc }

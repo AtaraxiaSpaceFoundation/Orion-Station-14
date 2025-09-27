@@ -3,6 +3,7 @@ ent-Window = окно
 ent-TintedWindow = тонированное окно
     .desc = { ent-Window.desc }
 ent-WindowRCDResistant = { ent-Window }
+    .suffix = РСУ защита
     .desc = { ent-Window.desc }
 ent-WindowDirectional = направленное окно
     .desc = Смотри не заляпай.

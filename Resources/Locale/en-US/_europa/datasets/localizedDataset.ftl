@@ -1,13 +1,9 @@
 inteq-vanguard-leader-prefix-1 = Vanguard Leader
-
 inteq-vanguard-prefix-1 = Vanguard
-
 inteq-agent-prefix-1 = Agent
-
 unknown-prefix-1 = #
 unknown-prefix-2 = $
 unknown-prefix-3 = №
-
 number-name-1 = 001
 number-name-2 = 002
 number-name-3 = 003

@@ -3,16 +3,16 @@
   id: XenomorphsInfestation
   components:
   - type: StationEvent
-    weight: 6 # New antag I wanna be able to actually play it | Europa-Edit 7.5 > 6
+    weight: 1
     duration: null
-    minimumPlayers: 20
-    earliestStart: 35
-    reoccurrenceDelay: 50
+    minimumPlayers: 45 # Europa-Edit | 50 > 45
+    earliestStart: 30 # Europa-Edit | 60 > 30
     chaos:
-      Hostile: 60
-      Medical: 75
-      Death: 100
+      Hostile: 400
+      Medical: 400
+      Death: 400
     eventType: HostilesSpawn
+    maxOccurrences: 2 # Europa-Edit | 1 > 2
   - type: GameRule
     chaosScore: 400
   - type: VentSpawnRule

@@ -20,12 +20,9 @@
 
 using System.Linq;
 using Content.Goobstation.Shared.CrewMonitoring;
-using Content.Server.Bed.Components;
 using Content.Server.Jittering;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
-using Content.Shared._Shitmed.Medical.Surgery;
-using Content.Shared.Buckle.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Jittering;

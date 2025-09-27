@@ -1,0 +1,10 @@
+ent-ClothingBeltInteQWebbing = combat webbing
+    .desc = A unique webbing that allows you to store weapons and ammunition.
+ent-ClothingBeltInteQDropPouch = combat drop pouch
+    .desc = Improved unloading, allowing you to store various items.
+ent-ClothingBeltInteQShieldBelt = InteQ shield-belt
+    .desc = Great ideas come before bullets, and the mercenaries came up with this idea, using shields not only in spacesuits.
+ent-ClothingBeltWhiteSheath = white sneath
+    .desc = Style, brilliance, everything for the best sabers in the universe.
+ent-ClothingBeltSheriffSneath = sheriff sneath
+    .desc = Practicality, durability, the saber will definitely not end up in your foot.

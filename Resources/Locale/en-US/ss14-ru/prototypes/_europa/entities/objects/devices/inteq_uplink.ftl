@@ -1,0 +1,3 @@
+ent-BaseInteQUplinkRadio = InteQ uplink
+    .desc = Suspiciously looking radio...
+    .suffix = Empty

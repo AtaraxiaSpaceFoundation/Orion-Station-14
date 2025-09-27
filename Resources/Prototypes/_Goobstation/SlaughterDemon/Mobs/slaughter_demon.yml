@@ -170,6 +170,9 @@
   - type: ZombieImmune
   - type: GlobalAntagonist # Europa
     antagonistPrototype: globalAntagonistSlaughterDemon
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      200: 1
 
 # laughter demon
 - type: entity
