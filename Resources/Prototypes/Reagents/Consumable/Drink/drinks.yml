@@ -563,6 +563,11 @@
   evaporationSpeed: 0.3
   absorbent: true
   physicalDesc: reagent-physical-desc-translucent
+  # Europa-Start
+  slipData:
+    requiredSlipSpeed: 4.0
+  friction: 0.4
+  # Europa-End
   flavor: water
   color: "#75b1f0"
   recognizable: true

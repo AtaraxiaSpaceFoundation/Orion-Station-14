@@ -17,8 +17,8 @@
   id: BaseDrink
   group: Drinks
   abstract: true
-  slipData:
-    requiredSlipSpeed: 3.5
+#  slipData: # Europa-Remove | Fuck slippery curse
+#    requiredSlipSpeed: 3.5
   metabolisms:
     Drink:
       effects:
@@ -60,8 +60,8 @@
   id: BaseAlcohol
   group: Drinks
   abstract: true
-  slipData:
-    requiredSlipSpeed: 3.5
+#  slipData: # Europa-Remove | Fuck slippery curse
+#    requiredSlipSpeed: 3.5
   friction: 0.4
   metabolisms:
     Drink:

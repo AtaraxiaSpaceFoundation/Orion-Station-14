@@ -150,11 +150,11 @@
   - type: FoamVisuals
     animationTime: 0.6
     animationState: foam-dissolve
-  - type: Slippery
-  - type: StepTrigger
-    triggerGroups:
-      types:
-      - SlipTile
+#  - type: Slippery # Europa-Remove | Fuck slippery curse
+#  - type: StepTrigger # Europa-Remove | Fuck slippery curse
+#    triggerGroups:
+#      types:
+#      - SlipTile
   # disabled until foam reagent duplication is fixed
   #- type: ScoopableSolution
   #  solution: solutionArea
