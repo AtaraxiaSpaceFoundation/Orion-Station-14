@@ -52,6 +52,12 @@ global-antagonist-cortical-borer-description = Murder in my mind.
 global-antagonist-morph-name = Morph
 global-antagonist-morph-description = Dirty.
 
+global-antagonist-devil-name = Devil
+global-antagonist-devil-description = Һеҙ әһәмиәтһеҙ.
+
+global-antagonist-abductor-name = Abductor
+global-antagonist-abductor-description = Zonding in progress.
+
 global-antagonist-ghost-role-name = Ghost role
 global-antagonist-ghost-role-description = Ghost roles most often have no effect on the station.
 

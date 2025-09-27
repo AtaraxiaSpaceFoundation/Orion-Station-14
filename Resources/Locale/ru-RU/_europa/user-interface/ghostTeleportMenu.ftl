@@ -52,6 +52,12 @@ global-antagonist-cortical-borer-description = Убийца в моём созн
 global-antagonist-morph-name = Морф
 global-antagonist-morph-description = Ужасная кучка.
 
+global-antagonist-devil-name = Дьявол
+global-antagonist-devil-description = Һеҙ әһәмиәтһеҙ.
+
+global-antagonist-abductor-name = Абдуктор
+global-antagonist-abductor-description = Зондирование в процессе.
+
 global-antagonist-ghost-role-name = Вне станционный
 global-antagonist-ghost-role-description = Роли для призраков, чаще всего не несут никакого влияния на станцию.
 

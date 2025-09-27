@@ -400,6 +400,9 @@
       mindRoles:
       - DevilMindRole
       startingGear: DevilStartingGear
+      components:
+      - type: GlobalAntagonist # Europa
+        antagonistPrototype: globalAntagonistDevil
   - type: Tag
     tags:
     - RoundstartAntag
