@@ -16,3 +16,57 @@
     - id: RandomHumanoidSpawnerERTJanitorGreenAlert
     - id: RandomHumanoidSpawnerERTEngineerGreenAlert
     - id: RandomHumanoidSpawnerERTMedicalGreenAlert
+
+- type: responseForceTeam
+  id: ERT_BlueAlert
+  responseForceName: response-force-ert-blue-alert-name
+  announcementTitle: response-force-ert-blue-alert-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderBlueAlert
+    - id: RandomHumanoidSpawnerERTSecurityBlueAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorBlueAlert
+    - id: RandomHumanoidSpawnerERTEngineerBlueAlert
+    - id: RandomHumanoidSpawnerERTMedicalBlueAlert
+
+- type: responseForceTeam
+  id: ERT_AmberAlert
+  responseForceName: response-force-ert-amber-alert-name
+  announcementTitle: response-force-ert-amber-alert-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderAmberAlert
+    - id: RandomHumanoidSpawnerERTSecurityAmberAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorAmberAlert
+    - id: RandomHumanoidSpawnerERTEngineerAmberAlert
+    - id: RandomHumanoidSpawnerERTMedicalAmberAlert
+
+- type: responseForceTeam
+  id: ERT_RedAlert
+  responseForceName: response-force-ert-red-alert-name
+  announcementTitle: response-force-ert-red-alert-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderRedAlert
+    - id: RandomHumanoidSpawnerERTSecurityRedAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorRedAlert
+    - id: RandomHumanoidSpawnerERTEngineerRedAlert
+    - id: RandomHumanoidSpawnerERTMedicalRedAlert

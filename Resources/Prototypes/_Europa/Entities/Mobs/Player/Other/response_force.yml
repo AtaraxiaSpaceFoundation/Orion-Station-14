@@ -131,6 +131,7 @@
       time: 18000 # five hours
 
 # ERT | CODE ALERTS
+## ERT GREEN ALERT
 - type: entity
   id: RandomHumanoidSpawnerERTLeaderGreenAlert
   suffix: ERT Leader, Green alert
@@ -192,6 +193,204 @@
     state: logo
   - type: Loadout
     prototypes: [ ERTMedicalGreenAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedical
+
+## ERT BLUE ALERT
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderBlueAlert
+  suffix: ERT Leader, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTLeaderBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorBlueAlert
+  suffix: ERT Janitor, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTJanitorBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitor
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerBlueAlert
+  suffix: ERT Engineer, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTEngineerBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineer
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityBlueAlert
+  suffix: ERT Security, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTSecurityBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurity
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalBlueAlert
+  suffix: ERT Medic, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTMedicalBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedical
+
+## ERT AMBER ALERT
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderAmberAlert
+  suffix: ERT Leader, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTLeaderAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorAmberAlert
+  suffix: ERT Janitor, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTJanitorAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitor
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerAmberAlert
+  suffix: ERT Engineer, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTEngineerAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineer
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityAmberAlert
+  suffix: ERT Security, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTSecurityAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurity
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalAmberAlert
+  suffix: ERT Medic, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTMedicalAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedical
+
+## ERT RED ALERT
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderRedAlert
+  suffix: ERT Leader, Red alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTLeaderRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorRedAlert
+  suffix: ERT Janitor, Red alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTJanitorRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitor
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerRedAlert
+  suffix: ERT Engineer, Red alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTEngineerRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineer
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityRedAlert
+  suffix: ERT Security, Red alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTSecurityRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurity
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalRedAlert
+  suffix: ERT Medic, Red alert
+  components:
+  - type: Sprite
+    sprite: _Europa/Icons/inteq.rsi
+    state: logo
+  - type: Loadout
+    prototypes: [ ERTMedicalRedAlertGear ]
     roleLoadout: [ RoleSurvivalExtended ]
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedical
