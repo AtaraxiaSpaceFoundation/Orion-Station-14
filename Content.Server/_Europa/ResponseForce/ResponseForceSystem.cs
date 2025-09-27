@@ -340,8 +340,8 @@ public sealed class ResponseForceSystem : EntitySystem
             _chatSystem.DispatchStationAnnouncement(station,
                 Loc.GetString(proto.AnnouncementText),
                 Loc.GetString(proto.AnnouncementTitle),
-                playDefaultSound: false,
-                proto.Sound);
+                playDefaultSound: true,
+                announcementSound: proto.Sound);
         }
     }
 
