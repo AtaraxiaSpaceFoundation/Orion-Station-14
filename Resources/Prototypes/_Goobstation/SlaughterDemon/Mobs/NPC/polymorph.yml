@@ -42,3 +42,5 @@
   - type: Muted # 古布空间站 - ARMOK 1984
   - type: IsDeadIC
     dead: false
+  - type: GlobalAntagonist # Europa
+    antagonistPrototype: globalAntagonistSlaughterDemon
