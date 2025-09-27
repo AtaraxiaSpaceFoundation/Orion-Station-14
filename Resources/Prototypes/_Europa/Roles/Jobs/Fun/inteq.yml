@@ -1,0 +1,26 @@
+- type: job
+  id: InteQVanguardLeader
+  name: job-name-inteq-vanguard-leader
+  description: job-description-inteq-vanguard-leader
+  playTimeTracker: InteQVanguardLeader
+  setPreference: false
+  icon: "JobIconInteQ"
+  supervisors: job-supervisors-hire
+  canBeAntag: false
+  access:
+  - InteQVanguard
+  - InteQVanguardLeader
+  - Maintenance
+
+- type: job
+  id: InteQVanguard
+  name: job-name-inteq-vanguard
+  description: job-description-inteq-vanguard
+  playTimeTracker: InteQVanguard
+  setPreference: false
+  icon: "JobIconInteQ"
+  supervisors: job-supervisors-hire
+  canBeAntag: false
+  access:
+  - InteQVanguard
+  - Maintenance
