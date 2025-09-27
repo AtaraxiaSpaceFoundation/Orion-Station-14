@@ -879,6 +879,8 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
+      - type: GlobalAntagonist # Europa
+        antagonistPrototype: globalAntagonistLoneops
       - type: LanguageKnowledge # Europa
         speaks:
         - TauCetiBasic
