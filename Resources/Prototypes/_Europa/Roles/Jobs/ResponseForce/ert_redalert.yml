@@ -1,5 +1,5 @@
 - type: startingGear
-  id: ERTLeaderAmberAlertGear
+  id: ERTLeaderRedAlertGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
@@ -22,7 +22,7 @@
     - ERTSecurityUndeterminedWeapon
 
 - type: startingGear
-  id: ERTJanitorAmberAlertGear
+  id: ERTJanitorRedAlertGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
@@ -44,7 +44,7 @@
     - AdvMopItem
 
 - type: startingGear
-  id: ERTEngineerAmberAlertGear
+  id: ERTEngineerRedAlertGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
@@ -72,7 +72,7 @@
     - SheetGlass
 
 - type: startingGear
-  id: ERTSecurityAmberAlertGear
+  id: ERTSecurityRedAlertGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
@@ -97,7 +97,7 @@
     - SpeedLoaderMagnum
 
 - type: startingGear
-  id: ERTMedicalAmberAlertGear
+  id: ERTMedicalRedAlertGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
