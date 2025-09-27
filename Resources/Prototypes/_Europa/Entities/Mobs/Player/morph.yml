@@ -72,10 +72,14 @@
         - Structure
     devourBlacklist: # Maximal anti-grief gameplay
       components:
+        - Morph
         - Supermatter
         - StationAnchor
         - GravityGenerator
         - Nuke
+        - Emitter
+        - ParticleAcceleratorEmitter
+        - ContainmentFieldGenerator
         - BluespaceLocker
         - CargoSellBlacklist
         - ArrivalsBlacklist
