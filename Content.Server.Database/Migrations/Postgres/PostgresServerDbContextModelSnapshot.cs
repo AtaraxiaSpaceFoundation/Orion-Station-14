@@ -845,6 +845,13 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("admin_ooc_color");
 
+                    // Europa-Start
+                    b.Property<string>("GhostId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("ghost_id");
+                    // Europa-End
+
                     b.PrimitiveCollection<List<string>>("ConstructionFavorites")
                         .IsRequired()
                         .HasColumnType("text[]")

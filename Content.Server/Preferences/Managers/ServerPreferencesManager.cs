@@ -37,6 +37,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Database;
+using Content.Shared._Europa.CustomGhost;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Preferences;
@@ -106,7 +107,7 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, index, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
+            prefsData.Prefs = curPrefs.WithSlot(index); // Europa-Edit
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -146,7 +147,7 @@ namespace Content.Server.Preferences.Managers
                 [slot] = profile
             };
 
-            prefsData.Prefs = new PlayerPreferences(profiles, slot, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
+            prefsData.Prefs = curPrefs.WithCharacters(profiles).WithSlot(slot); // Europa-Edit
 
             if (ShouldStorePrefs(session.Channel.AuthType))
                 await _db.SaveCharacterSlotAsync(userId, profile, slot);
@@ -161,9 +162,18 @@ namespace Content.Server.Preferences.Managers
             }
 
             var curPrefs = prefsData.Prefs!;
-            prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, favorites);
-
+            // Europa-Edit-Start
             var session = _playerManager.GetSessionById(userId);
+
+            prefsData.Prefs = new PlayerPreferences(
+                curPrefs.Characters,
+                curPrefs.SelectedCharacterIndex,
+                curPrefs.AdminOOCColor,
+                curPrefs.CustomGhost,
+                favorites
+            );
+            // Europa-Edit-End
+
             if (ShouldStorePrefs(session.Channel.AuthType))
                 await _db.SaveConstructionFavoritesAsync(userId, favorites);
         }
@@ -205,7 +215,15 @@ namespace Content.Server.Preferences.Managers
             var arr = new Dictionary<int, ICharacterProfile>(curPrefs.Characters);
             arr.Remove(slot);
 
-            prefsData.Prefs = new PlayerPreferences(arr, nextSlot ?? curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, curPrefs.ConstructionFavorites);
+            // Europa-Edit-Start
+            prefsData.Prefs = new PlayerPreferences(
+                arr,
+                nextSlot ?? curPrefs.SelectedCharacterIndex,
+                curPrefs.AdminOOCColor,
+                curPrefs.CustomGhost,
+                curPrefs.ConstructionFavorites
+            );
+            // Europa-Edit-End
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -246,7 +264,15 @@ namespace Content.Server.Preferences.Managers
             }
 
             var curPrefs = prefsData.Prefs!;
-            prefsData.Prefs = new PlayerPreferences(curPrefs.Characters, curPrefs.SelectedCharacterIndex, curPrefs.AdminOOCColor, validatedList);
+            // Europa-Edit-Start
+            prefsData.Prefs = new PlayerPreferences(
+                curPrefs.Characters,
+                curPrefs.SelectedCharacterIndex,
+                curPrefs.AdminOOCColor,
+                curPrefs.CustomGhost,
+                validatedList
+            );
+            // Europa-Edit-End
 
             if (ShouldStorePrefs(message.MsgChannel.AuthType))
             {
@@ -265,7 +291,7 @@ namespace Content.Server.Preferences.Managers
                     PrefsLoaded = true,
                     Prefs = new PlayerPreferences(
                         new[] { new KeyValuePair<int, ICharacterProfile>(0, HumanoidCharacterProfile.Random()) },
-                        0, Color.Transparent, [])
+                        0, Color.Transparent, "default", []) // Europa-Edit
                 };
 
                 _cachedPlayerPrefs[session.UserId] = prefsData;
@@ -374,15 +400,24 @@ namespace Content.Server.Preferences.Managers
             return prefs;
         }
 
-        private PlayerPreferences SanitizePreferences(ICommonSession session, PlayerPreferences prefs, IDependencyCollection collection)
+        private PlayerPreferences SanitizePreferences(ICommonSession session,
+            PlayerPreferences prefs,
+            IDependencyCollection collection)
         {
             // Clean up preferences in case of changes to the game,
             // such as removed jobs still being selected.
 
-            return new PlayerPreferences(prefs.Characters.Select(p =>
-            {
-                return new KeyValuePair<int, ICharacterProfile>(p.Key, p.Value.Validated(session, collection));
-            }), prefs.SelectedCharacterIndex, prefs.AdminOOCColor, prefs.ConstructionFavorites);
+            return new PlayerPreferences(
+                prefs.Characters.Select(p =>
+                    new KeyValuePair<int, ICharacterProfile>(p.Key, p.Value.Validated(session, collection))
+                ).ToList(),
+                prefs.SelectedCharacterIndex,
+                prefs.AdminOOCColor,
+                _prototypeManager.TryIndex<CustomGhostPrototype>(prefs.CustomGhost, out var ghostProto) && ghostProto?.CanUse(session) == true
+                    ? prefs.CustomGhost
+                    : _prototypeManager.Index<CustomGhostPrototype>("default"),
+                prefs.ConstructionFavorites
+            );
         }
 
         public IEnumerable<KeyValuePair<NetUserId, ICharacterProfile>> GetSelectedProfilesForPlayers(

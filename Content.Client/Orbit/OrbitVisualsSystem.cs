@@ -80,7 +80,7 @@ public sealed class OrbitVisualsSystem : EntitySystem
             var angle = new Angle(Math.PI * 2 * progress);
             var vec = angle.RotateVec(new Vector2(orbit.OrbitDistance, 0));
 
-            _sprite.SetRotation((uid, sprite), angle);
+            _sprite.SetRotation((uid, sprite), orbit.KeepUpright ? Angle.Zero : angle); // Europa-Edit
             _sprite.SetOffset((uid, sprite), vec);
         }
     }

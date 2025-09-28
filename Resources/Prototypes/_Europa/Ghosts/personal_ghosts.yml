@@ -1,0 +1,196 @@
+- type: customGhost
+  id: customPlaceholder
+  category: personal
+  proto: MobObserverCkeyPlaceholder
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ PuroSlavKing ]
+  name: custom-ghost-personal-placeholder-name
+  desc: custom-ghost-personal-placeholder-desc
+
+- type: entity
+  parent: MobObserverCkey
+  id: MobObserverCkeyPlaceholder
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/placeholder.rsi
+
+- type: customGhost
+  abstract: true
+  id: CkeyPersonal
+  category: personal
+  name: custom-ghost-personal-name
+  desc: custom-ghost-personal-desc
+
+# Abstract entproto to force transparency on all custom ghosts
+- type: entity
+  abstract: true
+  parent: MobObserver
+  id: MobObserverCkey
+  components:
+  - type: Sprite
+    color: "#ffffffcc" # 0.8 alpha
+
+
+
+# PuroSlavKing
+- type: customGhost
+  parent: CkeyPersonal
+  id: PuroSlavKing-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ PuroSlavKing ]
+  proto: MobObserverPuroSlavKing
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverPuroSlavKing
+  description: Hello World!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/PuroSlavKing.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# no_mad / OkTiFE
+- type: customGhost
+  parent: CkeyPersonal
+  id: no_mad-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ no_mad, OkTiFE ]
+  proto: MobObserverno_mad
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverno_mad
+  description: BoO-oO!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/no_mad.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# yourmommy
+- type: customGhost
+  parent: CkeyPersonal
+  id: yourmommy-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ yourmommy ]
+  proto: MobObserveryourmommy
+
+- type: entity
+  parent: MobObserver
+  id: MobObserveryourmommy
+  description: Meow!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/yourmommy.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# GodFace
+- type: customGhost
+  parent: CkeyPersonal
+  id: GodFace-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ GodFace ]
+  proto: MobObserverGodFace
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverGodFace
+  description: BoO-oO!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/GodFace.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# LIZARDWIZARD
+- type: customGhost
+  parent: CkeyPersonal
+  id: LIZARDWIZARD-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ LIZARDWIZARD ]
+  proto: MobObserverLIZARDWIZARD
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverLIZARDWIZARD
+  description: BoO-oO!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/LIZARDWIZARD.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# Vetochka
+- type: customGhost
+  parent: CkeyPersonal
+  id: Vetochka-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ Vetochka ]
+  proto: MobObserverVetochka
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverVetochka
+  description: BoO-oO!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/Vetochka.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# kreses
+- type: customGhost
+  parent: CkeyPersonal
+  id: kreses-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ kreses ]
+  proto: MobObserverkreses
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverkreses
+  description: Hiss!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/kreses.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# scituzer2
+- type: customGhost
+  parent: CkeyPersonal
+  id: scituzer2-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ scituzer2 ]
+  proto: MobObserverscituzer2
+
+- type: entity
+  parent: MobObserver
+  id: MobObserverscituzer2
+  description: Yarr!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/scituzer2.rsi
+    color: "#ffffffe6" # 0.9 alpha
+
+# trest100
+- type: customGhost
+  parent: CkeyPersonal
+  id: trest100-ghost
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ trest100 ]
+  proto: MobObservertrest100
+
+- type: entity
+  parent: MobObserver
+  id: MobObservertrest100
+  description: Skibidi-psiop es es!
+  components:
+  - type: Sprite
+    sprite: _Europa/Ghosts/ckey/trest100.rsi
+    color: "#ffffffe6" # 0.9 alpha

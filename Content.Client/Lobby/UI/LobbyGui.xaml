@@ -39,7 +39,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     xmlns:lobbyUi="clr-namespace:Content.Client.Lobby.UI"
     xmlns:info="clr-namespace:Content.Client.Info"
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
-    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:buttons="clr-namespace:Content.Client._Europa.UserInterface.Buttons">
     <!-- Background -->
     <TextureRect Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
                  Stretch="KeepAspectCovered" />
@@ -87,6 +88,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         <RichTextLabel Name="LobbyMessageLabel" Access="Public" Margin="5" />
                     </PanelContainer>
                     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4"> <!-- Goobstation - Lobby Background Credits -->
+                    <!-- Europa-Start -->
+                    <buttons:CustomGhostsMenuOpenButton StyleClasses="NovaButton" SetSize="77 66">
+                        <TextureRect TextureScale="2 2" TexturePath="/Textures/_Europa/Interface/Buttons/ghosticon.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </buttons:CustomGhostsMenuOpenButton>
+                    <!-- Europa-End -->
                         <info:DevInfoBanner Name="DevInfoBanner" VerticalExpand="false" Margin="3 3 3 3" />
                         <PanelContainer StyleClasses="AngleRect">
                             <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
@@ -154,7 +160,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             </PanelContainer>
         </SplitContainer>
         <PanelContainer Name="ExpandPanel"
-                        StyleClasses="AngleRect" 
+                        StyleClasses="AngleRect"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Margin="0 2 2 0"
