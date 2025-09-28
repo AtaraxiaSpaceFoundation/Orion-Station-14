@@ -58,12 +58,5 @@
             SalvageSpecialist: [ 2, 3 ]
             CargoTechnician: [ 2, 3 ]
           #silicon
-            StationAI: [ 1, 1 ]
+            StationAi: [ 1, 1 ]
             Borg: [ 1, 2 ]
-        # blob-config-start LOW
-        - type: StationBlobConfig
-          stageBegin: 15
-          stageCritical: 200
-          stageTheEnd: 400
-          specForceTeam: RXBZZBlobLow
-        # blob-config-end
