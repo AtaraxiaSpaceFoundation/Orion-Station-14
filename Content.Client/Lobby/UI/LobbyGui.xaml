@@ -86,6 +86,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     <PanelContainer VerticalAlignment="Bottom" HorizontalAlignment="Left"
                                     Margin="0 75" StyleClasses="AngleRect">
                         <RichTextLabel Name="LobbyMessageLabel" Access="Public" Margin="5" />
+                    <!-- Europa-Start -->
+                        <buttons:ViewPremiumInfoButton StyleClasses="NovaButton" SetSize="154 64">
+                            <TextureRect TextureScale="1 1" TexturePath="/Textures/_Europa/Interface/pass.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </buttons:ViewPremiumInfoButton>
+                    <!-- Europa-End -->
                     </PanelContainer>
                     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4"> <!-- Goobstation - Lobby Background Credits -->
                     <!-- Europa-Start -->
