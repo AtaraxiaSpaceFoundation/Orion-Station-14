@@ -153,6 +153,53 @@ public sealed class ItemSystem : SharedItemSystem
 
             args.Layers.Add((key, layer));
         }
+
+        AddUnshadedVisuals(uid, item, args, defaultKey);
+    }
+
+    /// <summary>
+    ///     Adds unshaded versions for all in-hand visuals.
+    ///     I predict: In 1 second this will be ported to the coolest and most unique build in the universe. (:
+    /// </summary>
+    private void AddUnshadedVisuals(EntityUid uid, ItemComponent item, GetInhandVisualsEvent args, string defaultKey)
+    {
+        RSI? rsi = null;
+
+        if (item.RsiPath != null)
+            rsi = _resCache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / item.RsiPath).RSI;
+        else if (TryComp(uid, out SpriteComponent? sprite))
+            rsi = sprite.BaseRSI;
+
+        if (rsi == null)
+            return;
+
+        // Create a copy of existing layers for iteration.
+        var existingLayers = args.Layers.ToList();
+
+        foreach (var (originalKey, originalLayer) in existingLayers)
+        {
+            if (string.IsNullOrEmpty(originalLayer.State))
+                continue;
+
+            var unshadedState = $"{originalLayer.State}-unshaded";
+            if (!rsi.TryGetState(unshadedState, out var _))
+                continue;
+
+            var unshadedLayer = new PrototypeLayerData
+            {
+                RsiPath = originalLayer.RsiPath,
+                State = unshadedState,
+                MapKeys = new() { $"{originalKey}-unshaded" },
+                Shader = "unshaded",
+                Visible = originalLayer.Visible,
+                Color = originalLayer.Color,
+                Scale = originalLayer.Scale,
+                Rotation = originalLayer.Rotation,
+                Offset = originalLayer.Offset
+            };
+
+            args.Layers.Add(($"{originalKey}-unshaded", unshadedLayer));
+        }
     }
 
     /// <summary>

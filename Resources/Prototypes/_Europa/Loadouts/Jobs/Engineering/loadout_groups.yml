@@ -1,0 +1,11 @@
+- type: loadoutGroup
+  id: HandHeldPowerMonitor
+  name: loadout-group-handheld-power-monitor
+  loadouts:
+  - HandHeldPowerMonitor
+
+- type: loadoutGroup
+  id: HandHeldAtmosMonitor
+  name: loadout-group-handheld-atmos-monitor
+  loadouts:
+  - HandHeldAtmosMonitor

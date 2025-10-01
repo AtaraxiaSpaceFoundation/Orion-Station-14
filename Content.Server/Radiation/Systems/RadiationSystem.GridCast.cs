@@ -126,8 +126,11 @@ public partial class RadiationSystem
         // send rads to each entity
         foreach (var (receiver, rads) in receiversTotalRads)
         {
+            if (receiver.Comp.FuckinInvincible)
+                continue;
             // update radiation value of receiver
             // if no radiation rays reached target, that will set it to 0
+
             receiver.Comp.CurrentRadiation = rads;
 
             // also send an event with combination of total rad

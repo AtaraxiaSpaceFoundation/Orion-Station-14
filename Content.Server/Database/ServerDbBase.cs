@@ -136,7 +136,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
-using Content.Shared._Europa.CustomGhost;
 using Content.Shared._RMC14.LinkAccount;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
@@ -150,6 +149,7 @@ using Content.Shared.Traits;
 using Microsoft.EntityFrameworkCore;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -200,14 +200,50 @@ namespace Content.Server.Database
             foreach (var favorite in prefs.ConstructionFavorites)
                 constructionFavorites.Add(new ProtoId<ConstructionPrototype>(favorite));
 
-            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), prefs.GhostId, constructionFavorites);
+            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), constructionFavorites);
+        }
+
+        public async Task SavePlayerPreferencesToDbAsync(NetUserId userId, PlayerPreferences prefs, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var prefsEntity = await db.DbContext.Preference
+                .Include(p => p.Profiles)
+                .SingleAsync(p => p.UserId == userId.UserId, cancel);
+
+            var slotExists = prefsEntity.Profiles.Any(profile => profile.Slot == prefs.SelectedCharacterIndex);
+            if (!slotExists)
+            {
+                var newSlot = prefsEntity.Profiles.FirstOrDefault()?.Slot ?? 0;
+                _opsLog.Warning($"Selected character slot {prefs.SelectedCharacterIndex} doesn't exist for user {userId}. Using slot {newSlot} instead.");
+                prefsEntity.SelectedCharacterSlot = newSlot;
+            }
+            else
+            {
+                prefsEntity.SelectedCharacterSlot = prefs.SelectedCharacterIndex;
+            }
+
+            prefsEntity.AdminOOCColor = prefs.AdminOOCColor.ToHex();
+
+            db.DbContext.Profile.RemoveRange(prefsEntity.Profiles);
+            prefsEntity.Profiles.Clear();
+
+            foreach (var (slot, profile) in prefs.Characters)
+            {
+                var profileEntity = ConvertProfiles((HumanoidCharacterProfile) profile, slot);
+                prefsEntity.Profiles.Add(profileEntity);
+            }
+
+            prefsEntity.ConstructionFavorites = prefs.ConstructionFavorites.Select(f => f.Id).ToList();
+
+            await db.DbContext.SaveChangesAsync(cancel);
         }
 
         public async Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index)
         {
             await using var db = await GetDb();
 
-            await SetSelectedCharacterSlotAsync(userId, index, db.DbContext);
+            await SetSelectedCharacterSlotAsync(userId, index, db.DbContext, _opsLog);
 
             await db.DbContext.SaveChangesAsync();
         }
@@ -279,7 +315,6 @@ namespace Content.Server.Database
                 UserId = userId.UserId,
                 SelectedCharacterSlot = 0,
                 AdminOOCColor = Color.Red.ToHex(),
-                GhostId = "default", // Europa
                 ConstructionFavorites = [],
             };
 
@@ -289,7 +324,7 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
 
-            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor), new ProtoId<CustomGhostPrototype>("default"), []);
+            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor), []);
         }
 
         public async Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot)
@@ -297,7 +332,7 @@ namespace Content.Server.Database
             await using var db = await GetDb();
 
             await DeleteCharacterSlot(db.DbContext, userId, deleteSlot);
-            await SetSelectedCharacterSlotAsync(userId, newSlot, db.DbContext);
+            await SetSelectedCharacterSlotAsync(userId, newSlot, db.DbContext, _opsLog);
 
             await db.DbContext.SaveChangesAsync();
         }
@@ -315,20 +350,6 @@ namespace Content.Server.Database
 
         }
 
-        // Europa-Start
-        public async Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> proto)
-        {
-            await using var db = await GetDb();
-            var prefs = await db.DbContext
-                .Preference
-                .Include(p => p.Profiles)
-                .SingleAsync(p => p.UserId == userId.UserId);
-            prefs.GhostId = proto.Id;
-
-            await db.DbContext.SaveChangesAsync();
-        }
-        // Europa-End
-
         public async Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {
             await using var db = await GetDb();
@@ -342,9 +363,22 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
-        private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db)
+        private static async Task SetSelectedCharacterSlotAsync(NetUserId userId, int newSlot, ServerDbContext db, ISawmill? log = null)
         {
-            var prefs = await db.Preference.SingleAsync(p => p.UserId == userId.UserId);
+            var prefs = await db.Preference
+                .Include(p => p.Profiles)
+                .SingleAsync(p => p.UserId == userId.UserId);
+
+            var slotExists = prefs.Profiles.Any(profile => profile.Slot == newSlot);
+
+            if (!slotExists)
+            {
+                newSlot = prefs.Profiles.FirstOrDefault()?.Slot ?? 0;
+
+                if (log != null)
+                    log.Warning($"Selected character slot {newSlot} doesn't exist for user {userId}. Using slot {newSlot} instead.");
+            }
+
             prefs.SelectedCharacterSlot = newSlot;
         }
 
@@ -363,6 +397,10 @@ namespace Content.Server.Database
             var gender = sex == Sex.Male ? Gender.Male : Gender.Female;
             if (Enum.TryParse<Gender>(profile.Gender, true, out var genderVal))
                 gender = genderVal;
+
+            var voice = profile.Voice;
+            if (voice == String.Empty)
+                voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
 
             // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             var markingsRaw = profile.Markings?.Deserialize<List<string>>();
@@ -408,6 +446,7 @@ namespace Content.Server.Database
                 profile.CharacterName,
                 profile.FlavorText,
                 profile.Species,
+                voice,
                 profile.Height, // Goobstation: port EE height/width sliders
                 profile.Width, // Goobstation: port EE height/width sliders
                 profile.Age,
@@ -448,6 +487,7 @@ namespace Content.Server.Database
             profile.Species = humanoid.Species;
             profile.Height = humanoid.Height; // Goobstation: port EE height/width sliders
             profile.Width = humanoid.Width; // Goobstation: port EE height/width sliders
+            profile.Voice = humanoid.Voice;
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();

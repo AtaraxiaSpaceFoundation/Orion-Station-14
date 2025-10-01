@@ -106,7 +106,6 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Server.Preferences.Managers;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
@@ -122,7 +121,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared._White.Xenomorphs.Infection;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
@@ -136,17 +134,20 @@ using Robust.Shared.Timing;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
 using Content.Shared._EinsteinEngines.Silicon.Components;
+
+using Content.Shared.CombatMode;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Weapons.Melee;
+
 using Content.Shared._Europa.Antag;
-using Content.Shared._Europa.CustomGhost;
 using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.SSDIndicator;
-using Robust.Shared.Network;
+
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -180,11 +181,10 @@ namespace Content.Server.Ghost
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
-        [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Europa
+        [Dependency] private readonly SharedHandsSystem _hands = default!;
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
-
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
         private static readonly ProtoId<DamageTypePrototype> IonDamageType = "Ion";
@@ -201,6 +201,9 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<GhostComponent, ComponentShutdown>(OnGhostShutdown);
 
             SubscribeLocalEvent<GhostComponent, ExaminedEvent>(OnGhostExamine);
+
+            SubscribeLocalEvent<GhostComponent, MindAddedMessage>(OnMindAddedMessage);
+            SubscribeLocalEvent<GhostComponent, PlayerAttachedEvent>(OnPlayerAttached);
 
             SubscribeLocalEvent<GhostComponent, MindRemovedMessage>(OnMindRemovedMessage);
             SubscribeLocalEvent<GhostComponent, MindUnvisitedMessage>(OnMindUnvisitedMessage);
@@ -221,6 +224,16 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<ToggleGhostVisibilityToAllEvent>(OnToggleGhostVisibilityToAll);
 
             SubscribeLocalEvent<GhostComponent, GetVisMaskEvent>(OnGhostVis);
+        }
+
+        private void OnMindAddedMessage(EntityUid uid, GhostComponent component, MindAddedMessage args)
+        {
+            FixGhostShit(uid, component);
+        }
+
+        private void OnPlayerAttached(EntityUid uid, GhostComponent component, PlayerAttachedEvent args)
+        {
+            FixGhostShit(uid, component);
         }
 
         private void OnGhostVis(Entity<GhostComponent> ent, ref GetVisMaskEvent args)
@@ -319,6 +332,8 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             var time = _gameTiming.CurTime;
             component.TimeOfDeath = time;
+
+            FixGhostShit(uid, component);
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
@@ -347,6 +362,7 @@ namespace Content.Server.Ghost
             _actions.AddAction(uid, ref component.ToggleLightingActionEntity, component.ToggleLightingAction);
             _actions.AddAction(uid, ref component.ToggleFoVActionEntity, component.ToggleFoVAction);
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);
+            FixGhostShit(uid, component);
         }
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
@@ -733,34 +749,16 @@ namespace Content.Server.Ghost
                 return null;
             }
 
-//            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Europa-Start
-            CustomGhostPrototype? customGhost = null;
-            if (mind.Comp.UserId is NetUserId userId)
-                customGhost = _prototypeManager.Index(_prefs.GetPreferences(userId).CustomGhost);
-
-            var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Europa-End
+            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
 
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
-/* // Europa-Remove
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
                 _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
                 _metaData.SetEntityName(ghost, session.Name);
-*/
-            // Europa-Start
-            if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
-            {
-                if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                    _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
-                else
-                    _metaData.SetEntityName(ghost, session.Name);
-            }
-            // Europa-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
             {
@@ -779,16 +777,6 @@ namespace Content.Server.Ghost
             // we have to call this after the mind has been transferred since some mind roles modify the ghost's name
             _nameMod.RefreshNameModifiers(ghost);
             return ghost;
-
-            // Europa-Start
-            static string? FirstNonNullNonEmpty(params string?[] strings)
-            {
-                foreach (var str in strings)
-                    if (!string.IsNullOrWhiteSpace(str))
-                        return str;
-                return null;
-            }
-            // Europa-End
         }
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, bool forced = false, MindComponent? mind = null)
@@ -897,6 +885,25 @@ namespace Content.Server.Ghost
                 return false;
 
             return true;
+        }
+
+        private void FixGhostShit(EntityUid uid, GhostComponent component)
+        {
+            if (component.CanGhostInteract)
+                return;
+
+            var activeItem = _hands.GetActiveItem(uid);
+            if (activeItem != null)
+            {
+                var playerName = uid.ToString();
+                if (_player.TryGetSessionByEntity(uid, out var session))
+                    playerName = session.Name;
+                _chatManager.SendAdminAlert(Loc.GetString("abuz-ghost-active-item", ("player", playerName)));
+            }
+
+            RemComp<HandsComponent>(uid);
+            RemComp<CombatModeComponent>(uid);
+            RemComp<MeleeWeaponComponent>(uid);
         }
     }
 

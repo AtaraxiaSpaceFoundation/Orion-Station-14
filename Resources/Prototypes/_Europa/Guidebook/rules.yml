@@ -2,167 +2,48 @@
 - type: guideEntry
   id: EuropaRuleset
   name: Правила сервера
-  priority: 0
   ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/Ruleset.xml"
   children:
-  - EuropaRule0
   - EuropaRule1
   - EuropaRule2
   - EuropaRule3
-  - EuropaRule31
-  - EuropaRule32
-  - EuropaRule33
-  - EuropaRule34
-  - EuropaRule35
-  - EuropaRule36
-  - EuropaRule37
-  - EuropaRule38
-  - EuropaRule39
   - EuropaRule4
+  - EuropaRule5
   - EuropaRule6
-  - EuropaRule7
-  - EuropaRule8
-  - EuropaRule9
-  - EuropaRule10
   - EuropaPunishmentTypes
 
 - type: guideEntry
   id: EuropaPunishmentTypes
   name: Игровые наказания
-  priority: 20
-  ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/PunishmentTypes.xml"
-
-- type: guideEntry
-  id: EuropaRule0
-  name: Правило 0
-  priority: 1
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule0.xml"
 
 - type: guideEntry
   id: EuropaRule1
   name: Правило 1
-  priority: 2
-  ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule1.xml"
 
 - type: guideEntry
   id: EuropaRule2
   name: Правило 2
-  priority: 3
-  ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule2.xml"
 
 - type: guideEntry
   id: EuropaRule3
   name: Правило 3
-  priority: 4
-  ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.xml"
-
-- type: guideEntry
-  id: EuropaRule31
-  name: Правило 3.1
-  priority: 5
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.1.xml"
-
-- type: guideEntry
-  id: EuropaRule32
-  name: Правило 3.2
-  priority: 6
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.2.xml"
-
-- type: guideEntry
-  id: EuropaRule33
-  name: Правило 3.3
-  priority: 7
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.3.xml"
-
-- type: guideEntry
-  id: EuropaRule34
-  name: Правило 3.4
-  priority: 8
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.4.xml"
-
-- type: guideEntry
-  id: EuropaRule35
-  name: Правило 3.5
-  priority: 9
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.5.xml"
-
-- type: guideEntry
-  id: EuropaRule36
-  name: Правило 3.6
-  priority: 10
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.6.xml"
-
-- type: guideEntry
-  id: EuropaRule37
-  name: Правило 3.7
-  priority: 11
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.7.xml"
-
-- type: guideEntry
-  id: EuropaRule38
-  name: Правило 3.8
-  priority: 12
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.8.xml"
-
-- type: guideEntry
-  id: EuropaRule39
-  name: Правило 3.9
-  priority: 13
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule3.9.xml"
 
 - type: guideEntry
   id: EuropaRule4
   name: Правило 4
-  priority: 14
-  ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule4.xml"
+
+- type: guideEntry
+  id: EuropaRule5
+  name: Правило 5
+  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule5.xml"
 
 - type: guideEntry
   id: EuropaRule6
   name: Правило 6
-  priority: 15
-  ruleEntry: true
   text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule6.xml"
-
-- type: guideEntry
-  id: EuropaRule7
-  name: Правило 7
-  priority: 16
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule7.xml"
-
-- type: guideEntry
-  id: EuropaRule8
-  name: Правило 8
-  priority: 17
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule8.xml"
-
-- type: guideEntry
-  id: EuropaRule9
-  name: Правило 9
-  priority: 18
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule9.xml"
-
-- type: guideEntry
-  id: EuropaRule10
-  name: Правило 10
-  priority: 19
-  ruleEntry: true
-  text: "/ServerInfo/_Europa/Guidebook/ServerRules/Rule10.xml"

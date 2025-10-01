@@ -39,6 +39,7 @@
           guidebookComponentName: reagent-comp-condition-wizard-or-apprentice
           invert: true
         probability: 0.2
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Mugwort
@@ -106,3 +107,4 @@
             - Wizard
             - Apprentice
           guidebookComponentName: reagent-comp-condition-wizard-or-apprentice
+  evaporationSpeed: 0.3

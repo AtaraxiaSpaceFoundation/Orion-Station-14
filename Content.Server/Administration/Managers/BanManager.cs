@@ -211,7 +211,7 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         KickMatchingConnectedPlayers(banDef, "newly placed ban");
     }
 
-    private void KickMatchingConnectedPlayers(ServerBanDef def, string source)
+    private async void KickMatchingConnectedPlayers(ServerBanDef def, string source)
     {
         foreach (var player in _playerManager.Sessions)
         {
@@ -240,9 +240,9 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
         return BanMatcher.BanMatches(ban, playerInfo);
     }
 
-    private void KickForBanDef(ICommonSession player, ServerBanDef def)
+    private async void KickForBanDef(ICommonSession player, ServerBanDef def)
     {
-        var message = def.FormatBanMessage(_cfg, _localizationManager);
+        var message = await def.FormatBanMessage(_cfg, _localizationManager);
         player.Channel.Disconnect(message);
     }
 

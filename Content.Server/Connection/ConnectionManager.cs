@@ -336,7 +336,7 @@ namespace Content.Server.Connection
             if (bans.Count > 0)
             {
                 var firstBan = bans[0];
-                var message = firstBan.FormatBanMessage(_cfg, _loc);
+                var message = await firstBan.FormatBanMessage(_cfg, _loc);
                 return (ConnectionDenyReason.Ban, message, bans);
             }
 

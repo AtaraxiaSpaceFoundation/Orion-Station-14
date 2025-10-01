@@ -1,6 +1,7 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
+using Content.Server.Ghost.Roles;
 using Content.Server.Mind;
 using Content.Shared.Database;
 using Content.Shared.CCVar;
@@ -21,6 +22,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly GameTicker _ticker = default!;
+    [Dependency] private readonly GhostRoleSystem _ghostRoles = default!;
 
     public override void Initialize()
     {
@@ -32,6 +34,9 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         var uid = args.SenderSession.AttachedEntity;
 
         if (uid == null)
+            return;
+
+        if (_ghostRoles.LeaveAllRaffles(args.SenderSession))
             return;
 
         var connectedClient = args.SenderSession.Channel;

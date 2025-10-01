@@ -119,6 +119,7 @@ using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Server.PDA
@@ -135,6 +136,11 @@ namespace Content.Server.PDA
         [Dependency] private readonly UnpoweredFlashlightSystem _unpoweredFlashlight = default!;
         [Dependency] private readonly ContainerSystem _containerSystem = default!;
         [Dependency] private readonly IdCardSystem _idCard = default!;
+        [Dependency] private readonly SharedTransformSystem _xform = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
+
+        private TimeSpan _updateTimer = TimeSpan.FromSeconds(1);
+        private TimeSpan _nextUpdate;
 
         public override void Initialize()
         {
@@ -157,6 +163,25 @@ namespace Content.Server.PDA
             SubscribeLocalEvent<EntityRenamedEvent>(OnEntityRenamed, after: new[] { typeof(IdCardSystem) });
             SubscribeLocalEvent<AlertLevelChangedEvent>(OnAlertLevelChanged);
             SubscribeLocalEvent<PdaComponent, InventoryRelayedEvent<ChameleonControllerOutfitSelectedEvent>>(ChameleonControllerOutfitItemSelected);
+        }
+
+        public override void Update(float frameTime)
+        {
+            base.Update(frameTime);
+
+            if (_timing.CurTime < _nextUpdate)
+                return;
+            var query = AllEntityQuery<PdaComponent>();
+            while (query.MoveNext(out var ent, out var pda))
+            {
+                if (_timing.CurTime < pda.NextUpdate)
+                    continue;
+
+                UpdatePdaUi(ent, pda);
+
+                pda.NextUpdate = _timing.CurTime + pda.MustUpdateCooldown;
+            }
+            _nextUpdate = _timing.CurTime + _updateTimer;
         }
 
         private void ChameleonControllerOutfitItemSelected(Entity<PdaComponent> ent, ref InventoryRelayedEvent<ChameleonControllerOutfitSelectedEvent> args)
@@ -298,6 +323,15 @@ namespace Content.Server.PDA
 
             var programs = _cartridgeLoader.GetAvailablePrograms(uid, loader);
             var id = CompOrNull<IdCardComponent>(pda.ContainedId);
+
+            string? cords = null;
+            if (_xform.TryGetMapOrGridCoordinates(uid, out var pos))
+            {
+                var x = (int) pos.Value.X;
+                var y = (int) pos.Value.Y;
+                cords = $"({x}, {y})";
+            }
+
             var state = new PdaUpdateState(
                 programs,
                 GetNetEntity(loader.ActiveProgram),
@@ -315,7 +349,8 @@ namespace Content.Server.PDA
                 pda.StationName,
                 showUplink,
                 hasInstrument,
-                address);
+                address,
+                cords);
 
             _ui.SetUiState(uid, PdaUiKey.Key, state);
         }

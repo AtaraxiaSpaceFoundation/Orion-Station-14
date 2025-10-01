@@ -22,4 +22,7 @@ public sealed partial class RadiationReceiverComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public float CurrentRadiation;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool FuckinInvincible = false;
 }

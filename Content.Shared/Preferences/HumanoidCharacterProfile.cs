@@ -51,6 +51,7 @@
 
 using System.Linq;
 using System.Text.RegularExpressions;
+using Content.Shared._Europa.TTS;
 using Content.Shared.CCVar;
 using Content.Shared.Dataset;
 using Content.Shared.GameTicking;
@@ -144,6 +145,9 @@ namespace Content.Shared.Preferences
         public float Width { get; private set; }
         // end Goobstation: port EE height/width sliders
 
+        [DataField]
+        public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
+
         /// <summary>
         /// <see cref="Appearance"/>
         /// </summary>
@@ -186,6 +190,7 @@ namespace Content.Shared.Preferences
             string name,
             string flavortext,
             string species,
+            string voice,
             float height, // Goobstation: port EE height/width sliders
             float width, // Goobstation: port EE height/width sliders
             int age,
@@ -215,6 +220,7 @@ namespace Content.Shared.Preferences
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
+            Voice = voice;
 
             var hasHighPrority = false;
             foreach (var (key, value) in _jobPriorities)
@@ -236,6 +242,7 @@ namespace Content.Shared.Preferences
             : this(other.Name,
                 other.FlavorText,
                 other.Species,
+                other.Voice,
                 other.Height, // Goobstation: port EE height/width sliders
                 other.Width, // Goobstation: port EE height/width sliders
                 other.Age,
@@ -309,6 +316,14 @@ namespace Content.Shared.Preferences
                 width = random.NextFloat(speciesPrototype.MinWidth, speciesPrototype.MaxWidth); // Goobstation: port EE height/width sliders
             }
 
+            var correctVoicePrototypes = prototypeManager.EnumeratePrototypes<TTSVoicePrototype>()
+                .Where(o => CanHaveVoice(o, sex))
+                .ToArray();
+
+            var voiceId = correctVoicePrototypes.Length > 0
+                ? random.Pick(correctVoicePrototypes).ID
+                : SharedHumanoidAppearanceSystem.DefaultVoice;
+
             var gender = Gender.Epicene;
 
             switch (sex)
@@ -331,6 +346,7 @@ namespace Content.Shared.Preferences
                 Age = age,
                 Gender = gender,
                 Species = species,
+                Voice = voiceId,
                 Width = width, // Goobstation: port EE height/width sliders
                 Height = height, // Goobstation: port EE height/width sliders
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
@@ -360,6 +376,11 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile WithGender(Gender gender)
         {
             return new(this) { Gender = gender };
+        }
+
+        public HumanoidCharacterProfile WithVoice(string voice)
+        {
+            return new(this) { Voice = voice };
         }
 
         public HumanoidCharacterProfile WithSpecies(string species)
@@ -720,6 +741,10 @@ namespace Content.Shared.Preferences
             _traitPreferences.Clear();
             _traitPreferences.UnionWith(GetValidTraits(traits, prototypeManager));
 
+            prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
+            if (voice is null || !CanHaveVoice(voice, Sex))
+                Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
+
             // Checks prototypes exist for all loadouts and dump / set to default if not.
             var toRemove = new ValueList<string>();
 
@@ -777,6 +802,11 @@ namespace Content.Shared.Preferences
             }
 
             return result;
+        }
+
+        public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
+        {
+            return voice.AvailableNoMatterWhat || voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
         }
 
         public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection)

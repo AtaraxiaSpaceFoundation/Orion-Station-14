@@ -11,12 +11,12 @@ namespace Content.Server.Database.Migrations.Postgres
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<List<string>>(
-                name: "construction_favorites",
-                table: "preference",
-                type: "text[]",
-                nullable: false,
-                defaultValue: new string[0]);
+            // migrationBuilder.AddColumn<List<string>>(
+            //     name: "construction_favorites",
+            //     table: "preference",
+            //     type: "text[]",
+            //     nullable: false,
+            //     defaultValue: new string[0]);
         }
 
         /// <inheritdoc />

@@ -15,3 +15,4 @@
         effectProto: StatusEffectForcedSleeping
         time: 3
         type: Add
+  evaporationSpeed: 0.3

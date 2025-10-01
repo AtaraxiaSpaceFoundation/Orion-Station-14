@@ -1,464 +1,75 @@
+# PuroSlavKing
 - type: customGhost
-  id: default
-  category: color
-  proto: MobObserver
+  id: PuroSlavKing-ghost
+  ckey: PuroSlavKing
+  sprite: _Europa/Ghosts/PuroSlavKing.rsi
+  alpha: 0.8
+  ghostDescription: Hello World!
 
-
-
-
+# sosal
 - type: customGhost
-  id: red
-  proto: MobObserverRed
-  category: color
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 1
+  id: ILLUZORRGhost
+  ckey: ILLUZORR
+  sprite: _Europa/Ghosts/ILLUZORR.rsi
+  alpha: 1.0
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverRed
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#f228"
-    layers:
-    - state: animated
-      shader: unshaded
-
-
-
+# no_mad
 - type: customGhost
-  id: green
-  category: color
-  proto: MobObserverGreen
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 1
+  id: no_mad-ghost
+  ckey: no_mad
+  sprite: _Europa/Ghosts/no_mad.rsi
+  alpha: 0.8
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverGreen
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#2f28"
-    layers:
-    - state: animated
-      shader: unshaded
-
-
-
+# OkTiFE
 - type: customGhost
-  id: blue
-  category: color
-  proto: MobObserverBlue
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 1
+  id: OkTiFE-ghost
+  ckey: OkTiFE
+  sprite: _Europa/Ghosts/no_mad.rsi
+  alpha: 0.8
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverBlue
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#22f8"
-    layers:
-    - state: animated
-      shader: unshaded
-
-
-
+# yourmommy
 - type: customGhost
-  id: violet
-  category: color
-  proto: MobObserverViolet
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 1
+  id: yourmommy-ghost
+  ckey: yourmommy
+  sprite: _Europa/Ghosts/yourmommy.rsi
+  alpha: 0.9
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverViolet
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#f4f8"
-    layers:
-    - state: animated
-      shader: unshaded
-
-
-
+# GodFace
 - type: customGhost
-  id: pink
-  category: color
-  proto: MobObserverPink
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 1
+  id: GodFace-ghost
+  ckey: GodFace
+  sprite: _Europa/Ghosts/GodFace.rsi
+  alpha: 1
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverPink
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#f8f8"
-    layers:
-    - state: animated
-      shader: unshaded
-
-
-
+# LIZARDWIZARD
 - type: customGhost
-  id: yellow
-  category: color
-  proto: MobObserverYellow
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 1
+  id: LIZARDWIZARD-ghost
+  ckey: LIZARDWIZARD
+  sprite: _Europa/Ghosts/LIZARDWIZARD.rsi
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverYellow
-  components:
-  - type: Sprite
-    sprite: Mobs/Ghosts/ghost_human.rsi
-    color: "#ff48"
-    layers:
-    - state: animated
-      shader: unshaded
-
-
-
-# scrapped due to it looking like ass
-#- type: customGhost
-#  id: ashcloud
-#  category: misc
-#  proto: MobObserverAshCloud
-#  name: Ashen cloud
-#  desc: "Dancing on the ashes of the world,\n
-#         I behold the stars.\n
-#         Heavy gale is blowing to my face,\n
-#         Rising up the dust.\n
-#         Barren lands are desperate to blossom,\n
-#         Dark stars strive to shine,\n
-#         Still remember the blue ocean,\n
-#         In this dying world."
-#
-#- type: entity
-#  parent: MobObserver
-#  id: MobObserverAshCloud
-#  description: Really makes you feel under the weather.
-#  components:
-#  - type: Sprite
-#    sprite: _Europa/Ghosts/cloud.rsi
-#    layers:
-#    - state: ash
-#      shader: unshaded
-#    - state: cloud
-#      shader: unshaded
-
-
-
+# Vetochka
 - type: customGhost
-  id: heart
-  category: misc
-  proto: MobObserverHeart
-  restrictions:
-  - !type:PlaytimeDepartmentRestriction
-    department: Civilian
-    hoursPlaytime: 4
+  id: Vetochka-ghost
+  ckey: Vetochka
+  sprite: _Europa/Ghosts/Vetochka.rsi
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverHeart
-  description: Care to share?
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: heart
-      shader: unshaded
-    color: "#ffffffcc"
-
-
-
+# kreses
 - type: customGhost
-  id: discoCat
-  category: misc
-  proto: MobObserverDiscoCat
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 6
+  id: kreses-ghost
+  ckey: kreses
+  sprite: _Europa/Ghosts/kreses.rsi
+  alpha: 0.7
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverDiscoCat
-  description: And i dance-dance-dance, and i dance-dance-dance...
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: discocat
-      shader: unshaded
-
-
-
-
+# scituzer2
 - type: customGhost
-  id: disappointment
-  category: misc
-  proto: MobObserverDisappointment
-  restrictions:
-  - !type:PlaytimeJobRestriction
-    job: Clown
-    hoursPlaytime: 32
+  id: scituzer2-ghost
+  ckey: scituzer2
+  sprite: _Europa/Ghosts/scituzer2.rsi
+  alpha: 0.8
 
-- type: entity
-  parent: MobObserver
-  id: MobObserverDisappointment
-  description: I am disappointed.
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: disappointment
-      shader: unshaded
-
-
-
+# trest100
 - type: customGhost
-  id: king
-  category: misc
-  proto: MobObserverKing
-  restrictions:
-  - !type:PlaytimeDepartmentRestriction
-    department: Science
-    hoursPlaytime: 8
-  - !type:PlaytimeDepartmentRestriction
-    department: Security
-    hoursPlaytime: 8
-  - !type:PlaytimeDepartmentRestriction
-    department: Medical
-    hoursPlaytime: 8
-  - !type:PlaytimeDepartmentRestriction
-    department: Command
-    hoursPlaytime: 8
-  - !type:PlaytimeDepartmentRestriction
-    department: Cargo
-    hoursPlaytime: 8
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverKing
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: king
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: blazeit
-  category: color
-  proto: MobObserverBlazeit
-  restrictions:
-  - !type:PlaytimeJobRestriction
-    job: Botanist
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverBlazeit
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: blazeit
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: rainbow
-  category: color
-  proto: MobObserverRainbow
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverRainbow
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: rainbow
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: kitty
-  category: misc
-  proto: MobObserverKitty
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverKitty
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: kitty
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: ian
-  category: misc
-  proto: MobObserverIan
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverIan
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: ian
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: fire
-  category: color
-  proto: MobObserverFire
-  restrictions:
-  - !type:PlaytimeJobRestriction
-    job: AtmosphericTechnician
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverFire
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: fire
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: skeleton
-  category: misc
-  proto: MobObserverSkeleton
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverSkeleton
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: skeleton
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: frog
-  category: misc
-  proto: MobObserverFrog
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverFrog
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: frog
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: rooster
-  category: misc
-  proto: MobObserverRooster
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverRooster
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: rooster
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: mouse
-  category: misc
-  proto: MobObserverMouse
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 4
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverMouse
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: mouse
-      shader: unshaded
-
-
-
-- type: customGhost
-  id: parrot
-  category: misc
-  proto: MobObserverParrot
-  restrictions:
-  - !type:PlaytimeServerRestriction
-    hoursPlaytime: 6
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverParrot
-  components:
-  - type: Sprite
-    sprite: _Europa/Ghosts/simple.rsi
-    layers:
-    - state: parrot
-      shader: unshaded
-
+  id: trest100-ghost
+  ckey: trest100
+  sprite: _Europa/Ghosts/trest100.rsi
+  alpha: 0.8

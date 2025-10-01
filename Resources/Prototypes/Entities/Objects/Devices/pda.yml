@@ -332,6 +332,8 @@
   id: BaseSecurityPDA
   abstract: true
   components:
+  - type: Pda
+    mustUpdateCooldown: 5
   - type: CartridgeLoader
     preinstalled:
     - CrewManifestCartridge
@@ -699,6 +701,7 @@
   components:
   - type: Pda
     id: SalvageIDCard
+    mustUpdateCooldown: 5
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -839,6 +842,7 @@
       whitelist:
         tags:
         - Write
+    mustUpdateCooldown: 5
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -973,6 +977,7 @@
   components:
   - type: Pda
     id: ParamedicIDCard
+    mustUpdateCooldown: 2
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1121,6 +1126,7 @@
       whitelist:
         tags:
         - Write
+    mustUpdateCooldown: 2
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1277,6 +1283,7 @@
   components:
   - type: Pda
     id: SyndicateIDCard
+    mustUpdateCooldown: 5
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1504,6 +1511,7 @@
   components:
   - type: Pda
     id: BrigmedicIDCard
+    mustUpdateCooldown: 2
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1638,6 +1646,7 @@
   components:
   - type: Pda
     id: PirateIDCard
+    mustUpdateCooldown: 5
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1654,6 +1663,7 @@
   components:
   - type: Pda
     id: NukieAgentIDCard # Goobstation
+    mustUpdateCooldown: 2
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:

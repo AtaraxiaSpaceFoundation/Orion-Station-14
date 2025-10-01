@@ -1,0 +1,143 @@
+# Atmos monitor
+
+- type: entity
+  parent: BaseHandheldComputer
+  id: HandHeldAtmosMonitorPowered
+  name: handheld atmos monitor
+  description: A hand-held atmos console.
+  suffix: HandHeld, Battery
+  components:
+  - type: Item
+    sprite: _Europa/Objects/Tools/atmos_monitor.rsi
+  - type: Sprite
+    sprite: _Europa/Objects/Tools/atmos_monitor.rsi
+    state: icon
+    layers:
+    - state: icon
+    - state: scanner
+      shader: unshaded
+      visible: true
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerCellSlotVisuals.Enabled:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: PowerCellDraw
+    drawRate: 1.5
+  - type: ToggleCellDraw
+  - type: StaticPrice
+    price: 150
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 200
+      Glass: 75
+  - type: AtmosAlertsComputer
+    beepSound:
+      path: /Audio/_Europa/Misc/atmos_monitor.ogg
+  - type: ActivatableUI
+    inHandsOnly: true
+    singleUser: true
+    key: enum.AtmosAlertsComputerUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.AtmosAlertsComputerUiKey.Key:
+        type: AtmosAlertsComputerBoundUserInterface
+  - type: WirelessNetworkConnection
+    range: 500
+  - type: StationLimitedNetwork
+
+- type: entity
+  parent: HandHeldAtmosMonitorPowered
+  id: HandHeldAtmosMonitorEmpty
+  suffix: HandHeld, Empty
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+
+- type: entity
+  parent: HandHeldAtmosMonitorPowered
+  id: HandHeldAtmosMonitorUnpowered
+  suffix: HandHeld, Unpowered
+  components:
+  - type: PowerCellDraw
+    drawRate: 0
+    useRate: 0
+
+- type: entity
+  parent: HandHeldAtmosMonitorUnpowered
+  id: HandHeldAtmosMonitorUnpoweredSilenced
+  suffix: HandHeld, Unpowered, Silenced
+  components:
+  - type: AtmosAlertsComputer
+    doBeep: false
+
+# Power monitor
+
+- type: entity
+  parent: BaseHandheldComputer
+  id: HandHeldPowerMonitorPowered
+  name: handheld power monitor
+  description: A hand-held power console.
+  suffix: HandHeld, Battery
+  components:
+  - type: Item
+    sprite: _Europa/Objects/Tools/power_monitor.rsi
+  - type: Sprite
+    sprite: _Europa/Objects/Tools/power_monitor.rsi
+    state: icon
+    layers:
+    - state: icon
+    - state: scanner
+      shader: unshaded
+      visible: true
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+  - type: PowerMonitoringConsole
+  - type: ActivatableUI
+    inHandsOnly: true
+    singleUser: true
+    key: enum.PowerMonitoringConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PowerMonitoringConsoleUiKey.Key:
+        type: PowerMonitoringConsoleBoundUserInterface
+  - type: WirelessNetworkConnection
+    range: 500
+  - type: StationLimitedNetwork
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerCellSlotVisuals.Enabled:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: PowerCellDraw
+    drawRate: 1.5
+  - type: ToggleCellDraw
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 200
+      Glass: 75
+
+- type: entity
+  parent: HandHeldPowerMonitorPowered
+  id: HandHeldPowerMonitorEmpty
+  suffix: HandHeld, Empty
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+
+- type: entity
+  parent: HandHeldPowerMonitorPowered
+  id: HandHeldPowerMonitorUnpowered
+  suffix: HandHeld, Unpowered
+  components:
+  - type: PowerCellDraw
+    drawRate: 0
+    useRate: 0

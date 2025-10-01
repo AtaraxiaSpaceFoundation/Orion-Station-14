@@ -165,7 +165,7 @@ internal struct CustomRichTextEntry
             if (Controls == null || !Controls.TryGetValue(nodeIndex, out var control))
                 continue;
 
-            control.Measure(new Vector2(maxSizeX, float.PositiveInfinity));
+            control.Measure(new Vector2(maxSizeX, Height));
 
             var desiredSize = control.DesiredPixelSize;
             var controlMetrics = new CharMetrics(
@@ -378,7 +378,7 @@ internal struct CustomRichTextEntry
                         Angle.Zero);
             }
 
-            var advanceX = control.SetWidth;
+            var advanceX = control.DesiredPixelSize.X;
             controlYAdvance = Math.Max(0f, (control.DesiredPixelSize.Y - GetLineHeight(font, uiScale, lineHeightScale)) * invertedScale);
             baseLine += new Vector2(advanceX, 0);
         }

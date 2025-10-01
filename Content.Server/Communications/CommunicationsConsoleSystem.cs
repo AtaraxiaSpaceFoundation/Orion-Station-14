@@ -308,27 +308,28 @@ namespace Content.Server.Communications
             UpdateCommsConsoleInterface(uid, comp);
 
             var ev = new CommunicationConsoleAnnouncementEvent(uid, comp, msg, message.Actor);
-            RaiseLocalEvent(ref ev);
+            RaiseLocalEvent(ev);
 
             // allow admemes with vv
             Loc.TryGetString(comp.Title, out var title);
             title ??= comp.Title;
+
+            var origMsg = msg;
 
             if (comp.AnnounceSentBy)
                 msg += "\n" + Loc.GetString("comms-console-announcement-sent-by") + " " + author;
 
             if (comp.Global)
             {
-                _chatSystem.DispatchGlobalAnnouncement(msg, title, announcementSound: comp.Sound, colorOverride: comp.Color);
+                _chatSystem.DispatchGlobalAnnouncement(msg, title, announcementSound: comp.Sound, colorOverride: comp.Color, senderUid: message.Actor, enableTts: true, onlyMessage: origMsg);
 
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(message.Actor):player} has sent the following global announcement: {msg}");
                 return;
             }
 
-            _chatSystem.DispatchStationAnnouncement(uid, msg, title, colorOverride: comp.Color);
+            _chatSystem.DispatchStationAnnouncement(uid, msg, title, announcementSound: comp.Sound, colorOverride: comp.Color, senderUid: message.Actor, enableTts: true, onlyMessage: origMsg);
 
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(message.Actor):player} has sent the following station announcement: {msg}");
-
         }
 
         private void OnBroadcastMessage(EntityUid uid, CommunicationsConsoleComponent component, CommunicationsConsoleBroadcastMessage message)
@@ -390,8 +391,7 @@ namespace Content.Server.Communications
     /// <summary>
     /// Raised on announcement
     /// </summary>
-    [ByRefEvent]
-    public record struct CommunicationConsoleAnnouncementEvent(EntityUid Uid, CommunicationsConsoleComponent Component, string Text, EntityUid? Sender)
+    public sealed class CommunicationConsoleAnnouncementEvent(EntityUid Uid, CommunicationsConsoleComponent Component, string Text, EntityUid? Sender) : EntityEventArgs
     {
         public EntityUid Uid = Uid;
         public CommunicationsConsoleComponent Component = Component;

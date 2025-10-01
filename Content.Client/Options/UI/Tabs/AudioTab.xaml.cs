@@ -91,6 +91,11 @@ public sealed partial class AudioTab : Control
         masterVolume.ImmediateValueChanged += OnMasterVolumeSliderChanged;
 
         Control.AddOptionPercentSlider(
+            CCVars.TTSVolume,
+            SliderVolumeTts,
+            scale: ContentAudioSystem.TtsMultiplier);
+
+        Control.AddOptionPercentSlider(
             CVars.MidiVolume,
             SliderVolumeMidi,
             scale: ContentAudioSystem.MidiVolumeMultiplier);

@@ -1,0 +1,38 @@
+using System.Numerics;
+using Content.Shared.Ghost;
+using Content.Shared._Europa.CustomGhost;
+using Robust.Client.GameObjects;
+using Robust.Shared.Prototypes;
+
+namespace Content.Client._Europa.CustomGhost;
+
+//
+// License-Identifier: AGPL-3.0-or-later
+//
+
+public sealed class CustomGhostVisualizer : VisualizerSystem<GhostComponent>
+{
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+
+    protected override void OnAppearanceChange(EntityUid uid, GhostComponent component, ref AppearanceChangeEvent args)
+    {
+        base.OnAppearanceChange(uid, component, ref args);
+
+        if (args.Sprite == null)
+            return;
+
+        if (AppearanceSystem.TryGetData<string>(uid, CustomGhostAppearance.Sprite, out var rsiPath, args.Component))
+            args.Sprite.LayerSetRSI(0, rsiPath);
+
+        if (AppearanceSystem.TryGetData<float>(uid, CustomGhostAppearance.AlphaOverride, out var alpha, args.Component))
+            args.Sprite.Color = args.Sprite.Color.WithAlpha(alpha);
+
+        if (AppearanceSystem.TryGetData<Vector2>(uid, CustomGhostAppearance.SizeOverride, out var size, args.Component))
+            args.Sprite.Scale = size;
+
+        if (AppearanceSystem.TryGetData<string>(uid, CustomGhostAppearance.YAMLKOSTIL, out var protoId, args.Component))
+        {
+            EntityManager.AddComponents(uid, _proto.Index<CustomGhostPrototype>(protoId).Components, false);
+        }
+    }
+}

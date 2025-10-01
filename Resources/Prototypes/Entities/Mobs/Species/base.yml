@@ -567,7 +567,7 @@
         Asphyxiation: -1.0
   - type: FireVisuals
     alternateState: Standing
-  - type: FootprintOwner # Corvax-Next-Footprints
+  # - type: FootprintOwner Corvax-Next-Footprints Europa Plus Temp Fix
   - type: Carriable # Goobstation
   - type: CPRTraining # Goobstation - Just give to everyone! This ain't MRP.
   - type: BloodstreamAffectedByMass # Goobstation: port EE height/width sliders. Also, lol at the comment above.

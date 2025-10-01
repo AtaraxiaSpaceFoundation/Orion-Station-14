@@ -37,7 +37,7 @@ public sealed partial class EvaporationComponent : Component
     /// Evaporation factor. Multiplied by the evaporating speed of the reagent.
     /// </summary>
     [DataField]
-    public FixedPoint2 EvaporationAmount = FixedPoint2.New(1);
+    public FixedPoint2 EvaporationAmount = FixedPoint2.New(0.1);
 
     /// <summary>
     /// The effect spawned when the puddle fully evaporates.

@@ -22,6 +22,7 @@
         conditions:
         - !type:OrganType
           type: Plant
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Saltpeter
@@ -63,3 +64,4 @@
         conditions:
         - !type:OrganType
           type: Plant
+  evaporationSpeed: 0.3

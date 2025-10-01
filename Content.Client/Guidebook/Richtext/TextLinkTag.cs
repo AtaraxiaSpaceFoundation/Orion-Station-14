@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MIT
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Client.UserInterface.ControlExtensions;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -18,7 +19,8 @@ public sealed class TextLinkTag : IMarkupTagHandler
 {
     public string Name => "textlink";
 
-    /// <inheritdoc/>
+    public Control? Control;
+
     public bool TryCreateControl(MarkupNode node, [NotNullWhen(true)] out Control? control)
     {
         if (!node.Value.TryGetString(out var text)
@@ -52,16 +54,10 @@ public sealed class TextLinkTag : IMarkupTagHandler
         if (control == null)
             return;
 
-        var current = control;
-        while (current != null)
-        {
-            current = current.Parent;
-
-            if (current is not ILinkClickHandler handler)
-                continue;
+        if (control.TryGetParentHandler<ILinkClickHandler>(out var handler))
             handler.HandleClick(link);
-            return;
-        }
+        else
+            Logger.Warning("Warning! No valid ILinkClickHandler found.");
     }
 }
 

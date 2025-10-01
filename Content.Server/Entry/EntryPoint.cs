@@ -134,6 +134,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Europa.TTS;
 using Content.Server._Goobstation.Antag;
 using Content.Server.Acz;
 using Content.Server.Administration;
@@ -255,6 +256,8 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<PlayerRateLimitManager>().Initialize();
                 _lastAntagManager = IoCManager.Resolve<LastRolledAntagManager>(); // Goobstation
                 _lastAntagManager.Initialize(); // Goobstation
+
+                IoCManager.Resolve<TTSManager>().Initialize(); // TTS
             }
         }
 

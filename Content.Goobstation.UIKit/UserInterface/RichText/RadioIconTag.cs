@@ -1,47 +1,52 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Robust.Client.Graphics;
+using System.Numerics;
+using Content.Shared.Roles.Jobs;
+using Content.Shared.StatusIcon;
+using Robust.Client.GameObjects;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
-using Robust.Shared.Configuration;
+using Robust.Client.UserInterface.RichText;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Goobstation.UIKit.UserInterface.RichText;
 
-public sealed class RadioIconTag : BaseTextureTag
+public sealed class RadioIconTag : IMarkupTag
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IResourceCache _cache = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
-    public override string Name => "radicon";
+    public string Name => "radicon";
 
-    public override bool TryGetControl(MarkupNode node, [NotNullWhen(true)] out Control? control)
+    private readonly string JobIconNoId = "JobIconNoId";
+
+    public bool TryGetControl(MarkupNode node, [NotNullWhen(true)] out Control? control)
     {
         control = null;
 
-        if (!node.Attributes.TryGetValue("text", out var text))
+        if (!node.Attributes.TryGetValue("icon", out var icon) || !icon.TryGetString(out var iconId))
             return false;
 
-        if (!node.Attributes.TryGetValue("color", out var color))
-            return false;
+        if (!node.Attributes.TryGetValue("scale", out var scale) || !scale.TryGetLong(out var scaleValue))
+        {
+            scaleValue = 1;
+        }
 
-        control = DrawText(text.ToString(), color.ToString());
+        var jobIcon = _prototypeManager.Index<JobIconPrototype>(JobIconNoId);
 
+        if (_prototypeManager.TryIndex<JobIconPrototype>(iconId, out var proto))
+            jobIcon = proto;
+
+        var spriteSystem = _entitySystemManager.GetEntitySystem<SpriteSystem>();
+
+        var texture = new TextureRect();
+        texture.Texture = spriteSystem.GetFrame(jobIcon.Icon, _timing.CurTime);
+        texture.TextureScale = new Vector2(scaleValue.Value, scaleValue.Value);
+
+        control = texture;
         return true;
     }
-
-    private Control DrawText(string text, string color)
-    {
-        var label = new Label();
-
-        color = ClearString(color);
-        text = ClearString(text);
-
-        label.Text = text;
-        label.FontColorOverride = Color.FromHex(color);
-        label.FontOverride = new VectorFont(_cache.GetResource<FontResource>("/Fonts/NotoSans/NotoSans-Bold.ttf"), 13);
-
-        return label;
-    }
-
 }

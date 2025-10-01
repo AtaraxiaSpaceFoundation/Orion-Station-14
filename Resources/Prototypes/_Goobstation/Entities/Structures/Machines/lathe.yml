@@ -57,6 +57,7 @@
     - MiscSignallersStatic
     - NailgunStatic
     - NailsStatic
+    - HandheldMonitorsStatic
     dynamicPacks:
     - ConstructionBagOfHolding
     - AdvancedTools

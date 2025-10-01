@@ -1,0 +1,33 @@
+# engineering modules
+
+- type: entity
+  id: BorgModulePowerMonitor
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
+  name: power monitor cyborg module
+  description: Engineering module containing power monitor.
+  components:
+  - type: Sprite
+    sprite: _Europa/Objects/Tools/power_monitor.rsi
+    state: borg
+  - type: ItemBorgModule
+    moduleId: PowerMonitor
+    items:
+    - HandHeldPowerMonitorUnpowered
+  - type: BorgModuleIcon
+    icon: { sprite: _Europa/Objects/Tools/power_monitor.rsi, state: borg }
+
+- type: entity
+  id: BorgModuleAtmosMonitor
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
+  name: atmos monitor cyborg module
+  description: Engineering module containing atmos monitor.
+  components:
+  - type: Sprite
+    sprite: _Europa/Objects/Tools/atmos_monitor.rsi
+    state: borg
+  - type: ItemBorgModule
+    moduleId: AtmosMonitor
+    items:
+    - HandHeldAtmosMonitorUnpoweredSilenced
+  - type: BorgModuleIcon
+    icon: { sprite: _Europa/Objects/Tools/atmos_monitor.rsi, state: borg }

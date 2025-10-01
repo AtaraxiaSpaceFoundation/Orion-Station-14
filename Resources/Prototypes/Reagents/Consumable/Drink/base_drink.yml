@@ -35,6 +35,7 @@
   tileReactions:
   - !type:ExtinguishTileReaction { }
   - !type:SpillIfPuddlePresentTileReaction { }
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: BaseSoda

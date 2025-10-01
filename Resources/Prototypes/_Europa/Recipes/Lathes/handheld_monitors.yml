@@ -1,0 +1,37 @@
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: HandHeldAtmosMonitor
+  result: HandHeldAtmosMonitorPowered
+  completetime: 5
+  materials:
+    Steel: 250
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: HandHeldPowerMonitor
+  result: HandHeldPowerMonitorPowered
+  completetime: 5
+  materials:
+    Steel: 250
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: BorgModuleAtmosMonitor
+  result: BorgModuleAtmosMonitor
+  completetime: 8
+  materials:
+    Steel: 300
+    Glass: 150
+    Plastic: 250
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: BorgModulePowerMonitor
+  result: BorgModulePowerMonitor
+  completetime: 8
+  materials:
+    Steel: 300
+    Glass: 150
+    Plastic: 250

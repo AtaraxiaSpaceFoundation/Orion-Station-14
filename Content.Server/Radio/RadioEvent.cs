@@ -25,7 +25,8 @@ public readonly record struct RadioReceiveEvent(
     ChatMessage OriginalChatMsg,
     ChatMessage LanguageObfuscatedChatMsg,
     LanguagePrototype Language,
-    EntityUid RadioSource
+    EntityUid RadioSource,
+    List<EntityUid> Receivers
     );
 // Einstein Engines - Language end
 
@@ -56,4 +57,19 @@ public record struct RadioSendAttemptEvent(RadioChannelPrototype Channel, Entity
     public readonly RadioChannelPrototype Channel = Channel;
     public readonly EntityUid RadioSource = RadioSource;
     public bool Cancelled = false;
+}
+
+public sealed class RadioSpokeEvent(EntityUid source, string message, EntityUid[] receivers) : EntityEventArgs
+{
+    public readonly EntityUid Source = source;
+    public readonly string Message = message;
+    public readonly EntityUid[] Receivers = receivers;
+}
+
+public sealed class CollectiveMindSpokeEvent(EntityUid source, string message, IReadOnlyCollection<EntityUid> receivers, string collectiveMindId) : EntityEventArgs
+{
+    public readonly EntityUid Source = source;
+    public readonly string Message = message;
+    public readonly IReadOnlyCollection<EntityUid> Receivers = receivers;
+    public readonly string CollectiveMindId = collectiveMindId;
 }

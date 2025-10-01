@@ -211,7 +211,7 @@ public sealed partial class CCVars
     /// </summary>
     [CVarControl(AdminFlags.VarEdit)]
     public static readonly CVarDef<bool> ImpactEnabled =
-        CVarDef.Create("shuttle.impact.enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("shuttle.impact.enabled", false, CVar.SERVERONLY);
 
     /// <summary>
     /// Minimum impact inertia to trigger special shuttle impact behaviors when impacting slower than MinimumImpactVelocity.

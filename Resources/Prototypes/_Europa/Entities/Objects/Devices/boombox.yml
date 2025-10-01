@@ -9,22 +9,22 @@
     layers:
     - state: "off"
       map: ["enum.JukeboxVisualLayers.Base"]
-  - type: Jukebox
-    onState: off # Indicates the presence of power, not playback
-    offState: off
-    selectState: select
+#  - type: Jukebox
+#    onState: off # Indicates the presence of power, not playback
+#    offState: off
+#    selectState: select
   - type: Item
     sprite: _Europa/Objects/Devices/boombox.rsi
     size: Large
     shape:
     - 0,0,3,2
   - type: Appearance
-  - type: ActivatableUI
-    key: enum.JukeboxUiKey.Key
-  - type: UserInterface
-    interfaces:
-        enum.JukeboxUiKey.Key:
-          type: JukeboxBoundUserInterface
+#  - type: ActivatableUI
+#    key: enum.JukeboxUiKey.Key
+#  - type: UserInterface
+#    interfaces:
+#        enum.JukeboxUiKey.Key:
+#          type: JukeboxBoundUserInterface
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic

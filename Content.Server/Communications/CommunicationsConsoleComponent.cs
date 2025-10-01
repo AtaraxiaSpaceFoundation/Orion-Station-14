@@ -71,14 +71,14 @@ namespace Content.Server.Communications
         /// <summary>
         /// Time in seconds between announcement delays on a per-console basis
         /// </summary>
-        [ViewVariables]
+        [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
         public int Delay = 90;
 
         /// <summary>
         /// Time in seconds of announcement cooldown when a new console is created on a per-console basis
         /// </summary>
-        [ViewVariables]
+        [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
         public int InitialDelay = 30;
 

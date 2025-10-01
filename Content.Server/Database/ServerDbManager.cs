@@ -86,7 +86,6 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
-using Content.Shared._Europa.CustomGhost;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -101,6 +100,7 @@ using Prometheus;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using LogLevel = Robust.Shared.Log.LogLevel;
 using MSLogLevel = Microsoft.Extensions.Logging.LogLevel;
@@ -119,13 +119,15 @@ namespace Content.Server.Database
             ICharacterProfile defaultProfile,
             CancellationToken cancel);
 
+        Task SavePlayerPreferencesToDbAsync(NetUserId userId,
+            PlayerPreferences prefs,
+            CancellationToken cancel = default);
+
         Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index);
 
         Task SaveCharacterSlotAsync(NetUserId userId, ICharacterProfile? profile, int slot);
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
-
-        Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> ghostProto); // Europa
 
         Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites);
 
@@ -606,14 +608,6 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SaveAdminOOCColorAsync(userId, color));
         }
 
-        // Europa-Start
-        public Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> ghostProto)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SaveGhostTypeAsync(userId, ghostProto));
-        }
-        // Europa-End
-
         public Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {
             DbWriteOpsMetric.Inc();
@@ -624,6 +618,12 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetPlayerPreferencesAsync(userId, cancel));
+        }
+
+        public Task SavePlayerPreferencesToDbAsync(NetUserId userId, PlayerPreferences prefs, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SavePlayerPreferencesToDbAsync(userId, prefs, cancel));
         }
 
         public Task AssignUserIdAsync(string name, NetUserId userId)

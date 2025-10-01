@@ -44,7 +44,9 @@
 
 using System.Linq;
 using Content.Server.Administration.Logs;
+using Content.Server.Chat.Managers;
 using Content.Server.EUI;
+using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
 using Content.Shared.Ghost.Roles.Raffles;
@@ -95,6 +97,7 @@ public sealed class GhostRoleSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly IChatManager _chat = default!;
 
     private uint _nextRoleIdentifier;
     private bool _needsUpdateGhostRoleCount = true;
@@ -132,7 +135,16 @@ public sealed class GhostRoleSystem : EntitySystem
         SubscribeLocalEvent<GhostRoleMobSpawnerComponent, TakeGhostRoleEvent>(OnSpawnerTakeRole);
         SubscribeLocalEvent<GhostRoleMobSpawnerComponent, GetVerbsEvent<Verb>>(OnVerb);
         SubscribeLocalEvent<GhostRoleMobSpawnerComponent, GhostRoleRadioMessage>(OnGhostRoleRadioMessage);
+
+        SubscribeLocalEvent<PlayerJoinedLobbyEvent>(OnPlayerJoinedLobbyEvent);
+
         _playerManager.PlayerStatusChanged += PlayerStatusChanged;
+    }
+
+    private void OnPlayerJoinedLobbyEvent(PlayerJoinedLobbyEvent ev)
+    {
+        if (LeaveAllRaffles(ev.PlayerSession))
+            _chat.SendAdminAlert(Loc.GetString("abuz-ghost", ("player", ev.PlayerSession.Name)));
     }
 
     private void OnMobStateChanged(Entity<GhostTakeoverAvailableComponent> component, ref MobStateChangedEvent args)
@@ -346,11 +358,8 @@ public sealed class GhostRoleSystem : EntitySystem
             var response = new GhostUpdateGhostRoleCountEvent(_ghostRoles.Count);
             RaiseNetworkEvent(response, args.Session.Channel);
         }
-        else
-        {
-            // people who disconnect are removed from ghost role raffles
-            LeaveAllRaffles(args.Session);
-        }
+
+        LeaveAllRaffles(args.Session);
     }
 
     public void RegisterGhostRole(Entity<GhostRoleComponent> role)
@@ -460,18 +469,20 @@ public sealed class GhostRoleSystem : EntitySystem
     /// <summary>
     /// Makes the given player leave the raffle corresponding to the given ID.
     /// </summary>
-    public void LeaveRaffle(ICommonSession player, uint identifier)
+    public bool LeaveRaffle(ICommonSession player, uint identifier)
     {
         if (!_ghostRoleRaffles.TryGetValue(identifier, out var raffleEnt))
-            return;
+            return false;
 
         if (raffleEnt.Comp.CurrentMembers.Remove(player))
         {
             UpdateAllEui();
+            return true;
         }
         else
         {
             Log.Warning($"{player.Name} tried to leave raffle for ghost role {identifier} but they are not in the raffle");
+            return false;
         }
 
         // (raffle ending because all players left is handled in update())
@@ -480,17 +491,22 @@ public sealed class GhostRoleSystem : EntitySystem
     /// <summary>
     /// Makes the given player leave all ghost role raffles.
     /// </summary>
-    public void LeaveAllRaffles(ICommonSession player)
+    public bool LeaveAllRaffles(ICommonSession player)
     {
-        var shouldUpdateEui = false;
+        var playerLeavesRaffle = false;
 
         foreach (var raffleEnt in _ghostRoleRaffles.Values)
         {
-            shouldUpdateEui |= raffleEnt.Comp.CurrentMembers.Remove(player);
+            playerLeavesRaffle |= raffleEnt.Comp.CurrentMembers.Remove(player);
         }
 
-        if (shouldUpdateEui)
+        if (playerLeavesRaffle)
+        {
             UpdateAllEui();
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>

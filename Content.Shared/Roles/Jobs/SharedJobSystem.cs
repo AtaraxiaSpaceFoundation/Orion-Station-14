@@ -18,6 +18,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Shared.StatusIcon;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -34,6 +35,10 @@ public abstract class SharedJobSystem : EntitySystem
     [Dependency] private readonly SharedRoleSystem _roles = default!;
 
     private readonly Dictionary<string, string> _inverseTrackerLookup = new();
+
+    public readonly string JobIconNoId = "JobIconNoId";
+    public readonly string JobIconBorgId = "JobIconBorg";
+    public readonly string JobIconStationAiId = "JobIconStationAi";
 
     public override void Initialize()
     {
@@ -195,6 +200,21 @@ public abstract class SharedJobSystem : EntitySystem
             job = role.Value.Comp1.JobPrototype;
 
         return (job is not null);
+    }
+
+    public bool MindTryGetJobIcon(
+        [NotNullWhen(true)] EntityUid? mindId,
+        [NotNullWhen(true)] out JobIconPrototype? prototype)
+    {
+        prototype = null;
+        if (!MindTryGetJob(mindId, out var jobProto))
+            return false;
+
+        if (!_prototypes.TryIndex(jobProto.Icon, out var iconProto))
+            return false;
+
+        prototype = iconProto;
+        return true;
     }
 
     /// <summary>

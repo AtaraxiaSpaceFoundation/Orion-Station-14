@@ -29,7 +29,7 @@
     ItemFlagMiniInteQ: 5
     FoodSnackInteQCookies: 20
     CigPackInteQ: 10
-    HandledBoomBox: 1
+#    HandledBoomBox: 1
   contrabandInventory:
     ClothingHeadHatInteQTacticalMaidHeadband: 5
     ClothingUniformJumpskirtInteQTacticalMaid: 5

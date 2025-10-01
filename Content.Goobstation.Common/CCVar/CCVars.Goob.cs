@@ -242,7 +242,7 @@ public sealed partial class GoobCVars
     ///     Goobstation: The amount of time between NPC Silicons draining their battery in seconds.
     /// </summary>
     public static readonly CVarDef<float> SiliconNpcUpdateTime =
-        CVarDef.Create("silicon.npcupdatetime", 1.5f, CVar.SERVERONLY);
+        CVarDef.Create("silicon.npcupdatetime", 1.0f, CVar.SERVERONLY);
 
     /// <summary>
     ///     Should the player automatically get up after being knocked down

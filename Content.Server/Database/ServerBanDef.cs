@@ -20,6 +20,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Content.Server.Database
 {
@@ -81,7 +82,7 @@ namespace Content.Server.Database
             ExemptFlags = exemptFlags;
         }
 
-        public string FormatBanMessage(IConfigurationManager cfg, ILocalizationManager loc)
+        public async Task<string> FormatBanMessage(IConfigurationManager cfg, ILocalizationManager loc)
         {
             string expires;
             if (ExpirationTime is { } expireTime)
@@ -100,14 +101,14 @@ namespace Content.Server.Database
 
             return $"""
                    {loc.GetString("ban-banned-1")}
-                   {loc.GetString("ban-banned-2", ("adminName", GetUsername(BanningAdmin.ToString())))}
+                   {loc.GetString("ban-banned-2", ("adminName", await GetUsername(BanningAdmin.ToString())))}
                    {loc.GetString("ban-banned-3", ("reason", Reason))}
                    {expires}
                    {loc.GetString("ban-banned-4")}
                    """;
         }
 
-        static string GetUsername(string? userId)
+        static async Task<string> GetUsername(string? userId)
         {
             if (userId == null)
             {
@@ -118,20 +119,24 @@ namespace Content.Server.Database
             {
                 string apiUrl = "https://auth.spacestation14.com/api/query/userid?userid=" + userId;
 
-                HttpResponseMessage response = client.Send(new HttpRequestMessage(HttpMethod.Get, apiUrl));
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    string jsonResponse = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                    var jsonObject = JsonDocument.Parse(jsonResponse).RootElement;
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-                    return jsonObject.GetProperty("userName").GetString() ?? "Unknown";
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonResponse = await response.Content.ReadAsStringAsync();
+                        var jsonObject = JsonDocument.Parse(jsonResponse).RootElement;
 
+                        return jsonObject.GetProperty("userName").GetString() ?? "Unknown";
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    return "Unknown";
+                    Logger.Error(e.Message);
                 }
+
+                return "Unknown";
             }
         }
     }

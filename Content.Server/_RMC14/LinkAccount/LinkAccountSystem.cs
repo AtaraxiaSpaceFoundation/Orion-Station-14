@@ -62,19 +62,19 @@ public sealed class LinkAccountSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
-        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndTextAppend);
+        // SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
+        // SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndTextAppend);
 
-        SubscribeLocalEvent<GhostColorComponent, PlayerAttachedEvent>(OnGhostColorPlayerAttached);
+        // SubscribeLocalEvent<GhostColorComponent, PlayerAttachedEvent>(OnGhostColorPlayerAttached);
 
-        Subs.CVar(_config, GoobCVars.RMCPatronLobbyMessageTimeSeconds, v => _timeBetweenLobbyMessages = TimeSpan.FromSeconds(v), true);
-        Subs.CVar(_config, GoobCVars.RMCPatronLobbyMessageInitialDelaySeconds, v => _lobbyMessageInitialDelay = TimeSpan.FromSeconds(v), true);
+        // Subs.CVar(_config, GoobCVars.RMCPatronLobbyMessageTimeSeconds, v => _timeBetweenLobbyMessages = TimeSpan.FromSeconds(v), true);
+        // Subs.CVar(_config, GoobCVars.RMCPatronLobbyMessageInitialDelaySeconds, v => _lobbyMessageInitialDelay = TimeSpan.FromSeconds(v), true);
 
-        ReloadPatrons();
-        GetRandomLobbyMessage();
-        GetRandomShoutout();
+        // ReloadPatrons();
+        // GetRandomLobbyMessage();
+        // GetRandomShoutout();
 
-        _linkAccount.PatronUpdated += OnPatronUpdated;
+        // _linkAccount.PatronUpdated += OnPatronUpdated;
     }
 
     public override void Shutdown()

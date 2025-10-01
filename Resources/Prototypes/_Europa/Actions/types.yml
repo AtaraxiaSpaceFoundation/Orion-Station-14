@@ -10,3 +10,29 @@
     useDelay: 1
   - type: InstantAction
     event: !type:ToggleActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionDronePowerMonitor
+  name: Power Monitor Interface
+  description: View a Power Monitor Interface.
+  components:
+  - type: Action
+    icon: { sprite: _Europa/Objects/Tools/power_monitor.rsi, state: borg }
+    keywords: [ "power", "monitor", "console", "interface" ]
+    priority: -1
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.PowerMonitoringConsoleUiKey.Key }
+
+- type: entity
+  parent: BaseAction
+  id: ActionDroneAtmosMonitor
+  name: Atmos Monitor Interface
+  description: View an Atmos Monitor Interface.
+  components:
+  - type: Action
+    icon: { sprite: _Europa/Objects/Tools/atmos_monitor.rsi, state: borg }
+    keywords: [ "atmos", "monitor", "console", "interface" ]
+    priority: -2
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.AtmosAlertsComputerUiKey.Key }

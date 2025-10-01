@@ -451,6 +451,8 @@
   - type: Penetratable # Goobstation - Better snipers
     penetrateDamage: 75 # It's harder to kill iron golem
     damagePenalty: 0.25
+  - type: TTS
+    voice: Sentrybot
 
 - type: entity
   abstract: true

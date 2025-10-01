@@ -213,6 +213,7 @@
         component: ForcedSleeping
         time: 10
         type: Add
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Healium
@@ -332,6 +333,7 @@
         - !type:ReagentThreshold
           reagent: Healium
           min: 4
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Nitrium
@@ -439,6 +441,7 @@
         damage:
           types:
             Asphyxiation: 15
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Pluoxium
@@ -547,3 +550,4 @@
         ratios:
           CarbonDioxide: 0.5
           Pluoxium: -0.5
+  evaporationSpeed: 0.3

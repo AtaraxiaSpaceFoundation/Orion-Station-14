@@ -94,7 +94,7 @@ public abstract partial class SharedClowncarSystem : EntitySystem
     private void OnBuckle(EntityUid uid, ClowncarComponent component, ref StrappedEvent args)
     {
         _actionsSystem.AddAction(args.Buckle.Owner, component.QuietInTheBackAction, uid);
-        _actionsSystem.AddAction(args.Buckle.Owner, component.DrunkDrivingAction, uid);
+        // _actionsSystem.AddAction(args.Buckle.Owner, component.DrunkDrivingAction, uid);
         component.ThankCounter = 0;
     }
 

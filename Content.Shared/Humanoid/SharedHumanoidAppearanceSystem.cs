@@ -41,6 +41,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared._EinsteinEngines.HeightAdjust;
+using Content.Shared._Europa.TTS;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects.Components.Localization;
@@ -75,6 +76,15 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [Dependency] private readonly SharedIdentitySystem _identity = default!;
 
     public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "Human";
+
+    // TODO TTS FIXME KAIF EUROPA
+    public const string DefaultVoice = "Papich";
+    public static readonly Dictionary<Sex, string> DefaultSexVoice = new()
+    {
+        {Sex.Male, "Bebey"},
+        {Sex.Female, "Charlotte"},
+        {Sex.Unsexed, "Biden"},
+    };
 
     public override void Initialize()
     {
@@ -541,6 +551,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         EnsureDefaultMarkings(uid, humanoid);
+        SetTTSVoice(uid, profile.Voice, humanoid); // TTS
 
         humanoid.Gender = profile.Gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))
@@ -630,6 +641,15 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
         if (sync)
             Dirty(uid, humanoid);
+    }
+
+    public void SetTTSVoice(EntityUid uid, string voiceId, HumanoidAppearanceComponent humanoid)
+    {
+        if (!TryComp<TTSComponent>(uid, out var comp))
+            return;
+
+        humanoid.Voice = voiceId;
+        comp.VoicePrototypeId = voiceId;
     }
 
     /// <summary>

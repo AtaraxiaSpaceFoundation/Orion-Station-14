@@ -1,0 +1,55 @@
+- type: guideEntry
+  id: SpaceLaw
+  name: Космический закон
+  priority: 1
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/ZakonOsnova.xml"
+  children:
+    - SpaceLaw_Stati1
+    - SpaceLaw_Stati2
+    - SpaceLaw_Stati3
+    - SpaceLaw_Stati4
+    - SpaceLaw_Stati5
+    - SpaceLaw_Stati6
+    - Procedury
+
+- type: guideEntry
+  id: SpaceLaw_Stati1
+  name: Преступления первой категории (1XX)
+  priority: 1
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Stati1.xml"
+
+- type: guideEntry
+  id: SpaceLaw_Stati2
+  name: Преступления второй категории (2XX)
+  priority: 2
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Stati2.xml"
+
+- type: guideEntry
+  id: SpaceLaw_Stati3
+  name: Преступления третьей категории (3XX)
+  priority: 3
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Stati3.xml"
+
+- type: guideEntry
+  id: SpaceLaw_Stati4
+  name: Преступления четвертой категории (4XX)
+  priority: 4
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Stati4.xml"
+
+- type: guideEntry
+  id: SpaceLaw_Stati5
+  name: Преступления пятой категории (5XX)
+  priority: 5
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Stati5.xml"
+
+- type: guideEntry
+  id: SpaceLaw_Stati6
+  name: Преступления шестой категории (6XX)
+  priority: 6
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Stati6.xml"
+
+- type: guideEntry
+  id: Procedury
+  name: Процедуры Службы Безопасности
+  priority: 7
+  text: "/ServerInfo/_Europa/Guidebook/Zakonka/Procedury.xml"

@@ -18,7 +18,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared._Europa.CustomGhost;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Preferences;
 using Robust.Client;
@@ -71,7 +70,7 @@ namespace Content.Client.Lobby
 
         public void SelectCharacter(int slot)
         {
-            Preferences = Preferences.WithSlot(slot); // Europa-Edit
+            Preferences = new PlayerPreferences(Preferences.Characters, slot, Preferences.AdminOOCColor, Preferences.ConstructionFavorites);
             var msg = new MsgSelectCharacter
             {
                 SelectedCharacterIndex = slot
@@ -84,7 +83,7 @@ namespace Content.Client.Lobby
             var collection = IoCManager.Instance!;
             profile.EnsureValid(_playerManager.LocalSession!, collection);
             var characters = new Dictionary<int, ICharacterProfile>(Preferences.Characters) {[slot] = profile};
-            Preferences = Preferences.WithCharacters(characters); // Europa-Edit
+            Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, Preferences.ConstructionFavorites);
             var msg = new MsgUpdateCharacter
             {
                 Profile = profile,
@@ -107,7 +106,7 @@ namespace Content.Client.Lobby
 
             var l = lowest.Value;
             characters.Add(l, profile);
-            Preferences = Preferences.WithCharacters(characters); // Europa-Edit
+            Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, Preferences.ConstructionFavorites);
 
             UpdateCharacter(profile, l);
         }
@@ -120,7 +119,7 @@ namespace Content.Client.Lobby
         public void DeleteCharacter(int slot)
         {
             var characters = Preferences.Characters.Where(p => p.Key != slot);
-            Preferences = Preferences.WithCharacters(characters); // Europa-Edit
+            Preferences = new PlayerPreferences(characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, Preferences.ConstructionFavorites);
             var msg = new MsgDeleteCharacter
             {
                 Slot = slot
@@ -130,18 +129,13 @@ namespace Content.Client.Lobby
 
         public void UpdateConstructionFavorites(List<ProtoId<ConstructionPrototype>> favorites)
         {
-            Preferences = Preferences.WithConstructionFavorites(favorites); // Europa-Edit
+            Preferences = new PlayerPreferences(Preferences.Characters, Preferences.SelectedCharacterIndex, Preferences.AdminOOCColor, favorites);
             var msg = new MsgUpdateConstructionFavorites
             {
                 Favorites = favorites
             };
             _netManager.ClientSendMessage(msg);
         }
-
-        // Europa-Start
-        public void SetCustomGhost(ProtoId<CustomGhostPrototype> ghostProto) =>
-            Preferences = Preferences.WithCustomGhost(ghostProto);
-        // Europa-End
 
         private void HandlePreferencesAndSettings(MsgPreferencesAndSettings message)
         {

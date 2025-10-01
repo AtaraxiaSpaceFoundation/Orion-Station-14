@@ -34,7 +34,7 @@ public sealed class InfoUIController : UIController, IOnStateExited<GameplayStat
     private RulesPopup? _rulesPopup;
     private RulesAndInfoWindow? _infoWindow;
 
-    private static readonly ProtoId<GuideEntryPrototype> DefaultRuleset = "DefaultRuleset";
+    private static readonly ProtoId<GuideEntryPrototype> DefaultRuleset = "EuropaRuleset";
 
     public ProtoId<GuideEntryPrototype> RulesEntryId = DefaultRuleset;
 

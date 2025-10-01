@@ -114,6 +114,7 @@
       - !type:Drunk
         slurSpeech: false
         boozePower: 20
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Dylovene
@@ -169,6 +170,7 @@
     amount: -10
   - !type:PlantAdjustHealth
     amount: 1
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Diphenhydramine
@@ -197,6 +199,7 @@
         damage:
           types:
             Poison: -3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Ethylredoxrazine
@@ -225,6 +228,7 @@
         damage:
           types:
             Poison: -0.5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Arithrazine
@@ -243,6 +247,7 @@
             Radiation: -3
           groups:
             Brute: 0.5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Bicaridine
@@ -300,6 +305,7 @@
         identifier: Suffocation
         amount: -1.2
         time: 12
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Cryoxadone
@@ -333,6 +339,7 @@
               Airloss: -3
               Brute: -3
               Burn: -3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Doxarubixadone
@@ -354,9 +361,14 @@
             min: 100.0
             max: 213.0
             scale: 1.6
+# Europa-Edit-Start
           damage:
             types:
-             Cellular: -2
+             Cellular: -4
+             Blunt: 0.33
+             Slash: 0.33
+             Piercing: 0.34
+# Europa-Edit-End
 
 - type: reagent
   id: Dermaline
@@ -400,6 +412,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 10
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Dexalin
@@ -442,6 +455,7 @@
         identifier: Suffocation
         amount: 3.4
         time: 12
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: DexalinPlus
@@ -497,6 +511,7 @@
         identifier: Suffocation
         amount: -5
         time: 12
+  evaporationSpeed: 0.3
 
 # this ones a doozy
 - type: reagent
@@ -600,6 +615,7 @@
         identifier: Suffocation
         amount: -2.4
         time: 12
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Hyronalin
@@ -636,6 +652,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Ipecac
@@ -656,6 +673,7 @@
         - !type:ReagentThreshold
           min: 4
         probability: 0.3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Inaprovaline
@@ -685,6 +703,7 @@
         identifier: Suffocation
         amount: 8
         time: 20
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Kelotane
@@ -718,6 +737,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 25
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Leporazine
@@ -752,6 +772,7 @@
       - !type:AdjustReagent
         reagent: Fresium
         amount: -5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Barozine
@@ -804,6 +825,7 @@
         visualType: Large
         messages: [ "barozine-effect-skin-burning", "barozine-effect-muscle-contract" ]
         probability: 0.1
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Phalanximine
@@ -845,6 +867,7 @@
         damage:
           types:
             Caustic: 0.3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: PolypyryliumOligomers
@@ -890,6 +913,7 @@
         identifier: Suffocation
         amount: 6
         time: 12
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Ambuzol
@@ -906,6 +930,7 @@
           conditions:
             - !type:ReagentThreshold
               min: 10
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: AmbuzolPlus
@@ -923,6 +948,7 @@
           conditions:
             - !type:ReagentThreshold
               min: 5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: PulpedBananaPeel
@@ -937,6 +963,7 @@
       effects:
       - !type:ModifyBleedAmount
         amount: -0.5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Saline
@@ -953,6 +980,7 @@
           factor: 6
         - !type:ModifyBloodLevel
           amount: 12 # Goobstation - buffed by two times due to shitmed changes
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Siderlac
@@ -971,6 +999,7 @@
         damage:
           types:
             Caustic: -5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Stellibinin
@@ -997,6 +1026,7 @@
           min: 1
         reagent: Amatoxin
         amount: -3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Synaptizine
@@ -1029,6 +1059,7 @@
         effectProto: StatusEffectSeeingRainbow
         time: 15.0
         type: Remove
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: TranexamicAcid
@@ -1052,6 +1083,7 @@
         damage:
           types:
             Bloodloss: 3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Tricordrazine
@@ -1076,6 +1108,7 @@
             Heat: -0.5
             Shock: -0.5
             Cold: -0.5 # Was .33, Buffed due to limb damage changes(GoobStation)
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Lipozine
@@ -1091,6 +1124,7 @@
       # what the hell, this isn't satiating at all!!
       - !type:SatiateHunger
         factor: -1
+  evaporationSpeed: 0.3
 
   # Should heal quite literally everything, use in very small amounts
 - type: reagent
@@ -1113,6 +1147,7 @@
           Toxin: -3
           Airloss: -3
           Brute: -3 # Was 2, Buffed due to limb damage changes(GoobStation)
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Ultravasculine
@@ -1157,6 +1192,7 @@
           min: 1
         reagent: Ultravasculine
         amount: 0.5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Oculine
@@ -1170,6 +1206,7 @@
     Medicine:
       effects:
       - !type:ChemHealEyeDamage
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Cognizine
@@ -1186,6 +1223,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Ethyloxyephedrine
@@ -1215,6 +1253,7 @@
         messages: ["ethyloxyephedrine-effect-feeling-awake", "ethyloxyephedrine-effect-clear-mind"]
         type: Local
         probability: 0.1
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Diphenylmethylamine
@@ -1240,6 +1279,7 @@
         messages: ["ethyloxyephedrine-effect-feeling-awake", "ethyloxyephedrine-effect-clear-mind"]
         type: Local
         probability: 0.1
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Sigynate
@@ -1304,6 +1344,7 @@
         visualType: Medium
         messages: [ "generic-reagent-effect-nauseous" ]
         probability: 0.2
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Lacerinol
@@ -1330,6 +1371,7 @@
         damage:
           types:
             Cold: 3
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Puncturase
@@ -1357,6 +1399,7 @@
         damage:
           types:
             Blunt: 5
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Bruizine
@@ -1383,6 +1426,7 @@
         damage:
           types:
             Poison: 4
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Holywater
@@ -1413,7 +1457,6 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
-
   reactiveEffects:
     Extinguish:
       methods: [ Touch ]
@@ -1482,6 +1525,7 @@
           min: 20
         emote: Scream
         probability: 0.2
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Insuzine
@@ -1528,6 +1572,7 @@
         conditions:
         - !type:ReagentThreshold
           min: 12
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine"
@@ -1549,6 +1594,7 @@
             max: 150.0
           - !type:MobStateCondition
             mobstate: Dead
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Necrosol
@@ -1568,11 +1614,6 @@
   metabolisms:
     Medicine:
       effects:
-        - !type:ModifyBloodLevel # Goobstation - Cryo rebalance
-          conditions:
-          - !type:Temperature
-            max: 213.0
-          amount: 10
         - !type:HealthChange
           conditions:
           - !type:Temperature
@@ -1581,12 +1622,18 @@
             min: 100.0
             max: 213.0
             scale: 1.6
-          damage: # Goobstation - Cryo rebalance
-            groups:
-              Airloss: -10.0
-              Brute: -5.0
-              Burn: -5.0
-              Toxin: -5.0
+# Europa-Edit-Start
+          damage:
+            types:
+              Poison: -2
+              Blunt: -1.33
+              Slash: -1.33
+              Piercing: -1.34
+              Heat: -1.25
+              Shock: -1.25
+              Cold: -1.25
+              Caustic: -1.25
+# Europa-Edit-End
 
 - type: reagent
   id : Aloxadone
@@ -1600,6 +1647,11 @@
   metabolisms:
     Medicine:
       effects:
+#     - !type:ModifyBloodLevel # Goobstation - Cryo rebalance | Europa-Remove
+#       conditions:
+#     - !type:Temperature
+#         max: 213.0
+#         amount: 10
       - !type:HealthChange
         conditions:
         - !type:Temperature
@@ -1608,11 +1660,14 @@
           min: 100.0
           max: 213.0
           scale: 1.6
-        damage: # Goobstation - Cryo rebalance
+# Europa-Edit-Start
+        damage:
           types:
-            Heat: -10.0
-            Shock: -10.0
-            Caustic: -10.0
+            Cold: -4
+            Heat: -4
+            Shock: -4
+            Caustic: -1.5
+# Europa-Edit-End
 
 - type: reagent
   id : Mannitol # currently this is just a way to create psicodine
@@ -1633,6 +1688,7 @@
         visualType: Medium
         messages: [ "mannitol-effect-enlightened" ]
         probability: 0.2
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Psicodine
@@ -1679,6 +1735,7 @@
         - "psicodine-effect-anxieties-wash-away"
         - "psicodine-effect-at-peace"
         probability: 0.2
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: PotassiumIodide
@@ -1707,6 +1764,7 @@
         damage:
           types:
             Poison: 1
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Haloperidol
@@ -1760,3 +1818,4 @@
       - !type:AdjustReagent
         reagent: MindbreakerToxin
         amount: -3.0
+  evaporationSpeed: 0.3

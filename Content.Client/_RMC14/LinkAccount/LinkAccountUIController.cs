@@ -90,7 +90,7 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
 
         var user = FormattedMessage.EscapeText(message.User);
         var msg = FormattedMessage.EscapeText(message.Message);
-        gui.LobbyMessageLabel.SetMarkupPermissive($"[font size=20]Lobby message by: {user}\n{msg}[/font]");
+        // gui.LobbyMessageLabel.SetMarkupPermissive($"[font size=20]Lobby message by: {user}\n{msg}[/font]");
     }
 
     public void ToggleWindow()

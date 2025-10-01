@@ -72,6 +72,8 @@
   - BorgModuleConstruction
   - BorgModuleRCD
   - BorgModuleCable
+  - BorgModuleAtmosMonitor
+  - BorgModulePowerMonitor
 
   lawset: Engineer # DeltaV: Custom lawset
 

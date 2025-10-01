@@ -26,8 +26,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text.RegularExpressions;
 using Content.Client.UserInterface.Systems.Chat.Controls;
-using Content.Goobstation.Common.CCVar; // Goobstation Change
+using Content.Goobstation.Common.CCVar;
+using Content.Shared._Europa; // Goobstation Change
 using Content.Shared.Chat;
 using Content.Shared.Input;
 using Robust.Client.Audio;
@@ -64,6 +66,11 @@ public partial class ChatBox : UIWidget
     private (string, Color)? _lastLine;
     private int _lastLineRepeatCount = 0;
     // WD EDIT END
+
+    private static readonly Regex BubbleContentRegex = new Regex(
+        @"\[BubbleContent\](.*?)\[/BubbleContent\]",
+        RegexOptions.Singleline | RegexOptions.Compiled
+    );
 
     public ChatBox()
     {
@@ -150,7 +157,7 @@ public partial class ChatBox : UIWidget
 
     public void Repopulate()
     {
-        Contents.Clear();
+        ClearChatContent();
 
         foreach (var message in _controller.History)
         {
@@ -160,7 +167,7 @@ public partial class ChatBox : UIWidget
 
     private void OnChannelFilter(ChatChannel channel, bool active)
     {
-        Contents.Clear();
+        ClearChatContent();
 
         foreach (var message in _controller.History)
         {
@@ -173,6 +180,19 @@ public partial class ChatBox : UIWidget
         }
     }
 
+    private void ClearChatContent()
+    {
+        Contents.Clear();
+
+        foreach (var child in Contents.Children)
+        {
+            if (child.Name != "_v_scroll")
+            {
+                Contents.RemoveChild(child);
+            }
+        }
+    }
+
     private void OnNewHighlights(string highlighs)
     {
         _controller.UpdateHighlights(highlighs);
@@ -180,20 +200,79 @@ public partial class ChatBox : UIWidget
 
     public void AddLine(string message, Color color, int repeat = 0)
     {
-        var formatted = new FormattedMessage(4); // WD EDIT // specifying size beforehand smells like a useless microoptimisation, but i'll give them the benefit of doubt
+        var formatted = new FormattedMessage(5); // WD EDIT // specifying size beforehand smells like a useless microoptimisation, but i'll give them the benefit of doubt
         formatted.PushColor(color);
-        formatted.AddMarkupOrThrow(message);
+
+        var sanitizedMessage = ExtractAndSanitizeBubbleContent(message);
+        formatted.AddMessage(sanitizedMessage);
+
         formatted.Pop();
+
         if(repeat != 0) // WD EDIT START
         {
             int displayRepeat = repeat + 1;
             int sizeIncrease = Math.Min(displayRepeat / 6, 5);
-            formatted.AddMarkupOrThrow(_loc.GetString("chat-system-repeated-message-counter",
-                                ("count", displayRepeat),
-                                ("size", 8+sizeIncrease)
-                                ));
+
+            var repeatText = _loc.GetString("chat-system-repeated-message-counter",
+                ("count", displayRepeat),
+                ("size", 8 + sizeIncrease)
+            );
+
+            try
+            {
+                formatted.AddMarkupOrThrow(repeatText);
+            }
+            catch (Exception e)
+            {
+                _sawmill.Warning(Loc.GetString("chat-repeat-parse-error", ("message", repeatText)));
+                _sawmill.Error(e.Message);
+            }
         } // WD EDIT END
+
         Contents.AddMessage(formatted);
+    }
+
+    private FormattedMessage ExtractAndSanitizeBubbleContent(string message)
+    {
+        var result = new FormattedMessage();
+
+        try
+        {
+            if (BubbleContentRegex.IsMatch(message))
+            {
+                try
+                {
+                    result.AddMarkupOrThrow(message);
+                }
+                catch (Exception e)
+                {
+                    var processedMessage = BubbleContentRegex.Replace(message,
+                        match =>
+                        {
+                            var originalContent = match.Groups[1].Value;
+
+                            if (string.IsNullOrEmpty(originalContent))
+                                return match.Value;
+
+                            var sanitizedContent = FuckHelper.SanitizeSimpleMessageForChat(originalContent);
+                            return $"[BubbleContent]{sanitizedContent}[/BubbleContent]";
+                        });
+
+                    result.AddMarkupPermissive(processedMessage);
+                }
+            }
+            else
+            {
+                result.AddMarkupOrThrow(message);
+            }
+        }
+        catch (Exception ex)
+        {
+            var sanitizedMessage = FuckHelper.SanitizeSimpleMessageForChat(message);
+            result.AddText(sanitizedMessage);
+        }
+
+        return result;
     }
 
     public void Focus(ChatSelectChannel? channel = null)

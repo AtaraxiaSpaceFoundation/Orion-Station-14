@@ -204,6 +204,8 @@
     - SiliconRadiation
   - type: ContentEye  #Goobstation
     maxZoom: 1.44,1.44
+  - type: TTS
+    voice: Glados
 
 - type: entity
   id: AiHeldIntellicard
@@ -231,6 +233,8 @@
       enum.SiliconLawsUiKey.Key:
         type: SiliconLawBoundUserInterface
   - type: ShowJobIcons
+  - type: TTS
+    voice: Glados
 
 # Ai
 - type: entity
@@ -255,6 +259,8 @@
         # The alternative is you add a bunch of events trying to override it; we don't even really need the container functionality
         # anyway it's just a quality of life thing.
         showEnts: True
+  - type: TTS
+    voice: Glados
 
 # Items
 - type: entity
@@ -361,6 +367,8 @@
         type: HolopadBoundUserInterface
       enum.StationAiCustomizationUiKey.Key:
         type: StationAiCustomizationBoundUserInterface
+  - type: TTS
+    voice: Glados
 
 # The job-ready version of an AI spawn.
 - type: entity
@@ -426,6 +434,8 @@
       state: ai_female
   - type: NameIdentifier
     group: StationAi
+  - type: TTS
+    voice: Glados
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -453,6 +463,8 @@
     - state: ai_camera
       shader: unshaded
       map: ["base"]
+  - type: TTS
+    voice: Glados
 
 # The holographic representation of the AI that is projected from a holopad.
 - type: entity
@@ -474,6 +486,8 @@
   - type: CargoSellBlacklist
   - type: StationAiVision
     range: 20
+  - type: TTS
+    voice: Glados
 
 # Borgs
 - type: entity

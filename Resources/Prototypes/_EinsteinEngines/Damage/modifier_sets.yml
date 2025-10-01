@@ -20,7 +20,7 @@
     Heat: 1.7
     Shock: 2
   # Goobstation
-    Radiation: 0.4
+    Radiation: 0 # Helo
     Ion: 0.8
   ignoreArmorPierceFlags: All
 

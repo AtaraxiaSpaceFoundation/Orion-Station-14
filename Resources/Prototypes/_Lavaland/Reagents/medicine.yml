@@ -78,6 +78,7 @@
         emote: Scream
         probability: 0.05
         #It's balanced I swear!
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Luxurium
@@ -119,3 +120,4 @@
             max: 50
             worksOnLavaland: true
       # Cuts the amount healed roughly by 50% when in normal pressure.
+  evaporationSpeed: 0.3

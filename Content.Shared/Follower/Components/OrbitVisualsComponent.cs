@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Robust.Shared.Animations;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Follower.Components;
@@ -28,11 +29,4 @@ public sealed partial class OrbitVisualsComponent : Component
     ///     How long should the orbit stop animation last in seconds?
     /// </summary>
     public float OrbitStopLength = 1.0f;
-
-    // Europa-Start
-    /// <summary>
-    /// Whether the orbiting entity's sprite will rotate along the orbit, or stay vertical.
-    /// </summary>
-    public bool KeepUpright = false;
-    // Europa-End
 }

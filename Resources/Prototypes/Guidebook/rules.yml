@@ -1,10 +1,10 @@
 # Europa-Remove | Literally remove
 
-- type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
-  id: DefaultRuleset
-  name: guide-entry-rules
-  priority: 60
-  text: "/ServerInfo/Guidebook/ServerRules/DefaultRules.xml"
+#- type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
+#  id: DefaultRuleset
+#  name: guide-entry-rules
+#  priority: 60
+#  text: "/ServerInfo/Guidebook/ServerRules/DefaultRules.xml"
 #  children:
 #  - CoreRules
 #  - RoleplayRules

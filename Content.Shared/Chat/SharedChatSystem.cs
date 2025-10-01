@@ -27,16 +27,20 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Collections.Frozen;
-using Content.Shared._Starlight.CollectiveMind; // Goobstation - Starlight collective mind port
 using System.Text.RegularExpressions;
+using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization; // Einstein Engines - Language
+using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using static System.Text.RegularExpressions.RegexOptions;
+
+// Goobstation - Starlight collective mind port
+// Einstein Engines - Language
 
 namespace Content.Shared.Chat;
 
@@ -44,35 +48,34 @@ public abstract class SharedChatSystem : EntitySystem
 {
     public const char RadioCommonPrefix = ';';
     public const char RadioChannelPrefix = ':';
-    public const char RadioChannelAltPrefix = '.';
+    private const char RadioChannelAltPrefix = '.';
     public const char LocalPrefix = '>';
     public const char ConsolePrefix = '/';
     public const char DeadPrefix = '\\';
-    public const char LOOCPrefix = '(';
+    public const char LoocPrefix = '(';
     public const char OOCPrefix = '[';
     public const char EmotesPrefix = '@';
     public const char EmotesAltPrefix = '*';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
-    public const char TelepathicPrefix = '='; //Nyano - Summary: Adds the telepathic channel's prefix.
+    public const char TelepathicPrefix = '=';
     public const char CollectiveMindPrefix = '+'; // Goobstation - Starlight collective mind port
     public const char DefaultChannelKey = 'h';
 
-    public static readonly ProtoId<RadioChannelPrototype> CommonChannel = "Common";
+    public const int VoiceRange = 10;
+    public const int WhisperClearRange = 2;
+    public const int WhisperMuffledRange = 5;
 
+    public static readonly ProtoId<RadioChannelPrototype> CommonChannel = "Common";
     public static readonly string DefaultChannelPrefix = $"{RadioChannelPrefix}{DefaultChannelKey}";
     public static readonly ProtoId<SpeechVerbPrototype> DefaultSpeechVerb = "Default";
 
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
-    /// <summary>
-    /// Cache of the keycodes for faster lookup.
-    /// </summary>
     private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
+    private FrozenDictionary<char, CollectiveMindPrototype> _mindKeyCodes = default!; // Goobstation - Starlight collective mind port
 
-    // Goobstation - Starlight collective mind port
-    private FrozenDictionary<char, CollectiveMindPrototype> _mindKeyCodes = default!;
 
     public override void Initialize()
     {
@@ -88,8 +91,7 @@ public abstract class SharedChatSystem : EntitySystem
         if (obj.WasModified<RadioChannelPrototype>())
             CacheRadios();
 
-        // Goobstation - Starlight collective mind port
-        if (obj.WasModified<CollectiveMindPrototype>())
+        if (obj.WasModified<CollectiveMindPrototype>()) // Goobstation - Starlight collective mind port
             CacheCollectiveMinds();
     }
 
@@ -99,24 +101,18 @@ public abstract class SharedChatSystem : EntitySystem
             .ToFrozenDictionary(x => x.KeyCode);
     }
 
-    // Goobstation - Starlight collective mind port
-    private void CacheCollectiveMinds()
+    private void CacheCollectiveMinds() // Goobstation - Starlight collective mind port
     {
         _prototypeManager.PrototypesReloaded -= OnPrototypeReload;
         _mindKeyCodes = _prototypeManager.EnumeratePrototypes<CollectiveMindPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
 
-    /// <summary>
-    ///     Attempts to find an applicable <see cref="SpeechVerbPrototype"/> for a speaking entity's message.
-    ///     If one is not found, returns <see cref="DefaultSpeechVerb"/>.
-    /// </summary>
     public SpeechVerbPrototype GetSpeechVerb(EntityUid source, string message, SpeechComponent? speech = null)
     {
         if (!Resolve(source, ref speech, false))
             return _prototypeManager.Index(DefaultSpeechVerb);
 
-        // check for a suffix-applicable speech verb
         SpeechVerbPrototype? current = null;
         foreach (var (str, id) in speech.SuffixSpeechVerbs)
         {
@@ -127,26 +123,14 @@ public abstract class SharedChatSystem : EntitySystem
             }
         }
 
-        // if no applicable suffix verb return the normal one used by the entity
         return current ?? _prototypeManager.Index(speech.SpeechVerb);
     }
 
-    /// <summary>
-    /// Splits the input message into a radio prefix part and the rest to preserve it during sanitization.
-    /// </summary>
-    /// <remarks>
-    /// This is primarily for the chat emote sanitizer, which can match against ":b" as an emote, which is a valid radio keycode.
-    /// </remarks>
-    public void GetRadioKeycodePrefix(EntityUid source,
-        string input,
-        out string output,
-        out string prefix)
+    protected void GetRadioKeycodePrefix(EntityUid source, string input, out string output, out string prefix)
     {
         prefix = string.Empty;
         output = input;
 
-        // If the string is less than 2, then it's probably supposed to be an emote.
-        // No one is sending empty radio messages!
         if (input.Length <= 2)
             return;
 
@@ -160,16 +144,6 @@ public abstract class SharedChatSystem : EntitySystem
         output = input[2..];
     }
 
-    /// <summary>
-    ///     Attempts to resolve radio prefixes in chat messages (e.g., remove a leading ":e" and resolve the requested
-    ///     channel. Returns true if a radio message was attempted, even if the channel is invalid.
-    /// </summary>
-    /// <param name="source">Source of the message</param>
-    /// <param name="input">The message to be modified</param>
-    /// <param name="output">The modified message</param>
-    /// <param name="channel">The channel that was requested, if any</param>
-    /// <param name="quiet">Whether or not to generate an informative pop-up message.</param>
-    /// <returns></returns>
     public bool TryProccessRadioMessage(
         EntityUid source,
         string input,
@@ -185,8 +159,8 @@ public abstract class SharedChatSystem : EntitySystem
 
         if (input.StartsWith(RadioCommonPrefix))
         {
-            output = SanitizeMessageCapital(input[1..].TrimStart());
-            channel = _prototypeManager.Index<RadioChannelPrototype>(CommonChannel);
+            output = SanitizeMessageCapital(input.Substring(1).TrimStart());
+            channel = _prototypeManager.Index(CommonChannel);
             return true;
         }
 
@@ -195,15 +169,14 @@ public abstract class SharedChatSystem : EntitySystem
 
         if (input.Length < 2 || char.IsWhiteSpace(input[1]))
         {
-            output = SanitizeMessageCapital(input[1..].TrimStart());
+            output = SanitizeMessageCapital(input.Substring(1).TrimStart());
             if (!quiet)
                 _popup.PopupEntity(Loc.GetString("chat-manager-no-radio-key"), source, source);
             return true;
         }
 
-        var channelKey = input[1];
-        channelKey = char.ToLower(channelKey);
-        output = SanitizeMessageCapital(input[2..].TrimStart());
+        var channelKey = char.ToLower(input[1]);
+        output = SanitizeMessageCapital(input.Substring(2).TrimStart());
 
         if (channelKey == DefaultChannelKey)
         {
@@ -224,8 +197,7 @@ public abstract class SharedChatSystem : EntitySystem
         return true;
     }
 
-    // Goobstation - Starlight collective mind port
-    public bool TryProccessCollectiveMindMessage(
+    public bool TryProccessCollectiveMindMessage( // Goobstation - Starlight collective mind port
         EntityUid source,
         string input,
         out string output,
@@ -247,32 +219,32 @@ public abstract class SharedChatSystem : EntitySystem
 
         if (input.Length < 2 || (char.IsWhiteSpace(input[1]) && defaultChannel == null))
         {
-            output = SanitizeMessageCapital(input[1..].TrimStart());
+            output = SanitizeMessageCapital(input.Substring(1).TrimStart());
             if (!quiet)
                 _popup.PopupEntity(Loc.GetString("chat-manager-no-radio-key"), source, source);
             return true;
         }
 
-        var channelKey = input[1];
-        channelKey = char.ToLower(channelKey);
+        var channelKey = char.ToLower(input[1]);
 
         if (_mindKeyCodes.TryGetValue(channelKey, out channel))
         {
-            output = SanitizeMessageCapital(input[2..].TrimStart());
+            output = SanitizeMessageCapital(input.Substring(2).TrimStart());
             return true;
         }
-        else if (defaultChannel != null)
+
+        if (defaultChannel != null)
         {
-            output = SanitizeMessageCapital(input[1..].TrimStart());
-            channel = _prototypeManager.Index<CollectiveMindPrototype>(defaultChannel.Value);
+            output = SanitizeMessageCapital(input.Substring(1).TrimStart());
+            channel = _prototypeManager.Index(defaultChannel.Value);
             return true;
         }
 
-        if (quiet)
-            return false;
-
-        var msg = Loc.GetString("chat-manager-no-such-channel", ("key", channelKey));
-        _popup.PopupEntity(msg, source, source);
+        if (!quiet)
+        {
+            var msg = Loc.GetString("chat-manager-no-such-channel", ("key", channelKey));
+            _popup.PopupEntity(msg, source, source);
+        }
 
         return false;
     }
@@ -281,51 +253,41 @@ public abstract class SharedChatSystem : EntitySystem
         EntityUid source,
         string message,
         InGameICChatType desiredType,
-        bool hideChat, bool hideLog = false,
+        bool hideChat,
+        bool hideLog = false,
         IConsoleShell? shell = null,
-        ICommonSession? player = null, string? nameOverride = null,
+        ICommonSession? player = null,
+        string? nameOverride = null,
         bool checkRadioPrefix = true,
         bool ignoreActionBlocker = false,
         string wrappedMessagePostfix = "" // Goobstation
-    ) { }
-
-    public string SanitizeMessageCapital(string message)
+    )
     {
-        if (string.IsNullOrEmpty(message))
-            return message;
-        // Capitalize first letter
-        message = OopsConcat(char.ToUpper(message[0]).ToString(), message.Remove(0, 1));
-        return message;
     }
 
-    private static string OopsConcat(string a, string b)
-    {
-        // This exists to prevent Roslyn being clever and compiling something that fails sandbox checks.
-        return a + b;
-    }
-
-    public string SanitizeMessageCapitalizeTheWordI(string message, string theWordI = "i")
+    protected string SanitizeMessageCapital(string message)
     {
         if (string.IsNullOrEmpty(message))
             return message;
 
-        for
-        (
-            var index = message.IndexOf(theWordI);
-            index != -1;
-            index = message.IndexOf(theWordI, index + 1)
-        )
+        return string.Concat(char.ToUpper(message[0]).ToString(), message.Substring(1));
+    }
+
+    protected string SanitizeMessageCapitalizeTheWordI(string message, string theWordI = "i")
+    {
+        if (string.IsNullOrEmpty(message))
+            return message;
+
+        for (var index = message.IndexOf(theWordI, StringComparison.Ordinal); index != -1; index = message.IndexOf(theWordI, index + 1, StringComparison.Ordinal))
         {
-            // Stops the code If It's tryIng to capItalIze the letter I In the mIddle of words
-            // Repeating the code twice is the simplest option
             if (index + 1 < message.Length && char.IsLetter(message[index + 1]))
                 continue;
             if (index - 1 >= 0 && char.IsLetter(message[index - 1]))
                 continue;
 
-            var beforeTarget = message.Substring(0, index);
+            var beforeTarget = message[..index];
             var target = message.Substring(index, theWordI.Length);
-            var afterTarget = message.Substring(index + theWordI.Length);
+            var afterTarget = message[(index + theWordI.Length)..];
 
             message = beforeTarget + target.ToUpper() + afterTarget;
         }
@@ -338,10 +300,9 @@ public abstract class SharedChatSystem : EntitySystem
         var trimmed = message.Trim();
         if (maxLength > 0 && trimmed.Length > maxLength)
         {
-            trimmed = $"{message[..maxLength]}...";
+            trimmed = $"{message.Substring(0, maxLength)}...";
         }
 
-        // No more than max newlines, other replaced to spaces
         if (maxNewlines > 0)
         {
             var chars = trimmed.ToCharArray();
@@ -366,13 +327,14 @@ public abstract class SharedChatSystem : EntitySystem
     public static string InjectTagInsideTag(ChatMessage message, string outerTag, string innerTag, string? tagParameter)
     {
         var rawmsg = message.WrappedMessage;
-        var tagStart = rawmsg.IndexOf($"[{outerTag}]");
-        var tagEnd = rawmsg.IndexOf($"[/{outerTag}]");
-        if (tagStart < 0 || tagEnd < 0) //If the outer tag is not found, the injection is not performed
-            return rawmsg;
-        tagStart += outerTag.Length + 2;
+        var tagStart = rawmsg.IndexOf($"[{outerTag}]", StringComparison.Ordinal);
+        var tagEnd = rawmsg.IndexOf($"[/{outerTag}]", StringComparison.Ordinal);
 
-        string innerTagProcessed = tagParameter != null ? $"[{innerTag}={tagParameter}]" : $"[{innerTag}]";
+        if (tagStart < 0 || tagEnd < 0)
+            return rawmsg;
+
+        tagStart += outerTag.Length + 2;
+        var innerTagProcessed = tagParameter != null ? $"[{innerTag}={tagParameter}]" : $"[{innerTag}]";
 
         rawmsg = rawmsg.Insert(tagEnd, $"[/{innerTag}]");
         rawmsg = rawmsg.Insert(tagStart, innerTagProcessed);
@@ -380,36 +342,46 @@ public abstract class SharedChatSystem : EntitySystem
         return rawmsg;
     }
 
-    /// <summary>
-    /// Injects a tag around all found instances of a specific string in a ChatMessage.
-    /// Excludes strings inside other tags and brackets.
-    /// </summary>
     public static string InjectTagAroundString(ChatMessage message, string targetString, string tag, string? tagParameter)
     {
         var rawmsg = message.WrappedMessage;
-        rawmsg = Regex.Replace(rawmsg, "(?i)(" + targetString + ")(?-i)(?![^[]*])", $"[{tag}={tagParameter}]$1[/{tag}]");
-        return rawmsg;
+
+        var escapedTarget = Regex.Escape(targetString);
+        var pattern = $"(?i)({escapedTarget})(?-i)(?![^[]*\\])";
+        var regex = new Regex(pattern, Compiled);
+
+        return regex.Replace(rawmsg, $"[{tag}={tagParameter}]$1[/{tag}]");
     }
 
     public static string GetStringInsideTag(ChatMessage message, string tag)
     {
         var rawmsg = message.WrappedMessage;
-        var tagStart = rawmsg.IndexOf($"[{tag}]");
-        var tagEnd = rawmsg.IndexOf($"[/{tag}]");
+        var tagStart = rawmsg.IndexOf($"[{tag}]", StringComparison.Ordinal);
+        var tagEnd = rawmsg.IndexOf($"[/{tag}]", StringComparison.Ordinal);
+
         if (tagStart < 0 || tagEnd < 0)
             return "";
+
         tagStart += tag.Length + 2;
         return rawmsg.Substring(tagStart, tagEnd - tagStart);
     }
+
+    public static string GetStringInsideTag(string message, string tag)
+    {
+        var tagStart = message.IndexOf($"[{tag}]", StringComparison.Ordinal);
+        var tagEnd = message.IndexOf($"[/{tag}]", StringComparison.Ordinal);
+
+        if (tagStart < 0 || tagEnd < 0)
+            return "";
+
+        tagStart += tag.Length + 2;
+        return message.Substring(tagStart, tagEnd - tagStart);
+    }
 }
 
-// Einstein Engines - Language begin (moves chat types to shared)
-/// <summary>
-///     InGame IC chat is for chat that is specifically ingame (not lobby) but is also in character, i.e. speaking.
-/// </summary>
-// ReSharper disable once InconsistentNaming
+// Einstein Engines - Language begin
 [Serializable, NetSerializable]
-public enum InGameICChatType : byte // Einstein Engines - Make InGameIIChatType available in Shared
+public enum InGameICChatType : byte
 {
     Speak,
     Emote,
@@ -418,9 +390,6 @@ public enum InGameICChatType : byte // Einstein Engines - Make InGameIIChatType 
     CollectiveMind // Goobstation - Starlight collective mind port
 }
 
-/// <summary>
-///     InGame OOC chat is for chat that is specifically ingame (not lobby) but is OOC, like deadchat or LOOC.
-/// </summary>
 [Serializable, NetSerializable]
 public enum InGameOOCChatType : byte
 {
@@ -428,19 +397,12 @@ public enum InGameOOCChatType : byte
     Dead
 }
 
-/// <summary>
-///     Controls transmission of chat.
-/// </summary>
 [Serializable, NetSerializable]
 public enum ChatTransmitRange : byte
 {
-    /// Acts normal, ghosts can hear across the map, etc.
     Normal,
-    /// Normal but ghosts are still range-limited.
     GhostRangeLimit,
-    /// Hidden from the chat window.
     HideChat,
-    /// Ghosts can't hear or see it at all. Regular players can if in-range.
     NoGhosts
 }
 // Einstein Engines - Language end

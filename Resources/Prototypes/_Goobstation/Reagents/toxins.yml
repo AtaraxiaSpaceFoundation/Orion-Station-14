@@ -56,6 +56,7 @@
         key: Stutter
         component: StutteringAccent
       - !type:Jitter
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Cyanide
@@ -92,6 +93,7 @@
         - !type:OrganType
           type: Yowie
           shouldHave: false
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Anacea
@@ -129,6 +131,7 @@
         - !type:OrganType
           type: Yowie
           shouldHave: false
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Pendetide
@@ -160,6 +163,7 @@
         key: Stutter
         component: StutteringAccent
       - !type:Jitter
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Aluite
@@ -192,6 +196,7 @@
       - !type:AdjustReagent
         amount: -25
         reagent: Aluite
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Sarin
@@ -271,6 +276,7 @@
           components:
           - type: PressureProtection # can't get through this to reach the bodyparts!
           invert: true
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Tirizene
@@ -291,6 +297,7 @@
           shouldHave: false
         amount: 13 # 13 parity
         immediate: false
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: NevcottaPowder
@@ -334,3 +341,4 @@
           shouldHave: false
         probability: 0.05
         paralyzeTime: 2
+  evaporationSpeed: 0.3

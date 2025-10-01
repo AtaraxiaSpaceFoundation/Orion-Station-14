@@ -111,7 +111,7 @@
   reactants:
     Cryoxadone:
       amount: 1
-    UnstableMutagen:
+    Phalanximine: # Europa-Edit
       amount: 1
   products:
     Doxarubixadone: 2
@@ -624,8 +624,9 @@
   products:
     Necrosol: 2
 
+# Europa-Edit-Start
 - type: reaction
-  id: Aloxadone
+  id: CryoAloeLepo #Will make Aloxadone
   impact: Medium
   reactants:
     Cryoxadone:
@@ -636,6 +637,20 @@
       amount: 2
   products:
       Aloxadone: 4
+
+- type: reaction
+  id: DermaSiderCryo #Will make Aloxadone
+  impact: Medium
+  reactants:
+    Dermaline:
+      amount: 2
+    Siderlac:
+      amount: 2
+    Cryoxadone:
+      amount: 1
+  products:
+      Aloxadone: 4
+# Europa-Edit-End
 
 - type: reaction
   id: Psicodine

@@ -63,5 +63,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <GuideReagentEmbed Reagent="Leporazine"/>
 <GuideReagentEmbed Reagent="Necrosol"/>
 <GuideReagentEmbed Reagent="Opporozidone"/>
+<GuideReagentEmbed Reagent="Stelloxadone"/>
+<GuideReagentEmbed Reagent="Traumoxadone"/>
 
 </Document>

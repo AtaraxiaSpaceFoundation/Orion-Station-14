@@ -137,6 +137,7 @@
     collection: FootstepBlood
     params:
       volume: 6
+  evaporationSpeed: 0.3
 
 - type: reagent
   parent: Blood
@@ -148,6 +149,7 @@
   color: "#808A51"
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Slime
@@ -171,6 +173,7 @@
     collection: FootstepSlime # makes sense
     params:
       volume: 6
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Sap
@@ -196,6 +199,7 @@
     collection: FootstepSlime
     params:
       volume: 6
+  evaporationSpeed: 0.3
 
 - type: reagent
   parent: Blood
@@ -207,6 +211,7 @@
   color: "#162581"
   recognizable: true
   physicalDesc: reagent-physical-desc-metallic
+  evaporationSpeed: 0.3
 
 - type: reagent
   parent: Blood
@@ -218,6 +223,7 @@
   color: "#7a8bf2"
   recognizable: true
   physicalDesc: reagent-physical-desc-pungent
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: ZombieBlood
@@ -249,6 +255,7 @@
           type: Yowie
           shouldHave: false
         probability: 0.25
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Ichor
@@ -286,6 +293,7 @@
     collection: FootstepBlood
     params:
       volume: 6
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Fat
@@ -299,6 +307,7 @@
     collection: FootstepBlood
     params:
       volume: 6
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: Vomit
@@ -323,6 +332,7 @@
     collection: FootstepBlood
     params:
       volume: 6
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: GreyMatter
@@ -343,3 +353,4 @@
         damage:
           types:
             Cellular: 2
+  evaporationSpeed: 0.3

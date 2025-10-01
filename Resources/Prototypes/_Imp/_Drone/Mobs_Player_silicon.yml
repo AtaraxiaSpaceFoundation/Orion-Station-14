@@ -149,12 +149,24 @@
       enum.StationMapUiKey.Key: #imp
         type: StationMapBoundUserInterface
         requireInputValidation: false
+      enum.PowerMonitoringConsoleUiKey.Key:
+        type: PowerMonitoringConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.AtmosAlertsComputerUiKey.Key:
+        type: AtmosAlertsComputerBoundUserInterface
+        requireInputValidation: false
   - type: IntrinsicUI # Goob edit
     uis:
       enum.StationMapUiKey.Key:
         toggleAction: ActionShowStationMap
       enum.InstrumentUiKey.Key:
         toggleAction: ActionDronePlayMidi
+      enum.PowerMonitoringConsoleUiKey.Key:
+        toggleAction: ActionDronePowerMonitor
+      enum.AtmosAlertsComputerUiKey.Key:
+        toggleAction: ActionDroneAtmosMonitor
+  - type: PowerMonitoringConsole
+  - type: AtmosAlertsComputer
   - type: StationMap #imp
   - type: GhostRole
     requirements:

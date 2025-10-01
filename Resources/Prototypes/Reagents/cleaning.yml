@@ -69,6 +69,7 @@
           shouldHave: false
         emote: Scream
         probability: 0.15
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: SpaceCleaner
@@ -83,6 +84,7 @@
   tileReactions:
     - !type:CleanTileReaction {}
     - !type:CleanDecalsReaction {}
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: SoapReagent
@@ -115,12 +117,13 @@
         - !type:ReagentThreshold
           min: 6
         probability: 0.20
+  evaporationSpeed: 0.3
 
 - type: reagent
   id: SpaceLube
   name: reagent-name-space-lube
   desc: reagent-desc-space-lube
-#  evaporationSpeed: 0.1 # Goobstation - SpaceLube no evaporate
+  evaporationSpeed: 0.3
   slipData:
     requiredSlipSpeed: 0.1 # Goobstation - no crawling to avoid it
     superSlippery: true
@@ -172,3 +175,4 @@
         refresh: false
   footstepSound:
     collection: FootstepSlime
+  evaporationSpeed: 0.3

@@ -1,0 +1,9 @@
+- type: donateItem
+  id: AnimeshkaZhopa
+  ckey: animeshka
+  item: WeaponDisablerSMG
+
+- type: donateItem
+  id: AnimeshkaPopka
+  ckey: animeshka
+  item: CaptainIDCard

@@ -466,6 +466,8 @@
   - ChiefEngineerEnvirohelm
   - ChiefEngineerEnvirosuit
   - ChiefEngineerEnvirogloves
+  - HandHeldAtmosMonitor
+  - HandHeldPowerMonitor
 
 - type: roleLoadout
   id: JobTechnicalAssistant
@@ -500,6 +502,7 @@
   - StationEngineerEnvirohelm
   - StationEngineerEnvirosuit
   - StationEngineerEnvirogloves
+  - HandHeldPowerMonitor
 
 - type: roleLoadout
   id: JobAtmosphericTechnician
@@ -518,6 +521,7 @@
   - AtmosEnvirohelm
   - AtmosEnvirosuit
   - AtmosEnvirogloves
+  - HandHeldAtmosMonitor
 
 # Science
 - type: roleLoadout

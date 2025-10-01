@@ -529,7 +529,7 @@ public sealed partial class StationSystem : SharedStationSystem
 
         if (loud)
         {
-            _chatSystem.DispatchStationAnnouncement(station, $"The station {oldName} has been renamed to {name}.");
+            _chatSystem.DispatchStationAnnouncement(station, $"The station {oldName} has been renamed to {name}.", playDefaultSound: false);
         }
 
         RaiseLocalEvent(station, new StationRenamedEvent(oldName, name), true);

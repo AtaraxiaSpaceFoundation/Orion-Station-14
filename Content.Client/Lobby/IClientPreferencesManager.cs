@@ -1,4 +1,3 @@
-using Content.Shared._Europa.CustomGhost;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Preferences;
 using Robust.Shared.Prototypes;
@@ -20,7 +19,6 @@ namespace Content.Client.Lobby
         void CreateCharacter(ICharacterProfile profile);
         void DeleteCharacter(ICharacterProfile profile);
         void DeleteCharacter(int slot);
-        void SetCustomGhost(ProtoId<CustomGhostPrototype> ghostProto); // Europa
         void UpdateConstructionFavorites(List<ProtoId<ConstructionPrototype>> favorites);
     }
 }
