@@ -757,7 +757,7 @@
   - type: ItemSlots
     slots:
       item:
-        name: Handgun
+#        name: Handgun # Europa-Edit | Localization
         whitelist:
           tags:
           - Sidearm
@@ -787,7 +787,7 @@
   - type: ItemSlots
     slots:
       item:
-        name: Gun
+#        name: Gun # Europa-Edit | Localization
         whitelist:
           components:
           - Gun
