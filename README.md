@@ -1,4 +1,4 @@
-<h1 align="center"> <img alt="Orion Station" width="50" height="50" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Logo-1050x1050.png" /> Orion Station <img alt="Orion Station" width="50" height="50" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Logo-1050x1050.png" /> </h1>
+<h1 align="center"> <img alt="Orion Station" width="420" height="120" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Banner-Big.png" /> </h1>
 
 <p align="center">
   Ваш проводник в космический симулятор безумия!<br>
@@ -132,3 +132,5 @@ Most media assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/
 
 > [!NOTE]
 > Some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
+
+<h1 align="right"> <img alt="Orion Station" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Banner.png" />  </h1>
