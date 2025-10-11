@@ -1,4 +1,5 @@
-<h1 align="center"> <img alt="Europa Station" width="35" height="35" src="https://github.com/AtaraxiaSpaceFoundation/asset-dump/blob/master/EuropaStation/europa-logo.png" /> Europa Station <img alt="Europa Station" width="35" height="35" src="https://github.com/AtaraxiaSpaceFoundation/asset-dump/blob/master/EuropaStation/europa-logo.png" /> </h1>
+<h1 align="center"> <img alt="Orion Station" width="50" height="50" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Logo-1050x1050.png" /> Orion Station <img alt="Orion Station" width="50" height="50" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Logo-1050x1050.png" /> </h1>
+
 <p align="center">
   Ваш проводник в космический симулятор безумия!<br>
   Основан на идеях <a href="https://github.com/tgstation/tgstation">/tg/station</a> и <a href="https://github.com/shiptest-ss13/Shiptest">Shiptest</a> из Space Station 13.
@@ -13,7 +14,7 @@
 
 ---
 
-**Europa** — это рускоязычный форк [Goob Station](https://github.com/Goob-Station/Goob-Station), который стремится возродить дух классического геймплея Space Station 13, черпая вдохновение из таких проектов, как [/tg/station](https://github.com/tgstation/tgstation) и [Shiptest](https://github.com/shiptest-ss13/Shiptest). Мы фокусируемся на сочетании проверенных временем механик с инновационными идеями, создавая уникальный и приятный опыт игры в космическое безумие.
+**Orion** — это рускоязычный форк [Goob Station](https://github.com/Goob-Station/Goob-Station), который стремится возродить дух классического геймплея Space Station 13, черпая вдохновение из таких проектов, как [/tg/station](https://github.com/tgstation/tgstation) и [Shiptest](https://github.com/shiptest-ss13/Shiptest). Мы фокусируемся на сочетании проверенных временем механик с инновационными идеями, создавая уникальный и приятный опыт игры в космическое безумие.
 
 ---
 
@@ -23,8 +24,8 @@
 
 </div>
 
-[<img src="https://github.com/AtaraxiaSpaceFoundation/asset-dump/blob/master/Misc/Discord/discord-banner.png" alt="Discord" width="150" align="left">](https://discord.gg/mk-europa)
-**[Discord Server](https://discord.gg/mk-europa)**<br>В космосе вас никто не услышит.
+[<img src="https://github.com/AtaraxiaSpaceFoundation/asset-dump/blob/master/Misc/Discord/discord-banner.png" alt="Discord" width="150" align="left">](https://discord.gg/K48JujjjsC)
+**[Discord Server](https://discord.gg/K48JujjjsC)**<br>В космосе вас никто не услышит.
 
 [<img src="https://i.imgur.com/XiS9QP5.png" alt="ASF" width="150" align="left">](https://github.com/AtaraxiaSpaceFoundation)
 **[Ataraxia Space Foundation](https://github.com/AtaraxiaSpaceFoundation)**<br>Специализируемся на разработке этого билда.
@@ -34,9 +35,20 @@
 
 ## Активность репозитория
 
-![Активность PR](https://repobeats.axiom.co/api/embed/83c43285a130f63b1240d7138a224cd4daa0b042.svg "ZZZ")
+![Активность PR](https://repobeats.axiom.co/api/embed/fb55493406a54b21282bac43ecb28472b47a762c.svg "ZZZ")
 
 </div>
+
+---
+<div align="center">
+
+## Политика Orion
+
+> [!WARNING]  
+> **Orion не имеет никаких официальных игровых серверов**.
+
+Любой сервер, заявляющий, что он является официальным представителем этого билда — не одобрен этой организацией.
+Однако мы хотели бы пригласить всех желающих создать сервер на базе билда Orion.
 
 ---
 <div align="center">
@@ -74,7 +86,7 @@
 
 > 1. Клонируйте данный репозиторий.
 ```shell
-git clone https://github.com/AtaraxiaSpaceFoundation/Europa-Station-14.git
+git clone https://github.com/AtaraxiaSpaceFoundation/Orion-Station-14.git
 ```
 > 2. Откройте коммандную строку в папке репозитория и введите команду для того, чтобы скачать движок игры.
 ```shell
