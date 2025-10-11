@@ -122,7 +122,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared._White.Xenomorphs.Infection;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
@@ -136,8 +135,6 @@ using Robust.Shared.Timing;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared._Orion.Antag;
 using Content.Shared._Orion.CustomGhost;
@@ -733,11 +730,17 @@ namespace Content.Server.Ghost
                 return null;
             }
 
-//            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
+//            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value); // Orion-Remove
             // Orion-Start
             CustomGhostPrototype? customGhost = null;
-            if (mind.Comp.UserId is NetUserId userId)
-                customGhost = _prototypeManager.Index(_prefs.GetPreferences(userId).CustomGhost);
+            if (mind.Comp.UserId is NetUserId netUserId && _player.TryGetSessionById(netUserId, out var session))
+            {
+                var preferences = _prefs.GetPreferences(session.UserId);
+                if (preferences != null)
+                {
+                    customGhost = _prototypeManager.Index(preferences.CustomGhost);
+                }
+            }
 
             var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
             // Orion-End
@@ -753,13 +756,10 @@ namespace Content.Server.Ghost
                 _metaData.SetEntityName(ghost, session.Name);
 */
             // Orion-Start
-            if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
-            {
-                if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                    _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
-                else
-                    _metaData.SetEntityName(ghost, session.Name);
-            }
+            if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
+                _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
+            else if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var ghostSession))
+                _metaData.SetEntityName(ghost, ghostSession.Name);
             // Orion-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
