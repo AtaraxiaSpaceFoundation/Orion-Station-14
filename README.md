@@ -44,13 +44,16 @@
 
 ## Политика Orion
 
-> [!WARNING]  
-> **Orion не имеет никаких официальных игровых серверов**.
-
 Любой сервер, заявляющий, что он является официальным представителем этого билда — не одобрен этой организацией.
 Однако мы хотели бы пригласить всех желающих создать сервер на базе билда Orion.
 
+</div>
+
+> [!WARNING]  
+> **Orion не имеет официальных игровых серверов**.
+
 ---
+
 <div align="center">
 
 ## Документация
@@ -75,12 +78,13 @@
 
 </div>
 
-Следуйте гайду от [Джубами](https://docs.goobstation.com/en/general-development/setup.html) по настройке рабочей среды, но учитывайте, что репозитории отличаются друг от друга и некоторые вещи могут отличаться.
-Ниже перечислены скрипты и методы облегчающие работу с билдом.
+</div>
 
 > [!TIP]
 > Используйте [IDE Rider](https://github.com/designinlife/jetbrains), он неимоверно облегчит вам жизнь, если вы собираетесь влиться в разработку (код), или билдить сборку, больше пары раз.
 
+Следуйте гайду от [Джубами](https://docs.goobstation.com/en/general-development/setup.html) по настройке рабочей среды, но учитывайте, что репозитории отличаются друг от друга и некоторые вещи могут отличаться.
+Ниже перечислены скрипты и методы облегчающие работу с билдом.
 
 ### Windows
 
@@ -123,6 +127,8 @@ Scripts/bat/runQuickAll.bat
 All code in this codebase is released under the AGPL-3.0-or-later license. Each file includes REUSE Specification headers or separate .license files that specify a dual license option. This dual licensing is provided to simplify the process for projects that are not using AGPL, allowing them to adopt the relevant portions of the code under an alternative license. You can review the complete texts of these licenses in the LICENSES/ directory.
 
 Most media assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and the copyright in the metadata file. [Example](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
+
+</div>
 
 > [!NOTE]
 > Some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
