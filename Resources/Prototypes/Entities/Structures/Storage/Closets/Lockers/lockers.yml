@@ -314,8 +314,8 @@
   components:
   - type: Appearance
   - type: EntityStorageVisuals
-    stateBaseClosed: chemical # Europa-Edit
-    stateDoorOpen: chemical_secure_open # Europa-Edit
+    stateBaseClosed: chemical # Orion-Edit
+    stateDoorOpen: chemical_secure_open # Orion-Edit
     stateDoorClosed: chemical_door
   - type: AccessReader
     access: [ [ "Chemistry" ] ]

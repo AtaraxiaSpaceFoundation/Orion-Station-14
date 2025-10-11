@@ -180,7 +180,7 @@
   - type: FaxMachine
     name: "Central Command"
     notifyAdmins: true
-    receiveAllStationGoals: true # Europa
+    receiveAllStationGoals: true # Orion
 
 - type: entity
   parent: FaxMachineBase
@@ -209,6 +209,6 @@
     - type: FaxMachine
       name: "Captain's Office"
       receiveNukeCodes: true
-      receiveStationGoal: true # Europa
+      receiveStationGoal: true # Orion
     - type: StealTarget
       stealGroup: FaxMachineCaptain

@@ -123,7 +123,7 @@
     sprite: Structures/Windows/plastitanium_window.rsi
     state: full
   - type: IconSmooth
-    key: walls # Europa-Edit
+    key: walls # Orion-Edit
     base: ptwindow
   - type: Airtight
   - type: Fixtures
@@ -207,7 +207,7 @@
     state: state0
   - type: IconSmooth
     mode: Diagonal
-    key: walls # Europa-Edit
+    key: walls # Orion-Edit
     base: state
   - type: Fixtures
     fixtures:

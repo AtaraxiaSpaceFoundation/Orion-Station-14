@@ -18,7 +18,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared._Europa.CustomGhost;
+using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Preferences;
 using Robust.Client;
@@ -71,7 +71,7 @@ namespace Content.Client.Lobby
 
         public void SelectCharacter(int slot)
         {
-            Preferences = Preferences.WithSlot(slot); // Europa-Edit
+            Preferences = Preferences.WithSlot(slot); // Orion-Edit
             var msg = new MsgSelectCharacter
             {
                 SelectedCharacterIndex = slot
@@ -84,7 +84,7 @@ namespace Content.Client.Lobby
             var collection = IoCManager.Instance!;
             profile.EnsureValid(_playerManager.LocalSession!, collection);
             var characters = new Dictionary<int, ICharacterProfile>(Preferences.Characters) {[slot] = profile};
-            Preferences = Preferences.WithCharacters(characters); // Europa-Edit
+            Preferences = Preferences.WithCharacters(characters); // Orion-Edit
             var msg = new MsgUpdateCharacter
             {
                 Profile = profile,
@@ -107,7 +107,7 @@ namespace Content.Client.Lobby
 
             var l = lowest.Value;
             characters.Add(l, profile);
-            Preferences = Preferences.WithCharacters(characters); // Europa-Edit
+            Preferences = Preferences.WithCharacters(characters); // Orion-Edit
 
             UpdateCharacter(profile, l);
         }
@@ -120,7 +120,7 @@ namespace Content.Client.Lobby
         public void DeleteCharacter(int slot)
         {
             var characters = Preferences.Characters.Where(p => p.Key != slot);
-            Preferences = Preferences.WithCharacters(characters); // Europa-Edit
+            Preferences = Preferences.WithCharacters(characters); // Orion-Edit
             var msg = new MsgDeleteCharacter
             {
                 Slot = slot
@@ -130,7 +130,7 @@ namespace Content.Client.Lobby
 
         public void UpdateConstructionFavorites(List<ProtoId<ConstructionPrototype>> favorites)
         {
-            Preferences = Preferences.WithConstructionFavorites(favorites); // Europa-Edit
+            Preferences = Preferences.WithConstructionFavorites(favorites); // Orion-Edit
             var msg = new MsgUpdateConstructionFavorites
             {
                 Favorites = favorites
@@ -138,10 +138,10 @@ namespace Content.Client.Lobby
             _netManager.ClientSendMessage(msg);
         }
 
-        // Europa-Start
+        // Orion-Start
         public void SetCustomGhost(ProtoId<CustomGhostPrototype> ghostProto) =>
             Preferences = Preferences.WithCustomGhost(ghostProto);
-        // Europa-End
+        // Orion-End
 
         private void HandlePreferencesAndSettings(MsgPreferencesAndSettings message)
         {

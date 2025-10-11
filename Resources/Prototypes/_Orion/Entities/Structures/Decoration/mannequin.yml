@@ -1,0 +1,25 @@
+- type: entity
+  parent: Mannequin
+  id: MannequinMan
+  name: mannequin man
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Decoration/mannequin.rsi
+    state: mannequin
+    layers:
+    - map: [ "mannequin" ]
+      sprite: _Orion/Structures/Decoration/mannequin.rsi
+      state: mannequin
+
+- type: entity
+  parent: Mannequin
+  id: MannequinWoman
+  name: mannequin woman
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Decoration/mannequin.rsi
+    state: mannequin_woman
+    layers:
+    - map: [ "mannequin" ]
+      sprite: _Orion/Structures/Decoration/mannequin.rsi
+      state: mannequin_woman

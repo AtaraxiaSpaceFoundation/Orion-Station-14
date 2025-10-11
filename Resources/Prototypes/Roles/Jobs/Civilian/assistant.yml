@@ -87,7 +87,7 @@
   icon: "JobIconPassenger"
   supervisors: job-supervisors-everyone
   goobcoins: 0 #Goob content
-#  special: # Europa-Remove
+#  special: # Orion-Remove
 #  - !type:PlaytimeDegrade # MisandryBox - tider main syndrome
 #    since: 600
 #    until: 24600

@@ -401,7 +401,7 @@
       - DevilMindRole
       startingGear: DevilStartingGear
       components:
-      - type: GlobalAntagonist # Europa
+      - type: GlobalAntagonist # Orion
         antagonistPrototype: globalAntagonistDevil
   - type: Tag
     tags:

@@ -54,7 +54,7 @@ public sealed partial class CCVars
     ///     The preset for the game to fall back to if the selected preset could not be used, and fallback is enabled.
     /// </summary>
     public static readonly CVarDef<string>
-        GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "SecretPlusLow,Extended", CVar.ARCHIVE); // Europa-Edit
+        GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "SecretPlusLow,Extended", CVar.ARCHIVE); // Orion-Edit
 
     /// <summary>
     ///     Controls if people can win the game in Suspicion or Deathmatch.
@@ -72,7 +72,7 @@ public sealed partial class CCVars
     ///     Controls the maximum number of character slots a player is allowed to have.
     /// </summary>
     public static readonly CVarDef<int>
-        GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 15, CVar.ARCHIVE | CVar.SERVERONLY); // Europa-Edit | 30 > 15
+        GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 15, CVar.ARCHIVE | CVar.SERVERONLY); // Orion-Edit | 30 > 15
 
     /// <summary>
     ///     Controls the game map prototype to load. SS14 stores these prototypes in Prototypes/Maps.

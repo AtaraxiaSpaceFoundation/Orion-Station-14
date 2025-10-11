@@ -136,7 +136,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
-using Content.Shared._Europa.CustomGhost;
+using Content.Shared._Orion.CustomGhost;
 using Content.Shared._RMC14.LinkAccount;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
@@ -279,7 +279,7 @@ namespace Content.Server.Database
                 UserId = userId.UserId,
                 SelectedCharacterSlot = 0,
                 AdminOOCColor = Color.Red.ToHex(),
-                GhostId = "default", // Europa
+                GhostId = "default", // Orion
                 ConstructionFavorites = [],
             };
 
@@ -315,7 +315,7 @@ namespace Content.Server.Database
 
         }
 
-        // Europa-Start
+        // Orion-Start
         public async Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> proto)
         {
             await using var db = await GetDb();
@@ -327,7 +327,7 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
         }
-        // Europa-End
+        // Orion-End
 
         public async Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {

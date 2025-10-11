@@ -52,7 +52,7 @@
         color: Green
         sound: /Audio/_Shitmed/Misc/abductor.ogg
       components:
-      - type: GlobalAntagonist # Europa
+      - type: GlobalAntagonist # Orion
         antagonistPrototype: globalAntagonistAbductor
       - type: Abductor
       - type: ActionGrant
@@ -154,7 +154,7 @@
         color: Green
         sound: /Audio/_Shitmed/Misc/abductor.ogg
       components:
-      - type: GlobalAntagonist # Europa
+      - type: GlobalAntagonist # Orion
         antagonistPrototype: globalAntagonistAbductor
       - type: Abductor
       - type: ActionGrant

@@ -1,0 +1,15 @@
+- type: entity
+  parent: [ BaseMajorContraband, WeaponSubMachineGunC20r ]
+  id: WeaponSubMachineGunInteQSMG
+  name: InteQ submachine gun
+  suffix: SubmachineGun
+  description: Firearm that is often used by the InteQ. Uses .35 auto ammo. It is painted in the InteQ brand color.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true

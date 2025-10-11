@@ -1,5 +1,5 @@
 - type: entity
-  parent: ResinDoor # Europa-Edit
+  parent: ResinDoor # Orion-Edit
   id: DoorXenoResinThick
   name: thick resin door
   description: A thick resin door, which is more durable.

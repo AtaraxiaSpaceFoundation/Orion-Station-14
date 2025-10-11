@@ -27,16 +27,16 @@
   maleFirstNames: NamesVulpakinMale
   femaleFirstNames: NamesVulpakinFemale
   lastNames: NamesVulpakinLast
-  # Europa-Start
+  # Orion-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Vulpkanin.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Vulpkanin.xml"
   pros:
   - Наносят урон тупым и режущим уроном.
   special:
   - Видят мир в красных и зеленых цветах.
   cons:
   - Получают на 15% больше теплового урона.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobVulpkaninSprites

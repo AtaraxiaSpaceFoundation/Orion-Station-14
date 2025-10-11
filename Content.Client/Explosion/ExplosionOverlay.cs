@@ -100,7 +100,7 @@ public sealed class ExplosionOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> UnshadedShader = "unshaded";
 
-//    [Dependency] private readonly IRobustRandom _robustRandom = default!; // Europa-Remove
+//    [Dependency] private readonly IRobustRandom _robustRandom = default!; // Orion-Remove
 
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
@@ -111,22 +111,22 @@ public sealed class ExplosionOverlay : Overlay
 
     private ShaderInstance _shader;
 
-    // Europa-Start
+    // Orion-Start
     private const int FireStates = 3;
-    private const string FireRsiPath = "/Textures/_Europa/Effects/tile_fire_explode.rsi";
+    private const string FireRsiPath = "/Textures/_Orion/Effects/tile_fire_explode.rsi";
     private readonly float[] _fireTimer = new float[FireStates];
     private readonly float[][] _fireFrameDelays = new float[FireStates][];
     private readonly int[] _fireFrameCounter = new int[FireStates];
     private readonly Texture[][] _fireFrames = new Texture[FireStates][];
-    // Europa-End
+    // Orion-End
 
-    public ExplosionOverlay(SharedAppearanceSystem appearanceSystem, IResourceCache resourceCache) // Europa-Edit
+    public ExplosionOverlay(SharedAppearanceSystem appearanceSystem, IResourceCache resourceCache) // Orion-Edit
     {
         IoCManager.InjectDependencies(this);
         _shader = _proto.Index(UnshadedShader).Instance();
         _transformSystem = _entMan.System<SharedTransformSystem>();
         _appearance = appearanceSystem;
-        // Europa-Start
+        // Orion-Start
         var fire = resourceCache.GetResource<RSIResource>(FireRsiPath).RSI;
 
         for (var i = 0; i < FireStates; i++)
@@ -138,7 +138,7 @@ public sealed class ExplosionOverlay : Overlay
             _fireFrameDelays[i] = state.GetDelays();
             _fireFrameCounter[i] = 0;
         }
-        // Europa-End
+        // Orion-End
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -198,7 +198,7 @@ public sealed class ExplosionOverlay : Overlay
         DrawTiles(drawHandle, gridBounds, index, visuals.SpaceTiles, visuals, visuals.SpaceTileSize, textures);
     }
 
-    // Europa-Start
+    // Orion-Start
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
@@ -218,7 +218,7 @@ public sealed class ExplosionOverlay : Overlay
             _fireFrameCounter[i] = (frameCount + 1) % _fireFrames[i].Length;
         }
     }
-    // Europa-End
+    // Orion-End
 
     private void DrawTiles(
         DrawingHandleWorld drawHandle,
@@ -234,8 +234,8 @@ public sealed class ExplosionOverlay : Overlay
             if (!tileSets.TryGetValue(j, out var tiles))
                 continue;
 
-//            var frameIndex = (int) Math.Min(visuals.Intensity[j] / textures.IntensityPerState, textures.FireFrames.Count - 1); // Europa-Remove
-//            var frames = textures.FireFrames[frameIndex]; // Europa-Remove
+//            var frameIndex = (int) Math.Min(visuals.Intensity[j] / textures.IntensityPerState, textures.FireFrames.Count - 1); // Orion-Remove
+//            var frames = textures.FireFrames[frameIndex]; // Orion-Remove
 
             foreach (var tile in tiles)
             {
@@ -244,10 +244,10 @@ public sealed class ExplosionOverlay : Overlay
                 if (!gridBounds.Contains(centre))
                     continue;
 
-                // Europa-Start
+                // Orion-Start
                 var fireState = (int) Math.Min(visuals.Intensity[j] / textures.IntensityPerState, textures.FireFrames.Count - 1);
                 var texture = _fireFrames[fireState][_fireFrameCounter[fireState]];
-                // Europa-End
+                // Orion-End
                 drawHandle.DrawTextureRect(texture, Box2.CenteredAround(centre, new Vector2(tileSize, tileSize)), textures.FireColor);
             }
         }

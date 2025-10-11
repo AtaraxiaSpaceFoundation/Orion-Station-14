@@ -27,9 +27,9 @@
 - type: lavalandRuinPool
   id: Lavaland
   gridRuins:
-    # Europa-Start
+    # Orion-Start
     InteQSizo: 1
-    # Europa-End
+    # Orion-End
     SyndicateBase: 1
     HierophantArena: 1
     RougeAI: 1
@@ -41,7 +41,7 @@
     LavaLake: 3
     Graveyard: 1
     SeedVault: 2
-    Hermit: 2 # Europa-Edit | 5 > 2
+    Hermit: 2 # Orion-Edit | 5 > 2
     WaffleCo: 2
     ArrivalsBack: 1
     ArrivalsFront: 1

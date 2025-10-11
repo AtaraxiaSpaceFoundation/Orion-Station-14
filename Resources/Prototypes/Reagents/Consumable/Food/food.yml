@@ -104,7 +104,7 @@
           reagent: Nutriment
           min: 0.1
         factor: 1
-      - !type:GenericStatusEffect # Europa
+      - !type:GenericStatusEffect # Orion
         key: CorticalBorerProtection
         type: Add
         time: 3 # May be too much, needs testing

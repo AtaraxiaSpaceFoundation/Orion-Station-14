@@ -50,7 +50,7 @@
   id: StandardNanotrasenStation
   parent:
     - BaseStation
-    - BaseStationGoal # Europa
+    - BaseStationGoal # Orion
     - BaseStationNews
     - BaseStationCargo
     - BaseStationJobsSpawning

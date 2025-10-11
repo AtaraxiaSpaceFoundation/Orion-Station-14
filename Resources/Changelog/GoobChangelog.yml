@@ -744,7 +744,7 @@ Entries:
 - author: terezi-station
   changes:
     - type: Add
-      message: Readded Atlas, Cluster, Europa, Saltern, and Origin
+      message: Readded Atlas, Cluster, Orion, Saltern, and Origin
   id: 96
   time: '2024-08-27T00:58:50.0000000+00:00'
 - author: yglop
@@ -4054,7 +4054,7 @@ Entries:
         Ashen passage now deals heat damage to the user on activation. Ashen
         path heretics receive less damage from this, the higher their path stage
         is, the lower the damage will be. Flesh stalkers and raw prophets will
-        not take damage when jaunting 
+        not take damage when jaunting
   id: 455
   time: '2025-01-11T14:09:57.0000000+00:00'
 - author: Piras314
@@ -4080,7 +4080,7 @@ Entries:
     - type: Tweak
       message: >-
         Lethargic sting doesn't inject mute toxin but slowly drains victim's
-        stamina. 
+        stamina.
     - type: Tweak
       message: Toggling of ling equipment doesn't cost any chemicals anymore.
   id: 457
@@ -6841,7 +6841,7 @@ Entries:
     - type: Tweak
       message: >-
         Alert icons for separate (OG) layout now start from the top right of
-        your screen instead of the middle right, just like in MRP. 
+        your screen instead of the middle right, just like in MRP.
     - type: Tweak
       message: >-
         Ore redemption/processing machines now display if you will obtain points
@@ -7216,7 +7216,7 @@ Entries:
     - type: Add
       message: >-
         The firefighter backpack and attached nozzle can now be found in atmos
-        lockers or ordered through cargo. 
+        lockers or ordered through cargo.
     - type: Tweak
       message: 'RPD crates can now be ordered through cargo. '
   id: 841
@@ -7564,7 +7564,7 @@ Entries:
     - type: Add
       message: >-
         Added the Holo-Cigar, a new syndicate uplink item, that turns you into
-        Big Boss. It allows you to dual wield any firearms effectively 
+        Big Boss. It allows you to dual wield any firearms effectively
   id: 881
   time: '2025-04-16T08:44:31.0000000+00:00'
 - author: Aviu
@@ -7950,7 +7950,7 @@ Entries:
       message: >-
         Radiation now uses 2D propagation system, standing on top of or holding
         radiation sources in your hand is extremely ill advised. doubly more so
-        than before. 
+        than before.
     - type: Tweak
       message: >-
         Radiation propagation now takes into account distance traveled through
@@ -8166,7 +8166,7 @@ Entries:
     - type: Add
       message: >-
         Moths move slightly slower but can dash with their wings with 65%
-        chance. 
+        chance.
     - type: Tweak
       message: Voxes now do not rot, but you can't clone them.
     - type: Tweak
@@ -9299,7 +9299,7 @@ Entries:
         Changed the colors of the body doll! Now the main color when your part
         is about to get lopped off is pure red. It will be gray when you have no
         parts, and will have the old crit/disabled reddish color when its
-        bleeding. 
+        bleeding.
     - type: Tweak
       message: >-
         The health analyzer now displays what parts are bleeding, and shows it
@@ -9690,7 +9690,7 @@ Entries:
       message: >-
         Added experimental law boards. When inserted in ai upload console, gives
         ionstormed laws to the station AI, and after 2 minutes turns laws back
-        to normal giving research points to RnD. 
+        to normal giving research points to RnD.
   id: 1084
   time: '2025-05-19T07:58:24.0000000+00:00'
 - author: Armok
@@ -10616,7 +10616,7 @@ Entries:
     - type: Fix
       message: >-
         Regular security winter boots no longer have jackboots bonuses, it also
-        was an oversight. 
+        was an oversight.
     - type: Fix
       message: >-
         CMO webbing comes with a bone manipulator instead of bone gel, it was
@@ -11004,7 +11004,7 @@ Entries:
     - type: Tweak
       message: >-
         Reflective vest can no longer be abused to completely circumvent AI
-        turrets. 
+        turrets.
   id: 1213
   time: '2025-06-15T05:40:36.0000000+00:00'
 - author: OnsenCapy
@@ -11244,7 +11244,7 @@ Entries:
     - type: Add
       message: >-
         Chitinous armour plays an animation and unique sound when being
-        equipped. 
+        equipped.
     - type: Tweak
       message: >-
         Chitinous armour has had its physical protection reduced (65% -> 45%)
@@ -11635,7 +11635,7 @@ Entries:
         Fixed a bunch of bugs with wound logic, including but not limited to
         traumas adding wounds with damage that would be unhealable, wounds going
         over the cap and resulting in permanent pain as you would be unable to
-        reset it, 
+        reset it,
     - type: Fix
       message: >-
         Bone break alerts should go away now when removing the parts (you'll
@@ -11796,7 +11796,7 @@ Entries:
     - type: Add
       message: >-
         2 new signallers: voice signaller and proximity signaller that do
-        exactly what its name implies. 
+        exactly what its name implies.
   id: 1293
   time: '2025-07-01T19:04:38.0000000+00:00'
 - author: wachte1
@@ -13634,7 +13634,7 @@ Entries:
     - type: Add
       message: >-
         You can now create freedom cheese blocks and cheese slices (based on
-        American processed cheese). 
+        American processed cheese).
   id: 1515
   time: '2025-08-18T04:04:07.0000000+00:00'
 - author: CometVoid
@@ -13790,7 +13790,7 @@ Entries:
     - type: Fix
       message: >-
         Vehicles now move at 1.4 of their original values. This is due to
-        spritning being added making them semi obsolete. Beware of clown cars. 
+        spritning being added making them semi obsolete. Beware of clown cars.
   id: 1534
   time: '2025-08-30T03:23:43.0000000+00:00'
 - author: RatherUncreativeName
@@ -13874,12 +13874,12 @@ Entries:
     - type: Tweak
       message: >-
         Replaced tirimol from epipens with dexalin, NO MORE COMBAT EPIPEN
-        INJECTIONS, REJOICE! 
+        INJECTIONS, REJOICE!
     - type: Tweak
       message: >-
         Nerfed autoinjector brute cartridge heal from 98 dmg healed max to
         ~60-70 and from ~28 healing/dmg type to ~21 healing/dmg type and nerfed
-        burn cartridge by a similar amount 
+        burn cartridge by a similar amount
   id: 1545
   time: '2025-08-30T03:51:52.0000000+00:00'
 - author: ImWeax
@@ -14173,7 +14173,7 @@ Entries:
       message: >-
         Siphon entropy now only takes 1 second instead of 5. If you still can't
         reach tier 2 after this change, I don't know what to tell you. Like
-        honestly. 
+        honestly.
     - type: Tweak
       message: >-
         Vacuous spire now takes gas canisters instead of portable air scrubbers,
@@ -14279,7 +14279,7 @@ Entries:
     - type: Add
       message: >-
         You can now buy a whole lot of more stuff from salvage vend, including
-        WAY more lategame gear, like a clarke. :) 
+        WAY more lategame gear, like a clarke. :)
     - type: Add
       message: 'Made Combat gloves renewable. '
   id: 1588
@@ -14289,7 +14289,7 @@ Entries:
     - type: Tweak
       message: >-
         Stunbaton wideswing damage buffed to not be entirely useless,
-        spriteclicking is still superior. 
+        spriteclicking is still superior.
     - type: Tweak
       message: 'GreatShield Mace given minor staminadamage buff. '
   id: 1589
@@ -14701,7 +14701,7 @@ Entries:
     - type: Add
       message: >-
         Added a knife into BSO's backpack on spawn and removed it from the
-        boots 
+        boots
   id: 1638
   time: '2025-09-11T18:51:33.0000000+00:00'
 - author: deltanedas

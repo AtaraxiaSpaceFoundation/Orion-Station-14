@@ -39,10 +39,10 @@
 - type: npcFaction
   id: Dragon
   hostile:
-    # Europa-Start-Factions
+    # Orion-Start-Factions
     - InteQ
     - InteQHostile
-    # Europa-End-Factions
+    # Orion-End-Factions
     - NanoTrasen
     - Syndicate
     - Xeno
@@ -60,9 +60,9 @@
 - type: npcFaction
   id: NanoTrasen
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - SimpleHostile
   - Syndicate
   - Xeno
@@ -88,9 +88,9 @@
 - type: npcFaction
   id: PetsNT
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - Mouse
   - Balloon # Goob Balloon Edit - Pets can join the fight against the balloons
   - SimpleHostile
@@ -104,10 +104,10 @@
 - type: npcFaction
   id: SimpleHostile
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - Syndicate
   - Passive
@@ -131,9 +131,9 @@
 - type: npcFaction
   id: Syndicate
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - SimpleHostile
   - Xeno
@@ -152,10 +152,10 @@
 - type: npcFaction
   id: Xeno
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - Syndicate
   - Passive
@@ -175,10 +175,10 @@
 - type: npcFaction
   id: Zombie
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - SimpleNeutral
   - SimpleHostile
@@ -199,10 +199,10 @@
 - type: npcFaction
   id: Revolutionary
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - Zombie
   - SimpleHostile
@@ -217,10 +217,10 @@
 - type: npcFaction
   id: AllHostile
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - Dragon
   - Mouse
@@ -240,10 +240,10 @@
   - PirateFaction # goob - pirates
 
 # Balloons Factions Edit:
-- type: npcFaction  
+- type: npcFaction
   id: Balloon
   # Balloons can't attack
-  
+
 - type: npcFaction
   id: Monkey
   hostile:
@@ -253,10 +253,10 @@
   id: Xenoborg
   hostile:
   # they have brains
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - Syndicate
   - Zombie
@@ -267,7 +267,7 @@
   - PirateFaction # goob - pirates
   - Xeno # rivalry
   # cause they are hostile to them
-  - SimpleHostile 
+  - SimpleHostile
   - AllHostile
   - Blob # Goobstation - Blob
   - Shadowling # Einstein Engines - Shadowlings

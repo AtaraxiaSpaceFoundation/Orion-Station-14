@@ -599,7 +599,7 @@
     slots:
     - Hair
     - Snout
-#    - HeadTop # Europa-Remove
+#    - HeadTop # Orion-Remove
     - HeadSide
     hideOnToggle: true
   - type: Armor
@@ -857,7 +857,7 @@
     accent: BatAccent
 
 - type: entity
-  parent: ClothingMaskPullableBase # Europa-Edit
+  parent: ClothingMaskPullableBase # Orion-Edit
   id: ClothingMaskNeckGaiter
   name: neck gaiter
   description: Stylish neck gaiter for your neck, can protect from the cosmic wind?...
@@ -872,7 +872,7 @@
     tags:
     - WhitelistChameleon
     - IPCMaskWearable # EE - IPCs
-  - type: BreathMask # Europa
+  - type: BreathMask # Orion
 
 - type: entity
   parent: ClothingMaskNeckGaiter

@@ -89,7 +89,7 @@
   levels:
     green:
       announcement: alert-level-green-announcement
-      sound: /Audio/_Europa/Misc/greenalert.ogg # Europa
+      sound: /Audio/_Orion/Misc/greenalert.ogg # Orion
       color: Green
       emergencyLightColor: LawnGreen
       shuttleTime: 600
@@ -114,18 +114,18 @@
       emergencyLightColor: Goldenrod
       forceEnableEmergencyLights: true
       shuttleTime: 600
-    # Europa-Start
+    # Orion-Start
     amber:
       announcement: alert-level-amber-announcement
-      sound: /Audio/_Europa/Misc/amberalert.ogg
+      sound: /Audio/_Orion/Misc/amberalert.ogg
       color: Orange
       emergencyLightColor: Orange
       forceEnableEmergencyLights: true
       shuttleTime: 600
-    # Europa-End
+    # Orion-End
     red:
       announcement: alert-level-red-announcement
-      sound: /Audio/_Europa/Misc/redalert.ogg # Europa-Edit
+      sound: /Audio/_Orion/Misc/redalert.ogg # Orion-Edit
       color: Red
       emergencyLightColor: Red
       forceEnableEmergencyLights: true
@@ -133,7 +133,7 @@
     gamma:
       announcement: alert-level-gamma-announcement
       selectable: false
-      sound: /Audio/_Europa/Misc/gammaalert.ogg # Europa-Edit
+      sound: /Audio/_Orion/Misc/gammaalert.ogg # Orion-Edit
       disableSelection: true
       color: PaleVioletRed
       emergencyLightColor: PaleVioletRed

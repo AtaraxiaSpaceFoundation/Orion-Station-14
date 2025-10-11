@@ -117,7 +117,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         if (Gui?.TargetWindow is not { } window)
             return;
 
-        window.UpdateWarps(msg.Players, msg.Places, msg.Antagonists); // Europa-Edit
+        window.UpdateWarps(msg.Players, msg.Places, msg.Antagonists); // Orion-Edit
         window.Populate();
     }
 
@@ -150,7 +150,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.GhostBarWindow.SpawnButtonPressed += GhostBarSpawnPressed; // Goobstation - Ghost Bar
         Gui.TargetWindow.WarpClicked += OnWarpClicked;
         Gui.TargetWindow.OnGhostnadoClicked += OnGhostnadoClicked;
-        Gui.ReturnToRoundPressed += ReturnToRound; // Europa
+        Gui.ReturnToRoundPressed += ReturnToRound; // Orion
 
         UpdateGui();
     }
@@ -166,7 +166,7 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         Gui.GhostBarPressed -= GhostBarPressed; // Goobstation - Ghost Bar
         Gui.GhostBarWindow.SpawnButtonPressed -= GhostBarSpawnPressed; // Goobstation - Ghost Bar
         Gui.TargetWindow.WarpClicked -= OnWarpClicked;
-        Gui.ReturnToRoundPressed -= ReturnToRound; // Europa
+        Gui.ReturnToRoundPressed -= ReturnToRound; // Orion
 
         Gui.Hide();
     }
@@ -176,12 +176,12 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         _system?.ReturnToBody();
     }
 
-    // Europa-Start
+    // Orion-Start
     private void ReturnToRound()
     {
         _system?.ReturnToRound();
     }
-    // Europa-End
+    // Orion-End
 
     private void RequestWarps()
     {

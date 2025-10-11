@@ -80,9 +80,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <TextureButton Name="SpeciesInfoButton" Scale="0.3 0.3"
                                                    VerticalAlignment="Center"
                                                    ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"
-                                                   Visible="False"/>                                        <!-- Europa-Edit | True > False -->
-                                    <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" Visible="False"/>    <!-- Europa | True > False -->
-                                    <Button Name="NewSpeciesButton" HorizontalAlignment="Right" ToggleMode="True" />    <!-- Europa -->
+                                                   Visible="False"/>                                        <!-- Orion-Edit | True > False -->
+                                    <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" Visible="False"/>    <!-- Orion | True > False -->
+                                    <Button Name="NewSpeciesButton" HorizontalAlignment="Right" ToggleMode="True" />    <!-- Orion -->
                                 </BoxContainer>
                                 <!-- Age -->
                                 <BoxContainer HorizontalExpand="True">

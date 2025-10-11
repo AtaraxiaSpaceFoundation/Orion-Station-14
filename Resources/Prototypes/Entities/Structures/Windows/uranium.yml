@@ -156,7 +156,7 @@
     - Diagonal
   - type: IconSmooth
     mode: Diagonal
-    key: walls # Europa-Edit
+    key: walls # Orion-Edit
     base: state
   - type: Icon
     sprite: Structures/Windows/uranium_window_diagonal.rsi

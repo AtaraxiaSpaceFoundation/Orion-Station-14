@@ -1,0 +1,37 @@
+- type: entity
+  parent: RubberStampWarden
+  id: RubberStampInteQ
+  name: InteQ rubber stamp
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-InteQ
+    stampState: "paper_stamp-inteq"
+  - type: Sprite
+    sprite: _Orion/Objects/Misc/inteq_bur.rsi
+    state: stamp-inteq
+
+- type: entity
+  parent: BoxFolderBase
+  id: BoxFolderSecretInteQ
+  suffix: InteQ
+  name: secret document folder
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Misc/inteq_bur.rsi
+    layers:
+    - state: secret_folder
+
+- type: entity
+  parent: BasePaper
+  id: InteQSecretDocument
+  suffix: InteQ
+  name: secret documents
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Misc/inteq_bur.rsi
+    layers:
+    - state: secret_docs
+  - type: Item
+    size: Small
+  - type: StaticPrice # Literally Secret Docs
+    price: 10000

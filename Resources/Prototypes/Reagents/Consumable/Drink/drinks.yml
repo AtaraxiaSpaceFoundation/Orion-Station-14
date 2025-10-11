@@ -65,7 +65,7 @@
         type: Remove
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.02 # Europa-Edit | 0.05 > 0.02
+        amount: 0.02 # Orion-Edit | 0.05 > 0.02
       - !type:Jitter # Goobstation: Coffee causes jitteriness and alters speed
         conditions:
         - !type:ReagentThreshold
@@ -125,7 +125,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.2 # Europa-Edit | 0.05 > 0.2
+        amount: 0.2 # Orion-Edit | 0.05 > 0.2
 
 - type: reagent
   id: Cream
@@ -192,11 +192,11 @@
         effectProto: StatusEffectDrowsiness
         time: 2
         type: Remove
-      # Europa-Start
+      # Orion-Start
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.01
-      # Europa-End
+      # Orion-End
 
 - type: reagent
   id: GreenTea
@@ -212,7 +212,7 @@
   metamorphicMaxFillLevels: 4
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
-  # Europa-Start
+  # Orion-Start
   metabolisms:
     Drink:
       effects:
@@ -221,7 +221,7 @@
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.02
-  # Europa-End
+  # Orion-End
 
 - type: reagent
   id: Grenadine
@@ -263,11 +263,11 @@
         effectProto: StatusEffectDrowsiness
         time: 2
         type: Remove
-      # Europa-Start
+      # Orion-Start
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.01
-      # Europa-End
+      # Orion-End
 
 - type: reagent
   id: IcedGreenTea
@@ -305,7 +305,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.01 # Europa-Edit | 0.05 > 0.01
+        amount: 0.01 # Orion-Edit | 0.05 > 0.01
 
 - type: reagent
   id: JuiceBerryPoison
@@ -509,11 +509,11 @@
         effectProto: StatusEffectDrowsiness
         time: 2
         type: Remove
-      # Europa-Start
+      # Orion-Start
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.01
-      # Europa-End
+      # Orion-End
 
 - type: reagent
   id: Tea
@@ -531,7 +531,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.02 # Europa-Edit | 0.05 > 0.02
+        amount: 0.02 # Orion-Edit | 0.05 > 0.02
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/teaglass.rsi
     state: icon_empty
@@ -563,10 +563,10 @@
   evaporationSpeed: 0.3
   absorbent: true
   physicalDesc: reagent-physical-desc-translucent
-  # Europa-Start
+  # Orion-Start
   slipData:
     requiredSlipSpeed: 4.0
-  # Europa-End
+  # Orion-End
   flavor: water
   color: "#75b1f0"
   recognizable: true
@@ -661,7 +661,7 @@
       effects:
       - !type:SatiateThirst
         factor: 4
-#      - !type:AdjustReagent # Europa-Remove
+#      - !type:AdjustReagent # Orion-Remove
 #        reagent: Theobromine
 #        amount: 0.05
 
@@ -720,7 +720,7 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
   fizziness: 0.3
-  # Europa-Start
+  # Orion-Start
   metabolisms:
     Drink:
       effects:
@@ -729,7 +729,7 @@
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.01
-  # Europa-End
+  # Orion-End
 
 - type: reagent
   id: Mopwata

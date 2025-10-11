@@ -876,9 +876,9 @@
     # Einstein Engines Packs
     - SyringeCase
     dynamicPacks:
-    # Europa-Start
+    # Orion-Start
     - BodyBagsDynamic
-    # Europa-End
+    # Orion-End
     - Chemistry
     # Goobstation Packs
     - Surgery
@@ -897,7 +897,7 @@
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs
     emagStaticPacks:
-    - BodyBagsSyndicateStatic # Europa
+    - BodyBagsSyndicateStatic # Orion
     - SyndicateCatridgesStatic
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard

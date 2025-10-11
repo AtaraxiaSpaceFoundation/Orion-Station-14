@@ -141,7 +141,7 @@ public sealed partial class FaxMachineComponent : Component
     [DataField]
     public bool ReceiveNukeCodes { get; set; } = false;
 
-    // Europa-Start
+    // Orion-Start
     /// <summary>
     /// Should that fax receive station goal info
     /// </summary>
@@ -153,7 +153,7 @@ public sealed partial class FaxMachineComponent : Component
     /// </summary>
     [DataField]
     public bool ReceiveAllStationGoals { get; set; }
-    // Europa-End
+    // Orion-End
 
     /// <summary>
     /// Sound to play when fax printing new message

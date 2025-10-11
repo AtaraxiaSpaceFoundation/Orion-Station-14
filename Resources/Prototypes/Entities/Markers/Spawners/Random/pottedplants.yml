@@ -18,10 +18,10 @@
   - type: RandomSpawner
     offset: 0
     prototypes:
-      # Europa-Start
+      # Orion-Start
       - PottedPlantPlasmaPlant
       - Hedge
-      # Europa-End
+      # Orion-End
       - PottedPlant0
       - PottedPlant1
       - PottedPlant2

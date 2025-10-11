@@ -91,7 +91,7 @@ public sealed class CatEmoteSpamCountermeasureSystem : EntitySystem
 
     private void OnEmoteEvent(Entity<SpeechComponent> ent, ref EmoteEvent args)
     {
-        if (args.Emote.Category is EmoteCategory.Vocal && args.Voluntary) // Europa-Edit | Removed Fart category
+        if (args.Emote.Category is EmoteCategory.Vocal && args.Voluntary) // Orion-Edit | Removed Fart category
             Add(ent.Owner);
     }
 

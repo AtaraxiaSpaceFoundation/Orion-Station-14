@@ -32,7 +32,7 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     [DataField("sensorTimeout"), ViewVariables(VVAccess.ReadWrite)]
     public float SensorTimeout = 10f;
 
-    // Europa-Start
+    // Orion-Start
     /// <summary>
     ///     Enable or disable alerts.
     /// </summary>
@@ -49,7 +49,7 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Sound to play when alert is triggered.
     /// </summary>
     [DataField]
-    public SoundSpecifier AlertSound = new SoundPathSpecifier("/Audio/_Europa/Machines/crew_monitoring_alert.ogg");
+    public SoundSpecifier AlertSound = new SoundPathSpecifier("/Audio/_Orion/Machines/crew_monitoring_alert.ogg");
 
     /// <summary>
     ///     Timestamp of the last played alert.
@@ -65,5 +65,5 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
 
     [DataField(serverOnly: true)]
     public float? NormalLightRadius { get; set; }
-    // Europa-End
+    // Orion-End
 }

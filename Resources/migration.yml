@@ -146,7 +146,7 @@
 # WallSolid: Window
 # Table: null
 
-# Europa-Start
+# Orion-Start
 InteQLaserShield: EnergyShieldInteQ
 DefaultStationBeaconInteQSizo37: DefaultStationBeaconInteQSizo73
 
@@ -209,7 +209,7 @@ ClothingNeckCloakPan: ClothingNeckCloakMoth
 VendingMachinePride: RandomVending
 
 DoorXenoResin: ResinDoor # Holy Goob
-# Europa-End
+# Orion-End
 
 # Goobstation - Submarine from DeltaV
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
@@ -952,7 +952,7 @@ WeaponSubMachineGunVectorRubber: null
 # 2025-02-11
 WallShuttleInterior: WallShuttle
 
-# 2025-02-18 | Europa-Edit
+# 2025-02-18 | Orion-Edit
 PosterContrabandLustyExomorph: PosterContrabandLustyXenomorph
 PosterContrabandBustyBackdoorExoBabes6: PosterContrabandBustyBackdoorXenoBabes6
 

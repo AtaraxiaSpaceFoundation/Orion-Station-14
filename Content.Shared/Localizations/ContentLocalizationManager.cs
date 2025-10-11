@@ -31,10 +31,10 @@ namespace Content.Shared.Localizations
 
         // If you want to change your codebase's language, do it here.
 
-        // Europa-Start
+        // Orion-Start
         private const string FallbackCulture = "en-US";
         private const string LocalizedCulture = "ru-RU";
-        // Europa-End
+        // Orion-End
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
@@ -47,19 +47,19 @@ namespace Content.Shared.Localizations
             @"mm"
         };
 
-        private string _culture = LocalizedCulture; // Europa
+        private string _culture = LocalizedCulture; // Orion
 
         public void Initialize()
         {
-            // Europa-Start
+            // Orion-Start
             var culture = new CultureInfo(_culture);
             var fallbackCulture = new CultureInfo(FallbackCulture);
 
-            _loc.LoadCulture(culture); // Not so Europa, but okay
+            _loc.LoadCulture(culture); // Not so Orion, but okay
             if (_culture != FallbackCulture)
                 _loc.LoadCulture(fallbackCulture);
             _loc.SetFallbackCluture(fallbackCulture);
-            // Europa-End
+            // Orion-End
 
             _loc.AddFunction(culture, "PRESSURE", FormatPressure);
             _loc.AddFunction(culture, "POWERWATTS", FormatPowerWatts);
@@ -73,7 +73,7 @@ namespace Content.Shared.Localizations
             _loc.AddFunction(culture, "NATURALPERCENT", FormatNaturalPercent);
             _loc.AddFunction(culture, "PLAYTIME", FormatPlaytime);
 
-            // Europa-Start
+            // Orion-Start
             _loc.AddFunction(fallbackCulture, "PRESSURE", FormatPressure);
             _loc.AddFunction(fallbackCulture, "POWERWATTS", FormatPowerWatts);
             _loc.AddFunction(fallbackCulture, "POWERJOULES", FormatPowerJoules);
@@ -85,7 +85,7 @@ namespace Content.Shared.Localizations
             _loc.AddFunction(fallbackCulture, "NATURALFIXED", FormatNaturalFixed);
             _loc.AddFunction(fallbackCulture, "NATURALPERCENT", FormatNaturalPercent);
             _loc.AddFunction(fallbackCulture, "PLAYTIME", FormatPlaytime);
-            // Europa-End
+            // Orion-End
 
             /*
              * The following language functions are specific to the english localization. When working on your own
@@ -116,7 +116,7 @@ namespace Content.Shared.Localizations
         {
             var number = ((LocValueNumber) args.Args[0]).Value * 100;
             var maxDecimals = (int)Math.Floor(((LocValueNumber) args.Args[1]).Value);
-            var formatter = (NumberFormatInfo)NumberFormatInfo.GetInstance(CultureInfo.GetCultureInfo(_culture)).Clone(); // Europa-Edit
+            var formatter = (NumberFormatInfo)NumberFormatInfo.GetInstance(CultureInfo.GetCultureInfo(_culture)).Clone(); // Orion-Edit
             formatter.NumberDecimalDigits = maxDecimals;
             return new LocValueString(string.Format(formatter, "{0:N}", number).TrimEnd('0').TrimEnd(char.Parse(formatter.NumberDecimalSeparator)) + "%");
         }
@@ -125,7 +125,7 @@ namespace Content.Shared.Localizations
         {
             var number = ((LocValueNumber) args.Args[0]).Value;
             var maxDecimals = (int)Math.Floor(((LocValueNumber) args.Args[1]).Value);
-            var formatter = (NumberFormatInfo)NumberFormatInfo.GetInstance(CultureInfo.GetCultureInfo(_culture)).Clone(); // Europa-Edit
+            var formatter = (NumberFormatInfo)NumberFormatInfo.GetInstance(CultureInfo.GetCultureInfo(_culture)).Clone(); // Orion-Edit
             formatter.NumberDecimalDigits = maxDecimals;
             return new LocValueString(string.Format(formatter, "{0:N}", number).TrimEnd('0').TrimEnd(char.Parse(formatter.NumberDecimalSeparator)));
         }

@@ -50,7 +50,7 @@
 # BSO locked
 
 - type: entity
-  parent: AirlockBlueshieldOfficerCommand # Europa-Edit
+  parent: AirlockBlueshieldOfficerCommand # Orion-Edit
   id: AirlockBlueshieldOfficerCommandLocked
   suffix: Blueshield, Locked
   components:
@@ -59,7 +59,7 @@
       board: [ DoorElectronicsBSO ]
 
 - type: entity
-  parent: AirlockBlueshieldOfficerCommandGlass # Europa-Edit
+  parent: AirlockBlueshieldOfficerCommandGlass # Orion-Edit
   id: AirlockBlueshieldOfficerCommandGlassLocked
   suffix: Blueshield, Locked
   components:

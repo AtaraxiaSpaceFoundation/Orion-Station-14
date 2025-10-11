@@ -845,12 +845,12 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("admin_ooc_color");
 
-                    // Europa-Start
+                    // Orion-Start
                     b.Property<string>("GhostId")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("ghost_id");
-                    // Europa-End
+                    // Orion-End
 
                     b.PrimitiveCollection<List<string>>("ConstructionFavorites")
                         .IsRequired()
