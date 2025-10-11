@@ -213,6 +213,9 @@
   - type: Penetratable # Goobstation - Better snipers
     penetrateDamage: 10
   - type: LightingOverlay # Orion
+  - type: Tag # Goobstation - Prevent RCD from making lights in one tile
+    tags:
+    - WallLight
   placement:
     mode: SnapgridCenter
     snap:
