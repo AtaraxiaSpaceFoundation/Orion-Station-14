@@ -3,16 +3,17 @@
   id: XenomorphsInfestation
   components:
   - type: StationEvent
-    weight: 1
+    weight: 3 # Goobstation - was 7.5
     duration: null
     minimumPlayers: 45 # Orion-Edit | 50 > 45
-    earliestStart: 30 # Orion-Edit | 60 > 30
+    earliestStart: 30 # Orion-Edit | 35 > 30
+    #reoccurrenceDelay: 50 # Goobstation - no longer needed
+    maxOccurrences: 2 # Orion-Edit | 1 > 2
     chaos:
       Hostile: 400
       Medical: 400
       Death: 400
     eventType: HostilesSpawn
-    maxOccurrences: 2 # Orion-Edit | 1 > 2
   - type: GameRule
     chaosScore: 400
   - type: VentSpawnRule
