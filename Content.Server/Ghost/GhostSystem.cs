@@ -178,6 +178,7 @@ namespace Content.Server.Ghost
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
         [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Orion
+        [Dependency] private readonly IEntityManager _entManager = default!; // Orion
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -743,6 +744,12 @@ namespace Content.Server.Ghost
             }
 
             var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
+            if (!_entManager.TryGetComponent<TransformComponent>(ghost, out var transform))
+            {
+                transform = _entManager.AddComponent<TransformComponent>(ghost);
+            }
+
+            _transformSystem.SetCoordinates(ghost, transform, spawnPosition.Value);
             // Orion-End
             var ghostComponent = Comp<GhostComponent>(ghost);
 
