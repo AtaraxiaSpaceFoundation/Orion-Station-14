@@ -798,12 +798,12 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("admin_ooc_color");
 
-                    // Europa-Start
+                    // Orion-Start
                     b.Property<string>("GhostId")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("ghost_id");
-                    // Europa-End
+                    // Orion-End
 
                     b.PrimitiveCollection<string>("ConstructionFavorites")
                         .IsRequired()

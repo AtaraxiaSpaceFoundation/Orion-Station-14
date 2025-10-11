@@ -48,7 +48,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared._Europa.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer;
 
 namespace Content.Shared._Shitmed.Medical.Surgery;
 
@@ -79,7 +79,7 @@ public abstract partial class SharedSurgerySystem
 
         SubSurgery<SurgeryTendWoundsEffectComponent>(OnTendWoundsStep, OnTendWoundsCheck);
         SubSurgery<SurgeryStepCavityEffectComponent>(OnCavityStep, OnCavityCheck);
-        SubSurgery<SurgeryStepRemoveCorticalBorerComponent>(OnCorticalBorerRemovalStep, OnCorticalBorerRemovalCheck); // Europa
+        SubSurgery<SurgeryStepRemoveCorticalBorerComponent>(OnCorticalBorerRemovalStep, OnCorticalBorerRemovalCheck); // Orion
         SubSurgery<SurgeryAddPartStepComponent>(OnAddPartStep, OnAddPartCheck);
         SubSurgery<SurgeryAffixPartStepComponent>(OnAffixPartStep, OnAffixPartCheck);
         SubSurgery<SurgeryRemovePartStepComponent>(OnRemovePartStep, OnRemovePartCheck);
@@ -257,7 +257,7 @@ public abstract partial class SharedSurgerySystem
             args.Cancelled = true;
     }
 
-    // Europa-Start
+    // Orion-Start
     private void OnCorticalBorerRemovalStep(Entity<SurgeryStepRemoveCorticalBorerComponent> ent, ref SurgeryStepEvent args)
     {
         if (TryComp<CorticalBorerInfestedComponent>(args.Body, out var infested) &&
@@ -270,7 +270,7 @@ public abstract partial class SharedSurgerySystem
         if (HasComp<CorticalBorerInfestedComponent>(args.Body))
             args.Cancelled = true;
     }
-    // Europa-End
+    // Orion-End
 
     private void OnAddPartStep(Entity<SurgeryAddPartStepComponent> ent, ref SurgeryStepEvent args)
     {

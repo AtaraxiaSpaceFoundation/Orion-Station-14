@@ -9,10 +9,10 @@
 - type: npcFaction
   id: PirateFaction
   hostile:
-  # Europa-Start-Factions
+  # Orion-Start-Factions
   - InteQ
   - InteQHostile
-  # Europa-End-Factions
+  # Orion-End-Factions
   - NanoTrasen
   - Syndicate
   - SimpleHostile

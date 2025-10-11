@@ -49,7 +49,7 @@
   - type: Stack
     count: 100
     stackType: Telecrystal
-  # Europa-Start
+  # Orion-Start
     baseLayer: base
     layerStates:
     - telecrystal
@@ -58,7 +58,7 @@
     layerFunction: Threshold
   - type: StackLayerThreshold
     thresholds: [10, 20, 30]
-  # Europa-End
+  # Orion-End
   # Goobstation - Custom stack splitting dialog
   - type: UserInterface
     interfaces:
@@ -111,11 +111,11 @@
   suffix: Empty
   components:
   - type: Sprite
-    sprite: _Europa/Objects/Devices/syndicate_uplink.rsi # Europa-Edit
+    sprite: _Orion/Objects/Devices/syndicate_uplink.rsi # Orion-Edit
     layers:
     - state: radio
   - type: Item
-    sprite: _Europa/Objects/Devices/syndicate_uplink.rsi # Europa-Edit
+    sprite: _Orion/Objects/Devices/syndicate_uplink.rsi # Orion-Edit
     heldPrefix: radio
   - type: UserInterface
     interfaces:

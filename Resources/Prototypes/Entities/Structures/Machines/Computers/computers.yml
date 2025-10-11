@@ -755,7 +755,7 @@
     powerLoad: 1000
   - type: Computer
     board: ResearchComputerCircuitboard
-#  - type: AccessReader # Europa-Remove
+#  - type: AccessReader # Orion-Remove
 #    access: [["Research"]]
   - type: PointLight
     radius: 1.5

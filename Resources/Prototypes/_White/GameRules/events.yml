@@ -5,14 +5,14 @@
   - type: StationEvent
     weight: 1
     duration: null
-    minimumPlayers: 45 # Europa-Edit | 50 > 45
-    earliestStart: 30 # Europa-Edit | 60 > 30
+    minimumPlayers: 45 # Orion-Edit | 50 > 45
+    earliestStart: 30 # Orion-Edit | 60 > 30
     chaos:
       Hostile: 400
       Medical: 400
       Death: 400
     eventType: HostilesSpawn
-    maxOccurrences: 2 # Europa-Edit | 1 > 2
+    maxOccurrences: 2 # Orion-Edit | 1 > 2
   - type: GameRule
     chaosScore: 400
   - type: VentSpawnRule
@@ -26,8 +26,8 @@
     agentName: xenomorph-round-end-agent-name
     definitions:
     - spawnerPrototype: SpawnPointGhostXenomorph
-      min: 1 # Europa-Edit | 2 > 1
-      max: 2 # Europa-Edit | 4 > 2
+      min: 1 # Orion-Edit | 2 > 1
+      max: 2 # Orion-Edit | 4 > 2
       pickPlayer: false
       briefing:
         text: xenomorph-role-greeting

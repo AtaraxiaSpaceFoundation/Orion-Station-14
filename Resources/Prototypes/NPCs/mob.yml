@@ -39,7 +39,7 @@
 - type: htnCompound
   id: MouseCompound
   branches:
-#    - tasks: # Europa-Remove
+#    - tasks: # Orion-Remove
 #        - !type:HTNCompoundTask
 #          task: FoodCompound
     # Goobstation - for retaliation; yes, they care about food more
@@ -49,7 +49,7 @@
     - tasks:
         - !type:HTNCompoundTask
           task: IdleCompound
-          
+
 - type: htnCompound
   id: MoproachCompound
   branches:
@@ -69,7 +69,7 @@
     - tasks:
         - !type:HTNCompoundTask
           task: InnateRangedCombatCompound
-#    - tasks: # Europa-Remove
+#    - tasks: # Orion-Remove
 #        - !type:HTNCompoundTask
 #          task: FoodCompound
     - tasks:

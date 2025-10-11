@@ -10,7 +10,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Europa.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer;
 using Content.Shared.CCVar;
 using Content.Shared.Ghost;
 using Content.Shared.StatusIcon;
@@ -105,7 +105,7 @@ public sealed class StatusIconSystem : SharedStatusIconSystem
         if (data.ShowTo != null && !_entityWhitelist.IsValid(data.ShowTo, viewer))
             return false;
 
-        if (HasComp<CorticalBorerComponent>(ent)) // Europa
+        if (HasComp<CorticalBorerComponent>(ent)) // Orion
             return false;
 
         return true;

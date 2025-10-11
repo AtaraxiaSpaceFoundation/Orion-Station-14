@@ -25,9 +25,9 @@
   markingLimits: MobSlimeMarkingLimits
   dollPrototype: MobSlimePersonDummy
   skinColoration: Hues
-  # Europa-Start
+  # Orion-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/SlimePerson.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/SlimePerson.xml"
   pros:
   - Получают на 40% меньше урона от ушибов и на 20% меньше от ядов.
   - Способны прожить в условиях вакуума дольше чем человек.
@@ -42,7 +42,7 @@
   - Получают на 50% больше урона холодоми и на 20% больше от порезов и уколов.
   - При контакте с водой получает 12 термического урона. Инъекции, питьё воды, хождение по лужам, вдыхание водяного пара - не наносят урон.
   - Получают повышенный урон от давления.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobSlimeSprites

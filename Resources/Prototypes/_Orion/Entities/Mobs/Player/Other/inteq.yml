@@ -1,0 +1,132 @@
+# Settings
+- type: randomHumanoidSettings
+  id: InteQVanguard
+  randomizeName: false
+  speciesBlacklist:
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
+  components:
+  - type: AntagImmune
+  - type: GhostRole
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleInteQAntagonist
+    job: InteQVanguard
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardNamesPrefix
+    - NamesMilitaryLast
+    nameFormat: name-format-standard
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: NpcFactionMember
+    factions:
+    - InteQ
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    - OldFastCodes
+    understands:
+    - TauCetiBasic
+    - OldFastCodes
+  - type: GlobalAntagonist # Orion
+    antagonistPrototype: globalAntagonistInteQ
+
+- type: randomHumanoidSettings
+  parent: InteQVanguard
+  id: InteQVanguardLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-leader
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-rules-team-antagonist
+    job: InteQVanguardLeader
+  - type: Loadout
+    prototypes: [ InteQVanguardLeaderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - InteQVanguardLeaderNamesPrefix
+    - NamesMilitaryLast
+    nameFormat: name-format-standard
+
+- type: randomHumanoidSettings
+  parent: InteQVanguard
+  id: InteQVanguardOperative
+  components:
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-operative
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-rules-team-antagonist
+  - type: Loadout
+    prototypes: [ InteQVanguardOperativeGear ]
+
+- type: randomHumanoidSettings
+  parent: InteQVanguard
+  id: InteQVanguardSoldier
+  components:
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-soldier
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-rules-team-antagonist
+  - type: Loadout
+    prototypes: [ InteQVanguardSoldierGear ]
+
+- type: randomHumanoidSettings
+  parent: InteQVanguard
+  id: InteQVanguardMedic
+  components:
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-medic
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-rules-team-antagonist
+  - type: Loadout
+    prototypes: [ InteQVanguardMedicGear ]
+
+# Spawners
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardLeader
+  name: InteQ vanguard leader spawner
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardOperative
+  name: InteQ vanguard operative spawner
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardOperative
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardSoldier
+  name: InteQ vanguard soldier spawner
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardSoldier
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardMedic
+  name: InteQ vanguard medic spawner
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardMedic

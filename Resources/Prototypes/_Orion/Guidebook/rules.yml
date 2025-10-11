@@ -1,0 +1,168 @@
+# Default rules
+- type: guideEntry
+  id: OrionRuleset
+  name: Правила сервера
+  priority: 0
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Ruleset.xml"
+  children:
+  - OrionRule0
+  - OrionRule1
+  - OrionRule2
+  - OrionRule3
+  - OrionRule31
+  - OrionRule32
+  - OrionRule33
+  - OrionRule34
+  - OrionRule35
+  - OrionRule36
+  - OrionRule37
+  - OrionRule38
+  - OrionRule39
+  - OrionRule4
+  - OrionRule6
+  - OrionRule7
+  - OrionRule8
+  - OrionRule9
+  - OrionRule10
+  - OrionPunishmentTypes
+
+- type: guideEntry
+  id: OrionPunishmentTypes
+  name: Игровые наказания
+  priority: 20
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/PunishmentTypes.xml"
+
+- type: guideEntry
+  id: OrionRule0
+  name: Правило 0
+  priority: 1
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule0.xml"
+
+- type: guideEntry
+  id: OrionRule1
+  name: Правило 1
+  priority: 2
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule1.xml"
+
+- type: guideEntry
+  id: OrionRule2
+  name: Правило 2
+  priority: 3
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule2.xml"
+
+- type: guideEntry
+  id: OrionRule3
+  name: Правило 3
+  priority: 4
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.xml"
+
+- type: guideEntry
+  id: OrionRule31
+  name: Правило 3.1
+  priority: 5
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.1.xml"
+
+- type: guideEntry
+  id: OrionRule32
+  name: Правило 3.2
+  priority: 6
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.2.xml"
+
+- type: guideEntry
+  id: OrionRule33
+  name: Правило 3.3
+  priority: 7
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.3.xml"
+
+- type: guideEntry
+  id: OrionRule34
+  name: Правило 3.4
+  priority: 8
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.4.xml"
+
+- type: guideEntry
+  id: OrionRule35
+  name: Правило 3.5
+  priority: 9
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.5.xml"
+
+- type: guideEntry
+  id: OrionRule36
+  name: Правило 3.6
+  priority: 10
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.6.xml"
+
+- type: guideEntry
+  id: OrionRule37
+  name: Правило 3.7
+  priority: 11
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.7.xml"
+
+- type: guideEntry
+  id: OrionRule38
+  name: Правило 3.8
+  priority: 12
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.8.xml"
+
+- type: guideEntry
+  id: OrionRule39
+  name: Правило 3.9
+  priority: 13
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.9.xml"
+
+- type: guideEntry
+  id: OrionRule4
+  name: Правило 4
+  priority: 14
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule4.xml"
+
+- type: guideEntry
+  id: OrionRule6
+  name: Правило 6
+  priority: 15
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule6.xml"
+
+- type: guideEntry
+  id: OrionRule7
+  name: Правило 7
+  priority: 16
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule7.xml"
+
+- type: guideEntry
+  id: OrionRule8
+  name: Правило 8
+  priority: 17
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule8.xml"
+
+- type: guideEntry
+  id: OrionRule9
+  name: Правило 9
+  priority: 18
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule9.xml"
+
+- type: guideEntry
+  id: OrionRule10
+  name: Правило 10
+  priority: 19
+  ruleEntry: true
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule10.xml"

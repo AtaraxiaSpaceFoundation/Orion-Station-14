@@ -169,7 +169,7 @@
   - type: OrganActions
     actions:
     - ActionSpawnWallResin
-    - ActionSpawnResinMembrane # Europa
+    - ActionSpawnResinMembrane # Orion
     - ActionSpawnResinDoor
     - ActionSpawnResinNest
   # </Goobstation>

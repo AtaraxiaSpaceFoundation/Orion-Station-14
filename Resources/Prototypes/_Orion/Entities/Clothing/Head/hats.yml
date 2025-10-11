@@ -1,0 +1,134 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadInteQBeret
+  name: InteQ beret
+  description: Brown beret with a gold emblem on it.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_beret.rsi
+
+- type: entity
+  parent: [ClothingHeadBase, BaseMinorContraband]
+  id: ClothingHeadInteQHonorableBeret
+  name: InteQ honorable beret
+  description: White beret with a emblem on it.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_honorable_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_honorable_beret.rsi
+
+- type: entity
+  parent: [ClothingHeadBase, BaseMinorContraband]
+  id: ClothingHeadHatInteQMAA
+  name: InteQ master at arms hat
+  description: Master at arms hat, looks intimidating, I doubt that you will like to communicate with its owner...
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_peaked.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_peaked.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatInteQTacticalMaidHeadband
+  name: tactical maid headband
+  description: White headband - dont imagine yourself a Buster.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/inteq_headband.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/inteq_headband.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretCaptainWhite
+  name: white captain beret
+  description: White captain beret, an icon of style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/white_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/white_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretSheriff
+  name: sheriff beret
+  description: Beret, a favorite among local sheriffs.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/sheriff_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/sheriff_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCapcapWhite
+  name: white cap cap
+  description: Stylish white cap cap.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/white_capcap.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/white_capcap.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCapcapSheriff
+  name: sheriff cap
+  description: Stylish sheriff cap.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/sheriff_capcap.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/sheriff_capcap.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTinfoil
+  name: tinfoil hat
+  description: Space Station 13 doesnt exist.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/tinfoil.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/tinfoil.rsi
+#  - type: TinfoilHat
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.95
+  - type: Construction
+    graph: TinfoilHat
+    node: tinfoilhat
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUEGBeret
+  name: UEG police beret
+  description: Beret of police officers of the UEG, have emblem of the Ministry of Internal Affairs on it.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/ueg_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/ueg_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUEGOfficerCap
+  name: UEG officer cap
+  description: UEG officer cap, has a cockade with the insignia of the Ministry of the Interior.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/ueg_officer_cap.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/ueg_officer_cap.rsi

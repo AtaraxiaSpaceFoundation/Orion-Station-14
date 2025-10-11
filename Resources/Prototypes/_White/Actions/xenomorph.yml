@@ -94,7 +94,7 @@
   - type: PlasmaCostAction
     plasmaCost: 75
 
-# TODO: delete it | Europa: DONT DELETE THIS
+# TODO: delete it | Orion: DONT DELETE THIS
 - type: entity
   id: ActionSpawnWallResin
   parent: BaseAction
@@ -117,7 +117,7 @@
       - WallLayer
   - type: PlasmaCostAction
 
-# Goobstation - removed | Europa-Reaply
+# Goobstation - removed | Orion-Reaply
 - type: entity
   id: ActionSpawnResinMembrane
   parent: BaseAction
@@ -140,7 +140,7 @@
       - GlassLayer
   - type: PlasmaCostAction
 
-# TODO: delete it | Europa: DONT DELETE THIS
+# TODO: delete it | Orion: DONT DELETE THIS
 - type: entity
   id: ActionSpawnResinNest
   parent: BaseAction
@@ -179,7 +179,7 @@
     range: 10
   - type: WorldTargetAction
     event: !type:TailLashActionEvent
-    
+
     # Acid action
 - type: entity
   id: ActionAcid
@@ -214,7 +214,7 @@
     range: 10
   - type: WorldTargetAction
     event: !type:JumpActionEvent
-    
+
 # Transfer plasma action
 - type: entity
   id: ActionTransferPlasma

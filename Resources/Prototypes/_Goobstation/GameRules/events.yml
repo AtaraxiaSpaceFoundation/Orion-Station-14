@@ -18,7 +18,7 @@
   - type: StationEvent
     weight: 3 # rare
     duration: 1
-    minimumPlayers: 12 # Europa
+    minimumPlayers: 12 # Orion
     # no occurences limit so newly arriving tiders can also get it
   - type: JobAddCollectiveMindRule
     message: station-event-tidemind-message
@@ -36,7 +36,7 @@
     weight: 4.5 # Uncommon
     earliestStart: 30
     reoccurrenceDelay: 30
-    minimumPlayers: 8 # Europa-Edit | 4 > 8
+    minimumPlayers: 8 # Orion-Edit | 4 > 8
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0

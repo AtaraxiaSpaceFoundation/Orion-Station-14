@@ -89,7 +89,7 @@
       animation: WeaponArcSmash
       damage:
         types:
-          Piercing: 3 # Europa-Edit | 5 > 3
+          Piercing: 3 # Orion-Edit | 5 > 3
     - type: DamageStateVisuals
       states:
         Alive:
@@ -116,7 +116,7 @@
     - type: MobThresholds
       thresholds:
         0: Alive
-        15: Dead # Europa-Edit 50 > 15
+        15: Dead # Orion-Edit 50 > 15
     - type: MovementSpeedModifier
       baseWalkSpeed: 3
       baseSprintSpeed: 4
@@ -127,7 +127,7 @@
     - type: GuideHelp
       guides:
       - Blob
-#    - type: GlobalAntagonist # Europa | Disabled because spam
+#    - type: GlobalAntagonist # Orion | Disabled because spam
 #      antagonistPrototype: globalAntagonistBlob
 
 # Blobbernaut
@@ -237,7 +237,7 @@
     - type: GuideHelp
       guides:
       - Blob
-    - type: GlobalAntagonist # Europa
+    - type: GlobalAntagonist # Orion
       antagonistPrototype: globalAntagonistBlob
 
 # Observer
@@ -317,5 +317,5 @@
       defaultChannel: Blobmind
       channels:
       - Blobmind
-    - type: GlobalAntagonist # Europa
+    - type: GlobalAntagonist # Orion
       antagonistPrototype: globalAntagonistBlob

@@ -1,9 +1,0 @@
-- type: entity
-  parent: ClothingModsuitGauntletsStandard
-  id: ClothingModsuitGauntletsSuspicious
-  name: suspicious hardsuit gauntlets
-  description: Special modular suit gloves that protect wearer from electric shock.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Europa/Clothing/Hands/Modsuits/suspicious.rsi

@@ -167,7 +167,7 @@
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
-  - TileItemBluespace # Europa
+  - TileItemBluespace # Orion
   # Goobstation R&D Console rework start
   position: 1,5
   technologyPrerequisites:
@@ -184,11 +184,11 @@
   tier: 2
   cost: 7500
   recipeUnlocks:
-  # Europa-Start
+  # Orion-Start
   - NTBodyBag
   - PrisonerBodyBag
   - RadiationBodyBag
-  # Europa-End
+  # Orion-End
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - CryostasisBeaker
@@ -346,9 +346,9 @@
   tier: 3
   cost: 20000 # Goobstation 10000 -> 20000
   recipeUnlocks:
-  # Europa-Start
+  # Orion-Start
   - BluespaceBodyBag
-  # Europa-End
+  # Orion-End
   - BluespaceBeaker
   - SyringeBluespace
   - MedkitCombat # Goobstation - remove medkitcombat from static to research

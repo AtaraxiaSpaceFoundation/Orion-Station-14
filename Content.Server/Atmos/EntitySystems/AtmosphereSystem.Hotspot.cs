@@ -117,7 +117,7 @@ namespace Content.Server.Atmos.EntitySystems
                     }
                 }
             }
-/* // Europa-Remove
+/* // Orion-Remove
             else
             {
                 tile.Hotspot.State = (byte) (tile.Hotspot.Volume > Atmospherics.CellVolume * 0.4f ? 2 : 1);
@@ -196,7 +196,7 @@ namespace Content.Server.Atmos.EntitySystems
         {
             if (tile.Air == null || !tile.Hotspot.Valid) return;
 
-            // Europa-Start
+            // Orion-Start
             switch (tile.Hotspot.Temperature)
             {
                 case <= 390.15f:
@@ -221,7 +221,7 @@ namespace Content.Server.Atmos.EntitySystems
                     tile.Hotspot.State = 7;
                     break;
             }
-            // Europa-End
+            // Orion-End
 
             tile.Hotspot.Bypassing = tile.Hotspot.SkippedFirstProcess && tile.Hotspot.Volume > tile.Air.Volume*0.95f;
 

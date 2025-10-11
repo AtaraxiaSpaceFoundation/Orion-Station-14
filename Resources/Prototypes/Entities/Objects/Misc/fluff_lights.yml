@@ -349,10 +349,10 @@
     materialComposition:
       Glass: 500
       Steel: 200
-  # Europa-Start
+  # Orion-Start
   - type: HandheldLight
     wattage: 0.5
-  # Europa-End
+  # Orion-End
 - type: entity
   name: broken floodlight
   id: FloodlightBroken

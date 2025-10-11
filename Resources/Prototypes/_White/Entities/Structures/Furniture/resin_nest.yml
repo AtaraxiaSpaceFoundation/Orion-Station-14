@@ -12,7 +12,7 @@
     sprite: _White/Structures/Furniture/resin_nest.rsi
     state: full
   - type: IconSmooth
-    key: resinnest # Europa-Edit
+    key: resinnest # Orion-Edit
     base: resin_nest
   - type: Fixtures
     fixtures:

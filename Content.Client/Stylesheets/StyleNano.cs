@@ -322,7 +322,7 @@ namespace Content.Client.Stylesheets
         public const string StyleClassPinButtonPinned = "pinButtonPinned";
         public const string StyleClassPinButtonUnpinned = "pinButtonUnpinned";
 
-        // Europa-Start
+        // Orion-Start
         public static readonly Color ButtonColorCentralCommand = Color.FromHex("#0c344d");
         public static readonly Color ButtonColorCommand = Color.FromHex("#334E6D");
         public static readonly Color ButtonColorSecurity = Color.FromHex("#DE3A3A");
@@ -335,7 +335,7 @@ namespace Content.Client.Stylesheets
         public static readonly Color ButtonColorJustice = Color.FromHex("#8E3D3D");
         public static readonly Color ButtonColorSpecific = Color.FromHex("#969696");
         public static readonly Color ButtonColorAntagonist = Color.FromHex("#7F4141");
-        // Europa-End
+        // Orion-End
 
         public override Stylesheet Stylesheet { get; }
 
@@ -1502,7 +1502,7 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
                     }),
 
-                // Europa-Start
+                // Orion-Start
                 new StyleRule(
                     new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
                     new[]
@@ -1585,7 +1585,7 @@ namespace Content.Client.Stylesheets
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorAntagonist),
                     }),
-                // Europa-End
+                // Orion-End
 
                 // MonotoneButton (unfilled)
                 new StyleRule(
@@ -1981,7 +1981,7 @@ namespace Content.Client.Stylesheets
                 Element<Label>().Class("Disabled")
                     .Prop("font-color", DisabledFore),
 
-                // Europa-Start
+                // Orion-Start
                 Element<Button>().Class("ButtonColorCentralCommandDepartment")
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCentralCommand),
                 Element<Button>().Class("ButtonColorCentralCommandDepartment").Pseudo(ContainerButton.StylePseudoClassNormal)
@@ -2041,7 +2041,7 @@ namespace Content.Client.Stylesheets
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorAntagonist),
                 Element<Button>().Class("ButtonColorAntagonistDepartment").Pseudo(ContainerButton.StylePseudoClassNormal)
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorAntagonist),
-                // Europa-End
+                // Orion-End
 
                 // Radial menu buttons
                 Element<TextureButton>().Class("RadialMenuButton")

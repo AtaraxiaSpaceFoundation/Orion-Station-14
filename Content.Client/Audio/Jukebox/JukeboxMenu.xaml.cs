@@ -35,7 +35,7 @@ public sealed partial class JukeboxMenu : FancyWindow
     public event Action? OnStopPressed;
     public event Action<ProtoId<JukeboxPrototype>>? OnSongSelected;
     public event Action<float>? SetTime;
-    public event Action<float>? SetVolume; // Europa
+    public event Action<float>? SetVolume; // Orion
 
     private EntityUid? _audio;
 
@@ -67,9 +67,9 @@ public sealed partial class JukeboxMenu : FancyWindow
             OnStopPressed?.Invoke();
         };
         PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
-        VolumeSlider.OnReleased += VolumeSliderKeyUp; /// Europa
+        VolumeSlider.OnReleased += VolumeSliderKeyUp; /// Orion
 
-        VolumeSlider.MaxValue = 100f; /// Europa
+        VolumeSlider.MaxValue = 100f; /// Orion
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio), force: true);
     }
@@ -90,13 +90,13 @@ public sealed partial class JukeboxMenu : FancyWindow
         _lockTimer = 0.5f;
     }
 
-    // Europa-Start
+    // Orion-Start
     private void VolumeSliderKeyUp(Slider args)
     {
         SetVolume?.Invoke(VolumeSlider.Value);
         _lockTimer = 0.5f;
     }
-    // Europa-End
+    // Orion-End
 
     /// <summary>
     /// Re-populates the list of jukebox prototypes available.
@@ -109,7 +109,7 @@ public sealed partial class JukeboxMenu : FancyWindow
         {
             MusicList.AddItem(entry.Name, metadata: entry.ID);
         }
-        MusicList.SortItemsByText(); // Europa
+        MusicList.SortItemsByText(); // Orion
     }
 
     public void SetPlayPauseButton(bool playing, bool force = false)
@@ -135,12 +135,12 @@ public sealed partial class JukeboxMenu : FancyWindow
         PlaybackSlider.SetValueWithoutEvent(0);
     }
 
-    // Europa-Start
+    // Orion-Start
     public void SetVolumeSlider(float volume)
     {
         VolumeSlider.Value = volume;
     }
-    // Europa-End
+    // Orion-End
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
@@ -152,7 +152,7 @@ public sealed partial class JukeboxMenu : FancyWindow
         }
 
         PlaybackSlider.Disabled = _lockTimer > 0f;
-        VolumeSlider.Disabled = _lockTimer > 0f; // Europa
+        VolumeSlider.Disabled = _lockTimer > 0f; // Orion
 
         if (_entManager.TryGetComponent(_audio, out AudioComponent? audio))
         {
@@ -163,12 +163,12 @@ public sealed partial class JukeboxMenu : FancyWindow
             DurationLabel.Text = $"00:00 / 00:00";
         }
 
-        VolumeNumberLabel.Text = $"{VolumeSlider.Value.ToString("0.##")} %"; // Europa
+        VolumeNumberLabel.Text = $"{VolumeSlider.Value.ToString("0.##")} %"; // Orion
 
         if (PlaybackSlider.Grabbed)
             return;
 
-        if (VolumeSlider.Grabbed) // Europa
+        if (VolumeSlider.Grabbed) // Orion
             return;
 
         if (audio != null || _entManager.TryGetComponent(_audio, out audio))

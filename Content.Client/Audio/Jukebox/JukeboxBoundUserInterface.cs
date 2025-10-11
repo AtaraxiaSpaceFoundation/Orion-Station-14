@@ -52,7 +52,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         _menu.OnSongSelected += SelectSong;
 
         _menu.SetTime += SetTime;
-        _menu.SetVolume += SetVolume; // Europa
+        _menu.SetVolume += SetVolume; // Orion
         PopulateMusic();
         Reload();
     }
@@ -66,7 +66,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
             return;
 
         _menu.SetAudioStream(jukebox.AudioStream);
-        _menu.SetVolumeSlider(jukebox.Volume); // Europa
+        _menu.SetVolumeSlider(jukebox.Volume); // Orion
 
         if (_protoManager.TryIndex(jukebox.SelectedSongId, out var songProto))
         {
@@ -108,7 +108,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
         SendMessage(new JukeboxSetTimeMessage(sentTime));
     }
 
-    // Europa-Start
+    // Orion-Start
     /// First applies the volume locally for prediction (if components are available),
     /// then sends a message to the server for synchronization.
     /// Uses MapToRange to convert the slider value to the actual audio component volume range.
@@ -128,5 +128,5 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
 
         SendMessage(new JukeboxSetVolumeMessage(sentVolume));
     }
-    // Europa-End
+    // Orion-End
 }

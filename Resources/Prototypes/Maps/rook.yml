@@ -1,7 +1,7 @@
 - type: gameMap
   id: Rook
   mapName: 'Rook'
-  mapPath: /Maps/_Europa/rook.yml
+  mapPath: /Maps/_Orion/rook.yml
   minPlayers: 0
   maxPlayers: 35
   stations:

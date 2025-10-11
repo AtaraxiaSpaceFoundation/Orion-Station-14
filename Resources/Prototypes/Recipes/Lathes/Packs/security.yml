@@ -81,9 +81,9 @@
 - type: latheRecipePack
   id: SecurityEquipment
   recipes:
-  # Europa-Start
+  # Orion-Start
   - EnergyDomeTurtle
-  # Europa-End
+  # Orion-End
   - ClothingBackpackElectropack
   - HoloprojectorSecurity
   - HoloprojectorSecurityAdvanced

@@ -21,15 +21,15 @@
   description: Finally, some decent reception around here...
   components:
   - type: Sprite
-    sprite: _Europa/Structures/Machines/Computers/tv.rsi # Europa
-    noRot: false # Europa-Edit
+    sprite: _Orion/Structures/Machines/Computers/tv.rsi # Orion
+    noRot: false # Orion-Edit
     drawdepth: SmallObjects
     layers:
     - map: ["computerLayerBody"]
       state: television
     - map: ["computerLayerScreen"]
-      state: television_playing # Europa-Edit
-      shader: unshaded # Europa
+      state: television_playing # Orion-Edit
+      shader: unshaded # Orion
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight

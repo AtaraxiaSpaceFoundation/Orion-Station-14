@@ -156,7 +156,7 @@
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using Content.Client._Europa.Lobby.UI;
+using Content.Client._Orion.Lobby.UI;
 using Content.Client.Guidebook;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
@@ -199,7 +199,7 @@ namespace Content.Client.Lobby.UI
     [GenerateTypedNameReferences]
     public sealed partial class HumanoidProfileEditor : BoxContainer
     {
-        [Dependency] private readonly DocumentParsingManager _parsingMan = default!; // Europa
+        [Dependency] private readonly DocumentParsingManager _parsingMan = default!; // Orion
 
         private readonly IClientPreferencesManager _preferencesManager;
         private readonly IConfigurationManager _cfgManager;
@@ -270,7 +270,7 @@ namespace Content.Client.Lobby.UI
 
         private ISawmill _sawmill;
 
-        private SpeciesWindow? _speciesWindow;  // Europa
+        private SpeciesWindow? _speciesWindow;  // Orion
 
         public HumanoidProfileEditor(
             IClientPreferencesManager preferencesManager,
@@ -395,7 +395,7 @@ namespace Content.Client.Lobby.UI
                 UpdateHeightWidthSliders(); // Goobstation: port EE height/width sliders
             };
 
-            // Europa-Start
+            // Orion-Start
             NewSpeciesButton.OnToggled += args =>
             {
                 if (Profile == null)
@@ -437,7 +437,7 @@ namespace Content.Client.Lobby.UI
                     };
                 }
             };
-            // Europa-End
+            // Orion-End
 
             // begin Goobstation: port EE height/width sliders
             #region Height and Width
@@ -861,11 +861,11 @@ namespace Content.Client.Lobby.UI
                 {
                     SpeciesButton.SelectId(i);
 
-                    // Europa-Start
+                    // Orion-Start
                     NewSpeciesButton.Text = name;
                     NewSpeciesButton.Pressed = false;
                     _speciesWindow?.Dispose();
-                    // Europa-End
+                    // Orion-End
                 }
             }
 
@@ -2078,7 +2078,7 @@ namespace Content.Client.Lobby.UI
             ExportButton.Disabled = false;
         }
 
-        // Europa-Start
+        // Orion-Start
         private void OnSkinColorOnValueChangedKeepColor(HumanoidCharacterProfile previous)
         {
             if (Profile is null) return;
@@ -2123,6 +2123,6 @@ namespace Content.Client.Lobby.UI
 
             ReloadProfilePreview();
         }
-        // Europa-End
+        // Orion-End
     }
 }

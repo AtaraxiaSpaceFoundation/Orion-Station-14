@@ -18,5 +18,5 @@ public interface ISharedPlaytimeManager
     /// </summary>
     IReadOnlyDictionary<string, TimeSpan> GetPlayTimes(ICommonSession session);
 
-    bool TryGetTrackerTimes(ICommonSession id, [NotNullWhen(true)] out Dictionary<string, TimeSpan>? time); // Europa
+    bool TryGetTrackerTimes(ICommonSession id, [NotNullWhen(true)] out Dictionary<string, TimeSpan>? time); // Orion
 }

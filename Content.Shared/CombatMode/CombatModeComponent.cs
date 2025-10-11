@@ -71,7 +71,7 @@ namespace Content.Shared.CombatMode
         [DataField, AutoNetworkedField]
         public bool ToggleMouseRotator = true;
 
-        // Europa-Start
+        // Orion-Start
         /// <summary>
         ///     If true, sets <see cref="MouseRotatorComponent.AngleTolerance"/> to 1 degree and <see cref="MouseRotatorComponent.Simple4DirMode"/>
         ///     to false when the owner enters combatmode. This is currently being tested as of 06.12.24,
@@ -83,6 +83,6 @@ namespace Content.Shared.CombatMode
         /// </remarks>
         [DataField, AutoNetworkedField]
         public bool SmoothRotation = true;
-        // Europa-End
+        // Orion-End
     }
 }

@@ -16,7 +16,7 @@
       map: ["enum.DoorVisualLayers.BaseUnlit"]
     - state: closed_unlit
       map: ["enum.DoorVisualLayers.BaseBolted"]
-    - state: closed_unlit # Europa
+    - state: closed_unlit # Orion
       map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
   - type: AnimationPlayer
   - type: Physics
@@ -34,7 +34,7 @@
   - type: IconSmooth
     key: walls
     mode: NoSprite
-  - type: DoorBolt # Europa
+  - type: DoorBolt # Orion
     boltLightsEnabled: false
   - type: Door
     canPry: false

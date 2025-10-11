@@ -139,8 +139,8 @@ using Content.Shared._Shitmed.Body;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Europa.Antag;
-using Content.Shared._Europa.CustomGhost;
+using Content.Shared._Orion.Antag;
+using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
@@ -180,7 +180,7 @@ namespace Content.Server.Ghost
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
-        [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Europa
+        [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Orion
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -351,7 +351,7 @@ namespace Content.Server.Ghost
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
         {
-            var timeSinceDeath = _gameTiming.CurTime.Subtract(component.TimeOfDeath); // Europa-Edit | RealTime > CurTime
+            var timeSinceDeath = _gameTiming.CurTime.Subtract(component.TimeOfDeath); // Orion-Edit | RealTime > CurTime
             var deathTimeInfo = timeSinceDeath.Minutes > 0
                 ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
                 : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
@@ -389,7 +389,7 @@ namespace Content.Server.Ghost
         private void OnGhostReturnToBodyRequest(GhostReturnToBodyRequest msg, EntitySessionEventArgs args)
         {
             if (args.SenderSession.AttachedEntity is not {Valid: true} attached
-                || !TryComp(attached, out GhostComponent? ghost) // Europa-Edit
+                || !TryComp(attached, out GhostComponent? ghost) // Orion-Edit
                 || !ghost.CanReturnToBody
                 || !TryComp(attached, out ActorComponent? actor))
             {
@@ -405,26 +405,26 @@ namespace Content.Server.Ghost
         private void OnGhostWarpsRequest(GhostWarpsRequestEvent msg, EntitySessionEventArgs args)
         {
             if (args.SenderSession.AttachedEntity is not {Valid: true} entity
-                || !HasComp<GhostComponent>(entity)) // Europa-Edit
+                || !HasComp<GhostComponent>(entity)) // Orion-Edit
             {
                 Log.Warning($"User {args.SenderSession.Name} sent a {nameof(GhostWarpsRequestEvent)} without being a ghost.");
                 return;
             }
 
-            // Europa-Start
+            // Orion-Start
             var players = GetPlayerWarps();
             var places = GetLocationWarps();
             var antagonists = GetAntagonistWarps();
 
-            var response = new GhostWarpsResponseEvent(players, places, antagonists); // Europa-Edit
-            // Europa-End
+            var response = new GhostWarpsResponseEvent(players, places, antagonists); // Orion-Edit
+            // Orion-End
             RaiseNetworkEvent(response, args.SenderSession.Channel);
         }
 
         private void OnGhostWarpToTargetRequest(GhostWarpToTargetRequestEvent msg, EntitySessionEventArgs args)
         {
             if (args.SenderSession.AttachedEntity is not {Valid: true} attached
-                || !TryComp(attached, out GhostComponent? _)) // Europa-Edit
+                || !TryComp(attached, out GhostComponent? _)) // Orion-Edit
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to warp to {msg.Target} without being a ghost.");
                 return;
@@ -438,7 +438,7 @@ namespace Content.Server.Ghost
                 return;
             }
 
-//            WarpTo(attached, target); // Europa-Remove
+//            WarpTo(attached, target); // Orion-Remove
 
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(attached)} ghost warped to {ToPrettyString(target)}");
 
@@ -470,7 +470,7 @@ namespace Content.Server.Ghost
             WarpTo(uid, target);
         }
 
-        private void WarpTo(EntityUid uid, EntityUid target) // Europa-Edit
+        private void WarpTo(EntityUid uid, EntityUid target) // Orion-Edit
         {
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(uid)} ghost warped to {ToPrettyString(target)}");
 
@@ -487,7 +487,7 @@ namespace Content.Server.Ghost
                 _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
         }
 
-        // Europa-Start
+        // Orion-Start
         private List<GhostWarpPlace> GetLocationWarps()
         {
             var warps = new List<GhostWarpPlace> { };
@@ -501,11 +501,11 @@ namespace Content.Server.Ghost
 
             return warps;
         }
-        // Europa-End
+        // Orion-End
 
-        private List<GhostWarpPlayer> GetPlayerWarps() // Europa-Edit | GetLocationWarps > GetPlayerWarps
+        private List<GhostWarpPlayer> GetPlayerWarps() // Orion-Edit | GetLocationWarps > GetPlayerWarps
         {
-/* // Europa-Remove
+/* // Orion-Remove
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
@@ -514,7 +514,7 @@ namespace Content.Server.Ghost
             }
 */
 
-            // Europa-Start
+            // Orion-Start
             var warps = new List<GhostWarpPlayer> { };
             foreach (var mindContainer in EntityQuery<MindContainerComponent>())
             {
@@ -565,10 +565,10 @@ namespace Content.Server.Ghost
             }
 
             return warps;
-            // Europa-End
+            // Orion-End
         }
 
-        // Europa-Start
+        // Orion-Start
         private bool IsShitEntity(string? entityId)
         {
             if (entityId == null)
@@ -615,9 +615,9 @@ namespace Content.Server.Ghost
 
             return warps;
         }
-        // Europa-End
+        // Orion-End
 
-/* // Europa-Remove
+/* // Orion-Remove
         private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except)
         {
             foreach (var player in _player.Sessions)
@@ -734,25 +734,25 @@ namespace Content.Server.Ghost
             }
 
 //            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Europa-Start
+            // Orion-Start
             CustomGhostPrototype? customGhost = null;
             if (mind.Comp.UserId is NetUserId userId)
                 customGhost = _prototypeManager.Index(_prefs.GetPreferences(userId).CustomGhost);
 
             var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Europa-End
+            // Orion-End
             var ghostComponent = Comp<GhostComponent>(ghost);
 
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
-/* // Europa-Remove
+/* // Orion-Remove
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
                 _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
                 _metaData.SetEntityName(ghost, session.Name);
 */
-            // Europa-Start
+            // Orion-Start
             if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
             {
                 if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
@@ -760,7 +760,7 @@ namespace Content.Server.Ghost
                 else
                     _metaData.SetEntityName(ghost, session.Name);
             }
-            // Europa-End
+            // Orion-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
             {
@@ -780,7 +780,7 @@ namespace Content.Server.Ghost
             _nameMod.RefreshNameModifiers(ghost);
             return ghost;
 
-            // Europa-Start
+            // Orion-Start
             static string? FirstNonNullNonEmpty(params string?[] strings)
             {
                 foreach (var str in strings)
@@ -788,7 +788,7 @@ namespace Content.Server.Ghost
                         return str;
                 return null;
             }
-            // Europa-End
+            // Orion-End
         }
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, bool forced = false, MindComponent? mind = null)

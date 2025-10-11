@@ -341,7 +341,7 @@
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
-  # Europa-Start
+  # Orion-Start
   metabolisms:
     Drink:
       effects:
@@ -351,7 +351,7 @@
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.02
-  # Europa-End
+  # Orion-End
 
 - type: reagent
   id: MelonLiquor
@@ -848,11 +848,11 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
-        # Europa-Start
+        # Orion-Start
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.02
-        # Europa-End
+        # Orion-End
 
 - type: reagent
   id: BloodyMary
@@ -2149,7 +2149,7 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.10
-#        - !type:AdjustReagent # Europa-Remove
+#        - !type:AdjustReagent # Orion-Remove
 #          reagent: Theobromine
 #          amount: 0.05
         - !type:ModifyStatusEffect
@@ -2180,7 +2180,7 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.15
-#        - !type:AdjustReagent # Europa-Remove
+#        - !type:AdjustReagent # Orion-Remove
 #          reagent: Theobromine
 #          amount: 0.05
         - !type:ModifyStatusEffect
@@ -2211,7 +2211,7 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.10
-#        - !type:AdjustReagent # Europa-Remove
+#        - !type:AdjustReagent # Orion-Remove
 #          reagent: Theobromine
 #          amount: 0.05
         - !type:ModifyStatusEffect
@@ -2242,7 +2242,7 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.15
-#        - !type:AdjustReagent # Europa-Remove
+#        - !type:AdjustReagent # Orion-Remove
 #          reagent: Theobromine
 #          amount: 0.05
         - !type:ModifyStatusEffect
@@ -2275,7 +2275,7 @@
           amount: 0.07
         - !type:AdjustReagent
           reagent: Theobromine
-          amount: 0.02 # Europa-Edit | 0.05 > 0.02
+          amount: 0.02 # Orion-Edit | 0.05 > 0.02
         - !type:ModifyStatusEffect
           effectProto: StatusEffectDrowsiness
           time: 1

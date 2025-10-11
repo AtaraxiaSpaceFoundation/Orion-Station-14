@@ -240,7 +240,7 @@
     #Balance concerns are not a valid reason to disable a species, except for high-impact Nukie-specific exploits.
     #- Vox
     - Yowie # Goobstation
-  - type: GlobalAntagonist # Europa
+  - type: GlobalAntagonist # Orion
     antagonistPrototype: globalAntagonistNukeops
 
 - type: entity
@@ -263,7 +263,7 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Europa
+      - type: LanguageKnowledge # Orion
         speaks:
         - TauCetiBasic
         - Codespeak
@@ -289,7 +289,7 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Europa
+      - type: LanguageKnowledge # Orion
         speaks:
         - TauCetiBasic
         - Codespeak
@@ -319,7 +319,7 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Europa
+      - type: LanguageKnowledge # Orion
         speaks:
         - TauCetiBasic
         - Codespeak

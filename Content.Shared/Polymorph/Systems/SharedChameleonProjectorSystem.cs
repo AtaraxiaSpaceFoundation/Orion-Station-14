@@ -46,7 +46,7 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!; // Europa
+    [Dependency] private readonly SharedStunSystem _stun = default!; // Orion
 
     public override void Initialize()
     {
@@ -72,7 +72,7 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
 
     private void OnDisguiseInteractHand(Entity<ChameleonDisguiseComponent> ent, ref InteractHandEvent args)
     {
-        RaiseLocalEvent(ent, new UndisguisedEvent(args.User)); // Europa
+        RaiseLocalEvent(ent, new UndisguisedEvent(args.User)); // Orion
         TryReveal(ent.Comp.User);
         args.Handled = true;
     }
@@ -93,14 +93,14 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
 
     private void OnDisguiseShutdown(Entity<ChameleonDisguiseComponent> ent, ref ComponentShutdown args)
     {
-        // _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Europa-Remove
-        // Europa-Start
+        // _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Orion-Remove
+        // Orion-Start
         if (!TryComp<ChameleonProjectorComponent>(ent.Comp.Projector, out var proj) || proj.NoRotActionEntity == null || proj.AnchorActionEntity == null)
             return;
 
         _actions.RemoveProvidedAction(ent.Comp.User, ent.Comp.Projector, proj.NoRotActionEntity.Value);
         _actions.RemoveProvidedAction(ent.Comp.User, ent.Comp.Projector, proj.AnchorActionEntity.Value);
-        // Europa-End
+        // Orion-End
     }
 
     #endregion

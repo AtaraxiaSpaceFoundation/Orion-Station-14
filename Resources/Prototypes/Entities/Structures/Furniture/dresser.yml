@@ -101,7 +101,7 @@
   components:
   - type: StorageFill
     contents:
-#      - id: ClothingNeckLGBTPin # Europa-Remove
+#      - id: ClothingNeckLGBTPin # Orion-Remove
 #        prob: 0.06
 #        orGroup: dressermainloot
       - id: ClothingUniformJumpsuitColorGrey

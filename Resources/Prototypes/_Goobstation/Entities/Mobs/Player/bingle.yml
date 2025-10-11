@@ -146,7 +146,7 @@
     spawned:
     - id: FoodMeatBingle
       amount: 3
-  - type: GlobalAntagonist # Europa
+  - type: GlobalAntagonist # Orion
     antagonistPrototype: globalAntagonistBingle
 
 - type: entity

@@ -192,8 +192,8 @@ public sealed partial class ChatSystem : SharedChatSystem
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
-    public const string DefaultAnnouncementSound = "/Audio/_Europa/Announcements/announce.ogg"; // Europa-Edit
-    public const string CentComAnnouncementSound = "/Audio/_Europa/Announcements/centcomm.ogg"; // Europa
+    public const string DefaultAnnouncementSound = "/Audio/_Orion/Announcements/announce.ogg"; // Orion-Edit
+    public const string CentComAnnouncementSound = "/Audio/_Orion/Announcements/centcomm.ogg"; // Orion
     public const float DefaultObfuscationFactor = 0.2f; // Percentage of symbols in a whispered message that can be seen even by "far" listeners
     public readonly Color DefaultSpeakColor = Color.White; // Einstein Engines - Language
 
@@ -391,7 +391,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (language.SpeechOverride.ChatTypeOverride is { } chatTypeOverride)
             desiredType = chatTypeOverride;
 
-        // Europa-Start | Is this being sent direct
+        // Orion-Start | Is this being sent direct
         var targetEv = new CheckTargetedSpeechEvent();
         RaiseLocalEvent(source, targetEv);
 
@@ -400,7 +400,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             SendEntityDirect(source, message, range, nameOverride, language, targetEv.Targets);
             return;
         }
-        // Europa-End
+        // Orion-End
 
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
@@ -517,7 +517,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Europa | Support custom alert sound from admin panel
+            if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Orion | Support custom alert sound from admin panel
             _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
@@ -900,7 +900,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
     }
 
-    // Europa-Start
+    // Orion-Start
     private void SendEntityDirect(
         EntityUid source,
         string originalMessage,
@@ -965,7 +965,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                         $"Direct messaged from {ToPrettyString(source):user}, original: {originalMessage}, transformed: {message}.");
             }
     }
-    // Europa-End
+    // Orion-End
 
     private void SendEntityEmote(
         EntityUid source,
@@ -1477,7 +1477,7 @@ public sealed class CheckIgnoreSpeechBlockerEvent : EntityEventArgs
     }
 }
 
-public sealed class CheckTargetedSpeechEvent : EntityEventArgs // Europa
+public sealed class CheckTargetedSpeechEvent : EntityEventArgs // Orion
 {
     public List<InGameICChatType> ChatTypeIgnore = new();
     public List<EntityUid> Targets = new();

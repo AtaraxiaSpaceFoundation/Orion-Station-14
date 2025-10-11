@@ -150,8 +150,8 @@
   - type: FoamVisuals
     animationTime: 0.6
     animationState: foam-dissolve
-#  - type: Slippery # Europa-Remove | Fuck slippery curse
-#  - type: StepTrigger # Europa-Remove | Fuck slippery curse
+#  - type: Slippery # Orion-Remove | Fuck slippery curse
+#  - type: StepTrigger # Orion-Remove | Fuck slippery curse
 #    triggerGroups:
 #      types:
 #      - SlipTile

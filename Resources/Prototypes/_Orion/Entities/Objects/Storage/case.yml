@@ -1,0 +1,39 @@
+# BASE
+
+- type: entity
+  parent: BoxCardboard
+  id: BaseCase
+  abstract: true
+  name: case
+  description: I wonder what's in it?
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,5,4
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 220
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# CASES
+
+- type: entity
+  parent: [BaseCase, BaseMinorContraband]
+  id: CaseInteQ
+  name: brown case
+  suffix: InteQ, Empty
+  description: Brown briefcase with a gold logo, I wonder what's in there?
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Storage/inteq_case.rsi
+    state: icon

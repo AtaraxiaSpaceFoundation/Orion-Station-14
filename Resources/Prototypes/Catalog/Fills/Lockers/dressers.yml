@@ -82,7 +82,7 @@
 
 - type: entity
   id: DresserCaptainFilled
-  categories: [ HideSpawnMenu ] # Europa
+  categories: [ HideSpawnMenu ] # Orion
   parent: Dresser
   suffix: Filled, Captain
   components:

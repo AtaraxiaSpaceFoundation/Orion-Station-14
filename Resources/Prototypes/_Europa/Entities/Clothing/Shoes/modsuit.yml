@@ -1,9 +1,0 @@
-- type: entity
-  parent: ClothingModsuitBootsStandard
-  id: ClothingModsuitBootsSuspicious
-  name: suspicious hardsuit boots
-  description: A special modular suit boots designed for compact folding inside modular suit control.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Europa/Clothing/Shoes/Modsuits/suspicious.rsi

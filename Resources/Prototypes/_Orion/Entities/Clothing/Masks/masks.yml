@@ -1,0 +1,30 @@
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskInteQInfiltrator
+  name: infiltrator mask
+  description: Incredibly suspicious balaclava made with Syndicate nanofibers to absorb impacts slightly while obfuscating the voice and face using a garbled vocoder.
+  components:
+  - type: VoiceMask
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: UserInterface
+    interfaces:
+      enum.VoiceMaskUIKey.Key:
+        type: VoiceMaskBoundUserInterface
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _Orion/Clothing/Mask/inteq_infiltrator.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Mask/inteq_infiltrator.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 0.95
+        Heat: 0.95
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs

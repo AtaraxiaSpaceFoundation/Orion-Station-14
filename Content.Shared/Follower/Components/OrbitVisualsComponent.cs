@@ -29,10 +29,10 @@ public sealed partial class OrbitVisualsComponent : Component
     /// </summary>
     public float OrbitStopLength = 1.0f;
 
-    // Europa-Start
+    // Orion-Start
     /// <summary>
     /// Whether the orbiting entity's sprite will rotate along the orbit, or stay vertical.
     /// </summary>
     public bool KeepUpright = false;
-    // Europa-End
+    // Orion-End
 }

@@ -48,7 +48,7 @@ public sealed partial class AlertLevelDetail
     [DataField("announcement")] public string Announcement { get; private set; } = string.Empty;
 
     /// <summary>
-    /// Europa | Literally filler, because instructions are automatically taken
+    /// Orion | Literally filler, because instructions are automatically taken
     /// </summary>
     [DataField] public string Instruction { get; private set; } = string.Empty;
 
