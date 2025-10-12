@@ -27,7 +27,7 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     minimumPlayers: 8
-    weight: 8
+    weight: 6
     reoccurrenceDelay: 30
     duration: 1
     maxOccurrences: 1
@@ -46,7 +46,7 @@
     startAnnouncement: station-event-wormholes-spawn-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    weight: 8
+    weight: 7
     duration: 10
     minimumPlayers: 15
     earliestStart: 35
@@ -67,16 +67,32 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    weight: 7
+    weight: 6
     duration: 1
     minimumPlayers: 15
     earliestStart: 15
-    reoccurrenceDelay: 30
+    reoccurrenceDelay: 50
     eventType: HostilesSpawn
   - type: GameRule
     chaosScore: 150
-  - type: RandomSpawnRule
-    prototype: SpawnPointGhostMorph
+  - type: VentSpawnRule
+  - type: AntagSpawner
+    prototype: MobMorph
+  - type: AntagObjectives
+    objectives:
+    - MorphSurviveObjective
+  - type: AntagSelection
+    agentName: morph-round-end-agent-name
+    definitions:
+    - spawnerPrototype: SpawnPointGhostMorph
+      min: 1
+      max: 1
+      pickPlayer: false
+      briefing:
+        text: morph-role-greeting
+        color: "#0F3325"
+      mindRoles:
+      - MindRoleMorph
 
 - type: entity
   parent: BaseGameRule
@@ -86,11 +102,11 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    weight: 7
+    weight: 6
     duration: 1
     minimumPlayers: 12
     earliestStart: 20
-    reoccurrenceDelay: 35
+    reoccurrenceDelay: 45
     eventType: Chaotic
   - type: GameRule
     chaosScore: 100

@@ -4,6 +4,8 @@ morphs-announcement = Внимание! Зафиксированы множес�
 morphs-out-of-ambush = Вы выходите из состояния засады.
 morphs-into-ambush = Вы входите в состояние засады.
 morph-round-end-agent-name = морф
+
+morph-unable-to-remember-humanoid = Вы не можете запомнить гуманоидов.
 morph-unable-to-remember = Вы не можете запомнить это.
 
 morph-vent-action-success = Сварной шов разошёлся!
@@ -12,3 +14,5 @@ morph-remember-action-success = Вы запомнили { $target }.
 morph-ambush-blocked = Вы слишком близко к живым существам
 
 devour-action-popup-message-blacklisted = Вы не можете поглотить { $target }.
+
+morph-examined-strange = Выглядит очень странно...

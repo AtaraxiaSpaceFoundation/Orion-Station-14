@@ -4,6 +4,18 @@
   name: morph
   description: It looks terrifying.
   components:
+  - type: GhostRole
+    name: ghost-role-information-morph-name
+    description: ghost-role-information-morph-description
+    rules: ghost-role-information-morph-rules
+    mindRoles:
+    - MindRoleMorph
+    raffle:
+      settings: short
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 54000 # 15h
+  - type: GhostTakeoverAvailable
   - type: InputMover
   - type: MobMover
   - type: Sprite
@@ -51,6 +63,7 @@
     - TauCetiBasic
   - type: VentCrawler
   - type: Hunger
+    startingHunger: 0
     baseDecayRate: 0
     starvingSlowdownModifier: 1
     thresholds:
@@ -74,10 +87,25 @@
       components:
         - Morph
         - Supermatter
+        - TegGenerator
         - StationAnchor
         - GravityGenerator
         - Nuke
+        - NukeDisk
+        - SpecialRespawn
+        - GasMiner
+        - PipeAppearance
+        - PipeColorVisuals
+        - PipeRestrictOverlap
+        - AtmosUnsafeUnanchor
+        - AtmosPipeColor
+        - PowerSupplier
+        - PowerNetworkBattery
+        - Smes
+        - Monument
         - Emitter
+        - Holopad
+        - TurretTargetSettings
         - ParticleAcceleratorEmitter
         - ContainmentFieldGenerator
         - BluespaceLocker
@@ -139,15 +167,3 @@
       - !type:GibBehavior { }
   - type: GlobalAntagonist
     antagonistPrototype: globalAntagonistMorph
-
-# Pregnant
-- type: entity
-  parent: MobMorph
-  id: MorphGhostRole
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: GhostRole
-    name: ghost-role-information-morph-cloned-name
-    description: ghost-role-information-morph-cloned-description
-    rules: ghost-role-information-morph-cloned-rules
-  - type: GhostTakeoverAvailable

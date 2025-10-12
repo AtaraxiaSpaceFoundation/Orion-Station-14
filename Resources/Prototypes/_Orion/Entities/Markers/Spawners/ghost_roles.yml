@@ -8,7 +8,7 @@
     description: ghost-role-information-morph-description
     rules: ghost-role-information-morph-rules
     mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
+    - MindRoleMorph
     raffle:
       settings: default
     requirements:

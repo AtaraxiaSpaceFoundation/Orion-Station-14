@@ -1,0 +1,7 @@
+- type: antag
+  id: Morph
+  name: roles-antag-morph-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-morph-objective
+#  guides: [ Morph ] # TODO

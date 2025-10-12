@@ -35,7 +35,7 @@ public sealed partial class MorphComponent : Component
     public DamageSpecifier DamageOnTouch = default!;
 
     [DataField]
-    public string MorphSpawnProto = "MorphGhostRole";
+    public string MorphSpawnProto = "MobMorph";
 
     [DataField]
     public float EatWeaponChanceOnHit = 0.2f;

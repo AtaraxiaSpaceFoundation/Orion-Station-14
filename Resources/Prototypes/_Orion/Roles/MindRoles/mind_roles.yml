@@ -1,0 +1,21 @@
+# Morph
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleMorph
+  name: Ghost Role (Morph)
+  components:
+  - type: MindRole
+    antagPrototype: Morph
+    roleType: TeamAntagonist
+    exclusiveAntag: true
+  - type: MorphRole
+
+# InteQ
+- type: entity
+  parent: [ BaseMindRoleAntag, MindRoleGhostRoleNeutral ]
+  id: MindRoleGhostRoleInteQAntagonist
+  name: Ghost Role (InteQ Antagonist)
+  components:
+  - type: MindRole
+    roleType: InteQ
+    antagPrototype: GenericTeamAntagonist
