@@ -8,7 +8,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-guide-entry-space-law = Космическое право
+#guide-entry-space-law = Космическое право # Orion-Remove
 guide-entry-medpatches = Медицинские пластыри
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
