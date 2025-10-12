@@ -16,3 +16,7 @@ morph-ambush-blocked = Youre too close to living things.
 devour-action-popup-message-blacklisted = You cant devour { $target }.
 
 morph-examined-strange = Looks uncanny...
+
+morph-role-greeting =
+    Devour me, devour them, and devour their families.
+    You're are morph!
