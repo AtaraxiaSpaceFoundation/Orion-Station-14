@@ -8,11 +8,12 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-guide-entry-space-law = Космическое право
+#guide-entry-space-law = Космическое право # Orion-Remove
 guide-entry-medpatches = Медицинские пластыри
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
+guide-entry-conditions = Условия раскрытия антагониста
 # Goob SOP
 # - Основные разделы
 guide-entry-sop = СОП (Стандартные операционные процедуры)

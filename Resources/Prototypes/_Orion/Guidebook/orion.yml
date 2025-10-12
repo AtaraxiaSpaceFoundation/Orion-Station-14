@@ -1,0 +1,9 @@
+- type: guideEntry
+  id: Orion
+  name: guide-entry-orion
+  text: "/ServerInfo/_Orion/Guidebook/Orion.xml"
+  priority: -1
+  children:
+  - OrionRuleset
+  - SpaceLaw
+  - OrionAntagonistGuide
