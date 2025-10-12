@@ -13,6 +13,7 @@ guide-entry-medpatches = Medical Patches
 guide-entry-rules-nrp = NRP Ruleset
 guide-entry-sm = Supermatter Engine
 guide-entry-automation = Automation
+guide-entry-conditions = Antag Revealing Conditions
 
 # Goob SOP
 # - Main Directories

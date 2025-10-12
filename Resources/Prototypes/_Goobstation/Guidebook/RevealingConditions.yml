@@ -5,6 +5,6 @@
 
 - type: guideEntry
   id: Conditions
-  name: "Antag Revealing Conditions"
-  priority: 60
+  name: guide-entry-conditions # Orion-Edit | Translate
+#  priority: 60 # Orion-Remove
   text: "/ServerInfo/_Goobstation/Guidebook/Antagonist/MetaReveal.xml"

@@ -1,22 +1,21 @@
 <Document>
-
-  # Hell Ripte
+  # Адовый Разрыв
 
   <Box>
     <GuideEntityEmbed Entity="LegionnaireBonfire" Caption=""/>
   </Box>
 
-  Hell Ripte, is a [textlink="martial art" link="MartialArts"] that focuses on ripping through crowds of demons with
-  brutal efficiency. This art can only be mastered by the slaughter demons of hell, as it requires an enormous amount of raw strength and power to master.
-  A full understanding of this art will allow you to paint the station red. None will be safe from your carnage.
+  Адовый Разрыв - это [textlink="боевое искусство" link="MartialArts"], которое основано на разрывании толп демонов с
+  brutal эффективностью. Это искусство может быть освоено только демонами резни ада, так как для его овладением требуется огромная количество грубой силы и мощи.
+  Полное понимание этого искусства позволит вам окрасить станцию в красный цвет. Никто не будет в безопасности от вашей бойни.
 
-  ## Special abilities
+  ## Особые способности
 
-  Hell Ripte masters do extreme amounts of damage in short windows, making them unmatched in hand to hand combat.
+  Мастера Адового Разрыва наносят экстремальное количество урона за короткие промежутки времени, что делает их непревзойденными в рукопашном бою.
 
-  ## Combo attacks
+  ## Комбо-атаки
 
-  ### Tear Down
+  ### Разрыв на части
 
   <Box>
     <GuideEntityEmbed Entity="GuidebookHarm" Caption=""/>
@@ -24,9 +23,9 @@
     <GuideEntityEmbed Entity="GuidebookGrab" Caption=""/>
   </Box>
 
-  Deals massive slashing damage and bleeds the target.
+  Наносит значительный режущий урон и вызывает кровотечение у цели.
 
-  ### Head Rip
+  ## Отрыв головы
 
   <Box>
     <GuideEntityEmbed Entity="GuidebookHarm" Caption=""/>
@@ -35,24 +34,24 @@
     <GuideEntityEmbed Entity="GuidebookGrab" Caption=""/>
   </Box>
 
-  Rip off the head of an opponent who is dead, very lethal. Cannot be done while target is alive.
+  Отрывает голову мертвого противника, очень смертельно. Не может быть выполнено, пока цель жива.
 
-  ### Hellish Slam
+  ### Адовый мощный удар
 
   <Box>
     <GuideEntityEmbed Entity="GuidebookDisarm" Caption=""/>
     <GuideEntityEmbed Entity="GuidebookHarm" Caption=""/>
   </Box>
 
-  Knocks an opponent down and deals heavy stamina damage. If you are downed you pull yourself up.
+  Опрокидывает противника и наносит тяжелый урон выносливости. Если вы лежите, вы поднимаете себя.
 
-  ### Drop Kick
+  ### Удар в падении
 
   <Box>
     <GuideEntityEmbed Entity="GuidebookDisarm" Caption=""/>
     <GuideEntityEmbed Entity="GuidebookDisarm" Caption=""/>
   </Box>
 
-  Launch a downed opponent. Great for painting. Cannot be done while on the ground.
+  Отбрасывает лежащего противника. Отлично подходит для "окрашивания". Не может быть выполнено на земле.
 
 </Document>

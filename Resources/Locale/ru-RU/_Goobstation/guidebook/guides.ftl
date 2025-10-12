@@ -13,6 +13,7 @@ guide-entry-medpatches = Медицинские пластыри
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
+guide-entry-conditions = Условия раскрытия антагониста
 # Goob SOP
 # - Основные разделы
 guide-entry-sop = СОП (Стандартные операционные процедуры)
