@@ -5,9 +5,9 @@
   - type: Objective
     difficulty: 1
     issuer: objective-issuer-unknown
-#  - type: RoleRequirement
-#    roles:
-#    - MorphRole
+  - type: RoleRequirement
+    roles:
+    - MorphRole
 
 - type: entity
   parent: [BaseMorphObjective, BaseSurviveObjective]

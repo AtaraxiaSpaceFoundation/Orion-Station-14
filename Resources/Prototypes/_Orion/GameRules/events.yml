@@ -90,7 +90,7 @@
       pickPlayer: false
       briefing:
         text: morph-role-greeting
-        color: "#0F3325"
+        color: "#5EA529"
       mindRoles:
       - MindRoleMorph
 

@@ -9,7 +9,7 @@
     description: ghost-role-information-morph-description
     rules: ghost-role-information-morph-rules
     mindRoles:
-    - MindRoleMorph
+    - MindRoleGhostRoleTeamAntagonist
     raffle:
       settings: short
     requirements:
