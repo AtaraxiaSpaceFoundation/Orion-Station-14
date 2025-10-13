@@ -143,6 +143,9 @@ public sealed class MorphSystem : SharedMorphSystem
     {
         _chameleon.TryReveal(ent.Owner);
 
+        if (args.HitEntities.Count <= 0)
+            return;
+
         if (!TryComp<HandsComponent>(args.HitEntities[0], out var hands))
             return;
 
@@ -190,11 +193,18 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<HungerComponent>(uid, out var hunger))
             return;
 
-        if (args.Examiner != uid)
+        if (!args.IsInDetailsRange)
             return;
 
-        var hungerCount = _hunger.GetHunger(hunger);
-        args.PushMarkup($"[color=yellow]{Loc.GetString("comp-morph-examined-hunger", ("hunger", hungerCount))}[/color]");
+        if (args.Examiner == uid)
+        {
+            var hungerCount = _hunger.GetHunger(hunger);
+            args.PushMarkup($"[color=yellow]{Loc.GetString("comp-morph-examined-hunger", ("hunger", hungerCount))}[/color]");
+        }
+        else
+        {
+            args.PushMarkup($"[color=darkgreen]{Loc.GetString("morph-examined-strange")}[/color]");
+        }
     }
 
     private void OnMimicryActivate(EntityUid uid, MorphComponent component, EventMimicryActivate args)
@@ -311,51 +321,33 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<ChameleonProjectorComponent>(uid, out var chamel))
             return;
 
-        //отвечает за запоминание энтити для мимикрии.
-        //гуманоидов запоминает отдельно т.к. их невозможно показать путём хамелеона
-        //короче мне лень эту хреноетнь выписывать. Кто будет её чинить - мои соболезнования вам
         if (TryComp<HumanoidAppearanceComponent>(args.Target, out _))
         {
-            //короче мне лень эту хреноетнь выписывать. Кто будет её чинить - мои соболезнования вам
-            //TODO: сделать морфабильность гуманоидов. Этот метод работает, но на 50%. Он спавнит зуманоида и устанавливает ему вид, но не может прицепить его
-            //вероятно, беды в прототипах
-            // var transform = Transform(uid);
-            // var target = SpawnAttachedTo("MorphHumanoidDummy", transform.Coordinates);
-            // if (!TryComp<HumanoidAppearanceComponent>(target, out var targethumanoid))
-            //     return;
-            // component.ApperanceList.Add(humanoid);
-            // if (component.ApperanceList.Count() > 5) component.ApperanceList.RemoveAt(0);
-            // _humanoid.SetAppearance(component.ApperanceList[0], targethumanoid);
+            // TODO: Implement humanoid mimicry properly
+            _popup.PopupCursor(Loc.GetString("morph-unable-to-remember-humanoid"), uid);
+            return;
         }
-        else
+
+        if (_chameleon.IsInvalid(chamel, args.Target))
         {
-            if (_chameleon.IsInvalid(chamel, args.Target))
-            {
-                _popup.PopupCursor(Loc.GetString("morph-unable-to-remember"), uid);
-                return;
-            }
-
-            if (component.MemoryObjects.Count() > 5)
-            {
-                component.MemoryObjects.RemoveAt(0);
-            }
-
-            component.MemoryObjects.Add(args.Target);
-            _popup.PopupEntity(
-                Loc.GetString("morph-remember-action-success", ("target", ToPrettyString(args.Target))),
-                uid,
-                PopupType.Medium
-            );
+            _popup.PopupCursor(Loc.GetString("morph-unable-to-remember"), uid);
+            return;
         }
+
+        if (component.MemoryObjects.Count() > 5)
+        {
+            component.MemoryObjects.RemoveAt(0);
+        }
+
+        component.MemoryObjects.Add(args.Target);
+        _popup.PopupEntity(
+            Loc.GetString("morph-remember-action-success", ("target", ToPrettyString(args.Target))),
+            uid,
+            PopupType.Medium
+        );
 
         Dirty(uid, component);
     }
-
-    //сюда надо перенести части из метода выше, а пока этот метод в комментах
-    // public void MimicryHumanoid(EntityUid morph, EntityUid humanoid, HumanoidAppearanceComponent apperance)
-    // {
-
-    // }
 
     public void MimicryNonHumanoid(Entity<ChameleonProjectorComponent> morph, EntityUid toChameleon)
     {
@@ -373,7 +365,7 @@ public sealed class MorphSystem : SharedMorphSystem
         if (_whitelistSystem.IsWhitelistFailOrNull(component.DevourWhitelist, args.Target))
             return;
 
-        if (_whitelistSystem.IsWhitelistPass(component.DevourBlacklist, args.Target))
+        if (_whitelistSystem.IsWhitelistPassOrNull(component.DevourBlacklist, args.Target))
         {
             _popup.PopupEntity(Loc.GetString("devour-action-popup-message-blacklisted", ("target", ToPrettyString(args.Target))), uid, uid);
             return;

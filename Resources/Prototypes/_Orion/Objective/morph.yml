@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseObjective
+  id: BaseMorphObjective
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: objective-issuer-unknown
+  - type: RoleRequirement
+    roles:
+    - MorphRole
+
+- type: entity
+  parent: [BaseMorphObjective, BaseSurviveObjective]
+  id: MorphSurviveObjective
+  name: Survive and reproduce.
+  components:
+  - type: Objective
+    icon:
+      sprite: _Orion/Mobs/Aliens/morph.rsi
+      state: alive
