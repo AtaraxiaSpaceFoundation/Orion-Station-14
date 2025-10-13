@@ -26,3 +26,5 @@
         - ReagentId: Plasma
           Quantity: 300
         maxVol: 300
+  - type: ScannableForPoints # Goob
+    points: 1

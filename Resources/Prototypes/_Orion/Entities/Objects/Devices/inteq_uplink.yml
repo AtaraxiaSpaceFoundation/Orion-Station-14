@@ -21,3 +21,5 @@
 #  - type: Store
 #    balance:
 #      Telecrystal: 0
+  - type: ScannableForPoints # Goob
+    points: 3

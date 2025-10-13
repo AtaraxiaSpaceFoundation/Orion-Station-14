@@ -28,3 +28,5 @@
   - type: Tag
     tags:
     - IPCMaskWearable # EE - IPCs
+  - type: ScannableForPoints # Goob
+    points: 1

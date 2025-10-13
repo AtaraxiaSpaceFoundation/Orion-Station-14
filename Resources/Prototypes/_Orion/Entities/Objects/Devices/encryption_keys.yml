@@ -4,12 +4,14 @@
   name: InteQ encryption key
   description: An encryption key used by InteQ.
   components:
-    - type: EncryptionKey
-      channels:
-      - InteQ
-      defaultChannel: InteQ
-    - type: Sprite
-      sprite: _Orion/Objects/Devices/encryption_keys.rsi
-      layers:
-      - state: crypt_brown
-      - state: inteq_label
+  - type: EncryptionKey
+    channels:
+    - InteQ
+    defaultChannel: InteQ
+  - type: Sprite
+    sprite: _Orion/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_brown
+    - state: inteq_label
+  - type: ScannableForPoints # Goob
+    points: 1

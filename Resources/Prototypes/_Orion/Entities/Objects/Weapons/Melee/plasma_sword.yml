@@ -56,6 +56,8 @@
         collection: WelderOff
     - type: Execution
       doAfterDuration: 4.0
+  - type: ScannableForPoints # Goob
+    points: 1
 
 - type: entity
   parent: BaseMeleeWeaponPlasma

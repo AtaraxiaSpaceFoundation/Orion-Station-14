@@ -9,6 +9,8 @@
   - type: Sprite
     sprite: _Orion/Objects/Misc/inteq_bur.rsi
     state: stamp-inteq
+  - type: ScannableForPoints # Goob
+    points: 1
 
 - type: entity
   parent: BoxFolderBase
@@ -35,3 +37,5 @@
     size: Small
   - type: StaticPrice # Literally Secret Docs
     price: 10000
+  - type: ScannableForPoints # Goob
+    points: 5
