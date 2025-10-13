@@ -37,6 +37,8 @@
     maxUses: 2
     languages:
       - Codespeak
+  - type: ScannableForPoints # Goob
+    points: 1
 
 - type: entity
   parent: BaseItem
@@ -53,3 +55,5 @@
     maxUses: 2
     languages:
       - OldFastCodes
+  - type: ScannableForPoints # Goob
+    points: 1

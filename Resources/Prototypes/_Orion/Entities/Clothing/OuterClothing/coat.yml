@@ -19,6 +19,8 @@
     sprite: _Orion/Clothing/OuterClothing/Coats/inteq_honorable_battle_coat.rsi
   - type: Clothing
     sprite: _Orion/Clothing/OuterClothing/Coats/inteq_honorable_battle_coat.rsi
+  - type: ScannableForPoints # Goob
+    points: 1
 
 - type: entity
   parent: [ BaseMinorContraband, ClothingOuterCoatAMG ]
