@@ -6,6 +6,7 @@
 
 using Content.Server.Medical;
 using Content.Shared._Orion.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;

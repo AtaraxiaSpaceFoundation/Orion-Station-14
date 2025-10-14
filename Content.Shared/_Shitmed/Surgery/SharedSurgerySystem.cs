@@ -17,6 +17,7 @@
 
 using System.Linq;
 using Content.Shared._Orion.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Pain.Systems;

@@ -3,7 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Orion.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Examine;
 using Content.Shared.Mind.Components;
@@ -39,11 +39,15 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
 
     private void OnExaminedInfested(Entity<CorticalBorerInfestedComponent> infected, ref ExaminedEvent args)
     {
-        if (!args.IsInDetailsRange
-            || args.Examined != args.Examiner)
+        if (!args.IsInDetailsRange)
             return;
 
         if (!infected.Comp.Borer.Comp.ControlingHost)
+            return;
+
+        args.PushMarkup(Loc.GetString("cortical-borer-infested-examine"));
+
+        if (args.Examined != args.Examiner)
             return;
 
         if (infected.Comp.ControlTimeEnd is { } cte)
