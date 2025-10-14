@@ -199,7 +199,7 @@ public sealed partial class CorticalBorerSystem
         if (args.Handled)
             return;
 
-        EndControl(host.Comp.Borer);
+        EndControl(host);
 
         args.Handled = true;
     }

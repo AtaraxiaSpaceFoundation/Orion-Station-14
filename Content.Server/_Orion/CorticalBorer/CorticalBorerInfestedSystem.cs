@@ -61,7 +61,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
             return;
 
         if(infected.Comp.Borer.Comp.ControlingHost)
-            _borer.EndControl(infected.Comp.Borer);
+            _borer.EndControl(infected);
     }
 
     private void OnBodyPartRemoved(Entity<CorticalBorerInfestedComponent> infected, ref BodyPartRemovedEvent args)
@@ -69,7 +69,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
         if (TryComp<BodyPartComponent>(args.Part, out var part) &&
             part.PartType == BodyPartType.Head)
         {
-            _borer.EndControl(infected.Comp.Borer);
+            _borer.EndControl(infected);
             _borer.TryEjectBorer(infected.Comp.Borer);
         }
     }
@@ -78,7 +78,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
     {
         if (infected.Comp.Borer.Comp.ControlingHost)
         {
-            _borer.EndControl(infected.Comp.Borer);
+            _borer.EndControl(infected);
             _borer.TryEjectBorer(infected.Comp.Borer);
         }
     }

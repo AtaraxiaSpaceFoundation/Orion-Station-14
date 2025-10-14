@@ -4,6 +4,8 @@
   name: cortical borer
   description: Worm that burrows into brains.
   components:
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggleOff
   - type: VentCrawler
   - type: GhostRole
     makeSentient: true
@@ -77,7 +79,7 @@
     activateSound: null
     deactivateSound: null
   - type: CorticalBorer
-    eggProto: "CorticalBorerEgg"
+    eggProto: CorticalBorerEgg
     addOnInfest:
     - type: PressureImmunity
     removeOnInfest:
