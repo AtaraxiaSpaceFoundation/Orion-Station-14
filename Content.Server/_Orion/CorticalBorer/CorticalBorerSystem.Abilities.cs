@@ -4,8 +4,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Shared.Devil;
+using Content.Goobstation.Shared.SlaughterDemon;
 using Content.Server.Medical;
 using Content.Shared._Orion.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer.Components;
+using Content.Shared._Orion.Morph;
+using Content.Shared._White.Xenomorphs.Xenomorph;
 using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
@@ -69,8 +74,7 @@ public sealed partial class CorticalBorerSystem
             return;
         }
 
-        // anything with bloodstream, BUT NOT BORER
-        if (!HasComp<BloodstreamComponent>(target) || HasComp<CorticalBorerComponent>(target))
+        if (IsInvalidHost(target))
         {
             Popup.PopupEntity(Loc.GetString("cortical-borer-invalid-host", ("target", targetIdentity)), uid, uid, PopupType.Medium);
             return;
@@ -102,6 +106,17 @@ public sealed partial class CorticalBorerSystem
         };
 
         _doAfter.TryStartDoAfter(infestArgs);
+    }
+
+    // anything with bloodstream, BUT NOT THIS!!!
+    private bool IsInvalidHost(EntityUid target)
+    {
+        return !HasComp<BloodstreamComponent>(target) ||
+               HasComp<CorticalBorerComponent>(target) ||
+               HasComp<MorphComponent>(target) ||
+               HasComp<DevilComponent>(target) ||
+               HasComp<SlaughterDemonComponent>(target) ||
+               HasComp<XenomorphComponent>(target);
     }
 
     private void OnInfestDoAfter(Entity<CorticalBorerComponent> ent, ref CorticalInfestDoAfterEvent args)
@@ -199,7 +214,7 @@ public sealed partial class CorticalBorerSystem
         if (args.Handled)
             return;
 
-        EndControl(host.Comp.Borer);
+        EndControl(host);
 
         args.Handled = true;
     }

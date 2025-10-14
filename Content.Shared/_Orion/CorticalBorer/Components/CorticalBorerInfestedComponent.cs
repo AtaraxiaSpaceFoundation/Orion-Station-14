@@ -3,13 +3,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.GameStates;
 using Robust.Shared.Containers;
+using Robust.Shared.GameStates;
 
-namespace Content.Shared._Orion.CorticalBorer;
+namespace Content.Shared._Orion.CorticalBorer.Components;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class CorticalBorerInfestedComponent : Robust.Shared.GameObjects.Component
+public sealed partial class CorticalBorerInfestedComponent : Component
 {
     /// <summary>
     /// Borer in the person
@@ -46,4 +46,4 @@ public sealed partial class CorticalBorerInfestedComponent : Robust.Shared.GameO
 }
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class SurgeryCorticalBorerConditionComponent : Robust.Shared.GameObjects.Component;
+public sealed partial class SurgeryCorticalBorerConditionComponent : Component;

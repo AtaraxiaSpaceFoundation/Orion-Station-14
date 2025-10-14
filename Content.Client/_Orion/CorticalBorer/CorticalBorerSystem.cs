@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Orion.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared.Alert.Components;
 
 namespace Content.Client._Orion.CorticalBorer;
