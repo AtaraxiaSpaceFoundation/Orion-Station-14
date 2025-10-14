@@ -103,10 +103,10 @@
   cost: 12
   reagent: MuteToxin
 
-- type: borerChemical
-  id: borerCharcoal
-  cost: 5
-  reagent: Charcoal
+#- type: borerChemical # Removed because purge chemicals (sugar)
+#  id: borerCharcoal
+#  cost: 5
+#  reagent: Charcoal
 
 - type: borerChemical
   id: borerHappiness
