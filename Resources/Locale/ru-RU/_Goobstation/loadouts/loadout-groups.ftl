@@ -128,7 +128,7 @@ loadout-group-bartender-envirosuit = экокостюм бармена
 loadout-group-lawyer-envirohelm = экошлем адвоката
 loadout-group-lawyer-envirosuit = экокостюм адвоката
 loadout-group-lawyer-envirogloves = экоперчатки адвоката
-# Nanotrasen Representative
+# NanoTrasen Representative
 loadout-group-ntr-envirohelm = экошлем представителя НаноТрейзен
 loadout-group-ntr-envirosuit = экокостюм представителя НаноТрейзен
 loadout-group-ntr-envirogloves = экоперчатки представителя НаноТрейзен

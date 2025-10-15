@@ -1,4 +1,3 @@
 shadowling-destroy-engines-sender = Кошмар
-shadowling-destroy-engines-message = Вмешательство не требуется. Двигатели прислушались к нашему влиянию и подчинились.
-shadowling-destroy-engines-delay = Трансфер будет задержан на {$time} минут.
-
+shadowling-destroy-engines-message = Вмешательство не требуется. Двигатели подчинились.
+shadowling-destroy-engines-delay = Шаттл будет задержан на { $time } минут.
