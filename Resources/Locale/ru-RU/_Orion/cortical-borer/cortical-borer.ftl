@@ -24,5 +24,7 @@ cortical-borer-ghostrole-name = Кортикальный Паразит
 cortical-borer-ghostrole-desc = Космический червь с единственной целью в жизни - проникать в головы людей и откладывать свои яйца.
 
 ## Examine Text
+cortical-borer-infested-examine = [color=#d842fc]Движения выглядят крайне неестественно...[/color]
+
 infested-control-examined = Осталось [color=#d842fc]{$timeremaining}[/color] секунд, управления этим телом.
 cortical-borer-self-examine = Доступно [color=#d842fc]{$chempoints}[/color] химикатов.

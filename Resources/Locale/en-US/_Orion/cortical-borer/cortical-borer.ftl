@@ -24,5 +24,7 @@ cortical-borer-ghostrole-name = Cortical Borer
 cortical-borer-ghostrole-desc = A space worm with the sole purpose in life to enter peoples heads and lay its eggs.
 
 ## Examine Text
+cortical-borer-infested-examine = [color=#d842fc]Movements look extremely unnatural...[/color]
+
 infested-control-examined = You have [color=#d842fc]{$timeremaining}[/color] seconds left controlling this body.
 cortical-borer-self-examine = You have [color=#d842fc]{$chempoints}[/color] chemicals.
