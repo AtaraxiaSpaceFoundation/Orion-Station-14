@@ -37,7 +37,7 @@
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidEyes
+    Eyes: MobXenomorphHybridEyes
     LArm: MobXenomorphHybridLArm
     RArm: MobXenomorphHybridRArm
     LHand: MobXenomorphHybridLHand
@@ -79,6 +79,12 @@
     Undershirt:
       points: 1
       required: false
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridEyes
+  baseSprite:
+    sprite: Mobs/Customization/eyes.rsi
+    state: no_eyes
 
 - type: humanoidBaseSprite
   id: MobXenomorphHybridHead

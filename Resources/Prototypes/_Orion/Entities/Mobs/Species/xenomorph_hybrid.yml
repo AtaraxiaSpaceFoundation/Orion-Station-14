@@ -7,6 +7,9 @@
   components:
   - type: HumanoidAppearance
     species: XenomorphHybrid
+  - type: XenoCompatible # Can use xenomorph organs - roundstart
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggleXenomorph
   - type: Hunger
   - type: Puller
     needsHands: false
@@ -20,15 +23,15 @@
   - type: Butcherable
     butcheringType: Spike
     spawned:
-    - id: FoodMeatLizard # CHANGE
+    - id: FoodMeatXeno
       amount: 5
   - type: LizardAccent
   - type: Speech
-    speechSounds: Lizard # CHANGE
-#    speechVerb: XenomorphHybrid # CHANGE
+    speechSounds: Xenomorph
+    speechVerb: XenomorphHybrid
     allowedEmotes: ['Thump']
   - type: TypingIndicator
-    proto: lizard # CHANGE
+    proto: alien
   - type: Vocal
     sounds:
       Male: MaleXenomorphHybrid
@@ -37,15 +40,24 @@
   - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic
-    - Draconic
+    - Xeno
     understands:
     - TauCetiBasic
+    - Xeno
+    - Hissing
     - Draconic
   - type: BodyEmotes
     soundsId: XenomorphHybridBodyEmotes
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Scale # CHANGE
+  - type: MobThresholds
+    stateAlertDict:
+      Alive: XenomorphHealth
+      Critical: XenomorphCrit
+      Dead: XenomorphDead
+  - type: Deathgasp
+    prototype: XenomorphDeathgasp
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
@@ -98,7 +110,8 @@
   - type: Consciousness # Idk they are kinda more resistant to pain
     threshold: 105
     cap: 210
-  # Goobstation
+  - type: ZombieImmune # Incompatible biology
+  - type: Uncloneable # Cant be easy cloned
   - type: Tag
     tags:
     - CanPilot
