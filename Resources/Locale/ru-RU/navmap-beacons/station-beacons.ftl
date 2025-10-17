@@ -25,7 +25,6 @@ station-beacon-morgue = Морг
 station-beacon-surgery = Операционная
 station-beacon-psychology = Психолог
 station-beacon-clinic = Клиника
-station-beacon-paramedic = Парамедик
 station-beacon-science = Научный отдел
 station-beacon-paramedic = Парамедик
 station-beacon-research-and-development = РНД
