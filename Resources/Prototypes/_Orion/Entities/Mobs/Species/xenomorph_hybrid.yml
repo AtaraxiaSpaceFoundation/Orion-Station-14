@@ -1,0 +1,141 @@
+- type: entity
+  save: false
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobXenomorphHybrid
+  name: Urist McXenomorph
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: XenomorphHybrid
+  - type: Hunger
+  - type: Puller
+    needsHands: false
+  - type: Thirst
+  - type: Icon
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: full
+  - type: Body
+    prototype: XenomorphHybrid
+    requiredLegs: 2
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatLizard # CHANGE
+      amount: 5
+  - type: LizardAccent
+  - type: Speech
+    speechSounds: Lizard # CHANGE
+#    speechVerb: XenomorphHybrid # CHANGE
+    allowedEmotes: ['Thump']
+  - type: TypingIndicator
+    proto: lizard # CHANGE
+  - type: Vocal
+    sounds:
+      Male: MaleXenomorphHybrid
+      Female: FemaleXenomorphHybrid
+      Unsexed: MaleXenomorphHybrid
+  - type: LanguageKnowledge # Einstein Engines - Languages
+    speaks:
+    - TauCetiBasic
+    - Draconic
+    understands:
+    - TauCetiBasic
+    - Draconic
+  - type: BodyEmotes
+    soundsId: XenomorphHybridBodyEmotes
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scale # CHANGE
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: Temperature
+    heatDamageThreshold: 400
+    coldDamageThreshold: 285
+    currentTemperature: 310.15
+    specificHeat: 42
+    coldDamage:
+      types:
+        Cold : 0.1 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat : 1.5 #per second, scales with temperature & other constants
+  - type: TemperatureSpeed
+    thresholds:
+      301: 0.8
+      295: 0.6
+      285: 0.4
+#  - type: Wagging # TODO: Animate Tail
+  - type: Inventory
+    speciesId: xenomorph-hybrid
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
+  - type: Consciousness # Idk they are kinda more resistant to pain
+    threshold: 105
+    cap: 210
+  # Goobstation
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - AnomalyHost
+    - ReptilianEmotes # Hiss itc.
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobXenomorphHybridDummy
+  categories: [ HideSpawnMenu ]
+  description: A dummy XenomorphHybrid meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: XenomorphHybrid
+  - type: Inventory
+    speciesId: xenomorph-hybrid
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes

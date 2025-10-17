@@ -1,0 +1,6 @@
+- type: entity
+  parent: BaseMobXenomorphHybrid
+  id: MobXenomorphHybrid
+  save: false
+  name: Urist McXenomorph
+  suffix: Xenomorph Hybrid

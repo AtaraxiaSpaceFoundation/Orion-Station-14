@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: NamesXenomorphHybridMale
+  values:
+    prefix: names-xenomorph-hybrid-male-dataset-
+    count: 69

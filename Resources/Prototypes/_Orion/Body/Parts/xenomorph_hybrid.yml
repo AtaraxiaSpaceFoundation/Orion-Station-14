@@ -1,0 +1,141 @@
+# TODO: Add descriptions (many)
+# TODO BODY: Part damage
+- type: entity
+  parent: [BaseItem, BasePart]
+  id: PartXenomorphHybrid
+  name: xenomorph hybrid body part
+  abstract: true
+  components:
+  - type: Icon # Shitmed Change
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+  - type: BodyPart # Shitmed Change
+    species: XenomorphHybrid
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: Blood
+        Quantity: 10
+  - type: Damageable # Shitmed
+    damageModifierSet: Scale
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseChest]
+  id: ChestXenomorphHybrid
+  name: xenomorph hybrid chest
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "chest_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: Blood
+        Quantity: 20
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseGroin]
+  id: GroinXenomorphHybrid
+  name: xenomorph hybrid groin
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "groin_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: Blood
+        Quantity: 20
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseHead]
+  id: HeadXenomorphHybrid
+  name: xenomorph hybrid head
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "head_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: Blood
+        Quantity: 10
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseLeftArm]
+  id: LeftArmXenomorphHybrid
+  name: left xenomorph hybrid arm
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "l_arm"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseRightArm]
+  id: RightArmXenomorphHybrid
+  name: right xenomorph hybrid arm
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "r_arm"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseLeftHand]
+  id: LeftHandXenomorphHybrid
+  name: left xenomorph hybrid hand
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "l_hand"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseRightHand]
+  id: RightHandXenomorphHybrid
+  name: right xenomorph hybrid hand
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "r_hand"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseLeftLeg]
+  id: LeftLegXenomorphHybrid
+  name: left xenomorph hybrid leg
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "l_leg"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseRightLeg]
+  id: RightLegXenomorphHybrid
+  name: right xenomorph hybrid leg
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "r_leg"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseLeftFoot]
+  id: LeftFootXenomorphHybrid
+  name: left xenomorph hybrid foot
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "l_foot"
+
+- type: entity
+  parent: [PartXenomorphHybrid, BaseRightFoot]
+  id: RightFootXenomorphHybrid
+  name: right xenomorph hybrid foot
+  components:
+  - type: Sprite
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: "r_foot"

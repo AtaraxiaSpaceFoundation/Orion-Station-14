@@ -1,0 +1,55 @@
+- type: body
+  name: xenomorph hybrid
+  id: XenomorphHybrid
+  root: chest
+  slots:
+    head:
+      part: HeadXenomorphHybrid
+      connections:
+      - chest
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    chest:
+      part: ChestXenomorphHybrid
+      organs:
+        heart: OrganAnthroAnimalHeart # Orion-Edit
+        lungs: OrganHumanLungs
+      connections:
+      - right arm
+      - left arm
+      - groin
+      - head # Shitmed
+    groin:
+      part: GroinXenomorphHybrid
+      connections:
+      - right leg
+      - left leg
+      organs:
+        stomach: OrganReptilianStomach # TODO: Xenomorph Stomach
+        liver: OrganAnthroAnimalLiver # Orion-Edit
+        kidneys: OrganHumanKidneys
+    right arm:
+      part: RightArmXenomorphHybrid
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmXenomorphHybrid
+      connections:
+      - left hand
+    right hand:
+      part: RightHandXenomorphHybrid
+    left hand:
+      part: LeftHandXenomorphHybrid
+    right leg:
+      part: RightLegXenomorphHybrid
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegXenomorphHybrid
+      connections:
+      - left foot
+    right foot:
+      part: RightFootXenomorphHybrid
+    left foot:
+      part: LeftFootXenomorphHybrid
