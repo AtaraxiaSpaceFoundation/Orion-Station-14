@@ -12,12 +12,12 @@ reagent-effect-guidebook-blind-non-sling =
     { $chance ->
         [1] Ослепляет любого
        *[other] ослепить любого
-    } не шедоулинга
+    } не Кошмара
 reagent-effect-guidebook-heal-sling =
     { $chance ->
         [1] Исцеляет любого
        *[other] исцелить любого
-    } шедоулинга и тралла
+    } кошмара и трэлла
 marking-LesserShadowlingEyes = Глаза низшего Кошмара
 marking-AbominationHorns = Рога чудовища
 marking-AbominationTorso = Туловище чудовища
