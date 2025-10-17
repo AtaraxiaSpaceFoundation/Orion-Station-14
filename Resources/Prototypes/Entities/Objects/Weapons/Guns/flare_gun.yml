@@ -37,7 +37,7 @@
   - type: ItemSlots
     slots:
       gun_chamber:
-        name: Chamber
+#        name: Chamber # Orion-Edit | Localization
         startingItem: ShellShotgunFlare
         priority: 1
         whitelist:
@@ -103,7 +103,7 @@
   - type: ItemSlots
     slots:
       gun_chamber:
-        name: Chamber
+#        name: Chamber # Orion-Edit | Localization
         priority: 1
         whitelist:
           tags:

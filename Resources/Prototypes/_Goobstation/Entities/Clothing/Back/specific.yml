@@ -133,12 +133,12 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
+#        name: Magazine # Orion-Edit | Localization
         whitelist:
           tags:
           - MilitaryPowerCellLMG
       item:
-        name: LMG
+#        name: LMG # Orion-Edit | Localization
         priority: 2
         startingItem: WeaponLaserLMG
         whitelist:

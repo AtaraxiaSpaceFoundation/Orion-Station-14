@@ -166,7 +166,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
+#        name: Magazine # Orion-Edit | Localization
         startingItem: MagazineAntiMateriel
         insertSound: /Audio/Weapons/Guns/MagIn/rifle_load.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
@@ -176,7 +176,7 @@
           - MagazineAntiMateriel
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-        name: Chamber
+#        name: Chamber # Orion-Edit | Localization
         startingItem: CartridgeAntiMateriel
         priority: 1
         whitelist:

@@ -353,7 +353,7 @@
   - type: ItemSlots
     slots:
       disk_slot:
-        name: Disk
+#        name: Disk # Orion-Edit | Localization
         insertSound:
           path: /Audio/Machines/terminal_insert_disc.ogg
         ejectSound:

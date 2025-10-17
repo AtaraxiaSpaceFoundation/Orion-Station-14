@@ -1,40 +1,29 @@
-shadowling-enthrall-non-humanoid = Это не то, что вы ищете...
-shadowling-enthrall-mindshield = Они могут бросить вызов твоим силам!
-shadowling-enthrall-already-thrall = Он уже ваш трелл!
-shadowling-enthrall-shadowling = Вы не можете увлечь себе подобных!
-shadowling-enthrall-psionic-insulated = Их сущность пылает неподвластной вам силой!
-shadowling-enthrall-dead = Они нужны вам живыми!
-
-shadowling-target-being-thralled = Темное присутствие захватывает твой разум...!
-
-shadowling-glare-target = Ваше тело сжимается, когда на вас устремляется потусторонний взгляд.
-
-shadowling-shadow-walk-activate = Я исчезаю в лучах света.
-
-shadowling-icy-veins-activated = Неестественный холод охватывает ваши конечности...
-
-shadowling-rapid-rehatch-complete = Оболочка содрогается, и из нее ты возрождаешься невредимым.
-
-shadowling-destroy-engines-used = Трансфер уже был задержан кем-то другим.
-shadowling-destroy-engines-arrived = Ваши способности не позволяют вам уничтожить двигатели!
-shadowling-destroy-engines-not-called = Трансфер еще не был вызван.
-
-shadowling-collective-mind-success = Ты чувствуешь себя сильнее, чем раньше! Вам нужно ещё {$thralls} треллов, стремящихся обрести свой истинный облик!
-shadowling-collective-mind-failure = Ты ничего не чувствуешь. Тебе нужно ещё {$thralls} треллов, стремящихся обрести свой истинный облик.
-shadowling-collective-mind-ascend = Ты обрел все силы... Теперь - вознесение!
-
-shadowling-sonic-screech-complete = Воздух раскалывается от твоего крика.
-
-shadowling-null-charge-success = Ваш удар эхом разносится по проводам, когда энергия уходит в пустоту.
-shadowling-null-charge-start = Вы начинаете заряжать свой кулак с уничтожающей силой.
-
-shadowling-black-rec-lesser-already = Цель уже является Младшим-Кошмаром.
-shadowling-black-rec-revive-done = Темнота оттягивает тебя от края пропасти.
-shadowling-black-rec-lesser-done = Ты чувствуешь себя еще сильнее, чем раньше.
-shadowling-black-rec-limit = Вы достигли своего предела. Вы больше не можете наделять треллов силой!
-
-shadowling-ascendant-broadcast-dialog = Ваше сообщение было разослано всем.
-
-shadowling-nox-imperii-done = Больше не преследуемый светом, ты шагаешь туда, где увяли твои предки.
-
-shadowling-ascendance-fail = Вы не можете построить свой кокон на этой плитке.
+shadowling-enthrall-non-humanoid = Это не то, что тебе нужно...
+shadowling-enthrall-mindshield = Они могут противостоять твоим силам!
+shadowling-enthrall-already-thrall = Они уже твои Трэллы!
+shadowling-enthrall-cant-be-controlled = Их разум невозможно подчинить...
+shadowling-enthrall-no-mind = Это просто пустая оболочка...
+shadowling-enthrall-shadowling = Ты не можешь поработить своего сородича!
+shadowling-enthrall-psionic-insulated = Их сущность пылает силой, неподвластной тебе!
+shadowling-enthrall-dead = Они должны быть живы!
+shadowling-target-being-thralled = Тёмное присутствие удерживает твой разум...
+shadowling-glare-target = Твоё тело замирает, когда потусторонний взгляд пронзает тебя.
+shadowling-shadow-walk-activate = Я исчезаю между вздохами света.
+shadowling-icy-veins-activated = Неестественный холод сковывает твои конечности...
+shadowling-rapid-rehatch-complete = Оболочка содрогается, и из неё ты рождаешься вновь, невредимым.
+shadowling-destroy-engines-used = Шаттл уже был задержан кем-то другим.
+shadowling-destroy-engines-arrived = Твои силы не позволяют уничтожить двигатели!
+shadowling-destroy-engines-not-called = Шаттл ещё не был вызван.
+shadowling-collective-mind-success = Ты чувствуешь себя сильнее, чем прежде! Тебе нужно { $thralls } Трэллов, чтобы достичь своей истинной формы!
+shadowling-collective-mind-failure = Ты ничего не чувствуешь. Тебе нужно { $thralls } Трэллов, чтобы достичь своей истинной формы.
+shadowling-collective-mind-ascend = Ты обрёл силу... Теперь — вознесись!
+shadowling-sonic-screech-complete = Воздух разрывается от твоего крика.
+shadowling-null-charge-success = Твоё воздействие отзывается эхом по проводам, когда энергия уступает пустоте.
+shadowling-null-charge-start = Ты начинаешь заряжать кулак уничтожающей силой.
+shadowling-black-rec-lesser-already = Цель уже является младшим Кошмаром.
+shadowling-black-rec-revive-done = Тьма вытягивает тебя обратно с обрыва гибели.
+shadowling-black-rec-lesser-done = Ты чувствуешь себя ещё сильнее, чем прежде.
+shadowling-black-rec-limit = Ты достиг предела. Больше Трэллов усилить невозможно!
+shadowling-ascendant-broadcast-dialog = Твоё послание отправлено всем.
+shadowling-nox-imperii-done = Ты больше не добыча света, теперь ты ходишь там, где твои предки увядали.
+shadowling-ascendance-fail = Здесь ты не можешь создать свой кокон.

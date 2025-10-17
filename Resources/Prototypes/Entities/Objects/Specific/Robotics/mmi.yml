@@ -183,7 +183,7 @@
   - type: ItemSlots
     slots:
       brain_slot:
-        name: "Brain"
+#        name: "Brain" # Orion-Edit | Localization
         startingItem: OrganHumanBrain
         whitelist:
           components:

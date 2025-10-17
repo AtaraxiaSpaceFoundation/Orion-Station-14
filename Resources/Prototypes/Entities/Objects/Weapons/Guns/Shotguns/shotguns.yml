@@ -171,7 +171,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
+#        name: Magazine # Orion-Edit | Localization
         startingItem: MagazineShotgun
         priority: 2
         whitelist:
