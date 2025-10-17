@@ -110,5 +110,5 @@ ntr-console-no-solution = Не удалось найти раствор { $solut
 ntr-console-missing-reagent = В мензурке отсутствует реагент { $reagent }.
 ntr-console-insufficient-reagent-debug = Недостаточно реагента. Требуется: { $requiredReagent }, найдено: { $actualReagent }. Требуемое количество: { $required }, фактическое: { $actual }.
 ntr-console-task-fail = Не удалось загрузить задачу.
-ntr-bounty-console-menu-title = Консоль заданий ПNT
+ntr-bounty-console-menu-title = Консоль заданий ПНТ
 ntr-bounty-console-print-button = Принять
