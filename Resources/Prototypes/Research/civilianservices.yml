@@ -122,6 +122,7 @@
   tier: 1
   cost: 7500
   recipeUnlocks:
+    - ConfettiGrenade # Orion
     - ComputerTelevisionCircuitboard
     - SynthesizerInstrument
     - DawInstrumentMachineCircuitboard
