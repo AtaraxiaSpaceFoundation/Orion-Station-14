@@ -1,0 +1,10 @@
+- type: entity
+  parent: MobXenomorphHybrid
+  id: MobXenomorphHybridRandom
+  name: Urist McXenomorph
+  suffix: Random Appearance
+  components:
+  - type: RandomHumanoidAppearance
+  - type: RandomMetadata
+    nameSegments:
+    - NamesXenomorphHybridMale

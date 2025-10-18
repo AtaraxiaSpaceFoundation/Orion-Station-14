@@ -1,0 +1,189 @@
+- type: species
+  id: XenomorphHybrid
+  name: species-name-xenomorph-hybrid
+  roundStart: true
+  prototype: MobXenomorphHybrid
+  sprites: MobXenomorphHybridSprites
+  defaultSkinTone: "#34a223"
+  markingLimits: MobXenomorphHybridMarkingLimits
+  dollPrototype: MobXenomorphHybridDummy
+  skinColoration: Hues
+  maleFirstNames: NamesXenomorphHybridMale
+  femaleFirstNames: NamesXenomorphHybridFemale
+  naming: FirstDashFirst
+  # Orion-Start
+  category: Classic
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/XenomorphHybrid.xml"
+  pros: # Filler
+  - Имеют большую толерантность к боли.
+  - Могут таскать предметы хвостом.
+  special: # Filler
+  - Имеют отличимый от других рас порог температуры. При низкой температуре получают 0.1 холода в секунду. При высокой температуре получают 1.5 ожогов в секунду.
+  - Имеет животный желудок.
+  cons: # Filler
+  - На 30% чувствительнее к холоду, чем человек.
+  # Orion-End
+
+- type: speciesBaseSprites
+  id: MobXenomorphHybridSprites
+  sprites:
+    Head: MobXenomorphHybridHead
+    Face: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    Underwear: MobHumanoidAnyMarking
+    Undershirt: MobHumanoidAnyMarking
+    Chest: MobXenomorphHybridChest
+    Groin: MobXenomorphHybridGroin
+    HeadTop: MobHumanoidAnyMarking
+    HeadSide: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
+    Eyes: MobXenomorphHybridEyes
+    LArm: MobXenomorphHybridLArm
+    RArm: MobXenomorphHybridRArm
+    LHand: MobXenomorphHybridLHand
+    RHand: MobXenomorphHybridRHand
+    LLeg: MobXenomorphHybridLLeg
+    RLeg: MobXenomorphHybridRLeg
+    LFoot: MobXenomorphHybridLFoot
+    RFoot: MobXenomorphHybridRFoot
+
+- type: markingPoints
+  id: MobXenomorphHybridMarkingLimits
+  onlyWhitelisted: true
+  points:
+    Hair:
+      points: 0
+      required: false
+    FacialHair:
+      points: 0
+      required: false
+    Tail:
+      points: 1
+      required: false
+#      defaultMarkings: [ XenomorphTailSmooth ]
+    Snout:
+      points: 1
+      required: false
+    HeadTop:
+      points: 1
+      required: false
+    HeadSide:
+      points: 1
+      required: false
+    Chest:
+      points: 8
+      required: false
+    Underwear:
+      points: 1
+      required: false
+    Undershirt:
+      points: 1
+      required: false
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridEyes
+  baseSprite:
+    sprite: Mobs/Customization/eyes.rsi
+    state: no_eyes
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridHead
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridHeadMale
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridHeadFemale
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridChest
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: chest_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridChestMale
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: chest_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridChestFemale
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: chest_f
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridGroin
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridGroinMale
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridGroinFemale
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: groin_f
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLLeg
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLHand
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLArm
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridLFoot
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRLeg
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRHand
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRArm
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobXenomorphHybridRFoot
+  baseSprite:
+    sprite: _Orion/Mobs/Species/XenomorphHybrid/parts.rsi
+    state: r_foot
