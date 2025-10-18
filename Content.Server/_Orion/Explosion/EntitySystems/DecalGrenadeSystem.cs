@@ -1,19 +1,14 @@
 using System.Numerics;
-using Content.Server.Decals;
 using Content.Server._Orion.Explosion.Components;
+using Content.Server.Decals;
 using Content.Server.Explosion.EntitySystems;
-using Robust.Server.GameObjects;
 using Robust.Shared.Random;
-using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 
 namespace Content.Server._Orion.Explosion.EntitySystems
 {
     public sealed class DecalGrenadeSystem : EntitySystem
     {
         [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly DecalSystem _decalSystem = default!;
 
         public override void Initialize()
@@ -30,7 +25,7 @@ namespace Content.Server._Orion.Explosion.EntitySystems
         {
             var component = entity.Comp;
 
-            if (component.DecalPrototypes == null || component.DecalPrototypes.Count == 0)
+            if (component.DecalPrototypes.Count == 0)
                 return;
 
             SpawnDecals(entity.Owner, component);
@@ -42,33 +37,32 @@ namespace Content.Server._Orion.Explosion.EntitySystems
         /// </summary>
         private void SpawnDecals(EntityUid grenadeUid, DecalGrenadeComponent component)
         {
-            if (!TryComp<TransformComponent>(grenadeUid, out var grenadeXform))
+            if (!TryComp(grenadeUid, out TransformComponent? grenadeXform))
                 return;
 
             var grenadePosition = grenadeXform.Coordinates;
 
-            for (int i = 0; i < component.DecalCount; i++)
+            for (var i = 0; i < component.DecalCount; i++)
             {
-                float radius = component.DecalRadius * _random.NextFloat();
+                var radius = component.DecalRadius * (_random.NextFloat() + 0.1f);
+                var angle = _random.NextFloat() * MathF.Tau;
 
-                float angle = _random.NextFloat() * MathF.Tau;
-
-                Vector2 offset = new Vector2(
+                var offset = new Vector2(
                     radius * MathF.Cos(angle),
                     radius * MathF.Sin(angle));
 
-                EntityCoordinates decalPosition = grenadePosition.Offset(offset);
+                var decalPosition = grenadePosition.Offset(offset);
 
-                string? decalPrototype = component.GetRandomDecal();
+                if (component.DecalPrototypes.Count == 0)
+                    continue;
 
-                if (decalPrototype != null)
-                {
-                    _decalSystem.TryAddDecal(
-                        decalPrototype,
-                        decalPosition,
-                        out _,
-                        cleanable: true);
-                }
+                var decalPrototype = component.DecalPrototypes[_random.Next(component.DecalPrototypes.Count)];
+
+                _decalSystem.TryAddDecal(
+                    decalPrototype,
+                    decalPosition,
+                    out _,
+                    cleanable: true);
             }
         }
     }

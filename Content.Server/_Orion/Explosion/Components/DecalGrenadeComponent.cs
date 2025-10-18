@@ -1,6 +1,4 @@
 using Content.Server._Orion.Explosion.EntitySystems;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Server._Orion.Explosion.Components;
 
@@ -10,8 +8,6 @@ namespace Content.Server._Orion.Explosion.Components;
 [RegisterComponent, Access(typeof(DecalGrenadeSystem))]
 public sealed partial class DecalGrenadeComponent : Component
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-
     /// <summary>
     /// The kinds of decals to spawn on explosion.
     /// </summary>
@@ -29,12 +25,4 @@ public sealed partial class DecalGrenadeComponent : Component
     /// </summary>
     [DataField]
     public float DecalRadius = 3f;
-
-    public string? GetRandomDecal()
-    {
-        if (DecalPrototypes == null || DecalPrototypes.Count == 0)
-            return null;
-
-        return DecalPrototypes[_random.Next(DecalPrototypes.Count)];
-    }
 }
