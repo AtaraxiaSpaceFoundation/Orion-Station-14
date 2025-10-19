@@ -16,9 +16,9 @@
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobDwarfDummy
   skinColoration: HumanToned
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Dwarf.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Dwarf.xml"
   pros:
   - Обладают врождённой чувствительностью к наличию рудоносных жил в радиусе 3х метров.
   - Этанол лечит на 0.66 уколов и ушибов и на 0.68 порезов, при наличии менее 5 единиц в организме.
@@ -27,7 +27,7 @@
   - Не может быть вызвана рвота от алкоголя.
   cons:
   - Дышат чаще в 2 раза, следовательно без воздуха получают по 2 урона удушьем.
-  # Europa-End
+  # Orion-End
   # begin Goobstation: port EE height/width sliders
   sizeRatio: 1.3
   minHeight: 0.75

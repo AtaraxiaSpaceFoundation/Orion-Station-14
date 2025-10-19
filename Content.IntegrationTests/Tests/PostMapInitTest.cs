@@ -208,7 +208,7 @@ namespace Content.IntegrationTests.Tests
             "Bagel",
             "CentComm",
             "Box",
-            "Europa", // Goobstation - Readds Europa
+            "Orion", // Goobstation - Readds Orion
             "Atlas", // Goobstation - Readds Atlas
             "Core",
             "Marathon",

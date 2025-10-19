@@ -146,15 +146,15 @@
     - /Audio/Lobby/marhaba.ogg
     - /Audio/Lobby/the_future_soon.ogg
     - /Audio/Lobby/horn.ogg
-    # Europa-Start
-    - /Audio/_Europa/Jukebox/BritishSeaPower/BritishSeaPower_EcstaticVibrations.ogg
-    - /Audio/_Europa/Jukebox/ChrisHadfield/ChrisHadfield_SpaceOddity.ogg
-    - /Audio/_Europa/Jukebox/DavidBowie/DavidBowie_Starman.ogg
-    - /Audio/_Europa/Jukebox/DavidBowie/DavidBowie_TheManWhoSoldTheWorld.ogg
-    - /Audio/_Europa/Jukebox/KarenO/KarenO_Drown.ogg
-    - /Audio/_Europa/Jukebox/Plamenev/Plamenev_BigLove.ogg
-    - /Audio/_Europa/Jukebox/SurfCurse/SurfCurse_Freaks.ogg
-    - /Audio/_Europa/Jukebox/TheCaretaker/TheCaretaker_ItsJustBurningMemory.ogg
-    - /Audio/_Europa/Jukebox/TheRareOccasions/TheRareOccasions_Notion.ogg
-    - /Audio/_Europa/Jukebox/Ween/Ween_OceanMan.ogg
-    # Europa-End
+    # Orion-Start
+    - /Audio/_Orion/Jukebox/BritishSeaPower/BritishSeaPower_EcstaticVibrations.ogg
+    - /Audio/_Orion/Jukebox/ChrisHadfield/ChrisHadfield_SpaceOddity.ogg
+    - /Audio/_Orion/Jukebox/DavidBowie/DavidBowie_Starman.ogg
+    - /Audio/_Orion/Jukebox/DavidBowie/DavidBowie_TheManWhoSoldTheWorld.ogg
+    - /Audio/_Orion/Jukebox/KarenO/KarenO_Drown.ogg
+    - /Audio/_Orion/Jukebox/Plamenev/Plamenev_BigLove.ogg
+    - /Audio/_Orion/Jukebox/SurfCurse/SurfCurse_Freaks.ogg
+    - /Audio/_Orion/Jukebox/TheCaretaker/TheCaretaker_ItsJustBurningMemory.ogg
+    - /Audio/_Orion/Jukebox/TheRareOccasions/TheRareOccasions_Notion.ogg
+    - /Audio/_Orion/Jukebox/Ween/Ween_OceanMan.ogg
+    # Orion-End

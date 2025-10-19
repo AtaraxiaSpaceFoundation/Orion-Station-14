@@ -251,12 +251,12 @@ namespace Content.Client.Ghost
             GhostVisibility = visibility ?? !GhostVisibility;
         }
 
-        // Europa-Start
+        // Orion-Start
         public void ReturnToRound()
         {
             var msg = new GhostReturnToRoundRequest();
             RaiseNetworkEvent(msg);
         }
-        // Europa-End
+        // Orion-End
     }
 }

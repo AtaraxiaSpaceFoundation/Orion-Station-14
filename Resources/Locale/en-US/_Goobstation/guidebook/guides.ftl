@@ -8,11 +8,12 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-guide-entry-space-law = Space Law
+#guide-entry-space-law = Space Law # Orion-Remove
 guide-entry-medpatches = Medical Patches
 guide-entry-rules-nrp = NRP Ruleset
 guide-entry-sm = Supermatter Engine
 guide-entry-automation = Automation
+guide-entry-conditions = Antag Revealing Conditions
 
 # Goob SOP
 # - Main Directories

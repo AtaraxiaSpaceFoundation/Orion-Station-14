@@ -37,6 +37,17 @@
     - cough!
     - coughs!
     - coughed!
+    # Orion-Start
+    - кашель
+    - кашель.
+    - кашель!
+    - кашляет
+    - кашляет.
+    - кашляет!
+    - кашлянул
+    - кашлянул.
+    - кашлянул!
+    # Orion-End
 
 - type: emote
   id: CatMeow
@@ -77,6 +88,14 @@
   chatTriggers:
     - yawn
     - yawns
+    # Orion-Start
+    - зевок
+    - зевок.
+    - зевок!
+    - зевает
+    - зевает.
+    - зевает!
+    # Orion-End
 
 - type: emote
   id: Snore

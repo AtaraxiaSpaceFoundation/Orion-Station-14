@@ -238,9 +238,9 @@
     - Belt
   - type: UnpoweredFlashlight
   - type: PointLight
-    mask: /Textures/Effects/LightMasks/cone.png # Europa
+    mask: /Textures/Effects/LightMasks/cone.png # Orion
     enabled: false
-    radius: 2 # Europa-Edit
+    radius: 2 # Orion-Edit
     softness: 5
     autoRot: true
   - type: Ringer

@@ -1,0 +1,14 @@
+- type: entity
+  parent: [ BaseMajorContraband, WeaponPistolViper ]
+  id: WeaponPistolInteQCommissar
+  name: Commissar
+  suffix: Pistol
+  description: Small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses .35 auto ammo. It is painted in the InteQ brand color.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Pistols/inteq_commissar.rsi
+  - type: Gun
+    selectedMode: FullAuto
+    availableModes:
+      - SemiAuto
+      - FullAuto

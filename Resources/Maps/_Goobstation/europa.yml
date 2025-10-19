@@ -3460,7 +3460,7 @@ entities:
             1487: -19,-26
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: Europa
+      id: Orion
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg

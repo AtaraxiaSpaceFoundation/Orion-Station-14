@@ -16,9 +16,9 @@
   naming: FirstRoman
   sexes:
   - Unsexed
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Plasmaman.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Plasmaman.xml"
   pros:
   - Получают на 25% меньше колющего урона.
   - Получают на 20% меньше урона ядом.
@@ -34,7 +34,7 @@
   - Получают на 50% больше теплового урона.
   - Отсутсвие скафандра вызывает неконтролируемое возгорание.
   - Получают 1 ожог при ударе рукой.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobPlasmamanSprites

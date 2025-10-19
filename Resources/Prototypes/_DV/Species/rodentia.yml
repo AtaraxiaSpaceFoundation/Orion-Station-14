@@ -27,9 +27,9 @@
   femaleFirstNames: NamesRodentiaFemale
   lastNames: NamesRodentiaLast
   naming: LastFirst
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Rodentia.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Rodentia.xml"
   pros:
   - Могут прятать мелкие предметы за щеками. Наличие предметов во рту делает их речь неразборчивой, и они роняют все предметы, которые были у них во рту, если на них нападают, оглушают или толкают.
   - Может прятаться под столами.
@@ -40,7 +40,7 @@
   - Получает на 15% больше тупого, режущего и колющего урона.
   - Мышеловки всегда срабатывают.
   - Голодают на 33% быстрее.
-  # Europa-End
+  # Orion-End
   # begin Goobstation: port EE height/width sliders
   sizeRatio: 1.1 # i don't know WHY, but disproportionate rodentia always look weird.
   minHeight: 0.8

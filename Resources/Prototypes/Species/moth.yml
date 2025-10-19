@@ -31,9 +31,9 @@
   maleFirstNames: NamesMothFirstMale
   femaleFirstNames: NamesMothFirstFemale
   lastNames: NamesMothLast
-  # Europa-Start
+  # Orion-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Moth.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Moth.xml"
   pros:
   - Получают на 30% меньше урона холодом.
   - Могут совершать протяжный прыжок благодаря крыльям.
@@ -43,7 +43,7 @@
   cons:
   - Получают на 30% больше урона огнём.
   - Легко возгораемые.
-  # Europa-End
+  # Orion-End
   # begin Goobstation: port EE height/width sliders
   minHeight: 0.8
   defaultHeight: 1

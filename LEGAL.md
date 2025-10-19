@@ -6,7 +6,7 @@ The Authors retain all copyright to their respective work here submitted.
 
 ## Code license
 
-Content contributed to this repository is licensed under MIT (See `LICENSE-MIT.txt`) license, unless is stated otherwise to be AGPL or is contributed under Europa.AGPL.*, for further detail see `LICENSE-AGPLv3.txt`.
+Content contributed to this repository is licensed under MIT (See `LICENSE-MIT.txt`) license, unless is stated otherwise to be AGPL or is contributed under Orion.AGPL.*, for further detail see `LICENSE-AGPLv3.txt`.
 
 ## Warranty
 

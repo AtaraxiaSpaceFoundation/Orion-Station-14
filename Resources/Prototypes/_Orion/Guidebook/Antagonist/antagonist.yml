@@ -1,0 +1,7 @@
+- type: guideEntry
+  id: OrionAntagonistGuide
+  name: guide-entry-antagonist
+  text: "/ServerInfo/_Orion/Guidebook/Antagonist/Antagonist.xml"
+  children:
+  - Conditions # Goob
+  - CorticalBorerGuide

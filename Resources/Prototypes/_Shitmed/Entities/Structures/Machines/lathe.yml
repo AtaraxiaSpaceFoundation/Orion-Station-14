@@ -16,7 +16,7 @@
     sprite: _Shitmed/Structures/Machines/limbgrower.rsi
     snapCardinals: true
     layers:
-    # Europa-Edit-Start
+    # Orion-Edit-Start
     - state: icon
       map: ["enum.LatheVisualLayers.IsRunning"]
     - state: unlit
@@ -26,7 +26,7 @@
       map: ["enum.MaterialStorageVisualLayers.Inserting"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-    # Europa-Edit-End
+    # Orion-Edit-End
   - type: Machine
     board: MedicalBiofabMachineBoard
   - type: MaterialStorage
@@ -35,12 +35,12 @@
       - Sheet
       - RawMaterial
   - type: Lathe
-    # Europa-Edit-Start
+    # Orion-Edit-Start
     idleState: icon
     runningState: building
     unlitIdleState: unlit
     unlitRunningState: unlit-building
-    # Europa-Edit-End
+    # Orion-Edit-End
     staticPacks:
     - BiofabPartsStatic
   - type: EmagLatheRecipes

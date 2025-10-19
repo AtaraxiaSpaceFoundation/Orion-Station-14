@@ -191,21 +191,21 @@ public sealed class AlertLevelSystem : EntitySystem
 
         var stationName = dataComponent.EntityName;
 
-        var name = level.ToUpper(); // Europa-Edit
+        var name = level.ToUpper(); // Orion-Edit
 
         if (Loc.TryGetString($"alert-level-{level}", out var locName))
         {
-            name = locName.ToUpper(); // Europa-Edit
+            name = locName.ToUpper(); // Orion-Edit
         }
 
-        // Europa-Start
+        // Orion-Start
         var instruction = detail.Instruction;
 
         if (Loc.TryGetString($"alert-level-{level}-instructions", out var locInstruction))
         {
             instruction = locInstruction;
         }
-        // Europa-End
+        // Orion-End
 
         // Announcement text. Is passed into announcementFull.
         var announcement = detail.Announcement;
@@ -215,7 +215,7 @@ public sealed class AlertLevelSystem : EntitySystem
             announcement = locAnnouncement;
         }
 
-        /* Europa-Remove | Better using markups
+        /* Orion-Remove | Better using markups
         // The full announcement to be spat out into chat.
         var announcementFull = Loc.GetString("alert-level-announcement", ("name", name), ("announcement", announcement));
         */
@@ -234,7 +234,7 @@ public sealed class AlertLevelSystem : EntitySystem
             }
         }
 
-        // Europa-Start
+        // Orion-Start
         var messageTitle = new FormattedMessage();
 
         messageTitle.PushTag(new MarkupNode("examineborder", null, null));
@@ -261,9 +261,9 @@ public sealed class AlertLevelSystem : EntitySystem
         message.AddText(Loc.GetString("announce-border-line"));
         message.PushNewline();
         message.Pop();
-        //Europa-End
+        //Orion-End
 
-        // Europa-Edit-Start
+        // Orion-Edit-Start
         if (announce)
         {
             _chatSystem.DispatchStationAnnouncement(
@@ -274,7 +274,7 @@ public sealed class AlertLevelSystem : EntitySystem
                 colorOverride: detail.Color
             );
         }
-        // Europa-Edit-End
+        // Orion-Edit-End
 
         RaiseLocalEvent(new AlertLevelChangedEvent(station, level));
     }

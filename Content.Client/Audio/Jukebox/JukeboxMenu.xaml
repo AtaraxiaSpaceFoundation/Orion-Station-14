@@ -6,14 +6,14 @@ SPDX-License-Identifier: MIT
 -->
 
 <ui:FancyWindow xmlns="https://spacestation14.io" xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-                SetSize="600 500" Title="{Loc 'jukebox-menu-title'}"> <!-- Europa-Edit -->
+                SetSize="600 500" Title="{Loc 'jukebox-menu-title'}"> <!-- Orion-Edit -->
     <BoxContainer Margin="4 0" Orientation="Vertical">
         <ItemList Name="MusicList" SelectMode="Button" Margin="3 3 3 3"
         HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="8"/>
         <BoxContainer Orientation="Vertical">
             <Label Name="SongSelected" Text="{Loc 'jukebox-menu-selectedsong'}" />
-            <!-- Europa-Edit-Start -->
-            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" 
+            <!-- Orion-Edit-Start -->
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True"
                           VerticalExpand="False" SizeFlagsStretchRatio="1">
                 <Label Name="SongName" Text="---" />
                 <Label Name="DurationLabel" Text="00:00 / 00:00" HorizontalAlignment="Right" HorizontalExpand="True"/>
@@ -37,6 +37,6 @@ SPDX-License-Identifier: MIT
                 <Button Name="StopButton" Text="{Loc 'jukebox-menu-buttonstop'}" />
             </BoxContainer>
         </BoxContainer>
-        <!-- Europa-Edit-End-->
+        <!-- Orion-Edit-End-->
     </BoxContainer>
 </ui:FancyWindow>

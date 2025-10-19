@@ -244,14 +244,14 @@
   id: FloorSteelOffset
   name: tiles-steel-floor-offset
   sprite: /Textures/Tiles/steel_offset.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -483,14 +483,14 @@
   id: FloorWhiteOffset
   name: tiles-white-floor-offset
   sprite: /Textures/Tiles/white_offset.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -675,14 +675,14 @@
   id: FloorDarkOffset
   name: tiles-dark-floor-offset
   sprite: /Textures/Tiles/dark_offset.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -856,7 +856,7 @@
   id: FloorSteelDirty
   name: tiles-dirty-steel-floor
   sprite: /Textures/Tiles/steel_dirty.png
-  variants: 4 # Europa
+  variants: 4 # Orion
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -896,14 +896,14 @@
   id: FloorRockVault
   name: tiles-rock-floor
   sprite: /Textures/Tiles/rock_vault.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -989,14 +989,14 @@
   id: FloorFreezer
   name: tiles-freezer
   sprite: /Textures/Tiles/freezer.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1023,14 +1023,14 @@
   id: FloorHydro
   name: tiles-hydro-floor
   sprite: /Textures/Tiles/hydro.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1063,7 +1063,7 @@
   id: FloorClown
   name: tiles-clown-floor
   sprite: /Textures/Tiles/clown.png
-  # Europa-Start
+  # Orion-Start
   variants: 8
   placementVariants:
   - 1.0
@@ -1074,7 +1074,7 @@
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1088,14 +1088,14 @@
   id: FloorMime
   name: tiles-mime-floor
   sprite: /Textures/Tiles/mime.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1109,14 +1109,14 @@
   id: FloorKitchen
   name: tiles-kitchen-floor
   sprite: /Textures/Tiles/kitchen.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1130,14 +1130,14 @@
   id: FloorLaundry
   name: tiles-laundry-floor
   sprite: /Textures/Tiles/laundry.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1151,7 +1151,7 @@
   id: FloorSteelDamaged
   name: tiles-steel-floor
   sprite: /Textures/Tiles/steel_damaged.png
-  variants: 8 # Europa-Edit | 5 > 8
+  variants: 8 # Orion-Edit | 5 > 8
   placementVariants:
   - 1.0
   - 1.0
@@ -1174,7 +1174,7 @@
   id: FloorSteelBurnt
   name: tiles-steel-floor
   sprite: /Textures/Tiles/steel_burnt.png
-  variants: 8 # Europa-Edit | 2 > 8
+  variants: 8 # Orion-Edit | 2 > 8
   placementVariants:
   - 1.0
   - 1.0
@@ -1627,14 +1627,14 @@
   id: FloorGold
   name: tiles-gold-tile
   sprite: /Textures/Tiles/gold.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1648,14 +1648,14 @@
   id: FloorSilver
   name: tiles-silver-tile
   sprite: /Textures/Tiles/silver.png
-  # Europa-Start
+  # Orion-Start
   variants: 4
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
-  # Europa-End
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1785,7 +1785,7 @@
   id: FloorGrass
   name: tiles-planet-grass-floor
   sprite: /Textures/Tiles/grass.png
-  variants: 4 # Europa
+  variants: 4 # Orion
   baseTurf: FloorDirt
   isSubfloor: true
   footstepSounds:
@@ -1798,7 +1798,7 @@
   id: FloorGrassJungle
   name: tiles-jungle-grass-floor
   sprite: /Textures/Tiles/grassjungle.png
-  variants: 4 # Europa
+  variants: 4 # Orion
   baseTurf: FloorDirt
   isSubfloor: true
   footstepSounds:

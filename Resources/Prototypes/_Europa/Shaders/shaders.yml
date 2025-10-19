@@ -1,4 +1,0 @@
-- type: shader
-  id: LightingOverlay
-  kind: source
-  path: "/Textures/_Europa/Shaders/light.swsl"

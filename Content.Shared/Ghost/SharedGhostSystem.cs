@@ -152,7 +152,7 @@ namespace Content.Shared.Ghost
     {
     }
 
-     // Europa-Start
+     // Orion-Start
      /// <summary>
      /// An player body a ghost can warp to.
      /// This is used as part of <see cref="GhostWarpsResponseEvent"/>
@@ -255,7 +255,7 @@ namespace Content.Shared.Ghost
          public string PrototypeID { get; }
 
      }
-    // Europa-End
+    // Orion-End
 
     /// <summary>
     /// Goobstation - A server to client request for them to spawn at the ghost bar
@@ -270,16 +270,16 @@ namespace Content.Shared.Ghost
     /// This is used as part of <see cref="GhostWarpsResponseEvent"/>
     /// </summary>
     [Serializable, NetSerializable]
-    public struct GhostWarpPlace // Europa-Edit | GhostWarp > GhostWarpPlace
+    public struct GhostWarpPlace // Orion-Edit | GhostWarp > GhostWarpPlace
     {
-        // Europa-Edit-Start
+        // Orion-Edit-Start
         public GhostWarpPlace(NetEntity entity, string name, string description)
         {
             Entity = entity;
             Name = name;
             Description = description;
         }
-        // Europa-Edit-End
+        // Orion-Edit-End
 
         /// <summary>
         /// The entity representing the warp point.
@@ -290,12 +290,12 @@ namespace Content.Shared.Ghost
         /// <summary>
         /// The display name to be surfaced in the ghost warps menu
         /// </summary>
-        public string Name { get; } // Europa-Edit | DisplayName > Name
+        public string Name { get; } // Orion-Edit | DisplayName > Name
 
         /// <summary>
         /// Display name to be surfaced in the ghost warps menu
         /// </summary>
-        public string Description { get;  } // Europa-Edit | IsWarpPoint > Description
+        public string Description { get;  } // Orion-Edit | IsWarpPoint > Description
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ namespace Content.Shared.Ghost
     [Serializable, NetSerializable]
     public sealed class GhostWarpsResponseEvent : EntityEventArgs
     {
-/* // Europa-Remove
+/* // Orion-Remove
         public GhostWarpsResponseEvent(List<GhostWarp> warps)
         {
             Warps = warps;
@@ -317,7 +317,7 @@ namespace Content.Shared.Ghost
         public List<GhostWarp> Warps { get; }
 */
 
-        // Europa-Start
+        // Orion-Start
         public GhostWarpsResponseEvent(List<GhostWarpPlayer> players, List<GhostWarpPlace> places, List<GhostWarpGlobalAntagonist> antagonists)
         {
             Players = players;
@@ -339,7 +339,7 @@ namespace Content.Shared.Ghost
         /// A list of antagonists to teleport.
         /// </summary>
         public List<GhostWarpGlobalAntagonist> Antagonists { get; }
-        // Europa-End
+        // Orion-End
     }
 
     /// <summary>
@@ -384,8 +384,8 @@ namespace Content.Shared.Ghost
         }
     }
 
-    // Europa-Start
+    // Orion-Start
     [Serializable, NetSerializable]
     public sealed class GhostReturnToRoundRequest : EntityEventArgs;
-    // Europa-End
+    // Orion-End
 }

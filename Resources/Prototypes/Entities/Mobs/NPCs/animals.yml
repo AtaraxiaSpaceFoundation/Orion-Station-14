@@ -2407,7 +2407,7 @@
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Zombie
-  - type: GlobalAntagonist # Europa
+  - type: GlobalAntagonist # Orion
     antagonistPrototype: globalAntagonistBlob
 
 - type: entity
@@ -2985,7 +2985,7 @@
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
-  - type: GlobalAntagonist # Europa
+  - type: GlobalAntagonist # Orion
     antagonistPrototype: globalAntagonistSpider
 
 - type: entity
@@ -3030,7 +3030,7 @@
   - MobSpiderAngryBase
   - MobGiantSpider
   id: MobGiantSpiderAngry
-  components: # Europa
+  components: # Orion
   - type: GlobalAntagonist
     antagonistPrototype: globalAntagonistSpider
 
@@ -3081,7 +3081,7 @@
     - type: Bloodstream
       bloodMaxVolume: 150
       bloodReagent: Laughter
-    - type: GlobalAntagonist # Europa
+    - type: GlobalAntagonist # Orion
       antagonistPrototype: globalAntagonistSpiderClown
 
 - type: entity
@@ -3096,7 +3096,7 @@
     - Universal # Should allow them to understand everything and speak it too. Might need to change this.
     understands:
     - Universal
-  - type: GlobalAntagonist # Europa
+  - type: GlobalAntagonist # Orion
     antagonistPrototype: globalAntagonistSpider
 
 - type: entity

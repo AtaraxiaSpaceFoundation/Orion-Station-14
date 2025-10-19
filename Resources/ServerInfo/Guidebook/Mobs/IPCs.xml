@@ -20,9 +20,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   ## Подзарядка КПБ
    <Box>
-    <GuideEntityEmbed Entity="APCBasic" Caption="Терминал APC"/>
+    <GuideEntityEmbed Entity="APCBasic" Caption="ЛКП"/>
     <GuideEntityEmbed Entity="BorgCharger" Caption="Зарядник для боргов"/>
-    <GuideEntityEmbed Entity="PowerCellMedium" Caption="Энергоячейка"/>
+    <GuideEntityEmbed Entity="PowerCellMedium" Caption="Батарейки"/>
   </Box>
   КПБ можно подзарядить тремя способами:
 
@@ -30,7 +30,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   Станции зарядки боргов: КПБ могут заряжаться в зарядниках для боргов. Всегда отдавайте предпочтение тем, что находятся за пределами научного отдела, чтобы избежать лишних проблем.
 
-  Энергоячейка: у КПБ есть внутренняя энергоячейка, которая служит батареей. Её можно просто заменить, открыв люк и вручную установив новую.
+  Батарейки: КПБ могут поглащать энергию с батареек, что-бы пополнить свою энергию. [color=yellow]ПКМ и выбираете поглощение[/color] на батарейке, или устройстве что-бы начать поглащать энергию.
 
   ## Встроенная рация
   <Box>

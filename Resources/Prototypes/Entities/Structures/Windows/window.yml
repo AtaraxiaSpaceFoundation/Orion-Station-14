@@ -311,7 +311,7 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: walls # Europa-Edit
+    key: walls # Orion-Edit
     base: state
   - type: Icon
     sprite: Structures/Windows/window_diagonal.rsi

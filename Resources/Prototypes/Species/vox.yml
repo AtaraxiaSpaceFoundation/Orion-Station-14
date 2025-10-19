@@ -31,9 +31,9 @@
   naming: First
   sexes:
   - Unsexed
-  # Europa-Start
+  # Orion-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Vox.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Vox.xml"
   pros:
   - Могут самостоятельно излечиваться от токсинов в организме, пока их количество не превышает 20 единиц.
   - Не гниют.
@@ -42,7 +42,7 @@
   - Могут пить сварочное топливо.
   cons:
   - Не могут быть клонированы.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobVoxSprites

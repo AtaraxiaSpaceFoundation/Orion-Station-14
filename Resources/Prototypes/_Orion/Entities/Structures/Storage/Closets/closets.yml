@@ -1,0 +1,81 @@
+- type: entity
+  parent: LockerBaseSecure
+  id: LockerInteQVanguard
+  name: InteQ vanguard locker
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Orion/Structures/Storage/inteq.rsi
+    noRot: true
+    layers:
+    - state: inteq
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: vanguard_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: inteq
+    stateDoorOpen: open
+    stateDoorClosed: vanguard_door
+  - type: AccessReader
+    access: [["InteQVanguardLeader"], ["InteQVanguard"]]
+
+- type: entity
+  parent: LockerBaseSecure
+  id: LockerInteQVanguardLeader
+  name: InteQ vanguard leader locker
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Orion/Structures/Storage/inteq.rsi
+    noRot: true
+    layers:
+    - state: inteq
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: vanguard_leader_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: inteq
+    stateDoorOpen: open
+    stateDoorClosed: vanguard_leader_door
+  - type: AccessReader
+    access: [["InteQVanguardLeader"]]
+
+- type: entity
+  parent: LockerBaseSecure
+  id: LockerUEG
+  name: United Earth Government locker
+  description: A standard-issue EarthGovernment storage unit.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Orion/Structures/Storage/ueg.rsi
+    noRot: true
+    layers:
+    - state: ueg
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: ueg_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+  - type: EntityStorageVisuals
+    stateBaseClosed: ueg
+    stateDoorOpen: ueg_open
+    stateDoorClosed: ueg_door
+  - type: AccessReader
+    access: [["UnitedEarthGovernmentGeneral"]]

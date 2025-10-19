@@ -11,7 +11,7 @@
   - StationAiIconDorf
   - StationAiIconHeartline
   - StationAiIconSmiley
-  # Europa-Start
+  # Orion-Start
   - StationAiIconThinking
   - StationAiIconXenomorph
   - StationAiIconBanned
@@ -47,7 +47,7 @@
   - StationAiIconLamp
   - StationAiIconLizard
   - StationAiIconVox
-  # Europa-End
+  # Orion-End
 
 - type: stationAiCustomizationGroup
   id: StationAiHolograms
@@ -59,7 +59,7 @@
   - StationAiHologramFace
   - StationAiHologramCat
   - StationAiHologramDog
-  # Europa-Start
+  # Orion-Start
   - StationAiHologramKobold
   - StationAiHologramMonkey
   - StationAiHologramHorror
@@ -68,9 +68,9 @@
   - StationAiHologramBorb
   - StationAiHologramCloudkat
   - StationAiHologramPhoenix
-  # Europa-End
-#  - StationAiHologramKobold # Europa-Remove | Already have it
-#  - StationAiHologramMonkey # Europa-Remove | Already have it
+  # Orion-End
+#  - StationAiHologramKobold # Orion-Remove | Already have it
+#  - StationAiHologramMonkey # Orion-Remove | Already have it
 
 # Iconography
 - type: stationAiCustomization
@@ -211,7 +211,7 @@
       sprite: Mobs/Silicon/holograms.rsi
       state: ai_dog
 
-#- type: stationAiCustomization # Europa-Remove | Already have it
+#- type: stationAiCustomization # Orion-Remove | Already have it
 #  id: StationAiHologramKobold
 #  name: station-ai-hologram-kobold
 #  previewKey: Hologram
@@ -220,7 +220,7 @@
 #      sprite: Mobs/Silicon/holograms.rsi
 #      state: ai_kobold
 
-#- type: stationAiCustomization # Europa-Remove | Already have it
+#- type: stationAiCustomization # Orion-Remove | Already have it
 #  id: StationAiHologramMonkey
 #  name: station-ai-hologram-monkey
 #  previewKey: Hologram

@@ -11,9 +11,9 @@
   maleFirstNames: NamesChitinidFirstMale
   femaleFirstNames: NamesChitinidFirstFemale
   naming: First
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Chitinid.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Chitinid.xml"
   pros:
   - Получают на 80% меньше урона радиацией.
   - Получают на 10% меньше режущего, тупого и колющего урона.
@@ -28,7 +28,7 @@
   - Получают на 15% больше шокового урона.
   - Обычные шприцы не могут пробить хитин.
   - Голодают на 33% быстрее.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobChitinidSprites

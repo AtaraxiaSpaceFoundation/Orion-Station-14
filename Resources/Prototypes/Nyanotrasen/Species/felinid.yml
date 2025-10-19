@@ -27,9 +27,9 @@
   markingLimits: MobFelinidMarkingLimits
   dollPrototype: MobFelinidDummy
   skinColoration: HumanToned
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Felinid.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Felinid.xml"
   pros:
   - Нейтрализуют 99% урона от падения, или удара об что-то.
   special:
@@ -38,7 +38,7 @@
   - Могут обрыгаться, при удержании.
   cons:
   - Стамина меньше на 25%, чем у человека.
-  # Europa-End
+  # Orion-End
 
 - type: markingPoints
   id: MobFelinidMarkingLimits

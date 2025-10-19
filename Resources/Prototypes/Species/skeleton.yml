@@ -19,9 +19,9 @@
   femaleFirstNames: NamesSkeletonFirst
   dollPrototype: MobSkeletonPersonDummy
   skinColoration: TintedHues
-  # Europa-Start
+  # Orion-Start
   category: Special
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobSkeletonSprites

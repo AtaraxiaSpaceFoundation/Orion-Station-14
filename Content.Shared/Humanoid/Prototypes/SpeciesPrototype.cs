@@ -157,7 +157,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     [DataField]
     public int MaxAge = 120;
 
-    /// Europa-Start
+    /// Orion-Start
     [DataField]
     public SpeciesCategory Category = SpeciesCategory.Classic;
 
@@ -172,7 +172,7 @@ public sealed partial class SpeciesPrototype : IPrototype
 
     [DataField]
     public List<string> Special = new();
-    /// Europa-End
+    /// Orion-End
 
     // begin Goobstation: port EE height/width sliders
 
@@ -245,7 +245,7 @@ public enum SpeciesNaming : byte
     FirstRoman // EE Plasmeme Change
 }
 
-// Europa-Start
+// Orion-Start
 public enum SpeciesCategory : byte
 {
     Classic,
@@ -253,4 +253,4 @@ public enum SpeciesCategory : byte
     Special,
     Sponsor
 }
-// Europa-end
+// Orion-end

@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ BaseMajorContraband, WeaponShotgunBulldog ]
+  id: WeaponShotgunInteQBulldog
+  name: Bulldog
+  suffix: Shothun
+  description: Magazine-fed shotgun designed for close quarters combat. Uses .50 shotgun shells. It is painted in the InteQ brand color.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi

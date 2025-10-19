@@ -22,9 +22,9 @@
   naming: First
   maleFirstNames: NamesYowieMale
   femaleFirstNames: NamesYowieFemale
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Yowie.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Yowie.xml"
   pros:
   - Получают на 100% меньше урона от ядов.
   - Получают на 30% меньше урона от радиации.
@@ -37,7 +37,7 @@
   - Не могут быть подняты на руки.
   cons:
   - Не могут свободно носить верхнюю одежду.
-  # Europa-End
+  # Orion-End
   # begin Goobstation: port EE height/width sliders
   # yowie were like. 1.3x scale before, which is comical
   minHeight: 1.10

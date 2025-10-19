@@ -31,7 +31,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
         public bool SpaceWind { get; private set; }
-        public bool SpaceWindVisuals { get; private set; } // Europa
+        public bool SpaceWindVisuals { get; private set; } // Orion
         public float SpaceWindPressureForceDivisorThrow { get; private set; }
         public float SpaceWindPressureForceDivisorPush { get; private set; }
         public float SpaceWindMaxVelocity { get; private set; }
@@ -67,7 +67,7 @@ namespace Content.Server.Atmos.EntitySystems
         private void InitializeCVars()
         {
             Subs.CVar(_cfg, CCVars.SpaceWind, value => SpaceWind = value, true);
-            Subs.CVar(_cfg, CCVars.SpaceWindVisuals, value => SpaceWindVisuals = value, true); // Europa
+            Subs.CVar(_cfg, CCVars.SpaceWindVisuals, value => SpaceWindVisuals = value, true); // Orion
             Subs.CVar(_cfg, CCVars.SpaceWindPressureForceDivisorThrow, value => SpaceWindPressureForceDivisorThrow = value, true);
             Subs.CVar(_cfg, CCVars.SpaceWindPressureForceDivisorPush, value => SpaceWindPressureForceDivisorPush = value, true);
             Subs.CVar(_cfg, CCVars.SpaceWindMaxVelocity, value => SpaceWindMaxVelocity = value, true);

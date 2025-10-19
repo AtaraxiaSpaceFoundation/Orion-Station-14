@@ -196,6 +196,8 @@
     wideAnimationRotation: 90 # -90 if it takes bayonets (hits with muzzle) 90 if not (hits with butt)
     soundHit:
       collection: MetalThud # Goobstation ^
+  - type: BatteryDrinkerSource # Goobstation - Energycrit
+    maxAmount: 180 # you probably don't want to drain your entire gun charging in battle
   - type: Multishot # Goobstation V
     missChance: 0.4
     spreadMultiplier: 3
@@ -223,7 +225,7 @@
   - type: ItemSlots
     slots:
       cell_slot:
-        name: Magazine
+#        name: Magazine # Orion-Edit | Localization
         startingItem: PowerCellSmall
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg

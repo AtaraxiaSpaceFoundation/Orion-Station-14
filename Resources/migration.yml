@@ -134,6 +134,7 @@
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
+# SPDX-FileCopyrightText: 2025 korczoczek <danielkorczok+git@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
@@ -146,7 +147,7 @@
 # WallSolid: Window
 # Table: null
 
-# Europa-Start
+# Orion-Start
 InteQLaserShield: EnergyShieldInteQ
 DefaultStationBeaconInteQSizo37: DefaultStationBeaconInteQSizo73
 
@@ -209,18 +210,7 @@ ClothingNeckCloakPan: ClothingNeckCloakMoth
 VendingMachinePride: RandomVending
 
 DoorXenoResin: ResinDoor # Holy Goob
-
-AirlockMTFCplsLocked: AirlockCentralCommandLocked
-AirlockMTFEngineeringLocked: AirlockCentralCommandLocked
-AirlockMTFExternalLocked: AirlockExternalCommandLocked
-AirlockMTFGlassLockedAlt: AirlockCentralCommandGlassLocked
-AirlockMTFJanitorLocked: AirlockCentralCommandLocked
-AirlockMTFSecurityLocked: AirlockCentralCommandLocked
-MarkerSpecforce: MarkerResponseForce
-SpawnMobGuardERTUnitSecurity: null
-WeaponDominatorNT: WeaponDisabler
-WindoorMTFMedicalLocked: WindoorSecureCentralCommandLocked
-# Europa-End
+# Orion-End
 
 # Goobstation - Submarine from DeltaV
 AirlockBoxerGlassLocked: AirlockServiceGlassLocked
@@ -963,7 +953,7 @@ WeaponSubMachineGunVectorRubber: null
 # 2025-02-11
 WallShuttleInterior: WallShuttle
 
-# 2025-02-18 | Europa-Edit
+# 2025-02-18 | Orion-Edit
 PosterContrabandLustyExomorph: PosterContrabandLustyXenomorph
 PosterContrabandBustyBackdoorExoBabes6: PosterContrabandBustyBackdoorXenoBabes6
 
@@ -1129,3 +1119,6 @@ BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
+
+# 2025-10-09
+FoodDonutJellySlugcat: FoodDonutJellyScurret

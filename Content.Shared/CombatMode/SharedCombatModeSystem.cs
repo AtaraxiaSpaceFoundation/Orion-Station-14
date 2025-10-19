@@ -45,7 +45,7 @@ public abstract class SharedCombatModeSystem : EntitySystem
     [Dependency] private   readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private   readonly SharedPopupSystem _popup = default!;
     [Dependency] private   readonly SharedMindSystem  _mind = default!;
-    [Dependency] private   readonly MobStateSystem _mobState = default!; // Europa
+    [Dependency] private   readonly MobStateSystem _mobState = default!; // Orion
 
     public override void Initialize()
     {
@@ -77,8 +77,8 @@ public abstract class SharedCombatModeSystem : EntitySystem
         args.Handled = true;
         SetInCombatMode(uid, !component.IsInCombatMode, component);
 
-//        var msg = component.IsInCombatMode ? "action-popup-combat-enabled" : "action-popup-combat-disabled"; // Europa-Remove
-//        _popup.PopupClient(Loc.GetString(msg), args.Performer, args.Performer); // Europa-Remove
+//        var msg = component.IsInCombatMode ? "action-popup-combat-enabled" : "action-popup-combat-disabled"; // Orion-Remove
+//        _popup.PopupClient(Loc.GetString(msg), args.Performer, args.Performer); // Orion-Remove
     }
 
     public void SetCanDisarm(EntityUid entity, bool canDisarm, CombatModeComponent? component = null)
@@ -102,13 +102,13 @@ public abstract class SharedCombatModeSystem : EntitySystem
         if (component.IsInCombatMode == value)
             return;
 
-        // Europa-Start | Dont let entity gone postal when unconscious
+        // Orion-Start | Dont let entity gone postal when unconscious
         if (_mobState.IsDead(entity) || _mobState.IsCritical(entity) || HasComp<SleepingComponent>(entity))
         {
             if (value)
                 return;
         }
-        // Europa-End
+        // Orion-End
 
         component.IsInCombatMode = value;
         Dirty(entity, component);
@@ -132,14 +132,14 @@ public abstract class SharedCombatModeSystem : EntitySystem
     {
         if (value)
         {
-            var rot = EnsureComp<MouseRotatorComponent>(uid); // Europa-Edit
-            // Europa-Start
+            var rot = EnsureComp<MouseRotatorComponent>(uid); // Orion-Edit
+            // Orion-Start
             if (TryComp<CombatModeComponent>(uid, out var comp) && comp.SmoothRotation) // no idea under which (intended) circumstances this can fail (if any), so i'll avoid Comp<>().
             {
                 rot.AngleTolerance = Angle.FromDegrees(1); // arbitrary
                 rot.Simple4DirMode = false;
             }
-            // Europa-End
+            // Orion-End
             EnsureComp<NoRotateOnMoveComponent>(uid);
         }
         else

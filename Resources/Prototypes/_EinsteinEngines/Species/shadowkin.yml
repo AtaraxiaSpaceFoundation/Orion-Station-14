@@ -24,9 +24,9 @@
   sexes:
     - Male
     - Female
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Shadekin.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Shadekin.xml"
   pros:
   - Обладают ночным зрением.
   special:
@@ -35,7 +35,7 @@
   - Получают на 50% больше огненного урона.
   - Кровь на 75% хуже восстанавливается.
   - Не могут защититься от оглушения светошумовыми приспособлениями.
-  # Europa-End
+  # Orion-End
   # begin Goobstation: port EE height/width sliders
   minHeight: 0.80
   defaultHeight: 0.85

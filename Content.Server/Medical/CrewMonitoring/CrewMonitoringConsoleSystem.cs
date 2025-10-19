@@ -42,13 +42,13 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 {
     [Dependency] private readonly PowerCellSystem _cell = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    // Europa-Start
+    // Orion-Start
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly JitteringSystem _jitter = default!;
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly ContainerSystem _containerSystem = default!;
-    // Europa-End
+    // Orion-End
 
     public override void Initialize()
     {
@@ -58,7 +58,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, BoundUIOpenedEvent>(OnUIOpened);
     }
 
-    // Europa-Start
+    // Orion-Start
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -157,7 +157,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         var containerOwner = container.Owner;
         return HasComp<MorgueComponent>(containerOwner);
     }
-    // Europa-End
+    // Orion-End
 
     private void OnRemove(EntityUid uid, CrewMonitoringConsoleComponent component, ComponentRemove args)
     {

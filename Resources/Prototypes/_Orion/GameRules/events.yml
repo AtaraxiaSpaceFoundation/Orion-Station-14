@@ -1,0 +1,116 @@
+- type: entity
+  parent: BaseGameRule
+  id: InteQAgentInvasion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-inteqagent-start-announcement
+    startAudio:
+      path: /Audio/Effects/metal_break1.ogg
+    weight: 6
+    duration: 1
+    minimumPlayers: 15
+    earliestStart: 30
+    reoccurrenceDelay: 50
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 60
+  - type: RandomSpawnRule
+    prototype: SpawnMobInteQAgent
+
+- type: entity
+  parent: BaseGameRule
+  id: WisdomCowSpawn
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-wisdom-cow
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    minimumPlayers: 8
+    weight: 6
+    reoccurrenceDelay: 30
+    duration: 1
+    maxOccurrences: 1
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: -5
+  - type: RandomSpawnRule
+    prototype: MobWisdomCow
+
+- type: entity
+  parent: BaseGameRule
+  id: WormholesSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-wormholes-spawn-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 7
+    duration: 10
+    minimumPlayers: 15
+    earliestStart: 35
+    reoccurrenceDelay: 50
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: 10
+  - type: RandomSpawnRule
+    prototype: AnomalyWormhole
+    minCount: 30
+    maxCount: 50
+
+- type: entity
+  parent: BaseGameRule
+  id: MorphInfestation
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 6
+    duration: 1
+    minimumPlayers: 15
+    earliestStart: 15
+    reoccurrenceDelay: 50
+    eventType: HostilesSpawn
+  - type: GameRule
+    chaosScore: 150
+  - type: VentSpawnRule
+  - type: AntagSpawner
+    prototype: MobMorph
+  - type: AntagObjectives
+    objectives:
+    - MorphSurviveObjective
+  - type: AntagSelection
+    agentName: morph-round-end-agent-name
+    definitions:
+    - spawnerPrototype: SpawnPointGhostMorph
+      min: 1
+      max: 1
+      pickPlayer: false
+      briefing:
+        text: morph-role-greeting
+        color: "#5EA529"
+      mindRoles:
+      - MindRoleMorph
+
+- type: entity
+  parent: BaseGameRule
+  id: CorticalBorerInfestation
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 6
+    duration: 1
+    minimumPlayers: 12
+    earliestStart: 20
+    reoccurrenceDelay: 45
+    eventType: Chaotic
+  - type: GameRule
+    chaosScore: 100
+  - type: RandomSpawnRule
+    prototype: SpawnPointGhostCorticalBorer
+    minCount: 1
+    maxCount: 2

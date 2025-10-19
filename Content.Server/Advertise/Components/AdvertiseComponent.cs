@@ -20,7 +20,7 @@ namespace Content.Server.Advertise.Components;
 public sealed partial class AdvertiseComponent : Component
 {
     /// <summary>
-    ///  Europa | When false - show advertise message in chat
+    ///  Orion | When false - show advertise message in chat
     /// </summary>
     [DataField]
     public bool HideFromChat { get; set; } = true;

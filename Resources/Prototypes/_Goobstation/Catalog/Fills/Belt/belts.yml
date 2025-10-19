@@ -157,12 +157,12 @@
   - type: ItemSlots
     slots:
       item:
-        name: casul
+#        name: casul # Orion-Edit | Localization
         whitelist:
           tags:
           - WeaponPistolCasul
       item2:
-        name: jackal
+#        name: jackal # Orion-Edit | Localization
         whitelist:
           tags:
           - WeaponPistolJackal
@@ -172,6 +172,14 @@
       - WeaponPistolCasul
       item2:
       - WeaponPistolJackal
+  - type: DivineIntervention
+  - type: Reflect
+    reflectProb: 1
+    reflects:
+    - Magic
+  - type: Tag
+    tags:
+    - Nullrod
 
 - type: entityTable
   id: BeltAssaultBSOEntityTable

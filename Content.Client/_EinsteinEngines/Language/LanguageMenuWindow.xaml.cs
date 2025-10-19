@@ -95,7 +95,7 @@ public sealed partial class LanguageMenuWindow : DefaultWindow
             HorizontalExpand = true
         };
 
-        var button = new Button { Text = "Выбрать" }; // Europa-Edit | Localization
+        var button = new Button { Text = "Выбрать" }; // Orion-Edit | Localization
         button.OnPressed += _ => OnLanguageChosen(language);
         state.Button = button;
 

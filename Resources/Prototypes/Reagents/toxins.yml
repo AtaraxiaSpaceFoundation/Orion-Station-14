@@ -489,23 +489,23 @@
   boilingPoint: 554 # I'm not a chemist, but it boils at 295, lower than melting point, idk how it works so I gave it higher value
   metabolisms:
     Poison:
-      metabolismRate: 0.1 # Europa-Edit | 0.05 > 0.1 - Made bigger to be able to get lower amount of toxins per food/drink
+      metabolismRate: 0.1 # Orion-Edit | 0.05 > 0.1 - Made bigger to be able to get lower amount of toxins per food/drink
       effects:
       - !type:HealthChange
         conditions:
         - !type:OrganType
           type: Animal # Applying damage to the mobs with lower metabolism capabilities
-        - !type:OrganType # Europa
+        - !type:OrganType # Orion
           type: AnthroAnimal
         damage:
           types:
-            Poison: 0.2 # Europa-Edit | 0.4 > 0.2 - Made smaller to be able to get lower amount of toxins per food/drink
+            Poison: 0.2 # Orion-Edit | 0.4 > 0.2 - Made smaller to be able to get lower amount of toxins per food/drink
       - !type:ChemVomit
-        probability: 0.02 # Europa-Edit | 0.04 > 0.02 - Scaled for time, not metabolismrate.
+        probability: 0.02 # Orion-Edit | 0.04 > 0.02 - Scaled for time, not metabolismrate.
         conditions:
           - !type:OrganType
             type: Animal
-          - !type:OrganType # Europa
+          - !type:OrganType # Orion
             type: AnthroAnimal
 
 - type: reagent
@@ -581,7 +581,7 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
-          - !type:OrganType # Europa
+          - !type:OrganType # Orion
             type: AnthroAnimal
             shouldHave: false
           - !type:OrganType
@@ -611,7 +611,7 @@
         - !type:OrganType
           type: Animal
           shouldHave: false
-        - !type:OrganType # Europa
+        - !type:OrganType # Orion
           type: AnthroAnimal
           shouldHave: true
         - !type:OrganType
@@ -630,7 +630,7 @@
         - !type:OrganType
           type: Animal
           shouldHave: true
-        - !type:OrganType # Europa
+        - !type:OrganType # Orion
           type: AnthroAnimal
           shouldHave: false
         reagent: Protein
@@ -660,7 +660,7 @@
           min: 1
         - !type:OrganType
           type: Animal
-        - !type:OrganType # Europa
+        - !type:OrganType # Orion
           type: AnthroAnimal
         damage:
           types:
@@ -711,7 +711,7 @@
           min: 1
         - !type:OrganType
           type: Animal
-        - !type:OrganType # Europa
+        - !type:OrganType # Orion
           type: AnthroAnimal
         damage:
           types:

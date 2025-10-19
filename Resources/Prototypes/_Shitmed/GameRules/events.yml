@@ -52,6 +52,8 @@
         color: Green
         sound: /Audio/_Shitmed/Misc/abductor.ogg
       components:
+      - type: GlobalAntagonist # Orion
+        antagonistPrototype: globalAntagonistAbductor
       - type: Abductor
       - type: ActionGrant
         actions:
@@ -66,7 +68,7 @@
           settings: default
         requirements:
         - !type:OverallPlaytimeRequirement
-          time: 18000 #5 hours
+          time: 180000 #50 hours
         - !type:DepartmentTimeRequirement
           department: Medical
           time: 7200 #2 hours
@@ -152,6 +154,8 @@
         color: Green
         sound: /Audio/_Shitmed/Misc/abductor.ogg
       components:
+      - type: GlobalAntagonist # Orion
+        antagonistPrototype: globalAntagonistAbductor
       - type: Abductor
       - type: ActionGrant
         actions:
@@ -166,7 +170,7 @@
           settings: default
         requirements:
         - !type:OverallPlaytimeRequirement
-          time: 18000 #5 hours
+          time: 180000 #50 hours
         - !type:DepartmentTimeRequirement
           department: Medical
           time: 10800 #3 hours

@@ -33,9 +33,9 @@
   maleFirstNames: NamesReptilianMale
   femaleFirstNames: NamesReptilianFemale
   naming: FirstDashFirst
-  # Europa-Start
+  # Orion-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Reptilian.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Reptilian.xml"
   pros:
   - Имеют большую толерантность к боли.
   - Могут таскать предметы хвостом.
@@ -44,7 +44,7 @@
   - Имеет животный желудок.
   cons:
   - На 30% чувствительнее к холоду, чем человек.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobReptilianSprites

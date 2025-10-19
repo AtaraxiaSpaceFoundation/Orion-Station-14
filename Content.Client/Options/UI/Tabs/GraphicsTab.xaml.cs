@@ -190,25 +190,25 @@ public sealed partial class GraphicsTab : Control
                     _cfg.SetCVar(CVars.LightResolutionScale, 0.125f);
                     _cfg.SetCVar(CVars.LightSoftShadows, false);
                     _cfg.SetCVar(CVars.LightBlur, false);
-                    _cfg.SetCVar(CCVars.EnableLightsGlowing, false); // Europa
+                    _cfg.SetCVar(CCVars.EnableLightsGlowing, false); // Orion
                     break;
                 case QualityLow:
                     _cfg.SetCVar(CVars.LightResolutionScale, 0.5f);
                     _cfg.SetCVar(CVars.LightSoftShadows, false);
                     _cfg.SetCVar(CVars.LightBlur, true);
-                    _cfg.SetCVar(CCVars.EnableLightsGlowing, false); // Europa
+                    _cfg.SetCVar(CCVars.EnableLightsGlowing, false); // Orion
                     break;
                 default: // = QualityMedium
                     _cfg.SetCVar(CVars.LightResolutionScale, 0.5f);
                     _cfg.SetCVar(CVars.LightSoftShadows, true);
                     _cfg.SetCVar(CVars.LightBlur, true);
-                    _cfg.SetCVar(CCVars.EnableLightsGlowing, true); // Europa
+                    _cfg.SetCVar(CCVars.EnableLightsGlowing, true); // Orion
                     break;
                 case QualityHigh:
                     _cfg.SetCVar(CVars.LightResolutionScale, 1);
                     _cfg.SetCVar(CVars.LightSoftShadows, true);
                     _cfg.SetCVar(CVars.LightBlur, true);
-                    _cfg.SetCVar(CCVars.EnableLightsGlowing, true); // Europa
+                    _cfg.SetCVar(CCVars.EnableLightsGlowing, true); // Orion
                     break;
             }
         }

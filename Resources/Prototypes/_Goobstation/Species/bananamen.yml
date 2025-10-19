@@ -13,9 +13,9 @@
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobBananaMenDummy
   skinColoration: NoColor
-  # Europa-Start
+  # Orion-Start
   category: Special
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobBananaMenSprites

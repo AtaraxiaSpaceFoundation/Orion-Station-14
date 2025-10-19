@@ -58,7 +58,7 @@
       weight: 40
     - id: VendingMachineWinter
       weight: 40
-#    - id: VendingMachinePride # Europa-Remove
+#    - id: VendingMachinePride # Orion-Remove
 #      weight: 10
     - id: VendingMachineTheater
       weight: 10

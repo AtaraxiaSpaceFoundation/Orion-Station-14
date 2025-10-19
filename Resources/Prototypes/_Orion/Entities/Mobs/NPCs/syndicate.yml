@@ -1,0 +1,201 @@
+- type: entity
+  parent: MobBaseNPC
+  id: MobSimpleSyndicateBlade
+  name: syndicate soldier
+  suffix: AI, Энергетический меч
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Orion/Mobs/Npc/simple_syndicate/blade.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
+      nameFormat: name-format-standard
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    #- type: InnateTool # TODO: This breaks tests somehow
+    #  tools:
+    #    - id: EnergySword
+    - type: Reflect
+      reflectProb: 0.85
+      reflects:
+        - Energy
+    - type: MeleeWeapon
+      angle: 0
+      animation: WeaponArcSmash
+      soundHit:
+          path: /Audio/Weapons/eblade1.ogg
+      damage:
+          types:
+            Heat: 15
+
+- type: entity
+  parent: MobBaseNPC
+  id: MobSimpleSyndicateKnife
+  name: syndicate soldier
+  suffix: AI, Ножик
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Orion/Mobs/Npc/simple_syndicate/knife.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
+      nameFormat: name-format-standard
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: InnateTool
+      tools:
+        - id: CombatKnife
+    - type: MeleeWeapon
+      angle: 0
+      animation: WeaponArcSmash
+      soundHit:
+          path: /Audio/Weapons/bladeslice.ogg
+      damage:
+          types:
+            Blunt: 5
+            Piercing: 5
+
+- type: entity
+  parent: MobBaseNPC
+  id: MobSimpleSyndicatePistol
+  name: syndicate soldier
+  suffix: AI, Пистолет
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Orion/Mobs/Npc/simple_syndicate/pistol.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
+      nameFormat: name-format-standard
+    - type: HTN
+      rootTask:
+        task: SimpleRangedHostileCompound
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3.2
+    - type: BasicEntityAmmoProvider
+      proto: BulletPistol
+      capacity: 12
+      count: 12
+    - type: Gun
+      fireRate: 1
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        params:
+          volume: -100
+
+- type: entity
+  parent: MobBaseNPC
+  id: MobSimpleSyndicateShotgun
+  name: syndicate soldier
+  suffix: AI, Дробовик
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Orion/Mobs/Npc/simple_syndicate/shotgun.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
+      nameFormat: name-format-standard
+    - type: HTN
+      rootTask:
+        task: SimpleRangedHostileCompound
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3
+    - type: BasicEntityAmmoProvider
+      proto: PelletGrapeshot # Slug to powerful
+      capacity: 6
+      count: 6
+    - type: Gun
+      fireRate: 0.70
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 0.70
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        params:
+          volume: -100
+
+- type: entity
+  parent: MobBaseNPC
+  id: MobSimpleSyndicateSMG
+  name: syndicate soldier
+  suffix: AI, СМГ
+  components:
+    - type: Sprite
+      drawdepth: Mobs
+      layers:
+        - state: alive
+          sprite: _Orion/Mobs/Npc/simple_syndicate/smg.rsi
+    - type: NpcFactionMember
+      factions:
+        - AllHostile
+    - type: RandomMetadata
+      nameSegments:
+      - NamesSyndicatePrefix
+      - NamesMilitaryLast
+      nameFormat: name-format-standard
+    - type: HTN
+      rootTask:
+        task: SimpleRangedHostileCompound
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3
+    - type: BasicEntityAmmoProvider
+      proto: BulletLightRifle
+      capacity: 30
+      count: 30
+    - type: Gun
+      fireRate: 1.30
+      useKey: false
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/smg.ogg
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 1.30
+      rechargeSound:
+        path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+        params:
+          volume: -100

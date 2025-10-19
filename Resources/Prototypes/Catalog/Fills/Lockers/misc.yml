@@ -297,7 +297,7 @@
     - !type:NestedSelector
       tableId: SyndieMaintLoot
       prob: 0.05
-    # InteQ Loot | Europa
+    # InteQ Loot | Orion
     - !type:NestedSelector
       tableId: InteQMaintLoot
       prob: 0.05

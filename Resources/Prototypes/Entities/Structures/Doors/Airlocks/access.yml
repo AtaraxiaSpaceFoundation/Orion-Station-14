@@ -55,7 +55,7 @@
     layoutId: AirlockService
 
 - type: entity
-  parent: AirlockLawyer # Europa-Edit
+  parent: AirlockLawyer # Orion-Edit
   id: AirlockLawyerLocked
   suffix: Lawyer, Locked
   components:
@@ -366,7 +366,7 @@
       board: [ DoorElectronicsCommand ]
 
 - type: entity
-  parent: AirlockCaptain # Europa-Edit
+  parent: AirlockCaptain # Orion-Edit
   id: AirlockCaptainLocked
   suffix: Captain, Locked
   components:
@@ -375,7 +375,7 @@
       board: [ DoorElectronicsCaptain ]
 
 - type: entity
-  parent: AirlockChiefMedicalOfficer # Europa-Edit
+  parent: AirlockChiefMedicalOfficer # Orion-Edit
   id: AirlockChiefMedicalOfficerLocked
   suffix: ChiefMedicalOfficer, Locked
   components:
@@ -384,7 +384,7 @@
       board: [ DoorElectronicsChiefMedicalOfficer ]
 
 - type: entity
-  parent: AirlockChiefEngineer # Europa-Edit
+  parent: AirlockChiefEngineer # Orion-Edit
   id: AirlockChiefEngineerLocked
   suffix: ChiefEngineer, Locked
   components:
@@ -393,7 +393,7 @@
       board: [ DoorElectronicsChiefEngineer ]
 
 - type: entity
-  parent: AirlockHeadOfSecurity # Europa-Edit
+  parent: AirlockHeadOfSecurity # Orion-Edit
   id: AirlockHeadOfSecurityLocked
   suffix: HeadOfSecurity, Locked
   components:
@@ -402,7 +402,7 @@
       board: [ DoorElectronicsHeadOfSecurity ]
 
 - type: entity
-  parent: AirlockResearchDirector # Europa-Edit
+  parent: AirlockResearchDirector # Orion-Edit
   id: AirlockResearchDirectorLocked
   suffix: ResearchDirector, Locked
   components:
@@ -411,7 +411,7 @@
       board: [ DoorElectronicsResearchDirector ]
 
 - type: entity
-  parent: AirlockHeadOfPersonnel # Europa-Edit
+  parent: AirlockHeadOfPersonnel # Orion-Edit
   id: AirlockHeadOfPersonnelLocked
   suffix: HeadOfPersonnel, Locked
   components:
@@ -420,7 +420,7 @@
       board: [ DoorElectronicsHeadOfPersonnel ]
 
 - type: entity
-  parent: AirlockQuartermaster # Europa-Edit
+  parent: AirlockQuartermaster # Orion-Edit
   id: AirlockQuartermasterLocked
   suffix: Quartermaster, Locked
   components:
@@ -506,7 +506,7 @@
     layoutId: AirlockService
 
 - type: entity
-  parent: AirlockLawyerGlass # Europa-Edit
+  parent: AirlockLawyerGlass # Orion-Edit
   id: AirlockLawyerGlassLocked
   suffix: Lawyer, Locked
   components:
@@ -769,7 +769,7 @@
       board: [ DoorElectronicsCommand ]
 
 - type: entity
-  parent: AirlockCaptainGlass # Europa-Edit
+  parent: AirlockCaptainGlass # Orion-Edit
   id: AirlockCaptainGlassLocked
   suffix: Captain, Locked
   components:
@@ -778,7 +778,7 @@
       board: [ DoorElectronicsCaptain ]
 
 - type: entity
-  parent: AirlockChiefMedicalOfficerGlass # Europa-Edit
+  parent: AirlockChiefMedicalOfficerGlass # Orion-Edit
   id: AirlockChiefMedicalOfficerGlassLocked
   suffix: ChiefMedicalOfficer, Locked
   components:
@@ -787,7 +787,7 @@
       board: [ DoorElectronicsChiefMedicalOfficer ]
 
 - type: entity
-  parent: AirlockChiefEngineerGlass # Europa-Edit
+  parent: AirlockChiefEngineerGlass # Orion-Edit
   id: AirlockChiefEngineerGlassLocked
   suffix: ChiefEngineer, Locked
   components:
@@ -796,7 +796,7 @@
       board: [ DoorElectronicsChiefEngineer ]
 
 - type: entity
-  parent: AirlockHeadOfSecurityGlass # Europa-Edit
+  parent: AirlockHeadOfSecurityGlass # Orion-Edit
   id: AirlockHeadOfSecurityGlassLocked
   suffix: HeadOfSecurity, Locked
   components:
@@ -805,7 +805,7 @@
       board: [ DoorElectronicsHeadOfSecurity ]
 
 - type: entity
-  parent: AirlockResearchDirectorGlass # Europa-Edit
+  parent: AirlockResearchDirectorGlass # Orion-Edit
   id: AirlockResearchDirectorGlassLocked
   suffix: ResearchDirector, Locked
   components:
@@ -814,7 +814,7 @@
       board: [ DoorElectronicsResearchDirector ]
 
 - type: entity
-  parent: AirlockHeadOfPersonnelGlass # Europa-Edit
+  parent: AirlockHeadOfPersonnelGlass # Orion-Edit
   id: AirlockHeadOfPersonnelGlassLocked
   suffix: HeadOfPersonnel, Locked
   components:
@@ -823,7 +823,7 @@
       board: [ DoorElectronicsHeadOfPersonnel ]
 
 - type: entity
-  parent: AirlockQuartermasterGlass # Europa-Edit
+  parent: AirlockQuartermasterGlass # Orion-Edit
   id: AirlockQuartermasterGlassLocked
   suffix: Quartermaster, Locked
   components:

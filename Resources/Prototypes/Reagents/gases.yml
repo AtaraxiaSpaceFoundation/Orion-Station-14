@@ -117,7 +117,7 @@
         conditions:
         - !type:OrganType
           type: Animal
-      - !type:Oxygenate # Europa
+      - !type:Oxygenate # Orion
         conditions:
         - !type:OrganType
           type: AnthroAnimal

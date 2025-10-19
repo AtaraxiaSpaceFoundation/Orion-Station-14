@@ -24,13 +24,13 @@ public sealed partial class RandomSpawnRuleComponent : Component
     public string Prototype = string.Empty;
 
     /// <summary>
-    /// Minimum number of entities to spawn | Europa
+    /// Minimum number of entities to spawn | Orion
     /// </summary>
     [DataField]
     public int MinCount = 1;
 
     /// <summary>
-    /// Maximum number of entities to spawn | Europa
+    /// Maximum number of entities to spawn | Orion
     /// </summary>
     [DataField]
     public int MaxCount = 1;

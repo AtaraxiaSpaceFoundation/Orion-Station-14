@@ -1,0 +1,9 @@
+<Document>
+  # Антагонисты Orion
+
+  <Box>
+    <GuideEntityEmbed Entity="MobCorticalBorer"/>
+  </Box>
+  - [textlink="Кортикальный паразит" link="CorticalBorerGuide"]
+
+</Document>

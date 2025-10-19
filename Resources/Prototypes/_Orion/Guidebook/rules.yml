@@ -1,0 +1,48 @@
+# Default rules
+- type: guideEntry
+  id: OrionRuleset
+  name: guide-entry-server-rules
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Ruleset.xml"
+  children:
+  - OrionRule1
+  - OrionRule2
+  - OrionRule3
+  - OrionRule4
+  - OrionRule5
+  - OrionRule6
+  - OrionPunishmentTypes
+
+- type: guideEntry
+  id: OrionPunishmentTypes
+  name: guide-entry-server-rules-punishment
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/PunishmentTypes.xml"
+
+- type: guideEntry
+  id: OrionRule1
+  name: guide-entry-server-rules-rule-1
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule1.xml"
+
+- type: guideEntry
+  id: OrionRule2
+  name: guide-entry-server-rules-rule-2
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule2.xml"
+
+- type: guideEntry
+  id: OrionRule3
+  name: guide-entry-server-rules-rule-3
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule3.xml"
+
+- type: guideEntry
+  id: OrionRule4
+  name: guide-entry-server-rules-rule-4
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule4.xml"
+
+- type: guideEntry
+  id: OrionRule5
+  name: guide-entry-server-rules-rule-5
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule5.xml"
+
+- type: guideEntry
+  id: OrionRule6
+  name: guide-entry-server-rules-rule-6
+  text: "/ServerInfo/_Orion/Guidebook/ServerRules/Rule6.xml"

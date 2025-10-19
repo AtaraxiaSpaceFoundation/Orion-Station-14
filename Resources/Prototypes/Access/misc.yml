@@ -15,14 +15,14 @@
 - type: accessGroup
   id: AllAccess
   tags:
-  # Europa-Start-Access
+  # Orion-Start-Access
   - InteQVanguardLeader
   - InteQVanguard
   - UnitedEarthGovernmentGeneral
   - UnitedEarthGovernmentMedic
   - UnitedEarthGovernmentSpecialist
   - UnitedEarthGovernmentCommand
-  # Europa-End-Access
+  # Orion-End-Access
   - EmergencyShuttleRepealAll
   - Captain
   - HeadOfPersonnel

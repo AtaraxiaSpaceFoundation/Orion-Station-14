@@ -31,9 +31,9 @@
   femaleFirstNames: NamesDionaFirst
   lastNames: NamesDionaLast
   naming: TheFirstofLast
-  # Europa-Start
+  # Orion-Start
   category: Classic
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Diona.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Diona.xml"
   pros:
   - Получает на 0.5 меньше урона от удушья.
   - Получает на 30% меньше тупого и на 20% меньше режущего урона.
@@ -51,7 +51,7 @@
   - Получает на 50% больше урона огнём и 20% электричеством.
   - Не может бегать.
   - Легко возгораемые.
-  # Europa-End
+  # Orion-End
 
 - type: speciesBaseSprites
   id: MobDionaSprites

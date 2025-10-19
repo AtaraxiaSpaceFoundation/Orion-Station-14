@@ -26,9 +26,9 @@
   markingLimits: MobHarpyMarkingLimits
   dollPrototype: MobHarpyDummy
   skinColoration: HumanToned
-  # Europa-Start
+  # Orion-Start
   category: Unusual
-  description: "/ServerInfo/_Europa/SpeciesDescriptions/Harpy.xml"
+  description: "/ServerInfo/_Orion/SpeciesDescriptions/Harpy.xml"
   pros:
   - Могут летать на своих крыльях.
   - Бегают на 10% быстрее, чем человек.
@@ -40,7 +40,7 @@
   cons:
   - Получают на 15% больше тупого урона.
   - Не могут с лёгкостью тянуть другие расы и предметы, по сравнению с человеком.
-  # Europa-End
+  # Orion-End
   # begin Goobstation: port EE height/width sliders
   minHeight: 0.80
   defaultHeight: 0.80
