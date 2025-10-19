@@ -21,7 +21,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
-namespace Content.Server._Europa.ResponseForce;
+namespace Content.Server._Orion.ResponseForce;
 
 public sealed class ResponseForceSystem : EntitySystem
 {

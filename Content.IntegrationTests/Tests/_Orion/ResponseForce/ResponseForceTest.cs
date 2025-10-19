@@ -1,13 +1,13 @@
 ﻿#nullable enable
 using System.Collections.Generic;
 using System.Linq;
-using Content.Server._Europa.ResponseForce;
+using Content.Server._Orion.ResponseForce;
 using Content.Server.Ghost.Roles.Components;
 using Content.Shared.CCVar;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
-namespace Content.IntegrationTests.Tests._Europa.ResponseForce;
+namespace Content.IntegrationTests.Tests._Orion.ResponseForce;
 
 [TestFixture]
 public sealed class ResponseForceTest

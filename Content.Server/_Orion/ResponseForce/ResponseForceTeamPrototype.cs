@@ -5,7 +5,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
-namespace Content.Server._Europa.ResponseForce;
+namespace Content.Server._Orion.ResponseForce;
 
 [Prototype]
 public sealed partial class ResponseForceTeamPrototype : IPrototype, IInheritingPrototype

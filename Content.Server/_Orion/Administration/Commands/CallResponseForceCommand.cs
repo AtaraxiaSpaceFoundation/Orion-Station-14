@@ -1,4 +1,4 @@
-using Content.Server._Europa.ResponseForce;
+using Content.Server._Orion.ResponseForce;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Shared.Administration;
@@ -6,7 +6,7 @@ using Content.Shared.Database;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Europa.Administration.Commands;
+namespace Content.Server._Orion.Administration.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class CallResponseForceCommand : IConsoleCommand

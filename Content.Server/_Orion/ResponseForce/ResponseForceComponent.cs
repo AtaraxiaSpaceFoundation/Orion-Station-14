@@ -1,6 +1,6 @@
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Europa.ResponseForce;
+namespace Content.Server._Orion.ResponseForce;
 
 [RegisterComponent]
 public sealed partial class ResponseForceComponent : Component
