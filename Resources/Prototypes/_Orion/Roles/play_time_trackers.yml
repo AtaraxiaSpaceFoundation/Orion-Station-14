@@ -3,3 +3,9 @@
 
 - type: playTimeTracker
   id: InteQVanguard
+
+- type: playTimeTracker
+  id: JobCBURNLeader
+
+- type: playTimeTracker
+  id: JobDeathSquadLeader

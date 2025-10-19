@@ -4,7 +4,7 @@
   responseForceName: response-force-ert-green-alert-name
   announcementTitle: response-force-ert-green-alert-call-title
   announcementText: response-force-call-annonce
-  maxRolesAmount: 8
+  maxRolesAmount: 5
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
@@ -22,7 +22,7 @@
   responseForceName: response-force-ert-blue-alert-name
   announcementTitle: response-force-ert-blue-alert-call-title
   announcementText: response-force-call-annonce
-  maxRolesAmount: 8
+  maxRolesAmount: 5
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
@@ -40,7 +40,7 @@
   responseForceName: response-force-ert-amber-alert-name
   announcementTitle: response-force-ert-amber-alert-call-title
   announcementText: response-force-call-annonce
-  maxRolesAmount: 8
+  maxRolesAmount: 6
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
@@ -66,7 +66,82 @@
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderRedAlert
     - id: RandomHumanoidSpawnerERTSecurityRedAlert
+    - id: RandomHumanoidSpawnerERTSecurityRedAlert
   responseForceSpawn:
     - id: RandomHumanoidSpawnerERTJanitorRedAlert
     - id: RandomHumanoidSpawnerERTEngineerRedAlert
     - id: RandomHumanoidSpawnerERTMedicalRedAlert
+
+- type: responseForceTeam
+  id: ERT_GammaAlert
+  responseForceName: response-force-ert-gamma-alert-name
+  announcementTitle: response-force-ert-gamma-alert-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderGammaAlert
+    - id: RandomHumanoidSpawnerERTSecurityGammaAlert
+    - id: RandomHumanoidSpawnerERTSecurityGammaAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorGammaAlert
+    - id: RandomHumanoidSpawnerERTEngineerGammaAlert
+    - id: RandomHumanoidSpawnerERTMedicalGammaAlert
+
+- type: responseForceTeam
+  id: ERT_EpsilonAlert
+  responseForceName: response-force-ert-epsilon-alert-name
+  announcementTitle: response-force-ert-epsilon-alert-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderEpsilonAlert
+    - id: RandomHumanoidSpawnerERTSecurityEpsilonAlert
+    - id: RandomHumanoidSpawnerERTSecurityEpsilonAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorEpsilonAlert
+    - id: RandomHumanoidSpawnerERTEngineerEpsilonAlert
+    - id: RandomHumanoidSpawnerERTMedicalEpsilonAlert
+
+- type: responseForceTeam
+  id: CBURN
+  responseForceName: response-force-cburn-name
+  announcementTitle: response-force-cburn-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerCBURNLeader
+    - id: RandomHumanoidSpawnerCBURNUnit
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerCBURNUnit
+    - id: RandomHumanoidSpawnerCBURNUnit
+    - id: RandomHumanoidSpawnerCBURNUnit
+
+- type: responseForceTeam
+  id: DeathSquad
+  responseForceName: response-force-death-squad-name
+  announcementTitle: response-force-death-squad-call-title
+  announcementText: response-force-call-annonce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  spawnMarker: MarkerResponseForce
+  raffleConfig:
+    settings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerDeathSquadLeader
+    - id: RandomHumanoidSpawnerDeathSquad
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerDeathSquad
+    - id: RandomHumanoidSpawnerDeathSquad
+    - id: RandomHumanoidSpawnerDeathSquad

@@ -1,0 +1,17 @@
+- type: entity
+  parent: CBURNPDA
+  id: CBURNLeaderPDA
+  name: CBURN leader PDA
+  description: Smells like rotten flesh.
+  components:
+  - type: Pda
+    id: CBURNLeaderIDcard
+
+- type: entity
+  parent: DeathsquadPDA
+  id: DeathsquadLeaderPDA
+  name: deathsquad leader PDA
+  description: Rip and tear until it is done.
+  components:
+  - type: Pda
+    id: CentcomIDCardDeathsquadLeader

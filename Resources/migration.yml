@@ -210,6 +210,17 @@ ClothingNeckCloakPan: ClothingNeckCloakMoth
 VendingMachinePride: RandomVending
 
 DoorXenoResin: ResinDoor # Holy Goob
+
+AirlockMTFCplsLocked: AirlockCentralCommandLocked
+AirlockMTFEngineeringLocked: AirlockCentralCommandLocked
+AirlockMTFExternalLocked: AirlockExternalCommandLocked
+AirlockMTFGlassLockedAlt: AirlockCentralCommandGlassLocked
+AirlockMTFJanitorLocked: AirlockCentralCommandLocked
+AirlockMTFSecurityLocked: AirlockCentralCommandLocked
+MarkerSpecforce: MarkerResponseForce
+SpawnMobGuardERTUnitSecurity: null
+WeaponDominatorNT: WeaponDisabler
+WindoorMTFMedicalLocked: WindoorSecureCentralCommandLocked
 # Orion-End
 
 # Goobstation - Submarine from DeltaV

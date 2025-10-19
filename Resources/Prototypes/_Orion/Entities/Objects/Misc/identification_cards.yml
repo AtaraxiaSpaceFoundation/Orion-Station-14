@@ -36,3 +36,20 @@
     tags:
     - InteQVanguard
     - Maintenance
+
+- type: entity
+  parent: CBURNIDcard
+  id: CBURNLeaderIDcard
+  name: CBURN leader ID card
+  suffix: CBURN leader
+  components:
+  - type: PresetIdCard
+    job: CBURNLeader
+
+- type: entity
+  parent: CentcomIDCardDeathsquad
+  id: CentcomIDCardDeathsquadLeader
+  name: death squad leader ID card
+  components:
+  - type: PresetIdCard
+    job: DeathSquadLeader
