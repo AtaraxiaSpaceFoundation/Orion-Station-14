@@ -137,7 +137,7 @@
   suffix: ERT Leader, Green alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTLeaderGreenAlertGear ]
@@ -150,7 +150,7 @@
   suffix: ERT Janitor, Green alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTJanitorGreenAlertGear ]
@@ -163,7 +163,7 @@
   suffix: ERT Engineer, Green alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTEngineerGreenAlertGear ]
@@ -176,7 +176,7 @@
   suffix: ERT Security, Green alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTSecurityGreenAlertGear ]
@@ -189,7 +189,7 @@
   suffix: ERT Medic, Green alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTMedicalGreenAlertGear ]
@@ -203,7 +203,7 @@
   suffix: ERT Leader, Blue alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTLeaderBlueAlertGear ]
@@ -216,7 +216,7 @@
   suffix: ERT Janitor, Blue alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTJanitorBlueAlertGear ]
@@ -229,7 +229,7 @@
   suffix: ERT Engineer, Blue alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTEngineerBlueAlertGear ]
@@ -242,7 +242,7 @@
   suffix: ERT Security, Blue alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTSecurityBlueAlertGear ]
@@ -255,7 +255,7 @@
   suffix: ERT Medic, Blue alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTMedicalBlueAlertGear ]
@@ -269,7 +269,7 @@
   suffix: ERT Leader, Amber alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTLeaderAmberAlertGear ]
@@ -282,7 +282,7 @@
   suffix: ERT Janitor, Amber alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTJanitorAmberAlertGear ]
@@ -295,7 +295,7 @@
   suffix: ERT Engineer, Amber alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTEngineerAmberAlertGear ]
@@ -308,7 +308,7 @@
   suffix: ERT Security, Amber alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTSecurityAmberAlertGear ]
@@ -321,7 +321,7 @@
   suffix: ERT Medic, Amber alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTMedicalAmberAlertGear ]
@@ -335,7 +335,7 @@
   suffix: ERT Leader, Red alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTLeaderRedAlertGear ]
@@ -348,7 +348,7 @@
   suffix: ERT Janitor, Red alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTJanitorRedAlertGear ]
@@ -361,7 +361,7 @@
   suffix: ERT Engineer, Red alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTEngineerRedAlertGear ]
@@ -374,7 +374,7 @@
   suffix: ERT Security, Red alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTSecurityRedAlertGear ]
@@ -387,7 +387,7 @@
   suffix: ERT Medic, Red alert
   components:
   - type: Sprite
-    sprite: _Europa/Icons/inteq.rsi
+    sprite: _Orion/Icons/inteq.rsi
     state: logo
   - type: Loadout
     prototypes: [ ERTMedicalRedAlertGear ]

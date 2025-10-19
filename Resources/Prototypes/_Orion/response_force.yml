@@ -5,7 +5,7 @@
   announcementTitle: response-force-ert-green-alert-call-title
   announcementText: response-force-call-annonce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
     settings: short
@@ -23,7 +23,7 @@
   announcementTitle: response-force-ert-blue-alert-call-title
   announcementText: response-force-call-annonce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
     settings: short
@@ -41,7 +41,7 @@
   announcementTitle: response-force-ert-amber-alert-call-title
   announcementText: response-force-call-annonce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
     settings: short
@@ -59,7 +59,7 @@
   announcementTitle: response-force-ert-red-alert-call-title
   announcementText: response-force-call-annonce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Europa/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
   raffleConfig:
     settings: short
