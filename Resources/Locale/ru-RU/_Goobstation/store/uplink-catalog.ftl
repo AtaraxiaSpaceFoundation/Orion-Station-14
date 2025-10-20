@@ -81,7 +81,7 @@ uplink-dart-gun-desc = Стреляет восстанавливающими и�
 
 uplink-contractor-baton-name = Контрактный дубинка
 uplink-contractor-baton-desc = Компактная дубинка для синдикатовских контрактников. Наносит лёгкие электрические удары, которые могут временно оглушать роботов.
-uplink-weapon-burner-name = Тяжёлая винтовка Burner
+uplink-weapon-burner-name = Тяжёлая винтовка "Горелка"
 uplink-weapon-burner-desc = Отличное оружие для прорыва и подавления.
 uplink-weapon-heavy-shotgun-name = Тяжёлый дробовик NZ CSG-242
 uplink-weapon-heavy-shotgun-desc = Безжалостное тяжёлое взрывное оружие. Отдача настолько сильная, что сбивает с ног.
@@ -94,9 +94,9 @@ uplink-buldog-desc = Магазинный автомат-дробовик.
 uplink-l6-saw-name = L6 SAW
 uplink-l6-saw-desc = Легендарный лёгкий пулемёт.
 uplink-m90-name = M-90
-uplink-estoc-name = эсток
+uplink-estoc-name = Эсток
 uplink-estoc-desc = Штурмовая винтовка с прицелом средней дальности, рассчитана для боя на дистанции.
-uplink-syndicate-disabler-name = Станнер синдиката
+uplink-syndicate-disabler-name = Станнер Синдиката
 uplink-syndicate-disabler-desc = Продвинутый станнер, созданный на основе прототипа НаноТрейзен. Хоть ему и не хватает мощности, это компенсируется самозаряжающейся батареей.
 uplink-m90-desc = Боевая винтовка M-90.
 uplink-dualetta-bundle-name = Комплект Дуалетта
@@ -122,29 +122,29 @@ uplink-frag-grenade-name = Осколочная граната (40 мм)
 uplink-frag-grenade-desc = Меньший урон, больший радиус. Совместима с China-Lake.
 uplink-mpapers-grenade-name = MP-APERS снаряд (40 мм)
 uplink-mpapers-grenade-desc = Выпускает 20 маленьких пуль, превращая гранатомёт в дробовик. Совместимо с China-Lake.
-uplink-rifle-mag-name = Магазин для винтовки (.20)
+uplink-rifle-mag-name = Магазин (.20 винтовочные)
 uplink-rifle-mag-desc = 25 патронов .20 калибра. Для Lecter и M-90.
-uplink-rifle-caseless-mag-name = Магазин винтовки (9.5 мм HP)
-uplink-rifle-caseless-mag-desc = 30 патронов 9.5 мм без гильз, полые пули. Для WSPR.
-uplink-pistol-magazine-caseless-saphe-name = Магазин пистолета (9.5 мм SAP-HE)
-uplink-pistol-magazine-caseless-saphe-desc = 10 патронов 9.5 мм без гильз, полу-пробивные с высоко-взрывчатым эффектом. Для Cobra.
-uplink-l6-box-name = Коробка с патронами (.30 калибр)
+uplink-rifle-caseless-mag-name = Магазин (.25 безгильзовый)
+uplink-rifle-caseless-mag-desc = 30 патронов .25 мм без гильз, полые пули. Для WSPR.
+uplink-pistol-magazine-caseless-saphe-name = Пистолетный магазин (.25 бронебойные взрывные)
+uplink-pistol-magazine-caseless-saphe-desc = 10 патронов .25 без гильз, полу-пробивные с высоко-взрывчатым эффектом. Для Cobra.
+uplink-l6-box-name = Коробка ружейных патронов (.30 винтовочный)
 uplink-l6-box-desc = 100 патронов для L6 SAW.
-uplink-shotgun-magazine-name = Барабанный магазин для дробовика (12 калибр дробь)
-uplink-shotgun-magazine-desc = Барабанный магазин с 8 дробовыми патронами. Совместим с Bulldog.
-uplink-shotgun-magazine-slug-name = Барабанный магазин для дробовика (12 калибр пуля)
-uplink-shotgun-magazine-slug-desc = Барабанный магазин с 8 пулевыми патронами. Совместим с Bulldog.
-uplink-high-caliber-magazine-name = Магазин для винтовки (.50 калибр противотехнический)
-uplink-high-caliber-magazine-desc = Тяжёлый магазин с 15 патронами. Совместим с Burner.
-uplink-high-caliber-explosive-magazine-name = Магазин для винтовки (.50 ОФП)
-uplink-high-caliber-explosive-magazine-desc = Тяжёлый магазин с 15 осколочно-зажигательными патронами. Совместим с Burner.
-uplink-high-caliber-box-name = Коробка с патронами .50
-uplink-high-caliber-box-desc = Коробка с 30 патронами .50 калибра противотехнического.
+uplink-shotgun-magazine-name = Барабан для дробовика (.50 дробь)
+uplink-shotgun-magazine-desc = Барабанный магазин с 8 дробовыми патронами. Совместим с "Бульдог".
+uplink-shotgun-magazine-slug-name = Барабан (.50 пуля)
+uplink-shotgun-magazine-slug-desc = Барабанный магазин с 8 пулевыми патронами. Совместим с "Бульдог".
+uplink-high-caliber-magazine-name = Магазин (.50 крупнокалиберный)
+uplink-high-caliber-magazine-desc = Тяжёлый магазин с 15 патронами. Совместим с "Горелка".
+uplink-high-caliber-explosive-magazine-name = Магазин (.50 взрывной поджигающий)
+uplink-high-caliber-explosive-magazine-desc = Тяжёлый магазин с 15 осколочно-зажигательными патронами. Совместим с "Горелка".
+uplink-high-caliber-box-name = Коробка ружейных патронов .50 (крупнокалиберные)
+uplink-high-caliber-box-desc = Коробка с 30 патронами .50 крупнокалиберный.
 uplink-highcap-pistol-mag-name = Магазин для пистолета повышенной ёмкости (.35 авто)
 uplink-highcap-pistol-mag-desc = Магазин большой ёмкости, содержит 4 дополнительных патрона, всего 16.
-uplink-heavy-shotgun-magazine-name = Барабанный магазин для тяжёлого дробовика (2 калибр ОФ дробь)
+uplink-heavy-shotgun-magazine-name = Барабан (.2 взрывной)
 uplink-heavy-shotgun-magazine-desc = Магазин с 15 осколочно-зажигательными дробовыми патронами. Совместим с NZ CSG-242.
-uplink-heavy-shotgun-magazine-slug-name = Барабанный магазин для тяжёлого дробовика (2 калибр ОФ пуля)
+uplink-heavy-shotgun-magazine-slug-name = Барабан (.2 взрывной пуля)
 uplink-heavy-shotgun-magazine-slug-desc = Магазин с 15 осколочно-зажигательными пульными патронами. Совместим с NZ CSG-242.
 uplink-m7s-mag-name = Боковой магазин для ПП (5x23 мм)
 uplink-m7s-mag-desc = Магазин на 48 патронов 5x23 мм. Совместим с M7S.
@@ -152,15 +152,15 @@ uplink-cartridge-G8-demolishing-name = Демолирующий патрон G8
 uplink-cartridge-G8-demolishing-desc = Этот патрон стреляет пулей "Копьё Ареса", разрушающей целые линии стен, наносящей сильный урон выносливости и перегружающей энергетические вихри. Используется в HE1S-G8.
 uplink-cartridge-G8-hypercharged-name = Гиперзаряженный патрон G8
 uplink-cartridge-G8-hypercharged-desc = Этот патрон стреляет пулей "Молния Зевса", оглушающей всё на пути и создающей энергетический вихрь в точке попадания, вызывающий мощный взрыв при перегрузке. Используется в HE1S-G8.
-uplink-high-caliber-shotgun-box-name = Коробка с патронами 8 калибра
+uplink-high-caliber-shotgun-box-name = Коробка ружейных патронов (.8 калибр)
 uplink-high-caliber-shotgun-box-desc = 16 патронов 8 калибра для боевого дробовика.
-uplink-high-caliber-shotgun-box-slug-name = Коробка с пулями 8 калибра
+uplink-high-caliber-shotgun-box-slug-name = Коробка ружейных патронов (.8 пули)
 uplink-high-caliber-shotgun-box-slug-desc = 16 пуль 8 калибра для боевого дробовика.
-uplink-high-caliber-shotgun-box-flash-slug-name = Коробка со светошумовыми патронами 8 калибра
+uplink-high-caliber-shotgun-box-flash-slug-name = Коробка ружейных патронов (.8 светошумовые)
 uplink-high-caliber-shotgun-box-flash-slug-desc = 16 светошумовых патронов 8 калибра для боевого дробовика. Не оглушает тех, у кого есть средства защиты слуха.
-uplink-high-caliber-shotgun-box-sarin-name = Коробка с патронами с газом зарин 8 калибра
+uplink-high-caliber-shotgun-box-sarin-name = Коробка ружейных патронов (.8 газ)
 uplink-high-caliber-shotgun-box-sarin-desc = 16 патронов 8 калибра с газом зарин для боевого дробовика, выпускающих небольшой плюс-образный облак газа.
-uplink-estoc-ammo-name = Магазин для винтовки (.20)
+uplink-estoc-ammo-name = Магазин (.20)
 uplink-estoc-ammo-desc = 25 патронов .20 калибра. Для Эстока.
 
 # Grenades
@@ -200,11 +200,11 @@ uplink-syringe-pistol-desc = Оружие, использующее шприцы
 
 # Implants
 
-uplink-smoke-implant-name = Имплантат дыма
+uplink-smoke-implant-name = Имплантер дыма
 uplink-smoke-implant-desc = Выпускает облако дыма при активации.
-uplink-nutriment-implant-name = Имплантат подачи питательных веществ
+uplink-nutriment-implant-name = Имплантер подачи питательных веществ
 uplink-nutriment-implant-desc = Устраняет необходимость в приёме пищи и напитков.
-uplink-jaunter-implanter-name = Имплантатор Джонтер
+uplink-jaunter-implanter-name = Имплантер Джонтер
 uplink-binary-implant-name = Имплантер бинарный декодер
 uplink-binary-implant-desc = Позволяет пользователю подключиться к бинарному каналу. Однако говорить в нём не рекомендуется, по крайней мере, пока ИИ не выйдет из-под контроля.
 uplink-autosurgeon-right-mantis-blade-name = Автооперация (правые клинки богомола)
@@ -215,7 +215,7 @@ uplink-autosurgeon-sandevistan-desc = Заменяет сердце пользо
 uplink-davids-jacket-name = Куртка эджраннера
 uplink-davids-jacket-desc = Куртка для тех, кто особенно заинтересован в улучшении своего тела. Например таких как вы.
 uplink-jaunter-implanter-desc = Меняет местами пользователя и цель при активации. Перезаряжается пассивно.
-uplink-krav-maga-implant-name = Имплантатор Крав Мага
+uplink-krav-maga-implant-name = Имплантер Крав Мага
 uplink-krav-maga-implant-desc = Позволяет выполнять различные приёмы Крав Мага.
 
 # Wearables
@@ -231,7 +231,7 @@ uplink-reverse-bear-trap-desc = Изощрённое орудие казни, н
 
 # Deception
 
-uplink-carpcaller-name = Телепорт космокарпа
+uplink-carpcaller-name = Приманка космических карпов
 uplink-carpcaller-desc = Устройство, использующее инстинкты карпов, которое при закреплении, подключении к питанию и выходе в открытый космос, привлечёт диких космических карпов. Помни, что ты им не друг.
 uplink-clothing-explosive-gloves-name = Взрывчатые изолированные перчатки
 uplink-clothing-explosive-gloves-desc = Перчатки, выглядящие как обычные изолированные, но взрывающиеся через секунду после удара током, выводя из строя руки владельца.
@@ -252,7 +252,7 @@ uplink-sleeping-carp-desc = Свиток с секретами древней б
 
 # Misc
 
-uplink-dimension-pot-name = Горшок измерения
+uplink-dimension-pot-name = Горшок карманного измерения
 uplink-dimension-pot-desc = Портал в собственное карманное измерение, замаскированный под цветочный горшок, для хранения более одного предмета.
 uplink-pizza-bomb-name = Пицца-бомба
 uplink-pizza-bomb-desc = Первоначально разработана террористами, теперь используется синдикатом для устранения высокоприоритетных целей. Не открывайте до взрыва.
