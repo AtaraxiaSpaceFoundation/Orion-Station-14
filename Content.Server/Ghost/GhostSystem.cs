@@ -143,6 +143,7 @@ using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.SSDIndicator;
+using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -177,6 +178,7 @@ namespace Content.Server.Ghost
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
         [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Orion
+        [Dependency] private readonly IEntityManager _entManager = default!; // Orion
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -486,7 +488,7 @@ namespace Content.Server.Ghost
         // Orion-Start
         private List<GhostWarpPlace> GetLocationWarps()
         {
-            var warps = new List<GhostWarpPlace>();
+            var warps = new List<GhostWarpPlace> { };
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
@@ -591,7 +593,7 @@ namespace Content.Server.Ghost
 
         private List<GhostWarpGlobalAntagonist> GetAntagonistWarps()
         {
-            var warps = new List<GhostWarpGlobalAntagonist>();
+            var warps = new List<GhostWarpGlobalAntagonist> { };
 
             foreach (var antagonist in EntityQuery<GlobalAntagonistComponent>())
             {
@@ -732,11 +734,22 @@ namespace Content.Server.Ghost
 //            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value); // Orion-Remove
             // Orion-Start
             CustomGhostPrototype? customGhost = null;
-
-            if (mind.Comp.UserId is { } userId)
-                customGhost = _prototypeManager.Index(_prefs.GetPreferences(userId).CustomGhost);
+            if (mind.Comp.UserId is NetUserId netUserId && _player.TryGetSessionById(netUserId, out var session))
+            {
+                var preferences = _prefs.GetPreferences(session.UserId);
+                if (preferences != null)
+                {
+                    customGhost = _prototypeManager.Index(preferences.CustomGhost);
+                }
+            }
 
             var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
+            if (!_entManager.TryGetComponent<TransformComponent>(ghost, out var transform))
+            {
+                transform = _entManager.AddComponent<TransformComponent>(ghost);
+            }
+
+            _transformSystem.SetCoordinates(ghost, transform, spawnPosition.Value);
             // Orion-End
             var ghostComponent = Comp<GhostComponent>(ghost);
 
@@ -750,13 +763,10 @@ namespace Content.Server.Ghost
                 _metaData.SetEntityName(ghost, session.Name);
 */
             // Orion-Start
-            if (mind.Comp.UserId is { } userUid && _player.TryGetSessionById(userUid, out var session))
-            {
-                if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                    _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
-                else
-                    _metaData.SetEntityName(ghost, session.Name);
-            }
+            if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
+                _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
+            else if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var ghostSession))
+                _metaData.SetEntityName(ghost, ghostSession.Name);
             // Orion-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
@@ -781,11 +791,8 @@ namespace Content.Server.Ghost
             static string? FirstNonNullNonEmpty(params string?[] strings)
             {
                 foreach (var str in strings)
-                {
                     if (!string.IsNullOrWhiteSpace(str))
                         return str;
-                }
-
                 return null;
             }
             // Orion-End
@@ -872,17 +879,15 @@ namespace Content.Server.Ghost
                         var damageType = HasComp<SiliconComponent>(playerEntity)
                             ? IonDamageType
                             : AsphyxiationDamageType;
-                        DamageSpecifier damage = new(_prototypeManager.Index(damageType), dealtDamage);
+                        DamageSpecifier damage = new(_prototypeManager.Index<DamageTypePrototype>(damageType), dealtDamage);
 
                         if (TryComp<BodyComponent>(playerEntity, out var body)
                             && body.BodyType == BodyType.Complex
                             && body.RootContainer.ContainedEntities.FirstOrNull() is { } root)
-                        {
                             _damageable.TryChangeDamage(playerEntity,
                                 damage,
                                 true,
                                 targetPart: _bodySystem.GetTargetBodyPart(root));
-                        }
                         else
                             _damageable.TryChangeDamage(playerEntity, damage, true);
                         // Shitmed Change End
