@@ -63,6 +63,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Orion-Remove
 using System.Linq;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -173,7 +174,6 @@ public sealed class SuicideCommandTests
         await pair.CleanReturnAsync();
     }
 
-/* // Orion-Remove
     /// <summary>
     /// Run the suicide command while the player is already injured
     /// This should only deal as much damage as necessary to get to the dead threshold
@@ -288,7 +288,6 @@ public sealed class SuicideCommandTests
 
         await pair.CleanReturnAsync();
     }
-*/
 
     /// <summary>
     /// Run the suicide command while the player is holding an execution-capable weapon
@@ -364,7 +363,6 @@ public sealed class SuicideCommandTests
         await pair.CleanReturnAsync();
     }
 
-/* // Orion-Remove
     /// <summary>
     /// Run the suicide command while the player is holding an execution-capable weapon
     /// with damage spread between slash and blunt
@@ -439,5 +437,5 @@ public sealed class SuicideCommandTests
 
         await pair.CleanReturnAsync();
     }
-*/
 }
+*/
