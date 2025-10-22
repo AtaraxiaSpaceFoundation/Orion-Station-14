@@ -14,3 +14,5 @@
       collection: FootstepCatwalk
       params:
         volume: -25
+  - type: ScannableForPoints # Goob
+    points: 1

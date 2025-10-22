@@ -13,6 +13,7 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.Medical;
 using Content.Server.Medical.Components;
 using Content.Shared._Orion.CorticalBorer;
+using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
@@ -88,14 +89,14 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
             comp.UpdateTimer = _timing.CurTime + TimeSpan.FromSeconds(comp.UpdateCooldown);
 
-            if (comp.Host != null)
+            if (comp.Host.HasValue)
                 UpdateChems((comp.Owner, comp), comp.ChemicalGenerationRate);
         }
 
         foreach (var comp in EntityManager.EntityQuery<CorticalBorerInfestedComponent>())
         {
             if (_timing.CurTime >= comp.ControlTimeEnd)
-                EndControl(comp.Borer);
+                EndControl((comp.Owner, comp));
         }
     }
 
@@ -255,7 +256,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // If open - close
         if (UI.IsUiOpen((ent, uic), HealthAnalyzerUiKey.Key))
         {
-            UI.CloseUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
+            UI.CloseUi((ent, uic), HealthAnalyzerUiKey.Key, ent.Owner);
             if (health.ScannedEntity.HasValue)
                 _analyzer.StopAnalyzingEntity((ent, health), health.ScannedEntity.Value);
             return true;
@@ -264,7 +265,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!ent.Comp.Host.HasValue || !TryComp<BloodstreamComponent>(ent.Comp.Host.Value, out _))
             return false;
 
-        UI.OpenUi((ent, uic), HealthAnalyzerUiKey.Key, ent);
+        UI.OpenUi((ent, uic), HealthAnalyzerUiKey.Key, ent.Owner);
         _analyzer.BeginAnalyzingEntity((ent, health), ent.Comp.Host.Value);
 
         return true;
@@ -278,7 +279,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             return;
 
         // make sure they aren't dead, would throw the worm into a ghost mode and just kill em
-        if (TryComp<MobStateComponent>(ent.Comp.Host, out var mobState) &&
+        if (TryComp<MobStateComponent>(host, out var mobState) &&
             mobState.CurrentState == MobState.Dead)
             return;
 
@@ -328,37 +329,33 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         _chat.SendAdminAlert(str);
     }
 
-    public void EndControl(Entity<CorticalBorerComponent> worm)
+    public void EndControl(Entity<CorticalBorerInfestedComponent> host)
     {
-        var (_, comp) = worm;
+        var (infested, infestedComp) = host;
 
-        if (comp.Host is not { } host)
+        if (!TryComp<CorticalBorerComponent>(infestedComp.Borer, out var borerComp))
             return;
 
-        if (!TryComp<CorticalBorerInfestedComponent>(host, out var infestedComp))
+        if (!borerComp.ControlingHost)
             return;
 
-        // not controlling anyone
-        if (!comp.ControlingHost)
-            return;
-
-        comp.ControlingHost = false;
+        borerComp.ControlingHost = false;
 
         // remove all the actions set to remove
         foreach (var ability in infestedComp.RemoveAbilities)
         {
-            Actions.RemoveAction(host, ability);
+            Actions.RemoveAction(infested, ability);
         }
         infestedComp.RemoveAbilities = new(); // clear out the list
 
-        if (TryComp<GhostRoleComponent>(worm, out var ghostRole))
-            _ghost.RegisterGhostRole((worm, ghostRole)); // re-enable the ghost role after you return to the body
+        if (TryComp<GhostRoleComponent>(infestedComp.Borer, out var ghostRole))
+            _ghost.RegisterGhostRole((infestedComp.Borer, ghostRole)); // re-enable the ghost role after you return to the body
 
         // Return everyone to their own bodies
         if (!TerminatingOrDeleted(infestedComp.BorerMindId))
             _mind.TransferTo(infestedComp.BorerMindId, infestedComp.Borer);
         if (!TerminatingOrDeleted(infestedComp.OriginalMindId) && infestedComp.OriginalMindId.HasValue)
-            _mind.TransferTo(infestedComp.OriginalMindId.Value, host);
+            _mind.TransferTo(infestedComp.OriginalMindId.Value, infested);
 
         infestedComp.ControlTimeEnd = null;
         Container.CleanContainer(infestedComp.ControlContainer);

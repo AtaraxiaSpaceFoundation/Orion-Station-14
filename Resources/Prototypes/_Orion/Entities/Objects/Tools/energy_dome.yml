@@ -36,6 +36,8 @@
     useRate: 0
   - type: UseDelay
     delay: 10.0
+  - type: ScannableForPoints # Goob
+    points: 1
 
 - type: entity
   parent: BaseItem

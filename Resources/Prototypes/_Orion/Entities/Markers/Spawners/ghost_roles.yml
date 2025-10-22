@@ -14,8 +14,6 @@
     requirements:
     - !type:OverallPlaytimeRequirement
       time: 54000 # 15h
-  - type: GhostRoleMobSpawner
-    prototype: MobMorph
   - type: Sprite
     layers:
     - state: green

@@ -4,6 +4,8 @@
   name: InteQ blueprint
   description: A blueprint with a schematic of a InteQ contraband. It can be inserted into an autolathe.
   components:
+  - type: ScannableForPoints # Goob
+    points: 3
   - type: Blueprint
     providedRecipes:
     - CaseInteQ
@@ -24,6 +26,8 @@
   name: Syndicate blueprint
   description: A blueprint with a schematic of a Syndicate contraband. It can be inserted into an autolathe.
   components:
+  - type: ScannableForPoints # Goob
+    points: 3
   - type: Blueprint
     providedRecipes:
     - SyndicateJawsOfLife

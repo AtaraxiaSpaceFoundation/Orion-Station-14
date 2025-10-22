@@ -7,7 +7,7 @@ using Content.Shared.Alert;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Orion.CorticalBorer;
+namespace Content.Shared._Orion.CorticalBorer.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CorticalBorerComponent : Component
@@ -105,5 +105,3 @@ public sealed partial class CorticalBorerComponent : Component
         "ActionControlHost",
     };
 }
-
-

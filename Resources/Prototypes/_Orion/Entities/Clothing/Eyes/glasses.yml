@@ -11,3 +11,5 @@
   - type: FlashImmunity
   - type: EyeProtection
   - type: ShowJobIcons
+  - type: ScannableForPoints # Goob
+    points: 1

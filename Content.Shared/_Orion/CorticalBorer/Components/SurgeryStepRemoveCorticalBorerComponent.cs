@@ -4,7 +4,7 @@
 
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Orion.CorticalBorer;
+namespace Content.Shared._Orion.CorticalBorer.Components;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class SurgeryStepRemoveCorticalBorerComponent : Component { }
+public sealed partial class SurgeryStepRemoveCorticalBorerComponent : Component;

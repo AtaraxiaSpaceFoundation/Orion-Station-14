@@ -9,17 +9,20 @@
 
 - type: clause
   id: soulownership
+  name: Владение душой # Orion
   clauseWeight: 25
   event: !type:DevilContractSoulOwnershipEvent
 
 - type: clause
   id: weakness
+  name: Слабость # Orion
   clauseWeight: -35
   damageModifierSet: DevilDealPositive
 
 # // VORE //
 - type: clause
   id: avarice
+  name: Алчность # Orion
   clauseWeight: -30
   addedComponents:
   - type: Devourer
@@ -42,6 +45,7 @@
 
 - type: clause
   id: fearoffire
+  name: Страх огня # Orion
   clauseWeight: -20
   damageModifierSet: HellSpawn
   addedComponents:
@@ -49,12 +53,14 @@
 
 - type: clause
   id: brokeness
+  name: Поломка # Orion
   clauseWeight: -20
   spawnedItems:
   - ClothingShoesRealJordansAutographed
 
 - type: clause
   id: fearofdeath
+  name: Страх смерти # Orion
   clauseWeight: -25
   addedComponents:
   - type: MobThresholds
@@ -65,18 +71,21 @@
 
 - type: clause
   id: fearoflight
+  name: Страх света # Orion
   clauseWeight: -15
   addedComponents:
   - type: FlashImmunity
 
 - type: clause
   id: fearofelectricity
+  name: Страх электричества # Orion
   clauseWeight: -15
   addedComponents:
   - type: Insulated
 
 - type: clause
   id: gluttony
+  name: Обжорство # Orion
   clauseWeight: -10
   removedComponents:
   - type: Hunger
@@ -84,36 +93,42 @@
 
 - type: clause
   id: fearofdrowning
+  name: Страх удушения # Orion
   clauseWeight: -10
   addedComponents:
   - type: SpecialBreathingImmunity
 
 - type: clause
   id: fearofclowns
+  name: Страх клоунов # Orion
   clauseWeight: -10
   addedComponents:
   - type: NoSlip
 
 - type: clause
   id: fearofcrushing
+  name: Страх быть раздавленным # Orion
   clauseWeight: -10
   addedComponents:
   - type: SpecialPressureImmunity
 
 - type: clause
   id: fearoffreezing
+  name: Страх холода # Orion
   clauseWeight: -10
   addedComponents:
   - type: SpecialLowTempImmunity
 
 - type: clause
   id: greed
+  name: Жадность # Orion
   clauseWeight: -10
   spawnedItems:
   - SpaceCash30000
 
 - type: clause
   id: pain
+  name: Боль # Orion
   clauseWeight: -5
   addedComponents:
   - type: PainNumbness
@@ -124,11 +139,13 @@
 
 - type: clause
   id: chance
+  name: Удача # Orion
   clauseWeight: -20
   event: !type:DevilContractChanceEvent
 
 - type: clause
   id: shadows
+  name: Тени # Orion
   clauseWeight: -25
   addedComponents:
   - type: Stealth
@@ -136,28 +153,33 @@
 
 - type: clause
   id: humanity
+  name: Человечность # Orion
   clauseWeight: 80
   polymorph: MobFrogPolymorph
 
 - type: clause
   id: strength
+  name: Сила # Orion
   clauseWeight: 30
   damageModifierSet: DevilDealNegative
 
 - type: clause
   id: willtofight
+  name: Воля к борьбе # Orion
   clauseWeight: 60
   addedComponents:
   - type: Pacified
 
 - type: clause
   id: sight
+  name: Зрение # Orion
   clauseWeight: 60
   addedComponents:
   - type: PermanentBlindness
 
 - type: clause
   id: coherence
+  name: Связность # Orion
   clauseWeight: 30
   addedComponents:
   - type: BackwardsAccent
@@ -165,22 +187,26 @@
 
 - type: clause
   id: voice
+  name: Голос # Orion
   clauseWeight: 20
   addedComponents:
   - type: Muted
 
 - type: clause
   id: aleg
+  name: Нога # Orion
   clauseWeight: 20
   event: !type:DevilContractLoseLegEvent
 
 - type: clause
   id: ahand
+  name: Рука # Orion
   clauseWeight: 20
   event: !type:DevilContractLoseHandEvent
 
 - type: clause
   id: awake
+  name: Бодрость # Orion
   clauseWeight: 35
   addedComponents:
   - type: Narcolepsy
@@ -189,23 +215,27 @@
 
 - type: clause
   id: anorgan
+  name: Орган # Orion
   clauseWeight: 30
   event: !type:DevilContractLoseOrganEvent
 
 - type: clause
   id: legs
+  name: Ноги # Orion
   clauseWeight: 40
   addedComponents:
   - type: LegsParalyzed
 
 - type: clause
   id: innerpeace
+  name: Внутренний покой # Orion
   clauseWeight: 5
   addedComponents:
   - type: TileMovement
 
 - type: clause
   id: death
+  name: Смерть # Orion
   clauseWeight: -25
   addedComponents:
   - type: CheatDeath
@@ -213,6 +243,7 @@
 
 - type: clause
   id: mortality
+  name: Смертность # Orion
   clauseWeight: -135
   addedComponents:
   - type: CheatDeath
@@ -220,6 +251,7 @@
 
 - type: clause
   id: time
+  name: Время # Orion
   clauseWeight: 150
   addedComponents:
   - type: DelayedDeath

@@ -29,6 +29,8 @@
   - type: Thieving
     stripTimeReduction: 1
     stealthy: true
+  - type: ScannableForPoints # Goob
+    points: 1
 
 - type: entity
   parent: ClothingHandsGlovesCaptain
