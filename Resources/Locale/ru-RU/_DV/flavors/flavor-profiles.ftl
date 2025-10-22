@@ -1,1 +1,1 @@
-flavor-complex-beast-blood = как на кровавом поле боя
+flavor-complex-beast-blood = как на кровавом поле битвы

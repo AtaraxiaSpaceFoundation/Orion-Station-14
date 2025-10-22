@@ -1,1 +1,1 @@
-internal-resources-action-no-resources = Недостаточно ресурсов для {$type}.
+internal-resources-action-no-resources = Недостаточно ресурсов типа { $type }.
