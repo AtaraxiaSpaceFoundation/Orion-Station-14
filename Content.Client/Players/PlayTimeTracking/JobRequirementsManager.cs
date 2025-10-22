@@ -128,14 +128,6 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         _client.RunLevelChanged += ClientOnRunLevelChanged;
     }
 
-    // Orion-Start
-    public bool TryGetTrackerTimes(ICommonSession id, [NotNullWhen(true)] out Dictionary<string, TimeSpan>? time)
-    {
-        time = new(_roles);
-        return true;
-    }
-    // Orion-End
-
     private void ClientOnRunLevelChanged(object? sender, RunLevelChangedEventArgs e)
     {
         if (e.NewLevel == ClientRunLevel.Initialize)

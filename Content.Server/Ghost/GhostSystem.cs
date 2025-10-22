@@ -106,7 +106,6 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Server.Preferences.Managers;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
@@ -139,14 +138,12 @@ using Content.Shared._Shitmed.Body;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Orion.Antag;
-using Content.Shared._Orion.CustomGhost;
+using Content.Shared._Europa.Antag;
 using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.SSDIndicator;
-using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -180,7 +177,6 @@ namespace Content.Server.Ghost
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
-        [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Orion
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -733,34 +729,16 @@ namespace Content.Server.Ghost
                 return null;
             }
 
-//            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Orion-Start
-            CustomGhostPrototype? customGhost = null;
-            if (mind.Comp.UserId is NetUserId userId)
-                customGhost = _prototypeManager.Index(_prefs.GetPreferences(userId).CustomGhost);
-
-            var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Orion-End
+            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
 
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
-/* // Orion-Remove
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
                 _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
                 _metaData.SetEntityName(ghost, session.Name);
-*/
-            // Orion-Start
-            if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
-            {
-                if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                    _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
-                else
-                    _metaData.SetEntityName(ghost, session.Name);
-            }
-            // Orion-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
             {
@@ -779,16 +757,6 @@ namespace Content.Server.Ghost
             // we have to call this after the mind has been transferred since some mind roles modify the ghost's name
             _nameMod.RefreshNameModifiers(ghost);
             return ghost;
-
-            // Orion-Start
-            static string? FirstNonNullNonEmpty(params string?[] strings)
-            {
-                foreach (var str in strings)
-                    if (!string.IsNullOrWhiteSpace(str))
-                        return str;
-                return null;
-            }
-            // Orion-End
         }
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, bool forced = false, MindComponent? mind = null)

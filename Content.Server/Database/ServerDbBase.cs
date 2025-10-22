@@ -136,7 +136,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
-using Content.Shared._Orion.CustomGhost;
 using Content.Shared._RMC14.LinkAccount;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
@@ -200,7 +199,7 @@ namespace Content.Server.Database
             foreach (var favorite in prefs.ConstructionFavorites)
                 constructionFavorites.Add(new ProtoId<ConstructionPrototype>(favorite));
 
-            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), prefs.GhostId, constructionFavorites);
+            return new PlayerPreferences(profiles, prefs.SelectedCharacterSlot, Color.FromHex(prefs.AdminOOCColor), constructionFavorites);
         }
 
         public async Task SaveSelectedCharacterIndexAsync(NetUserId userId, int index)
@@ -279,7 +278,6 @@ namespace Content.Server.Database
                 UserId = userId.UserId,
                 SelectedCharacterSlot = 0,
                 AdminOOCColor = Color.Red.ToHex(),
-                GhostId = "default", // Orion
                 ConstructionFavorites = [],
             };
 
@@ -289,7 +287,7 @@ namespace Content.Server.Database
 
             await db.DbContext.SaveChangesAsync();
 
-            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor), new ProtoId<CustomGhostPrototype>("default"), []);
+            return new PlayerPreferences(new[] { new KeyValuePair<int, ICharacterProfile>(0, defaultProfile) }, 0, Color.FromHex(prefs.AdminOOCColor), []);
         }
 
         public async Task DeleteSlotAndSetSelectedIndex(NetUserId userId, int deleteSlot, int newSlot)
@@ -314,20 +312,6 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
 
         }
-
-        // Orion-Start
-        public async Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> proto)
-        {
-            await using var db = await GetDb();
-            var prefs = await db.DbContext
-                .Preference
-                .Include(p => p.Profiles)
-                .SingleAsync(p => p.UserId == userId.UserId);
-            prefs.GhostId = proto.Id;
-
-            await db.DbContext.SaveChangesAsync();
-        }
-        // Orion-End
 
         public async Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {

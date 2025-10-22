@@ -86,7 +86,6 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
-using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Prototypes;
@@ -124,8 +123,6 @@ namespace Content.Server.Database
         Task SaveCharacterSlotAsync(NetUserId userId, ICharacterProfile? profile, int slot);
 
         Task SaveAdminOOCColorAsync(NetUserId userId, Color color);
-
-        Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> ghostProto); // Orion
 
         Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites);
 
@@ -605,14 +602,6 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SaveAdminOOCColorAsync(userId, color));
         }
-
-        // Orion-Start
-        public Task SaveGhostTypeAsync(NetUserId userId, ProtoId<CustomGhostPrototype> ghostProto)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SaveGhostTypeAsync(userId, ghostProto));
-        }
-        // Orion-End
 
         public Task SaveConstructionFavoritesAsync(NetUserId userId, List<ProtoId<ConstructionPrototype>> constructionFavorites)
         {
