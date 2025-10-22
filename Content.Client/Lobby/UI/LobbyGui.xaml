@@ -39,7 +39,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     xmlns:lobbyUi="clr-namespace:Content.Client.Lobby.UI"
     xmlns:info="clr-namespace:Content.Client.Info"
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
-    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:buttons="clr-namespace:Content.Client._Orion.UserInterface.Buttons">
     <!-- Background -->
     <TextureRect Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
                  Stretch="KeepAspectCovered" />
@@ -85,6 +86,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     <PanelContainer VerticalAlignment="Bottom" HorizontalAlignment="Left"
                                     Margin="0 75" StyleClasses="AngleRect">
                         <RichTextLabel Name="LobbyMessageLabel" Access="Public" Margin="5" />
+                    <!-- Orion-Start -->
+                        <buttons:ViewPremiumInfoButton StyleClasses="NovaButton" SetSize="154 64">
+                            <TextureRect TextureScale="1 1" TexturePath="/Textures/_Orion/Interface/pass.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </buttons:ViewPremiumInfoButton>
+                    <!-- Orion-End -->
                     </PanelContainer>
                     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4"> <!-- Goobstation - Lobby Background Credits -->
                         <info:DevInfoBanner Name="DevInfoBanner" VerticalExpand="false" Margin="3 3 3 3" />

@@ -138,7 +138,7 @@ using Content.Shared._Shitmed.Body;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Europa.Antag;
+using Content.Shared._Orion.Antag;
 using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
