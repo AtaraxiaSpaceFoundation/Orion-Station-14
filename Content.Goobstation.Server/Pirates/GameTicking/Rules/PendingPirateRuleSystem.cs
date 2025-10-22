@@ -69,7 +69,13 @@ public sealed partial class PendingPirateRuleSystem : GameRuleSystem<PendingPira
         base.Started(uid, component, gameRule, args);
 
         // get station
-        AllEntityQuery<BecomesStationComponent, StationMemberComponent>().MoveNext(out var eqData, out _, out _);
+        // Orion-Edit-Start
+        if (!AllEntityQuery<BecomesStationComponent, StationMemberComponent>().MoveNext(out var eqData, out _, out _))
+        {
+            return;
+        }
+        // Orion-Edit-End
+
         var station = _station.GetOwningStation(eqData);
         if (station == null) return;
 
