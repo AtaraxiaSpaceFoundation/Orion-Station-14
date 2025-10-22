@@ -80,7 +80,6 @@ using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
-using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components; // Shitmed Change
 
 namespace Content.IntegrationTests.Tests.Commands;
 
@@ -118,7 +117,7 @@ public sealed class SuicideCommandTests
   name: test version of the material reclaimer
   components:
   - type: MaterialReclaimer";
-    private static readonly ProtoId<TagPrototype> CannotSuicideTag = "CannotSuicide";
+//    private static readonly ProtoId<TagPrototype> CannotSuicideTag = "CannotSuicide"; // Orion-Remove
     private static readonly ProtoId<DamageTypePrototype> DamageType = "Slash";
 
     /// <summary>
@@ -174,6 +173,7 @@ public sealed class SuicideCommandTests
         await pair.CleanReturnAsync();
     }
 
+/* // Orion-Remove
     /// <summary>
     /// Run the suicide command while the player is already injured
     /// This should only deal as much damage as necessary to get to the dead threshold
@@ -288,7 +288,7 @@ public sealed class SuicideCommandTests
 
         await pair.CleanReturnAsync();
     }
-
+*/
 
     /// <summary>
     /// Run the suicide command while the player is holding an execution-capable weapon
@@ -364,6 +364,7 @@ public sealed class SuicideCommandTests
         await pair.CleanReturnAsync();
     }
 
+/* // Orion-Remove
     /// <summary>
     /// Run the suicide command while the player is holding an execution-capable weapon
     /// with damage spread between slash and blunt
@@ -438,4 +439,5 @@ public sealed class SuicideCommandTests
 
         await pair.CleanReturnAsync();
     }
+*/
 }
