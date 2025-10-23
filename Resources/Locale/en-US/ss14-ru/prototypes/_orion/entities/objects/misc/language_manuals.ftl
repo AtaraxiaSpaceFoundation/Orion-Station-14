@@ -7,3 +7,6 @@ ent-ManualCodespeak = codespeak manual
 ent-ManualOldFastCodes = old fast code manual
     .desc = Manual that teaches you the old fast code language.
     .suffix = 2 uses
+ent-ManualCorporateCodespeak = corporate codespeak manual
+    .desc = Manual that teaches you the corporate codespeak language.
+    .suffix = 2 uses

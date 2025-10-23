@@ -57,3 +57,19 @@
       - OldFastCodes
   - type: ScannableForPoints # Goob
     points: 1
+
+- type: entity
+  parent: BaseItem
+  id: ManualCorporateCodespeak
+  name: corporate codespeak manual
+  description: Manual that teaches you the corporate codespeak language.
+  suffix: 2 uses
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Misc/books.rsi
+    layers:
+    - state: nanotrasen
+  - type: LanguageLearn
+    maxUses: 2
+    languages:
+      - CorporateCodespeak
