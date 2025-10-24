@@ -1,0 +1,9 @@
+- type: entity
+  parent: [ GlassBoxLaserFilledAlertUnlocked, AlertLevelLock ]
+  id: GlassBoxLaserFilledAlertLocked
+  suffix: AntiqueLaser, Filled, Alert Level Lock
+
+- type: entity
+  parent: [ GlassBoxLaserFilled ]
+  id: GlassBoxLaserFilledAlertUnlocked
+  suffix: AntiqueLaser, Filled

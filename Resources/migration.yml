@@ -148,6 +148,7 @@
 # Table: null
 
 # Orion-Start
+
 InteQLaserShield: EnergyShieldInteQ
 DefaultStationBeaconInteQSizo37: DefaultStationBeaconInteQSizo73
 
@@ -210,6 +211,15 @@ ClothingNeckCloakPan: ClothingNeckCloakMoth
 VendingMachinePride: RandomVending
 
 DoorXenoResin: ResinDoor # Holy Goob
+
+GunSafeRifleLecter: GunSafeRifleLecterAlertLocked
+GunSafeSubMachineGunDrozd: GunSafeSubMachineGunDrozdAlertLocked
+GunSafeShotgunEnforcer: GunSafeShotgunEnforcerAlertLocked
+GunSafeShotgunKammerer: GunSafeShotgunKammererAlertLocked
+GunSafeSubMachineGunWt550: GunSafeSubMachineGunWt550AlertLocked
+GunSafeLaserCarbine: GunSafeLaserCarbineAlertLocked
+GlassBoxLaserFilled: GlassBoxLaserFilledAlertLocked
+
 # Orion-End
 
 # Goobstation - Submarine from DeltaV
