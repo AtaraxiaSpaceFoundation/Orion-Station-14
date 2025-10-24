@@ -21,7 +21,7 @@ ent-GunSafeShotgunEnforcerAlertUnlocked = { ent-GunSafeShotgunEnforcer }
 
 ent-GunSafeShotgunKammererAlertLocked = { ent-GunSafeShotgunKammerer }
     .suffix = Каммерер, Блокировка по коду
-    .desc = { ent-GunSafe.desc }
+    .desc = { ent-GunSafeShotgunKammerer.desc }
 ent-GunSafeShotgunKammererAlertUnlocked = { ent-GunSafeShotgunKammerer }
     .suffix = Каммерер
     .desc = { ent-GunSafeShotgunKammerer.desc }
