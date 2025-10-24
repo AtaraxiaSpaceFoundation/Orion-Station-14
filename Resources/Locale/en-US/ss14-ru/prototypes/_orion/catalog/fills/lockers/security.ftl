@@ -18,7 +18,7 @@ ent-GunSafeShotgunEnforcerAlertUnlocked = { ent-GunSafeShotgunEnforcer }
 
 ent-GunSafeShotgunKammererAlertLocked = { ent-GunSafeShotgunKammerer }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafe.desc }
+    .desc = { ent-GunSafeShotgunKammerer.desc }
 ent-GunSafeShotgunKammererAlertUnlocked = { ent-GunSafeShotgunKammerer }
     .desc = { ent-GunSafeShotgunKammerer.desc }
 
