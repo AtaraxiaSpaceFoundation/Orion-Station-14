@@ -9,7 +9,7 @@
 
 - type: clause
   id: soulownership
-  name: Владение душой # Orion
+  name: Право владения душой # Orion
   clauseWeight: 25
   event: !type:DevilContractSoulOwnershipEvent
 
