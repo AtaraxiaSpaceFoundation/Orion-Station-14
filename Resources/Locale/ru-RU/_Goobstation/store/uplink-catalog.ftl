@@ -184,9 +184,9 @@ uplink-mech-teleporter-assault-desc = Содержит лёгкий бронир
 
 # Chemicals
 
-uplink-lollypop-bundle-name = Коробка леденцов Donk Co.
+uplink-lollypop-bundle-name = Коробка леденцов Донк Ко.
 uplink-lollypop-bundle-desc = Содержит 9 случайных леденцов. Что они могут содержать?
-uplink-lollypop-bundle-big-name = Набор конфет Donk Co.
+uplink-lollypop-bundle-big-name = Набор конфет Донк Ко.
 uplink-medical-beam-gun-name = Лечебная пушка
 uplink-medical-beam-gun-desc = Лечите своих товарищей при помощи этого нового устройства! Работает от внутренней батареи и автоматически перезаряжается после разрядки. Можно лечить только одного товарища за раз.
 uplink-lollypop-bundle-big-desc = Содержит огромное количество конфет. Что они могут содержать?

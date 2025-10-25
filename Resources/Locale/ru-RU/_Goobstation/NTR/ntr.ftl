@@ -8,13 +8,13 @@ ntr-scan-success = Успешно зачислено { $amount } очков ло
 # station
 
 ntr-executive-spesos-small-name = Малый денежный грант
-ntr-executive-spesos-small-desc = Получите небольшой денежный бонус от NanoTrasen за вашу усердную работу. Как хороший сотрудник, вы ведь отдадите кредиты Квартирмейстеру, верно?
+ntr-executive-spesos-small-desc = Получите небольшой денежный бонус от НаноТрейзен за вашу усердную работу. Как хороший сотрудник, вы ведь отдадите кредиты Квартирмейстеру, верно?
 ntr-executive-disk-small-name = Малый исследовательский грант
 ntr-executive-disk-small-desc = Получите небольшой исследовательский грант от ведущей исследовательской команды NanoTrasen, содержащий 10 дисков с исследовательскими очками.
 ntr-executive-emergency-meds-name = Аварийные медицинские запасы
 ntr-executive-emergency-meds-desc = Малый ящик с наборами для лечения травм. Будьте готовы объясниться после покупки.
 ntr-executive-disablers-name = Ящик со станнерами
-ntr-executive-disablers-desc = Ящик, содержащий 3 станнера и 1 ПП станнер. NanoTrasen не несёт ответственности за ущерб, нанесённый этим оружием.
+ntr-executive-disablers-desc = Ящик, содержащий 3 станнера и 1 ПП станнер. НаноТрейзен не несёт ответственности за ущерб, нанесённый этим оружием.
 ntr-executive-mats-name = Заказать материалы
 ntr-executive-mats-desc = Закажите строительные материалы из глобального отдела снабжения NanoTrasen.
 ntr-executive-tools-small-name = Ящик с инструментами
