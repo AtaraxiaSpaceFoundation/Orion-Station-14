@@ -83,6 +83,14 @@ namespace Content.Shared.CombatMode
         /// </remarks>
         [DataField, AutoNetworkedField]
         public bool SmoothRotation = true;
+
+        [DataField]
+        public SoundSpecifier? CombatActivationSound = new SoundPathSpecifier
+            ("/Audio/_Orion/Effects/Actions/CombatMode/combatmode-on.ogg");
+
+        [DataField]
+        public SoundSpecifier? CombatDeactivationSound = new SoundPathSpecifier
+            ("/Audio/_Orion/Effects/Actions/CombatMode/combatmode-off.ogg");
         // Orion-End
     }
 }

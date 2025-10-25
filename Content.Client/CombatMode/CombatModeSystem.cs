@@ -28,6 +28,7 @@ using Content.Client.NPC.HTN;
 using Content.Shared.CCVar;
 using Content.Shared.CombatMode;
 using Content.Shared.StatusIcon.Components;
+using Robust.Client.Audio;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -44,12 +45,17 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     /// <summary>
     /// Raised whenever combat mode changes.
     /// </summary>
     public event Action<bool>? LocalPlayerCombatModeUpdated;
-    private EntityQuery<SpriteComponent> _spriteQuery; // Orion
+
+    // Orion-Start
+    private EntityQuery<SpriteComponent> _spriteQuery;
+    private bool _combatModeSoundEnabled;
+    // Orion-End
 
     public override void Initialize()
     {
@@ -60,7 +66,10 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
         Subs.CVar(_cfg, CCVars.CombatIndicator, (bool value) => OnShowCombatIndicatorChanged(value), true); // Orion
 
-        _spriteQuery = GetEntityQuery<SpriteComponent>(); // Orion
+        // Orion-Start
+        _spriteQuery = GetEntityQuery<SpriteComponent>();
+        _cfg.OnValueChanged(CCVars.CombatModeSoundEnabled, v => _combatModeSoundEnabled = v, true);
+        // Orion-End
     }
 
     private void OnHandleState(EntityUid uid, CombatModeComponent component, ref AfterAutoHandleStateEvent args)
@@ -104,6 +113,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         }
 
         var inCombatMode = IsInCombatMode();
+        TryPlayCombatModeSound(entity); // Orion
         LocalPlayerCombatModeUpdated?.Invoke(inCombatMode);
     }
 
@@ -163,6 +173,36 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             {
                 sprite.RemoveLayer(layerToRemove);
             }
+        }
+    }
+
+    /// <summary>
+    /// Plays sounds based on activation/deactivation of the CombatMode
+    /// </summary>
+    /// <param name="uid">uid of entity that'll play the sound</param>
+    private void TryPlayCombatModeSound(EntityUid uid)
+    {
+        if (_combatModeSoundEnabled == false)
+            return;
+
+        if (!TryComp<CombatModeComponent>(uid, out var comp))
+            return;
+
+        var inCombatMode = IsInCombatMode();
+
+        switch (inCombatMode)
+        {
+            case true:
+                if (comp.CombatActivationSound == null)
+                    return;
+                _audio.PlayLocal(comp.CombatActivationSound, uid, uid);
+                break;
+
+            case false:
+                if (comp.CombatDeactivationSound == null)
+                    return;
+                _audio.PlayLocal(comp.CombatDeactivationSound, uid, uid);
+                break;
         }
     }
     // Orion-End
