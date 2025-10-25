@@ -524,10 +524,10 @@ namespace Content.Client.HealthAnalyzer.UI
 
         private void DrawOrganDiagnostics(EntityUid ent, string name, FixedPoint2 damage)
         {
-            //TextInfo textInfo = new CultureInfo("en-US", false).TextInfo; // CorvaxGoob-Localization
+            //TextInfo textInfo = new CultureInfo("en-US", false).TextInfo; // Orion-Edit
             var groupTitleText = $"{Loc.GetString(
                 "group-organ-status",
-                ("organ", name), // CorvaxGoob-Localization // textInfo.ToTitleCase(name) -> name
+                ("organ", name), // Orion-Edit | textInfo.ToTitleCase(name) -> name
                 ("capacity", damage)
             )}";
 
@@ -547,7 +547,7 @@ namespace Content.Client.HealthAnalyzer.UI
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             foreach (var (ent, data) in solutions)
             {
-                 // CorvaxGoob-Localization-start
+                // Orion-Edit-Start
                 var groupTitleText = "";
 
                 if (data.Name != null)
@@ -557,7 +557,7 @@ namespace Content.Client.HealthAnalyzer.UI
                     );
                 else
                     Loc.GetString("group-solution-unknown");
-                 // CorvaxGoob-Localization-end
+                // Orion-Edit-End
 
                 var groupContainer = new BoxContainer
                 {
@@ -565,7 +565,7 @@ namespace Content.Client.HealthAnalyzer.UI
                     Orientation = BoxContainer.LayoutOrientation.Vertical,
                 };
 
-                groupContainer.AddChild(CreateDiagnosticGroupTitle(groupTitleText, "metaphysical")); // CorvaxGoob-Localization // textInfo.ToTitleCase(groupTitleText) -> groupTitleText
+                groupContainer.AddChild(CreateDiagnosticGroupTitle(groupTitleText, "metaphysical")); // Orion-Edit | textInfo.ToTitleCase(groupTitleText) -> groupTitleText
 
                 GroupsContainer.AddChild(groupContainer);
 
