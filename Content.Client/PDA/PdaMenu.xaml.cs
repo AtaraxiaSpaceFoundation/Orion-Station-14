@@ -145,7 +145,7 @@ namespace Content.Client.PDA
             StationTimeButton.OnPressed += _ =>
             {
                 // Orion-Edit-Start
-                var stationTime = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime();
+                var stationTime = _timeSystem.GetStationTime();
                 _clipboard.SetText(stationTime.Time.ToString("hh\\:mm\\:ss"));
                 // Orion-Edit-End
             };
@@ -153,7 +153,7 @@ namespace Content.Client.PDA
             // Orion-Start
             StationDateButton.OnPressed += _ =>
             {
-                var stationDate = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime().Date;
+                var stationDate = _timeSystem.GetStationTime().Date;
                 _clipboard.SetText(stationDate.ToString("dd.MM.yyyy"));
             };
             // Orion-End
