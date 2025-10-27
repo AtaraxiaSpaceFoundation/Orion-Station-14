@@ -27,16 +27,17 @@ public sealed class TimeSystem : EntitySystem
 
     public (TimeSpan Time, DateTime Date) GetStationTime()
     {
-        var elapsed = _timing.CurTime.Subtract(_roundStart);
-        var totalHours = elapsed.TotalHours;
+        var elapsed = _timing.CurTime - _roundStart;
+        if (elapsed < TimeSpan.Zero)
+            elapsed = TimeSpan.Zero;
 
-        var days = (int)(totalHours / 24);
-        var remainingHours = totalHours % 24;
+        var timeOfDay = TimeSpan.FromTicks(elapsed.Ticks % TimeSpan.TicksPerDay);
 
-        var startDate = DateTime.UtcNow.Date;
-        var futureYear = startDate.Year + 500;
-        var stationDate = new DateTime(futureYear, startDate.Month, startDate.Day).AddDays(days);
+        var today = DateTime.UtcNow.Date;
+        var futureYear = today.Year + 500;
+        var day = Math.Min(today.Day, DateTime.DaysInMonth(futureYear, today.Month));
+        var stationDate = new DateTime(futureYear, today.Month, day);
 
-        return (TimeSpan.FromHours(remainingHours), stationDate);
+        return (timeOfDay, stationDate);
     }
 }

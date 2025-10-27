@@ -152,7 +152,8 @@ namespace Content.Client.PDA
             StationDateButton.OnPressed += _ =>
             {
                 var stationDate = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime().Date;
-                _clipboard.SetText(stationDate.ToString("dd.MM.yyyy"));
+                var text = stationDate.ToString("d", System.Globalization.CultureInfo.CurrentUICulture);
+                _clipboard.SetText(text);
             };
             // Orion-End
 
@@ -203,7 +204,7 @@ namespace Content.Client.PDA
                 ("station", _stationName)));
 
 
-            // Orion-Edit-Start
+/*            // Orion-Edit-Start | Also removed for optimization
             var stationTime = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime();
             var stationDate = stationTime.Date;
 
@@ -211,7 +212,7 @@ namespace Content.Client.PDA
                 ("time", stationTime.Time.ToString("hh\\:mm\\:ss"))));
             StationDateLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-date",
                 ("date", stationDate.ToString("dd.MM.yyyy"))));
-            // Orion-Edit-End
+*/            // Orion-Edit-End
 
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
             var alertColor = state.PdaOwnerInfo.StationAlertColor;
