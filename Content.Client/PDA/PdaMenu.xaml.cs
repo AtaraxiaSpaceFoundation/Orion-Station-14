@@ -61,6 +61,7 @@ namespace Content.Client.PDA
 
 
         private int _currentView;
+        private TimeSystem _timeSystem = default!; // Orion
 
         public event Action<EntityUid>? OnProgramItemPressed;
         public event Action<EntityUid>? OnUninstallButtonPressed;
@@ -68,6 +69,7 @@ namespace Content.Client.PDA
         public PdaMenu()
         {
             IoCManager.InjectDependencies(this);
+            _timeSystem = _entitySystem.GetEntitySystem<TimeSystem>(); // Orion
             _gameTicker = _entitySystem.GetEntitySystem<ClientGameTicker>();
             RobustXamlLoader.Load(this);
 
@@ -152,8 +154,7 @@ namespace Content.Client.PDA
             StationDateButton.OnPressed += _ =>
             {
                 var stationDate = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime().Date;
-                var text = stationDate.ToString("d", System.Globalization.CultureInfo.CurrentUICulture);
-                _clipboard.SetText(text);
+                _clipboard.SetText(stationDate.ToString("dd.MM.yyyy"));
             };
             // Orion-End
 
@@ -204,14 +205,11 @@ namespace Content.Client.PDA
                 ("station", _stationName)));
 
 
-/*            // Orion-Edit-Start | Also removed for optimization
-            var stationTime = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime();
-            var stationDate = stationTime.Date;
+/*            // Orion-Edit-Start | Optimization
+            var stationTime = _timeSystem.GetStationTime();
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.Time.ToString("hh\\:mm\\:ss"))));
-            StationDateLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-date",
-                ("date", stationDate.ToString("dd.MM.yyyy"))));
 */            // Orion-Edit-End
 
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
@@ -384,7 +382,7 @@ namespace Content.Client.PDA
             base.Draw(handle);
 
             // Orion-Edit-Start
-            var stationTime = _entitySystem.GetEntitySystem<TimeSystem>().GetStationTime();
+            var stationTime = _timeSystem.GetStationTime();
             var stationDate = stationTime.Date;
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
