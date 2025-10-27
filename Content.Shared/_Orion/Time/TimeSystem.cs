@@ -3,6 +3,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Orion.Time;
 
+//
+// License-Identifier: AGPL-3.0-or-later
+//
+
 public sealed class TimeSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
