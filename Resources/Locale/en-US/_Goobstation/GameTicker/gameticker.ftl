@@ -3,3 +3,5 @@ game-ticker-get-ingame-info-text = The current round is: [color=white]#{$roundId
                                    The current map is: [color=white]{$mapName}[/color]
                                    The current game mode is: [color=white]{$gmTitle}[/color]
                                    >[color=yellow]{$desc}[/color]
+                                   Station time: [color=white]{ $stationTime }[/color]
+                                   Station date: [color=white]{ $stationDate }[/color]
