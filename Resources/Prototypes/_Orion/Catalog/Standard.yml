@@ -195,3 +195,117 @@
   name: Не Запоминай - Asgore Runs Over Dess
   path:
     path: /Audio/_Orion/Jukebox/NeZapominay/NeZapominay_AsgoreRunsOverDess.ogg
+
+- type: jukebox
+  id: ClintEastwood
+  name: Gorillaz - Clint Eastwood
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_ClintEastwood.ogg
+
+- type: jukebox
+  id: CrackerIsland
+  name: Gorillaz - Cracker Island
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_CrackerIsland.ogg
+
+- type: jukebox
+  id: DARE
+  name: Gorillaz - DARE
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_DARE.ogg
+
+- type: jukebox
+  id: DirtyHarry
+  name: Gorillaz - Dirty Harry
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_DirtyHarry.ogg
+
+- type: jukebox
+  id: FeelGoodInc
+  name: Gorillaz - Feel Good Inc
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_FeelGoodInc.ogg
+
+- type: jukebox
+  id: OnMelancholyHill
+  name: Gorillaz - On Melancholy Hill
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_OnMelancholyHill.ogg
+
+- type: jukebox
+  id: RhinestoneEyes
+  name: Gorillaz - Rhinestone Eyes
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_RhinestoneEyes.ogg
+
+- type: jukebox
+  id: SaturnzBarz
+  name: Gorillaz - Saturnz Barz
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_SaturnzBarz.ogg
+
+- type: jukebox
+  id: ShesMyCollar
+  name: Gorillaz - Shes My Collar
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_ShesMyCollar.ogg
+
+- type: jukebox
+  id: Tranz
+  name: Gorillaz - Tranz
+  path:
+    path: /Audio/_Orion/Jukebox/Gorillaz/Gorillaz_Tranz.ogg
+
+- type: jukebox
+  id: Resonance
+  name: Home - Resonance
+  path:
+    path: /Audio/_Orion/Jukebox/Home/Home_Resonance.ogg
+
+- type: jukebox
+  id: Think
+  name: Kaleida - Think
+  path:
+    path: /Audio/_Orion/Jukebox/Kaleida/Kaleida_Think.ogg
+
+- type: jukebox
+  id: LEDSpirals
+  name: Le Castle Vania - LED Spirals
+  path:
+    path: /Audio/_Orion/Jukebox/LeCastleVania/LeCastleVania_LEDSpirals.ogg
+
+- type: jukebox
+  id: NowhereToRun
+  name: Lola Colette - Nowhere To Run
+  path:
+    path: /Audio/_Orion/Jukebox/LolaColette/LolaColette_NowhereToRun.ogg
+
+- type: jukebox
+  id: MarieDouceurMarieColre
+  name: Manon Hollander - Marie Douceur Marie Colre
+  path:
+    path: /Audio/_Orion/Jukebox/ManonHollander/ManonHollander_MarieDouceurMarieColre.ogg
+
+- type: jukebox
+  id: KillingStrangers
+  name: Marilyn Manson - Killing Strangers
+  path:
+    path: /Audio/_Orion/Jukebox/MarilynManson/MarilynManson_KillingStrangers.ogg
+
+- type: jukebox
+  id: GeneralRelease
+  name: Mike Klubnika - General Release
+  path:
+    path: /Audio/_Orion/Jukebox/MikeKlubnika/MikeKlubnika_GeneralRelease.ogg
+
+- type: jukebox
+  id: snowfall
+  name: neheart - snowfall
+  path:
+    path: /Audio/_Orion/Jukebox/neheart/neheart_snowfall.ogg
+
+- type: jukebox
+  id: WhoYouTalkinToMan
+  name: Nostalghia - Who You Talkin To Man
+  path:
+    path: /Audio/_Orion/Jukebox/Nostalghia/Nostalghia_WhoYouTalkinToMan.ogg
