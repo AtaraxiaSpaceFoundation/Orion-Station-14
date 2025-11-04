@@ -798,6 +798,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
         var entities = GetEntityList(ev.Entities);
 
+        entities = entities.Where(e => !_tag.HasTag(e, "MeleeHitIgnore")).ToList(); // Orion
+
         if (entities.Count == 0)
         {
             if (meleeUid == user)
@@ -864,6 +866,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             if (entity == user ||
                 !damageQuery.HasComponent(entity))
                 continue;
+
+            // Orion-Start
+            if (_tag.HasTag(entity, "MeleeHitIgnore"))
+                continue;
+            // Orion-End
 
             // Goobstation start
             var beforeEvent = new BeforeHarmfulActionEvent(user, HarmfulActionType.Harm);
@@ -978,14 +985,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         for (var i = 0; i < increments; i++)
         {
             var castAngle = new Angle(baseAngle + increment * i);
+            var ray = new CollisionRay(position, castAngle.ToWorldVec(), AttackMask); // Orion | Make CollisionRay var for "var res"
             var res = _physics.IntersectRay(mapId,
-                new CollisionRay(position,
-                    castAngle.ToWorldVec(),
-                    AttackMask),
+                ray,
                 range,
                 ignore,
                 false)
-                .Where(x => !_tag.HasTag(x.HitEntity, "WideSwingIgnore")) // Goobstation
+                .Where(x => !_tag.HasAnyTag(x.HitEntity, "WideSwingIgnore", "MeleeHitIgnore")) // Goobstation - WideSwingIgnore | Orion-Edit - HasAnyTag, MeleeHitIgnore
                 .ToList();
 
             if (res.Count != 0)

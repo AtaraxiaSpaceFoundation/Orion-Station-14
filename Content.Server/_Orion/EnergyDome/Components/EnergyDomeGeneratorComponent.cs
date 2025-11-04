@@ -1,17 +1,18 @@
+using Content.Server._Orion.EnergyDome.Systems;
 using Content.Shared.DeviceLinking;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.EnergyDome;
+namespace Content.Server._Orion.EnergyDome.Components;
 
 //
-// License-Identifier: MIT
+// License-Identifier: AGPL-3.0-or-later
 //
 
 /// <summary>
-/// component, allows an entity to generate a battery-powered energy dome of a specific type.
+/// Allows an entity to generate a battery-powered energy dome of a specific type.
 /// </summary>
-[RegisterComponent, Access(typeof(EnergyDomeSystem))] //Access add
+[RegisterComponent, Access(typeof(EnergyDomeSystem))]
 public sealed partial class EnergyDomeGeneratorComponent : Component
 {
     [DataField]
@@ -36,12 +37,15 @@ public sealed partial class EnergyDomeGeneratorComponent : Component
     [DataField]
     public bool CanDeviceNetworkUse = false;
 
-    //Dome
+    #region Dome
+
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public EntProtoId DomePrototype = "EnergyDomeSmallRed";
 
     [DataField]
     public EntityUid? SpawnedDome;
+
+    #endregion
 
     /// <summary>
     /// the entity on which the shield will be hung. This is either the container containing
@@ -51,14 +55,18 @@ public sealed partial class EnergyDomeGeneratorComponent : Component
     [DataField]
     public EntityUid? DomeParentEntity;
 
-    //Action
+    #region Action
+
     [DataField]
     public EntProtoId ToggleAction = "ActionToggleEnergyDome";
 
     [DataField]
     public EntityUid? ToggleActionEntity;
 
-    //Sounds
+    #endregion
+
+    #region Sounds
+
     [DataField]
     public SoundSpecifier AccessDeniedSound = new SoundPathSpecifier("/Audio/Machines/custom_deny.ogg");
 
@@ -74,10 +82,13 @@ public sealed partial class EnergyDomeGeneratorComponent : Component
     [DataField]
     public SoundSpecifier ParrySound = new SoundPathSpecifier("/Audio/_Orion/Machines/Energy/energyshield_parry.ogg")
     {
-        Params = AudioParams.Default.WithVariation(0.05f)
+        Params = AudioParams.Default.WithVariation(0.05f),
     };
 
-    //Ports
+    #endregion
+
+    #region Ports
+
     [DataField]
     public ProtoId<SinkPortPrototype> TogglePort = "Toggle";
 
@@ -86,4 +97,6 @@ public sealed partial class EnergyDomeGeneratorComponent : Component
 
     [DataField]
     public ProtoId<SinkPortPrototype> OffPort = "Off";
+
+    #endregion
 }
