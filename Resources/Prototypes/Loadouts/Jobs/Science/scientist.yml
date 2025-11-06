@@ -94,9 +94,9 @@
 - type: loadout
   id: ScientificBeret
   startingGear: ScientificBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorResearcher
 
 - type: loadout
   id: RoboticistCap

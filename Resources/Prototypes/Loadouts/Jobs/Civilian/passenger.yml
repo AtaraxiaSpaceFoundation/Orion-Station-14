@@ -105,9 +105,9 @@
 # Face
 - type: loadout
   id: PassengerFace
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: GreyTider
   equipment:
     mask: ClothingMaskGas
 
@@ -128,18 +128,18 @@
 # Rainbow
 - type: loadout
   id: RainbowJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: GreyTider
   equipment:
     jumpsuit: ClothingUniformColorRainbow
 
 # Rainbow Jumpskirt
 - type: loadout
   id: RainbowJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: GreyTider
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: GreyTider
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorRainbow
 
@@ -157,9 +157,9 @@
   id: Mantle
   equipment:
     neck: ClothingNeckMantle
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterGrey
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterGrey
 
 - type: startingGear
   id: Mantle

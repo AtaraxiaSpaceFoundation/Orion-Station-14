@@ -7,9 +7,9 @@
   id: CaptainJacket
   equipment:
     outerClothing: ClothingOuterCapJacket
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCap
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterCap
 
 - type: loadout
   id: CaptainEnvirosuit

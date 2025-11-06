@@ -126,9 +126,9 @@
 # Neck
 - type: loadout
   id: BlueshieldOfficerOuterBlueshieldMantle
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorBlueshieldOfficer
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: SeniorBlueshieldOfficer
   equipment:
     neck: ClothingNeckMantleBlueshield
 

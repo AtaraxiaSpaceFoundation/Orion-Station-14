@@ -310,6 +310,12 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  # Orion-Start
+  - CaptainWhiteBeret
+  - SheriffBeret
+  - CaptainWhiteCap
+  - SheriffCap
+  # Orion-End
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -321,6 +327,13 @@
   - CaptainFormalSkirt
   - CaptainJumpsuitMilitary # goob
   - CaptainSummerShirt # also goob
+  # Orion-Start
+  - CaptainWhiteJumpsuit
+  - CaptainWhiteJumpskirt
+  - CaptainWhiteTurtleneck
+  - CaptainCommandJumpsuit
+  - SheriffJumpsuit
+  # Orion-End
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -330,6 +343,12 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+  # Orion-Start
+  - CaptainWideCloak
+  - CaptainRoyalCloak
+  - CaptainWhiteMantle
+  - CaptainWhiteShoulderMantle
+  # Orion-End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -347,6 +366,10 @@
   - CaptainOuterClothing
   - CaptainWintercoat
   - CaptainJacket # Goobstation
+  # Orion-Start
+  - CaptainWhiteCoat
+  - CaptainSheriffCoat
+  # Orion-End
 
 - type: loadoutGroup
   id: HoPHead
@@ -1112,6 +1135,7 @@
   minLimit: 0
   loadouts:
   - ResearchDirectorBeret
+  - TinfoilHat # Orion
 
 - type: loadoutGroup
   id: ResearchDirectorNeck
@@ -1154,6 +1178,7 @@
   #- RoboticistCap
   #- SkullBandana
   - ScientificBeret
+  - TinfoilHat # Orion
 
 - type: loadoutGroup
   id: ScientistNeck
@@ -1300,6 +1325,7 @@
   - SecurityBeret
   - SecurityHat
   - TrooperHat
+  - SecuritySideCap # Orion
 
 - type: loadoutGroup
   id: SecurityJumpsuit

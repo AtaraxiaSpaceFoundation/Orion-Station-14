@@ -1198,6 +1198,10 @@
   maxLimit: 1
   loadouts:
   - CaptainGloves
+  # Orion-Start
+  - CaptainWhiteGloves
+  - SheriffGloves
+  # Orion-End
 
 - type: loadoutGroup
   id: CaptainMask

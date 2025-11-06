@@ -158,9 +158,9 @@
   id: CaptainMantle
   equipment:
     neck: ClothingNeckMantleCap
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCap
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterCap
 
 - type: startingGear
   id: CaptainMantle

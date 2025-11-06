@@ -130,9 +130,9 @@
   id: HoPMantle
   equipment:
     neck: ClothingNeckMantleHOP
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterHoP
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterHoP
 
 - type: startingGear
   id: HoPMantle
