@@ -135,6 +135,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._Goobstation.Antag;
+using Content.Server._Orion.ServerProtection.Chat;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -185,6 +186,7 @@ namespace Content.Server.Entry
         private IWatchlistWebhookManager _watchlistWebhookManager = default!;
         private IConnectionManager? _connectionManager;
         private LastRolledAntagManager? _lastAntagManager; // Goobstation
+        private ChatProtectionSystem _chatProtection = default!; // Orion
 
         /// <inheritdoc />
         public override void Init()
@@ -255,6 +257,8 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<PlayerRateLimitManager>().Initialize();
                 _lastAntagManager = IoCManager.Resolve<LastRolledAntagManager>(); // Goobstation
                 _lastAntagManager.Initialize(); // Goobstation
+                _chatProtection = IoCManager.Resolve<ChatProtectionSystem>(); // Orion
+                _chatProtection.Initialize(); // Orion
             }
         }
 

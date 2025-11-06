@@ -37,6 +37,7 @@ using Content.Goobstation.Shared.Loudspeaker.Events; // goob - loudspeakers
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server._EinsteinEngines.Language;
+using Content.Server._Orion.ServerProtection.Chat;
 using Content.Server.Power.Components;
 using Content.Server.Radio.Components;
 using Content.Shared.Chat;
@@ -70,6 +71,7 @@ public sealed class RadioSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation - Whitelisted radio channels
+    [Dependency] private readonly ChatProtectionSystem _chatProtection = default!; // Orion
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
@@ -153,6 +155,11 @@ public sealed class RadioSystem : EntitySystem
         if (!language.SpeechOverride.AllowRadio)
             return;
         // Einstein Engines - Language end
+
+        // Orion-Start
+        if (_chatProtection.CheckICMessage(message, messageSource) == true)
+            return;
+        // Orion-End
 
         // TODO if radios ever garble / modify messages, feedback-prevention needs to be handled better than this.
         if (!_messages.Add(message))
