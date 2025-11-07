@@ -10,9 +10,11 @@
                 <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="False" Margin="10,0,10,0">
-                    <Label Name="PreviewNameText" Access="Public" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger" />
-                </BoxContainer>
+                <controls:StripeBack>
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="False" Margin="10,0,10,0">
+                        <Label Name="PreviewNameText" Access="Public" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger" />
+                    </BoxContainer>
+                </controls:StripeBack>
                 <PanelContainer MinSize="32 128" HorizontalExpand="False" VerticalExpand="True" Margin="10">
                     <PanelContainer.PanelOverride>
                         <graphics:StyleBoxFlat BackgroundColor="#2C2C2C" />
