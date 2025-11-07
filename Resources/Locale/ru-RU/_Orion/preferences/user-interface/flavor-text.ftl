@@ -11,9 +11,9 @@ detail-examinable-empty-character = Описание характера отсу
 detail-examinable-empty-ooc = OOC информация не указана.
 detail-examinable-empty-nsfw = NSFW описание отсутствует.
 detail-examinable-empty-links = Ссылки не добавлены.
-detail-examinable-empty-green = Cписок пуст.
-detail-examinable-empty-yellow = Cписок пуст.
-detail-examinable-empty-red = Cписок пуст.
+detail-examinable-empty-green = Список пуст.
+detail-examinable-empty-yellow = Список пуст.
+detail-examinable-empty-red = Список пуст.
 
 character-flavor-text-placeholder = Характер, личностные качества, поведение, привычки, психологические особенности, социальный облик, мировоззрение, мимика...
 ooc-flavor-text-placeholder = OOC замечания, раскрывающие персонажа или ваши предпочтения...
