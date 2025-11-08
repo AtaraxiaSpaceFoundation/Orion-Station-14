@@ -402,7 +402,7 @@ public sealed partial class EmergencyShuttleSystem
                 playSound: false, colorOverride: DangerColor);
 
         if (!CheckForLaunch(component))
-            _audio.PlayGlobal("/Audio/Misc/Evacotbutie.ogg", Filter.Broadcast(), recordReplay: true);
+            _audio.PlayGlobal("/Audio/Misc/Evacotbutie.ogg", Filter.Broadcast(), recordReplay: true); // europa ny Umbi_Max edit: New custom sounds
 
         UpdateAllEmergencyConsoles();
     }
