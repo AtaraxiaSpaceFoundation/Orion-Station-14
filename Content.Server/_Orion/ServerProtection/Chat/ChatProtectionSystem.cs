@@ -259,6 +259,7 @@ public sealed class ChatProtectionSystem : EntitySystem
 
                 RaiseLocalEvent(ref eraseEvent);
 
+                _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-ban-reason", ("player", player.Name), ("word", word), ("channel", channel)));
                 ApplyBan(player, reason);
                 break;
             }
@@ -266,6 +267,7 @@ public sealed class ChatProtectionSystem : EntitySystem
             case "OOC": // 把他放逐就行了。😡😡😡
             {
                 _chat.DeleteMessagesBy(player.UserId);
+                _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-ban-reason", ("player", player.Name), ("word", word), ("channel", channel)));
                 ApplyBan(player, reason);
                 break;
             }
