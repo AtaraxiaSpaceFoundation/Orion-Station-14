@@ -403,7 +403,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
                 playDefaultSound: false);
 
             // TODO: Need filter extensions or something don't blame me.
-            _audio.PlayGlobal("/Audio/Misc/Evacotbutie.ogg", Filter.Broadcast(), true);
+            _audio.PlayGlobal("/Audio/Misc/Evacotbutie.ogg", Filter.Broadcast(), true); // europa edit: New custom sounds
             return;
         }
 
@@ -458,7 +458,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         // Play announcement audio.
 
         var audioFile = result.ResultType == ShuttleDockResultType.NoDock
-            ? "/Audio/Misc/Evacotbutie.ogg"
+            ? "/Audio/Misc/Evacotbutie.ogg" // europa edit: New custom sounds
             : "/Audio/Announcements/shuttle_dock.ogg";
 
         // TODO: Need filter extensions or something don't blame me.
