@@ -71,18 +71,6 @@ public sealed class ChatProtectionSystem : EntitySystem
         _cfg.OnValueChanged(CCVars.ChatProtectionEnabled, SetEnabled, true);
     }
 
-    // TODO: Better way to handle this
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        // Cache ChatProtectionListPrototypes only once
-        if (_cacheDone)
-            return;
-
-        CachePrototypes();
-        _cacheDone = true;
-    }
 
     private void SetEnabled(bool value)
     {
@@ -141,6 +129,9 @@ public sealed class ChatProtectionSystem : EntitySystem
         if (_admin.IsAdmin(player, true))
            return false;
 
+        if (!_cacheDone) // Something like initalization for prototypes
+            CachePrototypes();
+
         foreach (var word in _icWords)
         {
             if (!message.Contains(word, StringComparison.OrdinalIgnoreCase))
@@ -149,6 +140,8 @@ public sealed class ChatProtectionSystem : EntitySystem
             HandleViolation(session, word, "IC");
             return true;
         }
+
+        _cacheDone = true;
 
         return false;
     }
@@ -161,14 +154,19 @@ public sealed class ChatProtectionSystem : EntitySystem
         if (_admin.IsAdmin(session, true))
             return false;
 
+        if (!_cacheDone) // Something like initalization for prototypes
+            CachePrototypes();
+
         foreach (var word in _oocWords)
         {
-            if (message.Contains(word, StringComparison.OrdinalIgnoreCase))
-            {
-                HandleViolation(session, word, "OOC");
-                return true;
-            }
+            if (!message.Contains(word, StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            HandleViolation(session, word, "OOC");
+            return true;
         }
+
+        _cacheDone = true;
 
         return false;
     }
