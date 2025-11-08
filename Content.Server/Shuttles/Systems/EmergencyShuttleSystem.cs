@@ -61,6 +61,7 @@
 // SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
 // SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
 //
+//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -402,7 +403,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
                 playDefaultSound: false);
 
             // TODO: Need filter extensions or something don't blame me.
-            _audio.PlayGlobal("/Audio/Misc/notice1.ogg", Filter.Broadcast(), true);
+            _audio.PlayGlobal("/Audio/Misc/Evacotbutie.ogg", Filter.Broadcast(), true);
             return;
         }
 
@@ -457,7 +458,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         // Play announcement audio.
 
         var audioFile = result.ResultType == ShuttleDockResultType.NoDock
-            ? "/Audio/Misc/notice1.ogg"
+            ? "/Audio/Misc/Evacotbutie.ogg"
             : "/Audio/Announcements/shuttle_dock.ogg";
 
         // TODO: Need filter extensions or something don't blame me.
