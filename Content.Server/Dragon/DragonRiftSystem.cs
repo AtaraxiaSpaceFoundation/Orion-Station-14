@@ -97,7 +97,7 @@ public sealed class DragonRiftSystem : EntitySystem
                 var msg = Loc.GetString("carp-rift-warning",
                     ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, xform)))));
                 _chat.DispatchGlobalAnnouncement(msg, playSound: false, colorOverride: Color.Red);
-                _audio.PlayGlobal("/Audio/Misc/danger_slow.ogg", Filter.Broadcast(), true); // europa ny Umbi_Max edit: New custom sounds
+                _audio.PlayGlobal("/Audio/Misc/danger_slow.ogg", Filter.Broadcast(), true); // europa by Umbi_Max edit: New custom sounds
                 _navMap.SetBeaconEnabled(uid, true);
             }
 
