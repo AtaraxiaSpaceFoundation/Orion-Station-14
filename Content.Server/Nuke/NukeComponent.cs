@@ -114,7 +114,7 @@ namespace Content.Server.Nuke
         public SoundSpecifier AlertSound = new SoundPathSpecifier("/Audio/Machines/Nuke/nuke_alarm.ogg");
 
         [DataField("armSound")]
-        public SoundSpecifier ArmSound = new SoundPathSpecifier("/Audio/Misc/alarmsirena.ogg");
+        public SoundSpecifier ArmSound = new SoundPathSpecifier("/Audio/Misc/alarmsirena.ogg"); // europa ny Umbi_Max edit: New custom sounds
 
         [DataField("disarmSound")]
         public SoundSpecifier DisarmSound = new SoundPathSpecifier("/Audio/Misc/notice2.ogg");
