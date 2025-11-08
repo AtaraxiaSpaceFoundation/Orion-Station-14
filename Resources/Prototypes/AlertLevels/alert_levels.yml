@@ -103,14 +103,14 @@
       shuttleTime: 600
     violet:
       announcement: alert-level-violet-announcement
-      sound: /Audio/Misc/danger.ogg
+      sound: /Audio/Misc/danger.ogg  // europa edit: New custom sounds
       color: Violet
       emergencyLightColor: Violet
       forceEnableEmergencyLights: true
       shuttleTime: 600
     yellow:
       announcement: alert-level-yellow-announcement
-      sound: /Audio/Misc/danger.ogg
+      sound: /Audio/Misc/danger.ogg  // europa edit: New custom sounds
       color: Yellow
       emergencyLightColor: Goldenrod
       forceEnableEmergencyLights: true
