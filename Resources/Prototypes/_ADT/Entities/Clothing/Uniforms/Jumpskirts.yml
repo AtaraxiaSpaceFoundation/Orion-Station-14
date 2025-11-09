@@ -43,7 +43,7 @@
   parent: ClothingUniformSkirtBase
   id: ADTClothingUniformJumpskirtTurtleneckYellow
   name: yellow turtleneck with skirt
-  description: Filled with happines.
+  description: Filled with happiness.
   components:
   - type: Sprite
     sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_yellow_women.rsi
