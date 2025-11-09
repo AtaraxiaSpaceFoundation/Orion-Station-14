@@ -61,7 +61,7 @@ namespace Content.Client.PDA
 
 
         private int _currentView;
-        private TimeSystem _timeSystem = default!; // Orion
+        private readonly TimeSystem _timeSystem; // Orion
 
         public event Action<EntityUid>? OnProgramItemPressed;
         public event Action<EntityUid>? OnUninstallButtonPressed;
@@ -144,17 +144,19 @@ namespace Content.Client.PDA
 
             StationTimeButton.OnPressed += _ =>
             {
-                // Orion-Edit-Start
-                var stationTime = _timeSystem.GetStationTime();
-                _clipboard.SetText(stationTime.Time.ToString("hh\\:mm\\:ss"));
-                // Orion-Edit-End
+                var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
+                _clipboard.SetText((stationTime.ToString(@"hh\:mm\:ss")));
             };
 
             // Orion-Start
+            StationRealTimeButton.OnPressed += _ =>
+            {
+                _clipboard.SetText(_timeSystem.GetStationTime().ToString("hh\\:mm"));
+            };
+
             StationDateButton.OnPressed += _ =>
             {
-                var stationDate = _timeSystem.GetStationTime().Date;
-                _clipboard.SetText(stationDate.ToString("dd.MM.yyyy"));
+                _clipboard.SetText(_timeSystem.GetStationDate().ToString("dd.MM.yyyy"));
             };
             // Orion-End
 
@@ -381,15 +383,16 @@ namespace Content.Client.PDA
         {
             base.Draw(handle);
 
-            // Orion-Edit-Start
-            var stationTime = _timeSystem.GetStationTime();
-            var stationDate = stationTime.Date;
+            var stationTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
-                ("time", stationTime.Time.ToString("hh\\:mm\\:ss"))));
+                ("time", stationTime.ToString(@"hh\:mm\:ss"))));
+            // Orion-Start
+            StationRealTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-real-time",
+                ("time", _timeSystem.GetStationTime().ToString(@"hh\:mm"))));
             StationDateLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-date",
-                ("date", stationDate.ToString("dd.MM.yyyy"))));
-            // Orion-Edit-End
+                ("date", _timeSystem.GetStationDate().ToString("dd.MM.yyyy"))));
+            // Orion-End
         }
     }
 }
