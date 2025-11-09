@@ -3,7 +3,8 @@
                      xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                      xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
                      Title="{Loc 'detail-examinable-window-title'}"
-                     MinSize="1050 520">
+                     MinSize="1050 520"
+                     SetSize="1050 520">
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
         <PanelContainer HorizontalExpand="False" VerticalExpand="True" MinSize="150 0">
             <PanelContainer.PanelOverride>
