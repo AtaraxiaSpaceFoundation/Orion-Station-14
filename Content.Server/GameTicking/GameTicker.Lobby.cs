@@ -149,7 +149,7 @@ namespace Content.Server.GameTicking
                 ("mapName", stationNames.ToString()),
                 ("gmTitle", gmTitle),
                 ("desc", desc),
-                ("stationDate", _timeSystem .GetStationDate().ToString("dd.MM.yyyy"))); // Orion
+                ("stationDate", _timeSystem.GetStationDate().ToString("dd.MM.yyyy"))); // Orion
         }
 
         private TickerConnectionStatusEvent GetConnectionStatusMsg()
