@@ -28,7 +28,8 @@
     ClothingHeadsetEngineering: 2
     ClothingHeadHelmetFire: 2
     ClothingOuterSuitFire: 2
-    ClothingOuterWinterAtmos: 2
+    ADTClothingHeadHatsBeretAtmos: 3 # ADT // europa edit: Perenos-s-ADT-clothes by Umbi_Max
+    ClothingOuterWinterAtmos: 3
     ClothingNeckScarfStripedLightBlue: 3
   contrabandInventory:
     ToyFigurineAtmosTech: 1

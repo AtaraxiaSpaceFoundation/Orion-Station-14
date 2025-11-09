@@ -1,0 +1,144 @@
+# Clothes from https://github.com/AdventureTimeSS14/space_station_ADT
+# Водолазки. От prazat911, конечно же.
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckAquamarine
+  name: aquamarine turtleneck
+  description: Too bright!
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_aquamarine.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_aquamarine.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckWhite
+  name: white turtleneck
+  description: Warm and comfy.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_white.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_white.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckAzure
+  name: azure turtleneck
+  description: Brighter shade of blue.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_azure.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_azure.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckYellow
+  name: yellow turtleneck
+  description: Filled with happines.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_yellow.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_yellow.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckGreen
+  name: green turtleneck
+  description: Cheaper analog of CentComm turtleneck.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_green.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_green.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckBrown
+  name: brown turtleneck
+  description: -Ya know why i wear red? It hides blood well! -But that's brown color...
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_brown.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_brown.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckOrange
+  name: orange turtleneck
+  description: I don't want to talk about it.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_orange.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_orange.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckPink
+  name: pink turtleneck
+  description: Who would wear this?
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_pink.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_pink.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckGrey
+  name: grey turtleneck
+  description: Grey style?
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_grey.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_grey.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckBlue
+  name: blue turtleneck
+  description: Darker shade of azure.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_blue.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_blue.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ADTClothingUniformJumpsuitTurtleneckBlack
+  name: black turtleneck
+  description: Favourite clothes of bookworms.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_black.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpsuit/turtleneck_black.rsi
+  - type: StaticPrice
+    price: 15

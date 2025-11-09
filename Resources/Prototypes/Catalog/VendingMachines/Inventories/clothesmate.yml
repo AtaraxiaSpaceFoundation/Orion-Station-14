@@ -107,6 +107,28 @@
     ClothingUniformJumpskirtCasualRed: 2
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
+    ADTClothingUniformJumpsuitTurtleneckBlack: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckBlue: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckAzure: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckGreen: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckOrange: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckYellow: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckWhite: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckBrown: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckGrey: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckAquamarine: 2 # ADT
+    ADTClothingUniformJumpsuitTurtleneckPink: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckBlack: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckBlue: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckAzure: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckGreen: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckOrange: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckYellow: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckWhite: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckBrown: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckGrey: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckAquamarine: 2 # ADT
+    ADTClothingUniformJumpskirtTurtleneckPink: 2 # ADT
     # DO NOT ADD MORE, USE UNIFORM DYING
     # Orion-Start
     ClothingUniformJumpskirtRoll: 2
@@ -178,6 +200,8 @@
     ClothingNeckPonchoSmallPurple: 3 # Monolith
     ClothingNeckPonchoSmallBlack: 3 # Monolith
     ClothingNeckPonchoSmallWhite: 3 # Monolith
+    ADTClothingNeckDarkGreyCloak: 2 # ADT // europa edit: Perenos-s-ADT-clothes by Umbi_Max
+    ADTClothingNeckGothicCloak: 2 # ADT // europa edit: Perenos-s-ADT-clothes by Umbi_Max
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
     # Orion-Start

@@ -1,0 +1,11 @@
+# Code from https://github.com/space-syndicate/space-station-14
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretSecurityPilot
+  name: pilot beret
+  description: Black beret with a silver badge.
+  components:
+  - type: Sprite
+    sprite: _Corvax/Clothing/Head/Hats/beret_pilot.rsi
+  - type: Clothing
+    sprite: _Corvax/Clothing/Head/Hats/beret_pilot.rsi

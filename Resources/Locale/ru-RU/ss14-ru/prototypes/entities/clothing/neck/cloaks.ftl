@@ -54,3 +54,7 @@ ent-ClothingNeckCloakEnby = плащ кладоискателя
     .desc = Этот плащ принадлежал жадному искателю сокровищ.
 ent-ClothingNeckCloakPan = поварской плащ
     .desc = Предназначен для ношения вместе со сковородой.
+ent-ADTClothingNeckDarkGreyCloak = темно-серый плащ
+    .desc = Даже грейтайд заслуживает иметь свой плащ.
+ent-ADTClothingNeckGothicCloak = готический плащ
+    .desc = Для классических вампиров, ценящих старый стиль.

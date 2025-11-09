@@ -1,0 +1,144 @@
+# Clothes from https://github.com/AdventureTimeSS14/space_station_ADT
+# Водолазки от prazat911.
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckAquamarine
+  name: aquamarine turtleneck with skirt
+  description: Too bright!
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_aquamarine_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_aquamarine_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckWhite
+  name: white turtleneck with skirt
+  description: Warm and comfy.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_white_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_white_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckAzure
+  name: azure turtleneck with skirt
+  description: Brighter shade of blue.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_azure_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_azure_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckYellow
+  name: yellow turtleneck with skirt
+  description: Filled with happines.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_yellow_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_yellow_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckGreen
+  name: green turtleneck with skirt
+  description: Cheaper analog of CentComm turtleneck.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_green_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_green_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckBrown
+  name: brown turtleneck with skirt
+  description: -Ya know why i wear red? It hides blood well! -But that's brown color...
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_brown_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_brown_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckOrange
+  name: orange turtleneck with skirt
+  description: I don't want to talk about it.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_orange_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_orange_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckPink
+  name: pink turtleneck with skirt
+  description: Who would wear this?
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_pink_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_pink_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckGrey
+  name: grey turtleneck with skirt
+  description: Grey style?
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_grey_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_grey_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckBlue
+  name: blue turtleneck with skirt
+  description: Darker shade of azure.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_blue_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_blue_women.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ADTClothingUniformJumpskirtTurtleneckBlack
+  name: black turtleneck with skirt
+  description: Favourite clothes of bookworms.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_black_women.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Uniforms/Jumpskirt/turtleneck_black_women.rsi
+  - type: StaticPrice
+    price: 15

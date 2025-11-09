@@ -1,0 +1,11 @@
+# Code from https://github.com/space-syndicate/space-station-14
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtElegantMaid
+  name: elegant maid uniform
+  description: Call me master and bring me some beer.
+  components:
+    - type: Sprite
+      sprite: _Corvax/Clothing/Uniforms/Jumpskirt/elegantmaid.rsi
+    - type: Clothing
+      sprite: _Corvax/Clothing/Uniforms/Jumpskirt/elegantmaid.rsi

@@ -1,0 +1,14 @@
+# Clothes from https://github.com/AdventureTimeSS14/space_station_ADT
+- type: entity
+  parent: ClothingHeadBase
+  id: ADTClothingHeadHatsBeretAtmos
+  name: atmospheric techinican's beret
+  description: A blue beret with sewn emblem of engineering departament. Smells like frezon.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Head/Hats/beret_atmospheric_technician.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Head/Hats/beret_atmospheric_technician.rsi
+  - type: Tag
+    tags:
+      - HamsterWearable
