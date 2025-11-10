@@ -85,6 +85,7 @@
   - type: Icon
     sprite: Structures/Storage/Crates/plastic.rsi
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/plastic.rsi
   - type: Construction
     graph: CratePlastic
@@ -417,6 +418,7 @@
   - type: EntityStorage
     airtight: false
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/livestock.rsi
     layers:
     - state: base
@@ -472,6 +474,7 @@
   name: hamster cage
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/cage.rsi
     layers:
     - state: base
@@ -722,6 +725,7 @@
   description: A space pirate chest, not for station lubbers.
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion | Not TG
     sprite: Structures/Storage/Crates/piratechest.rsi
     layers:
     - state: crate
@@ -751,6 +755,7 @@
   description: A box overflowing with fun.
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion | Not TG
     sprite: Structures/Storage/Crates/toybox.rsi
     layers:
     - state: crate
