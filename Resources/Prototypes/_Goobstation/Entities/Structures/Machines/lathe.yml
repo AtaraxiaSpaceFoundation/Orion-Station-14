@@ -276,6 +276,7 @@
     - ChemistryStatic
     - TapeRecorderStatic
     dynamicPacks:
+    - OrionService # Orion
     - Janitor
     - Instruments
     - FauxTiles

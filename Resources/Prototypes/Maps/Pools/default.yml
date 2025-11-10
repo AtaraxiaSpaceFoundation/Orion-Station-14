@@ -52,10 +52,6 @@
 - type: gameMapPool
   id: DefaultMapPool
   maps:
-  # Orion-Start
-#  - Aspid
-#  - Rook
-  # Orion-End
   - Atlas
   - Amber
   - Bagel

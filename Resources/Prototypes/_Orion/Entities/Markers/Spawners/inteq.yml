@@ -2,6 +2,7 @@
   name: InteQ Vanguard Leader spawner
   id: SpawnMobInteQVanguardLeader
   parent: MarkerBase
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -16,6 +17,7 @@
   name: InteQ Vanguard Operative spawner
   id: SpawnMobInteQVanguardOperative
   parent: MarkerBase
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -30,6 +32,7 @@
   name: InteQ Vanguard Soldier spawner
   id: SpawnMobInteQVanguardSoldier
   parent: MarkerBase
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -44,6 +47,7 @@
   name: InteQ Vanguard Medic spawner
   id: SpawnMobInteQVanguardMedic
   parent: MarkerBase
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -60,6 +64,7 @@
   parent: MarkerBase
   id: SpawnMobInteQAgent
   name: InteQ agent spawner
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -75,6 +80,7 @@
   id: SpawnMobInteQAgentRandom
   name: InteQ agent spawner
   suffix: 20%
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -90,6 +96,7 @@
   parent: MarkerBase
   id: SpawnMobCarpBrownInteQ
   name: InteQ carp spawner
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -108,6 +115,7 @@
   id: SpawnPointInteQ
   name: InteQ sleeper
   suffix: Spawner, Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -145,6 +153,7 @@
   id: SpawnPointInteQVanguardLeader
   name: InteQ Vanguard Leader sleeper
   suffix: Spawner, Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -165,6 +174,7 @@
   id: SpawnPointInteQVanguardOperative
   name: InteQ Vanguard Operative sleeper
   suffix: Spawner, Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -185,6 +195,7 @@
   id: SpawnPointInteQVanguardSoldier
   name: InteQ Vanguard Soldier sleeper
   suffix: Spawner, Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -205,6 +216,7 @@
   id: SpawnPointInteQVanguardMedic
   name: InteQ Vanguard Medic sleeper
   suffix: Spawner, Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -227,6 +239,7 @@
   id: SpawnPointInteQVanguardLeaderSizo37
   name: InteQ Vanguard Leader sleeper
   suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -258,6 +271,7 @@
   id: SpawnPointInteQVanguardOperativeSizo37
   name: InteQ Vanguard Operative sleeper
   suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -289,6 +303,7 @@
   id: SpawnPointInteQVanguardSoldierSizo37
   name: InteQ Vanguard Soldier sleeper
   suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -320,6 +335,7 @@
   id: SpawnPointInteQVanguardMedicSizo37
   name: InteQ Vanguard Medic sleeper
   suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole

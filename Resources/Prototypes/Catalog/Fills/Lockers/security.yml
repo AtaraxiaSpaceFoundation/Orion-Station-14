@@ -130,6 +130,7 @@
     - id: Wrench # Goobstation
     - id: ContrabandDetectorFlatpack # Goobstation
     - id: SecurityMegaphone # goob - loudspeakers
+    - id: BoxBodyBagPrisoner # Orion
 
 - type: entityTable
   id: FillLockerWardenHarduit
@@ -180,9 +181,9 @@
     - !type:GroupSelector
       children:
       - id: ClothingBeltSecurityFilled
-        weight: 0.5
+        weight: 0.7
       - id: ClothingBeltCorporateJudoFilled
-        weight: 0.5
+        weight: 0.3
     # Goobstation - Martial Arts - end
 
 - type: entity
@@ -209,6 +210,8 @@
       prob: 0.1
     - id: MedkitOxygenFilled
     - id: MedkitAdvancedFilled
+    - id: BoxSyringe
+    - id: BoxBodyBagPrisoner # Goob Station | Orion-Edit
 
 - type: entity
   id: LockerDetectiveFilled
@@ -304,6 +307,7 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeRifleLecter
+  abstract: true # Orion | Alert Level Locked
   name: lecter safe
   components:
   - type: EntityTableContainerFill
@@ -323,6 +327,7 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeSubMachineGunDrozd
+  abstract: true # Orion | Alert Level Locked
   name: drozd safe
   components:
   - type: EntityTableContainerFill
@@ -342,6 +347,7 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeShotgunEnforcer
+  abstract: true # Orion | Alert Level Locked
   name: enforcer safe
   components:
   - type: EntityTableContainerFill
@@ -361,6 +367,7 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeShotgunKammerer
+  abstract: true # Orion | Alert Level Locked
   name: kammerer safe
   components:
   - type: EntityTableContainerFill
@@ -379,6 +386,7 @@
 
 - type: entity
   id: GunSafeSubMachineGunWt550
+  abstract: true # Orion | Alert Level Locked
   suffix: Wt550
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   name: wt550 safe
@@ -400,6 +408,7 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeLaserCarbine
+  abstract: true # Orion | Alert Level Locked
   name: laser safe
   components:
   - type: EntityTableContainerFill

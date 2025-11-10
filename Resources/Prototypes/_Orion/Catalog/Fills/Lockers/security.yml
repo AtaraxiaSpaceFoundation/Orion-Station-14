@@ -1,0 +1,59 @@
+# Lecter
+- type: entity
+  parent: [ GunSafeRifleLecterAlertUnlocked, AlertLevelLock ]
+  id: GunSafeRifleLecterAlertLocked
+  suffix: Alert Level Lock
+
+- type: entity
+  parent: [ GunSafeRifleLecter ]
+  id: GunSafeRifleLecterAlertUnlocked
+
+# Drozd
+- type: entity
+  parent: [ GunSafeSubMachineGunDrozdAlertUnlocked, AlertLevelLock ]
+  id: GunSafeSubMachineGunDrozdAlertLocked
+  suffix: Alert Level Lock
+
+- type: entity
+  parent: [ GunSafeSubMachineGunDrozd ]
+  id: GunSafeSubMachineGunDrozdAlertUnlocked
+
+# Enforcer
+- type: entity
+  parent: [ GunSafeShotgunEnforcerAlertUnlocked, AlertLevelLock ]
+  id: GunSafeShotgunEnforcerAlertLocked
+  suffix: Alert Level Lock
+
+- type: entity
+  parent: [ GunSafeShotgunEnforcer ]
+  id: GunSafeShotgunEnforcerAlertUnlocked
+
+# Kammerer
+- type: entity
+  parent: [ GunSafeShotgunKammererAlertUnlocked, AlertLevelLock ]
+  id: GunSafeShotgunKammererAlertLocked
+  suffix: Alert Level Lock
+
+- type: entity
+  parent: [ GunSafeShotgunKammerer]
+  id: GunSafeShotgunKammererAlertUnlocked
+
+# Wt550
+- type: entity
+  parent: [ GunSafeSubMachineGunWt550AlertUnlocked, AlertLevelLock ]
+  id: GunSafeSubMachineGunWt550AlertLocked
+  suffix: Alert Level Lock
+
+- type: entity
+  parent: [ GunSafeSubMachineGunWt550 ]
+  id: GunSafeSubMachineGunWt550AlertUnlocked
+
+# Laser Carabine
+- type: entity
+  parent: [ GunSafeLaserCarbineAlertUnlocked, AlertLevelLock ]
+  id: GunSafeLaserCarbineAlertLocked
+  suffix: Alert Level Lock
+
+- type: entity
+  parent: [ GunSafeLaserCarbine ]
+  id: GunSafeLaserCarbineAlertUnlocked

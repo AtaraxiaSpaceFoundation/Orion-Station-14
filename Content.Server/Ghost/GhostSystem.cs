@@ -736,8 +736,8 @@ namespace Content.Server.Ghost
 //            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             // Orion-Start
             CustomGhostPrototype? customGhost = null;
-            if (mind.Comp.UserId is NetUserId userId)
-                customGhost = _prototypeManager.Index(_prefs.GetPreferences(userId).CustomGhost);
+            if (mind.Comp.UserId is NetUserId userId && _prefs.GetPreferencesOrNull(userId) is {} prefs)
+                customGhost = _prototypeManager.Index(prefs.CustomGhost);
 
             var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
             // Orion-End

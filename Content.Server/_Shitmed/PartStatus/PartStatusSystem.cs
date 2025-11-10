@@ -244,9 +244,11 @@ public sealed class PartStatusSystem : EntitySystem
                 locString += "-styleless";
             }
 
+            var name = Loc.GetString("body-part-" + partStatus.PartName.Replace(" ", "-")); // Orion-Edit
+
             message.AddText("    " + Loc.GetString(locString,
                 ("possessive", possessive),
-                ("part", partStatus.PartName),
+                ("part", name), // Orion-Edit | partStatus.PartName -> name
                 ("status", statusDescription)));
 
             message.PushNewline();

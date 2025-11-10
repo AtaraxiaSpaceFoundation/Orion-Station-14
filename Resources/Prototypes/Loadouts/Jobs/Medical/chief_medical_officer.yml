@@ -141,9 +141,9 @@
   id: ChiefMedicalOfficerMantle
   equipment:
     neck: ClothingNeckMantleCMO
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterCMO
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterCMO
 
 - type: startingGear
   id: ChiefMedicalOfficerMantle

@@ -39,6 +39,6 @@
   id: HoPLongcoat
   equipment:
     outerClothing: ClothingOuterCoatHoPLong
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterHoP
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterHoP

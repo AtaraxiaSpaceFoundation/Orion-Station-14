@@ -87,9 +87,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     Margin="0 75" StyleClasses="AngleRect">
                         <RichTextLabel Name="LobbyMessageLabel" Access="Public" Margin="5" />
                     <!-- Orion-Start -->
+                        <!-- Uncomment when wanna fun
                         <buttons:ViewPremiumInfoButton StyleClasses="NovaButton" SetSize="154 64">
                             <TextureRect TextureScale="1 1" TexturePath="/Textures/_Orion/Interface/pass.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </buttons:ViewPremiumInfoButton>
+                        -->
                     <!-- Orion-End -->
                     </PanelContainer>
                     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4"> <!-- Goobstation - Lobby Background Credits -->

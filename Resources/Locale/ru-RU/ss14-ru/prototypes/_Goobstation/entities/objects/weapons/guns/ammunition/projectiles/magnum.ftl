@@ -1,2 +1,2 @@
-ent-BulletMagnumNeurotoxin = пуля (.45 дозвуковой, нейротоксин)
+ent-BulletMagnumNeurotoxin = пуля (.45 нейротоксин)
     .desc = { ent-BaseBulletPractice.desc }

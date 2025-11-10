@@ -13,6 +13,7 @@
   id: SpawnPointHermitLavaland
   name: Lavaland Hermit sleeper
   suffix: Spawner, Ghost Role, Player Appearance
+  categories: [ Spawner ]
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole

@@ -26,6 +26,7 @@
     <GuideEntityEmbed Entity="MobVulpkanin" Caption="Вульпканин"/>
     <GuideEntityEmbed Entity="MobYowie" Caption="Йови"/>
     <GuideEntityEmbed Entity="MobChitinid" Caption="Хитинид"/>
+    <GuideEntityEmbed Entity="MobFeroxi" Caption="Ферокси"/>
   </Box>
 
 </Document>

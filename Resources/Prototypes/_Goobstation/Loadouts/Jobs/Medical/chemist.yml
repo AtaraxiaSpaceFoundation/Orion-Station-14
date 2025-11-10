@@ -14,9 +14,9 @@
 
 - type: loadout
   id: ChemistUshanka
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterChemist
+#  effects: # Orion-Remove
+#  - !type:GroupLoadoutEffect
+#    proto: MasterChemist
   equipment:
     head: ClothingHeadHatUshanka
 

@@ -1,2 +1,5 @@
 - type: Tag
   id: UnitedEarthGovernment
+
+- type: Tag
+  id: MeleeHitIgnore

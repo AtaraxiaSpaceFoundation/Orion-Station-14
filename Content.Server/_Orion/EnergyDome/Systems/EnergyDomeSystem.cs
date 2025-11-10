@@ -1,3 +1,4 @@
+using Content.Server._Orion.EnergyDome.Components;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
@@ -10,19 +11,20 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Tag;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 
-namespace Content.Server.EnergyDome;
+namespace Content.Server._Orion.EnergyDome.Systems;
 
 //
-// License-Identifier: MIT
+// License-Identifier: AGPL-3.0-or-later
 //
 
-public sealed partial class EnergyDomeSystem : EntitySystem
+public sealed class EnergyDomeSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
@@ -37,7 +39,6 @@ public sealed partial class EnergyDomeSystem : EntitySystem
     {
         base.Initialize();
 
-        //Generator events
         SubscribeLocalEvent<EnergyDomeGeneratorComponent, MapInitEvent>(OnInit);
 
         SubscribeLocalEvent<EnergyDomeGeneratorComponent, ActivateInWorldEvent>(OnActivatedInWorld);
@@ -56,7 +57,7 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         SubscribeLocalEvent<EnergyDomeGeneratorComponent, ExaminedEvent>(OnExamine);
 
         SubscribeLocalEvent<EnergyDomeGeneratorComponent, ComponentRemove>(OnComponentRemove);
-        //Dome events
+
         SubscribeLocalEvent<EnergyDomeComponent, DamageChangedEvent>(OnDomeDamaged);
     }
 
@@ -66,7 +67,7 @@ public sealed partial class EnergyDomeSystem : EntitySystem
             _signalSystem.EnsureSinkPorts(generator, generator.Comp.TogglePort, generator.Comp.OnPort, generator.Comp.OffPort);
     }
 
-    //different ways of use
+    #region Use Ways
 
     private void OnSignalReceived(Entity<EnergyDomeGeneratorComponent> generator, ref SignalReceivedEvent args)
     {
@@ -113,7 +114,6 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         if (!args.CanAccess || !args.CanInteract || !generator.Comp.CanInteractUse)
             return;
 
-        var @event = args;
         ActivationVerb verb = new()
         {
             Text = Loc.GetString("energy-dome-verb-toggle"),
@@ -122,7 +122,8 @@ public sealed partial class EnergyDomeSystem : EntitySystem
 
         args.Verbs.Add(verb);
     }
-    private void OnGetActions(Entity<EnergyDomeGeneratorComponent> generator, ref GetItemActionsEvent args)
+
+    private static void OnGetActions(Entity<EnergyDomeGeneratorComponent> generator, ref GetItemActionsEvent args)
     {
         if (generator.Comp.CanInteractUse)
             args.AddAction(ref generator.Comp.ToggleActionEntity, generator.Comp.ToggleAction);
@@ -134,11 +135,12 @@ public sealed partial class EnergyDomeSystem : EntitySystem
             return;
 
         AttemptToggle(generator, !generator.Comp.Enabled);
-
         args.Handled = true;
     }
 
-    // System interactions
+    #endregion
+
+    #region Interactions
 
     private void OnPowerCellSlotEmpty(Entity<EnergyDomeGeneratorComponent> generator, ref PowerCellSlotEmptyEvent args)
     {
@@ -156,51 +158,49 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         if (args.Charge == 0)
             TurnOff(generator, true);
     }
+
     private void OnDomeDamaged(Entity<EnergyDomeComponent> dome, ref DamageChangedEvent args)
     {
         if (dome.Comp.Generator == null)
             return;
 
-        var generatorUid = dome.Comp.Generator.Value;
-
-        if (!TryComp<EnergyDomeGeneratorComponent>(generatorUid, out var generatorComp))
-            return;
-
         if (args.DamageDelta == null)
             return;
 
-        float totalDamage = args.DamageDelta.GetTotal().Float();
+        var generatorUid = dome.Comp.Generator.Value;
+        if (!TryComp<EnergyDomeGeneratorComponent>(generatorUid, out var generatorComp))
+            return;
+
+        var totalDamage = args.DamageDelta.GetTotal().Float();
         var energyLeak = totalDamage * generatorComp.DamageEnergyDraw;
 
         _audio.PlayPvs(generatorComp.ParrySound, dome);
 
         if (HasComp<PowerCellDrawComponent>(generatorUid))
         {
-            _powerCell.TryGetBatteryFromSlot(generatorUid, out var cell);
-            if (cell != null)
+            if (_powerCell.TryGetBatteryFromSlot(generatorUid, out var cell))
             {
-                _battery.UseCharge(cell.Owner, energyLeak);
+                _battery.UseCharge(generatorUid, energyLeak, cell);
 
                 if (cell.CurrentCharge == 0)
                     TurnOff((generatorUid, generatorComp), true);
             }
         }
 
-        //it seems to me it would not work well to hang both a powercell and an internal battery with wire charging on the object....
-        if (TryComp<BatteryComponent>(generatorUid, out var battery)) {
-            _battery.UseCharge(generatorUid, energyLeak);
+        // It seems to me it would not work well to hang both a powercell and an internal battery with wire charging on the object....
+        if (!TryComp<BatteryComponent>(generatorUid, out var battery))
+            return;
 
-            if (battery.CurrentCharge == 0)
-                TurnOff((generatorUid, generatorComp), true);
-        }
+        _battery.UseCharge(generatorUid, energyLeak, battery);
+
+        if (battery.CurrentCharge == 0)
+            TurnOff((generatorUid, generatorComp), true);
     }
 
     private void OnParentChanged(Entity<EnergyDomeGeneratorComponent> generator, ref EntParentChangedMessage args)
     {
-        //To do: taking the active barrier in hand for some reason does not manage to change the parent in this case,
-        //and the barrier is not turned off.
-        //
-        //Laying down works well (-_-)
+        // TODO: taking the active barrier in hand for some reason does not manage to change the parent in this case,
+        // and the barrier is not turned off.
         if (GetProtectedEntity(generator) != generator.Comp.DomeParentEntity)
             TurnOff(generator, false);
     }
@@ -210,7 +210,9 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         TurnOff(generator, false);
     }
 
-    // Functional
+    #endregion
+
+    #region Functional
 
     public bool AttemptToggle(Entity<EnergyDomeGeneratorComponent> generator, bool status)
     {
@@ -223,9 +225,9 @@ public sealed partial class EnergyDomeSystem : EntitySystem
             return false;
         }
 
-        if (TryComp<PowerCellSlotComponent>(generator, out var powerCellSlot))
+        if (TryComp<PowerCellSlotComponent>(generator, out _))
         {
-            if (!_powerCell.TryGetBatteryFromSlot(generator, out var cell) && !TryComp(generator, out cell))
+            if (!_powerCell.TryGetBatteryFromSlot(generator, out _) && !TryComp(generator, out BatteryComponent? _))
             {
                 _audio.PlayPvs(generator.Comp.TurnOffSound, generator);
                 _popup.PopupEntity(
@@ -284,12 +286,13 @@ public sealed partial class EnergyDomeSystem : EntitySystem
             domeComp.Generator = generator;
         }
 
-        if (TryComp<PowerCellDrawComponent>(generator.Owner, out var powerCellDrawComponent))
+        if (TryComp<PowerCellDrawComponent>(generator.Owner, out _))
         {
             _powerCell.SetDrawEnabled(generator.Owner, true);
         }
 
-        if (TryComp<BatterySelfRechargerComponent>(generator, out var recharger)) {
+        if (TryComp<BatterySelfRechargerComponent>(generator, out var recharger))
+        {
             recharger.AutoRecharge = true;
         }
 
@@ -306,7 +309,7 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         generator.Comp.Enabled = false;
         QueueDel(generator.Comp.SpawnedDome);
 
-        if (TryComp<PowerCellDrawComponent>(generator.Owner, out var powerCellDrawComponent))
+        if (TryComp<PowerCellDrawComponent>(generator.Owner, out _))
         {
             _powerCell.SetDrawEnabled(generator.Owner, false);
         }
@@ -316,17 +319,21 @@ public sealed partial class EnergyDomeSystem : EntitySystem
         }
 
         _audio.PlayPvs(generator.Comp.TurnOffSound, generator);
-        if (startReloading)
+
+        if (!startReloading)
+            return;
+
+        _audio.PlayPvs(generator.Comp.EnergyOutSound, generator);
+
+        if (TryComp<UseDelayComponent>(generator, out var useDelay))
         {
-            _audio.PlayPvs(generator.Comp.EnergyOutSound, generator);
-            if (TryComp<UseDelayComponent>(generator, out var useDelay))
-            {
-                _useDelay.TryResetDelay(new Entity<UseDelayComponent>(generator, useDelay));
-            }
+            _useDelay.TryResetDelay(new Entity<UseDelayComponent>(generator, useDelay));
         }
     }
 
-    // Util
+    #endregion
+
+    #region Util
 
     private EntityUid GetProtectedEntity(EntityUid entity)
     {
@@ -334,4 +341,6 @@ public sealed partial class EnergyDomeSystem : EntitySystem
             ? container.Owner
             : entity;
     }
+
+    #endregion
 }

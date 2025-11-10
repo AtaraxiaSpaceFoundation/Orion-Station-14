@@ -1,18 +1,19 @@
-namespace Content.Server.EnergyDome;
+using Content.Server._Orion.EnergyDome.Systems;
+
+namespace Content.Server._Orion.EnergyDome.Components;
 
 //
-// License-Identifier: MIT
+// License-Identifier: AGPL-3.0-or-later
 //
 
 /// <summary>
-/// marker component that allows linking the dome generator with the dome itself
+/// Allows linking the dome generator with the dome itself
 /// </summary>
-
 [RegisterComponent, Access(typeof(EnergyDomeSystem))]
 public sealed partial class EnergyDomeComponent : Component
 {
     /// <summary>
-    /// A linked generator that uses energy
+    /// Linked generator that uses energy
     /// </summary>
     [DataField]
     public EntityUid? Generator;

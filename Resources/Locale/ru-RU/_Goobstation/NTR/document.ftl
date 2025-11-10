@@ -49,12 +49,12 @@ ntr-document-science-starting-text1 = [color=#b8972d]███[/color][color=#1d
     Время от начала смены: { $date }
 ntr-document-service-document-text =
     { $start }
-    NanoTrasen хочет, чтобы вы знали, что вы не { $text1 } { $text2 }
-    NanoTrasen будет удовлетворена, если вы { $text3 }
+    НаноТрейзен хочет, чтобы вы знали, что вы не { $text1 } { $text2 }
+    НаноТрейзен будет удовлетворена, если вы { $text3 }
     Подписи ниже подтверждают, что { $text4 }
 ntr-document-security-document-text =
     { $start }
-    NanoTrasen хочет, чтобы вы проверили некоторые вещи перед тем, как поставить печать, убедитесь, что { $text1 } { $text2 }
+    НаноТрейзен хочет, чтобы вы проверили некоторые вещи перед тем, как поставить печать, убедитесь, что { $text1 } { $text2 }
     { $text3 }
     { $text4 }
 ntr-document-cargo-document-text =

@@ -110,8 +110,8 @@
   access:
   - Medical
   - Maintenance
-  extendedAccess:
-  - Chemistry
+#  extendedAccess: # Orion-Edit
+#  - Chemistry
 
 - type: startingGear
   id: PsychologistGear

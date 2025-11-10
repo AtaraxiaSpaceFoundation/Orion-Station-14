@@ -32,8 +32,18 @@ public sealed partial class MainMenuControl : Control
         LayoutContainer.SetMarginTop(VBox, 30);
         LayoutContainer.SetGrowHorizontal(VBox, LayoutContainer.GrowDirection.Begin);
 
+/* // Orion-Remove
         var logoTexture = resCache.GetResource<TextureResource>("/Textures/Logo/logo.png");
         Logo.Texture = logoTexture;
+*/
+
+        // Orion-Start
+        var borderUpTexture = resCache.GetResource<TextureResource>("/Textures/Logo/space-station-14.png");
+        BorderUp.Texture = borderUpTexture;
+
+        var borderDownTexture = resCache.GetResource<TextureResource>("/Textures/Logo/logo.png");
+        BorderDown.Texture = borderDownTexture;
+        // Orion-End
 
         var currentUserName = configMan.GetCVar(CVars.PlayerName);
         UsernameBox.Text = currentUserName;

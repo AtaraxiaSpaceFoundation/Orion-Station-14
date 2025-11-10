@@ -55,7 +55,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   </Box>
   <Box HorizontalAlignment="Stretch">
     Если КПБ погиб, после полного восстановления его необходимо перезапустить при помощи кнопки [color=yellow]"Перезагрузить"[/color] (вызывается ПКМ).
-
+  </Box>
+  <Box HorizontalAlignment="Stretch">
     [color=red]НИКОГДА НЕ ЭЛЕКТРОШОКИРУЙТЕ КПБ дефибриллятором или иным способом, пока он мёртв, так как это вызовет разряд батареи с выбросом энергии наружу![/color]
   </Box>
 

@@ -8,7 +8,7 @@ clowncar-thank-no-driver = Спасибо что прокатились!
 clowncar-thank-driver = Спасибо вам, { $driver }. Вы отличный водитель!
 clowncar-quiet-in-the-back = Тихо там сзади!
 uplink-clowncar-name = машина клоуна
-uplink-clowncar-desc = От Honk Co. — идеальный инструмент для "бей и беги". Страховка не включена.
+uplink-clowncar-desc = От Хонк Ко. — идеальный инструмент для "бей и беги". Страховка не включена.
 # Orion-Start
 enter-driver-seat = управлять
 open-trunk = открыть двери

@@ -4,9 +4,10 @@
     fontId: Supernatural
     color: "#DC143C"
   obfuscation:
-    !type:SyllableObfuscation
-    minSyllables: 5
-    maxSyllables: 12
+    !type:PhraseObfuscation
+    proportion: 0.69
+    minPhrases: 2
+    maxPhrases: 12
     replacement:
     - когда
     - после

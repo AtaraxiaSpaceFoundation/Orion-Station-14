@@ -11,7 +11,7 @@
       fix1:
         shape:
           !type:PhysShapeCircle
-          radius: 0.8
+          radius: 0.85
         density: 0
         mask:
         - None
@@ -31,7 +31,8 @@
   - type: EnergyDome
   - type: Tag
     tags:
-      - HideContextMenu
+    - HideContextMenu
+    - MeleeHitIgnore
 
 - type: entity
   parent: EnergyDomeBase

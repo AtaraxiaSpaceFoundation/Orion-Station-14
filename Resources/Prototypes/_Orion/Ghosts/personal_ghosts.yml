@@ -11,6 +11,7 @@
 - type: entity
   parent: MobObserverCkey
   id: MobObserverCkeyPlaceholder
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/placeholder.rsi
@@ -40,30 +41,32 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ PuroSlavKing ]
-  proto: MobObserverPuroSlavKing
+  proto: MobObserver-PuroSlavKing
 
 - type: entity
   parent: MobObserver
-  id: MobObserverPuroSlavKing
+  id: MobObserver-PuroSlavKing
   description: Hello World!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/PuroSlavKing.rsi
     color: "#ffffffe6" # 0.9 alpha
 
-# no_mad / OkTiFE
+# no_mad
 - type: customGhost
   parent: CkeyPersonal
   id: no_mad-ghost
   restrictions:
   - !type:CkeyRestriction
-    ckey: [ no_mad, OkTiFE ]
-  proto: MobObserverno_mad
+    ckey: [ no_mad ]
+  proto: MobObserver-no_mad
 
 - type: entity
   parent: MobObserver
-  id: MobObserverno_mad
+  id: MobObserver-no_mad
   description: BoO-oO!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/no_mad.rsi
@@ -76,12 +79,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ yourmommy ]
-  proto: MobObserveryourmommy
+  proto: MobObserver-yourmommy
 
 - type: entity
   parent: MobObserver
-  id: MobObserveryourmommy
+  id: MobObserver-yourmommy
   description: Meow!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/yourmommy.rsi
@@ -94,12 +98,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ GodFace ]
-  proto: MobObserverGodFace
+  proto: MobObserver-GodFace
 
 - type: entity
   parent: MobObserver
-  id: MobObserverGodFace
+  id: MobObserver-GodFace
   description: BoO-oO!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/GodFace.rsi
@@ -112,12 +117,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ LIZARDWIZARD ]
-  proto: MobObserverLIZARDWIZARD
+  proto: MobObserver-LIZARDWIZARD
 
 - type: entity
   parent: MobObserver
-  id: MobObserverLIZARDWIZARD
+  id: MobObserver-LIZARDWIZARD
   description: BoO-oO!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/LIZARDWIZARD.rsi
@@ -130,12 +136,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ Vetochka ]
-  proto: MobObserverVetochka
+  proto: MobObserver-Vetochka
 
 - type: entity
   parent: MobObserver
-  id: MobObserverVetochka
+  id: MobObserver-Vetochka
   description: BoO-oO!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/Vetochka.rsi
@@ -148,12 +155,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ kreses ]
-  proto: MobObserverkreses
+  proto: MobObserver-kreses
 
 - type: entity
   parent: MobObserver
-  id: MobObserverkreses
+  id: MobObserver-kreses
   description: Hiss!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/kreses.rsi
@@ -166,12 +174,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ scituzer2 ]
-  proto: MobObserverscituzer2
+  proto: MobObserver-scituzer2
 
 - type: entity
   parent: MobObserver
-  id: MobObserverscituzer2
+  id: MobObserver-scituzer2
   description: Yarr!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/scituzer2.rsi
@@ -184,12 +193,13 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ trest100 ]
-  proto: MobObservertrest100
+  proto: MobObserver-trest100
 
 - type: entity
   parent: MobObserver
-  id: MobObservertrest100
+  id: MobObserver-trest100
   description: Skibidi-psiop es es!
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/trest100.rsi

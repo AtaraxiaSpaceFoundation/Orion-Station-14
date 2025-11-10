@@ -25,6 +25,7 @@
   id: SpawnPointGhostCorticalBorer
   name: ghost role spawn point
   suffix: cortical borer
+  categories: [ Spawner ]
   components:
   - type: GhostRole
     name: cortical-borer-ghostrole-name

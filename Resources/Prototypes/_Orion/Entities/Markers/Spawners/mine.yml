@@ -3,6 +3,7 @@
   id: SpawnLandMineExplosiveRandom
   name: land mine explosive spawner
   suffix: 50%
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:

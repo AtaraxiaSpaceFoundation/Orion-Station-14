@@ -85,7 +85,7 @@ names-ai-dataset-74 = Монарх
 names-ai-dataset-75 = Дурной3000
 names-ai-dataset-76 = Мультивак
 # names-ai-dataset-77 = NCH
-# A play on both NT as in NanoTrasen and NT as in windows NT, of which version 6.0 is windows vista
+# A play on both NT as in НаноТрейзен and NT as in windows NT, of which version 6.0 is windows vista
 names-ai-dataset-78 = NT v6.0
 names-ai-dataset-79 = Пакард Бэлл
 # names-ai-dataset-80 = PTO

@@ -45,6 +45,10 @@
             "directions": 4
         },
         {
+            "name": "on-equipped-HELMET-vox",
+            "directions": 4
+        },
+        {
             "name": "equipped-head-dog",
             "directions": 4
         },

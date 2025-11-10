@@ -4,6 +4,7 @@
   parent: MarkerBase
   id: SpawnMobSimpleSyndicateBlade
   name: spawner Simple Syndicate Blade
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -18,6 +19,7 @@
   parent: MarkerBase
   id: SpawnMobSimpleSyndicateKnife
   name: spawner Simple Syndicate Knife
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -32,6 +34,7 @@
   parent: MarkerBase
   id: SpawnMobSimpleSyndicatePistol
   name: spawner Simple Syndicate Pistol
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -46,6 +49,7 @@
   parent: MarkerBase
   id: SpawnMobSimpleSyndicateShotgun
   name: spawner Simple Syndicate Shotgun
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
@@ -60,6 +64,7 @@
   parent: MarkerBase
   id: SpawnMobSimpleSyndicateSMG
   name: spawner Simple Syndicate SMG
+  categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
