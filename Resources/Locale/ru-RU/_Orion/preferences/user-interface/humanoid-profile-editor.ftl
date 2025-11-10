@@ -7,7 +7,7 @@ humanoid-profile-editor-flavor-links-label-preview = Ссылки
 humanoid-profile-editor-flavor-green-label = Любимые темы
 humanoid-profile-editor-flavor-yellow-label = Темы для обсуждения
 humanoid-profile-editor-flavor-red-label = Запрещённые темы
-humanoid-profile-editor-flavor-nsfw-label = NSFW статус и предпочтения
+humanoid-profile-editor-flavor-nsfw-label = NSFW описание
 
 humanoid-profile-editor-gyr-green = Любимые темы
 humanoid-profile-editor-gyr-yellow = Темы для обсуждения
