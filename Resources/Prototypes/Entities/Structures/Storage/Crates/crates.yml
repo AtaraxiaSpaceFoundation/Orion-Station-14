@@ -555,6 +555,11 @@
         lid_overlay:
           True: { visible: false }
           False: { visible: true }
+        # Orion-Start
+        open_overlay:
+          True: { visible: true }
+          False: { visible: false }
+        # Orion-End
   - type: OverrideSell
   - type: Fixtures
     fixtures:
