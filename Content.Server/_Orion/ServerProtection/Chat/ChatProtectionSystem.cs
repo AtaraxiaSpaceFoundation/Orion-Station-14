@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using Content.Server.Administration;
@@ -5,6 +6,7 @@ using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
+using Content.Server.GhostKick;
 using Content.Server.Hands.Systems;
 using Content.Server.Mind;
 using Content.Server.Popups;
@@ -44,14 +46,21 @@ public sealed class ChatProtectionSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ISharedAdminManager _admin = default!;
     [Dependency] private readonly IChatManager _chat = default!;
+    [Dependency] private readonly GhostKickManager _ghostKickManager = default!;
 
     private ISawmill _log = default!;
-    private readonly List<ChatProtectionListPrototype> _index = new();
     private readonly HashSet<string> _icWords = new();
     private readonly HashSet<string> _oocWords = new();
-    private bool _enabled = false;
-    private bool _cacheDone = false;
 
+    private bool _protectionEnabled;
+    private bool _eraseEnabled;
+    private bool _banEnabled;
+    private bool _kickEnabled;
+    private bool _deleteMessagesEnabled;
+    private int _banDuration;
+    private bool _cacheDone;
+
+    #region Dont Mind About This
     private HandsSystem Hands => EntityManager.System<HandsSystem>();
     private InventorySystem Inventory => EntityManager.System<InventorySystem>();
     private MindSystem Minds => EntityManager.System<MindSystem>();
@@ -61,6 +70,7 @@ public sealed class ChatProtectionSystem : EntitySystem
     private SharedAudioSystem Audio => EntityManager.System<SharedAudioSystem>();
     private StationRecordsSystem StationRecords => EntityManager.System<StationRecordsSystem>();
     private new TransformSystem Transform => EntityManager.System<TransformSystem>();
+    #endregion
 
     public override void Initialize()
     {
@@ -68,25 +78,22 @@ public sealed class ChatProtectionSystem : EntitySystem
 
         _log = Logger.GetSawmill("serverprotection.chat_protection");
         _proto.PrototypesReloaded += OnPrototypesReloaded;
-        _cfg.OnValueChanged(CCVars.ChatProtectionEnabled, SetEnabled, true);
-    }
 
-
-    private void SetEnabled(bool value)
-    {
-        _enabled = value;
+        _cfg.OnValueChanged(CCVars.ChatProtectionEnabled, v => _protectionEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.ChatProtectionEraseEnabled, v => _eraseEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.ChatProtectionBanEnabled, v => _banEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.ChatProtectionKickEnabled, v => _kickEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.ChatProtectionDeleteMessages, v => _deleteMessagesEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.ChatProtectionBanDuration, v => _banDuration = v, true);
     }
 
     private void CachePrototypes()
     {
-        _index.Clear();
         _icWords.Clear();
         _oocWords.Clear();
 
         foreach (var proto in _proto.EnumeratePrototypes<ChatProtectionListPrototype>())
         {
-            _index.Add(proto);
-
             switch (proto.ID) // Handled by "Prototypes/_Orion/chat_protection.yml"
             {
                 case "IC_BannedWords":
@@ -117,26 +124,20 @@ public sealed class ChatProtectionSystem : EntitySystem
 
     public bool CheckICMessage(string message, EntityUid player)
     {
-        if (!_enabled || string.IsNullOrEmpty(message))
+        if (!_protectionEnabled || string.IsNullOrEmpty(message))
             return false;
 
-        if (!TryGetSession(player, out var session))
-            return false;
-
-        if (session == null)
+        if (!_playerManager.TryGetSessionByEntity(player, out var session))
             return false;
 
         if (_admin.IsAdmin(player, true))
            return false;
 
-        if (!_cacheDone) // Something like initalization for prototypes
+        if (!_cacheDone) // Something like initialization for prototypes
             CachePrototypes();
 
-        foreach (var word in _icWords)
+        foreach (var word in _icWords.Where(word => message.Contains(word, StringComparison.OrdinalIgnoreCase)))
         {
-            if (!message.Contains(word, StringComparison.OrdinalIgnoreCase))
-                continue;
-
             HandleViolation(session, word, "IC");
             return true;
         }
@@ -148,20 +149,17 @@ public sealed class ChatProtectionSystem : EntitySystem
 
     public bool CheckOOCMessage(string message, ICommonSession session)
     {
-        if (!_enabled || string.IsNullOrEmpty(message))
+        if (!_protectionEnabled || string.IsNullOrEmpty(message))
             return false;
 
         if (_admin.IsAdmin(session, true))
             return false;
 
-        if (!_cacheDone) // Something like initalization for prototypes
+        if (!_cacheDone) // Something like initialization for prototypes
             CachePrototypes();
 
-        foreach (var word in _oocWords)
+        foreach (var word in _oocWords.Where(word => message.Contains(word, StringComparison.OrdinalIgnoreCase)))
         {
-            if (!message.Contains(word, StringComparison.OrdinalIgnoreCase))
-                continue;
-
             HandleViolation(session, word, "OOC");
             return true;
         }
@@ -171,102 +169,64 @@ public sealed class ChatProtectionSystem : EntitySystem
         return false;
     }
 
-    private bool TryGetSession(EntityUid player, out ICommonSession? session)
-    {
-        session = null;
-        return _playerManager.TryGetSessionByEntity(player, out session);
-    }
-
     private void HandleViolation(ICommonSession player, string word, string channel)
     {
-        var reason = Loc.GetString("chat-protection-ban-reason", ("word", word), ("channel", channel));
+        var banReason = Loc.GetString("chat-protection-ban-reason", ("word", word), ("channel", channel));
+        var kickReason = Loc.GetString("chat-protection-kick-reason", ("word", word), ("channel", channel));
         _log.Info($"{player.Name} ({player.UserId}) использовал запрещённое слово: '{word}' в {channel}");
 
         switch (channel)
         {
-            case "IC": // Erase them from universe and ban
+            case "IC":
             {
-                _chat.DeleteMessagesBy(player.UserId);
+                if (_deleteMessagesEnabled)
+                    _chat.DeleteMessagesBy(player.UserId);
 
-                var eraseEvent = new EraseEvent(player.UserId);
+                if (_eraseEnabled)
+                    EraseCharacter(player);
 
-                if (!Minds.TryGetMind(player.UserId, out var mindId, out var mind) || mind.OwnedEntity == null || TerminatingOrDeleted(mind.OwnedEntity.Value))
+                if (_banEnabled)
                 {
-                    RaiseLocalEvent(ref eraseEvent);
-                    return;
+                    _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-ban-reason",
+                        ("player", player.Name),
+                        ("word", word),
+                        ("channel", channel)));
+                    ApplyBan(player, banReason);
+                }
+                else if (_kickEnabled)
+                {
+                    _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-kick-reason",
+                        ("player", player.Name),
+                        ("word", word),
+                        ("channel", channel)));
+                    _ghostKickManager.DoDisconnect(player.Channel, kickReason);
                 }
 
-                var entity = mind.OwnedEntity.Value;
-
-                if (TryComp(entity, out TransformComponent? transform))
-                {
-                    var coordinates = Transform.GetMoverCoordinates(entity, transform);
-                    var name = Identity.Entity(entity, EntityManager);
-                    Popup.PopupCoordinates(Loc.GetString("admin-erase-popup", ("user", name)), coordinates, PopupType.LargeCaution);
-                    var filter = Filter.Pvs(coordinates, 1, EntityManager, _playerManager);
-                    var audioParams = new AudioParams().WithVolume(3);
-                    Audio.PlayStatic("/Audio/Effects/pop_high.ogg", filter, coordinates, true, audioParams);
-                }
-
-                foreach (var item in Inventory.GetHandOrInventoryEntities(entity))
-                {
-                    if (TryComp(item, out PdaComponent? pda) &&
-                        TryComp(pda.ContainedId, out StationRecordKeyStorageComponent? keyStorage) &&
-                        keyStorage.Key is { } key &&
-                        StationRecords.TryGetRecord(key, out GeneralStationRecord? record))
-                    {
-                        if (TryComp(entity, out DnaComponent? dna) &&
-                            dna.DNA != record.DNA)
-                        {
-                            continue;
-                        }
-
-                        if (TryComp(entity, out FingerprintComponent? fingerPrint) &&
-                            fingerPrint.Fingerprint != record.Fingerprint)
-                        {
-                            continue;
-                        }
-
-                        StationRecords.RemoveRecord(key);
-                        Del(item);
-                    }
-                }
-
-                if (Inventory.TryGetContainerSlotEnumerator(entity, out var enumerator))
-                {
-                    while (enumerator.NextItem(out var item, out var slot))
-                    {
-                        if (Inventory.TryUnequip(entity, entity, slot.Name, true, true))
-                            Physics.ApplyAngularImpulse(item, ThrowingSystem.ThrowAngularImpulse);
-                    }
-                }
-
-                if (TryComp(entity, out HandsComponent? hands))
-                {
-                    foreach (var hand in Hands.EnumerateHands((entity, hands)))
-                    {
-                        Hands.TryDrop((entity, hands), hand, checkActionBlocker: false, doDropInteraction: false);
-                    }
-                }
-
-                Minds.WipeMind(mindId, mind);
-                QueueDel(entity);
-
-                if (_playerManager.TryGetSessionById(player.UserId, out var session))
-                    GameTicker.SpawnObserver(session);
-
-                RaiseLocalEvent(ref eraseEvent);
-
-                _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-ban-reason", ("player", player.Name), ("word", word), ("channel", channel)));
-                ApplyBan(player, reason);
                 break;
             }
 
-            case "OOC": // 把他放逐就行了。😡😡😡
+            case "OOC":
             {
-                _chat.DeleteMessagesBy(player.UserId);
-                _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-ban-reason", ("player", player.Name), ("word", word), ("channel", channel)));
-                ApplyBan(player, reason);
+                if (_deleteMessagesEnabled)
+                    _chat.DeleteMessagesBy(player.UserId);
+
+                if (_banEnabled)
+                {
+                    _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-ban-reason",
+                        ("player", player.Name),
+                        ("word", word),
+                        ("channel", channel)));
+                    ApplyBan(player, banReason);
+                }
+                else if (_kickEnabled)
+                {
+                    _chat.SendAdminAlert(Loc.GetString("chat-protection-admin-announcement-kick-reason",
+                        ("player", player.Name),
+                        ("word", word),
+                        ("channel", channel)));
+                    _ghostKickManager.DoDisconnect(player.Channel, kickReason);
+                }
+
                 break;
             }
         }
@@ -289,15 +249,90 @@ public sealed class ChatProtectionSystem : EntitySystem
             targetHWid = sessionData.LastHWId;
         }
 
+        uint? expires = _banDuration <= 0 ? null : (uint)_banDuration;
+
+        // 把他放逐就行了。😡😡😡
         _banManager.CreateServerBan(
             player.UserId,
             player.Name,
             null,
             targetIP,
             targetHWid,
-            0, // Permanent
+            expires, // Ban duration
             NoteSeverity.High,
             $"{reason}"
         );
+    }
+
+    private async void EraseCharacter(ICommonSession player)
+    {
+        if (!Minds.TryGetMind(player.UserId, out var mindId, out var mind) ||
+            mind.OwnedEntity == null ||
+            TerminatingOrDeleted(mind.OwnedEntity.Value))
+        {
+            var eraseEvent = new EraseEvent(player.UserId);
+            RaiseLocalEvent(ref eraseEvent);
+            return;
+        }
+
+        var entity = mind.OwnedEntity.Value;
+        var eraseEventLocal = new EraseEvent(player.UserId);
+
+        if (TryComp(entity, out TransformComponent? transform))
+        {
+            var coordinates = Transform.GetMoverCoordinates(entity, transform);
+            var name = Identity.Entity(entity, EntityManager);
+            Popup.PopupCoordinates(Loc.GetString("admin-erase-popup", ("user", name)),
+                coordinates,
+                PopupType.LargeCaution);
+            var filter = Filter.Pvs(coordinates, 1, EntityManager, _playerManager);
+            var audioParams = new AudioParams().WithVolume(3);
+            Audio.PlayStatic("/Audio/Effects/pop_high.ogg", filter, coordinates, true, audioParams);
+        }
+
+        foreach (var item in Inventory.GetHandOrInventoryEntities(entity))
+        {
+            if (!TryComp(item, out PdaComponent? pda) ||
+                !TryComp(pda.ContainedId, out StationRecordKeyStorageComponent? keyStorage) ||
+                keyStorage.Key is not { } key ||
+                !StationRecords.TryGetRecord(key, out GeneralStationRecord? record))
+                continue;
+
+            if (TryComp(entity, out DnaComponent? dna) &&
+                dna.DNA != record.DNA)
+                continue;
+
+            if (TryComp(entity, out FingerprintComponent? fingerprint) &&
+                fingerprint.Fingerprint != record.Fingerprint)
+                continue;
+
+            StationRecords.RemoveRecord(key);
+            Del(item);
+        }
+
+        if (Inventory.TryGetContainerSlotEnumerator(entity, out var enumerator))
+        {
+            while (enumerator.NextItem(out var item, out var slot))
+            {
+                if (Inventory.TryUnequip(entity, entity, slot.Name, true, true))
+                    Physics.ApplyAngularImpulse(item, ThrowingSystem.ThrowAngularImpulse);
+            }
+        }
+
+        if (TryComp(entity, out HandsComponent? hands))
+        {
+            foreach (var hand in Hands.EnumerateHands((entity, hands)))
+            {
+                Hands.TryDrop((entity, hands), hand, checkActionBlocker: false, doDropInteraction: false);
+            }
+        }
+
+        Minds.WipeMind(mindId, mind);
+        QueueDel(entity);
+
+        if (_playerManager.TryGetSessionById(player.UserId, out var session))
+            GameTicker.SpawnObserver(session);
+
+        RaiseLocalEvent(ref eraseEventLocal);
     }
 }
