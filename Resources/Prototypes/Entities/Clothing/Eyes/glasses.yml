@@ -143,9 +143,15 @@
     sprite: Clothing/Eyes/Glasses/gar.rsi
   - type: MeleeWeapon
     attackRate: 1.5
+    damage: 7
+  - type: LandAtCursor # Europa edit
+  - type: DamageOtherOnHit # Europa edit
     damage:
       types:
-        Blunt: 7
+        Blunt: 2
+  - type: StaminaDamageOnCollide # Europa edit
+    damage: 0
+  - type: Boomerang # Europa edit
 
 - type: entity
   parent: ClothingEyesBase
@@ -165,6 +171,14 @@
     damage:
       types:
         Blunt: 10
+  - type: LandAtCursor # Europa edit
+  - type: DamageOtherOnHit # Europa edit
+    damage:
+      types:
+        Blunt: 2
+  - type: StaminaDamageOnCollide # Europa edit
+    damage: 0
+  - type: Boomerang # Europa edit
 
 - type: entity
   parent: ClothingEyesBase
@@ -184,6 +198,14 @@
     damage:
       types:
         Blunt: 10
+  - type: LandAtCursor # Europa edit
+  - type: DamageOtherOnHit # Europa edit
+    damage:
+      types:
+        Blunt: 2
+  - type: StaminaDamageOnCollide # Europa edit
+    damage: 0
+  - type: Boomerang # Europa edit
 
 - type: entity
   parent: ClothingEyesBase # goobstation - tider nation - no longer contra
