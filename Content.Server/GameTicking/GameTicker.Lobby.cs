@@ -134,10 +134,6 @@ namespace Content.Server.GameTicking
             var gmTitle = Loc.GetString(preset.ModeTitle);
             var desc = Loc.GetString(preset.Description);
 
-            // Orion-Start
-            var stationTime = _timeSystem.GetStationTime();
-            // Orion-End
-
             var infoText = RunLevel == GameRunLevel.PreRoundLobby
                     ? "game-ticker-get-info-preround-text"
                     : "game-ticker-get-info-text";
@@ -153,8 +149,7 @@ namespace Content.Server.GameTicking
                 ("mapName", stationNames.ToString()),
                 ("gmTitle", gmTitle),
                 ("desc", desc),
-                ("stationTime", stationTime.Time.ToString(@"hh\:mm")), // Orion
-                ("stationDate", stationTime.Date.ToString("dd.MM.yyyy"))); // Orion
+                ("stationDate", _timeSystem.GetStationDate().ToString("dd.MM.yyyy"))); // Orion
         }
 
         private TickerConnectionStatusEvent GetConnectionStatusMsg()

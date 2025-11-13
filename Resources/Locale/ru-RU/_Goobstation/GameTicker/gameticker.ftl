@@ -3,6 +3,5 @@ game-ticker-get-ingame-info-text =
     Подключено игроков: [color=white]{ $playerCount }[/color]
     Карта: [color=white]{ $mapName }[/color]
     Режим игры: [color=white]{ $gmTitle }[/color]
-    >[color=gray]{ $desc }[/color]
-    Время станции: [color=white]{ $stationTime }[/color]
+    > [color=gray]{ $desc }[/color]
     Дата станции: [color=white]{ $stationDate }[/color]
