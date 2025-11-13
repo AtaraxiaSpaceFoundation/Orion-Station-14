@@ -35,6 +35,12 @@
           0.1
         ]
       ]
+    },
+    {
+      "name": "locked"
+    },
+    {
+      "name": "unlocked"
     }
   ]
 }

@@ -1,15 +1,5 @@
 - type: entity
   parent: CrateGenericSteel
-  id: CrateAnimalRightsConsortium
-  name: animal rights consortium crate
-  components:
-  - type: Icon
-    sprite: _Orion/Structures/Storage/Crates/animal_rights_consortium.rsi
-  - type: Sprite
-    sprite: _Orion/Structures/Storage/Crates/animal_rights_consortium.rsi
-
-- type: entity
-  parent: CrateGenericSteel
   id: CrateAtmospherics
   name: atmospherics crate
   components:
@@ -182,3 +172,214 @@
     sprite: _Orion/Structures/Storage/Crates/wood.rsi
   - type: Sprite
     sprite: _Orion/Structures/Storage/Crates/wood.rsi
+
+# Secure Crates
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateAnimalRightsConsortiumSecure
+  name: animal rights consortium crate
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/animal_rights_consortium.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/animal-rights-consortium_secure.rsi
+
+- type: entity
+  parent: [ CrateAtmospherics, CrateBaseSecure ]
+  id: CrateAtmosphericsSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/atmos_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/atmos_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateBitrunSecure
+  name: bitrunning crate
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/bitrun_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/bitrun_secure.rsi
+
+- type: entity
+  parent: [ CrateCargo, CrateBaseSecure ]
+  id: CrateCargoSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/cargo_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/cargo_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateCybersunDawnSecure
+  name: Cybersun crate
+  desc: A secure crate from Cybersun Industries. It has distinct orange-green colouring, probably of some departament or division, but you cannot tell what is it.
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/cybersun-dawn_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/cybersun-dawn_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateCybersunDuskSecure
+  name: Cybersun crate
+  desc: A secure crate from Cybersun Industries. It has distinct purple-green colouring, probably of some departament or division, but you cannot tell what is it.
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/cybersun-dusk_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/cybersun-dusk_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateCybersunNightSecure
+  name: Cybersun crate
+  desc: A secure crate from Cybersun Industries. This one blatantly adorns syndicate colours. You can only guess it contains equipment for syndicate operatives.
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/cybersun-night_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/cybersun-night_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateCybersunNoonSecure
+  name: Cybersun crate
+  desc: A secure crate from Cybersun Industries. It has distinct yellow-orange colouring, probably of some departament or division, but you cannot tell what is it.
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/cybersun-noon_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/cybersun-noon_secure.rsi
+
+- type: entity
+  parent: [ CrateFreezerDonk, CrateBaseSecure ]
+  id: CrateFreezerDonkSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/donk_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/donk_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateGorlexSecure
+  name: Gorlex Marauders crate
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/gorlex_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/gorlex_secure.rsi
+
+- type: entity
+  parent: [ CrateGorlexSecure, CrateBaseSecure ]
+  id: CrateGorlexWeaponSecure
+  name: Gorlex Marauders weapon crate
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/gorlex-weapon_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/gorlex-weapon_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateInterdyneSecure
+  name: Interdyne crate
+  desc: Crate belonging to Interdyne Pharmaceutics. Hopefully doesn't have bioweapons inside...
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/interdyne_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/interdyne_secure.rsi
+
+- type: entity
+  parent: [ CrateFreezer, CrateBaseSecure ]
+  id: CrateFreezerInterdyneSecure
+  name: Interdyne freezer
+  desc: This is an Interdyne Pharmaceuticals branded freezer. May or may not contain fresh organs.
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/interdyne-freezer_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/interdyne-freezer_secure.rsi
+
+- type: entity
+  parent: [ CrateFreezerKitchen, CrateBaseSecure ]
+  id: CrateFreezerKitchenSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/kitchen_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/kitchen_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateMI13Secure
+  name: MI13 crate
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/mi13_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/mi13_secure.rsi
+
+- type: entity
+  parent: [ CrateMining, CrateBaseSecure ]
+  id: CrateMiningSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/mining_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/mining_secure.rsi
+
+- type: entity
+  parent: [ CrateRadiation, CrateBaseSecure ]
+  id: CrateRadiationSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/radiation_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/radiation_secure.rsi
+
+- type: entity
+  parent: [ CrateRobotics, CrateBaseSecure ]
+  id: CrateRoboticsSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/robotics_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/robotics_secure.rsi
+
+- type: entity
+  parent: [ CrateSELF, CrateBaseSecure ]
+  id: CrateSELFSecure
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/self_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/self_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateTigerSecure
+  name: Tiger Co-Op crate
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/tiger_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/tiger_secure.rsi
+
+- type: entity
+  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  id: CrateWaffleSecure
+  name: Waffle corp. crate
+  desc: A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads 'bringing you consecutively top five world-wide rated* breakfast since 2055. A much smaller fine print, also in cursive, clarifies: '*in years 2099-2126'... It's year 2563 now, however.
+  components:
+  - type: Icon
+    sprite: _Orion/Structures/Storage/Crates/waffle_secure.rsi
+  - type: Sprite
+    sprite: _Orion/Structures/Storage/Crates/waffle_secure.rsi
