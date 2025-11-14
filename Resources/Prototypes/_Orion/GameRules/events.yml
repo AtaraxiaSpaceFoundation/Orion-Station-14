@@ -1,7 +1,6 @@
 - type: entity
   parent: BaseGameRule
   id: InteQAgentInvasion
-  categories: [ HideSpawnMenu ]
   components:
   - type: StationEvent
     startAnnouncement: station-event-inteqagent-start-announcement

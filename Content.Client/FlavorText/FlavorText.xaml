@@ -1,14 +1,299 @@
-<!--
-SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+<!-- Orion-Edit-Start -->
+<Control Name="CFlavorText" xmlns="https://spacestation14.io" xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client" xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
+    <TabContainer Name="FlavorTabs" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#30D5C855" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CFlavorTextInput" Access="Public" MinSize="110 100" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
 
-SPDX-License-Identifier: MIT
--->
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#30D5C855" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-character-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CCharacterTextInput" Access="Public" MinSize="110 100" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
 
-<Control Name="CFlavorText" xmlns="https://spacestation14.io">
-    <BoxContainer Orientation="Vertical" HorizontalExpand="True">
-        <TextEdit Name="CFlavorTextInput" Access="Public" MinSize="220 100" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
-    </BoxContainer>
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#80008055" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-ooc-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CFlavorOOCTextInput" Access="Public" MinSize="110 200" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="False">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#9370DB55" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="False">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-tags-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="False">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CTagsTextInput" Access="Public" MinSize="110 75" Margin="10" HorizontalExpand="False" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="False">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#00FA9A55" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-links-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="False">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CLinksTextInput" Access="Public" MinSize="110 75" Margin="10" HorizontalExpand="False" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#FFD70055" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-green-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CGreenTextInput" Access="Public" MinSize="110 60" Margin="10" HorizontalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#FFFF0055" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-yellow-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CYellowTextInput" Access="Public" MinSize="110 60" Margin="10" HorizontalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#FF000055" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-red-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CRedTextInput" Access="Public" MinSize="110 60" Margin="10" HorizontalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#FF69B455" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-nsfw-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CNSFWTextInput" Access="Public" MinSize="110 100" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+            <PanelContainer HorizontalExpand="False" VerticalExpand="True" MinSize="150 0">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <controls:StripeBack>
+                        <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="False" Margin="10,0,10,0">
+                            <Label Name="PreviewNameText" Access="Public" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger" />
+                        </BoxContainer>
+                    </controls:StripeBack>
+                    <PanelContainer MinSize="100 250" HorizontalExpand="False" VerticalExpand="True" Margin="10">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#2C2C2C" />
+                        </PanelContainer.PanelOverride>
+                        <SpriteView Name="TargetPreview" Access="Public" Scale="8 8"/>
+                    </PanelContainer>
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="False" Margin="10,0,10,0">
+                        <Label Name="PreviewGenderText" Access="Public" HorizontalAlignment="Center" StyleClasses="LabelSmall" />
+                    </BoxContainer>
+                </BoxContainer>
+            </PanelContainer>
+
+            <customControls:VSeparator StyleClasses="LowDivider" Margin="0 0 0 0"/>
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="10,0,0,0">
+                <TabContainer Name="PreviewTabs" HorizontalExpand="True" VerticalExpand="True" MinSize="0 150">
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                                <RichTextLabel Name="PreviewAppearanceText" Access="Public" VerticalExpand="True" Margin="10" />
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                                <RichTextLabel Name="PreviewTraitsText" Access="Public" VerticalExpand="True" Margin="10" />
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                                <BoxContainer Name="PreviewGYRContainer" Access="Public" Orientation="Vertical" VerticalExpand="True" />
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                                <RichTextLabel Name="PreviewNSFWText" Access="Public" VerticalExpand="True" Margin="10" />
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+                </TabContainer>
+
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" MinSize="0 100" Margin="0,10,0,0">
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="0,0,5,0">
+                        <controls:StripeBack>
+                            <Label Text="{Loc 'humanoid-profile-editor-flavor-ooc-label'}" StyleClasses="LabelSmall" HorizontalAlignment="Center" />
+                        </controls:StripeBack>
+                        <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                                <RichTextLabel Name="PreviewOOCText" Access="Public" VerticalExpand="True" Margin="5" />
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                        <controls:StripeBack>
+                            <Label Text="{Loc 'humanoid-profile-editor-flavor-links-label-preview'}" StyleClasses="LabelSmall" HorizontalAlignment="Center" />
+                        </controls:StripeBack>
+                        <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                                <BoxContainer Name="PreviewLinksContainer" Access="Public" Orientation="Vertical" />
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+                </BoxContainer>
+
+                <customControls:HSeparator StyleClasses="LowDivider" Margin="0 10 0 10"/>
+
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="False">
+                    <controls:StripeBack>
+                        <PanelContainer HorizontalExpand="True" VerticalExpand="False" Margin="0,5,0,0">
+                            <Label Name="PreviewTagsText" Access="Public" StyleClasses="WindowFooterText" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </PanelContainer>
+                    </controls:StripeBack>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+    </TabContainer>
 </Control>
+<!-- Orion-Edit-End -->

@@ -1,0 +1,126 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                     xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+                     Title="{Loc 'detail-examinable-window-title'}"
+                     MinSize="1050 520"
+                     SetSize="1050 520">
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+        <PanelContainer HorizontalExpand="False" VerticalExpand="True" MinSize="150 0">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <controls:StripeBack>
+                    <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="False" Margin="10,0,10,0">
+                        <Label Name="PreviewNameText" Access="Public" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger" />
+                    </BoxContainer>
+                </controls:StripeBack>
+                <PanelContainer MinSize="32 128" HorizontalExpand="False" VerticalExpand="True" Margin="10">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#2C2C2C" />
+                    </PanelContainer.PanelOverride>
+                    <SpriteView Name="TargetPreview" Access="Public"/>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="False" Margin="10,0,10,0">
+                    <Label Name="PreviewGenderText" Access="Public" HorizontalAlignment="Center" StyleClasses="LabelSmall" />
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" SeparationOverride="4" Margin="0,5,0,10">
+                    <Button Name="RotateLeftButton" Text="⬅" StyleClasses="OpenRight"/>
+                    <Button Name="RotateRightButton" Text="➡" StyleClasses="OpenLeft"/>
+                </BoxContainer>
+                <TextureRect Name="Badge" SetSize="128 128" Stretch="KeepAspectCentered" TexturePath="/Textures/_Orion/Icons/inteq.png" HorizontalAlignment="Center" Visible="False" />
+            </BoxContainer>
+        </PanelContainer>
+
+        <customControls:VSeparator StyleClasses="LowDivider" Margin="0 0 0 0"/>
+
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="10,0,10,0">
+            <TabContainer Name="PreviewTabs" HorizontalExpand="True" VerticalExpand="True" MinSize="0 150">
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                            <RichTextLabel Name="PreviewAppearanceText" Access="Public" VerticalExpand="True" Margin="10" />
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
+
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                            <RichTextLabel Name="PreviewTraitsText" Access="Public" VerticalExpand="True" Margin="10" />
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
+
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                            <BoxContainer Name="PreviewGYRContainer" Access="Public" Orientation="Vertical" VerticalExpand="True" />
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
+
+                <BoxContainer Name="PreviewNSFWBox" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                            <RichTextLabel Name="PreviewNSFWText" Access="Public" VerticalExpand="True" Margin="10" />
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
+            </TabContainer>
+
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" MinSize="0 100" Margin="0,10,0,0">
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="0,0,5,0">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-ooc-label'}" StyleClasses="LabelSmall" HorizontalAlignment="Center" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                            <RichTextLabel Name="PreviewOOCText" Access="Public" VerticalExpand="True" Margin="5" />
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
+
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-links-label-preview'}" StyleClasses="LabelSmall" HorizontalAlignment="Center" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
+                            <BoxContainer Name="PreviewLinksContainer" Access="Public" Orientation="Vertical" />
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+
+            <customControls:HSeparator StyleClasses="LowDivider" Margin="0 10 0 10"/>
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="False">
+                <controls:StripeBack>
+                    <PanelContainer HorizontalExpand="True" VerticalExpand="False" Margin="0,5,0,0">
+                        <Label Name="PreviewTagsText" Access="Public" StyleClasses="WindowFooterText" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </PanelContainer>
+                </controls:StripeBack>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>
