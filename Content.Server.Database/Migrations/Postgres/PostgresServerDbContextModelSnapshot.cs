@@ -804,17 +804,15 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("admin_ooc_color");
 
-                    // Orion-Start
-                    b.Property<string>("GhostId")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("ghost_id");
-                    // Orion-End
-
                     b.PrimitiveCollection<List<string>>("ConstructionFavorites")
                         .IsRequired()
                         .HasColumnType("text[]")
                         .HasColumnName("construction_favorites");
+
+                    b.Property<string>("GhostId")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("ghost_id");
 
                     b.Property<int>("SelectedCharacterSlot")
                         .HasColumnType("integer")
@@ -846,6 +844,16 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
+                    b.Property<string>("CharacterFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("character_flavor_text");
+
+                    b.Property<string>("BarkVoice")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("bark_voice");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("text")
@@ -876,6 +884,11 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("gender");
 
+                    b.Property<string>("GreenFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("green_flavor_text");
+
                     b.Property<string>("HairColor")
                         .IsRequired()
                         .HasColumnType("text")
@@ -890,9 +903,24 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("real")
                         .HasColumnName("height");
 
+                    b.Property<string>("LinksFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("links_flavor_text");
+
                     b.Property<JsonDocument>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
+
+                    b.Property<string>("NSFWFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nsfwflavor_text");
+
+                    b.Property<string>("OOCFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("oocflavor_text");
 
                     b.Property<int>("PreferenceId")
                         .HasColumnType("integer")
@@ -901,6 +929,11 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Property<int>("PreferenceUnavailable")
                         .HasColumnType("integer")
                         .HasColumnName("pref_unavailable");
+
+                    b.Property<string>("RedFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("red_flavor_text");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -925,9 +958,19 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("species");
 
+                    b.Property<string>("TagsFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("tags_flavor_text");
+
                     b.Property<float>("Width")
                         .HasColumnType("real")
                         .HasColumnName("width");
+
+                    b.Property<string>("YellowFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("yellow_flavor_text");
 
                     b.HasKey("Id")
                         .HasName("PK_profile");
