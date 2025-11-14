@@ -4,7 +4,7 @@
 # SPDX-FileCopyrightText: 2020 Hugo Laloge <hugo.laloge@gmail.com>
 # SPDX-FileCopyrightText: 2020 Injazz <injazza@gmail.com>
 # SPDX-FileCopyrightText: 2020 JiimBob <44332255+JiimBob@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2020 py01 <60152240+collinlunn@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2020 py01 <pyronetics01@gmail.com>
 # SPDX-FileCopyrightText: 2020 windarkata <windarkata@gmail.com>
@@ -45,9 +45,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: ChemDispenserEmpty
+  id: ManualChemDispenserEmpty # Orion-Edit | Manual
   name: chemical dispenser
-  suffix: Empty
+  suffix: Manual, Empty # Orion-Edit | Manual
   parent: ReagentDispenserBase
   description: An industrial grade chemical dispenser.
   components:
@@ -96,9 +96,9 @@
         - MachineLayer
 
 - type: entity
-  id: ChemDispenser
-  suffix: Filled
-  parent: ChemDispenserEmpty
+  id: ManualChemDispenser # Orion-Edit | Manual
+  suffix: Manual, Filled # Orion-Edit | Manual
+  parent: ManualChemDispenserEmpty # Orion-Edit | Manual
   components:
   - type: ReagentDispenser
   - type: StorageFill

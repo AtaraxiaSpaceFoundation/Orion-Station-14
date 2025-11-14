@@ -673,7 +673,7 @@
     - type: Sprite
       state: medical
     - type: MachineBoard
-      prototype: ChemDispenserEmpty
+      prototype: ManualChemDispenserEmpty # Orion-Edit | Manual
       stackRequirements:
         Manipulator: 1
         Glass: 1

@@ -17,7 +17,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 ## Оборудование:
 
 <Box>
-<GuideEntityEmbed Entity="ChemDispenser"/>
+<GuideEntityEmbed Entity="EnergyChemDispenser"/>
 <GuideEntityEmbed Entity="ChemBag"/>
 <GuideEntityEmbed Entity="KitchenReagentGrinder"/>
 <GuideEntityEmbed Entity="ChemMaster"/>
