@@ -181,7 +181,7 @@
   name: animal rights consortium crate
   components:
   - type: Icon
-    sprite: _Orion/Structures/Storage/Crates/animal_rights_consortium.rsi
+    sprite: _Orion/Structures/Storage/Crates/animal-rights-consortium_secure.rsi
   - type: Sprite
     sprite: _Orion/Structures/Storage/Crates/animal-rights-consortium_secure.rsi
 
