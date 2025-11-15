@@ -74,4 +74,4 @@ ent-CrateSELFSecure = { ent-CrateSELF }
 ent-CrateTigerSecure = Tiger Co-Op crate
     .desc = { ent-CrateBaseWeldable.desc }
 ent-CrateWaffleSecure = Waffle corp. crate
-    .desc = A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads 'bringing you consecutively top five world-wide rated* breakfast since 2055. A much smaller fine print, also in cursive, clarifies: '*in years 2099-2126'... It's not year 2126 now, however.
+    .desc = A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads "bringing you consecutively top five world-wide rated* breakfast since 2055". A much smaller fine print, also in cursive, clarifies "*in years 2099-2126"... It's not year 2126 now, however.

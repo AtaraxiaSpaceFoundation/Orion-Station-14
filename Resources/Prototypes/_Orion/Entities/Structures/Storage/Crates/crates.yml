@@ -176,7 +176,7 @@
 # Secure Crates
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateAnimalRightsConsortiumSecure
   name: animal rights consortium crate
   components:
@@ -186,7 +186,7 @@
     sprite: _Orion/Structures/Storage/Crates/animal-rights-consortium_secure.rsi
 
 - type: entity
-  parent: [ CrateAtmospherics, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateAtmospherics ]
   id: CrateAtmosphericsSecure
   components:
   - type: Icon
@@ -197,7 +197,7 @@
     access: [["Atmospherics"]]
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateBitrunSecure
   name: bitrunning crate
   components:
@@ -209,7 +209,7 @@
     access: [["Salvage"]] # No Bitrunning :(
 
 - type: entity
-  parent: [ CrateCargo, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateCargo ]
   id: CrateCargoSecure
   components:
   - type: Icon
@@ -220,7 +220,7 @@
     access: [["Cargo"]]
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunDawnSecure
   name: Cybersun crate
   desc: A secure crate from Cybersun Industries. It has distinct orange-green colouring, probably of some department or division, but you cannot tell what is it.
@@ -231,7 +231,7 @@
     sprite: _Orion/Structures/Storage/Crates/cybersun-dawn_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunDuskSecure
   name: Cybersun crate
   desc: A secure crate from Cybersun Industries. It has distinct purple-green colouring, probably of some department or division, but you cannot tell what is it.
@@ -242,7 +242,7 @@
     sprite: _Orion/Structures/Storage/Crates/cybersun-dusk_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunNightSecure
   name: Cybersun crate
   desc: A secure crate from Cybersun Industries. This one blatantly adorns syndicate colours. You can only guess it contains equipment for syndicate operatives.
@@ -253,7 +253,7 @@
     sprite: _Orion/Structures/Storage/Crates/cybersun-night_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunNoonSecure
   name: Cybersun crate
   desc: A secure crate from Cybersun Industries. It has distinct yellow-orange colouring, probably of some department or division, but you cannot tell what is it.
@@ -264,7 +264,7 @@
     sprite: _Orion/Structures/Storage/Crates/cybersun-noon_secure.rsi
 
 - type: entity
-  parent: [ CrateFreezerDonk, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateFreezerDonk ]
   id: CrateFreezerDonkSecure
   components:
   - type: Icon
@@ -273,7 +273,7 @@
     sprite: _Orion/Structures/Storage/Crates/donk_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateGorlexSecure
   name: Gorlex Marauders crate
   components:
@@ -285,7 +285,7 @@
     access: [ ["NuclearOperative"], ["SyndicateAgent"] ]
 
 - type: entity
-  parent: [ CrateGorlexSecure, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGorlexSecure ]
   id: CrateGorlexWeaponSecure
   name: Gorlex Marauders weapon crate
   components:
@@ -295,7 +295,7 @@
     sprite: _Orion/Structures/Storage/Crates/gorlex-weapon_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateInterdyneSecure
   name: Interdyne crate
   desc: Crate belonging to Interdyne Pharmaceutics. Hopefully doesn't have bioweapons inside...
@@ -317,7 +317,7 @@
     sprite: _Orion/Structures/Storage/Crates/interdyne-freezer_secure.rsi
 
 - type: entity
-  parent: [ CrateFreezerKitchen, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateFreezerKitchen ]
   id: CrateFreezerKitchenSecure
   components:
   - type: Icon
@@ -326,7 +326,7 @@
     sprite: _Orion/Structures/Storage/Crates/kitchen_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateMI13Secure
   name: MI13 crate
   components:
@@ -336,7 +336,7 @@
     sprite: _Orion/Structures/Storage/Crates/mi13_secure.rsi
 
 - type: entity
-  parent: [ CrateMining, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateMining ]
   id: CrateMiningSecure
   components:
   - type: Icon
@@ -347,7 +347,7 @@
     access: [["Salvage"]]
 
 - type: entity
-  parent: [ CrateRadiation, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateRadiation ]
   id: CrateRadiationSecure
   components:
   - type: Icon
@@ -358,7 +358,7 @@
     access: [["Engineering"]]
 
 - type: entity
-  parent: [ CrateRobotics, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateRobotics ]
   id: CrateRoboticsSecure
   components:
   - type: Icon
@@ -369,7 +369,7 @@
     access: [["Robotics"]]
 
 - type: entity
-  parent: [ CrateSELF, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateSELF ]
   id: CrateSELFSecure
   components:
   - type: Icon
@@ -378,7 +378,7 @@
     sprite: _Orion/Structures/Storage/Crates/self_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateTigerSecure
   name: Tiger Co-Op crate
   components:
@@ -388,10 +388,10 @@
     sprite: _Orion/Structures/Storage/Crates/tiger_secure.rsi
 
 - type: entity
-  parent: [ CrateGenericSteel, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateWaffleSecure
   name: Waffle corp. crate
-  desc: A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads 'bringing you consecutively top five world-wide rated* breakfast since 2055. A much smaller fine print, also in cursive, clarifies: '*in years 2099-2126'... It's not year 2126 now, however.
+  desc: A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads "bringing you consecutively top five world-wide rated* breakfast since 2055". A much smaller fine print, also in cursive, clarifies "*in years 2099-2126"... It's not year 2126 now, however.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/waffle_secure.rsi
