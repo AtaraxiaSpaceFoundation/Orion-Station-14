@@ -292,7 +292,7 @@
 # Assmos - Extinguisher Nozzle
 - type: entity
   id: CrateEngineeringFirefighterBackpackTank
-  parent: CrateEngineering
+  parent: CrateAtmospherics # Orion-Edit
   name: firefighter crate
   description: Contains a firefighter backpack water tank.
   components:
@@ -302,7 +302,7 @@
 
 - type: entity
   id: CrateAirGrenade
-  parent: CrateEngineering
+  parent: CrateAtmospherics # Orion-Edit
   name: air grenade crate
   description: A crate containing 3 air grenades.
   components:

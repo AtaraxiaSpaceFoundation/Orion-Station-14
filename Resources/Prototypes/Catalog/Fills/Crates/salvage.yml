@@ -41,7 +41,7 @@
   name: "salvage equipment crate"
   description: For the daring.
   suffix: Filled
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   components:
   - type: StorageFill
     contents:
@@ -129,7 +129,7 @@
         prob: 0.0001
 
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   id: CrateCrusherDagger
   name: crusher dagger crate
   description: Contains 4 crusher daggers for use by salvage.
@@ -142,7 +142,7 @@
 
 # Salvage rewards
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   id: CrateSeismicCharge
   name: seismic charge crate
   description: Contains 6 seismic charges for use by salvage.
@@ -169,7 +169,7 @@
           amount: 2
 
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   id: CrateCrusher
   name: crusher crate
   description: Contains 2 crushers for use by salvage.
@@ -181,7 +181,7 @@
         amount: 2
 
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   id: CrateFulton
   name: fulton crate
   description: Contains a fulton beacon and 8 fultons.
@@ -206,7 +206,7 @@
         id: JetpackVoidFilled
 
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   id: CrateSalvageHardsuit
   name: salvage hardsuit crate
   description: Contains a salvage hardsuit, breath mask, and oxygen tank.
@@ -220,7 +220,7 @@
         - id: OxygenTankFilled
 
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMining # Orion-Edit
   id: CrateCrusherGlaive
   name: crusher glaive crate
   description: Contains a crusher glaive for use by salvage.
@@ -231,7 +231,7 @@
         id: WeaponCrusherGlaive
 
 - type: entity
-  parent: CrateGenericSteel
+  parent: CrateMiningSecure # Orion-Edit
   id: CrateSupremeSalvagerCloak
   name: supreme salvager cloak crate
   description: Contains a cloak only to be worn by supreme salvagers. Wearing it undeservedly will result in your doom.

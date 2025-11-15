@@ -28,7 +28,7 @@
 
 - type: entity
   id: CrateFoodPizza
-  parent: CratePlastic
+  parent: CrateFreezerKitchen # Orion-Edit
   name: emergency pizza delivery
   description: Help do your part to end station hunger by distributing pizza to underfunded departments! Includes 4 pizzas.
   components:
@@ -42,7 +42,7 @@
 
 - type: entity
   id: CrateFoodPizzaLarge
-  parent: CratePlastic
+  parent: CrateFreezerKitchen # Orion-Edit
   name: disaster pizza delivery
   description: In the ultimate event that all else has failed, Find comfort in that more pizza solves everything. Includes 16 pizzas.
   components:
@@ -56,7 +56,7 @@
 
 - type: entity
   id: CrateFoodMRE
-  parent: CratePlastic
+  parent: CrateFreezerKitchen # Orion-Edit
   name: MRE crate
   description: A military style meal fit to feed a whole department.
   components:
@@ -67,7 +67,7 @@
 
 - type: entity
   id: CrateFoodCooking
-  parent: CratePlastic
+  parent: CrateFreezerKitchen # Orion-Edit
   name: kitchen supplies crate
   description: Extra kitchen supplies, in case the botanists are absent.
   components:
@@ -223,7 +223,7 @@
 
 - type: entity
   id: CrateFoodIceCream
-  parent: CrateFreezer
+  parent: CrateFreezerKitchen # Orion-Edit
   name: ice cream delivery
   description: An assortment of ice cream delights for any occasion! Includes 16 frozen treats.
   components:
@@ -246,7 +246,7 @@
 
 - type: entity
   id: CrateFoodSnowcone
-  parent: CrateFreezer
+  parent: CrateFreezerKitchen # Orion-Edit
   name: snowcone delivery
   description: A freezer packed with refreshing snowcones for a hard working crew, or even a lazy one! Includes 16 snowcones.
   components:
