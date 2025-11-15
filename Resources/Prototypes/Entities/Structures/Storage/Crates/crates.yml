@@ -808,6 +808,7 @@
   description: A comfy coffin, excellent place for the vampires and corpses.
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/coffin.rsi
     layers:
     - state: base
@@ -857,6 +858,7 @@
   description: Someone died here...
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/wooden_grave.rsi
     layers:
     - state: base
