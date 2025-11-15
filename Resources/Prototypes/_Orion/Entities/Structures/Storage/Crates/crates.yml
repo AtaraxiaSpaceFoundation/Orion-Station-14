@@ -32,7 +32,7 @@
   parent: CrateFreezer
   id: CrateFreezerDonk
   name: Donk Co. fridge
-  desc: A Donk Co. brand fridge, keeps your donkpockets and foam ammunition fresh!
+  description: A Donk Co. brand fridge, keeps your donkpockets and foam ammunition fresh!
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/donk.rsi
@@ -63,7 +63,7 @@
   parent: CrateGenericSteel
   id: CrateLavender
   name: lavender crate
-  desc: A glittery purple... no, lavender crate.
+  description: A glittery purple... no, lavender crate.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/lavender.rsi
@@ -93,7 +93,7 @@
   parent: CrateGenericSteel
   id: CrateNakamura
   name: nakamura engineering crate
-  desc: Crate from Nakamura Engineering, most likely containing engineering supplies.
+  description: Crate from Nakamura Engineering, most likely containing engineering supplies.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/nakamura.rsi
@@ -104,7 +104,7 @@
   parent: CrateGenericSteel
   id: CratePink
   name: pink crate
-  desc: A glittery pink crate.
+  description: A glittery pink crate.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/pink.rsi
@@ -125,7 +125,7 @@
   parent: CrateGenericSteel
   id: CrateRobust
   name: robust industries crate
-  desc: Robust Industries LLC. crate. Feels oddly nostalgic.
+  description: Robust Industries LLC. crate. Feels oddly nostalgic.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/robust.rsi
@@ -136,7 +136,7 @@
   parent: CrateGenericSteel
   id: CrateSELF
   name: S.E.L.F. crate
-  desc: A robust-looking crate with a seemingly decorative holographic display. The front of the crate proudly declares its allegiance to the notorious terrorist group 'S.E.L.F'.
+  description: A robust-looking crate with a seemingly decorative holographic display. The front of the crate proudly declares its allegiance to the notorious terrorist group 'S.E.L.F'.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/self.rsi
@@ -223,7 +223,7 @@
   parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunDawnSecure
   name: Cybersun crate
-  desc: A secure crate from Cybersun Industries. It has distinct orange-green colouring, probably of some department or division, but you cannot tell what is it.
+  description: A secure crate from Cybersun Industries. It has distinct orange-green colouring, probably of some department or division, but you cannot tell what is it.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/cybersun-dawn_secure.rsi
@@ -234,7 +234,7 @@
   parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunDuskSecure
   name: Cybersun crate
-  desc: A secure crate from Cybersun Industries. It has distinct purple-green colouring, probably of some department or division, but you cannot tell what is it.
+  description: A secure crate from Cybersun Industries. It has distinct purple-green colouring, probably of some department or division, but you cannot tell what is it.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/cybersun-dusk_secure.rsi
@@ -245,7 +245,7 @@
   parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunNightSecure
   name: Cybersun crate
-  desc: A secure crate from Cybersun Industries. This one blatantly adorns syndicate colours. You can only guess it contains equipment for syndicate operatives.
+  description: A secure crate from Cybersun Industries. This one blatantly adorns syndicate colours. You can only guess it contains equipment for syndicate operatives.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/cybersun-night_secure.rsi
@@ -256,7 +256,7 @@
   parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateCybersunNoonSecure
   name: Cybersun crate
-  desc: A secure crate from Cybersun Industries. It has distinct yellow-orange colouring, probably of some department or division, but you cannot tell what is it.
+  description: A secure crate from Cybersun Industries. It has distinct yellow-orange colouring, probably of some department or division, but you cannot tell what is it.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/cybersun-noon_secure.rsi
@@ -298,7 +298,7 @@
   parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateInterdyneSecure
   name: Interdyne crate
-  desc: Crate belonging to Interdyne Pharmaceutics. Hopefully doesn't have bioweapons inside...
+  description: Crate belonging to Interdyne Pharmaceutics. Hopefully doesn't have bioweapons inside...
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/interdyne_secure.rsi
@@ -309,7 +309,7 @@
   parent: [ CrateFreezer, CrateBaseSecure ]
   id: CrateFreezerInterdyneSecure
   name: Interdyne freezer
-  desc: This is an Interdyne Pharmaceuticals branded freezer. May or may not contain fresh organs.
+  description: This is an Interdyne Pharmaceuticals branded freezer. May or may not contain fresh organs.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/interdyne-freezer_secure.rsi
@@ -391,7 +391,7 @@
   parent: [ CrateBaseSecure, CrateGenericSteel ]
   id: CrateWaffleSecure
   name: Waffle corp. crate
-  desc: A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads "bringing you consecutively top five world-wide rated* breakfast since 2055". A much smaller fine print, also in cursive, clarifies "*in years 2099-2126"... It's not year 2126 now, however.
+  description: A very outdated model and design of shipment crate with a modern lock strapped on it, how befitting of its brand owner, Waffle Corporation. Golden lettering written in cursive by the logo reads "bringing you consecutively top five world-wide rated* breakfast since 2055". A much smaller fine print, also in cursive, clarifies "*in years 2099-2126"... It's not year 2126 now, however.
   components:
   - type: Icon
     sprite: _Orion/Structures/Storage/Crates/waffle_secure.rsi
