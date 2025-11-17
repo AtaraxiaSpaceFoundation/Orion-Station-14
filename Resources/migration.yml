@@ -294,7 +294,7 @@ ClothingHeadHatFedoraBlack: null
 ClothingHeadHatFedoraChoc: null
 ClothingHeadHatFezMantis: null
 ClothingHeadPrisonGuard: null
-ClothingUniformMartialGi: null
+ClothingUniformMartialGi: ClothingUniformGi
 ClothingUniformTShirtKhakiPants: null
 ComputerShipyard: null
 CourierBag: null
@@ -369,7 +369,7 @@ Roboisseur: null
 SalvagePartsSpawnerLow: null
 SalvagePartsSpawnerMid: null
 SecBreachingHammer: null
-Shinai: null
+Shinai: EuropaShinai
 ShockCollar: null
 shuttle_manipulator: null
 SignConspiracyBoard: null
@@ -403,7 +403,7 @@ VendingMachineBoxingDrobe: null
 VendingMachineCourierDrobe: null
 VendingMachineMNKDrobe: null
 VendingMachineRepDrobe: null
-WallPaper: null
+WallPaper: EuropaWallPaper
 WarpPointAI: null
 WarpPointArrivals: null
 WarpPointAtmos: null
