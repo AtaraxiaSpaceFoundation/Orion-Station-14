@@ -64,7 +64,7 @@ public sealed class ServerProtectionPunishmentSystem : EntitySystem
     /// </summary>
     public async void ApplyBan(ICommonSession player, string reason, int durationSeconds = 0)
     {
-        if (string.IsNullOrEmpty(player.Name))
+        if (string.IsNullOrWhiteSpace(player.Name))
             return;
 
         (IPAddress, int)? targetIP = null;

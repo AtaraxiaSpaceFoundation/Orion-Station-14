@@ -250,7 +250,6 @@ namespace Content.Server.IoC
             IoCManager.Register<LastRolledAntagManager>(); // Goobstation - antag pity
             IoCManager.Register<LinkAccountManager>(); // RMC - Patreon
             // Orion-Start
-            IoCManager.Register<ServerProtectionManagerSystem>();
             IoCManager.Register<ServerProtectionPunishmentSystem>();
             IoCManager.Register<ChatProtectionSystem>();
             IoCManager.Register<EmoteProtectionSystem>();
