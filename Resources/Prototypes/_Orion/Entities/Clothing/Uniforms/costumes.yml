@@ -1,7 +1,7 @@
 ## euro-japan upd
 - type: entity
   parent: ClothingUniformBase
-  id: ClothingUniformMartialGi
+  id: ClothingUniformGi
   name: gi
   description: A white top and bottom traditionally used in martial arts, often paired with a belt.
   components:

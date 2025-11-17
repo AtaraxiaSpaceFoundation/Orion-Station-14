@@ -231,7 +231,7 @@
   parent: ClothingOuterBase
   id: ClothingOuterArmorKendoBogu
   name: bogu
-  description: A set of armor used in Kendo. It covers the waist, torso, and hands. 
+  description: A set of armor used in Kendo. It covers the waist, torso, and hands.
   components:
   - type: Sprite
     sprite: _Europa/Clothing/OuterClothing/Armor/bogu.rsi

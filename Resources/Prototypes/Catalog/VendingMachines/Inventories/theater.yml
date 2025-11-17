@@ -51,6 +51,7 @@
 # SPDX-FileCopyrightText: 2025 Smith <182301147+AgentSmithRadio@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
+# SPDX-FileCopyrightText: 2025 MemesHodachy <142843422+MemesHodachy@users.noreply.github.com.>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -128,6 +129,13 @@
     ClothingUniformJumpsuitMegaMan: 1
     ClothingUniformJumpsuitMegaManX: 1
     ClothingNeckMantleElderLizards: 2
+    ClothingUniformGi: 2
+    ClothingKimonoBlue: 2
+    ClothingKimonoPink: 2
+    ClothingKimonoPurple: 2
+    ClothingKimonoSky: 2
+    ClothingKimonoGreen: 2
+    ClothingUniformKendoHakama: 1
     # Orion-End
     ClothingOuterSuitHotDog: 1 # Goob
     ClothingOuterSuitPickle: 1
@@ -152,6 +160,8 @@
     ClothingOuterSuitCarp: 2
     ClothingNeckCloakCarp: 1
     ClothingNeckCloakCarpAlt: 1
+    ClothingOuterArmorKendoBogu: 1
+    ClothingHeadHelmetKendoMen: 1
     # Orion-End
     ClothingOuterArmorHereticCostume: 1 # Goobstation
     ToyBladeEldritch: 1 # Goobstation

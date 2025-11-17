@@ -2,7 +2,7 @@
 - type: entity
   name: shinai
   parent: BaseItem
-  id: Shinai
+  id: EuropaShinai
   description: A bamboo sword, commonly used in kendo. Made some time after the realization that wooden swords hurt a lot.
   components:
   - type: Sprite
