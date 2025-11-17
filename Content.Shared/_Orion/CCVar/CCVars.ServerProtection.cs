@@ -77,7 +77,7 @@ public sealed partial class CCVars
     /// Delete all chat messages by the violating player.
     /// </summary>
     public static readonly CVarDef<bool> EmoteProtectionDeleteMessages =
-        CVarDef.Create("protection.emote_delete_messages", false, CVar.SERVERONLY);
+        CVarDef.Create("protection.emote_delete_messages", true, CVar.SERVERONLY);
 
     /// <summary>
     /// Hard threshold for emote spam. If exceeded, immediate action is taken.
