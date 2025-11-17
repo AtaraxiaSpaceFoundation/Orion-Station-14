@@ -306,7 +306,7 @@
     sprite: _Orion/Structures/Storage/Crates/interdyne_secure.rsi
 
 - type: entity
-  parent: [ CrateFreezer, CrateBaseSecure ]
+  parent: [ CrateBaseSecure, CrateFreezer ]
   id: CrateFreezerInterdyneSecure
   name: Interdyne freezer
   description: This is an Interdyne Pharmaceuticals branded freezer. May or may not contain fresh organs.
