@@ -143,7 +143,9 @@
     sprite: Clothing/Eyes/Glasses/gar.rsi
   - type: MeleeWeapon
     attackRate: 1.5
-    damage: 7
+    damage:
+      types:
+        Blunt: 7
   - type: LandAtCursor # Europa edit
   - type: DamageOtherOnHit # Europa edit
     damage:
