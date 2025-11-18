@@ -23,7 +23,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 </Box>
 ## Химическое производство
 <Box>
-<GuideEntityEmbed Entity="ChemDispenser"/>
+<GuideEntityEmbed Entity="EnergyChemDispenser"/>
 <GuideEntityEmbed Entity="LargeBeaker"/>
 <GuideEntityEmbed Entity="PillCanister"/>
 <GuideEntityEmbed Entity="ChemMaster"/>

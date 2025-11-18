@@ -11,3 +11,12 @@
   components:
   - type: MachineBoard
     prototype: CircuitImprinterAncient
+
+- type: entity
+  parent: ChemDispenserMachineCircuitboard
+  id: EnergyChemDispenserMachineCircuitboard
+  name: energy chem dispenser machine board
+  description: A machine printed circuit board for an energy chem dispenser.
+  components:
+  - type: MachineBoard
+    prototype: EnergyChemDispenser

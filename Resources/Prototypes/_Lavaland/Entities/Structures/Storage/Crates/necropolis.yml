@@ -28,4 +28,5 @@
   - type: Icon
     sprite: _Lavaland/Structures/Storage/Crates/necropolechest.rsi
   - type: Sprite
+    offset: "0.0,0.0" # Orion | Not TG
     sprite: _Lavaland/Structures/Storage/Crates/necropolechest.rsi

@@ -85,6 +85,7 @@
   - type: Icon
     sprite: Structures/Storage/Crates/plastic.rsi
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/plastic.rsi
   - type: Construction
     graph: CratePlastic
@@ -100,7 +101,7 @@
     group: CratePlastic
 
 - type: entity
-  parent: CratePlastic
+  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
   id: CrateFreezer
   name: freezer
   components:
@@ -120,7 +121,7 @@
     group: null
 
 - type: entity
-  parent: CratePlastic
+  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
   id: CrateHydroponics
   name: hydroponics crate
   components:
@@ -130,7 +131,7 @@
     sprite: Structures/Storage/Crates/hydroponics.rsi
 
 - type: entity
-  parent: CratePlastic
+  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
   id: CrateMedical
   name: medical crate
   components:
@@ -151,7 +152,7 @@
     sprite: Structures/Storage/Crates/radiation.rsi
 
 - type: entity
-  parent: CratePlastic
+  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
   id: CrateInternals
   name: oxygen crate
   components:
@@ -417,6 +418,7 @@
   - type: EntityStorage
     airtight: false
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/livestock.rsi
     layers:
     - state: base
@@ -472,6 +474,7 @@
   name: hamster cage
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/cage.rsi
     layers:
     - state: base
@@ -552,6 +555,11 @@
         lid_overlay:
           True: { visible: false }
           False: { visible: true }
+        # Orion-Start
+        open_overlay:
+          True: { visible: true }
+          False: { visible: false }
+        # Orion-End
   - type: OverrideSell
   - type: Fixtures
     fixtures:
@@ -580,6 +588,11 @@
     - state: overlay-closed
       color: "#ad8c27"
       map: [ lid_overlay ]
+    # Orion-Start
+    - state: overlay-open
+      color: "#ad8c27"
+      map: [ open_overlay ]
+    # Orion-End
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
@@ -610,6 +623,11 @@
     - state: overlay-closed
       color: "#92c7e8"
       map: [ lid_overlay ]
+    # Orion-Start
+    - state: overlay-open
+      color: "#92c7e8"
+      map: [ open_overlay ]
+    # Orion-End
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
@@ -640,6 +658,11 @@
     - state: overlay-closed
       color: "#ba4bf0"
       map: [ lid_overlay ]
+    # Orion-Start
+    - state: overlay-open
+      color: "#ba4bf0"
+      map: [ open_overlay ]
+    # Orion-End
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
@@ -670,6 +693,11 @@
     - state: overlay-closed
       color: "#c12d30"
       map: [ lid_overlay ]
+    # Orion-Start
+    - state: overlay-open
+      color: "#c12d30"
+      map: [ open_overlay ]
+    # Orion-End
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
@@ -700,6 +728,11 @@
     - state: overlay-closed
       color: "#53b723"
       map: [ lid_overlay ]
+    # Orion-Start
+    - state: overlay-open
+      color: "#53b723"
+      map: [ open_overlay ]
+    # Orion-End
     - state: welded
       visible: false
       map: ["enum.WeldableLayers.BaseWelded"]
@@ -722,6 +755,7 @@
   description: A space pirate chest, not for station lubbers.
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion | Not TG
     sprite: Structures/Storage/Crates/piratechest.rsi
     layers:
     - state: crate
@@ -751,6 +785,7 @@
   description: A box overflowing with fun.
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion | Not TG
     sprite: Structures/Storage/Crates/toybox.rsi
     layers:
     - state: crate
@@ -773,6 +808,7 @@
   description: A comfy coffin, excellent place for the vampires and corpses.
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/coffin.rsi
     layers:
     - state: base
@@ -822,6 +858,7 @@
   description: Someone died here...
   components:
   - type: Sprite
+    offset: "0.0,0.0" # Orion
     sprite: Structures/Storage/Crates/wooden_grave.rsi
     layers:
     - state: base

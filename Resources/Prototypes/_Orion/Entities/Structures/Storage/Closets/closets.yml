@@ -5,7 +5,7 @@
   components:
   - type: Sprite
     netsync: false
-    sprite: _Orion/Structures/Storage/inteq.rsi
+    sprite: _Orion/Structures/Storage/Closets/inteq.rsi
     noRot: true
     layers:
     - state: inteq
@@ -32,7 +32,7 @@
   components:
   - type: Sprite
     netsync: false
-    sprite: _Orion/Structures/Storage/inteq.rsi
+    sprite: _Orion/Structures/Storage/Closets/inteq.rsi
     noRot: true
     layers:
     - state: inteq
@@ -60,7 +60,7 @@
   components:
   - type: Sprite
     netsync: false
-    sprite: _Orion/Structures/Storage/ueg.rsi
+    sprite: _Orion/Structures/Storage/Closets/ueg.rsi
     noRot: true
     layers:
     - state: ueg

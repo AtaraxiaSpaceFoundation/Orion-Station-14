@@ -1,0 +1,5 @@
+- type: latheRecipe
+  parent: ChemDispenserMachineCircuitboard
+  id: EnergyChemDispenserMachineCircuitboard
+  icon: { sprite: _Orion/Structures/Dispensers/dispenser.rsi, state: industrial-working } # Goobstation
+  result: EnergyChemDispenserMachineCircuitboard

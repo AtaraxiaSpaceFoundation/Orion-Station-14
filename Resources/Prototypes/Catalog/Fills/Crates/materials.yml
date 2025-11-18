@@ -109,7 +109,7 @@
 
 - type: entity
   id: CrateMaterialGold
-  parent: CrateGenericSteel
+  parent: CrateGolden # Orion-Edit
   name: gold crate
   description: 30 bars of gold.
   components:
@@ -119,7 +119,7 @@
 
 - type: entity
   id: CrateMaterialSilver
-  parent: CrateGenericSteel
+  parent: CrateSilver # Orion-Edit
   name: silver crate
   description: 30 bars of silver.
   components:

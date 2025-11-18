@@ -163,7 +163,7 @@
 
 - type: entity
   id: CrateServiceTheatre
-  parent: CrateGenericSteel
+  parent: CrateWooden # Orion-Edit
   name: theatrical performances crate
   description: Contains a moth cloak, barber scissors, maid uniform, clown and mime attributes, and other performance charms.
   components:

@@ -334,7 +334,7 @@
   id: ChemDispenser
   name: steal-target-groups-chem-dispenser
   sprite:
-    sprite: Structures/dispensers.rsi
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi # Orion-Edit
     state: industrial-working
 
 - type: stealTargetGroup
