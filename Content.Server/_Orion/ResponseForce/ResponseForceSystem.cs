@@ -12,6 +12,7 @@ using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Storage;
+using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.EntitySerialization.Systems;
@@ -21,11 +22,13 @@ using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
+using static Content.Server._Orion.ResponseForce.ResponseForceState;
+
 namespace Content.Server._Orion.ResponseForce;
 
 public sealed class ResponseForceSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly MapLoaderSystem _map = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -38,18 +41,15 @@ public sealed class ResponseForceSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
 
-    [ViewVariables] public List<ResponseForceHistory> CalledEvents { get; } = new();
-    [ViewVariables] public TimeSpan LastUsedTime { get; private set; } = TimeSpan.Zero;
+    private ISawmill _log = default!;
     private readonly ReaderWriterLockSlim _callLock = new();
-    private TimeSpan DelayUsage => TimeSpan.FromMinutes(_configurationManager.GetCVar(CCVars.ResponseForceDelay));
-
-    public MapId? ShipyardMap { get; private set; }
-    private float _shuttleIndex;
-    private const float ShuttleSpawnBuffer = 1f;
+    private TimeSpan CallDelay => TimeSpan.FromMinutes(_configurationManager.GetCVar(CCVars.ResponseForceDelay));
 
     public override void Initialize()
     {
         base.Initialize();
+
+        _log = Logger.GetSawmill("responseforce.call");
 
         SubscribeLocalEvent<ResponseForceComponent, MapInitEvent>(OnMapInit, after: [typeof(RandomMetadataSystem)]);
         SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEnd);
@@ -61,27 +61,28 @@ public sealed class ResponseForceSystem : EntitySystem
 
     private void SetupShipyard()
     {
-        if (ShipyardMap != null && _mapManager.MapExists(ShipyardMap.Value))
+        if (ShipyardMap != null && _mapSystem.MapExists(ShipyardMap))
             return;
 
-        ShipyardMap = _mapManager.CreateMap();
+        var mapEntity = _mapSystem.CreateMap(out var mapId);
+        ShipyardMap = mapId;
 
-        _mapManager.SetMapPaused(ShipyardMap.Value, false);
-        _shuttleIndex = 0;
+        _mapSystem.SetPaused(mapEntity, false);
+        ShuttleIndex = 0f;
     }
 
     private void CleanupShipyard()
     {
-        if (ShipyardMap == null || !_mapManager.MapExists(ShipyardMap.Value))
+        if (ShipyardMap == null || !_mapSystem.MapExists(ShipyardMap.Value))
         {
             ShipyardMap = null;
-            _shuttleIndex = 0;
+            ShuttleIndex = 0f;
             return;
         }
 
-        _mapManager.DeleteMap(ShipyardMap.Value);
+        _mapSystem.DeleteMap(ShipyardMap.Value);
         ShipyardMap = null;
-        _shuttleIndex = 0;
+        ShuttleIndex = 0f;
     }
 
 /*
@@ -131,7 +132,7 @@ public sealed class ResponseForceSystem : EntitySystem
         get
         {
             var ct = _gameTicker.RoundDuration();
-            var lastUsedTime = LastUsedTime + DelayUsage;
+            var lastUsedTime = LastCallTime + CallDelay;
             return ct > lastUsedTime ? TimeSpan.Zero : lastUsedTime - ct;
         }
     }
@@ -148,46 +149,46 @@ public sealed class ResponseForceSystem : EntitySystem
     {
         if (!_callLock.TryEnterWriteLock(-1))
         {
-            Log.Warning("SpecForces is busy!");
+            _log.Warning("ResponseForce is busy!");
             return false;
         }
         try
         {
             if (!_prototypes.TryIndex(protoId, out var prototype))
             {
-                Log.Error("Wrong SpecForceTeamPrototype ID!");
+                _log.Error("Wrong SpecForceTeamPrototype ID!");
                 return false;
             }
 
             if (_gameTicker.RunLevel != GameRunLevel.InRound)
             {
-                Log.Warning("Can't call SpecForces while not in the round.");
+                _log.Warning("Can't call ResponseForce while not in the round.");
                 return false;
             }
 
             var currentTime = _gameTicker.RoundDuration();
 
 #if !DEBUG
-            if (LastUsedTime + DelayUsage > currentTime && !forceCall)
+            if (LastCallTime + CallDelay > currentTime && !forceCall)
             {
-                Log.Info("Tried to call SpecForce when it's on cooldown.");
+                _log.Info("Tried to call SpecForce when it's on cooldown.");
                 return false;
             }
 #endif
 
-            LastUsedTime = currentTime;
+            LastCallTime = currentTime;
 
             var shuttle = SpawnShuttle(prototype.ShuttlePath);
             if (shuttle == null)
             {
-                Log.Error("Failed to load SpecForce shuttle!");
+                _log.Error("Failed to load SpecForce shuttle!");
                 return false;
             }
 
             SpawnGhostRole(prototype, shuttle.Value, forceCountExtra);
             DispatchAnnouncement(prototype);
 
-            Log.Info($"Successfully called {prototype.ID} ResponseForceTeam. Source: {source}");
+            _log.Info($"Successfully called {prototype.ID} ResponseForceTeam. Source: {source}");
 
             CalledEvents.Add(new ResponseForceHistory { Event = prototype.ResponseForceName, RoundTime = currentTime, WhoCalled = source });
 
@@ -229,8 +230,10 @@ public sealed class ResponseForceSystem : EntitySystem
         return uid;
     }
 
-    public int GetCount(ResponseForceTeamPrototype proto, int? plrCount = null) =>
-        ((plrCount ?? _playerManager.PlayerCount) + proto.SpawnPerPlayers) / proto.SpawnPerPlayers;
+    public int GetCount(ResponseForceTeamPrototype proto, int? plrCount = null)
+    {
+        return ((plrCount ?? _playerManager.PlayerCount) + proto.SpawnPerPlayers) / proto.SpawnPerPlayers;
+    }
 
     private void SpawnGhostRole(ResponseForceTeamPrototype proto, EntityUid shuttle, int? forceCountExtra = null)
     {
@@ -250,7 +253,7 @@ public sealed class ResponseForceSystem : EntitySystem
 
         if (spawns.Count == 0)
         {
-            Log.Warning("Shuttle has no valid spawns for SpecForces! Making something up...");
+            _log.Warning("Shuttle has no valid spawns for ResponseForce! Making something up...");
             spawns.Add(Transform(shuttle).Coordinates);
         }
 
@@ -270,7 +273,7 @@ public sealed class ResponseForceSystem : EntitySystem
         foreach (var mob in toSpawnGuaranteed)
         {
             var spawned = SpawnEntity(mob, _random.Pick(spawns), proto);
-            Log.Info($"Successfully spawned {ToPrettyString(spawned)} Static SpecForce.");
+            _log.Info($"Successfully spawned {ToPrettyString(spawned)} Static SpecForce.");
         }
     }
 
@@ -297,11 +300,11 @@ public sealed class ResponseForceSystem : EntitySystem
         while (countExtra > 0)
         {
             var toSpawnForces = EntitySpawnCollection.GetSpawns(proto.ResponseForceSpawn, _random);
-            foreach (var mob in toSpawnForces.Where( _ => countExtra > 0))
+            foreach (var mob in toSpawnForces.Where(_ => countExtra > 0))
             {
                 countExtra--;
                 var spawned = SpawnEntity(mob, _random.Pick(spawns), proto);
-                Log.Info($"Successfully spawned {ToPrettyString(spawned)} Opt-in SpecForce.");
+                _log.Info($"Successfully spawned {ToPrettyString(spawned)} Opt-in SpecForce.");
             }
         }
     }
@@ -315,10 +318,10 @@ public sealed class ResponseForceSystem : EntitySystem
     {
         SetupShipyard();
 
-        if (!_map.TryLoadGrid(ShipyardMap!.Value, new ResPath(shuttlePath), out var grid, offset: new Vector2(500f + _shuttleIndex, 1f)))
+        if (!_map.TryLoadGrid(ShipyardMap!.Value, new ResPath(shuttlePath), out var grid, offset: new Vector2(500f + ShuttleIndex, 1f)))
             return null;
 
-        _shuttleIndex += grid.Value.Comp.LocalAABB.Width + 1;
+        ShuttleIndex += grid.Value.Comp.LocalAABB.Width + 1;
 
         return grid;
     }
@@ -358,12 +361,10 @@ public sealed class ResponseForceSystem : EntitySystem
     private void OnCleanup(RoundRestartCleanupEvent ev)
     {
         CalledEvents.Clear();
-        LastUsedTime = TimeSpan.Zero;
+        LastCallTime = TimeSpan.Zero;
 
         if (_callLock.IsWriteLockHeld)
-        {
             _callLock.ExitWriteLock();
-        }
 
         CleanupShipyard();
     }

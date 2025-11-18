@@ -1,3 +1,4 @@
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Orion.ResponseForce;
@@ -15,6 +16,21 @@ public sealed partial class ResponseForceComponent : Component
     public ComponentRegistry Components { get; private set; } = new();
 
     public EntityUid? FTLKey = null;
+}
+
+public static class ResponseForceState
+{
+    [ViewVariables]
+    public static List<ResponseForceHistory> CalledEvents { get; } = new();
+
+    [ViewVariables]
+    public static TimeSpan LastCallTime { get; set; } = TimeSpan.Zero;
+
+    [ViewVariables]
+    public static MapId? ShipyardMap { get; set; } = null;
+
+    [ViewVariables]
+    public static float ShuttleIndex { get; set; } = 0f;
 }
 
 public sealed class ResponseForceHistory
