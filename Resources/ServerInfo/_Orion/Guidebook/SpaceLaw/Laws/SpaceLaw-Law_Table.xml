@@ -18,7 +18,7 @@
       </Box>
     </ColorBox>
     <ColorBox Color="#cc7500">
-      <Box>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
         3XX
       </Box>
     </ColorBox>
