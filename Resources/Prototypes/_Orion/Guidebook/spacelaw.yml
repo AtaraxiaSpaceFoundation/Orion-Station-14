@@ -19,7 +19,8 @@
   priority: 1
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/SpaceLaw-Law_Table.xml"
   children:
-    - SpaceLaw_Law-1
+    - SpaceLaw_Law-0
+#    - SpaceLaw_Law-1
     - SpaceLaw_Law-2
     - SpaceLaw_Law-3
     - SpaceLaw_Law-4
@@ -27,37 +28,43 @@
     - SpaceLaw_Law-6
 
 - type: guideEntry
-  id: SpaceLaw_Law-1
-  name: guide-entry-space-law-laws-1xx
-  priority: 1
-  text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T1.xml"
+  id: SpaceLaw_Law-0
+  name: guide-entry-space-law-laws-0
+  priority: 0
+  text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T0.xml"
+
+#- type: guideEntry
+#  id: SpaceLaw_Law-1
+#  name: guide-entry-space-law-laws-1
+#  priority: 1
+#  text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T1.xml"
 
 - type: guideEntry
   id: SpaceLaw_Law-2
-  name: guide-entry-space-law-laws-2xx
+  name: guide-entry-space-law-laws-2
   priority: 2
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T2.xml"
 
 - type: guideEntry
   id: SpaceLaw_Law-3
-  name: guide-entry-space-law-laws-3xx
+  name: guide-entry-space-law-laws-3
   priority: 3
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T3.xml"
 
 - type: guideEntry
   id: SpaceLaw_Law-4
-  name: guide-entry-space-law-laws-4xx
+  name: guide-entry-space-law-laws-4
   priority: 4
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T4.xml"
 
 - type: guideEntry
   id: SpaceLaw_Law-5
-  name: guide-entry-space-law-laws-5xx
+  name: guide-entry-space-law-laws-5
   priority: 5
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T5.xml"
 
 - type: guideEntry
   id: SpaceLaw_Law-6
-  name: guide-entry-space-law-laws-6xx
+  name: guide-entry-space-law-laws-6
   priority: 6
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T6.xml"
