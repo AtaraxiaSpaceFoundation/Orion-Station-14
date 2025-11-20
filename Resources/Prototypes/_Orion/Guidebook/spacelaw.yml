@@ -26,6 +26,7 @@
     - SpaceLaw_Law-4
     - SpaceLaw_Law-5
     - SpaceLaw_Law-6
+    - SpaceLaw_Law-7
 
 - type: guideEntry
   id: SpaceLaw_Law-0
@@ -68,3 +69,9 @@
   name: guide-entry-space-law-laws-6
   priority: 6
   text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T6.xml"
+
+- type: guideEntry
+  id: SpaceLaw_Law-7
+  name: guide-entry-space-law-laws-7
+  priority: 7
+  text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/Laws/Laws-T7.xml"
