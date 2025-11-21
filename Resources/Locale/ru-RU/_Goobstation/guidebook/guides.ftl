@@ -14,32 +14,6 @@ guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
 guide-entry-conditions = Условия раскрытия антагониста
-# Goob SOP
-# - Основные разделы
-guide-entry-sop = СОП (Стандартные операционные процедуры)
-guide-entry-sop-alert-levels = Уровни тревоги
-guide-entry-sop-emergencies = Аварийные ситуации
-guide-entry-sop-jobs = Должности
-guide-entry-sop-legal = Юридическая часть
-guide-entry-sop-standards = Стандартные процедуры
-# - Подразделы
-guide-entry-sop-cargo = Грузовой отдел
-guide-entry-sop-command = Командование
-guide-entry-sop-engineering = Инженерия
-guide-entry-sop-medical = Медицина
-guide-entry-sop-science = Наука
-guide-entry-sop-security = Охрана
-guide-entry-sop-service = Служба
-# - Уровни тревоги
-guide-entry-sop-greenalert = Зеленая тревога
-guide-entry-sop-bluealert = Синяя тревога
-guide-entry-sop-yellowalert = Желтая тревога
-guide-entry-sop-redalert = Красная тревога
-guide-entry-sop-deltaalert = Дельта тревога
-guide-entry-sop-epsilonalert = Эпсилон тревога
-guide-entry-sop-gammaalert = Гамма тревога
-guide-entry-sop-violetalert = Фиолетовая тревога
-guide-entry-sop-omicronalert = Омикрон тревога
 # - Стандартные процедуры
 guide-entry-sop-demoting = Увольнение/понижение
 guide-entry-sop-evacuation = Ранняя эвакуация

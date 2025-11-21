@@ -24,3 +24,13 @@ guide-entry-space-law-laws-7 = Законы (XX7)
 
 guide-entry-antagonist = Антагонисты
 guide-entry-cortical-borer = Кортикальный Паразит
+
+guide-entry-sop = Нормативные Рабочие Процедуры
+
+guide-entry-sop-security = Информация
+guide-entry-sop-security-head_of_security = Глава Службы Безопасности
+guide-entry-sop-security-warden = Смотритель
+guide-entry-sop-security-brigmedic = Бригмедик
+guide-entry-sop-security-detective = Детектив
+guide-entry-sop-security-officer = Офицер
+guide-entry-sop-security-cadet = Кадет
