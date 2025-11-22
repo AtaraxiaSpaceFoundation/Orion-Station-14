@@ -39,7 +39,7 @@ public sealed partial class ResearchServerComponent : Component
     /// </summary>
     [AutoNetworkedField]
     [DataField("serverName"), ViewVariables(VVAccess.ReadWrite)]
-    public string ServerName = "RDSERVER";
+    public string ServerName = ""; // Orion-Edit | Better server name
 
     /// <summary>
     /// The amount of points on the server.

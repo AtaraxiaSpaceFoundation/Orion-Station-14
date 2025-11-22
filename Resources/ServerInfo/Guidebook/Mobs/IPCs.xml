@@ -10,8 +10,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <Document>
   # КПБ
   <GuideEntityEmbed Entity="MobIPCDummy" Caption="I.P.C."/>
-  КПБ — это разумный робот, считающийся [color=yellow]независимой личностью[/color], а значит, [color=red]не подчиняющийся никаким законам робототехники[/color]. КПБ невозможно взломать при помощи ЕМАГ, так как у них нет заранее заданных директив в системе. [color=red]КПБ — кремний-органические существа, поэтому обычно чинятся в Научном или Инженерном отделе, а не в Медицинском.[/color]
-  Они получают на 20% меньше дробящего урона, на 70% больше урона от тепла и на 100% больше урона от электричества. В отличие от боргов, они получают урон от радиации, но на 60% меньше, чем люди. Они сделаны из тяжёлого сплава, что делает их сложнее для транспортировки, однако сами КПБ могут легко тащить более лёгкие виды.
+  An IPC (short for Integrated Positronic Chassis) is a type of sentient robot and is considered an [color=yellow]independent individual[/color], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not have to follow any predefined directives in their system. [color=red]IPCs are silicon-based beings, so they are usually healed by Science or Engineering instead of Medical.[/color]
+  They take 20% less Brute damage, 70% more Heat damage and 100% more Shock damage. Contrary to cyborgs, they take Radiation damage, but 60% less than humans. They are made of a heavy alloy, which means they are harder to pull, though IPCs themselves can pull more lightweight species with ease.
+  They have no bones.
 
   <Box>
     <GuideEntityEmbed Entity="PositronicBrain" Caption="Позитронный мозг"/>

@@ -9,6 +9,7 @@ using Content.Goobstation.Client.IoC;
 using Content.Goobstation.Client.JoinQueue;
 using Content.Goobstation.Common.ServerCurrency;
 using Robust.Shared.ContentPack;
+using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Entry;
 
@@ -33,9 +34,23 @@ public sealed class EntryPoint : GameClient
         _currMan.Initialize();
     }
 
-    public override void Shutdown()
+    public override void Update(ModUpdateLevel level, FrameEventArgs frameEventArgs)
     {
-        base.Shutdown();
+        base.Update(level, frameEventArgs);
+
+/* // Orion-Remove
+        switch (level)
+        {
+            case ModUpdateLevel.FramePreEngine:
+                _voiceManager.Update();
+                break;
+        }
+*/
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        base.Dispose(disposing);
 
         _currMan.Shutdown();
     }

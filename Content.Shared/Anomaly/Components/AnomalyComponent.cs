@@ -284,7 +284,7 @@ public sealed partial class AnomalyComponent : Component
     /// This doesn't include the point bonus for being unstable.
     /// </summary>
     [DataField]
-    public int MaxPointsPerSecond = 70;
+    public int MaxPointsPerSecond = 40; // Orion-Edit | 70 > 40
 
     /// <summary>
     /// The multiplier applied to the point value for the
@@ -315,7 +315,7 @@ public sealed partial class AnomalyComponent : Component
     /// Presumption of anomaly to change behavior. The higher the number, the higher the chance that the anomaly will change its behavior.
     /// </summary>
     [DataField]
-    public float Continuity = 0f;
+    public float Continuity;
 
     /// <summary>
     /// Minimum contituty probability chance, that can be selected by anomaly on MapInit
