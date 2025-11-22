@@ -124,7 +124,7 @@
     guides:
     - Science
   - type: ResearchPointSource # Goobstation
-    pointspersecond: 15 # Orion TODO: Change this to 1
+    pointspersecond: 15 # Orion-TODO: Change this to 1
     active: true
 
 - type: entity

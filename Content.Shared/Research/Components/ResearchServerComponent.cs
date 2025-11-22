@@ -65,7 +65,7 @@ public sealed partial class ResearchServerComponent : Component
     public List<EntityUid> Clients = new();
 
     [DataField("nextUpdateTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
-    public TimeSpan NextUpdateTime = TimeSpan.FromSeconds(1); // Orion-Edit | TimeSpan.FromSeconds
+    public TimeSpan NextUpdateTime = TimeSpan.Zero;
 
     [DataField("researchConsoleUpdateTime"), ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ResearchConsoleUpdateTime = TimeSpan.FromSeconds(1);
