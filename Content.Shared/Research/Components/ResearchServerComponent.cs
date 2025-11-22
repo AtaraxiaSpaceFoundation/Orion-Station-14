@@ -39,7 +39,7 @@ public sealed partial class ResearchServerComponent : Component
     /// </summary>
     [AutoNetworkedField]
     [DataField("serverName"), ViewVariables(VVAccess.ReadWrite)]
-    public string ServerName = "RDSERVER";
+    public string ServerName = ""; // Orion-Edit | Better server name
 
     /// <summary>
     /// The amount of points on the server.
@@ -65,7 +65,7 @@ public sealed partial class ResearchServerComponent : Component
     public List<EntityUid> Clients = new();
 
     [DataField("nextUpdateTime", customTypeSerializer: typeof(TimeOffsetSerializer))]
-    public TimeSpan NextUpdateTime = TimeSpan.Zero;
+    public TimeSpan NextUpdateTime = TimeSpan.FromSeconds(1); // Orion-Edit | TimeSpan.FromSeconds
 
     [DataField("researchConsoleUpdateTime"), ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ResearchConsoleUpdateTime = TimeSpan.FromSeconds(1);

@@ -528,7 +528,7 @@ public abstract class SharedAnomalySystem : EntitySystem
 }
 
 [DataRecord]
-public partial record struct AnomalySpawnSettings()
+public record struct AnomalySpawnSettings() // Orion-Edit | Remove partial
 {
     /// <summary>
     /// should entities block spawning?
