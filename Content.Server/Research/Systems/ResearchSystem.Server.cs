@@ -34,8 +34,12 @@ public sealed partial class ResearchSystem
         // Orion-Start
         if (string.IsNullOrEmpty(component.ServerName))
         {
-            var formattedId = component.Id.ToString("D4");
-            component.ServerName = Loc.GetString("research-server-name", ("id", formattedId));
+            var meta = EntityManager.GetComponent<MetaDataComponent>(uid);
+            if (meta.EntityLifeStage > EntityLifeStage.PreInit)
+            {
+                var formattedId = component.Id.ToString("D4");
+                component.ServerName = Loc.GetString("research-server-name", ("id", formattedId));
+            }
         }
         // Orion-End
 
