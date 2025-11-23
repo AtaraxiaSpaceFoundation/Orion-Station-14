@@ -5,7 +5,7 @@
   announcementTitle: response-force-ert-green-alert-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 5
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -22,7 +22,7 @@
   announcementTitle: response-force-ert-blue-alert-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 5
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -39,7 +39,7 @@
   announcementTitle: response-force-ert-amber-alert-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 6
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -56,7 +56,7 @@
   announcementTitle: response-force-ert-red-alert-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -74,7 +74,7 @@
   announcementTitle: response-force-ert-gamma-alert-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -92,7 +92,7 @@
   announcementTitle: response-force-ert-epsilon-alert-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -111,7 +111,7 @@
   announcementTitle: response-force-cburn-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 8
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -129,7 +129,7 @@
   announcementTitle: response-force-death-squad-call-title
   announcementText: response-force-call-announce
   maxRolesAmount: 5
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -147,7 +147,7 @@
   announcementTitle: response-force-inteq-call-title
   announcementText: response-force-paid-call-announce
   maxRolesAmount: 6
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
@@ -165,7 +165,7 @@
   announcementTitle: response-force-inteq-strike-call-title
   announcementText: response-force-paid-call-announce
   maxRolesAmount: 5
-  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
   spawnMarker: MarkerResponseForce
   raffleSettings: short
   guaranteedSpawn:
