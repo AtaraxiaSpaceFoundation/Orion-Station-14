@@ -583,6 +583,11 @@ public sealed class ArrivalsSystem : EntitySystem
 
     private void SetupArrivalsStation()
     {
+        // Orion-Start
+        if (EntityManager.System<GameTicker>().CurrentPreset?.IsMiniGame ?? false)
+            return;
+        // Orion-End
+
         var path = new ResPath(_cfgManager.GetCVar(CCVars.ArrivalsMap));
         _mapSystem.CreateMap(out var mapId, runMapInit: false);
         var mapUid = _mapSystem.GetMap(mapId);

@@ -31,6 +31,8 @@
   - type: GhostTakeoverAvailable
   - type: MindShield
   - type: AntagImmune
+  - type: ResponseForce
+    actionFTLName: ActionCentCommFtlAction
 
 # Base NanoTrasen ERT
 - type: randomHumanoidSettings
