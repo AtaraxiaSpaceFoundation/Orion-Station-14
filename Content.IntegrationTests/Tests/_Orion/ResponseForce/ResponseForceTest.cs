@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Content.Server._Orion.ResponseForce;
 using Content.Server.Ghost.Roles.Components;
+using Content.Shared._Orion.ResponseForce;
 using Content.Shared.CCVar;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
@@ -13,7 +14,7 @@ namespace Content.IntegrationTests.Tests._Orion.ResponseForce;
 public sealed class ResponseForceTest
 {
     /// <summary>
-    /// A list of spec forces that can be ignored by this test.
+    /// A list of response forces that can be ignored by this test.
     /// </summary>
     private readonly HashSet<string> _ignoredPrototypes = new() {};
 

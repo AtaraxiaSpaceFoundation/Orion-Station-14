@@ -8,9 +8,12 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.RandomMetadata;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
+using Content.Shared._Orion.Blob.Events;
+using Content.Shared._Orion.ResponseForce;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost.Roles.Components;
+using Content.Shared.Ghost.Roles.Raffles;
 using Content.Shared.Storage;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
@@ -56,7 +59,7 @@ public sealed class ResponseForceSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnCleanup);
         SubscribeLocalEvent<ResponseForceComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<ResponseForceComponent, ComponentShutdown>(OnShutdown);
-//        SubscribeLocalEvent<BlobChangeLevelEvent>(OnBlobChange);
+        SubscribeLocalEvent<BlobCriticalStageEvent>(OnBlobCritical);
     }
 
     private void SetupShipyard()
@@ -85,28 +88,12 @@ public sealed class ResponseForceSystem : EntitySystem
         ShuttleIndex = 0f;
     }
 
-/*
-    [ValidatePrototypeId<ResponseForceTeamPrototype>]
-    private const string CBURN = "CBURNBlob";
-    private void OnBlobChange(BlobChangeLevelEvent ev)
+    private void OnBlobCritical(BlobCriticalStageEvent ev)
     {
-        if (ev.Level != BlobStage.Critical)
-            return;
-
-        var blobConfig = CompOrNull<StationBlobConfigComponent>(ev.Station);
-        var forceTeam = blobConfig?.SpecForceTeam ?? CBURN;
-        if (blobConfig?.SpecForceTeam == null)
-        {
-            Log.Info("Station doesn't have it's preferable SpecForceTeam in BlobConfig. Calling default squad...");
-        }
-
-        if (!_prototypes.TryIndex(forceTeam, out var prototype) ||
-            !CallOps(prototype.ID, "ДСО", null, true))
-        {
-            Log.Error($"Failed to spawn {forceTeam} SpecForce for the blob GameRule!");
-        }
+        var responseEvent = new BlobCriticalStageEvent(ev.Station);
+        RaiseLocalEvent(ev.Station, responseEvent);
     }
-*/
+
     private void OnShutdown(EntityUid uid, ResponseForceComponent component, ComponentShutdown args)
     {
         _actions.RemoveAction(uid, component.FTLKey);
@@ -138,11 +125,11 @@ public sealed class ResponseForceSystem : EntitySystem
     }
 
     /// <summary>
-    /// Calls SpecForce team, creating new map with a shuttle, and spawning on it SpecForces.
+    /// Calls ResponseForce, creating new map with a shuttle, and spawning on it ResponseForces.
     /// </summary>
-    /// <param name="protoId"> SpecForceTeamPrototype ID.</param>
+    /// <param name="protoId"> ResponseForcePrototype ID.</param>
     /// <param name="source"> Source of the call.</param>
-    /// <param name="forceCountExtra"> How many extra SpecForces will be forced to spawn.</param>
+    /// <param name="forceCountExtra"> How many extra ResponseForce will be forced to spawn.</param>
     /// <param name="forceCall"> If true, cooldown will be ignored.</param>
     /// <returns>Returns true if call was successful.</returns>
     public bool CallResponseForce(ProtoId<ResponseForceTeamPrototype> protoId, string source = "Unknown", int? forceCountExtra = null, bool forceCall = false)
@@ -156,7 +143,7 @@ public sealed class ResponseForceSystem : EntitySystem
         {
             if (!_prototypes.TryIndex(protoId, out var prototype))
             {
-                _log.Error("Wrong SpecForceTeamPrototype ID!");
+                _log.Error("Wrong ResponseForceTeamPrototype ID!");
                 return false;
             }
 
@@ -171,7 +158,7 @@ public sealed class ResponseForceSystem : EntitySystem
 #if !DEBUG
             if (LastCallTime + CallDelay > currentTime && !forceCall)
             {
-                _log.Info("Tried to call SpecForce when it's on cooldown.");
+                _log.Info("Tried to call ResponseForce when it's on cooldown.");
                 return false;
             }
 #endif
@@ -181,7 +168,7 @@ public sealed class ResponseForceSystem : EntitySystem
             var shuttle = SpawnShuttle(prototype.ShuttlePath);
             if (shuttle == null)
             {
-                _log.Error("Failed to load SpecForce shuttle!");
+                _log.Error("Failed to load ResponseForce shuttle!");
                 return false;
             }
 
@@ -200,7 +187,7 @@ public sealed class ResponseForceSystem : EntitySystem
         }
     }
 
-    private EntityUid SpawnEntity(string? protoName, EntityCoordinates coordinates, ResponseForceTeamPrototype specforce)
+    private EntityUid SpawnEntity(string? protoName, EntityCoordinates coordinates, ResponseForceTeamPrototype responseForce)
     {
         if (protoName == null)
             return EntityUid.Invalid;
@@ -218,13 +205,19 @@ public sealed class ResponseForceSystem : EntitySystem
             spawnObj.TryGetComponent<GhostRoleComponent>(out var tplGhostRoleComponent, _componentFactory))
         {
             var comp = _serialization.CreateCopy(tplGhostRoleComponent, notNullableOverride: true);
-            comp.RaffleConfig = specforce.RaffleConfig;
+
+            comp.RaffleConfig ??= new();
+            comp.RaffleConfig.Settings = new ProtoId<GhostRoleRaffleSettingsPrototype>(responseForce.RaffleSettings);
+
             EntityManager.AddComponent(uid, comp);
         }
 
         if (TryComp<GhostRoleComponent>(uid, out var ghostRole) && ghostRole.RaffleConfig == null)
         {
-            ghostRole.RaffleConfig = specforce.RaffleConfig;
+            ghostRole.RaffleConfig = new()
+            {
+                Settings = new ProtoId<GhostRoleRaffleSettingsPrototype>(responseForce.RaffleSettings),
+            };
         }
 
         return uid;
@@ -273,7 +266,7 @@ public sealed class ResponseForceSystem : EntitySystem
         foreach (var mob in toSpawnGuaranteed)
         {
             var spawned = SpawnEntity(mob, _random.Pick(spawns), proto);
-            _log.Info($"Successfully spawned {ToPrettyString(spawned)} Static SpecForce.");
+            _log.Info($"Successfully spawned {ToPrettyString(spawned)} Static ResponseForce.");
         }
     }
 
@@ -304,7 +297,7 @@ public sealed class ResponseForceSystem : EntitySystem
             {
                 countExtra--;
                 var spawned = SpawnEntity(mob, _random.Pick(spawns), proto);
-                _log.Info($"Successfully spawned {ToPrettyString(spawned)} Opt-in SpecForce.");
+                _log.Info($"Successfully spawned {ToPrettyString(spawned)} Opt-in ResponseForce.");
             }
         }
     }

@@ -1,0 +1,9 @@
+response-force-call-announce = ALERT! Response Force inbound to your station. Prepare for arrival.
+response-force-ert-green-alert-name = ERT Green
+response-force-ert-green-alert-call-title = ERT | Green Alert
+response-force-ert-blue-alert-name = ERT Blue
+response-force-ert-blue-alert-call-title = ERT | Blue Alert
+response-force-ert-amber-alert-name = ERT Amber
+response-force-ert-amber-alert-call-title = ERT | Amber Alert
+response-force-ert-red-alert-name = ERT Red
+response-force-ert-red-alert-call-title = ERT | Red Alert

@@ -1,14 +1,12 @@
-using Content.Server.Ghost.Roles.Raffles;
-using Content.Server.Spawners.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
-namespace Content.Server._Orion.ResponseForce;
+namespace Content.Shared._Orion.ResponseForce;
 
-[Prototype]
-public sealed partial class ResponseForceTeamPrototype : IPrototype, IInheritingPrototype
+[Prototype("responseForceTeam")]
+public sealed class ResponseForceTeamPrototype : IPrototype, IInheritingPrototype
 {
     /// <summary>
     /// Name of the Response ForceTeam that will be shown at the round end manifest.
@@ -39,7 +37,7 @@ public sealed partial class ResponseForceTeamPrototype : IPrototype, IInheriting
     public string ShuttlePath = default!;
 
     [DataField(required: true)]
-    public EntProtoId<SpawnPointComponent> SpawnMarker;
+    public EntProtoId SpawnMarker;
 
     /// <summary>
     /// Announcement text for the Response Force.
@@ -72,14 +70,8 @@ public sealed partial class ResponseForceTeamPrototype : IPrototype, IInheriting
     [DataField]
     public int MaxRolesAmount = 8;
 
-    /// <summary>
-    /// Specifies the raffle settings to use.
-    /// </summary>
     [DataField]
-    public GhostRoleRaffleConfig RaffleConfig = new()
-    {
-        Settings = "default",
-    };
+    public string RaffleSettings = "default";
 
     /// <summary>
     /// Response Force that will be spawned no matter what.

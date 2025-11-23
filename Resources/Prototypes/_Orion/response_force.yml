@@ -1,14 +1,13 @@
-# ERT
+# ERT | Alerts
 - type: responseForceTeam
   id: ERT_GreenAlert
   responseForceName: response-force-ert-green-alert-name
   announcementTitle: response-force-ert-green-alert-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 5
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderGreenAlert
     - id: RandomHumanoidSpawnerERTSecurityGreenAlert
@@ -21,12 +20,11 @@
   id: ERT_BlueAlert
   responseForceName: response-force-ert-blue-alert-name
   announcementTitle: response-force-ert-blue-alert-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 5
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderBlueAlert
     - id: RandomHumanoidSpawnerERTSecurityBlueAlert
@@ -39,12 +37,11 @@
   id: ERT_AmberAlert
   responseForceName: response-force-ert-amber-alert-name
   announcementTitle: response-force-ert-amber-alert-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 6
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderAmberAlert
     - id: RandomHumanoidSpawnerERTSecurityAmberAlert
@@ -57,12 +54,11 @@
   id: ERT_RedAlert
   responseForceName: response-force-ert-red-alert-name
   announcementTitle: response-force-ert-red-alert-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 8
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderRedAlert
     - id: RandomHumanoidSpawnerERTSecurityRedAlert
@@ -76,12 +72,11 @@
   id: ERT_GammaAlert
   responseForceName: response-force-ert-gamma-alert-name
   announcementTitle: response-force-ert-gamma-alert-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 8
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderGammaAlert
     - id: RandomHumanoidSpawnerERTSecurityGammaAlert
@@ -95,12 +90,11 @@
   id: ERT_EpsilonAlert
   responseForceName: response-force-ert-epsilon-alert-name
   announcementTitle: response-force-ert-epsilon-alert-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 8
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerERTLeaderEpsilonAlert
     - id: RandomHumanoidSpawnerERTSecurityEpsilonAlert
@@ -110,16 +104,16 @@
     - id: RandomHumanoidSpawnerERTEngineerEpsilonAlert
     - id: RandomHumanoidSpawnerERTMedicalEpsilonAlert
 
+# CBURN
 - type: responseForceTeam
   id: CBURN
   responseForceName: response-force-cburn-name
   announcementTitle: response-force-cburn-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 8
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerCBURNLeader
     - id: RandomHumanoidSpawnerCBURNUnit
@@ -128,16 +122,16 @@
     - id: RandomHumanoidSpawnerCBURNUnit
     - id: RandomHumanoidSpawnerCBURNUnit
 
+# Death Squad
 - type: responseForceTeam
   id: DeathSquad
   responseForceName: response-force-death-squad-name
   announcementTitle: response-force-death-squad-call-title
-  announcementText: response-force-call-annonce
+  announcementText: response-force-call-announce
   maxRolesAmount: 5
   shuttlePath: Maps/_Orion/Shuttles/ResponseForce/dart.yml
   spawnMarker: MarkerResponseForce
-  raffleConfig:
-    settings: short
+  raffleSettings: short
   guaranteedSpawn:
     - id: RandomHumanoidSpawnerDeathSquadLeader
     - id: RandomHumanoidSpawnerDeathSquad
