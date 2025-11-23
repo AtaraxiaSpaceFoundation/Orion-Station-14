@@ -186,7 +186,7 @@
   suffix: ERT Leader, Green alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTLeaderGreen
@@ -196,7 +196,7 @@
   suffix: ERT Janitor, Green alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTJanitorGreen
@@ -206,7 +206,7 @@
   suffix: ERT Engineer, Green alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTEngineerGreen
@@ -216,7 +216,7 @@
   suffix: ERT Security, Green alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTSecurityGreen
@@ -226,7 +226,7 @@
   suffix: ERT Medic, Green alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedicalGreen
@@ -279,7 +279,7 @@
   suffix: ERT Leader, Blue alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTLeaderBlue
@@ -289,7 +289,7 @@
   suffix: ERT Janitor, Blue alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTJanitorBlue
@@ -299,7 +299,7 @@
   suffix: ERT Engineer, Blue alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTEngineerBlue
@@ -309,7 +309,7 @@
   suffix: ERT Security, Blue alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTSecurityBlue
@@ -319,7 +319,7 @@
   suffix: ERT Medic, Blue alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedicalBlue
@@ -372,7 +372,7 @@
   suffix: ERT Leader, Amber alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTLeaderAmber
@@ -382,7 +382,7 @@
   suffix: ERT Janitor, Amber alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTJanitorAmber
@@ -392,7 +392,7 @@
   suffix: ERT Engineer, Amber alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTEngineerAmber
@@ -402,7 +402,7 @@
   suffix: ERT Security, Amber alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTSecurityAmber
@@ -412,7 +412,7 @@
   suffix: ERT Medic, Amber alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedicalAmber
@@ -465,7 +465,7 @@
   suffix: ERT Leader, Red alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTLeaderRed
@@ -475,7 +475,7 @@
   suffix: ERT Janitor, Red alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTJanitorRed
@@ -485,7 +485,7 @@
   suffix: ERT Engineer, Red alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTEngineerRed
@@ -495,7 +495,7 @@
   suffix: ERT Security, Red alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTSecurityRed
@@ -505,7 +505,7 @@
   suffix: ERT Medic, Red alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedicalRed
@@ -558,7 +558,7 @@
   suffix: ERT Leader, Gamma alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTLeaderGamma
@@ -568,7 +568,7 @@
   suffix: ERT Janitor, Gamma alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTJanitorGamma
@@ -578,7 +578,7 @@
   suffix: ERT Engineer, Gamma alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTEngineerGamma
@@ -588,7 +588,7 @@
   suffix: ERT Security, Gamma alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTSecurityGamma
@@ -598,7 +598,7 @@
   suffix: ERT Medic, Gamma alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedicalGamma
@@ -651,7 +651,7 @@
   suffix: ERT Leader, Epsilon alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTLeaderEpsilon
@@ -661,7 +661,7 @@
   suffix: ERT Janitor, Epsilon alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTJanitorEpsilon
@@ -671,7 +671,7 @@
   suffix: ERT Engineer, Epsilon alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTEngineerEpsilon
@@ -681,7 +681,7 @@
   suffix: ERT Security, Epsilon alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTSecurityEpsilon
@@ -691,7 +691,7 @@
   suffix: ERT Medic, Epsilon alert
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: NanoTrasenERTMedicalEpsilon
@@ -711,7 +711,7 @@
   suffix: CBURN Leader
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: CBURNLeader
@@ -731,7 +731,7 @@
   suffix: Death Squad Leader
   components:
   - type: Sprite
-    sprite: _Orion/Icons/inteq.rsi
+    sprite: _Orion/Icons/nanotrasen.rsi
     state: logo
   - type: RandomHumanoidSpawner
     settings: DeathSquadLeader

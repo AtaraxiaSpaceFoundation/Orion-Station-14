@@ -10,37 +10,18 @@
     sprite: Markers/jobs.rsi
     layers:
       - state: green
-      - sprite: Mobs/Animals/regalrat.rsi
-        state: icon
+      - sprite: _Orion/Icons/nanotrasen.rsi
+        state: logo-alt
 
 # Spawners
 - type: entity
   parent: MarkerBase
   id: SpawnResponseForce
-  categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:
       - state: green
-      - sprite: Mobs/Animals/regalrat.rsi
-        state: icon
-
-- type: entity
-  parent: SpawnResponseForce
-  id: ResponseForceSpawnerERTLeaderGreenAlert
-  categories: [ HideSpawnMenu ]
-  name: ERT Leader
-  components:
-  - type: GhostRoleMobSpawner
-    prototype: RandomHumanoidSpawnerERTLeaderGreenAlert
-
-- type: entity
-  parent: SpawnResponseForce
-  id: ResponseForceSpawnerERTSecurityGreenAlert
-  categories: [ HideSpawnMenu ]
-  name: ERT Officer
-  components:
-  - type: GhostRoleMobSpawner
-    prototype: RandomHumanoidSpawnerERTSecurityGreenAlert
+      - sprite: _Orion/Icons/nanotrasen.rsi
+        state: logo-alt
