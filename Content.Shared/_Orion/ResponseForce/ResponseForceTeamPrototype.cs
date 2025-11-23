@@ -5,7 +5,6 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Shared._Orion.ResponseForce;
 
-[Prototype("responseForceTeam")]
 public sealed class ResponseForceTeamPrototype : IPrototype, IInheritingPrototype
 {
     /// <summary>
