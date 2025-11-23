@@ -200,9 +200,8 @@ public sealed partial class ResearchSystem
 
         var points = GetPointsPerSecond(uid, component);
 
-        var serverName = component.ServerName ?? Loc.GetString("research-server-name-fallback");
         var msg = Loc.GetString("research-server-examine",
-            ("name", serverName),
+            ("name", component.ServerName),
             ("points", points));
 
         args.PushMarkup(msg);
