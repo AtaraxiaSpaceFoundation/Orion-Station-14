@@ -58,6 +58,7 @@
     staticPacks:
     - ScienceBoardsStatic
     - ServiceBoardsStatic
+    - ServiceBoardsEvilStatic
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
@@ -68,6 +69,9 @@
     - SecurityBoardsStaticGoob
     # Goob-End
     dynamicPacks:
+    # Orion-Start
+    - ChemistryBoards
+    # Orion-End
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards

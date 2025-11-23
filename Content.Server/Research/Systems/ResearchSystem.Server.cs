@@ -31,11 +31,6 @@ public sealed partial class ResearchSystem
             .Max(s => s.Id) + 1;
         component.Id = unusedId;
 
-        // Orion-Start
-        var formattedId = component.Id.ToString("D4");
-        component.ServerName = Loc.GetString("research-server-name", ("id", formattedId));
-        // Orion-End
-
         Dirty(uid, component);
     }
 
