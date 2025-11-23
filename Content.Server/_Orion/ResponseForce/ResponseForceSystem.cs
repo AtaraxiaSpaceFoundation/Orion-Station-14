@@ -287,8 +287,8 @@ public sealed class ResponseForceSystem : EntitySystem
         countExtra = Math.Min(countExtra, proto.MaxRolesAmount);
 
         // If CountExtra was forced to some number, check if this number is in range and extract already spawned roles.
-        if (forceCountExtra is >= 0 and <= 15)
-            countExtra = forceCountExtra.Value;
+        if (forceCountExtra is >= 0)
+            countExtra = Math.Min(forceCountExtra.Value, proto.MaxRolesAmount);
 
         // Either zero or bigger than zero, no negatives
         countExtra = Math.Max(0, countExtra);
@@ -298,6 +298,9 @@ public sealed class ResponseForceSystem : EntitySystem
         while (countExtra > 0)
         {
             var toSpawnForces = EntitySpawnCollection.GetSpawns(proto.ResponseForceSpawn, _random);
+            if (toSpawnForces.Count == 0)
+                break;
+
             foreach (var mob in toSpawnForces.Where(_ => countExtra > 0))
             {
                 countExtra--;

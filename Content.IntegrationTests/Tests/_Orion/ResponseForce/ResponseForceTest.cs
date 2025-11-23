@@ -28,7 +28,7 @@ public sealed class ResponseForceTest
             DummyTicker = false,
             InLobby = false,
         });
-        var (server, client) = (pair.Server, pair.Client);
+        var server = pair.Server;
 
         var protoManager = server.ResolveDependency<IPrototypeManager>();
         var entSysManager = server.ResolveDependency<IEntitySystemManager>();
@@ -56,15 +56,15 @@ public sealed class ResponseForceTest
                     Assert.That(entMan.Count<ResponseForceComponent>(), Is.GreaterThanOrEqualTo(total));
                 });
 
-                var ghostRoles = entMan.EntityQueryEnumerator<GhostRoleComponent>();
-                while (ghostRoles.MoveNext(out var uid, out var ghostRole))
+                var ghostRoles = entMan.EntityQueryEnumerator<GhostRoleComponent, ResponseForceComponent>();
+                while (ghostRoles.MoveNext(out var uid, out var ghostRole, out _))
                 {
                     Assert.That(uid.Valid);
 
                     Assert.Multiple(() =>
                     {
-                        Assert.That(ghostRole.RoleName, Is.Not.EqualTo("Unknown"));
-                        Assert.That(ghostRole.RoleDescription, Is.Not.EqualTo("Unknown"));
+                        Assert.That(string.IsNullOrWhiteSpace(ghostRole.RoleName), Is.False);
+                        Assert.That(string.IsNullOrWhiteSpace(ghostRole.RoleDescription), Is.False);
                     });
                 }
             }

@@ -18,7 +18,7 @@ public sealed class CallResponseForceCommand : IConsoleCommand
 
     public string Command => "callresponseforce";
     public string Description => "Вызов команды спецсил";
-    public string Help => "callresponseforce";
+    public string Help => "Использование: callresponseforce <ResponseForceTeamPrototypeId>";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {

@@ -35,7 +35,7 @@ public static class ResponseForceState
 
 public sealed class ResponseForceHistory
 {
-    public TimeSpan RoundTime {get;set;}
-    public string Event {get;set;} = default!;
-    public string WhoCalled {get;set;} = default!;
+    public TimeSpan RoundTime { get; set; }
+    public string Event { get; set; } = default!;
+    public string WhoCalled { get; set; } = default!;
 }
