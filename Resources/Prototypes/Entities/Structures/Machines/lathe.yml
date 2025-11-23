@@ -592,6 +592,9 @@
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards
+    # Orion-Start
+    - ChemistryBoards
+    # Orion-End
     - ServiceBoards
     #- ScienceBoards - Goobstation - Moved to Scifab
     - CameraBoards
@@ -879,6 +882,7 @@
     - SyringeCase
     dynamicPacks:
     # Orion-Start
+    - ChemistryBoards
     - BodyBagsDynamic
     # Orion-End
     - Chemistry

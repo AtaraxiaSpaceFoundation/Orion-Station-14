@@ -127,6 +127,10 @@
     - MechBoardsSecurity
     - SecurityCybernetics
     # medfab
+    # Orion-Start
+    - ChemistryBoards
+    - BodyBagsDynamic
+    # Orion-End
     - TopicalsStatic
     - ChemistryStatic
     - MedicalStatic

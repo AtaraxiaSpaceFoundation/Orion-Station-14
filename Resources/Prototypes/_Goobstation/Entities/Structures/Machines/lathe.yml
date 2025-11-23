@@ -197,6 +197,7 @@
     - MiscSignallersStatic
     dynamicPacks:
     # Orion-Start
+    - ChemistryBoards
     - BodyBagsDynamic
     # Orion-End
     - AdvancedTools
