@@ -88,7 +88,7 @@
   recipes:
   - ElectrolysisUnitMachineCircuitboard
   - CentrifugeMachineCircuitboard
-  - ChemDispenserMachineCircuitboard
+#  - ChemDispenserMachineCircuitboard # Orion-Remove
   - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
