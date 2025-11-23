@@ -11,3 +11,14 @@
     sprite: _Orion/Clothing/Ears/inteq_headset.rsi
   - type: Clothing
     sprite: _Orion/Clothing/Ears/inteq_headset.rsi
+
+- type: entity # !!!ERT!!!
+  parent: ClothingHeadsetAltInteQ
+  id: ClothingHeadsetAltInteQERT
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyInteQ
+      - EncryptionKeyStationMaster

@@ -129,6 +129,13 @@
       department: Medical
       time: 18000 # five hours
 
+# Base InteQ ERT
+- type: randomHumanoidSettings
+  id: InteQERT
+  components:
+  - type: AutoImplant
+    implants: [ RadioImplantInteQ, NutrimentPumpImplant, DeathRattleImplantInteQ ]
+
 # ERT | CODE ALERTS
 ## ERT GREEN ALERT
 
@@ -728,3 +735,114 @@
     state: logo
   - type: RandomHumanoidSpawner
     settings: DeathSquadLeader
+
+## InteQ
+- type: randomHumanoidSettings
+  parent: [ InteQERT, InteQVanguardLeader, ResponseForce ]
+  id: InteQVanguardLeaderERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-InteQVanguardLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-leader-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ InteQERT, InteQVanguard, ResponseForce ]
+  id: InteQVanguardSoldierERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-InteQVanguardSoldierGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-soldier-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ InteQERT, InteQVanguardMedic, ResponseForce ]
+  id: InteQVanguardMedicERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-InteQVanguardMedicGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-medic-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardLeaderERT
+  suffix: ERT | InteQ Vanguard Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardLeaderERT
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardSoldierERT
+  suffix: ERT | InteQ Vanguard Soldier
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardSoldierERT
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardMedicERT
+  suffix: ERT | InteQ Vanguard Medic
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardMedicERT
+
+## InteQ Strike Team
+- type: randomHumanoidSettings
+  parent: [ InteQERT, InteQVanguardLeader, ResponseForce ]
+  id: InteQVanguardLeaderERT-Strike
+  components:
+  - type: Loadout
+    prototypes: [ ERT-Strike-InteQVanguardLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-leader-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ InteQERT, InteQVanguard, ResponseForce ]
+  id: InteQVanguardOperativeERT-Strike
+  components:
+  - type: Loadout
+    prototypes: [ ERT-Strike-InteQVanguardOperativeGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-operative-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardLeaderERT-Strike
+  suffix: ERT-Strike | InteQ Vanguard Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardLeaderERT-Strike
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
+  suffix: ERT-Strike | InteQ Vanguard Operative
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardOperativeERT-Strike

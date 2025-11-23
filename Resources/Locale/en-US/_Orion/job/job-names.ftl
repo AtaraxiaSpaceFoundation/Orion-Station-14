@@ -5,6 +5,13 @@ job-description-inteq-vanguard = Follow the goal.
 
 job-title-vanguard-leader = Vanguard Leader
 job-title-vanguard = Vanguard
+
+job-name-cburn-leader = CBURN Leader
+job-description-cburn-leader = Take your goal.
+
+job-name-deathsquad-leader = Deathsquad Leader
+job-description-deathsquad-leader = Get them boy.
+
 job-title-private = Private
 job-title-capral = Capral
 job-title-sergeant = Sergeant

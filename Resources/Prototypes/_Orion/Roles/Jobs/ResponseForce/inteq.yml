@@ -1,0 +1,165 @@
+# InteQ ERT
+- type: startingGear
+  id: ERT-InteQVanguardLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitInteQHonorable
+    back: ClothingBackpackInteQ
+    head: ClothingHeadInteQHonorableBeret
+    neck: ClothingNeckCloakInteQ
+    mask: ClothingMaskNeckGaiter
+    eyes: ClothingEyesGogglessInteQ
+    ears: ClothingHeadsetAltInteQERT
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterCoatInteQHonorableBattle
+    shoes: ClothingShoesBootsCombatFilled
+    id: ERTInteQVanguardLeaderIDCard
+    pocket1: WeaponPistolInteQCommissar
+    pocket2: MagazinePistol
+    suitstorage: OxygenTankFilled
+    belt: ClothingBeltInteQShieldBelt
+#  innerclothingskirt: ClothingUniformJumpsuitInteQHonorable
+#  satchel: ClothingBackpackSatchelInteQ
+#  duffelbag: ClothingBackpackDuffelInteQ
+  storage:
+    back:
+    - ExecutiveIDCard # Goobstation - Executive Access!
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - MagazinePistolSubMachineGun
+    - MagazinePistolSubMachineGun
+    - MagazineBoxPistolInteQ
+  inhand:
+  - WeaponSubMachineGunInteQSMG
+
+- type: startingGear
+  id: ERT-InteQVanguardSoldierGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitInteQFormal
+    back: ClothingBackpackInteQ
+    head: ClothingHeadHelmetSwatInteQ
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskNeckGaiter
+    eyes: ClothingEyesGogglessInteQ
+    ears: ClothingHeadsetInteQ
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorBasic
+    shoes: ClothingShoesBootsCombatFilled
+    id: ERTInteQVanguardIDCard
+    pocket1: WeaponPistolInteQCommissar
+    pocket2: MagazinePistol
+    suitstorage: OxygenTankFilled
+    belt: ClothingBeltInteQWebbing
+#  innerclothingskirt: ClothingUniformJumpskirtInteQFormalDress
+#  satchel: ClothingBackpackSatchelInteQ
+#  duffelbag: ClothingBackpackDuffelInteQ
+  storage:
+    back:
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineBoxLightRifleInteQ
+  inhand:
+  - WeaponRifleInteQAKM
+
+- type: startingGear
+  id: ERT-InteQVanguardMedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitInteQMedical
+    back: ClothingBackpackInteQ
+    head: ClothingHeadInteQBeret
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskBreathMedicalSecurity
+    eyes: ClothingEyesHudMedical
+    ears: ClothingHeadsetInteQ
+    gloves: ClothingHandsGlovesNitrile
+    outerClothing: ClothingOuterCoatInteQMedical
+    shoes: ClothingShoesBootsCombatFilled
+    id: ERTInteQVanguardIDCard
+    pocket1: HandheldHealthAnalyzer
+    pocket2: WeaponPistolInteQCommissar
+    suitstorage: OxygenTankFilled
+    belt: ClothingBeltInteQDropPouchMedicFilled
+#  innerclothingskirt: ClothingUniformJumpskirtInteQMedical
+#  satchel: ClothingBackpackSatchelInteQ
+#  duffelbag: ClothingBackpackDuffelInteQMedical
+  storage:
+    back:
+    - CentCommHypo
+    - MedkitAdvancedFilled
+    - CrowbarRed
+    - ChemistryBottleOmnizine
+    - ParamedHypo
+    - CartridgeAtropine
+    - CartridgeAtropine
+    - MedicalBeamGunBattery
+    - MagazinePistol
+    - MagazinePistol
+    - MagazineBoxPistolInteQ
+
+# InteQ ERT Strike Team
+- type: startingGear
+  id: ERT-Strike-InteQVanguardLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitInteQHonorable
+    back: ClothingBackpackInteQ
+    head: ClothingHeadInteQHonorableBeret
+    neck: ClothingNeckCloakInteQ
+    mask: ClothingMaskNeckGaiter
+    eyes: ClothingEyesGogglessInteQ
+    ears: ClothingHeadsetAltInteQERT
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitInteQElite
+    shoes: ClothingShoesBootsCombatFilled
+    id: ERTInteQVanguardLeaderIDCard
+    pocket1: WeaponPistolInteQCommissar
+    pocket2: MagazinePistol
+    suitstorage: OxygenTankFilled
+    belt: ClothingBeltInteQShieldBelt
+#  innerclothingskirt: ClothingUniformJumpsuitInteQHonorable
+#  satchel: ClothingBackpackSatchelInteQ
+#  duffelbag: ClothingBackpackDuffelInteQ
+  storage:
+    back:
+    - ExecutiveIDCard # Goobstation - Executive Access!
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - MagazinePistolSubMachineGun
+    - MagazinePistolSubMachineGun
+    - MagazineBoxPistolInteQ
+  inhand:
+  - WeaponSubMachineGunInteQSMG
+
+- type: startingGear
+  id: ERT-Strike-InteQVanguardOperativeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitInteQOperative
+    back: ClothingBackpackInteQ
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskNeckGaiter
+    eyes: ClothingEyesGogglessInteQ
+    ears: ClothingHeadsetAltInteQERT
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitInteQ
+    shoes: ClothingShoesBootsCombatFilled
+    id: ERTInteQVanguardIDCard
+    pocket1: WeaponPistolInteQCommissar
+    pocket2: MagazinePistol
+    suitstorage: OxygenTankFilled
+    belt: ClothingBeltInteQShieldBelt
+#  innerclothingskirt: ClothingUniformJumpskirtInteQOperative
+#  satchel: ClothingBackpackSatchelInteQ
+#  duffelbag: ClothingBackpackDuffelInteQ
+  storage:
+    back:
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - MagazineLightRifle
+    - MagazineLightRifle
+    - MagazineBoxLightRifleInteQ
+  inhand:
+  - WeaponRifleInteQAKM

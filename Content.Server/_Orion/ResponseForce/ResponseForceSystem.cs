@@ -8,7 +8,6 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.RandomMetadata;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
-using Content.Shared._Orion.Blob.Events;
 using Content.Shared._Orion.ResponseForce;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
@@ -59,7 +58,7 @@ public sealed class ResponseForceSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnCleanup);
         SubscribeLocalEvent<ResponseForceComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<ResponseForceComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<BlobCriticalStageEvent>(OnBlobCritical);
+//        SubscribeLocalEvent<BlobCriticalStageEvent>(OnBlobCritical);
     }
 
     private void SetupShipyard()
@@ -88,11 +87,17 @@ public sealed class ResponseForceSystem : EntitySystem
         ShuttleIndex = 0f;
     }
 
+/* TODO: Do this.
     private void OnBlobCritical(BlobCriticalStageEvent ev)
     {
-        var responseEvent = new BlobCriticalStageEvent(ev.Station);
+        var responseEvent = new BlobCriticalStageEvent
+        {
+            Station = ev.Station,
+        };
+
         RaiseLocalEvent(ev.Station, responseEvent);
     }
+*/
 
     private void OnShutdown(EntityUid uid, ResponseForceComponent component, ComponentShutdown args)
     {

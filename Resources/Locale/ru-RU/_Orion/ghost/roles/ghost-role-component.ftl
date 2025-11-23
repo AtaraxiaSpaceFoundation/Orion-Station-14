@@ -10,6 +10,11 @@ ghost-role-information-hermit-lavaland = Отшельник Лаваленда
 ghost-role-information-hermit-lavaland-description = По известной только вам причине, вы упали на спасательной капсуле, на поверхность Лаваленда. Выберите свою собственную историю и поведайте её другим.
 ghost-role-information-hermit-rules = Вы появляетесь за своего персонажа, но с другим именем, следовательно это другой персонаж, и вы можете играть за него, даже если вашего оригинального вывели из раунда. Вы не помните ничего из прошлой жизни. Вы не можете конфликтовать со станцией и прочими игроками, если на это нет веских причин. ПОСЕЩЕНИЕ СТАНЦИИ РАЗРЕШЕНО.
 
+ghost-role-information-inteq-vanguard-leader-ert = ОБР | Коммандер Авангарда Интек
+ghost-role-information-inteq-vanguard-operative-ert = ОБР | Оперативник Интек
+ghost-role-information-inteq-vanguard-soldier-ert = ОБР | Солдат Авангарда Интек
+ghost-role-information-inteq-vanguard-medic-ert = ОБР | Медик Авангарда Интек
+
 ghost-role-information-morph-name = Морф
 ghost-role-information-morph-description = Размножайтесь и кушайте живых сушеств.
 ghost-role-information-morph-rules =

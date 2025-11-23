@@ -1,3 +1,4 @@
+/* TODO: Do this for ResponseForce
 namespace Content.Shared._Orion.Blob.Events;
 
 /// <summary>
@@ -6,10 +7,6 @@ namespace Content.Shared._Orion.Blob.Events;
 /// </summary>
 public sealed class BlobCriticalStageEvent : EntityEventArgs
 {
-    public EntityUid Station { get; }
-
-    public BlobCriticalStageEvent(EntityUid station)
-    {
-        Station = station;
-    }
+    public EntityUid Station;
 }
+*/

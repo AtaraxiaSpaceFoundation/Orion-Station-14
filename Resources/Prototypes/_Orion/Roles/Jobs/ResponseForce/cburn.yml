@@ -1,7 +1,7 @@
 - type: job
   id: CBURNLeader
   name: job-name-cburn-leader
-  description: job-description-cburn
+  description: job-description-cburn-leader
   playTimeTracker: JobCBURNLeader
   setPreference: false
   startingGear: CBURNLeaderGear
