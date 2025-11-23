@@ -25,3 +25,6 @@ response-force-inteq-call-title = PMC InteQ
 
 response-force-inteq-strike-name = InteQ Strike Team
 response-force-inteq-strike-call-title = PMC InteQ
+
+response-force-honk-squad-name = Honk Squad
+response-force-honk-squad-call-title = Party Maker Department

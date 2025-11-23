@@ -25,3 +25,6 @@ response-force-inteq-call-title = ЧВК Интек
 
 response-force-inteq-strike-name = Ударный Отряд Интек
 response-force-inteq-strike-call-title = ЧВК Интек
+
+response-force-honk-squad-name = Хонк Отряд
+response-force-honk-squad-call-title = Отдел Организации Праздничных Мероприятий

@@ -18,3 +18,8 @@ ghost-role-information-inteq-vanguard-leader-ert = ERT | InteQ Leader
 ghost-role-information-inteq-vanguard-operative-ert = ERT | InteQ Operative
 ghost-role-information-inteq-vanguard-soldier-ert = ERT | InteQ Vanguard
 ghost-role-information-inteq-vanguard-medic-ert = ERT | InteQ Medic
+
+ghost-role-information-clown-leader-ert = ERT Leader Clown
+
+ghost-role-information-clown-ert = ERT Clown
+ghost-role-information-clown-ert-description = Have a party till you drop! Please do not destroy the station in the process.

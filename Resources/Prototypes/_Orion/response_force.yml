@@ -119,8 +119,6 @@
     - id: RandomHumanoidSpawnerCBURNUnit
   responseForceSpawn:
     - id: RandomHumanoidSpawnerCBURNUnit
-    - id: RandomHumanoidSpawnerCBURNUnit
-    - id: RandomHumanoidSpawnerCBURNUnit
 
 # Death Squad
 - type: responseForceTeam
@@ -136,8 +134,6 @@
     - id: RandomHumanoidSpawnerDeathSquadLeader
     - id: RandomHumanoidSpawnerDeathSquad
   responseForceSpawn:
-    - id: RandomHumanoidSpawnerDeathSquad
-    - id: RandomHumanoidSpawnerDeathSquad
     - id: RandomHumanoidSpawnerDeathSquad
 
 # InteQ
@@ -175,3 +171,19 @@
     - id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
     - id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
     - id: RandomHumanoidSpawnerInteQVanguardMedicERT
+
+# Honk!
+- type: responseForceTeam
+  id: HonkSquad
+  responseForceName: response-force-honk-squad-name
+  announcementTitle: response-force-honk-squad-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerClownERTLeader
+    - id: RandomHumanoidSpawnerClownERT
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerClownERT

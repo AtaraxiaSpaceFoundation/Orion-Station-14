@@ -15,6 +15,11 @@ ghost-role-information-inteq-vanguard-operative-ert = ОБР | Оператив�
 ghost-role-information-inteq-vanguard-soldier-ert = ОБР | Солдат Авангарда Интек
 ghost-role-information-inteq-vanguard-medic-ert = ОБР | Медик Авангарда Интек
 
+ghost-role-information-clown-leader-ert = ОБР Лидер Клоун
+
+ghost-role-information-clown-ert = ОБР Клоун
+ghost-role-information-clown-ert-description = Устройте вечеринку до упаду! Пожалуйста, не уничтожьте станцию в процессе.
+
 ghost-role-information-morph-name = Морф
 ghost-role-information-morph-description = Размножайтесь и кушайте живых сушеств.
 ghost-role-information-morph-rules =

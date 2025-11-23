@@ -94,11 +94,11 @@ ent-RandomHumanoidSpawnerERTMedicalEpsilonAlert = { ent-RandomHumanoidSpawnerERT
     .desc = { ent-MarkerBase.desc }
     .suffix = ERT Medic, Epsilon alert
 
-ent-RandomHumanoidSpawnerCBURNLeader = Лидер РХБЗЗ
+ent-RandomHumanoidSpawnerCBURNLeader = CBURN Leader
     .desc = { ent-MarkerBase.desc }
     .suffix = CBURN Leader
 
-ent-RandomHumanoidSpawnerDeathSquadLeader = Лидер Эскадрона смерти
+ent-RandomHumanoidSpawnerDeathSquadLeader = Death Squad Leader
     .desc = { ent-MarkerBase.desc }
     .suffix = Death Squad Leader
 
@@ -118,3 +118,10 @@ ent-RandomHumanoidSpawnerInteQVanguardLeaderERT-Strike = { ent-RandomHumanoidSpa
 ent-RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike = { ent-RandomHumanoidSpawnerInteQVanguardOperative }
     .desc = { ent-MarkerBase.desc }
     .suffix = ERT-Strike | InteQ Vanguard Operative
+
+ent-RandomHumanoidSpawnerClownERTLeader = ERT Clown Leader
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ERT Clown Leader
+ent-RandomHumanoidSpawnerClownERT = ERT Clown
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ERT Clown

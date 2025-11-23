@@ -138,6 +138,13 @@
   - type: AutoImplant
     implants: [ RadioImplantInteQ, NutrimentPumpImplant, DeathRattleImplantInteQ ]
 
+# Base Honk ERT
+- type: randomHumanoidSettings
+  id: HonkERT
+  components:
+  - type: AutoImplant
+    implants: [ BikeHornImplant, SadTromboneImplant, RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
+
 # ERT | CODE ALERTS
 ## ERT GREEN ALERT
 
@@ -848,3 +855,48 @@
     state: logo
   - type: RandomHumanoidSpawner
     settings: InteQVanguardOperativeERT-Strike
+
+## ERT Clown
+- type: randomHumanoidSettings
+  parent: [ HonkERT, ResponseForce ]
+  id: ClownERTLeader
+  components:
+  - type: Loadout
+    prototypes: [ ERT-ClownLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-clown-leader-ert
+    description: ghost-role-information-clown-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ HonkERT, ResponseForce ]
+  id: ClownERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-ClownGear ]
+  - type: GhostRole
+    name: ghost-role-information-clown-ert
+    description: ghost-role-information-clown-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerClownERTLeader
+  suffix: ERT Clown Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ClownERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerClownERT
+  suffix: ERT Clown
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ClownERT

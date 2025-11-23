@@ -118,3 +118,10 @@ ent-RandomHumanoidSpawnerInteQVanguardLeaderERT-Strike = { ent-RandomHumanoidSpa
 ent-RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike = { ent-RandomHumanoidSpawnerInteQVanguardOperative }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР-Ударный | Оперативник Авангарда Интек
+
+ent-RandomHumanoidSpawnerClownERTLeader = Лидер Клоун ОБР
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ОБР Лидер Клоун
+ent-RandomHumanoidSpawnerClownERT = Клоун ОБР 
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ОБР Клоун
