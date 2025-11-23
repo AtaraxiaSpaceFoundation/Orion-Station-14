@@ -32,8 +32,11 @@ public sealed partial class ResearchSystem
         component.Id = unusedId;
 
         // Orion-Start
-        var formattedId = component.Id.ToString("D4");
-        component.ServerName = Loc.GetString("research-server-name", ("id", formattedId));
+        if (string.IsNullOrEmpty(component.ServerName))
+        {
+            var formattedId = component.Id.ToString("D4");
+            component.ServerName = Loc.GetString("research-server-name", ("id", formattedId));
+        }
         // Orion-End
 
         Dirty(uid, component);
@@ -197,8 +200,9 @@ public sealed partial class ResearchSystem
 
         var points = GetPointsPerSecond(uid, component);
 
+        var serverName = component.ServerName ?? Loc.GetString("research-server-name-fallback");
         var msg = Loc.GetString("research-server-examine",
-            ("name", component.ServerName),
+            ("name", serverName),
             ("points", points));
 
         args.PushMarkup(msg);
