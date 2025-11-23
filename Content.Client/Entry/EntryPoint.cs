@@ -248,7 +248,6 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("nukeopsRole");
             // Orion-Start
             _prototypeManager.RegisterIgnore("stationGoal");
-            _prototypeManager.RegisterIgnore("responseForceTeam");
             // Orion-End
             _prototypeManager.RegisterIgnore("ghostRoleRaffleDecider");
             _prototypeManager.RegisterIgnore("codewordGenerator");
