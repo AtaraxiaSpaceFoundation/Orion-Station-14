@@ -122,6 +122,13 @@ ent-RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike = { ent-RandomHumanoid
 ent-RandomHumanoidSpawnerClownERTLeader = Лидер Клоун ОБР
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер Клоун
-ent-RandomHumanoidSpawnerClownERT = Клоун ОБР 
+ent-RandomHumanoidSpawnerClownERT = Клоун ОБР
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Клоун
+
+ent-RandomHumanoidSpawnerAssistantERTLeader = Лидер Ассистент ОБР
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ОБР Лидер Ассистент
+ent-RandomHumanoidSpawnerAssistantERT = Ассистент ОБР
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ОБР Ассистент

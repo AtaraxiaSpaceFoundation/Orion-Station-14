@@ -1,6 +1,6 @@
 # Base Settings
 - type: randomHumanoidSettings
-  id: ResponseForce
+  id: BaseResponseForce
   randomizeName: false
   speciesBlacklist:
   - Monkey
@@ -36,13 +36,13 @@
 
 # Base NanoTrasen ERT
 - type: randomHumanoidSettings
-  id: NanoTrasenERT
+  id: BaseNanoTrasenERT
   components:
   - type: AutoImplant
     implants: [ RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
 
 - type: randomHumanoidSettings
-  parent: [ NanoTrasenERT, ResponseForce ]
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
   id: NanoTrasenERTLeader
   components:
   - type: GhostRole
@@ -65,7 +65,7 @@
     - NamesMilitaryLast
 
 - type: randomHumanoidSettings
-  parent: [ NanoTrasenERT, ResponseForce ]
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
   id: NanoTrasenERTJanitor
   components:
   - type: GhostRole
@@ -81,7 +81,7 @@
       time: 5000
 
 - type: randomHumanoidSettings
-  parent: [ NanoTrasenERT, ResponseForce ]
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
   id: NanoTrasenERTEngineer
   components:
   - type: GhostRole
@@ -100,7 +100,7 @@
       time: 18000 # five hours
 
 - type: randomHumanoidSettings
-  parent: [ NanoTrasenERT, ResponseForce ]
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
   id: NanoTrasenERTSecurity
   components:
   - type: GhostRole
@@ -116,7 +116,7 @@
       time: 18000 # five hours
 
 - type: randomHumanoidSettings
-  parent: [ NanoTrasenERT, ResponseForce ]
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
   id: NanoTrasenERTMedical
   components:
   - type: GhostRole
@@ -133,14 +133,14 @@
 
 # Base InteQ ERT
 - type: randomHumanoidSettings
-  id: InteQERT
+  id: BaseInteQERT
   components:
   - type: AutoImplant
     implants: [ RadioImplantInteQ, NutrimentPumpImplant, DeathRattleImplantInteQ ]
 
 # Base Honk ERT
 - type: randomHumanoidSettings
-  id: HonkERT
+  id: BaseHonkERT
   components:
   - type: AutoImplant
     implants: [ BikeHornImplant, SadTromboneImplant, RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
@@ -707,11 +707,11 @@
 
 ## CBURN
 - type: randomHumanoidSettings
-  parent: CBURNAgent
+  parent: [ CBURNAgent, BaseResponseForce ]
   id: CBURNLeader
   components:
     - type: Loadout
-      prototypes: [CBURNLeaderGear]
+      prototypes: [ CBURNLeaderGear ]
 
 
 
@@ -727,7 +727,7 @@
 
 ## DEATH SQUAD
 - type: randomHumanoidSettings
-  parent: DeathSquad
+  parent: [ DeathSquad, BaseResponseForce ]
   id: DeathSquadLeader
   components:
     - type: Loadout
@@ -747,7 +747,7 @@
 
 ## InteQ
 - type: randomHumanoidSettings
-  parent: [ InteQERT, InteQVanguardLeader, ResponseForce ]
+  parent: [ BaseInteQERT, InteQVanguardLeader, BaseResponseForce ]
   id: InteQVanguardLeaderERT
   components:
   - type: Loadout
@@ -758,7 +758,7 @@
     rules: ghost-role-information-nonantagonist-rules
 
 - type: randomHumanoidSettings
-  parent: [ InteQERT, InteQVanguard, ResponseForce ]
+  parent: [ BaseInteQERT, InteQVanguard, BaseResponseForce ]
   id: InteQVanguardSoldierERT
   components:
   - type: Loadout
@@ -769,7 +769,7 @@
     rules: ghost-role-information-nonantagonist-rules
 
 - type: randomHumanoidSettings
-  parent: [ InteQERT, InteQVanguardMedic, ResponseForce ]
+  parent: [ BaseInteQERT, InteQVanguardMedic, BaseResponseForce ]
   id: InteQVanguardMedicERT
   components:
   - type: Loadout
@@ -813,7 +813,7 @@
 
 ## InteQ Strike Team
 - type: randomHumanoidSettings
-  parent: [ InteQERT, InteQVanguardLeader, ResponseForce ]
+  parent: [ BaseInteQERT, InteQVanguardLeader, BaseResponseForce ]
   id: InteQVanguardLeaderERT-Strike
   components:
   - type: Loadout
@@ -824,7 +824,7 @@
     rules: ghost-role-information-nonantagonist-rules
 
 - type: randomHumanoidSettings
-  parent: [ InteQERT, InteQVanguard, ResponseForce ]
+  parent: [ BaseInteQERT, InteQVanguard, BaseResponseForce ]
   id: InteQVanguardOperativeERT-Strike
   components:
   - type: Loadout
@@ -858,7 +858,7 @@
 
 ## ERT Clown
 - type: randomHumanoidSettings
-  parent: [ HonkERT, ResponseForce ]
+  parent: [ BaseHonkERT, BaseResponseForce ]
   id: ClownERTLeader
   components:
   - type: Loadout
@@ -869,7 +869,7 @@
     rules: ghost-role-information-nonantagonist-rules
 
 - type: randomHumanoidSettings
-  parent: [ HonkERT, ResponseForce ]
+  parent: [ BaseHonkERT, BaseResponseForce ]
   id: ClownERT
   components:
   - type: Loadout
@@ -900,3 +900,48 @@
     state: logo
   - type: RandomHumanoidSpawner
     settings: ClownERT
+
+## ERT Assistant
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: AssistantERTLeader
+  components:
+  - type: Loadout
+    prototypes: [ ERT-AssistantLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-assistant-leader-ert
+    description: ghost-role-information-assistant-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: AssistantERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-AssistantGear ]
+  - type: GhostRole
+    name: ghost-role-information-assistant-ert
+    description: ghost-role-information-assistant-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerAssistantERTLeader
+  suffix: ERT Assistant Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: AssistantERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerAssistantERT
+  suffix: ERT Assistant
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: AssistantERT

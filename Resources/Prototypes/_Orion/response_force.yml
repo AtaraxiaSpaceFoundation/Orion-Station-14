@@ -187,3 +187,19 @@
     - id: RandomHumanoidSpawnerClownERT
   responseForceSpawn:
     - id: RandomHumanoidSpawnerClownERT
+
+# Graytide
+- type: responseForceTeam
+  id: Assistant
+  responseForceName: response-force-assistant-name
+  announcementTitle: response-force-assistant-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerAssistantERTLeader
+    - id: RandomHumanoidSpawnerAssistantERT
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerAssistantERT

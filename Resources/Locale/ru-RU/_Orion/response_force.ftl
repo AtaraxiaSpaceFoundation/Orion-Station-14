@@ -28,3 +28,6 @@ response-force-inteq-strike-call-title = ЧВК Интек
 
 response-force-honk-squad-name = Хонк Отряд
 response-force-honk-squad-call-title = Отдел Организации Праздничных Мероприятий
+
+response-force-assistant-name = Ассистенты
+response-force-assistant-call-title = Отдел Менеджмента Состояния Технических Туннелей

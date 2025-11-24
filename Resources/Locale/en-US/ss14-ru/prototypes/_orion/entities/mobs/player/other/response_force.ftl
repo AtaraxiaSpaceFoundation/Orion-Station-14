@@ -125,3 +125,10 @@ ent-RandomHumanoidSpawnerClownERTLeader = ERT Clown Leader
 ent-RandomHumanoidSpawnerClownERT = ERT Clown
     .desc = { ent-MarkerBase.desc }
     .suffix = ERT Clown
+
+ent-RandomHumanoidSpawnerAssistantERTLeader = ERT Assistant Leader
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ERT Leader Assistant
+ent-RandomHumanoidSpawnerAssistantERT = Assistant ERT
+    .desc = { ent-MarkerBase.desc }
+    .suffix = ERT Assistant
