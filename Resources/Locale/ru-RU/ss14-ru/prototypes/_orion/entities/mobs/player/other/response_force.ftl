@@ -100,7 +100,7 @@ ent-RandomHumanoidSpawnerCBURNLeader = Лидер РХБЗЗ
 
 ent-RandomHumanoidSpawnerDeathSquadLeader = Лидер Эскадрона смерти
     .desc = { ent-MarkerBase.desc }
-    .suffix = Death Squad Leader
+    .suffix = Лидер Эскадрона Смерти
 
 ent-RandomHumanoidSpawnerInteQVanguardLeaderERT = { ent-RandomHumanoidSpawnerInteQVanguardLeader }
     .desc = { ent-MarkerBase.desc }
