@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Content.Server.Database.Migrations.Sqlite
+namespace Content.Server.Database.Migrations.Postgres
 {
     /// <inheritdoc />
     public partial class FlavorExtended : Migration
@@ -10,13 +10,6 @@ namespace Content.Server.Database.Migrations.Sqlite
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "oocflavor_text",
-                table: "profile",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "");
-
             migrationBuilder.AddColumn<string>(
                 name: "character_flavor_text",
                 table: "profile",
@@ -26,27 +19,6 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             migrationBuilder.AddColumn<string>(
                 name: "green_flavor_text",
-                table: "profile",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "yellow_flavor_text",
-                table: "profile",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "red_flavor_text",
-                table: "profile",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "tags_flavor_text",
                 table: "profile",
                 type: "TEXT",
                 nullable: false,
@@ -82,6 +54,34 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             migrationBuilder.AddColumn<string>(
                 name: "nsfwtags_flavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "oocflavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "red_flavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "tags_flavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "yellow_flavor_text",
                 table: "profile",
                 type: "TEXT",
                 nullable: false,
@@ -92,27 +92,11 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "oocflavor_text",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
                 name: "character_flavor_text",
                 table: "profile");
 
             migrationBuilder.DropColumn(
                 name: "green_flavor_text",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
-                name: "yellow_flavor_text",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
-                name: "red_flavor_text",
-                table: "profile");
-
-            migrationBuilder.DropColumn(
-                name: "tags_flavor_text",
                 table: "profile");
 
             migrationBuilder.DropColumn(
@@ -133,6 +117,22 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             migrationBuilder.DropColumn(
                 name: "nsfwtags_flavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "oocflavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "red_flavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "tags_flavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "yellow_flavor_text",
                 table: "profile");
         }
     }

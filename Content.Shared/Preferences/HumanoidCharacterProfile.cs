@@ -145,16 +145,16 @@ namespace Content.Shared.Preferences
         public string LinksFlavorText { get; set; } = string.Empty;
 
         [DataField]
-        public string NSFWFlavorText { get; set; } = string.Empty;
+        public string NsfwFlavorText { get; set; } = string.Empty;
 
         [DataField]
-        public string NSFWOOCFlavorText { get; set; } = string.Empty;
+        public string NsfwOOCFlavorText { get; set; } = string.Empty;
 
         [DataField]
-        public string NSFWLinksFlavorText { get; set; } = string.Empty;
+        public string NsfwLinksFlavorText { get; set; } = string.Empty;
 
         [DataField]
-        public string NSFWTagsFlavorText { get; set; } = string.Empty;
+        public string NsfwTagsFlavorText { get; set; } = string.Empty;
         // Orion-End
 
         /// <summary>
@@ -262,10 +262,10 @@ namespace Content.Shared.Preferences
             RedFlavorText = redflavortext;
             TagsFlavorText = tagsflavortext;
             LinksFlavorText = linksflavortext;
-            NSFWFlavorText = nsfwflavortext;
-            NSFWOOCFlavorText = nsfwoocflavortext;
-            NSFWLinksFlavorText = nsfwlinksflavortext;
-            NSFWTagsFlavorText = nsfwtagsflavortext;
+            NsfwFlavorText = nsfwflavortext;
+            NsfwOOCFlavorText = nsfwoocflavortext;
+            NsfwLinksFlavorText = nsfwlinksflavortext;
+            NsfwTagsFlavorText = nsfwtagsflavortext;
             // Orion-End
             Species = species;
             Height = height; // Goobstation: port EE height/width sliders
@@ -309,10 +309,10 @@ namespace Content.Shared.Preferences
                 other.RedFlavorText,
                 other.TagsFlavorText,
                 other.LinksFlavorText,
-                other.NSFWFlavorText,
-                other.NSFWOOCFlavorText,
-                other.NSFWLinksFlavorText,
-                other.NSFWTagsFlavorText,
+                other.NsfwFlavorText,
+                other.NsfwOOCFlavorText,
+                other.NsfwLinksFlavorText,
+                other.NsfwTagsFlavorText,
                 // Orion-End
                 other.Species,
                 other.Height, // Goobstation: port EE height/width sliders
@@ -472,24 +472,24 @@ namespace Content.Shared.Preferences
             return new(this) { LinksFlavorText = linksFlavorText };
         }
 
-        public HumanoidCharacterProfile WithNSFWPreferencesText(string nsfwFlavorText)
+        public HumanoidCharacterProfile WithNsfwPreferencesText(string nsfwFlavorText)
         {
-            return new(this) { NSFWFlavorText = nsfwFlavorText };
+            return new(this) { NsfwFlavorText = nsfwFlavorText };
         }
 
-        public HumanoidCharacterProfile WithNSFWOOCFlavorText(string nsfwOOCFlavorText)
+        public HumanoidCharacterProfile WithNsfwOOCFlavorText(string nsfwOOCFlavorText)
         {
-            return new(this) { NSFWOOCFlavorText = nsfwOOCFlavorText };
+            return new(this) { NsfwOOCFlavorText = nsfwOOCFlavorText };
         }
 
-        public HumanoidCharacterProfile WithNSFWLinksText(string nsfwLinksFlavorText)
+        public HumanoidCharacterProfile WithNsfwLinksText(string nsfwLinksFlavorText)
         {
-            return new(this) { NSFWLinksFlavorText = nsfwLinksFlavorText };
+            return new(this) { NsfwLinksFlavorText = nsfwLinksFlavorText };
         }
 
-        public HumanoidCharacterProfile WithNSFWTagsText(string nsfwTagsFlavorText)
+        public HumanoidCharacterProfile WithNsfwTagsText(string nsfwTagsFlavorText)
         {
-            return new(this) { NSFWTagsFlavorText = nsfwTagsFlavorText };
+            return new(this) { NsfwTagsFlavorText = nsfwTagsFlavorText };
         }
         // Orion-End
 
@@ -718,10 +718,10 @@ namespace Content.Shared.Preferences
             if (RedFlavorText != other.RedFlavorText) return false;
             if (TagsFlavorText != other.TagsFlavorText) return false;
             if (LinksFlavorText != other.LinksFlavorText) return false;
-            if (NSFWFlavorText != other.NSFWFlavorText) return false;
-            if (NSFWOOCFlavorText != other.NSFWOOCFlavorText) return false;
-            if (NSFWLinksFlavorText != other.NSFWLinksFlavorText) return false;
-            if (NSFWTagsFlavorText != other.NSFWTagsFlavorText) return false;
+            if (NsfwFlavorText != other.NsfwFlavorText) return false;
+            if (NsfwOOCFlavorText != other.NsfwOOCFlavorText) return false;
+            if (NsfwLinksFlavorText != other.NsfwLinksFlavorText) return false;
+            if (NsfwTagsFlavorText != other.NsfwTagsFlavorText) return false;
             // Orion-End
             return Appearance.MemberwiseEquals(other.Appearance);
         }
@@ -887,44 +887,44 @@ namespace Content.Shared.Preferences
             }
 
             string nsfwPreferences;
-            var maxNSFWPreferencesLength = configManager.GetCVar(CCVars.NSFWPreferencesLength);
-            if (NSFWFlavorText.Length > maxNSFWPreferencesLength)
+            var maxNsfwPreferencesLength = configManager.GetCVar(CCVars.NSFWPreferencesLength);
+            if (NsfwFlavorText.Length > maxNsfwPreferencesLength)
             {
-                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NSFWFlavorText)[..maxNSFWPreferencesLength];
+                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NsfwFlavorText)[..maxNsfwPreferencesLength];
             }
             else
             {
-                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NSFWFlavorText);
+                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NsfwFlavorText);
             }
 
             string nsfwoocflavortext;
-            if (NSFWOOCFlavorText.Length > oocMaxFlavorTextLength)
+            if (NsfwOOCFlavorText.Length > oocMaxFlavorTextLength)
             {
-                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NSFWOOCFlavorText)[..oocMaxFlavorTextLength];
+                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NsfwOOCFlavorText)[..oocMaxFlavorTextLength];
             }
             else
             {
-                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NSFWOOCFlavorText);
+                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NsfwOOCFlavorText);
             }
 
             string nsfwlinks;
-            if (NSFWLinksFlavorText.Length > maxLinksLength)
+            if (NsfwLinksFlavorText.Length > maxLinksLength)
             {
-                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NSFWLinksFlavorText)[..maxLinksLength];
+                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NsfwLinksFlavorText)[..maxLinksLength];
             }
             else
             {
-                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NSFWLinksFlavorText);
+                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NsfwLinksFlavorText);
             }
 
             string nsfwtags;
-            if (NSFWTagsFlavorText.Length > maxTagsLength)
+            if (NsfwTagsFlavorText.Length > maxTagsLength)
             {
-                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NSFWTagsFlavorText)[..maxTagsLength];
+                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NsfwTagsFlavorText)[..maxTagsLength];
             }
             else
             {
-                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NSFWTagsFlavorText);
+                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NsfwTagsFlavorText);
             }
 
             nsfwtags = FormatTags(nsfwtags);
@@ -996,10 +996,10 @@ namespace Content.Shared.Preferences
             RedFlavorText = redPreferences;
             TagsFlavorText = tags;
             LinksFlavorText = links;
-            NSFWFlavorText = nsfwPreferences;
-            NSFWOOCFlavorText = nsfwoocflavortext;
-            NSFWLinksFlavorText = nsfwlinks;
-            NSFWTagsFlavorText = nsfwtags;
+            NsfwFlavorText = nsfwPreferences;
+            NsfwOOCFlavorText = nsfwoocflavortext;
+            NsfwLinksFlavorText = nsfwlinks;
+            NsfwTagsFlavorText = nsfwtags;
             // Orion-End
             Age = age;
             Height = height; // Goobstation: port EE height/width sliders
@@ -1120,10 +1120,10 @@ namespace Content.Shared.Preferences
             hashCode.Add(RedFlavorText);
             hashCode.Add(TagsFlavorText);
             hashCode.Add(LinksFlavorText);
-            hashCode.Add(NSFWFlavorText);
-            hashCode.Add(NSFWOOCFlavorText);
-            hashCode.Add(NSFWLinksFlavorText);
-            hashCode.Add(NSFWTagsFlavorText);
+            hashCode.Add(NsfwFlavorText);
+            hashCode.Add(NsfwOOCFlavorText);
+            hashCode.Add(NsfwLinksFlavorText);
+            hashCode.Add(NsfwTagsFlavorText);
             // Orion-End
             hashCode.Add(Species);
             hashCode.Add(Height); // Goobstation: port EE height/width sliders

@@ -150,14 +150,14 @@ public sealed partial class DetailExaminableWindow : FancyWindow
             PreviewOOCText.SetMessage(GetContentWithEmptyMessage(state.OOCFlavorText, "detail-examinable-empty-ooc"));
 
             if (showNsfw)
-                PreviewNSFWOOCText.SetMessage(GetContentWithEmptyMessage(state.NSFWOOCFlavorText, "detail-examinable-empty-ooc"));
+                PreviewNSFWOOCText.SetMessage(GetContentWithEmptyMessage(state.NsfwOOCFlavorText, "detail-examinable-empty-ooc"));
         }
 
         if (showTraits)
             PreviewTraitsText.SetMessage(GetContentWithEmptyMessage(state.CharacterFlavorText, "detail-examinable-empty-character"));
 
         if (showNsfw)
-            PreviewNSFWText.SetMessage(GetContentWithEmptyMessage(state.NSFWFlavorText, "detail-examinable-empty-nsfw"));
+            PreviewNSFWText.SetMessage(GetContentWithEmptyMessage(state.NsfwFlavorText, "detail-examinable-empty-nsfw"));
 
         if (showGyr)
         {
@@ -174,14 +174,14 @@ public sealed partial class DetailExaminableWindow : FancyWindow
         }
 
         PreviewTagsText.Text = state.TagsFlavorText;
-        PreviewNSFWTagsText.Text = state.NSFWTagsFlavorText;
+        PreviewNSFWTagsText.Text = state.NsfwTagsFlavorText;
 
         if (showLinks)
         {
             ProcessLinks(state.LinksFlavorText, PreviewLinksContainer);
 
             if (showNsfw)
-                ProcessLinks(state.NSFWLinksFlavorText, PreviewNSFWLinksContainer);
+                ProcessLinks(state.NsfwLinksFlavorText, PreviewNSFWLinksContainer);
         }
         else // TODO: Remove all container, now its just remove links
         {

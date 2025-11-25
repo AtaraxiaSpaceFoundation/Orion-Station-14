@@ -815,11 +815,11 @@ namespace Content.Client.Lobby.UI
             _flavorText.PreviewTraitsText.SetMessage(Profile.CharacterFlavorText);
             _flavorText.PreviewOOCText.SetMessage(Profile.OOCFlavorText);
             _flavorText.PreviewTagsText.Text = Profile.TagsFlavorText;
-            _flavorText.PreviewNSFWOOCText.SetMessage(Profile.NSFWOOCFlavorText);
-            _flavorText.PreviewNSFWTagsText.Text = Profile.NSFWTagsFlavorText;
+            _flavorText.PreviewNSFWOOCText.SetMessage(Profile.NsfwOOCFlavorText);
+            _flavorText.PreviewNSFWTagsText.Text = Profile.NsfwTagsFlavorText;
 
             ProcessLinks(Profile.LinksFlavorText, _flavorText.PreviewLinksContainer);
-            ProcessLinks(Profile.NSFWLinksFlavorText, _flavorText.PreviewNSFWLinksContainer);
+            ProcessLinks(Profile.NsfwLinksFlavorText, _flavorText.PreviewNSFWLinksContainer);
 
             _flavorText.PreviewGYRContainer.RemoveAllChildren();
             CreateGyrBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-green"), Color.Green);
@@ -829,7 +829,7 @@ namespace Content.Client.Lobby.UI
             CreateGyrBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-red"), Color.Red);
             CreateGyrTextLabel(Profile.RedFlavorText);
 
-            _flavorText.PreviewNSFWText.SetMessage(Profile.NSFWFlavorText);
+            _flavorText.PreviewNSFWText.SetMessage(Profile.NsfwFlavorText);
 
             var species = Loc.GetString($"species-name-{Profile.Species.ToString().ToLower()}");
             var sex = Loc.GetString($"humanoid-profile-editor-sex-{Profile.Sex.ToString().ToLower()}-text");
@@ -977,7 +977,7 @@ namespace Content.Client.Lobby.UI
             if (Profile is null)
                 return;
 
-            Profile = Profile.WithNSFWOOCFlavorText(content);
+            Profile = Profile.WithNsfwOOCFlavorText(content);
             SetDirty();
 
             UpdateFlavorPreview();
@@ -988,7 +988,7 @@ namespace Content.Client.Lobby.UI
             if (Profile is null)
                 return;
 
-            Profile = Profile.WithNSFWLinksText(content);
+            Profile = Profile.WithNsfwLinksText(content);
             SetDirty();
 
             UpdateFlavorPreview();
@@ -999,7 +999,7 @@ namespace Content.Client.Lobby.UI
             if (Profile is null)
                 return;
 
-            Profile = Profile.WithNSFWTagsText(content);
+            Profile = Profile.WithNsfwTagsText(content);
             SetDirty();
 
             UpdateFlavorPreview();
@@ -1704,7 +1704,7 @@ namespace Content.Client.Lobby.UI
             if (Profile is null)
                 return;
 
-            Profile = Profile.WithNSFWPreferencesText(content);
+            Profile = Profile.WithNsfwPreferencesText(content);
             SetDirty();
 
             UpdateFlavorPreview();
@@ -1979,16 +1979,16 @@ namespace Content.Client.Lobby.UI
                 _linksTextEdit.TextRope = new Rope.Leaf(Profile?.LinksFlavorText ?? "");
 
             if (_nsfwTextEdit != null)
-                _nsfwTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWFlavorText ?? "");
+                _nsfwTextEdit.TextRope = new Rope.Leaf(Profile?.NsfwFlavorText ?? "");
 
             if (_flavorTextNsfwOOCEdit != null)
-                _flavorTextNsfwOOCEdit.TextRope = new Rope.Leaf(Profile?.NSFWOOCFlavorText ?? "");
+                _flavorTextNsfwOOCEdit.TextRope = new Rope.Leaf(Profile?.NsfwOOCFlavorText ?? "");
 
             if (_nsfwLinksTextEdit != null)
-                _nsfwLinksTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWLinksFlavorText ?? "");
+                _nsfwLinksTextEdit.TextRope = new Rope.Leaf(Profile?.NsfwLinksFlavorText ?? "");
 
             if (_nsfwTagsTextEdit != null)
-                _nsfwTagsTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWTagsFlavorText ?? "");
+                _nsfwTagsTextEdit.TextRope = new Rope.Leaf(Profile?.NsfwTagsFlavorText ?? "");
         }
         // Orion-Edit-End
 
