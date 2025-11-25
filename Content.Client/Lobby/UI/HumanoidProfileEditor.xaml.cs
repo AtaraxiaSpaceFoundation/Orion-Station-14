@@ -755,9 +755,9 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnTagsTextChanged += OnTagsFlavorTextChange;
                 _flavorText.OnLinksTextChanged += OnLinksFlavorTextChange;
                 _flavorText.OnNsfwTextChanged += OnNSFWFlavorTextChange;
-                _flavorText.OnNSFWLinksTextChanged += OnNsfwLinksFlavorTextChange;
-                _flavorText.OnNSFWFlavorOOCTextChanged += OnFlavorNsfwOOCTextChange;
-                _flavorText.OnNSFWTagsTextChanged += OnNsfwTagsFlavorTextChange;
+                _flavorText.OnNsfwLinksTextChanged += OnNsfwLinksFlavorTextChange;
+                _flavorText.OnNsfwFlavorOOCTextChanged += OnFlavorNsfwOOCTextChange;
+                _flavorText.OnNsfwTagsTextChanged += OnNsfwTagsFlavorTextChange;
                 _flavorText.OnFlavorTabChanged += OnTabChanged;
                 // Orion-End
             }
@@ -776,9 +776,9 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnTagsTextChanged -= OnTagsFlavorTextChange;
                 _flavorText.OnLinksTextChanged -= OnLinksFlavorTextChange;
                 _flavorText.OnNsfwTextChanged -= OnNSFWFlavorTextChange;
-                _flavorText.OnNSFWLinksTextChanged -= OnNsfwLinksFlavorTextChange;
-                _flavorText.OnNSFWFlavorOOCTextChanged -= OnFlavorNsfwOOCTextChange;
-                _flavorText.OnNSFWTagsTextChanged -= OnNsfwTagsFlavorTextChange;
+                _flavorText.OnNsfwLinksTextChanged -= OnNsfwLinksFlavorTextChange;
+                _flavorText.OnNsfwFlavorOOCTextChanged -= OnFlavorNsfwOOCTextChange;
+                _flavorText.OnNsfwTagsTextChanged -= OnNsfwTagsFlavorTextChange;
                 _flavorText.OnFlavorTabChanged -= OnTabChanged;
                 // Orion-End
 
