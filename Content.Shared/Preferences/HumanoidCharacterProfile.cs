@@ -887,7 +887,7 @@ namespace Content.Shared.Preferences
             }
 
             string nsfwPreferences;
-            var maxNsfwPreferencesLength = configManager.GetCVar(CCVars.NSFWPreferencesLength);
+            var maxNsfwPreferencesLength = configManager.GetCVar(CCVars.NsfwPreferencesLength);
             if (NsfwFlavorText.Length > maxNsfwPreferencesLength)
             {
                 nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NsfwFlavorText)[..maxNsfwPreferencesLength];

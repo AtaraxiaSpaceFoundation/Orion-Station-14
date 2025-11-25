@@ -76,6 +76,6 @@ public sealed partial class CCVars
     /// <summary>
     ///     Sets the maximum length for NSFW preferences text.
     /// </summary>
-    public static readonly CVarDef<int> NSFWPreferencesLength =
+    public static readonly CVarDef<int> NsfwPreferencesLength =
         CVarDef.Create("ic.nsfw_preferences_length", 2500, CVar.SERVER | CVar.REPLICATED);
 }

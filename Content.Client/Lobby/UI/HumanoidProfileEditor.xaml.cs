@@ -231,7 +231,7 @@ namespace Content.Client.Lobby.UI
         private TextEdit? _linksTextEdit;
         private TextEdit? _nsfwTextEdit;
         private TextEdit? _nsfwLinksTextEdit;
-        private TextEdit? _flavorTextNsfwOOCEdit;
+        private TextEdit? _nsfwOOCTextEdit;
         private TextEdit? _nsfwTagsTextEdit;
         // Orion-End
 
@@ -738,7 +738,7 @@ namespace Content.Client.Lobby.UI
                 _tagsTextEdit = _flavorText.CTagsTextInput;
                 _linksTextEdit = _flavorText.CLinksTextInput;
                 _nsfwTextEdit = _flavorText.CNSFWTextInput;
-                _flavorTextNsfwOOCEdit = _flavorText.CFlavorNSFWOOCTextInput;
+                _nsfwOOCTextEdit = _flavorText.CFlavorNSFWOOCTextInput;
                 _nsfwLinksTextEdit = _flavorText.CNSFWLinksTextInput;
                 _nsfwTagsTextEdit = _flavorText.CNSFWTagsTextInput;
 
@@ -797,7 +797,7 @@ namespace Content.Client.Lobby.UI
                 _linksTextEdit = null;
                 _nsfwTextEdit = null;
                 _nsfwLinksTextEdit = null;
-                _flavorTextNsfwOOCEdit = null;
+                _nsfwOOCTextEdit = null;
                 _nsfwTagsTextEdit = null;
                 // Orion-End
 
@@ -1981,8 +1981,8 @@ namespace Content.Client.Lobby.UI
             if (_nsfwTextEdit != null)
                 _nsfwTextEdit.TextRope = new Rope.Leaf(Profile?.NsfwFlavorText ?? "");
 
-            if (_flavorTextNsfwOOCEdit != null)
-                _flavorTextNsfwOOCEdit.TextRope = new Rope.Leaf(Profile?.NsfwOOCFlavorText ?? "");
+            if (_nsfwOOCTextEdit != null)
+                _nsfwOOCTextEdit.TextRope = new Rope.Leaf(Profile?.NsfwOOCFlavorText ?? "");
 
             if (_nsfwLinksTextEdit != null)
                 _nsfwLinksTextEdit.TextRope = new Rope.Leaf(Profile?.NsfwLinksFlavorText ?? "");
