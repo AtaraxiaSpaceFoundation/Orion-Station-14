@@ -93,6 +93,7 @@
                         </PanelContainer.PanelOverride>
                         <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
                             <RichTextLabel Name="PreviewOOCText" Access="Public" VerticalExpand="True" Margin="5" />
+                            <RichTextLabel Name="PreviewNSFWOOCText" Access="Public" VerticalExpand="True" Margin="5" Visible="False" />
                         </ScrollContainer>
                     </PanelContainer>
                 </BoxContainer>
@@ -107,6 +108,7 @@
                         </PanelContainer.PanelOverride>
                         <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
                             <BoxContainer Name="PreviewLinksContainer" Access="Public" Orientation="Vertical" />
+                            <BoxContainer Name="PreviewNSFWLinksContainer" Access="Public" Orientation="Vertical" Visible="False" />
                         </ScrollContainer>
                     </PanelContainer>
                 </BoxContainer>
@@ -118,6 +120,7 @@
                 <controls:StripeBack>
                     <PanelContainer HorizontalExpand="True" VerticalExpand="False" Margin="0,5,0,0">
                         <Label Name="PreviewTagsText" Access="Public" StyleClasses="WindowFooterText" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Label Name="PreviewNSFWTagsText" Access="Public" StyleClasses="WindowFooterText" HorizontalAlignment="Center" VerticalAlignment="Center" Visible="False" />
                     </PanelContainer>
                 </controls:StripeBack>
             </BoxContainer>

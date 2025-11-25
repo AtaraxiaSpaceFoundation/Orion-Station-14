@@ -146,6 +146,15 @@ namespace Content.Shared.Preferences
 
         [DataField]
         public string NSFWFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string NSFWOOCFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string NSFWLinksFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string NSFWTagsFlavorText { get; set; } = string.Empty;
         // Orion-End
 
         /// <summary>
@@ -224,6 +233,9 @@ namespace Content.Shared.Preferences
             string tagsflavortext,
             string linksflavortext,
             string nsfwflavortext,
+            string nsfwoocflavortext,
+            string nsfwlinksflavortext,
+            string nsfwtagsflavortext,
             // Orion-End
             string species,
             float height, // Goobstation: port EE height/width sliders
@@ -251,6 +263,9 @@ namespace Content.Shared.Preferences
             TagsFlavorText = tagsflavortext;
             LinksFlavorText = linksflavortext;
             NSFWFlavorText = nsfwflavortext;
+            NSFWOOCFlavorText = nsfwoocflavortext;
+            NSFWLinksFlavorText = nsfwlinksflavortext;
+            NSFWTagsFlavorText = nsfwtagsflavortext;
             // Orion-End
             Species = species;
             Height = height; // Goobstation: port EE height/width sliders
@@ -295,6 +310,9 @@ namespace Content.Shared.Preferences
                 other.TagsFlavorText,
                 other.LinksFlavorText,
                 other.NSFWFlavorText,
+                other.NSFWOOCFlavorText,
+                other.NSFWLinksFlavorText,
+                other.NSFWTagsFlavorText,
                 // Orion-End
                 other.Species,
                 other.Height, // Goobstation: port EE height/width sliders
@@ -457,6 +475,21 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile WithNSFWPreferencesText(string nsfwFlavorText)
         {
             return new(this) { NSFWFlavorText = nsfwFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithNSFWOOCFlavorText(string nsfwOOCFlavorText)
+        {
+            return new(this) { NSFWOOCFlavorText = nsfwOOCFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithNSFWLinksText(string nsfwLinksFlavorText)
+        {
+            return new(this) { NSFWLinksFlavorText = nsfwLinksFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithNSFWTagsText(string nsfwTagsFlavorText)
+        {
+            return new(this) { NSFWTagsFlavorText = nsfwTagsFlavorText };
         }
         // Orion-End
 
@@ -686,6 +719,9 @@ namespace Content.Shared.Preferences
             if (TagsFlavorText != other.TagsFlavorText) return false;
             if (LinksFlavorText != other.LinksFlavorText) return false;
             if (NSFWFlavorText != other.NSFWFlavorText) return false;
+            if (NSFWOOCFlavorText != other.NSFWOOCFlavorText) return false;
+            if (NSFWLinksFlavorText != other.NSFWLinksFlavorText) return false;
+            if (NSFWTagsFlavorText != other.NSFWTagsFlavorText) return false;
             // Orion-End
             return Appearance.MemberwiseEquals(other.Appearance);
         }
@@ -860,6 +896,38 @@ namespace Content.Shared.Preferences
             {
                 nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NSFWFlavorText);
             }
+
+            string nsfwoocflavortext;
+            if (NSFWOOCFlavorText.Length > oocMaxFlavorTextLength)
+            {
+                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NSFWOOCFlavorText)[..oocMaxFlavorTextLength];
+            }
+            else
+            {
+                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NSFWOOCFlavorText);
+            }
+
+            string nsfwlinks;
+            if (NSFWLinksFlavorText.Length > maxLinksLength)
+            {
+                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NSFWLinksFlavorText)[..maxLinksLength];
+            }
+            else
+            {
+                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NSFWLinksFlavorText);
+            }
+
+            string nsfwtags;
+            if (NSFWTagsFlavorText.Length > maxTagsLength)
+            {
+                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NSFWTagsFlavorText)[..maxTagsLength];
+            }
+            else
+            {
+                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NSFWTagsFlavorText);
+            }
+
+            nsfwtags = FormatTags(nsfwtags);
             // Orion-End
 
             // begin Goobstation: port EE height/width sliders
@@ -929,6 +997,9 @@ namespace Content.Shared.Preferences
             TagsFlavorText = tags;
             LinksFlavorText = links;
             NSFWFlavorText = nsfwPreferences;
+            NSFWOOCFlavorText = nsfwoocflavortext;
+            NSFWLinksFlavorText = nsfwlinks;
+            NSFWTagsFlavorText = nsfwtags;
             // Orion-End
             Age = age;
             Height = height; // Goobstation: port EE height/width sliders
@@ -1050,6 +1121,9 @@ namespace Content.Shared.Preferences
             hashCode.Add(TagsFlavorText);
             hashCode.Add(LinksFlavorText);
             hashCode.Add(NSFWFlavorText);
+            hashCode.Add(NSFWOOCFlavorText);
+            hashCode.Add(NSFWLinksFlavorText);
+            hashCode.Add(NSFWTagsFlavorText);
             // Orion-End
             hashCode.Add(Species);
             hashCode.Add(Height); // Goobstation: port EE height/width sliders

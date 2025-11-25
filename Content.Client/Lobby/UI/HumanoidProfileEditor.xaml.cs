@@ -230,6 +230,9 @@ namespace Content.Client.Lobby.UI
         private TextEdit? _tagsTextEdit;
         private TextEdit? _linksTextEdit;
         private TextEdit? _nsfwTextEdit;
+        private TextEdit? _nsfwLinksTextEdit;
+        private TextEdit? _flavorTextNsfwOOCEdit;
+        private TextEdit? _nsfwTagsTextEdit;
         // Orion-End
 
         // One at a time.
@@ -735,6 +738,9 @@ namespace Content.Client.Lobby.UI
                 _tagsTextEdit = _flavorText.CTagsTextInput;
                 _linksTextEdit = _flavorText.CLinksTextInput;
                 _nsfwTextEdit = _flavorText.CNSFWTextInput;
+                _flavorTextNsfwOOCEdit = _flavorText.CFlavorNSFWOOCTextInput;
+                _nsfwLinksTextEdit = _flavorText.CNSFWLinksTextInput;
+                _nsfwTagsTextEdit = _flavorText.CNSFWTagsTextInput;
 
                 UpdateFlavorPreview();
                 // Orion-End
@@ -748,7 +754,11 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnRedTextChanged += OnRedFlavorTextChange;
                 _flavorText.OnTagsTextChanged += OnTagsFlavorTextChange;
                 _flavorText.OnLinksTextChanged += OnLinksFlavorTextChange;
-                _flavorText.OnNSFWTextChanged += OnNSFWFlavorTextChange;
+                _flavorText.OnNsfwTextChanged += OnNSFWFlavorTextChange;
+                _flavorText.OnNSFWLinksTextChanged += OnNsfwLinksFlavorTextChange;
+                _flavorText.OnNSFWFlavorOOCTextChanged += OnFlavorNsfwOOCTextChange;
+                _flavorText.OnNSFWTagsTextChanged += OnNsfwTagsFlavorTextChange;
+                _flavorText.OnFlavorTabChanged += OnTabChanged;
                 // Orion-End
             }
             else
@@ -765,7 +775,11 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnRedTextChanged -= OnRedFlavorTextChange;
                 _flavorText.OnTagsTextChanged -= OnTagsFlavorTextChange;
                 _flavorText.OnLinksTextChanged -= OnLinksFlavorTextChange;
-                _flavorText.OnNSFWTextChanged -= OnNSFWFlavorTextChange;
+                _flavorText.OnNsfwTextChanged -= OnNSFWFlavorTextChange;
+                _flavorText.OnNSFWLinksTextChanged -= OnNsfwLinksFlavorTextChange;
+                _flavorText.OnNSFWFlavorOOCTextChanged -= OnFlavorNsfwOOCTextChange;
+                _flavorText.OnNSFWTagsTextChanged -= OnNsfwTagsFlavorTextChange;
+                _flavorText.OnFlavorTabChanged -= OnTabChanged;
                 // Orion-End
 
                 TabContainer.RemoveChild(_flavorText);
@@ -782,6 +796,9 @@ namespace Content.Client.Lobby.UI
                 _tagsTextEdit = null;
                 _linksTextEdit = null;
                 _nsfwTextEdit = null;
+                _nsfwLinksTextEdit = null;
+                _flavorTextNsfwOOCEdit = null;
+                _nsfwTagsTextEdit = null;
                 // Orion-End
 
                 _flavorText = null;
@@ -789,7 +806,7 @@ namespace Content.Client.Lobby.UI
         }
 
         // Orion-Start
-                private void UpdateFlavorPreview()
+        private void UpdateFlavorPreview()
         {
             if (_flavorText == null || Profile == null)
                 return;
@@ -798,16 +815,19 @@ namespace Content.Client.Lobby.UI
             _flavorText.PreviewTraitsText.SetMessage(Profile.CharacterFlavorText);
             _flavorText.PreviewOOCText.SetMessage(Profile.OOCFlavorText);
             _flavorText.PreviewTagsText.Text = Profile.TagsFlavorText;
+            _flavorText.PreviewNSFWOOCText.SetMessage(Profile.NSFWOOCFlavorText);
+            _flavorText.PreviewNSFWTagsText.Text = Profile.NSFWTagsFlavorText;
 
-            ProcessLinks(Profile.LinksFlavorText);
+            ProcessLinks(Profile.LinksFlavorText, _flavorText.PreviewLinksContainer);
+            ProcessLinks(Profile.NSFWLinksFlavorText, _flavorText.PreviewNSFWLinksContainer);
 
             _flavorText.PreviewGYRContainer.RemoveAllChildren();
-            CreateGYRBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-green"), Color.Green);
-            CreateGYRTextLabel(Profile.GreenFlavorText);
-            CreateGYRBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-yellow"), Color.Yellow);
-            CreateGYRTextLabel(Profile.YellowFlavorText);
-            CreateGYRBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-red"), Color.Red);
-            CreateGYRTextLabel(Profile.RedFlavorText);
+            CreateGyrBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-green"), Color.Green);
+            CreateGyrTextLabel(Profile.GreenFlavorText);
+            CreateGyrBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-yellow"), Color.Yellow);
+            CreateGyrTextLabel(Profile.YellowFlavorText);
+            CreateGyrBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-red"), Color.Red);
+            CreateGyrTextLabel(Profile.RedFlavorText);
 
             _flavorText.PreviewNSFWText.SetMessage(Profile.NSFWFlavorText);
 
@@ -819,7 +839,38 @@ namespace Content.Client.Lobby.UI
             _flavorText.PreviewGenderText.Text = $"{species} | {sex} | {gender}";
         }
 
-        private void CreateGYRBigTextLabel(string text, Color color)
+        private void UpdateNsfwPreviewVisibility(bool showNsfw)
+        {
+            if (_flavorText == null)
+                return;
+
+            if (_flavorText.PreviewOOCText.Visible == !showNsfw)
+                return;
+
+            _flavorText!.PreviewOOCText.Visible = !showNsfw;
+            _flavorText!.PreviewNSFWOOCText.Visible = showNsfw;
+
+            _flavorText!.PreviewLinksContainer.Visible = !showNsfw;
+            _flavorText!.PreviewNSFWLinksContainer.Visible = showNsfw;
+
+            _flavorText!.PreviewTagsText.Visible = !showNsfw;
+            _flavorText!.PreviewNSFWTagsText.Visible = showNsfw;
+        }
+
+        private void OnTabChanged(int tab)
+        {
+            switch (tab)
+            {
+                case 3:
+                    UpdateNsfwPreviewVisibility(true);
+                    break;
+                default:
+                    UpdateNsfwPreviewVisibility(false);
+                    break;
+            }
+        }
+
+        private void CreateGyrBigTextLabel(string text, Color color)
         {
             var label = new Label
             {
@@ -832,7 +883,7 @@ namespace Content.Client.Lobby.UI
             _flavorText?.PreviewGYRContainer.AddChild(label);
         }
 
-        private void CreateGYRTextLabel(string text)
+        private void CreateGyrTextLabel(string text)
         {
             var label = new RichTextLabel
             {
@@ -843,12 +894,13 @@ namespace Content.Client.Lobby.UI
             _flavorText?.PreviewGYRContainer.AddChild(label);
         }
 
-        private void ProcessLinks(string linksText)
+        private void ProcessLinks(string linksText, BoxContainer linksContainer)
         {
-            if (_flavorText?.PreviewLinksContainer == null)
+            if (linksContainer == null)
                 return;
 
-            _flavorText.PreviewLinksContainer.RemoveAllChildren();
+            linksContainer.RemoveAllChildren();
+
             if (string.IsNullOrEmpty(linksText))
                 return;
 
@@ -857,11 +909,11 @@ namespace Content.Client.Lobby.UI
             {
                 if (IsValidUrl(link))
                 {
-                    CreateLinkButton(link);
+                    CreateLinkButton(link, linksContainer);
                 }
                 else
                 {
-                    CreateLinkTextLabel(link);
+                    CreateLinkTextLabel(link, linksContainer);
                 }
             }
         }
@@ -873,7 +925,7 @@ namespace Content.Client.Lobby.UI
                 url.StartsWith("www.", StringComparison.OrdinalIgnoreCase);
         }
 
-        private void CreateLinkButton(string url)
+        private void CreateLinkButton(string url, BoxContainer linksContainer)
         {
             var button = new Button
             {
@@ -881,25 +933,25 @@ namespace Content.Client.Lobby.UI
                 ToolTip = Loc.GetString("humanoid-profile-editor-link-tooltip", ("url", url)),
                 HorizontalExpand = true,
                 HorizontalAlignment = HAlignment.Center,
-                StyleClasses = { StyleNano.ButtonOpenBoth }
+                StyleClasses = { StyleBase.ButtonOpenBoth },
             };
 
             button.OnPressed += _ => OpenLink(url);
 
-            _flavorText?.PreviewLinksContainer.AddChild(button);
+            linksContainer.AddChild(button);
         }
 
-        private void CreateLinkTextLabel(string text)
+        private void CreateLinkTextLabel(string text, BoxContainer linksContainer)
         {
             var label = new Label
             {
                 Text = text,
                 HorizontalExpand = true,
                 HorizontalAlignment = HAlignment.Center,
-                FontColorOverride = Color.Gray
+                FontColorOverride = Color.Gray,
             };
 
-            _flavorText?.PreviewLinksContainer.AddChild(label);
+            linksContainer.AddChild(label);
         }
 
         private string GetLinkDisplayText(string url)
@@ -918,6 +970,39 @@ namespace Content.Client.Lobby.UI
 
             var uriOpener = IoCManager.Resolve<IUriOpener>();
             uriOpener.OpenUri(url);
+        }
+
+        private void OnFlavorNsfwOOCTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithNSFWOOCFlavorText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnNsfwLinksFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithNSFWLinksText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnNsfwTagsFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithNSFWTagsText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
         }
         // Orion-End
 
@@ -1870,49 +1955,40 @@ namespace Content.Client.Lobby.UI
         private void UpdateFlavorTextEdit()
         {
             if (_flavorTextEdit != null)
-            {
                 _flavorTextEdit.TextRope = new Rope.Leaf(Profile?.FlavorText ?? "");
-            }
 
             if (_flavorTextOOCEdit != null)
-            {
                 _flavorTextOOCEdit.TextRope = new Rope.Leaf(Profile?.OOCFlavorText ?? "");
-            }
 
             if (_characterTextEdit != null)
-            {
                 _characterTextEdit.TextRope = new Rope.Leaf(Profile?.CharacterFlavorText ?? "");
-            }
 
             if (_greenTextEdit != null)
-            {
                 _greenTextEdit.TextRope = new Rope.Leaf(Profile?.GreenFlavorText ?? "");
-            }
 
             if (_yellowTextEdit != null)
-            {
                 _yellowTextEdit.TextRope = new Rope.Leaf(Profile?.YellowFlavorText ?? "");
-            }
 
             if (_redTextEdit != null)
-            {
                 _redTextEdit.TextRope = new Rope.Leaf(Profile?.RedFlavorText ?? "");
-            }
 
             if (_tagsTextEdit != null)
-            {
                 _tagsTextEdit.TextRope = new Rope.Leaf(Profile?.TagsFlavorText ?? "");
-            }
 
             if (_linksTextEdit != null)
-            {
                 _linksTextEdit.TextRope = new Rope.Leaf(Profile?.LinksFlavorText ?? "");
-            }
 
             if (_nsfwTextEdit != null)
-            {
                 _nsfwTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWFlavorText ?? "");
-            }
+
+            if (_flavorTextNsfwOOCEdit != null)
+                _flavorTextNsfwOOCEdit.TextRope = new Rope.Leaf(Profile?.NSFWOOCFlavorText ?? "");
+
+            if (_nsfwLinksTextEdit != null)
+                _nsfwLinksTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWLinksFlavorText ?? "");
+
+            if (_nsfwTagsTextEdit != null)
+                _nsfwTagsTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWTagsFlavorText ?? "");
         }
         // Orion-Edit-End
 

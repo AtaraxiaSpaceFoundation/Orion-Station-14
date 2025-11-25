@@ -28,6 +28,9 @@ public sealed class DetailExaminableEuiState : EuiStateBase
     public string TagsFlavorText = string.Empty;
     public string LinksFlavorText = string.Empty;
     public string NSFWFlavorText = string.Empty;
+    public string NSFWOOCFlavorText = string.Empty;
+    public string NSFWLinksFlavorText = string.Empty;
+    public string NSFWTagsFlavorText = string.Empty;
 
     public DetailExaminableEuiState(
         NetEntity target,
@@ -43,7 +46,10 @@ public sealed class DetailExaminableEuiState : EuiStateBase
         string redFlavorText,
         string tagsFlavorText,
         string linksFlavorText,
-        string nsfwFlavorText
+        string nsfwFlavorText,
+        string nsfwOOCFlavorText,
+        string nsfwLinksFlavorText,
+        string nsfwTagsFlavorText
     )
     {
         Target = target;
@@ -60,5 +66,8 @@ public sealed class DetailExaminableEuiState : EuiStateBase
         TagsFlavorText = tagsFlavorText;
         LinksFlavorText = linksFlavorText;
         NSFWFlavorText = nsfwFlavorText;
+        NSFWOOCFlavorText = nsfwOOCFlavorText;
+        NSFWLinksFlavorText = nsfwLinksFlavorText;
+        NSFWTagsFlavorText = nsfwTagsFlavorText;
     }
 }

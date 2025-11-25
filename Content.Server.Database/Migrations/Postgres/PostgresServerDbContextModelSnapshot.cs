@@ -844,15 +844,15 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
-                    b.Property<string>("CharacterFlavorText")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("character_flavor_text");
-
                     b.Property<string>("BarkVoice")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("bark_voice");
+
+                    b.Property<string>("CharacterFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("character_flavor_text");
 
                     b.Property<string>("CharacterName")
                         .IsRequired()
@@ -916,6 +916,21 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("nsfwflavor_text");
+
+                    b.Property<string>("NSFWLinksFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nsfwlinks_flavor_text");
+
+                    b.Property<string>("NSFWOOCFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nsfwoocflavor_text");
+
+                    b.Property<string>("NSFWTagsFlavorText")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("nsfwtags_flavor_text");
 
                     b.Property<string>("OOCFlavorText")
                         .IsRequired()

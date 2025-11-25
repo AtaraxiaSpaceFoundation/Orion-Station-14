@@ -1,0 +1,26 @@
+flavor-tab-flavor = Flavor
+flavor-tab-character = Traits
+flavor-tab-ooc-flavor = OOC Notes
+flavor-tab-gyr = Preferences
+flavor-tab-nsfw = NSFW
+flavor-tab-nsfw-ooc-flavor = NSFW OOC
+flavor-tab-preview = Preview
+
+detail-examinable-window-title = Details
+detail-examinable-empty-flavor = No description available.
+detail-examinable-empty-character = No character description available.
+detail-examinable-empty-ooc = No OOC information provided.
+detail-examinable-empty-nsfw = No NSFW description available.
+detail-examinable-empty-links = No links added.
+detail-examinable-empty-green = List is empty.
+detail-examinable-empty-yellow = List is empty.
+detail-examinable-empty-red = List is empty.
+
+character-flavor-text-placeholder = Character, personality traits, behavior, habits, psychological characteristics, social image, worldview, facial expressions...
+ooc-flavor-text-placeholder = OOC notes that reveal the character or your preferences...
+tags-flavor-text-placeholder = #tag1, #tag2, #tag3...
+links-flavor-text-placeholder = docs.google.com, disk.yandex.by, docs.yandex.by, ru.imgbb.com, gyazo.com, e621.net, e926.net, ibb.co, steamcommunity.com...
+green-flavor-text-placeholder = Topics you would like to see in someone else’s roleplay...
+yellow-flavor-text-placeholder = Topics that require discussion in LOOC before starting roleplay...
+red-flavor-text-placeholder = Topics you as a player do not want to see in someone else’s roleplay...
+nsfw-flavor-text-placeholder = NSFW character description, visible only when naked...

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Content.Server.Database.Migrations.Sqlite
+namespace Content.Server.Database.Migrations.Postgres
 {
     /// <inheritdoc />
     public partial class FlavorExtended : Migration
@@ -65,6 +65,27 @@ namespace Content.Server.Database.Migrations.Sqlite
                 type: "TEXT",
                 nullable: false,
                 defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "nsfwlinks_flavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "nsfwoocflavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "nsfwtags_flavor_text",
+                table: "profile",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
         }
 
         /// <inheritdoc />
@@ -100,6 +121,18 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             migrationBuilder.DropColumn(
                 name: "nsfwflavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "nsfwlinks_flavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "nsfwoocflavor_text",
+                table: "profile");
+
+            migrationBuilder.DropColumn(
+                name: "nsfwtags_flavor_text",
                 table: "profile");
         }
     }
