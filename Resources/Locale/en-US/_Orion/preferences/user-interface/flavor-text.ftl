@@ -7,14 +7,14 @@ flavor-tab-nsfw-ooc-flavor = NSFW OOC
 flavor-tab-preview = Preview
 
 detail-examinable-window-title = Details
-detail-examinable-empty-flavor = No description available.
-detail-examinable-empty-character = No character description available.
-detail-examinable-empty-ooc = No OOC information provided.
-detail-examinable-empty-nsfw = No NSFW description available.
+detail-examinable-empty-flavor = [color=Gray]No description available.[/color]
+detail-examinable-empty-character = [color=Gray]No character description available.[/color]
+detail-examinable-empty-ooc = [color=Gray]No OOC information provided.[/color]
+detail-examinable-empty-nsfw = [color=Gray]No NSFW description available.[/color]
 detail-examinable-empty-links = No links added.
-detail-examinable-empty-green = List is empty.
-detail-examinable-empty-yellow = List is empty.
-detail-examinable-empty-red = List is empty.
+detail-examinable-empty-green = [color=Gray]List is empty.[/color]
+detail-examinable-empty-yellow = [color=Gray]List is empty.[/color]
+detail-examinable-empty-red = [color=Gray]List is empty.[/color]
 
 character-flavor-text-placeholder = Character, personality traits, behavior, habits, psychological characteristics, social image, worldview, facial expressions...
 ooc-flavor-text-placeholder = OOC notes that reveal the character or your preferences...

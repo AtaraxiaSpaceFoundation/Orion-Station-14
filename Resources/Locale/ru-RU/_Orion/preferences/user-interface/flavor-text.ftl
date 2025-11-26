@@ -7,14 +7,14 @@ flavor-tab-nsfw-ooc-flavor = NSFW OOC
 flavor-tab-preview = Предпросмотр
 
 detail-examinable-window-title = Подробности
-detail-examinable-empty-flavor = Описание отсутствует.
-detail-examinable-empty-character = Описание характера отсутствует.
-detail-examinable-empty-ooc = OOC информация не указана.
-detail-examinable-empty-nsfw = NSFW описание отсутствует.
+detail-examinable-empty-flavor = [color=Gray]Описание отсутствует.[/color]
+detail-examinable-empty-character = [color=Gray]Описание характера отсутствует.[/color]
+detail-examinable-empty-ooc = [color=Gray]OOC информация не указана.[/color]
+detail-examinable-empty-nsfw = [color=Gray]NSFW описание отсутствует.[/color]
 detail-examinable-empty-links = Ссылки не добавлены.
-detail-examinable-empty-green = Список пуст.
-detail-examinable-empty-yellow = Список пуст.
-detail-examinable-empty-red = Список пуст.
+detail-examinable-empty-green = [color=Gray]Список пуст.[/color]
+detail-examinable-empty-yellow = [color=Gray]Список пуст.[/color]
+detail-examinable-empty-red = [color=Gray]Список пуст.[/color]
 
 character-flavor-text-placeholder = Характер, личностные качества, поведение, привычки, психологические особенности, социальный облик, мировоззрение, мимика...
 ooc-flavor-text-placeholder = OOC замечания, раскрывающие персонажа или ваши предпочтения...

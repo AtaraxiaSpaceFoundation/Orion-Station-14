@@ -799,11 +799,11 @@ namespace Content.Shared.Preferences
             var maxFlavorTextLength = configManager.GetCVar(CCVars.MaxFlavorTextLength);
             if (FlavorText.Length > maxFlavorTextLength)
             {
-                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..maxFlavorTextLength];
+                flavortext = FlavorText[..maxFlavorTextLength]; // Orion-Edit | Remove RemoveMarkupOrThrow
             }
             else
             {
-                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
+                flavortext = FlavorText; // Orion-Edit | Remove RemoveMarkupOrThrow
             }
 
             // Orion-Start
@@ -811,66 +811,66 @@ namespace Content.Shared.Preferences
             var oocMaxFlavorTextLength = configManager.GetCVar(CCVars.OOCMaxFlavorTextLength);
             if (OOCFlavorText.Length > oocMaxFlavorTextLength)
             {
-                oocflavortext = FormattedMessage.RemoveMarkupOrThrow(OOCFlavorText)[..oocMaxFlavorTextLength];
+                oocflavortext = OOCFlavorText[..oocMaxFlavorTextLength];
             }
             else
             {
-                oocflavortext = FormattedMessage.RemoveMarkupOrThrow(OOCFlavorText);
+                oocflavortext = OOCFlavorText;
             }
 
             string characterDescription;
             var maxCharacterDescriptionLength = configManager.GetCVar(CCVars.CharacterDescriptionLength);
             if (CharacterFlavorText.Length > maxCharacterDescriptionLength)
             {
-                characterDescription = FormattedMessage.RemoveMarkupOrThrow(CharacterFlavorText)[..maxCharacterDescriptionLength];
+                characterDescription = CharacterFlavorText[..maxCharacterDescriptionLength];
             }
             else
             {
-                characterDescription = FormattedMessage.RemoveMarkupOrThrow(CharacterFlavorText);
+                characterDescription = CharacterFlavorText;
             }
 
             string greenPreferences;
             var maxGreenPreferencesLength = configManager.GetCVar(CCVars.GreenPreferencesLength);
             if (GreenFlavorText.Length > maxGreenPreferencesLength)
             {
-                greenPreferences = FormattedMessage.RemoveMarkupOrThrow(GreenFlavorText)[..maxGreenPreferencesLength];
+                greenPreferences = GreenFlavorText[..maxGreenPreferencesLength];
             }
             else
             {
-                greenPreferences = FormattedMessage.RemoveMarkupOrThrow(GreenFlavorText);
+                greenPreferences = GreenFlavorText;
             }
 
             string yellowPreferences;
             var maxYellowPreferencesLength = configManager.GetCVar(CCVars.YellowPreferencesLength);
             if (YellowFlavorText.Length > maxYellowPreferencesLength)
             {
-                yellowPreferences = FormattedMessage.RemoveMarkupOrThrow(YellowFlavorText)[..maxYellowPreferencesLength];
+                yellowPreferences = YellowFlavorText[..maxYellowPreferencesLength];
             }
             else
             {
-                yellowPreferences = FormattedMessage.RemoveMarkupOrThrow(YellowFlavorText);
+                yellowPreferences = YellowFlavorText;
             }
 
             string redPreferences;
             var maxRedPreferencesLength = configManager.GetCVar(CCVars.RedPreferencesLength);
             if (RedFlavorText.Length > maxRedPreferencesLength)
             {
-                redPreferences = FormattedMessage.RemoveMarkupOrThrow(RedFlavorText)[..maxRedPreferencesLength];
+                redPreferences = RedFlavorText[..maxRedPreferencesLength];
             }
             else
             {
-                redPreferences = FormattedMessage.RemoveMarkupOrThrow(RedFlavorText);
+                redPreferences = RedFlavorText;
             }
 
             string tags;
             var maxTagsLength = configManager.GetCVar(CCVars.TagsLength);
             if (TagsFlavorText.Length > maxTagsLength)
             {
-                tags = FormattedMessage.RemoveMarkupOrThrow(TagsFlavorText)[..maxTagsLength];
+                tags = TagsFlavorText[..maxTagsLength];
             }
             else
             {
-                tags = FormattedMessage.RemoveMarkupOrThrow(TagsFlavorText);
+                tags = TagsFlavorText;
             }
 
             tags = FormatTags(tags);
@@ -879,52 +879,52 @@ namespace Content.Shared.Preferences
             var maxLinksLength = configManager.GetCVar(CCVars.LinksLength);
             if (LinksFlavorText.Length > maxLinksLength)
             {
-                links = FormattedMessage.RemoveMarkupOrThrow(LinksFlavorText)[..maxLinksLength];
+                links = LinksFlavorText[..maxLinksLength];
             }
             else
             {
-                links = FormattedMessage.RemoveMarkupOrThrow(LinksFlavorText);
+                links = LinksFlavorText;
             }
 
             string nsfwPreferences;
             var maxNsfwPreferencesLength = configManager.GetCVar(CCVars.NsfwPreferencesLength);
             if (NsfwFlavorText.Length > maxNsfwPreferencesLength)
             {
-                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NsfwFlavorText)[..maxNsfwPreferencesLength];
+                nsfwPreferences = NsfwFlavorText[..maxNsfwPreferencesLength];
             }
             else
             {
-                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NsfwFlavorText);
+                nsfwPreferences = NsfwFlavorText;
             }
 
             string nsfwoocflavortext;
             if (NsfwOOCFlavorText.Length > oocMaxFlavorTextLength)
             {
-                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NsfwOOCFlavorText)[..oocMaxFlavorTextLength];
+                nsfwoocflavortext = NsfwOOCFlavorText[..oocMaxFlavorTextLength];
             }
             else
             {
-                nsfwoocflavortext = FormattedMessage.RemoveMarkupOrThrow(NsfwOOCFlavorText);
+                nsfwoocflavortext = NsfwOOCFlavorText;
             }
 
             string nsfwlinks;
             if (NsfwLinksFlavorText.Length > maxLinksLength)
             {
-                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NsfwLinksFlavorText)[..maxLinksLength];
+                nsfwlinks = NsfwLinksFlavorText[..maxLinksLength];
             }
             else
             {
-                nsfwlinks = FormattedMessage.RemoveMarkupOrThrow(NsfwLinksFlavorText);
+                nsfwlinks = NsfwLinksFlavorText;
             }
 
             string nsfwtags;
             if (NsfwTagsFlavorText.Length > maxTagsLength)
             {
-                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NsfwTagsFlavorText)[..maxTagsLength];
+                nsfwtags = NsfwTagsFlavorText[..maxTagsLength];
             }
             else
             {
-                nsfwtags = FormattedMessage.RemoveMarkupOrThrow(NsfwTagsFlavorText);
+                nsfwtags = NsfwTagsFlavorText;
             }
 
             nsfwtags = FormatTags(nsfwtags);

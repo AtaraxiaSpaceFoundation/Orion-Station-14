@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._Orion.StyleSheets;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Orion.DetailExaminable;
@@ -143,22 +144,21 @@ public sealed partial class DetailExaminableWindow : FancyWindow
 
         UpdateSpriteDirection();
 
-        PreviewAppearanceText.SetMessage(GetContentWithEmptyMessage(state.FlavorText, "detail-examinable-empty-flavor"));
+        PreviewAppearanceText.SetMarkup(GetContentWithEmptyMessage(state.FlavorText, "detail-examinable-empty-flavor"));
 
         if (showOoc)
         {
-            PreviewOOCText.SetMessage(GetContentWithEmptyMessage(state.OOCFlavorText, "detail-examinable-empty-ooc"));
+            PreviewOOCText.SetMarkup(GetContentWithEmptyMessage(state.OOCFlavorText, "detail-examinable-empty-ooc"));
 
             if (showNsfw)
-                PreviewNSFWOOCText.SetMessage(GetContentWithEmptyMessage(state.NsfwOOCFlavorText, "detail-examinable-empty-ooc"));
+                PreviewNSFWOOCText.SetMarkup(GetContentWithEmptyMessage(state.NsfwOOCFlavorText, "detail-examinable-empty-ooc"));
         }
 
         if (showTraits)
-            PreviewTraitsText.SetMessage(GetContentWithEmptyMessage(state.CharacterFlavorText, "detail-examinable-empty-character"));
+            PreviewTraitsText.SetMarkup(GetContentWithEmptyMessage(state.CharacterFlavorText, "detail-examinable-empty-character"));
 
         if (showNsfw)
-            PreviewNSFWText.SetMessage(GetContentWithEmptyMessage(state.NsfwFlavorText, "detail-examinable-empty-nsfw"));
-
+            PreviewNSFWText.SetMarkup(GetContentWithEmptyMessage(state.NsfwFlavorText, "detail-examinable-empty-nsfw"));
         if (showGyr)
         {
             PreviewGYRContainer.RemoveAllChildren();
@@ -204,10 +204,10 @@ public sealed partial class DetailExaminableWindow : FancyWindow
     {
         var label = new RichTextLabel
         {
-            Text = text + "\n",
             VerticalExpand = true,
         };
 
+        label.SetMarkup(text + "\n");
         PreviewGYRContainer.AddChild(label);
     }
 
