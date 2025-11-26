@@ -16,7 +16,7 @@ using NpgsqlTypes;
 namespace Content.Server.Database.Migrations.Postgres
 {
     [DbContext(typeof(PostgresServerDbContext))]
-    [Migration("20251125211950_FlavorExtended")]
+    [Migration("20251107125644_FlavorExtended")]
     partial class FlavorExtended
     {
         /// <inheritdoc />
@@ -847,11 +847,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
-                    b.Property<string>("BarkVoice")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("bark_voice");
-
                     b.Property<string>("CharacterFlavorText")
                         .IsRequired()
                         .HasColumnType("text")
@@ -919,21 +914,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("nsfwflavor_text");
-
-                    b.Property<string>("NSFWLinksFlavorText")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("nsfwlinks_flavor_text");
-
-                    b.Property<string>("NSFWOOCFlavorText")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("nsfwoocflavor_text");
-
-                    b.Property<string>("NSFWTagsFlavorText")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("nsfwtags_flavor_text");
 
                     b.Property<string>("OOCFlavorText")
                         .IsRequired()

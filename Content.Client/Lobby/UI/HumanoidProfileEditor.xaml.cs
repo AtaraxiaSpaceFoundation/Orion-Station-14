@@ -747,7 +747,7 @@ namespace Content.Client.Lobby.UI
 
                 _flavorText.OnFlavorTextChanged += OnFlavorTextChange;
                 // Orion-Start
-                _flavorText.OnFlavorOOCTextChanged += OnFlavorOOCTextChange;
+                _flavorText.OnOOCTextChanged += OnFlavorOOCTextChange;
                 _flavorText.OnCharacterTextChanged += OnCharacterFlavorTextChange;
                 _flavorText.OnGreenTextChanged += OnGreenFlavorTextChange;
                 _flavorText.OnYellowTextChanged += OnYellowFlavorTextChange;
@@ -756,9 +756,9 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnLinksTextChanged += OnLinksFlavorTextChange;
                 _flavorText.OnNsfwTextChanged += OnNSFWFlavorTextChange;
                 _flavorText.OnNsfwLinksTextChanged += OnNsfwLinksFlavorTextChange;
-                _flavorText.OnNsfwFlavorOOCTextChanged += OnFlavorNsfwOOCTextChange;
+                _flavorText.OnNsfwOOCTextChanged += OnFlavorNsfwOOCTextChange;
                 _flavorText.OnNsfwTagsTextChanged += OnNsfwTagsFlavorTextChange;
-                _flavorText.OnFlavorTabChanged += OnTabChanged;
+                _flavorText.OnTabChanged += OnTabChanged;
                 // Orion-End
             }
             else
@@ -768,7 +768,7 @@ namespace Content.Client.Lobby.UI
 
                 _flavorText.OnFlavorTextChanged -= OnFlavorTextChange;
                 // Orion-Start
-                _flavorText.OnFlavorOOCTextChanged -= OnFlavorOOCTextChange;
+                _flavorText.OnOOCTextChanged -= OnFlavorOOCTextChange;
                 _flavorText.OnCharacterTextChanged -= OnCharacterFlavorTextChange;
                 _flavorText.OnGreenTextChanged -= OnGreenFlavorTextChange;
                 _flavorText.OnYellowTextChanged -= OnYellowFlavorTextChange;
@@ -777,9 +777,9 @@ namespace Content.Client.Lobby.UI
                 _flavorText.OnLinksTextChanged -= OnLinksFlavorTextChange;
                 _flavorText.OnNsfwTextChanged -= OnNSFWFlavorTextChange;
                 _flavorText.OnNsfwLinksTextChanged -= OnNsfwLinksFlavorTextChange;
-                _flavorText.OnNsfwFlavorOOCTextChanged -= OnFlavorNsfwOOCTextChange;
+                _flavorText.OnNsfwOOCTextChanged -= OnFlavorNsfwOOCTextChange;
                 _flavorText.OnNsfwTagsTextChanged -= OnNsfwTagsFlavorTextChange;
-                _flavorText.OnFlavorTabChanged -= OnTabChanged;
+                _flavorText.OnTabChanged -= OnTabChanged;
                 // Orion-End
 
                 TabContainer.RemoveChild(_flavorText);

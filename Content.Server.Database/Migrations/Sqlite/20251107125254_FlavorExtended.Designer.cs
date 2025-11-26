@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Content.Server.Database.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteServerDbContext))]
-    [Migration("20251125211829_FlavorExtended")]
+    [Migration("20251107125254_FlavorExtended")]
     partial class FlavorExtended
     {
         /// <inheritdoc />
@@ -798,11 +798,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("age");
 
-                    b.Property<string>("BarkVoice")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("bark_voice");
-
                     b.Property<string>("CharacterFlavorText")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -870,21 +865,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("nsfwflavor_text");
-
-                    b.Property<string>("NSFWLinksFlavorText")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("nsfwlinks_flavor_text");
-
-                    b.Property<string>("NSFWOOCFlavorText")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("nsfwoocflavor_text");
-
-                    b.Property<string>("NSFWTagsFlavorText")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("nsfwtags_flavor_text");
 
                     b.Property<string>("OOCFlavorText")
                         .IsRequired()

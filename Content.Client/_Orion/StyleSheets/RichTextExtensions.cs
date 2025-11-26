@@ -20,10 +20,10 @@ public static class RichTextExtensions
 
     private static readonly Type[] AllowedTags = new[]
     {
-        typeof(BoldItalicTag), // [bi]
-        typeof(BoldTag), // [b]
-        typeof(ColorTag), // [color=red] / [color=#FF0000]
-        typeof(ItalicTag), // [i]
+        typeof(BoldItalicTag), // [bolditalic]
+        typeof(BoldTag), // [bold]
+        typeof(ColorTag), // [color=Red] / [color=#FF0000]
+        typeof(ItalicTag), // [italic]
     };
 
     /// <summary>

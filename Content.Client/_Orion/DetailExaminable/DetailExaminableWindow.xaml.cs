@@ -159,6 +159,7 @@ public sealed partial class DetailExaminableWindow : FancyWindow
 
         if (showNsfw)
             PreviewNSFWText.SetMarkup(GetContentWithEmptyMessage(state.NsfwFlavorText, "detail-examinable-empty-nsfw"));
+
         if (showGyr)
         {
             PreviewGYRContainer.RemoveAllChildren();

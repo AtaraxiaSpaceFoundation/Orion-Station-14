@@ -18,18 +18,18 @@ namespace Content.Client.FlavorText
     {
         public Action<string>? OnFlavorTextChanged;
         // Orion-Start
-        public Action<string>? OnFlavorOOCTextChanged;
         public Action<string>? OnCharacterTextChanged;
+        public Action<string>? OnOOCTextChanged;
         public Action<string>? OnGreenTextChanged;
         public Action<string>? OnYellowTextChanged;
         public Action<string>? OnRedTextChanged;
         public Action<string>? OnTagsTextChanged;
         public Action<string>? OnLinksTextChanged;
         public Action<string>? OnNsfwTextChanged;
-        public Action<int>? OnFlavorTabChanged;
+        public Action<string>? OnNsfwOOCTextChanged;
         public Action<string>? OnNsfwLinksTextChanged;
-        public Action<string>? OnNsfwFlavorOOCTextChanged;
         public Action<string>? OnNsfwTagsTextChanged;
+        public Action<int>? OnTabChanged;
         // Orion-End
 
         public FlavorText()
@@ -101,7 +101,7 @@ namespace Content.Client.FlavorText
         // Orion-Start
         public void FlavorOOCTextChanged()
         {
-            OnFlavorOOCTextChanged?.Invoke(Rope.Collapse(CFlavorOOCTextInput.TextRope).Trim());
+            OnOOCTextChanged?.Invoke(Rope.Collapse(CFlavorOOCTextInput.TextRope).Trim());
         }
 
         public void CharacterTextChanged()
@@ -139,14 +139,9 @@ namespace Content.Client.FlavorText
             OnNsfwTextChanged?.Invoke(Rope.Collapse(CNSFWTextInput.TextRope).Trim());
         }
 
-        public void FlavorTabChanged(int tab)
-        {
-            OnFlavorTabChanged?.Invoke(tab);
-        }
-
         public void FlavorNsfwOOCTextChanged()
         {
-            OnNsfwFlavorOOCTextChanged?.Invoke(Rope.Collapse(CFlavorNSFWOOCTextInput.TextRope).Trim());
+            OnNsfwOOCTextChanged?.Invoke(Rope.Collapse(CFlavorNSFWOOCTextInput.TextRope).Trim());
         }
 
         public void NsfwLinksTextChanged()
@@ -157,6 +152,11 @@ namespace Content.Client.FlavorText
         public void NsfwTagsTextChanged()
         {
             OnNsfwTagsTextChanged?.Invoke(Rope.Collapse(CNSFWTagsTextInput.TextRope).Trim());
+        }
+
+        public void FlavorTabChanged(int tab)
+        {
+            OnTabChanged?.Invoke(tab);
         }
         // Orion-End
     }

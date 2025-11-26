@@ -37,7 +37,7 @@ public sealed partial class CCVars
     ///     Sets the maximum length for flavor text (character descriptions).
     /// </summary>
     public static readonly CVarDef<int> MaxFlavorTextLength =
-        CVarDef.Create("ic.flavor_text_length", 2500, CVar.SERVER | CVar.REPLICATED); // Orion-Edit | 512 > 2500
+        CVarDef.Create("ic.flavor_text_length", 4500, CVar.SERVER | CVar.REPLICATED); // Orion-Edit | 512 > 4500
 
     /// <summary>
     ///     Sets the maximum character length of a job on an ID.
