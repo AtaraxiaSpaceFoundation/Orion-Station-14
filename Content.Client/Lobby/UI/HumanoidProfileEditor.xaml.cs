@@ -813,7 +813,7 @@ namespace Content.Client.Lobby.UI
 
             _flavorText.PreviewAppearanceText.SetMessage(Profile.FlavorText);
             _flavorText.PreviewTraitsText.SetMessage(Profile.CharacterFlavorText);
-            _flavorText.PreviewOOCText.SetMessage(Profile.OOCFlavorText);
+            _flavorText.PreviewOOCText.SetMessage(Profile.OocFlavorText);
             _flavorText.PreviewTagsText.Text = Profile.TagsFlavorText;
             _flavorText.PreviewNSFWOOCText.SetMessage(Profile.NsfwOOCFlavorText);
             _flavorText.PreviewNSFWTagsText.Text = Profile.NsfwTagsFlavorText;
@@ -1958,7 +1958,7 @@ namespace Content.Client.Lobby.UI
                 _flavorTextEdit.TextRope = new Rope.Leaf(Profile?.FlavorText ?? "");
 
             if (_flavorTextOOCEdit != null)
-                _flavorTextOOCEdit.TextRope = new Rope.Leaf(Profile?.OOCFlavorText ?? "");
+                _flavorTextOOCEdit.TextRope = new Rope.Leaf(Profile?.OocFlavorText ?? "");
 
             if (_characterTextEdit != null)
                 _characterTextEdit.TextRope = new Rope.Leaf(Profile?.CharacterFlavorText ?? "");

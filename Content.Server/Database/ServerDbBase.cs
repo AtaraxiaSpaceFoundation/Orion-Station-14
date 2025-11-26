@@ -463,7 +463,7 @@ namespace Content.Server.Database
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
             // Orion-Start
-            profile.OOCFlavorText = humanoid.OOCFlavorText;
+            profile.OOCFlavorText = humanoid.OocFlavorText;
             profile.CharacterFlavorText = humanoid.CharacterFlavorText;
             profile.GreenFlavorText = humanoid.GreenFlavorText;
             profile.YellowFlavorText = humanoid.YellowFlavorText;

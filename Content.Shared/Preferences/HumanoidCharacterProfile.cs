@@ -124,7 +124,7 @@ namespace Content.Shared.Preferences
 
         // Orion-Start
         [DataField]
-        public string OOCFlavorText { get; set; } = string.Empty;
+        public string OocFlavorText { get; set; } = string.Empty;
 
         [DataField]
         public string CharacterFlavorText { get; set; } = string.Empty;
@@ -255,7 +255,7 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             // Orion-Start
-            OOCFlavorText = oocflavortext;
+            OocFlavorText = oocflavortext;
             CharacterFlavorText = characterflavortext;
             GreenFlavorText = greenflavortext;
             YellowFlavorText = yellowflavortext;
@@ -302,7 +302,7 @@ namespace Content.Shared.Preferences
             : this(other.Name,
                 other.FlavorText,
                 // Orion-Start
-                other.OOCFlavorText,
+                other.OocFlavorText,
                 other.CharacterFlavorText,
                 other.GreenFlavorText,
                 other.YellowFlavorText,
@@ -439,7 +439,7 @@ namespace Content.Shared.Preferences
         // Orion-Start
         public HumanoidCharacterProfile WithOOCFlavorText(string oocFlavorText)
         {
-            return new(this) { OOCFlavorText = oocFlavorText };
+            return new(this) { OocFlavorText = oocFlavorText };
         }
 
         public HumanoidCharacterProfile WithCharacterText(string characterFlavorText)
@@ -711,7 +711,7 @@ namespace Content.Shared.Preferences
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
             // Orion-Start
-            if (OOCFlavorText != other.OOCFlavorText) return false;
+            if (OocFlavorText != other.OocFlavorText) return false;
             if (CharacterFlavorText != other.CharacterFlavorText) return false;
             if (GreenFlavorText != other.GreenFlavorText) return false;
             if (YellowFlavorText != other.YellowFlavorText) return false;
@@ -809,13 +809,13 @@ namespace Content.Shared.Preferences
             // Orion-Start
             string oocflavortext;
             var oocMaxFlavorTextLength = configManager.GetCVar(CCVars.OOCMaxFlavorTextLength);
-            if (OOCFlavorText.Length > oocMaxFlavorTextLength)
+            if (OocFlavorText.Length > oocMaxFlavorTextLength)
             {
-                oocflavortext = OOCFlavorText[..oocMaxFlavorTextLength];
+                oocflavortext = OocFlavorText[..oocMaxFlavorTextLength];
             }
             else
             {
-                oocflavortext = OOCFlavorText;
+                oocflavortext = OocFlavorText;
             }
 
             string characterDescription;
@@ -989,7 +989,7 @@ namespace Content.Shared.Preferences
             Name = name;
             FlavorText = flavortext;
             // Orion-Start
-            OOCFlavorText = oocflavortext;
+            OocFlavorText = oocflavortext;
             CharacterFlavorText = characterDescription;
             GreenFlavorText = greenPreferences;
             YellowFlavorText = yellowPreferences;
@@ -1113,7 +1113,7 @@ namespace Content.Shared.Preferences
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
             // Orion-Start
-            hashCode.Add(OOCFlavorText);
+            hashCode.Add(OocFlavorText);
             hashCode.Add(CharacterFlavorText);
             hashCode.Add(GreenFlavorText);
             hashCode.Add(YellowFlavorText);

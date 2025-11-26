@@ -52,7 +52,7 @@ public sealed partial class DetailExaminableComponent : Component
     {
         Content = profile.FlavorText;
         CharacterContent = profile.CharacterFlavorText;
-        OOCContent = profile.OOCFlavorText;
+        OOCContent = profile.OocFlavorText;
         TagsContent = profile.TagsFlavorText;
         LinksContent = profile.LinksFlavorText;
         GreenContent = profile.GreenFlavorText;
