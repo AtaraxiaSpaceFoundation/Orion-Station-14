@@ -74,3 +74,45 @@
   icon:
     sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
     state: DeathSquad
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTLeader
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Leader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTJanitor
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Janitor
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTOfficer
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Officer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTChaplain
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Chaplain
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTEngineer
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Engineer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTMedical
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Medical
