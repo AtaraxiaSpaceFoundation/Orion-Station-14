@@ -8,8 +8,8 @@
 # SPDX-FileCopyrightText: 2020 Paul Ritter <ritter.paul1@googlemail.com>
 # SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
 # SPDX-FileCopyrightText: 2020 Vera Aguilera Puerto <zddm@outlook.es>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <zddm@outlook.es>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <zddm@outlook.es>
 # SPDX-FileCopyrightText: 2020 py01 <pyronetics01@gmail.com>
 # SPDX-FileCopyrightText: 2020 zumorica <zddm@outlook.es>
 # SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
@@ -129,7 +129,7 @@
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
-  canRotate: false
+#  canRotate: false # Orion-Remove
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
@@ -142,7 +142,7 @@
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
-  canRotate: false
+#  canRotate: false # Orion-Remove
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
@@ -1422,7 +1422,7 @@
 - type: construction
   name: recipes-secret-door-name
   id: SolidSecretDoor
-  graph: SecretDoor
+  graph: Girder # Orion-Edit
   startNode: start
   targetNode: solidSecretDoor
   category: construction-category-structures
@@ -1435,9 +1435,9 @@
 - type: construction
   name: recipes-secret-door-reinforced-name
   id: ReinforcedSecretDoor
-  graph: ReinforcedSecretDoor
+  graph: Girder # Orion-Edit
   startNode: start
-  targetNode: ReinforcedSecretDoor
+  targetNode: reinforcedSecretDoor
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
