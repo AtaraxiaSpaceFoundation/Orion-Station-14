@@ -7,6 +7,8 @@ using Content.Shared._White.Xenomorphs;
 using Content.Shared._White.Xenomorphs.Larva;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
@@ -21,6 +23,7 @@ public sealed class XenomorphLarvaSystem : EntitySystem
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
     [Dependency] private readonly JitteringSystem _jitter = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
 
     public override void Initialize()
     {
@@ -74,6 +77,7 @@ public sealed class XenomorphLarvaSystem : EntitySystem
             return;
 
         _container.Remove(uid, container);
-        _body.GibBody(victim);
+        _mobState.ChangeMobState(victim, MobState.Dead); // Orion
+//        _body.GibBody(victim); // Orion-Edit | Fuck you.
     }
 }
