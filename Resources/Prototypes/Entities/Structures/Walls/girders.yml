@@ -94,6 +94,8 @@
           collection: MetalBreak
   - type: StaticPrice
     price: 30
+  - type: Rotatable # Orion | For secret doors
+    rotateWhileAnchored: true
 
 - type: entity
   id: ReinforcedGirder

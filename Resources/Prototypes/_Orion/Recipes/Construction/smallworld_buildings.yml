@@ -1,7 +1,6 @@
 - type: construction
   id: SmallWorldBuildingSmallBusiness
   graph: SmallWorldBuilding
-  startNode: start
   targetNode: SmallWorldBuildingSmallBusiness
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -10,7 +9,6 @@
 - type: construction
   id: SmallWorldBuildingSmallHouses
   graph: SmallWorldBuilding
-  startNode: start
   targetNode: SmallWorldBuildingSmallHouses
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -19,7 +17,6 @@
 - type: construction
   id: SmallWorldBuildingSmallMuseum
   graph: SmallWorldBuilding
-  startNode: start
   targetNode: SmallWorldBuildingSmallMuseum
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -28,7 +25,6 @@
 - type: construction
   id: SmallWorldBuildingSmallWarehouse
   graph: SmallWorldBuilding
-  startNode: start
   targetNode: SmallWorldBuildingSmallWarehouse
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -36,7 +32,6 @@
 
 - type: constructionGraph
   id: SmallWorldBuilding
-  start: start
   graph:
     - node: start
       actions:

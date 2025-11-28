@@ -1,7 +1,6 @@
 - type: construction
   id: FloorBluespace
   graph: FloorBluespace
-  startNode: start
   targetNode: BluespaceFloor
   category: construction-category-structures
   conditions:

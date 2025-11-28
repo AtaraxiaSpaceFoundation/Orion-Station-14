@@ -1,2 +1,2 @@
 reagent-name-black-blood = чёрная кровь
-reagent-desc-black-blood = Это явно не соус для барбекю.
+reagent-desc-black-blood = Из-за невероятно высокого содержания железа, кровь этого инопланетянина практически чёрная.

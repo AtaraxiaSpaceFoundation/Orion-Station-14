@@ -37,3 +37,4 @@ research-technology-mag-fed-lmg = Ручные пулемёты с энерго�
 research-technology-restraint = Технологии ограничителей
 research-technology-advanced-power-generation = Продвинутый генератор
 research-technology-bluespace-construction-storage = Конструкционное блюспейс хранилище
+research-technology-extended-communication = Продвинутые коммуникации

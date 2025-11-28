@@ -12,6 +12,8 @@ job-name-salvagediver = спасатель
 job-name-ntr = представитель НаноТрейзен
 job-name-bs = офицер Синего Щита
 job-name-overall = общее
+job-name-tider = тайдер
+
 job-name-exec = служебный доступ
 
 # Navy Stuff

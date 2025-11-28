@@ -8,4 +8,8 @@ carving-knife-comp-too-many-runes = Слишком много вырезок!
 carving-knife-comp-close-to-another-carving = Слишком близко к другой вырезке!
 carving-knife-comp-runes-count = [color=yellow][bold]{ $count } / 3[/bold] всего вырезано узоров.[/color]
 carving-knife-comp-runes-deleted = Все вырезки уничтожены!
-alert-carving-trigger-message = { $victim } наступил на руну тревоги возле { $location }!
+alert-carving-trigger-message =
+    "{$victim}" наступил на руну тревоги возле "{$location}"!
+    {" "}[button label="Телепорт" timer={$timer} id="{$id}" uid={$uid} координаты ="{$coords}"]
+    {" "}
+alert-carving-trigger-message-coords = {$uid}, {$x}, {$y}
