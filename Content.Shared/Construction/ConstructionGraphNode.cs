@@ -59,6 +59,15 @@ namespace Content.Shared.Construction
         [DataField("doNotReplaceInheritingEntities")]
         public bool DoNotReplaceInheritingEntities = false;
 
+        // Orion-Start
+        /// <summary>
+        ///     If true, the original entity will NOT be deleted when changing to this node.
+        ///     Useful for attaching objects (e.g. windows on grilles) without replacing entity.
+        /// </summary>
+        [DataField]
+        public bool KeepOriginalEntity = false;
+        // Orion-End
+
         public ConstructionGraphEdge? GetEdge(string target)
         {
             foreach (var edge in _edges)
