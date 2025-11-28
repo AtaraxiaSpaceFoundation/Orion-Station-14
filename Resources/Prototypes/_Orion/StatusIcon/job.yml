@@ -1,0 +1,118 @@
+﻿- type: jobIcon
+  parent: JobIcon
+  id: JobIconInteQ
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: InteQ
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGSergant
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: serg
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGNavy
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: private
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGEarth
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: Earth
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGLeitenant
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: leitenant
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGShtab
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: shtab
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGSpecialist
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: smartgunner
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGMedic
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: medic
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGCommand
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: commander
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconUEGCommander
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: commander_gold
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconDeathSquad
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: DeathSquad
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTLeader
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Leader
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTJanitor
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Janitor
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTOfficer
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Officer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTChaplain
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Chaplain
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTEngineer
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Engineer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconERTMedical
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: ERT-Medical

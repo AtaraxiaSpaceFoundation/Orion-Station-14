@@ -36,3 +36,46 @@
     tags:
     - InteQVanguard
     - Maintenance
+
+- type: entity # !!!ERT!!!
+  parent: InteQVanguardLeaderIDCard
+  id: ERTInteQVanguardLeaderIDCard
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+    - NanotrasenRepresentative
+    - BlueshieldOfficer
+
+- type: entity # !!!ERT!!!
+  parent: InteQVanguardIDCard
+  id: ERTInteQVanguardIDCard
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+    - NanotrasenRepresentative
+    - BlueshieldOfficer
+
+- type: entity
+  parent: CBURNIDcard
+  id: CBURNLeaderIDcard
+  name: CBURN leader ID card
+  suffix: CBURN leader
+  components:
+  - type: PresetIdCard
+    job: CBURNLeader
+
+- type: entity
+  parent: CentcomIDCardDeathsquad
+  id: CentcomIDCardDeathsquadLeader
+  name: death squad leader ID card
+  components:
+  - type: PresetIdCard
+    job: DeathSquadLeader

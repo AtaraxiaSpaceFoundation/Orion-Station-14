@@ -18,14 +18,18 @@ namespace Content.Client.FlavorText
     {
         public Action<string>? OnFlavorTextChanged;
         // Orion-Start
-        public Action<string>? OnFlavorOOCTextChanged;
         public Action<string>? OnCharacterTextChanged;
+        public Action<string>? OnOOCTextChanged;
         public Action<string>? OnGreenTextChanged;
         public Action<string>? OnYellowTextChanged;
         public Action<string>? OnRedTextChanged;
         public Action<string>? OnTagsTextChanged;
         public Action<string>? OnLinksTextChanged;
-        public Action<string>? OnNSFWTextChanged;
+        public Action<string>? OnNsfwTextChanged;
+        public Action<string>? OnNsfwOOCTextChanged;
+        public Action<string>? OnNsfwLinksTextChanged;
+        public Action<string>? OnNsfwTagsTextChanged;
+        public Action<int>? OnTabChanged;
         // Orion-End
 
         public FlavorText()
@@ -41,7 +45,8 @@ namespace Content.Client.FlavorText
             FlavorTabs.SetTabTitle(2, Loc.GetString("flavor-tab-ooc-flavor"));
             FlavorTabs.SetTabTitle(3, Loc.GetString("flavor-tab-gyr"));
             FlavorTabs.SetTabTitle(4, Loc.GetString("flavor-tab-nsfw"));
-            FlavorTabs.SetTabTitle(5, Loc.GetString("flavor-tab-preview"));
+            FlavorTabs.SetTabTitle(5, Loc.GetString("flavor-tab-nsfw-ooc-flavor"));
+            FlavorTabs.SetTabTitle(6, Loc.GetString("flavor-tab-preview"));
 
             PreviewTabs.SetTabTitle(0, Loc.GetString("flavor-tab-flavor"));
             PreviewTabs.SetTabTitle(1, Loc.GetString("flavor-tab-character"));
@@ -73,7 +78,18 @@ namespace Content.Client.FlavorText
             CRedTextInput.OnTextChanged += _ => RedTextChanged();
 
             CNSFWTextInput.Placeholder = new Rope.Leaf(loc.GetString("nsfw-flavor-text-placeholder"));
-            CNSFWTextInput.OnTextChanged += _ => NSFWTextChanged();
+            CNSFWTextInput.OnTextChanged += _ => NsfwTextChanged();
+
+            CFlavorNSFWOOCTextInput.Placeholder = new Rope.Leaf(loc.GetString("ooc-flavor-text-placeholder"));
+            CFlavorNSFWOOCTextInput.OnTextChanged += _ => FlavorNsfwOOCTextChanged();
+
+            CNSFWLinksTextInput.Placeholder = new Rope.Leaf(loc.GetString("links-flavor-text-placeholder"));
+            CNSFWLinksTextInput.OnTextChanged += _ => NsfwLinksTextChanged();
+
+            CNSFWTagsTextInput.Placeholder = new Rope.Leaf(loc.GetString("tags-flavor-text-placeholder"));
+            CNSFWTagsTextInput.OnTextChanged += _ => NsfwTagsTextChanged();
+
+            PreviewTabs.OnTabChanged += FlavorTabChanged;
             // Orion-End
         }
 
@@ -85,7 +101,7 @@ namespace Content.Client.FlavorText
         // Orion-Start
         public void FlavorOOCTextChanged()
         {
-            OnFlavorOOCTextChanged?.Invoke(Rope.Collapse(CFlavorOOCTextInput.TextRope).Trim());
+            OnOOCTextChanged?.Invoke(Rope.Collapse(CFlavorOOCTextInput.TextRope).Trim());
         }
 
         public void CharacterTextChanged()
@@ -118,9 +134,29 @@ namespace Content.Client.FlavorText
             OnLinksTextChanged?.Invoke(Rope.Collapse(CLinksTextInput.TextRope).Trim());
         }
 
-        public void NSFWTextChanged()
+        public void NsfwTextChanged()
         {
-            OnNSFWTextChanged?.Invoke(Rope.Collapse(CNSFWTextInput.TextRope).Trim());
+            OnNsfwTextChanged?.Invoke(Rope.Collapse(CNSFWTextInput.TextRope).Trim());
+        }
+
+        public void FlavorNsfwOOCTextChanged()
+        {
+            OnNsfwOOCTextChanged?.Invoke(Rope.Collapse(CFlavorNSFWOOCTextInput.TextRope).Trim());
+        }
+
+        public void NsfwLinksTextChanged()
+        {
+            OnNsfwLinksTextChanged?.Invoke(Rope.Collapse(CNSFWLinksTextInput.TextRope).Trim());
+        }
+
+        public void NsfwTagsTextChanged()
+        {
+            OnNsfwTagsTextChanged?.Invoke(Rope.Collapse(CNSFWTagsTextInput.TextRope).Trim());
+        }
+
+        public void FlavorTabChanged(int tab)
+        {
+            OnTabChanged?.Invoke(tab);
         }
         // Orion-End
     }

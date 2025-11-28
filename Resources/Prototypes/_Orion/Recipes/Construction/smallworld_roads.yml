@@ -1,7 +1,6 @@
 - type: construction
   id: SmallWorldRoadFourWay
   graph: SmallWorldRoads
-  startNode: start
   targetNode: SmallWorldRoadFourWay
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -10,7 +9,6 @@
 - type: construction
   id: SmallWorldRoadStraight
   graph: SmallWorldRoads
-  startNode: start
   targetNode: SmallWorldRoadStraight
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -19,7 +17,6 @@
 - type: construction
   id: SmallWorldRoadThreeWay
   graph: SmallWorldRoads
-  startNode: start
   targetNode: SmallWorldRoadThreeWay
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -28,7 +25,6 @@
 - type: construction
   id: SmallWorldRoadTurn
   graph: SmallWorldRoads
-  startNode: start
   targetNode: SmallWorldRoadTurn
   category: construction-category-misc
   placementMode: SnapgridCenter
@@ -36,7 +32,6 @@
 
 - type: constructionGraph
   id: SmallWorldRoads
-  start: start
   graph:
     - node: start
       actions:

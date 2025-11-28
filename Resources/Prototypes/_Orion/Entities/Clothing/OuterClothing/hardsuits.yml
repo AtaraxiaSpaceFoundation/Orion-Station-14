@@ -39,3 +39,17 @@
   - type: ToggleableClothing
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitSyndicateInteQ
+
+- type: entity
+  parent: ClothingOuterHardsuitCBURN
+  id: ClothingOuterHardsuitCBURNLeader
+  name: CBURN leader hardsuit
+  description: A lightweight yet strong exosuit used for special cleanup operations.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/OuterClothing/Hardsuits/cburn_leader.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/OuterClothing/Hardsuits/cburn_leader.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHelmetCBURNLeader

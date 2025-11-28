@@ -1,0 +1,56 @@
+- type: startingGear
+  id: ERT-AssistantLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsMagEmergencyResponseTeam
+    head: ClothingHeadHelmetERTLeader
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskGas
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterArmourDurathread
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltUtilityFilled
+    suitstorage: Stunprod
+    pocket1: ClothingHandsKnuckleBoneCrushers
+    pocket2: FlashlightSeclite
+  storage:
+    back:
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - PipeBomb
+    - PipeBomb
+    - PipeBomb
+  inhand:
+  - WeaponMeleeToolboxRobust
+
+- type: startingGear
+  id: ERT-AssistantGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGrey
+    back: ClothingBackpackERTSecurity
+    shoes: ClothingShoesBootsMagEmergencyResponseTeam
+    head: ClothingHeadHelmetERTSecurity
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskGas
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesColorYellow
+    outerClothing: ClothingOuterArmourDurathread
+    id: ERTSecurityPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltUtilityFilled
+    suitstorage: Stunprod
+    pocket2: FlashlightSeclite
+  storage:
+    back:
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - PipeBomb
+    - PipeBomb
+    - PipeBomb
+  inhand:
+  - WeaponMeleeToolboxRobust

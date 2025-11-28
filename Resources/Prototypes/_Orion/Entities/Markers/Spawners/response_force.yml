@@ -1,0 +1,27 @@
+﻿# Code spawner
+- type: entity
+  parent: MarkerBase
+  id: MarkerResponseForce
+  name: spawn response force
+  suffix: Response Force
+  components:
+  - type: SpawnPoint
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: _Orion/Icons/nanotrasen.rsi
+        state: logo-alt
+
+# Spawners
+- type: entity
+  parent: MarkerBase
+  id: SpawnResponseForce
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: _Orion/Icons/nanotrasen.rsi
+        state: logo-alt

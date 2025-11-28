@@ -1,0 +1,205 @@
+# ERT | Alerts
+- type: responseForceTeam
+  id: ERT_GreenAlert
+  responseForceName: response-force-ert-green-alert-name
+  announcementTitle: response-force-ert-green-alert-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderGreenAlert
+    - id: RandomHumanoidSpawnerERTSecurityGreenAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorGreenAlert
+    - id: RandomHumanoidSpawnerERTEngineerGreenAlert
+    - id: RandomHumanoidSpawnerERTMedicalGreenAlert
+
+- type: responseForceTeam
+  id: ERT_BlueAlert
+  responseForceName: response-force-ert-blue-alert-name
+  announcementTitle: response-force-ert-blue-alert-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderBlueAlert
+    - id: RandomHumanoidSpawnerERTSecurityBlueAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorBlueAlert
+    - id: RandomHumanoidSpawnerERTEngineerBlueAlert
+    - id: RandomHumanoidSpawnerERTMedicalBlueAlert
+
+- type: responseForceTeam
+  id: ERT_AmberAlert
+  responseForceName: response-force-ert-amber-alert-name
+  announcementTitle: response-force-ert-amber-alert-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 6
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderAmberAlert
+    - id: RandomHumanoidSpawnerERTSecurityAmberAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorAmberAlert
+    - id: RandomHumanoidSpawnerERTEngineerAmberAlert
+    - id: RandomHumanoidSpawnerERTMedicalAmberAlert
+
+- type: responseForceTeam
+  id: ERT_RedAlert
+  responseForceName: response-force-ert-red-alert-name
+  announcementTitle: response-force-ert-red-alert-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderRedAlert
+    - id: RandomHumanoidSpawnerERTSecurityRedAlert
+    - id: RandomHumanoidSpawnerERTSecurityRedAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorRedAlert
+    - id: RandomHumanoidSpawnerERTEngineerRedAlert
+    - id: RandomHumanoidSpawnerERTMedicalRedAlert
+
+- type: responseForceTeam
+  id: ERT_GammaAlert
+  responseForceName: response-force-ert-gamma-alert-name
+  announcementTitle: response-force-ert-gamma-alert-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderGammaAlert
+    - id: RandomHumanoidSpawnerERTSecurityGammaAlert
+    - id: RandomHumanoidSpawnerERTSecurityGammaAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorGammaAlert
+    - id: RandomHumanoidSpawnerERTEngineerGammaAlert
+    - id: RandomHumanoidSpawnerERTMedicalGammaAlert
+
+- type: responseForceTeam
+  id: ERT_EpsilonAlert
+  responseForceName: response-force-ert-epsilon-alert-name
+  announcementTitle: response-force-ert-epsilon-alert-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerERTLeaderEpsilonAlert
+    - id: RandomHumanoidSpawnerERTSecurityEpsilonAlert
+    - id: RandomHumanoidSpawnerERTSecurityEpsilonAlert
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerERTJanitorEpsilonAlert
+    - id: RandomHumanoidSpawnerERTEngineerEpsilonAlert
+    - id: RandomHumanoidSpawnerERTMedicalEpsilonAlert
+
+# CBURN
+- type: responseForceTeam
+  id: CBURN
+  responseForceName: response-force-cburn-name
+  announcementTitle: response-force-cburn-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerCBURNLeader
+    - id: RandomHumanoidSpawnerCBURNUnit
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerCBURNUnit
+
+# Death Squad
+- type: responseForceTeam
+  id: DeathSquad
+  responseForceName: response-force-death-squad-name
+  announcementTitle: response-force-death-squad-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerDeathSquadLeader
+    - id: RandomHumanoidSpawnerDeathSquad
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerDeathSquad
+
+# InteQ
+- type: responseForceTeam
+  id: InteQ
+  responseForceName: response-force-inteq-name
+  announcementTitle: response-force-inteq-call-title
+  announcementText: response-force-paid-call-announce
+  maxRolesAmount: 6
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerInteQVanguardLeaderERT
+    - id: RandomHumanoidSpawnerInteQVanguardSoldierERT
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerInteQVanguardSoldierERT
+    - id: RandomHumanoidSpawnerInteQVanguardSoldierERT
+    - id: RandomHumanoidSpawnerInteQVanguardMedicERT
+
+# InteQ Strike Team
+- type: responseForceTeam
+  id: InteQ_StrikeTeam
+  responseForceName: response-force-inteq-strike-name
+  announcementTitle: response-force-inteq-strike-call-title
+  announcementText: response-force-paid-call-announce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerInteQVanguardLeaderERT-Strike
+    - id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
+    - id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
+    - id: RandomHumanoidSpawnerInteQVanguardMedicERT
+
+# Honk!
+- type: responseForceTeam
+  id: HonkSquad
+  responseForceName: response-force-honk-squad-name
+  announcementTitle: response-force-honk-squad-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 5
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerClownERTLeader
+    - id: RandomHumanoidSpawnerClownERT
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerClownERT
+
+# Graytide
+- type: responseForceTeam
+  id: Assistant
+  responseForceName: response-force-assistant-name
+  announcementTitle: response-force-assistant-call-title
+  announcementText: response-force-call-announce
+  maxRolesAmount: 8
+  shuttlePath: Maps/_Orion/Shuttles/ResponseForce/retort_assault-response_force.yml
+  spawnMarker: MarkerResponseForce
+  raffleSettings: short
+  guaranteedSpawn:
+    - id: RandomHumanoidSpawnerAssistantERTLeader
+    - id: RandomHumanoidSpawnerAssistantERT
+  responseForceSpawn:
+    - id: RandomHumanoidSpawnerAssistantERT

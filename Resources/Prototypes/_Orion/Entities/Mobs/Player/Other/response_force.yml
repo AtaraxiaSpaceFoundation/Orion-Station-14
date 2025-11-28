@@ -1,0 +1,947 @@
+# Base Settings
+- type: randomHumanoidSettings
+  id: BaseResponseForce
+  randomizeName: false
+  speciesBlacklist:
+  - Monkey
+  - Kobold
+  - Abductor
+  - IPC
+  - Diona
+  - Vox
+  - Gingerbread
+  - Plasmaman
+  - Shadowkin
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirst
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    understands:
+    - TauCetiBasic
+  - type: GhostTakeoverAvailable
+  - type: MindShield
+  - type: AntagImmune
+  - type: ResponseForce
+    actionFTLName: ActionCentCommFtlAction
+
+# Base NanoTrasen ERT
+- type: randomHumanoidSettings
+  id: BaseNanoTrasenERT
+  components:
+  - type: AutoImplant
+    implants: [ RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: NanoTrasenERTLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-leader-name
+    description: ghost-role-information-ert-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTLeader
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000 # ten hours
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # five hours
+  - type: RandomMetadata
+    nameSegments:
+    - NamesMilitaryFirstLeader
+    - NamesMilitaryLast
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: NanoTrasenERTJanitor
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-janitor-name
+    description: ghost-role-information-ert-janitor-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTJanitor
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 5000
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: NanoTrasenERTEngineer
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-engineer-name
+    description: ghost-role-information-ert-engineer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTEngineer
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000 # ten hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # five hours
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: NanoTrasenERTSecurity
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-security-name
+    description: ghost-role-information-ert-security-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTSecurity
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 18000 # five hours
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: NanoTrasenERTMedical
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ert-medical-name
+    description: ghost-role-information-ert-medical-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: ERTMedical
+    requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 18000 # five hours
+
+# Base InteQ ERT
+- type: randomHumanoidSettings
+  id: BaseInteQERT
+  components:
+  - type: AutoImplant
+    implants: [ RadioImplantInteQ, NutrimentPumpImplant, DeathRattleImplantInteQ ]
+
+# Base Honk ERT
+- type: randomHumanoidSettings
+  id: BaseHonkERT
+  components:
+  - type: AutoImplant
+    implants: [ BikeHornImplant, SadTromboneImplant, RadioImplantCentcomm, NutrimentPumpImplant, DeathRattleImplantCentcomm ]
+
+# ERT | CODE ALERTS
+## ERT GREEN ALERT
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTLeader
+  id: NanoTrasenERTLeaderGreen
+  components:
+  - type: Loadout
+    prototypes: [ ERTLeaderGreenAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTJanitor
+  id: NanoTrasenERTJanitorGreen
+  components:
+  - type: Loadout
+    prototypes: [ ERTJanitorGreenAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTEngineer
+  id: NanoTrasenERTEngineerGreen
+  components:
+  - type: Loadout
+    prototypes: [ ERTEngineerGreenAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTSecurity
+  id: NanoTrasenERTSecurityGreen
+  components:
+  - type: Loadout
+    prototypes: [ ERTSecurityGreenAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTMedical
+  id: NanoTrasenERTMedicalGreen
+  components:
+  - type: Loadout
+    prototypes: [ ERTMedicalGreenAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderGreenAlert
+  suffix: ERT Leader, Green alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeaderGreen
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorGreenAlert
+  suffix: ERT Janitor, Green alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitorGreen
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerGreenAlert
+  suffix: ERT Engineer, Green alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineerGreen
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityGreenAlert
+  suffix: ERT Security, Green alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurityGreen
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalGreenAlert
+  suffix: ERT Medic, Green alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedicalGreen
+
+## ERT BLUE ALERT
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTLeader
+  id: NanoTrasenERTLeaderBlue
+  components:
+  - type: Loadout
+    prototypes: [ ERTLeaderBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTJanitor
+  id: NanoTrasenERTJanitorBlue
+  components:
+  - type: Loadout
+    prototypes: [ ERTJanitorBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTEngineer
+  id: NanoTrasenERTEngineerBlue
+  components:
+  - type: Loadout
+    prototypes: [ ERTEngineerBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTSecurity
+  id: NanoTrasenERTSecurityBlue
+  components:
+  - type: Loadout
+    prototypes: [ ERTSecurityBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTMedical
+  id: NanoTrasenERTMedicalBlue
+  components:
+  - type: Loadout
+    prototypes: [ ERTMedicalBlueAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderBlueAlert
+  suffix: ERT Leader, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeaderBlue
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorBlueAlert
+  suffix: ERT Janitor, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitorBlue
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerBlueAlert
+  suffix: ERT Engineer, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineerBlue
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityBlueAlert
+  suffix: ERT Security, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurityBlue
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalBlueAlert
+  suffix: ERT Medic, Blue alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedicalBlue
+
+## ERT AMBER ALERT
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTLeader
+  id: NanoTrasenERTLeaderAmber
+  components:
+  - type: Loadout
+    prototypes: [ ERTLeaderAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTJanitor
+  id: NanoTrasenERTJanitorAmber
+  components:
+  - type: Loadout
+    prototypes: [ ERTJanitorAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTEngineer
+  id: NanoTrasenERTEngineerAmber
+  components:
+  - type: Loadout
+    prototypes: [ ERTEngineerAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTSecurity
+  id: NanoTrasenERTSecurityAmber
+  components:
+  - type: Loadout
+    prototypes: [ ERTSecurityAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTMedical
+  id: NanoTrasenERTMedicalAmber
+  components:
+  - type: Loadout
+    prototypes: [ ERTMedicalAmberAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderAmberAlert
+  suffix: ERT Leader, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeaderAmber
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorAmberAlert
+  suffix: ERT Janitor, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitorAmber
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerAmberAlert
+  suffix: ERT Engineer, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineerAmber
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityAmberAlert
+  suffix: ERT Security, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurityAmber
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalAmberAlert
+  suffix: ERT Medic, Amber alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedicalAmber
+
+## ERT RED ALERT
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTLeader
+  id: NanoTrasenERTLeaderRed
+  components:
+  - type: Loadout
+    prototypes: [ ERTLeaderRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTJanitor
+  id: NanoTrasenERTJanitorRed
+  components:
+  - type: Loadout
+    prototypes: [ ERTJanitorRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTEngineer
+  id: NanoTrasenERTEngineerRed
+  components:
+  - type: Loadout
+    prototypes: [ ERTEngineerRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTSecurity
+  id: NanoTrasenERTSecurityRed
+  components:
+  - type: Loadout
+    prototypes: [ ERTSecurityRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTMedical
+  id: NanoTrasenERTMedicalRed
+  components:
+  - type: Loadout
+    prototypes: [ ERTMedicalRedAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderRedAlert
+  suffix: ERT Leader, Red alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeaderRed
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorRedAlert
+  suffix: ERT Janitor, Red alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitorRed
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerRedAlert
+  suffix: ERT Engineer, Red alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineerRed
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityRedAlert
+  suffix: ERT Security, Red alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurityRed
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalRedAlert
+  suffix: ERT Medic, Red alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedicalRed
+
+## ERT GAMMA ALERT
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTLeader
+  id: NanoTrasenERTLeaderGamma
+  components:
+  - type: Loadout
+    prototypes: [ ERTLeaderGammaAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTJanitor
+  id: NanoTrasenERTJanitorGamma
+  components:
+  - type: Loadout
+    prototypes: [ ERTJanitorGammaAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTEngineer
+  id: NanoTrasenERTEngineerGamma
+  components:
+  - type: Loadout
+    prototypes: [ ERTEngineerGammaAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTSecurity
+  id: NanoTrasenERTSecurityGamma
+  components:
+  - type: Loadout
+    prototypes: [ ERTSecurityGammaAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTMedical
+  id: NanoTrasenERTMedicalGamma
+  components:
+  - type: Loadout
+    prototypes: [ ERTMedicalGammaAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderGammaAlert
+  suffix: ERT Leader, Gamma alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeaderGamma
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorGammaAlert
+  suffix: ERT Janitor, Gamma alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitorGamma
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerGammaAlert
+  suffix: ERT Engineer, Gamma alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineerGamma
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityGammaAlert
+  suffix: ERT Security, Gamma alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurityGamma
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalGammaAlert
+  suffix: ERT Medic, Gamma alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedicalGamma
+
+## ERT EPSILON ALERT
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTLeader
+  id: NanoTrasenERTLeaderEpsilon
+  components:
+  - type: Loadout
+    prototypes: [ ERTLeaderEpsilonAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTJanitor
+  id: NanoTrasenERTJanitorEpsilon
+  components:
+  - type: Loadout
+    prototypes: [ ERTJanitorEpsilonAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTEngineer
+  id: NanoTrasenERTEngineerEpsilon
+  components:
+  - type: Loadout
+    prototypes: [ ERTEngineerEpsilonAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTSecurity
+  id: NanoTrasenERTSecurityEpsilon
+  components:
+  - type: Loadout
+    prototypes: [ ERTSecurityEpsilonAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+- type: randomHumanoidSettings
+  parent: NanoTrasenERTMedical
+  id: NanoTrasenERTMedicalEpsilon
+  components:
+  - type: Loadout
+    prototypes: [ ERTMedicalEpsilonAlertGear ]
+    roleLoadout: [ RoleSurvivalExtended ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderEpsilonAlert
+  suffix: ERT Leader, Epsilon alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTLeaderEpsilon
+
+- type: entity
+  id: RandomHumanoidSpawnerERTJanitorEpsilonAlert
+  suffix: ERT Janitor, Epsilon alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTJanitorEpsilon
+
+- type: entity
+  id: RandomHumanoidSpawnerERTEngineerEpsilonAlert
+  suffix: ERT Engineer, Epsilon alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTEngineerEpsilon
+
+- type: entity
+  id: RandomHumanoidSpawnerERTSecurityEpsilonAlert
+  suffix: ERT Security, Epsilon alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTSecurityEpsilon
+
+- type: entity
+  id: RandomHumanoidSpawnerERTMedicalEpsilonAlert
+  suffix: ERT Medic, Epsilon alert
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: NanoTrasenERTMedicalEpsilon
+
+## CBURN
+- type: randomHumanoidSettings
+  parent: [ CBURNAgent, BaseResponseForce ]
+  id: CBURNLeader
+  components:
+    - type: Loadout
+      prototypes: [ CBURNLeaderGear ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerCBURNLeader
+  suffix: CBURN Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: CBURNLeader
+
+## DEATH SQUAD
+- type: randomHumanoidSettings
+  parent: [ DeathSquad, BaseResponseForce ]
+  id: DeathSquadLeader
+  components:
+    - type: Loadout
+      prototypes: [ DeathSquadLeaderGear ]
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerDeathSquadLeader
+  suffix: Death Squad Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: DeathSquadLeader
+
+## InteQ
+- type: randomHumanoidSettings
+  parent: [ BaseInteQERT, InteQVanguardLeader, BaseResponseForce ]
+  id: InteQVanguardLeaderERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-InteQVanguardLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-leader-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ BaseInteQERT, InteQVanguard, BaseResponseForce ]
+  id: InteQVanguardSoldierERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-InteQVanguardSoldierGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-soldier-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ BaseInteQERT, InteQVanguardMedic, BaseResponseForce ]
+  id: InteQVanguardMedicERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-InteQVanguardMedicGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-medic-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardLeaderERT
+  suffix: ERT | InteQ Vanguard Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardLeaderERT
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardSoldierERT
+  suffix: ERT | InteQ Vanguard Soldier
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardSoldierERT
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardMedicERT
+  suffix: ERT | InteQ Vanguard Medic
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardMedicERT
+
+## InteQ Strike Team
+- type: randomHumanoidSettings
+  parent: [ BaseInteQERT, InteQVanguardLeader, BaseResponseForce ]
+  id: InteQVanguardLeaderERT-Strike
+  components:
+  - type: Loadout
+    prototypes: [ ERT-Strike-InteQVanguardLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-leader-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ BaseInteQERT, InteQVanguard, BaseResponseForce ]
+  id: InteQVanguardOperativeERT-Strike
+  components:
+  - type: Loadout
+    prototypes: [ ERT-Strike-InteQVanguardOperativeGear ]
+  - type: GhostRole
+    name: ghost-role-information-inteq-vanguard-operative-ert
+    description: ghost-role-information-inteq-vanguard-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardLeaderERT-Strike
+  suffix: ERT-Strike | InteQ Vanguard Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardLeaderERT-Strike
+
+- type: entity
+  id: RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike
+  suffix: ERT-Strike | InteQ Vanguard Operative
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/inteq.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: InteQVanguardOperativeERT-Strike
+
+## ERT Clown
+- type: randomHumanoidSettings
+  parent: [ BaseHonkERT, BaseResponseForce ]
+  id: ClownERTLeader
+  components:
+  - type: Loadout
+    prototypes: [ ERT-ClownLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-clown-leader-ert
+    description: ghost-role-information-clown-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ BaseHonkERT, BaseResponseForce ]
+  id: ClownERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-ClownGear ]
+  - type: GhostRole
+    name: ghost-role-information-clown-ert
+    description: ghost-role-information-clown-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerClownERTLeader
+  suffix: ERT Clown Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ClownERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerClownERT
+  suffix: ERT Clown
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: ClownERT
+
+## ERT Assistant
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: AssistantERTLeader
+  components:
+  - type: Loadout
+    prototypes: [ ERT-AssistantLeaderGear ]
+  - type: GhostRole
+    name: ghost-role-information-assistant-leader-ert
+    description: ghost-role-information-assistant-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+- type: randomHumanoidSettings
+  parent: [ BaseNanoTrasenERT, BaseResponseForce ]
+  id: AssistantERT
+  components:
+  - type: Loadout
+    prototypes: [ ERT-AssistantGear ]
+  - type: GhostRole
+    name: ghost-role-information-assistant-ert
+    description: ghost-role-information-assistant-ert-description
+    rules: ghost-role-information-nonantagonist-rules
+
+
+
+- type: entity
+  id: RandomHumanoidSpawnerAssistantERTLeader
+  suffix: ERT Assistant Leader
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: AssistantERTLeader
+
+- type: entity
+  id: RandomHumanoidSpawnerAssistantERT
+  suffix: ERT Assistant
+  components:
+  - type: Sprite
+    sprite: _Orion/Icons/nanotrasen.rsi
+    state: logo
+  - type: RandomHumanoidSpawner
+    settings: AssistantERT

@@ -13,3 +13,16 @@ ghost-role-information-inteq-SIZO-rules = You must NOT leave lavaland without th
 ghost-role-information-hermit-lavaland = Lavaland Hermit
 ghost-role-information-hermit-lavaland-description = For a reason known only to you, you crashed in an escape pod onto the surface of Lavaland. Choose your own backstory and share it with others.
 ghost-role-information-hermit-rules = You spawn as your own character, but with a different name, therefore this is a different character, and you can play as them even if your original character was removed from the round. You don’t remember anything from your previous life. You cannot conflict with the station or other players unless there is a very good reason. VISITING THE STATION IS ALLOWED.
+
+ghost-role-information-inteq-vanguard-leader-ert = ERT | InteQ Leader
+ghost-role-information-inteq-vanguard-operative-ert = ERT | InteQ Operative
+ghost-role-information-inteq-vanguard-soldier-ert = ERT | InteQ Vanguard
+ghost-role-information-inteq-vanguard-medic-ert = ERT | InteQ Medic
+
+ghost-role-information-clown-leader-ert = ERT Leader Clown
+ghost-role-information-clown-ert = ERT Clown
+ghost-role-information-clown-ert-description = Have a party till you drop! Please do not destroy the station in the process.
+
+ghost-role-information-assistant-leader-ert = ERT Leader Assistant
+ghost-role-information-assistant-ert = ERT Assistant
+ghost-role-information-assistant-ert-description = Help the station, try not to dye your pants brown.

@@ -10,6 +10,7 @@
 
 using System.Linq;
 using Content.Server.Power.EntitySystems;
+using Content.Shared.Examine;
 using Content.Shared.Research.Components;
 
 namespace Content.Server.Research.Systems;
@@ -21,6 +22,7 @@ public sealed partial class ResearchSystem
         SubscribeLocalEvent<ResearchServerComponent, ComponentStartup>(OnServerStartup);
         SubscribeLocalEvent<ResearchServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<ResearchServerComponent, TechnologyDatabaseModifiedEvent>(OnServerDatabaseModified);
+        SubscribeLocalEvent<ResearchServerComponent, ExaminedEvent>(OnServerExamined); // Orion
     }
 
     private void OnServerStartup(EntityUid uid, ResearchServerComponent component, ComponentStartup args)
@@ -28,6 +30,7 @@ public sealed partial class ResearchSystem
         var unusedId = EntityQuery<ResearchServerComponent>(true)
             .Max(s => s.Id) + 1;
         component.Id = unusedId;
+
         Dirty(uid, component);
     }
 
@@ -180,4 +183,20 @@ public sealed partial class ResearchSystem
         }
         Dirty(uid, component);
     }
+
+    // Orion-Start
+    private void OnServerExamined(EntityUid uid, ResearchServerComponent component, ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        var points = GetPointsPerSecond(uid, component);
+
+        var msg = Loc.GetString("research-server-examine",
+            ("name", component.ServerName),
+            ("points", points));
+
+        args.PushMarkup(msg);
+    }
+    // Orion-End
 }

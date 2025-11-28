@@ -162,6 +162,19 @@
               amount: 2
               doAfter: 2
 
+        # Orion-Start
+        - to: solidSecretDoor
+          completed:
+          - !type:SnapToGrid
+          conditions:
+          - !type:EntityAnchored
+            anchored: false
+          steps:
+          - material: Steel
+            amount: 2
+            doAfter: 2
+        # Orion-End
+
     - node: wall
       entity: WallSolid
       edges:
@@ -323,6 +336,19 @@
           steps:
             - tool: Cutting
               doAfter: 2
+
+        # Orion-Start
+        - to: reinforcedSecretDoor
+          completed:
+          - !type:SnapToGrid
+          conditions:
+          - !type:EntityAnchored
+            anchored: false
+          steps:
+          - material: Plasteel
+            amount: 2
+            doAfter: 2
+        # Orion-End
 
     - node: reinforcedWall
       entity: WallReinforced
@@ -490,3 +516,35 @@
           steps:
             - tool: Brushing
               doAfter: 12
+
+    # Orion-Start
+    - node: solidSecretDoor
+      entity: SolidSecretDoor
+      actions:
+      - !type:SnapToGrid {}
+      - !type:SetAnchor {}
+      edges:
+      - to: girder
+        completed:
+        - !type:GivePrototype
+          prototype: SheetSteel1
+          amount: 2
+        steps:
+        - tool: Welding
+          doAfter: 10
+
+    - node: reinforcedSecretDoor
+      entity: ReinforcedSecretDoor
+      actions:
+      - !type:SnapToGrid {}
+      - !type:SetAnchor {}
+      edges:
+      - to: reinforcedGirder
+        completed:
+        - !type:GivePrototype
+          prototype: SheetPlasteel1
+          amount: 2
+        steps:
+        - tool: Welding
+          doAfter: 10
+    # Orion-End

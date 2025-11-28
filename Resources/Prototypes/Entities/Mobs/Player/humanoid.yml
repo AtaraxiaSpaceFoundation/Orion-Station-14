@@ -210,7 +210,7 @@
 
 - type: randomHumanoidSettings
   id: DeathSquad
-  parent: CentcommHumanoid # Goobstation
+  parent: [ CentcommHumanoid, BaseResponseForce ] # Goobstation - CentcommHumanoid | Orion-Edit - RasponseForce
   components:
     - type: AutoImplant
       implants: [ FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm] # Goobstation
@@ -704,7 +704,7 @@
 
 - type: randomHumanoidSettings
   id: CBURNAgent
-  parent: CentcommHumanoid
+  parent: [ CentcommHumanoid, BaseResponseForce ] # Orion-Edit | ResponseForce
   components:
     - type: AutoImplant
       implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation

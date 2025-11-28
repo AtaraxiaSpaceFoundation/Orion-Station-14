@@ -1,0 +1,11 @@
+- type: entity
+  id: ActionCentCommFtlAction
+  name: CentComm FTL key
+  description: Let you FTL to CentComm Station.
+  components:
+  - type: Action
+    priority: -10
+    icon: { sprite: _Orion/Icons/nanotrasen.rsi, state: logo }
+    useDelay: 180
+  - type: InstantAction
+    event: !type:CentCommFtlAction

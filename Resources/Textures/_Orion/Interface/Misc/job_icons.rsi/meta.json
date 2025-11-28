@@ -45,6 +45,34 @@
         },
         {
             "name": "spets"
+        },
+        {
+            "name": "DeathSquad"
+        },
+        {
+            "name": "ERT-Leader"
+        },
+        {
+            "name": "ERT-Janitor"
+        },
+        {
+            "name": "ERT-Officer"
+        },
+        {
+            "name": "ERT-Chaplain"
+        },
+        {
+            "name": "ERT-Engineer"
+        },
+        {
+            "name": "ERT-Medical"
+        },
+        {
+            "name": "Shrambled",
+            "delays":
+            [
+                [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2]
+            ]
         }
     ]
 }

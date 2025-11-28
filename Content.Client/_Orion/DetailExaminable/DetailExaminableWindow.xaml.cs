@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._Orion.StyleSheets;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Orion.DetailExaminable;
@@ -39,6 +40,8 @@ public sealed partial class DetailExaminableWindow : FancyWindow
 
         RotateLeftButton.OnPressed += _ => RotateDirection(-1);
         RotateRightButton.OnPressed += _ => RotateDirection(1);
+
+        PreviewTabs.OnTabChanged += OnTabChanged;
     }
 
     private void RotateDirection(int step)
@@ -65,6 +68,45 @@ public sealed partial class DetailExaminableWindow : FancyWindow
 
         _spriteView.SetEntity(_currentEntity.Value);
         TargetPreview.AddChild(_spriteView);
+    }
+
+    private void UpdateNsfwPreviewVisibility(bool toggleNsfw)
+    {
+        // Return if nothing changes
+        if (PreviewTagsText.Visible == !toggleNsfw)
+            return;
+
+        var config = IoCManager.Resolve<IConfigurationManager>();
+        var showLinks = config.GetCVar(CCVars.FlavorLinksEnabled);
+        var showOOC = config.GetCVar(CCVars.FlavorOocEnabled);
+
+        if (showLinks)
+        {
+            PreviewLinksContainer.Visible = !toggleNsfw;
+            PreviewNSFWLinksContainer.Visible = toggleNsfw;
+        }
+
+        if (showOOC)
+        {
+            PreviewOOCText.Visible = !toggleNsfw;
+            PreviewNSFWOOCText.Visible = toggleNsfw;
+        }
+
+        PreviewTagsText.Visible = !toggleNsfw;
+        PreviewNSFWTagsText.Visible = toggleNsfw;
+    }
+
+    private void OnTabChanged(int tab)
+    {
+        switch (tab)
+        {
+            case 3:
+                UpdateNsfwPreviewVisibility(true);
+                break;
+            default:
+                UpdateNsfwPreviewVisibility(false);
+                break;
+        }
     }
 
     public void UpdateState(DetailExaminableEuiState state, IEntityManager entManager)
@@ -102,40 +144,50 @@ public sealed partial class DetailExaminableWindow : FancyWindow
 
         UpdateSpriteDirection();
 
-        PreviewAppearanceText.SetMessage(GetContentWithEmptyMessage(state.FlavorText, "detail-examinable-empty-flavor"));
+        PreviewAppearanceText.SetMarkup(GetContentWithEmptyMessage(state.FlavorText, "detail-examinable-empty-flavor"));
 
         if (showOoc)
-            PreviewOOCText.SetMessage(GetContentWithEmptyMessage(state.OOCFlavorText, "detail-examinable-empty-ooc"));
+        {
+            PreviewOOCText.SetMarkup(GetContentWithEmptyMessage(state.OOCFlavorText, "detail-examinable-empty-ooc"));
+
+            if (showNsfw)
+                PreviewNSFWOOCText.SetMarkup(GetContentWithEmptyMessage(state.NsfwOOCFlavorText, "detail-examinable-empty-ooc"));
+        }
 
         if (showTraits)
-            PreviewTraitsText.SetMessage(GetContentWithEmptyMessage(state.CharacterFlavorText, "detail-examinable-empty-character"));
+            PreviewTraitsText.SetMarkup(GetContentWithEmptyMessage(state.CharacterFlavorText, "detail-examinable-empty-character"));
 
         if (showNsfw)
-            PreviewNSFWText.SetMessage(GetContentWithEmptyMessage(state.NSFWFlavorText, "detail-examinable-empty-nsfw"));
+            PreviewNSFWText.SetMarkup(GetContentWithEmptyMessage(state.NsfwFlavorText, "detail-examinable-empty-nsfw"));
 
         if (showGyr)
         {
             PreviewGYRContainer.RemoveAllChildren();
 
             PreviewGYRContainer.AddChild(CreateSectionHeader("humanoid-profile-editor-gyr-green", Color.Green, useStripeBack: true));
-            CreateGYRTextLabel(GetContentWithEmptyMessage(state.GreenFlavorText, "detail-examinable-empty-green"));
+            CreateGyrTextLabel(GetContentWithEmptyMessage(state.GreenFlavorText, "detail-examinable-empty-green"));
 
             PreviewGYRContainer.AddChild(CreateSectionHeader("humanoid-profile-editor-gyr-yellow", Color.Yellow, useStripeBack: true));
-            CreateGYRTextLabel(GetContentWithEmptyMessage(state.YellowFlavorText, "detail-examinable-empty-yellow"));
+            CreateGyrTextLabel(GetContentWithEmptyMessage(state.YellowFlavorText, "detail-examinable-empty-yellow"));
 
             PreviewGYRContainer.AddChild(CreateSectionHeader("humanoid-profile-editor-gyr-red", Color.Red, useStripeBack: true));
-            CreateGYRTextLabel(GetContentWithEmptyMessage(state.RedFlavorText, "detail-examinable-empty-red"));
+            CreateGyrTextLabel(GetContentWithEmptyMessage(state.RedFlavorText, "detail-examinable-empty-red"));
         }
 
         PreviewTagsText.Text = state.TagsFlavorText;
+        PreviewNSFWTagsText.Text = state.NsfwTagsFlavorText;
 
         if (showLinks)
         {
-            ProcessLinks(state.LinksFlavorText);
+            ProcessLinks(state.LinksFlavorText, PreviewLinksContainer);
+
+            if (showNsfw)
+                ProcessLinks(state.NsfwLinksFlavorText, PreviewNSFWLinksContainer);
         }
         else // TODO: Remove all container, now its just remove links
         {
             PreviewLinksContainer?.RemoveAllChildren();
+            PreviewNSFWLinksContainer?.RemoveAllChildren();
         }
 
         Badge.Visible = PlayerBadge();
@@ -149,23 +201,20 @@ public sealed partial class DetailExaminableWindow : FancyWindow
         return content;
     }
 
-    private void CreateGYRTextLabel(string text)
+    private void CreateGyrTextLabel(string text)
     {
         var label = new RichTextLabel
         {
-            Text = text + "\n",
             VerticalExpand = true,
         };
 
+        label.SetMarkup(text + "\n");
         PreviewGYRContainer.AddChild(label);
     }
 
-    private void ProcessLinks(string linksText)
+    private void ProcessLinks(string linksText, BoxContainer linksContainer)
     {
-        if (PreviewLinksContainer == null)
-            return;
-
-        PreviewLinksContainer.RemoveAllChildren();
+        linksContainer.RemoveAllChildren();
         if (string.IsNullOrEmpty(linksText))
         {
             var emptyLabel = new Label
@@ -173,9 +222,10 @@ public sealed partial class DetailExaminableWindow : FancyWindow
                 Text = Loc.GetString("detail-examinable-empty-links"),
                 HorizontalExpand = true,
                 HorizontalAlignment = HAlignment.Center,
-                FontColorOverride = Color.Gray
+                FontColorOverride = Color.Gray,
             };
-            PreviewLinksContainer.AddChild(emptyLabel);
+
+            linksContainer.AddChild(emptyLabel);
             return;
         }
 
@@ -184,11 +234,11 @@ public sealed partial class DetailExaminableWindow : FancyWindow
         {
             if (IsValidUrl(link))
             {
-                CreateLinkButton(link);
+                CreateLinkButton(link, linksContainer);
             }
             else
             {
-                CreateLinkTextLabel(link);
+                CreateLinkTextLabel(link, linksContainer);
             }
         }
     }
@@ -215,7 +265,7 @@ public sealed partial class DetailExaminableWindow : FancyWindow
             url.StartsWith("https://cdn.discordapp.com/attachments", StringComparison.OrdinalIgnoreCase);
     }
 
-    private void CreateLinkButton(string url)
+    private void CreateLinkButton(string url, BoxContainer linksContainer)
     {
         var button = new Button
         {
@@ -228,10 +278,10 @@ public sealed partial class DetailExaminableWindow : FancyWindow
 
         button.OnPressed += _ => OpenLink(url);
 
-        PreviewLinksContainer.AddChild(button);
+        linksContainer.AddChild(button);
     }
 
-    private void CreateLinkTextLabel(string text)
+    private void CreateLinkTextLabel(string text, BoxContainer linksContainer)
     {
         var label = new Label
         {
@@ -241,7 +291,7 @@ public sealed partial class DetailExaminableWindow : FancyWindow
             FontColorOverride = Color.Gray,
         };
 
-        PreviewLinksContainer.AddChild(label);
+        linksContainer.AddChild(label);
     }
 
     private static string GetLinkDisplayText(string url)
@@ -274,14 +324,12 @@ public sealed partial class DetailExaminableWindow : FancyWindow
         if (color.HasValue)
             label.FontColorOverride = color.Value;
 
-        if (useStripeBack)
-        {
-            var stripe = new StripeBack();
-            stripe.AddChild(label);
-            return stripe;
-        }
+        if (!useStripeBack)
+            return label;
 
-        return label;
+        var stripe = new StripeBack();
+        stripe.AddChild(label);
+        return stripe;
     }
 
     private bool PlayerBadge() // TODO: Something like donator, coder, owner badges

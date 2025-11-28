@@ -445,6 +445,7 @@
     - SecurityWeaponsStatic
     - SecurityAmmoStatic
     # Goobstation
+    - SecurityWeaponsStaticGoob
     - SecurityAmmoStaticGoob
     - SyndicateAmmoLightStatic
     - ScienceExplosives
@@ -592,6 +593,9 @@
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards
+    # Orion-Start
+    - ChemistryBoards
+    # Orion-End
     - ServiceBoards
     #- ScienceBoards - Goobstation - Moved to Scifab
     - CameraBoards
@@ -765,6 +769,7 @@
     - PowerCellsStatic
     - ScienceExplosives
     - GrenadeTriggersStatic
+    - SecurityWeaponsStaticGoob
     - SecurityWeaponsNonEmaggableStaticGoob
     dynamicPacks:
     - SalvageSecurityBoards
@@ -879,6 +884,7 @@
     - SyringeCase
     dynamicPacks:
     # Orion-Start
+    - ChemistryBoards
     - BodyBagsDynamic
     # Orion-End
     - Chemistry

@@ -181,9 +181,9 @@
     - !type:GroupSelector
       children:
       - id: ClothingBeltSecurityFilled
-        weight: 0.7
+        weight: 0.7 # Orion-Edit | 0.5 > 0.7
       - id: ClothingBeltCorporateJudoFilled
-        weight: 0.3
+        weight: 0.3 # Orion-Edit | 0.5 > 0.3
     # Goobstation - Martial Arts - end
 
 - type: entity

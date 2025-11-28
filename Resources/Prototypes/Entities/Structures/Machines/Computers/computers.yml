@@ -757,6 +757,15 @@
     board: ResearchComputerCircuitboard
 #  - type: AccessReader # Orion-Remove
 #    access: [["Research"]]
+  # Orion-Start
+  - type: Speech
+    speechSounds: Borg
+    speechVerb: Robotic
+  - type: Grammar
+    attributes:
+      gender: female
+      proper: true
+  # Orion-End
   - type: PointLight
     radius: 1.5
     energy: 1.6

@@ -34,6 +34,8 @@ using Content.Shared.Research.Prototypes;
 using Content.Goobstation.Common.Pirates;
 using Content.Goobstation.Common.Research; // R&D Console Rework
 using System.Linq;
+using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 using Robust.Shared.Prototypes; // R&D Console Rework
 
 namespace Content.Server.Research.Systems;
@@ -41,6 +43,7 @@ namespace Content.Server.Research.Systems;
 public sealed partial class ResearchSystem
 {
     [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private readonly ChatSystem _chat = default!; // Orion
 
     private void InitializeConsole()
     {
@@ -95,7 +98,17 @@ public sealed partial class ResearchSystem
                 ("amount", technologyPrototype.Cost),
                 ("approver", getIdentityEvent.Title ?? string.Empty)
             );
+
+            // Orion-Start
+            var messageIC = Loc.GetString(
+                "research-console-unlock-technology-ic",
+                ("technology", Loc.GetString(technologyPrototype.Name)),
+                ("amount", technologyPrototype.Cost.ToString()),
+                ("approver", getIdentityEvent.Title ?? string.Empty));
+            // Orion-End
+
             _radio.SendRadioMessage(uid, message, component.AnnouncementChannel, uid, escapeMarkup: false);
+            _chat.TrySendInGameICMessage(uid, messageIC, InGameICChatType.Speak, false); // Orion
         }
 
         SyncClientWithServer(uid);

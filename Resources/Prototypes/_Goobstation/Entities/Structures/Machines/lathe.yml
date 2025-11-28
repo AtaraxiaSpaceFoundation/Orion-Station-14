@@ -197,6 +197,7 @@
     - MiscSignallersStatic
     dynamicPacks:
     # Orion-Start
+    - ChemistryBoards
     - BodyBagsDynamic
     # Orion-End
     - AdvancedTools
@@ -275,6 +276,7 @@
     - LatheMiscStatic
     - ChemistryStatic
     - TapeRecorderStatic
+    - CondimentStatic
     dynamicPacks:
     - OrionService # Orion
     - Janitor

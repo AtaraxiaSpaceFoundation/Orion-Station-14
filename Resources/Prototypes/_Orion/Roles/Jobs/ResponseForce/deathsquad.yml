@@ -1,0 +1,51 @@
+- type: job
+  id: DeathSquadLeader
+  name: job-name-deathsquad-leader
+  description: job-description-deathsquad-leader
+  playTimeTracker: JobDeathSquadLeader
+  setPreference: false
+  startingGear: DeathSquadLeaderGear
+  icon: "JobIconDeathSquad"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - NanotrasenRepresentative
+  - BlueshieldOfficer
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
+  - !type:AddComponentSpecial
+    components:
+    - type: DeathSquadMember # Goobstation
+
+- type: startingGear
+  id: DeathSquadLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDeathSquad
+    back: ClothingBackpackDeathSquad
+    mask: ClothingMaskGasDeathSquad
+    eyes: ClothingEyesGlassesDeathsquad
+    neck: ExecutiveIDCard
+    ears: ClothingHeadsetDeathsquad
+    gloves: ClothingHandsGlovesDeathsquadUnremovable
+    outerClothing: ClothingOuterHardsuitDeathsquad
+    shoes: ClothingShoesBootsMagDeathsquad
+    id: DeathsquadLeaderPDA
+    pocket1: PhoronSabre
+    pocket2: WeaponRevolverMateba
+    belt: ClothingBeltDeathsquadWebbingFilled
+  storage:
+    back:
+    - SpeedLoaderMatebaAP
+    - SpeedLoaderMatebaAP
+    - ToolDebug # Spanish Army Knife - TODO Replace
+    - WelderExperimental
+    - BlueShieldShieldEvilFilled # Goobstation
+    - DeterrentCaseFilled
+  inhand:
+  - WeaponPulseRifle
+
+# Death Squad Soldier > Prototypes/Roles/Jobs/CentComm/deathsquad.yml

@@ -1,6 +1,5 @@
 - type: constructionGraph
   id: FloorBluespace
-  start: start
   graph:
     - node: start
       edges:

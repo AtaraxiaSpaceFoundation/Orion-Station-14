@@ -212,6 +212,17 @@ VendingMachinePride: RandomVending
 
 DoorXenoResin: ResinDoor # Holy Goob
 
+AirlockMTFCplsLocked: AirlockCentralCommandLocked
+AirlockMTFEngineeringLocked: AirlockCentralCommandLocked
+AirlockMTFExternalLocked: AirlockExternalCommandLocked
+AirlockMTFGlassLockedAlt: AirlockCentralCommandGlassLocked
+AirlockMTFJanitorLocked: AirlockCentralCommandLocked
+AirlockMTFSecurityLocked: AirlockCentralCommandLocked
+MarkerSpecforce: MarkerResponseForce
+SpawnMobGuardERTUnitSecurity: null
+WeaponDominatorNT: WeaponDisabler
+WindoorMTFMedicalLocked: WindoorSecureCentralCommandLocked
+
 GunSafeRifleLecter: GunSafeRifleLecterAlertLocked
 GunSafeSubMachineGunDrozd: GunSafeSubMachineGunDrozdAlertLocked
 GunSafeShotgunEnforcer: GunSafeShotgunEnforcerAlertLocked
@@ -222,6 +233,8 @@ GlassBoxLaserFilled: GlassBoxLaserFilledAlertLocked
 
 ChemDispenserEmpty: EnergyChemDispenser
 ChemDispenser: EnergyChemDispenser
+
+BaseSecretDoorAssembly: null
 
 # Orion-End
 

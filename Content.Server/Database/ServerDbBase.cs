@@ -419,6 +419,9 @@ namespace Content.Server.Database
                 profile.TagsFlavorText,
                 profile.LinksFlavorText,
                 profile.NSFWFlavorText,
+                profile.NSFWOOCFlavorText,
+                profile.NSFWLinksFlavorText,
+                profile.NSFWTagsFlavorText,
                 // Orion-End
                 profile.Species,
                 profile.Height, // Goobstation: port EE height/width sliders
@@ -460,14 +463,17 @@ namespace Content.Server.Database
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
             // Orion-Start
-            profile.OOCFlavorText = humanoid.OOCFlavorText;
+            profile.OOCFlavorText = humanoid.OocFlavorText;
             profile.CharacterFlavorText = humanoid.CharacterFlavorText;
             profile.GreenFlavorText = humanoid.GreenFlavorText;
             profile.YellowFlavorText = humanoid.YellowFlavorText;
             profile.RedFlavorText = humanoid.RedFlavorText;
             profile.TagsFlavorText = humanoid.TagsFlavorText;
             profile.LinksFlavorText = humanoid.LinksFlavorText;
-            profile.NSFWFlavorText = humanoid.NSFWFlavorText;
+            profile.NSFWFlavorText = humanoid.NsfwFlavorText;
+            profile.NSFWLinksFlavorText = humanoid.NsfwLinksFlavorText;
+            profile.NSFWOOCFlavorText = humanoid.NsfwOOCFlavorText;
+            profile.NSFWTagsFlavorText = humanoid.NsfwTagsFlavorText;
             // Orion-End
             profile.Species = humanoid.Species;
             profile.Height = humanoid.Height; // Goobstation: port EE height/width sliders

@@ -8,3 +8,6 @@
 
 roles-antag-heretic-name = Еретик
 roles-antag-heretic-description = Испытывая влияние, осознайте, что все они были отняты. Приноси людей в жертву и стань всесильным... или умри, пытаясь.
+
+roles-antag-ghoul-name = Упырь
+roles-antag-ghoul-description = Помогите своему господину достичь вознесения.

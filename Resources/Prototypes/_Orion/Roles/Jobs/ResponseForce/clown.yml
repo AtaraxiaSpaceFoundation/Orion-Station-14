@@ -1,0 +1,61 @@
+- type: startingGear
+  id: ERT-ClownLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesClown
+    head: ClothingHeadHelmetERTLeader
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskClownUnremoveable
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorBasic
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    pocket1: WeaponDislippler
+    pocket2: FlashlightSeclite
+  storage:
+    back:
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - ClownRecorder
+    - PushHorn
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+  inhand:
+  - LauncherCreamPieRegenerating
+
+- type: startingGear
+  id: ERT-ClownGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    back: ClothingBackpackERTSecurity
+    shoes: ClothingShoesClown
+    head: ClothingHeadHelmetERTSecurity
+    neck: ExecutiveIDCard # Goobstation - Executive Access!
+    mask: ClothingMaskClownUnremoveable
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorBasic
+    id: ERTSecurityPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltAssaultFilled # Goobstation
+    pocket1: PushHorn
+    pocket2: FlashlightSeclite
+  storage:
+    back:
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxZiptie
+    - CrowbarRed
+    - ClownRecorder
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+    - FoodPieBananaCream
+  inhand:
+  - LauncherCreamPie

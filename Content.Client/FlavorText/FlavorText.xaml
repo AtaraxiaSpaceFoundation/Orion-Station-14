@@ -181,6 +181,65 @@
             </BoxContainer>
         </BoxContainer>
 
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#80008055" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-nsfw-ooc-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CFlavorNSFWOOCTextInput" Access="Public" MinSize="110 200" Margin="10" HorizontalExpand="True" VerticalExpand="True" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="False">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#9370DB55" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="False">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-nsfw-tags-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="False">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CNSFWTagsTextInput" Access="Public" MinSize="110 75" Margin="10" HorizontalExpand="False" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="False">
+                <PanelContainer MinSize="5 0" HorizontalExpand="False" VerticalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <graphics:StyleBoxFlat BackgroundColor="#00FA9A55" />
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'humanoid-profile-editor-flavor-nsfw-links-label'}" StyleClasses="LabelBig" Margin="5,0,0,0" HorizontalAlignment="Left" />
+                    </controls:StripeBack>
+                    <PanelContainer StyleClasses="Inset" Margin="5" HorizontalExpand="True" VerticalExpand="False">
+                        <PanelContainer.PanelOverride>
+                            <graphics:StyleBoxFlat BackgroundColor="#80808008" />
+                        </PanelContainer.PanelOverride>
+                        <TextEdit Name="CNSFWLinksTextInput" Access="Public" MinSize="110 75" Margin="10" HorizontalExpand="False" />
+                    </PanelContainer>
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
             <PanelContainer HorizontalExpand="False" VerticalExpand="True" MinSize="150 0">
                 <PanelContainer.PanelOverride>
@@ -264,6 +323,7 @@
                             </PanelContainer.PanelOverride>
                             <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
                                 <RichTextLabel Name="PreviewOOCText" Access="Public" VerticalExpand="True" Margin="5" />
+                                <RichTextLabel Name="PreviewNSFWOOCText" Access="Public" VerticalExpand="True" Margin="5" Visible="False" />
                             </ScrollContainer>
                         </PanelContainer>
                     </BoxContainer>
@@ -278,6 +338,7 @@
                             </PanelContainer.PanelOverride>
                             <ScrollContainer HScrollEnabled="False" VerticalExpand="True">
                                 <BoxContainer Name="PreviewLinksContainer" Access="Public" Orientation="Vertical" />
+                                <BoxContainer Name="PreviewNSFWLinksContainer" Access="Public" Orientation="Vertical" Visible="False" />
                             </ScrollContainer>
                         </PanelContainer>
                     </BoxContainer>
@@ -289,6 +350,7 @@
                     <controls:StripeBack>
                         <PanelContainer HorizontalExpand="True" VerticalExpand="False" Margin="0,5,0,0">
                             <Label Name="PreviewTagsText" Access="Public" StyleClasses="WindowFooterText" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Label Name="PreviewNSFWTagsText" Access="Public" StyleClasses="WindowFooterText" HorizontalAlignment="Center" VerticalAlignment="Center" Visible="False" />
                         </PanelContainer>
                     </controls:StripeBack>
                 </BoxContainer>

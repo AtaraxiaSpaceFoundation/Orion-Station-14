@@ -42,6 +42,8 @@ ntr-executive-1984-name = Револьвер Декард
 ntr-executive-1984-desc = Стандартный револьвер Декард для личной защиты.
 ntr-executive-combatmed-name = Боевой медкомплект
 ntr-executive-combatmed-desc = Для ситуаций, когда базовых средств первой помощи недостаточно.
+ntr-executive-cassette-name = Кассетный проигрыватель представителя
+ntr-executive-cassette-desc = Кассетный плеер, чтобы слушать музыку во время заключения важных сделок.
 
 # response teams
 

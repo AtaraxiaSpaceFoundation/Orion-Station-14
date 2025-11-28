@@ -266,11 +266,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   <Box>
     [color=#999999][italic] 4 очка эволюции / 25 химикатов[italic][/color]
   </Box>
-  - Генокрад производит 5 единиц адреналина генокрада.
-  - При втором использовании сразу наносит 6.75 ядовитого урона генокраду.
-  - Убирает оглушения, время падений, делает невосприимчивым к большинству видов усталости.
-  - Можно использовать, будучи связанным или в меньшей форме.
-  - Можно использовать в огне.
+  - User is given the "Adrenaline reserves" status effect, lasting for 10 seconds.
+  - Renders the user completely immune to stuns, stamina damage, damage slowdown and most incapacitation methods.
+  - Regenerates 10 stamina per tick (100 in total).
+  - Deals 1.5 poison damage to the user per tick (15 in total).
+  - Can be used while on fire.
 
   ## Коллективный разум
   <Box>
@@ -282,13 +282,12 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   ## Адаптация к Пустоте
   <Box>
-    [color=#999999][italic] 4 очка эволюции / 0 химикатов / 2 поглощённых организма [italic][/color]
+    [color=#999999][italic] 4 Evolution Points / Automatic  [italic][/color]
   </Box>
-  - Если вы активны, вы невосприимчивы к урону от баротравмы (разбега).
-  - Невосприимчивость к заморозке и ее эффектам, если она активна.
-  - Не защищает от урона холодом.
-  - При активном состоянии Генокраду больше не нужно дышать.
-  - Замедляет скорость регенерации химии на 25%.
+  - Will automatically protect you from low pressure or temperature.
+  - Removes the need for the presence of air to breathe. Can still be affected by breathing in dangerous gases.
+  - Will not protect from cold damage from other sources.
+  - While active against low pressure or temperature, chem regen rate is decreased by 25%
 
   ## Заживление Плотью
   <Box>

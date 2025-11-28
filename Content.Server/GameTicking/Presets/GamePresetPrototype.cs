@@ -45,6 +45,11 @@ namespace Content.Server.GameTicking.Presets
         [DataField("maxPlayers")]
         public int? MaxPlayers;
 
+        // Orion-Start
+        [DataField("isMiniGame")]
+        public bool IsMiniGame;
+        // Orion-End
+
         [DataField]
         public IReadOnlyList<EntProtoId> Rules { get; private set; } = Array.Empty<EntProtoId>();
 

@@ -35,31 +35,31 @@ public sealed partial class CCVars
     ///     Sets the maximum length for OOC flavor text.
     /// </summary>
     public static readonly CVarDef<int> OOCMaxFlavorTextLength =
-        CVarDef.Create("ic.oocflavor_text_length", 2500, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.oocflavor_text_length", 4500, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum length for character description text.
     /// </summary>
     public static readonly CVarDef<int> CharacterDescriptionLength =
-        CVarDef.Create("ic.character_description_length", 2500, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.character_description_length", 4500, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum length for green preferences text.
     /// </summary>
     public static readonly CVarDef<int> GreenPreferencesLength =
-        CVarDef.Create("ic.green_preferences_length", 2500, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.green_preferences_length", 4500, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum length for yellow preferences text.
     /// </summary>
     public static readonly CVarDef<int> YellowPreferencesLength =
-        CVarDef.Create("ic.yellow_preferences_length", 2500, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.yellow_preferences_length", 4500, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum length for red preferences text.
     /// </summary>
     public static readonly CVarDef<int> RedPreferencesLength =
-        CVarDef.Create("ic.red_preferences_length", 2500, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.red_preferences_length", 4500, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     ///     Sets the maximum length for tags text.
@@ -76,6 +76,6 @@ public sealed partial class CCVars
     /// <summary>
     ///     Sets the maximum length for NSFW preferences text.
     /// </summary>
-    public static readonly CVarDef<int> NSFWPreferencesLength =
-        CVarDef.Create("ic.nsfw_preferences_length", 2500, CVar.SERVER | CVar.REPLICATED);
+    public static readonly CVarDef<int> NsfwPreferencesLength =
+        CVarDef.Create("ic.nsfw_preferences_length", 4500, CVar.SERVER | CVar.REPLICATED);
 }

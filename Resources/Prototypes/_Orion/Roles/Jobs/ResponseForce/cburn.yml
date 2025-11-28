@@ -1,0 +1,46 @@
+- type: job
+  id: CBURNLeader
+  name: job-name-cburn-leader
+  description: job-description-cburn-leader
+  playTimeTracker: JobCBURNLeader
+  setPreference: false
+  startingGear: CBURNLeaderGear
+  icon: "JobIconNanotrasen"
+  supervisors: job-supervisors-centcom
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - NanotrasenRepresentative
+  - BlueshieldOfficer
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
+
+- type: startingGear
+  id: CBURNLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    back: ClothingBackpackDuffelCBURN
+    mask: ClothingMaskGasERT
+    neck: ExecutiveIDCard
+    eyes: ClothingEyesGlassesMedSec
+    ears: ClothingHeadsetAltCentCom
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitCBURNLeader
+    shoes: ClothingShoesBootsMagEmergencyResponseTeam
+    id: CBURNLeaderPDA
+    pocket1: InfectionScannerCburn
+    pocket2: WeaponPulsePistol
+    belt: ClothingBeltSecurityFilled
+  storage:
+    back:
+    - WeaponPulseCarbine
+    - AmbuzolPlusMedipen
+    - AmbuzolMedipen
+    - AmbuzolMedipen
+    - MedkitCombatFilled
+    - CburnSpear
+
+# CBURN Soldier > Prototypes/Roles/Jobs/CentComm/cburn.yml
