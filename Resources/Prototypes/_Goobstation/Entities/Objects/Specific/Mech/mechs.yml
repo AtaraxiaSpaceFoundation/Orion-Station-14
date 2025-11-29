@@ -441,7 +441,7 @@
   - type: ContainerFill
     containers:
       mech-battery-slot:
-      - PowerCellAntiqueProto
+      - PowerCellVortex # Orion-Edit | Replaced PowerCellAntiqueProto
 
 - type: entity
   id: MechSeraphFilled

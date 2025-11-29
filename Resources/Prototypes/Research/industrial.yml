@@ -122,6 +122,12 @@
   tier: 1
   cost: 7500
   recipeUnlocks:
+  # Orion-Start
+  - MegaCellSuper
+  - MegaCellHyper
+  - MegaCellHigh
+  - PowerCellSuper
+  # Orion-End
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
@@ -351,13 +357,19 @@
   id: OptimizedMicrogalvanism
   name: research-technology-optimized-microgalvanism
   icon:
-    sprite: Objects/Power/power_cells.rsi
-    state: microreactor
+    sprite: _Orion/Objects/Power/power_cells.rsi # Orion-Edit
+    state: bluespace # Orion-Edit
   discipline: Industrial
   tier: 3
   cost: 15000 # Goobstation 10000 -> 15000
   recipeUnlocks:
-  - PowerCellMicroreactor
+  # Orion-Start
+  - MegaCellBluespace
+  - PowerCellBluespace
+  - PowerCellBluespaceReactor
+  - PowerCellVortex
+  # Orion-End
+#  - PowerCellMicroreactor # Orion-Edit | Replaced with PowerCellBluespaceReactor
   - PowerCellHyper
   technologyPrerequisites:
   - AdvancedToolsTechnology  # Goobstation R&D Console rework
