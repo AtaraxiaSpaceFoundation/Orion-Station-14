@@ -17,6 +17,11 @@ public sealed class PatronSupportUIController : UIController, IOnStateEntered<Lo
 
     public void OnStateEntered(LobbyState state)
     {
+        // Orion-Start
+        if (!_cfg.GetCVar(CCVars.PatronEnabled))
+            return;
+        // Orion-End
+
         if (_hasShownThisSession)
             return;
 
