@@ -1305,7 +1305,7 @@ namespace Content.Client.Lobby.UI
             UpdateGenderControls();
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
-            UpdateUplinkPreferenceControls(); // Reserve add
+            UpdateUplinkPreferenceControls(); // Orion
             UpdateAgeEdit();
             UpdateEyePickers();
             UpdateSaveButton();

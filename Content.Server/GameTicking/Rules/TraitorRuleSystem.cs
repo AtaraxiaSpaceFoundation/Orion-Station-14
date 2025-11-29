@@ -275,6 +275,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             _antag.SendBriefing(traitor, GenerateBriefing(codewords, code, issuer, uplinkPreference), Color.Crimson, component.GreetSoundNotification); // Orion-Edit | Add uplinkPreference
             _log.Debug($"MakeTraitor {ToPrettyString(traitor)} - Sent the Briefing");
         }
+
         component.TraitorMinds.Add(mindId);
 
         // Assign briefing
@@ -286,7 +287,7 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         {
             EnsureComp<RoleBriefingComponent>(traitorRole.Value.Owner, out var briefingComp);
             // Goobstation Change - If you remove this, we lose ringtones and flavor in char menu. Upstream's version sucks.
-            briefingComp.Briefing = GenerateBriefingCharacter(codewords, code, issuer, uplinkPreference); // Reserve edit
+            briefingComp.Briefing = GenerateBriefingCharacter(codewords, code, issuer, uplinkPreference); // Orion-Edit | Add uplinkPreference
         }
 
         var color = TraitorCodewordColor; // Fall back to a dark red Syndicate color if a prototype is not found
