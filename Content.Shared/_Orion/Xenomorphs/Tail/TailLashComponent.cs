@@ -8,7 +8,7 @@ namespace Content.Shared._Orion.Xenomorphs.Tail;
 // License-Identifier: AGPL-3.0-or-later
 //
 
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentState]
 public sealed partial class TailLashComponent : Component
 {
     [DataField]
@@ -17,11 +17,11 @@ public sealed partial class TailLashComponent : Component
     [ViewVariables]
     public EntityUid? TailLashAction;
 
-    [DataField]
-    public float LashRange = 2f;
+    [DataField, AutoNetworkedField]
+    public EntProtoId TailAnimationId = "WeaponArcXenomorphTail";
 
     [DataField]
-    public int StunTime = 1;
+    public float LashRange = 2f;
 
     [DataField]
     public SoundSpecifier LashSound = new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg", AudioParams.Default.WithVolume(-3));

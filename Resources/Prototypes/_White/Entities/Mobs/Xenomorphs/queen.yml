@@ -17,11 +17,11 @@
     caste: Queen
   - type: XenomorphQueen
   - type: TailLash
-    tailDamage:
-      groups:
-        Brute: 5
-    inject:
-      ChloralHydrate: 10 # Goobstation - new chemical
+#    tailDamage: # Orion-Remove
+#      groups:
+#        Brute: 5
+#    inject:
+#      ChloralHydrate: 10 # Goobstation - new chemical
   #- type: ActionGrant # Goobstation - moved to organs
   #  actions:
   #  - ActionTransferPlasma
@@ -57,7 +57,7 @@
       690: 0.6
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
-    baseSprintSpeed: 2.5
+    baseSprintSpeed: 3.2 # Orion-Edit | 2.5 > 3.2
   - type: MeleeWeapon
     damage:
       groups:
