@@ -234,6 +234,8 @@ GlassBoxLaserFilled: GlassBoxLaserFilledAlertLocked
 ChemDispenserEmpty: EnergyChemDispenser
 ChemDispenser: EnergyChemDispenser
 
+BaseSecretDoorAssembly: null
+
 # Orion-End
 
 # Goobstation - Submarine from DeltaV
