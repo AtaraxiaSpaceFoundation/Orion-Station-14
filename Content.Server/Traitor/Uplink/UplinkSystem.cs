@@ -124,7 +124,7 @@ public sealed class UplinkSystem : EntitySystem
             if (_handsSystem.TryPickupAnyHand(user, radio))
                 return true;
 
-            _sawmill.Warning($"Couldn't put the telecrystals in the player's inventory {ToPrettyString(user)}, therefore, it was left underfoot"); // Reserve edit
+            _sawmill.Warning($"Couldn't put the UplinkRadio in the player's inventory {ToPrettyString(user)}, therefore, it was left underfoot"); // Reserve edit
             return true;
         }
 
