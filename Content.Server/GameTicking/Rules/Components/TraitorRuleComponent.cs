@@ -114,30 +114,29 @@ public sealed partial class TraitorRuleComponent : Component
     [DataField]
     public int StartingBalance = 100;
 
-// Reserve edit start
-
+    // Orion-Start
     /// <summary>
     /// The amount of TC given when using PDA uplink
     /// </summary>
     [DataField]
-    public int PdaUplinkTC = 100;
+    public int PdaUplinkTc = 100;
 
     /// <summary>
     /// The amount of TC given when using Radio uplink
     /// </summary>
     [DataField]
-    public int RadioUplinkTC = 110;
+    public int RadioUplinkTc = 110;
 
     /// <summary>
     /// The amount of TC given when using Implant uplink
     /// </summary>
     [DataField]
-    public int ImplantUplinkTC = 90;
+    public int ImplantUplinkTc = 90;
 
     /// <summary>
     /// The amount of TC given when using raw telecrystals
     /// </summary>
     [DataField]
-    public int RawTelecrystalsTC = 150;
-// Reserve edit end
+    public int RawTelecrystalsTc = 150;
+    // Orion-End
 }

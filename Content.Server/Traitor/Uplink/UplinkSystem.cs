@@ -37,7 +37,6 @@
 
 using Content.Server.Store.Systems;
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Clothing.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Implants;
 using Content.Shared.Inventory;
@@ -46,12 +45,8 @@ using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
-using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Content.Server.Storage.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Log;
-using Content.Shared.Stacks;
 using Content.Server.Stack;
 
 namespace Content.Server.Traitor.Uplink;
@@ -66,20 +61,23 @@ public sealed class UplinkSystem : EntitySystem
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _subdermalImplant = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly StackSystem _stackSystem = default!; // Reserve edit
-    [Dependency] private readonly ILogManager _logManager = default!; // Reserve edit
+    [Dependency] private readonly StackSystem _stackSystem = default!; // Orion
+    [Dependency] private readonly ILogManager _logManager = default!; // Orion
+    [Dependency] private readonly SharedStorageSystem _storage = default!; // Orion
 
-    private ISawmill _sawmill = default!; // Reserve edit
+    private ISawmill _log = default!; // Orion
 
     public static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
     private static readonly EntProtoId FallbackUplinkImplant = "UplinkImplant";
-    // private static readonly ProtoId<ListingPrototype> FallbackUplinkCatalog = "UplinkUplinkImplanter"; - Reserve removed
+//    private static readonly ProtoId<ListingPrototype> FallbackUplinkCatalog = "UplinkUplinkImplanter"; // Orion-Edit
 
+    // Orion-Start
     public override void Initialize()
     {
         base.Initialize();
-        _sawmill = _logManager.GetSawmill("uplink"); // Reserve edit
+        _log = _logManager.GetSawmill("uplink");
     }
+    // Orion-End
 
     /// <summary>
     /// Adds an uplink to the target
@@ -89,51 +87,49 @@ public sealed class UplinkSystem : EntitySystem
     /// <param name="uplinkEntity">The entity that will actually have the uplink functionality. Defaults to the PDA if null.</param>
     /// <param name="uplinkPreference">The preferred type of uplink. Defaults to PDA if not specified.</param>
     /// <returns>Whether or not the uplink was added successfully</returns>
-    public bool AddUplink(EntityUid user, FixedPoint2 balance, EntityUid? uplinkEntity = null, UplinkPreference uplinkPreference = UplinkPreference.PDA) // Reserve edit
+    public bool AddUplink(EntityUid user, FixedPoint2 balance, EntityUid? uplinkEntity = null, UplinkPreference uplinkPreference = UplinkPreference.Pda) // Orion-Edit | Add uplinkPreference
     {
-        // Reserve edit start
-        if (uplinkPreference == UplinkPreference.Telecrystals)
+        // Orion-Start
+        switch (uplinkPreference)
         {
-            var tcEntity = Spawn("Telecrystal", Transform(user).Coordinates);
+            case UplinkPreference.Telecrystals:
+            {
+                var tcEntity = Spawn("Telecrystal", Transform(user).Coordinates);
 
-            _stackSystem.SetCount(tcEntity, (int)balance);
+                _stackSystem.SetCount(tcEntity, (int)balance);
 
-            if (TryPutInBackpack(user, tcEntity))
+                if (TryPutInBackpack(user, tcEntity))
+                    return true;
+
+                if (_handsSystem.TryPickupAnyHand(user, tcEntity))
+                    return true;
+
+                _log.Warning($"Couldn't put the telecrystals in the player's inventory {ToPrettyString(user)},therefore, it was left underfoot");
                 return true;
+            }
+            case UplinkPreference.Radio:
+            {
+                var radio = Spawn("BaseUplinkRadio", Transform(user).Coordinates);
 
-            if (_handsSystem.TryPickupAnyHand(user, tcEntity))
+                // Set up radio balance based on parameter
+                var store = EnsureComp<StoreComponent>(radio);
+                store.Balance.Clear();
+                var bal = new Dictionary<string, FixedPoint2> { { TelecrystalCurrencyPrototype, balance } };
+                _store.TryAddCurrency(bal, radio, store);
+
+                if (TryPutInBackpack(user, radio))
+                    return true;
+
+                if (_handsSystem.TryPickupAnyHand(user, radio))
+                    return true;
+
+                _log.Warning($"Couldn't put the UplinkRadio in the player's inventory {ToPrettyString(user)}, therefore, it was left underfoot");
                 return true;
-
-            _sawmill.Warning($"Couldn't put the telecrystals in the player's inventory {ToPrettyString(user)},therefore, it was left underfoot"); // Reserve edit
-            return true;
+            }
+            case UplinkPreference.Implant:
+                return ImplantUplink(user, balance);
         }
-
-        if (uplinkPreference == UplinkPreference.Radio)
-        {
-            var radio = Spawn("BaseUplinkRadio", Transform(user).Coordinates);
-
-            // Set up radio balance based on parameter
-            var store = EnsureComp<StoreComponent>(radio);
-            store.Balance.Clear();
-            var bal = new Dictionary<string, FixedPoint2> { { TelecrystalCurrencyPrototype, balance } };
-            _store.TryAddCurrency(bal, radio, store);
-
-            if (TryPutInBackpack(user, radio))
-                return true;
-
-            if (_handsSystem.TryPickupAnyHand(user, radio))
-                return true;
-
-            _sawmill.Warning($"Couldn't put the UplinkRadio in the player's inventory {ToPrettyString(user)}, therefore, it was left underfoot"); // Reserve edit
-            return true;
-        }
-
-        if (uplinkPreference == UplinkPreference.Implant)
-        {
-            return ImplantUplink(user, balance);
-        }
-        // Reserve Station edit end
-
+        // Orion-End
 
         uplinkEntity ??= FindUplinkTarget(user);
 
@@ -172,13 +168,28 @@ public sealed class UplinkSystem : EntitySystem
     /// </summary>
     private bool ImplantUplink(EntityUid user, FixedPoint2 balance)
     {
+/* // Orion-Edit
+        if (!_proto.TryIndex<ListingPrototype>(FallbackUplinkCatalog, out var catalog))
+            return false;
+
+        if (!catalog.Cost.TryGetValue(TelecrystalCurrencyPrototype, out var cost))
+            return false;
+
+        if (balance < cost) // Can't use Math functions on FixedPoint2
+            balance = 0;
+        else
+            balance = balance - cost;
+*/
+
         var implant = _subdermalImplant.AddImplant(user, FallbackUplinkImplant);
 
-        if (implant == null || !HasComp<StoreComponent>(implant))  // Reserve Station edit start - simplified implant creation
+        // Orion-Edit-Start
+        if (implant == null || !HasComp<StoreComponent>(implant))  // Simplified implant creation
         {
-            _sawmill.Warning($"Failed to create an uplink implant for the player {ToPrettyString(user)}"); // Reserve edit
+            _log.Warning($"Failed to create an uplink implant for the player {ToPrettyString(user)}");
             return false;
         }
+        // Orion-Edit-End
 
         SetUplink(user, implant.Value, balance);
         return true;
@@ -213,20 +224,21 @@ public sealed class UplinkSystem : EntitySystem
         return null;
     }
 
+    // Orion-Start
     /// <summary>
     /// Tries to put an item in the user's backpack
     /// </summary>
     private bool TryPutInBackpack(EntityUid user, EntityUid item)
     {
-        if (_inventorySystem.TryGetSlotEntity(user, "back", out var backEntity))
+        if (!_inventorySystem.TryGetSlotEntity(user, "back", out var backEntity))
+            return false;
+
+        if (_storage.Insert(backEntity.Value, item, out _))
         {
-            var storageSystem = EntitySystem.Get<SharedStorageSystem>();
-            if (storageSystem.Insert(backEntity.Value, item, out _))
-            {
-                return true;
-            }
+            return true;
         }
 
         return false;
     }
+    // Orion-End
 }

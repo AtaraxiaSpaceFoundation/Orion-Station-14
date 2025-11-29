@@ -2507,9 +2507,10 @@ namespace Content.Client.Lobby.UI
         // Orion-Start
         private void OnSkinColorOnValueChangedKeepColor(HumanoidCharacterProfile previous)
         {
-            if (Profile is null) return;
+            if (Profile is null)
+                return;
 
-            var skin = _prototypeManager.Index<SpeciesPrototype>(Profile.Species).SkinColoration;
+            var skin = _prototypeManager.Index(Profile.Species).SkinColoration;
             var color = previous.Appearance.SkinColor;
 
             switch (skin)
@@ -2549,22 +2550,16 @@ namespace Content.Client.Lobby.UI
 
             ReloadProfilePreview();
         }
-        // Orion-End
 
-// Reserve edit start
         private void UpdateUplinkPreferenceControls()
         {
             if (Profile == null)
-            {
                 return;
-            }
-
-            _sawmill.Debug($"Updating uplink controls. Current value: {Profile.UplinkPreference}");
 
             UplinkPrefButton.OnItemSelected -= OnUplinkPrefSelected;
             UplinkPrefButton.Clear();
 
-            UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-pda"), (int)UplinkPreference.PDA);
+            UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-pda"), (int)UplinkPreference.Pda);
 
             UplinkPrefButton.AddItem(Loc.GetString("humanoid-profile-editor-uplink-implant"), (int)UplinkPreference.Implant);
 
@@ -2586,15 +2581,11 @@ namespace Content.Client.Lobby.UI
             if (Profile == null)
                 return;
 
-            _sawmill.Debug($"Setting uplink preference. Old: {Profile.UplinkPreference}, New: {uplinkPreference}");
-
             Profile = Profile.WithUplinkPreference(uplinkPreference);
             SetDirty();
 
             UpdateUplinkPreferenceControls();
-
-            _sawmill.Debug($"After setting uplink preference: {Profile.UplinkPreference}");
         }
-// Reserve edit end
+        // Orion-End
     }
 }

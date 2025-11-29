@@ -629,7 +629,7 @@ namespace Content.Server.Database
         public string FacialHairColor { get; set; } = null!;
         public string EyeColor { get; set; } = null!;
         public string SkinColor { get; set; } = null!;
-        public int Uplink { get; set; } = 0; // Reserve edit; 0 = PDA (UplinkPreference.PDA)
+        public int Uplink { get; set; } = 0; // Orion | 0 = PDA (UplinkPreference.PDA)
         public int SpawnPriority { get; set; } = 0;
         public List<Job> Jobs { get; } = new();
         public List<Antag> Antags { get; } = new();

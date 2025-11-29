@@ -1615,7 +1615,7 @@
   #      tags:
   #        - NukeOpsUplink
 
-#  id: UplinkUplinkImplanter # uplink uplink real
+#  id: UplinkUplinkImplanter # Orion-Remove | Moved to preferences
 #  name: uplink-uplink-implanter-name
 #  description: uplink-uplink-implanter-desc
 #  icon: { sprite: /Textures/Objects/Devices/communication.rsi, state: radio }
@@ -1629,7 +1629,6 @@
 #      blacklist:
 #       tags:
 #          - NukeOpsUplink
-# Removed by reserve station, implant uplink - player can now select this as a preference instead
 
 
 - type: listing

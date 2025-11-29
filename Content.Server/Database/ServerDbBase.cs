@@ -441,7 +441,7 @@ namespace Content.Server.Database
                     markings
                 ),
                 spawnPriority,
-                (UplinkPreference) profile.Uplink,
+                (UplinkPreference) profile.Uplink, // Orion
                 jobs,
                 (PreferenceUnavailableMode) profile.PreferenceUnavailable,
                 antags.ToHashSet(),
@@ -489,7 +489,7 @@ namespace Content.Server.Database
             profile.FacialHairColor = appearance.FacialHairColor.ToHex();
             profile.EyeColor = appearance.EyeColor.ToHex();
             profile.SkinColor = appearance.SkinColor.ToHex();
-            profile.Uplink = (int) humanoid.UplinkPreference;
+            profile.Uplink = (int) humanoid.UplinkPreference; // Orion
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
             profile.Markings = markings;
             profile.Slot = slot;
