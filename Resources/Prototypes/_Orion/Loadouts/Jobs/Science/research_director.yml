@@ -2,4 +2,4 @@
 - type: loadout
   id: ResearchDirectorRoyalCloak
   equipment:
-    neck: ClothinNeckCloakRoyalResearchDirector
+    neck: ClothingNeckCloakRoyalResearchDirector

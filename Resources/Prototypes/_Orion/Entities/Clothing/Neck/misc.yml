@@ -1,8 +1,8 @@
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckNanoTrasenRed
-  name: плащ NanoTrasen
-  description: Офицерский плащ с логотипом NanoTrasen, показывающий преданность своему делу его владельца.
+  id: ClothingNeckNanoTrasenRed
+  name: NanoTrasen cape
+  description: Officer cape with the NanoTrasen logo, showing the dedication of its owner.
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Neck/Misc/NT_red.rsi

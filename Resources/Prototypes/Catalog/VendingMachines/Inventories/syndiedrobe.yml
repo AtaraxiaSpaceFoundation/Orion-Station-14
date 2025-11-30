@@ -17,7 +17,7 @@
     ClothingHeadHatSyndie: 5
     ClothingMaskNeckGaiter: 5
     ClothingOuterWinterSyndie: 5
-    ClothinNeckCloakSyndicateOfficer: 4 # Orion
+    ClothingNeckCloakSyndicateOfficer: 4 # Orion
     ClothingHeadHatSyndieMAA: 3
     ClothingOuterWinterSyndieCap: 3
     ClothingOuterCoatSyndieCap: 3
@@ -31,7 +31,7 @@
     ClothingShoesBootsWinterSyndicate: 2
     HandledBoomBox: 1 # Orion
   contrabandInventory:
-    ClothinNeckCloakSyndicateAdmiral: 1 # Orion
+    ClothingNeckCloakSyndicateAdmiral: 1 # Orion
     ToyFigurineFootsoldier: 1
     ToyFigurineNukieElite: 1
     ToyFigurineNukieCommander: 1

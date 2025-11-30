@@ -42,7 +42,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakFluffyPink
+  id: ClothingNeckCloakFluffyPink
   name: pink fluffy cloak
   description: Its bearer is a beautiful woman, or a good pimp.
   components:
@@ -51,7 +51,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakHellDiverBlack
+  id: ClothingNeckCloakHellDiverBlack
   name: black helldivers cloak
   description: Solid cloak that would be perfect for a real hero!
   components:
@@ -60,7 +60,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakHellDiverWhite
+  id: ClothingNeckCloakHellDiverWhite
   name: white helldivers cloak
   description: Solid cloak that would be perfect for a real hero!
   components:
@@ -69,7 +69,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakHellDiverBrown
+  id: ClothingNeckCloakHellDiverBrown
   name: brown helldivers cloak
   description: Solid cloak that would be perfect for a real hero!
   components:
@@ -78,7 +78,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakHellDiverRed
+  id: ClothingNeckCloakHellDiverRed
   name: red helldivers cloak
   description: Solid cloak that would be perfect for a real hero!
   components:
@@ -87,7 +87,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakRoyalHeadOfSecurity
+  id: ClothingNeckCloakRoyalHeadOfSecurity
   name: royal head of security cloak
   description: The king in the palace, the king in the palace.
   components:
@@ -98,7 +98,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakRoyalResearchDirector
+  id: ClothingNeckCloakRoyalResearchDirector
   name: royal research director cloak
   description: The king in the palace, the king in the palace.
   components:
@@ -109,7 +109,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckCloakSyndicateOfficer
+  id: ClothingNeckCloakSyndicateOfficer
   name: Syndicate officer cloak
   description: Black cloak, stitched with gold cloth at the neck.
   components:

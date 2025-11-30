@@ -4,8 +4,8 @@
   name: captain white mantle
   description: Captain mantle, with white down.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Neck/Cloaks/white_captain_mantle.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/white_captain_mantle.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -20,7 +20,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothinNeckMantleElderLizards
+  id: ClothingNeckMantleElderLizards
   name: elder lizard mantle
   description: A long time ago, in a galaxy far, far away...
   components:

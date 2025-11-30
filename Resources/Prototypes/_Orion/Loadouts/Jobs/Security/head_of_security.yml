@@ -8,4 +8,4 @@
 - type: loadout
   id: HeadOfSecurityRoyalCloak
   equipment:
-    neck: ClothinNeckCloakRoyalHeadOfSecurity
+    neck: ClothingNeckCloakRoyalHeadOfSecurity

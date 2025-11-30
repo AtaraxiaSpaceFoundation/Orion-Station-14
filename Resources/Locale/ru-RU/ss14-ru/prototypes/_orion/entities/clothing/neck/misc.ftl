@@ -1,2 +1,2 @@
-ent-ClothinNeckNanoTrasenRed = плащ НаноТрейзен
+ent-ClothingNeckNanoTrasenRed = плащ НаноТрейзен
     .desc = Офицерский плащ с логотипом НаноТрейзен, показывающий преданность своему делу.
