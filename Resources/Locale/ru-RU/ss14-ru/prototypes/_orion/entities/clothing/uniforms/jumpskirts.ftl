@@ -8,3 +8,5 @@ ent-ClothingUniformJumpskirtInteQTacticalMaid = тактическая юбка 
     .desc = Предполагается, что у лучших горничных должны быть дизайнерские костюмы.
 ent-ClothingUniformJumpskirtWhiteCaptain = белая юбка-комбинезон капитана
     .desc = Белая юбка-комбинезон капитана символизирующая, что ваша зарплата явно превышает нормы.
+ent-ClothingUniformJumpskirtRoll = красная юбка
+    .desc = Красная юбка, с белыми помпонами.

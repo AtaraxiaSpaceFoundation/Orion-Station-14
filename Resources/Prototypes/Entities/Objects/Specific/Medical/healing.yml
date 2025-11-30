@@ -408,6 +408,9 @@
     - Gauze
   - type: Sprite
     state: gauze
+  - type: Clothing # Orion
+    sprite: _Orion/Clothing/Hands/Gloves/gauze.rsi
+    slots: gloves
   - type: Item
     heldPrefix: gauze
   - type: Construction

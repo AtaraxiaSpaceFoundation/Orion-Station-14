@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothinNeckNanoTrasenRed
+  name: плащ NanoTrasen
+  description: Офицерский плащ с логотипом NanoTrasen, показывающий преданность своему делу его владельца.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Misc/NT_red.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak

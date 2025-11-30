@@ -5,9 +5,9 @@
   description: Tactical maid gloves, every self-respecting maid should be able to discreetly eliminate her goals.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Hands/inteq_maid_gloves.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/inteq_maid_gloves.rsi
   - type: Clothing
-    sprite: _Orion/Clothing/Hands/inteq_maid_gloves.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/inteq_maid_gloves.rsi
 
 - type: entity
   parent: ClothingHandsGlovesCombat
@@ -16,9 +16,9 @@
   description: Specialized combat gloves for carrying people around. Transfers tactical kidnapping and tackling knowledge to the user via the use of nanochips.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Hands/inteq_infiltrator.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/inteq_infiltrator.rsi
   - type: Clothing
-    sprite: _Orion/Clothing/Hands/inteq_infiltrator.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/inteq_infiltrator.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -39,9 +39,9 @@
   description: Royal white gloves with gold trim. Gorgeous.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Hands/white_captain_gloves.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/white_captain_gloves.rsi
   - type: Clothing
-    sprite: _Orion/Clothing/Hands/white_captain_gloves.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/white_captain_gloves.rsi
 
 - type: entity
   parent: ClothingHandsGlovesCaptain
@@ -50,6 +50,69 @@
   description: Gloves with an ergonomic shape designed to hold a revolver.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Hands/sheriff_gloves.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/sheriff_gloves.rsi
   - type: Clothing
-    sprite: _Orion/Clothing/Hands/sheriff_gloves.rsi
+    sprite: _Orion/Clothing/Hands/Gloves/sheriff_gloves.rsi
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesCatPawsWhite
+  name: white cat paws gloves
+  description: Extra soft cat paws, especially made for the most stern assistants.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Gloves/paws-white.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Hands/Gloves/paws-white.rsi
+  - type: Fiber
+    fiberColor: fibers-white
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesCatPawsBrown
+  name: brown cat paws gloves
+  description: Extra soft cat paws, especially made for the most stern assistants.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Gloves/paws-brown.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Hands/Gloves/paws-brown.rsi
+  - type: Fiber
+    fiberColor: fibers-brown
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesCatPawsBlack
+  name: black cat paws gloves
+  description: Extra soft cat paws, especially made for the most stern assistants.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Gloves/paws-black.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Hands/Gloves/paws-black.rsi
+  - type: Fiber
+    fiberColor: fibers-black
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesCatPawsBlackWhite
+  name: black and white cat paws gloves
+  description: Extra soft cat paws, especially made for the most stern assistants.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Gloves/paws-black_white.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Hands/Gloves/paws-black_white.rsi
+  - type: Fiber
+    fiberColor: fibers-grey
+
+- type: entity
+  parent: [ ClothingHandsGlovesCombat, ClothingHandsGlovesKravMaga ]
+  id: ClothingHandsGlovesAllianceAssassin
+  name: alliance assassin gloves
+  description: Combat gloves designed to enhance the wearers skills. The built-in nanochips directly send signals to the nerve endings of the hands, bringing the wearer's movements to perfection, which allows victims to be laid on the ground and dragged with maximum efficiency.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Gloves/aliance_assassin.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Hands/Gloves/aliance_assassin.rsi
