@@ -102,16 +102,16 @@
   - type: StorageFill
     contents:
       # Orion-Start
-      - id: ClothingHandsCatPawsBrown
+      - id: ClothingHandsGlovesCatPawsBrown
         prob: 0.005
         orGroup: dressermainloot
-      - id: ClothingHandsCatPawsBlack
+      - id: ClothingHandsGlovesCatPawsBlack
         prob: 0.005
         orGroup: dressermainloot
-      - id: ClothingHandsCatPawsBlackWhite
+      - id: ClothingHandsGlovesCatPawsBlackWhite
         prob: 0.005
         orGroup: dressermainloot
-      - id: ClothingHandsCatPawsWhite
+      - id: ClothingHandsGlovesCatPawsWhite
         prob: 0.005
         orGroup: dressermainloot
       # Orion-End

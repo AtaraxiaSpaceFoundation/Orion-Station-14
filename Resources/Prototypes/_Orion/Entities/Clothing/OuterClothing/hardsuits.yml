@@ -64,8 +64,6 @@
     sprite: _Orion/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
   - type: Clothing
     sprite: _Orion/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
-  - type: TemperatureProtection
-    coefficient: 0.001
   - type: ToggleableClothing
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitOTAAlliance
