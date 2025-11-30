@@ -3,7 +3,6 @@
   markingCategory: Overlay
   bodyPart: Chest
   speciesRestriction: [ Tajaran ]
-  sponsorOnly: true # Corvax-Sponsors
   sprites:
     - sprite: _Orion/Mobs/Customization/Tajaran/tajaran_overlay.rsi
       state: patch
@@ -13,7 +12,6 @@
   markingCategory: Overlay
   bodyPart: Chest
   speciesRestriction: [ Tajaran ]
-  sponsorOnly: true # Corvax-Sponsors
   sprites:
     - sprite: _Orion/Mobs/Customization/Tajaran/tajaran_overlay.rsi
       state: skeleton_body
