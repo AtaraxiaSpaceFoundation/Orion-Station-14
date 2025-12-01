@@ -28,7 +28,7 @@ public sealed partial class LanguageMenuWindow : DefaultWindow
     {
         RobustXamlLoader.Load(this);
         _clientLanguageSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<LanguageSystem>();
-        _spriteSystem = IoCManager.Resolve<IEntityManager>().EntitySysManager.GetEntitySystem<SpriteSystem>(); // Orion
+        _spriteSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<SpriteSystem>(); // Orion
         _clientLanguageSystem.OnLanguagesChanged += UpdateState;
     }
 
