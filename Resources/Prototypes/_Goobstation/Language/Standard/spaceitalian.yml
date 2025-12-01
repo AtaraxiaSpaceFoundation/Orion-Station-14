@@ -11,6 +11,11 @@
   isVisibleLanguage: true
   speech:
     color: "#b54a4a"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: what # TODO: Sprite it
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

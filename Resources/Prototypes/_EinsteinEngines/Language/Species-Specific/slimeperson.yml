@@ -14,6 +14,11 @@
     fontId: SourGummy # Goob Edit - Different Font
     boldFontId: SourGummyBold
     fontSize: 13 # Goob Edit - Increased by 1 to account for slight font size difference.
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: slime
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
