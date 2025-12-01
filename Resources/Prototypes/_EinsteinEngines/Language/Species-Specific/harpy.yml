@@ -17,7 +17,7 @@
   # Orion-Start
   icon:
     sprite: _Orion/Interface/Chat/language.rsi
-    state: what # TODO: Sprite it
+    state: birb
   # Orion-End
   obfuscation:
     !type:SyllableObfuscation
