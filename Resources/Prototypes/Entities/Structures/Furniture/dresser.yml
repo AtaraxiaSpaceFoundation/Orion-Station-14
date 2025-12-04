@@ -101,6 +101,20 @@
   components:
   - type: StorageFill
     contents:
+      # Orion-Start
+      - id: ClothingHandsGlovesCatPawsBrown
+        prob: 0.005
+        orGroup: dressermainloot
+      - id: ClothingHandsGlovesCatPawsBlack
+        prob: 0.005
+        orGroup: dressermainloot
+      - id: ClothingHandsGlovesCatPawsBlackWhite
+        prob: 0.005
+        orGroup: dressermainloot
+      - id: ClothingHandsGlovesCatPawsWhite
+        prob: 0.005
+        orGroup: dressermainloot
+      # Orion-End
 #      - id: ClothingNeckLGBTPin # Orion-Remove
 #        prob: 0.06
 #        orGroup: dressermainloot

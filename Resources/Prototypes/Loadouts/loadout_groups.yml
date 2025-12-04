@@ -1146,6 +1146,7 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
+  - ResearchDirectorRoyalCloak # Orion
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1275,6 +1276,7 @@
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
   - HoSSummerShirt # goob
+  - HeadOfSecurityCommandJumpsuit # Orion
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1283,6 +1285,7 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  - HeadOfSecurityRoyalCloak # Orion
   - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup

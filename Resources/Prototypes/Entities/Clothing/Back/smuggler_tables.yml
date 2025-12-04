@@ -447,7 +447,7 @@
     - id: SpaceCash100
       weight: 15
     - id: PowerCellHyper
-    - id: PowerCellMicroreactor
+    - id: PowerCellBluespaceReactor # Orion-Edit | Replaced PowerCellMicroreactor
     - id: PowerCellHigh
 
 - type: entityTable #1x medium

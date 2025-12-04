@@ -6,6 +6,11 @@
   speech:
     color: "#c7df2edd"
     # fontId: Copperplate #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: moth
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2 # Replacements are really short

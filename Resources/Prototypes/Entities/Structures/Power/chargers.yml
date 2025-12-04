@@ -153,6 +153,7 @@
         name: power-cell-slot-component-slot-name-default
         whitelist:
           tags:
+          - MegaCell # Orion
           - PowerCell
           - PowerCellSmall
 

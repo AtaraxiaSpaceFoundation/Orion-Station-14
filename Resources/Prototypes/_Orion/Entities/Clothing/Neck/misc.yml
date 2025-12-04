@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNanoTrasenRed
+  name: NanoTrasen cape
+  description: Officer cape with the NanoTrasen logo, showing the dedication of its owner.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Misc/NT_red.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak

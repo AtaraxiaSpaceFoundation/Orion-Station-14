@@ -12,6 +12,11 @@
     color: "#a489a0"
     fontId: ChelseaMarket
     fontSize: 12
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: vox
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

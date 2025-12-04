@@ -9,6 +9,11 @@
     fontId: Eatday
     boldFontId: Eatday
     color: "#33528d"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: bingle
+  # Orion-End
   obfuscation:
     !type:PhraseObfuscation
     proportion: 0.66

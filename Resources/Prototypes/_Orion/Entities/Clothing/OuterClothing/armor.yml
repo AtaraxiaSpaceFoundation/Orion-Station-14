@@ -79,7 +79,7 @@
     color: "#FF8C00"
   - type: ScannableForPoints # Goob
     points: 2
-    
+
 - type: entity
   parent: ClothingOuterArmorCaptainCarapace
   id: ClothingOuterArmorCaptainCarapaceWhite
@@ -200,3 +200,28 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
+
+- type: entity
+  parent: [ ClothingOuterArmorBasic, ClothingOuterBaseToggleable ]
+  id: ClothingOuterArmorAllianceAssassin
+  name: alliance assassin armor
+  description: High-quality bulletproof vest with armor plate made of multilayer plasteel. It combines lightness and durability, has a buffer lining and fits perfectly to the body without making unnecessary sounds when worn.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/OuterClothing/Armor/alliance_assassin.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/OuterClothing/Armor/alliance_assassin.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.5
+        Piercing: 0.5
+        Radiation: 0.5
+        Caustic: 0.6
+        Heat: 0.6
+  - type: ToggleableClothing
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetAllianceAssassin

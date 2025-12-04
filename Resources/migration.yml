@@ -236,6 +236,10 @@ ChemDispenser: EnergyChemDispenser
 
 BaseSecretDoorAssembly: null
 
+PowerCellMicroreactor: PowerCellBluespaceReactor
+PowerCellMicroreactorPrinted: PowerCellBluespaceReactorPrinted
+PowerCellAntiqueProto: PowerCellInfinite
+
 # Orion-End
 
 # Goobstation - Submarine from DeltaV

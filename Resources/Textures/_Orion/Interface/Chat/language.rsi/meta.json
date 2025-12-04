@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from TGStation | acratarian, acratarian_old, cetria, corpspeak, demonic, felinid, german, vox - taken from https://github.com/BlueMoon-Labs/BlueMoon-Station | birb, feline, ssl, what - taken from https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13 | buggy, calcic, cheese, dunmeri, shadowtongue, solcommon, solcommon_alt, technorussian - taken from https://github.com/Sandstorm-Station/Sandstorm-Station-13 | Edited by PuroSlavKing (Github)",
+  "size": {
+    "x": 16,
+    "y": 16
+  },
+  "states": [
+    {
+      "name": "eal"
+    },
+    {
+      "name": "xeno"
+    },
+    {
+      "name": "animal"
+    },
+    {
+      "name": "ratvar"
+    },
+    {
+      "name": "slime"
+    },
+    {
+      "name": "swarmer"
+    },
+    {
+      "name": "drone"
+    },
+    {
+      "name": "codespeak"
+    },
+    {
+      "name": "popcorn"
+    },
+    {
+      "name": "galcom"
+    },
+    {
+      "name": "lizard"
+    },
+    {
+      "name": "narsie"
+    },
+    {
+      "name": "beach"
+    },
+    {
+      "name": "aphasia"
+    },
+    {
+      "name": "moth"
+    },
+    {
+      "name": "bloodsucker"
+    },
+    {
+      "name": "dwarf"
+    },
+    {
+      "name": "plant"
+    },
+    {
+      "name": "volt"
+    },
+    {
+      "name": "spider"
+    },
+    {
+      "name": "neokanji"
+    },
+    {
+      "name": "canilunzt"
+    },
+    {
+      "name": "siiktajr"
+    },
+    {
+      "name": "inteq"
+    },
+    {
+      "name": "felinid"
+    },
+    {
+      "name": "cetria"
+    },
+    {
+      "name": "acratarian"
+    },
+    {
+      "name": "acratarian_old"
+    },
+    {
+      "name": "demonic"
+    },
+    {
+      "name": "corpspeak"
+    },
+    {
+      "name": "german"
+    },
+    {
+      "name": "vox"
+    },
+    {
+      "name": "what"
+    },
+    {
+      "name": "ssl"
+    },
+    {
+      "name": "birb"
+    },
+    {
+      "name": "feline"
+    },
+    {
+      "name": "buggy"
+    },
+    {
+      "name": "shadowtongue"
+    },
+    {
+      "name": "calcic"
+    },
+    {
+      "name": "solcommon"
+    },
+    {
+      "name": "solcommon_alt"
+    },
+    {
+      "name": "dunmeri"
+    },
+    {
+      "name": "cheese"
+    },
+    {
+      "name": "technorussian"
+    },
+    {
+      "name": "bingle"
+    }
+  ]
+}

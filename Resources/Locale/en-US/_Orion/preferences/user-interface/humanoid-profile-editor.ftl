@@ -18,3 +18,9 @@ humanoid-profile-editor-gyr-red = Prohibited topics
 humanoid-profile-editor-link-tooltip =
     Click to open: { $url }
     Note: If the link contains harmful content, please report it to the administration.
+
+humanoid-profile-editor-uplink-label = Uplink:
+humanoid-profile-editor-uplink-pda = PDA
+humanoid-profile-editor-uplink-implant = Implant
+humanoid-profile-editor-uplink-radio = Radio
+humanoid-profile-editor-uplink-crystals = Telecrystals

@@ -62,17 +62,17 @@
     Gold: 200
     Silver: 300
 
-- type: latheRecipe
-  id: PowerCellMicroreactor
-  result: PowerCellMicroreactorPrinted
-  categories:
-  - Parts
-  completetime: 10
-  materials:
-    Steel: 500
-    Glass: 400
-    Uranium: 200
-    Gold: 100
+#- type: latheRecipe # Orion-Edit | Replaced with PowerCellBluespaceReactor
+#  id: PowerCellMicroreactor
+#  result: PowerCellMicroreactorPrinted
+#  categories:
+#  - Parts
+#  completetime: 10
+#  materials:
+#    Steel: 500
+#    Glass: 400
+#    Uranium: 200
+#    Gold: 100
 
 - type: latheRecipe
   id: PowerCageSmall

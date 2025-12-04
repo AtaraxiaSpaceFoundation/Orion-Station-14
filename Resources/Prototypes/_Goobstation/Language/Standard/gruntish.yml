@@ -4,6 +4,11 @@
   speech:
     fontSize: 14
     color: "#8C5353"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: demonic
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

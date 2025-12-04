@@ -3,6 +3,11 @@
   id: Eldritch
   speech:
     color: "#dc143c"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: narsie
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2 # Replacements are really short

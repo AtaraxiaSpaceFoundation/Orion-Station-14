@@ -5,6 +5,11 @@
   isVisibleLanguage: true
   speech:
     color: "#d69b3dcc"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: canilunzt
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

@@ -139,6 +139,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <Button Name="BarkVoicePlayButton" Text="{Loc 'humanoid-profile-editor-voice-play'}" MaxWidth="80" />
                                 </BoxContainer>
                                 <!-- Corvax-Frontier-Barks-End -->
+                                <!-- Orion-Start -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-uplink-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="UplinkPrefButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Orion-End -->
                             </BoxContainer>
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">

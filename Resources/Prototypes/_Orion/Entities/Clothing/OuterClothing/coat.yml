@@ -76,3 +76,14 @@
     sprite: _Orion/Clothing/OuterClothing/Coats/captain_sheriff.rsi
   - type: Clothing
     sprite: _Orion/Clothing/OuterClothing/Coats/captain_sheriff.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatTraumaTeam
+  name: Trauma Team coat
+  description: Made from high-tech materials, this jacket perfectly combines practicality and aesthetics. With the passage of time and the change of owners, its functions and purposes were lost. The only clear element is the green symbol, indelibly painted by some idiot.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/OuterClothing/Coats/traumateam_coat.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/OuterClothing/Coats/traumateam_coat.rsi

@@ -1,6 +1,11 @@
 # Languages spoken by various animals and critters.
 - type: language
   id: Cat
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -13,6 +18,11 @@
 
 - type: language
   id: Dog
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -27,6 +37,11 @@
 
 - type: language
   id: Fox
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -41,6 +56,11 @@
 
 - type: language
   id: Xeno
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: xeno
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -51,6 +71,11 @@
 
 - type: language
   id: Monkey
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -61,6 +86,11 @@
 
 - type: language
   id: Mouse
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: cheese
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -77,6 +107,11 @@
 
 - type: language
   id: Chicken
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -88,6 +123,11 @@
 
 - type: language
   id: Duck
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -99,6 +139,11 @@
 
 - type: language
   id: Cow
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -109,6 +154,11 @@
 
 - type: language
   id: Sheep
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -120,6 +170,11 @@
 
 - type: language
   id: Kangaroo
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -132,6 +187,11 @@
 
 - type: language
   id: Pig
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -141,6 +201,11 @@
 
 - type: language
   id: Crab
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -156,6 +221,11 @@
 
 - type: language
   id: Kobold
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: lizard
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -175,6 +245,11 @@
 
 - type: language
   id: Hissing
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -187,6 +262,11 @@
 
 - type: language
   id: Penguin
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -200,6 +280,11 @@
 
 - type: language # Goobstation - For Deer
   id: Deer
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

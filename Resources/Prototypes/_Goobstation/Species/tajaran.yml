@@ -18,7 +18,7 @@
   sprites: MobTajaranSprites
   markingLimits: MobTajaranMarkingLimits
   dollPrototype: MobTajaranDummy
-  skinColoration: AnimalFur
+  skinColoration: Hues # Orion-Edit | Was AnimalFur
   maleFirstNames: NamesTajaranFirst
   femaleFirstNames: NamesTajaranFirst
   lastNames: NamesTajaranLast
@@ -60,7 +60,7 @@
     Tail:
       points: 1
       required: true
-      defaultMarkings: [ TajaranTailRetro ]
+      defaultMarkings: [ TajaranTailFluffy ] # Orion-Edit
     HeadTop:
       points: 1
       required: true
@@ -127,7 +127,7 @@
 - type: humanoidBaseSprite
   id: MobTajaranEyes
   baseSprite:
-    sprite: Mobs/Customization/eyes.rsi
+    sprite: _Orion/Mobs/Customization/Tajaran/tajaran_eyes.rsi # Orion-Edit
     state: eyes
 
 - type: humanoidBaseSprite

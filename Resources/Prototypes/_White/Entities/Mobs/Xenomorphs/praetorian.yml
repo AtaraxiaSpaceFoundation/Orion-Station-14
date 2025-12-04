@@ -16,11 +16,11 @@
   - type: Xenomorph
     caste: Praetorian
   - type: TailLash
-    tailDamage:
-      groups:
-        Brute: 5
-    inject:
-      ChloralHydrate: 5 # Goobstation - new chemical
+#    tailDamage: # Orion-Edit
+#      groups:
+#        Brute: 5
+#    inject:
+#      ChloralHydrate: 5 # Goobstation - new chemical
   #- type: ActionGrant # Goobstation - moved to organs
   #  actions:
   #  - ActionTransferPlasma
