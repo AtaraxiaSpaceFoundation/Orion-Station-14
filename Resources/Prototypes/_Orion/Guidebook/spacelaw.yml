@@ -2,7 +2,7 @@
   id: SpaceLaw
   name: guide-entry-space-law
   priority: 1
-  text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/SpaceLawInfo.xml"
+  text: "/ServerInfo/_Orion/Guidebook/SpaceLaw/SpaceLawIntro.xml"
   children:
     - SpaceLawTable
     - Procedures

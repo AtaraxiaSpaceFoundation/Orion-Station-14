@@ -4,4 +4,15 @@
   text: "/ServerInfo/_Orion/Guidebook/Antagonist/Antagonist.xml"
   children:
   - Conditions # Goob
-  - CorticalBorerGuide
+  - CorticalBorer
+  - Morph
+
+- type: guideEntry
+  id: CorticalBorer
+  name: guide-entry-antagonist-cortical-borer
+  text: "/ServerInfo/_Orion/Guidebook/Antagonist/CorticalBorer.xml"
+
+- type: guideEntry
+  id: Morph
+  name: guide-entry-antagonist-morph
+  text: "/ServerInfo/_Orion/Guidebook/Antagonist/Morph.xml"

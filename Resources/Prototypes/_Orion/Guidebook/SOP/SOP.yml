@@ -4,6 +4,7 @@
   priority: 2
   text: "/ServerInfo/_Orion/Guidebook/SOP/Info.xml"
   children:
+    - SOP-Alerts
     - SOP-Security
 
 - type: guideEntry

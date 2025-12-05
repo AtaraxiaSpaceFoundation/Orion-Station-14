@@ -2,39 +2,23 @@
 
   # Процедурные регламенты
 
-  ## Порядок применения специальных средств
-  - В режиме [bold][color=green]Зелёный код[/color][/bold] разрешена выдача дополнительных [bold][color=orange]станнеров[/color][/bold], основное вооружение должно быть скрыто.
-  - В режиме [bold][color=blue]Синий код[/color][/bold] разрешено получение [bold][color=orange]нелетального вооружения[/color][/bold], [bold][color=orange]летальное[/color][/bold] - с санкции [bold][color=darkred]ГСБ[/color][/bold]. Допускается открытое ношение.
-  - В режиме [bold][color=orange]Янтарный код[/color][/bold] разрешено получение [bold][color=orange]летального вооружения[/color][/bold] из [bold][color=orange]арсенала[/color][/bold]. Ограничения на ношение сняты.
-  - В режиме [bold][color=red]Красный код[/color][/bold] разрешено использование любого вооружения из [bold][color=orange]арсенала[/color][/bold].
-  - В режиме [bold][color=magenta]Гамма код[/color][/bold] разрешено использование любого вооружения, находящегося на станции.
-  - При визите [bold][color=cyan]ПЦК[/color][/bold] разрешено открытое ношение [bold][color=orange]летального вооружения[/color][/bold].
-
-  При понижении уровня угрозы или по распоряжению командования подлежит сдать вооружение.
-
-  ## Процедура задержания
-
-  - В режиме [bold][color=green]Зелёный код[/color][/bold] [bold][color=purple]задержание[/color][/bold] без санкции разрешено только при непосредственном наблюдении правонарушения.
-  - В режиме [bold][color=blue]Синий код[/color][/bold] и выше санкция не требуется при наличии достаточных оснований.
-  - В режиме [bold][color=red]Красный код[/color][/bold] санкция не требуется.
-
   ### Процедура допроса
 
-  - В качестве [bold][color=purple]защитника[/color][/bold] могут выступать: [bold][color=blue]капитан[/color][/bold], [bold][color=aqua]представитель НаноТрейзен[/color][/bold], [bold][color=purple]адвокат[/color][/bold] или [bold][color=darkred]глава отдела[/color][/bold] задержанного.
-  - [bold][color=purple]Допрос[/color][/bold] проводят: [bold][color=darkred]смотритель[/color][/bold], [bold][color=darkred]ГСБ[/color][/bold], [bold][color=darkred]офицер[/color][/bold] или [bold][color=blue]капитан[/color][/bold] при отсутствии первых трёх.
-  - Допрашивающий обязан предоставить право на [bold][color=purple]защитника[/color][/bold]. [italic]При неявке защитника в течение 5 минут право аннулируется[/italic]
-  - Продолжительность [bold][color=purple]допроса[/color][/bold] не должна превышать 30 минут, возможно продление на 10 минут с согласия задержанного.
-  - По окончании [bold][color=purple]допроса[/color][/bold] должен быть вынесен [bold][color=purple]вердикт[/color][/bold] в установленном порядке.
+  - В качестве [bold]защитника[/bold] могут выступать: [bold][color=blue]капитан[/color][/bold], [bold][color=aqua]представитель НаноТрейзен[/color][/bold], [bold][color=purple]адвокат[/color][/bold] или [bold][color=darkred]глава отдела[/color][/bold] задержанного.
+  - [bold]Допрос[/bold] проводят: [bold][color=darkred]смотритель[/color][/bold], [bold][color=darkred]ГСБ[/color][/bold], [bold][color=darkred]офицер[/color][/bold] или [bold][color=blue]капитан[/color][/bold] при отсутствии первых трёх.
+  - Допрашивающий обязан предоставить право на [bold]защитника[/bold]. [italic]При неявке защитника в течение 5 минут право аннулируется[/italic]
+  - Продолжительность [bold]допроса[/bold] не должна превышать 30 минут, возможно продление на 10 минут с согласия задержанного.
+  - По окончании [bold]допроса[/bold] должен быть вынесен [bold]вердикт[/bold] в установленном порядке.
 
   ### Процедура вынесения вердикта
 
   - Задержанному должны быть объявлены срок содержания и инкриминируемые статьи.
   - В режиме [bold][color=magenta]Гамма код[/color][/bold] допускается содержание под стражей без процессуальных формальностей.
-  - Иерархия отмены решений: [bold][color=aqua]Представитель NanoTrasen[/color][/bold] > [bold][color=darkred]Глава СБ[/color][/bold] > [bold][color=blue]Капитан[/color][/bold] > [bold][color=darkred]Смотритель[/color][/bold].
-  - Право вынесения [bold][color=purple]вердикта[/color][/bold] имеют: [bold][color=darkred]ГСБ[/color][/bold], [bold][color=aqua]представитель NT[/color][/bold], [bold][color=blue]капитан[/color][/bold], [bold][color=darkred]смотритель[/color][/bold] или уполномоченный [bold][color=darkred]офицер[/color][/bold].
+  - Иерархия отмены решений: [bold][color=aqua]Представитель НаноТрейзен[/color][/bold] > [bold][color=darkred]Глава СБ[/color][/bold] > [bold][color=blue]Капитан[/color][/bold] > [bold][color=darkred]Смотритель[/color][/bold].
+  - Право вынесения [bold]вердикта[/bold] имеют: [bold][color=darkred]ГСБ[/color][/bold], [bold][color=aqua]представитель NT[/color][/bold], [bold][color=blue]капитан[/color][/bold], [bold][color=darkred]смотритель[/color][/bold] или уполномоченный [bold][color=darkred]офицер[/color][/bold].
 
   # Юридический иммунитет
 
-  Лица, обладающие [bold][color=purple]юридическим иммунитетом[/color][/bold], не могут быть подвергнуты задержанию или применению силы до его отмены. Иммунитетом обладают: [bold][color=aqua]Представитель НаноТрейзен[/color][/bold], [bold][color=yellow]сотрудник Центрального Командования[/color][/bold], [bold][color=cyan]оперативник ОБР[/color][/bold] или [bold][color=cyan]РХБЗЗ[/color][/bold].
+  Лица, обладающие [bold]юридическим иммунитетом[/bold], не могут быть подвергнуты задержанию или применению силы до его отмены. Иммунитетом обладают: [bold][color=aqua]Представитель НаноТрейзен[/color][/bold], [bold][color=yellow]сотрудник Центрального Командования[/color][/bold], [bold][color=cyan]оперативник ОБР[/color][/bold] или [bold][color=cyan]РХБЗЗ[/color][/bold].
 
 </Document>

@@ -23,11 +23,21 @@ guide-entry-space-law-laws-6 = Законы (XX6)
 guide-entry-space-law-laws-7 = Законы (XX7)
 
 guide-entry-antagonist = Антагонисты
-guide-entry-cortical-borer = Кортикальный Паразит
+guide-entry-antagonist-cortical-borer = Кортикальный Паразит
+guide-entry-antagonist-morph = Морф
 
 guide-entry-sop = Нормативные Рабочие Процедуры
 
-guide-entry-sop-security = Информация
+guide-entry-sop-alerts = Уровень угрозы
+guide-entry-sop-alerts-green = Зелёный код
+guide-entry-sop-alerts-blue = Синий код
+guide-entry-sop-alerts-amber = Янтарный код
+guide-entry-sop-alerts-red = Красный код
+guide-entry-sop-alerts-gamma = Гамма код
+guide-entry-sop-alerts-purple = Фиолетовый код
+guide-entry-sop-alerts-yellow = Жёлтый код
+
+guide-entry-sop-security = Служба Безопасности
 guide-entry-sop-security-head_of_security = Глава Службы Безопасности
 guide-entry-sop-security-warden = Смотритель
 guide-entry-sop-security-brigmedic = Бригмедик
