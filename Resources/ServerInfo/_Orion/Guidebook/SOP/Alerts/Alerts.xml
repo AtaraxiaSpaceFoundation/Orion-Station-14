@@ -807,6 +807,32 @@
         Зелёный код
       </Box>
     </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Дьявол
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ☆☆☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
   </Table>
 
   ### Определение уровня угрозы антагониста
