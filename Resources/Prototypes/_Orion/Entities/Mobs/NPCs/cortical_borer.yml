@@ -145,6 +145,6 @@
           collection: desecration
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: GuideHelp
-    guides:
-    - CorticalBorerGuide
+#  - type: GuideHelp # Meta-protection
+#    guides:
+#    - CorticalBorer
