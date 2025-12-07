@@ -36,8 +36,8 @@ and/or international legislation for certain forms of Contribution.
                             License Types.
 
   Source code and software components may be distributed by ASF under any license selected by ASF, including but not limited to AGPL‑3.0.
-  Documentation, graphics, and non‑code assets may be distributed by ASF under any license selected by ASF, including but not limited to CC‑BY‑SA-3.0.
-ASF may change the licensing terms of any asset at any time.
+  Documentation, graphics, and non‑code assets may be distributed by ASF under any license selected by ASF, including but not limited to CC‑BY‑SA 3.0.
+  ASF may change the licensing terms of any asset at any time.
 
                             Acceptance.
 
