@@ -103,7 +103,7 @@
   - type: CanEscapeInventory
   - type: GuideHelp
     guides:
-    - CorticalBorerGuide
+    - CorticalBorer
   - type: Body
     thermalVisibility: false
   - type: UniversalLanguageSpeaker
@@ -145,6 +145,6 @@
           collection: desecration
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: GuideHelp
-    guides:
-    - CorticalBorerGuide
+#  - type: GuideHelp # Meta-protection
+#    guides:
+#    - CorticalBorer

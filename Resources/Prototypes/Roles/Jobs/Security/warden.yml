@@ -166,7 +166,7 @@
 - type: startingGear
   id: WardenGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingEyesGlassesSecurity # Goobstation | Orion-Edit - OP
     id: WardenPDA
     ears: ClothingHeadsetAltWarden # Goobstation
     pocket1: WeaponPistolMk58

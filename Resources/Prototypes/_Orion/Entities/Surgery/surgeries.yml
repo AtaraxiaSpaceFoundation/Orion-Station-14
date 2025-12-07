@@ -14,4 +14,4 @@
     - SurgeryStepRemoveCorticalBorer
   - type: SurgeryCorticalBorerCondition
   - type: SurgeryPartCondition
-    part: Head
+    parts: [ Head ]

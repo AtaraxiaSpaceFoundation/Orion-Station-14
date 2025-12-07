@@ -71,6 +71,7 @@
   # Orion-End
 #  - StationAiHologramKobold # Orion-Remove | Already have it
 #  - StationAiHologramMonkey # Orion-Remove | Already have it
+  - StationAiHologramScurret # goob
 
 # Iconography
 - type: stationAiCustomization

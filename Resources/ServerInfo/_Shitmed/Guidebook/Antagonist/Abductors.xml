@@ -39,11 +39,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   Абдукторы начинают на своём корабле где-то рядом со станцией. С помощью [color=#a149bf]"Консоли наблюдения за людьми"[/color] можно искать жертв, которые находятся в одиночестве, и [color=lightblue]телпортироваться[/color] к ним, чтобы начать похищение.
 
-  Wonderprod — основной инструмент абдуктора. У него есть четыре режима, которые используются при похищении:
-  - [color=yellow]{Оглушение}[/color] — оглушает жертву примерно на 5 секунд.
-  - [color=pink]{Сковывание}[/color] — связывает руки жертвы слабыми кабелями.
-  - [color=blue]{Сон}[/color] — вводит жертву в соноподобное состояние.
-  - [color=red]{Урон}[/color] — наносит ожог цели, причиняя урон. [bold]ИСПОЛЬЗУЙТЕ ТОЛЬКО В КРАЙНЕМ СЛУЧАЕ.[/bold]
+  The wonderprod is the primary tool of an Abductor. It has four modes you will use for abduction:
+  - [color=yellow]{Stun}[/color] Stuns the victim for roughly 5 seconds.
+  - [color=pink]{Restrain}[/color] binds the victims hands in weak cables.
+  - [color=blue]{Sleep}[/color] Induces a sleep-like state in the victim, and inflicts ion damage on anything that cannot be slept.
 
   После того, как цель обездвижена, можно использовать [italic]гаджет[/italic], чтобы имплантировать ей нано-трекер, вернуться на свой корабль с помощью [color=lightblue]команды возврата[/color], а затем применить гаджет на [color=#a149bf]Консоли абдукторов[/color].
 

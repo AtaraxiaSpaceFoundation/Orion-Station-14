@@ -16,3 +16,5 @@ alerts-modsuit-power-name = [color=yellow]Энергия модсьюта[/color
 alerts-modsuit-power-desc = Показывает текущий уровень энергии вашего модсьюта. Низкий уровень энергии может повлиять на функциональность скафандра.
 alerts-centered-name = В равновесии
 alerts-centered-desc = Вы чувствуете связь с вашими корнями. А именно с корнями, которые держат вас в центре плитки.
+alerts-disgust-name = [color=yellow]Отвращение[/color]
+alerts-disgust-desc = Вы не очень хорошо себя чувствуете...

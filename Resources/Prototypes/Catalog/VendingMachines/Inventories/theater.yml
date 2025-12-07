@@ -130,6 +130,7 @@
     # Orion-End
     ClothingOuterSuitHotDog: 1 # Goob
     ClothingOuterSuitPickle: 1 # Goob
+#    ClothingHeadHatTinfoilHat: 2 # Goobstation | Orion-Edit - nope, only for scientists or crafting
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ClothingShoesBling: 1
