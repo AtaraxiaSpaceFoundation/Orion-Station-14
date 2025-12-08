@@ -6,7 +6,7 @@
   - !type:CkeyRestriction
     ckey: [ PuroSlavKing ]
   name: custom-ghost-personal-placeholder-name
-  desc: custom-ghost-personal-placeholder-desc
+  description: custom-ghost-personal-placeholder-desc
 
 - type: entity
   parent: MobObserverCkey
@@ -21,7 +21,7 @@
   id: CkeyPersonal
   category: personal
   name: custom-ghost-personal-name
-  desc: custom-ghost-personal-desc
+  description: custom-ghost-personal-desc
 
 # Abstract entproto to force transparency on all custom ghosts
 - type: entity

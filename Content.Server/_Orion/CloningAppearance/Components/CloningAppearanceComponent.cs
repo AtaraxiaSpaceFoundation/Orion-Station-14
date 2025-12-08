@@ -15,5 +15,5 @@ public sealed partial class CloningAppearanceComponent : Component
     public ComponentRegistry Components { get; private set; } = new();
 
     [DataField]
-    public ProtoId<StartingGearPrototype>? Gear;
+    public ProtoId<StartingGearPrototype>? StartingGear;
 }

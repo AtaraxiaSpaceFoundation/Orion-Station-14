@@ -46,9 +46,9 @@ public sealed class CloningAppearanceSystem : EntitySystem
             EntityManager.AddComponent(mobUid, comp, true);
         }
 
-        if (ev.Component.Gear != null)
+        if (ev.Component.StartingGear != null)
         {
-            _outfitSystem.SetOutfit(mobUid, ev.Component.Gear);
+            _outfitSystem.SetOutfit(mobUid, ev.Component.StartingGear);
         }
 
         foreach (var nearbyEntity in _entityLookupSystem.GetEntitiesInRange(mobUid, 1f))
