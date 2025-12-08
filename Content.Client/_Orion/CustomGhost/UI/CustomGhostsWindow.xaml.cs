@@ -133,7 +133,7 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
     {
         var label = new Label()
         {
-            StyleClasses = { "FancyWindowTitle" }
+            StyleClasses = { "FancyWindowTitle" },
         };
 
         label.Text = $"-- {Loc.GetString($"custom-ghost-category-{text}")} --";
@@ -169,9 +169,9 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
     // shamelessly stolen from EntitySpawnButton
     public sealed class CustomGhostButton : Control
     {
-        public Button ActualButton { get; private set; }
-        public Label EntityLabel { get; private set; }
-        public SpriteView EntityTextureRects { get; private set; }
+        public Button ActualButton { get; }
+        public Label EntityLabel { get; }
+        public SpriteView EntityTextureRects { get; }
 
         public CustomGhostButton()
         {

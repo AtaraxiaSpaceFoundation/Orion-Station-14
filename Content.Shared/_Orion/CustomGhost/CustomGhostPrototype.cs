@@ -54,7 +54,7 @@ public sealed class CustomGhostPrototype : IPrototype, IInheritingPrototype
         return result;
     }
 
-    [DataField(required: true)]
+    [DataField("entity", required: true)]
     public EntProtoId<GhostComponent> GhostEntityPrototype { get; private set; }
 
     /// <summary>
