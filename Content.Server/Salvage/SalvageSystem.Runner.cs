@@ -19,11 +19,11 @@ using Content.Server.Shuttles.Events;
 using Content.Server.Station.Components;
 using Content.Shared.Chat;
 using Content.Shared.Humanoid;
+using Content.Shared.Localizations;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Salvage.Expeditions;
 using Content.Shared.Shuttles.Components;
-using Content.Shared.Localizations;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 

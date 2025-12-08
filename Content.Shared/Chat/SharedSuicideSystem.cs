@@ -14,7 +14,6 @@ using System.Linq;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
-using Content.Shared.Body.Components;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Mobs.Systems;
 

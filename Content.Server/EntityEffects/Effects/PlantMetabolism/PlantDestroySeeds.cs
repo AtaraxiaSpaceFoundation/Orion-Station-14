@@ -31,7 +31,7 @@ public sealed partial class PlantDestroySeeds : EntityEffect
         var plantHolder = args.EntityManager.System<PlantHolderSystem>();
         var popupSystem = args.EntityManager.System<SharedPopupSystem>();
 
-        if (plantHolderComp.Seed.Seedless == false)
+        if (!plantHolderComp.Seed.Seedless)
         {
             plantHolder.EnsureUniqueSeed(args.TargetEntity, plantHolderComp);
             popupSystem.PopupEntity(

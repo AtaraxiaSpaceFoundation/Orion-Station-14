@@ -13,7 +13,7 @@ public sealed partial class CosmicCorruptingComponent : Component
     /// Our timer for corruption checks.
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan CorruptionTimer = default!;
+    public TimeSpan CorruptionTimer;
 
     /// <summary>
     /// the list of tiles that can be corrupted by this corruptor.
@@ -93,7 +93,7 @@ public sealed partial class CosmicCorruptingComponent : Component
     /// non-inheriting.
     /// </summary>
     [DataField]
-    public Dictionary<EntProtoId, EntProtoId> EntityConversionDict = new Dictionary<EntProtoId, EntProtoId>()
+    public Dictionary<EntProtoId, EntProtoId> EntityConversionDict = new Dictionary<EntProtoId, EntProtoId>
     {
         {"Window", "WindowCosmicCult"},
         {"Table", "CosmicTable"},

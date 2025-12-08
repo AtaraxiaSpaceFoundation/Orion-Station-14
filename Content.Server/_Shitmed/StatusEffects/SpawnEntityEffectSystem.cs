@@ -4,9 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Shitmed.StatusEffects;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
-using Content.Shared._Shitmed.StatusEffects;
 
 namespace Content.Server._Shitmed.StatusEffects;
 

@@ -177,7 +177,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
             return;
         }
 
-        var record = new GeneralStationRecord()
+        var record = new GeneralStationRecord
         {
             Name = name,
             Age = age,

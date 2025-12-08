@@ -145,7 +145,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     private void OnChunkLoaded(EntityUid uid, DebrisFeaturePlacerControllerComponent component,
         ref WorldChunkLoadedEvent args)
     {
-        if (component.DoSpawns == false)
+        if (!component.DoSpawns)
             return;
 
         component.DoSpawns = false; // Don't repeat yourself if this crashes.

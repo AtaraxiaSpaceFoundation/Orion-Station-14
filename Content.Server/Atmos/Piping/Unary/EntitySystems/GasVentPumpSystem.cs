@@ -86,8 +86,8 @@ using Content.Shared.Database;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.DoAfter;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Power;
 using Content.Shared.Tools.Systems;
@@ -203,7 +203,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
                 {
                     // Leak only a small amount of gas as a proportion of supply pipe pressure.
                     var pipeDelta = pipe.Air.Pressure - environment.Pressure;
-                    transferMoles = (float)timeDelta * pipeDelta * vent.UnderPressureLockoutLeaking;
+                    transferMoles = timeDelta * pipeDelta * vent.UnderPressureLockoutLeaking;
                     if (transferMoles < 0.0)
                         return;
                 }
@@ -449,7 +449,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
         private void OnGetVerbs(Entity<GasVentPumpComponent> ent, ref GetVerbsEvent<Verb> args)
         {
-            if (ent.Comp.UnderPressureLockout == false || !Transform(ent).Anchored)
+            if (!ent.Comp.UnderPressureLockout || !Transform(ent).Anchored)
                 return;
 
             var user = args.User;

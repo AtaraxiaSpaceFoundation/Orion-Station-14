@@ -37,7 +37,7 @@ public sealed partial class ProjectileGrenadeComponent : Component
     ///     Should the angle of the projectiles be uneven?
     /// </summary>
     [DataField]
-    public bool RandomAngle = false;
+    public bool RandomAngle;
 
     /// <summary>
     /// The minimum speed the projectiles may come out at

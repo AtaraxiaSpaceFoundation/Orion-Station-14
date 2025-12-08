@@ -86,7 +86,7 @@ namespace Content.Server.Abilities.Mime
         /// Does this component prevent the mime from writing on paper while their vow is active?
         /// </summary>
         [DataField]
-        public bool PreventWriting = false;
+        public bool PreventWriting;
 
         /// <summary>
         /// What message is displayed when the mime fails to write?

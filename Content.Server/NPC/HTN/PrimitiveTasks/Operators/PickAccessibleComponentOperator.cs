@@ -102,7 +102,7 @@ public sealed partial class PickAccessibleComponentOperator : HTNOperator
 
             var xform = _entManager.GetComponent<TransformComponent>(target);
 
-            return (true, new Dictionary<string, object>()
+            return (true, new Dictionary<string, object>
             {
                 { TargetEntity, target },
                 { TargetKey, xform.Coordinates },

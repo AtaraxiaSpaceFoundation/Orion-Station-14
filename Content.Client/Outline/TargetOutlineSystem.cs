@@ -171,7 +171,7 @@ public sealed class TargetOutlineSystem : EntitySystem
 
     public void Disable()
     {
-        if (_enabled == false)
+        if (!_enabled)
             return;
 
         _enabled = false;

@@ -66,12 +66,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.GameTicking;
 using Content.Server.Popups;
 using Content.Shared.Administration;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Robust.Shared.Console;
-using Content.Server.GameTicking;
 
 namespace Content.Server.Ghost
 {

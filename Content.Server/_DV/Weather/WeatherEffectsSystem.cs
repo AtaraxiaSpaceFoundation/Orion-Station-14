@@ -12,7 +12,7 @@ namespace Content.Server._DV.Weather;
 /// <summary>
 /// Handles weather damage for exposed entities.
 /// </summary>
-public sealed partial class WeatherEffectsSystem : EntitySystem
+public sealed class WeatherEffectsSystem : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;

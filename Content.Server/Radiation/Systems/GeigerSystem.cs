@@ -19,7 +19,6 @@ using Content.Shared.Radiation.Components;
 using Content.Shared.Radiation.Systems;
 using Robust.Server.Audio;
 using Robust.Server.Player;
-using Robust.Shared.Player;
 
 namespace Content.Server.Radiation.Systems;
 

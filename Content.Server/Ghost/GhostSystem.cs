@@ -90,25 +90,34 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
+using Content.Server.Preferences.Managers;
 using Content.Server.Roles.Jobs;
 using Content.Server.Warps;
+using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._Orion.Antag;
+using Content.Shared._Orion.Antag.Components;
+using Content.Shared._Orion.CustomGhost;
+using Content.Shared._Shitmed.Body;
+using Content.Shared._White.Xenomorphs.Infection;
 using Content.Shared.Actions;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Server.Preferences.Managers;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
+using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -118,33 +127,22 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
+using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.Silicons.Laws.Components;
+using Content.Shared.SSDIndicator;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
-using Content.Shared._White.Xenomorphs.Infection;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-
-// Shitmed Change
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
-using Content.Shared._Shitmed.Body;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Orion.Antag;
-using Content.Shared._Orion.Antag.Components;
-using Content.Shared._Orion.CustomGhost;
-using Content.Shared.Humanoid;
-using Content.Shared.Roles;
-using Content.Shared.Silicons.Borgs.Components;
-using Content.Shared.Silicons.Laws.Components;
-using Content.Shared.SSDIndicator;
-using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -488,7 +486,7 @@ namespace Content.Server.Ghost
         // Orion-Start
         private List<GhostWarpPlace> GetLocationWarps()
         {
-            var warps = new List<GhostWarpPlace> { };
+            var warps = new List<GhostWarpPlace>();
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
@@ -513,7 +511,7 @@ namespace Content.Server.Ghost
 */
 
             // Orion-Start
-            var warps = new List<GhostWarpPlayer> { };
+            var warps = new List<GhostWarpPlayer>();
             foreach (var mindContainer in EntityQuery<MindContainerComponent>())
             {
                 var entity = mindContainer.Owner;
@@ -593,7 +591,7 @@ namespace Content.Server.Ghost
 
         private List<GhostWarpGlobalAntagonist> GetAntagonistWarps()
         {
-            var warps = new List<GhostWarpGlobalAntagonist> { };
+            var warps = new List<GhostWarpGlobalAntagonist>();
 
             foreach (var antagonist in EntityQuery<GlobalAntagonistComponent>())
             {

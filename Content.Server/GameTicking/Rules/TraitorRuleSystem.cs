@@ -112,8 +112,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Administration.Logs;
+using System.Linq;
+using System.Text;
 using Content.Server.Antag;
+using Content.Server.Codewords;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
@@ -121,8 +123,6 @@ using Content.Server.PDA.Ringer;
 using Content.Server.Preferences.Managers;
 using Content.Server.Roles;
 using Content.Server.Traitor.Uplink;
-using Content.Shared.Database;
-using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Systems;
 using Content.Shared.PDA;
@@ -135,9 +135,6 @@ using Content.Shared.Roles.RoleCodeword;
 using Robust.Server.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Linq;
-using System.Text;
-using Content.Server.Codewords;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -320,16 +317,16 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
         switch (uplinkPreference)
         {
             case UplinkPreference.Implant:
-                sb.AppendLine("\n" + Loc.GetString($"traitor-role-greeting-implant", ("corporation", objectiveIssuer)));
+                sb.AppendLine("\n" + Loc.GetString("traitor-role-greeting-implant", ("corporation", objectiveIssuer)));
                 break;
             case UplinkPreference.Radio:
-                sb.AppendLine("\n" + Loc.GetString($"traitor-role-greeting-radio", ("corporation", objectiveIssuer)));
+                sb.AppendLine("\n" + Loc.GetString("traitor-role-greeting-radio", ("corporation", objectiveIssuer)));
                 break;
             case UplinkPreference.Telecrystals:
-                sb.AppendLine("\n" + Loc.GetString($"traitor-role-greeting-telecrystals", ("corporation", objectiveIssuer)));
+                sb.AppendLine("\n" + Loc.GetString("traitor-role-greeting-telecrystals", ("corporation", objectiveIssuer)));
                 break;
             default:
-                sb.AppendLine("\n" + Loc.GetString($"traitor-role-greeting", ("corporation", objectiveIssuer ?? Loc.GetString("objective-issuer-unknown"))));
+                sb.AppendLine("\n" + Loc.GetString("traitor-role-greeting", ("corporation", objectiveIssuer ?? Loc.GetString("objective-issuer-unknown"))));
                 break;
         }
         // Orion-End
@@ -343,14 +340,14 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             switch (uplinkPreference)
             {
                 case UplinkPreference.Pda:
-                    sb.AppendLine("\n" + Loc.GetString($"traitor-role-uplink-code", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
+                    sb.AppendLine("\n" + Loc.GetString("traitor-role-uplink-code", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
                     break;
             }
         }
         else if (uplinkPreference == UplinkPreference.Pda)
         {
             // Only show no uplink message if PDA preference was selected but no uplink was given
-            sb.AppendLine("\n" + Loc.GetString($"traitor-role-nouplink"));
+            sb.AppendLine("\n" + Loc.GetString("traitor-role-nouplink"));
         }
         // Orion-Edit-End
 
@@ -373,33 +370,33 @@ public sealed class TraitorRuleSystem : GameRuleSystem<TraitorRuleComponent>
             switch (uplinkPreference)
             {
                 case UplinkPreference.Implant:
-                    sb.AppendLine(Loc.GetString($"traitor-role-uplink-implant-short"));
+                    sb.AppendLine(Loc.GetString("traitor-role-uplink-implant-short"));
                     break;
                 case UplinkPreference.Radio:
-                    sb.AppendLine(Loc.GetString($"traitor-role-uplink-radio-short"));
+                    sb.AppendLine(Loc.GetString("traitor-role-uplink-radio-short"));
                     break;
                 case UplinkPreference.Pda:
-                    sb.AppendLine(Loc.GetString($"traitor-role-uplink-code-short", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
+                    sb.AppendLine(Loc.GetString("traitor-role-uplink-code-short", ("code", string.Join("-", uplinkCode).Replace("sharp", "#"))));
                     break;
             }
         }
         else if (uplinkPreference == UplinkPreference.Telecrystals)
         {
-            sb.AppendLine(Loc.GetString($"traitor-role-uplink-telecrystals-short"));
+            sb.AppendLine(Loc.GetString("traitor-role-uplink-telecrystals-short"));
         }
         else
         {
-            sb.AppendLine("\n" + Loc.GetString($"traitor-role-nouplink"));
+            sb.AppendLine("\n" + Loc.GetString("traitor-role-nouplink"));
         }
         // Orion-End
 
         if (codewords != null)
-            sb.AppendLine(Loc.GetString($"traitor-role-codewords-short", ("codewords", string.Join(", ", codewords))));
+            sb.AppendLine(Loc.GetString("traitor-role-codewords-short", ("codewords", string.Join(", ", codewords))));
 
-        sb.AppendLine("\n" + Loc.GetString($"traitor-role-allegiances"));
+        sb.AppendLine("\n" + Loc.GetString("traitor-role-allegiances"));
         sb.AppendLine(Loc.GetString($"traitor-{objectiveIssuer.Replace(" ", "").ToLower()}-allies"));
 
-        sb.AppendLine("\n" + Loc.GetString($"traitor-role-notes"));
+        sb.AppendLine("\n" + Loc.GetString("traitor-role-notes"));
         sb.AppendLine(Loc.GetString($"traitor-{objectiveIssuer.Replace(" ", "").ToLower()}-goal"));
 
         return sb.ToString();

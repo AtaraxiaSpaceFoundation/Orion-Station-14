@@ -3,11 +3,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System;
-using System.Diagnostics.Contracts;
 using System.Text;
 using Robust.Client.Graphics;
-using Robust.Shared.Log;
 using Robust.Shared.Utility;
 
 namespace Content.Goobstation.UIKit.UserInterface.Controls;

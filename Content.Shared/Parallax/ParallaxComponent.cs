@@ -6,7 +6,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using JetBrains.Annotations;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Parallax;

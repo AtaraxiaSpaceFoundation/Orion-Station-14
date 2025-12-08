@@ -22,7 +22,6 @@ using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Markers;
 using Content.Client.Sandbox;
-using Content.Client.SubFloor;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.DecalPlacer;
 using Content.Client.UserInterface.Systems.Sandbox.Windows;
@@ -227,7 +226,7 @@ public sealed class SandboxUIController : UIController, IOnStateChanged<Gameplay
     {
         if (_window == null)
             return;
-        if (_sandbox.SandboxAllowed && _window.IsOpen != true)
+        if (_sandbox.SandboxAllowed && !_window.IsOpen)
         {
             UIManager.ClickSound();
             _window.Open();

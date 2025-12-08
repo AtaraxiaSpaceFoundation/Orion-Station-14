@@ -138,7 +138,7 @@ public abstract class SharedInteractorSystem : EntitySystem
 
     private void UpdateToolAppearance(EntityUid uid)
     {
-        var state = _hands.ActiveHandIsEmpty(uid) == false
+        var state = !_hands.ActiveHandIsEmpty(uid)
             ? InteractorState.Inactive
             : InteractorState.Empty;
         UpdateAppearance(uid, state);

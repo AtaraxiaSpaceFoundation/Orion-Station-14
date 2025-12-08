@@ -19,17 +19,17 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Lavaland.Procedural.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
-using Content.Server.Atmos.EntitySystems;
-using Content.Server._Lavaland.Procedural.Components;
 
 namespace Content.Server.EntityEffects.EffectConditions;
 
 public sealed partial class PressureThreshold : EntityEffectCondition
 {
     [DataField]
-    public bool WorksOnLavaland = false;
+    public bool WorksOnLavaland;
 
     [DataField]
     public float Min = float.MinValue;

@@ -67,12 +67,12 @@ public sealed partial class TestPair : IAsyncDisposable
         await ReallyBeIdle();
         if (!Settings.Destructive)
         {
-            if (Client.IsAlive == false)
+            if (!Client.IsAlive)
             {
                 throw new Exception($"{nameof(CleanReturnAsync)}: Test killed the client in pair {Id}:", Client.UnhandledException);
             }
 
-            if (Server.IsAlive == false)
+            if (!Server.IsAlive)
             {
                 throw new Exception($"{nameof(CleanReturnAsync)}: Test killed the server in pair {Id}:", Server.UnhandledException);
             }

@@ -20,7 +20,7 @@ public sealed partial class RadiationBlockingContainerComponent : Component
     ///     Flat reduction in radiation when an item is in the container.
     /// </summary>
     [DataField("resistance")]
-    public float RadResistance = 0f;
+    public float RadResistance;
 
     // Goobstation - Radiation Rework
     /// <summary>

@@ -152,7 +152,7 @@ namespace Content.Server.Stunnable.Systems
 
         private void SendPowerPulse(EntityUid target, EntityUid? user, EntityUid used)
         {
-            RaiseLocalEvent(target, new PowerPulseEvent()
+            RaiseLocalEvent(target, new PowerPulseEvent
             {
                 Used = used,
                 User = user

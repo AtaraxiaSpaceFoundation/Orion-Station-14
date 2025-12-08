@@ -15,7 +15,6 @@ using Content.Server.Popups;
 using Content.Server.Warps;
 using Content.Shared._Goobstation.Wizard.FadingTimedDespawn;
 using Content.Shared._Goobstation.Wizard.Teleport;
-using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Magic.Components;
 using Content.Shared.Movement.Pulling.Systems;

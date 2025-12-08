@@ -52,7 +52,6 @@ using Robust.Shared.Animations;
 using Robust.Shared.Collections;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Client.Effects;
 

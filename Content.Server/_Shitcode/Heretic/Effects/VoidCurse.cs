@@ -8,7 +8,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._Goobstation.Heretic.EntitySystems.PathSpecific;
-using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 

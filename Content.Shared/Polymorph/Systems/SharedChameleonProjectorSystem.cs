@@ -25,7 +25,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Stunnable;
 
 namespace Content.Shared.Polymorph.Systems;
 

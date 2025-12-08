@@ -20,7 +20,6 @@
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Verbs;
-using Robust.Shared.GameObjects.Components.Localization;
 
 namespace Content.Server.Humanoid;
 

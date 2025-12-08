@@ -13,7 +13,7 @@ namespace Content.Server._Shitmed.Medical.Surgery;
 /// <summary>
 /// Makes all sharp things usable for incisions and sawing through bones, though worse than any other kind of ghetto analogue.
 /// </summary>
-public sealed partial class GhettoSurgerySystem : EntitySystem
+public sealed class GhettoSurgerySystem : EntitySystem
 {
     public override void Initialize()
     {

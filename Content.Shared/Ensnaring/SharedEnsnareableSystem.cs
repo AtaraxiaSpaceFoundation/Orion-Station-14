@@ -21,7 +21,6 @@
 using Content.Goobstation.Common.DoAfter;
 using Content.Shared._Goobstation.Wizard.Mutate;
 using Content.Shared.Alert;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;

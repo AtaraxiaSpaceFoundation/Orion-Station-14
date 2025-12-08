@@ -33,7 +33,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Numerics;
 using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
@@ -44,7 +43,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Atmos.EntitySystems
@@ -56,7 +54,7 @@ namespace Content.Server.Atmos.EntitySystems
 
         private const int SpaceWindSoundCooldownCycles = 75;
 
-        private int _spaceWindSoundCooldown = 0;
+        private int _spaceWindSoundCooldown;
 
         [ViewVariables(VVAccess.ReadWrite)]
         public SoundSpecifier? SpaceWindSound { get; private set; } = new SoundCollectionSpecifier(DefaultSpaceWindSounds, AudioParams.Default.WithVariation(0.125f));

@@ -31,7 +31,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Atmos.Reactions
 {
     [Prototype]
-    public sealed partial class GasReactionPrototype : IPrototype
+    public sealed class GasReactionPrototype : IPrototype
     {
         [ViewVariables]
         [IdDataField]
@@ -59,7 +59,7 @@ namespace Content.Server.Atmos.Reactions
         ///     Minimum energy requirement.
         /// </summary>
         [DataField("minimumEnergy")]
-        public float MinimumEnergyRequirement { get; private set; } = 0f;
+        public float MinimumEnergyRequirement { get; private set; }
 
         /// <summary>
         ///     Lower numbers are checked/react later than higher numbers.

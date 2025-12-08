@@ -36,7 +36,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public bool Enabled { get; set; } = true;
 
         [DataField]
-        public bool IsDirty { get; set; } = false;
+        public bool IsDirty { get; set; }
 
         [DataField("outlet")]
         public string OutletName { get; set; } = "pipe";
@@ -70,7 +70,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public float MaxPressure = Atmospherics.MaxOutputPressure;
 
         [DataField]
-        public bool WideNet { get; set; } = false;
+        public bool WideNet { get; set; }
 
         public GasVentScrubberData ToAirAlarmData()
         {

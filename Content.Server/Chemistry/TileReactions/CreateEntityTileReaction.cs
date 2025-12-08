@@ -80,16 +80,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Maps;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using System.Numerics;
 
 namespace Content.Server.Chemistry.TileReactions;
 
@@ -115,7 +115,7 @@ public sealed partial class CreateEntityTileReaction : ITileReaction
     public EntityWhitelist? Whitelist;
 
     [DataField]
-    public float RandomOffsetMax = 0.0f;
+    public float RandomOffsetMax;
 
     public FixedPoint2 TileReact(TileRef tile,
         ReagentPrototype reagent,
@@ -131,7 +131,7 @@ public sealed partial class CreateEntityTileReaction : ITileReaction
             var lookup = entityManager.System<EntityLookupSystem>();
 
             int acc = 0;
-            foreach (var ent in lookup.GetEntitiesInTile(tile, LookupFlags.Static))
+            foreach (var ent in lookup.GetEntitiesInTile(tile))
             {
                 var whitelistSystem = entityManager.System<EntityWhitelistSystem>();
                 if (whitelistSystem.IsWhitelistPass(Whitelist, ent))

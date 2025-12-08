@@ -61,7 +61,6 @@ public sealed class InteractionVerbsSystem : SharedInteractionVerbsSystem
         return _interactions.InRangeUnobstructed(
             source, target, maxRange,
             CollisionGroup.Opaque,
-            uid => !_occluderQuery.TryComp(uid, out var occluder) || !occluder.Enabled, // We ignore all entities that do not occlude light
-            false);
+            uid => !_occluderQuery.TryComp(uid, out var occluder) || !occluder.Enabled);
     }
 }

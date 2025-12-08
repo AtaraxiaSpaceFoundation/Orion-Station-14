@@ -452,11 +452,8 @@ public sealed partial class GameTicker
 
             return message;
         }
-        else
-        {
-            return Loc.GetString("list-gamerule-admin-no-rules");
 
-        }
+        return Loc.GetString("list-gamerule-admin-no-rules");
     }
 
     #endregion

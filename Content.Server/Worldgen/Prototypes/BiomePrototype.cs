@@ -89,7 +89,7 @@ namespace Content.Server.Worldgen.Prototypes;
 ///     of noise channels at that location.
 /// </summary>
 [Prototype("spaceBiome")]
-public sealed partial class BiomePrototype : IPrototype, IInheritingPrototype
+public sealed class BiomePrototype : IPrototype, IInheritingPrototype
 {
     /// <inheritdoc />
     [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<EntityPrototype>))]

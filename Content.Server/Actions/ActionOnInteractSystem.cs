@@ -99,7 +99,6 @@ using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Interaction;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Server.Actions;
 

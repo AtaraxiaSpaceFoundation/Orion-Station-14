@@ -20,7 +20,6 @@ using Content.Server.Hands.Systems;
 using Content.Shared.Construction;
 using Content.Shared.Hands.Components;
 using JetBrains.Annotations;
-using Robust.Server.Containers;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Construction.Completions
@@ -35,7 +34,7 @@ namespace Content.Server.Construction.Completions
         ///     Whether or not the user should attempt to pick up the removed entities.
         /// </summary>
         [DataField("pickup")]
-        public bool Pickup = false;
+        public bool Pickup;
 
         public void PerformAction(EntityUid uid, EntityUid? userUid, IEntityManager entityManager)
         {

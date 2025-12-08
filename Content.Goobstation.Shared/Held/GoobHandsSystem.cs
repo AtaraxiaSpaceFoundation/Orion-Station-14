@@ -3,7 +3,6 @@ using Content.Goobstation.Shared.Grab;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Movement.Pulling.Events;
 
 namespace Content.Goobstation.Shared.Held;
 

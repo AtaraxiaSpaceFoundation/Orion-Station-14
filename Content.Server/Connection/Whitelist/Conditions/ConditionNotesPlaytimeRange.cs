@@ -49,7 +49,7 @@ namespace Content.Server.Connection.Whitelist.Conditions;
 public sealed partial class ConditionNotesPlaytimeRange : WhitelistCondition
 {
     [DataField]
-    public bool IncludeExpired = false;
+    public bool IncludeExpired;
 
     [DataField]
     public NoteSeverity MinimumSeverity  = NoteSeverity.Minor;
@@ -67,5 +67,5 @@ public sealed partial class ConditionNotesPlaytimeRange : WhitelistCondition
     public int Range = int.MaxValue;
 
     [DataField]
-    public bool IncludeSecret = false;
+    public bool IncludeSecret;
 }

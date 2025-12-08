@@ -59,7 +59,6 @@ using Content.Server.Cloning.Components;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Medical.Components;
 using Content.Server.Power.EntitySystems;
-using Content.Shared.UserInterface;
 using Content.Shared.Cloning;
 using Content.Shared.Cloning.CloningConsole;
 using Content.Shared.Database;
@@ -70,6 +69,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Power;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 
@@ -220,7 +220,7 @@ namespace Content.Server.Cloning
             if (!_mindSystem.TryGetMind(body.Value, out var mindId, out var mind))
                 return;
 
-            if (mind.UserId.HasValue == false || !_playerManager.ValidSessionId(mind.UserId.Value))
+            if (!mind.UserId.HasValue || !_playerManager.ValidSessionId(mind.UserId.Value))
                 return;
 
             if (_cloningPodSystem.TryCloning(cloningPodUid, body.Value, (mindId, mind), cloningPod, scannerComp.CloningFailChanceMultiplier))
@@ -269,14 +269,12 @@ namespace Content.Server.Cloning
                     {
                         clonerStatus = ClonerStatus.ScannerOccupantAlive;
                     }
-                    else
+
+                    if (!_mindSystem.TryGetMind(scanBody.Value, out _, out var mind) ||
+                        mind.UserId == null ||
+                        !_playerManager.TryGetSessionById(mind.UserId.Value, out _))
                     {
-                        if (!_mindSystem.TryGetMind(scanBody.Value, out _, out var mind) ||
-                            mind.UserId == null ||
-                            !_playerManager.TryGetSessionById(mind.UserId.Value, out _))
-                        {
-                            clonerStatus = ClonerStatus.NoMindDetected;
-                        }
+                        clonerStatus = ClonerStatus.NoMindDetected;
                     }
                 }
             }

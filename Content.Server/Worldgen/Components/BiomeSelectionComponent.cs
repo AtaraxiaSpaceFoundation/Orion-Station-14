@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.Worldgen.Systems.Biomes;
 using Content.Server.Worldgen.Prototypes;
+using Content.Server.Worldgen.Systems.Biomes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Worldgen.Components;

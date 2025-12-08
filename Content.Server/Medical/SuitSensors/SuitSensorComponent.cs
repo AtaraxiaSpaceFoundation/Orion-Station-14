@@ -38,7 +38,7 @@ public sealed partial class SuitSensorComponent : Component
     ///     Is this suit sensor for commands, BSO use only
     /// </summary>
     [DataField]
-    public bool CommandTracker = false;
+    public bool CommandTracker;
     // GoobStation - End
     /// <summary>
     ///     Choose a random sensor mode when item is spawned.
@@ -50,7 +50,7 @@ public sealed partial class SuitSensorComponent : Component
     ///     If true user can't change suit sensor mode
     /// </summary>
     [DataField]
-    public bool ControlsLocked = false;
+    public bool ControlsLocked;
 
     /// <summary>
     ///  How much time it takes to change another player's sensors
@@ -99,7 +99,7 @@ public sealed partial class SuitSensorComponent : Component
     ///     The station this suit sensor belongs to. If it's null the suit didn't spawn on a station and the sensor doesn't work.
     /// </summary>
     [DataField("station")]
-    public EntityUid? StationId = null;
+    public EntityUid? StationId;
 
     /// <summary>
     ///     The server the suit sensor sends it state to.
@@ -107,7 +107,7 @@ public sealed partial class SuitSensorComponent : Component
     ///     It does this by calling the servers entity system for performance reasons.
     /// </summary>
     [DataField("server")]
-    public string? ConnectedServer = null;
+    public string? ConnectedServer;
 
     /// <summary>
     /// The previous mode of the suit. This is used to restore the state when an EMP effect ends.
@@ -120,5 +120,5 @@ public sealed partial class SuitSensorComponent : Component
     ///  This keeps prisoner jumpsuits/internal implants from becoming unlocked after an EMP.
     /// </summary>
     [DataField, ViewVariables]
-    public bool PreviousControlsLocked = false;
+    public bool PreviousControlsLocked;
 }

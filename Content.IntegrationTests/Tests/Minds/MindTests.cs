@@ -14,7 +14,6 @@
 
 #nullable enable
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Server.Database;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Mind.Commands;

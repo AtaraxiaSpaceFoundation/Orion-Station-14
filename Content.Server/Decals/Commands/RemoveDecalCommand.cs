@@ -36,7 +36,7 @@ namespace Content.Server.Decals.Commands
 
             if (!uint.TryParse(args[0], out var uid))
             {
-                shell.WriteError($"Failed parsing uid.");
+                shell.WriteError("Failed parsing uid.");
                 return;
             }
 

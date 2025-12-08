@@ -95,11 +95,11 @@ namespace Content.Server.Atmos.Components
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public bool FireSpread { get; private set; } = false;
+        public bool FireSpread { get; private set; }
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public bool CanResistFire { get; private set; } = false;
+        public bool CanResistFire { get; private set; }
 
         [DataField(required: true)]
         [ViewVariables(VVAccess.ReadWrite)]
@@ -116,7 +116,7 @@ namespace Content.Server.Atmos.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public bool AlwaysCombustible = false;
+        public bool AlwaysCombustible;
 
         /// <summary>
         ///     Can the component anyhow lose its FireStacks?

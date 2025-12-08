@@ -33,22 +33,22 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;  // goob - intermap transmitters
-using Content.Goobstation.Shared.Communications; // goob - intermap transmitters
-using Content.Goobstation.Shared.Loudspeaker.Events; // goob - loudspeakers
-using Content.Server.Administration.Logs;
-using Content.Server.Chat.Systems;
+using System.Linq;
+using Content.Goobstation.Shared.Communications;
+using Content.Goobstation.Shared.Loudspeaker.Events;
 using Content.Server._EinsteinEngines.Language;
 using Content.Server._Orion.ServerProtection.Chat;
+using Content.Server.Administration.Logs;
+using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Radio.Components;
+using Content.Shared._EinsteinEngines.Language;
 using Content.Shared.Chat;
 using Content.Shared.Database;
-using Content.Shared._EinsteinEngines.Language;
-using Content.Shared._EinsteinEngines.Language.Systems;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Speech;
+using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -56,7 +56,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared.Whitelist;
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -159,7 +158,7 @@ public sealed class RadioSystem : EntitySystem
         // Einstein Engines - Language end
 
         // Orion-Start
-        if (_chatProtection.CheckICMessage(message, messageSource) == true)
+        if (_chatProtection.CheckICMessage(message, messageSource))
             return;
         // Orion-End
 

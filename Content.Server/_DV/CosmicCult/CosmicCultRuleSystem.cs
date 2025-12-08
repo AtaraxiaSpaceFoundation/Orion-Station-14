@@ -13,17 +13,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Common.Religion;
+using Content.Goobstation.Shared.Religion;
 using Content.Server._DV.CosmicCult.Components;
 using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Atmos.Components;
 using Content.Server.Audio;
-using Content.Goobstation.Shared.Religion; // Goobstation - Shitchap
 using Content.Server.Chat.Systems;
+using Content.Server.Cuffs;
 using Content.Server.EUI;
-using Content.Server.GameTicking.Rules;
 using Content.Server.GameTicking;
+using Content.Server.GameTicking.Rules;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
 using Content.Server.Objectives.Components;
@@ -32,28 +35,30 @@ using Content.Server.Radio.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Voting.Managers;
+using Content.Server.Station.Systems;
 using Content.Server.Voting;
-using Content.Shared.Eye;
+using Content.Server.Voting.Managers;
 using Content.Shared._DV.CCVars;
-using Content.Shared._DV.CosmicCult.Components.Examine;
-using Content.Shared._DV.CosmicCult.Components;
-using Content.Shared._DV.CosmicCult.Prototypes;
 using Content.Shared._DV.CosmicCult;
+using Content.Shared._DV.CosmicCult.Components;
+using Content.Shared._DV.CosmicCult.Components.Examine;
+using Content.Shared._DV.CosmicCult.Prototypes;
 using Content.Shared._DV.Roles;
 using Content.Shared.Alert;
 using Content.Shared.Audio;
 using Content.Shared.Body.Systems;
 using Content.Shared.Coordinates;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.Eye;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mind;
-using Content.Shared.Mobs.Components;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Parallax;
 using Content.Shared.Popups;
@@ -71,11 +76,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using System.Linq;
-using Content.Goobstation.Common.Religion;
-using Content.Server.Station.Systems;
-using Content.Shared.Cuffs.Components;
-using Content.Server.Cuffs;
 
 namespace Content.Server._DV.CosmicCult;
 
@@ -119,10 +119,10 @@ public sealed class CosmicCultRuleSystem : GameRuleSystem<CosmicCultRuleComponen
     [Dependency] private readonly CuffableSystem _cuffable = default!; // goob edit
 
     private ISawmill _sawmill = default!;
-    private TimeSpan _t3RevealDelay = default!;
-    private TimeSpan _t2RevealDelay = default!;
-    private TimeSpan _finaleDelay = default!;
-    private TimeSpan _voteTimer = default!;
+    private TimeSpan _t3RevealDelay;
+    private TimeSpan _t2RevealDelay;
+    private TimeSpan _finaleDelay;
+    private TimeSpan _voteTimer;
     private readonly SoundSpecifier _briefingSound = new SoundPathSpecifier("/Audio/_DV/CosmicCult/antag_cosmic_briefing.ogg");
     private readonly SoundSpecifier _deconvertSound = new SoundPathSpecifier("/Audio/_DV/CosmicCult/antag_cosmic_deconvert.ogg");
     private readonly SoundSpecifier _tier3Sound = new SoundPathSpecifier("/Audio/_DV/CosmicCult/tier3.ogg");

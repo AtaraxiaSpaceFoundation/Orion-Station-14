@@ -22,6 +22,6 @@ namespace Content.Server.Research.Disk
         /// This is for debug purposes only.
         /// </remarks>
         [DataField("unlockAllTech")]
-        public bool UnlockAllTech = false;
+        public bool UnlockAllTech;
     }
 }

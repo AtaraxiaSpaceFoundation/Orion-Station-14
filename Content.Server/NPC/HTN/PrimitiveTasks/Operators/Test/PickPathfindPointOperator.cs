@@ -45,7 +45,7 @@ public sealed partial class PickPathfindPointOperator : HTNOperator
 
         var selected = _random.Pick(points);
 
-        return (true, new Dictionary<string, object>()
+        return (true, new Dictionary<string, object>
         {
             { NPCBlackboard.MovementTarget, selected.Coordinates }
         });

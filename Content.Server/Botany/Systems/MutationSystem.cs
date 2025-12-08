@@ -16,12 +16,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Shared.Atmos;
 using Content.Shared.EntityEffects;
 using Content.Shared.Random;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Linq;
 
 namespace Content.Server.Botany;
 
@@ -68,7 +68,7 @@ public sealed class MutationSystem : EntitySystem
     {
         if (!seed.Unique)
         {
-            Log.Error($"Attempted to mutate a shared seed");
+            Log.Error("Attempted to mutate a shared seed");
             return;
         }
 

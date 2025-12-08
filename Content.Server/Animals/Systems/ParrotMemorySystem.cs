@@ -25,7 +25,7 @@ namespace Content.Server.Animals.Systems;
 /// (radiovocalizer) and stores them in a list. When an entity with a VocalizerComponent attempts to vocalize, this will
 /// try to set the message from memory.
 /// </summary>
-public sealed partial class ParrotMemorySystem : EntitySystem
+public sealed class ParrotMemorySystem : EntitySystem
 {
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
@@ -66,7 +66,7 @@ public sealed partial class ParrotMemorySystem : EntitySystem
             return;
 
         // simple verb that just clears the memory list
-        var clearMemoryVerb = new Verb()
+        var clearMemoryVerb = new Verb
         {
             Text = Loc.GetString("parrot-verb-clear-memory"),
             Category = VerbCategory.Admin,

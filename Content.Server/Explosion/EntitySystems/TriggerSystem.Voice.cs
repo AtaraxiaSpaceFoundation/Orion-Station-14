@@ -79,7 +79,7 @@ namespace Content.Server.Explosion.EntitySystems
             var component = ent.Comp;
 
             var @event = args;
-            args.Verbs.Add(new AlternativeVerb()
+            args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString(component.IsRecording ? "verb-trigger-voice-stop" : "verb-trigger-voice-record"),
                 Act = () =>
@@ -95,7 +95,7 @@ namespace Content.Server.Explosion.EntitySystems
             if (string.IsNullOrWhiteSpace(component.KeyPhrase))
                 return;
 
-            args.Verbs.Add(new AlternativeVerb()
+            args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("verb-trigger-voice-clear"),
                 Act = () =>

@@ -63,7 +63,7 @@ namespace Content.Server.Construction.Conditions
 
         public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
         {
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = Open
                     ? "construction-step-condition-wire-panel-open"

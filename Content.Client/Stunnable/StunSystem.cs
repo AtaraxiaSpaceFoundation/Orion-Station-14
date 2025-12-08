@@ -4,14 +4,11 @@
 // SPDX-License-Identifier: MIT
 
 using System.Numerics;
-using Content.Shared.Mobs;
 using Content.Shared.Stunnable;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Client.Stunnable;
 

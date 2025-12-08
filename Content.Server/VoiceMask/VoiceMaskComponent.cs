@@ -29,7 +29,7 @@ public sealed partial class VoiceMaskComponent : Component
     ///     The name that will override an entities default name. If null, it will use the default override.
     /// </summary>
     [DataField]
-    public string? VoiceMaskName = null;
+    public string? VoiceMaskName;
 
     /// <summary>
     ///     The speech verb that will override an entities default one. If null, it will use the entities default verb.

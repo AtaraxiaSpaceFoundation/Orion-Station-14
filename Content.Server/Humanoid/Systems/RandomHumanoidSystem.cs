@@ -122,7 +122,7 @@ public sealed class RandomHumanoidSystem : EntitySystem
         var profile = prototype.SpeciesWhitelist != null
             ? HumanoidCharacterProfile.RandomWithSpecies(prototype.SpeciesWhitelist)
             : HumanoidCharacterProfile.Random(prototype.SpeciesBlacklist); // Goob edit
-        var speciesProto = _prototypeManager.Index<SpeciesPrototype>(profile.Species);
+        var speciesProto = _prototypeManager.Index(profile.Species);
         var humanoid = EntityManager.CreateEntityUninitialized(speciesProto.Prototype, coordinates);
 
         _metaData.SetEntityName(humanoid, prototype.RandomizeName ? profile.Name : name);

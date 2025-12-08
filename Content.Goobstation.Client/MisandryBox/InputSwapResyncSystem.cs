@@ -7,8 +7,6 @@
 using Content.Shared.Movement.Systems;
 using Robust.Client.GameStates;
 using Robust.Client.Timing;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Player;
 
 namespace Content.Goobstation.Client.MisandryBox;

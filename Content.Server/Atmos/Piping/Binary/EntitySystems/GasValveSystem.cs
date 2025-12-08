@@ -22,11 +22,6 @@ using Content.Server.NodeContainer.Nodes;
 using Content.Shared.Atmos.Piping.Binary.Components;
 using Content.Shared.Atmos.Piping.Binary.Systems;
 using Content.Shared.Audio;
-using Content.Shared.Examine;
-using Content.Shared.Interaction;
-using JetBrains.Annotations;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Atmos.Piping.Binary.EntitySystems;
 

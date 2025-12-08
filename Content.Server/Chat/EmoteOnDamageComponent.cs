@@ -5,12 +5,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-namespace Content.Server.Chat;
-
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+
+namespace Content.Server.Chat;
 
 /// <summary>
 /// Causes an entity to automatically emote when taking damage.
@@ -35,14 +35,14 @@ public sealed partial class EmoteOnDamageComponent : Component
     /// Also send the emote in chat.
     /// <summary>
     [DataField("withChat"), ViewVariables(VVAccess.ReadWrite)]
-    public bool WithChat = false;
+    public bool WithChat;
 
     /// <summary>
     /// Hide the chat message from the chat window, only showing the popup.
     /// This does nothing if WithChat is false.
     /// <summary>
     [DataField("hiddenFromChatWindow")]
-    public bool HiddenFromChatWindow = false;
+    public bool HiddenFromChatWindow;
 
     /// <summary>
     /// The simulation time of the last emote preformed due to taking damage.

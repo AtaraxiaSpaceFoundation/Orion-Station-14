@@ -104,42 +104,38 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Common.Silicons.Components;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.CustomLawboard;
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Server.Radio.Components;
+using Content.Server.Radio.EntitySystems;
+using Content.Server.Research.Systems;
 using Content.Server.Roles;
 using Content.Server.Station.Systems;
+using Content.Shared._CorvaxNext.Silicons.Borgs.Components;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Content.Shared.Emag.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Random;
+using Content.Shared.Random.Helpers;
+using Content.Shared.Research.Components;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
+using Content.Shared.Silicons.StationAi;
+using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Toolshed;
-
-// Goobstation usings
-using Content.Goobstation.Common.Silicons.Components;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Goobstation.Shared.CustomLawboard;
 using Robust.Shared.Random;
-using Content.Shared.Random;
-using Content.Shared.Random.Helpers;
-using Content.Shared.Research.Components;
-using Content.Server.Radio.EntitySystems;
-using Content.Server.Research.Systems;
-
-// Corvax-Next-AiRemoteControl
-using Content.Shared.Silicons.StationAi;
-using Content.Shared.Tag;
-using Content.Shared._CorvaxNext.Silicons.Borgs.Components;
+using Robust.Shared.Toolshed;
 
 namespace Content.Server.Silicons.Laws;
 
@@ -403,13 +399,13 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
     public SiliconLawset GetLawset(ProtoId<SiliconLawsetPrototype> lawset)
     {
         var proto = _prototype.Index(lawset);
-        var laws = new SiliconLawset()
+        var laws = new SiliconLawset
         {
             Laws = new List<SiliconLaw>(proto.Laws.Count)
         };
         foreach (var law in proto.Laws)
         {
-            laws.Laws.Add(_prototype.Index<SiliconLawPrototype>(law).ShallowClone());
+            laws.Laws.Add(_prototype.Index(law).ShallowClone());
         }
         laws.ObeysTo = proto.ObeysTo;
 
@@ -590,7 +586,7 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
         if (laws.Laws.Count > 0)
         {
             var i = _robustRandom.Next(laws.Laws.Count);
-            laws.Laws[i] = new SiliconLaw()
+            laws.Laws[i] = new SiliconLaw
             {
                 LawString = newLaw,
                 Order = laws.Laws[i].Order

@@ -10,7 +10,6 @@ using Content.Goobstation.Client.Construction;
 using Content.Goobstation.Shared.DragDrop;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.DragDrop;
-using Content.Shared.Interaction;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.DragDrop;

@@ -23,7 +23,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
-
 using static Content.Server._Orion.ResponseForce.ResponseForceState;
 
 namespace Content.Server._Orion.ResponseForce;

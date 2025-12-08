@@ -53,20 +53,18 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text.Json.Serialization;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Temperature.Components;
+using Content.Shared._Shitmed.Damage;
+using Content.Shared._Shitmed.EntityEffects.Effects;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Localizations;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using System.Text.Json.Serialization;
-
-// Shitmed Changes
-using Content.Shared._Shitmed.EntityEffects.Effects;
-using Content.Shared._Shitmed.Targeting;
-using Content.Server.Temperature.Components;
-using Content.Shared._Shitmed.Damage;
 
 namespace Content.Server.EntityEffects.Effects
 {
@@ -187,7 +185,7 @@ namespace Content.Server.EntityEffects.Effects
                 if (!args.EntityManager.TryGetComponent<TemperatureComponent>(args.TargetEntity, out var temp))
                     scale = FixedPoint2.Zero;
                 else
-                    scale *= ScaleByTemperature.Value.GetEfficiencyMultiplier(temp.CurrentTemperature, scale, false);
+                    scale *= ScaleByTemperature.Value.GetEfficiencyMultiplier(temp.CurrentTemperature, scale);
             }
 
             var universalReagentDamageModifier =

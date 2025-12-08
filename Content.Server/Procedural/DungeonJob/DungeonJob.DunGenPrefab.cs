@@ -217,7 +217,7 @@ public sealed partial class DungeonJob
                     }
 
                     roomRotation = new Angle(Math.PI / 2);
-                    _sawmill.Debug($"Using rotated variant for room");
+                    _sawmill.Debug("Using rotated variant for room");
                 }
 
                 var room = roomProto[random.Next(roomProto.Count)];

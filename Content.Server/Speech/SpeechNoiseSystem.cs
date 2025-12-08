@@ -15,20 +15,17 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Common.Barks;
+using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.Speech;
-using Robust.Shared.Audio;
 using Content.Server.Chat.Systems;
 using Content.Shared.Speech;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
-using Robust.Shared.Random;
-
-// Goob Station
- using Content.Goobstation.Common.Barks;
-using Content.Goobstation.Common.CCVar;
 using Robust.Shared.Configuration;
-
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Speech
 {

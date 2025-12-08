@@ -7,9 +7,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._DV.Weapons.Ranged.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Server._DV.Weapons.Ranged.Systems;
 
 namespace Content.Server._DV.Weapons.Ranged.Components;
 
@@ -34,7 +34,7 @@ public sealed partial class EnergyGunComponent : Component
     /// </summary>
     [DataField("currentFireMode")]
     [AutoNetworkedField]
-    public EnergyWeaponFireMode? CurrentFireMode = default!;
+    public EnergyWeaponFireMode? CurrentFireMode;
 }
 
 [DataDefinition]

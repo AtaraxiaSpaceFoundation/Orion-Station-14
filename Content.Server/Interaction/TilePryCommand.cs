@@ -23,7 +23,6 @@ using Content.Shared.Maps;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Interaction;
 
@@ -53,13 +52,13 @@ public sealed class TilePryCommand : LocalizedEntityCommands
 
         if (!int.TryParse(args[0], out var radius))
         {
-            shell.WriteError(Loc.GetString($"cmd-tilepry-arg-must-be-number", ("arg", args[0])));
+            shell.WriteError(Loc.GetString("cmd-tilepry-arg-must-be-number", ("arg", args[0])));
             return;
         }
 
         if (radius < 0)
         {
-            shell.WriteError(Loc.GetString($"cmd-tilepry-radius-must-be-positive"));
+            shell.WriteError(Loc.GetString("cmd-tilepry-radius-must-be-positive"));
             return;
         }
 

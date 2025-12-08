@@ -29,7 +29,7 @@ public sealed partial class StationDataComponent : Component
     /// The game map prototype, if any, associated with this station.
     /// </summary>
     [DataField("stationConfig")]
-    public StationConfig? StationConfig = null;
+    public StationConfig? StationConfig;
 
     /// <summary>
     /// List of all grids this station is part of.

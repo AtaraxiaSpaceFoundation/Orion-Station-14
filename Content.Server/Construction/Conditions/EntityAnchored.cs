@@ -57,7 +57,7 @@ namespace Content.Server.Construction.Conditions
 
         public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
         {
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = Anchored
                     ? "construction-step-condition-entity-anchored"

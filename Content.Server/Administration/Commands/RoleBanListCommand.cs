@@ -8,8 +8,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.BanList;
-using Content.Server.EUI;
 using Content.Server.Database;
+using Content.Server.EUI;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 

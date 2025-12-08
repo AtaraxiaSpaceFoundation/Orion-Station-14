@@ -85,7 +85,6 @@ using Robust.Shared.Containers;
 // Shitmed Change
 using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared.Silicons.StationAi;
-using Content.Shared.Body.Events;
 
 namespace Content.Shared.ActionBlocker
 {

@@ -143,7 +143,6 @@ public sealed class SpiderChargeSystem : SharedSpiderChargeSystem
         {
             _popup.PopupEntity(Loc.GetString("spider-charge-too-far"), user, user);
             args.Cancelled = true;
-            return;
         }
     }
 

@@ -98,7 +98,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Common.Temperature;
 using Content.Goobstation.Common.Temperature.Components;
+using Content.Goobstation.Shared.Temperature;
 using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
@@ -110,13 +112,11 @@ using Content.Shared.Atmos;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Inventory;
+using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Temperature;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
-using Content.Shared.Projectiles;
-using Content.Goobstation.Shared.Temperature;
-using Content.Goobstation.Common.Temperature; // goob edit
 
 namespace Content.Server.Temperature.Systems;
 
@@ -339,7 +339,7 @@ public sealed class TemperatureSystem : EntitySystem
 
         if (physics.Mass < 1)
             return comp.SpecificHeat;
-        else return comp.SpecificHeat * physics.FixturesMass;
+        return comp.SpecificHeat * physics.FixturesMass;
     }
 
     private void OnInit(EntityUid uid, InternalTemperatureComponent comp, MapInitEvent args)

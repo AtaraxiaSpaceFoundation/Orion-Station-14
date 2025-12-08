@@ -72,7 +72,7 @@ public interface IGridSpawnGroup
 }
 
 [DataRecord]
-public sealed partial class DungeonSpawnGroup : IGridSpawnGroup
+public sealed class DungeonSpawnGroup : IGridSpawnGroup
 {
     /// <summary>
     /// Prototypes we can choose from to spawn.
@@ -107,7 +107,7 @@ public sealed partial class DungeonSpawnGroup : IGridSpawnGroup
 }
 
 [DataRecord]
-public sealed partial class GridSpawnGroup : IGridSpawnGroup
+public sealed class GridSpawnGroup : IGridSpawnGroup
 {
     public List<ResPath> Paths = new();
 

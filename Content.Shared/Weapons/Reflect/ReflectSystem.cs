@@ -85,7 +85,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._Goobstation.Wizard.Projectiles;
 using Content.Shared.Administration.Logs;
-using Content.Shared.Audio;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Database;

@@ -82,17 +82,17 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Goobstation.Common.CCVar; // Goobstation
+using Content.Goobstation.Common.CCVar;
 using Content.Server.GameTicking;
 using Content.Server.RoundEnd;
 using Content.Server.StationEvents.Components;
 using Content.Shared.CCVar;
+using Content.Shared.EntityTable;
+using Content.Shared.EntityTable.EntitySelectors;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.EntityTable.EntitySelectors;
-using Content.Shared.EntityTable;
 
 namespace Content.Server.StationEvents;
 
@@ -110,15 +110,15 @@ public sealed class EventManagerSystem : EntitySystem
     private void SetEnabled(bool value) => EventsEnabled = value;
 
     public float EventSpeedup = 1f; // Goobstation
-    public int PlayerCountBias = 0; // Goobstation
+    public int PlayerCountBias; // Goobstation
 
     public override void Initialize()
     {
         base.Initialize();
 
         Subs.CVar(_configurationManager, CCVars.EventsEnabled, SetEnabled, true);
-        Subs.CVar(_configurationManager, GoobCVars.StationEventSpeedup, (value) => EventSpeedup = value, true); // Goobstation
-        Subs.CVar(_configurationManager, GoobCVars.StationEventPlayerBias, (value) => PlayerCountBias = value, true); // Goobstation
+        Subs.CVar(_configurationManager, GoobCVars.StationEventSpeedup, value => EventSpeedup = value, true); // Goobstation
+        Subs.CVar(_configurationManager, GoobCVars.StationEventPlayerBias, value => PlayerCountBias = value, true); // Goobstation
     }
 
     /// <summary>
@@ -199,7 +199,7 @@ public sealed class EventManagerSystem : EntitySystem
 
         var selectedEvents = _entityTable.GetSpawns(limitedEventsTable);
 
-        if (selectedEvents.Any() != true) // This is here so if you fuck up the table it wont die.
+        if (!selectedEvents.Any()) // This is here so if you fuck up the table it wont die.
             return false;
 
         foreach (var eventid in selectedEvents)

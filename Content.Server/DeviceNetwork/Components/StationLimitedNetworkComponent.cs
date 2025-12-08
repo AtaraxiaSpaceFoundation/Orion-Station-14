@@ -21,6 +21,6 @@ namespace Content.Server.DeviceNetwork.Components
         /// </summary>
         [DataField("allowNonStationPackets")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public bool AllowNonStationPackets = false;
+        public bool AllowNonStationPackets;
     }
 }

@@ -36,7 +36,7 @@ namespace Content.Server.Roles
         {
             if (args.Length != 2)
             {
-                shell.WriteLine(Loc.GetString($"shell-wrong-arguments-number-need-specific",
+                shell.WriteLine(Loc.GetString("shell-wrong-arguments-number-need-specific",
                     ("properAmount", 2),
                     ("currentAmount", args.Length)));
                 return;
@@ -44,7 +44,7 @@ namespace Content.Server.Roles
 
             if (!_playerManager.TryGetPlayerDataByUsername(args[0], out var data))
             {
-                shell.WriteLine(Loc.GetString($"cmd-addrole-mind-not-found"));
+                shell.WriteLine(Loc.GetString("cmd-addrole-mind-not-found"));
                 return;
             }
 
@@ -52,7 +52,7 @@ namespace Content.Server.Roles
 
             if (mind == null)
             {
-                shell.WriteLine(Loc.GetString($"cmd-addrole-mind-not-found"));
+                shell.WriteLine(Loc.GetString("cmd-addrole-mind-not-found"));
                 return;
             }
 

@@ -12,8 +12,6 @@
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Shared.SecondSkin;
-using Content.Server.Heretic.Components.PathSpecific;
-using Content.Server.Spreader;
 using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared._Goobstation.Wizard;
 using Content.Shared._Shitmed.Targeting;
@@ -21,7 +19,6 @@ using Content.Shared.Flash;
 using Content.Shared.Heretic;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
-using Content.Shared.Tiles;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;

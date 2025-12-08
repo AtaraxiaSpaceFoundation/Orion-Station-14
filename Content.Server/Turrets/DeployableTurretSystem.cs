@@ -22,7 +22,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Turrets;
 
-public sealed partial class DeployableTurretSystem : SharedDeployableTurretSystem
+public sealed class DeployableTurretSystem : SharedDeployableTurretSystem
 {
     [Dependency] private readonly HTNSystem _htn = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -103,7 +103,6 @@ public sealed partial class DeployableTurretSystem : SharedDeployableTurretSyste
         if (command == DeviceNetworkConstants.CmdUpdatedState)
         {
             SendStateUpdateToDeviceNetwork(ent);
-            return;
         }
     }
 

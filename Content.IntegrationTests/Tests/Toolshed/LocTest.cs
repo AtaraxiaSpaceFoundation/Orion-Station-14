@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Collections.Generic;
-using System.Globalization;
 using System.Reflection;
 using Robust.Shared.Localization;
 using Robust.Shared.Toolshed;

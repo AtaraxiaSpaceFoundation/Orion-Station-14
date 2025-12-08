@@ -64,23 +64,23 @@ public sealed partial class AnomalousParticleComponent : Component
     /// If this is true then the particle will always affect the stability of the anomaly.
     /// </summary>
     [DataField]
-    public bool DestabilzingOverride = false;
+    public bool DestabilzingOverride;
 
     /// <summary>
     /// If this is true then the particle will always affect the weakeness of the anomaly.
     /// </summary>
     [DataField]
-    public bool WeakeningOverride = false;
+    public bool WeakeningOverride;
 
     /// <summary>
     /// If this is true then the particle will always affect the severity of the anomaly.
     /// </summary>
     [DataField]
-    public bool SeverityOverride = false;
+    public bool SeverityOverride;
 
     /// <summary>
     /// If this is true then the particle will always affect the behaviour.
     /// </summary>
     [DataField]
-    public bool TransmutationOverride = false;
+    public bool TransmutationOverride;
 }

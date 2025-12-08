@@ -8,7 +8,6 @@ using Content.Goobstation.Shared.Devil;
 using Content.Server.Access.Systems;
 using Content.Server.Popups;
 using Content.Shared.Paper;
-using Content.Server.Paper;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
@@ -74,7 +73,7 @@ public sealed class SignatureSystem : EntitySystem
 
         var signatureName = DetermineEntitySignature(signer);
 
-        var stampInfo = new StampDisplayInfo()
+        var stampInfo = new StampDisplayInfo
         {
             StampedName = signatureName,
             StampedColor = Color.DarkSlateGray, //TODO Make this configurable depending on the pen.
@@ -101,13 +100,11 @@ public sealed class SignatureSystem : EntitySystem
 
             return true;
         }
-        else
-        {
-            // Show an error popup
-            _popup.PopupEntity(Loc.GetString("paper-signed-failure", ("target", paper.Owner)), signer, signer, PopupType.SmallCaution);
 
-            return false;
-        }
+        // Show an error popup
+        _popup.PopupEntity(Loc.GetString("paper-signed-failure", ("target", paper.Owner)), signer, signer, PopupType.SmallCaution);
+
+        return false;
     }
 
     private string DetermineEntitySignature(EntityUid uid)

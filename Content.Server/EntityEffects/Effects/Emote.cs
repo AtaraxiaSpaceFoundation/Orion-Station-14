@@ -20,7 +20,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Chat.Systems;
-using Content.Shared.Chat; // Einstein Engines - Language
+using Content.Shared.Chat;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.EntityEffects;
 using JetBrains.Annotations;
@@ -57,7 +57,7 @@ public sealed partial class Emote : EntityEffect
     ///     If true, the entity will preform the emote even if they normally can't.
     /// </summary>
     [DataField]
-    public bool Force = false;
+    public bool Force;
 
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {

@@ -30,31 +30,35 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.GameTicking;
-using Content.Server.Shuttles.Systems;
-using Content.Shared.Cuffs.Components;
-using Content.Shared.GameTicking.Components;
-using Content.Shared.Mind;
-using Content.Shared.Objectives.Components;
-using Content.Shared.Objectives.Systems;
-using Content.Shared.Random;
-using Content.Shared.Random.Helpers;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.ServerCurrency;
 using Content.Goobstation.Shared.ManifestListings;
+using Content.Server.GameTicking;
 using Content.Server.Objectives.Commands;
+using Content.Server.Shuttles.Systems;
+using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared.Cuffs.Components;
+using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
+using Content.Shared.Mind;
+using Content.Shared.Objectives.Components;
+using Content.Shared.Objectives.Systems;
 using Content.Shared.Prototypes;
+using Content.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared.Administration.Logs;
-using Robust.Shared.Network; //Goobstation
+
+//Goobstation
 
 namespace Content.Server.Objectives;
 
@@ -62,15 +66,15 @@ namespace Content.Server.Objectives;
 // if you wanna upstream something think twice
 public sealed class ObjectivesSystem : SharedObjectivesSystem
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
-    [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
+    [Robust.Shared.IoC.Dependency] private readonly GameTicker _gameTicker = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IPlayerManager _player = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IRobustRandom _random = default!;
+    [Robust.Shared.IoC.Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Robust.Shared.IoC.Dependency] private readonly SharedJobSystem _job = default!;
+    [Robust.Shared.IoC.Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Robust.Shared.IoC.Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
 
     private IEnumerable<string>? _objectives;
 
@@ -235,10 +239,10 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                     if (username is null &&
                         userid.HasValue &&
                         _player.TryGetPlayerData(userid.Value, out var data))
-                        username = System.Runtime.CompilerServices.FormattableStringFactory.Create(data.UserName);
+                        username = FormattableStringFactory.Create(data.UserName);
 
-                    _adminLog.Add(Shared.Database.LogType.AntagObjective,
-                                    Shared.Database.LogImpact.Low,
+                    _adminLog.Add(LogType.AntagObjective,
+                                    LogImpact.Low,
                                     $"{username:subject} achieved {progress}% of objective {objectiveTitle}");
 
                     agentSummary.Append("- ");

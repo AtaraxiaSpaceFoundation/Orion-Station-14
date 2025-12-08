@@ -15,10 +15,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Electrocution;
-using Content.Shared.Electrocution;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Wires;
+using Content.Shared.Electrocution;
 using Content.Shared.Power;
 using Content.Shared.Wires;
 

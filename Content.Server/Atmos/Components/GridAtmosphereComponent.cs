@@ -47,10 +47,10 @@ namespace Content.Server.Atmos.Components
         public bool Simulated { get; set; } = true;
 
         [ViewVariables]
-        public bool ProcessingPaused { get; set; } = false;
+        public bool ProcessingPaused { get; set; }
 
         [ViewVariables]
-        public float Timer { get; set; } = 0f;
+        public float Timer { get; set; }
 
         [ViewVariables]
         public int UpdateCounter { get; set; } = 1; // DO NOT SET TO ZERO BY DEFAULT! It will break roundstart atmos...

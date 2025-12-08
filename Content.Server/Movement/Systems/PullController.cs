@@ -42,7 +42,6 @@ using Content.Shared.Gravity;
 using Content.Shared.Input;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
-using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Rotatable;
 using Robust.Shared.Containers;
 using Robust.Shared.Input.Binding;

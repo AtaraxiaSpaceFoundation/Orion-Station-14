@@ -51,6 +51,6 @@ namespace Content.Server.Power.Components
         /// and bypasses checks for transform, anchored, and ApcPowerReceiverComponent.
         /// </summary>
         [DataField]
-        public bool Portable = false;
+        public bool Portable;
     }
 }

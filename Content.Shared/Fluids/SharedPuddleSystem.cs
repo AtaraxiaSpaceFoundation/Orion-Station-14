@@ -11,7 +11,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using System.Linq;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;

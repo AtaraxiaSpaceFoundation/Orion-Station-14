@@ -6,8 +6,6 @@
 using Content.Goobstation.Common.BlockHandsOnBuckle;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Buckle.Components;
-using Content.Shared.Hands;
-using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;

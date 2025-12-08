@@ -100,12 +100,12 @@ public sealed class FTLDiskCommand : LocalizedCommands
                     shell.WriteLine(Loc.GetString("cmd-ftldisk-no-map-comp", ("destination", destinations), ("map", dest)));
                     continue;
                 }
-                if (mapComp.MapInitialized == false)
+                if (!mapComp.MapInitialized)
                 {
                     shell.WriteLine(Loc.GetString("cmd-ftldisk-map-not-init", ("destination", destinations), ("map", dest)));
                     continue;
                 }
-                if (mapComp.MapPaused == true)
+                if (mapComp.MapPaused)
                 {
                     shell.WriteLine(Loc.GetString("cmd-ftldisk-map-paused", ("destination", destinations), ("map", dest)));
                     continue;
@@ -127,10 +127,10 @@ public sealed class FTLDiskCommand : LocalizedCommands
                 else
                 {
                     // we don't do these automatically, since it isn't clear what the correct resolution is. Instead we provide feedback to the user and carry on like they know what theyre doing.
-                    if (ftlDestComp.Enabled == false)
+                    if (!ftlDestComp.Enabled)
                         shell.WriteLine(Loc.GetString("cmd-ftldisk-already-dest-not-enabled", ("destination", destinations), ("map", dest)));
 
-                    if (ftlDestComp.BeaconsOnly == true)
+                    if (ftlDestComp.BeaconsOnly)
                         shell.WriteLine(Loc.GetString("cmd-ftldisk-requires-ftl-point", ("destination", destinations), ("map", dest)));
                 }
 

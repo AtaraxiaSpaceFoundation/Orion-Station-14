@@ -4,10 +4,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared.Singularity.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-
-using Content.Shared.Singularity.Components;
 
 namespace Content.Server.Singularity.Events;
 

@@ -29,5 +29,5 @@ public sealed partial class AlertLevelChangeOnTriggerComponent : Component
     ///Force the alert change. This applies if the alert level is not selectable or not.
     /// </summary>
     [DataField]
-    public bool Force = false;
+    public bool Force;
 }

@@ -1,22 +1,22 @@
 // Copyright Rane (elijahrane@gmail.com) 2025
 // All rights reserved. Relicensed under AGPL with permission
 
+using System.Linq;
+using System.Numerics;
+using Content.Server.Power.EntitySystems;
 using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._Mono.FireControl;
+using Content.Shared._Mono.ShipGuns;
+using Content.Shared.Examine;
+using Content.Shared.Interaction;
+using Content.Shared.Physics;
 using Content.Shared.Power;
+using Content.Shared.Shuttles.Components;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
-using System.Linq;
-using Content.Shared.Physics;
-using System.Numerics;
-using Content.Server.Power.EntitySystems;
-using Content.Shared.Shuttles.Components;
 using Robust.Shared.Timing;
-using Content.Shared.Interaction;
-using Content.Shared._Mono.ShipGuns;
-using Content.Shared.Examine;
 
 namespace Content.Server._Mono.FireControl;
 
@@ -274,10 +274,8 @@ public sealed partial class FireControlSystem : EntitySystem
             component.ControllingServer = gridServer.ServerUid;
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
 
     public int GetRemainingProcessingPower(EntityUid server, FireControlServerComponent? component = null)

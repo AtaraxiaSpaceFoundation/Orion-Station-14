@@ -23,9 +23,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
-using Content.Server.CartridgeLoader.Cartridges;
 using Content.Server.CartridgeLoader;
+using Content.Server.CartridgeLoader.Cartridges;
 using Content.Server.Chat.Managers;
 using Content.Server.Discord;
 using Content.Server.GameTicking;
@@ -34,25 +36,21 @@ using Content.Server.Popups;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
-using Content.Shared.CCVar;
-using Content.Shared.CartridgeLoader.Cartridges;
 using Content.Shared.CartridgeLoader;
+using Content.Shared.CartridgeLoader.Cartridges;
+using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.IdentityManagement;
 using Content.Shared.MassMedia.Components;
 using Content.Shared.MassMedia.Systems;
 using Content.Shared.Popups;
-using Robust.Server.GameObjects;
 using Robust.Server;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
-using Robust.Shared.Maths;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Content.Server.MassMedia.Systems;
 
@@ -72,7 +70,7 @@ public sealed class NewsSystem : SharedNewsSystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IBaseServer _baseServer = default!;
 
-    private WebhookIdentifier? _webhookId = null;
+    private WebhookIdentifier? _webhookId;
     private Color _webhookEmbedColor;
     private bool _webhookSendDuringRound;
 

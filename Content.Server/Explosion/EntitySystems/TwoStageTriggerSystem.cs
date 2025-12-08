@@ -74,9 +74,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.Timing;
-using Robust.Shared.Serialization.Manager;
 using Content.Server.Explosion.Components.OnTrigger;
+using Robust.Shared.Serialization.Manager;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Explosion.EntitySystems;
 

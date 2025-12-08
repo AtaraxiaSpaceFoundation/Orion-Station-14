@@ -123,14 +123,15 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.UI;
 using Content.Server.Disposal.Tube;
 using Content.Server.EUI;
 using Content.Server.Ghost.Roles;
-using Content.Server.Mind.Commands;
 using Content.Server.Mind;
+using Content.Server.Mind.Commands;
 using Content.Server.Prayer;
 using Content.Server.Silicons.Laws;
 using Content.Server.Station.Systems;
@@ -141,7 +142,6 @@ using Content.Shared.Configurable;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
-using Content.Shared.Hands.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Movement.Components;
@@ -160,7 +160,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Utility;
-using System.Linq;
 using static Content.Shared.Configurable.ConfigurationComponent;
 
 namespace Content.Server.Administration.Systems
@@ -256,7 +255,7 @@ namespace Content.Server.Administration.Systems
                     args.Verbs.Add(prayerVerb);
 
                     // Spawn - Like respawn but on the spot.
-                    args.Verbs.Add(new Verb()
+                    args.Verbs.Add(new Verb
                     {
                         Text = Loc.GetString("admin-player-actions-spawn"),
                         Category = VerbCategory.Admin,
@@ -282,7 +281,7 @@ namespace Content.Server.Administration.Systems
                     });
 
                     // Clone - Spawn but without the mind transfer, also spawns at the user's coordinates not the target's
-                    args.Verbs.Add(new Verb()
+                    args.Verbs.Add(new Verb
                     {
                         Text = Loc.GetString("admin-player-actions-clone"),
                         Category = VerbCategory.Admin,
@@ -498,7 +497,7 @@ namespace Content.Server.Administration.Systems
 
                 if (lawBoundComponent != null && target != null && _adminManager.HasAdminFlag(player, AdminFlags.Moderator))
                 {
-                    args.Verbs.Add(new Verb()
+                    args.Verbs.Add(new Verb
                     {
                         Text = Loc.GetString("silicon-law-ui-verb"),
                         Category = VerbCategory.Admin,

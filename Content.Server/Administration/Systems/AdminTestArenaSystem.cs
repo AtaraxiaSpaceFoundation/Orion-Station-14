@@ -48,7 +48,7 @@ public sealed class AdminTestArenaSystem : EntitySystem
         if (!_loader.TryLoadGrid(mapId, path, out var grid))
         {
             QueueDel(mapUid);
-            throw new Exception($"Failed to load admin arena");
+            throw new Exception("Failed to load admin arena");
         }
 
         ArenaMap[admin.UserId] = mapUid;

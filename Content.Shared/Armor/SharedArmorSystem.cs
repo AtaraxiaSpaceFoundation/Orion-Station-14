@@ -30,7 +30,6 @@ using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Verbs;
-using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
 
 // Shitmed Change

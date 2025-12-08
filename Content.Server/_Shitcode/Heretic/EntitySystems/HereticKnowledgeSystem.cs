@@ -9,14 +9,14 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
-using Content.Shared.Heretic.Prototypes;
 using Content.Shared.Heretic;
+using Content.Shared.Heretic.Prototypes;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Heretic.EntitySystems;
 
-public sealed partial class HereticKnowledgeSystem : EntitySystem
+public sealed class HereticKnowledgeSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedActionsSystem _action = default!;

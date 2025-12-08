@@ -9,13 +9,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System;
-using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.Manager.Attributes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.ViewVariables;
 
 namespace Content.Goobstation.Common.Blob;
 

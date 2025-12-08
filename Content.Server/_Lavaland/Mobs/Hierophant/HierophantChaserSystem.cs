@@ -20,10 +20,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.Map.Components;
-using Robust.Shared.Random;
 using System.Numerics;
 using Content.Server._Lavaland.Mobs.Hierophant.Components;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Random;
 
 namespace Content.Server._Lavaland.Mobs.Hierophant;
 

@@ -1,9 +1,7 @@
 using Robust.Client.Audio;
 using Robust.Client.Player;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
-using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.Traits;
 using Content.Shared.CCVar;
 

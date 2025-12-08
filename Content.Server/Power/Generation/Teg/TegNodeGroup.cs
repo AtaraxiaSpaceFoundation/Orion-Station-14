@@ -5,7 +5,6 @@
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.NodeContainer.Nodes;
 using Content.Shared.NodeContainer;

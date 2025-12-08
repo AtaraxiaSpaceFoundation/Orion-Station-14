@@ -39,7 +39,7 @@ namespace Content.Server.IP
         }
 
         // Taken from https://stackoverflow.com/a/56461160/4678631
-        public static bool IsInSubnet(this System.Net.IPAddress address, string subnetMask)
+        public static bool IsInSubnet(this IPAddress address, string subnetMask)
         {
             var slashIdx = subnetMask.IndexOf("/", StringComparison.Ordinal);
             if (slashIdx == -1)
@@ -49,7 +49,7 @@ namespace Content.Server.IP
             }
 
             // First parse the address of the netmask before the prefix length.
-            var maskAddress = System.Net.IPAddress.Parse(subnetMask[..slashIdx]);
+            var maskAddress = IPAddress.Parse(subnetMask[..slashIdx]);
 
             if (maskAddress.AddressFamily != address.AddressFamily)
             {
@@ -63,12 +63,12 @@ namespace Content.Server.IP
             return address.IsInSubnet(maskAddress, maskLength);
         }
 
-        public static bool IsInSubnet(this System.Net.IPAddress address, (System.Net.IPAddress maskAddress, int maskLength) tuple)
+        public static bool IsInSubnet(this IPAddress address, (IPAddress maskAddress, int maskLength) tuple)
         {
             return address.IsInSubnet(tuple.maskAddress, tuple.maskLength);
         }
 
-        public static bool IsInSubnet(this System.Net.IPAddress address, System.Net.IPAddress maskAddress, int maskLength)
+        public static bool IsInSubnet(this IPAddress address, IPAddress maskAddress, int maskLength)
         {
             if (maskAddress.AddressFamily != address.AddressFamily)
             {

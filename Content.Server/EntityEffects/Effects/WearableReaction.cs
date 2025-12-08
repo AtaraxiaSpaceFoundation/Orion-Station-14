@@ -5,8 +5,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Inventory;
 using Content.Shared.EntityEffects;
+using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects.Effects;

@@ -29,10 +29,10 @@ public sealed partial class RadioMicrophoneComponent : Component
     public int ListenRange  = 4;
 
     [DataField("enabled")]
-    public bool Enabled = false;
+    public bool Enabled;
 
     [DataField("powerRequired")]
-    public bool PowerRequired = false;
+    public bool PowerRequired;
 
     /// <summary>
     /// Whether or not interacting with this entity
@@ -46,5 +46,5 @@ public sealed partial class RadioMicrophoneComponent : Component
     /// unobstructed path to the radio to speak
     /// </summary>
     [DataField("unobstructedRequired")]
-    public bool UnobstructedRequired = false;
+    public bool UnobstructedRequired;
 }

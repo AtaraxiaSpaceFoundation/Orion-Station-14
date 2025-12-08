@@ -9,7 +9,6 @@
 using Content.Goobstation.Common.DoAfter;
 using Content.Shared._Shitmed.Cybernetics;
 using Content.Shared._Shitmed.DoAfter;
-using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 
 namespace Content.Goobstation.Shared.DoAfter;

@@ -10,7 +10,6 @@
 using Content.Shared.Alert;
 using Content.Shared.Inventory;
 using Content.Shared.Strip.Components;
-using Robust.Shared.GameStates;
 
 namespace Content.Shared.Strip;
 

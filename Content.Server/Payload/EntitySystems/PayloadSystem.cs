@@ -15,20 +15,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Payload.Components;
 using Content.Shared.Tag;
-using Content.Shared.Chemistry.EntitySystems;
+using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
-using System.Linq;
-using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Payload.EntitySystems;
 
@@ -77,7 +77,7 @@ public sealed class PayloadSystem : EntitySystem
         // Pass trigger event onto all contained payloads. Payload capacity configurable by construction graphs.
         foreach (var ent in GetAllPayloads(uid, contMan))
         {
-            RaiseLocalEvent(ent, args, false);
+            RaiseLocalEvent(ent, args);
         }
     }
 
@@ -92,7 +92,7 @@ public sealed class PayloadSystem : EntitySystem
         // Ensure we don't enter a trigger-loop
         DebugTools.Assert(!_tagSystem.HasTag(uid, PayloadTag));
 
-        RaiseLocalEvent(parent, args, false);
+        RaiseLocalEvent(parent, args);
     }
 
     private void OnEntityInserted(EntityUid uid, PayloadCaseComponent _, EntInsertedIntoContainerMessage args)

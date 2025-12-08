@@ -11,13 +11,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Robust.Shared.Utility;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Robust.Shared.Threading;
+using Robust.Shared.Utility;
 using static Content.Server.Power.Pow3r.PowerState;
 
 namespace Content.Server.Power.Pow3r

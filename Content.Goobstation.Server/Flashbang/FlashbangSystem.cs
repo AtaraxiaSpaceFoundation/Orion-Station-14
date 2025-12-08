@@ -13,7 +13,6 @@
 
 using Content.Goobstation.Common.Flash;
 using Content.Goobstation.Shared.Flashbang;
-using Content.Server.Flash;
 using Content.Server.Stunnable;
 using Content.Shared.Examine;
 using Content.Shared.Flash;
@@ -67,7 +66,7 @@ public sealed class FlashbangSystem : EntitySystem
             return;
 
         var protectionRange = args.Range;
-        if (!_tag.HasTag(ent, FlashSystem.IgnoreResistancesTag)
+        if (!_tag.HasTag(ent, SharedFlashSystem.IgnoreResistancesTag)
             && !HasComp<FlashVulnerableComponent>(args.Target))
         {
             var ev = new GetFlashbangedEvent(MathF.Max(args.Range, ent.Comp.MinProtectionRange + 1f));

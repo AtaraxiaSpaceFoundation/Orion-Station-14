@@ -93,7 +93,7 @@ public sealed partial class DungeonJob
         var room = new DungeonRoom(roomTiles, area.Center, area, new HashSet<Vector2i>());
 
         _maps.SetTiles(_gridUid, _grid, tiles);
-        var dungeon = new Dungeon(new List<DungeonRoom>()
+        var dungeon = new Dungeon(new List<DungeonRoom>
         {
             room,
         });

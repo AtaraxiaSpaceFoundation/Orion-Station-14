@@ -7,7 +7,6 @@
 using Content.Shared.InteractionVerbs;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Server.InteractionVerbs.Actions;
 

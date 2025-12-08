@@ -5,8 +5,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Antag.Components;
-using Content.Shared.GameTicking.Components;
 using Content.Server.GameTicking.Rules;
+using Content.Shared.GameTicking.Components;
 
 namespace Content.Server.Antag;
 

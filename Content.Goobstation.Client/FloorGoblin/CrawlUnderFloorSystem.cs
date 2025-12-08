@@ -3,9 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.FloorGoblin;
-using Content.Shared._DV.Abilities;
 using Content.Shared._Starlight.VentCrawling;
-using Content.Shared.VentCrawler.Tube.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map.Components;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;

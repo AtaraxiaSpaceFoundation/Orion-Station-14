@@ -45,13 +45,13 @@
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.DeviceNetwork;
+using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
 using Content.Shared.SurveillanceCamera;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
-using Content.Shared.DeviceNetwork.Components;
 
 namespace Content.Server.SurveillanceCamera;
 
@@ -214,7 +214,7 @@ public sealed class SurveillanceCameraRouterSystem : EntitySystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             { DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraHeartbeatMessage },
             { SurveillanceCameraSystem.CameraAddressData, origin }
@@ -230,7 +230,7 @@ public sealed class SurveillanceCameraRouterSystem : EntitySystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             { DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraSubnetData },
             { SurveillanceCameraSystem.CameraSubnetData, router.SubnetFrequencyId }
@@ -246,7 +246,7 @@ public sealed class SurveillanceCameraRouterSystem : EntitySystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             { DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraConnectMessage },
             { SurveillanceCameraSystem.CameraAddressData, origin }
@@ -284,7 +284,7 @@ public sealed class SurveillanceCameraRouterSystem : EntitySystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             { DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraPingMessage },
             { SurveillanceCameraSystem.CameraSubnetData, router.SubnetName }

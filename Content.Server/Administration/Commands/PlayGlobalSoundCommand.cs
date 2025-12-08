@@ -5,19 +5,16 @@
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
+using Content.Server.Administration.Logs;
 using Content.Server.Audio;
 using Content.Shared.Administration;
+using Content.Shared.Database;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Console;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-
-// Goobstation - Admin Log
-using Content.Shared.Database;
-using Content.Server.Administration.Logs;
-
 
 namespace Content.Server.Administration.Commands;
 
@@ -44,7 +41,7 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
         bool replay = true;
 
         // Goobstation - Admin Log
-        var playerName = shell.Player as ICommonSession;
+        var playerName = shell.Player;
 
         switch (args.Length)
         {

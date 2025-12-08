@@ -14,10 +14,8 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Prying.Components;
 using Content.Shared.Tools.Components;
-using Content.Shared.Wires;
 
 namespace Content.Shared.Doors.Systems;
 

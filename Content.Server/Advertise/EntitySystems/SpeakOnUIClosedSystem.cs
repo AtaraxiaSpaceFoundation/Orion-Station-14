@@ -15,14 +15,14 @@
 using Content.Server.Chat.Systems;
 using Content.Shared.Advertise.Components;
 using Content.Shared.Advertise.Systems;
-using Content.Shared.Chat; // Einstein Engines - Languages
+using Content.Shared.Chat;
 using Content.Shared.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Advertise.EntitySystems;
 
-public sealed partial class SpeakOnUIClosedSystem : SharedSpeakOnUIClosedSystem
+public sealed class SpeakOnUIClosedSystem : SharedSpeakOnUIClosedSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;

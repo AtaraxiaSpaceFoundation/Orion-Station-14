@@ -12,10 +12,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Body.Systems;
-using Content.Shared.EntityEffects;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Body.Systems;
 using Content.Shared.Body.Components;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects;
@@ -23,7 +23,7 @@ namespace Content.Server.EntityEffects.Effects;
 public sealed partial class ModifyBloodLevel : EntityEffect
 {
     [DataField]
-    public bool Scaled = false;
+    public bool Scaled;
 
     [DataField]
     public FixedPoint2 Amount = 1.0f;

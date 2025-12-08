@@ -15,9 +15,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Server.Destructible;
 using Content.Shared.Construction;
 using JetBrains.Annotations;
-using Content.Server.Destructible;
 
 namespace Content.Server.Construction.Completions
 {

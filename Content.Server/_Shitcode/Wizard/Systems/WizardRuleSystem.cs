@@ -24,7 +24,6 @@ using Content.Shared._Goobstation.Wizard;
 using Content.Shared._Goobstation.Wizard.BindSoul;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
-using Content.Shared.Cloning;
 using Content.Shared.Cloning.Events;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
@@ -160,8 +159,6 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         _audio.PlayGlobal(ev.Sound, Filter.Broadcast(), true);
 
         _log.Add(LogType.EventRan, LogImpact.Extreme, $"Station map changed via wizard spellbook dimension shift.");
-
-        return;
     }
 
     private void OnParentChanged(ref EntParentChangedMessage args)

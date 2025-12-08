@@ -17,13 +17,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
 using System.Text.Json.Nodes;
+using Content.Goobstation.Common.JoinQueue;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Robust.Server.ServerStatus;
 using Robust.Shared.Configuration;
-using Content.Goobstation.Common.JoinQueue; // Goobstation - Queue
 
 namespace Content.Server.GameTicking
 {

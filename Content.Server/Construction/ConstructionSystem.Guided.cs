@@ -177,7 +177,7 @@ namespace Content.Server.Construction
 
             var step = 1;
 
-            var entries = new List<ConstructionGuideEntry>()
+            var entries = new List<ConstructionGuideEntry>
             {
                 // Initial construction header.
                 new()

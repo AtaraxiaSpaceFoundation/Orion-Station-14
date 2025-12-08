@@ -15,8 +15,6 @@ using Content.Goobstation.Shared.Bingle;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 
 namespace Content.Goobstation.Client.Bingle;
 

@@ -114,14 +114,14 @@ namespace Content.Server.Construction.Conditions
 
         public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
         {
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = "construction-step-condition-machine-frame-board",
                 Icon = GuideIconBoard,
                 EntryNumber = 0, // Set this to anything so the guide generation takes this as a numbered step.
             };
 
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = "construction-step-condition-machine-frame-parts",
                 Icon = GuideIconParts,

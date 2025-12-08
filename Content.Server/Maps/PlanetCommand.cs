@@ -41,13 +41,13 @@ public sealed class PlanetCommand : IConsoleCommand
     {
         if (args.Length != 2)
         {
-            shell.WriteError(Loc.GetString($"cmd-planet-args"));
+            shell.WriteError(Loc.GetString("cmd-planet-args"));
             return;
         }
 
         if (!int.TryParse(args[0], out var mapInt))
         {
-            shell.WriteError(Loc.GetString($"cmd-planet-map", ("map", mapInt)));
+            shell.WriteError(Loc.GetString("cmd-planet-map", ("map", mapInt)));
             return;
         }
 
@@ -55,7 +55,7 @@ public sealed class PlanetCommand : IConsoleCommand
 
         if (!_mapManager.MapExists(mapId))
         {
-            shell.WriteError(Loc.GetString($"cmd-planet-map", ("map", mapId)));
+            shell.WriteError(Loc.GetString("cmd-planet-map", ("map", mapId)));
             return;
         }
 
@@ -82,7 +82,7 @@ public sealed class PlanetCommand : IConsoleCommand
             await SpawnDungeonLoot(lootProto, mapUid);
         }
         var probSum = budgetEntries.Sum(x => x.Prob);
-        var allLoot = _protoManager.Index<SalvageLootPrototype>(SharedSalvageSystem.ExpeditionsLootProto);
+        var allLoot = _protoManager.Index(SharedSalvageSystem.ExpeditionsLootProto);
         var seed = _entManager.GetComponent<BiomeComponent>(mapUid).Seed;
         var random = new Random(seed);
 
@@ -111,7 +111,7 @@ public sealed class PlanetCommand : IConsoleCommand
                     {
                         if (_entManager.TryGetComponent<BiomeComponent>(gridUid, out var biome))
                         {
-                            biomeSystem.AddTemplate(gridUid, biome, "Loot", _protoManager.Index<BiomeTemplatePrototype>(biomeLoot.Prototype), i);
+                            biomeSystem.AddTemplate(gridUid, biome, "Loot", _protoManager.Index(biomeLoot.Prototype), i);
                         }
                     }
                     break;

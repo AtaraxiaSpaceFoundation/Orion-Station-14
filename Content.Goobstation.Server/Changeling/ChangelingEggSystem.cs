@@ -42,7 +42,7 @@ public sealed class ChangelingEggSystem : EntitySystem
 
     public void Cycle(EntityUid uid, ChangelingEggComponent comp)
     {
-        if (comp.active == false)
+        if (!comp.active)
         {
             comp.active = true;
             return;

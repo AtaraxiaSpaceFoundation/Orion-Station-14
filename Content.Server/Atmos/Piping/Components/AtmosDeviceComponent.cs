@@ -39,7 +39,7 @@ public sealed partial class AtmosDeviceComponent : Component
     ///     a grid atmosphere.
     /// </summary>
     [DataField]
-    public bool JoinSystem = false;
+    public bool JoinSystem;
 
     /// <summary>
     ///     If non-null, the grid that this device is part of.

@@ -4,7 +4,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Bed.Sleep;
 using Content.Shared.InteractionVerbs;
 using Content.Shared.Standing;
 

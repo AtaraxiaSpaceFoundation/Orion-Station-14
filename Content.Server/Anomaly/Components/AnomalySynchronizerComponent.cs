@@ -31,7 +31,7 @@ public sealed partial class AnomalySynchronizerComponent : Component
     /// Should the anomaly pulse when disconnected from synchronizer?
     /// </summary>
     [DataField]
-    public bool PulseOnDisconnect = false;
+    public bool PulseOnDisconnect;
 
     /// <summary>
     /// minimum distance from the synchronizer to the anomaly to be attached

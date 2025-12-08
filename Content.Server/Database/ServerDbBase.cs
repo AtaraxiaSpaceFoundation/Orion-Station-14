@@ -139,7 +139,6 @@ using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Shared._Orion.CustomGhost;
-using Content.Shared._RMC14.LinkAccount;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Database;
@@ -396,7 +395,7 @@ namespace Content.Server.Database
                     var groupLoadouts = loadout.SelectedLoadouts.GetOrNew(group.GroupName);
                     foreach (var profLoadout in group.Loadouts)
                     {
-                        groupLoadouts.Add(new Loadout()
+                        groupLoadouts.Add(new Loadout
                         {
                             Prototype = profLoadout.LoadoutName,
                         });
@@ -520,7 +519,7 @@ namespace Content.Server.Database
 
             foreach (var (role, loadouts) in humanoid.Loadouts)
             {
-                var dz = new ProfileRoleLoadout()
+                var dz = new ProfileRoleLoadout
                 {
                     RoleName = role,
                     EntityName = loadouts.EntityName ?? string.Empty,
@@ -528,14 +527,14 @@ namespace Content.Server.Database
 
                 foreach (var (group, groupLoadouts) in loadouts.SelectedLoadouts)
                 {
-                    var profileGroup = new ProfileLoadoutGroup()
+                    var profileGroup = new ProfileLoadoutGroup
                     {
                         GroupName = group,
                     };
 
                     foreach (var loadout in groupLoadouts)
                     {
-                        profileGroup.Loadouts.Add(new ProfileLoadout()
+                        profileGroup.Loadouts.Add(new ProfileLoadout
                         {
                             LoadoutName = loadout.Prototype,
                         });
@@ -736,7 +735,7 @@ namespace Content.Server.Database
                 .ExecuteUpdateAsync(setters => setters
                     .SetProperty(b => b.Severity, severity)
                     .SetProperty(b => b.Reason, reason)
-                    .SetProperty(b => b.ExpirationTime, expiration.HasValue ? expiration.Value.UtcDateTime : (DateTime?)null)
+                    .SetProperty(b => b.ExpirationTime, expiration.HasValue ? expiration.Value.UtcDateTime : null)
                     .SetProperty(b => b.LastEditedById, editedBy)
                     .SetProperty(b => b.LastEditedAt, editedAt.UtcDateTime)
                 );
@@ -1402,7 +1401,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         {
             await using var db = await GetDb();
 
-            db.DbContext.Blacklist.Add(new Blacklist() { UserId = player });
+            db.DbContext.Blacklist.Add(new Blacklist { UserId = player });
             await db.DbContext.SaveChangesAsync();
         }
 
@@ -1422,7 +1421,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
         {
             await using var db = await GetDb();
 
-            db.DbContext.UploadedResourceLog.Add(new UploadedResourceLog() { UserId = user, Date = date.UtcDateTime, Path = path, Data = data });
+            db.DbContext.UploadedResourceLog.Add(new UploadedResourceLog { UserId = user, Date = date.UtcDateTime, Path = path, Data = data });
             await db.DbContext.SaveChangesAsync();
         }
 
@@ -2086,7 +2085,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .Include(s => s.Patron)
                 .FirstOrDefaultAsync(p => p.PatronId == player);
             msg ??= db.DbContext.RMCPatronRoundEndNTShoutouts
-                .Add(new RMCPatronRoundEndNTShoutout()
+                .Add(new RMCPatronRoundEndNTShoutout
                 {
                     PatronId = player,
                     Name = name,

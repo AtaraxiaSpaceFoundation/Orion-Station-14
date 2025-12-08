@@ -3,9 +3,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Linq;
 using Content.Shared.Arcade;
 using Robust.Shared.Random;
-using System.Linq;
 
 namespace Content.Server.Arcade.BlockGame;
 
@@ -101,7 +101,7 @@ public sealed partial class BlockGame
             UpdateFieldUI();
         }
     }
-    private BlockGamePiece _internalCurrentPiece = default!;
+    private BlockGamePiece _internalCurrentPiece;
 
 
     /// <summary>
@@ -159,7 +159,7 @@ public sealed partial class BlockGame
             SendNextPieceUpdate();
         }
     }
-    private BlockGamePiece _internalNextPiece = default!;
+    private BlockGamePiece _internalNextPiece;
 
 
     /// <summary>
@@ -174,14 +174,14 @@ public sealed partial class BlockGame
             SendHoldPieceUpdate();
         }
     }
-    private BlockGamePiece? _internalHeldPiece = null;
+    private BlockGamePiece? _internalHeldPiece;
 
     /// <summary>
     /// Prevents the player from holding the currently falling piece if true.
     /// Set true when a piece is held and set false when a new piece is created.
     /// Exists to prevent the player from swapping between two pieces forever and never actually letting the block fall.
     /// </summary>
-    private bool _holdBlock = false;
+    private bool _holdBlock;
 
     /// <summary>
     /// The number of lines that have been cleared in the current level.
@@ -201,7 +201,7 @@ public sealed partial class BlockGame
             Level++;
         }
     }
-    private int _clearedLines = 0;
+    private int _clearedLines;
 
     /// <summary>
     /// The number of lines that must be cleared to advance to the next level.
@@ -224,7 +224,7 @@ public sealed partial class BlockGame
             SendLevelUpdate();
         }
     }
-    private int _internalLevel = 0;
+    private int _internalLevel;
 
 
     /// <summary>
@@ -241,7 +241,7 @@ public sealed partial class BlockGame
             SendPointsUpdate();
         }
     }
-    private int _internalPoints = 0;
+    private int _internalPoints;
 
     /// <summary>
     /// Setter for the setter for the number of points accumulated in the current game.
@@ -257,5 +257,5 @@ public sealed partial class BlockGame
     /// <summary>
     /// Where the current game has placed amongst the leaderboard.
     /// </summary>
-    private ArcadeSystem.HighScorePlacement? _highScorePlacement = null;
+    private ArcadeSystem.HighScorePlacement? _highScorePlacement;
 }

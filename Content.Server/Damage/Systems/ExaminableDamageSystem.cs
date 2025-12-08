@@ -7,7 +7,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
 using Content.Server.Damage.Components;
 using Content.Server.Destructible;
 using Content.Shared.Damage;

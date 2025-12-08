@@ -43,11 +43,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.UserInterface;
 using Content.Server.Advertise.EntitySystems;
 using Content.Shared.Advertise.Components;
 using Content.Shared.Arcade;
 using Content.Shared.Power;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 
 namespace Content.Server.Arcade.BlockGame;
@@ -146,7 +146,7 @@ public sealed class BlockGameArcadeSystem : EntitySystem
 
         if (msg.PlayerAction == BlockGamePlayerAction.NewGame)
         {
-            if (component.Game.Started == true)
+            if (component.Game.Started)
                 component.Game = new(uid);
             component.Game.StartGame();
             return;

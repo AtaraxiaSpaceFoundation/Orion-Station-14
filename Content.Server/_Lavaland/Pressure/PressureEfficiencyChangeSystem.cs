@@ -28,9 +28,9 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
+using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
-using Content.Shared.Projectiles;
 
 namespace Content.Server._Lavaland.Pressure;
 

@@ -14,12 +14,12 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Net;
+using System.Net.Http;
+using System.Text.Json;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
-using System.Net.Http;
-using System.Text.Json;
 
 namespace Content.Server.Database
 {
@@ -128,10 +128,8 @@ namespace Content.Server.Database
                     return jsonObject.GetProperty("userName").GetString() ?? "Unknown";
 
                 }
-                else
-                {
-                    return "Unknown";
-                }
+
+                return "Unknown";
             }
         }
     }

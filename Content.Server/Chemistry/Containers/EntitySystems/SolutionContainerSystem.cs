@@ -10,15 +10,15 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Goobstation.Maths.FixedPoint;
 
 namespace Content.Server.Chemistry.Containers.EntitySystems;
 
 [Obsolete("This is being depreciated. Use SharedSolutionContainerSystem instead!")]
-public sealed partial class SolutionContainerSystem : SharedSolutionContainerSystem
+public sealed class SolutionContainerSystem : SharedSolutionContainerSystem
 {
     [Obsolete("This is being depreciated. Use the ensure methods in SharedSolutionContainerSystem instead!")]
     public Solution EnsureSolution(Entity<MetaDataComponent?> entity, string name)

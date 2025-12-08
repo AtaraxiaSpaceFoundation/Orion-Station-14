@@ -4,11 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
-using Content.Client.Guidebook;
-using Content.Server.Verbs;
 using Content.Shared.InteractionVerbs;
-using Content.Shared.Verbs;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 

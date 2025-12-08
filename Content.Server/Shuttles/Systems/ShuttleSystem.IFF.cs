@@ -86,7 +86,7 @@ public sealed partial class ShuttleSystem
             !TryComp(uid, out TransformComponent? xform) ||
             !TryComp<IFFComponent>(xform.GridUid, out var iff))
         {
-            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
+            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState
             {
                 AllowedFlags = component.AllowedFlags,
                 Flags = IFFFlags.None,
@@ -94,7 +94,7 @@ public sealed partial class ShuttleSystem
         }
         else
         {
-            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
+            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState
             {
                 AllowedFlags = component.AllowedFlags,
                 Flags = iff.Flags,
@@ -112,7 +112,7 @@ public sealed partial class ShuttleSystem
             if (xform.GridUid != gridUid)
                 continue;
 
-            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState()
+            _uiSystem.SetUiState(uid, IFFConsoleUiKey.Key, new IFFConsoleBoundUserInterfaceState
             {
                 AllowedFlags = comp.AllowedFlags,
                 Flags = component.Flags,

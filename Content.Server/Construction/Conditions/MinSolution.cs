@@ -10,11 +10,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Construction;
 using Content.Shared.Examine;
-using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Construction.Conditions;
@@ -75,7 +75,7 @@ public sealed partial class MinSolution : IGraphCondition
 
     public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
     {
-        yield return new ConstructionGuideEntry()
+        yield return new ConstructionGuideEntry
         {
             Localization = "construction-guide-condition-min-solution",
             Arguments = new (string, object)[]

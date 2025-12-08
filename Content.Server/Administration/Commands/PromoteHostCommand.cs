@@ -26,13 +26,13 @@ namespace Content.Server.Administration.Commands
         {
             if (args.Length != 1)
             {
-                shell.WriteLine(Loc.GetString($"shell-need-exactly-one-argument"));
+                shell.WriteLine(Loc.GetString("shell-need-exactly-one-argument"));
                 return;
             }
 
             if (!_playerManager.TryGetSessionByUsername(args[0], out var targetPlayer))
             {
-                shell.WriteLine(Loc.GetString($"shell-target-player-does-not-exist"));
+                shell.WriteLine(Loc.GetString("shell-target-player-does-not-exist"));
                 return;
             }
 

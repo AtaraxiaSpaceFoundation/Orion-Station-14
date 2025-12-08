@@ -138,12 +138,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
-using Content.Shared._Shitmed.Body.Events; // Shitmed Change
+using Content.Shared._Shitmed.Body.Events;
+using Content.Shared._White.Grab;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems; // Shitmed Change
+using Content.Shared.Body.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Explosion;
@@ -157,7 +159,6 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
-using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
@@ -166,8 +167,6 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using System.Numerics;
-using Content.Shared._White.Grab;
 
 namespace Content.Server.Hands.Systems
 {

@@ -12,7 +12,7 @@ using Content.Shared.Weapons.Ranged.Systems;
 
 namespace Content.Server.DeviceLinking.Systems;
 
-public sealed partial class GunSignalControlSystem : EntitySystem
+public sealed class GunSignalControlSystem : EntitySystem
 {
     [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
     [Dependency] private readonly SharedGunSystem _gun = default!;

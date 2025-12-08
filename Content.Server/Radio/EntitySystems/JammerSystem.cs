@@ -37,11 +37,11 @@
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.DeviceNetwork.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Radio.Components;
-using Content.Shared.DeviceNetwork.Systems;
+using Content.Shared.Radio.EntitySystems;
 
 namespace Content.Server.Radio.EntitySystems;
 

@@ -15,7 +15,6 @@
 using System.Linq;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Whitelist;
-using Robust.Shared.GameObjects;
 
 namespace Content.IntegrationTests.Tests.Utility
 {

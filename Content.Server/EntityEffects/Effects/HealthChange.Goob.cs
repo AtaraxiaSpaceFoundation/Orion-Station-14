@@ -1,9 +1,7 @@
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
-
-// Shitmed Changes
-using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Heretic;
 
 namespace Content.Server.EntityEffects.Effects;

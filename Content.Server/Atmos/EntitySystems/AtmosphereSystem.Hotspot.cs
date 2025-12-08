@@ -38,7 +38,7 @@ namespace Content.Server.Atmos.EntitySystems
 
         private const int HotspotSoundCooldownCycles = 200;
 
-        private int _hotspotSoundCooldown = 0;
+        private int _hotspotSoundCooldown;
 
         [ViewVariables(VVAccess.ReadWrite)]
         public SoundSpecifier? HotspotSound { get; private set; } = new SoundCollectionSpecifier(DefaultHotspotSounds);

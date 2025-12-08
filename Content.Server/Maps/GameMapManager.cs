@@ -72,9 +72,9 @@ public sealed class GameMapManager : IGameMapManager
                 return;
             }
 
-            if (_configurationManager.GetCVar<bool>(CCVars.UsePersistence))
+            if (_configurationManager.GetCVar(CCVars.UsePersistence))
             {
-                var startMap = _configurationManager.GetCVar<string>(CCVars.PersistenceMap);
+                var startMap = _configurationManager.GetCVar(CCVars.PersistenceMap);
                 _configSelectedMap = _prototypeManager.Index<GameMapPrototype>(startMap);
 
                 var mapPath = new ResPath(value);

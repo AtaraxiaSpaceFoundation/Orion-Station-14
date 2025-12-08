@@ -132,7 +132,7 @@ public sealed class MappingManager : IPostInjectInit
             var writer = new StringWriter();
             stream.Save(new YamlMappingFix(new Emitter(writer)), false);
 
-            var msg = new MappingMapDataMessage()
+            var msg = new MappingMapDataMessage
             {
                 Context = _zstd,
                 Yml = writer.ToString()

@@ -21,5 +21,5 @@ public sealed partial class GibOnTriggerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("deleteItems")]
-    public bool DeleteItems = false;
+    public bool DeleteItems;
 }

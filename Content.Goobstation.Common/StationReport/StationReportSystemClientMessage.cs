@@ -1,6 +1,3 @@
-using Content.Goobstation.Common.StationReport;
-using Robust.Shared.GameObjects;
-
 namespace Content.Goobstation.Common.StationReport;
 
 public sealed class StationReportSystem : EntitySystem

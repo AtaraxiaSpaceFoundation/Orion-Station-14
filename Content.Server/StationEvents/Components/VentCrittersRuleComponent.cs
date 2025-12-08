@@ -13,7 +13,7 @@
 using Content.Server.StationEvents.Events;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Storage;
-using Robust.Shared.Map; // DeltaV
+using Robust.Shared.Map;
 
 namespace Content.Server.StationEvents.Components;
 

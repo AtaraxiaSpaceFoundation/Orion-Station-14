@@ -17,5 +17,5 @@ namespace Content.Server.Roles;
 [RegisterComponent]
 public sealed partial class MindcontrolledRoleComponent : BaseMindRoleComponent
 {
-    [DataField] public EntityUid? MasterUid = null;
+    [DataField] public EntityUid? MasterUid;
 }

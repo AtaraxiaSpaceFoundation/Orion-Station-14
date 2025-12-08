@@ -258,8 +258,8 @@ public sealed partial class DockingSystem
                     // Get the matrix for each shuttle dock and test it against the grid docks to see
                     // if the connected position / direction matches.
 
-                    var dockedPorts = new List<(EntityUid DockAUid, EntityUid DockBUid, DockingComponent DockA, DockingComponent DockB)>()
-                   {
+                    var dockedPorts = new List<(EntityUid DockAUid, EntityUid DockBUid, DockingComponent DockA, DockingComponent DockB)>
+                    {
                        (dockUid, gridDockUid, shuttleDock, gridDock),
                    };
 
@@ -305,7 +305,7 @@ public sealed partial class DockingSystem
                         }
                     }
 
-                    validDockConfigs.Add(new DockingConfig()
+                    validDockConfigs.Add(new DockingConfig
                     {
                         Docks = dockedPorts,
                         Coordinates = gridPosition,

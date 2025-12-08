@@ -38,22 +38,22 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Cloning;
-using Content.Server.Medical.Components;
-using Content.Shared.Destructible;
-using Content.Shared.ActionBlocker;
-using Content.Shared.DragDrop;
-using Content.Shared.Movement.Events;
-using Content.Shared.Verbs;
-using Robust.Shared.Containers;
 using Content.Server.Cloning.Components;
 using Content.Server.DeviceLinking.Systems;
-using Content.Shared.DeviceLinking.Events;
+using Content.Server.Medical.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Body.Components;
 using Content.Shared.Climbing.Systems;
+using Content.Shared.Destructible;
+using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DragDrop;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Events;
+using Content.Shared.Verbs;
 using Robust.Server.Containers;
+using Robust.Shared.Containers;
 using static Content.Shared.MedicalScanner.SharedMedicalScannerComponent; // Hmm...
 
 namespace Content.Server.Medical
@@ -103,7 +103,7 @@ namespace Content.Server.Medical
         private void OnComponentInit(EntityUid uid, MedicalScannerComponent scannerComponent, ComponentInit args)
         {
             base.Initialize();
-            scannerComponent.BodyContainer = _containerSystem.EnsureContainer<ContainerSlot>(uid, $"scanner-bodyContainer");
+            scannerComponent.BodyContainer = _containerSystem.EnsureContainer<ContainerSlot>(uid, "scanner-bodyContainer");
             _signalSystem.EnsureSinkPorts(uid, MedicalScannerComponent.ScannerPort);
         }
 

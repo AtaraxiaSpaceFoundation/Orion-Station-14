@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.StationEvents.Events;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.StationEvents.Components;
 
@@ -25,12 +24,12 @@ public sealed partial class AlertLevelInterceptionRuleComponent : Component
     /// Whether or not to override the current alert level, if it isn't green.
     /// </summary>
     [DataField]
-    public bool OverrideAlert = false;
+    public bool OverrideAlert;
 
     /// <summary>
     /// Goobstation.
     /// Whether the alert level should be changeable.
     /// </summary>
     [DataField]
-    public bool Locked = false;
+    public bool Locked;
 }

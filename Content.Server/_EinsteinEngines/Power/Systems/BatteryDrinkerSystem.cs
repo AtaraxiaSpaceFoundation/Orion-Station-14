@@ -5,27 +5,24 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
-using Content.Server.Power.Components;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.DoAfter;
-using Content.Shared.PowerCell.Components;
-using Content.Shared._EinsteinEngines.Silicon;
-using Content.Shared.Verbs;
-using Robust.Shared.Utility;
 using Content.Server._EinsteinEngines.Silicon.Charge;
-using Content.Shared._EinsteinEngines.Silicon.Charge; // Goobstation - Energycrit: BatteryDrinkerSourceComponent moved to shared
-using Content.Server.Power.EntitySystems;
 using Content.Server.Popups;
+using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
-using Content.Shared.Popups;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
-// Goobstation Start - Energycrit
 using Content.Shared._EinsteinEngines.Power.Components;
 using Content.Shared._EinsteinEngines.Power.Systems;
+using Content.Shared._EinsteinEngines.Silicon;
+using Content.Shared._EinsteinEngines.Silicon.Charge;
+using Content.Shared.Containers.ItemSlots;
+using Content.Shared.DoAfter;
+using Content.Shared.Popups;
+using Content.Shared.PowerCell.Components;
+using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
-// Goobstation End
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
+using Robust.Shared.Utility;
 
 namespace Content.Server._EinsteinEngines.Power;
 

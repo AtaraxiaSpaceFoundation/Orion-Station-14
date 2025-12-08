@@ -13,7 +13,7 @@ namespace Content.Server.Vocalization.Systems;
 /// This is used in combination with systems like ParrotMemorySystem to randomly say messages from memory,
 /// or can be used by other systems to speak pre-set messages
 /// </summary>
-public sealed partial class VocalizationSystem : EntitySystem
+public sealed class VocalizationSystem : EntitySystem
 {
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly ChatSystem _chat = default!;

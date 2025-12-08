@@ -1,15 +1,11 @@
-using Content.Shared._DV.CosmicCult;
 using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult.Prototypes;
 using Content.Shared.Actions;
-using Content.Shared.Movement.Components;
-using Content.Shared.Nutrition.Components;
 using Content.Shared.UserInterface;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._DV.CosmicCult;

@@ -40,11 +40,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics;
 using Content.Server.Station;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Diagnostics;
 
 namespace Content.Server.Maps;
 
@@ -84,7 +84,7 @@ public sealed partial class GameMapPrototype : IPrototype
     /// Relative directory path to the given map, i.e. `/Maps/saltern.yml`
     /// </summary>
     [DataField(required: true)]
-    public ResPath MapPath { get; private set; } = default!;
+    public ResPath MapPath { get; private set; }
 
     [DataField("stations", required: true)]
     private Dictionary<string, StationConfig> _stations = new();

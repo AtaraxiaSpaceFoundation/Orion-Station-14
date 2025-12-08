@@ -111,32 +111,28 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Speech;
+using Content.Server.Administration.Components;
+using Content.Server.Body.Systems;
+using Content.Server.Explosion.EntitySystems;
+using Content.Server.Polymorph.Systems;
 using Content.Server.Popups;
+using Content.Server.Speech.Components;
 using Content.Shared.Abilities.Mime;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Alert;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Interaction.Components;
+using Content.Shared.Inventory;
 using Content.Shared.Maps;
 using Content.Shared.Paper;
 using Content.Shared.Physics;
+using Content.Shared.Speech.Components;
+using Content.Shared.Speech.Muting;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Speech.Muting;
-using Robust.Shared.Random; // Goobstation - Mime Enforcement - half of these are probably not needed and just leftovers from testing but im too lazy to fix it.
-using Content.Server.Body.Systems; // Goobstation - Mime Enforcement
-using Content.Shared.Administration; // Goobstation - Mime Enforcement
-using Content.Shared.Administration.Components; // Goobstation - Mime Enforcement
-using Content.Server.Administration.Components; // Goobstation - Mime Enforcement
-using Content.Server.Administration.Systems; // Goobstation - Mime Enforcement
-using Content.Server.Explosion.EntitySystems; // Goobstation - Mime Enforcement
-using Content.Server.Polymorph.Systems; // Goobstation - Mime Enforcement
-using Content.Shared.Clothing.Components; // Goobstation - Mime Enforcement
-using Content.Shared.Inventory; // Goobstation - Mime Enforcement
-using Content.Shared.Interaction.Components; // Goobstation - Mime Enforcement
-using Content.Server.Speech.Components; // Goobstation - Mime Enforcement
-using Content.Shared.Speech.Components; // Goobstation - Mime Enforcement
 
 namespace Content.Server.Abilities.Mime
 {

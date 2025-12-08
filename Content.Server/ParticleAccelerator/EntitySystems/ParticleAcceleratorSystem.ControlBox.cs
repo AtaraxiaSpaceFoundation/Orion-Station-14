@@ -45,21 +45,21 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.ParticleAccelerator.Components;
-using Content.Server.Power.Components;
-using Content.Shared.Database;
-using Content.Shared.Machines.Components;
-using Content.Shared.Singularity.Components;
-using Robust.Shared.Utility;
 using System.Diagnostics;
 using Content.Server.Administration.Managers;
+using Content.Server.ParticleAccelerator.Components;
+using Content.Server.Power.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Database;
+using Content.Shared.Machines.Components;
+using Content.Shared.Machines.Events;
+using Content.Shared.ParticleAccelerator;
 using Content.Shared.Power;
+using Content.Shared.Singularity.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
-using Content.Shared.ParticleAccelerator;
-using Content.Shared.Machines.Events;
+using Robust.Shared.Utility;
 
 namespace Content.Server.ParticleAccelerator.EntitySystems;
 

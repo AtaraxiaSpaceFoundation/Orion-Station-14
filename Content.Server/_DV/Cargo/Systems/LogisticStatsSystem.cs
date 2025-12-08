@@ -8,7 +8,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._DV.Cargo.Components;
-using Content.Shared.Cargo;
 using JetBrains.Annotations;
 
 namespace Content.Server._DV.Cargo.Systems;

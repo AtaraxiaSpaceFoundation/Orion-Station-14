@@ -25,7 +25,7 @@ public sealed partial class BufferingComponent : Component
     [DataField("timeTilNextBuffer")]
     public float TimeTilNextBuffer = 15.0f;
     [DataField("bufferingIcon")]
-    public EntityUid? BufferingIcon = null;
+    public EntityUid? BufferingIcon;
     [DataField("bufferingTimer")]
-    public float BufferingTimer = 0.0f;
+    public float BufferingTimer;
 }

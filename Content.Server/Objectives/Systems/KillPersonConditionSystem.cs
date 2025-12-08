@@ -15,13 +15,12 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.GameTicking.Rules;
-using Content.Server._Goobstation.Objectives.Components;
 using Content.Server.Objectives.Components;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.CCVar;
-using Content.Shared.Roles.Jobs;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
+using Content.Shared.Roles.Jobs;
 using Robust.Shared.Configuration;
 
 namespace Content.Server.Objectives.Systems;

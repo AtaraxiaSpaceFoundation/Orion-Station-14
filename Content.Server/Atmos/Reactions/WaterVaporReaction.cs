@@ -14,11 +14,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Reactions;
 using Content.Shared.Chemistry.Components;
-using Content.Goobstation.Maths.FixedPoint;
 using JetBrains.Annotations;
 
 namespace Content.Server.Atmos.Reactions
@@ -27,9 +27,9 @@ namespace Content.Server.Atmos.Reactions
     [DataDefinition]
     public sealed partial class WaterVaporReaction : IGasReactionEffect
     {
-        [DataField("reagent")] public string? Reagent { get; private set; } = null;
+        [DataField("reagent")] public string? Reagent { get; private set; }
 
-        [DataField("gas")] public int GasId { get; private set; } = 0;
+        [DataField("gas")] public int GasId { get; private set; }
 
         [DataField("molesPerUnit")] public float MolesPerUnit { get; private set; } = 1;
 

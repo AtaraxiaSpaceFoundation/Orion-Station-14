@@ -6,14 +6,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Objectives.Components;
-using Content.Shared.Mind;
-using Content.Shared.Objectives.Components;
-using Content.Shared.Roles.Jobs;
 using System.Diagnostics.CodeAnalysis;
 using Content.Server._Goobstation.Wizard.Components;
 using Content.Server.Mind;
+using Content.Server.Objectives.Components;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Objectives.Components;
+using Content.Shared.Roles.Jobs;
 
 namespace Content.Server.Objectives.Systems;
 

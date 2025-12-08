@@ -1,6 +1,5 @@
 using Content.Goobstation.Shared.InternalResources.Data;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Goobstation.Shared.InternalResources.Components;

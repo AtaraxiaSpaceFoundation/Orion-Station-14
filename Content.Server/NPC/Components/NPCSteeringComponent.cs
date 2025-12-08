@@ -55,7 +55,7 @@ public sealed partial class NPCSteeringComponent : Component
     /// Set to true from other systems if you wish to force the NPC to move closer.
     /// </summary>
     [DataField("forceMove")]
-    public bool ForceMove = false;
+    public bool ForceMove;
 
     [DataField("lastSteerDirection")]
     public Vector2 LastSteerDirection = Vector2.Zero;
@@ -82,13 +82,13 @@ public sealed partial class NPCSteeringComponent : Component
     /// Are we considered arrived if we have line of sight of the target.
     /// </summary>
     [DataField("arriveOnLineOfSight")]
-    public bool ArriveOnLineOfSight = false;
+    public bool ArriveOnLineOfSight;
 
     /// <summary>
     /// How long the target has been in line of sight if applicable.
     /// </summary>
     [DataField("lineOfSightTimer")]
-    public float LineOfSightTimer = 0f;
+    public float LineOfSightTimer;
 
     [DataField("lineOfSightTimeRequired")]
     public float LineOfSightTimeRequired = 0.5f;
@@ -142,7 +142,7 @@ public sealed partial class NPCSteeringComponent : Component
     /// If the NPC is using a do_after to clear an obstacle.
     /// </summary>
     [DataField("doAfterId")]
-    public DoAfterId? DoAfterId = null;
+    public DoAfterId? DoAfterId;
 }
 
 public enum SteeringStatus : byte

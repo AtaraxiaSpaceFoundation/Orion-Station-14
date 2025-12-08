@@ -16,7 +16,7 @@
 
 using Content.Shared.Body.Components;
 using Content.Shared.Database;
-using Content.Shared.Gibbing.Events; // Shitmed Change
+using Content.Shared.Gibbing.Events;
 using JetBrains.Annotations;
 
 namespace Content.Server.Destructible.Thresholds.Behaviors

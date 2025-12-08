@@ -1,8 +1,8 @@
-﻿using Content.Shared.GameTicking;
+﻿using Content.Server.Body.Systems;
+using Content.Shared.GameTicking;
 using Content.Shared.Gibbing.Components;
 using Content.Shared.Mind;
 using Content.Shared.Objectives.Systems;
-using Content.Server.Body.Systems;
 
 namespace Content.Server.Gibbing.Systems;
 public sealed class GibOnRoundEndSystem : EntitySystem

@@ -16,7 +16,6 @@ using Robust.Shared.Player;
 using System.Numerics;
 using Content.Goobstation.Common.Standing;
 using Content.Shared._White.Standing;
-using Content.Shared.Standing;
 using Robust.Shared.Physics.Components;
 
 namespace Content.Shared._White.Grab;

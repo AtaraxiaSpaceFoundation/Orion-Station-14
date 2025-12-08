@@ -1,14 +1,14 @@
 using System.Text.Json.Serialization;
-using Content.Server.Database;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Pain.Systems;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+
 namespace Content.Server.EntityEffects.Effects;
 
 [UsedImplicitly]
@@ -16,11 +16,11 @@ public sealed partial class SuppressPain : EntityEffect
 {
     [DataField(required: true)]
     [JsonPropertyName("amount")]
-    public FixedPoint2 Amount = default!;
+    public FixedPoint2 Amount;
 
     [DataField(required: true)]
     [JsonPropertyName("time")]
-    public TimeSpan Time = default!;
+    public TimeSpan Time;
 
     [DataField]
     [JsonPropertyName("identifier")]

@@ -36,7 +36,7 @@ namespace Content.Server.Atmos.Piping.Trinary.Components
 
         [ViewVariables(VVAccess.ReadOnly)]
         [DataField("enabled")]
-        public bool Enabled { get; set; } = false;
+        public bool Enabled { get; set; }
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField("gain")]

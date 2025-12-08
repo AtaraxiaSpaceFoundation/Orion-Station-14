@@ -98,7 +98,7 @@ public sealed class MakeGhostRoleEui : BaseEui
 
     private void OnClose()
     {
-        base.Closed();
+        Closed();
         SendMessage(new CloseEuiMessage());
     }
 }

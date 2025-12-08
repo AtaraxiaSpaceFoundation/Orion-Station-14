@@ -60,18 +60,28 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Goobstation.Common.Cloning;
+using Content.Goobstation.Shared.CloneProjector.Clone;
+using Content.Goobstation.Shared.Clothing.Components;
+using Content.Goobstation.Shared.Clothing.Systems;
 using Content.Server.Humanoid;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Cloning;
 using Content.Shared.Cloning.Events;
+using Content.Shared.Clothing.Components;
+using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Inventory;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
+using Content.Shared.Interaction.Components;
+using Content.Shared.Inventory;
 using Content.Shared.NameModifier.EntitySystems;
+using Content.Shared.Radio.Components;
+using Content.Shared.Radio.EntitySystems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
@@ -79,17 +89,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Goobstation.Shared.CloneProjector.Clone;
-using Content.Goobstation.Shared.Clothing.Components;
-using Content.Goobstation.Shared.Clothing.Systems;
-using Content.Shared.Clothing.Components;
-using Content.Shared.Clothing.EntitySystems;
-using Content.Shared.Interaction.Components;
-using Content.Shared.Radio.Components; // Goobstation
-using Content.Shared.Radio.EntitySystems;
-using Robust.Shared.Utility; // Goobstation
+using Robust.Shared.Utility;
 
 namespace Content.Server.Cloning;
 

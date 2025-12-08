@@ -35,7 +35,7 @@ namespace Content.Server.Body.Commands
             var player = shell.Player;
             if (player == null)
             {
-                shell.WriteLine(Loc.GetString($"shell-only-players-can-run-this-command"));
+                shell.WriteLine(Loc.GetString("shell-only-players-can-run-this-command"));
                 return;
             }
 
@@ -47,13 +47,13 @@ namespace Content.Server.Body.Commands
 
             if (player.AttachedEntity is not {} attached)
             {
-                shell.WriteLine(Loc.GetString($"shell-must-be-attached-to-entity"));
+                shell.WriteLine(Loc.GetString("shell-must-be-attached-to-entity"));
                 return;
             }
 
             if (!EntityManager.TryGetComponent(attached, out BodyComponent? body))
             {
-                shell.WriteLine(Loc.GetString($"shell-must-have-body"));
+                shell.WriteLine(Loc.GetString("shell-must-have-body"));
                 return;
             }
 
@@ -64,12 +64,12 @@ namespace Content.Server.Body.Commands
                 if (_compFactory.GetComponentName(organ.Component.GetType()).ToLowerInvariant() == mechanismName)
                 {
                     EntityManager.QueueDeleteEntity(organ.Id);
-                    shell.WriteLine(Loc.GetString($"cmd-destroymechanism-success", ("name", mechanismName)));
+                    shell.WriteLine(Loc.GetString("cmd-destroymechanism-success", ("name", mechanismName)));
                     return;
                 }
             }
 
-            shell.WriteLine(Loc.GetString($"cmd-destroymechanism-no-mechanism-found", ("name", mechanismName)));
+            shell.WriteLine(Loc.GetString("cmd-destroymechanism-no-mechanism-found", ("name", mechanismName)));
         }
     }
 }

@@ -109,12 +109,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Shared.Fax; // Goobstation
+using Content.Goobstation.Shared.Fax;
 using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.DeviceNetwork.Systems;
-using Content.Server.Explosion.EntitySystems; // Goobstation
+using Content.Server.Explosion.EntitySystems;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Tools;
@@ -394,7 +394,7 @@ public sealed class FaxSystem : EntitySystem
                     if (!isForSyndie && !component.ResponsePings)
                         return;
 
-                    var payload = new NetworkPayload()
+                    var payload = new NetworkPayload
                     {
                         { DeviceNetworkConstants.Command, FaxConstants.FaxPongCommand },
                         { FaxConstants.FaxNameData, component.FaxName }
@@ -558,7 +558,7 @@ public sealed class FaxSystem : EntitySystem
         component.DestinationFaxAddress = null;
         component.KnownFaxes.Clear();
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             { DeviceNetworkConstants.Command, FaxConstants.FaxPingCommand }
         };
@@ -674,7 +674,7 @@ public sealed class FaxSystem : EntitySystem
 
         TryComp<LabelComponent>(sendEntity, out var labelComponent);
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             // Goobstation merge conflict landmine: if how faxes work is changed FaxSlipSystem.cs might become broken
             { DeviceNetworkConstants.Command, FaxConstants.FaxPrintCommand },

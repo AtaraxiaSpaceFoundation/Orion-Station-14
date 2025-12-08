@@ -350,7 +350,7 @@ namespace Content.Benchmarks
             var p = 0;
             var completed = false;
 
-            while (completed == false)
+            while (!completed)
             {
                 int charsConverted;
                 int bytesConverted;
@@ -416,7 +416,7 @@ namespace Content.Benchmarks
 
                 var p = 0;
 
-                while (completed == false)
+                while (!completed)
                 {
                     decoder.Convert(
                         buf,

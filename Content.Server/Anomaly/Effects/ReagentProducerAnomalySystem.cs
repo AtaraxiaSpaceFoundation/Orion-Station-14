@@ -14,9 +14,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Anomaly.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Sprite;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -147,14 +147,16 @@ public sealed class ReagentProducerAnomalySystem : EntitySystem
             var reagent = _random.Pick(entity.Comp.DangerousChemicals);
             return reagent;
         }
-        else rnd -= currentWeightDangerous;
+
+        rnd -= currentWeightDangerous;
         //Fun
         if (rnd <= currentWeightFun && entity.Comp.FunChemicals.Count > 0)
         {
             var reagent = _random.Pick(entity.Comp.FunChemicals);
             return reagent;
         }
-        else rnd -= currentWeightFun;
+
+        rnd -= currentWeightFun;
         //Useful
         if (rnd <= currentWeightUseful && entity.Comp.UsefulChemicals.Count > 0)
         {

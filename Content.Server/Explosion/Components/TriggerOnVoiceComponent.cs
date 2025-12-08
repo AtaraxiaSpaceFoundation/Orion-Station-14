@@ -36,7 +36,7 @@ namespace Content.Server.Explosion.Components
         ///     Whether the item is currently recording.
         /// </summary>
         [DataField]
-        public bool IsRecording = false;
+        public bool IsRecording;
 
         /// <summary>
         ///     The minimum length you can record a message to.
@@ -54,7 +54,7 @@ namespace Content.Server.Explosion.Components
         ///     Whether the voicetrigger should only trigger if the ID matches. - Goobstation
         /// </summary>
         [DataField]
-        public bool RestrictById = false;
+        public bool RestrictById;
 
         /// <summary>
         ///     Which accesses to restrict the trigger to. - Goobstation

@@ -78,7 +78,7 @@ public sealed class FultonSystem : SharedFultonSystem
 
             TransformSystem.SetCoordinates(uid, new EntityCoordinates(beaconXform.ParentUid, localPos));
 
-            RaiseNetworkEvent(new FultonAnimationMessage()
+            RaiseNetworkEvent(new FultonAnimationMessage
             {
                 Entity = GetNetEntity(uid, metadata),
                 Coordinates = GetNetCoordinates(oldCoords),

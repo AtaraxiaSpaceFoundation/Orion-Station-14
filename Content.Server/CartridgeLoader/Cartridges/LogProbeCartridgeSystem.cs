@@ -9,11 +9,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text;
+using Content.Shared._DV.NanoChat;
 using Content.Shared.Access.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.CartridgeLoader.Cartridges;
-using Content.Shared._DV.NanoChat; // DeltaV
 using Content.Shared.Database;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Labels.EntitySystems;
@@ -21,7 +22,6 @@ using Content.Shared.Paper;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
-using System.Text;
 
 namespace Content.Server.CartridgeLoader.Cartridges;
 

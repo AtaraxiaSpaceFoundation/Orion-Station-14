@@ -15,7 +15,7 @@ namespace Content.Server.NPC.HTN;
 /// Represents a network of multiple tasks. This gets expanded out to its relevant nodes.
 /// </summary>
 [Prototype("htnCompound")]
-public sealed partial class HTNCompoundPrototype : IPrototype
+public sealed class HTNCompoundPrototype : IPrototype
 {
     [IdDataField] public string ID { get; private set; } = string.Empty;
 
@@ -26,5 +26,5 @@ public sealed partial class HTNCompoundPrototype : IPrototype
     /// Exclude this compound task from the CompoundRecursion integration test.
     /// </summary>
     [DataField]
-    public bool AllowRecursion = false;
+    public bool AllowRecursion;
 }

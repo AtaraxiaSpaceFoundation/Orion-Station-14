@@ -19,7 +19,7 @@ public sealed partial class ChangeTemperatureOnCollideComponent : Component
     /// The amount it changes the target's temperature by. In Joules.
     /// </summary>
     [DataField]
-    public float Heat = 0f;
+    public float Heat;
 
     /// <summary>
     /// If this heat change ignores heat resistance or not.

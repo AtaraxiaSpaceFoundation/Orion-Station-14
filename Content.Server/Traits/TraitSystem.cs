@@ -19,7 +19,6 @@ using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Roles;
-using Content.Shared.Traits;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 
@@ -51,7 +50,7 @@ public sealed class TraitSystem : EntitySystem
 
         foreach (var traitId in args.Profile.TraitPreferences)
         {
-            if (!_prototypeManager.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
+            if (!_prototypeManager.TryIndex(traitId, out var traitPrototype))
             {
                 Log.Warning($"No trait found with ID {traitId}!");
                 return;
@@ -80,7 +79,7 @@ public sealed class TraitSystem : EntitySystem
 
             if (traitPrototype.RemoveLanguagesUnderstood is not null)
                 foreach (var lang in traitPrototype.RemoveLanguagesUnderstood)
-                    language.RemoveLanguage(args.Mob, lang, false, true);
+                    language.RemoveLanguage(args.Mob, lang, false);
 
             if (traitPrototype.LanguagesSpoken is not null)
                 foreach (var lang in traitPrototype.LanguagesSpoken)
@@ -88,7 +87,7 @@ public sealed class TraitSystem : EntitySystem
 
             if (traitPrototype.LanguagesUnderstood is not null)
                 foreach (var lang in traitPrototype.LanguagesUnderstood)
-                    language.AddLanguage(args.Mob, lang, false, true);
+                    language.AddLanguage(args.Mob, lang, false);
             // Einstein Engines - Language end
 
             // Add item required by the trait

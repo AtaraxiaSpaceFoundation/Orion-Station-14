@@ -14,5 +14,5 @@ namespace Content.Server._Goobstation.Wizard.Components;
 public sealed partial class RuleOnWizardDeathRuleComponent : Component
 {
     [DataField(required: true)]
-    public EntProtoId Rule = default!;
+    public EntProtoId Rule;
 }

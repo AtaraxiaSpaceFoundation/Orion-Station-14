@@ -34,12 +34,12 @@ namespace Content.Server.Power.Components
         /// <summary>
         /// Should this entity stop automatically recharging if a charge is used?
         /// </summary>
-        [DataField] public bool AutoRechargePause = false;
+        [DataField] public bool AutoRechargePause;
 
         /// <summary>
         /// How long should the entity stop automatically recharging if a charge is used?
         /// </summary>
-        [DataField] public float AutoRechargePauseTime = 0f;
+        [DataField] public float AutoRechargePauseTime;
 
         /// <summary>
         /// Do not auto recharge if this timestamp has yet to happen, set for the auto recharge pause system.
@@ -50,6 +50,6 @@ namespace Content.Server.Power.Components
         /// <summary>
         /// Whether to disable recharging when EMPed for the EMP's specified duration.
         /// </summary>
-        [DataField] public bool CanEmp = false;
+        [DataField] public bool CanEmp;
     }
 }

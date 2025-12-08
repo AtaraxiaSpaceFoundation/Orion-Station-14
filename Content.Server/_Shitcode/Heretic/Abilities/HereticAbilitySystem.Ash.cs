@@ -14,20 +14,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Heretic;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
-using Content.Server.Atmos.Components;
-using Robust.Shared.Map.Components;
-using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.Atmos;
 using Content.Goobstation.Common.Body.Components;
 using Content.Goobstation.Common.Temperature.Components;
+using Content.Server.Atmos.Components;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Heretic;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Heretic.Abilities;
 
@@ -156,7 +156,7 @@ public sealed partial class HereticAbilitySystem
     public async Task CombustArea(EntityUid ent, int range = 1, bool hollow = true)
     {
         // we need this beacon in order for damage box to not break apart
-        var beacon = Spawn(null, _xform.GetMapCoordinates((EntityUid) ent));
+        var beacon = Spawn(null, _xform.GetMapCoordinates(ent));
 
         for (int i = 0; i <= range; i++)
         {

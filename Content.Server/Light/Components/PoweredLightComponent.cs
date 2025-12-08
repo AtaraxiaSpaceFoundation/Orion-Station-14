@@ -153,7 +153,7 @@ namespace Content.Server.Light.Components
         public SoundSpecifier TurnOnSound = new SoundPathSpecifier("/Audio/Machines/light_tube_on.ogg");
 
         [DataField("hasLampOnSpawn", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string? HasLampOnSpawn = null;
+        public string? HasLampOnSpawn;
 
         [DataField("bulb")]
         public LightBulbType BulbType;

@@ -23,5 +23,5 @@ public sealed partial class NotJobRequirementComponent : Component
 
     // MisandryBox/JobObjectives - Double negative to not break compatibility
     [DataField]
-    public bool Inverted = false;
+    public bool Inverted;
 }

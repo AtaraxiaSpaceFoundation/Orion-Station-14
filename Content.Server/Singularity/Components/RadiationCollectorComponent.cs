@@ -60,7 +60,7 @@ public sealed partial class RadiationCollectorComponent : Component
     /// </summary>
     [DataField]
     [ViewVariables(VVAccess.ReadWrite)]
-    public int PowerTicksLeft = 0;
+    public int PowerTicksLeft;
 
     /// <summary>
     ///     Is the machine enabled.

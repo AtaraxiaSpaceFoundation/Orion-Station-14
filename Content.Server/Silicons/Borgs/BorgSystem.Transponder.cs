@@ -15,18 +15,18 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Imp.Drone;
+using Content.Shared._CorvaxNext.Silicons.Borgs.Components;
 using Content.Shared.DeviceNetwork;
+using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.Emag.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Popups;
 using Content.Shared.Robotics;
 using Content.Shared.Silicons.Borgs.Components;
-using Content.Shared.DeviceNetwork.Components;
-using Content.Shared.DeviceNetwork.Events;
-using Content.Shared.Emag.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using Content.Server._Imp.Drone; //Goobstation drone
-using Robust.Shared.Player; //Goobstation drone
-using Content.Shared._CorvaxNext.Silicons.Borgs.Components; // Corvax-Next-AiRemoteControl
 
 namespace Content.Server.Silicons.Borgs;
 
@@ -70,7 +70,7 @@ public sealed partial class BorgSystem
                 canDisable,
                 HasComp<AiRemoteControllerComponent>(uid)); // Corvax-Next-AiRemoteControl
 
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 [DeviceNetworkConstants.Command] = DeviceNetworkConstants.CmdUpdatedState,
                 [RoboticsConsoleConstants.NET_CYBORG_DATA] = data
@@ -96,7 +96,7 @@ public sealed partial class BorgSystem
                 false, // Corvax-Next-AiRemoteControl
                 false);
 
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 [DeviceNetworkConstants.Command] = DeviceNetworkConstants.CmdUpdatedState,
                 [RoboticsConsoleConstants.NET_CYBORG_DATA] = data

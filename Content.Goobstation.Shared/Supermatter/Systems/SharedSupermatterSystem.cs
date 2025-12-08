@@ -9,9 +9,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System;
 using Content.Goobstation.Shared.Supermatter.Components;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Serialization;
 
 namespace Content.Goobstation.Shared.Supermatter.Systems;

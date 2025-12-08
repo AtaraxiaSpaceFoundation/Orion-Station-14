@@ -8,7 +8,7 @@ public sealed partial class InVoidComponent : Component
 {
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
-    public TimeSpan ExitVoidTime = default!;
+    public TimeSpan ExitVoidTime;
 
     [DataField]
     public EntityUid OriginalBody;

@@ -82,7 +82,7 @@ public sealed class EnchanterSystem : EntitySystem
             return;
         }
 
-        if (_userQuery.HasComp(user) == false)
+        if (!_userQuery.HasComp(user))
         {
             _popup.PopupClient(Loc.GetString("enchanter-disallowed-enchant"), user, user);
             return;

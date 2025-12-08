@@ -21,6 +21,6 @@ namespace Content.Server.Ghost.Components
         [DataField("canReturn")] public bool CanReturn { get; set; } = true;
 
         [DataField("mustBeDead")]
-        public bool MustBeDead = false;
+        public bool MustBeDead;
     }
 }

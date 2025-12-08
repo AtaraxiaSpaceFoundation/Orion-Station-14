@@ -129,7 +129,6 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
-using Content.Shared.Item;
 using Content.Shared.Maps;
 using Content.Shared.Nuke;
 using Content.Shared.Popups;
@@ -137,7 +136,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -284,7 +282,7 @@ public sealed class NukeSystem : EntitySystem
     {
         UpdateUserInterface(uid, component);
 
-        if (args.Anchored == false && component.Status == NukeStatus.ARMED && component.RemainingTime > component.DisarmDoAfterLength)
+        if (!args.Anchored && component.Status == NukeStatus.ARMED && component.RemainingTime > component.DisarmDoAfterLength)
         {
             // yes, this means technically if you can find a way to unanchor the nuke, you can disarm it
             // without the doafter. but that takes some effort, and it won't allow you to disarm a nuke that can't be disarmed by the doafter.
@@ -760,7 +758,7 @@ public sealed class NukeSystem : EntitySystem
             component.IntensitySlope,
             component.MaxIntensity);
 
-        RaiseLocalEvent(new NukeExplodedEvent()
+        RaiseLocalEvent(new NukeExplodedEvent
         {
             OwningStation = transform.GridUid,
         });

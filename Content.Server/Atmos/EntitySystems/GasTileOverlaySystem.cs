@@ -94,7 +94,7 @@ namespace Content.Server.Atmos.EntitySystems
             _query = GetEntityQuery<GasTileOverlayComponent>();
             _gridQuery = GetEntityQuery<MapGridComponent>();
 
-            _updateJob = new UpdatePlayerJob()
+            _updateJob = new UpdatePlayerJob
             {
                 EntManager = EntityManager,
                 System = this,

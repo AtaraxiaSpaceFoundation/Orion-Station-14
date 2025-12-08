@@ -18,13 +18,13 @@ public sealed partial class SecretDataAnomalyComponent : Component
     /// Minimum hidden data elements on MapInit
     /// </summary>
     [DataField]
-    public int RandomStartSecretMin = 0;
+    public int RandomStartSecretMin;
 
     /// <summary>
     /// Maximum hidden data elements on MapInit
     /// </summary>
     [DataField]
-    public int RandomStartSecretMax = 0;
+    public int RandomStartSecretMax;
 
     /// <summary>
     /// Current secret data

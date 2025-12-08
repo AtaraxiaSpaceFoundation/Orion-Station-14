@@ -30,7 +30,7 @@ public sealed class DeleteChatMessageCommand : ToolshedCommand
     }
 }
 
-public record struct MessageIdDoesNotExist() : IConError
+public record struct MessageIdDoesNotExist : IConError
 {
     public FormattedMessage DescribeInner()
     {

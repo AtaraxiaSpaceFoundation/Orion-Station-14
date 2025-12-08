@@ -41,7 +41,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Content.Shared.Atmos.EntitySystems;
-using Content.Shared.Atmos.Reactions;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 

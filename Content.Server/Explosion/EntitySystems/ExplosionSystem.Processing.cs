@@ -108,7 +108,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Destructible;
+using Content.Server.Destructible.Thresholds.Triggers;
+using Content.Shared._Shitmed.Damage;
+using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Body.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Database;
@@ -126,19 +132,7 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
-
-// Shitmed Change
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components;
-using Content.Shared.Body.Components;
-using Content.Server.Destructible;
-using Content.Server.Destructible.Thresholds.Triggers;
-using System.Linq;
 
 namespace Content.Server.Explosion.EntitySystems;
 
@@ -609,7 +603,7 @@ public sealed partial class ExplosionSystem
             && throwForce > 0
             && !EntityManager.IsQueuedForDeletion(uid)
             && _physicsQuery.TryGetComponent(uid, out var physics)
-            && physics.BodyType == Robust.Shared.Physics.BodyType.Dynamic) // Shitmed Change
+            && physics.BodyType == BodyType.Dynamic) // Shitmed Change
         {
             var pos = _transformSystem.GetWorldPosition(xform);
             var dir = pos - epicenter.Position;
@@ -762,7 +756,7 @@ sealed class Explosion
     /// <summary>
     ///     This integer tracks how much of this explosion has been processed.
     /// </summary>
-    public int CurrentIteration { get; private set; } = 0;
+    public int CurrentIteration { get; private set; }
 
     /// <summary>
     ///     The prototype for this explosion. Determines tile break chance, damage, etc.
@@ -982,8 +976,7 @@ sealed class Explosion
         {
             if (_currentEnumerator.MoveNext())
                 return true;
-            else
-                TryGetNextTileEnumerator();
+            TryGetNextTileEnumerator();
         }
 
         return false;

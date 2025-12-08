@@ -57,8 +57,8 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Server.Sound.Components;
 using Content.Shared.Sound;
 using Content.Shared.Sound.Components;
-using Robust.Shared.Timing;
 using Robust.Shared.Network;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Sound;
 

@@ -26,7 +26,7 @@ public sealed partial class SensorMonitoringConsoleComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("debugStreams")]
-    public bool DebugStreams = false;
+    public bool DebugStreams;
 
     [ViewVariables(VVAccess.ReadWrite)]
     public Dictionary<EntityUid, SensorData> Sensors = new();

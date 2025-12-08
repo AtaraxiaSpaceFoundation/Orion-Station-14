@@ -15,9 +15,9 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Construction;
-using JetBrains.Annotations;
 using Content.Shared.Doors.Components;
 using Content.Shared.Examine;
+using JetBrains.Annotations;
 
 namespace Content.Server.Construction.Conditions
 {
@@ -58,7 +58,7 @@ namespace Content.Server.Construction.Conditions
 
         public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
         {
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = Value ? "construction-step-condition-airlock-bolt" : "construction-step-condition-airlock-unbolt"
             };

@@ -24,6 +24,6 @@ namespace Content.Server.Atmos.Piping.Binary.Components
 
         [ViewVariables(VVAccess.ReadOnly)]
         [DataField("flowRate")]
-        public float FlowRate { get; set; } = 0;
+        public float FlowRate { get; set; }
     }
 }

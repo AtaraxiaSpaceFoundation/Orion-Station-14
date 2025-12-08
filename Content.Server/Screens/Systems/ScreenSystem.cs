@@ -3,14 +3,10 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared.TextScreen;
 using Content.Server.Screens.Components;
-using Content.Server.DeviceNetwork.Components;
-using Content.Server.DeviceNetwork.Systems;
-using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.TextScreen;
 using Robust.Shared.Timing;
-
 
 namespace Content.Server.Screens.Systems;
 

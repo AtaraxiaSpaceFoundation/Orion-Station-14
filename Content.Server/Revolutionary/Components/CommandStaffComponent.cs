@@ -11,7 +11,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.GameTicking.Rules;
-using Content.Server.Mindshield; // GoobStation
+using Content.Server.Mindshield;
 
 namespace Content.Server.Revolutionary.Components;
 

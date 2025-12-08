@@ -34,7 +34,7 @@ public sealed partial class RandomOperator : HTNOperator
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(NPCBlackboard blackboard,
         CancellationToken cancelToken)
     {
-        return (true, new Dictionary<string, object>()
+        return (true, new Dictionary<string, object>
         {
             {
                 TargetKey,

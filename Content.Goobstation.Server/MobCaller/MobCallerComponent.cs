@@ -5,7 +5,6 @@
 
 using Content.Shared.Physics;
 using Robust.Shared.Prototypes;
-using System;
 
 namespace Content.Goobstation.Server.MobCaller;
 

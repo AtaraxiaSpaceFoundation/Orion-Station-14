@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Robust.Client.Graphics;
-using Robust.Client.ResourceManagement;
 using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map;

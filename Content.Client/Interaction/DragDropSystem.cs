@@ -307,7 +307,7 @@ public sealed class DragDropSystem : SharedDragDropSystem
 
         RaiseLocalEvent(entity, ref ev);
 
-        if (ev.Handled != true)
+        if (!ev.Handled)
             return false;
 
         _draggedEntity = entity;

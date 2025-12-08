@@ -102,13 +102,13 @@ public sealed partial class StealConditionComponent : Component
     /// If true, counts objects that are close to steal areas.
     /// </summary>
     [DataField]
-    public bool CheckStealAreas = false;
+    public bool CheckStealAreas;
 
     /// <summary>
     /// If the target may be alive but has died, it will not be counted
     /// </summary>
     [DataField]
-    public bool CheckAlive = false;
+    public bool CheckAlive;
 
     /// <summary>
     /// The minimum number of items you need to steal to fulfill a objective

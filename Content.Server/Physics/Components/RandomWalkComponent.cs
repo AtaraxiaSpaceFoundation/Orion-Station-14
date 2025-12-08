@@ -36,7 +36,7 @@ public sealed partial class RandomWalkComponent : Component
     /// </summary>
     [DataField("accumulatorRatio")]
     [ViewVariables(VVAccess.ReadWrite)]
-    public float AccumulatorRatio = 0.0f;
+    public float AccumulatorRatio;
 
     /// <summary>
     /// The vector by which the random walk direction is biased.
@@ -55,7 +55,7 @@ public sealed partial class RandomWalkComponent : Component
     /// </summary>
     [DataField("stepOnStartup")]
     [ViewVariables(VVAccess.ReadOnly)]
-    public bool StepOnStartup = false;
+    public bool StepOnStartup;
 
     #region Update Timing
 

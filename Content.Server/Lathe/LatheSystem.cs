@@ -76,8 +76,11 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Goobstation.Common.NTR.Scan;
+using Content.Goobstation.Shared.Lathe;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Chat.Systems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Lathe.Components;
 using Content.Server.Materials;
@@ -85,14 +88,12 @@ using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared.Atmos;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.UserInterface;
 using Content.Shared.Database;
-using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
-using Content.Shared.Examine;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Materials;
@@ -100,16 +101,13 @@ using Content.Shared.Power;
 using Content.Shared.ReagentSpeed;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
-using Content.Goobstation.Shared.Lathe; // Goobstation
+using Content.Shared.UserInterface;
 using JetBrains.Annotations;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Server.Chat.Systems;
-using Content.Goobstation.Common.NTR.Scan; // Goobstation
-using Content.Shared.Chat;
 
 namespace Content.Server.Lathe
 {
@@ -326,7 +324,7 @@ namespace Content.Server.Lathe
                     comp.ReagentOutputSlotId is { } slotId)
                 {
                     var toAdd = new Solution(
-                        resultReagents.Select(p => new ReagentQuantity(p.Key.Id, p.Value, null)));
+                        resultReagents.Select(p => new ReagentQuantity(p.Key.Id, p.Value)));
 
                     // dispense it in the container if we have it and dump it if we don't
                     if (_container.TryGetContainer(uid, slotId, out var container) &&

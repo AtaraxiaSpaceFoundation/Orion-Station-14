@@ -12,7 +12,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.GameStates; // Goobstation - Ling absorb biomatter ability
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Nutrition.Components

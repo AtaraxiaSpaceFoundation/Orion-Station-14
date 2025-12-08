@@ -25,9 +25,9 @@ namespace Content.Server.Engineering.Components
         public bool IgnoreDistance { get; private set; }
 
         [DataField("doAfter")]
-        public float DoAfterTime = 0;
+        public float DoAfterTime;
 
         [DataField("removeOnInteract")]
-        public bool RemoveOnInteract = false;
+        public bool RemoveOnInteract;
     }
 }

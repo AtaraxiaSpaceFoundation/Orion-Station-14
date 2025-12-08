@@ -189,7 +189,7 @@ public sealed class HoloCigarSystem : EntitySystem
         if (!_net.IsServer) // mary copium right here
             return;
 
-        if (ent.Comp.Lit == false)
+        if (!ent.Comp.Lit)
         {
             var audio = _audio.PlayPvs(ent.Comp.Music, ent);
 

@@ -15,16 +15,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Examine;
-using Content.Shared.Coordinates.Helpers;
 using Content.Server.Power.Components;
 using Content.Server.PowerCell;
+using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Content.Shared.Physics; // Goobstation
+using Content.Shared.Physics;
 using Content.Shared.Storage;
-using Content.Shared.Tag; // Goobstation
-using Robust.Shared.Map; // Goobstation
-using Robust.Shared.Physics.Components; // Goobstation
+using Content.Shared.Tag;
+using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Holosign;
 

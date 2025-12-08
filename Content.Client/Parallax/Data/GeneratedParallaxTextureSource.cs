@@ -9,19 +9,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Nett;
-using Content.Shared.CCVar;
 using Content.Client.Parallax.Managers;
 using Robust.Client.Graphics;
 using Robust.Shared.Utility;
-using Robust.Shared.Configuration;
-using Robust.Shared.ContentPack;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Client.Parallax.Data;
 

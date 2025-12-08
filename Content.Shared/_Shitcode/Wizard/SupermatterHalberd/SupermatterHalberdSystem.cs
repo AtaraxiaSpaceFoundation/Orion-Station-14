@@ -14,7 +14,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Goobstation.Wizard.SupermatterHalberd;

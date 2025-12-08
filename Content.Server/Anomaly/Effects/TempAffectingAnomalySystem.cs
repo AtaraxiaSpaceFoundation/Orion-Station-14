@@ -5,8 +5,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.Atmos.EntitySystems;
 using Content.Server.Anomaly.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Anomaly.Components;
 using Robust.Server.GameObjects;
 

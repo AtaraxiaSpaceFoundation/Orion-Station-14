@@ -90,7 +90,6 @@ using Content.Shared._Shitcode.Weapons.Misc;
 using Content.Goobstation.Common.Stunnable; // Martial Arts
 using Content.Goobstation.Common.MartialArts;
 using Content.Shared.Damage.Events;
-using Robust.Shared.Utility;
 
 
 namespace Content.Shared.Damage.Systems;

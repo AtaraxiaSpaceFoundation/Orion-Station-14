@@ -14,15 +14,15 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Shared.NPC.Components;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Damage;
+using Content.Shared.Emag.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
+using Content.Shared.NPC.Components;
 using Content.Shared.Silicons.Bots;
-using Content.Shared.Stealth.Components; // Goobstation
-using Content.Shared.Emag.Components;
+using Content.Shared.Stealth.Components;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 
@@ -98,7 +98,7 @@ public sealed partial class PickNearbyInjectableOperator : HTNOperator
                 if (path.Result == PathResult.NoPath)
                     continue;
 
-                return (true, new Dictionary<string, object>()
+                return (true, new Dictionary<string, object>
                 {
                     {TargetKey, entity},
                     {TargetMoveKey, _entManager.GetComponent<TransformComponent>(entity).Coordinates},

@@ -18,7 +18,7 @@ using NPCImprintingOnSpawnBehaviourComponent = Content.Server.NPC.Components.NPC
 
 namespace Content.Server.NPC.Systems;
 
-public sealed partial class NPCImprintingOnSpawnBehaviourSystem : SharedNPCImprintingOnSpawnBehaviourSystem
+public sealed class NPCImprintingOnSpawnBehaviourSystem : SharedNPCImprintingOnSpawnBehaviourSystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly NPCSystem _npc = default!;

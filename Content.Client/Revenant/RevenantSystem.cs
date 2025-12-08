@@ -5,8 +5,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Client.Alerts;
-using Content.Shared.Alert;
 using Content.Shared.Alert.Components;
 using Content.Shared.Revenant;
 using Content.Shared.Revenant.Components;

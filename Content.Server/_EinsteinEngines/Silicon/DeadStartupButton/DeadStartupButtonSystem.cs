@@ -5,13 +5,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._EinsteinEngines.Silicon.Charge;
 using Content.Server.Chat.Systems;
 using Content.Server.Lightning;
+using Content.Server.Lightning.Components;
 using Content.Server.Popups;
+using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
-using Content.Server._EinsteinEngines.Silicon.Charge;
-using Content.Server.Lightning.Components; // Goobstation - Fix IPC shock loops
-using Content.Server.Power.EntitySystems; // Goobstation - Energycrit
 using Content.Shared._EinsteinEngines.Silicon.DeadStartupButton;
 using Content.Shared.Audio;
 using Content.Shared.Damage;

@@ -15,7 +15,6 @@
 
 using System.Linq;
 using System.Numerics;
-using System.Text;
 using Content.Goobstation.Common.BlockTeleport;
 using Content.Goobstation.Common.Physics;
 using Content.Goobstation.Common.SecondSkin;

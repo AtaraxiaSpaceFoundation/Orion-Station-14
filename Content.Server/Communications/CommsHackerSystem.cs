@@ -12,11 +12,10 @@
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Ninja.Systems;
-using Content.Server.Power.EntitySystems; // goobstation - check power 
+using Content.Server.Power.EntitySystems;
 using Content.Shared.Communications;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
-using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -75,7 +74,7 @@ public sealed class CommsHackerSystem : SharedCommsHackerSystem
         if (args.Cancelled || args.Handled || args.Target == null || !_powerReceiverSystem.IsPowered(args.Target.Value)) // Goobsstation - is powered
             return;
 
-        var threats = _proto.Index<WeightedRandomPrototype>(comp.Threats);
+        var threats = _proto.Index(comp.Threats);
         var threat = threats.Pick(_random);
         CallInThreat(_proto.Index<NinjaHackingThreatPrototype>(threat));
 

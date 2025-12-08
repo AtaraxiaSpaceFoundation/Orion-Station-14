@@ -1,6 +1,5 @@
 using Content.Goobstation.Shared.Security.ContrabandIcons;
 using Content.Goobstation.Shared.Security.ContrabandIcons.Components;
-using Content.Shared._Goobstation.Security.ContrabandIcons;
 using Content.Shared.Inventory;
 
 namespace Content.Goobstation.Server.Security.ContrabandIcons;

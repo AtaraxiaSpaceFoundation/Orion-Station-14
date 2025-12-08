@@ -24,25 +24,25 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Materials;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Research.Prototypes;
 using Content.Shared.Stacks;
 using Robust.Shared.Console;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Shared.Research.Prototypes;
 
 namespace Content.Server.Cargo.Systems;
 
@@ -101,7 +101,7 @@ public sealed class PricingSystem : EntitySystem
             });
 
             shell.WriteLine($"Grid {gid} appraised to {value} spesos.");
-            shell.WriteLine($"The top most valuable items were:");
+            shell.WriteLine("The top most valuable items were:");
             foreach (var (price, ent) in mostValuable)
             {
                 shell.WriteLine($"- {ToPrettyString(ent)} @ {price} spesos");
@@ -209,7 +209,7 @@ public sealed class PricingSystem : EntitySystem
     /// </summary>
     public double GetEstimatedPrice(EntityPrototype prototype)
     {
-        var ev = new EstimatedPriceCalculationEvent()
+        var ev = new EstimatedPriceCalculationEvent
         {
             Prototype = prototype,
         };

@@ -1,4 +1,4 @@
-using Robust.Shared.Audio; // Goobstation - Play music on announcement
+using Robust.Shared.Audio;
 
 namespace Content.Server._White.GameTicking.Rules.Components;
 

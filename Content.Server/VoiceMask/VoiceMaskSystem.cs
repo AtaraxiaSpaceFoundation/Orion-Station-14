@@ -25,7 +25,6 @@ using Content.Shared.Clothing;
 using Content.Shared.Database;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
-using Content.Shared.Preferences;
 using Content.Shared.Speech;
 using Content.Shared.VoiceMask;
 using Robust.Shared.Configuration;
@@ -33,7 +32,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.VoiceMask;
 
-public sealed partial class VoiceMaskSystem : EntitySystem
+public sealed class VoiceMaskSystem : EntitySystem
 {
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;

@@ -113,5 +113,5 @@ public sealed partial class TraitorCodePaperComponent : Component
     /// Whether all codewords added to the round should be used. Overrides CodewordAmount if true.
     /// </summary>
     [DataField]
-    public bool CodewordShowAll = false;
+    public bool CodewordShowAll;
 }

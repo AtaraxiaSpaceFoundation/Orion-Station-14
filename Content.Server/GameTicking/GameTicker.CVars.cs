@@ -26,13 +26,13 @@ namespace Content.Server.GameTicking
         public bool LobbyEnabled { get; private set; }
 
         [ViewVariables]
-        public bool DummyTicker { get; private set; } = false;
+        public bool DummyTicker { get; private set; }
 
         [ViewVariables]
         public TimeSpan LobbyDuration { get; private set; } = TimeSpan.Zero;
 
         [ViewVariables]
-        public bool DisallowLateJoin { get; private set; } = false;
+        public bool DisallowLateJoin { get; private set; }
 
         [ViewVariables]
         public string? ServerName { get; private set; }
@@ -47,7 +47,7 @@ namespace Content.Server.GameTicking
 
 #if EXCEPTION_TOLERANCE
         [ViewVariables]
-        public int RoundStartFailShutdownCount { get; private set; } = 0;
+        public int RoundStartFailShutdownCount { get; private set; }
 #endif
 
         private void InitializeCVars()

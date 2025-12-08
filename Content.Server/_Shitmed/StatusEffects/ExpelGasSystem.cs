@@ -4,9 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Shitmed.StatusEffects;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
+using Content.Shared._Shitmed.StatusEffects;
 using Robust.Shared.Random;
 
 namespace Content.Server._Shitmed.StatusEffects;

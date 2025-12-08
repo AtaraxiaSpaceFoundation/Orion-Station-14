@@ -6,7 +6,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Damage;
 using Content.Shared._Shitmed.Targeting; // Shitmed
 
 namespace Content.Shared.Damage.Components;

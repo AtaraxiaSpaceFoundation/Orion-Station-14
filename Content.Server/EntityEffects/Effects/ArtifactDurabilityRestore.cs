@@ -1,6 +1,6 @@
 using Content.Shared.EntityEffects;
-using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects;

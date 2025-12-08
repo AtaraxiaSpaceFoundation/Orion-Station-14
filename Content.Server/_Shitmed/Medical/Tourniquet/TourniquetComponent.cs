@@ -33,11 +33,11 @@ public sealed partial class TourniquetComponent : Component
     ///     Sound played on healing begin
     /// </summary>
     [DataField("putOnSound")]
-    public SoundSpecifier? TourniquetPutOnSound = null;
+    public SoundSpecifier? TourniquetPutOnSound;
 
     /// <summary>
     ///     Sound played on healing end
     /// </summary>
     [DataField("putOffSound")]
-    public SoundSpecifier? TourniquetPutOffSound = null;
+    public SoundSpecifier? TourniquetPutOffSound;
 }

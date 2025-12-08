@@ -90,8 +90,6 @@ using Content.Shared.Body.Part;
 using Robust.Shared.Containers;
 
 // Shitmed Change
-
-using Content.Shared.Damage;
 using Content.Shared._Shitmed.BodyEffects;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Heretic;

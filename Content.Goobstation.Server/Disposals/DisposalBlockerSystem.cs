@@ -6,7 +6,6 @@
 
 using Content.Goobstation.Server.Disposals.Tube;
 using Content.Server.Disposal.Tube;
-using Robust.Shared.Random;
 
 namespace Content.Goobstation.Server.Disposals;
 

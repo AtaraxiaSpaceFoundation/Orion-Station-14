@@ -8,7 +8,6 @@
 
 using Content.Server._Goobstation.Wizard.Components;
 using Content.Server.Polymorph.Components;
-using Content.Server.Polymorph.Systems;
 using Content.Shared._Goobstation.Wizard.Projectiles;
 using Content.Shared.Polymorph;
 using Robust.Server.Audio;
