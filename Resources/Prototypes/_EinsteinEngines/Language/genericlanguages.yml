@@ -9,6 +9,11 @@
 # style of Chat, and is not normally accessible by players.
 - type: language
   id: Universal
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: popcorn
+  # Orion-End
   obfuscation:
     !type:ReplacementObfuscation
     replacement:
@@ -22,6 +27,11 @@
   speech:
     fontId: Monospace
     boldFontId: MonospaceBold
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: eal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -37,6 +47,11 @@
   speech:
     fontId: Monospace
     boldFontId: MonospaceBold
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: drone
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -314,6 +329,11 @@
     - chat-speech-verb-sign-1
     - chat-speech-verb-sign-2
     - chat-speech-verb-sign-3
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: ssl
+  # Orion-End
   obfuscation:
     !type:ReplacementObfuscation
     replacement:
@@ -325,6 +345,11 @@
     #Used for Xenoglossy, and anything else with the UniversalLanguageSpeaker component
 - type: language
   id: Psychomantic
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: popcorn
+  # Orion-End
   speech:
     color: "#C29EFF" # a nice psychic purple, a bit lighter than Ya'ssa
     # fontId: Megrim # Experimental and alien, but still hopefully clean enough to read #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED

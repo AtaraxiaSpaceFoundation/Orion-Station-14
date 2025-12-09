@@ -17,22 +17,22 @@ public sealed partial class CosmicFinaleComponent : Component
     public FinaleState CurrentState = FinaleState.Unavailable;
 
     [DataField]
-    public bool FinaleDelayStarted = false;
+    public bool FinaleDelayStarted;
 
     [DataField]
-    public bool FinaleActive = false;
+    public bool FinaleActive;
 
     [DataField]
-    public bool Occupied = false;
+    public bool Occupied;
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan FinaleTimer = default!;
+    public TimeSpan FinaleTimer;
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan BufferTimer = default!;
+    public TimeSpan BufferTimer;
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan CultistsCheckTimer = default!;
+    public TimeSpan CultistsCheckTimer;
 
     [DataField, AutoNetworkedField]
     public TimeSpan BufferRemainingTime = TimeSpan.FromSeconds(300);

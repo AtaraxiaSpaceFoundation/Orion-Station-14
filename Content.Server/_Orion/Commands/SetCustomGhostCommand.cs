@@ -3,7 +3,6 @@ using Content.Server.Preferences.Managers;
 using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Orion.Commands;
@@ -25,7 +24,7 @@ public sealed class SetCustomGhostCommand : IConsoleCommand
 
     public async void Execute(IConsoleShell shell, string argStr, string[] args)
     {
-        if (shell.Player is not ICommonSession player)
+        if (shell.Player is not { } player)
         {
             shell.WriteLine(Loc.GetString("setcustomghost-command-no-session"));
             return;

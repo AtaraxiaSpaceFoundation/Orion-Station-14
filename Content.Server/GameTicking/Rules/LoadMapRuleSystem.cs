@@ -54,7 +54,7 @@ public sealed class LoadMapRuleSystem : StationEventSystem<LoadMapRuleComponent>
             DebugTools.AssertNull(comp.PreloadedGrid);
 
             var gameMap = _prototypeManager.Index(comp.GameMap.Value);
-            grids = GameTicker.LoadGameMap(gameMap, out mapId, null);
+            grids = GameTicker.LoadGameMap(gameMap, out mapId);
             Log.Info($"Created map {mapId} for {ToPrettyString(uid):rule}");
         }
         else if (comp.MapPath is {} path)
@@ -101,7 +101,7 @@ public sealed class LoadMapRuleSystem : StationEventSystem<LoadMapRuleComponent>
 
             var mapUid = _map.CreateMap(out mapId, runMapInit: false);
             _transform.SetParent(loadedShuttle.Value, mapUid);
-            grids = new List<EntityUid>() { loadedShuttle.Value };
+            grids = new List<EntityUid> { loadedShuttle.Value };
             _map.InitializeMap(mapUid);
         }
         else

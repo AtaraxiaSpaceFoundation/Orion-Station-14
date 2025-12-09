@@ -12,7 +12,6 @@
 using System.Numerics;
 using Content.Goobstation.Common.Bingle;
 using Content.Goobstation.Shared.Bingle;
-using Content.Server.Polymorph.Components;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Flash.Components;

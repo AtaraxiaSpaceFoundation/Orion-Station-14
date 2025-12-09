@@ -71,20 +71,18 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Runtime.InteropServices;
+using Content.Goobstation.Common.SurveillanceCamera;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
 using Content.Shared.SurveillanceCamera;
-using Robust.Server.GameObjects;
-using Robust.Shared.Player;
-
-// Goobstation
-using Content.Goobstation.Common.SurveillanceCamera;
 using Content.Shared.UserInterface;
+using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
 using Robust.Shared.Map;
-using System.Runtime.InteropServices;
+using Robust.Shared.Player;
 
 namespace Content.Server.SurveillanceCamera;
 
@@ -396,7 +394,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
         // Goobstation start
         foreach (var subnetAddress in monitor.KnownSubnets.Values)
         {
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 { DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraHeartbeatMessage },
                 { SurveillanceCameraSystem.CameraAddressData, cameraAdress } // Goobstation
@@ -436,7 +434,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
         // Goobstation start
         foreach (var subnetAddress in monitor.KnownSubnets.Values)
         {
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 {DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraSubnetDisconnectMessage},
             };
@@ -459,7 +457,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
         }
         foreach (var subnetAddress in monitor.KnownSubnets.Values)
         {
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 {DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraSubnetConnectMessage},
             };
@@ -476,7 +474,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             { DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraPingMessage }
         };
@@ -494,7 +492,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
 
         foreach (var subnetAddress in monitor.KnownSubnets.Values)
         {
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 {DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraPingSubnetMessage},
             };
@@ -512,7 +510,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             {DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraSubnetDisconnectMessage},
         };
@@ -614,7 +612,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
         // Goobstation start
         foreach (var subnetAddress in monitor.KnownSubnets.Values)
         {
-            var payload = new NetworkPayload()
+            var payload = new NetworkPayload
             {
                 {DeviceNetworkConstants.Command, SurveillanceCameraSystem.CameraConnectMessage},
                 {SurveillanceCameraSystem.CameraAddressData, address}

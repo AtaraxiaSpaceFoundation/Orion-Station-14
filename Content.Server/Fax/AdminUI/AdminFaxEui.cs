@@ -11,15 +11,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.DeviceNetwork.Components;
 using Content.Server.EUI;
+using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Eui;
-using Content.Shared.Fax.Components;
 using Content.Shared.Fax;
+using Content.Shared.Fax.Components;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
 using Content.Shared.Paper;
-using Content.Shared.DeviceNetwork.Components;
 
 namespace Content.Server.Fax.AdminUI;
 

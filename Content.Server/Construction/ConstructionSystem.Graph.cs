@@ -21,16 +21,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Construction.Components;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Construction.Steps;
 using Content.Shared.Containers;
 using Content.Shared.Database;
+using Content.Shared.Hands.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
-using System.Linq;
-using Content.Shared.Hands.Components;
 
 namespace Content.Server.Construction
 {

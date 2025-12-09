@@ -7,7 +7,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Cargo;
 using Content.Shared.CartridgeLoader.Cartridges;
 
 namespace Content.Server._DV.Cargo.Components;

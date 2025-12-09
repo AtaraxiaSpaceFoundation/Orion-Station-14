@@ -10,28 +10,27 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Heretic.Components;
-using Content.Server.Weapons.Ranged.Systems;
-using Content.Shared.Damage;
-using Content.Shared.Follower;
-using Content.Shared.Follower.Components;
-using Content.Shared.Heretic;
-using Content.Shared.Interaction;
-using Content.Shared.StatusEffect;
-using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Buckle.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Heretic.Abilities;
+using Content.Server.Heretic.Components;
+using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared._Goobstation.Heretic.Systems;
 using Content.Shared._Shitcode.Heretic.Components;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Follower;
+using Content.Shared.Follower.Components;
+using Content.Shared.Heretic;
 using Content.Shared.Input;
+using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
+using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Reflect;
@@ -40,6 +39,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Heretic.EntitySystems;
 
@@ -288,7 +288,7 @@ public sealed class ProtectiveBladeSystem : EntitySystem
         if (!TryComp<FollowerComponent>(blade, out var follower))
             return;
 
-        var ev = new ProtectiveBladeUsedEvent() { Used = blade };
+        var ev = new ProtectiveBladeUsedEvent { Used = blade };
         RaiseLocalEvent(follower.Following, ev);
 
         QueueDel(blade);
@@ -343,7 +343,7 @@ public sealed class ProtectiveBladeSystem : EntitySystem
         if (targetEntity != EntityUid.Invalid)
             _gun.SetTarget(proj, targetEntity, out _);
 
-        var ev = new ProtectiveBladeUsedEvent() { Used = pblade.Value };
+        var ev = new ProtectiveBladeUsedEvent { Used = pblade.Value };
         RaiseLocalEvent(origin, ev);
 
         QueueDel(pblade.Value);

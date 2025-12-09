@@ -85,11 +85,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Text.Json.Serialization.Metadata;
 using Content.Shared.CCVar;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Components;
-using Content.Shared.Movement.Events;
 using Robust.Shared.Configuration;
 using Content.Goobstation.Common.Movement; // Goobstation
 using Content.Goobstation.Common.CCVar; // Goobstation

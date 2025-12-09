@@ -53,30 +53,24 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text.Json.Serialization;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Temperature.Components;
+using Content.Shared._Shitmed.Damage;
+using Content.Shared._Shitmed.EntityEffects.Effects;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Localizations;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using System.Linq;
-using System.Text.Json.Serialization;
-
-// Shitmed Changes
-using Content.Shared._Shitmed.EntityEffects.Effects;
-using Content.Shared._Shitmed.Targeting;
-using Content.Server.Temperature.Components;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared.Heretic;
 
 namespace Content.Server.EntityEffects.Effects
 {
     /// <summary>
     /// Default metabolism used for medicine reagents.
     /// </summary>
-
-
     [UsedImplicitly]
     public sealed partial class HealthChange : EntityEffect
     {
@@ -191,7 +185,7 @@ namespace Content.Server.EntityEffects.Effects
                 if (!args.EntityManager.TryGetComponent<TemperatureComponent>(args.TargetEntity, out var temp))
                     scale = FixedPoint2.Zero;
                 else
-                    scale *= ScaleByTemperature.Value.GetEfficiencyMultiplier(temp.CurrentTemperature, scale, false);
+                    scale *= ScaleByTemperature.Value.GetEfficiencyMultiplier(temp.CurrentTemperature, scale);
             }
 
             var universalReagentDamageModifier =
@@ -215,27 +209,8 @@ namespace Content.Server.EntityEffects.Effects
                 }
             }
 
-            // Goobstation start
-            var ev = new ImmuneToPoisonDamageEvent();
-            args.EntityManager.EventBus.RaiseLocalEvent(args.TargetEntity, ref ev);
-            if (ev.Immune)
-            {
-                damageSpec = DamageSpecifier.GetNegative(damageSpec);
-                if (damageSpec.GetTotal() == FixedPoint2.Zero)
-                    return;
-            }
-            // Goobstation end
-
-            args.EntityManager.System<DamageableSystem>()
-                .TryChangeDamage(
-                    args.TargetEntity,
-                    damageSpec * scale,
-                    IgnoreResistances,
-                    interruptsDoAfters: false,
-                    targetPart: UseTargeting ? TargetPart : null,
-                    ignoreBlockers: IgnoreBlockers,
-                    splitDamage: SplitDamage); // Shitmed Change
-
+            // Goobstation - Applies (airloss/poison) damage to vital parts of the entity.
+            ApplyEtcDamageToVitals(damageSpec, scale, args);
         }
     }
 }

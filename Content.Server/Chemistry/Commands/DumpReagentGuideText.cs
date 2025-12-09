@@ -24,13 +24,13 @@ public sealed class DumpReagentGuideText : LocalizedEntityCommands
     {
         if (args.Length != 1)
         {
-            shell.WriteError(Loc.GetString($"shell-need-exactly-one-argument"));
+            shell.WriteError(Loc.GetString("shell-need-exactly-one-argument"));
             return;
         }
 
         if (!_prototype.TryIndex<ReagentPrototype>(args[0], out var reagent))
         {
-            shell.WriteError(Loc.GetString($"shell-argument-must-be-prototype",
+            shell.WriteError(Loc.GetString("shell-argument-must-be-prototype",
                 ("index", args[0]),
                 ("prototype", nameof(ReagentPrototype))));
             return;
@@ -38,7 +38,7 @@ public sealed class DumpReagentGuideText : LocalizedEntityCommands
 
         if (reagent.Metabolisms is null)
         {
-            shell.WriteLine(Loc.GetString($"cmd-dumpreagentguidetext-nothing-to-dump"));
+            shell.WriteLine(Loc.GetString("cmd-dumpreagentguidetext-nothing-to-dump"));
             return;
         }
 
@@ -47,7 +47,7 @@ public sealed class DumpReagentGuideText : LocalizedEntityCommands
             foreach (var effect in entry.Effects)
             {
                 shell.WriteLine(effect.GuidebookEffectDescription(_prototype, EntityManager.EntitySysManager) ??
-                                Loc.GetString($"cmd-dumpreagentguidetext-skipped", ("effect", effect.GetType())));
+                                Loc.GetString("cmd-dumpreagentguidetext-skipped", ("effect", effect.GetType())));
             }
         }
     }

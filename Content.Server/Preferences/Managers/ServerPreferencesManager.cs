@@ -413,7 +413,7 @@ namespace Content.Server.Preferences.Managers
                 ).ToList(),
                 prefs.SelectedCharacterIndex,
                 prefs.AdminOOCColor,
-                _prototypeManager.TryIndex<CustomGhostPrototype>(prefs.CustomGhost, out var ghostProto) && ghostProto?.CanUse(session) == true
+                _prototypeManager.TryIndex(prefs.CustomGhost, out var ghostProto) && ghostProto?.CanUse(session) == true
                     ? prefs.CustomGhost
                     : _prototypeManager.Index<CustomGhostPrototype>("default"),
                 prefs.ConstructionFavorites

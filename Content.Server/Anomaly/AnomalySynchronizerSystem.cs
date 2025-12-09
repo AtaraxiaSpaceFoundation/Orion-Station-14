@@ -52,8 +52,8 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Power;
-using Robust.Shared.Audio.Systems;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Anomaly;
@@ -61,7 +61,7 @@ namespace Content.Server.Anomaly;
 /// <summary>
 /// a device that allows you to translate anomaly activity into multitool signals.
 /// </summary>
-public sealed partial class AnomalySynchronizerSystem : EntitySystem
+public sealed class AnomalySynchronizerSystem : EntitySystem
 {
     [Dependency] private readonly AnomalySystem _anomaly = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;

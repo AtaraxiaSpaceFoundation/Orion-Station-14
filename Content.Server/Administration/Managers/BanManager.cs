@@ -352,7 +352,7 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
     public void SendRoleBans(ICommonSession pSession)
     {
         var roleBans = _cachedRoleBans.GetValueOrDefault(pSession) ?? new List<ServerRoleBanDef>();
-        var bans = new MsgRoleBans()
+        var bans = new MsgRoleBans
         {
             Bans = roleBans.Select(o => o.Role).ToList()
         };

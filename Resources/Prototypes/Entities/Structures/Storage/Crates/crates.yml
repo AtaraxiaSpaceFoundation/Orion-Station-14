@@ -101,7 +101,7 @@
     group: CratePlastic
 
 - type: entity
-  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
+  parent: CrateGenericSteel # Orion-Edit: CratePlastic > CrateGenericSteel
   id: CrateFreezer
   name: freezer
   components:
@@ -121,7 +121,7 @@
     group: null
 
 - type: entity
-  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
+  parent: CrateGenericSteel # Orion-Edit: CratePlastic > CrateGenericSteel
   id: CrateHydroponics
   name: hydroponics crate
   components:
@@ -131,7 +131,7 @@
     sprite: Structures/Storage/Crates/hydroponics.rsi
 
 - type: entity
-  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
+  parent: CrateGenericSteel # Orion-Edit: CratePlastic > CrateGenericSteel
   id: CrateMedical
   name: medical crate
   components:
@@ -152,7 +152,7 @@
     sprite: Structures/Storage/Crates/radiation.rsi
 
 - type: entity
-  parent: CrateGenericSteel # Orion-Edit | CratePlastic > CrateGenericSteel
+  parent: CrateGenericSteel # Orion-Edit: CratePlastic > CrateGenericSteel
   id: CrateInternals
   name: oxygen crate
   components:

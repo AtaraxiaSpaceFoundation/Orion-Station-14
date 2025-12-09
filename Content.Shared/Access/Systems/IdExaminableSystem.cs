@@ -20,13 +20,10 @@
 
 using Content.Shared.Access.Components;
 using Content.Shared.Examine;
-using Content.Shared.Hands.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Overlays;
 using Content.Shared.PDA;
 using Content.Shared.Verbs;
-using Robust.Shared.Network;
-using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Access.Systems;

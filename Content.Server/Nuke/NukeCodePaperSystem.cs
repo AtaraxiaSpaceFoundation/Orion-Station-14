@@ -87,9 +87,9 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Chat.Systems;
 using Content.Server.Fax;
-using Content.Shared.Fax.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared.Fax.Components;
 using Content.Shared.Paper;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;

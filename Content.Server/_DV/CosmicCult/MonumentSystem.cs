@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Shared.Religion;
 using Content.Server._DV.CosmicCult.Components;
 using Content.Server._DV.CosmicCult.EntitySystems;
-using Content.Goobstation.Shared.Religion; // Goobstation - Shitchap
 using Content.Server.Actions;
 using Content.Server.Atmos.Components;
 using Content.Server.Audio;
@@ -19,6 +19,7 @@ using Content.Shared._DV.CCVars;
 using Content.Shared._DV.CosmicCult;
 using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult.Prototypes;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.Interaction;
@@ -31,8 +32,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-
-using Content.Shared._Shitmed.Targeting; // Shitmed Change
 
 namespace Content.Server._DV.CosmicCult;
 

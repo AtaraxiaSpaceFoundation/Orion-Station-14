@@ -12,7 +12,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Station.Systems;
-public sealed partial class StationBiomeSystem : EntitySystem
+public sealed class StationBiomeSystem : EntitySystem
 {
     [Dependency] private readonly BiomeSystem _biome = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;

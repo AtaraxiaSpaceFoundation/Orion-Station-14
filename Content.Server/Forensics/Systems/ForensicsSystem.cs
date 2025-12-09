@@ -91,31 +91,30 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._EinsteinEngines.Forensics.Components;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics.Components;
 using Content.Server.Popups;
 using Content.Shared.Body.Events;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Popups;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.DoAfter;
 using Content.Shared.Forensics;
 using Content.Shared.Forensics.Components;
+using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Inventory.Events;
+using Content.Shared.Popups;
+using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Random;
-using Content.Shared.Verbs;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Hands.Components;
-using Content.Shared.Inventory.Events;
-using Robust.Shared.Timing; // Goobstation
 
 namespace Content.Server.Forensics
 {
@@ -315,7 +314,7 @@ namespace Content.Server.Forensics
             var user = args.User;
             var target = args.Target;
 
-            var verb = new UtilityVerb()
+            var verb = new UtilityVerb
             {
                 Act = () => TryStartCleaning(entity, user, target),
                 Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/bubbles.svg.192dpi.png")),
@@ -367,11 +366,9 @@ namespace Content.Server.Forensics
 
                 return true;
             }
-            else
-            {
-                _popupSystem.PopupEntity(Loc.GetString("forensics-cleaning-cannot-clean", ("target", target)), user, user, PopupType.MediumCaution);
-                return false;
-            }
+
+            _popupSystem.PopupEntity(Loc.GetString("forensics-cleaning-cannot-clean", ("target", target)), user, user, PopupType.MediumCaution);
+            return false;
 
         }
 

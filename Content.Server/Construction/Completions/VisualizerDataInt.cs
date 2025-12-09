@@ -28,7 +28,7 @@ namespace Content.Server.Construction.Completions
     public sealed partial class VisualizerDataInt : IGraphAction
     {
         [DataField("key")] public string Key { get; private set; } = string.Empty;
-        [DataField("data")] public int Data { get; private set; } = 0;
+        [DataField("data")] public int Data { get; private set; }
 
         public void PerformAction(EntityUid uid, EntityUid? userUid, IEntityManager entityManager)
         {

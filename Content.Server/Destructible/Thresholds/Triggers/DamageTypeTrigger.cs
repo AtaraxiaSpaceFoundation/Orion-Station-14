@@ -37,8 +37,8 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Damage;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.Damage.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Destructible.Thresholds.Triggers
 {
@@ -54,7 +54,7 @@ namespace Content.Server.Destructible.Thresholds.Triggers
         public string DamageType { get; set; } = default!;
 
         [DataField("damage", required: true)]
-        public int Damage { get; set; } = default!;
+        public int Damage { get; set; }
 
         public bool Reached(DamageableComponent damageable, DestructibleSystem system)
         {

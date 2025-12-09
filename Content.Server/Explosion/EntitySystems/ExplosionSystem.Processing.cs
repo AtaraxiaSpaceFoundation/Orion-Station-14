@@ -127,18 +127,14 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
-
-// Shitmed Change
+using System.Linq;
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components;
-using Content.Shared.Body.Components;
 using Content.Server.Destructible;
 using Content.Server.Destructible.Thresholds.Triggers;
-using System.Linq;
+using Content.Shared._Shitmed.Damage;
+using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Body.Components;
+using Robust.Shared.Spawners;
 
 namespace Content.Server.Explosion.EntitySystems;
 
@@ -762,7 +758,7 @@ sealed class Explosion
     /// <summary>
     ///     This integer tracks how much of this explosion has been processed.
     /// </summary>
-    public int CurrentIteration { get; private set; } = 0;
+    public int CurrentIteration { get; private set; }
 
     /// <summary>
     ///     The prototype for this explosion. Determines tile break chance, damage, etc.
@@ -982,8 +978,7 @@ sealed class Explosion
         {
             if (_currentEnumerator.MoveNext())
                 return true;
-            else
-                TryGetNextTileEnumerator();
+            TryGetNextTileEnumerator();
         }
 
         return false;

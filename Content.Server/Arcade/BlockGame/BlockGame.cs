@@ -4,10 +4,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Shared.Arcade;
 using Robust.Server.GameObjects;
 using Robust.Shared.Random;
-using System.Linq;
 
 namespace Content.Server.Arcade.BlockGame;
 
@@ -21,17 +21,17 @@ public sealed partial class BlockGame
     /// <summary>
     /// What entity is currently hosting this game of NT-BG.
     /// </summary>
-    private readonly EntityUid _owner = default!;
+    private readonly EntityUid _owner;
 
     /// <summary>
     /// Whether the game has been started.
     /// </summary>
-    public bool Started { get; private set; } = false;
+    public bool Started { get; private set; }
 
     /// <summary>
     /// Whether the game is currently running (not paused).
     /// </summary>
-    private bool _running = false;
+    private bool _running;
 
     /// <summary>
     /// Whether the game should not currently be running.
@@ -41,7 +41,7 @@ public sealed partial class BlockGame
     /// <summary>
     /// Whether the game has finished.
     /// </summary>
-    private bool _gameOver = false;
+    private bool _gameOver;
 
     /// <summary>
     /// Whether the game should have finished given the current game state.

@@ -21,7 +21,6 @@ using System.Numerics;
 using Content.Client.Parallax.Managers;
 using Content.Shared.CCVar;
 using Content.Shared.Parallax.Biomes;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;

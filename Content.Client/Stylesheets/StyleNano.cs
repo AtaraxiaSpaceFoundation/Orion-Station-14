@@ -876,7 +876,7 @@ namespace Content.Client.Stylesheets
                     .Class(ButtonSquare)
                     .Prop(ContainerButton.StylePropertyStyleBox, BaseButtonSquare),
 
-                new StyleRule(new SelectorElement(typeof(Label), new[] { Button.StyleClassButton }, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { ContainerButton.StyleClassButton }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Center),
                 }),
@@ -1437,63 +1437,63 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(typeof(MenuButton), new[] {ButtonSquare}, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, topButtonSquare),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, topButtonSquare),
                     }),
 
                 new StyleRule(
                     new SelectorElement(typeof(MenuButton), new[] {ButtonOpenLeft}, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, topButtonOpenLeft),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, topButtonOpenLeft),
                     }),
 
                 new StyleRule(
                     new SelectorElement(typeof(MenuButton), new[] {ButtonOpenRight}, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, topButtonOpenRight),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, topButtonOpenRight),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefault),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefault),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefaultRed),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefaultRed),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefault),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefault),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassPressed}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] {ContainerButton.StylePseudoClassPressed}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorPressed),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorPressed),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassHover}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] {ContainerButton.StylePseudoClassHover}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorHovered),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorHovered),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassHover}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassHover}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorHoveredRed),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorHoveredRed),
                     }),
 
                 new StyleRule(
@@ -1505,86 +1505,86 @@ namespace Content.Client.Stylesheets
 
                 // Orion-Start
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorCentralCommand),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorCentralCommand),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorCommand),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorCommand),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorSecurity),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorSecurity),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorMedical),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorMedical),
                     }),
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorEngineering),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorCivilian),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorEngineering),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorScience),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorCivilian),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorSilicon),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorScience),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorCargo),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorSilicon),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorJustice),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorCargo),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorSpecific),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorJustice),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorAntagonist),
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorSpecific),
+                    }),
+
+                new StyleRule(
+                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {ContainerButton.StylePseudoClassNormal}),
+                    new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorAntagonist),
                     }),
                 // Orion-End
 
@@ -1593,57 +1593,57 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(typeof(MonotoneButton), null, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButton),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneButton),
                     }),
 
                 new StyleRule(
                     new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenLeft }, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButtonOpenLeft),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneButtonOpenLeft),
                     }),
 
                 new StyleRule(
                     new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenRight }, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButtonOpenRight),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneButtonOpenRight),
                     }),
 
                 new StyleRule(
                     new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenBoth }, null, null),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButtonOpenBoth),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneButtonOpenBoth),
                     }),
 
                 // MonotoneButton (filled)
                 new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), null, null, new[] { Button.StylePseudoClassPressed }),
+                    new SelectorElement(typeof(MonotoneButton), null, null, new[] { ContainerButton.StylePseudoClassPressed }),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButton),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneFilledButton),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenLeft }, null, new[] { Button.StylePseudoClassPressed }),
+                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenLeft }, null, new[] { ContainerButton.StylePseudoClassPressed }),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButtonOpenLeft),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneFilledButtonOpenLeft),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenRight }, null, new[] { Button.StylePseudoClassPressed }),
+                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenRight }, null, new[] { ContainerButton.StylePseudoClassPressed }),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButtonOpenRight),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneFilledButtonOpenRight),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenBoth }, null, new[] { Button.StylePseudoClassPressed }),
+                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenBoth }, null, new[] { ContainerButton.StylePseudoClassPressed }),
                     new[]
                     {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButtonOpenBoth),
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, monotoneFilledButtonOpenBoth),
                     }),
 
                 // NanoHeading
@@ -1719,7 +1719,7 @@ namespace Content.Client.Stylesheets
                 // chat channel option selector
                 new StyleRule(new SelectorElement(typeof(Button), new[] {StyleClassChatChannelSelectorButton}, null, null), new[]
                 {
-                    new StyleProperty(Button.StylePropertyStyleBox, chatChannelButton),
+                    new StyleProperty(ContainerButton.StylePropertyStyleBox, chatChannelButton),
                 }),
 
                 // chat filter button
@@ -1747,7 +1747,7 @@ namespace Content.Client.Stylesheets
                 // output panel scroll button
                 Element<Button>()
                     .Class(OutputPanel.StyleClassOutputPanelScrollDownButton)
-                    .Prop(Button.StylePropertyStyleBox, outputPanelScrollDownButton),
+                    .Prop(ContainerButton.StylePropertyStyleBox, outputPanelScrollDownButton),
 
                 // OptionButton
                 new StyleRule(new SelectorElement(typeof(OptionButton), null, null, null), new[]

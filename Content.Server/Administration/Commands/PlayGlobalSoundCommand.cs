@@ -5,8 +5,10 @@
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
+using Content.Server.Administration.Logs;
 using Content.Server.Audio;
 using Content.Shared.Administration;
+using Content.Shared.Database;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Console;
@@ -24,6 +26,9 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IResourceManager _res = default!;
 
+    // Goobstation - Admin Log
+    [Dependency] private readonly IAdminLogManager _adminLog = default!;
+
     public string Command => "playglobalsound";
     public string Description => Loc.GetString("play-global-sound-command-description");
     public string Help => Loc.GetString("play-global-sound-command-help");
@@ -34,6 +39,9 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
         var audio = AudioParams.Default;
 
         bool replay = true;
+
+        // Goobstation - Admin Log
+        var playerName = shell.Player;
 
         switch (args.Length)
         {
@@ -46,6 +54,7 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
             case 1:
                 // Filter.Broadcast does resolves IPlayerManager, so use this instead.
                 filter = Filter.Empty().AddAllPlayers(_playerManager);
+
                 break;
 
             // One or more users specified.
@@ -68,6 +77,11 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
                 if (args.Length == 2)
                 {
                     filter = Filter.Empty().AddAllPlayers(_playerManager);
+
+                    // Goobstaion - Admin Log
+                    _adminLog.Add(LogType.AdminCommands,
+                        LogImpact.High,
+                        $"{playerName} played global sound {args[0]} to all players.");
                 }
                 else
                 {
@@ -87,6 +101,11 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
                         }
 
                         filter.AddPlayer(session);
+
+                        // Goobstation - Admin Log
+                        _adminLog.Add(LogType.AdminCommands,
+                            LogImpact.High,
+                            $"{playerName} played global sound {args[0]} for {session.Name}");
                     }
                 }
 

@@ -66,3 +66,23 @@
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Head/Hardsuits/cburn_leader.rsi
+
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadHardsuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitOTAAlliance
+  name: OTA alliance hardsuit helmet
+  description: OTA stormtrooper hardsuit helmet.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#F08080"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: FlashImmunity
+  - type: EyeProtection

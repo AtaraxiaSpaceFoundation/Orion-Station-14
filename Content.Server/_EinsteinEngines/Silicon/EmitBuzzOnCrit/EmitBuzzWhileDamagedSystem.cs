@@ -8,11 +8,11 @@ using Content.Shared._EinsteinEngines.Silicon.EmitBuzzWhileDamaged;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Mobs.Components;
 
 namespace Content.Server._EinsteinEngines.Silicon.EmitBuzzOnCrit;
 

@@ -1,0 +1,57 @@
+- type: guideEntry
+  id: SOP
+  name: guide-entry-sop
+  priority: 2
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Info.xml"
+  children:
+    - SOP-Alerts
+    - SOP-Security
+
+- type: guideEntry
+  id: SOP-Security
+  name: guide-entry-sop-security
+  priority: 1
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/Info.xml"
+  children:
+    - SOP-Security-HeadOfSecurity
+    - SOP-Security-Warden
+    - SOP-Security-Brigmedic
+    - SOP-Security-Detective
+    - SOP-Security-Officer
+    - SOP-Security-Cadet
+
+- type: guideEntry
+  id: SOP-Security-HeadOfSecurity
+  name: guide-entry-sop-security-head_of_security
+  priority: 1
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/HeadOfSecurity.xml"
+
+- type: guideEntry
+  id: SOP-Security-Warden
+  name: guide-entry-sop-security-warden
+  priority: 2
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/Warden.xml"
+
+- type: guideEntry
+  id: SOP-Security-Brigmedic
+  name: guide-entry-sop-security-brigmedic
+  priority: 3
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/Brigmedic.xml"
+
+- type: guideEntry
+  id: SOP-Security-Detective
+  name: guide-entry-sop-security-detective
+  priority: 4
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/Detective.xml"
+
+- type: guideEntry
+  id: SOP-Security-Officer
+  name: guide-entry-sop-security-officer
+  priority: 5
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/Officer.xml"
+
+- type: guideEntry
+  id: SOP-Security-Cadet
+  name: guide-entry-sop-security-cadet
+  priority: 6
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Security/Cadet.xml"

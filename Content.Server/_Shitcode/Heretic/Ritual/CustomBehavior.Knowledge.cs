@@ -16,8 +16,8 @@ using Content.Server.Heretic.EntitySystems;
 using Content.Shared.Heretic;
 using Content.Shared.Heretic.Prototypes;
 using Content.Shared.Tag;
-using Robust.Shared.Prototypes;
 using Robust.Server.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Heretic.Ritual;
 

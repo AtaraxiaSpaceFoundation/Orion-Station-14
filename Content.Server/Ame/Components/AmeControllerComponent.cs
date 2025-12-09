@@ -37,7 +37,7 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// </summary>
     [DataField("injecting")]
     [ViewVariables(VVAccess.ReadWrite)]
-    public bool Injecting = false;
+    public bool Injecting;
 
     /// <summary>
     /// How much antimatter the AME controller is set to inject into the reactor per update.
@@ -72,13 +72,13 @@ public sealed partial class AmeControllerComponent : SharedAmeControllerComponen
     /// The last time this could have injected fuel into the AME.
     /// </summary>
     [DataField("lastUpdate")]
-    public TimeSpan LastUpdate = default!;
+    public TimeSpan LastUpdate;
 
     /// <summary>
     /// The next time this will try to inject fuel into the AME.
     /// </summary>
     [DataField("nextUpdate")]
-    public TimeSpan NextUpdate = default!;
+    public TimeSpan NextUpdate;
 
     /// <summary>
     /// The next time this will try to update the controller UI.

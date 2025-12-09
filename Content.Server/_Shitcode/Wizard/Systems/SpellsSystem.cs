@@ -13,8 +13,8 @@ using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Common.Actions;
 using Content.Goobstation.Common.Bloodstream;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Goobstation.Wizard.Components;
-using Content.Server.Abilities.Mime;
 using Content.Server.Antag;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
@@ -38,16 +38,20 @@ using Content.Shared._Goobstation.Wizard.BindSoul;
 using Content.Shared._Goobstation.Wizard.Chuuni;
 using Content.Shared._Goobstation.Wizard.FadingTimedDespawn;
 using Content.Shared._Goobstation.Wizard.SpellCards;
+using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Damage; // Shitmed Change
+using Content.Shared.Actions.Components;
+using Content.Shared.Body.Components;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Construction.Components;
 using Content.Shared.Coordinates.Helpers;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.Friction;
 using Content.Shared.Gibbing.Events;
 using Content.Shared.Hands.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Item;
 using Content.Shared.Magic.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mind;
@@ -57,6 +61,7 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Speech.Components;
+using Content.Shared.Tag;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
@@ -70,12 +75,6 @@ using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Actions.Components;
-using Content.Shared.Body.Components;
-using Content.Shared.Construction.Components;
-using Content.Shared.Friction;
-using Content.Shared.Item;
-using Content.Shared.Tag;
 
 namespace Content.Server._Goobstation.Wizard.Systems;
 
@@ -168,13 +167,6 @@ public sealed class SpellsSystem : SharedSpellsSystem
             false,
             session.Channel,
             args.MessageColor);
-    }
-
-    protected override void MakeMime(EntityUid uid)
-    {
-        base.MakeMime(uid);
-
-        EnsureComp<MimePowersComponent>(uid).CanBreakVow = false;
     }
 
     protected override void Emp(DisableTechEvent ev)

@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
-/* // Orion-Remove | Replaced
+/* // Orion-Edit: Replaced
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;

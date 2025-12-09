@@ -27,12 +27,15 @@ public sealed class CvarToggleableBoxContainer : BoxContainer
         }
     }
 
-    public CvarToggleableBoxContainer() : base()
+    public CvarToggleableBoxContainer()
     {
         IoCManager.InjectDependencies(this);
     }
 
-    private void UpdateVisibility(bool value) => Visible = value ^ _flip;
+    private void UpdateVisibility(bool value)
+    {
+        Visible = value ^ _flip;
+    }
 
     private void Subscribe(string? newCVar)
     {

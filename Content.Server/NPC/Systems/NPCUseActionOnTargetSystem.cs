@@ -42,7 +42,6 @@
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
-using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
 

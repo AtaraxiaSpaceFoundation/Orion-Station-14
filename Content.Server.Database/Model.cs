@@ -106,6 +106,7 @@
 // SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
 // SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Kutosss <162154227+Kutosss@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
 // SPDX-FileCopyrightText: 2025 MortalBaguette <169563638+MortalBaguette@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
@@ -190,6 +191,11 @@ namespace Content.Server.Database
         public DbSet<RMCLinkedAccountLogs> RMCLinkedAccountLogs { get; set; } = default!;
         public DbSet<RMCPatronLobbyMessage> RMCPatronLobbyMessages { get; set; } = default!;
         public DbSet<RMCPatronRoundEndNTShoutout> RMCPatronRoundEndNTShoutouts { get; set; } = default!;
+
+        // Goobstation Polls
+        public DbSet<Poll> Polls { get; set; } = default!;
+        public DbSet<PollOption> PollOptions { get; set; } = default!;
+        public DbSet<PollVote> PollVotes { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -569,6 +575,43 @@ namespace Content.Server.Database
                 .HasForeignKey(l => l.DiscordId)
                 .HasPrincipalKey(p => p.Id)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Goobstation Polls
+            modelBuilder.Entity<Poll>()
+                .HasOne(p => p.CreatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.CreatedById)
+                .HasPrincipalKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<PollOption>()
+                .HasOne(o => o.Poll)
+                .WithMany(p => p.Options)
+                .HasForeignKey(o => o.PollId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PollVote>()
+                .HasOne(v => v.Poll)
+                .WithMany(p => p.Votes)
+                .HasForeignKey(v => v.PollId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PollVote>()
+                .HasOne(v => v.PollOption)
+                .WithMany(o => o.Votes)
+                .HasForeignKey(v => v.PollOptionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PollVote>()
+                .HasOne(v => v.Player)
+                .WithMany()
+                .HasForeignKey(v => v.PlayerUserId)
+                .HasPrincipalKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PollVote>()
+                .HasIndex(v => new { v.PollId, v.PlayerUserId, v.PollOptionId })
+                .IsUnique();
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -628,6 +671,7 @@ namespace Content.Server.Database
         public string FacialHairColor { get; set; } = null!;
         public string EyeColor { get; set; } = null!;
         public string SkinColor { get; set; } = null!;
+        public int Uplink { get; set; } = 0; // Orion | 0 = PDA (UplinkPreference.PDA)
         public int SpawnPriority { get; set; } = 0;
         public List<Job> Jobs { get; } = new();
         public List<Antag> Antags { get; } = new();

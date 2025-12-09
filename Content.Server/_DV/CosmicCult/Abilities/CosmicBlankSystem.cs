@@ -7,9 +7,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Collections.Immutable;
+using Content.Goobstation.Shared.Religion;
 using Content.Server._DV.CosmicCult.Components;
-using Content.Goobstation.Shared.Bible;
-using Content.Goobstation.Shared.Religion; // Goobstation - Bible
 using Content.Server.Popups;
 using Content.Shared._DV.CosmicCult;
 using Content.Shared._DV.CosmicCult.Components;
@@ -146,7 +145,7 @@ public sealed class CosmicBlankSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("cosmicability-blank-transfer"), mobUid, mobUid);
         _audio.PlayPvs(comp.BlankSFX, spawnTgt, AudioParams.Default.WithVolume(6f));
         _color.RaiseEffect(Color.CadetBlue,
-            new List<EntityUid>() { target },
+            new List<EntityUid> { target },
             Filter.Pvs(target, entityManager: EntityManager));
         Spawn(comp.BlankVFX, spawnTgt);
         _cult.MalignEcho(uid);

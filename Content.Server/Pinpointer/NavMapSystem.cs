@@ -11,6 +11,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
@@ -25,14 +26,13 @@ using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.Pinpointer;
 
 /// <summary>
 /// Handles data to be used for in-grid map displays.
 /// </summary>
-public sealed partial class NavMapSystem : SharedNavMapSystem
+public sealed class NavMapSystem : SharedNavMapSystem
 {
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;

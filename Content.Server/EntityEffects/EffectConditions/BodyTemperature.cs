@@ -16,7 +16,7 @@ namespace Content.Server.EntityEffects.EffectConditions;
 public sealed partial class Temperature : EntityEffectCondition
 {
     [DataField]
-    public float Min = 0;
+    public float Min;
 
     [DataField]
     public float Max = float.PositiveInfinity;
@@ -34,7 +34,7 @@ public sealed partial class Temperature : EntityEffectCondition
     public override string GuidebookExplanation(IPrototypeManager prototype)
     {
         return Loc.GetString("reagent-effect-condition-guidebook-body-temperature",
-            ("max", float.IsPositiveInfinity(Max) ? (float) int.MaxValue : Max),
+            ("max", float.IsPositiveInfinity(Max) ? int.MaxValue : Max),
             ("min", Min));
     }
 }

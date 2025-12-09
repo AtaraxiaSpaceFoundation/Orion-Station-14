@@ -42,6 +42,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.OfficeChair;
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Fluids.Components;
@@ -49,22 +52,19 @@ using Content.Server.Gravity;
 using Content.Server.Popups;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Fluids;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory;
 using Content.Shared.Timing;
 using Content.Shared.Vapor;
+using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
+using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
-using System.Numerics;
-using Robust.Shared.Map;
-using Content.Shared.Inventory; // Assmos - Extinguisher Nozzle
-using Content.Shared.Whitelist; // Assmos - Extinguisher Nozzle
-using Content.Shared.Hands.EntitySystems; // Assmos - Extinguisher Nozzle
-using Content.Goobstation.Shared.OfficeChair; // Goobstation - Vehicle Spray Pushback (Office chairs)
 
 namespace Content.Server.Fluids.EntitySystems;
 
@@ -132,7 +132,7 @@ public sealed class SpraySystem : EntitySystem
         var sprayOwner = entity.Owner;
         var solutionName = SprayComponent.SolutionName;
 
-        if (entity.Comp.ExternalContainer == true)
+        if (entity.Comp.ExternalContainer)
         {
             bool foundContainer = false;
 

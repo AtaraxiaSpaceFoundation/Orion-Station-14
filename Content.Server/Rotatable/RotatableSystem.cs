@@ -23,9 +23,9 @@ using Content.Shared.Rotatable;
 using Content.Shared.Verbs;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
-using Robust.Shared.Player;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Rotatable

@@ -178,7 +178,7 @@ public sealed class SpreaderSystem : EntitySystem
     {
         GetNeighbors(uid, xform, prototype, out var freeTiles, out _, out var neighbors);
 
-        var ev = new SpreadNeighborsEvent()
+        var ev = new SpreadNeighborsEvent
         {
             NeighborFreeTiles = freeTiles,
             Neighbors = neighbors,

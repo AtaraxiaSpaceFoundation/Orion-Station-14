@@ -162,7 +162,7 @@ public sealed partial class NPCBlackboard : IEnumerable<KeyValuePair<string, obj
 
     private void AssertReadonly()
     {
-        DebugTools.Assert(false, $"Tried to write to an NPC blackboard that is readonly!");
+        DebugTools.Assert(false, "Tried to write to an NPC blackboard that is readonly!");
     }
 
     private bool TryGetEntityDefault(string key, [NotNullWhen(true)] out object? value, IEntityManager entManager)

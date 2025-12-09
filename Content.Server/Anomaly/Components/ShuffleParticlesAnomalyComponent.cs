@@ -18,13 +18,13 @@ public sealed partial class ShuffleParticlesAnomalyComponent : Component
     /// Prob() chance to randomize particle types after Anomaly pulation
     /// </summary>
     [DataField]
-    public bool ShuffleOnPulse = false;
+    public bool ShuffleOnPulse;
 
     /// <summary>
     /// Prob() chance to randomize particle types after APE or CHIMP projectile
     /// </summary>
     [DataField]
-    public bool ShuffleOnParticleHit = false;
+    public bool ShuffleOnParticleHit;
 
     /// <summary>
     /// Chance to random particles

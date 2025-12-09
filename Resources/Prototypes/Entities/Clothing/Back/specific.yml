@@ -141,7 +141,7 @@
   - type: ItemSlots
     slots:
       nozzle_slot:
-#        name: FirefighterNozzle # Orion-Edit | Localization
+#        name: FirefighterNozzle # Orion-Edit: Localization
         startingItem: FirefighterNozzle
         whitelist:
           tags:

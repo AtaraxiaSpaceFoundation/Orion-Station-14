@@ -1,5 +1,4 @@
 using Content.Shared.Examine;
-using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Heretic;
 using Content.Shared.Heretic.Components;

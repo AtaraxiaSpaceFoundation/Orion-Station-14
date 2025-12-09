@@ -4,7 +4,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Enchanting.Components;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Goobstation.Shared.Enchanting.Systems;

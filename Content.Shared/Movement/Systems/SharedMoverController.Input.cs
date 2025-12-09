@@ -47,14 +47,12 @@ using Content.Shared.Movement.Events;
 using Robust.Shared.GameStates;
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Robust.Shared.Maths; // Shitmed Change
-using Content.Goobstation.Common.Movement; // Goob edit
+using Content.Goobstation.Common.Movement;
 
 namespace Content.Shared.Movement.Systems
 {

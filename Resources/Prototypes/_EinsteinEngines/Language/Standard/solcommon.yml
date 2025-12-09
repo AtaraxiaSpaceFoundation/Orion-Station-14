@@ -12,6 +12,11 @@
     color: "#8282fbaa"
     fontId: NotoSansSC # Goob Edit - Chinese Characters Font
     boldFontId: NotoSansSCBold
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: solcommon_alt
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

@@ -1,5 +1,4 @@
 using Content.Goobstation.Shared.Factory.Filters;
-using Content.Shared.Mobs;
 using Robust.Client.UserInterface;
 
 namespace Content.Goobstation.Client.Factory.UI;

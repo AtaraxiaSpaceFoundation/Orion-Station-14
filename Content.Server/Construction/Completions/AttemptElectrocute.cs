@@ -22,8 +22,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Electrocution;
-using Content.Shared.Electrocution;
 using Content.Shared.Construction;
+using Content.Shared.Electrocution;
 
 namespace Content.Server.Construction.Completions;
 

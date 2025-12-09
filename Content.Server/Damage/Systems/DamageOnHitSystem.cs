@@ -8,10 +8,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Damage.Components;
 using Content.Shared.Damage;
 using Content.Shared.Weapons.Melee.Events;
-using System.Linq;
 
 namespace Content.Server.Damage.Systems;
 

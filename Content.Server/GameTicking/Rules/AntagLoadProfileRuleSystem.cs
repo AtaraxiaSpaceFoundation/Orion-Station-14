@@ -46,7 +46,7 @@ public sealed class AntagLoadProfileRuleSystem : GameRuleSystem<AntagLoadProfile
 
         if (profile?.Species is not { } speciesId || !_proto.TryIndex(speciesId, out var species))
         {
-            species = _proto.Index<SpeciesPrototype>(SharedHumanoidAppearanceSystem.DefaultSpecies);
+            species = _proto.Index(SharedHumanoidAppearanceSystem.DefaultSpecies);
         }
 
         if (ent.Comp.SpeciesOverride != null

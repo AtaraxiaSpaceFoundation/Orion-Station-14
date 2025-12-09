@@ -111,7 +111,8 @@ namespace Content.Server.Speech.EntitySystems
             {
                 return msg.Remove(0, 1).Insert(0, "es");
             }
-            else if (msg.StartsWith("S", StringComparison.Ordinal))
+
+            if (msg.StartsWith("S", StringComparison.Ordinal))
             {
                 return msg.Remove(0, 1).Insert(0, "Es");
             }

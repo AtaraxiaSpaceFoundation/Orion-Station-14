@@ -32,12 +32,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Goobstation.Common.Atmos;
 using Content.Goobstation.Common.Changeling;
-using Content.Goobstation.Common.Temperature.Components;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Goobstation.Server.Changeling.Objectives.Components;
-using Content.Goobstation.Shared.Body.Components;
 using Content.Goobstation.Shared.Changeling.Actions;
 using Content.Goobstation.Shared.Changeling.Components;
 using Content.Goobstation.Shared.SpecialPassives.BoostedImmunity.Components;
@@ -53,7 +50,6 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Ensnaring;

@@ -14,6 +14,11 @@
     boldFontId: Delius
     fontSize: 13 # Goob Edit - Increased by 1 to account for slight size difference.
     color: "#46ce83" # Goob Edit - Original "#008ecc"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: birb
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2

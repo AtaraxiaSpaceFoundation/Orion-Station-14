@@ -172,7 +172,7 @@
   - Diplomat
   - GovernmentMan # Goobstation - End
   editorHidden: true
-#  weight: 120 # Orion-Remove
+#  weight: 120 # Orion-Edit: Moved
 
 - type: department
   id: Command
@@ -206,7 +206,7 @@
   - HecuOperative
   - CommandMaid # event-restricted, Goobstation
   primary: false
-#  weight: 100 # Orion-Remove
+#  weight: 100 # Orion-Edit: Moved
 
 - type: department
   id: Engineering

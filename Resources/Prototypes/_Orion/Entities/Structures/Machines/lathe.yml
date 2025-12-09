@@ -11,6 +11,11 @@
     #- ChemistryStatic
     #- SurgeryStatic
     dynamicPacks:
+    # Orion-Start
+    - BodyBagsDynamic
+    - OrionService
+    - MegaCells
+    # Orion-End
     - AdvancedTools
     - ScienceEquipment
     - ScienceClothing

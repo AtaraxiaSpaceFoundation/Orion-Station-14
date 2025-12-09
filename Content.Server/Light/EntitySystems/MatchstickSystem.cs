@@ -28,8 +28,8 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Smoking;
-using Content.Shared.Smoking.Components; // Shitmed Change
-using Content.Shared.Smoking.Systems; // Shitmed Change
+using Content.Shared.Smoking.Components;
+using Content.Shared.Smoking.Systems;
 using Content.Shared.Temperature;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;

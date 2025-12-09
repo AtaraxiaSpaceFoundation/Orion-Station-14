@@ -14,12 +14,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Administration.Logs; // Goobstation
+using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Chat.Managers; // Goobstation
+using Content.Server.Chat.Managers;
 using Content.Server.StationEvents.Components;
+using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Database; // Goobstation
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;

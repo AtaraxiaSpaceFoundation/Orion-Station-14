@@ -1,12 +1,12 @@
 - type: customGhost
   id: customPlaceholder
   category: personal
-  proto: MobObserverCkeyPlaceholder
+  entity: MobObserverCkeyPlaceholder
   restrictions:
   - !type:CkeyRestriction
     ckey: [ PuroSlavKing ]
   name: custom-ghost-personal-placeholder-name
-  desc: custom-ghost-personal-placeholder-desc
+  description: custom-ghost-personal-placeholder-desc
 
 - type: entity
   parent: MobObserverCkey
@@ -21,7 +21,7 @@
   id: CkeyPersonal
   category: personal
   name: custom-ghost-personal-name
-  desc: custom-ghost-personal-desc
+  description: custom-ghost-personal-desc
 
 # Abstract entproto to force transparency on all custom ghosts
 - type: entity
@@ -41,7 +41,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ PuroSlavKing ]
-  proto: MobObserver-PuroSlavKing
+  entity: MobObserver-PuroSlavKing
 
 - type: entity
   parent: MobObserver
@@ -60,7 +60,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ no_mad ]
-  proto: MobObserver-no_mad
+  entity: MobObserver-no_mad
 
 - type: entity
   parent: MobObserver
@@ -79,7 +79,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ yourmommy ]
-  proto: MobObserver-yourmommy
+  entity: MobObserver-yourmommy
 
 - type: entity
   parent: MobObserver
@@ -98,7 +98,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ GodFace ]
-  proto: MobObserver-GodFace
+  entity: MobObserver-GodFace
 
 - type: entity
   parent: MobObserver
@@ -117,7 +117,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ LIZARDWIZARD ]
-  proto: MobObserver-LIZARDWIZARD
+  entity: MobObserver-LIZARDWIZARD
 
 - type: entity
   parent: MobObserver
@@ -136,7 +136,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ Vetochka ]
-  proto: MobObserver-Vetochka
+  entity: MobObserver-Vetochka
 
 - type: entity
   parent: MobObserver
@@ -155,7 +155,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ kreses ]
-  proto: MobObserver-kreses
+  entity: MobObserver-kreses
 
 - type: entity
   parent: MobObserver
@@ -174,7 +174,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ scituzer2 ]
-  proto: MobObserver-scituzer2
+  entity: MobObserver-scituzer2
 
 - type: entity
   parent: MobObserver
@@ -193,7 +193,7 @@
   restrictions:
   - !type:CkeyRestriction
     ckey: [ trest100 ]
-  proto: MobObserver-trest100
+  entity: MobObserver-trest100
 
 - type: entity
   parent: MobObserver

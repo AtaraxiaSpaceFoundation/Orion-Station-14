@@ -8,6 +8,7 @@
 
 using System.Linq;
 using System.Text;
+using Content.Goobstation.Common.Examine;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas;
@@ -19,19 +20,15 @@ using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
 using Content.Shared._Shitmed.PartStatus.Events;
 using Content.Shared.Body.Part;
 using Content.Shared.Chat;
-using Content.Shared.Mobs.Systems;
-using Robust.Shared.Player;
-using Robust.Shared.Utility;
-
-using Content.Goobstation.Common.Examine; // Goobstation Change
 using Content.Shared.Damage;
 using Content.Shared.Examine;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Verbs;
-using Robust.Shared.Utility;
 using Content.Shared.HealthExaminable;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Verbs;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Shitmed.PartStatus;
 
@@ -103,7 +100,7 @@ public sealed class PartStatusSystem : EntitySystem
 
         var detailsRange = _examineSystem.IsInDetailsRange(args.User, uid);
 
-        var verb = new ExamineVerb()
+        var verb = new ExamineVerb
         {
             Act = () =>
             {
@@ -248,7 +245,7 @@ public sealed class PartStatusSystem : EntitySystem
 
             message.AddText("    " + Loc.GetString(locString,
                 ("possessive", possessive),
-                ("part", name), // Orion-Edit | partStatus.PartName -> name
+                ("part", name), // Orion-Edit: partStatus.PartName -> name
                 ("status", statusDescription)));
 
             message.PushNewline();

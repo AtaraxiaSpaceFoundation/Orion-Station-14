@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.Hands.Systems;
-using Content.Shared.Hands.Components;
 using Content.Shared.Input;
 using Content.Shared.Interaction;
 using Content.Shared.RCD;

@@ -9,9 +9,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Dataset;
 using Content.Shared.Procedural;
 using Content.Shared.Salvage.Expeditions;
-using Content.Shared.Dataset;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Salvage;

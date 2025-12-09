@@ -8,7 +8,6 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Decals;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Sprite;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -59,7 +58,7 @@ public sealed class RandomSpriteSystem: SharedRandomSpriteSystem
                 var selectedState = _random.Pick(layer.Value);
                 if (!string.IsNullOrEmpty(selectedState.Value))
                 {
-                    if (selectedState.Value == $"Inherit")
+                    if (selectedState.Value == "Inherit")
                         color = previousColor;
                     else
                     {
@@ -77,7 +76,7 @@ public sealed class RandomSpriteSystem: SharedRandomSpriteSystem
 
     private void OnGetState(EntityUid uid, RandomSpriteComponent component, ref ComponentGetState args)
     {
-        args.State = new RandomSpriteColorComponentState()
+        args.State = new RandomSpriteColorComponentState
         {
             Selected = component.Selected,
         };

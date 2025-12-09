@@ -58,7 +58,7 @@
       weight: 40
     - id: VendingMachineWinter
       weight: 40
-#    - id: VendingMachinePride # Orion-Remove
+#    - id: VendingMachinePride # Orion-Edit: Removed
 #      weight: 10
     - id: VendingMachineTheater
       weight: 10

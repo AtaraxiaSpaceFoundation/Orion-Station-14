@@ -26,7 +26,7 @@ namespace Content.Server.Speech.EntitySystems
             " (•`ω´•)", " ;;w;;", " owo", " UwU", " >w<", " ^w^"
         }.AsReadOnly();
 
-        private static readonly IReadOnlyDictionary<string, string> SpecialWords = new Dictionary<string, string>()
+        private static readonly IReadOnlyDictionary<string, string> SpecialWords = new Dictionary<string, string>
         {
             { "you", "wu" },
         };

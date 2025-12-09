@@ -15,16 +15,16 @@ using System.Linq;
 using Content.Server._Goobstation.Objectives.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Heretic.Components;
-using Content.Shared.Heretic.Prototypes;
-using Content.Shared.Mobs.Components;
-using Robust.Shared.Prototypes;
-using Content.Shared.Humanoid;
-using Content.Server.Revolutionary.Components;
-using Content.Shared.Mind;
-using Content.Shared.Heretic;
 using Content.Server.Heretic.EntitySystems;
-using Content.Shared.Gibbing.Events;
+using Content.Server.Revolutionary.Components;
+using Content.Shared.Heretic;
+using Content.Shared.Heretic.Prototypes;
+using Content.Shared.Humanoid;
+using Content.Shared.Mind;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Silicons.Borgs.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Heretic.Ritual;
 
@@ -106,7 +106,7 @@ namespace Content.Server.Heretic.Ritual;
                 && !args.EntityManager.HasComponent<HereticComponent>(look)) // or other heretics
                 continue;
 
-            if (mobstate.CurrentState != Shared.Mobs.MobState.Alive)
+            if (mobstate.CurrentState != MobState.Alive)
                 uids.Add(look);
         }
 

@@ -25,7 +25,6 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Cloning;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
-using Content.Shared.Ghost;
 using Content.Shared.Hands.Components;
 using Content.Shared.Heretic;
 using Content.Shared.Interaction.Components;
@@ -320,9 +319,15 @@ public sealed partial class HereticAbilitySystem
         var exception = EnsureComp<FactionExceptionComponent>(clone.Value);
         _npcFaction.IgnoreEntity((clone.Value, exception), user);
         if (user != uid)
+        {
             _npcFaction.AggroEntity((clone.Value, exception), uid);
+            EnsureComp<FleshMimickedComponent>(uid).FleshMimics.Add(clone.Value);
+        }
         if (hostile != null && hostile.Value != user)
+        {
             _npcFaction.AggroEntity((clone.Value, exception), hostile.Value);
+            EnsureComp<FleshMimickedComponent>(hostile.Value).FleshMimics.Add(clone.Value);
+        }
 
         return clone.Value;
     }

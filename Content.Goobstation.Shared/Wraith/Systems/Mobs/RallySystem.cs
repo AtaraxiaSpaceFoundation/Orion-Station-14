@@ -1,7 +1,6 @@
 using Content.Goobstation.Shared.Wraith.Components.Mobs;
 using Content.Goobstation.Shared.Wraith.Events;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffect;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Whitelist;

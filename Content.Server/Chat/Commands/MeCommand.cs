@@ -23,7 +23,7 @@
 
 using Content.Server.Chat.Systems;
 using Content.Shared.Administration;
-using Content.Shared.Chat; // Einstein Engines - Languages
+using Content.Shared.Chat;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
 
@@ -40,7 +40,7 @@ namespace Content.Server.Chat.Commands
         {
             if (shell.Player is not { } player)
             {
-                shell.WriteError(Loc.GetString($"shell-cannot-run-command-from-server"));
+                shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
                 return;
             }
 
@@ -49,7 +49,7 @@ namespace Content.Server.Chat.Commands
 
             if (player.AttachedEntity is not {} playerEntity)
             {
-                shell.WriteError(Loc.GetString($"shell-must-be-attached-to-entity"));
+                shell.WriteError(Loc.GetString("shell-must-be-attached-to-entity"));
                 return;
             }
 

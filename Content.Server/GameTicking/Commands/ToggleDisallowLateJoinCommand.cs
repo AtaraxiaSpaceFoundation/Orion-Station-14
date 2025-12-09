@@ -27,7 +27,7 @@ namespace Content.Server.GameTicking.Commands
         {
             if (args.Length != 1)
             {
-                shell.WriteLine(Loc.GetString($"shell-need-exactly-one-argument"));
+                shell.WriteLine(Loc.GetString("shell-need-exactly-one-argument"));
                 return;
             }
 
@@ -37,7 +37,7 @@ namespace Content.Server.GameTicking.Commands
                 shell.WriteLine(Loc.GetString(result ? "cmd-toggledisallowlatejoin-disabled" : "cmd-toggledisallowlatejoin-enabled"));
             }
             else
-                shell.WriteLine(Loc.GetString($"shell-invalid-bool"));
+                shell.WriteLine(Loc.GetString("shell-invalid-bool"));
         }
     }
 }

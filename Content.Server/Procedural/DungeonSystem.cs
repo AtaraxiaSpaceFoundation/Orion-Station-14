@@ -49,7 +49,6 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Shared.CPUJob.JobQueues.Queues;
 using Content.Server.Decals;
 using Content.Server.GameTicking.Events;
 using Content.Shared.CCVar;
@@ -58,9 +57,9 @@ using Content.Shared.GameTicking;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Procedural;
-using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
@@ -228,7 +227,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
         };
 
         if (!_loader.TryLoadGeneric(proto.AtlasPath, out var res, opts) || !res.Maps.TryFirstOrNull(out var map))
-            throw new Exception($"Failed to load dungeon template.");
+            throw new Exception("Failed to load dungeon template.");
 
         comp = AddComp<DungeonAtlasTemplateComponent>(map.Value.Owner);
         comp.Path = proto.AtlasPath;

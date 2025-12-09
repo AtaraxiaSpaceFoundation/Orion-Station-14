@@ -20,18 +20,18 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Actions;
+using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
 using Content.Shared._Lavaland.Damage;
+using Content.Shared._Lavaland.Mobs.Components;
 using Content.Shared.Actions;
+using Content.Shared.Chat;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
-using Content.Shared._Lavaland.Mobs.Components;
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 

@@ -19,12 +19,10 @@
 
 using Content.Shared.Inventory;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 // Shitmed Change
 using Content.Shared._Shitmed.Medical.Surgery.Traumas;
-using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas.Systems;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
@@ -72,13 +70,13 @@ public sealed partial class ArmorComponent : Component
     /// <summary>
     /// Shitmed Change: thankfully all the armor in the game is symmetrical.
     /// </summary>
-    [DataField("coverage")]
+    [DataField("coverage"), Access(Other = AccessPermissions.ReadExecute)] // Goob edit
     public List<BodyPartType> ArmorCoverage = new();
 
     /// <summary>
     /// Shitmed Change: The amount of dismemberment chance deduction.
     /// </summary>
-    [DataField]
+    [DataField, Access(Other = AccessPermissions.ReadExecute)] // Goob edit
     public Dictionary<TraumaType, FixedPoint2> TraumaDeductions = new()
     {
         { TraumaType.Dismemberment, 0 },

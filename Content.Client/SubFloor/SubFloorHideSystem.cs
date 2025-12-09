@@ -15,7 +15,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Atmos.Components;  //Goobstation - Ventcrawler
-using Content.Shared.DrawDepth;
 using Content.Client.UserInterface.Systems.Sandbox;
 using Content.Shared.SubFloor;
 using Robust.Client.GameObjects;

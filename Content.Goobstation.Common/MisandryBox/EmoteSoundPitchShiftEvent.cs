@@ -3,6 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/*// Orion-Edit: Removed
 namespace Content.Goobstation.Common.MisandryBox;
 
 /// <summary>
@@ -14,3 +15,4 @@ public struct EmoteSoundPitchShiftEvent(float pitch = 0)
 {
     public float Pitch { get; set; } = pitch;
 }
+*/

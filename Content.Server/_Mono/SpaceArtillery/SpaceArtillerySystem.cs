@@ -19,7 +19,7 @@ using Robust.Shared.Player;
 
 namespace Content.Server._Mono.SpaceArtillery;
 
-public sealed partial class SpaceArtillerySystem : EntitySystem
+public sealed class SpaceArtillerySystem : EntitySystem
 {
     [Dependency] private readonly GunSystem _gun = default!;
     [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;

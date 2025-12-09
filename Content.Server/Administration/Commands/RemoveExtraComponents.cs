@@ -34,7 +34,7 @@ namespace Content.Server.Administration.Commands
 
             if (checkPrototype && !_prototypeManager.TryIndex(id!, out prototype))
             {
-                shell.WriteError(Loc.GetString($"cmd-removeextracomponents-invalid-prototype-id", ("id", $"{id}")));
+                shell.WriteError(Loc.GetString("cmd-removeextracomponents-invalid-prototype-id", ("id", $"{id}")));
                 return;
             }
 
@@ -66,14 +66,14 @@ namespace Content.Server.Administration.Commands
 
             if (id != null)
             {
-                shell.WriteLine(Loc.GetString($"cmd-removeextracomponents-success-with-id",
+                shell.WriteLine(Loc.GetString("cmd-removeextracomponents-success-with-id",
                     ("count", components),
                     ("entities", entities),
                     ("id", id)));
                 return;
             }
 
-            shell.WriteLine(Loc.GetString($"cmd-removeextracomponents-success",
+            shell.WriteLine(Loc.GetString("cmd-removeextracomponents-success",
                 ("count", components),
                 ("entities", entities)));
         }

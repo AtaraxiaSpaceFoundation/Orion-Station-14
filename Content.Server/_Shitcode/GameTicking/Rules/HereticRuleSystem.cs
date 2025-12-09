@@ -12,11 +12,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text;
+using Content.Server._Goobstation.Objectives.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
 using Content.Server.Roles;
+using Content.Server.Station.Components;
 using Content.Shared.Heretic;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
@@ -26,9 +29,6 @@ using Content.Shared.Store.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Text;
-using Content.Server.Station.Components;
-using Content.Server._Goobstation.Objectives.Components;
 
 namespace Content.Server.GameTicking.Rules;
 

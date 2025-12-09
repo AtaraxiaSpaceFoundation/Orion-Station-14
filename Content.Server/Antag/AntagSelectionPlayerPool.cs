@@ -11,10 +11,9 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared.Random.Helpers; // Goobstation
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Antag;
 

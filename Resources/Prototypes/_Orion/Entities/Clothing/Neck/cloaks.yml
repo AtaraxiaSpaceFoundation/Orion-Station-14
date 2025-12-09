@@ -42,20 +42,76 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothingNeckWhiteMantleCaptain
-  name: captain white mantle
-  description: Captain mantle, with white down.
+  id: ClothingNeckCloakFluffyPink
+  name: pink fluffy cloak
+  description: Its bearer is a beautiful woman, or a good pimp.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Neck/Cloaks/white_captain_mantle.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/fluffypinkcape.rsi
 
 - type: entity
   parent: ClothingNeckBase
-  id: ClothingNeckMantleCaptainWhiteShoulder
-  name: captain white mantle
-  description: The perfect white captain's shoulder mantle. The purity makes it brutal.
+  id: ClothingNeckCloakHellDiverBlack
+  name: black helldivers cloak
+  description: Solid cloak that would be perfect for a real hero!
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Neck/Mantle/white_captain_mantle.rsi
-  - type: Clothing
-    sprite: _Orion/Clothing/Neck/Mantle/white_captain_mantle.rsi
+    sprite: _Orion/Clothing/Neck/Cloaks/HellDiver/black.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakHellDiverWhite
+  name: white helldivers cloak
+  description: Solid cloak that would be perfect for a real hero!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/HellDiver/white.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakHellDiverBrown
+  name: brown helldivers cloak
+  description: Solid cloak that would be perfect for a real hero!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/HellDiver/brown.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakHellDiverRed
+  name: red helldivers cloak
+  description: Solid cloak that would be perfect for a real hero!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/HellDiver/red.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakRoyalHeadOfSecurity
+  name: royal head of security cloak
+  description: The king in the palace, the king in the palace.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/royal_hos.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakRoyalResearchDirector
+  name: royal research director cloak
+  description: The king in the palace, the king in the palace.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/royal_rd.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSyndicateOfficer
+  name: Syndicate officer cloak
+  description: Black cloak, stitched with gold cloth at the neck.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/syndicate_officer.rsi

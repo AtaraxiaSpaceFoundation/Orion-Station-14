@@ -10,18 +10,18 @@ using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared.Eye;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Interaction.Components;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Pinpointer;
-using Content.Shared.Inventory.VirtualItem;
-using Content.Shared.Interaction.Components;
 using Content.Shared.Silicons.StationAi;
-using Content.Shared.UserInterface;
-using Content.Shared.Hands.Components;
-using Content.Shared.Hands.EntitySystems;
-using Robust.Server.GameObjects;
 using Content.Shared.Tag;
+using Content.Shared.UserInterface;
 using Robust.Server.Containers;
+using Robust.Server.GameObjects;
 
 namespace Content.Server._Shitmed.Antags.Abductor;
 
@@ -170,7 +170,7 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
             });
         }
 
-        _uiSystem.SetUiState(ent.Owner, AbductorCameraConsoleUIKey.Key, new AbductorCameraConsoleBuiState() { Stations = result });
+        _uiSystem.SetUiState(ent.Owner, AbductorCameraConsoleUIKey.Key, new AbductorCameraConsoleBuiState { Stations = result });
     }
 
     private void OnActivatableUIOpenAttempt(Entity<AbductorHumanObservationConsoleComponent> ent, ref ActivatableUIOpenAttemptEvent args)

@@ -7,8 +7,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Arcade;
 using System.Linq;
+using Content.Shared.Arcade;
 
 namespace Content.Server.Arcade.BlockGame;
 
@@ -23,29 +23,29 @@ public sealed partial class BlockGame
     /// Whether the left button is pressed.
     /// Moves the active piece left if true.
     /// </summary>
-    private bool _leftPressed = false;
+    private bool _leftPressed;
 
     /// <summary>
     /// How long the left button has been pressed.
     /// </summary>
-    private float _accumulatedLeftPressTime = 0f;
+    private float _accumulatedLeftPressTime;
 
     /// <summary>
     /// Whether the right button is pressed.
     /// Moves the active piece right if true.
     /// </summary>
-    private bool _rightPressed = false;
+    private bool _rightPressed;
 
     /// <summary>
     /// How long the right button has been pressed.
     /// </summary>
-    private float _accumulatedRightPressTime = 0f;
+    private float _accumulatedRightPressTime;
 
     /// <summary>
     /// Whether the down button is pressed.
     /// Speeds up how quickly the active piece falls if true.
     /// </summary>
-    private bool _softDropPressed = false;
+    private bool _softDropPressed;
 
 
     /// <summary>

@@ -4,8 +4,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Shitmed.StatusEffects;
 using Content.Server.Teleportation;
+using Content.Shared._Shitmed.StatusEffects;
 using Content.Shared.Teleportation;
 
 namespace Content.Server._Shitmed.StatusEffects;

@@ -5,13 +5,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Content.Server.Physics.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Controllers;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Physics;
-using System.Numerics;
-using Robust.Shared.Physics.Controllers;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Physics.Controllers;

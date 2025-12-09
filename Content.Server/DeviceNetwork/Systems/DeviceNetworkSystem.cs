@@ -19,16 +19,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.DeviceNetwork;
-using JetBrains.Annotations;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.DeviceNetwork.Systems;
 using Content.Shared.Examine;
+using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.DeviceNetwork.Systems
 {
@@ -379,10 +379,10 @@ namespace Content.Server.DeviceNetwork.Systems
                     continue;
 
                 BeforePacketSentEvent beforeEv = new(packet.Sender, xform, senderPos, connection.NetIdEnum.ToString());
-                RaiseLocalEvent(connection.Owner, beforeEv, false);
+                RaiseLocalEvent(connection.Owner, beforeEv);
 
                 if (!beforeEv.Cancelled)
-                    RaiseLocalEvent(connection.Owner, packet, false);
+                    RaiseLocalEvent(connection.Owner, packet);
                 else
                     beforeEv.Uncancel();
             }

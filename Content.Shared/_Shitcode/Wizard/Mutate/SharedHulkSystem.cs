@@ -8,10 +8,8 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Prototypes;
-using Content.Shared.Damage.Systems;
 using Content.Shared.Slippery;
 using Content.Shared.StatusEffect;
-using Content.Shared.StatusEffectNew;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Prototypes;
 

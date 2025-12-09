@@ -1,6 +1,6 @@
 using System.Numerics;
-using Content.Shared.Interaction;
 using Content.Server.Shuttles.Components;
+using Content.Shared.Interaction;
 using Content.Shared.Projectiles;
 using Robust.Server.GameObjects;
 

@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Nutrition.EntitySystems;
-using Content.Shared.Damage;
 using Content.Shared.Atmos;
+using Content.Shared.Damage;
 
 namespace Content.Server.Nutrition.Components // Vapes are very nutritious.
 {
@@ -29,7 +29,7 @@ namespace Content.Server.Nutrition.Components // Vapes are very nutritious.
         // TODO use RiggableComponent.
         [DataField("explodeOnUse")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public bool ExplodeOnUse { get; set; } = false;
+        public bool ExplodeOnUse { get; set; }
 
         [DataField("damage", required: true)]
         [ViewVariables(VVAccess.ReadWrite)]

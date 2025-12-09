@@ -5,9 +5,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Construction;
-using JetBrains.Annotations;
 using Content.Shared.Examine;
 using Content.Shared.Tag;
+using JetBrains.Annotations;
 
 namespace Content.Server.Construction.Conditions
 {
@@ -39,9 +39,7 @@ namespace Content.Server.Construction.Conditions
 
         public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
         {
-            yield return new ConstructionGuideEntry()
-            {
-            };
+            yield return new ConstructionGuideEntry();
         }
     }
 }

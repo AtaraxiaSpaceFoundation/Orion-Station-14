@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Orion-Edit: Removed
 using Content.Goobstation.Shared.Emoting;
 using Content.Shared.Chat.Prototypes;
 using Robust.Shared.GameStates;
@@ -33,3 +34,4 @@ public sealed partial class FartSystem : SharedFartSystem
             RaiseLocalEvent(uid, emote.Event);
     }
 }
+*/

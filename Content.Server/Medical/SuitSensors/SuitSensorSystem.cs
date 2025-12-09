@@ -107,6 +107,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.DeviceNetwork;
+using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
@@ -122,7 +123,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.DeviceNetwork.Components;
 
 namespace Content.Server.Medical.SuitSensors;
 
@@ -355,7 +355,7 @@ public sealed class SuitSensorSystem : EntitySystem
         args.Disabled = true;
 
         component.PreviousMode = component.Mode;
-        SetSensor((uid, component), SuitSensorMode.SensorOff, null);
+        SetSensor((uid, component), SuitSensorMode.SensorOff);
 
         component.PreviousControlsLocked = component.ControlsLocked;
         component.ControlsLocked = true;
@@ -363,13 +363,13 @@ public sealed class SuitSensorSystem : EntitySystem
 
     private void OnEmpFinished(EntityUid uid, SuitSensorComponent component, ref EmpDisabledRemoved args)
     {
-        SetSensor((uid, component), component.PreviousMode, null);
+        SetSensor((uid, component), component.PreviousMode);
         component.ControlsLocked = component.PreviousControlsLocked;
     }
 
     private Verb CreateVerb(EntityUid uid, SuitSensorComponent component, EntityUid userUid, SuitSensorMode mode)
     {
-        return new Verb()
+        return new Verb
         {
             Text = GetModeName(mode),
             Disabled = component.Mode == mode,
@@ -550,7 +550,7 @@ public sealed class SuitSensorSystem : EntitySystem
     /// </summary>
     public NetworkPayload SuitSensorToPacket(SuitSensorStatus status)
     {
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             [DeviceNetworkConstants.Command] = DeviceNetworkConstants.CmdUpdatedState,
             [SuitSensorConstants.NET_NAME] = status.Name,

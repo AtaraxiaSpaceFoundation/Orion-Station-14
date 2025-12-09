@@ -22,9 +22,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Shitmed.Medical.HealthAnalyzer;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Content.Shared._Shitmed.Medical.HealthAnalyzer;
 
 namespace Content.Server.Medical.Components;
 

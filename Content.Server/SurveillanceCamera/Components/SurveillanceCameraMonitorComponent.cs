@@ -7,7 +7,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Robust.Shared.Map; // Goobstation
+using Robust.Shared.Map;
 
 namespace Content.Server.SurveillanceCamera;
 

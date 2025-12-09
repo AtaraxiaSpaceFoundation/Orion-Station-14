@@ -9,7 +9,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Shared.Lube; // Goobstation
+using Content.Goobstation.Shared.Lube;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Lube;
 using Content.Shared.NameModifier.EntitySystems;

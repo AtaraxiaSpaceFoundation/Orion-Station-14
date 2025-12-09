@@ -23,7 +23,6 @@
 
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
-using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;

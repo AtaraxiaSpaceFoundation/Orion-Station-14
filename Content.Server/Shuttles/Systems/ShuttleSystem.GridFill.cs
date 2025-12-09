@@ -223,7 +223,7 @@ public sealed partial class ShuttleSystem
 
         if (group.Paths.Count == 0)
         {
-            Log.Error($"Found no paths for GridSpawn");
+            Log.Error("Found no paths for GridSpawn");
             return false;
         }
 

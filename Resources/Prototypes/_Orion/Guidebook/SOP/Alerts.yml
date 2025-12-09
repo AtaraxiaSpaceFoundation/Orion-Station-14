@@ -1,0 +1,55 @@
+- type: guideEntry
+  id: SOP-Alerts
+  name: guide-entry-sop-alerts
+  priority: 0
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Alerts.xml"
+  children:
+    - SOP-Alerts-Green
+    - SOP-Alerts-Blue
+    - SOP-Alerts-Amber
+    - SOP-Alerts-Red
+    - SOP-Alerts-Gamma
+    - SOP-Alerts-Purple
+    - SOP-Alerts-Yellow
+
+- type: guideEntry
+  id: SOP-Alerts-Green
+  name: guide-entry-sop-alerts-green
+  priority: 1
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Green.xml"
+
+- type: guideEntry
+  id: SOP-Alerts-Blue
+  name: guide-entry-sop-alerts-blue
+  priority: 2
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Blue.xml"
+
+- type: guideEntry
+  id: SOP-Alerts-Amber
+  name: guide-entry-sop-alerts-amber
+  priority: 3
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Amber.xml"
+
+- type: guideEntry
+  id: SOP-Alerts-Red
+  name: guide-entry-sop-alerts-red
+  priority: 4
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Red.xml"
+
+- type: guideEntry
+  id: SOP-Alerts-Gamma
+  name: guide-entry-sop-alerts-gamma
+  priority: 5
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Gamma.xml"
+
+- type: guideEntry
+  id: SOP-Alerts-Purple
+  name: guide-entry-sop-alerts-purple
+  priority: 6
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Purple.xml"
+
+- type: guideEntry
+  id: SOP-Alerts-Yellow
+  name: guide-entry-sop-alerts-yellow
+  priority: 7
+  text: "/ServerInfo/_Orion/Guidebook/SOP/Alerts/Yellow.xml"

@@ -127,7 +127,7 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
-    chance: 0.99 # Orion-Edit | 1 > 0.99
+    chance: 0.99 # Orion-Edit: 1 > 0.99
     # Orion-Start
     rarePrototypes:
       - FlagCoder
@@ -242,7 +242,7 @@
       - PosterLegitOppenhopper
       - PosterLegitTyrone
       - PosterLegitHelio
-    chance: 0.99 # Orion-Edit | 1 > 0.99
+    chance: 0.99 # Orion-Edit: 1 > 0.99
     # Orion-Start
     rarePrototypes:
       - FlagAgurk

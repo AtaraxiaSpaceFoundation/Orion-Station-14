@@ -116,10 +116,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Body.Components;
-using Content.Shared.Nutrition.Components;
-using Content.Server.Nutrition.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 

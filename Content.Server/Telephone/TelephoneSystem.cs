@@ -4,6 +4,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Server._EinsteinEngines.Language;
 using Content.Server.Access.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
@@ -11,24 +13,22 @@ using Content.Server.Interaction;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Speech;
 using Content.Server.Speech.Components;
-using Content.Server._EinsteinEngines.Language;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Labels.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Power;
-using Content.Shared.Silicons.StationAi;
 using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.Silicons.StationAi;
 using Content.Shared.Speech;
 using Content.Shared.Telephone;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
-using System.Linq;
+using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Telephone;
 

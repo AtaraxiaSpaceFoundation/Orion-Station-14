@@ -31,7 +31,6 @@ using Content.Shared.Camera;
 using Content.Shared.CCVar;
 using Content.Shared.Construction.Components;
 using Content.Shared.Database;
-using Content.Shared.Friction;
 using Content.Shared.Gravity;
 using Content.Shared.Projectiles;
 using Robust.Shared.Configuration;

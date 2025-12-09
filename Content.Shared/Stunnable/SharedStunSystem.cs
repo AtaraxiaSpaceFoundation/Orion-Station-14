@@ -83,16 +83,13 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Containers;
 using Content.Shared.Jittering;
 using Content.Shared.Speech.EntitySystems;
 using Content.Goobstation.Common.Standing;
 using Content.Goobstation.Common.Stunnable;
 using Content.Shared._White.Standing;
-using Robust.Shared.Timing;
 
 namespace Content.Shared.Stunnable;
 
@@ -418,6 +415,8 @@ public abstract partial class SharedStunSystem : EntitySystem
 
         if (ignoreEv.Cancelled)
             return false;
+
+        var hadComp = HasComp<SlowedDownComponent>(uid);
         // goob end
 
         if (_statusEffect.TryAddStatusEffect<SlowedDownComponent>(uid, "SlowedDown", time, refresh, status))
@@ -427,8 +426,18 @@ public abstract partial class SharedStunSystem : EntitySystem
             walkSpeedMultiplier = Math.Clamp(walkSpeedMultiplier, 0f, 1f);
             runSpeedMultiplier = Math.Clamp(runSpeedMultiplier, 0f, 1f);
 
-            slowed.WalkSpeedModifier *= walkSpeedMultiplier;
-            slowed.SprintSpeedModifier *= runSpeedMultiplier;
+            // Goob edit start
+            if (hadComp)
+            {
+                slowed.WalkSpeedModifier *= walkSpeedMultiplier;
+                slowed.SprintSpeedModifier *= runSpeedMultiplier;
+            }
+            else
+            {
+                slowed.WalkSpeedModifier = walkSpeedMultiplier;
+                slowed.SprintSpeedModifier = runSpeedMultiplier;
+            }
+            // Goob edit end
 
             _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
             return true;

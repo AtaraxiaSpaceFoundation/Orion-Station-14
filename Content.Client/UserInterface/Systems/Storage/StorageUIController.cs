@@ -13,7 +13,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using System.Numerics;
 using Content.Client.Examine;
 using Content.Client.Hands.Systems;
 using Content.Client.Interaction;
@@ -134,7 +133,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
                     return;
 
                 var parentChildren = parent.Children.ToList();
-                var invisibleIndex = parentChildren.FindIndex(c => c.Visible == false);
+                var invisibleIndex = parentChildren.FindIndex(c => !c.Visible);
                 if (invisibleIndex == -1)
                     return;
                 child.SetPositionInParent(invisibleIndex);

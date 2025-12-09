@@ -100,7 +100,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazinePistolSubMachineGun
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
@@ -110,7 +110,7 @@
             - MagazinePistolSubMachineGun
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgePistol
         priority: 1
         whitelist:
@@ -258,7 +258,7 @@
     - type: ItemSlots
       slots:
         gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
           startingItem: MagazinePistolSubMachineGun
           insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
           ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
@@ -268,7 +268,7 @@
               - MagazinePistolSubMachineGun
           whitelistFailPopup: gun-magazine-whitelist-fail
         gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
           startingItem: CartridgePistol
           priority: 1
           whitelist:
@@ -317,7 +317,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazinePistolSubMachineGunTopMounted
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
@@ -327,7 +327,7 @@
             - MagazinePistolSubMachineGunTopMounted
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgePistol
         priority: 1
         whitelist:

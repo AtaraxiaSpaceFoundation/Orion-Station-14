@@ -10,26 +10,21 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Atmos.Rotting;
+using System.Linq;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
-using Content.Shared.Body.Part;
 using Content.Server.Popups;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Medical.Surgery;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Conditions;
 using Content.Shared._Shitmed.Medical.Surgery.Effects.Step;
-using Content.Shared._Shitmed.Medical.Surgery.Tools;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
+using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Body.Part;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
-using Content.Shared.Weapons.Melee.Events;
-using System.Linq;
 
 namespace Content.Server._Shitmed.Medical.Surgery;
 

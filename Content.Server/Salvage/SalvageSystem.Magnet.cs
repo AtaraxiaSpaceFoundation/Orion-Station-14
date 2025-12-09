@@ -445,7 +445,7 @@ public sealed partial class SalvageSystem
 
         data.Comp.Announced = false;
 
-        var active = new SalvageMagnetActivatedEvent()
+        var active = new SalvageMagnetActivatedEvent
         {
             Magnet = magnet,
         };

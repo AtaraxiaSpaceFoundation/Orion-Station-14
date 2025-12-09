@@ -8,7 +8,6 @@ using Content.Shared.Actions;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Audio;
 
 namespace Content.Shared._Shitmed.Antags.Abductor;
 

@@ -1,3 +1,4 @@
+/* // ORION-REPLACE
 using System.Linq;
 using System.Numerics;
 using Content.Shared._White.Xenomorphs.Xenomorph;
@@ -117,3 +118,4 @@ public sealed class SharedTailLashSystem : EntitySystem
         args.Handled = true;
     }
 }
+*/

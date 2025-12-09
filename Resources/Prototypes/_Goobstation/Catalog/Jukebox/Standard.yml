@@ -295,7 +295,7 @@
   path:
     path: /Audio/_Goobstation/Music/Black_Swarm.ogg
 
-#- type: jukebox # Orion-Remove | Replace with AsgoreRunsOverDessCover
+#- type: jukebox # Orion-Edit: Replaced with AsgoreRunsOverDessCover
 #  id: asgore
 #  name: KennyTheLyr1c1st - Asgore Runs Over Dess
 #  path:

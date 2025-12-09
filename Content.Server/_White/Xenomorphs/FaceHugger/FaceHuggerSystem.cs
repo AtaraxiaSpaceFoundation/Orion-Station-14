@@ -1,14 +1,26 @@
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Body.Systems;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
+using Content.Shared._White.Xenomorphs.FaceHugger;
+using Content.Shared._White.Xenomorphs.Infection;
+using Content.Shared.Atmos.Components;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Hands;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.StepTrigger.Systems;
+using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
 using Robust.Server.Audio;
@@ -18,19 +30,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared._White.Xenomorphs.Infection;
-using Content.Shared.Body.Components; // Goobstation start
-using Content.Shared.Chemistry;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reagent;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared._White.Xenomorphs.FaceHugger;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Throwing;
-using Content.Shared.Atmos.Components;
-using Content.Server.Nutrition.EntitySystems;
-using Content.Shared.Nutrition.Components; // Goobstation end
 
 namespace Content.Server._White.Xenomorphs.FaceHugger;
 

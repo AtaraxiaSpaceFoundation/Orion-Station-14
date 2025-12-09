@@ -1,0 +1,14 @@
+ent-ClothingCheapPendantBlue = кулон из синего кристалла
+    .desc = Кулончик из сияющего кристалла и тонкого провода.
+ent-ClothingCheapPendantCyan = кулон из голубого кристалла
+    .desc = { ent-ClothingCheapPendantBlue.desc }
+ent-ClothingCheapPendantGreen = кулон из зелёного кристалла
+    .desc = { ent-ClothingCheapPendantBlue.desc }
+ent-ClothingCheapPendantGrey = кулон из серого кристалла
+    .desc = { ent-ClothingCheapPendantBlue.desc }
+ent-ClothingCheapPendantOrange = кулон из оранжевого кристалла
+    .desc = { ent-ClothingCheapPendantBlue.desc }
+ent-ClothingCheapPendantPink = кулон из розового кристалла
+    .desc = { ent-ClothingCheapPendantBlue.desc }
+ent-ClothingCheapPendantRed = кулон из красного кристалла
+    .desc = { ent-ClothingCheapPendantBlue.desc }

@@ -2,6 +2,11 @@
   id: FloorGoblin
   speech:
     color: "#288f43"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: animal
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

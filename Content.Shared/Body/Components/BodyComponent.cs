@@ -22,7 +22,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using System; // Goobstation
 
 namespace Content.Shared.Body.Components;
 

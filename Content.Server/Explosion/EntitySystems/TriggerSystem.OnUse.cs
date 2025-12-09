@@ -129,7 +129,7 @@ public sealed partial class TriggerSystem
 
         if (component.UseVerbInstead)
         {
-            args.Verbs.Add(new AlternativeVerb()
+            args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("verb-start-detonation"),
                 Act = () => StartTimer((uid, component), args.User),
@@ -139,7 +139,7 @@ public sealed partial class TriggerSystem
 
         if (component.AllowToggleStartOnStick)
         {
-            args.Verbs.Add(new AlternativeVerb()
+            args.Verbs.Add(new AlternativeVerb
             {
                 Text = Loc.GetString("verb-toggle-start-on-stick"),
                 Act = () => ToggleStartOnStick(uid, args.User, component)
@@ -149,7 +149,7 @@ public sealed partial class TriggerSystem
         if (component.DelayOptions == null || component.DelayOptions.Count == 1)
             return;
 
-        args.Verbs.Add(new AlternativeVerb()
+        args.Verbs.Add(new AlternativeVerb
         {
             Category = TimerOptions,
             Text = Loc.GetString("verb-trigger-timer-cycle"),
@@ -161,7 +161,7 @@ public sealed partial class TriggerSystem
         {
             if (MathHelper.CloseTo(option, component.Delay))
             {
-                args.Verbs.Add(new AlternativeVerb()
+                args.Verbs.Add(new AlternativeVerb
                 {
                     Category = TimerOptions,
                     Text = Loc.GetString("verb-trigger-timer-set-current", ("time", option)),
@@ -171,7 +171,7 @@ public sealed partial class TriggerSystem
                 continue;
             }
 
-            args.Verbs.Add(new AlternativeVerb()
+            args.Verbs.Add(new AlternativeVerb
             {
                 Category = TimerOptions,
                 Text = Loc.GetString("verb-trigger-timer-set", ("time", option)),

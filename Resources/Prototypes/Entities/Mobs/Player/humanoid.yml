@@ -704,7 +704,7 @@
 
 - type: randomHumanoidSettings
   id: CBURNAgent
-  parent: [ CentcommHumanoid, BaseResponseForce ] # Orion-Edit | ResponseForce
+  parent: [ CentcommHumanoid, BaseResponseForce ] # Orion-Edit: ResponseForce
   components:
     - type: AutoImplant
       implants: [ FreedomImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ] # Goobstation

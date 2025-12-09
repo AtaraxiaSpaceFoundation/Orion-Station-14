@@ -1,9 +1,9 @@
 using System.Text.Json.Serialization;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Body.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Pain.Systems;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -15,7 +15,7 @@ public sealed partial class AdjustPainFeels : EntityEffect
 {
     [DataField(required: true)]
     [JsonPropertyName("amount")]
-    public FixedPoint2 Amount = default!;
+    public FixedPoint2 Amount;
 
     [DataField]
     [JsonPropertyName("identifier")]

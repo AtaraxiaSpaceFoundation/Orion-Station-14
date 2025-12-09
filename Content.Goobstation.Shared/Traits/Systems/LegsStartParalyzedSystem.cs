@@ -13,7 +13,6 @@
 using Content.Goobstation.Common.Traits;
 using Content.Shared._Shitmed.Body.Components;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
 
 namespace Content.Goobstation.Shared.Traits.Assorted;
 

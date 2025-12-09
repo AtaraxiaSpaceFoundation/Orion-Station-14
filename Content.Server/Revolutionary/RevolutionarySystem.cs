@@ -3,9 +3,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server._EinsteinEngines.Language; // Goob Station - Revolutionary Language
+using Content.Server._EinsteinEngines.Language;
 using Content.Shared.Revolutionary;
-using Content.Shared.Revolutionary.Components; // Goob Station - Revolutionary Language
+using Content.Shared.Revolutionary.Components;
 
 namespace Content.Server.Revolutionary;
 

@@ -64,7 +64,7 @@ namespace Content.Server.Construction.Conditions
             if (GuideText == null)
                 yield break;
 
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = GuideText,
                 Icon = GuideIcon,

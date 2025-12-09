@@ -47,7 +47,7 @@ namespace Content.Server.NPC.Commands
             }
 
             var comp = _entities.AddComponent<HTNComponent>(entId.Value);
-            comp.RootTask = new HTNCompoundTask()
+            comp.RootTask = new HTNCompoundTask
             {
                 Task = args[1]
             };

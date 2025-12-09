@@ -1,16 +1,16 @@
-using Robust.Shared.Map;
-using Robust.Shared.Physics.Systems;
 using System.Numerics;
 using Content.Server._Mono.FireControl;
-using Robust.Shared.Timing;
 using Content.Shared.Weapons.Ranged;
+using Robust.Shared.Map;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Mono.Radar;
 
 /// <summary>
 /// System that handles radar visualization for hitscan projectiles
 /// </summary>
-public sealed partial class HitscanRadarSystem : EntitySystem
+public sealed class HitscanRadarSystem : EntitySystem
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly RadarBlipSystem _radarBlipSystem = default!;

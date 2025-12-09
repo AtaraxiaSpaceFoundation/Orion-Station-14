@@ -558,7 +558,7 @@ namespace Content.Server.Administration.Systems
                 }
 
                 var characterName = _minds.GetCharacterName(userId);
-                existingEmbed = new DiscordRelayInteraction()
+                existingEmbed = new DiscordRelayInteraction
                 {
                     Id = null,
                     CharacterName = characterName,
@@ -1019,7 +1019,7 @@ namespace Content.Server.Administration.Systems
                 stringbuilder.Append($" **{parameters.Username}** ");
             stringbuilder.Append(parameters.Message);
 
-            return new DiscordRelayedData()
+            return new DiscordRelayedData
             {
                 Receivers = !parameters.NoReceivers,
                 Message = stringbuilder.ToString(),

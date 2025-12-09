@@ -256,7 +256,7 @@
     mode: SnapgridCenter
   components:
   - type: Clickable
-#  - type: Slippery # Orion-Remove | Fuck slippery curse
+#  - type: Slippery # Orion-Edit: Fuck slippery curse
   - type: Transform
     noRot: true
     anchored: true
@@ -296,7 +296,7 @@
   - type: ActiveEdgeSpreader
   - type: EdgeSpreader
     id: Puddle
-#  - type: StepTrigger # Orion-Remove | Fuck slippery curse
+#  - type: StepTrigger # Orion-Edit: Fuck slippery curse
 #    triggerGroups: # Goobstation
 #      types:
 #      - SlipTile

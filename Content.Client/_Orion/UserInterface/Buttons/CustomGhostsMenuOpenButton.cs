@@ -9,13 +9,14 @@ namespace Content.Client._Orion.UserInterface.Buttons;
 
 public sealed class CustomGhostsMenuOpenButton : Button
 {
-    WindowTracker<CustomGhostsWindow> _customGhostWindow = new();
-    public CustomGhostsMenuOpenButton() : base()
+    private WindowTracker<CustomGhostsWindow> _customGhostWindow = new();
+
+    public CustomGhostsMenuOpenButton()
     {
         OnPressed += Pressed;
     }
 
-    private void Pressed(ButtonEventArgs args)
+    private new void Pressed(ButtonEventArgs args)
     {
         _customGhostWindow.TryOpenCenteredLeft();
     }

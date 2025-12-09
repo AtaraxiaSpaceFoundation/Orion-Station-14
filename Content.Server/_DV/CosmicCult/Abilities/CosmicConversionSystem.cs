@@ -9,16 +9,16 @@
 
 using Content.Goobstation.Common.Religion;
 using Content.Server._DV.CosmicCult.Components;
+using Content.Server.Administration.Systems;
+using Content.Server.Atmos.Rotting;
 using Content.Server.Popups;
-using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult;
+using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared.Damage;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
-using Content.Server.Atmos.Rotting;
-using Content.Server.Administration.Systems;
 
 namespace Content.Server._DV.CosmicCult.Abilities;
 
@@ -73,7 +73,7 @@ public sealed class CosmicConversionSystem : EntitySystem
                 _popup.PopupEntity(Loc.GetString("cult-glyph-target-chaplain"), uid, args.User);
                 args.Cancel();
             }
-            else if (uid.Comp.NegateProtection == false && HasComp<MindShieldComponent>(target))
+            else if (!uid.Comp.NegateProtection && HasComp<MindShieldComponent>(target))
             {
                 _popup.PopupEntity(Loc.GetString("cult-glyph-target-mindshield"), uid, args.User);
                 args.Cancel();

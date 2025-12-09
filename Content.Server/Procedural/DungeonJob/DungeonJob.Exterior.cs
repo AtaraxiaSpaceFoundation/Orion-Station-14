@@ -21,7 +21,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Threading.Tasks;
-using Content.Shared.Maps;
 using Content.Shared.NPC;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonGenerators;
@@ -63,7 +62,7 @@ public sealed partial class DungeonJob
 
         if (dungeonSpawn == null)
         {
-            return new List<Dungeon>()
+            return new List<Dungeon>
             {
                 Dungeon.Empty
             };

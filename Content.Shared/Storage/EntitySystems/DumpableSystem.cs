@@ -87,7 +87,6 @@
 
 using System.Linq;
 using Content.Shared._DV.SmartFridge; // DeltaV - ough why do you not use events for this
-using Content.Shared.Disposal;
 using Content.Shared.Disposal.Components;
 using Content.Shared.Disposal.Unit;
 using Content.Shared.DoAfter;

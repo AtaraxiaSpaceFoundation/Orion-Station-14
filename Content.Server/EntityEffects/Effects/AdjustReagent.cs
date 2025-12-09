@@ -18,10 +18,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -35,7 +35,7 @@ namespace Content.Server.EntityEffects.Effects
         ///     The reagent ID to remove. Only one of this and <see cref="Group"/> should be active.
         /// </summary>
         [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<ReagentPrototype>))]
-        public string? Reagent = null;
+        public string? Reagent;
         // TODO use ReagentId
 
         /// <summary>
@@ -43,10 +43,10 @@ namespace Content.Server.EntityEffects.Effects
         ///     Only one of this and <see cref="Reagent"/> should be active.
         /// </summary>
         [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<MetabolismGroupPrototype>))]
-        public string? Group = null;
+        public string? Group;
 
         [DataField(required: true)]
-        public FixedPoint2 Amount = default!;
+        public FixedPoint2 Amount;
 
         public override void Effect(EntityEffectBaseArgs args)
         {
@@ -97,7 +97,8 @@ namespace Content.Server.EntityEffects.Effects
                     ("reagent", reagentProto.LocalizedName),
                     ("amount", MathF.Abs(Amount.Float())));
             }
-            else if (Group is not null && prototype.TryIndex(Group, out MetabolismGroupPrototype? groupProto))
+
+            if (Group is not null && prototype.TryIndex(Group, out MetabolismGroupPrototype? groupProto))
             {
                 return Loc.GetString("reagent-effect-guidebook-adjust-reagent-group",
                     ("chance", Probability),

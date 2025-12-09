@@ -108,20 +108,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Power.Components;
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Emp;
+using Content.Server.Power.Components;
 using Content.Server.PowerCell;
+using Content.Shared.Emp;
 using Content.Shared.Examine;
+using Content.Shared.Inventory;
 using Content.Shared.Power;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.Emp;
-using JetBrains.Annotations;
-using Robust.Shared.Containers;
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Storage.Components;
-using Robust.Server.Containers;
-using Content.Shared.Inventory; // Goobstation
 using Content.Shared.Whitelist;
+using JetBrains.Annotations;
+using Robust.Server.Containers;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Power.EntitySystems;
 

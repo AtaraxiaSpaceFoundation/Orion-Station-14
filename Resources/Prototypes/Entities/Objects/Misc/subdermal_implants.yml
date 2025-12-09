@@ -373,7 +373,7 @@
     - type: TriggerOnMobstateChange #Chains with OnUseTimerTrigger
       mobState:
       - Dead
-      preventSuicide: false # Orion-Edit | true > false
+      preventSuicide: false # Orion-Edit: true > false
     - type: OnUseTimerTrigger
       delay: 7
       initialBeepDelay: 0
@@ -386,9 +386,9 @@
       deleteItems: true
     - type: Explosive
       explosionType: Default
-      totalIntensity: 4000 # Orion-Edit | 3500 > 4000
-      intensitySlope: 5 # Orion-Edit | 15 > 5
-      maxIntensity: 50 # Orion-Edit | 70 > 50
+      totalIntensity: 4000 # Orion-Edit: 3500 > 4000
+      intensitySlope: 5 # Orion-Edit: 15 > 5
+      maxIntensity: 50 # Orion-Edit: 70 > 50
       canCreateVacuum: true
     - type: Tag
       tags:

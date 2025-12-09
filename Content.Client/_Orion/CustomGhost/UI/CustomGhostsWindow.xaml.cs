@@ -28,7 +28,7 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
     [Dependency] private readonly IClientConsoleHost _conhost = default!;
     [Dependency] private readonly IEntityManager _entMan = default!;
     [Dependency] private readonly IEntitySystemManager _entSys = default!;
-    private readonly SpriteSystem _sprite = default!;
+    private readonly SpriteSystem _sprite;
 
     private List<EntityUid> _previewEntities = new();
     private List<Control> _hidden = new();
@@ -45,17 +45,22 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
         _currentGhostProtoId = _pref.Preferences?.CustomGhost.Id ?? "default";
         ShowAllCheckBox.OnToggled += ToggleVisibility;
 
-        OnClose += () => { foreach (var ent in _previewEntities) { _entMan.TryQueueDeleteEntity(ent); } };
+        OnClose += () =>
+        {
+            foreach (var ent in _previewEntities) { _entMan.TryQueueDeleteEntity(ent); }
+        };
         BuildList();
     }
 
     private void BuildList()
     {
-        var allghostprotos = _proto.EnumeratePrototypes<CustomGhostPrototype>();
-        allghostprotos = allghostprotos.OrderBy(item => item.DisplayName);
+        var customGhostPrototypes = _proto.EnumeratePrototypes<CustomGhostPrototype>();
+        customGhostPrototypes = customGhostPrototypes.OrderBy(item => item.DisplayName);
 
-        foreach (var ghostProto in allghostprotos)
+        foreach (var ghostProto in customGhostPrototypes)
+        {
             _allGhosts.GetOrNew(ghostProto.Category).Add(ghostProto);
+        }
 
         var categories = _allGhosts.Keys.Order();
         foreach (var category in categories)
@@ -63,11 +68,12 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
 
             var label = AddCategoryLabel(category);
             var ghosts = _allGhosts[category];
-            bool allHidden = true;
             List<CustomGhostButton> buttons = new();
             foreach (var ghostProto in ghosts)
-                if (AddButton(ghostProto) is CustomGhostButton button) // todo: consider moving AddChild from AddButton to here, to avoid this weird label juggling
+            {
+                if (AddButton(ghostProto) is { } button) // todo: consider moving AddChild from AddButton to here, to avoid this weird label juggling
                     buttons.Add(button);                             // also do something about this stupid button visibility double checking
+            }
 
             if (buttons.Count == 0)
             {
@@ -75,17 +81,17 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
                 continue;
             }
 
-            if (buttons.All(button => !button.Visible)) // not visible by default means the ghost is locked, and if all ghosts  in a single category are locked, hide that category divider
-            {
-                label.Visible = false;
-                _hidden.Add(label);
-            }
+            if (buttons.Any(button => button.Visible)) // not visible by default means the ghost is locked, and if all ghosts  in a single category are locked, hide that category divider
+                continue;
+
+            label.Visible = false;
+            _hidden.Add(label);
         }
     }
 
     private CustomGhostButton? AddButton(CustomGhostPrototype ghostProto) // is not guaranteed to actually add a button, lol
     {
-        bool available = ghostProto.CanUse(_player.LocalSession!, out string fullFailReason, out bool canSee);
+        var available = ghostProto.CanUse(_player.LocalSession!, out var fullFailReason, out var canSee);
         if (!canSee) // skip button creation altogether
             return null;
 
@@ -127,7 +133,7 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
     {
         var label = new Label()
         {
-            StyleClasses = { "FancyWindowTitle" }
+            StyleClasses = { "FancyWindowTitle" },
         };
 
         label.Text = $"-- {Loc.GetString($"custom-ghost-category-{text}")} --";
@@ -163,16 +169,16 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
     // shamelessly stolen from EntitySpawnButton
     public sealed class CustomGhostButton : Control
     {
-        public Button ActualButton { get; private set; }
-        public Label EntityLabel { get; private set; }
-        public SpriteView EntityTextureRects { get; private set; }
+        public Button ActualButton { get; }
+        public Label EntityLabel { get; }
+        public SpriteView EntityTextureRects { get; }
 
         public CustomGhostButton()
         {
             AddChild(ActualButton = new Button
             {
                 ToggleMode = true,
-                HorizontalExpand = true
+                HorizontalExpand = true,
             });
 
             AddChild(new BoxContainer
@@ -185,16 +191,17 @@ public sealed partial class CustomGhostsWindow : DefaultWindow
                     SetSize = new Vector2(32, 32),
                     HorizontalAlignment = HAlignment.Center,
                     VerticalAlignment = VAlignment.Center,
-                    Stretch = SpriteView.StretchMode.Fill
+                    Stretch = SpriteView.StretchMode.Fill,
                 }),
+
                 (EntityLabel = new Label
                 {
                     VerticalAlignment = VAlignment.Center,
                     HorizontalExpand = true,
                     Text = "sp00ky",
-                    ClipText = true
-                })
-            }
+                    ClipText = true,
+                }),
+            },
             });
         }
     }

@@ -59,8 +59,8 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Damage.Components;
 using Content.Server.Weapons.Ranged.Systems;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Camera;
+using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
@@ -111,7 +111,7 @@ namespace Content.Server.Damage.Systems
 
             if (dmg is { Empty: false })
             {
-                _color.RaiseEffect(Color.Red, new List<EntityUid>() { args.Target }, Filter.Pvs(args.Target, entityManager: EntityManager));
+                _color.RaiseEffect(Color.Red, new List<EntityUid> { args.Target }, Filter.Pvs(args.Target, entityManager: EntityManager));
             }
 
             _guns.PlayImpactSound(args.Target, dmg, null, false);

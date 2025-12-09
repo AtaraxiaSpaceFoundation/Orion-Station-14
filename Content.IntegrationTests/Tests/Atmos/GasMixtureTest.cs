@@ -11,7 +11,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.Atmos;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;
 using Robust.Shared.GameObjects;

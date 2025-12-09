@@ -26,7 +26,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Database;

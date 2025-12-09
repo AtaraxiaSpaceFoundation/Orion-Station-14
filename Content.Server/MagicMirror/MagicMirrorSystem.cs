@@ -154,7 +154,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
         if (component.Target == message.Actor)
             doafterTime /= 3;
 
-        var doAfter = new MagicMirrorSelectDoAfterEvent()
+        var doAfter = new MagicMirrorSelectDoAfterEvent
         {
             Category = message.Category,
             Slot = message.Slot,
@@ -235,7 +235,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
         if (component.Target == message.Actor)
             doafterTime /= 3;
 
-        var doAfter = new MagicMirrorChangeColorDoAfterEvent()
+        var doAfter = new MagicMirrorChangeColorDoAfterEvent
         {
             Category = message.Category,
             Slot = message.Slot,
@@ -314,7 +314,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
         if (component.Target == message.Actor)
             doafterTime /= 3;
 
-        var doAfter = new MagicMirrorRemoveSlotDoAfterEvent()
+        var doAfter = new MagicMirrorRemoveSlotDoAfterEvent
         {
             Category = message.Category,
             Slot = message.Slot,
@@ -393,7 +393,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
         if (component.Target == message.Actor)
             doafterTime /= 3;
 
-        var doAfter = new MagicMirrorAddSlotDoAfterEvent()
+        var doAfter = new MagicMirrorAddSlotDoAfterEvent
         {
             Category = message.Category,
         };

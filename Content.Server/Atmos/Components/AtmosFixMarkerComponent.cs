@@ -20,6 +20,6 @@ namespace Content.Server.Atmos.Components
     {
         // See FixGridAtmos for more details
         [DataField("mode")]
-        public int Mode { get; set; } = 0;
+        public int Mode { get; set; }
     }
 }

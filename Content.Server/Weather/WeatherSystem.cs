@@ -60,13 +60,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Administration;
 using Content.Shared.Administration;
 using Content.Shared.Weather;
 using Robust.Shared.Console;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
-using System.Linq;
 
 namespace Content.Server.Weather;
 

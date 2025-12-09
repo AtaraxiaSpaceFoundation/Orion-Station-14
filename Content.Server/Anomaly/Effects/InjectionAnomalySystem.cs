@@ -13,11 +13,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Anomaly.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using System.Linq;
+using Content.Shared.Chemistry.EntitySystems;
 using Robust.Server.GameObjects;
 
 namespace Content.Server.Anomaly.Effects;

@@ -55,7 +55,7 @@ public sealed partial class AtmosMonitorComponent : Component
     // will make the atmos monitor act like a smoke detector,
     // immediately signalling danger if there's a fire
     [DataField("monitorFire")]
-    public bool MonitorFire = false;
+    public bool MonitorFire;
 
     [DataField("gasThresholdPrototypes",
         customTypeSerializer:typeof(PrototypeIdValueDictionarySerializer<Gas, AtmosAlarmThresholdPrototype>))]
@@ -91,7 +91,7 @@ public sealed partial class AtmosMonitorComponent : Component
     /// If 'true', the entity will require a NodeContainerComponent with one or more PipeNodes to function.
     /// </remarks>
     [DataField]
-    public bool MonitorsPipeNet = false;
+    public bool MonitorsPipeNet;
 
     /// <summary>
     /// Specifies the name of the pipe node that this device is monitoring.

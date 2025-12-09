@@ -15,11 +15,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Weapons.Ranged.Components;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Chemistry.EntitySystems;
-using System.Linq;
+using Content.Shared.Weapons.Ranged.Events;
 
 namespace Content.Server.Weapons.Ranged.Systems
 {

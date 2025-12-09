@@ -757,7 +757,7 @@
   - type: ItemSlots
     slots:
       item:
-#        name: Handgun # Orion-Edit | Localization
+#        name: Handgun # Orion-Edit: Localization
         whitelist:
           tags:
           - Sidearm
@@ -787,7 +787,7 @@
   - type: ItemSlots
     slots:
       item:
-#        name: Gun # Orion-Edit | Localization
+#        name: Gun # Orion-Edit: Localization
         whitelist:
           components:
           - Gun

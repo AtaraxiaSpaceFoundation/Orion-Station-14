@@ -104,7 +104,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared.Alert;
-using Content.Shared.ActionBlocker;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;

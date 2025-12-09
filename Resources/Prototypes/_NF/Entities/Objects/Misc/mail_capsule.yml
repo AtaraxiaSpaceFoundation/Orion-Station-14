@@ -27,7 +27,7 @@
       mail_slot:
         insertVerbText: Put in Mail
         ejectVerbText: Take out Mail
-#        name: Mail # Orion-Edit | Localization
+#        name: Mail # Orion-Edit: Localization
         startingItem: null
         whitelist:
           tags:

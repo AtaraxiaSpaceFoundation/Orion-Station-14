@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Threading.Tasks;
 using Content.Server.Administration.Managers;
 using Content.Server.Database;
 using Content.Server.GameTicking;
@@ -12,14 +13,13 @@ using Content.Server.Roles.Jobs;
 using Content.Shared.CCVar;
 using Content.Shared.Ghost;
 using Content.Shared.Mind.Components;
+using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Voting;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using System.Threading.Tasks;
-using Content.Shared.Players.PlayTimeTracking;
 
 namespace Content.Server.Voting;
 
@@ -57,7 +57,7 @@ public sealed class VotingSystem : EntitySystem
         {
             if (args.SenderSession == player) continue;
 
-            if (_adminManager.IsAdmin(player, false)) continue;
+            if (_adminManager.IsAdmin(player)) continue;
 
             if (player.AttachedEntity is not { Valid: true } attached)
             {
@@ -98,7 +98,7 @@ public sealed class VotingSystem : EntitySystem
             return false;
 
         // Being an admin overrides the votekick eligibility
-        if (initiator.AttachedEntity != null && _adminManager.IsAdmin(initiator.AttachedEntity.Value, false))
+        if (initiator.AttachedEntity != null && _adminManager.IsAdmin(initiator.AttachedEntity.Value))
             return true;
 
         // If cvar enabled, skip the ghost requirement in the preround lobby

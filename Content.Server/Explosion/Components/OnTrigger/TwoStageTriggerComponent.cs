@@ -35,8 +35,8 @@ public sealed partial class TwoStageTriggerComponent : Component
     public TimeSpan? NextTriggerTime;
 
     [DataField("triggered")]
-    public bool Triggered = false;
+    public bool Triggered;
 
     [DataField("ComponentsIsLoaded")]
-    public bool ComponentsIsLoaded = false;
+    public bool ComponentsIsLoaded;
 }

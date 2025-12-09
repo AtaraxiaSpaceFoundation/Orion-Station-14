@@ -129,7 +129,7 @@
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
-#  canRotate: false # Orion-Remove
+#  canRotate: false # Orion-Edit: Removed
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
@@ -142,7 +142,7 @@
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
-#  canRotate: false # Orion-Remove
+#  canRotate: false # Orion-Edit: Removed
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked

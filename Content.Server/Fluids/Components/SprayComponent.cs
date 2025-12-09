@@ -32,12 +32,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.Fluids.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Fluids.EntitySystems;
+using Content.Shared.Inventory;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Content.Shared.Inventory; // Assmos - Extinguisher Nozzle
-using Content.Shared.Whitelist; // Assmos - Extinguisher Nozzle
 
 namespace Content.Server.Fluids.Components;
 
@@ -86,5 +86,5 @@ public sealed partial class SprayComponent : Component
     public EntityWhitelist? ProviderWhitelist;
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public bool ExternalContainer = false;
+    public bool ExternalContainer;
 }

@@ -309,3 +309,6 @@ Resources/MapImages
 
 config.json
 .github/workflows/update-prs.yaml
+
+# IDE
+qodana.yaml

@@ -103,7 +103,7 @@ namespace Content.Server.Construction.Conditions
             if (string.IsNullOrEmpty(GuideText))
                 yield break;
 
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = GuideText,
                 Icon = GuideIcon,

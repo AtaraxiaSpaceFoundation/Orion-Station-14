@@ -126,7 +126,7 @@ namespace Content.Server.Decals.Commands
             }
             else
             {
-                shell.WriteError($"Failed adding decal.");
+                shell.WriteError("Failed adding decal.");
             }
         }
     }

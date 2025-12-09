@@ -30,30 +30,35 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.GameTicking;
-using Content.Server.Shuttles.Systems;
-using Content.Shared.Cuffs.Components;
-using Content.Shared.GameTicking.Components;
-using Content.Shared.Mind;
-using Content.Shared.Objectives.Components;
-using Content.Shared.Objectives.Systems;
-using Content.Shared.Random;
-using Content.Shared.Random.Helpers;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.ServerCurrency;
 using Content.Goobstation.Shared.ManifestListings;
+using Content.Server.GameTicking;
 using Content.Server.Objectives.Commands;
+using Content.Server.Shuttles.Systems;
+using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
+using Content.Shared.Cuffs.Components;
+using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
+using Content.Shared.Mind;
+using Content.Shared.Objectives.Components;
+using Content.Shared.Objectives.Systems;
 using Content.Shared.Prototypes;
+using Content.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Roles.Jobs;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Content.Shared.Administration.Logs;
+
+//Goobstation
 
 namespace Content.Server.Objectives;
 
@@ -61,21 +66,20 @@ namespace Content.Server.Objectives;
 // if you wanna upstream something think twice
 public sealed class ObjectivesSystem : SharedObjectivesSystem
 {
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
-    [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
+    [Robust.Shared.IoC.Dependency] private readonly GameTicker _gameTicker = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IPlayerManager _player = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IRobustRandom _random = default!;
+    [Robust.Shared.IoC.Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Robust.Shared.IoC.Dependency] private readonly SharedJobSystem _job = default!;
+    [Robust.Shared.IoC.Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
+    [Robust.Shared.IoC.Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Robust.Shared.IoC.Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
 
     private IEnumerable<string>? _objectives;
 
     private bool _showGreentext;
 
-    private int _goobcoinsPerGreentext = 5;
     private int _goobcoinsServerMultiplier = 1;
     public override void Initialize()
     {
@@ -86,7 +90,6 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
         Subs.CVar(_cfg, CCVars.GameShowGreentext, value => _showGreentext = value, true);
 
         _prototypeManager.PrototypesReloaded += CreateCompletions;
-        Subs.CVar(_cfg, GoobCVars.GoobcoinsPerGreentext, value => _goobcoinsPerGreentext = value, true);
         Subs.CVar(_cfg, GoobCVars.GoobcoinServerMultiplier, value => _goobcoinsServerMultiplier = value, true);
     }
 
@@ -181,6 +184,7 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
     private void AddSummary(StringBuilder result, string agent, List<(EntityUid, string)> minds)
     {
         var agentSummaries = new List<(string summary, float successRate, int completedObjectives)>();
+        var currencyStorage = new Dictionary<NetUserId, float>(); //goobstation- store all currency and add at end off round
 
         foreach (var (mindId, name) in minds)
         {
@@ -225,6 +229,8 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
 
                     var objectiveTitle = info.Value.Title;
                     var progress = info.Value.Progress;
+                    var reward = info.Value.ServerCurrency;
+                    var rewardPartial = info.Value.PartialCurrency;
                     totalObjectives++;
 
                     // Goob (even tho the entire file got massacred by John already)
@@ -233,10 +239,10 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                     if (username is null &&
                         userid.HasValue &&
                         _player.TryGetPlayerData(userid.Value, out var data))
-                        username = System.Runtime.CompilerServices.FormattableStringFactory.Create(data.UserName);
+                        username = FormattableStringFactory.Create(data.UserName);
 
-                    _adminLog.Add(Shared.Database.LogType.AntagObjective,
-                                    Shared.Database.LogImpact.Low,
+                    _adminLog.Add(LogType.AntagObjective,
+                                    LogImpact.Low,
                                     $"{username:subject} achieved {progress}% of objective {objectiveTitle}");
 
                     agentSummary.Append("- ");
@@ -254,8 +260,11 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                         completedObjectives++;
 
                         // Easiest place to give people points for completing objectives lol
-                        if(userid.HasValue)
-                            _currencyMan.AddCurrency(userid.Value, _goobcoinsPerGreentext * _goobcoinsServerMultiplier);
+                        if (userid.HasValue)
+                            if (currencyStorage.ContainsKey(userid.Value))
+                                currencyStorage[userid.Value] += reward;
+                            else
+                                currencyStorage.Add(userid.Value, reward);
                     }
                     else if (progress <= 0.99f && progress >= 0.5f)
                     {
@@ -264,6 +273,12 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
                             ("objective", objectiveTitle),
                             ("progress", progress)
                         ));
+                        //Goobstation
+                        if (userid.HasValue && rewardPartial)
+                            if (currencyStorage.ContainsKey(userid.Value))
+                                currencyStorage[userid.Value] += reward * progress;
+                            else
+                                currencyStorage.Add(userid.Value, reward * progress);
                     }
                     else if (progress < 0.5f && progress > 0f)
                     {
@@ -295,6 +310,9 @@ public sealed class ObjectivesSystem : SharedObjectivesSystem
         {
             result.AppendLine(summary);
         }
+
+        foreach (var (key, currency) in currencyStorage)
+            _currencyMan.AddCurrency(key, (int)Math.Round( currency * _goobcoinsServerMultiplier));
     }
 
     public EntityUid? GetRandomObjective(EntityUid mindId, MindComponent mind, ProtoId<WeightedRandomPrototype> objectiveGroupProto, float maxDifficulty)

@@ -9,12 +9,12 @@
   components:
   - type: Sprite
     noRot: true
-    sprite: _White/Mobs/Aliens/Xenomorphs/facehugger.rsi # Orion-Edit | Revert Goob Sprite
+    sprite: _White/Mobs/Aliens/Xenomorphs/facehugger.rsi # Orion-Edit: Revert Goob Sprite
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
       state: facehugger
   - type: Clothing
-    sprite: _White/Mobs/Aliens/Xenomorphs/facehugger.rsi # Orion-Edit | Revert Goob Sprite
+    sprite: _White/Mobs/Aliens/Xenomorphs/facehugger.rsi # Orion-Edit: Revert Goob Sprite
     slots: [mask]
   - type: IngestionBlocker
   - type: Blindfold

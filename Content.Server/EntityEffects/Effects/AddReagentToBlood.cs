@@ -4,15 +4,15 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Chemistry.Reagent;
-using Content.Server.Body.Systems;
-using Content.Shared.EntityEffects;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Body.Systems;
 using Content.Shared.Body.Components;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.EntityEffects;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.EntityEffects.Effects;
 
@@ -21,10 +21,10 @@ public sealed partial class AddReagentToBlood : EntityEffect
     private readonly SharedSolutionContainerSystem _solutionContainers;
 
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<ReagentPrototype>))]
-    public string? Reagent = null;
+    public string? Reagent;
 
     [DataField]
-    public FixedPoint2 Amount = default!;
+    public FixedPoint2 Amount;
 
     public override void Effect(EntityEffectBaseArgs args)
     {
@@ -39,7 +39,6 @@ public sealed partial class AddReagentToBlood : EntityEffect
                 solution.AddReagent(Reagent, amt);
                 sys.TryAddToChemicals((args.TargetEntity, blood), solution);
             }
-            return;
         }
     }
 

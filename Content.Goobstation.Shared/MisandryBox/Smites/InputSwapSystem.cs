@@ -6,8 +6,6 @@
 
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 
 namespace Content.Goobstation.Shared.MisandryBox.Smites;
 

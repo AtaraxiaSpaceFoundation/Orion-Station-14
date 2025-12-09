@@ -12,7 +12,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.StatusEffectNew.Components;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 

@@ -4,8 +4,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Abilities.Felinid;
 
@@ -36,5 +36,5 @@ public sealed partial class FelinidComponent : Component
     public EntityUid? EatAction;
 
     [DataField("eatActionTarget")]
-    public EntityUid? EatActionTarget = null;
+    public EntityUid? EatActionTarget;
 }

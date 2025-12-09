@@ -45,9 +45,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: ManualChemDispenserEmpty # Orion-Edit | Manual
+  id: ManualChemDispenserEmpty # Orion-Edit: Manual
   name: chemical dispenser
-  suffix: Manual, Empty # Orion-Edit | Manual
+  suffix: Manual, Empty # Orion-Edit: Manual
   parent: ReagentDispenserBase
   description: An industrial grade chemical dispenser.
   components:
@@ -96,9 +96,9 @@
         - MachineLayer
 
 - type: entity
-  id: ManualChemDispenser # Orion-Edit | Manual
-  suffix: Manual, Filled # Orion-Edit | Manual
-  parent: ManualChemDispenserEmpty # Orion-Edit | Manual
+  id: ManualChemDispenser # Orion-Edit: Manual
+  suffix: Manual, Filled # Orion-Edit: Manual
+  parent: ManualChemDispenserEmpty # Orion-Edit: Manual
   components:
   - type: ReagentDispenser
   - type: StorageFill

@@ -17,7 +17,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.AlertLevel;
 
 [Prototype("alertLevels")]
-public sealed partial class AlertLevelPrototype : IPrototype
+public sealed class AlertLevelPrototype : IPrototype
 {
     [IdDataField] public string ID { get; private set; } = default!;
 
@@ -83,7 +83,7 @@ public sealed partial class AlertLevelDetail
     /// <summary>
     /// Will this alert level force emergency lights on for the station that's active?
     /// </summary>
-    [DataField("forceEnableEmergencyLights")] public bool ForceEnableEmergencyLights { get; private set; } = false;
+    [DataField("forceEnableEmergencyLights")] public bool ForceEnableEmergencyLights { get; private set; }
 
     /// <summary>
     /// How long it takes for the shuttle to arrive when called.

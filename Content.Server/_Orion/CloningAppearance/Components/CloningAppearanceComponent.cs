@@ -1,7 +1,7 @@
 ﻿using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.CloningAppearance.Components;
+namespace Content.Server._Orion.CloningAppearance.Components;
 
 //
 // License-Identifier: AGPL-3.0-or-later
@@ -10,10 +10,10 @@ namespace Content.Server.CloningAppearance.Components;
 [RegisterComponent]
 public sealed partial class CloningAppearanceComponent : Component
 {
-    [DataField("components")]
+    [DataField]
     [AlwaysPushInheritance]
     public ComponentRegistry Components { get; private set; } = new();
 
-    [DataField("startingGear")]
-    public ProtoId<StartingGearPrototype>? Gear;
+    [DataField]
+    public ProtoId<StartingGearPrototype>? StartingGear;
 }

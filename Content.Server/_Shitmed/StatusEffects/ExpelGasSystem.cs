@@ -4,9 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Shitmed.StatusEffects;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
+using Content.Shared._Shitmed.StatusEffects;
 using Robust.Shared.Random;
 
 namespace Content.Server._Shitmed.StatusEffects;
@@ -21,6 +21,7 @@ public sealed class ExpelGasEffectSystem : EntitySystem
     {
         SubscribeLocalEvent<ExpelGasComponent, ComponentInit>(OnInit);
     }
+
     private void OnInit(EntityUid uid, ExpelGasComponent component, ComponentInit args)
     {
         var mix = _atmos.GetContainingMixture((uid, Transform(uid)), true, true) ?? new();
@@ -28,6 +29,4 @@ public sealed class ExpelGasEffectSystem : EntitySystem
         mix.AdjustMoles(gas, 60);
         _chat.TryEmoteWithChat(uid, "Fart");
     }
-
-
 }

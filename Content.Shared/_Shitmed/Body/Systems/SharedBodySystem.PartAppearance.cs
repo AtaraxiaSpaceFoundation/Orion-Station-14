@@ -15,7 +15,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Body.Systems;
 public partial class SharedBodySystem

@@ -154,6 +154,7 @@
 # SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
 # SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
+# SPDX-FileCopyrightText: 2025 Kutosss <162154227+Kutosss@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Minemoder5000 <minemoder50000@gmail.com>
 # SPDX-FileCopyrightText: 2025 Preston Smith <92108534+thetolbean@users.noreply.github.com>
@@ -1174,16 +1175,16 @@
         components:
           - SurplusBundle
 
-
-- type: listing
-  id: UplinkAntimovCircuitBoard
-  name: uplink-antimov-law-name
-  description: uplink-antimov-law-desc
-  productEntity: AntimovCircuitBoard
-  cost:
-    Telecrystal: 50 # goob
-  categories:
-  - UplinkDisruption
+# Goob - Not buyable anymore in favor of the custom lawboard.
+#- type: listing
+#  id: UplinkAntimovCircuitBoard
+#  name: uplink-antimov-law-name
+#  description: uplink-antimov-law-desc
+#  productEntity: AntimovCircuitBoard
+#  cost:
+#    Telecrystal: 50 # goob
+#  categories:
+#  - UplinkDisruption
 # Goob - Antimov was given the same price for traitors and nukies
 #  conditions:
 #  - !type:StoreWhitelistCondition
@@ -1614,21 +1615,20 @@
   #      tags:
   #        - NukeOpsUplink
 
-- type: listing
-  id: UplinkUplinkImplanter # uplink uplink real
-  name: uplink-uplink-implanter-name
-  description: uplink-uplink-implanter-desc
-  icon: { sprite: /Textures/Objects/Devices/communication.rsi, state: radio }
-  productEntity: UplinkImplanter
-  cost:
-    Telecrystal: 10 # goob
-  categories:
-  - UplinkImplants
-  conditions:
-    - !type:StoreWhitelistCondition
-      blacklist:
-        tags:
-          - NukeOpsUplink
+#  id: UplinkUplinkImplanter # Orion-Edit: Moved to preferences
+#  name: uplink-uplink-implanter-name
+#  description: uplink-uplink-implanter-desc
+#  icon: { sprite: /Textures/Objects/Devices/communication.rsi, state: radio }
+#  productEntity: UplinkImplanter
+#  cost:
+#    Telecrystal: 10 # goob
+#  categories:
+#  - UplinkImplants
+#  conditions:
+#    - !type:StoreWhitelistCondition
+#      blacklist:
+#       tags:
+#          - NukeOpsUplink
 
 
 - type: listing
@@ -1749,7 +1749,7 @@
   description: uplink-clothing-outer-vest-web-desc
   productEntity: ClothingOuterVestWeb
   cost:
-    Telecrystal: 15 # goob
+    Telecrystal: 10 # goob
   categories:
   - UplinkWearables
 
@@ -1760,7 +1760,7 @@
   description: uplink-clothing-outer-vest-web-elite-desc
   productEntity: ClothingOuterVestWebElite
   cost:
-    Telecrystal: 25 # goob
+    Telecrystal: 15 # goob
   categories:
   - UplinkWearables
 

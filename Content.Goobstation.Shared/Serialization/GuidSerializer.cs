@@ -4,9 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System;
 using System.Globalization;
-using Robust.Shared.IoC;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;

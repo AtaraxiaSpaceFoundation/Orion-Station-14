@@ -8,8 +8,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared.Atmos;
 using System.Runtime.CompilerServices;
+using Content.Shared.Atmos;
 
 namespace Content.Server.Explosion.EntitySystems;
 

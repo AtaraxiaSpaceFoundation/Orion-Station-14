@@ -150,7 +150,7 @@ namespace Content.Server.Solar.EntitySystems
         /// TODO: *Should be moved into the solar tracker when powernet allows for it.*
         /// Last update of total panel power.
         /// </summary>
-        public float TotalPanelPower = 0;
+        public float TotalPanelPower;
 
         /// <summary>
         /// Queue of panels to update each cycle.

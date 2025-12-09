@@ -167,7 +167,7 @@
     - id: JobDistributionError
     - id: KudzuGrowth
     - id: MassHallucinations
-#    - id: MimicVendorRule # Orion-Remove | Morph better!!!
+#    - id: MimicVendorRule # Orion-Edit: Morph better!!!
     - id: MouseMigration
     - id: PowerGridCheck
     - id: RandomSentience
@@ -180,7 +180,7 @@
     - id: TidemindDevelop # Goobstation - Tidemind
     - id: MothroachSpawn # DeltaV
     - id: DerelictCyborgSyndicateSpawn # Goobstation - usually calm
-#    - id: MalignRiftSpawn # DeltaV | Orion-Remove
+#    - id: MalignRiftSpawn # DeltaV | Orion-Edit: Removed
     - id: FloorGoblinMidRound # Goobstation
 
 - type: entityTable
@@ -198,9 +198,6 @@
     - id: ParadoxCloneSpawn
     #- id: RevenantSpawn  # GoobStation - removed till rework
     - id: SleeperAgents
-    - id: ChangelingMidround
-    - id: HereticMidround
-    - id: Devilmidround
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: DerelictCyborgSpawn
@@ -210,8 +207,8 @@
     - id: BingleSpawn #Goobstation - Bingle
     - id: SlaughterDemonMidround # Goobstation - Slaughter Demon
     - id: XenomorphsInfestation # WD EDIT
-    - id: WraithMidround # Goobstation - Wraith
-    #TODO When Slasher is Ready - id: SlasherSpawn # Goobstation - The Slasher
+    #- id: WraithMidround # Goobstation - Wraith
+    #TODO When Slasher is ready- id: SlasherSpawn # Goobstation - The Slasher
 
 
 - type: entity
@@ -291,7 +288,7 @@
   components:
   - type: StationEvent
     weight: 2
-    reoccurrenceDelay: 15 # Orion-Edit | 5 > 15
+    reoccurrenceDelay: 15 # Orion-Edit: 5 > 15
     earliestStart: 1
     duration: 1
     chaos: # Goobstation
@@ -357,7 +354,7 @@
   - type: StationEvent
     weight: 5
     duration: 1
-    minimumPlayers: 15 # Orion-Edit | 10 > 15
+    minimumPlayers: 15 # Orion-Edit: 10 > 15
     eventType: Chaotic # Goobstation
   # Goobstation
   - type: GameRule
@@ -987,7 +984,7 @@
     chaosScore: 150
   - type: IonStormRule
 
-#- type: entity # Orion-Remove
+#- type: entity # Orion-Edit: Removed
 #  id: MimicVendorRule
 #  parent: BaseGameRule
 #  components:

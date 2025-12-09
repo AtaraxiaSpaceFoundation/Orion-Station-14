@@ -96,7 +96,8 @@ public sealed partial class NPCSteeringSystem
             return true;
         }
         // Handle the case where the node is a climb, we can climb, and we are climbing.
-        else if ((node.Data.Flags & PathfindingBreadcrumbFlag.Climb) != 0x0 &&
+
+        if ((node.Data.Flags & PathfindingBreadcrumbFlag.Climb) != 0x0 &&
             (steering.Flags & PathFlags.Climbing) != 0x0 &&
             TryComp<ClimbingComponent>(uid, out var climbing) &&
             climbing.IsClimbing)

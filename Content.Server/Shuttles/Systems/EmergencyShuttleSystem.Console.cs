@@ -67,6 +67,7 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Shared.Access;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
@@ -79,9 +80,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Timer = Robust.Shared.Timing.Timer;
-using Content.Server.Explosion.EntitySystems;
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -152,8 +150,8 @@ public sealed partial class EmergencyShuttleSystem
     private bool _announced;
 
     private EntityUid? _lastRepealUser;
-    private double _repealTimestamp = 0;
-    private int _consoleSpams = 0;
+    private double _repealTimestamp;
+    private int _consoleSpams;
 
     private void InitializeEmergencyConsole()
     {
@@ -443,7 +441,7 @@ public sealed partial class EmergencyShuttleSystem
             _uiSystem.SetUiState(
                 uid,
                 EmergencyConsoleUiKey.Key,
-                new EmergencyConsoleBoundUserInterfaceState()
+                new EmergencyConsoleBoundUserInterfaceState
                 {
                     EarlyLaunchTime = EarlyLaunchAuthorized ? _timing.CurTime + TimeSpan.FromSeconds(ConsoleAccumulator) : null,
                     Authorizations = auths,

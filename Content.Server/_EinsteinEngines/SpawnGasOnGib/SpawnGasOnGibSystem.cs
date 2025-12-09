@@ -8,7 +8,7 @@ using Content.Shared.Body.Events;
 
 namespace Content.Server._EinsteinEngines.SpawnGasOnGib;
 
-public sealed partial class SpawnGasOnGibSystem : EntitySystem
+public sealed class SpawnGasOnGibSystem : EntitySystem
 {
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
 

@@ -25,7 +25,6 @@ using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Traits.Assorted;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -147,7 +146,7 @@ public sealed class DamageOverlayUiController : UIController
                 case MobState.Critical:
                     {
                         if (!_mobThresholdSystem.TryGetDeadPercentage(entity,
-                                FixedPoint2.Max(0.0, damageable.TotalDamage), out var critLevel))
+                                FixedPoint2.Max(0.0, _mobThresholdSystem.CheckVitalDamage(entity, damageable)), out var critLevel)) // GoobStation
                             return;
                         _overlay.CritLevel = critLevel.Value.Float();
 

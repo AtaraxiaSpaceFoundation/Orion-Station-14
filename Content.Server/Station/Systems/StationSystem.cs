@@ -125,7 +125,7 @@ namespace Content.Server.Station.Systems;
 /// For jobs, look at StationJobSystem. For spawning, look at StationSpawningSystem.
 /// </summary>
 [PublicAPI]
-public sealed partial class StationSystem : SharedStationSystem
+public sealed class StationSystem : SharedStationSystem
 {
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -140,8 +140,8 @@ public sealed partial class StationSystem : SharedStationSystem
     private EntityQuery<MapGridComponent> _gridQuery;
     private EntityQuery<TransformComponent> _xformQuery;
 
-    private ValueList<MapId> _mapIds = new();
-    private ValueList<(Box2Rotated Bounds, MapId MapId)> _gridBounds = new();
+    private ValueList<MapId> _mapIds;
+    private ValueList<(Box2Rotated Bounds, MapId MapId)> _gridBounds;
 
     /// <inheritdoc/>
     public override void Initialize()

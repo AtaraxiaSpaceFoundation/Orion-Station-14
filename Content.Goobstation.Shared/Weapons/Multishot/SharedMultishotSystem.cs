@@ -17,7 +17,6 @@
 using System.Linq;
 using Content.Goobstation.Common.Weapons.Multishot;
 using Content.Goobstation.Shared.Weapons.MissChance;
-using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.CombatMode;

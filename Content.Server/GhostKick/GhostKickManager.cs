@@ -65,16 +65,16 @@ public sealed class GhostKickCommand : LocalizedEntityCommands
     {
         if (args.Length < 1)
         {
-            shell.WriteError(Loc.GetString($"shell-need-exactly-one-argument"));
+            shell.WriteError(Loc.GetString("shell-need-exactly-one-argument"));
             return;
         }
 
         var playerName = args[0];
-        var reason = args.Length > 1 ? args[1] : Loc.GetString($"cmd-ghostkick-default-reason");
+        var reason = args.Length > 1 ? args[1] : Loc.GetString("cmd-ghostkick-default-reason");
 
         if (!_playerManager.TryGetSessionByUsername(playerName, out var player))
         {
-            shell.WriteError(Loc.GetString($"shell-target-player-does-not-exist"));
+            shell.WriteError(Loc.GetString("shell-target-player-does-not-exist"));
             return;
         }
 

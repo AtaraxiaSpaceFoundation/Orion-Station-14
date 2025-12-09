@@ -20,7 +20,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._DV.Salvage.Systems;
-using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._DV.Salvage.Components;

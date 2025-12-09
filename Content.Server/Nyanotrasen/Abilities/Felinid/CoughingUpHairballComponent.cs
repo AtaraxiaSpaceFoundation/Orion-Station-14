@@ -9,7 +9,7 @@ namespace Content.Server.Abilities.Felinid;
 public sealed partial class CoughingUpHairballComponent : Component
 {
     [DataField("accumulator")]
-    public float Accumulator = 0f;
+    public float Accumulator;
 
     [DataField("coughUpTime")]
     public TimeSpan CoughUpTime = TimeSpan.FromSeconds(2.15); // length of hairball.ogg

@@ -9,8 +9,8 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Robust.Shared.CPUJob.JobQueues;
 using Content.Server.NPC.HTN.PrimitiveTasks;
+using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.NPC.HTN;
@@ -89,7 +89,7 @@ public sealed class HTNPlanJob : Job<HTNPlan>
                         // Don't need to copy taskstoprocess as we can just clear it and set it to the compound task we roll back to.
                         // Don't need to copy finalplan as we can just count how many primitives we've added since last record
 
-                        decompHistory.Push(new DecompositionState()
+                        decompHistory.Push(new DecompositionState
                         {
                             Blackboard = _blackboard.ShallowClone(),
                             CompoundTask = compound,

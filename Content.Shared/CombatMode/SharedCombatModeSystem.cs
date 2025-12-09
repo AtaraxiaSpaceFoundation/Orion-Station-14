@@ -29,12 +29,10 @@ using Content.Goobstation.Common.DoAfter;
 using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mind;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.MouseRotator;
 using Content.Shared.Movement.Components;
 using Content.Shared.Popups;
-using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.CombatMode;
@@ -77,8 +75,10 @@ public abstract class SharedCombatModeSystem : EntitySystem
         args.Handled = true;
         SetInCombatMode(uid, !component.IsInCombatMode, component);
 
-//        var msg = component.IsInCombatMode ? "action-popup-combat-enabled" : "action-popup-combat-disabled"; // Orion-Remove
-//        _popup.PopupClient(Loc.GetString(msg), args.Performer, args.Performer); // Orion-Remove
+/* Orion-Edit: Removed
+        var msg = component.IsInCombatMode ? "action-popup-combat-enabled" : "action-popup-combat-disabled";
+        _popup.PopupClient(Loc.GetString(msg), args.Performer, args.Performer);
+*/
     }
 
     public void SetCanDisarm(EntityUid entity, bool canDisarm, CombatModeComponent? component = null)

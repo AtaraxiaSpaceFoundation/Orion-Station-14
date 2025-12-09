@@ -70,7 +70,7 @@ namespace Content.Server.Engineering.EntitySystems
 
             bool IsTileClear()
             {
-                return tileRef.Tile.IsEmpty == false && !_turfSystem.IsTileBlocked(tileRef, CollisionGroup.MobMask);
+                return !tileRef.Tile.IsEmpty && !_turfSystem.IsTileBlocked(tileRef, CollisionGroup.MobMask);
             }
 
             if (!IsTileClear())

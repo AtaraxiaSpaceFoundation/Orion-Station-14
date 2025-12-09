@@ -5,7 +5,7 @@ using Content.Shared.Shuttles.Components;
 
 namespace Content.Server._Mono.Radar;
 
-public sealed partial class RadarBlipSystem : EntitySystem
+public sealed class RadarBlipSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     public override void Initialize()

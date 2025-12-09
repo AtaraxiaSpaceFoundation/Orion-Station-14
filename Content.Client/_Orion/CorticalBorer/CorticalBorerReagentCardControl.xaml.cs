@@ -26,6 +26,6 @@ public sealed partial class CorticalBorerReagentCardControl : Control
         // disable the button if you can't afford it, makes it easier
         MainButton.Disabled = set.Chems < set.Cost * set.Amount;
 
-        MainButton.OnPressed += args => OnPressed?.Invoke(set.ReagentId);
+        MainButton.OnPressed += _ => OnPressed?.Invoke(set.ReagentId);
     }
 }

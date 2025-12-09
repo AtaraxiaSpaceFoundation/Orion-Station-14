@@ -256,7 +256,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         if (config == null)
             return;
 
-        RaiseNetworkEvent(new EmergencyShuttlePositionMessage()
+        RaiseNetworkEvent(new EmergencyShuttlePositionMessage
         {
             StationUid = GetNetEntity(targetGrid),
             Position = config.Area,
@@ -579,7 +579,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
             if (!Exists(otherComp.MapEntity) || !Exists(otherComp.Entity))
             {
-                Log.Error($"Discovered invalid centcomm component?");
+                Log.Error("Discovered invalid centcomm component?");
                 ClearCentcomm(otherComp);
                 continue;
             }
@@ -599,20 +599,20 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         var map = _mapSystem.CreateMap(out var mapId);
         if (!_loader.TryLoadGrid(mapId, component.Map, out var grid))
         {
-            Log.Error($"Failed to set up centcomm grid!");
+            Log.Error("Failed to set up centcomm grid!");
             return;
         }
 
         if (!Exists(map))
         {
-            Log.Error($"Failed to set up centcomm map!");
+            Log.Error("Failed to set up centcomm map!");
             QueueDel(grid);
             return;
         }
 
         if (!Exists(grid))
         {
-            Log.Error($"Failed to set up centcomm grid!");
+            Log.Error("Failed to set up centcomm grid!");
             QueueDel(map);
             return;
         }
@@ -620,7 +620,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         var xform = Transform(grid.Value);
         if (xform.ParentUid != map || xform.MapUid != map)
         {
-            Log.Error($"Centcomm grid is not parented to its own map?");
+            Log.Error("Centcomm grid is not parented to its own map?");
             QueueDel(map);
             QueueDel(grid);
             return;

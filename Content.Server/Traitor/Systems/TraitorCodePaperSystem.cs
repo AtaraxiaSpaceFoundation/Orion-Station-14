@@ -76,15 +76,12 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
-using Content.Server.GameTicking;
-using Content.Server.GameTicking.Rules;
-using Content.Server.GameTicking.Rules.Components;
-using Content.Server.Traitor.Components;
-using Robust.Shared.Random;
-using Robust.Shared.Utility;
 using System.Linq;
 using Content.Server.Codewords;
+using Content.Server.Traitor.Components;
 using Content.Shared.Paper;
+using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Traitor.Systems;
 

@@ -6,16 +6,16 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Mind;
-using Content.Shared.Species.Components;
-using Content.Shared.Body.Events;
-using Content.Shared.Zombies;
 using Content.Server.Zombies;
+using Content.Shared.Body.Events;
+using Content.Shared.Species.Components;
+using Content.Shared.Zombies;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Species.Systems;
 
-public sealed partial class NymphSystem : EntitySystem
+public sealed class NymphSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _protoManager= default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
@@ -48,7 +48,7 @@ public sealed partial class NymphSystem : EntitySystem
             _zombie.ZombifyEntity(nymph);
 
         // Move the mind if there is one and it's supposed to be transferred
-        if (comp.TransferMind == true && _mindSystem.TryGetMind(args.OldBody, out var mindId, out var mind))
+        if (comp.TransferMind && _mindSystem.TryGetMind(args.OldBody, out var mindId, out var mind))
             _mindSystem.TransferTo(mindId, nymph, mind: mind);
 
         // Delete the old organ

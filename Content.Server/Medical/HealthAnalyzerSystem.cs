@@ -104,11 +104,25 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Body.Components;
 using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
 using Content.Server.Temperature.Components;
+using Content.Shared._Shitmed.Medical.HealthAnalyzer;
+using Content.Shared._Shitmed.Medical.Surgery.Pain.Components;
+using Content.Shared._Shitmed.Medical.Surgery.Traumas;
+using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
+using Content.Shared._Shitmed.Medical.Surgery.Traumas.Systems;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Part;
+using Content.Shared.Body.Systems;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -119,30 +133,13 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
-
-// Shitmed Change
-using Content.Shared._Shitmed.Medical.HealthAnalyzer;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
-using Content.Shared._Shitmed.Medical.Surgery.Pain.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Traumas;
-using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Traumas.Systems;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Goobstation.Maths.FixedPoint;
-using System.Linq;
 
 namespace Content.Server.Medical;
 
@@ -160,6 +157,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly WoundSystem _woundSystem = default!; // Shitmed Change
     [Dependency] private readonly TraumaSystem _trauma = default!; // Shitmed Change
+    [Dependency] private readonly MobThresholdSystem _threshold = default!; // Goobstation
+
     public override void Initialize()
     {
         SubscribeLocalEvent<HealthAnalyzerComponent, AfterInteractEvent>(OnAfterInteract);
@@ -200,7 +199,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                 || TryComp(component.CurrentBodyPart, out BodyPartComponent? bodyPartComponent)
                 && bodyPartComponent.Body is null))
             {
-                BeginAnalyzingEntity((uid, component), patient, null);
+                BeginAnalyzingEntity((uid, component), patient);
                 continue;
             }
             // Shitmed Change End
@@ -298,7 +297,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// <param name="healthAnalyzer">The health analyzer that should receive the updates</param>
     /// <param name="target">The entity to start analyzing</param>
     /// <param name="part">Shitmed Change: The body part to analyze, if any</param>
-    public void BeginAnalyzingEntity(Entity<HealthAnalyzerComponent> healthAnalyzer, EntityUid target, EntityUid? part = null) // Orion-Edit | private > public
+    public void BeginAnalyzingEntity(Entity<HealthAnalyzerComponent> healthAnalyzer, EntityUid target, EntityUid? part = null) // Orion-Edit: private > public
     {
         //Link the health analyzer to the scanned entity
         healthAnalyzer.Comp.ScannedEntity = target;
@@ -314,7 +313,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// </summary>
     /// <param name="healthAnalyzer">The health analyzer that's receiving the updates</param>
     /// <param name="target">The entity to analyze</param>
-    public void StopAnalyzingEntity(Entity<HealthAnalyzerComponent> healthAnalyzer, EntityUid target) // Orion-Edit | private > public
+    public void StopAnalyzingEntity(Entity<HealthAnalyzerComponent> healthAnalyzer, EntityUid target) // Orion-Edit: private > public
     {
         //Unlink the analyzer
         healthAnalyzer.Comp.ScannedEntity = null;
@@ -338,7 +337,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         healthAnalyzer.Comp.CurrentMode = HealthAnalyzerMode.Body; // If you press a part ye get redirected bozo.
         if (args.BodyPart == null)
         {
-            BeginAnalyzingEntity(healthAnalyzer, owner.Value, null);
+            BeginAnalyzingEntity(healthAnalyzer, owner.Value);
         }
         else
         {
@@ -391,6 +390,12 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         var bodyStatus = _woundSystem.GetDamageableStatesOnBody(target);
         Dictionary<TargetBodyPart, bool> bleeding; // Goobstation - removed unnecessary allocation
 
+        // Goobstation start
+        var vitalDamage = FixedPoint2.Zero;
+        if (TryComp<DamageableComponent>(target, out var damageableComponent))
+            vitalDamage = _threshold.CheckVitalDamage(target, damageableComponent);
+        // Goobstation end
+
         switch (mode)
         {
             case HealthAnalyzerMode.Body:
@@ -407,6 +412,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                     unrevivable,
                     bodyStatus,
                     bleeding,
+                    vitalDamage, // Goobstation
                     traumas,
                     pain,
                     part != null ? GetNetEntity(part) : null
@@ -422,6 +428,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                     bloodAmount,
                     scanMode,
                     bleeding,
+                    vitalDamage, // Goobstation
                     bodyStatus,
                     organs
                 ));
@@ -436,6 +443,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                     bloodAmount,
                     scanMode,
                     bleeding,
+                    vitalDamage, // Goobstation
                     bodyStatus,
                     chemicals
                 ));

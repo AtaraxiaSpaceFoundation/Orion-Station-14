@@ -28,12 +28,8 @@ using Content.Shared._Lavaland.Shuttles.Components;
 using Content.Shared._Lavaland.Shuttles.Systems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Whitelist;
-using Robust.Shared.Map.Components;
-using System.Linq;
-using Content.Server.GameTicking;
-using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Timing;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server._Lavaland.Shuttles.Systems;
 
@@ -65,7 +61,7 @@ public sealed class DockingShuttleSystem : SharedDockingShuttleSystem
             if (!dest.Enabled || _whitelist.IsWhitelistFailOrNull(dest.Whitelist, ent))
                 continue;
 
-            ent.Comp.Destinations.Add(new DockingDestination()
+            ent.Comp.Destinations.Add(new DockingDestination
             {
                 Name = Name(mapUid),
                 Map = map.MapId
@@ -108,7 +104,7 @@ public sealed class DockingShuttleSystem : SharedDockingShuttleSystem
 
         // add the source station as a destination
         comp.Station = station;
-        comp.Destinations.Add(new DockingDestination()
+        comp.Destinations.Add(new DockingDestination
         {
             Name = Name(station),
             Map = Transform(uid).MapID
@@ -118,7 +114,7 @@ public sealed class DockingShuttleSystem : SharedDockingShuttleSystem
     private void OnAddStation(EntityUid uid, DockingShuttleComponent component,  ShuttleAddStationEvent args)
     {
         component.Station = args.MapUid;
-        component.Destinations.Add(new DockingDestination()
+        component.Destinations.Add(new DockingDestination
         {
             Name = Name(args.MapUid),
             Map = args.MapId

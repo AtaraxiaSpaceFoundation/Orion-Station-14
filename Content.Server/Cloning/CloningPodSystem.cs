@@ -4,7 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Cloning; // Goobstation
+using Content.Goobstation.Common.Cloning;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.Cloning.Components;
@@ -14,7 +14,6 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Server.Materials;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
-using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.Atmos;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;

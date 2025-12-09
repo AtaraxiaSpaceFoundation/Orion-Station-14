@@ -34,5 +34,5 @@ public sealed partial class ForeignerTraitComponent : Component
     ///     The base translator prototype to use when creating a translator for the entity.
     /// </summary>
     [DataField(required: true)]
-    public EntProtoId BaseTranslator = default!;
+    public EntProtoId BaseTranslator;
 }

@@ -70,7 +70,7 @@ namespace Content.Server.Alert.Commands
             }
 
             short? severity1 = sevint == -1 ? null : sevint;
-            alertsSystem.ShowAlert(attachedEntity, alert.ID, severity1, null);
+            alertsSystem.ShowAlert(attachedEntity, alert.ID, severity1);
         }
     }
 }

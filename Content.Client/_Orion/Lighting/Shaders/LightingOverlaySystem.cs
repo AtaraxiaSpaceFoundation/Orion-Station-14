@@ -25,11 +25,11 @@ public sealed class LightingOverlaySystem : EntitySystem
     {
         base.Shutdown();
 
-        if (_lightingOverlay != null)
-        {
-            _overlayManager.RemoveOverlay(_lightingOverlay);
-            _lightingOverlay.Dispose();
-            _lightingOverlay = null;
-        }
+        if (_lightingOverlay == null)
+            return;
+
+        _overlayManager.RemoveOverlay(_lightingOverlay);
+        _lightingOverlay.Dispose();
+        _lightingOverlay = null;
     }
 }

@@ -34,13 +34,13 @@ namespace Content.Server.Construction.Completions
         ///     Whether or not the user should attempt to pick up the removed entities.
         /// </summary>
         [DataField]
-        public bool Pickup = false;
+        public bool Pickup;
 
         /// <summary>
         ///    Whether or not to empty the container at the user's location.
         /// </summary>
         [DataField]
-        public bool EmptyAtUser = false;
+        public bool EmptyAtUser;
 
         public void PerformAction(EntityUid uid, EntityUid? userUid, IEntityManager entityManager)
         {

@@ -1,5 +1,5 @@
-﻿using Content.Server.CloningAppearance.Components;
-using Content.Server.CloningAppearance.Events;
+﻿using Content.Server._Orion.CloningAppearance.Components;
+using Content.Server._Orion.CloningAppearance.Events;
 using Content.Server.Clothing.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
@@ -9,7 +9,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization.Manager;
 
-namespace Content.Server.CloningAppearance;
+namespace Content.Server._Orion.CloningAppearance.Systems;
 
 //
 // License-Identifier: AGPL-3.0-or-later
@@ -46,9 +46,9 @@ public sealed class CloningAppearanceSystem : EntitySystem
             EntityManager.AddComponent(mobUid, comp, true);
         }
 
-        if (ev.Component.Gear != null)
+        if (ev.Component.StartingGear != null)
         {
-            _outfitSystem.SetOutfit(mobUid, ev.Component.Gear);
+            _outfitSystem.SetOutfit(mobUid, ev.Component.StartingGear);
         }
 
         foreach (var nearbyEntity in _entityLookupSystem.GetEntitiesInRange(mobUid, 1f))

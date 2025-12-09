@@ -15,7 +15,6 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using System.Linq;
 
 namespace Content.Client.Holopad;
 

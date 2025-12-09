@@ -10,9 +10,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Gateway.Systems;
-using Content.Shared.Tag; // Goobstation
+using Content.Shared.Tag;
 using Robust.Shared.Audio;
-using Robust.Shared.Prototypes; // Goobstation
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Utility;
 

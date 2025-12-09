@@ -1,0 +1,5 @@
+# Neck
+- type: loadout
+  id: ResearchDirectorRoyalCloak
+  equipment:
+    neck: ClothingNeckCloakRoyalResearchDirector

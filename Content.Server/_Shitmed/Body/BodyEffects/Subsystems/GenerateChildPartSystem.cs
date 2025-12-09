@@ -9,12 +9,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
+using Content.Shared._Shitmed.BodyEffects.Subsystems;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Shared._Shitmed.BodyEffects.Subsystems;
-using Robust.Shared.Map;
 using Robust.Shared.Containers;
-using System.Numerics;
+using Robust.Shared.Map;
 
 namespace Content.Server._Shitmed.BodyEffects.Subsystems;
 

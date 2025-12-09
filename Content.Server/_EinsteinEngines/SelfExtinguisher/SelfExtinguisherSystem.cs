@@ -7,13 +7,13 @@
 using Content.Server._EinsteinEngines.Atmos.Components;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
+using Content.Shared._EinsteinEngines.SelfExtinguisher;
 using Content.Shared.Actions;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Effects;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
-using Content.Shared._EinsteinEngines.SelfExtinguisher;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
@@ -21,7 +21,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._EinsteinEngines.SelfExtinguisher;
 
-public sealed partial class SelfExtinguisherSystem : SharedSelfExtinguisherSystem
+public sealed class SelfExtinguisherSystem : SharedSelfExtinguisherSystem
 {
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -76,7 +76,7 @@ public sealed partial class SelfExtinguisherSystem : SharedSelfExtinguisherSyste
             if (!SetPopupCooldown((uid, selfExtinguisher), curTime))
                 return;
 
-            _popup.PopupEntity(Loc.GetString($"self-extinguisher-on-cooldown", ("item", uid)),
+            _popup.PopupEntity(Loc.GetString("self-extinguisher-on-cooldown", ("item", uid)),
                 target, user, !flammable.OnFire ? PopupType.Small : PopupType.MediumCaution);
             return;
         }

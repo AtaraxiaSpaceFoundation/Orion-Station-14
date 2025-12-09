@@ -17,7 +17,7 @@ public sealed partial class Hunger : EntityEffectCondition
     public float Max = float.PositiveInfinity;
 
     [DataField]
-    public float Min = 0;
+    public float Min;
 
     public override bool Condition(EntityEffectBaseArgs args)
     {
@@ -34,7 +34,7 @@ public sealed partial class Hunger : EntityEffectCondition
     public override string GuidebookExplanation(IPrototypeManager prototype)
     {
         return Loc.GetString("reagent-effect-condition-guidebook-total-hunger",
-            ("max", float.IsPositiveInfinity(Max) ? (float) int.MaxValue : Max),
+            ("max", float.IsPositiveInfinity(Max) ? int.MaxValue : Max),
             ("min", Min));
     }
 }

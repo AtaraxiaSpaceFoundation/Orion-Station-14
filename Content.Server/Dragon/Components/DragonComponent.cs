@@ -47,10 +47,10 @@ namespace Content.Server.Dragon
         /// Has a rift been destroyed and the dragon in a temporary weakened state?
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite), DataField("weakenedAccumulator")]
-        public float WeakenedAccumulator = 0f;
+        public float WeakenedAccumulator;
 
         [ViewVariables(VVAccess.ReadWrite), DataField("riftAccumulator")]
-        public float RiftAccumulator = 0f;
+        public float RiftAccumulator;
 
         /// <summary>
         /// Maximum time the dragon can go without spawning a rift before they die.

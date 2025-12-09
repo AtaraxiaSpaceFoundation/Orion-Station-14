@@ -55,7 +55,7 @@
   id: PlatingDamaged
   name: tiles-plating
   sprite: /Textures/Tiles/plating_damaged.png
-  variants: 4 # Orion-Edit | 3 > 4
+  variants: 4 # Orion-Edit: 3 > 4
   placementVariants:
   - 1.0
   - 1.0

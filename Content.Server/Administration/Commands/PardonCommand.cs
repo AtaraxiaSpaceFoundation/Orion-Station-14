@@ -33,7 +33,7 @@ namespace Content.Server.Administration.Commands
 
             if (!int.TryParse(args[0], out var banId))
             {
-                shell.WriteLine(Loc.GetString($"cmd-pardon-unable-to-parse", ("id", args[0]), ("help", Help)));
+                shell.WriteLine(Loc.GetString("cmd-pardon-unable-to-parse", ("id", args[0]), ("help", Help)));
                 return;
             }
 
@@ -49,20 +49,20 @@ namespace Content.Server.Administration.Commands
             {
                 if (ban.Unban.UnbanningAdmin != null)
                 {
-                    shell.WriteLine(Loc.GetString($"cmd-pardon-already-pardoned-specific",
+                    shell.WriteLine(Loc.GetString("cmd-pardon-already-pardoned-specific",
                         ("admin", ban.Unban.UnbanningAdmin.Value),
                         ("time", ban.Unban.UnbanTime)));
                 }
 
                 else
-                    shell.WriteLine(Loc.GetString($"cmd-pardon-already-pardoned"));
+                    shell.WriteLine(Loc.GetString("cmd-pardon-already-pardoned"));
 
                 return;
             }
 
             await _dbManager.AddServerUnbanAsync(new ServerUnbanDef(banId, player?.UserId, DateTimeOffset.Now));
 
-            shell.WriteLine(Loc.GetString($"cmd-pardon-success", ("id", banId)));
+            shell.WriteLine(Loc.GetString("cmd-pardon-success", ("id", banId)));
         }
     }
 }

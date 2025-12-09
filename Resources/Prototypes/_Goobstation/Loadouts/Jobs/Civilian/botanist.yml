@@ -14,7 +14,7 @@
 
 - type: loadout
   id: BotanistBeret
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MasterBotanist
   equipment:

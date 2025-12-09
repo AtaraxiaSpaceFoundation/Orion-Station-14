@@ -14,13 +14,13 @@
 
 using Content.Server.Gateway.Components;
 using Content.Server.Station.Systems;
-using Content.Shared.UserInterface;
 using Content.Shared.Access.Systems;
 using Content.Shared.Gateway;
 using Content.Shared.Popups;
-using Content.Shared.Tag; // Goobstation
+using Content.Shared.Tag;
 using Content.Shared.Teleportation.Components;
 using Content.Shared.Teleportation.Systems;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
@@ -122,7 +122,7 @@ public sealed class GatewaySystem : EntitySystem
             // Show destination if either no destination comp on the map or it's ours.
             TryComp<GatewayGeneratorDestinationComponent>(destXform.MapUid, out var gatewayDestination);
 
-            destinations.Add(new GatewayDestinationData()
+            destinations.Add(new GatewayDestinationData
             {
                 Entity = GetNetEntity(destUid),
                 // Fallback to grid's ID if applicable.

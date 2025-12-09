@@ -27,5 +27,5 @@ public sealed partial class RevolutionaryRoleComponent : BaseMindRoleComponent
     /// For headrevs, how many people you have converted.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public uint ConvertedCount = 0;
+    public uint ConvertedCount;
 }

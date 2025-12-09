@@ -52,50 +52,49 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Construction;
-using Content.Server.Explosion.EntitySystems;
+using Content.Server.Construction.Components;
 using Content.Server.DeviceLinking.Systems;
+using Content.Server.Explosion.EntitySystems;
 using Content.Server.Hands.Systems;
 using Content.Server.Kitchen.Components;
+using Content.Server.Lightning;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Construction.EntitySystems;
+using Content.Shared.Damage;
 using Content.Shared.Database;
-using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Destructible;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
-using Robust.Shared.Random;
-using Robust.Shared.Audio;
-using Content.Server.Lightning;
 using Content.Shared.Item;
 using Content.Shared.Kitchen;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
-using System.Linq;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Stacks;
-using Content.Server.Construction.Components;
-using Content.Shared.Chat;
-using Content.Shared.Damage;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Kitchen.EntitySystems
 {
@@ -320,12 +319,10 @@ namespace Content.Server.Kitchen.EntitySystems
                             _stack.Use(item, 1, stackComp);
                             break;
                         }
-                        else
-                        {
-                            _container.Remove(item, component.Storage);
-                            Del(item);
-                            break;
-                        }
+
+                        _container.Remove(item, component.Storage);
+                        Del(item);
+                        break;
                     }
                 }
             }

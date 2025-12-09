@@ -95,7 +95,7 @@
   description: An impossible object. Should you be standing this close to it?
   components:
   - type: Anomaly
-#    offset: 0, 0.15 # Orion-Remove
+#    offset: 0, 0.15 # Orion-Edit: Removed
     pulseSound:
       collection: RadiationPulse
       params:
@@ -241,7 +241,7 @@
     # Orion-Edit-End
   - type: PointLight
     radius: 5.0
-    energy: 5 # Orion-Edit | 20 > 5
+    energy: 5 # Orion-Edit: 20 > 5
     color: "#3C5E8BFF" # Orion-Edit
     castShadows: false
   - type: GravityAnomaly
@@ -253,8 +253,8 @@
   - type: CanMoveInAir
   - type: RandomWalk
   - type: SingularityDistortion
-    intensity: 50 # Orion-Edit | 1000 > 50
-    falloffPower: 1.8 # Orion-Edit | 2.7 > 1.8
+    intensity: 50 # Orion-Edit: 1000 > 50
+    falloffPower: 1.8 # Orion-Edit: 2.7 > 1.8
 
 - type: entity
   id: AnomalyElectricity

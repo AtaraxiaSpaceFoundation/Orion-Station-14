@@ -4,24 +4,15 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Client.Hands;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Input;
 using Robust.Shared.Containers;
 using Robust.Shared.Enums;
 using Robust.Shared.Graphics;
-using Robust.Shared.Map;
-using Robust.Shared.Player;
 using Robust.Shared.Reflection;
 using Robust.Shared.Timing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Content.Client._White.ItemSlotRenderer;
 

@@ -138,12 +138,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
-using Content.Shared._Shitmed.Body.Events; // Shitmed Change
+using Content.Shared._Shitmed.Body.Events;
+using Content.Shared._White.Grab;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems; // Shitmed Change
+using Content.Shared.Body.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Explosion;
@@ -157,7 +159,6 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
-using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
@@ -166,7 +167,6 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using System.Numerics;
 
 namespace Content.Server.Hands.Systems
 {
@@ -180,6 +180,7 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+        [Dependency] private readonly GrabThrownSystem _grabThrown = default!; // Goobstation
         [Dependency] private readonly SharedPhysicsSystem _physics = default!; // Goobstation
 
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -385,6 +386,7 @@ namespace Content.Server.Hands.Systems
             var ev = new BeforeThrowEvent(throwEnt.Value, direction * (1f + modifier * 0.1f), throwSpeed * (1f + modifier * 0.05f), player);
             // Goobstation end
             RaiseLocalEvent(player, ref ev);
+            RaiseLocalEvent(throwEnt.Value, ref ev); // Goobstation
 
             if (ev.Cancelled)
                 return true;
@@ -393,7 +395,12 @@ namespace Content.Server.Hands.Systems
             if (IsHolding((player, hands), throwEnt, out _) && !TryDrop(player, throwEnt.Value))
                 return false;
 
-            _throwingSystem.TryThrow(ev.ItemUid, ev.Direction, ev.ThrowSpeed, ev.PlayerUid, compensateFriction: !HasComp<LandAtCursorComponent>(ev.ItemUid));
+            // Goob edit start
+            if (!ev.GrabThrow)
+                _throwingSystem.TryThrow(ev.ItemUid, ev.Direction, ev.ThrowSpeed, ev.PlayerUid, compensateFriction: !HasComp<LandAtCursorComponent>(ev.ItemUid));
+            else
+                _grabThrown.Throw(ev.ItemUid, player, ev.Direction, ev.ThrowSpeed);
+            // Goob edit end
 
             return true;
         }

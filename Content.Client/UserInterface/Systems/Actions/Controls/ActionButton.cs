@@ -27,7 +27,6 @@ using Content.Client.Actions;
 using Content.Client.Actions.UI;
 using Content.Client.Cooldown;
 using Content.Client.Stylesheets;
-using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;

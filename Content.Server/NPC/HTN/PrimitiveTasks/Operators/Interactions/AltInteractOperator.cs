@@ -28,7 +28,7 @@ public sealed partial class AltInteractOperator : HTNOperator
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(NPCBlackboard blackboard, CancellationToken cancelToken)
     {
-        return new(true, new Dictionary<string, object>()
+        return new(true, new Dictionary<string, object>
         {
             { IdleKey, 1f }
         });

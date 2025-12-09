@@ -8,14 +8,15 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Instruments;
 using Content.Server.Speech.Components;
-using Content.Shared.Instruments;
-using Content.Shared.ActionBlocker;
-using Content.Shared.Damage;
-using Content.Shared.Damage.ForceSay;
 using Content.Shared._DV.Harpy;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._DV.Harpy.Components;
+using Content.Shared.ActionBlocker;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Damage;
+using Content.Shared.Instruments;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mobs;
@@ -26,10 +27,6 @@ using Content.Shared.UserInterface;
 using Content.Shared.Zombies;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Shared._DV.Harpy.Components;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.Clothing.Components;
-using Content.Shared.Clothing;
 
 namespace Content.Server._DV.Harpy
 {

@@ -6,3 +6,12 @@
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Back/Backpacks/inteq_backpack.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackNinja
+  name: space ninja backpack
+  description: A special backpack made for the silent operations of the spider clan.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Back/Backpacks/spaceninja_backpack.rsi

@@ -10,7 +10,7 @@ namespace Content.Server.Explosion.EntitySystems;
 /// Can also release gas over a set timespan to prevent trolling people
 /// with the instant-wall-of-pressure-inator.
 /// </summary>
-public sealed partial class ReleaseGasOnTriggerSystem : SharedReleaseGasOnTriggerSystem
+public sealed class ReleaseGasOnTriggerSystem : SharedReleaseGasOnTriggerSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
@@ -64,7 +64,6 @@ public sealed partial class ReleaseGasOnTriggerSystem : SharedReleaseGasOnTrigge
             {
                 UpdateAppearance(uid, false);
                 RemCompDeferred<ReleaseGasOnTriggerComponent>(uid);
-                continue;
             }
         }
     }

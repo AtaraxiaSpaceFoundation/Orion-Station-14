@@ -94,7 +94,7 @@
 - type: loadout
   id: ScientificBeret
   startingGear: ScientificBeret
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: SeniorResearcher
 

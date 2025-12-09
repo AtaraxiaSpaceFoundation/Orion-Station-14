@@ -63,7 +63,7 @@ namespace Content.Client.Atmos.Overlays
         private readonly Texture[][] _frames;
 
         // Fire overlays
-        private const int FireStates = 7; // Orion-Edit | 3 > 7
+        private const int FireStates = 7; // Orion-Edit: 3 > 7
         private const string FireRsiPath = "/Textures/_Orion/Effects/tile_fire.rsi"; // Orion-Edit
 
         private readonly float[] _fireTimer = new float[FireStates];

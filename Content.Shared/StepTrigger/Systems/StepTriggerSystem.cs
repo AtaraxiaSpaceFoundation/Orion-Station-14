@@ -23,7 +23,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Gravity;
-using Content.Shared.Inventory; // Goobstation
+using Content.Shared.Inventory;
 using Content.Shared.StepTrigger.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map.Components;

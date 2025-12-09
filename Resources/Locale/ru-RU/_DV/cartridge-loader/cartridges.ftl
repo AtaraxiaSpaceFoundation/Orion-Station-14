@@ -58,7 +58,7 @@ crime-assist-question-wasitsentient = Была ли жертва, о котор�
 # Наказания
 
 crime-assist-crimepunishment-innocent = Наказание не требуется
-#100 / 2-8 минут
+# 100 / 2-8 минут
 crime-assist-question-forcedmindbreakertoxin = Была ли жертва вынуждена принять разрушающий сознание токсин?
 crime-assist-crimepunishment-animalcruelty = Наказание: 5 минуты
 crime-assist-crimepunishment-theft = Наказание: 6 минуты
@@ -67,7 +67,7 @@ crime-assist-crimepunishment-vandalism = Наказание: 4 минуты
 crime-assist-crimepunishment-hooliganism = Наказание: По мере необходимости. Не более 8 минут.
 crime-assist-crimepunishment-contemptofcourt = Наказание: 3 минуты
 crime-assist-crimepunishment-perjuryfalsereport = Наказание: 4 минуты
-#200 / 8-15 минут
+# 200 / 8-15 минут
 crime-assist-crimepunishment-assault = Наказание: 10 минут
 crime-assist-crimepunishment-manslaughter = Наказание: 12 минут
 crime-assist-crimepunishment-grandtheft = Наказание: 10 минут
@@ -79,7 +79,7 @@ crime-assist-crimepunishment-possession = Наказание: до 10 минут
 crime-assist-crimepunishment-blackmarketeering = Наказание: 12 минут
 crime-assist-crimepunishment-obstructionofjustice = Наказание: 10 минут
 crime-assist-crimepunishment-rioting = Наказание: 15 минут
-#300 / 15+ перма
+# 300 / 15+ перма
 crime-assist-crimepunishment-kidnapping = Наказание: 20 минут
 crime-assist-crimepunishment-murder = Наказание: 20 минут
 crime-assist-crimepunishment-terrorism = Наказание: Перма

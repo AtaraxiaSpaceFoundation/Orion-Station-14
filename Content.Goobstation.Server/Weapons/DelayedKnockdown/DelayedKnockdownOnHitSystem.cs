@@ -17,7 +17,6 @@ using Content.Server.Stunnable;
 using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared._Shitcode.Weapons.Misc;
 using Content.Shared.Armor;
-using Content.Shared.Damage.Events;
 using Content.Shared.Inventory;
 using Content.Shared.StatusEffect;
 using Content.Shared.Timing;

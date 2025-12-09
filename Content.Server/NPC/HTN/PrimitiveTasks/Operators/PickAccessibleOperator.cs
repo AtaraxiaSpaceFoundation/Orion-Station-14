@@ -63,7 +63,7 @@ public sealed partial class PickAccessibleOperator : HTNOperator
 
         var target = path.Path.Last().Coordinates;
 
-        return (true, new Dictionary<string, object>()
+        return (true, new Dictionary<string, object>
         {
             { TargetCoordinates, target },
             { PathfindKey, path}

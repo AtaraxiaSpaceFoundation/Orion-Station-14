@@ -5,10 +5,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.SensorMonitoring;
 using Robust.Shared.Collections;
 using ConsoleUIState = Content.Shared.SensorMonitoring.SensorMonitoringConsoleBoundInterfaceState;
-using Content.Shared.DeviceNetwork.Components;
 using IncrementalUIState = Content.Shared.SensorMonitoring.SensorMonitoringIncrementalUpdate;
 
 namespace Content.Server.SensorMonitoring;
@@ -53,8 +53,8 @@ public sealed partial class SensorMonitoringConsoleSystem
 
         ConsoleUIState CalculateFullState()
         {
-            var sensors = new ValueList<ConsoleUIState.SensorData>();
-            var streams = new ValueList<ConsoleUIState.SensorStream>();
+            var sensors = new ValueList<SensorMonitoringConsoleBoundInterfaceState.SensorData>();
+            var streams = new ValueList<SensorMonitoringConsoleBoundInterfaceState.SensorStream>();
 
             foreach (var (ent, data) in comp.Sensors)
             {
@@ -64,7 +64,7 @@ public sealed partial class SensorMonitoringConsoleSystem
 
                 foreach (var (streamName, stream) in data.Streams)
                 {
-                    streams.Add(new ConsoleUIState.SensorStream
+                    streams.Add(new SensorMonitoringConsoleBoundInterfaceState.SensorStream
                     {
                         NetId = stream.NetId,
                         Name = streamName,
@@ -73,7 +73,7 @@ public sealed partial class SensorMonitoringConsoleSystem
                     });
                 }
 
-                sensors.Add(new ConsoleUIState.SensorData
+                sensors.Add(new SensorMonitoringConsoleBoundInterfaceState.SensorData
                 {
                     NetId = data.NetId,
                     Name = name,
@@ -92,8 +92,8 @@ public sealed partial class SensorMonitoringConsoleSystem
 
         SensorMonitoringIncrementalUpdate CalculateIncrementalUpdate()
         {
-            var sensors = new ValueList<IncrementalUIState.SensorData>();
-            var streams = new ValueList<IncrementalUIState.SensorStream>();
+            var sensors = new ValueList<SensorMonitoringIncrementalUpdate.SensorData>();
+            var streams = new ValueList<SensorMonitoringIncrementalUpdate.SensorStream>();
             var samples = new ValueList<SensorSample>();
 
             foreach (var data in comp.Sensors.Values)
@@ -109,7 +109,7 @@ public sealed partial class SensorMonitoringConsoleSystem
                             samples.Add(new SensorSample(sampleTime - comp.LastUIUpdate, value));
                     }
 
-                    streams.Add(new IncrementalUIState.SensorStream
+                    streams.Add(new SensorMonitoringIncrementalUpdate.SensorStream
                     {
                         NetId = stream.NetId,
                         Unit = stream.Unit,
@@ -117,7 +117,7 @@ public sealed partial class SensorMonitoringConsoleSystem
                     });
                 }
 
-                sensors.Add(new IncrementalUIState.SensorData { NetId = data.NetId, Streams = streams.ToArray() });
+                sensors.Add(new SensorMonitoringIncrementalUpdate.SensorData { NetId = data.NetId, Streams = streams.ToArray() });
             }
 
             return new IncrementalUIState

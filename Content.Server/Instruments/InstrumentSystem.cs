@@ -109,7 +109,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
     private void OnStrumentGetState(EntityUid uid, InstrumentComponent component, ref ComponentGetState args)
     {
-        args.State = new InstrumentComponentState()
+        args.State = new InstrumentComponentState
         {
             Playing = component.Playing,
             InstrumentProgram = component.InstrumentProgram,
@@ -127,19 +127,19 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
     {
         if (!NetEntity.TryParse(args[0], out var firstUidNet) || !TryGetEntity(firstUidNet, out var firstUid))
         {
-            shell.WriteError($"Cannot parse first Uid");
+            shell.WriteError("Cannot parse first Uid");
             return;
         }
 
         if (!NetEntity.TryParse(args[1], out var secondUidNet) || !TryGetEntity(secondUidNet, out var secondUid))
         {
-            shell.WriteError($"Cannot parse second Uid");
+            shell.WriteError("Cannot parse second Uid");
             return;
         }
 
         if (!HasComp<ActiveInstrumentComponent>(secondUid))
         {
-            shell.WriteError($"Puppet instrument is not active!");
+            shell.WriteError("Puppet instrument is not active!");
             return;
         }
 

@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.ChronoLegionnaire.EntitySystems;
-using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;

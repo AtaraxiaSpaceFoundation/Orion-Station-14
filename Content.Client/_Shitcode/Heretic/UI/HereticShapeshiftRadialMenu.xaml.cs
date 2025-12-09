@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Shitcode.Heretic.Components;
@@ -7,10 +6,6 @@ using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.Markdown.Mapping;
-using Robust.Shared.Serialization.Markdown.Sequence;
-using Robust.Shared.Serialization.Markdown.Value;
-using Robust.Shared.Utility;
 
 namespace Content.Client._Shitcode.Heretic.UI;
 

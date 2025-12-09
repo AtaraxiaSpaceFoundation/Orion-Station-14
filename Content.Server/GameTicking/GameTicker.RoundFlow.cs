@@ -80,6 +80,9 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Goobstation.Common.LastWords;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.Mind.Components;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -87,9 +90,12 @@ using Content.Server.Ghost;
 using Content.Server.Maps;
 using Content.Server.Roles;
 using Content.Shared.CCVar;
+using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Players;
 using Content.Shared.Preferences;
 using JetBrains.Annotations;
@@ -99,19 +105,10 @@ using Robust.Shared.Audio;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-
-// Goob Station - End of Round Screen
-using Content.Goobstation.Common.LastWords;
-using Content.Shared.Damage;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Goobstation.Shared.Mind.Components;
 
 namespace Content.Server.GameTicking
 {
@@ -131,7 +128,7 @@ namespace Content.Server.GameTicking
 
 #if EXCEPTION_TOLERANCE
         [ViewVariables]
-        private int _roundStartFailCount = 0;
+        private int _roundStartFailCount;
 #endif
 
         [ViewVariables]
@@ -360,7 +357,7 @@ namespace Content.Server.GameTicking
                     ev.Offset,
                     ev.Rotation))
             {
-                throw new Exception($"Failed to load map");
+                throw new Exception("Failed to load map");
             }
 
             _metaData.SetEntityName(map.Value.Owner, proto.MapName);
@@ -409,7 +406,7 @@ namespace Content.Server.GameTicking
                     ev.Offset,
                     ev.Rotation))
             {
-                throw new Exception($"Failed to load map");
+                throw new Exception("Failed to load map");
             }
 
             var gridUids = grids.Select(x => x.Owner).ToList();
@@ -542,7 +539,7 @@ namespace Content.Server.GameTicking
                     return;
                 }
 
-                _sawmill.Error($"Exception caught while trying to start the round! Restarting round...");
+                _sawmill.Error("Exception caught while trying to start the round! Restarting round...");
                 _runtimeLog.LogException(e, nameof(GameTicker));
                 _startingRound = false;
                 RestartRound();
@@ -678,7 +675,7 @@ namespace Content.Server.GameTicking
                 #endregion
                 // END
 
-                var playerEndRoundInfo = new RoundEndMessageEvent.RoundEndPlayerInfo()
+                var playerEndRoundInfo = new RoundEndMessageEvent.RoundEndPlayerInfo
                 {
                     // Note that contentPlayerData?.Name sticks around after the player is disconnected.
                     // This is as opposed to ply?.Name which doesn't.
@@ -1024,7 +1021,7 @@ namespace Content.Server.GameTicking
     /// </summary>
     public sealed class RefreshLateJoinAllowedEvent
     {
-        public bool DisallowLateJoin { get; private set; } = false;
+        public bool DisallowLateJoin { get; private set; }
 
         public void Disallow()
         {

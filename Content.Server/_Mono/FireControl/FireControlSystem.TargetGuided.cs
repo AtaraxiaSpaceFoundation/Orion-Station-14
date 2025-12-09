@@ -2,9 +2,9 @@ using System.Linq;
 using Content.Server._Mono.Projectiles.TargetGuided;
 using Content.Shared._Mono.FireControl;
 using Content.Shared.Projectiles;
+using Content.Shared.Shuttles.Components;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
-using Content.Shared.Shuttles.Components;
 using EntityCoordinates = Robust.Shared.Map.EntityCoordinates;
 
 namespace Content.Server._Mono.FireControl;

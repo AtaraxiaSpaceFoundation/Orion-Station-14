@@ -8,7 +8,6 @@
 using System.Collections.Generic;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
-using Robust.Shared.Utility;
 
 namespace Content.IntegrationTests.Pair;
 

@@ -20,7 +20,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
-
 namespace Content.Server.Audio;
 
 public sealed class ContentAudioSystem : SharedContentAudioSystem
@@ -30,7 +29,7 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    private SoundCollectionPrototype? _lobbyMusicCollection = default!;
+    private SoundCollectionPrototype? _lobbyMusicCollection;
     private string[]? _lobbyPlaylist;
 
     public override void Initialize()

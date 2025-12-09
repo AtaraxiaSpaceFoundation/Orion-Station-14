@@ -6,7 +6,6 @@ using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
 using Robust.Shared.Network;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 
 namespace Content.Goobstation.Shared.Wraith.Systems;

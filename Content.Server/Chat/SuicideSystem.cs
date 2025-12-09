@@ -76,6 +76,8 @@
 
 using Content.Server.Ghost;
 using Content.Server.Hands.Systems;
+using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._White.Xenomorphs.Infection;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
@@ -91,9 +93,6 @@ using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Shared._White.Xenomorphs.Infection;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components; // Shitmed Change
 
 namespace Content.Server.Chat;
 

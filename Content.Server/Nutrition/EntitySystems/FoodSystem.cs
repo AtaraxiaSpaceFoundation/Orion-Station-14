@@ -108,23 +108,27 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Server.Inventory;
 using Content.Server.Nutrition.Components;
-using Content.Shared.Nutrition.Components;
 using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
 using Content.Shared.Chemistry;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Clothing.EntitySystems;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
+using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Heretic;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
@@ -132,22 +136,18 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Stacks;
 using Content.Shared.Storage;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
+using Content.Shared.Whitelist;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Shared.Containers.ItemSlots;
-using Robust.Server.GameObjects;
-using Content.Shared.Whitelist;
-using Content.Shared.Destructible;
-using Content.Shared.Clothing.EntitySystems;
-using Content.Shared.Heretic; // Goobstation
 
 namespace Content.Server.Nutrition.EntitySystems;
 
@@ -659,7 +659,7 @@ public sealed class FoodSystem : EntitySystem
     public bool IsMouthBlocked(EntityUid uid, EntityUid? popupUid = null)
     {
         var attempt = new IngestionAttemptEvent();
-        RaiseLocalEvent(uid, attempt, false);
+        RaiseLocalEvent(uid, attempt);
         if (attempt.Cancelled && attempt.Blocker != null && popupUid != null)
         {
             _popup.PopupEntity(Loc.GetString("food-system-remove-mask", ("entity", attempt.Blocker.Value)),

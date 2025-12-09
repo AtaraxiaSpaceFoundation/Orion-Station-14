@@ -42,7 +42,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public bool Enabled { get; set; } = true;
 
         [ViewVariables]
-        public bool IsDirty { get; set; } = false;
+        public bool IsDirty { get; set; }
 
         [DataField]
         public string Inlet { get; set; } = "pipe";
@@ -57,7 +57,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public VentPressureBound PressureChecks { get; set; } = VentPressureBound.ExternalBound;
 
         [DataField]
-        public bool UnderPressureLockout { get; set; } = false;
+        public bool UnderPressureLockout { get; set; }
 
         /// <summary>
         ///     In releasing mode, do not pump when environment pressure is below this limit.
@@ -85,7 +85,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         /// Is the vent pressure lockout currently manually disabled?
         /// </summary>
         [DataField]
-        public bool IsPressureLockoutManuallyDisabled = false;
+        public bool IsPressureLockoutManuallyDisabled;
         /// <summary>
         /// The time when the manual pressure lockout will be reenabled.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
             }
         }
 
-        private float _internalPressureBound = 0;
+        private float _internalPressureBound;
 
         /// <summary>
         ///     Max pressure of the target gas (NOT relative to source).
@@ -159,7 +159,7 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         ///     Whether or not machine linking is enabled for this component.
         /// </summary>
         [DataField]
-        public bool CanLink = false;
+        public bool CanLink;
 
         [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<SinkPortPrototype>))]
         public string PressurizePort = "Pressurize";
@@ -171,11 +171,11 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         public float PressurizePressure = Atmospherics.OneAtmosphere;
 
         [DataField]
-        public float DepressurizePressure = 0;
+        public float DepressurizePressure;
 
         // When true, ignore under-pressure lockout. Used to re-fill rooms in air alarm "Fill" mode.
         [DataField]
-        public bool PressureLockoutOverride = false;
+        public bool PressureLockoutOverride;
         #endregion
 
         public GasVentPumpData ToAirAlarmData()

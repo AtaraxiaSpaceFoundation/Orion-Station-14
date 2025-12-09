@@ -167,3 +167,6 @@
       - !type:GibBehavior { }
   - type: GlobalAntagonist
     antagonistPrototype: globalAntagonistMorph
+  - type: GuideHelp
+    guides:
+    - Morph

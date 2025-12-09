@@ -26,8 +26,8 @@ public sealed class EntryPoint : GameServer
 
         IoCManager.Resolve<IJoinQueueManager>().Initialize();
 
-        _curr = IoCManager.Resolve<ICommonCurrencyManager>(); // Goobstation
-        _curr.Initialize(); // Goobstation
+        _curr = IoCManager.Resolve<ICommonCurrencyManager>();
+        _curr.Initialize();
     }
 
     protected override void Dispose(bool disposing)

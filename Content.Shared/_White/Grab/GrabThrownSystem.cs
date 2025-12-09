@@ -16,7 +16,6 @@ using Robust.Shared.Player;
 using System.Numerics;
 using Content.Goobstation.Common.Standing;
 using Content.Shared._White.Standing;
-using Content.Shared.Standing;
 using Robust.Shared.Physics.Components;
 
 namespace Content.Shared._White.Grab;
@@ -99,7 +98,7 @@ public sealed class GrabThrownSystem : EntitySystem
         Vector2 vector,
         float grabThrownSpeed,
         DamageSpecifier? damageToUid = null,
-        DropHeldItemsBehavior behavior = DropHeldItemsBehavior.AlwaysDrop)
+        DropHeldItemsBehavior behavior = DropHeldItemsBehavior.NoDrop) // Goob edit
     {
         var comp = EnsureComp<GrabThrownComponent>(uid);
         comp.IgnoreEntity.Add(thrower);

@@ -31,15 +31,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Body.Systems;
+using Content.Server.Emp;
 using Content.Server.Mech.Components;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
@@ -57,13 +58,11 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Shared.Whitelist;
-using Content.Server.Emp; // Goobstation
 
 namespace Content.Server.Mech.Systems;
 
 /// <inheritdoc/>
-public sealed partial class MechSystem : SharedMechSystem
+public sealed class MechSystem : SharedMechSystem
 {
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;

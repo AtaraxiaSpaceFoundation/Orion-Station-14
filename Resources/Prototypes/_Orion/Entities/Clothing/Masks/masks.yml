@@ -30,3 +30,14 @@
     - IPCMaskWearable # EE - IPCs
   - type: ScannableForPoints # Goob
     points: 1
+
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasEmerald
+  name: ancient gas mask
+  description: Gas mask is made of durable materials.
+  components:
+    - type: Sprite
+      sprite: _Orion/Clothing/Mask/emerald.rsi
+    - type: Clothing
+      sprite: _Orion/Clothing/Mask/emerald.rsi

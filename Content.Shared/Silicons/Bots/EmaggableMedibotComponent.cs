@@ -8,7 +8,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Mobs;
-using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Silicons.Bots;

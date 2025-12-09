@@ -108,7 +108,6 @@ using Content.Shared.Clothing;
 using Content.Shared.DetailExaminable;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.NameIdentifier;
 using Content.Shared.PDA;
 using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;

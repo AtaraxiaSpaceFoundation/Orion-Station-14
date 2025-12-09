@@ -77,7 +77,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Antag;
+using Content.Server.Chat.Systems;
 using Content.Server.Communications;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Nuke;
@@ -88,6 +90,7 @@ using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
+using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mobs;
@@ -97,17 +100,14 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Nuke;
 using Content.Shared.NukeOps;
 using Content.Shared.Store;
+using Content.Shared.Store.Components;
 using Content.Shared.Tag;
 using Content.Shared.Zombies;
+using Robust.Server.Player;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Shared.Store.Components;
-using Content.Server.Station.Systems;
-using Content.Server.Chat.Systems;
-using Robust.Server.Player;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.GameTicking.Rules;
 

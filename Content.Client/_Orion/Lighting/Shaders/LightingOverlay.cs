@@ -16,11 +16,9 @@ namespace Content.Client._Orion.Lighting.Shaders;
 
 public sealed class LightingOverlay : Overlay
 {
-    private readonly IPrototypeManager _prototypeManager;
     private readonly EntityManager _entityManager;
     private readonly SpriteSystem _spriteSystem;
     private readonly TransformSystem _transformSystem;
-    private readonly IConfigurationManager _cfg;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceEntities;
     public override bool RequestScreenTexture => true;
@@ -32,14 +30,13 @@ public sealed class LightingOverlay : Overlay
     {
         _entityManager = entityManager;
         _spriteSystem = entityManager.EntitySysManager.GetEntitySystem<SpriteSystem>();
-        _prototypeManager = prototypeManager;
         _transformSystem = entityManager.EntitySysManager.GetEntitySystem<TransformSystem>();
-        _cfg = IoCManager.Resolve<IConfigurationManager>();
-        _cfg.OnValueChanged(CCVars.EnableLightsGlowing, val => _enableGlowing = val, true);
+        var cfg = IoCManager.Resolve<IConfigurationManager>();
+        cfg.OnValueChanged(CCVars.EnableLightsGlowing, val => _enableGlowing = val, true);
 
         IoCManager.InjectDependencies(this);
 
-        _shader = _prototypeManager.Index<ShaderPrototype>("LightingOverlay").InstanceUnique();
+        _shader = prototypeManager.Index<ShaderPrototype>("LightingOverlay").InstanceUnique();
         ZIndex = (int) DrawDepth.Effects;
     }
 
@@ -73,12 +70,12 @@ public sealed class LightingOverlay : Overlay
                 continue;
 
             var color = component.Color ?? pointLight.Color;
-            var (_, _, worldMatrix) = xform.GetWorldPositionRotationMatrix(xformCompQuery);
+            var worldMatrix = _transformSystem.GetWorldMatrix(xform, xformCompQuery);
             handle.SetTransform(worldMatrix);
 
-            var mask = _spriteSystem.Frame0(component.Sprite); // mask
-            var xOffset = component.Offsetx - (mask.Width / 2) / EyeManager.PixelsPerMeter;
-            var yOffset = component.Offsety - (mask.Height / 2) / EyeManager.PixelsPerMeter;
+            var mask = _spriteSystem.Frame0(component.Sprite); // Mask
+            var xOffset = component.Offsetx - (mask.Width / 2f) / EyeManager.PixelsPerMeter;
+            var yOffset = component.Offsety - (mask.Height / 2f) / EyeManager.PixelsPerMeter;
             var textureVector = new Vector2(xOffset, yOffset);
 
             handle.DrawTexture(mask, textureVector, color);

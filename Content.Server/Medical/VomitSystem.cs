@@ -89,7 +89,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Medical; // goob edit
+using Content.Goobstation.Common.Medical;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
@@ -97,8 +97,8 @@ using Content.Server.Forensics;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Nutrition.Components;

@@ -14,7 +14,6 @@ using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared.Tag;
 using Robust.Client.GameObjects;
 using Robust.Shared.Graphics.RSI;
-using Robust.Shared.Utility;
 
 namespace Content.Client._Shitcode.Heretic;
 

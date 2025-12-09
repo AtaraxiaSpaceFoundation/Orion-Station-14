@@ -8,7 +8,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Construction.Components;
 using Content.Shared.Eye;
 using Content.Shared.SubFloor;
 using Robust.Server.Player;
@@ -74,7 +73,7 @@ public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
 
         _eye.RefreshVisibilityMask((ent.Value, eyeComp));
 
-        RaiseNetworkEvent(new ShowSubfloorRequestEvent()
+        RaiseNetworkEvent(new ShowSubfloorRequestEvent
         {
             Value = ev.Value,
         }, args.SenderSession);

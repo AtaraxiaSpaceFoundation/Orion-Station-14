@@ -49,7 +49,7 @@ public sealed partial class PathfindingSystem
                 // Found target
                 var path = ReconstructPath(node, cameFrom);
 
-                return new SimplePathResult()
+                return new SimplePathResult
                 {
                     CameFrom = cameFrom,
                     Path = path,

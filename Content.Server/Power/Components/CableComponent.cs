@@ -61,8 +61,8 @@
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Power;
 using Content.Shared.Tools;
-using Robust.Shared.Prototypes;
 using Content.Shared.Tools.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Power.Components;
 

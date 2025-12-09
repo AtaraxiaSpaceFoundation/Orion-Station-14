@@ -11,14 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Content.Server.Administration.Managers;
-using Robust.Shared.CPUJob.JobQueues;
-using Robust.Shared.CPUJob.JobQueues.Queues;
 using Content.Server.NPC.HTN.PrimitiveTasks;
 using Content.Server.NPC.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Mobs;
 using Content.Shared.NPC;
 using JetBrains.Annotations;
+using Robust.Shared.CPUJob.JobQueues;
+using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -270,14 +270,14 @@ public sealed class HTNSystem : EntitySystem
                         if (comp.Plan != null)
                         {
                             text.AppendLine($"BTR: {string.Join(", ", comp.Plan.BranchTraversalRecord)}");
-                            text.AppendLine($"tasks:");
+                            text.AppendLine("tasks:");
                             var root = comp.RootTask;
                             var btr = new List<int>();
                             var level = -1;
                             AppendDebugText(root, text, comp.Plan.BranchTraversalRecord, btr, ref level);
                         }
 
-                        RaiseNetworkEvent(new HTNMessage()
+                        RaiseNetworkEvent(new HTNMessage
                         {
                             Uid = GetNetEntity(uid),
                             Text = text.ToString(),

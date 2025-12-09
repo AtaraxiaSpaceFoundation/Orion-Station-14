@@ -14,7 +14,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._DV.Abilities.Chitinid;
 
-public sealed partial class ChitinidSystem : EntitySystem
+public sealed class ChitinidSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;

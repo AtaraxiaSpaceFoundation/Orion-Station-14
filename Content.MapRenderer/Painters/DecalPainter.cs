@@ -14,7 +14,6 @@ using System.IO;
 using System.Numerics;
 using Content.Shared.Decals;
 using Robust.Client.Graphics;
-using Robust.Client.ResourceManagement;
 using Robust.Client.Utility;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;

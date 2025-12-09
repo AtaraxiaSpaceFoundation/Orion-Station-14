@@ -5,10 +5,10 @@
   - type: StationEvent
     weight: 3 # Goobstation - was 7.5
     duration: null
-    minimumPlayers: 45 # Orion-Edit | 50 > 45
+    minimumPlayers: 45 # Orion-Edit: 50 > 45
     earliestStart: 30 # Goobstation
     #reoccurrenceDelay: 50 # Goobstation - no longer needed
-    maxOccurrences: 2 # Orion-Edit | 1 > 2
+    maxOccurrences: 2 # Orion-Edit: 1 > 2
     chaos:
       Hostile: 400
       Medical: 400
@@ -27,8 +27,8 @@
     agentName: xenomorph-round-end-agent-name
     definitions:
     - spawnerPrototype: SpawnPointGhostXenomorph
-      min: 1 # Orion-Edit | 2 > 1
-      max: 2 # Orion-Edit | 4 > 2
+      min: 1 # Orion-Edit: 2 > 1
+      max: 2 # Orion-Edit: 4 > 2
       pickPlayer: false
       briefing:
         text: xenomorph-role-greeting

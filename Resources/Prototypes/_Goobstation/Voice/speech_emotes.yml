@@ -13,7 +13,7 @@
 - type: emote
   id: Fart
   name: chat-emote-name-fart
-#  category: Farts # Orion-Remove
+#  category: Farts # Orion-Edit: Removed
   available: false # Orion
   icon: _Goobstation/Interface/Emotes/fart.png
   whitelist:
@@ -69,7 +69,7 @@
 - type: emote
   id: FartInhale
   name: chat-emote-name-fart-inhale
-#  category: Farts # Orion-Remove
+#  category: Farts # Orion-Edit: Removed
   available: false # Orion
   icon: _Goobstation/Interface/Emotes/fart-in.png
   whitelist:
@@ -111,7 +111,7 @@
 - type: emote
   id: FartSuper
   name: chat-emote-name-fart-super
-#  category: Farts # Orion-Remove
+#  category: Farts # Orion-Edit: Removed
   available: false # Orion
   icon: _Goobstation/Interface/Emotes/fart-super.png
   whitelist:

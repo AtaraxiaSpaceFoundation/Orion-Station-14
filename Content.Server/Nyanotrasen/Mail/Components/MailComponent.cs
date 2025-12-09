@@ -4,9 +4,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Threading;
-using Robust.Shared.Audio;
-using Content.Shared.Storage;
 using Content.Shared.Mail;
+using Content.Shared.Storage;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Mail.Components
 {
@@ -45,7 +45,7 @@ namespace Content.Server.Mail.Components
         /// always be Fragile, despite its contents.
         /// </remarks>
         [DataField]
-        public bool IsFragile = false;
+        public bool IsFragile;
 
         /// <summary>
         /// Is this package considered priority mail?
@@ -61,14 +61,14 @@ namespace Content.Server.Mail.Components
         /// always be Priority.
         /// </remarks>
         [DataField]
-        public bool IsPriority = false;
+        public bool IsPriority;
 
         // Frontier Mail Port: large mail
         /// <summary>
         /// Whether this parcel is large.
         /// </summary>
         [DataField]
-        public bool IsLarge = false;
+        public bool IsLarge;
         // End Frontier: large mail
 
         /// <summary>

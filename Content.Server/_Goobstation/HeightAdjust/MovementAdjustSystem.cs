@@ -3,11 +3,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.CCVar;
-using Robust.Shared.Configuration;
-using Content.Shared._EinsteinEngines.HeightAdjust;
 using Content.Goobstation.Shared.Sprinting;
 using Content.Shared._EinsteinEngines.Flight;
+using Content.Shared._EinsteinEngines.HeightAdjust;
+using Content.Shared.CCVar;
+using Robust.Shared.Configuration;
 
 namespace Content.Server._Goobstation.HeightAdjust;
 

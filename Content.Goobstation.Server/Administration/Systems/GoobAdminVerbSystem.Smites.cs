@@ -3,9 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Threading;
 using Content.Goobstation.Shared.MisandryBox.Smites;
-using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Database;
 using Content.Shared.Verbs;

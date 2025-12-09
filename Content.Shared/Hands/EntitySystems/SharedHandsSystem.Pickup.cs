@@ -16,7 +16,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Diagnostics;
 using Content.Shared.Database;
 using Content.Shared.Hands.Components;
 using Content.Shared.Item;

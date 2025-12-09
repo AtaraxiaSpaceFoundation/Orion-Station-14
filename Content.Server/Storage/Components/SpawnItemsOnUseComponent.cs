@@ -32,7 +32,7 @@ namespace Content.Server.Storage.Components
         ///     A sound to play when the items are spawned. For example, gift boxes being unwrapped.
         /// </summary>
         [DataField("sound")]
-        public SoundSpecifier? Sound = null;
+        public SoundSpecifier? Sound;
 
         /// <summary>
         ///     How many uses before the item should delete itself.

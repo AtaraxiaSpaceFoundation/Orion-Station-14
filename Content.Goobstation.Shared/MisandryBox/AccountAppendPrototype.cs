@@ -4,11 +4,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System;
-using System.Collections.Generic;
 using Content.Goobstation.Shared.Serialization;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.Manager.Attributes;
 
 namespace Content.Goobstation.Shared.MisandryBox;
 

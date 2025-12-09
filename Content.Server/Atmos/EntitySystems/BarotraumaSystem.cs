@@ -39,23 +39,21 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
-using Content.Goobstation.Shared.Atmos.Events; // goob edit
+using Content.Goobstation.Common.Atmos;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.Atmos.Events;
 using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Shared._Goobstation.Wizard.Spellblade;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Damage;
 using Content.Shared.Database;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Robust.Shared.Containers;
-
-// Shitmed Change
-using Content.Shared._Shitmed.Targeting;
-using Content.Goobstation.Common.Atmos;
 
 namespace Content.Server.Atmos.EntitySystems
 {

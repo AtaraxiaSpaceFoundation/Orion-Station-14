@@ -90,25 +90,34 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
+using Content.Server.Preferences.Managers;
 using Content.Server.Roles.Jobs;
 using Content.Server.Warps;
+using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._Orion.Antag;
+using Content.Shared._Orion.Antag.Components;
+using Content.Shared._Orion.CustomGhost;
+using Content.Shared._Shitmed.Body;
+using Content.Shared._White.Xenomorphs.Infection;
 using Content.Shared.Actions;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Server.Preferences.Managers;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
+using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -118,35 +127,22 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
+using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.Silicons.Laws.Components;
+using Content.Shared.SSDIndicator;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
-using Content.Shared._White.Xenomorphs.Infection;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-
-// Shitmed Change
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
-using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Damage;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Orion.Antag;
-using Content.Shared._Orion.CustomGhost;
-using Content.Shared.Humanoid;
-using Content.Shared.Roles;
-using Content.Shared.Silicons.Borgs.Components;
-using Content.Shared.Silicons.Laws.Components;
-using Content.Shared.SSDIndicator;
-using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -351,7 +347,7 @@ namespace Content.Server.Ghost
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
         {
-            var timeSinceDeath = _gameTiming.CurTime.Subtract(component.TimeOfDeath); // Orion-Edit | RealTime > CurTime
+            var timeSinceDeath = _gameTiming.CurTime.Subtract(component.TimeOfDeath); // Orion-Edit: RealTime > CurTime
             var deathTimeInfo = timeSinceDeath.Minutes > 0
                 ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
                 : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
@@ -438,7 +434,7 @@ namespace Content.Server.Ghost
                 return;
             }
 
-//            WarpTo(attached, target); // Orion-Remove
+//            WarpTo(attached, target); // Orion-Edit: Removed
 
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(attached)} ghost warped to {ToPrettyString(target)}");
 
@@ -490,7 +486,7 @@ namespace Content.Server.Ghost
         // Orion-Start
         private List<GhostWarpPlace> GetLocationWarps()
         {
-            var warps = new List<GhostWarpPlace> { };
+            var warps = new List<GhostWarpPlace>();
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
@@ -503,9 +499,9 @@ namespace Content.Server.Ghost
         }
         // Orion-End
 
-        private List<GhostWarpPlayer> GetPlayerWarps() // Orion-Edit | GetLocationWarps > GetPlayerWarps
+        private List<GhostWarpPlayer> GetPlayerWarps() // Orion-Edit: GetLocationWarps > GetPlayerWarps
         {
-/* // Orion-Remove
+/* // Orion-Edit: Removed
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
@@ -515,7 +511,7 @@ namespace Content.Server.Ghost
 */
 
             // Orion-Start
-            var warps = new List<GhostWarpPlayer> { };
+            var warps = new List<GhostWarpPlayer>();
             foreach (var mindContainer in EntityQuery<MindContainerComponent>())
             {
                 var entity = mindContainer.Owner;
@@ -595,7 +591,7 @@ namespace Content.Server.Ghost
 
         private List<GhostWarpGlobalAntagonist> GetAntagonistWarps()
         {
-            var warps = new List<GhostWarpGlobalAntagonist> { };
+            var warps = new List<GhostWarpGlobalAntagonist>();
 
             foreach (var antagonist in EntityQuery<GlobalAntagonistComponent>())
             {
@@ -617,7 +613,7 @@ namespace Content.Server.Ghost
         }
         // Orion-End
 
-/* // Orion-Remove
+/* // Orion-Edit: Removed
         private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except)
         {
             foreach (var player in _player.Sessions)
@@ -746,7 +742,7 @@ namespace Content.Server.Ghost
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
-/* // Orion-Remove
+/* // Orion-Edit: Removed
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
                 _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))

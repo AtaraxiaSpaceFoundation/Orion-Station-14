@@ -22,7 +22,7 @@ public sealed partial class PremiumPassWindow : DefaultWindow
         PurchaseButton.OnPressed += OnButtonPress;
     }
 
-    private void OnButtonPress(Button.ButtonEventArgs args)
+    private void OnButtonPress(BaseButton.ButtonEventArgs args)
     {
         PurchaseButton.Visible = false;
         PurchasedButton.Visible = true;

@@ -13,8 +13,8 @@ using Content.Server.Atmos.Monitor.Components;
 using Content.Server.Atmos.Monitor.Systems;
 using Content.Server.Wires;
 using Content.Shared.Atmos.Monitor.Components;
-using Content.Shared.Wires;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Wires;
 
 namespace Content.Server.Atmos.Monitor;
 

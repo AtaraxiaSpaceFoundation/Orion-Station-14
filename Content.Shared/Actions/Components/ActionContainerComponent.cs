@@ -4,7 +4,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared.Actions;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 
@@ -19,5 +18,6 @@ public sealed partial class ActionsContainerComponent : Component
     public const string ContainerId = "actions";
 
     [ViewVariables]
+    [Access(Other = AccessPermissions.ReadWriteExecute)] // Goobstation
     public Container Container = default!;
 }

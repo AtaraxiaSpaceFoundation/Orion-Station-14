@@ -27,6 +27,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Server._Goobstation.Wizard.NPC;
 using Content.Server.Atmos.Components;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Hands.Systems;
@@ -42,10 +44,10 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.Fluids.Components;
-using Content.Shared.Hands.Components;
+using Content.Shared.Foldable;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components; // Goobstation
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.Components;
@@ -57,15 +59,12 @@ using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Whitelist;
+using Content.Shared.Wieldable;
+using Content.Shared.Wieldable.Components;
 using Microsoft.Extensions.ObjectPool;
 using Robust.Server.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Server._Goobstation.Wizard.NPC;
-using Content.Shared.Foldable;
-using Content.Shared.Wieldable;
-using Content.Shared.Wieldable.Components;
 
 namespace Content.Server.NPC.Systems;
 
@@ -373,7 +372,7 @@ public sealed class NPCUtilitySystem : EntitySystem
             {
                 var radius = blackboard.GetValueOrDefault<float>(blackboard.GetVisionRadiusKey(EntityManager), EntityManager);
 
-                return _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f, null) ? 1f : 0f;
+                return _examine.InRangeUnOccluded(owner, targetUid, radius + 0.5f) ? 1f : 0f;
             }
             case TargetInLOSOrCurrentCon:
             {
@@ -390,7 +389,7 @@ public sealed class NPCUtilitySystem : EntitySystem
                     return 1f;
                 }
 
-                return _examine.InRangeUnOccluded(owner, targetUid, radius + bufferRange, null) ? 1f : 0f;
+                return _examine.InRangeUnOccluded(owner, targetUid, radius + bufferRange) ? 1f : 0f;
             }
             case TargetIsAliveCon:
             {
@@ -405,7 +404,7 @@ public sealed class NPCUtilitySystem : EntitySystem
                 return _mobState.IsDead(targetUid) ? 1f : 0f;
             }
             case TargetMeleeCon:
-            {   
+            {
                 if (TryComp<MeleeWeaponComponent>(targetUid, out var melee) &&
                     (!TryComp<FoldableComponent>(targetUid, out var foldable) || foldable.IsFolded)) // Goobstation
                 {

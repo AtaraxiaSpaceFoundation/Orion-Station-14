@@ -24,7 +24,6 @@ using Content.Shared._Goobstation.Wizard;
 using Content.Shared._Goobstation.Wizard.BindSoul;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
-using Content.Shared.Cloning;
 using Content.Shared.Cloning.Events;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
@@ -32,6 +31,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Parallax;
@@ -80,6 +80,12 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         SubscribeLocalEvent<EntParentChangedMessage>(OnParentChanged);
 
         SubscribeLocalEvent<DimensionShiftEvent>(OnDimensionShift);
+        SubscribeLocalEvent<NpcFactionMemberComponent, GrantFactionsEvent>(OnGrantFactions);
+    }
+
+    private void OnGrantFactions(Entity<NpcFactionMemberComponent> ent, ref GrantFactionsEvent args)
+    {
+        _faction.AddFactions(ent.AsNullable(), args.Factions);
     }
 
     private void OnApprenticeClone(Entity<ApprenticeComponent> ent, ref CloningEvent args)
@@ -153,8 +159,6 @@ public sealed class WizardRuleSystem : GameRuleSystem<WizardRuleComponent>
         _audio.PlayGlobal(ev.Sound, Filter.Broadcast(), true);
 
         _log.Add(LogType.EventRan, LogImpact.Extreme, $"Station map changed via wizard spellbook dimension shift.");
-
-        return;
     }
 
     private void OnParentChanged(ref EntParentChangedMessage args)

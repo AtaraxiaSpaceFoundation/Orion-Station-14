@@ -17,6 +17,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -25,7 +26,6 @@ using Content.Shared.Lube;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Content.Shared.Chemistry.EntitySystems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 
@@ -68,7 +68,7 @@ public sealed class LubeSystem : EntitySystem
 
         var user = args.User;
 
-        var verb = new UtilityVerb()
+        var verb = new UtilityVerb
         {
             Act = () => TryLube(entity, target, user),
             IconEntity = GetNetEntity(entity),

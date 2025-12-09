@@ -44,7 +44,7 @@
   - type: ItemSlots
     slots:
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgeG8Demolishing
         priority: 1
         whitelist:

@@ -47,9 +47,9 @@ using Content.Server.Administration.Logs;
 using Content.Server.EUI;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
-using Content.Shared.Ghost.Roles.Raffles;
 using Content.Server.Ghost.Roles.UI;
 using Content.Server.Mind.Commands;
+using Content.Server.Popups;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -57,14 +57,18 @@ using Content.Shared.Follower;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Content.Shared.Ghost.Roles;
+using Content.Shared.Ghost.Roles.Components;
+using Content.Shared.Ghost.Roles.Raffles;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Players;
 using Content.Shared.Roles;
+using Content.Shared.Verbs;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
@@ -73,10 +77,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Server.Popups;
-using Content.Shared.Verbs;
-using Robust.Shared.Collections;
-using Content.Shared.Ghost.Roles.Components;
 
 namespace Content.Server.Ghost.Roles;
 
@@ -828,7 +828,7 @@ public sealed class GhostRoleSystem : EntitySystem
     {
         var verbText = Loc.GetString(prototype.Name);
 
-        return new Verb()
+        return new Verb
         {
             Text = verbText,
             Disabled = component.Prototype == prototype.EntityPrototype,

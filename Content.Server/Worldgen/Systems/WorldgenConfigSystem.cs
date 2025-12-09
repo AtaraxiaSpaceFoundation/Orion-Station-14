@@ -80,7 +80,7 @@ public sealed class WorldgenConfigSystem : EntitySystem
     /// </summary>
     private void OnLoadingMaps(RoundStartingEvent ev)
     {
-        if (_enabled == false)
+        if (!_enabled)
             return;
 
         var target = _map.GetMapOrInvalid(_gameTicker.DefaultMap);

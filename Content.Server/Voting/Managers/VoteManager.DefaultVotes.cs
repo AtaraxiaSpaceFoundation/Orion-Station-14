@@ -541,7 +541,6 @@ namespace Content.Server.Voting.Managers
                         _adminLogger.Add(LogType.Vote, LogImpact.Extreme, $"Votekick for {located.Username} attempted to pass, but an admin was online. Yes: {votesYes} / No: {votesNo}. Yes: {yesVotersString} / No: {noVotersString}");
                         AnnounceCancelledVotekickForVoters(targetEntityName);
                         _voteWebhooks.UpdateCancelledWebhookIfConfigured(webhookState, Loc.GetString("votekick-webhook-cancelled-admin-online"));
-                        return;
                     }
                     // Check if the target is an antag and the vote reason is raiding (this is to prevent false positives)
                     else if (isAntagSafe && reason == VotekickReasonType.Raiding.ToString())
@@ -549,7 +548,6 @@ namespace Content.Server.Voting.Managers
                         _adminLogger.Add(LogType.Vote, LogImpact.Extreme, $"Votekick for {located.Username} due to {reason} finished, created by {initiator}, but was cancelled due to the target being an antagonist.");
                         AnnounceCancelledVotekickForVoters(targetEntityName);
                         _voteWebhooks.UpdateCancelledWebhookIfConfigured(webhookState, Loc.GetString("votekick-webhook-cancelled-antag-target"));
-                        return;
                     }
                     // Check if the target is an admin/de-admined admin
                     else if (targetSession.AttachedEntity != null && _adminMgr.IsAdmin(targetSession.AttachedEntity.Value, true))
@@ -557,7 +555,6 @@ namespace Content.Server.Voting.Managers
                         _adminLogger.Add(LogType.Vote, LogImpact.Extreme, $"Votekick for {located.Username} due to {reason} finished, created by {initiator}, but was cancelled due to the target being a de-admined admin.");
                         AnnounceCancelledVotekickForVoters(targetEntityName);
                         _voteWebhooks.UpdateCancelledWebhookIfConfigured(webhookState, Loc.GetString("votekick-webhook-cancelled-admin-target"));
-                        return;
                     }
                     else
                     {

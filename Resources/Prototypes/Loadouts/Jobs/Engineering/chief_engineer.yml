@@ -138,7 +138,7 @@
   id: ChiefEngineerMantle
   equipment:
     neck: ClothingNeckMantleCE
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MasterCE
 

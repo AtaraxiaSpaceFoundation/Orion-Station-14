@@ -3,12 +3,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Chat;
 using Content.Server.Speech.Components;
+using Content.Shared.Chat;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed partial class VoiceOverrideSystem : EntitySystem
+public sealed class VoiceOverrideSystem : EntitySystem
 {
     public override void Initialize()
     {

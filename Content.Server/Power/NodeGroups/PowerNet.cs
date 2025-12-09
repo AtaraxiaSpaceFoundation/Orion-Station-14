@@ -13,15 +13,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.NodeContainer.NodeGroups;
-using Content.Server.NodeContainer.Nodes;
-using Content.Server.Power.Components;
-using Content.Server.Power.EntitySystems;
-using JetBrains.Annotations;
-using Robust.Shared.Utility;
 using System.Linq;
+using Content.Server.NodeContainer.NodeGroups;
+using Content.Server.Power.Components;
 using Content.Shared.NodeContainer;
 using Content.Shared.NodeContainer.NodeGroups;
+using JetBrains.Annotations;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Power.NodeGroups
 {
@@ -38,7 +36,7 @@ namespace Content.Server.Power.NodeGroups
 
     [NodeGroup(NodeGroupID.HVPower, NodeGroupID.MVPower)]
     [UsedImplicitly]
-    public sealed partial class PowerNet : BasePowerNet<IPowerNet>, IPowerNet
+    public sealed class PowerNet : BasePowerNet<IPowerNet>, IPowerNet
     {
         [ViewVariables] public readonly List<BatteryChargerComponent> Chargers = new();
         [ViewVariables] public readonly List<BatteryDischargerComponent> Dischargers = new();

@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Random;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Random;
 
 namespace Content.Server.Weapons.Melee.WeaponRandom;
 

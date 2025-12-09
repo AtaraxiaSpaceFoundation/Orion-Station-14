@@ -88,7 +88,7 @@
   recipes:
   - ElectrolysisUnitMachineCircuitboard
   - CentrifugeMachineCircuitboard
-#  - ChemDispenserMachineCircuitboard # Orion-Remove
+#  - ChemDispenserMachineCircuitboard # Orion-Edit: Replaced with Energy version
   - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
@@ -112,3 +112,4 @@
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
+  - StasisOperatingTableCircuitboard # Corvax-Goob-StasisOperatingTable

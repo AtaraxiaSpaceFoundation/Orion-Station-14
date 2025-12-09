@@ -54,12 +54,12 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared.GameTicking;
+using System.Text;
 using Content.Server.Station.Components;
+using Content.Shared._Orion.Time;
+using Content.Shared.GameTicking;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using System.Text;
-using Content.Shared._Orion.Time;
 
 namespace Content.Server.GameTicking
 {

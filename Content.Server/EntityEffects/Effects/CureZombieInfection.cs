@@ -13,8 +13,8 @@
 
 using Content.Server.Zombies;
 using Content.Shared.EntityEffects;
-using Robust.Shared.Prototypes;
 using Content.Shared.Zombies;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects;
 

@@ -25,7 +25,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Stunnable;
 
 namespace Content.Shared.Polymorph.Systems;
 
@@ -92,7 +91,7 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
 
     private void OnDisguiseShutdown(Entity<ChameleonDisguiseComponent> ent, ref ComponentShutdown args)
     {
-        // _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Orion-Remove
+//        _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Orion-Edit: Removed
         // Orion-Start
         if (!TryComp<ChameleonProjectorComponent>(ent.Comp.Projector, out var proj) || proj.NoRotActionEntity == null || proj.AnchorActionEntity == null)
             return;

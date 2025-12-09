@@ -39,22 +39,25 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Botany.Components;
 using Content.Server.Hands.Systems;
 using Content.Server.Kitchen.Components;
 using Content.Server.Popups;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Atmos;
 using Content.Shared.Botany;
 using Content.Shared.Burial.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Database;
 using Content.Shared.Examine;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Labels.Components;
 using Content.Shared.Popups;
 using Content.Shared.Random;
 using Content.Shared.Tag;
@@ -64,10 +67,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Administration.Logs;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Database;
-using Content.Shared.Labels.Components;
 
 namespace Content.Server.Botany.Systems;
 
@@ -171,7 +170,7 @@ public sealed class PlantHolderSystem : EntitySystem
                 if (component.Seed.CanScream)
                     args.PushMarkup(Loc.GetString("mutation-plant-scream"));
 
-                if (component.Seed.Viable == false)
+                if (!component.Seed.Viable)
                     args.PushMarkup(Loc.GetString("mutation-plant-unviable"));
             }
             else
@@ -185,9 +184,9 @@ public sealed class PlantHolderSystem : EntitySystem
             if (component.PestLevel >= 5)
                 args.PushMarkup(Loc.GetString("plant-holder-component-pest-high-level-message"));
 
-            args.PushMarkup(Loc.GetString($"plant-holder-component-water-level-message",
+            args.PushMarkup(Loc.GetString("plant-holder-component-water-level-message",
                 ("waterLevel", (int)component.WaterLevel)));
-            args.PushMarkup(Loc.GetString($"plant-holder-component-nutrient-level-message",
+            args.PushMarkup(Loc.GetString("plant-holder-component-nutrient-level-message",
                 ("nutritionLevel", (int)component.NutritionLevel)));
 
             if (component.DrawWarnings)
@@ -781,7 +780,7 @@ public sealed class PlantHolderSystem : EntitySystem
     /// <returns></returns>
     public bool DoScream(EntityUid plantholder, SeedData? seed = null)
     {
-        if (seed == null || seed.CanScream == false)
+        if (seed == null || !seed.CanScream)
             return false;
 
         _audio.PlayPvs(seed.ScreamSound, plantholder);

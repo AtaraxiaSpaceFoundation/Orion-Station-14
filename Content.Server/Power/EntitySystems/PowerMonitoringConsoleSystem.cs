@@ -19,28 +19,26 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.NodeContainer;
+using System.Linq;
 using Content.Server.NodeContainer.EntitySystems;
-using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
-using Content.Server.Power.Nodes;
 using Content.Server.Power.NodeGroups;
+using Content.Server.Power.Nodes;
 using Content.Server.StationEvents.Components;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.NodeContainer;
 using Content.Shared.Pinpointer;
-using Content.Shared.Station.Components;
 using Content.Shared.Power;
+using Content.Shared.Station.Components;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Shared.NodeContainer;
 
 namespace Content.Server.Power.EntitySystems;
 
 [UsedImplicitly]
-internal sealed partial class PowerMonitoringConsoleSystem : SharedPowerMonitoringConsoleSystem
+internal sealed class PowerMonitoringConsoleSystem : SharedPowerMonitoringConsoleSystem
 {
     [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
     [Dependency] private readonly SharedMapSystem _sharedMapSystem = default!;
@@ -344,7 +342,7 @@ internal sealed partial class PowerMonitoringConsoleSystem : SharedPowerMonitori
         var powerConsumerQuery = AllEntityQuery<PowerConsumerComponent, TransformComponent>();
         while (powerConsumerQuery.MoveNext(out var ent, out var powerConsumer, out var xform))
         {
-            if (xform.Anchored == false || xform.GridUid != gridUid)
+            if (!xform.Anchored || xform.GridUid != gridUid)
                 continue;
 
             if (TryComp<PowerMonitoringDeviceComponent>(ent, out var device))
@@ -368,7 +366,7 @@ internal sealed partial class PowerMonitoringConsoleSystem : SharedPowerMonitori
             if (device.IsCollectionMasterOrChild && !device.IsCollectionMaster)
                 continue;
 
-            if (xform.Anchored == false || xform.GridUid != gridUid)
+            if (!xform.Anchored || xform.GridUid != gridUid)
                 continue;
 
             // Get the device power stats

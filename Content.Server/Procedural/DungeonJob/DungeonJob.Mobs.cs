@@ -10,7 +10,6 @@ using Content.Server.NPC.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonLayers;
-using Content.Shared.Storage;
 using Robust.Shared.Collections;
 
 namespace Content.Server.Procedural.DungeonJob;

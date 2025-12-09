@@ -37,7 +37,7 @@ namespace Content.Server.GameTicking.Commands
             {
                 if (!_gameTicker.TryFindGamePreset(presetName, out preset))
                 {
-                    shell.WriteLine(Loc.GetString($"cmd-forcepreset-no-preset-found", ("preset", presetName)));
+                    shell.WriteLine(Loc.GetString("cmd-forcepreset-no-preset-found", ("preset", presetName)));
                     return;
                 }
             }

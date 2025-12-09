@@ -118,7 +118,7 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
-using Content.Shared._DV.StepTrigger.Components; // DeltaV - NoShoesSilentFootstepsComponent
+using Content.Shared._DV.StepTrigger.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -132,11 +132,9 @@ using Robust.Shared.Physics.Controllers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-// Tile Movement Change
 using Content.Shared.Interaction;
-using Content.Shared.Physics;
 using Content.Shared._vg.TileMovement;
-using Content.Shared.Standing; // Goobstation - kil mofs
+using Content.Shared.Standing;
 using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
 
 namespace Content.Shared.Movement.Systems;

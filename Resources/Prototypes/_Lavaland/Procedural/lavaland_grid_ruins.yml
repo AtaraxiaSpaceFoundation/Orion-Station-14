@@ -96,7 +96,7 @@
 - type: lavalandGridRuin
   id: Hermit
   name: lavaland-ruin-shelter
-  path: /Maps/_Orion/Lavaland/ruin_hermit.yml # Orion-Edit | Get real hermit ghost role
+  path: /Maps/_Orion/Lavaland/ruin_hermit.yml # Orion-Edit: Get real hermit ghost role
   priority: 11
 
 - type: lavalandGridRuin

@@ -123,7 +123,7 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
         if (xform.Coordinates.TryDistance(_entManager, targetCoordinates, out var distance) && distance <= range)
         {
             // In range
-            return (true, new Dictionary<string, object>()
+            return (true, new Dictionary<string, object>
             {
                 {NPCBlackboard.OwnerCoordinates, blackboard.GetValueOrDefault<EntityCoordinates>(NPCBlackboard.OwnerCoordinates, _entManager)}
             });
@@ -131,7 +131,7 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
 
         if (!PathfindInPlanning)
         {
-            return (true, new Dictionary<string, object>()
+            return (true, new Dictionary<string, object>
             {
                 {NPCBlackboard.OwnerCoordinates, targetCoordinates}
             });
@@ -152,21 +152,19 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
                 return (false, null);
             }
 
-            return (true, new Dictionary<string, object>()
+            return (true, new Dictionary<string, object>
             {
                 {NPCBlackboard.OwnerCoordinates, targetCoordinates},
                 {PathfindKey, path}
             });
         }
         // Goobstation - else try move directly to target
-        else
+
+        return (true, new Dictionary<string, object>
         {
-            return (true, new Dictionary<string, object>()
-            {
-                {NPCBlackboard.OwnerCoordinates, targetCoordinates},
-                {DirectMoveTargetKey, true}
-            });
-        }
+            {NPCBlackboard.OwnerCoordinates, targetCoordinates},
+            {DirectMoveTargetKey, true}
+        });
     }
 
     // Given steering is complicated we'll hand it off to a dedicated system rather than this singleton operator.

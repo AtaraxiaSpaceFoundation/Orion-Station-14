@@ -3,9 +3,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.EntityEffects;
-using Content.Shared.Damage;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.Damage;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.EffectConditions;
@@ -33,7 +33,7 @@ public sealed partial class TotalDamage : EntityEffectCondition
     public override string GuidebookExplanation(IPrototypeManager prototype)
     {
         return Loc.GetString("reagent-effect-condition-guidebook-total-damage",
-            ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float()),
+            ("max", Max == FixedPoint2.MaxValue ? int.MaxValue : Max.Float()),
             ("min", Min.Float()));
     }
 }

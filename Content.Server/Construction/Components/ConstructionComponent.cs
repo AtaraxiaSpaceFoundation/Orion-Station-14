@@ -61,16 +61,16 @@ namespace Content.Server.Construction.Components
         public string Node { get; set; } = default!;
 
         [DataField("edge")]
-        public int? EdgeIndex { get; set; } = null;
+        public int? EdgeIndex { get; set; }
 
         [DataField("step")]
-        public int StepIndex { get; set; } = 0;
+        public int StepIndex { get; set; }
 
         [DataField("containers")]
         public HashSet<string> Containers { get; set; } = new();
 
         [DataField("defaultTarget")]
-        public string? TargetNode { get; set; } = null;
+        public string? TargetNode { get; set; }
 
         [ViewVariables]
         public int? TargetEdgeIndex { get; set; } = null;

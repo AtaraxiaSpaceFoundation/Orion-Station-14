@@ -119,7 +119,7 @@
         effectProto: StatusEffectDrowsiness
         time: 2
         type: Remove
-#      - !type:AdjustReagent # Orion-Remove
+#      - !type:AdjustReagent # Orion-Edit: Removed
 #        reagent: Theobromine
 #        amount: 0.1
   fizziness: 0.4
@@ -304,7 +304,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.16 # Orion-Edit | 0.1 > 0.16
+        amount: 0.16 # Orion-Edit: 0.1 > 0.16
     Poison:
       effects:
       - !type:HealthChange

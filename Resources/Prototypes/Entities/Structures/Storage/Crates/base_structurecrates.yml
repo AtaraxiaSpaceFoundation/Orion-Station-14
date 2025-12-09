@@ -90,7 +90,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.4625,0.4,0.2275" # Orion-Edit | Was "-0.4,-0.4,0.4,0.29"
+          bounds: "-0.4,-0.4625,0.4,0.2275" # Orion-Edit: Was "-0.4,-0.4,0.4,0.29"
         density: 50
         mask:
         - CrateMask #this is so they can go under plastic flaps
@@ -152,6 +152,9 @@
     containers:
       - entity_storage
   - type: RequireProjectileTarget
+  - type: Tag
+    tags:
+      - Crate
 
 - type: entity
   parent: CrateGeneric

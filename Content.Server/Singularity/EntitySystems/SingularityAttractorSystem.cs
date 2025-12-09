@@ -5,13 +5,13 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Numerics;
 using Content.Server.Physics.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Singularity.Components;
 using Content.Shared.Singularity.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
-using System.Numerics;
 
 namespace Content.Server.Singularity.EntitySystems;
 

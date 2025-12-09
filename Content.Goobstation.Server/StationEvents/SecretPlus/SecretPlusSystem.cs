@@ -26,7 +26,6 @@ using Content.Shared.Tag;
 using JetBrains.Annotations;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
-using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;

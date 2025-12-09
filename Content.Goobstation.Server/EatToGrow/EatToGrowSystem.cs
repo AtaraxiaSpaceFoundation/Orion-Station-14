@@ -77,8 +77,8 @@ public sealed class EatToGrowSystem : EntitySystem
     private void ShrinkOnDeath(Entity<EatToGrowComponent> eater, ref MobStateChangedEvent args)
     {
         // Copied from TryGrow, just need to grow in reverse
-        if (args.NewMobState != MobState.Dead || !TryComp<EatToGrowComponent>(eater, out var comp) || comp.ShrinkOnDeath == false)
-        return;
+        if (args.NewMobState != MobState.Dead || !TryComp<EatToGrowComponent>(eater, out var comp) || !comp.ShrinkOnDeath)
+            return;
 
         // shrink the entity
         Grow(eater, comp, -comp.TimesGrown); // uses the negative of times grown to shrink the entity back to normal

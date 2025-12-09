@@ -29,7 +29,7 @@ namespace Content.Server.EntityList
         {
             if (args.Length != 1)
             {
-                shell.WriteError(Loc.GetString($"shell-need-exactly-one-argument"));
+                shell.WriteError(Loc.GetString("shell-need-exactly-one-argument"));
                 return;
             }
 
@@ -47,7 +47,7 @@ namespace Content.Server.EntityList
 
             if (!_prototypeManager.TryIndex(args[0], out EntityListPrototype? prototype))
             {
-                shell.WriteError(Loc.GetString($"cmd-spawnentitylist-failed",
+                shell.WriteError(Loc.GetString("cmd-spawnentitylist-failed",
                     ("prototype", nameof(EntityListPrototype)),
                     ("id", args[0])));
                 return;
@@ -61,7 +61,7 @@ namespace Content.Server.EntityList
                 i++;
             }
 
-            shell.WriteLine(Loc.GetString($"cmd-spawnentitylist-success", ("count", i)));
+            shell.WriteLine(Loc.GetString("cmd-spawnentitylist-success", ("count", i)));
         }
     }
 }

@@ -6,7 +6,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Shared.Flashbang;
 using Content.Shared.Actions;
 using Content.Shared.Flash;
 using Content.Shared.Inventory;
@@ -110,6 +109,7 @@ public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // t
             ToggleAction = component.ToggleAction,
             LightRadius = component is ThermalVisionComponent thermal ? thermal.LightRadius : 0f,
             DrawOverlay = component.DrawOverlay,
+            OverlayOpacity = component.OverlayOpacity,
         };
     }
 
@@ -124,6 +124,7 @@ public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // t
         component.ActivateSound = state.ActivateSound;
         component.DeactivateSound = state.DeactivateSound;
         component.DrawOverlay = state.DrawOverlay;
+        component.OverlayOpacity = state.OverlayOpacity;
 
         if (component.ToggleAction != state.ToggleAction)
         {

@@ -46,7 +46,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: PowerCellSmall
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
@@ -247,7 +247,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: EnergySpeedloaderLethal
         insertSound: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg
@@ -377,7 +377,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: EnergyMagRifleLethal
         insertSound: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg

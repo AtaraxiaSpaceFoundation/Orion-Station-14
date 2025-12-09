@@ -41,7 +41,7 @@ public sealed class CustomGhostPrototype : IPrototype, IInheritingPrototype
         if (Restrictions is null)
             return true;
 
-        bool result = true;
+        var result = true;
         foreach(var restriction in Restrictions)
         {
             if(!restriction.CanUse(session, out var failReason))
@@ -54,13 +54,13 @@ public sealed class CustomGhostPrototype : IPrototype, IInheritingPrototype
         return result;
     }
 
-    [DataField("proto", required: true)]
-    public EntProtoId<GhostComponent> GhostEntityPrototype { get; private set; } = default!;
+    [DataField("entity", required: true)]
+    public EntProtoId<GhostComponent> GhostEntityPrototype { get; private set; }
 
     /// <summary>
     /// If null, the default of "custom-ghost-[id]-name" will be used.
     /// </summary>
-    [DataField("name")]
+    [DataField]
     public string? Name { get; private set; }
 
     public string DisplayName => Loc.GetString(Name ?? $"custom-ghost-{ID.ToLowerInvariant()}-name");
@@ -69,7 +69,7 @@ public sealed class CustomGhostPrototype : IPrototype, IInheritingPrototype
     /// <summary>
     /// If null, the default of "custom-ghost-[id]-desc" will be used.
     /// </summary>
-    [DataField("desc")]
+    [DataField]
     public string? Description { get; private set; }
 }
 

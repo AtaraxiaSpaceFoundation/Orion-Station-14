@@ -206,3 +206,296 @@
     sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_formal.rsi
   - type: Clothing
     sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_formal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitAllianceAssassin
+  name: alliance assassin uniform
+  description: This uniform model is based on an unknown suit. It is made of exceptionally durable Alliansium fabric with water-repellent treatment and high cotton content, combined with polyester threads. Perfectly tailored to the client's proportions and ideal for dirty work.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/alliance_assassin.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/alliance_assassin.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.1
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitAviator
+  name: aviator suit
+  description: A good aviator suit, though who the aviator actually is remains an interesting question.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/aviator.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/aviator.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBiker
+  name: biker suit
+  description: Time to take down the roosters — all I need is a cleaver and a couple of throwing knives.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/biker.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/biker.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitClownis
+  name: clown suit
+  description: A clown suit, seemingly inspired by an American fan.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/clown.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/clown.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitDoom
+  name: leather shorts
+  description: Not recommended for female wearers.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/doom.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/doom.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitFallout
+  name: vault jumpsuit
+  description: I doubt it's associated with anything good, but it looks stylish.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Fallout/fbase.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Fallout/fbase.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Radiation: 0.9 # Peak.
+
+- type: entity
+  parent: ClothingUniformJumpsuitFallout
+  id: ClothingUniformJumpsuitFallout14
+  name: vault 14 jumpsuit
+  description: I doubt it's associated with anything good, but it looks stylish.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Fallout/f14.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Fallout/f14.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGalaxyBlue
+  name: blue space jumpsuit
+  description: Whoa, why is the suit moving?!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/galaxy_blue.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/galaxy_blue.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGalaxyRed
+  name: red space jumpsuit
+  description: Whoa, why is the suit moving?!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/galaxy_red.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/galaxy_red.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGoku
+  name: Goku suit
+  description: Casting anime fanfiction!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/goku.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/goku.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGokuAlt
+  name: Goku suit
+  description: Casting anime fanfiction!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/goku-alt.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/goku-alt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaser
+  name: greaser jacket
+  description: The jacket is styled after the Greasers gang; recently adopted by other gangs with their own emblems. This version has no emblems.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/base.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/base.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserCult
+  name: Cultist Greaser Jacket
+  description: The jacket is styled after the Greasers gang; recently adopted by other gangs with their own emblems. This version features a cult emblem.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/cult.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/cult.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserJulie
+  name: Ti-Julie greaser jacket
+  description: The jacket is styled after the Greasers gang; recently adopted by other gangs with their own emblems. This version features the Ti-Julie emblem.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/julie.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/julie.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserSnakes
+  name: snake greaser jacket
+  description: The jacket is styled after the Greasers gang; recently adopted by other gangs with their own emblems. This version features a snake emblem.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/snakes.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/snakes.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitGreaserSpider
+  name: spider greaser jacket
+  description: The jacket is styled after the Greasers gang; recently adopted by other gangs with their own emblems. This version features a spider emblem.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/spider.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/Greaser/spider.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCommandHeadOfSecurity
+  name: head of security command jumpsuit
+  description: A black suit with shoulder straps.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/hos_command.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/hos_command.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitJacket
+  name: Florida suit
+  description: Looks like a relic from the past; there's a letter B on the chest, and the tag says "Florida".
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/jacket.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/jacket.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitJoe
+  name: green suit
+  description: A plain green suit with black sleeves.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/joe.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/joe.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMegaMan
+  name: Mega Man suit
+  description: Something in Japanese.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/mega.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/mega.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMegaManX
+  name: Mega Man X suit
+  description: Something in Japanese.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/megax.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/megax.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCamouflage
+  name: camouflage uniform
+  description: Everything necessary is hidden.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/camouflage.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/camouflage.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitProto
+  name: proto suit
+  description: Well, are you satisfied?
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/proto.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/proto.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitRotten
+  name: Robby's suit
+  description: We are number one!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/rotten.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/rotten.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSneaking
+  name: stealth suit
+  description: Makes you immediately want to go stealth, doesn't it?
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/sneaking_suit.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/sneaking_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitStil
+  name: old suit
+  description: So old it survived several corporate wars.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/stil_suit.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/stil_suit.rsi

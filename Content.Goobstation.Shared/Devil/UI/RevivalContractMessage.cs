@@ -1,4 +1,3 @@
-using Robust.Shared.Player;
 using Robust.Shared.Serialization;
 
 namespace Content.Goobstation.Shared.Devil.UI;

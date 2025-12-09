@@ -72,18 +72,18 @@
 
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
-using Content.Server.Explosion.Components;
-using Content.Shared.Flash;
 using Content.Server.Electrocution;
+using Content.Server.Explosion.Components;
 using Content.Server.Pinpointer;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Flash.Components;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Explosion.Components;
 using Content.Shared.Explosion.Components.OnTrigger;
+using Content.Shared.Flash;
+using Content.Shared.Flash.Components;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -91,13 +91,12 @@ using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Payload.Components;
-using Content.Shared.Radio;
+using Content.Shared.Projectiles;
 using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Trigger;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Whitelist;
-using Content.Shared.Projectiles;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -329,9 +328,9 @@ namespace Content.Server.Explosion.EntitySystems
 
             // Sends a message to the radio channel specified by the implant
             if (mobstate.CurrentState == MobState.Critical)
-                _radioSystem.SendRadioMessage(uid, critMessage, _prototypeManager.Index<RadioChannelPrototype>(component.RadioChannel), uid);
+                _radioSystem.SendRadioMessage(uid, critMessage, _prototypeManager.Index(component.RadioChannel), uid);
             if (mobstate.CurrentState == MobState.Dead)
-                _radioSystem.SendRadioMessage(uid, deathMessage, _prototypeManager.Index<RadioChannelPrototype>(component.RadioChannel), uid);
+                _radioSystem.SendRadioMessage(uid, deathMessage, _prototypeManager.Index(component.RadioChannel), uid);
 
             args.Handled = true;
         }

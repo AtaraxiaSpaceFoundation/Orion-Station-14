@@ -18,8 +18,8 @@ using Content.Server.Explosion.Components;
 using Content.Shared.Trigger;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Utility;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Explosion.EntitySystems;
 

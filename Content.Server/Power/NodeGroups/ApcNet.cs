@@ -16,9 +16,7 @@
 
 using System.Linq;
 using Content.Server.NodeContainer.NodeGroups;
-using Content.Server.NodeContainer.Nodes;
 using Content.Server.Power.Components;
-using Content.Server.Power.EntitySystems;
 using Content.Shared.NodeContainer;
 using Content.Shared.NodeContainer.NodeGroups;
 using JetBrains.Annotations;
@@ -40,7 +38,7 @@ namespace Content.Server.Power.NodeGroups
 
     [NodeGroup(NodeGroupID.Apc)]
     [UsedImplicitly]
-    public sealed partial class ApcNet : BasePowerNet<IApcNet>, IApcNet
+    public sealed class ApcNet : BasePowerNet<IApcNet>, IApcNet
     {
         [ViewVariables] public readonly List<ApcComponent> Apcs = new();
         [ViewVariables] public readonly List<ApcPowerProviderComponent> Providers = new();

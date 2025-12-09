@@ -34,12 +34,15 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Chemistry.Components;
+using Content.Server.Hands.Systems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
-using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.Labels.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using JetBrains.Annotations;
 using Robust.Server.Audio;
@@ -47,9 +50,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
-using Content.Shared.Labels.Components;
-using Content.Shared.Storage;
-using Content.Server.Hands.Systems;
 
 namespace Content.Server.Chemistry.EntitySystems
 {
@@ -179,7 +179,7 @@ namespace Content.Server.Chemistry.EntitySystems
                 _solutionContainerSystem.TryGetRefillableSolution(outputContainer.Value, out var dst, out _))
             {
                 // force open container, if applicable, to avoid confusing people on why it doesn't dispense
-                _openable.SetOpen(storedContainer, true);
+                _openable.SetOpen(storedContainer);
                 _solutionTransferSystem.Transfer(reagentDispenser,
                         storedContainer, src.Value,
                         outputContainer.Value, dst.Value,

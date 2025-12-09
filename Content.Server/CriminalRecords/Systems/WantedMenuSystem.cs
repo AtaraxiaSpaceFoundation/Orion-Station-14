@@ -3,6 +3,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.StationRecords;
 using Content.Shared.Access.Components;
 using Content.Shared.CriminalRecords;
@@ -10,7 +11,6 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Security;
 using Content.Shared.StationRecords;
 using Robust.Shared.Utility;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.CriminalRecords.Systems; // Goobstation-WantedMenu
 

@@ -29,7 +29,6 @@ using Content.Shared.CCVar;
 using Content.Shared.Examine;
 using Content.Shared.Salvage.Expeditions;
 using Content.Shared.Shuttles.Components;
-using Robust.Shared.Audio;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.GameStates;
@@ -68,7 +67,7 @@ public sealed partial class SalvageSystem
 
     private void OnExpeditionGetState(EntityUid uid, SalvageExpeditionComponent component, ref ComponentGetState args)
     {
-        args.State = new SalvageExpeditionComponentState()
+        args.State = new SalvageExpeditionComponentState
         {
             Stage = component.Stage
         };

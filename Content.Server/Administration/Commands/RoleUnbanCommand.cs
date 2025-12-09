@@ -29,7 +29,7 @@ public sealed class RoleUnbanCommand : LocalizedCommands
 
         if (!int.TryParse(args[0], out var banId))
         {
-            shell.WriteLine(Loc.GetString($"cmd-roleunban-unable-to-parse-id", ("id", args[0]), ("help", Help)));
+            shell.WriteLine(Loc.GetString("cmd-roleunban-unable-to-parse-id", ("id", args[0]), ("help", Help)));
             return;
         }
 

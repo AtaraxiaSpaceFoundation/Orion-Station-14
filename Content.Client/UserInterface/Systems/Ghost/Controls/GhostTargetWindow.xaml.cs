@@ -34,7 +34,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
     [GenerateTypedNameReferences]
     public sealed partial class GhostTargetWindow : DefaultWindow
     {
-/* // Orion-Remove
+/* // Orion-Edit: Removed
         private List<(string, NetEntity)> _warps = new();
 */
         private string _searchText = string.Empty;
@@ -68,9 +68,9 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             GhostnadoButton.OnPressed += _ => OnGhostnadoClicked?.Invoke();
         }
 
-        public void Populate() // Orion-Edit | UpdateWarps > Populate
+        public void Populate() // Orion-Edit: UpdateWarps > Populate
         {
-/* // Orion-Remove
+/* // Orion-Edit: Removed
             // Server COULD send these sorted but how about we just use the client to do it instead
             _warps = warps
                 .OrderBy(w => w.IsWarpPoint)
@@ -98,9 +98,9 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             // Orion-End
         }
 
-        public void UpdateWarps(List<GhostWarpPlayer> players, List<GhostWarpPlace> places, List<GhostWarpGlobalAntagonist> antagonists) // Orion-Edit | Populate > UpdateWarps
+        public void UpdateWarps(List<GhostWarpPlayer> players, List<GhostWarpPlace> places, List<GhostWarpGlobalAntagonist> antagonists) // Orion-Edit: Populate > UpdateWarps
         {
-/* // Orion-Remove
+/* // Orion-Edit: Removed
             ButtonContainer.DisposeAllChildren();
             AddButtons();
 */
@@ -119,7 +119,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
 
         private void AddButtons()
         {
-/* // Orion-Remove
+/* // Orion-Edit: Removed
             foreach (var (name, warpTarget) in _warps)
             {
                 var currentButtonRef = new Button
@@ -150,7 +150,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             // Orion-End
         }
 
-/* // Orion-Remove | Part of search bar
+/* // Orion-Edit:Part of search bar
         private bool ButtonIsVisible(Button button)
         {
             return string.IsNullOrEmpty(_searchText) || button.Text == null || button.Text.Contains(_searchText, StringComparison.OrdinalIgnoreCase);

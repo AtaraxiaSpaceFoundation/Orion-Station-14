@@ -145,7 +145,7 @@
   id: QuartermasterMantle
   equipment:
     neck: ClothingNeckMantleQM
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MasterQM
 
