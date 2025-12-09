@@ -12,7 +12,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Containers;
-using Robust.Shared.Network;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._NF.Silicons.Borgs;

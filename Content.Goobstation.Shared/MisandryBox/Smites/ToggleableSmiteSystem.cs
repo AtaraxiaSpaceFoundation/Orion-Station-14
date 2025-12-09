@@ -4,8 +4,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.GameObjects;
-
 namespace Content.Goobstation.Shared.MisandryBox.Smites;
 
 public abstract class ToggleableSmiteSystem<T> : EntitySystem where T : Component

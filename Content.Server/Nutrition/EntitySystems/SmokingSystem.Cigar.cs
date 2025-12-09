@@ -61,7 +61,7 @@ namespace Content.Server.Nutrition.EntitySystems
                 return;
 
             var isHotEvent = new IsHotEvent();
-            RaiseLocalEvent(args.Used, isHotEvent, false);
+            RaiseLocalEvent(args.Used, isHotEvent);
 
             if (!isHotEvent.IsHot)
                 return;

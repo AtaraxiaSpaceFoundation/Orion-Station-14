@@ -14,9 +14,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Body.Systems;
-using Content.Shared.EntityEffects;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
-using Content.Shared.Body.Components; // Shitmed Change
+using Content.Shared.Body.Components;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects;
@@ -24,7 +24,7 @@ namespace Content.Server.EntityEffects.Effects;
 public sealed partial class ModifyBleedAmount : EntityEffect
 {
     [DataField]
-    public bool Scaled = false;
+    public bool Scaled;
 
     [DataField]
     public float Amount = -1.0f;

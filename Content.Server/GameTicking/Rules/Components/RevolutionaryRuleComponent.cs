@@ -44,7 +44,7 @@ public sealed partial class RevolutionaryRuleComponent : Component
     public TimeSpan ShuttleCallTime = TimeSpan.FromMinutes(5);
 
     // goob edit start
-    [DataField] public bool HasAnnouncementPlayed = false;
-    [DataField] public bool HasRevAnnouncementPlayed = false;
+    [DataField] public bool HasAnnouncementPlayed;
+    [DataField] public bool HasRevAnnouncementPlayed;
     // gobo edit end
 }

@@ -16,7 +16,7 @@ namespace Content.Server.NPC.Queries;
 /// These results are then run through the considerations.
 /// </summary>
 [Prototype]
-public sealed partial class UtilityQueryPrototype : IPrototype
+public sealed class UtilityQueryPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;

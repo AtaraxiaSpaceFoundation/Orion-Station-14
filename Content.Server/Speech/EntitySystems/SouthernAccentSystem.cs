@@ -43,4 +43,4 @@ public sealed class SouthernAccentSystem : EntitySystem
         message = RegexUpperDve.Replace(message, "DA");
         args.Message = message;
     }
-};
+}

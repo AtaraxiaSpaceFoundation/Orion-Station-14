@@ -27,5 +27,5 @@ public sealed partial class PuddleMessVariationPassComponent : Component
     ///     Weighted random prototype to use for random messes.
     /// </summary>
     [DataField(required: true)]
-    public ProtoId<WeightedRandomFillSolutionPrototype> RandomPuddleSolutionFill = default!;
+    public ProtoId<WeightedRandomFillSolutionPrototype> RandomPuddleSolutionFill;
 }

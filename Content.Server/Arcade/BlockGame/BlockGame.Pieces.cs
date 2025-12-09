@@ -3,8 +3,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared.Arcade;
 using System.Linq;
+using Content.Shared.Arcade;
 
 namespace Content.Server.Arcade.BlockGame;
 

@@ -96,7 +96,7 @@
   id: ResearchDirectorMantle
   equipment:
     neck: ClothingNeckMantleRD
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MasterRD
 

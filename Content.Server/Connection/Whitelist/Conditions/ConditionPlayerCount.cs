@@ -47,7 +47,7 @@ namespace Content.Server.Connection.Whitelist.Conditions;
 public sealed partial class ConditionPlayerCount : WhitelistCondition
 {
     [DataField]
-    public int MinimumPlayers  = 0;
+    public int MinimumPlayers;
     [DataField]
     public int MaximumPlayers = int.MaxValue;
 }

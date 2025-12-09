@@ -37,22 +37,19 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Atmos.Components;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.Cargo.Systems;
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
+using Content.Shared.CCVar;
 using Content.Shared.Throwing;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Random;
 using Robust.Shared.Configuration;
-using Content.Shared.CCVar;
+using Robust.Shared.Random;
 
 namespace Content.Server.Atmos.EntitySystems
 {
@@ -68,7 +65,7 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly IConfigurationManager _cfg = default!;
 
         private const float TimerDelay = 0.5f;
-        private float _timer = 0f;
+        private float _timer;
         private const float MinimumSoundValvePressure = 10.0f;
         private float _maxExplosionRange;
 

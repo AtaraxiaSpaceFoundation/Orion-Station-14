@@ -35,8 +35,8 @@ namespace Content.Server.Atmos.Piping.EntitySystems
         // Set of atmos devices that are off-grid but have JoinSystem set.
         private readonly HashSet<Entity<AtmosDeviceComponent>> _joinedDevices = new();
 
-        private static AtmosDeviceDisabledEvent _disabledEv = new();
-        private static AtmosDeviceEnabledEvent _enabledEv = new();
+        private static AtmosDeviceDisabledEvent _disabledEv;
+        private static AtmosDeviceEnabledEvent _enabledEv;
 
         public override void Initialize()
         {

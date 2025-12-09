@@ -4,12 +4,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Threading.Tasks;
 using Content.Server.Database;
 using Robust.Server.Player;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Network;
-using System;
-using System.Threading.Tasks;
 
 // has to be in Content.Server to exist
 namespace Content.Server._Goobstation.Antag

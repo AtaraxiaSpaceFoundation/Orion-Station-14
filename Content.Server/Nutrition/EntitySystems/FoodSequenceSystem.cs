@@ -83,21 +83,20 @@
 using System.Numerics;
 using System.Text;
 using Content.Server.Nutrition.Components;
+using Content.Server.Singularity.Components;
 using Content.Server.Storage.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components;
+using Content.Shared.Item;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Storage;
-using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Random;
-using Content.Shared.Item; // Goobstation - anythingburgers
-using Content.Shared.Chemistry.Components.SolutionManager; // Goobstation - anythingburgers
-using Content.Server.Singularity.Components; // Goobstation - anythingburgers
-using Content.Shared.Interaction.Components; // Goobstation - anythingburgers
 
 namespace Content.Server.Nutrition.EntitySystems;
 

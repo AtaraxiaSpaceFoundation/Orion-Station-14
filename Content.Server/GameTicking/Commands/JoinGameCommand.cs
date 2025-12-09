@@ -74,7 +74,8 @@ namespace Content.Server.GameTicking.Commands
                 shell.WriteLine("Round has not started.");
                 return;
             }
-            else if (ticker.RunLevel == GameRunLevel.InRound)
+
+            if (ticker.RunLevel == GameRunLevel.InRound)
             {
                 string id = args[0];
 
@@ -85,7 +86,7 @@ namespace Content.Server.GameTicking.Commands
 
                 var station = _entManager.GetEntity(new NetEntity(sid));
                 var jobPrototype = _prototypeManager.Index<JobPrototype>(id);
-                if(stationJobs.TryGetJobSlot(station, jobPrototype, out var slots) == false || slots == 0)
+                if(!stationJobs.TryGetJobSlot(station, jobPrototype, out var slots) || slots == 0)
                 {
                     shell.WriteLine($"{jobPrototype.LocalizedName} has no available slots.");
                     return;

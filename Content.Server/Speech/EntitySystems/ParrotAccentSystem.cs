@@ -12,7 +12,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed partial class ParrotAccentSystem : EntitySystem
+public sealed class ParrotAccentSystem : EntitySystem
 {
     private static readonly Regex WordCleanupRegex = new Regex("[^A-Za-z0-9 -]");
 

@@ -72,6 +72,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Globalization;
 using Content.Server.Antag;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking.Rules.Components;
@@ -90,10 +91,9 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Roles;
 using Content.Shared.Zombies;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems; // goobstation
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
-using System.Globalization;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -141,7 +141,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         base.AppendRoundEndText(uid, component, gameRule, ref args);
 
         // This is just the general condition thing used for determining the win/lose text
-        var fraction = GetInfectedFraction(true, true);
+        var fraction = GetInfectedFraction(true);
 
         if (fraction <= 0)
             args.AddLine(Loc.GetString("zombie-round-end-amount-none"));
@@ -196,7 +196,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
             _popup.PopupEntity(Loc.GetString("zombie-alone"), healthy[0], healthy[0]);
 
         // goob edit
-        if (GetInfectedFraction(false) > zombieRuleComponent.ZombieShuttleCallPercentage / 5f && !zombieRuleComponent.StartAnnounced)
+        if (GetInfectedFraction() > zombieRuleComponent.ZombieShuttleCallPercentage / 5f && !zombieRuleComponent.StartAnnounced)
         {
             zombieRuleComponent.StartAnnounced = true;
 
@@ -210,7 +210,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
             _audio.PlayGlobal("/Audio/Announcements/outbreak7.ogg", Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
 
-        if (GetInfectedFraction(false) > zombieRuleComponent.ZombieShuttleCallPercentage && !_roundEnd.IsRoundEndRequested())
+        if (GetInfectedFraction() > zombieRuleComponent.ZombieShuttleCallPercentage && !_roundEnd.IsRoundEndRequested())
         {
             foreach (var station in _station.GetStations())
             {

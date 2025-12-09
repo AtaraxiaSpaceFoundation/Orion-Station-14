@@ -4,6 +4,7 @@ using Content.Server.Antag;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Ghost.Roles.Components;
 using Content.Server.Nuke;
 using Content.Server.Popups;
 using Content.Server.RoundEnd;
@@ -17,13 +18,12 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Robust.Server.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Robust.Server.Audio; // Goobstation - Play music on announcement
-using Content.Server.Ghost.Roles.Components;
 
 namespace Content.Server._White.GameTicking.Rules;
 

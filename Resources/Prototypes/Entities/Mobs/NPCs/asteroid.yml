@@ -144,10 +144,10 @@
   - type: Action
     raiseOnUser: true
     icon:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit: Separate tentacle
       state: goliath_tentacle_spawn
     iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit: Separate tentacle
       state: goliath_tentacle_wiggle
     sound:
       path: "/Audio/Weapons/slash.ogg"
@@ -168,7 +168,7 @@
     canCollide: true
   - type: InteractionOutline
   - type: Sprite
-    sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit | Separate tentacle
+    sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit: Separate tentacle
     layers:
     - state: goliath_tentacle_wiggle
   - type: StunOnContact
@@ -203,7 +203,7 @@
     bodyType: Static
     canCollide: false
   - type: Sprite
-    sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit | Separate tentacle
+    sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit: Separate tentacle
   - type: InteractionOutline
   - type: TimedDespawn
     lifetime: 0.7

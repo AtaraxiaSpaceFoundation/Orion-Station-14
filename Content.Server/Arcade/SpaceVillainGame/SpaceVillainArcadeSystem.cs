@@ -42,12 +42,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Power.Components;
-using Content.Shared.UserInterface;
 using Content.Server.Advertise.EntitySystems;
+using Content.Server.Power.Components;
 using Content.Shared.Advertise.Components;
 using Content.Shared.Arcade;
 using Content.Shared.Power;
+using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -55,7 +55,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Arcade.SpaceVillain;
 
-public sealed partial class SpaceVillainArcadeSystem : EntitySystem
+public sealed class SpaceVillainArcadeSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;

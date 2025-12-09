@@ -1,6 +1,6 @@
-using Content.Shared.Polymorph;
-using Content.Server.Polymorph.Components;
 using Content.Server.Explosion.EntitySystems;
+using Content.Server.Polymorph.Components;
+using Content.Shared.Polymorph;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Polymorph.Systems;

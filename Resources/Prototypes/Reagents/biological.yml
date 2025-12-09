@@ -308,7 +308,7 @@
   flavor: terrible
   color: "#87ab08"
   physicalDesc: reagent-physical-desc-pungent
-#  slipData: # Orion-Remove | Fuck slippery curse
+#  slipData: # Orion-Edit: Fuck slippery curse
 #    requiredSlipSpeed: 4.0 #It's not as slippery as water
 #  friction: 0.4
   metabolisms:

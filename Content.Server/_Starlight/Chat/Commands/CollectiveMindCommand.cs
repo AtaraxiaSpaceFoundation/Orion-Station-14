@@ -20,16 +20,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Chat.Systems;
+using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
-using Robust.Shared.Player;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
-
-// Goobstation - Stop Crit Hivemind
-using Content.Shared._Starlight.CollectiveMind;
-using Content.Shared.Mobs.Systems;
-
+using Robust.Shared.Player;
 
 namespace Content.Server.Chat.Commands
 {

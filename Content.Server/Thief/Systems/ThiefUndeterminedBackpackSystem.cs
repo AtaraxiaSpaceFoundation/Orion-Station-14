@@ -39,8 +39,8 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Item;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Thief;
-using Robust.Server.GameObjects;
 using Robust.Server.Audio;
+using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Thief.Systems;

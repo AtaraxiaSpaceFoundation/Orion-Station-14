@@ -43,8 +43,8 @@ public sealed partial class MimicryMenuBoundUserInterface : BoundUserInterface
         _menu.OpenCenteredAt(_inputManager.MouseScreenPosition.Position / _displayManager.ScreenSize);
     }
 
-    private void SendMessage(NetEntity netent)
+    private void SendMessage(NetEntity netEntity)
     {
-        base.SendMessage(new EventMimicryActivate() { Target = netent });
+        base.SendMessage(new EventMimicryActivate { Target = netEntity });
     }
 }

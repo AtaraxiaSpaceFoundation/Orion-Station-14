@@ -97,7 +97,7 @@
   - type: ItemSlots
     slots:
       item:
-#        name: CaneBlade # Orion-Edit | Localization
+#        name: CaneBlade # Orion-Edit: Localization
         insertVerbText: sheath-insert-verb
         ejectVerbText: sheath-eject-verb
         whitelist:

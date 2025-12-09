@@ -217,10 +217,8 @@ namespace Content.Server.Pointing.EntitySystems
             {
                 return _transform.InRange(Transform(pointer).Coordinates, coordinates, 15);
             }
-            else
-            {
-                return _examine.InRangeUnOccluded(pointer, coordinates, 15, predicate: e => e == pointer);
-            }
+
+            return _examine.InRangeUnOccluded(pointer, coordinates, 15, predicate: e => e == pointer);
         }
 
         public bool TryPoint(ICommonSession? session, EntityCoordinates coordsPointed, EntityUid pointed)

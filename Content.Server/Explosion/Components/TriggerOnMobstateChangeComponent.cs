@@ -31,5 +31,5 @@ public sealed partial class TriggerOnMobstateChangeComponent : Component
     /// </summary>
     [ViewVariables]
     [DataField("preventSuicide")]
-    public bool PreventSuicide = false;
+    public bool PreventSuicide;
 }

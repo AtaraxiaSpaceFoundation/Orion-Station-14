@@ -20,6 +20,7 @@
 
 using System.Numerics;
 using System.Threading.Tasks;
+using Content.Server._Lavaland.Procedural;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Decals;
 using Content.Server.Ghost.Roles.Components;
@@ -494,7 +495,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             idx++;
             var localIdx = idx;
 
-            Parallel.ForEach(chunks, new ParallelOptions() { MaxDegreeOfParallelism = _parallel.ParallelProcessCount }, chunk =>
+            Parallel.ForEach(chunks, new ParallelOptions { MaxDegreeOfParallelism = _parallel.ParallelProcessCount }, chunk =>
             {
                 if (loadedMarkers.TryGetValue(layer, out var mobChunks) && mobChunks.Contains(chunk))
                     return;
@@ -703,7 +704,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
             if (groupSize > 0)
             {
-                Log.Warning($"Found remaining group size for ore veins!");
+                Log.Warning("Found remaining group size for ore veins!");
             }
         }
 
@@ -907,7 +908,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         foreach (var chunk in component.LoadedChunks)
         {
             // Lavaland Change start: optimization real
-            var ev = new _Lavaland.Procedural.UnLoadChunkEvent(chunk);
+            var ev = new UnLoadChunkEvent(chunk);
             RaiseLocalEvent(gridUid, ev);
 
             if(ev.Cancelled)

@@ -6,3 +6,14 @@ ent-ClothingHandsGlovesCaptainWhite = белые перчатки капитан
     .desc = Королевские белые перчатки с золотой отделкой. Шикарны.
 ent-ClothingHandsGlovesSheriff = перчатки шерифа
     .desc = Перчатки с эргономичной формой, предназначенные для удержания револьвера.
+
+ent-ClothingHandsGlovesCatPawsWhite = белые кошачьи перчатки-лапки
+    .desc = Очень мягкие кошачьи лапы, созданные специально для самых суровых помощников.
+ent-ClothingHandsGlovesCatPawsBrown = коричневые кошачьи перчатки-лапки
+    .desc = { ent-ClothingHandsGlovesCatPawsWhite.desc }
+ent-ClothingHandsGlovesCatPawsBlack = чёрные кошачьи перчатки-лапки
+    .desc = { ent-ClothingHandsGlovesCatPawsWhite.desc }
+ent-ClothingHandsGlovesCatPawsBlackWhite = чёрно-белые кошачьи перчатки-лапки
+    .desc = { ent-ClothingHandsGlovesCatPawsWhite.desc }
+ent-ClothingHandsGlovesAllianceAssassin = перчатки ассасина альянса
+    .desc = Боевые перчатки предназначенные для усиления навыков владельца. Встроенные наночипы напрямую посылают сигналы в нервные окончания рук, доводя движения владельца до идеала, что позволяет укладывать жертв на землю и перетаскивать их с максимальной эффективностью.

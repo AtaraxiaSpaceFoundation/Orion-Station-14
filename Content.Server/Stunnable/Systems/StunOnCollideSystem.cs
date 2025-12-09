@@ -16,8 +16,8 @@
 
 using Content.Server.Stunnable.Components;
 using Content.Shared.StatusEffect;
-using JetBrains.Annotations;
 using Content.Shared.Throwing;
+using JetBrains.Annotations;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server.Stunnable

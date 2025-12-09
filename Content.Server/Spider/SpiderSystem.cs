@@ -5,10 +5,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Popups;
-using Content.Shared.Spider;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Systems;
-using Robust.Server.GameObjects;
+using Content.Shared.Spider;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;

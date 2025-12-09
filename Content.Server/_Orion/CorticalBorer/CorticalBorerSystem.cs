@@ -89,14 +89,18 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
             comp.UpdateTimer = _timing.CurTime + TimeSpan.FromSeconds(comp.UpdateCooldown);
 
+#pragma warning disable CS0618
             if (comp.Host.HasValue)
                 UpdateChems((comp.Owner, comp), comp.ChemicalGenerationRate);
+#pragma warning restore CS0618
         }
 
         foreach (var comp in EntityManager.EntityQuery<CorticalBorerInfestedComponent>())
         {
+#pragma warning disable CS0618
             if (_timing.CurTime >= comp.ControlTimeEnd)
                 EndControl((comp.Owner, comp));
+#pragma warning restore CS0618
         }
     }
 
@@ -315,6 +319,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // add the end control and vomit egg action
         if (Actions.AddAction(host, "ActionEndControlHost") is {} actionEnd)
             infestedComp.RemoveAbilities.Add(actionEnd);
+
         if (comp.CanReproduce &&
             infestedComp.ControlTimeEnd != null) // you can't lay eggs with something you can control forever
         {

@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Server.Xenoarchaeology.Artifact.XAE.Components;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
@@ -44,7 +43,7 @@ public sealed class XAEThrowThingsAroundSystem : BaseXAESystem<XAEThrowThingsAro
         if (TryComp<MapGridComponent>(xform.GridUid, out var grid))
         {
             var areaForTilesPry = new Circle(_transform.GetWorldPosition(xform), component.Range);
-            var tiles = _map.GetTilesIntersecting(xform.GridUid.Value, grid, areaForTilesPry, true);
+            var tiles = _map.GetTilesIntersecting(xform.GridUid.Value, grid, areaForTilesPry);
 
             foreach (var tile in tiles)
             {

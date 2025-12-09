@@ -15,6 +15,7 @@ using Content.Shared._Shitmed.Medical.Surgery.Steps;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Robust.Shared.Player;
+
 namespace Content.Server._Shitmed.Antags.Abductor;
 
 public sealed partial class AbductorSystem : SharedAbductorSystem

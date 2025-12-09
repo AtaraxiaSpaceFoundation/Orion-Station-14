@@ -37,19 +37,19 @@ namespace Content.Server.Mind.Commands
         {
             if (args.Length != 1)
             {
-                shell.WriteLine(Loc.GetString($"shell-need-exactly-one-argument"));
+                shell.WriteLine(Loc.GetString("shell-need-exactly-one-argument"));
                 return;
             }
 
             if (!_playerManager.TryGetSessionByUsername(args[0], out var session))
             {
-                shell.WriteLine(Loc.GetString($"cmd-mindinfo-mind-not-found"));
+                shell.WriteLine(Loc.GetString("cmd-mindinfo-mind-not-found"));
                 return;
             }
 
             if (!_minds.TryGetMind(session, out var mindId, out var mind))
             {
-                shell.WriteLine(Loc.GetString($"cmd-mindinfo-mind-not-found"));
+                shell.WriteLine(Loc.GetString("cmd-mindinfo-mind-not-found"));
                 return;
             }
 

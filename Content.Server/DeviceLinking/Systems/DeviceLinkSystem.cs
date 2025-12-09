@@ -11,13 +11,12 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork;
-using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.DeviceNetwork.Events;
 
 namespace Content.Server.DeviceLinking.Systems;
 
@@ -83,7 +82,7 @@ public sealed class DeviceLinkSystem : SharedDeviceLinkSystem
             return;
         }
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             [InvokedPort] = sinkPort
         };
@@ -141,7 +140,7 @@ public sealed class DeviceLinkSystem : SharedDeviceLinkSystem
         if (!ent.Comp.LastSignals.TryGetValue(args.SourcePort, out var signal))
             return;
 
-        var payload = new NetworkPayload()
+        var payload = new NetworkPayload
         {
             [DeviceNetworkConstants.LogicState] = signal ? SignalState.High : SignalState.Low
         };

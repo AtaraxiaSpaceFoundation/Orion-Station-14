@@ -8,7 +8,6 @@
 // SPDX-License-Identifier: MIT
 
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.Store;
 

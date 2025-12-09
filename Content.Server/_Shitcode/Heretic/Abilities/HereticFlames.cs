@@ -8,21 +8,18 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Atmos.EntitySystems;
-using Content.Shared.Atmos;
-
 namespace Content.Server.Heretic.Abilities;
 
 [RegisterComponent]
 public sealed partial class HereticFlamesComponent : Component
 {
-    public float UpdateTimer = 0f;
-    public float LifetimeTimer = 0f;
+    public float UpdateTimer;
+    public float LifetimeTimer;
     [DataField] public float UpdateDuration = .2f;
     [DataField] public float LifetimeDuration = 60f;
 }
 
-public sealed partial class HereticFlamesSystem : EntitySystem
+public sealed class HereticFlamesSystem : EntitySystem
 {
     [Dependency] private readonly HereticAbilitySystem _has = default!;
 

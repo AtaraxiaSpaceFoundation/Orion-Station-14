@@ -40,13 +40,13 @@ public sealed partial class GunOperator : HTNOperator, IHtnConditionalShutdown
     /// Do we require line of sight of the target before failing.
     /// </summary>
     [DataField("requireLOS")]
-    public bool RequireLOS = false;
+    public bool RequireLOS;
 
     /// <summary>
     /// If true, only opaque objects will block line of sight.
     /// </summary>
     [DataField("opaqueKey")]
-    public bool UseOpaqueForLOSChecks = false;
+    public bool UseOpaqueForLOSChecks;
 
     // Like movement we add a component and pass it off to the dedicated system.
 

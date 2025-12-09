@@ -20,7 +20,7 @@ using Robust.Shared.Utility;
 namespace Content.Server.Arcade
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public sealed partial class ArcadeSystem : EntitySystem
+    public sealed class ArcadeSystem : EntitySystem
     {
         private readonly List<BlockGameMessages.HighScoreEntry> _roundHighscores = new();
         private readonly List<BlockGameMessages.HighScoreEntry> _globalHighscores = new();

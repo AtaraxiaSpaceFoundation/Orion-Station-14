@@ -85,7 +85,6 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
         {
             console.Armor = GetNetEntity(ent);
             _popup.PopupEntity(Loc.GetString("abductors-ui-vest-linked"), args.User);
-            return;
         }
     }
 }

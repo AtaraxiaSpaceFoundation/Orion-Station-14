@@ -7,14 +7,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Objectives.Components;
-using Content.Shared.Mind;
-using Content.Shared.Objectives.Components;
-using Content.Server.GameTicking.Rules;
-using Content.Server.Revolutionary.Components;
-using Robust.Shared.Random;
 using System.Linq;
+using Content.Server.GameTicking.Rules;
+using Content.Server.Objectives.Components;
+using Content.Server.Revolutionary.Components;
+using Content.Shared.Mind;
 using Content.Shared.NukeOps;
+using Content.Shared.Objectives.Components;
+using Robust.Shared.Random;
 
 namespace Content.Server.Objectives.Systems;
 

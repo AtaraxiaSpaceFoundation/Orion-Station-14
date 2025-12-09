@@ -15,7 +15,7 @@
 using Content.Server.Advertise.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
-using Content.Shared.Chat; // Einstein Engines - Languages
+using Content.Shared.Chat;
 using Content.Shared.VendingMachines;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -79,7 +79,7 @@ public sealed class AdvertiseSystem : EntitySystem
         bool hideChat = advert.HideFromChat; // Orion
 
         if (_prototypeManager.TryIndex(advert.Pack, out var advertisements))
-            _chat.TrySendInGameICMessage(uid, Loc.GetString(_random.Pick(advertisements.Values)), InGameICChatType.Speak, hideChat: hideChat); // Orion-Edit | hideChat bool
+            _chat.TrySendInGameICMessage(uid, Loc.GetString(_random.Pick(advertisements.Values)), InGameICChatType.Speak, hideChat: hideChat); // Orion-Edit: hideChat bool
     }
 
     public override void Update(float frameTime)

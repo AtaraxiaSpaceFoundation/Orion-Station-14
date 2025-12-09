@@ -10,15 +10,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared.UserInterface;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
-using Content.Shared.NameIdentifier;
-using Content.Shared.PowerCell.Components;
-using Content.Shared.Preferences;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Silicons.Borgs.Components;
-using Robust.Shared.Configuration;
+using Content.Shared.UserInterface;
 
 namespace Content.Server.Silicons.Borgs;
 

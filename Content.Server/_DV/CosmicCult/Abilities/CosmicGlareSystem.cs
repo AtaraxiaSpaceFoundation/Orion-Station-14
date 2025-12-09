@@ -8,9 +8,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Goobstation.Common.Religion;
-using Content.Goobstation.Shared.Bible;
-using Content.Goobstation.Shared.Religion; // Goobstation - Bible
+using Content.Goobstation.Shared.Religion;
 using Content.Server.Flash;
 using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
@@ -20,7 +18,6 @@ using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.Effects;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
-using Content.Shared.Inventory;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Silicons.Borgs.Components;
@@ -109,7 +106,7 @@ public sealed class CosmicGlareSystem : EntitySystem
                 _stun.TryParalyze(targetEnt, uid.Comp.CosmicGlareDuration / 2, true);
 
             _color.RaiseEffect(Color.CadetBlue,
-                new List<EntityUid>() { targetEnt },
+                new List<EntityUid> { targetEnt },
                 Filter.Pvs(targetEnt, entityManager: EntityManager));
         }
     }

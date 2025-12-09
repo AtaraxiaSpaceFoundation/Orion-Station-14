@@ -10,7 +10,6 @@
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.EntityTable.EntitySelectors;
 
-
 namespace Content.Server.StationEvents.Components;
 
 [RegisterComponent, Access(typeof(BasicStationEventSchedulerSystem))]

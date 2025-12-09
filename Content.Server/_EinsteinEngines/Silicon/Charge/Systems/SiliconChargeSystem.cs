@@ -6,28 +6,28 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.Random;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Server.Power.Components;
-using Content.Shared.Mobs.Systems;
-using Content.Server.Temperature.Components;
-using Content.Server.Atmos.Components;
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Popups;
-using Content.Shared.Popups;
-using Content.Shared._EinsteinEngines.Silicon.Systems;
-using Content.Shared.Movement.Systems;
-using Content.Server.Body.Components;
-using Content.Shared.Mind.Components;
 using System.Diagnostics.CodeAnalysis;
 using Content.Goobstation.Common.CCVar;
-using Content.Server.Power.EntitySystems; // Goobstation - Energycrit
+using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
+using Content.Server.Body.Components;
+using Content.Server.Popups;
+using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
-using Robust.Shared.Timing;
-using Robust.Shared.Configuration;
-using Robust.Shared.Utility;
-using Content.Shared.PowerCell.Components;
+using Content.Server.Temperature.Components;
+using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._EinsteinEngines.Silicon.Systems;
 using Content.Shared.Alert;
+using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Systems;
+using Content.Shared.Popups;
+using Content.Shared.PowerCell.Components;
+using Robust.Shared.Configuration;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server._EinsteinEngines.Silicon.Charge;
 

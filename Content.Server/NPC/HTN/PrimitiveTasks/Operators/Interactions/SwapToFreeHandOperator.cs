@@ -29,7 +29,7 @@ public sealed partial class SwapToFreeHandOperator : HTNOperator
 
         foreach (var hand in hands)
         {
-            return (true, new Dictionary<string, object>()
+            return (true, new Dictionary<string, object>
             {
                 {
                     NPCBlackboard.ActiveHand, handsComp.Hands[hand]

@@ -36,7 +36,7 @@
     weight: 4.5 # Uncommon
     earliestStart: 30
     reoccurrenceDelay: 30
-    minimumPlayers: 8 # Orion-Edit | 4 > 8
+    minimumPlayers: 8 # Orion-Edit: 4 > 8
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0

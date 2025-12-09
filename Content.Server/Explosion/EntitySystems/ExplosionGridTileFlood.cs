@@ -26,7 +26,7 @@ namespace Content.Server.Explosion.EntitySystems;
 public sealed class ExplosionGridTileFlood : ExplosionTileFlood
 {
     public MapGridComponent Grid;
-    private bool _needToTransform = false;
+    private bool _needToTransform;
 
     private Matrix3x2 _matrix = Matrix3x2.Identity;
     private Vector2 _offset;
@@ -135,13 +135,13 @@ public sealed class ExplosionGridTileFlood : ExplosionTileFlood
 
         // Add adjacent tiles
         if (TileLists.TryGetValue(iteration - 2, out var adjacent))
-            AddNewAdjacentTiles(iteration, adjacent, false);
+            AddNewAdjacentTiles(iteration, adjacent);
         if (FreedTileLists.TryGetValue(iteration - 2, out var delayedAdjacent))
             AddNewAdjacentTiles(iteration, delayedAdjacent, true);
 
         // Add diagonal tiles
         if (TileLists.TryGetValue(iteration - 3, out var diagonal))
-            AddNewDiagonalTiles(iteration, diagonal, false);
+            AddNewDiagonalTiles(iteration, diagonal);
         if (FreedTileLists.TryGetValue(iteration - 3, out var delayedDiagonal))
             AddNewDiagonalTiles(iteration, delayedDiagonal, true);
 

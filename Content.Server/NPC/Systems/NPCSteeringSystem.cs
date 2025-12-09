@@ -65,19 +65,23 @@ using Content.Server.DoAfter;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.Events;
 using Content.Server.NPC.Pathfinding;
+using Content.Shared._vg.TileMovement;
 using Content.Shared.CCVar;
 using Content.Shared.Climbing.Systems;
 using Content.Shared.CombatMode;
+using Content.Shared.Gravity;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NPC;
 using Content.Shared.NPC.Components;
-using Content.Shared.NPC.Systems;
 using Content.Shared.NPC.Events;
+using Content.Shared.NPC.Systems;
 using Content.Shared.Physics;
+using Content.Shared.Prying.Systems;
 using Content.Shared.Weapons.Melee;
+using Microsoft.Extensions.ObjectPool;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
@@ -87,14 +91,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.Prying.Systems;
-using Microsoft.Extensions.ObjectPool;
-
-// Tile Movement Change
-using Content.Server.Atmos;
-using Content.Shared._vg.TileMovement;
-using Robust.Server.GameObjects;
-using Content.Shared.Gravity;
 
 namespace Content.Server.NPC.Systems;
 

@@ -1,19 +1,18 @@
 using System.Linq;
-using Content.Server.Hands.Systems;
 using Content.Server._EinsteinEngines.Language;
+using Content.Server.Hands.Systems;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._EinsteinEngines.Language;
+using Content.Shared._EinsteinEngines.Language.Components.Translators;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
-using Content.Shared._EinsteinEngines.Language;
-using Content.Shared._EinsteinEngines.Language.Components;
-using Content.Shared._EinsteinEngines.Language.Components.Translators;
 using Content.Shared.Storage;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._EinsteinEngines.Traits.Assorted;
 
 
-public sealed partial class ForeignerTraitSystem : EntitySystem
+public sealed class ForeignerTraitSystem : EntitySystem
 {
     [Dependency] private readonly EntityManager _entMan = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
@@ -87,7 +86,7 @@ public sealed partial class ForeignerTraitSystem : EntitySystem
         if (TryComp<ClothingComponent>(translator, out var clothing)
             && clothing.Slots != SlotFlags.NONE
             && _inventory.TryGetSlots(uid, out var slots)
-            && slots.Any(it => _inventory.TryEquip(uid, translator, it.Name, true, false)))
+            && slots.Any(it => _inventory.TryEquip(uid, translator, it.Name, true)))
             return true;
 
         // Try to put the translator into entities bag, if it has one

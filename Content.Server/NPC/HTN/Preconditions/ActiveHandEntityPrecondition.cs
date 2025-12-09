@@ -4,7 +4,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared.Hands.Components;
 using Content.Server.Hands.Systems;
 
 namespace Content.Server.NPC.HTN.Preconditions;

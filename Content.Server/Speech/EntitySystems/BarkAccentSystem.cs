@@ -26,7 +26,7 @@ namespace Content.Server.Speech.EntitySystems
             " Woof!", " WOOF", " wof-wof"
         }.AsReadOnly();
 
-        private static readonly IReadOnlyDictionary<string, string> SpecialWords = new Dictionary<string, string>()
+        private static readonly IReadOnlyDictionary<string, string> SpecialWords = new Dictionary<string, string>
         {
             { "ah", "arf" },
             { "Ah", "Arf" },

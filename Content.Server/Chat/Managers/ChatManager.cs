@@ -182,6 +182,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Content.Server._Orion.ServerProtection.Chat;
+using Content.Server._RMC14.LinkAccount;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
@@ -199,7 +200,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Server._RMC14.LinkAccount; // RMC - Patreon
 
 namespace Content.Server.Chat.Managers;
 
@@ -399,7 +399,7 @@ internal sealed partial class ChatManager : IChatManager
             return;
 
         // Orion-Start
-        if (_chatProtection.CheckOOCMessage(message, player) == true)
+        if (_chatProtection.CheckOOCMessage(message, player))
             return;
         // Orion-End
 
@@ -515,7 +515,7 @@ internal sealed partial class ChatManager : IChatManager
         user?.AddEntity(netSource);
 
         var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume, canCoalesce); // Goobstation Edit
-        _netManager.ServerSendMessage(new MsgChatMessage() { Message = msg }, client);
+        _netManager.ServerSendMessage(new MsgChatMessage { Message = msg }, client);
 
         if (!recordReplay)
             return;
@@ -537,7 +537,7 @@ internal sealed partial class ChatManager : IChatManager
         user?.AddEntity(netSource);
 
         var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
-        _netManager.ServerSendToMany(new MsgChatMessage() { Message = msg }, clients);
+        _netManager.ServerSendToMany(new MsgChatMessage { Message = msg }, clients);
 
         if (!recordReplay)
             return;
@@ -571,7 +571,7 @@ internal sealed partial class ChatManager : IChatManager
         user?.AddEntity(netSource);
 
         var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume);
-        _netManager.ServerSendToAll(new MsgChatMessage() { Message = msg });
+        _netManager.ServerSendToAll(new MsgChatMessage { Message = msg });
 
         if (!recordReplay)
             return;

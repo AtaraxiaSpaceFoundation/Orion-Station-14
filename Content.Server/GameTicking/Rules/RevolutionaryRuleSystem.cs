@@ -43,8 +43,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Common.Changeling;
+using Content.Goobstation.Shared.Revolutionary;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
+using Content.Server.Antag.Components;
+using Content.Server.Chat.Systems;
+using Content.Server.Communications;
 using Content.Server.EUI;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
@@ -54,12 +60,13 @@ using Content.Server.Revolutionary.Components;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Station.Systems;
-using Content.Server.Speech.EntitySystems;
 using Content.Server.Speech.Components;
+using Content.Server.Station.Systems;
+using Content.Shared._EinsteinEngines.Revolutionary;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
-using Content.Shared.Flash;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Heretic;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mind.Components;
@@ -69,24 +76,14 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
+using Content.Shared.Revolutionary;
 using Content.Shared.Revolutionary.Components;
-using Content.Shared.Stunnable;
 using Content.Shared.Speech.Muting;
+using Content.Shared.Stunnable;
 using Content.Shared.Zombies;
-using Content.Shared.Heretic;
-using Content.Goobstation.Common.Changeling;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Shared.Cuffs.Components;
-using Content.Shared.Revolutionary;
-using Content.Server.Communications;
-using System.Linq;
-using Content.Goobstation.Shared.Revolutionary;
-using Content.Server.Antag.Components;
-using Content.Server.Chat.Systems;
-using Content.Shared._EinsteinEngines.Revolutionary;
-using Robust.Shared.Player;
-
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -398,7 +395,6 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         {
             ev.Cancelled = true;
             ev.Reason = Loc.GetString("shuttle-call-error");
-            return;
         }
     }
 
@@ -446,7 +442,6 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             if ((HasComp<RevolutionaryComponent>(entity) || HasComp<HeadRevolutionaryComponent>(entity)) && countRevolutionaries)
             {
                 gone++;
-                continue;
             }
         }
 

@@ -14,10 +14,10 @@ using Content.Server.IdentityManagement;
 using Content.Shared._Shitmed.StatusEffects;
 using Content.Shared.DetailExaminable;
 using Content.Shared.Forensics;
-using Content.Shared.Humanoid;
-using Content.Shared.Preferences;
-using Content.Shared.Popups;
 using Content.Shared.Forensics.Components;
+using Content.Shared.Humanoid;
+using Content.Shared.Popups;
+using Content.Shared.Preferences;
 
 namespace Content.Server._Shitmed.StatusEffects;
 

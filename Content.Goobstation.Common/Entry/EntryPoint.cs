@@ -6,7 +6,6 @@
 
 using Content.Goobstation.Common.IoC;
 using Robust.Shared.ContentPack;
-using Robust.Shared.IoC;
 
 namespace Content.Goobstation.Common.Entry;
 

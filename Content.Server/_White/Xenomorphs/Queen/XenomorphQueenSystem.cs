@@ -3,12 +3,9 @@ using Content.Server._White.Xenomorphs.Plasma;
 using Content.Server.Actions;
 using Content.Server.Mind;
 using Content.Server.Popups;
-using Content.Shared._White.Actions;
 using Content.Shared._White.Xenomorphs;
 using Content.Shared._White.Xenomorphs.Queen;
 using Content.Shared._White.Xenomorphs.Xenomorph;
-using Content.Shared.Mind.Components;
-using Content.Shared.Popups;
 
 namespace Content.Server._White.Xenomorphs.Queen;
 

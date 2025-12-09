@@ -7,7 +7,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Religion;
-using Content.Server.Database;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
 using Content.Shared._DV.CosmicCult;

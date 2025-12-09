@@ -1,0 +1,12 @@
+- type: entity
+  parent: WeaponArcStatic
+  id: WeaponArcXenomorphTail
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: WeaponArcVisuals
+      fadeOut: false
+    - type: Sprite
+      sprite: _White/Interface/Actions/xenomorph.rsi
+      state: tail_attack
+    - type: TimedDespawn
+      lifetime: 1

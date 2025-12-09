@@ -1,6 +1,6 @@
-using Robust.Shared.Prototypes;
-using Content.Shared.Maps;
 using Content.Shared.Decals;
+using Content.Shared.Maps;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Spawners.Components;
 
@@ -42,19 +42,19 @@ public sealed partial class RandomDecalSpawnerComponent : Component
     /// A value <= 0 or null is considered unlimited.
     /// </remarks>
     [DataField]
-    public int? MaxDecalsPerTile = null;
+    public int? MaxDecalsPerTile;
 
     /// <summary>
     /// Whether decals should have a random rotation applied to them.
     /// </summary>
     [DataField]
-    public bool RandomRotation = false;
+    public bool RandomRotation;
 
     /// <summary>
     /// Whether decals should snap to 90 degree orientations, does nothing if RandomRotation is false.
     /// </summary>
     [DataField]
-    public bool SnapRotation = false;
+    public bool SnapRotation;
 
     /// <summary>
     /// Whether decals should snap to the center omf a grid space or be placed randoly.
@@ -69,7 +69,7 @@ public sealed partial class RandomDecalSpawnerComponent : Component
     /// zIndex for the generated decals
     /// </summary>
     [DataField]
-    public int ZIndex = 0;
+    public int ZIndex;
 
     /// <summary>
     /// Color for the generated decals. Does nothing if RandomColorList is set.
@@ -90,7 +90,7 @@ public sealed partial class RandomDecalSpawnerComponent : Component
     /// A null value will cause this to attempt to use the default value (DefaultCleanable) for the decal.
     /// </remarks>
     [DataField]
-    public bool? Cleanable = null;
+    public bool? Cleanable;
 
     /// <summary>
     /// A list of tile prototype IDs to only place decals on.
@@ -118,5 +118,5 @@ public sealed partial class RandomDecalSpawnerComponent : Component
     /// Sets whether to delete the entity with this component after the spawner is finished.
     /// </summary>
     [DataField]
-    public bool DeleteSpawnerAfterSpawn = false;
+    public bool DeleteSpawnerAfterSpawn;
 }

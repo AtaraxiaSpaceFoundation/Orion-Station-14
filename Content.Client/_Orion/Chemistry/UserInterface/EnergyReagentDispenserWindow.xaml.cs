@@ -41,6 +41,7 @@ public sealed partial class EnergyReagentDispenserWindow : FancyWindow
     /// Update the button grid of reagents which can be dispensed.
     /// </summary>
     /// <param name="inventory">Reagents which can be dispensed by this dispenser</param>
+    /// <param name="amount">Amount reagents which can be dispensed</param>
     public void UpdateReagentsList(List<EnergyReagentInventoryItem> inventory, EnergyReagentDispenserDispenseAmount amount)
     {
         if (ReagentList == null)
@@ -110,7 +111,7 @@ public sealed partial class EnergyReagentDispenserWindow : FancyWindow
     /// <para>Also highlights a reagent if it's dispense button is being mouse hovered.</para>
     /// </summary>
     /// <param name="state">State data for the dispenser.</param>
-    /// or null if no button is being hovered.</param>
+    /// or null if no button is being hovered.
     public void UpdateContainerInfo(EnergyReagentDispenserBoundUserInterfaceState state)
     {
         ContainerInfo.Children.Clear();

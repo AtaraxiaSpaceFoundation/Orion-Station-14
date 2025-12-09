@@ -5,12 +5,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using Content.Server.GameTicking;
 using Content.Server.Voting;
 using Robust.Server;
 using Robust.Shared.Utility;
-using System.Text.Json;
-using System.Text.Json.Nodes;
 
 namespace Content.Server.Discord.WebhookMessages;
 
@@ -55,7 +55,7 @@ public sealed class VoteWebhooks : IPostInjectInit
         var voteName = customVoteName ?? Loc.GetString("custom-vote-webhook-name");
         var description = customVoteMessage ?? voteOptions.Title;
 
-        var payload = new WebhookPayload()
+        var payload = new WebhookPayload
         {
             Username = voteName,
             Embeds = new List<WebhookEmbed>

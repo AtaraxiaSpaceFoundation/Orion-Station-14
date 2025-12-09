@@ -1,10 +1,9 @@
 using Content.Server.Chat.Systems;
 using Content.Shared._White.Xenomorphs.Queen;
-using Content.Shared.Mobs;
 using Content.Shared._White.Xenomorphs.Xenomorph;
-using Robust.Shared.Player;
-using System.Linq;
+using Content.Shared.Mobs;
 using Robust.Shared.Audio;
+using Robust.Shared.Player;
 
 namespace Content.Server._White.Xenomorphs.Queen;
 

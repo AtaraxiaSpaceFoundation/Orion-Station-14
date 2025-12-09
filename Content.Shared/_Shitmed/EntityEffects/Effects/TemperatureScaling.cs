@@ -4,8 +4,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.Serialization;
-using Robust.Shared.GameObjects;
 using Content.Goobstation.Maths.FixedPoint;
 
 namespace Content.Shared._Shitmed.EntityEffects.Effects;

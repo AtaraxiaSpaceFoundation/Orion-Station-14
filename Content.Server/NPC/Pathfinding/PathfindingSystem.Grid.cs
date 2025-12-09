@@ -365,7 +365,7 @@ public sealed partial class PathfindingSystem
         var chunks = comp.DirtyChunks;
 
         // This assumes you never have bounds equal to or larger than 2 * ChunkSize.
-        var corners = new Vector2[] { aabb.BottomLeft, aabb.TopRight, aabb.BottomRight, aabb.TopLeft };
+        var corners = new[] { aabb.BottomLeft, aabb.TopRight, aabb.BottomRight, aabb.TopLeft };
         foreach (var corner in corners)
         {
             var sampledPoint = new Vector2i(
@@ -386,7 +386,7 @@ public sealed partial class PathfindingSystem
         if (component.Chunks.TryGetValue(origin, out var chunk))
             return chunk;
 
-        chunk = new GridPathfindingChunk()
+        chunk = new GridPathfindingChunk
         {
             Origin = origin,
         };
@@ -560,7 +560,7 @@ public sealed partial class PathfindingSystem
                         }
                         */
 
-                        var crumb = new PathfindingBreadcrumb()
+                        var crumb = new PathfindingBreadcrumb
                         {
                             Coordinates = new Vector2i(xOffset, yOffset),
                             Data = new PathfindingData(flags, collisionLayer, collisionMask, damage),

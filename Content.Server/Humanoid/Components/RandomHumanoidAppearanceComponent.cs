@@ -15,5 +15,5 @@ public sealed partial class RandomHumanoidAppearanceComponent : Component
     /// <summary>
     /// After randomizing, sets the hair style to this, if possible
     /// </summary>
-    [DataField] public string? Hair = null;
+    [DataField] public string? Hair;
 }

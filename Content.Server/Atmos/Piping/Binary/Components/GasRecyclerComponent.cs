@@ -18,7 +18,7 @@ namespace Content.Server.Atmos.Piping.Binary.Components
     {
         [ViewVariables(VVAccess.ReadOnly)]
         [DataField("reacting")]
-        public Boolean Reacting { get; set; } = false;
+        public Boolean Reacting { get; set; }
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField("inlet")]

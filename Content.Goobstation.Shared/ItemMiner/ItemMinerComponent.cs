@@ -5,7 +5,6 @@
 
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using System;
 
 namespace Content.Goobstation.Shared.ItemMiner;
 

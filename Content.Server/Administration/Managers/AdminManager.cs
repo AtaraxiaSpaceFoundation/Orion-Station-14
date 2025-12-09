@@ -90,6 +90,7 @@
 
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using Content.Server.Chat.Managers;
@@ -108,7 +109,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Toolshed.Errors;
 using Robust.Shared.Utility;
-
 
 namespace Content.Server.Administration.Managers
 {
@@ -600,7 +600,7 @@ namespace Content.Server.Administration.Managers
                 addr = addr.MapToIPv4();
             }
 
-            return Equals(addr, System.Net.IPAddress.Loopback) || Equals(addr, System.Net.IPAddress.IPv6Loopback);
+            return Equals(addr, IPAddress.Loopback) || Equals(addr, IPAddress.IPv6Loopback);
         }
 
         public bool TryGetCommandFlags(CommandSpec command, out AdminFlags[]? flags)

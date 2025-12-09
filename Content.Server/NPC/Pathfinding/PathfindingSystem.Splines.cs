@@ -133,7 +133,7 @@ public sealed partial class PathfindingSystem
             if (aStarResult == SimplePathResult.NoPath)
                 return SplinePathResult.NoPath;
 
-            path.AddRange(aStarResult.Path[0..]);
+            path.AddRange(aStarResult.Path[..]);
 
             foreach (var a in aStarResult.CameFrom)
             {
@@ -143,14 +143,14 @@ public sealed partial class PathfindingSystem
 
         points.Add(spline[^1]);
 
-        var simple = SimplifyPath(new SimplifyPathArgs()
+        var simple = SimplifyPath(new SimplifyPathArgs
         {
             Start = args.Args.Start,
             End = args.Args.End,
             Path = path,
         });
 
-        return new SplinePathResult()
+        return new SplinePathResult
         {
             Path = simple,
             CameFrom = cameFrom,
@@ -165,10 +165,10 @@ public sealed partial class PathfindingSystem
     {
         var nodes = new HashSet<Vector2i>(args.Path);
 
-        var result = GetBreadthPath(new BreadthPathArgs()
+        var result = GetBreadthPath(new BreadthPathArgs
         {
             Start = args.Start,
-            Ends = new List<Vector2i>()
+            Ends = new List<Vector2i>
             {
                 args.End,
             },

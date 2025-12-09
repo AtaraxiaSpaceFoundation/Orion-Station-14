@@ -3,7 +3,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.NodeContainer;
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.NodeContainer;

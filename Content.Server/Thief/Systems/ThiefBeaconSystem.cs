@@ -83,8 +83,8 @@ using Content.Server.Thief.Components;
 using Content.Shared.Examine;
 using Content.Shared.Foldable;
 using Content.Shared.Popups;
-using Content.Shared.Verbs;
 using Content.Shared.Roles;
+using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Thief.Systems;

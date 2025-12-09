@@ -181,7 +181,8 @@ public sealed partial class NPCSteeringSystem
                     {
                         return SteeringObstacleStatus.Completed;
                     }
-                    else if (climbing.NextTransition != null)
+
+                    if (climbing.NextTransition != null)
                     {
                         return SteeringObstacleStatus.Continuing;
                     }

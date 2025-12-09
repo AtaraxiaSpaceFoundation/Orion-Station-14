@@ -5,7 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Power.Components;
 using Content.Shared.DeviceNetwork;

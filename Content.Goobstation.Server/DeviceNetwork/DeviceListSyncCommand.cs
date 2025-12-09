@@ -8,7 +8,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration;
-using Content.Server.DeviceNetwork.Components;
 using Content.Shared.Administration;
 using Content.Shared.DeviceNetwork.Components;
 using Robust.Shared.Console;

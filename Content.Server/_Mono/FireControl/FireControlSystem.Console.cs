@@ -101,10 +101,8 @@ public sealed partial class FireControlSystem : EntitySystem
             UpdateUi(console, consoleComponent);
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
 
     private void UpdateUi(EntityUid uid, FireControlConsoleComponent? component = null)

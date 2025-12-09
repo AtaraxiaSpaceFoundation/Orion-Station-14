@@ -22,19 +22,18 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Store.Components;
-using Content.Shared.UserInterface;
+using System.Linq;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server._White.StoreDiscount;
+using Content.Server.Store.Components;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Store.Components;
+using Content.Shared.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
-using Content.Server._White.StoreDiscount;
-using Content.Shared.Mind;
 
 namespace Content.Server.Store.Systems;
 

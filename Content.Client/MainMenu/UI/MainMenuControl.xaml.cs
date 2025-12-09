@@ -32,7 +32,7 @@ public sealed partial class MainMenuControl : Control
         LayoutContainer.SetMarginTop(VBox, 30);
         LayoutContainer.SetGrowHorizontal(VBox, LayoutContainer.GrowDirection.Begin);
 
-/* // Orion-Remove
+/* // Orion-Edit: Removed
         var logoTexture = resCache.GetResource<TextureResource>("/Textures/Logo/logo.png");
         Logo.Texture = logoTexture;
 */

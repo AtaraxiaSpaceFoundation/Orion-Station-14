@@ -29,13 +29,13 @@ namespace Content.Server.Administration.Commands
             var player = shell.Player;
             if (player == null)
             {
-                shell.WriteLine(Loc.GetString($"shell-cannot-run-command-from-server"));
+                shell.WriteLine(Loc.GetString("shell-cannot-run-command-from-server"));
                 return;
             }
 
             if (_adminManager.GetAdminData(player, includeDeAdmin: true) == null)
             {
-                shell.WriteLine(Loc.GetString($"cmd-readmin-not-an-admin"));
+                shell.WriteLine(Loc.GetString("cmd-readmin-not-an-admin"));
                 return;
             }
 

@@ -11,8 +11,7 @@ using Content.Server.Power.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Doors.Components;
-using Content.Goobstation.Maths.FixedPoint;
-using Prometheus; // Added for Prometheus metrics
+using Prometheus;
 
 namespace Content.Goobstation.Server.StationEvents.Metric;
 

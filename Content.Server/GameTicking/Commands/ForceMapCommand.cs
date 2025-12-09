@@ -97,7 +97,7 @@ namespace Content.Server.GameTicking.Commands
         {
             if (args.Length != 1)
             {
-                shell.WriteLine(Loc.GetString(Loc.GetString($"shell-need-exactly-one-argument")));
+                shell.WriteLine(Loc.GetString(Loc.GetString("shell-need-exactly-one-argument")));
                 return;
             }
 
@@ -127,7 +127,7 @@ namespace Content.Server.GameTicking.Commands
                     .Select(p => new CompletionOption(p.ID, p.MapName))
                     .OrderBy(p => p.Value);
 
-                return CompletionResult.FromHintOptions(options, Loc.GetString($"cmd-forcemap-hint"));
+                return CompletionResult.FromHintOptions(options, Loc.GetString("cmd-forcemap-hint"));
             }
 
             return CompletionResult.Empty;

@@ -31,7 +31,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazineShotgunLeverRifle
         insertSound: /Audio/Weapons/Guns/MagIn/rifle_load.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
@@ -41,7 +41,7 @@
           - MagazineShotgunLeverRifle
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         priority: 1
         whitelist:
           tags:

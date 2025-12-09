@@ -9,7 +9,6 @@ using Content.Goobstation.Server.Implants.Components;
 using Content.Shared.Implants.Components;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
-using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.Implants.Systems;

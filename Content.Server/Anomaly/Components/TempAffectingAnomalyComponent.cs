@@ -18,7 +18,7 @@ public sealed partial class TempAffectingAnomalyComponent : Component
     /// The the amount the tempurature should be modified by (negative for decreasing temp)
     /// </summary>
     [DataField("tempChangePerSecond")]
-    public float TempChangePerSecond = 0;
+    public float TempChangePerSecond;
 
     /// <summary>
     /// The minimum amount of severity required
@@ -31,7 +31,7 @@ public sealed partial class TempAffectingAnomalyComponent : Component
     /// The temperature of the hotspot where the anomaly is
     /// </summary>
     [DataField("hotspotExposeTemperature")]
-    public float HotspotExposeTemperature = 0;
+    public float HotspotExposeTemperature;
 
     /// <summary>
     /// The volume of the hotspot where the anomaly is.

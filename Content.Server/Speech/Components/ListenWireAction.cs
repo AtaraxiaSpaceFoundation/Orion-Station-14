@@ -5,13 +5,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Chat.Systems;
-using Content.Shared.Radio;
 using Content.Server.Radio.Components;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Speech.Components;
 using Content.Server.Wires;
-using Content.Shared.Wires;
+using Content.Shared.Radio;
 using Content.Shared.Speech;
+using Content.Shared.Wires;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Speech;
@@ -49,12 +49,9 @@ public sealed partial class ListenWireAction : BaseToggleWireAction
     {
         if (GetValue(wire.Owner))
             return StatusLightState.On;
-        else
-        {
-            if (TimeoutKey != null && _wires.HasData(wire.Owner, TimeoutKey))
-                return StatusLightState.BlinkingSlow;
-            return StatusLightState.Off;
-        }
+        if (TimeoutKey != null && _wires.HasData(wire.Owner, TimeoutKey))
+            return StatusLightState.BlinkingSlow;
+        return StatusLightState.Off;
     }
     public override void ToggleValue(EntityUid owner, bool setting)
     {

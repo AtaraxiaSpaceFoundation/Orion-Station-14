@@ -22,9 +22,9 @@
 using Content.Server.Kitchen.Components;
 using Content.Shared._Lavaland.Weapons;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Toggleable;
 using Content.Shared.Light;
 using Content.Shared.Light.Components;
+using Content.Shared.Toggleable;
 
 namespace Content.Server._Lavaland.Weapons;
 

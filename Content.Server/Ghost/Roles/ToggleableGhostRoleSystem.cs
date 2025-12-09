@@ -59,7 +59,7 @@
 
 using Content.Server.Ghost.Roles.Components;
 using Content.Shared.Examine;
-using Content.Shared.Interaction; // Goobstation
+using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;

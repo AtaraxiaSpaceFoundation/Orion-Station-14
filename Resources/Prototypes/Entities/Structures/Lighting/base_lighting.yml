@@ -160,8 +160,8 @@
     state: base
   - type: PointLight
     color: "#FFE4CE" # 5000K color temp
-    energy: 0.65 # Orion-Edit | 0.8 > 0.65
-    radius: 6 # Orion-Edit | 10 > 6
+    energy: 0.65 # Orion-Edit: 0.8 > 0.65
+    radius: 6 # Orion-Edit: 10 > 6
     softness: 1
     offset: "0, -0.5"
   - type: Damageable
@@ -300,9 +300,9 @@
   - type: PoweredLight
     hasLampOnSpawn: LedLightTube
   - type: PointLight
-    radius: 10 # Orion-Edit | 15 > 10
-    energy: 0.7 # Orion-Edit | 1 > 0.7
-    softness: 1 # Orion-Edit | 0.9 > 1
+    radius: 10 # Orion-Edit: 15 > 10
+    energy: 0.7 # Orion-Edit: 1 > 0.7
+    softness: 1 # Orion-Edit: 0.9 > 1
     color: "#EEEEFF"
   - type: DamageOnInteract
     damage:
@@ -317,8 +317,8 @@
   components:
   - type: PointLight
     radius: 10
-    energy: 0.7 # Orion-Edit | 2.5 > 0.7
-    softness: 1 # Orion-Edit | 0.9 > 1
+    energy: 0.7 # Orion-Edit: 2.5 > 0.7
+    softness: 1 # Orion-Edit: 0.9 > 1
     color: "#EEEEFF"
 
 #Exterior lights
@@ -342,9 +342,9 @@
   suffix: Always Powered, Exterior
   components:
   - type: PointLight
-    radius: 10 # Orion-Edit | 12 > 10
-    energy: 0.7 # Orion-Edit | 4.5 > 0.7
-    softness: 1 # Orion-Edit | 0.5 > 1
+    radius: 10 # Orion-Edit: 12 > 10
+    energy: 0.7 # Orion-Edit: 4.5 > 0.7
+    softness: 1 # Orion-Edit: 0.5 > 1
     color: "#B4FCF0"
 
 #Sodium lights
@@ -358,8 +358,8 @@
     hasLampOnSpawn: SodiumLightTube
   - type: PointLight
     radius: 10
-    energy: 0.7 # Orion-Edit | 2.5 > 0.7
-    softness: 1 # Orion-Edit | 0.9 > 1
+    energy: 0.7 # Orion-Edit: 2.5 > 0.7
+    softness: 1 # Orion-Edit: 0.9 > 1
     color: "#FFAF38"
   - type: DamageOnInteract
     damage:
@@ -374,8 +374,8 @@
   components:
   - type: PointLight
     radius: 10
-    energy: 0.7 # Orion-Edit | 4 > 0.7
-    softness: 1 # Orion-Edit | 0.5 > 1
+    energy: 0.7 # Orion-Edit: 4 > 0.7
+    softness: 1 # Orion-Edit: 0.5 > 1
     color: "#FFAF38"
 
 #Small lights
@@ -395,9 +395,9 @@
       sprite: Structures/Wallmounts/Lighting/light_small.rsi
       state: base
     - type: PointLight
-      energy: 0.7 # Orion-Edit | 1.0 > 0.7
-      radius: 4 # Orion-Edit | 6 > 4
-      softness: 1 # Orion-Edit | 1.1 > 1
+      energy: 0.7 # Orion-Edit: 1.0 > 0.7
+      radius: 4 # Orion-Edit: 6 > 4
+      softness: 1 # Orion-Edit: 1.1 > 1
       enabled: true
     - type: Physics
       bodyType: Static
@@ -494,7 +494,7 @@
   - type: PointLight
     enabled: true
     radius: 8
-    energy: 0.7 # Orion-Edit | 1 > 0.7
+    energy: 0.7 # Orion-Edit: 1 > 0.7
     softness: 1
     color: "#EEEEFF"
   - type: PoweredLight

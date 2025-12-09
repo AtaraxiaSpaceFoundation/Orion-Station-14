@@ -30,14 +30,14 @@ namespace Content.Server.Administration.Commands
             switch (args.Length)
             {
                 case 0:
-                    shell.WriteLine(Loc.GetString($"shell-need-exactly-one-argument"));
+                    shell.WriteLine(Loc.GetString("shell-need-exactly-one-argument"));
                     break;
                 default:
                     var name = string.Join(" ", args);
 
                     if (!_compFactory.TryGetRegistration(name, out var registration))
                     {
-                        shell.WriteLine(Loc.GetString($"cmd-deletecomponent-no-component-exists", ("name", name)));
+                        shell.WriteLine(Loc.GetString("cmd-deletecomponent-no-component-exists", ("name", name)));
                         break;
                     }
 
@@ -52,7 +52,7 @@ namespace Content.Server.Administration.Commands
                         i++;
                     }
 
-                    shell.WriteLine(Loc.GetString($"cmd-deletecomponent-success", ("count", i), ("name", name)));
+                    shell.WriteLine(Loc.GetString("cmd-deletecomponent-success", ("count", i), ("name", name)));
 
                     break;
             }

@@ -72,13 +72,13 @@ public sealed partial class TargetGuidedComponent : Component
     /// Time since last cursor position update.
     /// </summary>
     [DataField]
-    public float TimeSinceLastUpdate = 0f;
+    public float TimeSinceLastUpdate;
 
     /// <summary>
     /// Time since the cursor position has actually moved.
     /// </summary>
     [DataField]
-    public float TimeSinceLastCursorMovement = 0f;
+    public float TimeSinceLastCursorMovement;
 
     /// <summary>
     /// Time in seconds before considering connection lost.
@@ -97,17 +97,17 @@ public sealed partial class TargetGuidedComponent : Component
     /// This prevents stuttering by locking the direction once connection is lost.
     /// </summary>
     [DataField]
-    public Angle? FixedDirection = null;
+    public Angle? FixedDirection;
 
     /// <summary>
     /// Tracks whether the missile has lost connection to its console.
     /// </summary>
     [DataField]
-    public bool ConnectionLost = false;
+    public bool ConnectionLost;
 
     /// <summary>
     /// Once set to true, the missile permanently ignores any further guidance inputs.
     /// </summary>
     [DataField]
-    public bool ControlPermanentlyLost = false;
+    public bool ControlPermanentlyLost;
 }

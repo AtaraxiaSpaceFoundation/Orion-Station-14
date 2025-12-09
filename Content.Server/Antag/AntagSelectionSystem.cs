@@ -105,12 +105,11 @@ using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
-using Content.Server.Players.PlayTimeTracking; // Goobstation
+using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.Roles;
 using Content.Server.Roles.Jobs;
 using Content.Server.Shuttles.Components;
-using Content.Server.Station.Events;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Antag;
 using Content.Shared.Clothing;
@@ -355,7 +354,11 @@ public sealed partial class AntagSelectionSystem : GameRuleSystem<AntagSelection
 
         // weight by playtime since last rolled
         foreach (var se in pool)
-            weights[se] = (float)(_playTime.GetOverallPlaytime(se) - _lastRolled.GetLastRolled(se.UserId)).TotalSeconds;
+        {
+            var lastRoll = (float)(_playTime.GetOverallPlaytime(se) - _lastRolled.GetLastRolled(se.UserId)).TotalSeconds;
+            //weight clamped between 5 hours and 20 hours
+            weights[se] = float.Clamp(lastRoll, 18000.0f, 72000.0f);
+        }
 
         return weights;
     }

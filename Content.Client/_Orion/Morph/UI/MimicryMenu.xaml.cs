@@ -1,9 +1,7 @@
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Orion.Morph;
-using Robust.Client.Player;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.Prototypes;
 using System.Numerics;
 
 namespace Content.Client._Orion.Morph.UI;
@@ -15,8 +13,6 @@ namespace Content.Client._Orion.Morph.UI;
 public sealed partial class MimicryMenu : RadialMenu
 {
     [Dependency] private readonly EntityManager _ent = default!;
-    [Dependency] private readonly IPrototypeManager _prot = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
 
     public EntityUid Entity { get; private set; }
 
@@ -37,8 +33,6 @@ public sealed partial class MimicryMenu : RadialMenu
     private void UpdateUI()
     {
         var main = FindControl<RadialContainer>("Main");
-        if (main == null)
-            return;
 
         main.RemoveAllChildren();
 
@@ -76,9 +70,6 @@ public sealed partial class MimicryMenu : RadialMenu
 
     private void AddAction(RadialContainer main)
     {
-        if (main == null)
-            return;
-
         foreach (var child in main.Children)
         {
             var castChild = child as EmbeddedEntityMenuButton;

@@ -78,10 +78,10 @@
 
 using Content.Shared.Maps;
 using Robust.Server.Console;
-using Robust.Shared.Utility;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Maps;
 
@@ -120,7 +120,7 @@ public sealed class GridDraggingSystem : SharedGridDraggingSystem
             _draggers.Remove(session);
         }
 
-        RaiseNetworkEvent(new GridDragToggleMessage()
+        RaiseNetworkEvent(new GridDragToggleMessage
         {
             Enabled = _draggers.Contains(session),
         }, session.Channel);

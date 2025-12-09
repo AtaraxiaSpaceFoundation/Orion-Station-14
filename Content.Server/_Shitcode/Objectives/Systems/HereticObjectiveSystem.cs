@@ -13,7 +13,7 @@ using Content.Shared.Objectives.Components;
 
 namespace Content.Server._Goobstation.Objectives.Systems;
 
-public sealed partial class HereticObjectiveSystem : EntitySystem
+public sealed class HereticObjectiveSystem : EntitySystem
 {
     [Dependency] private readonly NumberObjectiveSystem _number = default!;
 

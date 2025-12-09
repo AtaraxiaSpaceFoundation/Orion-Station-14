@@ -46,7 +46,6 @@ using System.Linq;
 using Content.Server.Nutrition.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Storage.Components;
-using Content.Shared.Emag.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;

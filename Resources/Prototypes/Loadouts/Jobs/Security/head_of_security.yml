@@ -155,7 +155,7 @@
   id: HeadofSecurityMantle
   equipment:
     neck: ClothingNeckMantleHOS
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MasterHoS
 

@@ -3,3 +3,6 @@
 
 - type: Tag
   id: MeleeHitIgnore
+
+- type: Tag
+  id: MegaCell

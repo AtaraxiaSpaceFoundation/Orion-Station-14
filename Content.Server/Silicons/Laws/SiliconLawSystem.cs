@@ -105,57 +105,59 @@
 
 using System.Linq;
 using Content.Goobstation.Common.Silicons.Components;
-using Content.Goobstation.Maths.FixedPoint; // Goob edit
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.CustomLawboard;
 using Content.Server.Administration;
 using Content.Server.Chat.Managers;
 using Content.Server.Radio.Components;
-using Content.Server.Radio.EntitySystems; // Goob edit
-using Content.Server.Research.Systems; // Goob edit
+using Content.Server.Radio.EntitySystems;
+using Content.Server.Research.Systems;
 using Content.Server.Roles;
 using Content.Server.Station.Systems;
-using Content.Shared._CorvaxNext.Silicons.Borgs.Components; // Corvax-Next-AiRemoteControl
+using Content.Shared._CorvaxNext.Silicons.Borgs.Components;
 using Content.Shared.Administration;
 using Content.Shared.Chat;
 using Content.Shared.Emag.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
-using Content.Shared.Random; // Goob edit
-using Content.Shared.Random.Helpers; // Goob edit
-using Content.Shared.Research.Components; // Goob edit
+using Content.Shared.Random;
+using Content.Shared.Random.Helpers;
+using Content.Shared.Research.Components;
 using Content.Shared.Roles;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
-using Content.Shared.Silicons.StationAi; // Corvax-Next-AiRemoteControl
-using Content.Shared.Tag; // Corvax-Next-AiRemoteControl
-using Content.Shared.Wires;
+using Content.Shared.Silicons.StationAi;
+using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random; // Goob edit
+using Robust.Shared.Random;
 using Robust.Shared.Toolshed;
 
 namespace Content.Server.Silicons.Laws;
 
-/// <inheritdoc/>
 public sealed class SiliconLawSystem : SharedSiliconLawSystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IRobustRandom _robustRandom = default!; // Goob edit
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!; // Corvax-Next-AiRemoteControl
-    [Dependency] private readonly IonStormSystem _ionStorm = default!; // Goob edit
-    [Dependency] private readonly ResearchSystem _research = default!; // Goob edit
-    [Dependency] private readonly RadioSystem _radio = default!; // Goob edit
 
-    /// <inheritdoc/>
+    // Goobstation
+    [Dependency] private readonly IRobustRandom _robustRandom = default!;
+    [Dependency] private readonly IonStormSystem _ionStorm = default!;
+    [Dependency] private readonly ResearchSystem _research = default!;
+    [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!; // Corvax-Next-AiRemoteControl
+
+
+
     public override void Initialize()
     {
         base.Initialize();
@@ -397,13 +399,13 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
     public SiliconLawset GetLawset(ProtoId<SiliconLawsetPrototype> lawset)
     {
         var proto = _prototype.Index(lawset);
-        var laws = new SiliconLawset()
+        var laws = new SiliconLawset
         {
             Laws = new List<SiliconLaw>(proto.Laws.Count)
         };
         foreach (var law in proto.Laws)
         {
-            laws.Laws.Add(_prototype.Index<SiliconLawPrototype>(law).ShallowClone());
+            laws.Laws.Add(_prototype.Index(law).ShallowClone());
         }
         laws.ObeysTo = proto.ObeysTo;
 
@@ -444,8 +446,22 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             ApplyExperimentalLaws(ent, (args.Entity, experimentalLaws, provider));
             return;
         }
+
+        // This part is for custom lawboards as there's no lawset prototype for them.
+
+        List<SiliconLaw>? lawset;
+
+        if (TryComp(args.Entity, out CustomLawboardComponent? customLawboard))
+        {
+            lawset = customLawboard.Laws;
+        }
+        else
+        {
+            lawset = GetLawset(provider.Laws).Laws;
+        }
+
         // Goob edit end
-        var lawset = GetLawset(provider.Laws).Laws;
+
         var query = EntityManager.CompRegistryQueryEnumerator(ent.Comp.Components);
 
         while (query.MoveNext(out var update))
@@ -570,7 +586,7 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
         if (laws.Laws.Count > 0)
         {
             var i = _robustRandom.Next(laws.Laws.Count);
-            laws.Laws[i] = new SiliconLaw()
+            laws.Laws[i] = new SiliconLaw
             {
                 LawString = newLaw,
                 Order = laws.Laws[i].Order

@@ -4,8 +4,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.GameObjects;
-
 namespace Content.Shared._Shitmed.Spawners.EntitySystems;
 
 public sealed class SpawnerSpawnedEvent : EntityEventArgs

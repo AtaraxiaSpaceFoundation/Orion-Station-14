@@ -8,8 +8,6 @@
 
 using Content.Goobstation.Shared.Emoting;
 using Content.Shared.Actions;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Gravity;
 using Content.Shared.Movement.Components;

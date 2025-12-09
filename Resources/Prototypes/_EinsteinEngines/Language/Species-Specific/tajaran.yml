@@ -14,6 +14,11 @@
   speech:
     color: "#d6a36eee" # Goob Edit - Make more unique from Vulpkanin
     # fontId: Noganas # Rugged, like the people and the land #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: feline
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2 # this is mostly based on the name generator, 2-4 is there so it goes here too
@@ -112,6 +117,11 @@
     - chat-speech-verb-sign-nalrasan-15
     - chat-speech-verb-sign-nalrasan-16
     - chat-speech-verb-sign-nalrasan-17
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: feline
+  # Orion-End
   obfuscation:
     !type:ReplacementObfuscation
     replacement:
@@ -142,6 +152,11 @@
     - chat-speech-verb-sign-siiktajr-8
     - chat-speech-verb-sign-siiktajr-9
     - chat-speech-verb-sign-siiktajr-10
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: feline
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -220,6 +235,11 @@
   speech:
     color: "#9a69f5ee" # More or less the color of nobility
     fontId: GrenzeGotisch # Old and distinguished, but not unreadable
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: feline
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 3
@@ -299,6 +319,11 @@
   speech:
     color: "#b1c472ee" # Green, color of grass, of change, and of spring
     fontId: RubikDirt # Aptly named
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: feline
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2

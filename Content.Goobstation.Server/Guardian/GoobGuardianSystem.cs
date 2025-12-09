@@ -5,8 +5,6 @@
 
 using Content.Goobstation.Shared.Guardian;
 using Content.Server.Guardian;
-using Content.Shared.Actions;
-using Content.Shared.Guardian;
 
 namespace Content.Goobstation.Server.Guardian
 {

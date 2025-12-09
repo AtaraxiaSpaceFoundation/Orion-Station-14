@@ -12,15 +12,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Shared.Mindcontrol;
 using Content.Server.Administration.Logs;
 using Content.Server.Mind;
 using Content.Server.Popups;
-using Content.Server.Revolutionary.Components; // GoobStation
+using Content.Server.Revolutionary.Components;
 using Content.Server.Roles;
 using Content.Shared.Database;
 using Content.Shared.Implants;
 using Content.Shared.Mindshield.Components;
-using Content.Shared.Revolutionary; // GoobStation
+using Content.Shared.Revolutionary;
 using Content.Shared.Revolutionary.Components;
 using Robust.Shared.Containers;
 
@@ -79,8 +80,8 @@ public sealed class MindShieldSystem : EntitySystem
         {
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(implanted)} was deconverted due to being implanted with a Mindshield.");
         }
-        if (HasComp<Goobstation.Shared.Mindcontrol.MindcontrolledComponent>(implanted))   //Goobstation - Mindcontrol Implant
-            RemComp<Goobstation.Shared.Mindcontrol.MindcontrolledComponent>(implanted);
+        if (HasComp<MindcontrolledComponent>(implanted))   //Goobstation - Mindcontrol Implant
+            RemComp<MindcontrolledComponent>(implanted);
     }
 
     private void OnImplantDraw(Entity<MindShieldImplantComponent> ent, ref EntGotRemovedFromContainerMessage args)
@@ -88,7 +89,7 @@ public sealed class MindShieldSystem : EntitySystem
         _popupSystem.PopupEntity(Loc.GetString("mindshield-implant-effect-removed"), args.Container.Owner, args.Container.Owner);
 
         if (TryComp<HeadRevolutionaryComponent>(args.Container.Owner, out var headRevComp))
-            _revolutionarySystem.ToggleConvertAbility((args.Container.Owner, headRevComp), true);
+            _revolutionarySystem.ToggleConvertAbility((args.Container.Owner, headRevComp));
 
         RemComp<MindShieldComponent>(args.Container.Owner);
     }

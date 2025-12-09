@@ -1,11 +1,7 @@
 using System.Text;
-using Content.Server.Database;
-using Content.Server.Players.PlayTimeTracking;
-using Content.Server.Preferences.Managers;
 using Content.Shared._Orion.CustomGhost;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Orion.Commands;
@@ -17,10 +13,7 @@ namespace Content.Server._Orion.Commands;
 [AnyCommand]
 public sealed class ListCustomGhostsCommand : IConsoleCommand
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IServerPreferencesManager _prefMan = default!;
-    [Dependency] private readonly PlayTimeTrackingManager _playTimeTracking = default!;
 
     public string Command => "listcustomghosts";
     public string Description => Loc.GetString("listcustomghosts-command-description");
@@ -30,10 +23,12 @@ public sealed class ListCustomGhostsCommand : IConsoleCommand
     {
         var protos = _proto.EnumeratePrototypes<CustomGhostPrototype>();
         var sb = new StringBuilder();
-        if (shell.Player is not ICommonSession player)
+        if (shell.Player is not { } player)
         {
             foreach (var proto in protos)
+            {
                 sb.AppendLine(proto.ID);
+            }
 
             shell.WriteLine(sb.ToString());
             return;
@@ -45,23 +40,27 @@ public sealed class ListCustomGhostsCommand : IConsoleCommand
             return;
         }
 
-        bool all = args.Length == 1;
+        var all = args.Length == 1;
 
         sb.AppendLine(Loc.GetString($"listcustomghosts-{(all ? "all" : "available")}-ghosts"));
 
         foreach(var proto in protos)
         {
-            bool available = true;
+            var available = true;
             if(proto.Restrictions is not null)
+            {
                 foreach(var restriction in proto.Restrictions)
                 {
                     if (restriction.CanUse(player, out _))
                         continue;
+
                     if (restriction.HideOnFail)
                         goto skipPrototype; // wojaks_pointing.png
+
                     available = false;
                     break;
                 }
+            }
 
             if (available)
                 sb.AppendLine($"- {proto.ID}");
@@ -77,6 +76,6 @@ public sealed class ListCustomGhostsCommand : IConsoleCommand
         args.Length switch
         {
             1 => CompletionResult.FromHint("all"),
-            _ => CompletionResult.Empty
+            _ => CompletionResult.Empty,
         };
 }

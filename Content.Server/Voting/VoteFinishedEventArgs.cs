@@ -10,7 +10,6 @@
 
 using System.Collections.Immutable;
 
-
 namespace Content.Server.Voting
 {
     public sealed class VoteFinishedEventArgs : EventArgs

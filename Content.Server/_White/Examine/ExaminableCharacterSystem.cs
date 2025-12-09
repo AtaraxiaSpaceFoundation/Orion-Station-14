@@ -4,21 +4,21 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Globalization;
+using Content.Goobstation.Common.CCVar;
+using Content.Goobstation.Common.Examine;
 using Content.Server.Chat.Managers;
 using Content.Server.IdentityManagement;
-using Content.Goobstation.Common.Examine; // Goobstation Change
-using Content.Goobstation.Common.CCVar; // Goobstation Change
-using Content.Shared._Goobstation.Heretic.Components; // Goobstation Change
+using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared.Chat;
 using Content.Shared.Examine;
-using Content.Shared._White.Examine;
 using Content.Shared.Inventory;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using System.Globalization;
 
 namespace Content.Server._White.Examine;
+
 public sealed class ExaminableCharacterSystem : EntitySystem
 {
     [Dependency] private readonly InventorySystem _inventorySystem = default!;

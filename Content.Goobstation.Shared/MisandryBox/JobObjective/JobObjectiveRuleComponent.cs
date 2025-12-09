@@ -1,6 +1,4 @@
-﻿using Content.Shared.GameTicking.Components;
-using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
+﻿using Content.Shared.Mind;
 
 namespace Content.Goobstation.Shared.MisandryBox.JobObjective;
 

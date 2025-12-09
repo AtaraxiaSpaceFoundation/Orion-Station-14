@@ -16,18 +16,18 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.Popups;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition.EntitySystems;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Server.Popups;
 
 namespace Content.Server.Chemistry.EntitySystems;
 
-public sealed partial class ReactionMixerSystem : EntitySystem
+public sealed class ReactionMixerSystem : EntitySystem
 {
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainers = default!;

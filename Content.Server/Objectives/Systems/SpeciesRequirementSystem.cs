@@ -35,7 +35,6 @@ public sealed class SpeciesRequirementSystem : EntitySystem
         if (!requirement.Comp.AllowedSpecies.Contains(appearance.Species))
         {
             args.Cancelled = true;
-            return;
         }
     }
 }

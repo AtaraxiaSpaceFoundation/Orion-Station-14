@@ -4,11 +4,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Destructible;
 using Content.Shared.Construction;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
-using Content.Goobstation.Maths.FixedPoint;
 
 namespace Content.Server.Construction.Conditions;
 
@@ -27,7 +27,7 @@ public sealed partial class MinHealth : IGraphCondition
     [DataField]
     public FixedPoint2 Threshold = 1;
     [DataField]
-    public bool ByProportion = false;
+    public bool ByProportion;
 
     [DataField]
     public bool IncludeEquals = true;
@@ -51,22 +51,16 @@ public sealed partial class MinHealth : IGraphCondition
             {
                 return proportionHealth >= Threshold;
             }
-            else
-            {
-                return curHealth >= Threshold;
-            }
+
+            return curHealth >= Threshold;
         }
-        else
+
+        if (ByProportion)
         {
-            if (ByProportion)
-            {
-                return proportionHealth > Threshold;
-            }
-            else
-            {
-                return curHealth > Threshold;
-            }
+            return proportionHealth > Threshold;
         }
+
+        return curHealth > Threshold;
     }
 
     public bool DoExamine(ExaminedEvent args)
@@ -85,7 +79,7 @@ public sealed partial class MinHealth : IGraphCondition
 
     public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
     {
-        yield return new ConstructionGuideEntry()
+        yield return new ConstructionGuideEntry
         {
             Localization = "construction-step-condition-low-health"
         };

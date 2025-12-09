@@ -10,13 +10,13 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Linq;
 using Content.Server.Nutrition.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Nutrition;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
-using System.Linq;
 
 namespace Content.Server.Nutrition.EntitySystems;
 

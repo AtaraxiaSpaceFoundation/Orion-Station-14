@@ -134,5 +134,5 @@ public sealed class EventMimicryActivate : BoundUserInterfaceMessage
 [Serializable, NetSerializable]
 public enum MimicryKey : byte
 {
-    Key
+    Key,
 }

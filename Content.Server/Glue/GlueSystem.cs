@@ -78,7 +78,7 @@ public sealed class GlueSystem : SharedGlueSystem
 
         var user = args.User;
 
-        var verb = new UtilityVerb()
+        var verb = new UtilityVerb
         {
             Act = () => TryGlue(entity, target, user),
             IconEntity = GetNetEntity(entity),

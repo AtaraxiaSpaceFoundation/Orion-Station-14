@@ -5,6 +5,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Orion-Edit: Removed
 using Robust.Shared.GameStates;
 
 namespace Content.Goobstation.Shared.Emoting;
@@ -22,3 +23,4 @@ public abstract class SharedFartSystem : EntitySystem
         args.State = new FartComponentState(ent.Comp.Emote, ent.Comp.FartTimeout, ent.Comp.FartInhale, ent.Comp.SuperFarted);
     }
 }
+*/

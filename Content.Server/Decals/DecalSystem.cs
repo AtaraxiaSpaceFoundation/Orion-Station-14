@@ -78,7 +78,7 @@ namespace Content.Server.Decals
         {
             base.Initialize();
 
-            _updateJob = new UpdatePlayerJob()
+            _updateJob = new UpdatePlayerJob
             {
                 System = this,
                 Sessions = _sessions,

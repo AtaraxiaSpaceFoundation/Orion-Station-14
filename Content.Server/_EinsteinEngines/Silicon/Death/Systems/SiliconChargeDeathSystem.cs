@@ -4,23 +4,21 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Power.Components;
-using Content.Shared._EinsteinEngines.Silicon.Systems;
-using Content.Shared.Bed.Sleep;
+using Content.Goobstation.Shared.Sprinting;
 using Content.Server._EinsteinEngines.Silicon.Charge;
 using Content.Server.Humanoid;
-using Content.Shared.Humanoid;
-using Content.Shared.StatusEffectNew;
-// Goobstation Start - Energycrit
-using Content.Goobstation.Shared.Sprinting;
+using Content.Server.Power.Components;
 using Content.Server.Radio;
 using Content.Shared._EinsteinEngines.Silicon.Death;
+using Content.Shared._EinsteinEngines.Silicon.Systems;
 using Content.Shared.Actions;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
+using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Standing;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
-// Goobstation End - Energycrit
 
 namespace Content.Server._EinsteinEngines.Silicon.Death;
 

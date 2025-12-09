@@ -74,7 +74,7 @@ namespace Content.Server.Chemistry.Components
     public sealed partial class ChemMasterComponent : Component
     {
         [DataField("pillType"), ViewVariables(VVAccess.ReadWrite)]
-        public uint PillType = 0;
+        public uint PillType;
 
         [DataField("mode"), ViewVariables(VVAccess.ReadWrite)]
         public ChemMasterMode Mode = ChemMasterMode.Transfer;

@@ -3,11 +3,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared.IdentityManagement;
 
 namespace Content.Server._EinsteinEngines.Silicons.BatteryLocking;
 

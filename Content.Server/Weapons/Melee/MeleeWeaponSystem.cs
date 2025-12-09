@@ -40,30 +40,19 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.Movement.Systems;
+using Content.Shared.Chat;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Effects;
-using Content.Shared.Hands.Components;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.Speech.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
-using System.Linq;
-using System.Numerics;
-using Content.Goobstation.Common.CCVar;
-using Content.Goobstation.Common.MartialArts;
-using Content.Shared._EinsteinEngines.Contests;
-using Content.Shared.Chat; // Einstein Engines - Languages
-using Content.Shared.Coordinates;
-using Content.Shared.Item;
-using Content.Shared.Throwing;
-using Robust.Shared.Configuration;
-using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Weapons.Melee;
 

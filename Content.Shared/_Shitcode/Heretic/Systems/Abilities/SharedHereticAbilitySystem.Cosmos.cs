@@ -4,7 +4,6 @@ using Content.Shared._Goobstation.Wizard;
 using Content.Shared._Goobstation.Wizard.FadingTimedDespawn;
 using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared.Coordinates.Helpers;
-using Content.Shared.Hands.Components;
 using Content.Shared.Heretic;
 using Content.Shared.Projectiles;
 using Content.Shared.StatusEffect;

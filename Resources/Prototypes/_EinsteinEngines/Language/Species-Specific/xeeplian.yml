@@ -4,6 +4,11 @@
   speech:
     color: "#a4bb98"
     # fontId: YoureGone #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: what # TODO: Sprite it
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

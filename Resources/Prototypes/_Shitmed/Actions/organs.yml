@@ -14,10 +14,10 @@
     useDelay: 80
     raiseOnUser: true
     icon:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit: Separate tentacle
       state: goliath_tentacle_spawn
     iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit | Separate tentacle
+      sprite: Mobs/Aliens/Asteroid/goliath_tentacle.rsi # Orion-Edit: Separate tentacle
       state: goliath_tentacle_wiggle
     sound:
       path: "/Audio/Weapons/slash.ogg"

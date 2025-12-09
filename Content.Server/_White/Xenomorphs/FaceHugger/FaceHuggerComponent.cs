@@ -83,7 +83,7 @@ public string SleepChem = "Nocturine";
     public SoundSpecifier MaskBlockSound = new SoundCollectionSpecifier("MetalThud");
 
     [DataField]
-    public float MinChemicalThreshold = 0f; // Minimum amount of the chemical required to prevent additional injections
+    public float MinChemicalThreshold; // Minimum amount of the chemical required to prevent additional injections
     // Goobstation end
 
     [ViewVariables]

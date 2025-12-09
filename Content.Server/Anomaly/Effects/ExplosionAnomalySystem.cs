@@ -4,8 +4,8 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.Explosion.EntitySystems;
 using Content.Server.Anomaly.Components;
+using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Anomaly.Components;
 
 namespace Content.Server.Anomaly.Effects;

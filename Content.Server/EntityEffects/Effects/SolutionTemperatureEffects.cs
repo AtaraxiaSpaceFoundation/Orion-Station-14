@@ -56,7 +56,7 @@ public sealed partial class AdjustSolutionTemperatureEffect : EntityEffect
     /// <summary>
     ///     The minimum temperature this effect can reach.
     /// </summary>
-    [DataField("minTemp")] private float _minTemp = 0.0f;
+    [DataField("minTemp")] private float _minTemp;
 
     /// <summary>
     ///     The maximum temperature this effect can reach.
@@ -104,7 +104,7 @@ public sealed partial class AdjustSolutionThermalEnergyEffect : EntityEffect
     /// <summary>
     ///     The minimum temperature this effect can reach.
     /// </summary>
-    [DataField("minTemp")] private float _minTemp = 0.0f;
+    [DataField("minTemp")] private float _minTemp;
 
     /// <summary>
     ///     The maximum temperature this effect can reach.

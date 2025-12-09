@@ -33,6 +33,6 @@ namespace Content.Server.Destructible
         /// Specifies whether the entity has passed a damage threshold that causes it to break
         /// </summary>
         [DataField]
-        public bool IsBroken = false;
+        public bool IsBroken;
     }
 }

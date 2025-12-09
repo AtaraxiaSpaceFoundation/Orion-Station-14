@@ -6,7 +6,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations;
 
 namespace Content.Shared._EinsteinEngines.Language.Components;
 

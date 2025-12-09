@@ -21,7 +21,7 @@ public sealed partial class StationBiomeComponent : Component
 
     // If null, its random
     [DataField]
-    public int? Seed = null;
+    public int? Seed;
 
     [DataField]
     public Color MapLightColor = Color.Black;

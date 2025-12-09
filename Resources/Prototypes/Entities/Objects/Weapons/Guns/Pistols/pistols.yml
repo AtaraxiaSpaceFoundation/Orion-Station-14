@@ -141,7 +141,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazinePistol
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
@@ -151,7 +151,7 @@
             - MagazinePistol
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgePistol
         priority: 1
         whitelist:
@@ -212,7 +212,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazinePistol
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
@@ -223,7 +223,7 @@
             - MagazinePistolHighCapacity
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgePistol
         priority: 1
         whitelist:
@@ -300,7 +300,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazinePistolCaselessRifle
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
@@ -310,7 +310,7 @@
             - MagazinePistolCaselessRifle
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgeCaselessRifle
         priority: 1
         whitelist:
@@ -375,7 +375,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazineMagnum
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
@@ -385,7 +385,7 @@
             - MagazineMagnum
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgeMagnum
         priority: 1
         whitelist:

@@ -5,9 +5,7 @@
 
 using Content.Shared._White.Examine;
 using Robust.Client.UserInterface;
-using Robust.Client.UserInterface.Controls;
 using Content.Shared.Chat;
-using Robust.Shared.Utility;
 using Content.Client.UserInterface.Systems.Chat;
 namespace Content.Client._White.Examine;
 

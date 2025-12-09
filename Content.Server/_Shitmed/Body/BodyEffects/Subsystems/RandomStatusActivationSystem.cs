@@ -5,10 +5,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Shitmed.BodyEffects.Subsystems;
-using Content.Shared.Body.Organ;
 using Content.Shared.StatusEffect;
-using Robust.Shared.Timing;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Shitmed.BodyEffects.Subsystems;
 

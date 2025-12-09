@@ -2,8 +2,9 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
-using Content.Shared.Database;
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
+using Content.Shared.Database;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -39,7 +40,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
 
         TryGhostReturnToRound(uid.Value, connectedClient, userId, out var message, out var wrappedMessage);
 
-        _chatManager.ChatMessageToOne(Shared.Chat.ChatChannel.Server,
+        _chatManager.ChatMessageToOne(ChatChannel.Server,
             message,
             wrappedMessage,
             default,

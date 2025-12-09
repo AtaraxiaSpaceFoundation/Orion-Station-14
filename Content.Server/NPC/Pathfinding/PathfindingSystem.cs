@@ -140,7 +140,7 @@ namespace Content.Server.NPC.Pathfinding
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
-            var options = new ParallelOptions()
+            var options = new ParallelOptions
             {
                 MaxDegreeOfParallelism = _parallel.ParallelProcessCount,
             };
@@ -566,7 +566,7 @@ namespace Content.Server.NPC.Pathfinding
                 neighbors.Add(GetNetCoordinates(neighbor.Coordinates));
             }
 
-            return new DebugPathPoly()
+            return new DebugPathPoly
             {
                 GraphUid = GetNetEntity(poly.GraphUid),
                 ChunkOrigin = poly.ChunkOrigin,
@@ -713,7 +713,7 @@ namespace Content.Server.NPC.Pathfinding
             if (_subscribedSessions.Count == 0)
                 return;
 
-            var msg = new PathBreadcrumbsRefreshMessage()
+            var msg = new PathBreadcrumbsRefreshMessage
             {
                 Origin = chunk.Origin,
                 GridUid = GetNetEntity(gridUid),
@@ -747,7 +747,7 @@ namespace Content.Server.NPC.Pathfinding
                 }
             }
 
-            var msg = new PathPolysRefreshMessage()
+            var msg = new PathPolysRefreshMessage
             {
                 Origin = chunk.Origin,
                 GridUid = GetNetEntity(gridUid),

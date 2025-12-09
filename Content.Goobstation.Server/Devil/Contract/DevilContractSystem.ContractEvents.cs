@@ -9,7 +9,6 @@
 using System.Linq;
 using Content.Goobstation.Shared.Devil;
 using Content.Server.Body.Components;
-using Content.Shared._Shitmed.Body.Events;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;

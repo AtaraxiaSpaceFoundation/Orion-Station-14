@@ -29,7 +29,7 @@ public sealed partial class GravityWellComponent : Component
     /// This is effectively hardfloored at <see cref="GravityWellSystem.MinGravPulseRange"/>.
     /// </summary>
     [DataField]
-    public float MinRange = 0f;
+    public float MinRange;
 
     /// <summary>
     /// The acceleration entities will experience towards the gravity well at a distance of 1m.
@@ -37,7 +37,7 @@ public sealed partial class GravityWellComponent : Component
     /// Actual acceleration scales with the inverse of the distance to the singularity.
     /// </summary>
     [DataField]
-    public float BaseRadialAcceleration = 0.0f;
+    public float BaseRadialAcceleration;
 
     /// <summary>
     /// The acceleration entities will experience tangent to the gravity well at a distance of 1m.
@@ -45,7 +45,7 @@ public sealed partial class GravityWellComponent : Component
     /// Actual acceleration scales with the inverse of the distance to the singularity.
     /// </summary>
     [DataField]
-    public float BaseTangentialAcceleration = 0.0f;
+    public float BaseTangentialAcceleration;
 
     #region Update Timing
 
@@ -61,7 +61,7 @@ public sealed partial class GravityWellComponent : Component
     /// The next time at which this gravity well should pulse.
     /// </summary>
     [DataField, Access(typeof(GravityWellSystem)), AutoPausedField]
-    public TimeSpan NextPulseTime { get; internal set; } = default!;
+    public TimeSpan NextPulseTime { get; internal set; }
 
     /// <summary>
     /// The last time this gravity well pulsed.

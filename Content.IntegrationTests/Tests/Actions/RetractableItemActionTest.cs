@@ -1,8 +1,5 @@
 #nullable enable
 using Content.IntegrationTests.Tests.Interaction;
-using Content.Shared.Actions;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.RetractableItemAction;
 using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests.Actions;

@@ -10,7 +10,7 @@
 using Content.Server.Gatherable.Components;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Random; // Goobstation
+using Robust.Shared.Random;
 
 namespace Content.Server.Gatherable;
 

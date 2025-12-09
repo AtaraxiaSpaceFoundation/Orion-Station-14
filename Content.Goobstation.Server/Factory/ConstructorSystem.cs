@@ -7,7 +7,6 @@ using Content.Goobstation.Shared.Factory;
 using Content.Server.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.DoAfter;
-using Robust.Shared.Maths;
 
 namespace Content.Goobstation.Server.Factory;
 

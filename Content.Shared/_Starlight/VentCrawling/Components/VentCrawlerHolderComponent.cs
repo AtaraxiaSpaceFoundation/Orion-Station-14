@@ -7,7 +7,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Starlight.VentCrawling.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 

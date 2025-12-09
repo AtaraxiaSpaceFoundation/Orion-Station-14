@@ -10,7 +10,6 @@ using Content.Server.Spawners.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Item;
-using Content.Shared.Localizations;
 using Content.Shared.Prototypes;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;

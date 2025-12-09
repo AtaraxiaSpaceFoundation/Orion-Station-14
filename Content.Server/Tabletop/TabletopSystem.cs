@@ -18,6 +18,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.Chat.Managers;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Tabletop.Components;
@@ -35,7 +36,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using Content.Server.Chat.Managers;
 
 namespace Content.Server.Tabletop
 {
@@ -121,8 +121,8 @@ namespace Content.Server.Tabletop
                 return;
 
             }
-            else
-                component.HologramsSpawned++;
+
+            component.HologramsSpawned++;
 
             var meta = MetaData(handEnt.Value);
             var protoId = meta.EntityPrototype?.ID;
@@ -163,7 +163,7 @@ namespace Content.Server.Tabletop
             if (!TryComp(args.User, out ActorComponent? actor))
                 return;
 
-            var playVerb = new ActivationVerb()
+            var playVerb = new ActivationVerb
             {
                 Text = Loc.GetString("tabletop-verb-play-game"),
                 Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/die.svg.192dpi.png")),

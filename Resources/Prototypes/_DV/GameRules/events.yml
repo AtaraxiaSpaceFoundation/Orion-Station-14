@@ -40,5 +40,5 @@
     chaosScore: -50
   - type: RandomMultipleSpawnRule
     prototype: CosmicMalignRift
-    minAmount: 1 # Orion-Edit | 2 > 1
-    maxAmount: 2 # Orion-Edit | 4 > 2
+    minAmount: 1 # Orion-Edit: 2 > 1
+    maxAmount: 2 # Orion-Edit: 4 > 2

@@ -59,8 +59,7 @@ namespace Content.Shared.Remotes
                 // Not affected by mobs or machines anymore.
                 || !_examine.InRangeUnOccluded(args.User,
                     args.Target.Value,
-                    SharedInteractionSystem.MaxRaycastRange,
-                    null))
+                    SharedInteractionSystem.MaxRaycastRange))
 
             {
                 return;

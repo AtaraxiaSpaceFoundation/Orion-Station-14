@@ -8,7 +8,6 @@
 using Content.Goobstation.Server.StationEvents.Metric.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Damage;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;

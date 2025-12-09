@@ -30,7 +30,7 @@ namespace Content.Server.Chat.Commands
 
             if (player == null)
             {
-                shell.WriteError(Loc.GetString($"shell-cannot-run-command-from-server"));
+                shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
                 return;
             }
 

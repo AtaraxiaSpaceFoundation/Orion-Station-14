@@ -21,7 +21,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Robust.Shared.Prototypes;
-using System.Threading;
 
 namespace Content.Server._Lavaland.Mobs;
 
@@ -31,12 +30,12 @@ public sealed partial class MegafaunaComponent : Component
     /// <summary>
     ///     Should it drop guaranteed loot when dead? If so what exactly?
     /// </summary>
-    [DataField] public EntProtoId? Loot = null;
+    [DataField] public EntProtoId? Loot;
 
     /// <summary>
     ///     Should it drop something besides the main loot as a crusher only reward?
     /// </summary>
-    [DataField] public EntProtoId? CrusherLoot = null;
+    [DataField] public EntProtoId? CrusherLoot;
 
     /// <summary>
     ///     Check if the boss got damaged by crusher only.

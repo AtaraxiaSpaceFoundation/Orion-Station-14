@@ -24,7 +24,7 @@ namespace Content.Server.Wires;
 ///     WiresSystem as a functional wire set.
 /// </summary>
 [Prototype]
-public sealed partial class WireLayoutPrototype : IPrototype, IInheritingPrototype
+public sealed class WireLayoutPrototype : IPrototype, IInheritingPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
@@ -42,7 +42,7 @@ public sealed partial class WireLayoutPrototype : IPrototype, IInheritingPrototy
     /// </summary>
     [DataField("dummyWires")]
     [NeverPushInheritance]
-    public int DummyWires { get; private set; } = default!;
+    public int DummyWires { get; private set; }
 
     /// <summary>
     ///     All the valid IWireActions currently in this layout.

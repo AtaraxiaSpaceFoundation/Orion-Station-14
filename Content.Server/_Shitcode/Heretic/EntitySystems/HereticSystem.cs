@@ -19,39 +19,38 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Text.RegularExpressions;
-using Content.Server.Store.Systems;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Eye;
-using Content.Shared.Heretic;
-using Content.Shared.Mind;
-using Content.Shared.Store.Components;
-using Content.Shared.Heretic.Prototypes;
-using Content.Server.Chat.Systems;
-using Robust.Shared.Audio;
-using Content.Server.Heretic.Components;
-using Content.Server.Antag;
-using Robust.Shared.Random;
 using System.Linq;
 using Content.Goobstation.Common.CCVar;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Goobstation.Objectives.Components;
 using Content.Server.Actions;
+using Content.Server.Antag;
 using Content.Server.Chat.Managers;
+using Content.Server.Chat.Systems;
+using Content.Server.Heretic.Components;
 using Content.Server.Objectives;
-using Content.Shared.Humanoid;
-using Robust.Server.Player;
 using Content.Server.Revolutionary.Components;
+using Content.Server.Store.Systems;
 using Content.Shared.Chat;
+using Content.Shared.Eye;
 using Content.Shared.GameTicking;
+using Content.Shared.Heretic;
+using Content.Shared.Heretic.Prototypes;
+using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.Store.Components;
 using Content.Shared.Tag;
+using Robust.Server.Player;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Heretic.EntitySystems;

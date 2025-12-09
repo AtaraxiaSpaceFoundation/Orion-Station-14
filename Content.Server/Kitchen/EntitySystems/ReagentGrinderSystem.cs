@@ -77,18 +77,22 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Jittering;
 using Content.Server.Kitchen.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Destructible;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Interaction;
+using Content.Shared.Jittering;
 using Content.Shared.Kitchen;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Popups;
+using Content.Shared.Power;
 using Content.Shared.Random;
 using Content.Shared.Stacks;
 using JetBrains.Annotations;
@@ -97,11 +101,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
-using System.Linq;
-using Content.Server.Construction.Completions;
-using Content.Server.Jittering;
-using Content.Shared.Jittering;
-using Content.Shared.Power;
 
 namespace Content.Server.Kitchen.EntitySystems
 {
@@ -407,8 +406,8 @@ namespace Content.Server.Kitchen.EntitySystems
             {
                 return solution;
             }
-            else
-                return null;
+
+            return null;
         }
 
         private bool CanGrind(EntityUid uid)

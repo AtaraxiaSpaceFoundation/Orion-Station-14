@@ -8,12 +8,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Content.Server.Anomaly.Effects;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using System.Numerics;
 
 namespace Content.Server.Anomaly.Components;
 /// <summary>
@@ -77,7 +77,7 @@ public sealed partial class ReagentProducerAnomalyComponent : Component
     /// and nothing worked out for me. So for now it will be like this.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
-    public bool NeedRecolor = false;
+    public bool NeedRecolor;
 
     /// <summary>
     /// the maximum amount of reagent produced per second

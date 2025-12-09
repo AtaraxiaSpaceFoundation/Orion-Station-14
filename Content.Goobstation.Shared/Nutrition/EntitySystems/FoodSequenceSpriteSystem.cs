@@ -12,7 +12,7 @@ using Content.Shared.Nutrition.EntitySystems;
 
 namespace Content.Goobstation.Shared.Nutrition.EntitySystems;
 
-public class FoodSequenceSpriteSystem : SharedFoodSequenceSystem
+public sealed class FoodSequenceSpriteSystem : SharedFoodSequenceSystem // Orion-Edit: Sealed
 {
     private EntityQuery<NameModifierComponent> _modifierQuery;
 

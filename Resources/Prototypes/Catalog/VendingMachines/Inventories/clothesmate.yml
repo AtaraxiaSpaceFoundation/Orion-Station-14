@@ -108,6 +108,18 @@
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
     # DO NOT ADD MORE, USE UNIFORM DYING
+    # Orion-Start
+    ClothingUniformJumpskirtRoll: 2
+    ClothingUniformJumpsuitAviator: 2
+    ClothingUniformJumpsuitDoom: 2
+    ClothingUniformJumpsuitGalaxyBlue: 2
+    ClothingUniformJumpsuitGalaxyRed: 2
+    ClothingUniformJumpsuitGreaser: 4
+    ClothingUniformJumpsuitGreaserCult: 4
+    ClothingUniformJumpsuitGreaserJulie: 4
+    ClothingUniformJumpsuitGreaserSnakes: 4
+    ClothingUniformJumpsuitGreaserSpider: 4
+    # Orion-End
     ClothingShoesColorBlack: 8
     ClothingShoesColorBrown: 4
     ClothingShoesColorWhite: 3
@@ -168,6 +180,10 @@
     ClothingNeckPonchoSmallWhite: 3 # Monolith
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
+    # Orion-Start
+    ClothingUniformJumpsuitBiker: 1
+    ClothingUniformJumpsuitJacket: 1
+    # Orion-End
     ClothingMaskNeckGaiter: 2
     ClothingUniformJumpsuitTacticool: 2 # +1 Goobstation
     ClothingUniformJumpskirtTacticool: 2 # +1 Goobstation

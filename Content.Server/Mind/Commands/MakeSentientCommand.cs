@@ -21,13 +21,13 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Server.Administration;
 using Content.Server._EinsteinEngines.Language;
+using Content.Server.Administration;
+using Content.Shared._EinsteinEngines.Language.Components;
+using Content.Shared._EinsteinEngines.Language.Systems;
 using Content.Shared.Administration;
 using Content.Shared.Emoting;
 using Content.Shared.Examine;
-using Content.Shared._EinsteinEngines.Language.Components;
-using Content.Shared._EinsteinEngines.Language.Systems;
 using Content.Shared.Mind.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Speech;
@@ -64,7 +64,7 @@ namespace Content.Server.Mind.Commands
                 return;
             }
 
-            MakeSentient(entId.Value, _entManager, true, true);
+            MakeSentient(entId.Value, _entManager);
         }
 
         public static void MakeSentient(EntityUid uid, IEntityManager entityManager, bool allowMovement = true, bool allowSpeech = true)

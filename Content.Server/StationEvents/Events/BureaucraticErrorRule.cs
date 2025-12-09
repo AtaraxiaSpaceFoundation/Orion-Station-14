@@ -18,18 +18,15 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Server.Administration.Logs;
+using Content.Server.Chat.Managers;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
+using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using JetBrains.Annotations;
 using Robust.Shared.Random;
-
-// Goobstation usings
-using Content.Server.Administration.Logs;
-using Content.Server.Chat.Managers;
-using Content.Shared.Database;
-
 
 namespace Content.Server.StationEvents.Events;
 

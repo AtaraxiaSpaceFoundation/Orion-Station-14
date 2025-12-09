@@ -103,7 +103,7 @@
 # Jamjar
 - type: loadout
   id: GlassesJamjar
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: JamjarTimer
   equipment:
@@ -112,7 +112,7 @@
 # Jensen
 - type: loadout
   id: GlassesJensen
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: JensenTimer
   equipment:

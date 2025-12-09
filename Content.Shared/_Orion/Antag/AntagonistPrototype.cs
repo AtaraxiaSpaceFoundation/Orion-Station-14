@@ -23,5 +23,5 @@ public sealed partial class AntagonistPrototype : IPrototype
     ///     Description string to display in the character menu as an explanation of the department's function.
     /// </summary>
     [DataField(required: true)]
-    public int Weight = default!;
+    public int Weight;
 }

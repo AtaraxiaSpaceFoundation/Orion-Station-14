@@ -85,7 +85,6 @@
 using System.Linq;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
-using Content.Server.Forensics;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Systems;
 using Content.Server.Mind;
@@ -194,7 +193,7 @@ public sealed class AdminSystem : EntitySystem
             _playerList[id] = GetPlayerInfo(playerData, session);
         }
 
-        var updateEv = new FullPlayerListEvent() { PlayersInfo = _playerList.Values.ToList() };
+        var updateEv = new FullPlayerListEvent { PlayersInfo = _playerList.Values.ToList() };
 
         foreach (var admin in _adminManager.ActiveAdmins)
         {

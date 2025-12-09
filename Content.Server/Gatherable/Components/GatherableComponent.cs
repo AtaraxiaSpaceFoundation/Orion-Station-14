@@ -11,7 +11,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.EntityList;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.Whitelist;
 
@@ -59,5 +58,5 @@ public sealed partial class GatherableComponent : Component
     ///     HEY KIDDOS, DID YOU KNOW THAT IF YOU HIT A SINGLE ROCK WITH TWO DIFFERENT PROJECTILES AT THE SAME TIME, IT SPAWNS TWICE AS MANY THINGS??? I FUCKING HATE THIS SHITCODE
     /// </remarks>
     [DataField]
-    public bool IsGathered = false;
+    public bool IsGathered;
 }

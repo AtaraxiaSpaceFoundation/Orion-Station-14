@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Shared.Access;
 using Content.Shared.DeviceNetwork;
@@ -8,12 +9,11 @@ using Content.Shared.TurretController;
 using Content.Shared.Turrets;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
-using System.Linq;
 
 namespace Content.Server.TurretController;
 
 /// <inheritdoc/>
-public sealed partial class DeployableTurretControllerSystem : SharedDeployableTurretControllerSystem
+public sealed class DeployableTurretControllerSystem : SharedDeployableTurretControllerSystem
 {
     [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
     [Dependency] private readonly DeviceNetworkSystem _deviceNetwork = default!;

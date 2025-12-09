@@ -9,17 +9,17 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Popups;
+using System.Linq;
 using Content.Server._DV.Weapons.Ranged.Components;
+using Content.Server.Popups;
+using Content.Shared._DV.Weapons.Ranged;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
-using Content.Shared.Verbs;
 using Content.Shared.Item;
-using Content.Shared._DV.Weapons.Ranged;
+using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Prototypes;
-using System.Linq;
 
 namespace Content.Server._DV.Weapons.Ranged.Systems;
 

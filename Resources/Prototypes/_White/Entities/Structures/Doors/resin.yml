@@ -1,5 +1,5 @@
 - type: entity
-  parent: CMBaseXenoStructure
+  parent: BaseStructure # Orion-Edit
   id: ResinDoor
   name: resin Door
   description: Thick resin solidified into a door.
@@ -49,6 +49,11 @@
       path: /Audio/_RMC14/Xeno/alien_resin_move1.ogg
     closeSound:
       path: /Audio/_RMC14/Xeno/alien_resin_move2.ogg
+  # Orion-Start
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  # Orion-End
   - type: Appearance
   - type: Airtight
     fixVacuum: true

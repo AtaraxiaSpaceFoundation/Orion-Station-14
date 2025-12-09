@@ -13,7 +13,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._EinsteinEngines.Language;
 
-public sealed partial class LanguageSystem : SharedLanguageSystem
+public sealed class LanguageSystem : SharedLanguageSystem
 {
     public override void Initialize()
     {

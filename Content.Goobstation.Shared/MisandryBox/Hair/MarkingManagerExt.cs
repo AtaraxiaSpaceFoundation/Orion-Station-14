@@ -6,7 +6,6 @@
 using System.Linq;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.MisandryBox.Hair;

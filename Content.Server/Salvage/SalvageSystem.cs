@@ -53,30 +53,27 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Radio.EntitySystems;
-using Content.Shared._DV.Salvage.Systems; // DeltaV
-using Content.Shared.Examine;
-using Content.Shared.Interaction;
-using Content.Shared.Popups;
-using Content.Shared.Radio;
-using Content.Shared.Salvage;
-using Robust.Server.GameObjects;
-using Robust.Shared.Configuration;
-using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Content.Server.Chat.Managers;
 using Content.Server.Gravity;
 using Content.Server.Parallax;
 using Content.Server.Procedural;
+using Content.Server.Radio.EntitySystems;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
+using Content.Shared._DV.Salvage.Systems;
 using Content.Shared.Construction.EntitySystems;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map.Components;
-using Robust.Shared.Timing;
 using Content.Shared.Labels.EntitySystems;
+using Content.Shared.Radio;
+using Content.Shared.Salvage;
+using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.EntitySerialization.Systems;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Salvage
 {

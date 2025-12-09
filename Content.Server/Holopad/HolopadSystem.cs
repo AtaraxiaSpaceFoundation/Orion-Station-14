@@ -13,6 +13,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
@@ -20,7 +21,7 @@ using Content.Server.Speech.Components;
 using Content.Server.Telephone;
 using Content.Shared.Access.Systems;
 using Content.Shared.Audio;
-using Content.Shared.Chat; // Einstein Engines - Language
+using Content.Shared.Chat;
 using Content.Shared.Chat.TypingIndicator;
 using Content.Shared.Holopad;
 using Content.Shared.IdentityManagement;
@@ -36,7 +37,6 @@ using Robust.Server.GameStates;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using System.Linq;
 
 namespace Content.Server.Holopad;
 
@@ -679,7 +679,7 @@ public sealed class HolopadSystem : SharedHolopadSystem
         // Terminate any calls that the core is hosting and immediately connect to the receiver
         _telephoneSystem.TerminateTelephoneCalls(source);
 
-        var callOptions = new TelephoneCallOptions()
+        var callOptions = new TelephoneCallOptions
         {
             ForceConnect = true,
             MuteReceiver = true
@@ -728,7 +728,7 @@ public sealed class HolopadSystem : SharedHolopadSystem
             receivers.Add(receiverTelephoneEntity);
         }
 
-        var options = new TelephoneCallOptions()
+        var options = new TelephoneCallOptions
         {
             ForceConnect = true,
             MuteReceiver = true,

@@ -16,7 +16,7 @@ namespace Content.Server._Orion.EnergyDome.Components;
 public sealed partial class EnergyDomeGeneratorComponent : Component
 {
     [DataField]
-    public bool Enabled = false;
+    public bool Enabled;
 
     /// <summary>
     /// How much energy will be spent from the battery per unit of damage taken by the shield.
@@ -35,7 +35,7 @@ public sealed partial class EnergyDomeGeneratorComponent : Component
     /// Can the NetworkDevice system activate and deactivate the barrier?
     /// </summary>
     [DataField]
-    public bool CanDeviceNetworkUse = false;
+    public bool CanDeviceNetworkUse;
 
     #region Dome
 

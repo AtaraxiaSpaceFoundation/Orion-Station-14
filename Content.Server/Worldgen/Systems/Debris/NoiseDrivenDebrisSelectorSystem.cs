@@ -7,7 +7,6 @@
 
 using Content.Server.Worldgen.Components.Debris;
 using Robust.Server.GameObjects;
-using Robust.Shared.Physics;
 using Robust.Shared.Random;
 
 namespace Content.Server.Worldgen.Systems.Debris;

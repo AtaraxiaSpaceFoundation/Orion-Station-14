@@ -7,6 +7,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Orion-Edit: Removed
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Prototypes;
 using Content.Shared.Chat.Prototypes;
@@ -85,3 +86,4 @@ public sealed class BibleFartSmiteEvent(NetEntity uid) : EntityEventArgs
 {
     public NetEntity Bible = uid;
 }
+*/

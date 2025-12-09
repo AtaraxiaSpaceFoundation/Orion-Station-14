@@ -19,7 +19,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Traits.Assorted;
 
-
 namespace Content.Server.StationEvents.Events;
 
 public sealed class MassHallucinationsRule : StationEventSystem<MassHallucinationsRuleComponent>

@@ -1,13 +1,12 @@
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._Shitmed.Damage;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.EntityEffects;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Localizations;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using Content.Shared._Shitmed.Damage;
-using System.Text.Json.Serialization;
 
 namespace Content.Server.EntityEffects.Effects;
 

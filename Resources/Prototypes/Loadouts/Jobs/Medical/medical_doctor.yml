@@ -120,7 +120,7 @@
 
 - type: loadout
   id: MedicalHeadMirror
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MedicalHeadMirrorTimer
   equipment:

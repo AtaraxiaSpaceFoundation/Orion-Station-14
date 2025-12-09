@@ -6,10 +6,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.Atmos.Rotting;
 using Content.Shared.EntityEffects;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using Content.Server.Atmos.Rotting;
 
 namespace Content.Server.EntityEffects.Effects
 {

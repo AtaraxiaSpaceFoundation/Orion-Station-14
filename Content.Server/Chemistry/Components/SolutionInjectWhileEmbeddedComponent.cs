@@ -6,7 +6,6 @@
 
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
-
 namespace Content.Server.Chemistry.Components;
 
 /// <summary>
@@ -20,7 +19,7 @@ public sealed partial class SolutionInjectWhileEmbeddedComponent : BaseSolutionI
         ///</summary>
         [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
         public TimeSpan NextUpdate;
-        
+
         ///<summary>
         ///The delay between each injection in seconds.
         ///</summary>
@@ -42,5 +41,8 @@ public sealed partial class SolutionInjectWhileEmbeddedComponent : BaseSolutionI
         /// </summary>
         [ViewVariables]
         public int? Injections = 0;
+
+        [DataField]
+        public TimeSpan EmbedTime = TimeSpan.Zero;
         // </Goobstation>
 }

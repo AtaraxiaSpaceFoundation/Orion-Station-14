@@ -32,5 +32,5 @@ public sealed partial class SingularityAttractorComponent : Component
     /// The last time this attractor pulsed.
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
-    public TimeSpan LastPulseTime = default!;
+    public TimeSpan LastPulseTime;
 }

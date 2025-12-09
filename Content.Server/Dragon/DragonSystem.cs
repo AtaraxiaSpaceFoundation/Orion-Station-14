@@ -96,7 +96,9 @@
 using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Server.Popups;
+using Content.Server.Stunnable;
 using Content.Shared.Actions;
+using Content.Shared.Damage;
 using Content.Shared.Dragon;
 using Content.Shared.Maps;
 using Content.Shared.Mind;
@@ -104,23 +106,17 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
+using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
+using Content.Shared.Sprite;
 using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Content.Shared.Sprite; // Goobstation
-using Content.Server.Stunnable; // Goobstation
-using Content.Shared.Chemistry.Components; // Goobstation
-using Content.Shared.Devour.Components; // Goobstation
-using Content.Shared.NPC.Components; // Goobstation
-using Robust.Shared.Serialization.Manager; // Goobstation
-using Content.Server.Body.Systems;
-using Content.Shared.Damage; // Goobstation
+using Robust.Shared.Serialization.Manager;
 
 namespace Content.Server.Dragon;
 
-public sealed partial class DragonSystem : EntitySystem
+public sealed class DragonSystem : EntitySystem
 {
     [Dependency] private readonly CarpRiftsConditionSystem _carpRifts = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;

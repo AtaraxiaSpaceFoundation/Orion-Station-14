@@ -8,20 +8,19 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server._DV.CosmicCult.EntitySystems;
 using Content.Server._DV.CosmicCult.Components;
-using Content.Goobstation.Shared.Religion; // Goobstation - Shitchap
+using Content.Server._DV.CosmicCult.EntitySystems;
 using Content.Server.Actions;
 using Content.Server.AlertLevel;
-using Content.Server.Audio;
 using Content.Server.Antag;
+using Content.Server.Audio;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking.Events;
 using Content.Server.Pinpointer;
 using Content.Server.Popups;
 using Content.Server.Station.Systems;
-using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult;
+using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared.Alert;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
@@ -34,8 +33,8 @@ using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.EntitySerialization;
+using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;

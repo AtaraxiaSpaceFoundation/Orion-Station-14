@@ -70,20 +70,20 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
 
     private void OnBodyPartRemoved(Entity<CorticalBorerInfestedComponent> infected, ref BodyPartRemovedEvent args)
     {
-        if (TryComp<BodyPartComponent>(args.Part, out var part) &&
-            part.PartType == BodyPartType.Head)
-        {
-            _borer.EndControl(infected);
-            _borer.TryEjectBorer(infected.Comp.Borer);
-        }
+        if (!TryComp<BodyPartComponent>(args.Part, out var part) ||
+            part.PartType != BodyPartType.Head)
+            return;
+
+        _borer.EndControl(infected);
+        _borer.TryEjectBorer(infected.Comp.Borer);
     }
 
     private void OnMindRemoved(Entity<CorticalBorerInfestedComponent> infected, ref MindRemovedMessage args)
     {
-        if (infected.Comp.Borer.Comp.ControlingHost)
-        {
-            _borer.EndControl(infected);
-            _borer.TryEjectBorer(infected.Comp.Borer);
-        }
+        if (!infected.Comp.Borer.Comp.ControlingHost)
+            return;
+
+        _borer.EndControl(infected);
+        _borer.TryEjectBorer(infected.Comp.Borer);
     }
 }

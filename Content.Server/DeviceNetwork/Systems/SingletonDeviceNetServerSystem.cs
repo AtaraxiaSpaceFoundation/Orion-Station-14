@@ -46,8 +46,8 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.Medical.CrewMonitoring;
 using Content.Server.Station.Systems;
-using Content.Shared.Power;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Power;
 
 namespace Content.Server.DeviceNetwork.Systems;
 

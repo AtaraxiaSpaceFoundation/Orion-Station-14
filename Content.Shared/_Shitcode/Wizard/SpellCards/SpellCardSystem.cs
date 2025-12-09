@@ -9,7 +9,6 @@ using System.Numerics;
 using Content.Shared._Goobstation.Wizard.Projectiles;
 using Content.Shared._Goobstation.Wizard.TimeStop;
 using Content.Shared.Friction;
-using Content.Shared.Movement.Events;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;

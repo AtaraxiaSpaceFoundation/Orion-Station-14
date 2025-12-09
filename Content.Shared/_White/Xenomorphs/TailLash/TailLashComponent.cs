@@ -1,3 +1,4 @@
+/* // ORION-REPLACE
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
@@ -31,3 +32,4 @@ public sealed partial class TailLashComponent : Component
     [ViewVariables]
     public EntityUid? TailLashAction;
 }
+*/

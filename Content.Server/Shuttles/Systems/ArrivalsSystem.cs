@@ -264,7 +264,7 @@ public sealed class ArrivalsSystem : EntitySystem
                 }
                 break;
             default:
-                shell.WriteError(Loc.GetString($"cmd-arrivals-invalid"));
+                shell.WriteError(Loc.GetString("cmd-arrivals-invalid"));
                 break;
         }
     }

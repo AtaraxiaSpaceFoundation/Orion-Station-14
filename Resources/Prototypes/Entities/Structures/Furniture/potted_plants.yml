@@ -148,7 +148,7 @@
         - HighImpassable
   - type: Sprite
     drawdepth: Overdoors
-    offset: "0.0,0.25" # Orion-Edit | 0.3 > 0.25
+    offset: "0.0,0.25" # Orion-Edit: 0.3 > 0.25
     sprite: Structures/Furniture/potted_plants.rsi
     noRot: true
   - type: Speech

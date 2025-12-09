@@ -1,4 +1,3 @@
-using Content.Shared.Damage;
 using Robust.Shared.GameStates;
 
 namespace Content.Goobstation.Shared.EatToGrow;

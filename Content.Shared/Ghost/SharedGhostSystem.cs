@@ -278,7 +278,7 @@ namespace Content.Shared.Ghost
     /// This is used as part of <see cref="GhostWarpsResponseEvent"/>
     /// </summary>
     [Serializable, NetSerializable]
-    public struct GhostWarpPlace // Orion-Edit | GhostWarp > GhostWarpPlace
+    public struct GhostWarpPlace // Orion-Edit: GhostWarp > GhostWarpPlace
     {
         // Orion-Edit-Start
         public GhostWarpPlace(NetEntity entity, string name, string description)
@@ -298,12 +298,12 @@ namespace Content.Shared.Ghost
         /// <summary>
         /// The display name to be surfaced in the ghost warps menu
         /// </summary>
-        public string Name { get; } // Orion-Edit | DisplayName > Name
+        public string Name { get; } // Orion-Edit: DisplayName > Name
 
         /// <summary>
         /// Display name to be surfaced in the ghost warps menu
         /// </summary>
-        public string Description { get;  } // Orion-Edit | IsWarpPoint > Description
+        public string Description { get;  } // Orion-Edit: IsWarpPoint > Description
     }
 
     /// <summary>
@@ -313,7 +313,7 @@ namespace Content.Shared.Ghost
     [Serializable, NetSerializable]
     public sealed class GhostWarpsResponseEvent : EntityEventArgs
     {
-/* // Orion-Remove
+/* // Orion-Edit: Removed
         public GhostWarpsResponseEvent(List<GhostWarp> warps)
         {
             Warps = warps;

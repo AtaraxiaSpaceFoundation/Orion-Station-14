@@ -131,6 +131,7 @@
     - id: ContrabandDetectorFlatpack # Goobstation
     - id: SecurityMegaphone # goob - loudspeakers
     - id: BoxBodyBagPrisoner # Orion
+    - id: SecondSkinSecurity # Goobstation
 
 - type: entityTable
   id: FillLockerWardenHarduit
@@ -177,13 +178,14 @@
     - id: ClothingHeadsetAltSecurityRegular # Goobstation
     - id: PanicButton # Goobstation
     - id: PepperSpray # Goobstation
+    - id: SecondSkinSecurity # Goobstation
     # Goobstation - Martial Arts - start
     - !type:GroupSelector
       children:
       - id: ClothingBeltSecurityFilled
-        weight: 0.7 # Orion-Edit | 0.5 > 0.7
+        weight: 0.7 # Orion-Edit: 0.5 > 0.7
       - id: ClothingBeltCorporateJudoFilled
-        weight: 0.3 # Orion-Edit | 0.5 > 0.3
+        weight: 0.3 # Orion-Edit: 0.5 > 0.3
     # Goobstation - Martial Arts - end
 
 - type: entity
@@ -212,6 +214,7 @@
     - id: MedkitAdvancedFilled
     - id: BoxSyringe
     - id: BoxBodyBagPrisoner # Goob Station | Orion-Edit
+    - id: SecondSkinSecurity # Goobstation
 
 - type: entity
   id: LockerDetectiveFilled
@@ -246,6 +249,7 @@
     - id: BloodTrak # Goobstation
     - id: Betty # Goobstation
     - id: BoxTapeRecorder # DeltaV
+    - id: SecondSkinSecurity # Goobstation
 
 - type: entity
   id: ClosetBombFilled

@@ -80,7 +80,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <TextureButton Name="SpeciesInfoButton" Scale="0.3 0.3"
                                                    VerticalAlignment="Center"
                                                    ToolTip="{Loc 'humanoid-profile-editor-guidebook-button-tooltip'}"
-                                                   Visible="False"/>                                        <!-- Orion-Edit | True > False -->
+                                                   Visible="False"/>                                        <!-- Orion-Edit: True > False -->
                                     <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" Visible="False"/>    <!-- Orion | True > False -->
                                     <Button Name="NewSpeciesButton" HorizontalAlignment="Right" ToggleMode="True" />    <!-- Orion -->
                                 </BoxContainer>
@@ -139,6 +139,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <Button Name="BarkVoicePlayButton" Text="{Loc 'humanoid-profile-editor-voice-play'}" MaxWidth="80" />
                                 </BoxContainer>
                                 <!-- Corvax-Frontier-Barks-End -->
+                                <!-- Orion-Start -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-uplink-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="UplinkPrefButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Orion-End -->
                             </BoxContainer>
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">

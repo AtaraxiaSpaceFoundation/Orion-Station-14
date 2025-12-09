@@ -108,7 +108,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
             if (filter.FilteredGas.HasValue)
             {
-                var filteredOut = new GasMixture() { Temperature = removed.Temperature };
+                var filteredOut = new GasMixture { Temperature = removed.Temperature };
 
                 filteredOut.SetMoles(filter.FilteredGas.Value, removed.GetMoles(filter.FilteredGas.Value));
                 removed.SetMoles(filter.FilteredGas.Value, 0f);

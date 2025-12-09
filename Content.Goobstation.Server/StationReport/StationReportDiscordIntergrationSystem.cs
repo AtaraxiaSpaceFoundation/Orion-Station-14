@@ -1,13 +1,10 @@
-using System;
 using System.Text.RegularExpressions;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.StationReport;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Configuration;
-using Robust.Shared.IoC;
 
 namespace Content.Goobstation.Server.StationReportDiscordIntergrationSystem;
 

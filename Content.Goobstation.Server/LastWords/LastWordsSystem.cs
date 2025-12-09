@@ -1,5 +1,4 @@
 using Content.Server.Chat.Systems;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mind;
 using Content.Goobstation.Common.LastWords;
 using Content.Shared.Mobs.Components;

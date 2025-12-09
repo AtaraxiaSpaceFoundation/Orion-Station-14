@@ -61,7 +61,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Atmos;
 using Content.Shared.Atmos;
 using Content.Shared.Storage.Components;
 

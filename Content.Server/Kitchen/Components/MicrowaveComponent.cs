@@ -115,7 +115,7 @@ namespace Content.Server.Kitchen.Components
         /// For right now, I don't think any recipe cook time should be greater than 60 seconds.
         /// </summary>
         [DataField("currentCookTimerTime"), ViewVariables(VVAccess.ReadWrite)]
-        public uint CurrentCookTimerTime = 0;
+        public uint CurrentCookTimerTime;
 
         /// <summary>
         /// Tracks the elapsed time of the current cook timer.

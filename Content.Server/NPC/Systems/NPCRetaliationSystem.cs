@@ -9,7 +9,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Server.NPC.Components;
-using Content.Server.NPC.Events; // Goobstation
+using Content.Server.NPC.Events;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Components;

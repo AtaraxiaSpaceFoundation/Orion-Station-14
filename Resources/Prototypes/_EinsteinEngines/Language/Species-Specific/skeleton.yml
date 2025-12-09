@@ -11,6 +11,11 @@
     fontId: LDFComicSans
     boldFontId: LDFComicSansBold
     color: "#e3dac9"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: calcic
+  # Orion-End
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

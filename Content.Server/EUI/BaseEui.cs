@@ -29,7 +29,7 @@ namespace Content.Server.EUI
     /// </remarks>
     public abstract class BaseEui
     {
-        private bool _isStateDirty = false;
+        private bool _isStateDirty;
 
         /// <summary>
         ///     The player that this EUI is open for.

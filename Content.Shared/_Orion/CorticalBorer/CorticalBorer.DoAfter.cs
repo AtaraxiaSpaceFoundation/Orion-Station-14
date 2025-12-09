@@ -8,4 +8,4 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Orion.CorticalBorer;
 
 [Serializable, NetSerializable]
-public sealed partial class CorticalInfestDoAfterEvent : SimpleDoAfterEvent { }
+public sealed partial class CorticalInfestDoAfterEvent : SimpleDoAfterEvent;

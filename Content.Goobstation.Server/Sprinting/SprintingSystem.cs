@@ -7,7 +7,6 @@
 using Content.Goobstation.Common.Standing;
 using Content.Goobstation.Shared.Sprinting;
 using Content.Server.Stunnable;
-using Content.Shared.CombatMode;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Goobstation.Server.Sprinting;

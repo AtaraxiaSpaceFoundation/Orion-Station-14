@@ -4,11 +4,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-namespace Content.Server.Chat;
-
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+
+namespace Content.Server.Chat;
 
 /// <summary>
 /// Causes an entity to automatically emote at a set interval.

@@ -25,23 +25,19 @@ namespace Content.Client._Orion.Lobby.UI;
 public sealed partial class SpeciesWindow : FancyWindow
 {
     [Dependency] private readonly DocumentParsingManager _parsingMan = default!;
-    [Dependency] private readonly IEntityManager _ent = default!;
 
     public event Action<ProtoId<SpeciesPrototype>>? ChooseAction;
     public ProtoId<SpeciesPrototype> CurrentSpecies;
 
     public HumanoidCharacterProfile Profile;
-    private readonly IEntityManager _entity;
     private readonly IPrototypeManager _proto;
     private readonly LobbyUIController _uIController;
     private readonly IResourceManager _resMan;
 
     public SpeciesWindow(HumanoidCharacterProfile profile,
                         IPrototypeManager proto,
-                        IEntityManager ent,
                         LobbyUIController uIController,
-                        IResourceManager resManager,
-                        DocumentParsingManager parsing)
+                        IResourceManager resManager)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
@@ -51,7 +47,6 @@ public sealed partial class SpeciesWindow : FancyWindow
         Title = Loc.GetString("species-window-title");
 
         Profile = profile;
-        _entity = ent;
         _proto = proto;
         _uIController = uIController;
         _resMan = resManager;
@@ -70,7 +65,7 @@ public sealed partial class SpeciesWindow : FancyWindow
                 Text = Loc.GetString(item.Name),
                 Margin = new Thickness(5f, 5f),
             };
-            button.OnToggled += args => SelectSpecies(item.ID);
+            button.OnToggled += _ => SelectSpecies(item.ID);
             SpeciesContainer.AddChild(button);
         }
 
@@ -85,7 +80,7 @@ public sealed partial class SpeciesWindow : FancyWindow
                 Text = Loc.GetString(item.Name),
                 Margin = new Thickness(5f, 5f),
             };
-            button.OnToggled += args => SelectSpecies(item.ID);
+            button.OnToggled += _ => SelectSpecies(item.ID);
             SpeciesContainer.AddChild(button);
         }
 
@@ -100,7 +95,7 @@ public sealed partial class SpeciesWindow : FancyWindow
                 Text = Loc.GetString(item.Name),
                 Margin = new Thickness(5f, 5f),
             };
-            button.OnToggled += args => SelectSpecies(item.ID);
+            button.OnToggled += _ => SelectSpecies(item.ID);
             SpeciesContainer.AddChild(button);
         }
 
@@ -143,7 +138,6 @@ public sealed partial class SpeciesWindow : FancyWindow
             button.Pressed = protoId == button.Proto;
         }
 
-        var jobEntry = Profile.JobPriorities.FirstOrDefault(x => x.Value == JobPriority.High);
         var proto = _proto.Index(protoId);
         CurrentSpecies = protoId;
 
@@ -288,7 +282,7 @@ public sealed partial class SpeciesWindow : FancyWindow
         if (!proto.Description.HasValue)
             return;
 
-        // Take race descriptions text from .xml files, so we need to find and use the content from the specified file..
+        // Take race descriptions text from .xml files, so we need to find and use the content from the specified file
         // Everything works the same way as in the guidebook (yes, you can insert images here)
         using var file = _resMan.ContentFileReadText(proto.Description.Value);
         _parsingMan.TryAddMarkup(DetailInfoContainer, file.ReadToEnd());
@@ -296,6 +290,6 @@ public sealed partial class SpeciesWindow : FancyWindow
 
     private sealed partial class SpeciesButton(ProtoId<SpeciesPrototype> proto) : Button
     {
-        public ProtoId<SpeciesPrototype> Proto = proto;
+        public readonly ProtoId<SpeciesPrototype> Proto = proto;
     }
 }

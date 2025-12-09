@@ -22,7 +22,7 @@ public sealed partial class AtmosMonitorDeviceNetWire : ComponentWireAction<Atmo
     // whether or not this wire will send out an alarm upon
     // being pulsed
     [DataField("alarmOnPulse")]
-    private bool _alarmOnPulse = false;
+    private bool _alarmOnPulse;
 
     public override string Name { get; set; } = "wire-name-device-net";
     public override Color Color { get; set; } = Color.Orange;

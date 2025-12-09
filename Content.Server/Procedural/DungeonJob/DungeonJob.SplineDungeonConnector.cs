@@ -56,11 +56,11 @@ public sealed partial class DungeonJob
 
         foreach (var pair in tree)
         {
-            var path = pathfinding.GetSplinePath(new PathfindingSystem.SplinePathArgs()
-            {
+            var path = pathfinding.GetSplinePath(new PathfindingSystem.SplinePathArgs
+                {
                 Distance = gen.DivisionDistance,
                 MaxRatio = gen.VarianceMax,
-                Args = new PathfindingSystem.SimplePathArgs()
+                Args = new PathfindingSystem.SimplePathArgs
                 {
                     Start = pair.Start,
                     End = pair.End,
@@ -88,8 +88,8 @@ public sealed partial class DungeonJob
             if (!ValidateResume())
                 return Dungeon.Empty;
 
-            var wide = pathfinding.GetWiden(new PathfindingSystem.WidenArgs()
-            {
+            var wide = pathfinding.GetWiden(new PathfindingSystem.WidenArgs
+                {
                 Path = path.Path,
             },
             random);

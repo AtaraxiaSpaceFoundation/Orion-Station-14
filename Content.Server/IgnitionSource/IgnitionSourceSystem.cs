@@ -19,7 +19,7 @@ using Content.Shared.IgnitionSource;
 
 namespace Content.Server.IgnitionSource;
 
-public sealed partial class IgnitionSourceSystem : SharedIgnitionSourceSystem
+public sealed class IgnitionSourceSystem : SharedIgnitionSourceSystem
 {
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;

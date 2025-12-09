@@ -8,15 +8,15 @@
 
 using System.Numerics;
 using Content.Goobstation.Common.Religion;
-using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult;
+using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared.Damage;
 using Content.Shared.Effects;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Ranged.Systems;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
@@ -75,6 +75,6 @@ public sealed class CosmicNovaSystem : EntitySystem
             _stun.TryParalyze(args.OtherEntity, TimeSpan.FromSeconds(0.8f), false);
 
         _damageable.TryChangeDamage(args.OtherEntity, uid.Comp.CosmicNovaDamage); // This'll probably trigger two or three times because of how collision works. I'm not being lazy here, it's a feature (kinda /s)
-        _color.RaiseEffect(Color.Red, new List<EntityUid>() { args.OtherEntity }, Filter.Pvs(args.OtherEntity, entityManager: EntityManager));
+        _color.RaiseEffect(Color.Red, new List<EntityUid> { args.OtherEntity }, Filter.Pvs(args.OtherEntity, entityManager: EntityManager));
     }
 }

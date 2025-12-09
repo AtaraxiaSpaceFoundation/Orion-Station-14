@@ -109,46 +109,40 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Shared.Loudspeaker.Events; // goob - loudspeakers
-using System.Collections.Immutable; // Goobstation - Starlight collective mind port
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Content.Goobstation.Common.Chat;
+using Content.Goobstation.Common.Traits;
+using Content.Goobstation.Shared.Loudspeaker.Events;
+using Content.Server._EinsteinEngines.Language;
 using Content.Server._Goobstation.Wizard.Systems;
+using Content.Server._Orion.ServerProtection.Chat;
+using Content.Server._Orion.ServerProtection.Emoting;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
-using Content.Server.Effects;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server._EinsteinEngines.Language; // Einstein Engines - Language
-using Content.Server.Speech; // Einstein Engines - Language
-using Content.Server.Players.RateLimiting;
-using Content.Server.Speech.Prototypes;
-using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Speech.Prototypes;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared._EinsteinEngines.Language;
 using Content.Shared._Goobstation.Wizard.Chuuni;
+using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
-using Content.Shared._Starlight.CollectiveMind; // Goobstation - Starlight collective mind port
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
-using Content.Shared._EinsteinEngines.Language; // Einstein Engines - Language
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players;
 using Content.Shared.Players.RateLimiting;
 using Content.Shared.Radio;
 using Content.Shared.Whitelist;
-using Content.Goobstation.Common.Chat;
-using Content.Goobstation.Common.Traits;
-using Content.Server._Orion.ServerProtection.Chat;
-using Content.Server._Orion.ServerProtection.Emoting;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -482,7 +476,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         // Orion-End
 
-        message = SanitizeInGameOOCMessage(message, player); // Orion-Edit | player
+        message = SanitizeInGameOOCMessage(message, player); // Orion-Edit: player
 
         var sendType = type;
         // If dead player LOOC is disabled, unless you are an admin with Moderator perms, send dead messages to dead chat
@@ -1270,14 +1264,14 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (capitalize)
             newMessage = SanitizeMessageCapital(newMessage);
         if (capitalizeTheWordI)
-            newMessage = SanitizeMessageCapitalizeTheWordI(newMessage, "i");
+            newMessage = SanitizeMessageCapitalizeTheWordI(newMessage);
         if (punctuate)
             newMessage = SanitizeMessagePeriod(newMessage);
 
         return prefix + newMessage;
     }
 
-    private string SanitizeInGameOOCMessage(string message, ICommonSession? session) // Orion-Edit | ICommonSession
+    private string SanitizeInGameOOCMessage(string message, ICommonSession? session) // Orion-Edit: ICommonSession
     {
         var newMessage = message.Trim();
 

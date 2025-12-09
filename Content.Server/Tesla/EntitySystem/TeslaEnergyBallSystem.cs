@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Singularity.Components;
+using Content.Server.Singularity.Events;
 using Content.Server.Tesla.Components;
 using Robust.Server.Audio;
-using Content.Server.Singularity.Events;
 
 namespace Content.Server.Tesla.EntitySystems;
 

@@ -4,9 +4,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Shared.Administration;
 using Content.Shared._EinsteinEngines.Language;
+using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Enums;
 
@@ -78,16 +77,14 @@ public sealed class SelectLanguageCommand : IConsoleCommand
             failureReason = Loc.GetString("command-language-invalid-number", ("total", spoken.Count));
             return false;
         }
-        else
-        {
-            // The argument is a language ID
-            language = languageSystem.GetLanguagePrototype(input);
 
-            if (language != null && languageSystem.CanSpeak(speaker, language.ID))
-                return true;
+        // The argument is a language ID
+        language = languageSystem.GetLanguagePrototype(input);
 
-            failureReason = Loc.GetString("command-language-invalid-language", ("id", input));
-            return false;
-        }
+        if (language != null && languageSystem.CanSpeak(speaker, language.ID))
+            return true;
+
+        failureReason = Loc.GetString("command-language-invalid-language", ("id", input));
+        return false;
     }
 }

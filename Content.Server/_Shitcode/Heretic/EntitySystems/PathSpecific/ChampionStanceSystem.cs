@@ -15,6 +15,7 @@
 
 using Content.Goobstation.Common.Bloodstream;
 using Content.Server.Heretic.Components.PathSpecific;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
@@ -22,7 +23,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components; // Shitmed Change
+
 namespace Content.Server.Heretic.EntitySystems.PathSpecific;
 
 public sealed class ChampionStanceSystem : EntitySystem

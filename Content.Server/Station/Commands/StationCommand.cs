@@ -16,7 +16,6 @@ using Content.Server.Station.Systems;
 using Content.Shared.Administration;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Toolshed.Errors;
-using Robust.Shared.Toolshed.Syntax;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Station.Commands;

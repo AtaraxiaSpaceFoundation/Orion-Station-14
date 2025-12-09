@@ -6,11 +6,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._EstacaoPirata.Cards.Hand;
-using Content.Shared.RCD;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client._EstacaoPirata.Cards.Hand.UI;
 

@@ -9,12 +9,12 @@
 
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
-using Content.Server.Projectiles;
 using Content.Server.Machines.EntitySystems;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Timing;
+using Content.Server.Projectiles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server.ParticleAccelerator.EntitySystems;
 

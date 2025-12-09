@@ -241,7 +241,7 @@ namespace Content.Server.Light.EntitySystems
             }
 
             _lights.SetEnabled(uid, true, pointLightComponent);
-            SetActivated(uid, true, component, true);
+            SetActivated(uid, true, component);
             _activeLights.Add(uid);
 
             return true;
@@ -250,7 +250,7 @@ namespace Content.Server.Light.EntitySystems
         public void TryUpdate(Entity<HandheldLightComponent> uid, float frameTime)
         {
             var component = uid.Comp;
-            if (!_powerCell.TryGetBatteryFromSlot(uid, out var batteryUid, out var battery, null) &&
+            if (!_powerCell.TryGetBatteryFromSlot(uid, out var batteryUid, out var battery) &&
                 !TryComp(uid, out battery))
             {
                 TurnOff(uid, false);

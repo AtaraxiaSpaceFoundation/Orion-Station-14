@@ -66,7 +66,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Content.Goobstation.Common.Construction; // Goobstation
+using Content.Goobstation.Common.Construction;
 using Content.Server.Construction.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
@@ -79,7 +79,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.Mind.Components; // Goobstation
+using Content.Shared.Mind.Components;
 using Content.Shared.Storage;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
@@ -314,7 +314,7 @@ namespace Content.Server.Construction
                         break;
                 }
 
-                if (handled == false)
+                if (!handled)
                 {
                     failed = true;
                     break;

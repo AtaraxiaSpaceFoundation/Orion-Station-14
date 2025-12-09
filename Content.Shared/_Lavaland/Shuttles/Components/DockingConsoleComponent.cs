@@ -20,10 +20,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Lavaland.Shuttles.Systems;
-using Content.Shared.Tag;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Lavaland.Shuttles.Components;
 

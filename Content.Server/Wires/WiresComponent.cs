@@ -15,9 +15,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Content.Shared.Tag; // Shitmed Change - Starlight Abductors
 
 namespace Content.Server.Wires;
 
@@ -34,7 +34,7 @@ public sealed partial class WiresComponent : Component
     ///     The layout ID of this entity's wires.
     /// </summary>
     [DataField(required: true)]
-    public ProtoId<WireLayoutPrototype> LayoutId { get; set; } = default!;
+    public ProtoId<WireLayoutPrototype> LayoutId { get; set; }
 
     /// <summary>
     ///     The serial number of this board. Randomly generated upon start,

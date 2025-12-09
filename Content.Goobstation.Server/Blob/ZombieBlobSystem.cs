@@ -24,7 +24,6 @@ using Content.Server.Mind;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
-using Content.Server.Speech.Components;
 using Content.Server.Temperature.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Inventory;
@@ -104,7 +103,7 @@ public sealed class ZombieBlobSystem : SharedZombieBlobSystem
         foreach (var (name, fixture) in fixturesComp.Fixtures)
         {
             if (climbingComp.DisabledFixtureMasks.ContainsKey(name)
-                || fixture.Hard == false
+                || !fixture.Hard
                 || (fixture.CollisionMask & ClimbingCollisionGroup) == 0)
                 continue;
 

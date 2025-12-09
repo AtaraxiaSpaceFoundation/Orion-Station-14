@@ -217,7 +217,7 @@ namespace Content.Client.RoundEnd
                     var playerNameText = new Label
                     {
                         VerticalAlignment = VAlignment.Bottom,
-                        StyleClasses = { StyleNano.StyleClassLabelHeading },
+                        StyleClasses = { StyleBase.StyleClassLabelHeading },
                         Margin = new Thickness(0, 0, 6, 0),
                         Text = playerInfo.PlayerICName
                     };
@@ -227,7 +227,7 @@ namespace Content.Client.RoundEnd
                     var playerRoleText = new Label
                     {
                         VerticalAlignment = VAlignment.Bottom,
-                        StyleClasses = { StyleNano.StyleClassLabelSubText },
+                        StyleClasses = { StyleBase.StyleClassLabelSubText },
                         Text = Loc.GetString("round-end-summary-window-player-name",
                             ("player", playerInfo.PlayerOOCName))
                     };

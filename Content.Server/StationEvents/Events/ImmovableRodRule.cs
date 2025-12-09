@@ -12,6 +12,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Server.ImmovableRod;
 using Content.Server.StationEvents.Components;
@@ -20,7 +21,6 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Prototypes;
 using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
-using System.Linq;
 
 namespace Content.Server.StationEvents.Events;
 

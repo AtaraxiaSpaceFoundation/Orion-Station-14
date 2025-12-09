@@ -5,10 +5,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Content.Shared.StatusEffect;
-using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects.StatusEffects;

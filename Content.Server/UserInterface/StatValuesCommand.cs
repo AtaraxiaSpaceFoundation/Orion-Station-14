@@ -123,10 +123,10 @@ public sealed class StatValuesCommand : IConsoleCommand
             });
         }
 
-        var state = new StatValuesEuiMessage()
+        var state = new StatValuesEuiMessage
         {
             Title = Loc.GetString("stat-cargo-values"),
-            Headers = new List<string>()
+            Headers = new List<string>
             {
                 Loc.GetString("stat-cargo-id"),
                 Loc.GetString("stat-cargo-price"),
@@ -210,10 +210,10 @@ public sealed class StatValuesCommand : IConsoleCommand
             });
         }
 
-        var state = new StatValuesEuiMessage()
+        var state = new StatValuesEuiMessage
         {
             Title = "Cargo sell prices",
-            Headers = new List<string>()
+            Headers = new List<string>
             {
                 "ID",
                 "Price",
@@ -249,10 +249,10 @@ public sealed class StatValuesCommand : IConsoleCommand
             });
         }
 
-        var state = new StatValuesEuiMessage()
+        var state = new StatValuesEuiMessage
         {
             Title = Loc.GetString("stat-lathe-values"),
-            Headers = new List<string>()
+            Headers = new List<string>
             {
                 Loc.GetString("stat-lathe-id"),
                 Loc.GetString("stat-lathe-cost"),

@@ -18,7 +18,7 @@ namespace Content.Server.Heretic.Ritual;
     /// <summary>
     ///     Min temp in celsius
     /// </summary>
-    [DataField] public float MinThreshold = 0f;
+    [DataField] public float MinThreshold;
 
     /// <summary>
     ///     Max temp in celsius

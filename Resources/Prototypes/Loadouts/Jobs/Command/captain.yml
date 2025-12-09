@@ -158,7 +158,7 @@
   id: CaptainMantle
   equipment:
     neck: ClothingNeckMantleCap
-#  effects: # Orion-Remove
+#  effects: # Orion-Edit: Removed
 #  - !type:GroupLoadoutEffect
 #    proto: MasterCap
 

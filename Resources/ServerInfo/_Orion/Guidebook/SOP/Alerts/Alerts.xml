@@ -1,0 +1,842 @@
+<Document>
+
+  # НРП Уровня угрозы
+
+  ## Назначение
+
+  НРП Уровня угрозы пегламентирует порядок применения [bold][color=purple]кодов[/color][/bold] на станции и определяет действия персонала при их объявлении.
+
+  ## Основные понятия
+
+  - [bold]Уровень угрозы[/bold] — установленный режим функционирования станции в зависимости от степени опасности.
+  - [bold]Код[/bold] — условное обозначение уровня угрозы.
+  - [bold]Режим[/bold] — совокупность правил и ограничений, действующих при определённом уровне угрозы.
+
+  ## Система уровней угрозы
+
+  В зависимости от степени опасности и характера угрозы устанавливаются следующие уровни:
+  - [bold][color=green]Зелёный код[/color][/bold] — базовый уровень безопасности.
+  - [bold][color=blue]Синий код[/color][/bold] — уровень средней угрозы.
+  - [bold][color=orange]Янтарный код[/color][/bold] — повышенный уровень угрозы.
+  - [bold][color=red]Красный код[/color][/bold] — максимальная угроза.
+  - [bold][color=magenta]Гамма код[/color][/bold] — особый режим максимальной мобилизации.
+  - [bold][color=purple]Фиолетовый код[/color][/bold] — биологическая/химическая угроза.
+  - [bold][color=yellow]Жёлтый код[/color][/bold] — повреждения станции влияющие на работоспособность.
+
+  ## Принципы применения
+
+  - [bold]Пропорциональность[/bold] — уровень угрозы соответствует характеру опасности.
+  - [bold]Своевременность[/bold] — объявление кода производится незамедлительно.
+
+  ## Порядок объявления
+
+  Право на объявление уровня угрозы имеют:
+  - [bold][color=blue]Капитан станции[/color][/bold]
+  - [bold][color=yellow]Центральное Командование[/color][/bold]
+  - [bold][color=darkred]Глава Службы Безопасности[/color][/bold]
+  - [bold][color=aqua]Представитель НаноТрейзен[/color][/bold]
+
+  ## Общие требования
+
+  При объявлении повышенного уровня угрозы персонал обязан:
+  - [bold]Немедленно[/bold] ознакомиться с регламентом соответствующего кода.
+  - [bold]Строго соблюдать[/bold] установленные правила и ограничения.
+  - [bold]Выполнять указания[/bold] командования.
+  - [bold]Информировать СБ[/bold] о любых нарушениях.
+
+  ## Ответственность
+
+  Нарушение требований НРП кодов влечёт за собой:
+  - [bold]Дисциплинарные взыскания[/bold].
+  - [bold]Уголовную ответственность[/bold] в случае тяжких последствий.
+
+  ## Таблица кодов
+
+  <Table Columns="5">
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Тип угрозы
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Код при подозрениях
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Код при подтверждении
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Уровень опасности
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Код после устранения
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Абдуктор
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Еретик
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Еретик (Возвышенный)
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Парадоксальный клон
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★☆☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Кортикальный паразит
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#7500cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Фиолетовый код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Вор
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★☆☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Кошмар
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Культист Нар'Си
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Пауки Террора
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Агрессивные фауна
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★☆☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Ниндзя клана Паука
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Агент Синдиката
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Агент Синдиката
+        (Хиджак/славная смерть)
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Истинный вампир
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Генокрад
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Пираты
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Революция
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Маг
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Янтарный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Блоб
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Сбойный ИИ
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Ксеноморф
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Фиолетовый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Космический дракон
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#FFA500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Жёлтый код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Ядерные оперативники
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Одинокий оперативник
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★★★
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Красный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Кудзу
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Работорговцы
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Морф
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#7500cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Фиолетовый код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Хедкрабы
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#0057cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Синий код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#7500cc">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Фиолетовый код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ★★★☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Дьявол
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#808080">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        ☆☆☆☆☆
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Зелёный код
+      </Box>
+    </ColorBox>
+  </Table>
+
+  ### Определение уровня угрозы антагониста
+
+  Определение происходит следующим образом, если при [bold]подтверждении[/bold] антагониста объявляется [color=red]красный код[/color] — значит это антагонист [color=red]Красного уровня[/color] угрозы, если объявляется [color=blue]синий код[/color] — значит это антагонист [color=blue]Синего уровня[/color] угрозы и так далее.
+
+</Document>

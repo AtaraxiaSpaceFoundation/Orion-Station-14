@@ -43,7 +43,7 @@ public sealed partial class UtilityOperator : HTNOperator
             return (false, new Dictionary<string, object>());
         }
 
-        var effects = new Dictionary<string, object>()
+        var effects = new Dictionary<string, object>
         {
             {Key, target},
             {KeyCoordinates, new EntityCoordinates(target, Vector2.Zero)}

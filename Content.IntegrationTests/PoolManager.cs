@@ -94,10 +94,8 @@ using System.Threading;
 using Content.Client.IoC;
 using Content.Client.Parallax.Managers;
 using Content.IntegrationTests.Pair;
-using Content.IntegrationTests.Tests;
 using Content.IntegrationTests.Tests.Destructible;
 using Content.IntegrationTests.Tests.DeviceNetwork;
-using Content.IntegrationTests.Tests.Interaction.Click;
 using Robust.Client;
 using Robust.Server;
 using Robust.Shared.Configuration;
@@ -105,7 +103,6 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Log;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.UnitTesting;
 

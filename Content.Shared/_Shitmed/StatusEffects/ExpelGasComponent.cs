@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Atmos;
-using Robust.Shared.GameStates;
+
 namespace Content.Shared._Shitmed.StatusEffects;
 
 /// <summary>

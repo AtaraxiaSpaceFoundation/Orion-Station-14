@@ -29,7 +29,7 @@ namespace Content.Server.Tabletop
         ///     The number of tabletops created in the map.
         ///     Used for calculating the position of the next one.
         /// </summary>
-        private int _tabletops = 0;
+        private int _tabletops;
 
         /// <summary>
         ///     Despite the name, this method is only used to subscribe to events.

@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles;
-using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -28,8 +27,10 @@ public sealed partial class CkeyRestriction : CustomGhostRestriction
             name = name.Substring(10); // what's the proper way of doing this?
 
         foreach(var testCkey in Ckey)
+        {
             if(testCkey.ToLower() == name) // I'd do a .Contains() here, but i want this check to be case independent, and the StringComparer.OrdinalIgnoreCase
                 return true;              // is not allowed by the sandbox because robusttoolbox maintainers are mentally disabled
+        }
 
         failReason = Loc.GetString("custom-ghost-fail-exclusive-ghost");
         return false;
@@ -41,7 +42,7 @@ public sealed partial class CkeyRestriction : CustomGhostRestriction
 [DataDefinition]
 public sealed partial class PlaytimeServerRestriction : CustomGhostRestriction
 {
-    private static ISharedPlaytimeManager? _playtime = null;
+    private static ISharedPlaytimeManager? _playtime;
 
     [DataField(required: true)]
     public float HoursPlaytime;
@@ -80,8 +81,8 @@ public sealed partial class PlaytimeServerRestriction : CustomGhostRestriction
 [DataDefinition]
 public sealed partial class PlaytimeJobRestriction : CustomGhostRestriction
 {
-    private static ISharedPlaytimeManager? _playtime = null;
-    private static IPrototypeManager? _proto = null;
+    private static ISharedPlaytimeManager? _playtime;
+    private static IPrototypeManager? _proto;
 
     [DataField(required: true)]
     public string Job = string.Empty;
@@ -126,9 +127,8 @@ public sealed partial class PlaytimeJobRestriction : CustomGhostRestriction
 [DataDefinition]
 public sealed partial class PlaytimeDepartmentRestriction : CustomGhostRestriction
 {
-    private static ISharedPlaytimeManager? _playtime = null;
-    private static IConfigurationManager? _cfg = null;
-    private static IPrototypeManager? _proto = null;
+    private static ISharedPlaytimeManager? _playtime;
+    private static IPrototypeManager? _proto;
 
     [DataField(required: true)]
     public ProtoId<DepartmentPrototype> Department = string.Empty;
@@ -149,14 +149,15 @@ public sealed partial class PlaytimeDepartmentRestriction : CustomGhostRestricti
         }
 
         double departmentPlaytime = 0;
-        var departmentProto = _proto.Index<DepartmentPrototype>(Department);
+        var departmentProto = _proto.Index(Department);
         var departmentJobs = departmentProto.Roles;
         foreach (var job in departmentJobs)
         {
-            var jobProto = _proto.Index<JobPrototype>(job);
+            var jobProto = _proto.Index(job);
             if (playtimes.TryGetValue(jobProto.PlayTimeTracker, out var time))
                 departmentPlaytime += time.TotalHours;
         }
+
         if (departmentPlaytime < HoursPlaytime)
         {
             failReason = Loc.GetString("custom-ghost-fail-department-insufficient-playtime",

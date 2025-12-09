@@ -1,7 +1,7 @@
 using System.Numerics;
+using Content.Shared._Mono.FireControl;
 using Content.Shared.Interaction;
 using Content.Shared.Projectiles;
-using Content.Shared._Mono.FireControl;
 using Robust.Server.GameObjects;
 using EntityCoordinates = Robust.Shared.Map.EntityCoordinates;
 

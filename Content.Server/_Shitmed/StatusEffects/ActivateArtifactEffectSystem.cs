@@ -4,10 +4,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._Shitmed.StatusEffects;
 using Content.Server.Xenoarchaeology.Artifact;
-using Content.Shared.Xenoarchaeology.Artifact.Components;
+using Content.Shared._Shitmed.StatusEffects;
 using Content.Shared.Coordinates;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
 
 namespace Content.Server._Shitmed.StatusEffects;
 

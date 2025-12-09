@@ -22,21 +22,19 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Text;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Instruments;
 using Content.Server.Kitchen.Components;
 using Content.Server.Store.Systems;
+using Content.Shared.Instruments;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
 using Content.Shared.PAI;
 using Content.Shared.Popups;
-using Content.Shared.Store;
 using Content.Shared.Store.Components;
-using Content.Shared.Instruments;
 using Robust.Shared.Random;
-using Robust.Shared.Prototypes;
-using System.Text;
 
 namespace Content.Server.PAI;
 

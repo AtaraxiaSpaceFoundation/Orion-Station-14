@@ -91,10 +91,7 @@ public sealed class StationAlertLevelLockSystem : EntitySystem
     {
         const string prototypeId = "stationAlerts";
 
-        if (!_prototypeManager.TryIndex<AlertLevelPrototype>(prototypeId, out var alertSet))
-            return Color.White;
-
-        if (!alertSet.Levels.TryGetValue(alertLevel, out var levelData))
+        if (!_prototypeManager.TryIndex<AlertLevelPrototype>(prototypeId, out var alertSet) || !alertSet.Levels.TryGetValue(alertLevel, out var levelData))
             return Color.White;
 
         return levelData.Color;

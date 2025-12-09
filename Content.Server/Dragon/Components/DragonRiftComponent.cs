@@ -9,7 +9,6 @@
 
 using Content.Shared.Dragon;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Dragon;
 
@@ -25,7 +24,7 @@ public sealed partial class DragonRiftComponent : SharedDragonRiftComponent
     /// How long the rift has been active.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("accumulator")]
-    public float Accumulator = 0f;
+    public float Accumulator;
 
     /// <summary>
     /// The maximum amount we can accumulate before becoming impervious.

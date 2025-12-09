@@ -73,7 +73,7 @@
         type: Remove
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.02 # Orion-Edit | 0.05 > 0.02
+        amount: 0.02 # Orion-Edit: 0.05 > 0.02
       - !type:Jitter # Goobstation: Coffee causes jitteriness and alters speed
         conditions:
         - !type:ReagentThreshold
@@ -133,7 +133,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.2 # Orion-Edit | 0.05 > 0.2
+        amount: 0.2 # Orion-Edit: 0.05 > 0.2
 
 - type: reagent
   id: Cream
@@ -313,7 +313,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.01 # Orion-Edit | 0.05 > 0.01
+        amount: 0.01 # Orion-Edit: 0.05 > 0.01
 
 - type: reagent
   id: JuiceBerryPoison
@@ -539,7 +539,7 @@
         factor: 2
       - !type:AdjustReagent
         reagent: Theobromine
-        amount: 0.02 # Orion-Edit | 0.05 > 0.02
+        amount: 0.02 # Orion-Edit: 0.05 > 0.02
   metamorphicSprite:
     sprite: Objects/Consumable/Drinks/teaglass.rsi
     state: icon_empty
@@ -702,7 +702,7 @@
       effects:
       - !type:SatiateThirst
         factor: 4
-#      - !type:AdjustReagent # Orion-Remove
+#      - !type:AdjustReagent # Orion-Edit: Removed
 #        reagent: Theobromine
 #        amount: 0.05
 

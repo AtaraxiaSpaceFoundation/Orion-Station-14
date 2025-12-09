@@ -199,18 +199,41 @@ ClothingNeckScarfStripedPan: ClothingNeckScarfStripedBlack
 ClothingNeckScarfStripedNonBinary: ClothingNeckScarfStripedBlack
 ClothingNeckScarfStripedRainbow: ClothingNeckScarfStripedBlack
 ClothingNeckScarfStripedTrans: ClothingNeckScarfStripedBlack
-ClothingNeckCloakAce: ClothingNeckCloakMoth
-ClothingNeckCloakAro: ClothingNeckCloakMoth
-ClothingNeckCloakBi: ClothingNeckCloakMoth
-ClothingNeckCloakIntersex: ClothingNeckCloakMoth
-ClothingNeckCloakLesbian: ClothingNeckCloakMoth
-ClothingNeckCloakTrans: ClothingNeckCloakMoth
-ClothingNeckCloakGay: ClothingNeckCloakMoth
-ClothingNeckCloakEnby: ClothingNeckCloakMoth
-ClothingNeckCloakPan: ClothingNeckCloakMoth
+ClothingNeckCloakAce: null
+ClothingNeckCloakAro: null
+ClothingNeckCloakBi: null
+ClothingNeckCloakIntersex: null
+ClothingNeckCloakLesbian: null
+ClothingNeckCloakTrans: null
+ClothingNeckCloakGay: null
+ClothingNeckCloakEnby: null
+ClothingNeckCloakPan: null
 VendingMachinePride: RandomVending
 
-DoorXenoResin: ResinDoor # Holy Goob
+DoorXenoResin: ResinDoor
+DoorXenoResinThick: ResinDoor
+XenoWeeds: ResinWeed
+XenoWeedsSource: ResinWeedNode
+XenoWeedsWall: WallResin
+XenoHardyWeeds: ResinWeed
+XenoHardyWeedsSource: ResinWeedNode
+WallXenoResin: WallResin
+WallXenoResinThick: WallResin
+WallXenoMembrane: ResinMembrane
+WallXenoMembraneThick: ResinMembrane
+XenoTunnel: null
+XenoTunnelMaint: null
+XenoTunnelMaintNoXenoDesc: null
+XenoTunnelMaintHybrisa: null
+XenoTunnelMaintHybrisaNoXenoDesc: null
+XenoNest: ResinNest
+XenoEgg: XenomorphEgg
+XenoEggDestroyed: XenomorphEggBurst
+HiveRecoveryNodeXeno: null
+HiveCoreXeno: null
+HivePylonXeno: null
+HiveClusterXeno: null
+HiveEggMorpherXeno: null
 
 AirlockMTFCplsLocked: AirlockCentralCommandLocked
 AirlockMTFEngineeringLocked: AirlockCentralCommandLocked
@@ -235,6 +258,10 @@ ChemDispenserEmpty: EnergyChemDispenser
 ChemDispenser: EnergyChemDispenser
 
 BaseSecretDoorAssembly: null
+
+PowerCellMicroreactor: PowerCellBluespaceReactor
+PowerCellMicroreactorPrinted: PowerCellBluespaceReactorPrinted
+PowerCellAntiqueProto: PowerCellInfinite
 
 # Orion-End
 
@@ -614,13 +641,13 @@ VehicleSecwayStealObjective: null
 #VehicleKeyJanicart: null Goobstation - Re-add vehicles
 #VehicleKeySecway: null Goobstation - Re-add vehicles
 #VehicleKeyATV: null Goobstation - Re-add vehicles
-VehicleKeySkeleton: null
+VehicleKeySkeleton: null 
 #VehicleKeySyndicateSegway: null Goobstation - Re-add vehicles
-VehicleKeySkeletonMotorcycle: null
+#VehicleKeySkeletonMotorcycle: null Corvax Goobstation - Re-add vehicles
 #VehicleSecway: null Goobstation - Re-add vehicles
 #VehicleATV: null Goobstation - Re-add vehicles
 #VehicleSyndicateSegway: null Goobstation - Re-add vehicles
-VehicleSkeletonMotorcycle: null
+#VehicleSkeletonMotorcycle: null Corvax Goobstation - Re-add vehicles
 VehicleUnicycle: null
 VehicleUnicycleFolded: null
 ActionVehicleHorn: null

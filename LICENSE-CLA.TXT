@@ -1,0 +1,47 @@
+                           CLA License
+           Copyright (c) 2025-2026 Ataraxia Space Foundation 
+
+                           Preamble
+
+  This Contributor License Agreement (“CLA”) is entered into between Ataraxia Space Foundation (“ASF” or “Organization”) and the contributor (“Contributor”). By making a submission to the ASF project, Contributor agrees to be bound by the terms of this CLA.
+
+                            Definitions.
+
+  – “Contribution” means any original work of authorship (including modifications, enhancements, bug fixes, documentation, code, or other materials) submitted by Contributor to the ASF project.
+  – “Project” refers to any repository or software project managed by ASF.
+  – “Contributor” is any individual or entity submitting a Contribution to the Project.
+  – “Licensor” means Ataraxia Space Foundation. For licensing inquiries, contact: puroslavking@yahoo.com.
+
+  Contribution – means any original author's work of Contributors, including any
+modifications or additions to the Build (any source code, object code, correction, tool,
+sample, graphics, assets, specifications, manuals, documentation), which is intentionally
+provided by the Licensee to the Licensor. For the purposes of this definition,
+submission means any form of electronic, oral or written communication sent to Licensor
+or its representatives, including, but not limited to, messages on electronic mailing lists,
+source code control systems and issue tracking systems operated by or on behalf of the
+Company for the purposes of discussing or improving software or project documentation
+and source. Communications for which it is explicitly stated in writing as "Not a
+contribution" will not be considered a contribution. When providing a Contribution to the
+Build, the Contributor provides the Company with a simple, free, irrevocable, non-exclusive
+license for the entire period of validity of the Contributor's rights to the Contribution provided
+for by the legislation of the state-jurisdiction of the Contributor
+and/or international legislation for certain forms of Contribution.
+
+                            Grant of Rights.
+
+  By submitting a Contribution, Contributor hereby grants to ASF:
+  – Contributor retains copyright ownership of the Contribution but agrees that ASF may distribute it under any license selected by ASF.
+  – Contributor grants ASF a perpetual, worldwide, non‑exclusive, royalty‑free, irrevocable license under any necessary patent claims owned or controlled by Contributor to make, have made, use, offer to sell, sell, import, and otherwise transfer the Contribution.
+
+                            License Types.
+
+  Source code and software components may be distributed by ASF under any license selected by ASF, including but not limited to AGPL‑3.0.
+  Documentation, graphics, and non‑code assets may be distributed by ASF under any license selected by ASF, including but not limited to CC‑BY‑SA 3.0.
+  ASF may change the licensing terms of any asset at any time.
+
+                            Acceptance.
+
+  This CLA is accepted if one of these conditions is met:
+  – Submitting a Pull Request to an ASF repository.
+  – Making a commit with a signed‑off line: Signed-off-by: Name <email@example.com>.
+  – Acceptance through the GitHub Pull Request license checkbox.

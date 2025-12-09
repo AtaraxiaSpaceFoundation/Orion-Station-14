@@ -1,5 +1,4 @@
 using Content.Shared.Actions;
-using Robust.Shared.GameStates;
 
 namespace Content.Goobstation.Shared.Shadowling;
 

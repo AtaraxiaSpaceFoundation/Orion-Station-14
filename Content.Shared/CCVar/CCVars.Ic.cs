@@ -25,19 +25,19 @@ public sealed partial class CCVars
     ///     Sets the maximum name length for a loadout name (e.g. cyborg name).
     /// </summary>
     public static readonly CVarDef<int> MaxLoadoutNameLength =
-        CVarDef.Create("ic.loadout_name_length", 42, CVar.SERVER | CVar.REPLICATED); // Orion-Edit | 32 > 42
+        CVarDef.Create("ic.loadout_name_length", 42, CVar.SERVER | CVar.REPLICATED); // Orion-Edit: 32 > 42
 
     /// <summary>
     ///     Allows flavor text (character descriptions).
     /// </summary>
     public static readonly CVarDef<bool> FlavorText =
-        CVarDef.Create("ic.flavor_text", true, CVar.SERVER | CVar.REPLICATED); // Orion-Edit | false > true
+        CVarDef.Create("ic.flavor_text", true, CVar.SERVER | CVar.REPLICATED); // Orion-Edit: false > true
 
     /// <summary>
     ///     Sets the maximum length for flavor text (character descriptions).
     /// </summary>
     public static readonly CVarDef<int> MaxFlavorTextLength =
-        CVarDef.Create("ic.flavor_text_length", 4500, CVar.SERVER | CVar.REPLICATED); // Orion-Edit | 512 > 4500
+        CVarDef.Create("ic.flavor_text_length", 4500, CVar.SERVER | CVar.REPLICATED); // Orion-Edit: 512 > 4500
 
     /// <summary>
     ///     Sets the maximum character length of a job on an ID.
@@ -80,7 +80,7 @@ public sealed partial class CCVars
     ///     Forces SSD characters to sleep after ICSSDSleepTime seconds
     /// </summary>
     public static readonly CVarDef<bool> ICSSDSleep =
-        CVarDef.Create("ic.ssd_sleep", false, CVar.SERVER); // Orion-Edit | true > false
+        CVarDef.Create("ic.ssd_sleep", false, CVar.SERVER); // Orion-Edit: true > false
 
     /// <summary>
     ///     Time between character getting SSD status and falling asleep

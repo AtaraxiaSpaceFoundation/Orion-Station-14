@@ -22,21 +22,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Common.Pirates;
+using Content.Goobstation.Common.Research;
+using Content.Server.Chat.Systems;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Research.Components;
-using Content.Shared.UserInterface;
 using Content.Shared.Access.Components;
-using Content.Shared.Emag.Components;
+using Content.Shared.Chat;
 using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
-using Content.Goobstation.Common.Pirates;
-using Content.Goobstation.Common.Research; // R&D Console Rework
-using System.Linq;
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat;
-using Robust.Shared.Prototypes; // R&D Console Rework
+using Content.Shared.UserInterface;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Research.Systems;
 
@@ -198,4 +197,4 @@ public sealed partial class ResearchSystem
     }
 }
 
-public sealed partial class ResearchConsoleUnlockEvent : CancellableEntityEventArgs { }
+public sealed class ResearchConsoleUnlockEvent : CancellableEntityEventArgs { }

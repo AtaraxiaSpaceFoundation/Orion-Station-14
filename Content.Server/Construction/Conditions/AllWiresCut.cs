@@ -65,7 +65,7 @@ namespace Content.Server.Construction.Conditions
 
         public IEnumerable<ConstructionGuideEntry> GenerateGuideEntry()
         {
-            yield return new ConstructionGuideEntry()
+            yield return new ConstructionGuideEntry
             {
                 Localization = Value ? "construction-guide-condition-all-wires-cut"
                     : "construction-guide-condition-all-wires-intact"

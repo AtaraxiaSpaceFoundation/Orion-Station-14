@@ -33,13 +33,13 @@ using Content.Server._White.Blocking;
 using Content.Server.Cargo.Systems;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
-using Content.Shared.Emp; // Goobstation
+using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Content.Shared.Rejuvenate;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
-using Robust.Shared.Utility;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Power.EntitySystems
 {

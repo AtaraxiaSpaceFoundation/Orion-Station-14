@@ -16,7 +16,7 @@ public sealed partial class LanguageLearnComponent : Component
     /// The languages to be learned when the item is used.
     /// </summary>
     [DataField(required: true, customTypeSerializer: typeof(PrototypeIdListSerializer<LanguagePrototype>))]
-    public List<string> Languages { get; set; } = new List<string>();
+    public List<string> Languages { get; set; } = new();
 
     /// <summary>
     /// The amount of time it takes to learn the language.
@@ -40,7 +40,7 @@ public sealed partial class LanguageLearnComponent : Component
     /// Whether the item should be deleted after the last use.
     /// </summary>
     [DataField]
-    public bool DeleteAfterUse = false;
+    public bool DeleteAfterUse;
 
     /// <summary>
     /// Current number of uses remaining.

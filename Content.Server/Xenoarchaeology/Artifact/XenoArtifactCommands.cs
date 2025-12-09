@@ -66,7 +66,7 @@ public sealed class XenoArtifactCommand : ToolshedCommand
             builder.Append("--+");
             for (var i = 0; i < nodeCount; i++)
             {
-                builder.Append($"---+");
+                builder.Append("---+");
             }
         }
     }

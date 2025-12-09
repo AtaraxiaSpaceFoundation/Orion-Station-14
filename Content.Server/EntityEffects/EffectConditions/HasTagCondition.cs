@@ -29,7 +29,7 @@ public sealed partial class HasTag : EntityEffectCondition
     public string Tag = default!;
 
     [DataField]
-    public bool Invert = false;
+    public bool Invert;
 
     public override bool Condition(EntityEffectBaseArgs args)
     {

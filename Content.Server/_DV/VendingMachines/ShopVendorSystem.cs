@@ -19,8 +19,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Advertise;
-using Content.Server.Advertise.Components;
 using Content.Shared._DV.VendingMachines;
 using Content.Shared.Advertise.Components;
 using Content.Shared.Advertise.Systems;

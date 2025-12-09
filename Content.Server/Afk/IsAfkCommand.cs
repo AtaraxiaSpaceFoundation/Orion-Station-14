@@ -25,13 +25,13 @@ namespace Content.Server.Afk
         {
             if (args.Length == 0)
             {
-                shell.WriteError(Loc.GetString($"shell-need-exactly-one-argument"));
+                shell.WriteError(Loc.GetString("shell-need-exactly-one-argument"));
                 return;
             }
 
             if (!_players.TryGetSessionByUsername(args[0], out var player))
             {
-                shell.WriteError(Loc.GetString($"shell-target-player-does-not-exist"));
+                shell.WriteError(Loc.GetString("shell-target-player-does-not-exist"));
                 return;
             }
 

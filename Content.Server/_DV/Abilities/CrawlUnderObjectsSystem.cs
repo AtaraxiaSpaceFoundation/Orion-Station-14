@@ -8,10 +8,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._DV.Abilities;
 using Content.Shared.Actions;
 using Content.Shared.Climbing.Components;
 using Content.Shared.Climbing.Events;
-using Content.Shared._DV.Abilities;
 using Content.Shared.Maps;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
@@ -21,7 +21,7 @@ using Robust.Shared.Physics.Systems;
 
 namespace Content.Server._DV.Abilities;
 
-public sealed partial class CrawlUnderObjectsSystem : SharedCrawlUnderObjectsSystem
+public sealed class CrawlUnderObjectsSystem : SharedCrawlUnderObjectsSystem
 {
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
@@ -61,7 +61,7 @@ public sealed partial class CrawlUnderObjectsSystem : SharedCrawlUnderObjectsSys
     {
         if (component.Enabled
             || (TryComp<ClimbingComponent>(uid, out var climbing)
-                && climbing.IsClimbing == true))
+                && climbing.IsClimbing))
             return false;
 
         component.Enabled = true;
@@ -92,7 +92,7 @@ public sealed partial class CrawlUnderObjectsSystem : SharedCrawlUnderObjectsSys
 
     private bool DisableSneakMode(EntityUid uid, CrawlUnderObjectsComponent component)
     {
-        if (!component.Enabled || IsOnCollidingTile(uid) || (TryComp<ClimbingComponent>(uid, out var climbing) && climbing.IsClimbing == true)) {
+        if (!component.Enabled || IsOnCollidingTile(uid) || (TryComp<ClimbingComponent>(uid, out var climbing) && climbing.IsClimbing)) {
             return false;
         }
 
@@ -136,7 +136,7 @@ public sealed partial class CrawlUnderObjectsSystem : SharedCrawlUnderObjectsSys
         CrawlUnderObjectsComponent component,
         AttemptClimbEvent args)
     {
-        if (component.Enabled == true)
+        if (component.Enabled)
             args.Cancelled = true;
     }
 

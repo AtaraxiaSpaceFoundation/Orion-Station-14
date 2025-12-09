@@ -8,18 +8,19 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._DV.CosmicCult.Components;
-using Robust.Shared.Timing;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.Popups;
 using Robust.Shared.Random;
-using Content.Shared._Shitmed.Targeting; // Shitmed Change
+using Robust.Shared.Timing;
+
 namespace Content.Server._DV.CosmicCult.EntitySystems;
 
 /// <summary>
 /// Makes the person with this component take damage over time.
 /// Used for status effect.
 /// </summary>
-public sealed partial class CosmicEntropyDegenSystem : EntitySystem
+public sealed class CosmicEntropyDegenSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;

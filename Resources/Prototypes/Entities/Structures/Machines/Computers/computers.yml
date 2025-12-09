@@ -353,7 +353,7 @@
   - type: ItemSlots
     slots:
       disk_slot:
-#        name: Disk # Orion-Edit | Localization
+#        name: Disk # Orion-Edit: Localization
         insertSound:
           path: /Audio/Machines/terminal_insert_disc.ogg
         ejectSound:
@@ -755,7 +755,7 @@
     powerLoad: 1000
   - type: Computer
     board: ResearchComputerCircuitboard
-#  - type: AccessReader # Orion-Remove
+#  - type: AccessReader # Orion-Edit: Removed
 #    access: [["Research"]]
   # Orion-Start
   - type: Speech

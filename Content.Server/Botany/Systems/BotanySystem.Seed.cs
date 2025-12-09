@@ -22,25 +22,24 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Content.Goobstation.Common.NTR.Scan;
 using Content.Server.Botany.Components;
 using Content.Server.Kitchen.Components;
 using Content.Server.Popups;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Botany;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Random;
-using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Content.Goobstation.Common.NTR.Scan; // Goobstation
-using Content.Shared.Administration.Logs;
-using Content.Shared.Database;
 
 namespace Content.Server.Botany.Systems;
 
@@ -113,9 +112,9 @@ public sealed partial class BotanySystem : EntitySystem
         using (args.PushGroup(nameof(SeedComponent), 1))
         {
             var name = Loc.GetString(seed.DisplayName);
-            args.PushMarkup(Loc.GetString($"seed-component-description", ("seedName", name)));
-            args.PushMarkup(Loc.GetString($"seed-component-plant-yield-text", ("seedYield", seed.Yield)));
-            args.PushMarkup(Loc.GetString($"seed-component-plant-potency-text", ("seedPotency", seed.Potency)));
+            args.PushMarkup(Loc.GetString("seed-component-description", ("seedName", name)));
+            args.PushMarkup(Loc.GetString("seed-component-plant-yield-text", ("seedYield", seed.Yield)));
+            args.PushMarkup(Loc.GetString("seed-component-plant-potency-text", ("seedPotency", seed.Potency)));
         }
     }
 

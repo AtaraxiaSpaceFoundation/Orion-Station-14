@@ -606,7 +606,7 @@
     slots:
     - Hair
     - Snout
-#    - HeadTop # Orion-Remove
+#    - HeadTop # Orion-Edit: Removed
     - HeadSide
     hideOnToggle: true
   - type: Armor

@@ -7,9 +7,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
-using Content.Shared._Shitmed.Targeting; // EE Plasmeme Change
-
 
 // Damages the entity by a set amount when it hits someone.
 // Can be used to make melee items limited-use or make an entity deal self-damage with unarmed attacks.

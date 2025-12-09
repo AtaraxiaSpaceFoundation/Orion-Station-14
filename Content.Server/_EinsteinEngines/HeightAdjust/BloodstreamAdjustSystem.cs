@@ -4,12 +4,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Body.Systems;
-using Content.Shared.CCVar;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared._EinsteinEngines.Contests;
 using Content.Shared._EinsteinEngines.HeightAdjust;
 using Content.Shared.Body.Components;
+using Content.Shared.CCVar;
+using Content.Shared.Chemistry.EntitySystems;
 using Robust.Shared.Configuration;
 
 namespace Content.Server._EinsteinEngines.HeightAdjust;

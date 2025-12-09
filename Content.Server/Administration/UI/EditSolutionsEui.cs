@@ -19,8 +19,8 @@ using Content.Server.Administration.Systems;
 using Content.Server.EUI;
 using Content.Shared.Administration;
 using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Eui;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Eui;
 using JetBrains.Annotations;
 using Robust.Shared.Timing;
 

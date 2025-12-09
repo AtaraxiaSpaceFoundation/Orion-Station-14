@@ -5,11 +5,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-using static Content.Shared.Arcade.SharedSpaceVillainArcadeComponent;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
+using static Content.Shared.Arcade.SharedSpaceVillainArcadeComponent;
 
 namespace Content.Server.Arcade.SpaceVillain;
 
@@ -27,7 +27,7 @@ public sealed partial class SpaceVillainGame
 
 
     [ViewVariables]
-    private readonly EntityUid _owner = default!;
+    private readonly EntityUid _owner;
 
     [ViewVariables]
     private bool _running = true;
@@ -48,7 +48,7 @@ public sealed partial class SpaceVillainGame
     public readonly Fighter VillainChar;
 
     [ViewVariables]
-    private int _turtleTracker = 0;
+    private int _turtleTracker;
 
     [ViewVariables]
     private string _latestPlayerActionMessage = "";

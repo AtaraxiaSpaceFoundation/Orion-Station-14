@@ -31,7 +31,7 @@ public sealed class ElectrocuteCommand : LocalizedEntityCommands
     {
         if (args.Length is < 1 or > 3)
         {
-            shell.WriteError(Loc.GetString($"shell-need-between-arguments",
+            shell.WriteError(Loc.GetString("shell-need-between-arguments",
                 ("lower", 1),
                 ("upper", 3)));
             return;
@@ -39,7 +39,7 @@ public sealed class ElectrocuteCommand : LocalizedEntityCommands
 
         if (!NetEntity.TryParse(args[0], out var uidNet) || !EntityManager.TryGetEntity(uidNet, out var uid) || !EntityManager.EntityExists(uid))
         {
-            shell.WriteError(Loc.GetString($"shell-could-not-find-entity-with-uid", ("uid", args[0])));
+            shell.WriteError(Loc.GetString("shell-could-not-find-entity-with-uid", ("uid", args[0])));
             return;
         }
 

@@ -182,7 +182,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     /// <param name="uid">uid of entity that'll play the sound</param>
     private void TryPlayCombatModeSound(EntityUid uid)
     {
-        if (_combatModeSoundEnabled == false)
+        if (!_combatModeSoundEnabled)
             return;
 
         if (!TryComp<CombatModeComponent>(uid, out var comp))

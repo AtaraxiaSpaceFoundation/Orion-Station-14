@@ -83,7 +83,6 @@
 
 using Content.Goobstation.Common.MartialArts;
 using Content.Shared.Alert;
-using Content.Shared.Movement.Pulling.Systems; // Goobstation
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -139,6 +138,9 @@ public sealed partial class PullableComponent : Component
 
     [AutoNetworkedField, DataField]
     public GrabStage GrabStage = GrabStage.No;
+
+    [AutoNetworkedField, DataField]
+    public float EscapeAttemptModifier = 1f;
 
     [AutoNetworkedField, DataField]
     public float GrabEscapeChance = 1f;

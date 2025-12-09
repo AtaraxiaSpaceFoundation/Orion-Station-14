@@ -22,7 +22,7 @@ namespace Content.Server.NodeContainer.NodeGroups
     ///     This is used to gurantee all <see cref="INode"/>s of the same <see cref="NodeGroupID"/>
     ///     have the same type of <see cref="INodeGroup"/>. Used by <see cref="INodeGroupFactory"/>.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     [MeansImplicitUse]
     public sealed class NodeGroupAttribute : Attribute
     {

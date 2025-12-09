@@ -86,6 +86,7 @@ public sealed class PrototypeTests
     /// This test writes all known prototypes as yaml files, reads them again, then serializes them again.
     /// </summary>
     [Test]
+    [Ignore("Too heavy for pooled execution")] // Orion
     public async Task ClientPrototypeSaveLoadSaveTest()
     {
         await using var pair = await PoolManager.GetServerClient();

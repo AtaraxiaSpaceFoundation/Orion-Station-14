@@ -11,18 +11,14 @@
 
 using System.Linq;
 using System.Numerics;
-using Content.Client.Animations;
 using Content.Client.DamageState;
 using Content.Goobstation.Shared.Emoting;
-using Content.Shared._Goobstation.Wizard.SupermatterHalberd;
-using Content.Shared.Chat.Prototypes;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Animations;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Emoting;
 
@@ -30,9 +26,6 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _anim = default!;
     [Dependency] private readonly IPrototypeManager _prot = default!;
-    [Dependency] private readonly RaysSystem _rays = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
 
     private const int TweakAnimationDurationMs = 1100; // 11 frames * 100ms per frame
     private const int FlexAnimationDurationMs = 200 * 7; // 7 frames * 200ms per frame
@@ -48,9 +41,10 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationJumpEmoteEvent>(OnJump);
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationTweakEmoteEvent>(OnTweak);
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationFlexEmoteEvent>(OnFlex);
-        SubscribeNetworkEvent<BibleFartSmiteEvent>(OnBibleSmite);
+//        SubscribeNetworkEvent<BibleFartSmiteEvent>(OnBibleSmite); // Orion-Edit: Removed
     }
 
+/* // Orion-Edit: Removed
     public void OnBibleSmite(BibleFartSmiteEvent args)
     {
         EntityUid uid = GetEntity(args.Bible);
@@ -73,6 +67,7 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
         var track = EnsureComp<TrackUserComponent>(rays.Value);
         track.User = uid;
     }
+*/
 
     public void PlayEmote(EntityUid uid, Animation anim, string animationKey = "emoteAnimKeyId")
     {
@@ -85,7 +80,7 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
     private void OnHandleState(EntityUid uid, AnimatedEmotesComponent component, ref ComponentHandleState args)
     {
         if (args.Current is not AnimatedEmotesComponentState state
-        || !_prot.TryIndex<EmotePrototype>(state.Emote, out var emote))
+        || !_prot.TryIndex(state.Emote, out var emote))
             return;
 
         if (emote.Event != null)

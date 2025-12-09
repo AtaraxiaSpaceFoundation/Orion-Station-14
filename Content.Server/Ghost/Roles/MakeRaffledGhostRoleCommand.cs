@@ -102,7 +102,7 @@ namespace Content.Server.Ghost.Roles
                     || !uint.TryParse(args[5], out var max)
                     || initial == 0 || max == 0)
                 {
-                    shell.WriteLine($"The raffle initial/extends/max settings must be positive numbers.");
+                    shell.WriteLine("The raffle initial/extends/max settings must be positive numbers.");
                     return;
                 }
 
@@ -112,7 +112,7 @@ namespace Content.Server.Ghost.Roles
                     return;
                 }
 
-                settings = new GhostRoleRaffleSettings()
+                settings = new GhostRoleRaffleSettings
                 {
                     InitialDuration = initial,
                     JoinExtendsDurationBy = extends,

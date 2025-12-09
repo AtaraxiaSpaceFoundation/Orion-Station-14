@@ -30,7 +30,7 @@
       slots:
         cell_slot:
           name: power-cell-slot-component-slot-name-default
-          startingItem: PowerCellAntiqueProto
+          startingItem: PowerCellVortex # Orion-Edit: Replaced PowerCellAntiqueProto
           whitelist:
             components:
               - PowerCell
@@ -71,6 +71,13 @@
   components:
     - type: Sprite
       sprite: _EinsteinEngines/Clothing/NanoTrasen/Modsuits/corporate.rsi
+    - type: HideLayerClothing # Goobstation
+      slots:
+      - Hair
+      - Snout
+      - HeadTop
+      - HeadSide
+      hideOnToggle: true
     - type: PressureProtection
       highPressureMultiplier: 0.08
       lowPressureMultiplier: 1000

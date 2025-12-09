@@ -4,7 +4,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using System.Threading;
 using Content.Goobstation.Shared.MisandryBox.JumpScare;
 using Content.Shared.Electrocution;
 using Content.Shared.Popups;

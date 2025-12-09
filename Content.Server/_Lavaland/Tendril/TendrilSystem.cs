@@ -20,10 +20,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Lavaland.Tendril.Components;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
 using Robust.Shared.Map;

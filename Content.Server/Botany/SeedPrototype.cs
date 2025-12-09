@@ -23,7 +23,6 @@
 
 using Content.Server.Botany.Components;
 using Content.Server.Botany.Systems;
-using Content.Server.EntityEffects;
 using Content.Shared.Atmos;
 using Content.Shared.Database;
 using Content.Shared.EntityEffects;
@@ -36,7 +35,7 @@ using Robust.Shared.Utility;
 namespace Content.Server.Botany;
 
 [Prototype]
-public sealed partial class SeedPrototype : SeedData, IPrototype
+public sealed class SeedPrototype : SeedData, IPrototype
 {
     [IdDataField] public string ID { get; private set; } = default!;
 }
@@ -141,7 +140,7 @@ public partial class SeedData
     ///     needing to clone the seed.
     /// </summary>
     [ViewVariables]
-    public bool Unique = false; // seed-prototypes or yaml-defined seeds for entity prototypes will not generally be unique.
+    public bool Unique; // seed-prototypes or yaml-defined seeds for entity prototypes will not generally be unique.
     #endregion
 
     #region Output
@@ -206,7 +205,7 @@ public partial class SeedData
     ///     If true, cannot be harvested for seeds. Balances hybrids and
     ///     mutations.
     /// </summary>
-    [DataField] public bool Seedless = false;
+    [DataField] public bool Seedless;
 
     /// <summary>
     ///     If false, rapidly decrease health while growing. Used to kill off
@@ -237,7 +236,7 @@ public partial class SeedData
     #region Cosmetics
 
     [DataField(required: true)]
-    public ResPath PlantRsi { get; set; } = default!;
+    public ResPath PlantRsi { get; set; }
 
     [DataField] public string PlantIconState { get; set; } = "produce";
 
@@ -271,13 +270,13 @@ public partial class SeedData
     ///  Log impact for when the seed is planted.
     /// </summary>
     [DataField]
-    public LogImpact? PlantLogImpact = null;
+    public LogImpact? PlantLogImpact;
 
     /// <summary>
     ///  Log impact for when the seed is harvested.
     /// </summary>
     [DataField]
-    public LogImpact? HarvestLogImpact = null;
+    public LogImpact? HarvestLogImpact;
 
     public SeedData Clone()
     {

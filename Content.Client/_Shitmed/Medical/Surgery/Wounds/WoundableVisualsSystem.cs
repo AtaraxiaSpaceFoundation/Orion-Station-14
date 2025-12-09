@@ -9,18 +9,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
-using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
-using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Humanoid;
 using Robust.Client.GameObjects;
-using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Client._Shitmed.Medical.Surgery.Wounds;
 

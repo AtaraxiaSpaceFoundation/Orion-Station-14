@@ -4,7 +4,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;

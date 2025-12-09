@@ -59,7 +59,7 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-#        name: Magazine # Orion-Edit | Localization
+#        name: Magazine # Orion-Edit: Localization
         startingItem: MagazineSmart
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
@@ -69,7 +69,7 @@
             - MagazineSmart
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
-#        name: Chamber # Orion-Edit | Localization
+#        name: Chamber # Orion-Edit: Localization
         startingItem: CartridgeSmart
         priority: 1
         whitelist:

@@ -5,8 +5,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.StepTrigger.Systems;
 using Content.Shared.EntityEffects;
+using Content.Shared.StepTrigger.Systems;
 
 namespace Content.Server.Tiles;
 

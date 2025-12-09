@@ -22,6 +22,17 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Server._Lavaland.Mobs.Hierophant.Components;
+using Content.Shared._Lavaland.Aggression;
+using Content.Shared.Damage;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -29,17 +40,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Linq;
-using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
-using Content.Server._Lavaland.Mobs.Hierophant.Components;
-using Content.Shared._Lavaland.Aggression;
-using Content.Shared.Damage;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.Mobs.Components;
 
 // ReSharper disable AccessToModifiedClosure
 // ReSharper disable BadListLineBreaks

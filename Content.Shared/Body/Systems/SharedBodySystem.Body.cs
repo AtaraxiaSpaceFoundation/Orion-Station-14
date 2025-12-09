@@ -49,7 +49,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
 // Shitmed Change
-using Content.Shared._Shitmed.Body.Events;
 using Content.Shared._Shitmed.Body.Part;
 using Content.Shared._Shitmed.CCVar;
 using Content.Shared._Shitmed.Humanoid.Events;
@@ -65,12 +64,9 @@ using Content.Shared.Humanoid;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Standing;
-using Robust.Shared.Network;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Popups;
 using Robust.Shared.Configuration;
-using Robust.Shared.Timing;
-using Content.Goobstation.Maths.FixedPoint;
 
 namespace Content.Shared.Body.Systems;
 

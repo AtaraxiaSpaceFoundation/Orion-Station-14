@@ -79,7 +79,7 @@ namespace Content.Server.Atmos.Components
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public float MaximumFireStacks = 10f;
+        public float MaximumFireStacks = 15f;
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
@@ -95,11 +95,11 @@ namespace Content.Server.Atmos.Components
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public bool FireSpread { get; private set; } = false;
+        public bool FireSpread { get; private set; }
 
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public bool CanResistFire { get; private set; } = false;
+        public bool CanResistFire { get; private set; }
 
         [DataField(required: true)]
         [ViewVariables(VVAccess.ReadWrite)]
@@ -116,7 +116,7 @@ namespace Content.Server.Atmos.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
         [DataField]
-        public bool AlwaysCombustible = false;
+        public bool AlwaysCombustible;
 
         /// <summary>
         ///     Can the component anyhow lose its FireStacks?
@@ -126,10 +126,11 @@ namespace Content.Server.Atmos.Components
         public bool CanExtinguish = true;
 
         /// <summary>
-        ///     EE Plasmamen Change: Should the component ignore fire protection when on fire?
+        ///     Goobstation
+        ///     ArmorPenetration but for fire resistance
         /// </summary>
         [DataField]
-        public bool IgnoreFireProtection = false;
+        public float FireProtectionPenetration;
 
         /// <summary>
         ///     How many firestacks should be applied to component when being set on fire?

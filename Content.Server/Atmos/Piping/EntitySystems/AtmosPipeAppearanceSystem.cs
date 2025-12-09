@@ -18,7 +18,7 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server.Atmos.Piping.EntitySystems;
 
-public sealed partial class AtmosPipeAppearanceSystem : SharedAtmosPipeAppearanceSystem
+public sealed class AtmosPipeAppearanceSystem : SharedAtmosPipeAppearanceSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;

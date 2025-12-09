@@ -20,7 +20,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Holiday
 {
     [Prototype]
-    public sealed partial class HolidayPrototype : IPrototype
+    public sealed class HolidayPrototype : IPrototype
     {
         [DataField("name")] public string Name { get; private set; } = string.Empty;
 
@@ -53,7 +53,7 @@ namespace Content.Server.Holiday
         private IHolidayGreet _greet = new DefaultHolidayGreet();
 
         [DataField("celebrate")]
-        private IHolidayCelebrate? _celebrate = null;
+        private IHolidayCelebrate? _celebrate;
 
         public bool ShouldCelebrate(DateTime date)
         {

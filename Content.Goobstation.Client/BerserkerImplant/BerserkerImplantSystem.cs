@@ -1,5 +1,4 @@
 using Content.Goobstation.Shared.BerserkerImplant;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;

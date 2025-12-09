@@ -5,13 +5,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Chemistry.Reagent;
-using Content.Shared.EntityEffects;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Shared.Chemistry.EntitySystems;
 
 namespace Content.Server.EntityEffects.EffectConditions;
 
@@ -24,7 +24,7 @@ public sealed partial class BloodReagentThreshold : EntityEffectCondition
     public FixedPoint2 Max = FixedPoint2.MaxValue;
 
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<ReagentPrototype>))]
-    public string? Reagent = null;
+    public string? Reagent;
     public override bool Condition(EntityEffectBaseArgs args)
     {
         if (Reagent is null) return true;
@@ -52,7 +52,7 @@ public sealed partial class BloodReagentThreshold : EntityEffectCondition
 
         return Loc.GetString("reagent-effect-condition-guidebook-blood-reagent-threshold",
             ("reagent", reagentProto?.LocalizedName ?? Loc.GetString("reagent-effect-condition-guidebook-this-reagent")),
-            ("max", Max == FixedPoint2.MaxValue ? (float) int.MaxValue : Max.Float()),
+            ("max", Max == FixedPoint2.MaxValue ? int.MaxValue : Max.Float()),
             ("min", Min.Float()));
     }
 }

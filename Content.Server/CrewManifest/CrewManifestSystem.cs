@@ -30,7 +30,6 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Server.CrewManifest;
 
@@ -276,19 +275,19 @@ public sealed class CrewManifestCommand : LocalizedEntityCommands
     {
         if (args.Length != 1)
         {
-            shell.WriteLine(Loc.GetString($"shell-need-exactly-one-argument"));
+            shell.WriteLine(Loc.GetString("shell-need-exactly-one-argument"));
             return;
         }
 
         if (!NetEntity.TryParse(args[0], out var uidNet) || !EntityManager.TryGetEntity(uidNet, out var uid))
         {
-            shell.WriteLine(Loc.GetString($"shell-argument-station-id-invalid", ("index", args[0])));
+            shell.WriteLine(Loc.GetString("shell-argument-station-id-invalid", ("index", args[0])));
             return;
         }
 
         if (shell.Player is not { } session)
         {
-            shell.WriteLine(Loc.GetString($"shell-cannot-run-command-from-server"));
+            shell.WriteLine(Loc.GetString("shell-cannot-run-command-from-server"));
             return;
         }
 

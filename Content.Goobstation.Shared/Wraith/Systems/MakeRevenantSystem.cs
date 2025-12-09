@@ -4,7 +4,6 @@ using Content.Shared.Atmos.Rotting;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
-using Content.Shared.Revenant.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 

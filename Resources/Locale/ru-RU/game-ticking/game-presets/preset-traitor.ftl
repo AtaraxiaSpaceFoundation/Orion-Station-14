@@ -22,7 +22,7 @@ traitor-death-match-end-round-description-entry = КПК { $originalName }, с {
 
 # TraitorRole
 traitor-role-greeting =
-    Вы - агент организации { $corporation } на задании [color = darkred]Синдиката.[/color].
+    Вы - агент организации { $corporation }.
     Ваши цели и кодовые слова перечислены в меню персонажа.
     Воспользуйтесь своим аплинком, чтобы приобрести всё необходимое для выполнения работы.
     Смерть НаноТрейзен!

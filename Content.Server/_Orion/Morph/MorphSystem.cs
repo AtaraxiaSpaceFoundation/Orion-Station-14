@@ -1,44 +1,44 @@
-using Content.Shared.Actions;
-using Content.Shared._Orion.Morph;
-using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.Nutrition.Components;
-using Content.Shared.Nutrition.EntitySystems;
-using Content.Shared.DoAfter;
-using Robust.Shared.Player;
-using Robust.Shared.Random;
-using Content.Shared.Humanoid;
-using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
-using Content.Shared.Whitelist;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
-using Content.Shared.Damage;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Hands.Components;
 using System.Linq;
 using System.Numerics;
-using Content.Shared.Examine;
-using Robust.Shared.Prototypes;
-using Content.Shared.Damage.Prototypes;
-using Content.Shared.Polymorph.Components;
-using Content.Shared.Interaction;
-using Content.Shared.Polymorph.Systems;
 using Content.Server.Chat.Systems;
-using Content.Server.Stunnable;
-using Content.Shared.Tools.Systems;
-using Content.Shared.Tools.Components;
-using Content.Shared.ActionBlocker;
-using Content.Shared.Movement.Events;
-using Content.Shared.Movement.Components;
-using Content.Shared.Standing;
 using Content.Server.Ghost.Roles.Components;
+using Content.Server.Stunnable;
+using Content.Shared._Orion.Morph;
+using Content.Shared.ActionBlocker;
+using Content.Shared.Actions;
 using Content.Shared.Body.Events;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Ghost;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Humanoid;
+using Content.Shared.Interaction;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Components;
+using Content.Shared.Movement.Events;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Polymorph.Components;
+using Content.Shared.Polymorph.Systems;
+using Content.Shared.Popups;
+using Content.Shared.Standing;
+using Content.Shared.Tools.Components;
+using Content.Shared.Tools.Systems;
+using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server._Orion.Morph;
 
@@ -152,16 +152,17 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<HungerComponent>(ent, out var hunger))
             return;
 
-        if (_hands.TryGetActiveItem((args.HitEntities[0], hands), out var item) && _random.Prob(ent.Comp.EatWeaponChanceOnHit))
-        {
-            if (_hunger.GetHunger(hunger) < ent.Comp.EatWeaponHungerReq)
-                return;
+        if (!_hands.TryGetActiveItem((args.HitEntities[0], hands), out var item) ||
+            !_random.Prob(ent.Comp.EatWeaponChanceOnHit))
+            return;
 
-            ent.Comp.ContainedCreatures.Add(item.Value);
-            _transform.SetCoordinates(item.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
-            _audioSystem.PlayPvs(ent.Comp.SoundDevour, ent);
-            _hunger.ModifyHunger(ent, -ent.Comp.EatWeaponHungerReq, hunger);
-        }
+        if (_hunger.GetHunger(hunger) < ent.Comp.EatWeaponHungerReq)
+            return;
+
+        ent.Comp.ContainedCreatures.Add(item.Value);
+        _transform.SetCoordinates(item.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
+        _audioSystem.PlayPvs(ent.Comp.SoundDevour, ent);
+        _hunger.ModifyHunger(ent, -ent.Comp.EatWeaponHungerReq, hunger);
     }
 
     private void OnInteract(Entity<MorphComponent> ent, ref InteractHandEvent args)
@@ -274,11 +275,11 @@ public sealed class MorphSystem : SharedMorphSystem
         if (TryComp<ChameleonProjectorComponent>(uid, out var chamel) && chamel.Disguised != null)
             RemCompDeferred<MorphAmbushComponent>(chamel.Disguised.Value);
 
-        if (TryComp<InputMoverComponent>(uid, out var input))
-        {
-            input.CanMove = true;
-            Dirty(uid, input);
-        }
+        if (!TryComp<InputMoverComponent>(uid, out var input))
+            return;
+
+        input.CanMove = true;
+        Dirty(uid, input);
     }
 
     private bool NonMorphInRange(EntityUid uid, MorphComponent component)
@@ -286,13 +287,14 @@ public sealed class MorphSystem : SharedMorphSystem
         var coordinates = _transform.GetMapCoordinates(uid);
         foreach (var entity in _lookup.GetEntitiesInRange(coordinates, component.AmbushBlockRange))
         {
-            if (HasComp<MindContainerComponent>(entity) && !HasComp<MorphComponent>(entity) && !HasComp<GhostComponent>(entity))
-            {
-                if ((TryComp<MobStateComponent>(entity, out var entityMobState) && HasComp<GhostTakeoverAvailableComponent>(entity) && _mobState.IsDead(entity, entityMobState)))
-                    continue;
+            if (!HasComp<MindContainerComponent>(entity) || HasComp<MorphComponent>(entity) ||
+                HasComp<GhostComponent>(entity))
+                continue;
 
-                return true;
-            }
+            if ((TryComp<MobStateComponent>(entity, out var entityMobState) && HasComp<GhostTakeoverAvailableComponent>(entity) && _mobState.IsDead(entity, entityMobState)))
+                continue;
+
+            return true;
         }
 
         return false;

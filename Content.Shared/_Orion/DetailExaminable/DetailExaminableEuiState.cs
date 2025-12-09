@@ -15,22 +15,22 @@ namespace Content.Shared._Orion.DetailExaminable;
 public sealed class DetailExaminableEuiState : EuiStateBase
 {
     public NetEntity Target;
-    public string Name = string.Empty;
-    public ProtoId<SpeciesPrototype> Species = string.Empty;
+    public string Name;
+    public ProtoId<SpeciesPrototype> Species;
     public Sex Sex;
     public Gender Gender;
-    public string FlavorText = string.Empty;
-    public string OOCFlavorText = string.Empty;
-    public string CharacterFlavorText = string.Empty;
-    public string GreenFlavorText = string.Empty;
-    public string YellowFlavorText = string.Empty;
-    public string RedFlavorText = string.Empty;
-    public string TagsFlavorText = string.Empty;
-    public string LinksFlavorText = string.Empty;
-    public string NsfwFlavorText = string.Empty;
-    public string NsfwOOCFlavorText = string.Empty;
-    public string NsfwLinksFlavorText = string.Empty;
-    public string NsfwTagsFlavorText = string.Empty;
+    public string FlavorText;
+    public string OOCFlavorText;
+    public string CharacterFlavorText;
+    public string GreenFlavorText;
+    public string YellowFlavorText;
+    public string RedFlavorText;
+    public string TagsFlavorText;
+    public string LinksFlavorText;
+    public string NsfwFlavorText;
+    public string NsfwOOCFlavorText;
+    public string NsfwLinksFlavorText;
+    public string NsfwTagsFlavorText;
 
     public DetailExaminableEuiState(
         NetEntity target,

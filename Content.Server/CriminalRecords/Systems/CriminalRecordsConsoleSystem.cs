@@ -16,6 +16,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server.Popups;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Station.Systems;
@@ -26,13 +28,11 @@ using Content.Shared.Access.Systems;
 using Content.Shared.CriminalRecords;
 using Content.Shared.CriminalRecords.Components;
 using Content.Shared.CriminalRecords.Systems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Security;
+using Content.Shared.Security.Components;
 using Content.Shared.StationRecords;
 using Robust.Server.GameObjects;
-using System.Diagnostics.CodeAnalysis;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Security.Components;
-using System.Linq;
 
 namespace Content.Server.CriminalRecords.Systems;
 

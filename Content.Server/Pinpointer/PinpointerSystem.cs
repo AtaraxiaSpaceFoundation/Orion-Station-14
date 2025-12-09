@@ -17,14 +17,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Interaction;
-using Content.Shared.Pinpointer;
 using System.Linq;
 using System.Numerics;
-using Robust.Shared.Utility;
 using Content.Server.Shuttles.Events;
 using Content.Shared.Alert;
+using Content.Shared.Interaction;
+using Content.Shared.Pinpointer;
 using Content.Shared.Whitelist;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Pinpointer;
 
@@ -333,11 +333,10 @@ public sealed class PinpointerSystem : SharedPinpointerSystem
         var dist = vec.Length();
         if (dist <= pinpointer.ReachedDistance)
             return Distance.Reached;
-        else if (dist <= pinpointer.CloseDistance)
+        if (dist <= pinpointer.CloseDistance)
             return Distance.Close;
-        else if (dist <= pinpointer.MediumDistance)
+        if (dist <= pinpointer.MediumDistance)
             return Distance.Medium;
-        else
-            return Distance.Far;
+        return Distance.Far;
     }
 }

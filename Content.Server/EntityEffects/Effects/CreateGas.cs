@@ -25,7 +25,7 @@ namespace Content.Server.EntityEffects.Effects;
 public sealed partial class CreateGas : EntityEffect
 {
     [DataField(required: true)]
-    public Gas Gas = default!;
+    public Gas Gas;
 
     /// <summary>
     ///     For each unit consumed, how many moles of gas should be created?

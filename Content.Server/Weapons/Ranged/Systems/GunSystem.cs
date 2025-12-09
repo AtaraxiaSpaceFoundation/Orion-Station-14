@@ -119,13 +119,18 @@
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Common.CCVar;
-using Content.Goobstation.Common.Projectiles; // Goobstation
+using Content.Goobstation.Common.Projectiles;
+using Content.Goobstation.Common.Weapons.Ranged;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Cargo.Systems;
-using Content.Server.Power.EntitySystems;
+using Content.Server.PowerCell;
 using Content.Server.Weapons.Ranged.Components;
+using Content.Shared._Lavaland.Weapons.Ranged.Events;
+using Content.Shared._Shitmed.Targeting;
+using Content.Shared.Body.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Effects;
@@ -136,22 +141,16 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Reflect;
-using Content.Shared.Damage.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Configuration; // Goobstation
+using Robust.Shared.Configuration;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Robust.Shared.Containers;
-using Content.Server.PowerCell;
-using Content.Shared._Lavaland.Weapons.Ranged.Events; // Lavaland Change
-using Robust.Server.GameObjects; // Goobstation
-using Content.Goobstation.Common.Weapons.Ranged;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared.Body.Components;
-using Robust.Shared.Random; // Lavaland Change
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
@@ -254,7 +253,7 @@ public sealed partial class GunSystem : SharedGunSystem
                         var uid = Spawn(cartridge.Prototype, fromEnt);
                         CreateAndFireProjectiles(uid, cartridge);
 
-                        RaiseLocalEvent(ent!.Value, new AmmoShotEvent()
+                        RaiseLocalEvent(ent!.Value, new AmmoShotEvent
                         {
                             FiredProjectiles = shotProjectiles
                         });
@@ -375,7 +374,7 @@ public sealed partial class GunSystem : SharedGunSystem
                             {
                                 if (dmg.AnyPositive())
                                 {
-                                    _color.RaiseEffect(Color.Red, new List<EntityUid>() { hitEntity }, Filter.Pvs(hitEntity, entityManager: EntityManager));
+                                    _color.RaiseEffect(Color.Red, new List<EntityUid> { hitEntity }, Filter.Pvs(hitEntity, entityManager: EntityManager));
                                 }
 
                                 // TODO get fallback position for playing hit sound.
@@ -406,14 +405,14 @@ public sealed partial class GunSystem : SharedGunSystem
             }
         }
 
-        RaiseLocalEvent(gunUid, new AmmoShotEvent()
+        RaiseLocalEvent(gunUid, new AmmoShotEvent
         {
             FiredProjectiles = shotProjectiles,
         });
 
         // Goobstation start
         if (user.HasValue)
-            RaiseLocalEvent(user.Value, new AmmoShotUserEvent()
+            RaiseLocalEvent(user.Value, new AmmoShotUserEvent
             {
                 Gun = gunUid,
                 FiredProjectiles = shotProjectiles,
@@ -437,7 +436,7 @@ public sealed partial class GunSystem : SharedGunSystem
                 {
                     var newuid = Spawn(ammoSpreadComp.Proto, fromEnt);
                     // Lavaland Change: Raise event when a projectile/pellet is fired from a gun.
-                    RaiseLocalEvent(gunUid, new ProjectileShotEvent()
+                    RaiseLocalEvent(gunUid, new ProjectileShotEvent
                     {
                         FiredProjectile = newuid
                     });
@@ -555,7 +554,7 @@ public sealed partial class GunSystem : SharedGunSystem
         var random = Random.NextFloat(-0.5f, 0.5f);
 
         // Goobstation start
-        var angleEv = new GetRecoilModifiersEvent()
+        var angleEv = new GetRecoilModifiersEvent
         {
             Gun = component.Owner,
             User = user ?? component.Owner

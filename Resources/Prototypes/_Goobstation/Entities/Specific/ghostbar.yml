@@ -54,7 +54,7 @@
   - type: ItemSlots
     slots:
       miner_slot:
-#        name: Plastic # Orion-Edit | Localization
+#        name: Plastic # Orion-Edit: Localization
         insertSound:
           path: /Audio/Effects/falling.ogg
         ejectSound:
@@ -91,6 +91,7 @@
     - AdvancedTools
     - ScienceClothing
     - PowerCells
+    - MegaCells # Orion
     - Janitor
     - Instruments
     - Equipment

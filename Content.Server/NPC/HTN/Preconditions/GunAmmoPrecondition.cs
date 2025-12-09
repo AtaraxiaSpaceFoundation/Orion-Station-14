@@ -18,7 +18,7 @@ public sealed partial class GunAmmoPrecondition : HTNPrecondition
     [Dependency] private readonly IEntityManager _entManager = default!;
 
     [DataField("minPercent")]
-    public float MinPercent = 0f;
+    public float MinPercent;
 
     [DataField("maxPercent")]
     public float MaxPercent = 1f;

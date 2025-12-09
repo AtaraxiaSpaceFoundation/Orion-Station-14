@@ -142,6 +142,6 @@ public sealed partial class GhostRoleComponent : Component
     /// </summary>
     [DataField("job")]
     [Access(typeof(GhostRoleSystem), Other = AccessPermissions.ReadWriteExecute)] // also FIXME Friends
-    public ProtoId<JobPrototype>? JobProto = null;
+    public ProtoId<JobPrototype>? JobProto;
 }
 

@@ -35,7 +35,7 @@ public sealed class ItemSwitchStatusControl : PollingItemStatusControl<ItemSwitc
     protected override void Update(in Data data)
     {
         _label.SetMarkup(Loc.GetString("itemswitch-component-on-examine-detailed-message",
-            ("state", Loc.GetString($"itemswitch-component-state-{data.State}")))); // Orion-Edit | Localize
+            ("state", Loc.GetString($"itemswitch-component-state-{data.State}")))); // Orion-Edit: Localize
     }
 
     public record struct Data(string State);

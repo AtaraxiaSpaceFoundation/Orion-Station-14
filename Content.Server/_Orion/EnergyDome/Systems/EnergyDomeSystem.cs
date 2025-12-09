@@ -11,7 +11,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.Tag;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Content.Shared.Verbs;

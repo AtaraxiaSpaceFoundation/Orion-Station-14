@@ -34,14 +34,12 @@ public class SharedCorticalBorerSystem : EntitySystem
 
     public bool CanUseAbility(Entity<CorticalBorerComponent> ent, EntityUid target)
     {
-        if (_statusEffects.HasStatusEffect(target,
-                    "CorticalBorerProtection")) // hardcoded the status effect because...
-        {
-            Popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
-            return false;
-        }
+        if (!_statusEffects.HasStatusEffect(target,"CorticalBorerProtection")) // hardcoded the status effect because...
+            return true;
 
-        return true;
+        Popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
+        return false;
+
     }
 
     public void InfestTarget(Entity<CorticalBorerComponent> ent, EntityUid target)
@@ -160,7 +158,7 @@ public sealed class InfestHostAttempt : CancellableEntityEventArgs
 [Serializable, NetSerializable]
 public enum CorticalBorerDispenserUiKey
 {
-    Key
+    Key,
 }
 
 
@@ -174,40 +172,21 @@ public sealed class CorticalBorerDispenserSetInjectAmountMessage : BoundUserInte
         CorticalBorerDispenserDispenseAmount = amount;
     }
 
-    public CorticalBorerDispenserSetInjectAmountMessage(String s)
+    public CorticalBorerDispenserSetInjectAmountMessage(string s)
     {
-        switch (s)
+        CorticalBorerDispenserDispenseAmount = s switch
         {
-            case "1":
-                CorticalBorerDispenserDispenseAmount = 1;
-                break;
-            case "5":
-                CorticalBorerDispenserDispenseAmount = 5;
-                break;
-            case "10":
-                CorticalBorerDispenserDispenseAmount = 10;
-                break;
-            case "15":
-                CorticalBorerDispenserDispenseAmount = 15;
-                break;
-            case "20":
-                CorticalBorerDispenserDispenseAmount = 20;
-                break;
-            case "25":
-                CorticalBorerDispenserDispenseAmount = 25;
-                break;
-            case "30":
-                CorticalBorerDispenserDispenseAmount = 30;
-                break;
-            case "50":
-                CorticalBorerDispenserDispenseAmount = 50;
-                break;
-            case "100":
-                CorticalBorerDispenserDispenseAmount = 100;
-                break;
-            default:
-                throw new Exception($"Cannot convert the string `{s}` into a valid DispenseAmount");
-        }
+            "1" => 1,
+            "5" => 5,
+            "10" => 10,
+            "15" => 15,
+            "20" => 20,
+            "25" => 25,
+            "30" => 30,
+            "50" => 50,
+            "100" => 100,
+            _ => throw new Exception($"Cannot convert the string `{s}` into a valid DispenseAmount"),
+        };
     }
 }
 

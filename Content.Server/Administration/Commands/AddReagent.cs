@@ -13,14 +13,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Chemistry.EntitySystems;
+using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Administration;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
-using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
-using System.Linq;
 
 namespace Content.Server.Administration.Commands
 {
@@ -47,13 +47,13 @@ namespace Content.Server.Administration.Commands
 
             if (!NetEntity.TryParse(args[0], out var uidNet) || !_entManager.TryGetEntity(uidNet, out var uid))
             {
-                shell.WriteLine($"Invalid entity id.");
+                shell.WriteLine("Invalid entity id.");
                 return;
             }
 
             if (!_entManager.TryGetComponent(uid, out SolutionContainerManagerComponent? man))
             {
-                shell.WriteLine($"Entity does not have any solutions.");
+                shell.WriteLine("Entity does not have any solutions.");
                 return;
             }
 
@@ -67,13 +67,13 @@ namespace Content.Server.Administration.Commands
 
             if (!_protomanager.HasIndex<ReagentPrototype>(args[2]))
             {
-                shell.WriteLine($"Unknown reagent prototype");
+                shell.WriteLine("Unknown reagent prototype");
                 return;
             }
 
             if (!float.TryParse(args[3], out var quantityFloat))
             {
-                shell.WriteLine($"Failed to parse quantity");
+                shell.WriteLine("Failed to parse quantity");
                 return;
             }
             var quantity = FixedPoint2.New(MathF.Abs(quantityFloat));

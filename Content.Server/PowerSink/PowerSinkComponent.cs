@@ -25,21 +25,21 @@ namespace Content.Server.PowerSink
         /// </summary>
         [DataField("sentImminentExplosionWarning")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public bool SentImminentExplosionWarningMessage = false;
+        public bool SentImminentExplosionWarningMessage;
 
         /// <summary>
         /// If explosion has been triggered, time at which to explode.
         /// </summary>
         [DataField("explosionTime", customTypeSerializer:typeof(TimeOffsetSerializer))]
         [AutoPausedField]
-        public System.TimeSpan? ExplosionTime = null;
+        public TimeSpan? ExplosionTime;
 
         /// <summary>
         /// The highest sound warning threshold that has been hit (plays sfx occasionally as explosion nears)
         /// </summary>
         [DataField("highestWarningSoundThreshold")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public float HighestWarningSoundThreshold = 0f;
+        public float HighestWarningSoundThreshold;
 
         [DataField("chargeFireSound")]
         public SoundSpecifier ChargeFireSound = new SoundPathSpecifier("/Audio/Effects/PowerSink/charge_fire.ogg");

@@ -45,7 +45,5 @@ public sealed class AutomaticAtmosSystem : EntitySystem
 
         // It's not super important to remove it should the grid become too small again.
         // If explosions ever gain the ability to outright shatter grids, do rethink this.
-
-        return;
     }
 }

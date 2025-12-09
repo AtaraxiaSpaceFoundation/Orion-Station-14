@@ -11,7 +11,7 @@ namespace Content.Shared.DetailExaminable;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DetailExaminableComponent : Component
 {
-    [DataField, AutoNetworkedField] // Orion-Edit | Removed: "required: true"
+    [DataField, AutoNetworkedField] // Orion-Edit: Removed: "required: true"
     public string Content = string.Empty;
 
     // Orion-Start

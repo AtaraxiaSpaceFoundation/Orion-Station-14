@@ -131,6 +131,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NPC.Pathfinding;
+using Content.Shared.Body.Systems;
 using Content.Shared.Camera;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
@@ -153,10 +154,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-
-// Shitmed Change
-using Content.Shared.Armor;
-using Content.Shared.Body.Systems;
 
 namespace Content.Server.Explosion.EntitySystems;
 

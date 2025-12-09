@@ -1,0 +1,279 @@
+<Document>
+  # Таблица законов
+
+  <Table Columns="6">
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Код
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        1XX
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        2XX
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        3XX
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        4XX
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        5XX
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X00
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Ущерб станции
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Мелкий саботаж
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Саботаж
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Грандиозный Саботаж
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Вопиющий Саботаж
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X01
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Неподобающее поведение
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Антисоциальное поведение
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Суицид
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Похищение
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Взятие заложников
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X02
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Рукоприкладство
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Драка
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Нанесение увечий
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Нанесение тяжких увечий
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Убийство
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X03
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Невыполнение прямого приказа
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Сопротивление законной власти
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Мятеж
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Нарушение трудового контракта
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X04
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Ношение или использование ограниченных предметов/химикатов
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Хранение запрещённой к использованию контрабанды/химикатов
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Хранение контрабанды вражеской корпорации
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X05
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Преследование
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Домогательства
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Понуждение к действиям сексуального характера
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Изнасилование
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X06
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Кража имущества отдела
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Кража имущества станции и вещей глав
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Крупная кража
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Кража станционных объектов критической важности
+      </Box>
+    </ColorBox>
+
+    <ColorBox Color="#7f7f7f">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        X07
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#138808">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Незаконное пребывание в отсеке
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#bf9821">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Незаконное пребывание в ЗОД
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#cc7500">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Вторжение в отсек
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#af3c3c">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+        Вторжение в ЗОД
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#b11e13">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center">
+      </Box>
+    </ColorBox>
+  </Table>
+
+</Document>

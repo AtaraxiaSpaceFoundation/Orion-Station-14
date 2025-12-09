@@ -11,7 +11,7 @@ namespace Content.Client._Orion.UserInterface.Buttons;
 public sealed class ViewPremiumInfoButton : Button
 {
     private WindowTracker<PremiumPassWindow> _premWindow = new();
-    public ViewPremiumInfoButton() : base()
+    public ViewPremiumInfoButton()
     {
         OnPressed += Pressed;
 
@@ -37,7 +37,7 @@ public sealed class ViewPremiumInfoButton : Button
         AnimationCompleted += _ => PlayAnimation(anim, "hurr durr");
     }
 
-    private void Pressed(ButtonEventArgs args)
+    private new void Pressed(ButtonEventArgs args)
     {
         _premWindow.TryOpenCentered();
     }

@@ -120,6 +120,6 @@ public sealed class ResaveCommand : LocalizedCommands
             loader.Delete(result);
         }
 
-        shell.WriteLine($"Resaved all maps");
+        shell.WriteLine("Resaved all maps");
     }
 }

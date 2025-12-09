@@ -5,10 +5,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.Physics;
 using Content.Shared.Whitelist;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Goobstation.Shared.Weapons.Ranged.ProjectileRequiresWhitelist;

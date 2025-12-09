@@ -58,7 +58,7 @@ namespace Content.Server.Connection.Whitelist;
 /// If the condition doesn't match, the next condition is checked.
 /// </summary>
 [Prototype]
-public sealed partial class PlayerConnectionWhitelistPrototype : IPrototype
+public sealed class PlayerConnectionWhitelistPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
@@ -68,7 +68,7 @@ public sealed partial class PlayerConnectionWhitelistPrototype : IPrototype
     /// If there are less players than this, the whitelist will be ignored and the next one in the list will be used.
     /// </summary>
     [DataField]
-    public int MinimumPlayers = 0;
+    public int MinimumPlayers;
 
     /// <summary>
     /// Maximum number of players allowed for this whitelist to be active.

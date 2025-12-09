@@ -10,19 +10,19 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Religion;
+using Content.Server._Goobstation.Heretic.EntitySystems.PathSpecific;
 using Content.Shared.Heretic;
 using Content.Shared.Maps;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Map.Components;
-using Content.Server._Goobstation.Heretic.EntitySystems.PathSpecific;
 
 namespace Content.Server.Magic;
 
-public sealed partial class ImmovableVoidRodSystem : EntitySystem
+public sealed class ImmovableVoidRodSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prot = default!;
     [Dependency] private readonly IMapManager _map = default!;

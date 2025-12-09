@@ -21,17 +21,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Dataset;
-using Content.Goobstation.Maths.FixedPoint;
-using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Linq;
 
 namespace Content.Server.Silicons.Laws;
 
@@ -79,7 +78,7 @@ public sealed class IonStormSystem : EntitySystem
         // try to swap it out with a random lawset
         if (_robustRandom.Prob(target.RandomLawsetChance))
         {
-            var lawsets = _proto.Index<WeightedRandomPrototype>(target.RandomLawsets);
+            var lawsets = _proto.Index(target.RandomLawsets);
             var lawset = lawsets.Pick(_robustRandom);
             laws = _siliconLaw.GetLawset(lawset);
         }
@@ -120,7 +119,7 @@ public sealed class IonStormSystem : EntitySystem
         if (laws.Laws.Count > 0 && _robustRandom.Prob(target.ReplaceChance))
         {
             var i = _robustRandom.Next(laws.Laws.Count);
-            laws.Laws[i] = new SiliconLaw()
+            laws.Laws[i] = new SiliconLaw
             {
                 LawString = newLaw,
                 Order = laws.Laws[i].Order

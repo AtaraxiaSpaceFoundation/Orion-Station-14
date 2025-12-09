@@ -19,7 +19,7 @@ public sealed class WindowTracker<T> where T : BaseWindow, new()
     public T? Window { get; private set; }
     public bool IsOpen => Window is not null;
 
-    private static ISandboxHelper? _sandbox = null;
+    private static ISandboxHelper? _sandbox;
 
     [MemberNotNullWhen(true, nameof(Window))]
     private bool Toggle()

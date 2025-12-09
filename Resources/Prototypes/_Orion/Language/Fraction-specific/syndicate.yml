@@ -3,6 +3,11 @@
   speech:
     fontId: Supernatural
     color: "#DC143C"
+  # Orion-Start
+  icon:
+    sprite: _Orion/Interface/Chat/language.rsi
+    state: codespeak
+  # Orion-End
   obfuscation:
     !type:PhraseObfuscation
     proportion: 0.69

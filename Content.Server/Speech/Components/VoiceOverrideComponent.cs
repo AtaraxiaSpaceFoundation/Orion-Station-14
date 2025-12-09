@@ -23,14 +23,14 @@ public sealed partial class VoiceOverrideComponent : Component
     ///     Uses the localized version of the string and if null wont do anything.
     /// </summary>
     [DataField]
-    public string? NameOverride = null;
+    public string? NameOverride;
 
     /// <summary>
     ///     The verb that will be used insteand of an entities default one.
     ///     If null, the defaut will be used.
     /// </summary>
     [DataField]
-    public ProtoId<SpeechVerbPrototype>? SpeechVerbOverride = null;
+    public ProtoId<SpeechVerbPrototype>? SpeechVerbOverride;
 
     /// <summary>
     ///     If true, the override values (if they are not null) will be applied.

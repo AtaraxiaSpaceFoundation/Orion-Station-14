@@ -53,3 +53,17 @@
   - type: ToggleableClothing
     clothingPrototypes:
       head: ClothingHeadHelmetCBURNLeader
+
+- type: entity
+  parent: ClothingOuterHardsuitSecurity
+  id: ClothingOuterHardsuitOTAAlliance
+  name: OTA alliance hardsuit
+  description: OTA Stormtrooper Hardsuit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/OuterClothing/Hardsuits/OTA_alliance_hardsuit.rsi
+  - type: ToggleableClothing
+    clothingPrototypes: #goobstation change
+      head: ClothingHeadHelmetHardsuitOTAAlliance

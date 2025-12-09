@@ -20,13 +20,13 @@ public sealed partial class GasProducerAnomalyComponent : Component
     /// Should this gas be released when an anomaly reaches max severity?
     /// </summary>
     [DataField("releaseOnMaxSeverity")]
-    public bool ReleaseOnMaxSeverity = false;
+    public bool ReleaseOnMaxSeverity;
 
     /// <summary>
     /// Should this gas be released over time?
     /// </summary>
     [DataField("releasePassively")]
-    public bool ReleasePassively = false; // In case there are any future anomalies that release gas passively
+    public bool ReleasePassively; // In case there are any future anomalies that release gas passively
 
     /// <summary>
     /// The gas to release
@@ -62,5 +62,5 @@ public sealed partial class GasProducerAnomalyComponent : Component
     /// The the amount the tempurature should be modified by (negative for decreasing temp)
     /// </summary>
     [DataField("tempChange")]
-    public float tempChange = 0;
+    public float tempChange;
 }

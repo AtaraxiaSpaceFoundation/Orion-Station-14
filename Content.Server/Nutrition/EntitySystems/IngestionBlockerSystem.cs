@@ -4,7 +4,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server.Nutrition.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Examine;
 using Content.Shared.Nutrition.Components;

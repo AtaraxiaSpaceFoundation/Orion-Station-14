@@ -27,7 +27,7 @@ public sealed partial class IgniteFromGasComponent : Component
     ///   The total calculated fire stacks to apply every second without immunity.
     /// </summary>
     [DataField]
-    public float FireStacksPerUpdate = 0f;
+    public float FireStacksPerUpdate;
 
     /// <summary>
     ///   If this entity is currently not self-igniting.
