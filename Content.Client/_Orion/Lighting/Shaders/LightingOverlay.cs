@@ -74,8 +74,8 @@ public sealed class LightingOverlay : Overlay
             handle.SetTransform(worldMatrix);
 
             var mask = _spriteSystem.Frame0(component.Sprite); // Mask
-            var xOffset = component.Offsetx - (mask.Width / 2f) / EyeManager.PixelsPerMeter;
-            var yOffset = component.Offsety - (mask.Height / 2f) / EyeManager.PixelsPerMeter;
+            var xOffset = component.OffsetX - (mask.Width / 2) / EyeManager.PixelsPerMeter;
+            var yOffset = component.OffsetY - (mask.Height / 2) / EyeManager.PixelsPerMeter;
             var textureVector = new Vector2(xOffset, yOffset);
 
             handle.DrawTexture(mask, textureVector, color);

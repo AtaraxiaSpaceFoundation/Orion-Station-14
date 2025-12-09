@@ -122,7 +122,7 @@
     radius: 10
     energy: 2.5
     softness: 0.9
-    color: "#EEEEFF"
+    color: "#b0b7c6" # Orion-Edit: Changed color
   - type: Anchorable
   - type: InteractionOutline
   - type: Damageable
@@ -242,7 +242,7 @@
     radius: 15
     energy: 1
     softness: 0.9
-    color: "#EEEEFF"
+    color: "#b0b7c6" # Orion-Edit: Changed color
   - type: PoweredLight
     hasLampOnSpawn: LedLightTube
   - type: AmbientOnPowered

@@ -108,7 +108,7 @@
     state: base
   - type: PointLight
     mask: /Textures/Effects/LightMasks/double_cone.png
-    color: "#FFE4CE"
+    color: "#c5d0e6" # Orion-Edit: Changed color
     energy: 5
     radius: 10
     softness: 1

@@ -159,7 +159,7 @@
       shader: unshaded
     state: base
   - type: PointLight
-    color: "#FFE4CE" # 5000K color temp
+    color: "#c5d0e6" # 5000K color temp | Orion-Edit: Changed color/temp
     energy: 0.65 # Orion-Edit: 0.8 > 0.65
     radius: 6 # Orion-Edit: 10 > 6
     softness: 1
