@@ -271,17 +271,24 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "enum.HumanoidVisualLayers.Underwear" ] # Goob 3370
-    - map: [ "enum.HumanoidVisualLayers.Undershirt" ] # Goob 3370
+#    - map: [ "enum.HumanoidVisualLayers.Underwear" ] # Goob 3370 | Orion-Edit: Replaced
+#    - map: [ "enum.HumanoidVisualLayers.Undershirt" ] # Goob 3370 | Orion-Edit: Replaced
+    # Orion-Start
+    - map: [ "underwear" ]
+    - map: [ "undershirt" ]
+    # Orion-End
     - map: ["jumpsuit"]
     - map: ["enum.HumanoidVisualLayers.LFoot"]
     - map: ["enum.HumanoidVisualLayers.RFoot"]
+    - map: [ "socks" ] # Orion
     - map: ["enum.HumanoidVisualLayers.LHand"]
     - map: ["enum.HumanoidVisualLayers.RHand"]
     - map: ["enum.HumanoidVisualLayers.Face"] #Goob 120 - why did we have face on dummy but not basespecies
     - map: [ "gloves" ]
+    - map: [ "wrists" ] # Orion
     - map: [ "shoes" ]
     - map: [ "ears" ]
+    - map: [ "earsright" ] # Orion
     - map: [ "eyes" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]

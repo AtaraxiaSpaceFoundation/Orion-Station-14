@@ -14,18 +14,31 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     Name="InventoryInterface"
     VerticalExpand="True"
     VerticalAlignment="Bottom"
-    Orientation="Horizontal"
+    Orientation="Vertical"
     HorizontalAlignment="Center">
-    <Control HorizontalAlignment="Center">
-        <!-- Needs to default to invisible because if we attach to a non-slots entity this will never get unset -->
+    <!-- Orion-Edit-Start -->
+    <Control HorizontalAlignment="Left">
+        <inventory:ItemSlotButtonContainer
+            Name="ExtraHotbar"
+            Access="Public"
+            Visible="False"
+            MaxColumns="3"
+            SlotGroup="Extra"
+            ExpandBackwards="True"
+            VerticalExpand="True"
+            HorizontalAlignment="Center"
+        />
         <controls:SlotButton
-            Name="InventoryButton"
+            Name="ExtraButton"
             Access="Public"
             Visible="False"
             VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
             HorizontalExpand="False"
             VerticalExpand="False"
-            ButtonTexturePath="Slots/toggle"/>
+            ButtonTexturePath="Slots/toggle-alt"/>
+    </Control>
+    <Control HorizontalAlignment="Center">
         <inventory:ItemSlotButtonContainer
             Name="InventoryHotbar"
             Access="Public"
@@ -36,5 +49,15 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             VerticalExpand="True"
             HorizontalAlignment="Center"
         />
+        <controls:SlotButton
+            Name="InventoryButton"
+            Access="Public"
+            Visible="False"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            HorizontalExpand="False"
+            VerticalExpand="False"
+            ButtonTexturePath="Slots/toggle"/>
     </Control>
+    <!-- Orion-Edit-End -->
 </widgets:InventoryGui>
