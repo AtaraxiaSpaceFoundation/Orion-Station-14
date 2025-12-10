@@ -8,6 +8,7 @@ using Content.Shared._EinsteinEngines.Language;
 using Content.Shared._EinsteinEngines.Language.Components;
 using Content.Shared._EinsteinEngines.Language.Events;
 using Content.Shared._EinsteinEngines.Language.Systems;
+using Content.Shared._Orion.Language.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -100,7 +101,7 @@ public sealed class LanguageSystem : SharedLanguageSystem
 
     /// <summary>
     ///     Returns the list of languages this entity can understand.
-    /// </summary
+    /// </summary>
     /// <remarks>This simply returns the value of <see cref="LanguageSpeakerComponent.SpokenLanguages"/>.</remarks>
     public List<ProtoId<LanguagePrototype>> GetUnderstoodLanguages(EntityUid uid)
     {
@@ -172,15 +173,15 @@ public sealed class LanguageSystem : SharedLanguageSystem
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
-        if (!ent.Comp.SpokenLanguages.Contains(ent.Comp.CurrentLanguage))
-        {
-            ent.Comp.CurrentLanguage = ent.Comp.SpokenLanguages.FirstOrDefault(UniversalPrototype);
-            RaiseLocalEvent(ent, new LanguagesUpdateEvent());
-            Dirty(ent);
-            return true;
-        }
+        // Orion-Edit-Start
+        if (ent.Comp.SpokenLanguages.Contains(ent.Comp.CurrentLanguage))
+            return false;
 
-        return false;
+        ent.Comp.CurrentLanguage = ent.Comp.SpokenLanguages.FirstOrDefault(UniversalPrototype);
+        RaiseLocalEvent(ent, new LanguagesUpdateEvent());
+        Dirty(ent);
+        return true;
+        // Orion-Edit-End
     }
 
     /// <summary>
@@ -195,12 +196,20 @@ public sealed class LanguageSystem : SharedLanguageSystem
         // We add the intrinsically known languages first so other systems can manipulate them easily
         if (TryComp<LanguageKnowledgeComponent>(ent, out var knowledge))
         {
-            foreach (var spoken in knowledge.SpokenLanguages)
-                ev.SpokenLanguages.Add(spoken);
-
-            foreach (var understood in knowledge.UnderstoodLanguages)
-                ev.UnderstoodLanguages.Add(understood);
+            // Orion-Edit-Start
+            ev.SpokenLanguages.UnionWith(knowledge.SpokenLanguages);
+            ev.UnderstoodLanguages.UnionWith(knowledge.UnderstoodLanguages);
+            // Orion-Edit-End
         }
+
+        // Orion-Start
+        // And then we add the additional languages
+        if (TryComp<AdditionalLanguageComponent>(ent, out var additional))
+        {
+            ev.SpokenLanguages.UnionWith(additional.SpokenLanguages);
+            ev.UnderstoodLanguages.UnionWith(additional.UnderstoodLanguages);
+        }
+        // Orion-End
 
         RaiseLocalEvent(ent, ref ev);
 

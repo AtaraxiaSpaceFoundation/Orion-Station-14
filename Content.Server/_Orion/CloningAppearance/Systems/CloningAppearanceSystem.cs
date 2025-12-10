@@ -47,9 +47,7 @@ public sealed class CloningAppearanceSystem : EntitySystem
         }
 
         if (ev.Component.StartingGear != null)
-        {
             _outfitSystem.SetOutfit(mobUid, ev.Component.StartingGear);
-        }
 
         foreach (var nearbyEntity in _entityLookupSystem.GetEntitiesInRange(mobUid, 1f))
         {
@@ -73,12 +71,13 @@ public sealed class CloningAppearanceSystem : EntitySystem
     {
         if(TerminatingOrDeleted(ent))
             return;
+
         QueueLocalEvent(new CloningAppearanceEvent
         {
             Player = args.Player,
             Component = ent.Comp,
             StationUid = _stations.GetOwningStation(ent),
-            Coords = Transform(ent).Coordinates
+            Coords = Transform(ent).Coordinates,
         });
         Del(ent);
     }

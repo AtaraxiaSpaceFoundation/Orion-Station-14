@@ -54,6 +54,15 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
+  # Orion-Start
+  - !type:AddComponentSpecial
+    components:
+      - type: AdditionalLanguage
+        speaks:
+        - CorporateCodespeak
+        understands:
+        - CorporateCodespeak
+  # Orion-End
 
 - type: startingGear # Goobstation - Start - SolsticeOfTheWinter
   id: CentcomGear

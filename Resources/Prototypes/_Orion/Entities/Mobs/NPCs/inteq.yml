@@ -127,10 +127,11 @@
       - InteQ
   - type: LanguageKnowledge
     speaks:
-    - OldFastCodes # Uhhh
+    - Carptongue
     understands:
     - TauCetiBasic
     - OldFastCodes
+    - Carptongue
   - type: ActiveRadio
     channels:
     - InteQ

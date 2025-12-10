@@ -24,6 +24,15 @@
 #  - !type:AddComponentSpecial # Intentionally not command. I don't want them to ruin rev rounds.
 #    components:
 #    - type: CommandStaff
+  # Orion-Start
+  - !type:AddComponentSpecial
+    components:
+      - type: AdditionalLanguage
+        speaks:
+        - CorporateCodespeak
+        understands:
+        - CorporateCodespeak
+  # Orion-End
 
 - type: startingGear
   id: NanotrasenCareerTrainerGear

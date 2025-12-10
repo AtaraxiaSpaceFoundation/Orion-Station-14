@@ -129,15 +129,13 @@
     - type: NpcFactionMember
       factions:
         - InteQ
-    - type: LanguageKnowledge
-      speaks:
-      - TauCetiBasic
-      - OldFastCodes
-      understands:
-      - TauCetiBasic
-      - OldFastCodes
     - type: GlobalAntagonist
       antagonistPrototype: globalAntagonistInteQ
+    - type: AdditionalLanguage
+      speaks:
+      - OldFastCodes
+      understands:
+      - OldFastCodes
   - type: RandomHumanoidAppearance
     randomizeName: false
   - type: RandomMetadata
@@ -168,6 +166,11 @@
       - InteQVanguardLeaderNamesPrefix
       - NamesMilitaryLast
       nameFormat: name-format-standard
+    - type: AdditionalLanguage
+      speaks:
+      - OldFastCodes
+      understands:
+      - OldFastCodes
 
 - type: entity
   parent: SpawnPointInteQ

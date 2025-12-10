@@ -137,6 +137,13 @@
       - type: CommandStaff
       - type: Condemned
         soulOwnedNotDevil: true
+      # Orion-Start
+      - type: AdditionalLanguage
+        speaks:
+        - CorporateCodespeak
+        understands:
+        - CorporateCodespeak
+      # Orion-End
 
 - type: startingGear
   id: NanotrasenRepresentativeGear

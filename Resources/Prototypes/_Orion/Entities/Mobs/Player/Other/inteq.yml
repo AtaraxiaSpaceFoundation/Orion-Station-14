@@ -30,12 +30,10 @@
   - type: NpcFactionMember
     factions:
     - InteQ
-  - type: LanguageKnowledge
+  - type: AdditionalLanguage
     speaks:
-    - TauCetiBasic
     - OldFastCodes
     understands:
-    - TauCetiBasic
     - OldFastCodes
   - type: GlobalAntagonist # Orion
     antagonistPrototype: globalAntagonistInteQ

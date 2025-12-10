@@ -23,11 +23,11 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
-  - type: LanguageKnowledge
+  - type: AdditionalLanguage
     speaks:
-    - TauCetiBasic
+    - CorporateCodespeak
     understands:
-    - TauCetiBasic
+    - CorporateCodespeak
   - type: GhostTakeoverAvailable
   - type: MindShield
   - type: AntagImmune

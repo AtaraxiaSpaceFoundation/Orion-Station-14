@@ -1,0 +1,12 @@
+- type: trait
+  id: CorporateCodespeak
+  name: trait-language-corporate-codespeak-name
+  description: trait-language-corporate-codespeak-desc
+  category: LanguageTraits
+  cost: 1
+  components:
+  - type: LanguageSpeaker
+  languagesSpoken:
+    - CorporateCodespeak
+  languagesUnderstood:
+    - CorporateCodespeak
