@@ -18,11 +18,11 @@ public sealed partial class AdditionalLanguageComponent : Component
     ///     Languages to add to the entity's spoken languages.
     /// </summary>
     [DataField("speaks")]
-    public List<ProtoId<LanguagePrototype>> SpokenLanguages = new();
+    public HashSet<ProtoId<LanguagePrototype>> SpokenLanguages = new();
 
     /// <summary>
     ///     Languages to add to the entity's understood languages.
     /// </summary>
     [DataField("understands")]
-    public List<ProtoId<LanguagePrototype>> UnderstoodLanguages = new();
+    public HashSet<ProtoId<LanguagePrototype>> UnderstoodLanguages = new();
 }

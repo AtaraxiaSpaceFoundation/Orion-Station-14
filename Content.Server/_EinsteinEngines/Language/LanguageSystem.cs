@@ -27,6 +27,11 @@ public sealed class LanguageSystem : SharedLanguageSystem
 
         SubscribeLocalEvent<UniversalLanguageSpeakerComponent, MapInitEvent>((uid, _, _) => UpdateEntityLanguages(uid));
         SubscribeLocalEvent<UniversalLanguageSpeakerComponent, ComponentRemove>((uid, _, _) => UpdateEntityLanguages(uid));
+
+        // Orion-Start
+        SubscribeLocalEvent<AdditionalLanguageComponent, ComponentAdd>(OnAdditionalLanguageAdd);
+        SubscribeLocalEvent<AdditionalLanguageComponent, ComponentRemove>(OnAdditionalLanguageRemove);
+        // Orion-End
     }
 
     #region event handling
@@ -227,4 +232,26 @@ public sealed class LanguageSystem : SharedLanguageSystem
     }
 
     #endregion
+
+    // Orion-Start
+    #region Orion
+
+    private void OnAdditionalLanguageAdd(EntityUid uid, AdditionalLanguageComponent component, ComponentAdd args)
+    {
+        if (!HasComp<LanguageSpeakerComponent>(uid))
+            return;
+
+        UpdateEntityLanguages(uid);
+    }
+
+    private void OnAdditionalLanguageRemove(EntityUid uid, AdditionalLanguageComponent component, ComponentRemove args)
+    {
+        if (!HasComp<LanguageSpeakerComponent>(uid))
+            return;
+
+        UpdateEntityLanguages(uid);
+    }
+
+    #endregion
+    // Orion-End
 }
