@@ -15,6 +15,7 @@ chat-emote-name-trill = Дрожжать
 chat-emote-name-warble = Петь
 chat-emote-name-wurble = Журчать
 chat-emote-name-mars = Марс
+
 # Message
 chat-emote-msg-fart = пукает.
 chat-emote-msg-fart-inhale = вдыхает пердеж.
@@ -25,6 +26,8 @@ chat-emote-msg-warble = поёт!
 chat-emote-msg-wurble = журчит!
 chat-emote-msg-mars = марс.
 chat-emote-msg-bagawk = багаукс!
+
+
 # Misc
 emote-fart-not-loaded = Вы не готовы пердеть!
 emote-fart-already-loaded = Вы уже готовы пердеть!
@@ -33,5 +36,6 @@ emote-fart-out-of-farts = У вас закончился потенциал пе
 emote-fart-super-fart = Вы (буквально) пердите во всю задницу!
 emote-fart-inhale-notice = Вы вдыхаете воздух, чтобы зарядить пердеж.
 emote-fart-inhale-disarm-notice = Вы обезвреживаете свой пердеж.
+
 chat-emote-name-boop = Буп
 chat-emote-name-whirr = Жужжать

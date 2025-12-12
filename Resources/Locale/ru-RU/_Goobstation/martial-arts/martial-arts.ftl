@@ -14,11 +14,12 @@ cqc-success-learned = Вы изучили рукопашный бой.
 capoeira-success-learned = Вы освоили капоэйру. Учебник сгорает у вас в руках...
 dragon-success-learned = Вы освоили стиль Дракона (Кунг-фу). Учебник сгорает у вас в руках...
 ninjutsu-success-learned = Вы освоили ниндзюцу. Свиток сгорает у вас в руках...
-cqc-success-learned = Ты изучил рукопашный бой.
-cqc-manual-used = [color=white]{ CAPITALIZE(THE($manual)) } кажется уже используется.[/color]
+hellrip-success-learned = Вы освоили Адский разрыв. Свиток сгорает у вас в руках...
+
 carp-scroll-waiting = Путь в тысячу миль начинается с одного шага, а путь мудрости проходит медленно, урок за уроком.
-carp-scroll-advance = Ты сделал ещё один шаг к мастерству Пути Спящего Карпа.
-carp-scroll-complete = Теперь ты мастер Пути Спящего Карпа.
+carp-scroll-advance = Вы сделали ещё один шаг к мастерству Пути Спящего Карпа.
+carp-scroll-complete = Теперь вы мастер Пути Спящего Карпа.
+
 carp-saying-huah = ХУА!
 carv-vaying-hya = ХИЯ!
 carp-saying-choo = ЧУ!
@@ -28,6 +29,7 @@ carp-saying-huh = ХА!
 carp-saying-hiyoh = ХИЙО!
 carp-saying-strike = УДАР КАРПА!
 carp-saying-bite = КУСЬ КАРПА!
+
 carp-saying-banzai = БАНЗАЙ!!
 carp-saying-kiya = КИЯААА!
 carp-saying-omae = ОМАЕ ВА МОУ СИНДЭИРУ!
@@ -102,10 +104,12 @@ martial-arts-combo-Assassinate = умерщвлением
 martial-arts-combo-Ninjutsu-Takedown = захватом ниндзюцу
 capoeira-fail-low-velocity = Вы слишком медленны для этого приёма!
 ninjutsu-fail-loss-of-surprise = Ваши намерения раскрыты! Этот приём сейчас невозможен!
+
 alerts-dragon-power-name = Сила Дракона
 alerts-dragon-power-desc = Вы размышляете о прошлых и будущих битвах. Это озарение защитит вас от будущих атак.
+
 alerts-sneak-attack-name = Скрытая атака
 alerts-sneak-attack-desc = Для истинного синоби первая и последняя атака — одно и то же.
+
 alerts-loss-of-surprise-name = Потеря элемента неожиданности
-alerts-loss-of-surprise-desc = Ваши намерения раскрыты! Потребуется время, чтобы снова атаковать скрытно.
-martial-arts-action-receiver = { $name } ударил тебя { $move }
+alerts-loss-of-surprise-desc = Ваши намерения раскрыты! Потребуется время, чтобы снова скрытно атаковать.

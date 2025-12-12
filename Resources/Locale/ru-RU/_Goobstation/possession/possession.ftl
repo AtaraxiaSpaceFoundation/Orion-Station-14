@@ -12,5 +12,7 @@ possession-fail-target-immune = Необычный барьер блокируе
 possession-fail-target-polymorphed = Эта форма слишком нестабильна, чтобы ею обладать!
 possession-popup-others = Конечности { $target } искажаются в странной форме, глаза { $target } закатываются.
 possession-popup-self = Твою душу силой вытаскивают из тела!
+
 possession-end-popup = { $target } бьётся в конвульсиях и падает на землю без сознания.
-possessed-component-examined = У тебя осталось { $timeremaining } секунд в этом теле.
+
+possessed-component-examined = У вас осталось { $timeremaining } секунд в этом теле.

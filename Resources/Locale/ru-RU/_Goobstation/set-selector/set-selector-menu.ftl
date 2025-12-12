@@ -6,7 +6,9 @@ set-selector-window-description =
         [1] один набор
        *[other] { $maxCount } разных наборов
     } из списка.
+
 set-selector-window-selected = Выбрано наборов: ({ $selectedCount }/{ $maxCount })
+
 set-selector-window-approve-button = Подтвердить
 set-selector-button-select = Выбрать [  ]
 set-selector-button-deselect = Выбрать [X]
