@@ -15,16 +15,21 @@ ghost-role-information-nukie-reinforcement-name = Ядерный Операти�
 ghost-role-information-nukie-reinforcement-description = Ядерным оперативникам требуется подкрепление. Ты — агент подкрепления, который им поможет.
 ghost-role-information-nukie-reinforcement-rules = Ты — [color=red][bold]командный антагонист[/bold][/color], помогайте оперативникам, которые вас вызвали.
 ghost-role-information-SyndiRoach-name = СиндиМоль
-ghost-role-information-SyndiRoach-description = Ты — верный обученный питомец ядерных оперативников с макробомбой. Служи хозяину до смерти!
-ghost-role-information-SyndiRoach-rules = Ты — [color=red][bold]командный антагонист[/bold][/color] с агентом, который тебя вызвал.
-ghost-role-information-skibidi-toilet-name = Скибиди Туалет
-ghost-role-information-skibidi-toilet-description = Уничтожай людей своим скибиди-огайо риццем.
-ghost-role-information-skibidi-toilet-rules = Ты — [color=red][bold]враг[/bold][/color] с целью уничтожить как можно больше огайоан.
-ghost-role-information-Hecu-name = Оперативник ХЕКУ
-ghost-role-information-Hecu-description = Центральное командование поручило задание.
-ghost-role-information-Hecu-rules = Ты обязан выполнять приказы своего начальника, фактически являясь его [color=#6495ed][bold]личным агентом[/bold][/color].
-ghost-role-information-lootbug-name = ЛутБаг
-ghost-role-information-lootbug-description = Постарайся не стать жертвой тайдеров.
+ghost-role-information-SyndiRoach-description = Вы — верный, обученный питомец ядерных оперативников с макробомбой. Служи хозяину самой до смерти!
+ghost-role-information-SyndiRoach-rules = Вы — [color=red][bold]командный антагонист[/bold][/color] с агентом, который тебя вызвал.
+
+ghost-role-information-skibidi-toilet-name = дать пизды ГМу
+ghost-role-information-skibidi-toilet-description = ...
+ghost-role-information-skibidi-toilet-rules = ...
+
+ghost-role-information-Hecu-name = Оперативник HECU
+
+ghost-role-information-Hecu-description = Центральное Командование поручило задание.
+ghost-role-information-Hecu-rules = Вы обязаны выполнять приказы своего начальника, фактически являясь его [color=#6495ed][bold]личным агентом[/bold][/color].
+
+ghost-role-information-lootbug-name = Жук-сборщик
+ghost-role-information-lootbug-description = Постарайтесь не стать жертвой грейтайдов.
+
 ghost-role-information-homunculus-name = Гомункул
 ghost-role-information-homunculus-description = Подчиняйся создателю. Если его нет — действуй по своей воле.
 ghost-role-information-huborg-name = Урист МакБорг
