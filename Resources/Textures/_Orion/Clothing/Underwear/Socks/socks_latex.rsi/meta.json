@@ -8,7 +8,14 @@
   },
   "states": [
     {
+      "name": "icon"
+    },
+    {
       "name": "equipped-SOCKS"
+    },
+    {
+      "name": "equipped-SOCKS-reptilian",
+      "directions": 4
     }
   ]
 }
