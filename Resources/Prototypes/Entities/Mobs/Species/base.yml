@@ -277,10 +277,12 @@
     - map: [ "underwear" ]
     - map: [ "undershirt" ]
     # Orion-End
-    - map: ["jumpsuit"]
+    # Orion-Edit-Start: Moved under jumpsuit
     - map: ["enum.HumanoidVisualLayers.LFoot"]
     - map: ["enum.HumanoidVisualLayers.RFoot"]
+    # Orion-Edit-End
     - map: [ "socks" ] # Orion
+    - map: ["jumpsuit"]
     - map: ["enum.HumanoidVisualLayers.LHand"]
     - map: ["enum.HumanoidVisualLayers.RHand"]
     - map: ["enum.HumanoidVisualLayers.Face"] #Goob 120 - why did we have face on dummy but not basespecies

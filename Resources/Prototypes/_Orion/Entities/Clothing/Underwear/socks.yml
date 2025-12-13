@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksAssBlastUSAKnee
+  name: american flag knee-highs
+  description: A pair of American Flag knee-highs, perfect for showing off your patriotic side.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/assblastusa_knee.rsi
