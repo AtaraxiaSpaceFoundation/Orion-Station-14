@@ -1,0 +1,17 @@
+- type: entity
+  parent: ClothingWristsWatchBase
+  id: ClothingWristsClockworkSlab
+  name: steampunk watch
+  description: A stylish Steampunk watch made from thousands of tiny gears.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Wrists/clockwork_slab.rsi
+
+- type: entity
+  parent: ClothingWristsWatchBase
+  id: ClothingWristsRedworkSlab
+  name: red watch
+  description: A particularly beautiful red watch. They sit quite comfortably!
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Hands/Wrists/redwork_slab.rsi

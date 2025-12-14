@@ -207,15 +207,6 @@
 
 - type: entity
   parent: ClothingSocksBase
-  id: ClothingSocks
-  name: regular socks
-  description: Basic regular socks for everyday comfort and style.
-  components:
-  - type: Sprite
-    sprite: _Orion/Clothing/Underwear/Socks/socks.rsi
-
-- type: entity
-  parent: ClothingSocksBase
   id: ClothingSocksKnee
   name: knee socks
   description: Simple knee socks for a classic and versatile style.
@@ -261,39 +252,12 @@
 
 - type: entity
   parent: ClothingSocksBase
-  id: ClothingStockingsBlue
-  name: blue stockings
-  description: Elegant blue stockings adding a pop of color to your ensemble.
-  components:
-  - type: Sprite
-    sprite: _Orion/Clothing/Underwear/Socks/stockings_blue.rsi
-
-- type: entity
-  parent: ClothingSocksBase
-  id: ClothingStockingsCyan
-  name: cyan stockings
-  description: Vibrant cyan stockings for a fresh and eye-catching look.
-  components:
-  - type: Sprite
-    sprite: _Orion/Clothing/Underwear/Socks/stockings_cyan.rsi
-
-- type: entity
-  parent: ClothingSocksBase
   id: ClothingStockingsDarkPink
   name: dark pink stockings
   description: Sophisticated dark pink stockings perfect for a refined style.
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Underwear/Socks/stockings_dark_pink.rsi
-
-- type: entity
-  parent: ClothingSocksBase
-  id: ClothingStockingsFishnet
-  name: fishnet stockings
-  description: Stylish fishnet stockings adding an edgy touch to your outfit.
-  components:
-  - type: Sprite
-    sprite: _Orion/Clothing/Underwear/Socks/stockings_fishnet.rsi
 
 - type: entity
   parent: ClothingSocksBase
