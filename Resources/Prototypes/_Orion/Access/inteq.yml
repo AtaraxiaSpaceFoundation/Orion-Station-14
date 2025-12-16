@@ -5,3 +5,9 @@
 - type: accessLevel
   id: InteQVanguardLeader
   name: id-card-access-level-inteq-vanguard-leader
+
+- type: accessGroup
+  id: InteQ
+  tags:
+  - InteQVanguardLeader
+  - InteQVanguard
