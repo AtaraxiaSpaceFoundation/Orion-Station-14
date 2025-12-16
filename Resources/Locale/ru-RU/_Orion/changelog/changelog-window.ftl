@@ -1,1 +1,1 @@
-changelog-tab-title-Orionlog = Европа
+changelog-tab-title-Orionlog = Orion

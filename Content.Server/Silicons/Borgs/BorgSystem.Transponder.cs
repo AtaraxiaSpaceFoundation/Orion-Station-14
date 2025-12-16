@@ -15,7 +15,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Server._Imp.Drone;
 using Content.Shared._CorvaxNext.Silicons.Borgs.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
@@ -27,6 +26,7 @@ using Content.Shared.Robotics;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
+using Content.Shared._Imp.Drone;
 
 namespace Content.Server.Silicons.Borgs;
 

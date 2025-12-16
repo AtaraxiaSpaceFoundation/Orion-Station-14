@@ -161,6 +161,13 @@
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-captain
   canBeAntag: false
+  guides: # goobstation
+  # Orion-Edit-Start
+  - SpaceLaw
+  - SOP-Security-HeadOfSecurity
+  - SOP-Security
+  - SOP-Alerts
+  # Orion-Edit-End
   goobcoins: 45 #Goob content
   access:
   - HeadOfSecurity

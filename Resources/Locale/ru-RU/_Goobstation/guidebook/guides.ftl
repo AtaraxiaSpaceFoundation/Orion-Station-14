@@ -13,6 +13,9 @@ guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
 guide-entry-conditions = Условия раскрытия антагониста
+guide-entry-plumbing = Пламбирование
+guide-entry-alcoholic-drinks = Алкогольные напитки
+guide-entry-non-alcoholic-drinks = Безакогольные напитки
 # - Стандартные процедуры
 guide-entry-sop-demoting = Увольнение/понижение
 guide-entry-sop-evacuation = Ранняя эвакуация

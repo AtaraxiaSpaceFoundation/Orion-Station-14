@@ -149,6 +149,11 @@
   supervisors: job-supervisors-captain
   canBeAntag: false
   antagAdvantage: 75 # Goobstation
+#  guides: # goobstation | Orion-Edit: Removed because dont have this SOP
+#  - Science
+#  - Command
+#  - ResearchDirector SOP
+#  - Science SOP
   goobcoins: 40 #Goob content
   access:
   - Research
