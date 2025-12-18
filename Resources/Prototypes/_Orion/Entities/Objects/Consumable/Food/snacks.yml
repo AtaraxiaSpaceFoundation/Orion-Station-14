@@ -24,3 +24,38 @@
   - type: Sprite
     sprite: _Orion/Objects/Consumable/Food/inteq_cookies.rsi
     state: inteq_cookies_trash
+
+- type: entity
+  parent: FoodSnackBase
+  id: FoodSnackOrioCookies
+  name: Orio cookies
+  description: Orio is a cookie that many people love. It consists of two parts - a crispy base and a soft filling. Together they create a delicious combination that people all over the universe enjoy. Manufacturer Orion.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - oriocookies
+  - type: Sprite
+    sprite: _Orion/Objects/Consumable/Food/orio.rsi
+    state: orio
+  - type: Food
+    trash:
+    - FoodPacketOrioCookiesTrash
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: FoodPacketTrash
+  id: FoodPacketOrioCookiesTrash
+  name: Orio cookies box
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Consumable/Food/orio.rsi
+    state: orio_trash
+  - type: Item
+    sprite: Objects/Consumable/Food/snacks.rsi
+    inhandVisuals:
+      left:
+      - state: trash-inhand-left
+        color: #112b7b
+      right:
+      - state: trash-inhand-right
+        color: #112b7b
