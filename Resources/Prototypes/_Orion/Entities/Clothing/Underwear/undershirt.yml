@@ -1,6 +1,6 @@
 - type: entity
   parent: ClothingShirtBase
-  id: ClothingUndershirtBadydoll
+  id: ClothingUndershirtBabydoll
   name: babydoll shirt
   description: A babydoll shirt, perfect for feeling flirty and fabulous.
   components:
