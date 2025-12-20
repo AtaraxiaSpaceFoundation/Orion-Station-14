@@ -27,9 +27,9 @@
     availableModes:
     - FullAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
+      collection: GuardianShot
     soundEmpty:
-      path: /Audio/Weapons/Guns/Empty/empty.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/v51_empty.ogg # Orion edit
   - type: ItemSlots
     slots:
       gun_magazine:

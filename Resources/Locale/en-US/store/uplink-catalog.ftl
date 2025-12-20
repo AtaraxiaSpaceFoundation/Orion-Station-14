@@ -333,7 +333,7 @@ uplink-meds-bundle-name = Interdyne Medical Bundle
 uplink-meds-bundle-desc = An assortment of autoinjectors and premium medical equipment to cover for every possible situation. Contains an elite compact defibrillator that can be used as a weapon.
 
 uplink-ammo-bundle-name = Ammo Bundle
-uplink-ammo-bundle-desc = Reloading! Contains 4 magazines for the C-20r, 4 drums for the Bulldog, 3 magazines for the Estoc DMR, and 2 ammo boxes for the L6 SAW.
+uplink-ammo-bundle-desc = Reloading! Contains 4 magazines for the C-20r, 4 drums for the Bulldog and Zauer, 3 magazines for the Estoc DMR, and 2 ammo boxes for the L6 SAW.
 
 uplink-sniper-bundle-name = Sniper Bundle
 uplink-sniper-bundle-desc = An inconspicuous briefcase that contains a Hristov, 15 spare bullets and a convenient disguise.
@@ -341,8 +341,8 @@ uplink-sniper-bundle-desc = An inconspicuous briefcase that contains a Hristov, 
 uplink-c20r-bundle-name = C-20r Bundle
 uplink-c20r-bundle-desc = Old faithful: The classic C-20r Submachine Gun, bundled with three magazines.
 
-uplink-buldog-bundle-name = Bulldog Bundle
-uplink-buldog-bundle-desc = Lean and mean: Contains the popular Bulldog Shotgun, a 12g slug drum, and four 12g buckshot drums.
+uplink-buldog-bundle-name = Zauer Bundle
+uplink-buldog-bundle-desc = Lean and mean: Contains the popular Zauer Shotgun, a 12g slug drum, and four 12g buckshot drums.
 
 uplink-grenade-launcher-bundle-name = China-Lake Bundle
 uplink-grenade-launcher-bundle-desc = An old China-Lake grenade launcher bundled with 11 rounds of varying destructive capability.

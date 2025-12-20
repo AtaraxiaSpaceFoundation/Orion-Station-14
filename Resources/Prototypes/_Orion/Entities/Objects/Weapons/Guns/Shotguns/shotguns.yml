@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseMajorContraband, WeaponShotgunBulldog ]
+  parent: [ BaseMajorContraband, WeaponShotgunBulldogLegallyDistinct ]
   id: WeaponShotgunInteQBulldog
   name: Bulldog
   suffix: Shothun

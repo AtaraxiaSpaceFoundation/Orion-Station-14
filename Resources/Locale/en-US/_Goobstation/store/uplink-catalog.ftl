@@ -106,7 +106,7 @@ uplink-WSPR-desc = This rifle operates silently and uses 9.5mm caseless magnum h
 uplink-c20r-name = C-20r
 uplink-c20r-desc = Old faithful: The classic C-20r Submachine Gun.
 
-uplink-buldog-name = Bulldog
+uplink-buldog-name = Zauer
 uplink-buldog-desc = A magazine fed fullauto shotgun.
 
 uplink-l6-saw-name = L6 Saw
@@ -166,10 +166,10 @@ uplink-l6-box-name = Magazine Box (.30 rifle)
 uplink-l6-box-desc = Magazine box with 100 catridges. Compatible with the L6 SAW.
 
 uplink-shotgun-magazine-name = Shotgun Drum (12 gauge pellet)
-uplink-shotgun-magazine-desc = Shotgun drum with 8 pellet shells. Compatible with the Bulldog.
+uplink-shotgun-magazine-desc = Shotgun drum with 8 pellet shells. Compatible with the Bulldog and Zauer.
 
 uplink-shotgun-magazine-slug-name = Shotgun Drum (12 gauge slug)
-uplink-shotgun-magazine-slug-desc = Shotgun drum with 8 slug shells. Compatible with the Bulldog.
+uplink-shotgun-magazine-slug-desc = Shotgun drum with 8 slug shells. Compatible with the Bulldog and Zauer.
 
 uplink-high-caliber-magazine-name = Rifle Magazine (.50 anti-materiel)
 uplink-high-caliber-magazine-desc = Heavy rifle magazine with 15 cartridges. Compatible with the Burner.

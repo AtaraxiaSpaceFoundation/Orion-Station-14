@@ -134,7 +134,9 @@
       - SemiAuto
       - FullAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Pistols/colt.ogg # Orion edit
+    soundEmpty: # Orion edit
+      path: /Audio/_Backmen/Weapons/Guns64/Pistols/beretta_empty.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/pistol_cock.ogg
@@ -343,7 +345,7 @@
     availableModes:
     - SemiAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/mk58.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Pistols/vp70_shot.ogg # Orion edit
 
 - type: entity
   name: N1984
@@ -371,7 +373,7 @@
     availableModes:
     - SemiAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/mateba.ogg # Goob edit
+      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/thock.ogg # Orion edit
   - type: ItemSlots
     slots:
       gun_magazine:

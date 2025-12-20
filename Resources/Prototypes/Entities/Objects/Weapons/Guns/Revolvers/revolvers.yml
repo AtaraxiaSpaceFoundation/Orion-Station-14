@@ -183,13 +183,15 @@
   description: A modern revolver used by Nanotrasen’s elite, near mythical ‘Death Squad’ task force. Its unique trigger action and barrel placement enable a high fire rate with minimal muzzle flip. Many have looked down this barrel, but few have lived to tell of it. Loads 6 rounds of .45 magnum.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Revolver/mateba/big.rsi # Backmen sprites / Orion edit
+  - type: Item # Backmen sprites / Orion edit
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Revolver/mateba/tiny.rsi
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Revolver/mateba/tiny.rsi # Backmen sprites / Orion edit
   - type: Gun
-    fireRate: 4 # Goob edit
+    fireRate: 3 # Orion edit
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Revolvers/mateba.ogg # Orion edit
   - type: RevolverAmmoProvider
     whitelist:
       tags:
@@ -200,9 +202,9 @@
     chambers: [ True, True, True, True, True, True, True ] # Goobstation - Deathsquad revamp
     ammoSlots: [ null, null, null, null, null, null, null ] # Goobstation - Deathsquad revamp
     soundEject:
-      path: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Revolvers/revolver_unload.ogg # Orion edit
     soundInsert:
-      path: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Revolvers/revolver_load.ogg # Orion edit
 
 - type: entity
   parent: WeaponRevolverMateba

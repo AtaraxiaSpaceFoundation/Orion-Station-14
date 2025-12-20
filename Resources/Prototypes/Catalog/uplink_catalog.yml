@@ -350,7 +350,7 @@
   id: UplinkBulldog #goob
   name: uplink-buldog-name #goob
   description: uplink-buldog-desc #goob
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
+  icon: { sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/big.rsi, state: icon } # Oreon
   productEntity: WeaponShotgunBulldog
   cost:
     Telecrystal: 60 # goob

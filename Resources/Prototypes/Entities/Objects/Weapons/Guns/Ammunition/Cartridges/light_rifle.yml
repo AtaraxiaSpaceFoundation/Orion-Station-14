@@ -33,11 +33,13 @@
     proto: BulletLightRifle
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    scale: 0.8, 0.8
     layers:
-    - state: base
+    - state: 30combat # Backmen sprites / Orion edit
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
   - type: SpentAmmoVisuals
+    state: 30combat # Backmen sprites / Orion edit
 
 - type: entity
   id: CartridgeLightRifle
@@ -54,15 +56,17 @@
   parent: BaseCartridgeLightRifle
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Chalk ammunition is generally non-harmful, used for practice.
   components:
+  - type: SpentAmmoVisuals # Backmen sprites / Orion edit
+    state: 30training
   - type: CartridgeAmmo
     proto: BulletLightRiflePractice
   - type: Sprite
     layers:
-      - state: base
+      - state: 30training # Backmen sprites / Orion edit
         map: [ "enum.AmmoVisualLayers.Base" ]
-      - state: tip
-        map: [ "enum.AmmoVisualLayers.Tip" ]
-        color: "#dbdbdb"
+      #- state: tip   / Orion remove for backmen sprites
+        #map: [ "enum.AmmoVisualLayers.Tip" ]
+        #color: "#dbdbdb"
 
 - type: entity
   id: CartridgeLightRifleIncendiary
@@ -70,15 +74,17 @@
   parent: BaseCartridgeLightRifle
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Incendiary ammunition contains a self-igniting compound that sets the target ablaze.
   components:
+  - type: SpentAmmoVisuals # Backmen sprites / Orion edit
+    state: 30incendiary
   - type: CartridgeAmmo
     proto: BulletLightRifleIncendiary
   - type: Sprite
     layers:
-      - state: base
+      - state: 30incendiary # Backmen sprites / Orion edit
         map: [ "enum.AmmoVisualLayers.Base" ]
-      - state: tip
-        map: [ "enum.AmmoVisualLayers.Tip" ]
-        color: "#ff6e52"
+      #- state: tip~
+        #map: [ "enum.AmmoVisualLayers.Tip" ]
+        #color: "#ff6e52"
 
 - type: entity
   id: CartridgeLightRifleUranium
@@ -86,12 +92,14 @@
   parent: BaseCartridgeLightRifle
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Uranium ammunition replaces the lead core of the bullet with fissile material, irradiating the target from the inside.
   components:
+  - type: SpentAmmoVisuals # Backmen sprites / Orion edit
+    state: 30uranium
   - type: CartridgeAmmo
     proto: BulletLightRifleUranium
   - type: Sprite
     layers:
-      - state: base
+      - state: 30uranium # Backmen sprites / Orion edit
         map: [ "enum.AmmoVisualLayers.Base" ]
-      - state: tip
-        map: [ "enum.AmmoVisualLayers.Tip" ]
-        color: "#65fe08"
+      #- state: tip    / Orion remove for backmen sprites
+        #map: [ "enum.AmmoVisualLayers.Tip" ]
+        #color: "#65fe08"

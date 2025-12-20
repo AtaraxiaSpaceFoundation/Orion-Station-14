@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "All sprites by https://github.com/august-sun, inhands by TiniestShark (GitHub), stripes by SeamLesss (GitHub)",
+    "copyright": "Taken from TG https://github.com/tgstation/tgstation/blob/master/icons/obj/weapons/guns/ammo.dmi, inhands by TiniestShark (GitHub), stripes by SeamLesss (GitHub). Resprite bullets abd stripes by UmbiMax",
     "size": {
         "x": 32,
         "y": 32

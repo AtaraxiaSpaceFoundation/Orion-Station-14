@@ -1,0 +1,236 @@
+﻿- type: Tag
+  id: GlassesNearsight
+
+- type: Tag
+  id: SpaceCash
+
+- type: Tag
+  id: ArachneWeb
+
+- type: Tag
+  id: Oneirophage
+
+- type: Tag
+  id: ForensicBeltEquip
+
+- type: Tag
+  id: FleshBlocker
+
+- type: Tag
+  id: CoreSilver
+
+- type: Tag
+  id: NormalityCrystal
+
+- type: Tag
+  id: MothroachHide
+
+- type: Tag
+  id: BluespaceCrystal
+
+- type: Tag
+  id: MagazineUniversalCaselessRifle
+
+- type: Tag
+  id: RuinedDwelling
+
+- type: Tag
+  id: RuinedHospital
+
+- type: Tag
+  id: RuinedShop
+
+- type: Tag
+  id: Rapier
+
+- type: Tag
+  id: CartridgeRifleLight762
+
+- type: Tag
+  id: NoSpinOnThrow
+
+- type: Tag
+  id: MagazineRifleLightSniper
+
+- type: Tag
+  id: MagazineAntiMaterielRifle
+
+- type: Tag
+  id: MagazineRifleRocket20
+
+- type: Tag
+  id: CartridgeRifleRocket20
+
+- type: Tag
+  id: CartridgeRifle762
+
+- type: Tag
+  id: MagazineHeavyMachineGunDrum
+
+- type: Tag
+  id: MagazineLightMachineGunDrum
+
+- type: Tag
+  id: PowerpackFlame
+
+- type: Tag
+  id: TankFlamethrower
+
+- type: Tag
+  id: FireThrowerBall
+
+- type: Tag
+  id: PowerpackRifle
+
+- type: Tag
+  id: PowerpackEnergy
+
+- type: Tag
+  id: MagazineMagnumPistol
+
+- type: Tag
+  id: MagazinePistolBoxSubMachineGun
+
+- type: Tag
+  id: MagazinePistolDrumSubMachineGun
+
+- type: Tag
+  id: CartridgeRifle62
+
+- type: Tag
+  id: MagazineHeavyRifle62
+
+- type: Tag
+  id: MagazinePistolTopSubMachineGun
+
+- type: Tag
+  id: SwordSquadRO
+
+- type: Tag
+  id: CartridgeRifleHeavy
+
+- type: Tag
+  id: CartridgeAntitank
+
+- type: Tag
+  id: EngineeringAirlock
+
+- type: Tag
+  id: SecureSafe
+
+- type: Tag
+  id: NanoTrasen
+
+- type: Tag
+  id: MagazinePistolEGov
+
+- type: Tag
+  id: CartridgeMagnum345
+
+- type: Tag
+  id: BulletMagnum345
+
+- type: Tag
+  id: IgnoreMelee
+
+- type: Tag
+  id: CartridgeRifle762x39
+
+- type: Tag
+  id: CartridgeRifle762UEG
+
+- type: Tag
+  id: CartridgeRifle556UEG
+
+- type: Tag
+  id: CartridgeRifle50BMG
+
+- type: Tag
+  id: CartridgeRifle300win
+
+- type: Tag
+  id: CartridgePistol9x17
+
+- type: Tag
+  id: CartridgePistol45ACP
+
+- type: Tag
+  id: CartridgePistol57x28
+
+- type: Tag
+  id: CartridgePistol50AE
+
+- type: Tag
+  id: MagazinePistol9x17
+
+- type: Tag
+  id: MagazinePistol45ACP
+
+- type: Tag
+  id: MagazinePistol57x28
+
+- type: Tag
+  id: MagazinePistol50AE
+
+- type: Tag
+  id: MagazineSMG9x17
+
+- type: Tag
+  id: MagazineSMGVector45ACP
+
+- type: Tag
+  id: MagazineSMGScorpion9x17
+
+- type: Tag
+  id: MagazineSMG45ACP
+
+- type: Tag
+  id: MagazineSMG57x28
+
+- type: Tag
+  id: MagazineRifleLight762x39
+
+- type: Tag
+  id: MagazineRifle556UEG
+
+- type: Tag
+  id: MagazineRifleFamas556UEG
+
+- type: Tag
+  id: MagazineRifle762UEG
+
+- type: Tag
+  id: MagazineLightMachineGunRPD
+
+- type: Tag
+  id: GluonGun
+
+- type: Tag
+  id: Wakizashi
+
+- type: Tag
+  id: CartridgeRevolver38Special
+
+- type: Tag
+  id: CartridgeRevolver44Magnum
+
+- type: Tag
+  id: SpeedLoader38Special
+
+- type: Tag
+  id: SpeedLoader44Magnum
+
+- type: Tag
+  id: MagazinePulseRifle
+
+- type: Tag
+  id: PulseBullet
+
+- type: Tag
+  id: MagazinePulseShotgun
+
+- type: Tag
+  id: ShellShotgunPulse
+
+- type: Tag
+  id: MagazinePulseSubMachinePistol

@@ -93,6 +93,8 @@
     - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/smg.ogg
+    soundEmpty: # Orion edit
+      path: /Audio/_Backmen/Weapons/Guns64/Rifles/m41a_empty.ogg
     defaultDirection: 1, 0
   - type: ChamberMagazineAmmoProvider
     soundRack:
@@ -247,7 +249,7 @@
       fireRate: 6
       burstFireRate: 18
       soundGunshot:
-        path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+        path: /Audio/_Backmen/Weapons/Guns64/SMGs/mp7.ogg # Orion edit
       selectedMode: Burst
       availableModes:
       - Burst

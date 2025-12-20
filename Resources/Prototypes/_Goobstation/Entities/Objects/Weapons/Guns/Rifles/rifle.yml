@@ -134,9 +134,16 @@
     burstFireRate: 12
     burstCooldown: 0.8
     shotsPerBurst: 4
-    fireRate: 6.5
+    minAngle: 15 # Orion start
+    maxAngle: 58
+    angleIncrease: 3
+    angleDecay: 20
+    fireRate: 6
     soundGunshot:
-      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/thock.ogg
+      path: /Audio/_Backmen/Weapons/Guns64/Rifles/ak47.ogg
+  - type: GunWieldBonus
+    minAngle: -22
+    maxAngle: -44 # Orion end
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg

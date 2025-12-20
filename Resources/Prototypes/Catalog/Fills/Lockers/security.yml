@@ -421,8 +421,9 @@
   table: !type:AllSelector
     children:
     - id: WeaponLaserCarbine
-      amount: 3
+    - id: WeaponEarthGovLaserSniper # Orion edit / Backmen guns
+    - id: WeaponEarthGovLaserCarbine # Orion edit / Backmen guns
+    - id: WeaponEarthGovXRay # Orion edit / Backmen guns
     - id: WeaponTemperatureGun # Goobstation
       amount: 2
     - id: WeaponEnergyIonRifle # Goobstation
-      amount: 2
