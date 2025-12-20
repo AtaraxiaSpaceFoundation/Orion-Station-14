@@ -30,6 +30,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Goobstation.Shared.Clothing.Components;
 
 namespace Content.Server._White.Xenomorphs.FaceHugger;
 
@@ -217,7 +218,7 @@ public sealed class FaceHuggerSystem : EntitySystem
             return false;
 
         // Check for any blocking masks or equipment
-        if (CheckAndHandleMask(target, out var blocker))
+        if (CheckAndHandleMaskOrHemet(target, out var blocker))
         {
             // If blocked by a breathable mask, deal damage and schedule a retry
             if (blocker.HasValue && TryComp<BreathToolComponent>(blocker, out _))
@@ -353,10 +354,21 @@ public sealed class FaceHuggerSystem : EntitySystem
     /// Returns true if there's a blocker, false otherwise.
     /// Goobstation
     /// </summary>
-    private bool CheckAndHandleMask(EntityUid target, out EntityUid? blocker)
+    private bool CheckAndHandleMaskOrHemet(EntityUid target, out EntityUid? blocker)
     {
         blocker = null;
-
+        if (_inventory.TryGetSlotEntity(target, "head", out var headUid))
+        {
+            // If the headgear has an ingestion blocker component, it's a blocker
+            var sealable = new SealableClothingComponent();
+            if ((HasComp<FaceHuggerBlockerComponent>(headUid) && !TryComp<SealableClothingComponent>(headUid, out sealable)) || (HasComp<FaceHuggerBlockerComponent>(headUid) && sealable.IsSealed))
+            {
+                blocker = headUid;
+                return true;
+            }
+            // If it's just regular headgear, remove it
+            _inventory.TryUnequip(target, "head", true);
+        }
         // Check for breathable mask
         if (_inventory.TryGetSlotEntity(target, "mask", out var maskUid))
         {

@@ -76,6 +76,12 @@
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
   canBeAntag: false
+  guides: # goobstation
+  # Orion-Edit-Start
+  - SpaceLaw
+  - SOP-Security-Detective
+  - SOP-Security
+  # Orion-Edit-End
   goobcoins: 30 #Goob content
   access:
   - Security

@@ -5,18 +5,17 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 marking-MobIPCHeadDefault = Стандартный операционный монитор
-marking-MobIPCChestDefault = Стандартный каркас борга
-marking-MobIPCChestFemaleDefault = Стандартный каркас борга
-marking-MobIPCTorsoDefault = Стандартная роботическая оболочка
-marking-MobIPCTorsoFemaleDefault = Стандартная роботическая оболочка
-marking-MobIPCLArmDefault = Левая роботическая рука (стандарт)
-marking-MobIPCLHandDefault = Левая роботическая кисть (стандарт)
-marking-MobIPCLLegDefault = Левая роботическая нога (стандарт)
-marking-MobIPCLFootDefault = Левая роботическая стопа (стандарт)
-marking-MobIPCRArmDefault = Правая роботическая рука (стандарт)
-marking-MobIPCRHandDefault = Правая роботическая кисть (стандарт)
-marking-MobIPCRLegDefault = Правая роботическая нога (стандарт)
-marking-MobIPCRFootDefault = Правая роботическая стопа (стандарт)
+# Goob - Added 'Masculine' and 'Feminine' to differentiate the options
+marking-MobIPCChestDefault = Стандартная роботическая оболочка (Мужская)
+marking-MobIPCChestFemaleDefault = Стандартная роботическая оболочка (Женская)
+marking-MobIPCLArmDefault = Левая роботическая рука (Стандарт)
+marking-MobIPCLHandDefault = Левая роботическая кисть (Стандарт)
+marking-MobIPCLLegDefault = Левая роботическая нога (Стандарт)
+marking-MobIPCLFootDefault = Левая роботическая стопа (Стандарт)
+marking-MobIPCRArmDefault = Правая роботическая рука (Стандарт)
+marking-MobIPCRHandDefault = Правая роботическая кисть (Стандарт)
+marking-MobIPCRLegDefault = Правая роботическая нога (Стандарт)
+marking-MobIPCRFootDefault = Правая роботическая стопа (Стандарт)
 marking-CyberLimbsMarkingBishopHead = Операционный монитор от Епископ Кибернетики
 marking-CyberLimbsMarkingBishopHeadAlt = Голова от Епископ Кибернетики
 marking-CyberLimbsMarkingBishopHeadAlt1 = Альтернативная голова от Епископ Кибернетики

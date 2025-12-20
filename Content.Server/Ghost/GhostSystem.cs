@@ -105,6 +105,7 @@ using Content.Shared._Orion.Antag;
 using Content.Shared._Orion.Antag.Components;
 using Content.Shared._Orion.CustomGhost;
 using Content.Shared._Shitmed.Body;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared._White.Xenomorphs.Infection;
 using Content.Shared.Actions;
 using Content.Shared.Body.Components;
@@ -744,17 +745,17 @@ namespace Content.Server.Ghost
             // However, that should rarely happen.
 /* // Orion-Edit: Removed
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
+                _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(mind.Comp.CharacterName)); // Goob Sanitize Text
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
-                _metaData.SetEntityName(ghost, session.Name);
+                _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(session.Name)); // Goob Sanitize Text
 */
             // Orion-Start
             if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
             {
                 if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                    _metaData.SetEntityName(ghost, mind.Comp.CharacterName);
+                    _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(mind.Comp.CharacterName)); // Goob Sanitize Text
                 else
-                    _metaData.SetEntityName(ghost, session.Name);
+                    _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(session.Name)); // Goob Sanitize Text
             }
             // Orion-End
 
@@ -868,15 +869,15 @@ namespace Content.Server.Ghost
                         var damageType = HasComp<SiliconComponent>(playerEntity)
                             ? IonDamageType
                             : AsphyxiationDamageType;
-                        DamageSpecifier damage = new(_prototypeManager.Index<DamageTypePrototype>(damageType), dealtDamage);
+                        DamageSpecifier damage = new(_prototypeManager.Index(damageType), dealtDamage);
 
                         if (TryComp<BodyComponent>(playerEntity, out var body)
                             && body.BodyType == BodyType.Complex
-                            && body.RootContainer.ContainedEntities.FirstOrNull() is { } root)
+                            && body.RootContainer.ContainedEntities.FirstOrNull() is not null)
                             _damageable.TryChangeDamage(playerEntity,
                                 damage,
                                 true,
-                                targetPart: _bodySystem.GetTargetBodyPart(root));
+                                targetPart: TargetBodyPart.All);
                         else
                             _damageable.TryChangeDamage(playerEntity, damage, true);
                         // Shitmed Change End

@@ -145,6 +145,11 @@
   supervisors: job-supervisors-captain
   canBeAntag: false
   antagAdvantage: 75 # Goobstation
+#  guides: # goobstation | Orion-Edit: Removed because dont have this SOP
+#  - Cargo
+#  - Quartermaster SOP
+#  - Cargo SOP
+#  - Command
   goobcoins: 40 #Goob content
   access:
   - Cargo

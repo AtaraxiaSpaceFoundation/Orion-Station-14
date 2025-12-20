@@ -15,14 +15,6 @@
 - type: accessGroup
   id: AllAccess
   tags:
-  # Orion-Start-Access
-  - InteQVanguardLeader
-  - InteQVanguard
-  - UnitedEarthGovernmentGeneral
-  - UnitedEarthGovernmentMedic
-  - UnitedEarthGovernmentSpecialist
-  - UnitedEarthGovernmentCommand
-  # Orion-End-Access
   - EmergencyShuttleRepealAll
   - Captain
   - HeadOfPersonnel

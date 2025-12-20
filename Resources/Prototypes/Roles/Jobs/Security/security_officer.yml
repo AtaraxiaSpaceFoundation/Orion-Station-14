@@ -96,6 +96,12 @@
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
   canBeAntag: false
+  guides: # goobstation
+  # Orion-Edit-Start
+  - SpaceLaw
+  - SOP-Security-Officer
+  - SOP-Security
+  # Orion-Edit-End
   goobcoins: 30 #Goob content
   access:
   - Security

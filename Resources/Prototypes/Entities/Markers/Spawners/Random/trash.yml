@@ -40,7 +40,10 @@
       - id: FoodSnackLollypopTrash # Goobstation - Lollypops
       - id: FoodPacketLollypopTrash # Goobstation - Lollypops
       - id: BrokenBottle
-      - id: FoodPacketInteQCookiesTrash # Orion
+      # Orion-Start
+      - id: FoodPacketInteQCookiesTrash
+      - id: FoodPacketOrioCookiesTrash
+      # Orion-End
     - !type:GroupSelector
       weight: 5
       children:

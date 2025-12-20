@@ -88,6 +88,10 @@
   startingGear: ChefGear
   icon: "JobIconChef"
   supervisors: job-supervisors-hop
+  guides: # goobstation
+#  - Chef # Orion-Edit: Removed because dont have this SOP
+  - FoodRecipes
+  - CQC
   goobcoins: 15 #Goob content
   access:
   - Service

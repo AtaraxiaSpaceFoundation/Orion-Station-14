@@ -65,12 +65,14 @@ using Content.Shared.EntityEffects;
 using Content.Shared.Localizations;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using Content.Shared.Heretic;
 
 namespace Content.Server.EntityEffects.Effects
 {
     /// <summary>
     /// Default metabolism used for medicine reagents.
     /// </summary>
+
     [UsedImplicitly]
     public sealed partial class HealthChange : EntityEffect
     {
@@ -209,8 +211,27 @@ namespace Content.Server.EntityEffects.Effects
                 }
             }
 
-            // Goobstation - Applies (airloss/poison) damage to vital parts of the entity.
-            ApplyEtcDamageToVitals(damageSpec, scale, args);
+            // Goobstation start
+            var ev = new ImmuneToPoisonDamageEvent();
+            args.EntityManager.EventBus.RaiseLocalEvent(args.TargetEntity, ref ev);
+            if (ev.Immune)
+            {
+                damageSpec = DamageSpecifier.GetNegative(damageSpec);
+                if (damageSpec.GetTotal() == FixedPoint2.Zero)
+                    return;
+            }
+            // Goobstation end
+
+            args.EntityManager.System<DamageableSystem>()
+                .TryChangeDamage(
+                    args.TargetEntity,
+                    damageSpec * scale,
+                    IgnoreResistances,
+                    interruptsDoAfters: false,
+                    targetPart: UseTargeting ? TargetPart : null,
+                    ignoreBlockers: IgnoreBlockers,
+                    splitDamage: SplitDamage); // Shitmed Change
+
         }
     }
 }

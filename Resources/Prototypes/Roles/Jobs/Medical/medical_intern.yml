@@ -71,6 +71,10 @@
   startingGear: MedicalInternGear
   icon: "JobIconMedicalIntern"
   supervisors: job-supervisors-medicine
+  guides: # goobstation
+#  - MedicalDoctor # Orion-Edit: Removed because dont have this SOP
+  - Cloning
+  - Medicine
   goobcoins: 20 #Goob content
   access:
   - Medical

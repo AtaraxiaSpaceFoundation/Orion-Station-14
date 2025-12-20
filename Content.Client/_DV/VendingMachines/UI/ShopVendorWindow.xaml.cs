@@ -140,7 +140,8 @@ public sealed partial class ShopVendorWindow : FancyWindow
         {
             var listing = listings[i];
             var proto = _proto.Index(listing.Id);
-            var text = proto.Name;
+            var text = listing.OverrideName != null ? Loc.GetString(listing.OverrideName) : proto.Name;
+
             if (proto.TryGetComponent<StackComponent>(out var stack, _factory) && stack.Count > 1)
             {
                 text += " ";

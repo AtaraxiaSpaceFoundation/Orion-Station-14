@@ -1,0 +1,4 @@
+- type: flavor
+  id: oriocookies
+  flavorType: Complex
+  description: flavor-complex-orio-cookies

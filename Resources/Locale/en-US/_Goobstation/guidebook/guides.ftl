@@ -16,6 +16,35 @@ guide-entry-automation = Automation
 guide-entry-conditions = Antag Revealing Conditions
 guide-entry-plumbing = Plumbing
 
+guide-entry-alcoholic-drinks = Alcoholic Drinks
+guide-entry-non-alcoholic-drinks = Non-Alcoholic Drinks
+
+# Goob SOP
+# - Main Directories
+# guide-entry-sop = Standard Operating Procedure
+# guide-entry-sop-alert-levels = Alert Levels
+# guide-entry-sop-emergencies = Emergencies
+# guide-entry-sop-jobs = Job Standards
+# guide-entry-sop-legal = Legal Procedures
+# guide-entry-sop-standards = Command Procedures
+# - Sub/Nested Directories
+# guide-entry-sop-cargo = Cargo
+# guide-entry-sop-command = Command
+# guide-entry-sop-engineering = Engineering
+# guide-entry-sop-medical = Medical
+# guide-entry-sop-science = Science
+# guide-entry-sop-security = Security
+# guide-entry-sop-service = Service
+# - Alert Levels
+# guide-entry-sop-greenalert = Green Alert
+# guide-entry-sop-bluealert = Blue Alert
+# guide-entry-sop-yellowalert = Yellow Alert
+# guide-entry-sop-redalert = Red Alert
+# guide-entry-sop-deltaalert = Delta Alert
+# guide-entry-sop-epsilonalert = Epsilon Alert
+# guide-entry-sop-gammaalert = Gamma Alert
+# guide-entry-sop-violetalert = Violet Alert
+# guide-entry-sop-omicronalert = Omicron Alert
 # - Standard Procedures
 guide-entry-sop-demoting = Dismissal/Demoting
 guide-entry-sop-evacuation = Early Evacuation

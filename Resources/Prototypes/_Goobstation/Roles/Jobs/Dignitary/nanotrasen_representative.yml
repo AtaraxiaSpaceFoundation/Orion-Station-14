@@ -111,6 +111,12 @@
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  guides:
+  # Orion-Edit-Start
+  - SpaceLaw
+  - SOP
+  - SOP-Alerts
+  # Orion-Edit-End
   goobcoins: 40
   access:
   - Security

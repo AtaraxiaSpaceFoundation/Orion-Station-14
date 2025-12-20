@@ -152,6 +152,16 @@
     - !type:DepartmentTimeRequirement
       department: Command
       time: 9000 # 2.5 hours
+    - !type:SpeciesRequirement # Goob - None Felinid
+      inverted: true
+      species:
+      - Felinid
+#  guides: # goobstation | Orion-Edit: Removed because dont have this SOP
+#  - Command
+#  - Succession
+#  - StandardProcedures SOP
+#  - HeadOfPersonnel SOP
+#  - Writing
   goobcoins: 40 #Goob content
   weight: 20
   startingGear: HoPGear
@@ -215,4 +225,3 @@
     mask: ClothingMaskNeckGaiterRed
     neck: ClothingNeckCloakHop
     outerClothing: ClothingOuterWinterHoP
-

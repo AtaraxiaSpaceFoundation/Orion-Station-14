@@ -28,7 +28,7 @@ namespace Content.Server.Mobs;
 /// <summary>
 ///     Handles performing crit-specific actions.
 /// </summary>
-public sealed class CritMobActionsSystem : EntitySystem
+public sealed partial class CritMobActionsSystem : EntitySystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DeathgaspSystem _deathgasp = default!;
@@ -52,6 +52,12 @@ public sealed class CritMobActionsSystem : EntitySystem
     {
         if (!TryComp<ActorComponent>(uid, out var actor) || !_mobState.IsCritical(uid))
             return;
+
+        // Goobstation
+        PreventLarvaHostDeath(uid, actor, args);
+        if (args.Handled)
+            return;
+        // END
 
         _host.ExecuteCommand(actor.PlayerSession, "ghost");
         args.Handled = true;

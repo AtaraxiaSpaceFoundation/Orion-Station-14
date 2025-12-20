@@ -110,6 +110,12 @@
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
   canBeAntag: false
+  guides: # goobstation
+  # Orion-Edit-Start
+  - SpaceLaw
+  - SOP-Security-Cadet
+  - SOP-Security
+  # Orion-Edit-End
   goobcoins: 30 #Goob content
   access:
   - Security

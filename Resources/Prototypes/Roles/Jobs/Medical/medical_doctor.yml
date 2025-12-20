@@ -84,6 +84,10 @@
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo
+  guides: # goobstation
+#  - MedicalDoctor # Orion-Edit: Removed because dont have this SOP
+#  - Medical # Orion-Edit: Removed because dont have this SOP
+  - Medicine
   goobcoins: 20 #Goob content
   access:
   - Medical

@@ -149,6 +149,12 @@
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain
   canBeAntag: false
+  guides: # goobstation
+#  - Medical # Orion-Edit: Removed because dont have this SOP
+#  - ChiefMedicalOfficer SOP # Orion-Edit: Removed because dont have this SOP
+#  - Medical SOP # Orion-Edit: Removed because dont have this SOP
+#  - Command # Orion-Edit: Removed because dont have this SOP
+  - Chemicals
   goobcoins: 40 #Goob content
   weight: 10 #Goob Edit
   access:

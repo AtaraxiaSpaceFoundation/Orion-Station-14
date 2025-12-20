@@ -149,6 +149,12 @@
   supervisors: job-supervisors-captain
   canBeAntag: false
   antagAdvantage: 75 # Goobstation
+#  guides: # goobstation | Orion-Edit: Removed because dont have this SOP
+#  - Engineering
+#  - ChiefEngineer SOP
+#  - Engineering SOP
+#  - Command
+#  - Emergencies SOP
   goobcoins: 40 #Goob content
   access:
   - Maintenance

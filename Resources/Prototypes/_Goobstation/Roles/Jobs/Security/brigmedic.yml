@@ -19,6 +19,11 @@
   icon: "JobIconBrigmedic"
   supervisors: job-supervisors-hos
   canBeAntag: false
+  guides:
+  # Orion-Edit-Start
+  - SOP-Security-Brigmedic
+  # Orion-Edit-End
+  - Medicine
   goobcoins: 35
   access: # EE parity, make corpsman able function.
   - Security
