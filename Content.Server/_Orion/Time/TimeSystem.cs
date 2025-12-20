@@ -32,19 +32,19 @@ public sealed class TimeSystem : EntitySystem
         _cfg.OnValueChanged(CCVars.StationTimeStaticYear, v => _staticYear = v, true);
 
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
-        SubscribeLocalEvent<StationTimeComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<StationTimeManagerComponent, MapInitEvent>(OnMapInit);
     }
 
     private void OnRoundStart(RoundStartingEvent ev)
     {
         _stationTime = TimeSpan.FromHours(_robustRandom.NextFloat(0, 24));
         var stationTimeEntity = Spawn();
-        var comp = AddComp<StationTimeComponent>(stationTimeEntity);
+        var comp = AddComp<StationTimeManagerComponent>(stationTimeEntity);
 
         UpdateStationTimeComponent(comp);
     }
 
-    private void OnMapInit(Entity<StationTimeComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<StationTimeManagerComponent> ent, ref MapInitEvent args)
     {
         _pvsOverride.AddGlobalOverride(ent);
         UpdateStationTimeComponent(ent.Comp);
@@ -63,7 +63,7 @@ public sealed class TimeSystem : EntitySystem
         else if (_stationTime < TimeSpan.Zero)
             _stationTime = _stationTime.Add(TimeSpan.FromDays(1));
 
-        var query = EntityQueryEnumerator<StationTimeComponent>();
+        var query = EntityQueryEnumerator<StationTimeManagerComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
             UpdateStationTimeComponent(comp);
@@ -71,7 +71,7 @@ public sealed class TimeSystem : EntitySystem
         }
     }
 
-    private void UpdateStationTimeComponent(StationTimeComponent comp)
+    private void UpdateStationTimeComponent(StationTimeManagerComponent comp)
     {
         comp.StationTime = _stationTime;
         comp.StationDate = GetStationDate();

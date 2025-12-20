@@ -10,7 +10,7 @@ namespace Content.Shared._Orion.Time.Components;
 ///     Store station time. Automatically replicated to clients.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class StationTimeComponent : Component
+public sealed partial class StationTimeManagerComponent : Component
 {
     [DataField, AutoNetworkedField]
     public TimeSpan StationTime;

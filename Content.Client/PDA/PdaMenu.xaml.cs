@@ -408,7 +408,7 @@ namespace Content.Client.PDA
         {
             time = TimeSpan.Zero;
 
-            var query = _entityManager.EntityQueryEnumerator<StationTimeComponent>();
+            var query = _entityManager.EntityQueryEnumerator<StationTimeManagerComponent>();
             while (query.MoveNext(out _, out var comp))
             {
                 time = comp.StationTime;
@@ -422,7 +422,7 @@ namespace Content.Client.PDA
         {
             date = DateTime.UtcNow;
 
-            var query = _entityManager.EntityQueryEnumerator<StationTimeComponent>();
+            var query = _entityManager.EntityQueryEnumerator<StationTimeManagerComponent>();
             while (query.MoveNext(out _, out var comp))
             {
                 date = comp.StationDate;
