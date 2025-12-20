@@ -42,7 +42,6 @@ public sealed class TimeSystem : EntitySystem
         var comp = AddComp<StationTimeComponent>(stationTimeEntity);
 
         UpdateStationTimeComponent(comp);
-        Dirty(stationTimeEntity, comp);
     }
 
     private void OnMapInit(Entity<StationTimeComponent> ent, ref MapInitEvent args)

@@ -401,20 +401,6 @@ namespace Content.Client.PDA
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString(@"hh\:mm\:ss"))));
-
-            // Orion-Start
-            if (TryGetStationTime(out var time))
-            {
-                StationRealTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-real-time",
-                    ("time", time.ToString(@"hh\:mm"))));
-            }
-
-            if (TryGetStationDate(out var date))
-            {
-                StationDateLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-date",
-                    ("date", date.ToString("dd.MM.yyyy"))));
-            }
-            // Orion-End
         }
 
         // Orion-Start
