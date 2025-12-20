@@ -785,12 +785,13 @@ public abstract class SharedStrippableSystem : EntitySystem
     }
 
     // Orion-Start
-    public bool[] IsInventoryIgnored(EntityUid? viewer) // [shouldShowBlocked, shouldShowHided]
+    public (bool IgnoreBlock, bool ShowAllItems) IsInventoryIgnored(EntityUid? viewer)
     {
         var ignoreInventoryBlockComponent = CompOrNull<IgnoreInventoryBlockComponent>(viewer);
-        if (ignoreInventoryBlockComponent == null) { return [false, false]; }
+        if (ignoreInventoryBlockComponent == null)
+            return (false, false);
 
-        return [ignoreInventoryBlockComponent.IgnoreBlock, ignoreInventoryBlockComponent.ShowAllItems];
+        return (ignoreInventoryBlockComponent.IgnoreBlock, ignoreInventoryBlockComponent.ShowAllItems);
     }
     // Orion-End
 }

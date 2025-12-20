@@ -97,7 +97,6 @@
   # Orion-Start
   - type: SlotBlock
     blockList: [ UNDERSHIRT, UNDERWEAR ]
-    hideList: [ UNDERSHIRT, UNDERWEAR ]
   # Orion-End
   - type: SuitSensor
   - type: DeviceNetwork
@@ -122,7 +121,7 @@
   # Orion-Start
   - type: SlotBlock
     blockList: [ UNDERSHIRT ]
-    hideList: [ UNDERSHIRT, UNDERWEAR ]
+    hideList: [ UNDERWEAR ]
   # Orion-End
   - type: Tag
     tags:

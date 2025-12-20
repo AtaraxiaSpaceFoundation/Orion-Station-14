@@ -1,8 +1,11 @@
+using Content.Server.GameTicking.Events;
+using Content.Server.Station.Events;
+using Content.Shared._Orion.Time.Components;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.Random;
 
-namespace Content.Shared._Orion.Time;
+namespace Content.Server._Orion.Time;
 
 //
 // License-Identifier: AGPL-3.0-or-later
@@ -17,7 +20,7 @@ public sealed class TimeSystem : EntitySystem
     private int _staticYear;
     private bool _useStaticYear;
 
-    private TimeSpan _stationTime; // Handle time
+    private TimeSpan _stationTime;
     private float _accumulatedSeconds;
 
     public override void Initialize()
@@ -28,10 +31,22 @@ public sealed class TimeSystem : EntitySystem
         _cfg.OnValueChanged(CCVars.StationTimeUseStaticYear, v => _useStaticYear = v, true);
         _cfg.OnValueChanged(CCVars.StationTimeStaticYear, v => _staticYear = v, true);
 
-        _stationTime = TimeSpan.FromHours(_robustRandom.NextFloat(0, 24));
+        SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
+        SubscribeLocalEvent<MapInitEvent>(OnMapInit);
     }
 
-    // Accumulate time faster
+    private void OnRoundStart(RoundStartingEvent ev)
+    {
+        var manager = Spawn();
+        AddComp<StationTimeComponent>(manager);
+    }
+
+    private void OnMapInit(Entity<StationTimeComponent> ent, ref MapInitEvent args)
+    {
+        _stationTime = TimeSpan.FromHours(_robustRandom.NextFloat(0, 24));
+        UpdateStationTimeComponent(manager);
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -47,9 +62,22 @@ public sealed class TimeSystem : EntitySystem
             _stationTime = _stationTime.Add(TimeSpan.FromDays(1));
 
         _accumulatedSeconds -= (float)delta.TotalSeconds;
+
+        var query = EntityQueryEnumerator<StationTimeComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            UpdateStationTimeComponent(comp);
+            Dirty(uid, comp);
+        }
     }
 
-    public DateTime GetStationDate()
+    private void UpdateStationTimeComponent(StationTimeComponent comp)
+    {
+        comp.StationTime = _stationTime;
+        comp.StationDate = GetStationDate();
+    }
+
+    private DateTime GetCurrentStationDate()
     {
         var today = DateTime.UtcNow.Date;
 
@@ -72,5 +100,10 @@ public sealed class TimeSystem : EntitySystem
     public TimeSpan GetStationTime()
     {
         return _stationTime;
+    }
+
+    public DateTime GetStationDate()
+    {
+        return GetCurrentStationDate();
     }
 }

@@ -1,7 +1,7 @@
 - type: entity
   categories: [ HideSpawnMenu ]
   id: BlockedSlotEntity
-  name: You don`t know if there anything there.
+  name: You don't know if there's anything there.
   components:
   - type: Sprite
     texture: Interface/VerbIcons/information.svg.192dpi.png

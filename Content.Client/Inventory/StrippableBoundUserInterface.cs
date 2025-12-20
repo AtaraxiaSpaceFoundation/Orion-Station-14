@@ -145,6 +145,7 @@ namespace Content.Client.Inventory
                 _strippingMenu.OnDirty -= UpdateMenu;
 
             EntMan.DeleteEntity(_virtualHiddenEntity);
+            EntMan.DeleteEntity(_virtualBlockedEntity); // Orion
             base.Dispose(disposing);
         }
 
@@ -309,30 +310,16 @@ namespace Content.Client.Inventory
             button.Pressed += SlotPressed;
 
             // Orion-Start
-            var inventoryIgnored = _strippable.IsInventoryIgnored(_player.LocalEntity); // [shouldShowBlocked, shouldShowHided]
-            if (!inventoryIgnored[0])
+            var (ignoreBlock, showAllItems) = _strippable.IsInventoryIgnored(_player.LocalEntity);
+            if (!ignoreBlock && inv.BlockList.Contains(slotDef.SlotFlags))
             {
-                foreach (var blockedSlot in inv.BlockList)
-                {
-                    if (blockedSlot != slotDef.SlotFlags)
-                        continue;
-
-                    entity = _virtualBlockedEntity;
-                    button.Blocked = true;
-                    break;
-                }
+                entity = _virtualBlockedEntity;
+                button.Blocked = true;
             }
 
-            if (!inventoryIgnored[1])
+            if (!showAllItems && inv.HideList.Contains(slotDef.SlotFlags))
             {
-                foreach (var hidedSlot in inv.HideList)
-                {
-                    if (hidedSlot != slotDef.SlotFlags)
-                        continue;
-
-                    entity = _virtualBlockedEntity;
-                    break;
-                }
+                entity = _virtualBlockedEntity;
             }
             // Orion-End
 

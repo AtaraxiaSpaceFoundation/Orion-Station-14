@@ -58,7 +58,6 @@
   # Orion-Start
   - type: SlotBlock
     blockList: [ SOCKS ]
-    hideList: [ SOCKS ]
   # Orion-End
   - type: Sprite
     state: icon

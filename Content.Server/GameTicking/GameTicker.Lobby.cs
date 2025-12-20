@@ -55,8 +55,8 @@
 
 using System.Linq;
 using System.Text;
+using Content.Server._Orion.Time;
 using Content.Server.Station.Components;
-using Content.Shared._Orion.Time;
 using Content.Shared.GameTicking;
 using Robust.Shared.Network;
 using Robust.Shared.Player;

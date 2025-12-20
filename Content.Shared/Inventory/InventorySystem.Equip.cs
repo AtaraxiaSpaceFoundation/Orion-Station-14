@@ -194,9 +194,12 @@ public abstract partial class InventorySystem
         var slotBlockComponent = CompOrNull<SlotBlockComponent>(args.Entity);
         if (slotBlockComponent != null)
         {
-            slotBlockComponent.BlockList.ExceptWith(slotBlockComponent.HideList);
+            foreach (var slot in slotBlockComponent.BlockList)
+            {
+                if (!slotBlockComponent.HideList.Contains(slot))
+                    component.BlockList.Add(slot);
+            }
 
-            component.BlockList.UnionWith(slotBlockComponent.BlockList);
             component.HideList.UnionWith(slotBlockComponent.HideList);
         }
         // Orion-End
@@ -417,15 +420,14 @@ public abstract partial class InventorySystem
 
         // Orion-Start
         var ignoreInventoryBlockComponent = CompOrNull<IgnoreInventoryBlockComponent>(actor);
-        if (ignoreInventoryBlockComponent != null && ignoreInventoryBlockComponent.IgnoreBlock) { }
-        else
+        if (ignoreInventoryBlockComponent is not { IgnoreBlock: true })
         {
             if (inventory.BlockList.Contains(slotDefinition.SlotFlags))
             {
                 reason = "inventory-component-can-equip-blocked-by-other-clothing";
                 return false;
             }
-        };
+        }
         // Orion-End
 
         if (_whitelistSystem.IsWhitelistFail(slotDefinition.Whitelist, itemUid) ||
