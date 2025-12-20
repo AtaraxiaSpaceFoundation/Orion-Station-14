@@ -406,7 +406,7 @@ namespace Content.Client.PDA
             if (TryGetStationTime(out var time))
             {
                 StationRealTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-real-time",
-                    ("time", time.ToString(@"HH\:mm"))));
+                    ("time", time.ToString(@"hh\:mm"))));
             }
 
             if (TryGetStationDate(out var date))

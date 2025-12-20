@@ -1,6 +1,7 @@
 using Content.Server.GameTicking.Events;
 using Content.Shared._Orion.Time.Components;
 using Content.Shared.CCVar;
+using Robust.Server.GameStates;
 using Robust.Shared.Configuration;
 using Robust.Shared.Random;
 
@@ -14,6 +15,7 @@ public sealed class TimeSystem : EntitySystem
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
 
     private int _yearOffset;
     private int _staticYear;
@@ -35,14 +37,19 @@ public sealed class TimeSystem : EntitySystem
 
     private void OnRoundStart(RoundStartingEvent ev)
     {
-        var manager = Spawn();
-        AddComp<StationTimeComponent>(manager);
+        _stationTime = TimeSpan.FromHours(_robustRandom.NextFloat(0, 24));
+        var stationTimeEntity = Spawn();
+        var comp = AddComp<StationTimeComponent>(stationTimeEntity);
+
+        UpdateStationTimeComponent(comp);
+        Dirty(stationTimeEntity, comp);
     }
 
     private void OnMapInit(Entity<StationTimeComponent> ent, ref MapInitEvent args)
     {
-        _stationTime = TimeSpan.FromHours(_robustRandom.NextFloat(0, 24));
+        _pvsOverride.AddGlobalOverride(ent);
         UpdateStationTimeComponent(ent.Comp);
+        Dirty(ent, ent.Comp);
     }
 
     public override void Update(float frameTime)
