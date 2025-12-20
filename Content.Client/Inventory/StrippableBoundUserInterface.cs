@@ -87,11 +87,21 @@ namespace Content.Client.Inventory
         [ViewVariables]
         public const string HiddenPocketEntityId = "StrippingHiddenEntity";
 
+        // Orion-Start
+        [ViewVariables]
+        public const string BlockedSlotEntityId = "BlockedSlotEntity";
+        // Orion-End
+
         [ViewVariables]
         private StrippingMenu? _strippingMenu;
 
         [ViewVariables]
         private readonly EntityUid _virtualHiddenEntity;
+
+        // Orion-Start
+        [ViewVariables]
+        private readonly EntityUid _virtualBlockedEntity;
+        // Orion-End
 
         /// <summary>
         /// The current amount of added hand buttons.
@@ -114,6 +124,7 @@ namespace Content.Client.Inventory
             _strippable = EntMan.System<StrippableSystem>();
 
             _virtualHiddenEntity = EntMan.SpawnEntity(HiddenPocketEntityId, MapCoordinates.Nullspace);
+            _virtualBlockedEntity = EntMan.SpawnEntity(BlockedSlotEntityId, MapCoordinates.Nullspace); // Orion
         }
 
         protected override void Open()
@@ -238,7 +249,7 @@ namespace Content.Client.Inventory
             var isCard = EntMan.HasComponent<CardComponent>(heldEntity) ||
                          EntMan.HasComponent<CardHandComponent>(heldEntity);
             UpdateEntityIcon(button, isCard ? _virtualHiddenEntity : heldEntity);
-            
+
             _strippingMenu!.HandsContainer.AddChild(button);
             LayoutContainer.SetPosition(button, new Vector2i(_handCount, 0) * (SlotControl.DefaultButtonSize + ButtonSeparation));
             _handCount++;
@@ -296,6 +307,34 @@ namespace Content.Client.Inventory
 
             var button = new SlotButton(new SlotData(slotDef, container));
             button.Pressed += SlotPressed;
+
+            // Orion-Start
+            var inventoryIgnored = _strippable.IsInventoryIgnored(_player.LocalEntity); // [shouldShowBlocked, shouldShowHided]
+            if (!inventoryIgnored[0])
+            {
+                foreach (var blockedSlot in inv.BlockList)
+                {
+                    if (blockedSlot != slotDef.SlotFlags)
+                        continue;
+
+                    entity = _virtualBlockedEntity;
+                    button.Blocked = true;
+                    break;
+                }
+            }
+
+            if (!inventoryIgnored[1])
+            {
+                foreach (var hidedSlot in inv.HideList)
+                {
+                    if (hidedSlot != slotDef.SlotFlags)
+                        continue;
+
+                    entity = _virtualBlockedEntity;
+                    break;
+                }
+            }
+            // Orion-End
 
             _strippingMenu!.InventoryContainer.AddChild(button);
 
