@@ -219,6 +219,11 @@
             sprite: _White/Mobs/Species/displacement.rsi
             state: shoes
       # Orion-Start
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
       socks:
         sizeMaps:
           32:
@@ -237,6 +242,11 @@
             sprite: _White/Mobs/Species/displacement.rsi
             state: shoes
       # Orion-Start
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
       socks:
         sizeMaps:
           32:
