@@ -675,8 +675,7 @@ public abstract partial class InventorySystem
 
         // Orion-Start
         var ignoreInventoryBlockComponent = CompOrNull<IgnoreInventoryBlockComponent>(actor);
-        if (ignoreInventoryBlockComponent != null && ignoreInventoryBlockComponent.IgnoreBlock) { }
-        else
+        if (ignoreInventoryBlockComponent is not { IgnoreBlock: true })
         {
             if (inventory.BlockList.Contains(slotDefinition.SlotFlags))
             {

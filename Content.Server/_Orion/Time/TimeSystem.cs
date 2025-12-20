@@ -1,5 +1,4 @@
 using Content.Server.GameTicking.Events;
-using Content.Server.Station.Events;
 using Content.Shared._Orion.Time.Components;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
@@ -21,7 +20,6 @@ public sealed class TimeSystem : EntitySystem
     private bool _useStaticYear;
 
     private TimeSpan _stationTime;
-    private float _accumulatedSeconds;
 
     public override void Initialize()
     {
@@ -32,7 +30,7 @@ public sealed class TimeSystem : EntitySystem
         _cfg.OnValueChanged(CCVars.StationTimeStaticYear, v => _staticYear = v, true);
 
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
-        SubscribeLocalEvent<MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<StationTimeComponent, MapInitEvent>(OnMapInit);
     }
 
     private void OnRoundStart(RoundStartingEvent ev)
@@ -44,24 +42,20 @@ public sealed class TimeSystem : EntitySystem
     private void OnMapInit(Entity<StationTimeComponent> ent, ref MapInitEvent args)
     {
         _stationTime = TimeSpan.FromHours(_robustRandom.NextFloat(0, 24));
-        UpdateStationTimeComponent(manager);
+        UpdateStationTimeComponent(ent.Comp);
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        _accumulatedSeconds += frameTime * 2f; // x2 speed
-
-        var delta = TimeSpan.FromSeconds(_accumulatedSeconds);
-        _stationTime += delta;
+        var scaledTime = frameTime * 2f; // x2 speed
+        _stationTime += TimeSpan.FromSeconds(scaledTime);
 
         if (_stationTime >= TimeSpan.FromDays(1))
             _stationTime = _stationTime.Subtract(TimeSpan.FromDays(1));
         else if (_stationTime < TimeSpan.Zero)
             _stationTime = _stationTime.Add(TimeSpan.FromDays(1));
-
-        _accumulatedSeconds -= (float)delta.TotalSeconds;
 
         var query = EntityQueryEnumerator<StationTimeComponent>();
         while (query.MoveNext(out var uid, out var comp))
