@@ -97,6 +97,7 @@
   - type: GunRequiresWield # remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/batrifle.ogg # Orion edit
   - type: Tag
     tags:
     - WeaponShotgunKammerer

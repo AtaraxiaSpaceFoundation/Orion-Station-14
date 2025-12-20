@@ -143,14 +143,14 @@
       collection: MetalThud # Goobstation ^
 
 - type: entity
-  name: Bulldog
+  name: Zauer # Orion edit
   # Don't parent to BaseWeaponShotgun because it differs significantly
   parent: [BaseItem, BaseGunWieldable, BaseSyndicateContraband]
   id: WeaponShotgunBulldog
   description: An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses 12 Gauge shotgun shells. # Goob edit
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/big.rsi # Orion edit
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -158,8 +158,9 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
     size: Large
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/tiny.rsi # Orion edit
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/tiny.rsi # Orion edit
     quickEquip: false
     slots:
     - Back
@@ -172,9 +173,9 @@
     availableModes:
     - FullAuto
     soundGunshot:
-      collection: GuardianShot # Europa edit
+      collection: GuardianShot # Orion edit
     soundEmpty:
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/v51_empty.ogg # Europa edit
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/v51_empty.ogg # Orion edit
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -260,7 +261,7 @@
   - type: Gun
     fireRate: 1.7 # Goobstation
     soundGunshot:
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/t35.ogg # Europa edit
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/t35.ogg # Orion edit
 
 - type: entity
   parent: WeaponShotgunEnforcer
@@ -288,7 +289,7 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     soundGunshot:
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/t35.ogg # Europa edit
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/t35.ogg # Orion edit
     # fireRate: 1 # goob
   - type: GunSpreadModifier
     spread: 0.6
@@ -297,6 +298,8 @@
     - WeaponShotgunKammerer
   - type: BallisticAmmoProvider # Goobstation
     autoCycle: false
+    soundRack: # Orion edit
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/shotgun_cmb_pump.ogg
 
 - type: entity
   name: sawn-off shotgun

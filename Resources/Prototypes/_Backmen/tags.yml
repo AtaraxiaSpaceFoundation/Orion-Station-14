@@ -219,3 +219,18 @@
 
 - type: Tag
   id: SpeedLoader44Magnum
+
+- type: Tag
+  id: MagazinePulseRifle
+
+- type: Tag
+  id: PulseBullet
+
+- type: Tag
+  id: MagazinePulseShotgun
+
+- type: Tag
+  id: ShellShotgunPulse
+
+- type: Tag
+  id: MagazinePulseSubMachinePistol

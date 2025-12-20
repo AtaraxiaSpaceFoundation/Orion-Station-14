@@ -421,10 +421,9 @@
   table: !type:AllSelector
     children:
     - id: WeaponLaserCarbine
-    - id: WeaponEarthGovLaserSniper # Europa edit / Backmen guns
-    - id: WeaponEarthGovLaserRifle # Europa edit / Backmen guns
-    - id: WeaponEarthGovLaserCarbine # Europa edit / Backmen guns
-    - id: WeaponEarthGovXRay # Europa edit / Backmen guns
+    - id: WeaponEarthGovLaserSniper # Orion edit / Backmen guns
+    - id: WeaponEarthGovLaserCarbine # Orion edit / Backmen guns
+    - id: WeaponEarthGovXRay # Orion edit / Backmen guns
     - id: WeaponTemperatureGun # Goobstation
       amount: 2
     - id: WeaponEnergyIonRifle # Goobstation

@@ -1,0 +1,67 @@
+- type: entity # Orion start
+  name: XM1014
+  parent: BaseWeaponShotgun
+  id: WeaponShotgun39
+  suffix: Shotgun
+  description: The Earth Armories XM1014 combat shotgun is a semi automatic shotgun used by breachers and pointmen within the Earth Army squads. Uses .50 shotgun shells.
+  components:
+  - type: Sprite
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/sh-39/big.rsi
+  - type: Item
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/sh-39/tiny.rsi
+  - type: Clothing
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/sh-39/tiny.rsi
+  - type: BallisticAmmoProvider
+    capacity: 10
+  - type: Wieldable
+  - type: UseDelay
+    delay: 1.3
+  - type: GunRequiresWield
+  - type: Gun
+    cameraRecoilScalar: 2
+    soundGunshot:
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/sh39.ogg
+  #- type: Construction
+    #graph: Shotgun39Tactical
+    #node: start
+
+- type: entity
+  name: XM1014
+  parent: WeaponShotgun39
+  id: WeaponShotgun39NonLethal
+  suffix: Shotgun [Non Lethal]
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgunBeanbag
+
+- type: entity
+  name: Paladin pump shotgun
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
+  id: WeaponShotgunPaladin12
+  suffix: Shotgun
+  description: A nine-round pump action shotgun. A shotgun used for hunting, home defence and police work, many versions of it exist and are used by just about anyone.
+  components:
+  - type: Sprite
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/paladin-12/big.rsi
+  - type: Item
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/paladin-12/tiny.rsi
+  - type: Clothing
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/paladin-12/tiny.rsi
+  - type: BallisticAmmoProvider
+    capacity: 9
+    autoCycle: false
+    soundRack:
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/shotgun_cmb_pump.ogg
+    soundInsert:
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/shotgun_cmb_insert.ogg
+  - type: GunRequiresWield
+  - type: Gun
+    fireRate: 2
+    cameraRecoilScalar: 2
+    soundGunshot:
+      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/shotgun_cmb.ogg
+      params:
+        volume: +2
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer

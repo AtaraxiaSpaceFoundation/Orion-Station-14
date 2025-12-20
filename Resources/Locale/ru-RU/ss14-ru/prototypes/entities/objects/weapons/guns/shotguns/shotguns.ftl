@@ -1,7 +1,7 @@
 ent-BaseWeaponShotgun = BaseWeaponShotgun
     .desc = Дерзай — налетай, целься и стреляй.
     .suffix = Дробовик
-ent-WeaponShotgunBulldog = Бульдог
+ent-WeaponShotgunBulldog = Зауэр
     .desc = Автоматический магазинный дробовик для ведения ближнего боя. Бьёт как мул на стероидах. Использует патроны калибра .50 ружейный.
     .suffix = Дробовик
 ent-WeaponShotgunEnforcer = Силовик

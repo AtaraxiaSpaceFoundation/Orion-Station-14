@@ -1,8 +1,7 @@
-- type: entity
+- type: entity # Orion start
   name: EarthGov laser rifle
   parent: BaseWeaponBattery
   id: WeaponEarthGovLaserRifle
-  suffix: Винтовка
   description: A Earth Government standard issue laser rifle, used by army and police.
   components:
   - type: Appearance
@@ -37,8 +36,8 @@
     steps: 3
     zeroVisible: true
   - type: Battery
-    maxCharge: 1500
-    startingCharge: 1500
+    maxCharge: 2000
+    startingCharge: 2000
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 50
@@ -50,7 +49,6 @@
   name: EarthGov laser machine gun
   parent: BaseWeaponBattery
   id: WeaponEarthGovLaserMG
-  suffix: Пулемёт
   description: A Earth Government standard issue laser machine gun, used by army. Heavy and deadly.
   components:
   - type: Appearance
@@ -93,16 +91,14 @@
   - type: Wieldable
   - type: UseDelay
     delay: 2.5
-  - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 0.6
+  - type: SpeedModifiedOnWield
+    sprintModifier: 0.7
   - type: HeldSpeedModifier
 
 - type: entity
   name: EarthGov laser carbine
   parent: BaseWeaponBattery
   id: WeaponEarthGovLaserCarbine
-  suffix: Пистолет-пулемёт
   description: A Earth Government standard issue laser carbine, used by army and police. Thanks to the short barrel it has better maneuverability in narrow spaces.
   components:
   - type: Appearance
@@ -125,9 +121,9 @@
   - type: Gun
     minAngle: 7
     maxAngle: 45
-    cameraRecoilScalar: 0.5
+    cameraRecoilScalar: 4
     fireRate: 5
-    selectedMode: SemiAuto
+    selectedMode: FullAuto
     availableModes:
     - SemiAuto
     - FullAuto
@@ -151,7 +147,6 @@
   name: EarthGov laser pistol
   parent: BaseWeaponBatterySmall
   id: WeaponEarthGovLaserPistol
-  suffix: Пистолет
   description: A Earth Government standard issue laser pistol, used by army and police.
   components:
   - type: Gun
@@ -198,10 +193,6 @@
   - type: Item
     sprite: _Backmen/Objects/Weapons/Gunsx64/Battery/EG-S/tiny.rsi
   - type: GunRequiresWield
-  - type: ClothingSpeedModifier
-    walkModifier: 1
-    sprintModifier: 0.8
-  - type: HeldSpeedModifier
   - type: Gun
     minAngle: 1
     maxAngle: 10
@@ -224,7 +215,14 @@
   - type: Wieldable
   - type: UseDelay
     delay: 2.5
-#  - type: Telescope  backmen: immersive
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.9
+  - type: SpeedModifiedOnWield
+    sprintModifier: 0.7
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 5
+    pvsIncrease: 0.5
 
 - type: entity
   name: EarthGov Experemental X-Ray

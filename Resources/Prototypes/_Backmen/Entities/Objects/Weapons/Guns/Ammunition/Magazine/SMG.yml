@@ -8,10 +8,10 @@
       - MagazinePistolTopSubMachineGun
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol # Europa edit
+    proto: CartridgePistol # Orion edit
     whitelist:
       tags:
-        - CartridgePistol # Europa edit
+        - CartridgePistol # Orion edit
     capacity: 50
   - type: Item
     size: Small
