@@ -52,8 +52,8 @@
     Head: MobReptilianHead
     Face: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
-    Underwear: MobHumanoidAnyMarking
-    Undershirt: MobHumanoidAnyMarking
+#    Underwear: MobHumanoidAnyMarking # Orion-Edit: Removed
+#    Undershirt: MobHumanoidAnyMarking # Orion-Edit: Removed
     Chest: MobReptilianChest
     Groin: MobReptilianGroin
     HeadTop: MobHumanoidAnyMarking
@@ -96,12 +96,12 @@
     Chest:
       points: 8
       required: false
-    Underwear:
-      points: 1
-      required: false
-    Undershirt:
-      points: 1
-      required: false
+#    Underwear: # Orion-Edit: Removed
+#      points: 1
+#      required: false
+#    Undershirt: # Orion-Edit: Removed
+#      points: 1
+#      required: false
     RightLeg:
       points: 2
       required: false

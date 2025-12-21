@@ -271,8 +271,8 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-#    - map: [ "enum.HumanoidVisualLayers.Underwear" ] # Goob 3370 | Orion-Edit: Replaced
-#    - map: [ "enum.HumanoidVisualLayers.Undershirt" ] # Goob 3370 | Orion-Edit: Replaced
+#    - map: [ "enum.HumanoidVisualLayers.Underwear" ] # Goob 3370 | Orion-Edit: Replaced with clothes
+#    - map: [ "enum.HumanoidVisualLayers.Undershirt" ] # Goob 3370 | Orion-Edit: Replaced with clothes
     # Orion-Start
     - map: [ "underwear" ]
     - map: [ "undershirt" ]
@@ -289,8 +289,8 @@
     - map: [ "gloves" ]
     - map: [ "wrists" ] # Orion
     - map: [ "shoes" ]
-    - map: [ "ears" ]
     - map: [ "earsright" ] # Orion
+    - map: [ "ears" ]
     - map: [ "eyes" ]
     - map: [ "id" ]
     - map: [ "outerClothing" ]
@@ -615,8 +615,8 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "enum.HumanoidVisualLayers.Underwear" ] # Goob 3370
-    - map: [ "enum.HumanoidVisualLayers.Undershirt" ] # Goob 3370
+#    - map: [ "enum.HumanoidVisualLayers.Underwear" ] # Goob 3370 | Orion-Edit: Replaced with clothes
+#    - map: [ "enum.HumanoidVisualLayers.Undershirt" ] # Goob 3370 | Orion-Edit: Replaced with clothes
     - map: ["jumpsuit"]
     - map: ["enum.HumanoidVisualLayers.LFoot"]
     - map: ["enum.HumanoidVisualLayers.RFoot"]

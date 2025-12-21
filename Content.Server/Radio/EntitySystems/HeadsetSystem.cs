@@ -118,7 +118,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     protected override void OnGotUnequipped(EntityUid uid, HeadsetComponent component, GotUnequippedEvent args)
     {
         base.OnGotUnequipped(uid, component, args);
-        component.IsEquipped = false;
         // Orion-Edit-Start
         RemCompDeferred<ActiveRadioComponent>(uid);
 
