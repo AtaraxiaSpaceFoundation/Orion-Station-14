@@ -21,4 +21,9 @@ public sealed partial class HeadsetComponent : Component
 
     [DataField("requiredSlot")]
     public SlotFlags RequiredSlot = SlotFlags.EARS;
+
+    // Orion-Start
+    [DataField]
+    public SlotFlags AdditionalSlot = SlotFlags.EARSRIGHT;
+    // Orion-End
 }

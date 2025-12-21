@@ -19,6 +19,8 @@ using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
 using Content.Shared.Chat;
+using Content.Shared.Examine;
+using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
@@ -35,6 +37,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
+    [Dependency] private readonly InventorySystem _inventory = default!; // Orion
 
     public override void Initialize()
     {
@@ -43,6 +46,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
         SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
+        SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(OnInventoryExamined); // Orion
         SubscribeLocalEvent<HeadsetComponent, RadioReceiveAttemptEvent>(OnHeadsetReceiveAttempt); // Goobstation - Whitelisted radio channel
 
         SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
@@ -79,6 +83,21 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
+
+    // Orion-Start
+    private void OnInventoryExamined(EntityUid uid, InventoryComponent component, ExaminedEvent args)
+    {
+        if (!_inventory.TryGetSlotEntity(uid, "ears", out var leftEar) ||
+            !_inventory.TryGetSlotEntity(uid, "earsright", out var rightEar))
+            return;
+
+        if (!HasComp<HeadsetComponent>(leftEar) || !HasComp<HeadsetComponent>(rightEar))
+            return;
+
+        var entityName = MetaData(uid).EntityName;
+        args.PushMarkup(Loc.GetString("examine-headset-double-wearing", ("entityName", entityName)));
+    }
+    // Orion-End
 
     protected override void OnGotEquipped(EntityUid uid, HeadsetComponent component, GotEquippedEvent args)
     {
