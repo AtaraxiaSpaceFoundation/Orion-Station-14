@@ -94,7 +94,7 @@
     layers:
       - state: 45incendiary # Orion edit for Backmen sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip   / Orion remove for backmen sprites
+#      - state: tip   # Orion remove for backmen sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#ff6e52"
 
@@ -112,7 +112,7 @@
     layers:
       - state: 45fast # Orion edit for Backmen sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip   / Orion remove for backmen sprites
+#      - state: tip   # Orion remove for backmen sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#0a0a0a"
 
@@ -130,6 +130,6 @@
     layers:
       - state: 45uranium # Orion edit for Backmen sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip   / Orion remove for backmen sprites
+#      - state: tip   # Orion remove for backmen sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#65fe08"

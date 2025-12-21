@@ -430,4 +430,4 @@
     - id: WeaponTemperatureGun # Goobstation
       amount: 2
     - id: WeaponEnergyIonRifle # Goobstation
-#      amount: 2   / Orion-Edit: Removed
+#      amount: 2   # Orion-Edit: Removed
