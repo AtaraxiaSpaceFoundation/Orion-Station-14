@@ -107,11 +107,11 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     protected override void OnGotEquipped(EntityUid uid, HeadsetComponent component, GotEquippedEvent args)
     {
         base.OnGotEquipped(uid, component, args);
-        // Orion-Edit-Start
-        component.IsEquipped = true;
 
+        // Orion-Edit-Start
         UpdateWearingHeadsetComponent(args.Equipee);
-        UpdateRadioChannels(uid, component);
+        if (component.IsEquipped)
+            UpdateRadioChannels(uid, component);
         // Orion-Edit-End
     }
 
@@ -184,6 +184,9 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                 args.Channel,
                 headsetEntity.Value
             );
+
+            args.Channel = null;
+            break;
         }
     }
     // Orion-End
@@ -202,13 +205,20 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         {
             RemCompDeferred<ActiveRadioComponent>(uid);
 
-            if (component.IsEquipped)
-                RemCompDeferred<WearingHeadsetComponent>(Transform(uid).ParentUid);
+            // Orion-Edit-Start
+            if (!component.IsEquipped)
+                return;
+
+            var parent = Transform(uid).ParentUid;
+            UpdateWearingHeadsetComponent(parent);
+            // Orion-Edit-End
         }
         else if (component.IsEquipped)
         {
-            EnsureComp<WearingHeadsetComponent>(Transform(uid).ParentUid).Headset = uid;
-            UpdateRadioChannels(uid, component);
+            // Orion-Edit-Start
+            var parent = Transform(uid).ParentUid;
+            UpdateWearingHeadsetComponent(parent);
+            // Orion-Edit-End
         }
     }
 
