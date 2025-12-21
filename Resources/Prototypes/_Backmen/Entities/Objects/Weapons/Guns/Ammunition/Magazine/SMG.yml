@@ -8,10 +8,10 @@
       - MagazinePistolTopSubMachineGun
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol # Orion edit
+    proto: CartridgePistol
     whitelist:
       tags:
-        - CartridgePistol # Orion edit
+        - CartridgePistol
     capacity: 50
   - type: Item
     size: Small

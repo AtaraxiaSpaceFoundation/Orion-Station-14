@@ -104,7 +104,7 @@
   name: G-22
   parent: BaseWeaponPistol
   id: WeaponPistolG22
-  description: A popular police firearm in the modern day. Chambered in 9x19mm.
+  description: A popular police firearm in the modern day. Chambered in .35 rounds.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Pistols/glock22/big.rsi
@@ -148,7 +148,7 @@
   name: service pistol G23
   parent: BaseWeaponPistol
   id: WeaponPistolG23
-  description: A popular self-defense firearm in the modern day. Chambered in .20 rifle.
+  description: A popular self-defense firearm in the modern day. Chambered in .35 rounds.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Pistols/service_pistol23/big.rsi

@@ -21,9 +21,6 @@
     cameraRecoilScalar: 2
     soundGunshot:
       path: /Audio/_Backmen/Weapons/Guns64/Shotguns/sh39.ogg
-  #- type: Construction
-    #graph: Shotgun39Tactical
-    #node: start
 
 - type: entity
   name: XM1014
