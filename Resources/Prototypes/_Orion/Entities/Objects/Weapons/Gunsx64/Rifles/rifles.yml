@@ -1,0 +1,181 @@
+- type: entity
+  name: Famas
+  parent: BaseWeaponRifle
+  id: WeaponRifleFamas
+  description: A light, versatile assault rifle.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/famas/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/famas/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/famas/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -43
+    angleIncrease: -5
+  - type: Gun
+    angleDecay: 60
+    angleIncrease: 12
+    minAngle: 24
+    maxAngle: 45
+    burstFireRate: 14
+    burstCooldown: 0.35
+    fireRate: 4
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns64/Rifles/m16.ogg
+    selectedMode: Burst
+    availableModes:
+      - SemiAuto
+      - Burst
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineRifle
+        insertSound: /Audio/_Orion/Weapons/Guns64/Rifles/m16_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns64/Rifles/m16_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+
+- type: entity
+  name: BR-64
+  parent: BaseWeaponRifle
+  id: WeaponRifleBR64
+  description: The San Cristo Arms BR-64 is the Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and close range stopping power. It is mostly used by people who prefer a bigger round than the average.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/br-64/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/br-64/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/br-64/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -43
+  - type: Gun
+    fireRate: 2
+    minAngle: 24
+    cameraRecoilScalar: 4
+    maxAngle: 45
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns64/Snipers/tl127.ogg
+  - type: ChamberMagazineAmmoProvider
+    boltClosed: null
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineHeavyRifleBR64
+        insertSound: /Audio/_Orion/Weapons/Guns64/Rifles/m41a_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns64/Rifles/m41a_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineHeavyRifle62
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeMagnum
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+
+- type: entity
+  name: AUG
+  parent: BaseWeaponRifle
+  id: WeaponRifleAUG
+  description: A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for .20 rifle cartridge.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/aug/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/aug/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/aug/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -30
+    angleIncrease: -6
+  - type: Gun
+    angleDecay: 60
+    angleIncrease: 8
+    fireRate: 5
+    minAngle: 24
+    maxAngle: 45
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns64/Rifles/m16.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineRifle
+        insertSound: /Audio/_Orion/Weapons/Guns64/Rifles/m16_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns64/Rifles/m16_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 3
+    pvsIncrease: 0.3
+  - type: UseDelay
+    delay: 0.5

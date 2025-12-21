@@ -140,7 +140,7 @@
     angleDecay: 20
     fireRate: 6
     soundGunshot:
-      path: /Audio/_Backmen/Weapons/Guns64/Rifles/ak47.ogg
+      path: /Audio/_Orion/Weapons/Guns64/Rifles/ak47.ogg
   - type: GunWieldBonus
     minAngle: -22
     maxAngle: -44 # Orion end

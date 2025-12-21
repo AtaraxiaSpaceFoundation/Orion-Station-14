@@ -175,7 +175,7 @@
     soundGunshot:
       collection: GuardianShot # Orion edit
     soundEmpty:
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/v51_empty.ogg # Orion edit
+      path: /Audio/_Orion/Weapons/Guns64/Shotguns/v51_empty.ogg # Orion edit
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -261,7 +261,7 @@
   - type: Gun
     fireRate: 1.7 # Goobstation
     soundGunshot:
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/t35.ogg # Orion edit
+      path: /Audio/_Orion/Weapons/Guns64/Shotguns/t35.ogg # Orion edit
 
 - type: entity
   parent: WeaponShotgunEnforcer
@@ -289,7 +289,7 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     soundGunshot:
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/t35.ogg # Orion edit
+      path: /Audio/_Orion/Weapons/Guns64/Shotguns/t35.ogg # Orion edit
     # fireRate: 1 # goob
   - type: GunSpreadModifier
     spread: 0.6
@@ -299,7 +299,7 @@
   - type: BallisticAmmoProvider # Goobstation
     autoCycle: false
     soundRack: # Orion edit
-      path: /Audio/_Backmen/Weapons/Guns64/Shotguns/shotgun_cmb_pump.ogg
+      path: /Audio/_Orion/Weapons/Guns64/Shotguns/shotgun_cmb_pump.ogg
 
 - type: entity
   name: sawn-off shotgun
