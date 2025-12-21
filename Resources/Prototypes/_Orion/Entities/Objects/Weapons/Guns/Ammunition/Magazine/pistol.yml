@@ -1,0 +1,25 @@
+- type: entity
+  id: MagazinePistol57x28
+  name: pistol magazine (5,7x28)
+  parent: BaseMagazinePistol
+  components:
+  - type: Tag
+    tags:
+      - MagazinePistol57x28
+  - type: BallisticAmmoProvider
+    proto: CartridgeRifle
+    capacity: 12
+    whitelist:
+      tags:
+        - CartridgeRifle
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Magazines/Pistol/pistol_mag_545.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: false

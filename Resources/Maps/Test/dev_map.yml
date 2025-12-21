@@ -24852,7 +24852,7 @@ entities:
     - type: Transform
       pos: 73.5,41
       parent: 1
-- proto: WeaponShotgunZauer
+- proto: WeaponShotgunBulldog
   entities:
   - uid: 2158
     components:

@@ -106,7 +106,7 @@ uplink-WSPR-desc = This rifle operates silently and uses 9.5mm caseless magnum h
 uplink-c20r-name = C-20r
 uplink-c20r-desc = Old faithful: The classic C-20r Submachine Gun.
 
-uplink-buldog-name = Zauer
+uplink-buldog-name = Bulldog
 uplink-buldog-desc = A magazine fed fullauto shotgun.
 
 uplink-l6-saw-name = L6 Saw

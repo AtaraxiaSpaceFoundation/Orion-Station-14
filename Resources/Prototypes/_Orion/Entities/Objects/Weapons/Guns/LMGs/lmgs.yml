@@ -1,0 +1,116 @@
+- type: entity
+  name: RPD
+  parent: BaseWeaponLightMachineGun
+  id: WeaponLightMachineGunRPD
+  description: A cheap and robust machinegun, sometimes better known as an 'RPD'. Despite lacking attachment points beyond its underbarrel, remains a popular product on the black market with its cheap cost, high capacity and higher than usual caliber rounds.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/LMGs/rpd/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/LMGs/rpd/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/LMGs/rpd/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -30
+    maxAngle: -50
+  - type: Gun
+    minAngle: 34
+    maxAngle: 55
+    cameraRecoilScalar: 2
+    fireRate: 5
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineLightMachineGunRPD
+        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/ak47_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/ak47_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineLightMachineGunRPD
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeLightRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeLightRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: true
+  - type: Appearance
+  - type: HeldSpeedModifier
+    sprintModifier: 0.9
+
+- type: entity
+  name: M-41
+  parent: BaseWeaponLightMachineGun
+  id: WeaponRifleM41
+  description: The M-41 is a large man portable machine, allowing for sustained, accurate suppressive firepower at the cost of mobility and handling. Commonly seen where their preferred tactics of fast, mobile aggression is ill suited.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/LMGs/t42/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/LMGs/t42/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/LMGs/t42/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -30
+    maxAngle: -50
+  - type: Gun
+    angleDecay: 10
+    angleIncrease: 7
+    minAngle: 32
+    maxAngle: 55
+    cameraRecoilScalar: 1.5
+    fireRate: 6
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Rifles/ar18.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineHeavyRifleM41
+        insertSound: /Audio/_Orion/Weapons/Guns/LMGs/m60_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/LMGs/m60_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineHeavyRifleM41
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: true
+  - type: Appearance
+  - type: GunRequiresWield
+  - type: HeldSpeedModifier
+    sprintModifier: 0.9

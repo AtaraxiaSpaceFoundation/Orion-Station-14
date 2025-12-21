@@ -1,0 +1,269 @@
+- type: entity 
+  name: EarthGov laser rifle
+  parent: BaseWeaponBattery
+  id: WeaponEarthGovLaserRifle
+  description: An Earth Government standard issue laser rifle, used by army and police.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-R/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-R/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-R/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -44
+  - type: Gun
+    minAngle: 24
+    maxAngle: 45
+    cameraRecoilScalar: 0.5
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/EG-R/shot.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 2000
+    startingCharge: 2000
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 50
+  - type: Wieldable
+  - type: UseDelay
+    delay: 1.5
+
+- type: entity
+  name: EarthGov laser machine gun
+  parent: BaseWeaponBattery
+  id: WeaponEarthGovLaserMG
+  description: An Earth Government standard issue laser machine gun, used by army. Heavy and deadly.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-MG/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-MG/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-MG/tiny.rsi
+    size: Huge
+  - type: GunWieldBonus
+    minAngle: -40
+    maxAngle: -40
+  - type: Gun
+    maxAngle: 60
+    minAngle: 60
+    cameraRecoilScalar: 0.5
+    fireRate: 8
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/EG-R/shot.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 7500
+    startingCharge: 7500
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 50
+  - type: Wieldable
+  - type: UseDelay
+    delay: 2.5
+  - type: SpeedModifiedOnWield
+    sprintModifier: 0.7
+  - type: HeldSpeedModifier
+
+- type: entity
+  name: EarthGov laser carbine
+  parent: BaseWeaponBattery
+  id: WeaponEarthGovLaserCarbine
+  description: An Earth Government standard issue laser carbine, used by army and police. Thanks to the short barrel it has better maneuverability in narrow spaces.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-C/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-C/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-C/tiny.rsi
+    size: Large
+  - type: GunWieldBonus
+    minAngle: -6
+    maxAngle: -44
+  - type: Gun
+    minAngle: 7
+    maxAngle: 45
+    cameraRecoilScalar: 4
+    fireRate: 5
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/EG-C/shot.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 50
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.5
+
+- type: entity
+  name: EarthGov laser pistol
+  parent: BaseWeaponBatterySmall
+  id: WeaponEarthGovLaserPistol
+  description: An Earth Government standard issue laser pistol, used by army and police.
+  components:
+  - type: Gun
+    cameraRecoilScalar: 0.5
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/EG-P/shot.ogg
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-P.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLaser
+    fireCost: 62.5
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 250
+
+- type: entity
+  name: EarthGov heavy laser rifle
+  parent: BaseWeaponBattery
+  id: WeaponEarthGovLaserSniper
+  description: An Earth Government heavy sniper rifle for a extended combat situation.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-S/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-S/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EG-S/tiny.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    minAngle: 1
+    maxAngle: 10
+    fireRate: 1.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/EG-R/shot.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: RedHeavyLaser
+    fireCost: 100
+  - type: Wieldable
+  - type: UseDelay
+    delay: 2.5
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.9
+  - type: SpeedModifiedOnWield
+    sprintModifier: 0.7
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 5
+    pvsIncrease: 0.5
+
+- type: entity
+  name: EarthGov Experimental X-Ray
+  parent: BaseWeaponBattery
+  id: WeaponEarthGovXRay
+  description: A Earth Government Experimental x-ray weapon, it looks like it emits radiation.
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EGE-XR/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-5
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EGE-XR/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Battery/EGE-XR/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -44
+  - type: Gun
+    minAngle: 24
+    maxAngle: 45
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/EG-R/shot.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: XrayLaser
+    fireCost: 100
+  - type: Wieldable
+  - type: UseDelay
+    delay: 2.5

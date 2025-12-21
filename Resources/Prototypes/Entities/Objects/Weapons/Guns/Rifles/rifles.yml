@@ -110,7 +110,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
     soundEmpty: # Orion edit
-      path: /Audio/_Orion/Weapons/Guns64/Rifles/m41a_empty.ogg
+      path: /Audio/_Orion/Weapons/Guns/Rifles/m41a_empty.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
@@ -179,19 +179,19 @@
   description: A somewhat battered combat rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design. Feeds from .30 rifle magazines.
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/akms/big.rsi # Orion edit for Backmen sprites
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/akms/big.rsi # Orion edit: New sprites
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
-  - type: Clothing # Orion edit for Backmen sprites
-    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/akms/tiny.rsi
-  - type: Item # Orion edit for Backmen sprites
-    sprite: _Orion/Objects/Weapons/Gunsx64/Rifles/akms/tiny.rsi
+  - type: Clothing # Orion edit: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/akms/tiny.rsi
+  - type: Item # Orion edit: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/akms/tiny.rsi
   - type: Gun
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns64/Rifles/ak47.ogg # Orion edit
+      path: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg # Orion edit
   - type: ChamberMagazineAmmoProvider
     boltClosed: null # Goobstation
     soundRack:
@@ -278,20 +278,20 @@
   description: A high end military grade assault rifle. Uses .20 rifle ammo.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/lecter/big.rsi # Backmen sprite / Orion edit
+    sprite: Objects/Weapons/Guns/Rifles/lecter/big.rsi # Orion edit: New sprites
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
   - type: Item # Orion edit
-    sprite: Objects/Weapons/Guns/Rifles/lecter/tiny.rsi # Backmen sprite / Orion edit
+    sprite: Objects/Weapons/Guns/Rifles/lecter/tiny.rsi # Orion edit: New sprites
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Rifles/lecter/tiny.rsi # Backmen sprite / Orion edit
+    sprite: Objects/Weapons/Guns/Rifles/lecter/tiny.rsi # Orion edit: New sprites
   - type: Gun
     fireRate: 5
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns64/Rifles/m16.ogg # Backmen sprite / Orion edit
+      path: /Audio/_Orion/Weapons/Guns/Rifles/m16.ogg # Orion edit: New sprites
   - type: ItemSlots
     slots:
       gun_magazine:

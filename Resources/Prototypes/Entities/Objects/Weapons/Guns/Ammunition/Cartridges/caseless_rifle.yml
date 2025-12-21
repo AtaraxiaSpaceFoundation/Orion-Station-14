@@ -35,7 +35,7 @@
     noRot: false
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
     layers:
-    - state: 25combat # Orion edit for Backmen sprites
+    - state: 25combat # Orion edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
 #  - type: SpentAmmoVisuals
@@ -61,8 +61,8 @@
     proto: BulletCaselessRiflePractice
   - type: Sprite
     layers:
-      - state: 25training # Orion edit for Backmen sprites
+      - state: 25training # Orion edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion remove for backmen sprites
+#      - state: tip # Orion remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#dbdbdb"

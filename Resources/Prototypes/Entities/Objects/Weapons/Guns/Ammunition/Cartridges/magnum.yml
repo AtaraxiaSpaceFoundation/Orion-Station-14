@@ -47,11 +47,11 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
     layers:
-    - state: 45combat # Orion edit for Backmen sprites
+    - state: 45combat # Orion edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
   - type: SpentAmmoVisuals
-    state: 45combat # Orion edit for Backmen sprites
+    state: 45combat # Orion edit: New sprites
 
 - type: entity
   id: CartridgeMagnum
@@ -68,13 +68,13 @@
   parent: BaseCartridgeMagnum
   description: Heavy magnum cartridge mostly used by revolvers. Chalk ammunition is generally non-harmful, used for practice.
   components:
-  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
+  - type: SpentAmmoVisuals # Orion edit: New sprites
     state: 45training
   - type: CartridgeAmmo
     proto: BulletMagnumPractice
   - type: Sprite
     layers:
-      - state: 45training # Orion edit for Backmen sprites
+      - state: 45training # Orion edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
 #      - state: tip
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
@@ -86,15 +86,15 @@
   parent: BaseCartridgeMagnum
   description: Heavy magnum cartridge mostly used by revolvers. Incendiary ammunition contains a self-igniting compound that sets the target ablaze.
   components:
-  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
+  - type: SpentAmmoVisuals # Orion edit: New sprites
     state: 45incendiary
   - type: CartridgeAmmo
     proto: BulletMagnumIncendiary
   - type: Sprite
     layers:
-      - state: 45incendiary # Orion edit for Backmen sprites
+      - state: 45incendiary # Orion edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion remove for backmen sprites
+#      - state: tip # Orion remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#ff6e52"
 
@@ -104,15 +104,15 @@
   parent: BaseCartridgeMagnum
   description: Heavy magnum cartridge mostly used by revolvers. Armor piercing ammunition is renowned for its ability to cut straight through body armor.
   components:
-  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
+  - type: SpentAmmoVisuals # Orion edit: New sprites
     state: 45fast
   - type: CartridgeAmmo
     proto: BulletMagnumAP
   - type: Sprite
     layers:
-      - state: 45fast # Orion edit for Backmen sprites
+      - state: 45fast # Orion edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion remove for backmen sprites
+#      - state: tip # Orion remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#0a0a0a"
 
@@ -122,14 +122,14 @@
   parent: BaseCartridgeMagnum
   description: Heavy magnum cartridge mostly used by revolvers. Uranium ammunition replaces the lead core of the bullet with fissile material, irradiating the target from the inside.
   components:
-  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
+  - type: SpentAmmoVisuals # Orion edit: New sprites
     state: 45uranium
   - type: CartridgeAmmo
     proto: BulletMagnumUranium
   - type: Sprite
     layers:
-      - state: 45uranium # Orion edit for Backmen sprites
+      - state: 45uranium # Orion edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion remove for backmen sprites
+#      - state: tip # Orion remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#65fe08"

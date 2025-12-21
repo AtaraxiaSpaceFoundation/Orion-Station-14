@@ -350,7 +350,7 @@
   id: UplinkBulldog #goob
   name: uplink-zauer-name # Orion
   description: uplink-buldog-desc #goob
-  icon: { sprite: _Orion/Objects/Weapons/Gunsx64/Shotguns/zauer/big.rsi, state: icon } # Orion
+  icon: { sprite: _Orion/Objects/Weapons/Guns/Shotguns/zauer/big.rsi, state: icon } # Orion
   productEntity: WeaponShotgunZauer
   cost:
     Telecrystal: 60 # goob
