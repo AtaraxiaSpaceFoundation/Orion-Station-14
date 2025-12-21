@@ -171,7 +171,7 @@
     WeaponShotgunKammerer: 2
     WeaponPistolN1984: 2
     WeaponShotgunEnforcer: 1
-    WeaponShotgunBulldog: 1
+    WeaponShotgunZauer: 1 # Orion edit
     WeaponRifleLecter: 1
     WeaponRevolverMateba: 1
     WeaponSubMachineGunDrozd: 1
@@ -213,7 +213,7 @@
     WeaponShotgunKammerer: 3
     WeaponPistolN1984: 3
     WeaponShotgunEnforcer: 2
-    WeaponShotgunBulldog: 2
+    WeaponShotgunZauer: 2 # Orion edit
     WeaponRifleLecter: 2
     WeaponRevolverMateba: 2
     WeaponSubMachineGunDrozd: 2

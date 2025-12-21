@@ -1,4 +1,4 @@
-- type: entity
+- type: entity # Orion edit-start
   name: RPD
   parent: BaseWeaponLightMachineGun
   id: WeaponLightMachineGunRPD
@@ -94,7 +94,7 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineHeavyRifle
+            - MagazineHeavyRifleM41
       gun_chamber:
         name: Chamber
         startingItem: CartridgeRifle

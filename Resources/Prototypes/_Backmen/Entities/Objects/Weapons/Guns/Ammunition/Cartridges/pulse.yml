@@ -1,4 +1,4 @@
-- type: entity # Orion start
+- type: entity # Orion edit-start
   id: PulseBullet
   name: pulse bullet
   parent: BaseBullet

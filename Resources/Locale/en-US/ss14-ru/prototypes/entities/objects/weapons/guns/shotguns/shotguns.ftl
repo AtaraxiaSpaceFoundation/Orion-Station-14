@@ -1,6 +1,6 @@
 ent-BaseWeaponShotgun = BaseWeaponShotgun
     .desc = A rooty tooty point and shooty.
-ent-WeaponShotgunBulldog = Zauer
+ent-WeaponShotgunBulldog = Bulldog
     .desc = An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses 12 Gauge shotgun shells.
 ent-WeaponShotgunDoubleBarreled = double-barreled shotgun
     .desc = An immortal classic. Uses 12 Gauge shotgun shells.

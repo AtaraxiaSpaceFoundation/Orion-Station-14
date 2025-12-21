@@ -348,10 +348,10 @@
 
 - type: listing
   id: UplinkBulldog #goob
-  name: uplink-buldog-name #goob
+  name: uplink-zauer-name # Oreon
   description: uplink-buldog-desc #goob
   icon: { sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/big.rsi, state: icon } # Oreon
-  productEntity: WeaponShotgunBulldog
+  productEntity: WeaponShotgunZauer
   cost:
     Telecrystal: 60 # goob
   categories:

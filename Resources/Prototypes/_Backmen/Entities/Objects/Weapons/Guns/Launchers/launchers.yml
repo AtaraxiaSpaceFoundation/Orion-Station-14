@@ -1,4 +1,4 @@
-- type: entity # Orion start
+- type: entity  # Orion edit-start
   name: GL-70
   parent: BaseWeaponLauncher
   id: WeaponLauncherGL70
@@ -88,8 +88,8 @@
   - type: Clothing
     sprite: _Backmen/Objects/Weapons/Gunsx64/Launchers/rpg/tiny.rsi
     slots:
-      - BACK
-      - SUITSTORAGE
+      - Back  
+      - suitStorage
   - type: Item
     sprite: _Backmen/Objects/Weapons/Gunsx64/Launchers/rpg/tiny.rsi
   - type: Gun

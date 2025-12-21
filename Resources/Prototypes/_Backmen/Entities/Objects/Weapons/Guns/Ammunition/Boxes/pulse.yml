@@ -1,0 +1,33 @@
+- type: entity # Orion start
+  id: BoxPulseRifle
+  name: charging plasmoblock (pulse)
+  description: Standard EarthGov type of impulse magazines
+  parent: BaseItem
+  components:
+  - type: BallisticAmmoProvider
+    soundInsert: /Audio/_Backmen/Items/weapons/Pulse/pulsebox.ogg
+    fillDelay: 0.3
+    mayTransfer: true
+    cycleable: false
+    capacity: 120
+    proto: PulseBullet
+    whitelist:
+      tags:
+        - PulseBullet
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Item
+    size: Small
+  - type: Sprite
+    netsync: false
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Ammunition/Boxes/pulse.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+  - type: Appearance

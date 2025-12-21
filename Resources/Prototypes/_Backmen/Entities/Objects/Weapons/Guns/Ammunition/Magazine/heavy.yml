@@ -1,4 +1,4 @@
-- type: entity
+- type: entity # Orion edit-start
   id: BaseMagazineHeavyRifle50
   parent: BaseItem
   abstract: true
@@ -52,7 +52,7 @@
   components:
   - type: Tag
     tags:
-      - MagazineHeavyRifle
+      - MagazineHeavyRifleM41
   - type: BallisticAmmoProvider
     proto: CartridgeRifle
     capacity: 150

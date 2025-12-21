@@ -48,11 +48,11 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
     layers:
-      - state: 35combat # Backmen sprites / Orion edit
+      - state: 35combat # Orion edit for Backmen sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
   - type: Appearance
   - type: SpentAmmoVisuals
-    state: 35combat # Backmen sprites / Orion edit
+    state: 35combat # Orion edit for Backmen sprites
 
 - type: entity
   id: CartridgePistol
@@ -69,7 +69,7 @@
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Chalk ammunition is generally non-harmful, used for practice.
   parent: BaseCartridgePistol
   components:
-  - type: SpentAmmoVisuals # Backmen sprites / Orion edit
+  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
     state: 35training
   - type: CartridgeAmmo
     proto: BulletPistolPractice
@@ -77,9 +77,9 @@
     layers:
       - state: 35training
         map: [ "enum.AmmoVisualLayers.Base" ]
-      #- state: tip  / Orion remove for backmen sprites
-        #map: [ "enum.AmmoVisualLayers.Tip" ]
-        #color: "#dbdbdb"
+#      - state: tip  / Orion remove for backmen sprites
+#        map: [ "enum.AmmoVisualLayers.Tip" ]
+#        color: "#dbdbdb"
 
 - type: entity
   id: CartridgePistolIncendiary
@@ -87,17 +87,17 @@
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Incendiary ammunition contains a self-igniting compound that sets the target ablaze.
   parent: BaseCartridgePistol
   components:
-  - type: SpentAmmoVisuals # Backmen sprites / Orion edit
+  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
     state: 35incendiary
   - type: CartridgeAmmo
     proto: BulletPistolIncendiary
   - type: Sprite
     layers:
-      - state: 35incendiary # Backmen sprites / Orion edit
+      - state: 35incendiary # Orion edit for Backmen sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-      #- state: tip  / Orion remove for backmen sprites
-        #map: [ "enum.AmmoVisualLayers.Tip" ]
-        #color: "#ff6e52"
+#      - state: tip  / Orion remove for backmen sprites
+#        map: [ "enum.AmmoVisualLayers.Tip" ]
+#        color: "#ff6e52"
 
 - type: entity
   id: CartridgePistolUranium
@@ -105,17 +105,17 @@
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Uranium core ammunition features a load of fissile material, irradiating the target from the inside.
   parent: BaseCartridgePistol
   components:
-  - type: SpentAmmoVisuals # Backmen sprites / Orion edit
+  - type: SpentAmmoVisuals # Orion edit for Backmen sprites
     state: 35uranium
   - type: CartridgeAmmo
     proto: BulletPistolUranium
   - type: Sprite
     layers:
-      - state: 35uranium # Backmen sprites / Orion edit
+      - state: 35uranium # Orion edit for Backmen sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-      #- state: tip  / Orion remove for backmen sprites
-        #map: [ "enum.AmmoVisualLayers.Tip" ]
-        #color: "#65fe08"
+#      - state: tip  / Orion remove for backmen sprites
+#        map: [ "enum.AmmoVisualLayers.Tip" ]
+#        color: "#65fe08"
 
 - type: entity
   id: CartridgePistolSpent
@@ -126,7 +126,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
     layers:
-    - state: 35combat-spent # Backmen sprites / Orion edit
+    - state: 35combat-spent # Orion edit for Backmen sprites
       map: [ "enum.AmmoVisualLayers.Base" ]
   - type: SpentAmmoVisuals
   - type: CartridgeAmmo

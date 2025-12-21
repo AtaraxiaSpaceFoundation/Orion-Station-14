@@ -1,4 +1,5 @@
-﻿- type: Tag
+﻿
+- type: Tag
   id: GlassesNearsight
 
 - type: Tag
@@ -99,6 +100,9 @@
 
 - type: Tag
   id: MagazineHeavyRifle62
+
+- type: Tag
+  id: MagazineHeavyRifleM41
 
 - type: Tag
   id: MagazinePistolTopSubMachineGun

@@ -1,4 +1,4 @@
-- type: entity # Orion start
+- type: entity # Orion edit-start
   name: Famas
   parent: BaseWeaponRifle
   id: WeaponRifleFamas
@@ -102,6 +102,13 @@
         whitelist:
           tags:
             - MagazineHeavyRifle62
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeMagnum
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -117,7 +124,7 @@
   name: AUG
   parent: BaseWeaponRifle
   id: WeaponRifleAUG
-  description: A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for .25 rifle cartridge.
+  description: A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for .20 rifle cartridge.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Rifles/aug/big.rsi

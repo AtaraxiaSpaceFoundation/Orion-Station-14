@@ -1,4 +1,4 @@
-- type: entity # Orion start
+- type: entity # Orion edit-start
   name: BaseWeaponRifle
   parent: BaseItem
   id: BaseWeaponEnergyRifle
@@ -94,7 +94,7 @@
   name: Triton Mark 3
   parent: BaseWeaponEnergyRifle
   id: WeaponPulseSMGTritonM3
-  description: The AP Motorized Pulse SMP is a military-grade, rapid-fire assault rifle with large magazine ammunition capacity. The Pulse SMG is the standard-issue service rifle of the Earth Special Force.
+  description: The AP Motorized Pulse SMG is a military-grade, rapid-fire assault rifle with large magazine ammunition capacity. The Pulse SMG is the standard-issue service rifle of the Earth Special Force.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Battery/Pulse/smpg/big.rsi
@@ -138,7 +138,7 @@
   name: Hell Hammer
   parent: BaseWeaponEnergyRifle
   id: WeaponPulseShotgunHellHammer
-  description: The Auto Impulse shotgun, used motorized firing mechanism. The Pulse Shotgun is the standard-issue service shotgun of the Earth Special Force.
+  description: The Auto Impulse shotgun, uses a motorized firing mechanism. The Pulse Shotgun is the standard-issue service shotgun of the Earth Special Force.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Battery/Pulse/hellhamer/big.rsi

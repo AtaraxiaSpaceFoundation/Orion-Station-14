@@ -1,8 +1,8 @@
-- type: entity # Orion start
+- type: entity  # Orion edit-start
   name: combat pistol VP-78
   parent: BaseWeaponPistol
   id: WeaponPistolVP78
-  description: The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in 9x19mm rounds.
+  description: The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in .20 rounds.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Pistols/vp78/big.rsi
@@ -148,7 +148,7 @@
   name: service pistol G23
   parent: BaseWeaponPistol
   id: WeaponPistolG23
-  description: A popular self-defense firearm in the modern day. Chambered in 9x19mm.
+  description: A popular self-defense firearm in the modern day. Chambered in .20 rifle.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Pistols/service_pistol23/big.rsi

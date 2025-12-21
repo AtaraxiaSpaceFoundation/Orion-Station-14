@@ -1,19 +1,22 @@
-ent-MagazinePistolTopSubMachineGun = Магазин для P90
+ent-MagazinePistolTopSubMachineGun = магазин для P90
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
 
-ent-ShellShotgunPulse = Импульсная дробь
+ent-BoxPulseRifle = зарядный плазмоблок (энергоболт)
     .desc = { ent-BaseItem.desc }
 
-ent-MagazinePulseShotgun = Магазин (Импульсная дробь)
+ent-ShellShotgunPulse = импульсная дробь
+    .desc = { ent-BaseItem.desc }
+
+ent-MagazinePulseShotgun = магазин (Импульсная дробь)
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
 
-ent-MagazinePulseRifle = магазин AP12 (энергосгусток)
+ent-MagazinePulseRifle = магазин AP12 (энергоболт)
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
 
-ent-MagazinePulseSubMachinePistol = магазин Triton (энергосгусток)
+ent-MagazinePulseSubMachinePistol = магазин Triton (энергоболт)
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
 

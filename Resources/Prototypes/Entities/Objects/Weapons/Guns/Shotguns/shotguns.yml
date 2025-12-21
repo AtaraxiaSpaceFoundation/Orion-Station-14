@@ -143,14 +143,15 @@
       collection: MetalThud # Goobstation ^
 
 - type: entity
-  name: Zauer # Orion edit
+  name: Bulldog
   # Don't parent to BaseWeaponShotgun because it differs significantly
   parent: [BaseItem, BaseGunWieldable, BaseSyndicateContraband]
   id: WeaponShotgunBulldog
+  categories: [ HideSpawnMenu ] # Orion remove: Now it`s Zauer
   description: An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses 12 Gauge shotgun shells. # Goob edit
   components:
   - type: Sprite
-    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/big.rsi # Orion edit
+    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -158,9 +159,8 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
     size: Large
-    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/tiny.rsi # Orion edit
   - type: Clothing
-    sprite: _Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/tiny.rsi # Orion edit
+    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
     quickEquip: false
     slots:
     - Back
