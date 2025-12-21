@@ -22,6 +22,7 @@ public sealed class TimeSystem : EntitySystem
     private bool _useStaticYear;
 
     private TimeSpan _stationTime;
+    private float _accumulatedSeconds;
 
     public override void Initialize()
     {
@@ -41,12 +42,14 @@ public sealed class TimeSystem : EntitySystem
         var stationTimeEntity = Spawn();
         var comp = AddComp<StationTimeManagerComponent>(stationTimeEntity);
 
+        _pvsOverride.AddGlobalOverride(stationTimeEntity);
         UpdateStationTimeComponent(comp);
+
+        Dirty(stationTimeEntity, comp);
     }
 
     private void OnMapInit(Entity<StationTimeManagerComponent> ent, ref MapInitEvent args)
     {
-        _pvsOverride.AddGlobalOverride(ent);
         UpdateStationTimeComponent(ent.Comp);
         Dirty(ent, ent.Comp);
     }
@@ -55,8 +58,14 @@ public sealed class TimeSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var scaledTime = frameTime * 2f; // x2 speed
-        _stationTime += TimeSpan.FromSeconds(scaledTime);
+        _accumulatedSeconds += frameTime * 2f; // x2 speed
+
+        if (_accumulatedSeconds < 1.0f)
+            return;
+
+        var deltaSeconds = Math.Floor(_accumulatedSeconds);
+        _accumulatedSeconds -= (float)deltaSeconds;
+        _stationTime += TimeSpan.FromSeconds(deltaSeconds);
 
         if (_stationTime >= TimeSpan.FromDays(1))
             _stationTime = _stationTime.Subtract(TimeSpan.FromDays(1));

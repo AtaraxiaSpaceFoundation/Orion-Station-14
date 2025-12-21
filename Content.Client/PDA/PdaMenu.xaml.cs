@@ -208,12 +208,12 @@ namespace Content.Client.PDA
                 ("station", _stationName)));
 
 
-/*            // Orion-Edit-Start | Optimization
+/* // Orion-Edit: Optimization
             var stationTime = _timeSystem.GetStationTime();
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.Time.ToString("hh\\:mm\\:ss"))));
-*/            // Orion-Edit-End
+*/
 
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
             var alertColor = state.PdaOwnerInfo.StationAlertColor;
@@ -230,19 +230,6 @@ namespace Content.Client.PDA
                 "comp-pda-ui-station-alert-level-instructions",
                 ("instructions", _instructions))
             );
-            // Orion-Start
-            if (TryGetStationTime(out var stationTime))
-            {
-                StationRealTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-real-time",
-                    ("time", stationTime.ToString(@"hh\:mm"))));
-            }
-
-            if (TryGetStationDate(out var stationDate))
-            {
-                StationDateLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-date",
-                    ("date", stationDate.ToString("dd.MM.yyyy"))));
-            }
-            // Orion-End
 
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
 
@@ -401,6 +388,20 @@ namespace Content.Client.PDA
 
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString(@"hh\:mm\:ss"))));
+
+            // Orion-Start
+            if (TryGetStationTime(out var orionTime))
+            {
+                StationRealTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-real-time",
+                    ("time", orionTime.ToString(@"hh\:mm"))));
+            }
+
+            if (TryGetStationDate(out var orionDate))
+            {
+                StationDateLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-date",
+                    ("date", orionDate.ToString("dd.MM.yyyy"))));
+            }
+            // Orion-End
         }
 
         // Orion-Start
