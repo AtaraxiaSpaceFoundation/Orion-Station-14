@@ -145,7 +145,7 @@
       gun_chamber: !type:ContainerSlot
 
 - type: entity
-  name: service pistole G23
+  name: service pistol G23
   parent: BaseWeaponPistol
   id: WeaponPistolG23
   description: A popular self-defense firearm in the modern day. Chambered in 9x19mm.

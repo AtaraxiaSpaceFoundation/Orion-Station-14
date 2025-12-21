@@ -1,5 +1,5 @@
 - type: entity # Orion start
-  name: GL-79
+  name: GL-70
   parent: BaseWeaponLauncher
   id: WeaponLauncherGL70
   description: The GL-70 is the standard grenade launcher used by the Earth Army for area denial and big explosions.

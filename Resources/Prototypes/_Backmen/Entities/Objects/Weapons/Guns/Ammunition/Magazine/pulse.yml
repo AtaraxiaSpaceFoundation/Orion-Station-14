@@ -1,7 +1,7 @@
 - type: entity # Orion start
   id: MagazinePulseRifle
   name: pulse rifle magazine
-  description: Standart EarthGov type of impulse magazines
+  description: Standard EarthGov type of impulse magazines
   parent: BaseItem
   components:
   - type: Tag

@@ -2,7 +2,7 @@
   name: Famas
   parent: BaseWeaponRifle
   id: WeaponRifleFamas
-  description: A light, versatile assault rifle."
+  description: A light, versatile assault rifle.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Rifles/famas/big.rsi

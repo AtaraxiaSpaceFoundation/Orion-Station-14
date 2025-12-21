@@ -21,6 +21,6 @@ ent-MagazineLightMachineGunRPD = барабанный магазин для РП
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
 
-ent-MagazineHeavyRifleM41 = мазазин M-41 (.20 винтовочный)
+ent-MagazineHeavyRifleM41 = магазин M-41 (.20 винтовочный)
     .desc = { ent-BaseItem.desc }
     .suffix = Полный

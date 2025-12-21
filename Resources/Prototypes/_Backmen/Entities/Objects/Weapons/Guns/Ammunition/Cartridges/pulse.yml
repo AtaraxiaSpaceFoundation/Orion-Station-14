@@ -57,7 +57,7 @@
     soundEject:
       collection: ShellLand # Orion edit
   - type: Sprite
-    sprite: _Backmen/Objects/Weapons/Gunsx64/Ammunition/Casings/battary.rsi
+    sprite: _Backmen/Objects/Weapons/Gunsx64/Ammunition/Casings/battery.rsi
     layers:
       - state: base
         map: [ "enum.AmmoVisualLayers.Base" ]

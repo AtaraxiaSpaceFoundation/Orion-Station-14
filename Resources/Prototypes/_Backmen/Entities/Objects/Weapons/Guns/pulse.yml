@@ -138,7 +138,7 @@
   name: Hell Hammer
   parent: BaseWeaponEnergyRifle
   id: WeaponPulseShotgunHellHammer
-  description: The Auto Impulse shotgun, used motorizeded firing mechanism. The Pulse Shotgun is the standard-issue service shotgun of the Earth Special Force.
+  description: The Auto Impulse shotgun, used motorized firing mechanism. The Pulse Shotgun is the standard-issue service shotgun of the Earth Special Force.
   components:
   - type: Sprite
     sprite: _Backmen/Objects/Weapons/Gunsx64/Battery/Pulse/hellhamer/big.rsi

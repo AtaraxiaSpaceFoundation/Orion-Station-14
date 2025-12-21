@@ -176,7 +176,6 @@
   name: EarthGov heavy laser rifle
   parent: BaseWeaponBattery
   id: WeaponEarthGovLaserSniper
-  suffix: Винтовка
   description: A Earth Government heavy sniper rifle for a extended combat situation.
   components:
   - type: Appearance
@@ -225,7 +224,7 @@
     pvsIncrease: 0.5
 
 - type: entity
-  name: EarthGov Experemental X-Ray
+  name: EarthGov Experimental X-Ray
   parent: BaseWeaponBattery
   id: WeaponEarthGovXRay
   suffix: Винтовка
