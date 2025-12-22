@@ -107,20 +107,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />
                                     <Control HorizontalExpand="True"/>
                                     <!-- Orion-Edit-Start: Clothing display -->
-                                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Button Name="ShowAllClothesButton"
-                                                Text="{Loc 'humanoid-profile-editor-clothing-show-all'}"
-                                                ToggleMode="True"
-                                                Pressed="True"
-                                                StyleClasses="OpenLeft" />
-                                        <Button Name="ShowUnderwearButton"
-                                                Text="{Loc 'humanoid-profile-editor-clothing-show-underwear'}"
-                                                ToggleMode="True"
-                                                StyleClasses="OpenBoth" />
-                                        <Button Name="HideClothesButton"
-                                                Text="{Loc 'humanoid-profile-editor-clothing-hide-all'}"
-                                                ToggleMode="True"
-                                                StyleClasses="OpenRight" />
+                                    <BoxContainer HorizontalExpand="True">
+                                        <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />
+                                        <Control HorizontalExpand="True"/>
+                                        <OptionButton Name="ClothingDisplayButton" HorizontalAlignment="Right" />
                                     </BoxContainer>
                                     <!-- Orion-Edit-End -->
                                 </BoxContainer>

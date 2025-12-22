@@ -715,49 +715,15 @@ namespace Content.Client.Lobby.UI
             // Orion-Start
             _clothingDisplayMode = ClothingDisplayMode.ShowAll;
 
-            ShowAllClothesButton.OnToggled += args =>
-            {
-                if (args.Pressed)
-                {
-                    _clothingDisplayMode = ClothingDisplayMode.ShowAll;
-                    ShowUnderwearButton.Pressed = false;
-                    HideClothesButton.Pressed = false;
-                    ReloadPreview();
-                }
-                else if (!ShowUnderwearButton.Pressed && !HideClothesButton.Pressed)
-                {
-                    ShowAllClothesButton.Pressed = true;
-                }
-            };
+            ClothingDisplayButton.AddItem(Loc.GetString("humanoid-profile-editor-clothing-show-all"), (int)ClothingDisplayMode.ShowAll);
+            ClothingDisplayButton.AddItem(Loc.GetString("humanoid-profile-editor-clothing-show-underwear"), (int)ClothingDisplayMode.ShowUnderwearOnly);
+            ClothingDisplayButton.AddItem(Loc.GetString("humanoid-profile-editor-clothing-hide-all"), (int)ClothingDisplayMode.HideAll);
+            ClothingDisplayButton.SelectId((int)ClothingDisplayMode.ShowAll);
 
-            ShowUnderwearButton.OnToggled += args =>
+            ClothingDisplayButton.OnItemSelected += args =>
             {
-                if (args.Pressed)
-                {
-                    _clothingDisplayMode = ClothingDisplayMode.ShowUnderwearOnly;
-                    ShowAllClothesButton.Pressed = false;
-                    HideClothesButton.Pressed = false;
-                    ReloadPreview();
-                }
-                else if (!ShowAllClothesButton.Pressed && !HideClothesButton.Pressed)
-                {
-                    ShowUnderwearButton.Pressed = true;
-                }
-            };
-
-            HideClothesButton.OnToggled += args =>
-            {
-                if (args.Pressed)
-                {
-                    _clothingDisplayMode = ClothingDisplayMode.HideAll;
-                    ShowAllClothesButton.Pressed = false;
-                    ShowUnderwearButton.Pressed = false;
-                    ReloadPreview();
-                }
-                else if (!ShowAllClothesButton.Pressed && !ShowUnderwearButton.Pressed)
-                {
-                    HideClothesButton.Pressed = true;
-                }
+                _clothingDisplayMode = (ClothingDisplayMode)args.Id;
+                ReloadPreview();
             };
             // Orion-End
 

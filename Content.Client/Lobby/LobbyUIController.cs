@@ -454,25 +454,29 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                 // Orion-Start
                 if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly)
                 {
-                    var isUnderwear = false;
-                    if (_prototypeManager.TryIndex(loadoutProto.StartingGear, out var gear) && gear is IEquipmentLoadout equipGear)
-                    {
-                        foreach (var slotName in UnderwearSlots)
-                        {
-                            if (equipGear.GetGear(slotName) == null)
-                                continue;
-
-                            isUnderwear = true;
-                            break;
-                        }
-                    }
-
-                    if (!isUnderwear)
+                    if (!_prototypeManager.TryIndex(loadoutProto.StartingGear, out var gear))
                         continue;
+
+                    if (gear is not IEquipmentLoadout equipGear)
+                        continue;
+
+                    foreach (var slotName in UnderwearSlots)
+                    {
+                        var itemType = equipGear.GetGear(slotName);
+                        if (string.IsNullOrEmpty(itemType))
+                            continue;
+
+                        var item = EntityManager.SpawnEntity(itemType, MapCoordinates.Nullspace);
+                        _inventory.TryEquip(uid, item, slotName, true, true);
+                    }
                 }
                 // Orion-End
-
-                _spawn.EquipStartingGear(uid, loadoutProto);
+                // Orion-Edit-Start
+                else
+                {
+                    _spawn.EquipStartingGear(uid, loadoutProto);
+                }
+                // Orion-Edit-End
             }
         }
     }
