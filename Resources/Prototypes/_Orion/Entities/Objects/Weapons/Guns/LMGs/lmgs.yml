@@ -164,12 +164,6 @@
     state: icon
   - type: Item
     size: Ginormous
-  - type: Clothing
-    sprite: _Goobstation/Objects/Weapons/Guns/Battery/energy_lmg.rsi
-    quickEquip: false
-    slots:
-    - Back
-    - suitStorage
   - type: Gun
     minAngle: 1
     maxAngle: 10
