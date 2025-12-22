@@ -486,11 +486,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     /// </summary>
     private void GiveDummyJobClothes(EntityUid dummy, HumanoidCharacterProfile profile, JobPrototype job, ClothingDisplayMode clothingMode = ClothingDisplayMode.ShowAll) // Orion-Edit
     {
-        // Orion-Start
-        if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly)
-            return;
-        // Orion-End
-
         if (!_inventory.TryGetSlots(dummy, out var slots)) // Orion-Edit
             return;
 
@@ -504,9 +499,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                     if (!_prototypeManager.TryIndex(loadout.Prototype, out var loadoutProto))
                         continue;
 
-                    // TODO: Need some way to apply starting gear to an entity and replace existing stuff coz holy fucking shit dude.
+                    // Orion-Edit-Start
                     foreach (var slot in slots)
                     {
+                        if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly &&
+                            !UnderwearSlots.Contains(slot.Name))
+                            continue;
+
                         // Try startinggear first
                         if (_prototypeManager.TryIndex(loadoutProto.StartingGear, out var loadoutGear))
                         {
@@ -517,7 +516,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                                 EntityManager.DeleteEntity(unequippedItem.Value);
                             }
 
-/* // Orion-Edit: Removed
                             if (itemType != string.Empty)
                             {
                                 var item = EntityManager.SpawnEntity(itemType, MapCoordinates.Nullspace);
@@ -532,7 +530,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                             {
                                 EntityManager.DeleteEntity(unequippedItem.Value);
                             }
-*/
 
                             if (itemType != string.Empty)
                             {
@@ -541,9 +538,15 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                             }
                         }
                     }
+                    // Orion-Edit-End
                 }
             }
         }
+
+        // Orion-Start
+        if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly)
+            return;
+        // Orion-End
 
         if (!_prototypeManager.TryIndex(job.StartingGear, out var gear))
             return;
