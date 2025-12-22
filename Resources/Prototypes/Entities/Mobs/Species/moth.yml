@@ -283,6 +283,23 @@
           32:
             sprite: Mobs/Species/Moth/displacement.rsi
             state: shoes
+      # Orion-Start
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-male
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: shoes
+      wrists:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: hand
+      # Orion-End
     displacements:
       jumpsuit:
         sizeMaps:
@@ -309,6 +326,23 @@
           32:
             sprite: Mobs/Species/Moth/displacement.rsi
             state: shoes
+      # Orion-Start
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-male
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: shoes
+      wrists:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: hand
+      # Orion-End
   - type: Fixtures # Goob edit - make moths lighter
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -359,6 +393,23 @@
           32:
             sprite: Mobs/Species/Moth/displacement.rsi
             state: shoes
+      # Orion-Start
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-male
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: shoes
+      wrists:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: hand
+      # Orion-End
     displacements:
       jumpsuit:
         sizeMaps:
@@ -385,3 +436,20 @@
           32:
             sprite: Mobs/Species/Moth/displacement.rsi
             state: shoes
+      # Orion-Start
+      underwear:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-male
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: shoes
+      wrists:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: hand
+      # Orion-End

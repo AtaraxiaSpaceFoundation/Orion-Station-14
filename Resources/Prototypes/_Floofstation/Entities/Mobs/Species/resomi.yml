@@ -159,6 +159,16 @@
           32:
             sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
             state: feet
+      earsright:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: ears
+      wrists:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: hands
       # Orion-End
     femaleDisplacements: # Goobstation - splitting up the genders broke displacements, apparently it won't just apply the same displacement to both genders :|
       jumpsuit:

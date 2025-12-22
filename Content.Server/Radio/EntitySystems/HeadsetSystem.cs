@@ -217,6 +217,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             // Orion-Edit-Start
             var parent = Transform(uid).ParentUid;
             UpdateWearingHeadsetComponent(parent);
+            UpdateRadioChannels(uid, component);
             // Orion-Edit-End
         }
     }
