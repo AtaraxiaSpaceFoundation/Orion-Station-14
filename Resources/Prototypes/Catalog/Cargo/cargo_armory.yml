@@ -97,7 +97,7 @@
 - type: cargoProduct
   id: ArmoryRifle
   icon:
-    sprite: Objects/Weapons/Guns/Rifles/lecter/big.rsi # Orion-edit: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/lecter/big.rsi # Orion-edit: New sprites
     state: icon
   product: CrateArmoryRifle
   cost: 8000
