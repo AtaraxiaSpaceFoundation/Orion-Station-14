@@ -1,0 +1,180 @@
+
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Created by discord:𝘽𝙚𝙡𝙖𝙮#7441 / Taken from https://github.com/Rxup/space-station-14/tree/master/Resources/Textures/Backmen/Objects/Weapons/Gunsx64. Uranium and incendiary by UmbiMax",
+    "states": [
+        {
+            "name": "cap"
+        },
+        {
+            "name": "cap-spent"
+        },
+        {
+            "name": "35combat"
+        },
+        {
+            "name": "35combat-spent"
+        },
+        {
+            "name": "35incendiary"
+        },
+        {
+            "name": "35uranium-spent"
+        },
+        {
+            "name": "35uranium"
+        },
+        {
+            "name": "35incendiary-spent"
+        },
+        {
+            "name": "35fast"
+        },
+        {
+            "name": "35fast-spent"
+        },
+        {
+            "name": "35rubber"
+        },
+        {
+            "name": "35rubber-spent"
+        },
+        {
+            "name": "35training"
+        },
+        {
+            "name": "35training-spent"
+        },
+        {
+            "name": "45combat"
+        },
+        {
+            "name": "45combat-spent"
+        },
+        {
+            "name": "45incendiary"
+        },
+        {
+            "name": "45incendiary-spent"
+        },
+        {
+            "name": "45uranium"
+        },
+        {
+            "name": "45uranium-spent"
+        },
+        {
+            "name": "45fast"
+        },
+        {
+            "name": "45fast-spent"
+        },
+        {
+            "name": "45rubber"
+        },
+        {
+            "name": "45rubber-spent"
+        },
+        {
+            "name": "45training"
+        },
+        {
+            "name": "45training-spent"
+        },
+        {
+            "name": "30combat"
+        },
+        {
+            "name": "30combat-spent"
+        },
+        {
+            "name": "30incendiary"
+        },
+        {
+            "name": "30incendiary-spent"
+        },
+        {
+            "name": "30uranium"
+        },
+        {
+            "name": "30uranium-spent"
+        },
+        {
+            "name": "30fast"
+        },
+        {
+            "name": "30fast-spent"
+        },
+        {
+            "name": "30rubber"
+        },
+        {
+            "name": "30rubber-spent"
+        },
+        {
+            "name": "30training"
+        },
+        {
+            "name": "30training-spent"
+        },
+        {
+            "name": "25combat"
+        },
+        {
+            "name": "25incendiary"
+        },
+        {
+            "name": "25uranium"
+        },
+        {
+            "name": "25fast"
+        },
+        {
+            "name": "25rubber"
+        },
+        {
+            "name": "25training"
+        },
+        {
+            "name": "20combat"
+        },
+        {
+            "name": "20combat-spent"
+        },
+        {
+            "name": "20incendiary"
+        },
+        {
+            "name": "20incendiary-spent"
+        },
+        {
+            "name": "20uranium"
+        },
+        {
+            "name": "20uranium-spent"
+        },
+        {
+            "name": "20fast"
+        },
+        {
+            "name": "20fast-spent"
+        },
+        {
+            "name": "20rubber"
+        },
+        {
+            "name": "20rubber-spent"
+        },
+        {
+            "name": "20training"
+        },
+        {
+            "name": "20training-spent"
+        }
+    ]
+}

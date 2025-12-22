@@ -55,7 +55,7 @@
   - type: CartridgeAmmo
     proto: PulseBulletSpread
     soundEject:
-      collection: ShellLand # Orion edit
+      collection: ShellLand
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/battery.rsi
     layers:
@@ -72,7 +72,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
-    #impactEffect: BulletPulseEffect
     damage:
       types:
         Heat: 4

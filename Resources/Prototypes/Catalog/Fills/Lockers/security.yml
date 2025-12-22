@@ -421,7 +421,7 @@
   table: !type:AllSelector
     children:
     - id: WeaponLaserCarbine
-#      amount: 3
+#      amount: 3   # Orion-Edit: Removed
     # Orion-Start
     - id: WeaponEarthGovLaserSniper
     - id: WeaponEarthGovLaserCarbine  

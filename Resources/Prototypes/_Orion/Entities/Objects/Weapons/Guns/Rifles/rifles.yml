@@ -48,7 +48,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineRifle
         insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
@@ -57,7 +56,6 @@
           tags:
             - MagazineRifle
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeRifle
         priority: 1
         whitelist:
@@ -106,7 +104,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineHeavyRifleBR64
         insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m41a_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m41a_unload.ogg
@@ -115,7 +112,6 @@
           tags:
             - MagazineHeavyRifle62
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeMagnum
         priority: 1
         whitelist:
@@ -164,7 +160,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineRifle
         insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
@@ -173,7 +168,6 @@
           tags:
             - MagazineRifle
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeRifle
         priority: 1
         whitelist:

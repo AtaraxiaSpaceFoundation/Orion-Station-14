@@ -46,13 +46,13 @@
   - type: CartridgeAmmo
     proto: BulletPistol
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-edit: New sprites
     layers:
-      - state: 35combat # Orion edit: New sprites
+      - state: 35combat # Orion-edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
   - type: Appearance
   - type: SpentAmmoVisuals
-    state: 35combat # Orion edit: New sprites
+    state: 35combat # Orion-edit: New sprites
 
 - type: entity
   id: CartridgePistol
@@ -69,7 +69,7 @@
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Chalk ammunition is generally non-harmful, used for practice.
   parent: BaseCartridgePistol
   components:
-  - type: SpentAmmoVisuals # Orion edit: New sprites
+  - type: SpentAmmoVisuals # Orion-edit: New sprites
     state: 35training
   - type: CartridgeAmmo
     proto: BulletPistolPractice
@@ -77,7 +77,7 @@
     layers:
       - state: 35training
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip  # Orion remove: New sprites
+#      - state: tip  # Orion-remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#dbdbdb"
 
@@ -87,15 +87,15 @@
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Incendiary ammunition contains a self-igniting compound that sets the target ablaze.
   parent: BaseCartridgePistol
   components:
-  - type: SpentAmmoVisuals # Orion edit: New sprites
+  - type: SpentAmmoVisuals # Orion-edit: New sprites
     state: 35incendiary
   - type: CartridgeAmmo
     proto: BulletPistolIncendiary
   - type: Sprite
     layers:
-      - state: 35incendiary # Orion edit: New sprites
+      - state: 35incendiary # Orion-edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip  # Orion remove: New sprites
+#      - state: tip  # Orion-remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#ff6e52"
 
@@ -105,15 +105,15 @@
   description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Uranium core ammunition features a load of fissile material, irradiating the target from the inside.
   parent: BaseCartridgePistol
   components:
-  - type: SpentAmmoVisuals # Orion edit: New sprites
+  - type: SpentAmmoVisuals # Orion-edit: New sprites
     state: 35uranium
   - type: CartridgeAmmo
     proto: BulletPistolUranium
   - type: Sprite
     layers:
-      - state: 35uranium # Orion edit: New sprites
+      - state: 35uranium # Orion-edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip  # Orion remove: New sprites
+#      - state: tip  # Orion-remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#65fe08"
 
@@ -124,9 +124,9 @@
   parent: BaseCartridgePistol
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-edit: New sprites
     layers:
-    - state: 35combat-spent # Orion edit: New sprites
+    - state: 35combat-spent # Orion-edit: New sprites
       map: [ "enum.AmmoVisualLayers.Base" ]
   - type: SpentAmmoVisuals
   - type: CartridgeAmmo

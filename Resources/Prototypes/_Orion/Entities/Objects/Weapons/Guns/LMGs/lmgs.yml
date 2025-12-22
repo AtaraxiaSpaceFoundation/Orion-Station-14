@@ -28,7 +28,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineLightMachineGunRPD
         insertSound: /Audio/_Orion/Weapons/Guns/Rifles/ak47_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/ak47_unload.ogg
@@ -37,7 +36,6 @@
           tags:
             - MagazineLightMachineGunRPD
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeLightRifle
         priority: 1
         whitelist:
@@ -87,7 +85,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineHeavyRifleM41
         insertSound: /Audio/_Orion/Weapons/Guns/LMGs/m60_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/LMGs/m60_unload.ogg
@@ -96,7 +93,6 @@
           tags:
             - MagazineHeavyRifleM41
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeRifle
         priority: 1
         whitelist:

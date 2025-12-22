@@ -347,7 +347,7 @@
   - UplinkWeaponry
 
 - type: listing
-  id: UplinkBulldog #goob
+  id: UplinkZauer # Orion
   name: uplink-zauer-name # Orion
   description: uplink-buldog-desc #goob
   icon: { sprite: _Orion/Objects/Weapons/Guns/Shotguns/zauer/big.rsi, state: icon } # Orion

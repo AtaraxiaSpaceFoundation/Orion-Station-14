@@ -93,7 +93,7 @@
     - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/smg.ogg
-    soundEmpty: # Orion edit
+    soundEmpty: # Orion-edit
       path: /Audio/_Orion/Weapons/Guns/Rifles/m41a_empty.ogg
     defaultDirection: 1, 0
   - type: ChamberMagazineAmmoProvider
@@ -249,7 +249,7 @@
       fireRate: 6
       burstFireRate: 18
       soundGunshot:
-        path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg # Orion edit
+        path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg # Orion-edit
       selectedMode: Burst
       availableModes:
       - Burst

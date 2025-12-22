@@ -40,7 +40,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazinePistol57x28
         insertSound: /Audio/_Orion/Weapons/Guns/Pistols/vp70_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Pistols/vp70_unload.ogg
@@ -49,7 +48,6 @@
           tags:
             - MagazinePistol57x28
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeRifle
         priority: 1
         whitelist:
@@ -91,7 +89,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineMagnum
         insertSound: /Audio/_Orion/Weapons/Guns/Pistols/deagle_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Pistols/deagle_unload.ogg
@@ -100,7 +97,6 @@
           tags:
             - MagazineMagnum
       gun_chamber:
-        name: Chamber
         startingItem: CartridgeMagnum
         priority: 1
         whitelist:
@@ -135,7 +131,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazinePistol
         insertSound: /Audio/_Orion/Weapons/Guns/Pistols/beretta_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Pistols/beretta_unload.ogg
@@ -144,7 +139,6 @@
           tags:
             - MagazinePistol
       gun_chamber:
-        name: Chamber
         startingItem: CartridgePistol
         priority: 1
         whitelist:
@@ -183,7 +177,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazinePistol
         insertSound: /Audio/_Orion/Weapons/Guns/Pistols/colt_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Pistols/colt_unload.ogg
@@ -192,7 +185,6 @@
           tags:
             - MagazinePistol
       gun_chamber:
-        name: Chamber
         startingItem: CartridgePistol
         priority: 1
         whitelist:

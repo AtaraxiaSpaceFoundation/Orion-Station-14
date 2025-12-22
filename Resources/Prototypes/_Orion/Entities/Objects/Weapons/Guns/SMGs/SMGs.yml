@@ -47,7 +47,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazinePistolTopSubMachineGun
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
@@ -56,12 +55,11 @@
           tags:
             - MagazinePistolTopSubMachineGun
       gun_chamber:
-        name: Chamber
-        startingItem: CartridgePistol # Orion edit
+        startingItem: CartridgePistol # Orion-edit
         priority: 1
         whitelist:
           tags:
-            - CartridgePistol # Orion edit
+            - CartridgePistol # Orion-edit
   - type: MagazineVisuals
     magState: mag
     steps: 6

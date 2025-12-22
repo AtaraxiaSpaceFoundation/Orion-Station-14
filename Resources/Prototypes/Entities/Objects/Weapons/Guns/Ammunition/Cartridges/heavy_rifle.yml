@@ -39,7 +39,7 @@
   - type: CartridgeAmmo
     proto: BulletHeavyRifle
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-edit: New sprites
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]

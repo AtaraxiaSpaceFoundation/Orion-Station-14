@@ -32,14 +32,14 @@
   - type: CartridgeAmmo
     proto: BulletLightRifle
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-edit: New sprites
     scale: 0.8, 0.8
     layers:
-    - state: 30combat # Orion edit: New sprites
+    - state: 30combat # Orion-edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
   - type: SpentAmmoVisuals
-    state: 30combat # Orion edit: New sprites
+    state: 30combat # Orion-edit: New sprites
 
 - type: entity
   id: CartridgeLightRifle
@@ -56,15 +56,15 @@
   parent: BaseCartridgeLightRifle
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Chalk ammunition is generally non-harmful, used for practice.
   components:
-  - type: SpentAmmoVisuals # Orion edit: New sprites
+  - type: SpentAmmoVisuals # Orion-edit: New sprites
     state: 30training
   - type: CartridgeAmmo
     proto: BulletLightRiflePractice
   - type: Sprite
     layers:
-      - state: 30training # Orion edit: New sprites
+      - state: 30training # Orion-edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion remove: New sprites
+#      - state: tip # Orion-remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#dbdbdb"
 
@@ -74,13 +74,13 @@
   parent: BaseCartridgeLightRifle
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Incendiary ammunition contains a self-igniting compound that sets the target ablaze.
   components:
-  - type: SpentAmmoVisuals # Orion edit: New sprites
+  - type: SpentAmmoVisuals # Orion-edit: New sprites
     state: 30incendiary
   - type: CartridgeAmmo
     proto: BulletLightRifleIncendiary
   - type: Sprite
     layers:
-      - state: 30incendiary # Orion edit: New sprites
+      - state: 30incendiary # Orion-edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
 #      - state: tip
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
@@ -92,14 +92,14 @@
   parent: BaseCartridgeLightRifle
   description: A classic intermediate cartridge used by many combat rifles and LMGs. Uranium ammunition replaces the lead core of the bullet with fissile material, irradiating the target from the inside.
   components:
-  - type: SpentAmmoVisuals # Orion edit: New sprites
+  - type: SpentAmmoVisuals # Orion-edit: New sprites
     state: 30uranium
   - type: CartridgeAmmo
     proto: BulletLightRifleUranium
   - type: Sprite
     layers:
-      - state: 30uranium # Orion edit: New sprites
+      - state: 30uranium # Orion-edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip    # Orion remove: New sprites
+#      - state: tip    # Orion-remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#65fe08"
