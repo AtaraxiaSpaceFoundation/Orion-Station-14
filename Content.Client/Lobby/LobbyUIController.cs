@@ -132,6 +132,8 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     private HumanoidProfileEditor? _profileEditor;
     private CharacterSetupGuiSavePanel? _savePanel;
 
+    private static readonly string[] UnderwearSlots = ["underwear", "undershirt", "socks"]; // Orion
+
     /// <summary>
     /// This is the characher preview panel in the chat. This should only update if their character updates.
     /// </summary>
@@ -415,15 +417,15 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     /// <summary>
     /// Applies the highest priority job's clothes to the dummy.
     /// </summary>
-    public void GiveDummyJobClothesLoadout(EntityUid dummy, JobPrototype? jobProto, HumanoidCharacterProfile profile)
+    public void GiveDummyJobClothesLoadout(EntityUid dummy, JobPrototype? jobProto, HumanoidCharacterProfile profile, ClothingDisplayMode clothingMode = ClothingDisplayMode.ShowAll) // Orion-Edit
     {
         var job = jobProto ?? GetPreferredJob(profile);
-        GiveDummyJobClothes(dummy, profile, job);
+        GiveDummyJobClothes(dummy, profile, job, clothingMode); // Orion-Edit
 
         if (_prototypeManager.HasIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(job.ID)))
         {
             var loadout = profile.GetLoadoutOrDefault(LoadoutSystem.GetJobPrototype(job.ID), _playerManager.LocalSession, profile.Species, EntityManager, _prototypeManager);
-            GiveDummyLoadout(dummy, loadout);
+            GiveDummyLoadout(dummy, loadout, clothingMode); // Orion-Edit
         }
     }
 
@@ -455,7 +457,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                     var isUnderwear = false;
                     if (_prototypeManager.TryIndex(loadoutProto.StartingGear, out var gear) && gear is IEquipmentLoadout equipGear)
                     {
-                        foreach (var slotName in new[] { "underwear", "undershirt", "socks" })
+                        foreach (var slotName in UnderwearSlots)
                         {
                             if (equipGear.GetGear(slotName) == null)
                                 continue;
@@ -560,7 +562,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     // Orion-Start
     private static bool IsUnderwearSlot(string slotName)
     {
-        return slotName is "underwear" or "undershirt" or "socks";
+        return UnderwearSlots.Contains(slotName);
     }
     // Orion-End
 
