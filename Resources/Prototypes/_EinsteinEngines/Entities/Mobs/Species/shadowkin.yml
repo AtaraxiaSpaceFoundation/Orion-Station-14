@@ -271,8 +271,6 @@
           sprite: Mobs/Customization/masking_helpers.rsi
           state: full
           visible: false
-        - map: ["enum.HumanoidVisualLayers.LFoot"]
-        - map: ["enum.HumanoidVisualLayers.RFoot"]
 #        - map: ["socks"] # Orion-Edit: Removed
 #        - map: ["underpants"] # Orion-Edit: Removed
 #        - map: ["undershirt"] # Orion-Edit: Removed
