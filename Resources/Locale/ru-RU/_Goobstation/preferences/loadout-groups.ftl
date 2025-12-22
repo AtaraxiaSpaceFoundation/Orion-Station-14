@@ -10,31 +10,31 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-loadout-group-ntr-head = Голова представителя НаноТрейзен
-loadout-group-ntr-backpack = Рюкзак представителя НаноТрейзен
-loadout-group-ntr-neck = Ожерелье представителя НаноТрейзен
-loadout-group-ntr-jumpsuit = Комбинезон представителя НаноТрейзен
-loadout-group-ntr-belt = Пояс представителя НаноТрейзен
-loadout-group-ntr-shoes = Обувь представителя НаноТрейзен
-loadout-group-bso-head = Голова офицера Синего Щита
-loadout-group-bso-backpack = Рюкзак офицера Синего Щита
-loadout-group-bso-jumpsuit = Комбинезон офицера Синего Щита
-loadout-group-bso-mask = Маска офицера Синего Щита
-loadout-group-bso-outer = Броня офицера Синего Щита
-loadout-group-bso-neck = Ожерелье офицера Синего Щита
-loadout-group-bso-shoes = Обувь офицера Синего Щита
-loadout-group-nct-head = Голова тренера НаноТрейзен
-loadout-group-nct-backpack = Рюкзак тренера НаноТрейзен
-loadout-group-nct-jumpsuit = Комбинезон тренера НаноТрейзен
-loadout-group-nct-outerclothing = Внешняя одежда тренера НаноТрейзен
-loadout-group-nct-belt = Пояс тренера НаноТрейзен
-loadout-group-nct-gloves = Перчатки тренера  НаноТрейзен
-loadout-group-nct-shoes = Обувь тренера НаноТрейзен
-loadout-group-reporter-outerclothing = Внешняя одежда репортера
-loadout-group-security-neck = Ожерелье службы безопасности
-loadout-group-captain-mask = Маска капитана
-loadout-group-salvage-specialist-neck = Ожерелье специалиста по сальважу
-loadout-group-chemist-head = Голова химика
+loadout-group-ntr-head = Представитель НТ, голова
+loadout-group-ntr-backpack = Представитель НТ, рюкзак
+loadout-group-ntr-neck = Представитель НТ, шея
+loadout-group-ntr-jumpsuit = Представитель НТ, комбинезон
+loadout-group-ntr-belt = Представитель НТ, пояс
+loadout-group-ntr-shoes = Представитель НТ, обувь
+loadout-group-bso-head = Офицер Синий Щит, голова
+loadout-group-bso-backpack = Офицер Синий Щит, рюкзак
+loadout-group-bso-jumpsuit = Офицер Синий Щит, комбинезон
+loadout-group-bso-mask = Офицер Синий Щит, маска
+loadout-group-bso-outer = Офицер Синий Щит, верхняя одежда
+loadout-group-bso-neck = Офицер Синий Щит, шея
+loadout-group-bso-shoes = Офицер Синий Щит, обувь
+loadout-group-nct-head = Голова тренера НаноТрейзен, голова
+loadout-group-nct-backpack = Тренер НаноТрейзен, рюкзак
+loadout-group-nct-jumpsuit = Тренер НаноТрейзен, комбинезон
+loadout-group-nct-outerclothing = Тренер НаноТрейзен, верхняя одежда
+loadout-group-nct-belt = Тренер НаноТрейзен, пояс
+loadout-group-nct-gloves = Тренер НаноТрейзен, перчатки
+loadout-group-nct-shoes = Тренер НаноТрейзен, обувь
+loadout-group-reporter-outerclothing = Репортёр, верхняя одежда
+loadout-group-security-neck = Служба Безопасности, шея
+loadout-group-captain-mask = Капитан, маска
+loadout-group-salvage-specialist-neck = Шахтёр, шея
+loadout-group-chemist-head = Химик, голова
 loadout-group-hos-shoes = Глава Службы Безопасности, обувь
 loadout-group-brigmedic-jumpsuit = Бригмедик, комбинезон
 loadout-group-brigmedic-head = Бригмедик, голова
@@ -42,3 +42,9 @@ loadout-group-brigmedic-outer = Бригмедик, верхняя одежда
 loadout-group-brigmedic-backpack = Бригмедик, рюкзак
 loadout-group-security-melee = Служба Безопасности, оружие ближнего боя
 loadout-group-animals = Животные
+
+# Virology
+loadout-group-virologist-jumpsuit = Вирусолог, униформа
+loadout-group-virologist-backpack = Вирусолог, рюкзак
+loadout-group-virologist-outerclothing = Вирусолог, верхняя одежда
+loadout-group-virologist-id = Вирусолог, ID

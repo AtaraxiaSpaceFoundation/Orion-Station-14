@@ -44,7 +44,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Goobstation.Common.Changeling;
 using Content.Goobstation.Shared.Revolutionary;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
@@ -84,6 +83,7 @@ using Content.Shared.Zombies;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Goobstation.Shared.Changeling.Components;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -246,7 +246,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             !_mobState.IsAlive(ev.Target) ||
             HasComp<ZombieComponent>(ev.Target) ||
             HasComp<HereticComponent>(ev.Target) ||
-            HasComp<ChangelingComponent>(ev.Target) || // goob edit - no more ling or heretic revs
+            HasComp<ChangelingIdentityComponent>(ev.Target) || // goob edit - no more ling or heretic revs
             HasComp<AntagImmuneComponent>(ev.Target)) // Antag immune MEANS antag immune.
         {
             if (ev.User != null)

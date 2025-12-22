@@ -16,3 +16,11 @@
   frequency: 9999
   color: "#91E8E5"
   longRange: true
+
+- type: radioChannel
+  id: RadioShow
+  name: chat-radio-radioshow
+  keycode: 'л' # Orion-Edit
+  frequency: 145
+  color: "#bc1ac4"
+  longRange: true

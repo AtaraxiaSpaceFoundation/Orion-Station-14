@@ -94,7 +94,6 @@
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
-  - TileItemBluespace # Orion
 
 - type: latheRecipePack
   id: ScienceBoards

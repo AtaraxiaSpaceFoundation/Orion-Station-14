@@ -49,6 +49,8 @@ job-name-ertjanitor = уборщик ОБР
 job-name-boxer = боксёр
 job-name-zookeeper = зоотехник
 job-name-visitor = посетитель
+# Viro
+job-name-virologist = вирусолог
 # unused jobs
 # these are required for the agent ID job icon tooltips
 # I am keeping them for roleplaying opportunities
@@ -59,7 +61,6 @@ job-name-prisoner = заключённый
 job-name-roboticist = робототехник
 job-name-syndicate = синдикат
 job-name-unknown = неизвестно
-job-name-virologist = вирусолог
 job-name-zombie = зомби
 # Job titles
 job-title-visitor = посетитель

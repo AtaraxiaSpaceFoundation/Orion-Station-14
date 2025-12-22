@@ -9,6 +9,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 guide-entry-medpatches = Медицинские пластыри
+guide-entry-virology = Вирусология
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
@@ -16,6 +17,7 @@ guide-entry-conditions = Условия раскрытия антагонист�
 guide-entry-plumbing = Пламбирование
 guide-entry-alcoholic-drinks = Алкогольные напитки
 guide-entry-non-alcoholic-drinks = Безакогольные напитки
+guide-entry-enchanting = Зачарования
 # - Стандартные процедуры
 guide-entry-sop-demoting = Увольнение/понижение
 guide-entry-sop-evacuation = Ранняя эвакуация

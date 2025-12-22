@@ -239,6 +239,7 @@
   - MedicalIntern
   - Psychologist
   - Paramedic
+  - Virologist # Gooby goob ba gooby goob ba
 
 - type: department
   id: Security
@@ -296,6 +297,7 @@
   buttonStyle: ButtonColorSpecificDepartment
   # Orion-End
   roles:
+  - RadioHost # Goobstation
   - Boxer
   - Reporter
   - Zookeeper
