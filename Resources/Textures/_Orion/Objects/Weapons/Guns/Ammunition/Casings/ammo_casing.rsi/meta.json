@@ -9,6 +9,15 @@
     "copyright": "Created by discord:𝘽𝙚𝙡𝙖𝙮#7441 / Taken from https://github.com/Rxup/space-station-14/tree/master/Resources/Textures/Backmen/Objects/Weapons/Gunsx64. Uranium and incendiary by UmbiMax",
     "states": [
         {
+            "name": "base"
+        },
+        {
+            "name": "tip"
+        },
+        {
+            "name": "base-spent"
+        },
+        {
             "name": "cap"
         },
         {
