@@ -288,6 +288,8 @@ namespace Content.Client.Lobby.UI
 
         private SpeciesWindow? _speciesWindow;  // Orion
 
+        private ClothingDisplayMode _clothingDisplayMode = ClothingDisplayMode.ShowAll; // Orion
+
         public HumanoidProfileEditor(
             IClientPreferencesManager preferencesManager,
             IConfigurationManager configurationManager,
@@ -703,10 +705,61 @@ namespace Content.Client.Lobby.UI
 
             #endregion Left
 
+/* // Orion-Edit: Replaced
             ShowClothes.OnToggled += args =>
             {
                 ReloadPreview();
             };
+*/
+
+            // Orion-Start
+            _clothingDisplayMode = ClothingDisplayMode.ShowAll;
+
+            ShowAllClothesButton.OnToggled += args =>
+            {
+                if (args.Pressed)
+                {
+                    _clothingDisplayMode = ClothingDisplayMode.ShowAll;
+                    ShowUnderwearButton.Pressed = false;
+                    HideClothesButton.Pressed = false;
+                    ReloadPreview();
+                }
+                else if (!ShowUnderwearButton.Pressed && !HideClothesButton.Pressed)
+                {
+                    ShowAllClothesButton.Pressed = true;
+                }
+            };
+
+            ShowUnderwearButton.OnToggled += args =>
+            {
+                if (args.Pressed)
+                {
+                    _clothingDisplayMode = ClothingDisplayMode.ShowUnderwearOnly;
+                    ShowAllClothesButton.Pressed = false;
+                    HideClothesButton.Pressed = false;
+                    ReloadPreview();
+                }
+                else if (!ShowAllClothesButton.Pressed && !HideClothesButton.Pressed)
+                {
+                    ShowUnderwearButton.Pressed = true;
+                }
+            };
+
+            HideClothesButton.OnToggled += args =>
+            {
+                if (args.Pressed)
+                {
+                    _clothingDisplayMode = ClothingDisplayMode.HideAll;
+                    ShowAllClothesButton.Pressed = false;
+                    ShowUnderwearButton.Pressed = false;
+                    ReloadPreview();
+                }
+                else if (!ShowAllClothesButton.Pressed && !ShowUnderwearButton.Pressed)
+                {
+                    HideClothesButton.Pressed = true;
+                }
+            };
+            // Orion-End
 
             SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
 
@@ -1264,7 +1317,7 @@ namespace Content.Client.Lobby.UI
             if (Profile == null || !_prototypeManager.HasIndex(Profile.Species))
                 return;
 
-            PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, ShowClothes.Pressed);
+            PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, _clothingDisplayMode); // Orion-Edit: Clothing display mode
             SpriteView.SetEntity(PreviewDummy);
             _entManager.System<MetaDataSystem>().SetEntityName(PreviewDummy, Profile.Name);
 

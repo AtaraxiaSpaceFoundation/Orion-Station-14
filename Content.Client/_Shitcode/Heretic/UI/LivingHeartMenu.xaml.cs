@@ -10,6 +10,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
+using Content.Client._Orion.Lobby.UI;
 using Content.Client.Lobby;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Heretic;
@@ -49,7 +50,6 @@ public sealed class LivingHeartMenu : RadialMenu
     private void UpdateUI()
     {
         var main = FindControl<RadialContainer>("Main");
-        if (main == null) return;
 
         var player = _player.LocalEntity;
 
@@ -59,7 +59,7 @@ public sealed class LivingHeartMenu : RadialMenu
         foreach (var target in heretic.SacrificeTargets)
         {
             if (!_ent.TryGetEntity(target.Entity, out var ent) || !_ent.EntityExists(ent))
-                ent = _controller.LoadProfileEntity(target.Profile, _prot.Index(target.Job), true);
+                ent = _controller.LoadProfileEntity(target.Profile, _prot.Index(target.Job), ClothingDisplayMode.ShowAll); // Orion-Edit
 
             var button = new EmbeddedEntityMenuButton
             {
@@ -85,9 +85,6 @@ public sealed class LivingHeartMenu : RadialMenu
 
     private void AddAction(RadialContainer main)
     {
-        if (main == null)
-            return;
-
         foreach (var child in main.Children)
         {
             var castChild = child as EmbeddedEntityMenuButton;
