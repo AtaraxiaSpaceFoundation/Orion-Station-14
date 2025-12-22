@@ -113,9 +113,12 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         }
 
         if (_inventoryHotbar != null)
-        {
             _inventoryHotbar.Visible = false;
-        }
+
+        // Orion-Start
+        if (_extraHotbar != null)
+            _extraHotbar.Visible = false;
+        // Orion-End
 
         CommandBinds.Unregister<ClientInventorySystem>();
     }
@@ -257,36 +260,40 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         }
 
         var extraSlots = clientInv.SlotData.Where(p => p.Value.HasExtraSlotGroup).ToList();
-        if (extraSlots.Count == 0)
-            return;
-
-        foreach (var child in new List<Control>(_extraHotbar.Children))
+        if (extraSlots.Count != 0)
         {
-            if (child is not SlotControl)
-                _extraHotbar.RemoveChild(child);
-        }
-
-        var maxWidth = extraSlots.Max(p => p.Value.ButtonOffset.X) + 1;
-        var maxIndex = extraSlots.Select(p => GetIndex(p.Value.ButtonOffset, maxWidth)).Max();
-
-        _extraHotbar.MaxColumns = maxWidth;
-        _extraHotbar.Columns = maxWidth;
-
-        for (var i = 0; i <= maxIndex; i++)
-        {
-            var index = i;
-            if (extraSlots.FirstOrNull(p => GetIndex(p.Value.ButtonOffset, maxWidth) == index) is { } pair)
+            foreach (var child in new List<Control>(_extraHotbar.Children))
             {
-                if (_extraHotbar.TryGetButton(pair.Key, out var slot))
-                    slot.SetPositionLast();
+                if (child is not SlotControl)
+                    _extraHotbar.RemoveChild(child);
             }
-            else
+
+            var maxWidth = extraSlots.Max(p => p.Value.ButtonOffset.X) + 1;
+            var maxIndex = extraSlots.Select(p => GetIndex(p.Value.ButtonOffset, maxWidth)).Max();
+
+            _extraHotbar.MaxColumns = maxWidth;
+            _extraHotbar.Columns = maxWidth;
+
+            for (var i = 0; i <= maxIndex; i++)
             {
-                _extraHotbar.AddChild(new Control
+                var index = i;
+                if (extraSlots.FirstOrNull(p => GetIndex(p.Value.ButtonOffset, maxWidth) == index) is { } pair)
                 {
-                    MinSize = new Vector2(64, 64),
-                });
+                    if (_extraHotbar.TryGetButton(pair.Key, out var slot))
+                        slot.SetPositionLast();
+                }
+                else
+                {
+                    _extraHotbar.AddChild(new Control
+                    {
+                        MinSize = new Vector2(64, 64),
+                    });
+                }
             }
+        }
+        else
+        {
+            _extraHotbar.ClearButtons();
         }
     }
 
@@ -315,15 +322,15 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
     private void ToggleExtraHotbar()
     {
-        if (_inventoryHotbar == null || !_inventoryHotbar.Visible)
+        if (_inventoryHotbar is not { Visible: true })
             return;
 
         var inventoryGui = UIManager.GetActiveUIWidgetOrNull<InventoryGui>();
-        if (inventoryGui != null)
-        {
-            inventoryGui.ToggleExtraHotbarVisibility();
-            UpdateExtraHotbar(_playerInventory);
-        }
+        if (inventoryGui == null)
+            return;
+
+        inventoryGui.ToggleExtraHotbarVisibility();
+        UpdateExtraHotbar(_playerInventory);
     }
     // Orion-End
 
@@ -554,6 +561,9 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         // Orion-Start
         if (_extraHotbarButton != null)
             _extraHotbarButton.Visible = false;
+
+        if (_extraHotbar != null)
+            _extraHotbar.Visible = false;
 
         _extraHotbar?.ClearButtons();
         // Orion-End
