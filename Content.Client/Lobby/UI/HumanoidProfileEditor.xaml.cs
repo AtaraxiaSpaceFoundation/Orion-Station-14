@@ -722,6 +722,7 @@ namespace Content.Client.Lobby.UI
 
             ClothingDisplayButton.OnItemSelected += args =>
             {
+                ClothingDisplayButton.SelectId(args.Id);
                 _clothingDisplayMode = (ClothingDisplayMode)args.Id;
                 ReloadPreview();
             };

@@ -108,7 +108,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <Control HorizontalExpand="True"/>
                                     <!-- Orion-Edit-Start: Clothing display -->
                                     <BoxContainer HorizontalExpand="True">
-                                        <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />
                                         <Control HorizontalExpand="True"/>
                                         <OptionButton Name="ClothingDisplayButton" HorizontalAlignment="Right" />
                                     </BoxContainer>

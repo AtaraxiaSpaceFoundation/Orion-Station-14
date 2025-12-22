@@ -441,7 +441,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
     public void GiveDummyLoadout(EntityUid uid, RoleLoadout? roleLoadout, ClothingDisplayMode clothingMode = ClothingDisplayMode.ShowAll) // Orion-Edit
     {
-        if (roleLoadout == null)
+        if (roleLoadout is null)
             return;
 
         foreach (var group in roleLoadout.SelectedLoadouts.Values)
@@ -486,13 +486,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     /// </summary>
     private void GiveDummyJobClothes(EntityUid dummy, HumanoidCharacterProfile profile, JobPrototype job, ClothingDisplayMode clothingMode = ClothingDisplayMode.ShowAll) // Orion-Edit
     {
-        if (!_inventory.TryGetSlots(dummy, out var slots)) // Orion-Edit
-            return;
-
         // Orion-Start
         if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly)
-            slots = slots.Where(s => IsUnderwearSlot(s.Name)).ToArray();
+            return;
         // Orion-End
+
+        if (!_inventory.TryGetSlots(dummy, out var slots)) // Orion-Edit
+            return;
 
         // Apply loadout
         if (profile.Loadouts.TryGetValue(job.ID, out var jobLoadout))
@@ -517,6 +517,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                                 EntityManager.DeleteEntity(unequippedItem.Value);
                             }
 
+/* // Orion-Edit: Removed
                             if (itemType != string.Empty)
                             {
                                 var item = EntityManager.SpawnEntity(itemType, MapCoordinates.Nullspace);
@@ -531,6 +532,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                             {
                                 EntityManager.DeleteEntity(unequippedItem.Value);
                             }
+*/
 
                             if (itemType != string.Empty)
                             {
@@ -562,13 +564,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
             }
         }
     }
-
-    // Orion-Start
-    private static bool IsUnderwearSlot(string slotName)
-    {
-        return UnderwearSlots.Contains(slotName);
-    }
-    // Orion-End
 
     /// <summary>
     /// Loads the profile onto a dummy entity.
