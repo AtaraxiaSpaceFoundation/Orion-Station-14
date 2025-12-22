@@ -52,6 +52,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Polymorph;
+using Content.Server.Polymorph.Systems;
 
 namespace Content.Server.Heretic.EntitySystems;
 
@@ -67,6 +69,7 @@ public sealed class HereticSystem : EntitySystem
     [Dependency] private readonly SharedJobSystem _job = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
 
     [Dependency] private readonly IRobustRandom _rand = default!;
     [Dependency] private readonly IPlayerManager _playerMan = default!;
@@ -91,10 +94,15 @@ public sealed class HereticSystem : EntitySystem
         SubscribeLocalEvent<HereticComponent, EventHereticRerollTargets>(OnRerollTargets);
         SubscribeLocalEvent<HereticComponent, EventHereticAscension>(OnAscension);
 
+        SubscribeLocalEvent<HereticComponent, PolymorphedEvent>(OnPolymorphed);
+
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
 
         Subs.CVar(_cfg, GoobCVars.AscensionRequiresObjectives, value => _ascensionRequiresObjectives = value, true);
     }
+
+    private void OnPolymorphed(Entity<HereticComponent> ent, ref PolymorphedEvent args)
+        => _polymorph.CopyPolymorphComponent<HereticComponent>(ent, args.NewEntity);
 
     private void OnRestart(RoundRestartCleanupEvent ev)
     {
@@ -199,12 +207,15 @@ public sealed class HereticSystem : EntitySystem
     private void OnCompInit(Entity<HereticComponent> ent, ref ComponentInit args)
     {
         // add influence layer
-        if (TryComp<EyeComponent>(ent,
-                out var eye)) // As a result, I'm afraid its complete shitcode however it's working shitcode.
+        if (TryComp<EyeComponent>(ent, out var eye))
             _eye.SetVisibilityMask(ent, eye.VisibilityMask | HereticVisFlags, eye);
 
-        foreach (var knowledge in ent.Comp.BaseKnowledge)
-            _knowledge.AddKnowledge(ent, ent.Comp, knowledge);
+        foreach (var k in ent.Comp.BaseKnowledge)
+            _knowledge.AddKnowledge(ent, ent.Comp, k, research: false);
+
+        // in case of polymorph
+        foreach (var k in ent.Comp.ResearchedKnowledge)
+            _knowledge.AddKnowledge(ent, ent.Comp, k, research: false);
 
         GenerateRequiredKnowledgeTags(ent);
         RaiseLocalEvent(ent, new EventHereticRerollTargets());

@@ -162,7 +162,7 @@ public sealed class SmokeSystem : EntitySystem
             if (curTime < smoke.NextSecond)
                 continue;
 
-            smoke.NextSecond += TimeSpan.FromSeconds(1);
+            smoke.NextSecond += TimeSpan.FromSeconds(1.33f); // goob edit - increased metabolize delay
             SmokeReact(uid, smoke.SmokeEntity);
         }
     }

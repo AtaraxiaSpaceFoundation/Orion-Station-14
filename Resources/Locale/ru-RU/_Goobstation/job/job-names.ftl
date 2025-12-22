@@ -42,6 +42,7 @@ job-name-gman = Джи-Мэн
 
 job-name-conquest = конквест
 job-name-mercenarycaptain = капитан Наёмников
+job-name-radiohost = управляющий радиостанцией
 
 # Role timers - Make these alphabetical or I cut you (dont listen to upstream, i copied and pasted this, make it very un-alphabetical :godo:)
 
@@ -57,3 +58,6 @@ JobGovernmentMan = Джи-Мэн
 JobConquest = конквест
 JobInspector = инспектор ЦК
 JobMercenaryCaptain = капитан Наёмников
+JobRoboticist = робототехник
+JobRadioHost = управляющий радиостанцией
+JobVirologist = вирусолог

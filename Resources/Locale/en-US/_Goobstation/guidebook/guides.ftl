@@ -10,6 +10,7 @@
 
 # guide-entry-space-law = Space Law # Orion-Remove
 guide-entry-medpatches = Medical Patches
+guide-entry-virology = Virology
 guide-entry-rules-nrp = NRP Ruleset
 guide-entry-sm = Supermatter Engine
 guide-entry-automation = Automation
@@ -18,6 +19,7 @@ guide-entry-plumbing = Plumbing
 
 guide-entry-alcoholic-drinks = Alcoholic Drinks
 guide-entry-non-alcoholic-drinks = Non-Alcoholic Drinks
+guide-entry-enchanting = Enchanting
 
 # Goob SOP
 # - Main Directories

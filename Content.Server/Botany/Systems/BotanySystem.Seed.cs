@@ -40,6 +40,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.EntityEffects;
 
 namespace Content.Server.Botany.Systems;
 
@@ -54,6 +55,7 @@ public sealed partial class BotanySystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly EntityEffectSystem _effect = default!; // goob edit
 
     public override void Initialize()
     {
@@ -210,7 +212,8 @@ public sealed partial class BotanySystem : EntitySystem
                 var metaData = MetaData(entity);
                 _metaData.SetEntityName(entity, metaData.EntityName + "?", metaData);
                 _metaData.SetEntityDescription(entity,
-                    metaData.EntityDescription + " " + Loc.GetString("botany-mysterious-description-addon"), metaData);
+                    metaData.EntityDescription + " " + Loc.GetString("botany-mysterious-description-addon"),
+                    metaData);
             }
         }
 

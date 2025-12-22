@@ -4,6 +4,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._EinsteinEngines.Language;
+using Content.Server.Polymorph.Systems;
+using Content.Shared.Polymorph;
 using Content.Shared.Revolutionary;
 using Content.Shared.Revolutionary.Components;
 
@@ -12,6 +14,7 @@ namespace Content.Server.Revolutionary;
 public sealed class RevolutionarySystem : SharedRevolutionarySystem  // Goob Station - Revolutionary Language (entire class body)
 {
     [Dependency] private readonly LanguageSystem _languageSystem = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
 
     public override void Initialize()
     {
@@ -19,7 +22,16 @@ public sealed class RevolutionarySystem : SharedRevolutionarySystem  // Goob Sta
 
         SubscribeLocalEvent<RevolutionaryComponent, ComponentShutdown>(OnRevolutionaryComponentShutdown);
         SubscribeLocalEvent<HeadRevolutionaryComponent, ComponentShutdown>(OnRevolutionaryComponentShutdown);
+
+        SubscribeLocalEvent<RevolutionaryComponent, PolymorphedEvent>(OnPolymorphed);
+        SubscribeLocalEvent<HeadRevolutionaryComponent, PolymorphedEvent>(OnHeadPolymorphed);
     }
+
+    private void OnPolymorphed(Entity<RevolutionaryComponent> ent, ref PolymorphedEvent args)
+        => _polymorph.CopyPolymorphComponent<RevolutionaryComponent>(ent, args.NewEntity);
+
+    private void OnHeadPolymorphed(Entity<HeadRevolutionaryComponent> ent, ref PolymorphedEvent args)
+        => _polymorph.CopyPolymorphComponent<HeadRevolutionaryComponent>(ent, args.NewEntity);
 
     public override void OnRevolutionaryComponentStartup<T>(EntityUid someUid, T someComp, ComponentStartup ev)
     {

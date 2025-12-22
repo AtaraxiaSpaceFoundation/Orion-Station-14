@@ -50,7 +50,7 @@ public sealed partial class ExplosionReactionEffect : EntityEffect
     /// </summary>
     [DataField]
     public float IntensityPerUnit = 1;
-	
+
     /// <summary>
     ///     Factor used to scale the explosion intensity when calculating tile break chances. Allows for stronger
     ///     explosives that don't space tiles, without having to create a new explosion-type prototype.
@@ -60,7 +60,7 @@ public sealed partial class ExplosionReactionEffect : EntityEffect
 
     public override bool ShouldLog => true;
 
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    protected override string ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-explosion-reaction-effect", ("chance", Probability));
     public override LogImpact LogImpact => LogImpact.High;
 
@@ -69,9 +69,7 @@ public sealed partial class ExplosionReactionEffect : EntityEffect
         var intensity = IntensityPerUnit;
 
         if (args is EntityEffectReagentArgs reagentArgs)
-        {
             intensity = MathF.Min((float) reagentArgs.Quantity * IntensityPerUnit, MaxTotalIntensity);
-        }
 
         args.EntityManager.System<ExplosionSystem>()
             .QueueExplosion(
@@ -80,6 +78,6 @@ public sealed partial class ExplosionReactionEffect : EntityEffect
             intensity,
             IntensitySlope,
             MaxIntensity,
-			TileBreakScale);
+            TileBreakScale);
     }
 }

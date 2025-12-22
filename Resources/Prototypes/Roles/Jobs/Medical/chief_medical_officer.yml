@@ -155,6 +155,7 @@
 #  - Medical SOP # Orion-Edit: Removed because dont have this SOP
 #  - Command # Orion-Edit: Removed because dont have this SOP
   - Chemicals
+  - Virology
   goobcoins: 40 #Goob content
   weight: 10 #Goob Edit
   access:
