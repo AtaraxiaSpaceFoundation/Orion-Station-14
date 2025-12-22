@@ -6,9 +6,12 @@
   description: Firearm that is often used by the InteQ. Uses .35 auto ammo. It is painted in the InteQ brand color.
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+    sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi 
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 6

@@ -1,0 +1,121 @@
+- type: entity
+  id: BasePowerpackRifle
+  name: "powerpack (.10 rifle)"
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Back/Powerpacks/backpack.rsi
+    layers:
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Ginormous
+  - type: Clothing
+    slots:
+    - Back
+    sprite: _Orion/Clothing/Back/Powerpacks/backpack.rsi
+    equipDelay: 6
+    unequipDelay: 6
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    capacity: 5000
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.6
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+      item: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      item:
+        priority: 2
+        startingItem: WeaponMinigun100
+        whitelist:
+          tags:
+          - SlotMinigun
+  - type: Tag
+    tags:
+      - PowerpackRifle
+  - type: Appearance
+
+- type: entity
+  id: BasePowerpackEnergy
+  name: "powerpack (pulsebullet)"
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Back/Powerpacks/powerpackenergy.rsi
+    layers:
+    - state: icon
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Ginormous
+  - type: Clothing
+    slots:
+    - Back
+    sprite: _Orion/Clothing/Back/Powerpacks/powerpackenergy.rsi
+    equipDelay: 3
+    unequipDelay: 3
+  - type: PowerCell
+  - type: PowerCellVisuals
+  - type: Battery
+    maxCharge: 500000
+    startingCharge: 500000
+  - type: HitscanBatteryAmmoProvider
+    fireCost: 100
+  - type: ClothingSpeedModifier
+    sprintModifier: 0.8
+  - type: ContainerContainer
+    containers:
+      item: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      item:
+        priority: 2
+        startingItem: WeaponMinigunPulse
+        whitelist:
+          tags:
+          - SlotMinigunEnergy
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Tag
+    tags:
+      - PowerpackEnergy
+  - type: Cautery
+    speed: 0.9
+  - type: SurgeryTool
+    endSound:
+      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/laser_lmg.ogg
+
+# Fills
+- type: entity
+  id: PowerpackRifle
+  name: "powerpack (.10 rifle)"
+  parent: BasePowerpackRifle
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeMinigun
+    whitelist:
+      tags:
+        - CartridgeHeavyRifle
+
+- type: entity
+  id: PowerpackEnergyPulse
+  name: powerpack (pulse)
+  parent: BasePowerpackEnergy
+  components:
+  - type: HitscanBatteryAmmoProvider
+    proto: Pulse
