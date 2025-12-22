@@ -108,6 +108,12 @@
   - NanotrasenRepresentativeEnvirohelm
   - NanotrasenRepresentativeEnvirosuit
   - NanotrasenRepresentativeEnvirogloves
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobBlueshieldOfficer
@@ -128,6 +134,12 @@
   - BlueshieldOfficerEnvirosuit
   - BlueshieldOfficerEnvirogloves
   - BlueshieldOfficerGloves
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobNanotrasenCareerTrainer
@@ -148,6 +160,12 @@
   - CentComOfficerEnvirohelm
   - CentComOfficerEnvirosuit
   - CentComOfficerEnvirogloves
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: RoleSurvivalNukieHonkops
@@ -176,6 +194,12 @@
   - ScientistEnvirohelm
   - ScientistEnvirosuit
   - ScientistEnvirogloves
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobBrigmedic
@@ -198,6 +222,12 @@
   - BrigmedicEnvirohelm
   - BrigmedicEnvirosuit
   - BrigmedicEnvirogloves
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobRadioHost
@@ -211,6 +241,12 @@
   - ServiceWorkerEnvirohelm
   - ServiceWorkerEnvirosuit
   - ServiceWorkerEnvirogloves
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 # gives plasmaman a plasma breathing tank
 # other species get nothing
@@ -227,6 +263,12 @@
   - ClownBackpack
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobCommandMaid
@@ -234,6 +276,12 @@
   - CommonBackpack
   - Survival
   - GroupSpeciesBreathTool
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobPartyMaker
@@ -242,6 +290,12 @@
   - CommonBackpack
   - Survival
   - GroupSpeciesBreathTool
+  # Orion-Start
+  - Undershirt
+  - Underwear
+  - Socks
+  - Wrists
+  # Orion-End
 
 - type: roleLoadout
   id: JobVirologist
@@ -258,3 +312,9 @@
    - SurvivalMedical
    - Trinkets
    - GroupSpeciesBreathToolMedical
+   # Orion-Start
+   - Undershirt
+   - Underwear
+   - Socks
+   - Wrists
+   # Orion-End

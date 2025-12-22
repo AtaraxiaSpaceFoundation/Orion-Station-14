@@ -1,0 +1,199 @@
+- type: loadout
+  id: SocksAssBlastUSAKnee
+  equipment:
+    socks: ClothingSocksAssBlastUSAKnee
+
+- type: loadout
+  id: SocksAssBlastUSAThigh
+  equipment:
+    socks: ClothingSocksAssBlastUSAThigh
+
+- type: loadout
+  id: SocksBeeKnee
+  equipment:
+    socks: ClothingSocksBeeKnee
+
+- type: loadout
+  id: SocksBee
+  equipment:
+    socks: ClothingSocksBee
+
+- type: loadout
+  id: SocksBeeThigh
+  equipment:
+    socks: ClothingSocksBeeThigh
+
+- type: loadout
+  id: SocksCandyCaneGreenKnee
+  equipment:
+    socks: ClothingSocksCandyCaneGreenKnee
+
+- type: loadout
+  id: SocksCandyCaneGreen
+  equipment:
+    socks: ClothingSocksCandyCaneGreen
+
+- type: loadout
+  id: SocksCandyCaneGreenThigh
+  equipment:
+    socks: ClothingSocksCandyCaneGreenThigh
+
+- type: loadout
+  id: SocksCandyCaneRedKnee
+  equipment:
+    socks: ClothingSocksCandyCaneRedKnee
+
+- type: loadout
+  id: SocksCandyCaneRed
+  equipment:
+    socks: ClothingSocksCandyCaneRed
+
+- type: loadout
+  id: SocksCandyCaneRedThigh
+  equipment:
+    socks: ClothingSocksCandyCaneRedThigh
+
+- type: loadout
+  id: SocksChristmasKnee
+  equipment:
+    socks: ClothingSocksChristmasKnee
+
+- type: loadout
+  id: SocksChristmas
+  equipment:
+    socks: ClothingSocksChristmas
+
+- type: loadout
+  id: SocksChristmasThigh
+  equipment:
+    socks: ClothingSocksChristmasThigh
+
+- type: loadout
+  id: SocksCommieKnee
+  equipment:
+    socks: ClothingSocksCommieKnee
+
+- type: loadout
+  id: SocksCommieThigh
+  equipment:
+    socks: ClothingSocksCommieThigh
+
+- type: loadout
+  id: SocksFishnet
+  equipment:
+    socks: ClothingSocksFishnet
+
+- type: loadout
+  id: SocksFishnetAlt
+  equipment:
+    socks: ClothingSocksFishnetAlt
+
+- type: loadout
+  id: SocksGarter
+  equipment:
+    socks: ClothingSocksGarter
+
+- type: loadout
+  id: SocksLeggings
+  equipment:
+    socks: ClothingSocksLeggings
+
+- type: loadout
+  id: SocksLeggingsBlack
+  equipment:
+    socks: ClothingSocksLeggingsBlack
+
+- type: loadout
+  id: SocksPantyhose
+  equipment:
+    socks: ClothingSocksPantyhose
+
+- type: loadout
+  id: SocksPantyhoseRipped
+  equipment:
+    socks: ClothingSocksPantyhoseRipped
+
+- type: loadout
+  id: SocksKnee
+  equipment:
+    socks: ClothingSocksKnee
+
+- type: loadout
+  id: SocksLatex
+  equipment:
+    socks: ClothingSocksLatex
+
+- type: loadout
+  id: Socks
+  equipment:
+    socks: ClothingSocks
+
+- type: loadout
+  id: SocksShort
+  equipment:
+    socks: ClothingSocksShort
+
+- type: loadout
+  id: SocksThigh
+  equipment:
+    socks: ClothingSocksThigh
+
+- type: loadout
+  id: StockingsDarkPink
+  equipment:
+    socks: ClothingStockingsDarkPink
+
+- type: loadout
+  id: StockingsGreen
+  equipment:
+    socks: ClothingStockingsGreen
+
+- type: loadout
+  id: StockingsLightPink
+  equipment:
+    socks: ClothingStockingsLightPink
+
+- type: loadout
+  id: StockingsOrange
+  equipment:
+    socks: ClothingStockingsOrange
+
+- type: loadout
+  id: StockingsPurple
+  equipment:
+    socks: ClothingStockingsPurple
+
+- type: loadout
+  id: StockingsYellow
+  equipment:
+    socks: ClothingStockingsYellow
+
+- type: loadout
+  id: SocksStripedKnee
+  equipment:
+    socks: ClothingSocksStripedKnee
+
+- type: loadout
+  id: SocksStripedThigh
+  equipment:
+    socks: ClothingSocksStripedThigh
+
+- type: loadout
+  id: SocksThinKnee
+  equipment:
+    socks: ClothingSocksThinKnee
+
+- type: loadout
+  id: SocksThinThigh
+  equipment:
+    socks: ClothingSocksThinThigh
+
+- type: loadout
+  id: SocksUKKnee
+  equipment:
+    socks: ClothingSocksUKKnee
+
+- type: loadout
+  id: SocksUKThigh
+  equipment:
+    socks: ClothingSocksUKThigh

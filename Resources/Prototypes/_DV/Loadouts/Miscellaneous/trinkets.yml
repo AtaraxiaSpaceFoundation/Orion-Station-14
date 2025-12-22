@@ -5,17 +5,19 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-- type: loadout
-  id: GoldRing
-  storage:
-    back:
-    - GoldRing
+# Orion-Edit: Duplicate
+#- type: loadout
+#  id: GoldRing
+#  storage:
+#    back:
+#    - GoldRing
 
-- type: loadout
-  id: SilverRing
-  storage:
-    back:
-    - SilverRing
+# Orion-Edit: Duplicate
+#- type: loadout
+#  id: SilverRing
+#  storage:
+#    back:
+#    - SilverRing
 
 - type: loadout
   id: Cane

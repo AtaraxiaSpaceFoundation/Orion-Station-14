@@ -1,0 +1,429 @@
+- type: loadout
+  id: Babydoll
+  equipment:
+    undershirt: ClothingUndershirtBabydoll
+
+- type: loadout
+  id: Bra
+  equipment:
+    undershirt: ClothingUndershirtBra
+
+- type: loadout
+  id: BraAssBlastUSA
+  equipment:
+    undershirt: ClothingUndershirtBraAssBlastUSA
+
+- type: loadout
+  id: BraBeeKini
+  equipment:
+    undershirt: ClothingUndershirtBraBeeKini
+
+- type: loadout
+  id: BraBinder
+  equipment:
+    undershirt: ClothingUndershirtBraBinder
+
+- type: loadout
+  id: BraBinderStrapless
+  equipment:
+    undershirt: ClothingUndershirtBraBinderStrapless
+
+- type: loadout
+  id: BraCommie
+  equipment:
+    undershirt: ClothingUndershirtBraCommie
+
+- type: loadout
+  id: BraHalterneck
+  equipment:
+    undershirt: ClothingUndershirtBraHalterneck
+
+- type: loadout
+  id: BraHarley
+  equipment:
+    undershirt: ClothingUndershirtBraHarley
+
+- type: loadout
+  id: BraKinky
+  equipment:
+    undershirt: ClothingUndershirtBraKinky
+
+- type: loadout
+  id: BraLizared
+  equipment:
+    undershirt: ClothingUndershirtBraLizared
+
+- type: loadout
+  id: BraNeko
+  equipment:
+    undershirt: ClothingUndershirtBraNeko
+
+- type: loadout
+  id: BraSport
+  equipment:
+    undershirt: ClothingUndershirtBraSport
+
+- type: loadout
+  id: BraSportAlt
+  equipment:
+    undershirt: ClothingUndershirtBraSportAlt
+
+- type: loadout
+  id: BraStrapless
+  equipment:
+    undershirt: ClothingUndershirtBraStrapless
+
+- type: loadout
+  id: BraStraplessAlt
+  equipment:
+    undershirt: ClothingUndershirtBraStraplessAlt
+
+- type: loadout
+  id: BraStriped
+  equipment:
+    undershirt: ClothingUndershirtBraStriped
+
+- type: loadout
+  id: BraSwimming
+  equipment:
+    undershirt: ClothingUndershirtBraSwimming
+
+- type: loadout
+  id: BraSwimmingAlt
+  equipment:
+    undershirt: ClothingUndershirtBraSwimmingAlt
+
+- type: loadout
+  id: BraThin
+  equipment:
+    undershirt: ClothingUndershirtBraThin
+
+- type: loadout
+  id: BraTubeTop
+  equipment:
+    undershirt: ClothingUndershirtBraTubeTop
+
+- type: loadout
+  id: BraUK
+  equipment:
+    undershirt: ClothingUndershirtBraUK
+
+- type: loadout
+  id: BraAlt
+  equipment:
+    undershirt: ClothingUndershirtBraAlt
+
+- type: loadout
+  id: Corset
+  equipment:
+    undershirt: ClothingUndershirtCorset
+
+- type: loadout
+  id: FishnetBody
+  equipment:
+    undershirt: ClothingUndershirtFishnetBody
+
+- type: loadout
+  id: FishnetBodyAlt
+  equipment:
+    undershirt: ClothingUndershirtFishnetBodyAlt
+
+- type: loadout
+  id: FishnetGloves
+  equipment:
+    undershirt: ClothingUndershirtFishnetGloves
+
+- type: loadout
+  id: FishnetSleeves
+  equipment:
+    undershirt: ClothingUndershirtFishnetSleeves
+
+- type: loadout
+  id: FishnetSleevesAlt
+  equipment:
+    undershirt: ClothingUndershirtFishnetSleevesAlt
+
+- type: loadout
+  id: Shibari
+  equipment:
+    undershirt: ClothingUndershirtShibari
+
+- type: loadout
+  id: ShibariSleeves
+  equipment:
+    undershirt: ClothingUndershirtShibariSleeves
+
+- type: loadout
+  id: Shirt
+  equipment:
+    undershirt: ClothingUndershirtShirt
+
+- type: loadout
+  id: ShirtAlien
+  equipment:
+    undershirt: ClothingUndershirtShirtAlien
+
+- type: loadout
+  id: ShirtAssBlastUSA
+  equipment:
+    undershirt: ClothingUndershirtShirtAssBlastUSA
+
+- type: loadout
+  id: ShirtBand
+  equipment:
+    undershirt: ClothingUndershirtShirtBand
+
+- type: loadout
+  id: ShirtBee
+  equipment:
+    undershirt: ClothingUndershirtShirtBee
+
+- type: loadout
+  id: ShirtBowlingCyan
+  equipment:
+    undershirt: ClothingUndershirtShirtBowlingCyan
+
+- type: loadout
+  id: ShirtBowlingGrey
+  equipment:
+    undershirt: ClothingUndershirtShirtBowlingGrey
+
+- type: loadout
+  id: ShirtBowlingPink
+  equipment:
+    undershirt: ClothingUndershirtShirtBowlingPink
+
+- type: loadout
+  id: ShirtBowlingRed
+  equipment:
+    undershirt: ClothingUndershirtShirtBowlingRed
+
+- type: loadout
+  id: ShirtClown
+  equipment:
+    undershirt: ClothingUndershirtShirtClown
+
+- type: loadout
+  id: ShirtCommie
+  equipment:
+    undershirt: ClothingUndershirtShirtCommie
+
+- type: loadout
+  id: ShirtCowboy
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboy
+
+- type: loadout
+  id: ShirtCowboyNavy
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyNavy
+
+- type: loadout
+  id: ShirtCowboyRed
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyRed
+
+- type: loadout
+  id: ShirtCowboyShort
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyShort
+
+- type: loadout
+  id: ShirtCowboyShortNavy
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyShortNavy
+
+- type: loadout
+  id: ShirtCowboyShortRed
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyShortRed
+
+- type: loadout
+  id: ShirtCowboyShortWhite
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyShortWhite
+
+- type: loadout
+  id: ShirtCowboyWhite
+  equipment:
+    undershirt: ClothingUndershirtShirtCowboyWhite
+
+- type: loadout
+  id: ShirtILoveNT
+  equipment:
+    undershirt: ClothingUndershirtShirtILoveNT
+
+- type: loadout
+  id: ShirtIan
+  equipment:
+    undershirt: ClothingUndershirtShirtIan
+
+- type: loadout
+  id: ShirtJerseyBlue
+  equipment:
+    undershirt: ClothingUndershirtShirtJerseyBlue
+
+- type: loadout
+  id: ShirtJerseyRed
+  equipment:
+    undershirt: ClothingUndershirtShirtJerseyRed
+
+- type: loadout
+  id: ShirtLong
+  equipment:
+    undershirt: ClothingUndershirtShirtLong
+
+- type: loadout
+  id: ShirtLongStriped
+  equipment:
+    undershirt: ClothingUndershirtShirtLongStriped
+
+- type: loadout
+  id: ShirtLongStripedBlue
+  equipment:
+    undershirt: ClothingUndershirtShirtLongStripedBlue
+
+- type: loadout
+  id: ShirtLover
+  equipment:
+    undershirt: ClothingUndershirtShirtLover
+
+- type: loadout
+  id: ShirtMatroska
+  equipment:
+    undershirt: ClothingUndershirtShirtMatroska
+
+- type: loadout
+  id: ShirtMeat
+  equipment:
+    undershirt: ClothingUndershirtShirtMeat
+
+- type: loadout
+  id: ShirtNanoTrasen
+  equipment:
+    undershirt: ClothingUndershirtShirtNanoTrasen
+
+- type: loadout
+  id: ShirtPeace
+  equipment:
+    undershirt: ClothingUndershirtShirtPeace
+
+- type: loadout
+  id: ShirtPogoman
+  equipment:
+    undershirt: ClothingUndershirtShirtPogoman
+
+- type: loadout
+  id: ShirtPolo
+  equipment:
+    undershirt: ClothingUndershirtShirtPolo
+
+- type: loadout
+  id: ShirtQuestion
+  equipment:
+    undershirt: ClothingUndershirtShirtQuestion
+
+- type: loadout
+  id: ShirtShort
+  equipment:
+    undershirt: ClothingUndershirtShirtShort
+
+- type: loadout
+  id: ShirtShortSleeves
+  equipment:
+    undershirt: ClothingUndershirtShirtShortSleeves
+
+- type: loadout
+  id: ShirtSkull
+  equipment:
+    undershirt: ClothingUndershirtShirtSkull
+
+- type: loadout
+  id: ShirtSportBlue
+  equipment:
+    undershirt: ClothingUndershirtShirtSportBlue
+
+- type: loadout
+  id: ShirtSportGreen
+  equipment:
+    undershirt: ClothingUndershirtShirtSportGreen
+
+- type: loadout
+  id: ShirtSportRed
+  equipment:
+    undershirt: ClothingUndershirtShirtSportRed
+
+- type: loadout
+  id: ShirtSS13
+  equipment:
+    undershirt: ClothingUndershirtShirtSS13
+
+- type: loadout
+  id: ShirtStriped
+  equipment:
+    undershirt: ClothingUndershirtShirtStriped
+
+- type: loadout
+  id: ShirtTankTop
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTop
+
+- type: loadout
+  id: ShirtTankTopFire
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTopFire
+
+- type: loadout
+  id: ShirtTankTopMidriff
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTopMidriff
+
+- type: loadout
+  id: ShirtTankTopMidriffAlt
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTopMidriffAlt
+
+- type: loadout
+  id: ShirtTankTopStriped
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTopStriped
+
+- type: loadout
+  id: ShirtTankTopSun
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTopSun
+
+- type: loadout
+  id: ShirtTankTopAlt
+  equipment:
+    undershirt: ClothingUndershirtShirtTankTopAlt
+
+- type: loadout
+  id: ShirtTieDye
+  equipment:
+    undershirt: ClothingUndershirtShirtTieDye
+
+- type: loadout
+  id: ShirtUK
+  equipment:
+    undershirt: ClothingUndershirtShirtUK
+
+- type: loadout
+  id: Swimming
+  equipment:
+    undershirt: ClothingUndershirtSwimming
+
+- type: loadout
+  id: SwimmingBlack
+  equipment:
+    undershirt: ClothingUndershirtSwimmingBlack
+
+- type: loadout
+  id: SwimmingBlue
+  equipment:
+    undershirt: ClothingUndershirtSwimmingBlue
+
+- type: loadout
+  id: SwimmingRed
+  equipment:
+    undershirt: ClothingUndershirtSwimmingRed

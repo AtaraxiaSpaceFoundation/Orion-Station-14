@@ -1,0 +1,29 @@
+- type: loadout
+  id: RedworkSlab
+  equipment:
+    wrists: ClothingWristsRedworkSlab
+
+- type: loadout
+  id: ClockworkSlab
+  equipment:
+    wrists: ClothingWristsClockworkSlab
+
+- type: loadout
+  id: WatchGold
+  equipment:
+    wrists: WristwatchGold
+
+- type: loadout
+  id: Watch
+  equipment:
+    wrists: Wristwatch
+
+- type: loadout
+  id: GoldRing
+  equipment:
+    wrists: GoldRing
+
+- type: loadout
+  id: SilverRing
+  equipment:
+    wrists: SilverRing
