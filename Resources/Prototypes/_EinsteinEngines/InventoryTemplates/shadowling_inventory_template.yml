@@ -5,9 +5,9 @@
     slotTexture: ears
     slotFlags: EARS
     stripTime: 3
-    uiWindowPos: 2,2
-    strippingWindowPos: 2,0
-    displayName: Ears
+    uiWindowPos: 2,3 # Orion-Edit
+    strippingWindowPos: 2,0 # Orion-Edit
+    displayName: Left Ear # Orion-Edit: Renamed
   - name: back
     slotTexture: back
     slotFlags: BACK

@@ -66,8 +66,8 @@
       slotTexture: glasses
       slotFlags: EYES
       stripTime: 3
-      uiWindowPos: 0,3
-      strippingWindowPos: 0,0
+      uiWindowPos: 2,2 # Orion-Edit
+      strippingWindowPos: 2,1 # Orion-Edit
       displayName: Eyes
     - name: head
       slotTexture: head
@@ -117,3 +117,50 @@
       uiWindowPos: 3,1
       strippingWindowPos: 1,5
       displayName: Belt
+    # Orion-Start
+    - name: earsright
+      slotTexture: ears_right
+      fullTextureName: template_small
+      slotFlags: EARSRIGHT
+      slotGroup: Extra
+      uiWindowPos: 2,1
+      strippingWindowPos: 3,0
+      displayName: Right Ear
+      stripTime: 3
+    - name: undershirt
+      slotTexture: undershirt
+      fullTextureName: template_small
+      slotFlags: UNDERSHIRT
+      slotGroup: Extra
+      uiWindowPos: 0,3
+      strippingWindowPos: 3,2
+      displayName: Shirt
+      stripTime: 6
+    - name: socks
+      slotTexture: socks
+      fullTextureName: template_small
+      slotFlags: SOCKS
+      slotGroup: Extra
+      uiWindowPos: 0,2
+      strippingWindowPos: 3,3
+      displayName: Socks
+      stripTime: 3
+    - name: underwear
+      slotTexture: underwear
+      fullTextureName: template_small
+      slotFlags: UNDERWEAR
+      slotGroup: Extra
+      uiWindowPos: 0,1
+      strippingWindowPos: 3,1
+      displayName: Underwear
+      stripTime: 6
+    - name: wrists
+      slotTexture: wrists
+      fullTextureName: template_small
+      slotFlags: WRISTS
+      slotGroup: Extra
+      uiWindowPos: 1,1
+      strippingWindowPos: 3,4
+      displayName: Wrists
+      stripTime: 3
+    # Orion-End
