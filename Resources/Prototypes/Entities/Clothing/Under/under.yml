@@ -12,11 +12,11 @@
 # I would cry if we didn't have them. -swept
 
 - type: entity
-  abstract: true # Orion-Edit: Replaced with ClothingSocksBee
   parent: ClothingSocksBase # Orion-Edit
   id: ClothingUnderSocksBee
   name: bee socks
   description: Make them loins buzz!
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Sprite
     sprite: Clothing/Under/Socks/bee.rsi
