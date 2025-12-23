@@ -499,12 +499,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                     if (!_prototypeManager.TryIndex(loadout.Prototype, out var loadoutProto))
                         continue;
 
-                    // Orion-Edit-Start
                     foreach (var slot in slots)
                     {
+                        // Orion-Start
                         if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly &&
                             !UnderwearSlots.Contains(slot.Name))
                             continue;
+                        // Orion-End
 
                         // Try startinggear first
                         if (_prototypeManager.TryIndex(loadoutProto.StartingGear, out var loadoutGear))
@@ -538,7 +539,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                             }
                         }
                     }
-                    // Orion-Edit-End
                 }
             }
         }
