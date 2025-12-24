@@ -6,3 +6,4 @@
 
 id-card-access-level-ntr = Представитель НаноТрейзен
 id-card-access-level-bso = Офицер Синего Щита
+id-card-access-level-robotics = Робототехник

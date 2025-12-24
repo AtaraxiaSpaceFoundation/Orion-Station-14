@@ -14,7 +14,7 @@ guide-entry-virology = Вирусология
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
-
+guide-entry-plumbing = Трубы
 # Goob SOP
 # - Основные разделы
 # guide-entry-sop = СОП (Стандартные Операционные Процедуры)

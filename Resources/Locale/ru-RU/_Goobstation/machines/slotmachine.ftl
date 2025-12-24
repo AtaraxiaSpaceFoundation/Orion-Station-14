@@ -1,23 +1,17 @@
-slotmachine-verb = Вращать
-slotmachine-message = Потяните за рычаг и проверьте свою удачу на игровом автомате!
-
+slotmachine-verb = Крутить
+slotmachine-message = Тяни за рычаг и проверь свою удачу!
 slotmachine-no-money = Недостаточно денег!
-
-slotmachine-win-normal = Поздравляем, вы выиграли {$amount} кредитов!
-slotmachine-win-jackpot = УРА, ВЫ ВЫИГРАЛИ ДЖЕКПОТ!!
-slotmachine-win-godpot = ОШИБКА ПЕРЕПОЛНЕНИЯ ЦЕЛОГО ЧИСЛА, УДАЛЯЮ "БОГПОТ"
-
-wires-board-name-slot-machine = Игровой автомат
-
-advertisement-slotmachine-1 = Вы можете проиграть только столько!
-advertisement-slotmachine-2 = Азартные игры - это болезнь, но это единственная болезнь, где можно выиграть кучу денег!
-advertisement-slotmachine-3 = ЕЩЕ ОДИН РАЗ!!
-advertisement-slotmachine-4 = Игнорируйте реабилитацию, они просто не хотят, чтобы вы видели, как вы преуспеваете!
-advertisement-slotmachine-5 = Ещё одна игра, а потом ты можешь бросить
-advertisement-slotmachine-6 = Подойдите и дайте мне один спин!
-
-coinflipper-win = Победитель! Вы выиграли {$amount} кредитов!
-
-clawmachine-fail-self = Вы ошиблись и уронили плюшевую игрушку!
-clawmachine-fail-other = {$user} ошибся и уронил плюшевую игрушку!
-clawmachine-fail-generic = Плюшевая игрушка выпала из захвата, оууу...
+slotmachine-win-normal = Грац, вы выиграли { $amount } кредитов!
+slotmachine-win-jackpot = ДЖЕКПОТ!!!
+slotmachine-win-godpot = ПРЕВЫШЕНО МАКСИМАЛЬНОЕ ЗНАЧЕНИЕ, ВЫДАЧА "МЕГАДЖЕКПОТА"
+wires-board-name-slot-machine = Слот-машина
+advertisement-slotmachine-1 = Депни мать!
+advertisement-slotmachine-2 = Нужен додеп!
+advertisement-slotmachine-3 = СУПЕР МЕГА ГИПЕР УЛЬТРА ЛАСТ!!!
+advertisement-slotmachine-4 = ДАЙ ЕЩЁ! ДАЙ ЕЩЁ! ДАЙ ЕЩЁ!!!
+advertisement-slotmachine-5 = ЧТООООООООО!!! Эй, это мало. А, так это супер мало...
+advertisement-slotmachine-6 = Единственная рука, которая тебе даёт.
+coinflipper-win = Победа! Вы выиграли { $amount } кредитов!
+clawmachine-fail-self = Вы облажались и выронили игрушку!
+clawmachine-fail-other = { $user } облажался и выронил игрушку!
+clawmachine-fail-generic = Плюшка выпала из крана. Какая жалость...

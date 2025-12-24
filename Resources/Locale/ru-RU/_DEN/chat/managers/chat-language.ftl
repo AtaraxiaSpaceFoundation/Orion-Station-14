@@ -1,1 +1,1 @@
-chat-language-Nehina-name = Нēхина
+chat-language-Nehina-name = Нъехин
