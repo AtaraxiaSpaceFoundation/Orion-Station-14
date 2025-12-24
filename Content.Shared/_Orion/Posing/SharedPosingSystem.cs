@@ -27,7 +27,7 @@ public abstract partial class SharedPosingSystem : EntitySystem
             .Bind(ContentKeyFunctions.TogglePosing,
                 InputCmdHandler.FromDelegate(session =>
                     {
-                        if (session?.AttachedEntity is { } userUid && !CanTogglePosing(userUid))
+                        if (session?.AttachedEntity is { } userUid && CanTogglePosing(userUid))
                             TogglePosing(userUid);
                     },
                     handle: false))
@@ -153,7 +153,7 @@ public abstract partial class SharedPosingSystem : EntitySystem
 
     private bool CanTogglePosing(EntityUid uid)
     {
-        if (_actionBlocker.CanConsciouslyPerformAction(uid))
+        if (!_actionBlocker.CanConsciouslyPerformAction(uid))
             return false;
 
         if (TryComp<StaminaComponent>(uid, out var stamina) && stamina.Critical)
