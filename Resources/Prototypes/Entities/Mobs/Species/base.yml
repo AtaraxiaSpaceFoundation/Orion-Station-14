@@ -510,6 +510,7 @@
   - type: Sprinter # Goobstation
   - type: MindControllable # Goobstation
   - type: VisibleContraband # Goobstation
+  - type: Posing # Orion
 
 - type: entity
   save: false
