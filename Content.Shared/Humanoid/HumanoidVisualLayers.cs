@@ -40,8 +40,8 @@ namespace Content.Shared.Humanoid
         FacialHair,
         Face, // EE Plasmeme Port
         Chest,
-        Underwear,
-        Undershirt,
+//        Underwear, // Orion-Edit: Removed
+//        Undershirt, // Orion-Edit: Removed
         Groin,
         Head,
         Snout,

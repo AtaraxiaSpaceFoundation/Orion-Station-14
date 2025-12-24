@@ -194,10 +194,10 @@ public sealed partial class SpeciesWindow : FancyWindow
                 }
         }
 
-        var mob = _uIController.LoadProfileEntity(previewProfile, jobProto, false);
+        var mob = _uIController.LoadProfileEntity(previewProfile, jobProto, ClothingDisplayMode.HideAll);
         Mob.SetEntity(mob);
 
-        var loadoutMob = _uIController.LoadProfileEntity(previewProfile, jobProto, true);
+        var loadoutMob = _uIController.LoadProfileEntity(previewProfile, jobProto, ClothingDisplayMode.ShowAll);
         JobLoadout.SetEntity(loadoutMob);
 
         Select.Disabled = Profile.Species == protoId;

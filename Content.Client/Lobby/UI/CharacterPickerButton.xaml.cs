@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Client._Orion.Lobby.UI;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -53,7 +54,7 @@ public sealed partial class CharacterPickerButton : ContainerButton
         else
         {
             _previewDummy = UserInterfaceManager.GetUIController<LobbyUIController>()
-                .LoadProfileEntity(humanoid, null, true);
+                .LoadProfileEntity(humanoid, null, ClothingDisplayMode.ShowAll); // Orion-Edit
 
             var highPriorityJob = humanoid.JobPriorities.SingleOrDefault(p => p.Value == JobPriority.High).Key;
             if (highPriorityJob != default)

@@ -93,11 +93,18 @@
       - map: [ "enum.HumanoidVisualLayers.LArm" ]
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-      - map: [ "jumpsuit" ]
+      # Orion-Start
+      - map: [ "underwear" ]
+      - map: [ "undershirt" ]
+      # Orion-End
+      # Orion-Edit-Start: Moved under jumpsuit
+      - map: ["enum.HumanoidVisualLayers.LFoot"]
+      - map: ["enum.HumanoidVisualLayers.RFoot"]
+      # Orion-Edit-End
+      - map: [ "socks" ] # Orion
+      - map: ["jumpsuit"]
       - map: [ "enum.HumanoidVisualLayers.LHand" ]
       - map: [ "enum.HumanoidVisualLayers.RHand" ]
-      - map: [ "enum.HumanoidVisualLayers.LFoot" ]
-      - map: [ "enum.HumanoidVisualLayers.RFoot" ]
       - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
         color: "#ffffff"
         sprite: Objects/Misc/handcuffs.rsi
@@ -105,7 +112,9 @@
         visible: false
       - map: [ "id" ]
       - map: [ "gloves" ]
+      - map: [ "wrists" ] # Orion
       - map: [ "shoes" ]
+      - map: [ "earsright" ] # Orion
       - map: [ "ears" ]
       - map: [ "outerClothing" ]
       - map: [ "eyes" ]

@@ -143,6 +143,33 @@
           32:
             sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
             state: belt
+      # Orion-Start
+      undershirt:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      socks:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: feet
+      earsright:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: ears
+      wrists:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: hands
+      # Orion-End
     femaleDisplacements: # Goobstation - splitting up the genders broke displacements, apparently it won't just apply the same displacement to both genders :|
       jumpsuit:
         sizeMaps:
@@ -204,6 +231,33 @@
           32:
             sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
             state: belt
+      # Orion-Start
+      undershirt:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      socks:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: feet
+      earsright:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: ears
+      wrists:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: hands
+      # Orion-End
   - type: Bloodstream # Goobstation - lore stuff
     bloodReagent: AmmoniaBlood
   - type: MeleeWeapon # Goobstation - aliem raptors probably use their claws
@@ -250,19 +304,26 @@
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    # Orion-Start
+    - map: [ "underwear" ]
+    - map: [ "undershirt" ]
+    # Orion-End
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "socks" ] # Orion
     - map: [ "enum.HumanoidVisualLayers.LHand" ]  # Hands below jumpsuit since its bigger-than-usual sprite and this allows jumpsuits to have better-looking sleeves
     - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]   # Tail changed to be below outerclothing and above limbs
-    - map: [ "jumpsuit" ]                         # Jumpsuit above tail & limbs
+    - map: ["jumpsuit"]                         # Jumpsuit above tail & limbs
     - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2-resomi
       visible: false
     - map: [ "gloves" ]
+    - map: [ "wrists" ] # Orion
     - map: [ "shoes" ]
+    - map: [ "earsright" ] # Orion
     - map: [ "ears" ]
     - map: [ "outerClothing" ]
     - map: [ "belt" ] #Goobedit - Belts over outerwear
@@ -362,6 +423,33 @@
           32:
             sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
             state: belt
+      # Orion-Start
+      undershirt:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      socks:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: feet
+      earsright:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: ears
+      wrists:
+        sizeMaps:
+          32:
+            sprite: _Floofstation/Mobs/Species/Resomi/displacement.rsi
+            state: hands
+      # Orion-End
   - type: Sprite # goob - makes character setup look consistent with in-game visuals
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
@@ -373,19 +461,26 @@
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    # Orion-Start
+    - map: [ "underwear" ]
+    - map: [ "undershirt" ]
+    # Orion-End
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "socks" ] # Orion
     - map: [ "enum.HumanoidVisualLayers.LHand" ]  # Hands below jumpsuit since its bigger-than-usual sprite and this allows jumpsuits to have better-looking sleeves
     - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "enum.HumanoidVisualLayers.Tail" ]   # Tail changed to be below outerclothing and above limbs
-    - map: [ "jumpsuit" ]                         # Jumpsuit above tail & limbs
+    - map: ["jumpsuit"]                         # Jumpsuit above tail & limbs
     - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2-resomi
       visible: false
     - map: [ "gloves" ]
+    - map: [ "wrists" ] # Orion
     - map: [ "shoes" ]
+    - map: [ "earsright" ] # Orion
     - map: [ "ears" ]
     - map: [ "outerClothing" ]
     - map: [ "belt" ] #Goobedit - Belts over outerwear

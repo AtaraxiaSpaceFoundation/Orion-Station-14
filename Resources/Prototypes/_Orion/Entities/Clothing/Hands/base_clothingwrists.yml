@@ -1,0 +1,31 @@
+- type: entity
+  abstract: true
+  parent: Clothing
+  id: ClothingWristsBase
+  components:
+  - type: Sprite
+    state: icon
+  - type: Clothing
+    slots: [ wrists ]
+  # Goobstation edit start
+    equipSound:
+      path: /Audio/_Goobstation/Items/handling/generic_equip2.ogg
+      params:
+        volume: -4
+  # Goobstation edit end
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: Armor
+    coverage:
+    - Hand
+
+- type: entity
+  abstract: true
+  parent: ClothingWristsBase
+  id: ClothingWristsWatchBase
+  components:
+  - type: Clock

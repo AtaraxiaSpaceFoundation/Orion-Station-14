@@ -82,6 +82,11 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  # Orion-Start
+  - type: SlotBlock
+    blockList: [ UNDERSHIRT ]
+    hideList: [ UNDERWEAR ]
+  # Orion-End
 
 
 - type: entity
@@ -89,6 +94,10 @@
   parent: UnsensoredClothingUniformBase
   id: ClothingUniformBase
   components:
+  # Orion-Start
+  - type: SlotBlock
+    blockList: [ UNDERSHIRT, UNDERWEAR ]
+  # Orion-End
   - type: SuitSensor
   - type: DeviceNetwork
     deviceNetId: Wireless
@@ -109,6 +118,11 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
+  # Orion-Start
+  - type: SlotBlock
+    blockList: [ UNDERSHIRT ]
+    hideList: [ UNDERWEAR ]
+  # Orion-End
   - type: Tag
     tags:
     - Skirt

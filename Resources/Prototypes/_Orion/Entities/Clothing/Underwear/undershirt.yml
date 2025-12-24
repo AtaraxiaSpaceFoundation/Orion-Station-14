@@ -1,0 +1,774 @@
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtBabydoll
+  name: babydoll shirt
+  description: A babydoll shirt, perfect for feeling flirty and fabulous.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/babydoll.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBra
+  name: bra
+  description: A bra providing a little lift.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraAssBlastUSA
+  name: American flag bra
+  description: A bra featuring an American flag design, perfect for showing off your patriotic side.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_assblastusa.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraBeeKini
+  name: bee kini bra
+  description: A playful bee-themed kini bra, adding some buzz to your swim or lingerie look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_bee_kini.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraBinder
+  name: binder bra
+  description: A supportive binder bra designed for a smooth, flattened chest appearance.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_binder.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraBinderStrapless
+  name: strapless binder bra
+  description: A strapless binder bra offering support and a smooth silhouette without visible straps.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_binder_strapless.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraCommie
+  name: commie bra
+  description: A bra with a commie-themed design, offering a unique retro-inspired style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_commie.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraHalterneck
+  name: halterneck bra
+  description: A stylish halterneck bra that combines support with a fashionable neckline design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_halterneck.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraHarley
+  name: Harley-style bra
+  description: A bold bra inspired by Harley-style designs, perfect for making a statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_harley.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraKinky
+  name: kinky bra
+  description: A provocative kinky-style bra for those who like to push fashion boundaries.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_kinky.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraLizared
+  name: Lizared bra
+  description: A striking red bra inspired by Liza-style designs, combining elegance and allure.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_lizared.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraNeko
+  name: neko bra
+  description: A cute neko-themed bra featuring cat-ear details for a playful and whimsical look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_neko.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraSport
+  name: sports bra
+  description: A functional sports bra designed for comfort and support during physical activities.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_sport.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraSportAlt
+  name: sports bra
+  description: An alternative design of the sports bra, offering comfort and support with a unique twist.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_sport-alt.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraStrapless
+  name: strapless bra
+  description: A strapless bra providing support without visible straps, perfect for strapless outfits.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_strapless.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraStraplessAlt
+  name: strapless bra
+  description: An alternative version of the strapless bra with a different design or construction.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_strapless-alt.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraStriped
+  name: striped bra
+  description: A bra featuring a striped pattern, adding a stylish touch to your lingerie collection.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_striped.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraSwimming
+  name: swimming bra
+  description: A swim-friendly bra designed for comfort and support in the water.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_swimming.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraSwimmingAlt
+  name: swimming bra
+  description: An alternate design of the swimming bra, offering different styling or features.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_swimming-alt.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraThin
+  name: thin bra
+  description: A lightweight, thin bra offering minimal coverage with a delicate design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_thin.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraTubeTop
+  name: tube top bra
+  description: A tube top-style bra that provides support while creating a strapless, bandeau look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_tubetop.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraUK
+  name: UK bra
+  description: A bra featuring UK-inspired patterns or colors, perfect for showing national pride.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra_uk.rsi
+
+- type: entity
+  parent: ClothingBraBase
+  id: ClothingUndershirtBraAlt
+  name: bra
+  description: An alternative bra design offering a different style or construction from standard bras.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/bra-alt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtCorset
+  name: corset
+  description: A structured corset designed to cinch the waist and create a dramatic silhouette.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/corset.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtFishnetBody
+  name: fishnet bodysuit
+  description: A fishnet bodysuit adding an edgy, see-through element to your outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/fishnet_body.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtFishnetBodyAlt
+  name: fishnet bodysuit
+  description: An alternate version of the fishnet bodysuit with a different pattern or design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/fishnet_body-alt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtFishnetGloves
+  name: fishnet gloves
+  description: Fishnet gloves adding a touch of edginess to your hands and arms.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/fishnet_gloves.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtFishnetSleeves
+  name: fishnet sleeves
+  description: Fishnet sleeves that cover the arms, creating a stylish and revealing look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/fishnet_sleeves.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtFishnetSleevesAlt
+  name: fishnet sleeves
+  description: Alternate fishnet sleeves with a different pattern or construction.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/fishnet_sleeves-alt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShibari
+  name: shibari top
+  description: A shibari-inspired top featuring intricate rope-like patterns and designs.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shibari.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShibariSleeves
+  name: shibari sleeves
+  description: Shibari-style sleeves with detailed rope patterns, adding an artistic touch to your look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shibari_sleeves.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirt
+  name: shirt
+  description: A simple, versatile shirt suitable for everyday wear.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtAlien
+  name: alien shirt
+  description: A shirt featuring an alien design, perfect for sci‑fi fans and cosmic style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_alien.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtAssBlastUSA
+  name: American flag shirt
+  description: A patriotic shirt featuring the American flag design, ideal for showing national pride.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_assblastusa.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtBand
+  name: band shirt
+  description: A classic band‑themed shirt, great for music lovers and concert fashion.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_band.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtBee
+  name: bee shirt
+  description: A playful shirt with a bee design, adding a buzz of fun to your wardrobe.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_bee.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtBowlingCyan
+  name: cyan bowling shirt
+  description: A vibrant cyan bowling‑style shirt for a retro, sporty look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_bowling_cyan.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtBowlingGrey
+  name: grey bowling shirt
+  description: A sleek grey bowling‑style shirt offering a modern, casual vibe.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_bowling_grey.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtBowlingPink
+  name: pink bowling shirt
+  description: A cheerful pink bowling‑style shirt perfect for a fun, eye‑catching outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_bowling_pink.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtBowlingRed
+  name: red bowling shirt
+  description: A bold red bowling‑style shirt making a strong fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_bowling_red.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtClown
+  name: clown shirt
+  description: A whimsical clown‑themed shirt for a playful and theatrical style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_clown.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCommie
+  name: commie shirt
+  description: A shirt with a commie‑themed design, offering a unique retro‑inspired look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_commie.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboy
+  name: cowboy shirt
+  description: A classic cowboy‑style shirt, perfect for western fashion and rustic charm.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyNavy
+  name: navy cowboy shirt
+  description: A navy blue cowboy‑style shirt adding a sophisticated twist to western wear.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_navy.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyRed
+  name: red cowboy shirt
+  description: A striking red cowboy‑style shirt for a bold western look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_red.rsi
+
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyShort
+  name: short-sleeved cowboy shirt
+  description: A short‑sleeved cowboy‑style shirt ideal for warm weather and casual western style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_short.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyShortNavy
+  name: navy short-sleeved cowboy shirt
+  description: A navy blue short‑sleeved cowboy shirt combining comfort with western flair.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_short_navy.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyShortRed
+  name: red short-sleeved cowboy shirt
+  description: A red short‑sleeved cowboy shirt for a vibrant western look in warm weather.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_short_red.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyShortWhite
+  name: white short-sleeved cowboy shirt
+  description: A crisp white short‑sleeved cowboy shirt perfect for a clean, classic western style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_short_white.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtCowboyWhite
+  name: white cowboy shirt
+  description: A pristine white cowboy‑style shirt exuding classic western elegance.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_cowboy_white.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtILoveNT
+  name: I love NT shirt
+  description: A fun "I love NT" themed shirt, perfect for showing affection for NanoTrasen.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_i_love_nt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtIan
+  name: Ian shirt
+  description: A shirt inspired by Ian, featuring unique design elements associated with the character.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_ian.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtJerseyBlue
+  name: blue jersey shirt
+  description: A sporty blue jersey‑style shirt, perfect for casual wear or team spirit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_jersey_blue.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtJerseyRed
+  name: red jersey shirt
+  description: A vibrant red jersey‑style shirt ideal for showing support or staying casual and comfy.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_jersey_red.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtLong
+  name: long‑sleeved shirt
+  description: A versatile long‑sleeved shirt suitable for cooler weather or a polished look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_long.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtLongStriped
+  name: striped long‑sleeved shirt
+  description: A stylish striped long‑sleeved shirt adding a classic touch to any outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_long_striped.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtLongStripedBlue
+  name: blue striped long‑sleeved shirt
+  description: A blue striped long‑sleeved shirt for a fresh, preppy vibe.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_long_striped_blue.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtLover
+  name: lover shirt
+  description: A romantic lover‑themed shirt perfect for expressing affection or style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_lover.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtMatroska
+  name: matroska shirt
+  description: A matros shirt, featuring colorful, folk‑inspired patterns.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_matroska.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtMeat
+  name: meat shirt
+  description: A quirky meat‑themed shirt for those who appreciate bold, unconventional fashion.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_meat.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtNanoTrasen
+  name: NanoTrasen shirt
+  description: An official NanoTrasen‑branded shirt, perfect for employees or fans of the corporation.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_nano.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtPeace
+  name: peace shirt
+  description: A peaceful, harmony‑inspired shirt featuring symbols or messages of peace.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_peace.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtPogoman
+  name: Pogoman shirt
+  description: A playful Pogoman‑themed shirt, referencing internet culture and fun memes.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_pogoman.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtPolo
+  name: polo shirt
+  description: A classic polo shirt offering a smart‑casual look for everyday wear.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_polo.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtQuestion
+  name: question‑marked shirt
+  description: A mysterious shirt featuring question marks, sparking curiosity and intrigue.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_question.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtShort
+  name: short shirt
+  description: A comfortable short shirt ideal for warm weather and casual styling.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_short.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtShortSleeves
+  name: short‑sleeved shirt
+  description: A relaxed short‑sleeved shirt perfect for everyday comfort and style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_short_sleeves.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtSkull
+  name: skull shirt
+  description: A bold skull‑patterned shirt for an edgy, gothic, or punk‑inspired look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_skull.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtSportBlue
+  name: blue sports shirt
+  description: A comfortable blue sports shirt designed for active wear and athletic performance.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_sport_blue.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtSportGreen
+  name: green sports shirt
+  description: A vibrant green sports shirt perfect for workouts and outdoor activities.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_sport_green.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtSportRed
+  name: red sports shirt
+  description: A bold red sports shirt offering both style and functionality for athletic pursuits.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_sport_red.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtSS13
+  name: SS13 shirt
+  description: A shirt featuring SS13 branding or design elements, perfect for fans of the game.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_ss13.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtStriped
+  name: striped shirt
+  description: A classic striped shirt adding a timeless pattern to your wardrobe.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_striped.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTop
+  name: tank top
+  description: A basic tank top ideal for warm weather and casual, relaxed styling.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTopFire
+  name: fire tank top
+  description: A tank top featuring a fiery design, perfect for making a bold fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop_fire.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTopMidriff
+  name: midriff tank top
+  description: A cropped tank top that reveals the midriff, offering a trendy and edgy look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop_midriff.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTopMidriffAlt
+  name: midriff tank top
+  description: An alternate design of the midriff tank top with a different cut or pattern.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop_midriff-alt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTopStriped
+  name: striped tank top
+  description: A tank top with a striped pattern, adding a stylish twist to a classic design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop_striped.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTopSun
+  name: sun tank top
+  description: A tank top featuring sun motifs, perfect for bright, summery looks.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop_sun.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTankTopAlt
+  name: tank top
+  description: An alternative tank top design with a unique style or construction.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tanktop-alt.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtTieDye
+  name: tie‑dye shirt
+  description: A colorful tie‑dye shirt offering a vibrant, retro‑inspired look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_tiedye.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtShirtUK
+  name: UK shirt
+  description: A shirt featuring UK‑inspired patterns or colors, perfect for showing national pride.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/shirt_uk.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtSwimming
+  name: swimming suit
+  description: A lightweight, quick‑drying shirt designed for swimming and water activities.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/swimming.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtSwimmingBlack
+  name: black swimming suit
+  description: A sleek black swimming suit offering both function and a streamlined look in the water.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/swimming_black.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtSwimmingBlue
+  name: blue swimming suit
+  description: A refreshing blue swimming suit perfect for pool days and beach outings.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/swimming_blue.rsi
+
+- type: entity
+  parent: ClothingShirtBase
+  id: ClothingUndershirtSwimmingRed
+  name: red swimming suit
+  description: A bold red swimming suit that stands out in and around the water.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Undershirt/swimming_red.rsi

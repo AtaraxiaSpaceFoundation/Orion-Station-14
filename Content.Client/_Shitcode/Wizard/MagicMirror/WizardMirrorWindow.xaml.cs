@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Client._Orion.Lobby.UI;
 using Content.Client.Humanoid;
 using Content.Client.Lobby;
 using Content.Shared.Humanoid;
@@ -371,7 +372,7 @@ public sealed partial class WizardMirrorWindow : DefaultWindow
         if (Profile == null || !_prototypeManager.HasIndex(Profile.Species))
             return;
 
-        PreviewDummy = _controller.LoadProfileEntity(Profile, null, false);
+        PreviewDummy = _controller.LoadProfileEntity(Profile, null, ClothingDisplayMode.HideAll);
         SpriteView.SetEntity(PreviewDummy);
         _entManager.System<MetaDataSystem>().SetEntityName(PreviewDummy, Profile.Name);
 

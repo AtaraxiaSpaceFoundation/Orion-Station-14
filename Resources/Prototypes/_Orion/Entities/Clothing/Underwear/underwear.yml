@@ -1,0 +1,287 @@
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShorts
+  name: boxer shorts
+  description: A pair of boxer briefs, the perfect blend of comfort and support.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsAssBlastUSA
+  name: American flag boxer shorts
+  description: A pair of American flag boxers, showing off your patriotic spirit with stars and stripes.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_assblastusa.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsBee
+  name: bee boxer shorts
+  description: A pair of boxer shorts with a playful bee design, adding a buzz to your underwear collection.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_bee.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsBriefs
+  name: boxer briefs
+  description: Tight-fitting boxer briefs offering support and a sleek silhouette under clothing.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_briefs.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsCommie
+  name: commie boxer shorts
+  description: Boxer shorts featuring a commie-inspired design, offering a retro political statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_commie.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsHeart
+  name: heart-patterned boxer shorts
+  description: Romantic heart-patterned boxer shorts, perfect for showing affection or cozy nights.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_heart.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsLong
+  name: long boxer shorts
+  description: Extended-length boxer shorts offering extra coverage and a relaxed fit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_long.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsSponge
+  name: sponge boxer shorts
+  description: Whimsical sponge-patterned boxer shorts for a fun and quirky underwear choice.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_sponge.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsStriped
+  name: striped boxer shorts
+  description: Classic striped boxer shorts adding a timeless pattern to your undergarments.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_striped.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearBoxerShortsUK
+  name: UK boxer shorts
+  description: Boxer shorts featuring UK-inspired patterns or colors, perfect for national pride.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/boxer_uk.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearMankini
+  name: mankini
+  description: A daring mankini swimsuit offering minimal coverage with a bold, attention-grabbing design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/mankini.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPanties
+  name: panties
+  description: Basic panties offering comfortable everyday wear with a simple, classic design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesAssBlastUSA
+  name: American flag panties
+  description: Patriotic panties featuring the American flag design, showing national pride in style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_assblastusa.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesBeeKini
+  name: bee kini panties
+  description: Playful bee-themed kini panties, combining fun design with a flirty silhouette.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_bee-kini.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesBriefs
+  name: brief panties
+  description: Supportive brief-style panties offering full coverage and comfort.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_briefs.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesCommie
+  name: commie panties
+  description: Panties featuring a commie-inspired design, making a retro political fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_commie.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesFishnet
+  name: fishnet panties
+  description: Edgy fishnet panties adding a see-through, provocative element to your lingerie.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_fishnet.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesFishnetLower
+  name: lower fishnet panties
+  description: Fishnet panties with a lower cut, offering a seductive and revealing look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_fishnet_lower.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesFishnetLowerAlt
+  name: lower fishnet panties
+  description: An alternate version of lower fishnet panties with a different pattern or cut.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_fishnet_lower-alt.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesHarley
+  name: Harley panties
+  description: Bold Harley-inspired panties, perfect for making a strong fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_harley.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesJockstrap
+  name: jockstrap
+  description: A supportive jockstrap designed for athletic activities or added comfort and protection.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_jockstrap.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesKinky
+  name: kinky panties
+  description: Provocative kinky-style panties for those who like to push fashion boundaries.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_kinky.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesLizared
+  name: Lizared panties
+  description: Striking red panties inspired by Liza-style designs, combining elegance and allure.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_lizared.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesNeko
+  name: neko panties
+  description: Cute neko-themed panties featuring cat-ear details for a playful and whimsical look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_neko.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesSlim
+  name: slim panties
+  description: Slim-fitting panties offering minimal coverage with a sleek, streamlined design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_slim.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesStriped
+  name: striped panties
+  description: Panties featuring a striped pattern, adding a stylish touch to your lingerie collection.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_striped.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesSwimming
+  name: swimming panties
+  description: Lightweight, quick‑drying panties designed for swimming and water activities.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_swimming.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesThin
+  name: thin panties
+  description: Delicate thin panties offering minimal coverage with a lightweight, airy design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_thin.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesUK
+  name: UK panties
+  description: Panties featuring UK-inspired patterns or colors, perfect for showing national pride.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties_uk.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearPantiesAlt
+  name: panties
+  description: An alternate design of panties with a unique style or construction.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/panties-alt.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearThong
+  name: thong
+  description: Minimal-coverage thong offering a sleek silhouette under clothing or for special occasions.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/thong.rsi
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderwearThongBabydoll
+  name: babydoll thong
+  description: A flirty babydoll-style thong combining playful design with minimal coverage.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Underwear/thong_babydoll.rsi

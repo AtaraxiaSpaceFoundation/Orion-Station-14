@@ -7,7 +7,7 @@
     stripTime: 3
     uiWindowPos: 0,2
     strippingWindowPos: 1,2
-    displayName: Ears
+    displayName: Left Ear # Orion-Edit: Renamed
   - name: gloves
     slotTexture: gloves
     slotFlags: GLOVES

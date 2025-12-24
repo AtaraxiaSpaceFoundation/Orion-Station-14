@@ -19,6 +19,8 @@ using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
 using Content.Shared.Chat;
+using Content.Shared.Examine;
+using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
@@ -35,6 +37,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
+    [Dependency] private readonly InventorySystem _inventory = default!; // Orion
 
     public override void Initialize()
     {
@@ -42,7 +45,11 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, RadioReceiveEvent>(OnHeadsetReceive);
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
-        SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
+//        SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak); // Orion-Edit: Removed
+        // Orion-Start
+        SubscribeLocalEvent<ActorComponent, EntitySpokeEvent>(OnEntitySpoke);
+        SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(OnInventoryExamined);
+        // Orion-End
         SubscribeLocalEvent<HeadsetComponent, RadioReceiveAttemptEvent>(OnHeadsetReceiveAttempt); // Goobstation - Whitelisted radio channel
 
         SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
@@ -68,6 +75,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             EnsureComp<ActiveRadioComponent>(uid).Channels = new(keyHolder.Channels);
     }
 
+/* // Orion-Edit: Removed
     private void OnSpeak(EntityUid uid, WearingHeadsetComponent component, EntitySpokeEvent args)
     {
         if (args.Channel != null
@@ -79,44 +87,138 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
+*/
+
+    // Orion-Start
+    private void OnInventoryExamined(EntityUid uid, InventoryComponent component, ExaminedEvent args)
+    {
+        if (!_inventory.TryGetSlotEntity(uid, "ears", out var leftEar) ||
+            !_inventory.TryGetSlotEntity(uid, "earsright", out var rightEar))
+            return;
+
+        if (!HasComp<HeadsetComponent>(leftEar) || !HasComp<HeadsetComponent>(rightEar))
+            return;
+
+        var entityName = MetaData(uid).EntityName;
+        args.PushMarkup(Loc.GetString("examine-headset-double-wearing", ("entityName", entityName)));
+    }
+    // Orion-End
 
     protected override void OnGotEquipped(EntityUid uid, HeadsetComponent component, GotEquippedEvent args)
     {
         base.OnGotEquipped(uid, component, args);
-        if (component.IsEquipped && component.Enabled)
-        {
-            EnsureComp<WearingHeadsetComponent>(args.Equipee).Headset = uid;
+
+        // Orion-Edit-Start
+        UpdateWearingHeadsetComponent(args.Equipee);
+        if (component.IsEquipped)
             UpdateRadioChannels(uid, component);
-        }
+        // Orion-Edit-End
     }
 
     protected override void OnGotUnequipped(EntityUid uid, HeadsetComponent component, GotUnequippedEvent args)
     {
         base.OnGotUnequipped(uid, component, args);
-        component.IsEquipped = false;
-        RemComp<ActiveRadioComponent>(uid);
-        RemComp<WearingHeadsetComponent>(args.Equipee);
+        // Orion-Edit-Start
+        RemCompDeferred<ActiveRadioComponent>(uid);
+
+        UpdateWearingHeadsetComponent(args.Equipee);
+        // Orion-Edit-End
     }
+
+    // Orion-Start
+    private void UpdateWearingHeadsetComponent(EntityUid wearer)
+    {
+        EntityUid? newActiveHeadset = null;
+
+        var enumerator = _inventory.GetSlotEnumerator(wearer, SlotFlags.EARS | SlotFlags.EARSRIGHT);
+        while (enumerator.MoveNext(out var slot))
+        {
+            if (!_inventory.TryGetSlotEntity(wearer, slot.ID, out var headsetEntity) ||
+                !TryComp(headsetEntity, out HeadsetComponent? headset) ||
+                !headset.Enabled ||
+                !headset.IsEquipped)
+                continue;
+
+            newActiveHeadset = headsetEntity;
+            break;
+        }
+
+        if (newActiveHeadset != null)
+        {
+            if (TryComp<WearingHeadsetComponent>(wearer, out var wearing))
+                wearing.Headset = newActiveHeadset.Value;
+            else
+                EnsureComp<WearingHeadsetComponent>(wearer).Headset = newActiveHeadset.Value;
+        }
+        else
+        {
+            RemComp<WearingHeadsetComponent>(wearer);
+        }
+    }
+
+    private void OnEntitySpoke(EntityUid uid, ActorComponent component, EntitySpokeEvent args)
+    {
+        if (args.Channel == null)
+            return;
+
+        var enumerator = _inventory.GetSlotEnumerator(uid, SlotFlags.EARS | SlotFlags.EARSRIGHT);
+        while (enumerator.MoveNext(out var slot))
+        {
+            if (!_inventory.TryGetSlotEntity(uid, slot.ID, out var headsetEntity) ||
+                !TryComp(headsetEntity, out HeadsetComponent? headset) ||
+                !headset.Enabled ||
+                !headset.IsEquipped ||
+                !TryComp(headsetEntity, out EncryptionKeyHolderComponent? keys))
+                continue;
+
+            if (!keys.Channels.Contains(args.Channel.ID))
+                continue;
+
+            if (!_whitelist.IsWhitelistPassOrNull(args.Channel.SendWhitelist, uid))
+                continue;
+
+            _radio.SendRadioMessage(
+                uid,
+                args.Message,
+                args.Channel,
+                headsetEntity.Value
+            );
+
+            args.Channel = null;
+            break;
+        }
+    }
+    // Orion-End
 
     public void SetEnabled(EntityUid uid, bool value, HeadsetComponent? component = null)
     {
         if (!Resolve(uid, ref component))
             return;
 
-        if (component.Enabled == value)
-            return;
+        // Orion-Edit-Start
+        component.Enabled = value;
+        Dirty(uid, component);
+        // Orion-Edit-End
 
         if (!value)
         {
             RemCompDeferred<ActiveRadioComponent>(uid);
 
-            if (component.IsEquipped)
-                RemCompDeferred<WearingHeadsetComponent>(Transform(uid).ParentUid);
+            // Orion-Edit-Start
+            if (!component.IsEquipped)
+                return;
+
+            var parent = Transform(uid).ParentUid;
+            UpdateWearingHeadsetComponent(parent);
+            // Orion-Edit-End
         }
         else if (component.IsEquipped)
         {
-            EnsureComp<WearingHeadsetComponent>(Transform(uid).ParentUid).Headset = uid;
+            // Orion-Edit-Start
+            var parent = Transform(uid).ParentUid;
+            UpdateWearingHeadsetComponent(parent);
             UpdateRadioChannels(uid, component);
+            // Orion-Edit-End
         }
     }
 

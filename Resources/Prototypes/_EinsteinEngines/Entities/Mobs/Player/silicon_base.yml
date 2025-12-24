@@ -135,11 +135,18 @@
           sprite: Mobs/Customization/masking_helpers.rsi
           state: female_full
           visible: false
+#        - map: ["socks"] # Orion-Edit: Removed
+#        - map: ["underpants"] # Orion-Edit: Removed
+#        - map: ["undershirt"] # Orion-Edit: Removed
+        # Orion-Start
+        - map: [ "underwear" ]
+        - map: [ "undershirt" ]
+        # Orion-End
+        # Orion-Edit-Start: Moved under jumpsuit
         - map: ["enum.HumanoidVisualLayers.LFoot"]
         - map: ["enum.HumanoidVisualLayers.RFoot"]
-        - map: ["socks"]
-        - map: ["underpants"]
-        - map: ["undershirt"]
+        # Orion-Edit-End
+        - map: [ "socks" ] # Orion
         - map: ["jumpsuit"]
         - map: ["enum.HumanoidVisualLayers.LHand"]
         - map: ["enum.HumanoidVisualLayers.RHand"]
@@ -150,7 +157,9 @@
           visible: false
         - map: ["id"]
         - map: ["gloves"]
-        - map: ["shoes"]
+        - map: [ "wrists" ] # Orion
+        - map: [ "shoes" ]
+        - map: [ "earsright" ] # Orion
         - map: ["ears"]
         - map: ["outerClothing"]
         - map: ["eyes"]

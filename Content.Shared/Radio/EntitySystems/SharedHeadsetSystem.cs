@@ -28,12 +28,13 @@ public abstract class SharedHeadsetSystem : EntitySystem
         }
 
         if (TryComp(uid, out EncryptionKeyHolderComponent? keyHolder))
-            args.Args.Channel ??= keyHolder.DefaultChannel; 
+            args.Args.Channel ??= keyHolder.DefaultChannel;
     }
 
     protected virtual void OnGotEquipped(EntityUid uid, HeadsetComponent component, GotEquippedEvent args)
     {
-        component.IsEquipped = args.SlotFlags.HasFlag(component.RequiredSlot);
+        component.IsEquipped = args.SlotFlags.HasFlag(component.RequiredSlot) ||
+                               args.SlotFlags.HasFlag(component.AdditionalSlot); // Orion-Edit: Added AdditionalSlot
     }
 
     protected virtual void OnGotUnequipped(EntityUid uid, HeadsetComponent component, GotUnequippedEvent args)

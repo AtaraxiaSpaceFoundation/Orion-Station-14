@@ -288,6 +288,8 @@ namespace Content.Client.Lobby.UI
 
         private SpeciesWindow? _speciesWindow;  // Orion
 
+        private ClothingDisplayMode _clothingDisplayMode = ClothingDisplayMode.ShowAll; // Orion
+
         public HumanoidProfileEditor(
             IClientPreferencesManager preferencesManager,
             IConfigurationManager configurationManager,
@@ -703,10 +705,28 @@ namespace Content.Client.Lobby.UI
 
             #endregion Left
 
+/* // Orion-Edit: Replaced
             ShowClothes.OnToggled += args =>
             {
                 ReloadPreview();
             };
+*/
+
+            // Orion-Start
+            _clothingDisplayMode = ClothingDisplayMode.ShowAll;
+
+            ClothingDisplayButton.AddItem(Loc.GetString("humanoid-profile-editor-clothing-show-all"), (int)ClothingDisplayMode.ShowAll);
+            ClothingDisplayButton.AddItem(Loc.GetString("humanoid-profile-editor-clothing-show-underwear"), (int)ClothingDisplayMode.ShowUnderwearOnly);
+            ClothingDisplayButton.AddItem(Loc.GetString("humanoid-profile-editor-clothing-hide-all"), (int)ClothingDisplayMode.HideAll);
+            ClothingDisplayButton.SelectId((int)ClothingDisplayMode.ShowAll);
+
+            ClothingDisplayButton.OnItemSelected += args =>
+            {
+                ClothingDisplayButton.SelectId(args.Id);
+                _clothingDisplayMode = (ClothingDisplayMode)args.Id;
+                ReloadPreview();
+            };
+            // Orion-End
 
             SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
 
@@ -1264,7 +1284,7 @@ namespace Content.Client.Lobby.UI
             if (Profile == null || !_prototypeManager.HasIndex(Profile.Species))
                 return;
 
-            PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, ShowClothes.Pressed);
+            PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, _clothingDisplayMode); // Orion-Edit: Clothing display mode
             SpriteView.SetEntity(PreviewDummy);
             _entManager.System<MetaDataSystem>().SetEntityName(PreviewDummy, Profile.Name);
 

@@ -123,6 +123,16 @@
           32:
             sprite: _White/Mobs/Species/displacement.rsi
             state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      socks:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
     displacements:
       jumpsuit:
         sizeMaps:
@@ -130,6 +140,16 @@
             sprite: _White/Mobs/Species/displacement.rsi
             state: jumpsuit
       shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      socks:
         sizeMaps:
           32:
             sprite: _White/Mobs/Species/displacement.rsi
@@ -180,6 +200,16 @@
           32:
             sprite: _White/Mobs/Species/displacement.rsi
             state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      socks:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
     displacements:
       jumpsuit:
         sizeMaps:
@@ -187,6 +217,16 @@
             sprite: _White/Mobs/Species/displacement.rsi
             state: jumpsuit
       shoes:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: shoes
+      underwear:
+        sizeMaps:
+          32:
+            sprite: _White/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      socks:
         sizeMaps:
           32:
             sprite: _White/Mobs/Species/displacement.rsi

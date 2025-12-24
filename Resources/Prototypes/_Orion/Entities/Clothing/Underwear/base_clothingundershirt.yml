@@ -1,0 +1,81 @@
+- type: entity
+  abstract: true
+  parent: Clothing
+  id: ClothingUndershirtBase
+  name: undershirt
+  description: Huh.
+  components:
+  # Goob-Start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/cloth_pickup.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/cloth_drop.ogg
+      params:
+        volume: -4
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/cloth_drop.ogg
+      params:
+        volume: -4
+  # Goob-End
+  - type: Clothing
+    quickEquip: true
+    slots:
+    - undershirt
+    equipSound:
+      collection: GenericEquip
+      params:
+        volume: -5
+  - type: Item
+    size: Small
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: MaterialCloth1
+      amount: 2
+  - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
+    materialComposition:
+      Cloth: 100
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+  - type: Sprite
+    state: icon
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+  - type: Armor
+    coverage:
+    - Chest
+
+- type: entity
+  abstract: true
+  parent: ClothingUndershirtBase
+  id: ClothingShirtBase
+  name: shirt
+  description: Classic shirt.
+  components:
+  - type: TemperatureProtection
+    heatingCoefficient: 0.90
+
+- type: entity
+  abstract: true
+  parent: ClothingUndershirtBase
+  id: ClothingBraBase
+  name: bra
+  description: Bra.
+  components:
+  - type: TemperatureProtection
+    heatingCoefficient: 0.95

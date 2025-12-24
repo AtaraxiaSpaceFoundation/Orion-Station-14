@@ -1,0 +1,359 @@
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksAssBlastUSAKnee
+  name: American flag knee-highs
+  description: A pair of American Flag knee-highs, perfect for showing off your patriotic side.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/assblastusa_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksAssBlastUSAThigh
+  name: American flag thigh-highs
+  description: A pair of American Flag thigh-highs, ready to wave the flag in style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/assblastusa_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksBeeKnee
+  name: bee knee-highs
+  description: A pair of bee knee-highs, adding some buzz to your style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/bee_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksBee
+  name: bee socks
+  description: A pair of bee themed socks, perfect for making a statement with your footwear.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/bee_norm.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksBeeThigh
+  name: bee thigh-highs
+  description: A pair of bee thigh-highs, sure to draw attention with their unique design.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/bee_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCandyCaneGreenKnee
+  name: green candy cane knee-highs
+  description: Festive green candy cane patterned knee‑highs, perfect for the holiday season.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/candycane_green_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCandyCaneGreen
+  name: green candy cane socks
+  description: Classic green candy cane themed socks to add a touch of holiday cheer.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/candycane_green_norm.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCandyCaneGreenThigh
+  name: green candy cane thigh-highs
+  description: Green candy cane patterned thigh‑highs for a bold festive statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/candycane_green_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCandyCaneRedKnee
+  name: red candy cane knee-highs
+  description: Vibrant red candy cane patterned knee‑highs, ideal for holiday outfits.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/candycane_red_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCandyCaneRed
+  name: red candy cane socks
+  description: Red candy cane themed socks bringing festive spirit to your daily look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/candycane_red_norm.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCandyCaneRedThigh
+  name: red candy cane thigh-highs
+  description: Bold red candy cane patterned thigh‑highs to make a holiday fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/candycane_red_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksChristmasKnee
+  name: Christmas knee-highs
+  description: Festive Christmas‑themed knee‑highs, perfect for holiday celebrations.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/christmas_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksChristmas
+  name: Christmas socks
+  description: Cheerful Christmas‑themed socks to spread holiday joy.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/christmas_norm.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksChristmasThigh
+  name: Christmas thigh-highs
+  description: Christmas patterned thigh‑highs for a festive and eye‑catching look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/christmas_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCommieKnee
+  name: commie knee-highs
+  description: Knee‑highs with a commie‑themed design, offering a unique retro style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/commie_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksCommieThigh
+  name: commie thigh-highs
+  description: Thigh‑highs featuring a commie design for a bold and distinctive look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/commie_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksFishnet
+  name: fishnet socks
+  description: Stylish fishnet socks adding a touch of edginess to your outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/fishnet.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksFishnetAlt
+  name: fishnet socks
+  description: Stylish fishnet socks adding a touch of edginess to your outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/fishnet_alt.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksGarter
+  name: garter socks
+  description: Elegant garter socks, combining style and sophistication.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/garter.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksLeggings
+  name: leggings
+  description: Comfortable leggings offering a sleek and versatile look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/leggings.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksLeggingsBlack
+  name: black leggings
+  description: Classic black leggings for a timeless and chic appearance.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/leggings_black.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksPantyhose
+  name: pantyhose
+  description: Smooth pantyhose providing an elegant finish to any outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/pantyhose.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksPantyhoseRipped
+  name: ripped pantyhose
+  description: Ripped pantyhose for a trendy and edgy fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/pantyhose_ripped.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksKnee
+  name: knee socks
+  description: Simple knee socks for a classic and versatile style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/socks_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksLatex
+  name: latex socks
+  description: Smooth and shiny latex socks for a bold and unique fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/socks_latex.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocks
+  name: regular socks
+  description: Basic regular socks for everyday comfort and style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/socks_norm.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksShort
+  name: short socks
+  description: Comfortable short socks ideal for everyday wear and casual styles.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/socks_short.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksThigh
+  name: thigh-highs
+  description: Classic thigh-high socks offering a sleek and versatile look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/socks_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingStockingsDarkPink
+  name: dark pink stockings
+  description: Sophisticated dark pink stockings perfect for a refined style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/stockings_dark_pink.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingStockingsGreen
+  name: green stockings
+  description: Fresh green stockings bringing a natural vibe to your look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/stockings_green.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingStockingsLightPink
+  name: light pink stockings
+  description: Soft light pink stockings for a delicate and feminine appearance.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/stockings_light_pink.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingStockingsOrange
+  name: orange stockings
+  description: Bright orange stockings making a bold and cheerful statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/stockings_orange.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingStockingsPurple
+  name: purple stockings
+  description: Rich purple stockings adding a touch of luxury to your style.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/stockings_purple.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingStockingsYellow
+  name: yellow stockings
+  description: Cheerful yellow stockings brightening up any outfit.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/stockings_yellow.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksStripedKnee
+  name: striped knee-highs
+  description: Classic striped knee-highs for a retro-inspired look.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/striped_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksStripedThigh
+  name: striped thigh-highs
+  description: Bold striped thigh-highs making a strong fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/striped_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksThinKnee
+  name: thin knee-highs
+  description: Delicate thin knee-highs offering a subtle and elegant touch.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/thin_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksThinThigh
+  name: thin thigh-highs
+  description: Delicate thin thigh-highs offering a subtle and elegant touch.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/thin_thigh.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksUKKnee
+  name: UK-themed knee-highs
+  description: Knee-highs featuring UK-inspired patterns or colors, perfect for showing national pride.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/uk_knee.rsi
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingSocksUKThigh
+  name: UK-themed thigh-highs
+  description: Thigh-highs featuring UK-inspired patterns or colors, ideal for making a patriotic fashion statement.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Underwear/Socks/uk_thigh.rsi

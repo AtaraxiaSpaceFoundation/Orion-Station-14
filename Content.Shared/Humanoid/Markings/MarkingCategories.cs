@@ -42,10 +42,10 @@ namespace Content.Shared.Humanoid.Markings
         Legs,
         Groin, // Shitmed Change
         Wings, // For IPC wings porting from SimpleStation
-        Underwear,
-        Undershirt,
+//        Underwear, // Orion-Edit: Removed
+//        Undershirt, // Orion-Edit: Removed
         Tail,
-        Overlay
+        Overlay,
     }
 
     public static class MarkingCategoriesConversion
@@ -62,8 +62,8 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.HeadTop => MarkingCategories.HeadTop,
                 HumanoidVisualLayers.HeadSide => MarkingCategories.HeadSide,
                 HumanoidVisualLayers.Snout => MarkingCategories.Snout,
-                HumanoidVisualLayers.Undershirt => MarkingCategories.Undershirt,
-                HumanoidVisualLayers.Underwear => MarkingCategories.Underwear,
+//                HumanoidVisualLayers.Undershirt => MarkingCategories.Undershirt, // Orion-Edit: Removed
+//                HumanoidVisualLayers.Underwear => MarkingCategories.Underwear, // Orion-Edit: Removed
                 HumanoidVisualLayers.Chest => MarkingCategories.Chest,
                 HumanoidVisualLayers.Groin => MarkingCategories.Groin, // Shitmed Change
                 HumanoidVisualLayers.RArm => MarkingCategories.RightArm,
@@ -76,7 +76,7 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.RFoot => MarkingCategories.RightFoot,
                 HumanoidVisualLayers.Wings => MarkingCategories.Wings,
                 HumanoidVisualLayers.Tail => MarkingCategories.Tail,
-                _ => MarkingCategories.Overlay
+                _ => MarkingCategories.Overlay,
             };
         }
     }

@@ -56,8 +56,8 @@
       slotTexture: glasses
       slotFlags: EYES
       stripTime: 3
-      uiWindowPos: 0,3
-      strippingWindowPos: 0,0
+      uiWindowPos: 2,2 # Orion-Edit
+      strippingWindowPos: 2,1 # Orion-Edit
       displayName: Eyes
     - name: head
       slotTexture: head

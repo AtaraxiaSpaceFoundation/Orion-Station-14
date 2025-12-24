@@ -1,0 +1,159 @@
+- type: loadout
+  id: UnderwearBoxerShorts # Named like that because Boxer (Job) claimed this ID
+  equipment:
+    underwear: ClothingUnderwearBoxerShorts
+
+- type: loadout
+  id: BoxerShortsAssBlastUSA
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsAssBlastUSA
+
+- type: loadout
+  id: BoxerShortsBee
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsBee
+
+- type: loadout
+  id: BoxerShortsBriefs
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsBriefs
+
+- type: loadout
+  id: BoxerShortsCommie
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsCommie
+
+- type: loadout
+  id: BoxerShortsHeart
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsHeart
+
+- type: loadout
+  id: BoxerShortsLong
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsLong
+
+- type: loadout
+  id: BoxerShortsSponge
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsSponge
+
+- type: loadout
+  id: BoxerShortsStriped
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsStriped
+
+- type: loadout
+  id: BoxerShortsUK
+  equipment:
+    underwear: ClothingUnderwearBoxerShortsUK
+
+- type: loadout
+  id: Mankini
+  equipment:
+    underwear: ClothingUnderwearMankini
+
+- type: loadout
+  id: Panties
+  equipment:
+    underwear: ClothingUnderwearPanties
+
+- type: loadout
+  id: PantiesAssBlastUSA
+  equipment:
+    underwear: ClothingUnderwearPantiesAssBlastUSA
+
+- type: loadout
+  id: PantiesBeeKini
+  equipment:
+    underwear: ClothingUnderwearPantiesBeeKini
+
+- type: loadout
+  id: PantiesBriefs
+  equipment:
+    underwear: ClothingUnderwearPantiesBriefs
+
+- type: loadout
+  id: PantiesCommie
+  equipment:
+    underwear: ClothingUnderwearPantiesCommie
+
+- type: loadout
+  id: PantiesFishnet
+  equipment:
+    underwear: ClothingUnderwearPantiesFishnet
+
+- type: loadout
+  id: PantiesFishnetLower
+  equipment:
+    underwear: ClothingUnderwearPantiesFishnetLower
+
+- type: loadout
+  id: PantiesFishnetLowerAlt
+  equipment:
+    underwear: ClothingUnderwearPantiesFishnetLowerAlt
+
+- type: loadout
+  id: PantiesHarley
+  equipment:
+    underwear: ClothingUnderwearPantiesHarley
+
+- type: loadout
+  id: PantiesJockstrap
+  equipment:
+    underwear: ClothingUnderwearPantiesJockstrap
+
+- type: loadout
+  id: PantiesKinky
+  equipment:
+    underwear: ClothingUnderwearPantiesKinky
+
+- type: loadout
+  id: PantiesLizared
+  equipment:
+    underwear: ClothingUnderwearPantiesLizared
+
+- type: loadout
+  id: PantiesNeko
+  equipment:
+    underwear: ClothingUnderwearPantiesNeko
+
+- type: loadout
+  id: PantiesSlim
+  equipment:
+    underwear: ClothingUnderwearPantiesSlim
+
+- type: loadout
+  id: PantiesStriped
+  equipment:
+    underwear: ClothingUnderwearPantiesStriped
+
+- type: loadout
+  id: PantiesSwimming
+  equipment:
+    underwear: ClothingUnderwearPantiesSwimming
+
+- type: loadout
+  id: PantiesThin
+  equipment:
+    underwear: ClothingUnderwearPantiesThin
+
+- type: loadout
+  id: PantiesUK
+  equipment:
+    underwear: ClothingUnderwearPantiesUK
+
+- type: loadout
+  id: PantiesAlt
+  equipment:
+    underwear: ClothingUnderwearPantiesAlt
+
+- type: loadout
+  id: Thong
+  equipment:
+    underwear: ClothingUnderwearThong
+
+- type: loadout
+  id: ThongBabydoll
+  equipment:
+    underwear: ClothingUnderwearThongBabydoll

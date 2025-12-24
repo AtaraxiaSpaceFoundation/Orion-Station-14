@@ -39,7 +39,14 @@ public enum SlotFlags
     LEGS = 1 << 13,
     FEET = 1 << 14,
     SUITSTORAGE = 1 << 15,
+    // Orion-Start
+    EARSRIGHT = 1 << 16,
+    UNDERWEAR = 1 << 17,
+    UNDERSHIRT = 1 << 18,
+    SOCKS = 1 << 19,
+    WRISTS = 1 << 20,
+    // Orion-End
     All = ~NONE,
 
-    WITHOUT_POCKET = All & ~POCKET
+    WITHOUT_POCKET = All & ~POCKET,
 }
