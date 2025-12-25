@@ -88,27 +88,28 @@ public sealed class InducerSystem : EntitySystem
         if (!TryComp<BatteryComponent>(slot.Item.Value, out var sourceBattery))
             return;
 
-        // Also multiply transferring energy
-        var energyToTransfer = component.TransferRate * component.TransferDelay * component.TransferMultiplier;
-        energyToTransfer = Math.Min(energyToTransfer, sourceBattery.CurrentCharge);
+        var baseEnergyToConsume = component.TransferRate * component.TransferDelay;
+        baseEnergyToConsume = Math.Min(baseEnergyToConsume, sourceBattery.CurrentCharge);
 
-        var freeSpace = targetBattery.MaxCharge - targetBattery.CurrentCharge;
-        energyToTransfer = Math.Min(energyToTransfer, freeSpace);
-
-        if (energyToTransfer <= 0)
+        if (baseEnergyToConsume <= 0)
             return;
 
-        if (_battery.TryUseCharge(slot.Item.Value, energyToTransfer, sourceBattery))
+        var energyToReceive = baseEnergyToConsume * component.TransferMultiplier;
+        var freeSpace = targetBattery.MaxCharge - targetBattery.CurrentCharge;
+        energyToReceive = Math.Min(energyToReceive, freeSpace);
+
+        var actualEnergyToConsume = energyToReceive / component.TransferMultiplier;
+        if (_battery.TryUseCharge(slot.Item.Value, actualEnergyToConsume, sourceBattery))
         {
-            _battery.AddCharge(target, energyToTransfer, targetBattery);
+            _battery.AddCharge(target, energyToReceive, targetBattery);
             _sparks.DoSparks(Transform(target).Coordinates);
 
             args.Repeat = targetBattery.CurrentCharge < targetBattery.MaxCharge;
         }
         else
         {
-            _battery.SetCharge(target, targetBattery.CurrentCharge + energyToTransfer, targetBattery);
-            _battery.SetCharge(slot.Item.Value, sourceBattery.CurrentCharge - energyToTransfer, sourceBattery);
+            _battery.SetCharge(target, targetBattery.CurrentCharge + energyToReceive, targetBattery);
+            _battery.SetCharge(slot.Item.Value, sourceBattery.CurrentCharge - actualEnergyToConsume, sourceBattery);
             args.Repeat = false;
         }
     }
@@ -128,11 +129,15 @@ public sealed class InducerSystem : EntitySystem
                 Category = VerbCategory.SelectType,
                 Act = () =>
                 {
+                    if (Math.Abs(component.TransferRate - rate) < 0.01f)
+                        return;
+
                     component.TransferRate = rate;
                     Dirty(uid, component);
                     _popup.PopupEntity(Loc.GetString("inducer-transfer-rate-set", ("rate", rate)), uid, args.User);
                 },
-                Priority = priority
+
+                Priority = priority,
             };
 
             priority--;

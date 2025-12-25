@@ -23,7 +23,7 @@ public sealed partial class InducerComponent : Component
     ///     Multiply transferring energy.
     /// </summary>
     [DataField]
-    public float TransferMultiplier = 1.5f;
+    public float TransferMultiplier;
 
     [DataField]
     public float MaxDistance;
