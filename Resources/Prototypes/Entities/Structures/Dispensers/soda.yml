@@ -148,11 +148,6 @@
     - Drinks
   # Orion-Start
   - type: EnergyReagentDispenser
-    energyBeakerSlot:
-      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
-      whitelist:
-        components:
-        - FitsInDispenser
     reagents:
       Coffee: 8
       Cola: 8

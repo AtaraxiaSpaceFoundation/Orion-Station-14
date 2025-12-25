@@ -116,7 +116,7 @@
 #      priority: 9
   # Orion-Start
   - type: EnergyReagentDispenser
-    energyBeakerSlot:
+    beakerSlot:
       whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
       whitelist:
         components:

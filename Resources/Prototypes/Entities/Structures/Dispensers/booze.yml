@@ -142,11 +142,6 @@
     stealGroup: BoozeDispenser
   # Orion-Start
   - type: EnergyReagentDispenser
-    energyBeakerSlot:
-      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
-      whitelist:
-        components:
-        - FitsInDispenser
     reagents:
       Absinthe: 8
       Ale: 8

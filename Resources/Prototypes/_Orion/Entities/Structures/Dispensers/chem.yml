@@ -66,11 +66,6 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
   - type: EnergyReagentDispenser
-    energyBeakerSlot:
-      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
-      whitelist:
-        components:
-        - FitsInDispenser
     reagents:
       Aluminium: 8
       Carbon: 3
