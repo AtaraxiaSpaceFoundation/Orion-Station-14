@@ -31,9 +31,6 @@
           tags:
           - PowerCell
           - MegaCell
-  - type: ContainerContainer
-    containers:
-      inducer_power_cell_slot: !type:ContainerSlot {}
   - type: ItemMapper
     mapLayers:
       inducer-bat:
