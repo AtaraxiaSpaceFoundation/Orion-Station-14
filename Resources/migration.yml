@@ -254,12 +254,11 @@ GunSafeSubMachineGunWt550: GunSafeSubMachineGunWt550AlertLocked
 GunSafeLaserCarbine: GunSafeLaserCarbineAlertLocked
 GlassBoxLaserFilled: GlassBoxLaserFilledAlertLocked
 
-ChemDispenser: EnergyChemDispenser
-ChemDispenserEmpty: EnergyChemDispenser
+EnergyChemDispenser: ChemDispenser
+ChemDispenserEmpty: ChemDispenser
 MiniChemDispenserEmpty: MiniChemDispenser
 BoozeDispenserEmpty: BoozeDispenser
 SodaDispenserEmpty: SodaDispenser
-ChemDispenserMachineCircuitboard: EnergyChemDispenserMachineCircuitboard
 
 BaseSecretDoorAssembly: null
 

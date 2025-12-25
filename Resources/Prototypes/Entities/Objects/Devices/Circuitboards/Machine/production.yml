@@ -669,7 +669,6 @@
   parent: BaseMachineCircuitboard
   name: chem dispenser machine board
   description: A machine printed circuit board for a chem dispenser.
-  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
     - type: Sprite
       state: medical

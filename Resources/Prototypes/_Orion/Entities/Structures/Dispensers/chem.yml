@@ -12,8 +12,8 @@
 
 - type: entity
   parent: ReagentDispenserBase
-  id: EnergyChemDispenser
-  name: energy chemical dispenser
+  id: ChemDispenser
+  name: chemical dispenser
   description: A bluespace Chemical Dispenser that uses station energy to synthesize Reagents. The future is here and now.
   placement:
     mode: SnapgridCenter
@@ -56,7 +56,7 @@
   - type: StealTarget
     stealGroup: ChemDispenser
   - type: Machine
-    board: EnergyChemDispenserMachineCircuitboard
+    board: ChemDispenserMachineCircuitboard
   - type: ActivatableUI
     key: enum.EnergyReagentDispenserUiKey.Key
   - type: UserInterface
@@ -99,8 +99,8 @@
 
 # Version for antagonists (Like NukeOps)
 - type: entity
-  parent: EnergyChemDispenser
-  id: EnergyChemDispenserBuffed
+  parent: ChemDispenser
+  id: ChemDispenserBuffed
   suffix: Buffed
   components:
   - type: Battery
