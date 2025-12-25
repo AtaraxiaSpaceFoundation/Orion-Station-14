@@ -669,11 +669,12 @@
   parent: BaseMachineCircuitboard
   name: chem dispenser machine board
   description: A machine printed circuit board for a chem dispenser.
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
     - type: Sprite
       state: medical
     - type: MachineBoard
-      prototype: ManualChemDispenserEmpty # Orion-Edit: Manual
+      prototype: ChemDispenserEmpty
       stackRequirements:
         Manipulator: 1
         Glass: 1
@@ -1321,7 +1322,7 @@
     - type: Sprite
       state: service
     - type: MachineBoard
-      prototype: BoozeDispenserEmpty
+      prototype: BoozeDispenser # Orion-Edit
       stackRequirements:
         Steel: 5
       tagRequirements:
@@ -1367,7 +1368,7 @@
     - type: Sprite
       state: service
     - type: MachineBoard
-      prototype: SodaDispenserEmpty
+      prototype: SodaDispenser # Orion-Edit
       stackRequirements:
         Steel: 5
       tagRequirements:

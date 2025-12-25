@@ -33,6 +33,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Orion-Edit: Replaced with EnergyReagentDispenser
 using System.Linq;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Chemistry.Components;
@@ -230,3 +231,4 @@ namespace Content.Server.Chemistry.EntitySystems
         }
     }
 }
+*/

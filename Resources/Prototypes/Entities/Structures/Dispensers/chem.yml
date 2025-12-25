@@ -45,11 +45,12 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: ManualChemDispenserEmpty # Orion-Edit: Manual
+  id: ChemDispenserEmpty
   name: chemical dispenser
-  suffix: Manual, Empty # Orion-Edit: Manual
+  suffix: Empty
   parent: ReagentDispenserBase
   description: An industrial grade chemical dispenser.
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Sprite
     sprite: Structures/dispensers.rsi
@@ -75,8 +76,8 @@
         node: machineFrame
       - !type:DoActsBehavior
         acts: ["Destruction"]
-  - type: Machine
-    board: ChemDispenserMachineCircuitboard
+#  - type: Machine # Orion-Edit: Removed
+#    board: ChemDispenserMachineCircuitboard
   - type: GuideHelp
     guides:
     - Chemicals
@@ -96,11 +97,12 @@
         - MachineLayer
 
 - type: entity
-  id: ManualChemDispenser # Orion-Edit: Manual
-  suffix: Manual, Filled # Orion-Edit: Manual
-  parent: ManualChemDispenserEmpty # Orion-Edit: Manual
+  id: ChemDispenser
+  suffix: Filled
+  parent: ChemDispenserEmpty
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
-  - type: ReagentDispenser
+#  - type: ReagentDispenser # Orion-Edit: Removed
   - type: StorageFill
     contents:
       - id: JugAluminium
