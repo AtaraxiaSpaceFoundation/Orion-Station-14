@@ -50,7 +50,6 @@
   suffix: Empty
   parent: ReagentDispenserBase
   description: An industrial grade chemical dispenser.
-  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Sprite
     sprite: Structures/dispensers.rsi
@@ -76,8 +75,8 @@
         node: machineFrame
       - !type:DoActsBehavior
         acts: ["Destruction"]
-#  - type: Machine # Orion-Edit: Removed
-#    board: ChemDispenserMachineCircuitboard
+  - type: Machine
+    board: ChemDispenserMachineCircuitboard
   - type: GuideHelp
     guides:
     - Chemicals
@@ -100,9 +99,8 @@
   id: ChemDispenser
   suffix: Filled
   parent: ChemDispenserEmpty
-  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
-#  - type: ReagentDispenser # Orion-Edit: Removed
+  - type: ReagentDispenser
   - type: StorageFill
     contents:
       - id: JugAluminium

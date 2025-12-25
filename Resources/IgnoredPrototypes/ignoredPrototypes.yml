@@ -10,3 +10,7 @@
 #
 # - /Prototypes/Guidebook
 # - /Prototypes/Catalog/uplink_catalog.yml
+
+# Orion-Start
+- /Prototypes/Entities/Structures/Dispensers/chem.yml
+# Orion-End
