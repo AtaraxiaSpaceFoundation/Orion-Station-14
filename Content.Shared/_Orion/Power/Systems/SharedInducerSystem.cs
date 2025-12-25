@@ -1,7 +1,7 @@
+using Content.Shared._Orion.Power.Components;
 using Content.Shared.Examine;
-using Content.Shared.Power.Components;
 
-namespace Content.Shared.Power.EntitySystems;
+namespace Content.Shared._Orion.Power.Systems;
 
 public sealed class SharedInducerSystem : EntitySystem
 {

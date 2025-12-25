@@ -11,14 +11,14 @@
   - type: Item
     size: Normal
   - type: Inducer
+    transferRate: 500
+    transferDelay: 1
+    maxDistance: 3
     availableTransferRates:
     - 500
     - 2500
     - 5000
     - 7500
-    transferRate: 500
-    transferDelay: 1
-    maxDistance: 3
   - type: PowerCellSlot
     cellSlotId: inducer_power_cell_slot
   - type: ItemSlots
@@ -31,6 +31,9 @@
           tags:
           - PowerCell
           - MegaCell
+  - type: ContainerContainer
+    containers:
+      inducer_power_cell_slot: !type:ContainerSlot {}
   - type: ItemMapper
     mapLayers:
       inducer-bat:
@@ -64,11 +67,9 @@
     sprite: _Orion/Objects/Tools/inducer-rnd.rsi
     state: icon
   - type: Inducer
+    transferRate: 900
     availableTransferRates:
     - 900
-    transferRate: 900
-    transferDelay: 0.09
-    maxDistance: 6
   - type: ItemSlots
     slots:
       inducer_power_cell_slot:
@@ -80,6 +81,12 @@
           - PowerCell
           - MegaCell
   - type: ItemMapper
+    mapLayers:
+      inducer-bat:
+        whitelist:
+          tags:
+          - PowerCell
+          - MegaCell
     sprite: _Orion/Objects/Tools/inducer-rnd.rsi
 
 - type: entity

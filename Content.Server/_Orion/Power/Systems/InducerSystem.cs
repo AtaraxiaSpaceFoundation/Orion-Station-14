@@ -1,13 +1,15 @@
+using Content.Goobstation.Common.Effects;
 using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
+using Content.Shared._Orion.Power.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.Power.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
 
-namespace Content.Server.Power.EntitySystems;
+namespace Content.Server._Orion.Power.Systems;
 
 public sealed class InducerSystem : EntitySystem
 {
@@ -15,6 +17,7 @@ public sealed class InducerSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SparksSystem _sparks = default!;
 
     public override void Initialize()
     {
@@ -72,7 +75,7 @@ public sealed class InducerSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnDoAfter(EntityUid uid, InducerComponent component, DoAfterEvent args)
+    private void OnDoAfter(EntityUid uid, InducerComponent component, InducerDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null)
             return;
@@ -88,7 +91,8 @@ public sealed class InducerSystem : EntitySystem
         if (!TryComp<BatteryComponent>(slot.Item.Value, out var sourceBattery))
             return;
 
-        var energyToTransfer = component.TransferRate * component.TransferDelay;
+        // Also multiply transferring energy
+        var energyToTransfer = component.TransferRate * component.TransferDelay * component.TransferMultiplier;
         energyToTransfer = Math.Min(energyToTransfer, sourceBattery.CurrentCharge);
 
         var freeSpace = targetBattery.MaxCharge - targetBattery.CurrentCharge;
@@ -100,10 +104,9 @@ public sealed class InducerSystem : EntitySystem
         if (_battery.TryUseCharge(slot.Item.Value, energyToTransfer, sourceBattery))
         {
             _battery.AddCharge(target, energyToTransfer, targetBattery);
-            var percent = (int)(targetBattery.CurrentCharge / targetBattery.MaxCharge * 100);
-            _popup.PopupEntity(Loc.GetString("inducer-success", ("percent", percent)), uid, args.User);
+            _sparks.DoSparks(Transform(target).Coordinates);
 
-            args.Repeat = targetBattery.CurrentCharge < targetBattery.MaxCharge * 0.95f;
+            args.Repeat = targetBattery.CurrentCharge < targetBattery.MaxCharge;
         }
         else
         {
