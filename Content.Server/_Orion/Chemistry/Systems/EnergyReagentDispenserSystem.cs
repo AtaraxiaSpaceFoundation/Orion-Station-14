@@ -196,7 +196,7 @@ public sealed class EnergyReagentDispenserSystem : EntitySystem
     {
         _itemSlotsSystem.AddItemSlot(entity.Owner,
             SharedEnergyReagentDispenser.OutputSlotName,
-            entity.Comp.EnergyBeakerSlot);
+            entity.Comp.BeakerSlot);
     }
 
     private void OnEmagged(Entity<EnergyReagentDispenserComponent> ent, ref GotEmaggedEvent args)
