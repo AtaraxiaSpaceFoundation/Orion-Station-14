@@ -12,4 +12,4 @@ alerts-severe-pain-name = [color=red]Сильная боль[/color]
 alerts-severe-pain-desc = [color=red]Боль усиливается, сложно вытерпеть.[/color]
 
 alerts-excruciating-pain-name = [color=red]Мучительная боль[/color]
-alerts-excruciating-pain-desc = [color=red]Боль невиносима, сложно сфокусироваться на чём либо![/color]
+alerts-excruciating-pain-desc = [color=red]Боль невыносима, невозможно сфокусироваться на чём-либо![/color]

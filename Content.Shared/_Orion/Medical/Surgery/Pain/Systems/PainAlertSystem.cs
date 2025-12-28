@@ -4,7 +4,6 @@ using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared.Alert;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Events;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Prototypes;
@@ -24,7 +23,7 @@ public sealed class PainAlertSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
-    private static readonly string[] PainAlerts = ["Pain0", "Pain1", "Pain2", "Pain3"];
+    private static readonly ProtoId<AlertPrototype>[] PainAlerts = ["Pain0", "Pain1", "Pain2", "Pain3"];
 
     public override void Initialize()
     {
@@ -32,16 +31,24 @@ public sealed class PainAlertSystem : EntitySystem
 
         SubscribeLocalEvent<NerveComponent, ComponentInit>(OnNerveSystemMapInit);
         SubscribeLocalEvent<NerveComponent, DamageChangedEvent>(OnDamageChanged);
-        SubscribeLocalEvent<NerveComponent, DamageExamineEvent>(OnExamine);
     }
 
     private void OnNerveSystemMapInit(EntityUid uid, NerveComponent component, ComponentInit args)
     {
+        EntityUid mobUid;
+        if (TryComp<BodyPartComponent>(uid, out var bodyPart) && bodyPart.Body is { } bodyUid)
+            mobUid = bodyUid;
+        else
+            mobUid = uid;
+
+        if (!HasComp<AlertsComponent>(mobUid))
+            return;
+
         // Clear all pain alerts when the component initializes
         foreach (var alertId in PainAlerts)
         {
-            if (_prototypeManager.TryIndex<AlertPrototype>(alertId, out var alert))
-                _alerts.ClearAlert(uid, alert);
+            if (_prototypeManager.TryIndex(alertId, out var alert))
+                _alerts.ClearAlert(mobUid, alert);
         }
     }
 
@@ -50,12 +57,6 @@ public sealed class PainAlertSystem : EntitySystem
         // Update on both damage and healing
         if (args.DamageDelta != null) // This will be non-null for both damage and healing
             UpdatePainAlert(uid, nerve);
-    }
-
-    private void OnExamine(EntityUid uid, NerveComponent nerve, ref DamageExamineEvent args)
-    {
-        // Update pain alert when examining damage
-        UpdatePainAlert(uid, nerve);
     }
 
     private void UpdatePainAlert(EntityUid uid, NerveComponent? nerve = null)
@@ -94,25 +95,11 @@ public sealed class PainAlertSystem : EntitySystem
                 ? 3 // Max severity in critical state
                 : (int) Math.Clamp(Math.Floor((totalPain - 1f) / 25f), 0, 3);
 
-            // Clear all other pain alerts first
-            foreach (var alertId in PainAlerts)
-            {
-                if (_prototypeManager.TryIndex<AlertPrototype>(alertId, out var alert))
-                    _alerts.ClearAlert(mobUid.Value, alert);
-            }
-
-            // Show the appropriate pain alert
-            if (_prototypeManager.TryIndex<AlertPrototype>(PainAlerts[alertIndex], out _))
-                _alerts.ShowAlert(mobUid.Value, PainAlerts[alertIndex]);
+            _alerts.ShowAlert(mobUid.Value, PainAlerts[alertIndex]);
         }
         else
         {
-            // Clear all pain alerts
-            foreach (var alertId in PainAlerts)
-            {
-                if (_prototypeManager.TryIndex<AlertPrototype>(alertId, out var alert))
-                    _alerts.ClearAlert(mobUid.Value, alert);
-            }
+            _alerts.ClearAlertCategory(mobUid.Value, "Pain");
         }
     }
 }
