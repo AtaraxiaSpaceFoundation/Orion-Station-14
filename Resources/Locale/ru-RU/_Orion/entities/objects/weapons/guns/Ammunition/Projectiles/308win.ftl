@@ -1,4 +1,4 @@
-ent-BulletRifle762 = пуля (.308 винчестер)
+ent-Bullet308win = пуля (.308 винчестер)
     .desc = { ent-BaseBullet.desc }
 ent-Bullet308winPractice = пуля (.308 учебная)
     .desc = { ent-BaseBulletPractice.desc }
