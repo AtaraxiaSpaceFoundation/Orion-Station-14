@@ -175,7 +175,7 @@ selectable-set-blueshield-modsuit-description =
 selectable-set-ert-ballistic-name = ballistics set
 selectable-set-ert-ballistic-description =
     Reliable, efficient, and compact. The Annies got your back.
-    Includes: .30 caliber rifle, the Annie.
+    Includes: 5.45mm caliber rifle, the Annie.
     Spare magazines for it, and an N1984.
 
 selectable-set-ert-pulse-name = pulse set

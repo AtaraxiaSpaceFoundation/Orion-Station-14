@@ -1,0 +1,10 @@
+ent-BaseCartridgeRifle762 = патрон (7.62мм винтовочный)
+    .desc = { ent-BaseCartridge.desc }
+ent-CartridgeRifle762 = патрон (7.62мм винтовочный)
+    .desc = { ent-BaseCartridgeRifle.desc }
+ent-CartridgeRifle762Practice = патрон (7.62мм учебный)
+    .desc = { ent-BaseCartridgeRifle.desc }
+ent-CartridgeRifle762Incendiary = патрон (7.62мм зажигательный)
+    .desc = { ent-BaseCartridgeRifle.desc }
+ent-CartridgeRifle762Uranium = патрон (7.62мм урановый)
+    .desc = { ent-BaseCartridgeRifle.desc }

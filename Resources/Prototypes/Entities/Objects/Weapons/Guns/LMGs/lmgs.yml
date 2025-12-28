@@ -74,8 +74,8 @@
     maxAngle: -20
   - type: Gun
     minAngle: 24
-    maxAngle: 45
-    angleIncrease: 4
+    maxAngle: 40 # Orion-Edit: 45 > 40
+    angleIncrease: 3 # Orion-Edit: 4 > 3
     angleDecay: 16
     fireRate: 8
     selectedMode: FullAuto
@@ -115,6 +115,7 @@
     price: 500
   - type: UseDelay
     delay: 1
+  - type: UseDelayBlockShoot # Orion
   - type: Multishot # Goobstation V
     missChance: 0.4 #MISS CHANCE DOESNT WORK LMAO
   - type: RestrictGunshotsByUserTag # Goobstation
@@ -163,6 +164,12 @@
   - type: Appearance
   - type: StaticPrice
     price: 10000
+# Orion-Start
+  - type: Gun
+    soundGunshot: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg
+  - type: UseDelay
+    delay: 0.5
+# Orion-End
 
 - type: entity
   name: L6C ROW
@@ -172,8 +179,8 @@
   components:
     - type: Gun
       minAngle: 4
-      maxAngle: 25
-      angleIncrease: 4
+      maxAngle: 20 # Orion-Edit: 25 > 20
+      angleIncrease: 3 # Orion-Edit: 4 > 3
       angleDecay: 16
       fireRate: 8
       selectedMode: FullAuto

@@ -173,9 +173,9 @@
     availableModes:
     - FullAuto
     soundGunshot:
-      collection: GuardianShot # Orion-edit
+      collection: GuardianShot # Orion-Edit
     soundEmpty:
-      path: /Audio/_Orion/Weapons/Guns/Shotguns/v51_empty.ogg # Orion-edit
+      path: /Audio/_Orion/Weapons/Guns/Shotguns/v51_empty.ogg # Orion-Edit
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -250,6 +250,7 @@
   components: # intend for Enforcer to have wider choke for semi-auto function
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
+    scale: 1.2, 1.2 # Orion
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/enforcer.rsi
   - type: Item
@@ -261,7 +262,7 @@
   - type: Gun
     fireRate: 1.7 # Goobstation
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg # Orion-edit
+      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg # Orion-Edit
 
 - type: entity
   parent: WeaponShotgunEnforcer
@@ -284,12 +285,13 @@
     sprite: Objects/Weapons/Guns/Shotguns/pump_inhands_64x.rsi
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
+    scale: 1.2, 1.2 # Orion
   - type: Clothing
     sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg # Orion-edit
+      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg # Orion-Edit
     # fireRate: 1 # goob
   - type: GunSpreadModifier
     spread: 0.6
@@ -298,7 +300,7 @@
     - WeaponShotgunKammerer
   - type: BallisticAmmoProvider # Goobstation
     autoCycle: false
-    soundRack: # Orion-edit
+    soundRack: # Orion-Edit
       path: /Audio/_Orion/Weapons/Guns/Shotguns/shotgun_cmb_pump.ogg
 
 - type: entity

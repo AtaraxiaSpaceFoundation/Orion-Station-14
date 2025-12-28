@@ -148,7 +148,7 @@ selectable-set-blueshield-modsuit-description = MOD требующий пита�
 selectable-set-ert-ballistic-name = баллистический набор
 selectable-set-ert-ballistic-description =
     Надежный, эффективный и компактный. Энни прикроет вас.
-    Включает: .30 калиберную винтовку Энни,
+    Включает: винтовку Энни калибра 5.45мм,
     запасные магазины и N1984.
 selectable-set-ert-pulse-name = импульсный набор
 selectable-set-ert-pulse-description =

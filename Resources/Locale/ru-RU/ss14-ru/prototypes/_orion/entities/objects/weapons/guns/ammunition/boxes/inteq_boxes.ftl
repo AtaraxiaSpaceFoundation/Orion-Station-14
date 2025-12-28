@@ -1,8 +1,10 @@
 ent-BaseMagazineBoxInteQ = коробка патронов
     .desc = { ent-BaseItem.desc }
-ent-MagazineBoxPistolInteQ = коробка патронов (.35 авто)
+ent-MagazineBoxPistolInteQ = коробка патронов (9мм авто)
     .desc = { ent-BaseItem.desc }
-ent-MagazineBoxLightRifleInteQ = коробка патронов (.30 винтовочные)
+ent-MagazineBoxLightRifleInteQ = коробка патронов (5.45мм винтовочные)
+    .desc = { ent-BaseItem.desc }
+ent-MagazineBoxRifle762InteQ = коробка патронов (7.62мм винтовочные)
     .desc = { ent-BaseItem.desc }
 ent-MagazineBoxShotgunInteQ = коробка патронов (.50 дробь)
     .desc = { ent-BaseItem.desc }

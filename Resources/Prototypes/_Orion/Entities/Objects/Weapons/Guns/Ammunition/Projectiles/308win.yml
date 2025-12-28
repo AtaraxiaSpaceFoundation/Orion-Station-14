@@ -1,0 +1,48 @@
+- type: entity
+  id: Bullet308win
+  name: bullet (.308)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+      armorPenetration: 0.4
+
+- type: entity
+  id: Bullet308winAP
+  name: bullet (.308 AP)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 33
+      armorPenetration: 0.7
+
+- type: entity
+  id: Bullet308winUranium
+  name: bullet (.308 uranium)
+  parent: BaseBulletUranium
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 20
+        Radiation: 15
+      armorPenetration: 0.25
+
+- type: entity
+  id: Bullet308winPractice
+  name: bullet (.308 practice)
+  parent: BaseBulletPractice
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 8
+      armorPenetration: -0.5

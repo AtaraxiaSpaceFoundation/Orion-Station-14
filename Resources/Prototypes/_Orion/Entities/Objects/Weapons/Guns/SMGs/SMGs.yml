@@ -1,21 +1,180 @@
 - type: entity
-  parent: [ BaseMajorContraband, WeaponSubMachineGunC20r ]
+  name: MP5
+  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  id: WeaponSubMachineGunMP5
+  description: The RivArms SMG-5 submachinegun, an update to a classic design. A light firearm capable of effective one-handed use that is ideal for close to medium range engagements.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/SMG/mp5/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/SMG/mp5/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/SMG/mp5/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -5
+    maxAngle: -20
+    angleIncrease: -3
+  - type: Gun
+    angleDecay: 25
+    angleIncrease: 8
+    minAngle: 10
+    maxAngle: 35
+    fireRate: 5
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazinePistolSubMachineGun
+        insertSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGun
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+    unwieldOnUse: false
+
+- type: entity
+  name: MP7
+  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  id: WeaponSubMachineGunMP7
+  description: An archaic design going back hundreds of years, the SMG-7 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms, though it somehow got into the hands of colonial rebels.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/SMG/mp7.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/SMG/mp7.rsi
+  - type: GunWieldBonus
+    minAngle: -10
+    maxAngle: -10
+    angleIncrease: -2
+  - type: Gun
+    angleDecay: 20
+    angleIncrease: 5
+    minAngle: 10
+    maxAngle: 27
+    fireRate: 6.5
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazinePistolSubMachineGun
+        insertSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGun
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+    unwieldOnUse: false
+
+- type: entity
+  parent: [ BaseMajorContraband, WeaponSubMachineGunMP7 ]
   id: WeaponSubMachineGunInteQSMG
   name: InteQ submachine gun
   suffix: SubmachineGun
-  description: Firearm that is often used by the InteQ. Uses .35 auto ammo. It is painted in the InteQ brand color.
+  description: Firearm that is often used by the InteQ. Uses 9mm auto ammo. It is painted in the InteQ brand color.
   components:
+  - type: Gun
+    angleDecay: 20
+    angleIncrease: 4
+    minAngle: 14
+    maxAngle: 20
+    fireRate: 8
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi 
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/SMG/inteq_smg.rsi
+
+- type: entity
+  name: Vector
+  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  id: WeaponSubMachineGunVector
+  description: The Vector used by police special force.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/SMG/vector/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/SMG/vector/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/SMG/vector/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -20
+    maxAngle: -20
+    angleIncrease: -3
   - type: Gun
+    angleDecay: 30
+    angleIncrease: 6
+    minAngle: 22
+    maxAngle: 35
+    fireRate: 10
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg
+      path: /Audio/_Orion/Weapons/Guns/SMGs/vector_fire.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazineSMGVector
+        insertSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/SMGs/mp5_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineSMGVector
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
   - type: MagazineVisuals
     magState: mag
-    steps: 6
+    steps: 1
     zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+    unwieldOnUse: false
 
 - type: entity
   name: P-90
@@ -37,11 +196,10 @@
   - type: GunWieldBonus
     minAngle: -10
     maxAngle: -10
-    angleIncrease: -15
+    angleIncrease: -2
   - type: Gun
     angleDecay: 30
-    angleIncrease: 15
-    cameraRecoilScalar: 1
+    angleIncrease: 5
     minAngle: 25
     maxAngle: 30
     fireRate: 7
@@ -50,19 +208,19 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        startingItem: MagazinePistolTopSubMachineGun
+        startingItem: MagazineSMGP90
         insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
         priority: 2
         whitelist:
           tags:
-            - MagazinePistolTopSubMachineGun
+            - MagazineSMGP90
       gun_chamber:
-        startingItem: CartridgePistol # Orion-edit
+        startingItem: CartridgePistol
         priority: 1
         whitelist:
           tags:
-            - CartridgePistol # Orion-edit
+            - CartridgePistol
   - type: MagazineVisuals
     magState: mag
     steps: 6

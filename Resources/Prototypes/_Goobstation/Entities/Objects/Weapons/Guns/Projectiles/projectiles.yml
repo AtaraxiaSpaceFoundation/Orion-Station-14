@@ -119,7 +119,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 35
+        Piercing: 45 # Orion-Edit: 35 > 45
+        Structural: 40 # Orion
       armorPenetration: 0.5
     penetrationThreshold: 50
 
@@ -132,16 +133,16 @@
   - type: Projectile
     damage:
       types:
-        Heat: 1
+        Heat: 5 # Orion-Edit: 1 > 5
         Blunt: 2
-        Piercing: 3
-        Structural: 10
+        Piercing: 7 # Orion-Edit: 3 > 7
+        Structural: 20 # Orion
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: FireBombWeak # 1.3 firestacks
-    totalIntensity: 10.8 # 3x3 explosion
+    totalIntensity: 15.8 # 3x3 explosion / Orion-Edit: 10.8 > 15.8
     intensitySlope: 1.4 # 14 damage at the center tile
-    maxIntensity: 2.4 # 8 damage at the edges
+    maxIntensity: 6.4 # 8 damage at the edges / Orion-Edit: 2.4 > 6.4
     maxTileBreak: 0 # 4 damage at the corners
   - type: PointLight
     radius: 3.5
@@ -153,6 +154,22 @@
     layers:
     - state: bullet
       shader: unshaded
+
+# Orion-Start: New bullets
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBullet
+  id: BulletHighCaliberAP
+  name: bullet (.50 armor-piercing)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 45
+        Structural: 140
+      armorPenetration: 0.8
+    penetrationThreshold: 50
+# Orion-End
 
 - type: hitscan
   id: HeavyPulse

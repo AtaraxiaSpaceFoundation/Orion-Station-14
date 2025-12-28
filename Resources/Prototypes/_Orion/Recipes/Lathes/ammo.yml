@@ -1,0 +1,30 @@
+# .30 or 7.62mm Rifle
+
+- type: latheRecipe
+  parent: BaseAmmoBoxRecipe
+  id: MagazineBoxRifle762
+  result: MagazineBoxRifle762
+  materials:
+    Steel: 900
+
+- type: latheRecipe
+  parent: BaseAmmoBoxRecipe
+  id: MagazineBoxRifle762Incendiary
+  result: MagazineBoxRifle762Incendiary
+  materials:
+    Plastic: 900
+
+- type: latheRecipe
+  parent: BaseAmmoBoxRecipe
+  id: MagazineBoxRifle762Practice
+  result: MagazineBoxRifle762Practice
+  materials:
+    Steel: 300
+
+- type: latheRecipe
+  parent: BaseAmmoBoxRecipe
+  id: MagazineBoxRifle762Uranium
+  result: MagazineBoxRifle762Uranium
+  materials:
+    Plastic: 600
+    Uranium: 600

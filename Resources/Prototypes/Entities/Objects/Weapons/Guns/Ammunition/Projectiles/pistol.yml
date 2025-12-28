@@ -29,7 +29,7 @@
 
 - type: entity
   id: BulletPistol
-  name: bullet (.35 auto)
+  name: bullet (9mm auto) # Orion-Edit: .35 > 9mm
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -40,7 +40,7 @@
 
 - type: entity
   id: BulletPistolPractice
-  name: bullet (.35 auto practice)
+  name: bullet (9mm practice) # Orion-Edit: .35 auto > 9mm
   parent: BaseBulletPractice
   categories: [ HideSpawnMenu ]
   components:
@@ -52,7 +52,7 @@
 - type: entity
   id: BulletPistolIncendiary
   parent: BaseBulletIncendiary
-  name: bullet (.35 auto incendiary)
+  name: bullet (9mm incendiary) # Orion-Edit: .35 auto > 9mm
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -64,7 +64,7 @@
 - type: entity
   id: BulletPistolUranium
   parent: BaseBulletUranium
-  name: bullet (.35 auto uranium)
+  name: bullet (9mm uranium) # Orion-Edit: .35 auto > 9mm
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile

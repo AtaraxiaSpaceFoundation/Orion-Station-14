@@ -92,7 +92,7 @@
     Plastic: 500
     Uranium: 500
 
-# .30 Rifle
+# .30 Rifle # Orion: Now it 5.45mm or .21
 - type: latheRecipe
   parent: BaseEmptyAmmoRecipe
   id: MagazineLightRifleEmpty
@@ -105,7 +105,7 @@
   id: MagazineLightRifle
   result: MagazineLightRifle
   materials:
-    Steel: 565
+    Steel: 500 # Orion-Edit: 565 > 500
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -113,14 +113,14 @@
   result: MagazineLightRifleIncendiary
   materials:
     Steel: 25
-    Plastic: 540
+    Plastic: 475 # Orion-Edit: 540 > 475
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
   id: MagazineLightRiflePractice
   result: MagazineLightRiflePractice
   materials:
-    Steel: 205
+    Steel: 175 # Orion-Edit: 205 > 175
 
 - type: latheRecipe
   parent: BaseAmmoRecipe
@@ -128,37 +128,37 @@
   result: MagazineLightRifleUranium
   materials:
     Steel: 25
-    Plastic: 360
-    Uranium: 360
+    Plastic: 325 # Orion-Edit: 360 > 325
+    Uranium: 325 # Orion-Edit: 360 > 325
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
   id: MagazineBoxLightRifle
   result: MagazineBoxLightRifle
   materials:
-    Steel: 900
+    Steel: 775 # Orion-Edit: 900 > 775
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
   id: MagazineBoxLightRifleIncendiary
   result: MagazineBoxLightRifleIncendiary
   materials:
-    Plastic: 900
+    Plastic: 775 # Orion-Edit: 900 > 775
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
   id: MagazineBoxLightRiflePractice
   result: MagazineBoxLightRiflePractice
   materials:
-    Steel: 300
+    Steel: 200 # Orion-Edit: 300 > 200
 
 - type: latheRecipe
   parent: BaseAmmoBoxRecipe
   id: MagazineBoxLightRifleUranium
   result: MagazineBoxLightRifleUranium
   materials:
-    Plastic: 600
-    Uranium: 600
+    Plastic: 550 # Orion-Edit: 600 > 550
+    Uranium: 550 # Orion-Edit: 600 > 550
 
 # .35 Auto
 - type: latheRecipe

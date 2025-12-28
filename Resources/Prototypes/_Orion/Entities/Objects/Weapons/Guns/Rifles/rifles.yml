@@ -3,7 +3,7 @@
   id: WeaponRifleInteQAKM
   name: InteQ AKM
   suffix: Rifle
-  description: Iconic weapon of war. Uses .30 rifle ammo. It is painted in the InteQ brand color.
+  description: Iconic weapon of war. Uses 5.45mm rifle ammo. It is painted in the InteQ brand color.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
@@ -11,13 +11,61 @@
     sprite: _Orion/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
 
 - type: entity
+  name: M16A4
+  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  id: WeaponRifleM16A4
+  description: A light, versatile assault rifle. The 4th generation in the M16 platform, this FN variant has added automatic fire selection and retains relevance among mercenaries and militias thanks to its high customizability. it is incredibly good at rapid burst fire, but must be paced correctly."
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/m16/big.rsi
+    scale: 0.9, 0.9
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/m16/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/m16/tiny.rsi
+  - type: Gun
+    angleDecay: 20
+    minAngle: 24
+    maxAngle: 38
+    fireRate: 5.5
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Rifles/m16.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazineRifle
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifle
+      gun_chamber:
+        startingItem: CartridgeRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+
+- type: entity
   name: Famas
-  parent: BaseWeaponRifle
+  parent: [ BaseSecurityContraband, BaseWeaponRifle ]
   id: WeaponRifleFamas
   description: A light, versatile assault rifle.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/famas/big.rsi
+    scale: 0.9, 0.9
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -32,8 +80,8 @@
     maxAngle: -43
     angleIncrease: -5
   - type: Gun
-    angleDecay: 60
-    angleIncrease: 12
+    angleDecay: 45
+    angleIncrease: 15
     minAngle: 24
     maxAngle: 45
     burstFireRate: 14
@@ -49,7 +97,7 @@
     slots:
       gun_magazine:
         startingItem: MagazineRifle
-        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_reload.ogg
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
         priority: 2
         whitelist:
@@ -70,69 +118,12 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
-  - type: Wieldable
-
-- type: entity
-  name: BR-64
-  parent: BaseWeaponRifle
-  id: WeaponRifleBR64
-  description: The San Cristo Arms BR-64 is the Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and close range stopping power. It is mostly used by people who prefer a bigger round than the average.
-  components:
-  - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Rifles/br-64/big.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
-      map: ["enum.GunVisualLayers.Mag"]
-  - type: Clothing
-    sprite: _Orion/Objects/Weapons/Guns/Rifles/br-64/tiny.rsi
-  - type: Item
-    sprite: _Orion/Objects/Weapons/Guns/Rifles/br-64/tiny.rsi
-  - type: GunWieldBonus
-    minAngle: -23
-    maxAngle: -43
-  - type: Gun
-    fireRate: 2
-    minAngle: 24
-    cameraRecoilScalar: 4
-    maxAngle: 45
-    soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Snipers/tl127.ogg
-  - type: ChamberMagazineAmmoProvider
-    boltClosed: null
-  - type: ItemSlots
-    slots:
-      gun_magazine:
-        startingItem: MagazineHeavyRifleBR64
-        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m41a_reload.ogg
-        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m41a_unload.ogg
-        priority: 2
-        whitelist:
-          tags:
-            - MagazineHeavyRifle62
-      gun_chamber:
-        startingItem: CartridgeMagnum
-        priority: 1
-        whitelist:
-          tags:
-            - CartridgeMagnum
-  - type: ContainerContainer
-    containers:
-      gun_magazine: !type:ContainerSlot
-      gun_chamber: !type:ContainerSlot
-  - type: MagazineVisuals
-    magState: mag
-    steps: 1
-    zeroVisible: true
-  - type: Appearance
-  - type: Wieldable
 
 - type: entity
   name: AUG
-  parent: BaseWeaponRifle
+  parent: [ BaseSecurityContraband, BaseWeaponRifle ]
   id: WeaponRifleAUG
-  description: A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for .20 rifle cartridge.
+  description: A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for 5.56mm rifle cartridge.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/aug/big.rsi
@@ -141,6 +132,7 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+    scale: 0.9, 0.9
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Rifles/aug/tiny.rsi
   - type: Item
@@ -161,7 +153,7 @@
     slots:
       gun_magazine:
         startingItem: MagazineRifle
-        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_reload.ogg
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
         priority: 2
         whitelist:
@@ -178,10 +170,64 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
-  - type: Wieldable
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
     maxOffset: 3
     pvsIncrease: 0.3
   - type: UseDelay
     delay: 0.5
+  - type: UseDelayBlockShoot
+
+- type: entity
+  name: BR-64
+  parent: [ BaseSecurityContraband, BaseWeaponRifle ]
+  id: WeaponRifleBR64
+  description: The San Cristo Arms BR-64 is the Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and close range stopping power. It is mostly used by people who prefer a bigger round than the average.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/br-64/big.rsi
+    scale: 0.9, 0.9
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/br-64/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/br-64/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -43
+  - type: Gun
+    fireRate: 2
+    minAngle: 24
+    cameraRecoilScalar: 4
+    maxAngle: 45
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Snipers/tl127.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazineHeavyRifleBR64
+        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m28_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m28_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineHeavyRifle45
+      gun_chamber:
+        startingItem: CartridgeMagnum
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance

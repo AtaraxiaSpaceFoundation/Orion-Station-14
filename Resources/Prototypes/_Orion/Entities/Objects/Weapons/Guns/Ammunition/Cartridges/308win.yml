@@ -1,0 +1,65 @@
+- type: entity
+  parent: [ BaseCartridge, BaseSecurityContraband ]
+  id: Cartridge308win
+  name: cartridge (.308 winchester)
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge308win
+  - type: CartridgeAmmo
+    proto: Bullet308win
+  - type: Sprite
+    netsync: false
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/60_casing.rsi
+    scale: 0.6, 0.6
+    layers:
+    - state: combat
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: combat
+  - type: StaticPrice
+    price: 10
+
+- type: entity
+  parent: Cartridge308win
+  id: Cartridge308winPractice
+  name: cartridge (.308 practice)
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet308winPractice
+  - type: Sprite
+    layers:
+    - state: training
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: SpentAmmoVisuals
+    state: training
+
+- type: entity
+  parent: Cartridge308win
+  id: Cartridge308winAP
+  name: cartridge (.308 AP)
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet308winAP
+  - type: Sprite
+    layers:
+    - state: fast
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: SpentAmmoVisuals
+    state: fast
+
+- type: entity
+  parent: Cartridge308win
+  id: Cartridge308winUranium
+  name: cartridge (.308 uranium)
+  components:
+  - type: CartridgeAmmo
+    proto: Bullet308winUranium
+  - type: Sprite
+    layers:
+    - state: uranium
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: SpentAmmoVisuals
+    state: uranium

@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from TG https://github.com/tgstation/tgstation/blob/master/icons/obj/weapons/guns/ammo.dmi, inhands by TiniestShark (GitHub), stripes by SeamLesss (GitHub). Resprite bullets and stripes by UmbiMax",
+    "copyright": "Taken from TG https://github.com/tgstation/tgstation/blob/master/icons/obj/weapons/guns/ammo.dmi, inhands by TiniestShark (GitHub), stripes by SeamLesss (GitHub). Resprite stripes by UmbiMax. Base and mag-1 taken from https://github.com/Rxup/space-station-14/tree/master/Resources/Textures/Backmen/Objects/Weapons/Gunsx64",
     "size": {
         "x": 32,
         "y": 32

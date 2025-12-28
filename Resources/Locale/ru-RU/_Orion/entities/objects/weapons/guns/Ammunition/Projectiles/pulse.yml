@@ -1,0 +1,95 @@
+- type: entity
+  id: PulseBullet
+  name: pulse bullet
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Effects/muzzle/pulse.rsi
+    layers:
+    - state: pulse
+      shader: unshaded
+  - type: Ammo
+    muzzleFlash: MuzzlePulseEffect
+  - type: Projectile
+    impactEffect: BulletPulseEffect
+    damage:
+      types:
+        Heat: 8
+        Energy: 7
+        Piercing: 5
+    soundHit:
+      path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
+  - type: Tag
+    tags:
+      - PulseBullet
+  - type: Reflective
+    reflective:
+    - Energy
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Opaque
+      fly-by: &flybyfixture
+        shape: !type:PhysShapeCircle
+          radius: 1.5
+        layer:
+        - Opaque
+        - Impassable
+        hard: False
+
+- type: entity
+  id: ShellShotgunPulse
+  name: shell (.12 pulse)
+  parent: BaseCartridge
+  components:
+  - type: Tag
+    tags:
+    - ShellShotgunPulse
+    - ShellShotgun
+  - type: CartridgeAmmo
+    proto: PulseBulletSpread
+    soundEject:
+      collection: ShellLand
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/battery.rsi
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+
+
+- type: entity
+  id: PulseBulletSpread
+  name: pulse bullet
+  parent: PulseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 4
+        Piercing: 3
+  - type: ProjectileSpread
+    proto: PulseBulletSpreadShotgun
+    count: 9
+    spread: 15
+
+- type: entity # bullet on hell hammer
+  id: PulseBulletSpreadShotgun
+  name: pulse bullet
+  parent: PulseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    impactEffect: BulletPulseEffect
+    damage:
+      types:
+        Heat: 5
+        Piercing: 3

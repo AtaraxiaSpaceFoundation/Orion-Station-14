@@ -1,11 +1,11 @@
 - type: entity
-  id: MagazinePistol57x28
-  name: pistol magazine (5,7x28)
+  id: MagazinePistol20
+  name: pistol magazine (5.56mm rifle)
   parent: BaseMagazinePistol
   components:
   - type: Tag
     tags:
-      - MagazinePistol57x28
+      - MagazinePistol20
   - type: BallisticAmmoProvider
     proto: CartridgeRifle
     capacity: 12
@@ -13,7 +13,7 @@
       tags:
         - CartridgeRifle
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Magazines/Pistol/pistol_mag_545.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pistol/pistol_mag_545.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]

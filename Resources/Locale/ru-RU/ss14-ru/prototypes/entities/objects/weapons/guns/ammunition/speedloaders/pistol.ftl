@@ -1,6 +1,6 @@
-ent-BaseSpeedLoaderPistol = спидлоадер (.35 авто)
+ent-BaseSpeedLoaderPistol = спидлоадер (9мм авто)
     .desc = { ent-BaseItem.desc }
-ent-SpeedLoaderPistol = спидлоадер (.35 авто)
+ent-SpeedLoaderPistol = спидлоадер (9мм авто)
     .desc = { ent-BaseSpeedLoaderPistol.desc }
-ent-SpeedLoaderPistolPractice = спидлоадер (.35 авто учебные)
+ent-SpeedLoaderPistolPractice = спидлоадер (9мм учебные)
     .desc = { ent-BaseSpeedLoaderPistol.desc }

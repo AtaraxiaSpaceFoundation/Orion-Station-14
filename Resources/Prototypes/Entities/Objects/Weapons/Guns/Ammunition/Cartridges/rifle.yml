@@ -21,7 +21,7 @@
 
 - type: entity
   id: BaseCartridgeRifle
-  name: cartridge (.20 rifle)
+  name: cartridge (5.56mm rifle) # Orion-Edit: .20 > 5.56mm
   parent: [ BaseCartridge, BaseSecurityContraband ]
   abstract: true
   components:
@@ -32,18 +32,18 @@
   - type: CartridgeAmmo
     proto: BulletRifle
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-edit: New sprites
-    scale: 0.7, 0.7 # Orion-edit
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-Edit: New sprites
+    scale: 0.8, 0.8 # Orion
     layers:
-    - state: 20combat # Orion-edit: New sprites
+    - state: 20combat # Orion-Edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
   - type: SpentAmmoVisuals
-    state: 20combat # Orion-edit: New sprites
+    state: 20combat # Orion: New sprites
 
 - type: entity
   id: CartridgeRifle
-  name: cartridge (.20 rifle)
+  name: cartridge (5.56mm rifle) # Orion-Edit: .20 > 5.56mm
   parent: BaseCartridgeRifle
   components:
   - type: CartridgeAmmo
@@ -51,51 +51,51 @@
 
 - type: entity
   id: CartridgeRiflePractice
-  name: cartridge (.20 rifle practice)
+  name: cartridge (5.56mm practice) # Orion-Edit: .20 rifle > 5.56mm
   parent: BaseCartridgeRifle
   components:
-  - type: SpentAmmoVisuals # Orion-edit: New sprites
+  - type: SpentAmmoVisuals # Orion: New sprites
     state: 20training
   - type: CartridgeAmmo
     proto: BulletRiflePractice
   - type: Sprite
     layers:
-      - state: 20training # Orion-edit: New sprites
+      - state: 20training # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-remove: New sprites
+#      - state: tip # Orion-Remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#dbdbdb"
 
 - type: entity
   id: CartridgeRifleIncendiary
-  name: cartridge (.20 rifle incendiary)
+  name: cartridge (5.56mm incendiary) # Orion-Edit: .20 rifle > 5.56mm
   parent: BaseCartridgeRifle
   components:
-  - type: SpentAmmoVisuals # Orion-edit: New sprites
+  - type: SpentAmmoVisuals # Orion: New sprites
     state: 20incendiary
   - type: CartridgeAmmo
     proto: BulletRifleIncendiary
   - type: Sprite
     layers:
-      - state: 20incendiary # Orion-edit: New sprites
+      - state: 20incendiary # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-remove: New sprites
+#      - state: tip # Orion-Remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#ff6e52"
 
 - type: entity
   id: CartridgeRifleUranium
-  name: cartridge (.20 rifle uranium)
+  name: cartridge (5.56mm uranium) # Orion-Edit: .20 rifle > 5.56mm
   parent: BaseCartridgeRifle
   components:
-  - type: SpentAmmoVisuals # Orion-edit: New sprites
+  - type: SpentAmmoVisuals # Orion: New sprites
     state: 20uranium
   - type: CartridgeAmmo
     proto: BulletRifleUranium
   - type: Sprite
     layers:
-      - state: 20uranium # Orion-edit: New sprites
+      - state: 20uranium # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-remove: New sprites
+#      - state: tip # Orion-Remove: New sprites
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#65fe08"

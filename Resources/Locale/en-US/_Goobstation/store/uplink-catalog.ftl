@@ -153,8 +153,8 @@ uplink-frag-grenade-desc = Lower damage, bigger radius. Compatible with the Chin
 uplink-mpapers-grenade-name = MP-APERS shell (40mm)
 uplink-mpapers-grenade-desc = Fires out 20 small pellets to turn your grenade launcher into a shotgun. Compatible with the China-Lake.
 
-uplink-rifle-mag-name = Rifle Magazine (.20)
-uplink-rifle-mag-desc = A 25 round magazine containing .20 rifle bullets. Supports the Lecter and M-90.
+uplink-rifle-mag-name = Rifle Magazine (5.56mm)
+uplink-rifle-mag-desc = A 25 round magazine containing 5.56mm rifle bullets. Supports the Lecter and M-90.
 
 uplink-rifle-caseless-mag-name = Rifle Magazine (9.5mm HP)
 uplink-rifle-caseless-mag-desc = A 30 round rifle magazine filled with 9.5mm caseless magnum hollow-point bullets. Compatible with the WSPR.
@@ -162,7 +162,7 @@ uplink-rifle-caseless-mag-desc = A 30 round rifle magazine filled with 9.5mm cas
 uplink-pistol-magazine-caseless-saphe-name = Pistol Magazine (9.5mm SAP-HE)
 uplink-pistol-magazine-caseless-saphe-desc = 10 rounds of 9.5mm caseless magnum semi-armor-piercing high-explosive ammunition. It is exactly what you have read. Compatible with the Cobra.
 
-uplink-l6-box-name = Magazine Box (.30 rifle)
+uplink-l6-box-name = Magazine Box (5.45mm rifle)
 uplink-l6-box-desc = Magazine box with 100 catridges. Compatible with the L6 SAW.
 
 uplink-shotgun-magazine-name = Shotgun Drum (12 gauge pellet)
@@ -180,7 +180,7 @@ uplink-high-caliber-explosive-magazine-desc = Heavy rifle magazine with 15 High 
 uplink-high-caliber-box-name = .50 Ammo box
 uplink-high-caliber-box-desc = A box of 30 .50 caliber anti-materiel rounds.
 
-uplink-highcap-pistol-mag-name = High Capacity Pistol Magazine (.35 auto)
+uplink-highcap-pistol-mag-name = High Capacity Pistol Magazine (9mm auto)
 uplink-highcap-pistol-mag-desc = High capacity pistol magazine holds 4 extra bullets for a total of 16 rounds.
 
 uplink-heavy-shotgun-magazine-name = Heavy Shotgun Drum (2 gauge HE pellet)
@@ -210,7 +210,7 @@ uplink-high-caliber-shotgun-box-flash-slug-desc = 16 shells of 8 Gauge flashbang
 uplink-high-caliber-shotgun-box-sarin-name = 8 Gauge sarin gas shell box
 uplink-high-caliber-shotgun-box-sarin-desc = 16 shells of 8 Gauge sarin shells for the combat shotgun, which release a small plus-shaped cloud of sarin gas.
 
-uplink-estoc-ammo-name = Rifle Magazine (.20 rifle)
+uplink-estoc-ammo-name = Rifle Magazine (5.56mm rifle)
 uplink-estoc-ammo-desc = Rifle magazine with 25 rounds. Compatable with the Estoc.
 
 # Grenades

@@ -19,12 +19,12 @@
     minAngle: -30
     maxAngle: -50
   - type: Gun
-    minAngle: 34
-    maxAngle: 55
-    cameraRecoilScalar: 2
+    minAngle: 37
+    maxAngle: 59
+    cameraRecoilScalar: 3
     fireRate: 5
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg
+      path: /Audio/_Orion/Weapons/Guns/Snipers/svd.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -36,11 +36,11 @@
           tags:
             - MagazineLightMachineGunRPD
       gun_chamber:
-        startingItem: CartridgeLightRifle
+        startingItem: CartridgeRifle762
         priority: 1
         whitelist:
           tags:
-            - CartridgeLightRifle
+            - CartridgeRifle762
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -55,7 +55,7 @@
 
 - type: entity
   name: M-41
-  parent: BaseWeaponLightMachineGun
+  parent: [BaseWeaponLightMachineGun, BaseSecurityContraband]
   id: WeaponRifleM41
   description: The M-41 is a large man portable machine, allowing for sustained, accurate suppressive firepower at the cost of mobility and handling. Commonly seen where their preferred tactics of fast, mobile aggression is ill suited.
   components:
@@ -75,13 +75,13 @@
     maxAngle: -50
   - type: Gun
     angleDecay: 10
-    angleIncrease: 7
+    angleIncrease: 2
     minAngle: 32
-    maxAngle: 55
+    maxAngle: 60
     cameraRecoilScalar: 1.5
     fireRate: 6
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Rifles/ar18.ogg
+      path: /Audio/_Orion/Weapons/Guns/LMGs/m41.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -147,7 +147,8 @@
   - type: Appearance
   - type: Wieldable
   - type: UseDelay
-    delay: 2
+    delay: 1.5
+  - type: UseDelayBlockShoot
   - type: GunRequiresWield
   - type: HeldSpeedModifier
     sprintModifier: 0.9
@@ -187,7 +188,8 @@
   - type: Appearance
   - type: Wieldable
   - type: UseDelay
-    delay: 1
+    delay: 0.5
+  - type: UseDelayBlockShoot
   - type: GunRequiresWield
   - type: HeldSpeedModifier
     sprintModifier: 0.9

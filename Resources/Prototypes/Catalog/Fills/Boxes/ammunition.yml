@@ -62,10 +62,10 @@
 
 # LightRifle
 - type: entity
-  name: box of .30 rifle magazines
+  name: box of 5.45mm rifle magazines # Orion-Edit: .30 > 5.45mm
   parent: BoxMagazine
   id: BoxMagazineLightRifle
-  description: A box full of .30 rifle magazines.
+  description: A box full of 5.45mm rifle magazines. # Orion-Edit: .30 > 5.45mm
   components:
   - type: StorageFill
     contents:
@@ -73,10 +73,10 @@
         amount: 4
 
 - type: entity
-  name: box of .30 rifle (practice) magazines
+  name: box of 5.45mm rifle (practice) magazines # Orion-Edit: .30 > 5.45mm
   parent: BoxMagazine
   id: BoxMagazineLightRiflePractice
-  description: A box full of .30 rifle (practice) magazines.
+  description: A box full of 5.45mm rifle (practice) magazines. # Orion-Edit: .30 > 5.45mm
   components:
   - type: StorageFill
     contents:
@@ -108,10 +108,10 @@
 
 # Pistol
 - type: entity
-  name: box of WT550 .35 auto magazines
+  name: box of WT550 9mm auto magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistolSubMachineGunTopMounted
-  description: A box full of WT550 .35 auto magazines.
+  description: A box full of WT550 9mm auto magazines. # Orion-Edit: .35 > 9mm
   components:
   - type: StorageFill
     contents:
@@ -119,10 +119,10 @@
         amount: 3
 
 - type: entity
-  name: box of pistol .35 auto magazines
+  name: box of pistol 9mm auto magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistol
-  description: A box full of pistol .35 auto magazines.
+  description: A box full of pistol 9mm auto magazines. # Orion-Edit: .35 > 9mm
   components:
   - type: StorageFill
     contents:
@@ -130,7 +130,7 @@
         amount: 4
 
 - type: entity
-  name: box of pistol .35 auto (practice) magazines
+  name: box of pistol 9mm auto (practice) magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistolPractice
   description: A box full of  magazines.
@@ -141,10 +141,10 @@
         amount: 4
 
 - type: entity
-  name: box of machine pistol .35 auto magazines
+  name: box of machine pistol 9mm auto magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistolHighCapacity
-  description: A box full of machine pistol .35 auto magazines.
+  description: A box full of machine pistol 9mm auto magazines. # Orion-Edit: .35 > 9mm
   components:
   - type: StorageFill
     contents:
@@ -152,10 +152,10 @@
         amount: 4
 
 - type: entity
-  name: box of machine pistol .35 auto (practice) magazines
+  name: box of machine pistol 9mm auto (practice) magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistolHighCapacityPractice
-  description: A box full of machine pistol .35 auto (practice) magazines.
+  description: A box full of machine pistol 9mm auto (practice) magazines. # Orion-Edit: .35 > 9mm
   components:
   - type: StorageFill
     contents:
@@ -163,10 +163,10 @@
         amount: 4
 
 - type: entity
-  name: box of SMG .35 auto magazines
+  name: box of SMG 9mm auto magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistolSubMachineGun
-  description: A box full of SMG .35 auto magazines.
+  description: A box full of SMG 9mm auto magazines. # Orion-Edit: .35 > 9mm
   components:
   - type: StorageFill
     contents:
@@ -174,10 +174,10 @@
         amount: 3
 
 - type: entity
-  name: box of SMG .35 auto (practice) magazines
+  name: box of SMG 9mm auto (practice) magazines # Orion-Edit: .35 > 9mm
   parent: BoxMagazine
   id: BoxMagazinePistolSubMachineGunPractice
-  description: A box full of SMG .35 auto (practice) magazines.
+  description: A box full of SMG 9mm auto (practice) magazines. # Orion-Edit: .35 > 9mm
   components:
   - type: StorageFill
     contents:
@@ -231,10 +231,10 @@
 
 # Rifle
 - type: entity
-  name: box of .20 rifle magazines
+  name: box of 5.56mm rifle magazines # Orion-Edit: .20 > 5.56mm
   parent: BoxMagazine
   id: BoxMagazineRifle
-  description: A box full of .20 rifle magazines.
+  description: A box full of 5.56mm rifle magazines. # Orion-Edit: .20 > 5.56mm
   components:
   - type: StorageFill
     contents:
@@ -242,10 +242,10 @@
         amount: 4
 
 - type: entity
-  name: box of .20 rifle (practice) magazines
+  name: box of 5.56mm rifle (practice) magazines # Orion-Edit: .20 > 5.56mm
   parent: BoxMagazine
   id: BoxMagazineRiflePractice
-  description: A box full of .20 rifle (practice) magazines.
+  description: A box full of 5.56mm rifle (practice) magazines. # Orion-Edit: .20 > 5.56mm
   components:
   - type: StorageFill
     contents:

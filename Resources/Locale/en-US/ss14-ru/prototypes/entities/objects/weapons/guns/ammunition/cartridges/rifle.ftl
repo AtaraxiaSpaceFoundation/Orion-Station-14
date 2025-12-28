@@ -1,10 +1,10 @@
-ent-BaseCartridgeRifle = cartridge (.20 rifle)
+ent-BaseCartridgeRifle = cartridge (5.56mm rifle)
     .desc = { ent-BaseCartridge.desc }
-ent-CartridgeRifle = cartridge (.20 rifle)
+ent-CartridgeRifle = cartridge (5.56mm rifle)
     .desc = { ent-BaseCartridgeRifle.desc }
-ent-CartridgeRiflePractice = cartridge (.20 rifle practice)
+ent-CartridgeRiflePractice = cartridge (5.56mm practice)
     .desc = { ent-BaseCartridgeRifle.desc }
-ent-CartridgeRifleIncendiary = cartridge (.20 rifle incendiary)
+ent-CartridgeRifleIncendiary = cartridge (5.56mm incendiary)
     .desc = { ent-BaseCartridgeRifle.desc }
-ent-CartridgeRifleUranium = cartridge (.20 rifle uranium)
+ent-CartridgeRifleUranium = cartridge (5.56mm uranium)
     .desc = { ent-BaseCartridgeRifle.desc }

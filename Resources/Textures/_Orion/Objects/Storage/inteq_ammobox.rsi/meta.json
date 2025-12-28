@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "https://github.com/BlueMoon-Labs/MOLOT-BlueMoon-Station/pull/179 | Edited by PuroSlavKing (Github)",
+  "copyright": "https://github.com/BlueMoon-Labs/MOLOT-BlueMoon-Station/pull/179 | Edited by PuroSlavKing (Github). 9, 545, 762 sprited by UmbiMax",
   "size": {
     "x": 32,
     "y": 32
@@ -14,7 +14,16 @@
       "name": "30"
     },
     {
+      "name": "545"
+    },
+    {
+      "name": "762"
+    },
+    {
       "name": "35"
+    },
+    {
+      "name": "9"
     },
     {
       "name": "50"

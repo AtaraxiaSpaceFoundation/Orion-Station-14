@@ -19,7 +19,7 @@
 
 - type: entity
   id: BaseSpeedLoaderPistol
-  name: "speed loader (.35 auto)"
+  name: "speed loader (9mm auto)" # Orion-Edit: .35 > 9mm
   parent: [ BaseItem, BaseSecurityContraband ]
   abstract: true
   components:
@@ -41,7 +41,7 @@
 
 - type: entity
   id: SpeedLoaderPistol
-  name: "speed loader (.35 auto)"
+  name: "speed loader (9mm auto)" # Orion-Edit: .35 > 9mm
   parent: BaseSpeedLoaderPistol
   components:
   - type: BallisticAmmoProvider
@@ -60,7 +60,7 @@
 
 - type: entity
   id: SpeedLoaderPistolPractice
-  name: "speed loader (.35 auto practice)"
+  name: "speed loader (9mm practice)" # Orion-Edit: .35 auto > 9mm
   parent: BaseSpeedLoaderPistol
   components:
   - type: BallisticAmmoProvider

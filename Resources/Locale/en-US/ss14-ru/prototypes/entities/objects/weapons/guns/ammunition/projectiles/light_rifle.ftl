@@ -1,8 +1,8 @@
-ent-BulletLightRifle = bullet (0.30 rifle)
+ent-BulletLightRifle = bullet (5.45mm rifle)
     .desc = { ent-BaseBullet.desc }
-ent-BulletLightRiflePractice = bullet (0.30 rifle practice)
+ent-BulletLightRiflePractice = bullet (5.45mm rifle practice)
     .desc = { ent-BaseBulletPractice.desc }
-ent-BulletLightRifleIncendiary = bullet (0.30 rifle incendiary)
+ent-BulletLightRifleIncendiary = bullet (5.45mm rifle incendiary)
     .desc = { ent-BaseBulletIncendiary.desc }
-ent-BulletLightRifleUranium = bullet (0.30 rifle uranium)
+ent-BulletLightRifleUranium = bullet (5.45mm rifle uranium)
     .desc = { ent-BaseBulletUranium.desc }

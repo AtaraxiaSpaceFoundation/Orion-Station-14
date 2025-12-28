@@ -37,7 +37,7 @@
     - SemiAuto
     - FullAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/mateba.ogg
+      path: /Audio/_Orion/Weapons/Guns/Pistols/beretta_shot.ogg # Orion-Edit: New sounds
   - type: ItemSlots
     slots:
       gun_magazine:

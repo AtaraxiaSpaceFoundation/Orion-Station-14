@@ -3,7 +3,7 @@
   id: WeaponPistolInteQCommissar
   name: Commissar
   suffix: Pistol
-  description: Small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses .35 auto ammo. It is painted in the InteQ brand color.
+  description: Small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses 9mm auto ammo. It is painted in the InteQ brand color.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/inteq_commissar.rsi
@@ -17,7 +17,7 @@
   name: combat pistol VP-78
   parent: BaseWeaponPistol
   id: WeaponPistolVP78
-  description: The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in .20 rounds.
+  description: The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in 5.56mm rounds.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/vp78/big.rsi
@@ -40,13 +40,13 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        startingItem: MagazinePistol57x28
+        startingItem: MagazinePistol20
         insertSound: /Audio/_Orion/Weapons/Guns/Pistols/vp70_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Pistols/vp70_unload.ogg
         priority: 2
         whitelist:
           tags:
-            - MagazinePistol57x28
+            - MagazinePistol20
       gun_chamber:
         startingItem: CartridgeRifle
         priority: 1

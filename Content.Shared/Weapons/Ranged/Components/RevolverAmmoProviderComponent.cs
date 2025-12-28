@@ -59,5 +59,5 @@ public sealed partial class RevolverAmmoProviderComponent : AmmoProviderComponen
     public SoundSpecifier? SoundInsert = new SoundPathSpecifier("/Audio/Weapons/Guns/MagIn/revolver_magin.ogg");
 
     [DataField("soundSpin")]
-    public SoundSpecifier? SoundSpin = new SoundPathSpecifier("/Audio/Weapons/Guns/Misc/revolver_spin.ogg");
+    public SoundSpecifier? SoundSpin = new SoundPathSpecifier("/Audio/_Orion/Weapons/Guns/Revolvers/revolver_spin.ogg"); // Orion-Edit: New sounds
 }

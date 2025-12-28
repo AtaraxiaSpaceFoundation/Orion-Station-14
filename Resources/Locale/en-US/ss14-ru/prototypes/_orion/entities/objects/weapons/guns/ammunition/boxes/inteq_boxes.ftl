@@ -1,8 +1,10 @@
 ent-BaseMagazineBoxInteQ = ammunition box
     .desc = { ent-BaseItem.desc }
-ent-MagazineBoxPistolInteQ = ammunition box (.35 auto)
+ent-MagazineBoxPistolInteQ = ammunition box (9mm auto)
     .desc = { ent-BaseItem.desc }
-ent-MagazineBoxLightRifleInteQ = ammunition box (.30 rifle)
+ent-MagazineBoxLightRifleInteQ = ammunition box (5.45mm rifle)
+    .desc = { ent-BaseItem.desc }
+ent-MagazineBoxRifle762InteQ = ammunition box (7.62mm rifle)
     .desc = { ent-BaseItem.desc }
 ent-MagazineBoxShotgunInteQ = ammunition box (.50 pellet)
     .desc = { ent-BaseItem.desc }

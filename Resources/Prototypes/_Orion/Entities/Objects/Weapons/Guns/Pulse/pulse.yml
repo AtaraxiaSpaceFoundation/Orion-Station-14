@@ -96,7 +96,7 @@
   name: Triton Mark 3
   parent: BaseWeaponEnergyRifle
   id: WeaponPulseSMGTritonM3
-  description: The AP Motorized Pulse SMG is a military-grade, rapid-fire assault rifle with large magazine ammunition capacity. The Pulse SMG is the standard-issue service rifle of the Earth Special Force.
+  description: The Triton Mark 3 is a military-grade, rapid-fire pulse SMG with large magazine ammunition capacity. The Pulse SMG is the standard-issue service weapon of the Earth Special Force.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Battery/Pulse/smpg/big.rsi

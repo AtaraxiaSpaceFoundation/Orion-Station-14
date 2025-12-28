@@ -5,8 +5,7 @@
   components:
   - type: Tag
     tags:
-      - MagazineHeavyRifle62
-      - MagazineRifle
+      - MagazineHeavyRifle45
   - type: BallisticAmmoProvider
     mayTransfer: true
     capacity: 18
@@ -19,10 +18,10 @@
       ballistic-ammo: !type:Container
   - type: Item
     size: Small
-    sprite: _Orion/Objects/Weapons/Guns/Magazines/Rifle/big_mag.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Rifle/big_mag.rsi
   - type: Sprite
     netsync: false
-    sprite: _Orion/Objects/Weapons/Guns/Magazines/Rifle/big_mag.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Rifle/big_mag.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]

@@ -9,9 +9,9 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/large_casing.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/60_casing.rsi # Orion-Edit: New sprites
     layers:
-    - state: base
+    - state: base # Orion-Edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: SpentAmmoVisuals
     state: "base"
@@ -29,6 +29,8 @@
   components:
   - type: CartridgeAmmo
     proto: BulletG8Demolishing
+  - type: Sprite # Orion: New sprites
+    scale: 1.2, 1.2
 
 - type: entity
   parent: BaseCartridgeG8
@@ -37,6 +39,13 @@
   description: Shots "The Bolt of Zeus" bullet, shocking everyone on its way and creating an energy vortex at its destination point, that creates a massive explosion on overcharge.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/anomalous_casing.rsi
+#    sprite: Objects/Weapons/Guns/Ammunition/Casings/anomalous_casing.rsi # Orion-Remove: New sprites
+# Orion-Start
+    layers:
+    - state: hypercharged
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: SpentAmmoVisuals
+    state: hypercharged
+# Orion-End
   - type: CartridgeAmmo
     proto: BulletG8Hypercharged

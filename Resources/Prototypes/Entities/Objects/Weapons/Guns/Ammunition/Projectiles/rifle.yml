@@ -33,7 +33,7 @@
 
 - type: entity
   id: BulletRifle
-  name: bullet (0.20 rifle)
+  name: bullet (5.56mm rifle) # Orion-Edit: 0.20 > 5.56mm
   parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
@@ -45,31 +45,33 @@
 
 - type: entity
   id: BulletRiflePractice
-  name: bullet (0.20 rifle practice)
+  name: bullet (5.56mm practice) # Orion-Edit: 0.20 rifle > 5.56mm
   parent: BaseBulletPractice
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     damage:
       types:
-        Blunt: 2
+        Blunt: 4 # Orion-Edit: 2 > 4
+      armorPenetration: -0.5 # Orion
 
 - type: entity
   id: BulletRifleIncendiary
   parent: BaseBulletIncendiary
-  name: bullet (0.20 rifle incendiary)
+  name: bullet (5.56mm incendiary) # Orion-Edit: 0.20 rifle > 5.56mm
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     damage:
       types:
         Blunt: 3
-        Heat: 2
+        Heat: 3 # Orion-Edit: 2 > 3
+      armorPenetration: 0.1 # Orion
 
 - type: entity
   id: BulletRifleUranium
   parent: BaseBulletUranium
-  name: bullet (0.20 rifle uranium)
+  name: bullet (5.56mm uranium) # Orion-Edit: 0.20 rifle > 5.56mm
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -77,3 +79,4 @@
       types:
         Radiation: 9
         Piercing: 10
+      armorPenetration: 0.1 # Orion

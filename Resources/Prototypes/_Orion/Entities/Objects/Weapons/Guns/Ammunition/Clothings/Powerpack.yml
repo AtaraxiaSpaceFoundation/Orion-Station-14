@@ -44,6 +44,9 @@
     tags:
       - PowerpackRifle
   - type: Appearance
+  - type: UseDelay
+    delay: 1.5
+  - type: UseDelayBlockShoot
 
 - type: entity
   id: BasePowerpackEnergy
@@ -94,20 +97,29 @@
   - type: Tag
     tags:
       - PowerpackEnergy
-  - type: Cautery
-    speed: 0.9
-  - type: SurgeryTool
-    endSound:
-      path: /Audio/_Goobstation/Weapons/Guns/Gunshots/laser_lmg.ogg
+  - type: UseDelay
+    delay: 0.5
+  - type: UseDelayBlockShoot
 
 # Fills
 - type: entity
-  id: PowerpackRifle
+  id: PowerpackRifle10
   name: "powerpack (.10 rifle)"
   parent: BasePowerpackRifle
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeMinigun
+    whitelist:
+      tags:
+        - CartridgeHeavyRifle
+
+- type: entity
+  id: PowerpackRifle15
+  name: "powerpack (.15 rifle)"
+  parent: BasePowerpackRifle
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeHeavyMinigun
     whitelist:
       tags:
         - CartridgeHeavyRifle

@@ -12,3 +12,10 @@
   - /Audio/_Orion/Weapons/Guns/Shotguns/v51_2.ogg
   - /Audio/_Orion/Weapons/Guns/Shotguns/v51_3.ogg
   - /Audio/_Orion/Weapons/Guns/Shotguns/v51_4.ogg
+
+- type: soundCollection
+  id: 50bmgShot
+  files:
+  - /Audio/_Orion/Weapons/Guns/Snipers/50bmg1.ogg
+  - /Audio/_Orion/Weapons/Guns/Snipers/50bmg2.ogg
+  - /Audio/_Orion/Weapons/Guns/Snipers/50bmg3.ogg

@@ -1,0 +1,96 @@
+- type: entity
+  abstract: true
+  id: BaseMagazineBox308win
+  name: ammunition box (.308 winchester)
+  parent: BaseItem
+  components:
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/ammobox_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/ammobox_drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/ammobox_drop.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - Cartridge308win
+    proto: Cartridge308win
+    capacity: 24
+  - type: Item
+    size: Small
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Boxes/308win.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 13
+    zeroVisible: false
+  - type: Appearance
+
+# Boxes
+- type: entity
+  parent: BaseMagazineBox308win
+  id: MagazineBox308win
+  name: ammunition box (.308 winchester)
+  description: A cardboard box of .308 winchester rounds. Intended to hold general-purpose kinetic ammunition.
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: BaseMagazineBox308win
+  id: MagazineBox308winPractice
+  name: ammunition box (.308 practice)
+  description: A cardboard box of .308 winchester rounds. Intended to hold non-harmful chalk ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge308winPractice
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: training
+
+- type: entity
+  parent: BaseMagazineBox308win
+  id: MagazineBox308winAP
+  name: ammunition box (.308 AP)
+  description: A cardboard box of .308 winchester rounds. Intended for armor-piercing ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge308winAP
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: fast
+
+- type: entity
+  parent: BaseMagazineBox308win
+  id: MagazineBox308winUranium
+  name: ammunition box (.308 uranium)
+  description: A cardboard box of .308 winchester rounds. Intended to hold exotic uranium-core ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    proto: Cartridge308winUranium
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: uranium

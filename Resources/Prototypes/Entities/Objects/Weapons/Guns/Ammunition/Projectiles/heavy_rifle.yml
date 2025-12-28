@@ -33,4 +33,4 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 5
+        Piercing: 7 # Orion-Edit: 5 > 7

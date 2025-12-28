@@ -39,12 +39,12 @@
   - type: CartridgeAmmo
     proto: BulletHeavyRifle
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-edit: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi # Orion-Edit: New sprites
     layers:
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
-  - type: SpentAmmoVisuals
+#  - type: SpentAmmoVisuals # Orion-Remove
   - type: StaticPrice
     price: 10
 

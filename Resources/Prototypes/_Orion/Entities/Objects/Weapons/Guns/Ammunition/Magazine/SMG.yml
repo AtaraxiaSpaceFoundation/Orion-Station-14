@@ -1,11 +1,11 @@
 - type: entity
-  id: MagazinePistolTopSubMachineGun
-  name: SMG top mounted magazine
+  id: MagazineSMGP90
+  name: SMG top mounted magazine (9mm auto)
   parent: BaseItem
   components:
   - type: Tag
     tags:
-      - MagazinePistolTopSubMachineGun
+      - MagazineSMGP90
   - type: BallisticAmmoProvider
     mayTransfer: true
     proto: CartridgePistol
@@ -19,7 +19,7 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Magazines/Pistol/submachinegun_top_mounted_mag.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pistol/SMG_P90_mag.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -30,3 +30,47 @@
     steps: 6
     zeroVisible: false
   - type: Appearance
+
+- type: entity
+  id: MagazineSMGVector
+  name: Vector magazine (9mm auto)
+  parent: BaseMagazinePistolSubMachineGun
+  components:
+  - type: Tag
+    tags:
+      - MagazineSMGVector
+  - type: BallisticAmmoProvider
+    proto: CartridgePistol
+    capacity: 20
+    whitelist:
+      tags:
+        - CartridgePistol
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pistol/SMG_vector.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: false
+
+- type: entity
+  id: MagazineSMGVectorExtended
+  name: Vector magazine Extended (9mm auto)
+  parent: MagazineSMGVector
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 30
+  - type: Sprite
+    layers:
+    - state: base_extended
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag_extended-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag_extended

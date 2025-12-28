@@ -1,6 +1,6 @@
 # Weapons
 uplink-pistol-viper-name = Гадюка
-uplink-pistol-viper-desc = Небольшой, легко скрываемый, но маломощный пистолет. Оснащён полностью автоматическим ресивером. Использует патроны калибра .35 авто.
+uplink-pistol-viper-desc = Небольшой, легко скрываемый, но маломощный пистолет. Оснащён полностью автоматическим ресивером. Использует патроны калибра 9мм авто.
 uplink-revolver-python-name = Питон
 uplink-estoc-bundle-name = Эсток
 uplink-estoc-bundle-desc = Марксманская винтовка для снайперской поддержки, оснащённая прицелом средней дальности для боя на дальние расстояния. В комплекте два магазина для винтовки (.20).
@@ -59,15 +59,15 @@ uplink-incendiary-grenade-desc = Выпускает серию зажигате�
 uplink-shrapnel-grenade-name = Осколочная граната
 uplink-shrapnel-grenade-desc = Выпускает серию острых осколков, наносящих огромный урон по незащищённым целям.
 # Ammo
-uplink-pistol-magazine-name = Пистолетный магазин (.35 авто)
+uplink-pistol-magazine-name = Пистолетный магазин (9мм авто)
 uplink-pistol-magazine-desc = Пистолетный магазин на 10 патронов. Совместим с "Гадюкой".
-uplink-pistol-magazine-c20r-name = Магазин ПП (.35 авто)
+uplink-pistol-magazine-c20r-name = Магазин ПП (9мм авто)
 uplink-pistol-magazine-c20r-desc = Магазин ПП на 30 патронов. Совместим с C-20r.
-uplink-pistol-magazine-caseless-name = Пистолетный магазин (.25 безгильзовые)
+uplink-pistol-magazine-caseless-name = Пистолетный магазин (9.5мм безгильзовые)
 uplink-pistol-magazine-caseless-desc = Пистолетный магазин на 10 патронов. Совместим с "Коброй".
 uplink-speedloader-magnum-name = Спидлоадер (.45 магнум ББ)
 uplink-speedloader-magnu-desc = Спидлоадер с 6 бронебойными, полностью игнорирующими броню, патронами для револьвера. Совместим с "Питоном".
-uplink-mosin-ammo-name = Коробка патронов (.30 винтовочные)
+uplink-mosin-ammo-name = Коробка патронов (5.45мм винтовочные)
 uplink-mosin-ammo-desc = Коробка с 60 патронами для резервной винтовки.
 uplink-sniper-ammo-name = Коробка патронов (.60 крупнокалиберные)
 uplink-sniper-ammo-desc = Коробка с 10 патронами для снайперской винтовки Христов.
@@ -166,7 +166,7 @@ uplink-sniper-bundle-name = Набор снайпера
 uplink-sniper-bundle-desc = Неприметный чемодан, в котором находятся Христов, 10 запасных патронов и удобная маскировка.
 uplink-c20r-bundle-name = Набор "C-20r"
 uplink-c20r-bundle-desc = Старый добрый: Классический пистолет-пулемёт C-20r в комплекте с тремя магазинами.
-uplink-buldog-bundle-name = Набор "Зауэр"
+uplink-buldog-bundle-name = Набор "Бульдог"
 uplink-buldog-bundle-desc = Простой и надёжный: Содержит популярный дробовик Зауэр и 4 барабана дроби.
 uplink-grenade-launcher-bundle-name = Набор "China-Lake"
 uplink-grenade-launcher-bundle-desc = Старый гранатомёт China-Lake, снабжённый 11 гранатами различной поражающей способности.

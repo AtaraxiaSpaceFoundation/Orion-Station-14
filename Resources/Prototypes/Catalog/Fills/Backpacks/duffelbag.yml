@@ -178,12 +178,12 @@
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledShotgun
-  name: Zauer bundle # Orion-edit
+  name: Zauer bundle # Orion-Edit
   description: "Lean and mean: Contains the popular Zauer Shotgun, a 12g slug drum, and four 12g buckshot drums." #, and a pair of Thermal Imaging Goggles. │ Orion edit
   components:
   - type: StorageFill
     contents:
-      - id: WeaponShotgunZauer # Orion-edit
+      - id: WeaponShotgunZauer # Orion-Edit
       - id: MagazineShotgun
         amount: 3
       - id: MagazineShotgunSlug

@@ -183,15 +183,15 @@
   description: A modern revolver used by Nanotrasen’s elite, near mythical ‘Death Squad’ task force. Its unique trigger action and barrel placement enable a high fire rate with minimal muzzle flip. Many have looked down this barrel, but few have lived to tell of it. Loads 7 rounds of .45 magnum.
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/big.rsi # Orion-edit: New sprites
-  - type: Item # Orion-edit: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/big.rsi # Orion-Edit: New sprites
+  - type: Item # Orion-Edit: New sprites
     sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/tiny.rsi
   - type: Clothing
-    sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/tiny.rsi # Orion-edit: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/tiny.rsi # Orion-Edit: New sprites
   - type: Gun
-    fireRate: 3 # Orion-edit
+    fireRate: 3 # Orion-Edit
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Revolvers/mateba.ogg # Orion-edit
+      path: /Audio/_Orion/Weapons/Guns/Revolvers/mateba.ogg # Orion-Edit
   - type: RevolverAmmoProvider
     whitelist:
       tags:
@@ -202,9 +202,9 @@
     chambers: [ True, True, True, True, True, True, True ] # Goobstation - Deathsquad revamp
     ammoSlots: [ null, null, null, null, null, null, null ] # Goobstation - Deathsquad revamp
     soundEject:
-      path: /Audio/_Orion/Weapons/Guns/Revolvers/revolver_unload.ogg # Orion-edit
+      path: /Audio/_Orion/Weapons/Guns/Revolvers/revolver_unload.ogg # Orion-Edit
     soundInsert:
-      path: /Audio/_Orion/Weapons/Guns/Revolvers/revolver_load.ogg # Orion-edit
+      path: /Audio/_Orion/Weapons/Guns/Revolvers/revolver_load.ogg # Orion-Edit
 
 - type: entity
   parent: WeaponRevolverMateba
