@@ -65,13 +65,13 @@ public sealed class PainAlertSystem : EntitySystem
             return;
 
         // Find the parent mob that should have the AlertsComponent
-        EntityUid? mobUid;
+        EntityUid mobUid;
         if (TryComp<BodyPartComponent>(uid, out var bodyPart) && bodyPart.Body is { } bodyUid)
             mobUid = bodyUid;
         else
             mobUid = uid;
 
-        if (!HasComp<AlertsComponent>(mobUid.Value))
+        if (!HasComp<AlertsComponent>(mobUid))
             return;
 
         // Check if the mob is in a critical state
