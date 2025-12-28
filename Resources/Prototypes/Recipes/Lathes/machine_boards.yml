@@ -221,7 +221,7 @@
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
   id: ChemDispenserMachineCircuitboard
-  icon: { sprite: Structures/dispensers.rsi, state: industrial-working } # Goobstation
+  icon: { sprite: _Orion/Structures/Dispensers/dispenser.rsi, state: industrial-working } # Goobstation | Orion-Edit
   result: ChemDispenserMachineCircuitboard
 
 # Treatment

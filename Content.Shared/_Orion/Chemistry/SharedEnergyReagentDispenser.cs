@@ -8,7 +8,7 @@ namespace Content.Shared._Orion.Chemistry;
 /// </summary>
 public sealed class SharedEnergyReagentDispenser
 {
-    public const string OutputSlotName = "energyBeakerSlot";
+    public const string OutputSlotName = "beakerSlot";
 }
 
 [Serializable, NetSerializable]

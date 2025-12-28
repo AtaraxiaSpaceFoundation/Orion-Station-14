@@ -4,7 +4,7 @@
 # SPDX-FileCopyrightText: 2020 Hugo Laloge <hugo.laloge@gmail.com>
 # SPDX-FileCopyrightText: 2020 Injazz <injazza@gmail.com>
 # SPDX-FileCopyrightText: 2020 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2021 Caj Jones <dellevelled@yahoo.com>
 # SPDX-FileCopyrightText: 2021 Peptide90 <78795277+Peptide90@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
@@ -102,7 +102,7 @@
 - type: entity
   id: BoozeDispenser
   name: booze dispenser
-  suffix: Filled
+#  suffix: Filled # Orion-Edit: Removed
   description: A booze dispenser with a single slot for a container to be filled.
   parent: ReagentDispenserBase
   components:
@@ -116,20 +116,20 @@
     whitelist:
       tags:
       - DrinkBottle
-  - type: StorageFill
-    contents:
-    - id: DrinkAleBottleFullGrowler
-    - id: DrinkBeerGrowler
-    - id: DrinkCoffeeLiqueurBottleFull
-    - id: DrinkCognacBottleFull
-    - id: DrinkGinBottleFull
-    - id: DrinkMeadJug
-    - id: DrinkRumBottleFull
-    - id: DrinkTequilaBottleFull
-    - id: DrinkVermouthBottleFull
-    - id: DrinkVodkaBottleFull
-    - id: DrinkWhiskeyBottleFull
-    - id: DrinkWineBottleFull
+#  - type: StorageFill # Orion-Edit: Removed
+#    contents:
+#    - id: DrinkAleBottleFullGrowler
+#    - id: DrinkBeerGrowler
+#    - id: DrinkCoffeeLiqueurBottleFull
+#    - id: DrinkCognacBottleFull
+#    - id: DrinkGinBottleFull
+#    - id: DrinkMeadJug
+#    - id: DrinkRumBottleFull
+#    - id: DrinkTequilaBottleFull
+#    - id: DrinkVermouthBottleFull
+#    - id: DrinkVodkaBottleFull
+#    - id: DrinkWhiskeyBottleFull
+#    - id: DrinkWineBottleFull
   - type: Transform
     noRot: false
   - type: Machine
@@ -140,11 +140,36 @@
     - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
+  # Orion-Start
+  - type: EnergyReagentDispenser
+    reagents:
+      Absinthe: 8
+      Ale: 8
+      Beer: 8
+      CoconutRum: 8
+      Cognac: 8
+      BlueCuracao: 8
+      Gin: 8
+      Rum: 8
+      Sake: 8
+      Tequila: 8
+      Vermouth: 8
+      Vodka: 8
+      Whiskey: 8
+      Wine: 8
+      CoffeeLiqueur: 8 # Wizden
+      Mead: 8 # Wizden
+    reagentsEmagged:
+      Ethanol: 12
+      Iron: 10
+      AtomicBomb: 20
+  # Orion-End
 
 - type: entity
   id: BoozeDispenserEmpty
   suffix: Empty
   parent: BoozeDispenser
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Storage
     whitelist:

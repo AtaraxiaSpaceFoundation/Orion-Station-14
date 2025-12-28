@@ -27,6 +27,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Orion-Edit: Replaced with EnergyReagentDispenser
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Chemistry;
 using Content.Shared.Containers.ItemSlots;
@@ -87,3 +88,4 @@ namespace Content.Client.Chemistry.UI
         }
     }
 }
+*/

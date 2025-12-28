@@ -4,8 +4,8 @@
 # SPDX-FileCopyrightText: 2020 Hugo Laloge <hugo.laloge@gmail.com>
 # SPDX-FileCopyrightText: 2020 Injazz <injazza@gmail.com>
 # SPDX-FileCopyrightText: 2020 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <zddm@outlook.es>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <zddm@outlook.es>
 # SPDX-FileCopyrightText: 2021 Caj Jones <dellevelled@yahoo.com>
 # SPDX-FileCopyrightText: 2021 Peptide90 <78795277+Peptide90@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
@@ -105,7 +105,7 @@
   id: SodaDispenser
   name: soda dispenser
   description: A beverage dispenser with a selection of soda and several other common beverages. Has a single fill slot for containers.
-  suffix: Filled
+#  suffix: Filled # Orion-Edit: Removed
   components:
   - type: Rotatable
   - type: Sprite
@@ -117,27 +117,27 @@
     whitelist:
       tags:
       - DrinkBottle
-  - type: StorageFill
-    contents:
-    - id: DrinkCoconutWaterJug
-    - id: DrinkCoffeeJug
-    - id: DrinkColaBottleFull
-    - id: DrinkCreamCartonXL
-    - id: DrinkDrGibbJug
-    - id: DrinkEnergyDrinkJug
-    - id: DrinkGreenTeaJug
-    - id: DrinkIceJug
-    - id: DrinkJuiceLimeCartonXL
-    - id: DrinkJuiceOrangeCartonXL
-    - id: DrinkLemonLimeJug
-    - id: DrinkRootBeerJug
-    - id: DrinkSodaWaterBottleFull
-    - id: DrinkSpaceMountainWindBottleFull
-    - id: DrinkSpaceUpBottleFull
-    - id: DrinkSugarJug
-    - id: DrinkTeaJug
-    - id: DrinkTonicWaterBottleFull
-    - id: DrinkWaterMelonJuiceJug
+#  - type: StorageFill # Orion-Edit: Removed
+#    contents:
+#    - id: DrinkCoconutWaterJug
+#    - id: DrinkCoffeeJug
+#    - id: DrinkColaBottleFull
+#    - id: DrinkCreamCartonXL
+#    - id: DrinkDrGibbJug
+#    - id: DrinkEnergyDrinkJug
+#    - id: DrinkGreenTeaJug
+#    - id: DrinkIceJug
+#    - id: DrinkJuiceLimeCartonXL
+#    - id: DrinkJuiceOrangeCartonXL
+#    - id: DrinkLemonLimeJug
+#    - id: DrinkRootBeerJug
+#    - id: DrinkSodaWaterBottleFull
+#    - id: DrinkSpaceMountainWindBottleFull
+#    - id: DrinkSpaceUpBottleFull
+#    - id: DrinkSugarJug
+#    - id: DrinkTeaJug
+#    - id: DrinkTonicWaterBottleFull
+#    - id: DrinkWaterMelonJuiceJug
   - type: Transform
     noRot: false
   - type: Machine
@@ -146,8 +146,45 @@
     guides:
     - Bartender
     - Drinks
+  # Orion-Start
+  - type: EnergyReagentDispenser
+    reagents:
+      Coffee: 8
+      Cola: 8
+      Cream: 12
+      DrGibb: 8
+      Grenadine: 8
+      Ice: 4
+      JuiceLemon: 8
+      LemonLime: 8
+      JuiceLime: 8
+      JuiceWatermelon: 8
+      JuiceOrange: 8
+      JuicePineapple: 8
+      PwrGame: 8
+      ShamblersJuice: 8
+      SpaceMountainWind: 8
+      SodaWater: 8
+      SolDry: 8
+      SpaceUp: 8
+      Sugar: 12
+      Tea: 8
+      GreenTea: 8
+      JuiceTomato: 8
+      TonicWater: 8
+      CoconutWater: 8 # Wizden
+      EnergyDrink: 15 # Wizden
+      RootBeer: 8 # Wizden
+      Water: 4
+    reagentsEmagged:
+      FourteenLoko: 8
+      WhiskeyCola: 8
+      MindbreakerToxin: 18
+      Tirizene: 18
+  # Orion-End
 
 - type: entity
   parent: SodaDispenser
   id: SodaDispenserEmpty
   suffix: Empty
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration

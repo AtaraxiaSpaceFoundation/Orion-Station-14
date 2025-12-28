@@ -339,6 +339,7 @@
     - id: WeaponLauncherSingularityBuster
     - id: MachinePowerTransmissionLaserFlatpack
     - id: RCDRechargingCE
+    - id: InducerEngineeringBattery # Orion
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
