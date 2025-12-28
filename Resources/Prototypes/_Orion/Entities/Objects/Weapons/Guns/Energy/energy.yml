@@ -69,8 +69,8 @@
     minAngle: -40
     maxAngle: -40
   - type: Gun
-    maxAngle: 60
-    minAngle: 60
+    maxAngle: 50
+    minAngle: 50
     cameraRecoilScalar: 0.5
     fireRate: 8
     selectedMode: FullAuto
@@ -200,7 +200,7 @@
     availableModes:
     - SemiAuto
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/EG-R/shot.ogg
+      path: /Audio/_Orion/Weapons/Guns/EGE-XR/shot.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 3
