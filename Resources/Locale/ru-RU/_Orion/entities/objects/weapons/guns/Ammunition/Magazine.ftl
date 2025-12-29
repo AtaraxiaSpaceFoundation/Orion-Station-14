@@ -19,8 +19,6 @@ ent-MagazinePulseSubMachinePistol = магазин Triton (энергоболт)
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
 
-ent-ShellShotgunPulse = импульсная дробь
-    .desc = { ent-BaseItem.desc }
 ent-MagazinePulseShotgun = магазин (Импульсная дробь)
     .desc = { ent-BaseItem.desc }
     .suffix = Полный
