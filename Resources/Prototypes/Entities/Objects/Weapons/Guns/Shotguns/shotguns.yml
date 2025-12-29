@@ -92,6 +92,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    cameraRecoilScalar: 2 # Orion
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -169,6 +170,7 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 3 # Goobstation edit
+    cameraRecoilScalar: 3 # Orion
     selectedMode: FullAuto
     availableModes:
     - FullAuto

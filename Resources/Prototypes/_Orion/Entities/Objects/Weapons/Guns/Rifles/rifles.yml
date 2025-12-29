@@ -108,7 +108,7 @@
         priority: 1
         whitelist:
           tags:
-            - CartridgeRifle\
+            - CartridgeRifle
   - type: MagazineVisuals
     magState: mag
     steps: 1

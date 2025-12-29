@@ -2,7 +2,7 @@
   name: SR-127 Bauer bolt action rifle
   parent: [ BaseMajorContraband, BaseWeaponRifle ]
   id: WeaponRifleSR127
-  description: The Bauer SR-127 is the standard issue bolt action rifle used by the United Earth Gov. Known for its long range accuracy and use by marksmen despite its age and lack of IFF. It has an irremovable scope. Uses .60 anti-material magazines."
+  description: The Bauer SR-127 is the standard issue bolt action rifle used by the United Earth Gov. Known for its long range accuracy and use by marksmen despite its age and lack of IFF. It has an irremovable scope. Uses .60 anti-material magazines.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Snipers/snl177/big.rsi

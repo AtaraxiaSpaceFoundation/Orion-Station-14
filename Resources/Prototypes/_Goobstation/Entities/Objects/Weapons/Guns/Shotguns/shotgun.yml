@@ -23,6 +23,7 @@
   - type: GunRequiresWield
   - type: Gun
     fireRate: 2
+    cameraRecoilScalar: 3 # Orion
     selectedMode: FullAuto
     availableModes:
     - FullAuto
