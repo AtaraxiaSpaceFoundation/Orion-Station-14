@@ -187,7 +187,7 @@
       availableModes:
         - FullAuto
       soundGunshot:
-        path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
+        path: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg # Orion-Edit: New sounds
       soundEmpty:
         path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
     - type: Sprite

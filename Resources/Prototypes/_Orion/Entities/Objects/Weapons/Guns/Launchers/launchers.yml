@@ -1,6 +1,6 @@
 - type: entity 
   name: GL-70
-  parent: BaseWeaponLauncher
+  parent: [ BaseMajorContraband, BaseWeaponLauncher ]
   id: WeaponLauncherGL70
   description: The GL-70 is the standard grenade launcher used by the Earth Army for area denial and big explosions.
   components:
@@ -20,7 +20,7 @@
     availableModes:
       - SemiAuto
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+      path: /Audio/_Orion/Weapons/Guns/Launchers/underbarrel_grenadelauncher.ogg
   - type: ContainerContainer
     containers:
       revolver-ammo: !type:Container
@@ -64,6 +64,8 @@
   - type: GunRequiresWield
   - type: Gun
     fireRate: 1
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Launchers/underbarrel_grenadelauncher.ogg
   - type: ItemSlots
     slots:
       gun_chamber:
@@ -74,7 +76,7 @@
 
 - type: entity
   name: RL-5
-  parent: BaseWeaponLauncher
+  parent: [ BaseMajorContraband, BaseWeaponLauncher ]
   id: WeaponLauncherRL5
   description: The RL-5 is the primary anti-armor used around the galaxy. Used to take out light-tanks and enemy structures, the RL-5 rocket launcher is a dangerous weapon with a variety of combat uses.
   components:

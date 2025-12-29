@@ -1,6 +1,6 @@
 - type: entity 
   name: EarthGov laser rifle
-  parent: BaseWeaponBattery
+  parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserRifle
   description: An Earth Government standard issue laser rifle, used by army and police.
   components:
@@ -42,12 +42,10 @@
     proto: RedLaser
     fireCost: 50
   - type: Wieldable
-  - type: UseDelay
-    delay: 1.5
 
 - type: entity
   name: EarthGov laser machine gun
-  parent: BaseWeaponBattery
+  parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserMG
   description: An Earth Government standard issue laser machine gun, used by army. Heavy and deadly.
   components:
@@ -71,7 +69,6 @@
   - type: Gun
     maxAngle: 50
     minAngle: 50
-    cameraRecoilScalar: 0.5
     fireRate: 8
     selectedMode: FullAuto
     availableModes:
@@ -90,14 +87,15 @@
     fireCost: 50
   - type: Wieldable
   - type: UseDelay
-    delay: 2.5
+    delay: 1
+  - type: UseDelayBlockShoot
   - type: SpeedModifiedOnWield
     sprintModifier: 0.7
   - type: HeldSpeedModifier
 
 - type: entity
   name: EarthGov laser carbine
-  parent: BaseWeaponBattery
+  parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserCarbine
   description: An Earth Government standard issue laser carbine, used by army and police. Thanks to the short barrel it has better maneuverability in narrow spaces.
   components:
@@ -121,7 +119,7 @@
   - type: Gun
     minAngle: 7
     maxAngle: 45
-    cameraRecoilScalar: 4
+    cameraRecoilScalar: 2
     fireRate: 5
     selectedMode: FullAuto
     availableModes:
@@ -140,17 +138,14 @@
     proto: RedLaser
     fireCost: 50
   - type: Wieldable
-  - type: UseDelay
-    delay: 0.5
 
 - type: entity
   name: EarthGov laser pistol
-  parent: BaseWeaponBatterySmall
+  parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
   id: WeaponEarthGovLaserPistol
   description: An Earth Government standard issue laser pistol, used by army and police.
   components:
   - type: Gun
-    cameraRecoilScalar: 0.5
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/EG-P/shot.ogg
   - type: Sprite
@@ -174,7 +169,7 @@
 
 - type: entity
   name: EarthGov heavy laser rifle
-  parent: BaseWeaponBattery
+  parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserSniper
   description: An Earth Government heavy sniper rifle for a extended combat situation.
   components:
@@ -196,6 +191,7 @@
     minAngle: 1
     maxAngle: 10
     fireRate: 1.5
+    cameraRecoilScalar: 2
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -213,7 +209,8 @@
     fireCost: 100
   - type: Wieldable
   - type: UseDelay
-    delay: 2.5
+    delay: 0.7
+  - type: UseDelayBlockShoot
   - type: ClothingSpeedModifier
     sprintModifier: 0.9
   - type: SpeedModifiedOnWield
@@ -225,7 +222,7 @@
 
 - type: entity
   name: EarthGov Experimental X-Ray
-  parent: BaseWeaponBattery
+  parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovXRay
   description: A Earth Government Experimental x-ray weapon, it looks like it emits radiation.
   components:
@@ -265,5 +262,3 @@
     proto: XrayLaser
     fireCost: 100
   - type: Wieldable
-  - type: UseDelay
-    delay: 2.5

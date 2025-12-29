@@ -15,7 +15,7 @@
 
 - type: entity 
   name: combat pistol VP-78
-  parent: BaseWeaponPistol
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolVP78
   description: The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in 5.56mm rounds.
   components:
@@ -57,14 +57,10 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: ContainerContainer
-    containers:
-      gun_magazine: !type:ContainerSlot
-      gun_chamber: !type:ContainerSlot
 
 - type: entity
   name: desert eagle
-  parent: BaseWeaponPistol
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolDEagle
   description: A magnum chambered in .50AE that comes with a serious kick. This one is engraved, "Peace through superior firepower".
   components:
@@ -106,14 +102,10 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: ContainerContainer
-    containers:
-      gun_magazine: !type:ContainerSlot
-      gun_chamber: !type:ContainerSlot
 
 - type: entity
   name: G-22
-  parent: BaseWeaponPistol
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolG22
   description: A popular police firearm in the modern day. Chambered in .35 rounds.
   components:
@@ -148,14 +140,10 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: ContainerContainer
-    containers:
-      gun_magazine: !type:ContainerSlot
-      gun_chamber: !type:ContainerSlot
 
 - type: entity
   name: service pistol G23
-  parent: BaseWeaponPistol
+  parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolG23
   description: A popular self-defense firearm in the modern day. Chambered in .35 rounds.
   components:
@@ -194,10 +182,6 @@
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: ContainerContainer
-    containers:
-      gun_magazine: !type:ContainerSlot
-      gun_chamber: !type:ContainerSlot
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false

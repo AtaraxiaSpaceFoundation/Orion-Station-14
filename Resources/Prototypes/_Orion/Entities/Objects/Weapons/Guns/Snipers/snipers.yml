@@ -1,6 +1,6 @@
 - type: entity
   name: SR-127 Bauer bolt action rifle
-  parent: BaseWeaponRifle
+  parent: [ BaseMajorContraband, BaseWeaponRifle ]
   id: WeaponRifleSR127
   description: The Bauer SR-127 is the standard issue bolt action rifle used by the United Earth Gov. Known for its long range accuracy and use by marksmen despite its age and lack of IFF. It has an irremoveable scope. Uses .60 anti-material magazines."
   components:
@@ -70,16 +70,16 @@
   - type: Item
     sprite: _Orion/Objects/Weapons/Guns/Snipers/remington700/tiny.rsi
   - type: Gun
-    autoCycle: false
     fireRate: 0.8
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Snipers/tl127.ogg
     soundEmpty:
       path: /Audio/_Orion/Weapons/Guns/Snipers/sniper_empty.ogg
   - type: BallisticAmmoProvider
+    autoCycle: false
+    capacity: 3
     soundRack: 
       path: /Audio/_Orion/Weapons/Guns/Snipers/tl-127_bolt.ogg
-    capacity: 3
     proto: Cartridge308win
     whitelist:
       tags:
@@ -99,7 +99,7 @@
 
 - type: entity
   name: Dragunov
-  parent: BaseWeaponRifle
+  parent: [ BaseSecurityContraband, BaseWeaponRifle ]
   id: WeaponRifleDragunov
   description: A semiautomatic sniper rifle, famed for it's marksmanship, and is built from the ground up for it.
   components:
