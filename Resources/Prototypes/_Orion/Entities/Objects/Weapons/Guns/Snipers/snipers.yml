@@ -2,7 +2,7 @@
   name: SR-127 Bauer bolt action rifle
   parent: [ BaseMajorContraband, BaseWeaponRifle ]
   id: WeaponRifleSR127
-  description: The Bauer SR-127 is the standard issue bolt action rifle used by the United Earth Gov. Known for its long range accuracy and use by marksmen despite its age and lack of IFF. It has an irremoveable scope. Uses .60 anti-material magazines."
+  description: The Bauer SR-127 is the standard issue bolt action rifle used by the United Earth Gov. Known for its long range accuracy and use by marksmen despite its age and lack of IFF. It has an irremovable scope. Uses .60 anti-material magazines."
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Snipers/snl177/big.rsi
@@ -61,7 +61,7 @@
   name: Remington 700
   parent: [ BaseWeaponSniper, BaseSecurityContraband ]
   id: WeaponSniperRemington700
-  description: Remington 700 охотничая винтовка под калибр 308 винчестер, был сделан по реплике чертежей Earth Armories сторонними компаниями, каркас винтовки исполнен из пластика.
+  description: A .308 Winchester hunting rifle, produced by third parties from Earth Armories replicas. Features a polymer frame.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Snipers/remington700/big.rsi
