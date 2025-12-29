@@ -119,6 +119,7 @@ using Content.Shared.Database;
 using Content.Shared._EinsteinEngines.Flight;
 using Content.Shared._Goobstation.Wizard.Mutate; // Goobstation
 using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -201,6 +202,7 @@ namespace Content.Shared.Cuffs
             SubscribeLocalEvent<HandcuffComponent, MeleeHitEvent>(OnCuffMeleeHit);
             SubscribeLocalEvent<HandcuffComponent, AddCuffDoAfterEvent>(OnAddCuffDoAfter);
             SubscribeLocalEvent<HandcuffComponent, VirtualItemDeletedEvent>(OnCuffVirtualItemDeleted);
+            SubscribeLocalEvent<CuffableComponent, ExaminedEvent>(OnExamined); // Orion
         }
 
         private void CheckInteract(Entity<CuffableComponent> ent, ref InteractionAttemptEvent args)
@@ -595,7 +597,7 @@ namespace Content.Shared.Cuffs
             EnsureComp<HandcuffComponent>(handcuff, out var handcuffsComp);
             handcuffsComp.Used = true;
             Dirty(handcuff, handcuffsComp);
-            
+
             var ev = new TargetHandcuffedEvent();
             RaiseLocalEvent(target, ref ev);
 
@@ -922,6 +924,14 @@ namespace Content.Shared.Cuffs
             }
             cuff.Removing = false;
         }
+
+        // Orion-Start
+        private void OnExamined(Entity<CuffableComponent> ent, ref ExaminedEvent args)
+        {
+            if (!ent.Comp.CanStillInteract)
+                args.PushMarkup(Loc.GetString("examine-handcuffed", ("ent", ent.Owner)));
+        }
+        // Orion-End
 
         #region ActionBlocker
 
