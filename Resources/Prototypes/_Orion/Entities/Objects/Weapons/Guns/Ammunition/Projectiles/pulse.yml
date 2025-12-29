@@ -43,29 +43,7 @@
         - Impassable
         hard: False
 
-- type: entity
-  id: ShellShotgunPulse
-  name: shell (.12 pulse)
-  parent: BaseCartridge
-  components:
-  - type: Tag
-    tags:
-    - ShellShotgunPulse
-    - ShellShotgun
-  - type: CartridgeAmmo
-    proto: PulseBulletSpread
-    soundEject:
-      collection: ShellLand
-  - type: Sprite
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/battery.rsi
-    layers:
-      - state: base
-        map: [ "enum.AmmoVisualLayers.Base" ]
-  - type: Appearance
-  - type: SpentAmmoVisuals
-
-
-- type: entity
+- type: entity # shot on hell hammer
   id: PulseBulletSpread
   name: pulse bullet
   parent: PulseBullet
@@ -74,7 +52,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 4
+        Heat: 5
         Piercing: 3
   - type: ProjectileSpread
     proto: PulseBulletSpreadShotgun
