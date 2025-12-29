@@ -77,7 +77,7 @@ public sealed class PainAlertSystem : EntitySystem
         // Check if the mob is in a critical state
         var isCritical = false;
         if (TryComp<MobStateComponent>(mobUid, out var mobState))
-            isCritical = _mobState.IsCritical(mobUid.Value, mobState);
+            isCritical = _mobState.IsCritical(mobUid, mobState);
 
         var totalPain = 0f;
 
@@ -95,11 +95,11 @@ public sealed class PainAlertSystem : EntitySystem
                 ? 3 // Max severity in critical state
                 : (int) Math.Clamp(Math.Floor((totalPain - 1f) / 25f), 0, 3);
 
-            _alerts.ShowAlert(mobUid.Value, PainAlerts[alertIndex]);
+            _alerts.ShowAlert(mobUid, PainAlerts[alertIndex]);
         }
         else
         {
-            _alerts.ClearAlertCategory(mobUid.Value, "Pain");
+            _alerts.ClearAlertCategory(mobUid, "Pain");
         }
     }
 }
