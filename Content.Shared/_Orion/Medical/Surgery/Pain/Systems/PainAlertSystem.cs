@@ -81,7 +81,7 @@ public sealed class PainAlertSystem : EntitySystem
 
         var totalPain = 0f;
 
-        if (nerve.PainFeels > 0 && woundable.WoundableIntegrity < woundable.IntegrityCap)
+        if (nerve.PainFeels > 0 && woundable.IntegrityCap > 0 && woundable.WoundableIntegrity < woundable.IntegrityCap)
         {
             var normalizedIntegrity = woundable.WoundableIntegrity / woundable.IntegrityCap;
             var painLevel = (FixedPoint2.New(1) - normalizedIntegrity) * 100 * nerve.PainFeels;
