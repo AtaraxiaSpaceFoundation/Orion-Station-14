@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprited by PuroSlavKing (Github)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "pain0",
+      "delays": [
+        [
+          0.8,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "pain1",
+      "delays": [
+        [
+          0.8,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "pain2",
+      "delays": [
+        [
+          0.8,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "pain3",
+      "delays": [
+        [
+          1.5,
+          0.2
+        ]
+      ]
+    }
+  ]
+}
