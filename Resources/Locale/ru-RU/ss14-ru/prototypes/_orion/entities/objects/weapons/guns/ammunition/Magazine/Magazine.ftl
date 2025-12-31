@@ -21,6 +21,9 @@ ent-MagazineLightMachineGunRPD = барабанный магазин для РП
 ent-MagazineRifle762Sniper = снайперский магазин (7.62мм винтовочный)
     .desc = Стандарт ОПЗ и СССП для винтовок Драгунова. Совместим с автоматами на платформе калибра 7.62мм
 
+ent-MagazineHeavyRifleBR64 = Винтовочный магазин (.45 магнум)
+    .desc = { ent-BaseItem.desc }
+
 ent-MagazineRifleSR50 = магазин SR-127 (.50 крупнокалиберные)
     .desc = { ent-BaseItem.desc }
 ent-MagazineRifleSR50AP = магазин SR-127 (.50 бронебойные)

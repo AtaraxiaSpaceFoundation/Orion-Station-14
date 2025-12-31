@@ -155,22 +155,6 @@
     - state: bullet
       shader: unshaded
 
-# Orion-Start: New bullets
-- type: entity
-  categories: [ HideSpawnMenu ]
-  parent: BaseBullet
-  id: BulletHighCaliberAP
-  name: bullet (.50 armor-piercing)
-  components:
-  - type: Projectile
-    damage:
-      types:
-        Piercing: 45
-        Structural: 140
-      armorPenetration: 0.8
-    penetrationThreshold: 50
-# Orion-End
-
 - type: hitscan
   id: HeavyPulse
   damage:
