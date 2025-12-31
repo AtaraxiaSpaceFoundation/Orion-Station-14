@@ -8,6 +8,6 @@
     damage:
       types:
         Piercing: 45
-        Structural: 140
+        Structural: 120
       armorPenetration: 0.8
     penetrationThreshold: 50

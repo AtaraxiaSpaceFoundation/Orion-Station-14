@@ -1,10 +1,10 @@
 ent-BaseMagazineBox308win = коробка патронов (.308 винчестер)
     .desc = { ent-BaseItem.desc }
 ent-MagazineBox308win = коробка патронов (.308 винчестер)
-    .desc = { ent-BaseMagazineBoxLightRifle.desc }
+    .desc = { ent-BaseMagazineBox308win.desc }
 ent-MagazineBox308winPractice = коробка патронов (.308 учебные)
-    .desc = { ent-BaseMagazineBoxLightRifle.desc }
+    .desc = { ent-BaseMagazineBox308win.desc }
 ent-MagazineBox308winAP = коробка патронов (.308 бронебойные)
-    .desc = { ent-BaseMagazineBoxLightRifle.desc }
+    .desc = { ent-BaseMagazineBox308win.desc }
 ent-MagazineBox308winUranium = коробка патронов (.308 урановые)
-    .desc = { ent-BaseMagazineBoxLightRifle.desc }
+    .desc = { ent-BaseMagazineBox308win.desc }
