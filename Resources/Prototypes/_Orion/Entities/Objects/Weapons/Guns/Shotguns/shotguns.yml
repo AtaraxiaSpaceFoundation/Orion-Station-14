@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseMajorContraband, WeaponShotgunBulldogLegallyDistinct ]
+  parent: [ BaseMajorContraband, WeaponShotgunBulldog ]
   id: WeaponShotgunInteQBulldog
   name: Bulldog
   suffix: Shotgun
@@ -9,6 +9,8 @@
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
+  - type: Gun
+    fireRate: 2
 
 - type: entity
   name: Zauer

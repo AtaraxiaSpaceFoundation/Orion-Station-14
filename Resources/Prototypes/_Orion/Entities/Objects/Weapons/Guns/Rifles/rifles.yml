@@ -1,6 +1,6 @@
 # 5.45
 - type: entity
-  parent: [ BaseMajorContraband, WeaponRifleAk ]
+  parent: [ BaseWeaponRifle , BaseMajorContraband ]
   id: WeaponRifleInteQAKM
   name: InteQ AKM
   suffix: Rifle
@@ -8,8 +8,44 @@
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+    scale: 0.9, 0.9
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/ltrifle_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazineLightRifle
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineLightRifle
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        startingItem: CartridgeLightRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeLightRifle
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
 
 - type: entity
   name: M16A4
@@ -124,12 +160,12 @@
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/aug/big.rsi
+    scale: 0.9, 0.9
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
-    scale: 0.9, 0.9
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Rifles/aug/tiny.rsi
   - type: Item
@@ -184,6 +220,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/m28/big.rsi
+    scale: 0.9, 0.9
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
