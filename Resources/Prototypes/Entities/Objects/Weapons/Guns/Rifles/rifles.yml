@@ -122,7 +122,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
     soundEmpty: # Orion-Edit
-      path: /Audio/_Orion/Weapons/Guns/Rifles/m41a_empty.ogg
+      path: /Audio/_Orion/Weapons/Guns/Rifles/rifle_empty.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
@@ -305,14 +305,14 @@
   - type: Gun
     fireRate: 5
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Rifles/m16.ogg # Orion-Edit: New sprites
+      path: /Audio/_Orion/Weapons/Guns/Rifles/556rifle.ogg # Orion-Edit: New sprites
   - type: ItemSlots
     slots:
       gun_magazine:
 #        name: Magazine # Orion-Edit: Localization
         startingItem: MagazineRifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
-        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg # Orion-Edit: New sounds
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/556_unload.ogg # Orion-Edit: New sounds
         priority: 2
         whitelist:
           tags:

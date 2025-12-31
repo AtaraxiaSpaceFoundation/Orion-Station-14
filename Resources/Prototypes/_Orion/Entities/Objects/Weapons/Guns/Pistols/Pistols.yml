@@ -60,7 +60,7 @@
 
 - type: entity
   name: desert eagle
-  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  parent: [BaseWeaponPistol, BaseCentcommCommandContraband]
   id: WeaponPistolDEagle
   description: A magnum chambered in .50AE that comes with a serious kick. This one is engraved, "Peace through superior firepower".
   components:

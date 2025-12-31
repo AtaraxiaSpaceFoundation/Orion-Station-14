@@ -2,7 +2,7 @@
   id: BoxPulseRifle
   name: charging plasmoblock (pulse)
   description: Standard EarthGov type of impulse magazines
-  parent: BaseItem
+  parent: [ BaseItem, BaseSecurityContraband ]
   components:
   - type: BallisticAmmoProvider
     soundInsert: /Audio/_Orion/Items/weapons/Pulse/pulsebox.ogg

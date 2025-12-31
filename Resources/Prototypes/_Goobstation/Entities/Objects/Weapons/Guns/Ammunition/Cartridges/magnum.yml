@@ -57,13 +57,15 @@
   name: shell (.45 subsonic neurotoxin)
   parent: BaseCartridgeMagnum
   components:
+  - type: SpentAmmoVisuals # Orion: New sprites
+    state: 45neurotoxin
   - type: Sprite
     layers:
-    - state: base
+    - state: 45neurotoxin # Orion-Edit: New sprites
       map: [ "enum.AmmoVisualLayers.Base" ]
-    - state: tip
-      map: [ "enum.AmmoVisualLayers.Tip" ]
-      color: "#00FF00"
+#    - state: tip # Orion-Remove: New sprites
+#      map: [ "enum.AmmoVisualLayers.Tip" ]
+#      color: "#00FF00"
   - type: CartridgeAmmo
     proto: BulletMagnumNeurotoxin
   - type: ChemicalAmmo

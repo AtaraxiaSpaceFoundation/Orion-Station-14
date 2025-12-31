@@ -1,0 +1,11 @@
+ent-MagazineRifle762 = магазин (7.62мм винтовочные)
+    .desc = { ent-BaseItem.desc }
+ent-MagazineRifle762Empty = магазин (7.62мм любые)
+    .desc = { ent-MagazineRifle762.desc }
+    .suffix = Пустой
+ent-MagazineRifle762Practice = магазин (7.62мм учебные)
+    .desc = { ent-MagazineRifle762.desc }
+ent-MagazineRifle762Incendiary = магазин (7.62мм зажигательные)
+    .desc = { ent-MagazineRifle762.desc }
+ent-MagazineRifle762Uranium = магазин (7.62мм урановые)
+    .desc = { ent-MagazineRifle762.desc }

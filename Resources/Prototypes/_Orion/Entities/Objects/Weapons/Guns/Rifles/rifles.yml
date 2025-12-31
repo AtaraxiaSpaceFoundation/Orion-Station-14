@@ -1,3 +1,4 @@
+# 5.45
 - type: entity
   parent: [ BaseMajorContraband, WeaponRifleAk ]
   id: WeaponRifleInteQAKM
@@ -34,13 +35,13 @@
     maxAngle: 38
     fireRate: 5.5
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Rifles/m16.ogg
+      path: /Audio/_Orion/Weapons/Guns/Rifles/556rifle.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
         startingItem: MagazineRifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
-        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/556_unload.ogg
         priority: 2
         whitelist:
           tags:
@@ -88,7 +89,7 @@
     burstCooldown: 0.35
     fireRate: 4
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Rifles/m16.ogg
+      path: /Audio/_Orion/Weapons/Guns/Rifles/556rifle.ogg
     selectedMode: Burst
     availableModes:
       - SemiAuto
@@ -98,7 +99,7 @@
       gun_magazine:
         startingItem: MagazineRifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
-        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/556_unload.ogg
         priority: 2
         whitelist:
           tags:
@@ -144,13 +145,13 @@
     minAngle: 24
     maxAngle: 45
     soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Rifles/m16.ogg
+      path: /Audio/_Orion/Weapons/Guns/Rifles/556rifle.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
         startingItem: MagazineRifle
         insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
-        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m16_unload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/556_unload.ogg
         priority: 2
         whitelist:
           tags:
@@ -174,6 +175,62 @@
     delay: 0.5
   - type: UseDelayBlockShoot
 
+# 7.62
+- type: entity
+  name: M-28
+  id: WeaponRifleM28
+  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  description: The M-28 assault rifle used to be the EarthGov army standard issue rifle.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/m28/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/m28/tiny.rsi
+  - type: Item
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/m28/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -25
+    maxAngle: -30
+    angleIncrease: -4
+  - type: Gun
+    angleDecay: 40
+    angleIncrease: 7
+    cameraRecoilScalar: 4
+    minAngle: 28
+    maxAngle: 60
+    fireRate: 4.5
+    soundGunshot:
+      path: /Audio/_Orion/Weapons/Guns/Snipers/svd.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineRifle762
+        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/762_reload.ogg
+        ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/762_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifle762
+      gun_chamber:
+        startingItem: CartridgeRifle762
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle762
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+
+# Magnum
 - type: entity
   name: BR-64
   parent: [ BaseWeaponRifle, BaseSecurityContraband ]
@@ -206,7 +263,7 @@
     slots:
       gun_magazine:
         startingItem: MagazineHeavyRifleBR64
-        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/m28_reload.ogg
+        insertSound: /Audio/_Orion/Weapons/Guns/Rifles/762_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/m28_unload.ogg
         priority: 2
         whitelist:

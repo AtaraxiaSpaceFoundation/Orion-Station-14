@@ -1,7 +1,68 @@
 - type: entity
+  id: MagazineRifle762
+  name: magazine (7.62mm rifle)
+  parent: [ BaseMagazineRifle, BaseSecurityContraband ]
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeRifle762
+    capacity: 30
+    whitelist:
+      tags:
+        - CartridgeRifle762
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Rifle/762_mag.rsi
+    scale: 0.9, 0.9
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Tag
+    tags:
+      - MagazineRifle762
+      - MagazineRifle
+
+- type: entity
+  id: MagazineRifle762Empty
+  name: magazine (7.62mm any)
+  parent: MagazineRifle762
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+
+- type: entity
+  id: MagazineRifle762Practice
+  name: magazine (7.62mm practice)
+  parent: MagazineRifle762
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeRifle762Practice
+
+- type: entity
+  id: MagazineRifle762Incendiary
+  name: magazine (7.62mm incendiary)
+  parent: MagazineRifle762
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeRifle762Incendiary
+
+- type: entity
+  id: MagazineRifle762Uranium
+  name: magazine (7.62mm uranium)
+  parent: MagazineRifle762
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeRifle762Uranium
+
+
+- type: entity
   id: MagazineHeavyRifleBR64
-  name: rifle magazine (.45 magnum)
-  parent: BaseItem
+  name: magazine (.45 magnum)
+  parent: [ BaseItem, BaseSecurityContraband ]
   components:
   - type: Tag
     tags:
@@ -35,7 +96,7 @@
 
 - type: entity
   id: MagazineHeavyRifleBR64AP
-  name: rifle magazine (.45 magnum)
+  name: magazine (.45 magnum)
   parent: MagazineHeavyRifleBR64
   components:
   - type: BallisticAmmoProvider

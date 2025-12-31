@@ -121,7 +121,7 @@
     angleIncrease: 3
     angleDecay: 16
     fireRate: 8
-    soundEmpty: /Audio/_Orion/Misc/Guns/empty_alarm.ogg
+    soundEmpty: /Audio/_Orion/Misc/Guns/error.ogg
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Pulse/ap12j.ogg
       params:

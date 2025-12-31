@@ -47,6 +47,9 @@
   id: PowerpackEnergy
 
 - type: Tag
+  id: MagazineRifle762
+
+- type: Tag
   id: MagazineRifle762Sniper
 
 - type: Tag

@@ -1,7 +1,8 @@
+# Base
 - type: entity
   id: BasePowerpackRifle
   name: "powerpack (.10 rifle)"
-  parent: BaseItem
+  parent: [ BaseItem, BaseCentcommContraband ]
   abstract: true
   components:
   - type: Sprite
@@ -51,7 +52,7 @@
 - type: entity
   id: BasePowerpackEnergy
   name: "powerpack (pulsebullet)"
-  parent: BaseItem
+  parent: [ BaseItem, BaseCentcommContraband ]
   abstract: true
   components:
   - type: Sprite

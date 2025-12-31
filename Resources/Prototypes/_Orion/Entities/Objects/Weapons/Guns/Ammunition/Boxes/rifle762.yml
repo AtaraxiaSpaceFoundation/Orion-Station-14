@@ -2,7 +2,7 @@
   abstract: true
   id: BaseMagazineBoxRifle762
   name: ammunition box (7.62mm rifle)
-  parent: BaseItem
+  parent: [ BaseItem, BaseSecurityContraband ]
   components:
   - type: EmitSoundOnPickup
     sound:

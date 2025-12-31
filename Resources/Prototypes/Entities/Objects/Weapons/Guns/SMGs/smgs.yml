@@ -94,7 +94,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/smg.ogg
     soundEmpty: # Orion-Edit
-      path: /Audio/_Orion/Weapons/Guns/Rifles/m41a_empty.ogg
+      path: /Audio/_Orion/Weapons/Guns/Rifles/rifle_empty.ogg
     defaultDirection: 1, 0
   - type: ChamberMagazineAmmoProvider
     soundRack:
@@ -173,7 +173,7 @@
   - type: Gun
     fireRate: 10
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+      path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg # Orion-Edit: New sounds
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -245,7 +245,7 @@
       maxAngle: -16
     - type: Gun
       minAngle: 21
-      maxAngle: 30 # Orion-Edit: 32 > 30
+      maxAngle: 28 # Orion-Edit: 32 > 28
       fireRate: 6
       burstFireRate: 18
       soundGunshot:

@@ -120,14 +120,16 @@
   description: A beast designed to shoulder the weight of impossible missions. Uses 5.45mm rifle ammo.  # Orion-Edit: .30 > 5.45mm
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Weapons/Guns/Rifles/annie.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/annie/big.rsi # Orion-Edit: New sprites
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+  - type: Item # Orion: New sprites
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/annie/tiny.rsi
   - type: Clothing
-    sprite: _Goobstation/Objects/Weapons/Guns/Rifles/annie.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/annie/tiny.rsi # Orion-Edit: New sprites
   - type: Gun
     availableModes:
     - FullAuto
@@ -135,12 +137,12 @@
     burstFireRate: 12
     burstCooldown: 0.8
     shotsPerBurst: 4
-# Orion start
+# Orion-Start
     minAngle: 15
     maxAngle: 58 
     angleIncrease: 3
     angleDecay: 20
-# Orion end
+# Orion-End
     fireRate: 6 # Orion-Edit: 6.5 > 6
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Rifles/ak47.ogg # Orion-Edit: New sounds

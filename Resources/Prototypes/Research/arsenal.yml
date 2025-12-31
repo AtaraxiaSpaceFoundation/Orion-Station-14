@@ -114,6 +114,7 @@
   - MagazineBoxMagnumIncendiary
   # - MagazineBoxLightRifleIncendiary # Goobstation - remove light rifle
   - MagazineBoxRifle762Incendiary # Orion: New 7.62mm
+  - MagazineRifle762Incendiary # Orion: New 7.62mm
   - MagazineBoxRifleIncendiary
   # Goobstation R&D Console rework start
   position: 2,2
@@ -183,6 +184,7 @@
   - MagazineBoxMagnumUranium
   # - MagazineBoxLightRifleUranium # Goobstation - remove light rifle
   - MagazineBoxRifle762Uranium # Orion: New 7.62mm
+  - MagazineRifle762Uranium # Orion: New 7.62mm
   - MagazineBoxRifleUranium
   - BoxShotgunUranium
   - MagazineBoxShotgunUraniumHighCaliber # Goobstation

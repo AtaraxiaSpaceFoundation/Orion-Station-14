@@ -222,9 +222,8 @@
     angleIncrease: -2
   - type: Gun
     angleDecay: 30
-    angleIncrease: 5
-    minAngle: 25
-    maxAngle: 30
+    minAngle: 21
+    maxAngle: 26W
     fireRate: 7
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/SMGs/p90.ogg
