@@ -209,7 +209,6 @@
   - type: ItemSlots
     slots:
       gun_magazine:
-        name: Magazine
         startingItem: MagazineRifle762
         insertSound: /Audio/_Orion/Weapons/Guns/Rifles/762_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Rifles/762_unload.ogg
