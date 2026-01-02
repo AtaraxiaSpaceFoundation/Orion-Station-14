@@ -36,7 +36,6 @@ public sealed class PainAlertSystem : EntitySystem
 
         SubscribeLocalEvent<NerveComponent, ComponentInit>(OnNerveSystemMapInit);
         SubscribeLocalEvent<NerveComponent, DamageChangedEvent>(OnDamageChanged);
-        SubscribeLocalEvent<AlertsComponent, ComponentShutdown>(OnAlertsShutdown);
     }
 
     private void OnNerveSystemMapInit(EntityUid uid, NerveComponent component, ComponentInit args)
@@ -54,11 +53,6 @@ public sealed class PainAlertSystem : EntitySystem
             if (_prototypeManager.TryIndex(alertId, out var alert))
                 _alerts.ClearAlert(mobUid, alert);
         }
-    }
-
-    private void OnAlertsShutdown(EntityUid uid, AlertsComponent component, ComponentShutdown args)
-    {
-        _lastUpdate.Remove(uid);
     }
 
     private void OnDamageChanged(EntityUid uid, NerveComponent nerve, ref DamageChangedEvent args)
