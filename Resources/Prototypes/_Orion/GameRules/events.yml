@@ -68,7 +68,7 @@
       path: /Audio/Announcements/attention.ogg
     weight: 6
     duration: 1
-    minimumPlayers: 15
+    minimumPlayers: 120 # Changed to 120, until fixed.
     earliestStart: 15
     reoccurrenceDelay: 50
     eventType: HostilesSpawn

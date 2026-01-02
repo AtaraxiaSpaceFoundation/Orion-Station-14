@@ -1,1 +1,1 @@
-station-ai-hologram-scurret = Форма слизнекота
+station-ai-hologram-scurret = Внешность Скюррета

@@ -104,7 +104,7 @@
     - type: ItemSlots
       slots:
         item:
-          name: Baton
+          # name: Baton # Orion-Edit: Localization
           insertVerbText: sheath-insert-verb
           ejectVerbText: sheath-eject-verb
           insertSound: /Audio/Items/sheath.ogg

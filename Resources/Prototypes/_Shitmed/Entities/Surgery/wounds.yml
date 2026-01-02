@@ -408,30 +408,35 @@
 
 - type: entity
   id: BoneDamage
+  categories: [ HideSpawnMenu ] # Orion
   components:
   - type: Trauma
     traumaType: BoneDamage
 
 - type: entity
   id: OrganDamage
+  categories: [ HideSpawnMenu ] # Orion
   components:
   - type: Trauma
     traumaType: OrganDamage
 
 - type: entity
   id: VeinsDamage
+  categories: [ HideSpawnMenu ] # Orion
   components:
   - type: Trauma
     traumaType: VeinsDamage
 
 - type: entity
   id: NerveDamage
+  categories: [ HideSpawnMenu ] # Orion
   components:
   - type: Trauma
     traumaType: NerveDamage
 
 - type: entity
   id: Dismemberment
+  categories: [ HideSpawnMenu ] # Orion
   components:
   - type: Trauma
     traumaType: Dismemberment

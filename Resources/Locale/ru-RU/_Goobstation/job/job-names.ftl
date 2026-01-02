@@ -12,8 +12,7 @@ job-name-salvagediver = спасатель
 job-name-ntr = представитель НаноТрейзен
 job-name-bs = офицер Синего Щита
 job-name-overall = общее
-job-name-tider = тайдер
-
+job-name-tider = грейтайд
 job-name-exec = служебный доступ
 
 # Navy Stuff
@@ -36,7 +35,6 @@ job-name-highcommander = Офицер Синдиката
 
 job-name-hecu = агент ХЕКУ
 job-name-governmentman = Джи-Мэн
-job-name-gman = Джи-Мэн
 
 # Misc
 
@@ -54,10 +52,10 @@ JobNavyOfficer = офицер ЦК
 JobNavyOfficerUndercover = офицер под прикрытием
 JobNavyCaptain = капитан ВКФ
 JobDiplomat = дипломат НаноТрейзен
+JobRoboticist = робототехник
 JobGovernmentMan = Джи-Мэн
-JobConquest = конквест
+JobConquest = Конквест
 JobInspector = инспектор ЦК
 JobMercenaryCaptain = капитан Наёмников
-JobRoboticist = робототехник
 JobRadioHost = управляющий радиостанцией
 JobVirologist = вирусолог

@@ -7,14 +7,14 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 alerts-changeling-chemicals-name = Химикаты
-alerts-changeling-chemicals-desc = Трать химикаты, чтобы использовать способности. Постепенно восстанавливаются.
+alerts-changeling-chemicals-desc = Трать химикаты для использования способностей. Постепенно восстанавливаются.
 alerts-changeling-biomass-name = Биомасса
 alerts-changeling-biomass-desc = Это твоё здоровье. Если достигнет 0 — [color=red]конец игры[/color]. Поглощай гуманоидов, чтобы восстановить часть биомассы.
 alerts-changeling-fleshmend-name = Восстановить плоть
-alerts-changeling-fleshmend-desc = Ушибы быстро залечиваются! Ожоги и удушье лечатся медленнее. [color=red]Эффекты прекращаются, когда вы в огне или мертвы.[/color]
-alerts-changeling-adrenaline-name = Адреналин
-alerts-changeling-adrenaline-desc = Оглушение, нокдаун и большинство других методов выведения из строя не дают никакого эффекта!
+alerts-changeling-fleshmend-desc = Ушибы быстро залечиваются! Ожоги и удушье лечатся медленнее. [color=red]Исцеление прекратится в случае поджога.[/color]
+alerts-changeling-adrenaline-name = Резерв адреналина
+alerts-changeling-adrenaline-desc = Иммунитет к оглушению, сбиванию с ног и большинству эффектов обездвиживания!
 alerts-changeling-panacea-name = Панацея
-alerts-changeling-panacea-desc = Нефизические повреждения исцеляются! Болезни, химические вещества и воздействие наркотиков выводятся из организма. [color=red]Эффекты прекращаются, когда вы в огне или мертвы.[/color]
-alerts-changeling-voidadapt-name = Адаптация к вакууму
-alerts-changeling-voidadapt-desc = Адаптация к экстремально низким температурам. [color=yellow]Химическая регенерация снижена на 25%[/color]. [color=red]Эффекты прекращаются, когда вы в огне.[/color]
+alerts-changeling-panacea-desc = Нефизический урон исцеляется! Болезни, химикаты и воздействия наркотиков очищаются. [color=red]Эффекты прекратятся после контакта с огнём или смерти.[/color]
+alerts-changeling-voidadapt-name = Вакуумная адаптация
+alerts-changeling-voidadapt-desc = Происходит адаптация к экстремальным условиям. [color=yellow]Химическая регенерация снижена на 25%[/color]. [color=red]Эффекты прекратятся после контакта с огнём.[/color]

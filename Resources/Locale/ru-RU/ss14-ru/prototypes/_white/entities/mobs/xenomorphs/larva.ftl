@@ -3,5 +3,5 @@ ent-BaseMobXenomorphLarva = грудолом
 ent-MobXenomorphLarva = { ent-BaseMobXenomorphLarva }
     .desc = { ent-BaseMobXenomorphLarva.desc }
 ent-MobXenomorphLarvaDungeon = { ent-BaseMobXenomorphLarva }
-    .suffix = Подземелье
     .desc = { ent-BaseMobXenomorphLarva.desc }
+    .suffix = Подземелья

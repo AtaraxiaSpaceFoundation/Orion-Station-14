@@ -215,7 +215,11 @@ namespace Content.Server.VendingMachines
 
             Popup.PopupEntity(Loc.GetString("vending-machine-restock-done-self", ("target", uid)), args.Args.User, args.Args.User, PopupType.Medium);
             var othersFilter = Filter.PvsExcept(args.Args.User);
-            Popup.PopupEntity(Loc.GetString("vending-machine-restock-done-others", ("user", Identity.Entity(args.User, EntityManager)), ("target", uid)), args.Args.User, othersFilter, true, PopupType.Medium);
+            // Orion-Edit-Start: Localization
+            Popup.PopupEntity(Loc.GetString("vending-machine-restock-done", // vending-machine-restock-done-others -> vending-machine-restock-done
+            ("user", Identity.Entity(args.User, EntityManager)),
+            ("target", uid)), args.Args.User, othersFilter, true, PopupType.Medium);
+            // Orion-Edit-End
 
             Audio.PlayPvs(restockComponent.SoundRestockDone, uid, AudioParams.Default.WithVolume(-2f).WithVariation(0.2f));
 

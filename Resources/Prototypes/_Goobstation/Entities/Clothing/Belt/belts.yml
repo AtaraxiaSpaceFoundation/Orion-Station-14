@@ -187,7 +187,7 @@
   - type: ItemSlots
     slots:
       item:
-        name: Sabre
+        # name: Sabre # Orion-Edit: Localization
         insertVerbText: sheath-insert-verb
         ejectVerbText: sheath-eject-verb
         insertSound: /Audio/Items/sheath.ogg
@@ -236,7 +236,7 @@
   - type: ItemSlots
     slots:
       item:
-        name: Handgun
+        # name: Handgun # Orion-Edit: Localization
         whitelist:
           tags:
           - Sidearm
@@ -261,7 +261,7 @@
       - SurgeryTool
       - SolutionTransfer
       - SlimeExtract
-      
+
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband]
   id: ClothingBeltMilitaryWebbingBSOFilled

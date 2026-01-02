@@ -14,10 +14,10 @@
 chat-speech-verb-name-gondola = Гондола
 chat-speech-verb-gondola-1 = смотрит
 chat-speech-verb-gondola-2 = дышит
-chat-speech-verb-name-dead = Мёртвец
+chat-speech-verb-name-dead = Мёртв
 chat-speech-verb-dead-1 = солит
 chat-speech-verb-dead-2 = злится
-chat-speech-verb-dead-3 = справляется
+chat-speech-verb-dead-3 = борится
 chat-speech-verb-dead-4 = бесится
 chat-speech-verb-dead-5 = скорбит
 chat-speech-verb-dead-6 = жалуется

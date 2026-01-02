@@ -30,3 +30,6 @@ ent-SiikMaasTranslatorImplanter = имплантер "переводчик Си�
     .desc = { ent-BaseTranslatorImplanter.desc }
 ent-MarishTranslatorImplanter = имплантер "переводчик Мариш"
     .desc = { ent-BaseTranslatorImplanter.desc }
+ent-GruntishTranslatorImplanter = { ent-BaseTranslatorImplanter }
+    .suffix = Переводчик Грунтич
+    .desc = { ent-BaseTranslatorImplanter.desc }

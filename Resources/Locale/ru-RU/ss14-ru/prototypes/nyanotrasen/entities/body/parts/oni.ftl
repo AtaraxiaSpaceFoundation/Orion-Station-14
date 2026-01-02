@@ -1,6 +1,6 @@
 ent-PartOni = { ent-PartHuman }
     .desc = { ent-PartHuman.desc }
-ent-HeadOni = голоа Они
+ent-HeadOni = голова они
     .desc = { ent-PartOni.desc }
 ent-ChestOni = грудь Они
     .desc = { ent-PartOni.desc }

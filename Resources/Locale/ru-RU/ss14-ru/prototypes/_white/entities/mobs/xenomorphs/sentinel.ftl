@@ -3,5 +3,5 @@ ent-BaseMobXenomorphSentinel = ксеноморф плевальщик
 ent-MobXenomorphSentinel = { ent-BaseMobXenomorphSentinel }
     .desc = { ent-BaseMobXenomorphSentinel.desc }
 ent-MobXenomorphSentinelDungeon = { ent-BaseMobXenomorphSentinel }
-    .suffix = Подземелье
     .desc = { ent-BaseMobXenomorphSentinel.desc }
+    .suffix = Подземелья
