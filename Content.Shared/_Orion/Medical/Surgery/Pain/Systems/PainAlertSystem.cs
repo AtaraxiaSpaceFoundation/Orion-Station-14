@@ -28,6 +28,7 @@ public sealed class PainAlertSystem : EntitySystem
     private static readonly ProtoId<AlertPrototype>[] PainAlerts = ["Pain0", "Pain1", "Pain2", "Pain3"];
 
     private Dictionary<EntityUid, double> _lastUpdate = new();
+    private const float PainAlertClearDelay = 5f;
 
     public override void Initialize()
     {
@@ -35,6 +36,7 @@ public sealed class PainAlertSystem : EntitySystem
 
         SubscribeLocalEvent<NerveComponent, ComponentInit>(OnNerveSystemMapInit);
         SubscribeLocalEvent<NerveComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<AlertsComponent, ComponentShutdown>(OnAlertsShutdown);
     }
 
     private void OnNerveSystemMapInit(EntityUid uid, NerveComponent component, ComponentInit args)
@@ -52,6 +54,11 @@ public sealed class PainAlertSystem : EntitySystem
             if (_prototypeManager.TryIndex(alertId, out var alert))
                 _alerts.ClearAlert(mobUid, alert);
         }
+    }
+
+    private void OnAlertsShutdown(EntityUid uid, AlertsComponent component, ComponentShutdown args)
+    {
+        _lastUpdate.Remove(uid);
     }
 
     private void OnDamageChanged(EntityUid uid, NerveComponent nerve, ref DamageChangedEvent args)
@@ -101,8 +108,8 @@ public sealed class PainAlertSystem : EntitySystem
         }
         else
         {
-            // Clear alert if no pain after 5 seconds
-            if (!_lastUpdate.TryGetValue(mobUid, out var value) || !((_timing.CurTime.TotalSeconds - value) >= 5))
+            // Clear alert if no pain after time passed
+            if (!_lastUpdate.TryGetValue(mobUid, out var value) || (_timing.CurTime.TotalSeconds - value) < PainAlertClearDelay)
                 return;
 
             _alerts.ClearAlertCategory(mobUid, "Pain");
