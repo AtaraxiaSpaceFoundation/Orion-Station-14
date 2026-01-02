@@ -268,7 +268,7 @@
   - type: ItemSlots # Goobstation
     slots:
       item:
-        # name: clothing-boots-sidearm # CorvaxGoob-Loc-in-UI
+        # name: clothing-boots-sidearm # Orion-Edit: Localization
         whitelist:
           tags:
           - Knife

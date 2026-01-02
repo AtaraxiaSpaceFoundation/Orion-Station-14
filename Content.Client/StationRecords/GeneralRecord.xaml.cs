@@ -51,8 +51,6 @@ namespace Content.Client.StationRecords;
 [GenerateTypedNameReferences]
 public sealed partial class GeneralRecord : Control
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!; // Orion
-
     public Action<uint>? OnDeletePressed;
     public GeneralRecord(GeneralStationRecord record, bool canDelete, uint? id)
     {

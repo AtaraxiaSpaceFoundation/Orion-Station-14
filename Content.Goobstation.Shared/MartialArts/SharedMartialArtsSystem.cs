@@ -435,7 +435,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             return;
         var userName = Identity.Entity(user, EntityManager);
         var targetName = Identity.Entity(target, EntityManager);
-        // CorvaxGoob-Localization-start
+        // Orion-Edit-Start: Localization
         string locComboName;
         if (Loc.TryGetString(comboName, out var name))
             locComboName = name;
@@ -454,7 +454,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             ("move", locComboName)), // comboName -> locComboName
             target,
             target);
-        // CorvaxGoob-Localization-end
+        // Orion-Edit-End
     }
 
     #endregion
