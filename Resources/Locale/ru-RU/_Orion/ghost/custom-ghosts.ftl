@@ -2,8 +2,8 @@ custom-ghost-personal-name = Эксклюзивный призрак
 custom-ghost-personal-desc = Доступен только вам.
 
 custom-ghost-personal-placeholder-name = А где?
-custom-ghost-personal-placeholder-desc = Кастумный призрак, которым вы пользовались ранее, был сочтён чрезмерно большим или вырвиглазным, и был удалён.
-        Вы всё ещё можете получить нового кастумного призрака - для этого обратитесь к кодербасу, либо сами откройте PR в репозитории проекта.
+custom-ghost-personal-placeholder-desc = Ваш личный призрак, которым вы пользовались ранее, был сочтён чрезмерно большим или вырвиглазным, и был удалён.
+        Вы всё ещё можете получить нового личного призрака - для этого обратитесь к кодербасу, либо сами откройте PR в репозитории проекта.
 
 custom-ghost-default-name = Белый призрак
 custom-ghost-default-desc = Без всяких свистелок и перделок. Красота в простоте.
@@ -30,7 +30,7 @@ custom-ghost-heart-name = Сердечко
 custom-ghost-heart-desc = Спойлеры к седьмой главе.
 
 custom-ghost-king-name = Королевский призрак
-custom-ghost-king-desc = НННЫЫАААААА!
+custom-ghost-king-desc = Царь во дворца, царь во дворца!
 
 custom-ghost-blazeit-name = Укуренный призрак
 custom-ghost-blazeit-desc = Минздрав НТ предупреждает: курение вредит вашей производительности.
@@ -65,5 +65,5 @@ custom-ghost-parrot-desc = Умом и сообразительностью не
 custom-ghost-discocat-name = Диско-кот
 custom-ghost-discocat-desc = Лучшая картинка с котом по мнению пользователей Одноклассников.
 
-custom-ghost-disappointment-name = ...
-custom-ghost-disappointment-desc = А можно не надо?
+custom-ghost-disappointment-name = Туалет
+custom-ghost-disappointment-desc = Сияй.

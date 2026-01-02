@@ -14,5 +14,3 @@ ent-ClothingOuterCoatRDPurpleOpened = экспериментальный лаб�
     .desc = { ent-ClothingOuterStorageFoldableBaseOpened.desc }
 ent-ClothingOuterCoatHoPLong = длинное пальто главы персонала
     .desc = Стильное длинное пальто Главы Персонала.
-ent-ClothingOuterSlasherApron = фартук мясника
-    .desc = Необычный фартук для тех, кому нравится нести в этот мир боль и страдание.

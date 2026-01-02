@@ -57,6 +57,5 @@ JobGovernmentMan = Джи-Мэн
 JobConquest = Конквест
 JobInspector = инспектор ЦК
 JobMercenaryCaptain = капитан Наёмников
-JobRoboticist = робототехник
 JobRadioHost = управляющий радиостанцией
 JobVirologist = вирусолог

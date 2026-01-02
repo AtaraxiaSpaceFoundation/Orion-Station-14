@@ -149,4 +149,4 @@ shoes-examine-selfaware =
 
 comp-hands-examine-empty-selfaware = Вы ничего не держите.
 comp-hands-examine-selfaware = Вы держите { $items }.
-humanoid-appearance-component-examine-selfaware = Вы { INDEFINITE($age) } { $age } { $species }.
+humanoid-appearance-component-examine-selfaware = Вы { $species } { $age }.
