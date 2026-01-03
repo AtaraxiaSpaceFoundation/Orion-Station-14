@@ -454,17 +454,13 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
                 // Orion-Start
                 if (clothingMode == ClothingDisplayMode.ShowUnderwearOnly)
                 {
-                    if (!_prototypeManager.TryIndex(loadoutProto.StartingGear, out var gear))
-                        continue;
-
-                    if (gear is not IEquipmentLoadout equipGear)
-                        continue;
-
                     foreach (var slotName in UnderwearSlots)
                     {
-                        var itemType = equipGear.GetGear(slotName);
-                        if (string.IsNullOrEmpty(itemType))
+                        if (!loadoutProto.Equipment.TryGetValue(slotName, out var itemType) || string.IsNullOrEmpty(itemType))
                             continue;
+
+                        if (_inventory.TryUnequip(uid, slotName, out var unequipped, silent: true, force: true, reparent: false))
+                            EntityManager.DeleteEntity(unequipped.Value);
 
                         var item = EntityManager.SpawnEntity(itemType, MapCoordinates.Nullspace);
                         _inventory.TryEquip(uid, item, slotName, true, true);

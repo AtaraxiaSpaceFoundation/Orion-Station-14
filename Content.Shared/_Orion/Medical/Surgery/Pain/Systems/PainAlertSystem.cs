@@ -7,6 +7,7 @@ using Content.Shared.Damage;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Orion.Medical.Surgery.Pain.Systems;
 
@@ -22,8 +23,12 @@ public sealed class PainAlertSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly ProtoId<AlertPrototype>[] PainAlerts = ["Pain0", "Pain1", "Pain2", "Pain3"];
+
+    private Dictionary<EntityUid, double> _lastUpdate = new();
+    private const float PainAlertClearDelay = 5f;
 
     public override void Initialize()
     {
@@ -35,11 +40,9 @@ public sealed class PainAlertSystem : EntitySystem
 
     private void OnNerveSystemMapInit(EntityUid uid, NerveComponent component, ComponentInit args)
     {
-        EntityUid mobUid;
-        if (TryComp<BodyPartComponent>(uid, out var bodyPart) && bodyPart.Body is { } bodyUid)
-            mobUid = bodyUid;
-        else
-            mobUid = uid;
+        var mobUid = TryComp<BodyPartComponent>(uid, out var bodyPart) && bodyPart.Body is { } bodyUid
+            ? bodyUid
+            : uid;
 
         if (!HasComp<AlertsComponent>(mobUid))
             return;
@@ -65,11 +68,9 @@ public sealed class PainAlertSystem : EntitySystem
             return;
 
         // Find the parent mob that should have the AlertsComponent
-        EntityUid mobUid;
-        if (TryComp<BodyPartComponent>(uid, out var bodyPart) && bodyPart.Body is { } bodyUid)
-            mobUid = bodyUid;
-        else
-            mobUid = uid;
+        var mobUid = TryComp<BodyPartComponent>(uid, out var bodyPart) && bodyPart.Body is { } bodyUid
+            ? bodyUid
+            : uid;
 
         if (!HasComp<AlertsComponent>(mobUid))
             return;
@@ -95,11 +96,18 @@ public sealed class PainAlertSystem : EntitySystem
                 ? 3 // Max severity in critical state
                 : (int) Math.Clamp(Math.Floor((totalPain - 1f) / 25f), 0, 3);
 
+            _lastUpdate[mobUid] = _timing.CurTime.TotalSeconds;
+
             _alerts.ShowAlert(mobUid, PainAlerts[alertIndex]);
         }
         else
         {
+            // Clear alert if no pain after time passed
+            if (!_lastUpdate.TryGetValue(mobUid, out var value) || (_timing.CurTime.TotalSeconds - value) < PainAlertClearDelay)
+                return;
+
             _alerts.ClearAlertCategory(mobUid, "Pain");
+            _lastUpdate.Remove(mobUid);
         }
     }
 }
