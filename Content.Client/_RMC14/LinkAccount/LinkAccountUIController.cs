@@ -82,6 +82,7 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
         gui.CharacterPreview.PatronPerks.Visible = _linkAccount.CanViewPatronPerks();
     }
 
+/* // Orion-Edit: Removed because don't give a fuck about Patron
     private void OnLobbyMessageReceived(SharedRMCDisplayLobbyMessageEvent message)
     {
         if (UIManager.ActiveScreen is not LobbyGui gui)
@@ -91,6 +92,7 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
         var msg = FormattedMessage.EscapeText(message.Message);
         gui.LobbyMessageLabel.SetMarkupPermissive($"[font size=20]Lobby message by: {user}\n{msg}[/font]");
     }
+*/
 
     public void ToggleWindow()
     {
@@ -254,12 +256,12 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
 
     public void OnSystemLoaded(LinkAccountSystem system)
     {
-        system.LobbyMessageReceived += OnLobbyMessageReceived;
+//        system.LobbyMessageReceived += OnLobbyMessageReceived; // Orion-Edit: Removed because don't give a fuck about Patron
     }
 
     public void OnSystemUnloaded(LinkAccountSystem system)
     {
-        system.LobbyMessageReceived -= OnLobbyMessageReceived;
+//        system.LobbyMessageReceived -= OnLobbyMessageReceived; // Orion-Edit: Removed because don't give a fuck about Patron
     }
 
     public override void FrameUpdate(FrameEventArgs args)
