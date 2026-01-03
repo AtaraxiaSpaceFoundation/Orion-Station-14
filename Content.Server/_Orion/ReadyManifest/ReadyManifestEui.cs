@@ -1,5 +1,7 @@
 using Content.Server.EUI;
 using Content.Shared._Orion.ReadyManifest;
+using Content.Shared.Roles;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Orion.ReadyManifest;
 
@@ -23,7 +25,8 @@ public sealed class ReadyManifestEui : BaseEui
     public override ReadyManifestEuiState GetNewState()
     {
         var entries = _readyManifest.GetReadyManifest();
-        return new ReadyManifestEuiState(entries);
+        var dictionary = new Dictionary<ProtoId<JobPrototype>, int>(entries);
+        return new ReadyManifestEuiState(dictionary);
     }
 
     public override void Closed()

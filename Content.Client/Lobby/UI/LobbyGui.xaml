@@ -69,7 +69,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                                StyleClasses="LabelBig" HorizontalExpand="True" />
                                         <!-- Orion-Start -->
                                         <Button Name="ManifestButton" Access="Public"
-                                                Text="Manifest"
+                                                Text="{Loc 'ui-lobby-manifest-button'}"
                                                 StyleClasses="ButtonBig" MinWidth="137" />
                                         <!-- Orion-End -->
                                         <Button Name="ReadyButton" Access="Public" ToggleMode="True"

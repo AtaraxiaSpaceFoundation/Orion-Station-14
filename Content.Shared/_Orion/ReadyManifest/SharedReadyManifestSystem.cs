@@ -6,10 +6,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Orion.ReadyManifest;
 
 [Serializable, NetSerializable]
-public sealed class RequestReadyManifestMessage : EntityEventArgs
-{
-    public NetEntity Id { get; }
-}
+public sealed class RequestReadyManifestMessage : EntityEventArgs;
 
 [Serializable, NetSerializable]
 public sealed class ReadyManifestEuiState : EuiStateBase

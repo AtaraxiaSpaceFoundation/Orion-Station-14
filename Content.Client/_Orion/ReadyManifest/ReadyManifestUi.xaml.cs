@@ -6,7 +6,6 @@ using Robust.Client.GameObjects;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Orion.ReadyManifest;
@@ -16,16 +15,14 @@ public sealed partial class ReadyManifestUi : DefaultWindow
 {
     private readonly IPrototypeManager _prototypeManager;
     private readonly Dictionary<string, BoxContainer> _jobCategories;
-    private readonly SpriteSystem _sprite;
+    private readonly SpriteSystem _spriteSystem;
 
     public ReadyManifestUi()
     {
         RobustXamlLoader.Load(this);
         _jobCategories = new Dictionary<string, BoxContainer>();
         _prototypeManager = IoCManager.Resolve<IPrototypeManager>();
-        _sprite = IoCManager.Resolve<SpriteSystem>();
-        IoCManager.Resolve<ISharedPlayerManager>();
-        IoCManager.Resolve<IEntitySystemManager>();
+        _spriteSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<SpriteSystem>();
     }
 
     // Currently rebuilds the UI every time it's updated, should probably split department lookup and job counts into separate functions
@@ -120,7 +117,7 @@ public sealed partial class ReadyManifestUi : DefaultWindow
                 }
 
                 var jobIcon = _prototypeManager.Index(job.Icon);
-                icon.Texture = _sprite.Frame0(jobIcon.Icon);
+                icon.Texture = _spriteSystem.Frame0(jobIcon.Icon);
                 jobContainer.AddChild(icon);
                 jobContainer.AddChild(title);
                 gridContainer.AddChild(jobContainer);

@@ -25,6 +25,8 @@ public sealed class ReadyManifestSystem : EntitySystem
     private readonly Dictionary<ICommonSession, ReadyManifestEui> _openEuis = new();
     private Dictionary<ProtoId<JobPrototype>, int> _jobCounts = new();
 
+    private const int MinJobWeightForAutoInclude = 10;
+
     public override void Initialize()
     {
         SubscribeNetworkEvent<RequestReadyManifestMessage>(OnRequestReadyManifest);
@@ -78,7 +80,7 @@ public sealed class ReadyManifestSystem : EntitySystem
             {
                 if (_jobCounts.TryGetValue(job, out var value))
                 {
-                    _jobCounts[job] = --value;
+                    _jobCounts[job] = Math.Max(0, value - 1);
                 }
             }
         }
@@ -98,7 +100,9 @@ public sealed class ReadyManifestSystem : EntitySystem
             if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
                 continue;
 
-            var profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
+            if (preferences.SelectedCharacter is not HumanoidCharacterProfile profile)
+                continue;
+
             var profileJobs = FilterPlayerJobs(profile);
             foreach (var jobId in profileJobs)
             {
@@ -115,15 +119,15 @@ public sealed class ReadyManifestSystem : EntitySystem
         List<ProtoId<JobPrototype>> priorityJobs = [];
         foreach (var job in jobs)
         {
-            var priority = profile.JobPriorities[job];
-            if (priority == JobPriority.High || (_prototypeManager.Index(job).Weight >= 10 && priority > JobPriority.Never))
+            var priority = profile.JobPriorities[job.Id];
+            if (priority == JobPriority.High || (_prototypeManager.Index(job).Weight >= MinJobWeightForAutoInclude && priority > JobPriority.Never))
                 priorityJobs.Add(job);
         }
 
         return priorityJobs;
     }
 
-    public Dictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
+    public IReadOnlyDictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
     {
         return _jobCounts;
     }
@@ -163,6 +167,5 @@ public sealed class ReadyManifestSystem : EntitySystem
             return;
 
         _openEuis.Remove(session);
-        eui.Close();
     }
 }
