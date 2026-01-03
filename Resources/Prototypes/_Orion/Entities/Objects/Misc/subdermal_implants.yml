@@ -21,3 +21,4 @@
   components:
   - type: Rattle
     radioChannel: InteQ
+    reportCoordinates: true

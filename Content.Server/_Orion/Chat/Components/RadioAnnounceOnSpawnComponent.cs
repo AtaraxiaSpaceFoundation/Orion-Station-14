@@ -14,13 +14,13 @@ public sealed partial class RadioAnnounceOnSpawnComponent : Component
     ///     Radio channels to announce on.
     /// </summary>
     [DataField(required: true)]
-    public ProtoId<RadioChannelPrototype>[] AnnouncementChannels = [];
+    public ProtoId<RadioChannelPrototype>[] AnnouncementChannels = default!;
 
     /// <summary>
     ///     Locale id of the announcement message.
     /// </summary>
     [DataField(required: true)]
-    public LocId Message = string.Empty;
+    public LocId Message;
 
     /// <summary>
     ///     Locale id of the announcement's sender name.

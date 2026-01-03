@@ -1,6 +1,7 @@
 using Content.Server._Orion.Chat.Components;
 using Content.Server.Radio.Components;
 using Content.Server.Radio.EntitySystems;
+using Robust.Shared.Map;
 
 namespace Content.Server._Orion.Chat.Systems;
 
@@ -22,7 +23,7 @@ public sealed class RadioAnnounceOnSpawnSystem : EntitySystem
         var message = Loc.GetString(comp.Message, ("name", entityName));
 
         var componentName = Loc.GetString(comp.Sender);
-        var sender = EntityManager.CreateEntityUninitialized(null, out _);
+        var sender = Spawn(null, MapCoordinates.Nullspace);
 
         _metaData.SetEntityName(sender, componentName); // Rename spawned entity
 
