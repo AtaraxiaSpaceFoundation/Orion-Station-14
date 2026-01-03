@@ -46,9 +46,8 @@ public sealed class ReadyManifestSystem : EntitySystem
     {
         if (args.SenderSession is not { } sessionCast
             || !_configManager.GetCVar(CCVars.CrewManifestWithoutEntity))
-        {
             return;
-        }
+
         BuildReadyManifest();
         OpenEui(sessionCast, args.SenderSession.AttachedEntity);
     }
@@ -58,24 +57,18 @@ public sealed class ReadyManifestSystem : EntitySystem
         var userId = ev.PlayerSession.Data.UserId;
 
         if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-        {
             return;
-        }
 
-        HumanoidCharacterProfile profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
+        var profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
         var profileJobs = FilterPlayerJobs(profile);
 
         if (_gameTicker.PlayerGameStatuses[userId] == PlayerGameStatus.ReadyToPlay)
         {
             foreach (var job in profileJobs)
             {
-                if (_jobCounts.ContainsKey(job))
+                if (!_jobCounts.TryAdd(job, 1))
                 {
                     _jobCounts[job]++;
-                }
-                else
-                {
-                    _jobCounts.Add(job, 1);
                 }
             }
         }
@@ -83,9 +76,9 @@ public sealed class ReadyManifestSystem : EntitySystem
         {
             foreach (var job in profileJobs)
             {
-                if (_jobCounts.ContainsKey(job))
+                if (_jobCounts.TryGetValue(job, out var value))
                 {
-                    _jobCounts[job]--;
+                    _jobCounts[job] = --value;
                 }
             }
         }
@@ -99,43 +92,34 @@ public sealed class ReadyManifestSystem : EntitySystem
 
         foreach (var (userId, status) in _gameTicker.PlayerGameStatuses)
         {
-            if (status == PlayerGameStatus.ReadyToPlay)
+            if (status != PlayerGameStatus.ReadyToPlay)
+                continue;
+
+            if (!_prefsManager.TryGetCachedPreferences(userId, out var preferences))
+                continue;
+
+            var profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
+            var profileJobs = FilterPlayerJobs(profile);
+            foreach (var jobId in profileJobs)
             {
-                HumanoidCharacterProfile profile;
-                if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-                {
-                    profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
-                    var profileJobs = FilterPlayerJobs(profile);
-                    foreach (var jobId in profileJobs)
-                    {
-                        if (jobCounts.ContainsKey(jobId))
-                        {
-                            jobCounts[jobId]++;
-                        }
-                        else
-                        {
-                            jobCounts.Add(jobId, 1);
-                        }
-                    }
-                }
+                if (!jobCounts.TryAdd(jobId, 1))
+                    jobCounts[jobId]++;
             }
         }
         _jobCounts = jobCounts;
     }
 
-
     private List<ProtoId<JobPrototype>> FilterPlayerJobs(HumanoidCharacterProfile profile)
     {
         var jobs = profile.JobPriorities.Keys.Select(k => new ProtoId<JobPrototype>(k)).ToList();
-        List<ProtoId<JobPrototype>> priorityJobs = new();
+        List<ProtoId<JobPrototype>> priorityJobs = [];
         foreach (var job in jobs)
         {
             var priority = profile.JobPriorities[job];
             if (priority == JobPriority.High || (_prototypeManager.Index(job).Weight >= 10 && priority > JobPriority.Never))
-            {
                 priorityJobs.Add(job);
-            }
         }
+
         return priorityJobs;
     }
 
@@ -146,12 +130,8 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     public void OpenEui(ICommonSession session, EntityUid? owner = null)
     {
-
-
         if (_openEuis.ContainsKey(session))
-        {
             return;
-        }
 
         var eui = new ReadyManifestEui(owner, this);
         _openEuis.Add(session, eui);
@@ -179,10 +159,10 @@ public sealed class ReadyManifestSystem : EntitySystem
             return;
         }
 
-        if (eui.Owner == owner)
-        {
-            _openEuis.Remove(session);
-            eui.Close();
-        }
+        if (eui.Owner != owner)
+            return;
+
+        _openEuis.Remove(session);
+        eui.Close();
     }
 }

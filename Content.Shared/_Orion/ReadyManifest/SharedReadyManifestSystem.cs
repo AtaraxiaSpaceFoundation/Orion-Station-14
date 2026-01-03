@@ -9,11 +9,6 @@ namespace Content.Shared._Orion.ReadyManifest;
 public sealed class RequestReadyManifestMessage : EntityEventArgs
 {
     public NetEntity Id { get; }
-
-    public RequestReadyManifestMessage()
-    {
-        //Id = id;
-    }
 }
 
 [Serializable, NetSerializable]

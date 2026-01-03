@@ -23,7 +23,7 @@ public sealed class ReadyManifestEui : BaseEui
     public override ReadyManifestEuiState GetNewState()
     {
         var entries = _readyManifest.GetReadyManifest();
-        return new(entries);
+        return new ReadyManifestEuiState(entries);
     }
 
     public override void Closed()

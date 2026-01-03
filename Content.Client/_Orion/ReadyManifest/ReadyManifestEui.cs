@@ -12,7 +12,7 @@ public sealed class ReadyManifestEui : BaseEui
 
     public ReadyManifestEui()
     {
-        _window = new();
+        _window = new ReadyManifestUi();
 
         _window.OnClose += () =>
         {
