@@ -115,4 +115,4 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.8
-  - type: GunRequiresWield 
+  - type: GunRequiresWield
