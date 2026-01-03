@@ -38,14 +38,9 @@
       prob: 0.50
     - id: CombatMedipen
       prob: 0.50
-    - !type:NestedSelector
+    - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: 0, 0
-      tableId: PlasmaSwordTypeEntityTable
-
-- type: entityTable
-  id: PlasmaSwordTypeEntityTable
-  table: !type:GroupSelector
-    children:
-    - id: PlasmaSword
-    - id: PlasmaSwordAlt
+        range: 1, 1
+      children:
+      - id: PlasmaSword
+      - id: PlasmaSwordAlt

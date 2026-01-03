@@ -4,7 +4,7 @@
   description: job-description-inteq-vanguard-leader
   playTimeTracker: InteQVanguardLeader
   setPreference: false
-  icon: "JobIconInteQ"
+  icon: "JobIconInteQLeader"
   supervisors: job-supervisors-hire
   canBeAntag: false
   access:
@@ -24,3 +24,37 @@
   access:
   - InteQVanguard
   - Maintenance
+
+- type: job # !!!ERT!!!
+  id: ERTInteQVanguardLeader
+  name: job-name-ert-inteq-vanguard-leader
+  description: job-description-inteq-vanguard-leader
+  playTimeTracker: JobERTInteQVanguardLeader
+  setPreference: false
+  icon: "JobIconInteQLeader"
+  supervisors: job-supervisors-hire
+  canBeAntag: false
+  accessGroups:
+  - InteQ
+  - AllAccess
+  access:
+  - CentralCommand
+  - NanotrasenRepresentative
+  - BlueshieldOfficer
+
+- type: job # !!!ERT!!!
+  id: ERTInteQVanguard
+  name: job-name-ert-inteq-vanguard
+  description: job-description-inteq-vanguard
+  playTimeTracker: JobERTInteQVanguard
+  setPreference: false
+  icon: "JobIconInteQ"
+  supervisors: job-supervisors-hire
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - InteQVanguard
+  - CentralCommand
+  - NanotrasenRepresentative
+  - BlueshieldOfficer

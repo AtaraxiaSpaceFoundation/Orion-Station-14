@@ -3,6 +3,9 @@ job-description-inteq-vanguard-leader = Доведите этих ребят д�
 job-name-inteq-vanguard = авангард
 job-description-inteq-vanguard = Следуйте за целью.
 
+job-name-ert-inteq-vanguard-leader = ОБР коммандер авангарда
+job-name-ert-inteq-vanguard = ОБР авангард
+
 job-title-vanguard-leader = Коммандер Авангарда
 job-title-vanguard = Авангард
 

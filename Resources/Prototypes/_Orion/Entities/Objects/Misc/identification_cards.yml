@@ -9,9 +9,8 @@
       state: brown
     - sprite: _Orion/Objects/Misc/id_cards.rsi
       state: sword
-  - type: IdCard
-    jobTitle: job-title-vanguard-leader
-    jobIcon: JobIconInteQ
+  - type: PresetIdCard
+    job: InteQVanguardLeader
   - type: Access
     groups:
     - InteQ
@@ -29,9 +28,8 @@
       state: brown
     - sprite: _Orion/Objects/Misc/id_cards.rsi
       state: sword
-  - type: IdCard
-    jobTitle: job-title-vanguard
-    jobIcon: JobIconInteQ
+  - type: PresetIdCard
+    job: InteQVanguard
   - type: Access
     tags:
     - InteQVanguard
@@ -42,28 +40,16 @@
   id: ERTInteQVanguardLeaderIDCard
   categories: [ HideSpawnMenu ]
   components:
-  - type: Access
-    groups:
-    - AllAccess
-    - InteQ
-    tags:
-    - CentralCommand
-    - NanotrasenRepresentative
-    - BlueshieldOfficer
+  - type: PresetIdCard
+    job: ERTInteQVanguardLeader
 
 - type: entity # !!!ERT!!!
   parent: InteQVanguardIDCard
   id: ERTInteQVanguardIDCard
   categories: [ HideSpawnMenu ]
   components:
-  - type: Access
-    groups:
-    - AllAccess
-    tags:
-    - InteQVanguard
-    - CentralCommand
-    - NanotrasenRepresentative
-    - BlueshieldOfficer
+  - type: PresetIdCard
+    job: ERTInteQVanguard
 
 - type: entity
   parent: CBURNIDcard

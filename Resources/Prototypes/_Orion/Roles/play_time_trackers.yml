@@ -5,6 +5,12 @@
   id: InteQVanguard
 
 - type: playTimeTracker
+  id: JobERTInteQVanguardLeader
+
+- type: playTimeTracker
+  id: JobERTInteQVanguard
+
+- type: playTimeTracker
   id: JobCBURNLeader
 
 - type: playTimeTracker
