@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseMajorContraband, BaseWeaponLauncher ]
+  parent: [BaseWeaponLauncher, BaseMajorContraband]
   id: WeaponLauncherGL70
   name: GL-70
   description: The GL-70 is the standard grenade launcher used by the Earth Army for area denial and big explosions.

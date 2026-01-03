@@ -44,6 +44,8 @@
   - type: Tag
     tags:
       - PowerpackRifle
+  - type: StaticPrice
+    price: 8000
   - type: Appearance
   - type: UseDelay
     delay: 1.5
@@ -98,6 +100,8 @@
   - type: Tag
     tags:
       - PowerpackEnergy
+  - type: StaticPrice
+    price: 8000
   - type: UseDelay
     delay: 0.5
   - type: UseDelayBlockShoot
