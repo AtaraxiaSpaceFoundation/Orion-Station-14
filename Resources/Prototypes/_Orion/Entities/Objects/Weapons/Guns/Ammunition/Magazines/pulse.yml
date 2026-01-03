@@ -1,58 +1,16 @@
 - type: entity
-  id: MagazinePulseRifle
+  parent: [BaseItem, BaseSecurityContraband]
+  id: BaseMagazinePulseRifle
   name: pulse rifle magazine
   description: Standard EarthGov type of impulse magazines
-  parent: BaseItem
+  abstract: true
   components:
-  - type: Tag
-    tags:
-      - MagazinePulseRifle
   - type: BallisticAmmoProvider
     soundInsert: /Audio/_Orion/Items/weapons/Pulse/pulsebox.ogg
     fillDelay: 0.3
     mayTransfer: true
     cycleable: false
-    capacity: 100
-    proto: PulseBullet
-    whitelist:
-      tags:
-        - PulseBullet
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
-  - type: Item
-    size: Normal
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/standart.rsi
-  - type: Sprite
-    netsync: false
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/standart.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-unshaded-1
-      map: ["enum.GunVisualLayers.MagUnshaded"]
-      shader: unshaded
-  - type: MagazineVisuals
-    magState: mag
-    steps: 2
-    zeroVisible: false
-  - type: Appearance
-
-- type: entity
-  id: MagazinePulseSubMachinePistol
-  name: pulse SMG magazine
-  description: Standard EarthGov type of impulse magazines
-  parent: BaseItem
-  components:
-  - type: Tag
-    tags:
-      - MagazinePulseSubMachinePistol
-  - type: BallisticAmmoProvider
-    soundInsert: /Audio/_Orion/Items/weapons/Pulse/pulsebox.ogg
-    fillDelay: 0.3
-    mayTransfer: true
-    cycleable: false
-    capacity: 40
+    capacity: 50
     proto: PulseBullet
     whitelist:
       tags:
@@ -62,10 +20,10 @@
       ballistic-ammo: !type:Container
   - type: Item
     size: Small
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/smg.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/standart.rsi
   - type: Sprite
     netsync: false
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/smg.rsi
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/standart.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -79,10 +37,38 @@
   - type: Appearance
 
 - type: entity
+  parent: BaseMagazinePulseRifle
+  id: MagazinePulseRifle
+  name: pulse rifle magazine
+  description: Standard EarthGov type of impulse magazines
+  components:
+  - type: Tag
+    tags:
+      - MagazinePulseRifle
+  - type: BallisticAmmoProvider
+    capacity: 100
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BaseMagazinePulseRifle
+  id: MagazinePulseSubMachinePistol
+  name: pulse SMG magazine
+  description: Standard EarthGov type of impulse magazines
+  components:
+  - type: Tag
+    tags:
+      - MagazinePulseSubMachinePistol
+  - type: BallisticAmmoProvider
+    capacity: 40
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Pulse/smg.rsi
+
+- type: entity
+  parent: BaseItem
   id: MagazinePulseShotgun
   name: pulse shotgun magazine
   description: Standard EarthGov type of impulse magazines
-  parent: BaseItem
   components:
   - type: Tag
     tags:

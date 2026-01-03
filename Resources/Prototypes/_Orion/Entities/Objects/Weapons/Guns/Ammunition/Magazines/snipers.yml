@@ -1,53 +1,31 @@
 
 - type: entity
+  parent: BaseMagazineHighCaliber
   id: MagazineRifleSR50
   name: rifle magazine (.50 BMG)
   description: Standart EarthGov type of heavy magazines.
-  parent: BaseItem
   components:
   - type: Tag
     tags:
       - MagazineAntiMaterielRifle
   - type: BallisticAmmoProvider
-    mayTransfer: true
     capacity: 10
-    proto: CartridgeHighCaliber
-    whitelist:
-      tags:
-        - CartridgeHighCaliber
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
-  - type: Item
-    size: Small
-    sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Snipers/sr127_mag.rsi
   - type: Sprite
-    netsync: false
     sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Snipers/sr127_mag.rsi
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-  - type: MagazineVisuals
-    magState: mag
-    steps: 2
-    zeroVisible: false
-  - type: Appearance
 
 - type: entity
+  parent: MagazineRifleSR50
   id: MagazineRifleSR50AP
   name: rifle magazine (.50 BMG AM)
-  parent: MagazineRifleSR50
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeHighCaliberAP
 
 - type: entity
+  parent: [BaseItem, BaseSecurityContraband]
   id: MagazineRifle762Sniper
   name: rifle magazine (7.62mm rifle)
   description: Standart USSP and EarthGov type of heavy magazines.
-  parent: BaseItem
   components:
   - type: Tag
     tags:

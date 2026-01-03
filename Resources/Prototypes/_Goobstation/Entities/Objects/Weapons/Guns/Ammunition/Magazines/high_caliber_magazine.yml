@@ -73,16 +73,6 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
 
-# Orion-Start
-- type: entity
-  id: MagazineHighCaliberAP
-  name: "magazine (.50 anti-materiel)"
-  parent: BaseMagazineHighCaliber
-  components:
-  - type: BallisticAmmoProvider
-    proto: CartridgeHighCaliberAP
-# Orion-End
-
 - type: entity
   id: BaseMagazineAntiMateriel
   name: "magazine (.60 caliber)"

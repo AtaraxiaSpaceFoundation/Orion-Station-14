@@ -1,7 +1,7 @@
 - type: entity
-  name: BaseWeaponRifle
   parent: BaseItem
   id: BaseWeaponEnergyRifle
+  name: BaseWeaponRifle
   description: A rooty tooty point and shooty.
   abstract: true
   components:
@@ -52,9 +52,9 @@
       collection: RiflesDrop
 
 - type: entity
-  name: AP-12
   parent: [ BaseWeaponEnergyRifle, BaseCentcommContraband ]
   id: WeaponPulseRifleAP12
+  name: AP-12
   description: The AP Motorized Pulse Rifle is a military-grade, rapid-fire assault rifle with large magazine ammunition capacity. The Pulse Rifle is the standard-issue service rifle of the Earth Special Force.
   components:
   - type: Sprite
@@ -92,9 +92,9 @@
             - MagazinePulseRifle
 
 - type: entity
-  name: Triton Mark 3
   parent: [ BaseWeaponEnergyRifle, BaseCentcommContraband ]
   id: WeaponPulseSMGTritonM3
+  name: Triton Mark 3
   description: The Triton Mark 3 is a military-grade, rapid-fire pulse SMG with large magazine ammunition capacity. The Pulse SMG is the standard-issue service weapon of the Earth Special Force.
   components:
   - type: Sprite
@@ -138,9 +138,9 @@
             - MagazinePulseSubMachinePistol
 
 - type: entity
-  name: Hell Hammer
   parent: [ BaseWeaponEnergyRifle, BaseCentcommContraband ]
   id: WeaponPulseShotgunHellHammer
+  name: Hell Hammer
   description: The Auto Impulse shotgun, uses a motorized firing mechanism. The Pulse Shotgun is the standard-issue service shotgun of the Earth Special Force.
   components:
   - type: Sprite

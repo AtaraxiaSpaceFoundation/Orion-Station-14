@@ -1,7 +1,7 @@
 - type: entity
+  parent: BaseBullet
   id: BulletRifle762
   name: bullet (7.62mm rifle)
-  parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -11,9 +11,9 @@
       armorPenetration: 0.35
 
 - type: entity
+  parent: BaseBulletPractice
   id: BulletRifle762Practice
   name: bullet (7.62mm practice)
-  parent: BaseBulletPractice
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -23,8 +23,8 @@
       armorPenetration: -0.5
 
 - type: entity
-  id: BulletRifle762Incendiary
   parent: BaseBulletIncendiary
+  id: BulletRifle762Incendiary
   name: bullet (7.62mm incendiary)
   categories: [ HideSpawnMenu ]
   components:
@@ -36,8 +36,8 @@
       armorPenetration: 0.2
 
 - type: entity
-  id: BulletRifle762Uranium
   parent: BaseBulletUranium
+  id: BulletRifle762Uranium
   name: bullet (7.62mm uranium)
   categories: [ HideSpawnMenu ]
   components:

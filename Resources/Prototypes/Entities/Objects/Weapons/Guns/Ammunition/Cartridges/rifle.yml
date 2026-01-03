@@ -62,7 +62,7 @@
     layers:
       - state: 20training # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-Remove: New sprites
+#      - state: tip # Orion-Edit: Removed
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#dbdbdb"
 
@@ -79,7 +79,7 @@
     layers:
       - state: 20incendiary # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-Remove: New sprites
+#      - state: tip # Orion-Edit: Removed
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#ff6e52"
 
@@ -96,6 +96,6 @@
     layers:
       - state: 20uranium # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-Remove: New sprites
+#      - state: tip # Orion-Edit: Removed
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#65fe08"

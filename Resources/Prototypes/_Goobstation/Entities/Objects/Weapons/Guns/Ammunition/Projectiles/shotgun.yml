@@ -26,6 +26,7 @@
     damage:
       types:
         Piercing: 15
+        Structural: 18 # Orion
 
 - type: entity
   id: HighCaliberPelletShotgunSpread
@@ -81,6 +82,8 @@
       damage:
         types:
           Blunt: 2
+    - type: StaminaDamageOnCollide # Orion
+      damage: 4
 
 - type: entity
   id: HighCaliberPelletShotgunPracticeSpread
@@ -134,6 +137,7 @@
     damage:
       types:
         Piercing: 65
+        Structural: 25 # Orion
 
 - type: entity
   id: BulletSlugEnsnaring
@@ -157,7 +161,7 @@
     freeTime: 3
     sprintSpeed: 0.6
     walkSpeed: 0.6
-    staminaDamage: 10
+    staminaDamage: 30 # Orion-Edit: 10 > 30
 
 - type: entity
   id: BulletSlugEMP

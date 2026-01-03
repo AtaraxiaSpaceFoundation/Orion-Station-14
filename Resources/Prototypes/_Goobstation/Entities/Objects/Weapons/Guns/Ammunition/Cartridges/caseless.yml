@@ -10,9 +10,9 @@
   components:
   - type: CartridgeAmmo
     proto: BulletCaselessRifleSAPHE
-# Orion-Start
+  # Orion-Start
   - type: Sprite
     layers:
       - state: 25fast
         map: [ "enum.AmmoVisualLayers.Base" ]
-# Orion-End
+  # Orion-End

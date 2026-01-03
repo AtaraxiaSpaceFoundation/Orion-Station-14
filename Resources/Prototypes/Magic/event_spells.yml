@@ -65,7 +65,7 @@
         orGroup: Guns
       - id: WeaponRifleLecter
         orGroup: Guns
-      - id: WeaponShotgunZauer # Orion-EditResources/Prototypes/_Goobstation/Entities/Objects/Weapons/Guns/Rifles/rifle.yml
+      - id: WeaponShotgunZauer # Orion-Edit: Replaced WeaponShotgunBulldog
         orGroup: Guns
       - id: WeaponShotgunDoubleBarreled
         orGroup: Guns

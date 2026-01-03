@@ -1,10 +1,10 @@
 # 5.45
 - type: entity
-  parent: [ BaseWeaponRifle , BaseMajorContraband ]
+  parent: [BaseWeaponRifle , BaseMajorContraband]
   id: WeaponRifleInteQAKM
   name: InteQ AKM
-  suffix: Rifle
   description: Iconic weapon of war. Uses 5.45mm rifle ammo. It is painted in the InteQ brand color.
+  suffix: Rifle
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Rifles/inteq_akm.rsi
@@ -48,9 +48,9 @@
   - type: Appearance
 
 - type: entity
-  name: M16A4
-  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleM16A4
+  name: M16A4
   description: A light, versatile assault rifle. The 4th generation in the M16 platform, this FN variant has added automatic fire selection and retains relevance among mercenaries and militias thanks to its high customizability. it is incredibly good at rapid burst fire, but must be paced correctly.
   components:
   - type: Sprite
@@ -95,9 +95,9 @@
   - type: Appearance
 
 - type: entity
-  name: Famas
-  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleFamas
+  name: Famas
   description: A light, versatile assault rifle.
   components:
   - type: Sprite
@@ -153,9 +153,9 @@
   - type: Appearance
 
 - type: entity
-  name: AUG
-  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleAUG
+  name: AUG
   description: A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for 5.56mm rifle cartridge.
   components:
   - type: Sprite
@@ -213,9 +213,9 @@
 
 # 7.62
 - type: entity
-  name: M-28
+  parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleM28
-  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  name: M-28
   description: The M-28 assault rifle used to be the EarthGov army standard issue rifle.
   components:
   - type: Sprite
@@ -268,9 +268,9 @@
 
 # Magnum
 - type: entity
-  name: BR-64
-  parent: [ BaseWeaponRifle, BaseSecurityContraband ]
+  parent: [BaseWeaponRifle, BaseSecurityContraband]
   id: WeaponRifleBR64
+  name: BR-64
   description: The San Cristo Arms BR-64 is the Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and close range stopping power. It is mostly used by people who prefer a bigger round than the average.
   components:
   - type: Sprite

@@ -1,7 +1,7 @@
-- type: entity 
-  name: EarthGov laser rifle
+- type: entity
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserRifle
+  name: EarthGov laser rifle
   description: An Earth Government standard issue laser rifle, used by army and police.
   components:
   - type: Appearance
@@ -44,9 +44,9 @@
   - type: Wieldable
 
 - type: entity
-  name: EarthGov laser machine gun
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserMG
+  name: EarthGov laser machine gun
   description: An Earth Government standard issue laser machine gun, used by army. Heavy and deadly.
   components:
   - type: Appearance
@@ -94,9 +94,9 @@
   - type: HeldSpeedModifier
 
 - type: entity
-  name: EarthGov laser carbine
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserCarbine
+  name: EarthGov laser carbine
   description: An Earth Government standard issue laser carbine, used by army and police. Thanks to the short barrel it has better maneuverability in narrow spaces.
   components:
   - type: Appearance
@@ -140,9 +140,9 @@
   - type: Wieldable
 
 - type: entity
-  name: EarthGov laser pistol
   parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
   id: WeaponEarthGovLaserPistol
+  name: EarthGov laser pistol
   description: An Earth Government standard issue laser pistol, used by army and police.
   components:
   - type: Gun
@@ -168,9 +168,9 @@
     price: 250
 
 - type: entity
-  name: EarthGov heavy laser rifle
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovLaserSniper
+  name: EarthGov heavy laser rifle
   description: An Earth Government heavy sniper rifle for a extended combat situation.
   components:
   - type: Appearance
@@ -221,9 +221,9 @@
     pvsIncrease: 0.5
 
 - type: entity
-  name: EarthGov Experimental X-Ray
   parent: [BaseWeaponBattery, BaseSecurityContraband]
   id: WeaponEarthGovXRay
+  name: EarthGov Experimental X-Ray
   description: A Earth Government Experimental x-ray weapon, it looks like it emits radiation.
   components:
   - type: Appearance

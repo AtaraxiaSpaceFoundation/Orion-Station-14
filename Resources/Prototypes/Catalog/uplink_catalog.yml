@@ -346,16 +346,16 @@
   categories:
   - UplinkWeaponry
 
-- type: listing
-  id: UplinkZauer # Orion-Edit: Bulldog > Zauer
-  name: uplink-zauer-name # Orion-Edit
-  description: uplink-buldog-desc #goob
-  icon: { sprite: _Orion/Objects/Weapons/Guns/Shotguns/zauer/big.rsi, state: icon } # Orion
-  productEntity: WeaponShotgunZauer
-  cost:
-    Telecrystal: 60 # goob
-  categories:
-  - UplinkWeaponry
+#- type: listing
+  #id: UplinkBulldog #goob
+  #name: uplink-buldog-name #goob
+  #description: uplink-buldog-desc #goob
+  #icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
+  #productEntity: WeaponShotgunBulldog
+  #cost:
+    #Telecrystal: 60 # goob
+  #categories:
+  #- UplinkWeaponry
 
 
 - type: listing

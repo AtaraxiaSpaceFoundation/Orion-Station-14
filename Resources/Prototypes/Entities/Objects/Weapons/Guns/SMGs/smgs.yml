@@ -93,7 +93,7 @@
     - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/smg.ogg
-    soundEmpty: # Orion-Edit
+    soundEmpty: # Orion
       path: /Audio/_Orion/Weapons/Guns/Rifles/rifle_empty.ogg
     defaultDirection: 1, 0
   - type: ChamberMagazineAmmoProvider

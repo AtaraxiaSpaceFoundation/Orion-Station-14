@@ -38,7 +38,7 @@
     - state: 25combat # Orion-Edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
-#  - type: SpentAmmoVisuals # Orion-Remove: Optimization
+#  - type: SpentAmmoVisuals # Orion-Edit: Removed for optimization
   - type: StaticPrice
     price: 10
 
@@ -63,6 +63,6 @@
     layers:
       - state: 25training # Orion-Edit: New sprites
         map: [ "enum.AmmoVisualLayers.Base" ]
-#      - state: tip # Orion-Remove: New sprites
+#      - state: tip # Orion-Edit: Removed
 #        map: [ "enum.AmmoVisualLayers.Tip" ]
 #        color: "#dbdbdb"

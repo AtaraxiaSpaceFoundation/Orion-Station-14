@@ -1,8 +1,8 @@
 # Base
 - type: entity
-  id: BasePowerpackRifle
-  name: "powerpack (.10 rifle)"
   parent: [ BaseItem, BaseCentcommContraband ]
+  id: BasePowerpackRifle
+  name: powerpack (.10 rifle)
   abstract: true
   components:
   - type: Sprite
@@ -50,9 +50,9 @@
   - type: UseDelayBlockShoot
 
 - type: entity
-  id: BasePowerpackEnergy
-  name: "powerpack (pulsebullet)"
   parent: [ BaseItem, BaseCentcommContraband ]
+  id: BasePowerpackEnergy
+  name: powerpack (pulsebullet)
   abstract: true
   components:
   - type: Sprite
@@ -104,9 +104,9 @@
 
 # Fills
 - type: entity
-  id: PowerpackRifle10
-  name: "powerpack (.10 rifle)"
   parent: BasePowerpackRifle
+  id: PowerpackRifle10
+  name: powerpack (.10 rifle)
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeMinigun
@@ -115,9 +115,9 @@
         - CartridgeHeavyRifle
 
 - type: entity
-  id: PowerpackRifle15
-  name: "powerpack (.15 rifle)"
   parent: BasePowerpackRifle
+  id: PowerpackRifle15
+  name: powerpack (.15 rifle)
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeHeavyMinigun
@@ -126,9 +126,9 @@
         - CartridgeHeavyRifle
 
 - type: entity
+  parent: BasePowerpackEnergy
   id: PowerpackEnergyPulse
   name: powerpack (pulse)
-  parent: BasePowerpackEnergy
   components:
   - type: HitscanBatteryAmmoProvider
     proto: Pulse

@@ -1,10 +1,10 @@
 # BASE
 
 - type: entity
-  abstract: true
   parent: [ BaseItem, BaseMajorContraband ]
   id: BaseMagazineBoxInteQ
   name: ammunition box
+  abstract: true
   components:
   - type: BallisticAmmoProvider
     mayTransfer: true

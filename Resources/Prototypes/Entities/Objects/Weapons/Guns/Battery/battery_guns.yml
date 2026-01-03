@@ -349,6 +349,7 @@
   - type: ItemSlots # goob edit - let svalinns use potato batteries
     slots:
       gun_magazine:
+#        name: Magazine # Orion-Edit: Removed
         startingItem: PowerCellMedium
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg

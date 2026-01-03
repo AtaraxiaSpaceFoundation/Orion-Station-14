@@ -1,7 +1,7 @@
 - type: entity
+  parent: BaseMagazinePistol
   id: MagazinePistol20
   name: pistol magazine (5.56mm rifle)
-  parent: BaseMagazinePistol
   components:
   - type: Tag
     tags:

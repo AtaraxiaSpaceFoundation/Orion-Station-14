@@ -1,7 +1,7 @@
 - type: entity
+  parent: [ BaseMagazineRifle, BaseSecurityContraband ]
   id: MagazineRifle762
   name: magazine (7.62mm rifle)
-  parent: [ BaseMagazineRifle, BaseSecurityContraband ]
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeRifle762
@@ -27,42 +27,42 @@
       - MagazineRifle
 
 - type: entity
+  parent: MagazineRifle762
   id: MagazineRifle762Empty
   name: magazine (7.62mm any)
-  parent: MagazineRifle762
   components:
   - type: BallisticAmmoProvider
     proto: null
 
 - type: entity
+  parent: MagazineRifle762
   id: MagazineRifle762Practice
   name: magazine (7.62mm practice)
-  parent: MagazineRifle762
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeRifle762Practice
 
 - type: entity
+  parent: MagazineRifle762
   id: MagazineRifle762Incendiary
   name: magazine (7.62mm incendiary)
-  parent: MagazineRifle762
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeRifle762Incendiary
 
 - type: entity
+  parent: MagazineRifle762
   id: MagazineRifle762Uranium
   name: magazine (7.62mm uranium)
-  parent: MagazineRifle762
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeRifle762Uranium
 
 
 - type: entity
+  parent: [ BaseItem, BaseSecurityContraband ]
   id: MagazineHeavyRifleBR64
   name: magazine (.45 magnum)
-  parent: [ BaseItem, BaseSecurityContraband ]
   components:
   - type: Tag
     tags:
@@ -95,9 +95,9 @@
   - type: Appearance
 
 - type: entity
+  parent: MagazineHeavyRifleBR64
   id: MagazineHeavyRifleBR64AP
   name: magazine (.45 magnum)
-  parent: MagazineHeavyRifleBR64
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumAP

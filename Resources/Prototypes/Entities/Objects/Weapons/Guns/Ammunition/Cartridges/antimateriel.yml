@@ -35,7 +35,7 @@
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Ammunition/Casings/60_casing.rsi # Orion-Edit: New sprites
     layers:
-    - state: combat # Orion: New sprites
+    - state: combat # Orion-Edit: New sprites
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
   - type: SpentAmmoVisuals

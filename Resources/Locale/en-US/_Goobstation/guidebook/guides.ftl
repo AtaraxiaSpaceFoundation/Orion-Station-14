@@ -8,7 +8,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# guide-entry-space-law = Space Law # Orion-Remove
+# guide-entry-space-law = Space Law # Orion-Edit: Removed
 guide-entry-medpatches = Medical Patches
 guide-entry-virology = Virology
 guide-entry-rules-nrp = NRP Ruleset

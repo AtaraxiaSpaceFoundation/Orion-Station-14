@@ -1,7 +1,7 @@
 - type: entity
+  parent: BaseBullet
   id: PulseBullet
   name: pulse bullet
-  parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -44,9 +44,9 @@
         hard: False
 
 - type: entity # shot on hell hammer
+  parent: PulseBullet
   id: PulseBulletSpread
   name: pulse bullet
-  parent: PulseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -60,9 +60,9 @@
     spread: 15
 
 - type: entity # bullet on hell hammer
+  parent: PulseBullet
   id: PulseBulletSpreadShotgun
   name: pulse bullet
-  parent: PulseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile

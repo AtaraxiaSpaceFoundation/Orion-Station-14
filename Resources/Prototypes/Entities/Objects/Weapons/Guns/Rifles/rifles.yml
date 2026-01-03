@@ -101,19 +101,19 @@
     - Back
     - suitStorage
   - type: AmmoCounter
-# Orion-Start
+  # Orion-Start
   - type: GunWieldBonus
     minAngle: -22
     maxAngle: -31
     angleIncrease: -4
-# Orion-End
+  # Orion-End
   - type: Gun
-# Orion-Start
+    # Orion-Start
     angleDecay: 20
     angleIncrease: 6
     minAngle: 24
     maxAngle: 40
-# Orion-End
+    # Orion-End
     fireRate: 5
     selectedMode: FullAuto
     availableModes:
@@ -121,7 +121,7 @@
       - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
-    soundEmpty: # Orion-Edit
+    soundEmpty: # Orion
       path: /Audio/_Orion/Weapons/Guns/Rifles/rifle_empty.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:
@@ -198,9 +198,9 @@
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
     scale: 0.9, 0.9 # Orion
-  - type: Clothing # Orion-Edit: New sprites
+  - type: Clothing # Orion: New sprites
     sprite: _Orion/Objects/Weapons/Guns/Rifles/akms/tiny.rsi
-  - type: Item # Orion-Edit: New sprites
+  - type: Item # Orion: New sprites
     sprite: _Orion/Objects/Weapons/Guns/Rifles/akms/tiny.rsi
   - type: Gun
     soundGunshot:
@@ -298,8 +298,8 @@
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
     scale: 0.9, 0.9 # Orion
-  - type: Item # Orion-Edit
-    sprite: _Orion/Objects/Weapons/Guns/Rifles/lecter/tiny.rsi # Orion-Edit: New sprites
+  - type: Item # Orion
+    sprite: _Orion/Objects/Weapons/Guns/Rifles/lecter/tiny.rsi
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Rifles/lecter/tiny.rsi # Orion-Edit: New sprites
   - type: Gun

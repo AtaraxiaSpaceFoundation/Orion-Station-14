@@ -1,7 +1,7 @@
 - type: entity
+  parent: BulletHeavyRifle
   id: BulletHeavyMinigun
   name: minigun bullet (.15 rifle)
-  parent: BulletHeavyRifle
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile

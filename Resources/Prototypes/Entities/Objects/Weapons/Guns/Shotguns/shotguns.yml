@@ -148,7 +148,7 @@
   # Don't parent to BaseWeaponShotgun because it differs significantly
   parent: [BaseItem, BaseGunWieldable, BaseSyndicateContraband]
   id: WeaponShotgunBulldog
-  categories: [ HideSpawnMenu ] # Orion-Edit: Replaced with Zauer
+  categories: [ HideSpawnMenu ] # Orion: Replaced with Zauer
   description: An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses 12 Gauge shotgun shells. # Goob edit
   components:
   - type: Sprite
@@ -263,8 +263,8 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1.7 # Goobstation
-    soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg # Orion-Edit
+    soundGunshot: # Orion
+      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg
 
 - type: entity
   parent: WeaponShotgunEnforcer
@@ -292,8 +292,8 @@
     sprite: Objects/Weapons/Guns/Shotguns/pump.rsi
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg # Orion-Edit
+    soundGunshot: # Orion
+      path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg
     # fireRate: 1 # goob
   - type: GunSpreadModifier
     spread: 0.6
@@ -302,7 +302,7 @@
     - WeaponShotgunKammerer
   - type: BallisticAmmoProvider # Goobstation
     autoCycle: false
-    soundRack: # Orion-Edit
+    soundRack: # Orion
       path: /Audio/_Orion/Weapons/Guns/Shotguns/shotgun_cmb_pump.ogg
 
 - type: entity

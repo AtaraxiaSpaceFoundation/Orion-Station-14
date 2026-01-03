@@ -246,13 +246,13 @@
     storedRotation: 45
   - type: ScannableForPoints # goob edit
     points: 2
-# Orion-Start
+  # Orion-Start
   - type: BallisticAmmoProvider
     proto: CartridgeRifle762
     whitelist:
       tags:
       - CartridgeRifle762
-# Orion-End
+  # Orion-End
 
 - type: entity
   name: Hristov

@@ -1,7 +1,7 @@
-- type: entity 
-  name: GL-70
+- type: entity
   parent: [ BaseMajorContraband, BaseWeaponLauncher ]
   id: WeaponLauncherGL70
+  name: GL-70
   description: The GL-70 is the standard grenade launcher used by the Earth Army for area denial and big explosions.
   components:
   - type: Sprite
@@ -42,11 +42,11 @@
   - type: GunRequiresWield
 
 - type: entity
-  name: M-81
   parent: [WeaponFlareGun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponLauncherM81
-  suffix: Lethal
+  name: M-81
   description: A lightweight single-shot grenade launcher used by the UEG for area blockades and large explosions or riot police units.
+  suffix: Lethal
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Guns/Launchers/riotlauncher.rsi
@@ -75,9 +75,9 @@
             - Grenade
 
 - type: entity
-  name: RL-5
-  parent: [ BaseMajorContraband, BaseWeaponLauncher ]
+  parent: [BaseMajorContraband, BaseWeaponLauncher]
   id: WeaponLauncherRL5
+  name: RL-5
   description: The RL-5 is the primary anti-armor used around the galaxy. Used to take out light-tanks and enemy structures, the RL-5 rocket launcher is a dangerous weapon with a variety of combat uses.
   components:
   - type: Sprite

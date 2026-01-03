@@ -1,7 +1,7 @@
 - type: entity
+  parent: BaseItem
   id: MagazineSMGP90
   name: SMG top mounted magazine (9mm auto)
-  parent: BaseItem
   components:
   - type: Tag
     tags:
@@ -32,9 +32,9 @@
   - type: Appearance
 
 - type: entity
+  parent: BaseMagazinePistolSubMachineGun
   id: MagazineSMGVector
   name: Vector magazine (9mm auto)
-  parent: BaseMagazinePistolSubMachineGun
   components:
   - type: Tag
     tags:
@@ -60,9 +60,9 @@
     zeroVisible: false
 
 - type: entity
+  parent: MagazineSMGVector
   id: MagazineSMGVectorExtended
   name: Vector magazine Extended (9mm auto)
-  parent: MagazineSMGVector
   components:
   - type: BallisticAmmoProvider
     capacity: 30

@@ -71,10 +71,10 @@
     unwieldOnUse: false
   - type: GunWieldBonus
     minAngle: -20
-    maxAngle: -20
+    maxAngle: -25 # Orion-Edit: -20 > -25
   - type: Gun
     minAngle: 24
-    maxAngle: 40 # Orion-Edit: 45 > 40
+    maxAngle: 45
     angleIncrease: 3 # Orion-Edit: 4 > 3
     angleDecay: 16
     fireRate: 8

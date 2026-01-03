@@ -1,8 +1,8 @@
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: BaseBullet
   id: BulletHighCaliberAP
   name: bullet (.50 armor-piercing)
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     damage:

@@ -28,12 +28,12 @@
   - type: StaticPrice
     price: 20
 
-# Orion-Edit-Start
 - type: entity
-  parent: CartridgeHighCaliber
+  parent: CartridgeHighCaliber # Orion-Edit: Parent shortens code
   id: CartridgeHighCaliberExplosive
   name: cartridge (.50 high-explosive incendiary)
   components:
+  # Orion-Edit-Start: Due to parent code was shortened
   - type: CartridgeAmmo
     proto: BulletHighCaliberExplosive
   - type: Sprite
@@ -42,4 +42,4 @@
       map: ["enum.AmmoVisualLayers.Base"]
   - type: SpentAmmoVisuals
     state: incendiary
-# Orion-Edit-End
+  # Orion-Edit-End

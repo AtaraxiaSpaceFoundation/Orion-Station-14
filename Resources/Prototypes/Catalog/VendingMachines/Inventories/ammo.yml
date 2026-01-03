@@ -36,9 +36,9 @@
 
     MagazineBoxRifle: 6
     MagazineBoxRiflePractice: 3
-# Orion-Start
+    # Orion-Start
     MagazineBoxRifle762: 6
     MagazineBoxRifle762Practice: 3
-# Orion-End
+    # Orion-End
     BoxLethalshot: 6
     BoxShotgunPractice: 3

@@ -53,11 +53,11 @@
   - MagazineBoxMagnum
   - MagazineBoxPistol
   - MagazineBoxRifle
-# Orion-Start: New 7.62mm
+  # Orion-Start: New 7.62mm
   - MagazineBoxRifle762
   - MagazineRifle762
   - MagazineRifle762Empty
-# Orion-End
+  # Orion-End
   # - MagazineLightRifle # Goobstation - remove light rifle
   # - MagazineLightRifleEmpty # Goobstation - remove light rifle
   - MagazinePistol
@@ -134,12 +134,12 @@
   - MagazineBoxPistolUranium
   - MagazineBoxRifleIncendiary
   - MagazineBoxRifleUranium
-# Orion-Start: New 7.62mm
+  # Orion-Start: New 7.62mm
   - MagazineBoxRifle762Incendiary
   - MagazineBoxRifle762Uranium
   - MagazineRifle762Incendiary
   - MagazineRifle762Uranium
-# Orion-End
+  # Orion-End
   # - MagazineLightRifleIncendiary # Goobstation - remove light rifle
   # - MagazineLightRifleUranium # Goobstation - remove light rifle
   - MagazinePistolIncendiary

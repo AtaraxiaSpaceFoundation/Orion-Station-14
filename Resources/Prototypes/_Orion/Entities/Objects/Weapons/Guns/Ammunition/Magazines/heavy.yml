@@ -1,6 +1,6 @@
 - type: entity
-  id: BaseMagazineHeavyRifle50
   parent: BaseItem
+  id: BaseMagazineHeavyRifle50
   abstract: true
   components:
   - type: Item
@@ -24,9 +24,9 @@
   - type: Appearance
 
 - type: entity
+  parent: BaseMagazineHeavyRifle50
   id: MagazineLightMachineGunRPD
   name: RPD magazine (7.62mm rifle)
-  parent: BaseMagazineHeavyRifle50
   components:
   - type: Tag
     tags:
@@ -46,9 +46,9 @@
       map: ["enum.GunVisualLayers.Mag"]
 
 - type: entity
+  parent: BaseMagazineHeavyRifle50
   id: MagazineHeavyRifleM41
   name: M-41 magazine (5.56mm rifle)
-  parent: BaseMagazineHeavyRifle50
   components:
   - type: Tag
     tags:

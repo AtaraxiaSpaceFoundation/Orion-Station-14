@@ -1,7 +1,7 @@
 - type: entity
+  parent: BaseBullet
   id: Bullet308win
   name: bullet (.308)
-  parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -11,9 +11,9 @@
       armorPenetration: 0.4
 
 - type: entity
+  parent: BaseBullet
   id: Bullet308winAP
   name: bullet (.308 AP)
-  parent: BaseBullet
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -23,9 +23,9 @@
       armorPenetration: 0.7
 
 - type: entity
+  parent: BaseBulletUranium
   id: Bullet308winUranium
   name: bullet (.308 uranium)
-  parent: BaseBulletUranium
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
@@ -36,9 +36,9 @@
       armorPenetration: 0.25
 
 - type: entity
+  parent: BaseBulletPractice
   id: Bullet308winPractice
   name: bullet (.308 practice)
-  parent: BaseBulletPractice
   categories: [ HideSpawnMenu ]
   components:
   - type: Projectile

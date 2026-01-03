@@ -1,9 +1,9 @@
 - type: entity
-  parent: [ BaseMajorContraband, WeaponShotgunBulldog ]
+  parent: [BaseMajorContraband, WeaponShotgunBulldog]
   id: WeaponShotgunInteQBulldog
   name: Bulldog
-  suffix: Shotgun
   description: Magazine-fed shotgun designed for close quarters combat. Uses .12 shotgun shells. It is painted in the InteQ brand color.
+  suffix: Shotgun
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/inteq_bulldog.rsi
@@ -13,9 +13,9 @@
     fireRate: 2
 
 - type: entity
-  name: Zauer
   parent: WeaponShotgunBulldog
   id: WeaponShotgunZauer
+  name: Zauer
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/zauer/big.rsi
@@ -25,9 +25,9 @@
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/zauer/tiny.rsi
 
 - type: entity
-  name: XM1014
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgun39
+  name: XM1014
   suffix: Shotgun
   description: The Earth Armories XM1014 combat shotgun is a semi automatic shotgun used by breachers and pointmen within the Earth Army squads. Uses .12 shotgun shells.
   components:
@@ -46,20 +46,20 @@
       path: /Audio/_Orion/Weapons/Guns/Shotguns/sh39.ogg
 
 - type: entity
-  name: XM1014
   parent: WeaponShotgun39
   id: WeaponShotgun39NonLethal
+  name: XM1014
   suffix: Shotgun [Non Lethal]
   components:
   - type: BallisticAmmoProvider
     proto: ShellShotgunBeanbag
 
 - type: entity
-  name: Paladin pump shotgun
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunPaladin
-  suffix: Shotgun
+  name: Paladin pump shotgun
   description: A nine-round pump action shotgun. A shotgun used for hunting, home defence and police work, many versions of it exist and are used by just about anyone.
+  suffix: Shotgun
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/paladin-12/big.rsi
@@ -88,11 +88,11 @@
     - WeaponShotgunKammerer
 
 - type: entity
-  name: Spas-12
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunSpas
-  suffix: Shotgun
+  name: Spas-12
   description: The Earth Armories Spas-12 is the shotgun used by the EarthGov Marine Corps. It's used as a close quarters tool when someone wants something more suited for close range than most people, or as an odd sidearm on your back for emergencies. Uses 50 gauge shells.
+  suffix: Shotgun
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/spas-16/big.rsi

@@ -1,8 +1,8 @@
 - type: entity
-  abstract: true
+  parent: [BaseItem, BaseSecurityContraband]
   id: BaseMagazineBox308win
   name: ammunition box (.308 winchester)
-  parent: [ BaseItem, BaseSecurityContraband ]
+  abstract: true
   components:
   - type: EmitSoundOnPickup
     sound:

@@ -184,7 +184,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/big.rsi # Orion-Edit: New sprites
-  - type: Item # Orion-Edit: New sprites
+  - type: Item # Orion
     sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/tiny.rsi
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Revolver/mateba/tiny.rsi # Orion-Edit: New sprites

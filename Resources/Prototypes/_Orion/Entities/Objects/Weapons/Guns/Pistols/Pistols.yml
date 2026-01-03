@@ -1,9 +1,9 @@
 - type: entity
-  parent: [ BaseMajorContraband, WeaponPistolViper ]
+  parent: [BaseMajorContraband, WeaponPistolViper]
   id: WeaponPistolInteQCommissar
   name: Commissar
-  suffix: Pistol
   description: Small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses 9mm auto ammo. It is painted in the InteQ brand color.
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/inteq_commissar.rsi
@@ -13,10 +13,10 @@
       - SemiAuto
       - FullAuto
 
-- type: entity 
-  name: combat pistol VP-78
+- type: entity
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolVP78
+  name: combat pistol VP-78
   description: The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in 5.56mm rounds.
   components:
   - type: Sprite
@@ -59,10 +59,10 @@
     zeroVisible: true
 
 - type: entity
-  name: desert eagle
   parent: [BaseWeaponPistol, BaseCentcommCommandContraband]
   id: WeaponPistolDEagle
-  description: A magnum chambered in .50AE that comes with a serious kick. This one is engraved, "Peace through superior firepower".
+  name: desert eagle
+  description: A magnum chambered in .45AE that comes with a serious kick. This one is engraved, "Peace through superior firepower".
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/deagle/big.rsi
@@ -104,10 +104,10 @@
     zeroVisible: true
 
 - type: entity
-  name: G-22
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolG22
-  description: A popular police firearm in the modern day. Chambered in .35 rounds.
+  name: G-22
+  description: A popular police firearm in the modern day. Chambered in 9mm rounds.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/glock22/big.rsi
@@ -142,10 +142,10 @@
     zeroVisible: true
 
 - type: entity
-  name: service pistol G23
   parent: [BaseWeaponPistol, BaseSecurityContraband]
   id: WeaponPistolG23
-  description: A popular self-defense firearm in the modern day. Chambered in .35 rounds.
+  name: service pistol G23
+  description: A popular self-defense firearm in the modern day. Chambered in 9mm rounds.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/service_pistol23/big.rsi

@@ -1,7 +1,7 @@
 ent-MagazineSMGP90 = магазин для P90 (9мм авто)
     .desc = { ent-BaseItem.desc }
 
-ent-BoxPulseRifle = зарядный плазмоблок (энергоболт)
+ent-MagazineBoxRiflePulse = зарядный плазмоблок (энергоболт)
     .desc = { ent-BaseItem.desc }
 ent-MagazinePulseRifle = магазин AP12 (энергоболт)
     .desc = { ent-BaseItem.desc }

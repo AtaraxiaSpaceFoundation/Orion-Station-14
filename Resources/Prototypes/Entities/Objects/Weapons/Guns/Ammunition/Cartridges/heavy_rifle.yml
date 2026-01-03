@@ -44,7 +44,7 @@
     - state: base
       map: ["enum.AmmoVisualLayers.Base"]
   - type: Appearance
-#  - type: SpentAmmoVisuals # Orion-Remove
+#  - type: SpentAmmoVisuals # Orion-Edit: Removed
   - type: StaticPrice
     price: 10
 

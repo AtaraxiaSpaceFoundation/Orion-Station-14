@@ -135,7 +135,7 @@
       - FullAuto
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Pistols/colt.ogg # Orion-Edit
-    soundEmpty: # Orion-Edit
+    soundEmpty: # Orion
       path: /Audio/_Orion/Weapons/Guns/Pistols/beretta_empty.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:

@@ -63,7 +63,7 @@
     layers:
     - state: 45neurotoxin # Orion-Edit: New sprites
       map: [ "enum.AmmoVisualLayers.Base" ]
-#    - state: tip # Orion-Remove: New sprites
+#    - state: tip # Orion-Edit: Removed
 #      map: [ "enum.AmmoVisualLayers.Tip" ]
 #      color: "#00FF00"
   - type: CartridgeAmmo

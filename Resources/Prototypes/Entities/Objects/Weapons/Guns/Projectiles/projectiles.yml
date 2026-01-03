@@ -374,7 +374,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 20 # Goob edit
+    damage: 33 # Goob edit # Orion-Edit: 20 > 33
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1256,7 +1256,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 12 # Goob edit
+    damage: 15 # Goob edit # Orion-Edit: 12 > 15
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
