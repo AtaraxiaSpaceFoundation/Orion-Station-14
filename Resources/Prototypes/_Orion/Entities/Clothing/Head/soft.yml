@@ -10,7 +10,7 @@
     sprite: _Orion/Clothing/Head/Soft/inteq_softhat.rsi
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadHatBeretSecurity
   id: ClothingHeadHatSecuritySideCap
   name: security side cap
   description: Security side cap, cool.
