@@ -346,16 +346,18 @@
   categories:
   - UplinkWeaponry
 
+# Orion-Edit-Start: Removed
 #- type: listing
-  #id: UplinkBulldog #goob
-  #name: uplink-buldog-name #goob
-  #description: uplink-buldog-desc #goob
-  #icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
-  #productEntity: WeaponShotgunBulldog
-  #cost:
-    #Telecrystal: 60 # goob
-  #categories:
-  #- UplinkWeaponry
+#  id: UplinkBulldog #goob
+#  name: uplink-buldog-name #goob
+#  description: uplink-buldog-desc #goob
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
+#  productEntity: WeaponShotgunBulldog
+#  cost:
+#    Telecrystal: 60 # goob
+#  categories:
+#  - UplinkWeaponry
+# Orion-Edit-End
 
 
 - type: listing
