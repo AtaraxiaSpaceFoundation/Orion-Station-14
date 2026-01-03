@@ -28,7 +28,7 @@
     availableModes:
     - FullAuto
     soundGunshot:
-      collection: GuardianShot # Orion-Edit
+      collection: AutoShotgunShot # Orion-Edit
     soundEmpty:
       path: /Audio/_Orion/Weapons/Guns/Shotguns/v51_empty.ogg # Orion-Edit
   - type: ItemSlots

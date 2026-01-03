@@ -40,7 +40,7 @@
     availableModes:
     - SemiAuto
     soundGunshot:
-      collection: GuardianShot # Orion-Edit: New sounds
+      collection: AutoShotgunShot # Orion-Edit: New sounds
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
   - type: ItemSlots
