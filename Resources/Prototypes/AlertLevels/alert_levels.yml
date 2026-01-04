@@ -100,6 +100,16 @@
       forceEnableEmergencyLights: true
       emergencyLightColor: DodgerBlue
       shuttleTime: 600
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/beep_beep.ogg
+        params:
+          pitch: 1.4
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 120
+      # Orion-End
     violet:
       announcement: alert-level-violet-announcement
       sound: /Audio/Misc/notice1.ogg
@@ -107,6 +117,16 @@
       emergencyLightColor: Violet
       forceEnableEmergencyLights: true
       shuttleTime: 600
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/alien.ogg
+        params:
+          pitch: 1.1
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
     yellow:
       announcement: alert-level-yellow-announcement
       sound: /Audio/Misc/notice1.ogg
@@ -114,6 +134,16 @@
       emergencyLightColor: Goldenrod
       forceEnableEmergencyLights: true
       shuttleTime: 600
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/rising.ogg
+        params:
+          volume: -12
+          pitch: 0.89
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
     # Orion-Start
     amber:
       announcement: alert-level-amber-announcement
@@ -122,6 +152,14 @@
       emergencyLightColor: Orange
       forceEnableEmergencyLights: true
       shuttleTime: 600
+      alarmSound:
+        path: /Audio/_Orion/Announcements/2_tone_alarm.ogg
+        params:
+          volume: -12
+          pitch: 0.89
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
     # Orion-End
     red:
       announcement: alert-level-red-announcement
@@ -130,6 +168,16 @@
       emergencyLightColor: Red
       forceEnableEmergencyLights: true
       shuttleTime: 600 #No reduction in time as we don't have swiping for red alert like in /tg/. Shuttle times are intended to create friction, so having a way to brainlessly bypass that would be dumb.
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/2_tone_alarm.ogg
+        params:
+          volume: -12
+          pitch: 0.89
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
     gamma:
       announcement: alert-level-gamma-announcement
       selectable: false
@@ -138,6 +186,16 @@
       color: PaleVioletRed
       emergencyLightColor: PaleVioletRed
       forceEnableEmergencyLights: true
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/2_tone_alarm.ogg
+        params:
+          volume: -12
+          pitch: 0.6
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
     delta:
       announcement: alert-level-delta-announcement
       selectable: false
@@ -150,6 +208,15 @@
       emergencyLightColor: Orange
       forceEnableEmergencyLights: true
       shuttleTime: 1200
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/overload.ogg
+        params:
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 45
+      # Orion-End
     epsilon:
       announcement: alert-level-epsilon-announcement
       selectable: false
@@ -162,6 +229,15 @@
       emergencyLightColor: DarkViolet
       forceEnableEmergencyLights: true
       shuttleTime: 1200
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/angry.ogg
+        params:
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
     omicron: # Goobstation
       announcement: alert-level-omicron-announcement
       selectable: false
@@ -172,6 +248,16 @@
       emergencyLightColor: Ivory
       forceEnableEmergencyLights: true
       shuttleTime: 2400
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/alien.ogg
+        params:
+          pitch: 0.85
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
     octarine: # DeltaV - Cosmic Cult
       announcement: alert-level-octarine-announcement
       selectable: false
@@ -181,3 +267,13 @@
       emergencyLightColor: CadetBlue
       forceEnableEmergencyLights: true
       shuttleTime: 600
+      # Orion-Start
+      alarmSound:
+        path: /Audio/_Orion/Announcements/alien.ogg
+        params:
+          pitch: 0.85
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 60
+      # Orion-End
