@@ -23,7 +23,7 @@ public sealed class ReadyManifestSystem : EntitySystem
     [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
 
     private readonly Dictionary<ICommonSession, ReadyManifestEui> _openEuis = new();
-    private Dictionary<ProtoId<JobPrototype>, int> _jobCounts = new();
+    private Dictionary<ProtoId<JobPrototype>, List<string>> _jobCharacters = new();
 
     private const int MinJobWeightForAutoInclude = 10;
 
@@ -42,6 +42,7 @@ public sealed class ReadyManifestSystem : EntitySystem
         }
 
         _openEuis.Clear();
+        _jobCharacters.Clear();
     }
 
     private void OnRequestReadyManifest(RequestReadyManifestMessage message, EntitySessionEventArgs args)
@@ -63,14 +64,20 @@ public sealed class ReadyManifestSystem : EntitySystem
 
         var profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
         var profileJobs = FilterPlayerJobs(profile);
+        var characterName = profile.Name;
 
         if (_gameTicker.PlayerGameStatuses[userId] == PlayerGameStatus.ReadyToPlay)
         {
             foreach (var job in profileJobs)
             {
-                if (!_jobCounts.TryAdd(job, 1))
+                if (!_jobCharacters.ContainsKey(job))
                 {
-                    _jobCounts[job]++;
+                    _jobCharacters[job] = new List<string>();
+                }
+
+                if (!_jobCharacters[job].Contains(characterName))
+                {
+                    _jobCharacters[job].Add(characterName);
                 }
             }
         }
@@ -78,9 +85,13 @@ public sealed class ReadyManifestSystem : EntitySystem
         {
             foreach (var job in profileJobs)
             {
-                if (_jobCounts.TryGetValue(job, out var value))
+                if (!_jobCharacters.TryGetValue(job, out var characters))
+                    continue;
+
+                characters.Remove(characterName);
+                if (characters.Count == 0)
                 {
-                    _jobCounts[job] = Math.Max(0, value - 1);
+                    _jobCharacters.Remove(job);
                 }
             }
         }
@@ -90,7 +101,7 @@ public sealed class ReadyManifestSystem : EntitySystem
 
     private void BuildReadyManifest()
     {
-        var jobCounts = new Dictionary<ProtoId<JobPrototype>, int>();
+        var jobCharacters = new Dictionary<ProtoId<JobPrototype>, List<string>>();
 
         foreach (var (userId, status) in _gameTicker.PlayerGameStatuses)
         {
@@ -103,14 +114,24 @@ public sealed class ReadyManifestSystem : EntitySystem
             if (preferences.SelectedCharacter is not HumanoidCharacterProfile profile)
                 continue;
 
+            var characterName = profile.Name;
             var profileJobs = FilterPlayerJobs(profile);
+
             foreach (var jobId in profileJobs)
             {
-                if (!jobCounts.TryAdd(jobId, 1))
-                    jobCounts[jobId]++;
+                if (!jobCharacters.ContainsKey(jobId))
+                {
+                    jobCharacters[jobId] = new List<string>();
+                }
+
+                if (!jobCharacters[jobId].Contains(characterName))
+                {
+                    jobCharacters[jobId].Add(characterName);
+                }
             }
         }
-        _jobCounts = jobCounts;
+
+        _jobCharacters = jobCharacters;
     }
 
     private List<ProtoId<JobPrototype>> FilterPlayerJobs(HumanoidCharacterProfile profile)
@@ -127,9 +148,9 @@ public sealed class ReadyManifestSystem : EntitySystem
         return priorityJobs;
     }
 
-    public IReadOnlyDictionary<ProtoId<JobPrototype>, int> GetReadyManifest()
+    public IReadOnlyDictionary<ProtoId<JobPrototype>, List<string>> GetReadyManifest()
     {
-        return _jobCounts;
+        return _jobCharacters;
     }
 
     public void OpenEui(ICommonSession session, EntityUid? owner = null)
