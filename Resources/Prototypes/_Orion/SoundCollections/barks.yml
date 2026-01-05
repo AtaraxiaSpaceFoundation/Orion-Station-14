@@ -1,0 +1,222 @@
+- type: soundCollection
+  id: AceAttorney
+  files:
+  - /Audio/_Orion/Voice/AceAttorney/aa_blip.ogg
+  - /Audio/_Orion/Voice/AceAttorney/aa_blip_typewriter.ogg
+  - /Audio/_Orion/Voice/AceAttorney/aa_dd_blip.ogg
+  - /Audio/_Orion/Voice/AceAttorney/aa_tgaa_blip.ogg
+
+- type: soundCollection
+  id: DontStarveWilson
+  files:
+  - /Audio/_Orion/Voice/DontStarve/wilson_bark.ogg
+
+- type: soundCollection
+  id: DontStarveWolfgang
+  files:
+  - /Audio/_Orion/Voice/DontStarve/wolfgang_bark.ogg
+
+- type: soundCollection
+  id: DontStarveWoodie
+  files:
+  - /Audio/_Orion/Voice/DontStarve/woodie_bark.ogg
+
+- type: soundCollection
+  id: DontStarveWurt
+  files:
+  - /Audio/_Orion/Voice/DontStarve/wurt_bark.ogg
+
+- type: soundCollection
+  id: DontStarveWx78
+  files:
+  - /Audio/_Orion/Voice/DontStarve/wx78_bark.ogg
+
+- type: soundCollection
+  id: KazooieAhuh
+  files:
+  - /Audio/_Orion/Voice/Kazooie/ahuh.ogg
+
+- type: soundCollection
+  id: KazooieBird
+  files:
+  - /Audio/_Orion/Voice/Kazooie/birdwhistle.ogg
+  - /Audio/_Orion/Voice/Kazooie/birdwhistle2.ogg
+
+- type: soundCollection
+  id: KazooieCaw
+  files:
+  - /Audio/_Orion/Voice/Kazooie/caw.ogg
+  - /Audio/_Orion/Voice/Kazooie/caw2.ogg
+  - /Audio/_Orion/Voice/Kazooie/caw3.ogg
+
+- type: soundCollection
+  id: KazooieCry
+  files:
+  - /Audio/_Orion/Voice/Kazooie/cry.ogg
+
+- type: soundCollection
+  id: KazooieWoop
+  files:
+  - /Audio/_Orion/Voice/Kazooie/woop.ogg
+
+- type: soundCollection
+  id: KazooieEhh
+  files:
+  - /Audio/_Orion/Voice/Kazooie/ehh.ogg
+  - /Audio/_Orion/Voice/Kazooie/ehh2.ogg
+  - /Audio/_Orion/Voice/Kazooie/ehh3.ogg
+  - /Audio/_Orion/Voice/Kazooie/ehh4.ogg
+  - /Audio/_Orion/Voice/Kazooie/ehh5.ogg
+
+- type: soundCollection
+  id: KazooieFaucet
+  files:
+  - /Audio/_Orion/Voice/Kazooie/faucet.ogg
+  - /Audio/_Orion/Voice/Kazooie/faucet2.ogg
+
+- type: soundCollection
+  id: KazooieGrowl
+  files:
+  - /Audio/_Orion/Voice/Kazooie/growl.ogg
+  - /Audio/_Orion/Voice/Kazooie/growl2.ogg
+
+- type: soundCollection
+  id: KazooieHaha
+  files:
+  - /Audio/_Orion/Voice/Kazooie/haha.ogg
+
+- type: soundCollection
+  id: KazooieHoot
+  files:
+  - /Audio/_Orion/Voice/Kazooie/hoot.ogg
+
+- type: soundCollection
+  id: KazooieMoan
+  files:
+  - /Audio/_Orion/Voice/Kazooie/moan1.ogg
+  - /Audio/_Orion/Voice/Kazooie/moan2.ogg
+  - /Audio/_Orion/Voice/Kazooie/moan3.ogg
+
+- type: soundCollection
+  id: KazooieRaah
+  files:
+  - /Audio/_Orion/Voice/Kazooie/raah1.ogg
+  - /Audio/_Orion/Voice/Kazooie/raah2.ogg
+
+- type: soundCollection
+  id: KazooieRibbit
+  files:
+  - /Audio/_Orion/Voice/Kazooie/ribbit.ogg
+
+- type: soundCollection
+  id: KazooieSlurp
+  files:
+  - /Audio/_Orion/Voice/Kazooie/slurp.ogg
+
+- type: soundCollection
+  id: KazooieTweet
+  files:
+  - /Audio/_Orion/Voice/Kazooie/tweet.ogg
+
+- type: soundCollection
+  id: KazooieUhm
+  files:
+  - /Audio/_Orion/Voice/Kazooie/uhm.ogg
+
+- type: soundCollection
+  id: KazooieZap
+  files:
+  - /Audio/_Orion/Voice/Kazooie/zap.ogg
+
+- type: soundCollection
+  id: UndertaleAlphys
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_alphys.ogg
+
+- type: soundCollection
+  id: UndertaleAsgore
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_asgore.ogg
+
+- type: soundCollection
+  id: UndertaleFlowey
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_flowey_1.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_flowey_2.ogg
+
+- type: soundCollection
+  id: UndertaleGaster
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_1.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_2.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_3.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_4.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_5.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_6.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_gaster_7.ogg
+
+- type: soundCollection
+  id: UndertaleMetta
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_metta_1.ogg
+
+- type: soundCollection
+  id: UndertaleMonster
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_monster1.ogg
+  - /Audio/_Orion/Voice/Undertale/voice_monster2.ogg
+
+- type: soundCollection
+  id: UndertalePapyrus
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_papyrus.ogg
+
+- type: soundCollection
+  id: UndertaleRalsei
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_ralsei.ogg
+
+- type: soundCollection
+  id: UndertaleSans
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_sans.ogg
+
+- type: soundCollection
+  id: UndertaleSusie
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_susie.ogg
+
+- type: soundCollection
+  id: UndertaleTemmie
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_temmie.ogg
+
+- type: soundCollection
+  id: UndertaleToriel
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_toriel.ogg
+
+- type: soundCollection
+  id: UndertaleUndyne
+  files:
+  - /Audio/_Orion/Voice/Undertale/voice_undyne.ogg
+
+- type: soundCollection
+  id: Bleat
+  files:
+  - /Audio/_Orion/Voice/bleat.ogg
+
+- type: soundCollection
+  id: MothSqueak
+  files:
+  - /Audio/_Orion/Voice/mothsqueak.ogg
+
+- type: soundCollection
+  id: Nomi
+  files:
+  - /Audio/_Orion/Voice/nomi.ogg
+
+- type: soundCollection
+  id: Poyo
+  files:
+  - /Audio/_Orion/Voice/poyo.ogg
