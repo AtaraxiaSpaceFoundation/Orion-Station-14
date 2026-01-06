@@ -56,21 +56,24 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Orion/Structures/Machines/mixer.rsi
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: Structures/Machines/mixer.rsi > _Orion/Structures/Machines/mixer.rsi
     snapCardinals: true
     layers:
     - state: mixer_empty
     - state: mixer_screens
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
-      visible: false
+      visible: false # Orion-Edit: Added for power-based visibility
+    # Orion-Start: Added for ItemMapper with unshaded screen
     - state: mixer_screens_loaded
       shader: unshaded
       map: ["mixer_screens_loaded"]
       visible: false
+    # Orion-End
   - type: Icon
-    sprite: _Orion/Structures/Machines/mixer.rsi
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: Structures/Machines/mixer.rsi > _Orion/Structures/Machines/mixer.rsi
     state: mixer_empty
+  # Orion-Start: Added for visual system compatibility
   - type: Appearance
   - type: ItemMapper
     sprite: _Orion/Structures/Machines/mixer.rsi
@@ -93,6 +96,7 @@
         mixer_empty_screen:
           True: { visible: false }
           False: { visible: true }
+  # Orion-End
   - type: ChemMaster
     pillDosageLimit: 20
   - type: Physics
@@ -151,7 +155,7 @@
           tags:
           - Bottle
           - PillCanister
-          - MedicalPatch
+          - MedicalPatch # Goobstation
   - type: AutomationSlots
     slots:
     - !type:AutomatedSolution
@@ -171,7 +175,7 @@
       output: PlumbingDispenser
   - type: SolutionContainerManager
     solutions:
-      buffer:
+      buffer: # Goobstation
         maxVol: 1000000
   - type: DumpableSolution
     solution: buffer
