@@ -138,9 +138,9 @@ public sealed partial class DetailExaminableWindow : FancyWindow
         PreviewTabs.SetTabVisible(3, showNsfw);
 
         var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
-        var speciesProto = prototypeManager.Index(state.Species);
-
-        var species = Loc.GetString(speciesProto.Name);
+        var species = prototypeManager.TryIndex(state.Species, out var speciesProto)
+            ? Loc.GetString(speciesProto.Name)
+            : state.Species.ToString();
         var sex = Loc.GetString($"humanoid-profile-editor-sex-{state.Sex.ToString().ToLower()}-text");
         var gender = Loc.GetString($"humanoid-profile-editor-pronouns-{state.Gender.ToString().ToLower()}-text");
 
