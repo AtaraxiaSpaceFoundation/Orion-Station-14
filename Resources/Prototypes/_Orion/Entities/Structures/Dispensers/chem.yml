@@ -5,7 +5,8 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
-    state: industrial-working
+  - type: ItemMapper
+    sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
   - type: Battery
     maxCharge: 800
     startingCharge: 0
@@ -30,12 +31,12 @@
   - type: Icon
     sprite: _Orion/Structures/Dispensers/dispenser.rsi
     state: industrial
-  - type: Appearance  # Добавьте это!
+  - type: Appearance
   - type: ItemMapper
-    sprite: _Orion/Structures/Dispensers/dispenser.rsi  # Добавьте это!
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi
     containerWhitelist: [beakerSlot]
     mapLayers:
-      industrial_loaded:  # Этот слой будет создан ItemMapper'ом динамически
+      industrial_loaded:
         whitelist:
           components:
           - FitsInDispenser
@@ -111,14 +112,14 @@
       Sugar: 5
       Sulfur: 5
     reagentsEmagged:
-      Puncturase: 15
-      Pyrazine: 15
+      Puncturase: 20
+      Pyrazine: 10
       TranexamicAcid: 5
       Epinephrine: 5
-      Aloxadone: 10
+      Leporazine: 10
       Cryoxadone: 5
-      Ephedrine: 10
-      Morphine: 3
+      Ephedrine: 20
+      Tricordrazine: 5
   - type: ApcPowerReceiver
     powerLoad: 65
 
