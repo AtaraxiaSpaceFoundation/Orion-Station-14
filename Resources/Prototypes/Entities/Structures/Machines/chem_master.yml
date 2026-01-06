@@ -64,12 +64,6 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false # Orion-Edit: Added for power-based visibility
-    # Orion-Start: Added for ItemMapper with unshaded screen
-    - state: mixer_screens_loaded
-      shader: unshaded
-      map: ["mixer_screens_loaded"]
-      visible: false
-    # Orion-End
   - type: Icon
     sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: Structures/Machines/mixer.rsi > _Orion/Structures/Machines/mixer.rsi
     state: mixer_empty
