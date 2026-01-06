@@ -66,7 +66,7 @@
   description: uplink-gondola-desc
   productEntity: CrateNPCGondola
   cost:
-    Telecrystal: 30
+    Telecrystal: 15 # Orion-Edit: 30 > 15
   categories:
     -  UplinkDisruption
 
@@ -82,8 +82,8 @@
 
 - type: listing
   id: UplinkBoxReagentGrenades
-  name: Box of Reagent Grenades
-  description: Contains 2 Glue grenades and 2 Lube Grenades
+  name: uplink-box-reagent-grenades-name # Orion-Edit: Localization
+  description: uplink-box-reagent-grenades-desc # Orion-Edit: Localization
   productEntity: BoxReagentGrenades
   cost:
     Telecrystal: 30
@@ -500,7 +500,7 @@
   icon: { sprite: _Goobstation/Clothing/OuterClothing/Hardsuits/dreadnought.rsi, state: icon }
   productEntity: CrateSyndicateDreadnought
   cost:
-    Telecrystal: 150
+    Telecrystal: 130 # Orion-Edit: 150 > 130
   categories:
   - UplinkWearables
 
@@ -814,7 +814,7 @@
   description: uplink-lollypop-bundle-desc
   productEntity: SyndicateLollypopBundle
   cost:
-    Telecrystal: 15
+    Telecrystal: 10 # Orion-Edit: 15 > 10
   categories:
   - UplinkChemicals
 
@@ -834,7 +834,7 @@
   description: uplink-lollypop-bundle-big-desc
   productEntity: ClothingBackpackDuffelSyndicateFilledCandy
   cost:
-    Telecrystal: 100
+    Telecrystal: 30 # Orion-Edit: 100 > 30
   categories:
   - UplinkChemicals
 
@@ -1058,7 +1058,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/berserker_heart.rsi, state: icon }
   productEntity: AutosurgeonBerserker
   cost:
-    Telecrystal: 66
+    Telecrystal: 45 # Orion-Edit: 66 > 45
   categories:
   - UplinkImplants
 
@@ -1099,7 +1099,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: blast }
   productEntity: GrenadeBlast
   cost:
-    Telecrystal: 12 # Buying granades this way is ~14% cheaper than getting them from china-lake bundles
+    Telecrystal: 10 # Buying granades this way is ~14% cheaper than getting them from china-lake bundles # Orion-Edit: 12 > 10
   categories:
   - UplinkAmmo
 
@@ -1110,7 +1110,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: frag }
   productEntity: GrenadeFrag
   cost:
-    Telecrystal: 12 # Buying granades this way is ~14% cheaper than getting them from china-lake bundles
+    Telecrystal: 10 # Buying granades this way is ~14% cheaper than getting them from china-lake bundles # Orion-Edit: 12 > 10
   categories:
   - UplinkAmmo
 
@@ -1290,7 +1290,7 @@
   description: uplink-cartridge-G8-demolishing-desc
   productEntity:  CartridgeG8Demolishing
   cost:
-    Telecrystal: 6 # 12% cheaper than the bundle, coherency with china
+    Telecrystal: 4 # 12% cheaper than the bundle, coherency with china # Orion-Edit: 6 > 4
   categories:
   - UplinkAmmo
 
@@ -1300,7 +1300,7 @@
   description: uplink-cartridge-G8-hypercharged-desc
   productEntity: CartridgeG8Hypercharged
   cost:
-    Telecrystal: 6 # 12% cheaper than the bundle, coherency with china
+    Telecrystal: 5 # 12% cheaper than the bundle, coherency with china # Orion-Edit: 6 > 5
   categories:
   - UplinkAmmo
 

@@ -680,7 +680,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag.rsi, state: red-icon }
   productEntity: MagazinePistolSubMachineGun
   cost:
-    Telecrystal: 5 # goob - Ammo should be cheap. 96 dmg per TC.
+    Telecrystal: 4 # goob - Ammo should be cheap. 96 dmg per TC. # Orion-Edit: 5 > 4
   categories:
   - UplinkAmmo
 
@@ -713,9 +713,9 @@
   id: UplinkMosinAmmo
   name: uplink-mosin-ammo-name
   description: uplink-mosin-ammo-desc
-  productEntity: MagazineBoxLightRifle
+  productEntity: MagazineBoxRifle762 # Orion-edit: .30 > 7.62
   cost:
-    Telecrystal: 9 # goob
+    Telecrystal: 6 # goob # Orion-Edit: 9 > 6
   categories:
   - UplinkAmmo
 
@@ -869,7 +869,7 @@
   description: uplink-stimkit-desc
   productEntity: StimkitFilled
   cost:
-    Telecrystal: 40 # goob
+    Telecrystal: 20 # goob # Orion-Edit: 40 > 20
   categories:
   - UplinkChemicals
 
@@ -1010,7 +1010,7 @@
   description: uplink-bribe-desc
   productEntity: BriefcaseSyndieLobbyingBundleFilled
   cost:
-    Telecrystal: 20 # goob
+    Telecrystal: 10 # goob # Orion-Edit: 20 > 10
   categories:
     - UplinkDeception
   conditions: # EE Plasmeme Change: Plasmamen get another listing.
@@ -1035,7 +1035,7 @@
   icon: { sprite: /Textures/Objects/Tools/Decoys/operative_decoy.rsi, state: folded }
   productEntity: ClothingBackpackDuffelSyndicateDecoyKitFilled
   cost:
-    Telecrystal: 20 # goob - total meme item.
+    Telecrystal: 15 # goob - total meme item. # Orion-Edit 20 > 15
   categories:
   - UplinkDeception
 
@@ -1302,7 +1302,7 @@
   icon: { sprite: /Textures/Objects/Misc/guardian_info.rsi, state: icon }
   productEntity: BoxHoloparasite
   cost:
-    Telecrystal: 70 # goob
+    Telecrystal: 60 # goob # Orion-Edit: 70 > 60
   categories:
   - UplinkAllies
   conditions:
@@ -1470,7 +1470,7 @@
   icon: { sprite: /Textures/Clothing/Back/Backpacks/backpack.rsi, state: icon }
   productEntity: StorageImplanter
   cost:
-    Telecrystal: 40 # goob
+    Telecrystal: 30 # goob # Orion-Edit: 40 > 30
   categories:
     - UplinkImplants
   conditions:
@@ -1499,7 +1499,7 @@
   icon: { sprite: /Textures/Structures/Specific/anomaly.rsi, state: anom4 }
   productEntity: ScramImplanter
   cost:
-    Telecrystal: 15 # goob - can be useful, but does nothing on its own
+    Telecrystal: 20 # goob - can be useful, but does nothing on its own # Orion-Edit: 15 > 20
   categories:
     - UplinkImplants
 
@@ -1511,7 +1511,7 @@
   icon: { sprite: /Textures/Mobs/Species/Human/parts.rsi, state: full }
   productEntity: DnaScramblerImplanter
   cost:
-    Telecrystal: 25 # goob
+    Telecrystal: 20 # goob # Orion-Edit: 25 > 20
   categories:
     - UplinkImplants
 
@@ -1607,7 +1607,7 @@
   icon: { sprite: /Textures/Objects/Magic/magicactions.rsi, state: gib }
   productEntity: DeathAcidifierImplanter
   cost:
-    Telecrystal: 20 # goob # goob - traitor suicide implants
+    Telecrystal: 10 # goob # goob - traitor suicide implants # Orion-Edit: 20 > 10
   categories:
     - UplinkImplants
   # goob - traitor suicide implants
@@ -1951,7 +1951,7 @@
   description: uplink-cat-ears-desc
   productEntity: ClothingHeadHatCatEars
   cost:
-    Telecrystal: 130 # goob
+    Telecrystal: 100 # goob # Orion-Edit: 130 > 100
   categories:
   - UplinkPointless
 

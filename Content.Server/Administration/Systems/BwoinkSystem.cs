@@ -197,7 +197,7 @@ namespace Content.Server.Administration.Systems
         private const ushort MessageLengthCap = 3000;
 
         // Orion-Start
-        private readonly TimeSpan _messageCooldown = TimeSpan.FromSeconds(2);
+        private readonly TimeSpan _messageCooldown = TimeSpan.FromSeconds(1);
 
         private readonly Dictionary<NetUserId, Queue<(string Text, TimeSpan Timestamp)>> _recentMessages = new();
         private const int MaxRecentMessages = 10;

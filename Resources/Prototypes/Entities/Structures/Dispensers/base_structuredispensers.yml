@@ -137,5 +137,5 @@
     startingCharge: 0
   - type: ApcPowerReceiverBattery # Orion
     idleLoad: 65
-    batteryRechargeRate: 25
+    batteryRechargeRate: 15
     batteryRechargeEfficiency: 1.0

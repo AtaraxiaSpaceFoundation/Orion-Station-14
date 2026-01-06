@@ -1,0 +1,20 @@
+- type: latheRecipe
+  id: SprayBottleRedEmpty
+  result: SprayBottleRedEmpty
+  completetime: 2
+  materials:
+    Plastic: 100
+
+- type: latheRecipe
+  id: SprayBottleOrangeEmpty
+  result: SprayBottleOrangeEmpty
+  completetime: 2
+  materials:
+    Plastic: 100
+
+- type: latheRecipe
+  id: SprayBottleBlueEmpty
+  result: SprayBottleBlueEmpty
+  completetime: 2
+  materials:
+    Plastic: 100

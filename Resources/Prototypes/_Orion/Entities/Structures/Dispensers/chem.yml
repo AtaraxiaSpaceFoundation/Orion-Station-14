@@ -11,7 +11,7 @@
     startingCharge: 0
 
 - type: entity
-  parent: ReagentDispenserBase
+  parent: [ReagentDispenserBase, BaseMachinePowered]
   id: ChemDispenser
   name: chemical dispenser
   description: A bluespace Chemical Dispenser that uses station energy to synthesize Reagents. The future is here and now.
@@ -20,8 +20,27 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Dispensers/dispenser.rsi
-    state: industrial
+    layers:
+    - state: industrial-off
+    - state: industrial-working
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
     snapCardinals: true
+  - type: Icon
+    state: industrial
+  - type: ItemMapper
+    containerWhitelist: [beakerSlot]
+    mapLayers:
+      industrial_loaded:
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
   - type: Battery
     maxCharge: 1500
     startingCharge: 0
@@ -73,17 +92,17 @@
       Copper: 5
       Ethanol: 8
       Fluorine: 12
-      Hydrogen: 3
+      Hydrogen: 9
       Iodine: 8
       Iron: 5
-      Lithium: 12
-      Mercury: 12
+      Lithium: 6
+      Mercury: 7
       Nitrogen: 3
       Oxygen: 3
-      Phosphorus: 5
+      Phosphorus: 15
       Potassium: 8
-      Radium: 15
-      Silicon: 3
+      Radium: 7
+      Silicon: 4
       Sodium: 5
       Sugar: 5
       Sulfur: 5

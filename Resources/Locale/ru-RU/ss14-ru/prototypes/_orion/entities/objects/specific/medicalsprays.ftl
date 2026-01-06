@@ -1,0 +1,9 @@
+ent-SprayBottleRedEmpty = медицинский красный спрей
+    .suffix = Пустой, Кровоостанавливающий порошок
+    .desc = { ent-SprayBottle.desc }
+ent-SprayBottleOrangeEmpty = медицинский оранжевый спрей
+    .suffix = Пустой, Сульфадиазин серебра
+    .desc = { ent-SprayBottle.desc }
+ent-SprayBottleBlueEmpty = медицинский синий спрей
+    .suffix = Пустой, Синий
+    .desc = { ent-SprayBottle.desc }

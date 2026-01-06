@@ -1,0 +1,35 @@
+- type: entity
+  parent: SprayBottle
+  id: SprayBottleRedEmpty
+  name: red spray bottle
+  suffix: Empty, Styptic powder
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Medical/Stypticspray.rsi
+    state: icon
+  - type: Item
+    sprite: _Goobstation/Objects/Medical/Stypticspray.rsi
+
+- type: entity
+  parent: SprayBottle
+  id: SprayBottleOrangeEmpty
+  name: orange spray bottle
+  suffix: Empty, Styptic powder
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Medical/Silverspray.rsi
+    state: icon
+  - type: Item
+    sprite: _Goobstation/Objects/Medical/Stypticspray.rsi
+
+- type: entity
+  parent: SprayBottle
+  id: SprayBottleBlueEmpty
+  name: blue spray bottle
+  suffix: Empty, Blue
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Medical/Bluespray.rsi
+    state: icon
+  - type: Item
+    sprite: _Orion/Objects/Medical/Bluespray.rsi

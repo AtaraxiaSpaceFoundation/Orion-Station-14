@@ -73,6 +73,12 @@
         whitelist:
           components:
           - FitsInDispenser
+    # Orion-Start
+      mixer_screens_loaded:
+        whitelist:
+          components:
+          - FitsInDispenser
+    # Orion-End
   - type: ChemMaster
     pillDosageLimit: 20
   - type: Physics

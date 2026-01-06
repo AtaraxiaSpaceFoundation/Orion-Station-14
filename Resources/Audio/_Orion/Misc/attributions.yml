@@ -2,3 +2,8 @@
   license: "CC-BY-SA-3.0"
   copyright: "Taken from Parsdise SS13"
   source: "https://github.com/ParadiseSS13/Paradise/commit/a62233000443a5f57acfae6847748aabad5cdbdb"
+
+- files: ["delta.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Wizden https://github.com/space-wizards/space-station-14/blob/master/Resources/Audio/Misc/delta.ogg, upgraded by UmbiMax"
+  source: "https://github.com/space-wizards/space-station-14/pull/8226/commits/92529612a94e576a85b85f4762a3619859972871#diff-5df104702f68acafc1cc806a80ce616d623fccbea9fff74cfdf02435d2559331"

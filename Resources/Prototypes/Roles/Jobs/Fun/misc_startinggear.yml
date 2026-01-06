@@ -264,6 +264,7 @@
   id: MobAghostGear
   equipment:
     back: ClothingBackpackSatchelAdmin
+    eyes: ClothingEyesHudMultiversal # Orion
     id: AdminPDA
   storage:
     back:

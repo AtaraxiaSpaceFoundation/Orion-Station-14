@@ -112,7 +112,7 @@
       # Orion-End
     violet:
       announcement: alert-level-violet-announcement
-      sound: /Audio/Misc/notice1.ogg
+      sound: /Audio/_Orion/Misc/code_danger.ogg # Orion-Edit
       color: Violet
       emergencyLightColor: Violet
       forceEnableEmergencyLights: true
@@ -129,14 +129,14 @@
       # Orion-End
     yellow:
       announcement: alert-level-yellow-announcement
-      sound: /Audio/Misc/notice1.ogg
+      sound: /Audio/_Orion/Misc/code_danger.ogg # Orion-Edit
       color: Yellow
       emergencyLightColor: Goldenrod
       forceEnableEmergencyLights: true
       shuttleTime: 600
       # Orion-Start
       alarmSound:
-        path: /Audio/_Orion/Announcements/rising.ogg
+        path: /Audio/_Orion/Announcements/beep_beep.ogg
         params:
           volume: -12
           pitch: 0.89
@@ -188,7 +188,7 @@
       forceEnableEmergencyLights: true
       # Orion-Start
       alarmSound:
-        path: /Audio/_Orion/Announcements/2_tone_alarm.ogg
+        path: /Audio/_Orion/Announcements/angry.ogg
         params:
           volume: -12
           pitch: 0.6
@@ -200,7 +200,7 @@
       announcement: alert-level-delta-announcement
       selectable: false
       sound:
-        path: /Audio/Misc/delta.ogg
+        path: /Audio/_Orion/Misc/delta.ogg # Orion-Edit
         params:
           volume: -3
       disableSelection: true
@@ -210,12 +210,12 @@
       shuttleTime: 1200
       # Orion-Start
       alarmSound:
-        path: /Audio/_Orion/Announcements/overload.ogg
+        path: /Audio/_Orion/Misc/soundlight/delta_light.ogg
         params:
-          volume: -12
+          volume: -6
           maxDistance: 10
           rolloffFactor: 2
-      alarmInterval: 45
+      alarmInterval: 2.7
       # Orion-End
     epsilon:
       announcement: alert-level-epsilon-announcement
@@ -236,7 +236,7 @@
           volume: -12
           maxDistance: 10
           rolloffFactor: 2
-      alarmInterval: 60
+      alarmInterval: 8
       # Orion-End
     omicron: # Goobstation
       announcement: alert-level-omicron-announcement
@@ -269,11 +269,11 @@
       shuttleTime: 600
       # Orion-Start
       alarmSound:
-        path: /Audio/_Orion/Announcements/alien.ogg
+        path: /Audio/_Orion/Announcements/angry.ogg
         params:
           pitch: 0.85
           volume: -12
           maxDistance: 10
           rolloffFactor: 2
-      alarmInterval: 60
+      alarmInterval: 20
       # Orion-End

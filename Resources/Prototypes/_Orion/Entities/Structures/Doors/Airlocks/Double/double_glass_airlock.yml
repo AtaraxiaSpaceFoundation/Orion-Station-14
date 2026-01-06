@@ -1,0 +1,54 @@
+- type: entity
+  parent: Airlock
+  id: DoubleGlassAirlock
+  name: Double Glass Airlock
+  description: It opens, it closes, and maybe crushes you, but it bigger than normal door.
+  components:
+  - type: Door
+    closeTimeOne: 0.55
+    closeTimeTwo: 0.3
+    openTimeOne: 0.55
+    openTimeTwo: 0.3
+    occludes: false
+  - type: Occluder
+    enabled: false
+  - type: Sprite
+    sprite: _Orion/Structures/Doors/Airlocks/Double/double_glass_airlock.rsi
+    snapCardinals: false
+    offset: 0.5,0
+  - type: AnimationPlayer
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,1.49,0.49"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - GlassAirlockLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 750
+  - type: LayerChangeOnWeld
+    unWeldedLayer: GlassAirlockLayer
+    weldedLayer: GlassLayer
+  - type: Rotatable
+    rotateWhileAnchored: false
+  - type: Transform
+    noRot: false
+  - type: Construction
+    graph: Airlock
+    node: glassAirlock
+  - type: RadiationBlocker
+    resistance: 2
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmack
+  - type: Tag
+    tags:
+      - GlassAirlock

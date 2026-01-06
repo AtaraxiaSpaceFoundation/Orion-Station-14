@@ -34,7 +34,7 @@
     sprite: _Goobstation/Clothing/Neck/Cloaks/breverb.rsi
 
 - type: entity
-  parent: [ ClothingNeckBase, BaseMagicalContraband ]
+  parent: ClothingNeckBase # Orion-Edit: "BaseMagicalContraband" removed
   id: ClothingNeckCloakCarp
   name: carp cloak
   description: Getting up to some fishy business are we?
@@ -45,7 +45,7 @@
     sprite: _Goobstation/Clothing/Neck/Cloaks/carpcloak.rsi
 
 - type: entity
-  parent: [ ClothingNeckBase, BaseMagicalContraband ]
+  parent: ClothingNeckBase # Orion-Edit: "BaseMagicalContraband" removed
   id: ClothingNeckCloakCarpAlt
   name: carp cloak
   description: Restricted to extraterrestrial entities. That means NOT you.

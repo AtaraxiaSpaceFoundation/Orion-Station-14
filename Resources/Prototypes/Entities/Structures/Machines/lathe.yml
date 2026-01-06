@@ -868,6 +868,9 @@
     - MedicalClothingStatic
     - EmptyMedkitsStatic
     - SurgeryStatic
+    # Orion-Start
+    - EmptyMedicalSprayBottlesStatic
+    # Orion-End
     # Goobstation Packs
     - ParamedHypoStatic
     - MedicalPatchesStatic

@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from TauCeti https://github.com/TauCetiStation/TauCetiClassic/tree/master/icons/obj/doors/airlocks/multi_tile. Rework by UmbiMax",
+  "size": {
+    "x": 64,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "assembly"
+    },
+    {
+      "name": "bolted_unlit"
+    },
+    {
+      "name": "bolted_open_unlit"
+    },
+    {
+      "name": "closed"
+    },
+    {
+      "name": "closed_unlit"
+    },
+    {
+      "name": "panel_closed"
+    },
+    {
+      "name": "closing",
+      "delays": [
+        [
+          0.12,
+          0.11,
+          0.08,
+          0.08,
+          0.08,
+          0.14
+        ]
+      ]
+    },
+    {
+      "name": "closing_unlit",
+      "delays": [
+        [
+          0.12,
+          0.11,
+          0.08,
+          0.08,
+          0.08,
+          0.14
+        ]
+      ]
+    },
+    {
+      "name": "closing-panel",
+      "delays": [
+        [
+          0.12,
+          0.11,
+          0.08,
+          0.08,
+          0.08,
+          0.14
+        ]
+      ]
+    },
+    {
+      "name": "deny_unlit",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "open"
+    },
+    {
+      "name": "open_unlit"
+    },
+    {
+      "name": "panel_open"
+    },
+    {
+      "name": "opening",
+      "delays": [
+        [
+          0.12,
+          0.11,
+          0.08,
+          0.08,
+          0.08,
+          0.14
+        ]
+      ]
+    },
+    {
+      "name": "opening_unlit",
+      "delays": [
+        [
+          0.12,
+          0.11,
+          0.08,
+          0.08,
+          0.08,
+          0.14
+        ]
+      ]
+    },
+    {
+      "name": "opening-panel",
+      "delays": [
+        [
+          0.12,
+          0.11,
+          0.08,
+          0.08,
+          0.08,
+          0.14
+        ]
+      ]
+    },
+    {
+      "name": "sparks",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "sparks_broken",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          1.7
+        ]
+      ]
+    },
+    {
+      "name": "sparks_damaged",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "welded"
+    },
+    {
+      "name": "emergency_unlit",
+      "delays": [
+        [
+          1.2,
+          1.2
+        ]
+      ]
+    },
+    {
+      "name": "emergency_open_unlit"
+    }
+  ]
+}

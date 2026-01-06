@@ -75,6 +75,7 @@
         Blunt: 5
         Slash: 10
         Structural: 10
+      armorPenetration: 0.4 # Orion
       woundSeverityMultipliers:
         Blunt: 2
         Slash: 2.5
@@ -128,6 +129,7 @@
         Heat: 5
         Slash: 10
         Structural: 20
+      armorPenetration: 0.4 # Orion
       woundSeverityMultipliers:
         Slash: 2.5
         Heat: 2

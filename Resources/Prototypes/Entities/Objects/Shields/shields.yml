@@ -647,9 +647,9 @@
       spriteLayer: shield
       inhandVisuals:
         left:
-          - state: shield-inhand-left
+          - state: inhand-left-shield # Orion-Edit: Bugfix
         right:
-          - state: shield-inhand-right
+          - state: inhand-right-shield # Orion-Edit: Bugfix
     - type: Appearance
     - type: Destructible
       thresholds:

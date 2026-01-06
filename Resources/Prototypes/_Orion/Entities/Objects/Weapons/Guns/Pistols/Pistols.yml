@@ -118,7 +118,7 @@
     angleIncrease: 2
     cameraRecoilScalar: 0.5
     fireRate: 5
-    maxAngle: 15
+    maxAngle: 13
     minAngle: 1
   - type: ItemSlots
     slots:
@@ -153,8 +153,8 @@
     sprite: _Orion/Objects/Weapons/Guns/Pistols/service_pistol23/tiny.rsi
   - type: Gun
     angleDecay: 15
-    angleIncrease: 5
-    fireRate: 5
+    angleIncrease: 2
+    fireRate: 4.5
     maxAngle: 15
     minAngle: 1
     selectedMode: SemiAuto
