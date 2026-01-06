@@ -14,7 +14,7 @@
     <GuideEntityEmbed Entity="MobHuman" Caption="Человек"/>
     <GuideEntityEmbed Entity="MobIPCDummy" Caption="КПБ"/>
     <GuideEntityEmbed Entity="MobMoth" Caption="Мотылёк"/>
-    <GuideEntityEmbed Entity="MobOni" Caption="Они"/>
+    <GuideEntityEmbed Entity="MobOni" Caption="Ёкай"/>
     <GuideEntityEmbed Entity="MobReptilian" Caption="Ящеролюд"/>
     <GuideEntityEmbed Entity="MobResomi" Caption="Резоми"/>
     <GuideEntityEmbed Entity="MobRodentia" Caption="Родентия"/>

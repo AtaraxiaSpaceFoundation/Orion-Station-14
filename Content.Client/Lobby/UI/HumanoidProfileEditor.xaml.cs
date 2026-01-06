@@ -851,7 +851,9 @@ namespace Content.Client.Lobby.UI
 
             _flavorText.PreviewNSFWText.SetMessage(Profile.NsfwFlavorText);
 
-            var species = Loc.GetString($"species-name-{Profile.Species.ToString().ToLower()}");
+            var species = _prototypeManager.TryIndex(Profile.Species, out var speciesProto)
+                ? Loc.GetString(speciesProto.Name)
+                : Profile.Species.ToString();
             var sex = Loc.GetString($"humanoid-profile-editor-sex-{Profile.Sex.ToString().ToLower()}-text");
             var gender = Loc.GetString($"humanoid-profile-editor-pronouns-{Profile.Gender.ToString().ToLower()}-text");
 
