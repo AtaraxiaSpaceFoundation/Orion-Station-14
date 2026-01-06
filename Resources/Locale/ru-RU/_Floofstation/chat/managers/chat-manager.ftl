@@ -1,4 +1,4 @@
-chat-speech-verb-name-oni = Они
+chat-speech-verb-name-oni = Ёкай
 chat-speech-verb-oni-1 = ворчит
 chat-speech-verb-oni-2 = рычит
 chat-speech-verb-oni-3 = ревёт

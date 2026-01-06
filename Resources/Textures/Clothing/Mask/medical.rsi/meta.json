@@ -36,13 +36,11 @@
     },
     {
       "name": "equipped-MASK-hamster",
-      "directions": 4,
-      "delays": [[1.0], [1.0], [1.0], [1.0]]
+      "directions": 4
     },
     {
       "name": "equipped-MASK-kangaroo",
-      "directions": 4,
-      "delays": [[1.0], [1.0], [1.0], [1.0]]
+      "directions": 4
     },
     {
       "name": "equipped-MASK-possum",
@@ -74,6 +72,14 @@
     },
     {
       "name": "up-equipped-MASK-vox",
+      "directions": 4
+    },
+    {
+      "name": "equipped-MASK-vulpkanin",
+      "directions": 4
+    },
+    {
+      "name": "up-equipped-MASK-vulpkanin",
       "directions": 4
     }
   ]

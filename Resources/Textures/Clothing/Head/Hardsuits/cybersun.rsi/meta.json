@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Created by discord:IAmRasputin#5242. Vox state by Flareguy for SS14",
+    "copyright": "Created by discord:IAmRasputin#5242. Vox state by Flareguy for SS14, vulp version made by YERO",
     "size": {
         "x": 32,
         "y": 32
@@ -27,6 +27,10 @@
         },
         {
             "name": "equipped-HELMET-dog",
+            "directions": 4
+        },
+        {
+            "name": "equipped-HELMET-vulpkanin",
             "directions": 4
         },
         {

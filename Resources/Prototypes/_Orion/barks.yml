@@ -1,0 +1,252 @@
+- type: bark
+  id: AceAttorney
+  name: bark-name-ace-attorney
+  frequency: 0.5
+  stop: true
+  soundCollection:
+    collection: AceAttorney
+
+- type: bark
+  id: DontStarveWilson
+  name: bark-name-dont-starve-wilson
+  soundCollection:
+    collection: DontStarveWilson
+
+- type: bark
+  id: DontStarveWolfgang
+  name: bark-name-dont-starve-wolfgang
+  soundCollection:
+    collection: DontStarveWolfgang
+
+- type: bark
+  id: DontStarveWoodie
+  name: bark-name-dont-starve-woodie
+  soundCollection:
+    collection: DontStarveWoodie
+
+- type: bark
+  id: DontStarveWurt
+  name: bark-name-dont-starve-wurt
+  soundCollection:
+    collection: DontStarveWurt
+
+- type: bark
+  id: DontStarveWx78
+  name: bark-name-dont-starve-wx78
+  soundCollection:
+    collection: DontStarveWx78
+
+- type: bark
+  id: KazooieAhuh
+  name: bark-name-kazooie-ahuh
+  soundCollection:
+    collection: KazooieAhuh
+
+- type: bark
+  id: KazooieBird
+  name: bark-name-kazooie-bird
+  soundCollection:
+    collection: KazooieBird
+
+- type: bark
+  id: KazooieCaw
+  name: bark-name-kazooie-caw
+  soundCollection:
+    collection: KazooieCaw
+
+- type: bark
+  id: KazooieCry
+  name: bark-name-kazooie-cry
+  soundCollection:
+    collection: KazooieCry
+
+- type: bark
+  id: KazooieWoop
+  name: bark-name-kazooie-woop
+  volume: 0.7
+  soundCollection:
+    collection: KazooieWoop
+
+- type: bark
+  id: KazooieEhh
+  name: bark-name-kazooie-ehh
+  volume: 0.6
+  soundCollection:
+    collection: KazooieEhh
+
+- type: bark
+  id: KazooieFaucet
+  name: bark-name-kazooie-faucet
+  soundCollection:
+    collection: KazooieFaucet
+
+- type: bark
+  id: KazooieGrowl
+  name: bark-name-kazooie-growl
+  soundCollection:
+    collection: KazooieGrowl
+
+- type: bark
+  id: KazooieHaha
+  name: bark-name-kazooie-haha
+  volume: 0.8
+  soundCollection:
+    collection: KazooieHaha
+
+- type: bark
+  id: KazooieHoot
+  name: bark-name-kazooie-hoot
+  soundCollection:
+    collection: KazooieHoot
+
+- type: bark
+  id: KazooieMoan
+  name: bark-name-kazooie-moan
+  soundCollection:
+    collection: KazooieMoan
+
+- type: bark
+  id: KazooieRaah
+  name: bark-name-kazooie-raah
+  soundCollection:
+    collection: KazooieRaah
+
+- type: bark
+  id: KazooieRibbit
+  name: bark-name-kazooie-ribbit
+  soundCollection:
+    collection: KazooieRibbit
+
+- type: bark
+  id: KazooieSlurp
+  name: bark-name-kazooie-slurp
+  soundCollection:
+    collection: KazooieSlurp
+
+- type: bark
+  id: KazooieTweet
+  name: bark-name-kazooie-tweet
+  volume: 0.7
+  soundCollection:
+    collection: KazooieTweet
+
+- type: bark
+  id: KazooieUhm
+  name: bark-name-kazooie-uhm
+  soundCollection:
+    collection: KazooieUhm
+
+- type: bark
+  id: KazooieZap
+  name: bark-name-kazooie-zap
+  soundCollection:
+    collection: KazooieZap
+
+- type: bark
+  id: Hisses
+  name: bark-name-hisses
+  frequency: 0.4
+  soundCollection:
+    collection: ReptilianHisses
+
+- type: bark
+  id: UndertaleAlphys
+  name: bark-name-undertale-alphys
+  soundCollection:
+    collection: UndertaleAlphys
+
+- type: bark
+  id: UndertaleAsgore
+  name: bark-name-undertale-asgore
+  soundCollection:
+    collection: UndertaleAsgore
+
+- type: bark
+  id: UndertaleFlowey
+  name: bark-name-undertale-flowey
+  soundCollection:
+    collection: UndertaleFlowey
+
+- type: bark
+  id: UndertaleGaster
+  name: bark-name-undertale-gaster
+  soundCollection:
+    collection: UndertaleGaster
+
+- type: bark
+  id: UndertaleMetta
+  name: bark-name-undertale-metta
+  soundCollection:
+    collection: UndertaleMetta
+
+- type: bark
+  id: UndertaleMonster
+  name: bark-name-undertale-monster
+  soundCollection:
+    collection: UndertaleMonster
+
+- type: bark
+  id: UndertalePapyrus
+  name: bark-name-undertale-papyrus
+  soundCollection:
+    collection: UndertalePapyrus
+
+- type: bark
+  id: UndertaleRalsei
+  name: bark-name-undertale-ralsei
+  soundCollection:
+    collection: UndertaleRalsei
+
+- type: bark
+  id: UndertaleSans
+  name: bark-name-undertale-sans
+  soundCollection:
+    collection: UndertaleSans
+
+- type: bark
+  id: UndertaleSusie
+  name: bark-name-undertale-susie
+  soundCollection:
+    collection: UndertaleSusie
+
+- type: bark
+  id: UndertaleTemmie
+  name: bark-name-undertale-temmie
+  soundCollection:
+    collection: UndertaleTemmie
+
+- type: bark
+  id: UndertaleToriel
+  name: bark-name-undertale-toriel
+  soundCollection:
+    collection: UndertaleToriel
+
+- type: bark
+  id: UndertaleUndyne
+  name: bark-name-undertale-undyne
+  soundCollection:
+    collection: UndertaleUndyne
+
+- type: bark
+  id: Bleat
+  name: bark-name-bleat
+  soundCollection:
+    collection: Bleat
+
+- type: bark
+  id: Moth
+  name: bark-name-moth
+  soundCollection:
+    collection: MothSqueak
+
+- type: bark
+  id: Nomi
+  name: bark-name-nomi
+  soundCollection:
+    collection: Nomi
+
+- type: bark
+  id: Poyo
+  name: bark-name-poyo
+  soundCollection:
+    collection: Poyo

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Made by belay5(discord 677967153139548202)",
+  "copyright": "Made by belay5(discord 677967153139548202), vulp version made by YERO",
   "size": {
     "x": 32,
     "y": 32
@@ -33,6 +33,14 @@
     },
     {
       "name": "equipped-head-unshaded-vox",
+      "directions": 4
+    },
+    {
+      "name": "equipped-head-vulpkanin",
+      "directions": 4
+    },
+    {
+      "name": "equipped-head-unshaded-vulpkanin",
       "directions": 4
     }
   ]

@@ -13,7 +13,7 @@ public sealed partial class BarkPrototype : IPrototype
     /// A list of sound files that are used for barks.
     /// </summary>
     [DataField(required: true)]
-    public string Name = string.Empty;
+    public LocId Name = string.Empty; // Orion-Edit: Localization
 
     /// <summary>
     /// A list of sound files that are used for barks.
