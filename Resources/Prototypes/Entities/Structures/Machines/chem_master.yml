@@ -64,6 +64,12 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false # Orion-Edit: Added for power-based visibility
+    # Orion-Start
+    - state: mixer_screens_loaded
+      shader: unshaded
+      map: ["mixer_screens_loaded"]
+      visible: false
+    # Orion-End
   - type: Icon
     sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit
     state: mixer_empty
