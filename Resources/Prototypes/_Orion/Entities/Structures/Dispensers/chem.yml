@@ -20,13 +20,17 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Dispensers/dispenser.rsi
+    snapCardinals: true
     layers:
     - state: industrial-off
     - state: industrial-working
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
-    snapCardinals: true
+      visible: false
+    - state: industrial_loaded
+      map: ["industrial_loaded"]
   - type: Icon
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi
     state: industrial
   - type: ItemMapper
     containerWhitelist: [beakerSlot]
@@ -88,11 +92,11 @@
     reagents:
       Aluminium: 8
       Carbon: 3
-      Chlorine: 12
+      Chlorine: 9
       Copper: 5
       Ethanol: 8
       Fluorine: 12
-      Hydrogen: 9
+      Hydrogen: 6
       Iodine: 8
       Iron: 5
       Lithium: 6

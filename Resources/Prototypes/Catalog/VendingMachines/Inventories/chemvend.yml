@@ -13,7 +13,7 @@
 - type: vendingMachineInventory
   id: ChemVendInventory
   startingInventory:
-    Jug: 4
+    Jug: 15 # Orion-Edit: 4 > 15
     JugAluminium: 2
     JugCarbon: 4
     JugChlorine: 1
@@ -43,7 +43,7 @@
 - type: vendingMachineInventory
   id: ChemVendInventorySyndicate
   startingInventory:
-    Jug: 4
+    Jug: 15 # Orion-Edit: 4 > 15
     JugAluminium: 2
     JugCarbon: 4
     JugChlorine: 1
@@ -65,7 +65,7 @@
     JugSugar: 3
     JugSulfur: 1
     JugWeldingFuel: 1
-    PlasmaChemistryVial: 1
+    JugPlasma: 1 # Orion-Edit: Vial was replaced with a jug
   contrabandInventory:
     DrinkLithiumFlask: 1
     StrangePill: 3
