@@ -46,6 +46,8 @@
         enum.PowerDeviceVisualLayers.Powered:
           True: { visible: true }
           False: { visible: false }
+  - type: ApcPowerReceiver
+    powerLoad: 65
   - type: Battery
     maxCharge: 1500
     startingCharge: 0
@@ -120,8 +122,6 @@
       Cryoxadone: 5
       Ephedrine: 20
       Tricordrazine: 5
-  - type: ApcPowerReceiver
-    powerLoad: 65
 
 # Version for antagonists (Like NukeOps)
 - type: entity

@@ -56,7 +56,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: Structures/Machines/mixer.rsi > _Orion/Structures/Machines/mixer.rsi
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: New sprites
     snapCardinals: true
     layers:
     - state: mixer_empty
@@ -65,31 +65,21 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false # Orion-Edit: Added for power-based visibility
   - type: Icon
-    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: Structures/Machines/mixer.rsi > _Orion/Structures/Machines/mixer.rsi
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: New sprites
     state: mixer_empty
-  # Orion-Start: Added for visual system compatibility
-  - type: Appearance
   - type: ItemMapper
-    sprite: _Orion/Structures/Machines/mixer.rsi
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion: New sprites
     containerWhitelist: [beakerSlot]
     mapLayers:
       mixer_loaded:
         whitelist:
           components:
           - FitsInDispenser
+  # Orion-Start
       mixer_screens_loaded:
         whitelist:
           components:
           - FitsInDispenser
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
-        mixer_empty_screen:
-          True: { visible: false }
-          False: { visible: true }
   # Orion-End
   - type: ChemMaster
     pillDosageLimit: 20
@@ -128,6 +118,16 @@
         type: ChemMasterBoundUserInterface
   - type: ApcPowerReceiver
     powerLoad: 250
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+        mixer_empty_screen: # Orion
+          True: { visible: false }
+          False: { visible: true }
   - type: WiresPanel
   - type: Machine
     board: ChemMasterMachineCircuitboard
