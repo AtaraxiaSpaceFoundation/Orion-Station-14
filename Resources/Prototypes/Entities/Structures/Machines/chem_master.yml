@@ -56,7 +56,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: New sprites
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit
     snapCardinals: true
     layers:
     - state: mixer_empty
@@ -65,10 +65,10 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false # Orion-Edit: Added for power-based visibility
   - type: Icon
-    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit: New sprites
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion-Edit
     state: mixer_empty
   - type: ItemMapper
-    sprite: _Orion/Structures/Machines/mixer.rsi # Orion: New sprites
+    sprite: _Orion/Structures/Machines/mixer.rsi # Orion
     containerWhitelist: [beakerSlot]
     mapLayers:
       mixer_loaded:
@@ -150,7 +150,7 @@
           - Bottle
           - PillCanister
           - MedicalPatch # Goobstation
-  - type: AutomationSlots
+  - type: AutomationSlots # Goobstation
     slots:
     - !type:AutomatedSolution
       input: PlumbingInput
@@ -160,7 +160,7 @@
       input: AutomationSlotBeaker
       output: AutomationSlotBeaker
       slotId: beakerSlot
-    - !type:AutomatedItemSlot
+    - !type:AutomatedItemSlot # not very useful because you can't tell it to make pills
       input: AutomationSlotBottles
       output: AutomationSlotBottles
       slotId: outputSlot
@@ -169,7 +169,7 @@
       output: PlumbingDispenser
   - type: SolutionContainerManager
     solutions:
-      buffer: # Goobstation
+      buffer: # Goobstation - solution shitcode doesnt like max volume 0 and i dont want to rewrite AddSolution
         maxVol: 1000000
   - type: DumpableSolution
     solution: buffer

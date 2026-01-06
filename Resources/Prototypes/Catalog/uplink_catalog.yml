@@ -713,7 +713,7 @@
   id: UplinkMosinAmmo
   name: uplink-mosin-ammo-name
   description: uplink-mosin-ammo-desc
-  productEntity: MagazineBoxRifle762 # Orion-edit: .30 > 7.62
+  productEntity: MagazineBoxRifle762 # Orion-Edit: .30 > 7.62
   cost:
     Telecrystal: 6 # goob # Orion-Edit: 9 > 6
   categories:
