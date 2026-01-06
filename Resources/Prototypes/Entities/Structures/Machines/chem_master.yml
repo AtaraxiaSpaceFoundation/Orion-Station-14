@@ -65,6 +65,9 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false # Orion-Edit: Added for power-based visibility
     # Orion-Start
+    - state: mixer_empty_screen
+      map: ["mixer_empty_screen"]
+      visible: true
     - state: mixer_screens_loaded
       shader: unshaded
       map: ["mixer_screens_loaded"]
