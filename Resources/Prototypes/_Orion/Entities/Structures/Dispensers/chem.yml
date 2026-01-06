@@ -27,15 +27,15 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
-    - state: industrial_loaded
-      map: ["industrial_loaded"]
   - type: Icon
     sprite: _Orion/Structures/Dispensers/dispenser.rsi
     state: industrial
+  - type: Appearance  # Добавьте это!
   - type: ItemMapper
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi  # Добавьте это!
     containerWhitelist: [beakerSlot]
     mapLayers:
-      industrial_loaded:
+      industrial_loaded:  # Этот слой будет создан ItemMapper'ом динамически
         whitelist:
           components:
           - FitsInDispenser
@@ -119,6 +119,8 @@
       Cryoxadone: 5
       Ephedrine: 10
       Morphine: 3
+  - type: ApcPowerReceiver
+    powerLoad: 65
 
 # Version for antagonists (Like NukeOps)
 - type: entity
