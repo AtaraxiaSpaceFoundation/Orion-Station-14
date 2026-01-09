@@ -127,8 +127,6 @@
     - type: GuideHelp
       guides:
       - Blob
-#    - type: GlobalAntagonist # Orion | Disabled because spam
-#      antagonistPrototype: globalAntagonistBlob
 
 # Blobbernaut
 - type: entity
@@ -237,8 +235,6 @@
     - type: GuideHelp
       guides:
       - Blob
-    - type: GlobalAntagonist # Orion
-      antagonistPrototype: globalAntagonistBlob
     - type: Bloodstream
       bloodMaxVolume: 300
       bloodReagent: Blood
@@ -321,5 +317,3 @@
       defaultChannel: Blobmind
       channels:
       - Blobmind
-    - type: GlobalAntagonist # Orion
-      antagonistPrototype: globalAntagonistBlob

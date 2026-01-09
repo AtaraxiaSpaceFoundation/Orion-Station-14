@@ -312,8 +312,6 @@
       groups:
         Brute: -0.3
         Burn: -0.3
-  - type: GlobalAntagonist # Orion
-    antagonistPrototype: globalAntagonistRats
 
 - type: entity
   id: MobRatKingBuff
@@ -351,8 +349,6 @@
   - type: GuideHelp
     guides:
     - MinorAntagonists
-  - type: GlobalAntagonist # Orion
-    antagonistPrototype: globalAntagonistRats
 
 
 - type: entity

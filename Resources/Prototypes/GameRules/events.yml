@@ -482,8 +482,6 @@
         - NamesNinjaTitle
         - NamesNinja
         nameFormat: name-format-ninja
-      - type: GlobalAntagonist # Orion
-        antagonistPrototype: globalAntagonistNinja
       mindRoles:
       - MindRoleNinja
 
@@ -857,8 +855,6 @@
       - type: ZombifyOnDeath
       - type: IncurableZombie
       - type: InitialInfected
-      - type: GlobalAntagonist # Orion
-        antagonistPrototype: globalAntagonistZombie
       mindRoles:
       - MindRoleInitialInfected
 
@@ -895,8 +891,6 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: GlobalAntagonist # Orion
-        antagonistPrototype: globalAntagonistLoneops
       - type: LanguageKnowledge # Orion
         speaks:
         - TauCetiBasic

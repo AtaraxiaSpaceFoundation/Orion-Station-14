@@ -35,8 +35,6 @@
     - OldFastCodes
     understands:
     - OldFastCodes
-  - type: GlobalAntagonist # Orion
-    antagonistPrototype: globalAntagonistInteQ
 
 - type: randomHumanoidSettings
   parent: InteQVanguard

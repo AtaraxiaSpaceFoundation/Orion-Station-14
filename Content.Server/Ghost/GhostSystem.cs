@@ -4,7 +4,7 @@
 // SPDX-FileCopyrightText: 2022 Illiux <newoutlook@gmail.com>
 // SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 J lio C sar Ueti <52474532+Mirino97@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 J�lio C�sar Ueti <52474532+Mirino97@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
 // SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
@@ -90,35 +90,24 @@
 
 using System.Linq;
 using System.Numerics;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
-using Content.Server.Preferences.Managers;
 using Content.Server.Roles.Jobs;
 using Content.Server.Warps;
-using Content.Shared._EinsteinEngines.Silicon.Components;
-using Content.Shared._Orion.Antag;
-using Content.Shared._Orion.Antag.Components;
-using Content.Shared._Orion.CustomGhost;
-using Content.Shared._Shitmed.Body;
-using Content.Shared._Shitmed.Targeting;
-using Content.Shared._White.Xenomorphs.Infection;
 using Content.Shared.Actions;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
-using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -128,22 +117,27 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
-using Content.Shared.Roles;
-using Content.Shared.Silicons.Borgs.Components;
-using Content.Shared.Silicons.Laws.Components;
-using Content.Shared.SSDIndicator;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
+using Content.Shared._White.Xenomorphs.Infection;
 using Robust.Server.GameObjects;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+
+// Shitmed Change
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
+using Content.Shared._Shitmed.Body;
+using Content.Shared._Shitmed.Damage;
+using Content.Shared._Shitmed.Targeting;
+using Content.Shared._EinsteinEngines.Silicon.Components;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -177,8 +171,6 @@ namespace Content.Server.Ghost
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
-        [Dependency] private readonly IServerPreferencesManager _prefs = default!; // Orion
-
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -348,7 +340,7 @@ namespace Content.Server.Ghost
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
         {
-            var timeSinceDeath = _gameTiming.CurTime.Subtract(component.TimeOfDeath); // Orion-Edit: RealTime > CurTime
+            var timeSinceDeath = _gameTiming.RealTime.Subtract(component.TimeOfDeath);
             var deathTimeInfo = timeSinceDeath.Minutes > 0
                 ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
                 : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
@@ -386,7 +378,7 @@ namespace Content.Server.Ghost
         private void OnGhostReturnToBodyRequest(GhostReturnToBodyRequest msg, EntitySessionEventArgs args)
         {
             if (args.SenderSession.AttachedEntity is not {Valid: true} attached
-                || !TryComp(attached, out GhostComponent? ghost) // Orion-Edit
+                || !_ghostQuery.TryComp(attached, out var ghost)
                 || !ghost.CanReturnToBody
                 || !TryComp(attached, out ActorComponent? actor))
             {
@@ -402,26 +394,20 @@ namespace Content.Server.Ghost
         private void OnGhostWarpsRequest(GhostWarpsRequestEvent msg, EntitySessionEventArgs args)
         {
             if (args.SenderSession.AttachedEntity is not {Valid: true} entity
-                || !HasComp<GhostComponent>(entity)) // Orion-Edit
+                || !_ghostQuery.HasComp(entity))
             {
                 Log.Warning($"User {args.SenderSession.Name} sent a {nameof(GhostWarpsRequestEvent)} without being a ghost.");
                 return;
             }
 
-            // Orion-Start
-            var players = GetPlayerWarps();
-            var places = GetLocationWarps();
-            var antagonists = GetAntagonistWarps();
-
-            var response = new GhostWarpsResponseEvent(players, places, antagonists); // Orion-Edit
-            // Orion-End
+            var response = new GhostWarpsResponseEvent(GetPlayerWarps(entity).Concat(GetLocationWarps()).ToList());
             RaiseNetworkEvent(response, args.SenderSession.Channel);
         }
 
         private void OnGhostWarpToTargetRequest(GhostWarpToTargetRequestEvent msg, EntitySessionEventArgs args)
         {
             if (args.SenderSession.AttachedEntity is not {Valid: true} attached
-                || !TryComp(attached, out GhostComponent? _)) // Orion-Edit
+                || !_ghostQuery.HasComp(attached))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to warp to {msg.Target} without being a ghost.");
                 return;
@@ -435,39 +421,25 @@ namespace Content.Server.Ghost
                 return;
             }
 
-//            WarpTo(attached, target); // Orion-Edit: Removed
-
-            _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(attached)} ghost warped to {ToPrettyString(target)}");
-
-            if ((TryComp(target, out WarpPointComponent? warp) && warp.Follow) || HasComp<MobStateComponent>(target))
-            {
-                _followerSystem.StartFollowingEntity(attached, target);
-                return;
-            }
-
-            var xform = Transform(attached);
-            _transformSystem.SetCoordinates(attached, xform, Transform(target).Coordinates);
-            _transformSystem.AttachToGridOrMap(attached, xform);
-            if (TryComp(attached, out PhysicsComponent? physics))
-                _physics.SetLinearVelocity(attached, Vector2.Zero, body: physics);
+            WarpTo(attached, target);
         }
 
         private void OnGhostnadoRequest(GhostnadoRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not { Valid: true } uid ||
-                !_ghostQuery.HasComp(uid))
+            if (args.SenderSession.AttachedEntity is not {} uid
+                || !_ghostQuery.HasComp(uid))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to ghostnado without being a ghost.");
                 return;
             }
 
-            if (_followerSystem.GetMostGhostFollowed() is not { } target)
+            if (_followerSystem.GetMostGhostFollowed() is not {} target)
                 return;
 
             WarpTo(uid, target);
         }
 
-        private void WarpTo(EntityUid uid, EntityUid target) // Orion-Edit
+        private void WarpTo(EntityUid uid, EntityUid target)
         {
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(uid)} ghost warped to {ToPrettyString(target)}");
 
@@ -484,137 +456,16 @@ namespace Content.Server.Ghost
                 _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
         }
 
-        // Orion-Start
-        private List<GhostWarpPlace> GetLocationWarps()
+        private IEnumerable<GhostWarp> GetLocationWarps()
         {
-            var warps = new List<GhostWarpPlace>();
-            var allQuery = AllEntityQuery<WarpPointComponent>();
-
-            while (allQuery.MoveNext(out var uid, out var warp))
-            {
-                var newWarp =  new GhostWarpPlace(GetNetEntity(uid), warp.Location ?? Name(uid), warp.Location ?? Description(uid));
-                warps.Add(newWarp);
-            }
-
-            return warps;
-        }
-        // Orion-End
-
-        private List<GhostWarpPlayer> GetPlayerWarps() // Orion-Edit: GetLocationWarps > GetPlayerWarps
-        {
-/* // Orion-Edit: Removed
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
             {
                 yield return new GhostWarp(GetNetEntity(uid), warp.Location ?? Name(uid), true);
             }
-*/
-
-            // Orion-Start
-            var warps = new List<GhostWarpPlayer>();
-            foreach (var mindContainer in EntityQuery<MindContainerComponent>())
-            {
-                var entity = mindContainer.Owner;
-                var meta = Comp<MetaDataComponent>(entity);
-
-                if (HasComp<GlobalAntagonistComponent>(entity) || IsShitEntity(meta.EntityPrototype?.ID))
-                    continue;
-
-                if (!HasComp<HumanoidAppearanceComponent>(entity) &&
-                    !HasComp<GhostComponent>(entity) &&
-                    !HasComp<BorgBrainComponent>(entity) &&
-                    !HasComp<SiliconLawProviderComponent>(entity) && // Drone detection
-                    !HasComp<BorgChassisComponent>(entity))
-                    continue;
-
-                var playerDepartmentId = _prototypeManager.Index<DepartmentPrototype>("Specific").ID;
-                var playerJobName = Loc.GetString("generic-unknown-title");
-
-                if (_jobs.MindTryGetJob(mindContainer.Mind ?? mindContainer.LastMindStored,
-                        out var jobPrototype))
-                {
-                    playerJobName = Loc.GetString(jobPrototype.Name);
-
-                    if (_jobs.TryGetDepartment(jobPrototype.ID, out var departmentPrototype))
-                    {
-                        playerDepartmentId = departmentPrototype.ID;
-                    }
-                }
-
-                var hasAnyMind = (mindContainer.Mind ?? mindContainer.LastMindStored) != null;
-                var isDead = _mobState.IsDead(entity);
-                var isLeft = TryComp<SSDIndicatorComponent>(entity, out var indicator) && indicator.IsSSD && !isDead &&
-                             hasAnyMind;
-
-                var warp = new GhostWarpPlayer(
-                    GetNetEntity(entity),
-                    Comp<MetaDataComponent>(entity).EntityName,
-                    playerJobName,
-                    playerDepartmentId,
-                    HasComp<GhostComponent>(entity),
-                    isLeft,
-                    isDead,
-                    _mobState.IsAlive(entity)
-                );
-
-                warps.Add(warp);
-            }
-
-            return warps;
-            // Orion-End
         }
 
-        // Orion-Start
-        private bool IsShitEntity(string? entityId)
-        {
-            if (entityId == null)
-                return false;
-
-            return entityId switch
-            {
-                "SalvageHumanCorpse" => true,
-                "MobRandomServiceCorpse" => true,
-                "MobRandomEngineerCorpse" => true,
-                "MobRandomCargoCorpse" => true,
-                "MobRandomMedicCorpse" => true,
-                "MobRandomScienceCorpse" => true,
-                "MobRandomSecurityCorpse" => true,
-                "MobRandomCommandCorpse" => true,
-/*                "MobMouse" => true,
-                "MobMouse1" => true,
-                "MobMouse2" => true,
-                "MobMouseDead" => true,
-                "MobCockroach" => true,*/
-                _ => false,
-            };
-        }
-
-        private List<GhostWarpGlobalAntagonist> GetAntagonistWarps()
-        {
-            var warps = new List<GhostWarpGlobalAntagonist>();
-
-            foreach (var antagonist in EntityQuery<GlobalAntagonistComponent>())
-            {
-                var entity = antagonist.Owner;
-                var prototype = _prototypeManager.Index<AntagonistPrototype>(antagonist.AntagonistPrototype ?? "globalAntagonistUnknown");
-
-                var warp = new GhostWarpGlobalAntagonist(
-                    GetNetEntity(entity),
-                    Comp<MetaDataComponent>(entity).EntityName,
-                    prototype.Name,
-                    prototype.Description,
-                    prototype.ID
-                );
-
-                warps.Add(warp);
-            }
-
-            return warps;
-        }
-        // Orion-End
-
-/* // Orion-Edit: Removed
         private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except)
         {
             foreach (var player in _player.Sessions)
@@ -633,7 +484,6 @@ namespace Content.Server.Ghost
                     yield return new GhostWarp(GetNetEntity(attached), playerInfo, false);
             }
         }
-*/
 
         #endregion
 
@@ -730,34 +580,16 @@ namespace Content.Server.Ghost
                 return null;
             }
 
-//            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Orion-Start
-            CustomGhostPrototype? customGhost = null;
-            if (mind.Comp.UserId is NetUserId userId && _prefs.GetPreferencesOrNull(userId) is {} prefs)
-                customGhost = _prototypeManager.Index(prefs.CustomGhost);
-
-            var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
-            // Orion-End
+            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
 
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
-/* // Orion-Edit: Removed
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
                 _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(mind.Comp.CharacterName)); // Goob Sanitize Text
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
                 _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(session.Name)); // Goob Sanitize Text
-*/
-            // Orion-Start
-            if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
-            {
-                if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
-                    _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(mind.Comp.CharacterName)); // Goob Sanitize Text
-                else
-                    _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(session.Name)); // Goob Sanitize Text
-            }
-            // Orion-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
             {
@@ -776,16 +608,6 @@ namespace Content.Server.Ghost
             // we have to call this after the mind has been transferred since some mind roles modify the ghost's name
             _nameMod.RefreshNameModifiers(ghost);
             return ghost;
-
-            // Orion-Start
-            static string? FirstNonNullNonEmpty(params string?[] strings)
-            {
-                foreach (var str in strings)
-                    if (!string.IsNullOrWhiteSpace(str))
-                        return str;
-                return null;
-            }
-            // Orion-End
         }
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, bool forced = false, MindComponent? mind = null)
@@ -869,11 +691,11 @@ namespace Content.Server.Ghost
                         var damageType = HasComp<SiliconComponent>(playerEntity)
                             ? IonDamageType
                             : AsphyxiationDamageType;
-                        DamageSpecifier damage = new(_prototypeManager.Index(damageType), dealtDamage);
+                        DamageSpecifier damage = new(_prototypeManager.Index<DamageTypePrototype>(damageType), dealtDamage);
 
                         if (TryComp<BodyComponent>(playerEntity, out var body)
                             && body.BodyType == BodyType.Complex
-                            && body.RootContainer.ContainedEntities.FirstOrNull() is not null)
+                            && body.RootContainer.ContainedEntities.FirstOrNull() is { } root)
                             _damageable.TryChangeDamage(playerEntity,
                                 damage,
                                 true,

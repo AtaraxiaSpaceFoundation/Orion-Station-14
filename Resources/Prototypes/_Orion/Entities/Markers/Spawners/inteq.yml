@@ -129,8 +129,6 @@
     - type: NpcFactionMember
       factions:
         - InteQ
-    - type: GlobalAntagonist
-      antagonistPrototype: globalAntagonistInteQ
     - type: AdditionalLanguage
       speaks:
       - OldFastCodes
@@ -266,8 +264,6 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
-    - type: GlobalAntagonist # Orion
-      antagonistPrototype: globalAntagonistGhostRole
     - type: RadioAnnounceOnSpawn
       message: radio-announce-inteq-vanguard-leader-sizo-spawn
       announcementChannels:
@@ -302,8 +298,6 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
-    - type: GlobalAntagonist # Orion
-      antagonistPrototype: globalAntagonistGhostRole
     - type: RadioAnnounceOnSpawn
       message: radio-announce-inteq-vanguard-sizo-spawn
       announcementChannels:
@@ -338,8 +332,6 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
-    - type: GlobalAntagonist # Orion
-      antagonistPrototype: globalAntagonistGhostRole
     - type: RadioAnnounceOnSpawn
       message: radio-announce-inteq-vanguard-sizo-spawn
       announcementChannels:
@@ -374,8 +366,6 @@
     - type: AutoImplant
       implants:
         - DeathRattleImplantInteQ
-    - type: GlobalAntagonist # Orion
-      antagonistPrototype: globalAntagonistGhostRole
     - type: RadioAnnounceOnSpawn
       message: radio-announce-inteq-vanguard-medic-sizo-spawn
       announcementChannels:

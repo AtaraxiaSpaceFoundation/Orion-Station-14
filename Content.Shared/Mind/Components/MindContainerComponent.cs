@@ -62,12 +62,6 @@ public sealed partial class MindContainerComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? Mind { get; set; }
 
-    // Orion-Start
-    [DataField, AutoNetworkedField]
-    [Access(typeof(SharedMindSystem), Other = AccessPermissions.ReadWriteExecute)]
-    public EntityUid? LastMindStored { get; set; }
-    // Orion-End
-
     /// <summary>
     ///     True if we have a mind, false otherwise.
     /// </summary>
@@ -109,7 +103,6 @@ public sealed class MindRemovedMessage : MindEvent
     public MindRemovedMessage(Entity<MindComponent> mind, Entity<MindContainerComponent> container)
         : base(mind, container)
     {
-        container.Comp.LastMindStored = mind; // Orion | Holy shit
     }
 }
 

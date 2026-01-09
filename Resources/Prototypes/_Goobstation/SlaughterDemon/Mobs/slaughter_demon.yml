@@ -168,8 +168,6 @@
       Female: SlaughterDemon
       Unsexed: SlaughterDemon
   - type: ZombieImmune
-  - type: GlobalAntagonist # Orion
-    antagonistPrototype: globalAntagonistSlaughterDemon
   - type: SlowOnDamage
     speedModifierThresholds:
       200: 1

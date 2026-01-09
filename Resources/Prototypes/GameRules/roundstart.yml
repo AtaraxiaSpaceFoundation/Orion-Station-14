@@ -242,8 +242,6 @@
     #- Vox
     - Yowie # Goobstation
     - Plasmaman # EE
-  - type: GlobalAntagonist # Orion
-    antagonistPrototype: globalAntagonistNukeops
   - type: AntagObjectives # Goobstation
     objectives:
     - NukeopsDetonateObjective
