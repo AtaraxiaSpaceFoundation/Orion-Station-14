@@ -23,6 +23,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Orion.Roles;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -192,6 +193,11 @@ public abstract class SharedRoleSystem : EntitySystem
         var update = MindRolesUpdate((mindId, mind));
 
         // RoleType refresh, Role time tracking, Update Admin playerlist
+
+        // Orion-Start
+        var addMessage = new RoleAddingEvent(mindId, mind, mindRoleId, mindRoleComp);
+        RaiseLocalEvent(mindId, addMessage);
+        // Orion-End
 
         var message = new RoleAddedEvent(mindId, mind, update, silent);
         RaiseLocalEvent(mindId, message, true);
@@ -422,6 +428,8 @@ public abstract class SharedRoleSystem : EntitySystem
 
         foreach (var role in delete)
         {
+            var removingMessage = new RoleRemovingEvent(mind.Owner, mind.Comp, role, Comp<MindRoleComponent>(role)); // WWDP EDIT
+            RaiseLocalEvent(mind, removingMessage); // Orion
             _entityManager.DeleteEntity(role);
         }
 

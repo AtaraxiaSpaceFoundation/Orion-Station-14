@@ -81,6 +81,14 @@ public sealed partial class MindContainerComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("ghostOnShutdown")]
     public bool GhostOnShutdown { get; set; } = true;
+
+    // Orion-Start
+    /// <summary>
+    ///     The first mind to control this mob. Will only be null if the mob never had a mind at all.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public EntityUid? OriginalMind;
+    // Orion-End
 }
 
 public abstract class MindEvent : EntityEventArgs

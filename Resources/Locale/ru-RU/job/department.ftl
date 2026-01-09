@@ -7,5 +7,5 @@ department-Medical = Медицинский отдел
 department-Security = Служба безопасности
 department-Science = Научный отдел
 department-Silicon = Синтетики
-department-Specific = Другие
+department-Specific = Прочие
 department-Unknown = Неизвестно

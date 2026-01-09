@@ -104,10 +104,7 @@
   name: department-Cargo
   description: department-Cargo-description
   color: "#A46106"
-  # Orion-Start
-  weight: -5
-  buttonStyle: ButtonColorCargoDepartment
-  # Orion-End
+  weight: -5 # Orion-Edit
   roles:
   - CargoTechnician
   - Quartermaster
@@ -118,10 +115,7 @@
   name: department-Civilian
   description: department-Civilian-description
   color: "#9FED58"
-  # Orion-Start
-  weight: -4
-  buttonStyle: ButtonColorCivilianDepartment
-  # Orion-End
+  weight: -4 # Orion-Edit
   roles:
   - Bartender
   - Botanist
@@ -147,10 +141,7 @@
   name: department-CentralCommand
   description: department-CentralCommand-description
   color: "#0c344d"
-  # Orion-Start
-  weight: -1
-  buttonStyle: ButtonColorCentralCommandDepartment
-  # Orion-End
+  weight: -1 # Orion-Edit
   roles:
   - CentralCommandOfficial
   - CBURN
@@ -172,17 +163,13 @@
   - Diplomat
   - GovernmentMan # Goobstation - End
   editorHidden: true
-#  weight: 120 # Orion-Edit: Moved
 
 - type: department
   id: Command
   name: department-Command
   description: department-Command-description
   color: "#334E6D"
-  # Orion-Start
-  weight: -2
-  buttonStyle: ButtonColorCommandDepartment
-  # Orion-End
+  weight: -2 # Orion-Edit
   roles:
   - Captain
   - ChiefEngineer
@@ -206,17 +193,13 @@
   - HecuOperative
   - CommandMaid # event-restricted, Goobstation
   primary: false
-#  weight: 100 # Orion-Edit: Moved
 
 - type: department
   id: Engineering
   name: department-Engineering
   description: department-Engineering-description
   color: "#EFB341"
-  # Orion-Start
-  weight: -6
-  buttonStyle: ButtonColorEngineeringDepartment
-  # Orion-End
+  weight: -6 # Orion-Edit
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
@@ -228,10 +211,7 @@
   name: department-Medical
   description: department-Medical-description
   color: "#52B4E9"
-  # Orion-Start
-  weight: -7
-  buttonStyle: ButtonColorMedicalDepartment
-  # Orion-End
+  weight: -7 # Orion-Edit
   roles:
   - Chemist
   - ChiefMedicalOfficer
@@ -246,10 +226,7 @@
   name: department-Security
   description: department-Security-description
   color: "#DE3A3A"
-  # Orion-Start
-  weight: -3
-  buttonStyle: ButtonColorSecurityDepartment
-  # Orion-End
+  weight: -3 # Orion-Edit
   roles:
   - HeadOfSecurity
   - SecurityCadet
@@ -264,10 +241,7 @@
   name: department-Science
   description: department-Science-description
   color: "#D381C9"
-  # Orion-Start
-  weight: -8
-  buttonStyle: ButtonColorScienceDepartment
-  # Orion-End
+  weight: -8 # Orion-Edit
   roles:
   - ResearchDirector
   - Scientist
@@ -279,10 +253,7 @@
   name: department-Silicon
   description: department-Silicon-description
   color: "#D381C9"
-  # Orion-Start
-  weight: -9
-  buttonStyle: ButtonColorSiliconDepartment
-  # Orion-End
+  weight: -9 # Orion-Edit
   roles:
   - Borg
   - StationAi
@@ -292,10 +263,7 @@
   name: department-Specific
   description: department-Specific-description
   color: "#9FED58"
-  # Orion-Start
-  weight: -42
-  buttonStyle: ButtonColorSpecificDepartment
-  # Orion-End
+  weight: -10 # Orion-Edit
   roles:
   - RadioHost # Goobstation
   - Boxer

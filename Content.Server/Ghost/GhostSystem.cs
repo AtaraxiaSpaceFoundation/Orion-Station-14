@@ -98,6 +98,9 @@ using Content.Server.Ghost.Components;
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
 using Content.Server.Warps;
+using Content.Server.Preferences.Managers;
+using Content.Server.Roles;
+using Content.Server.Roles.Jobs;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
@@ -117,6 +120,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared.SSDIndicator;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared._White.Xenomorphs.Infection;
@@ -130,8 +134,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-
-// Shitmed Change
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Body;
@@ -177,6 +179,8 @@ namespace Content.Server.Ghost
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
         private static readonly ProtoId<DamageTypePrototype> IonDamageType = "Ion";
+
+        public static readonly Color AntagonistButtonColor = Color.FromHex("#7F4141"); // Orion
 
         public override void Initialize()
         {
@@ -400,7 +404,11 @@ namespace Content.Server.Ghost
                 return;
             }
 
-            var response = new GhostWarpsResponseEvent(GetPlayerWarps(entity).Concat(GetLocationWarps()).ToList());
+            // Orion-Start
+            var mindContainers = GetMindContainersWarps();
+            var places = GetLocationWarps();
+            var response = new GhostWarpsResponseEvent(mindContainers.Concat(places).ToList());
+            // Orion-End
             RaiseNetworkEvent(response, args.SenderSession.Channel);
         }
 
@@ -421,19 +429,27 @@ namespace Content.Server.Ghost
                 return;
             }
 
+            // Orion-Start
+            if (IsHiddenFromGhostWarps(target) || !IsValidWarpTarget(target))
+            {
+                Log.Warning($"User {args.SenderSession.Name} tried to warp to an invalid/hidden target: {ToPrettyString(target)}");
+                return;
+            }
+            // Orion-End
+
             WarpTo(attached, target);
         }
 
         private void OnGhostnadoRequest(GhostnadoRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {} uid
+            if (args.SenderSession.AttachedEntity is not { Valid: true } uid // Orion-Edit
                 || !_ghostQuery.HasComp(uid))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to ghostnado without being a ghost.");
                 return;
             }
 
-            if (_followerSystem.GetMostGhostFollowed() is not {} target)
+            if (_followerSystem.GetMostGhostFollowed() is not { } target)
                 return;
 
             WarpTo(uid, target);
@@ -456,34 +472,113 @@ namespace Content.Server.Ghost
                 _physics.SetLinearVelocity(uid, Vector2.Zero, body: physics);
         }
 
-        private IEnumerable<GhostWarp> GetLocationWarps()
+        // Orion-Edit-Start
+        private List<GhostWarp> GetMindContainersWarps()
         {
+            var warps = new List<GhostWarp>();
+
+            var query = EntityQueryEnumerator<MindContainerComponent>();
+
+            while (query.MoveNext(out var entity, out var mindContainer))
+            {
+                if(IsHiddenFromGhostWarps(entity) || !IsValidWarpTarget(entity))
+                    continue;
+
+                if (TryComp<Shared._Orion.Roles.RoleCacheComponent>(entity, out var roleCacheComponent))
+                {
+                    if (_prototypeManager.TryIndex(roleCacheComponent.LastJobPrototype, out var jobPrototype) &&
+                        _jobs.TryGetDepartment(jobPrototype.ID, out var departmentPrototype))
+                    {
+                        var warp = SetupWarp(entity, mindContainer, departmentPrototype.Name, departmentPrototype.Color, jobPrototype.Name);
+                        warp.Group |= WarpGroup.Department;
+
+                        warps.Add(warp);
+                    }
+
+                    if (roleCacheComponent.IsAntag &&
+                        _prototypeManager.TryIndex(roleCacheComponent.LastAntagPrototype, out var antagPrototype))
+                    {
+                        var warp = SetupWarp(entity, mindContainer, antagPrototype.Name, AntagonistButtonColor, null);
+                        warp.Group |= WarpGroup.Antag;
+
+                        warps.Add(warp);
+                    }
+                }
+                else
+                {
+                    var warp = SetupWarp(entity, mindContainer, MetaData(entity).EntityPrototype?.Name ?? "", null, null);
+                    warp.Group |= WarpGroup.Other;
+
+                    warps.Add(warp);
+                }
+            }
+
+            return warps;
+        }
+
+        private GhostWarp SetupWarp(EntityUid entity, MindContainerComponent mindContainer, string subGroup, Color? color, string? description)
+        {
+            var hasAnyMind = (mindContainer.Mind ?? mindContainer.OriginalMind) != null;
+            var isDead = _mobState.IsDead(entity);
+            var isLeft = TryComp<SSDIndicatorComponent>(entity, out var indicator) && indicator.IsSSD && !isDead &&
+                hasAnyMind;
+
+            var metadata = Comp<MetaDataComponent>(entity);
+
+            if (string.IsNullOrEmpty(description))
+                description = metadata.EntityDescription;
+
+            var warp = new GhostWarp(GetNetEntity(entity), metadata.EntityName, subGroup, description, color);
+
+            if(isLeft)
+                warp.Group |= WarpGroup.Left;
+
+            if(HasComp<GhostComponent>(entity))
+            {
+                warp.Group |= WarpGroup.Ghost;
+            }
+            else
+            {
+                if(isDead)
+                    warp.Group |= WarpGroup.Dead;
+                else
+                    warp.Group |= WarpGroup.Alive;
+            }
+
+            return warp;
+        }
+
+        private List<GhostWarp> GetLocationWarps()
+        {
+            var warps = new List<GhostWarp>();
             var allQuery = AllEntityQuery<WarpPointComponent>();
 
             while (allQuery.MoveNext(out var uid, out var warp))
             {
-                yield return new GhostWarp(GetNetEntity(uid), warp.Location ?? Name(uid), true);
-            }
-        }
-
-        private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except)
-        {
-            foreach (var player in _player.Sessions)
-            {
-                if (player.AttachedEntity is not {Valid: true} attached)
+                if(IsHiddenFromGhostWarps(uid))
                     continue;
 
-                if (attached == except) continue;
-
-                TryComp<MindContainerComponent>(attached, out var mind);
-
-                var jobName = _jobs.MindTryGetJobName(mind?.Mind);
-                var playerInfo = $"{Comp<MetaDataComponent>(attached).EntityName} ({jobName})";
-
-                if (_mobState.IsAlive(attached) || _mobState.IsCritical(attached))
-                    yield return new GhostWarp(GetNetEntity(attached), playerInfo, false);
+                var newWarp = new GhostWarp(GetNetEntity(uid), warp.Location ?? Name(uid), "", Description(uid), null);
+                warps.Add(newWarp);
             }
+
+            return warps;
         }
+
+        private bool IsValidWarpTarget(EntityUid entity)
+        {
+            var transform = Transform(entity);
+            if (transform.MapID == MapId.Nullspace)
+                return false;
+
+            return true;
+        }
+
+        private bool IsHiddenFromGhostWarps(EntityUid entity)
+        {
+            return _tag.HasTag(entity, "HideFromGhostWarps");
+        }
+        // Orion-Edit-End
 
         #endregion
 
@@ -717,6 +812,7 @@ namespace Content.Server.Ghost
 
             return true;
         }
+
     }
 
     public sealed class GhostAttemptHandleEvent(MindComponent mind, bool canReturnGlobal) : HandledEntityEventArgs
