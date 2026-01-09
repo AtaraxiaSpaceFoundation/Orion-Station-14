@@ -1369,12 +1369,12 @@ public sealed partial class ChatSystem : SharedChatSystem
         var speech = GetSpeechVerb(source, message);
         language ??= _language.GetLanguage(source);
 
+/* // Orion-Edit: Removed because this shit doesn't work.
         // Goobstation - Bolded Language Overrides begin
         if (language.SpeechOverride.BoldFontId != null && speech.Bold)
             wrapId = "chat-manager-entity-say-bolded-language-wrap-message";
         // Goobstation end
 
-/* // Orion-Edit: Removed because this shit doesn't work.
         if (language.SpeechOverride.MessageWrapOverrides.TryGetValue(chatType, out var wrapOverride))
             wrapId = wrapOverride;
 */
