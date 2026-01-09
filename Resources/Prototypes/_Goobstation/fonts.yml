@@ -13,13 +13,15 @@
   id: NotoSansSC
   path: /Fonts/NotoSans/NotoSansSC-Regular.ttf
 
-- type: font
-  id: ChelseaMarket # Used for vox font
-  path: /Fonts/_Goobstation/ChelseaMarket/ChelseaMarket.ttf
+# Orion-Edit: Removed because there is no RU support
+#- type: font
+#  id: ChelseaMarket # Used for vox font
+#  path: /Fonts/_Goobstation/ChelseaMarket/ChelseaMarket.ttf
 
-- type: font
-  id: Schoolbell # Used for resomi font
-  path: /Fonts/_Goobstation/Schoolbell/Schoolbell.ttf
+# Orion-Edit: Removed because there is no RU support
+#- type: font
+#  id: Schoolbell # Used for resomi font
+#  path: /Fonts/_Goobstation/Schoolbell/Schoolbell.ttf
 
 - type: font
   id: NotoSansSCBold
@@ -31,13 +33,15 @@
   path: /Fonts/_Goobstation/Eatday/Eatday.ttf
 
 # Bubblish (Slimes)
-- type: font
-  id: SourGummy
-  path: /Fonts/_Goobstation/Sour_Gummy/SourGummy-Regular.ttf
+# Orion-Edit: Removed because there is no RU support
+#- type: font
+#  id: SourGummy
+#  path: /Fonts/_Goobstation/Sour_Gummy/SourGummy-Regular.ttf
 
-- type: font
-  id: SourGummyBold
-  path: /Fonts/_Goobstation/Sour_Gummy/SourGummy-Bold.ttf
+# Orion-Edit: Removed because there is no RU support
+#- type: font
+#  id: SourGummyBold
+#  path: /Fonts/_Goobstation/Sour_Gummy/SourGummy-Bold.ttf
 
 # Monospace (Silicon)
 - type: font
@@ -45,7 +49,8 @@
   path: /Fonts/_Goobstation/NotoSansMono/NotoSansMono-Bold.ttf
 
 # Valyrian Standard (Harpies/Squackroaches)
-- type: font
-  id: Delius
-  path: /Fonts/_Goobstation/Delius/Delius-Regular.ttf
+# Orion-Edit: Removed because there is no RU support
+#- type: font
+#  id: Delius
+#  path: /Fonts/_Goobstation/Delius/Delius-Regular.ttf
 
