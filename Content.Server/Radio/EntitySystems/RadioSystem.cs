@@ -323,8 +323,6 @@ public sealed partial class RadioSystem : EntitySystem
                     break;
             }
         }
-        else if (speech.Bold)
-            wrapId = "chat-radio-message-wrap-bold-language";
         // Orion-End
 
         var languageDisplay = language.IsVisibleLanguage
