@@ -144,8 +144,9 @@
     pocket2: BookSecurity
   storage:
     back:
+    - BookSecurity # Orion
     - Flash
-    - MagazinePistol
+#    - MagazinePistol # Orion-Edit: Removed
 
 - type: chameleonOutfit
   id: SecurityCadetChameleonOutfit

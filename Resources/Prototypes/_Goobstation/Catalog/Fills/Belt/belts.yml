@@ -118,12 +118,16 @@
   id: BeltSecurityNoBatonEntityTable
   table: !type:AllSelector
     children:
+    # Orion-Edit-Start
     - id: Handcuffs
-    - id: Handcuffs
-    - id: Handcuffs
-    - id: HoloprojectorSecurity
-    - id: RadioHandheldSecurity
-    - id: WeaponDisabler #Goobstation
+      amount: 2
+    - id: FlashlightSeclite
+    - id: GrenadeFlashBang
+      amount: 2
+    - id: Flash
+    - id: BolaEnergy
+      amount: 2
+    # Orion-Edit-End
 
 - type: entity
   id: ClothingBeltCorporateJudoFilled

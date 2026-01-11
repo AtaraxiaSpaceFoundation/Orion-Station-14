@@ -121,7 +121,7 @@
         mask:
         - Opaque
   - type: StaminaDamageOnCollide
-    damage: 20
+    damage: 32 # Orion-Edit: 20 > 32
   - type: Projectile
     impactEffect: BulletImpactEffectBlueDisabler
     damage:

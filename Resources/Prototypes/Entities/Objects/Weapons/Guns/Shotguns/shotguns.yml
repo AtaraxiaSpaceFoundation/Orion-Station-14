@@ -259,6 +259,7 @@
     shape: # Goobstation
     - 0,0,4,1
   - type: BallisticAmmoProvider
+    capacity: 9 # Orion
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1.7 # Goobstation

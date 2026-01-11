@@ -17,4 +17,16 @@ ent-CaseInteQBulldog = { ent-CaseInteQ }
     .suffix = Бульдог Интек, Заполненный
 ent-CaseInteQSMG = { ent-CaseInteQ }
     .desc = { ent-CaseInteQ.desc }
-    .suffix = СМГ Интек, Заполненный
+    .suffix = ПП Интек, Заполненный
+
+ent-CaseSec = кейс СБ
+    .desc = Красно-чёрный кейс с эмблемой СБ, интересно, что же там?
+    .suffix = СБ, Пустой
+
+ent-CaseSecMini = кейс мини СБ
+    .desc = Маленький красно-чёрный кейс с эмблемой СБ, интересно, что же там?
+    .suffix = СБ, Пустой
+
+ent-CaseBrigmed = кейс Бригмедика
+    .desc = Красно-белый кейс с кровавым крестом. Для настоящего боевого доктора.
+    .suffix = Бригмед, Пустой

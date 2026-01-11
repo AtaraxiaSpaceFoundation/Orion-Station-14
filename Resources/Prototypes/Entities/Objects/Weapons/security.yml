@@ -177,13 +177,13 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 7
+        Blunt: 10 # Orion-Edit: 7 > 10
     bluntStaminaDamageFactor: 2.0
     angle: 0
     animation: WeaponArcThrust
   - type: StaminaDamageOnHit # goob edited
     damage: 15
-    overtime: 40
+    overtime: 45 # Orion-Edit: 40 > 45
     lightAttackDamageMultiplier: 4
     lightAttackOvertimeDamageMultiplier: 0
     sound: /Audio/Weapons/egloves.ogg
@@ -320,7 +320,7 @@
       size: Small
       sprite: Objects/Weapons/Melee/flash.rsi
     - type: UseDelay
-      delay: 4 # has to be the same as the FlashingTime datafield in FlashComponent
+      delay: 1 # has to be the same as the FlashingTime datafield in FlashComponent # Orion-Edit: 4 > 1
     - type: UseDelayOnMeleeHit
     - type: StaticPrice
       price: 40

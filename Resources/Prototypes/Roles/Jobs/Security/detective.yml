@@ -106,12 +106,13 @@
     #gloves: ClothingHandsGlovesForensic - Goobstation, moved to loadouts
     ears: ClothingHeadsetAltSecurityRegular # Goobstation
     belt: ClothingBeltHolsterFilled
+    pocket1: WeaponDisabler # Orion
   storage:
     back:
     - Flash
     - ForensicPad
     - ForensicScanner
-    - ClothingMaskGasSecurity # Goobstation
+#    - ClothingMaskGasSecurity # Goobstation # Orion-Edit: Now in BoxSurvival
 
 - type: chameleonOutfit
   id: DetectiveChameleonOutfit

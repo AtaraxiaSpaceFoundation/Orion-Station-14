@@ -1,4 +1,24 @@
 - type: loadoutGroup
+  id: SecurityGun
+  name: loadout-group-security-gun
+  loadouts:
+  - SecurityGunG22
+  - SecurityGunG23
+  - SecurityGunMk58
+  - SecurityGunLaserPistol
+
+- type: loadoutGroup
+  id: SecurityGunHos
+  name: loadout-group-security-gun
+  loadouts:
+  - SecurityGunVP78
+  - SecurityGunG22
+  - SecurityGunG23
+  - SecurityGunMk58
+  - SecurityGunLaserPistol
+
+# Underwear (All roles)
+- type: loadoutGroup
   id: Undershirt
   name: loadout-group-undershirt
   minLimit: 0

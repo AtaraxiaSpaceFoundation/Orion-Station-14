@@ -344,8 +344,8 @@
     fireRate: 5
     availableModes:
     - SemiAuto
-    soundGunshot:
-      path: /Audio/_Orion/Weapons/Guns/Pistols/vp70_shot.ogg # Orion-Edit
+#    soundGunshot: # Orion-Edit: Removed
+#      path: /Audio/Weapons/Guns/Gunshots/mk58.ogg
 
 - type: entity
   name: N1984

@@ -35,8 +35,6 @@
       - FullAuto
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Pistols/vp70_shot.ogg
-    soundEmpty:
-      path: /Audio/_Orion/Weapons/Guns/Pistols/vp70_empty.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -60,7 +58,7 @@
 
 - type: entity
   parent: [BaseWeaponPistol, BaseCentcommCommandContraband]
-  id: WeaponPistolDEagle
+  id: WeaponPistolDesertEagle
   name: desert eagle
   description: A magnum chambered in .45AE that comes with a serious kick. This one is engraved, "Peace through superior firepower".
   components:
@@ -111,6 +109,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/glock22/big.rsi
+    scale: 0.9, 0.9
   - type: Item
     sprite: _Orion/Objects/Weapons/Guns/Pistols/glock22/tiny.rsi
   - type: Gun
@@ -149,6 +148,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Objects/Weapons/Guns/Pistols/service_pistol23/big.rsi
+    scale: 0.9, 0.9
   - type: Item
     sprite: _Orion/Objects/Weapons/Guns/Pistols/service_pistol23/tiny.rsi
   - type: Gun
@@ -168,23 +168,54 @@
         startingItem: MagazinePistol
         insertSound: /Audio/_Orion/Weapons/Guns/Pistols/colt_reload.ogg
         ejectSound: /Audio/_Orion/Weapons/Guns/Pistols/colt_unload.ogg
-        priority: 2
+        priority: 3
         whitelist:
           tags:
             - MagazinePistol
       gun_chamber:
         startingItem: CartridgePistol
-        priority: 1
+        priority: 2
         whitelist:
           tags:
             - CartridgePistol
+      cell_slot:
+        priority: 1
+        startingItem: PowerCellMedium
+        name: power-cell-slot-component-slot-name-default
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+      cell_slot: !type:ContainerSlot
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
   - type: MagazineVisuals
     magState: mag
     steps: 1
     zeroVisible: true
-  - type: UnpoweredFlashlight
+  - type: HandheldLight
+    addPrefix: false
+    wattage: 0.5
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: LightBehaviour
+    behaviours:
+      - !type:FadeBehaviour
+        id: radiating
+        maxDuration: 2.0
+        startValue: 3.0
+        endValue: 2.0
+        isLooped: true
+        reverseWhenFinished: true
+      - !type:PulseBehaviour
+        id: blinking
+        interpolate: Nearest
+        maxDuration: 1.0
+        startValue: 0.1
+        endValue: 2.0
+        isLooped: true
   - type: PointLight
     enabled: false
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-    radius: 6
+    radius: 5

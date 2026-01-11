@@ -265,6 +265,12 @@
     sprite: Clothing/Shoes/Boots/winterbootssec.rsi
   - type: Clothing
     sprite: Clothing/Shoes/Boots/winterbootssec.rsi
+  # Orion-Start
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.6
+  - type: ModifyStandingUpTime
+    multiplier: 0.6
+  # Orion-End
   - type: ItemSlots # Goobstation
     slots:
       item:

@@ -47,6 +47,7 @@
     GrenadeFlashBang: 4
     TearGasGrenade: 4
     ClusterBangFull: 2
+    SmokeGrenade: 2 # Orion
     GrenadeStinger: 4
     Flash: 5
     Tourniquet: 5
@@ -61,7 +62,7 @@
     RiotBulletShield: 2
     RadioHandheldSecurity: 5
     #Bola: 6 # Goob edit - already have energy bolas
-    CombatKnife: 1 # Goob edit
+    CombatKnife: 3 # Goob edit # Orion-Edit: 1 > 3
     # Goobstation
     PolymerBaton: 1
     SpearTelescopic: 1
@@ -77,6 +78,7 @@
     WeaponMeleeNeedle: 2
     FoodDonutHomer: 12
     FoodBoxDonut: 2
+    ConfettiGrenade: 2 # Orion
     #box evidence
   emaggedInventory: # Goobstation
     SarinGasGrenade: 1

@@ -732,6 +732,7 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
+  - SecurityGunHos # Orion
   - SecurityMelee # Goobstation
   - SecurityBelt
   - HeadofSecurityOuterClothing
@@ -759,6 +760,7 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
+  - SecurityGun # Orion
   - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
@@ -786,6 +788,7 @@
   - SecurityHead
   - SecurityJumpsuit
   - SecurityBackpack
+  - SecurityGun # Orion
   - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes

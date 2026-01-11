@@ -225,9 +225,9 @@
     maxAngle: -20
   - type: Gun
     minAngle: 24
-    maxAngle: 45
-    angleIncrease: 4
-    angleDecay: 16
+    maxAngle: 40 # Orion-Edit: 45 > 40
+    angleIncrease: 1.2 # Orion-Edit: 4 > 1.2
+    angleDecay: 20 # Orion-Edit: 16 > 20
     fireRate: 10
     selectedMode: FullAuto
     availableModes:

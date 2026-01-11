@@ -1,0 +1,17 @@
+- type: entity
+  parent: Surgerykit
+  id: SurgerykitFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: SawElectric
+      - id: Drill
+      - id: Hemostat
+      - id: Scalpel
+      - id: Cautery
+      - id: MedicalStitches
+      - id: BoneGel
+      - id: Retractor
+      - id: ClothingMaskSterile
+      - id: PillCanisterTramadol

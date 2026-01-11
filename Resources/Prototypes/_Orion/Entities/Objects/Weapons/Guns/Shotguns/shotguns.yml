@@ -26,7 +26,7 @@
 
 - type: entity
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
-  id: WeaponShotgun39
+  id: WeaponShotgunXM1014
   name: XM1014
   suffix: Shotgun
   description: The Earth Armories XM1014 combat shotgun is a semi automatic shotgun used by breachers and pointmen within the Earth Army squads. Uses .12 shotgun shells.
@@ -38,7 +38,7 @@
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/sh-39/tiny.rsi
   - type: BallisticAmmoProvider
-    capacity: 10
+    capacity: 7
   - type: GunRequiresWield
   - type: Gun
     cameraRecoilScalar: 2
@@ -46,8 +46,8 @@
       path: /Audio/_Orion/Weapons/Guns/Shotguns/sh39.ogg
 
 - type: entity
-  parent: WeaponShotgun39
-  id: WeaponShotgun39NonLethal
+  parent: WeaponShotgunXM1014
+  id: WeaponShotgunXM1014NonLethal
   name: XM1014
   suffix: Shotgun [Non Lethal]
   components:
@@ -83,6 +83,8 @@
       path: /Audio/_Orion/Weapons/Guns/Shotguns/shotgun_cmb.ogg
       params:
         volume: +2
+  - type: GunSpreadModifier
+    spread: 0.9
   - type: Tag
     tags:
     - WeaponShotgunKammerer
@@ -114,3 +116,5 @@
     cameraRecoilScalar: 2
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg
+  - type: GunSpreadModifier
+    spread: 0.7

@@ -1,0 +1,25 @@
+- type: entity
+  parent: Medkit
+  id: Surgerykit
+  name: Surgery kit
+  description: A compact kit stocked with the essential surgical instruments for a full operation.
+  components:
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,4
+    - 4,4,4,4
+    whitelist:
+      tags:
+        - Bottle
+        - CigPack
+        - PillCanister
+        - SurgeryTool
+        - MedicalPatch
+        - Mask
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
+    state: surgerykit
+  - type: Item
+    sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
+    heldPrefix: surgerykit

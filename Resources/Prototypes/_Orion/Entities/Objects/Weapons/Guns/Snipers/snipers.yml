@@ -77,7 +77,7 @@
       path: /Audio/_Orion/Weapons/Guns/Snipers/sniper_empty.ogg
   - type: BallisticAmmoProvider
     autoCycle: false
-    capacity: 3
+    capacity: 4
     soundRack: 
       path: /Audio/_Orion/Weapons/Guns/Snipers/tl-127_bolt.ogg
     proto: Cartridge308win

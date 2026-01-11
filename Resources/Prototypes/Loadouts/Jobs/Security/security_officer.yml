@@ -225,7 +225,7 @@
 - type: loadout
   id: SecurityOfficerWintercoat
   equipment:
-    outerClothing: ClothingOuterWinterSecArmored # Goobstation
+    outerClothing: ClothingOuterWinterSecArmoredAlt # Goobstation # Orion-Edit
 
 # Shoes
 - type: loadout
@@ -241,7 +241,7 @@
 - type: loadout
   id: SecurityWinterBoots
   equipment:
-    shoes: ClothingShoesWinterCombatBoots # Goobstation
+    shoes: ClothingShoesBootsWinterSec # Goobstation # Orion-Edit
 
 # PDA
 - type: loadout

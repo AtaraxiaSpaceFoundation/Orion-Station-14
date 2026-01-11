@@ -192,7 +192,7 @@
 
 - type: entity
   name: Kardashev-Mosin
-  parent: [BaseWeaponSniper, BaseGunWieldable, BaseMajorContraband]
+  parent: [BaseWeaponSniper, BaseGunWieldable, BaseSecurityContraband] # Orion-Edit: MajorContraband > SecurityContraband
   id: WeaponSniperMosin
   description: A true relic, the Kardashev-Mosin has served in nearly every armed conflict since its creation 670 years ago. The bolt-action design of the rifle remains virtually identical to its original design, whether used for hunting, sniping, or endless trench warfare. Loads 10 rounds of 7.62mm rifle.  # Orion-Edit: .30 rifle > 7.62mm
   components:
@@ -216,7 +216,7 @@
     animationRotation: -135 # WWDP
     damage:
       types:
-        Piercing: 12
+        Piercing: 18 # Orion-Edit: 12 > 18
     angle: 0
     animation: WeaponArcThrust
     soundHit:

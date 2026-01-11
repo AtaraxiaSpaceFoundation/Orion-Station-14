@@ -9,3 +9,14 @@
   id: HeadOfSecurityRoyalCloak
   equipment:
     neck: ClothingNeckCloakRoyalHeadOfSecurity
+
+# Pocket 2
+- type: loadout
+  id: SecurityGunVP78
+  name: VP-78
+  equipment:
+    pocket2: WeaponPistolVP78
+  storage:
+    back:
+    - MagazinePistol20
+    - MagazinePistol20

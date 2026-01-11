@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ GlassBoxLaserFilledAlertUnlocked, AlertLevelLock ]
+  parent: [ GlassBoxLaserFilledAlertUnlocked, AlertLevelLockBlue ]
   id: GlassBoxLaserFilledAlertLocked
   suffix: AntiqueLaser, Filled, Alert Level Lock
 

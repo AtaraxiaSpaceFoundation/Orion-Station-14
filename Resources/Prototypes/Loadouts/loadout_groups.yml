@@ -1287,6 +1287,7 @@
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   - HeadOfSecurityRoyalCloak # Orion
+  - SecurityScarfRed # Orion
   - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
@@ -1360,7 +1361,7 @@
   loadouts:
   - SecurityBelt
   - SecurityWebbing
-#  - SecurityJudoBelt # Goobstation - Martial Arts | Orion-Edit: Removed
+  - SecurityJudoBelt # Goobstation - Martial Arts
 
 - type: loadoutGroup
   id: SecurityOuterClothing
@@ -1400,6 +1401,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  - SecurityScarfRed # Orion
   - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup

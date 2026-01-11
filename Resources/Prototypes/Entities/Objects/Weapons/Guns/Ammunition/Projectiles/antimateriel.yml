@@ -46,7 +46,7 @@
     damage:
       types:
         Piercing: 75
-      armorPenetration: 0.5 # Goobstation
+      armorPenetration: 0.8 # Goobstation # Orion-Edit: 0.5 > 0.8
     penetrationThreshold: 100 # Goobstation - This count as penetration health
   - type: StaminaDamageOnCollide
     damage: 115 # Goob edit

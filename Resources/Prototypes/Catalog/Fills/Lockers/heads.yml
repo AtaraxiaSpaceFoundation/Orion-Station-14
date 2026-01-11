@@ -410,7 +410,7 @@
     - id: RapidSyringeGun
     - id: BoxSyringePax
     - id: ClothingBeltMilitaryWebbingCMOFilled
-    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: SurgerykitFilled # Orion-Edit: ClothingBackpackDuffelSurgeryFilled now Surgerykit
     # Shitmed
     - id: MedicalBiofabricatorFlatpack
     # Virology
@@ -521,7 +521,7 @@
   table: !type:AllSelector
     children:
     #- id: WeaponEnergyShotgun # Goobstation - security revamp
-    - id: BookSpaceLaw
+#    - id: BookSpaceLaw # Orion-Edit: Removed
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase
       prob: 0.50
@@ -532,7 +532,7 @@
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: DoorRemoteSecurity
-    - id: HoloprojectorSecurity
+#    - id: HoloprojectorSecurity # Orion-Edit: Removed
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard
     #- id: WeaponDisabler # Goobstation (Disablers in belts)
