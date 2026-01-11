@@ -64,6 +64,7 @@ public sealed class ToggleableHudSystem : EntitySystem
             // HealthBars should have a list of damage containers
             var healthBars = EnsureComp<ShowHealthBarsComponent>(uid);
             healthBars.DamageContainers = new List<ProtoId<DamageContainerPrototype>>(component.DamageContainers);
+            Dirty(uid, healthBars);
             EnsureComp<ShowHealthIconsComponent>(uid);
             EnsureComp<ShowDiseaseIconsComponent>(uid);
 

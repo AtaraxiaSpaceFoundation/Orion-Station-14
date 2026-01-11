@@ -7,7 +7,7 @@ namespace Content.Shared._Orion.ToggleableHUD;
 /// <summary>
 ///     Toggleable HUD component.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ToggleableHUDComponent : Component
 {
     [DataField]
@@ -16,7 +16,7 @@ public sealed partial class ToggleableHUDComponent : Component
     [DataField]
     public EntityUid? ActionEntity;
 
-    [DataField]
+    [DataField, AutoNetworkedField]
     public bool IsToggled;
 
     [DataField]
