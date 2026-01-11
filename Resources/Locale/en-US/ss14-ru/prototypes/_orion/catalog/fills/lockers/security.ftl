@@ -34,7 +34,7 @@ ent-GunSafeLaserCarbineAlertLocked = { ent-GunSafeLaserCarbine }
 ent-GunSafeLaserCarbineAlertUnlocked = { ent-GunSafeLaserCarbine }
     .desc = { ent-GunSafeLaserCarbine.desc }
 
-ent-GunSafeRandomPistolAlertUnlocked = Pistol safe
+ent-GunSafeRandomPistolAlertUnlocked = pistol safe
     .suffix = Random, pistol
     .desc = { ent-GunSafeBaseSecure.desc }
 
@@ -73,8 +73,8 @@ ent-GunSafeRandomAutoShotgunAlertLocked = { ent-GunSafeRandomAutoShotgunAlertUnl
     .suffix = Random, auto shotgun, Alert Level Lock
     .desc = { ent-GunSafeBaseSecure.desc }
 
-ent-GunSafeRandomLaserCarbineAlertUnlocked = Сейф с лазерными винтовками
-    .suffix = laser carbine safe
+ent-GunSafeRandomLaserCarbineAlertUnlocked = laser carbine safe
+    .suffix = Random, laser carbine
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomLaserCarbineAlertLocked = { ent-GunSafeRandomLaserCarbineAlertUnlocked }
     .suffix = Random, laser carbine, Alert Level Lock

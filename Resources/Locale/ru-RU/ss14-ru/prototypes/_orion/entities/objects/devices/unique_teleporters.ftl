@@ -1,2 +1,2 @@
-ent-SecurityTeleporterEL7 = Телепортер СБ (EL-7)
+ent-SecurityTeleporterEL7 = маяк сброса груза СБ (EL-7)
     .desc = Устройство, позволяющее запросить доставку особого груза.

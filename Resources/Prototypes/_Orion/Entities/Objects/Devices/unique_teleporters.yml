@@ -8,7 +8,7 @@
     sprite: _Orion/Objects/Devices/unique_teleporters.rsi
     state: security
   - type: Item
-    sprite: _Goobstation/Objects/Devices/unique_teleporters.rsi
+    sprite: _Orion/Objects/Devices/unique_teleporters.rsi
     state: security
   - type: SpawnItemsOnUse
     items:

@@ -16,4 +16,4 @@
   - type: StationAlertLevelLock
     lockedAlertLevels:
     - green
-    - yellowЫ
+    - yellow

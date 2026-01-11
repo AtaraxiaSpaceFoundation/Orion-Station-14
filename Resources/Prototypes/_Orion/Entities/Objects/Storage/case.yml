@@ -62,7 +62,7 @@
   description: Red and black case with a sec logo, I wonder what's in there?
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Storage/sec_case.rsi
+    sprite: _Orion/Objects/Storage/security_case.rsi
     state: icon
 
 - type: entity
@@ -73,7 +73,7 @@
   description: Little red and black case with a sec logo, I wonder what's in there?
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Storage/sec_case_mini.rsi
+    sprite: _Orion/Objects/Storage/security_case_mini.rsi
     state: icon
 
 - type: entity
@@ -84,7 +84,7 @@
   description: Red and white case with a blood-stained medical cross. Only for a real combat medic.
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Storage/brigmed_case.rsi
+    sprite: _Orion/Objects/Storage/brigmedic_case.rsi
     state: icon
   - type: Storage
     defaultStorageOrientation: Vertical
