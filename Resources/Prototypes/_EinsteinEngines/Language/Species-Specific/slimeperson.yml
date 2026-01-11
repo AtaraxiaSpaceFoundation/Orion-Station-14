@@ -11,8 +11,8 @@
   isVisibleLanguage: true
   speech:
     color: "#24d1b9" # Goob Edit - Original "#00a3e2dd"
-    fontId: SourGummy # Goob Edit - Different Font
-    boldFontId: SourGummyBold
+    fontId: ComicSansMS # Orion-Edit
+    boldFontId: ComicSansMS # Orion-Edit
     fontSize: 13 # Goob Edit - Increased by 1 to account for slight font size difference.
   # Orion-Start
   icon:

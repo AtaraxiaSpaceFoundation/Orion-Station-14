@@ -25,8 +25,8 @@
   id: RobotTalk
   isVisibleLanguage: true
   speech:
-    fontId: Monospace
-    boldFontId: MonospaceBold
+    fontId: RobotoLight # Orion-Edit
+    boldFontId: RobotoBoldCondensed # Orion-Edit
   # Orion-Start
   icon:
     sprite: _Orion/Interface/Chat/language.rsi
@@ -45,8 +45,8 @@
   id: DroneTalk
   isVisibleLanguage: true
   speech:
-    fontId: Monospace
-    boldFontId: MonospaceBold
+    fontId: RobotoLight # Orion-Edit
+    boldFontId: RobotoBoldCondensed # Orion-Edit
   # Orion-Start
   icon:
     sprite: _Orion/Interface/Chat/language.rsi

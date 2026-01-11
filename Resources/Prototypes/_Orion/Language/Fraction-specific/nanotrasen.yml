@@ -2,6 +2,7 @@
   id: CorporateCodespeak
   speech:
     fontId: Supernatural
+    boldFontId: Supernatural
     color: "#0066ff"
   # Orion-Start
   icon:

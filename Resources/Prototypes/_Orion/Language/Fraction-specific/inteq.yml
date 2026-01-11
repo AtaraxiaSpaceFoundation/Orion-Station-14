@@ -2,6 +2,7 @@
   id: OldFastCodes
   speech:
     fontId: Supernatural
+    boldFontId: Supernatural
     color: "#FF8C00"
   # Orion-Start
   icon:

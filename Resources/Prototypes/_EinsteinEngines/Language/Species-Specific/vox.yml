@@ -10,7 +10,8 @@
   isVisibleLanguage: true
   speech:
     color: "#a489a0"
-    fontId: ChelseaMarket
+    fontId: FestusCorrect # Orion-Edit
+    boldFontId: FestusCorrect # Orion
     fontSize: 12
   # Orion-Start
   icon:

@@ -10,12 +10,13 @@
   isVisibleLanguage: true
   speech:
     color: "#4DBFD9"
-    fontId: Schoolbell
+    fontId: CountryhouseG # Orion-Edit
+    boldFontId: CountryhouseG # Orion
     fontSize: 14
   # Orion-Start
   icon:
     sprite: _Orion/Interface/Chat/language.rsi
-    state: what # TODO: Sprite it
+    state: birb
   # Orion-End
   obfuscation:
     !type:SyllableObfuscation

@@ -1,3 +1,27 @@
 ﻿- type: font
   id: Supernatural
   path: /Fonts/_Orion/supernatural.ttf
+
+- type: font
+  id: SlimamifMedium
+  path: /Fonts/_Orion/SlimamifMedium.ttf
+
+- type: font
+  id: CountryhouseG
+  path: /Fonts/_Orion/CountryhouseG.ttf
+
+- type: font
+  id: RobotoLight
+  path: /Fonts/_Orion/roboto_light.ttf
+
+- type: font
+  id: RobotoBoldCondensed
+  path: /Fonts/_Orion/roboto_bold_condensed.ttf
+
+- type: font
+  id: FestusCorrect
+  path: /Fonts/_Orion/FestusCorrect.ttf
+
+- type: font
+  id: ComicSansMS
+  path: /Fonts/_Orion/ComicSansMS.ttf

@@ -2,6 +2,7 @@
   id: Codespeak
   speech:
     fontId: Supernatural
+    boldFontId: Supernatural
     color: "#DC143C"
   # Orion-Start
   icon:
