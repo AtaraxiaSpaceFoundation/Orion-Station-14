@@ -297,15 +297,9 @@
     - Biological
     - Inorganic
   - type: ShowSyndicateIcons
-  # Orion-Start
-  - type: ShowDiseaseIcons
-    lowThreshold: 1
-    mediumThreshold: 20
-    highThreshold: 40
-  # Orion-End
 
 - type: entity
-  parent: ClothingEyesHudMultiversal # Orion-Edit: Change for future innovations
+  parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons]
   id: ClothingEyesHudOmni
   name: omni hud
   description: Filler
@@ -314,13 +308,13 @@
     sprite: Clothing/Eyes/Hud/omni.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Hud/omni.rsi
-#  - type: ShowHealthBars # Orion-Edit: Removed
-#    damageContainers:
-#    - Biological
-#    - Inorganic
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
   - type: ShowHungerIcons
   - type: ShowThirstIcons
-#  - type: ShowSyndicateIcons # Orion-Edit: Inherited from parent
+  - type: ShowSyndicateIcons
 
 - type: entity
   parent: [ClothingEyesBase, BaseSyndicateContraband] # Goob edit
