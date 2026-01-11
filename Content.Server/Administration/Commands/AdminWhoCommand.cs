@@ -21,7 +21,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Administration.Commands;
 
-[AdminCommand(AdminFlags.AdminWho)]
+[AnyCommand] // Orion-Edit: Accessible to all
 public sealed class AdminWhoCommand : LocalizedCommands
 {
     [Dependency] private readonly IAfkManager _afkManager = default!;
