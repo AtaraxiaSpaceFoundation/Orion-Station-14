@@ -92,6 +92,7 @@ public sealed class ToggleableHudSystem : EntitySystem
         _popup.PopupEntity(popupMessage, uid, uid);
 
         component.IsToggled = actionToggle;
+        Dirty(uid, component);
 
         return true;
     }
