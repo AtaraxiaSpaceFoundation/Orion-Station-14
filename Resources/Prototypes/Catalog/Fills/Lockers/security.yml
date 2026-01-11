@@ -209,11 +209,12 @@
     - id: NitrogenTankFilled
     - id: ClothingUniformJumpskirtOfLife
       prob: 0.1
-    - id: MedkitOxygenFilled
     # Orion-Start
+    - id: ClothingBackpackDuffelBrigmedicFilledJanitorialSupplies
     - id: MedkitToxinFilled
     - id: MedkitRadiationFilled
     # Orion-End
+    - id: MedkitOxygenFilled
     - id: MedkitAdvancedFilled
     - id: BoxSyringe
     - id: BoxBodyBagPrisoner # Goob Station | Orion-Edit

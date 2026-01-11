@@ -56,7 +56,7 @@
 
 - type: entity
   parent: [BaseCase, BaseSecurityContraband]
-  id: CaseSec
+  id: CaseSecurity
   name: security case
   suffix: Sec, Empty
   description: Red and black case with a sec logo, I wonder what's in there?
@@ -67,7 +67,7 @@
 
 - type: entity
   parent: [BaseCaseMini, BaseSecurityContraband]
-  id: CaseSecMini
+  id: CaseSecurityMini
   name: security mini case
   suffix: Sec, Empty
   description: Little red and black case with a sec logo, I wonder what's in there?
@@ -78,9 +78,9 @@
 
 - type: entity
   parent: [BaseCase, BaseSecurityContraband]
-  id: CaseBrigmed
-  name: brigmed case
-  suffix: brigmed, Empty
+  id: CaseBrigmedic
+  name: brigmedic case
+  suffix: brigmedic, Empty
   description: Red and white case with a blood-stained medical cross. Only for a real combat medic.
   components:
   - type: Sprite
@@ -89,4 +89,4 @@
   - type: Storage
     defaultStorageOrientation: Vertical
     grid:
-    - 0,0,12,3
+    - 0,0,11,3

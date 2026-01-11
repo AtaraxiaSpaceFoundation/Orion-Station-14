@@ -19,14 +19,14 @@ ent-CaseInteQSMG = { ent-CaseInteQ }
     .desc = { ent-CaseInteQ.desc }
     .suffix = ПП Интек, Заполненный
 
-ent-CaseSec = охранный кейс
+ent-CaseSecurity = охранный кейс
     .desc = Красно-чёрный кейс с эмблемой СБ, интересно, что же там?
     .suffix = СБ, Пустой
 
-ent-CaseSecMini = охранный мини-кейс
+ent-CaseSecurityMini = охранный мини-кейс
     .desc = Маленький красно-чёрный кейс с эмблемой СБ, интересно, что же там?
     .suffix = СБ, Пустой
 
-ent-CaseBrigmed = кейс Бригмедика
+ent-CaseBrigmedic = кейс Бригмедика
     .desc = Красно-белый кейс с кровавым крестом. Для настоящего боевого доктора.
-    .suffix = Бригмед, Пустой
+    .suffix = Пустой

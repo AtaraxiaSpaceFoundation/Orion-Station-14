@@ -240,7 +240,9 @@
       - id: ParamedHypo
       # Orion-Start
       - id: SyringeCaseFilledGeneral
-      - id: DefibrillatorCompact
+      - id: Crowbar
+      - id: PillCanisterHyronalin
+      - id: PillCanisterDylovene
       # Orion-End
       # Orion-Edit-Start: Removed
 #      - id: CartridgeSaline

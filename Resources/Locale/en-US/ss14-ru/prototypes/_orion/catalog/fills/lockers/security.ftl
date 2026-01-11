@@ -42,7 +42,7 @@ ent-GunSafeRandomSubMachineGunAlertUnlocked = SMG safe
     .suffix = Random, SMG
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomSubMachineGunAlertLocked = { ent-GunSafeRandomSubMachineGunAlertUnlocked }
-    .suffix =  Random, SMG, Alert Level Lock
+    .suffix = Random, SMG, Alert Level Lock
     .desc = { ent-GunSafeBaseSecure.desc }
 
 ent-GunSafeRandomLightRifleAlertUnlocked = light rifle safe

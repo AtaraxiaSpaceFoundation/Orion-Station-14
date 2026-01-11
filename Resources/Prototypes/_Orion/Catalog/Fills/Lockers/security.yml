@@ -184,13 +184,13 @@
         weight: 20
       - id: WeaponPistolG23
         weight: 20
-      - id: CaseSecMiniInspector
+      - id: CaseSecurityMiniInspector
         weight: 10
-      - id: CaseSecMiniDeckard
+      - id: CaseSecurityMiniDeckard
         weight: 10
-      - id: CaseSecMiniFlareGun
+      - id: CaseSecurityMiniFlareGun
         weight: 4
-      - id: CaseSecMiniCellRevolver
+      - id: CaseSecurityMiniCellRevolver
         weight: 4
       - id: WeaponEarthGovLaserPistol
         weight: 4
@@ -200,9 +200,9 @@
         weight: 2
       - id: WeaponAdvancedLaser
         weight: 0.75
-      - id: CaseSecMiniVP78
+      - id: CaseSecurityMiniVP78
         weight: 0.5
-      - id: CaseSecMiniDesertEagle
+      - id: CaseSecurityMiniDesertEagle
         weight: 0.25
       - id: WeaponBehonkerLaser
         weight: 0.25
@@ -216,13 +216,13 @@
         weight: 20
       - id: WeaponPistolG23
         weight: 20
-      - id: CaseSecMiniInspector
+      - id: CaseSecurityMiniInspector
         weight: 10
-      - id: CaseSecMiniDeckard
+      - id: CaseSecurityMiniDeckard
         weight: 10
-      - id: CaseSecMiniFlareGun
+      - id: CaseSecurityMiniFlareGun
         weight: 4
-      - id: CaseSecMiniCellRevolver
+      - id: CaseSecurityMiniCellRevolver
         weight: 4
       - id: WeaponEarthGovLaserPistol
         weight: 4
@@ -232,9 +232,9 @@
         weight: 2
       - id: WeaponAdvancedLaser
         weight: 0.75
-      - id: CaseSecMiniVP78
+      - id: CaseSecurityMiniVP78
         weight: 0.5
-      - id: CaseSecMiniDesertEagle
+      - id: CaseSecurityMiniDesertEagle
         weight: 0.25
       - id: WeaponBehonkerLaser
         weight: 0.25
@@ -248,13 +248,13 @@
         weight: 20
       - id: WeaponPistolG23
         weight: 20
-      - id: CaseSecMiniInspector
+      - id: CaseSecurityMiniInspector
         weight: 10
-      - id: CaseSecMiniDeckard
+      - id: CaseSecurityMiniDeckard
         weight: 10
-      - id: CaseSecMiniFlareGun
+      - id: CaseSecurityMiniFlareGun
         weight: 4
-      - id: CaseSecMiniCellRevolver
+      - id: CaseSecurityMiniCellRevolver
         weight: 4
       - id: WeaponEarthGovLaserPistol
         weight: 4
@@ -264,9 +264,9 @@
         weight: 2
       - id: WeaponAdvancedLaser
         weight: 0.75
-      - id: CaseSecMiniVP78
+      - id: CaseSecurityMiniVP78
         weight: 0.5
-      - id: CaseSecMiniDesertEagle
+      - id: CaseSecurityMiniDesertEagle
         weight: 0.25
       - id: WeaponBehonkerLaser
         weight: 0.25
@@ -280,13 +280,13 @@
         weight: 20
       - id: WeaponPistolG23
         weight: 20
-      - id: CaseSecMiniInspector
+      - id: CaseSecurityMiniInspector
         weight: 10
-      - id: CaseSecMiniDeckard
+      - id: CaseSecurityMiniDeckard
         weight: 10
-      - id: CaseSecMiniFlareGun
+      - id: CaseSecurityMiniFlareGun
         weight: 4
-      - id: CaseSecMiniCellRevolver
+      - id: CaseSecurityMiniCellRevolver
         weight: 4
       - id: WeaponEarthGovLaserPistol
         weight: 4
@@ -296,9 +296,9 @@
         weight: 2
       - id: WeaponAdvancedLaser
         weight: 0.75
-      - id: CaseSecMiniVP78
+      - id: CaseSecurityMiniVP78
         weight: 0.5
-      - id: CaseSecMiniDesertEagle
+      - id: CaseSecurityMiniDesertEagle
         weight: 0.25
       - id: WeaponBehonkerLaser
         weight: 0.25
@@ -321,11 +321,11 @@
         weight: 23
       - id: WeaponSubMachineGunDrozd
         weight: 23
-      - id: CaseSecP90
+      - id: CaseSecurityP90
         weight: 2.5
-      - id: CaseSecVector
+      - id: CaseSecurityVector
         weight: 2.5
-      - id: CaseSecLaserCellSMG
+      - id: CaseSecurityLaserCellSMG
         weight: 2
       - id: WeaponHeadOfSecuritySMG
         weight: 0.5
@@ -341,11 +341,11 @@
         weight: 23
       - id: WeaponSubMachineGunDrozd
         weight: 23
-      - id: CaseSecP90
+      - id: CaseSecurityP90
         weight: 2.5
-      - id: CaseSecVector
+      - id: CaseSecurityVector
         weight: 2.5
-      - id: CaseSecLaserCellSMG
+      - id: CaseSecurityLaserCellSMG
         weight: 2
       - id: WeaponHeadOfSecuritySMG
         weight: 0.5
@@ -368,9 +368,9 @@
         weight: 23
       - id: WeaponRifleAUG
         weight: 23
-      - id: CaseSecAKM
+      - id: CaseSecurityAKM
         weight: 5
-      - id: CaseSecCellSniper
+      - id: CaseSecurityCellSniper
         weight: 3
     - !type:GroupSelector
       children:
@@ -382,9 +382,9 @@
         weight: 23
       - id: WeaponRifleAUG
         weight: 23
-      - id: CaseSecAKM
+      - id: CaseSecurityAKM
         weight: 5
-      - id: CaseSecCellSniper
+      - id: CaseSecurityCellSniper
         weight: 3
 
 - type: entityTable
@@ -393,31 +393,31 @@
     children:
     - !type:GroupSelector
       children:
-      - id: CaseSecM28
+      - id: CaseSecurityM28
         weight: 23
-      - id: CaseSecDragunov
+      - id: CaseSecurityDragunov
         weight: 23
-      - id: CaseSecRemington
+      - id: CaseSecurityRemington
         weight: 23
-      - id: CaseSecBR64
+      - id: CaseSecurityBR64
         weight: 23
-      - id: CaseSecMosins
+      - id: CaseSecurityMosins
         weight: 4
-      - id: CaseSecEnergyRifle
+      - id: CaseSecurityEnergyRifle
         weight: 4
     - !type:GroupSelector
       children:
-      - id: CaseSecM28
+      - id: CaseSecurityM28
         weight: 23
-      - id: CaseSecDragunov
+      - id: CaseSecurityDragunov
         weight: 23
-      - id: CaseSecRemington
+      - id: CaseSecurityRemington
         weight: 23
-      - id: CaseSecBR64
+      - id: CaseSecurityBR64
         weight: 23
-      - id: CaseSecMosins
+      - id: CaseSecurityMosins
         weight: 4
-      - id: CaseSecEnergyRifle
+      - id: CaseSecurityEnergyRifle
         weight: 4
 
 - type: entityTable
@@ -434,7 +434,7 @@
         weight: 32
       - id: WeaponShotgunSpas
         weight: 32
-      - id: CaseSecDoubleShotguns
+      - id: CaseSecurityDoubleShotguns
         weight: 4
     - !type:GroupSelector
       children:
@@ -444,7 +444,7 @@
         weight: 32
       - id: WeaponShotgunSpas
         weight: 32
-      - id: CaseSecDoubleShotguns
+      - id: CaseSecurityDoubleShotguns
         weight: 4
 
 - type: entityTable
@@ -459,7 +459,7 @@
         weight: 32
       - id: WeaponShotgunXM1014
         weight: 32
-      - id: CaseSecAntelope
+      - id: CaseSecurityAntelope
         weight: 32
       - id: WeaponHeadOfSecurityShotgun
         weight: 4
@@ -469,7 +469,7 @@
         weight: 32
       - id: WeaponShotgunXM1014
         weight: 32
-      - id: CaseSecAntelope
+      - id: CaseSecurityAntelope
         weight: 32
       - id: WeaponHeadOfSecurityShotgun
         weight: 4

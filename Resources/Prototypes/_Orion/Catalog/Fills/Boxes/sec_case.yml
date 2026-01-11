@@ -1,7 +1,7 @@
-# Big /SMG
+# Big / SMG
 - type: entity
-  parent: CaseSec
-  id: CaseSecP90
+  parent: CaseSecurity
+  id: CaseSecurityP90
   name: security case P90
   suffix: Sec, Filled
   components:
@@ -16,8 +16,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecVector
+  parent: CaseSecurity
+  id: CaseSecurityVector
   name: security case Vector
   suffix: Sec, Filled
   components:
@@ -31,10 +31,10 @@
       - id: MagazineSMGVector
         amount: 3
 
-# /Rifle
+# Rifle
 - type: entity
-  parent: CaseSec
-  id: CaseSecAKM
+  parent: CaseSecurity
+  id: CaseSecurityAKM
   name: security case AKM
   suffix: Sec, Filled
   components:
@@ -51,8 +51,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecM28
+  parent: CaseSecurity
+  id: CaseSecurityM28
   name: security case M-28
   suffix: Sec, Filled
   components:
@@ -67,8 +67,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecDragunov
+  parent: CaseSecurity
+  id: CaseSecurityDragunov
   name: security case Dragunov
   suffix: Sec, Filled
   components:
@@ -83,8 +83,8 @@
         amount: 3
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecMosins
+  parent: CaseSecurity
+  id: CaseSecurityMosins
   name: security case Mosins
   suffix: Sec, Filled
   components:
@@ -100,8 +100,8 @@
         amount: 8
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecBR64
+  parent: CaseSecurity
+  id: CaseSecurityBR64
   name: security case BR-64
   suffix: Sec, Filled
   components:
@@ -115,10 +115,10 @@
       - id: MagazineHeavyRifleBR64
         amount: 2
 
-# /Sniper
+# Sniper
 - type: entity
-  parent: CaseSec
-  id: CaseSecRemington
+  parent: CaseSecurity
+  id: CaseSecurityRemington
   name: security case Remington 700
   suffix: Sec, Filled
   components:
@@ -133,10 +133,10 @@
         amount: 3
       - id: MagazineBox308winUranium
 
-# /Shotgun
+# Shotgun
 - type: entity
-  parent: CaseSec
-  id: CaseSecAntelope
+  parent: CaseSecurity
+  id: CaseSecurityAntelope
   name: security case Antelope
   suffix: Sec, Filled
   components:
@@ -151,8 +151,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecDoubleShotguns
+  parent: CaseSecurity
+  id: CaseSecurityDoubleShotguns
   name: security case double-barreled shotguns
   suffix: Sec, Filled
   components:
@@ -171,10 +171,10 @@
       - id: BoxLethalshot
         amount: 2
 
-# /Laser
+# Laser
 - type: entity
-  parent: CaseSec
-  id: CaseSecLaserCellSMG
+  parent: CaseSecurity
+  id: CaseSecurityLaserCellSMG
   name: security case ER-5
   suffix: Sec, Filled
   components:
@@ -193,8 +193,8 @@
         amount: 4
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecEnergyRifle
+  parent: CaseSecurity
+  id: CaseSecurityEnergyRifle
   name: security case CR-2
   suffix: Sec, Filled
   components:
@@ -211,8 +211,8 @@
       - id: EnergyMagRifleIon
 
 - type: entity
-  parent: CaseSec
-  id: CaseSecCellSniper
+  parent: CaseSecurity
+  id: CaseSecurityCellSniper
   name: security case ES-7
   suffix: Sec, Filled
   components:
@@ -229,10 +229,10 @@
       - id: PowerCellIonSniper
 
 
-# Mini /Pistol
+# Mini / Pistol
 - type: entity
-  parent: CaseSecMini
-  id: CaseSecMiniVP78
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniVP78
   name: security mini case VP-78
   suffix: Sec, Filled
   components:
@@ -248,8 +248,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSecMini
-  id: CaseSecMiniDesertEagle
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniDesertEagle
   name: security mini case Desert Eagle
   suffix: Sec, Filled
   components:
@@ -264,10 +264,10 @@
       - id: MagazineMagnum
         amount: 2
 
-# /Revolver
+# Revolver
 - type: entity
-  parent: CaseSecMini
-  id: CaseSecMiniInspector
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniInspector
   name: security mini case Inspector
   suffix: Sec, Filled
   components:
@@ -283,8 +283,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSecMini
-  id: CaseSecMiniDeckard
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniDeckard
   name: security mini case Deckard
   suffix: Sec, Filled
   components:
@@ -300,8 +300,8 @@
         amount: 2
 
 - type: entity
-  parent: CaseSecMini
-  id: CaseSecMiniCellRevolver
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniCellRevolver
   name: security mini case EG-1
   suffix: Sec, Filled
   components:
@@ -319,10 +319,10 @@
         amount: 3
       - id: PowerCellXrayRevolver
 
-# /Special
+# Special
 - type: entity
-  parent: CaseSecMini
-  id: CaseSecMiniFlareGun
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniFlareGun
   name: security mini case shell gun
   suffix: Sec, Filled
   components:

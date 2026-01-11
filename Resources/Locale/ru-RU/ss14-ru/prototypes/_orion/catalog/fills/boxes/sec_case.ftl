@@ -1,3 +1,3 @@
-ent-CaseSecP90 = кейс СБ с P90
-    .desc = { ent-CaseSec.desc }
+ent-CaseSecurityP90 = охранный кейс с P90
+    .desc = { ent-CaseSecurity.desc }
     .suffix = СБ, Заполненный

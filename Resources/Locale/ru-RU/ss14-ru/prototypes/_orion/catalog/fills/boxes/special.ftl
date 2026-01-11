@@ -1,3 +1,3 @@
-ent-CaseBrigmedFilled = { ent-CaseBrigmed }
-    .desc = { ent-CaseBrigmed.desc }
-    .suffix = Бригмедик, Заполненный
+ent-CaseBrigmedicFilled = { ent-CaseBrigmedic }
+    .desc = { ent-CaseBrigmedic.desc }
+    .suffix = Заполненный
