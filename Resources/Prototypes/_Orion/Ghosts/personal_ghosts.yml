@@ -8,6 +8,15 @@
   name: custom-ghost-personal-placeholder-name
   description: custom-ghost-personal-placeholder-desc
 
+# Force transparency on all custom ghosts
+- type: entity
+  parent: MobObserver
+  id: MobObserverCkey
+  abstract: true
+  components:
+  - type: Sprite
+    color: "#ffffffcc" # 0.8 alpha
+
 - type: entity
   parent: MobObserverCkey
   id: MobObserverCkeyPlaceholder
@@ -17,20 +26,15 @@
     sprite: _Orion/Ghosts/placeholder.rsi
 
 - type: customGhost
-  abstract: true
   id: CkeyPersonal
-  category: personal
+  abstract: true
   name: custom-ghost-personal-name
   description: custom-ghost-personal-desc
+  category: personal
 
-# Abstract entproto to force transparency on all custom ghosts
-- type: entity
-  abstract: true
-  parent: MobObserver
-  id: MobObserverCkey
-  components:
-  - type: Sprite
-    color: "#ffffffcc" # 0.8 alpha
+
+
+# --- Personal ghosts ---
 
 
 
@@ -51,44 +55,6 @@
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/PuroSlavKing.rsi
-    color: "#ffffffe6" # 0.9 alpha
-
-# no_mad
-- type: customGhost
-  parent: CkeyPersonal
-  id: no_mad-ghost
-  restrictions:
-  - !type:CkeyRestriction
-    ckey: [ no_mad ]
-  entity: MobObserver-no_mad
-
-- type: entity
-  parent: MobObserver
-  id: MobObserver-no_mad
-  description: BoO-oO!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Orion/Ghosts/ckey/no_mad.rsi
-    color: "#ffffffe6" # 0.9 alpha
-
-# yourmommy
-- type: customGhost
-  parent: CkeyPersonal
-  id: yourmommy-ghost
-  restrictions:
-  - !type:CkeyRestriction
-    ckey: [ yourmommy ]
-  entity: MobObserver-yourmommy
-
-- type: entity
-  parent: MobObserver
-  id: MobObserver-yourmommy
-  description: Meow!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Orion/Ghosts/ckey/yourmommy.rsi
     color: "#ffffffe6" # 0.9 alpha
 
 # GodFace
@@ -127,44 +93,6 @@
   components:
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/LIZARDWIZARD.rsi
-    color: "#ffffffe6" # 0.9 alpha
-
-# Vetochka
-- type: customGhost
-  parent: CkeyPersonal
-  id: Vetochka-ghost
-  restrictions:
-  - !type:CkeyRestriction
-    ckey: [ Vetochka ]
-  entity: MobObserver-Vetochka
-
-- type: entity
-  parent: MobObserver
-  id: MobObserver-Vetochka
-  description: BoO-oO!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Orion/Ghosts/ckey/Vetochka.rsi
-    color: "#ffffffe6" # 0.9 alpha
-
-# kreses
-- type: customGhost
-  parent: CkeyPersonal
-  id: kreses-ghost
-  restrictions:
-  - !type:CkeyRestriction
-    ckey: [ kreses ]
-  entity: MobObserver-kreses
-
-- type: entity
-  parent: MobObserver
-  id: MobObserver-kreses
-  description: Hiss!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Orion/Ghosts/ckey/kreses.rsi
     color: "#ffffffe6" # 0.9 alpha
 
 # scituzer2
