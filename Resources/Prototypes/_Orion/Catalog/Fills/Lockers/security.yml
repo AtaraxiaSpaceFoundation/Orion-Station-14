@@ -502,7 +502,7 @@
         weight: 24
       - id: WeaponEarthGovXRay
         weight: 24
-      - id: SecurityTeleporterEL7
+      - id: SecurityTeleporterEL20
         weight: 3.5
       - id: WeaponEarthGovLaserMG
         weight: 0.5
@@ -514,7 +514,7 @@
         weight: 24
       - id: WeaponEarthGovXRay
         weight: 24
-      - id: SecurityTeleporterEL7
+      - id: SecurityTeleporterEL20
         weight: 3.5
       - id: WeaponEarthGovLaserMG
         weight: 0.5

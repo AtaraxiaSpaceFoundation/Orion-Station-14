@@ -190,7 +190,7 @@
       - id: PowerCellXraySMG
         amount: 2
       - id: PowerCellPulseSMG
-        amount: 4
+        amount: 2
 
 - type: entity
   parent: CaseSecurity
