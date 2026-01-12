@@ -8,6 +8,8 @@
     - blue
     - yellow
     - violet
+    bypassAccessLists:
+    - [ Armory ]
 
 - type: entity
   abstract: true
@@ -17,3 +19,5 @@
     lockedAlertLevels:
     - green
     - yellow
+    bypassAccessLists:
+    - [ Armory ]

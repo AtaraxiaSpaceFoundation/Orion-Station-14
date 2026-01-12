@@ -199,7 +199,7 @@
   storage:
     back:
     - Flash
-    - MagazinePistol
+#    - MagazinePistol # Orion-Edit: Now in loadout
 
 - type: chameleonOutfit
   id: HeadOfSecurityChameleonOutfit

@@ -183,7 +183,7 @@
   storage:
     back:
     - Flash
-    - MagazinePistol
+#    - MagazinePistol # Orion-Edit: Now in loadout
 #    - ClothingMaskGasSecurity # Goobstation # Orion-Edit: Now in BoxSurvival
 
 - type: chameleonOutfit

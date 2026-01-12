@@ -162,10 +162,11 @@
     - id: Stunbaton
     - id: Handcuffs
     - id: Handcuffs
-    - id: HoloprojectorSecurity
-    - id: RadioHandheldSecurity
-    - id: WeaponDisabler # Goobstation
-    # Orion-Start
+    # Orion-Edit-Start
+#    - id: HoloprojectorSecurity
+#    - id: RadioHandheldSecurity
+#    - id: WeaponDisabler # Goobstation
+    # Orion-Edit-End
     - id: FlashlightSeclite
     - id: TearGasGrenade
     - id: GrenadeFlashBang

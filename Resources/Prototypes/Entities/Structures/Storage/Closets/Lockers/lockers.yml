@@ -442,7 +442,7 @@
   suffix: Armory, Locked
   components:
   - type: AccessReader
-    access: [["Armory"]]
+    access: [["Security"]] # Orion-Edit: Armory > Security
 
 # Genpop Storage
 - type: entity
