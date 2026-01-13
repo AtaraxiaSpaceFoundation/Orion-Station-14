@@ -3,7 +3,7 @@
   parent: CaseSecurity
   id: CaseSecurityP90
   name: security case P90
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -19,7 +19,7 @@
   parent: CaseSecurity
   id: CaseSecurityVector
   name: security case Vector
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -36,7 +36,7 @@
   parent: CaseSecurity
   id: CaseSecurityAKM
   name: security case AKM
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -54,7 +54,7 @@
   parent: CaseSecurity
   id: CaseSecurityM28
   name: security case M-28
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -70,7 +70,7 @@
   parent: CaseSecurity
   id: CaseSecurityDragunov
   name: security case Dragunov
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -86,7 +86,7 @@
   parent: CaseSecurity
   id: CaseSecurityMosins
   name: security case Mosins
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -103,7 +103,7 @@
   parent: CaseSecurity
   id: CaseSecurityBR64
   name: security case BR-64
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -120,7 +120,7 @@
   parent: CaseSecurity
   id: CaseSecurityRemington
   name: security case Remington 700
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -138,7 +138,7 @@
   parent: CaseSecurity
   id: CaseSecurityAntelope
   name: security case Antelope
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -154,7 +154,7 @@
   parent: CaseSecurity
   id: CaseSecurityDoubleShotguns
   name: security case double-barreled shotguns
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -176,7 +176,7 @@
   parent: CaseSecurity
   id: CaseSecurityLaserCellSMG
   name: security case ER-5
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -196,7 +196,7 @@
   parent: CaseSecurity
   id: CaseSecurityEnergyRifle
   name: security case CR-2
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -214,7 +214,7 @@
   parent: CaseSecurity
   id: CaseSecurityCellSniper
   name: security case ES-7
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:

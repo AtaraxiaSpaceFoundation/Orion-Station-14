@@ -1,6 +1,6 @@
-using System.Linq; // Add for All() method
+using System.Linq;
 using Content.Shared._Orion.AlertLevelLock.Components;
-using Content.Shared.Access.Systems; // Add for AccessReaderSystem
+using Content.Shared.Access.Systems;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
 
@@ -13,7 +13,7 @@ namespace Content.Shared._Orion.AlertLevelLock;
 public sealed class SharedStationAlertLevelLockSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!; // Add dependency
+    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
 
     public override void Initialize()
     {

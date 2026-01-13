@@ -58,7 +58,7 @@
   parent: [BaseCase, BaseSecurityContraband]
   id: CaseSecurity
   name: security case
-  suffix: Sec, Empty
+  suffix: Security, Empty
   description: Red and black case with a sec logo, I wonder what's in there?
   components:
   - type: Sprite
@@ -69,7 +69,7 @@
   parent: [BaseCaseMini, BaseSecurityContraband]
   id: CaseSecurityMini
   name: security mini case
-  suffix: Sec, Empty
+  suffix: Security, Empty
   description: Little red and black case with a sec logo, I wonder what's in there?
   components:
   - type: Sprite
@@ -80,7 +80,7 @@
   parent: [BaseCase, BaseSecurityContraband]
   id: CaseBrigmedic
   name: brigmedic case
-  suffix: brigmedic, Empty
+  suffix: Brigmedic, Empty
   description: Red and white case with a blood-stained medical cross. Only for a real combat medic.
   components:
   - type: Sprite

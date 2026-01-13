@@ -3,7 +3,7 @@
   parent: CaseSecurityMini
   id: CaseSecurityMiniVP78
   name: security mini case VP-78
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -20,7 +20,7 @@
   parent: CaseSecurityMini
   id: CaseSecurityMiniDesertEagle
   name: security mini case Desert Eagle
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -38,7 +38,7 @@
   parent: CaseSecurityMini
   id: CaseSecurityMiniInspector
   name: security mini case Inspector
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -55,7 +55,7 @@
   parent: CaseSecurityMini
   id: CaseSecurityMiniDeckard
   name: security mini case Deckard
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -72,7 +72,7 @@
   parent: CaseSecurityMini
   id: CaseSecurityMiniCellRevolver
   name: security mini case EG-1
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
@@ -93,7 +93,7 @@
   parent: CaseSecurityMini
   id: CaseSecurityMiniFlareGun
   name: security mini case shell gun
-  suffix: Sec, Filled
+  suffix: Filled
   components:
   - type: Storage
     grid:
