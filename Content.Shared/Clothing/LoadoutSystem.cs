@@ -257,7 +257,7 @@ public sealed class LoadoutSystem : EntitySystem
                 break;
             }
         }
-        // Orion-Edit-Start: Show first prototype name instead of "unknown" for multi-item loadouts
+        // Orion-Start: Show first prototype name instead of "unknown" for multi-item loadouts
         
         // Get first available prototype from inhand
         if (gear.Inhand.Count > 0 && _protoMan.TryIndex<EntityPrototype>(gear.Inhand[0], out var firstProto))
@@ -279,7 +279,7 @@ public sealed class LoadoutSystem : EntitySystem
                 return firstProto.Name;
             }
         }
-        // Orion-Edit-End
+        // Orion-End
 
         return Loc.GetString($"unknown");
     }
