@@ -13,6 +13,6 @@
       - id: MedicalStitches
       - id: BoneGel
       - id: Cautery
-      - id: ClothingHandsGlovesLatex
       - id: PillCanisterTramadol
+      - id: ClothingHandsGlovesLatex
       - id: ClothingMaskSterile
