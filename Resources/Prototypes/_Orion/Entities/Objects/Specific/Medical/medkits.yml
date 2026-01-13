@@ -8,7 +8,7 @@
     maxItemSize: Normal
     grid:
     - 0,0,3,4
-    - 4,4,4,4
+    - 0,5,2,5
     whitelist:
       tags:
         - Bottle
@@ -17,6 +17,8 @@
         - SurgeryTool
         - MedicalPatch
         - Mask
+      components:
+        - FingerprintMask
   - type: Sprite
     sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
     state: surgerykit

@@ -9,9 +9,10 @@
       - id: Drill
       - id: Hemostat
       - id: Scalpel
-      - id: Cautery
+      - id: Retractor
       - id: MedicalStitches
       - id: BoneGel
-      - id: Retractor
-      - id: ClothingMaskSterile
+      - id: Cautery
+      - id: ClothingHandsGlovesLatex
       - id: PillCanisterTramadol
+      - id: ClothingMaskSterile
