@@ -21,3 +21,14 @@
     - yellow
     bypassAccessLists:
     - [ Armory ]
+
+- type: entity
+  abstract: true
+  id: AlertLevelLockCC
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+    bypassAccessLists:
+    - [ CentralCommand ]
