@@ -121,12 +121,6 @@
     - id: Handcuffs
     # Orion-Start
       amount: 2
-    - id: FlashlightSeclite
-    - id: GrenadeFlashBang
-      amount: 2
-    - id: Flash
-    - id: BolaEnergy
-      amount: 2
     # Orion-End
     # Orion-Edit-Start: Removed
 #    - id: Handcuffs
