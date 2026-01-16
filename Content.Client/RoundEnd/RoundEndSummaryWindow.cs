@@ -275,12 +275,14 @@ namespace Content.Client.RoundEnd
                     var totalDamage = playerInfo.DamagePerGroup.Values.Sum(static v => (decimal) v);
                     var severityAdj = totalDamage switch
                     {
-                        >= 1000 => "catastrophic",
-                        >= 750 => "devastating",
-                        >= 500 => "agonizing",
-                        >= 300 => "painful",
-                        >= 200 => "brutal",
-                        _ => "tragic"
+                        // Orion-Edit-Start: Localization
+                        >= 1000 => Loc.GetString("summary-death-severity-catastrophic"),
+                        >= 750 => Loc.GetString("summary-death-severity-devastating"),
+                        >= 500 => Loc.GetString("summary-death-severity-agonizing"),
+                        >= 300 => Loc.GetString("summary-death-severity-painful"),
+                        >= 200 => Loc.GetString("summary-death-severity-brutal"),
+                        _ => Loc.GetString("summary-death-severity-tragic"),
+                        // Orion-Edit-End
                     };
 
                     var highestDamage = playerInfo.DamagePerGroup
@@ -288,14 +290,16 @@ namespace Content.Client.RoundEnd
                         .First();
                     var typeAdj = highestDamage.Key switch
                     {
-                        "Burn" => "fiery",
-                        "Brute" => "crushing",
-                        "Toxin" => "poisonous",
-                        "Airloss" => "suffocating",
-                        "Genetic" => "twisted",
-                        "Metaphysical" => "otherworldly",
-                        "Electronic" => "shocking",
-                        _ => "mysterious",
+                        // Orion-Edit-Start: Localization
+                        "Burn" => Loc.GetString("summary-death-type-fiery"),
+                        "Brute" => Loc.GetString("summary-death-type-crushing"),
+                        "Toxin" => Loc.GetString("summary-death-type-poisonous"),
+                        "Airloss" => Loc.GetString("summary-death-type-suffocating"),
+                        "Genetic" => Loc.GetString("summary-death-type-twisted"),
+                        "Metaphysical" => Loc.GetString("summary-death-type-otherworldly"),
+                        "Electronic" => Loc.GetString("summary-death-type-shocking"),
+                        _ => Loc.GetString("summary-death-type-mysterious"),
+                        // Orion-Edit-End
                     };
 
                     deathLabel.SetMarkup(

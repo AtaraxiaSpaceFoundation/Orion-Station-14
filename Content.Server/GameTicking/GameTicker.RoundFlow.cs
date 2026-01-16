@@ -83,6 +83,7 @@ using System.Numerics;
 using Content.Goobstation.Common.LastWords;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Goobstation.Shared.Mind.Components;
+using Content.Server.Actions;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -117,6 +118,7 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly RoleSystem _role = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
+        [Dependency] private readonly ActionsSystem _action = default!; // Orion
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -703,6 +705,15 @@ namespace Content.Server.GameTicking
             // This ordering mechanism isn't great (no ordering of minds) but functions
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
             var sound = RoundEndSoundCollection == null ? null : _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
+
+            // Orion-Start
+            const string action = "ActionToggleRoundEndSummaryWindow"; // Shitcoded? Yeah.
+            foreach (var playerInfo in listOfPlayerInfoFinal)
+            {
+                if (playerInfo.PlayerGuid != null && _playerManager.TryGetSessionById(playerInfo.PlayerGuid.Value, out var session) && session.AttachedEntity is { } playerEnt)
+                    _action.AddAction(playerEnt, action);
+            }
+            // Orion-End
 
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,

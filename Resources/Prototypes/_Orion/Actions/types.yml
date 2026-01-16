@@ -23,3 +23,18 @@
     priority: -1
     useDelay: 1
     checkCanInteract: false
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleRoundEndSummaryWindow
+  name: Toggle summary window
+  description: Toggles round end summary window.
+  components:
+  - type: Action
+    icon: { sprite: Objects/Weapons/Melee/e_shield.rsi, state: eshield-on }
+    itemIconStyle: NoItem
+    priority: -1
+    useDelay: 1
+    checkCanInteract: false
+  - type: InstantAction
+    event: !type:RoundEndSummaryEvent
