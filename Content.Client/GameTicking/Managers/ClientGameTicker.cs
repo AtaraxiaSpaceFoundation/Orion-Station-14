@@ -219,10 +219,16 @@ namespace Content.Client.GameTicking.Managers
         // Orion-Start
         private void OnRoundEndSummaryAction(RoundEndSummaryEvent ev)
         {
-            if (_lastRoundEndMessage == null)
-                return;
+            var controller = _userInterfaceManager.GetUIController<RoundEndSummaryUIController>();
 
-            _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(_lastRoundEndMessage);
+            if (controller._window == null && _lastRoundEndMessage != null)
+            {
+                controller.OpenRoundEndSummaryWindow(_lastRoundEndMessage);
+            }
+            else
+            {
+                controller.ToggleScoreboardWindow();
+            }
         }
         // Orion-End
     }

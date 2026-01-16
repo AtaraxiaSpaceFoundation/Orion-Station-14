@@ -304,7 +304,7 @@ namespace Content.Client.RoundEnd
 
                     deathLabel.SetMarkup(
                         Loc.GetString("round-end-summary-window-death",
-                            ("entity", playerInfo.PlayerNetEntity!), // Orion
+                            ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity!.Value)), // Orion
                             ("severity", severityAdj),
                             ("type", typeAdj)));
 
@@ -414,14 +414,14 @@ namespace Content.Client.RoundEnd
         {
             return damageType switch
             {
-                "Burn" => Loc.GetString("damage-type-heat"),
-                "Brute" => Loc.GetString("damage-type-blunt"),
-                "Toxin" => Loc.GetString("damage-type-poison"),
+                "Burn" => Loc.GetString("damage-group-burn"),
+                "Brute" => Loc.GetString("damage-group-brute"),
+                "Toxin" => Loc.GetString("damage-group-toxin"),
                 "Airloss" => Loc.GetString("damage-type-asphyxiation"),
-                "Genetic" => Loc.GetString("damage-type-cellular"),
-                "Metaphysical" => Loc.GetString("damage-type-holy"),
+                "Genetic" => Loc.GetString("damage-group-genetic"),
+                "Metaphysical" => Loc.GetString("damage-group-metaphysical"),
                 "Electronic" => Loc.GetString("damage-type-shock"),
-                _ => throw new ArgumentOutOfRangeException(nameof(damageType), damageType, null),
+                _ => damageType,
             };
         }
         // Orion-End

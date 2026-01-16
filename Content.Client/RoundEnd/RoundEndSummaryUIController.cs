@@ -22,22 +22,18 @@ public sealed class RoundEndSummaryUIController : UIController,
 {
     [Dependency] private readonly IInputManager _input = default!;
 
-    private RoundEndSummaryWindow? _window;
+    public RoundEndSummaryWindow? _window; // Orion-Edit: Make public
 
-    private void ToggleScoreboardWindow(ICommonSession? session = null)
+    public void ToggleScoreboardWindow(ICommonSession? session = null) // Orion-Edit: Make public
     {
-        if (_window == null)
-            return;
-
-        if (_window.IsOpen)
-        {
+        // Orion-Edit-Start
+        if (_window?.IsOpen == true)
             _window.Close();
-        }
         else
         {
-            _window.OpenCenteredRight();
-            _window.MoveToFront();
+            _window?.OpenCenteredRight();
         }
+        // Orion-Edit-End
     }
 
     public void OpenRoundEndSummaryWindow(RoundEndMessageEvent message)
