@@ -67,14 +67,12 @@ using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerUpdates;
 using Content.Server.Station.Systems;
-using Content.Shared._Orion.GameTicking;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Robust.Server;
-using Robust.Server.GameObjects;
 using Robust.Server.GameStates;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Console;
@@ -124,7 +122,6 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly MetaDataSystem _metaData = default!;
         [Dependency] private readonly SharedRoleSystem _roles = default!;
         [Dependency] private readonly ServerDbEntryManager _dbEntryManager = default!;
-        [Dependency] private readonly UserInterfaceSystem _userInterface = default!; // Orion
 
         [ViewVariables] private bool _initialized;
         [ViewVariables] private bool _postInitialized;
@@ -184,17 +181,6 @@ namespace Content.Server.GameTicking
             var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
             _chatManager.ChatMessageToAll(ChatChannel.Server, message, wrappedMessage, default, false, true);
         }
-
-        // Orion-Start
-        /// <summary>
-        ///     Used to open the round end summary window by action.
-        /// </summary>
-        private void OnActionRoundEndSummary(ref RoundEndSummaryEvent args, RoundEndMessageEvent message)
-        {
-            var uiController = _userInterface.GetUIController<RoundEndSummaryUIController>();
-            uiController.OpenRoundEndSummaryWindow(message);
-        }
-        // Orion-End
 
         public override void Update(float frameTime)
         {

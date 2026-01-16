@@ -304,6 +304,7 @@ namespace Content.Client.RoundEnd
 
                     deathLabel.SetMarkup(
                         Loc.GetString("round-end-summary-window-death",
+                            ("entity", playerInfo.PlayerNetEntity!), // Orion
                             ("severity", severityAdj),
                             ("type", typeAdj)));
 
@@ -347,7 +348,7 @@ namespace Content.Client.RoundEnd
                         };
                         var headerLabel = new Label
                         {
-                            Text = damage.Key,
+                            Text = GetDamageTypeName(damage.Key), // Orion-Edit: Localization
                             FontColorOverride = Color.Gray,
                             HorizontalAlignment = HAlignment.Center,
                             VerticalAlignment = VAlignment.Center,
@@ -407,6 +408,23 @@ namespace Content.Client.RoundEnd
             return stationReportTab;
         }
         #endregion
+
+        // Orion-Start
+        private string GetDamageTypeName(string damageType)
+        {
+            return damageType switch
+            {
+                "Burn" => Loc.GetString("damage-type-heat"),
+                "Brute" => Loc.GetString("damage-type-blunt"),
+                "Toxin" => Loc.GetString("damage-type-poison"),
+                "Airloss" => Loc.GetString("damage-type-asphyxiation"),
+                "Genetic" => Loc.GetString("damage-type-cellular"),
+                "Metaphysical" => Loc.GetString("damage-type-holy"),
+                "Electronic" => Loc.GetString("damage-type-shock"),
+                _ => throw new ArgumentOutOfRangeException(nameof(damageType), damageType, null),
+            };
+        }
+        // Orion-End
     }
 
 }

@@ -108,6 +108,7 @@ using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -127,6 +128,8 @@ namespace Content.Server.GameTicking
         private static readonly Gauge RoundLengthMetric = Metrics.CreateGauge(
             "ss14_round_length",
             "Round length in seconds.");
+
+        public static readonly EntProtoId ActionToggleRoundEndSummary = "ActionToggleRoundEndSummaryWindow"; // Orion
 
 #if EXCEPTION_TOLERANCE
         [ViewVariables]
@@ -707,11 +710,10 @@ namespace Content.Server.GameTicking
             var sound = RoundEndSoundCollection == null ? null : _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
 
             // Orion-Start
-            const string action = "ActionToggleRoundEndSummaryWindow"; // Shitcoded? Yeah.
             foreach (var playerInfo in listOfPlayerInfoFinal)
             {
                 if (playerInfo.PlayerGuid != null && _playerManager.TryGetSessionById(playerInfo.PlayerGuid.Value, out var session) && session.AttachedEntity is { } playerEnt)
-                    _action.AddAction(playerEnt, action);
+                    _action.AddAction(playerEnt, ActionToggleRoundEndSummary);
             }
             // Orion-End
 

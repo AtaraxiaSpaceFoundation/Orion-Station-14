@@ -48,6 +48,7 @@ using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
 using Content.Client.RoundEnd;
+using Content.Shared._Orion.GameTicking;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Prototypes;
 using Content.Shared.GameWindow;
@@ -85,6 +86,8 @@ namespace Content.Client.GameTicking.Managers
         [ViewVariables] public IReadOnlyDictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>> JobsAvailable => _jobsAvailable;
         [ViewVariables] public IReadOnlyDictionary<NetEntity, string> StationNames => _stationNames;
 
+        [ViewVariables] private RoundEndMessageEvent? _lastRoundEndMessage; // Orion
+
         public event Action? InfoBlobUpdated;
         public event Action? InGameInfoBlobUpdated;
         public event Action? LobbyStatusUpdated;
@@ -106,6 +109,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
             SubscribeNetworkEvent<TickerLateJoinStatusEvent>(LateJoinStatus);
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
+            SubscribeLocalEvent<RoundEndSummaryEvent>(OnRoundEndSummaryAction); // Orion
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
             OnAdminUpdated();
@@ -207,8 +211,19 @@ namespace Content.Client.GameTicking.Managers
         {
             // Force an update in the event of this song being the same as the last.
             RestartSound = message.RestartSound;
+            _lastRoundEndMessage = message; // Orion
 
             _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(message);
         }
+
+        // Orion-Start
+        private void OnRoundEndSummaryAction(RoundEndSummaryEvent ev)
+        {
+            if (_lastRoundEndMessage == null)
+                return;
+
+            _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(_lastRoundEndMessage);
+        }
+        // Orion-End
     }
 }
