@@ -31,9 +31,9 @@
   description: Toggles round end summary window.
   components:
   - type: Action
-    icon: { sprite: Objects/Weapons/Melee/e_shield.rsi, state: eshield-on }
+    icon: { sprite: _Orion/Interface/Actions/actions.rsi, state: round_end }
     itemIconStyle: NoItem
-    priority: -1
+    priority: 1
     useDelay: 1
     checkCanInteract: false
   - type: InstantAction
