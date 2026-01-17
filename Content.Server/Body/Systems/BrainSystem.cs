@@ -31,6 +31,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Pointing;
 using Content.Goobstation.Shared.Changeling.Components;
 using Content.Server.Mobs;
+using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 
@@ -52,6 +53,7 @@ namespace Content.Server.Body.Systems
         // Shitmed Change Start
             SubscribeLocalEvent<BrainComponent, OrganRemovedFromBodyEvent>(HandleRemoval);
             SubscribeLocalEvent<BrainComponent, PointAttemptEvent>(OnPointAttempt);
+            SubscribeLocalEvent<BrainComponent, ExaminedEvent>(OnExamined); // Orion
         }
 
         private void HandleRemoval(EntityUid uid, BrainComponent brain, ref OrganRemovedFromBodyEvent args)
@@ -68,7 +70,7 @@ namespace Content.Server.Body.Systems
                 EnsureComp<DebrainedComponent>(args.OldBody);
                 // Orion-Start: Debraining should instantly kill
                 _mobState.ChangeMobState(args.OldBody, MobState.Dead);
-                _deathgasp.Deathgasp(uid);
+                _deathgasp.Deathgasp(args.OldBody);
                 // Orion-End
                 HandleMind(uid, args.OldBody);
             }
@@ -110,8 +112,11 @@ namespace Content.Server.Body.Systems
                 return;
 
             brain.Active = true;
-            TryRenameBrain((newEntity, brain), newEntity);
             // Orion-Edit-End
+            // Orion-Start
+            if (TryComp(newEntity, out BrainComponent? brainOnNewEntity))
+                TryRenameBrain((newEntity, brainOnNewEntity), oldEntity);
+            // Orion-End
         }
 
         private bool CheckOtherBrains(EntityUid entity)
@@ -119,7 +124,7 @@ namespace Content.Server.Body.Systems
             var hasOtherBrains = false;
             if (TryComp<BodyComponent>(entity, out var body))
             {
-                if (TryComp<BrainComponent>(entity, out var bodyBrain))
+                if (TryComp<BrainComponent>(entity, out _))
                     hasOtherBrains = true;
                 else
                 {
@@ -150,7 +155,14 @@ namespace Content.Server.Body.Systems
                 return;
 
             _metaData.SetEntityName(ent,
-                Loc.GetString("comp-brain-name", ("name", Name(ent)), ("player", playerEntity)));
+                Loc.GetString("comp-brain-name", ("name", Name(ent)), ("player", Name(playerEntity))));
+        }
+
+        private void OnExamined(Entity<BrainComponent> ent, ref ExaminedEvent args)
+        {
+            var examinedEntity = args.Examined;
+            if (HasComp<DebrainedComponent>(examinedEntity))
+                args.PushMarkup(Loc.GetString("comp-brain-examine-debrained", ("entity", examinedEntity)));
         }
         // Orion-End
     }
