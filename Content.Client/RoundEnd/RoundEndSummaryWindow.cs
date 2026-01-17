@@ -302,11 +302,23 @@ namespace Content.Client.RoundEnd
                         // Orion-Edit-End
                     };
 
-                    deathLabel.SetMarkup(
-                        Loc.GetString("round-end-summary-window-death",
-                            ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity!.Value)), // Orion
-                            ("severity", severityAdj),
-                            ("type", typeAdj)));
+                    // Orion-Edit-Start: Localization
+                    if (playerInfo.PlayerNetEntity != null && _entityManager.TryGetEntity(playerInfo.PlayerNetEntity.Value, out _))
+                    {
+                        deathLabel.SetMarkup(
+                            Loc.GetString("round-end-summary-window-death",
+                                ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity.Value)),
+                                ("severity", severityAdj),
+                                ("type", typeAdj)));
+                    }
+                    else
+                    {
+                        deathLabel.SetMarkup(
+                            Loc.GetString("round-end-summary-window-death-null",
+                                ("severity", severityAdj),
+                                ("type", typeAdj)));
+                    }
+                    // Orion-Edit-End
 
                     var damageTable = new GridContainer
                     {
@@ -363,7 +375,12 @@ namespace Content.Client.RoundEnd
                 }
                 else if (playerInfo.EntMobState == MobState.Invalid)
                 {
-                    deathLabel.SetMarkup(Loc.GetString("round-end-summary-window-death-unknown", ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity!.Value))));
+                    // Orion-Edit-Start: Localization
+                    deathLabel.SetMarkup(playerInfo.PlayerNetEntity != null
+                        ? Loc.GetString("round-end-summary-window-death-unknown",
+                            ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity.Value)))
+                        : Loc.GetString("round-end-summary-window-death-unknown-null"));
+                    // Orion-Edit-End
                 }
 
                 hBox.AddChild(textVBox);

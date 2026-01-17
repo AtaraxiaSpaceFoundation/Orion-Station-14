@@ -13,3 +13,6 @@ summary-death-type-twisted = twisted
 summary-death-type-otherworldly = otherworldly
 summary-death-type-shocking = shocking
 summary-death-type-mysterious = mysterious
+
+round-end-summary-window-death-null = They died a {$severity} {$type} death.
+round-end-summary-window-death-unknown-null = Their body could not be found.
