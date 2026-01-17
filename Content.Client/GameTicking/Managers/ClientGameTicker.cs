@@ -48,11 +48,11 @@ using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
 using Content.Client.RoundEnd;
+using Content.Shared._Orion.GameTicking;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Prototypes;
 using Content.Shared.GameWindow;
 using Content.Shared.Roles;
-using Content.Shared.Toggleable;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.State;
@@ -108,7 +108,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
             SubscribeNetworkEvent<TickerLateJoinStatusEvent>(LateJoinStatus);
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
-            SubscribeLocalEvent<ToggleActionEvent>(OnRoundEndSummaryAction); // Orion
+            SubscribeLocalEvent<RoundEndSummaryEvent>(OnRoundEndSummaryAction); // Orion
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
             OnAdminUpdated();
@@ -216,7 +216,7 @@ namespace Content.Client.GameTicking.Managers
         }
 
         // Orion-Start
-        private void OnRoundEndSummaryAction(ToggleActionEvent args)
+        private void OnRoundEndSummaryAction(RoundEndSummaryEvent args)
         {
             _userInterfaceManager.GetUIController<RoundEndSummaryUIController>()
                 .ToggleScoreboardWindow();

@@ -25,7 +25,7 @@
     checkCanInteract: false
 
 - type: entity
-  parent: BaseToggleAction
+  parent: BaseAction
   id: ActionToggleRoundEndSummaryWindow
   name: Toggle summary window
   description: Toggles round end summary window.
@@ -37,4 +37,4 @@
     useDelay: 1
     checkCanInteract: false
   - type: InstantAction
-    event: !type:ToggleActionEvent
+    event: !type:RoundEndSummaryEvent
