@@ -37,4 +37,4 @@
     useDelay: 1
     checkCanInteract: false
   - type: InstantAction
-    event: !type:RoundEndSummaryEvent
+    event: !type:ToggleActionEvent

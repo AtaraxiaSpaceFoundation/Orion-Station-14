@@ -9,4 +9,9 @@ round-end-summary-window-death = { GENDER($entity) ->
         [epicene] Они погибли
        *[neuter] Оно погибло
     } { $severity } { $type } смертью.
-round-end-summary-window-death-unknown = Их тела не были найдены.
+round-end-summary-window-death-unknown = { GENDER($entity) ->
+        [male] Его тело
+        [female] Её тело
+        [epicene] Их тела
+       *[neuter] Их тело
+    } не найдено.

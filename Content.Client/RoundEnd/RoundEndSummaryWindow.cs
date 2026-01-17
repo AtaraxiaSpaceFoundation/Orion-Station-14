@@ -363,7 +363,7 @@ namespace Content.Client.RoundEnd
                 }
                 else if (playerInfo.EntMobState == MobState.Invalid)
                 {
-                    deathLabel.SetMarkup(Loc.GetString("round-end-summary-window-death-unknown"));
+                    deathLabel.SetMarkup(Loc.GetString("round-end-summary-window-death-unknown", ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity!.Value))));
                 }
 
                 hBox.AddChild(textVBox);

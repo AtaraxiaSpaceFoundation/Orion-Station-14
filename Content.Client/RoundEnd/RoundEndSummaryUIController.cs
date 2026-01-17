@@ -28,7 +28,14 @@ public sealed class RoundEndSummaryUIController : UIController,
     {
         // Orion-Edit-Start
         if (_window == null)
+        {
+            var ticker = EntityManager.System<ClientGameTicker>();
+            if (ticker._lastRoundEndMessage == null)
+                return;
+
+            OpenRoundEndSummaryWindow(ticker._lastRoundEndMessage);
             return;
+        }
 
         if (_window.IsOpen)
             _window.Close();

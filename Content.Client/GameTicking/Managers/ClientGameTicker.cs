@@ -48,11 +48,11 @@ using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
 using Content.Client.RoundEnd;
-using Content.Shared._Orion.GameTicking;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Prototypes;
 using Content.Shared.GameWindow;
 using Content.Shared.Roles;
+using Content.Shared.Toggleable;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.State;
@@ -72,7 +72,7 @@ namespace Content.Client.GameTicking.Managers
 
         private Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>>  _jobsAvailable = new();
         private Dictionary<NetEntity, string> _stationNames = new();
-        private RoundEndMessageEvent? _lastRoundEndMessage; // Orion
+        public RoundEndMessageEvent? _lastRoundEndMessage; // Orion
 
         [ViewVariables] public bool AreWeReady { get; private set; }
         [ViewVariables] public bool IsGameStarted { get; private set; }
@@ -108,7 +108,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
             SubscribeNetworkEvent<TickerLateJoinStatusEvent>(LateJoinStatus);
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
-            SubscribeLocalEvent<RoundEndSummaryEvent>(OnRoundEndSummaryAction); // Orion
+            SubscribeLocalEvent<ToggleActionEvent>(OnRoundEndSummaryAction); // Orion
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
             OnAdminUpdated();
@@ -216,13 +216,10 @@ namespace Content.Client.GameTicking.Managers
         }
 
         // Orion-Start
-        private void OnRoundEndSummaryAction(RoundEndSummaryEvent ev)
+        private void OnRoundEndSummaryAction(ToggleActionEvent args)
         {
-            if (_lastRoundEndMessage is { } msg)
-            {
-                _userInterfaceManager.GetUIController<RoundEndSummaryUIController>()
-                    .OpenRoundEndSummaryWindow(msg);
-            }
+            _userInterfaceManager.GetUIController<RoundEndSummaryUIController>()
+                .ToggleScoreboardWindow();
         }
         // Orion-End
     }
