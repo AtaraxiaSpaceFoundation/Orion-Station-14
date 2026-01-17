@@ -30,6 +30,9 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Pointing;
 using Content.Goobstation.Shared.Changeling.Components;
+using Content.Server.Mobs;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 
 namespace Content.Server.Body.Systems
 {
@@ -37,6 +40,10 @@ namespace Content.Server.Body.Systems
     {
         [Dependency] private readonly SharedMindSystem _mindSystem = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+        [Dependency] private readonly MetaDataSystem _metaData = default!; // Orion
+        [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
+        [Dependency] private readonly DeathgaspSystem _deathgasp = default!; // Orion
+
         public override void Initialize()
         {
             base.Initialize();
@@ -59,6 +66,10 @@ namespace Content.Server.Body.Systems
             {
                 // Prevents revival, should kill the user within a given timespan too.
                 EnsureComp<DebrainedComponent>(args.OldBody);
+                // Orion-Start: Debraining should instantly kill
+                _mobState.ChangeMobState(args.OldBody, MobState.Dead);
+                _deathgasp.Deathgasp(uid);
+                // Orion-End
                 HandleMind(uid, args.OldBody);
             }
         }
@@ -94,8 +105,13 @@ namespace Content.Server.Body.Systems
                 return;
 
             _mindSystem.TransferTo(mindId, newEntity, mind: mind);
-            if (brain != null)
-                brain.Active = true;
+            // Orion-Edit-Start
+            if (brain == null)
+                return;
+
+            brain.Active = true;
+            TryRenameBrain((newEntity, brain), newEntity);
+            // Orion-Edit-End
         }
 
         private bool CheckOtherBrains(EntityUid entity)
@@ -126,5 +142,16 @@ namespace Content.Server.Body.Systems
         {
             args.Cancel();
         }
+
+        // Orion-Start
+        private void TryRenameBrain(Entity<BrainComponent> ent, EntityUid playerEntity)
+        {
+            if (TerminatingOrDeleted(ent))
+                return;
+
+            _metaData.SetEntityName(ent,
+                Loc.GetString("comp-brain-name", ("name", Name(ent)), ("player", playerEntity)));
+        }
+        // Orion-End
     }
 }
