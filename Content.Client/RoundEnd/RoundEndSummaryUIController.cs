@@ -22,20 +22,13 @@ public sealed class RoundEndSummaryUIController : UIController,
 {
     [Dependency] private readonly IInputManager _input = default!;
 
-    public RoundEndSummaryWindow? _window; // Orion-Edit: Make public
+    private RoundEndSummaryWindow? _window;
 
-    public void ToggleScoreboardWindow(ICommonSession? session = null) // Orion-Edit: Make public
+    private void ToggleScoreboardWindow(ICommonSession? session = null)
     {
         // Orion-Edit-Start
         if (_window == null)
-        {
-            var ticker = EntityManager.System<ClientGameTicker>();
-            if (ticker._lastRoundEndMessage == null)
-                return;
-
-            OpenRoundEndSummaryWindow(ticker._lastRoundEndMessage);
             return;
-        }
 
         if (_window.IsOpen)
             _window.Close();

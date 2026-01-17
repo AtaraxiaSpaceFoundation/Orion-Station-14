@@ -23,18 +23,3 @@
     priority: -1
     useDelay: 1
     checkCanInteract: false
-
-- type: entity
-  parent: BaseAction
-  id: ActionToggleRoundEndSummaryWindow
-  name: Toggle summary window
-  description: Toggles round end summary window.
-  components:
-  - type: Action
-    icon: { sprite: _Orion/Interface/Actions/actions.rsi, state: round_end }
-    itemIconStyle: NoItem
-    priority: 1
-    useDelay: 1
-    checkCanInteract: false
-  - type: InstantAction
-    event: !type:RoundEndSummaryEvent

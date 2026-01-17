@@ -4,9 +4,6 @@ ent-ActionToggleEnergyDome = Переключить энергетический
 ent-ActionToggleHUDs = Переключить отображение статусов
     .desc = Включает и выключает отображение статусов.
 
-ent-ActionToggleRoundEndSummaryWindow = Переключить итоги раунда
-    .desc = Включает и выключает отображение манифеста итогов раунда.
-
 ent-ActionCorticalBorerChemMenu = Химикаты
     .desc = Открыть панель ввода химикатов.
 ent-ActionCorticalBorerInfest = Заразить носителя

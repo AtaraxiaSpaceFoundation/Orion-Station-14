@@ -119,7 +119,6 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly DiscordWebhook _discord = default!;
         [Dependency] private readonly RoleSystem _role = default!;
         [Dependency] private readonly ITaskManager _taskManager = default!;
-        [Dependency] private readonly ActionsSystem _action = default!; // Orion
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -128,8 +127,6 @@ namespace Content.Server.GameTicking
         private static readonly Gauge RoundLengthMetric = Metrics.CreateGauge(
             "ss14_round_length",
             "Round length in seconds.");
-
-        public static readonly EntProtoId ActionToggleRoundEndSummary = "ActionToggleRoundEndSummaryWindow"; // Orion
 
 #if EXCEPTION_TOLERANCE
         [ViewVariables]
@@ -528,7 +525,6 @@ namespace Content.Server.GameTicking
             AnnounceRound();
             UpdateInfoText();
             SendRoundStartedDiscordMessage();
-            RaiseLocalEvent(new RoundStartedEvent(RoundId)); // Orion
 
 #if EXCEPTION_TOLERANCE
             }
@@ -708,14 +704,6 @@ namespace Content.Server.GameTicking
             // This ordering mechanism isn't great (no ordering of minds) but functions
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
             var sound = RoundEndSoundCollection == null ? null : _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
-
-            // Orion-Start
-            foreach (var playerInfo in listOfPlayerInfoFinal)
-            {
-                if (playerInfo.PlayerGuid != null && _playerManager.TryGetSessionById(playerInfo.PlayerGuid.Value, out var session) && session.AttachedEntity is { } playerEnt)
-                    _action.AddAction(playerEnt, ActionToggleRoundEndSummary);
-            }
-            // Orion-End
 
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,

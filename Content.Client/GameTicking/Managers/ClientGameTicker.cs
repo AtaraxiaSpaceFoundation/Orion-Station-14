@@ -48,7 +48,6 @@ using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
 using Content.Client.RoundEnd;
-using Content.Shared._Orion.GameTicking;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Prototypes;
 using Content.Shared.GameWindow;
@@ -72,7 +71,6 @@ namespace Content.Client.GameTicking.Managers
 
         private Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>>  _jobsAvailable = new();
         private Dictionary<NetEntity, string> _stationNames = new();
-        public RoundEndMessageEvent? _lastRoundEndMessage; // Orion
 
         [ViewVariables] public bool AreWeReady { get; private set; }
         [ViewVariables] public bool IsGameStarted { get; private set; }
@@ -108,7 +106,6 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
             SubscribeNetworkEvent<TickerLateJoinStatusEvent>(LateJoinStatus);
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
-            SubscribeLocalEvent<RoundEndSummaryEvent>(OnRoundEndSummaryAction); // Orion
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
             OnAdminUpdated();
@@ -210,17 +207,8 @@ namespace Content.Client.GameTicking.Managers
         {
             // Force an update in the event of this song being the same as the last.
             RestartSound = message.RestartSound;
-            _lastRoundEndMessage = message; // Orion
 
             _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(message);
         }
-
-        // Orion-Start
-        private void OnRoundEndSummaryAction(RoundEndSummaryEvent args)
-        {
-            _userInterfaceManager.GetUIController<RoundEndSummaryUIController>()
-                .ToggleScoreboardWindow();
-        }
-        // Orion-End
     }
 }
