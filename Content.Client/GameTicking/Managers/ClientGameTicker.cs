@@ -72,6 +72,7 @@ namespace Content.Client.GameTicking.Managers
 
         private Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>>  _jobsAvailable = new();
         private Dictionary<NetEntity, string> _stationNames = new();
+        private RoundEndMessageEvent? _lastRoundEndMessage; // Orion
 
         [ViewVariables] public bool AreWeReady { get; private set; }
         [ViewVariables] public bool IsGameStarted { get; private set; }
@@ -85,8 +86,6 @@ namespace Content.Client.GameTicking.Managers
 
         [ViewVariables] public IReadOnlyDictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>> JobsAvailable => _jobsAvailable;
         [ViewVariables] public IReadOnlyDictionary<NetEntity, string> StationNames => _stationNames;
-
-        [ViewVariables] private RoundEndMessageEvent? _lastRoundEndMessage; // Orion
 
         public event Action? InfoBlobUpdated;
         public event Action? InGameInfoBlobUpdated;
@@ -219,15 +218,10 @@ namespace Content.Client.GameTicking.Managers
         // Orion-Start
         private void OnRoundEndSummaryAction(RoundEndSummaryEvent ev)
         {
-            var controller = _userInterfaceManager.GetUIController<RoundEndSummaryUIController>();
-
-            if (controller._window == null && _lastRoundEndMessage != null)
+            if (_lastRoundEndMessage is { } msg)
             {
-                controller.OpenRoundEndSummaryWindow(_lastRoundEndMessage);
-            }
-            else
-            {
-                controller.ToggleScoreboardWindow();
+                _userInterfaceManager.GetUIController<RoundEndSummaryUIController>()
+                    .OpenRoundEndSummaryWindow(msg);
             }
         }
         // Orion-End

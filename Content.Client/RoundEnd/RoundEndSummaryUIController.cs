@@ -27,12 +27,13 @@ public sealed class RoundEndSummaryUIController : UIController,
     public void ToggleScoreboardWindow(ICommonSession? session = null) // Orion-Edit: Make public
     {
         // Orion-Edit-Start
-        if (_window?.IsOpen == true)
+        if (_window == null)
+            return;
+
+        if (_window.IsOpen)
             _window.Close();
         else
-        {
-            _window?.OpenCenteredRight();
-        }
+            _window.Open();
         // Orion-Edit-End
     }
 
