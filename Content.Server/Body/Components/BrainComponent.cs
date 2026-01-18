@@ -20,5 +20,10 @@ namespace Content.Server.Body.Components
         /// </summary>
         [DataField]
         public bool Active = true;
+
+        // Orion-Start
+        [DataField]
+        public bool Renamed = false;
+        // Orion-End
     }
 }

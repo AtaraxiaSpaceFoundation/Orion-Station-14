@@ -66,11 +66,15 @@ namespace Content.Server.Body.Systems
             brain.Active = false;
             if (!CheckOtherBrains(args.OldBody))
             {
+                TryRenameBrain((uid, brain), args.OldBody); // Orion
                 // Prevents revival, should kill the user within a given timespan too.
                 EnsureComp<DebrainedComponent>(args.OldBody);
                 // Orion-Start: Debraining should instantly kill
-                _mobState.ChangeMobState(args.OldBody, MobState.Dead);
-                _deathgasp.Deathgasp(args.OldBody);
+                if (!_mobState.IsDead(args.OldBody))
+                {
+                    _mobState.ChangeMobState(args.OldBody, MobState.Dead);
+                    _deathgasp.Deathgasp(args.OldBody);
+                }
                 // Orion-End
                 HandleMind(uid, args.OldBody);
             }
@@ -85,6 +89,7 @@ namespace Content.Server.Body.Systems
 
             if (!CheckOtherBrains(args.Body))
             {
+                TryRenameBrain((uid, brain), args.Body); // Orion
                 RemComp<DebrainedComponent>(args.Body);
                 HandleMind(args.Body, uid, brain);
             }
@@ -111,10 +116,6 @@ namespace Content.Server.Body.Systems
             if (brain != null)
                 brain.Active = true;
             // Orion-Edit-End
-            // Orion-Start
-            if (TryComp(newEntity, out BrainComponent? brainOnNewEntity))
-                TryRenameBrain((newEntity, brainOnNewEntity), oldEntity);
-            // Orion-End
         }
 
         private bool CheckOtherBrains(EntityUid entity)
@@ -149,11 +150,13 @@ namespace Content.Server.Body.Systems
         // Orion-Start
         private void TryRenameBrain(Entity<BrainComponent> ent, EntityUid playerEntity)
         {
-            if (TerminatingOrDeleted(ent))
+            if (ent.Comp.Renamed || TerminatingOrDeleted(ent))
                 return;
 
-            _metaData.SetEntityName(ent,
-                Loc.GetString("comp-brain-name", ("name", Name(ent)), ("player", Name(playerEntity))));
+            var newName = Loc.GetString("comp-brain-name", ("name", Name(ent)), ("player", Name(playerEntity)));
+            _metaData.SetEntityName(ent, newName);
+
+            ent.Comp.Renamed = true;
         }
 
         private void OnBodyExamined(Entity<DebrainedComponent> ent, ref ExaminedEvent args)
