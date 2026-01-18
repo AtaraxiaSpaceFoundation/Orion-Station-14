@@ -53,7 +53,7 @@ namespace Content.Server.Body.Systems
         // Shitmed Change Start
             SubscribeLocalEvent<BrainComponent, OrganRemovedFromBodyEvent>(HandleRemoval);
             SubscribeLocalEvent<BrainComponent, PointAttemptEvent>(OnPointAttempt);
-            SubscribeLocalEvent<BrainComponent, ExaminedEvent>(OnExamined); // Orion
+            SubscribeLocalEvent<DebrainedComponent, ExaminedEvent>(OnBodyExamined); // Orion
         }
 
         private void HandleRemoval(EntityUid uid, BrainComponent brain, ref OrganRemovedFromBodyEvent args)
@@ -108,10 +108,8 @@ namespace Content.Server.Body.Systems
 
             _mindSystem.TransferTo(mindId, newEntity, mind: mind);
             // Orion-Edit-Start
-            if (brain == null)
-                return;
-
-            brain.Active = true;
+            if (brain != null)
+                brain.Active = true;
             // Orion-Edit-End
             // Orion-Start
             if (TryComp(newEntity, out BrainComponent? brainOnNewEntity))
@@ -158,11 +156,9 @@ namespace Content.Server.Body.Systems
                 Loc.GetString("comp-brain-name", ("name", Name(ent)), ("player", Name(playerEntity))));
         }
 
-        private void OnExamined(Entity<BrainComponent> ent, ref ExaminedEvent args)
+        private void OnBodyExamined(Entity<DebrainedComponent> ent, ref ExaminedEvent args)
         {
-            var examinedEntity = args.Examined;
-            if (HasComp<DebrainedComponent>(examinedEntity))
-                args.PushMarkup(Loc.GetString("comp-brain-examine-debrained", ("entity", examinedEntity)));
+            args.PushMarkup(Loc.GetString("comp-brain-examine-debrained", ("entity", ent)));
         }
         // Orion-End
     }
