@@ -298,7 +298,7 @@ namespace Content.Server.GameTicking
             }
 
             // Orion-Start
-            //Ghost system return to round, check for whether the character isn't the same.
+            // Ghost system return to round, check for whether the character isn't the same.
             if (lateJoin && !_adminManager.IsAdmin(player) && !CheckGhostReturnToRound(player, character, out var checkAvoid))
             {
                 var message = checkAvoid
@@ -501,8 +501,11 @@ namespace Content.Server.GameTicking
         {
             checkAvoid = false;
 
+            // Check if the character was in round and also was not observer.
             var allPlayerMinds = EntityQuery<MindComponent>()
-                .Where(mind => mind.OriginalOwnerUserId == player.UserId);
+                .Where(mind => mind.OriginalOwnerUserId == player.UserId
+                               && mind.CharacterName is not null
+                               && mind.OwnedEntity is not null);
 
             foreach (var mind in allPlayerMinds)
             {
@@ -540,19 +543,34 @@ namespace Content.Server.GameTicking
 
         private float CalculateStringSimilarity(string str1, string str2)
         {
-            var minLength = Math.Min(str1.Length, str2.Length);
-            var matchingCharacters = 0;
+            // Using Levenshtein distance, sooo read by yourself how this works, ugh uh 💅
+            var (n, m) = (str1.Length, str2.Length);
+            if (n == 0 || m == 0)
+                return 0;
 
-            for (var i = 0; i < minLength; i++)
+            var d = new int[n + 1, m + 1];
+            for (var i = 0; i <= n; i++)
             {
-                if (str1[i] == str2[i])
-                    matchingCharacters++;
+                d[i, 0] = i;
             }
 
-            float maxLength = Math.Max(str1.Length, str2.Length);
-            var similarityPercentage = (matchingCharacters / maxLength) * 100;
+            for (var j = 0; j <= m; j++)
+            {
+                d[0, j] = j;
+            }
 
-            return similarityPercentage;
+            for (var i = 1; i <= n; i++)
+            {
+                for (var j = 1; j <= m; j++)
+                {
+                    var cost = str1[i - 1] == str2[j - 1] ? 0 : 1;
+                    d[i, j] = Math.Min(Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1), d[i - 1, j - 1] + cost);
+                }
+            }
+
+            var distance = d[n, m];
+            var maxLength = Math.Max(n, m);
+            return ((maxLength - distance) / (float)maxLength) * 100;
         }
         // Orion-End
 

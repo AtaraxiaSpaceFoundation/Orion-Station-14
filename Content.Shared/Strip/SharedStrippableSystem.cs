@@ -79,7 +79,7 @@
 
 using System.Linq;
 using Content.Shared._Goobstation.Heretic.Components;
-using Content.Shared._Orion.Ghosts;
+using Content.Shared._Orion.Ghost;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;

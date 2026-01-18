@@ -5,13 +5,14 @@ using Content.Server.Mind;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
 
-namespace Content.Server.Ghost;
+namespace Content.Server._Orion.Ghost;
 
 public sealed class GhostReturnToRoundSystem : EntitySystem
 {
@@ -25,6 +26,9 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
 
     public override void Initialize()
     {
+        base.Initialize();
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(ResetDeathTimes);
         SubscribeNetworkEvent<GhostReturnToRoundRequest>(OnGhostReturnToRoundRequest);
     }
 
@@ -88,5 +92,14 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
             : Loc.GetString("ghost-respawn-seconds-left", ("time", timeLeft.Seconds));
 
         wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+    }
+
+    private readonly Dictionary<NetUserId, TimeSpan> _deathTime = new();
+    private readonly Dictionary<NetUserId, HashSet<int>> _usedInRound = new();
+
+    private void ResetDeathTimes(RoundRestartCleanupEvent ev)
+    {
+        _deathTime.Clear();
+        _usedInRound.Clear();
     }
 }

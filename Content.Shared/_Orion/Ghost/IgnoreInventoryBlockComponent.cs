@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Orion.Ghosts;
+namespace Content.Shared._Orion.Ghost;
 
 [RegisterComponent, AutoGenerateComponentState, NetworkedComponent]
 public sealed partial class IgnoreInventoryBlockComponent : Component
