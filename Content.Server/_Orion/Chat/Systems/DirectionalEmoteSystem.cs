@@ -15,7 +15,7 @@ namespace Content.Server._Orion.Chat.Systems;
 public sealed partial class DirectionalEmoteSystem : EntitySystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IGameTiming _gameTicking = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ChatProtectionSystem _chatProtection = default!;
@@ -32,26 +32,29 @@ public sealed partial class DirectionalEmoteSystem : EntitySystem
         SubscribeNetworkEvent<SendDirectionalEmoteEvent>(OnSendDirectionalEmoteEvent);
     }
 
-    private void OnSendDirectionalEmoteEvent(SendDirectionalEmoteEvent args)
+    private void OnSendDirectionalEmoteEvent(SendDirectionalEmoteEvent args, EntitySessionEventArgs session)
     {
         if (!_directionalEmotesEnabled)
             return;
 
-        var source = GetEntity(args.Source);
-        var target = GetEntity(args.Target);
-
-        if (!TryComp<ActorComponent>(source, out var sourceActor) ||
-            !TryComp<ActorComponent>(target, out var targetActor) ||
-            !TryComp<DirectionalEmoteTargetComponent>(GetEntity(args.Source), out var directEmote))
+        var source = session.SenderSession.AttachedEntity;
+        if (source == null)
             return;
 
-        var curTime = _gameTicking.CurTime;
+        var target = GetEntity(args.Target);
+
+        if (!TryComp<ActorComponent>(source.Value, out var sourceActor) ||
+            !TryComp<ActorComponent>(target, out var targetActor) ||
+            !TryComp<DirectionalEmoteTargetComponent>(source.Value, out var directEmote))
+            return;
+
+        var curTime = _gameTiming.CurTime;
         if (directEmote.LastSend + directEmote.Cooldown > curTime)
             return;
 
         var directEmoteRange = _cfg.GetCVar(CCVars.DirectionalEmoteRange);
         var rangeError = Loc.GetString("directional-emote-range-error");
-        if (!_examineSystem.InRangeUnOccluded(source, target, directEmoteRange))
+        if (!_examineSystem.InRangeUnOccluded(source.Value, target, directEmoteRange))
         {
             _chatManager.ChatMessageToOne(ChatChannel.Emotes, rangeError, rangeError, default, false, sourceActor.PlayerSession.Channel);
             return;
@@ -65,11 +68,13 @@ public sealed partial class DirectionalEmoteSystem : EntitySystem
             return;
         }
 
-        var wrappedMessage = Loc.GetString("directional-emote-wrap-message", ("source", MetaData(source).EntityName), ("message", args.Text));
+        if (_chatProtection.CheckICMessage(args.Text, source.Value))
+            return;
 
-        _chatManager.ChatMessageToMany(ChatChannel.Emotes, args.Text, wrappedMessage, source, false, true, [targetActor.PlayerSession.Channel, sourceActor.PlayerSession.Channel]);
-        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(source):source} send directional emote to {ToPrettyString(target):target}: {args.Text}");
-        _chatProtection.CheckICMessage(args.Text, source);
+        var wrappedMessage = Loc.GetString("chat-manager-entity-directional-emote-wrap-message", ("entityName", MetaData(source.Value).EntityName), ("message", args.Text));
+
+        _chatManager.ChatMessageToMany(ChatChannel.Emotes, args.Text, wrappedMessage, source.Value, false, true, [targetActor.PlayerSession.Channel, sourceActor.PlayerSession.Channel]);
         directEmote.LastSend = curTime;
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(source):source} send directional emote to {ToPrettyString(target):target}: {args.Text}");
     }
 }
