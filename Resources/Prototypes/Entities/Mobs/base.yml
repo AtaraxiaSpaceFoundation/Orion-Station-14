@@ -139,6 +139,7 @@
     damagePenalty: 0.05
   - type: StunVisuals
   - type: Posing # Orion
+  - type: DirectionalEmoteTarget # Orion
 
 - type: entity
   save: false
