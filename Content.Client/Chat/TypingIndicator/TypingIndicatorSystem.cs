@@ -41,6 +41,8 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     public void ClientChangedWindowStatus(bool isOpen)
     {
         _isClientEmoteWindowActive = isOpen;
+        if (_cfg.GetCVar(CCVars.ChatShowTypingIndicator))
+            ClientUpdateTyping();
     }
     // Orion-End
 
@@ -93,7 +95,6 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             {
                 // client didn't typed anything for a long time - change indicator
                 _isClientTyping = false;
-                _isClientEmoteWindowActive = false; // Orion
                 ClientUpdateTyping();
             }
         }

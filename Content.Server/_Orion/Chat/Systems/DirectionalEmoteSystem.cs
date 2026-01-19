@@ -49,7 +49,7 @@ public sealed partial class DirectionalEmoteSystem : EntitySystem
         if (directEmote.LastSend + directEmote.Cooldown > curTime)
             return;
 
-        var directEmoteRange = _cfg.GetCVar(CCVars.ChatMaxEmoteLength);
+        var directEmoteRange = _cfg.GetCVar(CCVars.DirectionalEmoteRange);
         var rangeError = Loc.GetString("directional-emote-range-error");
         if (!_examineSystem.InRangeUnOccluded(source, target, directEmoteRange))
         {
