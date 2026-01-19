@@ -37,6 +37,9 @@ public sealed partial class DirectionalEmoteSystem : EntitySystem
         if (!_directionalEmotesEnabled)
             return;
 
+        if (string.IsNullOrWhiteSpace(args.Text))
+            return;
+
         var source = session.SenderSession.AttachedEntity;
         if (source == null)
             return;
