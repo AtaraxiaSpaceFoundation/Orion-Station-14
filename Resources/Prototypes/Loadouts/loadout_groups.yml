@@ -481,6 +481,10 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  # Orion-Start
+  - InteQWinter
+  - InteQHoodie
+  # Orion-End
 
 - type: loadoutGroup
   id: PassengerShoes

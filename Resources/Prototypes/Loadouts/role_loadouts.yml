@@ -183,6 +183,7 @@
   id: JobPassenger
   groups:
   - GroupTankHarness
+  - PassengerHead # Orion
   - PassengerJumpsuit
   - CommonBackpack
   - PassengerNeck

@@ -17,12 +17,23 @@
   - SecurityGunMk58
   - SecurityGunLaserPistol
 
+# Civilian
+- type: loadoutGroup
+  id: PassengerHead
+  name: loadout-group-passenger-head
+  minLimit: 0
+  loadouts:
+  - BartenderHead
+  - BartenderBowler
+  - ChemistUshanka
+  - InteQBeret
+  - InteQHatSoft
+
 # Underwear (All roles)
 - type: loadoutGroup
   id: Undershirt
   name: loadout-group-undershirt
   minLimit: 0
-  maxLimit: 1
   loadouts:
   - Babydoll
   - Bra
@@ -115,7 +126,6 @@
   id: Underwear
   name: loadout-group-underwear
   minLimit: 0
-  maxLimit: 1
   loadouts:
   - UnderwearBoxerShorts
   - BoxerShortsAssBlastUSA
@@ -154,7 +164,6 @@
   id: Socks
   name: loadout-group-socks
   minLimit: 0
-  maxLimit: 1
   loadouts:
   - SocksAssBlastUSAKnee
   - SocksAssBlastUSAThigh
@@ -200,7 +209,6 @@
   id: Wrists
   name: loadout-group-wrists
   minLimit: 0
-  maxLimit: 1
   loadouts:
   - RedworkSlab
   - ClockworkSlab
