@@ -20,7 +20,7 @@
     - trigger:
         !type:DamageTypeTrigger
         damageType: Blunt
-        damage: 200
+        damage: 120 # Orion-Edit: 200 > 120
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -30,7 +30,7 @@
     - trigger:
         !type:DamageTypeTrigger
         damageType: Heat
-        damage: 100
+        damage: 80 # Orion-Edit: 100 > 80
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawnInContainer: true
