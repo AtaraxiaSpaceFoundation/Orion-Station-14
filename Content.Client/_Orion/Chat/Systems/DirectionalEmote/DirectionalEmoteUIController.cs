@@ -25,7 +25,7 @@ public sealed class DirectionalEmoteUIController : UIController
         _emoteWindow.MessageChanged += () =>
         {
             _typingIndicator.ClientChangedChatText();
-            _typingIndicator.ClientChangedWindowStatus(true); ;
+            _typingIndicator.ClientChangedWindowStatus(true);
         };
 
         _emoteWindow.AcceptPressed += () =>

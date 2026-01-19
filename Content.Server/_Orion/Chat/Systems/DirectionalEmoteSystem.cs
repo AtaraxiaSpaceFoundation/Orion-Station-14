@@ -49,16 +49,18 @@ public sealed partial class DirectionalEmoteSystem : EntitySystem
         if (directEmote.LastSend + directEmote.Cooldown > curTime)
             return;
 
+        var directEmoteRange = _cfg.GetCVar(CCVars.ChatMaxEmoteLength);
         var rangeError = Loc.GetString("directional-emote-range-error");
-        if (!_examineSystem.InRangeUnOccluded(source, target, 3))
+        if (!_examineSystem.InRangeUnOccluded(source, target, directEmoteRange))
         {
             _chatManager.ChatMessageToOne(ChatChannel.Emotes, rangeError, rangeError, default, false, sourceActor.PlayerSession.Channel);
             return;
         }
 
-        var lengthError = Loc.GetString("directional-emote-length-error");
-        if (args.Text.Length > 10000)
+        var maxLength = _cfg.GetCVar(CCVars.ChatMaxEmoteLength);
+        if (args.Text.Length > maxLength)
         {
+            var lengthError = Loc.GetString("directional-emote-length-error", ("maxLength", maxLength));
             _chatManager.ChatMessageToOne(ChatChannel.Emotes, lengthError, lengthError, default, false, sourceActor.PlayerSession.Channel);
             return;
         }
@@ -67,7 +69,7 @@ public sealed partial class DirectionalEmoteSystem : EntitySystem
 
         _chatManager.ChatMessageToMany(ChatChannel.Emotes, args.Text, wrappedMessage, source, false, true, [targetActor.PlayerSession.Channel, sourceActor.PlayerSession.Channel]);
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(source):source} send directional emote to {ToPrettyString(target):target}: {args.Text}");
-        _chatProtection.CheckICMessage(source, args.Text);
+        _chatProtection.CheckICMessage(args.Text, source);
         directEmote.LastSend = curTime;
     }
 }

@@ -8,9 +8,9 @@ namespace Content.Client._Orion.Chat.Systems.DirectionalEmote;
 [GenerateTypedNameReferences]
 public sealed partial class DirectionalEmoteWindow : FancyWindow
 {
-    public NetEntity Source;
-    public NetEntity Target;
-    public string Text = "";
+    public NetEntity Source { get; set; }
+    public NetEntity Target { get; set; }
+    public string Text { get; private set; } = "";
     public Action? AcceptPressed;
     public Action? MessageChanged;
     public DirectionalEmoteWindow()
