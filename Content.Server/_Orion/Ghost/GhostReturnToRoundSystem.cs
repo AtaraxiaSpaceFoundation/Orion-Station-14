@@ -5,7 +5,6 @@ using Content.Server.Mind;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
-using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -28,7 +27,6 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(ResetDeathTimes);
         SubscribeNetworkEvent<GhostReturnToRoundRequest>(OnGhostReturnToRoundRequest);
     }
 
@@ -68,7 +66,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         if (_mindSystem.TryGetMind(uid, out _, out var mind) && mind.TimeOfDeath.HasValue)
             deathTime = mind.TimeOfDeath.Value;
 
-        var timeUntilRespawn = TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.GhostRespawnTime));
+        var timeUntilRespawn = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.GhostRespawnTime));
         var timePast = _gameTiming.CurTime - deathTime;
 
         if (timePast >= timeUntilRespawn)
@@ -92,14 +90,5 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
             : Loc.GetString("ghost-respawn-seconds-left", ("time", timeLeft.Seconds));
 
         wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-    }
-
-    private readonly Dictionary<NetUserId, TimeSpan> _deathTime = new();
-    private readonly Dictionary<NetUserId, HashSet<int>> _usedInRound = new();
-
-    private void ResetDeathTimes(RoundRestartCleanupEvent ev)
-    {
-        _deathTime.Clear();
-        _usedInRound.Clear();
     }
 }

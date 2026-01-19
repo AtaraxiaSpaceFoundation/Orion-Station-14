@@ -53,7 +53,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
 
         ui.ReturnToRound.Disabled = true;
         var timeLeft = respawnTime - timeOffset.TotalSeconds;
-        var ts = TimeSpan.FromMinutes(timeLeft);
+        var ts = TimeSpan.FromSeconds(timeLeft);
         ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button") + " " + ts.ToString("mm\\:ss");
     }
 }
