@@ -1,0 +1,9 @@
+# Mini flags
+- type: loadout
+  id: InteQMiniFlag
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: InteQVanguard
+  storage:
+    back:
+    - ItemFlagMiniInteQ
