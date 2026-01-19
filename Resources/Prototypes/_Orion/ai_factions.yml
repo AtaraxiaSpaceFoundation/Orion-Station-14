@@ -6,10 +6,13 @@
   - AllHostile
   - Xeno
   - Zombie
-  # Goob-Start-Factions
+  - Xenoborg
+  # Goob-Start
   - Blob
   - Shadowling
-  # Goob-End-Factions
+  - Lavafauna
+  - Wraith
+  # Goob-End
   friendly:
   - NanoTrasen
   - Syndicate
@@ -30,13 +33,17 @@
   - Xeno
   - Zombie
   - Revolutionary
-  # Goob-Start-Factions
+  - Xenoborg
+  # Goob-Start
   - Changeling
   - Heretic
   - Blob
   - Wizard
   - PirateFaction
   - Shadowling
-  # Goob-End-Factions
+  - Lavafauna
+  - Wraith
+  - Assistant
+  # Goob-End
   friendly:
   - InteQ
