@@ -284,6 +284,11 @@
   name: Solar Control Interface
   description: View a Solar Control Interface.
   components:
+  # Orion-Start
+  - type: Action
+    icon: { sprite: _Orion/Interface/Actions/consoles.rsi, state: solar }
+    iconOn: _Orion/Interface/Actions/consoles.rsi/solar.png
+  # Orion-End
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.SolarControlConsoleUiKey.Key }
 
@@ -294,8 +299,8 @@
   description: View a Communications Interface.
   components:
   - type: Action
-    icon: { sprite: Interface/Actions/actions_ai.rsi, state: comms_console }
-    iconOn: Interface/Actions/actions_ai.rsi/comms_console.png
+    icon: { sprite: _Orion/Interface/Actions/consoles.rsi, state: communication } # Orion-Edit
+    iconOn: _Orion/Interface/Actions/consoles.rsi/communication.png # Orion-Edit
     keywords: [ "AI", "console", "interface" ]
     priority: -4
   - type: InstantAction
@@ -308,8 +313,8 @@
   description: View a Mass Scanner Interface.
   components:
   - type: Action
-    icon: { sprite: Interface/Actions/actions_ai.rsi, state: mass_scanner }
-    iconOn: Interface/Actions/actions_ai.rsi/mass_scanner.png
+    icon: { sprite: _Orion/Interface/Actions/consoles.rsi, state: radar } # Orion-Edit
+    iconOn: _Orion/Interface/Actions/consoles.rsi/radar.png # Orion-Edit
     keywords: [ "AI", "console", "interface" ]
     priority: -6
   - type: InstantAction
@@ -321,6 +326,11 @@
   name: Cargo Ordering Interface
   description: View a Cargo Ordering Interface.
   components:
+  # Orion-Start
+  - type: Action
+    icon: { sprite: _Orion/Interface/Actions/consoles.rsi, state: cargo }
+    iconOn: _Orion/Interface/Actions/consoles.rsi/cargo.png
+  # Orion-End
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.CargoConsoleUiKey.Orders }
 
@@ -331,8 +341,8 @@
   description: View a Crew Monitoring Interface.
   components:
   - type: Action
-    icon: { sprite: Interface/Actions/actions_ai.rsi, state: crew_monitor }
-    iconOn: Interface/Actions/actions_ai.rsi/crew_monitor.png
+    icon: { sprite: _Orion/Interface/Actions/consoles.rsi, state: crew } # Orion-Edit
+    iconOn: _Orion/Interface/Actions/consoles.rsi/crew.png # Orion-Edit
     keywords: [ "AI", "console", "interface" ]
     priority: -8
   - type: InstantAction
@@ -345,8 +355,8 @@
   description: View a Station Records Interface.
   components:
   - type: Action
-    icon: { sprite: Interface/Actions/actions_ai.rsi, state: station_records }
-    iconOn: Interface/Actions/actions_ai.rsi/station_records.png
+    icon: { sprite: _Orion/Interface/Actions/consoles.rsi, state: records } # Orion-Edit
+    iconOn: _Orion/Interface/Actions/consoles.rsi/records.png # Orion-Edit
     keywords: [ "AI", "console", "interface" ]
     priority: -7
   - type: InstantAction
