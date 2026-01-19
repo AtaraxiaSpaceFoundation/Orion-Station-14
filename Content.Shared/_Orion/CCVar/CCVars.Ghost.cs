@@ -12,8 +12,8 @@ public sealed partial class CCVars
      * Ghost Respawn
      */
 
-    public static readonly CVarDef<double> GhostRespawnTime =
-        CVarDef.Create("ghost.respawn_time", 5d, CVar.SERVERONLY | CVar.REPLICATED);
+    public static readonly CVarDef<float> GhostRespawnTime =
+        CVarDef.Create("ghost.respawn_time", 30f, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<int> GhostRespawnMaxPlayers =
         CVarDef.Create("ghost.respawn_max_players", 80, CVar.SERVERONLY);
