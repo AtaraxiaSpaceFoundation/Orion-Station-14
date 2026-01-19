@@ -28,6 +28,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     private TimeSpan _lastTextChange;
     private bool _isClientTyping;
     private bool _isClientChatFocused;
+    private bool _isClientEmoteWindowActive; // Orion
 
     public override void Initialize()
     {
@@ -35,6 +36,13 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
 
         Subs.CVar(_cfg, CCVars.ChatShowTypingIndicator, OnShowTypingChanged);
     }
+
+    // Orion-Start
+    public void ClientChangedWindowStatus(bool isOpen)
+    {
+        _isClientEmoteWindowActive = isOpen;
+    }
+    // Orion-End
 
     public void ClientChangedChatText()
     {
@@ -85,6 +93,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             {
                 // client didn't typed anything for a long time - change indicator
                 _isClientTyping = false;
+                _isClientEmoteWindowActive = false; // Orion
                 ClientUpdateTyping();
             }
         }
@@ -97,7 +106,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             return;
 
         var state = TypingIndicatorState.None;
-        if (_isClientChatFocused)
+        if (_isClientChatFocused || _isClientEmoteWindowActive) // Orion-Edit: _isClientEmoteWindowActive
             state = _isClientTyping ? TypingIndicatorState.Typing : TypingIndicatorState.Idle;
 
         // send a networked event to server
