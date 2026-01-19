@@ -1816,8 +1816,8 @@
     - MiningConscription
   - type: Wires # DeltaV: Use shop vendor wires layout
     layoutId: ShopVendor
-  - type: AccessReader
-    access: [["Salvage"]]
+#  - type: AccessReader # Orion-Edit: Removed
+#    access: [["Salvage"]]
   - type: GuideHelp
     guides:
     - Salvage
