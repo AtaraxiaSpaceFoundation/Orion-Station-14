@@ -42,9 +42,6 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         var respawnTime = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.GhostRespawnTime));
         if (timeOffset >= respawnTime)
         {
-            if (!ui.ReturnToRound.Disabled)
-                return;
-
             ui.ReturnToRound.Disabled = false;
             ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-ready-button");
 

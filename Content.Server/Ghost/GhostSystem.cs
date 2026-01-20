@@ -96,6 +96,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
+using Content.Server.Ghost.Roles.Events;
 using Content.Server.Mind;
 using Content.Server.Preferences.Managers;
 using Content.Server.Roles.Jobs;
@@ -117,6 +118,7 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Shared.Follower;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
@@ -196,6 +198,10 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<GhostComponent, ComponentShutdown>(OnGhostShutdown);
+            // Orion-Start
+            SubscribeLocalEvent<GhostComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+            SubscribeLocalEvent<GhostComponent, GhostRoleSpawnerUsedEvent>(OnGhostRoleSpawnerUsed);
+            // Orion-End
 
             SubscribeLocalEvent<GhostComponent, ExaminedEvent>(OnGhostExamine);
 
@@ -336,6 +342,20 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             _actions.RemoveAction(uid, component.BooActionEntity);
         }
+
+        // Orion-Start
+        private void OnPlayerSpawnComplete(EntityUid uid, GhostComponent component, PlayerSpawnCompleteEvent args)
+        {
+            component.TimeOfDeath = TimeSpan.Zero;
+            Dirty(uid, component);
+        }
+
+        private void OnGhostRoleSpawnerUsed(EntityUid uid, GhostComponent component, GhostRoleSpawnerUsedEvent args)
+        {
+            component.TimeOfDeath = TimeSpan.Zero;
+            Dirty(uid, component);
+        }
+        // Orion-End
 
         private void OnMapInit(EntityUid uid, GhostComponent component, MapInitEvent args)
         {
