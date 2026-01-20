@@ -198,10 +198,6 @@ namespace Content.Server.Ghost
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<GhostComponent, ComponentShutdown>(OnGhostShutdown);
-            // Orion-Start
-            SubscribeLocalEvent<GhostComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
-            SubscribeLocalEvent<GhostComponent, GhostRoleSpawnerUsedEvent>(OnGhostRoleSpawnerUsed);
-            // Orion-End
 
             SubscribeLocalEvent<GhostComponent, ExaminedEvent>(OnGhostExamine);
 
@@ -342,20 +338,6 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             _actions.RemoveAction(uid, component.BooActionEntity);
         }
-
-        // Orion-Start
-        private void OnPlayerSpawnComplete(EntityUid uid, GhostComponent component, PlayerSpawnCompleteEvent args)
-        {
-            component.TimeOfDeath = TimeSpan.Zero;
-            Dirty(uid, component);
-        }
-
-        private void OnGhostRoleSpawnerUsed(EntityUid uid, GhostComponent component, GhostRoleSpawnerUsedEvent args)
-        {
-            component.TimeOfDeath = TimeSpan.Zero;
-            Dirty(uid, component);
-        }
-        // Orion-End
 
         private void OnMapInit(EntityUid uid, GhostComponent component, MapInitEvent args)
         {

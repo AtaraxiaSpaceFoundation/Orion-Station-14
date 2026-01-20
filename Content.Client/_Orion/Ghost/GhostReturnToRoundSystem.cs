@@ -22,10 +22,10 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         base.FrameUpdate(frameTime);
 
         _acc += frameTime;
-        if (_acc <= 1)
+        if (_acc < 1.0f)
             return;
 
-        _acc -= 1;
+        _acc -= 1.0f;
 
         var player = _playerManager.LocalSession?.AttachedEntity;
         if (player == null)
@@ -38,10 +38,16 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         if (ui == null)
             return;
 
-        var timeOffset = _gameTiming.CurTime - ghostComponent.TimeOfDeath;
-        var respawnTime = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.GhostRespawnTime));
-        if (timeOffset >= respawnTime)
+        var deathTime = ghostComponent.TimeOfDeath;
+
+        var timeUntilRespawn = TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.GhostRespawnTime));
+        var timePast = _gameTiming.CurTime - deathTime;
+
+        if (timePast >= timeUntilRespawn)
         {
+            if (!ui.ReturnToRound.Disabled)
+                return;
+
             ui.ReturnToRound.Disabled = false;
             ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-ready-button");
 
@@ -49,7 +55,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
         }
 
         ui.ReturnToRound.Disabled = true;
-        var timeLeft = respawnTime - timeOffset;
+        var timeLeft = timeUntilRespawn - timePast;
         ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button", ("time", timeLeft.ToString("mm\\:ss")));
     }
 }
