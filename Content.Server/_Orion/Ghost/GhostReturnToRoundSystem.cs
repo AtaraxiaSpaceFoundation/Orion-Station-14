@@ -1,9 +1,11 @@
+using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Shared._Orion.Ghost;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
@@ -20,6 +22,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
     [Dependency] private readonly SharedGhostSystem _ghostSystem = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
     {
@@ -66,6 +69,11 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         _deathTime.Remove(session.UserId);
 
         _gameTicker.Respawn(session);
+
+        _adminLogger.Add(LogType.Mind, LogImpact.Medium, $"{Loc.GetString("ghost-respawn-log-return-to-lobby", ("userName", session.Name))}");
+
+        var message= Loc.GetString("ghost-respawn-window-rules-footer");
+        SendChatMsg(session, message);
     }
 
     private void OnGhostReturnToRoundRequest(GhostReturnToRoundRequest msg, EntitySessionEventArgs args)
@@ -119,9 +127,11 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         var remaining = GhostRespawnTime - elapsed;
         if (remaining > TimeSpan.Zero)
         {
-            SendChatMsg(shell.Player,
-                Loc.GetString("ghost-respawn-time-left", ("time", remaining.ToString()))
-            );
+            var message = remaining.Minutes > 0
+                ? Loc.GetString("ghost-respawn-minutes-left", ("time", remaining.Minutes))
+                : Loc.GetString("ghost-respawn-seconds-left", ("time", remaining.Seconds));
+
+            SendChatMsg(shell.Player, message);
         }
 
         TryGhostReturnToRound(ghost, (ghost, ghostComponent));
