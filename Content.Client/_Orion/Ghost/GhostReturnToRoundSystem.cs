@@ -20,6 +20,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         _acc += frameTime;
         if (_acc <= 1)
             return;
+
         _acc -= 1;
 
         var plr = _playerManager.LocalSession?.AttachedEntity;
@@ -30,17 +31,17 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
             return;
 
         var ui = _userInterfaceManager.GetActiveUIWidgetOrNull<GhostGui>();
-        if(ui == null)
+        if (ui == null)
             return;
 
         var timeOffset = GameTiming.CurTime - ghostComponent.TimeOfDeath;
         if (timeOffset >= GhostRespawnTime)
         {
-            if (ui.ReturnToRound.Disabled)
-            {
-                ui.ReturnToRound.Disabled = false;
-                ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button");
-            }
+            if (!ui.ReturnToRound.Disabled)
+                return;
+
+            ui.ReturnToRound.Disabled = false;
+            ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button");
 
             return;
         }
