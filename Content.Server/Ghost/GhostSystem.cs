@@ -92,6 +92,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Server._Goobstation.Wizard.Systems;
+using Content.Server._Orion.Ghost;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
@@ -318,6 +319,7 @@ namespace Content.Server.Ghost
             _eye.RefreshVisibilityMask(uid);
             var time = _gameTiming.CurTime;
             component.TimeOfDeath = time;
+            Dirty(uid, component); // Orion
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
