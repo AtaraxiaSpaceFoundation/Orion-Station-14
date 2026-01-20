@@ -21,15 +21,15 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
-    [Dependency] private readonly SharedGhostSystem _ghostSystem = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+
+    private int _ghostRespawnMaxPlayers;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeNetworkEvent<GhostReturnToRoundRequest>(OnGhostReturnToRoundRequest);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(ResetDeathTimes);
 
         Cfg.OnValueChanged(CCVars.GhostRespawnMaxPlayers,
             ghostRespawnMaxPlayers =>
@@ -66,10 +66,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
             return;
         }
 
-        _deathTime.Remove(session.UserId);
-
         _gameTicker.Respawn(session);
-
         _adminLogger.Add(LogType.Mind, LogImpact.Medium, $"{Loc.GetString("ghost-respawn-log-return-to-lobby", ("userName", session.Name))}");
 
         var message= Loc.GetString("ghost-respawn-window-rules-footer");
@@ -101,48 +98,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
             return;
         }
 
-        if (_playerManager.PlayerCount >= _ghostRespawnMaxPlayers)
-        {
-            SendChatMsg(shell.Player,
-                Loc.GetString("ghost-respawn-max-players", ("players", _ghostRespawnMaxPlayers))
-            );
-            return;
-        }
-
-        var userId = shell.Player.UserId;
-
-        if (!_deathTime.TryGetValue(userId, out var deathTime))
-        {
-            _deathTime[userId] = ghostComponent.TimeOfDeath;
-            deathTime = ghostComponent.TimeOfDeath;
-        }
-
-        if (deathTime != ghostComponent.TimeOfDeath)
-        {
-            _ghostSystem.SetTimeOfDeath((ghost, ghostComponent), deathTime);
-            Dirty(ghost, ghostComponent);
-        }
-
-        var elapsed = GameTiming.CurTime - deathTime;
-        var remaining = GhostRespawnTime - elapsed;
-        if (remaining > TimeSpan.Zero)
-        {
-            var message = remaining.Minutes > 0
-                ? Loc.GetString("ghost-respawn-minutes-left", ("time", remaining.Minutes))
-                : Loc.GetString("ghost-respawn-seconds-left", ("time", remaining.Seconds));
-
-            SendChatMsg(shell.Player, message);
-        }
-
         TryGhostReturnToRound(ghost, (ghost, ghostComponent));
-    }
-
-    private int _ghostRespawnMaxPlayers;
-    private readonly Dictionary<NetUserId, TimeSpan> _deathTime = new();
-
-    private void ResetDeathTimes(RoundRestartCleanupEvent ev)
-    {
-        _deathTime.Clear();
     }
 
     private void SendChatMsg(ICommonSession sess, string message)

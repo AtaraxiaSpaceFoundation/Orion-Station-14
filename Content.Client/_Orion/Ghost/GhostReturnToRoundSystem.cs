@@ -32,10 +32,11 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
             return;
 
         var timeOffset = _gameTiming.CurTime - ghostComponent.TimeOfDeath;
-        var timeLeft = GhostRespawnTime - timeOffset;
-        var canReturn = timeLeft <= TimeSpan.Zero;
+        var rawTimeLeft = GhostRespawnTime - timeOffset;
+        var timeLeft = rawTimeLeft > TimeSpan.Zero ? rawTimeLeft : TimeSpan.Zero;
+        var canReturn = timeLeft == TimeSpan.Zero;
 
-        var displayTime = canReturn ? "00:00" : timeLeft.ToString(@"mm\:ss");
+        var displayTime = timeLeft.ToString(@"mm\:ss");
 
         var buttonStateChanged = ui.ReturnToRound.Disabled == canReturn;
         var timeChanged = _lastTimeLeft.ToString(@"mm\:ss") != displayTime;
