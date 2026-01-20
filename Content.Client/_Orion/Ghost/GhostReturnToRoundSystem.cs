@@ -46,7 +46,7 @@ public sealed class GhostReturnToRoundSystem : EntitySystem
                 return;
 
             ui.ReturnToRound.Disabled = false;
-            ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button");
+            ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-ready-button");
 
             return;
         }
