@@ -3,6 +3,7 @@ using Content.Shared._Orion.Ghost;
 using Content.Shared.Ghost;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Orion.Ghost;
 
@@ -10,43 +11,44 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
 {
     [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
-    private float _acc;
+    private TimeSpan _lastTimeLeft = TimeSpan.Zero;
+    private bool _lastButtonState = true;
 
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
 
-        _acc += frameTime;
-        if (_acc <= 1)
+        var player = _playerManager.LocalSession?.AttachedEntity;
+        if (player == null)
             return;
 
-        _acc -= 1;
-
-        var plr = _playerManager.LocalSession?.AttachedEntity;
-        if (plr == null)
-            return;
-
-        if(!TryComp<GhostComponent>(plr, out var ghostComponent))
+        if (!TryComp<GhostComponent>(player, out var ghostComponent))
             return;
 
         var ui = _userInterfaceManager.GetActiveUIWidgetOrNull<GhostGui>();
         if (ui == null)
             return;
 
-        var timeOffset = GameTiming.CurTime - ghostComponent.TimeOfDeath;
-        if (timeOffset >= GhostRespawnTime)
-        {
-            if (!ui.ReturnToRound.Disabled)
-                return;
+        var timeOffset = _gameTiming.CurTime - ghostComponent.TimeOfDeath;
+        var timeLeft = GhostRespawnTime - timeOffset;
+        var canReturn = timeLeft <= TimeSpan.Zero;
 
-            ui.ReturnToRound.Disabled = false;
-            ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button");
+        var displayTime = canReturn ? "00:00" : timeLeft.ToString(@"mm\:ss");
 
+        var buttonStateChanged = ui.ReturnToRound.Disabled == canReturn;
+        var timeChanged = _lastTimeLeft.ToString(@"mm\:ss") != displayTime;
+
+        if (!buttonStateChanged && !timeChanged)
             return;
-        }
 
-        ui.ReturnToRound.Disabled = true;
-        ui.ReturnToRound.Text = Loc.GetString("ghost-gui-return-to-round-button") + " " + (GhostRespawnTime - timeOffset).ToString("mm\\:ss");
+        ui.ReturnToRound.Disabled = !canReturn;
+        ui.ReturnToRound.Text = canReturn
+            ? Loc.GetString("ghost-gui-return-to-round-ready-button")
+            : Loc.GetString("ghost-gui-return-to-round-button", ("time", displayTime));
+
+        _lastTimeLeft = timeLeft;
+        _lastButtonState = !canReturn;
     }
 }

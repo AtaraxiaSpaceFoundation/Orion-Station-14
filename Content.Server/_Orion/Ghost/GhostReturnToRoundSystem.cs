@@ -25,6 +25,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
     {
         base.Initialize();
 
+        SubscribeNetworkEvent<GhostReturnToRoundRequest>(OnGhostReturnToRoundRequest);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(ResetDeathTimes);
 
         Cfg.OnValueChanged(CCVars.GhostRespawnMaxPlayers,
@@ -67,6 +68,17 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         _gameTicker.Respawn(session);
     }
 
+    private void OnGhostReturnToRoundRequest(GhostReturnToRoundRequest msg, EntitySessionEventArgs args)
+    {
+        if (args.SenderSession.AttachedEntity is not { } ghost)
+            return;
+
+        if (!TryComp<GhostComponent>(ghost, out var ghostComponent))
+            return;
+
+        TryGhostReturnToRound(ghost, (ghost, ghostComponent));
+    }
+
     private CompletionResult ReturnToRoundCompletion(IConsoleShell shell, string[] args)
     {
         return CompletionResult.Empty;
@@ -99,14 +111,18 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
 
         if (deathTime != ghostComponent.TimeOfDeath)
         {
-            _ghostSystem.SetTimeOfDeath(ghost, deathTime, ghostComponent);
+            _ghostSystem.SetTimeOfDeath((ghost, ghostComponent), deathTime);
             Dirty(ghost, ghostComponent);
         }
 
-        var timeLeft = GameTiming.CurTime - deathTime;
-        SendChatMsg(shell.Player,
-            Loc.GetString("ghost-respawn-time-left", ("time", (GhostRespawnTime - timeLeft).ToString()))
-        );
+        var elapsed = GameTiming.CurTime - deathTime;
+        var remaining = GhostRespawnTime - elapsed;
+        if (remaining > TimeSpan.Zero)
+        {
+            SendChatMsg(shell.Player,
+                Loc.GetString("ghost-respawn-time-left", ("time", remaining.ToString()))
+            );
+        }
 
         TryGhostReturnToRound(ghost, (ghost, ghostComponent));
     }
