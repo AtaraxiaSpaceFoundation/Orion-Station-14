@@ -1,2 +1,2 @@
 id-card-access-level-xenomorph = Ксеноморф
-id-card-access-level-journalism = Журналист
+id-card-access-level-journalism = Журналистика

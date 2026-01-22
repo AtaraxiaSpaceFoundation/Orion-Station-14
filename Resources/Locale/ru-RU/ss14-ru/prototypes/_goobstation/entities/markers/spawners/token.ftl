@@ -24,3 +24,5 @@ ent-AncientRogueKingToken = { ent-CMMobXenoRogueKingSentient }
     .desc = { ent-CMMobXenoRogueKingSentient.desc }
 ent-WraithToken = { ent-SpawnPointGhostWraith }
     .desc = { ent-SpawnPointGhostWraith.desc }
+ent-HasturToken = { ent-SpawnPointGhostHastur }
+    .desc = { ent-SpawnPointGhostHastur.desc }
