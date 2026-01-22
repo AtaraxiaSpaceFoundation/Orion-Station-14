@@ -298,32 +298,12 @@ public sealed partial class RadioSystem : EntitySystem
 
         // Goobstation - Bolded Language Overrides begin
         var wrapId = speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap";
-/* // Orion-Edit: Removed because this shit doesn't work.
         if (speech.Bold && language.SpeechOverride.BoldFontId != null)
             wrapId = "chat-radio-message-wrap-bolded-language";
-*/
         // Goobstation end
 
         if (language.SpeechOverride.Color is { } colorOverride)
             languageColor = Color.InterpolateBetween(Color.White, colorOverride, colorOverride.A); // Changed first param to Color.White so it shows color correctly.
-
-        // Orion-Start
-        if (language.SpeechOverride.FontId != null || language.SpeechOverride.Color != null)
-        {
-            switch (speech.Bold)
-            {
-                case true when language.SpeechOverride.BoldFontId != null:
-                    wrapId = "chat-radio-message-wrap-bolded-language";
-                    break;
-                case true:
-                    wrapId = "chat-radio-message-wrap-bold-language";
-                    break;
-                default:
-                    wrapId = "chat-radio-message-wrap-language";
-                    break;
-            }
-        }
-        // Orion-End
 
         var languageDisplay = language.IsVisibleLanguage
             ? Loc.GetString("chat-manager-language-prefix", ("language", language.ChatName))
