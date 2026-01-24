@@ -270,6 +270,20 @@ PowerCellAntiqueProto: PowerCellInfinite
 
 ClothingUnderSocksBee: ClothingSocksBee
 
+ConstructionBarricade: Null
+FishingRodGoon: FishingRod
+FishingRodGolden: FishingRod
+PlushieHuman: ToySpawner
+PlushieArachind: ToySpawner
+PlushieDiona: ToySpawner
+DrinkGinAndSonic: RandomDrinkGlass
+DrinkGoldenCat: RandomDrinkGlass
+DrinkPineappleBlast: RandomDrinkGlass
+DrinkTorpedoJuice: RandomDrinkGlass
+DrinkBeesKnees: RandomDrinkGlass
+ImmovableRodSkibidi: ImmovableRod
+MobRatKingBuff: MobRatKing
+
 # Orion-End
 
 # Goobstation - Submarine from DeltaV

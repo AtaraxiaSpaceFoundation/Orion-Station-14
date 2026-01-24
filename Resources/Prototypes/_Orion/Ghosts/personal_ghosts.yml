@@ -113,22 +113,3 @@
   - type: Sprite
     sprite: _Orion/Ghosts/ckey/scituzer2.rsi
     color: "#ffffffe6" # 0.9 alpha
-
-# trest100
-- type: customGhost
-  parent: CkeyPersonal
-  id: trest100-ghost
-  restrictions:
-  - !type:CkeyRestriction
-    ckey: [ trest100 ]
-  entity: MobObserver-trest100
-
-- type: entity
-  parent: MobObserver
-  id: MobObserver-trest100
-  description: Skibidi-psiop es es!
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Orion/Ghosts/ckey/trest100.rsi
-    color: "#ffffffe6" # 0.9 alpha

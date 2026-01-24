@@ -14,6 +14,6 @@
   source: "https://freesound.org/people/djlprojects/sounds/392889/"
 
 - files: [ "rewind.ogg" ]
-  license: "CC-BY-NC-4.0"
-  copyright: "Taken from CassetteRewind.flac by acclivity. Converted from Flac to Ogg."
-  source: "https://freesound.org/people/acclivity/sounds/23393/"
+  license: "CC-0"
+  copyright: "Taken from freesound.org by LuKaiX. Converted to .ogg by PuroSlavKing (Github)"
+  source: "https://freesound.org/people/LuKaiX/sounds/700527/"

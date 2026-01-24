@@ -244,14 +244,6 @@
   id: FloorSteelOffset
   name: tiles-steel-floor-offset
   sprite: /Textures/Tiles/steel_offset.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -483,14 +475,6 @@
   id: FloorWhiteOffset
   name: tiles-white-floor-offset
   sprite: /Textures/Tiles/white_offset.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -675,14 +659,6 @@
   id: FloorDarkOffset
   name: tiles-dark-floor-offset
   sprite: /Textures/Tiles/dark_offset.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -856,7 +832,6 @@
   id: FloorSteelDirty
   name: tiles-dirty-steel-floor
   sprite: /Textures/Tiles/steel_dirty.png
-  variants: 4 # Orion
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -896,14 +871,6 @@
   id: FloorRockVault
   name: tiles-rock-floor
   sprite: /Textures/Tiles/rock_vault.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1023,14 +990,6 @@
   id: FloorHydro
   name: tiles-hydro-floor
   sprite: /Textures/Tiles/hydro.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1063,18 +1022,6 @@
   id: FloorClown
   name: tiles-clown-floor
   sprite: /Textures/Tiles/clown.png
-  # Orion-Start
-  variants: 8
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1088,14 +1035,6 @@
   id: FloorMime
   name: tiles-mime-floor
   sprite: /Textures/Tiles/mime.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1109,14 +1048,6 @@
   id: FloorKitchen
   name: tiles-kitchen-floor
   sprite: /Textures/Tiles/kitchen.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1130,14 +1061,6 @@
   id: FloorLaundry
   name: tiles-laundry-floor
   sprite: /Textures/Tiles/laundry.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1151,11 +1074,8 @@
   id: FloorSteelDamaged
   name: tiles-steel-floor
   sprite: /Textures/Tiles/steel_damaged.png
-  variants: 8 # Orion-Edit: 5 > 8
+  variants: 5
   placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
   - 1.0
   - 1.0
   - 1.0
@@ -1174,14 +1094,8 @@
   id: FloorSteelBurnt
   name: tiles-steel-floor
   sprite: /Textures/Tiles/steel_burnt.png
-  variants: 8 # Orion-Edit: 2 > 8
+  variants: 2
   placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
   - 1.0
   - 1.0
   baseTurf: Plating
@@ -1535,6 +1449,14 @@
   id: FloorShuttleGrey
   name: tiles-grey-shuttle-floor
   sprite: /Textures/Tiles/shuttlegrey.png
+  # Orion-Start
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1548,6 +1470,14 @@
   id: FloorShuttleBlack
   name: tiles-black-shuttle-floor
   sprite: /Textures/Tiles/shuttleblack.png
+  # Orion-Start
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1599,6 +1529,14 @@
   id: FloorShuttlePurple
   name: tiles-purple-shuttle-floor
   sprite: /Textures/Tiles/shuttlepurple.png
+  # Orion-Start
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1612,6 +1550,14 @@
   id: FloorShuttleRed
   name: tiles-red-shuttle-floor
   sprite: /Textures/Tiles/shuttlered.png
+  # Orion-Start
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1627,14 +1573,6 @@
   id: FloorGold
   name: tiles-gold-tile
   sprite: /Textures/Tiles/gold.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1648,14 +1586,6 @@
   id: FloorSilver
   name: tiles-silver-tile
   sprite: /Textures/Tiles/silver.png
-  # Orion-Start
-  variants: 4
-  placementVariants:
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  # Orion-End
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1785,7 +1715,14 @@
   id: FloorGrass
   name: tiles-planet-grass-floor
   sprite: /Textures/Tiles/grass.png
-  variants: 4 # Orion
+  # Orion-Start
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Orion-End
   baseTurf: FloorDirt
   isSubfloor: true
   footstepSounds:
@@ -1798,7 +1735,14 @@
   id: FloorGrassJungle
   name: tiles-jungle-grass-floor
   sprite: /Textures/Tiles/grassjungle.png
-  variants: 4 # Orion
+  # Orion-Start
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  # Orion-End
   baseTurf: FloorDirt
   isSubfloor: true
   footstepSounds:
