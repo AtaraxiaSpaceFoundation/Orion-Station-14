@@ -5,7 +5,7 @@
       "y": 32
   },
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from /tg/station | Edited by PuroSlavKing (Github)",
+  "copyright": "Taken from /tg/station | Edited by PuroSlavKing (Github) | socks, undershirt, underwear, wrists and collar by PuroSlavKing (Github)",
   "states": [
       {
         "name": "back"
@@ -14,10 +14,16 @@
         "name": "belt"
       },
       {
+        "name": "collar"
+      },
+      {
         "name": "block"
       },
       {
         "name": "ears"
+      },
+      {
+        "name": "ears_right"
       },
       {
         "name": "ears_headset"
@@ -68,6 +74,9 @@
         "name": "shoes"
       },
       {
+        "name": "socks"
+      },
+      {
         "name": "suit"
       },
       {
@@ -78,6 +87,15 @@
       },
       {
         "name": "inventory"
+      },
+      {
+        "name": "undershirt"
+      },
+      {
+        "name": "underwear"
+      },
+      {
+        "name": "wrists"
       },
       {
         "name": "web"
