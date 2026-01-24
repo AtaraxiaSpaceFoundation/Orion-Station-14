@@ -375,12 +375,7 @@ namespace Content.Client.RoundEnd
                 }
                 else if (playerInfo.EntMobState == MobState.Invalid)
                 {
-                    // Orion-Edit-Start: Localization
-                    deathLabel.SetMarkup(playerInfo.PlayerNetEntity != null
-                        ? Loc.GetString("round-end-summary-window-death-unknown",
-                            ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity.Value)))
-                        : Loc.GetString("round-end-summary-window-death-unknown-null"));
-                    // Orion-Edit-End
+                    deathLabel.SetMarkup(Loc.GetString("round-end-summary-window-death-unknown"));
                 }
 
                 hBox.AddChild(textVBox);
