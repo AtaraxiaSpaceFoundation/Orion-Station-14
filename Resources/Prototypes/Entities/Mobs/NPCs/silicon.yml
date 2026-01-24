@@ -552,13 +552,13 @@
         - enum.DamageStateVisualLayers.Base:
             medibot: ""
           enum.DamageStateVisualLayers.BaseUnshaded:
-            powered: Rainbow
+            powered-unshaded: Rainbow # Orion-Edit
   - type: Sprite
-    sprite: _Goobstation/Mobs/Silicon/Bots/medibot.rsi
+    sprite: _Orion/Mobs/Silicon/Bots/medibot.rsi # Orion-Edit
     layers:
       - state: medibot
         map: [ "enum.DamageStateVisualLayers.Base" ]
-      - state: powered
+      - state: powered-unshaded # Orion-Edit
         map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
         shader: unshaded
   - type: HTN
