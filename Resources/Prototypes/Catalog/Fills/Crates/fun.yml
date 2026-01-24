@@ -167,11 +167,11 @@
       - id: PlushieSharkGrey
       - id: PlushieSharkPink
     - id: PlushieAtmosian
-    - id: PlushieDiona
+#    - id: PlushieDiona # Orion-Edit: NC license sprites
     - id: PlushieXeno
     - id: PlushieHampter
     - id: PlushieMoth
-    - id: PlushieArachind
+#    - id: PlushieArachind # Orion-Edit: NC license sprites
     - id: PlushiePenguin
 
 - type: entityTable

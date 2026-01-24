@@ -162,7 +162,7 @@
     MobBehonkerGrav: 0.0025
     MobBehonkerIce: 0.0025
     MobRatKing: 0.1
-    MobRatKingBuff: 0.01
+#    MobRatKingBuff: 0.01 # Orion-Edit: NC license sprites
     MobTick: 1
     MobLaserRaptor: 1
     MobMimic: 1

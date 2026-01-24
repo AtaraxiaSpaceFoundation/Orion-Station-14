@@ -61,8 +61,8 @@
       orGroup: Plushie
     - id: PlushieNuke
       orGroup: Plushie
-    - id: PlushieArachind #DeltaV - Adds MORE PLUSHIE
-      orGroup: Plushie
+#    - id: PlushieArachind #DeltaV - Adds MORE PLUSHIE | Orion-Edit: NC license sprites
+#      orGroup: Plushie
     - id: PlushieAtmosian #DeltaV - Adds MORE PLUSHIE
       orGroup: Plushie
     - id: PlushieXeno #DeltaV - Adds MORE PLUSHIE
@@ -71,8 +71,8 @@
       orGroup: Plushie
     - id: PlushieGhost #DeltaV - Adds MORE PLUSHIE
       orGroup: Plushie
-    - id: PlushieDiona #DeltaV - Adds MORE PLUSHIE
-      orGroup: Plushie
+#    - id: PlushieDiona #DeltaV - Adds MORE PLUSHIE | Orion-Edit: NC license sprites
+#      orGroup: Plushie
     - id: ToyMouse #DeltaV - Adds MORE PLUSHIE
       orGroup: Plushie
     - id: PlushieRouny

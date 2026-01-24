@@ -12,7 +12,7 @@
   - type: StorageFill
     contents:
       - id: FishingRod
-      - id: FishingRodGoon
+#      - id: FishingRodGoon # Orion-Edit: NC license sprites
       - id: ClothingHeadFishCap
       - id: DrinkBeerBottleFull
 
