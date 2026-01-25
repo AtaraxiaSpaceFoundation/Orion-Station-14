@@ -23,6 +23,7 @@ using Content.Goobstation.Shared.CrewMonitoring;
 using Content.Server.Jittering;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
+using Content.Shared.Atmos.Rotting;
 using Content.Shared.Bed.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
@@ -34,7 +35,6 @@ using Content.Shared.Pinpointer;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Medical.CrewMonitoring;
@@ -126,9 +126,12 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
     private bool HasUnsecuredCorpse(CrewMonitoringConsoleComponent component)
     {
-        // Check for corpses with coordinates sensor mode
-        foreach (var sensor in component.ConnectedSensors.Values.Where(sensor => sensor is { IsAlive: false, Coordinates: not null }))
+        foreach (var sensor in component.ConnectedSensors.Values)
         {
+            // Check for corpses with coordinates sensor mode
+            if (sensor.IsAlive || sensor.Coordinates == null)
+                continue;
+
             if (!TryGetEntity(sensor.OwnerUid, out var corpse) || Deleted(corpse.Value))
                 continue;
 
@@ -141,8 +144,9 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
     private bool IsCorpseSecured(EntityUid entity)
     {
-        // If secured in a morgue - secured
-        if (_containerSystem.TryGetContainingContainer(entity, out var container) && HasComp<MorgueComponent>(container.Owner))
+        // If secured in a morgue or something that freezes rotting - secured
+        if (_containerSystem.TryGetContainingContainer(entity, out var container) &&
+            (HasComp<MorgueComponent>(container.Owner) || HasComp<AntiRottingContainerComponent>(container.Owner)))
             return true;
 
         // If buckled in a stasis bed - secured
