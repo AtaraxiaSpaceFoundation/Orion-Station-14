@@ -37,13 +37,13 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Enable or disable alerts.
     /// </summary>
     [DataField]
-    public bool DoAlert = true;
+    public bool DoAlert;
 
     /// <summary>
     ///     Time interval between alerts in seconds.
     /// </summary>
     [DataField]
-    public float AlertTime = 15f;
+    public float AlertTime = 30f;
 
     /// <summary>
     ///     Sound to play when alert is triggered.

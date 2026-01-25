@@ -91,7 +91,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     private void TriggerAlert(EntityUid uid, CrewMonitoringConsoleComponent component)
     {
         var audioParams = AudioParams.Default
-            .WithVolume(-2f)
+            .WithVolume(-8f)
             .WithVariation(0.25f);
 
         component.NextAlertTime = _gameTiming.CurTime + TimeSpan.FromSeconds(component.AlertTime);
