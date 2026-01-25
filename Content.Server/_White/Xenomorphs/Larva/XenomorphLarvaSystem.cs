@@ -2,6 +2,7 @@ using Content.Server.Body.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Jittering;
+using Content.Server.Mobs;
 using Content.Server.Popups;
 using Content.Shared._White.Xenomorphs;
 using Content.Shared._White.Xenomorphs.Larva;
@@ -24,6 +25,7 @@ public sealed class XenomorphLarvaSystem : EntitySystem
     [Dependency] private readonly JitteringSystem _jitter = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
+    [Dependency] private readonly DeathgaspSystem _deathgasp = default!; // Orion
 
     public override void Initialize()
     {
@@ -77,7 +79,13 @@ public sealed class XenomorphLarvaSystem : EntitySystem
             return;
 
         _container.Remove(uid, container);
-        _mobState.ChangeMobState(victim, MobState.Dead); // Orion
+        // Orion-Start
+        if (!_mobState.IsDead(victim))
+        {
+            _mobState.ChangeMobState(victim, MobState.Dead);
+            _deathgasp.Deathgasp(victim);
+        }
+        // Orion-End
 //        _body.GibBody(victim); // Orion-Edit: Fuck you.
     }
 }
