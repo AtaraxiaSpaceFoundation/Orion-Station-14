@@ -76,10 +76,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
             if (!this.IsPowered(uid, EntityManager))
             {
-                var hasCorpse = HasUnsecuredCorpse(component);
-                if (hasCorpse)
-                    RemCompDeferred<JitteringComponent>(uid);
-
+                RemCompDeferred<JitteringComponent>(uid);
                 continue;
             }
 
