@@ -25,12 +25,15 @@ public sealed class ChuuniEyepatchSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly ClothingSystem _clothing = default!;
 
+    private readonly HashSet<Entity<ChuuniEyepatchComponent>> _activeEyepatches = new(); // Orion
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<ChuuniEyepatchComponent, GetVerbsEvent<AlternativeVerb>>(AddFlipVerb);
         SubscribeLocalEvent<ChuuniEyepatchComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<ChuuniEyepatchComponent, ComponentShutdown>(OnShutdown); // Orion
         SubscribeLocalEvent<ChuuniEyepatchComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<ChuuniEyepatchComponent, InventoryRelayedEvent<GetSpellInvocationEvent>>(OnGetInvocation);
         SubscribeLocalEvent<ChuuniEyepatchComponent, InventoryRelayedEvent<GetMessageColorOverrideEvent>>(OnGetPostfix);
@@ -43,17 +46,31 @@ public sealed class ChuuniEyepatchSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var query = EntityQueryEnumerator<ChuuniEyepatchComponent>();
-        while (query.MoveNext(out var uid, out var eyepatch))
+        // Orion-Edit-Start
+        var toRemove = new List<Entity<ChuuniEyepatchComponent>>();
+        foreach (var (uid, eyepatch) in _activeEyepatches)
         {
-            if (eyepatch.Accumulator >= eyepatch.Delay)
+            if (TerminatingOrDeleted(uid))
+            {
+                toRemove.Add((uid, eyepatch));
                 continue;
+            }
 
             eyepatch.Accumulator += frameTime;
 
-            if (eyepatch.Accumulator >= eyepatch.Delay)
-                Dirty(uid, eyepatch);
+            if (!(eyepatch.Accumulator >= eyepatch.Delay))
+                continue;
+
+            eyepatch.Accumulator = eyepatch.Delay;
+            Dirty(uid, eyepatch);
+            toRemove.Add((uid, eyepatch));
         }
+
+        foreach (var ent in toRemove)
+        {
+            _activeEyepatches.Remove(ent);
+        }
+        // Orion-Edit-End
     }
 
     private void OnGetPostfix(Entity<ChuuniEyepatchComponent> ent,
@@ -74,8 +91,15 @@ public sealed class ChuuniEyepatchSystem : EntitySystem
         if (!ent.Comp.CanHeal || damageable.TotalDamage <= FixedPoint2.Zero)
             return;
 
-        ent.Comp.Accumulator = 0f;
-        Dirty(ent);
+        // Orion-Edit-Start
+        if (ent.Comp.Accumulator != 0f)
+        {
+            ent.Comp.Accumulator = 0f;
+            Dirty(ent);
+        }
+        // Orion-Edit-End
+
+        _activeEyepatches.Add(ent); // Orion
 
         if (ent.Comp.HealAmount < damageable.TotalDamage)
             args.Args.ToHeal = damageable.Damage * ent.Comp.HealAmount / damageable.TotalDamage;
@@ -103,6 +127,13 @@ public sealed class ChuuniEyepatchSystem : EntitySystem
         Dirty(uid, comp);
     }
 
+    // Orion-Start
+    private void OnShutdown(Entity<ChuuniEyepatchComponent> ent, ref ComponentShutdown args)
+    {
+        _activeEyepatches.Remove(ent);
+    }
+    // Orion-End
+
     private void AddFlipVerb(Entity<ChuuniEyepatchComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null)
@@ -115,7 +146,10 @@ public sealed class ChuuniEyepatchSystem : EntitySystem
             Act = () =>
             {
                 comp.IsFliped = !comp.IsFliped;
-                _clothing.SetEquippedPrefix(uid, comp.IsFliped ? comp.FlippedPrefix : null);
+                // Orion-Edit-Start
+                var prefix = comp.IsFliped ? comp.FlippedPrefix : null;
+                _clothing.SetEquippedPrefix(uid, prefix);
+                // Orion-Edit-End
                 _appearance.SetData(uid, FlippedVisuals.Flipped, comp.IsFliped);
                 Dirty(ent);
             },
@@ -146,5 +180,5 @@ public sealed class GetMessageColorOverrideEvent : EntityEventArgs, IInventoryRe
 {
     public SlotFlags TargetSlots => SlotFlags.EYES;
 
-    public Color? Color = null;
+    public Color? Color;
 }
