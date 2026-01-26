@@ -128,9 +128,27 @@ public sealed class ThirstSystem : EntitySystem
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconThirstyId = "ThirstIconThirsty";
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconParchedId = "ThirstIconParched";
 
+    // Orion-Start
+    private static readonly HashSet<ThirstThreshold> MovementThresholds = new()
+    {
+        ThirstThreshold.Dead,
+        ThirstThreshold.Parched,
+    };
+
+    private SatiationIconPrototype? _overhydratedIcon;
+    private SatiationIconPrototype? _thirstyIcon;
+    private SatiationIconPrototype? _parchedIcon;
+    // Orion-End
+
     public override void Initialize()
     {
         base.Initialize();
+
+        // Orion-Start
+        _prototype.TryIndex(ThirstIconOverhydratedId, out _overhydratedIcon);
+        _prototype.TryIndex(ThirstIconThirstyId, out _thirstyIcon);
+        _prototype.TryIndex(ThirstIconParchedId, out _parchedIcon);
+        // Orion-End
 
         SubscribeLocalEvent<ThirstComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovespeed);
         SubscribeLocalEvent<ThirstComponent, MapInitEvent>(OnMapInit);
@@ -211,45 +229,27 @@ public sealed class ThirstSystem : EntitySystem
         DirtyField(uid, component, nameof(ThirstComponent.CurrentThirst));
     }
 
-    private bool IsMovementThreshold(ThirstThreshold threshold)
+    // Orion-Edit-Start
+    private static bool IsMovementThreshold(ThirstThreshold threshold)
     {
-        switch (threshold)
-        {
-            case ThirstThreshold.Dead:
-            case ThirstThreshold.Parched:
-                return true;
-            case ThirstThreshold.Thirsty:
-            case ThirstThreshold.Okay:
-            case ThirstThreshold.OverHydrated:
-                return false;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(threshold), threshold, null);
-        }
+        return MovementThresholds.Contains(threshold);
     }
+    // Orion-Edit-End
 
+    // Orion-Edit-Start
     public bool TryGetStatusIconPrototype(ThirstComponent component, [NotNullWhen(true)] out SatiationIconPrototype? prototype)
     {
-        switch (component.CurrentThirstThreshold)
+        prototype = component.CurrentThirstThreshold switch
         {
-            case ThirstThreshold.OverHydrated:
-                _prototype.TryIndex(ThirstIconOverhydratedId, out prototype);
-                break;
-
-            case ThirstThreshold.Thirsty:
-                _prototype.TryIndex(ThirstIconThirstyId, out prototype);
-                break;
-
-            case ThirstThreshold.Parched:
-                _prototype.TryIndex(ThirstIconParchedId, out prototype);
-                break;
-
-            default:
-                prototype = null;
-                break;
-        }
+            ThirstThreshold.OverHydrated => _overhydratedIcon,
+            ThirstThreshold.Thirsty => _thirstyIcon,
+            ThirstThreshold.Parched => _parchedIcon,
+            _ => null,
+        };
 
         return prototype != null;
     }
+    // Orion-Edit-End
 
     private void UpdateEffects(EntityUid uid, ThirstComponent component)
     {
@@ -273,40 +273,27 @@ public sealed class ThirstSystem : EntitySystem
             _alerts.ClearAlertCategory(uid, component.ThirstyCategory);
         }
 
-        DirtyField(uid, component, nameof(ThirstComponent.LastThirstThreshold));
-        DirtyField(uid, component, nameof(ThirstComponent.ActualDecayRate));
+        // Orion-Edit-Start
+        component.LastThirstThreshold = component.CurrentThirstThreshold;
 
-        switch (component.CurrentThirstThreshold)
+        var newDecayRate = component.CurrentThirstThreshold switch
         {
-            case ThirstThreshold.OverHydrated:
-                component.LastThirstThreshold = component.CurrentThirstThreshold;
-                component.ActualDecayRate = component.BaseDecayRate * 1.2f;
-                return;
+            ThirstThreshold.OverHydrated => component.BaseDecayRate * 1.2f,
+            ThirstThreshold.Okay => component.BaseDecayRate,
+            ThirstThreshold.Thirsty => component.BaseDecayRate * 0.8f,
+            ThirstThreshold.Parched => component.BaseDecayRate * 0.6f,
+            ThirstThreshold.Dead => component.ActualDecayRate,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
 
-            case ThirstThreshold.Okay:
-                component.LastThirstThreshold = component.CurrentThirstThreshold;
-                component.ActualDecayRate = component.BaseDecayRate;
-                return;
-
-            case ThirstThreshold.Thirsty:
-                // Same as okay except with UI icon saying drink soon.
-                component.LastThirstThreshold = component.CurrentThirstThreshold;
-                component.ActualDecayRate = component.BaseDecayRate * 0.8f;
-                return;
-
-            case ThirstThreshold.Parched:
-//                _movement.RefreshMovementSpeedModifiers(uid); // Orion-Edit: Will be in OnRefreshMovespeed
-                component.LastThirstThreshold = component.CurrentThirstThreshold;
-                component.ActualDecayRate = component.BaseDecayRate * 0.6f;
-                return;
-
-            case ThirstThreshold.Dead:
-                return;
-
-            default:
-                Log.Error($"No thirst threshold found for {component.CurrentThirstThreshold}");
-                throw new ArgumentOutOfRangeException($"No thirst threshold found for {component.CurrentThirstThreshold}");
+        if (Math.Abs(component.ActualDecayRate - newDecayRate) > 0.001f)
+        {
+            component.ActualDecayRate = newDecayRate;
+            DirtyField(uid, component, nameof(ThirstComponent.ActualDecayRate));
         }
+
+        DirtyField(uid, component, nameof(ThirstComponent.LastThirstThreshold));
+        // Orion-Edit-End
     }
 
     public override void Update(float frameTime)
@@ -321,7 +308,14 @@ public sealed class ThirstSystem : EntitySystem
 
             thirst.NextUpdateTime += thirst.UpdateRate;
 
+            var oldThirst = thirst.CurrentThirst; // Orion
             ModifyThirst(uid, thirst, -thirst.ActualDecayRate);
+
+            // Orion-Start
+            if (Math.Abs(oldThirst - thirst.CurrentThirst) < 0.001f)
+                continue;
+            // Orion-End
+
             var calculatedThirstThreshold = GetThirstThreshold(thirst, thirst.CurrentThirst);
 
             if (calculatedThirstThreshold == thirst.CurrentThirstThreshold)
