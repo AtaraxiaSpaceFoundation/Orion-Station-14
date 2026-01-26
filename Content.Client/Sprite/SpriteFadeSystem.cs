@@ -79,6 +79,12 @@ public sealed class SpriteFadeSystem : EntitySystem
     private void FadeIn(float change)
     {
         var player = _playerManager.LocalEntity;
+
+        // Orion-Start
+        if (player == null)
+            return;
+        // Orion-End
+
         // ExcludeBoundingBox is set if we don't want to fade this sprite within the collision bounding boxes for the given POI
         _points.Clear();
 
@@ -111,26 +117,42 @@ public sealed class SpriteFadeSystem : EntitySystem
                     // If it intersects a fixture ignore it.
                     if (excludeBB && _fixturesQuery.TryComp(ent, out var body))
                     {
-                        var transform = _physics.GetPhysicsTransform(ent);
-                        var collided = false;
-
+                        // Orion-Edit-Start
+                        var hasHardFixtures = false;
                         foreach (var fixture in body.Fixtures.Values)
                         {
                             if (!fixture.Hard)
                                 continue;
 
-                            if (_fixtures.TestPoint(fixture.Shape, transform, mapPos.Position))
+                            hasHardFixtures = true;
+                            break;
+                        }
+
+                        if (!hasHardFixtures)
+                        {
+                            // Skip collision check if no hard fixtures
+                        }
+                        else
+                        {
+                            var transform = _physics.GetPhysicsTransform(ent);
+                            var collided = false;
+
+                            foreach (var fixture in body.Fixtures.Values)
                             {
+                                if (!fixture.Hard)
+                                    continue;
+
+                                if (!_fixtures.TestPoint(fixture.Shape, transform, mapPos.Position))
+                                    continue;
+
                                 collided = true;
                                 break;
                             }
-                        }
 
-                        // Check next entity
-                        if (collided)
-                        {
-                            continue;
+                            if (collided)
+                                continue;
                         }
+                        // Orion-Edit-End
                     }
 
                     if (!_fadingQuery.TryComp(ent, out var fading))
@@ -161,6 +183,11 @@ public sealed class SpriteFadeSystem : EntitySystem
         {
             if (_comps.Contains(comp))
                 continue;
+
+            // Orion-Start
+            if (TerminatingOrDeleted(uid))
+                continue;
+            // Orion-End
 
             if (!_spriteQuery.TryGetComponent(uid, out var sprite))
                 continue;
