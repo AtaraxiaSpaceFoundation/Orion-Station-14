@@ -44,26 +44,56 @@ public sealed class SolutionRegenerationSystem : EntitySystem
             if (_timing.CurTime < regen.NextRegenTime)
                 continue;
 
+/* // Orion-Edit: Moved down
             // timer ignores if its full, it's just a fixed cycle
             regen.NextRegenTime += regen.Duration;
             // Needs to be networked and dirtied so that the client can reroll it during prediction
             Dirty(uid, regen);
-            if (!_solutionContainer.ResolveSolution((uid, manager),
-                    regen.SolutionName,
-                    ref regen.SolutionRef,
-                    out var solution))
+*/
+
+            // Orion-Edit-Start
+            Solution? solution;
+            if (regen.SolutionRef != null && !TerminatingOrDeleted(regen.SolutionRef.Value.Owner))
+            {
+                solution = regen.SolutionRef.Value.Comp.Solution;
+            }
+            else if (!_solutionContainer.ResolveSolution((uid, manager),
+                         regen.SolutionName,
+                         ref regen.SolutionRef,
+                         out solution))
+            {
                 continue;
+            }
+            // Orion-Edit-End
 
             var amount = FixedPoint2.Min(solution.AvailableVolume, regen.Generated.Volume);
             if (amount <= FixedPoint2.Zero)
+            {
+                regen.NextRegenTime += regen.Duration; // Orion
                 continue;
+            }
+
+            // Orion-Start
+            regen.NextRegenTime += regen.Duration;
+            Dirty(uid, regen);
+            // Orion-End
 
             // Don't bother cloning and splitting if adding the whole thing
             var generated = amount == regen.Generated.Volume
                 ? regen.Generated
                 : regen.Generated.Clone().SplitSolution(amount);
 
-            _solutionContainer.TryAddSolution(regen.SolutionRef.Value, generated);
+            // Orion-Edit-Start
+            if (_solutionContainer.TryAddSolution(regen.SolutionRef.Value, generated))
+            {
+                regen.NextRegenTime += regen.Duration;
+                Dirty(uid, regen);
+            }
+            else
+            {
+                regen.NextRegenTime += regen.Duration;
+            }
+            // Orion-Edit-End
         }
     }
 }
