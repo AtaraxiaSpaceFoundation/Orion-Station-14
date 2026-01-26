@@ -26,7 +26,6 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
-using System.Linq;
 using Content.Goobstation.Maths.FixedPoint;
 
 namespace Content.Shared._Shitmed.Medical.Surgery.Pain.Systems;
@@ -40,7 +39,6 @@ public sealed partial class PainSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
 
-    [Dependency] private readonly SharedAudioSystem _IHaveNoMouthAndIMustScream = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedJitteringSystem _jitter = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
@@ -53,7 +51,7 @@ public sealed partial class PainSystem : EntitySystem
     [Dependency] private readonly ConsciousnessSystem _consciousness = default!;
     [Dependency] private readonly TraumaSystem _trauma = default!;
 
-    private bool _screamsEnabled = false;
+    private bool _screamsEnabled;
     private float _screamChance = 0.20f;
     public override void Initialize()
     {
@@ -198,8 +196,11 @@ public sealed partial class PainSystem : EntitySystem
 
     private void UpdateNerveSystemNerves(EntityUid uid, EntityUid body, NerveSystemComponent component)
     {
+        // Orion-Edit-Start
+        var hadNerves = component.Nerves.Count > 0;
         component.Nerves.Clear();
-        var hasChanges = false; // Orion
+        var hasChanges = hadNerves;
+        // Orion-Edit-End
 
         foreach (var bodyPart in _body.GetBodyChildren(body))
         {
