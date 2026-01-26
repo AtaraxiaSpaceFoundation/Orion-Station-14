@@ -154,10 +154,13 @@ public sealed class ThirstSystem : EntitySystem
         // TODO: Check all thresholds make sense and throw if they don't.
         UpdateEffects(uid, component);
 
-        DirtyFields(uid, component, null, nameof(ThirstComponent.NextUpdateTime), nameof(ThirstComponent.CurrentThirstThreshold), nameof(ThirstComponent.LastThirstThreshold));
+//        DirtyFields(uid, component, null, nameof(ThirstComponent.NextUpdateTime), nameof(ThirstComponent.CurrentThirstThreshold), nameof(ThirstComponent.LastThirstThreshold)); // Orion-Edit: Lighweighted
+        Dirty(uid, component); // Orion
 
-        TryComp(uid, out MovementSpeedModifierComponent? moveMod);
+        // Orion-Edit-Start
+        if (TryComp(uid, out MovementSpeedModifierComponent? moveMod))
             _movement.RefreshMovementSpeedModifiers(uid, moveMod);
+        // Orion-Edit-End
     }
 
     private void OnRefreshMovespeed(EntityUid uid, ThirstComponent component, RefreshMovementSpeedModifiersEvent args)
@@ -175,21 +178,23 @@ public sealed class ThirstSystem : EntitySystem
         SetThirst(uid, component, component.ThirstThresholds[ThirstThreshold.Okay]);
     }
 
+    // Orion-Edit-Start
     private ThirstThreshold GetThirstThreshold(ThirstComponent component, float amount)
     {
-        ThirstThreshold result = ThirstThreshold.Dead;
-        var value = component.ThirstThresholds[ThirstThreshold.OverHydrated];
-        foreach (var threshold in component.ThirstThresholds)
-        {
-            if (threshold.Value <= value && threshold.Value >= amount)
-            {
-                result = threshold.Key;
-                value = threshold.Value;
-            }
-        }
+        if (amount <= component.ThirstThresholds[ThirstThreshold.Dead])
+            return ThirstThreshold.Dead;
 
-        return result;
+        if (amount <= component.ThirstThresholds[ThirstThreshold.Parched])
+            return ThirstThreshold.Parched;
+
+        if (amount <= component.ThirstThresholds[ThirstThreshold.Thirsty])
+            return ThirstThreshold.Thirsty;
+
+        return amount <= component.ThirstThresholds[ThirstThreshold.Okay]
+            ? ThirstThreshold.Okay
+            : ThirstThreshold.OverHydrated;
     }
+    // Orion-Edit-End
 
     public void ModifyThirst(EntityUid uid, ThirstComponent component, float amount)
     {
@@ -248,8 +253,12 @@ public sealed class ThirstSystem : EntitySystem
 
     private void UpdateEffects(EntityUid uid, ThirstComponent component)
     {
-        if (IsMovementThreshold(component.LastThirstThreshold) != IsMovementThreshold(component.CurrentThirstThreshold) &&
-                TryComp(uid, out MovementSpeedModifierComponent? movementSlowdownComponent))
+        // Orion-Start
+        var wasMovementAffected = IsMovementThreshold(component.LastThirstThreshold);
+        var isMovementAffected = IsMovementThreshold(component.CurrentThirstThreshold);
+        // Orion-End
+
+        if (wasMovementAffected != isMovementAffected && TryComp(uid, out MovementSpeedModifierComponent? movementSlowdownComponent)) // Orion-Edit
         {
             _movement.RefreshMovementSpeedModifiers(uid, movementSlowdownComponent);
         }
@@ -284,8 +293,9 @@ public sealed class ThirstSystem : EntitySystem
                 component.LastThirstThreshold = component.CurrentThirstThreshold;
                 component.ActualDecayRate = component.BaseDecayRate * 0.8f;
                 return;
+
             case ThirstThreshold.Parched:
-                _movement.RefreshMovementSpeedModifiers(uid);
+//                _movement.RefreshMovementSpeedModifiers(uid); // Orion-Edit: Will be in OnRefreshMovespeed
                 component.LastThirstThreshold = component.CurrentThirstThreshold;
                 component.ActualDecayRate = component.BaseDecayRate * 0.6f;
                 return;
