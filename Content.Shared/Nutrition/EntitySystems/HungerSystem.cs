@@ -121,6 +121,7 @@ public sealed class HungerSystem : EntitySystem
     {
         HungerThreshold.Overfed,
         HungerThreshold.Okay,
+        HungerThreshold.Peckish,
     };
 
     private SatiationIconPrototype? _overfedIcon;
