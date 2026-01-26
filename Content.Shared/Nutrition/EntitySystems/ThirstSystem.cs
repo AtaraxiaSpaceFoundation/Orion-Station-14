@@ -172,8 +172,7 @@ public sealed class ThirstSystem : EntitySystem
         // TODO: Check all thresholds make sense and throw if they don't.
         UpdateEffects(uid, component);
 
-//        DirtyFields(uid, component, null, nameof(ThirstComponent.NextUpdateTime), nameof(ThirstComponent.CurrentThirstThreshold), nameof(ThirstComponent.LastThirstThreshold)); // Orion-Edit: Lighweighted
-        Dirty(uid, component); // Orion
+        DirtyFields(uid, component, null, nameof(ThirstComponent.NextUpdateTime), nameof(ThirstComponent.CurrentThirstThreshold), nameof(ThirstComponent.LastThirstThreshold));
 
         // Orion-Edit-Start
         if (TryComp(uid, out MovementSpeedModifierComponent? moveMod))
@@ -312,7 +311,7 @@ public sealed class ThirstSystem : EntitySystem
             ModifyThirst(uid, thirst, -thirst.ActualDecayRate);
 
             // Orion-Start
-            if (Math.Abs(oldThirst - thirst.CurrentThirst) < 0.001f)
+            if (Math.Abs(oldThirst - thirst.CurrentThirst) < 1e-6f)
                 continue;
             // Orion-End
 
