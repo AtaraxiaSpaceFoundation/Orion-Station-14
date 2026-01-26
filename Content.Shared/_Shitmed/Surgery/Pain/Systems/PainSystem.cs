@@ -115,8 +115,10 @@ public sealed partial class PainSystem : EntitySystem
         foreach (var ((modEntity, id), modifier) in state.PainFeelingModifiers)
         {
             var entity = GetEntity(modEntity);
-            if (!TerminatingOrDeleted(entity) && !component.PainFeelingModifiers.ContainsKey((entity, id)))
-                component.PainFeelingModifiers.Add((entity, id), modifier);
+            // Orion-Edit-Start
+            if (!TerminatingOrDeleted(entity))
+                component.PainFeelingModifiers.TryAdd((entity, id), modifier);
+            // Orion-Edit-End
         }
     }
 
@@ -158,9 +160,19 @@ public sealed partial class PainSystem : EntitySystem
         if (!_consciousness.TryGetNerveSystem(bodyPart.Body.Value, out var brainUid) || TerminatingOrDeleted(brainUid.Value))
             return;
 
-        foreach (var modifier in brainUid.Value.Comp.Modifiers
-                     .Where(modifier => modifier.Key.Item1 == uid))
-            brainUid.Value.Comp.Modifiers.Remove((modifier.Key.Item1, modifier.Key.Item2));
+        // Orion-Edit-Start
+        var keysToRemove = new List<(EntityUid, string)>();
+        foreach (var modifier in brainUid.Value.Comp.Modifiers)
+        {
+            if (modifier.Key.Item1 == uid)
+                keysToRemove.Add((modifier.Key.Item1, modifier.Key.Item2));
+        }
+
+        foreach (var key in keysToRemove)
+        {
+            brainUid.Value.Comp.Modifiers.Remove(key);
+        }
+        // Orion-Edit-End
 
         UpdateNerveSystemNerves(brainUid.Value, bodyPart.Body.Value, Comp<NerveSystemComponent>(brainUid.Value));
     }
@@ -187,17 +199,24 @@ public sealed partial class PainSystem : EntitySystem
     private void UpdateNerveSystemNerves(EntityUid uid, EntityUid body, NerveSystemComponent component)
     {
         component.Nerves.Clear();
+        var hasChanges = false; // Orion
+
         foreach (var bodyPart in _body.GetBodyChildren(body))
         {
             if (!TryComp<NerveComponent>(bodyPart.Id, out var nerve))
                 continue;
 
             component.Nerves.Add(bodyPart.Id, nerve);
-            Dirty(uid, component);
+            hasChanges = true; // Orion-Edit
 
             nerve.ParentedNerveSystem = uid;
             Dirty(bodyPart.Id, nerve); // ヾ(≧▽≦*)o
         }
+
+        // Orion-Start
+        if (hasChanges)
+            Dirty(uid, component);
+        // Orion-End
     }
 
     #region Pain Decay
@@ -211,7 +230,7 @@ public sealed partial class PainSystem : EntitySystem
         if (!Resolve(uid, ref nerveSystem, false))
             return;
 
-        // Remove any existing decay
+        // Check if we need to update decay at all
         if (TryComp<PainDecayComponent>(uid, out var existingDecay))
         {
             // If the new decay would be longer than remaining time, keep the existing one
@@ -219,7 +238,15 @@ public sealed partial class PainSystem : EntitySystem
             if (remainingTime > decayDuration)
                 return;
 
-            RemComp<PainDecayComponent>(uid);
+            // Orion-Edit-Start
+            existingDecay.InitialPain = initialPain;
+            existingDecay.StartTime = _timing.CurTime;
+            existingDecay.DecayDuration = decayDuration;
+            existingDecay.NerveSystemUid = uid;
+
+            Dirty(uid, existingDecay);
+            return;
+            // Orion-Edit-End
         }
 
         var decay = EnsureComp<PainDecayComponent>(uid);
@@ -245,8 +272,14 @@ public sealed partial class PainSystem : EntitySystem
         // If decay duration has passed, set pain to 0 and remove decay component
         if (elapsed >= decay.DecayDuration)
         {
-            nerveSystem.Pain = FixedPoint2.Zero;
-            Dirty(uid, nerveSystem);
+            // Orion-Edit-Start
+            if (nerveSystem.Pain != FixedPoint2.Zero)
+            {
+                nerveSystem.Pain = FixedPoint2.Zero;
+                Dirty(uid, nerveSystem);
+            }
+            // Orion-Edit-End
+
             RemComp<PainDecayComponent>(uid);
             return;
         }
@@ -255,9 +288,15 @@ public sealed partial class PainSystem : EntitySystem
         var progress = (float)(elapsed.TotalSeconds / decay.DecayDuration.TotalSeconds);
         var currentPain = decay.InitialPain * (1 - progress);
 
-        // Only update if pain would decrease
+        // Only update if pain would decrease and change is significant
         if (currentPain < nerveSystem.Pain)
         {
+            // Orion-Edit-Start
+            var difference = nerveSystem.Pain - currentPain;
+            if (difference <= FixedPoint2.New(0.01))
+                return;
+            // Orion-Edit-End
+
             nerveSystem.Pain = currentPain;
             Dirty(uid, nerveSystem);
         }
