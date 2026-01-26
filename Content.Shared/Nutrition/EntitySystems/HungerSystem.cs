@@ -379,7 +379,7 @@ public sealed class HungerSystem : EntitySystem
             UpdateCurrentThreshold(uid, hunger);
 
             // Orion-Start
-            if (hunger.CurrentThreshold == HungerThreshold.Dead && previousThreshold == HungerThreshold.Dead)
+            if (hunger.CurrentThreshold == HungerThreshold.Dead && previousThreshold == HungerThreshold.Dead && _mobState.IsDead(uid))
                 continue;
             // Orion-End
 
