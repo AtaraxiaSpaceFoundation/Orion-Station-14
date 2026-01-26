@@ -39,6 +39,7 @@ public sealed partial class PainSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
 
+    [Dependency] private readonly SharedAudioSystem _IHaveNoMouthAndIMustScream = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedJitteringSystem _jitter = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
