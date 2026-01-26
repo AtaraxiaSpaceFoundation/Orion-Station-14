@@ -69,7 +69,10 @@ public sealed class SolutionRegenerationSystem : EntitySystem
             var amount = FixedPoint2.Min(solution.AvailableVolume, regen.Generated.Volume);
             if (amount <= FixedPoint2.Zero)
             {
-                regen.NextRegenTime += regen.Duration; // Orion
+                // Orion-Start
+                regen.NextRegenTime += regen.Duration;
+                Dirty(uid, regen);
+                // Orion-End
                 continue;
             }
 
@@ -84,15 +87,9 @@ public sealed class SolutionRegenerationSystem : EntitySystem
                 : regen.Generated.Clone().SplitSolution(amount);
 
             // Orion-Edit-Start
-            if (_solutionContainer.TryAddSolution(regen.SolutionRef.Value, generated))
-            {
-                regen.NextRegenTime += regen.Duration;
-                Dirty(uid, regen);
-            }
-            else
-            {
-                regen.NextRegenTime += regen.Duration;
-            }
+            _solutionContainer.TryAddSolution(regen.SolutionRef.Value, generated);
+            regen.NextRegenTime += regen.Duration;
+            Dirty(uid, regen);
             // Orion-Edit-End
         }
     }
