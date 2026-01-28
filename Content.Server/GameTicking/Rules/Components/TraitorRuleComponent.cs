@@ -20,7 +20,6 @@
 // SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Kutosss <162154227+Kutosss@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
 // SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
@@ -113,30 +112,4 @@ public sealed partial class TraitorRuleComponent : Component
     /// </summary>
     [DataField]
     public int StartingBalance = 100;
-
-    // Orion-Start
-    /// <summary>
-    /// The amount of TC given when using PDA uplink
-    /// </summary>
-    [DataField]
-    public int PdaUplinkTc = 100;
-
-    /// <summary>
-    /// The amount of TC given when using Radio uplink
-    /// </summary>
-    [DataField]
-    public int RadioUplinkTc = 110;
-
-    /// <summary>
-    /// The amount of TC given when using Implant uplink
-    /// </summary>
-    [DataField]
-    public int ImplantUplinkTc = 90;
-
-    /// <summary>
-    /// The amount of TC given when using raw telecrystals
-    /// </summary>
-    [DataField]
-    public int RawTelecrystalsTc = 150;
-    // Orion-End
 }
