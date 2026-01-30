@@ -15,6 +15,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Recruitment.Systems;
 
@@ -29,6 +30,8 @@ public sealed class RecruitmentScanningSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SparksSystem _sparks = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -54,9 +57,23 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (args.User != args.Target.Value)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, args.Target.Value, PopupType.LargeCaution);
 
-        if (TryComp<ActorComponent>(args.Target.Value, out var actor))
+        if (TryComp<ActorComponent>(target, out var actor))
         {
-            _ui.TryOpenUi(args.Target.Value, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
+            var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(target);
+            confirmComp.Scanner = uid;
+            confirmComp.Recruiter = args.User;
+            confirmComp.RecruiterName = userName;
+            confirmComp.OrganizationName = "InteQ"; // TODO: получать из компонента
+
+            var state = new RecruitmentConfirmationBuiState
+            {
+                RecruiterName = confirmComp.RecruiterName,
+                OrganizationName = confirmComp.OrganizationName,
+                ImplantName = confirmComp.ImplantName
+            };
+
+            _ui.ServerSendUiMessage(target, RecruitmentConfirmationUiKey.Key, state);
+            _ui.TryOpenUi(target, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
         }
 
         args.Handled = true;
@@ -64,23 +81,34 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
     private void OnAccept(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentAcceptMessage args)
     {
-        var doAfterArgs = new DoAfterArgs(EntityManager, args.User, comp.DoAfterTime, new RecruitmentScanningDoAfterEvent(), uid, target: uid, used: uid)
+        if (Deleted(comp.Scanner) || Deleted(comp.Recruiter))
         {
-            NeedHand = true,
-            BreakOnMove = true,
-            BreakOnDamage = true,
-            CancelDuplicate = false,
-            RequireCanInteract = true,
-        };
+            _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
+            RemComp<RecruitmentConfirmationComponent>(uid);
 
-        _doAfter.TryStartDoAfter(doAfterArgs);
+            return;
+        }
+
+        if (!TryComp<RecruitmentScanningComponent>(comp.Scanner, out var scanComp))
+            return;
+
+        var targetXform = Transform(uid);
+        var recruiterXform = Transform(comp.Recruiter);
+        if (targetXform.Coordinates.InRange(EntityManager, _transform, recruiterXform.Coordinates, 2f))
+            return;
+
+        _popup.PopupEntity(Loc.GetString("recruitment-too-far"), comp.Scanner, comp.Recruiter);
         _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
+        RemComp<RecruitmentConfirmationComponent>(uid);
     }
 
     private void OnDecline(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentDeclineMessage args)
     {
+        var targetName = Identity.Name(uid, EntityManager, comp.Recruiter);
+        _popup.PopupEntity(Loc.GetString("recruitment-decline", ("target", targetName)), uid, comp.Recruiter);
+
         _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
-        _popup.PopupEntity(Loc.GetString("recruitment-decline", ("target", name)), args.User);
+        RemComp<RecruitmentConfirmationComponent>(uid);
     }
 
     private void OnScanComplete(EntityUid uid, RecruitmentScanningComponent comp, RecruitmentScanningDoAfterEvent args)
@@ -115,6 +143,11 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             var npcFaction = EnsureComp<NpcFactionMemberComponent>(target);
             _npcFaction.AddFaction((target, npcFaction), comp.Faction);
         }
+
+        var recruited = EnsureComp<RecruitedComponent>(target);
+        recruited.Organization = "InteQ";
+        recruited.RecruitedBy = args.User;
+        recruited.RecruitedAt = _timing.CurTime;
 
         comp.ScannedEntities.Add(target);
 
