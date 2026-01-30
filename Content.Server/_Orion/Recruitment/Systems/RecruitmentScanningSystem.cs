@@ -44,7 +44,6 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         SubscribeLocalEvent<RecruitmentConfirmationComponent, RecruitmentDeclineMessage>(OnDecline);
     }
 
-    // TODO: Add something like window with "Someone invites you to join the organization" "Accept" "Decline"
     private void OnScanAttempt(EntityUid uid, RecruitmentScanningComponent comp, AfterInteractEvent args)
     {
         if (args.Target == null || !args.CanReach || !HasComp<HumanoidAppearanceComponent>(args.Target))
@@ -63,7 +62,8 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(target);
             confirmComp.Scanner = uid;
             confirmComp.Recruiter = args.User;
-            confirmComp.OrganizationName = "InteQ"; // TODO: получать из компонента/прототипа
+            confirmComp.OrganizationName = "InteQ";
+            confirmComp.ImplantName = comp.Implant?.ToString() ?? "Unknown Implant";
 
             var state = new RecruitmentConfirmationBuiState
             {
