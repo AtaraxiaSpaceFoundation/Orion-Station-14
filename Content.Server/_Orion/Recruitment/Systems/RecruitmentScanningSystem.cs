@@ -102,7 +102,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         var targetXform = Transform(target);
         var recruiterXform = Transform(confirmComp.Recruiter);
-        if (!targetXform.Coordinates.InRange(EntityManager, _transform, recruiterXform.Coordinates, 2f))
+        if (!_transform.InRange(recruiterXform.Coordinates, targetXform.Coordinates, 2f))
         {
             _popup.PopupEntity(Loc.GetString("recruitment-too-far"), uid, confirmComp.Recruiter);
             _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
@@ -126,6 +126,9 @@ public sealed class RecruitmentScanningSystem : EntitySystem
     private void OnDecline(EntityUid uid, RecruitmentScanningComponent scanComp, RecruitmentDeclineMessage args)
     {
         if (!TryComp<RecruitmentConfirmationComponent>(uid, out var confirmComp))
+            return;
+
+        if (args.Actor != confirmComp.Target)
             return;
 
         var targetName = Identity.Name(confirmComp.Target, EntityManager, confirmComp.Recruiter);
