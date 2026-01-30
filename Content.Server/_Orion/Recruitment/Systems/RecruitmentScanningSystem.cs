@@ -11,8 +11,10 @@ using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Whitelist;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 
 namespace Content.Server._Orion.Recruitment.Systems;
 
@@ -26,6 +28,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SparksSystem _sparks = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
@@ -33,6 +36,9 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         SubscribeLocalEvent<RecruitmentScanningComponent, AfterInteractEvent>(OnScanAttempt);
         SubscribeLocalEvent<RecruitmentScanningComponent, RecruitmentScanningDoAfterEvent>(OnScanComplete);
+
+        SubscribeLocalEvent<RecruitmentConfirmationComponent, RecruitmentAcceptMessage>(OnAccept);
+        SubscribeLocalEvent<RecruitmentConfirmationComponent, RecruitmentDeclineMessage>(OnDecline);
     }
 
     // TODO: Add something like window with "Someone invites you to join the organization" "Accept" "Decline"
@@ -48,10 +54,35 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (args.User != args.Target.Value)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, args.Target.Value, PopupType.LargeCaution);
 
-        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, comp.DoAfterTime, new RecruitmentScanningDoAfterEvent(), uid, args.Target, uid) { NeedHand = true, BreakOnMove = true });
+        if (TryComp<ActorComponent>(args.Target.Value, out var actor))
+        {
+            _ui.TryOpenUi(args.Target.Value, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
+        }
+
+        args.Handled = true;
     }
 
-    // TODO: Add effects on recruited entity
+    private void OnAccept(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentAcceptMessage args)
+    {
+        var doAfterArgs = new DoAfterArgs(EntityManager, args.User, comp.DoAfterTime, new RecruitmentScanningDoAfterEvent(), uid, target: uid, used: uid)
+        {
+            NeedHand = true,
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            CancelDuplicate = false,
+            RequireCanInteract = true,
+        };
+
+        _doAfter.TryStartDoAfter(doAfterArgs);
+        _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key); // Закрываем UI после принятия
+    }
+
+    private void OnDecline(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentDeclineMessage args)
+    {
+        _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
+        _popup.PopupEntity(Loc.GetString("recruitment-decline", ("target", name)), args.User);
+    }
+
     private void OnScanComplete(EntityUid uid, RecruitmentScanningComponent comp, RecruitmentScanningDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null)

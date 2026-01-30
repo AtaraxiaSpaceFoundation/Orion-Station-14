@@ -2,5 +2,6 @@ recruitment-start-user = Вы начинаете вводить данные о�
 recruitment-start-target = { $user } записывает вас в организацию.
 
 recruitment-success = { $target } теперь является частью организации!
+recruitment-decline = { $target } отказывается от вступления!
 recruitment-already = { $target } уже находится в базе данных!
 recruitment-failed = { $target } не может быть в организации!
