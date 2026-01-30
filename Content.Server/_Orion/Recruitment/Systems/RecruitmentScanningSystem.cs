@@ -36,9 +36,10 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (args.Target == null || !args.CanReach || !HasComp<HumanoidAppearanceComponent>(args.Target))
             return;
 
-        var userName = Identity.Entity(args.User, EntityManager);
-        _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("user", userName)), args.Target.Value, args.User);
+        var targetName = Identity.Entity(args.Target.Value, EntityManager);
+        _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("target", targetName)), args.Target.Value, args.User);
 
+        var userName = Identity.Entity(args.User, EntityManager);
         if (args.User != args.Target.Value)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, args.Target.Value, PopupType.LargeCaution);
 
@@ -73,9 +74,11 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (comp.Implant is not null)
             _implantSystem.AddImplant(target, comp.Implant.Value);
 
-        var npcFaction = EnsureComp<NpcFactionMemberComponent>(target);
         if (comp.Faction is not null)
+        {
+            var npcFaction = EnsureComp<NpcFactionMemberComponent>(target);
             _npcFaction.AddFaction((target, npcFaction), comp.Faction);
+        }
 
         comp.ScannedEntities.Add(target);
 

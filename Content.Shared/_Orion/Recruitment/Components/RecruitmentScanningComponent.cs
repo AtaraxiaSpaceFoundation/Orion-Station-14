@@ -13,19 +13,13 @@ public sealed partial class RecruitmentScanningComponent : Component
     public EntProtoId? Implant;
 
     /// <summary>
-    ///     Name for popup messages.
-    /// </summary>
-    [DataField]
-    public string ImplantName = string.Empty;
-
-    /// <summary>
     ///     Faction to join after successful scanning.
     /// </summary>
     [DataField]
     public string? Faction;
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public List<EntityUid> ScannedEntities = [];
+    public HashSet<EntityUid> ScannedEntities = [];
 
     [DataField]
     public TimeSpan DoAfterTime = TimeSpan.FromSeconds(8);
