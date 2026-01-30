@@ -22,9 +22,9 @@ ent-InducerEngineeringWhiteBattery = { ent-BaseInducer }
     .desc = { ent-BaseInducer.desc }
     .suffix = Батарея, Старший Инженер
 
-ent-InducerCombat = { ent-BaseInducer }
+ent-InducerCombat = боевой индуктор
     .desc = { ent-BaseInducer.desc }
     .suffix = Пустой, Боевой
-ent-InducerCombatBattery = { ent-BaseInducer }
-    .desc = { ent-BaseInducer.desc }
+ent-InducerCombatBattery = { ent-InducerCombat }
+    .desc = { ent-InducerCombat.desc }
     .suffix = Батарея, Боевой
