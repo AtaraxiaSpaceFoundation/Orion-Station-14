@@ -1,0 +1,21 @@
+# Filler
+- type: entity
+  parent: [BaseItem, BaseMajorContraband]
+  id: RecruitmentScannerInteQ
+  name: inteq scanner
+  description: Suspiciously looking scanner...
+  suffix: InteQ
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Devices/inteq_uplink.rsi
+    layers:
+    - state: inteq-uplink
+  - type: Item
+    sprite: _Orion/Objects/Devices/inteq_uplink.rsi
+    heldPrefix: inteq-uplink
+  - type: RecruitmentScanning
+    implant: DeathRattleImplantInteQ
+    implantName: recruitment implant
+    faction: InteQ
+  - type: ScannableForPoints # Goob
+    points: 3
