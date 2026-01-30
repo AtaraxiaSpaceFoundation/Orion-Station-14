@@ -24,7 +24,8 @@ public sealed partial class RecruitmentConfirmationWindow : FancyWindow
         OrganizationLabel.Text = state.OrganizationName;
         ImplantLabel.Text = state.ImplantName;
 
-        WarningLabel.SetMessage(Loc.GetString("recruitment-ui-warning",
+        WarningLabel.SetMessage(Loc.GetString("recruitment-ui-warning"));
+        WarningText.SetMessage(Loc.GetString("recruitment-ui-warning-text",
             ("organization", state.OrganizationName),
             ("implant", state.ImplantName)));
     }

@@ -57,7 +57,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (args.User != target)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, args.Target.Value, PopupType.LargeCaution);
 
-        if (TryComp<ActorComponent>(target, out var actor))
+        if (TryComp<ActorComponent>(target, out _))
         {
             var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(target);
             confirmComp.Scanner = uid;
@@ -71,8 +71,8 @@ public sealed class RecruitmentScanningSystem : EntitySystem
                 ImplantName = confirmComp.ImplantName,
             };
 
-            _ui.SetUiState(target, RecruitmentConfirmationUiKey.Key, state);
-            _ui.TryOpenUi(target, RecruitmentConfirmationUiKey.Key, actor.Owner);
+            _ui.SetUiState(uid, RecruitmentConfirmationUiKey.Key, state);
+            _ui.TryOpenUi(uid, RecruitmentConfirmationUiKey.Key, target);
         }
 
         args.Handled = true;

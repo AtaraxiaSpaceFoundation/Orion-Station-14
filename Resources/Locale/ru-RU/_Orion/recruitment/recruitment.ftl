@@ -10,8 +10,9 @@ recruitment-too-far = Цель слишком далеко!
 # UI strings
 recruitment-ui-title = Приглашение в организацию
 recruitment-ui-invitation = Вас приглашают вступить в организацию!
-recruitment-ui-organization = Организация:
-recruitment-ui-implant = Имплант:
-recruitment-ui-warning = [color=yellow]Внимание:[/color] Вступая в { $organization }, вам будет установлен { $implant }. Это действие необратимо!
-recruitment-ui-accept = Принять
-recruitment-ui-decline = Отклонить
+recruitment-ui-organization = Организация: 
+recruitment-ui-implant = Имплантация: 
+recruitment-ui-warning = ❗ ВНИМАНИЕ ❗
+recruitment-ui-warning-text = Вступая в { $organization }, вам будет установлен { $implant }. Это действие необратимо!
+recruitment-ui-accept = Подписать
+recruitment-ui-decline = Отказаться
