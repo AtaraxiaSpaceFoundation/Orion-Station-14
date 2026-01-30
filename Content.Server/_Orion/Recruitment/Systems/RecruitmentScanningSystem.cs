@@ -63,18 +63,16 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(target);
             confirmComp.Scanner = uid;
             confirmComp.Recruiter = args.User;
-            confirmComp.RecruiterName = userName;
-            confirmComp.OrganizationName = confirmComp.OrganizationName;
+            confirmComp.OrganizationName = "InteQ"; // TODO: получать из компонента/прототипа
 
             var state = new RecruitmentConfirmationBuiState
             {
-                RecruiterName = confirmComp.RecruiterName,
                 OrganizationName = confirmComp.OrganizationName,
-                ImplantName = confirmComp.ImplantName
+                ImplantName = confirmComp.ImplantName,
             };
 
-            _ui.ServerSendUiMessage(target, RecruitmentConfirmationUiKey.Key, state);
-            _ui.TryOpenUi(target, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
+            _ui.SetUiState(target, RecruitmentConfirmationUiKey.Key, state);
+            _ui.TryOpenUi(target, RecruitmentConfirmationUiKey.Key, actor.Owner);
         }
 
         args.Handled = true;
@@ -82,16 +80,13 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
     private void OnAccept(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentAcceptMessage args)
     {
-        if (Deleted(comp.Scanner) || Deleted(comp.Recruiter))
+        if (Deleted(comp.Scanner) || Deleted(comp.Recruiter) || !TryComp<RecruitmentScanningComponent>(comp.Scanner, out var scanComp))
         {
             _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
             RemComp<RecruitmentConfirmationComponent>(uid);
 
             return;
         }
-
-        if (!TryComp<RecruitmentScanningComponent>(comp.Scanner, out var scanComp))
-            return;
 
         var targetXform = Transform(uid);
         var recruiterXform = Transform(comp.Recruiter);
@@ -133,7 +128,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         var target = args.Target.Value;
         var name = Identity.Name(target, EntityManager, args.User);
 
-        if (comp.ScannedEntities.Contains(target))
+        if (HasComp<RecruitedComponent>(target) || comp.ScannedEntities.Contains(target))
         {
             var msg = Loc.GetString("recruitment-already", ("target", name));
             _popup.PopupEntity(msg, target, args.User);

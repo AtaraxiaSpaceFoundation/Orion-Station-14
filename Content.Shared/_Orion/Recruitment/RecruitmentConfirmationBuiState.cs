@@ -5,7 +5,6 @@ namespace Content.Shared._Orion.Recruitment;
 [Serializable, NetSerializable]
 public sealed class RecruitmentConfirmationBuiState : BoundUserInterfaceState
 {
-    public string RecruiterName = string.Empty;
     public string OrganizationName = string.Empty;
     public string ImplantName = string.Empty;
 }

@@ -21,7 +21,6 @@ public sealed partial class RecruitmentConfirmationWindow : FancyWindow
 
     public void UpdateState(RecruitmentConfirmationBuiState state)
     {
-        RecruiterLabel.Text = state.RecruiterName;
         OrganizationLabel.Text = state.OrganizationName;
         ImplantLabel.Text = state.ImplantName;
 

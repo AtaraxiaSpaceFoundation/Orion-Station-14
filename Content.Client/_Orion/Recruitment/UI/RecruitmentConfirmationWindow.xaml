@@ -1,13 +1,13 @@
-<Control xmlns="https://spacestation14.io" HorizontalExpand="True">
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="using:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'pen-spin-ui-title'}"
+                      MinSize="200 120"
+                      SetSize="200 120">
     <Label Name="TitleLabel"
            Text="{Loc 'recruitment-ui-invitation'}"
            Margin="5"
            Align="Center"
            StyleClasses="LabelHeading"/>
-    <BoxContainer Orientation="Horizontal" Margin="5">
-        <Label Text="{Loc 'recruitment-ui-recruiter'}" MinWidth="120"/>
-        <Label Name="RecruiterLabel" Text="Unknown"/>
-    </BoxContainer>
     <BoxContainer Orientation="Horizontal" Margin="5">
         <Label Text="{Loc 'recruitment-ui-organization'}" MinWidth="120"/>
         <Label Name="OrganizationLabel" Text="Unknown"/>
@@ -38,4 +38,4 @@
                 MinWidth="120"
                 StyleClasses="ButtonColorRed"/>
     </BoxContainer>
-</Control>
+</controls:FancyWindow>
