@@ -1,3 +1,4 @@
+using Content.Goobstation.Common.Effects;
 using Content.Server.Popups;
 using Content.Shared._Orion.Recruitment;
 using Content.Shared._Orion.Recruitment.Components;
@@ -10,6 +11,8 @@ using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._Orion.Recruitment.Systems;
 
@@ -21,6 +24,8 @@ public sealed class RecruitmentScanningSystem : EntitySystem
     [Dependency] private readonly SharedSubdermalImplantSystem _implantSystem = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SparksSystem _sparks = default!;
 
     public override void Initialize()
     {
@@ -84,6 +89,9 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         var success = Loc.GetString("recruitment-success", ("target", name));
         _popup.PopupEntity(success, target, args.User);
+
+        _audio.PlayPvs(comp.SuccessSound, target, AudioParams.Default.WithVolume(-3f));
+        _sparks.DoSparks(Transform(target).Coordinates, playSound: false);
 
         args.Handled = true;
     }

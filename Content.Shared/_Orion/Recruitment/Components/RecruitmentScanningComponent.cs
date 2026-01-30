@@ -1,4 +1,5 @@
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Recruitment.Components;
@@ -17,6 +18,9 @@ public sealed partial class RecruitmentScanningComponent : Component
     /// </summary>
     [DataField]
     public string? Faction;
+
+    [DataField]
+    public SoundSpecifier? SuccessSound = new SoundPathSpecifier("/Audio/Items/Defib/defib_success.ogg");
 
     [ViewVariables(VVAccess.ReadOnly)]
     public HashSet<EntityUid> ScannedEntities = [];
