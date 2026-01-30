@@ -16,6 +16,7 @@
   - type: RecruitmentScanning
     implant: DeathRattleImplantInteQ
     faction: InteQ
+    organizationName: organization-inteq
   - type: ScannableForPoints # Goob
     points: 3
   - type: UserInterface

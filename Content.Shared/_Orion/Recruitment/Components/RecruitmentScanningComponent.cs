@@ -20,6 +20,9 @@ public sealed partial class RecruitmentScanningComponent : Component
     public string? Faction;
 
     [DataField]
+    public LocId OrganizationName = "organization-unknown";
+
+    [DataField]
     public SoundSpecifier? SuccessSound = new SoundPathSpecifier("/Audio/Items/Defib/defib_success.ogg");
 
     [ViewVariables(VVAccess.ReadOnly)]
