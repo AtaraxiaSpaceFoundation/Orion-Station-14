@@ -18,3 +18,7 @@
     faction: InteQ
   - type: ScannableForPoints # Goob
     points: 3
+  - type: UserInterface
+    interfaces:
+      enum.RecruitmentConfirmationUiKey.Key:
+        type: RecruitmentConfirmationBoundUserInterface
