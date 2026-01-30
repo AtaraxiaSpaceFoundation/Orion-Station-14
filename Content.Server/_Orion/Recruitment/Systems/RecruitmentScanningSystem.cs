@@ -50,11 +50,12 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (args.Target == null || !args.CanReach || !HasComp<HumanoidAppearanceComponent>(args.Target))
             return;
 
-        var targetName = Identity.Entity(args.Target.Value, EntityManager);
-        _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("target", targetName)), args.Target.Value, args.User);
+        var target = args.Target.Value;
+        var targetName = Identity.Entity(target, EntityManager);
+        _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("target", targetName)), target, args.User);
 
         var userName = Identity.Entity(args.User, EntityManager);
-        if (args.User != args.Target.Value)
+        if (args.User != target)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, args.Target.Value, PopupType.LargeCaution);
 
         if (TryComp<ActorComponent>(target, out var actor))
@@ -63,7 +64,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             confirmComp.Scanner = uid;
             confirmComp.Recruiter = args.User;
             confirmComp.RecruiterName = userName;
-            confirmComp.OrganizationName = "InteQ"; // TODO: получать из компонента
+            confirmComp.OrganizationName = confirmComp.OrganizationName;
 
             var state = new RecruitmentConfirmationBuiState
             {
@@ -94,12 +95,25 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         var targetXform = Transform(uid);
         var recruiterXform = Transform(comp.Recruiter);
-        if (targetXform.Coordinates.InRange(EntityManager, _transform, recruiterXform.Coordinates, 2f))
+        if (!targetXform.Coordinates.InRange(EntityManager, _transform, recruiterXform.Coordinates, 2f))
+        {
+            _popup.PopupEntity(Loc.GetString("recruitment-too-far"), comp.Scanner, comp.Recruiter);
+            _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
+            RemComp<RecruitmentConfirmationComponent>(uid);
             return;
+        }
 
-        _popup.PopupEntity(Loc.GetString("recruitment-too-far"), comp.Scanner, comp.Recruiter);
         _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
         RemComp<RecruitmentConfirmationComponent>(uid);
+
+        var doAfter = new DoAfterArgs(EntityManager, comp.Recruiter, scanComp.DoAfterTime, new RecruitmentScanningDoAfterEvent(), comp.Scanner, uid)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true,
+        };
+
+        _doAfter.TryStartDoAfter(doAfter);
     }
 
     private void OnDecline(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentDeclineMessage args)
