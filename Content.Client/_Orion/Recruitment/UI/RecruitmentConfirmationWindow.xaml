@@ -1,0 +1,41 @@
+<Control xmlns="https://spacestation14.io" HorizontalExpand="True">
+    <Label Name="TitleLabel"
+           Text="{Loc 'recruitment-ui-invitation'}"
+           Margin="5"
+           Align="Center"
+           StyleClasses="LabelHeading"/>
+    <BoxContainer Orientation="Horizontal" Margin="5">
+        <Label Text="{Loc 'recruitment-ui-recruiter'}" MinWidth="120"/>
+        <Label Name="RecruiterLabel" Text="Unknown"/>
+    </BoxContainer>
+    <BoxContainer Orientation="Horizontal" Margin="5">
+        <Label Text="{Loc 'recruitment-ui-organization'}" MinWidth="120"/>
+        <Label Name="OrganizationLabel" Text="Unknown"/>
+    </BoxContainer>
+    <BoxContainer Orientation="Horizontal" Margin="5">
+        <Label Text="{Loc 'recruitment-ui-implant'}" MinWidth="120"/>
+        <Label Name="ImplantLabel" Text="Unknown"/>
+    </BoxContainer>
+
+    <BoxContainer MinSize="0 10"/>
+
+    <RichTextLabel Name="WarningLabel"
+                   Margin="5"
+                   HorizontalAlignment="Center"
+                   MaxWidth="380"
+                   StyleClasses="LabelSubText"/>
+
+    <BoxContainer Orientation="Horizontal"
+                  Margin="10 5 10 5"
+                  HorizontalAlignment="Center"
+                  SeparationOverride="10">
+        <Button Name="AcceptButton"
+                Text="{Loc 'recruitment-ui-accept'}"
+                MinWidth="120"
+                StyleClasses="ButtonColorGreen"/>
+        <Button Name="DeclineButton"
+                Text="{Loc 'recruitment-ui-decline'}"
+                MinWidth="120"
+                StyleClasses="ButtonColorRed"/>
+    </BoxContainer>
+</Control>

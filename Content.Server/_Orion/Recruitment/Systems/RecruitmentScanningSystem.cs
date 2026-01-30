@@ -74,7 +74,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         };
 
         _doAfter.TryStartDoAfter(doAfterArgs);
-        _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key); // Закрываем UI после принятия
+        _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
     }
 
     private void OnDecline(EntityUid uid, RecruitmentConfirmationComponent comp, RecruitmentDeclineMessage args)
