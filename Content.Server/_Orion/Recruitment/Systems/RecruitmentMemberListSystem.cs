@@ -42,10 +42,9 @@ public sealed class RecruitmentMemberListSystem : EntitySystem
                 continue;
 
             var memberName = meta.EntityName;
-            var recruiterName = recruited.RecruitedBy ?? Loc.GetString("recruitment-member-list-unknown");
-
-            if (!string.IsNullOrEmpty(recruited.RecruitedBy))
-                recruiterName = recruited.RecruitedBy;
+            var recruiterName = string.IsNullOrWhiteSpace(recruited.RecruitedBy)
+                ? Loc.GetString("recruitment-member-list-unknown")
+                : recruited.RecruitedBy!;
 
             members.Add(new RecruitmentMemberListBuiState.RecruitedMemberData(
                 memberName,

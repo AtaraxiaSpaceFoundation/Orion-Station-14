@@ -65,36 +65,37 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             return;
 
         var target = args.Target.Value;
-        var targetName = Identity.Name(target, EntityManager, args.User);
+
+        if (!HasComp<ActorComponent>(target))
+            return;
+
+        var targetName = Identity.Name(target, EntityManager);
         _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("target", targetName)), target, args.User);
 
-        var userName = Identity.Name(args.User, EntityManager, target);
+        var userName = Identity.Name(args.User, EntityManager);
         if (args.User != target)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, target, PopupType.LargeCaution);
 
-        if (TryComp<ActorComponent>(target, out var actor))
+        var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(uid);
+        confirmComp.Target = target;
+        confirmComp.Recruiter = args.User;
+        confirmComp.OrganizationName = comp.OrganizationName;
+
+        var implantName = Loc.GetString("recruitment-member-list-unknown");
+        if (comp.Implant != null && _prototypeManager.TryIndex<EntityPrototype>(comp.Implant.Value, out var implantProto))
         {
-            var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(uid);
-            confirmComp.Target = target;
-            confirmComp.Recruiter = args.User;
-            confirmComp.OrganizationName = comp.OrganizationName;
-
-            var implantName = Loc.GetString("recruitment-member-list-unknown");
-            if (comp.Implant != null && _prototypeManager.TryIndex<EntityPrototype>(comp.Implant.Value, out var implantProto))
-            {
-                implantName = implantProto.Name;
-            }
-            confirmComp.ImplantName = implantName;
-
-            var state = new RecruitmentConfirmationBuiState
-            {
-                OrganizationName = confirmComp.OrganizationName,
-                ImplantName = confirmComp.ImplantName,
-            };
-
-            _ui.SetUiState(uid, RecruitmentConfirmationUiKey.Key, state);
-            _ui.OpenUi(uid, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
+            implantName = implantProto.Name;
         }
+        confirmComp.ImplantName = implantName;
+
+        var state = new RecruitmentConfirmationBuiState
+        {
+            OrganizationName = confirmComp.OrganizationName,
+            ImplantName = confirmComp.ImplantName,
+        };
+
+        _ui.SetUiState(uid, RecruitmentConfirmationUiKey.Key, state);
+        _ui.OpenUi(uid, RecruitmentConfirmationUiKey.Key, target);
 
         args.Handled = true;
     }
