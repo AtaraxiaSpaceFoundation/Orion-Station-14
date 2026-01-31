@@ -1,8 +1,8 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       Title="{Loc 'recruitment-list-ui-title'}"
-                      MinSize="640 350"
-                      SetSize="640 350">
+                      MinSize="840 350"
+                      SetSize="840 350">
     <BoxContainer Orientation="Vertical" Margin="5" SeparationOverride="5">
         <controls:StripeBack>
             <PanelContainer>
@@ -16,12 +16,11 @@
         <ScrollContainer Name="MemberScroller"
                          VerticalExpand="True"
                          HorizontalExpand="True">
-            <BoxContainer Name="MembersContainer"
-                          Orientation="Vertical"
-                          HorizontalExpand="True"
-                          SeparationOverride="5">
-                <!-- Member rows will be added here dynamically -->
-            </BoxContainer>
+            <GridContainer Name="MembersContainer"
+                           Columns="3"
+                           HorizontalExpand="True">
+                <!-- Member rows will be added as triple Label elements (Name, Recruiter, Time) -->
+            </GridContainer>
         </ScrollContainer>
 
         <Label Name="NoMembersLabel"

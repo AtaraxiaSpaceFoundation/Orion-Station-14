@@ -1,7 +1,9 @@
 using Content.Goobstation.Common.Effects;
+using Content.Server.Administration.Logs;
 using Content.Server.Popups;
 using Content.Shared._Orion.Recruitment;
 using Content.Shared._Orion.Recruitment.Components;
+using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
@@ -33,10 +35,13 @@ public sealed class RecruitmentScanningSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<RecruitedComponent, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent<RecruitmentScanningComponent, AfterInteractEvent>(OnScanAttempt);
         SubscribeLocalEvent<RecruitmentScanningComponent, RecruitmentScanningDoAfterEvent>(OnScanComplete);
@@ -45,16 +50,25 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         SubscribeLocalEvent<RecruitmentScanningComponent, RecruitmentDeclineMessage>(OnDecline);
     }
 
+    private void OnMapInit(EntityUid uid, RecruitedComponent comp, MapInitEvent args)
+    {
+        if (comp.RecruitedBy != null || comp.RecruitedAt != TimeSpan.Zero)
+            return;
+
+        comp.RecruitedBy = null;
+        comp.RecruitedAt = _timing.CurTime;
+    }
+
     private void OnScanAttempt(EntityUid uid, RecruitmentScanningComponent comp, AfterInteractEvent args)
     {
         if (args.Target == null || !args.CanReach || !HasComp<HumanoidAppearanceComponent>(args.Target))
             return;
 
         var target = args.Target.Value;
-        var targetName = Identity.Entity(target, EntityManager);
+        var targetName = Identity.Name(target, EntityManager, args.User);
         _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("target", targetName)), target, args.User);
 
-        var userName = Identity.Entity(args.User, EntityManager);
+        var userName = Identity.Name(args.User, EntityManager, target);
         if (args.User != target)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, target, PopupType.LargeCaution);
 
@@ -170,7 +184,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         var recruited = EnsureComp<RecruitedComponent>(target);
         recruited.Organization = comp.OrganizationName;
-        recruited.RecruitedBy = args.User;
+        recruited.RecruitedBy = Identity.Name(args.User, EntityManager);
         recruited.RecruitedAt = _timing.CurTime;
 
         comp.ScannedEntities.Add(target);
@@ -180,6 +194,9 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         _audio.PlayPvs(comp.SuccessSound, target, AudioParams.Default.WithVolume(-3f));
         _sparks.DoSparks(Transform(target).Coordinates, playSound: false);
+
+        var recruiterName = Identity.Name(args.User, EntityManager);
+        _adminLogger.Add(LogType.Mind, LogImpact.High, $"{recruiterName} recruited {name} to {comp.OrganizationName} with implant {comp.Implant} and faction {comp.Faction}");
 
         args.Handled = true;
     }

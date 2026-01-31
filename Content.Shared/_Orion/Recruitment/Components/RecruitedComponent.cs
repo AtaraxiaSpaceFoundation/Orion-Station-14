@@ -7,7 +7,7 @@ public sealed partial class RecruitedComponent : Component
     public string Organization = string.Empty;
 
     [DataField]
-    public EntityUid RecruitedBy;
+    public string? RecruitedBy = string.Empty;
 
     [DataField]
     public TimeSpan RecruitedAt;

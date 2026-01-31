@@ -1,5 +1,5 @@
 organization-nanotrasen = НаноТрейзен
 organization-syndicate = Синдикат
-organization-inteq = Интек
+organization-inteq = ЧВК Интек
 
 organization-unknown = Неизвестно

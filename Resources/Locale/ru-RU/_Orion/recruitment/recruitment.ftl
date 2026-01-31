@@ -1,5 +1,6 @@
+# Popups
 recruitment-start-user = Вы начинаете вводить данные об { $target } в устройство.
-recruitment-start-target = { $user } записывает вас в организацию.
+recruitment-start-target = { $user } приглашает вас в организацию.
 
 recruitment-success = { $target } теперь является частью организации!
 recruitment-decline = { $target } отказывается от вступления!
@@ -18,8 +19,8 @@ recruitment-ui-accept = Подписать
 recruitment-ui-decline = Отказаться
 
 recruitment-list-ui-title = База данных организации
-recruitment-member-list-organization = Рекруты { $organization }
-recruitment-member-list-count = Количество: { $count }
+recruitment-member-list-organization = Манифест организации { $organization }
+recruitment-member-list-count = Общее количество: { $count }
 recruitment-member-list-empty = Участники отсутствуют!
 
 # Table headers
