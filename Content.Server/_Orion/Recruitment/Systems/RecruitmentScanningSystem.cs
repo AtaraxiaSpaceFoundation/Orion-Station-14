@@ -66,7 +66,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
         var target = args.Target.Value;
 
-        if (!HasComp<ActorComponent>(target))
+        if (!TryComp<ActorComponent>(target, out var actor))
             return;
 
         var targetName = Identity.Name(target, EntityManager);
@@ -95,7 +95,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         };
 
         _ui.SetUiState(uid, RecruitmentConfirmationUiKey.Key, state);
-        _ui.OpenUi(uid, RecruitmentConfirmationUiKey.Key, target);
+        _ui.OpenUi(uid, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
 
         args.Handled = true;
     }
