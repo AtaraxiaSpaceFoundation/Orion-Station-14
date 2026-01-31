@@ -38,11 +38,22 @@ public sealed class RecruitmentScanningSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<RecruitedComponent, MapInitEvent>(OnRecruitedMapInit);
+
         SubscribeLocalEvent<RecruitmentScanningComponent, AfterInteractEvent>(OnScanAttempt);
         SubscribeLocalEvent<RecruitmentScanningComponent, RecruitmentScanningDoAfterEvent>(OnScanComplete);
 
         SubscribeLocalEvent<RecruitmentScanningComponent, RecruitmentAcceptMessage>(OnAccept);
         SubscribeLocalEvent<RecruitmentScanningComponent, RecruitmentDeclineMessage>(OnDecline);
+    }
+
+    private void OnRecruitedMapInit(EntityUid uid, RecruitedComponent comp, MapInitEvent args)
+    {
+        if (comp.RecruitedBy == EntityUid.Invalid && comp.RecruitedAt == TimeSpan.Zero)
+        {
+            comp.RecruitedBy = EntityUid.Invalid;
+            comp.RecruitedAt = _timing.CurTime;
+        }
     }
 
     private void OnScanAttempt(EntityUid uid, RecruitmentScanningComponent comp, AfterInteractEvent args)
