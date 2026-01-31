@@ -20,7 +20,8 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
 
     public void UpdateState(RecruitmentMemberListBuiState state)
     {
-        OrganizationLabel.Text = Loc.GetString("recruitment-member-list-organization", ("organization", state.OrganizationName));
+        var localizedOrgName = Loc.GetString(state.OrganizationName);
+        OrganizationLabel.Text = Loc.GetString("recruitment-member-list-organization", ("organization", localizedOrgName));
         MemberCountLabel.Text = Loc.GetString("recruitment-member-list-count", ("count", state.Members.Count));
 
         MembersContainer.RemoveAllChildren();
@@ -100,7 +101,7 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
 
         row.AddChild(new Label
         {
-            Text = member.Name,
+            Text = member.RecruitedBy,
             MinWidth = 150,
         });
 
@@ -119,14 +120,11 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
 
     private static string FormatTimeSpan(TimeSpan span)
     {
-        if (span.TotalMinutes < 1)
-            return Loc.GetString("recruitment-member-list-time-seconds", ("seconds", (int)span.TotalSeconds));
+        var minutes = (int)span.TotalMinutes;
+        var seconds = span.Seconds;
 
-        if (span.TotalHours < 1)
-            return Loc.GetString("recruitment-member-list-time-minutes", ("minutes", (int)span.TotalMinutes));
-
-        return span.TotalDays < 1
-            ? Loc.GetString("recruitment-member-list-time-hours", ("hours", (int)span.TotalHours))
-            : Loc.GetString("recruitment-member-list-time-days", ("days", (int)span.TotalDays));
+        return Loc.GetString("recruitment-member-list-time",
+            ("minutes", minutes),
+            ("seconds", seconds));
     }
 }
