@@ -28,6 +28,7 @@ recruitment-member-list-organization = { $organization } - Участники
 recruitment-member-list-header-name = Имя
 recruitment-member-list-header-recruiter = Завербован
 recruitment-member-list-header-time = Время
+recruitment-member-list-unknown = Неизвестный
 
 # Time formatting
 recruitment-member-list-time = { $minutes } { $minutes ->

@@ -42,7 +42,7 @@ public sealed class RecruitmentMemberListSystem : EntitySystem
                 continue;
 
             var memberName = meta.EntityName;
-            var recruiterName = "Unknown";
+            var recruiterName = Loc.GetString("recruitment-member-list-unknown");
 
             if (TryComp<MetaDataComponent>(recruited.RecruitedBy, out var recruiterMeta))
                 recruiterName = recruiterMeta.EntityName;
@@ -56,7 +56,7 @@ public sealed class RecruitmentMemberListSystem : EntitySystem
 
         members.Sort((a, b) => b.RecruitedAt.CompareTo(a.RecruitedAt));
 
-        var state = new RecruitmentMemberListBuiState(comp.OrganizationName, members);
+        var state = new RecruitmentMemberListBuiState(comp.OrganizationName, members.ToArray());
         _ui.SetUiState(uid, RecruitmentMemberListUiKey.Key, state);
     }
 }

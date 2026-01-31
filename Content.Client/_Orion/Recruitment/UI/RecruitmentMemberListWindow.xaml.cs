@@ -20,8 +20,7 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
 
     public void UpdateState(RecruitmentMemberListBuiState state)
     {
-        var localizedOrgName = Loc.GetString(state.OrganizationName);
-        OrganizationLabel.Text = Loc.GetString("recruitment-member-list-organization", ("organization", localizedOrgName));
+        OrganizationLabel.Text = Loc.GetString("recruitment-member-list-organization", ("organization", state.OrganizationName));
         MemberCountLabel.Text = Loc.GetString("recruitment-member-list-count", ("count", state.Members.Count));
 
         MembersContainer.RemoveAllChildren();
@@ -106,6 +105,8 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
         });
 
         var timeSince = _timing.CurTime - member.RecruitedAt;
+        if (timeSince < TimeSpan.Zero)
+            timeSince = TimeSpan.Zero;
         var timeText = FormatTimeSpan(timeSince);
 
         row.AddChild(new Label
