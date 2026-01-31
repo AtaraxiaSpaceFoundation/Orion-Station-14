@@ -6,9 +6,9 @@ public sealed partial class RecruitedComponent : Component
     [DataField]
     public string Organization = string.Empty;
 
-    [ViewVariables]
+    [DataField]
     public EntityUid RecruitedBy;
 
-    [ViewVariables]
+    [DataField]
     public TimeSpan RecruitedAt;
 }

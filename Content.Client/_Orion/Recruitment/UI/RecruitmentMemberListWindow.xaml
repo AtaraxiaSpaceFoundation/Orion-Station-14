@@ -16,36 +16,11 @@
         <ScrollContainer Name="MemberScroller"
                          VerticalExpand="True"
                          HorizontalExpand="True">
-            <BoxContainer Orientation="Horizontal"
+            <BoxContainer Name="MembersContainer"
+                          Orientation="Vertical"
                           HorizontalExpand="True"
-                          SeparationOverride="5"
-                          Margin="5">
-                <!-- Column 1: Name -->
-                <BoxContainer Name="NameColumn"
-                              Orientation="Vertical"
-                              HorizontalExpand="True"
-                              SeparationOverride="3"
-                              MinWidth="200">
-                    <!-- Header and members added here dynamically -->
-                </BoxContainer>
-
-                <!-- Column 2: Recruiter -->
-                <BoxContainer Name="RecruiterColumn"
-                              Orientation="Vertical"
-                              HorizontalExpand="True"
-                              SeparationOverride="3"
-                              MinWidth="180">
-                    <!-- Header and members added here dynamically -->
-                </BoxContainer>
-
-                <!-- Column 3: Time -->
-                <BoxContainer Name="TimeColumn"
-                              Orientation="Vertical"
-                              HorizontalExpand="True"
-                              SeparationOverride="3"
-                              MinWidth="150">
-                    <!-- Header and members added here dynamically -->
-                </BoxContainer>
+                          SeparationOverride="5">
+                <!-- Member rows will be added here dynamically -->
             </BoxContainer>
         </ScrollContainer>
 
