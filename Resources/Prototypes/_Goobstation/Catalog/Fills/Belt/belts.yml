@@ -119,11 +119,15 @@
   table: !type:AllSelector
     children:
     - id: Handcuffs
-    - id: Handcuffs
-    - id: Handcuffs
-    - id: HoloprojectorSecurity
-    - id: RadioHandheldSecurity
-    - id: WeaponDisabler #Goobstation
+    # Orion-Start
+      amount: 2
+    # Orion-End
+    # Orion-Edit-Start: Removed
+#    - id: Handcuffs
+#    - id: HoloprojectorSecurity
+#    - id: RadioHandheldSecurity
+#    - id: WeaponDisabler #Goobstation
+    # Orion-Edit-End
 
 - type: entity
   id: ClothingBeltCorporateJudoFilled

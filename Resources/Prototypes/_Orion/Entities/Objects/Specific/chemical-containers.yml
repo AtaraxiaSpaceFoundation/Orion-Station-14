@@ -12,3 +12,19 @@
         reagents:
         - ReagentId: Plasma
           Quantity: 200
+
+- type: entity
+  parent: Jug
+  suffix: incendiary
+  id: JugIncendiary
+  components:
+  - type: Label
+    currentLabel: reagent-incendiary
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Napalm
+          Quantity: 196
+        - ReagentId: Phlogiston
+          Quantity: 4

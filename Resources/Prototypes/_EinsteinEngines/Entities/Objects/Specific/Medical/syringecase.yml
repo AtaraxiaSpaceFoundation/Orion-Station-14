@@ -65,3 +65,7 @@
     - pen2
     - bot2
   - type: Appearance
+  - type: Tag # Goobstation
+    tags:
+    - SyringeCase
+    - CigPack # Orion

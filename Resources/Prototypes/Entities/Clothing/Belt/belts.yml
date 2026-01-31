@@ -501,6 +501,120 @@
   name: EMT belt
   description: Perfect for holding various equipment for medical emergencies.
   components:
+  # Orion-Start
+  - type: Storage
+    grid:
+    - 0,0,8,1
+    whitelist:
+      tags:
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - Dropper
+        - Tourniquet
+        - MedicalPatch
+        - AutoinjectorCartridge
+        - HandheldCrewMonitor
+        - Powerdrill
+        - Wirecutter
+        - Crowbar
+        - Wrench
+        - Screwdriver
+        - Flashlight
+        - GeigerCounter
+        - Flare
+        - CableCoil
+        - HolofanProjector
+        - Multitool
+        - AppraisalTool
+        - JawsOfLife
+        - GPS
+        - WeldingMask
+        - RemoteSignaller
+        - Hammer
+        - Nailgun
+        - MagazineNailgun
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+        - SurgeryTool
+        - Defibrillator
+        - SyringeGun
+        - GunApplySolution
+        - StationMap
+        - SprayPainter
+        - SprayPainterAmmo
+        - NetworkConfigurator
+        - RCD
+        - RCDAmmo
+        - Welder
+        - PowerCell
+        - Geiger
+        - TrayScanner
+        - GasAnalyzer
+  - type: ItemMapper
+    mapLayers:
+      bottle:
+        whitelist:
+          tags:
+          - Bottle
+      hypo:
+        whitelist:
+          components:
+          - Hypospray
+      pill:
+        whitelist:
+          components:
+          - Pill
+          tags:
+          - PillCanister
+      bottle_spray:
+        whitelist:
+          tags:
+          - Spray
+      drill:
+        whitelist:
+          tags:
+          - Powerdrill
+      cutters_red:
+        whitelist:
+          tags:
+          - Wirecutter
+      crowbar:
+        whitelist:
+          tags:
+          - Crowbar
+      crowbar_red:
+        whitelist:
+          tags:
+          - CrowbarRed
+      jaws:
+        whitelist:
+          tags:
+          - JawsOfLife
+      screwdriver_nuke:
+        whitelist:
+          tags:
+          - Screwdriver
+      wrench:
+        whitelist:
+          tags:
+          - Wrench
+      multitool:
+        whitelist:
+          tags:
+          - Multitool
+  # Orion-End
   - type: Sprite
     sprite: Clothing/Belt/emt.rsi
   - type: Clothing

@@ -76,18 +76,9 @@
     - name: head
       slotTexture: head
       slotFlags: HEAD
-      uiWindowPos: 0,4 # Goobstation - Moved up slightly # Orion-Edit: 0,3 > 0,4
+      uiWindowPos: 0,3 # Goobstation - Moved up slightly
       strippingWindowPos: 0,0
       displayName: Head
-    # Orion-Start
-    - name: eyes
-      slotTexture: glasses
-      slotFlags: EYES
-      stripTime: 3
-      uiWindowPos: 0,3
-      strippingWindowPos: 0,0
-      displayName: Eyes
-    # Orion-End
     - name: neck # Goobstation - For drip reasons.
       slotTexture: neck
       slotFlags: NECK

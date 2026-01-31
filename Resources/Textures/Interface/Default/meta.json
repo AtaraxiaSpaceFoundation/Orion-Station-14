@@ -4,8 +4,8 @@
       "x": 32,
       "y": 32
   },
-  "license": "CC-BY-NC-SA-3.0",
-  "copyright": "Taken from https://github.com/goonstation/goonstation at commit e77d85d9c1d93aa32da7702737ceeac2b56738ac, slightly modified by PixelTK, ID slots made by YoungThugSS14",
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from /tg/station | Edited by PuroSlavKing (Github) | socks, undershirt, underwear, wrists and collar by PuroSlavKing (Github)",
   "states": [
       {
         "name": "back"
@@ -14,10 +14,16 @@
         "name": "belt"
       },
       {
+        "name": "collar"
+      },
+      {
         "name": "block"
       },
       {
         "name": "ears"
+      },
+      {
+        "name": "ears_right"
       },
       {
         "name": "ears_headset"
@@ -68,6 +74,9 @@
         "name": "shoes"
       },
       {
+        "name": "socks"
+      },
+      {
         "name": "suit"
       },
       {
@@ -78,6 +87,15 @@
       },
       {
         "name": "inventory"
+      },
+      {
+        "name": "undershirt"
+      },
+      {
+        "name": "underwear"
+      },
+      {
+        "name": "wrists"
       },
       {
         "name": "web"

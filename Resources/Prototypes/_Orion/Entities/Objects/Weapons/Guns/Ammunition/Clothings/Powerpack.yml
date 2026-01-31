@@ -54,7 +54,7 @@
 - type: entity
   parent: [ BaseItem, BaseCentcommContraband ]
   id: BasePowerpackEnergy
-  name: powerpack (pulsebullet)
+  name: powerpack (pulse)
   abstract: true
   components:
   - type: Sprite
@@ -70,8 +70,8 @@
     slots:
     - Back
     sprite: _Orion/Clothing/Back/Powerpacks/powerpackenergy.rsi
-    equipDelay: 3
-    unequipDelay: 3
+    equipDelay: 2.5
+    unequipDelay: 2.5
   - type: PowerCell
   - type: PowerCellVisuals
   - type: Battery

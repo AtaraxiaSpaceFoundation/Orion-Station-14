@@ -130,8 +130,9 @@
     ClothingNeckMantleElderLizards: 2
     # Orion-End
     ClothingOuterSuitHotDog: 1 # Goob
-    ClothingOuterSuitPickle: 1 # Goob
-#    ClothingHeadHatTinfoilHat: 2 # Goobstation | Orion-Edit - nope, only for scientists or crafting
+    ClothingOuterSuitPickle: 1
+    ClothingOuterSuitTutu: 2 # Goob
+    ClothingHeadHatTinfoilHat: 2 # Goobstation
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ClothingShoesBling: 1

@@ -1,4 +1,6 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+using Content.Shared.Access;
 
 namespace Content.Shared._Orion.AlertLevelLock.Components;
 
@@ -26,4 +28,13 @@ public sealed partial class StationAlertLevelLockComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? StationId;
+
+    /// <summary>
+    /// List of access groups that can bypass the alert level lock.
+    /// Each group is a set of access tags that all must be present for the user to bypass the lock.
+    /// If any group matches completely, the user can bypass the lock.
+    /// If empty, no one can bypass the lock with access.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public List<HashSet<ProtoId<AccessLevelPrototype>>> BypassAccessLists = new();
 }

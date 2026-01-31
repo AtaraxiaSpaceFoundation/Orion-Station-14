@@ -27,6 +27,8 @@ ghost-role-information-lootbug-name = Жук-сборщик
 ghost-role-information-lootbug-description = Постарайтесь не стать жертвой грейтайдов.
 ghost-role-information-homunculus-name = Гомункул
 ghost-role-information-homunculus-description = Подчиняйтесь создателю. Если его нет — действуйте по своей воле.
+ghost-role-information-fillbot-name = филлбот
+ghost-role-information-fillbot-description = Служи тому, кто создал тебя, если его не удаётся найти — поступай по своему усмотрению.
 ghost-role-information-huborg-name = Урист МакБорг
 ghost-role-information-huborg-description = Вы отвратительный борг.
 ghost-role-information-c4-name = Композиция C-4
@@ -168,3 +170,13 @@ ghost-role-information-clown-goblin-description = Ужасное существ�
 
 ghost-role-information-santa-name = Дед Мороз
 ghost-role-information-santa-description = Распространите новогоднее чудо по всей станции!
+
+ghost-role-information-sentientanimal-rules = Вы [color={role-type-sentient-animal-color}][bold]{role-type-sentient-animal-name}[/bold][/color]. Вы нейтральное животное, которое может действовать в целях самообороны, но в остальном НЕ стремится причинить вред экипажу.
+                                              Вы ничего не помните из своей прошлой жизни, и того чему научились, будучи призраком.
+                                              Вам разрешено запоминать знания об игре в целом, например, как готовить, как использовать предметы и т.д., Однако вы не разбираетесь в продвинутых ролях.
+                                              Вам абсолютно [color=red]ЗАПРЕЩЕНО[/color] помнить, говорить, имя, внешность и так далее своего преведущего персонажа.
+
+ghost-role-information-contractor-name = Контрактник Синдиката
+ghost-role-information-contractor-token = Контрактник Синдиката (Токен)
+ghost-role-information-contractor-description = ПОЛУЧИ БЛЯ... ассистента..?
+contractor-role-greeting = Вы [color=#611b2b]контрактник Синдиката[/color], как охотнику за головами, вам поручено выводить цели со станции живыми или мертвыми.

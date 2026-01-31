@@ -1,0 +1,106 @@
+# Pistol
+- type: entity
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniVP78
+  name: security mini case VP-78
+  suffix: Filled
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+    - 3,0,4,1
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolVP78
+      - id: MagazinePistol20
+        amount: 2
+
+- type: entity
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniDesertEagle
+  name: security mini case Desert Eagle
+  suffix: Filled
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+    - 3,0,4,1
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolDesertEagle
+      - id: MagazineMagnum
+        amount: 2
+
+# Revolver
+- type: entity
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniInspector
+  name: security mini case Inspector
+  suffix: Filled
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+    - 3,0,4,1
+  - type: StorageFill
+    contents:
+      - id: WeaponRevolverInspector
+      - id: SpeedLoaderMagnum
+        amount: 2
+
+- type: entity
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniDeckard
+  name: security mini case Deckard
+  suffix: Filled
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+    - 3,0,4,1
+  - type: StorageFill
+    contents:
+      - id: WeaponRevolverDeckard
+      - id: SpeedLoaderMagnum
+        amount: 2
+
+- type: entity
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniCellRevolver
+  name: security mini case EG-1
+  suffix: Filled
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,0
+    - 0,1,0,1
+    - 3,0,6,1
+  - type: StorageFill
+    contents:
+      - id: WeaponLaserCellRevolver
+      - id: PowerCellIRRevolver
+        amount: 4
+      - id: PowerCellOverchargedRevolver
+        amount: 3
+      - id: PowerCellXrayRevolver
+
+# Special
+- type: entity
+  parent: CaseSecurityMini
+  id: CaseSecurityMiniFlareGun
+  name: security mini case shell gun
+  suffix: Filled
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,1
+    - 3,0,4,1
+  - type: StorageFill
+    contents:
+      - id: WeaponFlareGunSecurity
+        amount: 2
+      - id: BoxLethalshot

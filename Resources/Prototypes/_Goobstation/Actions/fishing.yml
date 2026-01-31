@@ -32,7 +32,7 @@
   components:
   - type: Action
     icon:
-      sprite: _Goobstation/Objects/Specific/Fishing/goon_rod.rsi
+      sprite: _Goobstation/Objects/Specific/Fishing/fishing_rod.rsi # Orion-Edit
       state: icon
     sound:
       path: /Audio/_Goobstation/Items/Fishing/fishing_rod_reel.ogg

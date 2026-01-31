@@ -44,3 +44,20 @@
       children:
       - id: PlasmaSword
       - id: PlasmaSwordAlt
+
+- type: entity
+  id: ClothingBackpackDuffelBrigmedicFilledJanitorialSupplies
+  parent: ClothingBackpackDuffelBrigmedic
+  suffix: Filled, Janitorial supplies
+  components:
+  - type: StorageFill
+    contents:
+    - id: BoxCleanerGrenades
+    - id: MopItem
+    - id: Bucket
+    - id: TrashBag
+    - id: Soap
+    - id: LightReplacer
+    - id: SprayBottleSpaceCleaner
+      amount: 3
+    - id: MopBucketCubeWrapped

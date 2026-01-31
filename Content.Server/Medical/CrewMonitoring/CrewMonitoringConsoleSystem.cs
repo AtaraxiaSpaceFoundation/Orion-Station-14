@@ -23,6 +23,8 @@ using Content.Goobstation.Shared.CrewMonitoring;
 using Content.Server.Jittering;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
+using Content.Shared.Atmos.Rotting;
+using Content.Shared.Bed.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Jittering;
@@ -33,7 +35,6 @@ using Content.Shared.Pinpointer;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Medical.CrewMonitoring;
@@ -63,40 +64,32 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var component in EntityQuery<CrewMonitoringConsoleComponent>(true))
+        foreach (var component in EntityQuery<CrewMonitoringConsoleComponent>())
         {
-            if (!ShouldTriggerAlert(component))
+            if (_gameTiming.CurTime < component.NextAlertTime)
+                continue;
+
+            if (!component.DoAlert)
                 continue;
 
             var uid = component.Owner;
+
             if (!this.IsPowered(uid, EntityManager))
             {
-                if (HasUnsecuredCorpse(component))
-                {
-                    RemCompDeferred<JitteringComponent>(uid);
-                }
-
+                RemCompDeferred<JitteringComponent>(uid);
                 continue;
             }
 
-            TriggerAlert(uid, component);
+            var hasUnsecuredCorpse = HasUnsecuredCorpse(component);
+            TriggerAlert(uid, component, hasUnsecuredCorpse);
         }
     }
 
-    private bool ShouldTriggerAlert(CrewMonitoringConsoleComponent component)
+    private void TriggerAlert(EntityUid uid, CrewMonitoringConsoleComponent component, bool hasCorpse)
     {
-        return component.DoAlert && _gameTiming.CurTime >= component.NextAlertTime;
-    }
-
-    private void TriggerAlert(EntityUid uid, CrewMonitoringConsoleComponent component)
-    {
-        var audioParams = AudioParams.Default
-            .WithVolume(-2f)
-            .WithVariation(0.25f);
-
         component.NextAlertTime = _gameTiming.CurTime + TimeSpan.FromSeconds(component.AlertTime);
 
-        if (HasUnsecuredCorpse(component))
+        if (hasCorpse)
         {
             if (TryComp(uid, out PointLightComponent? light))
             {
@@ -109,7 +102,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 _light.SetRadius(uid, 1.5f, light);
             }
 
-            _audio.PlayPvs(component.AlertSound, uid, audioParams);
+            _audio.PlayPvs(component.AlertSound, uid, component.AlertAudioParams);
             _jitter.AddJitter(uid, 10, 15);
         }
         else
@@ -130,32 +123,34 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
     private bool HasUnsecuredCorpse(CrewMonitoringConsoleComponent component)
     {
-        return component.ConnectedSensors.Values
-            .Any(sensor =>
-            {
-                if (sensor.IsAlive)
-                    return false;
+        foreach (var sensor in component.ConnectedSensors.Values)
+        {
+            // Check for corpses with coordinates sensor mode
+            if (sensor.IsAlive || sensor.Coordinates == null)
+                continue;
 
-                if (!TryGetEntity(sensor.OwnerUid, out var corpse) || Deleted(corpse))
-                    return false;
+            if (!TryGetEntity(sensor.OwnerUid, out var corpse) || Deleted(corpse.Value))
+                continue;
 
-                if (corpse is not { } nonNullCorpse)
-                    return false;
+            if (!IsCorpseSecured(corpse.Value))
+                return true;
+        }
 
-                return !IsCorpseSecured(nonNullCorpse);
-            });
+        return false;
     }
 
     private bool IsCorpseSecured(EntityUid entity)
     {
-        if (!_containerSystem.IsEntityInContainer(entity))
-            return false;
+        // If secured in a morgue or something that freezes rotting - secured
+        if (_containerSystem.TryGetContainingContainer(entity, out var container) &&
+            (HasComp<MorgueComponent>(container.Owner) || HasComp<AntiRottingContainerComponent>(container.Owner)))
+            return true;
 
-        if (!_containerSystem.TryGetContainingContainer(entity, out var container))
-            return false;
+        // If buckled in a stasis bed - secured
+        if (HasComp<StasisBedBuckledComponent>(entity))
+            return true;
 
-        var containerOwner = container.Owner;
-        return HasComp<MorgueComponent>(containerOwner);
+        return false;
     }
     // Orion-End
 

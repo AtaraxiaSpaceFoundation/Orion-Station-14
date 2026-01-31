@@ -1001,8 +1001,8 @@
   - type: Item
     size: Huge
   - type: ClothingSpeedModifier
-    walkModifier: 1 # Orion-Edit: 0.9 > 1
-    sprintModifier: 1 # Orion-Edit: 0.9 > 1
+    walkModifier: 1 # goob edit
+    sprintModifier: 1 # goob edit
   - type: HeldSpeedModifier
   - type: Tag
     tags:

@@ -1,4 +1,8 @@
 bounty-item-extract-any-three = Любые 3 экстракта слайма
+bounty-item-extract-any-three-tier1 = Любые 3 (Т1) экстракта слайма
+bounty-item-extract-any-three-tier2 = Любые 3 (Т2) экстракта слайма
+bounty-item-extract-any-three-tier3 = Любые 3 (Т3) экстракта слайма
+bounty-item-extract-any-three-tier4 = Любые 3 (Т4) экстракта слайма
 bounty-item-grey-extract = Экстракты серого слайма
 bounty-item-orange-extract = Экстракты оранжевого слайма
 bounty-item-purple-extract = Экстракты фиолетового слайма

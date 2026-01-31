@@ -1,10 +1,10 @@
 - type: npcFaction
   id: DevilFaction
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - Syndicate
   - Zombie
@@ -16,6 +16,10 @@
 - type: npcFaction
   id: Assistant
   hostile:
+  # Orion-Start
+  - InteQ
+  - InteQHostile
+  # Orion-End
   - NanoTrasen
   - Dragon
   - SimpleHostile

@@ -141,11 +141,12 @@
     ears: ClothingHeadsetAltSecurityRegular # Goobstation
     belt: ClothingBeltSecurityFilled
     #pocket1: WeaponDisabler #Goobstation (Disablers in belts)
-    pocket2: BookSecurity
+#    pocket2: BookSecurity # Orion-Edit: Removed
   storage:
     back:
+    - BookSecurity # Orion
     - Flash
-    - MagazinePistol
+#    - MagazinePistol # Orion-Edit: Removed
 
 - type: chameleonOutfit
   id: SecurityCadetChameleonOutfit

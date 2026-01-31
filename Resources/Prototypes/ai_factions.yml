@@ -39,10 +39,10 @@
 - type: npcFaction
   id: Dragon
   hostile:
-    # Orion-Start-Factions
+    # Orion-Start
     - InteQ
     - InteQHostile
-    # Orion-End-Factions
+    # Orion-End
     - NanoTrasen
     - Syndicate
     - Xeno
@@ -61,9 +61,9 @@
 - type: npcFaction
   id: NanoTrasen
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - SimpleHostile
   - Syndicate
   - Xeno
@@ -91,9 +91,9 @@
 - type: npcFaction
   id: PetsNT
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - Mouse
   - Balloon # Goob Balloon Edit - Pets can join the fight against the balloons
   - SimpleHostile
@@ -108,10 +108,10 @@
 - type: npcFaction
   id: SimpleHostile
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - Syndicate
   - Passive
@@ -137,9 +137,9 @@
 - type: npcFaction
   id: Syndicate
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - SimpleHostile
   - Xeno
@@ -160,10 +160,10 @@
 - type: npcFaction
   id: Xeno
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - Syndicate
   - Passive
@@ -185,10 +185,10 @@
 - type: npcFaction
   id: Zombie
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - SimpleNeutral
   - SimpleHostile
@@ -211,10 +211,10 @@
 - type: npcFaction
   id: Revolutionary
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - Zombie
   - SimpleHostile
@@ -230,10 +230,10 @@
 - type: npcFaction
   id: AllHostile
   hostile:
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - Dragon
   - Mouse
@@ -268,10 +268,10 @@
   id: Xenoborg
   hostile:
   # they have brains
-  # Orion-Start-Factions
+  # Orion-Start
   - InteQ
   - InteQHostile
-  # Orion-End-Factions
+  # Orion-End
   - NanoTrasen
   - Syndicate
   - Zombie
@@ -290,6 +290,10 @@
 - type: npcFaction
   id: Wraith # Goobstation
   hostile:
+  # Orion-Start
+  - InteQ
+  - InteQHostile
+  # Orion-End
   - NanoTrasen
   - Syndicate
   - Passive
@@ -311,6 +315,10 @@
 - type: npcFaction
   id: Lavafauna
   hostile:
+  # Orion-Start
+  - InteQ
+  - InteQHostile
+  # Orion-End
   - NanoTrasen
   - Mouse
   - Passive

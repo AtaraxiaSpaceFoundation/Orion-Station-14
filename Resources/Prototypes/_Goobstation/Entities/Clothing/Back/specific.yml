@@ -122,6 +122,10 @@
     zeroNoAmmo: true
   - type: Clothing
     slots: BACK
+    # Orion-Start
+    equipDelay: 2
+    unequipDelay: 2
+    # Orion-End
     sprite: _Goobstation/Clothing/Back/Backpacks/lmg_backpack.rsi
     clothingVisuals:
       back:

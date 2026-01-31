@@ -74,6 +74,7 @@
   components:
   - type: BallisticAmmoProvider
     proto: ShellShotgun
+    capacity: 32
     whitelist:
       tags:
       - ShellShotgun

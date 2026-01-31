@@ -252,12 +252,15 @@
     id: BrigmedicPDA
     ears: ClothingHeadsetBrigmedic # EE parity like i was told to do
     belt: ClothingBeltMedicalEMTFilled
-    pocket1: WeaponPistolMk58 # EE parity, make corpsman able to carry weapons like the rest of security
+    pocket1: WeaponWaterPistolFilledFire # EE parity, make corpsman able to carry weapons like the rest of security # Orion-Edit: PistolMk58 > WeaponWaterPistolFilledFire
     pocket2: WeaponDisabler # Goob
+  inhand: # Orion
+    - CaseBrigmedicFilled
   storage:
     back:
     - Flash
     - ClothingMaskBreathMedicalSecurity
+    - JugIncendiary # Orion
 
 # Aghost
 - type: startingGear

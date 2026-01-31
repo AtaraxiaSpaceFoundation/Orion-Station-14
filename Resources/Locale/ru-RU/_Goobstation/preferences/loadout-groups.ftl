@@ -38,7 +38,7 @@ loadout-group-roboticist-outerclothing = Робототехник, верхня�
 loadout-group-roboticist-gloves = Робототехник, перчатки
 loadout-group-roboticist-shoes = Робототехник, обувь
 loadout-group-roboticist-id = Робототехник, ID карта
-loadout-group-security-neck = Служба безопасности, шея
+loadout-group-security-neck = СБ, шея
 loadout-group-captain-mask = Капитан, маска
 loadout-group-salvage-specialist-neck = Шахтёр, шея
 loadout-group-chemist-head = Химик, голова
@@ -47,7 +47,7 @@ loadout-group-brigmedic-jumpsuit = Бригмедик, комбинезон
 loadout-group-brigmedic-head = Бригмедик, голова
 loadout-group-brigmedic-outer = Бригмедик, верхняя одежда
 loadout-group-brigmedic-backpack = Бригмедик, рюкзак
-loadout-group-security-melee = Служба Безопасности, оружие ближнего боя
+loadout-group-security-melee = СБ, оружие ближнего боя
 loadout-group-animals = Животные
 
 # Virology
@@ -55,3 +55,6 @@ loadout-group-virologist-jumpsuit = Вирусолог, униформа
 loadout-group-virologist-backpack = Вирусолог, рюкзак
 loadout-group-virologist-outerclothing = Вирусолог, верхняя одежда
 loadout-group-virologist-id = Вирусолог, ID
+
+#RadioHost
+loadout-group-radiohost-jumpsuit = Радио-ведущий, униформа

@@ -1,0 +1,29 @@
+- type: entity
+  parent: CaseBrigmedic
+  id: CaseBrigmedicFilled
+  suffix: brigmedic, Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedkitCombatBlueFilled
+      - id: EmergencyRollerBedSpawnFolded
+      - id: Brutepack
+        amount: 2
+      - id: Ointment
+        amount: 2
+      - id: BodyBagFolded
+      - id: SprayBottleStypticPowder
+      - id: SprayBottleSilverSulfadiazine
+      - id: SyringeCaseFilledBicaridine
+      - id: SyringeCaseFilledDermaline
+      - id: SyringeCaseFilledSaline
+      - id: SyringeCaseFilledAtropine
+      - id: SyringeCaseFilledEpinephrine
+      - id: Gauze
+        amount: 2
+      - id: Bloodpack
+        amount: 2
+      - id: MedicatedSuture
+        amount: 2
+      - id: RegenerativeMesh
+        amount: 2

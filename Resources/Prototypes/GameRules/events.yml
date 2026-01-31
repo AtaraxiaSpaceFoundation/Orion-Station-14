@@ -891,12 +891,10 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Orion
+      - type: AdditionalLanguage # Orion
         speaks:
-        - TauCetiBasic
         - Codespeak
         understands:
-        - TauCetiBasic
         - Codespeak
       - type: NukeOperative
       - type: RandomMetadata

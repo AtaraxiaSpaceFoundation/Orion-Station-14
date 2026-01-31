@@ -1,4 +1,6 @@
+using System.Linq;
 using Content.Shared._Orion.AlertLevelLock.Components;
+using Content.Shared.Access.Systems;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
 
@@ -11,6 +13,7 @@ namespace Content.Shared._Orion.AlertLevelLock;
 public sealed class SharedStationAlertLevelLockSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
 
     public override void Initialize()
     {
@@ -32,6 +35,28 @@ public sealed class SharedStationAlertLevelLockSystem : EntitySystem
         if (isLocking)
             return;
 
+        // Check if user has bypass access
+        if (ent.Comp.BypassAccessLists.Count > 0)
+        {
+            // Get user's access tags
+            var accessSources = _accessReader.FindPotentialAccessItems(args.User);
+            var userAccessTags = _accessReader.FindAccessTags(args.User, accessSources);
+            
+            // Check if user has any of the required access groups
+            foreach (var bypassList in ent.Comp.BypassAccessLists)
+            {
+                // Check if all required access tags in this group are present
+                var hasAllAccess = bypassList.All(requiredTag => userAccessTags.Contains(requiredTag));
+                
+                if (hasAllAccess)
+                {
+                    // User has bypass access, allow opening
+                    return;
+                }
+            }
+        }
+
+        // User doesn't have bypass access, deny
         _popup.PopupClient(
             Loc.GetString("access-failed-wrong-station-alert-level"),
             ent.Owner,

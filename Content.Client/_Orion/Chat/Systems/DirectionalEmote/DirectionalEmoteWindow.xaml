@@ -1,0 +1,26 @@
+<ui:FancyWindow xmlns="https://spacestation14.io"
+                xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                VerticalExpand="True" HorizontalExpand="True"
+                Title="{Loc directional-emote-title}"
+                SetSize="600 300">
+    <PanelContainer Margin="10">
+        <PanelContainer.PanelOverride>
+            <gfx:StyleBoxFlat BackgroundColor="#2b2b3b" />
+        </PanelContainer.PanelOverride>
+
+        <BoxContainer Orientation="Vertical" Margin="10">
+            <TextEdit Name="MessageInput"
+                VerticalExpand="True"
+                HorizontalExpand="True"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"/>
+
+            <Button Name="AcceptButton"
+                Text="{Loc 'directional-emote-button'}"
+                ModulateSelfOverride="#3D3D4A"
+                StyleClasses="OpenBoth"
+                HorizontalAlignment="Center"/>
+        </BoxContainer>
+    </PanelContainer>
+</ui:FancyWindow>

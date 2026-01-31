@@ -1024,11 +1024,11 @@ public abstract class SharedActionsSystem : EntitySystem
     }
 
     // Goobstation start
-    protected virtual void SaveActions(EntityUid performer)
+    public virtual void SaveActions(EntityUid performer)
     {
     }
 
-    protected virtual void LoadActions(EntityUid performer)
+    public virtual void LoadActions(EntityUid performer)
     {
     }
     // Goobstation end
@@ -1131,7 +1131,7 @@ public abstract class SharedActionsSystem : EntitySystem
         // Goobstation start
         if (!TerminatingOrDeleted(args.Equipment))
         {
-            var ev = new GetItemActionsEvent(_actionContainer, args.Equipee, args.Equipment);
+            var ev = new GetItemActionsEvent(_actionContainer, args.Equipee, args.Equipment, isEquipping: false); // Lavaland Change - added false for isEquipping
             RaiseLocalEvent(args.Equipment, ev);
 
             if (ev.Actions.Count > 0)
@@ -1150,7 +1150,7 @@ public abstract class SharedActionsSystem : EntitySystem
         // Goobstation start
         if (!TerminatingOrDeleted(args.Unequipped))
         {
-            var ev = new GetItemActionsEvent(_actionContainer, args.User, args.Unequipped);
+            var ev = new GetItemActionsEvent(_actionContainer, args.User, args.Unequipped, isEquipping: false); // Lavaland Change - added false for isEquipping
             RaiseLocalEvent(args.Unequipped, ev);
 
             if (ev.Actions.Count > 0)

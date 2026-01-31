@@ -2,6 +2,10 @@ accent-mobster-prefix-1 = Ньехх,
 accent-mobster-suffix-boss-1 = , видишь?
 accent-mobster-suffix-boss-2 = , дазабей.
 accent-mobster-suffix-boss-3 = , андестенд?
+# Goob edit start
+accent-mobster-suffix-boss-4 = , фа. 
+accent-mobster-suffix-boss-5 = , чё как'? 
+# Goob edit end
 accent-mobster-suffix-minion-1 = , йеах!
 accent-mobster-suffix-minion-2 = , босс говорит!
 accent-mobster-words-1 = давай я

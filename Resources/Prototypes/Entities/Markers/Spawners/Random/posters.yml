@@ -127,6 +127,9 @@
       - PosterContrabandExoAcid
       - PosterContrabandExoRun
       - PosterContrabandExoChomp
+      - PosterContrabandGoobChuckler # Goobstation
+      - PosterContrabandGoobYakub # Goobstation
+      - PosterContrabandGoobRedFOSS # Goobstation
     chance: 0.99 # Orion-Edit: 1 > 0.99
     # Orion-Start
     rarePrototypes:
@@ -237,8 +240,6 @@
       - PosterLegitGoobLouieVote # Goobstation
       - PosterLegitGoobSlowDownClown # Goobstation
       - PosterLegitGoobNTRAdvert # Goobstation
-      - PosterContrabandGoobChuckler # Goobstation
-      - PosterContrabandGoobYakub # Goobstation
       - PosterLegitOppenhopper
       - PosterLegitTyrone
       - PosterLegitHelio

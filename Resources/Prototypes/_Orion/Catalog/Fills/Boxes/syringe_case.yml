@@ -1,0 +1,75 @@
+- type: entity
+  parent: SyringeCase
+  id: SyringeCaseFilledGeneral
+  suffix: general, autoinjector
+  components:
+  - type: Label
+    currentLabel: reagent-general
+  - type: StorageFill
+    contents:
+      - id: CartridgeBicaridine
+      - id: CartridgeDermaline
+      - id: CartridgeSaline
+      - id: CartridgeBicaridine
+      - id: CartridgeDermaline
+      - id: CartridgeSaline
+
+- type: entity
+  parent: SyringeCase
+  id: SyringeCaseFilledBicaridine
+  suffix: bicaridine, autoinjector
+  components:
+  - type: Label
+    currentLabel: reagent-name-bicaridine
+  - type: StorageFill
+    contents:
+      - id: CartridgeBicaridine
+        amount: 6
+
+- type: entity
+  parent: SyringeCase
+  id: SyringeCaseFilledDermaline
+  suffix: dermaline, autoinjector
+  components:
+  - type: Label
+    currentLabel: reagent-name-dermaline
+  - type: StorageFill
+    contents:
+      - id: CartridgeDermaline
+        amount: 6
+
+- type: entity
+  parent: SyringeCase
+  id: SyringeCaseFilledSaline
+  suffix: saline, autoinjector
+  components:
+  - type: Label
+    currentLabel: reagent-name-saline
+  - type: StorageFill
+    contents:
+      - id: CartridgeSaline
+        amount: 6
+
+- type: entity
+  parent: SyringeCase
+  id: SyringeCaseFilledAtropine
+  suffix: atropine, autoinjector
+  components:
+  - type: Label
+    currentLabel: reagent-name-atropine
+  - type: StorageFill
+    contents:
+      - id: CartridgeAtropine
+        amount: 6
+
+- type: entity
+  parent: SyringeCase
+  id: SyringeCaseFilledEpinephrine
+  suffix: epinephrine, autoinjector
+  components:
+  - type: Label
+    currentLabel: reagent-name-epinephrine
+  - type: StorageFill
+    contents:
+      - id: CartridgeEpinephrine
+        amount: 6

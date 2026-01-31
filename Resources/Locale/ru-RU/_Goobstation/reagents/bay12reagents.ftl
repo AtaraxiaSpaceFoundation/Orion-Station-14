@@ -6,7 +6,7 @@
 
 reagent-name-milk-choco = шоколадное молоко
 reagent-desc-milk-choco = Молочный напиток со вкусом шоколада.
-reagent-name-tramadol = травмадол
+reagent-name-tramadol = трамадол
 reagent-desc-tramadol = Мощное боевое обезболивающее. Не принимайте с алкоголем.
 reagent-name-oxycodone = оксикодон
 reagent-desc-oxycodone = Очень мощное обезболивающее, фактически притупляющее любую боль, но очень жестокое при передозировке. Не принимайте с алкоголем.

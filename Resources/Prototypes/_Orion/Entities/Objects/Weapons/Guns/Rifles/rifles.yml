@@ -231,14 +231,14 @@
   - type: Item
     sprite: _Orion/Objects/Weapons/Guns/Rifles/m28/tiny.rsi
   - type: GunWieldBonus
-    minAngle: -25
+    minAngle: -27
     maxAngle: -30
     angleIncrease: -4
   - type: Gun
     angleDecay: 40
-    angleIncrease: 7
+    angleIncrease: 7.5
     cameraRecoilScalar: 4
-    minAngle: 28
+    minAngle: 30
     maxAngle: 60
     fireRate: 4.5
     soundGunshot:

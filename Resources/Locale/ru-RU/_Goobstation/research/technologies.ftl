@@ -37,6 +37,7 @@ research-technology-mag-fed-sniper = Снайперские винтовки с 
 research-technology-mag-fed-lmg = Ручные пулемёты с энергоячейками
 research-technology-restraint = Технологии сдерживания
 research-technology-xenobiology = Ксенобиологическое оборудование
+research-technology-xenobag-holding = Блюспейс ксенобиологическое оборудование
 research-technology-advanced-power-generation = Продвинутый генератор
 research-technology-bluespace-construction-storage = Блюспейс хранилище
 research-technology-extended-communication = Продвинутые коммуникации

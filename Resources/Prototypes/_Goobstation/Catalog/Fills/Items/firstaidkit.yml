@@ -59,12 +59,20 @@
     contents:
     - id: PillCanisterBicaridine
     - id: PillCanisterDermaline
-    - id: PillCanisterTricordrazine
-    - id: PillCanisterTramadol
-    - id: PillCanisterIron
-    - id: PillCanisterDexalin
-    - id: PillCanisterDylovene
+    # Orion-Start
+    - id: PillCanisterIbuprofen
     - id: PillCanisterHyronalin
+    - id: PillCanisterDylovene
+    - id: PillCanisterCharcoal
+    - id: PillCanisterDexalin
+    # Orion-End
+    # Orion-Edit-Start: Removed
+#    - id: PillCanisterTramadol
+#    - id: PillCanisterIron
+#    - id: PillCanisterDexalin
+#    - id: PillCanisterDylovene
+    # Orion-Edit-End
+    - id: PillCanisterTricordrazine
 
 - type: entity
   id: MedkitCombatPurpleFilled

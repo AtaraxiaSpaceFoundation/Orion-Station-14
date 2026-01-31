@@ -23,6 +23,8 @@ ent-MagazineRifle762Sniper = снайперский магазин (7.62мм в�
 
 ent-MagazineHeavyRifleBR64 = Винтовочный магазин (.45 магнум)
     .desc = { ent-BaseItem.desc }
+ent-MagazineHeavyRifleBR64AP = Винтовочный магазин (.45 магнум бронебойные)
+    .desc = { ent-BaseItem.desc }
 
 ent-MagazineRifleSR50 = магазин SR-127 (.50 крупнокалиберные)
     .desc = { ent-BaseItem.desc }

@@ -22,12 +22,12 @@
       - !type:AdjustReagent
         reagent: Desoxyephedrine
         amount: 0.25
-  metamorphicSprite:
-    sprite: _NF/Objects/Consumable/Drinks/ginandsonic.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 4
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
+#  metamorphicSprite: # Orion-Edit: NC license sprites
+#    sprite: _NF/Objects/Consumable/Drinks/ginandsonic.rsi
+#    state: icon_empty
+#  metamorphicMaxFillLevels: 4
+#  metamorphicFillBaseName: fill-
+#  metamorphicChangeColor: false
 
 - type: reagent
   id: GoldenCat
@@ -45,12 +45,12 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.3
-  metamorphicSprite:
-    sprite: _NF/Objects/Consumable/Drinks/goldencat.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 5
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
+#  metamorphicSprite: # Orion-Edit: NC license sprites
+#    sprite: _NF/Objects/Consumable/Drinks/goldencat.rsi
+#    state: icon_empty
+#  metamorphicMaxFillLevels: 5
+#  metamorphicFillBaseName: fill-
+#  metamorphicChangeColor: false
 
 - type: reagent
   id: PineappleBlast
@@ -75,12 +75,12 @@
         intensitySlope: 1
         maxTotalIntensity: 0.1
         probability: 0.1
-  metamorphicSprite:
-    sprite: _NF/Objects/Consumable/Drinks/pineappleblast.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 3
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
+#  metamorphicSprite: # Orion-Edit: NC license sprites
+#    sprite: _NF/Objects/Consumable/Drinks/pineappleblast.rsi
+#    state: icon_empty
+#  metamorphicMaxFillLevels: 3
+#  metamorphicFillBaseName: fill-
+#  metamorphicChangeColor: false
 
 - type: reagent
   id: TorpedoJuice
@@ -98,12 +98,12 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.4
-  metamorphicSprite:
-    sprite: _NF/Objects/Consumable/Drinks/torpedojuice.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 6
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
+#  metamorphicSprite: # Orion-Edit: NC license sprites
+#    sprite: _NF/Objects/Consumable/Drinks/torpedojuice.rsi
+#    state: icon_empty
+#  metamorphicMaxFillLevels: 6
+#  metamorphicFillBaseName: fill-
+#  metamorphicChangeColor: false
 
 - type: reagent
   id: BeesKnees
@@ -134,9 +134,9 @@
           min: 35
       - !type:ModifyBloodLevel
         amount: 0.2
-  metamorphicSprite:
-    sprite: _NF/Objects/Consumable/Drinks/beesknees.rsi
-    state: icon_empty
-  metamorphicMaxFillLevels: 4
-  metamorphicFillBaseName: fill-
-  metamorphicChangeColor: false
+#  metamorphicSprite: # Orion-Edit: NC license sprites
+#    sprite: _NF/Objects/Consumable/Drinks/beesknees.rsi
+#    state: icon_empty
+#  metamorphicMaxFillLevels: 4
+#  metamorphicFillBaseName: fill-
+#  metamorphicChangeColor: false

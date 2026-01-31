@@ -1,6 +1,9 @@
 ent-ActionToggleEnergyDome = Переключить энергетический барьер
     .desc = Включает и выключает энергетический барьер.
 
+ent-ActionToggleHUDs = Переключить отображение статусов
+    .desc = Включает и выключает отображение статусов.
+
 ent-ActionCorticalBorerChemMenu = Химикаты
     .desc = Открыть панель ввода химикатов.
 ent-ActionCorticalBorerInfest = Заразить носителя

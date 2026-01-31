@@ -9,9 +9,9 @@
   source: https://freesound.org/people/Fidjo20/sounds/503526/
 
 - files: [monkey1.ogg]
-  license: CC-BY-NC-4.0
-  copyright: '"Howler Monkey - Single, Close, Costa Rica" by TRAVELcandies of Freesound.org'
-  source: https://freesound.org/people/TRAVELcandies/sounds/423396/
+  license: CC-BY-SA-3.0
+  copyright: "tgstation"
+  source: https://github.com/tgstation/tgstation
 
 - files: [monkey2.ogg]
   license: CC0-1.0

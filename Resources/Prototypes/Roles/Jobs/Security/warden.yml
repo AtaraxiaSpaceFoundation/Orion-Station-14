@@ -179,12 +179,12 @@
     eyes: ClothingEyesGlassesSecurity # Goobstation | Orion-Edit - OP
     id: WardenPDA
     ears: ClothingHeadsetAltWarden # Goobstation
-    pocket1: WeaponPistolMk58
+    pocket1: WeaponDisabler # Orion-Edit: PistolMk58 > Disabler
   storage:
     back:
     - Flash
-    - MagazinePistol
-    - ClothingMaskGasSecurity # Goobstation
+#    - MagazinePistol # Orion-Edit: Now in loadout
+#    - ClothingMaskGasSecurity # Goobstation # Orion-Edit: Now in BoxSurvival
 
 - type: chameleonOutfit
   id: WardenChameleonOutfit

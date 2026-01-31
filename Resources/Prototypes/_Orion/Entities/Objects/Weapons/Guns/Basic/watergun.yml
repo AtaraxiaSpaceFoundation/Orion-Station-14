@@ -1,0 +1,13 @@
+- type: entity
+  parent: WeaponWaterPistol
+  id: WeaponWaterPistolFilledFire
+  suffix: Napalm, Filled
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      chamber:
+        reagents:
+        - ReagentId: Napalm
+          Quantity: 49
+        - ReagentId: Phlogiston
+          Quantity: 1

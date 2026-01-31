@@ -1,0 +1,12 @@
+- type: entity
+  parent: ClothingOuterWinterSecArmored
+  id: ClothingOuterWinterSecArmoredAlt
+  name: security winter coat
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/WinterCoats/coatsec.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/WinterCoats/coatsec.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHatHoodWinterSec

@@ -157,18 +157,24 @@ public sealed class MeleeWeaponSystem : SharedMeleeWeaponSystem
         RaiseNetworkEvent(new MeleeLungeEvent(GetNetEntity(user), GetNetEntity(weapon), angle, localPos, animation, spriteRotation, flipAnimation), filter);
     }
 
+    // goob edit - more interactivity for battle cries
+    public static readonly Dictionary<char, InGameICChatType> PrefixToChannel = new()
+    {
+        {SharedChatSystem.LocalPrefix, InGameICChatType.Speak},
+        {SharedChatSystem.WhisperPrefix, InGameICChatType.Whisper},
+        {SharedChatSystem.EmotesPrefix, InGameICChatType.Emote},
+        {SharedChatSystem.EmotesAltPrefix, InGameICChatType.Emote},
+    };
+
     private void OnSpeechHit(EntityUid owner, MeleeSpeechComponent comp, MeleeHitEvent args)
     {
-        if (!args.IsHit ||
-        !args.HitEntities.Any())
-        {
+        if (!args.IsHit || !args.HitEntities.Any() || string.IsNullOrWhiteSpace(comp.Battlecry))
             return;
-        }
 
-        if (comp.Battlecry != null)//If the battlecry is set to empty, doesn't speak
-        {
-            _chat.TrySendInGameICMessage(args.User, comp.Battlecry, InGameICChatType.Speak, true, true, checkRadioPrefix: false);  //Speech that isn't sent to chat or adminlogs
-        }
+        var chatType = PrefixToChannel.GetValueOrDefault(comp.Battlecry[0]);
+        var message = chatType == InGameICChatType.Speak ? comp.Battlecry : comp.Battlecry[1..]; // [1..] basically means the first char is removed.
 
+        _chat.TrySendInGameICMessage(args.User, message, chatType, true, true, checkRadioPrefix: false, forced: true);
     }
+    // goob edit end
 }

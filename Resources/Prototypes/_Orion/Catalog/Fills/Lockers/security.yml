@@ -1,6 +1,7 @@
+# ===== Code lockers =====
 # Lecter
 - type: entity
-  parent: [ GunSafeRifleLecterAlertUnlocked, AlertLevelLock ]
+  parent: [ GunSafeRifleLecterAlertUnlocked, AlertLevelLockRed ]
   id: GunSafeRifleLecterAlertLocked
   suffix: Alert Level Lock
 
@@ -10,7 +11,7 @@
 
 # Drozd
 - type: entity
-  parent: [ GunSafeSubMachineGunDrozdAlertUnlocked, AlertLevelLock ]
+  parent: [ GunSafeSubMachineGunDrozdAlertUnlocked, AlertLevelLockRed ]
   id: GunSafeSubMachineGunDrozdAlertLocked
   suffix: Alert Level Lock
 
@@ -20,7 +21,7 @@
 
 # Enforcer
 - type: entity
-  parent: [ GunSafeShotgunEnforcerAlertUnlocked, AlertLevelLock ]
+  parent: [ GunSafeShotgunEnforcerAlertUnlocked, AlertLevelLockRed ]
   id: GunSafeShotgunEnforcerAlertLocked
   suffix: Alert Level Lock
 
@@ -30,7 +31,7 @@
 
 # Kammerer
 - type: entity
-  parent: [ GunSafeShotgunKammererAlertUnlocked, AlertLevelLock ]
+  parent: [ GunSafeShotgunKammererAlertUnlocked, AlertLevelLockRed ]
   id: GunSafeShotgunKammererAlertLocked
   suffix: Alert Level Lock
 
@@ -40,7 +41,7 @@
 
 # Wt550
 - type: entity
-  parent: [ GunSafeSubMachineGunWt550AlertUnlocked, AlertLevelLock ]
+  parent: [ GunSafeSubMachineGunWt550AlertUnlocked, AlertLevelLockRed ]
   id: GunSafeSubMachineGunWt550AlertLocked
   suffix: Alert Level Lock
 
@@ -50,10 +51,470 @@
 
 # Laser Carabine
 - type: entity
-  parent: [ GunSafeLaserCarbineAlertUnlocked, AlertLevelLock ]
+  parent: [ GunSafeLaserCarbineAlertUnlocked, AlertLevelLockBlue ]
   id: GunSafeLaserCarbineAlertLocked
   suffix: Alert Level Lock
 
 - type: entity
   parent: [ GunSafeLaserCarbine ]
   id: GunSafeLaserCarbineAlertUnlocked
+
+
+# ===== Random =====
+- type: entity # Pistol
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomPistolAlertUnlocked
+  name: pistol safe
+  suffix: Random, pistol
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomPistol
+
+- type: entity # SMG
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomSubMachineGunAlertUnlocked
+  name: SMG safe
+  suffix: Random, SMG
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomSMG
+
+- type: entity
+  parent: [ GunSafeRandomSubMachineGunAlertUnlocked, AlertLevelLockRed ]
+  id: GunSafeRandomSubMachineGunAlertLocked
+  suffix: Random, SMG, Alert Level Lock
+
+- type: entity # basic rifles
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomLightRifleAlertUnlocked
+  name: light rifle safe
+  suffix: Random, light rifle
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomLightRifle
+
+- type: entity
+  parent: [ GunSafeRandomLightRifleAlertUnlocked, AlertLevelLockRed ]
+  id: GunSafeRandomLightRifleAlertLocked
+  suffix: Random, light rifle, Alert Level Lock
+
+- type: entity # Special rifles
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomHeavyRifleAlertUnlocked
+  name: heavy rifle safe
+  suffix: Random, heavy rifle
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomHeavyRifle
+
+- type: entity
+  parent: [ GunSafeRandomHeavyRifleAlertUnlocked, AlertLevelLockRed ]
+  id: GunSafeRandomHeavyRifleAlertLocked
+  suffix: Random, heavy rifle, Alert Level Lock
+
+- type: entity # Basic pump shotguns
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomPumpShotgunAlertUnlocked
+  name: pump shotgun safe
+  suffix: Random, pump shotgun
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomPumpShotgun
+
+- type: entity
+  parent: [ GunSafeRandomPumpShotgunAlertUnlocked, AlertLevelLockRed ]
+  id: GunSafeRandomPumpShotgunAlertLocked
+  suffix: Random, pump shotgun, Alert Level Lock
+
+- type: entity # Auto shotguns
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomAutoShotgunAlertUnlocked
+  name: auto shotgun safe
+  suffix: Random, auto shotgun
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomAutoShotgun
+
+- type: entity
+  parent: [ GunSafeRandomAutoShotgunAlertUnlocked, AlertLevelLockRed ]
+  id: GunSafeRandomAutoShotgunAlertLocked
+  suffix: Random, auto shotgun, Alert Level Lock
+
+- type: entity # Laser guns
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunSafeRandomLaserCarbineAlertUnlocked
+  name: laser carbine safe
+  suffix: Random, laser carbine
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunSafeRandomLaserCarbine
+
+- type: entity
+  parent: [ GunSafeRandomLaserCarbineAlertUnlocked, AlertLevelLockRed ]
+  id: GunSafeRandomLaserCarbineAlertLocked
+  suffix: Random, laser carbine, Alert Level Lock
+
+
+# ===== Fills =====
+- type: entityTable
+  id: FillGunSafeRandomPistol
+  table: !type:AllSelector
+    children:
+    - id: MagazinePistol
+      amount: 8
+    - !type:GroupSelector
+      children:
+      - id: WeaponPistolG22
+        weight: 20
+      - id: WeaponPistolMk58
+        weight: 20
+      - id: WeaponPistolG23
+        weight: 20
+      - id: CaseSecurityMiniInspector
+        weight: 10
+      - id: CaseSecurityMiniDeckard
+        weight: 10
+      - id: CaseSecurityMiniFlareGun
+        weight: 4
+      - id: CaseSecurityMiniCellRevolver
+        weight: 4
+      - id: WeaponEarthGovLaserPistol
+        weight: 4
+      - id: WeaponLaserSvalinn
+        weight: 4
+      - id: WeaponLaserGun
+        weight: 2
+      - id: WeaponAdvancedLaser
+        weight: 0.75
+      - id: CaseSecurityMiniVP78
+        weight: 0.5
+      - id: CaseSecurityMiniDesertEagle
+        weight: 0.25
+      - id: WeaponBehonkerLaser
+        weight: 0.25
+      - id: WeaponWaterPistol
+        weight: 0.25
+    - !type:GroupSelector
+      children:
+      - id: WeaponPistolG22
+        weight: 20
+      - id: WeaponPistolMk58
+        weight: 20
+      - id: WeaponPistolG23
+        weight: 20
+      - id: CaseSecurityMiniInspector
+        weight: 10
+      - id: CaseSecurityMiniDeckard
+        weight: 10
+      - id: CaseSecurityMiniFlareGun
+        weight: 4
+      - id: CaseSecurityMiniCellRevolver
+        weight: 4
+      - id: WeaponEarthGovLaserPistol
+        weight: 4
+      - id: WeaponLaserSvalinn
+        weight: 4
+      - id: WeaponLaserGun
+        weight: 2
+      - id: WeaponAdvancedLaser
+        weight: 0.75
+      - id: CaseSecurityMiniVP78
+        weight: 0.5
+      - id: CaseSecurityMiniDesertEagle
+        weight: 0.25
+      - id: WeaponBehonkerLaser
+        weight: 0.25
+      - id: WeaponWaterPistol
+        weight: 0.25
+    - !type:GroupSelector
+      children:
+      - id: WeaponPistolG22
+        weight: 20
+      - id: WeaponPistolMk58
+        weight: 20
+      - id: WeaponPistolG23
+        weight: 20
+      - id: CaseSecurityMiniInspector
+        weight: 10
+      - id: CaseSecurityMiniDeckard
+        weight: 10
+      - id: CaseSecurityMiniFlareGun
+        weight: 4
+      - id: CaseSecurityMiniCellRevolver
+        weight: 4
+      - id: WeaponEarthGovLaserPistol
+        weight: 4
+      - id: WeaponLaserSvalinn
+        weight: 4
+      - id: WeaponLaserGun
+        weight: 2
+      - id: WeaponAdvancedLaser
+        weight: 0.75
+      - id: CaseSecurityMiniVP78
+        weight: 0.5
+      - id: CaseSecurityMiniDesertEagle
+        weight: 0.25
+      - id: WeaponBehonkerLaser
+        weight: 0.25
+      - id: WeaponWaterPistol
+        weight: 0.25
+    - !type:GroupSelector
+      children:
+      - id: WeaponPistolG22
+        weight: 20
+      - id: WeaponPistolMk58
+        weight: 20
+      - id: WeaponPistolG23
+        weight: 20
+      - id: CaseSecurityMiniInspector
+        weight: 10
+      - id: CaseSecurityMiniDeckard
+        weight: 10
+      - id: CaseSecurityMiniFlareGun
+        weight: 4
+      - id: CaseSecurityMiniCellRevolver
+        weight: 4
+      - id: WeaponEarthGovLaserPistol
+        weight: 4
+      - id: WeaponLaserSvalinn
+        weight: 4
+      - id: WeaponLaserGun
+        weight: 2
+      - id: WeaponAdvancedLaser
+        weight: 0.75
+      - id: CaseSecurityMiniVP78
+        weight: 0.5
+      - id: CaseSecurityMiniDesertEagle
+        weight: 0.25
+      - id: WeaponBehonkerLaser
+        weight: 0.25
+      - id: WeaponWaterPistol
+        weight: 0.25
+
+- type: entityTable
+  id: FillGunSafeRandomSMG
+  table: !type:AllSelector
+    children:
+    - id: MagazinePistolSubMachineGun
+      amount: 4
+    - !type:GroupSelector
+      children:
+      - id: WeaponSubMachineGunMP5
+        weight: 23
+      - id: WeaponSubMachineGunWt550
+        weight: 23
+      - id: WeaponSubMachineGunMP7
+        weight: 23
+      - id: WeaponSubMachineGunDrozd
+        weight: 23
+      - id: CaseSecurityP90
+        weight: 2.5
+      - id: CaseSecurityVector
+        weight: 2.5
+      - id: CaseSecurityLaserCellSMG
+        weight: 2
+      - id: WeaponHeadOfSecuritySMG
+        weight: 0.5
+      - id: WeaponWaterBlaster
+        weight: 0.5
+    - !type:GroupSelector
+      children:
+      - id: WeaponSubMachineGunMP5
+        weight: 23
+      - id: WeaponSubMachineGunWt550
+        weight: 23
+      - id: WeaponSubMachineGunMP7
+        weight: 23
+      - id: WeaponSubMachineGunDrozd
+        weight: 23
+      - id: CaseSecurityP90
+        weight: 2.5
+      - id: CaseSecurityVector
+        weight: 2.5
+      - id: CaseSecurityLaserCellSMG
+        weight: 2
+      - id: WeaponHeadOfSecuritySMG
+        weight: 0.5
+      - id: WeaponWaterBlaster
+        weight: 0.5
+
+- type: entityTable
+  id: FillGunSafeRandomLightRifle
+  table: !type:AllSelector
+    children:
+    - id: MagazineRifle
+      amount: 4
+    - !type:GroupSelector
+      children:
+      - id: WeaponRifleLecter
+        weight: 23
+      - id: WeaponRifleM16A4
+        weight: 23
+      - id: WeaponRifleFamas
+        weight: 23
+      - id: WeaponRifleAUG
+        weight: 23
+      - id: CaseSecurityAKM
+        weight: 5
+      - id: CaseSecurityCellSniper
+        weight: 3
+    - !type:GroupSelector
+      children:
+      - id: WeaponRifleLecter
+        weight: 23
+      - id: WeaponRifleM16A4
+        weight: 23
+      - id: WeaponRifleFamas
+        weight: 23
+      - id: WeaponRifleAUG
+        weight: 23
+      - id: CaseSecurityAKM
+        weight: 5
+      - id: CaseSecurityCellSniper
+        weight: 3
+
+- type: entityTable
+  id: FillGunSafeRandomHeavyRifle
+  table: !type:AllSelector
+    children:
+    - !type:GroupSelector
+      children:
+      - id: CaseSecurityM28
+        weight: 23
+      - id: CaseSecurityDragunov
+        weight: 23
+      - id: CaseSecurityRemington
+        weight: 23
+      - id: CaseSecurityBR64
+        weight: 23
+      - id: CaseSecurityMosins
+        weight: 4
+      - id: CaseSecurityEnergyRifle
+        weight: 4
+    - !type:GroupSelector
+      children:
+      - id: CaseSecurityM28
+        weight: 23
+      - id: CaseSecurityDragunov
+        weight: 23
+      - id: CaseSecurityRemington
+        weight: 23
+      - id: CaseSecurityBR64
+        weight: 23
+      - id: CaseSecurityMosins
+        weight: 4
+      - id: CaseSecurityEnergyRifle
+        weight: 4
+
+- type: entityTable
+  id: FillGunSafeRandomPumpShotgun
+  table: !type:AllSelector
+    children:
+    - id: BoxLethalshot
+      amount: 4
+    - !type:GroupSelector
+      children:
+      - id: WeaponShotgunKammerer
+        weight: 32
+      - id: WeaponShotgunPaladin
+        weight: 32
+      - id: WeaponShotgunSpas
+        weight: 32
+      - id: CaseSecurityDoubleShotguns
+        weight: 4
+    - !type:GroupSelector
+      children:
+      - id: WeaponShotgunKammerer
+        weight: 32
+      - id: WeaponShotgunPaladin
+        weight: 32
+      - id: WeaponShotgunSpas
+        weight: 32
+      - id: CaseSecurityDoubleShotguns
+        weight: 4
+
+- type: entityTable
+  id: FillGunSafeRandomAutoShotgun
+  table: !type:AllSelector
+    children:
+    - id: BoxLethalshot
+      amount: 4
+    - !type:GroupSelector
+      children:
+      - id: WeaponShotgunEnforcer
+        weight: 32
+      - id: WeaponShotgunXM1014
+        weight: 32
+      - id: CaseSecurityAntelope
+        weight: 32
+      - id: WeaponHeadOfSecurityShotgun
+        weight: 4
+    - !type:GroupSelector
+      children:
+      - id: WeaponShotgunEnforcer
+        weight: 32
+      - id: WeaponShotgunXM1014
+        weight: 32
+      - id: CaseSecurityAntelope
+        weight: 32
+      - id: WeaponHeadOfSecurityShotgun
+        weight: 4
+
+- type: entityTable
+  id: FillGunSafeRandomLaserCarbine
+  table: !type:AllSelector
+    children:
+    - id: WeaponTemperatureGun
+    - id: WeaponEnergyIonRifle
+    - id: WeaponPlasmaRifle
+      prob: .5
+    - id: WeaponPlasmaRifle
+      prob: .15
+    - !type:GroupSelector
+      children:
+      - id: WeaponLaserCarbine
+        weight: 30
+      - id: WeaponLaserCannon
+        weight: 30
+      - id: WeaponXrayCannon
+        weight: 30
+      - id: WeaponHeadOfSecurityRifle
+        weight: 10
+    - !type:GroupSelector
+      children:
+      - id: WeaponEarthGovLaserRifle
+        weight: 24
+      - id: WeaponEarthGovLaserCarbine
+        weight: 24
+      - id: WeaponEarthGovXRay
+        weight: 24
+      - id: SecurityTeleporterEL20
+        weight: 3.5
+      - id: WeaponEarthGovLaserMG
+        weight: 0.5
+    - !type:GroupSelector
+      children:
+      - id: WeaponEarthGovLaserRifle
+        weight: 24
+      - id: WeaponEarthGovLaserCarbine
+        weight: 24
+      - id: WeaponEarthGovXRay
+        weight: 24
+      - id: SecurityTeleporterEL20
+        weight: 3.5
+      - id: WeaponEarthGovLaserMG
+        weight: 0.5

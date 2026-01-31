@@ -104,18 +104,19 @@
   id: FillLockerWarden
   table: !type:AllSelector
     children:
-    - id: FlashlightSeclite
+#    - id: FlashlightSeclite # Orion-Edit: Removed
     #- id: WeaponDisabler # Goobstation (Disablers in belts)
     - id: ClothingBeltSecurityFilled
-    - id: Flash
+#    - id: Flash # Orion-Edit: Removed
     - id: ClothingEyesGlassesSecurity
     - id: ClothingHandsGlovesCombat
-    - id: ClothingShoesBootsJack
+#    - id: ClothingShoesBootsJack # Orion-Edit: Removed
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
+    - id: ClothingOuterCoatWardenBlue # Orion
     - id: RubberStampWarden
     - id: DoorRemoteArmory
-    - id: HoloprojectorSecurity
+#    - id: HoloprojectorSecurity # Orion-Edit: Removed
     - id: BookSpaceLaw
     - id: ClothingBackpackElectropack
       amount: 2
@@ -129,8 +130,8 @@
     - id: Multitool # Goobstation
     - id: Wrench # Goobstation
     - id: ContrabandDetectorFlatpack # Goobstation
+      amount: 2 # Orion
     - id: SecurityMegaphone # goob - loudspeakers
-    - id: BoxBodyBagPrisoner # Orion
 
 - type: entityTable
   id: FillLockerWardenHarduit
@@ -154,36 +155,36 @@
   id: FillLockerSecurity
   table: !type:AllSelector
     children:
-    - id: FlashlightSeclite
-      prob: 0.8
+#    - id: FlashlightSeclite # Orion-Edit: Now in belts
+#      prob: 0.8
     #- id: WeaponDisabler # Goobstation (Disablers in belts)
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
     - id: ClothingOuterArmorBasic
-    - id: ClothingBeltSecurityFilled
+#    - id: ClothingBeltSecurityFilled # Orion-Edit: Now in GroupSelector
     - id: Flash
       prob: 0.5
     - id: ClothingEyesGlassesSecurity
-    - id: ClothingHeadsetSecurity
+#    - id: ClothingHeadsetSecurity # Orion-Edit: Removed
     - id: ClothingHandsGlovesColorBlack
     - id: ClothingShoesBootsJack
     - id: WeaponMeleeNeedle
       prob: 0.1
-    - id: HoloprojectorSecurity
-      prob: 0.6
+#    - id: HoloprojectorSecurity # Orion-Edit: Removed
+#      prob: 0.6
     - id: BookSpaceLaw
       prob: 0.5
     - id: ClothingHeadsetAltSecurityRegular # Goobstation
     - id: PanicButton # Goobstation
-    - id: PepperSpray # Goobstation
+#    - id: PepperSpray # Goobstation # Orion-Edit: Removed
     # Goobstation - Martial Arts - start
     - !type:GroupSelector
       children:
       - id: ClothingBeltSecurityFilled
-        weight: 0.7 # Orion-Edit: 0.5 > 0.7
+        weight: 0.8 # Orion-Edit: 0.5 > 0.8
       - id: ClothingBeltCorporateJudoFilled
-        weight: 0.3 # Orion-Edit: 0.5 > 0.3
+        weight: 0.2 # Orion-Edit: 0.5 > 0.2
     # Goobstation - Martial Arts - end
 
 - type: entity
@@ -200,18 +201,24 @@
   id: FillLockerBrigmedic # heavily good edited
   table: !type:AllSelector
     children:
-    - id: BoxAutoinjectorCartidges
-    - id: ClothingBackpackDuffelSurgeryFilled
+#    - id: BoxAutoinjectorCartidges # Orion-Edit: Removed
+    - id: SurgerykitFilled # Orion-Edit: ClothingBackpackDuffelSurgeryFilled now Surgerykit
     - id: ClothingHandsGlovesLatex
     - id: ClothingOuterHardsuitBrigmedic
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
     - id: ClothingUniformJumpskirtOfLife
       prob: 0.1
+    # Orion-Start
+    - id: ClothingBackpackDuffelBrigmedicFilledJanitorialSupplies
+    - id: MedkitToxinFilled
+    - id: MedkitRadiationFilled
+    # Orion-End
     - id: MedkitOxygenFilled
     - id: MedkitAdvancedFilled
     - id: BoxSyringe
     - id: BoxBodyBagPrisoner # Goob Station | Orion-Edit
+      amount: 2
 
 - type: entity
   id: LockerDetectiveFilled

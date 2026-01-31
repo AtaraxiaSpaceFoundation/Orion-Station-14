@@ -332,6 +332,8 @@
     - id: RubberStampCE
     - id: MetalFoamGrenade
     # Goobstation V
+    - id: SupermatterComputerCircuitboard
+    - id: BaseHandheldStationMapSupermatterCe
     - id: BaseHandheldStationMapPowerCe
     - id: EngineeringTechFabCircuitboard
     - id: CartridgeRocketSingularityBuster
@@ -339,7 +341,7 @@
     - id: WeaponLauncherSingularityBuster
     - id: MachinePowerTransmissionLaserFlatpack
     - id: RCDRechargingCE
-    - id: InducerEngineeringBattery # Orion
+    - id: InducerEngineeringWhiteBattery # Orion
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -410,7 +412,7 @@
     - id: RapidSyringeGun
     - id: BoxSyringePax
     - id: ClothingBeltMilitaryWebbingCMOFilled
-    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: SurgerykitFilled # Orion-Edit: ClothingBackpackDuffelSurgeryFilled now Surgerykit
     # Shitmed
     - id: MedicalBiofabricatorFlatpack
     # Virology
@@ -478,6 +480,8 @@
     - id: ClothingBeltGeminiHoloProjector # Goobstation - Who better to do science with than yourself?
     - id: XenobiologyBountyComputerCircuitboard # Goobstation
     - id: MMI # Goobstation
+    - id: InducerScientificBattery # Orion
+      prob: 0.4
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -521,7 +525,7 @@
   table: !type:AllSelector
     children:
     #- id: WeaponEnergyShotgun # Goobstation - security revamp
-    - id: BookSpaceLaw
+#    - id: BookSpaceLaw # Orion-Edit: Removed
     - id: BoxEncryptionKeySecurity
     - id: CigarGoldCase
       prob: 0.50
@@ -532,7 +536,7 @@
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: DoorRemoteSecurity
-    - id: HoloprojectorSecurity
+#    - id: HoloprojectorSecurity # Orion-Edit: Removed
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard
     #- id: WeaponDisabler # Goobstation (Disablers in belts)

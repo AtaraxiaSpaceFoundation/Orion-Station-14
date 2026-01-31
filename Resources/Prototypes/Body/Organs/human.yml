@@ -151,7 +151,7 @@
       Normal: 15
       Damaged: 6
       Destroyed: 0
-  - type: Food
+#  - type: Food # Orion-Edit: Removed
   - type: Extractable
     grindableSolutionName: organ
   - type: SolutionContainerManager
@@ -232,15 +232,15 @@
   - type: FlavorProfile
     flavors:
       - people
-  - type: FoodSequenceElement
-    sprite:
-      sprite: Mobs/Species/Human/organs.rsi
-      state: brain
-    entries:
-      burger:
-        name: food-sequence-content-brain
-      taco:
-        name: food-sequence-content-brain
+#  - type: FoodSequenceElement # Orion-Edit: Removed
+#    sprite:
+#      sprite: Mobs/Species/Human/organs.rsi
+#      state: brain
+#    entries:
+#      burger:
+#        name: food-sequence-content-brain
+#      taco:
+#        name: food-sequence-content-brain
   - type: Item
     size: Small
     heldPrefix: brain
@@ -254,6 +254,7 @@
   name: eyes
   description: "I see you!"
   components:
+  - type: Food # Orion
   - type: Organ # Shitmed Change
     intCap: 12
     integrity: 12
@@ -282,6 +283,7 @@
   name: tongue
   description: "A fleshy muscle mostly used for lying."
   components:
+  - type: Food # Orion
   - type: Sprite
     state: tongue
   - type: FoodSequenceElement
@@ -304,6 +306,7 @@
   parent: BaseHumanOrgan
   name: appendix
   components:
+  - type: Food # Orion
   - type: Sprite
     layers:
     - state: appendix
@@ -316,6 +319,7 @@
   name: ears
   description: "There are three parts to the ear. Inner, middle and outer. Only one of these parts should normally be visible."
   components:
+  - type: Food # Orion
   - type: Sprite
     state: ears
   - type: FoodSequenceElement
@@ -335,6 +339,7 @@
   name: lungs
   description: "Filters oxygen from an atmosphere, which is then sent into the bloodstream to be used as an electron carrier."
   components:
+  - type: Food # Orion
   - type: Organ # Shitmed Change
     intCap: 17
     integrity: 17
@@ -385,6 +390,7 @@
   name: heart
   description: "I feel bad for the heartless bastard who lost this."
   components:
+  - type: Food # Orion
   - type: Heart # Shitmed Change
   - type: Organ # Shitmed Change
     intCap: 17
@@ -475,6 +481,7 @@
   name: liver
   description: "Pairing suggestion: chianti and fava beans."
   components:
+  - type: Food # Orion
   - type: Liver # Shitmed Change
   - type: Organ # Shitmed Change
     intCap: 21
@@ -516,6 +523,7 @@
   name: kidneys
   description: "Filters toxins from the bloodstream."
   components:
+  - type: Food # Orion
   - type: Organ # Shitmed
     intCap: 21
     integrity: 21

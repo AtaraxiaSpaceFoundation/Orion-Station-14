@@ -1,92 +1,114 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Mind;
+using Content.Shared._Orion.Ghost;
+using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
-using Robust.Shared.Configuration;
+using Robust.Shared.Console;
 using Robust.Shared.Network;
-using Robust.Shared.Timing;
+using Robust.Shared.Player;
 
-namespace Content.Server.Ghost;
+namespace Content.Server._Orion.Ghost;
 
-public sealed class GhostReturnToRoundSystem : EntitySystem
+public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
 {
-    [Dependency] private readonly MindSystem _mindSystem = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly GameTicker _ticker = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly IConsoleHost _console = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+
+    private int _ghostRespawnMaxPlayers;
 
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeNetworkEvent<GhostReturnToRoundRequest>(OnGhostReturnToRoundRequest);
+
+        Cfg.OnValueChanged(CCVars.GhostRespawnMaxPlayers,
+            ghostRespawnMaxPlayers =>
+            {
+                _ghostRespawnMaxPlayers = ghostRespawnMaxPlayers;
+            },
+            true);
+
+        _console.RegisterCommand("returntoround", ReturnToRoundCommand, ReturnToRoundCompletion);
+    }
+
+    public void TryGhostReturnToRound(EntityUid uid, Entity<GhostComponent> ent)
+    {
+        if (TerminatingOrDeleted(ent))
+            return;
+
+        if (!_playerManager.TryGetSessionByEntity(uid, out var session))
+            return;
+
+        if (_playerManager.PlayerCount >= _ghostRespawnMaxPlayers)
+        {
+            SendChatMsg(session,
+                Loc.GetString("ghost-respawn-max-players", ("players", _ghostRespawnMaxPlayers))
+            );
+            return;
+        }
+
+        var timeOffset = GameTiming.CurTime - ent.Comp.TimeOfDeath;
+        if (timeOffset < GhostRespawnTime)
+        {
+            SendChatMsg(session,
+                Loc.GetString("ghost-respawn-time-left", ("time", (GhostRespawnTime - timeOffset).ToString()))
+            );
+            return;
+        }
+
+        _gameTicker.Respawn(session);
+        _adminLogger.Add(LogType.Mind, LogImpact.Medium, $"{Loc.GetString("ghost-respawn-log-return-to-lobby", ("userName", session.Name))}");
+
+        var message= Loc.GetString("ghost-respawn-window-rules-footer");
+        SendChatMsg(session, message);
     }
 
     private void OnGhostReturnToRoundRequest(GhostReturnToRoundRequest msg, EntitySessionEventArgs args)
     {
-        var uid = args.SenderSession.AttachedEntity;
-
-        if (uid == null)
+        if (args.SenderSession.AttachedEntity is not { } ghost)
             return;
 
-        var connectedClient = args.SenderSession.Channel;
-        var userId = args.SenderSession.UserId;
+        if (!TryComp<GhostComponent>(ghost, out var ghostComponent))
+            return;
 
-        TryGhostReturnToRound(uid.Value, connectedClient, userId, out var message, out var wrappedMessage);
-
-        _chatManager.ChatMessageToOne(ChatChannel.Server,
-            message,
-            wrappedMessage,
-            default,
-            false,
-            connectedClient,
-            Color.Red);
+        TryGhostReturnToRound(ghost, (ghost, ghostComponent));
     }
 
-    private void TryGhostReturnToRound(EntityUid uid, INetChannel connectedClient, NetUserId userId, out string message, out string wrappedMessage)
+    private CompletionResult ReturnToRoundCompletion(IConsoleShell shell, string[] args)
     {
-        var maxPlayers = _cfg.GetCVar(CCVars.GhostRespawnMaxPlayers);
-        if (_playerManager.PlayerCount >= maxPlayers)
+        return CompletionResult.Empty;
+    }
+
+    [AnyCommand]
+    private void ReturnToRoundCommand(IConsoleShell shell, string argstr, string[] args)
+    {
+        if (shell.Player?.AttachedEntity is not { } ghost || !TryComp<GhostComponent>(ghost, out var ghostComponent))
         {
-            message = Loc.GetString("ghost-respawn-max-players", ("players", maxPlayers));
-            wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+            shell.WriteError("This command can only be run by a player with an attached entity.");
             return;
         }
 
-        var deathTime = EnsureComp<GhostComponent>(uid).TimeOfDeath;
+        TryGhostReturnToRound(ghost, (ghost, ghostComponent));
+    }
 
-        if (_mindSystem.TryGetMind(uid, out _, out var mind) && mind.TimeOfDeath.HasValue)
-            deathTime = mind.TimeOfDeath.Value;
-
-        var timeUntilRespawn = TimeSpan.FromMinutes(_cfg.GetCVar(CCVars.GhostRespawnTime));
-        var timePast = _gameTiming.CurTime - deathTime;
-
-        if (timePast >= timeUntilRespawn)
-        {
-            _playerManager.TryGetSessionById(userId, out var targetPlayer);
-
-            if (targetPlayer != null)
-                _ticker.Respawn(targetPlayer);
-
-            _adminLogger.Add(LogType.Mind, LogImpact.Medium, $"{Loc.GetString("ghost-respawn-log-return-to-lobby", ("userName", connectedClient.UserName))}");
-
-            message = Loc.GetString("ghost-respawn-window-rules-footer");
-            wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
-
-            return;
-        }
-
-        var timeLeft = timeUntilRespawn - timePast;
-        message = timeLeft.Minutes > 0
-            ? Loc.GetString("ghost-respawn-minutes-left", ("time", timeLeft.Minutes))
-            : Loc.GetString("ghost-respawn-seconds-left", ("time", timeLeft.Seconds));
-
-        wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", message));
+    private void SendChatMsg(ICommonSession sess, string message)
+    {
+        _chatManager.ChatMessageToOne(ChatChannel.Server,
+            message,
+            Loc.GetString("chat-manager-server-wrap-message", ("message", message)),
+            default,
+            false,
+            sess.Channel,
+            Color.Red);
     }
 }

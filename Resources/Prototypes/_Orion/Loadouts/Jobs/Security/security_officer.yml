@@ -3,3 +3,39 @@
   id: SecuritySideCap
   equipment:
     head: ClothingHeadHatSecuritySideCap
+
+# Neck
+- type: loadout
+  id: SecurityScarfRed
+  equipment:
+    neck: ClothingNeckScarfStripedRed
+
+# Pocket 2
+- type: loadout
+  id: SecurityGunG22
+  equipment:
+    pocket2: WeaponPistolG22
+  storage:
+    back:
+    - MagazinePistol
+
+- type: loadout
+  id: SecurityGunG23
+  equipment:
+    pocket2: WeaponPistolG23
+  storage:
+    back:
+    - MagazinePistol
+
+- type: loadout
+  id: SecurityGunMk58
+  equipment:
+    pocket2: WeaponPistolMk58
+  storage:
+    back:
+    - MagazinePistol
+
+- type: loadout
+  id: SecurityGunLaserPistol
+  equipment:
+    pocket2: WeaponEarthGovLaserPistol

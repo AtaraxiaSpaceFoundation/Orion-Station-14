@@ -39,3 +39,55 @@ ent-GunSafeLaserCarbineAlertLocked = { ent-GunSafeLaserCarbine }
 ent-GunSafeLaserCarbineAlertUnlocked = { ent-GunSafeLaserCarbine }
     .suffix = Лазерный карабин
     .desc = { ent-GunSafeLaserCarbine.desc }
+
+ent-GunSafeRandomPistolAlertUnlocked = сейф с пистолетами
+    .suffix = Случайный, пистолет
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomSubMachineGunAlertUnlocked = сейф с ПП
+    .suffix = Случайный, ПП
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomSubMachineGunAlertLocked = { ent-GunSafeRandomSubMachineGunAlertUnlocked }
+    .suffix = Случайный, ПП, Блокировка по коду
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomLightRifleAlertUnlocked = сейф с лёгкими винтовками
+    .suffix = Случайный, лёгкая винтовка
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomLightRifleAlertLocked = { ent-GunSafeRandomLightRifleAlertUnlocked }
+    .suffix = Случайный, лёгкая винтовка, Блокировка по коду
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomHeavyRifleAlertUnlocked = сейф с тяжёлыми винтовками
+    .suffix = Случайный, тяжёлая винтовка
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomHeavyRifleAlertLocked = { ent-GunSafeRandomHeavyRifleAlertUnlocked }
+    .suffix = Случайный, тяжёлая винтовка, Блокировка по коду
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomPumpShotgunAlertUnlocked = сейф с помповыми дробовиками
+    .suffix = Случайный, помповый дробовик
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomPumpShotgunAlertLocked = { ent-GunSafeRandomPumpShotgunAlertUnlocked }
+    .suffix = Случайный, помповый дробовик, Блокировка по коду
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomAutoShotgunAlertUnlocked = сейф с автоматическими дробовиками
+    .suffix = Случайный, автоматический дробовик
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomAutoShotgunAlertLocked = { ent-GunSafeRandomAutoShotgunAlertUnlocked }
+    .suffix = Случайный, автоматический дробовик, Блокировка по коду
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomLaserCarbineAlertUnlocked = сейф с лазерными винтовками
+    .suffix = Случайный, лазерное вооружение
+    .desc = { ent-GunSafeBaseSecure.desc }
+
+ent-GunSafeRandomLaserCarbineAlertLocked = { ent-GunSafeRandomLaserCarbineAlertUnlocked }
+    .suffix = Случайный, лазерное вооружение, Блокировка по коду
+    .desc = { ent-GunSafeBaseSecure.desc }

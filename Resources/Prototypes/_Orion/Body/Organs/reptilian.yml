@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseHumanOrgan
+  parent: OrganHumanTongue
   id: OrganReptilianTongue
   name: reptilian tongue
   description: Fleshy muscle used mainly for hissing.

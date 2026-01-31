@@ -122,11 +122,11 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     ears: ClothingHeadsetAltSecurityRegular # Goobstation
-    pocket1: WeaponPistolMk58
+    pocket1: WeaponDisabler # Orion-Edit: PistolMk58 > Disabler
   storage:
     back:
     - Flash
-    - MagazinePistol
+#    - MagazinePistol # Orion-Edit: Now in loadout
 
 - type: chameleonOutfit
   id: SecurityOfficerChameleonOutfit

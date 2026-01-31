@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  id: AlertLevelLock
+  id: AlertLevelLockRed
   components:
   - type: StationAlertLevelLock
     lockedAlertLevels:
@@ -8,3 +8,27 @@
     - blue
     - yellow
     - violet
+    bypassAccessLists:
+    - [ Armory ]
+
+- type: entity
+  abstract: true
+  id: AlertLevelLockBlue
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+    bypassAccessLists:
+    - [ Armory ]
+
+- type: entity
+  abstract: true
+  id: AlertLevelLockCC
+  components:
+  - type: StationAlertLevelLock
+    lockedAlertLevels:
+    - green
+    - yellow
+    bypassAccessLists:
+    - [ CentralCommand ]

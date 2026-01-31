@@ -122,6 +122,15 @@
               collection: MetalBreak
               params:
                 volume: -8
+  # <Goob>
+#  - type: ContainerFill # Orion-Edit: Reverted
+#    containers:
+#      board: [ CameraElectronics ]
+#  - type: ContainerContainer # Orion-Edit: Reverted
+#    containers:
+#      board: !type:Container
+  - type: RequireProjectileTarget
+  # </Goob>
   placement:
     mode: SnapgridCenter
     snap:

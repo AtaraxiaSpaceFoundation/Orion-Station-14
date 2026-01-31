@@ -35,7 +35,7 @@
       Normal: 13
       Damaged: 6
       Destroyed: 0
-  - type: Food
+#  - type: Food # Orion-Edit: Removed
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
   - type: StaticPrice
@@ -71,6 +71,7 @@
   name: lungs
   categories: [ HideSpawnMenu ]
   components:
+  - type: Food # Orion
   - type: Sprite
     layers:
     - state: lung-l
@@ -117,6 +118,7 @@
   name: stomach
   categories: [ HideSpawnMenu ]
   components:
+  - type: Food # Orion
   - type: Sprite
     state: stomach
   - type: Organ
@@ -172,6 +174,7 @@
   name: liver
   categories: [ HideSpawnMenu ]
   components:
+  - type: Food # Orion
   - type: Sprite
     state: liver
   - type: Organ
@@ -204,6 +207,7 @@
   name: heart
   categories: [ HideSpawnMenu ]
   components:
+  - type: Food # Orion
   - type: Sprite
     state: heart-on
   - type: Organ
@@ -237,6 +241,7 @@
   name: kidneys
   categories: [ HideSpawnMenu ]
   components:
+  - type: Food # Orion
   - type: Sprite
     layers:
     - state: kidney-l

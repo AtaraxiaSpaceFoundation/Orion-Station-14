@@ -155,7 +155,7 @@ DefaultStationBeaconInteQSizo37: DefaultStationBeaconInteQSizo73
 MagazineBoxLight57x28InteQ: MagazineBoxPistolInteQ
 MagazineBoxLight762x39InteQ: MagazineBoxLightRifleInteQ
 
-AirlockHatchBasik: AirlockHatchInteQVanguardLocked
+AirlockHatchBasik: AirlockHatchInteQ
 
 BackmenVendingMachineCigs: RandomVending
 BackmenVendingMachineCola: RandomVending
@@ -246,19 +246,21 @@ SpawnMobGuardERTUnitSecurity: null
 WeaponDominatorNT: WeaponDisabler
 WindoorMTFMedicalLocked: WindoorSecureCentralCommandLocked
 
-GunSafeRifleLecter: GunSafeRifleLecterAlertLocked
-GunSafeSubMachineGunDrozd: GunSafeSubMachineGunDrozdAlertLocked
-GunSafeShotgunEnforcer: GunSafeShotgunEnforcerAlertLocked
-GunSafeShotgunKammerer: GunSafeShotgunKammererAlertLocked
-GunSafeSubMachineGunWt550: GunSafeSubMachineGunWt550AlertLocked
-GunSafeLaserCarbine: GunSafeLaserCarbineAlertLocked
-GlassBoxLaserFilled: GlassBoxLaserFilledAlertLocked
+GunSafeRifleLecter: GunSafeRandomHeavyRifleAlertLocked
+GunSafeSubMachineGunDrozd: GunSafeRandomLightRifleAlertLocked
+GunSafeShotgunEnforcer: GunSafeRandomAutoShotgunAlertLocked
+GunSafeShotgunKammerer: GunSafeRandomPumpShotgunAlertLocked
+GunSafeSubMachineGunWt550: GunSafeRandomSubMachineGunAlertLocked
+GunSafeLaserCarbine: GunSafeRandomLaserCarbineAlertLocked
+GunSafePistolMk58: GunSafeRandomPistolAlertUnlocked
 
 EnergyChemDispenser: ChemDispenser
 ChemDispenserEmpty: ChemDispenser
 MiniChemDispenserEmpty: MiniChemDispenser
 BoozeDispenserEmpty: BoozeDispenser
 SodaDispenserEmpty: SodaDispenser
+
+ClothingBackpackDuffelSurgeryFilled: SurgerykitFilled
 
 BaseSecretDoorAssembly: null
 
@@ -267,6 +269,20 @@ PowerCellMicroreactorPrinted: PowerCellBluespaceReactorPrinted
 PowerCellAntiqueProto: PowerCellInfinite
 
 ClothingUnderSocksBee: ClothingSocksBee
+
+ConstructionBarricade: Barricade
+FishingRodGoon: FishingRod
+FishingRodGolden: FishingRod
+PlushieHuman: ToySpawner
+PlushieArachind: ToySpawner
+PlushieDiona: ToySpawner
+DrinkGinAndSonic: RandomDrinkGlass
+DrinkGoldenCat: RandomDrinkGlass
+DrinkPineappleBlast: RandomDrinkGlass
+DrinkTorpedoJuice: RandomDrinkGlass
+DrinkBeesKnees: RandomDrinkGlass
+ImmovableRodSkibidi: ImmovableRod
+MobRatKingBuff: MobRatKing
 
 # Orion-End
 

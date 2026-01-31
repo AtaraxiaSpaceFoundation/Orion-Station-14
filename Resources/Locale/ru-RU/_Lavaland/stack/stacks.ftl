@@ -9,3 +9,8 @@ stack-unprocessed-uranium-ore = необработанная урановая р
 stack-unprocessed-bananium-ore = необработанная бананиумная руда
 stack-unprocessed-coal = необработанный уголь
 stack-unprocessed-artifact-fragment-ore = незавершённый фрагмент артефакта
+
+stack-watcher-wing = крыло смотрителя
+stack-magma-wing = крыло магмового смотрителя
+stack-ice-wing = крыло ледяного смотрителя
+stack-legion-skull = череп легиона

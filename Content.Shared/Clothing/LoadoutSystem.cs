@@ -151,6 +151,16 @@ public sealed class LoadoutSystem : EntitySystem
         return "Job" + loadout;
     }
 
+    // goob
+    public static string GetAntagPrototype(string? antagId)
+    {
+        if (string.IsNullOrEmpty(antagId))
+            return string.Empty;
+
+        return "Antag" + antagId;
+    }
+    // goob end
+
     public EntProtoId? GetFirstOrNull(LoadoutPrototype loadout)
     {
         EntProtoId? proto = null;
@@ -196,20 +206,30 @@ public sealed class LoadoutSystem : EntitySystem
             }
         }
 
-        return null;
-    }
-
-    public string GetName(LoadoutPrototype loadout)
-    {
-        if (loadout.DummyEntity is not null && _protoMan.TryIndex<EntityPrototype>(loadout.DummyEntity, out var proto))
-            return proto.Name;
-
-        if (_protoMan.TryIndex(loadout.StartingGear, out var gear))
+        // Orion-Edit-Start: Return first prototype instead of null for multi-item loadouts
+        // Try inhand first
+        if (gear.Inhand.Count > 0 && _protoMan.TryIndex<EntityPrototype>(gear.Inhand[0], out var firstProto))
         {
-            return GetName(gear);
+            return firstProto.ID;
         }
 
-        return GetName((IEquipmentLoadout) loadout);
+        // Try equipment
+        if (gear.Equipment.Count > 0 && _protoMan.TryIndex<EntityPrototype>(gear.Equipment.Values.First(), out firstProto))
+        {
+            return firstProto.ID;
+        }
+
+        // Try storage
+        foreach (var ents in gear.Storage.Values)
+        {
+            if (ents.Count > 0 && _protoMan.TryIndex<EntityPrototype>(ents[0], out firstProto))
+            {
+                return firstProto.ID;
+            }
+        }
+
+        return null;
+        // Orion-Edit-End
     }
 
     /// <summary>
@@ -247,6 +267,29 @@ public sealed class LoadoutSystem : EntitySystem
                 break;
             }
         }
+        // Orion-Start: Show first prototype name instead of "unknown" for multi-item loadouts
+        
+        // Get first available prototype from inhand
+        if (gear.Inhand.Count > 0 && _protoMan.TryIndex<EntityPrototype>(gear.Inhand[0], out var firstProto))
+        {
+            return firstProto.Name;
+        }
+
+        // Get first available prototype from equipment
+        if (gear.Equipment.Count > 0 && _protoMan.TryIndex<EntityPrototype>(gear.Equipment.Values.First(), out firstProto))
+        {
+            return firstProto.Name;
+        }
+
+        // Get first available prototype from storage
+        foreach (var values in gear.Storage.Values)
+        {
+            if (values.Count > 0 && _protoMan.TryIndex<EntityPrototype>(values[0], out firstProto))
+            {
+                return firstProto.Name;
+            }
+        }
+        // Orion-End
 
         return Loc.GetString($"unknown");
     }

@@ -275,12 +275,14 @@ namespace Content.Client.RoundEnd
                     var totalDamage = playerInfo.DamagePerGroup.Values.Sum(static v => (decimal) v);
                     var severityAdj = totalDamage switch
                     {
-                        >= 1000 => "catastrophic",
-                        >= 750 => "devastating",
-                        >= 500 => "agonizing",
-                        >= 300 => "painful",
-                        >= 200 => "brutal",
-                        _ => "tragic"
+                        // Orion-Edit-Start: Localization
+                        >= 1000 => Loc.GetString("summary-death-severity-catastrophic"),
+                        >= 750 => Loc.GetString("summary-death-severity-devastating"),
+                        >= 500 => Loc.GetString("summary-death-severity-agonizing"),
+                        >= 300 => Loc.GetString("summary-death-severity-painful"),
+                        >= 200 => Loc.GetString("summary-death-severity-brutal"),
+                        _ => Loc.GetString("summary-death-severity-tragic"),
+                        // Orion-Edit-End
                     };
 
                     var highestDamage = playerInfo.DamagePerGroup
@@ -288,20 +290,35 @@ namespace Content.Client.RoundEnd
                         .First();
                     var typeAdj = highestDamage.Key switch
                     {
-                        "Burn" => "fiery",
-                        "Brute" => "crushing",
-                        "Toxin" => "poisonous",
-                        "Airloss" => "suffocating",
-                        "Genetic" => "twisted",
-                        "Metaphysical" => "otherworldly",
-                        "Electronic" => "shocking",
-                        _ => "mysterious",
+                        // Orion-Edit-Start: Localization
+                        "Burn" => Loc.GetString("summary-death-type-fiery"),
+                        "Brute" => Loc.GetString("summary-death-type-crushing"),
+                        "Toxin" => Loc.GetString("summary-death-type-poisonous"),
+                        "Airloss" => Loc.GetString("summary-death-type-suffocating"),
+                        "Genetic" => Loc.GetString("summary-death-type-twisted"),
+                        "Metaphysical" => Loc.GetString("summary-death-type-otherworldly"),
+                        "Electronic" => Loc.GetString("summary-death-type-shocking"),
+                        _ => Loc.GetString("summary-death-type-mysterious"),
+                        // Orion-Edit-End
                     };
 
-                    deathLabel.SetMarkup(
-                        Loc.GetString("round-end-summary-window-death",
-                            ("severity", severityAdj),
-                            ("type", typeAdj)));
+                    // Orion-Edit-Start: Localization
+                    if (playerInfo.PlayerNetEntity != null && _entityManager.TryGetEntity(playerInfo.PlayerNetEntity.Value, out _))
+                    {
+                        deathLabel.SetMarkup(
+                            Loc.GetString("round-end-summary-window-death",
+                                ("entity", _entityManager.GetEntity(playerInfo.PlayerNetEntity.Value)),
+                                ("severity", severityAdj),
+                                ("type", typeAdj)));
+                    }
+                    else
+                    {
+                        deathLabel.SetMarkup(
+                            Loc.GetString("round-end-summary-window-death-null",
+                                ("severity", severityAdj),
+                                ("type", typeAdj)));
+                    }
+                    // Orion-Edit-End
 
                     var damageTable = new GridContainer
                     {
@@ -343,7 +360,7 @@ namespace Content.Client.RoundEnd
                         };
                         var headerLabel = new Label
                         {
-                            Text = damage.Key,
+                            Text = GetDamageTypeName(damage.Key), // Orion-Edit: Localization
                             FontColorOverride = Color.Gray,
                             HorizontalAlignment = HAlignment.Center,
                             VerticalAlignment = VAlignment.Center,
@@ -403,6 +420,23 @@ namespace Content.Client.RoundEnd
             return stationReportTab;
         }
         #endregion
+
+        // Orion-Start
+        private string GetDamageTypeName(string damageType)
+        {
+            return damageType switch
+            {
+                "Burn" => Loc.GetString("damage-group-burn"),
+                "Brute" => Loc.GetString("damage-group-brute"),
+                "Toxin" => Loc.GetString("damage-group-toxin"),
+                "Airloss" => Loc.GetString("damage-type-asphyxiation"),
+                "Genetic" => Loc.GetString("damage-group-genetic"),
+                "Metaphysical" => Loc.GetString("damage-group-metaphysical"),
+                "Electronic" => Loc.GetString("damage-type-shock"),
+                _ => damageType,
+            };
+        }
+        // Orion-End
     }
 
 }

@@ -1,0 +1,16 @@
+- type: entity
+  parent: BaseLockerTeleporter
+  id: SecurityTeleporterEL20
+  name: security teleporter (EL-20)
+  description: A device that allows the delivery of a special cargo.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Devices/unique_teleporters.rsi
+    state: security
+  - type: Item
+    sprite: _Orion/Objects/Devices/unique_teleporters.rsi
+  - type: SpawnItemsOnUse
+    items:
+    - id: MilitaryPowerCellLMG
+      amount: 2
+    - id: ClothingBackpackLMGBattery

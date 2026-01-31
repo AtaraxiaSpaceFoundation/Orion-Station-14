@@ -134,10 +134,10 @@
         orGroup: GiftPool
       - id: ToyAmongPequeno
         orGroup: GiftPool
-      - id: PlushieDiona
-        orGroup: GiftPool
-      - id: PlushieArachind
-        orGroup: GiftPool
+#      - id: PlushieDiona # Orion-Edit: NC license sprites
+#        orGroup: GiftPool
+#      - id: PlushieArachind # Orion-Edit: NC license sprites
+#        orGroup: GiftPool
       - id: ClothingNeckCloakMoth
         orGroup: GiftPool
       - id: ToyMouse
