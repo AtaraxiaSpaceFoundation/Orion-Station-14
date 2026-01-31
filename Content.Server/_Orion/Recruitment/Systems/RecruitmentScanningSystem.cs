@@ -52,10 +52,9 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, RecruitedComponent comp, MapInitEvent args)
     {
-        if (comp.RecruitedBy != null || comp.RecruitedAt != TimeSpan.Zero)
+        if (comp.RecruitedAt != TimeSpan.Zero)
             return;
 
-        comp.RecruitedBy = null;
         comp.RecruitedAt = _timing.CurTime;
     }
 
@@ -77,6 +76,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, target, PopupType.LargeCaution);
 
         var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(uid);
+        confirmComp.Scanner = uid;
         confirmComp.Target = target;
         confirmComp.Recruiter = args.User;
         confirmComp.OrganizationName = comp.OrganizationName;
@@ -127,7 +127,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         _ui.CloseUi(uid, RecruitmentConfirmationUiKey.Key);
         RemComp<RecruitmentConfirmationComponent>(uid);
 
-        var doAfter = new DoAfterArgs(EntityManager, confirmComp.Recruiter, scanComp.DoAfterTime, new RecruitmentScanningDoAfterEvent(), uid, target)
+        var doAfter = new DoAfterArgs(EntityManager, confirmComp.Recruiter, scanComp.DoAfterTime, new RecruitmentScanningDoAfterEvent(), uid, target: target, used: uid)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
