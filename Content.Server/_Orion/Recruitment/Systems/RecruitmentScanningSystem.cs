@@ -49,11 +49,11 @@ public sealed class RecruitmentScanningSystem : EntitySystem
 
     private void OnRecruitedMapInit(EntityUid uid, RecruitedComponent comp, MapInitEvent args)
     {
-        if (comp.RecruitedBy == EntityUid.Invalid && comp.RecruitedAt == TimeSpan.Zero)
-        {
-            comp.RecruitedBy = EntityUid.Invalid;
-            comp.RecruitedAt = _timing.CurTime;
-        }
+        if (comp.RecruitedBy != EntityUid.Invalid || comp.RecruitedAt != TimeSpan.Zero)
+            return;
+
+        comp.RecruitedBy = EntityUid.Invalid;
+        comp.RecruitedAt = _timing.CurTime;
     }
 
     private void OnScanAttempt(EntityUid uid, RecruitmentScanningComponent comp, AfterInteractEvent args)
