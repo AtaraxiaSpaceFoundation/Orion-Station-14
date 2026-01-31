@@ -21,12 +21,14 @@ public sealed partial class RecruitmentConfirmationWindow : FancyWindow
 
     public void UpdateState(RecruitmentConfirmationBuiState state)
     {
-        OrganizationLabel.Text = state.OrganizationName;
+        OrganizationLabel.Text = Loc.GetString(state.OrganizationName);
         ImplantLabel.Text = state.ImplantName;
 
         WarningLabel.SetMessage(Loc.GetString("recruitment-ui-warning"));
+
+        var localizedOrgName = Loc.GetString(state.OrganizationName);
         WarningText.SetMessage(Loc.GetString("recruitment-ui-warning-text",
-            ("organization", state.OrganizationName),
+            ("organization", localizedOrgName),
             ("implant", state.ImplantName)));
     }
 }

@@ -20,7 +20,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Recruitment.Systems;
 
-// TODO: Do this like interface with all organization members or something like that
 public sealed class RecruitmentScanningSystem : EntitySystem
 {
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
@@ -59,14 +58,14 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (args.User != target)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, target, PopupType.LargeCaution);
 
-        if (TryComp<ActorComponent>(target, out _))
+        if (TryComp<ActorComponent>(target, out var actor))
         {
             var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(uid);
             confirmComp.Target = target;
             confirmComp.Recruiter = args.User;
             confirmComp.OrganizationName = comp.OrganizationName;
 
-            var implantName = "Unknown Implant";
+            var implantName = Loc.GetString("recruitment-member-list-unknown");
             if (comp.Implant != null && _prototypeManager.TryIndex<EntityPrototype>(comp.Implant.Value, out var implantProto))
             {
                 implantName = implantProto.Name;
@@ -80,7 +79,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
             };
 
             _ui.SetUiState(uid, RecruitmentConfirmationUiKey.Key, state);
-            _ui.TryOpenUi(uid, RecruitmentConfirmationUiKey.Key, target);
+            _ui.OpenUi(uid, RecruitmentConfirmationUiKey.Key, actor.PlayerSession);
         }
 
         args.Handled = true;

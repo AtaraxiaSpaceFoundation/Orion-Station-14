@@ -33,9 +33,11 @@
                     StyleClasses="ButtonColorRed"/>
         </BoxContainer>
 
-        <RichTextLabel Name="WarningLabel"
-                       HorizontalAlignment="Center"
-                       StyleClasses="Caution"/>
+        <controls:StripeBack>
+            <RichTextLabel Name="WarningLabel"
+                           HorizontalAlignment="Center"
+                           StyleClasses="Caution"/>
+        </controls:StripeBack>
         <RichTextLabel Name="WarningText"
                        Margin="2"
                        HorizontalAlignment="Center"

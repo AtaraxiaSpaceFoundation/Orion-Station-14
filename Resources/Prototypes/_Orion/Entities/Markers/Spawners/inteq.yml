@@ -272,6 +272,8 @@
       message: radio-announce-inteq-vanguard-leader-sizo-spawn
       announcementChannels:
         - InteQ
+    - type: Recruited
+      organization: organization-inteq
 
 - type: entity
   parent: SpawnPointInteQ
@@ -308,6 +310,8 @@
       message: radio-announce-inteq-vanguard-sizo-spawn
       announcementChannels:
         - InteQ
+    - type: Recruited
+      organization: organization-inteq
 
 - type: entity
   parent: SpawnPointInteQ
@@ -344,6 +348,8 @@
       message: radio-announce-inteq-vanguard-sizo-spawn
       announcementChannels:
         - InteQ
+    - type: Recruited
+      organization: organization-inteq
 
 - type: entity
   parent: SpawnPointInteQ
@@ -380,3 +386,5 @@
       message: radio-announce-inteq-vanguard-medic-sizo-spawn
       announcementChannels:
         - InteQ
+    - type: Recruited
+      organization: organization-inteq
