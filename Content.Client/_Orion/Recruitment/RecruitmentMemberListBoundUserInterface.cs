@@ -7,7 +7,7 @@ namespace Content.Client._Orion.Recruitment;
 public sealed class RecruitmentMemberListBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
-    private RecruitmentConfirmationWindow? _window;
+    private RecruitmentMemberListWindow? _window;
 
     public RecruitmentMemberListBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
@@ -15,41 +15,16 @@ public sealed class RecruitmentMemberListBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
-        _window = this.CreateWindow<RecruitmentConfirmationWindow>();
-        _window.OnAcceptPressed += OnAccept;
-        _window.OnDeclinePressed += OnDecline;
+        _window = this.CreateWindow<RecruitmentMemberListWindow>();
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
 
-        if (state is RecruitmentConfirmationBuiState buiState)
+        if (state is RecruitmentMemberListBuiState buiState)
         {
             _window?.UpdateState(buiState);
         }
-    }
-
-    private void OnAccept()
-    {
-        SendMessage(new RecruitmentAcceptMessage());
-        Close();
-    }
-
-    private void OnDecline()
-    {
-        SendMessage(new RecruitmentDeclineMessage());
-        Close();
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-
-        if (!disposing || _window == null)
-            return;
-
-        _window.OnAcceptPressed -= OnAccept;
-        _window.OnDeclinePressed -= OnDecline;
     }
 }

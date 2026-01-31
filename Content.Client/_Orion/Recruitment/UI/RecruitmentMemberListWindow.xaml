@@ -1,48 +1,48 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                      Title="{Loc 'recruitment-ui-title'}"
+                      Title="{Loc 'recruitment-list-ui-title'}"
                       MinSize="540 280"
                       SetSize="540 280">
-    <controls:StripeBack>
-        <PanelContainer>
-            <Label Name="OrganizationLabel"
-                   Text="Organization Members"
-                   Align="Center"
-                   Margin="0 5 0 3"
-                   StyleClasses="LabelHeading"/>
-        </PanelContainer>
-    </controls:StripeBack>
+    <BoxContainer Orientation="Vertical" Margin="5" SeparationOverride="5">
+        <controls:StripeBack>
+            <PanelContainer>
+                <Label Name="OrganizationLabel"
+                       Text="{Loc 'recruitment-member-label'}"
+                       Align="Center"
+                       StyleClasses="LabelHeading"/>
+            </PanelContainer>
+        </controls:StripeBack>
 
-    <Label Name="MemberCountLabel"
-           Text="{Loc 'recruitment-member-list-count'}"
-           StyleClasses="LabelSubText"
-           Margin="5"/>
+        <Label Name="MemberCountLabel"
+               Text="{Loc 'recruitment-member-list-count'}"
+               StyleClasses="LabelSubText"
+               Margin="5"/>
 
-    <ScrollContainer Name="MemberScroller"
-                     VerticalExpand="True"
-                     HorizontalExpand="True">
-        <BoxContainer Name="MembersContainer"
-                      Orientation="Vertical"
-                      HorizontalExpand="True"
-                      SeparationOverride="5">
-            <!-- Member rows will be added here dynamically -->
-        </BoxContainer>
-    </ScrollContainer>
+        <ScrollContainer Name="MemberScroller"
+                         VerticalExpand="True"
+                         HorizontalExpand="True">
+            <BoxContainer Name="MembersContainer"
+                          Orientation="Vertical"
+                          HorizontalExpand="True"
+                          SeparationOverride="5">
+                <!-- Member rows will be added here dynamically -->
+            </BoxContainer>
+        </ScrollContainer>
 
-    <!-- No members message -->
-    <Label Name="NoMembersLabel"
-           Text="{Loc 'recruitment-member-list-empty'}"
-           StyleClasses="LabelHeading"
-           FontColorOverride="Gray"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center"
-           Visible="false"/>
+        <Label Name="NoMembersLabel"
+               Text="{Loc 'recruitment-member-list-empty'}"
+               StyleClasses="LabelHeading"
+               FontColorOverride="Gray"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Visible="false"/>
 
-    <BoxContainer Orientation="Vertical">
-        <PanelContainer StyleClasses="LowDivider"/>
-        <BoxContainer Orientation="Horizontal" Margin="5">
-            <Label Text="{Loc 'recruitment-member-list-footer'}"
-                   StyleClasses="WindowFooterText"/>
+        <BoxContainer Orientation="Vertical">
+            <PanelContainer StyleClasses="LowDivider"/>
+            <BoxContainer Orientation="Horizontal" Margin="5">
+                <Label Text="{Loc 'recruitment-member-list-footer'}"
+                       StyleClasses="WindowFooterText"/>
+            </BoxContainer>
         </BoxContainer>
     </BoxContainer>
 </controls:FancyWindow>

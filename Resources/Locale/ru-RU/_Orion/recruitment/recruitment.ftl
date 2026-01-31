@@ -16,3 +16,9 @@ recruitment-ui-warning = ❗ ВНИМАНИЕ ❗
 recruitment-ui-warning-text = Вступая в { $organization }, вам будет установлен { $implant }. Это действие необратимо!
 recruitment-ui-accept = Подписать
 recruitment-ui-decline = Отказаться
+
+recruitment-list-ui-title = Рекруты организации
+recruitment-member-label = Участники организации
+recruitment-member-list-count = Количество: { $count }
+recruitment-member-list-empty = Участники отсутствуют!
+recruitment-member-list-footer = Скебоб

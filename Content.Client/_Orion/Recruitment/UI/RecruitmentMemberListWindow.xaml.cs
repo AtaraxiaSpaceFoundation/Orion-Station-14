@@ -35,11 +35,9 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
         NoMembersLabel.Visible = false;
         MemberScroller.Visible = true;
 
-        // Create header row
         var headerRow = CreateHeaderRow();
         MembersContainer.AddChild(headerRow);
 
-        // Add divider
         var divider = new PanelContainer { StyleClasses = { "LowDivider" } };
         MembersContainer.AddChild(divider);
 
@@ -85,7 +83,7 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
         return row;
     }
 
-    private BoxContainer CreateMemberRow(RecruitedMemberData member)
+    private BoxContainer CreateMemberRow(RecruitmentMemberListBuiState.RecruitedMemberData member)
     {
         var row = new BoxContainer
         {
@@ -102,7 +100,7 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
 
         row.AddChild(new Label
         {
-            Text = member.RecruiterName,
+            Text = member.Name,
             MinWidth = 150,
         });
 
