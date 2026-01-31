@@ -17,17 +17,15 @@ recruitment-ui-warning-text = Вступая в { $organization }, вам буд
 recruitment-ui-accept = Подписать
 recruitment-ui-decline = Отказаться
 
-recruitment-list-ui-title = Рекруты организации
-recruitment-member-label = Участники организации
+recruitment-list-ui-title = База данных организации
+recruitment-member-list-organization = Рекруты { $organization }
 recruitment-member-list-count = Количество: { $count }
 recruitment-member-list-empty = Участники отсутствуют!
-recruitment-member-list-footer = Выйти из организации можно только посмертно! Удачного дня.
-recruitment-member-list-organization = { $organization } - Участники
 
 # Table headers
 recruitment-member-list-header-name = Имя
-recruitment-member-list-header-recruiter = Завербован
-recruitment-member-list-header-time = Время
+recruitment-member-list-header-recruiter = Вербовщик
+recruitment-member-list-header-time = Стаж
 recruitment-member-list-unknown = Неизвестный
 
 # Time formatting
@@ -35,8 +33,8 @@ recruitment-member-list-time = { $minutes } { $minutes ->
         [1] минуту
         [few] минуты
        *[other] минут
-    } { $seconds } { $seconds ->
+    } и { $seconds } { $seconds ->
         [1] секунду
         [few] секунды
        *[other] секунд
-    } назад.
+    }

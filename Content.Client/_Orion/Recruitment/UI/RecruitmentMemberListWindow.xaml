@@ -1,8 +1,8 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       Title="{Loc 'recruitment-list-ui-title'}"
-                      MinSize="540 280"
-                      SetSize="540 280">
+                      MinSize="640 350"
+                      SetSize="640 350">
     <BoxContainer Orientation="Vertical" Margin="5" SeparationOverride="5">
         <controls:StripeBack>
             <PanelContainer>
@@ -12,11 +12,6 @@
                        StyleClasses="LabelHeading"/>
             </PanelContainer>
         </controls:StripeBack>
-
-        <Label Name="MemberCountLabel"
-               Text="{Loc 'recruitment-member-list-count'}"
-               StyleClasses="LabelSubText"
-               Margin="5"/>
 
         <ScrollContainer Name="MemberScroller"
                          VerticalExpand="True"
@@ -40,8 +35,12 @@
         <BoxContainer Orientation="Vertical">
             <PanelContainer StyleClasses="LowDivider"/>
             <BoxContainer Orientation="Horizontal" Margin="5">
-                <Label Text="{Loc 'recruitment-member-list-footer'}"
-                       StyleClasses="WindowFooterText"/>
+                <Label Name="MemberCountLabel"
+                       Text="{Loc 'recruitment-member-list-count'}"
+                       StyleClasses="LabelSubText"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="5"/>
             </BoxContainer>
         </BoxContainer>
     </BoxContainer>

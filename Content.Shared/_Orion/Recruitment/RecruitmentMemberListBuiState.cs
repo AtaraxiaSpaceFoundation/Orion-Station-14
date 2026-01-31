@@ -5,10 +5,10 @@ namespace Content.Shared._Orion.Recruitment;
 [Serializable, NetSerializable]
 public sealed class RecruitmentMemberListBuiState : BoundUserInterfaceState
 {
-    public LocId OrganizationName { get; }
-    public IReadOnlyList<RecruitedMemberData> Members { get; }
+    public string OrganizationName;
+    public RecruitedMemberData[] Members;
 
-    public RecruitmentMemberListBuiState(string organizationName, IReadOnlyList<RecruitedMemberData> members)
+    public RecruitmentMemberListBuiState(string organizationName, RecruitedMemberData[] members)
     {
         OrganizationName = organizationName;
         Members = members;

@@ -21,11 +21,11 @@ public sealed partial class RecruitmentMemberListWindow : FancyWindow
     public void UpdateState(RecruitmentMemberListBuiState state)
     {
         OrganizationLabel.Text = Loc.GetString("recruitment-member-list-organization", ("organization", state.OrganizationName));
-        MemberCountLabel.Text = Loc.GetString("recruitment-member-list-count", ("count", state.Members.Count));
+        MemberCountLabel.Text = Loc.GetString("recruitment-member-list-count", ("count", state.Members.Length));
 
         MembersContainer.RemoveAllChildren();
 
-        if (state.Members.Count == 0)
+        if (state.Members.Length == 0)
         {
             NoMembersLabel.Visible = true;
             MemberScroller.Visible = false;
