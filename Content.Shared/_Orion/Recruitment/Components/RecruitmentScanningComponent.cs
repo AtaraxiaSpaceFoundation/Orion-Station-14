@@ -19,7 +19,7 @@ public sealed partial class RecruitmentScanningComponent : Component
     [DataField]
     public string? Faction;
 
-    [DataField]
+    [DataField("organization")]
     public LocId OrganizationName = "organization-unknown";
 
     [DataField]

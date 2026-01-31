@@ -14,12 +14,16 @@
     sprite: _Orion/Objects/Devices/inteq_uplink.rsi
     heldPrefix: inteq-uplink
   - type: RecruitmentScanning
-    implant: DeathRattleImplantInteQ
     faction: InteQ
-    organizationName: organization-inteq
+    implant: DeathRattleImplantInteQ
+    organization: organization-inteq
   - type: ScannableForPoints # Goob
     points: 3
+  - type: ActivatableUI
+    key: enum.RecruitmentMemberListUiKey.Key
   - type: UserInterface
     interfaces:
       enum.RecruitmentConfirmationUiKey.Key:
         type: RecruitmentConfirmationBoundUserInterface
+      enum.RecruitmentMemberListUiKey.Key:
+        type: RecruitmentMemberListBoundUserInterface
