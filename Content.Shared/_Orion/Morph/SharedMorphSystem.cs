@@ -20,11 +20,11 @@ public abstract class SharedMorphSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MorphComponent, AttemptMeleeEvent>(TryMeleeAtack);
+        SubscribeLocalEvent<MorphComponent, AttemptMeleeEvent>(TryMeleeAttack);
         SubscribeLocalEvent<ChameleonProjectorComponent, EventMimicryActivate>(TryMimicry);
     }
 
-    private void TryMeleeAtack(EntityUid uid, MorphComponent component, ref AttemptMeleeEvent args)
+    private void TryMeleeAttack(EntityUid uid, MorphComponent component, ref AttemptMeleeEvent args)
     {
         // Abort attack if the user is disguised
         if (HasComp<ChameleonDisguisedComponent>(uid))
@@ -45,17 +45,17 @@ public abstract class SharedMorphSystem : EntitySystem
 
     public void DisguiseInventory(Entity<ChameleonProjectorComponent> ent, EntityUid target)
     {
-        if(_net.IsClient)
+        if (_net.IsClient)
             return;
 
         var user = ent.Comp.Disguised;
 
-        if (!TryComp<ChameleonDisguisedComponent>(user, out var chamelion))
+        if (!TryComp<ChameleonDisguisedComponent>(user, out var chameleon))
             return;
 
-        var disguise = chamelion.Disguise;
+        var disguise = chameleon.Disguise;
 
-        if (!TryComp<HumanoidAppearanceComponent>(target, out var targetHumanoidAppearance))
+        if (!TryComp<HumanoidAppearanceComponent>(target, out _))
             return;
 
         EnsureComp<HumanoidAppearanceComponent>(disguise);

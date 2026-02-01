@@ -37,7 +37,7 @@ public sealed partial class MorphComponent : Component
     public FixedPoint2 Biomass;
 
     [DataField]
-    public float MaxBiomass = 300;
+    public FixedPoint2 MaxBiomass = FixedPoint2.New(300);
 
     [DataField]
     public DamageSpecifier DamageOnTouch = default!;
@@ -49,7 +49,7 @@ public sealed partial class MorphComponent : Component
     public float DevourWeaponOnHit = 0.2f;
 
     [DataField]
-    public float DevourWeaponOnHited = 0.5f;
+    public float DevourWeaponOnBeingHit = 0.5f;
 
     [DataField]
     public int DevourWeaponHungerCost = 5;
@@ -128,7 +128,7 @@ public sealed partial class MorphComponent : Component
     /// </summary>
     [DataField]
     public int Children;
-    public static int TotalChildren = 0;
+    public int TotalChildren = 0;
 
     /// <summary>
     ///     How much damage to trigger undisguise

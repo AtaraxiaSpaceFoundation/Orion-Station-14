@@ -154,7 +154,7 @@ public sealed class MorphSystem : SharedMorphSystem
             _chameleon.TryReveal((uid, comp));
     }
 
-    private void OnDeath(Entity<MorphComponent> morph, ref  MobStateChangedEvent args)
+    private void OnDeath(Entity<MorphComponent> morph, ref MobStateChangedEvent args)
     {
         if (args.NewMobState is MobState.Dead && TryComp<ChameleonDisguisedComponent>(morph.Owner, out var comp))
             _chameleon.TryReveal((morph.Owner, comp));
@@ -183,7 +183,7 @@ public sealed class MorphSystem : SharedMorphSystem
         if (morph == null)
             return;
 
-        morph.Biomass = FixedPoint2.Min(morph.Biomass+amount, morph.MaxBiomass);
+        morph.Biomass = FixedPoint2.Min(morph.Biomass + amount, morph.MaxBiomass);
         Dirty(uid, morph);
         _alerts.ShowAlert(uid, morph.BiomassAlert);
     }
@@ -202,7 +202,7 @@ public sealed class MorphSystem : SharedMorphSystem
             _damageable.TryChangeDamage(args.User, morph.Comp.DamageOnTouch);
             _hunger.ModifyHunger(morph, morph.Comp.DevourWeaponHungerCost, hunger);
         }
-        else if (_random.Prob(morph.Comp.DevourWeaponOnHited) && _hunger.GetHunger(hunger) >= morph.Comp.DevourWeaponHungerCost)
+        else if (_random.Prob(morph.Comp.DevourWeaponOnBeingHit) && _hunger.GetHunger(hunger) >= morph.Comp.DevourWeaponHungerCost)
         {
             morph.Comp.ContainedCreatures.Add(args.Used);
             _transform.SetCoordinates(args.Used, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
@@ -276,6 +276,9 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnAmbushAttack(Entity<MorphAmbushComponent> ent, ref MeleeHitEvent args)
     {
+        if (args.HitEntities.Count == 0)
+            return;
+
         _standing.Down(args.HitEntities[0]);
         AmbushBreak(ent);
     }
@@ -362,7 +365,7 @@ public sealed class MorphSystem : SharedMorphSystem
             return;
         }
 
-        if (morph.MemoryObjects.Count() > 5)
+        if (morph.MemoryObjects.Count > 5)
         {
             morph.MemoryObjects.RemoveAt(0);
         }
@@ -505,7 +508,7 @@ public sealed class MorphSystem : SharedMorphSystem
             morphList.Add(ent);
         }
 
-        if (morphList.Count() == morph.DetectableCount)
+        if (morphList.Count == morph.DetectableCount)
         {
             _chatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
             _audioSystem.PlayGlobal(morph.SoundReplication, Filter.Broadcast(), true);
