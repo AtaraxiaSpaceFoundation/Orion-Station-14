@@ -194,7 +194,7 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<DevourerComponent>(morph, out var devourer))
             return;
 
-        if (args.User == args.Used && TryComp<MobStateComponent>(morph, out var mobState) && _mobState.IsDead(morph, mobState))
+        if (args.User == args.Used)
         {
             _damageable.TryChangeDamage(args.User, morph.Comp.DamageOnTouch);
             ChangeBiomassAmount(morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
