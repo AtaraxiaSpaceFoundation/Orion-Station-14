@@ -69,9 +69,6 @@ public sealed class ElectricityAnomalySystem : EntitySystem
             // Orion-Start
             if (TerminatingOrDeleted(uid))
                 continue;
-
-            if (_timing.CurTime < elec.NextSecond)
-                continue;
             // Orion-End
 
             if (_timing.CurTime < elec.NextSecond)
