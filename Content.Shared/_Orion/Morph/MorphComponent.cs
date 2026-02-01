@@ -75,23 +75,8 @@ public sealed partial class MorphComponent : Component
         Params = AudioParams.Default.WithVolume(-3f),
     };
 
-    [DataField]
-    public float DevourTime = 3f;
-
-    public List<EntityUid> ContainedCreatures = [];
-
     [AutoNetworkedField]
     public List<EntityUid> MemoryObjects = [];
-
-    [DataField]
-    public EntityWhitelist? DevourWhitelist = new();
-
-    [DataField]
-    public EntityWhitelist? DevourBlacklist = new();
-
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string? DevourAction = "ActionMorphDevour";
-    public EntityUid? DevourActionEntity;
 
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string? MemoryAction = "ActionMorphRemember";

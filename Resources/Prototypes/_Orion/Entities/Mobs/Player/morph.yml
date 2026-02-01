@@ -77,44 +77,23 @@
       types:
         Blunt: 16
         Slash: 14
-    devourWhitelist:
-      components:
-        - Item
-        - MobState
-      tags:
-        - Structure
-    devourBlacklist: # Maximal anti-grief gameplay
-      components:
-        - Morph
-        - Supermatter
-        - TegGenerator
-        - StationAnchor
-        - GravityGenerator
-        - Nuke
-        - NukeDisk
-        - SpecialRespawn
-        - GasMiner
-        - PipeAppearance
-        - PipeColorVisuals
-        - PipeRestrictOverlap
-        - AtmosUnsafeUnanchor
-        - AtmosPipeColor
-        - PowerSupplier
-        - PowerNetworkBattery
-        - Smes
-        - Monument
-        - Emitter
-        - Holopad
-        - TurretTargetSettings
-        - ParticleAcceleratorEmitter
-        - ContainmentFieldGenerator
-        - BluespaceLocker
-        - CargoSellBlacklist
-        - ArrivalsBlacklist
-        - FTLSmashImmune
-        - SupermatterImmune
-      tags:
-        - IgnoreImmovableRod
+ - type: Devourer
+   devourTime: 3
+   structureDevourTime: 10
+   whitelist:
+     components:
+       - Item
+       - MobState
+     tags:
+       - Structure
+   stomachStorageWhitelist:
+     components:
+       - Item
+       - MobState
+   foodPreferenceWhitelist:
+     components:
+       - MobState
+       - Humanoid
   - type: MindContainer
   - type: ChameleonProjector
     whitelist:

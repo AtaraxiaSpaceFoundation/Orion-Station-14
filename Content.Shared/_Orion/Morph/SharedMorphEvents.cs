@@ -13,11 +13,6 @@ public sealed partial class MorphMimicryRememberActionEvent : EntityTargetAction
 
 public sealed partial class MorphOpenRadialMenuEvent : InstantActionEvent;
 
-public sealed partial class MorphDevourActionEvent : EntityTargetActionEvent;
-
-[Serializable, NetSerializable]
-public sealed partial class MorphDevourDoAfterEvent : SimpleDoAfterEvent;
-
 public sealed partial class MorphAmbushActionEvent : InstantActionEvent;
 
 public sealed partial class MorphVentOpenActionEvent : EntityTargetActionEvent;

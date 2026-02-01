@@ -11,7 +11,8 @@ using Content.Shared.Body.Events;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
-using Content.Shared.DoAfter;
+using Content.Shared.Devour;
+using Content.Shared.Devour.Components;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Hands.Components;
@@ -31,7 +32,6 @@ using Content.Shared.Standing;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -57,11 +57,8 @@ public sealed class MorphSystem : SharedMorphSystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly WeldableSystem _weldable = default!;
@@ -91,7 +88,6 @@ public sealed class MorphSystem : SharedMorphSystem
 
         SubscribeLocalEvent<MorphComponent, MorphOpenRadialMenuEvent>(OnMimicryRadialMenu);
         SubscribeLocalEvent<MorphComponent, EventMimicryActivate>(OnMimicryActivate);
-        SubscribeLocalEvent<MorphComponent, MorphDevourActionEvent>(OnDevourAction);
         SubscribeLocalEvent<MorphComponent, MorphReproduceActionEvent>(OnReproduceAction);
         SubscribeLocalEvent<MorphComponent, MorphMimicryRememberActionEvent>(OnMimicryRememberAction);
         SubscribeLocalEvent<MorphComponent, MorphVentOpenActionEvent>(OnOpenVentAction);
@@ -101,14 +97,13 @@ public sealed class MorphSystem : SharedMorphSystem
         SubscribeLocalEvent<MorphComponent, MorphAmbushActionEvent>(OnAmbushAction);
         SubscribeLocalEvent<MorphAmbushComponent, UpdateCanMoveEvent>(OnCanMoveEvent);
 
-        SubscribeLocalEvent<MorphComponent, MorphDevourDoAfterEvent>(OnDoDevourAfter);
+        SubscribeLocalEvent<MorphComponent, DevourDoAfterEvent>(OnDevoured);
     }
 
     #region Core
 
     private void OnInit(EntityUid uid, MorphComponent component, MapInitEvent args)
     {
-        _actions.AddAction(uid, ref component.DevourActionEntity, component.DevourAction);
         _actions.AddAction(uid, ref component.MemoryActionEntity, component.MemoryAction);
         _actions.AddAction(uid, ref component.MimicryActionEntity, component.MimicryAction);
         _actions.AddAction(uid, ref component.ReplicationActionEntity, component.ReplicationAction);
@@ -125,10 +120,12 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnDestroy(EntityUid uid, MorphComponent morph, ref BeingGibbedEvent args)
     {
-        foreach (var entity in morph.ContainedCreatures)
+        if (!TryComp<DevourerComponent>(uid, out var devourer))
+            return;
+
+        foreach (var ent in devourer.Stomach.ContainedEntities)
         {
-            var transform = Transform(uid);
-            _transform.SetCoordinates(entity, transform.Coordinates);
+            _transform.SetCoordinates(ent, Transform(uid).Coordinates);
         }
     }
 
@@ -190,6 +187,9 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnAttacked(Entity<MorphComponent> morph, ref AttackedEvent args)
     {
+        if (!TryComp<DevourerComponent>(morph, out var devourer))
+            return;
+
         if (args.User == args.Used)
         {
             _damageable.TryChangeDamage(args.User, morph.Comp.DamageOnTouch);
@@ -197,7 +197,7 @@ public sealed class MorphSystem : SharedMorphSystem
         }
         else if (_random.Prob(morph.Comp.DevourWeaponOnBeingHit) && morph.Comp.Biomass >= morph.Comp.DevourWeaponHungerCost)
         {
-            morph.Comp.ContainedCreatures.Add(args.Used);
+            _container.Insert(args.Used, devourer.Stomach);
             _transform.SetCoordinates(args.Used, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
             _audioSystem.PlayPvs(morph.Comp.SoundDevour, morph);
             ChangeBiomassAmount(-morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
@@ -221,8 +221,10 @@ public sealed class MorphSystem : SharedMorphSystem
         if (morph.Comp.Biomass < morph.Comp.DevourWeaponHungerCost)
             return;
 
-        morph.Comp.ContainedCreatures.Add(item.Value);
-        _transform.SetCoordinates(item.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
+        if (!TryComp<DevourerComponent>(morph, out var devourer))
+            return;
+
+        _container.Insert(item.Value, devourer.Stomach);
         _audioSystem.PlayPvs(morph.Comp.SoundDevour, morph);
         ChangeBiomassAmount(-morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
     }
@@ -392,88 +394,30 @@ public sealed class MorphSystem : SharedMorphSystem
     #endregion
 
     #region Devour
-
-    private void OnDevourAction(EntityUid uid, MorphComponent morph, MorphDevourActionEvent args)
+    private void OnDevoured(Entity<MorphComponent> morph, ref DevourDoAfterEvent args)
     {
-        if (args.Handled)
+        if (args.Handled || args.Cancelled || args.Args.Target == null)
             return;
 
-        if (_whitelistSystem.IsWhitelistFailOrNull(morph.DevourWhitelist, args.Target))
-            return;
+        var target = args.Args.Target.Value;
 
-        if (_whitelistSystem.IsWhitelistPassOrNull(morph.DevourBlacklist, args.Target))
+        int biomassReward;
+
+        if (TryComp<MobThresholdsComponent>(target, out _) &&
+            _threshold.TryGetDeadThreshold(target, out var health))
         {
-            _popup.PopupEntity(Loc.GetString("devour-action-popup-message-blacklisted", ("target", ToPrettyString(args.Target))), uid, uid);
-            return;
+            if (HasComp<HumanoidAppearanceComponent>(target))
+                biomassReward = (int)Math.Abs((float)health.Value / 3.5f);
+            else
+                biomassReward = (int)Math.Abs((float)health.Value / 7f);
+        }
+        else
+        {
+            biomassReward = morph.Comp.DevourWeaponHungerCost;
         }
 
-        args.Handled = true;
-        var target = args.Target;
-        AmbushBreak(uid);
-
-        if (TryComp(target, out MobStateComponent? targetState))
-        {
-            switch (targetState.CurrentState)
-            {
-                case MobState.Critical:
-                    _popup.PopupEntity(Loc.GetString("devour-action-popup-message-fail-target-alive"), uid, uid);
-                    break;
-                case MobState.Dead:
-
-                    _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, morph.DevourTime, new MorphDevourDoAfterEvent(), uid, target: target, used: uid)
-                    {
-                        BreakOnMove = true,
-                    });
-                    break;
-                default:
-                    _popup.PopupEntity(Loc.GetString("devour-action-popup-message-fail-target-alive"), uid, uid);
-                    break;
-            }
-
-            return;
-        }
-
-        _popup.PopupEntity(Loc.GetString("devour-action-popup-message-structure"), uid, uid);
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, morph.DevourTime / 2, new MorphDevourDoAfterEvent(), uid, target: target, used: uid)
-        {
-            BreakOnMove = true,
-        });
+        ChangeBiomassAmount(biomassReward, morph.Owner, morph.Comp);
     }
-
-    private void OnDoDevourAfter(EntityUid uid, MorphComponent morph, MorphDevourDoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || args.Target == null)
-            return;
-
-        // Item devour
-        if (!TryComp<MobThresholdsComponent>(args.Target, out var state) || !_threshold.TryGetDeadThreshold(args.Target.Value, out var health))
-        {
-            var gain = FixedPoint2.Max(-morph.DevourWeaponHungerCost / 3.5f, 0);
-            ChangeBiomassAmount(gain, uid, morph);
-            _audioSystem.PlayPvs(morph.SoundDevour, uid);
-            morph.ContainedCreatures.Add(args.Target.Value);
-            _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
-            return;
-        }
-
-        if (state.CurrentThresholdState != MobState.Dead)
-            return;
-
-        if (!HasComp<HumanoidAppearanceComponent>(args.Target))
-            health /= 2;
-
-        var damageBrute = new DamageSpecifier(_proto.Index(BruteDamageGroup), -health.Value / 2);
-        var damageBurn = new DamageSpecifier(_proto.Index(BurnDamageGroup), -health.Value / 2);
-
-        _damageable.TryChangeDamage(uid, damageBrute);
-        _damageable.TryChangeDamage(uid, damageBurn);
-        var gainOnDevour = FixedPoint2.Max(-health.Value / 3.5f, 0);
-        ChangeBiomassAmount(gainOnDevour, uid, morph);
-        _audioSystem.PlayPvs(morph.SoundDevour, uid);
-        morph.ContainedCreatures.Add(args.Target.Value);
-        _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
-    }
-
     #endregion
 
     #region Reproduce
