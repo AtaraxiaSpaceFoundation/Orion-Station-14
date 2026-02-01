@@ -3,6 +3,7 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Shared._Orion.Morph;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Mind;
 
 namespace Content.Server._Orion.GameTicking;
 
@@ -15,14 +16,14 @@ public sealed class MorphRuleSystem : GameRuleSystem<MorphRuleComponent>
         base.AppendRoundEndText(uid, component, gameRule, ref args);
 
         var sessionData = _antag.GetAntagIdentifiers(uid);
-        foreach (var (_, data, name) in sessionData)
+        foreach (var (mind, data, name) in sessionData)
         {
-            var morphQuery = AllEntityQuery<MorphComponent>();
-            var count = 0;
-            while (morphQuery.MoveNext(out _, out _))
-            {
-                count++;
-            }
+            if (!TryComp<MindComponent>(mind, out var mindComp) ||
+                mindComp.OwnedEntity == null ||
+                !TryComp<MorphComponent>(mindComp.OwnedEntity.Value, out var morph))
+                continue;
+
+            var count = morph.TotalChildren;
 
             args.AddLine(count != 1
                 ? Loc.GetString("morph-name-user", ("name", name), ("username", data.UserName), ("count", count))

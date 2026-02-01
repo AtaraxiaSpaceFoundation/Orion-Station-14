@@ -173,7 +173,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void ChangeBiomassAmount(FixedPoint2 amount, EntityUid uid, MorphComponent? morph = null)
     {
-        if (morph == null)
+        if (!Resolve(uid, ref morph, logMissing: false))
             return;
 
         morph.Biomass = FixedPoint2.Min(morph.Biomass + amount, morph.MaxBiomass);
@@ -434,7 +434,6 @@ public sealed class MorphSystem : SharedMorphSystem
         Dirty(uid, morph);
 
         ChangeBiomassAmount(-morph.ReplicationCost, uid, morph);
-        Spawn(morph.MorphSpawnProto, Transform(uid).Coordinates);
 
         var morphList = new List<EntityUid>();
         var morphs = AllEntityQuery<MorphComponent, MobStateComponent>();

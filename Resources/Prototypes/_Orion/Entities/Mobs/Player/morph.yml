@@ -61,6 +61,10 @@
     - TauCetiBasic
     understands:
     - TauCetiBasic
+  - type: CollectiveMind
+    defaultChannel: Morph
+    channels:
+    - Morph
   - type: VentCrawler
   - type: Hunger
     startingHunger: 0
@@ -77,23 +81,21 @@
       types:
         Blunt: 16
         Slash: 14
- - type: Devourer
-   devourTime: 3
-   structureDevourTime: 10
-   whitelist:
-     components:
-       - Item
-       - MobState
-     tags:
-       - Structure
-   stomachStorageWhitelist:
-     components:
-       - Item
-       - MobState
-   foodPreferenceWhitelist:
-     components:
-       - MobState
-       - Humanoid
+  - type: Devourer
+    devourTime: 3
+    structureDevourTime: 10
+    whitelist:
+      components:
+        - Item
+        - MobState
+    stomachStorageWhitelist:
+      components:
+        - Item
+        - MobState
+    foodPreferenceWhitelist:
+      components:
+        - MobState
+        - HumanoidAppearance
   - type: MindContainer
   - type: ChameleonProjector
     whitelist:
