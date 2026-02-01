@@ -24,8 +24,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
-using Content.Shared.Nutrition.Components;
-using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Polymorph.Components;
 using Content.Shared.Polymorph.Systems;
 using Content.Shared.Popups;
@@ -58,7 +56,6 @@ public sealed class MorphSystem : SharedMorphSystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -193,20 +190,17 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnAttacked(Entity<MorphComponent> morph, ref AttackedEvent args)
     {
-        if (!TryComp<HungerComponent>(morph, out var hunger))
-            return;
-
         if (args.User == args.Used)
         {
             _damageable.TryChangeDamage(args.User, morph.Comp.DamageOnTouch);
-            _hunger.ModifyHunger(morph, morph.Comp.DevourWeaponHungerCost, hunger);
+            ChangeBiomassAmount(morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
         }
-        else if (_random.Prob(morph.Comp.DevourWeaponOnBeingHit) && _hunger.GetHunger(hunger) >= morph.Comp.DevourWeaponHungerCost)
+        else if (_random.Prob(morph.Comp.DevourWeaponOnBeingHit) && morph.Comp.Biomass >= morph.Comp.DevourWeaponHungerCost)
         {
             morph.Comp.ContainedCreatures.Add(args.Used);
             _transform.SetCoordinates(args.Used, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
             _audioSystem.PlayPvs(morph.Comp.SoundDevour, morph);
-            _hunger.ModifyHunger(morph, -morph.Comp.DevourWeaponHungerCost, hunger);
+            ChangeBiomassAmount(-morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
         }
     }
 
@@ -220,20 +214,17 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<HandsComponent>(args.HitEntities[0], out var hands))
             return;
 
-        if (!TryComp<HungerComponent>(morph, out var hunger))
-            return;
-
         if (!_hands.TryGetActiveItem((args.HitEntities[0], hands), out var item) ||
             !_random.Prob(morph.Comp.DevourWeaponOnHit))
             return;
 
-        if (_hunger.GetHunger(hunger) < morph.Comp.DevourWeaponHungerCost)
+        if (morph.Comp.Biomass < morph.Comp.DevourWeaponHungerCost)
             return;
 
         morph.Comp.ContainedCreatures.Add(item.Value);
         _transform.SetCoordinates(item.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
         _audioSystem.PlayPvs(morph.Comp.SoundDevour, morph);
-        _hunger.ModifyHunger(morph, -morph.Comp.DevourWeaponHungerCost, hunger);
+        ChangeBiomassAmount(-morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
     }
 
     #endregion
@@ -454,14 +445,11 @@ public sealed class MorphSystem : SharedMorphSystem
         if (args.Handled || args.Cancelled || args.Target == null)
             return;
 
-        if (!TryComp<HungerComponent>(uid, out var hunger))
-            return;
-
         // Item devour
         if (!TryComp<MobThresholdsComponent>(args.Target, out var state) || !_threshold.TryGetDeadThreshold(args.Target.Value, out var health))
         {
-            health = -morph.DevourWeaponHungerCost;
-            _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
+            var gain = FixedPoint2.Max(-morph.DevourWeaponHungerCost / 3.5f, 0);
+            ChangeBiomassAmount(gain, uid, morph);
             _audioSystem.PlayPvs(morph.SoundDevour, uid);
             morph.ContainedCreatures.Add(args.Target.Value);
             _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
@@ -479,7 +467,8 @@ public sealed class MorphSystem : SharedMorphSystem
 
         _damageable.TryChangeDamage(uid, damageBrute);
         _damageable.TryChangeDamage(uid, damageBurn);
-        _hunger.ModifyHunger(uid, (int)Math.Abs((float)health.Value / 3.5f), hunger);
+        var gainOnDevour = FixedPoint2.Max(-health.Value / 3.5f, 0);
+        ChangeBiomassAmount(gainOnDevour, uid, morph);
         _audioSystem.PlayPvs(morph.SoundDevour, uid);
         morph.ContainedCreatures.Add(args.Target.Value);
         _transform.SetCoordinates(args.Target.Value, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
@@ -491,14 +480,11 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnReproduceAction(EntityUid uid, MorphComponent morph, MorphReproduceActionEvent args)
     {
-        if (!TryComp<HungerComponent>(uid, out var hunger))
-            return;
-
-        if (!(_hunger.GetHunger(hunger) >= morph.ReplicationCost))
+        if (morph.Biomass < morph.ReplicationCost)
             return;
 
         Spawn(morph.MorphSpawnProto, Transform(uid).Coordinates);
-        _hunger.ModifyHunger(uid, -morph.ReplicationCost, hunger);
+        ChangeBiomassAmount(-morph.ReplicationCost, uid, morph);
 
         var morphList = new List<EntityUid>();
         var morphs = AllEntityQuery<MorphComponent, MobStateComponent>();
@@ -507,7 +493,7 @@ public sealed class MorphSystem : SharedMorphSystem
             morphList.Add(ent);
         }
 
-        if (morphList.Count == morph.DetectableCount)
+        if (morphList.Count >= morph.DetectableCount)
         {
             _chatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
             _audioSystem.PlayGlobal(morph.SoundReplication, Filter.Broadcast(), true);
@@ -522,19 +508,16 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnOpenVentAction(EntityUid uid, MorphComponent morph, MorphVentOpenActionEvent args)
     {
-        if (!TryComp<HungerComponent>(uid, out var hunger))
-            return;
-
         if (_container.IsEntityInContainer(uid))
             return;
 
-        if (_hunger.GetHunger(hunger) < morph.OpenVentCost)
+        if (morph.Biomass < morph.OpenVentCost)
             return;
 
         if (!TryComp<WeldableComponent>(args.Target, out var weldableComponent) || !weldableComponent.IsWelded)
             return;
 
-        _hunger.ModifyHunger(uid, -morph.OpenVentCost, hunger);
+        ChangeBiomassAmount(-morph.OpenVentCost, uid, morph);
         _weldable.SetWeldedState(args.Target, false, weldableComponent);
         _popup.PopupEntity(Loc.GetString("morph-vent-action-success", ("target", ToPrettyString(args.Target))), uid, PopupType.Medium);
     }
