@@ -288,8 +288,8 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             null,
             cancelToken.Token);
 
-        _dungeonJobs.Add(job, cancelToken);
         _dungeonJobs[job] = cancelToken; // Orion-Edit
+        _dungeonJobQueue.EnqueueJob(job); // Orion
         await job.AsTask;
 
         // Orion-Edit-Start
