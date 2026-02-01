@@ -75,6 +75,7 @@
   - type: GameRule
     chaosScore: 400
   - type: VentSpawnRule
+  - type: MorphRule
   - type: AntagSpawner
     prototype: MobMorph
   - type: AntagObjectives

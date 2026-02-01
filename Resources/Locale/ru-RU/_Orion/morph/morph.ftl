@@ -1,4 +1,3 @@
-comp-morph-examined-hunger = На данный момент у вас { $hunger } единиц сытости.
 morphs-announcement = Внимание! Зафиксированы множественные биоугрозы 6 уровня на станции. Необходима их ликвидация для продолжения безопасной работы.
 
 morphs-out-of-ambush = Вы выходите из состояния засады.
@@ -12,8 +11,6 @@ morph-remember-action-success = Вы запомнили { $target }.
 
 morph-ambush-blocked = Вы слишком близко к живым существам
 
-devour-action-popup-message-blacklisted = Вы не можете поглотить { $target }.
-
 morph-examined-strange = Выглядит очень странно...
 
 roles-antag-morph-name = Морф
@@ -21,3 +18,10 @@ morph-round-end-agent-name = морф
 morph-role-greeting =
     Поглоти меня, поглоти их, поглоти их семьи.
     Вы морф!
+
+morph-name-user = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) произвел на свет { $count } { $count ->
+    [one] потомка
+    [few] потомков
+   *[other] потомков
+}
+morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) не произвел потомства

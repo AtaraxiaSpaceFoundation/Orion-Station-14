@@ -7,5 +7,5 @@
 - type: collectiveMind
   id: Morph
   name: collective-mind-morph
-  keycode: 'm'
+  keycode: 'ь'
   color: "#808000"
