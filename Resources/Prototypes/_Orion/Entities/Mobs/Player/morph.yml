@@ -122,14 +122,16 @@
       - Anchorable
       - Item
       - MobState
+      - Supermatter
       tags:
       - Bot
+      - VimPilot
     blacklist:
       components:
       - ChameleonDisguise # no becoming kleiner
       - Pda # PDAs currently make you invisible /!\
       - Morph
-    disguiseProto: ChameleonDisguise
+    disguiseProto: ChameleonDisguiseMorph
   - type: UserInterface
     interfaces:
       enum.MimicryKey.Key:
@@ -170,3 +172,12 @@
   - type: GuideHelp
     guides:
     - Morph
+
+- type: entity
+  parent: ChameleonDisguise
+  id: ChameleonDisguiseMorph
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ChameleonDisguise
+    removeActions: false
+  - type: MorphDisguise

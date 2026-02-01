@@ -33,7 +33,7 @@ namespace Content.Shared.Polymorph.Systems;
 /// Handles disguise validation, disguising and revealing.
 /// Most appearance copying is done clientside.
 /// </summary>
-public abstract class SharedChameleonProjectorSystem : EntitySystem
+public abstract class SharedChameleonProjectorSystem : EntitySystem // Orion-Edit: Make partial
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
@@ -95,11 +95,16 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
     {
 //        _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Orion-Edit: Removed
         // Orion-Start
-        if (!TryComp<ChameleonProjectorComponent>(ent.Comp.Projector, out var proj) || proj.NoRotActionEntity == null || proj.AnchorActionEntity == null)
-            return;
+        if (ent.Comp.RemoveActions)
+            _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector);
+        else
+        {
+            if (!TryComp<ChameleonProjectorComponent>(ent.Comp.Projector, out var comp))
+                return;
 
-        _actions.RemoveProvidedAction(ent.Comp.User, ent.Comp.Projector, proj.NoRotActionEntity.Value);
-        _actions.RemoveProvidedAction(ent.Comp.User, ent.Comp.Projector, proj.AnchorActionEntity.Value);
+            _actions.RemoveAction(comp.AnchorActionEntity);
+            _actions.RemoveAction(comp.NoRotActionEntity);
+        }
         // Orion-End
     }
 
