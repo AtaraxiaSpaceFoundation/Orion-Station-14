@@ -1,4 +1,6 @@
 # Popups
+recruitment-start-user-temporal-popup = Передайте { $target } устройство для оформления.
+
 recruitment-start-user = Вы начинаете вводить данные об { $target } в устройство.
 recruitment-start-target = { $user } приглашает вас в организацию.
 

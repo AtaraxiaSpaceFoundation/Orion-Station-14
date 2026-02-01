@@ -58,6 +58,7 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         comp.RecruitedAt = _timing.CurTime;
     }
 
+    // TODO: Fix UI doesn't open for target on scan
     private void OnScanAttempt(EntityUid uid, RecruitmentScanningComponent comp, AfterInteractEvent args)
     {
         if (args.Target == null || !args.CanReach || !HasComp<HumanoidAppearanceComponent>(args.Target))
@@ -68,12 +69,19 @@ public sealed class RecruitmentScanningSystem : EntitySystem
         if (!TryComp<ActorComponent>(target, out var actor))
             return;
 
+        // This will be until we fix UI, also remove this when UI is fixed
+        var targetName = Identity.Name(target, EntityManager);
+        _popup.PopupEntity(Loc.GetString("recruitment-start-user-temporal-popup", ("target", targetName)), target, args.User);
+
+/* Doesn't open the UI for the target :(
+// Uncomment this when UI is fixed
         var targetName = Identity.Name(target, EntityManager);
         _popup.PopupEntity(Loc.GetString("recruitment-start-user", ("target", targetName)), target, args.User);
 
         var userName = Identity.Name(args.User, EntityManager);
         if (args.User != target)
             _popup.PopupEntity(Loc.GetString("recruitment-start-target", ("user", userName)), args.User, target, PopupType.LargeCaution);
+*/
 
         var confirmComp = EnsureComp<RecruitmentConfirmationComponent>(uid);
         confirmComp.Scanner = uid;

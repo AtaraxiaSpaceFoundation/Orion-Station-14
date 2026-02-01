@@ -1,24 +1,21 @@
 # Filler
 - type: entity
   parent: [BaseItem, BaseMajorContraband]
-  id: RecruitmentScannerInteQ
-  name: inteq scanner
-  description: Suspiciously looking scanner...
+  id: RecruitPadInteQ
+  name: InteQ pad
+  description: Tablet that displays information about the organization and also allows you to add new members to the organization.
   suffix: InteQ
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Devices/inteq_uplink.rsi
+    sprite: _Orion/Objects/Devices/inteq_pad.rsi
     layers:
-    - state: inteq-uplink
-  - type: Item
-    sprite: _Orion/Objects/Devices/inteq_uplink.rsi
-    heldPrefix: inteq-uplink
+      - state: icon
+      - state: screen
+        shader: unshaded
   - type: RecruitmentScanning
     faction: InteQ
     implant: DeathRattleImplantInteQ
     organization: organization-inteq
-  - type: ScannableForPoints # Goob
-    points: 3
   - type: ActivatableUI
     key: enum.RecruitmentMemberListUiKey.Key
   - type: UserInterface
@@ -27,3 +24,5 @@
         type: RecruitmentConfirmationBoundUserInterface
       enum.RecruitmentMemberListUiKey.Key:
         type: RecruitmentMemberListBoundUserInterface
+  - type: ScannableForPoints # Goob
+    points: 3
