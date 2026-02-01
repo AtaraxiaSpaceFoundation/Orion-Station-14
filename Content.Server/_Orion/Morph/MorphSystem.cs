@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Chat.Systems;
@@ -365,7 +364,7 @@ public sealed class MorphSystem : SharedMorphSystem
             return;
         }
 
-        if (morph.MemoryObjects.Count > 5)
+        if (morph.MemoryObjects.Count >= 5)
         {
             morph.MemoryObjects.RemoveAt(0);
         }
