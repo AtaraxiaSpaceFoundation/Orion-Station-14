@@ -166,7 +166,6 @@ public abstract class SharedActionsSystem : EntitySystem
 
         SubscribeLocalEvent<ActionComponent, MapInitEvent>(OnActionMapInit);
 
-        SubscribeLocalEvent<ActionsComponent, EntityTerminatingEvent>(OnActionsTerminating); // Orion
         SubscribeLocalEvent<ActionComponent, ComponentShutdown>(OnActionShutdown);
 
         SubscribeLocalEvent<ActionsComponent, ActionComponentChangeEvent>(OnActionCompChange);
@@ -205,19 +204,6 @@ public abstract class SharedActionsSystem : EntitySystem
         comp.OriginalIconColor = comp.IconColor;
         DirtyField(ent, ent.Comp, nameof(ActionComponent.OriginalIconColor));
     }
-
-    // Orion-Start
-    private void OnActionsTerminating(EntityUid uid, ActionsComponent component, ref EntityTerminatingEvent args)
-    {
-        var actions = component.Actions.ToArray();
-        foreach (var action in actions)
-        {
-            if (Exists(action))
-                QueueDel(action);
-        }
-        component.Actions.Clear();
-    }
-    // Orion-End
 
     private void OnActionShutdown(Entity<ActionComponent> ent, ref ComponentShutdown args)
     {
