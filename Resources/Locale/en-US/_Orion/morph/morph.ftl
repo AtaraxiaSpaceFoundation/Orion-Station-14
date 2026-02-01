@@ -19,5 +19,8 @@ morph-role-greeting =
     Devour me, devour them, and devour their families.
     You're morph!
 
-morph-name-user = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) reproduced { $count } morphs
+morph-name-user = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) reproduced { $count } { $count ->
+    [one] morph
+   *[other] morphs
+}
 morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) was not reproduced
