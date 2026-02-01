@@ -483,8 +483,14 @@ public sealed class MorphSystem : SharedMorphSystem
         if (morph.Biomass < morph.ReplicationCost)
             return;
 
-        Spawn(morph.MorphSpawnProto, Transform(uid).Coordinates);
+        var child = Spawn(morph.MorphSpawnProto, Transform(uid).Coordinates);
+
+        morph.Children++;
+        morph.TotalChildren++;
+        Dirty(uid, morph);
+
         ChangeBiomassAmount(-morph.ReplicationCost, uid, morph);
+        Spawn(morph.MorphSpawnProto, Transform(uid).Coordinates);
 
         var morphList = new List<EntityUid>();
         var morphs = AllEntityQuery<MorphComponent, MobStateComponent>();
