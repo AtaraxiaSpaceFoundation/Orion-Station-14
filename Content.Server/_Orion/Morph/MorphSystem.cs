@@ -89,7 +89,8 @@ public sealed class MorphSystem : SharedMorphSystem
         SubscribeLocalEvent<MorphComponent, BeingGibbedEvent>(OnDestroy);
         SubscribeLocalEvent<MorphComponent, DamageChangedEvent>(OnDamage);
         SubscribeLocalEvent<MorphComponent, MobStateChangedEvent>(OnDeath);
-        SubscribeLocalEvent<MorphComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<MorphComponent, TransformSpeakerNameEvent>(OnTransformSpeakerName);
+        SubscribeLocalEvent<MorphDisguiseComponent, ExaminedEvent>(OnDisguiseExamined);
         SubscribeLocalEvent<MorphComponent, InteractHandEvent>(OnInteract);
 
         SubscribeLocalEvent<MorphComponent, MorphOpenRadialMenuEvent>(OnMimicryRadialMenu);
@@ -168,10 +169,13 @@ public sealed class MorphSystem : SharedMorphSystem
         arg.Sender = comp.Disguise;
     }
 
-    private void OnExamined(EntityUid uid, MorphComponent morph, ExaminedEvent args)
+    private void OnDisguiseExamined(Entity<MorphDisguiseComponent> ent, ref ExaminedEvent args)
     {
-        if (args.IsInDetailsRange)
-            args.PushMarkup($"[color=darkgreen]{Loc.GetString("morph-examined-strange")}[/color]");
+        if (!args.IsInDetailsRange)
+            return;
+
+        var msg = Loc.GetString(ent.Comp.ExamineMessage);
+        args.PushMarkup($"[color={ent.Comp.ExamineColor.ToHex()}]{msg}[/color]");
     }
 
     private void ChangeBiomassAmount(FixedPoint2 amount, EntityUid uid, MorphComponent? morph = null)

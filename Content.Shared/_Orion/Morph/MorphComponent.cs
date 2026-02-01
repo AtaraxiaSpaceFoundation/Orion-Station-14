@@ -128,6 +128,7 @@ public sealed partial class MorphComponent : Component
     /// </summary>
     [DataField]
     public int Children;
+    public static int TotalChildren = 0;
 
     /// <summary>
     ///     How much damage to trigger undisguise

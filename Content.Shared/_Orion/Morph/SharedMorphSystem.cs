@@ -1,5 +1,3 @@
-using Robust.Shared.Serialization;
-using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Polymorph.Components;
 using Content.Shared.Polymorph.Systems;
@@ -35,10 +33,14 @@ public abstract class SharedMorphSystem : EntitySystem
 
     private void TryMimicry(Entity<ChameleonProjectorComponent> ent, ref EventMimicryActivate arg)
     {
-        if (!_chameleon.TryDisguise(ent, arg.Performer, arg.Target))
+        var target = GetEntity(arg.Target);
+        if (target == null)
             return;
 
-        DisguiseInventory(ent, arg.Target);
+        if (!_chameleon.TryDisguise(ent, ent.Owner, target.Value))
+            return;
+
+        DisguiseInventory(ent, target.Value);
     }
 
     public void DisguiseInventory(Entity<ChameleonProjectorComponent> ent, EntityUid target)
