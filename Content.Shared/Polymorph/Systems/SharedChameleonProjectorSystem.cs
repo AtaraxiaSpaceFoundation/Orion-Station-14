@@ -26,6 +26,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Buckle.Components;
 
 namespace Content.Shared.Polymorph.Systems;
 
@@ -55,6 +56,7 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
         SubscribeLocalEvent<ChameleonDisguiseComponent, InteractHandEvent>(OnDisguiseInteractHand, before: [typeof(SharedItemSystem)]);
         SubscribeLocalEvent<ChameleonDisguiseComponent, DamageChangedEvent>(OnDisguiseDamaged);
         SubscribeLocalEvent<ChameleonDisguiseComponent, InsertIntoEntityStorageAttemptEvent>(OnDisguiseInsertAttempt);
+        SubscribeLocalEvent<ChameleonDisguiseComponent, StrapAttemptEvent>(OnDisguiseStrapAttempt); // Orion
         SubscribeLocalEvent<ChameleonDisguiseComponent, ComponentShutdown>(OnDisguiseShutdown);
 
         SubscribeLocalEvent<ChameleonDisguisedComponent, EntGotInsertedIntoContainerMessage>(OnDisguisedInserted);
@@ -91,6 +93,17 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
         TryReveal(ent.Comp.User);
     }
 
+    // Orion-Start
+    // This prevents issues when the entity is being strapped by others
+    private void OnDisguiseStrapAttempt(Entity<ChameleonDisguiseComponent> ent, ref StrapAttemptEvent args)
+    {
+        args.Cancelled = true;
+
+        var userStrapAttempt = new StrapAttemptEvent(args.Strap, (ent.Comp.User, args.Buckle.Comp), args.User, args.Popup);
+        RaiseLocalEvent(ent.Comp.User, ref userStrapAttempt);
+    }
+    // Orion-End
+
     private void OnDisguiseShutdown(Entity<ChameleonDisguiseComponent> ent, ref ComponentShutdown args)
     {
 //        _actions.RemoveProvidedActions(ent.Comp.User, ent.Comp.Projector); // Orion-Edit: Removed
@@ -126,6 +139,12 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
     {
         if (args.Handled || !args.CanReach || args.Target is not {} target)
             return;
+
+        // Orion-Start
+        // This prevents issues when the entity is being dragged by others
+        if (args.User != ent.Owner)
+            return;
+        // Orion-End
 
         args.Handled = true;
         TryDisguise(ent, args.User, target);
@@ -262,7 +281,9 @@ public abstract class SharedChameleonProjectorSystem : EntitySystem
         CopyComp<ItemComponent>((disguise, comp));
 
         _appearance.CopyData(entity, disguise);
-        _sparks.DoSparks(Transform(user).Coordinates); // goob edit - sparks everywhere!
+
+        if (comp.DoSparks) // Orion
+            _sparks.DoSparks(Transform(user).Coordinates); // goob edit - sparks everywhere!
     }
 
     /// <summary>

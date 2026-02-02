@@ -46,5 +46,8 @@ public sealed partial class ChameleonDisguiseComponent : Component
     // Orion-Start
     [DataField, AutoNetworkedField]
     public bool RemoveActions = true;
+
+    [DataField]
+    public bool DoSparks = true;
     // Orion-End
 }

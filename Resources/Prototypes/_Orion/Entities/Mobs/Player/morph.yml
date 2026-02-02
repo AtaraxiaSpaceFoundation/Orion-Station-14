@@ -155,5 +155,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: ChameleonDisguise
+    doSparks: false
     removeActions: false
   - type: MorphDisguise
