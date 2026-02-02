@@ -76,9 +76,9 @@
         Blunt: 16
         Slash: 14
   - type: Devourer
-    soundDevour: /Audio/Effects/demon_consume.ogg
+    soundStructureDevour: /Audio/Effects/bite.ogg
     devourTime: 3
-    structureDevourTime: 10
+    structureDevourTime: 3
     whitelist:
       components:
         - Item
