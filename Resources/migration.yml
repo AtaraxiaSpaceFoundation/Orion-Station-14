@@ -254,9 +254,6 @@ GunSafeSubMachineGunWt550: GunSafeRandomSubMachineGunAlertLocked
 GunSafeLaserCarbine: GunSafeRandomLaserCarbineAlertLocked
 GunSafePistolMk58: GunSafeRandomPistolAlertUnlocked
 
-ChemDispenserEmpty: EnergyChemDispenser
-ChemDispenser: EnergyChemDispenser
-
 ClothingBackpackDuffelSurgeryFilled: SurgerykitFilled
 
 BaseSecretDoorAssembly: null

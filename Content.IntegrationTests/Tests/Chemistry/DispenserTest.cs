@@ -24,7 +24,7 @@ public sealed class DispenserTest : InteractionTest
     [Test]
     public async Task InsertEjectBuiTest()
     {
-        await SpawnTarget("ManualChemDispenser"); // Orion-Edit: Manual
+        await SpawnTarget("ChemDispenser");
         ToggleNeedPower();
 
         // Insert beaker
