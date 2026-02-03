@@ -12,7 +12,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-/* // Orion-Edit: Replaced with EnergyReagentDispenser
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Storage;
 using Robust.Shared.Serialization;
@@ -160,4 +159,3 @@ namespace Content.Shared.Chemistry
         Key
     }
 }
-*/

@@ -1,20 +1,5 @@
 - type: latheRecipe
-  id: SprayBottleRedEmpty
-  result: SprayBottleRedEmpty
-  completetime: 2
-  materials:
-    Plastic: 100
-
-- type: latheRecipe
-  id: SprayBottleOrangeEmpty
-  result: SprayBottleOrangeEmpty
-  completetime: 2
-  materials:
-    Plastic: 100
-
-- type: latheRecipe
-  id: SprayBottleBlueEmpty
-  result: SprayBottleBlueEmpty
-  completetime: 2
-  materials:
-    Plastic: 100
+  parent: ChemDispenserMachineCircuitboard
+  id: EnergyChemDispenserMachineCircuitboard
+  icon: { sprite: _Orion/Structures/Dispensers/dispenser.rsi, state: industrial-working } # Goobstation
+  result: EnergyChemDispenserMachineCircuitboard

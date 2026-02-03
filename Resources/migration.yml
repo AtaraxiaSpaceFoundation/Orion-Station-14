@@ -254,11 +254,8 @@ GunSafeSubMachineGunWt550: GunSafeRandomSubMachineGunAlertLocked
 GunSafeLaserCarbine: GunSafeRandomLaserCarbineAlertLocked
 GunSafePistolMk58: GunSafeRandomPistolAlertUnlocked
 
-EnergyChemDispenser: ChemDispenser
-ChemDispenserEmpty: ChemDispenser
-MiniChemDispenserEmpty: MiniChemDispenser
-BoozeDispenserEmpty: BoozeDispenser
-SodaDispenserEmpty: SodaDispenser
+ChemDispenserEmpty: EnergyChemDispenser
+ChemDispenser: EnergyChemDispenser
 
 ClothingBackpackDuffelSurgeryFilled: SurgerykitFilled
 

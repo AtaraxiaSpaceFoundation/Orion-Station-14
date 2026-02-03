@@ -13,37 +13,37 @@ namespace Content.Server._Orion.Chemistry.Components;
 public sealed partial class EnergyReagentDispenserComponent : Component
 {
     [DataField]
-    public ItemSlot BeakerSlot = new();
+    public ItemSlot EnergyBeakerSlot = new();
 
     [DataField]
     public SoundSpecifier ClickSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 
     /// <summary>
-    ///     Current dispense amount. Don't worry about it and don't touch it.
+    /// Текущая выдача. Не забивайте голову и не трогайте
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public EnergyReagentDispenserDispenseAmount DispenseAmount = EnergyReagentDispenserDispenseAmount.U10;
 
     /// <summary>
-    ///     Sound played when there's no power.
+    /// Звук отсутствия энергии
     /// </summary>
     [DataField, ViewVariables]
     public SoundSpecifier PowerSound = new SoundPathSpecifier("/Audio/Machines/buzz-sigh.ogg");
 
     /// <summary>
-    ///     The reagents themselves. Specify as (ID): (price)
+    /// Сами реагенты. Указываеть как (Айди): (цена)
     /// </summary>
     [DataField]
     public Dictionary<string, float> Reagents = [];
 
     /// <summary>
-    ///     Additional reagents added when emagged.
+    /// Добавление реагентов при емагу
     /// </summary>
     [DataField]
     public Dictionary<string, float>? ReagentsEmagged = [];
 
     /// <summary>
-    ///     Cannot be emagged when already activated.
+    /// При включении нельзя емагнуть
     /// </summary>
     [DataField]
     public bool Emagged;

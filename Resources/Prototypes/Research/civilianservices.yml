@@ -351,6 +351,7 @@
   recipeUnlocks:
   # Orion-Start
   - BluespaceBodyBag
+  - EnergyChemDispenserMachineCircuitboard
   # Orion-End
   - BluespaceBeaker
   - SyringeBluespace
