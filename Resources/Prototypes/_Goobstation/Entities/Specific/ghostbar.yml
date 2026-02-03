@@ -129,7 +129,6 @@
     - SecurityCybernetics
     # medfab
     # Orion-Start
-    - ChemistryBoards
     - BodyBagsDynamic
     # Orion-End
     - TopicalsStatic

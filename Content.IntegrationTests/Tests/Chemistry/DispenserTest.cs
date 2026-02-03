@@ -10,6 +10,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Client.Chemistry.UI;
 using Content.IntegrationTests.Tests.Interaction;
 using Content.Shared.Chemistry;
 using Content.Shared.Containers.ItemSlots;
@@ -55,11 +56,9 @@ public sealed class DispenserTest : InteractionTest
         await RunTicks(5);
         // Orion-End
 
-/* // Orion-Edit: Removed
         // Now click the eject button directly
         await ClickControl<ReagentDispenserWindow>(nameof(ReagentDispenserWindow.EjectButton));
         await RunTicks(5);
-*/
 
         Assert.That(HandSys.GetActiveItem((SEntMan.GetEntity(Player), Hands)), Is.Not.Null);
         AssertPrototype("Beaker", SEntMan.GetNetEntity(HandSys.GetActiveItem((SEntMan.GetEntity(Player), Hands))));

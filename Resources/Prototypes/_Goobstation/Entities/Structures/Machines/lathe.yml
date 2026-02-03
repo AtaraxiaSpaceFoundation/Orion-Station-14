@@ -203,7 +203,6 @@
     - MiscSignallersStatic
     dynamicPacks:
     # Orion-Start
-    - ChemistryBoards
     - BodyBagsDynamic
     - MegaCells
     # Orion-End

@@ -74,9 +74,6 @@
     - SecurityBoardsStaticGoob
     # Goob-End
     dynamicPacks:
-    # Orion-Start
-    - ChemistryBoards
-    # Orion-End
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards
