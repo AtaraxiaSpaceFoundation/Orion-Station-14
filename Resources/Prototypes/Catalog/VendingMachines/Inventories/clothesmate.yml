@@ -107,6 +107,30 @@
     ClothingUniformJumpskirtCasualRed: 2
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
+    # Orion-Start: From ADT
+    ADTClothingUniformJumpsuitTurtleneckBlack: 2
+    ADTClothingUniformJumpsuitTurtleneckBlue: 2
+    ADTClothingUniformJumpsuitTurtleneckAzure: 2
+    ADTClothingUniformJumpsuitTurtleneckGreen: 2
+    ADTClothingUniformJumpsuitTurtleneckOrange: 2
+    ADTClothingUniformJumpsuitTurtleneckYellow: 2
+    ADTClothingUniformJumpsuitTurtleneckWhite: 2
+    ADTClothingUniformJumpsuitTurtleneckBrown: 2
+    ADTClothingUniformJumpsuitTurtleneckGrey: 2
+    ADTClothingUniformJumpsuitTurtleneckAquamarine: 2
+    ADTClothingUniformJumpsuitTurtleneckPink: 2
+    ADTClothingUniformJumpskirtTurtleneckBlack: 2
+    ADTClothingUniformJumpskirtTurtleneckBlue: 2
+    ADTClothingUniformJumpskirtTurtleneckAzure: 2
+    ADTClothingUniformJumpskirtTurtleneckGreen: 2
+    ADTClothingUniformJumpskirtTurtleneckOrange: 2
+    ADTClothingUniformJumpskirtTurtleneckYellow: 2
+    ADTClothingUniformJumpskirtTurtleneckWhite: 2
+    ADTClothingUniformJumpskirtTurtleneckBrown: 2
+    ADTClothingUniformJumpskirtTurtleneckGrey: 2
+    ADTClothingUniformJumpskirtTurtleneckAquamarine: 2
+    ADTClothingUniformJumpskirtTurtleneckPink: 2
+    # Orion-End
     # DO NOT ADD MORE, USE UNIFORM DYING
     # Orion-Start
     ClothingUniformJumpskirtRoll: 2
@@ -178,6 +202,10 @@
     ClothingNeckPonchoSmallPurple: 3 # Monolith
     ClothingNeckPonchoSmallBlack: 3 # Monolith
     ClothingNeckPonchoSmallWhite: 3 # Monolith
+    # Orion-Start: From ADT
+    ADTClothingNeckDarkGreyCloak: 2
+    ADTClothingNeckGothicCloak: 2
+    # Orion-End
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
     # Orion-Start

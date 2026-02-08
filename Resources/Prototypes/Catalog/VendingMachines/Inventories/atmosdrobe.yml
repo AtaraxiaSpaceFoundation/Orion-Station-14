@@ -28,7 +28,8 @@
     ClothingHeadsetEngineering: 2
     ClothingHeadHelmetFire: 2
     ClothingOuterSuitFire: 2
-    ClothingOuterWinterAtmos: 2
+    ADTClothingHeadHatsBeretAtmos: 3 # Orion: From ADT
+    ClothingOuterWinterAtmos: 3 # Orion-Edit: 2 > 3
     ClothingNeckScarfStripedLightBlue: 3
   contrabandInventory:
     ToyFigurineAtmosTech: 1
