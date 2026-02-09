@@ -340,7 +340,7 @@
 - type: entity
   parent: BasePowerCell
   id: PowerCellMicroreactor
-  abstract: true # Orion | Replaced with PowerCellBluespaceReactor
+  categories: [ HideSpawnMenu ] # Orion | Replaced with PowerCellBluespaceReactor
   name: microreactor power cell
   description: A rechargeable standardized microreactor cell. Has lower capacity but slowly recharges by itself.
   suffix: Full
@@ -375,7 +375,7 @@
 - type: entity
   parent: PowerCellMicroreactor
   id: PowerCellMicroreactorPrinted
-  abstract: true # Orion | Replaced with PowerCellBluespaceReactorPrinted
+  categories: [ HideSpawnMenu ] # Orion | Replaced with PowerCellBluespaceReactorPrinted
   suffix: Empty
   components:
   - type: Sprite
@@ -393,7 +393,7 @@
   name: antique power cell prototype
   description: A small cell that self recharges. Used in old laser arms research.
   id: PowerCellAntiqueProto
-  abstract: true # Orion | Replaced with PowerCellInfinite
+  categories: [ HideSpawnMenu ] # Orion | Replaced with PowerCellInfinite
   parent: BasePowerCell
   components:
     - type: Sprite

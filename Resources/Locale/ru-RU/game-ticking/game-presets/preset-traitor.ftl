@@ -22,7 +22,7 @@ traitor-death-match-end-round-description-entry = КПК { $originalName }, с {
 
 # TraitorRole
 traitor-role-greeting =
-    Вы - агент организации { $corporation }.
+    Вы - агент организации { $corporation } на задании [color = darkred]Синдиката.[/color].
     Ваши цели и кодовые слова перечислены в меню персонажа.
     Воспользуйтесь своим аплинком, чтобы приобрести всё необходимое для выполнения работы.
     Смерть НаноТрейзен!
@@ -38,10 +38,14 @@ traitor-role-uplink-code =
 traitor-role-codewords-short =
     Кодовые слова:
     { $codewords }.
+traitor-role-uplink-pen-code =
+    Поверните ручку на комбинацию [color = lightgray]{ $code }[/color], чтобы разблокировать аплинк.
+    Градусы обозначают углы поворота. Аплинк автоматически блокируется при закрытии.
 traitor-role-uplink-implant =
     Ваш имплант аплинк активирован, воспользуйтесь им из хотбара.
     Аплинк надежно защищён, пока кто-нибудь не извлечёт его из вашего тела.
 traitor-role-uplink-code-short = Ваш код аплинка: { $code }. Установите его в качестве рингтона КПК для доступа к аплинку.
+traitor-role-uplink-pen-code-short = Ваш код аплинка ручки: { $code }. Чтобы разблокировать, поверните ручку. Блокируется при закрытии.
 traitor-role-uplink-implant-short = Ваш аплинк был имплантирован. Воспользуйтесь им из хотбара.
 traitor-role-moreinfo = Найдите больше информации о своей роли в меню персонажа.
 traitor-role-nouplink = У вас нет аплинка Синдиката. Действуйте обдуманно.

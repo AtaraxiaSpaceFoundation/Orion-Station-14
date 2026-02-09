@@ -34,6 +34,7 @@
     sprite: _Orion/Icons/inteq.rsi
     state: logo
   content:
+    - ManualOldFastCodes
     - ClothingUniformJumpsuitInteQFormal
     - ClothingBackpackInteQ
     - ClothingHeadHelmetSwatInteQ
@@ -58,6 +59,7 @@
     sprite: Clothing/Mask/gassyndicate.rsi
     state: icon
   content:
+    - ManualCodespeak
     - ClothingUniformJumpsuitSyndieFormal
     - ClothingBackpackDuffelSyndicate
     - ClothingShoesBootsCombatFilled
@@ -80,6 +82,7 @@
     sprite: Clothing/Head/Hats/comcap.rsi
     state: icon
   content:
+    - ManualCorporateCodespeak
     - ClothingUniformJumpsuitCentcomOfficial
     - ClothingShoesBootsJackFilled
     - ClothingHeadHatCentcomcap

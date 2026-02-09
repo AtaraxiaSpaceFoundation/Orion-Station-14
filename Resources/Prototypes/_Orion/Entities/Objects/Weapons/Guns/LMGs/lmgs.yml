@@ -153,9 +153,15 @@
   suffix: Minigun
   components:
   - type: Sprite
-    sprite: _Goobstation/Objects/Weapons/Guns/Battery/energy_lmg.rsi
-    state: icon
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/energy_lmg_icon_48x.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: light
+      shader: unshaded
+      map: ["enum.GunVisualLayers.BaseUnshaded"]
   - type: Item
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/energy_lmg.rsi
     size: Ginormous
   - type: Gun
     minAngle: 1

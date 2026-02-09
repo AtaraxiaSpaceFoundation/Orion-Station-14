@@ -112,42 +112,18 @@
     sprite: Structures/smalldispensers.rsi
     drawdepth: SmallObjects
     state: soda
-  - type: Storage
-    openOnActivate: false
-    whitelist:
-      tags:
-      - DrinkBottle
-#  - type: StorageFill # Orion-Edit: Removed
-#    contents:
-#    - id: DrinkCoconutWaterJug
-#    - id: DrinkCoffeeJug
-#    - id: DrinkColaBottleFull
-#    - id: DrinkCreamCartonXL
-#    - id: DrinkDrGibbJug
-#    - id: DrinkEnergyDrinkJug
-#    - id: DrinkGreenTeaJug
-#    - id: DrinkIceJug
-#    - id: DrinkJuiceLimeCartonXL
-#    - id: DrinkJuiceOrangeCartonXL
-#    - id: DrinkLemonLimeJug
-#    - id: DrinkRootBeerJug
-#    - id: DrinkSodaWaterBottleFull
-#    - id: DrinkSpaceMountainWindBottleFull
-#    - id: DrinkSpaceUpBottleFull
-#    - id: DrinkSugarJug
-#    - id: DrinkTeaJug
-#    - id: DrinkTonicWaterBottleFull
-#    - id: DrinkWaterMelonJuiceJug
-  - type: Transform
-    noRot: false
-  - type: Machine
-    board: SodaDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
+#  - type: Storage # Orion-Edit: Removed
+#    openOnActivate: false
+#    whitelist:
+#      tags:
+#      - DrinkBottle
   # Orion-Start
   - type: EnergyReagentDispenser
+    energyBeakerSlot:
+      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
+      whitelist:
+        components:
+        - FitsInDispenser
     reagents:
       Coffee: 8
       Cola: 8
@@ -181,7 +157,38 @@
       WhiskeyCola: 8
       MindbreakerToxin: 18
       Tirizene: 18
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      energyBeakerSlot: !type:ContainerSlot
+      storagebase: !type:Container
+  - type: ActivatableUI
+    key: enum.EnergyReagentDispenserUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.EnergyReagentDispenserUiKey.Key:
+        type: EnergyReagentDispenserBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: ApcPowerReceiverBattery
+    idleLoad: 30
+    batteryRechargeRate: 25
+    batteryRechargeEfficiency: 1.0
+  - type: ApcPowerReceiver
+    powerLoad: 30
   # Orion-End
+  - type: Transform
+    noRot: false
+  - type: Machine
+    board: SodaDispenserMachineCircuitboard
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
 
 - type: entity
   parent: SodaDispenser

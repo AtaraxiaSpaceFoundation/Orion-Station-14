@@ -54,7 +54,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-/* // Orion-Edit: Replaced with EnergyReagentDispenser
 using Content.Server.Chemistry.EntitySystems;
 using Content.Shared.Chemistry;
 using Content.Shared.Containers.ItemSlots;
@@ -79,4 +78,3 @@ namespace Content.Server.Chemistry.Components
         public ReagentDispenserDispenseAmount DispenseAmount = ReagentDispenserDispenseAmount.U10;
     }
 }
-*/

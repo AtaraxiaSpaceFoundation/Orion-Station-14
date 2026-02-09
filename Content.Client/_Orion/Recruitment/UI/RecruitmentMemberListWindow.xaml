@@ -1,0 +1,46 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'recruitment-list-ui-title'}"
+                      MinSize="840 350"
+                      SetSize="840 350">
+    <BoxContainer Orientation="Vertical" Margin="5" SeparationOverride="5">
+        <controls:StripeBack>
+            <PanelContainer>
+                <Label Name="OrganizationLabel"
+                       Text="{Loc 'recruitment-member-label'}"
+                       Align="Center"
+                       StyleClasses="LabelHeading"/>
+            </PanelContainer>
+        </controls:StripeBack>
+
+        <ScrollContainer Name="MemberScroller"
+                         VerticalExpand="True"
+                         HorizontalExpand="True">
+            <GridContainer Name="MembersContainer"
+                           Columns="3"
+                           HorizontalExpand="True">
+                <!-- Member rows will be added as triple Label elements (Name, Recruiter, Time) -->
+            </GridContainer>
+        </ScrollContainer>
+
+        <Label Name="NoMembersLabel"
+               Text="{Loc 'recruitment-member-list-empty'}"
+               StyleClasses="LabelHeading"
+               FontColorOverride="Gray"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Visible="false"/>
+
+        <BoxContainer Orientation="Vertical">
+            <PanelContainer StyleClasses="LowDivider"/>
+            <BoxContainer Orientation="Horizontal" Margin="5">
+                <Label Name="MemberCountLabel"
+                       Text="{Loc 'recruitment-member-list-count'}"
+                       StyleClasses="LabelSubText"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="5"/>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

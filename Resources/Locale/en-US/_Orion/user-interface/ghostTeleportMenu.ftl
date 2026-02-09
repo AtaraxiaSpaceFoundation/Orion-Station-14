@@ -58,6 +58,9 @@ global-antagonist-devil-description = Һеҙ әһәмиәтһеҙ.
 global-antagonist-abductor-name = Abductor
 global-antagonist-abductor-description = Zonding in progress.
 
+global-antagonist-contractor-name = Contractor
+global-antagonist-contractor-description = Bounty hunter.
+
 global-antagonist-ghost-role-name = Ghost role
 global-antagonist-ghost-role-description = Ghost roles most often have no effect on the station.
 

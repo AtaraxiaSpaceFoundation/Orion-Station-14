@@ -3,3 +3,9 @@
   name: collective-mind-cortical-borer
   keycode: 'i'
   color: "#d842fc"
+
+- type: collectiveMind
+  id: Morph
+  name: collective-mind-morph
+  keycode: 'ь'
+  color: "#808000"

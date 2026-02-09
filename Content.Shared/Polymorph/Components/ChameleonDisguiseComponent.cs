@@ -42,4 +42,12 @@ public sealed partial class ChameleonDisguiseComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntProtoId? SourceProto;
+
+    // Orion-Start
+    [DataField, AutoNetworkedField]
+    public bool RemoveActions = true;
+
+    [DataField]
+    public bool DoSparks = true;
+    // Orion-End
 }

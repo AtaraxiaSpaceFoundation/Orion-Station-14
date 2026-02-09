@@ -61,60 +61,36 @@
     - TauCetiBasic
     understands:
     - TauCetiBasic
+  - type: CollectiveMind
+    defaultChannel: Morph
+    channels:
+    - Morph
   - type: VentCrawler
   - type: Hunger
     startingHunger: 0
     baseDecayRate: 0
     starvingSlowdownModifier: 1
-    thresholds:
-      Overfed: 500
-      Okay: 150
-      Peckish: 100
-      Starving: 50
-      Dead: 0
   - type: Morph
     damageOnTouch:
       types:
         Blunt: 16
         Slash: 14
-    devourWhitelist:
+  - type: Devourer
+    soundStructureDevour: /Audio/Effects/bite.ogg
+    devourTime: 3
+    structureDevourTime: 3
+    whitelist:
       components:
         - Item
         - MobState
-      tags:
-        - Structure
-    devourBlacklist: # Maximal anti-grief gameplay
+    stomachStorageWhitelist:
       components:
-        - Morph
-        - Supermatter
-        - TegGenerator
-        - StationAnchor
-        - GravityGenerator
-        - Nuke
-        - NukeDisk
-        - SpecialRespawn
-        - GasMiner
-        - PipeAppearance
-        - PipeColorVisuals
-        - PipeRestrictOverlap
-        - AtmosUnsafeUnanchor
-        - AtmosPipeColor
-        - PowerSupplier
-        - PowerNetworkBattery
-        - Smes
-        - Monument
-        - Emitter
-        - Holopad
-        - TurretTargetSettings
-        - ParticleAcceleratorEmitter
-        - ContainmentFieldGenerator
-        - BluespaceLocker
-        - CargoSellBlacklist
-        - ArrivalsBlacklist
-        - FTLSmashImmune
-        - SupermatterImmune
-      tags:
-        - IgnoreImmovableRod
+        - Item
+        - MobState
+    foodPreferenceWhitelist:
+      components:
+        - MobState
+        - HumanoidAppearance
   - type: MindContainer
   - type: ChameleonProjector
     whitelist:
@@ -122,14 +98,16 @@
       - Anchorable
       - Item
       - MobState
+      - Supermatter
       tags:
       - Bot
+      - VimPilot
     blacklist:
       components:
       - ChameleonDisguise # no becoming kleiner
       - Pda # PDAs currently make you invisible /!\
       - Morph
-    disguiseProto: ChameleonDisguise
+    disguiseProto: ChameleonDisguiseMorph
   - type: UserInterface
     interfaces:
       enum.MimicryKey.Key:
@@ -170,3 +148,13 @@
   - type: GuideHelp
     guides:
     - Morph
+
+- type: entity
+  parent: ChameleonDisguise
+  id: ChameleonDisguiseMorph
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ChameleonDisguise
+    doSparks: false
+    removeActions: false
+  - type: MorphDisguise

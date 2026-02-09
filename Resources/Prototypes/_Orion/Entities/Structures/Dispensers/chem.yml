@@ -1,138 +1,28 @@
 - type: entity
   parent: ChemDispenser
   id: MiniChemDispenser
+  suffix: Filled
   name: mini chemical dispenser
   components:
   - type: Sprite
     sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
-  - type: ItemMapper
-    sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
-  - type: Battery
-    maxCharge: 800
-    startingCharge: 0
+    state: industrial-working
 
 - type: entity
-  parent: [ReagentDispenserBase, BaseMachinePowered]
-  id: ChemDispenser
-  name: chemical dispenser
-  description: A bluespace Chemical Dispenser that uses station energy to synthesize Reagents. The future is here and now.
-  placement:
-    mode: SnapgridCenter
+  parent: MiniChemDispenser
+  id: MiniChemDispenserEmpty
+  suffix: Empty
+  name: mini chemical dispenser
+
+- type: entity
+  parent: EnergyChemDispenser
+  id: EnergyMiniChemDispenser
+  suffix: Energy
+  name: mini chemical dispenser
   components:
   - type: Sprite
-    sprite: _Orion/Structures/Dispensers/dispenser.rsi
-    snapCardinals: true
-    layers:
-    - state: industrial-off
-    - state: industrial-working
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-      visible: false
-  - type: Icon
-    sprite: _Orion/Structures/Dispensers/dispenser.rsi
-    state: industrial
-  - type: Appearance
-  - type: ItemMapper
-    sprite: _Orion/Structures/Dispensers/dispenser.rsi
-    containerWhitelist: [beakerSlot]
-    mapLayers:
-      industrial_loaded:
-        whitelist:
-          components:
-          - FitsInDispenser
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
-  - type: ApcPowerReceiver
-    powerLoad: 65
+    sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
+    state: industrial-working
   - type: Battery
-    maxCharge: 1500
-    startingCharge: 0
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25, -0.4, 0.25, 0.4"
-        density: 190
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalGlassBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-  - type: GuideHelp
-    guides:
-    - Chemicals
-    - Chemist
-  - type: StealTarget
-    stealGroup: ChemDispenser
-  - type: Machine
-    board: ChemDispenserMachineCircuitboard
-  - type: ActivatableUI
-    key: enum.EnergyReagentDispenserUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.EnergyReagentDispenserUiKey.Key:
-        type: EnergyReagentDispenserBoundUserInterface
-      enum.StorageUiKey.Key:
-        type: StorageBoundUserInterface
-  - type: EnergyReagentDispenser
-    reagents:
-      Aluminium: 8
-      Carbon: 3
-      Chlorine: 9
-      Copper: 5
-      Ethanol: 8
-      Fluorine: 12
-      Hydrogen: 6
-      Iodine: 8
-      Iron: 5
-      Lithium: 6
-      Mercury: 7
-      Nitrogen: 3
-      Oxygen: 3
-      Phosphorus: 15
-      Potassium: 8
-      Radium: 7
-      Silicon: 4
-      Sodium: 5
-      Sugar: 5
-      Sulfur: 5
-    reagentsEmagged:
-      Puncturase: 20
-      Pyrazine: 10
-      TranexamicAcid: 5
-      Epinephrine: 5
-      Leporazine: 10
-      Cryoxadone: 5
-      Ephedrine: 20
-      Morphine: 3
-
-# Version for antagonists (Like NukeOps)
-- type: entity
-  parent: ChemDispenser
-  id: ChemDispenserBuffed
-  suffix: Buffed
-  components:
-  - type: Battery
-    maxCharge: 15000
-    startingCharge: 15000
-  - type: ApcPowerReceiverBattery
-    idleLoad: 150
-    batteryRechargeRate: 60
-    batteryRechargeEfficiency: 1.0
+    maxCharge: 500
+    startingCharge: 500

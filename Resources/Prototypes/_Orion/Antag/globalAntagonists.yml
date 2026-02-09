@@ -119,6 +119,12 @@
   weight: 19
 
 - type: antagonist
+  id: globalAntagonistContractor
+  name: global-antagonist-contractor-name
+  description: global-antagonist-contractor-description
+  weight: 20
+
+- type: antagonist
   id: globalAntagonistGhostRole
   name: global-antagonist-ghost-role-name
   description: global-antagonist-ghost-role-description

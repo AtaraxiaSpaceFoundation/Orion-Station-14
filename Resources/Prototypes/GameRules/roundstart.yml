@@ -242,8 +242,6 @@
     #- Vox
     - Yowie # Goobstation
     - Plasmaman # EE
-  - type: GlobalAntagonist # Orion
-    antagonistPrototype: globalAntagonistNukeops
   - type: AntagObjectives # Goobstation
     objectives:
     - NukeopsDetonateObjective
@@ -268,12 +266,12 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Orion
+      - type: GlobalAntagonist # Orion
+        antagonistPrototype: globalAntagonistNukeops
+      - type: AdditionalLanguage # Orion
         speaks:
-        - TauCetiBasic
         - Codespeak
         understands:
-        - TauCetiBasic
         - Codespeak
       - type: NukeOperative
       - type: RandomMetadata
@@ -294,12 +292,12 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Orion
+      - type: GlobalAntagonist # Orion
+        antagonistPrototype: globalAntagonistNukeops
+      - type: AdditionalLanguage # Orion
         speaks:
-        - TauCetiBasic
         - Codespeak
         understands:
-        - TauCetiBasic
         - Codespeak
       - type: NukeOperative
       - type: RandomMetadata
@@ -324,12 +322,12 @@
       roleLoadout:
       - RoleSurvivalNukie
       components:
-      - type: LanguageKnowledge # Orion
+      - type: GlobalAntagonist # Orion
+        antagonistPrototype: globalAntagonistNukeops
+      - type: AdditionalLanguage # Orion
         speaks:
-        - TauCetiBasic
         - Codespeak
         understands:
-        - TauCetiBasic
         - Codespeak
       - type: NukeOperative
       - type: RandomMetadata

@@ -13,6 +13,7 @@
   table: !type:AllSelector
     children:
     - id: BoxSurvivalSlots
+    - id: RecruitPadInteQ
     - id: BoxFlare
       prob: 0.50
     - id: CombatMedipen

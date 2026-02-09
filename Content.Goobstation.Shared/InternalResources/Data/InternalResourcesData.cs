@@ -7,6 +7,7 @@ namespace Content.Goobstation.Shared.InternalResources.Data;
 /// Data structure for storing and changing inner resource in entities
 /// </summary>
 [Serializable, NetSerializable]
+[DataDefinition]
 public sealed partial class InternalResourcesData
 {
     /// <summary>
@@ -28,16 +29,28 @@ public sealed partial class InternalResourcesData
     public float RegenerationRate = 1f;
 
     /// <summary>
+    /// The thresholds at which InternalResourcesThresholdMetEvent will be raised.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, (float, bool)>? Thresholds;
+
+    /// <summary>
     /// Prototype with visual information of internal resources
     /// </summary>
     [DataField(required: true)]
     public ProtoId<InternalResourcesPrototype> InternalResourcesType;
 
-    public InternalResourcesData(float maxAmount, float regenerationRate, float startingAmount, string protoId)
+    public InternalResourcesData(
+        float maxAmount,
+        float regenerationRate,
+        float startingAmount,
+        Dictionary<string, (float, bool)>? thresholds,
+        string protoId)
     {
         CurrentAmount = startingAmount;
         MaxAmount = maxAmount;
         RegenerationRate = regenerationRate;
+        Thresholds = thresholds;
         InternalResourcesType = protoId;
     }
 }

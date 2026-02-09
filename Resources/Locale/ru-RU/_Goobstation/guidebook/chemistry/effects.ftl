@@ -31,6 +31,8 @@ reagent-effect-guidebook-dnascramble = Перемешивает ДНК суще�
 
 reagent-effect-guidebook-change-species = Превращает цель в { $species }
 
+reagent-effect-guidebook-change-species-random = Превращает цель в случайную расу.
+
 reagent-effect-guidebook-sex-change = Меняет пол сущеста на противоположный
 
 reagent-effect-guidebook-immunity-modifier =

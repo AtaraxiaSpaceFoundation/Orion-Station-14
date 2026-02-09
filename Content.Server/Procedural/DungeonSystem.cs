@@ -126,6 +126,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
         foreach (var token in _dungeonJobs.Values)
         {
             token.Cancel();
+            token.Dispose(); // Orion
         }
 
         _dungeonJobs.Clear();
@@ -153,38 +154,20 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
     public override void Shutdown()
     {
         base.Shutdown();
-        foreach (var token in _dungeonJobs.Values)
-        {
-            token.Cancel();
-        }
-
-        _dungeonJobs.Clear();
+        // Orion-Edit-Start
+        OnRoundCleanup(new RoundRestartCleanupEvent());
+        // Orion-Edit-End
     }
 
     private void PrototypeReload(PrototypesReloadedEventArgs obj)
     {
         if (!obj.ByType.TryGetValue(typeof(DungeonRoomPrototype), out var rooms))
-        {
             return;
-        }
 
-        foreach (var proto in rooms.Modified.Values)
-        {
-            var roomProto = (DungeonRoomPrototype) proto;
-            var query = AllEntityQuery<DungeonAtlasTemplateComponent>();
-
-            while (query.MoveNext(out var uid, out var comp))
-            {
-                if (!roomProto.AtlasPath.Equals(comp.Path))
-                    continue;
-
-                QueueDel(uid);
-                break;
-            }
-        }
-
-        if (!_configManager.GetCVar(CCVars.ProcgenPreload))
-            return;
+        // Orion-Edit-Start
+        var preload = _configManager.GetCVar(CCVars.ProcgenPreload);
+        var toCreate = new List<DungeonRoomPrototype>();
+        // Orion-Edit-End
 
         foreach (var proto in rooms.Modified.Values)
         {
@@ -201,11 +184,16 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
                 break;
             }
 
-            if (!found)
-            {
-                GetOrCreateTemplate(roomProto);
-            }
+            // Orion-Edit-Start
+            if (preload && !found)
+                toCreate.Add(roomProto);
         }
+
+        foreach (var roomProto in toCreate)
+        {
+            GetOrCreateTemplate(roomProto);
+        }
+        // Orion-Edit-End
     }
 
     public MapId GetOrCreateTemplate(DungeonRoomPrototype proto)
@@ -267,7 +255,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             coordinates,
             cancelToken.Token);
 
-        _dungeonJobs.Add(job, cancelToken);
+        _dungeonJobs[job] = cancelToken; // Orion-Edit
         _dungeonJobQueue.EnqueueJob(job);
     }
 
@@ -300,19 +288,18 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             null,
             cancelToken.Token);
 
-        _dungeonJobs.Add(job, cancelToken);
-        _dungeonJobQueue.EnqueueJob(job);
+        _dungeonJobs[job] = cancelToken; // Orion-Edit
+        _dungeonJobQueue.EnqueueJob(job); // Orion
         await job.AsTask;
 
-        if (job.Exception != null)
-        {
-            throw job.Exception;
-        }
-
-        return job.Result!;
+        // Orion-Edit-Start
+        return job.Exception != null
+            ? throw job.Exception
+            : job.Result!;
+        // Orion-Edit-End
     }
 
-    public Angle GetDungeonRotation(int seed)
+    public static Angle GetDungeonRotation(int seed) // Orion-Edit: Static
     {
         // Mask 0 | 1 for rotation seed
         var dungeonRotationSeed = 3 & seed;

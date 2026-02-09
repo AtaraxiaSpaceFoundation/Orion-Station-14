@@ -68,13 +68,14 @@
       path: /Audio/Announcements/attention.ogg
     weight: 6
     duration: 1
-    minimumPlayers: 120 # Changed to 120, until fixed.
+    minimumPlayers: 20
     earliestStart: 15
     reoccurrenceDelay: 50
     eventType: HostilesSpawn
   - type: GameRule
-    chaosScore: 150
+    chaosScore: 400
   - type: VentSpawnRule
+  - type: MorphRule
   - type: AntagSpawner
     prototype: MobMorph
   - type: AntagObjectives
@@ -108,7 +109,7 @@
     reoccurrenceDelay: 45
     eventType: Chaotic
   - type: GameRule
-    chaosScore: 100
+    chaosScore: 250
   - type: RandomSpawnRule
     prototype: SpawnPointGhostCorticalBorer
     minCount: 1

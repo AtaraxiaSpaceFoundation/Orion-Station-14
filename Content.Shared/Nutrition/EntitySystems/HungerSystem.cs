@@ -116,9 +116,28 @@ public sealed class HungerSystem : EntitySystem
     private static readonly ProtoId<SatiationIconPrototype> HungerIconPeckishId = "HungerIconPeckish";
     private static readonly ProtoId<SatiationIconPrototype> HungerIconStarvingId = "HungerIconStarving";
 
+    // Orion-Start
+    private static readonly HashSet<HungerThreshold> MovementAffectingThresholds = new()
+    {
+        HungerThreshold.Overfed,
+        HungerThreshold.Okay,
+        HungerThreshold.Peckish,
+    };
+
+    private SatiationIconPrototype? _overfedIcon;
+    private SatiationIconPrototype? _peckishIcon;
+    private SatiationIconPrototype? _starvingIcon;
+    // Orion-End
+
     public override void Initialize()
     {
         base.Initialize();
+
+        // Orion-Start
+        _prototype.TryIndex(HungerIconOverfedId, out _overfedIcon);
+        _prototype.TryIndex(HungerIconPeckishId, out _peckishIcon);
+        _prototype.TryIndex(HungerIconStarvingId, out _starvingIcon);
+        // Orion-End
 
         SubscribeLocalEvent<HungerComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<HungerComponent, ComponentShutdown>(OnShutdown);
@@ -253,9 +272,15 @@ public sealed class HungerSystem : EntitySystem
 
         if (component.HungerThresholdDecayModifiers.TryGetValue(component.CurrentThreshold, out var modifier))
         {
-            component.ActualDecayRate = component.BaseDecayRate * modifier;
-            DirtyField(uid, component, nameof(HungerComponent.ActualDecayRate));
-            SetAuthoritativeHungerValue((uid, component), GetHunger(component));
+            // Orion-Edit-Start
+            var newDecayRate = component.BaseDecayRate * modifier;
+            if (Math.Abs(component.ActualDecayRate - newDecayRate) > 0.001f)
+            {
+                component.ActualDecayRate = newDecayRate;
+                DirtyField(uid, component, nameof(HungerComponent.ActualDecayRate));
+                SetAuthoritativeHungerValue((uid, component), GetHunger(component));
+            }
+            // Orion-Edit-End
         }
 
         component.LastThreshold = component.CurrentThreshold;
@@ -310,39 +335,24 @@ public sealed class HungerSystem : EntitySystem
         return GetHungerThreshold(comp, food) < threshold;
     }
 
-    private bool GetMovementThreshold(HungerThreshold threshold)
+    // Orion-Edit-Start
+    private static bool GetMovementThreshold(HungerThreshold threshold)
     {
-        switch (threshold)
-        {
-            case HungerThreshold.Overfed:
-            case HungerThreshold.Okay:
-                return true;
-            case HungerThreshold.Peckish:
-            case HungerThreshold.Starving:
-            case HungerThreshold.Dead:
-                return false;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(threshold), threshold, null);
-        }
+        return MovementAffectingThresholds.Contains(threshold);
     }
+    // Orion-Edit-End
 
     public bool TryGetStatusIconPrototype(HungerComponent component, [NotNullWhen(true)] out SatiationIconPrototype? prototype)
     {
-        switch (component.CurrentThreshold)
+        // Orion-Edit-Start
+        prototype = component.CurrentThreshold switch
         {
-            case HungerThreshold.Overfed:
-                _prototype.TryIndex(HungerIconOverfedId, out prototype);
-                break;
-            case HungerThreshold.Peckish:
-                _prototype.TryIndex(HungerIconPeckishId, out prototype);
-                break;
-            case HungerThreshold.Starving:
-                _prototype.TryIndex(HungerIconStarvingId, out prototype);
-                break;
-            default:
-                prototype = null;
-                break;
-        }
+            HungerThreshold.Overfed => _overfedIcon,
+            HungerThreshold.Peckish => _peckishIcon,
+            HungerThreshold.Starving => _starvingIcon,
+            _ => null,
+        };
+        // Orion-Edit-End
 
         return prototype != null;
     }
@@ -365,7 +375,14 @@ public sealed class HungerSystem : EntitySystem
                 continue;
             hunger.NextThresholdUpdateTime = _timing.CurTime + hunger.ThresholdUpdateRate;
 
+            var previousThreshold = hunger.CurrentThreshold; // Orion
             UpdateCurrentThreshold(uid, hunger);
+
+            // Orion-Start
+            if (hunger.CurrentThreshold == HungerThreshold.Dead && previousThreshold == HungerThreshold.Dead && _mobState.IsDead(uid))
+                continue;
+            // Orion-End
+
             DoContinuousHungerEffects(uid, hunger);
         }
     }
