@@ -229,7 +229,6 @@
     followEntity: true
   - type: CargoOrderConsole
   - type: CrewMonitoringConsole
-    doAlert: false # Orion
   - type: GeneralStationRecordConsole
     canDeleteEntries: true
   - type: DeviceNetwork

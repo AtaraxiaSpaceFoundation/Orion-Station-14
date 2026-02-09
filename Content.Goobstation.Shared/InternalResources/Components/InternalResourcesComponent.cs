@@ -8,15 +8,14 @@ namespace Content.Goobstation.Shared.InternalResources.Components;
 /// Component that uses for generic internal resources like mana or changeling's chemicals
 /// </summary>
 
-[RegisterComponent, NetworkedComponent]
-[AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class InternalResourcesComponent : Component
 {
     /// <summary>
     /// List of internal resources data that entity have
     /// </summary>
     [ViewVariables]
-    [AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public List<InternalResourcesData> CurrentInternalResources = new();
 
     public bool HasResourceData(string protoId, [NotNullWhen(true)] out InternalResourcesData? data)

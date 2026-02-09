@@ -277,3 +277,23 @@
           rolloffFactor: 2
       alarmInterval: 20
       # Orion-End
+    honk: # Goobstation
+      announcement: alert-level-honk-announcement
+      selectable: false
+      emagSelectable: true
+      sound:
+        path: /Audio/Items/bikehorn.ogg
+      color: Magenta
+      emergencyLightColor: Magenta
+      forceEnableEmergencyLights: true
+      shuttleTime: 600
+      # Orion-Start
+      alarmSound:
+        path: /Audio/Items/bikehorn.ogg
+        params:
+          pitch: 1.4
+          volume: -12
+          maxDistance: 10
+          rolloffFactor: 2
+      alarmInterval: 120
+      # Orion-End

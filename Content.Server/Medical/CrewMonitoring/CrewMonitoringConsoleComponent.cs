@@ -37,19 +37,22 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Enable or disable alerts.
     /// </summary>
     [DataField]
-    public bool DoAlert = true;
+    public bool DoAlert;
 
     /// <summary>
     ///     Time interval between alerts in seconds.
     /// </summary>
     [DataField]
-    public float AlertTime = 15f;
+    public float AlertTime = 30f;
 
     /// <summary>
     ///     Sound to play when alert is triggered.
     /// </summary>
     [DataField]
     public SoundSpecifier AlertSound = new SoundPathSpecifier("/Audio/_Orion/Machines/crew_monitoring_alert.ogg");
+
+    [DataField]
+    public AudioParams AlertAudioParams = AudioParams.Default.WithVolume(-8f).WithVariation(0.25f);
 
     /// <summary>
     ///     Timestamp of the last played alert.

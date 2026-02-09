@@ -28,5 +28,8 @@
     <GuideEntityEmbed Entity="MobChitinid" Caption="Хитинид"/>
     <GuideEntityEmbed Entity="MobFeroxi" Caption="Ферокси"/>
   </Box>
+  <Box>
+    <GuideEntityEmbed Entity="MobShadowkin" Caption="Shadowkin"/>
+  </Box>
 
 </Document>

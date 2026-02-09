@@ -70,15 +70,14 @@
         layer:
         - TabletopMachineLayer
   - type: ApcPowerReceiver
-    powerLoad: 65 # Orion
   - type: ExtensionCableReceiver
   - type: ActivatableUI
-    key: enum.EnergyReagentDispenserUiKey.Key # Orion-Edit: Energy
+    key: enum.ReagentDispenserUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
-      enum.EnergyReagentDispenserUiKey.Key: # Orion-Edit: Energy
-        type: EnergyReagentDispenserBoundUserInterface
+      enum.ReagentDispenserUiKey.Key:
+        type: ReagentDispenserBoundUserInterface
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
   - type: Anchorable
@@ -107,35 +106,20 @@
 #    maxItemSize: Normal
 #    grid:
 #    - 0,0,19,5
-#  - type: ReagentDispenser # Orion-Edit: Removed
+#  - type: ReagentDispenser
 #    beakerSlot:
 #      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
 #      whitelist:
 #        components:
 #        - FitsInDispenser
 #      priority: 9
-  # Orion-Start
-  - type: EnergyReagentDispenser
-    beakerSlot:
-      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
-      whitelist:
-        components:
-        - FitsInDispenser
-  # Orion-End
 #  - type: ItemSlots # Orion-Edit: Removed
-  - type: ContainerContainer
-    containers:
-      machine_board: !type:Container
-      machine_parts: !type:Container
-      beakerSlot: !type:ContainerSlot
-      storagebase: !type:Container
+#  - type: ContainerContainer # Orion-Edit: Removed
+#    containers:
+#      machine_board: !type:Container
+#      machine_parts: !type:Container
+#      beakerSlot: !type:ContainerSlot
+#      storagebase: !type:Container
   - type: StaticPrice
     price: 1000
   - type: WiresPanel
-  - type: Battery # Orion
-    maxCharge: 500
-    startingCharge: 0
-  - type: ApcPowerReceiverBattery # Orion
-    idleLoad: 65
-    batteryRechargeRate: 25
-    batteryRechargeEfficiency: 1.0

@@ -34,7 +34,7 @@ public sealed partial class CCVars
     ///     Whether the arrivals terminal should be on a planet map.
     /// </summary>
     public static readonly CVarDef<bool> ArrivalsPlanet =
-        CVarDef.Create("shuttle.arrivals_planet", true, CVar.SERVERONLY);
+        CVarDef.Create("shuttle.arrivals_planet", false, CVar.SERVERONLY); // Orion-Edit: true > false
 
     /// <summary>
     ///     Whether the arrivals shuttle is enabled.
@@ -83,7 +83,7 @@ public sealed partial class CCVars
     ///     Whether to automatically preloading grids by GridPreloaderSystem
     /// </summary>
     public static readonly CVarDef<bool> PreloadGrids =
-        CVarDef.Create("shuttle.preload_grids", true, CVar.SERVERONLY);
+        CVarDef.Create("shuttle.preload_grids", false, CVar.SERVERONLY); // Orion-Edit: true > false
 
     /// <summary>
     ///     How long the warmup time before FTL start should be.
@@ -183,7 +183,7 @@ public sealed partial class CCVars
     /// </summary>
     [CVarControl(AdminFlags.Server | AdminFlags.Mapping, min: 0, max: int.MaxValue)]
     public static readonly CVarDef<int> EmergencyShuttleAutoCallTime =
-        CVarDef.Create("shuttle.auto_call_time", 90, CVar.SERVERONLY);
+        CVarDef.Create("shuttle.auto_call_time", 120, CVar.SERVERONLY); // Orion-Edit: 90 > 120
 
     /// <summary>
     ///     Time in minutes after the round was extended (by recalling the shuttle) to call

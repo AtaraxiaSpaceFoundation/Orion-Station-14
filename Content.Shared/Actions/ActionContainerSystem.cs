@@ -16,6 +16,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Goobstation.Common.Mimery;
 using Content.Shared.Actions.Components;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -151,6 +152,7 @@ public sealed class ActionContainerSystem : EntitySystem
 
     /// <summary>
     /// Transfers an action from one container to another, while keeping the attached entity the same.
+
     /// </summary>
     /// <remarks>
     /// While the attached entity should be the same at the end, this will actually remove and then re-grant the action.
@@ -338,6 +340,10 @@ public sealed class ActionContainerSystem : EntitySystem
 
         var ev = new ActionAddedEvent(args.Entity, action);
         RaiseLocalEvent(uid, ref ev);
+        // Goob edit start
+        var ev2 = new ActionGotAddedEvent(uid);
+        RaiseLocalEvent(args.Entity, ref ev2);
+        // Goob edit end
     }
 
     private void OnEntityRemoved(EntityUid uid, ActionsContainerComponent component, EntRemovedFromContainerMessage args)

@@ -29,11 +29,11 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Pointing;
-using Content.Goobstation.Shared.Changeling.Components;
 using Content.Server.Mobs;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Content.Goobstation.Common.Body;
 
 namespace Content.Server.Body.Systems
 {
@@ -59,9 +59,17 @@ namespace Content.Server.Body.Systems
         private void HandleRemoval(EntityUid uid, BrainComponent brain, ref OrganRemovedFromBodyEvent args)
         {
             if (TerminatingOrDeleted(uid)
-                || TerminatingOrDeleted(args.OldBody)
-                || HasComp<ChangelingIdentityComponent>(args.OldBody))
+                || TerminatingOrDeleted(args.OldBody))
                 return;
+
+            // goob start
+            var remEv = new BeforeBrainRemovedEvent();
+            RaiseLocalEvent(args.OldBody, ref remEv);
+
+            if (remEv.Blocked)
+                return;
+
+            // goob end
 
             brain.Active = false;
             if (!CheckOtherBrains(args.OldBody))
@@ -83,9 +91,17 @@ namespace Content.Server.Body.Systems
         private void HandleAddition(EntityUid uid, BrainComponent brain, ref OrganAddedToBodyEvent args)
         {
             if (TerminatingOrDeleted(uid)
-                || TerminatingOrDeleted(args.Body)
-                || HasComp<ChangelingIdentityComponent>(args.Body))
+                || TerminatingOrDeleted(args.Body))
                 return;
+
+            // goob start
+            var addEv = new BeforeBrainAddedEvent();
+            RaiseLocalEvent(args.Body, ref addEv);
+
+            if (addEv.Blocked)
+                return;
+
+            // goob end
 
             if (!CheckOtherBrains(args.Body))
             {

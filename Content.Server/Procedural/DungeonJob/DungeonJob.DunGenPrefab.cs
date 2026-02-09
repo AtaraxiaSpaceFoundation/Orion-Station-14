@@ -27,7 +27,7 @@ public sealed partial class DungeonJob
         var preset = prefab.Presets[random.Next(prefab.Presets.Count)];
         var gen = _prototype.Index(preset);
 
-        var dungeonRotation = _dungeon.GetDungeonRotation(random.Next());
+        var dungeonRotation = DungeonSystem.GetDungeonRotation(random.Next()); // Orion-Edit
         var dungeonTransform = Matrix3Helpers.CreateTransform(position, dungeonRotation);
         var roomPackProtos = new Dictionary<Vector2i, List<DungeonRoomPackPrototype>>();
 

@@ -543,6 +543,9 @@
             "name": "red_door"
         },
         {
+            "name": "salvage_door"
+        },
+        {
             "name": "science"
         },
         {
