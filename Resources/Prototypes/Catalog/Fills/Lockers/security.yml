@@ -210,6 +210,8 @@
     - id: ClothingUniformJumpskirtOfLife
       prob: 0.1
     # Orion-Start
+    - id: ClothingHeadHatBeretSecurityMedic
+      prob: 0.5
     - id: ClothingBackpackDuffelBrigmedicFilledJanitorialSupplies
     - id: MedkitToxinFilled
     - id: MedkitRadiationFilled
