@@ -125,7 +125,8 @@
 
 - type: loadout
   id: ChiefEngineerBeret
-  startingGear: EngineeringBeret
+  equipment: # Orion
+    head: ADTClothingHeadHatBeretCEngineer # Orion-Edit: Another beret
 
 
 # Neck

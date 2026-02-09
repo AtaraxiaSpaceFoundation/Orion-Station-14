@@ -987,6 +987,7 @@
   loadouts:
   - ChiefEngineerHead
   - ChiefEngineerBeret
+  - EngineeringBeret # Orion
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -1613,6 +1614,7 @@
   minLimit: 0
   loadouts:
   - ParamedicHead
+  - ParamedicHeadBeret # Orion
   - SeniorPhysicianBeret # Goobstation
 
 - type: loadoutGroup

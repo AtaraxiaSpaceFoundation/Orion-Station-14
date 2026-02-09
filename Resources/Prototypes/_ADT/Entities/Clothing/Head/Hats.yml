@@ -1,4 +1,4 @@
-- type: entity
+- type: entity #спрайты от prazat911
   parent: ClothingHeadBase
   id: ADTClothingHeadHatsBeretAtmos
   name: atmospheric technician's beret
@@ -11,3 +11,28 @@
   - type: Tag
     tags:
       - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ADTClothingHeadHatsParamedicBeret
+  name: paramedic's beret
+  description: A blue beret of a constantly busy job.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Head/Hats/beret_paramedic.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Head/Hats/beret_paramedic.rsi
+  - type: Tag
+    tags:
+      - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ADTClothingHeadHatBeretCEngineer
+  name: chief engineer's beret # Orion-Edit
+  description: A beret for different tasks.
+  components:
+  - type: Sprite
+    sprite: _ADT/Clothing/Head/Hats/beret_ce.rsi
+  - type: Clothing
+    sprite: _ADT/Clothing/Head/Hats/beret_ce.rsi
