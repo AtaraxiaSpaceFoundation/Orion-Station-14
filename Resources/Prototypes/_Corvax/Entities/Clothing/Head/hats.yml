@@ -1,4 +1,4 @@
-﻿- type: entity
+﻿- type: entity  
   parent: ClothingHeadHatSecurityTrooper # Orion-Edit
   id: ClothingHeadHatBeretSecurityMedic
   name: security medic beret

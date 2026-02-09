@@ -124,7 +124,7 @@
 - type: loadout
   id: SeniorEngineerBeret
   equipment: # Orion
-    head: EngineeringBeret # Orion-Edit: Bugfix
+    head: ClothingHeadHatBeretEngineering # Orion-Edit: Bugfix
   effects:
   - !type:GroupLoadoutEffect
     proto: SeniorEngineering

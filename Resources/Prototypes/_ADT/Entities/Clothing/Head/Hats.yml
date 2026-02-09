@@ -36,3 +36,6 @@
     sprite: _ADT/Clothing/Head/Hats/beret_ce.rsi
   - type: Clothing
     sprite: _ADT/Clothing/Head/Hats/beret_ce.rsi
+  - type: Tag # Orion
+    tags:
+      - HamsterWearable
