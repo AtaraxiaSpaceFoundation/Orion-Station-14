@@ -1398,9 +1398,11 @@
   name: loadout-group-brigmedic-head
   minLimit: 0
   loadouts:
+  - SecurityBeret # Orion
   - BrigmedicBeret
+  - BrigmedicBeretDark
   - CMOMedicalHeadMirror
-  - SecurityBeret
+#  - SecurityBeret # Orion-Edit
   - SecurityHat
   - TrooperHat
 
