@@ -22,3 +22,7 @@ ent-ClothingNeckCloakRoyalResearchDirector = королевский плащ н�
     .desc = Царь во дворца, царь во дворца.
 ent-ClothingNeckCloakSyndicateOfficer = плащ офицера синдиката
     .desc = Чёрный плащ, прошитый золотой тканью у шеи.
+ent-ADTClothingNeckDarkGreyCloak = темно-серый плащ
+    .desc = Даже грейтайд заслуживает иметь свой плащ.
+ent-ADTClothingNeckGothicCloak = готический плащ
+    .desc = Для классических вампиров, ценящих старый стиль.
