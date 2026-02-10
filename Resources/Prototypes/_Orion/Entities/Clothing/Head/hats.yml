@@ -140,9 +140,9 @@
   description: A blue beret with sewn emblem of engineering department. Smells like frezon.
   components:
   - type: Sprite
-    sprite: _ADT/Clothing/Head/Hats/beret_atmospheric_technician.rsi
+    sprite: _Orion/Clothing/Head/Hats/beret_atmospheric_technician.rsi
   - type: Clothing
-    sprite: _ADT/Clothing/Head/Hats/beret_atmospheric_technician.rsi
+    sprite: _Orion/Clothing/Head/Hats/beret_atmospheric_technician.rsi
   - type: Tag
     tags:
       - HamsterWearable
@@ -154,9 +154,9 @@
   description: A blue beret of a constantly busy job.
   components:
   - type: Sprite
-    sprite: _ADT/Clothing/Head/Hats/beret_paramedic.rsi
+    sprite: _Orion/Clothing/Head/Hats/beret_paramedic.rsi
   - type: Clothing
-    sprite: _ADT/Clothing/Head/Hats/beret_paramedic.rsi
+    sprite: _Orion/Clothing/Head/Hats/beret_paramedic.rsi
   - type: Tag
     tags:
       - HamsterWearable
@@ -179,9 +179,9 @@
   description: A beret for different tasks.
   components:
   - type: Sprite
-    sprite: _ADT/Clothing/Head/Hats/beret_ce.rsi
+    sprite: _Orion/Clothing/Head/Hats/beret_ce.rsi
   - type: Clothing
-    sprite: _ADT/Clothing/Head/Hats/beret_ce.rsi
+    sprite: _Orion/Clothing/Head/Hats/beret_ce.rsi
   - type: Tag
     tags:
       - HamsterWearable
