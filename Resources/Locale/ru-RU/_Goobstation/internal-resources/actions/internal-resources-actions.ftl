@@ -1,7 +1,6 @@
-internal-resources-debug-name = debug resource
-internal-resources-debug-desc = debug resource desc
+internal-resources-debug-name = ДЕБАГ ресурс
+internal-resources-debug-desc = Описание ДЕБАГ ресурса.
 internal-resources-chemicals-name = химикаты
-internal-resources-chemicals-desc = Химические резервы, используемые для способностей генокрада.
-
+internal-resources-chemicals-desc = Химикаты, используемые для генетических трансформаций биологических существ.
 internal-resources-biomass-name = биомасса
-internal-resources-biomass-desc = Запасы биомассы, порожденные пробудившимися глубинными инстинктами генокрада.
+internal-resources-biomass-desc = Запасённые резервы биомассы, порождённые неконтролируемыми природными инстинктами генокрада.

@@ -67,6 +67,7 @@ guide-entry-sop-emergencyresponseteam = ОБР (Отряд Быстрого Ре
 # - Грузовой отдел
 # guide-entry-sop-cargotech = Грузчик
 # guide-entry-sop-salvage = Утилизатор
+# guide-entry-sop-shaft-miner = Шахтёр
 # - Командование
 # guide-entry-sop-ntr = Представитель НаноТрейзен
 # guide-entry-sop-bso = Офицер Синего Щита
