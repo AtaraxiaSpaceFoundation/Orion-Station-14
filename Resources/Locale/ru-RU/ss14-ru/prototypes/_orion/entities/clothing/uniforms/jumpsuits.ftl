@@ -89,3 +89,7 @@ ent-ClothingUniformJumpsuitTurtleneckAquamarine = аквамариновая в�
     .desc = Слишком ярко!
 ent-ClothingUniformJumpsuitTurtleneckPink = розовая водолазка
     .desc = И кто это будет носить?
+ent-ClothingUniformJumpsuitTurtleneckRed = красная водолазка
+    .desc = Испачкался кровью?
+ent-ClothingUniformJumpsuitTurtleneckPurple = фиолетовая водолазка
+    .desc = Королевская и загадочная.

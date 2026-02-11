@@ -35,3 +35,7 @@ ent-ClothingUniformJumpskirtTurtleneckAquamarine = аквамариновая в
     .desc = { ent-ClothingUniformJumpsuitTurtleneckAquamarine.desc }
 ent-ClothingUniformJumpskirtTurtleneckPink = розовая водолазка с юбкой
     .desc = { ent-ClothingUniformJumpsuitTurtleneckPink.desc }
+ent-ClothingUniformJumpskirtTurtleneckRed = красная водолазка с юбкой
+    .desc = { ent-ClothingUniformJumpsuitTurtleneckRed.desc }
+ent-ClothingUniformJumpskirtTurtleneckPurple = фиолетовая водолазка с юбкой
+    .desc = { ent-ClothingUniformJumpsuitTurtleneckPurple.desc }

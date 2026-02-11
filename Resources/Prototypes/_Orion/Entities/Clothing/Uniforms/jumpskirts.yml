@@ -460,7 +460,7 @@
   parent: ClothingUniformJumpskirtTurtleneckWhite
   id: ClothingUniformJumpskirtTurtleneckRed
   name: red turtleneck with skirt
-  description: Bold and confident.
+  description: Did you get blood on yourself?
   components:
   - type: Sprite
     layers:
