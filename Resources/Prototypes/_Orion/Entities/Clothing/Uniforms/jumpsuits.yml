@@ -501,10 +501,10 @@
     sprite: _Orion/Clothing/Uniforms/Jumpsuit/stil_suit.rsi
 
 # Colorful turtlenecks
-# Белая водолазка (меньше синего, ярче)
+# Base (White)
 - type: entity
   parent: ClothingUniformBase
-  id: ADTClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckWhite
   name: white turtleneck
   description: Warm and comfy.
   components:
@@ -535,10 +535,10 @@
   - type: StaticPrice
     price: 15
 
-# Чёрная
+# Black
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckBlack
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckBlack
   name: black turtleneck
   description: Favourite clothes of bookworms.
   components:
@@ -564,10 +564,10 @@
         color: "#2a2a30"
       - state: equipped-INNERCLOTHING
 
-# Серая (чистый серый без синего)
+# Grey
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckGrey
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckGrey
   name: grey turtleneck
   description: Grey style?
   components:
@@ -593,10 +593,10 @@
         color: "#888888"
       - state: equipped-INNERCLOTHING
 
-# Синяя
+# Blue
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckBlue
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckBlue
   name: blue turtleneck
   description: Darker shade of azure.
   components:
@@ -622,10 +622,10 @@
         color: "#3050b0"
       - state: equipped-INNERCLOTHING
 
-# Голубая (Azure) — чуть ярче
+# Azure
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckAzure
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckAzure
   name: azure turtleneck
   description: Brighter shade of blue.
   components:
@@ -651,10 +651,10 @@
         color: "#55c8ff"
       - state: equipped-INNERCLOTHING
 
-# Бирюзовая (меньше синего, ярче)
+# Aquamarine
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckAquamarine
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckAquamarine
   name: aquamarine turtleneck
   description: Too bright!
   components:
@@ -680,10 +680,10 @@
         color: "#3fcea5"
       - state: equipped-INNERCLOTHING
 
-# Зелёная
+# Green
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckGreen
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckGreen
   name: green turtleneck
   description: Cheaper analog of CentComm turtleneck.
   components:
@@ -709,10 +709,10 @@
         color: "#47833b"
       - state: equipped-INNERCLOTHING
 
-# Жёлтая (чуть ярче)
+# Yellow
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckYellow
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckYellow
   name: yellow turtleneck
   description: Filled with happiness.
   components:
@@ -738,10 +738,10 @@
         color: "#f5c830"
       - state: equipped-INNERCLOTHING
 
-# Оранжевая (больше насыщенности)
+# Orange
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckOrange
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckOrange
   name: orange turtleneck
   description: Warm and energetic.
   components:
@@ -767,10 +767,10 @@
         color: "#e57828"
       - state: equipped-INNERCLOTHING
 
-# Коричневая
+# Brown
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckBrown
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckBrown
   name: brown turtleneck
   description: Rustic and cozy.
   components:
@@ -796,10 +796,10 @@
         color: "#6b4520"
       - state: equipped-INNERCLOTHING
 
-# Розовая (немного ярче)
+# Pink
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckPink
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckPink
   name: pink turtleneck
   description: Soft and stylish.
   components:
@@ -825,10 +825,10 @@
         color: "#ff4085"
       - state: equipped-INNERCLOTHING
 
-# Красная водолазка
+# Red
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckRed
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckRed
   name: red turtleneck
   description: Bold and confident.
   components:
@@ -854,10 +854,10 @@
         color: "#d82828"
       - state: equipped-INNERCLOTHING
 
-# Фиолетовая водолазка
+# Purple
 - type: entity
-  parent: ADTClothingUniformJumpsuitTurtleneckWhite
-  id: ADTClothingUniformJumpsuitTurtleneckPurple
+  parent: ClothingUniformJumpsuitTurtleneckWhite
+  id: ClothingUniformJumpsuitTurtleneckPurple
   name: purple turtleneck
   description: Royal and mysterious.
   components:
@@ -882,3 +882,4 @@
       - state: color-equipped-INNERCLOTHING
         color: "#8040c8"
       - state: equipped-INNERCLOTHING
+# End Colorful turtlenecks
