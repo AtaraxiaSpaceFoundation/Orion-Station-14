@@ -161,7 +161,7 @@
     tags:
       - HamsterWearable
 
-- type: entity  
+- type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatBeretSecurityMedicNoArmor
   name: security medic beret
@@ -172,7 +172,7 @@
     - type: Clothing
       sprite: _Orion/Clothing/Head/Hats/beret_security_medic.rsi
 
-- type: entity  
+- type: entity
   parent: [ClothingHeadHatBeretSecurityMedicNoArmor, ClothingHeadHatSecurityTrooper]
   id: ClothingHeadHatBeretSecurityMedic
   components:

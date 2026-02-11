@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from BlueMoon and SPLURT https://github.com/BlueMoon-Labs/BlueMoon-Station/commit/8375d8a624eb48c617610db857b668d1d19d4bd1",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-FEET",
+      "directions": 4
+    }
+  ]
+}

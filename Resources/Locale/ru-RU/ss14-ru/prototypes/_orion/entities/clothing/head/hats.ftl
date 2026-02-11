@@ -22,3 +22,7 @@ ent-ADTClothingHeadHatsParamedicBeret = берет парамедика
     .desc = Берет, связанный с постоянной медицинской работой.
 ent-ADTClothingHeadHatBeretCEngineer = берет старшего инженера
     .desc = Белый берет с эмблемой инженерного отдела. Не даст радиации и плохим шуткам проникнуть в вашу голову.
+ent-ClothingHeadHatBeretSecurityMedic = тёмный берет бригмедика
+    .desc = Прочный берет с медицинской нашивкой. Изготовлен из усиленной ткани для надёжной защиты.
+ent-ClothingHeadHatBeretSecurityMedicNoArmor = { ent-ClothingHeadHatBeretSecurityMedic }
+    .desc = Берет с медицинской нашивкой.
