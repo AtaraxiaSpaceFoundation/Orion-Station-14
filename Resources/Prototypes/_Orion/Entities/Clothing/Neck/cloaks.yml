@@ -123,7 +123,7 @@
   description: For a classy old-style vampires.
   components:
   - type: Sprite
-    sprite: _ADT/Clothing/Neck/Cloaks/gothic_cloak.rsi # sprites from floppo4ka
+    sprite: _Orion/Clothing/Neck/Cloaks/gothic_cloak.rsi # sprites from floppo4ka
 
 - type: entity
   parent: ClothingNeckBase
@@ -132,4 +132,4 @@
   description: Even a greytide deserves his cloak.
   components:
   - type: Sprite
-    sprite: _ADT/Clothing/Neck/Cloaks/darkgrey_cloak.rsi # sprites from floppo4ka
+    sprite: _Orion/Clothing/Neck/Cloaks/darkgrey_cloak.rsi # sprites from floppo4ka
