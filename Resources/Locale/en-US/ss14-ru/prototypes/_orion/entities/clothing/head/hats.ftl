@@ -20,3 +20,7 @@ ent-ClothingHeadHatUEGBeret = UEG police beret
     .desc = Beret of police officers of the UEG, have emblem of the Ministry of Internal Affairs on it.
 ent-ClothingHeadHatUEGOfficerCap = UEG officer cap
     .desc = UEG officer cap, has a cockade with the insignia of the Ministry of the Interior.
+ent-ClothingHeadHatBeretSecurityMedic = security medic beret
+    .desc = A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection.
+ent-ClothingHeadHatBeretSecurityMedicNoArmor = { ent-ClothingHeadHatBeretSecurityMedic }
+    .desc = { ent-ClothingHeadHatBeretSecurityMedic.desc }
