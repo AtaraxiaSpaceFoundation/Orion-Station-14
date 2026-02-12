@@ -163,7 +163,7 @@
 
 - type: entity
   parent: ClothingHeadBase
-  id: ClothingHeadHatBeretSecurityMedicNoArmor
+  id: ClothingHeadHatBeretSecurityMedicNoArmor # NoArmor
   name: security medic beret
   description: A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection.
   components:

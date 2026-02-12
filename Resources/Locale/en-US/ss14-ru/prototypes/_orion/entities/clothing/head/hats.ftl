@@ -24,3 +24,4 @@ ent-ClothingHeadHatBeretSecurityMedic = dark brigmedic beret
     .desc = A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection.
 ent-ClothingHeadHatBeretSecurityMedicNoArmor = { ent-ClothingHeadHatBeretSecurityMedic }
     .desc = A beret with the medical insignia emblazoned on it.
+    .suffix = NoArmor

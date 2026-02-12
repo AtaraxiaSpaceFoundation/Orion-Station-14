@@ -224,6 +224,7 @@
         - id: ClothingOuterFlannelGreen
       - id: ClothingOuterVestHazard
       - id: ClothingShoesBootsJack
+      - id: ClothingShoesBootsJackToeless # Orion
       - id: ClothingShoesHighheelBoots
       - id: ClothingShoesBootsLaceup
       - id: ClothingShoesLeather

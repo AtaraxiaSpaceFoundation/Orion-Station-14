@@ -1350,6 +1350,11 @@
   name: loadout-group-hos-shoes
   loadouts:
   - JackBoots
+  # Orion-Start
+  - JackBootsToeless
+  - JackBootsTall
+  - JackBootsTallHeels
+  # Orion-End
   - SecurityWinterBoots
   - AdvancedJackBoots
 

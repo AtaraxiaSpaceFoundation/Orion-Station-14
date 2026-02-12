@@ -1390,6 +1390,11 @@
   name: loadout-group-security-shoes
   loadouts:
   - JackBoots
+  # Orion-Start
+  - JackBootsToeless
+  - JackBootsTall
+  - JackBootsTallHeels
+  # Orion-End
   - CombatBoots # Goobstation
   - SecurityWinterBoots
 
