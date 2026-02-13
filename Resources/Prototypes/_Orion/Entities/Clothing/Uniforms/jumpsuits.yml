@@ -88,6 +88,17 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCentcomAdmiral
+  name: admiral's uniform
+  description: A uniform worn by those with the rank Admiral in the Nanotrasen Navy.
+  components:
+    - type: Sprite
+      sprite: _Orion/Clothing/Uniforms/Jumpsuit/centcom_admiral.rsi
+    - type: Clothing
+      sprite: _Orion/Clothing/Uniforms/Jumpsuit/centcom_admiral.rsi
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitUEGTurtleneck
   name: UEG turtleneck
   description: Lightweight and comfortable turtleneck.

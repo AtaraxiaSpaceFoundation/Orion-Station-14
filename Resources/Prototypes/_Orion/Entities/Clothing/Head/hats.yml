@@ -94,6 +94,28 @@
 
 - type: entity
   parent: ClothingHeadBase
+  id: ClothingHeadCapCentcomNaval
+  name: naval cap
+  description: A cap worn by those in the Nanotrasen Navy.
+  components:
+    - type: Sprite
+      sprite: _Orion/Clothing/Head/Hats/centcom_naval_cap.rsi
+    - type: Clothing
+      sprite: _Orion/Clothing/Head/Hats/centcom_naval_cap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretCentcomNaval
+  name: naval beret
+  description: A beret worn by those in the Nanotrasen Navy.
+  components:
+    - type: Sprite
+      sprite: _Orion/Clothing/Head/Hats/centcom_naval_beret.rsi
+    - type: Clothing
+      sprite: _Orion/Clothing/Head/Hats/centcom_naval_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
   id: ClothingHeadHatTinfoil
   name: tinfoil hat
   description: Space Station 13 doesnt exist.

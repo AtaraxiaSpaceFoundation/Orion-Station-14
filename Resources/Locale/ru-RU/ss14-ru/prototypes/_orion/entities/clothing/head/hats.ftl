@@ -26,3 +26,4 @@ ent-ClothingHeadHatBeretSecurityMedic = тёмный берет бригмеди
     .desc = Прочный берет с медицинской нашивкой. Изготовлен из усиленной ткани для надёжной защиты.
 ent-ClothingHeadHatBeretSecurityMedicNoArmor = { ent-ClothingHeadHatBeretSecurityMedic }
     .desc = Берет с медицинской нашивкой.
+    .suffix = Без брони
