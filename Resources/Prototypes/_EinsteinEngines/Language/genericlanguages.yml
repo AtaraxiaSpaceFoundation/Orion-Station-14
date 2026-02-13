@@ -336,11 +336,11 @@
   # Orion-End
   obfuscation:
     !type:ReplacementObfuscation
-    replacement:
-    - something
-    - a cryptic message
-    - a signal
-    - a message
+    replacement: # CorvaxGoob - Localization
+    - что-то
+    - непонятное сообщение
+    - сигнал
+    - сообщение
 
     #Used for Xenoglossy, and anything else with the UniversalLanguageSpeaker component
 - type: language
