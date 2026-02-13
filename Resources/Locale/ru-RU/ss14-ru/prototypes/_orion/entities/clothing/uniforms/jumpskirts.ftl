@@ -10,6 +10,16 @@ ent-ClothingUniformJumpskirtElegantMaid = элегантная форма гор
     .desc = Назови меня хозяином и принеси пивчански.
 ent-ClothingUniformJumpskirtWhiteCaptain = белая юбка-комбинезон капитана
     .desc = Белая юбка-комбинезон капитана символизирующая, что ваша зарплата явно превышает нормы.
+ent-ClothingUniformJumpskirtUEGOffice = офисная юбка ОПЗ
+    .desc = Офисная юбка — просто и со вкусом.
+ent-ClothingUniformJumpskirtUEGOfficer = офицерская юбка ОПЗ
+    .desc = Юбка, подчёркивающая статус офицера ОПЗ.
+ent-ClothingUniformJumpskirtUEGFormal = парадная юбка ОПЗ
+    .desc = Парадная юбка для деловых встреч.
+ent-ClothingUniformJumpskirtUEGNavyOfficer = юбка офицера флота ОПЗ
+    .desc = Юбка офицерского состава флота ОПЗ.
+ent-ClothingUniformJumpskirtUEGGrey = серая юбка ОПЗ
+    .desc = Аккуратная серая юбка.
 ent-ClothingUniformJumpskirtRoll = красная юбка
     .desc = Красная юбка, с белыми помпонами.
 
