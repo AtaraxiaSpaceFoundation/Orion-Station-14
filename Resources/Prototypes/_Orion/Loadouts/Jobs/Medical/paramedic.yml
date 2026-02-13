@@ -2,4 +2,4 @@
 - type: loadout
   id: ParamedicHeadBeret
   equipment:
-    head: ADTClothingHeadHatsParamedicBeret
+    head: ClothingHeadHatsParamedicBeret

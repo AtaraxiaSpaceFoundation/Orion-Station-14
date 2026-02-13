@@ -51,8 +51,8 @@
   id: ClothingEngineering
   recipes:
   - ClothingHeadHatBeretEngineering
-  - ADTClothingHeadHatsBeretAtmos # Orion
-  - ADTClothingHeadHatBeretCEngineer # Orion
+  - ClothingHeadHatsBeretAtmos # Orion
+  - ClothingHeadHatBeretCEngineer # Orion
   - ClothingUniformJumpsuitChiefEngineer
   - ClothingUniformJumpskirtChiefEngineer
   - ClothingUniformJumpsuitChiefEngineerTurtle
@@ -79,7 +79,7 @@
   - ClothingUniformJumpskirtSeniorPhysician
   - ClothingUniformJumpsuitParamedic
   - ClothingUniformJumpskirtParamedic
-  - ADTClothingHeadHatsParamedicBeret # Orion
+  - ClothingHeadHatsParamedicBeret # Orion
   - ClothingHeadHatParamedicsoft
 
 - type: latheRecipePack
@@ -118,7 +118,7 @@
   - ClothingUniformJumpsuitSec
   - ClothingUniformJumpskirtSec
   - ClothingHeadHatBeretBrigmedic
-  - ClothingHeadHatBeretSecurityMedicNoArmor # Orion
+  - ClothingHeadHatBeretSecurityMedic # Orion
   - ClothingUniformJumpsuitBrigmedic
   - ClothingUniformJumpskirtBrigmedic
   - ClothingHeadHatBeretWarden

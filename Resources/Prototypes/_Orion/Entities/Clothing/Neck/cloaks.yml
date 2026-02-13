@@ -46,8 +46,8 @@
   name: admiral's cape
   description: A vibrant green cape with gold stitching, worn by Nanotrasen Navy Admirals.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Neck/Cloaks/admiral.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/admiral.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -132,7 +132,7 @@
   description: For a classy old-style vampires.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Neck/Cloaks/gothic_cloak.rsi # sprites from floppo4ka
+    sprite: _Orion/Clothing/Neck/Cloaks/gothic_cloak.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -141,4 +141,4 @@
   description: Even a greytide deserves his cloak.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Neck/Cloaks/darkgrey_cloak.rsi # sprites from floppo4ka
+    sprite: _Orion/Clothing/Neck/Cloaks/darkgrey_cloak.rsi

@@ -107,7 +107,7 @@
     ClothingUniformJumpskirtCasualRed: 2
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
-    # Orion-Start: From ADT
+    # Orion-Start
     ClothingUniformJumpsuitTurtleneckBlack: 2
     ClothingUniformJumpsuitTurtleneckBlue: 2
     ClothingUniformJumpsuitTurtleneckAzure: 2
@@ -206,7 +206,7 @@
     ClothingNeckPonchoSmallPurple: 3 # Monolith
     ClothingNeckPonchoSmallBlack: 3 # Monolith
     ClothingNeckPonchoSmallWhite: 3 # Monolith
-    # Orion-Start: From ADT
+    # Orion-Start
     ADTClothingNeckDarkGreyCloak: 2
     ADTClothingNeckGothicCloak: 2
     # Orion-End

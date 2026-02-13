@@ -1,3 +1,3 @@
 ent-ClothingBeltSheathFilledNavyOfficer = { ent-ClothingBeltCentCommSheath }
-    .suffix = Заполненный, Улучшенный
+    .suffix = Заполненный+
     .desc = { ent-ClothingBeltCentCommSheath.desc }
