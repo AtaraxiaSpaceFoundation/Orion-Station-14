@@ -93,7 +93,7 @@
     eyes: ClothingEyesGlassesCentComm
     gloves: ClothingHandsGlovesCentcomNaval
     back: ClothingBackpackSatchelLeather
-    outerClothing: ClothingOuterArmorCentcomCarapace
+    outerClothing: ClothingOuterArmorCentcommCarapace
     neck: ClothingNeckCloakCentcomAdmiral
     id: CentcomPDA
     ears: ClothingHeadsetCentCom

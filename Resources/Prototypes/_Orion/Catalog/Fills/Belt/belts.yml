@@ -1,7 +1,7 @@
 - type: entity
   id: ClothingBeltCentCommSheathFilledUP
   parent: ClothingBeltCentCommSheath
-  suffix: Filled, Upgraded
+  suffix: Filled+
   components:
   - type: ContainerFill
     containers:

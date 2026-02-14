@@ -29,8 +29,6 @@
       - state: color-equipped-INNERCLOTHING
         color: "#e5e8f0"
       - state: equipped-INNERCLOTHING
-  - type: StaticPrice
-    price: 15
 
 # Black
 - type: entity
