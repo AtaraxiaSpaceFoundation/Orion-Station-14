@@ -8,6 +8,13 @@
     sprite: _Orion/Clothing/OuterClothing/Suits/atmos_overalls.rsi
   - type: Clothing
     sprite: _Orion/Clothing/OuterClothing/Suits/atmos_overalls.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
   - type: Armor
     coverage:
     - Chest

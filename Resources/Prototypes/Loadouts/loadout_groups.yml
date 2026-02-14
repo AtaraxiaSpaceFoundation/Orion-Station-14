@@ -1111,7 +1111,7 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
-  - AtmosphericsOveralls # Orion
+  - AtmosOveralls # Orion
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
