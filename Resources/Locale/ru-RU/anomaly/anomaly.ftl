@@ -56,6 +56,8 @@ anomaly-sync-connect-verb-message = Присоединить близлежащ�
 anomaly-sync-disconnect-verb-text = Отсоединить аномалию
 anomaly-sync-disconnect-verb-message = Отсоединить подключённую аномалию от { $machine }.
 anomaly-generator-ui-title = генератор аномалий
+anomaly-sync-disconnect-verb-text = Отсоединить аномалию
+anomaly-sync-disconnect-verb-message = Отсоединяет подключённую аномалию от { $machine }.
 anomaly-generator-fuel-display = Топливо:
 anomaly-generator-cooldown = Перезарядка: [color=gray]{ $time }[/color]
 anomaly-generator-no-cooldown = Перезарядка: [color=gray]Завершена[/color]

@@ -17,6 +17,15 @@ stat-melee-structural-damage = Урон по структуре
 stat-melee-structural-wield-damage = Урон по структуре при удержании
 # Lathe
 stat-lathe-values = Стоимость печати в лате
+# Melee
+stat-melee-values = Урон ближнего боя
+stat-melee-id = ID
+stat-melee-base-damage = Базовый урон
+stat-melee-wield-damage = Нанесённый урон
+stat-melee-attack-rate = Скорость атаки
+stat-melee-dps = DPS
+stat-melee-structural-damage = Структурный урон
+stat-melee-structural-wield-damage = Нанесённый структурный урон
 stat-lathe-id = ID
 stat-lathe-cost = Стоимость
 stat-lathe-sell = Цена продажи

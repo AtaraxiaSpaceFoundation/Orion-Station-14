@@ -6,6 +6,7 @@ station-ai-takeover = ИИ захват
 station-ai-eye-name = Глаз ИИ - { $name }
 # Radial actions
 ai-open = Открыть действия
+station-ai-eye-name = око ИИ - { $name }
 ai-close = Закрыть действия
 bolt-close = Заболтировать
 bolt-open = Разболтировать

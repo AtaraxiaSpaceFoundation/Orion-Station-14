@@ -1,1 +1,1 @@
-ghost-kick-on-trigger-default = Наступил на кикающую-мину и пробил четвёртую стену.
+ghost-kick-on-trigger-default = Споткнулся о кикающую мину, пробив четвёртую стену.

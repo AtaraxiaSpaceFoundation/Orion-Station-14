@@ -58,6 +58,7 @@ flavor-base-motivating = мотивирующе
 # Complex flavors. Put a flavor here when you want something that's more
 # specific.
 
+flavor-base-motivating = мотивирующе
 flavor-complex-nothing = как ничто
 flavor-complex-honey = как мёд
 
