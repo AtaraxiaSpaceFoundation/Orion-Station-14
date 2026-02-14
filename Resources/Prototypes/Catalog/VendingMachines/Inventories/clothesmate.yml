@@ -207,8 +207,8 @@
     ClothingNeckPonchoSmallBlack: 3 # Monolith
     ClothingNeckPonchoSmallWhite: 3 # Monolith
     # Orion-Start
-    ADTClothingNeckDarkGreyCloak: 2
-    ADTClothingNeckGothicCloak: 2
+    ClothingNeckDarkGreyCloak: 2
+    ClothingNeckGothicCloak: 2
     # Orion-End
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:

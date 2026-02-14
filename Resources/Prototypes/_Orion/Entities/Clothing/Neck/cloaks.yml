@@ -127,7 +127,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ADTClothingNeckGothicCloak
+  id: ClothingNeckGothicCloak
   name: gothic cloak
   description: For a classy old-style vampires.
   components:
@@ -136,7 +136,7 @@
 
 - type: entity
   parent: ClothingNeckBase
-  id: ADTClothingNeckDarkGreyCloak
+  id: ClothingNeckDarkGreyCloak
   name: dark grey cloak
   description: Even a greytide deserves his cloak.
   components:
