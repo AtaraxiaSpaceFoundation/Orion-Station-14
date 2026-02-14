@@ -203,7 +203,7 @@
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
   - type: StaticPrice
-    price: 70
+    price: 40 # Orion-Edit: 70 > 40
 
 - type: entity
   abstract: true

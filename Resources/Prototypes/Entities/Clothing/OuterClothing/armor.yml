@@ -189,6 +189,8 @@
     knockdownTimeDelta: -2
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.7
+  - type: StaticPrice # Orion
+    price: 0
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
