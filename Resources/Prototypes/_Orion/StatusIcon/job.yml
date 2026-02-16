@@ -123,3 +123,10 @@
   icon:
     sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
     state: ERT-Medical
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSalvageSpecialist
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: SalvageSpecialist
