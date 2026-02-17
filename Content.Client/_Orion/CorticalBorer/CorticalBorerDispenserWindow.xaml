@@ -17,11 +17,6 @@
                 ButtonList="1,5,10,15,20,25,30,50,100"
                 RadioGroup="True">
             </ui:ButtonGrid>
-	    <BoxContainer Orientation="Vertical" MinWidth="220" Margin="8 0 0 0">
-               <Label Text="{Loc 'cortical-borer-force-speak-label'}" />
-               <LineEdit Name="ForceHostSpeechInput" Access="Public" />
-               <Button Name="ForceHostSpeechButton" Access="Public" Text="{Loc 'cortical-borer-force-speak-button'}" Margin="0 4 0 0" />
-            </BoxContainer>
         </BoxContainer>
         <ScrollContainer HScrollEnabled="False"
                          HorizontalExpand="True"

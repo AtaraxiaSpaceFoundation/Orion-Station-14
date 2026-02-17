@@ -15,7 +15,7 @@
     description: cortical-borer-ghostrole-desc
     rules: ghost-role-information-freeagent-rules
     mindRoles:
-    - MindRoleGhostRoleFreeAgent
+    - MindRoleGhostRoleSoloAntagonist
     raffle:
       settings: default
     requirements:
@@ -88,6 +88,8 @@
     interfaces:
       enum.CorticalBorerDispenserUiKey.Key:
         type: CorticalBorerDispenserBoundUserInterface
+      enum.CorticalBorerForceSpeakUiKey.Key:
+        type: CorticalBorerForceSpeakBoundUserInterface
       enum.HealthAnalyzerUiKey.Key:
         type: HealthAnalyzerBoundUserInterface
   - type: CollectiveMind
@@ -129,7 +131,7 @@
     - !type:OverallPlaytimeRequirement
       time: 36000 # 10 hrs
     mindRoles:
-    - MindRoleGhostRoleFreeAgent
+    - MindRoleGhostRoleSoloAntagonist
   - type: GhostRoleMobSpawner
     prototype: MobCorticalBorer
   - type: Damageable

@@ -14,6 +14,7 @@ using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared._Orion.Morph;
 using Content.Shared._White.Xenomorphs.Xenomorph;
 using Content.Shared.Body.Components;
+using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
@@ -35,6 +36,7 @@ public sealed partial class CorticalBorerSystem
         SubscribeLocalEvent<CorticalBorerComponent, CorticalTakeControlEvent>(OnTakeControl);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalForceSpeakEvent>(OnForceSpeak);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalParalyzeHostEvent>(OnParalyzeHost);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalWillingHostEvent>(OnWillingHost);
 
         SubscribeLocalEvent<CorticalBorerComponent, CorticalChemMenuActionEvent>(OnChemicalMenu);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalCheckBloodEvent>(OnCheckBlood);
@@ -142,6 +144,7 @@ public sealed partial class CorticalBorerSystem
             return;
 
         InfestTarget(ent, target);
+        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):actor} infested {ToPrettyString(target):target}");
         args.Handled = true;
     }
 
@@ -162,8 +165,12 @@ public sealed partial class CorticalBorerSystem
         if (!CanUseAbility(ent, comp.Host.Value))
             return;
 
-        if (TryEjectBorer(ent))
-            args.Handled = true;
+        var oldHost = comp.Host.Value;
+        if (!TryEjectBorer(ent))
+            return;
+
+        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):actor} ejected from host {ToPrettyString(oldHost):target}");
+        args.Handled = true;
     }
 
     private void OnForceSpeak(Entity<CorticalBorerComponent> ent, ref CorticalForceSpeakEvent args)
@@ -180,9 +187,23 @@ public sealed partial class CorticalBorerSystem
         if (!TryComp<UserInterfaceComponent>(ent, out var uic))
             return;
 
-        UpdateUiState(ent);
-        UI.TryToggleUi((ent, uic), CorticalBorerDispenserUiKey.Key, ent);
+        UI.TryToggleUi((ent, uic), CorticalBorerForceSpeakUiKey.Key, ent);
 
+        args.Handled = true;
+    }
+
+    private void OnWillingHost(Entity<CorticalBorerComponent> ent, ref CorticalWillingHostEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryGetHost(ent, out var host))
+            return;
+
+        if (!CanUseAbility(ent, host.Value))
+            return;
+
+        AskForWillingHost(ent);
         args.Handled = true;
     }
 
@@ -198,6 +219,7 @@ public sealed partial class CorticalBorerSystem
             return;
 
         _stun.TryUpdateParalyzeDuration(host.Value, ent.Comp.ParalyzeHostDuration);
+        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):actor} paralyzed host {ToPrettyString(host.Value):target}");
         args.Handled = true;
     }
 
@@ -269,6 +291,7 @@ public sealed partial class CorticalBorerSystem
         _vomit.Vomit(host, -20, -20); // half as much chem vomit, a lot that is coming up is the egg
         LayEgg(borer);
         UpdateChems(borer, -borer.Comp.EggCost);
+        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(borer):actor} laid an egg in host {ToPrettyString(host):target}");
 
         args.Handled = true;
     }

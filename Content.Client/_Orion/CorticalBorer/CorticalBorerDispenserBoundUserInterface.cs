@@ -30,7 +30,6 @@ namespace Content.Client._Orion.CorticalBorer
             _window.AmountGrid.OnButtonPressed += s => SendMessage(new CorticalBorerDispenserSetInjectAmountMessage(s));
 
             _window.OnDispenseReagentButtonPressed += id => SendMessage(new CorticalBorerDispenserInjectMessage(id));
-            _window.OnForceSpeakButtonPressed += message => SendMessage(new CorticalBorerForceSpeakMessage(message));
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ using Content.Shared.StatusEffectNew;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Eui;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -154,6 +155,11 @@ public enum CorticalBorerDispenserUiKey
     Key,
 }
 
+[Serializable, NetSerializable]
+public enum CorticalBorerForceSpeakUiKey
+{
+    Key,
+}
 
 [Serializable, NetSerializable]
 public sealed class CorticalBorerDispenserSetInjectAmountMessage : BoundUserInterfaceMessage
@@ -202,6 +208,17 @@ public sealed class CorticalBorerForceSpeakMessage : BoundUserInterfaceMessage
     public CorticalBorerForceSpeakMessage(string message)
     {
         Message = message;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class CorticalBorerWillingHostChoiceMessage : EuiMessageBase
+{
+    public readonly bool Accepted;
+
+    public CorticalBorerWillingHostChoiceMessage(bool accepted)
+    {
+        Accepted = accepted;
     }
 }
 

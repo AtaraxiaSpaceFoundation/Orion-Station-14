@@ -14,21 +14,10 @@ namespace Content.Client._Orion.CorticalBorer;
 public sealed partial class CorticalBorerDispenserWindow : FancyWindow
 {
     public event Action<string>? OnDispenseReagentButtonPressed;
-    public event Action<string>? OnForceSpeakButtonPressed;
 
     public CorticalBorerDispenserWindow()
     {
         RobustXamlLoader.Load(this);
-
-        ForceHostSpeechButton.OnPressed += _ =>
-        {
-            var text = ForceHostSpeechInput.Text.Trim();
-            if (string.IsNullOrEmpty(text))
-                return;
-
-            OnForceSpeakButtonPressed?.Invoke(text);
-            ForceHostSpeechInput.Text = string.Empty;
-        };
     }
 
     public void UpdateState(BoundUserInterfaceState state)

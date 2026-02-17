@@ -18,6 +18,9 @@ public sealed partial class CorticalBorerComponent : Component
     [ViewVariables]
     public EntityUid? Host = null;
 
+    [DataField]
+    public HashSet<EntityUid> WillingHosts = new();
+
     /// <summary>
     ///     Current number of chemical points this Borer has, used to level up and buy chems
     /// </summary>
@@ -71,7 +74,7 @@ public sealed partial class CorticalBorerComponent : Component
     public string EggProto = "CorticalBorerEgg";
 
     /// <summary>
-    ///     Сost to lay an egg... will not update ability desc if changed
+    ///     Cost to lay an egg... will not update ability desc if changed
     /// </summary>
     [DataField]
     public int EggCost = 200;
@@ -100,14 +103,18 @@ public sealed partial class CorticalBorerComponent : Component
     [DataField]
     public ProtoId<AlertPrototype> ChemicalAlert = "Chemicals";
 
+    [DataField]
+    public ProtoId<AlertPrototype> SugarAlert = "BorerSugar";
+
     public readonly List<EntProtoId> InitialCorticalBorerActions = new()
     {
-        "ActionCorticalBorerInfest",
-        "ActionCorticalBorerEject",
-        "ActionCorticalBorerChemMenu",
-        "ActionCheckBlood",
-        "ActionControlHost",
-        "ActionForceSpeakHost",
-        "ActionParalyzeHost",
+        "ActionBorerInfest",
+        "ActionBorerEject",
+        "ActionBorerInject",
+        "ActionBorerCheckBlood",
+        "ActionBorerControlHost",
+        "ActionBorerForceSpeakHost",
+        "ActionBorerParalyzeHost",
+        "ActionBorerWillingHost",
     };
 }
