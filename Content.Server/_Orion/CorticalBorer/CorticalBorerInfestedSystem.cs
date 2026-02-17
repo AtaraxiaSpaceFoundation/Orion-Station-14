@@ -59,12 +59,18 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
         args.PushMarkup(Loc.GetString("cortical-borer-self-examine", ("chempoints", infected.Comp.Borer.Comp.ChemicalPoints)));
     }
 
+    private void EndControlAndEject(Entity<CorticalBorerInfestedComponent> infected)
+    {
+        _borer.EndControl(infected);
+        _borer.TryEjectBorer(infected.Comp.Borer);
+    }
+
     private void OnStateChange(Entity<CorticalBorerInfestedComponent> infected, ref MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)
             return;
 
-        if(infected.Comp.Borer.Comp.ControlingHost)
+        if (infected.Comp.Borer.Comp.ControlingHost)
             _borer.EndControl(infected);
     }
 
@@ -74,8 +80,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
             part.PartType != BodyPartType.Head)
             return;
 
-        _borer.EndControl(infected);
-        _borer.TryEjectBorer(infected.Comp.Borer);
+        EndControlAndEject(infected);
     }
 
     private void OnMindRemoved(Entity<CorticalBorerInfestedComponent> infected, ref MindRemovedMessage args)
@@ -83,7 +88,6 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
         if (!infected.Comp.Borer.Comp.ControlingHost)
             return;
 
-        _borer.EndControl(infected);
-        _borer.TryEjectBorer(infected.Comp.Borer);
+        EndControlAndEject(infected);
     }
 }

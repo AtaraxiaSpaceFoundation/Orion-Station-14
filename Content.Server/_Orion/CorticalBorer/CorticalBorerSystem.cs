@@ -4,6 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
@@ -50,6 +51,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly GhostRoleSystem _ghost  = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
+
+    private const string HeadSlot = "head";
+    private const string HostMindContainer = "PlayerMindContainer";
+    private const string EndControlAction = "ActionEndControlHost";
+    private const string LayEggAction = "ActionLayEggHost";
 
     public override void Initialize()
     {
@@ -108,11 +115,11 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     {
         args.ChatTypeIgnore.Add(InGameICChatType.CollectiveMind);
 
-        if (ent.Comp.Host.HasValue)
-        {
-            args.Targets.Add(ent);
-            args.Targets.Add(ent.Comp.Host.Value);
-        }
+        if (!ent.Comp.Host.HasValue)
+            return;
+
+        args.Targets.Add(ent);
+        args.Targets.Add(ent.Comp.Host.Value);
     }
 
     public void UpdateChems(Entity<CorticalBorerComponent> ent, int change)
@@ -126,7 +133,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         else
             comp.ChemicalPoints += change;
 
-        if (comp.ChemicalPoints % comp.UiUpdateInterval == 0)
+        if (comp.UiUpdateInterval > 0 && comp.ChemicalPoints % comp.UiUpdateInterval == 0)
             UpdateUiState(ent);
 
         _alerts.ShowAlert(ent, ent.Comp.ChemicalAlert);
@@ -134,17 +141,17 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         Dirty(ent);
     }
 
-    public void OnInfestHostAttempt(Entity<InventoryComponent> entity, ref InfestHostAttempt args)
+    private void OnInfestHostAttempt(Entity<InventoryComponent> entity, ref InfestHostAttempt args)
     {
         IngestionBlockerComponent? blocker;
 
-        if (_inventory.TryGetSlotEntity(entity.Owner, "head", out var headUid) &&
-            TryComp(headUid, out blocker) &&
-            blocker.Enabled)
-        {
-            args.Blocker = headUid;
-            args.Cancel();
-        }
+        if (!_inventory.TryGetSlotEntity(entity.Owner, HeadSlot, out var headUid) ||
+            !TryComp(headUid, out blocker) ||
+            !blocker.Enabled)
+            return;
+
+        args.Blocker = headUid;
+        args.Cancel();
     }
 
     /// <summary>
@@ -155,6 +162,10 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         float chemAmount)
     {
         var (uid, comp) = ent;
+        var requiredChemPoints = (int) Math.Ceiling(chemAmount * chemicalPrototype.Cost);
+
+        if (requiredChemPoints <= 0)
+            return false;
 
         // Need a host to inject something
         if (!comp.Host.HasValue)
@@ -168,14 +179,14 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             return false;
 
         // Make sure you can even hold the amount of chems you need
-        if (chemicalPrototype.Cost > comp.ChemicalPointCap)
+        if (requiredChemPoints > comp.ChemicalPointCap)
         {
             Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem-storage"), uid, uid, PopupType.Medium);
             return false;
         }
 
         // Make sure you have enough chems
-        if (chemicalPrototype.Cost > comp.ChemicalPoints)
+        if (requiredChemPoints > comp.ChemicalPoints)
         {
             Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), uid, uid, PopupType.Medium);
             return false;
@@ -192,26 +203,31 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!_blood.TryAddToChemicals((comp.Host.Value, blood), solution))
             return false;
 
-        UpdateChems(ent, -((int)chemAmount * chemicalPrototype.Cost));
+        UpdateChems(ent, -requiredChemPoints);
         return true;
     }
 
     private void OnInjectReagentMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerDispenserInjectMessage message)
     {
-        CorticalBorerChemicalPrototype? chemProto = null;
-        foreach (var chem in _proto.EnumeratePrototypes<CorticalBorerChemicalPrototype>())
-        {
-            if (chem.Reagent.Equals(message.ChemProtoId))
-            {
-                chemProto = chem;
-                break;
-            }
-        }
-
-        if (chemProto != null)
+        if (TryGetBorerChemical(message.ChemProtoId, out var chemProto))
             TryInjectHost(ent, chemProto, ent.Comp.InjectAmount);
 
         UpdateUiState(ent);
+    }
+
+    private bool TryGetBorerChemical(string reagentId, [NotNullWhen(true)] out CorticalBorerChemicalPrototype? chemical)
+    {
+        foreach (var chem in _proto.EnumeratePrototypes<CorticalBorerChemicalPrototype>())
+        {
+            if (!chem.Reagent.Equals(reagentId))
+                continue;
+
+            chemical = chem;
+            return true;
+        }
+
+        chemical = null;
+        return false;
     }
 
     private void OnSetInjectAmountMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerDispenserSetInjectAmountMessage message)
@@ -294,16 +310,19 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         if (_mind.TryGetMind(worm, out var wormMind, out _))
             infestedComp.BorerMindId = wormMind;
+        else
+            return;
 
-        if (_mind.TryGetMind(host, out var controledMind, out _))
+        if (_mind.TryGetMind(host, out var controlledMind, out _))
         {
-            infestedComp.OriginalMindId = controledMind; // set this var here just in case somehow the mind changes from when the infestation started
+            infestedComp.OriginalMindId = controlledMind; // Set this var here just in case somehow the mind changes from when the infestation started
 
-            // fish head...
-            var dummy = Spawn("FoodMeatFish", MapCoordinates.Nullspace);
+            // Temporary entity to hold host's original mind while borer controls the host.
+            var dummy = Spawn(HostMindContainer, MapCoordinates.Nullspace);
+            _metaData.SetEntityName(dummy, Name(host));
             Container.Insert(dummy, infestedComp.ControlContainer);
 
-            _mind.TransferTo(controledMind, dummy);
+            _mind.TransferTo(controlledMind, dummy);
         }
         else
         {
@@ -317,13 +336,13 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             _ghost.UnregisterGhostRole((worm, ghostRole)); // prevent players from taking the worm role once mind isn't in the worm
 
         // add the end control and vomit egg action
-        if (Actions.AddAction(host, "ActionEndControlHost") is {} actionEnd)
+        if (Actions.AddAction(host, EndControlAction) is {} actionEnd)
             infestedComp.RemoveAbilities.Add(actionEnd);
 
         if (comp.CanReproduce &&
             infestedComp.ControlTimeEnd != null) // you can't lay eggs with something you can control forever
         {
-            if (Actions.AddAction(host, "ActionLayEggHost") is {} actionLay)
+            if (Actions.AddAction(host, LayEggAction) is {} actionLay)
                 infestedComp.RemoveAbilities.Add(actionLay);
         }
 
@@ -346,12 +365,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         borerComp.ControlingHost = false;
 
-        // remove all the actions set to remove
+        // Remove all the actions set to remove
         foreach (var ability in infestedComp.RemoveAbilities)
         {
             Actions.RemoveAction(infested, ability);
         }
-        infestedComp.RemoveAbilities = new(); // clear out the list
+        infestedComp.RemoveAbilities = []; // Clear out the list
 
         if (TryComp<GhostRoleComponent>(infestedComp.Borer, out var ghostRole))
             _ghost.RegisterGhostRole((infestedComp.Borer, ghostRole)); // re-enable the ghost role after you return to the body

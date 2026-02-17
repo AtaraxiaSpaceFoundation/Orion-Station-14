@@ -32,14 +32,16 @@ public class SharedCorticalBorerSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
+    private const string BorerProtectionStatusEffect = "CorticalBorerProtection";
+    private const string BruteDamageGroup = "Brute";
+
     public bool CanUseAbility(Entity<CorticalBorerComponent> ent, EntityUid target)
     {
-        if (!_statusEffects.HasStatusEffect(target,"CorticalBorerProtection")) // hardcoded the status effect because...
+        if (!_statusEffects.HasStatusEffect(target, BorerProtectionStatusEffect))
             return true;
 
         Popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
         return false;
-
     }
 
     public void InfestTarget(Entity<CorticalBorerComponent> ent, EntityUid target)
@@ -60,26 +62,8 @@ public class SharedCorticalBorerSystem : EntitySystem
         infestedComp.Borer = ent;
         comp.Host = target;
 
-        if (comp.AddOnInfest is not null)
-        {
-            foreach (var (_, compReg) in comp.AddOnInfest)
-            {
-                var compType = compReg.Component.GetType();
-                if (HasComp(ent, compType))
-                    continue;
-
-                var newComp = (Component) _serManager.CreateCopy(compReg.Component, notNullableOverride: true);
-                EntityManager.AddComponent(ent, newComp, true);
-            }
-        }
-
-        if (comp.RemoveOnInfest is not null)
-        {
-            foreach (var (_, compReg) in comp.RemoveOnInfest)
-            {
-                RemCompDeferred(ent, compReg.Component.GetType());
-            }
-        }
+        EnsureRegistryComponents(ent, comp.AddOnInfest);
+        RemoveRegistryComponents(ent, comp.RemoveOnInfest);
 
         if (TryComp<DamageableComponent>(ent, out var damComp))
             _damage.SetAllDamage(ent, damComp, 0);
@@ -107,26 +91,8 @@ public class SharedCorticalBorerSystem : EntitySystem
         RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
         ent.Comp.Host = null;
 
-        if (ent.Comp.RemoveOnInfest is not null)
-        {
-            foreach (var (_, compReg) in ent.Comp.RemoveOnInfest)
-            {
-                var compType = compReg.Component.GetType();
-                if (HasComp(ent, compType))
-                    continue;
-
-                var newComp = (Component) _serManager.CreateCopy(compReg.Component, notNullableOverride: true);
-                EntityManager.AddComponent(ent, newComp, true);
-            }
-        }
-
-        if (ent.Comp.AddOnInfest is not null)
-        {
-            foreach (var (_, compReg) in ent.Comp.AddOnInfest)
-            {
-                RemCompDeferred(ent, compReg.Component.GetType());
-            }
-        }
+        EnsureRegistryComponents(ent, ent.Comp.RemoveOnInfest);
+        RemoveRegistryComponents(ent, ent.Comp.AddOnInfest);
 
         return true;
     }
@@ -143,7 +109,34 @@ public class SharedCorticalBorerSystem : EntitySystem
         Spawn(egg, coordinates);
 
         // TODO: Brain damage
-        _damage.TryChangeDamage(host, new DamageSpecifier(_proto.Index<DamageGroupPrototype>("Brute"), 15), true, origin: ent, targetPart: TargetBodyPart.Head);
+        _damage.TryChangeDamage(host, new DamageSpecifier(_proto.Index<DamageGroupPrototype>(BruteDamageGroup), 15), true, origin: ent, targetPart: TargetBodyPart.Head);
+    }
+
+    private void EnsureRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
+    {
+        if (registries is null)
+            return;
+
+        foreach (var (_, compReg) in registries)
+        {
+            var compType = compReg.Component.GetType();
+            if (HasComp(ent, compType))
+                continue;
+
+            var newComp = (Component) _serManager.CreateCopy(compReg.Component, notNullableOverride: true);
+            EntityManager.AddComponent(ent, newComp, true);
+        }
+    }
+
+    private void RemoveRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
+    {
+        if (registries is null)
+            return;
+
+        foreach (var (_, compReg) in registries)
+        {
+            RemCompDeferred(ent, compReg.Component.GetType());
+        }
     }
 }
 
