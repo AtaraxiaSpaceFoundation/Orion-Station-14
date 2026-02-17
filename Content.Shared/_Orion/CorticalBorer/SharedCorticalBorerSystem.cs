@@ -195,6 +195,17 @@ public sealed class CorticalBorerDispenserInjectMessage : BoundUserInterfaceMess
 }
 
 [Serializable, NetSerializable]
+public sealed class CorticalBorerForceSpeakMessage : BoundUserInterfaceMessage
+{
+    public readonly string Message;
+
+    public CorticalBorerForceSpeakMessage(string message)
+    {
+        Message = message;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed class CorticalBorerDispenserBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly List<CorticalBorerDispenserItem> DisList;

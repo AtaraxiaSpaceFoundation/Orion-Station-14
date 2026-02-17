@@ -8,7 +8,7 @@
     useDelay: 1
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_chem
+      state: chemical
   - type: InstantAction
     event: !type:CorticalChemMenuActionEvent
 
@@ -23,7 +23,7 @@
     itemIconStyle: NoItem
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_infest
+      state: host
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -43,7 +43,7 @@
     useDelay: 5
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_eject
+      state: borer
   - type: InstantAction
     event: !type:CorticalEjectEvent
 
@@ -57,7 +57,7 @@
     useDelay: 2
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_bloodcheck
+      state: bloodchem
   - type: InstantAction
     event: !type:CorticalCheckBloodEvent
 
@@ -71,7 +71,7 @@
     useDelay: 340 # 5 minutes and 40 seconds
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_control
+      state: control
   - type: InstantAction
     event: !type:CorticalTakeControlEvent
 
@@ -85,7 +85,7 @@
     useDelay: 5
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_eject
+      state: borer
   - type: InstantAction
     event: !type:CorticalEndControlEvent
 
@@ -99,6 +99,34 @@
     useDelay: 180
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_egg
+      state: reproduce
   - type: InstantAction
     event: !type:CorticalLayEggEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionForceSpeakHost
+  name: Force Speak
+  description: Force your host to say a message.
+  components:
+  - type: Action
+    useDelay: 8
+    icon:
+      sprite: _Orion/Interface/Actions/borer.rsi
+      state: speak
+  - type: InstantAction
+    event: !type:CorticalForceSpeakEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionParalyzeHost
+  name: Paralyze Host
+  description: Briefly paralyze your host.
+  components:
+  - type: Action
+    useDelay: 50
+    icon:
+      sprite: _Orion/Interface/Actions/borer.rsi
+      state: fear
+  - type: InstantAction
+    event: !type:CorticalParalyzeHostEvent

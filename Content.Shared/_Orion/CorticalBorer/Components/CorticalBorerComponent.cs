@@ -13,47 +13,42 @@ namespace Content.Shared._Orion.CorticalBorer.Components;
 public sealed partial class CorticalBorerComponent : Component
 {
     /// <summary>
-    /// Host of this Borer
+    ///     Host of this Borer
     /// </summary>
     [ViewVariables]
     public EntityUid? Host = null;
 
     /// <summary>
-    /// Current number of chemical points this Borer has, used to level up and buy chems
+    ///     Current number of chemical points this Borer has, used to level up and buy chems
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    [AutoNetworkedField]
-    [DataField]
+    [DataField, AutoNetworkedField]
     public int ChemicalPoints = 50;
 
     /// <summary>
-    /// Chemicals added every second WHILE IN A HOST
+    ///     Chemicals added every second WHILE IN A HOST
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public int ChemicalGenerationRate = 1;
 
     /// <summary>
-    /// Max Chemicals that can be held
+    ///     Max Chemicals that can be held
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public int ChemicalPointCap = 250;
 
     /// <summary>
-    /// Reagent injection amount
+    ///     Reagent injection amount
     /// </summary>
     public int InjectAmount = 10;
 
     /// <summary>
-    /// At what interval does the chem ui update
+    ///     At what interval does the chem ui update
     /// </summary>
-    public int UiUpdateInterval = 5; // every 6 to prevent constant update on cap
+    public int UiUpdateInterval = 5; // Every 6 to prevent constant update on cap
 
     /// <summary>
-    /// The max duration you can take control of your host
+    ///     The max duration you can take control of your host
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public TimeSpan ControlDuration = TimeSpan.FromSeconds(40);
 
@@ -64,28 +59,37 @@ public sealed partial class CorticalBorerComponent : Component
     public float UpdateCooldown = 1f;
 
     /// <summary>
-    /// Can this borer make more
+    ///     Can this borer be PREGNANT
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public bool CanReproduce = true;
 
     /// <summary>
-    /// What does it vomit out of its mouth when it lays an egg
+    ///     What does it vomit out of its mouth when it lays an egg
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public string EggProto = "CorticalBorerEgg";
 
     /// <summary>
-    /// cost to lay an egg... will not update ability desc if changed
+    ///     Сost to lay an egg... will not update ability desc if changed
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public int EggCost = 200;
 
+    /// <summary>
+    ///     Duration of host paralysis from borer ability
+    /// </summary>
     [DataField]
-    public bool ControlingHost;
+    public TimeSpan ParalyzeHostDuration = TimeSpan.FromSeconds(6);
+
+    /// <summary>
+    ///     Max forced host speech message length
+    /// </summary>
+    [DataField]
+    public int MaxForceSpeakLength = 360;
+
+    [DataField]
+    public bool ControllingHost;
 
     [DataField]
     public ComponentRegistry? AddOnInfest;
@@ -103,5 +107,7 @@ public sealed partial class CorticalBorerComponent : Component
         "ActionCorticalBorerChemMenu",
         "ActionCheckBlood",
         "ActionControlHost",
+        "ActionForceSpeakHost",
+        "ActionParalyzeHost",
     };
 }

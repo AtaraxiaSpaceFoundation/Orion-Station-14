@@ -23,6 +23,10 @@ cortical-borer-dispenser-window-cost = {$cost} химикатов
 cortical-borer-ghostrole-name = Кортикальный Паразит
 cortical-borer-ghostrole-desc = Космический червь с единственной целью в жизни - проникать в головы людей и откладывать свои яйца.
 
+cortical-borer-force-speak-label = Принудительная речь
+cortical-borer-force-speak-placeholder = Введите текст, который скажет носитель
+cortical-borer-force-speak-button = Заставить говорить
+
 ## Examine Text
 cortical-borer-infested-examine = [color=#d842fc]Движения выглядят крайне неестественно...[/color]
 

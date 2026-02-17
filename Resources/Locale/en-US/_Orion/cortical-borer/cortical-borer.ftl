@@ -23,6 +23,10 @@ cortical-borer-dispenser-window-cost = {$cost} chemicals
 cortical-borer-ghostrole-name = Cortical Borer
 cortical-borer-ghostrole-desc = A space worm with the sole purpose in life to enter peoples heads and lay its eggs.
 
+cortical-borer-force-speak-label = Forced speech
+cortical-borer-force-speak-placeholder = Enter text for host speech
+cortical-borer-force-speak-button = Make host speak
+
 ## Examine Text
 cortical-borer-infested-examine = [color=#d842fc]Movements look extremely unnatural...[/color]
 

@@ -13,6 +13,7 @@ using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Medical;
 using Content.Server.Medical.Components;
+using Content.Server.Stunnable;
 using Content.Shared._Orion.CorticalBorer;
 using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared.Administration.Logs;
@@ -52,6 +53,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly GhostRoleSystem _ghost  = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
 
     private const string HeadSlot = "head";
     private const string HostMindContainer = "PlayerMindContainer";
@@ -71,6 +74,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         SubscribeLocalEvent<CorticalBorerComponent, CheckTargetedSpeechEvent>(OnSpeakEvent);
 
         SubscribeLocalEvent<CorticalBorerComponent, MindRemovedMessage>(OnMindRemoved);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerForceSpeakMessage>(OnForceSpeakMessage);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerSurgicallyRemovedEvent>(OnSurgicallyRemoved);
     }
 
     private void OnStartup(Entity<CorticalBorerComponent> ent, ref ComponentStartup args)
@@ -203,6 +208,11 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!_blood.TryAddToChemicals((comp.Host.Value, blood), solution))
             return false;
 
+        _admin.Add(LogType.ReagentEffect,
+            LogImpact.Low,
+            $"{ToPrettyString(uid):actor} injected {chemAmount}u of {chemicalPrototype.Reagent:reagent}"
+            + $" (severity: {chemicalPrototype.Severity}) into host {ToPrettyString(comp.Host.Value):target}");
+
         UpdateChems(ent, -requiredChemPoints);
         return true;
     }
@@ -320,7 +330,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             // Temporary entity to hold host's original mind while borer controls the host.
             var dummy = Spawn(HostMindContainer, MapCoordinates.Nullspace);
             _metaData.SetEntityName(dummy, Name(host));
-            Container.Insert(dummy, infestedComp.ControlContainer);
+
+            if (!Container.Insert(dummy, infestedComp.ControlContainer))
+            {
+                QueueDel(dummy);
+                return;
+            }
 
             _mind.TransferTo(controlledMind, dummy);
         }
@@ -329,7 +344,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             infestedComp.OriginalMindId = null;
         }
 
-        comp.ControlingHost = true;
+        comp.ControllingHost = true;
         _mind.TransferTo(wormMind, host);
 
         if (TryComp<GhostRoleComponent>(worm, out var ghostRole))
@@ -360,10 +375,10 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!TryComp<CorticalBorerComponent>(infestedComp.Borer, out var borerComp))
             return;
 
-        if (!borerComp.ControlingHost)
+        if (!borerComp.ControllingHost)
             return;
 
-        borerComp.ControlingHost = false;
+        borerComp.ControllingHost = false;
 
         // Remove all the actions set to remove
         foreach (var ability in infestedComp.RemoveAbilities)
@@ -385,9 +400,37 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         Container.CleanContainer(infestedComp.ControlContainer);
     }
 
+    private void OnForceSpeakMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerForceSpeakMessage args)
+    {
+        if (string.IsNullOrWhiteSpace(args.Message))
+            return;
+
+        if (!TryGetHost(ent, out var host))
+            return;
+
+        if (!CanUseAbility(ent, host.Value))
+            return;
+
+        var message = args.Message.Trim();
+        if (message.Length > ent.Comp.MaxForceSpeakLength)
+            message = message[..ent.Comp.MaxForceSpeakLength];
+
+        _chatSystem.TrySendInGameICMessage(host.Value,
+            message,
+            InGameICChatType.Speak,
+            ChatTransmitRange.Normal,
+            ignoreActionBlocker: true,
+            forced: true);
+    }
+
+    private void OnSurgicallyRemoved(Entity<CorticalBorerComponent> ent, ref CorticalBorerSurgicallyRemovedEvent args)
+    {
+        _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(3));
+    }
+
     private void OnMindRemoved(Entity<CorticalBorerComponent> ent, ref MindRemovedMessage args)
     {
-        if (!ent.Comp.ControlingHost)
+        if (!ent.Comp.ControllingHost)
             TryEjectBorer(ent); // No storing them in hosts if you don't have a soul
     }
 }

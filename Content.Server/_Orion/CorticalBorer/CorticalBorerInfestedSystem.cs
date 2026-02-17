@@ -42,7 +42,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        if (!infected.Comp.Borer.Comp.ControlingHost)
+        if (!infected.Comp.Borer.Comp.ControllingHost)
             return;
 
         args.PushMarkup(Loc.GetString("cortical-borer-infested-examine"));
@@ -70,7 +70,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
-        if (infected.Comp.Borer.Comp.ControlingHost)
+        if (infected.Comp.Borer.Comp.ControllingHost)
             _borer.EndControl(infected);
     }
 
@@ -85,7 +85,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
 
     private void OnMindRemoved(Entity<CorticalBorerInfestedComponent> infected, ref MindRemovedMessage args)
     {
-        if (!infected.Comp.Borer.Comp.ControlingHost)
+        if (!infected.Comp.Borer.Comp.ControllingHost)
             return;
 
         EndControlAndEject(infected);

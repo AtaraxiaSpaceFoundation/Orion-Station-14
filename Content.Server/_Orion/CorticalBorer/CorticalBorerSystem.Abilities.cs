@@ -33,6 +33,8 @@ public sealed partial class CorticalBorerSystem
 
         SubscribeLocalEvent<CorticalBorerComponent, CorticalEjectEvent>(OnEjectHost);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalTakeControlEvent>(OnTakeControl);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalForceSpeakEvent>(OnForceSpeak);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalParalyzeHostEvent>(OnParalyzeHost);
 
         SubscribeLocalEvent<CorticalBorerComponent, CorticalChemMenuActionEvent>(OnChemicalMenu);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalCheckBloodEvent>(OnCheckBlood);
@@ -47,7 +49,10 @@ public sealed partial class CorticalBorerSystem
         if(!TryComp<UserInterfaceComponent>(ent, out var uic))
             return;
 
-        if (!TryGetHost(ent, out _))
+        if (!TryGetHost(ent, out var host))
+            return;
+
+        if (!CanUseAbility(ent, host.Value))
             return;
 
         UpdateUiState(ent);
@@ -153,8 +158,47 @@ public sealed partial class CorticalBorerSystem
             return;
         }
 
+        // My boy too weak under sugar and cannot eject from host!
+        if (!CanUseAbility(ent, comp.Host.Value))
+            return;
+
         if (TryEjectBorer(ent))
             args.Handled = true;
+    }
+
+    private void OnForceSpeak(Entity<CorticalBorerComponent> ent, ref CorticalForceSpeakEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryGetHost(ent, out var host))
+            return;
+
+        if (!CanUseAbility(ent, host.Value))
+            return;
+
+        if (!TryComp<UserInterfaceComponent>(ent, out var uic))
+            return;
+
+        UpdateUiState(ent);
+        UI.TryToggleUi((ent, uic), CorticalBorerDispenserUiKey.Key, ent);
+
+        args.Handled = true;
+    }
+
+    private void OnParalyzeHost(Entity<CorticalBorerComponent> ent, ref CorticalParalyzeHostEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryGetHost(ent, out var host))
+            return;
+
+        if (!CanUseAbility(ent, host.Value))
+            return;
+
+        _stun.TryUpdateParalyzeDuration(host.Value, ent.Comp.ParalyzeHostDuration);
+        args.Handled = true;
     }
 
     private void OnCheckBlood(Entity<CorticalBorerComponent> ent, ref CorticalCheckBloodEvent args)
@@ -188,7 +232,7 @@ public sealed partial class CorticalBorerSystem
             return;
 
         // IDK how you would cause this...
-        if (ent.Comp.ControlingHost)
+        if (ent.Comp.ControllingHost)
         {
             Popup.PopupEntity(Loc.GetString("cortical-borer-already-control"), ent, ent, PopupType.Medium);
             return;

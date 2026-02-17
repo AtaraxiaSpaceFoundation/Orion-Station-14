@@ -19,3 +19,9 @@ public sealed partial class CorticalTakeControlEvent : InstantActionEvent;
 public sealed partial class CorticalEndControlEvent : InstantActionEvent;
 
 public sealed partial class CorticalLayEggEvent : InstantActionEvent;
+
+public sealed partial class CorticalForceSpeakEvent : InstantActionEvent;
+
+public sealed partial class CorticalParalyzeHostEvent : InstantActionEvent;
+
+public sealed partial class CorticalBorerSurgicallyRemovedEvent : EntityEventArgs;

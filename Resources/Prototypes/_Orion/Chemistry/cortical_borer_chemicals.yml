@@ -1,51 +1,52 @@
 - type: borerChemical
   id: borerOmnizine
-  cost: 20
+  cost: 16
   reagent: Omnizine
 
 - type: borerChemical
   id: borerBicaridine
-  cost: 10
+  cost: 5
   reagent: Bicaridine
 
 - type: borerChemical
   id: borerKelotane
-  cost: 10
+  cost: 5
   reagent: Kelotane
 
 - type: borerChemical
   id: borerDexalinPlus
-  cost: 12
+  cost: 7
   reagent: DexalinPlus
 
 - type: borerChemical
   id: borerSaline
-  cost: 5
+  cost: 3
   reagent: Saline
 
 - type: borerChemical # Like spaceacillin but NOT deleted
   id: borerCryptobiolin
   cost: 4
   reagent: Cryptobiolin
+  severity: 2
 
 - type: borerChemical
   id: borerPotassiumIodide
-  cost: 5
+  cost: 4
   reagent: PotassiumIodide
 
 - type: borerChemical
   id: borerDiphenhydramine
-  cost: 8
+  cost: 4
   reagent: Diphenhydramine
 
 - type: borerChemical
   id: borerEpinephrine
-  cost: 10
+  cost: 6
   reagent: Epinephrine
 
 - type: borerChemical
   id: borerHaloperidol
-  cost: 12
+  cost: 5
   reagent: Haloperidol
 
 #- type: borerChemical # None :(
@@ -60,48 +61,54 @@
 
 - type: borerChemical
   id: borerMannitol
-  cost: 4
+  cost: 3
   reagent: Mannitol
 
 - type: borerChemical
   id: borerMultiver
-  cost: 8
+  cost: 4
   reagent: Multiver
 
 - type: borerChemical
   id: borerLithium
-  cost: 2
+  cost: 4
   reagent: Lithium
+  severity: 2
 
 - type: borerChemical
   id: borerDesoxyephedrine
-  cost: 18
+  cost: 8
   reagent: Desoxyephedrine
+  severity: 3
 
 - type: borerChemical
   id: borerMorphine
-  cost: 8
+  cost: 4
   reagent: Morphine
+  severity: 2
 
 - type: borerChemical
   id: borerOculine
-  cost: 6
+  cost: 3
   reagent: Oculine
 
 - type: borerChemical
   id: borerMindbreakerToxin
-  cost: 4
+  cost: 6
   reagent: MindbreakerToxin
+  severity: 2
 
 - type: borerChemical
   id: borerEthanol
-  cost: 4
+  cost: 5
   reagent: Ethanol
+  severity: 2
 
 - type: borerChemical
   id: borerMuteToxin
-  cost: 12
+  cost: 6
   reagent: MuteToxin
+  severity: 3
 
 #- type: borerChemical # Removed because purge chemicals (sugar)
 #  id: borerCharcoal
@@ -110,20 +117,23 @@
 
 - type: borerChemical
   id: borerHappiness
-  cost: 5
+  cost: 4
   reagent: Happiness
 
 - type: borerChemical
   id: borerNorepinephricAcid
-  cost: 4 # needs 20u of the acid to even start the blind
+  cost: 5 # needs 20u of the acid to even start the blind
   reagent: NorepinephricAcid
+  severity: 2
 
 - type: borerChemical
   id: borerHeartbreakerToxin
-  cost: 8
+  cost: 7
   reagent: HeartbreakerToxin
+  severity: 2
 
 - type: borerChemical
   id: borerUranium
-  cost: 12
+  cost: 7
   reagent: Uranium
+  severity: 3
