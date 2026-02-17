@@ -22,6 +22,12 @@ public sealed partial class CorticalBorerComponent : Component
     public HashSet<EntityUid> WillingHosts = new();
 
     /// <summary>
+    ///     How many eggs this borer has laid during the round.
+    /// </summary>
+    [DataField]
+    public int EggsLaid;
+
+    /// <summary>
     ///     Current number of chemical points this Borer has, used to level up and buy chems
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -47,7 +53,7 @@ public sealed partial class CorticalBorerComponent : Component
     /// <summary>
     ///     At what interval does the chem ui update
     /// </summary>
-    public int UiUpdateInterval = 5; // Every 6 to prevent constant update on cap
+    public int UiUpdateInterval = 5; // Prevent constant update on cap
 
     /// <summary>
     ///     The max duration you can take control of your host
@@ -56,7 +62,7 @@ public sealed partial class CorticalBorerComponent : Component
     public TimeSpan ControlDuration = TimeSpan.FromSeconds(40);
 
     /// <summary>
-    ///     Cooldown between chem regen events.
+    ///     Cooldown between chem regen events
     /// </summary>
     public TimeSpan UpdateTimer = TimeSpan.Zero;
     public float UpdateCooldown = 1f;
@@ -112,6 +118,7 @@ public sealed partial class CorticalBorerComponent : Component
         "ActionBorerEject",
         "ActionBorerInject",
         "ActionBorerCheckBlood",
+        "ActionBorerLayEggHost",
         "ActionBorerControlHost",
         "ActionBorerForceSpeakHost",
         "ActionBorerParalyzeHost",

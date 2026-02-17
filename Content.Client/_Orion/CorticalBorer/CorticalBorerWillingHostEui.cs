@@ -9,22 +9,37 @@ namespace Content.Client._Orion.CorticalBorer;
 public sealed class CorticalBorerWillingHostEui : BaseEui
 {
     private readonly CorticalBorerWillingHostWindow _window = new();
+    private bool _responded;
 
     public CorticalBorerWillingHostEui()
     {
         _window.AcceptButton.OnPressed += _ =>
         {
+            if (_responded)
+                return;
+
             SendMessage(new CorticalBorerWillingHostChoiceMessage(true));
             _window.Close();
         };
 
         _window.DenyButton.OnPressed += _ =>
         {
+            if (_responded)
+                return;
+
+            _responded = true;
             SendMessage(new CorticalBorerWillingHostChoiceMessage(false));
             _window.Close();
         };
 
-        _window.OnClose += () => SendMessage(new CorticalBorerWillingHostChoiceMessage(false));
+        _window.OnClose += () =>
+        {
+            if (_responded)
+                return;
+
+            _responded = true;
+            SendMessage(new CorticalBorerWillingHostChoiceMessage(false));
+        };
     }
 
     public override void Opened()

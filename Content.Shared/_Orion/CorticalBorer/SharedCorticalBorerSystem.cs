@@ -6,6 +6,9 @@
 using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Actions;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffectNew;
@@ -33,16 +36,30 @@ public class SharedCorticalBorerSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
-    private const string BorerProtectionStatusEffect = "CorticalBorerProtection";
+    protected const string BorerProtectionStatusEffect = "CorticalBorerProtection";
     private const string BruteDamageGroup = "Brute";
+    public ReagentId SugarReagentId = new("Sugar", null);
 
     public bool CanUseAbility(Entity<CorticalBorerComponent> ent, EntityUid target)
     {
-        if (!_statusEffects.HasStatusEffect(target, BorerProtectionStatusEffect))
+        if (!HasBorerProtection(target))
             return true;
 
         Popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
         return false;
+    }
+
+    public bool HasBorerProtection(EntityUid target)
+    {
+        if (_statusEffects.HasStatusEffect(target, BorerProtectionStatusEffect))
+            return true;
+
+        if (!TryComp<BloodstreamComponent>(target, out var blood) ||
+            blood.ChemicalSolution is not { } solutionUid ||
+            !TryComp<SolutionComponent>(solutionUid, out var solutionComp))
+            return false;
+
+        return solutionComp.Solution.ContainsReagent(SugarReagentId);
     }
 
     public void InfestTarget(Entity<CorticalBorerComponent> ent, EntityUid target)
@@ -80,7 +97,10 @@ public class SharedCorticalBorerSystem : EntitySystem
 
         // Make sure they get out of the host
         if (!Container.TryRemoveFromContainer(ent.Owner))
+        {
+            ent.Comp.Host = null;
             return false;
+        }
 
         // close all the UIs that relate to host
         if (TryComp<UserInterfaceComponent>(ent, out var uic))

@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Orion.CorticalBorer;
 
 /// <summary>
-///     Prototype for chemicals that can be applied by the corticale borer
+///     Prototype for chemicals that can be applied by the cortical borer
 /// </summary>
 [Prototype("borerChemical")]
 public sealed partial class CorticalBorerChemicalPrototype : IPrototype

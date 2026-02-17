@@ -43,7 +43,7 @@ public sealed partial class CorticalBorerSystem
 
 
         SubscribeLocalEvent<CorticalBorerInfestedComponent, CorticalEndControlEvent>(OnEndControl);
-        SubscribeLocalEvent<CorticalBorerInfestedComponent, CorticalLayEggEvent>(OnLayEgg);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalLayEggEvent>(OnLayEgg);
     }
 
     private void OnChemicalMenu(Entity<CorticalBorerComponent> ent, ref CorticalChemMenuActionEvent args)
@@ -215,6 +215,9 @@ public sealed partial class CorticalBorerSystem
         if (!TryGetHost(ent, out var host))
             return;
 
+        if (IsDeadHost(host.Value))
+            return;
+
         if (!CanUseAbility(ent, host.Value))
             return;
 
@@ -275,23 +278,32 @@ public sealed partial class CorticalBorerSystem
         args.Handled = true;
     }
 
-    private void OnLayEgg(Entity<CorticalBorerInfestedComponent> host, ref CorticalLayEggEvent args)
+    private void OnLayEgg(Entity<CorticalBorerComponent> borer, ref CorticalLayEggEvent args)
     {
         if (args.Handled)
             return;
 
-        var borer = host.Comp.Borer;
+        if (!borer.Comp.CanReproduce)
+            return;
+
+        if (!TryGetHost(borer, out var host))
+            return;
+
+        if (!CanUseAbility(borer, host.Value))
+            return;
 
         if (borer.Comp.EggCost > borer.Comp.ChemicalPoints)
         {
-            Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), host, host, PopupType.Medium);
+            Popup.PopupEntity(Loc.GetString("cortical-borer-not-enough-chem"), borer, borer, PopupType.Medium);
             return;
         }
 
-        _vomit.Vomit(host, -20, -20); // half as much chem vomit, a lot that is coming up is the egg
+        _vomit.Vomit(host.Value, -20, -20); // half as much chem vomit, a lot that is coming up is the egg
         LayEgg(borer);
+        borer.Comp.EggsLaid++;
+        Dirty(borer);
         UpdateChems(borer, -borer.Comp.EggCost);
-        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(borer):actor} laid an egg in host {ToPrettyString(host):target}");
+        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(borer):actor} laid an egg in host {ToPrettyString(host.Value):target}");
 
         args.Handled = true;
     }

@@ -1,0 +1,6 @@
+- type: antag
+  id: CorticalBorer
+  name: roles-antag-cortical-borer-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-cortical-borer-objective

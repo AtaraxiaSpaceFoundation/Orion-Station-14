@@ -36,8 +36,8 @@ cortical-borer-willing-result-yes = { $host } соглашается стать 
 cortical-borer-willing-result-no = { $host } отказывается от добровольного подчинения!
 
 cortical-borer-round-end-willing = { $borer } получил { $count ->
-        [1] добровольного носителя
-        [few] добровольных носителей
+        [one] добровольного носителя
+        [few] добровольных носителя
        *[other] добровольных носителей
     }: { $hosts }.
 
@@ -46,3 +46,6 @@ cortical-borer-infested-examine = [color=#d842fc]Движения выглядя
 
 infested-control-examined = Осталось [color=#d842fc]{ $timeremaining }[/color] секунд, управления этим телом.
 cortical-borer-self-examine = Доступно [color=#d842fc]{ $chempoints }[/color] химикатов.
+
+roles-antag-cortical-borer-name = Кортикальный паразит
+roles-antag-cortical-borer-objective = Захватывайте носителей, размножайтесь и выживите.

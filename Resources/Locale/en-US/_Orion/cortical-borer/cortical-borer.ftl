@@ -42,3 +42,6 @@ cortical-borer-infested-examine = [color=#d842fc]Movements look extremely unnatu
 
 infested-control-examined = You have [color=#d842fc]{ $timeremaining }[/color] seconds left controlling this body.
 cortical-borer-self-examine = You have [color=#d842fc]{ $chempoints }[/color] chemicals.
+
+roles-antag-cortical-borer-name = Cortical Borer
+roles-antag-cortical-borer-objective = Secure hosts, reproduce, and survive.

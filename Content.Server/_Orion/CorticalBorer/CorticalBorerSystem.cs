@@ -35,7 +35,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffectNew;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -57,19 +56,17 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly GhostRoleSystem _ghost  = default!;
+    [Dependency] private readonly GhostRoleSystem _ghost = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly EuiManager _euiManager = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly ActorSystem _actor = default!;
 
     private const string HeadSlot = "head";
     private const string HostMindContainer = "PlayerMindContainer";
 
-    private const string EndControlAction = "ActionEndControlHost";
-    private const string LayEggAction = "ActionLayEggHost";
+    private const string EndControlAction = "ActionBorerEndControlHost";
 
     public override void Initialize()
     {
@@ -78,7 +75,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         SubscribeLocalEvent<CorticalBorerComponent, ComponentStartup>(OnStartup);
 
         SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerDispenserInjectMessage>(OnInjectReagentMessage);
-        SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerDispenserSetInjectAmountMessage>(OnSetInjectAmountMessage);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerDispenserSetInjectAmountMessage>(
+            OnSetInjectAmountMessage);
 
         SubscribeLocalEvent<InventoryComponent, InfestHostAttempt>(OnInfestHostAttempt);
         SubscribeLocalEvent<CorticalBorerComponent, CheckTargetedSpeechEvent>(OnSpeakEvent);
@@ -122,7 +120,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
             UpdateChems((comp.Owner, comp), comp.ChemicalGenerationRate);
 
-            if (_statusEffects.HasStatusEffect(comp.Host.Value, "CorticalBorerProtection"))
+            if (HasBorerProtection(comp.Host.Value))
                 _alerts.ShowAlert(comp.Owner, comp.SugarAlert);
             else
                 _alerts.ClearAlert(comp.Owner, comp.SugarAlert);
@@ -165,7 +163,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         _alerts.ShowAlert(ent, ent.Comp.ChemicalAlert);
 
-        if (comp.Host.HasValue && !_statusEffects.HasStatusEffect(comp.Host.Value, "CorticalBorerProtection"))
+        if (comp.Host.HasValue && !HasBorerProtection(comp.Host.Value))
             _alerts.ClearAlert(ent, ent.Comp.SugarAlert);
         else if (comp.Host.HasValue)
             _alerts.ShowAlert(ent, ent.Comp.SugarAlert);
@@ -244,7 +242,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         return true;
     }
 
-    private void OnInjectReagentMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerDispenserInjectMessage message)
+    private void OnInjectReagentMessage(Entity<CorticalBorerComponent> ent,
+        ref CorticalBorerDispenserInjectMessage message)
     {
         if (TryGetBorerChemical(message.ChemProtoId, out var chemProto))
             TryInjectHost(ent, chemProto, ent.Comp.InjectAmount);
@@ -267,7 +266,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         return false;
     }
 
-    private void OnSetInjectAmountMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerDispenserSetInjectAmountMessage message)
+    private void OnSetInjectAmountMessage(Entity<CorticalBorerComponent> ent,
+        ref CorticalBorerDispenserSetInjectAmountMessage message)
     {
         ent.Comp.InjectAmount = message.CorticalBorerDispenserDispenseAmount;
         UpdateUiState(ent);
@@ -288,7 +288,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             var chems = ent.Comp.ChemicalPoints;
             var color = proto.SubstanceColor;
 
-            clones.Add(new CorticalBorerDispenserItem(reagentName,reagentId, cost, amount, chems, color)); // need color and name
+            clones.Add(new CorticalBorerDispenserItem(reagentName,
+                reagentId,
+                cost,
+                amount,
+                chems,
+                color)); // need color and name
         }
 
         return clones;
@@ -352,7 +357,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         if (_mind.TryGetMind(host, out var controlledMind, out _))
         {
-            infestedComp.OriginalMindId = controlledMind; // Set this var here just in case somehow the mind changes from when the infestation started
+            infestedComp.OriginalMindId =
+                controlledMind; // Set this var here just in case somehow the mind changes from when the infestation started
 
             // Temporary entity to hold host's original mind while borer controls the host.
             var dummy = Spawn(HostMindContainer, MapCoordinates.Nullspace);
@@ -375,23 +381,21 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         _mind.TransferTo(wormMind, host);
 
         if (TryComp<GhostRoleComponent>(worm, out var ghostRole))
-            _ghost.UnregisterGhostRole((worm, ghostRole)); // prevent players from taking the worm role once mind isn't in the worm
-
-        // add the end control and vomit egg action
-        if (Actions.AddAction(host, EndControlAction) is {} actionEnd)
-            infestedComp.RemoveAbilities.Add(actionEnd);
-
-        if (comp.CanReproduce &&
-            infestedComp.ControlTimeEnd != null) // you can't lay eggs with something you can control forever
         {
-            if (Actions.AddAction(host, LayEggAction) is {} actionLay)
-                infestedComp.RemoveAbilities.Add(actionLay);
+            _ghost.UnregisterGhostRole((worm,
+                ghostRole)); // prevent players from taking the worm role once mind isn't in the worm
         }
+
+        // Add end control action
+        if (Actions.AddAction(host, EndControlAction) is { } actionEnd)
+            infestedComp.RemoveAbilities.Add(actionEnd);
 
         var str = $"{ToPrettyString(worm)} has taken control over {ToPrettyString(host)}";
 
         Log.Info(str);
-        _admin.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(worm)} has taken control over {ToPrettyString(host)}");
+        _admin.Add(LogType.Mind,
+            LogImpact.Medium,
+            $"{ToPrettyString(worm)} has taken control over {ToPrettyString(host)}");
         _chat.SendAdminAlert(str);
     }
 
@@ -412,10 +416,14 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         {
             Actions.RemoveAction(infested, ability);
         }
+
         infestedComp.RemoveAbilities = []; // Clear out the list
 
         if (TryComp<GhostRoleComponent>(infestedComp.Borer, out var ghostRole))
-            _ghost.RegisterGhostRole((infestedComp.Borer, ghostRole)); // re-enable the ghost role after you return to the body
+        {
+            _ghost.RegisterGhostRole((infestedComp.Borer,
+                ghostRole)); // re-enable the ghost role after you return to the body
+        }
 
         // Return everyone to their own bodies
         if (!TerminatingOrDeleted(infestedComp.BorerMindId))
@@ -449,7 +457,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             ignoreActionBlocker: true,
             forced: true);
 
-        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):actor} forced host {ToPrettyString(host.Value):target} to say: '{message}'");
+        _admin.Add(LogType.Action,
+            LogImpact.Medium,
+            $"{ToPrettyString(ent):actor} forced host {ToPrettyString(host.Value):target} to say: '{message}'");
     }
 
     public void AskForWillingHost(Entity<CorticalBorerComponent> borer)
@@ -476,7 +486,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         var msgKey = accepted ? "cortical-borer-willing-result-yes" : "cortical-borer-willing-result-no";
         Popup.PopupEntity(Loc.GetString(msgKey, ("host", Name(host))), borer, borer, PopupType.Medium);
 
-        _admin.Add(LogType.Action, LogImpact.Medium,$"Host {ToPrettyString(host):target} {(accepted ? "accepted" : "declined")} voluntary submission for {ToPrettyString(borer):actor}");
+        _admin.Add(LogType.Action,
+            LogImpact.Medium,
+            $"Host {ToPrettyString(host):target} {(accepted ? "accepted" : "declined")} voluntary submission for {ToPrettyString(borer):actor}");
 
         Dirty(borer);
     }
@@ -519,7 +531,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!ent.Comp.Borer.Comp.Host.HasValue)
             return;
 
-        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(ent.Comp.Borer):actor} was ejected because host {ToPrettyString(ent):target} polymorphed into {ToPrettyString(args.NewEntity)}");
+        _admin.Add(LogType.Action,
+            LogImpact.Low,
+            $"{ToPrettyString(ent.Comp.Borer):actor} was ejected because host {ToPrettyString(ent):target} polymorphed into {ToPrettyString(args.NewEntity)}");
 
         TryEjectBorer(ent.Comp.Borer);
     }
@@ -532,7 +546,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (Transform(ent).MapID != MapId.Nullspace)
             return;
 
-        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(ent.Comp.Borer):actor} was ejected because host {ToPrettyString(ent):target} moved to nullspace");
+        _admin.Add(LogType.Action,
+            LogImpact.Low,
+            $"{ToPrettyString(ent.Comp.Borer):actor} was ejected because host {ToPrettyString(ent):target} moved to nullspace");
 
         TryEjectBorer(ent.Comp.Borer);
     }
@@ -542,7 +558,12 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!ent.Comp.Host.HasValue)
             return;
 
-        if (TryComp<CorticalBorerInfestedComponent>(ent.Comp.Host.Value, out var infested) && infested.Borer == ent)
-            RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
+        if (!TryComp<CorticalBorerInfestedComponent>(ent.Comp.Host.Value, out var infested) || infested.Borer != ent)
+            return;
+
+        if (ent.Comp.ControllingHost)
+            EndControl((ent.Comp.Host.Value, infested));
+
+        RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
     }
 }

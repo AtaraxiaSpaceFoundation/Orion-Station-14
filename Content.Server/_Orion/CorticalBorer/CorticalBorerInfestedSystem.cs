@@ -94,6 +94,7 @@ public sealed class CorticalBorerInfestedSystem : EntitySystem
 
     private void OnHostTerminating(Entity<CorticalBorerInfestedComponent> infected, ref EntityTerminatingEvent args)
     {
-        EndControlAndEject(infected);
+        if (infected.Comp.Borer.Comp.Host.HasValue && !TerminatingOrDeleted(infected.Comp.Borer))
+            EndControlAndEject(infected);
     }
 }

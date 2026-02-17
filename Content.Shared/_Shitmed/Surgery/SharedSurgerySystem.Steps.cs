@@ -280,7 +280,9 @@ public abstract partial class SharedSurgerySystem
             infested.InfestationContainer.ContainedEntities.Count == 0)
             return;
 
-        _corticalBorer.TryEjectBorer(infested.Borer);
+        if (!_corticalBorer.TryEjectBorer(infested.Borer))
+            return;
+
         RaiseLocalEvent(infested.Borer, new CorticalBorerSurgicallyRemovedEvent());
     }
 
