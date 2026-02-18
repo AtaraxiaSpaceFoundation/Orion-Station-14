@@ -68,6 +68,13 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private const string EndControlAction = "ActionBorerEndControlHost";
 
+    private static readonly string[] BorerObjectives =
+    [
+        "CorticalBorerSurviveObjective",
+        "CorticalBorerWillingHostsObjective",
+        "CorticalBorerEggsObjective"
+    ];
+
     public override void Initialize()
     {
         SubscribeAbilities();
@@ -81,6 +88,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         SubscribeLocalEvent<InventoryComponent, InfestHostAttempt>(OnInfestHostAttempt);
         SubscribeLocalEvent<CorticalBorerComponent, CheckTargetedSpeechEvent>(OnSpeakEvent);
 
+        SubscribeLocalEvent<CorticalBorerComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<CorticalBorerComponent, MindRemovedMessage>(OnMindRemoved);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerForceSpeakMessage>(OnForceSpeakMessage);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerSurgicallyRemovedEvent>(OnSurgicallyRemoved);
@@ -115,10 +123,18 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             comp.UpdateTimer = _timing.CurTime + TimeSpan.FromSeconds(comp.UpdateCooldown);
 
 #pragma warning disable CS0618
-            if (!comp.Host.HasValue)
+             if (!comp.Host.HasValue)
+            {
+                _alerts.ClearAlert(comp.Owner, comp.SugarAlert);
                 continue;
+            }
 
-            UpdateChems((comp.Owner, comp), comp.ChemicalGenerationRate);
+            var chemicalGeneration = comp.ChemicalGenerationRate;
+
+            if (comp.WillingHosts.Contains(comp.Host.Value))
+                chemicalGeneration = (int) MathF.Ceiling(chemicalGeneration * comp.WillingHostChemicalGenerationMultiplier);
+
+            UpdateChems((comp.Owner, comp), chemicalGeneration);
 
             if (HasBorerProtection(comp.Host.Value))
                 _alerts.ShowAlert(comp.Owner, comp.SugarAlert);
@@ -340,15 +356,19 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (comp.Host is not { } host)
             return;
 
-        // make sure they aren't dead, would throw the worm into a ghost mode and just kill em
+        // Make sure they aren't dead, would throw the worm into a ghost mode and just kill em
         if (TryComp<MobStateComponent>(host, out var mobState) &&
             mobState.CurrentState == MobState.Dead)
             return;
 
-        if (TryComp<MindContainerComponent>(host, out var mindContainer) &&
-            mindContainer.HasMind ||
-            HasComp<GhostRoleComponent>(host))
+        // If host willing we remove time restriction for control body
+        if ((TryComp<MindContainerComponent>(host, out var mindContainer) &&
+             mindContainer.HasMind ||
+             HasComp<GhostRoleComponent>(host)) &&
+            !comp.WillingHosts.Contains(host))
             infestedComp.ControlTimeEnd = _timing.CurTime + comp.ControlDuration;
+        else
+            infestedComp.ControlTimeEnd = null;
 
         if (_mind.TryGetMind(worm, out var wormMind, out _))
             infestedComp.BorerMindId = wormMind;
@@ -506,17 +526,31 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             var survived = !TryComp<MobStateComponent>(uid, out var mobState) ||
                            mobState.CurrentState != MobState.Dead;
 
-            var surviveResult = Loc.GetString(survived
-                ? "objectives-objective-success"
-                : "objectives-objective-fail");
+            var surviveProgress = survived ? 1f : 0f;
+            var willingProgress = MathF.Min(1f, names.Length / 3f);
+            var eggsProgress = MathF.Min(1f, borer.EggsLaid / 5f);
 
-            var willingResult = Loc.GetString(names.Length >= 3
-                ? "objectives-objective-success"
-                : "objectives-objective-fail");
+            var surviveResult = Loc.GetString(surviveProgress >= 1f
+                    ? "objectives-objective-success"
+                    : "objectives-objective-fail",
+                ("objective", Loc.GetString("cortical-borer-round-end-objective-survive")),
+                ("progress", surviveProgress));
 
-            var eggsResult = Loc.GetString(borer.EggsLaid >= 5
-                ? "objectives-objective-success"
-                : "objectives-objective-fail");
+            var willingResult = Loc.GetString(willingProgress >= 1f
+                    ? "objectives-objective-success"
+                    : "objectives-objective-fail",
+                ("objective", Loc.GetString("cortical-borer-round-end-objective-willing",
+                    ("current", names.Length),
+                    ("target", 3))),
+                ("progress", willingProgress));
+
+            var eggsResult = Loc.GetString(eggsProgress >= 1f
+                    ? "objectives-objective-success"
+                    : "objectives-objective-fail",
+                ("objective", Loc.GetString("cortical-borer-round-end-objective-eggs",
+                    ("current", borer.EggsLaid),
+                    ("target", 5))),
+                ("progress", eggsProgress));
 
             ev.AddLine(Loc.GetString("cortical-borer-round-end-objectives",
                 ("borer", metaData.EntityName),
@@ -538,7 +572,24 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private void OnSurgicallyRemoved(Entity<CorticalBorerComponent> ent, ref CorticalBorerSurgicallyRemovedEvent args)
     {
-        _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(6));
+        _stun.TryAddParalyzeDuration(ent, TimeSpan.FromSeconds(6));
+    }
+
+    private void OnMindAdded(Entity<CorticalBorerComponent> ent, ref MindAddedMessage args)
+    {
+        if (!_mind.TryGetMind(ent, out var mindId, out var mindComp))
+            return;
+
+        if (!mindComp.MindRoles.Any(HasComp<CorticalBorerRoleComponent>))
+            return;
+
+        foreach (var objective in BorerObjectives)
+        {
+            if (mindComp.Objectives.Any(uid => MetaData(uid).EntityPrototype?.ID == objective))
+                continue;
+
+            _mind.TryAddObjective(mindId, mindComp, objective);
+        }
     }
 
     private void OnMindRemoved(Entity<CorticalBorerComponent> ent, ref MindRemovedMessage args)
@@ -549,19 +600,19 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private void OnHostPolymorphed(Entity<CorticalBorerInfestedComponent> ent, ref PolymorphedEvent args)
     {
-        if (!ent.Comp.Borer.Comp.Host.HasValue)
+        if (!TryComp<CorticalBorerComponent>(ent.Comp.Borer, out var borerComp) || !borerComp.Host.HasValue)
             return;
 
         _admin.Add(LogType.Action,
             LogImpact.Low,
             $"{ToPrettyString(ent.Comp.Borer):actor} was ejected because host {ToPrettyString(ent):target} polymorphed into {ToPrettyString(args.NewEntity)}");
 
-        TryEjectBorer(ent.Comp.Borer);
+        TryEjectBorer((ent.Comp.Borer, borerComp));
     }
 
     private void OnHostParentChanged(Entity<CorticalBorerInfestedComponent> ent, ref EntParentChangedMessage args)
     {
-        if (!ent.Comp.Borer.Comp.Host.HasValue)
+        if (!TryComp<CorticalBorerComponent>(ent.Comp.Borer, out var borerComp) || !borerComp.Host.HasValue)
             return;
 
         if (Transform(ent).MapID != MapId.Nullspace)
@@ -571,7 +622,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             LogImpact.Low,
             $"{ToPrettyString(ent.Comp.Borer):actor} was ejected because host {ToPrettyString(ent):target} moved to nullspace");
 
-        TryEjectBorer(ent.Comp.Borer);
+        TryEjectBorer((ent.Comp.Borer, borerComp));
     }
 
     private void OnBorerTerminating(Entity<CorticalBorerComponent> ent, ref EntityTerminatingEvent args)

@@ -56,10 +56,10 @@ public class SharedCorticalBorerSystem : EntitySystem
 
         if (!TryComp<BloodstreamComponent>(target, out var blood) ||
             blood.ChemicalSolution is not { } solutionUid ||
-            !TryComp<SolutionComponent>(solutionUid, out var solutionComp))
+            !TryComp<SolutionComponent>(solutionUid, out _))
             return false;
 
-        return solutionComp.Solution.ContainsReagent(SugarReagentId);
+        return blood.ChemicalSolution?.Comp.Solution.ContainsReagent(SugarReagentId) ?? false;
     }
 
     public void InfestTarget(Entity<CorticalBorerComponent> ent, EntityUid target)
@@ -72,7 +72,7 @@ public class SharedCorticalBorerSystem : EntitySystem
         // Make sure they get into the target
         if (!Container.Insert(uid, infestedComp.InfestationContainer))
         {
-            RemCompDeferred<CorticalBorerInfestedComponent>(target); // oh no it didn't work somehow so remove the comp you just added...
+            RemCompDeferred<CorticalBorerInfestedComponent>(target); // Oh, no it didn't work somehow so remove the comp you just added...
             return;
         }
 

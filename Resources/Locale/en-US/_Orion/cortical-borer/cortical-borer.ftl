@@ -36,6 +36,9 @@ cortical-borer-willing-result-yes = { $host } agreed to become a voluntary host.
 cortical-borer-willing-result-no = { $host } refused voluntary submission.
 
 cortical-borer-round-end-willing = { $borer } received { $count } voluntary host(s): { $hosts }.
+cortical-borer-round-end-objective-survive = Survive
+cortical-borer-round-end-objective-willing = Voluntary hosts ({ $current }/{ $target })
+cortical-borer-round-end-objective-eggs = Eggs laid ({ $current }/{ $target })
 
 ## Examine Text
 cortical-borer-infested-examine = [color=#d842fc]Movements look extremely unnatural...[/color]

@@ -40,6 +40,12 @@ public sealed partial class CorticalBorerComponent : Component
     public int ChemicalGenerationRate = 1;
 
     /// <summary>
+    ///     Multiplier for chemical generation when the current host is a willing host.
+    /// </summary>
+    [DataField]
+    public float WillingHostChemicalGenerationMultiplier = 2f;
+
+    /// <summary>
     ///     Max Chemicals that can be held
     /// </summary>
     [DataField]
