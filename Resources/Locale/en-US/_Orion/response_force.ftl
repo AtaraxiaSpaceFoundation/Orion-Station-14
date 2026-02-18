@@ -1,6 +1,8 @@
 response-force-call-announce = ALERT! Response Force inbound to your station. Prepare for arrival.
 response-force-paid-call-announce = Alert! We don't have a free ERT squad, your station has been paid for a mercenary squad. Wait for arrival.
 
+response-force-system-round-end = Response force: "[bold]{ $team }[/bold]" was called by { $who } at { $time }.
+
 response-force-ert-green-alert-name = ERT Green
 response-force-ert-green-alert-call-title = ERT | Green Alert
 response-force-ert-blue-alert-name = ERT Blue

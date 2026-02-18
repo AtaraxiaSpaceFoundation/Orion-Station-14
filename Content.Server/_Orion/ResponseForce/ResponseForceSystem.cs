@@ -351,9 +351,9 @@ public sealed class ResponseForceSystem : EntitySystem
     {
         foreach (var calledEvent in CalledEvents)
         {
-            ev.AddLine(Loc.GetString("spec-forces-system-round-end",
-                ("responseforce", Loc.GetString(calledEvent.Event)),
-                ("time", calledEvent.RoundTime.ToString(@"hh\:mm\:ss")),
+            ev.AddLine(Loc.GetString("response-force-system-round-end",
+                ("team", Loc.GetString(calledEvent.Event)),
+                ("time", calledEvent.RoundTime.ToString(@"hh\:mm")),
                 ("who", calledEvent.WhoCalled)));
         }
     }

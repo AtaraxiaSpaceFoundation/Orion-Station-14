@@ -1,6 +1,12 @@
 response-force-call-announce = ВНИМАНИЕ! К вам на станцию отправляется Отряд Быстрого Реагирования. Ожидайте прибытия.
 response-force-paid-call-announce = ВНИМАНИЕ! Мы не располагаем свободным отрядом быстрого реагирования, вашей станции был оплачен отряд наёмников. Ожидайте прибытия.
 
+response-force-system-round-end = Команда поддержки: "[bold]{ $team }[/bold]" была вызвана { $who } в { $time } { $time ->
+        [one] минута
+        [few] минуты
+       *[other] минут
+    }.
+
 response-force-ert-green-alert-name = ОБР Зелёный
 response-force-ert-green-alert-call-title = ОБР | Зелёный Код
 response-force-ert-blue-alert-name = ОБР Синий
