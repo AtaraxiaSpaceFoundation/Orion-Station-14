@@ -259,12 +259,12 @@ public sealed class CorticalBorerDispenserBoundUserInterfaceState : BoundUserInt
 }
 
 [Serializable, NetSerializable]
-public sealed class CorticalBorerDispenserItem(string reagentName, string reagentId, int cost, int amount, int chems, Color reagentColor)
+public sealed class CorticalBorerDispenserItem(string reagentName, string reagentId, int cost, int amount, int chemicals, Color reagentColor)
 {
     public string ReagentName = reagentName;
     public string ReagentId = reagentId;
     public int Cost = cost;
     public int Amount = amount;
-    public int Chems = chems;
+    public int Chemicals = chemicals;
     public Color ReagentColor = reagentColor;
 }

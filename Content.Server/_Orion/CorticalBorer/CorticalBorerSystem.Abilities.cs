@@ -321,7 +321,7 @@ public sealed partial class CorticalBorerSystem
         LayEgg(borer);
         borer.Comp.EggsLaid++;
         Dirty(borer);
-        UpdateChems(borer, -borer.Comp.EggCost);
+        UpdateChemicals(borer, -borer.Comp.EggCost);
         _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(borer):actor} laid an egg in host {ToPrettyString(host.Value):target}");
 
         args.Handled = true;

@@ -25,6 +25,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Inventory;
 using Content.Shared.MedicalScanner;
@@ -63,6 +64,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly ActorSystem _actor = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     private const string HeadSlot = "head";
     private const string HostMindContainer = "PlayerMindContainer";
@@ -73,7 +75,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     [
         "CorticalBorerSurviveObjective",
         "CorticalBorerWillingHostsObjective",
-        "CorticalBorerEggsObjective"
+        "CorticalBorerEggsObjective",
     ];
 
     public override void Initialize()
@@ -102,7 +104,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private void OnStartup(Entity<CorticalBorerComponent> ent, ref ComponentStartup args)
     {
-        //add actions
+        // Add actions
         foreach (var actionId in ent.Comp.InitialCorticalBorerActions)
         {
             Actions.AddAction(ent, actionId);
@@ -135,7 +137,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             if (comp.WillingHosts.Contains(comp.Host.Value))
                 chemicalGeneration = (int) MathF.Ceiling(chemicalGeneration * comp.WillingHostChemicalGenerationMultiplier);
 
-            UpdateChems((comp.Owner, comp), chemicalGeneration);
+            UpdateChemicals((comp.Owner, comp), chemicalGeneration);
+            _damageable.TryChangeDamage(comp.Owner, comp.HealingDamage); // Heal borer
 
             if (HasBorerProtection(comp.Host.Value))
                 _alerts.ShowAlert(comp.Owner, comp.SugarAlert);
@@ -153,7 +156,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         }
     }
 
-    private void OnSpeakEvent(Entity<CorticalBorerComponent> ent, ref CheckTargetedSpeechEvent args)
+    private static void OnSpeakEvent(Entity<CorticalBorerComponent> ent, ref CheckTargetedSpeechEvent args)
     {
         args.ChatTypeIgnore.Add(InGameICChatType.CollectiveMind);
 
@@ -164,7 +167,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         args.Targets.Add(ent.Comp.Host.Value);
     }
 
-    public void UpdateChems(Entity<CorticalBorerComponent> ent, int change)
+    public void UpdateChemicals(Entity<CorticalBorerComponent> ent, int change)
     {
         var (_, comp) = ent;
 
@@ -190,10 +193,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private void OnInfestHostAttempt(Entity<InventoryComponent> entity, ref InfestHostAttempt args)
     {
-        IngestionBlockerComponent? blocker;
-
         if (!_inventory.TryGetSlotEntity(entity.Owner, HeadSlot, out var headUid) ||
-            !TryComp(headUid, out blocker) ||
+            !TryComp(headUid, out IngestionBlockerComponent? blocker) ||
             !blocker.Enabled)
             return;
 
@@ -255,7 +256,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             $"{ToPrettyString(uid):actor} injected {chemAmount}u of {chemicalPrototype.Reagent:reagent}"
             + $" (severity: {chemicalPrototype.Severity}) into host {ToPrettyString(comp.Host.Value):target}");
 
-        UpdateChems(ent, -requiredChemPoints);
+        UpdateChemicals(ent, -requiredChemPoints);
         return true;
     }
 
@@ -302,14 +303,14 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             var reagentId = proto.ID;
             var cost = prototype.Cost;
             var amount = ent.Comp.InjectAmount;
-            var chems = ent.Comp.ChemicalPoints;
+            var borerChemicals = ent.Comp.ChemicalPoints;
             var color = proto.SubstanceColor;
 
             clones.Add(new CorticalBorerDispenserItem(reagentName,
                 reagentId,
                 cost,
                 amount,
-                chems,
+                borerChemicals,
                 color)); // need color and name
         }
 
@@ -318,9 +319,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private void UpdateUiState(Entity<CorticalBorerComponent> ent)
     {
-        var chems = GetAllBorerChemicals(ent);
+        var borerChemicals = GetAllBorerChemicals(ent);
 
-        var state = new CorticalBorerDispenserBoundUserInterfaceState(chems, ent.Comp.InjectAmount);
+        var state = new CorticalBorerDispenserBoundUserInterfaceState(borerChemicals, ent.Comp.InjectAmount);
         _userInterfaceSystem.SetUiState(ent.Owner, CorticalBorerDispenserUiKey.Key, state);
     }
 
@@ -381,7 +382,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             infestedComp.OriginalMindId =
                 controlledMind; // Set this var here just in case somehow the mind changes from when the infestation started
 
-            // Temporary entity to hold host's original mind while borer controls the host.
+            // Temporary entity to hold host's original mind while borer controls the host
             var dummy = Spawn(HostMindContainer, MapCoordinates.Nullspace);
             _metaData.SetEntityName(dummy, Name(host));
 
@@ -404,12 +405,16 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (TryComp<GhostRoleComponent>(worm, out var ghostRole))
         {
             _ghost.UnregisterGhostRole((worm,
-                ghostRole)); // prevent players from taking the worm role once mind isn't in the worm
+                ghostRole)); // Prevent players from taking the worm role once mind isn't in the worm
         }
 
         // Add end control action
         if (Actions.AddAction(host, EndControlAction) is { } actionEnd)
             infestedComp.RemoveAbilities.Add(actionEnd);
+
+        // Voluntary hosts should also be able to end control from the borer
+        if (comp.WillingHosts.Contains(host) && Actions.AddAction(worm, EndControlAction) is { } borerActionEnd)
+            infestedComp.RemoveAbilities.Add(borerActionEnd);
 
         var str = $"{ToPrettyString(worm)} has taken control over {ToPrettyString(host)}";
 

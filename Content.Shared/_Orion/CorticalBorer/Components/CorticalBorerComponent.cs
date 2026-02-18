@@ -3,7 +3,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Alert;
+using Content.Shared.Damage;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -60,6 +62,26 @@ public sealed partial class CorticalBorerComponent : Component
     ///     At what interval does the chem ui update
     /// </summary>
     public int UiUpdateInterval = 5; // Prevent constant update on cap
+
+    /// <summary>
+    ///     Healing applied to the borer every update tick while it is inside a host.
+    /// </summary>
+    [DataField]
+    public DamageSpecifier HealingDamage = new()
+    {
+        DamageDict = new Dictionary<string, FixedPoint2>
+        {
+            { "Blunt", -0.1 },
+            { "Slash", -0.1 },
+            { "Piercing", -0.1 },
+            { "Heat", -0.1 },
+            { "Shock", -0.1 },
+            { "Cold", -0.1 },
+            { "Poison", -0.1 },
+            { "Radiation", -0.1 },
+            { "Asphyxiation", -0.1 },
+        },
+    };
 
     /// <summary>
     ///     The max duration you can take control of your host
