@@ -41,7 +41,6 @@ public sealed partial class CorticalBorerSystem
         SubscribeLocalEvent<CorticalBorerComponent, CorticalChemMenuActionEvent>(OnChemicalMenu);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalCheckBloodEvent>(OnCheckBlood);
 
-
         SubscribeLocalEvent<CorticalBorerInfestedComponent, CorticalEndControlEvent>(OnEndControl);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalEndControlEvent>(OnEndControlByVoluntaryHost);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalLayEggEvent>(OnLayEgg);

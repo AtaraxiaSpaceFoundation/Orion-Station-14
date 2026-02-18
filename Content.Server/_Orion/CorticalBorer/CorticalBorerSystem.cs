@@ -19,6 +19,7 @@ using Content.Server.Medical.Components;
 using Content.Server.Stunnable;
 using Content.Shared._Orion.CorticalBorer;
 using Content.Shared._Orion.CorticalBorer.Components;
+using Content.Shared.Actions.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
@@ -377,22 +378,25 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         else
             return;
 
+        EntityUid? hostMindHolder = null;
+
         if (_mind.TryGetMind(host, out var controlledMind, out _))
         {
             infestedComp.OriginalMindId =
                 controlledMind; // Set this var here just in case somehow the mind changes from when the infestation started
 
             // Temporary entity to hold host's original mind while borer controls the host
-            var dummy = Spawn(HostMindContainer, MapCoordinates.Nullspace);
-            _metaData.SetEntityName(dummy, Name(host));
+            var mindHolder = Spawn(HostMindContainer, MapCoordinates.Nullspace);
+            _metaData.SetEntityName(mindHolder, Name(host));
 
-            if (!Container.Insert(dummy, infestedComp.ControlContainer))
+            if (!Container.Insert(mindHolder, infestedComp.ControlContainer))
             {
-                QueueDel(dummy);
+                QueueDel(mindHolder);
                 return;
             }
 
-            _mind.TransferTo(controlledMind, dummy);
+            _mind.TransferTo(controlledMind, mindHolder);
+            hostMindHolder = mindHolder;
         }
         else
         {
@@ -412,8 +416,9 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (Actions.AddAction(host, EndControlAction) is { } actionEnd)
             infestedComp.RemoveAbilities.Add(actionEnd);
 
-        // Voluntary hosts should also be able to end control from the borer
-        if (comp.WillingHosts.Contains(host) && Actions.AddAction(worm, EndControlAction) is { } borerActionEnd)
+        // Voluntary hosts should be able to end control from their mind holder while body is controlled.
+        if (comp.WillingHosts.Contains(host) && hostMindHolder is { } dummy &&
+            Actions.AddAction(dummy, EndControlAction, worm) is { } borerActionEnd)
             infestedComp.RemoveAbilities.Add(borerActionEnd);
 
         var str = $"{ToPrettyString(worm)} has taken control over {ToPrettyString(host)}";
@@ -440,8 +445,10 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         // Remove all the actions set to remove
         foreach (var ability in infestedComp.RemoveAbilities)
         {
-            Actions.RemoveAction(infested, ability);
-            Actions.RemoveAction(infestedComp.Borer.Owner, ability);
+            if (!TryComp<ActionComponent>(ability, out var actionComp) || actionComp.AttachedEntity is not { } attached)
+                continue;
+
+            Actions.RemoveAction(attached, ability);
         }
 
         infestedComp.RemoveAbilities = []; // Clear out the list
