@@ -6,12 +6,12 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Goobstation.Shared.ManifestListings;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.DoAfter;
 using Content.Server.EUI;
+using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Medical;
@@ -99,7 +99,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         SubscribeLocalEvent<CorticalBorerInfestedComponent, PolymorphedEvent>(OnHostPolymorphed);
         SubscribeLocalEvent<CorticalBorerInfestedComponent, EntParentChangedMessage>(OnHostParentChanged);
-        SubscribeLocalEvent<MindComponent, PrependObjectivesSummaryTextEvent>(OnPrependObjectivesSummary);
+        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndTextAppend);
         SubscribeLocalEvent<GameRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
     }
 
@@ -542,7 +542,17 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             if (!mind.MindRoles.Any(HasComp<CorticalBorerRoleComponent>))
                 continue;
 
-            minds.Add((mindUid, mind.CharacterName ?? Name(mind.OwnedEntity ?? mindUid)));
+            var name = mind.CharacterName;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                var nameEntity = mind.OwnedEntity ?? mindUid;
+                name = Name(nameEntity);
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+                name = Name(mindUid);
+
+            minds.Add((mindUid, FormattedMessage.EscapeText(name)));
         }
 
         if (minds.Count == 0)
@@ -552,25 +562,39 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         args.AgentName = Loc.GetString("cortical-borer-round-end-agent-name");
     }
 
-    private void OnPrependObjectivesSummary(Entity<MindComponent> ent, ref PrependObjectivesSummaryTextEvent args)
+    private void OnRoundEndTextAppend(RoundEndTextAppendEvent args)
     {
-        if (!ent.Comp.MindRoles.Any(HasComp<CorticalBorerRoleComponent>) ||
-            ent.Comp.OwnedEntity is not { } borerUid ||
-            !TryComp<CorticalBorerComponent>(borerUid, out var borer))
+        var lines = new List<string>();
+        var borerQuery = EntityQueryEnumerator<CorticalBorerComponent>();
+
+        while (borerQuery.MoveNext(out var borerUid, out var borer))
+        {
+            var names = borer.WillingHosts
+                .Where(Exists)
+                .Select(host => FormattedMessage.EscapeText(Name(host)))
+                .ToArray();
+
+            if (names.Length == 0)
+                continue;
+
+            var borerName = Name(borerUid);
+            if (string.IsNullOrWhiteSpace(borerName) && _mind.TryGetMind(borerUid, out var mindId, out var mind))
+                borerName = mind.CharacterName ?? Name(mindId);
+
+            lines.Add(Loc.GetString("cortical-borer-round-end-willing",
+                ("borer", FormattedMessage.EscapeText(borerName)),
+                ("count", names.Length),
+                ("hosts", string.Join(", ", names))));
+        }
+
+        if (lines.Count == 0)
             return;
 
-        var names = borer.WillingHosts
-            .Where(Exists)
-            .Select(host => FormattedMessage.EscapeText(Name(host)))
-            .ToArray();
-
-        if (names.Length == 0)
-            return;
-
-        args.Text += Loc.GetString("cortical-borer-round-end-willing",
-            ("borer", FormattedMessage.EscapeText(Name(borerUid))),
-            ("count", names.Length),
-            ("hosts", string.Join(", ", names)));
+        args.AddLine(string.Empty);
+        foreach (var line in lines)
+        {
+            args.AddLine(line);
+        }
     }
 
     private void OnSurgicallyRemoved(Entity<CorticalBorerComponent> ent, ref CorticalBorerSurgicallyRemovedEvent args)
