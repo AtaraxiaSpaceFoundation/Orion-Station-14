@@ -13,11 +13,37 @@ public sealed class CorticalBorerEggsLaidConditionSystem : EntitySystem
 
     private void OnGetProgress(Entity<CorticalBorerEggsLaidConditionComponent> ent, ref ObjectiveGetProgressEvent args)
     {
-        if (args.Mind.OwnedEntity is not { } ownedEntity ||
-            !TryComp<CorticalBorerComponent>(ownedEntity, out var borer) ||
-            ent.Comp.Target <= 0)
+        if (!TryGetBorer(args.Mind.OwnedEntity, out var borer) || ent.Comp.Target <= 0)
+        {
+            args.Progress = 0f;
             return;
+        }
 
         args.Progress = MathF.Min(1f, borer.EggsLaid / (float) ent.Comp.Target);
+    }
+
+    private bool TryGetBorer(EntityUid? ownedEntity, out CorticalBorerComponent borer)
+    {
+        if (ownedEntity is not { } entity)
+        {
+            borer = default!;
+            return false;
+        }
+
+        if (TryComp<CorticalBorerComponent>(entity, out var entityBorer))
+        {
+            borer = entityBorer;
+            return true;
+        }
+
+        if (TryComp<CorticalBorerInfestedComponent>(entity, out var infested) &&
+            TryComp<CorticalBorerComponent>(infested.Borer, out var infestedBorer))
+        {
+            borer = infestedBorer;
+            return true;
+        }
+
+        borer = default!;
+        return false;
     }
 }

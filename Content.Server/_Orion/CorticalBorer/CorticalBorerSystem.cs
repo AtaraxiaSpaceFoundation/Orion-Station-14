@@ -17,7 +17,6 @@ using Content.Server.Ghost.Roles.Components;
 using Content.Server.Medical;
 using Content.Server.Medical.Components;
 using Content.Server.Objectives;
-using Content.Server.StationEvents.Components;
 using Content.Server.Stunnable;
 using Content.Shared._Orion.CorticalBorer;
 using Content.Shared._Orion.CorticalBorer.Components;
@@ -30,6 +29,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.GameTicking.Components;
 using Content.Shared.Inventory;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mind;
@@ -39,6 +39,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -74,13 +75,6 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private const string EndControlAction = "ActionBorerEndControlHost";
 
-    private static readonly string[] BorerObjectives =
-    [
-        "CorticalBorerSurviveObjective",
-        "CorticalBorerWillingHostsObjective",
-        "CorticalBorerEggsObjective",
-    ];
-
     public override void Initialize()
     {
         SubscribeAbilities();
@@ -96,14 +90,17 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         SubscribeLocalEvent<CorticalBorerComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<CorticalBorerComponent, MindRemovedMessage>(OnMindRemoved);
+        SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdded);
+
         SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerForceSpeakMessage>(OnForceSpeakMessage);
+
         SubscribeLocalEvent<CorticalBorerComponent, CorticalBorerSurgicallyRemovedEvent>(OnSurgicallyRemoved);
         SubscribeLocalEvent<CorticalBorerComponent, EntityTerminatingEvent>(OnBorerTerminating);
 
         SubscribeLocalEvent<CorticalBorerInfestedComponent, PolymorphedEvent>(OnHostPolymorphed);
         SubscribeLocalEvent<CorticalBorerInfestedComponent, EntParentChangedMessage>(OnHostParentChanged);
         SubscribeLocalEvent<MindComponent, PrependObjectivesSummaryTextEvent>(OnPrependObjectivesSummary);
-        SubscribeLocalEvent<RandomSpawnRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
+        SubscribeLocalEvent<GameRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
     }
 
     private void OnStartup(Entity<CorticalBorerComponent> ent, ref ComponentStartup args)
@@ -533,7 +530,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         Dirty(borer);
     }
 
-    private void OnObjectivesTextGetInfo(Entity<RandomSpawnRuleComponent> ent, ref ObjectivesTextGetInfoEvent args)
+    private void OnObjectivesTextGetInfo(Entity<GameRuleComponent> ent, ref ObjectivesTextGetInfoEvent args)
     {
         if (MetaData(ent).EntityPrototype?.ID != "CorticalBorerInfestation")
             return;
@@ -586,22 +583,22 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (!_mind.TryGetMind(ent, out var mindId, out var mindComp))
             return;
 
-        if (!mindComp.MindRoles.Any(HasComp<CorticalBorerRoleComponent>))
-            return;
-
-        foreach (var objective in BorerObjectives)
-        {
-            if (mindComp.Objectives.Any(uid => MetaData(uid).EntityPrototype?.ID == objective))
-                continue;
-
-            _mind.TryAddObjective(mindId, mindComp, objective);
-        }
+        EnsureBorerObjectives(mindId, mindComp, ent.Comp.Objectives);
     }
 
     private void OnMindRemoved(Entity<CorticalBorerComponent> ent, ref MindRemovedMessage args)
     {
         if (!ent.Comp.ControllingHost)
             TryEjectBorer(ent); // No storing them in hosts if you don't have a soul
+    }
+
+    private void OnRoleAdded(RoleAddedEvent args)
+    {
+        if (args.Mind.OwnedEntity is not { } ownedEntity ||
+            !TryComp<CorticalBorerComponent>(ownedEntity, out var borer))
+            return;
+
+        EnsureBorerObjectives(args.MindId, args.Mind, borer.Objectives);
     }
 
     private void OnHostPolymorphed(Entity<CorticalBorerInfestedComponent> ent, ref PolymorphedEvent args)
@@ -658,5 +655,23 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         EnsureRegistryComponents((infected.Comp.Borer.Owner, borerComp), borerComp.RemoveOnInfest);
         RemoveRegistryComponents((infected.Comp.Borer.Owner, borerComp), borerComp.AddOnInfest);
+    }
+
+    private void EnsureBorerObjectives(EntityUid mindId, MindComponent mindComp, List<EntProtoId> objectives)
+    {
+        if (!mindComp.MindRoles.Any(HasComp<CorticalBorerRoleComponent>))
+            return;
+
+        foreach (var objective in objectives)
+        {
+            if (mindComp.Objectives.Any(uid =>
+                {
+                    var objectiveProto = MetaData(uid).EntityPrototype;
+                    return objectiveProto is not null && objectiveProto.ID == objective;
+                }))
+                continue;
+
+            _mind.TryAddObjective(mindId, mindComp, objective);
+        }
     }
 }

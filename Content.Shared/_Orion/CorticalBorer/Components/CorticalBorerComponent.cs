@@ -30,7 +30,18 @@ public sealed partial class CorticalBorerComponent : Component
     public int EggsLaid;
 
     /// <summary>
-    ///     Current number of chemical points this Borer has, used to level up and buy chems
+    ///     Objectives assigned to the cortical borer role.
+    /// </summary>
+    [DataField]
+    public List<EntProtoId> Objectives = new()
+    {
+        "CorticalBorerSurviveObjective",
+        "CorticalBorerWillingHostsObjective",
+        "CorticalBorerEggsObjective",
+    };
+
+    /// <summary>
+    ///     Current number of chemical points
     /// </summary>
     [DataField, AutoNetworkedField]
     public int ChemicalPoints = 50;

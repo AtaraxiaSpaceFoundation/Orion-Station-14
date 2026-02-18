@@ -16,12 +16,10 @@
 - type: entity
   parent: [ BaseCorticalBorerObjective, BaseSurviveObjective ]
   id: CorticalBorerSurviveObjective
-  name: Survive.
 
 - type: entity
   parent: BaseCorticalBorerObjective
   id: CorticalBorerWillingHostsObjective
-  name: Secure voluntary hosts.
   components:
   - type: Objective
     difficulty: 1
@@ -31,7 +29,6 @@
 - type: entity
   parent: BaseCorticalBorerObjective
   id: CorticalBorerEggsObjective
-  name: Lay eggs.
   components:
   - type: Objective
     difficulty: 1
