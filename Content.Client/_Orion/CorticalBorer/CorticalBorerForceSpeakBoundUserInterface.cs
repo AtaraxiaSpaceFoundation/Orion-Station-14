@@ -16,6 +16,10 @@ public sealed class CorticalBorerForceSpeakBoundUserInterface(EntityUid owner, E
 
         _window = this.CreateWindow<CorticalBorerForceSpeakWindow>();
         _window.SetInfoFromEntity(EntMan, Owner);
-        _window.OnForceSpeakButtonPressed += msg => SendMessage(new CorticalBorerForceSpeakMessage(msg));
+        _window.OnForceSpeakButtonPressed += msg =>
+        {
+            SendMessage(new CorticalBorerForceSpeakMessage(msg));
+            _window?.Close();
+        };
     }
 }

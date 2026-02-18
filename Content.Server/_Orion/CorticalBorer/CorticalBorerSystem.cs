@@ -40,6 +40,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Orion.CorticalBorer;
 
@@ -435,6 +436,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         foreach (var ability in infestedComp.RemoveAbilities)
         {
             Actions.RemoveAction(infested, ability);
+            Actions.RemoveAction(infestedComp.Borer.Owner, ability);
         }
 
         infestedComp.RemoveAbilities = []; // Clear out the list
@@ -452,7 +454,10 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             _mind.TransferTo(infestedComp.OriginalMindId.Value, infested);
 
         infestedComp.ControlTimeEnd = null;
-        Container.CleanContainer(infestedComp.ControlContainer);
+        foreach (var entity in infestedComp.ControlContainer.ContainedEntities.ToArray())
+        {
+            QueueDel(entity);
+        }
     }
 
     private void OnForceSpeakMessage(Entity<CorticalBorerComponent> ent, ref CorticalBorerForceSpeakMessage args)
@@ -520,8 +525,10 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         {
             var names = borer.WillingHosts
                 .Where(Exists)
-                .Select(e => Name(e))
+                .Select(e => FormattedMessage.EscapeText(Name(e)))
                 .ToArray();
+
+            var borerName = FormattedMessage.EscapeText(metaData.EntityName);
 
             var survived = !TryComp<MobStateComponent>(uid, out var mobState) ||
                            mobState.CurrentState != MobState.Dead;
@@ -553,7 +560,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
                 ("progress", eggsProgress));
 
             ev.AddLine(Loc.GetString("cortical-borer-round-end-objectives",
-                ("borer", metaData.EntityName),
+                ("borer", borerName),
                 ("survive", surviveResult),
                 ("willingCount", names.Length),
                 ("willingResult", willingResult),
@@ -563,7 +570,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             if (names.Length > 0)
             {
                 ev.AddLine(Loc.GetString("cortical-borer-round-end-willing",
-                    ("borer", metaData.EntityName),
+                    ("borer", borerName),
                     ("count", names.Length),
                     ("hosts", string.Join(", ", names))));
             }
@@ -637,5 +644,19 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             EndControl((ent.Comp.Host.Value, infested));
 
         RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
+    }
+
+    public void HandleHostTerminating(Entity<CorticalBorerInfestedComponent> infected)
+    {
+        if (!TryComp<CorticalBorerComponent>(infected.Comp.Borer, out var borerComp))
+            return;
+
+        if (borerComp.ControllingHost)
+            EndControl(infected);
+
+        borerComp.Host = null;
+
+        EnsureRegistryComponents((infected.Comp.Borer.Owner, borerComp), borerComp.RemoveOnInfest);
+        RemoveRegistryComponents((infected.Comp.Borer.Owner, borerComp), borerComp.AddOnInfest);
     }
 }

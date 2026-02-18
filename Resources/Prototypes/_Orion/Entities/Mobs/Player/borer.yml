@@ -7,3 +7,6 @@
     state: orio
   - type: Transform
     noRot: true
+  - type: PermanentBlindness
+    blindness: 4
+  - type: DirectionalEmoteTarget

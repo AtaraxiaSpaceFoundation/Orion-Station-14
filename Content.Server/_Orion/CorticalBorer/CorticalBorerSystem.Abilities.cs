@@ -43,6 +43,7 @@ public sealed partial class CorticalBorerSystem
 
 
         SubscribeLocalEvent<CorticalBorerInfestedComponent, CorticalEndControlEvent>(OnEndControl);
+        SubscribeLocalEvent<CorticalBorerComponent, CorticalEndControlEvent>(OnEndControlByVoluntaryHost);
         SubscribeLocalEvent<CorticalBorerComponent, CorticalLayEggEvent>(OnLayEgg);
     }
 
@@ -275,6 +276,24 @@ public sealed partial class CorticalBorerSystem
 
         EndControl(host);
 
+        args.Handled = true;
+    }
+
+    private void OnEndControlByVoluntaryHost(Entity<CorticalBorerComponent> ent, ref CorticalEndControlEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryGetHost(ent, out var host))
+            return;
+
+        if (!ent.Comp.WillingHosts.Contains(host.Value))
+            return;
+
+        if (!TryComp<CorticalBorerInfestedComponent>(host.Value, out var infestedComp))
+            return;
+
+        EndControl((host.Value, infestedComp));
         args.Handled = true;
     }
 

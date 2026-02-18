@@ -98,6 +98,9 @@ public class SharedCorticalBorerSystem : EntitySystem
         // Make sure they get out of the host
         if (!Container.TryRemoveFromContainer(ent.Owner))
         {
+            if (ent.Comp.Host.HasValue)
+                RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
+
             ent.Comp.Host = null;
             return false;
         }
@@ -133,7 +136,7 @@ public class SharedCorticalBorerSystem : EntitySystem
         _damage.TryChangeDamage(host, new DamageSpecifier(_proto.Index<DamageGroupPrototype>(BruteDamageGroup), 15), true, origin: ent, targetPart: TargetBodyPart.Head);
     }
 
-    private void EnsureRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
+    protected void EnsureRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
     {
         if (registries is null)
             return;
@@ -149,7 +152,7 @@ public class SharedCorticalBorerSystem : EntitySystem
         }
     }
 
-    private void RemoveRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
+    protected void RemoveRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
     {
         if (registries is null)
             return;
