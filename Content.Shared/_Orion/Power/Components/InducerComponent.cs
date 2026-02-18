@@ -29,7 +29,7 @@ public sealed partial class InducerComponent : Component
     ///     Multiply transferring energy for machines, only fucking machines!!!
     /// </summary>
     [DataField]
-    public float AnchoredTransferMultiplier;
+    public float StructureTransferMultiplier;
 
     [DataField]
     public float MaxDistance;
