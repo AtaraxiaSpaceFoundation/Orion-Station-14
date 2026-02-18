@@ -46,7 +46,7 @@ cortical-borer-infested-examine = [color=#d842fc]Movements look extremely unnatu
 infested-control-examined = You have [color=#d842fc]{ $timeremaining }[/color] seconds left controlling this body.
 cortical-borer-self-examine = You have [color=#d842fc]{ $chempoints }[/color] chemicals.
 
-cortical-borer-round-end-agent-name = cortical borers
+cortical-borer-round-end-agent-name = cortical borer
 roles-antag-cortical-borer-name = Cortical Borer
 roles-antag-cortical-borer-objective = Secure hosts, reproduce, and survive.
 cortical-borer-round-end-objectives = { $borer } objectives: survive [{ $survive }], voluntary hosts ({ $willingCount }/3) [{ $willingResult }], eggs laid ({ $eggs }/5) [{ $eggsResult }].

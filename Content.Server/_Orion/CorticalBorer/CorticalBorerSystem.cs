@@ -36,6 +36,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
@@ -69,6 +70,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly ActorSystem _actor = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private const string HeadSlot = "head";
     private const string HostMindContainer = "PlayerMindContainer";
@@ -569,6 +571,28 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         while (borerQuery.MoveNext(out var borerUid, out var borer))
         {
+            var borerName = Name(borerUid);
+            if (string.IsNullOrWhiteSpace(borerName) && _mind.TryGetMind(borerUid, out var mindId, out var mind))
+                borerName = mind.CharacterName ?? Name(mindId);
+
+            var escapedBorerName = FormattedMessage.EscapeText(borerName);
+            lines.Add(Loc.GetString("objectives-with-objectives",
+                ("custody", string.Empty),
+                ("title", escapedBorerName),
+                ("agent", Loc.GetString("cortical-borer-round-end-agent-name"))));
+
+            AddObjectiveResultLine(lines,
+                Loc.GetString("cortical-borer-round-end-objective-survive"),
+                _mobState.IsAlive(borerUid) ? 1f : 0f);
+
+            AddObjectiveResultLine(lines,
+                Loc.GetString("cortical-borer-round-end-objective-willing", ("current", borer.WillingHosts.Count), ("target", 3)),
+                MathF.Min(1f, borer.WillingHosts.Count / 3f));
+
+            AddObjectiveResultLine(lines,
+                Loc.GetString("cortical-borer-round-end-objective-eggs", ("current", borer.EggsLaid), ("target", 5)),
+                MathF.Min(1f, borer.EggsLaid / 5f));
+
             var names = borer.WillingHosts
                 .Where(Exists)
                 .Select(host => FormattedMessage.EscapeText(Name(host)))
@@ -577,12 +601,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
             if (names.Length == 0)
                 continue;
 
-            var borerName = Name(borerUid);
-            if (string.IsNullOrWhiteSpace(borerName) && _mind.TryGetMind(borerUid, out var mindId, out var mind))
-                borerName = mind.CharacterName ?? Name(mindId);
-
             lines.Add(Loc.GetString("cortical-borer-round-end-willing",
-                ("borer", FormattedMessage.EscapeText(borerName)),
+                ("borer", escapedBorerName),
                 ("count", names.Length),
                 ("hosts", string.Join(", ", names))));
         }
@@ -595,6 +615,15 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         {
             args.AddLine(line);
         }
+    }
+
+    private void AddObjectiveResultLine(List<string> lines, string objective, float progress)
+    {
+        var key = progress > 0.99f
+            ? "objectives-objective-success"
+            : "objectives-objective-fail";
+
+        lines.Add($"- {Loc.GetString(key, ("objective", objective), ("progress", progress))}");
     }
 
     private void OnSurgicallyRemoved(Entity<CorticalBorerComponent> ent, ref CorticalBorerSurgicallyRemovedEvent args)

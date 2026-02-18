@@ -41,8 +41,8 @@ cortical-borer-round-end-willing = { $borer } получил { $count ->
        *[other] добровольных носителей
     }: { $hosts }.
 cortical-borer-round-end-objective-survive = Выжить
-cortical-borer-round-end-objective-willing = Добровольные носители ({ $current }/{ $target })
-cortical-borer-round-end-objective-eggs = Отложенные яйца ({ $current }/{ $target })
+cortical-borer-round-end-objective-willing = Завести добровольных носителей: { $current }/{ $target }
+cortical-borer-round-end-objective-eggs = Отложенные яйца: { $current }/{ $target }
 
 ## Examine Text
 cortical-borer-infested-examine = [color=#d842fc]Движения выглядят крайне неестественно...[/color]
@@ -50,7 +50,7 @@ cortical-borer-infested-examine = [color=#d842fc]Движения выглядя
 infested-control-examined = Осталось [color=#d842fc]{ $timeremaining }[/color] секунд управления этим телом.
 cortical-borer-self-examine = Доступно [color=#d842fc]{ $chempoints }[/color] химикатов.
 
-cortical-borer-round-end-agent-name = кортикальные паразиты
+cortical-borer-round-end-agent-name = кортикальный паразит
 roles-antag-cortical-borer-name = Кортикальный паразит
 roles-antag-cortical-borer-objective = Захватывайте носителей, размножайтесь и выживите.
 cortical-borer-round-end-objectives = Цели { $borer }: выживание [{ $survive }], добровольные носители ({ $willingCount }/3) [{ $willingResult }], отложенные яйца ({ $eggs }/5) [{ $eggsResult }].
