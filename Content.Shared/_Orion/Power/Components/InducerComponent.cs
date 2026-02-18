@@ -20,16 +20,16 @@ public sealed partial class InducerComponent : Component
     public float TransferDelay;
 
     /// <summary>
-    ///     Multiply transferring energy.
+    ///     Multiply transferring energy for non-anchored entities (weapons, batteries, clothing, etc.).
     /// </summary>
     [DataField]
     public float TransferMultiplier;
 
     /// <summary>
-    ///     Multiply transferring energy for guns.
+    ///     Multiply transferring energy for machines, only fucking machines!!!
     /// </summary>
     [DataField]
-    public float GunTransferMultiplier;
+    public float AnchoredTransferMultiplier;
 
     [DataField]
     public float MaxDistance;

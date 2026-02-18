@@ -89,9 +89,9 @@ public sealed class InducerSystem : EntitySystem
         if (!TryComp<BatteryComponent>(slot.Item.Value, out var sourceBattery))
             return;
 
-        var effectiveMultiplier = component.TransferMultiplier;
-        if (HasComp<GunComponent>(target))
-            effectiveMultiplier = component.GunTransferMultiplier;
+        var effectiveMultiplier = Transform(target).Anchored
+            ? component.AnchoredTransferMultiplier
+            : component.TransferMultiplier;
 
         var baseEnergyToConsume = component.TransferRate * component.TransferDelay;
         baseEnergyToConsume = Math.Min(baseEnergyToConsume, sourceBattery.CurrentCharge);
