@@ -45,3 +45,4 @@ cortical-borer-self-examine = You have [color=#d842fc]{ $chempoints }[/color] ch
 
 roles-antag-cortical-borer-name = Cortical Borer
 roles-antag-cortical-borer-objective = Secure hosts, reproduce, and survive.
+cortical-borer-round-end-objectives = { $borer } objectives: survive [{ $survive }], voluntary hosts ({ $willingCount }/3) [{ $willingResult }], eggs laid ({ $eggs }/5) [{ $eggsResult }].

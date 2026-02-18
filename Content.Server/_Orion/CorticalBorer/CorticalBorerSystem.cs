@@ -495,23 +495,44 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
     private void OnRoundEndText(RoundEndTextAppendEvent ev)
     {
-        foreach (var borer in EntityQuery<CorticalBorerComponent>())
+        var query = EntityQueryEnumerator<CorticalBorerComponent, MetaDataComponent>();
+        while (query.MoveNext(out var uid, out var borer, out var metaData))
         {
-            if (borer.WillingHosts.Count == 0)
-                continue;
-
             var names = borer.WillingHosts
                 .Where(Exists)
                 .Select(e => Name(e))
                 .ToArray();
 
-            if (names.Length == 0)
-                continue;
+            var survived = !TryComp<MobStateComponent>(uid, out var mobState) ||
+                           mobState.CurrentState != MobState.Dead;
 
-            ev.AddLine(Loc.GetString("cortical-borer-round-end-willing",
-                ("borer", MetaData(borer.Owner).EntityName),
-                ("count", names.Length),
-                ("hosts", string.Join(", ", names))));
+            var surviveResult = Loc.GetString(survived
+                ? "objectives-objective-success"
+                : "objectives-objective-fail");
+
+            var willingResult = Loc.GetString(names.Length >= 3
+                ? "objectives-objective-success"
+                : "objectives-objective-fail");
+
+            var eggsResult = Loc.GetString(borer.EggsLaid >= 5
+                ? "objectives-objective-success"
+                : "objectives-objective-fail");
+
+            ev.AddLine(Loc.GetString("cortical-borer-round-end-objectives",
+                ("borer", metaData.EntityName),
+                ("survive", surviveResult),
+                ("willingCount", names.Length),
+                ("willingResult", willingResult),
+                ("eggs", borer.EggsLaid),
+                ("eggsResult", eggsResult)));
+
+            if (names.Length > 0)
+            {
+                ev.AddLine(Loc.GetString("cortical-borer-round-end-willing",
+                    ("borer", metaData.EntityName),
+                    ("count", names.Length),
+                    ("hosts", string.Join(", ", names))));
+            }
         }
     }
 

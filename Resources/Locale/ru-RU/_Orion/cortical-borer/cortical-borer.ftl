@@ -49,3 +49,4 @@ cortical-borer-self-examine = Доступно [color=#d842fc]{ $chempoints }[/c
 
 roles-antag-cortical-borer-name = Кортикальный паразит
 roles-antag-cortical-borer-objective = Захватывайте носителей, размножайтесь и выживите.
+cortical-borer-round-end-objectives = Цели { $borer }: выживание [{ $survive }], добровольные носители ({ $willingCount }/3) [{ $willingResult }], отложенные яйца ({ $eggs }/5) [{ $eggsResult }].
