@@ -6,16 +6,18 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Goobstation.Shared.ManifestListings;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.DoAfter;
 using Content.Server.EUI;
-using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Medical;
 using Content.Server.Medical.Components;
+using Content.Server.Objectives;
+using Content.Server.StationEvents.Components;
 using Content.Server.Stunnable;
 using Content.Shared._Orion.CorticalBorer;
 using Content.Shared._Orion.CorticalBorer.Components;
@@ -100,7 +102,8 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
 
         SubscribeLocalEvent<CorticalBorerInfestedComponent, PolymorphedEvent>(OnHostPolymorphed);
         SubscribeLocalEvent<CorticalBorerInfestedComponent, EntParentChangedMessage>(OnHostParentChanged);
-        SubscribeLocalEvent<RoundEndTextAppendEvent>(OnRoundEndText);
+        SubscribeLocalEvent<MindComponent, PrependObjectivesSummaryTextEvent>(OnPrependObjectivesSummary);
+        SubscribeLocalEvent<RandomSpawnRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
     }
 
     private void OnStartup(Entity<CorticalBorerComponent> ent, ref ComponentStartup args)
@@ -530,63 +533,47 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         Dirty(borer);
     }
 
-    private void OnRoundEndText(RoundEndTextAppendEvent ev)
+    private void OnObjectivesTextGetInfo(Entity<RandomSpawnRuleComponent> ent, ref ObjectivesTextGetInfoEvent args)
     {
-        var query = EntityQueryEnumerator<CorticalBorerComponent, MetaDataComponent>();
-        while (query.MoveNext(out var uid, out var borer, out var metaData))
+        if (MetaData(ent).EntityPrototype?.ID != "CorticalBorerInfestation")
+            return;
+
+        var minds = new List<(EntityUid, string)>();
+        var query = EntityQueryEnumerator<MindComponent>();
+        while (query.MoveNext(out var mindUid, out var mind))
         {
-            var names = borer.WillingHosts
-                .Where(Exists)
-                .Select(e => FormattedMessage.EscapeText(Name(e)))
-                .ToArray();
+            if (!mind.MindRoles.Any(HasComp<CorticalBorerRoleComponent>))
+                continue;
 
-            var borerName = FormattedMessage.EscapeText(metaData.EntityName);
-
-            var survived = !TryComp<MobStateComponent>(uid, out var mobState) ||
-                           mobState.CurrentState != MobState.Dead;
-
-            var surviveProgress = survived ? 1f : 0f;
-            var willingProgress = MathF.Min(1f, names.Length / 3f);
-            var eggsProgress = MathF.Min(1f, borer.EggsLaid / 5f);
-
-            var surviveResult = Loc.GetString(surviveProgress >= 1f
-                    ? "objectives-objective-success"
-                    : "objectives-objective-fail",
-                ("objective", Loc.GetString("cortical-borer-round-end-objective-survive")),
-                ("progress", surviveProgress));
-
-            var willingResult = Loc.GetString(willingProgress >= 1f
-                    ? "objectives-objective-success"
-                    : "objectives-objective-fail",
-                ("objective", Loc.GetString("cortical-borer-round-end-objective-willing",
-                    ("current", names.Length),
-                    ("target", 3))),
-                ("progress", willingProgress));
-
-            var eggsResult = Loc.GetString(eggsProgress >= 1f
-                    ? "objectives-objective-success"
-                    : "objectives-objective-fail",
-                ("objective", Loc.GetString("cortical-borer-round-end-objective-eggs",
-                    ("current", borer.EggsLaid),
-                    ("target", 5))),
-                ("progress", eggsProgress));
-
-            ev.AddLine(Loc.GetString("cortical-borer-round-end-objectives",
-                ("borer", borerName),
-                ("survive", surviveResult),
-                ("willingCount", names.Length),
-                ("willingResult", willingResult),
-                ("eggs", borer.EggsLaid),
-                ("eggsResult", eggsResult)));
-
-            if (names.Length > 0)
-            {
-                ev.AddLine(Loc.GetString("cortical-borer-round-end-willing",
-                    ("borer", borerName),
-                    ("count", names.Length),
-                    ("hosts", string.Join(", ", names))));
-            }
+            minds.Add((mindUid, mind.CharacterName ?? Name(mind.OwnedEntity ?? mindUid)));
         }
+
+        if (minds.Count == 0)
+            return;
+
+        args.Minds = minds;
+        args.AgentName = Loc.GetString("cortical-borer-round-end-agent-name");
+    }
+
+    private void OnPrependObjectivesSummary(Entity<MindComponent> ent, ref PrependObjectivesSummaryTextEvent args)
+    {
+        if (!ent.Comp.MindRoles.Any(HasComp<CorticalBorerRoleComponent>) ||
+            ent.Comp.OwnedEntity is not { } borerUid ||
+            !TryComp<CorticalBorerComponent>(borerUid, out var borer))
+            return;
+
+        var names = borer.WillingHosts
+            .Where(Exists)
+            .Select(host => FormattedMessage.EscapeText(Name(host)))
+            .ToArray();
+
+        if (names.Length == 0)
+            return;
+
+        args.Text += Loc.GetString("cortical-borer-round-end-willing",
+            ("borer", FormattedMessage.EscapeText(Name(borerUid))),
+            ("count", names.Length),
+            ("hosts", string.Join(", ", names)));
     }
 
     private void OnSurgicallyRemoved(Entity<CorticalBorerComponent> ent, ref CorticalBorerSurgicallyRemovedEvent args)
@@ -655,6 +642,7 @@ public sealed partial class CorticalBorerSystem : SharedCorticalBorerSystem
         if (ent.Comp.ControllingHost)
             EndControl((ent.Comp.Host.Value, infested));
 
+        ent.Comp.WillingHosts.Clear();
         RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
     }
 

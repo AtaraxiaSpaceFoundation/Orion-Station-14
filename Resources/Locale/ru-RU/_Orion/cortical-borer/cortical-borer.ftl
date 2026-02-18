@@ -50,6 +50,7 @@ cortical-borer-infested-examine = [color=#d842fc]Движения выглядя
 infested-control-examined = Осталось [color=#d842fc]{ $timeremaining }[/color] секунд управления этим телом.
 cortical-borer-self-examine = Доступно [color=#d842fc]{ $chempoints }[/color] химикатов.
 
+cortical-borer-round-end-agent-name = кортикальные паразиты
 roles-antag-cortical-borer-name = Кортикальный паразит
 roles-antag-cortical-borer-objective = Захватывайте носителей, размножайтесь и выживите.
 cortical-borer-round-end-objectives = Цели { $borer }: выживание [{ $survive }], добровольные носители ({ $willingCount }/3) [{ $willingResult }], отложенные яйца ({ $eggs }/5) [{ $eggsResult }].
