@@ -21,9 +21,9 @@ public sealed class RecruitmentConfirmationSystem : EntitySystem
         if (!TryGetEntity(ev.Scanner, out var scanner))
             return;
 
-        _scanner = scanner.Value;
+        CloseWindow();
 
-        _window?.Close();
+        _scanner = scanner.Value;
         _window = new RecruitmentConfirmationWindow();
         _window.UpdateState(new RecruitmentConfirmationBuiState
         {
