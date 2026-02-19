@@ -16,6 +16,12 @@ public sealed class RecruitmentConfirmationSystem : EntitySystem
         SubscribeNetworkEvent<RecruitmentOpenConfirmationEvent>(OnOpenConfirmation);
     }
 
+    public override void Shutdown()
+    {
+        CloseWindow();
+        base.Shutdown();
+    }
+
     private void OnOpenConfirmation(RecruitmentOpenConfirmationEvent ev, EntitySessionEventArgs args)
     {
         if (!TryGetEntity(ev.Scanner, out var scanner))
