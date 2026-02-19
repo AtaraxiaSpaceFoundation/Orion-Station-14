@@ -1,0 +1,27 @@
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingAtmosphericsOveralls
+  name: atmospherics overalls
+  description: A set of fireproof overalls, good for protecting thinner clothes from gas leaks.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/OuterClothing/Suits/atmos_overalls.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/OuterClothing/Suits/atmos_overalls.rsi
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-OUTERCLOTHING-unshaded
+        shader: shaded
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    - Leg
+    - Tail
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Heat: 0.8

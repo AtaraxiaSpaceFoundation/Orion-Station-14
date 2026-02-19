@@ -59,10 +59,10 @@
   name: white captain jumpsuit
   description: Captain white jumpsuit symbolizes that your salary is clearly above the norm.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/captain_white.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/captain_white.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/captain_white.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/captain_white.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -70,10 +70,10 @@
   name: sheriff jumpsuit
   description: Jumpsuit showing your status is how terrible... the great ruler.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/sheriff.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/sheriff.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -81,10 +81,21 @@
   name: white captain turtleneck
   description: True white captain's turtleneck.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/capwhite.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/capwhite.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/capwhite.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/capwhite.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCentcomAdmiral
+  name: admiral's uniform
+  description: A uniform worn by those with the rank Admiral in the Nanotrasen Navy.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/centcom_admiral.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/centcom_admiral.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -114,10 +125,10 @@
   name: UEG officer uniform
   description: Officer uniform. Better than any stripes will emphasize your importance and rank.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_officer_alt.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_officer_alt.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_officer_alt.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_officer_alt.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -125,10 +136,10 @@
   name: marine navy uniform
   description: Jumpsuit made of dense camouflage fabric. Doesn't make you invisible.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -136,10 +147,10 @@
   name: navy officer uniform
   description: Navy officer uniform. Better than any stripes will emphasize your importance and rank.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy_officer.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy_officer.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy_officer.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_navy_officer.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -147,10 +158,10 @@
   name: UEG inspector uniform
   description: Inspector uniform. Better than any stripes will emphasize your importance and rank.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_inspector.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_inspector.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_inspector.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_inspector.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -158,10 +169,10 @@
   name: UEG white uniform
   description: White uniform.
   components:
-    - type: Sprite
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_white.rsi
-    - type: Clothing
-      sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_white.rsi
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_white.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpsuit/ueg_white.rsi
 
 - type: entity
   parent: ClothingUniformBase

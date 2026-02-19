@@ -19206,19 +19206,6 @@ entities:
       maxIntensity: 200
     - type: Physics
       bodyType: Static
-    - type: OnUseTimerTrigger
-      beepSound: !type:SoundPathSpecifier
-        params:
-          variation: null
-          playOffsetSeconds: 0
-          loop: False
-          referenceDistance: 1
-          rolloffFactor: 1
-          maxDistance: 30
-          pitch: 1
-          volume: 15
-        path: /Audio/Machines/timer.ogg
-      delay: 300
     missingComponents:
     - Anchorable
     - Pullable

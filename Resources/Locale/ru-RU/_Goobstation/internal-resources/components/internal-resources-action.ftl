@@ -1,1 +1,3 @@
-internal-resources-action-no-resources = Недостаточно ресурсов типа { $type }.
+internal-resources-action-generic-deficit = Недостаточно ресурсов!
+
+internal-resources-action-changeling-deficit = Не хватает химикатов!

@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseObjective
+  id: BaseCorticalBorerObjective
+  abstract: true
+  components:
+  - type: Objective
+    difficulty: 1
+    issuer: objective-issuer-hivemind
+    icon:
+      sprite: _Orion/Mobs/Aliens/cortical_borer.rsi
+      state: cortical_borer
+  - type: RoleRequirement
+    roles:
+    - CorticalBorerRole
+
+- type: entity
+  parent: [ BaseCorticalBorerObjective, BaseSurviveObjective ]
+  id: CorticalBorerSurviveObjective
+
+- type: entity
+  parent: BaseCorticalBorerObjective
+  id: CorticalBorerWillingHostsObjective
+  components:
+  - type: Objective
+    difficulty: 1
+  - type: CorticalBorerWillingHostsCondition
+    target: 3
+
+- type: entity
+  parent: BaseCorticalBorerObjective
+  id: CorticalBorerEggsObjective
+  components:
+  - type: Objective
+    difficulty: 1
+  - type: CorticalBorerEggsLaidCondition
+    target: 5

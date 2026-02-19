@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseAction
-  id: ActionCorticalBorerChemMenu
+  id: ActionBorerInject
   name: Chemicals
   description: Open the chemicals menu.
   components:
@@ -8,13 +8,13 @@
     useDelay: 1
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_chem
+      state: chemical
   - type: InstantAction
     event: !type:CorticalChemMenuActionEvent
 
 - type: entity
   parent: BaseAction
-  id: ActionCorticalBorerInfest 
+  id: ActionBorerInfest 
   name: Infest
   description: Infest target Humanoid. Target host must have a bloodstream.
   components:
@@ -23,7 +23,7 @@
     itemIconStyle: NoItem
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_infest
+      state: host
   - type: TargetAction
     interactOnMiss: false
   - type: EntityTargetAction
@@ -35,7 +35,7 @@
 
 - type: entity
   parent: BaseAction
-  id: ActionCorticalBorerEject
+  id: ActionBorerEject
   name: Eject Host
   description: Eject yourself from your host.
   components:
@@ -43,27 +43,27 @@
     useDelay: 5
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_eject
+      state: borer
   - type: InstantAction
     event: !type:CorticalEjectEvent
 
 - type: entity
   parent: BaseAction
-  id: ActionCheckBlood
+  id: ActionBorerCheckBlood
   name: Check Blood
   description: Inspect the blood of your host to see how they are doing.
   components:
   - type: Action
-    useDelay: 2
+    useDelay: 5
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_bloodcheck
+      state: bloodchem
   - type: InstantAction
     event: !type:CorticalCheckBloodEvent
 
 - type: entity
   parent: BaseAction
-  id: ActionControlHost
+  id: ActionBorerControlHost
   name: Take Control
   description: Take full control of your host, lasts for 40 seconds on awake hosts.
   components:
@@ -71,13 +71,13 @@
     useDelay: 340 # 5 minutes and 40 seconds
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_control
+      state: control
   - type: InstantAction
     event: !type:CorticalTakeControlEvent
 
 - type: entity
   parent: BaseAction
-  id: ActionEndControlHost
+  id: ActionBorerEndControlHost
   name: Relinquish Control
   description: Give up hold of the host's body early.
   components:
@@ -85,20 +85,62 @@
     useDelay: 5
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_eject
+      state: borer
   - type: InstantAction
     event: !type:CorticalEndControlEvent
 
 - type: entity
   parent: BaseAction
-  id: ActionLayEggHost
+  id: ActionBorerLayEggHost
   name: Lay Egg
   description: Force your host to vomit an egg. Costs 200 chemicals. # needs to be changed if the base chem cost is changed
   components:
   - type: Action
-    useDelay: 180
+    useDelay: 60
     icon:
       sprite: _Orion/Interface/Actions/borer.rsi
-      state: borer_egg
+      state: reproduce
   - type: InstantAction
     event: !type:CorticalLayEggEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBorerForceSpeakHost
+  name: Force Speak
+  description: Force your host to say a message.
+  components:
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _Orion/Interface/Actions/borer.rsi
+      state: speak
+  - type: InstantAction
+    event: !type:CorticalForceSpeakEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBorerParalyzeHost
+  name: Paralyze Host
+  description: Briefly paralyze your host.
+  components:
+  - type: Action
+    useDelay: 12
+    icon:
+      sprite: _Orion/Interface/Actions/borer.rsi
+      state: fear
+  - type: InstantAction
+    event: !type:CorticalParalyzeHostEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBorerWillingHost
+  name: Willing Host
+  description: Ask host if they agree to be a voluntary carrier.
+  components:
+  - type: Action
+    useDelay: 120
+    icon:
+      sprite: _Orion/Interface/Actions/borer.rsi
+      state: willing
+  - type: InstantAction
+    event: !type:CorticalWillingHostEvent

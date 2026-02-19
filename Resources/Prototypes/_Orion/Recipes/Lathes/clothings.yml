@@ -1,0 +1,23 @@
+# Hats (Command)
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatBeretCEngineer
+  result: ClothingHeadHatBeretCEngineer
+
+# Engineering
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatsBeretAtmos
+  result: ClothingHeadHatsBeretAtmos
+
+# Medical
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatsParamedicBeret
+  result: ClothingHeadHatsParamedicBeret
+
+# Security
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatBeretSecurityMedic
+  result: ClothingHeadHatBeretSecurityMedic

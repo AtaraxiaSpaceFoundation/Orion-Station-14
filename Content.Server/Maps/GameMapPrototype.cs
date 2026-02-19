@@ -41,10 +41,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics;
-using Content.Server.Station;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Station;
 
 namespace Content.Server.Maps;
 
@@ -104,7 +104,7 @@ public sealed partial class GameMapPrototype : IPrototype
             ID = ID,
             MapName = MapName,
             MapPath = mapPath,
-            _stations = _stations
+            _stations = _stations,
         };
     }
 }

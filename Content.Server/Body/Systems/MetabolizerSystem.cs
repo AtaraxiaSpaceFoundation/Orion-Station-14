@@ -64,6 +64,7 @@ using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Body.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.Body.Events;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
@@ -91,7 +92,7 @@ namespace Content.Server.Body.Systems
         [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
         [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
         [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-        [Dependency] private readonly EntityEffectSystem _effect = default!; // goob edit
+        [Dependency] private readonly SharedEntityEffectSystem _effect = default!; // goob edit
 
         private EntityQuery<OrganComponent> _organQuery;
         private EntityQuery<SolutionContainerManagerComponent> _solutionQuery;
@@ -301,30 +302,5 @@ namespace Content.Server.Body.Systems
 
             _solutionContainerSystem.UpdateChemicals(soln.Value);
         }
-    }
-
-    // TODO REFACTOR THIS
-    // This will cause rates to slowly drift over time due to floating point errors.
-    // Instead, the system that raised this should trigger an update and subscribe to get-modifier events.
-    [ByRefEvent]
-    public readonly record struct ApplyMetabolicMultiplierEvent(
-        EntityUid Uid,
-        float Multiplier,
-        bool Apply)
-    {
-        /// <summary>
-        /// The entity whose metabolism is being modified.
-        /// </summary>
-        public readonly EntityUid Uid = Uid;
-
-        /// <summary>
-        /// What the metabolism's update rate will be multiplied by.
-        /// </summary>
-        public readonly float Multiplier = Multiplier;
-
-        /// <summary>
-        /// If true, apply the multiplier. If false, revert it.
-        /// </summary>
-        public readonly bool Apply = Apply;
     }
 }

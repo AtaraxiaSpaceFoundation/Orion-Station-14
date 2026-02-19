@@ -28,6 +28,7 @@ using Content.Shared.Body.Events;
 using Content.Shared.Body.Systems;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Pointing;
 using Content.Server.Mobs;
 using Content.Shared.Examine;
@@ -117,15 +118,14 @@ namespace Content.Server.Body.Systems
             if (TerminatingOrDeleted(newEntity) || TerminatingOrDeleted(oldEntity))
                 return;
 
-            EnsureComp<MindContainerComponent>(newEntity);
-            EnsureComp<MindContainerComponent>(oldEntity);
+        EnsureComp<MindContainerComponent>(newEntity);
+        EnsureComp<MindContainerComponent>(oldEntity);
 
-            var ghostOnMove = EnsureComp<GhostOnMoveComponent>(newEntity);
-            if (HasComp<BodyComponent>(newEntity))
-                ghostOnMove.MustBeDead = true;
+        var ghostOnMove = EnsureComp<GhostOnMoveComponent>(newEntity);
+        ghostOnMove.MustBeDead = HasComp<MobStateComponent>(newEntity); // Don't ghost living players out of their bodies.
 
-            if (!_mindSystem.TryGetMind(oldEntity, out var mindId, out var mind))
-                return;
+        if (!_mindSystem.TryGetMind(oldEntity, out var mindId, out var mind))
+            return;
 
             _mindSystem.TransferTo(mindId, newEntity, mind: mind);
             // Orion-Edit-Start

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/pull/78007, replitilian + vox made by oldschool_otaku and wektor_duck, unshaded states by oldschool_otaku. Taken from https://github.com/space-syndicate/space-station-14/commit/f76acf98c971fe37345a3c51ecdf6e8700b53a81",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+    "states": [
+    {
+        "name": "icon"
+    },
+    {
+        "name": "equipped-OUTERCLOTHING",
+        "directions": 4
+    },
+    {
+        "name": "equipped-OUTERCLOTHING-unshaded",
+        "directions": 4
+    },
+    {
+        "name": "equipped-OUTERCLOTHING-reptilian",
+        "directions": 4
+    },
+    {
+        "name": "equipped-OUTERCLOTHING-reptilian-unshaded",
+        "directions": 4
+    },
+    {
+        "name": "equipped-OUTERCLOTHING-vox",
+        "directions": 4
+    },
+    {
+        "name": "equipped-OUTERCLOTHING-vox-unshaded",
+        "directions": 4
+    },
+    {
+        "name": "inhand-left",
+        "directions": 4
+    },
+    {
+        "name": "inhand-right",
+        "directions": 4
+    }
+    ]
+}

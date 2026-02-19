@@ -6,6 +6,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Explosion.EntitySystems;
+using Content.Shared.Trigger;
 using Robust.Shared.Player;
 
 namespace Content.Goobstation.Server.Redial;

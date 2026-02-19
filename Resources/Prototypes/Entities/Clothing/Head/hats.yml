@@ -185,6 +185,8 @@
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Cloth: 25
+  - type: Armor # Orion
+    priceMultiplier: 0.6
 
 - type: entity
   parent: ClothingHeadHatBeret

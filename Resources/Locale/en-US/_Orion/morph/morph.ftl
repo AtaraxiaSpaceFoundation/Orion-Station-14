@@ -1,4 +1,3 @@
-comp-morph-examined-hunger = You currently have { $hunger } hunger units.
 morphs-announcement = Attention! Multiple level 6 bio-threats have been detected on the station. Their elimination is required to continue safe operations.
 
 morphs-out-of-ambush = You are exiting the ambush state.
@@ -12,8 +11,6 @@ morph-remember-action-success = You remembered { $target }.
 
 morph-ambush-blocked = You're too close to living things.
 
-devour-action-popup-message-blacklisted = You cant devour { $target }.
-
 morph-examined-strange = Looks uncanny...
 
 roles-antag-morph-name = Morph
@@ -21,3 +18,9 @@ morph-round-end-agent-name = morph
 morph-role-greeting =
     Devour me, devour them, and devour their families.
     You're morph!
+
+morph-name-user = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) reproduced { $count } { $count ->
+    [one] morph
+   *[other] morphs
+}
+morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) was not reproduced

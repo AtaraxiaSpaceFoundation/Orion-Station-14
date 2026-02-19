@@ -1,0 +1,379 @@
+# Base (White)
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtTurtleneckWhite
+  name: white turtleneck with skirt
+  description: Warm and comfy.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Uniforms/Jumpskirt/turtleneck_women.rsi
+    layers:
+    - state: icon-color
+      color: "#e5e8f0"
+    - state: icon
+  - type: Item
+    sprite: _Orion/Clothing/Uniforms/Jumpskirt/turtleneck_women.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#e5e8f0"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#e5e8f0"
+      - state: details-inhand-right
+  - type: Clothing
+    sprite: _Orion/Clothing/Uniforms/Jumpskirt/turtleneck_women.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#e5e8f0"
+      - state: equipped-INNERCLOTHING
+
+# Black
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckBlack
+  name: black turtleneck with skirt
+  description: Favourite clothes of bookworms.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#2a2a30"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#2a2a30"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#2a2a30"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#2a2a30"
+      - state: equipped-INNERCLOTHING
+
+# Grey
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckGrey
+  name: grey turtleneck with skirt
+  description: Grey style?
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#888888"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#888888"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#888888"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#888888"
+      - state: equipped-INNERCLOTHING
+
+# Blue
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckBlue
+  name: blue turtleneck with skirt
+  description: Darker shade of azure.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#3050b0"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#3050b0"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#3050b0"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#3050b0"
+      - state: equipped-INNERCLOTHING
+
+# Azure
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckAzure
+  name: azure turtleneck with skirt
+  description: Brighter shade of blue.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#55c8ff"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#55c8ff"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#55c8ff"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#55c8ff"
+      - state: equipped-INNERCLOTHING
+
+# Aquamarine
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckAquamarine
+  name: aquamarine turtleneck with skirt
+  description: Too bright!
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#3fcea5"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#3fcea5"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#3fcea5"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#3fcea5"
+      - state: equipped-INNERCLOTHING
+
+# Green
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckGreen
+  name: green turtleneck with skirt
+  description: Cheaper analog of CentComm turtleneck.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#47833b"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#47833b"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#47833b"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#47833b"
+      - state: equipped-INNERCLOTHING
+
+# Yellow
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckYellow
+  name: yellow turtleneck with skirt
+  description: Filled with happiness.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#f5c830"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#f5c830"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#f5c830"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#f5c830"
+      - state: equipped-INNERCLOTHING
+
+# Orange
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckOrange
+  name: orange turtleneck with skirt
+  description: Warm and energetic.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#e57828"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#e57828"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#e57828"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#e57828"
+      - state: equipped-INNERCLOTHING
+
+# Red
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckRed
+  name: red turtleneck with skirt
+  description: Did you get blood on yourself?
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#d82828"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#d82828"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#d82828"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#d82828"
+      - state: equipped-INNERCLOTHING
+
+# Brown
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckBrown
+  name: brown turtleneck with skirt
+  description: Rustic and cozy.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#6b4520"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#6b4520"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#6b4520"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#6b4520"
+      - state: equipped-INNERCLOTHING
+
+# Purple
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckPurple
+  name: purple turtleneck with skirt
+  description: Royal and mysterious.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#8040c8"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#8040c8"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#8040c8"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#8040c8"
+      - state: equipped-INNERCLOTHING
+
+# Pink
+- type: entity
+  parent: ClothingUniformJumpskirtTurtleneckWhite
+  id: ClothingUniformJumpskirtTurtleneckPink
+  name: pink turtleneck with skirt
+  description: Soft and stylish.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-color
+      color: "#ff4085"
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#ff4085"
+      - state: details-inhand-left
+      right:
+      - state: inhand-right
+        color: "#ff4085"
+      - state: details-inhand-right
+  - type: Clothing
+    clothingVisuals:
+      jumpsuit:
+      - state: color-equipped-INNERCLOTHING
+        color: "#ff4085"
+      - state: equipped-INNERCLOTHING

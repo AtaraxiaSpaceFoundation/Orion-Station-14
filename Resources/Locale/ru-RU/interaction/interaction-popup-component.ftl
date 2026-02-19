@@ -32,6 +32,7 @@ petting-success-slimes = Вы гладите { $target } по { POSS-ADJ($target
 petting-success-snake = Вы гладите { $target } по { POSS-ADJ($target) } большой чешуйчатой голове.
 petting-success-monkey = Вы гладите { $target } по { POSS-ADJ($target) } озорной маленькой голове.
 petting-success-nymph = Вы гладите { $target } по { POSS-ADJ($target) } маленькой деревянной голове.
+petting-success-scurret = Вы гладите { $target } по {POSS-ADJ($target)} явно отличающейся голове.
 petting-failure-generic = Вы тянетесь погладить { $target }, но { SUBJECT($target) } настороженно уклоняется от вас.
 petting-failure-bat = Вы тянетесь погладить { $target }, но { OBJECT($target) } очень трудно поймать!
 petting-failure-carp = Вы тянетесь погладить { $target }, но { POSS-ADJ($target) } острые зубки заставляют вас передумать.
@@ -51,6 +52,7 @@ petting-failure-bear = Вы думаете погладить { $target }, но 
 petting-failure-monkey = Вы тянетесь погладить { $target }, но { SUBJECT($target) } едва не кусает вас за пальцы!
 petting-failure-nymph = Вы тянетесь погладить { $target }, но { POSS-ADJ($target) } отодвигает свои ветви в сторону.
 petting-failure-shadow = Вы тянетесь погладить { $target }, но ваша рука проходит сквозь холодную тьму { POSS-ADJ($target) } тела.
+petting-failure-scurret = Вы протягиваете руку, чтобы погладить { $target }, но {SUBJECT($target)} делает сальто назад!
 
 ## Petting silicons
 

@@ -108,6 +108,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Station.Components;
 
 namespace Content.Server.GameTicking.Rules;
 

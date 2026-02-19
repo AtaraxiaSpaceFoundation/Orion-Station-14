@@ -55,6 +55,17 @@
     sprite: _Orion/Clothing/Hands/Gloves/sheriff_gloves.rsi
 
 - type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesCentcomNaval
+  name: nanotrasen naval gloves
+  description: A high quality pair of thick gloves covered in gold stitching, given to Nanotrasen's Naval Commanders.
+  components:
+    - type: Sprite
+      sprite: _Orion/Clothing/Hands/Gloves/centcom_naval.rsi
+    - type: Clothing
+      sprite: _Orion/Clothing/Hands/Gloves/centcom_naval.rsi
+
+- type: entity
   parent: ClothingHandsGlovesSyntheticBase
   id: ClothingHandsGlovesCatPawsWhite
   name: white cat paws gloves

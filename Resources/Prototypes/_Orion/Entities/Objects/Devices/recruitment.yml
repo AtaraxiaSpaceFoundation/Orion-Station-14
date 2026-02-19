@@ -1,0 +1,28 @@
+# Filler
+- type: entity
+  parent: [BaseItem, BaseMajorContraband]
+  id: RecruitPadInteQ
+  name: InteQ pad
+  description: Tablet that displays information about the organization and also allows you to add new members to the organization.
+  suffix: InteQ
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Devices/inteq_pad.rsi
+    layers:
+      - state: icon
+      - state: screen
+        shader: unshaded
+  - type: RecruitmentScanning
+    faction: InteQ
+    implant: DeathRattleImplantInteQ
+    organization: organization-inteq
+  - type: ActivatableUI
+    key: enum.RecruitmentMemberListUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.RecruitmentConfirmationUiKey.Key:
+        type: RecruitmentConfirmationBoundUserInterface
+      enum.RecruitmentMemberListUiKey.Key:
+        type: RecruitmentMemberListBoundUserInterface
+  - type: ScannableForPoints # Goob
+    points: 3

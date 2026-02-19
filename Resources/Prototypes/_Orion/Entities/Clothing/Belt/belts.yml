@@ -80,3 +80,15 @@
     state: sheath
   - type: Clothing
     sprite: _Orion/Clothing/Belt/sheriff_sheath.rsi
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltCentCommSheath
+  name: centcomm sabre sheath
+  description: 545 corpses, zero lawsuits, janitors are quitting, crematorium is overheating. CentCom nods in approval.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Belt/centcomm_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Orion/Clothing/Belt/centcomm_sheath.rsi

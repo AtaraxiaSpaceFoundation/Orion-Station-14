@@ -204,11 +204,20 @@
   - ClothingNeckGenderfluidPin
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
-  - CardBoxBlack # GoobStation
-  - CardBoxNanotrasen # GoobStation
-  - FoodSnackLollypopWrapped # Goobstation
-  - FoodSnackLollypopWrappedRainbow # Goobstation
-  - FoodSnackLollypopWrappedCarp # Goobstation
+  - ClothingNeckGoldAutismPin
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
+  # GoobStation Start
+  - CardBoxBlack
+  - CardBoxNanotrasen
+  - FoodSnackLollypopWrapped
+  - FoodSnackLollypopWrappedRainbow
+  - FoodSnackLollypopWrappedCarp
+  # Goobstation End
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -991,6 +1000,7 @@
   loadouts:
   - ChiefEngineerHead
   - ChiefEngineerBeret
+  - EngineeringBeret # Orion
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -1110,6 +1120,7 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
+  - AtmosOveralls # Orion
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -1389,6 +1400,11 @@
   name: loadout-group-security-shoes
   loadouts:
   - JackBoots
+  # Orion-Start
+  - JackBootsToeless
+  - JackBootsTall
+  - JackBootsTallHeels
+  # Orion-End
   - CombatBoots # Goobstation
   - SecurityWinterBoots
 
@@ -1621,6 +1637,7 @@
   minLimit: 0
   loadouts:
   - ParamedicHead
+  - ParamedicHeadBeret # Orion
   - SeniorPhysicianBeret # Goobstation
 
 - type: loadoutGroup

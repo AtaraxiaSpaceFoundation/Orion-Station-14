@@ -41,4 +41,5 @@ research-technology-xenobag-holding = Блюспейс ксенобиологи�
 research-technology-advanced-power-generation = Продвинутый генератор
 research-technology-bluespace-construction-storage = Блюспейс хранилище
 research-technology-extended-communication = Продвинутые коммуникации
+research-technology-bluespace-munitions = Блюспейс припасы
 research-technology-radio-music-communication = Радио-музыкальные коммуникации

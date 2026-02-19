@@ -9,6 +9,7 @@ store-category-deception = Обман
 store-category-disruption = Саботаж
 store-category-allies = Союзники
 store-category-wearables = Экипировка
+store-category-contractor = Контрактник
 store-category-implants = Импланты
 store-category-job = Работа
 store-category-pointless = Безделушки

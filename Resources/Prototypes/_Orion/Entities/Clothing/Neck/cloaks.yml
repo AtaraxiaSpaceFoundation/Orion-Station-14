@@ -42,6 +42,15 @@
 
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckCloakCentcomAdmiral
+  name: admiral's cape
+  description: A vibrant green cape with gold stitching, worn by Nanotrasen Navy Admirals.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/admiral.rsi
+
+- type: entity
+  parent: ClothingNeckBase
   id: ClothingNeckCloakFluffyPink
   name: pink fluffy cloak
   description: Its bearer is a beautiful woman, or a good pimp.
@@ -115,3 +124,21 @@
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Neck/Cloaks/syndicate_officer.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckGothicCloak
+  name: gothic cloak
+  description: For a classy old-style vampires.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/gothic_cloak.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckDarkGreyCloak
+  name: dark grey cloak
+  description: Even a greytide deserves his cloak.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Neck/Cloaks/darkgrey_cloak.rsi

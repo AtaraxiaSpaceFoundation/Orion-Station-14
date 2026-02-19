@@ -189,6 +189,8 @@
     knockdownTimeDelta: -2
   - type: StaminaResistance # Goobstation
     damageCoefficient: 0.7
+  - type: StaticPrice # Orion
+    price: 0
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
@@ -741,3 +743,24 @@
   - type: HideClothingLayerClothing # Goobstation
     hiddenSlots:
     - jumpsuit
+
+
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: CardArmour
+  name: cardboard armour
+  description: A medieval chestpiece built from cardboard.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/card_armour.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/card_armour.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+  - type: StaminaResistance
+    damageCoefficient: 0.90
+  - type: Construction
+    graph: cardArmour
+    node: cardarmour

@@ -10,6 +10,22 @@
   equipment:
     neck: ClothingNeckScarfStripedRed
 
+# Shoes
+- type: loadout
+  id: JackBootsToeless
+  equipment:
+    shoes: ClothingShoesBootsJackToeless
+
+- type: loadout
+  id: JackBootsTall
+  equipment:
+    shoes: ClothingShoesBootsJackTall
+
+- type: loadout
+  id: JackBootsTallHeels
+  equipment:
+    shoes: ClothingShoesBootsJackTallHeels
+
 # Pocket 2
 - type: loadout
   id: SecurityGunG22

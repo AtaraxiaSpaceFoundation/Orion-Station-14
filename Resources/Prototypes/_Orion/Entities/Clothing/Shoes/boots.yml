@@ -32,3 +32,47 @@
       collection: FootstepCatwalk
       params:
         volume: -25
+
+- type: entity
+  parent: ClothingShoesBootsJack
+  id: ClothingShoesBootsJackToeless
+  name: toeless jackboots
+  description: Modified pair of jackboots, particularly friendly to those species whose toes hold claws.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Shoes/Boots/jackboots_toeless.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Shoes/Boots/jackboots_toeless.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: BarestepHard
+      params:
+        volume: -2
+
+- type: entity
+  parent: ClothingShoesBootsJack
+  id: ClothingShoesBootsJackTall
+  name: tall jackboots
+  description: A pair of knee-high jackboots. All style, all the time.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Shoes/Boots/jackboots_tall.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Shoes/Boots/jackboots_tall.rsi
+
+- type: entity
+  parent: ClothingShoesBootsJack
+  id: ClothingShoesBootsJackTallHeels
+  name: tall heels jackboots
+  description: A pair of knee-high jackboots, complete with heels. All style, all the time. 
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Shoes/Boots/jackboots_heels_tall.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Shoes/Boots/jackboots_heels_tall.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHighHeels
+      params:
+        volume: -6
+        variation: 0.09

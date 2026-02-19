@@ -10,7 +10,12 @@
     Telecrystal: 10 # Orion-Edit: 4 > 10
   categories:
     - UplinkDeception
+  #Goobstation
   conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - ContractorUplink
   - !type:BuyerSpeciesCondition
     whitelist:
     - Plasmaman

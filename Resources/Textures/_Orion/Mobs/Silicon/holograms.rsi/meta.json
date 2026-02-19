@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/BlueMoon-Labs/WhiteMoon-Station/blob/master/icons/mob/silicon/ai.dmi | Edited by PuroSlavKing (Github) | Kobold/monkey sprites taken from SS14 Wizard's Den at https://github.com/space-wizards/space-station-14/tree/f574990b11db5936de3635a4273d5eb26217882e/Resources/Textures/Mobs/Animals, modified by Hitlinemoss | ai_angel, ai_borb, ai_cloudkat, ai_frostphoenix taken from Paradise Station at https://github.com/ParadiseSS13/Paradise/pull/18637. ai_angel and ai_borb modified to be only the front sprites by Monotheonist.",
+  "copyright": "Taken from https://github.com/BlueMoon-Labs/WhiteMoon-Station/blob/master/icons/mob/silicon/ai.dmi | Edited by PuroSlavKing (Github) | ai_angel, ai_borb, ai_cloudkat, ai_frostphoenix taken from Paradise Station at https://github.com/ParadiseSS13/Paradise/pull/18637. ai_angel and ai_borb modified to be only the front sprites by Monotheonist.",
   "size": {
     "x": 32,
     "y": 32
@@ -33,12 +33,6 @@
     {
       "name": "xeno_queen",
       "directions": 4
-    },
-    {
-      "name": "ai_kobold"
-    },
-    {
-      "name": "ai_monkey"
     },
     {
       "name": "ai_angel",

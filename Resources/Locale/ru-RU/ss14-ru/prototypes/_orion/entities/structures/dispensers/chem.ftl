@@ -1,8 +1,10 @@
 ent-MiniChemDispenser = мини раздатчик химикатов
     .desc = { ent-ChemDispenser.desc }
-
-ent-ChemDispenser = раздатчик химикатов
-    .desc = Химический дозатор промышленного класса с возобновляемым запасом реагентов.
-ent-ChemDispenserBuffed = { ent-ChemDispenser }
+    .suffix = Заполненный
+ent-MiniChemDispenserEmpty = { ent-MiniChemDispenser }
     .desc = { ent-ChemDispenser.desc }
-    .suffix = Усиленный
+    .suffix = Пустой
+
+ent-EnergyMiniChemDispenser = { ent-MiniChemDispenser }
+    .desc = { ent-ChemDispenser.desc }
+    .suffix = Энергетический

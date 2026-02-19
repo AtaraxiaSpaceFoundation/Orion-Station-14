@@ -409,8 +409,10 @@ namespace Content.IntegrationTests.Tests
                 // makes an announcement on mapInit.
                 "AnnounceOnSpawn",
                 "Audio", // Orion
+                // <Goob>
                 "PendingSlimeSpawn", // shut the fuck up please
                 "Slime", // please
+                // </Goob>
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);
@@ -437,8 +439,8 @@ namespace Content.IntegrationTests.Tests
             await pair.RunTicksSync(3);
 
             // We consider only non-audio entities, as some entities will just play sounds when they spawn.
-            int Count(IEntityManager ent) =>  ent.EntityCount - ent.Count<AudioComponent>();
-            IEnumerable<EntityUid> Entities(IEntityManager entMan) => entMan.GetEntities().Where(entMan.HasComponent<AudioComponent>);
+            int Count(IEntityManager ent) => ent.EntityCount - ent.Count<AudioComponent>();
+            IEnumerable<EntityUid> Entities(IEntityManager entMan) => entMan.GetEntities().Where(e => !entMan.HasComponent<AudioComponent>(e));
 
             await Assert.MultipleAsync(async () =>
             {

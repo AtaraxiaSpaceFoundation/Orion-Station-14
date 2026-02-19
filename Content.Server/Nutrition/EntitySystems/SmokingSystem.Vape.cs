@@ -27,6 +27,7 @@ using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Nutrition;
+using Content.Shared.Nutrition.EntitySystems;
 
 /// <summary>
 /// System for vapes
@@ -38,7 +39,7 @@ namespace Content.Server.Nutrition.EntitySystems
         [Dependency] private readonly DoAfterSystem _doAfterSystem = default!;
         [Dependency] private readonly DamageableSystem _damageableSystem = default!;
         [Dependency] private readonly EmagSystem _emag = default!;
-        [Dependency] private readonly FoodSystem _foodSystem = default!;
+        [Dependency] private readonly IngestionSystem _ingestion = default!;
         [Dependency] private readonly ExplosionSystem _explosionSystem = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
 
@@ -58,7 +59,8 @@ namespace Content.Server.Nutrition.EntitySystems
             if (!args.CanReach
                 || !_solutionContainerSystem.TryGetRefillableSolution(entity.Owner, out _, out var solution)
                 || !HasComp<BloodstreamComponent>(args.Target)
-                || _foodSystem.IsMouthBlocked(args.Target.Value, args.User))
+                || _ingestion.HasMouthAvailable(args.Target.Value, args.User)
+                )
             {
                 return;
             }

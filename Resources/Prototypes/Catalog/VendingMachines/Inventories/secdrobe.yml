@@ -42,6 +42,11 @@
     ClothingBackpackMessengerSecurity: 3 # Frontier
     ClothingUniformJumpsuitSec: 3
     ClothingShoesBootsJack: 3
+    # Orion-Start
+    ClothingShoesBootsJackToeless: 3
+    ClothingShoesBootsJackTall: 3
+    ClothingShoesBootsJackTallHeels: 3
+    # Orion-End
     ClothingHeadHatBeretSecurity: 3
     ClothingHeadHatSecuritySideCap: 3 # Orion
     ClothingHeadHatSecsoft: 3

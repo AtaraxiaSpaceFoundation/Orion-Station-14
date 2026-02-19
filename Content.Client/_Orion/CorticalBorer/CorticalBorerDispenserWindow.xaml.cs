@@ -13,7 +13,6 @@ namespace Content.Client._Orion.CorticalBorer;
 [GenerateTypedNameReferences]
 public sealed partial class CorticalBorerDispenserWindow : FancyWindow
 {
-
     public event Action<string>? OnDispenseReagentButtonPressed;
 
     public CorticalBorerDispenserWindow()

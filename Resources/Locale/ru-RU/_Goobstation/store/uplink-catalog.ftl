@@ -84,8 +84,8 @@ uplink-adv-mimery-desc = Классическая серия из двух ча�
 
 # Weapons
 
-uplink-contractor-baton-name = Дубинка наёмника
-uplink-contractor-baton-desc = Компактная дубинка для синдикатовских наёмников. Наносит лёгкие электрические разряды, которые могут временно оглушать цель и повреждать роботов.
+uplink-contractor-baton-name = Дубинка контрактника
+uplink-contractor-baton-desc = Компактная дубинка для синдикатовских контрактников. Наносит лёгкие электрические разряды, которые могут временно оглушать цель и повреждать роботов.
 uplink-weapon-burner-name = "Горелка"
 uplink-weapon-burner-desc = Полностью автоматическая противотанковая винтовка, которая позволяет стрелять на 50-миллиметровую дистанцию, насколько позволяет плечо. Заряжается из магазина 50-миллиметрового калибра.
 uplink-weapon-heavy-shotgun-name = NZ CSG-242
@@ -99,7 +99,7 @@ uplink-buldog-desc = Полностью автоматический дробо�
 uplink-l6-saw-name = L6 SAW
 uplink-l6-saw-desc = Громоздкий ручной пулемет, превосходный для ведения прицельного огня на подавление. Питание от .30 винтовочных коробчатых магазинов.
 uplink-m90-name = M-90
-uplink-m90-desc = Более дешевая модификация M-90GL, в которой отсутствует встроенный гранатомет. Питание от .20 винтовочных магазинов.
+uplink-m90-desc = Надёжная штурмовая винтовка, сохраняющая точность даже на экстремальных дистанциях.  Питание от .20 винтовочных магазинов.
 uplink-estoc-name = Эсток
 uplink-estoc-desc = Стрелковая винтовка, предназначенная для стрельбы очередями и оснащенная дорогой тритиевой оптикой. Питание от .20 винтовочных магазинов.
 uplink-syndicate-disabler-name = Станнер Синдиката
@@ -127,8 +127,6 @@ uplink-frag-grenade-name = Осколочная граната (40 мм)
 uplink-frag-grenade-desc = Меньший урон, больший радиус. Совместима с China-Lake.
 uplink-mpapers-grenade-name = MP-APERS снаряд (40 мм)
 uplink-mpapers-grenade-desc = Выпускает 20 маленьких дробинок, превращая гранатомёт в дробовик. Совместимо с China-Lake.
-uplink-rifle-mag-name = Магазин (5.56мм винтовочные)
-uplink-rifle-mag-desc = 25 патронов калибра 5.56мм. Для Лектера и M-90.
 uplink-rifle-caseless-mag-name = Магазин (9.5мм безгильзовый)
 uplink-rifle-caseless-mag-desc = 30 патронов 9.5мм без гильз, экспансивные пули. Для WSPR.
 uplink-pistol-magazine-caseless-saphe-name = Пистолетный магазин (9.5мм бронебойные разрывные)
@@ -167,6 +165,9 @@ uplink-high-caliber-shotgun-box-sarin-name = Коробка ружейных п�
 uplink-high-caliber-shotgun-box-sarin-desc = 16 патронов 8 калибра с газом зарин для боевого дробовика, выпускающих небольшое облако газа.
 uplink-estoc-ammo-name = Магазин (5.56мм)
 uplink-estoc-ammo-desc = 25 патронов калибра 5.56мм. Совместим с Эсток.
+
+uplink-m90-ammo-name = Магазин (5.56мм винтовочные)
+uplink-m90-ammo-desc = 25 патронов калибра 5.56мм. Для Лектера и M-90.
 
 # Grenades
 
@@ -298,3 +299,22 @@ uplink-cddisksyndicate-name = Диск с рекламой Синдиката
 uplink-cddisksyndicate-desc = 102.9 радио-Синдиката
 uplink-cddisknumber-name = Диск "Номер Станции"
 uplink-cddisknumber-desc = Сообщите об угрозе, чтобы отвлечь внимание станции... удачи во всем этом.
+uplink-box-xenobio-name = Ксенобиологическая коробка
+uplink-box-xenobio-desc = Слаймы для ксенобиологических нужд. Содержит 9 случайных T1 слаймов.
+
+# Contractor
+
+uplink-moduist-contractor-name = МОД контрактника
+uplink-moduist-contractor-desc = Этот легкий МОД был создан специально для Гильдии! В его изготовлении использован пластитан, обеспечивающий исключительную прочность, но при этом легкий вес. Он оснащен сервоприводами, которые помогут вам крепче захватывать цели, инжекторами, обнаруживающими критические повреждения, и встроенной технологией хамелеона! Чтобы сохранить свой сверхлегкий вес, этот спортивный костюм не имеет возможностей для хранения.
+
+uplink-hardsuit-contractor-name = Набор скафандра контрактника
+uplink-hardsuit-contractor-desc = Этот легкий скафандр был создан специально для Гильдии! Его можно легко сложить в рюкзак.
+
+uplink-webbing-contractor-name = Разгрузка контрактника
+uplink-webbing-contractor-desc = A chest rig with deep pockets and explosion resistance, often used by contractors and bounty hunters.
+
+uplink-jetpack-contractor-name = Джетпак контрактника
+uplink-jetpack-contractor-desc = Этот реактивный ранец был создан специально для Гильдии! Обладает высокой маневренностью и приличным запасом топлива, что идеально подходит для быстрого бегства. Имеет встроенные ремни для хранения костюма.
+
+uplink-cuffs-contractor-name = Наручники
+uplink-cuffs-contractor-desc = Используется для задержания преступников и прочих придурков.

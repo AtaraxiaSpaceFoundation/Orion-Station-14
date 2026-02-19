@@ -1,0 +1,5 @@
+# OuterClothing
+- type: loadout
+  id: AtmosOveralls
+  equipment:
+    outerClothing: ClothingAtmosphericsOveralls

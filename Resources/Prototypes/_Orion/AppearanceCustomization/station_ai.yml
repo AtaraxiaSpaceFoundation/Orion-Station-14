@@ -439,24 +439,6 @@
       state: xeno_queen
 
 - type: stationAiCustomization
-  id: StationAiHologramKobold
-  name: station-ai-hologram-kobold
-  previewKey: Hologram
-  layerData:
-    Hologram:
-      sprite: _Orion/Mobs/Silicon/holograms.rsi
-      state: ai_kobold
-
-- type: stationAiCustomization
-  id: StationAiHologramMonkey
-  name: station-ai-hologram-monkey
-  previewKey: Hologram
-  layerData:
-    Hologram:
-      sprite: _Orion/Mobs/Silicon/holograms.rsi
-      state: ai_monkey
-
-- type: stationAiCustomization
   id: StationAiHologramAngel
   name: station-ai-hologram-angel
   previewKey: Hologram

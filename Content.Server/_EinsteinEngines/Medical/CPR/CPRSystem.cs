@@ -10,7 +10,6 @@
 using Content.Server.Atmos.Rotting;
 using Content.Server.Body.Components;
 using Content.Server.DoAfter;
-using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Popups;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Atmos.Rotting;
@@ -27,6 +26,7 @@ using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Nutrition.EntitySystems;
 
 namespace Content.Server.Medical.CPR;
 
@@ -35,7 +35,7 @@ public sealed class CPRSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly DoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly FoodSystem _foodSystem = default!;
+    [Dependency] private readonly IngestionSystem _ingestionSystem = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
@@ -87,7 +87,7 @@ public sealed class CPRSystem : EntitySystem
             return;
         }
 
-        if (_foodSystem.IsMouthBlocked(performer, performer) || _foodSystem.IsMouthBlocked(target, performer))
+        if (!_ingestionSystem.HasMouthAvailable(performer, performer) || !_ingestionSystem.HasMouthAvailable(target, performer))
             return;
 
         _popupSystem.PopupEntity(Loc.GetString("cpr-start-second-person", ("target", target)), target, performer);

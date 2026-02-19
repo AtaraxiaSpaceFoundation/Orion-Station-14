@@ -1,7 +1,7 @@
 using System.Numerics;
 using Content.Server._Orion.Explosion.Components;
 using Content.Server.Decals;
-using Content.Server.Explosion.EntitySystems;
+using Content.Shared.Trigger;
 using Robust.Shared.Random;
 
 namespace Content.Server._Orion.Explosion.EntitySystems;

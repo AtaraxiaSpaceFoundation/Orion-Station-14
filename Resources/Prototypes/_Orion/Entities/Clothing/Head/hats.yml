@@ -94,6 +94,28 @@
 
 - type: entity
   parent: ClothingHeadBase
+  id: ClothingHeadCapCentcomNaval
+  name: naval cap
+  description: A cap worn by those in the Nanotrasen Navy.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/centcom_naval_cap.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/centcom_naval_cap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretCentcomNaval
+  name: naval beret
+  description: A beret worn by those in the Nanotrasen Navy.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/centcom_naval_beret.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/centcom_naval_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
   id: ClothingHeadHatTinfoil
   name: tinfoil hat
   description: Space Station 13 doesnt exist.
@@ -132,3 +154,59 @@
     sprite: _Orion/Clothing/Head/Hats/ueg_officer_cap.rsi
   - type: Clothing
     sprite: _Orion/Clothing/Head/Hats/ueg_officer_cap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatsBeretAtmos
+  name: atmospheric technician's beret
+  description: A blue beret with sewn emblem of engineering department. Smells like frezon.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/beret_atmospheric_technician.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/beret_atmospheric_technician.rsi
+  - type: Tag
+    tags:
+      - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatsParamedicBeret
+  name: paramedic's beret
+  description: A blue beret of a constantly busy job.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/beret_paramedic.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/beret_paramedic.rsi
+  - type: Tag
+    tags:
+      - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadHatSecurityTrooper
+  id: ClothingHeadHatBeretSecurityMedic
+  name: security medic beret
+  description: A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/beret_security_medic.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/beret_security_medic.rsi
+  - type: Tag
+    tags:
+      - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretCEngineer
+  name: chief engineer's beret
+  description: A beret for different tasks.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Head/Hats/beret_ce.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Head/Hats/beret_ce.rsi
+  - type: Tag
+    tags:
+      - HamsterWearable

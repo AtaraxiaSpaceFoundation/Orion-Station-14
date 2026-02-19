@@ -103,4 +103,11 @@ public sealed partial class AlertLevelDetail
     [DataField]
     public TimeSpan AlarmInterval = TimeSpan.FromSeconds(30);
     // Orion-End
+
+    /// <summary>
+    /// Goobstation
+    /// Marks this alert level as eligible for announcement console EMAG-ing.
+    /// Exists so checks run in the right order.
+    /// </summary>
+    [DataField] public bool EmagSelectable { get; private set; }
 }

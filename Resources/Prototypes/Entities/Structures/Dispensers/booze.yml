@@ -100,11 +100,12 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: BoozeDispenser
+  id: BoozeDispenserEmpty
   name: booze dispenser
-#  suffix: Filled # Orion-Edit: Removed
+#  suffix: Empty # Orion-Edit: Removed
   description: A booze dispenser with a single slot for a container to be filled.
   parent: ReagentDispenserBase
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Rotatable
   - type: Sprite
@@ -116,32 +117,37 @@
     whitelist:
       tags:
       - DrinkBottle
-#  - type: StorageFill # Orion-Edit: Removed
-#    contents:
-#    - id: DrinkAleBottleFullGrowler
-#    - id: DrinkBeerGrowler
-#    - id: DrinkCoffeeLiqueurBottleFull
-#    - id: DrinkCognacBottleFull
-#    - id: DrinkGinBottleFull
-#    - id: DrinkMeadJug
-#    - id: DrinkRumBottleFull
-#    - id: DrinkTequilaBottleFull
-#    - id: DrinkVermouthBottleFull
-#    - id: DrinkVodkaBottleFull
-#    - id: DrinkWhiskeyBottleFull
-#    - id: DrinkWineBottleFull
   - type: Transform
     noRot: false
   - type: Machine
     board: BoozeDispenserMachineCircuitboard
+  - type: ContainerContainer # Orion
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      energyBeakerSlot: !type:ContainerSlot
+      storagebase: !type:Container
   - type: GuideHelp
     guides:
     - Bartender
     - Drinks
   - type: StealTarget
     stealGroup: BoozeDispenser
+
+- type: entity
+  id: BoozeDispenser
+  name: booze dispenser
+#  suffix: Filled # Orion-Edit: Removed
+  description: A booze dispenser with a single slot for a container to be filled.
+  parent: BoozeDispenserEmpty
+  components:
   # Orion-Start
   - type: EnergyReagentDispenser
+    energyBeakerSlot:
+      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
+      whitelist:
+        components:
+        - FitsInDispenser
     reagents:
       Absinthe: 8
       Ale: 8
@@ -163,15 +169,21 @@
       Ethanol: 12
       Iron: 10
       AtomicBomb: 20
+  - type: ActivatableUI
+    key: enum.EnergyReagentDispenserUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.EnergyReagentDispenserUiKey.Key:
+        type: EnergyReagentDispenserBoundUserInterface
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: ApcPowerReceiverBattery
+    idleLoad: 30
+    batteryRechargeRate: 25
+    batteryRechargeEfficiency: 1.0
+  - type: ApcPowerReceiver
+    powerLoad: 30
   # Orion-End
-
-- type: entity
-  id: BoozeDispenserEmpty
-  suffix: Empty
-  parent: BoozeDispenser
-  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
-  components:
-  - type: Storage
-    whitelist:
-      tags:
-      - DrinkBottle

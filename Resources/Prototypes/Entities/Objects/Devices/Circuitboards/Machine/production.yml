@@ -673,7 +673,7 @@
     - type: Sprite
       state: medical
     - type: MachineBoard
-      prototype: ChemDispenser
+      prototype: ChemDispenserEmpty
       stackRequirements:
         Manipulator: 1
         Glass: 1
