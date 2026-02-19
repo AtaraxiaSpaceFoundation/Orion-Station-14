@@ -109,6 +109,7 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._Orion.Roles;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
 using Content.Shared.Mind;
@@ -125,6 +126,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Roles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
@@ -175,7 +177,10 @@ namespace Content.Server.Ghost
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
         private static readonly ProtoId<DamageTypePrototype> IonDamageType = "Ion";
 
-        public static readonly Color AntagonistButtonColor = Color.FromHex("#7F4141"); // Orion
+        // Orion-Start
+        public static readonly Color AntagonistButtonColor = Color.FromHex("#7F4141");
+        private static readonly ProtoId<TagPrototype> HideFromGhostWarpsTag = "HideFromGhostWarps";
+        // Orion-End
 
         public override void Initialize()
         {
@@ -472,18 +477,37 @@ namespace Content.Server.Ghost
         private List<GhostWarp> GetMindContainersWarps()
         {
             var warps = new List<GhostWarp>();
+            var seenMinds = new HashSet<EntityUid>();
 
             var query = EntityQueryEnumerator<MindContainerComponent>();
 
             while (query.MoveNext(out var entity, out var mindContainer))
             {
-                if(IsHiddenFromGhostWarps(entity) || !IsValidWarpTarget(entity))
+                if (IsHiddenFromGhostWarps(entity) || !IsValidWarpTarget(entity))
                     continue;
 
-                if (TryComp<Shared._Orion.Roles.RoleCacheComponent>(entity, out var roleCacheComponent))
+                if (!HasComp<MobStateComponent>(entity) && !HasComp<GhostComponent>(entity))
+                    continue;
+
+                var mindUid = mindContainer.Mind ?? mindContainer.OriginalMind;
+                if (mindUid == null && _mind.TryGetMind(entity, out var resolvedMindUid, out _))
+                    mindUid = resolvedMindUid;
+                if (mindUid is { } mind)
                 {
-                    if (_prototypeManager.TryIndex(roleCacheComponent.LastJobPrototype, out var jobPrototype) &&
-                        _jobs.TryGetDepartment(jobPrototype.ID, out var departmentPrototype))
+                    if (!seenMinds.Add(mind))
+                        continue;
+
+                    if (TryComp<MindComponent>(mind, out var mindComp) &&
+                        mindComp.OwnedEntity is { } ownedEntity && ownedEntity != entity)
+                        continue;
+                }
+
+                var hasRoleCache = TryComp<RoleCacheComponent>(entity, out var roleCacheComponent);
+                var addedAntagWarp = false;
+
+                if (hasRoleCache)
+                {
+                    if (_prototypeManager.TryIndex(roleCacheComponent!.LastJobPrototype, out var jobPrototype) && _jobs.TryGetDepartment(jobPrototype.ID, out var departmentPrototype))
                     {
                         var warp = SetupWarp(entity, mindContainer, departmentPrototype.Name, departmentPrototype.Color, jobPrototype.Name);
                         warp.Group |= WarpGroup.Department;
@@ -498,13 +522,24 @@ namespace Content.Server.Ghost
                         warp.Group |= WarpGroup.Antag;
 
                         warps.Add(warp);
+                        addedAntagWarp = true;
                     }
                 }
-                else
-                {
-                    var warp = SetupWarp(entity, mindContainer, MetaData(entity).EntityPrototype?.Name ?? "", null, null);
-                    warp.Group |= WarpGroup.Other;
 
+                if (!addedAntagWarp && TryGetMindAntagName(mindUid, out var antagName))
+                {
+                    var warp = SetupWarp(entity, mindContainer, antagName, AntagonistButtonColor, null);
+                    warp.Group |= WarpGroup.Antag;
+
+                    warps.Add(warp);
+                    continue;
+                }
+
+                if (hasRoleCache)
+                    continue;
+                {
+                    var warp = SetupWarp(entity, mindContainer, MetaData(entity).EntityPrototype?.Name ?? string.Empty, null, null);
+                    warp.Group |= WarpGroup.Other;
                     warps.Add(warp);
                 }
             }
@@ -520,11 +555,15 @@ namespace Content.Server.Ghost
                 hasAnyMind;
 
             var metadata = Comp<MetaDataComponent>(entity);
+            var displayName = metadata.EntityName;
+
+            if (_mind.TryGetMind(entity, out _, out var mind) && !string.IsNullOrWhiteSpace(mind.CharacterName))
+                displayName = mind.CharacterName;
 
             if (string.IsNullOrEmpty(description))
                 description = metadata.EntityDescription;
 
-            var warp = new GhostWarp(GetNetEntity(entity), metadata.EntityName, subGroup, description, color);
+            var warp = new GhostWarp(GetNetEntity(entity), displayName, subGroup, description, color);
 
             if(isLeft)
                 warp.Group |= WarpGroup.Left;
@@ -572,7 +611,7 @@ namespace Content.Server.Ghost
 
         private bool IsHiddenFromGhostWarps(EntityUid entity)
         {
-            return _tag.HasTag(entity, "HideFromGhostWarps");
+            return _tag.HasTag(entity, HideFromGhostWarpsTag);
         }
         // Orion-Edit-End
 
@@ -809,6 +848,29 @@ namespace Content.Server.Ghost
             return true;
         }
 
+        // Orion-Start
+        private bool TryGetMindAntagName(EntityUid? mindUid, out string antagName)
+        {
+            antagName = string.Empty;
+
+            if (mindUid == null || !TryComp(mindUid.Value, out MindComponent? mind))
+                return false;
+
+            foreach (var role in mind.MindRoles)
+            {
+                if (!TryComp<MindRoleComponent>(role, out var mindRole) || mindRole is { Antag: false, ExclusiveAntag: false })
+                    continue;
+
+                if (!_prototypeManager.TryIndex(mindRole.AntagPrototype, out var antagPrototype))
+                    continue;
+
+                antagName = antagPrototype.Name;
+                return true;
+            }
+
+            return false;
+        }
+        // Orion-End
     }
 
     public sealed class GhostAttemptHandleEvent(MindComponent mind, bool canReturnGlobal) : HandledEntityEventArgs

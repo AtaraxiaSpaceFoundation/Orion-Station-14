@@ -14,8 +14,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <!-- Orion-Edit: Better ghost target UI -->
 <DefaultWindow xmlns="https://spacestation14.io"
                Title="{Loc 'ghost-target-window-title'}"
-               MinSize="650 550"
-               SetSize="650 550">
+               MinSize="950 550"
+               SetSize="950 550">
     <BoxContainer Orientation="Vertical"
                   HorizontalExpand="True"
                   SizeFlagsStretchRatio="0.4">
