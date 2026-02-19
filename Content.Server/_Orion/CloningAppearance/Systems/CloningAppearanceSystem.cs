@@ -6,6 +6,8 @@ using Content.Server.Mind;
 using Content.Server.Station.Systems;
 using Content.Server.Traits;
 using Content.Shared.Bed.Cryostorage;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Serialization.Manager;
@@ -40,7 +42,9 @@ public sealed class CloningAppearanceSystem : EntitySystem
     {
         var profile = _ticker.GetPlayerProfile(ev.Player);
         var mobUid = _spawning.SpawnPlayerMob(ev.Coords, null, profile, ev.StationUid);
-        var targetMind = _mindSystem.GetOrCreateMind(ev.Player.UserId);
+        var targetMind = ev.MindId != null && TryComp<MindComponent>(ev.MindId, out var transferredMind)
+            ? (ev.MindId.Value, transferredMind)
+            : _mindSystem.GetOrCreateMind(ev.Player.UserId);
 
         foreach (var entry in ev.Component.Components.Values)
         {
@@ -69,6 +73,9 @@ public sealed class CloningAppearanceSystem : EntitySystem
             break;
         }
 
+        targetMind.Comp.CharacterName = MetaData(mobUid).EntityName;
+        targetMind.Comp.OriginalOwnedEntity = GetNetEntity(mobUid);
+        Dirty(targetMind);
         _mindSystem.TransferTo(targetMind, mobUid);
     }
 
@@ -83,6 +90,7 @@ public sealed class CloningAppearanceSystem : EntitySystem
             Component = ent.Comp,
             StationUid = _stations.GetOwningStation(ent),
             Coords = Transform(ent).Coordinates,
+            MindId = TryComp<MindContainerComponent>(ent, out var mindContainer) ? mindContainer.Mind : null,
         });
 
         QueueDel(ent);
