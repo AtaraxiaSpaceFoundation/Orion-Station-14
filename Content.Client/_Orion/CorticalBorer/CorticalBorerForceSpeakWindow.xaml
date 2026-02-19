@@ -1,0 +1,12 @@
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    Title="{Loc 'cortical-borer-force-speak-window-title'}"
+    MinSize="360 140"
+    SetSize="360 140">
+    <BoxContainer Orientation="Vertical" Margin="8">
+        <Label Text="{Loc 'cortical-borer-force-speak-label'}" />
+        <LineEdit Name="ForceHostSpeechInput" Access="Public" />
+        <Button Name="ForceHostSpeechButton" Access="Public" Text="{Loc 'cortical-borer-force-speak-button'}" Margin="0 4 0 0" />
+    </BoxContainer>
+</controls:FancyWindow>

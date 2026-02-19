@@ -47,6 +47,7 @@ using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Shared._Orion.CorticalBorer;
 using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared._Shitmed.Surgery;
 
@@ -275,9 +276,14 @@ public abstract partial class SharedSurgerySystem
     // Orion-Start
     private void OnCorticalBorerRemovalStep(Entity<SurgeryStepRemoveCorticalBorerComponent> ent, ref SurgeryStepEvent args)
     {
-        if (TryComp<CorticalBorerInfestedComponent>(args.Body, out var infested) &&
-            infested.InfestationContainer.ContainedEntities.Count != 0)
-            _corticalBorer.TryEjectBorer(infested.Borer);
+        if (!TryComp<CorticalBorerInfestedComponent>(args.Body, out var infested) ||
+            infested.InfestationContainer.ContainedEntities.Count == 0)
+            return;
+
+        if (!_corticalBorer.TryEjectBorer(infested.Borer))
+            return;
+
+        RaiseLocalEvent(infested.Borer, new CorticalBorerSurgicallyRemovedEvent());
     }
 
     private void OnCorticalBorerRemovalCheck(Entity<SurgeryStepRemoveCorticalBorerComponent> ent, ref SurgeryStepCompleteCheckEvent args)

@@ -124,6 +124,7 @@
     mindRoles:
     - MindRoleGhostRoleInteQAntagonist
   - type: CloningAppearance
+    copyTraits: true
     components:
     - type: AntagImmune
     - type: NpcFactionMember

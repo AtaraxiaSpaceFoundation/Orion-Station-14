@@ -327,7 +327,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnAmbushInteract(EntityUid uid, MorphAmbushComponent component, UndisguisedEvent args)
     {
-        _stun.TryParalyze(args.User, component.StunTimeInteract, false);
+        _stun.TryKnockdown(args.User, component.StunTimeInteract, false);
         _damageable.TryChangeDamage(args.User, component.DamageOnTouch);
         AmbushBreak(uid);
     }

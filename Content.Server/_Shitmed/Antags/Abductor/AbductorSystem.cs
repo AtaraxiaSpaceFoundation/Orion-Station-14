@@ -6,7 +6,6 @@
 
 using Content.Server.Actions;
 using Content.Server.DoAfter;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared.Eye;
@@ -18,10 +17,10 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Pinpointer;
 using Content.Shared.Silicons.StationAi;
-using Content.Shared.Tag;
 using Content.Shared.UserInterface;
-using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Content.Shared.Tag;
+using Robust.Server.Containers;
 
 namespace Content.Server._Shitmed.Antags.Abductor;
 
@@ -153,7 +152,7 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
 
         foreach (var station in stations)
         {
-            if (_stationSystem.GetLargestGrid(Comp<StationDataComponent>(station)) is not { } grid
+            if (_stationSystem.GetLargestGrid(station) is not { } grid
                 || !TryComp(station, out MetaDataComponent? stationMetaData))
                 return;
 

@@ -46,9 +46,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.Administration.Logs;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Emp;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.DeviceNetwork.Events;
@@ -70,6 +72,8 @@ public sealed class SurveillanceCameraSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!; // Goobstation
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+
 
     // Pings a surveillance camera subnet. All cameras will always respond
     // with a data message if they are on the same subnet.
@@ -230,6 +234,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
         component.CameraId = args.Name;
         component.NameSet = true;
         UpdateSetupInterface(uid, component);
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(args.Actor)} set the name of {ToPrettyString(uid)} to \"{args.Name}.\"");
     }
 
     private void OnSetNetwork(EntityUid uid, SurveillanceCameraComponent component,

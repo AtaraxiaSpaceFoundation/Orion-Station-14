@@ -31,21 +31,25 @@
     <GuideEntityEmbed Entity="AltarSpaceChristian"/>
     <GuideEntityEmbed Entity="AltarTechnology"/>
     <GuideEntityEmbed Entity="AltarToolbox"/>
+    <GuideEntityEmbed Entity="AltarDragon"/>
+    <GuideEntityEmbed Entity="AltarEmpire"/>
   </Box>
 
   Эти алтари можно построить, поместив соответствующую жертву на базовый алтарь конвертации:
 
-  - Алтарь бананиума: 1 × бананиум
-  - Алтарь хаоса: 1 × плазма
-  - Алтарь друидов: 1 × деревянная доска
-  - Алтарь с клыками: 1 × сырое мясо
-  - Алтарь небес: 1 × шлем тамплиера
-  - Алтарь обслуживающего персонала: 1 × бюджетные утеплённые перчатки
-  - Алтарь Нанотрасен: 1 × пластал
-  - Алтарь космического христианина: 1 × капюшон монахини
-  - Алтарь технологии: 1 × конденсатор
-  - Алтарь инструментов: 1 × ящик с инструментами
-  - Алтарь латуни: 1 × маленькая батарейка
+- Bananium Altar: 1 x Bananium
+- Chaos Altar: 1 x Plasma
+- Druid Altar: 1 x Wooden Plank
+- Fanged Altar: 1 x Raw Meat
+- Heaven Altar: 1 x Templar Helmet
+- Maints Altar: 1 x Budget Insulated Gloves
+- Nanotrasen Altar: 1 x Plasteel
+- Space-Christian Altar: 1 x Nun Hood
+- Technology Altar: 1 x Capacitor
+- Toolbox Altar: 1 x Toolbox
+- Clockwork Altar: 1 x Small Power Cell
+- Draconic Altar: 1 x Carp plushie
+- Imperial altar: 1 x Book
 
 ## Священные артефакты
 

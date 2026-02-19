@@ -14,7 +14,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Weapons.DelayedKnockdown;
-using Content.Server.Heretic.Components.PathSpecific;
 using Content.Shared._Goobstation.Heretic.Components;
 using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
@@ -22,6 +21,7 @@ using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Components;
 using Content.Shared.Heretic;
 using Robust.Shared.Timing;
+using Content.Shared.Heretic.Components.PathSpecific;
 
 namespace Content.Server.Heretic.Abilities;
 

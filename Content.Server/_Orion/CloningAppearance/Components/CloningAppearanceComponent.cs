@@ -16,4 +16,7 @@ public sealed partial class CloningAppearanceComponent : Component
 
     [DataField]
     public ProtoId<StartingGearPrototype>? StartingGear;
+
+    [DataField]
+    public bool CopyTraits;
 }

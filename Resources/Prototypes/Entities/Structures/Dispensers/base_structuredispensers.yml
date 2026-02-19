@@ -53,7 +53,7 @@
   components:
   - type: Transform
     anchored: true
-    noRot: true
+#    noRot: true # Orion-Edit
   - type: Clickable
   - type: InteractionOutline
   - type: Physics

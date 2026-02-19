@@ -37,8 +37,6 @@ station-ai-icon-vox = Vox
 
 station-ai-hologram-horror = Horror appearance
 station-ai-hologram-xenomorph-queen = Xenomorph queen appearance
-station-ai-hologram-kobold = Kobold form
-station-ai-hologram-monkey = Monkey form
 station-ai-hologram-angel = Angel appearance
 station-ai-hologram-borb = Bird appearance
 station-ai-hologram-cloudkat = Cloud Cat form

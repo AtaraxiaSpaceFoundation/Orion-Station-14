@@ -24,7 +24,7 @@ public sealed partial class CorticalBorerReagentCardControl : Control
         FillLabel.Text = Loc.GetString("cortical-borer-dispenser-window-cost", ("cost", set.Cost * set.Amount));
 
         // disable the button if you can't afford it, makes it easier
-        MainButton.Disabled = set.Chems < set.Cost * set.Amount;
+        MainButton.Disabled = set.Chemicals < set.Cost * set.Amount;
 
         MainButton.OnPressed += _ => OnPressed?.Invoke(set.ReagentId);
     }

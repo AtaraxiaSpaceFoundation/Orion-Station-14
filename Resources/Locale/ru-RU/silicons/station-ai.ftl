@@ -1,8 +1,9 @@
 # General
-ai-wire-snipped = Был перерезан провод, координаты { $coords }.
+ai-wire-snipped = Один из проводов вашей системы был перерезан в { $source }.
 wire-name-ai-vision-light = ИИВ
 wire-name-ai-act-light = ИИС
 station-ai-takeover = ИИ захват
+station-ai-eye-name = Глаз ИИ - { $name }
 # Radial actions
 ai-open = Открыть действия
 ai-close = Закрыть действия
@@ -32,5 +33,3 @@ station-ai-icon-smiley = Улыбка
 station-ai-hologram-female = Женский образ
 station-ai-hologram-male = Мужской образ
 station-ai-hologram-face = Бестелесная голова
-station-ai-hologram-cat = Форма кота
-station-ai-hologram-dog = Форма корги

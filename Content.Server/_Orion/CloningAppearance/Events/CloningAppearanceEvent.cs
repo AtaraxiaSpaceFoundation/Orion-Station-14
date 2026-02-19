@@ -14,4 +14,5 @@ public sealed class CloningAppearanceEvent : EntityEventArgs
     public CloningAppearanceComponent Component = default!;
     public EntityCoordinates Coords { get; set; }
     public EntityUid? StationUid { get; set; }
+    public EntityUid? MindId { get; set; }
 }

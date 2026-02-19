@@ -32,7 +32,7 @@
     description: cortical-borer-ghostrole-desc
     rules: ghost-role-information-antagonist-rules
     mindRoles:
-    - MindRoleGhostRoleSoloAntagonist
+    - MindRoleCorticalBorer
     raffle:
       settings: default
     requirements:

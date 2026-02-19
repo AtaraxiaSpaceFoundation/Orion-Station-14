@@ -100,22 +100,47 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: BoozeDispenser
+  id: BoozeDispenserEmpty
   name: booze dispenser
-#  suffix: Filled # Orion-Edit: Removed
+#  suffix: Empty # Orion-Edit: Removed
   description: A booze dispenser with a single slot for a container to be filled.
   parent: ReagentDispenserBase
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Rotatable
   - type: Sprite
     sprite: Structures/smalldispensers.rsi
     drawdepth: SmallObjects
     state: booze
-#  - type: Storage # Orion-Edit: Removed
-#    openOnActivate: false
-#    whitelist:
-#      tags:
-#      - DrinkBottle
+  - type: Storage
+    openOnActivate: false
+    whitelist:
+      tags:
+      - DrinkBottle
+  - type: Transform
+    noRot: false
+  - type: Machine
+    board: BoozeDispenserMachineCircuitboard
+  - type: ContainerContainer # Orion
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      energyBeakerSlot: !type:ContainerSlot
+      storagebase: !type:Container
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
+  - type: StealTarget
+    stealGroup: BoozeDispenser
+
+- type: entity
+  id: BoozeDispenser
+  name: booze dispenser
+#  suffix: Filled # Orion-Edit: Removed
+  description: A booze dispenser with a single slot for a container to be filled.
+  parent: BoozeDispenserEmpty
+  components:
   # Orion-Start
   - type: EnergyReagentDispenser
     energyBeakerSlot:
@@ -144,12 +169,6 @@
       Ethanol: 12
       Iron: 10
       AtomicBomb: 20
-  - type: ContainerContainer
-    containers:
-      machine_board: !type:Container
-      machine_parts: !type:Container
-      energyBeakerSlot: !type:ContainerSlot
-      storagebase: !type:Container
   - type: ActivatableUI
     key: enum.EnergyReagentDispenserUiKey.Key
   - type: UserInterface
@@ -168,24 +187,3 @@
   - type: ApcPowerReceiver
     powerLoad: 30
   # Orion-End
-  - type: Transform
-    noRot: false
-  - type: Machine
-    board: BoozeDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
-  - type: StealTarget
-    stealGroup: BoozeDispenser
-
-- type: entity
-  id: BoozeDispenserEmpty
-  suffix: Empty
-  parent: BoozeDispenser
-  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
-  components:
-  - type: Storage
-    whitelist:
-      tags:
-      - DrinkBottle

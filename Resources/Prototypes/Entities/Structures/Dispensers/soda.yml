@@ -102,21 +102,44 @@
 
 - type: entity
   parent: ReagentDispenserBase
-  id: SodaDispenser
+  id: SodaDispenserEmpty
   name: soda dispenser
   description: A beverage dispenser with a selection of soda and several other common beverages. Has a single fill slot for containers.
-#  suffix: Filled # Orion-Edit: Removed
+#  suffix: Empty # Orion-Edit: Removed
+  categories: [ HideSpawnMenu ] # Orion-Edit: Migration
   components:
   - type: Rotatable
   - type: Sprite
     sprite: Structures/smalldispensers.rsi
     drawdepth: SmallObjects
     state: soda
-#  - type: Storage # Orion-Edit: Removed
-#    openOnActivate: false
-#    whitelist:
-#      tags:
-#      - DrinkBottle
+  - type: Storage
+    openOnActivate: false
+    whitelist:
+      tags:
+      - DrinkBottle
+  - type: Transform
+    noRot: false
+  - type: Machine
+    board: SodaDispenserMachineCircuitboard
+  - type: ContainerContainer # Orion
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      energyBeakerSlot: !type:ContainerSlot
+      storagebase: !type:Container
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
+
+- type: entity
+  parent: SodaDispenserEmpty
+  id: SodaDispenser
+  name: soda dispenser
+  description: A beverage dispenser with a selection of soda and several other common beverages. Has a single fill slot for containers.
+#  suffix: Filled # Orion-Edit: Removed
+  components:
   # Orion-Start
   - type: EnergyReagentDispenser
     energyBeakerSlot:
@@ -157,12 +180,6 @@
       WhiskeyCola: 8
       MindbreakerToxin: 18
       Tirizene: 18
-  - type: ContainerContainer
-    containers:
-      machine_board: !type:Container
-      machine_parts: !type:Container
-      energyBeakerSlot: !type:ContainerSlot
-      storagebase: !type:Container
   - type: ActivatableUI
     key: enum.EnergyReagentDispenserUiKey.Key
   - type: UserInterface
@@ -181,17 +198,3 @@
   - type: ApcPowerReceiver
     powerLoad: 30
   # Orion-End
-  - type: Transform
-    noRot: false
-  - type: Machine
-    board: SodaDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
-
-- type: entity
-  parent: SodaDispenser
-  id: SodaDispenserEmpty
-  suffix: Empty
-  categories: [ HideSpawnMenu ] # Orion-Edit: Migration

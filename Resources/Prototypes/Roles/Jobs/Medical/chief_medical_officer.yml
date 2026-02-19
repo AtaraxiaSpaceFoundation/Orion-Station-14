@@ -151,8 +151,8 @@
   canBeAntag: false
   guides: # goobstation
 #  - Medical # Orion-Edit: Removed because dont have this SOP
-#  - ChiefMedicalOfficer SOP # Orion-Edit: Removed because dont have this SOP
-#  - Medical SOP # Orion-Edit: Removed because dont have this SOP
+#  - ChiefMedicalOfficerSOP # Orion-Edit: Removed because dont have this SOP
+#  - MedicalSOP # Orion-Edit: Removed because dont have this SOP
 #  - Command # Orion-Edit: Removed because dont have this SOP
   - Chemicals
   - Virology

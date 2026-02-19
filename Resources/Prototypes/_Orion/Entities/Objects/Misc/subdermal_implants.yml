@@ -19,6 +19,6 @@
   description: This implant will inform the InteQ radio channel should the user fall into critical condition or die.
   categories: [ HideSpawnMenu ]
   components:
-  - type: Rattle
+  - type: RattleOnTrigger
     radioChannel: InteQ
     reportCoordinates: true

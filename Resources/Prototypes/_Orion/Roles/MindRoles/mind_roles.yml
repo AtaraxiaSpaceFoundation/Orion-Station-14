@@ -19,3 +19,15 @@
   - type: MindRole
     roleType: InteQ
     antagPrototype: GenericTeamAntagonist
+
+# Cortical Borer
+- type: entity
+  parent: [ BaseMindRoleAntag, MindRoleGhostRoleNeutral ]
+  id: MindRoleCorticalBorer
+  name: Ghost Role (Cortical Borer)
+  components:
+  - type: MindRole
+    antagPrototype: CorticalBorer
+    roleType: SoloAntagonist
+    exclusiveAntag: true
+  - type: CorticalBorerRole

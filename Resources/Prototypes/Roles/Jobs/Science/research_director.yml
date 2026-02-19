@@ -152,8 +152,8 @@
 #  guides: # goobstation | Orion-Edit: Removed because dont have this SOP
 #  - Science
 #  - Command
-#  - ResearchDirector SOP
-#  - Science SOP
+#  - ResearchDirectorSOP
+#  - ScienceSOP
   goobcoins: 40 #Goob content
   access:
   - Research

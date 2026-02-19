@@ -11,9 +11,10 @@ using System.Diagnostics;
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Cargo.Systems;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Administration;
+using Content.Shared.Station;
+using Content.Shared.Station.Components;
 using Robust.Shared.Toolshed;
 using Robust.Shared.Toolshed.Errors;
 using Robust.Shared.Utility;
@@ -62,7 +63,7 @@ public sealed class StationsCommand : ToolshedCommand
     public EntityUid? LargestGrid([PipedArgument] EntityUid input)
     {
         _station ??= GetSys<StationSystem>();
-        return _station.GetLargestGrid(Comp<StationDataComponent>(input));
+        return _station.GetLargestGrid(input);
     }
 
     [CommandImplementation("largestgrid")]

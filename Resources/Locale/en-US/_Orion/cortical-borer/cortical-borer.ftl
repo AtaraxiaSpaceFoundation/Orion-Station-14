@@ -16,15 +16,37 @@ cortical-borer-sugar-block = You taste something sweet.
 
 ## Control messages
 cortical-borer-already-control = You are already controlling your host.
-cortical-borer-vomit = {$name} vomits out a {$egg}!
+cortical-borer-vomit = { $name } vomits out a { $egg }!
 
 ## UI
-cortical-borer-dispenser-window-cost = {$cost} chemicals
+cortical-borer-dispenser-window-cost = { $cost } chemicals
 cortical-borer-ghostrole-name = Cortical Borer
 cortical-borer-ghostrole-desc = A space worm with the sole purpose in life to enter peoples heads and lay its eggs.
+
+cortical-borer-force-speak-window-title = Forced speech
+cortical-borer-force-speak-label = Forced speech
+cortical-borer-force-speak-placeholder = Enter text for host speech
+cortical-borer-force-speak-button = Make host speak
+
+cortical-borer-willing-title = Voluntary submission
+cortical-borer-willing-question = Do you want to be a voluntary host?
+cortical-borer-willing-yes = Yes
+cortical-borer-willing-no = No
+cortical-borer-willing-result-yes = { $host } agreed to become a voluntary host.
+cortical-borer-willing-result-no = { $host } refused voluntary submission.
+
+cortical-borer-round-end-willing = { $borer } received { $count } voluntary host(s): { $hosts }.
+cortical-borer-round-end-objective-survive = Survive
+cortical-borer-round-end-objective-willing = Voluntary hosts ({ $current }/{ $target })
+cortical-borer-round-end-objective-eggs = Eggs laid ({ $current }/{ $target })
 
 ## Examine Text
 cortical-borer-infested-examine = [color=#d842fc]Movements look extremely unnatural...[/color]
 
-infested-control-examined = You have [color=#d842fc]{$timeremaining}[/color] seconds left controlling this body.
-cortical-borer-self-examine = You have [color=#d842fc]{$chempoints}[/color] chemicals.
+infested-control-examined = You have [color=#d842fc]{ $timeremaining }[/color] seconds left controlling this body.
+cortical-borer-self-examine = You have [color=#d842fc]{ $chempoints }[/color] chemicals.
+
+cortical-borer-round-end-agent-name = cortical borer
+roles-antag-cortical-borer-name = Cortical Borer
+roles-antag-cortical-borer-objective = Secure hosts, reproduce, and survive.
+cortical-borer-round-end-objectives = { $borer } objectives: survive [{ $survive }], voluntary hosts ({ $willingCount }/3) [{ $willingResult }], eggs laid ({ $eggs }/5) [{ $eggsResult }].

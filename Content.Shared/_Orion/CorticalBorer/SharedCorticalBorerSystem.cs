@@ -6,12 +6,16 @@
 using Content.Shared._Orion.CorticalBorer.Components;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Actions;
+using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Popups;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Eui;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -32,14 +36,30 @@ public class SharedCorticalBorerSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
+    protected const string BorerProtectionStatusEffect = "CorticalBorerProtection";
+    private const string BruteDamageGroup = "Brute";
+    public ReagentId SugarReagentId = new("Sugar", null);
+
     public bool CanUseAbility(Entity<CorticalBorerComponent> ent, EntityUid target)
     {
-        if (!_statusEffects.HasStatusEffect(target,"CorticalBorerProtection")) // hardcoded the status effect because...
+        if (!HasBorerProtection(target))
             return true;
 
         Popup.PopupEntity(Loc.GetString("cortical-borer-sugar-block"), ent.Owner, ent.Owner, PopupType.Medium);
         return false;
+    }
 
+    public bool HasBorerProtection(EntityUid target)
+    {
+        if (_statusEffects.HasStatusEffect(target, BorerProtectionStatusEffect))
+            return true;
+
+        if (!TryComp<BloodstreamComponent>(target, out var blood) ||
+            blood.ChemicalSolution is not { } solutionUid ||
+            !TryComp<SolutionComponent>(solutionUid, out _))
+            return false;
+
+        return blood.ChemicalSolution?.Comp.Solution.ContainsReagent(SugarReagentId) ?? false;
     }
 
     public void InfestTarget(Entity<CorticalBorerComponent> ent, EntityUid target)
@@ -52,7 +72,7 @@ public class SharedCorticalBorerSystem : EntitySystem
         // Make sure they get into the target
         if (!Container.Insert(uid, infestedComp.InfestationContainer))
         {
-            RemCompDeferred<CorticalBorerInfestedComponent>(target); // oh no it didn't work somehow so remove the comp you just added...
+            RemCompDeferred<CorticalBorerInfestedComponent>(target); // Oh, no it didn't work somehow so remove the comp you just added...
             return;
         }
 
@@ -60,26 +80,8 @@ public class SharedCorticalBorerSystem : EntitySystem
         infestedComp.Borer = ent;
         comp.Host = target;
 
-        if (comp.AddOnInfest is not null)
-        {
-            foreach (var (_, compReg) in comp.AddOnInfest)
-            {
-                var compType = compReg.Component.GetType();
-                if (HasComp(ent, compType))
-                    continue;
-
-                var newComp = (Component) _serManager.CreateCopy(compReg.Component, notNullableOverride: true);
-                EntityManager.AddComponent(ent, newComp, true);
-            }
-        }
-
-        if (comp.RemoveOnInfest is not null)
-        {
-            foreach (var (_, compReg) in comp.RemoveOnInfest)
-            {
-                RemCompDeferred(ent, compReg.Component.GetType());
-            }
-        }
+        EnsureRegistryComponents(ent, comp.AddOnInfest);
+        RemoveRegistryComponents(ent, comp.RemoveOnInfest);
 
         if (TryComp<DamageableComponent>(ent, out var damComp))
             _damage.SetAllDamage(ent, damComp, 0);
@@ -95,7 +97,13 @@ public class SharedCorticalBorerSystem : EntitySystem
 
         // Make sure they get out of the host
         if (!Container.TryRemoveFromContainer(ent.Owner))
+        {
+            if (ent.Comp.Host.HasValue)
+                RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
+
+            ent.Comp.Host = null;
             return false;
+        }
 
         // close all the UIs that relate to host
         if (TryComp<UserInterfaceComponent>(ent, out var uic))
@@ -107,26 +115,8 @@ public class SharedCorticalBorerSystem : EntitySystem
         RemCompDeferred<CorticalBorerInfestedComponent>(ent.Comp.Host.Value);
         ent.Comp.Host = null;
 
-        if (ent.Comp.RemoveOnInfest is not null)
-        {
-            foreach (var (_, compReg) in ent.Comp.RemoveOnInfest)
-            {
-                var compType = compReg.Component.GetType();
-                if (HasComp(ent, compType))
-                    continue;
-
-                var newComp = (Component) _serManager.CreateCopy(compReg.Component, notNullableOverride: true);
-                EntityManager.AddComponent(ent, newComp, true);
-            }
-        }
-
-        if (ent.Comp.AddOnInfest is not null)
-        {
-            foreach (var (_, compReg) in ent.Comp.AddOnInfest)
-            {
-                RemCompDeferred(ent, compReg.Component.GetType());
-            }
-        }
+        EnsureRegistryComponents(ent, ent.Comp.RemoveOnInfest);
+        RemoveRegistryComponents(ent, ent.Comp.AddOnInfest);
 
         return true;
     }
@@ -143,7 +133,34 @@ public class SharedCorticalBorerSystem : EntitySystem
         Spawn(egg, coordinates);
 
         // TODO: Brain damage
-        _damage.TryChangeDamage(host, new DamageSpecifier(_proto.Index<DamageGroupPrototype>("Brute"), 15), true, origin: ent, targetPart: TargetBodyPart.Head);
+        _damage.TryChangeDamage(host, new DamageSpecifier(_proto.Index<DamageGroupPrototype>(BruteDamageGroup), 15), true, origin: ent, targetPart: TargetBodyPart.Head);
+    }
+
+    protected void EnsureRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
+    {
+        if (registries is null)
+            return;
+
+        foreach (var (_, compReg) in registries)
+        {
+            var compType = compReg.Component.GetType();
+            if (HasComp(ent, compType))
+                continue;
+
+            var newComp = (Component) _serManager.CreateCopy(compReg.Component, notNullableOverride: true);
+            EntityManager.AddComponent(ent, newComp, true);
+        }
+    }
+
+    protected void RemoveRegistryComponents(Entity<CorticalBorerComponent> ent, ComponentRegistry? registries)
+    {
+        if (registries is null)
+            return;
+
+        foreach (var (_, compReg) in registries)
+        {
+            RemCompDeferred(ent, compReg.Component.GetType());
+        }
     }
 }
 
@@ -161,6 +178,11 @@ public enum CorticalBorerDispenserUiKey
     Key,
 }
 
+[Serializable, NetSerializable]
+public enum CorticalBorerForceSpeakUiKey
+{
+    Key,
+}
 
 [Serializable, NetSerializable]
 public sealed class CorticalBorerDispenserSetInjectAmountMessage : BoundUserInterfaceMessage
@@ -202,6 +224,28 @@ public sealed class CorticalBorerDispenserInjectMessage : BoundUserInterfaceMess
 }
 
 [Serializable, NetSerializable]
+public sealed class CorticalBorerForceSpeakMessage : BoundUserInterfaceMessage
+{
+    public readonly string Message;
+
+    public CorticalBorerForceSpeakMessage(string message)
+    {
+        Message = message;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class CorticalBorerWillingHostChoiceMessage : EuiMessageBase
+{
+    public readonly bool Accepted;
+
+    public CorticalBorerWillingHostChoiceMessage(bool accepted)
+    {
+        Accepted = accepted;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed class CorticalBorerDispenserBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly List<CorticalBorerDispenserItem> DisList;
@@ -215,12 +259,12 @@ public sealed class CorticalBorerDispenserBoundUserInterfaceState : BoundUserInt
 }
 
 [Serializable, NetSerializable]
-public sealed class CorticalBorerDispenserItem(string reagentName, string reagentId, int cost, int amount, int chems, Color reagentColor)
+public sealed class CorticalBorerDispenserItem(string reagentName, string reagentId, int cost, int amount, int chemicals, Color reagentColor)
 {
     public string ReagentName = reagentName;
     public string ReagentId = reagentId;
     public int Cost = cost;
     public int Amount = amount;
-    public int Chems = chems;
+    public int Chemicals = chemicals;
     public Color ReagentColor = reagentColor;
 }

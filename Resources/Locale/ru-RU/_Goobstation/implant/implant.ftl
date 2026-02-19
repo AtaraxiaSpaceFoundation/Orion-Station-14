@@ -7,3 +7,8 @@
 
 mindshield-implant-effect-removed = Вы ощущаете мучительную боль, когда ваше восприятие меняется, а зрение мгновенно расширяется.
 nanite-mend-popup = Вы чувствуете, как по всему телу распространяется яркое тепло.
+
+# BSO and nukie implant
+
+deathrattle-implant-dead-message = {$user} погиб {$position}.
+deathrattle-implant-critical-message = {$user} критические жизненные показатели, требуется немедленная помощь {$position}.

@@ -21,3 +21,11 @@
     - map: [ "1" ]
     - map: [ "10" ]
     - map: [ "100" ]
+
+- type: alert
+  id: BorerSugar
+  icons:
+  - sprite: /Textures/_Orion/Interface/Actions/borer.rsi
+    state: borer_sugar
+  name: alerts-borer-sugar-name
+  description: alerts-borer-sugar-desc
