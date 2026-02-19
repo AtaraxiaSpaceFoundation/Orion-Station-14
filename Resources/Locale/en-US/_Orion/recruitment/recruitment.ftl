@@ -1,6 +1,4 @@
 # Popups
-recruitment-start-user-temporal-popup = Hand over the device to { $target } for registration.
-
 recruitment-start-user = You are starting to enter data about { $target } into the device.
 recruitment-start-target = { $user } is inviting you to join the organization.
 
@@ -9,6 +7,12 @@ recruitment-decline = { $target } has declined to join!
 recruitment-already = { $target } is already in the database!
 recruitment-failed = { $target } cannot be part of the organization!
 recruitment-too-far = The target is too far away!
+recruitment-already-in-organization = { $target } is already in this organization.
+recruitment-already-in-organization-self = You are already in this organization.
+
+recruitment-processing-user = You start processing membership for { $target }.
+recruitment-processing-target = { $user } is processing your enrollment.
+recruitment-decline-target = You declined joining the { $organization } organization.
 
 # UI strings
 recruitment-ui-title = Organization Invitation

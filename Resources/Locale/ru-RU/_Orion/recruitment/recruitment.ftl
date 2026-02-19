@@ -1,6 +1,4 @@
 # Popups
-recruitment-start-user-temporal-popup = Передайте { $target } устройство для оформления.
-
 recruitment-start-user = Вы начинаете вводить данные об { $target } в устройство.
 recruitment-start-target = { $user } приглашает вас в организацию.
 
@@ -9,6 +7,12 @@ recruitment-decline = { $target } отказывается от вступлен
 recruitment-already = { $target } уже находится в базе данных!
 recruitment-failed = { $target } не может быть в организации!
 recruitment-too-far = Цель слишком далеко!
+recruitment-already-in-organization = { $target } уже состоит в этой организации.
+recruitment-already-in-organization-self = Вы уже состоите в этой организации.
+
+recruitment-processing-user = Вы начинаете оформление вступления для { $target }.
+recruitment-processing-target = { $user } оформляет ваше вступление.
+recruitment-decline-target = Вы отказались вступать в организацию { $organization }.
 
 # UI strings
 recruitment-ui-title = Приглашение в организацию
