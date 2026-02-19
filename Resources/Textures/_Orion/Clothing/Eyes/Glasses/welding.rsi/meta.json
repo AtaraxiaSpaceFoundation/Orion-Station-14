@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made by tamioki. Taken from ADT at commit https://github.com/AdventureTimeSS14/space_station_ADT/commit/f675b9d48351718cfaa5d03549ee949765fa5115",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-EYES",
+      "directions": 4
+    }
+  ]
+}

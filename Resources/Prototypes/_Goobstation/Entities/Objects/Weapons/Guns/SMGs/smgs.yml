@@ -29,7 +29,7 @@
     minAngle: 15 # More controlled than before
     maxAngle: 55
     angleDecay: -8 # Intentionally negative, loses accuracy while not shooting
-    angleIncrease: -1.15 # Intentionally negative, gains accuracy while shooting
+    angleIncrease: -1.65 # Intentionally negative, gains accuracy while shooting # Orion-Edit: -1.15 > -1.65
     availableModes:
     - FullAuto
     soundGunshot:

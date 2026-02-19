@@ -1029,6 +1029,11 @@
   name: loadout-group-bso-shoes
   loadouts:
   - JackBoots
+  # Orion-Start
+  - JackBootsToeless
+  - JackBootsTall
+  - JackBootsTallHeels
+  # Orion-End
   - BlackCowboyBoots
   - SnowjacksBso
 
@@ -1205,6 +1210,7 @@
   - CaptainGloves
   # Orion-Start
   - CaptainWhiteGloves
+  - CaptainWhiteHeavyGloves
   - SheriffGloves
   # Orion-End
 

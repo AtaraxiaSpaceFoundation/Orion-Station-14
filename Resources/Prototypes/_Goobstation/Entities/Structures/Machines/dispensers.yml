@@ -6,17 +6,45 @@
 
 - type: entity
   id: EnergyChemDispenser
-  parent: SmallConstructibleMachine
+  parent: [SmallConstructibleMachine, BaseMachinePowered] # Orion-Edit
   name: energy chemical dispenser
   suffix: energy
   description: A bluespace Chemical Dispenser that uses station energy to synthesize Reagents. The future is here and now.
   placement:
     mode: SnapgridCenter
   components:
+  # Orion-Edit-Start
   - type: Sprite
-    sprite: Structures/dispensers.rsi
-    state: industrial-working
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi
+    state: industrial-off
+  # Orion-Edit-End
     snapCardinals: true
+  # Orion-Start
+    layers:
+    - state: industrial-off
+    - state: industrial-working
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      visible: false
+  - type: Icon
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi
+    state: industrial
+  - type: Appearance
+  - type: ItemMapper
+    sprite: _Orion/Structures/Dispensers/dispenser.rsi
+    containerWhitelist: [energyBeakerSlot]
+    mapLayers:
+      industrial_loaded:
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  # Orion-End
   - type: Transform
     anchored: true
     noRot: true
@@ -97,27 +125,27 @@
     reagents:
       Aluminium: 8
       Carbon: 3
-      Chlorine: 12
+      Chlorine: 9 # Orion-Edit: 12 > 9
       Copper: 5
       Ethanol: 8
       Fluorine: 12
-      Hydrogen: 3
+      Hydrogen: 5 # Orion-Edit: 3 > 5
       Iodine: 8
       Iron: 5
-      Lithium: 12
+      Lithium: 6 # Orion-Edit: 12 > 6
       Mercury: 12
       Nitrogen: 3
-      Oxygen: 3
-      Phosphorus: 5
+      Oxygen: 4 # Orion-Edit: 3 > 4
+      Phosphorus: 14 # Orion-Edit: 5 > 14
       Potassium: 8
-      Radium: 15
+      Radium: 9 # Orion-Edit: 15 > 9
       Silicon: 3
       Sodium: 5
       Sugar: 5
       Sulfur: 5
     # Orion-Start
     reagentsEmagged:
-      Puncturase: 20
+      Puncturase: 18
       Pyrazine: 10
       TranexamicAcid: 5
       Epinephrine: 5

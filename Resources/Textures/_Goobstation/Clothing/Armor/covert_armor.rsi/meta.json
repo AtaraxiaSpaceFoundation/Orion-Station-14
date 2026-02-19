@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Quote unquote sprited by SolsticeOfTheWinter",
+  "copyright": "Quote unquote sprited by SolsticeOfTheWinter. (Blue) by UmbiMax",
   "size": {
     "x": 32,
     "y": 32
@@ -12,6 +12,9 @@
     },
     {
       "name": "icon-evil"
+    },
+    {
+      "name": "icon-blue"
     },
     {
       "name": "equipped-OUTERCLOTHING",

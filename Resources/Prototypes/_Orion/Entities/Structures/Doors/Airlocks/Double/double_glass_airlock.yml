@@ -5,10 +5,10 @@
   description: It opens, it closes, and maybe crushes you, but it's bigger than normal door.
   components:
   - type: Door
-    closeTimeOne: 0.55
-    closeTimeTwo: 0.3
-    openTimeOne: 0.55
-    openTimeTwo: 0.3
+    closeTimeOne: 0.5
+    closeTimeTwo: 0.4
+    openTimeOne: 0.5
+    openTimeTwo: 0.4
     occludes: false
   - type: Occluder
     enabled: false
@@ -28,6 +28,8 @@
         - FullTileMask
         layer:
         - GlassAirlockLayer
+  - type: RCDDeconstructable
+    deconstructable: false
   - type: Destructible
     thresholds:
     - trigger:

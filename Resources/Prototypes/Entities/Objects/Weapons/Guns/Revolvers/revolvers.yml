@@ -85,6 +85,7 @@
     - Belt
   - type: AmmoCounter
   - type: Gun
+    projectileSpeed: 25 # Orion: Another speed
     selectedMode: SemiAuto
     fireRate: 2 # Goobstation
     availableModes:

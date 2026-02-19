@@ -1,0 +1,10 @@
+# Eyes
+- type: loadout
+  id: ChiefMedicalOfficerEyesGlasses
+  equipment:
+    eyes: ClothingEyesGlassesMed
+
+- type: loadout
+  id: ChiefMedicalOfficerEyesVisor
+  equipment:
+    eyes: ClothingEyesAdvancedMedVisor

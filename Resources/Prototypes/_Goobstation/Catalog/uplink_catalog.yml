@@ -510,7 +510,7 @@
   description: uplink-m7s-desc
   productEntity: WeaponSubMachineGunM7S
   cost:
-    Telecrystal: 60
+    Telecrystal: 55 # Orion-Edit: 60 > 55
   categories:
     -  UplinkWeaponry
   conditions:
@@ -919,6 +919,12 @@
     Telecrystal: 24
   categories:
   - UplinkChemicals
+  conditions: # Orion: Only for agents
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+          - ContravendUplink
 
 - type: listing
   id: UplinkSyndicateLollypopBundle

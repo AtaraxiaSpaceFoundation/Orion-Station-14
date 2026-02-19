@@ -89,6 +89,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 0.75
+    projectileSpeed: 40 # Orion: Another speed
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -211,6 +212,8 @@
     inHandsMaxFillLevels: 1
     equippedFillBaseName: -fill-
     equippedMaxFillLevels: 1
+  - type: Gun
+    fireRate: 1.3
   - type: MeleeWeapon
     wideAnimationRotation: -135
     animationRotation: -135 # WWDP

@@ -125,6 +125,7 @@
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
   - CaptainOuterClothing
+  - CaptainGloves # Orion
   - Survival
   - Trinkets
   - Animals
@@ -133,7 +134,7 @@
   - CaptainEnvirohelm
   - CaptainEnvirosuit
   - CaptainEnvirogloves
-  - CaptainGloves
+#  - CaptainGloves # Orion-Edit: Moved up
   # Orion-Start
   - Undershirt
   - Underwear
@@ -867,6 +868,7 @@
   groups:
   - GroupTankHarness
   - ChiefMedicalOfficerHead
+  - ChiefMedicalOfficerEyes
   - MedicalMask
   - ChiefMedicalOfficerJumpsuit
   - MedicalGloves
@@ -874,7 +876,7 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - MedicalEyewear
+#  - MedicalEyewear # Orion-Edit: Replaced
   - SurvivalMedical
   - Trinkets
   - Animals

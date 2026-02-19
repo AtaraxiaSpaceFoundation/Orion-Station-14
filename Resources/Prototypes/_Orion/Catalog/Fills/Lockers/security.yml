@@ -164,7 +164,7 @@
         tableId: FillGunSafeRandomLaserCarbine
 
 - type: entity
-  parent: [ GunSafeRandomLaserCarbineAlertUnlocked, AlertLevelLockRed ]
+  parent: [ GunSafeRandomLaserCarbineAlertUnlocked, AlertLevelLockBlue ]
   id: GunSafeRandomLaserCarbineAlertLocked
   suffix: Random, laser carbine, Alert Level Lock
 

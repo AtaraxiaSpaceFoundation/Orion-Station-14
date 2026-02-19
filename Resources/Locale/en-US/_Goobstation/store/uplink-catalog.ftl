@@ -108,19 +108,19 @@ uplink-WSPR-name = WSPR
 uplink-WSPR-desc = A silenced, subsonic, and caseless rifle for the operative that leaves no trace. More effective against unarmoured targets. Feeds from 9.5mm SMG magazines.
 
 uplink-c20r-name = C-20R
-uplink-c20r-desc = A one-handed, bullpup SMG that sacrifices accuracy for pure firerate. Feeds from .35 Auto SMG magazines.
+uplink-c20r-desc = A one-handed, bullpup SMG that sacrifices accuracy for pure firerate. Feeds from 9mm Auto SMG magazines.
 
 uplink-buldog-name = Bulldog
 uplink-buldog-desc = A fully automatic, bullpup shotgun for when you have three seconds to turn eight people into pasta sauce.
 
 uplink-l6-saw-name = L6 SAW
-uplink-l6-saw-desc = A bulky light machine gun excellent at suppressive, sustained fire. Feeds from .30 Rifle box magazines.
+uplink-l6-saw-desc = A bulky light machine gun excellent at suppressive, sustained fire. Feeds from 5.45mm Rifle box magazines.
 
 uplink-m90-name = M-90
-uplink-m90-desc = A cheaper revision of the M-90GL that omits the integrated grenade launcher. Feeds from .20 Rifle magazines.
+uplink-m90-desc = A cheaper revision of the M-90GL that omits the integrated grenade launcher. Feeds from 5.56mm Rifle magazines.
 
 uplink-estoc-name = Estoc
-uplink-estoc-desc = A burst-fire designated marksman rifle fitted with an expensive tritium optic. Feeds from .20 Rifle magazines.
+uplink-estoc-desc = A burst-fire designated marksman rifle fitted with an expensive tritium optic. Feeds from 5.56mm Rifle magazines.
 
 uplink-syndicate-disabler-name = Syndicate Disabler
 uplink-syndicate-disabler-desc = A sleek disabler designed from a reverse-engineered NanoTrasen prototype. While it lacks stopping power, it makes up for it with a self-recharging cell.

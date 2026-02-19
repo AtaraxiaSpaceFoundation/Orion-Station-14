@@ -251,7 +251,7 @@
     eyes: ClothingEyesGlassesMedSec
     id: BrigmedicPDA
     ears: ClothingHeadsetBrigmedic # EE parity like i was told to do
-    belt: ClothingBeltMedicalEMTFilled
+    belt: ClothingBeltMedicalEMTBrigmedicFilled # Orion-Edit
     pocket1: WeaponWaterPistolFilledFire # EE parity, make corpsman able to carry weapons like the rest of security # Orion-Edit: PistolMk58 > WeaponWaterPistolFilledFire
     pocket2: WeaponDisabler # Goob
   inhand: # Orion

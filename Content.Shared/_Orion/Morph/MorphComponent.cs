@@ -52,7 +52,7 @@ public sealed partial class MorphComponent : Component
     public float DevourWeaponOnBeingHit = 0.5f;
 
     [DataField]
-    public int DevourWeaponHungerCost = 5;
+    public int DevourWeaponHungerCost = -5;
 
     [DataField]
     public int DetectableCount = 3;
