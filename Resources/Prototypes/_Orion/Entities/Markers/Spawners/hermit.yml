@@ -26,6 +26,7 @@
     - MindRoleGhostRole
   - type: CloningAppearance
     startingGear: HermitGear
+    copyTraits: true
     components:
     - type: AntagImmune
     - type: NpcFactionMember
