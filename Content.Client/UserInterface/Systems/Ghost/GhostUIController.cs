@@ -26,6 +26,7 @@ using Content.Client.UserInterface.Systems.Ghost.Widgets;
 using Content.Shared.Ghost;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
+using Robust.Shared.Timing;
 
 namespace Content.Client.UserInterface.Systems.Ghost;
 
@@ -37,6 +38,8 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
 
     private GhostGui? Gui => UIManager.GetActiveUIWidgetOrNull<GhostGui>();
 
+    private float _warpsRefreshAccumulator;
+    private const float WarpsRefreshInterval = 1f;
 
     public override void Initialize()
     {
@@ -75,6 +78,21 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         system.PlayerDetached -= OnPlayerDetached;
         system.GhostWarpsResponse -= OnWarpsResponse;
         system.GhostRoleCountUpdated -= OnRoleCountUpdated;
+    }
+
+    public override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        if (_system is null || Gui?.TargetWindow is not { IsOpen: true })
+            return;
+
+        _warpsRefreshAccumulator += args.DeltaSeconds;
+        if (_warpsRefreshAccumulator < WarpsRefreshInterval)
+            return;
+
+        _warpsRefreshAccumulator = 0f;
+        _system.RequestWarps();
     }
 
     public void UpdateGui()
