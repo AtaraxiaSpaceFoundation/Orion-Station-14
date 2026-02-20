@@ -22,6 +22,7 @@
     interfaces:
       enum.RecruitmentConfirmationUiKey.Key:
         type: RecruitmentConfirmationBoundUserInterface
+        interactionRange: 1
       enum.RecruitmentMemberListUiKey.Key:
         type: RecruitmentMemberListBoundUserInterface
   - type: ScannableForPoints # Goob

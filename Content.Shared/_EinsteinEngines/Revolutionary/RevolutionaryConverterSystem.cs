@@ -130,7 +130,7 @@ public sealed class RevolutionaryConverterSystem : EntitySystem
                 converter.Owner,
                 target: target,
                 used: converter.Owner,
-                showTo: converter.Owner)
+                showTo: user)
             {
                 Hidden = !converter.Comp.VisibleDoAfter,
                 BreakOnMove = false,

@@ -9,6 +9,9 @@ public sealed class RecruitmentMemberListSystem : EntitySystem
 {
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
+    private const float UpdateIntervalSeconds = 2f;
+    private float _nextUpdateAt;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -57,5 +60,25 @@ public sealed class RecruitmentMemberListSystem : EntitySystem
 
         var state = new RecruitmentMemberListBuiState(comp.OrganizationName, members.ToArray());
         _ui.SetUiState(uid, RecruitmentMemberListUiKey.Key, state);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        _nextUpdateAt -= frameTime;
+        if (_nextUpdateAt > 0f)
+            return;
+
+        _nextUpdateAt = UpdateIntervalSeconds;
+
+        var query = EntityQueryEnumerator<RecruitmentScanningComponent>();
+        while (query.MoveNext(out var scannerUid, out var scannerComp))
+        {
+            if (!_ui.IsUiOpen(scannerUid, RecruitmentMemberListUiKey.Key))
+                continue;
+
+            UpdateMemberList(scannerUid, scannerComp);
+        }
     }
 }
