@@ -9,12 +9,9 @@
     description: ghost-role-information-morph-description
     rules: ghost-role-information-morph-rules
     mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
+    - MindRoleMorph
     raffle:
       settings: short
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 54000 # 15h
   - type: GhostTakeoverAvailable
   - type: InputMover
   - type: MobMover
@@ -48,8 +45,8 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Blunt: 11
-        Slash: 9
+        Blunt: 18
+        Slash: 12
   - type: ReplacementAccent
     accent: genericAggressive
   - type: Speech
@@ -71,6 +68,17 @@
     baseDecayRate: 0
     starvingSlowdownModifier: 1
   - type: Morph
+    devourHealingDamage:
+      types:
+        Blunt: -20
+        Slash: -20
+        Piercing: -20
+        Heat: -20
+        Shock: -20
+        Cold: -20
+        Poison: -20
+        Radiation: -20
+        Asphyxiation: -20
     damageOnTouch:
       types:
         Blunt: 16

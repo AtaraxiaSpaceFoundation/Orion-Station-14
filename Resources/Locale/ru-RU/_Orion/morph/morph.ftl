@@ -19,9 +19,12 @@ morph-role-greeting =
     Поглоти меня, поглоти их, поглоти их семьи.
     Вы морф!
 
+morph-round-end-objective-reproduce = Размножиться: { $current }/{ $target }.
 morph-name-user = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) произвел на свет { $count } { $count ->
     [one] потомка
     [few] потомков
    *[other] потомков
 }
-morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) не произвел потомства
+morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) не произвел потомства!
+morph-round-end-objective-survive = Выжить до конца раунда.
+morph-round-end-objective-devour = Поглотить живых существ: { $current }/{ $target }.

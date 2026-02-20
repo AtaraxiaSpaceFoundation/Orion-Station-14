@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server._Orion.Roles;
 using Content.Server.Chat.Systems;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Stunnable;
@@ -15,11 +16,13 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Devour;
 using Content.Shared.Devour.Components;
 using Content.Shared.Examine;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -29,6 +32,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Polymorph.Components;
 using Content.Shared.Polymorph.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
 using Content.Shared.Standing;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
@@ -68,13 +72,23 @@ public sealed class MorphSystem : SharedMorphSystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
 
     public ProtoId<DamageGroupPrototype> BruteDamageGroup = "Brute";
     public ProtoId<DamageGroupPrototype> BurnDamageGroup = "Burn";
 
+    private bool _morphThreatActive;
+    private readonly object _morphThreatLock = new();
+    private readonly HashSet<EntityUid> _terminatedMorphs = new();
+
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ =>
+        {
+            _morphThreatActive = false;
+            _terminatedMorphs.Clear();
+        });
 
         SubscribeLocalEvent<MorphComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<MorphComponent, MeleeHitEvent>(OnAttack);
@@ -99,6 +113,10 @@ public sealed class MorphSystem : SharedMorphSystem
         SubscribeLocalEvent<MorphAmbushComponent, UpdateCanMoveEvent>(OnCanMoveEvent);
 
         SubscribeLocalEvent<MorphComponent, DevourDoAfterEvent>(OnDevoured);
+
+        SubscribeLocalEvent<MorphComponent, MindAddedMessage>(OnMindAdded);
+        SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdded);
+        SubscribeLocalEvent<MorphComponent, EntityTerminatingEvent>(OnTerminating);
     }
 
     #region Core
@@ -155,6 +173,9 @@ public sealed class MorphSystem : SharedMorphSystem
     {
         if (args.NewMobState is MobState.Dead && TryComp<ChameleonDisguisedComponent>(morph.Owner, out var comp))
             _chameleon.TryReveal((morph.Owner, comp));
+
+        if (args.NewMobState is MobState.Dead)
+            UpdateMorphThreatState(morph.Comp);
     }
 
     private void OnTransformSpeakerName(Entity<MorphComponent> morph, ref TransformSpeakerNameEvent arg)
@@ -196,6 +217,9 @@ public sealed class MorphSystem : SharedMorphSystem
 
         if (args.User == args.Used)
         {
+            if (morph.Comp.Biomass < morph.Comp.DevourWeaponHungerCost)
+                return;
+
             _damageable.TryChangeDamage(args.User, morph.Comp.DamageOnTouch);
             ChangeBiomassAmount(morph.Comp.DevourWeaponHungerCost, morph.Owner, morph.Comp);
         }
@@ -269,7 +293,7 @@ public sealed class MorphSystem : SharedMorphSystem
         }
     }
 
-    private void OnCanMoveEvent(EntityUid uid, MorphAmbushComponent component, UpdateCanMoveEvent args)
+    private static void OnCanMoveEvent(EntityUid uid, MorphAmbushComponent component, UpdateCanMoveEvent args)
     {
         args.Cancel();
     }
@@ -305,24 +329,6 @@ public sealed class MorphSystem : SharedMorphSystem
 
         input.CanMove = true;
         Dirty(uid, input);
-    }
-
-    private bool NonMorphInRange(EntityUid uid, MorphComponent morph)
-    {
-        var coordinates = _transform.GetMapCoordinates(uid);
-        foreach (var entity in _lookup.GetEntitiesInRange(coordinates, morph.AmbushBlockRange))
-        {
-            if (!HasComp<MindContainerComponent>(entity) || HasComp<MorphComponent>(entity) ||
-                HasComp<GhostComponent>(entity))
-                continue;
-
-            if ((TryComp<MobStateComponent>(entity, out var entityMobState) && HasComp<GhostTakeoverAvailableComponent>(entity) && _mobState.IsDead(entity, entityMobState)))
-                continue;
-
-            return true;
-        }
-
-        return false;
     }
 
     private void OnAmbushInteract(EntityUid uid, MorphAmbushComponent component, UndisguisedEvent args)
@@ -425,6 +431,15 @@ public sealed class MorphSystem : SharedMorphSystem
         }
 
         ChangeBiomassAmount(biomassReward, morph.Owner, morph.Comp);
+
+        if (!TryComp<MobStateComponent>(target, out var targetMobState))
+            return;
+
+        morph.Comp.LivingDevoured++;
+        Dirty(morph);
+
+        if (!_mobState.IsDead(target, targetMobState))
+            _damageable.TryChangeDamage(morph.Owner, morph.Comp.DevourHealingDamage!);
     }
     #endregion
 
@@ -432,29 +447,25 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnReproduceAction(EntityUid uid, MorphComponent morph, MorphReproduceActionEvent args)
     {
+        if (!TryComp<MobStateComponent>(uid, out var mobState) || _mobState.IsDead(uid, mobState))
+            return;
+
         if (morph.Biomass < morph.ReplicationCost)
             return;
 
         var child = Spawn(morph.MorphSpawnProto, Transform(uid).Coordinates);
+        if (TryComp<MorphComponent>(child, out var childMorph))
+        {
+            childMorph.ParentMorph = uid;
+            Dirty(child, childMorph);
+        }
 
         morph.Children++;
         morph.TotalChildren++;
         Dirty(uid, morph);
 
         ChangeBiomassAmount(-morph.ReplicationCost, uid, morph);
-
-        var morphList = new List<EntityUid>();
-        var morphs = AllEntityQuery<MorphComponent, MobStateComponent>();
-        while (morphs.MoveNext(out var ent, out _, out _))
-        {
-            morphList.Add(ent);
-        }
-
-        if (morphList.Count >= morph.DetectableCount)
-        {
-            _chatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
-            _audioSystem.PlayGlobal(morph.SoundReplication, Filter.Broadcast(), true);
-        }
+        UpdateMorphThreatState(morph);
 
         _actions.StartUseDelay(morph.ReplicationActionEntity);
     }
@@ -477,6 +488,115 @@ public sealed class MorphSystem : SharedMorphSystem
         ChangeBiomassAmount(-morph.OpenVentCost, uid, morph);
         _weldable.SetWeldedState(args.Target, false, weldableComponent);
         _popup.PopupEntity(Loc.GetString("morph-vent-action-success", ("target", ToPrettyString(args.Target))), uid, PopupType.Medium);
+    }
+
+    #endregion
+
+    #region Utils
+
+    private void OnMindAdded(Entity<MorphComponent> ent, ref MindAddedMessage args)
+    {
+        if (!_mind.TryGetMind(ent, out var mindId, out var mindComp))
+            return;
+
+        EnsureMorphObjectives(mindId, mindComp, ent.Comp.Objectives);
+    }
+
+    private void OnRoleAdded(RoleAddedEvent args)
+    {
+        if (args.Mind.OwnedEntity is not { } ownedEntity ||
+            !TryComp<MorphComponent>(ownedEntity, out var morph))
+            return;
+
+        EnsureMorphObjectives(args.MindId, args.Mind, morph.Objectives);
+    }
+
+    private void EnsureMorphObjectives(EntityUid mindId, MindComponent mindComp, List<EntProtoId> objectives)
+    {
+        if (!mindComp.MindRoles.Any(HasComp<MorphRoleComponent>))
+            return;
+
+        foreach (var objective in objectives)
+        {
+            if (mindComp.Objectives.Any(uid =>
+                {
+                    var objectiveProto = MetaData(uid).EntityPrototype;
+                    return objectiveProto is not null && objectiveProto.ID == objective;
+                }))
+                continue;
+
+            _mind.TryAddObjective(mindId, mindComp, objective);
+        }
+    }
+
+    private void UpdateMorphThreatState(MorphComponent morph)
+    {
+        lock (_morphThreatLock)
+        {
+            var activeMorphCount = CountActiveMorphs();
+            var hasThreat = activeMorphCount >= morph.DetectableCount;
+
+            switch (hasThreat)
+            {
+                case true when !_morphThreatActive:
+                    _chatSystem.DispatchFilteredAnnouncement(Filter.Broadcast(), Loc.GetString("morphs-announcement"), playSound: false, colorOverride: Color.Gold);
+                    _audioSystem.PlayGlobal(morph.SoundReplication, Filter.Broadcast(), true);
+                    _morphThreatActive = true;
+                    break;
+                case false when _morphThreatActive:
+                    _morphThreatActive = false;
+                    break;
+            }
+        }
+    }
+
+    private int CountActiveMorphs()
+    {
+        var count = 0;
+        var morphs = AllEntityQuery<MorphComponent, MobStateComponent>();
+        while (morphs.MoveNext(out var uid, out _, out var mobState))
+        {
+            if (_mobState.IsDead(uid, mobState))
+                continue;
+
+            count++;
+        }
+
+        return count;
+    }
+
+    private bool NonMorphInRange(EntityUid uid, MorphComponent morph)
+    {
+        var coordinates = _transform.GetMapCoordinates(uid);
+        var nearbyEntities = _lookup.GetEntitiesInRange<MindContainerComponent>(coordinates, morph.AmbushBlockRange);
+
+        return nearbyEntities.Any(entity =>
+        {
+            if (HasComp<MorphComponent>(entity) || HasComp<GhostComponent>(entity))
+                return false;
+
+            if (TryComp<MobStateComponent>(entity, out var mobState) &&
+                HasComp<GhostTakeoverAvailableComponent>(entity) &&
+                _mobState.IsDead(entity, mobState))
+                return false;
+
+            return true;
+        });
+    }
+
+    private void OnTerminating(Entity<MorphComponent> morph, ref EntityTerminatingEvent args)
+    {
+        if (!_terminatedMorphs.Add(morph.Owner))
+            return;
+
+        if (morph.Comp.ParentMorph is not { } parent)
+            return;
+
+        if (!TryComp<MorphComponent>(parent, out var parentMorph))
+            return;
+
+        parentMorph.Children = Math.Max(0, parentMorph.Children - 1);
+        Dirty(parent, parentMorph);
     }
 
     #endregion
