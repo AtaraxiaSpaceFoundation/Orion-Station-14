@@ -18,6 +18,16 @@
   - SecurityGunMk58
   - SecurityGunLaserPistol
 
+# Engineering
+- type: loadoutGroup
+  id: StationEngineerEyes
+  name: loadout-group-station-engineer-eyes
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - StationEngineerEyesMeson
+  - StationEngineerEyesWelding
+
 # Medical
 - type: loadoutGroup
   id: ChiefMedicalOfficerEyes

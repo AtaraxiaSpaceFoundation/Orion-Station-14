@@ -1,5 +1,7 @@
 loadout-group-security-gun = СБ, пистолет
 
+loadout-group-station-engineer-eyes = Очки
+
 loadout-group-chief-medical-officer-eyes = Главный врач, очки
 
 loadout-group-passenger-head = Ассистент, голова

@@ -315,7 +315,7 @@
     onActivate: false
   - type: AugmentStrength
   - type: AugmentPowerDraw
-    draw: 30
+    draw: 20 # Orion-Edit: 30 > 20
   - type: AugmentAction
     action: ActionAugmentToggleStrength
   - type: Construction

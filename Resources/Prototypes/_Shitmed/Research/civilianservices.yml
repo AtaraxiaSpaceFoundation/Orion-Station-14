@@ -94,7 +94,7 @@
     state: cell
   discipline: CivilianServices
   tier: 2
-  cost: 5000
+  cost: 2500 # Orion-Edit: 5000 > 2500
   position: -5,6
   technologyPrerequisites:
   - BasicCybernetics
@@ -110,7 +110,7 @@
     state: base
   discipline: CivilianServices
   tier: 2
-  cost: 10000
+  cost: 5000 # Orion-Edit: 10000 > 5000
   position: -5,7
   technologyPrerequisites:
   - BasicAugmentation

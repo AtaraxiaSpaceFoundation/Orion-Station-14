@@ -558,6 +558,7 @@
   groups:
   - GroupTankHarness
   - ChiefEngineerHead
+  - StationEngineerEyes # Orion
   - ChiefEngineerJumpsuit
   - StationEngineerBackpack
   - ChiefEngineerNeck
@@ -604,6 +605,7 @@
   groups:
   - GroupTankHarness
   - StationEngineerHead
+  - StationEngineerEyes # Orion
   - StationEngineerJumpsuit
   - StationEngineerBackpack
   - StationEngineerOuterClothing
@@ -629,6 +631,7 @@
   groups:
   - GroupTankHarness
   - AtmosphericTechnicianHead # Goobstation
+  - StationEngineerEyes # Orion
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
