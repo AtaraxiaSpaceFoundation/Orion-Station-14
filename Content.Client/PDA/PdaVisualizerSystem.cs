@@ -30,7 +30,8 @@ public sealed class PdaVisualizerSystem : VisualizerSystem<PdaVisualsComponent>
     public enum PdaVisualLayers : byte
     {
         Base,
+        Screen, // Orion
         Flashlight,
-        IdLight
+        IdLight,
     }
 }
