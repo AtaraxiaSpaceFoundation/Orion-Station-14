@@ -352,7 +352,7 @@
   flavor: funny
   color: "#FF4DD2"
   slipData:
-    requiredSlipSpeed: 3.5 # Orion-Edit: Light slippery curse
+    requiredSlipSpeed: 4.6 # Orion-Edit: 3.5 > 4.6 Light slippery curse
   metabolisms:
     Medicine:
       effects:

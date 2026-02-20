@@ -61,7 +61,7 @@
   group: AlcoholicDrinks # Goob - Drinks guidebook split
   abstract: true
   slipData:
-    requiredSlipSpeed: 3.5 # Orion-Edit: Light slippery curse
+    requiredSlipSpeed: 4.3 # Orion-Edit: 3.5 > 4.3 Light slippery curse
   friction: 0.4
   metabolisms:
     Drink:

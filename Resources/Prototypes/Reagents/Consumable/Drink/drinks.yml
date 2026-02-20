@@ -490,6 +490,8 @@
   parent: BaseDrink
   desc: reagent-desc-soda-water
   physicalDesc: reagent-physical-desc-fizzy
+  slipData: # Orion: Light slippery curse
+    requiredSlipSpeed: 4.4
   flavor: fizzy
   color: "#619494"
   fizziness: 0.8
@@ -573,7 +575,7 @@
   physicalDesc: reagent-physical-desc-translucent
   # Orion-Start
   slipData:
-    requiredSlipSpeed: 4.0
+    requiredSlipSpeed: 4.4
   # Orion-End
   flavor: water
   color: "#75b1f0"
