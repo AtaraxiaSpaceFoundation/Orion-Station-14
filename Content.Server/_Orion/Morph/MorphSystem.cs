@@ -438,13 +438,14 @@ public sealed class MorphSystem : SharedMorphSystem
 
         ChangeBiomassAmount(biomassReward, morph.Owner, morph.Comp);
 
-        if (!TryComp<MobStateComponent>(target, out var targetMobState) || _mobState.IsDead(target, targetMobState))
+        if (!TryComp<MobStateComponent>(target, out var targetMobState))
             return;
 
         morph.Comp.LivingDevoured++;
         Dirty(morph);
 
-        _damageable.TryChangeDamage(morph.Owner, morph.Comp.DevourHealingDamage, origin: target);
+        if (!_mobState.IsDead(target, targetMobState))
+            _damageable.TryChangeDamage(morph.Owner, morph.Comp.DevourHealingDamage, origin: target);
     }
     #endregion
 
