@@ -23,7 +23,7 @@
         amount: 4
       - id: MedicatedSuture
       - id: RegenerativeMesh
-      - id: ChemistryBottleBicaridine
-      - id: ChemistryBottleDermaline
+      - id: ChemistryBottleDexalinPlus
+      - id: ChemistryBottlePhalanximine
       - id: ChemistryBottleEpinephrine
       - id: Syringe

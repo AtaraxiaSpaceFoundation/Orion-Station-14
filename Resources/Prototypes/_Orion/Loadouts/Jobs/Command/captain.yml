@@ -110,7 +110,7 @@
 - type: loadout
   id: CaptainInvisibleCarapace
   equipment:
-    outerClothing: ClothingOuterArmourInvisibleCaptain
+    outerClothing: ClothingOuterArmorInvisibleCaptain
 
 - type: loadout
   id: CaptainWhiteCoat
