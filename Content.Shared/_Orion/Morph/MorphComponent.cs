@@ -60,22 +60,8 @@ public sealed partial class MorphComponent : Component
     [DataField]
     public int DevourWeaponHungerCost = 5;
 
-    [DataField]
-    public DamageSpecifier DevourHealingDamage = new()
-    {
-        DamageDict = new Dictionary<string, FixedPoint2>
-        {
-            { "Blunt", -20 },
-            { "Slash", -20 },
-            { "Piercing", -20 },
-            { "Heat", -20 },
-            { "Shock", -20 },
-            { "Cold", -20 },
-            { "Poison", -20 },
-            { "Radiation", -20 },
-            { "Asphyxiation", -20 },
-        },
-    };
+    [DataField(required: true)]
+    public DamageSpecifier? DevourHealingDamage;
 
     [DataField]
     public int DetectableCount = 3;

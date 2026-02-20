@@ -68,6 +68,17 @@
     baseDecayRate: 0
     starvingSlowdownModifier: 1
   - type: Morph
+    devourHealingDamage:
+      types:
+        Blunt: -20
+        Slash: -20
+        Piercing: -20
+        Heat: -20
+        Shock: -20
+        Cold: -20
+        Poison: -20
+        Radiation: -20
+        Asphyxiation: -20
     damageOnTouch:
       types:
         Blunt: 16
