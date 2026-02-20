@@ -181,7 +181,7 @@
     slipData:
       stunTime: 2 # Orion
       knockdownTime: 4 # Orion-Edit: 3 > 4
-      launchForwardsMultiplier: 3 # Orion-Edit: 3 > 5
+      launchForwardsMultiplier: 5 # Orion-Edit: 3 > 5
   - type: Item
     heldPrefix: syndie
   - type: FlavorProfile
