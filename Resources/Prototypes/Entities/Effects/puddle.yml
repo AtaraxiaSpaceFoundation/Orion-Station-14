@@ -256,9 +256,11 @@
     mode: SnapgridCenter
   components:
   - type: Clickable
-#  - type: Slippery # Orion-Edit: Fuck slippery curse
-#    staminaDamage: 0
-#    frictionStatusTime: 0 # Don't apply friction twice
+  - type: Slippery
+    staminaDamage: 0
+    frictionStatusTime: 0 # Don't apply friction twice
+    slipData: # Orion: Light slippery curse
+      requiredSlipSpeed: 5
   - type: Transform
     noRot: true
     anchored: true
@@ -298,10 +300,10 @@
   - type: ActiveEdgeSpreader
   - type: EdgeSpreader
     id: Puddle
-#  - type: StepTrigger # Orion-Edit: Fuck slippery curse
-#    triggerGroups: # Goobstation
-#      types:
-#      - SlipTile
+  - type: StepTrigger
+    triggerGroups: # Goobstation
+      types:
+      - SlipTile
   - type: Edible
     edible: Drink
     delay: 3
