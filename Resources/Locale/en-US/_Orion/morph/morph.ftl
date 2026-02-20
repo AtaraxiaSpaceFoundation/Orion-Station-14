@@ -19,8 +19,11 @@ morph-role-greeting =
     Devour me, devour them, and devour their families.
     You're morph!
 
+morph-round-end-objective-reproduce = Reproduce: { $current }/{ $target }.
 morph-name-user = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) reproduced { $count } { $count ->
     [one] morph
    *[other] morphs
 }
-morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) was not reproduced
+morph-name-user-lone = [color=gray]{ $name }[/color] ([color=white]{ $username }[/color]) was not reproduced!
+morph-round-end-objective-survive = Survive until the end of the round.
+morph-round-end-objective-devour = Devour living creatures: { $current }/{ $target }.

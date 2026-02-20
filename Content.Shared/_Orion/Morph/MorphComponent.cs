@@ -1,11 +1,9 @@
 using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Robust.Shared.Containers;
-using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization;
@@ -33,11 +31,19 @@ public sealed partial class MorphComponent : Component
     public Container MimicryContainer = default!;
     public string MimicryContainerId = "mimicryContainer";
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public FixedPoint2 Biomass;
 
     [DataField]
     public FixedPoint2 MaxBiomass = FixedPoint2.New(300);
+
+    [DataField]
+    public List<EntProtoId> Objectives = new()
+    {
+        "MorphSurviveObjective",
+        "MorphDevourLivingObjective",
+        "MorphReproduceObjective",
+    };
 
     [DataField]
     public DamageSpecifier DamageOnTouch = default!;
@@ -54,6 +60,9 @@ public sealed partial class MorphComponent : Component
     [DataField]
     public int DevourWeaponHungerCost = -5;
 
+    [DataField(required: true)]
+    public DamageSpecifier? DevourHealingDamage;
+
     [DataField]
     public int DetectableCount = 3;
 
@@ -63,13 +72,13 @@ public sealed partial class MorphComponent : Component
     [DataField]
     public int ReplicationCost = 200;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField]
+    [DataField]
     public SoundSpecifier? SoundDevour = new SoundPathSpecifier("/Audio/Effects/demon_consume.ogg")
     {
         Params = AudioParams.Default.WithVolume(-3f),
     };
 
-    [ViewVariables(VVAccess.ReadWrite), DataField]
+    [DataField]
     public SoundSpecifier? SoundReplication = new SoundPathSpecifier("/Audio/Announcements/outbreak7.ogg")
     {
         Params = AudioParams.Default.WithVolume(-3f),
@@ -113,7 +122,15 @@ public sealed partial class MorphComponent : Component
     /// </summary>
     [DataField]
     public int Children;
-    public int TotalChildren = 0;
+
+    [DataField]
+    public int TotalChildren;
+
+    /// <summary>
+    ///     Parent morph that spawned this morph.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadOnly)]
+    public EntityUid? ParentMorph;
 
     /// <summary>
     ///     How much damage to trigger undisguise
@@ -123,6 +140,15 @@ public sealed partial class MorphComponent : Component
 
     [DataField]
     public ProtoId<AlertPrototype> BiomassAlert = "Biomass";
+
+    [DataField]
+    public int RoundEndDevourTarget = 3;
+
+    [DataField]
+    public int RoundEndReproduceTarget = 2;
+
+    [DataField]
+    public int LivingDevoured;
 }
 
 [Serializable, NetSerializable]

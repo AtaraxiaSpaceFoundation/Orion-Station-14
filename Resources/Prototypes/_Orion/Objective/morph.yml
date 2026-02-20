@@ -5,16 +5,34 @@
   - type: Objective
     difficulty: 1
     issuer: objective-issuer-unknown
+    icon:
+      sprite: _Orion/Mobs/Aliens/morph.rsi
+      state: alive
   - type: RoleRequirement
     roles:
     - MorphRole
 
 - type: entity
-  parent: [BaseMorphObjective, BaseSurviveObjective]
+  parent: [ BaseMorphObjective, BaseSurviveObjective ]
   id: MorphSurviveObjective
-  name: Survive and reproduce.
+  name: Survive until the end of the round.
+
+- type: entity
+  parent: BaseMorphObjective
+  id: MorphDevourLivingObjective
+  name: Devour living creatures.
   components:
   - type: Objective
-    icon:
-      sprite: _Orion/Mobs/Aliens/morph.rsi
-      state: alive
+    difficulty: 2
+  - type: MorphDevourLivingCondition
+    target: 3
+
+- type: entity
+  parent: BaseMorphObjective
+  id: MorphReproduceObjective
+  name: Reproduce.
+  components:
+  - type: Objective
+    difficulty: 1
+  - type: MorphReproduceCondition
+    target: 2
