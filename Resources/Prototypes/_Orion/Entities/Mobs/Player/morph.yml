@@ -48,8 +48,8 @@
       path: /Audio/Effects/bite.ogg
     damage:
       types:
-        Blunt: 11
-        Slash: 9
+        Blunt: 18
+        Slash: 12
   - type: ReplacementAccent
     accent: genericAggressive
   - type: Speech

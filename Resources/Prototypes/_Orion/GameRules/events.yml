@@ -81,6 +81,8 @@
   - type: AntagObjectives
     objectives:
     - MorphSurviveObjective
+    - MorphDevourLivingObjective
+    - MorphReproduceObjective
   - type: AntagSelection
     agentName: morph-round-end-agent-name
     definitions:
