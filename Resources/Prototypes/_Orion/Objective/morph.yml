@@ -15,7 +15,7 @@
 - type: entity
   parent: [ BaseMorphObjective, BaseSurviveObjective ]
   id: MorphSurviveObjective
-  name: Survive and reproduce.
+  name: Survive until the end of the round.
 
 - type: entity
   parent: BaseMorphObjective

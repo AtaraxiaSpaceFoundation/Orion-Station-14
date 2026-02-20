@@ -16,6 +16,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Devour;
 using Content.Shared.Devour.Components;
 using Content.Shared.Examine;
+using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -81,6 +82,7 @@ public sealed class MorphSystem : SharedMorphSystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _morphThreatActive = false);
 
         SubscribeLocalEvent<MorphComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<MorphComponent, MeleeHitEvent>(OnAttack);
@@ -436,7 +438,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
         ChangeBiomassAmount(biomassReward, morph.Owner, morph.Comp);
 
-        if (!TryComp<MobStateComponent>(target, out var targetMobState) || !_mobState.IsAlive(target, targetMobState))
+        if (!TryComp<MobStateComponent>(target, out var targetMobState) || _mobState.IsDead(target, targetMobState))
             return;
 
         morph.Comp.LivingDevoured++;
@@ -574,5 +576,5 @@ public sealed class MorphSystem : SharedMorphSystem
         Dirty(parent, parentMorph);
     }
 
-    # endregion
+    #endregion
 }

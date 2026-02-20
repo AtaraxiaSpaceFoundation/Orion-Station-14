@@ -1,14 +1,16 @@
 - type: entity
-  categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
   id: SpawnPointGhostMorph
+  name: ghost role spawn point
+  suffix: morph
+  categories: [ Spawner ]
   components:
   - type: GhostRole
     name: ghost-role-information-morph-name
     description: ghost-role-information-morph-description
     rules: ghost-role-information-morph-rules
     mindRoles:
-    - MindRoleGhostRoleTeamAntagonist
+    - MindRoleMorph
     raffle:
       settings: default
     requirements:
