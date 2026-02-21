@@ -1,3 +1,11 @@
+- type: construction
+  id: AdvancedMedVisor
+  graph: VisorMedHUD
+  startNode: start
+  targetNode: MedVisor
+  category: construction-category-clothing
+  objectType: Item
+
 - type: constructionGraph
   id: VisorMedHUD
   graph:

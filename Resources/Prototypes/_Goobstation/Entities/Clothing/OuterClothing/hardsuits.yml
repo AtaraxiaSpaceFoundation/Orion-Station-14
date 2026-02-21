@@ -218,7 +218,7 @@
         Heat: 0.1
         Radiation: 0.25 # do people even know rad ammo exists? anyway making rad its weakness is kinda fair
         Caustic: 0.4
-    ignoreArmorPierceFlags: Positive # Orion
+      ignoreArmorPierceFlags: All # Orion
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.5
