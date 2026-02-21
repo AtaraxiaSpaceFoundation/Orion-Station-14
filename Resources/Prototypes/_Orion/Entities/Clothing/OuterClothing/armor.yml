@@ -102,6 +102,14 @@
     state: icon-blue
   - type: Clothing
     sprite: _Goobstation/Clothing/Armor/covert_armor.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
+        Heat: 0.5
+        Caustic: 0.75
 
 - type: entity
   parent: ClothingOuterArmorBase

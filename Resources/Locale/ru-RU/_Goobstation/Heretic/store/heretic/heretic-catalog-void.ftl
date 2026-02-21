@@ -36,16 +36,16 @@ knowledge-path-void-s2-desc =
     Они молчат. Тайна ещё не раскрыта.
     
     Ваша Хват Мансуса теперь временно лишает жертву голоса и охлаждает её.
-#knowledge-path-void-s3-name = Путь аристократа
-#knowledge-path-void-s3-desc =
+# knowledge-path-void-s3-name = Путь аристократа
+# knowledge-path-void-s3-desc =
 knowledge-path-void-s4-name = Знак пустоты
 knowledge-path-void-s4-desc =
     Порыв ветра? Мерцание в воздухе? Присутствие ошеломляет, мои чувства предают меня. Мой разум — мой враг.
     
     Ваш Хват Мансуса теперь накладывает Знак пустоты. Знак активируется при атаке Клинком пустоты.
     При активации накладывает на жертву Проклятие Пустоты, которое лишает её голоса и медленно замораживает до смерти.
-#knowledge-path-void-s5-name = Взрыв пустоты
-#knowledge-path-void-s5-desc =
+# knowledge-path-void-s5-name = Взрыв пустоты
+# knowledge-path-void-s5-desc =
 knowledge-path-void-s6-name = Фаза пустоты
 knowledge-path-void-s6-desc =
     Сущность называет себя Аристократом. Она легко шагает по воздуху, словно по земле, оставляя за собой холодный порыв.

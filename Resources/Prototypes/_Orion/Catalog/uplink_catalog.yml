@@ -91,7 +91,7 @@
   icon: { sprite: _Orion/Objects/Weapons/Guns/LMGs/rpd/big.rsi, state: icon }
   productEntity: WeaponLightMachineGunRPD
   cost:
-    Telecrystal: 125
+    Telecrystal: 110
   categories:
   - UplinkWeaponry
 
@@ -110,3 +110,22 @@
     blacklist:
       tags:
       - ContractorUplink
+
+- type: listing
+  id: UplinkReinforcementRadioSyndicateCyborgSaboteur
+  name: uplink-reinforcement-radio-cyborg-saboteur-name
+  description: uplink-reinforcement-radio-cyborg-saboteur-desc
+  productEntity: ReinforcementRadioSyndicateCyborgSaboteur
+  icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-saboteur }
+  cost:
+    Telecrystal: 280
+  categories:
+    - UplinkAllies
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+      blacklist:
+        tags:
+        - ContravendUplink

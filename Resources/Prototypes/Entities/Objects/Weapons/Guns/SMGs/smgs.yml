@@ -82,10 +82,10 @@
   - type: AmmoCounter
   - type: Gun
     minAngle: 2
-    maxAngle: 16
+    maxAngle: 13 # Orion-Edit: 16 > 13
     fireRate: 8
     burstFireRate: 8
-    angleIncrease: 3
+    angleIncrease: 2 # Orion-Edit: 3 > 2
     angleDecay: 16
     projectileSpeed: 25 # Orion: Another speed
     selectedMode: FullAuto

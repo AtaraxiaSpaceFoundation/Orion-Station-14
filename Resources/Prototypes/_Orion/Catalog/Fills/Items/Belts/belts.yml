@@ -24,10 +24,10 @@
     contents:
       - id: MedicatedSuture
       - id: RegenerativeMesh
+      - id: Bloodpack
       - id: SprayBottleStypticPowder
       - id: SprayBottleSilverSulfadiazine
       - id: HandheldCrewMonitor
-      - id: Crowbar
       - id: PillCanisterBicaridine
       - id: PillCanisterDermaline
       - id: PillCanisterDylovene

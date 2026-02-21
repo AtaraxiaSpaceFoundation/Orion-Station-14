@@ -517,7 +517,7 @@
   - type: MeleeWeapon
     heavyStaminaCost: 0 # goob edit
     wideAnimationRotation: -135
-    attackRate: 1 #Goob Station rebalance, was originally 1.5
+    attackRate: 1.5 #Goob Station rebalance, was originally 1.5 # Orion-Edit: 1 > 1.5
     angle: 100
     damage:
       types:

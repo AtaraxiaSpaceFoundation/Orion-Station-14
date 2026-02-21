@@ -290,7 +290,7 @@
     slipData:
       stunTime: 3 # Orion
       knockdownTime: 6.0 # Orion-Edit: 5 > 6
-      launchForwardsMultiplier: 7.0 # Orion-Edit 3 > 7
+      launchForwardsMultiplier: 7.0 # Orion-Edit: 3 > 7
   - type: Item
     heldPrefix: omega
   - type: SolutionContainerManager

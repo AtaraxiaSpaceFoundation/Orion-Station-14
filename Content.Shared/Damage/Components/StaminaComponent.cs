@@ -127,7 +127,7 @@ public sealed partial class StaminaComponent : Component
     /// <summary>
     /// Thresholds that determine an entity's slowdown as a function of stamina damage.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField] // Orion-Edit: Added (AutoNetworkedField)
     public Dictionary<FixedPoint2, float> StunModifierThresholds = new() { {0, 1f }, { 65, 0.7f }, { 80, 0.45f } }; // Orion-Edit
 
     #region Animation Data

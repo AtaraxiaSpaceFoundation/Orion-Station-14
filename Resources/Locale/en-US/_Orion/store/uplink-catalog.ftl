@@ -12,3 +12,6 @@ uplink-rpd-desc = A 7.62mm light machine gun. The rate of fire suffers, includin
 
 uplink-rpd-box-name = Drum magazine for RPD (7.62mm)
 uplink-rpd-box-desc = 80 rounds of 7.62mm ammunition for the light machine gun.
+
+uplink-reinforcement-radio-cyborg-saboteur-name = Syndicate Saboteur Cyborg Teleporter
+uplink-reinforcement-radio-cyborg-saboteur-desc = An engineering cyborg designed for repair, sabotage, and support. Equipped with a backup pistol and an energy sword for self-defense.

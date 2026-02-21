@@ -232,6 +232,7 @@
   - type: Armor
     coverage:
     - Chest
+    - Groin # Orion
     modifiers:
       coefficients: #hello genius this is an ADMEME item do not TOUCH IT during your BALANCE PATCHES
         Blunt: 0.35

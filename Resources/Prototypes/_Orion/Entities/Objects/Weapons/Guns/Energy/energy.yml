@@ -39,8 +39,8 @@
     maxCharge: 2000
     startingCharge: 2000
   - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
-    fireCost: 50
+    proto: RedMediumLaser
+    fireCost: 56
   - type: Wieldable
 
 - type: entity
@@ -120,7 +120,7 @@
     minAngle: 7
     maxAngle: 45
     cameraRecoilScalar: 2
-    fireRate: 5
+    fireRate: 4
     selectedMode: FullAuto
     availableModes:
     - SemiAuto
@@ -136,7 +136,7 @@
     startingCharge: 1000
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
-    fireCost: 50
+    fireCost: 40
   - type: Wieldable
 
 - type: entity

@@ -483,8 +483,10 @@ public sealed class SuitSensorSystem : EntitySystem
                 userJob = card.Comp.LocalizedJobTitle;
             userJobIcon = card.Comp.JobIcon;
 
+            // Orion-Edit-Start: sorting by departments
             foreach (var department in card.Comp.JobDepartments)
-                userJobDepartments.Add(Loc.GetString(_proto.Index(department).Name));
+                userJobDepartments.Add(department);
+            // Orion-Edit-End
         }
 
         // get health mob state
