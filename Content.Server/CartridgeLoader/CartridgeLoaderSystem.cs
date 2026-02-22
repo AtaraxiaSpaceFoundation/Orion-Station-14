@@ -507,6 +507,7 @@ public sealed class CartridgeLoaderSystem : SharedCartridgeLoaderSystem
     private void UpdateUserInterfaceState(EntityUid loaderUid, CartridgeLoaderComponent loader)
     {
         UpdateUiState(loaderUid, null, loader);
+        _pda.UpdatePdaUi(loaderUid); // Orion
     }
 
     private void UpdateCartridgeInstallationStatus(EntityUid cartridgeUid, InstallationStatus installationStatus, CartridgeComponent cartridgeComponent)

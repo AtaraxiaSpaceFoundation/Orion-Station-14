@@ -23,6 +23,7 @@ namespace Content.Shared.PDA
     {
         IdCardInserted,
         PdaType,
+        ScreenState, // Orion
     }
 
     [Serializable, NetSerializable]
