@@ -24,8 +24,8 @@
                 sprite: Clothing/Eyes/Hud/medsec.rsi
                 state: icon
               doAfter: 5
-            - material: Cable
-              amount: 5
+            - material: Diamond # Orion-Edit: Cable > Diamond
+              amount: 1 # Orion-Edit: 5 > 1
               doAfter: 5
 
     - node: glassesMedSec

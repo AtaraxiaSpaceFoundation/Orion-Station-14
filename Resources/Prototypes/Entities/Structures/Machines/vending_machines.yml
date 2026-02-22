@@ -400,6 +400,7 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: DatasetVocalizer
     dataset: CondimentVendAds
   - type: SpeakOnUIClosed
@@ -496,6 +497,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: Sprite
     noRot: true
     sprite: Structures/Machines/VendingMachines/laptop.rsi
@@ -729,6 +731,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
     initialStockQuality: 0.33
   - type: DatasetVocalizer
     dataset: RobustSoftdrinksAds
@@ -812,6 +815,7 @@
     pack: SpaceUpInventory
     offState: off
     normalState: normal-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/spaceup.rsi
     layers:
@@ -873,6 +877,7 @@
     pack: StarkistInventory
     offState: off
     normalState: normal-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/starkist.rsi
     layers:
@@ -908,6 +913,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
     initialStockQuality: 0.33
   - type: DatasetVocalizer
     dataset: RobustSoftdrinksAds
@@ -944,6 +950,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
     initialStockQuality: 0.33
   - type: DatasetVocalizer
     dataset: RobustSoftdrinksAds
@@ -982,6 +989,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
     initialStockQuality: 0.33
   - type: DatasetVocalizer
     dataset: DrGibbAds
@@ -1030,6 +1038,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
     ejectDelay: 1.9
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
     initialStockQuality: 0.33
   - type: DatasetVocalizer
     dataset: SmiteAds
@@ -1170,6 +1179,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: Sprite
     noRot: true
     sprite: Structures/Machines/VendingMachines/engivend.rsi
@@ -1257,6 +1267,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: DatasetVocalizer
     dataset: NutriMaxAds
   - type: SpeakOnUIClosed
@@ -1293,6 +1304,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: DatasetVocalizer
     dataset: SecTechAds
   - type: SpeakOnUIClosed
@@ -1428,6 +1440,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/sustenance.rsi
     layers:
@@ -1548,6 +1561,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
     initialStockQuality: 0.33
   - type: DatasetVocalizer
     dataset: BodaAds
@@ -1637,6 +1651,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: DatasetVocalizer
     dataset: VendomatAds
   - type: SpeakOnUIClosed
@@ -1677,6 +1692,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: DatasetVocalizer
     dataset: VendomatAds
   - type: SpeakOnUIClosed
@@ -1722,6 +1738,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
     denyState: deny-unshaded
+    soundVend: /Audio/Machines/machine_vend.ogg # Orion
   - type: Sprite
     noRot: true
     sprite: Structures/Machines/VendingMachines/youtool.rsi
