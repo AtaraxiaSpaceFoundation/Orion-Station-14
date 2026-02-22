@@ -27,7 +27,8 @@ public sealed class InducerSystem : EntitySystem
 
         SubscribeLocalEvent<InducerComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<InducerComponent, InducerDoAfterEvent>(OnDoAfter);
-        SubscribeLocalEvent<InducerComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
+        SubscribeLocalEvent<InducerComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
+        SubscribeLocalEvent<InducerComponent, GetVerbsEvent<Verb>>(OnGetRmbVerbs);
     }
 
     private void OnAfterInteract(EntityUid uid, InducerComponent component, AfterInteractEvent args)
@@ -123,37 +124,66 @@ public sealed class InducerSystem : EntitySystem
         }
     }
 
-    private void OnGetVerbs(EntityUid uid, InducerComponent component, GetVerbsEvent<AlternativeVerb> args)
+    private void OnGetAltVerbs(EntityUid uid, InducerComponent comp, GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract)
+        if (!args.CanInteract || !args.CanAccess)
             return;
 
-        var priority = 0;
-        foreach (var rate in component.AvailableTransferRates)
+        if (_itemSlots.TryGetSlot(uid, comp.PowerCellSlotId, out var slot) && slot.Item != null)
         {
-            AlternativeVerb verb = new()
+            args.Verbs.Add(new AlternativeVerb
             {
-                Text = Loc.GetString("inducer-set-transfer-rate", ("rate", rate)),
-                Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/zap.svg.192dpi.png")),
-                Category = VerbCategory.SelectType,
-                Act = () =>
-                {
-                    if (Math.Abs(component.TransferRate - rate) < 0.01f)
-                        return;
-
-                    component.TransferRate = rate;
-                    Dirty(uid, component);
-                    _popup.PopupEntity(Loc.GetString("inducer-transfer-rate-set", ("rate", rate)), uid, args.User);
-                },
-
-                Priority = priority,
-            };
-
-            priority--;
-
-            args.Verbs.Add(verb);
+                Text = Loc.GetString("item-slot-verb-eject"),
+                Priority = 2,
+                Act = () => _itemSlots.TryEjectToHands(uid, slot, args.User)
+            });
+        }
+        else
+        {
+            args.Verbs.Add(new AlternativeVerb
+            {
+                Text = Loc.GetString("inducer-verb-cycle-mode"),
+                Priority = 0,
+                Act = () => CycleMode(uid, comp)
+            });
         }
     }
+
+
+private void OnGetRmbVerbs(EntityUid uid, InducerComponent comp, GetVerbsEvent<Verb> args)
+{
+    if (!args.CanInteract || !args.CanAccess)
+        return;
+
+    foreach (var rate in comp.AvailableTransferRates)
+    {
+        var r = rate; // замыкание
+        args.Verbs.Add(new Verb
+        {
+            Text = Loc.GetString("inducer-set-transfer-rate", ("rate", r)),
+            Act = () =>
+            {
+                if (comp.TransferRate == r) return;
+                comp.TransferRate = r;
+                Dirty(uid, comp);
+            }
+        });
+    }
+}
+
+
+private void CycleMode(EntityUid uid, InducerComponent comp)
+{
+    var list = comp.AvailableTransferRates;
+    if (list == null || list.Count == 0) return;
+
+    var idx = list.IndexOf(comp.TransferRate);
+    if (idx < 0) idx = 0;
+
+    comp.TransferRate = list[(idx + 1) % list.Count];
+    Dirty(uid, comp);
+}
+
 
     private bool UsesStructureMultiplier(EntityUid target)
     {
