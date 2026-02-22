@@ -34,8 +34,6 @@
           - PowerCell
           - MegaCell
   - type: Appearance
-  - type: ActivatableUI
-    AltVerb: false
 
 - type: entity
   parent: [ BaseInducer, BaseEngineeringContraband ]

@@ -146,3 +146,6 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 40
+  - type: HitscanBatteryAmmoProvider
+    proto: RedHeavyLaser
+    fireCost: 200 # 6 shots
