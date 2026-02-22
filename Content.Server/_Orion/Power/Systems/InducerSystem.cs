@@ -124,22 +124,14 @@ public sealed class InducerSystem : EntitySystem
         }
     }
 
+
     private void OnGetAltVerbs(EntityUid uid, InducerComponent comp, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanInteract || !args.CanAccess)
             return;
 
         if (_itemSlots.TryGetSlot(uid, comp.PowerCellSlotId, out var slot) && slot.Item != null)
-        {
-            var slotLocal = slot;
-            args.Verbs.Add(new AlternativeVerb
-            {
-                Text = Loc.GetString("verb-categories-eject"),
-                Priority = 2,
-                Act = () => _itemSlots.TryEjectToHands(uid, slotLocal, args.User, excludeUserAudio: true)
-            });
             return;
-        }
 
         var list = comp.AvailableTransferRates;
         if (list is { Count: > 0 })
