@@ -402,8 +402,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#949137"
+      color: "#FFA500"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#FFFF00"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -418,8 +420,8 @@
   - type: Pda
     id: TechnicalAssistantIDCard
   - type: PdaBorderColor
-    borderColor: "#717059"
-    accentVColor: "#949137"
+    borderColor: "#FFA500"
+    accentVColor: "#FFFF00"
   - type: Icon
     state: pda-interntech
 
@@ -434,8 +436,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#447987"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#00BFFF"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -450,8 +454,8 @@
   - type: Pda
     id: MedicalInternIDCard
   - type: PdaBorderColor
-    borderColor: "#717059"
-    accentVColor: "#447987"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#00BFFF" # Orion-Edit
   - type: GuideHelp
     guides:
     - MedicalDoctor
@@ -483,8 +487,8 @@
   - type: Pda
     id: SecurityCadetIDCard
   - type: PdaBorderColor
-    borderColor: "#717059"
-    accentVColor: "#A32D26"
+    borderColor: "#A32D26"
+#    accentVColor: "#A32D26" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -497,8 +501,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#8900c9"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#9932CC"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -513,8 +519,8 @@
   - type: Pda
     id: ResearchAssistantIDCard
   - type: PdaBorderColor
-    borderColor: "#717059"
-    accentVColor: "#8900c9"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#9932CC" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -588,8 +594,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#00cc35"
+      color: "#32CD32"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#87CEEB"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -604,8 +612,8 @@
   - type: Pda
     id: BotanistIDCard
   - type: PdaBorderColor
-    borderColor: "#44843c"
-    accentVColor: "#00cc35"
+    borderColor: "#32CD32" # Orion-Edit
+    accentVColor: "#87CEEB" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -618,11 +626,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#C18199"
+      color: "#dc428f"
     - state: pda_buttons
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
-    - state: pda_stripe_clown
     - state: light_overlay
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: unshaded
@@ -631,6 +638,7 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: pda_stripe_clown
   # Orion-End
   - type: Pda
     id: ClownIDCard
@@ -644,7 +652,7 @@
         tags:
         - Write
   - type: PdaBorderColor
-    borderColor: "#C18199"
+    borderColor: "#dc428f" # Orion-Edit
   - type: Slippery # secretly made of bananium
   - type: StepTrigger
     triggerGroups: # Goobstation
@@ -695,6 +703,7 @@
       state: pda_base
       color: "#d7d7d0"
     - state: pda_buttons
+    - state: pda_stripe_mime
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -755,9 +764,9 @@
       state: pda_base
       color: "#333333"
     - state: pda_buttons
+    - state: pda_cross
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
-    - state: pda_cross
     - state: light_overlay
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: unshaded
@@ -794,8 +803,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#a23e3e"
+      color: "#B8860B"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#8B4513"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -810,8 +821,8 @@
   - type: Pda
     id: QuartermasterIDCard
   - type: PdaBorderColor
-    borderColor: "#e39751"
-    accentVColor: "#a23e3e"
+    borderColor: "#B8860B" # Orion-Edit
+    accentVColor: "#8B4513" # Orion-Edit
   - type: CartridgeLoader
     preinstalled:
     - CrewManifestCartridge
@@ -833,7 +844,7 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#e39751"
+      color: "#B8860B"
     - state: pda_buttons
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
@@ -849,7 +860,7 @@
   - type: Pda
     id: CargoIDCard
   - type: PdaBorderColor
-    borderColor: "#e39751"
+    borderColor: "#B8860B" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -862,8 +873,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#8900c9"
+      color: "#B8860B"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#9932CC"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -878,8 +891,8 @@
   - type: Pda
     id: SalvageIDCard
   - type: PdaBorderColor
-    borderColor: "#af9366"
-    accentVColor: "#8900c9"
+    borderColor: "#B8860B" # Orion-Edit
+    accentVColor: "#9932CC" # Orion-Edit
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
@@ -976,7 +989,7 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#6f6192"
+      color: "#003153"
     - state: pda_buttons
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
@@ -998,7 +1011,7 @@
         tags:
         - Write
   - type: PdaBorderColor
-    borderColor: "#6f6192"
+    borderColor: "#003153" # Orion-Edit
 
 - type: entity
   parent: LawyerPDA
@@ -1022,7 +1035,7 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#5D2D56"
+      color: "#9932CC"
     - state: pda_buttons
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
@@ -1038,7 +1051,7 @@
   - type: Pda
     id: JanitorIDCard
   - type: PdaBorderColor
-    borderColor: "#5D2D56"
+    borderColor: "#9932CC" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1051,8 +1064,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#7C5D00"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#FFD700"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1073,7 +1088,8 @@
         tags:
         - Write
   - type: PdaBorderColor
-    borderColor: "#7C5D00"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentHColor: "#FFD700" # Orion
 
 - type: entity
   parent: BasePDA
@@ -1086,8 +1102,11 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#789876"
+      color: "#003153"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#A32D26"
+    - state: pda_stripe_head
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1108,8 +1127,8 @@
         tags:
         - Write
   - type: PdaBorderColor
-    borderColor: "#789876"
-    accentHColor: "#447987"
+    borderColor: "#003153" # Orion-Edit
+    accentVColor: "#A32D26" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1122,8 +1141,11 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#949137"
+      color: "#FFA500"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#E0FFFF"
+    - state: pda_stripe_head
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1138,8 +1160,8 @@
   - type: Pda
     id: CEIDCard
   - type: PdaBorderColor
-    borderColor: "#949137"
-    accentHColor: "#447987"
+    borderColor: "#FFA500" # Orion-Edit
+    accentHColor: "#E0FFFF" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1152,8 +1174,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#949137"
+      color: "#FFA500"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#FFFF00"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1168,8 +1192,8 @@
   - type: Pda
     id: EngineeringIDCard
   - type: PdaBorderColor
-    borderColor: "#949137"
-    accentVColor: "#A32D26"
+    borderColor: "#FFA500" # Orion-Edit
+    accentVColor: "#FFFF00" # Orion-Edit
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1182,8 +1206,11 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#d7d7d0"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#00BFFF"
+    - state: pda_stripe_head
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1198,9 +1225,9 @@
   - type: Pda
     id: CMOIDCard
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentHColor: "#447987"
-    accentVColor: "#447987"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentHColor: "#00BFFF" # Orion-Edit
+    accentVColor: "#447987" # Orion-Edit
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1213,8 +1240,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#d7d7d0"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#00BFFF"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1229,8 +1258,8 @@
   - type: Pda
     id: MedicalIDCard
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentVColor: "#447987"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#00BFFF" # Orion-Edit
   - type: GuideHelp
     guides:
     - MedicalDoctor
@@ -1257,8 +1286,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#d7d7d0"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#00BFFF"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1273,8 +1304,8 @@
   - type: Pda
     id: ParamedicIDCard
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentVColor: "#2a4b5b"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#00BFFF" # Orion-Edit
 
 - type: entity
   parent: BaseMedicalPDA
@@ -1287,8 +1318,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#d7d7d0"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#FF4500"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1303,8 +1336,8 @@
   - type: Pda
     id: ChemistIDCard
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentVColor: "#B34200"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#FF4500" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1317,8 +1350,11 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#d7d7d0"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#9932CC"
+    - state: pda_stripe_head
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1333,9 +1369,9 @@
   - type: Pda
     id: RDIDCard
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentHColor: "#447987"
-    accentVColor: "#8900c9"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentHColor: "#9932CC" # Orion-Edit
+    accentVColor: "#8900c9" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1348,8 +1384,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#d7d7d0"
+      color: "#E0FFFF"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#9932CC"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1380,6 +1418,7 @@
       state: pda_base
       color: "#A32D26"
     - state: pda_buttons
+    - state: pda_stripe_head
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1419,6 +1458,8 @@
       state: pda_base
       color: "#A32D26"
     - state: pda_buttons
+    - state: pda_stripe_split
+      color: "#293133"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1434,7 +1475,7 @@
     id: WardenIDCard
   - type: PdaBorderColor
     borderColor: "#A32D26"
-    accentVColor: "#949137"
+    accentVColor: "#293133" # Orion-Edit
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1613,8 +1654,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#949137"
+      color: "#FFD700"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#808080"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1629,8 +1672,8 @@
   - type: Pda
     id: AtmosIDCard
   - type: PdaBorderColor
-    borderColor: "#949137"
-    accentVColor: "#447987"
+    borderColor: "#FFD700" # Orion-Edit
+    accentVColor: "#808080" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1948,7 +1991,7 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#333333"
+      color: "#774705"
     - state: pda_buttons
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
@@ -2039,6 +2082,7 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: pda_stripe_clown
   # Orion-End
   - type: Pda
     id: CluwneIDCard
@@ -2064,8 +2108,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#949137"
+      color: "#FFA500"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#CD6900"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2080,7 +2126,7 @@
   - type: Pda
     id: SeniorEngineerIDCard
   - type: PdaBorderColor
-    borderColor: "#949137"
+    borderColor: "#FFA500" # Orion-Edit
     accentVColor: "#CD6900"
 
 - type: entity
@@ -2096,6 +2142,8 @@
       state: pda_base
       color: "#d7d7d0"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#8900c9"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2127,6 +2175,8 @@
       state: pda_base
       color: "#d7d7d0"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#B34200"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2158,6 +2208,8 @@
       state: pda_base
       color: "#A32D26"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#DFDFDF"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2298,7 +2350,7 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#7F3300"
+      color: "#6A5ACD"
     - state: pda_buttons
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
@@ -2320,7 +2372,7 @@
         tags:
         - Write
   - type: PdaBorderColor
-    borderColor: "#7F3300"
+    borderColor: "#6A5ACD" # Orion-Edit
 
 - type: entity
   parent: ClearPDA
