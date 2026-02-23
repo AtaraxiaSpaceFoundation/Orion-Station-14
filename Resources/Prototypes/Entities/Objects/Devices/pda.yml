@@ -1403,8 +1403,8 @@
   - type: Pda
     id: ResearchIDCard
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentVColor: "#8900c9"
+    borderColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#9932CC" # Orion-Edit
 
 - type: entity
   parent: BaseSecurityPDA

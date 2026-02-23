@@ -407,10 +407,10 @@
       state: pda_base
       color: "#A32D26"
     - state: pda_buttons
-    - map: [ "enum.PdaVisualLayers.Screen" ]
-      state: pda_screen_borders
     - state: pda_stripe_thick
       color: "#293133"
+    - map: [ "enum.PdaVisualLayers.Screen" ]
+      state: pda_screen_borders
     - state: light_overlay
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: unshaded
