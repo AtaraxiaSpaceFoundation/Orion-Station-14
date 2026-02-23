@@ -1,0 +1,821 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from TGStation | Edited by PuroSlavKing (Github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "equipped-BELT",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "icon"
+        },
+        {
+            "name": "pda_screen_borders"
+        },
+        {
+            "name": "pda_base"
+        },
+        {
+            "name": "light_overlay"
+        },
+        {
+            "name": "id_overlay"
+        },
+        {
+            "name": "pda_cross"
+        },
+        {
+            "name": "pda_stripe_thick"
+        },
+        {
+            "name": "pda_stripe_split"
+        },
+        {
+            "name": "pda_stripe_mime"
+        },
+        {
+            "name": "pda_buttons"
+        },
+        {
+            "name": "pda_stripe_head"
+        },
+        {
+            "name": "pda-clown"
+        },
+        {
+            "name": "pda-clear"
+        },
+        {
+            "name": "pda-silicon-human",
+            "delays": [
+                [
+                    0.5,
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "pda-library"
+        },
+        {
+            "name": "pda_stripe_clown"
+        },
+        {
+            "name": "pai_inserted"
+        },
+        {
+            "name": "pda_stripe_double"
+        },
+        {
+            "name": "tablet-silicon",
+            "delays": [
+                [
+                    0.5,
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "tablet-silicon-syndicate",
+            "delays": [
+                [
+                    0.5,
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "comm_logs",
+            "delays": [
+                [
+                    1.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "comm_monitor",
+            "delays": [
+                [
+                    0.4,
+                    0.4,
+                    0.4,
+                    0.4,
+                    0.4
+                ]
+            ]
+        },
+        {
+            "name": "hostile",
+            "delays": [
+                [
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "generic"
+        },
+        {
+            "name": "atmos_control",
+            "delays": [
+                [
+                    0.4,
+                    0.4,
+                    0.4,
+                    0.4,
+                    0.4
+                ]
+            ]
+        },
+        {
+            "name": "alert-green",
+            "delays": [
+                [
+                    0.5,
+                    0.5,
+                    0.5,
+                    0.5,
+                    0.5,
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "alert-red",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "power_monitor",
+            "delays": [
+                [
+                    0.5,
+                    0.1,
+                    0.5,
+                    0.1,
+                    0.5,
+                    0.1,
+                    0.5,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "power_monitor_warn",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "menu"
+        },
+        {
+            "name": "id"
+        },
+        {
+            "name": "bsod"
+        },
+        {
+            "name": "command"
+        },
+        {
+            "name": "crew"
+        },
+        {
+            "name": "broken"
+        },
+        {
+            "name": "smmon_0"
+        },
+        {
+            "name": "smmon_1",
+            "delays": [
+                [
+                    1,
+                    0.5,
+                    1,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "smmon_2",
+            "delays": [
+                [
+                    1,
+                    0.5,
+                    1,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "smmon_3",
+            "delays": [
+                [
+                    1,
+                    0.5,
+                    1,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "smmon_4",
+            "delays": [
+                [
+                    1,
+                    0.5,
+                    1,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "smmon_5",
+            "delays": [
+                [
+                    0.5,
+                    0.1,
+                    0.5,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "smmon_6",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "arcade",
+            "delays": [
+                [
+                    0.2,
+                    0.4
+                ]
+            ]
+        },
+        {
+            "name": "arcade_off"
+        },
+        {
+            "name": "air",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "gambling",
+            "delays": [
+                [
+                    2,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "modsuit_control"
+        },
+        {
+            "name": "robot",
+            "delays": [
+                [
+                    0.5,
+                    1
+                ]
+            ]
+        },
+        {
+            "name": "research",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "shipping"
+        },
+        {
+            "name": "bounty"
+        },
+        {
+            "name": "mafia"
+        },
+        {
+            "name": "radarntos"
+        },
+        {
+            "name": "radarntosfar",
+            "directions": 8,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarntosmedium",
+            "directions": 8,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarntosclose",
+            "directions": 8,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarntosdirect",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarntoslost"
+        },
+        {
+            "name": "radarsyndicate"
+        },
+        {
+            "name": "radarsyndicatefar",
+            "directions": 8,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarsyndicatemedium",
+            "directions": 8,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarsyndicateclose",
+            "directions": 8,
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarsyndicatedirect",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "radarsyndicatelost"
+        },
+        {
+            "name": "camera",
+            "delays": [
+                [
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "bountyboard"
+        },
+        {
+            "name": "request",
+            "delays": [
+                [
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "command-syndicate"
+        },
+        {
+            "name": "signal",
+            "delays": [
+                [
+                    1,
+                    0.1,
+                    0.1,
+                    1
+                ]
+            ]
+        },
+        {
+            "name": "contractor-assign",
+            "delays": [
+                [
+                    4.5,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "contractor-contract",
+            "delays": [
+                [
+                    0.5,
+                    1,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "contractor-extracted",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "contractor-contractlist",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.6,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    2.5
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_0",
+            "delays": [
+                [
+                    1,
+                    1
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_15",
+            "delays": [
+                [
+                    1,
+                    1
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_30",
+            "delays": [
+                [
+                    1,
+                    1
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_45",
+            "delays": [
+                [
+                    0.9,
+                    0.9
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_60",
+            "delays": [
+                [
+                    0.8,
+                    0.8
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_75",
+            "delays": [
+                [
+                    0.7,
+                    0.7
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_90",
+            "delays": [
+                [
+                    0.55,
+                    0.55
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_105",
+            "delays": [
+                [
+                    0.38,
+                    0.38
+                ]
+            ]
+        },
+        {
+            "name": "spectre_meter_120",
+            "delays": [
+                [
+                    0.17,
+                    0.17,
+                    0.17,
+                    0.17,
+                    0.17,
+                    0.17
+                ]
+            ]
+        },
+        {
+            "name": "restock",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "accounting"
+        }
+    ]
+}

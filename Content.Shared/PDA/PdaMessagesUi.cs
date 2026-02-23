@@ -38,6 +38,14 @@ public sealed class PdaShowMusicMessage : BoundUserInterfaceMessage
     public PdaShowMusicMessage() { }
 }
 
+// Orion-Start
+[Serializable, NetSerializable]
+public sealed class PdaPowerOffMessage : BoundUserInterfaceMessage
+{
+    public PdaPowerOffMessage() { }
+}
+// Orion-End
+
 [Serializable, NetSerializable]
 public sealed class PdaRequestUpdateInterfaceMessage : BoundUserInterfaceMessage
 {

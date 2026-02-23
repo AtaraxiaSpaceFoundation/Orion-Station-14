@@ -99,6 +99,11 @@
     icon:
       sprite:  Objects/Misc/books.rsi
       state: book_icon
+    # Orion-Start
+    screenState:
+      sprite: _Orion/Objects/Devices/pda.rsi
+      state: accounting
+    # Orion-End
   - type: NotekeeperCartridge
 
 
@@ -116,6 +121,11 @@
     icon:
       sprite: Interface/Misc/program_icons.rsi
       state: nano_task
+    # Orion-Start
+    screenState:
+      sprite: _Orion/Objects/Devices/pda.rsi
+      state: menu
+    # Orion-End
   - type: UIFragment
     ui: !type:NanoTaskUi
   - type: NanoTaskCartridge
@@ -136,6 +146,11 @@
     icon:
       sprite: Interface/Misc/program_icons.rsi
       state: news_read
+    # Orion-Start
+    screenState:
+      sprite: _Orion/Objects/Devices/pda.rsi
+      state: comm_monitor
+    # Orion-End
   - type: NewsReaderCartridge
 
 - type: entity
@@ -154,6 +169,11 @@
       icon:
         sprite: Interface/Misc/program_icons.rsi
         state: crew_manifest
+      # Orion-Start
+      screenState:
+        sprite: _Orion/Objects/Devices/pda.rsi
+        state: crew
+      # Orion-End
     - type: CrewManifestCartridge
 
 - type: entity
@@ -172,6 +192,11 @@
       icon:
         sprite: Structures/Machines/server.rsi
         state: server
+      # Orion-Start
+      screenState:
+        sprite: _Orion/Objects/Devices/pda.rsi
+        state: signal
+      # Orion-End
     - type: NetProbeCartridge
 
 - type: entity
@@ -193,6 +218,11 @@
       icon:
         sprite: Structures/Doors/Airlocks/Standard/security.rsi
         state: closed
+      # Orion-Start
+      screenState:
+        sprite: _Orion/Objects/Devices/pda.rsi
+        state: comm_logs
+      # Orion-End
     - type: LogProbeCartridge
     - type: GuideHelp
       guides:
@@ -217,6 +247,11 @@
     icon:
       sprite: Objects/Misc/books.rsi
       state: icon_magnifier
+    # Orion-Start
+    screenState:
+      sprite: _Orion/Objects/Devices/pda.rsi
+      state: bounty
+    # Orion-End
   - type: WantedListCartridge
   - type: StealTarget
     stealGroup: WantedListCartridge
@@ -238,6 +273,11 @@
       icon:
         sprite: Objects/Specific/Medical/healthanalyzer.rsi
         state: icon
+      # Orion-Start
+      screenState:
+        sprite: _Orion/Objects/Devices/pda.rsi
+        state: alert-red
+      # Orion-End
     - type: MedTekCartridge
 
 - type: entity
@@ -257,4 +297,9 @@
       icon:
         sprite: Objects/Devices/gps.rsi
         state: icon
+      # Orion-Start
+      screenState:
+        sprite: _Orion/Objects/Devices/pda.rsi
+        state: radarntos
+      # Orion-End
     - type: AstroNavCartridge

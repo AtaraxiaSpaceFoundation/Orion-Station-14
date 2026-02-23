@@ -29,6 +29,11 @@
     icon:
       sprite: Nyanotrasen/Objects/Specific/Mail/mail.rsi
       state: icon
+    # Orion-Start
+    screenState:
+      sprite: _Orion/Objects/Devices/pda.rsi
+      state: shipping
+    # Orion-End
 
 - type: entity
   parent: BaseItem
@@ -47,6 +52,11 @@
     icon:
       sprite: _DV/Misc/program_icons.rsi
       state: nanochat
+    # Orion-Start
+    screenState:
+      sprite: _Orion/Objects/Devices/pda.rsi
+      state: request
+    # Orion-End
   - type: ActiveRadio
     channels:
     - Common

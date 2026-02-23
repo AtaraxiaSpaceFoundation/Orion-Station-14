@@ -22,13 +22,14 @@ namespace Content.Shared.PDA
     public enum PdaVisuals
     {
         IdCardInserted,
-        PdaType
+        PdaType,
+        ScreenState, // Orion
     }
 
     [Serializable, NetSerializable]
     public enum PdaUiKey
     {
-        Key
+        Key,
     }
 
 }

@@ -12,8 +12,10 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Access.Components;
+using Content.Shared.CartridgeLoader;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Containers;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.PDA
 {
@@ -21,6 +23,10 @@ namespace Content.Shared.PDA
     {
         [Dependency] protected readonly ItemSlotsSystem ItemSlotsSystem = default!;
         [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
+
+        // Orion-Start
+        private static readonly SpriteSpecifier.Rsi FallbackScreenSprite = new(new ResPath("_Orion/Objects/Devices/pda.rsi"), "pda_screen_borders");
+        // Orion-End
 
         public override void Initialize()
         {
@@ -78,7 +84,18 @@ namespace Content.Shared.PDA
         private void UpdatePdaAppearance(EntityUid uid, PdaComponent pda)
         {
             Appearance.SetData(uid, PdaVisuals.IdCardInserted, pda.ContainedId != null);
+            Appearance.SetData(uid, PdaVisuals.ScreenState, GetScreenState(uid)); // Orion
         }
+
+        // Orion-Start
+        protected SpriteSpecifier GetScreenState(EntityUid uid)
+        {
+            if (!TryComp(uid, out CartridgeLoaderComponent? loader) || !loader.ActiveProgram.HasValue || !TryComp(loader.ActiveProgram.Value, out CartridgeComponent? cartridge) || cartridge.ScreenState == null)
+                return FallbackScreenSprite;
+
+            return cartridge.ScreenState;
+        }
+        // Orion-End
 
         public virtual void UpdatePdaUi(EntityUid uid, PdaComponent? pda = null)
         {

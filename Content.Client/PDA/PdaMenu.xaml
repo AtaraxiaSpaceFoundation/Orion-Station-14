@@ -27,8 +27,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 <pda:PdaWindow  xmlns="https://spacestation14.io"
                 xmlns:pda="clr-namespace:Content.Client.PDA"
                 xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-                MinSize="576 450"
-                SetSize="576 450">
+                MinSize="420 620"
+                SetSize="520 720"> <!-- Orion-Edit -->
     <!-- This: (Margin="1 1 3 0") is necessary so the navigation bar doesn't sticks into the black content border. -->
     <BoxContainer Name="NavigationBar" HorizontalExpand="True" MinHeight="32" Margin="1 1 3 0">
         <pda:PdaNavigationButton Name="HomeButton" SetWidth="32" CurrentTabBorderThickness="0 0 2 0" IsCurrent="True"/>
@@ -47,6 +47,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <pda:PdaNavigationButton Name="EjectPenButton" Access="Public" SetWidth="32"/>
         <pda:PdaNavigationButton Name="EjectIdButton" Access="Public" SetWidth="32"/>
         <pda:PdaNavigationButton Name="EjectPaiButton" Access="Public" SetWidth="32"/>
+        <pda:PdaNavigationButton Name="PowerOffButton" Access="Public" SetWidth="32"/> <!-- Orion -->
     </BoxContainer>
     <BoxContainer Name="ViewContainer" HorizontalExpand="True" VerticalExpand="True" Access="Public">
         <BoxContainer Orientation="Vertical"

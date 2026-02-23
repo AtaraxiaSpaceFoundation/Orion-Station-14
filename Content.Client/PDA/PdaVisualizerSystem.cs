@@ -6,6 +6,7 @@
 using Content.Shared.Light;
 using Content.Shared.PDA;
 using Robust.Client.GameObjects;
+using Robust.Shared.Utility;
 
 namespace Content.Client.PDA;
 
@@ -20,6 +21,11 @@ public sealed class PdaVisualizerSystem : VisualizerSystem<PdaVisualsComponent>
         if (AppearanceSystem.TryGetData<string>(uid, PdaVisuals.PdaType, out var pdaType, args.Component))
             _sprite.LayerSetRsiState((uid, args.Sprite), PdaVisualLayers.Base, pdaType);
 
+        // Orion-Start
+        if (AppearanceSystem.TryGetData<SpriteSpecifier>(uid, PdaVisuals.ScreenState, out var screenState, args.Component))
+            _sprite.LayerSetSprite((uid, args.Sprite), PdaVisualLayers.Screen, screenState);
+        // Orion-End
+
         if (AppearanceSystem.TryGetData<bool>(uid, UnpoweredFlashlightVisuals.LightOn, out var isFlashlightOn, args.Component))
             _sprite.LayerSetVisible((uid, args.Sprite), PdaVisualLayers.Flashlight, isFlashlightOn);
 
@@ -30,7 +36,8 @@ public sealed class PdaVisualizerSystem : VisualizerSystem<PdaVisualsComponent>
     public enum PdaVisualLayers : byte
     {
         Base,
+        Screen, // Orion
         Flashlight,
-        IdLight
+        IdLight,
     }
 }
