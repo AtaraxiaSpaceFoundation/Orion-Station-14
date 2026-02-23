@@ -148,6 +148,7 @@ namespace Content.Server.PDA
             SubscribeLocalEvent<PdaComponent, PdaToggleFlashlightMessage>(OnUiMessage);
             SubscribeLocalEvent<PdaComponent, PdaShowRingtoneMessage>(OnUiMessage);
             SubscribeLocalEvent<PdaComponent, PdaShowMusicMessage>(OnUiMessage);
+            SubscribeLocalEvent<PdaComponent, PdaPowerOffMessage>(OnUiMessage); // Orion
             SubscribeLocalEvent<PdaComponent, PdaShowUplinkMessage>(OnUiMessage);
             SubscribeLocalEvent<PdaComponent, PdaLockUplinkMessage>(OnUiMessage);
 
@@ -371,6 +372,20 @@ namespace Content.Server.PDA
             if (TryComp<InstrumentComponent>(uid, out var instrument))
                 _instrument.ToggleInstrumentUi(uid, msg.Actor, instrument);
         }
+
+        // Orion-Start
+        private void OnUiMessage(EntityUid uid, PdaComponent pda, PdaPowerOffMessage msg)
+        {
+            if (!PdaUiKey.Key.Equals(msg.UiKey))
+                return;
+
+            if (TryComp(uid, out CartridgeLoaderComponent? loader) && loader.ActiveProgram is { } activeProgram)
+                _cartridgeLoader.DeactivateProgram(uid, activeProgram, loader);
+
+            Appearance.SetData(uid, PdaVisuals.ScreenState, new SpriteSpecifier.Rsi(new("_Orion/Objects/Devices/pda.rsi"), "pda_screen_borders"));
+            _ui.CloseUi(uid, PdaUiKey.Key, msg.Actor);
+        }
+        // Orion-End
 
         private void OnUiMessage(EntityUid uid, PdaComponent pda, PdaShowUplinkMessage msg)
         {

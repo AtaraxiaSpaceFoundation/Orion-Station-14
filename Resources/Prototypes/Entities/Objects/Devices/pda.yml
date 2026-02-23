@@ -533,8 +533,10 @@
     layers:
     - map: [ "enum.PdaVisualLayers.Base" ]
       state: pda_base
-      color: "#00cc35"
+      color: "#717059"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#00cc35"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -780,6 +782,7 @@
     id: ChaplainIDCard
   - type: PdaBorderColor
     borderColor: "#333333"
+    accentVColor: "#FFD700" # Orion
 
 - type: entity
   parent: ChaplainPDA
@@ -1089,7 +1092,7 @@
         - Write
   - type: PdaBorderColor
     borderColor: "#E0FFFF" # Orion-Edit
-    accentHColor: "#FFD700" # Orion
+    accentVColor: "#FFD700" # Orion
 
 - type: entity
   parent: BasePDA
@@ -1161,7 +1164,7 @@
     id: CEIDCard
   - type: PdaBorderColor
     borderColor: "#FFA500" # Orion-Edit
-    accentHColor: "#E0FFFF" # Orion-Edit
+    accentVColor: "#E0FFFF" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -1474,8 +1477,8 @@
   - type: Pda
     id: WardenIDCard
   - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentVColor: "#293133" # Orion-Edit
+    borderColor: "#293133" # Orion-Edit
+    accentVColor: "#A32D26" # Orion-Edit
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1763,6 +1766,10 @@
       state: pda_base
       color: "#A32D26"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#447987"
+    - state: pda_stripe_double
+      color: "#447987"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1869,6 +1876,8 @@
       state: pda_base
       color: "#d7d7d0"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#447987"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -1963,6 +1972,8 @@
       state: pda_base
       color: "#333333"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#390504"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2031,6 +2042,10 @@
       state: pda_base
       color: "#A32D26"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#d7d7d0"
+    - state: pda_stripe_double
+      color: "#d7d7d0"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2144,6 +2159,8 @@
     - state: pda_buttons
     - state: pda_stripe_thick
       color: "#8900c9"
+    - state: pda_stripe_double
+      color: "#8900c9"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -2177,6 +2194,8 @@
     - state: pda_buttons
     - state: pda_stripe_thick
       color: "#B34200"
+    - state: pda_stripe_double
+      color: "#447987"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay

@@ -104,6 +104,8 @@
       state: pda_base
       color: "#272727"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#cec100"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -186,6 +188,8 @@
       state: pda_base
       color: "#04040a"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#16bab5"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -341,6 +345,10 @@
       state: pda_base
       color: "#d7d7d0"
     - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#447987"
+    - state: pda_stripe_double
+      color: "#228B22"
     - map: [ "enum.PdaVisualLayers.Screen" ]
       state: pda_screen_borders
     - state: light_overlay
@@ -356,6 +364,7 @@
     id: VirologistIDCard
   - type: PdaBorderColor
     borderColor: "#d7d7d0"
+    accentHColor: "#228B22" # Orion
     accentVColor: "#447987"
 
 # event-resctricted jobs
@@ -414,8 +423,8 @@
   - type: Pda
     id: RoboticistIDCard
   - type: PdaBorderColor
-    borderColor: "#161616"
-    accentVColor: "#cc4d03"
+    borderColor: "#A32D26" # Orion-Edit
+    accentVColor: "#293133" # Orion-Edit
 
 - type: entity
   parent: BasePDA
@@ -423,5 +432,23 @@
   name: radio host PDA
   description: You're listening to the smooth sounds of 145.9 FM.
   components:
+  # Orion-Start
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: pda_base
+      color: "#717059"
+    - state: pda_buttons
+    - map: [ "enum.PdaVisualLayers.Screen" ]
+      state: pda_screen_borders
+    - state: light_overlay
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: unshaded
+      visible: false
+    - state: id_overlay
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: unshaded
+      visible: false
+  # Orion-End
   - type: Pda
     id: RadioHostIDCard

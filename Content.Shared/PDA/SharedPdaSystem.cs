@@ -25,7 +25,7 @@ namespace Content.Shared.PDA
         [Dependency] protected readonly SharedAppearanceSystem Appearance = default!;
 
         // Orion-Start
-        private static readonly SpriteSpecifier.Rsi FallbackScreenSprite = new(new ResPath("_Orion/Objects/Devices/pda.rsi"), "generic");
+        private static readonly SpriteSpecifier.Rsi FallbackScreenSprite = new(new ResPath("_Orion/Objects/Devices/pda.rsi"), "pda_screen_borders");
         // Orion-End
 
         public override void Initialize()

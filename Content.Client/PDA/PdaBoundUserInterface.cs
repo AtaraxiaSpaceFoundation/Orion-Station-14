@@ -90,6 +90,13 @@ namespace Content.Client.PDA
                 SendPredictedMessage(new ItemSlotButtonPressedEvent(PdaComponent.PdaPaiSlotId));
             };
 
+            // Orion-Start
+            _menu.PowerOffButton.OnPressed += _ =>
+            {
+                SendMessage(new PdaPowerOffMessage());
+            };
+            // Orion-Start
+
             _menu.ActivateMusicButton.OnPressed += _ =>
             {
                 SendMessage(new PdaShowMusicMessage());
