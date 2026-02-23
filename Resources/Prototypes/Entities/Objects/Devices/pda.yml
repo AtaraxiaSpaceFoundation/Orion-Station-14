@@ -422,8 +422,6 @@
   - type: PdaBorderColor
     borderColor: "#FFA500"
     accentVColor: "#FFFF00"
-  - type: Icon
-    state: pda-interntech
 
 - type: entity
   parent: BaseMedicalPDA
