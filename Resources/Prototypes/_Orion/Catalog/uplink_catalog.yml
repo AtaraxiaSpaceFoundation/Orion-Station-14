@@ -105,11 +105,6 @@
     Telecrystal: 22
   categories:
   - UplinkAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - ContractorUplink
 
 - type: listing
   id: UplinkReinforcementRadioSyndicateCyborgSaboteur
