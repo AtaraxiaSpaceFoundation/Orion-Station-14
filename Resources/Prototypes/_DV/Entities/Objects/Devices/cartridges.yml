@@ -27,8 +27,8 @@
   - type: Cartridge
     programName: mail-metrics-program-name
     icon:
-      sprite: Nyanotrasen/Objects/Specific/Mail/mail.rsi
-      state: icon
+      sprite: _Orion/Interface/Misc/program_icons.rsi # Orion-Edit
+      state: mailmetrics # Orion-Edit
     # Orion-Start
     screenState:
       sprite: _Orion/Objects/Devices/pda.rsi
