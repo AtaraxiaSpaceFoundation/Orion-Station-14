@@ -19,9 +19,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <BoxContainer Name="Loaded" Orientation="Vertical"
                       Visible="False">
             <Label Name="Summary" HorizontalAlignment="Center" Margin="3 3"/>
-            <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center">
-
-            </BoxContainer>
+            <!-- Orion-Edit-Start -->
+            <LayoutContainer Name="ViewBox" HorizontalAlignment="Center" MinSize="256 256">
+                <TextureRect Name="CharacterBackground"
+                             TexturePath="/Textures/_Orion/Interface/photo.png"
+                             Stretch="KeepAspectCovered" />
+                <Control Name="SpriteContainer" />
+            </LayoutContainer>
+            <!-- Orion-Edit-End -->
             <controls:VSpacer/>
             <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
