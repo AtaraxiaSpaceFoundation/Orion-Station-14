@@ -101,7 +101,10 @@ namespace Content.Goobstation.Server.ServerCurrency
                     {
                         // Orion-Start
                         var roundMinutesActual = _gameTicker.RoundDuration().TotalMinutes;
-                        var playerRoundMinutes = Math.Min(roundMinutesActual, (DateTime.UtcNow - session.ConnectedTime).TotalMinutes);
+                        if (mind.FirstRoundParticipationTime == null)
+                            continue;
+
+                        var playerRoundMinutes = Math.Max(0, roundMinutesActual - mind.FirstRoundParticipationTime.Value.TotalMinutes);
                         if (playerRoundMinutes < _goobcoinsMinimumRoundMinutesForPayout)
                             continue;
                         // Orion-End
