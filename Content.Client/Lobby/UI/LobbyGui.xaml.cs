@@ -104,6 +104,7 @@ namespace Content.Client.Lobby.UI
                     DefaultState.Visible = true;
                     RightSide.Visible = true;
                     // Orion-Start
+                    ExpandPanel.Visible = false;
                     TopPanel.Visible = true;
                     TopExpandPanel.Visible = false;
                     CenterPanel.Visible = true;
