@@ -80,6 +80,17 @@ namespace Content.Client.Lobby.UI
 
             CollapseButton.OnPressed += _ => TogglePanel(false);
             ExpandButton.OnPressed += _ => TogglePanel(true);
+
+            // Orion-Start
+            LeftCollapseButton.OnPressed += _ => ToggleLeftPanel(false);
+            LeftExpandButton.OnPressed += _ => ToggleLeftPanel(true);
+
+            TopCollapseButton.OnPressed += _ => ToggleTopPanel(false);
+            TopExpandButton.OnPressed += _ => ToggleTopPanel(true);
+
+            CenterCollapseButton.OnPressed += _ => ToggleCenterPanel(false);
+            CenterExpandButton.OnPressed += _ => ToggleCenterPanel(true);
+            // Orion-End
         }
 
         public void SwitchState(LobbyGuiState state)
@@ -92,6 +103,14 @@ namespace Content.Client.Lobby.UI
                 case LobbyGuiState.Default:
                     DefaultState.Visible = true;
                     RightSide.Visible = true;
+                    // Orion-Start
+                    TopPanel.Visible = true;
+                    TopExpandPanel.Visible = false;
+                    CenterPanel.Visible = true;
+                    CenterExpandPanel.Visible = false;
+                    LeftInfoPanel.Visible = true;
+                    LeftExpandPanel.Visible = false;
+                    // Orion-End
                     break;
                 case LobbyGuiState.CharacterSetup:
                     CharacterSetupState.Visible = true;
@@ -116,6 +135,26 @@ namespace Content.Client.Lobby.UI
             ExpandPanel.Visible = !value;
         }
 
+        // Orion-Start
+        private void ToggleLeftPanel(bool value)
+        {
+            LeftInfoPanel.Visible = value;
+            LeftExpandPanel.Visible = !value;
+        }
+
+        private void ToggleTopPanel(bool value)
+        {
+            TopPanel.Visible = value;
+            TopExpandPanel.Visible = !value;
+        }
+
+        private void ToggleCenterPanel(bool value)
+        {
+            CenterPanel.Visible = value;
+            CenterExpandPanel.Visible = !value;
+        }
+        // Orion-End
+
         public enum LobbyGuiState : byte
         {
             /// <summary>
@@ -125,7 +164,7 @@ namespace Content.Client.Lobby.UI
             /// <summary>
             ///  The character setup state.
             /// </summary>
-            CharacterSetup
+            CharacterSetup,
         }
     }
 }

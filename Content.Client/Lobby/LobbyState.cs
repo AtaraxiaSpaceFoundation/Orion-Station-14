@@ -298,7 +298,7 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.ToggleMode = false;
                 Lobby!.ReadyButton.Pressed = false;
                 Lobby!.ObserveButton.Disabled = false;
-                Lobby!.ManifestButton.Disabled = true; // Orion
+                Lobby!.ManifestButton.Visible = false; // Orion
             }
             else
             {
@@ -307,7 +307,7 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
                 Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
-                Lobby!.ManifestButton.Disabled = false; // Orion
+                Lobby!.ManifestButton.Visible = true; // Orion
                 Lobby!.ObserveButton.Disabled = true;
             }
 
