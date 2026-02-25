@@ -67,7 +67,6 @@ public sealed partial class LobbyCharacterPreviewPanel : Control
 
         // Orion-Start
         SetAnchorPreset(CharacterBackground, LayoutPreset.Wide);
-        SetAnchorPreset(SpriteContainer, LayoutPreset.Wide);
         // Orion-End
     }
 
@@ -91,20 +90,16 @@ public sealed partial class LobbyCharacterPreviewPanel : Control
 
         _previewDummy = uid;
 
-        SpriteContainer.DisposeAllChildren(); // Orion-Edit
+        ViewBox.DisposeAllChildren();
         var spriteView = new SpriteView
         {
             OverrideDirection = Direction.South,
             Scale = new Vector2(4f, 4f),
-            MaxSize = new Vector2(256, 256), // Orion-Edit: Was 122, 122
+            MaxSize = new Vector2(148, 148), // Orion-Edit: Was 122, 122
             Stretch = SpriteView.StretchMode.Fill,
-            // Orion-Start
-            HorizontalAlignment = HAlignment.Center,
-            VerticalAlignment = VAlignment.Center,
-            // Orion-End
         };
         spriteView.SetEntity(uid);
-        SpriteContainer.AddChild(spriteView); // Orion-Edit
+        ViewBox.AddChild(spriteView);
     }
 
     protected override void Dispose(bool disposing)

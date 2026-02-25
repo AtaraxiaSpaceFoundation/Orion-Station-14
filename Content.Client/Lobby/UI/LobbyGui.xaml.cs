@@ -87,9 +87,6 @@ namespace Content.Client.Lobby.UI
 
             TopCollapseButton.OnPressed += _ => ToggleTopPanel(false);
             TopExpandButton.OnPressed += _ => ToggleTopPanel(true);
-
-            CenterCollapseButton.OnPressed += _ => ToggleCenterPanel(false);
-            CenterExpandButton.OnPressed += _ => ToggleCenterPanel(true);
             // Orion-End
         }
 
@@ -107,8 +104,6 @@ namespace Content.Client.Lobby.UI
                     ExpandPanel.Visible = false;
                     TopPanel.Visible = true;
                     TopExpandPanel.Visible = false;
-                    CenterPanel.Visible = true;
-                    CenterExpandPanel.Visible = false;
                     LeftInfoPanel.Visible = true;
                     LeftExpandPanel.Visible = false;
                     // Orion-End
@@ -147,12 +142,6 @@ namespace Content.Client.Lobby.UI
         {
             TopPanel.Visible = value;
             TopExpandPanel.Visible = !value;
-        }
-
-        private void ToggleCenterPanel(bool value)
-        {
-            CenterPanel.Visible = value;
-            CenterExpandPanel.Visible = !value;
         }
         // Orion-End
 

@@ -45,21 +45,21 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
     <BoxContainer Name="MainContainer" VerticalExpand="True" HorizontalExpand="True" Orientation="Horizontal" Margin="10 10 10 10" SeparationOverride="4">
         <BoxContainer Name="ContentContainer" Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="4">
-            <BoxContainer Name="LeftSide" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="4">
-                <Control Name="DefaultState" VerticalExpand="True" HorizontalExpand="True">
+            <BoxContainer Name="LeftSide" Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True" SeparationOverride="4">
+                <Control Name="DefaultState" VerticalExpand="True" HorizontalExpand="False">
                     <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" SeparationOverride="4">
-                        <PanelContainer Name="TopPanel" StyleClasses="AngleRect" HorizontalExpand="True" ModulateSelfOverride="#33333380">
-                            <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="8 8 8 8" SeparationOverride="4">
-                                <BoxContainer Name="HeaderContainer" Access="Public" Orientation="Horizontal" HorizontalExpand="True" MinSize="0 40" SeparationOverride="6">
+                        <PanelContainer Name="TopPanel" StyleClasses="AngleRect" HorizontalExpand="False" HorizontalAlignment="Left" ModulateSelfOverride="#33333380">
+                            <BoxContainer Orientation="Vertical" HorizontalExpand="False" Margin="8 8 8 8" SeparationOverride="4">
+                                <BoxContainer Name="HeaderContainer" Access="Public" Orientation="Horizontal" HorizontalExpand="False" MinSize="0 30" SeparationOverride="6">
                                     <Label Name="ServerName" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center" HorizontalAlignment="Left" />
                                     <Control HorizontalExpand="True" />
                                     <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#333333CC" Margin="6 0" HorizontalAlignment="Center">
-                                        <Label Name="StartTime" Access="Public" Align="Center" FontColorOverride="{x:Static maths:Color.Gold}" StyleClasses="LabelBig" HorizontalAlignment="Center" HorizontalExpand="False" Margin="8 3" />
+                                        <Label Name="StartTime" Access="Public" Align="Center" FontColorOverride="{x:Static maths:Color.Gold}" StyleClasses="LabelBig" HorizontalAlignment="Center" HorizontalExpand="False" Margin="3 3" />
                                     </PanelContainer>
                                     <Control HorizontalExpand="True" />
                                 </BoxContainer>
                                 <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
-                                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" MinSize="0 40" SeparationOverride="6">
+                                <BoxContainer Orientation="Horizontal" HorizontalExpand="False" MinSize="0 40" SeparationOverride="6">
                                     <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" SeparationOverride="6">
                                         <info:LinkBanner Name="LinkBanner" VerticalExpand="False" HorizontalAlignment="Left" Margin="0 0 8 0" />
                                     </BoxContainer>
@@ -89,32 +89,29 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                            Scale="0.5 0.5" />
                         </PanelContainer>
 
-                        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" SeparationOverride="4">
-                            <PanelContainer Name="LeftInfoPanel" StyleClasses="AngleRect" MinWidth="280" HorizontalExpand="False" VerticalExpand="True" ModulateSelfOverride="#333333C0">
-                                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="8 8 8 8" SeparationOverride="4">
+                        <BoxContainer Orientation="Horizontal" HorizontalExpand="False" VerticalExpand="True" SeparationOverride="4">
+                            <PanelContainer Name="LeftInfoPanel" StyleClasses="AngleRect" MinWidth="180" HorizontalExpand="False" VerticalExpand="True" ModulateSelfOverride="#333333C0">
+                                <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True" Margin="8 8 8 8" SeparationOverride="4">
                                     <controls:NanoHeading Text="{Loc 'ui-lobby-server-info-block'}" />
                                     <info:ServerInfo Name="ServerInfo" Access="Public" MinSize="0 30" VerticalExpand="False" Margin="3 3 3 3" HorizontalAlignment="Left" />
                                     <Label Name="StationTime" Access="Public" FontColorOverride="{x:Static maths:Color.LightGray}" Margin="3 3 3 3" HorizontalAlignment="Left" />
-                                    <controls:HLine Color="#404040" Thickness="1" Margin="0 5" />
-                                    <BoxContainer Orientation="Vertical" SeparationOverride="4" Name="VoteContainer" Access="Public" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 8" />
+                                    <controls:HLine Color="#404040" Thickness="1" />
+                                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" SeparationOverride="6" MinWidth="280" Margin="0 4">
+                                        <lobbyUi:LobbyCharacterPreviewPanel Name="CharacterPreview" Access="Public" HorizontalAlignment="Center" />
+                                        <controls:HLine Color="#404040" Thickness="1" />
+                                        <Label Name="Balance" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
+                                        <controls:HLine Color="#404040" Thickness="1" />
+                                        <Button Name="ReadyButton" Access="Public" ToggleMode="True" Text="{Loc 'ui-lobby-ready-up-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
+                                        <cc:UICommandButton Command="observe" Name="ObserveButton" Access="Public" Text="{Loc 'ui-lobby-observe-button'}" WindowType="{x:Type lobbyUi:ObserveWarningWindow}" StyleClasses="ButtonBig" HorizontalExpand="True" />
+                                    </BoxContainer>
                                     <Control VerticalExpand="True" />
                                     <RichTextLabel Name="PlaytimeComment" Visible="False" Access="Public" HorizontalAlignment="Center" />
-                                    <PanelContainer HorizontalAlignment="Left" Margin="0 8" StyleClasses="AngleRect" ModulateSelfOverride="#33333380">
-                                        <buttons:CustomGhostsMenuOpenButton StyleClasses="NovaButton" SetSize="60 60">
-                                            <TextureRect TextureScale="2 2" TexturePath="/Textures/_Orion/Interface/Buttons/ghosticon.png" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                        </buttons:CustomGhostsMenuOpenButton>
-                                    </PanelContainer>
-                                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" SeparationOverride="4">
-                                        <info:DevInfoBanner Name="DevInfoBanner" VerticalExpand="False" Margin="3 3 3 3" />
-                                        <BoxContainer Orientation="Vertical" SeparationOverride="2">
-                                            <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#333333C0">
-                                                <RichTextLabel Name="LobbyBackground" Access="Public" HorizontalAlignment="Center" />
-                                            </PanelContainer>
-                                            <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#333333C0">
-                                                <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
-                                            </PanelContainer>
+                                        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <info:DevInfoBanner Name="DevInfoBanner" VerticalExpand="False" Margin="3 3 3 3" HorizontalAlignment="Left" />
+                                            <buttons:CustomGhostsMenuOpenButton StyleClasses="NovaButton" SetSize="60 60">
+                                                <TextureRect TextureScale="2 2" TexturePath="/Textures/_Orion/Interface/Buttons/ghosticon.png" />
+                                            </buttons:CustomGhostsMenuOpenButton>
                                         </BoxContainer>
-                                    </BoxContainer>
                                 </BoxContainer>
                                 <TextureButton Name="LeftCollapseButton"
                                                TexturePath="filled_left_arrow.svg.192dpi"
@@ -134,36 +131,16 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                                Scale="0.5 0.5" />
                             </PanelContainer>
 
-                            <PanelContainer Name="CenterExpandPanel" StyleClasses="AngleRect" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 2 2 0" Visible="False" ModulateSelfOverride="#33333380">
-                                <TextureButton Name="CenterExpandButton"
-                                               TexturePath="filled_right_arrow.svg.192dpi"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               ModulateSelfOverride="#DEDEDE"
-                                               Scale="0.5 0.5" />
-                            </PanelContainer>
+                            <BoxContainer Orientation="Vertical" SeparationOverride="4" Name="VoteContainer" Access="Public" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 8" />
 
-                            <PanelContainer Name="CenterPanel" StyleClasses="AngleRect" HorizontalExpand="True" VerticalExpand="True" ModulateSelfOverride="#33333380">
-                                <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="8 8 8 8" SeparationOverride="8" HorizontalAlignment="Center">
-                                    <Control VerticalExpand="True" />
-                                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" SeparationOverride="6" MinWidth="280">
-                                        <lobbyUi:LobbyCharacterPreviewPanel Name="CharacterPreview" Access="Public" HorizontalAlignment="Center" />
-                                        <Label Name="Balance" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
-                                        <Button Name="ReadyButton" Access="Public" ToggleMode="True" Text="{Loc 'ui-lobby-ready-up-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
-                                        <cc:UICommandButton Command="observe" Name="ObserveButton" Access="Public" Text="{Loc 'ui-lobby-observe-button'}" WindowType="{x:Type lobbyUi:ObserveWarningWindow}" StyleClasses="ButtonBig" HorizontalExpand="True" />
-                                        <Button Name="OptionsButton" Access="Public" Text="{Loc 'ui-lobby-options-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
-                                        <Button Name="LeaveButton" Access="Public" Text="{Loc 'ui-lobby-leave-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
-                                    </BoxContainer>
-                                    <Control VerticalExpand="True" />
-                                </BoxContainer>
-                                <TextureButton Name="CenterCollapseButton"
-                                               TexturePath="filled_left_arrow.svg.192dpi"
-                                               HorizontalAlignment="Right"
-                                               VerticalAlignment="Top"
-                                               Margin="0 2 2 0"
-                                               ModulateSelfOverride="#DEDEDE"
-                                               Scale="0.5 0.5" />
-                            </PanelContainer>
+                            <BoxContainer Orientation="Vertical" VerticalAlignment="Bottom" SeparationOverride="2">
+                                <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#333333C0">
+                                    <RichTextLabel Name="LobbyBackground" Access="Public" HorizontalAlignment="Left" />
+                                </PanelContainer>
+                                <PanelContainer StyleClasses="AngleRect" ModulateSelfOverride="#333333C0">
+                                    <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Left" />
+                                </PanelContainer>
+                            </BoxContainer>
                         </BoxContainer>
                     </BoxContainer>
                 </Control>
@@ -171,9 +148,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <Control Access="Public" Visible="False" Name="CharacterSetupState" VerticalExpand="True" HorizontalExpand="True" />
             </BoxContainer>
 
-            <PanelContainer Name="RightSide" Access="Public" StyleClasses="AngleRect" VerticalExpand="True" VerticalAlignment="Stretch" MinWidth="320" ModulateSelfOverride="#333333C0">
+            <PanelContainer Name="RightSide" Access="Public" StyleClasses="AngleRect" VerticalExpand="True" VerticalAlignment="Stretch" MinWidth="220" ModulateSelfOverride="#333333C0" HorizontalAlignment="Right">
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="8 8 8 8">
                     <controls:NanoHeading Text="{Loc 'ui-lobby-chat-title'}" />
+                        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Name="OptionsButton" Access="Public" Text="{Loc 'ui-lobby-options-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
+                            <Button Name="LeaveButton" Access="Public" Text="{Loc 'ui-lobby-leave-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
+                        </BoxContainer>
                     <widgets:ChatBox Name="Chat" Access="Public" VerticalExpand="True" Margin="3 3 3 3" MinHeight="50" />
                 </BoxContainer>
                 <TextureButton Name="CollapseButton"

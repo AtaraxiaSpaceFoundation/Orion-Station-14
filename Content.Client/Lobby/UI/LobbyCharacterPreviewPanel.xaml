@@ -20,10 +20,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                       Visible="False">
             <Label Name="Summary" HorizontalAlignment="Center" Margin="3 3"/>
             <!-- Orion-Edit-Start -->
-            <LayoutContainer Name="ViewBox" HorizontalAlignment="Center" MinSize="256 256">
-                <TextureRect Name="CharacterBackground"
-                             TexturePath="/Textures/_Orion/Interface/photo.png"
-                             Stretch="KeepAspectCovered" />
+            <LayoutContainer Name="ViewBox" HorizontalAlignment="Center" MinSize="148 148">
+                <PanelContainer Name="CharacterBackground"
+                                StyleClasses="AngleRect"
+                                ModulateSelfOverride="#2B2B2BE6" />
                 <Control Name="SpriteContainer" />
             </LayoutContainer>
             <!-- Orion-Edit-End -->
