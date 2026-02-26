@@ -206,7 +206,7 @@ public sealed class LoadoutSystem : EntitySystem
             }
         }
 
-// Orion-Start: Return first prototype instead of null for multi-item loadouts
+        // Orion-Start: Return first prototype instead of null for multi-item loadouts
         // Try inhand first
         if (gear.Inhand.Count > 0 && _protoMan.TryIndex<EntityPrototype>(gear.Inhand[0], out var firstProto))
         {
@@ -227,7 +227,7 @@ public sealed class LoadoutSystem : EntitySystem
                 return firstProto.ID;
             }
         }
-// Orion-End
+        // Orion-End
 
         return null;
     }

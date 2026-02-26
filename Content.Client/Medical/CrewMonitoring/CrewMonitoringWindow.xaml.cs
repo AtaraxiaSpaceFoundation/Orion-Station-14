@@ -193,7 +193,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         // Order sensor data
         var orderedSensors = uniqueSensors.OrderBy(n => n.Name).OrderBy(j => j.Job);
         var assignedSensors = new HashSet<SuitSensorStatus>();
-// Orion-Edit-Start: sorting by departments
+        // Orion-Edit-Start: sorting by departments
         var departments = uniqueSensors
             .SelectMany(d => d.JobDepartments)
             .Distinct()
@@ -201,7 +201,7 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
             .Select(id => _prototypeManager.Index<DepartmentPrototype>(id))
             .OrderBy(d => d, DepartmentUIComparer.Instance)
             .Select(d => d.ID);
-// Orion-Edit-End
+        // Orion-Edit-End
 
         // Create department labels and populate lists
         foreach (var department in departments)
