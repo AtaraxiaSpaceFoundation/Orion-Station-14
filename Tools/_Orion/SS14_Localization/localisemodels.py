@@ -9,12 +9,12 @@ class LocalePath:
         self.en = os.path.join(Project().en_locale_dir_path, relative_file_path)
 
 
-class LokaliseTranslation:
+class LocaliseTranslation:
     def __init__(self, data, key_name: typing.AnyStr):
-        self.key_name = key_name,
+        self.key_name = key_name
         self.data = data
 
-class LokaliseKey:
+class LocaliseKey:
     def __init__(self, data):
         self.data = data
         self.key_name = self.data.key_name['web']
@@ -24,17 +24,18 @@ class LokaliseKey:
     def get_file_path(self):
 
         relative_dir_path = '{relative_file_path}.ftl'.format(
-            relative_file_path='/'.join(self.data.key_name['web'].split('.')[0].split('::')))
+            relative_file_path='/'.join(self.data.key_name['web'].split('.')[0].split('::'))
+        )
 
         return LocalePath(relative_dir_path)
 
     def get_key_base_name(self, key_name):
-        splitted_name = key_name.split('.')
-        return splitted_name[0]
+        split_name = key_name.split('.')
+        return split_name[0]
 
     def get_key_last_name(self, key_name):
-        splitted_name = key_name.split('.')
-        return py_.last(splitted_name)
+        split_name = key_name.split('.')
+        return py_.last(split_name)
 
     def get_parent_key(self):
         if self.is_attr:
@@ -61,4 +62,4 @@ class LokaliseKey:
         return '{name} = {value}'.format(name=self.get_key_last_name(self.key_name), value=self.get_translation('ru').data['translation'])
 
     def get_translation(self, language_iso='ru'):
-        return list(map(lambda data: LokaliseTranslation(key_name=self.data.key_name['web'], data=data), py_.filter(self.data.translations, {'language_iso': language_iso})))[0]
+        return list(map(lambda data: LocaliseTranslation(key_name=self.data.key_name['web'], data=data), py_.filter(self.data.translations, {'language_iso': language_iso})))[0]

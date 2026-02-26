@@ -4,11 +4,11 @@ from pydash import py_
 
 
 class FluentAstComparer:
-    def __init__(self, sourse_parsed: ast.Resource, target_parsed: ast.Resource):
-        self.sourse_parsed = sourse_parsed
+    def __init__(self, source_parsed: ast.Resource, target_parsed: ast.Resource):
+        self.source_parsed = source_parsed
         self.target_parsed = target_parsed
         self.source_elements = list(
-            filter(lambda el: el, list(map(lambda e: FluentAstAbstract.create_element(e), sourse_parsed.body))))
+            filter(lambda el: el, list(map(lambda e: FluentAstAbstract.create_element(e), source_parsed.body))))
         self.target_elements = list(
             filter(lambda el: el, list(map(lambda e: FluentAstAbstract.create_element(e), target_parsed.body))))
 

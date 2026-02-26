@@ -1,9 +1,8 @@
 ﻿import typing
-
-from fluent.syntax import ast
-from yamlmodels import YAMLElements
 import os
 import re
+from fluent.syntax import ast
+from yamlmodels import YAMLElements
 
 
 class File:

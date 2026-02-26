@@ -3,13 +3,12 @@
 # Форматтер, приводящий fluent-файлы (.ftl) в соответствие стайлгайду
 # path - путь к папке, содержащий форматируемые файлы. Для форматирования всего проекта, необходимо заменить значение на root_dir_path
 import typing
-
 from file import FluentFile
 from project import Project
 from fluent.syntax import ast, FluentParser, FluentSerializer
 
 
-######################################### Class defifitions ############################################################
+######################################### Class definitions ############################################################
 
 class FluentFormatter:
     @classmethod

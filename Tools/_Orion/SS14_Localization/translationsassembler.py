@@ -1,21 +1,19 @@
-﻿import logging
+﻿import os
+import logging
 import typing
-
 from fluent.syntax import FluentParser, FluentSerializer
 from pydash import py_
-
 from file import FluentFile
 from fluentast import FluentSerializedMessage
-from lokalise_fluent_ast_comparer_manager import LokaliseFluentAstComparerManager
-from lokalise_project import LokaliseProject
-from lokalisemodels import LokaliseKey
-import os
+from localise_fluent_ast_comparer_manager import LocaliseFluentAstComparerManager
+from localise_project import LocaliseProject
+from localisemodels import LocaliseKey
 
-######################################### Class defifitions ############################################################
+######################################### Class definitions ############################################################
 
 # TODO непереведенные элементы приходят как { "" }. Необходимо сохранять английский перевод
 class TranslationsAssembler:
-    def __init__(self, items: typing.List[LokaliseKey]):
+    def __init__(self, items: typing.List[LocaliseKey]):
         self.group = py_.group_by(items, 'key_base_name')
         keys = list(self.group.keys())
         self.sorted_keys = py_.sort_by(keys, lambda key: self.sort_by_translations_timestamp(self.group[key]),
@@ -23,7 +21,7 @@ class TranslationsAssembler:
 
     def execute(self):
         for keys in self.group:
-            full_message = FluentSerializedMessage.from_lokalise_keys(self.group[keys])
+            full_message = FluentSerializedMessage.from_localise_keys(self.group[keys])
             parsed_message = FluentParser().parse(full_message)
             ru_full_path = self.group[keys][0].get_file_path().ru
             ru_file = FluentFile(ru_full_path)
@@ -33,7 +31,7 @@ class TranslationsAssembler:
                 logging.error(f'Файла {ru_file.full_path} не существует')
                 continue
 
-            manager = LokaliseFluentAstComparerManager(sourse_parsed=ru_file_parsed, target_parsed=parsed_message)
+            manager = LocaliseFluentAstComparerManager(source_parsed=ru_file_parsed, target_parsed=parsed_message)
 
             for_update = manager.for_update()
             for_create = manager.for_create()
@@ -55,11 +53,11 @@ class TranslationsAssembler:
 ######################################## Var definitions ###############################################################
 
 logging.basicConfig(level=logging.INFO)
-lokalise_project_id = os.getenv('lokalise_project_id')
-lokalise_personal_token = os.getenv('lokalise_personal_token')
-lokalise_project = LokaliseProject(project_id=lokalise_project_id,
-                                   personal_token=lokalise_personal_token)
-all_keys: typing.List[LokaliseKey] = lokalise_project.get_all_keys()
+localise_project_id = os.getenv('localise_project_id')
+localise_personal_token = os.getenv('localise_personal_token')
+localise_project = LocaliseProject(project_id=localise_project_id,
+                                   personal_token=localise_personal_token)
+all_keys: typing.List[LocaliseKey] = localise_project.get_all_keys()
 translations_assembler = TranslationsAssembler(all_keys)
 
 ########################################################################################################################

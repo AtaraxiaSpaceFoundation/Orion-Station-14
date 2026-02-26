@@ -1,8 +1,6 @@
 ﻿import typing
 import logging
-
 from pydash import py_
-
 from file import FluentFile
 from fluentast import FluentAstAbstract
 from fluentformatter import FluentFormatter
@@ -16,7 +14,7 @@ from fluent.syntax import ast, FluentParser, FluentSerializer
 # Отмечает русские файлы, в которых есть те ключи, что нет в аналогичных английских
 # Отмечает русские файлы, у которых нет англоязычной пары
 
-######################################### Class defifitions ############################################################
+######################################### Class definitions ############################################################
 class RelativeFile:
     def __init__(self, file: FluentFile, locale: typing.AnyStr, relative_path_from_locale: typing.AnyStr):
         self.file = file
@@ -58,9 +56,6 @@ class FilesFinder:
                 self.created_files.append(ru_file)
             elif relative_file.locale == 'ru-RU':
                 is_engine_files = "robust-toolbox" in (relative_file.file.full_path)
-                is_corvax_files = "corvax" in (relative_file.file.full_path)
-                if not is_engine_files and not is_corvax_files:
-                    self.warn_en_analog_not_exist(relative_file)
             else:
                 raise Exception(f'Файл {relative_file.file.full_path} имеет неизвестную локаль "{relative_file.locale}"')
 

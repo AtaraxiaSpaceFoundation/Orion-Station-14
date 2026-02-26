@@ -1,7 +1,6 @@
 ﻿import typing
-
 from fluent.syntax import ast, FluentParser, FluentSerializer
-from lokalisemodels import LokaliseKey
+from localisemodels import LocaliseKey
 from pydash import py_
 
 
@@ -92,7 +91,7 @@ class FluentSerializedMessage:
         if not attributes:
             attributes = []
 
-        if len(list(filter(lambda attr: attr.id == 'desc', attributes))) == 0:
+        if len(list(filter(lambda attribution: attribution.id == 'desc', attributes))) == 0:
             if parent_id:
                 attributes.append(FluentAstAttribute('desc', '{ ' + FluentSerializedMessage.get_key(parent_id) + '.desc' + ' }'));
             else:
@@ -116,10 +115,10 @@ class FluentSerializedMessage:
         return cls.to_serialized_message(message)
 
     @classmethod
-    def from_lokalise_keys(cls, keys: typing.List[LokaliseKey]):
-        attributes_keys = list(filter(lambda k: k.is_attr, keys))
-        attributes = list(map(lambda k: FluentAstAttribute(id='.{name}'.format(name=k.get_key_last_name(k.key_name)),
-                                                           value=FluentSerializedMessage.get_attr(k, k.get_key_last_name(k.key_name)), parent_key=k.get_parent_key()),
+    def from_localise_keys(cls, keys: typing.List[LocaliseKey]):
+        attributes_keys = list(filter(lambda attribution_keys: attribution_keys.is_attr, keys))
+        attributes = list(map(lambda attribution_keys: FluentAstAttribute(id='.{name}'.format(name=attribution_keys.get_key_last_name(attribution_keys.key_name)),
+                                                                          value=FluentSerializedMessage.get_attr(attribution_keys, attribution_keys.get_key_last_name(attribution_keys.key_name)), parent_key=attribution_keys.get_parent_key()),
                               attributes_keys))
         attributes_group = py_.group_by(attributes, 'parent_key')
 

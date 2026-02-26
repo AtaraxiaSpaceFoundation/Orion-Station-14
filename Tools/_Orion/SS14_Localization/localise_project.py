@@ -1,18 +1,18 @@
-﻿import lokalise
+﻿import localise
 import typing
-from lokalisemodels import LokaliseKey
+from localisemodels import LocaliseKey
 from pydash import py_
 
-class LokaliseProject:
+class LocaliseProject:
     def __init__(self, project_id, personal_token):
         self.project_id = project_id
         self.personal_token = personal_token
-        self.client = lokalise.Client(self.personal_token)
+        self.client = localise.Client(self.personal_token)
 
-    def get_all_keys(self) -> typing.List[LokaliseKey]:
+    def get_all_keys(self) -> typing.List[LocaliseKey]:
         page = 1
         keys = self.get_keys(page=page)
-        keys_items: typing.List[lokalise.client.KeyModel] = []
+        keys_items: typing.List[localise.client.KeyModel] = []
         general_count = 0
 
         while (general_count < keys.total_count):
@@ -27,7 +27,7 @@ class LokaliseProject:
 
         sorted_list = py_.sort(keys_items, key=lambda item: item.translations_modified_at_timestamp, reverse=True)
 
-        return list(map(lambda k: LokaliseKey(k), sorted_list))
+        return list(map(lambda k: LocaliseKey(k), sorted_list))
 
     def get_keys(self, page):
         return self.client.keys(self.project_id, {'page': page, 'limit': 5000, 'include_translations': 1})
