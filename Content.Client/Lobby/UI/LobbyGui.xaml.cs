@@ -87,6 +87,9 @@ namespace Content.Client.Lobby.UI
 
             TopCollapseButton.OnPressed += _ => ToggleTopPanel(false);
             TopExpandButton.OnPressed += _ => ToggleTopPanel(true);
+
+            AttributionCollapseButton.OnPressed += _ => ToggleAttributionPanel(false);
+            AttributionExpandButton.OnPressed += _ => ToggleAttributionPanel(true);
             // Orion-End
         }
 
@@ -106,6 +109,8 @@ namespace Content.Client.Lobby.UI
                     TopExpandPanel.Visible = false;
                     LeftInfoPanel.Visible = true;
                     LeftExpandPanel.Visible = false;
+                    AttributionPanel.Visible = false;
+                    AttributionExpandPanel.Visible = true;
                     // Orion-End
                     break;
                 case LobbyGuiState.CharacterSetup:
@@ -142,6 +147,12 @@ namespace Content.Client.Lobby.UI
         {
             TopPanel.Visible = value;
             TopExpandPanel.Visible = !value;
+        }
+
+        private void ToggleAttributionPanel(bool value)
+        {
+            AttributionPanel.Visible = value;
+            AttributionExpandPanel.Visible = !value;
         }
         // Orion-End
 
