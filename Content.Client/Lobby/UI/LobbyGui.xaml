@@ -91,17 +91,18 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         <BoxContainer Orientation="Horizontal" HorizontalExpand="False" VerticalExpand="True">
                             <PanelContainer Name="LeftInfoPanel" StyleClasses="AngleRect" MinWidth="180" HorizontalExpand="False" VerticalExpand="True" ModulateSelfOverride="#333333C0">
                                 <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True">
-                                    <controls:NanoHeading Text="{Loc 'ui-lobby-server-info-block'}" />
+                                    <RichTextLabel Text="{Loc 'ui-lobby-server-info-block'}" StyleClasses="LabelHeadingBigger" HorizontalAlignment="Center" />
+                                    <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
                                     <info:ServerInfo Name="ServerInfo" Access="Public" MinSize="0 30" VerticalExpand="False" Margin="3 3 3 3" HorizontalAlignment="Left" />
                                     <Label Name="StationTime" Access="Public" FontColorOverride="{x:Static maths:Color.LightGray}" Margin="3 3 3 3" HorizontalAlignment="Left" />
                                     <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
                                     <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" SeparationOverride="6" MinWidth="280">
                                         <lobbyUi:LobbyCharacterPreviewPanel Name="CharacterPreview" Access="Public" HorizontalAlignment="Center" />
-                                        <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="1" />
+                                        <controls:HLine Color="{x:Static style:StyleNano.DisabledFore}" Thickness="1" />
                                         <controls:StripeBack>
                                             <Label Name="Balance" Access="Public" StyleClasses="LabelHeadingBigger" VAlign="Center" HorizontalExpand="True" HorizontalAlignment="Center" />
                                         </controls:StripeBack>
-                                        <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="1" />
+                                        <controls:HLine Color="{x:Static style:StyleNano.DisabledFore}" Thickness="1" />
                                         <Button Name="ReadyButton" Access="Public" ToggleMode="True" Text="{Loc 'ui-lobby-ready-up-button'}" StyleClasses="ButtonBig" HorizontalExpand="True" />
                                         <cc:UICommandButton Command="observe" Name="ObserveButton" Access="Public" Text="{Loc 'ui-lobby-observe-button'}" WindowType="{x:Type lobbyUi:ObserveWarningWindow}" HorizontalExpand="True" />
                                         <Button Name="ManifestButton" Access="Public" Text="{Loc 'ui-lobby-manifest-button'}" HorizontalExpand="True" />
