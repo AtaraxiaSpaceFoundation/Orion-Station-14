@@ -28,7 +28,7 @@ class TranslationsAssembler:
             try:
                 ru_file_parsed = ru_file.read_parsed_data()
             except FileNotFoundError:
-                logging.error(f'Файла {ru_file.full_path} не существует')
+                logging.exception(f'Файла {ru_file.full_path} не существует')
                 continue
 
             manager = LocaliseFluentAstComparerManager(source_parsed=ru_file_parsed, target_parsed=parsed_message)

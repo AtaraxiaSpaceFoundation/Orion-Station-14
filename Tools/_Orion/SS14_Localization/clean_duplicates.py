@@ -9,10 +9,10 @@ from project import Project
 def find_ftl_files(root_dir: str) -> List[str]:
     ftl_files: List[str] = []
     for root, _, files in os.walk(root_dir):
-        for file_name in files:
+        for file_name in sorted(files):
             if file_name.endswith('.ftl'):
                 ftl_files.append(os.path.join(root, file_name))
-    return ftl_files
+    return sorted(ftl_files)
 
 def detect_encoding(file_path: str) -> str:
     with open(file_path, 'rb') as file:
@@ -86,7 +86,7 @@ def remove_duplicates(root_dir: str) -> Tuple[int, str]:
 
             with open(file_path, 'w', encoding=encoding) as file:
                 file.write(content)
-        except Exception as error:
+        except (OSError, UnicodeError) as error:
             print(f'Ошибка при обработке файла {file_path}: {error}')
 
     # Сохранение лога удаленных дубликатов
