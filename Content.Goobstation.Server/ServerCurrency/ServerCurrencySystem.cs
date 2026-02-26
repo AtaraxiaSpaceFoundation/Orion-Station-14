@@ -48,6 +48,7 @@ namespace Content.Goobstation.Server.ServerCurrency
         private double _goobcoinsLowPopMultiplierStrength = 1.0;
         private bool _goobcoinsUseShortRoundPenalty = true;
         private int _goobcoinsShortRoundPenaltyTargetMinutes = 50;
+        private int _goobcoinsMinimumRoundMinutesForPayout = 15; // Orion
 
         public override void Initialize()
         {
@@ -63,6 +64,7 @@ namespace Content.Goobstation.Server.ServerCurrency
             Subs.CVar(_cfg, GoobCVars.GoobcoinLowpopMultiplierStrength, value => _goobcoinsLowPopMultiplierStrength = value, true);
             Subs.CVar(_cfg, GoobCVars.GoobcoinUseShortRoundPenalty, value => _goobcoinsUseShortRoundPenalty = value, true);
             Subs.CVar(_cfg, GoobCVars.GoobcoinShortRoundPenaltyTargetMinutes, value => _goobcoinsShortRoundPenaltyTargetMinutes = value, true);
+            Subs.CVar(_cfg, GoobCVars.GoobcoinMinimumRoundMinutesForPayout, value => _goobcoinsMinimumRoundMinutesForPayout = value, true); // Orion
         }
 
         public override void Shutdown()
@@ -91,18 +93,37 @@ namespace Content.Goobstation.Server.ServerCurrency
                 if (mindContainer.Mind.HasValue)
                 {
                     var mind = Comp<MindComponent>(mindContainer.Mind.Value);
-                    if (mind is not null
-                        && (isBorg || !_mind.IsCharacterDeadIc(mind)) // Borgs count always as dead so I'll just throw them a bone and give them an exception.
+                    // Orion-Edit-Start
+                    if ((isBorg || !_mind.IsCharacterDeadIc(mind)) // Borgs count always as dead so I'll just throw them a bone and give them an exception.
                         && mind.OriginalOwnerUserId.HasValue
                         && _players.TryGetSessionById(mind.UserId, out var session))
+                    // Orion-Edit-End
                     {
+                        // Orion-Start
+                        var roundMinutesActual = _gameTicker.RoundDuration().TotalMinutes;
+                        if (mind.FirstRoundParticipationTime == null)
+                            continue;
+
+                        var playerRoundMinutes = Math.Max(0, roundMinutesActual - mind.FirstRoundParticipationTime.Value.TotalMinutes);
+                        if (playerRoundMinutes < _goobcoinsMinimumRoundMinutesForPayout)
+                            continue;
+                        // Orion-End
+
                         int money = _goobcoinsPerPlayer;
+                        // Orion-Start
+                        money += _jobs.GetJobGoobcoins(session);
+                        if (!_jobs.CanBeAntag(session))
+                            money *= _goobcoinsNonAntagMultiplier;
+                        // Orion-End
+
+/* // Orion-Edit: Moved upper
                         if (session is not null)
                         {
                             money += _jobs.GetJobGoobcoins(session);
                             if (!_jobs.CanBeAntag(session))
                                 money *= _goobcoinsNonAntagMultiplier;
                         }
+*/
 
                         if(_goobcoinsUseLowPopMultiplier)
                             money += (int)Math.Round(money * lowPopMultiplier * _goobcoinsLowPopMultiplierStrength);
@@ -110,12 +131,12 @@ namespace Content.Goobstation.Server.ServerCurrency
                         if (_goobcoinsServerMultiplier != 1)
                             money *= _goobcoinsServerMultiplier;
 
-                        if (session != null && _linkAccount.GetPatron(session)?.Tier != null)
+                        if (_linkAccount.GetPatron(session)?.Tier != null) // Orion-Edit
                             money *= 2;
 
                         if (_goobcoinsUseShortRoundPenalty)
                         {
-                            var roundMinutesActual = _gameTicker.RoundDuration().TotalMinutes;
+//                            var roundMinutesActual = _gameTicker.RoundDuration().TotalMinutes; // Orion-Edit: Moved upper
                             money = (int) (money * Math.Min(1, roundMinutesActual / _goobcoinsShortRoundPenaltyTargetMinutes));
                         }
 

@@ -122,6 +122,14 @@ public sealed partial class MindComponent : Component
     [DataField]
     public TimeSpan? TimeOfDeath { get; set; }
 
+    // Orion-Start
+    /// <summary>
+    ///     The round time when this mind first took control of a playable body this round
+    /// </summary>
+    [DataField]
+    public TimeSpan? FirstRoundParticipationTime { get; set; }
+    // Orion-End
+
     /// <summary>
     ///     The entity currently owned by this mind.
     ///     Can be null.

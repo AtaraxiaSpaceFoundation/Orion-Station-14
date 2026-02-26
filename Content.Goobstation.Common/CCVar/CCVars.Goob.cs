@@ -325,6 +325,15 @@ public sealed partial class GoobCVars
     public static readonly CVarDef<int> GoobcoinShortRoundPenaltyTargetMinutes =
         CVarDef.Create("servercurrency.shortround_penalty_target_minutes", 90, CVar.SERVERONLY);
 
+    // Orion-Start
+    /// <summary>
+    ///     How much time need to spend in the round before receiving the currency for participating in the round
+    ///     It is necessary to close the hole of receiving currency!
+    /// </summary>
+    public static readonly CVarDef<int> GoobcoinMinimumRoundMinutesForPayout =
+        CVarDef.Create("servercurrency.min_round_minutes_for_payout", 15, CVar.SERVERONLY);
+    // Orion-End
+
     #endregion
 
     #region Station Events
