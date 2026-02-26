@@ -5,7 +5,7 @@ from file import FluentFile
 from fluentast import FluentAstAbstract
 from fluentformatter import FluentFormatter
 from project import Project
-from fluent.syntax import ast, FluentParser, FluentSerializer
+from fluent.syntax import ast, FluentSerializer
 
 
 # Осуществляет актуализацию ключей. Находит файлы английского перевода, проверяет: есть ли русскоязычная пара
@@ -37,12 +37,6 @@ class FilesFinder:
         else:
             raise Exception(f'Локаль {locale} не поддерживается')
 
-    def get_file_pair(self, en_file: FluentFile) -> typing.Tuple[FluentFile, FluentFile]:
-        ru_file_path = en_file.full_path.replace('en-US', 'ru-RU')
-        ru_file = FluentFile(ru_file_path)
-
-        return en_file, ru_file
-
     def execute(self):
         self.created_files = []
         groups = self.get_files_pars()
@@ -55,7 +49,7 @@ class FilesFinder:
                 ru_file = self.create_ru_analog(relative_file)
                 self.created_files.append(ru_file)
             elif relative_file.locale == 'ru-RU':
-                is_engine_files = "robust-toolbox" in (relative_file.file.full_path)
+                self.warn_en_analog_not_exist(relative_file)
             else:
                 raise Exception(f'Файл {relative_file.file.full_path} имеет неизвестную локаль "{relative_file.locale}"')
 
@@ -196,7 +190,6 @@ class KeyFinder:
 
 logging.basicConfig(level = logging.INFO)
 project = Project()
-parser = FluentParser()
 serializer = FluentSerializer(with_junk=True)
 files_finder = FilesFinder(project)
 key_finder = KeyFinder(files_finder.get_files_pars())

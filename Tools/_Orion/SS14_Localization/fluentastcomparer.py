@@ -62,7 +62,6 @@ class FluentAstComparer:
 
     # Возвращает сообщения из source с неэквивалентным значением и атрибутами
     def get_not_equal_values_with_attrs(self):
-        comparator = lambda a, b: a.element.equals(b.element, ignored_fields=['span', 'id', 'comment'])
         diff = py_.difference_with(self.source_elements, self.target_elements,
                                    comparator=lambda a, b: a.element.equals(b.element,
                                                                             ignored_fields=['span', 'id', 'comment']))

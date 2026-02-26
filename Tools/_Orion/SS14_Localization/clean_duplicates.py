@@ -48,17 +48,11 @@ def parse_ent_blocks(file_path: str) -> Dict[str, str]:
         if current_ent and (line.strip().startswith('.desc') or line.strip().startswith('.suffix')):
             continue
 
-        if line.strip() == '':
-            if current_ent:
-                ent_blocks[current_ent] = '\n'.join(current_block)
-                current_ent = None
-                current_block = []
-                continue
-
-            if current_ent:
-                ent_blocks[current_ent] = '\n'.join(current_block)
-                current_ent = None
-                current_block = []
+        if line.strip() == '' and current_ent:
+            ent_blocks[current_ent] = '\n'.join(current_block)
+            current_ent = None
+            current_block = []
+            continue
 
     if current_ent:
         ent_blocks[current_ent] = '\n'.join(current_block)

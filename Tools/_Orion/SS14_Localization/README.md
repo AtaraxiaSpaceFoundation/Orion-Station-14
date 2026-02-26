@@ -13,14 +13,14 @@
 ### Linux/macOS
 
 ```bash
-cd Tools/_Orion/ss14_ru
+cd Tools/_Orion/SS14_Localization
 ./translation.sh
 ```
 
 ### Windows
 
 ```bat
-cd Tools\_Orion\ss14_ru
+cd Tools\_Orion\SS14_Localization
 translation.bat
 ```
 

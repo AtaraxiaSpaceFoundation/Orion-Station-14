@@ -20,22 +20,22 @@ class TranslationsAssembler:
                                        reverse=True)
 
     def execute(self):
-        for keys in self.group:
-            full_message = FluentSerializedMessage.from_localise_keys(self.group[keys])
+        for key in self.sorted_keys:
+            full_message = FluentSerializedMessage.from_localise_keys(self.group[key])
             parsed_message = FluentParser().parse(full_message)
-            ru_full_path = self.group[keys][0].get_file_path().ru
+            ru_full_path = self.group[key][0].get_file_path().ru
             ru_file = FluentFile(ru_full_path)
             try:
                 ru_file_parsed = ru_file.read_parsed_data()
-            except:
+            except FileNotFoundError:
                 logging.error(f'Файла {ru_file.full_path} не существует')
                 continue
 
             manager = LocaliseFluentAstComparerManager(source_parsed=ru_file_parsed, target_parsed=parsed_message)
 
             for_update = manager.for_update()
-            for_create = manager.for_create()
-            for_delete = manager.for_delete()
+            manager.for_create()
+            manager.for_delete()
 
             if len(for_update):
                 updated_ru_file_parsed = manager.update(for_update)
