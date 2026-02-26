@@ -151,8 +151,8 @@ public sealed class DelayedKnockdownOnHitSystem : EntitySystem
         if (comp.ApplyOnHeavyAttack && args.Direction == null)
             return;
 
-        // if (TryComp(weapon, out UseDelayComponent? useDelay)) // Orion: share use-delay across LMB/RMB // Orion: it only for cooldown on RMB
-        //    _delay.TryResetDelay((weapon, useDelay), id: comp.UseDelay);
+        if (TryComp(weapon, out UseDelayComponent? useDelay)) // Orion: share use-delay across LMB/RMB
+            _delay.TryResetDelay((weapon, useDelay), id: comp.UseDelay);
 
         foreach (var (target, _) in args.HitEntities)
             ScheduleKnockdown(target, comp);

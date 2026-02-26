@@ -189,9 +189,9 @@
     sound: /Audio/Weapons/egloves.ogg
   - type: DelayedKnockdownOnHit # Goobstation
     useDelay: stunbaton
-  #- type: UseDelayBlockMelee # Goobstation # Orion-Edit: it only for cooldown on RMB
-  #  delays:
-  #  - stunbaton
+  - type: UseDelayBlockMelee # Goobstation
+    delays:
+    - stunbaton
   - type: LandAtCursor
   - type: Battery
     maxCharge: 1000
