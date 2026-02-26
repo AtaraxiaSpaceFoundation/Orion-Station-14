@@ -13,7 +13,8 @@
     !type:SyllableObfuscation
     minSyllables: 2
     maxSyllables: 5
-    replacement: # CorvaxGoob-Localization
+    # Orion-Edit-Start: Localization
+    replacement:
     - ка
     - па
     - та
@@ -75,3 +76,4 @@
     - ван
     - йуп
     - губ
+    # Orion-Edit-End: Localization

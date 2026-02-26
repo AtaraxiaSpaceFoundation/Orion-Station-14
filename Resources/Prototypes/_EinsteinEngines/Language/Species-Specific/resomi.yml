@@ -22,7 +22,8 @@
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 4
-    replacement: # CorvaxGoob-Localization
+    # Orion-Edit-Start: Localization
+    replacement:
     - ми
     - мви
     - фи
@@ -99,3 +100,4 @@
     - тва
     - ва
     - а
+    # Orion-Edit-End: Localization

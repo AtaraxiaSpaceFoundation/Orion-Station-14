@@ -11,7 +11,8 @@
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 3
-    replacement: # CorvaxGoob-Localization
+    # Orion-Edit-Start: Localization
+    replacement:
     - ми
     - мими
     - мимими
@@ -25,3 +26,4 @@
     - би
     - мье
     - йо
+    # Orion-Edit-End: Localization

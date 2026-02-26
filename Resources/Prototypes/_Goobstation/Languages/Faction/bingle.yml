@@ -20,10 +20,12 @@
     proportion: 0.66
     minPhrases: 1
     maxPhrases: 6
-    replacement: # CorvaxGoob-Localization
+    # Orion-Edit-Start: Localization
+    replacement:
     - Бингл
     - Бонгл
     - БИНГЛ!
     - Бонг
     - Бинг
     - БОНГЛ!
+    # Orion-Edit-End: Localization

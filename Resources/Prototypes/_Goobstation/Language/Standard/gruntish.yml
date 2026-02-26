@@ -13,7 +13,8 @@
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 3
-    replacement: # CorvaxGoob-Localization
+    # Orion-Edit-Start: Localization
+    replacement:
     - бах
     - гаагх
     - грр
@@ -57,3 +58,4 @@
     - ууух
     - ууух!
     - рах!
+    # Orion-Edit-End: Localization
