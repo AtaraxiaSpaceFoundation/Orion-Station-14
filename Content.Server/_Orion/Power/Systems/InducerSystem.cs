@@ -167,6 +167,7 @@ public sealed class InducerSystem : EntitySystem
             {
                 Category = VerbCategory.SelectType,
                 Text = Loc.GetString("inducer-set-transfer-rate", ("rate", r)),
+                Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/zap.svg.192dpi.png")),
                 Priority = prio--,
                 Act = () =>
                 {
