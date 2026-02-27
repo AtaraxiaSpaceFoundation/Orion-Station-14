@@ -213,7 +213,6 @@
     - id: ClothingHeadHatBeretSecurityMedic
       prob: 0.5
     - id: ClothingBackpackDuffelBrigmedicFilledJanitorialSupplies
-    - id: MedkitFilled
     - id: MedkitToxinFilled
     - id: MedkitRadiationFilled
     # Orion-End

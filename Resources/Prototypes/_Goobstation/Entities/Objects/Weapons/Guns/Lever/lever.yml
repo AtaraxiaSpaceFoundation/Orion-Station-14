@@ -48,6 +48,7 @@
           - ShellShotgunHeavy
   - type: Gun
     fireRate: 0.65
+    projectileSpeed: 20 # Orion
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
   - type: ChamberMagazineAmmoProvider

@@ -218,7 +218,6 @@
       - id: EmergencyOxygenTankFilled
       - id: OxygenTankFilled
     - id: CrowbarRed
-      amount: 2
     - !type:GroupSelector
       children:
       - id: FireExtinguisher

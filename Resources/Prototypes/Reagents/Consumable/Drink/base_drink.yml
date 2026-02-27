@@ -18,7 +18,7 @@
   group: NonAlcoholicDrinks # Goob - Drinks guidebook split
   abstract: true
   slipData:
-    requiredSlipSpeed: 5 # Orion-Edit: Light slippery curse
+    requiredSlipSpeed: 5 # Orion-Edit: 3.5 > 5 Light slippery curse
   metabolisms:
     Drink:
       effects:
