@@ -10,7 +10,7 @@
   id: BenchComfy
   parent: SeatBase
   description: A bench with an extremely comfortable backrest.
-  placement: # Orion: fix
+  placement: # Orion
     mode: SnapgridCenter
   components:
   - type: Transform

@@ -215,7 +215,7 @@
   name: reagent-name-razorium
   group: Toxins
   slipData:
-    requiredSlipSpeed: 3.5
+    requiredSlipSpeed: 5 # Orion-Edit: 3.5 > 5
   desc: reagent-desc-razorium
   physicalDesc: reagent-physical-desc-reflective
   flavor: sharp

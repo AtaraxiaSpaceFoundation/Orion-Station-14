@@ -10,7 +10,7 @@
   abstract: true
   parent: SeatBase
   description: Multiple seats spanning a single object. Truly a marvel of science.
-  placement: # Orion: fix
+  placement: # Orion
     mode: SnapgridCenter
   components:
   - type: Physics
