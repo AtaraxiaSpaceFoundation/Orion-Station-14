@@ -2,6 +2,7 @@
 - type: entity
   parent: AirlockHatchInteQ
   id: AirlockHatchInteQVanguardLocked
+  name: brown hatch
   suffix: InteQ, Vanguard, Locked
   components:
   - type: ContainerFill
@@ -11,6 +12,7 @@
 - type: entity
   parent: AirlockHatchInteQ
   id: AirlockHatchInteQVanguardLeaderLocked
+  name: brown hatch
   suffix: InteQ, Vanguard Leader, Locked
   components:
   - type: ContainerFill
@@ -20,6 +22,7 @@
 - type: entity
   parent: AirlockHatchInteQGlass
   id: AirlockHatchInteQGlassVanguardLocked
+  name: brown glass hatch
   suffix: InteQ, Vanguard, Locked
   components:
   - type: ContainerFill
@@ -29,6 +32,7 @@
 - type: entity
   parent: AirlockHatchInteQGlass
   id: AirlockHatchInteQGlassVanguardLeaderLocked
+  name: brown glass hatch
   suffix: InteQ, Vanguard Leader, Locked
   components:
   - type: ContainerFill

@@ -1,2 +1,2 @@
-ent-AnomalyWormhole = wormhole
-    .desc = It looks highly unstable, it could close at any moment.
+ent-AnomalyWormhole = червоточина
+    .desc = Выглядит крайне нестабильно, может закрыться в любой момент.

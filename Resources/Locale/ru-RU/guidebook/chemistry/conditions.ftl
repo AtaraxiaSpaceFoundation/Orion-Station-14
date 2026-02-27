@@ -58,11 +58,11 @@ reagent-effect-condition-guidebook-has-tag =
 reagent-effect-condition-guidebook-this-reagent = этот реагент
 reagent-effect-condition-guidebook-blood-reagent-threshold =
     { $max ->
-        [2147483648] there's at least { NATURALFIXED($min, 2) }u of { $reagent }
+        [2147483648] в крови содержится не менее { NATURALFIXED($min, 2) }ед { $reagent }
        *[other]
             { $min ->
-                [0] there's at most { NATURALFIXED($max, 2) }u of { $reagent }
-               *[other] there's between { NATURALFIXED($min, 2) }u and { NATURALFIXED($max, 2) }u of { $reagent }
+                [0] в крови содержится не более { NATURALFIXED($max, 2) }ед { $reagent }
+               *[other] в крови содержится от { NATURALFIXED($min, 2) }ед до { NATURALFIXED($max, 2) }ед { $reagent }
             }
     }
 reagent-effect-condition-guidebook-breathing =

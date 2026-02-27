@@ -1,3 +1,3 @@
 ent-ComputerShuttleUnitedEarthGovernment = { ent-BaseComputerShuttle }
-    .suffix = United Earth Government
+    .suffix = Объединённое Правительство Земли
     .desc = { ent-BaseComputerShuttle.desc }
