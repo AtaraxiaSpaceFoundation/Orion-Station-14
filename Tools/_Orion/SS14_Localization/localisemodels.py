@@ -39,13 +39,14 @@ class LocaliseKey:
 
     def get_parent_key(self):
         if self.is_attr:
-            splitted_name = self.key_name.split('.')[0:-1]
-            return '.'.join(splitted_name)
+            split_name = self.key_name.split('.')[0:-1]
+            return '.'.join(split_name)
         else:
             return None
 
     def check_is_attr(self):
-        return len(self.key_name.split('.')) > 2
+        # Localize key usually stores attributes as '<message-id>.<attr-name>'
+        return len(self.key_name.split('.')) > 1
 
     def serialize(self):
         if self.is_attr:

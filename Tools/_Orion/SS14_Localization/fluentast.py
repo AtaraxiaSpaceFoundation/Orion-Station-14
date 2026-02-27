@@ -91,12 +91,8 @@ class FluentSerializedMessage:
         if not attributes:
             attributes = []
 
-        if len(list(filter(lambda attribution: attribution.id == 'desc', attributes))) == 0:
-            if parent_id:
-                attributes.append(FluentAstAttribute('desc', '{ ' + FluentSerializedMessage.get_key(parent_id) + '.desc' + ' }'));
-            else:
-                attributes.append(FluentAstAttribute('desc', '{ "" }'))
-
+        if len(list(filter(lambda attribution: attribution.id == 'desc', attributes))) == 0 and parent_id:
+            attributes.append(FluentAstAttribute('desc', '{ ' + FluentSerializedMessage.get_key(parent_id) + '.desc' + ' }'))
         message = f'{cls.get_key(id, raw_key)} = {cls.get_value(value, parent_id)}\n'
 
         if attributes and len(attributes):
@@ -104,7 +100,7 @@ class FluentSerializedMessage:
 
             for attr in attributes:
                 fluent_newlines = attr.value.replace("\n", "\n        ");
-                full_message = cls.add_attr(full_message, attr.id, fluent_newlines, raw_key=raw_key)
+                full_message = cls.add_attr(full_message, attr.id, fluent_newlines)
 
             desc_attr = py_.find(attributes, lambda a: a.id == 'desc')
             if not desc_attr and parent_id:
@@ -114,10 +110,24 @@ class FluentSerializedMessage:
 
         return cls.to_serialized_message(message)
 
+    @staticmethod
+    def _deduplicate_attrs_by_id(attributes: typing.List[FluentAstAttribute]):
+        unique_attrs = []
+        seen_ids = set()
+
+        for attr in attributes:
+            if attr.id in seen_ids:
+                continue
+
+            seen_ids.add(attr.id)
+            unique_attrs.append(attr)
+
+        return unique_attrs
+
     @classmethod
     def from_localise_keys(cls, keys: typing.List[LocaliseKey]):
         attributes_keys = list(filter(lambda attribution_keys: attribution_keys.is_attr, keys))
-        attributes = list(map(lambda attribution_keys: FluentAstAttribute(id='.{name}'.format(name=attribution_keys.get_key_last_name(attribution_keys.key_name)),
+        attributes = list(map(lambda attribution_keys: FluentAstAttribute(id=attribution_keys.get_key_last_name(attribution_keys.key_name),
                                                                           value=FluentSerializedMessage.get_attr(attribution_keys, attribution_keys.get_key_last_name(attribution_keys.key_name)), parent_key=attribution_keys.get_parent_key()),
                               attributes_keys))
         attributes_group = py_.group_by(attributes, 'parent_key')
@@ -131,8 +141,9 @@ class FluentSerializedMessage:
             key_attributes = []
 
             if len(attributes_group):
-                k = f'{key.get_key_base_name(key.key_name)}.{key_name}'
-                key_attributes = attributes_group[k] if k in attributes_group else []
+                parent_key = key.key_name
+                key_attributes = attributes_group[parent_key] if parent_key in attributes_group else []
+                key_attributes = cls._deduplicate_attrs_by_id(key_attributes)
 
             message = key.serialize_message()
             full_message = cls.from_yaml_element(key_name, key_value, key_attributes, key.get_parent_key(), True)
@@ -148,10 +159,8 @@ class FluentSerializedMessage:
 
     @staticmethod
     def get_attr(k, name, parent_id = None):
-        if parent_id:
-            return "{ " + parent_id + f'.{name}' + " }"
-        else:
-            return k.get_translation('ru').data['translation']
+        # Always use localized attribute text from Localise to avoid destructive rewrites.
+        return k.get_translation('ru').data['translation']
 
 
     @staticmethod
@@ -165,9 +174,13 @@ class FluentSerializedMessage:
         return serialized if serialized else ''
 
     @staticmethod
-    def add_attr(message_str, attr_key, attr_value, raw_key = False):
-        prefix = '' if raw_key else '.'
-        return f'{message_str}\n  {prefix}{attr_key} = {attr_value}'
+    def add_attr(message_str, attr_key, attr_value):
+        if attr_key.startswith('.'):
+            rendered_key = attr_key
+        else:
+            rendered_key = f'.{attr_key}'
+
+        return f'{message_str}\n  {rendered_key} = {attr_value}'
 
     @staticmethod
     def get_value(value, parent_id):
