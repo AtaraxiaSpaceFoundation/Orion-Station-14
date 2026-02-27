@@ -1,3 +1,3 @@
 ent-LavalandCrateNecropolisManualBabel = { ent-LavalandCrateNecropolis }
-    .suffix = Manual Babel
+    .suffix = Словарь Бабеля
     .desc = { ent-LavalandCrateNecropolis.desc }

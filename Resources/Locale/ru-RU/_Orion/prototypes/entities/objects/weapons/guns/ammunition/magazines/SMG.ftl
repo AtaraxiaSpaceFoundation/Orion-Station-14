@@ -1,7 +1,4 @@
-
-    .desc = { ent-BaseItem.desc }
-    .desc = { ent-BaseItem.desc }
-ent-MagazineSMGVector = Vector magazine (9mm auto)
+ent-MagazineSMGVector = магазин Вектор (9мм авто)
     .desc = { ent-BaseMagazinePistolSubMachineGun.desc }
-ent-MagazineSMGVectorExtended = Vector magazine Extended (9mm auto)
+ent-MagazineSMGVectorExtended = расширенный магазин Вектор (9мм авто)
     .desc = { ent-MagazineSMGVector.desc }

@@ -1,8 +1,8 @@
-ent-BulletRifle762 = bullet (7.62mm rifle)
+ent-BulletRifle762 = пуля (7.62мм винтовочный)
     .desc = { ent-BaseBullet.desc }
-ent-BulletRifle762Practice = bullet (7.62mm practice)
+ent-BulletRifle762Practice = пуля (7.62мм учебный)
     .desc = { ent-BaseBulletPractice.desc }
-ent-BulletRifle762Incendiary = bullet (7.62mm incendiary)
+ent-BulletRifle762Incendiary = пуля (7.62мм зажигательный)
     .desc = { ent-BaseBulletIncendiary.desc }
-ent-BulletRifle762Uranium = bullet (7.62mm uranium)
+ent-BulletRifle762Uranium = пуля (7.62мм урановый)
     .desc = { ent-BaseBulletUranium.desc }

@@ -1,10 +1,10 @@
-ent-SpawnMobSimpleSyndicateBlade = spawner Simple Syndicate Blade
+ent-SpawnMobSimpleSyndicateBlade = спавнер Солдат Синдиката Энергетический меч
     .desc = { ent-MarkerBase.desc }
-ent-SpawnMobSimpleSyndicateKnife = spawner Simple Syndicate Knife
+ent-SpawnMobSimpleSyndicateKnife = спавнер Солдат Синдиката Нож
     .desc = { ent-MarkerBase.desc }
-ent-SpawnMobSimpleSyndicatePistol = spawner Simple Syndicate Pistol
+ent-SpawnMobSimpleSyndicatePistol = спавнер Солдат Синдиката Пистолет
     .desc = { ent-MarkerBase.desc }
-ent-SpawnMobSimpleSyndicateShotgun = spawner Simple Syndicate Shotgun
+ent-SpawnMobSimpleSyndicateShotgun = спавнер Солдат Синдиката Дробовик
     .desc = { ent-MarkerBase.desc }
-ent-SpawnMobSimpleSyndicateSMG = spawner Simple Syndicate SMG
+ent-SpawnMobSimpleSyndicateSMG = спавнер Солдат Синдиката ПП
     .desc = { ent-MarkerBase.desc }

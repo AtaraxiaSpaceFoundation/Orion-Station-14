@@ -1,6 +1,6 @@
-ent-MultiWand = wizard wand
-    .desc = Apparently a wand used by the wizard.
-    .suffix = DO NOT MAP
+ent-MultiWand = волшебная палочка мага
+    .desc = По-видимому, палочка, используемая магом.
+    .suffix = НЕ МАППИТЬ
 ent-MultiWandWizard = { ent-MultiWand }
-    .suffix = Wizard, DO NOT MAP
+    .suffix = Маг, НЕ МАППИТЬ
     .desc = { ent-MultiWand.desc }

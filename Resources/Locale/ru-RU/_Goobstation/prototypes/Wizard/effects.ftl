@@ -1,6 +1,6 @@
 ent-EffectRepulse = { "" }
 ent-EffectElectricity = { "" }
-ent-Chronofield = chronofield
+ent-Chronofield = хронополе
     .desc = ZA WARUDO!
 ent-ActionTargetMark = { "" }
 ent-BaseFlashEffect = { "" }
@@ -33,4 +33,4 @@ ent-SanguineBloodEffect = { "" }
 ent-WeaponArcHighFreq = { ent-WeaponArcStatic }
     .desc = { ent-WeaponArcStatic.desc }
 ent-WeaponArcTempSlash = { "" }
-ent-BindSoulParticle = unholy energy
+ent-BindSoulParticle = нечестивая энергия

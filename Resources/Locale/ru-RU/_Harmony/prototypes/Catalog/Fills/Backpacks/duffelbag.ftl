@@ -1,2 +1,2 @@
-ent-ClothingBackpackDuffelSyndicateFilledHushpup = Hushpup bundle
-    .desc = A duffel bag containing a Hushpup, quarter included.
+ent-ClothingBackpackDuffelSyndicateFilledHushpup = Набор Затейника
+    .desc = Вещмешок с Затейником, четвертак в комплекте.

@@ -40,5 +40,5 @@ ent-RadioHostIDCard = ID-карта радиоведущего
     .desc = { ent-IDCardStandard.desc }
 ent-VirologistIDCard = ID-карта вирусолога
     .desc = { ent-IDCardStandard.desc }
-ent-OuterCommandIDCard = Outer Command ID card
+ent-OuterCommandIDCard = ID-карта внешнего командера
     .desc = { ent-CentcomIDCardNavyCaptain.desc }

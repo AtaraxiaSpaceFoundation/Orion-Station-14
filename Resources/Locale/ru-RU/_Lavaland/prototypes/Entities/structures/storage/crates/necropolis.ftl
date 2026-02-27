@@ -1,5 +1,5 @@
-ent-LavalandCrateNecropolis = necropolis chest
-    .desc = Steel and strong.
-ent-LavalandCrateNecropolisFilled = necropolis chest
-    .suffix = Filled
+ent-LavalandCrateNecropolis = ящик Некрополя
+    .desc = Стальной и прочный.
+ent-LavalandCrateNecropolisFilled = ящик Некрополя
+    .suffix = Заполненный
     .desc = { ent-LavalandCrateNecropolis.desc }

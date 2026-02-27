@@ -46,16 +46,6 @@ ent-SiikMaasTranslatorImplanter = имплантер
 ent-MarishTranslatorImplanter = имплантер
     .suffix = Переводчик Мариш
     .desc = { ent-BaseTranslatorImplanter.desc }
-    .suffix = Переводчик Шшечи
-    .desc = { ent-BaseTranslatorImplanter.desc }
-    .suffix = Переводчик Ка'ракк
-    .desc = { ent-BaseTranslatorImplanter.desc }
-
-    .suffix = Schechi
-    .desc = { ent-BaseTranslatorImplanter.desc }
-
-    .suffix = Ka'Rakk
-    .desc = { ent-BaseTranslatorImplanter.desc }
 ent-GruntishTranslatorImplanter = { ent-BaseTranslatorImplanter }
     .suffix = Переводчик Грунтич
     .desc = { ent-BaseTranslatorImplanter.desc }

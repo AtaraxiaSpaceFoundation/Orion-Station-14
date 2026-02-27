@@ -1,2 +1,2 @@
-ent-GatewayFlatpackLavaland = lavaland gateway flatpack
-    .desc = A flatpack used to bluespace in a gateway for travel to Lavaland.
+ent-GatewayFlatpackLavaland = упакованные врата на Лаваленд
+    .desc = Используется для перемещения на Лаваленд.

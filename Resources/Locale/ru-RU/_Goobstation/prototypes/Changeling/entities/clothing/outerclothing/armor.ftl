@@ -1,3 +1,3 @@
-ent-ChangelingClothingOuterArmor = chitinous armor
-    .desc = An all-consuming chitinous mass of armor.
-    .suffix = Unremoveable
+ent-ChangelingClothingOuterArmor = хитиновая броня
+    .desc = Всепоглощающая хитиновая масса брони.
+    .suffix = Неснимаемый

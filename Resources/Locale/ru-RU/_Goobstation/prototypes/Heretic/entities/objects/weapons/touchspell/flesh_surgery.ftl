@@ -1,2 +1,2 @@
-ent-TouchSpellFleshSurgery = knit flesh
-    .desc = Let's go practice medicine.
+ent-TouchSpellFleshSurgery = сшивание плоти
+    .desc = Давайте попрактикуемся в медицине.

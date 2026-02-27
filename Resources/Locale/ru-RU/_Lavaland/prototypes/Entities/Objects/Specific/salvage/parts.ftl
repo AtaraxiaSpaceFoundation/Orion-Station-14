@@ -1,2 +1,2 @@
-ent-CrusherUpgradeFrame = crusher upgrade frame
-    .desc = An empty frame for the main crusher upgrade, can hold essence of dying lavaland creatures to use their energy for upgrades.
+ent-CrusherUpgradeFrame = ячейка улучшения крушителя
+    .desc = Пустая ячейка для улучшения крушителя, может удерживать умирающую эссенцию существ Лаваленда, чтобы использовать их энергию для улучшений.

@@ -1,6 +1,6 @@
-ent-LavalandMobAshWhelp = Ash Whelp
-    .desc = The offspring of an ash drake, weak in comparison but still terrifying.
-ent-LavalandMobBrimdemon = Brimdemon
-    .desc = A volatile creature resembling an enormous horned skull. Its response to almost any stimulus is to unleash a beam of infernal energy.
-ent-LavalandMobLegionMonkey = Rabble
-    .desc = You can see what was once a monkey under the shifting mass of corruption. It doesn't have enough biomass to reproduce.
+ent-LavalandMobAshWhelp = пепельное отродье
+    .desc = Отпрыск пепельного дракона, слаб по сравнению с ним, но всё равно ужасает.
+ent-LavalandMobBrimdemon = бримдемон
+    .desc = Изменчивое существо, напоминающее огромный рогатый череп. На любое раздаражение оно отвечает лучом адской энергии.
+ent-LavalandMobLegionMonkey = отребье
+    .desc = Вы всё ещё можете увидеть то, что когда-то было обезьяной под растущей гнилой массой. Оно не имеет биомассы для создания клона.

@@ -1,4 +1,4 @@
-ent-MobCorticalBorer = cortical borer
-    .desc = Worm that burrows into brains.
-ent-CorticalBorerEgg = cortical borer egg
-    .desc = This egg is so nice, wet and soft...
+ent-MobCorticalBorer = кортикальный паразит
+    .desc = Червь, что проникает в мозг.
+ent-CorticalBorerEgg = яйцо
+    .desc = Яйцо выглядит прикольным, мокрым и мягким..

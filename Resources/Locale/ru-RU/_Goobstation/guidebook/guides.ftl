@@ -14,7 +14,7 @@ guide-entry-virology = Вирусология
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
-guide-entry-conditions = Antag Revealing Conditions
+guide-entry-conditions = Условия раскрытия антагониста
 guide-entry-plumbing = Трубы
 guide-entry-alcoholic-drinks = Алкоголь
 guide-entry-non-alcoholic-drinks = Безалкоголь
@@ -51,47 +51,47 @@ guide-entry-sop-evacuation = Ранняя эвакуация
 guide-entry-sop-hiring = Найм/перевод
 guide-entry-sop-succession = Цепочка командования
 # - Legal
-guide-entry-sop-execution = Executions
-guide-entry-sop-permabrig = Permanent Brig
-guide-entry-sop-punishments = Punishments
-guide-entry-sop-searches = Searches
+guide-entry-sop-execution = Казни
+guide-entry-sop-permabrig = Пермабриг
+guide-entry-sop-punishments = Наказания
+guide-entry-sop-searches = Поиски
 # - Cargo
-guide-entry-sop-cargotech = Cargo Tech
-guide-entry-sop-salvage = Salvage Specialist
-guide-entry-sop-shaft-miner = Shaft Miner
+guide-entry-sop-cargotech = Грузчик
+guide-entry-sop-salvage = Утилизатор
+guide-entry-sop-shaft-miner = Шахтёр
 # - Command
-guide-entry-sop-ntr = Nanotrasen Rep.
-guide-entry-sop-bso = Blueshield Officer
-guide-entry-sop-captain = Captain
-guide-entry-sop-hop = Head of Personnel
-guide-entry-sop-hos = Head of Security
-guide-entry-sop-rd = Research Director
-guide-entry-sop-cmo = Chief Medical Ofc.
-guide-entry-sop-ce = Chief Engineer
-guide-entry-sop-qm = Quartermaster
+guide-entry-sop-ntr = Представитель НаноТрейзен
+guide-entry-sop-bso = Синий Щит
+guide-entry-sop-captain = Капитан
+guide-entry-sop-hop = Глава персонала
+guide-entry-sop-hos = Глава службы безопасности
+guide-entry-sop-rd = Научный руководитель
+guide-entry-sop-cmo = Главный врач
+guide-entry-sop-ce = Старший инженер
+guide-entry-sop-qm = Квартирмейстер
 # - Engineering
-guide-entry-sop-atmostech = Atmos Tech
-guide-entry-sop-stationengineer = Station Engineer
+guide-entry-sop-atmostech = Атмосферный техник
+guide-entry-sop-stationengineer = Инженер
 # - Medical
-guide-entry-sop-chemist = Chemist
-guide-entry-sop-doctorintern = Doctor/Intern
+guide-entry-sop-chemist = Химик
+guide-entry-sop-doctorintern = Доктор/Интерн
 # - Science
-guide-entry-sop-roboticist = Roboticist
-guide-entry-sop-scientist = Scientist
+guide-entry-sop-roboticist = Робототехник
+guide-entry-sop-scientist = Учёный
 # - Security
-guide-entry-sop-brigmedic = Brigmedic
-guide-entry-sop-detective = Detective
-guide-entry-sop-officercadet = Officer/Cadet
-guide-entry-sop-warden = Warden
+guide-entry-sop-brigmedic = Бригмедик
+guide-entry-sop-detective = Детектив
+guide-entry-sop-officercadet = Офицер/Кадет
+guide-entry-sop-warden = Смотритель
 # - Service
-guide-entry-sop-bartender = Bartender
-guide-entry-sop-botanist = Botanist
-guide-entry-sop-chef = Chef
-guide-entry-sop-clown = Clown
-guide-entry-sop-janitor = Janitor
-guide-entry-sop-librarian = Librarian
-guide-entry-sop-mime = Mime
-guide-entry-sop-reporter = Reporter
+guide-entry-sop-bartender = Бармен
+guide-entry-sop-botanist = Ботаник
+guide-entry-sop-chef = Повар
+guide-entry-sop-clown = Клоун
+guide-entry-sop-janitor = Уборщик
+guide-entry-sop-librarian = Библиотекарь
+guide-entry-sop-mime = Мим
+guide-entry-sop-reporter = Репортёр
 # - Аварийные ситуации
 guide-entry-sop-confirmedrevs = Революция
 guide-entry-sop-containmentfail = Нарушение содержания

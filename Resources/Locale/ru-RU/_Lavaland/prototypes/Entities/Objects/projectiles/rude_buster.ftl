@@ -1,2 +1,2 @@
-ent-ProjectileRudeBuster = rude buster
-    .desc = Strong magical projectile, that focuses all of the user's will into a single powerful blow.
+ent-ProjectileRudeBuster = грубый крушитель
+    .desc = Сильный магический снаряд, концентрирующий всю волю пользователя в одной мощной атаке.

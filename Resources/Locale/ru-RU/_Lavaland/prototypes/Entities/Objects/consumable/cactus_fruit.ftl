@@ -1,2 +1,2 @@
-ent-FoodMealCactusFruit = fruiting cacti
-    .desc = A cactus fruit covered in a thick, reddish skin. And some ash.
+ent-FoodMealCactusFruit = плод кактуса
+    .desc = Плод кактуса с толстой красноватой кожурой. И немного пепла.

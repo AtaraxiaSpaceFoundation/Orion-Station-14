@@ -1,2 +1,2 @@
-ent-SerakaMushroom = seraka mushrooms
-    .desc = A small cluster of seraka mushrooms. These must have come with the ashlizards.
+ent-SerakaMushroom = грибы серянки
+    .desc = Небольшое скопление маленьких грибов серянки. Должно быть, они появились вместе с пепельными ящерами.

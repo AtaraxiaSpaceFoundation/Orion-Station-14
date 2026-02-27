@@ -1,2 +1,2 @@
-ent-ClothingSocksBase = socks
-    .desc = Socks.
+ent-ClothingSocksBase = носки
+    .desc = Носки.

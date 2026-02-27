@@ -1,2 +1,2 @@
-ent-CartridgeHighCaliberAP = cartridge (.50 armor-piercing)
+ent-CartridgeHighCaliberAP = патрон (.50 бронебойный)
     .desc = { ent-CartridgeHighCaliber.desc }

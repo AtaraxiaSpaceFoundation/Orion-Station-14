@@ -14,5 +14,5 @@ ent-ClothingOuterCoatRDPurpleOpened = экспериментальный лаб�
     .desc = { ent-ClothingOuterStorageFoldableBaseOpened.desc }
 ent-ClothingOuterCoatHoPLong = длинное пальто главы персонала
     .desc = Стильное длинное пальто Главы Персонала.
-ent-ClothingOuterArmoredJacketOuterCommand = outer command jacket
-    .desc = A purple jacket with very fancy elements. There is a Terra-Gov insignia on the back.
+ent-ClothingOuterArmoredJacketOuterCommand = куртка внешнего коммандера
+    .desc = Фиолетовая куртка с простыми узорами.

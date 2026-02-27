@@ -1,2 +1,2 @@
-ent-ConfettiGrenade = confetti grenade
-    .desc = Grenade that creates a small but devastating confetti explosion.
+ent-ConfettiGrenade = конфетти граната
+    .desc = Граната, создающая небольшой но разрушительный взрыв из конфетти.

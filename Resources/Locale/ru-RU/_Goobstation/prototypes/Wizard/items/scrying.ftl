@@ -1,6 +1,6 @@
 ent-ScryingOrbBase = { "" }
-    .suffix = Wizard
-ent-PonderingOrbWizard = pondering orb
-    .desc = Ponder your plans for the station using this farsight artefact.
-ent-ScryingOrbWizard = scrying orb
-    .desc = An incandescent orb of otherworldly energy, staring into it gives you vision beyond mortal means.
+    .suffix = Маг
+ent-PonderingOrbWizard = шар раздумий
+    .desc = Обдумывайте свои планы относительно станции с помощью этого артефакта дальновидения.
+ent-ScryingOrbWizard = шар ясновидения
+    .desc = Сияющий шар потусторонней энергии, взгляд в него даёт зрение, превосходящее смертные возможности.

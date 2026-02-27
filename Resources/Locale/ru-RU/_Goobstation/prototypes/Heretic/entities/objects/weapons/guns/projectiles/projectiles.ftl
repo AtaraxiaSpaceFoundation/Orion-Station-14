@@ -1,4 +1,4 @@
-ent-ProjectileWaveRust = patron's reach
-    .desc = Toxic.
-ent-ProjectileStarBall = star ball
+ent-ProjectileWaveRust = ржавая волна
+    .desc = Токсично.
+ent-ProjectileStarBall = звёздный шар
     .desc = { ent-BaseBullet.desc }

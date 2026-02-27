@@ -1,2 +1,2 @@
-ent-MinerIDCard = miner ID card
+ent-MinerIDCard = ID-карта шахтёра
     .desc = { ent-IDCardStandard.desc }

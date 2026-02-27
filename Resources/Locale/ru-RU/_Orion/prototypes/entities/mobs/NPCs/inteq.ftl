@@ -1,4 +1,4 @@
-ent-MobInteQAgent = InteQ agent
-    .desc = UGH!? AGH!! BREAK THINGS!!!
-ent-MobCarpBrownInteQ = InteQ carp
-    .desc = Seriously, a brown carp, in a jacket and a beret?!
+ent-MobInteQAgent = агент Интек
+    .desc = УА!! ААА!! КРУШИТЬ!!!
+ent-MobCarpBrownInteQ = карп Интек
+    .desc = Серьёзно, коричневый карп в куртке и берете?!

@@ -1,6 +1,6 @@
 ent-BoxInteQEVA = { ent-BoxInteQ }
-    .suffix = InteQ EVA, Filled
+    .suffix = ЕВА Интек, Заполненный
     .desc = { ent-BoxInteQ.desc }
 ent-BoxInteQPistolCommissar = { ent-BoxInteQ }
-    .suffix = Commissar, Filled
+    .suffix = Коммиссар Интек, Заполненный
     .desc = { ent-BoxInteQ.desc }

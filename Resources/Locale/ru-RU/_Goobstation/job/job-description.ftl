@@ -11,7 +11,7 @@ job-description-navy-officer-undercover = Выполняйте поставле�
 job-description-navy-captain = Секретно.
 job-description-navy-officer = Отвечайте на факсы и радиосообщения, направленные в Центральное Командование. Проводите расследования на станции и среди экипажа.
 job-description-diplomat = Представляйте Центральное Командование, управляйте отношениями с другими фракциями на станции. Разбирайтесь с проблемами, которые, скорее всего, вызвал Капитан.
-job-description-navy-special-operations-officer = Send, brief, and direct emergency response teams or other Nanotrasen forces. Release the nuclear codes, or don't.
+job-description-navy-special-operations-officer = Отправлять, инструктировать и координировать работу групп экстренного реагирования или других сил НаноТрейзен. Выдать ядерные коды или не выдавать.
 job-description-operations-officer = Отправляйте, инструктируйте и руководите Отрядами Быстрого Реагирования или другими силами НаноТрейзен. Выпускайте ядерные коды — или нет.
 job-description-outercommander = Внешний наблюдатель, который проводит аудит Центрального Командования и оказывает бюрократическое давление, не имея прямых полномочий.
 
