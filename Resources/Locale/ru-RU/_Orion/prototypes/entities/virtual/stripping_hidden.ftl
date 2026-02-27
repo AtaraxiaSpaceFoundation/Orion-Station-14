@@ -1,1 +1,1 @@
-ent-BlockedSlotEntity = Вы не знаете, есть ли там что-нибудь.
+ent-BlockedSlotEntity = You don't know if there's anything there.

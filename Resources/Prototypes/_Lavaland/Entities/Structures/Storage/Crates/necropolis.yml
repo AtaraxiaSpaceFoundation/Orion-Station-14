@@ -46,7 +46,6 @@
   id: NecropolisChestLoot
   table: !type:GroupSelector
     children:
-    - id: ManualBabel # Orion
     - id: LavalandCursedHeart
     - id: ClothingOuterArmorCult
     - id: LavalandVampirismCrystal

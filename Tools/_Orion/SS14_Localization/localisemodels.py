@@ -22,61 +22,12 @@ class LocaliseKey:
         self.is_attr = self.check_is_attr()
 
     def get_file_path(self):
-        path_key_name = self._get_best_key_name_for_path()
-        key_base_path = path_key_name.split('.', maxsplit=1)[0]
-        path_parts = list(filter(None, key_base_path.replace('\\', '::').replace('/', '::').split('::')))
+
         relative_dir_path = '{relative_file_path}.ftl'.format(
-            relative_file_path='/'.join(path_parts)
+            relative_file_path='/'.join(self.data.key_name['web'].split('.')[0].split('::'))
         )
 
         return LocalePath(relative_dir_path)
-
-    def _get_best_key_name_for_path(self) -> str:
-        key_name_data = self.data.key_name
-
-        if isinstance(key_name_data, str):
-            return key_name_data
-
-        if not isinstance(key_name_data, dict):
-            return self.key_name
-
-        candidates = []
-
-        for platform in ('desktop', 'web'):
-            value = key_name_data.get(platform)
-            if isinstance(value, str) and value:
-                candidates.append((platform, value))
-
-        for platform, value in key_name_data.items():
-            if platform in ('desktop', 'web'):
-                continue
-
-            if isinstance(value, str) and value:
-                candidates.append((platform, value))
-
-        if not candidates:
-            return self.key_name
-
-        def score_key_name(item):
-            _, value = item
-            path_part = value.split('.', maxsplit=1)[0]
-            parts = list(filter(None, path_part.replace('\\', '::').replace('/', '::').split('::')))
-
-            score = len(parts)
-            if any(part.startswith('_') for part in parts):
-                score += 100
-
-            if any(part.lower() == 'prototypes' for part in parts):
-                score += 20
-
-            if any(char.isupper() for char in value):
-                score += 5
-
-            return score
-
-        candidates.sort(key=score_key_name, reverse=True)
-
-        return candidates[0][1]
 
     def get_key_base_name(self, key_name):
         split_name = key_name.split('.')

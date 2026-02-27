@@ -1,6 +1,6 @@
-ent-MindRoleMorph = Роль морфа
+ent-MindRoleMorph = Ghost Role (Morph)
     .desc = { ent-BaseMindRoleAntag.desc }
-ent-MindRoleGhostRoleInteQAntagonist = Роль антагониста Интек
+ent-MindRoleGhostRoleInteQAntagonist = Ghost Role (InteQ Antagonist)
     .desc = { ent-BaseMindRoleAntag.desc }
-ent-MindRoleCorticalBorer = Роль кортикального паразита
+ent-MindRoleCorticalBorer = Ghost Role (Cortical Borer)
     .desc = { ent-BaseMindRoleAntag.desc }
