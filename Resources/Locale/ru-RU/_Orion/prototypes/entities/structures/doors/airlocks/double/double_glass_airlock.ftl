@@ -1,2 +1,2 @@
-ent-DoubleGlassAirlock = Double Glass Airlock
-    .desc = It opens, it closes, and maybe crushes you, but it's bigger than normal door.
+ent-DoubleGlassAirlock = двойной стеклянный шлюз
+    .desc = Всё тот же шлюз, но более широкий, чем обычный вариант.

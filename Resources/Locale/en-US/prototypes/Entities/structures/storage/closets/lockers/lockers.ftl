@@ -60,6 +60,7 @@ ent-GunSafeBaseSecure = { ent-GunSafe }
     .suffix = Armory, Locked
     .desc = { ent-GunSafe.desc }
 ent-GenpopBase = { "" }
+    .desc = { "" }
 ent-LockerPrisoner = prisoner closet
     .desc = It's a secure locker for an inmate's personal belongings during their time in prison.
     .suffix = 1

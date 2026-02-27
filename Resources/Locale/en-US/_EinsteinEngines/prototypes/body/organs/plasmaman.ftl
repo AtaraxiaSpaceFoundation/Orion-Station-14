@@ -1,4 +1,5 @@
 ent-BasePlasmamanOrgan = { "" }
+    .desc = { "" }
 ent-OrganPlasmamanLungs = plasmaman lungs
     .desc = The lungs yearn for the plasma. Only plasma gas can satiate these lungs, and oxygen is lethally toxic.
 ent-OrganPlasmamanStomach = plasmaman stomach

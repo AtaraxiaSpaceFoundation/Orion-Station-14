@@ -1,2 +1,2 @@
-ent-DataSiphon = data siphon
-    .desc = Drains the station of it's valuables and stores valuables in expendable form.
+ent-DataSiphon = сифон данных
+    .desc = Откачивает ценные данные со станции и сохраняет их в расходуемой форме.

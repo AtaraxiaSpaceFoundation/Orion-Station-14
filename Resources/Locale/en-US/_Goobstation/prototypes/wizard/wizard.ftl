@@ -7,3 +7,4 @@ ent-SpawnPointWizard = { ent-BaseAntagSpawner }
 ent-SpawnPointMarkerWizard = wizard
     .desc = { ent-MarkerBase.desc }
 ent-BaseStationWizardTarget = { "" }
+    .desc = { "" }

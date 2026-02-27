@@ -1,3 +1,3 @@
-ent-Lavashroom = lavashroom
-    .desc = A wild mushroom that likes to grow in hot, moist environments.
-    .suffix = Structure
+ent-Lavashroom = лавамор
+    .desc = Дикий мухомор, предпочитающий расти в жарких и влажных условиях.
+    .suffix = Структура

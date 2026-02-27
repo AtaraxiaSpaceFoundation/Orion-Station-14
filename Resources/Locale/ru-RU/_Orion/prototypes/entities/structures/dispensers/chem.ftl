@@ -4,6 +4,7 @@ ent-MiniChemDispenser = мини раздатчик химикатов
 ent-MiniChemDispenserEmpty = { ent-MiniChemDispenser }
     .desc = { ent-ChemDispenser.desc }
     .suffix = Пустой
+
 ent-EnergyMiniChemDispenser = { ent-MiniChemDispenser }
     .desc = { ent-ChemDispenser.desc }
     .suffix = Энергетический

@@ -1,4 +1,5 @@
 ent-JetpackEffect = { "" }
+    .desc = { "" }
 ent-BaseJetpack = jetpack
     .desc = It's a jetpack. It can hold 5 L of gas.
 ent-ActionToggleJetpack = Toggle jetpack

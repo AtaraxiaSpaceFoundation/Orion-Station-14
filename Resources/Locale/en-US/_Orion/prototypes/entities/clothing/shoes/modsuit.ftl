@@ -1,2 +1,2 @@
-ent-ClothingModsuitBootsSuspicious = suspicious hardsuit boots
-    .desc = A special modular suit boots designed for compact folding inside modular suit control.
+ent-ClothingModsuitBootsSuspicious = подозрительные сапоги для модульного костюма
+    .desc = Специальные сапоги для модульного костюма, предназначенные для компактного складывания внутри модульного костюма управления.

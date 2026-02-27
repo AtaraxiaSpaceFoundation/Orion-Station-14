@@ -1,2 +1,3 @@
 ent-SurgeryStepRemoveCorticalBorer = Remove the Cortical Borer
-    .desc = { ent-SurgeryStepBase.desc }
+    .desc = { ent-SurgeryBase.desc }
+    .suffix = { ent-SurgeryBase.suffix }

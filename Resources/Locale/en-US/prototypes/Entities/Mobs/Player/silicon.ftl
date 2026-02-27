@@ -8,6 +8,7 @@ ent-Intellicard = intellicard
     .desc = A storage device for AIs.
     .suffix = Empty
 ent-PlayerStationAiPreview = { "" }
+    .desc = { "" }
 ent-PlayerStationAiEmpty = AI Core
     .desc = The latest in Artificial Intelligences.
     .suffix = Empty

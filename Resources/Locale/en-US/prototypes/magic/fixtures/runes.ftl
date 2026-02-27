@@ -1,4 +1,5 @@
 ent-BaseRune = rune
+    .desc = { "" }
 ent-CollideRune = collision rune
     .desc = { ent-BaseRune.desc }
 ent-ActivateRune = activation rune

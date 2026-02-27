@@ -1,11 +1,3 @@
-ent-WeaponSubMachineGunMP5 = MP5
-    .desc = The RivArms SMG-5 submachinegun, an update to a classic design. A light firearm capable of effective one-handed use that is ideal for close to medium range engagements.
-ent-WeaponSubMachineGunMP7 = MP7
-    .desc = An archaic design going back hundreds of years, the SMG-7 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms, though it somehow got into the hands of colonial rebels.
 ent-WeaponSubMachineGunInteQSMG = InteQ submachine gun
     .desc = Firearm that is often used by the InteQ. Uses 9mm auto ammo. It is painted in the InteQ brand color.
     .suffix = SubmachineGun
-ent-WeaponSubMachineGunVector = Vector
-    .desc = The Vector used by police special force.
-ent-WeaponSubMachineGunP90 = P-90
-    .desc = The P-90 is the EarthGov standard issue SMG. It's known for its compact size and ease of use inside the field. It's usually carried by troops who want a lightweight firearm to rush with.

@@ -38,5 +38,3 @@ ent-ClothingHeadHatCapcapSenior = фуражка старшего капитан
     .suffix = НЕ МАППИТЬ
 ent-ClothingHeadHatTinfoilHat = шапочка из фольги
     .desc = Высокотехнологичный шлем, состоящий из алюминиевой фольги.
-ent-ClothingHeadHatOuterCommandcap = outer command cap
-    .desc = Purple gilded cap with Terra-Gov insignia.

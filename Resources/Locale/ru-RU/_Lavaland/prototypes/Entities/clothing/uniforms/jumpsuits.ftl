@@ -1,2 +1,2 @@
-ent-ClothingUniformJumpsuitShaftMiner = shaft miner's jumpsuit
-    .desc = It's a snappy jumpsuit with a sturdy set of overalls. Looks a bit burnt.
+ent-ClothingUniformJumpsuitShaftMiner = комбинезон шахтёра
+    .desc = Стильный комбинезон со спецовкой. Выглядит слегка подгоревшим.

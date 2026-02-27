@@ -3,3 +3,4 @@ ent-MobParadox = space-time paradox
 ent-MobParadoxTimed = { ent-MobParadox }
     .desc = { ent-MobParadox.desc }
 ent-ParadoxCloneDummy = Paradox Clone
+    .desc = { "" }

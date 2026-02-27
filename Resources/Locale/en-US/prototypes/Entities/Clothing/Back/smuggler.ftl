@@ -1,4 +1,5 @@
 ent-BaseSubfloorAnchorStorage = { "" }
+    .desc = { "" }
 ent-BaseSubfloorAnchorStorageAnchored = { ent-BaseSubfloorAnchorStorage }
     .desc = { ent-BaseSubfloorAnchorStorage.desc }
 ent-ClothingBackpackSatchelSmuggler = smuggler's satchel

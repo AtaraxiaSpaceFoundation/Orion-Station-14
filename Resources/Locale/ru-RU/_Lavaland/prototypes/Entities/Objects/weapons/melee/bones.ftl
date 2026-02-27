@@ -1,4 +1,4 @@
-ent-BoneAxe = bone axe
-    .desc = An axe made of bones. A primitive hunters favorite... probably.
-ent-DaggerBone = bone dagger
-    .desc = A sharpened bone. The bare minimum in survival.
+ent-BoneAxe = костяной топор
+    .desc = Топор, созданный из костей. Любимое оружие первобытных охотников... Наверное?
+ent-DaggerBone = костяной кинжал
+    .desc = Заострённая кость. Базовый минимум для выживания.

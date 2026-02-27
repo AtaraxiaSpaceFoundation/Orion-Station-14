@@ -1,2 +1,2 @@
-ent-CarvingKnife = carving knife
-    .desc = A small knife made of cold steel, pure and perfect. Its sharpness can carve into titanium itself - but only few can evoke the dangers that lurk beneath reality.
+ent-CarvingKnife = разделочный нож
+    .desc = Маленький нож из холодной стали, чистый и совершенный. Его острота способна разрезать даже титан — но лишь немногие могут пробудить опасности, скрывающиеся за гранью реальности.

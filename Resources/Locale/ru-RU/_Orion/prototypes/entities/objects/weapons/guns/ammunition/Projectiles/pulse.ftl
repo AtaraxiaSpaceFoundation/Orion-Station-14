@@ -1,6 +1,6 @@
-ent-PulseBullet = pulse bullet
+ent-PulseBullet = пуля (энергоболт)
     .desc = { ent-BaseBullet.desc }
-ent-PulseBulletSpread = pulse bullet
-    .desc = { ent-PulseBullet.desc }
-ent-PulseBulletSpreadShotgun = pulse bullet
-    .desc = { ent-PulseBullet.desc }
+ent-PulseBulletSpread = пуля (энергоболт)
+    .desc = { ent-BaseBullet.desc }
+ent-PulseBulletSpreadShotgun = пуля (энергоболт)
+    .desc = { ent-BaseBullet.desc }

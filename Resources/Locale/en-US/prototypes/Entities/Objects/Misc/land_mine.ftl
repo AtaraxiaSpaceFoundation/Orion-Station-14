@@ -1,4 +1,5 @@
 ent-BaseLandMine = { "" }
+    .desc = { "" }
 ent-LandMineKickUnarmed = kick mine
     .desc = { ent-BaseLandMine.desc }
 ent-LandMineKick = { ent-LandMineKickUnarmed }

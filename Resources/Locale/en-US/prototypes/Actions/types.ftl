@@ -1,4 +1,5 @@
 ent-BaseAction = { "" }
+    .desc = { "" }
 ent-BaseMentalAction = { ent-BaseAction }
     .desc = { ent-BaseAction.desc }
 ent-BaseSuicideAction = { ent-BaseMentalAction }

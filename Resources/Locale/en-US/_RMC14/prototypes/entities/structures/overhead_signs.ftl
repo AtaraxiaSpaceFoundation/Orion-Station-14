@@ -1,4 +1,5 @@
 ent-RMCOverheadSign = sign
+    .desc = { "" }
 ent-RMCOverheadSignNeon = { ent-RMCOverheadSign }
     .desc = { ent-RMCOverheadSign.desc }
 ent-RMCOverheadSignNeonArcade = { ent-RMCOverheadSignNeon }

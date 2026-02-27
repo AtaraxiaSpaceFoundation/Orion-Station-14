@@ -8,6 +8,7 @@ ent-HolopadBluespace = bluespace holopad
     .desc = An experimental floor-mounted device for projecting holographic images via bluespace.
     .suffix = Unrestricted range
 ent-HolopadHologram = hologram
+    .desc = { "" }
 ent-HolopadGeneralTools = { ent-Holopad }
     .suffix = Tools
     .desc = { ent-Holopad.desc }

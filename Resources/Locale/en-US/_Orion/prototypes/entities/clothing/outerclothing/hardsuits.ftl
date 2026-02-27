@@ -1,10 +1,6 @@
-ent-ClothingOuterHardsuitInteQElite = elite InteQ hardsuit
-    .desc = An upgraded version of the syndicate hardsuit that features enhanced fireproofing, pressure resist, and superior armor.
-ent-ClothingOuterHardsuitInteQ = InteQ hardsuit
-    .desc = An upgraded version of the syndicate hardsuit that features enhanced fireproofing, pressure resist, and superior armor.
-ent-ClothingOuterHardsuitSyndicateInteQ = InteQ hardsuit
-    .desc = An upgraded version of the syndicate hardsuit that features enhanced fireproofing, pressure resist, and superior armor.
-ent-ClothingOuterHardsuitCBURNLeader = CBURN leader hardsuit
-    .desc = A lightweight yet strong exosuit used for special cleanup operations.
-ent-ClothingOuterHardsuitOTAAlliance = OTA alliance hardsuit
-    .desc = OTA Stormtrooper Hardsuit.
+ent-ClothingOuterHardsuitInteQElite = элитный скафандр Интек
+    .desc = { ent-ClothingOuterHardsuitInteQ.desc }
+ent-ClothingOuterHardsuitInteQ = скафандр Интек
+    .desc = Модернизированная версия боевого скафандра Синдиката, отличающаяся повышенной огнестойкостью, устойчивостью к давлению и превосходной броней.
+ent-ClothingOuterHardsuitSyndicateInteQ = скафандр Интек
+    .desc = { ent-ClothingOuterHardsuitInteQ.desc }

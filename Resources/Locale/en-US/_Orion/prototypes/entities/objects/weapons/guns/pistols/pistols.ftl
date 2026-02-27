@@ -1,11 +1,3 @@
 ent-WeaponPistolInteQCommissar = Commissar
     .desc = Small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses 9mm auto ammo. It is painted in the InteQ brand color.
     .suffix = Pistol
-ent-WeaponPistolVP78 = combat pistol VP-78
-    .desc = The VP-78, produced by Markus Henday Inc. A massive, formidable automatic handgun chambered in 5.56mm rounds.
-ent-WeaponPistolDesertEagle = desert eagle
-    .desc = A magnum chambered in .45AE that comes with a serious kick. This one is engraved, "Peace through superior firepower".
-ent-WeaponPistolG22 = G-22
-    .desc = A popular police firearm in the modern day. Chambered in 9mm rounds.
-ent-WeaponPistolG23 = service pistol G23
-    .desc = A popular self-defense firearm in the modern day. Chambered in 9mm rounds.

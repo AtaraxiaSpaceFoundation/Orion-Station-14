@@ -9,6 +9,7 @@ ent-SpawnMobWhiteWolf = White Wolf Spawner
 ent-SpawnMobLivingCurse = Living Curse Spawner
     .desc = { ent-MarkerBase.desc }
 ent-SpawnMobFermidLarge = Fermid Large Spawner
+    .desc = { "" }
 ent-SpawnMobFermidSmall = Fermid Small Spawner
     .desc = { ent-MarkerBase.desc }
 ent-SpawnMobFermidWarrior = Fermid Warrior Spawner

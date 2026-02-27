@@ -1,3 +1,3 @@
-ent-ChangelingShield = organic shield
-    .desc = A large, fleshy shield.
-    .suffix = Unremoveable
+ent-ChangelingShield = органический щит
+    .desc = Большой, плотный щит из плоти.
+    .suffix = Неснимаемый

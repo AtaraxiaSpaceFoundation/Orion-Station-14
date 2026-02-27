@@ -1,2 +1,2 @@
-ent-ClothingMaskMadHeretic = abyssal mask
-    .desc = A mask created from suffering. When you look into its eyes, it looks back.
+ent-ClothingMaskMadHeretic = бездна маска
+    .desc = Маска, созданная из страдания. Когда смотришь в её глаза, она смотрит в ответ.

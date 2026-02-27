@@ -1,5 +1,7 @@
 ent-DisposalPipeBase = { "" }
+    .desc = { "" }
 ent-DisposalHolder = disposal holder
+    .desc = { "" }
 ent-DisposalPipeBroken = broken disposal pipe
     .desc = A BBP (big broken pipe).
 ent-DisposalPipe = disposal pipe segment

@@ -1,9 +1,7 @@
 ent-ClothingOuterArmorInteQDarkTemplar = dark crusader armor
     .desc = Anti-eretic armor.
-    .suffix = InteQ
 ent-ClothingOuterArmorInteQDarkTemplarAlt = brown crusader armor
-    .suffix = InteQ
-    .desc = { ent-ClothingOuterArmorInteQDarkTemplar.desc }
+    .desc = Anti-eretic armor.
 ent-ClothingOuterArmorInteQInfiltrator = armored infiltrator cape
     .desc = High-quality raincoat with an armored plate made of multilayer plasteel. It combines lightness and durability, has a buffer lining and fits perfectly to the body without making unnecessary sounds when worn.
 ent-ClothingOuterArmorInteQIronTombstone = Iron Tombstone armor suit
@@ -22,5 +20,3 @@ ent-ClothingOuterArmorXenonautenMedium = medium shell armor
     .desc = XN-M vest, also known as Xenonauten, a set vest with modular attachments made to work in many enviroments. This one seems to be a medium variant.
 ent-ClothingOuterArmorXenonautenHeavy = heavy shell armor
     .desc = XN-H vest, also known as Xenonauten, a set vest with modular attachments made to work in many enviroments. This one seems to be a heavy variant.
-ent-ClothingOuterArmorAllianceAssassin = alliance assassin armor
-    .desc = High-quality bulletproof vest with armor plate made of multilayer plasteel. It combines lightness and durability, has a buffer lining and fits perfectly to the body without making unnecessary sounds when worn.

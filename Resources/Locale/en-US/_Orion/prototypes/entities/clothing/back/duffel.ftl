@@ -1,8 +1,8 @@
 ent-ClothingBackpackDuffelInteQ = combat duffel bag
-    .desc = A large duffel bag for holding weapons and supplies.
-ent-ClothingBackpackDuffelInteQAmmo = combat duffel bag
-    .desc = A large duffel bag for holding weapons and ammunition.
-ent-ClothingBackpackDuffelInteQMedical = combat duffel bag
-    .desc = A large duffel bag for holding weapons and medical things.
-ent-ClothingBackpackDuffelWhiteCaptain = captain's white duffel bag
-    .desc = A large duffel bag for holding extra captainly goods, but now in white.
+    .desc = Spacious duffel bag for weapons and supplies.
+ent-ClothingBackpackDuffelInteQAmmo = { ent-ClothingBackpackDuffelInteQ }
+    .desc = Spacious duffel bag for weapons and ammunition.
+ent-ClothingBackpackDuffelInteQMedical = { ent-ClothingBackpackDuffelInteQ }
+    .desc = Spacious duffel bag for weapons and medicines.
+ent-ClothingBackpackDuffelWhiteCaptain = white captain duffel bag
+    .desc = Large white duffel bag for storing additional captain's belongings.

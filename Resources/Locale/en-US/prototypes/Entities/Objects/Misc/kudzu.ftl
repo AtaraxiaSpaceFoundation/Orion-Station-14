@@ -1,4 +1,5 @@
 ent-BaseKudzu = { "" }
+    .desc = { "" }
 ent-Kudzu = kudzu
     .desc = A rapidly growing, dangerous plant. WHY ARE YOU STOPPING TO LOOK AT IT?!
 ent-WeakKudzu = { ent-Kudzu }

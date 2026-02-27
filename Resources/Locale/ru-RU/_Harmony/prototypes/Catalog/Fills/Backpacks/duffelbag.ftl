@@ -1,2 +1,3 @@
-ent-ClothingBackpackDuffelSyndicateFilledHushpup = Hushpup bundle
-    .desc = A duffel bag containing a Hushpup, quarter included.
+ent-ClothingBackpackDuffelSyndicateFilledHushpup = { ent-ClothingBackpackDuffelSyndicate }
+    .desc = { ent-ClothingBackpackDuffelSyndicate.desc }
+    .suffix = Набор с "Затейник"

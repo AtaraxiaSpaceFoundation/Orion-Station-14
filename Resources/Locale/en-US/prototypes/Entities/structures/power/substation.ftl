@@ -1,4 +1,5 @@
 ent-CoreSubstation = { "" }
+    .desc = { "" }
 ent-BaseSubstation = substation
     .desc = Reduces the voltage of electricity put into it.
 ent-BaseSubstationWall = wallmount substation

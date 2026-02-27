@@ -1,12 +1,12 @@
 ent-GunSafeInteQFilled = { ent-GunSafe }
-    .suffix = Sizo, Filled
     .desc = { ent-GunSafe.desc }
+    .suffix = Sizo, Filled
 ent-LockerInteQVanguardLeaderSizoFilled = { ent-LockerInteQVanguardLeader }
-    .suffix = Sizo, Leader, Filled
     .desc = { ent-LockerInteQVanguardLeader.desc }
+    .suffix = Sizo, Vanguard Leader, Filled
 ent-LockerInteQVanguardSizoFilled = { ent-LockerInteQVanguard }
+    .desc = { ent-LockerInteQVanguard.desc }
     .suffix = Sizo, Vanguard, Filled
-    .desc = { ent-LockerInteQVanguard.desc }
 ent-LockerInteQVanguardMedicSizoFilled = { ent-LockerInteQVanguard }
-    .suffix = Sizo, Medic, Filled
     .desc = { ent-LockerInteQVanguard.desc }
+    .suffix = Sizo, Medic, Filled

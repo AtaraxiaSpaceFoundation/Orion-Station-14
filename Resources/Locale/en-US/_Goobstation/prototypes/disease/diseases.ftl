@@ -1,4 +1,5 @@
 ent-DiseaseBase = { "" }
+    .desc = { "" }
 ent-DiseaseBaseMouse = { ent-DiseaseBase }
     .desc = { ent-DiseaseBase.desc }
 ent-DiseaseFlu = flu

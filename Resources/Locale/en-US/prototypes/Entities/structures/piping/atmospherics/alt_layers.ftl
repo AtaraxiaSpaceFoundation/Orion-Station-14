@@ -1,5 +1,7 @@
 ent-GasPipeLayerAlt1 = { "" }
+    .desc = { "" }
 ent-GasPipeLayerAlt2 = { "" }
+    .desc = { "" }
 ent-GasPipeStraightAlt1 = { ent-GasPipeLayerAlt1 }
     .desc = { ent-GasPipeLayerAlt1.desc }
 ent-GasPipeStraightAlt2 = { ent-GasPipeLayerAlt2 }

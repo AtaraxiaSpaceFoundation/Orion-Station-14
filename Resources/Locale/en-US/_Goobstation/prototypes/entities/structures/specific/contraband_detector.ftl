@@ -4,5 +4,6 @@ ent-ContrabandDetectorSecure = { ent-ContrabandDetector }
     .suffix = Secure
     .desc = { ent-ContrabandDetector.desc }
 ent-ContrabandDetectorFrame = contraband detector frame
+    .desc = { "" }
 ent-ContrabandDetectorCircuitboard = contraband detector electronics
     .desc = An electronics board used in contraband detector.

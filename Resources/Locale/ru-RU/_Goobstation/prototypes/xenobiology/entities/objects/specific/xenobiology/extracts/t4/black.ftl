@@ -1,3 +1,2 @@
-
-    .desc = { ent-BaseSlimeExtract.desc }
+ent-BlackSlimeExtract = чёрный экстракт слайма
     .desc = { ent-BaseSlimeExtract.desc }

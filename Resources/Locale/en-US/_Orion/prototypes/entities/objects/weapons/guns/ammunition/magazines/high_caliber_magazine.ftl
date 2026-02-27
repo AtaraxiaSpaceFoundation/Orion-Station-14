@@ -1,2 +1,2 @@
-ent-MagazineHighCaliberAP = magazine (.50 anti-materiel)
+ent-MagazineHighCaliberAP = magazine (.50 armor-piercing)
     .desc = { ent-BaseMagazineHighCaliber.desc }

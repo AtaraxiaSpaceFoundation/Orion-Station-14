@@ -81,7 +81,6 @@ station-beacon-tools = Хранилище инструментов
 station-beacon-disposals = Мусоросброс
 station-beacon-cryosleep = Криосон
 station-beacon-vox = Вокс-комната
-station-beacon-escape-pod = Escape Pod
 station-beacon-escape-pod-N = Спасательная капсула (Север)
 station-beacon-escape-pod-NE = Спасательная капсула (Северо-Восток)
 station-beacon-escape-pod-E = Спасательная капсула (Восток)

@@ -1,10 +1,6 @@
-ent-ClothingHeadHelmetHardsuitInteQElite = elite InteQ hardsuit helmet
-    .desc = A variant of the syndicate helmet designed by the InteQ to be exceptionally fireproof and pressure proof.
-ent-ClothingHeadHelmetHardsuitInteQ = InteQ hardsuit helmet
-    .desc = A variant of the syndicate helmet designed by the InteQ to be exceptionally fireproof and pressure proof.
-ent-ClothingHeadHelmetHardsuitSyndicateInteQ = InteQ hardsuit helmet
-    .desc = A variant of the syndicate helmet designed by the InteQ to be exceptionally fireproof and pressure proof.
-ent-ClothingHeadHelmetCBURNLeader = CBURN leader helmet
-    .desc = A pressure resistant and fireproof hood worn by special cleanup units.
-ent-ClothingHeadHelmetHardsuitOTAAlliance = OTA alliance hardsuit helmet
-    .desc = OTA stormtrooper hardsuit helmet.
+ent-ClothingHeadHelmetHardsuitInteQElite = шлем элитного скафандра Интек
+    .desc = Вариант шлема Синдиката с дизайном от Интек. Устойчив к огню и высокому давлению.
+ent-ClothingHeadHelmetHardsuitInteQ = шлем скафандра Интек
+    .desc = { ent-ClothingHeadHelmetHardsuitInteQElite.desc }
+ent-ClothingHeadHelmetHardsuitSyndicateInteQ = { ent-ClothingHeadHelmetHardsuitInteQ }
+    .desc = { ent-ClothingHeadHelmetHardsuitInteQElite.desc }

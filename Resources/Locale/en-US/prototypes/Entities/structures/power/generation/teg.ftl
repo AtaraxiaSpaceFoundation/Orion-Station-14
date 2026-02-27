@@ -3,3 +3,4 @@ ent-TegCenter = thermo-electric generator
 ent-TegCirculator = circulator
     .desc = Passes gas through the thermo-electric generator to exchange heat. Has an inlet and outlet port.
 ent-TegCirculatorArrow = { "" }
+    .desc = { "" }

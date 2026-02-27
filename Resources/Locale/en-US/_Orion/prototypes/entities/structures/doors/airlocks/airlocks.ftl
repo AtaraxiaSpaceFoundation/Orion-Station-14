@@ -1,3 +1,3 @@
 ent-AirlockUEG = { ent-Airlock }
-    .suffix = United Earth Government
     .desc = { ent-Airlock.desc }
+    .suffix = United Earth Government

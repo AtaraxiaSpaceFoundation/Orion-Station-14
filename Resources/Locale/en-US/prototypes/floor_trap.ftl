@@ -1,4 +1,5 @@
 ent-CollideFloorTrap = { "" }
+    .desc = { "" }
 ent-CollideFloorTrapSpawn = floor trap spawn
     .desc = { ent-CollideFloorTrap.desc }
 ent-FloorTrapExplosion = explosion floor trap

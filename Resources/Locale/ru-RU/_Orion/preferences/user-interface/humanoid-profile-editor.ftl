@@ -11,9 +11,10 @@ humanoid-profile-editor-flavor-nsfw-label = NSFW Описание
 humanoid-profile-editor-flavor-nsfw-ooc-label = NSFW OOC Заметки
 humanoid-profile-editor-flavor-nsfw-links-label = NSFW Ссылки
 humanoid-profile-editor-flavor-nsfw-tags-label = NSFW Теги персонажа (через запятую)
+
 humanoid-profile-editor-gyr-green = Любимые темы
 humanoid-profile-editor-gyr-yellow = Темы для обсуждения
 humanoid-profile-editor-gyr-red = Запрещённые темы
 humanoid-profile-editor-link-tooltip =
-    Нажмите чтобы открыть: { $url }
+    Нажмите чтобы открыть: {$url}
     Примечание: Если ссылка содержит в себе вредоносные материалы — сообщите об этом администрации.

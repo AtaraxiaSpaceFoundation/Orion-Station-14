@@ -1,2 +1,2 @@
-ent-AshBush = dusty bush
-    .desc = A bush that is covered in ash. It may look like it's dead, but it's actually alive!
+ent-AshBush = пепельный куст
+    .desc = Куст, покрытый пеплом. Он может выглядеть мёртвым, но на самом деле он жив!

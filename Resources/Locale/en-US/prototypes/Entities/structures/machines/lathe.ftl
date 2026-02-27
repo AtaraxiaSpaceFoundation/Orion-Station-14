@@ -3,6 +3,7 @@ ent-BaseLathe = lathe
 ent-BaseLatheLube = { ent-BaseLathe }
     .desc = { ent-BaseLathe.desc }
 ent-BaseHyperlathe = { "" }
+    .desc = { "" }
 ent-Autolathe = autolathe
     .desc = It produces basic items using metal and glass. Has the ability to process blueprints to print new recipes.
 ent-AutolatheHyperConvection = hyper convection autolathe

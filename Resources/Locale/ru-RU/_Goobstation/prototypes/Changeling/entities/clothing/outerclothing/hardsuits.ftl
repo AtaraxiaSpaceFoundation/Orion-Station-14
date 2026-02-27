@@ -1,3 +1,3 @@
-ent-ChangelingClothingOuterHardsuit = organic space suit
-    .desc = A spaceworthy biomass of pressure and temperature resistant tissue.
-    .suffix = Unremoveable
+ent-ChangelingClothingOuterHardsuit = органический скафандр
+    .desc = Космостойкая биомасса из ткани, устойчивой к давлению и температуре.
+    .suffix = Неснимаемый

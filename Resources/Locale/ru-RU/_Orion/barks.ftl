@@ -13,12 +13,13 @@ bark-name-male-avali = Авали (Мужской)
 bark-name-female-avali = Авали (Женский)
 bark-name-pai = ПИИ
 bark-name-borg = Борг
-bark-name-borg-syndie = Борг (Синдикат)
+bark-name-borg-syndie = Борг (Синдикат) 
 bark-name-durk = Дурк
 bark-name-impudent = Бесстыжий
 bark-name-strong = Сильный
 bark-name-alien = Инопланетный
 bark-name-ethereal = Эфирный
+
 bark-name-ace-attorney = Адвокат
 bark-name-dont-starve-wilson = Уилсон (Don't Starve)
 bark-name-dont-starve-wolfgang = Вольфганг (Don't Starve)

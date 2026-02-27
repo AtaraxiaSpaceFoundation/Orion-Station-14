@@ -1,5 +1,3 @@
-ent-MindRoleGhostRole = Ghost Role
-    .desc = { ent-MindRoleGhostRoleNeutral.desc }
-ent-SpawnPointHermitLavaland = Lavaland Hermit sleeper
-    .suffix = Spawner, Ghost Role, Player Appearance
-    .desc = { ent-BaseStructure.desc }
+ent-SpawnPointHermitLavaland = капсула отшельника Лаваленда
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Спавнер, Гост Роль, Персонаж игрока

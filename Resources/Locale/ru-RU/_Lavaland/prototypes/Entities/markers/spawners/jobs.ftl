@@ -1,2 +1,2 @@
-ent-SpawnPointShaftMiner = shaft miner
+ent-SpawnPointShaftMiner = шахтёр
     .desc = { ent-SpawnPointJobBase.desc }

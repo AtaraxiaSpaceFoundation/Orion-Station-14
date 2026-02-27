@@ -1,2 +1,2 @@
-ent-LavalandBossMegaLegion = Legion
-    .desc = One of many.
+ent-LavalandBossMegaLegion = Легион
+    .desc = Один из многих.

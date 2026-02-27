@@ -2,5 +2,5 @@ ent-BoneRibDecoration = bone rib
     .desc = Someones rib, would it be nice to return it to the owner?...
 ent-BoneSkullHalfDecoration = bone skull
     .desc = Someones skull, would it be nice to return it to the owner?...
-ent-BoneSkullDecoration = { ent-BoneRibDecoration }
-    .desc = { ent-BoneRibDecoration.desc }
+ent-BoneSkullDecoration = { ent-BoneSkullHalfDecoration }
+    .desc = { ent-BoneSkullHalfDecoration.desc }

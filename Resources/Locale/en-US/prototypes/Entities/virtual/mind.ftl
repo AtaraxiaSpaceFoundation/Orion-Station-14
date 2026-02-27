@@ -1,1 +1,2 @@
 ent-MindBase = mind
+    .desc = { "" }

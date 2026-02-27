@@ -1,6 +1,7 @@
 ent-FlaskBase = { ent-DrinkBase }
     .desc = { ent-DrinkBase.desc }
 ent-DrinkFlaskVisualsOpenable = { "" }
+    .desc = { "" }
 ent-DrinkShinyFlask = shiny flask
     .desc = A shiny metal flask. It appears to have a Greek symbol inscribed on it.
 ent-DrinkMREFlask = MRE flask

@@ -1,4 +1,5 @@
 ent-BaseVehicle = { "" }
+    .desc = { "" }
 ent-VehicleSecway = secway
     .desc = The future of transportation. Popularized by St. James, the patron saint of security officers and internet forum moderators.
 ent-VehicleSyndicateSegway = syndicate segway
@@ -15,5 +16,6 @@ ent-VehicleWheelchairFolded = { ent-VehicleWheelchair }
 ent-VehicleHoverchair = hoverchair
     .desc = A luxury hoverchair, kick back and relax.
 ent-VehicleForkliftOverlay = forklift overlay
+    .desc = { "" }
 ent-VehicleForklift = forklift
     .desc = NanoTrasen approved Forklift Certification required.

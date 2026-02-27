@@ -1,7 +1,11 @@
 ent-CombatMech = { "" }
+    .desc = { "" }
 ent-IndustrialMech = { "" }
+    .desc = { "" }
 ent-SpecialMech = { "" }
+    .desc = { "" }
 ent-SmallMech = { "" }
+    .desc = { "" }
 ent-MechRipley2 = Ripley APLU MK-II
     .desc = The "MK-II" has a pressurized cabin for space operations, but the added weight has slowed it down.
 ent-MechRipley2Battery = { ent-MechRipley2 }

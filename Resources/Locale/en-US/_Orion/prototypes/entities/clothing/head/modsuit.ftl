@@ -1,2 +1,2 @@
-ent-ClothingModsuitHelmetSuspicious = suspicious hardsuit helmet
-    .desc = A special modular suit spaceproof helmet designed for compact folding inside modular suit control.
+ent-ClothingModsuitHelmetSuspicious = подозрительный шлем модульного костюма
+    .desc = Специальный космический шлем модульного скафандра, предназначенный для компактного складывания внутри модульного скафандра.

@@ -1,9 +1,0 @@
-ent-SprayBottleRedEmpty = red spray bottle
-    .suffix = Empty, Styptic powder
-    .desc = { ent-SprayBottle.desc }
-ent-SprayBottleOrangeEmpty = orange spray bottle
-    .suffix = Empty, Styptic powder
-    .desc = { ent-SprayBottle.desc }
-ent-SprayBottleBlueEmpty = blue spray bottle
-    .suffix = Empty, Blue
-    .desc = { ent-SprayBottle.desc }

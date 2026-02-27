@@ -1,4 +1,5 @@
 ent-MobElementalBase = { "" }
+    .desc = { "" }
 ent-MobOreCrab = ore crab
     .desc = { ent-MobElementalBase.desc }
 ent-MobQuartzCrab = { ent-MobOreCrab }

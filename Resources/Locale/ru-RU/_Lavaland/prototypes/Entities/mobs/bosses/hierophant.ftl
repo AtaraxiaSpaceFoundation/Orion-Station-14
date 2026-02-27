@@ -1,2 +1,2 @@
-ent-MobHierophant = hierophant
-    .desc = A massive metal club that hangs in the air as though waiting. It'll make you dance to its beat.
+ent-MobHierophant = Иерофант
+    .desc = Массивный металлический посох вспаряющий в воздухе, словно ожидает своего часа. Он заставит вас танцевать под ЕГО ритм.
