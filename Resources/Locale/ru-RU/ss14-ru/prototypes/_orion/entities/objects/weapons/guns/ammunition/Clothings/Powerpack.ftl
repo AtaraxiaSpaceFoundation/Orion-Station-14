@@ -1,0 +1,10 @@
+ent-BasePowerpackRifle = силовой ранец (.10 винтовочный)
+    .desc = { ent-BaseItem.desc }
+ent-BasePowerpackEnergy = силовой ранец (импульсный)
+    .desc = { ent-BaseItem.desc }
+ent-PowerpackRifle10 = силовой ранец (.10 винтовочный)
+    .desc = { ent-BasePowerpackRifle.desc }
+ent-PowerpackRifle15 = силовой ранец (.15 винтовочный)
+    .desc = { ent-BasePowerpackRifle.desc }
+ent-PowerpackEnergyPulse = силовой ранец (импульсный)
+    .desc = { ent-BasePowerpackEnergy.desc }

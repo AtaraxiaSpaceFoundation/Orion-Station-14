@@ -1,0 +1,15 @@
+ent-CaseInteQInfiltrator = { ent-CaseInteQ }
+    .suffix = Лазутчик Интек, Заполненный
+    .desc = { ent-CaseInteQ.desc }
+ent-CaseInteQIronTombstone = { ent-CaseInteQ }
+    .suffix = Железное Надгробие Интек, Заполненный
+    .desc = { ent-CaseInteQ.desc }
+ent-CaseInteQAKM = { ent-CaseInteQ }
+    .suffix = АКМ Интек, Заполненный
+    .desc = { ent-CaseInteQ.desc }
+ent-CaseInteQBulldog = { ent-CaseInteQ }
+    .suffix = Бульдог Интек, Заполненный
+    .desc = { ent-CaseInteQ.desc }
+ent-CaseInteQSMG = { ent-CaseInteQ }
+    .suffix = ПП Интек, Заполненный
+    .desc = { ent-CaseInteQ.desc }

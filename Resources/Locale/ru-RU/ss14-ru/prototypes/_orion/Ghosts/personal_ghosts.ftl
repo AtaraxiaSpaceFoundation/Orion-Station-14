@@ -1,0 +1,12 @@
+ent-MobObserverCkey = { ent-MobObserver }
+    .desc = { ent-MobObserver.desc }
+ent-MobObserverCkeyPlaceholder = { ent-MobObserverCkey }
+    .desc = { ent-MobObserverCkey.desc }
+ent-MobObserver-PuroSlavKing = { ent-MobObserver }
+    .desc = Hello World!
+ent-MobObserver-GodFace = { ent-MobObserver }
+    .desc = БуУ-Уу!
+ent-MobObserver-LIZARDWIZARD = { ent-MobObserver }
+    .desc = БуУ-Уу!
+ent-MobObserver-scituzer2 = { ent-MobObserver }
+    .desc = Йарр!

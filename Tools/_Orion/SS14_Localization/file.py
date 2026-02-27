@@ -1,6 +1,7 @@
 ﻿import typing
 import os
 import re
+import logging
 from fluent.syntax import ast
 from yamlmodels import YAMLElements
 
@@ -113,7 +114,13 @@ class YAMLFile(File):
     def parse_data(self, file_data: typing.AnyStr):
         import yaml
 
-        return yaml.load(file_data, Loader=yaml.BaseLoader)
+        sanitized_data = file_data.replace('\t', '    ')
+
+        try:
+            return yaml.load(sanitized_data, Loader=yaml.BaseLoader)
+        except yaml.YAMLError as ex:
+            logging.warning(f'Failed to parse YAML file {self.full_path}: {ex}')
+            return None
 
     def get_elements(self, parsed_data):
 
