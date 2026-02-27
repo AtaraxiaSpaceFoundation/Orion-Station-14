@@ -2,7 +2,6 @@ ent-AsteroidRock = asteroid rock
     .desc = A rocky asteroid.
 ent-BaseRockGibtonite = { "" }
     .suffix = Gibtonite
-    .desc = { "" }
 ent-AsteroidRockCoal = { ent-AsteroidRock }
     .suffix = Coal
     .desc = { ent-AsteroidRock.desc }

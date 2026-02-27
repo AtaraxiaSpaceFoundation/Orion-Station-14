@@ -1,9 +1,7 @@
 ent-WeaponArcCosmic = { ent-WeaponArcStatic }
     .desc = { ent-WeaponArcStatic.desc }
 ent-CosmicFloorSpawnVFX = { "" }
-    .desc = { "" }
 ent-BaseCosmicVFX = { "" }
-    .desc = { "" }
 ent-CosmicLapseAbilityVFX = { ent-BaseCosmicVFX }
     .desc = { ent-BaseCosmicVFX.desc }
 ent-CosmicBlankAbilityVFX = { ent-BaseCosmicVFX }
@@ -17,7 +15,6 @@ ent-CosmicGlareAbilityVFX = { ent-BaseCosmicVFX }
 ent-CosmicImpositionAbilityVFX = { ent-BaseCosmicVFX }
     .desc = { ent-BaseCosmicVFX.desc }
 ent-CosmicNovaImpactVfx = { "" }
-    .desc = { "" }
 ent-CosmicEchoVfx = malign echo
     .desc = A trace of malign light..
 ent-NoosphericVFX2 = { ent-BaseCosmicVFX }

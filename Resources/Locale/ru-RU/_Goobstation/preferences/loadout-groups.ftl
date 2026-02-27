@@ -54,5 +54,6 @@ loadout-group-virologist-jumpsuit = Вирусолог, комбинезон
 loadout-group-virologist-backpack = Вирусолог, рюкзак
 loadout-group-virologist-outerclothing = Вирусолог, верхняя одежда
 loadout-group-virologist-id = Вирусолог, ID карта
+#RadioHost
 # RadioHost
 loadout-group-radiohost-jumpsuit = Радио-ведущий, комбинезон

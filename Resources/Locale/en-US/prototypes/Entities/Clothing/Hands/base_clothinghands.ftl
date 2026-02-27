@@ -7,6 +7,5 @@ ent-ClothingHandsGlovesSyntheticBase = { ent-ClothingHandsButcherable }
 ent-RingBase = { ent-BaseItem }
     .desc = { ent-BaseItem.desc }
 ent-GoldRingBase = { "" }
-    .desc = { "" }
 ent-SilverRingBase = silver ring
     .desc = Looks slightly less valuable than a gold one.

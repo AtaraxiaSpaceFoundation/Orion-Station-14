@@ -14,6 +14,7 @@ guide-entry-virology = Вирусология
 guide-entry-rules-nrp = Правила НРП
 guide-entry-sm = Суперматерия
 guide-entry-automation = Автоматизация
+guide-entry-conditions = Antag Revealing Conditions
 guide-entry-plumbing = Трубы
 guide-entry-alcoholic-drinks = Алкоголь
 guide-entry-non-alcoholic-drinks = Безалкоголь
@@ -49,6 +50,48 @@ guide-entry-sop-demoting = Увольнение/понижение
 guide-entry-sop-evacuation = Ранняя эвакуация
 guide-entry-sop-hiring = Найм/перевод
 guide-entry-sop-succession = Цепочка командования
+# - Legal
+guide-entry-sop-execution = Executions
+guide-entry-sop-permabrig = Permanent Brig
+guide-entry-sop-punishments = Punishments
+guide-entry-sop-searches = Searches
+# - Cargo
+guide-entry-sop-cargotech = Cargo Tech
+guide-entry-sop-salvage = Salvage Specialist
+guide-entry-sop-shaft-miner = Shaft Miner
+# - Command
+guide-entry-sop-ntr = Nanotrasen Rep.
+guide-entry-sop-bso = Blueshield Officer
+guide-entry-sop-captain = Captain
+guide-entry-sop-hop = Head of Personnel
+guide-entry-sop-hos = Head of Security
+guide-entry-sop-rd = Research Director
+guide-entry-sop-cmo = Chief Medical Ofc.
+guide-entry-sop-ce = Chief Engineer
+guide-entry-sop-qm = Quartermaster
+# - Engineering
+guide-entry-sop-atmostech = Atmos Tech
+guide-entry-sop-stationengineer = Station Engineer
+# - Medical
+guide-entry-sop-chemist = Chemist
+guide-entry-sop-doctorintern = Doctor/Intern
+# - Science
+guide-entry-sop-roboticist = Roboticist
+guide-entry-sop-scientist = Scientist
+# - Security
+guide-entry-sop-brigmedic = Brigmedic
+guide-entry-sop-detective = Detective
+guide-entry-sop-officercadet = Officer/Cadet
+guide-entry-sop-warden = Warden
+# - Service
+guide-entry-sop-bartender = Bartender
+guide-entry-sop-botanist = Botanist
+guide-entry-sop-chef = Chef
+guide-entry-sop-clown = Clown
+guide-entry-sop-janitor = Janitor
+guide-entry-sop-librarian = Librarian
+guide-entry-sop-mime = Mime
+guide-entry-sop-reporter = Reporter
 # - Аварийные ситуации
 guide-entry-sop-confirmedrevs = Революция
 guide-entry-sop-containmentfail = Нарушение содержания
@@ -59,6 +102,7 @@ guide-entry-sop-supermatterdelam = Распад Суперматерии
 guide-entry-sop-wardeclaration = Объявление войны
 guide-entry-sop-zombieoutbreak = Вспышка зомби
 guide-entry-sop-emergencyresponseteam = ОБР (Отряд Быстрого Реагирования)
+
 # - Юридическая часть
 # guide-entry-sop-execution = Казни
 # guide-entry-sop-permabrig = Пермабриг
@@ -101,3 +145,4 @@ guide-entry-sop-emergencyresponseteam = ОБР (Отряд Быстрого Ре
 # guide-entry-sop-librarian = Библиотекарь
 # guide-entry-sop-mime = Мим
 # guide-entry-sop-reporter = Репортёр
+

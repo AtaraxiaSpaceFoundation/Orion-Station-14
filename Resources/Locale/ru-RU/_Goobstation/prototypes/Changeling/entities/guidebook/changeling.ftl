@@ -1,3 +1,2 @@
-ent-GuidebookChangelingFluff = гайд генокрада
-    .desc = Обычно вы не должны это видеть.
-    .suffix = Руководство
+ent-GuidebookChangelingFluff = guidebook changeling
+    .desc = you shouldn't be seeing this normally.

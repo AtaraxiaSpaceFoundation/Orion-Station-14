@@ -25,6 +25,5 @@ ent-PuddleFlour = { ent-PuddleTemporary }
     .suffix = Flour
     .desc = { ent-PuddleTemporary.desc }
 ent-PuddleSparkle = sparkle
-    .desc = { "" }
 ent-Puddle = puddle
     .desc = A puddle of liquid.

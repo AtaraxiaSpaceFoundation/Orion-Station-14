@@ -4,8 +4,9 @@ ent-ClothingShoesLeather = кожаные ботинки
     .desc = Очень стильная пара сапог, изготовленных из натуральной кожи.
 ent-ClothingShoesSlippers = тапочки
     .desc = Пушистые!
-ent-ClothingShoeSlippersDuck = тапки-уточки
     .desc = Удобные, но преследуемые призраками уток, которых вы кормили хлебом в детстве.
+
+    .desc = You wish these made quacking sounds as you walked. It's a good thing they don't, though.
 ent-ClothingShoeSlippersLizard = тапки-плюшевые ящерицы
     .desc = Очаровательная пара тапочек, напоминающих ящерицу. Сочетайте их с другой зеленой одеждой, и вы станете самым крутым членом экипажа на станции!
 ent-ClothingShoesTourist = туристическая обувь

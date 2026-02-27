@@ -1,5 +1,4 @@
 ent-BaseClothingModsuitHelmet = base modsuit helmet
-    .desc = { "" }
 ent-BaseClothingModsuitHelmetHideIdentity = base modsuit helmet
     .desc = { ent-BaseClothingModsuitHelmet.desc }
 ent-ClothingModsuitHelmetStandard = standard modsuit helmet

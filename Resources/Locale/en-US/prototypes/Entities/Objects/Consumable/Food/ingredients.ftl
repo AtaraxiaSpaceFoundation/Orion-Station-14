@@ -3,7 +3,6 @@ ent-ReagentContainerBase = { ent-BaseItem }
 ent-ReagentPacketBase = { ent-ReagentContainerBase }
     .desc = { ent-ReagentContainerBase.desc }
 ent-ItemHeftyBase = { "" }
-    .desc = { "" }
 ent-ReagentContainerFlour = flour bag
     .desc = A big bag of flour. Good for baking!
 ent-ReagentContainerFlourSmall = flour pack

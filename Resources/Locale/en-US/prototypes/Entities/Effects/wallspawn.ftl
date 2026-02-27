@@ -1,5 +1,4 @@
 ent-WallSpawnAsteroid = { "" }
-    .desc = { "" }
 ent-WallSpawnAsteroidUraniumCrab = { ent-WallSpawnAsteroid }
     .desc = { ent-WallSpawnAsteroid.desc }
 ent-WallSpawnAsteroidBananium = { ent-WallSpawnAsteroid }

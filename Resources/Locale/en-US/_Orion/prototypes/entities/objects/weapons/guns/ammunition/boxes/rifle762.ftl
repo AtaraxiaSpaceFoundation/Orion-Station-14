@@ -1,0 +1,12 @@
+ent-BaseMagazineBoxRifle762 = ammunition box (7.62mm rifle)
+    .desc = { ent-BaseItem.desc }
+ent-MagazineBoxRifle762Big = ammunition box (7.62mm rifle)
+    .desc = { ent-BaseMagazineBoxRifle762.desc }
+ent-MagazineBoxRifle762 = ammunition box (7.62mm rifle)
+    .desc = A cardboard box of 7.62mm rifle rounds. Intended to hold general-purpose kinetic ammunition.
+ent-MagazineBoxRifle762Practice = ammunition box (7.62mm practice)
+    .desc = A cardboard box of 7.62mm rifle rounds. Intended to hold non-harmful chalk ammunition.
+ent-MagazineBoxRifle762Incendiary = ammunition box (7.62mm incendiary)
+    .desc = A cardboard box of 7.62mm rifle rounds. Intended to hold self-igniting incendiary ammunition.
+ent-MagazineBoxRifle762Uranium = ammunition box (7.62mm uranium)
+    .desc = A cardboard box of 7.62mm rifle rounds. Intended to hold exotic uranium-core ammunition.

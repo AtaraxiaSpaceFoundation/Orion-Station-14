@@ -3,7 +3,8 @@ no-station-report-summited = Не было получено станционны
 round-end-summary-window-player-name-role = в роли { $role }, играл { $player }.
 round-end-summary-window-player-name = сыграл { $player }.
 round-end-summary-window-last-words = [italic][color=gray]"{ $lastWords }"[/color][/italic]
-round-end-summary-window-death = { GENDER($entity) ->
+round-end-summary-window-death =
+    { GENDER($entity) ->
         [male] Он погиб
         [female] Она погибла
         [epicene] Они погибли

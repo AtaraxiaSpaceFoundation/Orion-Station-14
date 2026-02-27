@@ -4,7 +4,6 @@ ent-DrinkCartonBaseFull = { ent-DrinkBase }
 ent-DrinkCartonBaseLargeFull = { ent-DrinkCartonBaseFull }
     .desc = { ent-DrinkCartonBaseFull.desc }
 ent-DrinkCartonVisualsOpenable = { "" }
-    .desc = { "" }
 ent-DrinkJuiceLimeCarton = lime juice
     .desc = Sweet-sour goodness.
 ent-DrinkJuiceOrangeCarton = orange juice

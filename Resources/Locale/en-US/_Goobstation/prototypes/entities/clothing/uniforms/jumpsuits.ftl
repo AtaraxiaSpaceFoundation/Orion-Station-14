@@ -55,3 +55,5 @@ ent-ClothingUniformJumpsuitPassengerQuarterzip = grey quarterzip
 ent-ClothingUniformJumpsuitAncientUnremoveable = { ent-ClothingUniformJumpsuitAncient }
     .suffix = Unremoveable
     .desc = { ent-ClothingUniformJumpsuitAncient.desc }
+ent-ClothingUniformJumpsuitOuterCommand = outer command jumpsuit
+    .desc = A fancy purple suit with a Terra-Gov insignia.

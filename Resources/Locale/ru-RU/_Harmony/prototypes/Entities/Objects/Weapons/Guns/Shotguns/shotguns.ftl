@@ -1,2 +1,2 @@
-ent-WeaponShotgunHushpup = Затейник
-    .desc = Мощный дробовик с глушителем и магазином скромной вместительности. Отлично подойдет тем, кто придерживается строгих моральных принципов. Использует патроны калибра .50 ружейный.
+ent-WeaponShotgunHushpup = Hushpup
+    .desc = An obscure modification of the Enforcer, fitted with a bulky suppressor. Great for those with a strict moral code. Loads 5 rounds of 12 Gauge.

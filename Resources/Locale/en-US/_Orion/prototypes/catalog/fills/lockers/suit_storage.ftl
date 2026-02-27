@@ -1,12 +1,12 @@
 ent-SuitStorageInteQEVA = { ent-SuitStorageBase }
-    .desc = { ent-SuitStorageBase.desc }
     .suffix = InteQ EVA
+    .desc = { ent-SuitStorageBase.desc }
 ent-SuitStorageInteQEliteHardsuit = { ent-SuitStorageBase }
-    .desc = { ent-SuitStorageBase.desc }
     .suffix = InteQ Elite
+    .desc = { ent-SuitStorageBase.desc }
 ent-SuitStorageInteQHardsuit = { ent-SuitStorageBase }
-    .desc = { ent-SuitStorageBase.desc }
     .suffix = InteQ
-ent-SuitStorageInteQSyndicateHardsuit = { ent-SuitStorageBase }
     .desc = { ent-SuitStorageBase.desc }
+ent-SuitStorageInteQSyndicateHardsuit = { ent-SuitStorageBase }
     .suffix = InteQ (Syndicate)
+    .desc = { ent-SuitStorageBase.desc }

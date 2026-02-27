@@ -1,5 +1,4 @@
 ent-VoidPortalBase = Harbinger portal
-    .desc = { "" }
 ent-VoidPortalEmpty = Harbinger portal
     .desc = { ent-VoidPortalBase.desc }
 ent-VoidPortalSkeletonGoonWraith = Harbinger portal

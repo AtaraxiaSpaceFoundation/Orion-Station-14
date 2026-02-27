@@ -1,8 +1,8 @@
-ent-StatusEffectFireBlasted = обожжённый огнём
+ent-StatusEffectFireBlasted = fire blasted
     .desc = { ent-MobStatusEffectBase.desc }
-ent-StatusEffectStarMark = звёздная метка
+ent-StatusEffectStarMark = star mark
     .desc = { ent-MobStatusEffectBase.desc }
-ent-StatusEffectStarTouched = звёздное прикосновение
+ent-StatusEffectStarTouched = star touched
     .desc = { ent-MobStatusEffectBase.desc }
-ent-CarvingAlertedStatusEffect = предупреждён
+ent-CarvingAlertedStatusEffect = alerted
     .desc = { ent-MobStatusEffectBase.desc }

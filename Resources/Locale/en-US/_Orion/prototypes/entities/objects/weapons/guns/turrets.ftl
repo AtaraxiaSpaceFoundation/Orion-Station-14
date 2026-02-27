@@ -1,3 +1,3 @@
 ent-WeaponTurretInteQ = { ent-BaseWeaponBallisticTurret }
-    .desc = { ent-BaseWeaponBallisticTurret.desc }
     .suffix = InteQ
+    .desc = { ent-BaseWeaponBallisticTurret.desc }

@@ -1,5 +1,4 @@
 ent-SurgeryBase = { "" }
-    .desc = { "" }
 ent-BasePartSurgery = { ent-SurgeryBase }
     .desc = { ent-SurgeryBase.desc }
 ent-BaseSurgeryInsertOrgan = { ent-SurgeryBase }

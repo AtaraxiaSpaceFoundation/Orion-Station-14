@@ -1,4 +1,4 @@
-ent-ProtolatheAncientMachineCircuitboard = ancient protolathe machine board
+ent-ProtolatheAncientMachineCircuitboard = { ent-ProtolatheMachineCircuitboard }
     .desc = { ent-ProtolatheMachineCircuitboard.desc }
-ent-CircuitImprinterAncientMachineCircuitboard = ancient circuit imprinter machine board
+ent-CircuitImprinterAncientMachineCircuitboard = { ent-CircuitImprinterMachineCircuitboard }
     .desc = { ent-CircuitImprinterMachineCircuitboard.desc }

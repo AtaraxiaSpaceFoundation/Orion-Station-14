@@ -5,9 +5,7 @@ ent-MobGoliath = goliath
 ent-ActionGoliathTentacle = [color=red]Tentacle Slam[/color]
     .desc = Use your tentacles to grab and stun a target player!
 ent-GoliathTentacle = tentacle
-    .desc = { "" }
 ent-BaseEffectGoliathTentacleSpawn = tentacle
-    .desc = { "" }
 ent-EffectGoliathTentacleSpawn = tentacle
     .desc = { ent-BaseEffectGoliathTentacleSpawn.desc }
 ent-EffectGoliathTentacleRetract = { ent-BaseEffectGoliathTentacleSpawn }

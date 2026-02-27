@@ -5,4 +5,3 @@ ent-ExecutiveBriefcaseDebug = { ent-ExecutiveBriefcaseEmpty }
     .suffix = Debug
     .desc = { ent-ExecutiveBriefcaseEmpty.desc }
 ent-StorePresetNTR = { "" }
-    .desc = { "" }

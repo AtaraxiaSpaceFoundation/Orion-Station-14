@@ -1,2 +1,1 @@
-ent-ApprenticeIconChaos = хаос
-    .desc = { "" }
+ent-ApprenticeIconChaos = chaos

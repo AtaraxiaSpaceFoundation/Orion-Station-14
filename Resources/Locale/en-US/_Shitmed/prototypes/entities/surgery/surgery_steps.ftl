@@ -1,5 +1,4 @@
 ent-SurgeryStepBase = { "" }
-    .desc = { "" }
 ent-SurgeryStepOpenIncisionScalpel = Cut with a scalpel
     .desc = { ent-SurgeryStepBase.desc }
 ent-SurgeryStepClampBleeders = Clamp the bleeders

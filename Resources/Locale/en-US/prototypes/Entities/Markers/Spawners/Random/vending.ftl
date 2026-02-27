@@ -1,5 +1,5 @@
 ent-RandomVending = random vending machine spawner
-    .suffix = DO NOT MAP, Any
+    .suffix = Any
     .desc = { ent-MarkerBase.desc }
 ent-RandomVendingClothing = random vending machine spawner
     .suffix = Clothing

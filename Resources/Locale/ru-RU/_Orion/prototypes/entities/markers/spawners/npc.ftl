@@ -1,0 +1,10 @@
+ent-SpawnMobSimpleSyndicateBlade = spawner Simple Syndicate Blade
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobSimpleSyndicateKnife = spawner Simple Syndicate Knife
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobSimpleSyndicatePistol = spawner Simple Syndicate Pistol
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobSimpleSyndicateShotgun = spawner Simple Syndicate Shotgun
+    .desc = { ent-MarkerBase.desc }
+ent-SpawnMobSimpleSyndicateSMG = spawner Simple Syndicate SMG
+    .desc = { ent-MarkerBase.desc }

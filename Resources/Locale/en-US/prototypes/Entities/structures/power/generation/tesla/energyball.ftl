@@ -1,5 +1,4 @@
 ent-BaseEnergyBall = { "" }
-    .desc = { "" }
 ent-TeslaEnergyBall = tesla orb
     .desc = A giant ball of pure energy. The space around it is humming and melting.
 ent-TeslaMiniEnergyBall = mini tesla orb

@@ -1,6 +1,6 @@
 ent-ProtolatheAncient = ancient protolathe
+    .suffix = Ancient
     .desc = { ent-Protolathe.desc }
-    .suffix = Ancient
 ent-CircuitImprinterAncient = ancient circuit imprinter
-    .desc = { ent-CircuitImprinter.desc }
     .suffix = Ancient
+    .desc = { ent-CircuitImprinter.desc }

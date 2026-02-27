@@ -1,2 +1,1 @@
 ent-clientsideclone = clientsideclone
-    .desc = { "" }

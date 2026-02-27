@@ -1,2 +1,1 @@
 ent-AlertCosmicEntropySpriteView = { "" }
-    .desc = { "" }

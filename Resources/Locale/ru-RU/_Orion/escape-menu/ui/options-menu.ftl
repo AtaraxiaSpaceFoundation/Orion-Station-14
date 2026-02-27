@@ -1,6 +1,5 @@
 ui-options-combat-indicator = Отображение индикатора боевого режима
 ui-options-combat-mode-sound = Звук перехода в Боевой Режим
-
 ui-options-function-toggle-posing = Переключить режим позирования
 ui-options-function-posing-offset-left = Переместиться влево (позирование)
 ui-options-function-posing-offset-right = Переместиться вправо (позирование)

@@ -5,4 +5,3 @@ ent-ProjectileRogueCosmicNova = Usurped Astral Nova
 ent-ProjectileCosmicRazor = Astral Bolt
     .desc = Marks a target for additional damage.
 ent-BulletImpactEffectCosmic = { "" }
-    .desc = { "" }

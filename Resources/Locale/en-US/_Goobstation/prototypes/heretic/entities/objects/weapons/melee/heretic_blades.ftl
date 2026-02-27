@@ -1,7 +1,6 @@
 ent-HereticBladeBaseNoTeleport = eldritch blade
     .desc = A sickly green crescent blade, decorated with an ornamental eye. You feel like you're being watched...
 ent-BaseRandomTeleportBlade = { "" }
-    .desc = { "" }
 ent-HereticBladeBase = { ent-HereticBladeBaseNoTeleport }
     .desc = { ent-HereticBladeBaseNoTeleport.desc }
 ent-HereticBladeAsh = ashen blade

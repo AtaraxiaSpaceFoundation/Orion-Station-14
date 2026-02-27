@@ -1,5 +1,4 @@
 ent-BaseMechPart = { "" }
-    .desc = { "" }
 ent-BaseRipleyPart = { ent-BaseMechPart }
     .desc = { ent-BaseMechPart.desc }
 ent-BaseRipleyPartItem = { ent-BaseRipleyPart }

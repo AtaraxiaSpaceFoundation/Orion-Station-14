@@ -1,12 +1,6 @@
 ent-GuidebookHelp = { "" }
-    .desc = { "" }
 ent-GuidebookHarm = { "" }
-    .desc = { "" }
 ent-GuidebookDisarm = { "" }
-    .desc = { "" }
 ent-GuidebookGrab = { "" }
-    .desc = { "" }
 ent-GuidebookLossOfSurprise = { "" }
-    .desc = { "" }
 ent-GuidebookDragonPower = { "" }
-    .desc = { "" }

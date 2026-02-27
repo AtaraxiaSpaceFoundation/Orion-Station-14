@@ -55,3 +55,5 @@ ent-ClothingUniformJumpsuitPassengerQuarterzip = серый свитер с мо
 ent-ClothingUniformJumpsuitAncientUnremoveable = { ent-ClothingUniformJumpsuitAncient }
     .suffix = Неснимаемый
     .desc = { ent-ClothingUniformJumpsuitAncient.desc }
+ent-ClothingUniformJumpsuitOuterCommand = outer command jumpsuit
+    .desc = A fancy purple suit with a Terra-Gov insignia.

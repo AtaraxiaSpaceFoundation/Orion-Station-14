@@ -1,2 +1,2 @@
-ent-LavalandShuttleConsoleCircuitboard = консоль управления шахтёрским шаттлом (консольная плата)
-    .desc = Консольная плата для консоли управления шахтёрским шаттлом.
+ent-LavalandShuttleConsoleCircuitboard = mining shuttle console board
+    .desc = A printed circuit board for a mining shuttle console.

@@ -1,6 +1,6 @@
-ent-SpawnPointGhostCorticalBorer = спавнер роли призрак
-    .suffix = Кортикальный паразит
-    .desc = { ent-MarkerBase.desc }
-ent-SpawnPointGhostMorph = спавнер роли призрак
-    .suffix = Морф
+ent-SpawnPointGhostMorph = ghost role spawn point
+    .suffix = morph
+    .desc = { ent-BaseAntagSpawner.desc }
+ent-SpawnPointGhostCorticalBorer = ghost role spawn point
+    .suffix = cortical borer
     .desc = { ent-MarkerBase.desc }

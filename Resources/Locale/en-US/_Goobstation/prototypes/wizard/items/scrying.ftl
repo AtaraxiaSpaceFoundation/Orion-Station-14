@@ -1,6 +1,5 @@
 ent-ScryingOrbBase = { "" }
     .suffix = Wizard
-    .desc = { "" }
 ent-PonderingOrbWizard = pondering orb
     .desc = Ponder your plans for the station using this farsight artefact.
 ent-ScryingOrbWizard = scrying orb

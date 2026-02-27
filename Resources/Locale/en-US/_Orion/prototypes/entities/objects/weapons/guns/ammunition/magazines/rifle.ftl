@@ -1,0 +1,14 @@
+ent-MagazineRifle762 = magazine (7.62mm rifle)
+    .desc = { ent-BaseMagazineRifle.desc }
+ent-MagazineRifle762Empty = magazine (7.62mm any)
+    .desc = { ent-MagazineRifle762.desc }
+ent-MagazineRifle762Practice = magazine (7.62mm practice)
+    .desc = { ent-MagazineRifle762.desc }
+ent-MagazineRifle762Incendiary = magazine (7.62mm incendiary)
+    .desc = { ent-MagazineRifle762.desc }
+ent-MagazineRifle762Uranium = magazine (7.62mm uranium)
+    .desc = { ent-MagazineRifle762.desc }
+ent-MagazineHeavyRifleBR64 = magazine (.45 magnum)
+    .desc = { ent-BaseItem.desc }
+ent-MagazineHeavyRifleBR64AP = magazine (.45 magnum)
+    .desc = { ent-MagazineHeavyRifleBR64.desc }

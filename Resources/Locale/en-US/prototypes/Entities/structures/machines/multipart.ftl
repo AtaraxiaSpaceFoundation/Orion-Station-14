@@ -1,2 +1,1 @@
 ent-MultipartMachineGhost = { "" }
-    .desc = { "" }

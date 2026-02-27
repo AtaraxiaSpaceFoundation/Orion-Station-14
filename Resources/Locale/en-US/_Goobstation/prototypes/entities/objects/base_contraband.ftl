@@ -7,4 +7,3 @@ ent-BaseSecurityEngineeringCargoContraband = { ent-BaseRestrictedContraband }
 ent-BaseSecurityZookeeperContraband = { ent-BaseRestrictedContraband }
     .desc = { ent-BaseRestrictedContraband.desc }
 ent-BaseSyndicateAnchoredContraband = { "" }
-    .desc = { "" }

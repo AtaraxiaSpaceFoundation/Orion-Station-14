@@ -1,5 +1,4 @@
 ent-BaseObjective = { "" }
-    .desc = { "" }
 ent-BaseLivingObjective = { ent-BaseObjective }
     .desc = { ent-BaseObjective.desc }
 ent-BaseTargetObjective = { ent-BaseObjective }

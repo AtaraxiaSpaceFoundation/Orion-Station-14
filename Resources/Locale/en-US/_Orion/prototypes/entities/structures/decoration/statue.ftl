@@ -58,5 +58,5 @@ ent-StatueBustDecoration = bust
     .desc = Just someone bust.
 ent-StatueHippocraticBustDecoration = hippocrat bust
     .desc = Bust dedicated to the Hippocrat.
-ent-StatueMarxBustDecoration = Marx bust
+ent-StatueMarxBustDecoration = marx bust
     .desc = Bust dedicated to the Marx.

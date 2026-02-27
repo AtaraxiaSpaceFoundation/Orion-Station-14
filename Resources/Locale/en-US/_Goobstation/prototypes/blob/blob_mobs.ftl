@@ -3,4 +3,3 @@ ent-MobBlobPod = Blob pod
 ent-MobBlobBlobbernaut = Blobbernaut
     .desc = Juggernaut, but blob! when the station crew shows full hatred of you, with the help of such strong men you can organize a blitzkriek if you tell them the plan in advance.
 ent-MobObserverBlob = Blob observer
-    .desc = { "" }

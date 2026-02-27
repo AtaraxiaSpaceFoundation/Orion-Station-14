@@ -1,7 +1,6 @@
 ent-LostFrontierSalvagerSpawner = lost frontier salvager spawner
     .desc = { ent-MarkerBase.desc }
 ent-RandomHumanoidLostFrontierSalvager = lost salvager ghost role
-    .desc = { "" }
 ent-MobHumanRandom = Urist McHuman
     .suffix = Random Appearance
     .desc = { ent-MobHuman.desc }
@@ -94,4 +93,3 @@ ent-RandomHumanoidSpawnerERTMedicalEVANoReq = ERT Medic Intern
     .desc = { ent-RandomHumanoidSpawnerERTMedical.desc }
 ent-RandomHumanoidSpawnerCBURNUnitNoReq = CBURN Agent Cadet
     .suffix = ERTRole, No Requirements
-    .desc = { "" }

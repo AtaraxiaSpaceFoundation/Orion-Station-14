@@ -1,5 +1,4 @@
 ent-AnomalyInjectionBase = { "" }
-    .desc = { "" }
 ent-AnomalyInjectionPyroclastic = { ent-AnomalyInjectionBase }
     .desc = { ent-AnomalyInjectionBase.desc }
 ent-AnomalyInjectionElectric = { ent-AnomalyInjectionBase }

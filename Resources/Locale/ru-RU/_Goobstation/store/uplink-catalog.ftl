@@ -27,7 +27,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-
 # Surplus Voidsuits
 
 uplink-hardsuit-syndiemedic-name = Боевой костюм медика Горлекс
@@ -167,7 +166,6 @@ uplink-m90-ammo-desc = 25 патронов .20 калибра. Совмести�
 uplink-high-caliber-shotgun-box-sarin-desc = 16 патронов 8 калибра с газом зарин для боевого дробовика, выпускающих небольшое облако газа.
 uplink-estoc-ammo-name = Магазин (5.56мм)
 uplink-estoc-ammo-desc = 25 патронов калибра 5.56мм. Совместим с Эсток.
-
 uplink-m90-ammo-name = Магазин (5.56мм винтовочные)
 uplink-m90-ammo-desc = 25 патронов калибра 5.56мм. Для Лектера и M-90.
 
@@ -326,15 +324,11 @@ uplink-box-xenobio-desc = Слаймы для ксенобиологически
 
 uplink-moduist-contractor-name = МОД контрактника
 uplink-moduist-contractor-desc = Этот легкий МОД был создан специально для Гильдии! В его изготовлении использован пластитан, обеспечивающий исключительную прочность, но при этом легкий вес. Он оснащен сервоприводами, которые помогут вам крепче захватывать цели, инжекторами, обнаруживающими критические повреждения, и встроенной технологией хамелеона! Чтобы сохранить свой сверхлегкий вес, этот спортивный костюм не имеет возможностей для хранения.
-
 uplink-hardsuit-contractor-name = Набор скафандра контрактника
 uplink-hardsuit-contractor-desc = Этот легкий скафандр был создан специально для Гильдии! Его можно легко сложить в рюкзак.
-
 uplink-webbing-contractor-name = Разгрузка контрактника
 uplink-webbing-contractor-desc = A chest rig with deep pockets and explosion resistance, often used by contractors and bounty hunters.
-
 uplink-jetpack-contractor-name = Джетпак контрактника
 uplink-jetpack-contractor-desc = Этот реактивный ранец был создан специально для Гильдии! Обладает высокой маневренностью и приличным запасом топлива, что идеально подходит для быстрого бегства. Имеет встроенные ремни для хранения костюма.
-
 uplink-cuffs-contractor-name = Наручники
 uplink-cuffs-contractor-desc = Используется для задержания преступников и прочих придурков.

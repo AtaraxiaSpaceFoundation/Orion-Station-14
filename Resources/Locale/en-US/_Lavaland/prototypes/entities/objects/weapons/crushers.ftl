@@ -10,7 +10,6 @@ ent-WeaponCrusherHalberd = crusher halberd
     .desc = A universal weapon that combines the power of a crusher and the range of a spear.
 ent-CrusherRandomUpgradesFill = { "" }
     .suffix = Random Upgrades
-    .desc = { "" }
 ent-WeaponCrusherFilledRandom = { ent-WeaponCrusher }
     .desc = { ent-WeaponCrusher.desc }
 ent-WeaponCrusherGlaiveFilledRandom = { ent-WeaponCrusherGlaive }

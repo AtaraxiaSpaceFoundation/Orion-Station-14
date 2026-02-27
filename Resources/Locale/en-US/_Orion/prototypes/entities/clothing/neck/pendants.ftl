@@ -1,0 +1,14 @@
+ent-ClothingCheapPendantGreen = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }
+ent-ClothingCheapPendantOrange = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }
+ent-ClothingCheapPendantPink = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }
+ent-ClothingCheapPendantCyan = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }
+ent-ClothingCheapPendantBlue = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }
+ent-ClothingCheapPendantGrey = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }
+ent-ClothingCheapPendantRed = { ent-ClothingNeckBase }
+    .desc = { ent-ClothingNeckBase.desc }

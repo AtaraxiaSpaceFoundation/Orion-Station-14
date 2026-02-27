@@ -1,5 +1,4 @@
 ent-CableBase = { "" }
-    .desc = { "" }
 ent-CableHV = HV power cable
     .desc = An orange high voltage power cable.
 ent-CableHVUncuttable = { ent-CableHV }

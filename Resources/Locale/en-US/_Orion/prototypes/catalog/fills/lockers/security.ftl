@@ -1,81 +1,69 @@
-ent-GunSafeRifleLecterAlertLocked = { ent-GunSafeRifleLecter }
+ent-GunSafeRifleLecterAlertLocked = { ent-GunSafeRifleLecterAlertUnlocked }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafeRifleLecter.desc }
+    .desc = { ent-GunSafeRifleLecterAlertUnlocked.desc }
 ent-GunSafeRifleLecterAlertUnlocked = { ent-GunSafeRifleLecter }
     .desc = { ent-GunSafeRifleLecter.desc }
-
-ent-GunSafeSubMachineGunDrozdAlertLocked = { ent-GunSafeSubMachineGunDrozd }
+ent-GunSafeSubMachineGunDrozdAlertLocked = { ent-GunSafeSubMachineGunDrozdAlertUnlocked }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafeSubMachineGunDrozd.desc }
+    .desc = { ent-GunSafeSubMachineGunDrozdAlertUnlocked.desc }
 ent-GunSafeSubMachineGunDrozdAlertUnlocked = { ent-GunSafeSubMachineGunDrozd }
     .desc = { ent-GunSafeSubMachineGunDrozd.desc }
-
-ent-GunSafeShotgunEnforcerAlertLocked = { ent-GunSafeShotgunEnforcer }
+ent-GunSafeShotgunEnforcerAlertLocked = { ent-GunSafeShotgunEnforcerAlertUnlocked }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafeShotgunEnforcer.desc }
+    .desc = { ent-GunSafeShotgunEnforcerAlertUnlocked.desc }
 ent-GunSafeShotgunEnforcerAlertUnlocked = { ent-GunSafeShotgunEnforcer }
     .desc = { ent-GunSafeShotgunEnforcer.desc }
-
-ent-GunSafeShotgunKammererAlertLocked = { ent-GunSafeShotgunKammerer }
+ent-GunSafeShotgunKammererAlertLocked = { ent-GunSafeShotgunKammererAlertUnlocked }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafeShotgunKammerer.desc }
+    .desc = { ent-GunSafeShotgunKammererAlertUnlocked.desc }
 ent-GunSafeShotgunKammererAlertUnlocked = { ent-GunSafeShotgunKammerer }
     .desc = { ent-GunSafeShotgunKammerer.desc }
-
-ent-GunSafeSubMachineGunWt550AlertLocked = { ent-GunSafeSubMachineGunWt550 }
+ent-GunSafeSubMachineGunWt550AlertLocked = { ent-GunSafeSubMachineGunWt550AlertUnlocked }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafeSubMachineGunWt550.desc }
+    .desc = { ent-GunSafeSubMachineGunWt550AlertUnlocked.desc }
 ent-GunSafeSubMachineGunWt550AlertUnlocked = { ent-GunSafeSubMachineGunWt550 }
     .desc = { ent-GunSafeSubMachineGunWt550.desc }
-
-ent-GunSafeLaserCarbineAlertLocked = { ent-GunSafeLaserCarbine }
+ent-GunSafeLaserCarbineAlertLocked = { ent-GunSafeLaserCarbineAlertUnlocked }
     .suffix = Alert Level Lock
-    .desc = { ent-GunSafeLaserCarbine.desc }
+    .desc = { ent-GunSafeLaserCarbineAlertUnlocked.desc }
 ent-GunSafeLaserCarbineAlertUnlocked = { ent-GunSafeLaserCarbine }
     .desc = { ent-GunSafeLaserCarbine.desc }
-
 ent-GunSafeRandomPistolAlertUnlocked = pistol safe
     .suffix = Random, pistol
     .desc = { ent-GunSafeBaseSecure.desc }
-
 ent-GunSafeRandomSubMachineGunAlertUnlocked = SMG safe
     .suffix = Random, SMG
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomSubMachineGunAlertLocked = { ent-GunSafeRandomSubMachineGunAlertUnlocked }
     .suffix = Random, SMG, Alert Level Lock
-    .desc = { ent-GunSafeBaseSecure.desc }
-
+    .desc = { ent-GunSafeRandomSubMachineGunAlertUnlocked.desc }
 ent-GunSafeRandomLightRifleAlertUnlocked = light rifle safe
     .suffix = Random, light rifle
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomLightRifleAlertLocked = { ent-GunSafeRandomLightRifleAlertUnlocked }
     .suffix = Random, light rifle, Alert Level Lock
-    .desc = { ent-GunSafeBaseSecure.desc }
-
+    .desc = { ent-GunSafeRandomLightRifleAlertUnlocked.desc }
 ent-GunSafeRandomHeavyRifleAlertUnlocked = heavy rifle safe
     .suffix = Random, heavy rifle
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomHeavyRifleAlertLocked = { ent-GunSafeRandomHeavyRifleAlertUnlocked }
     .suffix = Random, heavy rifle, Alert Level Lock
-    .desc = { ent-GunSafeBaseSecure.desc }
-
+    .desc = { ent-GunSafeRandomHeavyRifleAlertUnlocked.desc }
 ent-GunSafeRandomPumpShotgunAlertUnlocked = pump shotgun safe
     .suffix = Random, pump shotgun
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomPumpShotgunAlertLocked = { ent-GunSafeRandomPumpShotgunAlertUnlocked }
     .suffix = Random, pump shotgun, Alert Level Lock
-    .desc = { ent-GunSafeBaseSecure.desc }
-
+    .desc = { ent-GunSafeRandomPumpShotgunAlertUnlocked.desc }
 ent-GunSafeRandomAutoShotgunAlertUnlocked = auto shotgun safe
     .suffix = Random, auto shotgun
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomAutoShotgunAlertLocked = { ent-GunSafeRandomAutoShotgunAlertUnlocked }
     .suffix = Random, auto shotgun, Alert Level Lock
-    .desc = { ent-GunSafeBaseSecure.desc }
-
+    .desc = { ent-GunSafeRandomAutoShotgunAlertUnlocked.desc }
 ent-GunSafeRandomLaserCarbineAlertUnlocked = laser carbine safe
     .suffix = Random, laser carbine
     .desc = { ent-GunSafeBaseSecure.desc }
 ent-GunSafeRandomLaserCarbineAlertLocked = { ent-GunSafeRandomLaserCarbineAlertUnlocked }
     .suffix = Random, laser carbine, Alert Level Lock
-    .desc = { ent-GunSafeBaseSecure.desc }
+    .desc = { ent-GunSafeRandomLaserCarbineAlertUnlocked.desc }

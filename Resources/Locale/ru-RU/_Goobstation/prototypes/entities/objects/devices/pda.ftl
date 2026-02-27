@@ -40,3 +40,5 @@ ent-RoboticistPDA = КПК робототехника
     .desc = Пропитано нереализованными амбициями.
 ent-RadioHostPDA = КПК радиоведущего
     .desc = Вы слушаете ласкающую уши музыку на частоте 103.0 FM.
+ent-OuterCommandPDA = outer command PDA
+    .desc = Purple pda for outer command members.

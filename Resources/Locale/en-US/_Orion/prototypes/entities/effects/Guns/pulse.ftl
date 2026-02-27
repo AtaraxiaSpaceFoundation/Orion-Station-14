@@ -1,0 +1,2 @@
+ent-MuzzlePulseEffect = { "" }
+ent-BulletPulseEffect = { "" }

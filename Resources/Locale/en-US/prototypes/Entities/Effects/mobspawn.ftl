@@ -1,5 +1,4 @@
 ent-MobSpawnCrabQuartz = mobspawner quartzcrab
-    .desc = { "" }
 ent-MobSpawnCrabIron = mobspawner ironcrab
     .desc = { ent-MobSpawnCrabQuartz.desc }
 ent-MobSpawnCrabCoal = mobspawner coalcrab
@@ -13,4 +12,3 @@ ent-MobSpawnCrabUranium = mobspawner uraniumcrab
 ent-MobSpawnCrabBananium = mobspawner bananiumcrab
     .desc = { ent-MobSpawnCrabQuartz.desc }
 ent-EffectAnomalyFloraBulb = { "" }
-    .desc = { "" }

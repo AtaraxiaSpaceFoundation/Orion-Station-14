@@ -16,6 +16,5 @@ alerts-modsuit-power-name = [color=yellow]Заряд MOD[/color]
 alerts-modsuit-power-desc = Показывает текущий уровень заряда вашего MOD. Низкий заряд может повлиять на работу костюма.
 alerts-centered-name = В равновесии
 alerts-centered-desc = Вы чувствуете связь с вашими корнями. В частности с теми, что удерживают вас в центре плитки.
-
 alerts-disgust-name = [color=yellow]Отвращение[/color]
 alerts-disgust-desc = Вам не очень хорошо...

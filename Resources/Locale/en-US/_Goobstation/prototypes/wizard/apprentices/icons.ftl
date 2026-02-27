@@ -1,2 +1,1 @@
 ent-ApprenticeIconChaos = chaos
-    .desc = { "" }

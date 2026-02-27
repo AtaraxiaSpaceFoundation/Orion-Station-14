@@ -1,3 +1,3 @@
-ent-WizardMirror = магическое зеркало
-    .desc = Зеркальце-зеркальце скажи, кто робастней всех на свете?
-    .suffix = Маг
+ent-WizardMirror = magic mirror
+    .desc = Mirror mirror on the wall , who's the most robust of them all?
+    .suffix = Wizard

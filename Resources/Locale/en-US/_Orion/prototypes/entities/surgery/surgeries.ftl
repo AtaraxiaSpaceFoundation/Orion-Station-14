@@ -1,3 +1,2 @@
 ent-SurgeryCorticalBorerRemoval = Remove Cortical Borer
-    .desc = { ent-SurgeryBase.desc }
-    .suffix = { ent-SurgeryBase.suffix }
+    .desc = Removal the Cortical Borer infestation from the body.

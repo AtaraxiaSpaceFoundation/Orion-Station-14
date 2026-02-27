@@ -1,5 +1,4 @@
 ent-SolarPanelBasePhysSprite = solar panel
-    .desc = { "" }
 ent-SolarPanelPlasma = solar panel plasma
     .desc = A few sheets of plasma glass that generate electricity when hit by photons.
 ent-SolarPanelUranium = solar panel uranium

@@ -4,4 +4,3 @@ ent-BaseMobXenomorphAdult = { ent-BaseMobXenomorph }
     .desc = { ent-BaseMobXenomorph.desc }
 ent-BaseMobXenomorphDungeon = { "" }
     .suffix = Dungeon
-    .desc = { "" }

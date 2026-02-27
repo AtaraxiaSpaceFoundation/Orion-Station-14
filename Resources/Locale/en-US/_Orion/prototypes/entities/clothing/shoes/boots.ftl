@@ -1,2 +1,10 @@
-ent-ClothingShoesBootsInteQInfiltrator = ботинки лазутчика
-    .desc = Пара коварных ботинок со специальной шумоподавляющей подошвой, которая едва слышно приглушает ваши шаги. Идеально подходят для тайных операций.
+ent-ClothingShoesBootsInteQInfiltrator = infiltrator sneakboots
+    .desc = Pair of insidious boots with special noise muffling soles which very slightly drown out your footsteps. They would be absolutely perfect for stealth operations were it not for the iconic Syndicate flairs.
+ent-ClothingShoesBootsAllianceAssassin = alliance assassin power boots
+    .desc = A pair of high-top boots. The sole is covered with a sound-absorbing layer, almost completely reducing the noise of footsteps.
+ent-ClothingShoesBootsJackToeless = toeless jackboots
+    .desc = Modified pair of jackboots, particularly friendly to those species whose toes hold claws.
+ent-ClothingShoesBootsJackTall = tall jackboots
+    .desc = A pair of knee-high jackboots. All style, all the time.
+ent-ClothingShoesBootsJackTallHeels = tall heels jackboots
+    .desc = A pair of knee-high jackboots, complete with heels. All style, all the time.

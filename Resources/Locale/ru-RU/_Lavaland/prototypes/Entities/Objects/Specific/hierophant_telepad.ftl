@@ -1,2 +1,2 @@
-ent-LavalandHierophantTelepad = метка Иерофанта
-    .desc = Это отгородит вас от внешнего мира и заставит танцевать.
+ent-LavalandHierophantTelepad = hierophant telepad
+    .desc = It locks you from the outer world, and forces you to dance.

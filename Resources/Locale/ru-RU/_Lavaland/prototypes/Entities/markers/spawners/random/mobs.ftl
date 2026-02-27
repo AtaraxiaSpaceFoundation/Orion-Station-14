@@ -1,9 +1,6 @@
-ent-SpawnerRandomMobLavaland = спавнер случайный моб Лаваленда
-    .suffix = Лаваленд
+ent-SpawnerRandomMobLavaland = lavaland heavy mob spawner
+    .suffix = Lavaland
     .desc = { ent-MarkerBase.desc }
-ent-SpawnerRandomLightMobLavaland = спавнер случайный лёгкий моб Лаваленда
-    .suffix = Лаваленд
-    .desc = { ent-MarkerBase.desc }
-ent-MobGoliathRandom = голиаф
-    .suffix = Случайный
+ent-SpawnerRandomLightMobLavaland = lavaland light mob spawner
+    .suffix = Lavaland
     .desc = { ent-MarkerBase.desc }

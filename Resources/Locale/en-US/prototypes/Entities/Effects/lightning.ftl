@@ -1,5 +1,4 @@
 ent-BaseLightning = lightning
-    .desc = { "" }
 ent-Lightning = lightning
     .desc = { ent-BaseLightning.desc }
 ent-LightningRevenant = spooky lightning

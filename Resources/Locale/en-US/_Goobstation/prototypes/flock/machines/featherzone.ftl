@@ -5,7 +5,6 @@ ent-FeatherzoneReactorOff = flock reactor
 ent-FeatherzoneReactorOn = flock reactor
     .desc = You have no clue how to operate this thing!
 ent-EffectFlockReactor = { "" }
-    .desc = { "" }
 ent-FeatherzoneWing1 = sparking blade
     .desc = It looks very fragile from here. And dangerously live. Best not get too close.
 ent-FeatherzoneWing2 = { ent-FeatherzoneWing1 }

@@ -1,0 +1,2 @@
+
+    .desc = { ent-BaseBulletTrigger.desc }

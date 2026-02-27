@@ -1,3 +1,3 @@
-ent-SpawnLandMineExplosiveRandom = спавнер взрывной мины
-    .desc = { ent-MarkerBase.desc }
+ent-SpawnLandMineExplosiveRandom = land mine explosive spawner
     .suffix = 50%
+    .desc = { ent-MarkerBase.desc }

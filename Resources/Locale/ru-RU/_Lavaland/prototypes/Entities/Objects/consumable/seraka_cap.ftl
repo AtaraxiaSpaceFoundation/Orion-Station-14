@@ -1,2 +1,2 @@
-ent-FoodMealSerakaCap = шляпка серянки
-    .desc = Маленькие, очень ароматные грибы, изначально родом из Тизиры.
+ent-FoodMealSerakaCap = seraka cap
+    .desc = Small, deeply flavourful mushrooms originally native to Tizira.

@@ -1,7 +1,6 @@
 ent-GasPipeSansLayers = gas pipe
     .desc = Holds gas.
 ent-VentCrawlerHolder = vent craw holder
-    .desc = { "" }
 ent-GasPipeBase = { ent-GasPipeSansLayers }
     .desc = { ent-GasPipeSansLayers.desc }
 ent-GasPipeHalf = { ent-GasPipeBase }

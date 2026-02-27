@@ -1,2 +1,2 @@
-ent-ClothingHeadHelmetEVAInteQ = шлем ЕВА Интек
-    .desc = Простой и стильный шлем ЕВА, спроектированный с максимальным безумием.
+ent-ClothingHeadHelmetEVAInteQ = InteQ EVA helmet
+    .desc = A simple, stylish EVA helmet. Designed for maximum humble space-badassery.

@@ -1,2 +1,3 @@
-ent-ClothingBeltInteQDropPouchMedicFilled = { ent-ClothingBeltInteQDropPouch }
+
+    .desc = { ent-ClothingBeltInteQDropPouch.desc }
     .desc = { ent-ClothingBeltInteQDropPouch.desc }

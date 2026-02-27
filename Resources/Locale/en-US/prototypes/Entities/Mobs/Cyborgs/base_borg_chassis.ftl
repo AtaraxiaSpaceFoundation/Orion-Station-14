@@ -3,7 +3,6 @@ ent-BaseBorgChassisNotIonStormable = cyborg
 ent-BaseBorgChassis = { ent-BaseBorgChassisNotIonStormable }
     .desc = { ent-BaseBorgChassisNotIonStormable.desc }
 ent-BaseBorgTransponder = { "" }
-    .desc = { "" }
 ent-BaseXenoborgTransponder = { ent-BaseBorgTransponder }
     .desc = { ent-BaseBorgTransponder.desc }
 ent-BaseBorgChassisNT = { ent-BaseBorgChassis }

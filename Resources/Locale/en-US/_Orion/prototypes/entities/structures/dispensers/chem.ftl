@@ -1,6 +1,9 @@
 ent-MiniChemDispenser = mini chemical dispenser
-    .desc = { ent-ChemDispenser.desc }
     .suffix = Filled
-ent-MiniChemDispenserEmpty = { ent-MiniChemDispenser }
-    .suffix = Empty
     .desc = { ent-ChemDispenser.desc }
+ent-MiniChemDispenserEmpty = mini chemical dispenser
+    .suffix = Empty
+    .desc = { ent-MiniChemDispenser.desc }
+ent-EnergyMiniChemDispenser = mini chemical dispenser
+    .suffix = Energy
+    .desc = { ent-EnergyChemDispenser.desc }

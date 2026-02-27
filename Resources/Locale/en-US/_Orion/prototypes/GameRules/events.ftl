@@ -1,0 +1,10 @@
+ent-InteQAgentInvasion = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-WisdomCowSpawn = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-WormholesSpawn = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-MorphInfestation = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-CorticalBorerInfestation = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }

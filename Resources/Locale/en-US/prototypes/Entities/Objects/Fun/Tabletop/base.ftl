@@ -3,4 +3,3 @@ ent-BaseBoardEntity = board
 ent-BaseTabletopPiece = { ent-BaseItem }
     .desc = { ent-BaseItem.desc }
 ent-BaseBoardTabletop = baseboard
-    .desc = { "" }
