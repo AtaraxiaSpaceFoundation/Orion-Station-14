@@ -1,6 +1,6 @@
 ent-MobLavalandGoliath = { ent-MobGoliath }
-    .suffix = Лаваленд
+    .suffix = Lavaland
     .desc = { ent-MobGoliath.desc }
-ent-MobLavalandGoliathAncient = древний голиаф
-    .suffix = Лаваленд
+ent-MobLavalandGoliathAncient = ancient goliath
+    .suffix = Lavaland
     .desc = { ent-MobGoliath.desc }

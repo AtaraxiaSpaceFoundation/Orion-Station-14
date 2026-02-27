@@ -1,3 +1,3 @@
 ent-ClothingBeltCentCommSheathFilledUP = { ent-ClothingBeltCentCommSheath }
-    .suffix = Заполненный
+    .suffix = Filled
     .desc = { ent-ClothingBeltCentCommSheath.desc }

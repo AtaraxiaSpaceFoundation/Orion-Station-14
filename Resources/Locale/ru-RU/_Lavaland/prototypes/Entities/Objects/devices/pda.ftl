@@ -1,2 +1,2 @@
-ent-MinerPDA = КПК шахтёра
-    .desc = Пахнет как пепел.
+ent-MinerPDA = miner PDA
+    .desc = Smells like ash.

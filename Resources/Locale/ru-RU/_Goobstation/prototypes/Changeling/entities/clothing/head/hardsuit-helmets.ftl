@@ -1,3 +1,3 @@
-ent-ChangelingClothingHeadHelmetHardsuit = органический космический шлем
-    .desc = Космически пригодная биомасса из ткани, устойчивой к давлению и температуре.
-    .suffix = Неснимаемый
+ent-ChangelingClothingHeadHelmetHardsuit = organic space helmet
+    .desc = A spaceworthy biomass of pressure and temperature resistant tissue.
+    .suffix = Unremoveable

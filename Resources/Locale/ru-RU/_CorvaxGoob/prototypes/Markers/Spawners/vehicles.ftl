@@ -1,2 +1,2 @@
-ent-SpawnVehicleMotobike = спавнер мотоцикла
+ent-SpawnVehicleMotobike = Motobike Spawner
     .desc = { ent-MarkerBase.desc }

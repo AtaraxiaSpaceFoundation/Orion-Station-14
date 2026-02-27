@@ -1,5 +1,5 @@
-ent-DeathRattleLavalandImplant = имплантер "предсмертный хрип" Лаваленд
-    .desc = Этот имплант сообщает по каналу радиосвязи о смерти носителя. Работает только на поверхности Лаваленда, а также посылает координаты.
+ent-DeathRattleLavalandImplant = lavaland death rattle implant
+    .desc = This implant will inform the Supply radio channel should the user die. Works only on lavaland surface and tells exact coordinates of death.
 ent-DeathRattleLavalandImplanter = { ent-BaseImplantOnlyImplanter }
-    .suffix = Предсмертный хрип Лаваленд
+    .suffix = Lavaland Death Rattle
     .desc = { ent-BaseImplantOnlyImplanter.desc }

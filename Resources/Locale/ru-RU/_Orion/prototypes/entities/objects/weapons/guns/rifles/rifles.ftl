@@ -1,0 +1,20 @@
+
+    .desc = Iconic weapon of war. Uses 5.45mm rifle ammo. It is painted in the InteQ brand color.
+    .suffix = Rifle
+
+    .desc = A light, versatile assault rifle. The 4th generation in the M16 platform, this FN variant has added automatic fire selection and retains relevance among mercenaries and militias thanks to its high customizability. it is incredibly good at rapid burst fire, but must be paced correctly.
+
+    .desc = A light, versatile assault rifle.
+
+    .desc = A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for 5.56mm rifle cartridge.
+
+    .desc = The M-28 assault rifle used to be the EarthGov army standard issue rifle.
+
+    .desc = The San Cristo Arms BR-64 is the Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and close range stopping power. It is mostly used by people who prefer a bigger round than the average.
+    .desc = Iconic weapon of war. Uses 5.45mm rifle ammo. It is painted in the InteQ brand color.
+    .suffix = Rifle
+    .desc = A light, versatile assault rifle. The 4th generation in the M16 platform, this FN variant has added automatic fire selection and retains relevance among mercenaries and militias thanks to its high customizability. it is incredibly good at rapid burst fire, but must be paced correctly.
+    .desc = A light, versatile assault rifle.
+    .desc = A bullpup rifle used as a reserve assault rifle for the UEG. It has a built-in handguard and sight for increased accuracy and reduced recoil. Chambered for 5.56mm rifle cartridge.
+    .desc = The M-28 assault rifle used to be the EarthGov army standard issue rifle.
+    .desc = The San Cristo Arms BR-64 is the Marine Corps main battle rifle. It is known for its consistent ability to perform well at most ranges, and close range stopping power. It is mostly used by people who prefer a bigger round than the average.

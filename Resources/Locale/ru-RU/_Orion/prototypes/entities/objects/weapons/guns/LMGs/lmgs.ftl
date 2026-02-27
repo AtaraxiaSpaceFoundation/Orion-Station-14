@@ -1,0 +1,16 @@
+
+    .desc = A cheap and robust machinegun, sometimes better known as an 'RPD'. Despite lacking attachment points beyond its underbarrel, remains a popular product on the black market with its cheap cost, high capacity and higher than usual caliber rounds.
+
+    .desc = The M-41 is a large man portable machine, allowing for sustained, accurate suppressive firepower at the cost of mobility and handling. Commonly seen where their preferred tactics of fast, mobile aggression is ill suited.
+
+    .desc = A six barreled rotary machine gun, The ultimate in man-portable firepower, capable of laying down high velocity armor piercing rounds this thing will no doubt pack a punch.. If you don't kill all your friends with it, you can use the stablizing system of the Powerpack to fire aimed fire, but you'll move incredibly slowly.
+    .suffix = Minigun
+
+    .desc = NanoTrasen Heavy Energy Minigun "Devastator", a machine gun manufactured by NanoTrasen (not for sale!), used by NanoTrasen security companies and defense services, mainly used as a heavy machine gun for defense against pirate ships and xenos invasion.
+    .suffix = Minigun
+    .desc = A cheap and robust machinegun, sometimes better known as an 'RPD'. Despite lacking attachment points beyond its underbarrel, remains a popular product on the black market with its cheap cost, high capacity and higher than usual caliber rounds.
+    .desc = The M-41 is a large man portable machine, allowing for sustained, accurate suppressive firepower at the cost of mobility and handling. Commonly seen where their preferred tactics of fast, mobile aggression is ill suited.
+    .desc = A six barreled rotary machine gun, The ultimate in man-portable firepower, capable of laying down high velocity armor piercing rounds this thing will no doubt pack a punch.. If you don't kill all your friends with it, you can use the stablizing system of the Powerpack to fire aimed fire, but you'll move incredibly slowly.
+    .suffix = Minigun
+    .desc = NanoTrasen Heavy Energy Minigun "Devastator", a machine gun manufactured by NanoTrasen (not for sale!), used by NanoTrasen security companies and defense services, mainly used as a heavy machine gun for defense against pirate ships and xenos invasion.
+    .suffix = Minigun

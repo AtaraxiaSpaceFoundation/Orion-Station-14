@@ -1,2 +1,2 @@
-ent-SpawnMobHierophant = спавнер иерофанта
+ent-SpawnMobHierophant = Hierophant Spawner
     .desc = { ent-MarkerBase.desc }

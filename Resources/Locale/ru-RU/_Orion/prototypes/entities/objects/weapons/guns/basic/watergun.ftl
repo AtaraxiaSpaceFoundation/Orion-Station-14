@@ -1,3 +1,3 @@
 ent-WeaponWaterPistolFilledFire = { ent-WeaponWaterPistol }
-    .suffix = Напалм, Заполненный
+    .suffix = Napalm, Filled
     .desc = { ent-WeaponWaterPistol.desc }

@@ -1,2 +1,2 @@
-ent-MindRolePirate = роль Пират
+ent-MindRolePirate = Pirate Role
     .desc = { ent-BaseMindRoleAntag.desc }

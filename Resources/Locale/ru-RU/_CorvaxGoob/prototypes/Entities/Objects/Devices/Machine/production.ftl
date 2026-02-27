@@ -1,2 +1,2 @@
-ent-StasisOperatingTableCircuitboard = машинная плата операционного стазис стола
-    .desc = Машинная плата, для операционного стазис стола
+ent-StasisOperatingTableCircuitboard = stasis operating table board
+    .desc = A machine board for a stasis operating table.

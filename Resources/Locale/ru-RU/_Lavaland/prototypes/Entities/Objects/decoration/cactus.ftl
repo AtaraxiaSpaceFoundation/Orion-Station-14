@@ -1,2 +1,2 @@
-ent-FruitCactus = плодоносный кактус
-    .desc = Несколько колючих кактусов, полных спелых плодов и покрытых тонким слоем пепла.
+ent-FruitCactus = fruiting cacti
+    .desc = Several prickly cacti, brimming with ripe fruit and covered in a thin layer of ash.

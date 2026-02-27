@@ -1,4 +1,4 @@
-ent-MindRoleGhostRole = роль Отшельника Лаваленда
+ent-MindRoleGhostRole = Ghost Role
     .desc = { ent-MindRoleGhostRoleNeutral.desc }
 ent-SpawnPointHermitLavaland = капсула отшельника Лаваленда
     .desc = { ent-MarkerBase.desc }

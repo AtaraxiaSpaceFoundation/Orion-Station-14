@@ -1,6 +1,6 @@
 ent-BannerInteQ = знамя Интек
     .desc = Знамя показывающее лого Интек.
-ent-BannerUnitedEarthGovernment = знамя Объединённого Правительства Земли
-    .desc = Баннер с логотипом правительства Земли. Выглядит довольно дешево.
-ent-BannerIndoorUnitedEarthGovernment = флаг Объединённого Правительства Земли
-    .desc = Флаг с логотипом правительства Земли. Выглядит довольно дешево.
+ent-BannerUnitedEarthGovernment = United Earth Government banner
+    .desc = Banner displaying the United Earth Government logo. It looks rather cheap.
+ent-BannerIndoorUnitedEarthGovernment = United Earth Government indoor flag
+    .desc = Flag displaying the United Earth Government logo. It looks rather cheap.

@@ -1,1 +1,1 @@
-ent-ApprenticeIconChaos = хаос
+ent-ApprenticeIconChaos = chaos

@@ -1,2 +1,2 @@
-ent-ClothingUnderwearBase = трусики
-    .desc = Трусики.
+ent-ClothingUnderwearBase = panties
+    .desc = Panties.

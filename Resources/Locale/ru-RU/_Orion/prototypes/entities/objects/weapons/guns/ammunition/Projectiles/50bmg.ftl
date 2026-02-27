@@ -1,2 +1,2 @@
-ent-BulletHighCaliberAP = пуля (.50 бронебойная)
+ent-BulletHighCaliberAP = bullet (.50 armor-piercing)
     .desc = { ent-BaseBullet.desc }

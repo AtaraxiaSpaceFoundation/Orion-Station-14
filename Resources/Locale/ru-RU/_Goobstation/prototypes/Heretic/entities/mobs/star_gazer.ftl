@@ -1,2 +1,2 @@
-ent-MobStarGazer = звёздный наблюдатель
-    .desc = Существо, на которое возложена задача наблюдать за звёздами.
+ent-MobStarGazer = star gazer
+    .desc = A creature that has been tasked to watch over the stars.

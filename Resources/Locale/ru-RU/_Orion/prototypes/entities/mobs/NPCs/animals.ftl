@@ -1,2 +1,2 @@
-ent-MobWisdomCow = мудрая корова
-    .desc = Известна своей мудростью, делится ею со всеми.
+ent-MobWisdomCow = wisdom cow
+    .desc = Known for its wisdom, shares it with all.

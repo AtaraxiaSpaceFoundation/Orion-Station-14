@@ -1,3 +1,3 @@
 ent-FloraRockSolidFading = { ent-FloraRockSolid }
-    .desc = Вулканическая порода. Пионеры когда-то катались на таких малышах милями.
-    .suffix = Исчезающий
+    .desc = A volcanic rock. Pioneers used to ride these babies for miles.
+    .suffix = Fading

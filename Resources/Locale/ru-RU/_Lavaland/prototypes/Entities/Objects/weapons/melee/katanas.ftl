@@ -1,8 +1,8 @@
-ent-LavalandBaseKatana = катана
+ent-LavalandBaseKatana = base katana
     .desc = { ent-BaseSword.desc }
-ent-CryoKatana = крио-катана
-    .desc = Ладно, возможно, всё пошло как-то не так, когда снежный голем создавал этот гравированный меч.
-ent-LavaKatana = лаво-катана
-    .desc = Раскалённый меч 1000 градусов, который каким-то образом всегда остаётся целым.
-ent-ShadowKatana = тене-катана
-    .desc = Легендарный меч, излучающий саму тьму. Способен прорезать любую броню при должной удаче и решительности.
+ent-CryoKatana = cryo katana
+    .desc = Okay maybe things took a weird route when a snow golem was making this engraved sword.
+ent-LavaKatana = lava katana
+    .desc = One thousand degree knife, that somehow always keeps intact.
+ent-ShadowKatana = shadow katana
+    .desc = Legendary sword that emits the darkness itself. Has an ability to pierce through any armor with enough luck and determination.

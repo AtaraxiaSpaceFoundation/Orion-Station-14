@@ -1,2 +1,2 @@
-ent-LavalandBossColossus = колосс
-    .desc = Чудовищное существо, защищённое тяжёлой бронёй.
+ent-LavalandBossColossus = Colossus
+    .desc = A monstrous creature protected by heavy shielding.

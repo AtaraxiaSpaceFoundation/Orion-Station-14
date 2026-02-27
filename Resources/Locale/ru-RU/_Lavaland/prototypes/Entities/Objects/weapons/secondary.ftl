@@ -1,6 +1,6 @@
-ent-WeaponCrusherDagger = кинетический кинжал
-    .desc = Уменьшенная версия протокинетического крушителя. Использует кинетическую энергию для высокоскоростных вибраций лезвия.
-ent-LavalandWeaponKineticClaws = кинетические когти
-    .desc = Освободите своего внутреннего зверя при помощи этого одноручного когтя, который достаточно мал, чтобы поместиться в вашем рюкзаке.
-ent-LavalandWeaponKineticMachete = кинетическое мачете
-    .desc = Уменьшенный вариант одноручного крушителя, позволяющий вам блокировать атаки.
+ent-WeaponCrusherDagger = kinetic dagger
+    .desc = A scaled down version of a proto-kinetic crusher. Uses kinetic energy to vibrate the blade at high speeds.
+ent-LavalandWeaponKineticClaws = kinetic claws
+    .desc = Unleash your inner edgelord with this one-handed claw small enough to fit in your backpack.
+ent-LavalandWeaponKineticMachete = kinetic machete
+    .desc = A smaller, one-handed variant of the crusher which allows you to attack from afar and block incoming attacks.

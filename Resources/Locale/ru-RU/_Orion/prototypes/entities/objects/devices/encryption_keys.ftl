@@ -1,2 +1,2 @@
-ent-EncryptionKeyInteQ = ключ шифрования Интек
-    .desc = Ключ шифрования, используемый Интек.
+ent-EncryptionKeyInteQ = InteQ encryption key
+    .desc = An encryption key used by InteQ.

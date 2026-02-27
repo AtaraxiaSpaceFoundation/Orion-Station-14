@@ -1,5 +1,5 @@
-ent-ClothingNeckAmberFocus = янтарный фокус
-    .desc = Янтарное увеличительное стекло, обеспечивающее связь с иным миром. Ожерелье, кажется, дергается, но только если смотреть на него краем глаза.
-    .suffix = Магический предмет
-ent-ClothingEldritchMedalion = эльдрический медальон
-    .desc = Странный медальон. Заглянув сквозь кристаллическую поверхность, окружающий мир растворяется. Ты видишь своё бьющееся сердце и пульсацию тысячи других.
+ent-ClothingNeckAmberFocus = amber focus
+    .desc = An amber focusing glass that provides a link to the world beyond. The necklace seems to twitch, but only when you look at it from the corner of your eye.
+    .suffix = MagicItem
+ent-ClothingEldritchMedalion = warm eldritch medallion
+    .desc = A strange medallion. Peering through the crystalline surface, the world around you melts away. You see your own beating heart, and the pulsing of a thousand others.
