@@ -93,8 +93,8 @@
 
 - type: entity
   parent: ClothingOuterArmorCaptainCarapace
-  id: ClothingOuterArmorInvisibleCaptain
-  name: captain bluespace armor
+  id: ClothingOuterArmorInvisibleOld
+  name: old bluespace armor
   description: An early version of the bluespace armored vest, only visible up close. The technology is outdated, but still in demand among captains.
   components:
   - type: Sprite
