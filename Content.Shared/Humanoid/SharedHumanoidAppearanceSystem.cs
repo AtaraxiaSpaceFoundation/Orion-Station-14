@@ -144,11 +144,11 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
     private void OnExamined(EntityUid uid, HumanoidAppearanceComponent component, ExaminedEvent args)
     {
-        // Orion-Start: Fix incorrect pronouns
+		// CorvaxGoob 
+		// Fix for incorrect pronouns PR #564
         var identity = ("user", Identity.Entity(uid, EntityManager));
         var species = ("species", GetSpeciesRepresentation(component.Species).ToLower());
         var age = ("age", GetAgeRepresentation(component.Species, component.Age));
-        // Orion-End
 
         // WWDP EDIT
         string locale = "humanoid-appearance-component-examine";
@@ -157,7 +157,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             locale += "-selfaware";
 
         // Goob Sanitize Text
-        args.PushText(Loc.GetString(locale, identity, age, species), // Orion-Edit
+        args.PushText(Loc.GetString(locale, identity, age, species),
             100); // priority for examine
         // WWDP EDIT END
     }
