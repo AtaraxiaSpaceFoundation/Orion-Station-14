@@ -162,14 +162,11 @@ uplink-high-caliber-shotgun-box-slug-desc = 16 пуль 8 калибра для 
 uplink-high-caliber-shotgun-box-flash-slug-name = Коробка ружейных патронов (.8 светошумовые)
 uplink-high-caliber-shotgun-box-flash-slug-desc = 16 светошумовых патронов 8 калибра для дробовика. Не оглушает тех, у кого есть соответствующие средства защиты.
 uplink-high-caliber-shotgun-box-sarin-name = Коробка ружейных патронов (.8 газ)
-uplink-m90-ammo-name = Магазин (.20)
-uplink-m90-ammo-desc = 25 патронов .20 калибра. Совместим с M-90 и Лектером.
+uplink-m90-ammo-name = Магазин (5.56мм винтовочные)
+uplink-m90-ammo-desc = 25 патронов калибра 5.56мм. Для Лектера и M-90.
 uplink-high-caliber-shotgun-box-sarin-desc = 16 патронов 8 калибра с газом зарин для боевого дробовика, выпускающих небольшое облако газа.
 uplink-estoc-ammo-name = Магазин (5.56мм)
 uplink-estoc-ammo-desc = 25 патронов калибра 5.56мм. Совместим с Эсток.
-
-uplink-m90-ammo-name = Магазин (5.56мм винтовочные)
-uplink-m90-ammo-desc = 25 патронов калибра 5.56мм. Для Лектера и M-90.
 
 # Grenades
 
@@ -292,13 +289,13 @@ uplink-cddisknumber-name = CD "Номер станции"
 uplink-cddisknumber-desc = Вызовите угрозу, чтобы отвлечь внимание станции... Удачи проиграть это полностью.
 #Contractor
 
-uplink-moduist-contractor-name = MOD скафандр Наёмника
+uplink-moduist-contractor-name = MOD скафандр контрактника
 uplink-moduist-contractor-desc = Этот лёгкий скафандр был создан специально для членов Гильдии! Изготовлен из пластитана для экстремальной прочности при малом весе. Оснащён сервоприводами для более сильного хвата, инжекторами, реагирующими на критические повреждения, и встроенной технологией хамелеона! Для сохранения малого веса, этот модульный скафандр не имеет встроенного хранилища.
-uplink-hardsuit-contractor-name = Набор скафандра Наёмника
+uplink-hardsuit-contractor-name = Набор скафандра контрактника
 uplink-hardsuit-contractor-desc = Этот лёгкий скафандр был создан специально для членов Гильдии! Без проблем помещается в рюкзак.
-uplink-webbing-contractor-name = РПС Наёмника
-uplink-webbing-contractor-desc = Взрывостойкая разгрузка с глубокими карманами, часто используемая Наёмниками и охотниками за головами.
-uplink-jetpack-contractor-name = Джетпак Наёмника
+uplink-webbing-contractor-name = РПС контрактника
+uplink-webbing-contractor-desc = Взрывостойкая разгрузка с глубокими карманами, часто используемая контрактниками и охотниками за головами.
+uplink-jetpack-contractor-name = Джетпак контрактника
 uplink-jetpack-contractor-desc = Этот джетпак был создан специально для членов Гильдии! Обладает высокой манёвренностью и приличным запасом топлива, идеально подходящий для быстрого отступления. Имеет встроенные крепления для использования со скафандром.
 uplink-cuffs-contractor-name = Наручники
 uplink-cuffs-contractor-desc = Используется для сдерживания преступников и других мудаков.
@@ -315,26 +312,3 @@ uplink-undetermined-bundle-name = Неопределённый набор
 uplink-undetermined-bundle-desc = Ящик с тремя случайными наборами, из которых можно выбрать один. Гарантированно содержит ключ шифрования Синдиката.
 uplink-energy-pickaxe-name = Энергетическая кирка
 uplink-energy-pickaxe-desc = Голографический инструмент для добычи полезных ископаемых с лезвиями, состоящими из твердого света, который также служит смертоносным оружием ближнего боя. Скала и камень!
-uplink-cddisksyndicate-name = Диск с рекламой Синдиката
-uplink-cddisksyndicate-desc = 102.9 радио-Синдиката
-uplink-cddisknumber-name = Диск "Номер Станции"
-uplink-cddisknumber-desc = Сообщите об угрозе, чтобы отвлечь внимание станции... удачи во всем этом.
-uplink-box-xenobio-name = Ксенобиологическая коробка
-uplink-box-xenobio-desc = Слаймы для ксенобиологических нужд. Содержит 9 случайных T1 слаймов.
-
-# Contractor
-
-uplink-moduist-contractor-name = МОД контрактника
-uplink-moduist-contractor-desc = Этот легкий МОД был создан специально для Гильдии! В его изготовлении использован пластитан, обеспечивающий исключительную прочность, но при этом легкий вес. Он оснащен сервоприводами, которые помогут вам крепче захватывать цели, инжекторами, обнаруживающими критические повреждения, и встроенной технологией хамелеона! Чтобы сохранить свой сверхлегкий вес, этот спортивный костюм не имеет возможностей для хранения.
-
-uplink-hardsuit-contractor-name = Набор скафандра контрактника
-uplink-hardsuit-contractor-desc = Этот легкий скафандр был создан специально для Гильдии! Его можно легко сложить в рюкзак.
-
-uplink-webbing-contractor-name = Разгрузка контрактника
-uplink-webbing-contractor-desc = A chest rig with deep pockets and explosion resistance, often used by contractors and bounty hunters.
-
-uplink-jetpack-contractor-name = Джетпак контрактника
-uplink-jetpack-contractor-desc = Этот реактивный ранец был создан специально для Гильдии! Обладает высокой маневренностью и приличным запасом топлива, что идеально подходит для быстрого бегства. Имеет встроенные ремни для хранения костюма.
-
-uplink-cuffs-contractor-name = Наручники
-uplink-cuffs-contractor-desc = Используется для задержания преступников и прочих придурков.
