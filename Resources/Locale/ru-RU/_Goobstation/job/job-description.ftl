@@ -5,7 +5,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-
 # Navy
 
 job-description-navy-officer-undercover = Выполняйте поставленные задачи, устраняйте назначенные цели. Удачи.

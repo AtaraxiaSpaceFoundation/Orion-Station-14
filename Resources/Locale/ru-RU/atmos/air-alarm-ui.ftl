@@ -1,6 +1,5 @@
 # UI
 
-
 ## Window
 
 air-alarm-ui-title = Воздушная сигнализация
@@ -39,7 +38,6 @@ air-alarm-ui-mode-wide-filtering = Фильтрация (широкая)
 air-alarm-ui-mode-fill = Заполнение
 air-alarm-ui-mode-panic = Паника
 air-alarm-ui-mode-none = Нет
-
 
 air-alarm-ui-pump-direction-siphoning = Высасывание
 air-alarm-ui-pump-direction-scrubbing = Очистка
