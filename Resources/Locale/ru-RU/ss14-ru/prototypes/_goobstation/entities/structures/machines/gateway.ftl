@@ -1,2 +1,2 @@
-ent-GatewayAntagPlanet = Antag Planet Gateway
-    .desc = Takes you to the Antag Planet, where you can test out different antags and their items.
+ent-GatewayAntagPlanet = планета антагонизма
+    .desc = Перенесет вас на планету Антагов, где вы сможете протестировать различных антагов и их предметы.
