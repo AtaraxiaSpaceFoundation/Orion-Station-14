@@ -17,7 +17,7 @@
       - id: SyringeCaseFilledAtropine
       - id: SyringeCaseFilledEpinephrine
       - id: SyringeCaseFilledSaline
-      - id: BodyBagFolded
+      - id: BodyBagPrisonerFolded
       - id: VehicleWheelchairFolded
       - id: Gauze
         amount: 4
