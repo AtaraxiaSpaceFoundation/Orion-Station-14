@@ -188,7 +188,6 @@ public sealed class InducerSystem : EntitySystem
             return;
 
         var idx = list.IndexOf(comp.TransferRate);
-        if (idx < 0) idx = 0;
         var next = list[(idx + 1) % list.Count];
 
         if (comp.TransferRate == next)
