@@ -91,9 +91,6 @@ ui-options-vp-integer-scaling-tooltip =
     используя целочисленное значение при определённых разрешениях. Хотя это и
     приводит к чётким текстурам, это часто означает, что сверху/снизу экрана будут
     чёрные полосы или что часть окна не будет видна.
-ui-options-filter-label = Фильтр масштабирования:
-ui-options-filter-nearest = Ближайший (без сглаживания)
-ui-options-filter-bilinear = Билинейный (сглаженный)
 ui-options-vp-vertical-fit = Подгон окна просмотра по вертикали
 ui-options-filter-label = Фильтр масштабирования:
 ui-options-filter-nearest = По соседним пикселям (без сглаживания)
@@ -132,6 +129,7 @@ ui-options-header-text-cursor = Текстовый курсор
 ui-options-header-text-cursor-select = Выделение текста
 ui-options-header-text-edit = Редактирование текста
 ui-options-header-text-chat = Чат
+ui-options-function-toggle-standing = Ползти/Встать
 ui-options-header-text-other = Прочий ввод текста
 ui-options-hotkey-keymap = Использовать клавиши QWERTY (США)
 ui-options-hotkey-toggle-walk = Переключать шаг\бег

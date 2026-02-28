@@ -76,8 +76,8 @@ ghost-role-intern-desc = Вы — стажёр ЦентКом, плохо опл
 ghost-role-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищайте командование, слушайтесь Главу стажёров.
 ghost-role-lead-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищай командование, отдавайте приказы другим стажёрам.
 # cargo bingle
-ghost-role-cargo-bingle-name = Бингл каргонец
-ghost-role-cargo-bingle-desc = Служите Представителю НаноТрейзен и его интересам, не причиняйте вред членам экипажа, помогайте отделу снабжения и станции.
+ghost-role-cargo-bingle-name = Бингл снабжения
+ghost-role-cargo-bingle-desc = Служите Представителю Nanotrasen и его интересам, не причиняйте вред членам экипажа, помогайте отделу снабжения и станции.
 
 # shuttle roles
 
@@ -91,7 +91,7 @@ ghost-role-information-conquest-description = Эта станция получи
 ghost-role-information-conquest-rules = Подготовь станцию к прибытию Империи Вилтрумов.
 # Justice Persona Role
 justice-role-name = Человек-правосудие
-justice-role-description = Помогайте ГСБ с арестами, выкрикивая фразы пока тот совершает правосудие.
+justice-role-description = Помогай ГСБ с арестами, выкрикивая фразы пока тот совершает правосудие.
 
 # Ancient Xenos
 
@@ -115,9 +115,6 @@ ghost-role-information-revenant-name-token = Призрак (Токен)
 ghost-role-information-loneop-name-token = Одинокий Оперативник (Токен)
 ghost-role-information-derelict-cyborg-syndicate-name-token = Заброшенный Штурмовой Борг (Токен)
 ghost-role-information-bingle-name-token = Бингл (Токен)
-ghost-role-information-ancient-rogue-king-name-token = Древний ксено король-отступник (Токен)
-ghost-role-information-wraith-name-token = Фантом (Токен)
-ghost-role-information-slasher-token = Мясник (Токен)
 blob-carrier-role-name-token = Носитель Блоба (Токен)
 abductor-lone-ghost-role-name-token = Одинокий Абдуктор (Токен)
 roles-wizard-name-token = Волшебник (Токен)
@@ -169,7 +166,7 @@ ghost-role-information-sentientanimal-rules =
     Вы не помните ничего из своей прошлой жизни, и не помните ничего, что могли увидеть в виде призрака.
     Вам разрешено помнить общие знания об игре. Например, как готовить, использовать предметы и т.п.
     Вам категорически [color=red]ЗАПРЕЩЕНО[/color] помнить имя, внешний вид, и прочее своего прошлого персонажа.
-ghost-role-information-contractor-name = Наёмник Синдиката
-ghost-role-information-contractor-token = Наёмник Синдиката (Токен)
-ghost-role-information-contractor-description = Берите... пассажира?..
-contractor-role-greeting = Вы — [color=#611b2b]Наёмник Синдиката[/color], охотник за головами. Вам необходимо похитить цель со станции, живой или мёртвой.
+ghost-role-information-contractor-name = Контрактник
+ghost-role-information-contractor-token = Контрактник (Токен)
+ghost-role-information-contractor-description = Берите... ассистента?..
+contractor-role-greeting = Вы — [color=#611b2b]Контрактник[/color], охотник за головами. Вам необходимо похитить цель со станции, живой или мёртвой.

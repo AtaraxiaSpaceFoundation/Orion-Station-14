@@ -57,11 +57,10 @@ admin-smite-ghostkick-name = Кик втихаря
 admin-smite-nyanify-name = НЯфикация
 admin-smite-kill-sign-name = Знак смерти
 admin-smite-omni-accent-name = Омни-акцент
-admin-smite-crawler-name = Ползун
 
 ## Smite descriptions
 
-admin-smite-crawler-name = Ползунчик
+admin-smite-crawler-name = Ползун
 admin-smite-hell-teleport-name = отправить в Ад
 admin-smite-explode-description = Взрывает цель.
 admin-smite-chess-dimension-description = Изгоняет цель в шахматное измерение.

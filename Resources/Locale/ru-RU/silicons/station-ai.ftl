@@ -1,9 +1,8 @@
 # General
-ai-wire-snipped = Один из проводов вашей системы был перерезан в { $source }.
+ai-wire-snipped = Был перерезан провод, координаты { $coords }.
 wire-name-ai-vision-light = ИИВ
 wire-name-ai-act-light = ИИС
 station-ai-takeover = ИИ захват
-station-ai-eye-name = Глаз ИИ - { $name }
 # Radial actions
 ai-open = Открыть действия
 station-ai-eye-name = око ИИ - { $name }
