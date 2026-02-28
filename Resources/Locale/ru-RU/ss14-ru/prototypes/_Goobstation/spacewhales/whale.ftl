@@ -1,9 +1,0 @@
-ent-SpaceLeviathan = космический левиафан
-    .desc = Когда в космосе воцаряется тишина, надежды нет и бежать некуда. Есть только оно.
-    .suffix = Сохраняет тайлы, Не пропадающий
-ent-SpaceWhaleSegment = { ent-FlyingMobBase }
-    .suffix = НЕ МАППИТЬ
-    .desc = { ent-FlyingMobBase.desc }
-ent-SpaceLeviathanDespawn = { ent-SpaceLeviathan }
-    .suffix = Пропадающий
-    .desc = { ent-SpaceLeviathan.desc }

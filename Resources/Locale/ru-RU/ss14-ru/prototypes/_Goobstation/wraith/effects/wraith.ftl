@@ -1,2 +1,0 @@
-ent-WraithDeathEffect = { "" }
-    .desc = { "" }

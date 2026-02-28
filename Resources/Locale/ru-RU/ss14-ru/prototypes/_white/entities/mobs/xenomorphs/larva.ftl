@@ -1,7 +1,0 @@
-ent-BaseMobXenomorphLarva = грудолом
-    .desc = Ранняя стадия развития, характеризующаяся небольшими размерами, червеобразной формой тела и отсутствием выраженных конечностей.
-ent-MobXenomorphLarva = { ent-BaseMobXenomorphLarva }
-    .desc = { ent-BaseMobXenomorphLarva.desc }
-ent-MobXenomorphLarvaDungeon = { ent-BaseMobXenomorphLarva }
-    .desc = { ent-BaseMobXenomorphLarva.desc }
-    .suffix = Подземелья
