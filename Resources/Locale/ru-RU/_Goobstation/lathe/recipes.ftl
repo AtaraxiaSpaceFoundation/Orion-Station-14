@@ -16,3 +16,5 @@ lathe-recipe-SchechiTranslatorImplanter-subname = имплантер "Перев
 lathe-recipe-NewKinPidginTranslatorImplanter-subname = имплантер "Переводчик Ка'ракк"
 lathe-recipe-ChevalTranslatorImplanter-subname = имплантер "Переводчик Парнокопытный"
 lathe-recipe-YowKriolTranslatorImplanter-subname = имплантер "Переводчик Йовикрол"
+lathe-recipe-GruntishTranslatorImplanter-subname = имплантер "Переводчик Грунтич"
+lathe-recipe-XenoCompatibilityImplanter = ксено совместимость
