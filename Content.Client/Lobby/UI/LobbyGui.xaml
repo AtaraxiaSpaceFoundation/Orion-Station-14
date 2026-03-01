@@ -93,7 +93,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                 <BoxContainer Orientation="Vertical" HorizontalExpand="False" VerticalExpand="True">
                                     <RichTextLabel Text="{Loc 'ui-lobby-server-info-block'}" StyleClasses="LabelHeadingBigger" HorizontalAlignment="Center" />
                                     <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
-                                    <info:ServerInfo Name="ServerInfo" Access="Public" MinSize="0 30" VerticalExpand="False" Margin="3 3 3 3" HorizontalAlignment="Left" />
+                                    <info:ServerInfo Name="ServerInfo" Access="Public" MinSize="0 30" MaxWidth="420" VerticalExpand="False" Margin="3 3 3 3" HorizontalAlignment="Left" />
                                     <Label Name="StationTime" Access="Public" FontColorOverride="{x:Static maths:Color.LightGray}" Margin="3 3 3 3" HorizontalAlignment="Left" />
                                     <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
                                     <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" SeparationOverride="6" MinWidth="280">
