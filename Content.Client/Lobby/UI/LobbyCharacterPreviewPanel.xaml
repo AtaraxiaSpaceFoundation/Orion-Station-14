@@ -7,21 +7,25 @@ SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<!-- Orion-Edit-Start -->
 <Control
     xmlns="https://spacestation14.io"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls">
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:style="clr-namespace:Content.Client.Stylesheets">
     <BoxContainer Name="VBox" Orientation="Vertical">
-        <controls:NanoHeading Name="Header" Text="{Loc 'lobby-character-preview-panel-header'}">
-
-        </controls:NanoHeading>
+        <RichTextLabel Name="Header" Text="{Loc 'lobby-character-preview-panel-header'}" StyleClasses="LabelHeadingBigger" HorizontalAlignment="Center" />
+        <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
         <BoxContainer Name="Loaded" Orientation="Vertical"
                       Visible="False">
             <Label Name="Summary" HorizontalAlignment="Center" Margin="3 3"/>
-            <BoxContainer Name="ViewBox" Orientation="Horizontal" HorizontalAlignment="Center">
-
-            </BoxContainer>
+            <LayoutContainer Name="ViewBox" HorizontalAlignment="Center" MinSize="148 148">
+                <PanelContainer Name="CharacterBackground"
+                                StyleClasses="AngleRect"
+                                ModulateSelfOverride="#2B2B2BE6" />
+                <Control Name="SpriteContainer" />
+            </LayoutContainer>
             <controls:VSpacer/>
             <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Name="CharacterSetup" Text="{Loc 'lobby-character-preview-panel-character-setup-button'}"
@@ -38,3 +42,4 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <Label Name="Unloaded" Text="{Loc 'lobby-character-preview-panel-unloaded-preferences-label'}"/>
     </BoxContainer>
 </Control>
+<!-- Orion-Edit-End -->

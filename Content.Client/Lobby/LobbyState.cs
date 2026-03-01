@@ -239,11 +239,13 @@ namespace Content.Client.Lobby
             if (_gameTicker.IsGameStarted)
             {
                 Lobby!.StartTime.Text = string.Empty;
+                Lobby.StartTimeContainer.Visible = false; // Orion
                 var roundTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
                 Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-time", ("hours", roundTime.Hours), ("minutes", roundTime.Minutes));
                 return;
             }
 
+            Lobby!.StartTimeContainer.Visible = true; // Orion
             Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
@@ -298,16 +300,20 @@ namespace Content.Client.Lobby
                 Lobby!.ReadyButton.ToggleMode = false;
                 Lobby!.ReadyButton.Pressed = false;
                 Lobby!.ObserveButton.Disabled = false;
-                Lobby!.ManifestButton.Disabled = true; // Orion
+                // Orion-Start
+                Lobby!.ManifestButton.Visible = false;
+                Lobby.StartTimeContainer.Visible = false;
+                // Orion-End
             }
             else
             {
                 Lobby!.StartTime.Text = string.Empty;
+                Lobby.StartTimeContainer.Visible = true; // Orion
                 Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
                 Lobby!.ReadyButton.Disabled = false;
                 Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
-                Lobby!.ManifestButton.Disabled = false; // Orion
+                Lobby!.ManifestButton.Visible = true; // Orion
                 Lobby!.ObserveButton.Disabled = true;
             }
 

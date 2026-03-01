@@ -26,6 +26,7 @@ job-name-diplomat = дипломат НаноТрейзен
 job-name-inspector = инспектор ЦК
 job-name-nct = наставник ЦК
 job-name-special-operations-officer = офицер спецопераций
+job-name-outercommander = внешний командующий
 
 # Syndicate
 
