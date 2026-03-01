@@ -1,5 +1,5 @@
-ent-MobHastur = ????
+ent-MobHastur = Хастур
     .desc = Тот, чьё имя нельзя называть...
-ent-MobHasturClone = ????
+ent-MobHasturClone = Хастур
     .desc = Тот, чьё имя нельзя называть...
     .suffix = НЕ МАППИТЬ

@@ -77,7 +77,7 @@ ghost-role-intern-rules = Следуйте приказам, данными ва
 ghost-role-lead-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищай командование, отдавайте приказы другим стажёрам.
 # cargo bingle
 ghost-role-cargo-bingle-name = Бингл снабжения
-ghost-role-cargo-bingle-desc = Служите Представителю Nanotrasen и его интересам, не причиняйте вред членам экипажа, помогайте отделу снабжения и станции.
+ghost-role-cargo-bingle-desc = Служите Представителю НаноТрейзен и его интересам, не причиняйте вред членам экипажа, помогайте отделу снабжения и станции.
 
 # shuttle roles
 
@@ -142,7 +142,7 @@ ghost-role-information-dark-lord-name = Тёмный лорд
 ghost-role-information-dark-lord-description = Агент Синдиката в образе лорда. Используйте свою силу и энергетический меч для выполнения целей.
 dark-lord-role-greeting = Вы — [color=#880808]Тёмный лорд[/color], посланный Синдикатом на эту станцию для выполнения их грязной работёнки. Ознакомьтесь с панелью персонажа, чтобы узнать свои цели.
 ghost-role-information-chosen-one-name = Избранный
-ghost-role-information-chosen-one-description = Особый агент, отправленный NanoTrasen на станцию, чтобы противостоять Тёмному лорду.
+ghost-role-information-chosen-one-description = Особый агент, отправленный НаноТрейзен на станцию, чтобы противостоять Тёмному лорду.
 chosen-one-role-greeting = Вы — [color=#0087FF]Избранный[/color]. Вы были отправлены на станцию для победы над Тёмным лордом. Ознакомьтесь с панелью персонажа, чтобы узнать свои цели.
 objective-condition-dark-lord-kill-title = Убедитесь, что Тёмный лорд { $targetName } пал.
 ghost-role-information-mime-Assassin-name = Ассамим

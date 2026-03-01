@@ -18,7 +18,7 @@ chat-language-Calcic-name = Кальцик
 chat-language-ValyrianStandard-name = Валирийский
 chat-language-Sign-name = Жесты
 chat-language-Marish-name = Мариш
-chat-language-Chittin-name = Читин
+chat-language-Chittin-name = Хитин
 chat-language-Xeeplian-name = Ксиплианский
 
 # Дополнительные языки
