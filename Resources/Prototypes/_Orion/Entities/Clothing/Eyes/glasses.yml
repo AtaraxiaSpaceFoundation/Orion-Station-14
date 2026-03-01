@@ -21,12 +21,14 @@
   description: Medical visor with integrated flash protection.
   components:
   - type: Sprite
-    sprite: _Orion/Clothing/Eyes/Glasses/med_goggles.rsi
+    sprite: _Orion/Clothing/Eyes/Glasses/medglasses.rsi
   - type: Clothing
-    sprite: _Orion/Clothing/Eyes/Glasses/med_goggles.rsi
-  - type: Construction
-    graph: VisorMedHUD
-    node: MedVisor
+    sprite: _Orion/Clothing/Eyes/Glasses/medglasses.rsi
+    equippedPrefix: visor
+  - type: Item
+    heldPrefix: visor
+  - type: ItemSwitch
+    state: visor
 
 - type: entity
   parent: ClothingEyesBase

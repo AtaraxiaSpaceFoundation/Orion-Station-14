@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "resprite from security glasses by Creatorbot01, Moth Secglasses edited by SomethingUnbearable. Taken from Goobstation. Visor sprited by buhojmed (discord). Taken from ADT at commit https://github.com/AdventureTimeSS14/space_station_ADT/commit/feae9397eb23bc76d34faac961a45ff874fd55dc. Resprite equipped & icon for visor by UmbiMax",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "glasses-icon"
+    },
+    {
+      "name": "visor-icon"
+    },
+    {
+      "name": "glasses-equipped-EYES",
+      "directions": 4
+    },
+    {
+      "name": "glasses-equipped-EYES-moth",
+      "directions": 4
+    },
+    {
+      "name": "glasses-equipped-EYES-hamster",
+      "directions": 4
+    },
+    {
+      "name": "visor-equipped-EYES",
+      "directions": 4
+    },
+    {
+      "name": "glasses-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "glasses-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "visor-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "visor-inhand-right",
+      "directions": 4
+    }
+  ]
+}

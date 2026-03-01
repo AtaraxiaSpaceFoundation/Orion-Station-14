@@ -8,9 +8,6 @@
   id: CartridgeRifle762
 
 - type: Tag
-  id: ChemVisor
-
-- type: Tag
   id: MagazineAntiMaterielRifle
 
 - type: Tag
@@ -39,9 +36,6 @@
 
 - type: Tag
   id: MagazineSMGVector
-
-- type: Tag
-  id: MedSunglasses
 
 - type: Tag
   id: MeleeHitIgnore

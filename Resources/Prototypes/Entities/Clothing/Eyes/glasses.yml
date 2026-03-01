@@ -448,7 +448,6 @@
       tags:
       - PetWearable
       - WhitelistChameleon
-      - ChemVisor # Orion
 
 - type: entity
   parent: [ClothingEyesBase, BaseMajorContraband]
