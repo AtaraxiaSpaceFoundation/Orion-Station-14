@@ -1,5 +1,5 @@
 ent-CorporateDocument = корпоративный документ
-    .desc = Официальный документ NanoTrasen. Выглядит как спам. В прочем, как и всегда.
+    .desc = Официальный документ НаноТрейзен. Выглядит как спам. В прочем, как и всегда.
 ent-ServiceDocument = { ent-CorporateDocument }
     .desc = { ent-CorporateDocument.desc }
 ent-SecurityDocument = { ent-CorporateDocument }

@@ -7,4 +7,4 @@ ent-HeatLampTierTwo = advanced heat lamp
 ent-HeatLampTierThree = phoron temperature stabilizer
     .desc = An phoron-based temperature stabilization device that doesn't need external power. Fixes almost any temperature deviation at lightning fast speeds.
 ent-HeatLampEvil = syndicate heat lamp
-    .desc = A cybersun design, utilized by cold-blooded operatives in their sieges. Also an effective melee weapon in a pinch.
+    .desc = A Киберсан design, utilized by cold-blooded operatives in their sieges. Also an effective melee weapon in a pinch.

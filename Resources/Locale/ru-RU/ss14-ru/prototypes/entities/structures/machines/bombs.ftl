@@ -9,4 +9,4 @@ ent-SyndicateBombFake = { ent-SyndicateBomb }
     .desc = { ent-SyndicateBomb.desc }
 ent-DebugHardBomb = DEBUG бомба
     .desc = Господи, она сейчас взорвётся.
-    .suffix = DEBUG
+    .suffix = ДЕБАГ

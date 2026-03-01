@@ -45,7 +45,7 @@ ghost-role-information-navy-officer-name = Офицер ВМС
 ghost-role-information-navy-officer-description = Отвечайте на факсы и радиосообщения Центрального Командования. Проводите расследования над станцией и её экипажем.
 ghost-role-information-navy-officer-rules = Следуйте приказам [color=#yellow][bold]Капитана ВМС[/bold][/color]. При его отсутствии принимайте решения самостоятельно.
 ghost-role-information-navy-officer-undercover-name = Офицер ВМС под прикрытием
-ghost-role-information-navy-officer-undercover-description = Выполняйте задачи и ликвидируйте назначенные цели. Слава NanoTrasen!
+ghost-role-information-navy-officer-undercover-description = Выполняйте задачи и ликвидируйте назначенные цели. Слава НаноТрейзен!
 ghost-role-information-navy-officer-undercover-rules = Следуйте приказам [color=#yellow][bold]Капитана ВМС[/bold][/color] или другого представителя Центрального Командования.
 ghost-role-information-diplomat-name = Дипломат Центрального Командования
 ghost-role-information-diplomat-description = Представляй интересы Центрального Командования, управляй отношениями с другими фракциями на станции. Устраняй проблемы, вызванные Капитаном.
@@ -73,8 +73,8 @@ ghost-role-intern-name = Стажёр ЦентКом
 ghost-role-nerd-intern-name = Нёрд стажёр ЦентКом
 ghost-role-lead-intern-name = Глава стажёров ЦентКом
 ghost-role-intern-desc = Вы — стажёр ЦентКом, плохо оплачиваемый, голодный, с большой студенческой задолженностью, но других вариантов нет, так что лучше слушайтесь!
-ghost-role-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищайте командование, слушайтесь Главу стажёров.
-ghost-role-lead-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищай командование, отдавайте приказы другим стажёрам.
+ghost-role-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем НаноТрейзен[/bold][/color] и ЦК. Защищайте командование, слушайтесь Главу стажёров.
+ghost-role-lead-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем НаноТрейзен[/bold][/color] и ЦК. Защищай командование, отдавайте приказы другим стажёрам.
 # cargo bingle
 ghost-role-cargo-bingle-name = Бингл снабжения
 ghost-role-cargo-bingle-desc = Служите Представителю НаноТрейзен и его интересам, не причиняйте вред членам экипажа, помогайте отделу снабжения и станции.

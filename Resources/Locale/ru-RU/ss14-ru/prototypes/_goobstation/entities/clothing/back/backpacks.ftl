@@ -5,6 +5,6 @@ ent-ClothingBackpackBlueshield = рюкзак Синего Щита
 ent-ClothingBackpackUnremoveable = { ent-ClothingBackpack }
     .suffix = Неснимаемый
     .desc = { ent-ClothingBackpack.desc }
-ent-ClothingBackpackSantasSack = Мешочек Деда Мороза
+ent-ClothingBackpackSantasSack = мешочек Деда Мороза
     .desc = Содержит всё необходимое для создания Новогоднего настроения!
     .suffix = Неснимаемый

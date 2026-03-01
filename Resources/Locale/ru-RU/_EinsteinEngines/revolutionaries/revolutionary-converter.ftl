@@ -115,4 +115,4 @@ revolutionary-converter-speech-114 = Классовая борьба... Клас
 revolutionary-converter-speech-115 = Да здравствует Каргония!
 revolutionary-converter-speech-116 = Будущие поколения будут ценить наши страдания!
 revolutionary-converter-speech-117 = НаноТрейзен взорвало Космическую Станцию 13!
-revolutionary-converter-speech-118 = СССП — сияющий маяк свободы против рабства NanoTrasen!
+revolutionary-converter-speech-118 = СССП — сияющий маяк свободы против рабства НаноТрейзен!

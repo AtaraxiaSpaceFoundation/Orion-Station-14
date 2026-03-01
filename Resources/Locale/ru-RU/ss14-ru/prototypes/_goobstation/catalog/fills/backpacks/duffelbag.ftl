@@ -1,7 +1,7 @@
 ent-ClothingBackpackDuffelSyndicateMedicHardsuitBundle = комплект скафандра медика Синдиката
     .desc = Скафандр боевого медика из излишков, упакован для вашего ЛАРПа.
-ent-ClothingBackpackDuffelSyndicateStealthHardsuitBundle = комплект скрытного скафандра Cybersun
-    .desc = Продвинутый скрытный скафандр Cybersun, собранный в комплект.
+ent-ClothingBackpackDuffelSyndicateStealthHardsuitBundle = комплект скрытного скафандра Киберсан
+    .desc = Продвинутый скрытный скафандр Киберсан, собранный в комплект.
 ent-ClothingBackpackDuffelSyndicateBurner = комплект "Горелка"
     .desc = Винтовка "Горелка" крупного калибра, с боекомплектом из бронебойных и фугасных патронов.
 ent-ClothingBackpackDuffelSyndicateM90Bundle = комплект M-90

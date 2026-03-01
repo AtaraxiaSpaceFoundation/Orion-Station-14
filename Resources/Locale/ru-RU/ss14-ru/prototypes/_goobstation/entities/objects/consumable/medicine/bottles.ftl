@@ -1,4 +1,4 @@
-ent-RandomChemistryBottleMedicalSpawner = Спавнер случайной бутылочки с химикатом
+ent-RandomChemistryBottleMedicalSpawner = спавнер случайной бутылочки с химикатом
     .desc = { ent-MarkerBase.desc }
 ent-RandomChemistryBottleMedicalTier1Spawner = случайная бутылочка с химикатом (уровень 1)
     .desc = { ent-MarkerBase.desc }

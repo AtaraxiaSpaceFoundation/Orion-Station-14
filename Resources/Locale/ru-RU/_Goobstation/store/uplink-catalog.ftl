@@ -36,12 +36,12 @@ uplink-hardsuit-syndiecommander-desc = Запасной командирский
 
 # Cybersun Stealth
 
-uplink-hardsuit-cybersun-stealth-name = Маскировочный костюм Cybersun
+uplink-hardsuit-cybersun-stealth-name = Маскировочный костюм Киберсан
 uplink-hardsuit-cybersun-stealth-desc = Реверс-инженеринг технологии Клана Паука. Этот костюм покрыт специализированными пластинами для проведения скрытых спецопераций. Немного медленнее и защищает меньше, чем другие скафандры.
 
 # Cybersun Dreadnought suit
 
-uplink-hardsuit-cybersun-dreadnought-name = Дредноут костюм Cybersun
+uplink-hardsuit-cybersun-dreadnought-name = Дредноут костюм Киберсан
 uplink-hardsuit-cybersun-dreadnought-desc = Невероятно прочный боевой костюм из гипер-блюспейс улучшенной пластали — почти непробиваемая стена. Но наденут его лишь самые безумные фанатики Синдиката. Из-за веса костюм нужно затягивать до боли, застежки впиваются в кожу и не могут быть сняты без повреждения кожи.
 
 # Misc
@@ -181,9 +181,9 @@ uplink-ExplosivePayloadBlueprint-desc = Чертеж, который позво�
 # Mechs
 
 uplink-mech-teleporter-heavy-name = Телепортер тяжёлого меха
-uplink-mech-teleporter-heavy-desc = Содержит тяжёлый бронированный мех Cybersun с интегрированным мечом-пилой, Ultra AC-2, LBX AC 10 "Бессистемный", ракетной установкой BRM-6 и пушкой P-X Тесла.
+uplink-mech-teleporter-heavy-desc = Содержит тяжёлый бронированный мех Киберсан с интегрированным мечом-пилой, Ultra AC-2, LBX AC 10 "Бессистемный", ракетной установкой BRM-6 и пушкой P-X Тесла.
 uplink-mech-teleporter-assault-name = Телепорт штурмового меха
-uplink-mech-teleporter-assault-desc = Содержит лёгкий бронированный мех Cybersun с интегрированным мечом-пилой, LBX AC 10 "Бессистемный", лёгкой ракетной установкой SRM-8 и пушкой P-X Тесла.
+uplink-mech-teleporter-assault-desc = Содержит лёгкий бронированный мех Киберсан с интегрированным мечом-пилой, LBX AC 10 "Бессистемный", лёгкой ракетной установкой SRM-8 и пушкой P-X Тесла.
 
 # Chemicals
 
@@ -232,8 +232,8 @@ uplink-krav-maga-implant-desc = Позволяет выполнять разли
 
 # Wearables
 
-uplink-heat-lamp-name = Обогреватель Cybersun
-uplink-heat-lamp-desc = Дизайн Cybersun, часто используется холоднокровными мародёрами Gorlex в осадах. Также эффективен как оружие ближнего боя.
+uplink-heat-lamp-name = Обогреватель Киберсан
+uplink-heat-lamp-desc = Дизайн Киберсан, часто используется холоднокровными мародёрами Gorlex в осадах. Также эффективен как оружие ближнего боя.
 uplink-belt-rig-name = РПС гренадёра
 uplink-second-skin-name = Вторая плоть
 uplink-second-skin-desc =
@@ -279,7 +279,7 @@ uplink-pizza-bomb-name = Пицца-бомба
 uplink-pizza-bomb-desc = Первоначально разработана террористами, теперь используется синдикатом для устранения высокоприоритетных целей. Не открывайте до взрыва!
 uplink-pizza-party-crate-name = Ящик для пицца-вечеринки
 uplink-bloodred-cassette-name = Кроваво-красный кассетный плеер
-uplink-bloodred-cassette-desc = Предоставлен самыми эгоистичными дизайнерами Cybersun, портативный музыкальный плеер!
+uplink-bloodred-cassette-desc = Предоставлен самыми эгоистичными дизайнерами Киберсан, портативный музыкальный плеер!
 uplink-pizza-party-crate-desc = Ящик в виде коробки для пиццы, наполненный пиццами и пицца-бомбами для самой взрывной пицца-вечеринки. К сожалению, сложно определить, где какая пицца.
 uplink-tcminer-name = Телекристальный майнер
 uplink-cddisksyndicate-name = CD "Реклама Синдиката"
@@ -306,7 +306,7 @@ uplink-tcminer-desc = Содержит плоский комплект для с
 uplink-syndiedrobe-name = СиндиШкаф
 uplink-syndiedrobe-desc = Торговый автомат, заполненный одеждой с символикой Синдиката. Простой, строгий и чётко красно-черный. Предлагает оперативникам одеться в стиле Синдиката.
 uplink-bloodred-casette-name = Плеер Синдиката
-uplink-bloodred-casette-desc = Представленный самыми самовлюблёнными модными дизайнерами Cybersun, портативный музыкальный плеер!
+uplink-bloodred-casette-desc = Представленный самыми самовлюблёнными модными дизайнерами Киберсан, портативный музыкальный плеер!
 uplink-undetermined-bundle-name = Неопределённый набор
 uplink-undetermined-bundle-desc = Ящик с тремя случайными наборами, из которых можно выбрать один. Гарантированно содержит ключ шифрования Синдиката.
 uplink-energy-pickaxe-name = Энергетическая кирка

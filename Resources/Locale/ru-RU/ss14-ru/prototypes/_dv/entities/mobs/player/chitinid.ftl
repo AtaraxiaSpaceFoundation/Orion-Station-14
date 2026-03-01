@@ -1,2 +1,2 @@
-ent-MobChitinid = Урист МакМуравей
+ent-MobChitinid = Урист МакХитинид
     .desc = { ent-BaseMobChitinid.desc }

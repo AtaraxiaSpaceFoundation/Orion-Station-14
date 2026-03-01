@@ -18,4 +18,4 @@ ent-VehicleHoverchair = стул-ховер
 ent-VehicleForkliftOverlay = overlay погрузчика
     .desc = { "" }
 ent-VehicleForklift = погрузчик
-    .desc = Требуется сертификация погрузчика, одобренного NanoTrasen.
+    .desc = Требуется сертификация погрузчика, одобренного НаноТрейзен.

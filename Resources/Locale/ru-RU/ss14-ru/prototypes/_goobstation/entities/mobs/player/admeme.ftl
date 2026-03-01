@@ -1,4 +1,4 @@
-ent-RandomHumanoidSpawnerNavyOfficer = Офицер ЦекнтКом
+ent-RandomHumanoidSpawnerNavyOfficer = Офицер ЦентКом
     .suffix = ЦентКом
     .desc = { "" }
 ent-RandomHumanoidSpawnerNavyCaptain = Капитан ВКФ
