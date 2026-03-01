@@ -109,6 +109,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
         SubscribeLocalEvent<MorphAmbushComponent, MeleeHitEvent>(OnAmbushAttack);
         SubscribeLocalEvent<MorphAmbushComponent, UndisguisedEvent>(OnAmbushInteract);
+        SubscribeLocalEvent<MorphAmbushComponent, InteractHandEvent>(OnAmbushHandInteract);
         SubscribeLocalEvent<MorphComponent, MorphAmbushActionEvent>(OnAmbushAction);
         SubscribeLocalEvent<MorphAmbushComponent, UpdateCanMoveEvent>(OnCanMoveEvent);
 
@@ -335,7 +336,20 @@ public sealed class MorphSystem : SharedMorphSystem
     {
         _stun.TryKnockdown(args.User, component.StunTimeInteract, false);
         _damageable.TryChangeDamage(args.User, component.DamageOnTouch);
-        AmbushBreak(uid);
+        AmbushBreak(TryComp<ChameleonDisguiseComponent>(uid, out var disguise)
+            ? disguise.User
+            : uid);
+    }
+
+    private void OnAmbushHandInteract(EntityUid uid, MorphAmbushComponent component, ref InteractHandEvent args)
+    {
+        _stun.TryKnockdown(args.User, component.StunTimeInteract, false);
+        _damageable.TryChangeDamage(args.User, component.DamageOnTouch);
+        AmbushBreak(TryComp<ChameleonDisguiseComponent>(uid, out var disguise)
+            ? disguise.User
+            : uid);
+
+        args.Handled = true;
     }
 
     #endregion
@@ -435,11 +449,17 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<MobStateComponent>(target, out var targetMobState))
             return;
 
+        if (_container.TryGetContainingContainer(target, out var container) && container.Owner == morph.Owner)
+            _transform.SetCoordinates(target, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
+
+        var wasAlive = !_mobState.IsDead(target, targetMobState);
+        if (wasAlive)
+            _mobState.ChangeMobState(target, MobState.Dead, targetMobState, morph.Owner);
+
         morph.Comp.LivingDevoured++;
         Dirty(morph);
 
-        if (!_mobState.IsDead(target, targetMobState))
-            _damageable.TryChangeDamage(morph.Owner, morph.Comp.DevourHealingDamage!);
+        _damageable.TryChangeDamage(morph.Owner, morph.Comp.DevourHealingDamage!);
     }
     #endregion
 
@@ -572,12 +592,23 @@ public sealed class MorphSystem : SharedMorphSystem
 
         return nearbyEntities.Any(entity =>
         {
-            if (HasComp<MorphComponent>(entity) || HasComp<GhostComponent>(entity))
+            var entUid = entity.Owner;
+
+            if (_container.TryGetContainingContainer((entUid, null, null), out var container))
+            {
+                if (container.Owner == uid)
+                    return false;
+
+                if (HasComp<MorphComponent>(container.Owner))
+                    return false;
+            }
+
+            if (HasComp<MorphComponent>(entUid) || HasComp<GhostComponent>(entUid))
                 return false;
 
-            if (TryComp<MobStateComponent>(entity, out var mobState) &&
-                HasComp<GhostTakeoverAvailableComponent>(entity) &&
-                _mobState.IsDead(entity, mobState))
+            if (TryComp<MobStateComponent>(entUid, out var mobState) &&
+                HasComp<GhostTakeoverAvailableComponent>(entUid) &&
+                _mobState.IsDead(entUid, mobState))
                 return false;
 
             return true;
