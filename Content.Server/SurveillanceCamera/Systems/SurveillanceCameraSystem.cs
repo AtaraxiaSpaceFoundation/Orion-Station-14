@@ -500,7 +500,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
             key = SurveillanceCameraVisuals.Active;
         }
 
-        if (HasActiveAiViewerInRange(uid)) // Orion-Edit
+        if (component.Active && HasActiveAiViewerInRange(uid)) // Orion-Edit
         {
             key = SurveillanceCameraVisuals.InUse;
         }
