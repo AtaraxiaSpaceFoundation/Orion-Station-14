@@ -24,3 +24,7 @@ ent-AncientRogueKingToken = { ent-SpawnPointGhostAncientRogueKing }
     .desc = { ent-SpawnPointGhostAncientRogueKing.desc }
 ent-WraithToken = { ent-SpawnPointGhostWraith }
     .desc = { ent-SpawnPointGhostWraith.desc }
+ent-HasturToken = { ent-SpawnPointGhostHastur }
+    .desc = { ent-SpawnPointGhostHastur.desc }
+ent-ContractorTokenSpawner = { ent-ContractorSpawner }
+    .desc = { ent-ContractorSpawner.desc }

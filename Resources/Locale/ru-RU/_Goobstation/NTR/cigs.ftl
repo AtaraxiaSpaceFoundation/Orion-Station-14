@@ -1,8 +1,8 @@
 advertisement-cigs-deluxe-1 = ОДНУ СИГАРЕТУ И ВТОРУЮ СИГАРЕТУ!!
 advertisement-cigs-deluxe-2 = ЦАРСКИЕ ФИЛЬТРЫ!!
-advertisement-cigs-deluxe-3 = NANOTRASEN РАССЛАБУХА!
+advertisement-cigs-deluxe-3 = НАНОТРЕЙЗЕН РАССЛАБУХА!
 advertisement-cigs-deluxe-4 = СТОЛИЧНОЕ НАСЛАЖДЕНИЕ!!
-advertisement-cigs-deluxe-5 = ПОЛУЧИ СВОИ NANOLBORO!!
+advertisement-cigs-deluxe-5 = ПОЛУЧИ СВОИ НАНОЛАБРО!!
 advertisement-cigs-deluxe-6 = КОСМИЧЕСКИЙ КАМЭЛ!!
 advertisement-cigs-deluxe-7 = СОВЕРШЕННО ТОЧНО БЕЗ СМОЛЫ!!
 advertisement-cigs-deluxe-8 = ПОПРОБУЙТЕ ПРЕДСТАВИТЕЛЬСКУЮ ИЗЫСКАННОСТЬ!!

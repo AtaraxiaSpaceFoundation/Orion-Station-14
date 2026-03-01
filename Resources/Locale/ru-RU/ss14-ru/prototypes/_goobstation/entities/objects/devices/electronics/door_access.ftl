@@ -1,5 +1,5 @@
 ent-DoorElectronicsCentralCommandCaptain = { ent-DoorElectronics }
-    .suffix = Капитан, ЦК, Закрытый
+    .suffix = Капитан ЦК, Закрытый
     .desc = { ent-DoorElectronics.desc }
 ent-DoorElectronicsNTR = { ent-DoorElectronics }
     .suffix = Представитель НаноТрейзен, Закрытый
@@ -12,4 +12,7 @@ ent-DoorElectronicsRobotics = { ent-DoorElectronics }
     .desc = { ent-DoorElectronics.desc }
 ent-DoorElectronicsAllService = { ent-DoorElectronics }
     .suffix = Сервис, Закрытый
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsJournalism = { ent-DoorElectronics }
+    .suffix = Журнализм, Закрытый
     .desc = { ent-DoorElectronics.desc }

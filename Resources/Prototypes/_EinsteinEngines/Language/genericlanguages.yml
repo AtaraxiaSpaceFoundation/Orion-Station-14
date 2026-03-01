@@ -336,11 +336,13 @@
   # Orion-End
   obfuscation:
     !type:ReplacementObfuscation
+    # Orion-Edit-Start: Localization
     replacement:
-    - something
-    - a cryptic message
-    - a signal
-    - a message
+    - что-то
+    - непонятное сообщение
+    - сигнал
+    - сообщение
+    # Orion-Edit-End: Localization
 
     #Used for Xenoglossy, and anything else with the UniversalLanguageSpeaker component
 - type: language

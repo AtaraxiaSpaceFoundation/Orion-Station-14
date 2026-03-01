@@ -1,0 +1,15 @@
+ent-MobSimpleSyndicateBlade = солдат синдиката
+    .suffix = ИИ, Энергетический меч
+    .desc = { ent-MobBaseNPC.desc }
+ent-MobSimpleSyndicateKnife = солдат синдиката
+    .suffix = ИИ, Ножик
+    .desc = { ent-MobBaseNPC.desc }
+ent-MobSimpleSyndicatePistol = солдат синдиката
+    .suffix = ИИ, Пистолет
+    .desc = { ent-MobBaseNPC.desc }
+ent-MobSimpleSyndicateShotgun = солдат синдиката
+    .suffix = ИИ, Дробовик
+    .desc = { ent-MobBaseNPC.desc }
+ent-MobSimpleSyndicateSMG = солдат синдиката
+    .suffix = ИИ, ПП
+    .desc = { ent-MobBaseNPC.desc }

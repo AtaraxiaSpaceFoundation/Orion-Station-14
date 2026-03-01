@@ -6,8 +6,9 @@
 - type: language
   id: Bingle
   speech:
-    fontId: Eatday
-    boldFontId: Eatday
+    # CorvaxGoob - Font do not support russian
+    # fontId: Eatday
+    # boldFontId: Eatday
     color: "#33528d"
   # Orion-Start
   icon:
@@ -19,10 +20,12 @@
     proportion: 0.66
     minPhrases: 1
     maxPhrases: 6
+    # Orion-Edit-Start: Localization
     replacement:
-    - Bingle
-    - Bongle
-    - BINGLE
-    - Bong
-    - Bing
-    - BONGLE
+    - Бингл
+    - Бонгл
+    - БИНГЛ!
+    - Бонг
+    - Бинг
+    - БОНГЛ!
+    # Orion-Edit-End: Localization

@@ -1,2 +1,2 @@
-stack-bluespace-tile = блюспейс плиток
-stack-sepia-tile = сепия плиток
+stack-bluespace-tile = блюспейс плитка
+stack-sepia-tile = сепия плитка

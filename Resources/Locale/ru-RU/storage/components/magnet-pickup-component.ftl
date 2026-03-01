@@ -6,7 +6,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-
 ## Used when examining the MagnetPickupComponent
 
 comp-magnet-pickup-examined-on = Магнит: [color=darkgreen]включен[/color].

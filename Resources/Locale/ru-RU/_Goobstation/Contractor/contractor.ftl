@@ -1,2 +1,2 @@
 roles-antag-contractor-name = Контрактник
-roles-antag-contractor-description = Достигните своих целей, живыми или мертвыми.
+roles-antag-contractor-description = Похитьте свои цели, живыми или мёртвыми.

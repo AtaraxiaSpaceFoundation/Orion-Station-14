@@ -1,4 +1,4 @@
-ent-ShadowlingGlareEffect = эффект Кошмар Взор
+ent-ShadowlingGlareEffect = эффект Кошмарный Взор
     .desc = { "" }
 ent-ShadowlingShadowWalkInEffect = эффект Кошмар Теневой шаг вход
     .desc = { "" }

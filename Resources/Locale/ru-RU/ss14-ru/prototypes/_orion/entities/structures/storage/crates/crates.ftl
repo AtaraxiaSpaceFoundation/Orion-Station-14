@@ -32,7 +32,6 @@ ent-CrateTreasure = ящик сокровища
     .desc = { ent-CrateBaseWeldable.desc }
 ent-CrateWooden = деревянный ящик
     .desc = { ent-CrateBaseWeldable.desc }
-
 ent-CrateAnimalRightsConsortiumSecure = ящик Защиты Прав Животных
     .desc = { ent-CrateBaseWeldable.desc }
 ent-CrateAtmosphericsSecure = { ent-CrateAtmospherics }

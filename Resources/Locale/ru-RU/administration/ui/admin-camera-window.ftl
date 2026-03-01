@@ -1,5 +1,5 @@
-﻿admin-camera-window-title = Наблюдение за { $name }
-admin-camera-window-title-placeholder = Режим 1984
-admin-camera-window-follow = Следовать
-admin-camera-window-pop-out = Открыть в отдельном окне
-admin-camera-window-pop-in = Вернуть в окно
+admin-camera-window-title = Наблюдение за { $name }
+admin-camera-window-title-placeholder = Наблюдение
+admin-camera-window-follow = Следить
+admin-camera-window-pop-out = В окно
+admin-camera-window-pop-in = В игру

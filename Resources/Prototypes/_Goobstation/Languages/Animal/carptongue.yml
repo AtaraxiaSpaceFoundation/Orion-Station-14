@@ -13,13 +13,15 @@
     !type:SyllableObfuscation
     minSyllables: 2
     maxSyllables: 4
+    # Orion-Edit-Start: Localization
     replacement:
-      - r
-      - rr
-      - Rr
-      - gr
-      - sr
-      - ss
-      - sSs
-      - rer
-      - row
+      - р
+      - рр
+      - Рр
+      - гр
+      - ср
+      - сс
+      - сСс
+      - рер
+      - роу
+    # Orion-Edit-End: Localization

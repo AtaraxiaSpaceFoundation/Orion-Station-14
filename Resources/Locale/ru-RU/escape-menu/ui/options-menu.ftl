@@ -91,10 +91,10 @@ ui-options-vp-integer-scaling-tooltip =
     используя целочисленное значение при определённых разрешениях. Хотя это и
     приводит к чётким текстурам, это часто означает, что сверху/снизу экрана будут
     чёрные полосы или что часть окна не будет видна.
-ui-options-filter-label = Фильтр масштабирования:
-ui-options-filter-nearest = Ближайший (без сглаживания)
-ui-options-filter-bilinear = Билинейный (сглаженный)
 ui-options-vp-vertical-fit = Подгон окна просмотра по вертикали
+ui-options-filter-label = Фильтр масштабирования:
+ui-options-filter-nearest = По соседним пикселям (без сглаживания)
+ui-options-filter-bilinear = Билинейный (сглаживание)
 ui-options-vp-vertical-fit-tooltip =
     Когда функция включена, основное окно просмотра не будет учитывать горизонтальную ось
     при подгонке под ваш экран. Если ваш экран меньше, чем окно просмотра,
@@ -129,6 +129,7 @@ ui-options-header-text-cursor = Текстовый курсор
 ui-options-header-text-cursor-select = Выделение текста
 ui-options-header-text-edit = Редактирование текста
 ui-options-header-text-chat = Чат
+ui-options-function-toggle-standing = Ползти/Встать
 ui-options-header-text-other = Прочий ввод текста
 ui-options-hotkey-keymap = Использовать клавиши QWERTY (США)
 ui-options-hotkey-toggle-walk = Переключать шаг\бег
@@ -394,6 +395,6 @@ ui-options-admin-overlay-ghost-hide-distance = Дальность скрытия
 ui-options-enable-overlay-symbols = Добавить символ антага к тексту
 ui-options-enable-overlay-playtime = Отображать наигранное время
 ui-options-enable-overlay-starting-job = Показывать начальную должность
-ui-options-overlay-merge-distance = Stack merge distance
+ui-options-overlay-merge-distance = Расстояние для стака
 ui-options-overlay-ghost-fade-distance = Дальность затухания наложения призрака от мыши
 ui-options-overlay-ghost-hide-distance = Дальность скрытия наложения призрака от мыши

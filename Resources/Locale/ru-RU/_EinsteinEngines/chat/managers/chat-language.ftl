@@ -18,7 +18,7 @@ chat-language-Calcic-name = Кальцик
 chat-language-ValyrianStandard-name = Валирийский
 chat-language-Sign-name = Жесты
 chat-language-Marish-name = Мариш
-chat-language-Chittin-name = Читин
+chat-language-Chittin-name = Хитин
 chat-language-Xeeplian-name = Ксиплианский
 
 # Дополнительные языки
@@ -42,7 +42,7 @@ chat-language-Crab-name = Крабий
 chat-language-Deer-name = Оленьий
 chat-language-Dog-name = Собачий
 chat-language-Duck-name = Утиный
-chat-language-Eldritch-name = Эльдрич
+chat-language-Eldritch-name = Древний
 chat-language-Fox-name = Лисий
 chat-language-Hissing-name = Шипящий
 chat-language-Kangaroo-name = Кенгуру

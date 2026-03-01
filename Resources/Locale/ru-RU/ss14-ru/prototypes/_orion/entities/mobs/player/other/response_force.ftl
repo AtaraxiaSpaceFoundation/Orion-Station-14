@@ -13,7 +13,6 @@ ent-RandomHumanoidSpawnerERTSecurityGreenAlert = { ent-RandomHumanoidSpawnerERTS
 ent-RandomHumanoidSpawnerERTMedicalGreenAlert = { ent-RandomHumanoidSpawnerERTMedical }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Медик, Зелёный код
-
 ent-RandomHumanoidSpawnerERTLeaderBlueAlert = { ent-RandomHumanoidSpawnerERTLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер, Синий код
@@ -29,7 +28,6 @@ ent-RandomHumanoidSpawnerERTSecurityBlueAlert = { ent-RandomHumanoidSpawnerERTSe
 ent-RandomHumanoidSpawnerERTMedicalBlueAlert = { ent-RandomHumanoidSpawnerERTMedical }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Медик, Синий код
-
 ent-RandomHumanoidSpawnerERTLeaderAmberAlert = { ent-RandomHumanoidSpawnerERTLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер, Янтарный код
@@ -45,7 +43,6 @@ ent-RandomHumanoidSpawnerERTSecurityAmberAlert = { ent-RandomHumanoidSpawnerERTS
 ent-RandomHumanoidSpawnerERTMedicalAmberAlert = { ent-RandomHumanoidSpawnerERTMedical }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Медик, Янтарный код
-
 ent-RandomHumanoidSpawnerERTLeaderRedAlert = { ent-RandomHumanoidSpawnerERTLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер, Красный код
@@ -61,7 +58,6 @@ ent-RandomHumanoidSpawnerERTSecurityRedAlert = { ent-RandomHumanoidSpawnerERTSec
 ent-RandomHumanoidSpawnerERTMedicalRedAlert = { ent-RandomHumanoidSpawnerERTMedical }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Медик, Красный код
-
 ent-RandomHumanoidSpawnerERTLeaderGammaAlert = { ent-RandomHumanoidSpawnerERTLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер, Гамма код
@@ -77,7 +73,6 @@ ent-RandomHumanoidSpawnerERTSecurityGammaAlert = { ent-RandomHumanoidSpawnerERTS
 ent-RandomHumanoidSpawnerERTMedicalGammaAlert = { ent-RandomHumanoidSpawnerERTMedical }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Медик, Гамма код
-
 ent-RandomHumanoidSpawnerERTLeaderEpsilonAlert = { ent-RandomHumanoidSpawnerERTLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер, Эпсилон код
@@ -93,15 +88,12 @@ ent-RandomHumanoidSpawnerERTSecurityEpsilonAlert = { ent-RandomHumanoidSpawnerER
 ent-RandomHumanoidSpawnerERTMedicalEpsilonAlert = { ent-RandomHumanoidSpawnerERTMedical }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Медик, Эпсилон код
-
 ent-RandomHumanoidSpawnerCBURNLeader = Лидер РХБЗЗ
     .desc = { ent-MarkerBase.desc }
     .suffix = Лидер РХБЗЗ
-
 ent-RandomHumanoidSpawnerDeathSquadLeader = Лидер Эскадрона смерти
     .desc = { ent-MarkerBase.desc }
     .suffix = Лидер Эскадрона Смерти
-
 ent-RandomHumanoidSpawnerInteQVanguardLeaderERT = { ent-RandomHumanoidSpawnerInteQVanguardLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР | Коммандер Авангарда Интек
@@ -111,21 +103,18 @@ ent-RandomHumanoidSpawnerInteQVanguardSoldierERT = { ent-RandomHumanoidSpawnerIn
 ent-RandomHumanoidSpawnerInteQVanguardMedicERT = { ent-RandomHumanoidSpawnerInteQVanguardMedic }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР | Медик Авангарда Интек
-
 ent-RandomHumanoidSpawnerInteQVanguardLeaderERT-Strike = { ent-RandomHumanoidSpawnerInteQVanguardLeader }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР-Ударный | Коммандер Авангарда Интек
 ent-RandomHumanoidSpawnerInteQVanguardOperativeERT-Strike = { ent-RandomHumanoidSpawnerInteQVanguardOperative }
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР-Ударный | Оперативник Авангарда Интек
-
 ent-RandomHumanoidSpawnerClownERTLeader = Лидер Клоун ОБР
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер Клоун
 ent-RandomHumanoidSpawnerClownERT = Клоун ОБР
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Клоун
-
 ent-RandomHumanoidSpawnerAssistantERTLeader = Лидер Ассистент ОБР
     .desc = { ent-MarkerBase.desc }
     .suffix = ОБР Лидер Ассистент

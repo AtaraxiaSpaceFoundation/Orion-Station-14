@@ -1,5 +1,5 @@
 ent-DebugMechEquipment = { "" }
-    .suffix = DEBUG
+    .suffix = ДЕБАГ
     .desc = { "" }
 ent-CombatMechEquipment = { "" }
     .desc = { "" }

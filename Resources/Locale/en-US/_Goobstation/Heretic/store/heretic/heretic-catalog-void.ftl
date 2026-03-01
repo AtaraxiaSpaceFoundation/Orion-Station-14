@@ -39,7 +39,6 @@ knowledge-path-void-s2-desc =
     Your Mansus Grasp will temporarily mute and chill the victim.
     You become immune to cold temperatures.
 
-
 knowledge-path-void-s3-name = Void Phase
 knowledge-path-void-s3-desc =
     The entity calls themself the Aristocrat. They effortlessly walk through air like nothing - leaving a harsh, cold breeze in their wake.

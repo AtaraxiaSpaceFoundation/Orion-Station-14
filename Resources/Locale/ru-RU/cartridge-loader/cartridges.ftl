@@ -1,8 +1,8 @@
 device-pda-slot-component-slot-name-cartridge = Картридж
 default-program-name = Программа
 notekeeper-program-name = Заметки
-nano-task-program-name = NanoTask
-news-read-program-name = Новости станции
+nano-task-program-name = НаноЗадачи
+news-read-program-name = НаноНовости
 crew-manifest-program-name = Манифест
 crew-manifest-cartridge-loading = Загрузка ...
 net-probe-program-name = NetProbe

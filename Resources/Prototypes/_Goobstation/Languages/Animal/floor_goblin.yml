@@ -11,17 +11,19 @@
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 3
+    # Orion-Edit-Start: Localization
     replacement:
-    - mi
-    - mimi
-    - mimi
-    - yoyo
-    - iyo
-    - me
-    - memimimi
-    - mimimi
-    - mi
-    - bibi
-    - bi
-    - mi
-    - yo
+    - ми
+    - мими
+    - мимими
+    - йойо
+    - ийо
+    - ме
+    - мемимими
+    - мемими
+    - мьи
+    - биби
+    - би
+    - мье
+    - йо
+    # Orion-Edit-End: Localization

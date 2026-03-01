@@ -4,5 +4,5 @@ ent-XenomorphEggGrown = { ent-XenomorphEgg }
     .suffix = Выросшее
     .desc = { ent-XenomorphEgg.desc }
 ent-XenomorphEggBurst = { ent-XenomorphEgg }
-    .suffix = Открывающееся
+    .suffix = Лопающее
     .desc = { ent-XenomorphEgg.desc }

@@ -7,6 +7,8 @@
     !type:SyllableObfuscation
     minSyllables: 1
     maxSyllables: 8 # I was crazy once
+    # Orion-Edit-Start: Localization
     replacement:
-    - s
-    - S
+    - с
+    - С
+    # Orion-Edit-Start: Localization

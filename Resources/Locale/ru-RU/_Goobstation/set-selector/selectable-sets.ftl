@@ -32,7 +32,7 @@ selectable-set-thief-communicator-name = Набор коммуникатора
 selectable-set-thief-communicator-description =
     Деньги — это власть, а секреты — деньги. Используйте своё красноречие
     и богатство, чтобы подорвать структуру станции.
-    Включает: мастер-ключ для всех каналов станции, ручку CyberSun,
+    Включает: мастер-ключ для всех каналов станции, ручку Киберсан,
     маску хамелеона и 20000 кредитов в чемодане.
 selectable-set-thief-smuggler-name = Набор контрабандиста
 selectable-set-thief-smuggler-description =
@@ -176,7 +176,7 @@ selectable-set-paramedic-modsuit-desc =
     способный выдержать хотя бы несколько выстрелов.
 selectable-set-security-voidsuit-name = пустотный скафандр службы безопасности
 selectable-set-security-voidsuit-desc =
-    Специальный костюм, защищающий от опасной среды с низким давлением. 
+    Специальный костюм, защищающий от опасной среды с низким давлением.
     Имеет дополнительный слой брони.
 selectable-set-security-modsuit-name = скафандр MOD "Солдат"
 selectable-set-security-modsuit-desc =
@@ -194,7 +194,7 @@ selectable-set-headofsecurity-modsuit-desc =
     Оснащён ручным внутривенным стимулятором.
 selectable-set-engineering-voidsuit-name = скафандр инженера
 selectable-set-engineering-voidsuit-desc =
-    Специальный костюм, защищающий от опасной среды с низким давлением. 
+    Специальный костюм, защищающий от опасной среды с низким давлением.
     Имеет радиационную защиту.
 selectable-set-engineering-modsuit-name = скафандр MOD "Сапёр"
 selectable-set-engineering-modsuit-desc =
@@ -208,7 +208,7 @@ selectable-set-captain-voidsuit-desc =
 selectable-set-captain-modsuit-name = скафандр MOD "Магнат"
 selectable-set-captain-modsuit-desc =
     Модульный скафандр, идеально отполированный, декорированный и бронированный как лучший из
-    лучших, оснащен специальным покрытием, охлаждающей жидкостью и бриллиантами, 
+    лучших, оснащен специальным покрытием, охлаждающей жидкостью и бриллиантами,
     благодаря которым даже в самые трудные времена лидерство покажется вам сущим пустяком.
 selectable-set-research-director-voidsuit-name = экспериментальный исследовательский скафандр
 selectable-set-research-director-voidsuit-desc =

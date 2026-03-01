@@ -48,13 +48,11 @@ loadout-group-brigmedic-head = Бригмедик, голова
 loadout-group-brigmedic-outer = Бригмедик, верхняя одежда
 loadout-group-brigmedic-backpack = Бригмедик, рюкзак
 loadout-group-security-melee = СБ, оружие ближнего боя
-loadout-group-animals = Животные
-
+loadout-group-animals = Питомцы
 # Virology
-loadout-group-virologist-jumpsuit = Вирусолог, униформа
+loadout-group-virologist-jumpsuit = Вирусолог, комбинезон
 loadout-group-virologist-backpack = Вирусолог, рюкзак
 loadout-group-virologist-outerclothing = Вирусолог, верхняя одежда
-loadout-group-virologist-id = Вирусолог, ID
-
-#RadioHost
-loadout-group-radiohost-jumpsuit = Радио-ведущий, униформа
+loadout-group-virologist-id = Вирусолог, ID карта
+# RadioHost
+loadout-group-radiohost-jumpsuit = Радио-ведущий, комбинезон

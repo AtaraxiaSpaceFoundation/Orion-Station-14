@@ -1,6 +1,6 @@
 ent-PowerCellSuper = батарея супер ёмкости
-    .desc = Стандартизированный перезаряжаемый элемент питания.
     .suffix = Полный
+    .desc = { ent-BasePowerCell.desc }
 ent-PowerCellSuperPrinted = { ent-PowerCellSuper }
     .suffix = Пустой
     .desc = { ent-PowerCellSuper.desc }

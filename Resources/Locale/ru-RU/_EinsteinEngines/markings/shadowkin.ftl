@@ -1,8 +1,8 @@
 marking-EyesShadowkin = Сумеречник
 marking-TailShadowkin = Сумеречник
-marking-TailShadowkinBig = Сумеречник (Большие)
-marking-TailShadowkinShorter = Сумеречник (Короткие)
-marking-TailShadowkinMedium = Сумеречник (Средние)
-marking-TailShadowkinBigFluff = Сумеречник (Большие и пушистые)
+marking-TailShadowkinBig = Сумеречник (большой)
+marking-TailShadowkinShorter = Сумеречник (короткий)
+marking-TailShadowkinMedium = Сумеречник (средний)
+marking-TailShadowkinBigFluff = Сумеречник (большой и пушистый)
 marking-EarsShadowkin = Сумеречник
-marking-EarsShadowkinStriped = Сумеречник (Полосатые)
+marking-EarsShadowkinStriped = Сумеречник (полосатый)

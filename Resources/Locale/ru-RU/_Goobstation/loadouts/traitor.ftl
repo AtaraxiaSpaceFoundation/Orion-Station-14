@@ -1,21 +1,11 @@
 # Traitor Uplink Loadout Group
 loadout-group-traitor-uplink = Аплинк
-
 # PDA Uplink Option
-loadout-traitor-uplink-pda-name = КПК
-loadout-traitor-uplink-pda-desc = Ваш аплинк находится в КПК. Введите код в рингтон, что-бы получить доступ.
-
+loadout-traitor-uplink-pda-name = КПК Аплинк
+loadout-traitor-uplink-pda-desc = Ваш Аплинк будет спрятан в КПК. Введите код в рингтоне для доступа к магазину.
 # Pen Uplink Option
-loadout-traitor-uplink-pen-name = Ручка
-loadout-traitor-uplink-pen-desc = Ваш аплинк находится в ручке. Прокрутите свой код, что-бы открыть. Автоматически блокируется, при закрытии.
-
+loadout-traitor-uplink-pen-name = Аплинк ручка
+loadout-traitor-uplink-pen-desc = Ваш Аплинк будет спрятан в ручке. Прокрутите, чтобы ввести код и разблокировать магазин. Автоматически блокируется при закрытии.
 # Implant Uplink Option
-loadout-traitor-uplink-implant-name = Имплант
-loadout-traitor-uplink-implant-desc = Ваш аплинк находится под кожей. Стоит 10ТК. Активируйте, через панель действий.
-
-ent-LoadoutDummyTraitorPda = аплинк КПК
-    .desc = Ваш аплинк находится в КПК. Введите код в рингтон, что-бы получить доступ.
-ent-LoadoutDummyTraitorPen = аплинк ручка
-    .desc = Ваш аплинк находится в ручке. Прокрутите свой код, что-бы открыть. Автоматически блокируется, при закрытии.
-ent-LoadoutDummyTraitorImplant = имплант
-    .desc = Ваш аплинк находится под кожей. Стоит 10ТК. Активируйте, через панель действий.
+loadout-traitor-uplink-implant-name = Имплант Аплинка
+loadout-traitor-uplink-implant-desc = Ваш Аплинк будет имплантирован в кожу. Стоимость 10 ТК. Активируется кнопкой на хот-баре.

@@ -1,11 +1,11 @@
 # Spawners
-ent-RandomChemistryBottleMedicalSpawner = спавнер случайных медицинских бутылочек
+ent-RandomChemistryBottleMedicalSpawner = спавнер случайной бутылочки с химикатом
     .desc = { ent-MarkerBase.desc }
-ent-RandomChemistryBottleMedicalTier1Spawner = спавнер случайных медицинских бутылочек (уровень 1)
+ent-RandomChemistryBottleMedicalTier1Spawner = случайная бутылочка с химикатом (уровень 1)
     .desc = { ent-MarkerBase.desc }
-ent-RandomChemistryBottleMedicalTier2Spawner = спавнер случайных медицинских бутылочек (уровень 2)
+ent-RandomChemistryBottleMedicalTier2Spawner = случайная бутылочка с химикатом (уровень 2)
     .desc = { ent-MarkerBase.desc }
-ent-RandomChemistryBottleMedicalTier3Spawner = спавнер случайных медицинских бутылочек (уровень 3)
+ent-RandomChemistryBottleMedicalTier3Spawner = случайная бутылочка с химикатом (уровень 3)
     .desc = { ent-MarkerBase.desc }
 
 # Medical bottles
@@ -72,6 +72,24 @@ ent-ChemistryBottleSynaptizine = { ent-BaseChemistryBottleFilled }
 ent-ChemistryBottleTricordrazine = { ent-BaseChemistryBottleFilled }
     .suffix = Трикордразин
     .desc = { ent-BaseChemistryBottleFilled.desc }
+ent-ChemistryBottleHeartbreakerToxin = { ent-BaseChemistryBottleFilled }
+    .suffix = Токсин хартбрейкер
+    .desc = { ent-BaseChemistryBottleFilled.desc }
+ent-ChemistryBottleImpedrezene = { ent-BaseChemistryBottleFilled }
+    .suffix = Импедризин
+    .desc = { ent-BaseChemistryBottleFilled.desc }
+ent-ChemistryBottleLexorin = { ent-BaseChemistryBottleFilled }
+    .suffix = Лексорин
+    .desc = { ent-BaseChemistryBottleFilled.desc }
+ent-ChemistryBottleMannitol = { ent-BaseChemistryBottleFilled }
+    .suffix = Маннитол
+    .desc = { ent-BaseChemistryBottleFilled.desc }
+ent-ChemistryBottleMindbreakerToxin = { ent-BaseChemistryBottleFilled }
+    .suffix = Токсин майндбрейкер
+    .desc = { ent-BaseChemistryBottleFilled.desc }
+ent-ChemistryBottleSpaceDrugs = { ent-BaseChemistryBottleFilled }
+    .suffix = Космические наркотики
+    .desc = { ent-BaseChemistryBottleFilled.desc }
 ent-ChemistryBottleUltravasculine = { ent-BaseChemistryBottleFilled }
     .suffix = Ультраваскулин
     .desc = { ent-BaseChemistryBottleFilled.desc }
@@ -128,26 +146,6 @@ ent-ChemistryBottleHappiness = { ent-BaseChemistryBottleFilled }
     .desc = { ent-BaseChemistryBottleFilled.desc }
 ent-ChemistryBottlePotassiumIodide = { ent-BaseChemistryBottleFilled }
     .suffix = Иодид калия
-    .desc = { ent-BaseChemistryBottleFilled.desc }
-
-# Toxin bottles
-ent-ChemistryBottleHeartbreakerToxin = { ent-BaseChemistryBottleFilled }
-    .suffix = Токсин хартбрейкер
-    .desc = { ent-BaseChemistryBottleFilled.desc }
-ent-ChemistryBottleMindbreakerToxin = { ent-BaseChemistryBottleFilled }
-    .suffix = Токсин майндбрейкер
-    .desc = { ent-BaseChemistryBottleFilled.desc }
-ent-ChemistryBottleImpedrezene = { ent-BaseChemistryBottleFilled }
-    .suffix = Импедризин
-    .desc = { ent-BaseChemistryBottleFilled.desc }
-ent-ChemistryBottleLexorin = { ent-BaseChemistryBottleFilled }
-    .suffix = Лексорин
-    .desc = { ent-BaseChemistryBottleFilled.desc }
-ent-ChemistryBottleSpaceDrugs = { ent-BaseChemistryBottleFilled }
-    .suffix = Космические наркотики
-    .desc = { ent-BaseChemistryBottleFilled.desc }
-ent-ChemistryBottleMannitol = { ent-BaseChemistryBottleFilled }
-    .suffix = Маннитол
     .desc = { ent-BaseChemistryBottleFilled.desc }
 ent-ChemistryBottleHaloperidol = { ent-BaseChemistryBottleFilled }
     .suffix = Галоперидол
