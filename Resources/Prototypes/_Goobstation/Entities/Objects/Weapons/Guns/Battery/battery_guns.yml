@@ -130,6 +130,7 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: Gun
     fireRate: 1 # Orion
+    projectileSpeed: 18 # Orion
     resetOnHandSelected: false
     soundGunshot:
       path: /Audio/_Goobstation/Weapons/Guns/Gunshots/heavy_shot_suppressed.ogg
