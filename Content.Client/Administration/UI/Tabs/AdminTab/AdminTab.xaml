@@ -20,6 +20,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:at="clr-namespace:Content.Client.Administration.UI.Tabs.AdminTab"
+    xmlns:adminTab="clr-namespace:Content.Client._Orion.Administration.UI.Tabs.AdminTab"
     Margin="4"
     MinSize="50 50">
     <BoxContainer Orientation="Vertical">
@@ -31,6 +32,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             <cc:CommandButton Command="permissions" Text="{Loc admin-player-actions-window-permissions}" />
             <cc:CommandButton Command="announceui" Text="{Loc admin-player-actions-window-announce}"/>
             <cc:UICommandButton Command="callshuttle" Text="{Loc admin-player-actions-window-shuttle}" WindowType="{x:Type at:AdminShuttleWindow}"/>
+            <cc:UICommandButton Command="callresponseforce" Text="{Loc admin-player-actions-window-response-force}" WindowType="{x:Type adminTab:ResponseForceWindow}"/> <!-- Orion -->
             <cc:CommandButton Command="adminlogs" Text="{Loc admin-player-actions-window-admin-logs}"/>
             <cc:CommandButton Command="faxui" Text="{Loc admin-player-actions-window-admin-fax}"/>
             <cc:CommandButton Command="timetransferpanel" Text="{Loc admin-player-actions-window-time-transfer}"/>
