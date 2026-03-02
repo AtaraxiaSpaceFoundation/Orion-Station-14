@@ -16,7 +16,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 5
-    projectileSpeed: 25
+    projectileSpeed: 20
     selectedMode: FullAuto
     availableModes:
       - FullAuto

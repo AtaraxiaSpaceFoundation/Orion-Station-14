@@ -78,7 +78,7 @@
     angleIncrease: 3 # Orion-Edit: 4 > 3
     angleDecay: 16
     fireRate: 8
-    projectileSpeed: 25 # Orion: Another speed
+    projectileSpeed: 25 # Orion
     selectedMode: FullAuto
     availableModes:
       - FullAuto

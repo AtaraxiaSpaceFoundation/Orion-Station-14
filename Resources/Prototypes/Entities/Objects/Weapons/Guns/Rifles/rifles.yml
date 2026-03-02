@@ -115,7 +115,7 @@
     maxAngle: 40
     # Orion-End
     fireRate: 5
-    projectileSpeed: 30 # Orion: Another speed
+    projectileSpeed: 30 # Orion
     selectedMode: FullAuto
     availableModes:
       - FullAuto
