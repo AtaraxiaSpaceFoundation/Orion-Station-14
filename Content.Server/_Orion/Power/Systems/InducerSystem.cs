@@ -6,6 +6,7 @@ using Content.Shared._Orion.Power.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Content.Shared.Wall;
@@ -27,6 +28,7 @@ public sealed class InducerSystem : EntitySystem
 
         SubscribeLocalEvent<InducerComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<InducerComponent, InducerDoAfterEvent>(OnDoAfter);
+        SubscribeLocalEvent<InducerComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<InducerComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs);
         SubscribeLocalEvent<InducerComponent, GetVerbsEvent<Verb>>(OnGetRmbVerbs);
     }
@@ -124,6 +126,14 @@ public sealed class InducerSystem : EntitySystem
         }
     }
 
+    private void OnUseInHand(EntityUid uid, InducerComponent comp, UseInHandEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        CycleMode(uid, comp, args.User);
+        args.Handled = true;
+    }
 
     private void OnGetAltVerbs(EntityUid uid, InducerComponent comp, GetVerbsEvent<AlternativeVerb> args)
     {
@@ -133,20 +143,6 @@ public sealed class InducerSystem : EntitySystem
         if (_itemSlots.TryGetSlot(uid, comp.PowerCellSlotId, out var slot) && slot.Item != null)
             return;
 
-        var list = comp.AvailableTransferRates;
-        if (list is { Count: > 0 })
-        {
-            var idx = list.IndexOf(comp.TransferRate);
-            if (idx < 0) idx = 0;
-            var next = list[(idx + 1) % list.Count];
-
-            args.Verbs.Add(new AlternativeVerb
-            {
-                Text = Loc.GetString("inducer-verb-cycle-mode-next", ("rate", next)),
-                Priority = 0,
-                Act = () => CycleMode(uid, comp, args.User)
-            });
-        }
     }
 
 
@@ -188,16 +184,12 @@ public sealed class InducerSystem : EntitySystem
             return;
 
         var idx = list.IndexOf(comp.TransferRate);
-        var next = list[(idx + 1) % list.Count];
 
-        if (comp.TransferRate == next)
-            return;
-
-        comp.TransferRate = next;
+        comp.TransferRate = list[(idx + 1) % list.Count];
         Dirty(uid, comp);
 
         if (user != null)
-            _popup.PopupEntity(Loc.GetString("inducer-transfer-rate-set", ("rate", next)), uid, user.Value);
+            _popup.PopupEntity(Loc.GetString("inducer-transfer-rate-set", ("rate", comp.TransferRate)), uid, user.Value);
     }
 
 
