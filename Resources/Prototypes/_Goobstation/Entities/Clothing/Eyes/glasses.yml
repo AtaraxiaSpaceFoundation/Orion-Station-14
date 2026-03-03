@@ -21,7 +21,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: [ClothingEyesBase, ShowMedicalIcons, ClothingEyesGlassesSunglasses] # Orion-Edit: Deleted "ShowSecurityIcons" and "BaseSecurityContraband"
+  parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons, BaseSecurityContraband, ClothingEyesGlassesSunglasses]
   id: ClothingEyesGlassesMedSec
   name: medical security glasses
   description: Sunglasses with a medical and security hud
@@ -30,10 +30,6 @@
     sprite: _Goobstation/Clothing/Eyes/Glasses/medsecglasses.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Eyes/Glasses/medsecglasses.rsi
-  # Orion-Start
-  - type: ShowJobIcons
-  - type: ShowMindShieldIcons
-  # Orion-End
   - type: Construction
     graph: GlassesMedSecHUD
     node: glassesMedSec
