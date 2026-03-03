@@ -1,2 +1,2 @@
 ent-WeaponSubMachineGunMP5 = MP5
-    .desc = The RivArms SMG-5 submachinegun, an update to a classic design. A light firearm capable of effective one-handed use that is ideal for close to medium range engagements.
+    .desc = Пистолет-пулемёт RivArms SMG-5, обновлённая версия классической модели. Лёгкое оружие, пригодное для эффективного использования одной рукой, идеально для боя на ближних и средних дистанциях.
