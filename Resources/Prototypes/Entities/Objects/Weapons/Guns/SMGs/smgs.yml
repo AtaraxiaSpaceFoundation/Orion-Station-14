@@ -87,7 +87,6 @@
     burstFireRate: 8
     angleIncrease: 2 # Orion-Edit: 3 > 2
     angleDecay: 16
-    projectileSpeed: 25 # Orion
     selectedMode: FullAuto
     availableModes:
     - SemiAuto

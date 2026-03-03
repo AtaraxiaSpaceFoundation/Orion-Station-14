@@ -130,7 +130,6 @@
     - Back # Orion
   - type: Gun
     fireRate: 6
-    projectileSpeed: 20 # Orion
     selectedMode: SemiAuto
     availableModes:
       - SemiAuto
