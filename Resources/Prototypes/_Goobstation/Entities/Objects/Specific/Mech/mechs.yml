@@ -517,7 +517,7 @@
   - type: ContainerFill
     containers:
       mech-battery-slot:
-      - PowerCellBluespace # Orion-Edit: PowerCellHyper > PowerCellBluespace
+      - PowerCellHyper
 
 - type: entity
   id: MechGygaxSyndieFilled
@@ -590,7 +590,7 @@
   - type: ContainerFill
     containers:
       mech-battery-slot:
-      - PowerCellVortex # Orion-Edit: PowerCellHyper > PowerCellVortex
+      - PowerCellHyper
 
 - type: entity
   id: MechMaulerSyndieFilled
