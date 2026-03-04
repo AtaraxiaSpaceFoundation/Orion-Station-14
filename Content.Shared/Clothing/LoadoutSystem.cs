@@ -245,7 +245,6 @@ public sealed class LoadoutSystem : EntitySystem
         return GetName((IEquipmentLoadout) loadout);
     }
 
-
     /// <summary>
     /// Tries to get the name of a loadout.
     /// </summary>

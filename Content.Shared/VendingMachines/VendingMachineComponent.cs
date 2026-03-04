@@ -123,7 +123,7 @@ namespace Content.Shared.VendingMachines
         /// </summary>
         [DataField]
         // Grabbed from: https://github.com/tgstation/tgstation/blob/d34047a5ae911735e35cd44a210953c9563caa22/sound/machines/machine_vend.ogg // Orion-Edit: and modified by UmbiMax
-        public SoundSpecifier SoundVend = new SoundPathSpecifier("/Audio/_Orion/Machines/machine_vend.ogg") // Orion-Edit: old sound taken from https://github.com/discordia-space/CEV-Eris/blob/f702afa271136d093ddeb415423240a2ceb212f0/sound/machines/vending_drop.ogg
+        public SoundSpecifier SoundVend = new SoundPathSpecifier("/Audio/_Orion/Machines/machine_vend.ogg") // Orion-Edit
         {
             Params = new AudioParams
             {

@@ -871,7 +871,7 @@
   groups:
   - GroupTankHarness
   - ChiefMedicalOfficerHead
-  - ChiefMedicalOfficerEyes
+  - ChiefMedicalOfficerEyes # Orion
   - MedicalMask
   - ChiefMedicalOfficerJumpsuit
   - MedicalGloves

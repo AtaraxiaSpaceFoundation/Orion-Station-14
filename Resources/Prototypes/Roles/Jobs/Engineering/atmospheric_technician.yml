@@ -90,7 +90,7 @@
 - type: startingGear
   id: AtmosphericTechnicianGear
   equipment:
-    # eyes: ClothingEyesGlassesMeson # Orion-Edit: In loadout
+#    eyes: ClothingEyesGlassesMeson # Orion-Edit: In loadout
     id: AtmosPDA
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering

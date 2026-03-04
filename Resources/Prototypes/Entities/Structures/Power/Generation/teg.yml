@@ -33,9 +33,9 @@
         - state: teg
         # Orion-Edit-Start
           map: [ "center" ]
-        #- state: teg_mid
-        #  shader: unshaded
-        #  map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+#        - state: teg_mid
+#          shader: unshaded
+#          map: [ "enum.PowerDeviceVisualLayers.Powered" ]
         # Orion-Edit-End
         - state: teg-op1
           shader: unshaded
@@ -44,10 +44,10 @@
     - type: GenericVisualizer
       visuals:
         # Orion-Edit-Start
-        # enum.PowerDeviceVisuals.Powered:
-        #   enum.PowerDeviceVisualLayers.Powered:
-        #     True: { visible: true }
-        #     False: { visible: false }
+#        enum.PowerDeviceVisuals.Powered:
+#          enum.PowerDeviceVisualLayers.Powered:
+#            True: { visible: true }
+#            False: { visible: false }
         # Orion-Edit-End
         enum.TegVisuals.PowerOutput:
           enum.TegVisualLayers.PowerOutput:

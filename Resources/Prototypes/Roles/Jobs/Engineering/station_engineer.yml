@@ -96,7 +96,7 @@
 - type: startingGear
   id: StationEngineerGear
   equipment:
-    #eyes: ClothingEyesGlassesMeson # Orion-Edit: In loadout
+#    eyes: ClothingEyesGlassesMeson # Orion-Edit: In loadout
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering
   #storage:
