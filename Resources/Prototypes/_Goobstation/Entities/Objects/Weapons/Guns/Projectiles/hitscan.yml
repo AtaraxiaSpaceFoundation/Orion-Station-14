@@ -9,7 +9,7 @@
   id: SMGLaser
   damage:
     types:
-      Heat: 10.5
+      Heat: 12.5 # Orion-Edit: 10.5 > 12.5
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
     state: muzzle_beam_light
@@ -24,7 +24,7 @@
   id: SMGLaserIon
   damage:
     types:
-      Ion: 15
+      Ion: 17 # Orion-Edit: 15 > 17
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
     state: muzzle_beam_light_ion
@@ -39,8 +39,8 @@
   id: SMGLaserXray
   damage:
     types:
-      Heat: 4.5
-      Radiation: 6
+      Heat: 5.5 # Orion-Edit: 4.5 > 5.5
+      Radiation: 8 # Orion-Edit: 6 > 8
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
     state: muzzle_beam_light_xray
@@ -56,7 +56,7 @@
   fireStacks: 0.4
   damage:
     types:
-      Heat: 15
+      Heat: 17 # Orion-Edit: 15 > 17
     armorPenetration: -0.2
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
@@ -72,7 +72,7 @@
   id: SMGLaserBluespace
   damage:
     types:
-      Heat: 9
+      Heat: 12 # Orion-Edit: 9 > 12
     armorPenetration: 0.4
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi
@@ -88,7 +88,7 @@
   id: SMGLaserPulse
   damage:
     types:
-      Heat: 14
+      Heat: 19 # Orion-Edit: 14 > 19
     armorPenetration: 1
   muzzleFlash:
     sprite: _Goobstation/Objects/Weapons/Guns/Projectiles/small_laser.rsi

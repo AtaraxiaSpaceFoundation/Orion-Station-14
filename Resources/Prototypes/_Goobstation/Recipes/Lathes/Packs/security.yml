@@ -18,6 +18,7 @@
   - MagazineBoxShotgunHighCaliber
   - MagazineBoxShotgunSlugHighCaliber
   - MagazineBoxShotgunPracticeHighCaliber
+  - MagazineShotgunLeverRifleEmpty # Orion
 
 - type: latheRecipePack
   id: SecurityEquipmentStaticGoob

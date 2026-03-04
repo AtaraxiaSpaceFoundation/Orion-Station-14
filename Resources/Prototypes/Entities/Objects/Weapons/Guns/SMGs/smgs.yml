@@ -242,7 +242,7 @@
       unwieldOnUse: false
     - type: GunWieldBonus
       minAngle: -19
-      maxAngle: -16
+      maxAngle: -19 # Orion-Edit 16 > 19
     - type: Gun
       minAngle: 21
       maxAngle: 25 # Orion-Edit: 32 > 25
@@ -307,11 +307,11 @@
     boltClosed: null
   - type: Gun # Goobstation - I am the one who nerfs the WT.
     minAngle: 4 # Orion-Edit: 2 > 4
-    maxAngle: 12 # Orion-Edit: 16 > 12
+    maxAngle: 14 # Orion-Edit: 16 > 14
     fireRate: 5.5 # Orion-Edit: 5 > 5.5
     burstFireRate: 8
     angleIncrease: 1 # Orion-Edit: 3 > 1
-    angleDecay: 16
+    angleDecay: 14 # Orion-Edit: 16 > 14
     selectedMode: FullAuto
     availableModes:
     - FullAuto
