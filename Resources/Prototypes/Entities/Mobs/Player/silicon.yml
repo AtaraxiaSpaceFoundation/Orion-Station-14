@@ -516,7 +516,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellBluespace # Orion-Edit: PowerCellHyper > PowerCellBluespace
+        startingItem: PowerCellHyper
 
 - type: entity
   id: PlayerBorgSyndicateAssaultGhostRole
@@ -549,7 +549,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellBluespaceReactor # Orion-Edit: PowerCellHyper > PowerCellBluespaceReactor
+        startingItem: PowerCellHyper
 
 - type: entity
   id: PlayerBorgSyndicateSaboteurGhostRole
