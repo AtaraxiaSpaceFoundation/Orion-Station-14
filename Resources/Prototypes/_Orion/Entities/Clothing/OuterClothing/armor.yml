@@ -92,26 +92,6 @@
     sprite: _Orion/Clothing/OuterClothing/Armor/white_captain_carapace.rsi
 
 - type: entity
-  parent: ClothingOuterArmorCaptainCarapace
-  id: ClothingOuterArmorInvisibleOld
-  name: old bluespace armor
-  description: An early version of the bluespace armored vest, only visible up close. The technology is outdated, but still in demand among captains.
-  components:
-  - type: Sprite
-    sprite: _Goobstation/Clothing/Armor/covert_armor.rsi
-    state: icon-blue
-  - type: Clothing
-    sprite: _Goobstation/Clothing/Armor/covert_armor.rsi
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.4
-        Slash: 0.4
-        Piercing: 0.4
-        Heat: 0.5
-        Caustic: 0.75
-
-- type: entity
   parent: ClothingOuterArmorBase
   id: ClothingOuterArmorUEGVestLight
   name: UEG light armor vest
