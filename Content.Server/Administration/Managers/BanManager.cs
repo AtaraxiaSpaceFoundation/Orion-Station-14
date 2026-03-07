@@ -20,6 +20,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Server._Orion.ServerProtection.Administration;
 using Content.Server.Chat.Managers;
 using Content.Server.Database;
 using Content.Server.GameTicking;
@@ -55,6 +56,7 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly ITaskManager _taskManager = default!;
     [Dependency] private readonly UserDbDataManager _userDbData = default!;
+    [Dependency] private readonly AdminActionProtectionSystem _adminActionProtection = default!; // Orion
 
     private ISawmill _sawmill = default!;
 
@@ -207,6 +209,11 @@ public sealed partial class BanManager : IBanManager, IPostInjectInit
 
         _sawmill.Info(logMessage);
         _chat.SendAdminAlert(logMessage);
+
+        // Orion-Start
+        if (banningAdmin != null)
+            _adminActionProtection.ReportBanAction(banningAdmin.Value, adminName, targetName);
+        // Orion-End
 
         KickMatchingConnectedPlayers(banDef, "newly placed ban");
     }

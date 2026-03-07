@@ -18,6 +18,7 @@ public sealed class EmoteProtectionSystem : EntitySystem
     [Dependency] private readonly ISharedAdminManager _admin = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ServerProtectionPunishmentSystem _punishment = default!;
+    [Dependency] private readonly ServerProtectionAuditManager _toggleAudit = default!;
 
     private ISawmill _log = default!;
 
@@ -27,6 +28,7 @@ public sealed class EmoteProtectionSystem : EntitySystem
     private bool _kickEnabled;
     private bool _deleteMessagesEnabled;
     private int _banDuration;
+    private bool _initialized;
 
     private int _hardEmoteThreshold;
     private int _softThresholdVariance;
@@ -45,7 +47,7 @@ public sealed class EmoteProtectionSystem : EntitySystem
 
         _log = Logger.GetSawmill("serverprotection.emote_protection");
 
-        _cfg.OnValueChanged(CCVars.EmoteProtectionEnabled, v => _protectionEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.EmoteProtectionEnabled, OnProtectionEnabledChanged, true);
         _cfg.OnValueChanged(CCVars.EmoteProtectionEraseEnabled, v => _eraseEnabled = v, true);
         _cfg.OnValueChanged(CCVars.EmoteProtectionBanEnabled, v => _banEnabled = v, true);
         _cfg.OnValueChanged(CCVars.EmoteProtectionKickEnabled, v => _kickEnabled = v, true);
@@ -57,6 +59,26 @@ public sealed class EmoteProtectionSystem : EntitySystem
         _cfg.OnValueChanged(CCVars.EmoteProtectionPostSoftProbability, v => _postSoftThresholdProbability = v, true);
         _cfg.OnValueChanged(CCVars.EmoteProtectionSoftRefreshCooldown, v => _softThresholdRefreshCooldown = v, true);
         _cfg.OnValueChanged(CCVars.EmoteProtectionClearInterval, v => _clearInterval = v, true);
+
+        _initialized = true;
+    }
+
+    private void OnProtectionEnabledChanged(bool enabled)
+    {
+        var old = _protectionEnabled;
+        _protectionEnabled = enabled;
+
+        if (!_initialized || old == enabled)
+            return;
+
+        var actor = _toggleAudit.TryGetRecentActor(CCVars.EmoteProtectionEnabled.Name, TimeSpan.FromSeconds(5), out var knownActor)
+            ? knownActor
+            : "unknown";
+
+        var state = enabled ? "включена" : "ВЫКЛЮЧЕНА";
+        var message = $"[ServerProtection] Система EmoteProtection была {state}. Переключил: {actor}.";
+        _punishment.SendAdminAlert(message);
+        _log.Info(message);
     }
 
     public override void Update(float frameTime)
