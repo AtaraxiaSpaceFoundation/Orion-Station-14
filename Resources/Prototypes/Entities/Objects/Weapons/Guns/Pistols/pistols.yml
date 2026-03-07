@@ -127,6 +127,7 @@
     slots:
     - suitStorage
     - Belt
+    - Back # Orion
   - type: Gun
     fireRate: 6
     selectedMode: SemiAuto

@@ -186,7 +186,7 @@
     materialComposition:
       Cloth: 25
   - type: Armor # Orion
-    priceMultiplier: 0.6
+    priceMultiplier: 0.4
 
 - type: entity
   parent: ClothingHeadHatBeret
@@ -1345,7 +1345,7 @@
     - CorgiWearable
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: [ ClothingHeadBase, BaseCommandContraband ] # Orion-Edit: Add comm contra
   id: ClothingHeadHatCapcap
   name: cap cap
   description: A grand, stylish cap worn by the Captain. Shows the station who's in charge.

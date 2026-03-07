@@ -218,6 +218,7 @@
         Heat: 0.1
         Radiation: 0.25 # do people even know rad ammo exists? anyway making rad its weakness is kinda fair
         Caustic: 0.4
+      ignoreArmorPierceFlags: All # Orion
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.5
@@ -238,7 +239,7 @@
       interval: 1.0
       ignoreResistances: true
   - type: StaminaResistance
-    damageCoefficient: 0.1
+    damageCoefficient: 0.4 # Orion-Edit: 0.1 > 0.4
   - type: ModifyDelayedKnockdown
     cancel: true
 

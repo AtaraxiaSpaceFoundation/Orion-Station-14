@@ -14,3 +14,23 @@
       - id: EmergencyMedipen
         amount: 3
       - id: Stimpack
+
+- type: entity
+  parent: ClothingBeltMedicalEMT
+  id: ClothingBeltMedicalEMTBrigmedicFilled
+  suffix: Brigmedic, Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedicatedSuture
+      - id: RegenerativeMesh
+      - id: Bloodpack
+      - id: SprayBottleStypticPowder
+      - id: SprayBottleSilverSulfadiazine
+      - id: HandheldCrewMonitor
+      - id: PillCanisterBicaridine
+      - id: PillCanisterDermaline
+      - id: PillCanisterDylovene
+      - id: PillCanisterIbuprofen
+      - id: PillCanisterHyronalin
+      - id: PillCanisterTricordrazine

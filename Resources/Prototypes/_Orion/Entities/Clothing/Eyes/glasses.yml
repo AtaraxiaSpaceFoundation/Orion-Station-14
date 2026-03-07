@@ -13,3 +13,33 @@
   - type: ShowJobIcons
   - type: ScannableForPoints # Goob
     points: 1
+
+- type: entity
+  parent: ClothingEyesGlassesMed
+  id: ClothingEyesAdvancedMedVisor
+  name: advanced medical visor
+  description: Medical visor with integrated flash protection.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Glasses/medglasses.rsi
+    equippedPrefix: visor
+  - type: Item
+    heldPrefix: visor
+  - type: ItemSwitch
+    state: visor
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesWelding
+  name: welding glasses
+  description: Round dark specs sporting some seriously outdated eye protection tech. Bonus - a free train ride ticket, courtesy of the manufacturer.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Glasses/welding.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Glasses/welding.rsi
+  - type: EyeProtection
+  - type: IdentityBlocker
+    coverage: EYES

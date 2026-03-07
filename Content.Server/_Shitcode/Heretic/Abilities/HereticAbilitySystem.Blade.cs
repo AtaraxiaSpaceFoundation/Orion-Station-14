@@ -22,6 +22,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Heretic;
 using Robust.Shared.Timing;
 using Content.Shared.Heretic.Components.PathSpecific;
+using Content.Shared.Stunnable;
 
 namespace Content.Server.Heretic.Abilities;
 
@@ -50,8 +51,10 @@ public sealed partial class HereticAbilitySystem
         if (!TryUseAbility(ent, args))
             return;
 
-        _statusEffect.TryRemoveStatusEffect(ent, "Stun");
-        _statusEffect.TryRemoveStatusEffect(ent, "KnockedDown");
+        RemCompDeferred<KnockedDownComponent>(ent);
+        RemCompDeferred<StunnedComponent>(ent);
+        RemCompDeferred<DelayedKnockdownComponent>(ent);
+
         _statusEffect.TryRemoveStatusEffect(ent, "ForcedSleep");
         _statusEffect.TryRemoveStatusEffect(ent, "Drowsiness");
 
@@ -65,7 +68,6 @@ public sealed partial class HereticAbilitySystem
         }
 
         _standing.Stand(ent);
-        RemCompDeferred<DelayedKnockdownComponent>(ent);
         _pulling.StopAllPulls(ent, stopPuller: false);
         if (_statusEffect.TryAddStatusEffect<PacifiedComponent>(ent, "Pacified", TimeSpan.FromSeconds(10f), true))
             _statusEffect.TryAddStatusEffect<RealignmentComponent>(ent, "Realignment", TimeSpan.FromSeconds(10f), true);

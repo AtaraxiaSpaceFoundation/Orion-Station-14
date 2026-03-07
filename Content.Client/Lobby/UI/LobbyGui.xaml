@@ -175,7 +175,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <Control Access="Public" Visible="False" Name="CharacterSetupState" VerticalExpand="True" HorizontalExpand="True" />
             </BoxContainer>
 
-            <Control HorizontalExpand="True" />
+            <Control Name="LayoutSpacer" HorizontalExpand="True" />
 
             <PanelContainer Name="RightSide" Access="Public" StyleClasses="AngleRect" HorizontalExpand="False" VerticalExpand="True" VerticalAlignment="Stretch" MinWidth="220" SetWidth="320" ModulateSelfOverride="#333333C0" HorizontalAlignment="Right">
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="8 8 8 8">

@@ -16,8 +16,8 @@
     damage:
       types:
         Heat: 8
-        Energy: 7
-        Piercing: 5
+        Shock: 7
+        Piercing: 4
     soundHit:
       path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
   - type: Tag
@@ -52,8 +52,9 @@
   - type: Projectile
     damage:
       types:
-        Heat: 5
-        Piercing: 3
+        Heat: 4
+        Shock: 2
+        Piercing: 2
   - type: ProjectileSpread
     proto: PulseBulletSpreadShotgun
     count: 9
@@ -68,5 +69,6 @@
   - type: Projectile
     damage:
       types:
-        Heat: 5
-        Piercing: 3
+        Heat: 4
+        Shock: 2
+        Piercing: 2

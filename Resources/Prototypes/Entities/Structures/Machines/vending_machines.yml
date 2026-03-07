@@ -390,7 +390,7 @@
     noRot: false
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineAmmo
   name: liberation station
   description: An overwhelming amount of ancient patriotism washes over you just by looking at the machine.
@@ -484,7 +484,7 @@
     - Drinks
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineCart
   name: PTech
   description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
@@ -714,7 +714,7 @@
     rotateWhilePulling: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineCola
   name: Robust Softdrinks
   description: A softdrink vendor provided by Robust Industries, LLC.
@@ -803,7 +803,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineSpaceUp
   name: Space-Up! Vendor
   description: Indulge in an explosion of flavor.
@@ -864,7 +864,7 @@
     rotateWhilePulling: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineStarkist
   name: Star-kist Vendor
   description: The taste of a star in liquid form.
@@ -893,7 +893,7 @@
     noRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineShamblersJuice
   name: Shambler's Juice Vendor
   description: ~Shake me up some of that Shambler's Juice!~
@@ -929,7 +929,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachinePwrGame
   name: Pwr Game Vendor
   description: You want it, we got it. Brought to you in partnership with Vlad's Salads.
@@ -967,7 +967,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineDrGibb
   name: Dr. Gibb Vendor
   description: Canned explosion of different flavors in this very vendor!
@@ -1005,7 +1005,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineSmite
   name: Smite Vendor
   description: Popular with the administration.
@@ -1158,7 +1158,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineEngivend
   name: Engi-Vend
   description: Spare tool vending. What? Did you expect some witty description?
@@ -1245,7 +1245,7 @@
     rotateWhilePulling: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineNutri
   name: NutriMax
   description: A vending machine containing nutritional substances for plants and botanical tools.
@@ -1281,7 +1281,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineSec
   name: SecTech
   description: A vending machine containing Security equipment. A label reads SECURITY PERSONNEL ONLY.
@@ -1414,7 +1414,7 @@
     rotateWhilePulling: true
 
 - type: entity
-  parent: VendingMachineSnack
+  parent: [VendingMachineSnack, VendingMachineOld] # Orion-Edit
   id: VendingMachineSustenance
   name: Sustenance Vendor
   description: A vending machine which vends food, as required by section 47-C of the NT's Prisoner Ethical Treatment Agreement.
@@ -1534,7 +1534,7 @@
     autoRot: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineSovietSoda
   name: BODA
   description: An old vending machine containing sweet water.
@@ -1625,7 +1625,7 @@
     - DroneUsable # Goobstation
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineVendomat
   name: Vendomat
   description: Only the finest robust equipment in space!
@@ -1665,7 +1665,7 @@
     rotateWhilePulling: true
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineRobotics
   name: Robotech Deluxe
   description: All the tools you need to create your own robot army.
@@ -1710,7 +1710,7 @@
     - Robotics
 
 - type: entity
-  parent: VendingMachine
+  parent: VendingMachineOld # Orion-Edit
   id: VendingMachineYouTool
   name: YouTool
   description: "A vending machine containing standard tools. A label reads: Tools for tools."
@@ -2635,7 +2635,7 @@
     brokenState: broken
     normalState: normal
     denyState: deny
-    ejectDelay: 2
+  # ejectDelay: 2 Goobstation - No reason for the eject delay to be 2 seconds
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/chemvend.rsi
     layers:

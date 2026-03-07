@@ -18,3 +18,4 @@ lathe-recipe-ChevalTranslatorImplanter-subname = имплантер "Перев�
 lathe-recipe-YowKriolTranslatorImplanter-subname = имплантер "Переводчик Йовикрол"
 lathe-recipe-GruntishTranslatorImplanter-subname = имплантер "Переводчик Грунтич"
 lathe-recipe-XenoCompatibilityImplanter = ксено совместимость
+lathe-recipe-SignTranslatorImplanter-subname = Жесты

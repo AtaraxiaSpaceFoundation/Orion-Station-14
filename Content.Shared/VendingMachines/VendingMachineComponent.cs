@@ -122,13 +122,13 @@ namespace Content.Shared.VendingMachines
         ///     Sound that plays when ejecting an item
         /// </summary>
         [DataField]
-        // Grabbed from: https://github.com/tgstation/tgstation/blob/d34047a5ae911735e35cd44a210953c9563caa22/sound/machines/machine_vend.ogg
-        public SoundSpecifier SoundVend = new SoundPathSpecifier("/Audio/Machines/machine_vend.ogg")
+        // Grabbed from: https://github.com/tgstation/tgstation/blob/d34047a5ae911735e35cd44a210953c9563caa22/sound/machines/machine_vend.ogg // Orion-Edit: and modified by UmbiMax
+        public SoundSpecifier SoundVend = new SoundPathSpecifier("/Audio/_Orion/Machines/machine_vend.ogg") // Orion-Edit
         {
             Params = new AudioParams
             {
-                Volume = -4f,
-                Variation = 0.15f
+                Volume = 1f, // Orion-Edit: -4 > 1
+                Variation = 0.1f // Orion-Edit: 0.15 > 0.1
             }
         };
 

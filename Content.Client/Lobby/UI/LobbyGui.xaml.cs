@@ -104,6 +104,8 @@ namespace Content.Client.Lobby.UI
                     DefaultState.Visible = true;
                     RightSide.Visible = true;
                     // Orion-Start
+                    LeftSide.HorizontalExpand = false;
+                    LayoutSpacer.Visible = true;
                     ExpandPanel.Visible = false;
                     TopPanel.Visible = true;
                     TopExpandPanel.Visible = false;
@@ -116,13 +118,11 @@ namespace Content.Client.Lobby.UI
                 case LobbyGuiState.CharacterSetup:
                     CharacterSetupState.Visible = true;
 
-                    var actualWidth = (float) UserInterfaceManager.RootControl.PixelWidth;
-                    var setupWidth = (float) LeftSide.PixelWidth;
-
-                    if (1 - (setupWidth / actualWidth) > 0.30)
-                    {
-                        RightSide.Visible = false;
-                    }
+                    // Orion-Edit-Start
+                    LeftSide.HorizontalExpand = true;
+                    LayoutSpacer.Visible = false;
+                    RightSide.Visible = false;
+                    // Orion-Edit-End
 
                     UserInterfaceManager.GetUIController<LobbyUIController>().ReloadCharacterSetup();
 

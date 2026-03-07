@@ -17,8 +17,8 @@
   id: BaseDrink
   group: NonAlcoholicDrinks # Goob - Drinks guidebook split
   abstract: true
-#  slipData: # Orion-Edit: Fuck slippery curse
-#    requiredSlipSpeed: 3.5
+  slipData:
+    requiredSlipSpeed: 5 # Orion-Edit: 3.5 > 5 Light slippery curse
   metabolisms:
     Drink:
       effects:
@@ -60,8 +60,8 @@
   id: BaseAlcohol
   group: AlcoholicDrinks # Goob - Drinks guidebook split
   abstract: true
-#  slipData: # Orion-Edit: Fuck slippery curse
-#    requiredSlipSpeed: 3.5
+  slipData:
+    requiredSlipSpeed: 4.3 # Orion-Edit: 3.5 > 4.3 Light slippery curse
   friction: 0.4
   metabolisms:
     Drink:

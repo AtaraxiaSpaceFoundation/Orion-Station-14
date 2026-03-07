@@ -1,0 +1,10 @@
+# Eyes
+- type: loadout
+  id: StationEngineerEyesMeson
+  equipment:
+    eyes: ClothingEyesGlassesMeson
+
+- type: loadout
+  id: StationEngineerEyesWelding
+  equipment:
+    eyes: ClothingEyesWelding

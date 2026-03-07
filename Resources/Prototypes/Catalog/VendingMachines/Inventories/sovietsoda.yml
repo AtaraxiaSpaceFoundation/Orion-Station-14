@@ -17,7 +17,15 @@
   id: BodaInventory
   startingInventory:
     DrinkSodaWaterCan: 10 #typically hacked product. Default product is "soda"
-  contrabandInventory:
+# Orion-Edit-Start: More water
+    DrinkWaterBottleFull: 4
     DrinkSodaWaterBottleFull: 2
+  contrabandInventory:
+    DrinkCoconutWaterGlass: 5
     DrinkColaCan: 10
+    DrinkColaBottleFull: 2
     ClothingHeadHatUshanka: 2
+  emaggedInventory:
+    DrinkNukieCan: 3
+    WeaponWaterPistolFilledFire: 1
+# Orion-Edit-End

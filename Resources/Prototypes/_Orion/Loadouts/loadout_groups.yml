@@ -1,3 +1,4 @@
+# Security
 - type: loadoutGroup
   id: SecurityGun
   name: loadout-group-security-gun
@@ -16,6 +17,26 @@
   - SecurityGunG23
   - SecurityGunMk58
   - SecurityGunLaserPistol
+
+# Engineering
+- type: loadoutGroup
+  id: StationEngineerEyes
+  name: loadout-group-station-engineer-eyes
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - StationEngineerEyesMeson
+  - StationEngineerEyesWelding
+
+# Medical
+- type: loadoutGroup
+  id: ChiefMedicalOfficerEyes
+  name: loadout-group-chief-medical-officer-eyes
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ChiefMedicalOfficerEyesGlasses
+  - ChiefMedicalOfficerEyesVisor
 
 # Civilian
 - type: loadoutGroup

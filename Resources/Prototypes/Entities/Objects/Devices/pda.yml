@@ -203,6 +203,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   - type: Icon
     sprite: _Orion/Objects/Devices/pda.rsi # Orion-Edit
     state: icon # Orion-Edit
@@ -332,6 +334,8 @@
 #      map: [ "enum.PdaVisualLayers.IdLight" ]
 #      shader: "unshaded"
 #      visible: false
+#    - state: "insert_overlay" # Goob
+#      map: [ "enum.PdaVisualLayers.Pen" ]
 
 - type: entity
   parent: BasePDA
@@ -385,6 +389,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: PassengerIDCard
@@ -416,6 +422,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: TechnicalAssistantIDCard
@@ -448,6 +456,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: MedicalInternIDCard
@@ -481,6 +491,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SecurityCadetIDCard
@@ -513,6 +525,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ResearchAssistantIDCard
@@ -545,6 +559,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ServiceWorkerIDCard
@@ -575,6 +591,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ChefIDCard
@@ -608,6 +626,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: BotanistIDCard
@@ -639,6 +659,8 @@
       shader: unshaded
       visible: false
     - state: pda_stripe_clown
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ClownIDCard
@@ -714,6 +736,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: MimeIDCard
@@ -775,6 +799,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ChaplainIDCard
@@ -818,6 +844,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: QuartermasterIDCard
@@ -857,6 +885,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: CargoIDCard
@@ -888,6 +918,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SalvageIDCard
@@ -927,6 +959,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: BartenderIDCard
@@ -956,6 +990,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: LibrarianIDCard
@@ -1002,6 +1038,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: LawyerIDCard
@@ -1048,6 +1086,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: JanitorIDCard
@@ -1079,6 +1119,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: CaptainIDCard
@@ -1118,6 +1160,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: HoPIDCard
@@ -1157,6 +1201,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: CEIDCard
@@ -1189,6 +1235,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: EngineeringIDCard
@@ -1222,6 +1270,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: CMOIDCard
@@ -1255,6 +1305,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: MedicalIDCard
@@ -1301,6 +1353,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ParamedicIDCard
@@ -1333,6 +1387,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ChemistIDCard
@@ -1366,6 +1422,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: RDIDCard
@@ -1399,6 +1457,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ResearchIDCard
@@ -1430,6 +1490,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: HoSIDCard
@@ -1471,6 +1533,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: WardenIDCard
@@ -1501,6 +1565,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SecurityIDCard
@@ -1530,6 +1596,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: CentcomIDCard
@@ -1622,6 +1690,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: MusicianIDCard
@@ -1669,6 +1739,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: AtmosIDCard
@@ -1699,6 +1771,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: PassengerIDCard
@@ -1738,6 +1812,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SyndicateIDCard
@@ -1778,6 +1854,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ERTLeaderIDCard
@@ -1886,6 +1964,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: PsychologistIDCard
@@ -1916,6 +1996,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ReporterIDCard
@@ -1951,6 +2033,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: ZookeeperIDCard
@@ -1982,6 +2066,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: BoxerIDCard
@@ -2012,6 +2098,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: DetectiveIDCard
@@ -2054,6 +2142,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: BrigmedicIDCard
@@ -2096,6 +2186,8 @@
       shader: unshaded
       visible: false
     - state: pda_stripe_clown
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: CluwneIDCard
@@ -2135,6 +2227,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SeniorEngineerIDCard
@@ -2169,6 +2263,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SeniorResearcherIDCard
@@ -2204,6 +2300,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SeniorPhysicianIDCard
@@ -2237,6 +2335,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: SeniorOfficerIDCard
@@ -2267,6 +2367,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: PirateIDCard
@@ -2294,6 +2396,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: NukieAgentIDCard # Goobstation
@@ -2331,6 +2435,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: PdaBorderColor
     borderColor: "#717059"
@@ -2379,6 +2485,8 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: unshaded
       visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
   # Orion-End
   - type: Pda
     id: WizardIDCard

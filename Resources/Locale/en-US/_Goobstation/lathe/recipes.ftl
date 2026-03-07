@@ -19,3 +19,4 @@ lathe-recipe-ChevalTranslatorImplanter-subname = cheval translator implant
 lathe-recipe-YowKriolTranslatorImplanter-subname = yow kriol translator implant
 lathe-recipe-GruntishTranslatorImplanter-subname = gruntish translator implant
 lathe-recipe-XenoCompatibilityImplanter = xeno compatibility implant
+lathe-recipe-SignTranslatorImplanter-subname = sign translator implant

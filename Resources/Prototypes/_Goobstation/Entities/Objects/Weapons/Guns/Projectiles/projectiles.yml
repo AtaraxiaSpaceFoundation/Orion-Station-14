@@ -45,7 +45,7 @@
     dropItems: true
   - type: BlurOnCollide
   - type: TimedDespawn
-    lifetime: 0.4
+    lifetime: 0.6 # Orion-Edit: 0.4 > 0.6
   - type: Ammo
     muzzleFlash: null
   - type: Reflective

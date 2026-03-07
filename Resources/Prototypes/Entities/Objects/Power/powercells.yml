@@ -317,8 +317,8 @@
     maxCharge: 1800
     startingCharge: 1800
   - type: HitscanBatteryAmmoProvider # goob edit - battery hitscan buff
-    proto: HeavyRedLaser
-    fireCost: 225 # 8 shots
+    proto: RedMediumLaser # Orion-Edit: to medium
+    fireCost: 120 # Orion-Edit: 225 > 120. 15 shots
 
 - type: entity
   id: PowerCellHyperPrinted

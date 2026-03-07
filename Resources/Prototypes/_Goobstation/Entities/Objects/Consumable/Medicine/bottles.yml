@@ -304,7 +304,7 @@
   parent: BaseChemistryBottleFilled
   components:
   - type: Label
-    currentLabel: reagent-name-dexalinplus
+    currentLabel: reagent-name-dexalin-plus # Orion-Edit: Fix
   - type: SolutionContainerManager
     solutions:
       drink:

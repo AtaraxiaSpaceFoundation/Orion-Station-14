@@ -31,9 +31,9 @@
         maxVol: 40
         reagents:
         - ReagentId: Ichor
-          Quantity: 35
-        - ReagentId: TranexamicAcid
-          Quantity: 5
+          Quantity: 30 # Orion-Edit: 35 > 30
+        - ReagentId: Ephedrine # Orion-Edit: TranexamicAcid > Ephedrine
+          Quantity: 10 # Orion-Edit: 5 > 10
   - type: Hypospray
     solutionName: pen
     transferAmount: 40

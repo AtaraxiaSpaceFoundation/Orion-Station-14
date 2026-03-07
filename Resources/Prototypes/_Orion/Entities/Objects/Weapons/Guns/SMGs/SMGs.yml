@@ -16,14 +16,13 @@
   - type: Item
     sprite: _Orion/Objects/Weapons/Guns/SMG/mp5/tiny.rsi
   - type: GunWieldBonus
-    minAngle: -5
-    maxAngle: -20
+    minAngle: -3
+    maxAngle: -13
     angleIncrease: -3
   - type: Gun
     angleDecay: 25
-    angleIncrease: 8
-    minAngle: 10
-    maxAngle: 35
+    minAngle: 5
+    maxAngle: 16
     fireRate: 5
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg
@@ -70,7 +69,7 @@
     angleIncrease: -2
   - type: Gun
     angleDecay: 20
-    angleIncrease: 5
+    angleIncrease: 3
     minAngle: 10
     maxAngle: 27
     fireRate: 6.5
@@ -170,7 +169,7 @@
     angleIncrease: -3
   - type: Gun
     angleDecay: 30
-    angleIncrease: 6
+    angleIncrease: 4
     minAngle: 22
     maxAngle: 35
     fireRate: 10

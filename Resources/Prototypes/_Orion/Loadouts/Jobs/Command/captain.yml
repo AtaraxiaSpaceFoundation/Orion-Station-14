@@ -1,3 +1,13 @@
+# Requirements
+- type: loadoutEffectGroup
+  id: GrandLightNTR
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobNanotrasenRepresentative
+      time: 18000 # 5 hrs
+
 # Jumpsuit
 - type: loadout
   id: CaptainWhiteJumpsuit
@@ -52,6 +62,14 @@
     gloves: ClothingHandsGlovesCaptainWhite
 
 - type: loadout
+  id: CaptainWhiteHeavyGloves
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GrandLightNTR
+  equipment:
+    gloves: ClothingHandsGlovesHeavyGoldenTrim
+
+- type: loadout
   id: SheriffGloves
   equipment:
     gloves: ClothingHandsGlovesSheriff
@@ -77,7 +95,18 @@
   equipment:
     neck: ClothingNeckMantleCaptainWhiteShoulder
 
+# Back
+- type: loadout
+  id: CaptainDuffelWhite
+  equipment:
+    back: ClothingBackpackDuffelWhiteCaptain
+
 # Outer clothing
+- type: loadout
+  id: CaptainWhiteCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorCaptainCarapaceWhite
+
 - type: loadout
   id: CaptainWhiteCoat
   equipment:

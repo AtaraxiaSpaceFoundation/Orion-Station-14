@@ -42,7 +42,7 @@ public sealed class CombatModeIndicatorsOverlay : Overlay
 
     public Color MainColor = Color.White.WithAlpha(0.3f);
     public Color StrokeColor = Color.Black.WithAlpha(0.5f);
-    public float Scale = 2f;  // Orion-Edit: 0.6f > 2f
+    public float Scale = 1.6f;  // Orion-Edit: 0.6f > 1.6f
 
     public CombatModeIndicatorsOverlay(IInputManager input, IEntityManager entMan,
             IEyeManager eye, CombatModeSystem combatSys, HandsSystem hands)

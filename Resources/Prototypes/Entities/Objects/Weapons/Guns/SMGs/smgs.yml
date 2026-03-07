@@ -82,10 +82,10 @@
   - type: AmmoCounter
   - type: Gun
     minAngle: 2
-    maxAngle: 16
+    maxAngle: 13 # Orion-Edit: 16 > 13
     fireRate: 8
     burstFireRate: 8
-    angleIncrease: 3
+    angleIncrease: 2 # Orion-Edit: 3 > 2
     angleDecay: 16
     selectedMode: FullAuto
     availableModes:
@@ -242,12 +242,12 @@
       unwieldOnUse: false
     - type: GunWieldBonus
       minAngle: -19
-      maxAngle: -16
+      maxAngle: -19 # Orion-Edit 16 > 19
     - type: Gun
       minAngle: 21
-      maxAngle: 28 # Orion-Edit: 32 > 28
-      fireRate: 6
-      burstFireRate: 18
+      maxAngle: 25 # Orion-Edit: 32 > 25
+      fireRate: 6.5 # Orion-Edit: 6 > 6.5
+      burstFireRate: 20 # Orion-Edit: 18 > 20
       soundGunshot:
         path: /Audio/_Orion/Weapons/Guns/SMGs/mp7.ogg # Orion-Edit
       selectedMode: Burst
@@ -256,7 +256,7 @@
       - FullAuto
       - SemiAuto
       shotsPerBurst: 3
-      burstCooldown: 0.375
+      burstCooldown: 0.35 # Orion-Edit: 0.375 > 0.35
     - type: ItemSlots
       slots:
         gun_magazine:
@@ -306,12 +306,12 @@
   - type: ChamberMagazineAmmoProvider
     boltClosed: null
   - type: Gun # Goobstation - I am the one who nerfs the WT.
-    minAngle: 2
-    maxAngle: 16
-    fireRate: 5
+    minAngle: 4 # Orion-Edit: 2 > 4
+    maxAngle: 14 # Orion-Edit: 16 > 14
+    fireRate: 5.5 # Orion-Edit: 5 > 5.5
     burstFireRate: 8
-    angleIncrease: 3
-    angleDecay: 16
+    angleIncrease: 1 # Orion-Edit: 3 > 1
+    angleDecay: 14 # Orion-Edit: 16 > 14
     selectedMode: FullAuto
     availableModes:
     - FullAuto

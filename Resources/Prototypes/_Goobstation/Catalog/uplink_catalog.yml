@@ -411,7 +411,7 @@
   description: uplink-WSPR-desc
   productEntity: WeaponRifleWSPR
   cost:
-    Telecrystal: 65 # fire
+    Telecrystal: 55 # fire # Orion-Edit: 65 > 55
   categories:
   - UplinkWeaponry
   conditions:
@@ -521,7 +521,7 @@
   description: uplink-m7s-desc
   productEntity: WeaponSubMachineGunM7S
   cost:
-    Telecrystal: 60
+    Telecrystal: 55 # Orion-Edit: 60 > 55
   categories:
     -  UplinkWeaponry
   conditions:
@@ -570,7 +570,7 @@
   icon: { sprite: _Goobstation/Clothing/OuterClothing/Hardsuits/dreadnought.rsi, state: icon }
   productEntity: CrateSyndicateDreadnought
   cost:
-    Telecrystal: 130 # Orion-Edit: 150 > 130
+    Telecrystal: 180 # Orion-Edit: 150 > 180
   categories:
   - UplinkWearables
   conditions:
@@ -930,6 +930,12 @@
     Telecrystal: 24
   categories:
   - UplinkChemicals
+  conditions: # Orion: Only for agents
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+          - ContravendUplink
 
 - type: listing
   id: UplinkSyndicateLollypopBundle
@@ -1611,7 +1617,7 @@
   icon: { sprite: /Textures/Objects/Specific/Mech/mecha.rsi, state: darkgygax }
   productEntity: CrateCybersunDarkGygaxBundle
   cost:
-    Telecrystal: 400
+    Telecrystal: 375 # Orion-Edit: 400 > 375
   categories:
   - UplinkAllies
   conditions:
@@ -1627,7 +1633,7 @@
   icon: { sprite: /Textures/Objects/Specific/Mech/mecha.rsi, state: mauler }
   productEntity: CrateCybersunMaulerBundle
   cost:
-    Telecrystal: 650
+    Telecrystal: 550 # Orion-Edit: 650 > 550
   categories:
   - UplinkAllies
   conditions:

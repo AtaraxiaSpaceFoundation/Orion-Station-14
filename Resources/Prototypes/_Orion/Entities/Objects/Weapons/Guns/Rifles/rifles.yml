@@ -236,10 +236,10 @@
     angleIncrease: -4
   - type: Gun
     angleDecay: 40
-    angleIncrease: 7.5
-    cameraRecoilScalar: 4
+    angleIncrease: 8.5
+    cameraRecoilScalar: 5
     minAngle: 30
-    maxAngle: 60
+    maxAngle: 70
     fireRate: 4.5
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Snipers/svd.ogg

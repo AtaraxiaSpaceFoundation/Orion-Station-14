@@ -10,9 +10,22 @@
   abstract: true
   parent: SeatBase
   description: Multiple seats spanning a single object. Truly a marvel of science.
+  placement: # Orion
+    mode: SnapgridCenter
   components:
   - type: Physics
     bodyType: Static
+  - type: Destructible # Orion
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts:
+        - Destruction
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
   - type: Transform
     anchored: true
   - type: Rotatable
@@ -232,35 +245,26 @@
   - type: Construction # Frontier
     graph: SofasGraph # Frontier
     node: BenchSofaRightNode # Frontier
-    
+
 - type: entity
   name: sofa
   id: BenchSofaCorner
   suffix: Corner
-#  parent: BenchSofaMiddle
-  placement:
-    mode: SnapgridCenter
+  # Orion-Edit-Start: Bugfix
+  parent: BenchSofaMiddle
   components:
-  - type: Transform
-    anchored: true
-  - type: Rotatable
   - type: Sprite
     sprite: _SimpleStation/Structures/Furniture/Benches/sofa.rsi
     state: corner
-  - type: Clickable
-  - type: InteractionOutline
-  - type: Pullable
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:DoActsBehavior
-        acts: ["Destruction"]
+        acts:
+        - Destruction
+  # Orion-Edit-End
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
@@ -308,30 +312,21 @@
   name: grey sofa
   id: BenchSofaCorpCorner
   suffix: Corner
-#  parent: BenchSofaCorpMiddle
-  placement:
-    mode: SnapgridCenter
+  # Orion-Edit-Start: Bugfix
+  parent: BenchSofaCorpMiddle
   components:
-  - type: Transform
-    anchored: true
-  - type: Rotatable
   - type: Sprite
     sprite: _SimpleStation/Structures/Furniture/Benches/sofa_corp.rsi
     state: corner
-  - type: Clickable
-  - type: InteractionOutline
-  - type: Pullable
-  - type: Damageable
-    damageContainer: Inorganic
-    damageModifierSet: Metallic
   - type: Destructible
     thresholds:
-    - trigger:
-        !type:DamageTrigger
+    - trigger: !type:DamageTrigger
         damage: 50
       behaviors:
       - !type:DoActsBehavior
-        acts: ["Destruction"]
+        acts:
+        - Destruction
+  # Orion-Edit-End
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak

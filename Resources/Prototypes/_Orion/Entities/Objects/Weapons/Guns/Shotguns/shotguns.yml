@@ -69,7 +69,7 @@
   - type: Clothing
     sprite: _Orion/Objects/Weapons/Guns/Shotguns/paladin-12/tiny.rsi
   - type: BallisticAmmoProvider
-    capacity: 9
+    capacity: 8
     autoCycle: false
     soundRack:
       path: /Audio/_Orion/Weapons/Guns/Shotguns/shotgun_cmb_pump.ogg

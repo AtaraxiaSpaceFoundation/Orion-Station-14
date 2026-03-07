@@ -6,7 +6,15 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
-    state: industrial-working
+    state: industrial-off
+  - type: ItemMapper
+    sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
+    containerWhitelist: [beakerSlot]
+    mapLayers:
+      industrial_loaded:
+        whitelist:
+          components:
+          - FitsInDispenser
 
 - type: entity
   parent: MiniChemDispenser
@@ -22,7 +30,9 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
-    state: industrial-working
+    state: industrial-off
+  - type: ItemMapper
+    sprite: _Orion/Structures/Dispensers/mini_dispensers.rsi
   - type: Battery
     maxCharge: 500
     startingCharge: 500

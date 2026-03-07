@@ -793,9 +793,12 @@
     - 0,0,1,0
   - type: Sprite
     state: butter
-#  - type: Slippery # Orion-Edit: Fuck slippery curse
+  - type: Slippery
   - type: StepTrigger
     intersectRatio: 0.2
+    triggerGroups: # Orion 
+      types:  
+      - SlipEntity  
   - type: CollisionWake
     enabled: false
   - type: Physics

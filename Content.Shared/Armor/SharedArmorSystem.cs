@@ -34,6 +34,7 @@ using Robust.Shared.Utility;
 
 // Shitmed Change
 using System.Linq;
+using Content.Shared._Orion.Localizations;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 
@@ -135,25 +136,45 @@ public abstract class SharedArmorSystem : EntitySystem
 
         if (!component.ArmourCoverageHidden)
         {
-            foreach (var coveragePart in coverage.Where(coveragePart => coveragePart != BodyPartType.Other))
+            // Orion-Start
+            var coveredParts = coverage
+                .Where(coveragePart => coveragePart != BodyPartType.Other)
+                .Select(coveragePart => Loc.GetString("armor-coverage-type-" + coveragePart.ToString().ToLower()))
+                .ToList();
+            // Orion-End
+
+            // Orion-Edit-Start
+            if (coveredParts.Count > 0)
             {
                 msg.PushNewline();
-
-                var bodyPartType = Loc.GetString("armor-coverage-type-" + coveragePart.ToString().ToLower());
-                msg.AddMarkupOrThrow(Loc.GetString("armor-coverage-value", ("type", bodyPartType)));
+                msg.AddMarkupOrThrow(Loc.GetString("armor-coverage-list-value", ("parts", string.Join(", ", coveredParts))));
             }
+            // Orion-Edit-End
         }
 
         if (!component.ArmourModifiersHidden)
         {
             foreach (var coefficientArmor in armorModifiers.Coefficients)
             {
+                // Orion-Start
+                var protectionPercent = (1f - coefficientArmor.Value) * 100f;
+                var rounded = (int) MathF.Round(MathF.Abs(protectionPercent) / 10f);
+
+                if (rounded == 0)
+                    continue;
+                // Orion-End
+
+                // Orion-Edit-Start
                 msg.PushNewline();
-                var armorType = Loc.GetString("armor-damage-type-" + coefficientArmor.Key.ToLower());
-                msg.AddMarkupOrThrow(Loc.GetString("armor-coefficient-value",
+                var armorType = Loc.GetString("armor-damage-type-class-" + coefficientArmor.Key.ToLower());
+                var sign = protectionPercent < 0f ? "-" : string.Empty;
+                var roman = RomanNumerals.ToRoman(rounded);
+
+                msg.AddMarkupOrThrow(Loc.GetString("armor-coefficient-class-value",
                     ("type", armorType),
-                    ("value", MathF.Round((1f - coefficientArmor.Value) * 100, 1))
-                ));
+                    ("class", $"{sign}{roman}"))
+                );
+                // Orion-Edit-End
             }
 
             foreach (var flatArmor in armorModifiers.FlatReduction)

@@ -16,6 +16,8 @@
     useDelay: 1
     sound: !type:SoundPathSpecifier
       path: /Audio/Effects/pop.ogg
+  - type: LimitedCharges # Orion
+    maxCharges: 3
   - type: InstantAction
     event: !type:EggLayInstantActionEvent
 

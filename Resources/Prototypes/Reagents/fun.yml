@@ -214,8 +214,8 @@
   id: Razorium
   name: reagent-name-razorium
   group: Toxins
-#  slipData: # Orion-Edit: Fuck slippery curse
-#    requiredSlipSpeed: 3.5
+  slipData:
+    requiredSlipSpeed: 5 # Orion-Edit: 3.5 > 5
   desc: reagent-desc-razorium
   physicalDesc: reagent-physical-desc-reflective
   flavor: sharp
@@ -351,8 +351,8 @@
   physicalDesc: reagent-physical-desc-funny
   flavor: funny
   color: "#FF4DD2"
-#  slipData: # Orion-Edit: Fuck slippery curse
-#    requiredSlipSpeed: 3.5 #clown juice gotta slip
+  slipData:
+    requiredSlipSpeed: 4.6 # Orion-Edit: 3.5 > 4.6 Light slippery curse
   metabolisms:
     Medicine:
       effects:

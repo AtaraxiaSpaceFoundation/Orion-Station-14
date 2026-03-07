@@ -129,6 +129,8 @@ using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Tag;
+using Content.Shared.Database;
+using Content.Server.Administration.Logs;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -142,6 +144,7 @@ namespace Content.Server.Silicons.Laws;
 public sealed class SiliconLawSystem : SharedSiliconLawSystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly IAdminLogManager _adminLogger = default!; // goob logging
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
@@ -190,6 +193,11 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             || _tagSystem.HasTag(uid, "StationAi")) // skip a law's notification for remotable and AI
             return;
         // Corvax-Next-AiRemoteControl-End
+
+        // Goobstation admin laws logging start
+        var laws = GetLaws(uid, component);
+        _adminLogger.Add(LogType.SiliconLaws, LogImpact.Low, $"{ToPrettyString(uid):entity} joined the round with laws:\n{laws.LoggingString()}");
+        // Goobstation end
 
         var msg = Loc.GetString("laws-notify");
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
@@ -305,6 +313,8 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             LawString = Loc.GetString("law-emag-secrecy", ("faction", Loc.GetString(component.Lawset.ObeysTo))),
             Order = component.Lawset.Laws.Max(law => law.Order) + 1
         });
+
+        _adminLogger.Add(LogType.SiliconLaws, LogImpact.High, $"{ToPrettyString(uid):entity} laws changed due to emag by {ToPrettyString(args.user):user} to:{component.Lawset!.LoggingString()}"); // goob
     }
 
     protected override void EnsureSubvertedSiliconRole(EntityUid mindId)
@@ -425,6 +435,8 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
 
         component.Lawset.Laws = newLaws;
         NotifyLawsChanged(target, cue);
+
+        _adminLogger.Add(LogType.SiliconLaws, LogImpact.Medium, $"{ToPrettyString(target):entity} laws changed to:{component.Lawset.LoggingString()}"); // goob
     }
 
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -491,6 +503,8 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             component.Lawset = new SiliconLawset();
 
         component.Lawset.Laws = newLaws;
+
+        _adminLogger.Add(LogType.SiliconLaws, LogImpact.Medium, $"{ToPrettyString(target):entity} laws changed silently to:{component.Lawset.LoggingString()}"); // goob
     }
     // Corvax-Next-AiRemoteControl-End
 

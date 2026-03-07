@@ -456,6 +456,7 @@
       - id: ResearchDisk5000
       - id: PetCarrier
       - id: DrinkMopwataBottleRandom
+      - id: ModsuitCoreStandard # Orion
       - id: LidSalami
         weight: 0.05
 

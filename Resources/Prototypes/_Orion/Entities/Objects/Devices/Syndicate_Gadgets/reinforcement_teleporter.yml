@@ -1,0 +1,20 @@
+- type: entity
+  parent: ReinforcementRadio
+  id: ReinforcementRadioSyndicateCyborgSaboteur # Reinforcement radio exclusive to nukeops uplink
+  name: syndicate saboteur cyborg reinforcement radio
+  description: Call in a well armed saboteur cyborg, instantly!
+  suffix: NukeOps
+  components:
+    - type: GhostRole
+      name: ghost-role-information-syndicate-cyborg-saboteur-name
+      description: ghost-role-information-syndicate-cyborg-description
+      rules: ghost-role-information-silicon-rules
+      mindRoles:
+      - MindRoleGhostRoleSilicon
+      raffle:
+        settings: default
+      requirements:
+      - !type:OverallPlaytimeRequirement
+        time: 18000
+    - type: GhostRoleMobSpawner
+      prototype: PlayerBorgSyndicateSaboteurBattery

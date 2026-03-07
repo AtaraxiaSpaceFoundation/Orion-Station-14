@@ -5,25 +5,25 @@
   components:
   - type: StorageFill
     contents:
-      - id: MedkitCombatBlueFilled
-      - id: EmergencyRollerBedSpawnFolded
       - id: Brutepack
-        amount: 2
+        amount: 3
       - id: Ointment
-        amount: 2
-      - id: BodyBagFolded
-      - id: SprayBottleStypticPowder
-      - id: SprayBottleSilverSulfadiazine
-      - id: SyringeCaseFilledBicaridine
-      - id: SyringeCaseFilledDermaline
-      - id: SyringeCaseFilledSaline
-      - id: SyringeCaseFilledAtropine
-      - id: SyringeCaseFilledEpinephrine
-      - id: Gauze
-        amount: 2
+        amount: 3
       - id: Bloodpack
         amount: 2
+      - id: ParamedHypo
+      - id: SyringeCaseFilledBicaridine
+      - id: SyringeCaseFilledDermaline
+      - id: SyringeCaseFilledAtropine
+      - id: SyringeCaseFilledEpinephrine
+      - id: SyringeCaseFilledSaline
+      - id: BodyBagPrisonerFolded
+      - id: VehicleWheelchairFolded
+      - id: Gauze
+        amount: 4
       - id: MedicatedSuture
-        amount: 2
       - id: RegenerativeMesh
-        amount: 2
+      - id: ChemistryBottleDexalinPlus
+      - id: ChemistryBottlePhalanximine
+      - id: ChemistryBottleEpinephrine
+      - id: Syringe

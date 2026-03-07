@@ -108,19 +108,19 @@ uplink-WSPR-name = WSPR
 uplink-WSPR-desc = A silenced, subsonic, and caseless rifle for the operative that leaves no trace. More effective against unarmoured targets. Feeds from 9.5mm SMG magazines.
 
 uplink-c20r-name = C-20R
-uplink-c20r-desc = A one-handed, bullpup SMG that sacrifices accuracy for pure firerate. Feeds from .35 Auto SMG magazines.
+uplink-c20r-desc = A one-handed, bullpup SMG that sacrifices accuracy for pure firerate. Feeds from 9mm Auto SMG magazines.
 
 uplink-buldog-name = Bulldog
 uplink-buldog-desc = A fully automatic, bullpup shotgun for when you have three seconds to turn eight people into pasta sauce.
 
 uplink-l6-saw-name = L6 SAW
-uplink-l6-saw-desc = A bulky light machine gun excellent at suppressive, sustained fire. Feeds from .30 Rifle box magazines.
+uplink-l6-saw-desc = A bulky light machine gun excellent at suppressive, sustained fire. Feeds from 5.45mm Rifle box magazines.
 
 uplink-m90-name = M-90
-uplink-m90-desc = A rugged assault rifle that maintains its accuracy across extreme distances. Feeds from .20 Rifle magazines.
+uplink-m90-desc = A rugged assault rifle that maintains its accuracy across extreme distances. Feeds from 5.56mm Rifle magazines.
 
 uplink-estoc-name = Estoc
-uplink-estoc-desc = A burst-fire designated marksman rifle fitted with an expensive tritium optic. Feeds from .20 Rifle magazines.
+uplink-estoc-desc = A burst-fire designated marksman rifle fitted with an expensive tritium optic. Feeds from 5.45mm Rifle magazines.
 
 uplink-syndicate-disabler-name = Syndicate Disabler
 uplink-syndicate-disabler-desc = A sleek disabler designed from a reverse-engineered NanoTrasen prototype. While it lacks stopping power, it makes up for it with a self-recharging cell.
@@ -211,10 +211,10 @@ uplink-high-caliber-shotgun-box-flash-slug-desc = 16 shells of 8 Gauge flashbang
 uplink-high-caliber-shotgun-box-sarin-name = 8 Gauge sarin gas shell box
 uplink-high-caliber-shotgun-box-sarin-desc = 16 shells of 8 Gauge sarin shells for the combat shotgun, which release a small plus-shaped cloud of sarin gas.
 
-uplink-estoc-ammo-name = Rifle Magazine (5.56mm rifle)
+uplink-estoc-ammo-name = Rifle Magazine (5.45mm rifle)
 uplink-estoc-ammo-desc = Rifle magazine with 25 rounds. Compatible with the Estoc.
 
-uplink-m90-ammo-name = Rifle Magazine (.20 rifle)
+uplink-m90-ammo-name = Rifle Magazine (5.56mm rifle)
 uplink-m90-ammo-desc = Rifle magazine with 25 rounds. Compatible with the M-90 and Lecter.
 
 # Grenades
@@ -374,7 +374,7 @@ uplink-cddisknumber-desc = Call in a threat to distract the station... good luck
 uplink-box-xenobio-name = Xenobiology slimes box
 uplink-box-xenobio-desc = Slimes for your xenobiology needs. Contains 9 random T1 slimes.
 
-#Contractor
+# Contractor
 
 uplink-moduist-contractor-name = Contractor Modsuit
 uplink-moduist-contractor-desc = This lightweight modsuit was made specifically for The Guild! Made using plastitanium for extreme durability but light-weight, comes packed with servos to to help you grab harder, critical damage detecting injectors, and a built in chameleon tech! To keep it ultra light-weight this modsuit has no storage capabilities.

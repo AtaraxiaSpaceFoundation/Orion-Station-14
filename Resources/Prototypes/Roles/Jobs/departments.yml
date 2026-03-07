@@ -192,9 +192,11 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
-  - BlueshieldOfficer # Goobstation
-  - NanotrasenRepresentative # Goobstation
-  - NanotrasenCareerTrainer # Goobstation
+  # Orion-Edit-Start: Now it only in (CentralCommand)
+#  - BlueshieldOfficer # Goobstation 
+#  - NanotrasenRepresentative # Goobstation
+#  - NanotrasenCareerTrainer # Goobstation
+  # Orion-Edit-End
   - CentralCommandOfficial
   - CBURN
   - ERTLeader

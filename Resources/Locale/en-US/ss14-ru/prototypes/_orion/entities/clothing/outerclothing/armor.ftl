@@ -8,6 +8,7 @@ ent-ClothingOuterArmorInteQIronTombstone = Iron Tombstone armor suit
     .desc = Ancient, but no less formidable suit of armor. It provides incredible protection from bullets and shrapnel, but it hinders movement. Or so it was before the technical department attached a passive exoskeleton to the base.
 ent-ClothingOuterArmorCaptainCarapaceWhite = captain white carapace
     .desc = An armored breastplate that provides protection while offering mobility and flexibility. Issued only to the best members of the station. White color - symbol of cleanliness and order.
+    .desc = An early version of the bluespace armored vest, only visible up close. The technology is outdated, but still in demand among captains.
 ent-ClothingOuterArmorUEGVestLight = UEG light armor vest
     .desc = Synthetic armor vest. This one has added ballistic plates.
 ent-ClothingOuterArmorUEGVestMedical = UEG medical armor vest

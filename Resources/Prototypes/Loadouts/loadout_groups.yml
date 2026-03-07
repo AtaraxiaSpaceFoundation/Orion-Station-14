@@ -337,15 +337,15 @@
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
-  - CaptainJumpsuitMilitary # goob
-  - CaptainSummerShirt # also goob
   # Orion-Start
   - CaptainWhiteJumpsuit
   - CaptainWhiteJumpskirt
   - CaptainWhiteTurtleneck
-  - CaptainCommandJumpsuit
   - SheriffJumpsuit
+  - CaptainCommandJumpsuit
   # Orion-End
+  - CaptainJumpsuitMilitary # goob
+  - CaptainSummerShirt # also goob
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -371,6 +371,7 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  - CaptainDuffelWhite # Orion
   - CaptainMessenger # Frontier
 
 - type: loadoutGroup
@@ -378,6 +379,9 @@
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
+  # Orion-Start
+  - CaptainWhiteCarapace
+  # Orion-End
   - CaptainWintercoat
   - CaptainJacket # Goobstation
   # Orion-Start
@@ -941,6 +945,7 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
+  - CargoTechnicianOveralls #Goob
   - CargoTechnicianJumpsuitMail # Goob/DeltaV - Mail
   - CargoTechnicianJumpskirtMail # Goob/DeltaV - Mail
   - CargoTechMJ # goob
@@ -1176,7 +1181,9 @@
   name: loadout-group-research-director-jumpsuit
   loadouts:
   - ResearchDirectorJumpsuit
+  - ResearchDirectorJumpsuitAlt # goob
   - ResearchDirectorJumpskirt
+  - ResearchDirectorJumpskirtAlt # goob
   - ResearchDirectorMJ # goob
   - RDSummerShirt # goob
 

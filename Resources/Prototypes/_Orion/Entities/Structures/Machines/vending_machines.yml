@@ -1,5 +1,16 @@
 ﻿- type: entity
   parent: VendingMachine
+  id: VendingMachineOld
+  abstract: true
+  components:
+  - type: VendingMachine
+    soundVend:
+      path: /Audio/Machines/machine_vend.ogg
+      params:
+        variation: 0.15
+
+- type: entity
+  parent: VendingMachine
   id: VendingMachineInteQDrobe
   name: InteQDrobe
   description: Wardrobe machine encoded by the InteQ, contains elite outfits for various operations.

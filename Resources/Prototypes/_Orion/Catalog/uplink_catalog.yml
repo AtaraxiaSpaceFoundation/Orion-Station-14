@@ -58,6 +58,22 @@
           - NukeOpsUplink
 
 - type: listing
+  id: NukeOpsUplinkAdvancedCombatMedipen
+  name: uplink-advanced-combat-medipen-name
+  description: uplink-advanced-combat-medipen-desc
+  productEntity: AdvancedCombatMedipen
+  cost:
+    Telecrystal: 54
+  categories:
+  - UplinkChemicals
+  conditions: # Orion: Only for agents
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+          - ContravendUplink
+
+- type: listing
   id: UplinkZauer
   name: uplink-zauer-name
   description: uplink-buldog-desc
@@ -67,3 +83,44 @@
     Telecrystal: 60
   categories:
   - UplinkWeaponry
+
+- type: listing
+  id: UplinkRPD
+  name: uplink-rpd-name
+  description: uplink-rpd-desc
+  icon: { sprite: _Orion/Objects/Weapons/Guns/LMGs/rpd/big.rsi, state: icon }
+  productEntity: WeaponLightMachineGunRPD
+  cost:
+    Telecrystal: 110
+  categories:
+  - UplinkWeaponry
+
+- type: listing
+  id: UplinkMagazineMachineGunRPD
+  name: uplink-rpd-box-name
+  description: uplink-rpd-box-desc
+  icon: { sprite: _Orion/Objects/Weapons/Guns/Ammunition/Magazines/Heavy/rpd.rsi, state: base }
+  productEntity: MagazineLightMachineGunRPD
+  cost:
+    Telecrystal: 22
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkReinforcementRadioSyndicateCyborgSaboteur
+  name: uplink-reinforcement-radio-cyborg-saboteur-name
+  description: uplink-reinforcement-radio-cyborg-saboteur-desc
+  productEntity: ReinforcementRadioSyndicateCyborgSaboteur
+  icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-saboteur }
+  cost:
+    Telecrystal: 280
+  categories:
+    - UplinkAllies
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+      blacklist:
+        tags:
+        - ContravendUplink

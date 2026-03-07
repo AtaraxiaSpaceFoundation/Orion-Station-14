@@ -211,12 +211,15 @@
     inHandsMaxFillLevels: 1
     equippedFillBaseName: -fill-
     equippedMaxFillLevels: 1
+  - type: Gun # Orion
+    fireRate: 1.3
   - type: MeleeWeapon
     wideAnimationRotation: -135
     animationRotation: -135 # WWDP
     damage:
       types:
-        Piercing: 18 # Orion-Edit: 12 > 18
+        Piercing: 15 # Orion-Edit: 12 > 15
+        Slash: 4 # Orion
     angle: 0
     animation: WeaponArcThrust
     soundHit:

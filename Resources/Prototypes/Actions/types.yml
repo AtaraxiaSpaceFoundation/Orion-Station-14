@@ -180,7 +180,7 @@
   description: Activating your freedom implant will free you from any hand restraints
   components:
   - type: LimitedCharges
-    maxCharges: 3
+    maxCharges: 6 # Orion-Edit: 3 > 6
   - type: Action
     useDelay: 10 # Goob - useful freedom
     checkCanInteract: false

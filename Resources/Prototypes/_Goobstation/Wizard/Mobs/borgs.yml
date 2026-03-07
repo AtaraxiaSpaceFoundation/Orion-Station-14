@@ -90,4 +90,4 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHyper
+        startingItem: PowerCellBluespaceReactor # Orion-Edit: PowerCellHyper > PowerCellBluespaceReactor

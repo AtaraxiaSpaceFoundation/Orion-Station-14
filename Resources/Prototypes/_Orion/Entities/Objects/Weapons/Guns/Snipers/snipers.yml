@@ -70,7 +70,7 @@
   - type: Item
     sprite: _Orion/Objects/Weapons/Guns/Snipers/remington700/tiny.rsi
   - type: Gun
-    fireRate: 0.8
+    fireRate: 1.1
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Snipers/tl127.ogg
     soundEmpty:
@@ -91,11 +91,11 @@
   - type: UseDelayBlockShoot
   - type: GunRequiresWield
   - type: SpeedModifiedOnWield
-    sprintModifier: 0.8
+    sprintModifier: 0.9
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
-    maxOffset: 5
-    pvsIncrease: 0.5
+    maxOffset: 6
+    pvsIncrease: 0.6
 
 - type: entity
   parent: [ BaseSecurityContraband, BaseWeaponRifle ]

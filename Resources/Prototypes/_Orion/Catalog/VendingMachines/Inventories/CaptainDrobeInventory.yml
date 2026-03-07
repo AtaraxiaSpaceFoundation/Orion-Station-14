@@ -1,7 +1,7 @@
 - type: vendingMachineInventory
   id: CaptainDrobeInventory
   startingInventory:
-   # Default
+  # Default
     ClothingHeadsetAltCommand: 1
     ClothingHeadHatCaptain: 1
     ClothingHeadHatCapcap: 1
@@ -21,34 +21,34 @@
     ClothingUniformJumpsuitCapFormal: 1
     ClothingUniformJumpskirtCapFormalDress: 1
     ClothingHandsGlovesCaptain: 1
-   # White
+  # White
     ClothingHeadHatBeretCaptainWhite: 1
     ClothingHeadHatCapcapWhite: 1
     ClothingNeckCloakRoyalCaptain: 1
     ClothingNeckWhiteMantleCaptain: 1
     ClothingNeckMantleCaptainWhiteShoulder: 1
-    ClothingOuterCoatCaptainWhite: 1
     ClothingOuterArmorCaptainCarapaceWhite: 1
+    ClothingOuterCoatCaptainWhite: 1
     ClothingUniformJumpskirtWhiteCaptain: 1
     ClothingUniformJumpsuitWhiteCaptain: 1
     ClothingUniformJumpsuitWhiteCaptainTurtleneck: 1
     ClothingHandsGlovesCaptainWhite: 1
     ClothingBeltWhiteSheath: 1
     ClothingBackpackDuffelWhiteCaptain: 1
-   # Sheriff
+  # Sheriff
     ClothingHeadHatBeretSheriff: 1
     ClothingHeadHatCapcapSheriff: 1
     ClothingOuterCoatCaptainSheriff: 1
     ClothingUniformJumpsuitSheriff: 1
     ClothingHandsGlovesSheriff: 1
     ClothingBeltSheriffSheath: 1
-   # Other
+  # Other
     ClothingEyesGlassesGarGiga: 1
     ClothingUniformJumpsuitCommandCaptain: 1
     ClothingBackpackCaptain: 1
     ClothingBackpackDuffelCaptain: 1
     ClothingBackpackSatchelCaptain: 1
-   # Stuff
+  # Stuff
     MedalCase: 1
     FlippoEngravedLighter: 1
     ToyFigurineCaptain: 1

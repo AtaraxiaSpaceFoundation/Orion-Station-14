@@ -23,6 +23,7 @@
     maxAngle: 59
     cameraRecoilScalar: 3
     fireRate: 5
+    projectileSpeed: 30
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Snipers/svd.ogg
   - type: ItemSlots
@@ -124,6 +125,7 @@
     angleIncrease: 0.2
     cameraRecoilScalar: 0.6
     fireRate: 15
+    projectileSpeed: 30
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -170,6 +172,7 @@
     angleIncrease: 0.5
     cameraRecoilScalar: 0.5
     fireRate: 7
+    projectileSpeed: 20
     selectedMode: FullAuto
     availableModes:
     - FullAuto

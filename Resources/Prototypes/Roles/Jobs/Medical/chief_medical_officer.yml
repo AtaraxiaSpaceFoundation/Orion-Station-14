@@ -184,7 +184,7 @@
   equipment:
     id: CMOPDA
     ears: ClothingHeadsetAltMedical # Goobstation
-    eyes: ClothingEyesGlassesMed # Goobstation
+#    eyes: ClothingEyesGlassesMed # Goobstation # Orion-Edit: In loadout
     belt: ClothingBeltMedicalFilled
   storage:
     back:

@@ -15,6 +15,9 @@
   - type: Battery
     maxCharge: 1250
     startingCharge: 1250
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
+    fireCost: 125 # 10 shots
 
 - type: entity
   parent: PowerCellSuper
@@ -42,6 +45,9 @@
   - type: Battery
     maxCharge: 2200
     startingCharge: 2200
+  - type: HitscanBatteryAmmoProvider
+    proto: HeavyRedLaser
+    fireCost: 225 # 9 shots
 
 - type: entity
   parent: PowerCellBluespace
@@ -73,7 +79,10 @@
     autoRecharge: true
     autoRechargeRate: 15
     autoRechargePause: true
-    autoRechargePauseTime: 2
+    autoRechargePauseTime: 1
+  - type: HitscanBatteryAmmoProvider
+    proto: HeavyRedLaser
+    fireCost: 200 # 9 shots
 
 - type: entity
   parent: PowerCellBluespaceReactor
@@ -99,11 +108,14 @@
       state: o2
       shader: unshaded
   - type: Battery
-    maxCharge: 2200
-    startingCharge: 2200
+    maxCharge: 3500
+    startingCharge: 3500
   - type: BatterySelfRecharger
     autoRecharge: true
-    autoRechargeRate: 15
+    autoRechargeRate: 30
+  - type: HitscanBatteryAmmoProvider
+    proto: LightPulse
+    fireCost: 350 # 10 shots
 
 - type: entity
   parent: PowerCellVortex
@@ -134,3 +146,6 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 40
+  - type: HitscanBatteryAmmoProvider
+    proto: RedHeavyLaser
+    fireCost: 200 # 6 shots

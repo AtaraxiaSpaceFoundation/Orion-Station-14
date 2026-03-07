@@ -31,19 +31,24 @@
       sprite: Structures/Power/Generation/teg.rsi
       layers:
         - state: teg
-        - state: teg_mid
-          shader: unshaded
-          map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+        # Orion-Edit-Start
+          map: [ "center" ]
+#        - state: teg_mid
+#          shader: unshaded
+#          map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+        # Orion-Edit-End
         - state: teg-op1
           shader: unshaded
           visible: false
           map: [ "enum.TegVisualLayers.PowerOutput" ]
     - type: GenericVisualizer
       visuals:
-        enum.PowerDeviceVisuals.Powered:
-          enum.PowerDeviceVisualLayers.Powered:
-            True: { visible: true }
-            False: { visible: false }
+        # Orion-Edit-Start
+#        enum.PowerDeviceVisuals.Powered:
+#          enum.PowerDeviceVisualLayers.Powered:
+#            True: { visible: true }
+#            False: { visible: false }
+        # Orion-Edit-End
         enum.TegVisuals.PowerOutput:
           enum.TegVisualLayers.PowerOutput:
             0: { visible: false }
@@ -58,6 +63,12 @@
             9: { visible: true, state: teg-op9 }
             10: { visible: true, state: teg-op10 }
             11: { visible: true, state: teg-op11 }
+        # Orion-Start
+        enum.AnchorVisuals.Anchored:
+          center:
+            False: { state: teg-unassembled }
+            True: { state: teg }
+        # Orion-End
 
     - type: Anchorable
     - type: Pullable
@@ -81,6 +92,7 @@
     # It fires processing on behalf of its connected circulators.
     - type: AtmosDevice
     - type: TegGenerator
+      thermalEfficiency: 0.8 # Orion
 
     - type: DeviceNetwork
       deviceNetId: AtmosDevices
@@ -107,7 +119,7 @@
       enabled: false
       castShadows: false
       radius: 1.5
-      color: "#FFAA00"
+      color: "#ff8800" # Orion-Edit
 
     - type: AmbientSound
       volume: -4
@@ -158,13 +170,19 @@
             SpeedStill: { state: circ-0-light }
             SpeedSlow: { state: circ-1-light }
             SpeedFast: { state: circ-2-light }
+        # Orion-Start
+        enum.AnchorVisuals.Anchored:
+          enum.TegVisualLayers.CirculatorBase:
+            False: { state: circ-unassembled-0 }
+            True: { state: circ-0 }
+        # Orion-End
 
     - type: Appearance
     - type: PointLight
       enabled: false
       castShadows: false
       radius: 1.5
-      color: "#CC00FF"
+      color: "#f700ff" # Orion-Edit
 
     # tags
     - type: Tag

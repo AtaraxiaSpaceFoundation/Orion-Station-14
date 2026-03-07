@@ -37,6 +37,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    projectileSpeed: 20 # Orion
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -129,6 +130,8 @@
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
   - type: Gun
+    fireRate: 1 # Orion
+    projectileSpeed: 18 # Orion
     resetOnHandSelected: false
     soundGunshot:
       path: /Audio/_Goobstation/Weapons/Guns/Gunshots/heavy_shot_suppressed.ogg

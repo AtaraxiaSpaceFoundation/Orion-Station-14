@@ -1,3 +1,4 @@
+# Spawners
 ent-RandomChemistryBottleMedicalSpawner = спавнер случайной бутылочки с химикатом
     .desc = { ent-MarkerBase.desc }
 ent-RandomChemistryBottleMedicalTier1Spawner = случайная бутылочка с химикатом (уровень 1)
@@ -6,6 +7,8 @@ ent-RandomChemistryBottleMedicalTier2Spawner = случайная бутылоч
     .desc = { ent-MarkerBase.desc }
 ent-RandomChemistryBottleMedicalTier3Spawner = случайная бутылочка с химикатом (уровень 3)
     .desc = { ent-MarkerBase.desc }
+
+# Medical bottles
 ent-ChemistryBottleDylovene = { ent-BaseChemistryBottleFilled }
     .suffix = Диловен
     .desc = { ent-BaseChemistryBottleFilled.desc }
