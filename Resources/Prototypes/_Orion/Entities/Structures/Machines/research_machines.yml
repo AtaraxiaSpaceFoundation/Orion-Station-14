@@ -1,0 +1,54 @@
+- type: entity
+  id: ResearchDestructiveAnalyzer
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  name: destructive analyzer
+  description: Vaporizes samples into actionable R&D points.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/artifact_analyzer.rsi
+    layers:
+    - state: icon
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: ApcPowerReceiver
+    powerLoad: 2500
+  - type: ResearchClient
+  - type: DestructiveAnalyzer
+  - type: ActivatableUI
+    key: enum.ResearchClientUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+
+- type: entity
+  id: ResearchExperimentator
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  name: experimentator
+  description: Performs high-risk experiments for potentially high-value outcomes.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/artifact_analyzer.rsi
+    layers:
+    - state: icon
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: ApcPowerReceiver
+    powerLoad: 3000
+  - type: ResearchClient
+  - type: Experimentator
+    operations:
+    - FragmentPulse
+    - AnomalousPulse
+  - type: ActivatableUI
+    key: enum.ResearchClientUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface

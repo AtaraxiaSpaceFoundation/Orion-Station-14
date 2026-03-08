@@ -1,0 +1,16 @@
+- type: entity
+  parent: BaseComputer
+  id: ComputerResearchServerControl
+  name: R&D server control console
+  description: Supervises network point generation and operational server telemetry.
+  components:
+  - type: ResearchServerControlConsole
+  - type: ResearchClient
+  - type: ActivatableUI
+    key: enum.ResearchServerControlUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ResearchServerControlUiKey.Key:
+        type: ResearchServerControlBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface

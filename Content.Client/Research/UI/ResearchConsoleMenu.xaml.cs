@@ -17,6 +17,8 @@
 using System.Linq;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
+using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Research.Components;
@@ -68,7 +70,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     {
         TechnologyCardsContainer.Children.Clear();
 
-        var availableTech = _research.GetAvailableTechnologies(Entity);
+        var availableTech = state.AvailableTechnologies.Select(id => _prototype.Index<TechnologyPrototype>(id));
         SyncTechnologyList(AvailableCardsContainer, availableTech);
 
         if (!_entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database))
@@ -91,7 +93,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
             TechnologyCardsContainer.AddChild(cardControl);
         }
 
-        var unlockedTech = database.UnlockedTechnologies.Select(x => _prototype.Index<TechnologyPrototype>(x));
+        var unlockedTech = state.ResearchedTechnologies.Select(x => _prototype.Index<TechnologyPrototype>(x));
         SyncTechnologyList(UnlockedCardsContainer, unlockedTech);
     }
 
@@ -100,6 +102,19 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         var amountMsg = new FormattedMessage();
         amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
             ("points", state.Points)));
+
+        if (!string.IsNullOrWhiteSpace(state.NetworkId))
+        {
+            amountMsg.PushNewline();
+            amountMsg.AddMarkupOrThrow($"[color=lightblue]Network:[/color] {state.NetworkId}");
+        }
+
+        foreach (var balance in state.PointBalances)
+        {
+            amountMsg.PushNewline();
+            amountMsg.AddMarkupOrThrow($"[color=lightgreen]{balance.Type}[/color]: {balance.Amount}");
+        }
+
         ResearchAmountLabel.SetMessage(amountMsg);
 
         if (!_entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database))
@@ -153,6 +168,41 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
             };
             TierDisplayContainer.AddChild(control);
         }
+
+        var experimentsMessage = new FormattedMessage();
+        foreach (var experiment in state.Experiments)
+        {
+            if (!_prototype.TryIndex<ResearchExperimentPrototype>(experiment.Id, out var proto))
+                continue;
+
+            var stateText = experiment.State switch
+            {
+                ResearchExperimentState.Active => Loc.GetString("research-console-experiment-state-active"),
+                ResearchExperimentState.Available => Loc.GetString("research-console-experiment-state-available"),
+                ResearchExperimentState.Completed => Loc.GetString("research-console-experiment-state-completed"),
+                ResearchExperimentState.Skipped => Loc.GetString("research-console-experiment-state-skipped"),
+                _ => Loc.GetString("research-console-experiment-state-unavailable")
+            };
+
+            experimentsMessage.AddMarkupOrThrow($"[color=lightblue]{stateText}[/color] {Loc.GetString(proto.Name)} ({experiment.Progress}/{experiment.Target})");
+            experimentsMessage.PushNewline();
+        }
+
+        if (state.Experiments.Count == 0)
+            experimentsMessage.AddMarkupOrThrow($"[color=gray]{Loc.GetString("research-console-experiments-empty")}[/color]");
+
+        if (state.Logs.Count > 0)
+        {
+            experimentsMessage.PushNewline();
+            experimentsMessage.AddMarkupOrThrow("[color=lightblue]Recent logs:[/color]");
+            foreach (var log in state.Logs.TakeLast(4))
+            {
+                experimentsMessage.PushNewline();
+                experimentsMessage.AddMarkupOrThrow($"[color=gray]{log.Category}[/color] {log.Message}");
+            }
+        }
+
+        ExperimentsLabel.SetMessage(experimentsMessage);
     }
 
     /// <summary>

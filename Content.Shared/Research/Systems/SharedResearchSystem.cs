@@ -41,6 +41,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Lathe;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
@@ -66,6 +68,7 @@ public abstract class SharedResearchSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, TechnologyDatabaseComponent component, MapInitEvent args)
     {
+        RecalculateTechnologyState(uid, component);
         UpdateTechnologyCards(uid, component);
     }
 
@@ -94,37 +97,263 @@ public abstract class SharedResearchSystem : EntitySystem
         if (!Resolve(uid, ref component, false))
             return new List<TechnologyPrototype>();
 
-        var availableTechnologies = new List<TechnologyPrototype>();
-        var disciplineTiers = GetDisciplineTiers(component);
-        foreach (var tech in PrototypeManager.EnumeratePrototypes<TechnologyPrototype>())
-        {
-            if (IsTechnologyAvailable(component, tech, disciplineTiers))
-                availableTechnologies.Add(tech);
-        }
-
-        return availableTechnologies;
+        return component.AvailableTechnologies
+            .Select(techId => PrototypeManager.Index(techId))
+            .ToList();
     }
 
     public bool IsTechnologyAvailable(TechnologyDatabaseComponent component, TechnologyPrototype tech, Dictionary<string, int>? disciplineTiers = null)
     {
         disciplineTiers ??= GetDisciplineTiers(component);
 
-        if (tech.Hidden)
+        if (!component.AvailableTechnologies.Contains(tech.ID))
             return false;
 
-        if (!component.SupportedDisciplines.Contains(tech.Discipline))
+        if (!component.VisibleTechnologies.Contains(tech.ID))
             return false;
 
         // if (tech.Tier > disciplineTiers[tech.Discipline])    // Goobstation R&D Console rework - removed main discipline checks
         //     return false;
 
-        if (component.UnlockedTechnologies.Contains(tech.ID))
+        return true;
+    }
+
+    public void RecalculateTechnologyState(EntityUid uid, TechnologyDatabaseComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        EnsureResearchedTechnologySet(component);
+
+        var visible = new HashSet<ProtoId<TechnologyPrototype>>();
+        var available = new HashSet<ProtoId<TechnologyPrototype>>();
+
+        foreach (var tech in PrototypeManager.EnumeratePrototypes<TechnologyPrototype>())
+        {
+            if (!component.SupportedDisciplines.Contains(tech.Discipline))
+                continue;
+
+            if (tech.Hidden && !component.RevealedTechnologies.Contains(tech.ID) &&
+                ArePassiveRevealRequirementsSatisfied(component, tech))
+            {
+                component.RevealedTechnologies.Add(tech.ID);
+            }
+
+            var researched = component.ResearchedTechnologies.Contains(tech.ID);
+            var prereqsMet = tech.AllRequiredTechnologies.All(prereq => component.ResearchedTechnologies.Contains(prereq));
+
+            var revealed = component.RevealedTechnologies.Contains(tech.ID);
+            var isVisible = researched || !tech.Hidden || revealed;
+            if (!isVisible)
+                continue;
+
+            visible.Add(tech.ID);
+
+            if (researched)
+                continue;
+
+            if (prereqsMet && HasRequiredExperiments(component, tech))
+                available.Add(tech.ID);
+        }
+
+        component.VisibleTechnologies = visible.ToList();
+        component.AvailableTechnologies = available.ToList();
+        RefreshAvailableExperiments(component);
+        RebuildUnlockedRecipes(component);
+        Dirty(uid, component);
+    }
+
+    public bool HasRequiredExperiments(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        if (tech.RequiredExperiments.Count == 0)
+            return true;
+
+        foreach (var experiment in tech.RequiredExperiments)
+        {
+            if (component.CompletedExperiments.Contains(experiment))
+                continue;
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public int GetTechnologyDiscounts(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        if (tech.DiscountExperiments.Count == 0)
+            return 0;
+
+        var baseCost = tech.Cost;
+        var flatDiscount = 0;
+        var percentageDiscount = 0f;
+
+        foreach (var experimentId in tech.DiscountExperiments)
+        {
+            if (!component.CompletedExperiments.Contains(experimentId))
+                continue;
+
+            if (!PrototypeManager.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
+                continue;
+
+            flatDiscount += experiment.Reward.FlatDiscount;
+            percentageDiscount += experiment.Reward.PercentageDiscount;
+        }
+
+        percentageDiscount = Math.Clamp(percentageDiscount, 0f, 1f);
+        var percentageValue = (int) MathF.Round(baseCost * percentageDiscount);
+
+        return Math.Max(0, flatDiscount + percentageValue);
+    }
+
+    public int GetTechnologyFinalCost(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        return Math.Max(0, tech.Cost - GetTechnologyDiscounts(component, tech));
+    }
+
+    public virtual bool CanUnlockTechnology(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        return component.AvailableTechnologies.Contains(tech.ID);
+    }
+
+    private void EnsureResearchedTechnologySet(TechnologyDatabaseComponent component)
+    {
+        var researched = new HashSet<ProtoId<TechnologyPrototype>>(component.ResearchedTechnologies);
+
+        foreach (var tech in PrototypeManager.EnumeratePrototypes<TechnologyPrototype>())
+        {
+            if (tech.StartingTechnology && component.SupportedDisciplines.Contains(tech.Discipline))
+                researched.Add(tech.ID);
+        }
+
+        component.ResearchedTechnologies = researched.ToList();
+    }
+
+    private void RebuildUnlockedRecipes(TechnologyDatabaseComponent component)
+    {
+        var recipes = new HashSet<ProtoId<LatheRecipePrototype>>();
+        foreach (var techId in component.ResearchedTechnologies)
+        {
+            if (!PrototypeManager.TryIndex<TechnologyPrototype>(techId, out var tech))
+                continue;
+
+            recipes.UnionWith(tech.RecipeUnlocks);
+        }
+
+        component.UnlockedRecipes = recipes.ToList();
+    }
+
+    private void RefreshAvailableExperiments(TechnologyDatabaseComponent component)
+    {
+        var availableExperiments = new HashSet<string>();
+        foreach (var techId in component.ResearchedTechnologies)
+        {
+            if (!PrototypeManager.TryIndex<TechnologyPrototype>(techId, out var tech))
+                continue;
+
+            availableExperiments.UnionWith(tech.UnlockedExperiments);
+        }
+
+        availableExperiments.UnionWith(component.UnlockedExperiments);
+
+        foreach (var experiment in PrototypeManager.EnumeratePrototypes<ResearchExperimentPrototype>())
+        {
+            var unlockedByFlag = experiment.StartingExperiment || component.UnlockedExperiments.Contains(experiment.ID);
+            var technologiesMet = experiment.RequiredTechnologies.All(req => component.ResearchedTechnologies.Contains(req));
+            var experimentsMet = experiment.RequiredExperiments.All(req => component.CompletedExperiments.Contains(req));
+
+            if (unlockedByFlag || (technologiesMet && experimentsMet))
+                availableExperiments.Add(experiment.ID);
+        }
+
+        availableExperiments.ExceptWith(component.CompletedExperiments);
+        availableExperiments.ExceptWith(component.SkippedExperiments);
+        component.AvailableExperiments = availableExperiments.ToList();
+        component.ActiveExperiments = component.AvailableExperiments.ToList();
+
+        for (var i = component.ExperimentProgress.Count - 1; i >= 0; i--)
+        {
+            if (!component.ActiveExperiments.Contains(component.ExperimentProgress[i].ExperimentId) &&
+                !component.CompletedExperiments.Contains(component.ExperimentProgress[i].ExperimentId))
+            {
+                component.ExperimentProgress.RemoveAt(i);
+            }
+        }
+
+        foreach (var experimentId in component.ActiveExperiments)
+        {
+            if (!PrototypeManager.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
+                continue;
+
+            if (component.ExperimentProgress.Any(p => p.ExperimentId == experimentId))
+                continue;
+
+            component.ExperimentProgress.Add(new ResearchExperimentProgress
+            {
+                ExperimentId = experimentId,
+                Progress = 0,
+                Target = Math.Max(1, experiment.Objective.Target)
+            });
+        }
+    }
+
+    public ResearchTechnologyLockReason GetTechnologyLockReason(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        if (!component.SupportedDisciplines.Contains(tech.Discipline))
+            return ResearchTechnologyLockReason.NotSupported;
+
+        if (tech.Hidden && !component.RevealedTechnologies.Contains(tech.ID))
+            return ResearchTechnologyLockReason.Hidden;
+
+        if (component.ResearchedTechnologies.Contains(tech.ID))
+            return ResearchTechnologyLockReason.AlreadyResearched;
+
+        var prereqsMet = tech.AllRequiredTechnologies.All(prereq => component.ResearchedTechnologies.Contains(prereq));
+        if (!prereqsMet)
+            return ResearchTechnologyLockReason.MissingPrerequisites;
+
+        if (!HasRequiredExperiments(component, tech))
+            return ResearchTechnologyLockReason.MissingExperiments;
+
+        return component.AvailableTechnologies.Contains(tech.ID)
+            ? ResearchTechnologyLockReason.None
+            : ResearchTechnologyLockReason.MissingPrerequisites;
+    }
+
+    public ResearchTechnologyVisibilityState GetTechnologyVisibilityState(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        if (component.ResearchedTechnologies.Contains(tech.ID))
+            return ResearchTechnologyVisibilityState.Researched;
+
+        if (!component.VisibleTechnologies.Contains(tech.ID))
+            return ResearchTechnologyVisibilityState.Hidden;
+
+        if (component.AvailableTechnologies.Contains(tech.ID))
+            return ResearchTechnologyVisibilityState.Available;
+
+        return ResearchTechnologyVisibilityState.RevealedLocked;
+    }
+
+    private bool ArePassiveRevealRequirementsSatisfied(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        if (tech.RevealRequirements.Count == 0)
             return false;
 
-        foreach (var prereq in tech.TechnologyPrerequisites)
+        foreach (var requirement in tech.RevealRequirements)
         {
-            if (!component.UnlockedTechnologies.Contains(prereq))
-                return false;
+            switch (requirement)
+            {
+                case ResearchedTechnologyRevealRequirement researchedRequirement
+                    when component.ResearchedTechnologies.Contains(researchedRequirement.Technology):
+                    continue;
+
+                case CompletedExperimentRevealRequirement completedRequirement
+                    when component.CompletedExperiments.Contains(completedRequirement.Experiment):
+                    continue;
+
+                default:
+                    return false;
+            }
         }
 
         return true;
@@ -151,7 +380,7 @@ public abstract class SharedResearchSystem : EntitySystem
         var allTech = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>()
             .Where(p => p.Discipline == techDiscipline.ID && !p.Hidden).ToList();
         var allUnlocked = new List<TechnologyPrototype>();
-        foreach (var recipe in component.UnlockedTechnologies)
+        foreach (var recipe in component.ResearchedTechnologies)
         {
             var proto = PrototypeManager.Index<TechnologyPrototype>(recipe);
             if (proto.Discipline != techDiscipline.ID)
@@ -210,10 +439,11 @@ public abstract class SharedResearchSystem : EntitySystem
             description.PushNewline();
         }
 
-        if (includePrereqs && technology.TechnologyPrerequisites.Any())
+        var requiredTech = technology.AllRequiredTechnologies.ToList();
+        if (includePrereqs && requiredTech.Any())
         {
             description.AddMarkupOrThrow(Loc.GetString("research-console-prereqs-list-start"));
-            foreach (var recipe in technology.TechnologyPrerequisites)
+            foreach (var recipe in requiredTech)
             {
                 var techProto = PrototypeManager.Index(recipe);
                 description.PushNewline();
@@ -256,7 +486,7 @@ public abstract class SharedResearchSystem : EntitySystem
     /// <returns>Whether it is unlocked or not</returns>
     public bool IsTechnologyUnlocked(EntityUid uid, string technologyId, TechnologyDatabaseComponent? component = null)
     {
-        return Resolve(uid, ref component, false) && component.UnlockedTechnologies.Contains(technologyId);
+        return Resolve(uid, ref component, false) && component.ResearchedTechnologies.Contains(technologyId);
     }
 
     public void TrySetMainDiscipline(TechnologyPrototype prototype, EntityUid uid, TechnologyDatabaseComponent? component = null)
@@ -288,7 +518,7 @@ public abstract class SharedResearchSystem : EntitySystem
     [PublicAPI]
     public bool TryRemoveTechnology(Entity<TechnologyDatabaseComponent> entity, TechnologyPrototype tech)
     {
-        if (!entity.Comp.UnlockedTechnologies.Remove(tech.ID))
+        if (!entity.Comp.ResearchedTechnologies.Remove(tech.ID))
             return false;
 
         // check to make sure we didn't somehow get the recipe from another tech.
@@ -297,7 +527,7 @@ public abstract class SharedResearchSystem : EntitySystem
         foreach (var recipe in recipes)
         {
             var hasTechElsewhere = false;
-            foreach (var unlockedTech in entity.Comp.UnlockedTechnologies)
+            foreach (var unlockedTech in entity.Comp.ResearchedTechnologies)
             {
                 var unlockedTechProto = PrototypeManager.Index<TechnologyPrototype>(unlockedTech);
 
@@ -310,7 +540,7 @@ public abstract class SharedResearchSystem : EntitySystem
             if (!hasTechElsewhere)
                 entity.Comp.UnlockedRecipes.Remove(recipe);
         }
-        Dirty(entity, entity.Comp);
+        RecalculateTechnologyState(entity, entity.Comp);
         UpdateTechnologyCards(entity, entity);
         return true;
     }
@@ -321,11 +551,11 @@ public abstract class SharedResearchSystem : EntitySystem
     [PublicAPI]
     public void ClearTechs(EntityUid uid, TechnologyDatabaseComponent? comp = null)
     {
-        if (!Resolve(uid, ref comp) || comp.UnlockedTechnologies.Count == 0)
+        if (!Resolve(uid, ref comp) || comp.ResearchedTechnologies.Count == 0)
             return;
 
-        comp.UnlockedTechnologies.Clear();
-        Dirty(uid, comp);
+        comp.ResearchedTechnologies.Clear();
+        RecalculateTechnologyState(uid, comp);
     }
 
     /// <summary>

@@ -120,7 +120,13 @@
     state: icon
   discipline: Industrial
   tier: 1
+  hidden: true
   cost: 7500
+  pointCosts:
+  - type: General
+    amount: 4500
+  - type: Engineering
+    amount: 3000
   recipeUnlocks:
   # Orion-Start
   - InducerScientific
@@ -136,6 +142,15 @@
   position: 1,-6
   technologyPrerequisites:
   - IndustrialEngineering
+  revealRequirements:
+  - !type:CompletedExperimentRevealRequirement
+    id: advanced-powercells-experiment-reveal
+    experiment: ExperimentPowerCellScan
+  requiredExperiments:
+  - ExperimentIndustrialSurvey
+  discountExperiments:
+  - ExperimentPowerCellScan
+  - ExperimentEngineeringToolkit
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -258,6 +273,7 @@
     state: base
   discipline: Industrial
   tier: 2
+  hidden: true
   cost: 10000
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
@@ -309,6 +325,10 @@
   position: 2,-5
   technologyPrerequisites:
   - Shuttlecraft
+  revealRequirements:
+  - !type:DeconstructEntityRevealRequirement
+    id: deconstruct-machine-frame
+    requiredEntityPrototype: MachineFrame
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -319,7 +339,13 @@
     state: handdrill
   discipline: Industrial
   tier: 2
+  hidden: true
   cost: 12500
+  pointCosts:
+  - type: General
+    amount: 6500
+  - type: Materials
+    amount: 6000
   recipeUnlocks:
     - OreBagOfHolding
     - MiningDrillDiamond
@@ -330,6 +356,13 @@
   position: 0,-6
   technologyPrerequisites:
   - RipleyAPLU
+  revealRequirements:
+  - !type:MachineInsertionRevealRequirement
+    id: ore-processor-insertion-reveal
+    requiredMachinePrototype: OreProcessorIndustrial
+    requiredTags:
+    - Ore
+    target: 2
   # Goobstation R&D Console rework end
 
 # Tier 3

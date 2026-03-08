@@ -1,0 +1,8 @@
+- type: entity
+  parent: ResearchDisk
+  id: ResearchDataDisk
+  name: research data disk
+  description: Stores a transferable snapshot of researched technologies and point balances.
+  components:
+  - type: ResearchDisk
+    points: 0

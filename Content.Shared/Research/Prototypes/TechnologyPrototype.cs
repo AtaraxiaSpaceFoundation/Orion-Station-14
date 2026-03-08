@@ -22,7 +22,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Prototypes;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Research.Prototypes;
@@ -71,16 +74,70 @@ public sealed partial class TechnologyPrototype : IPrototype
     public bool Hidden;
 
     /// <summary>
+    /// Should this technology start as researched in every compatible database.
+    /// </summary>
+    [DataField]
+    public bool StartingTechnology;
+
+    /// <summary>
     /// How much research is needed to unlock.
     /// </summary>
     [DataField]
     public int Cost = 10000;
 
     /// <summary>
+    /// Multi-point type costs. If empty, General point cost is derived from <see cref="Cost"/>.
+    /// </summary>
+    [DataField]
+    public List<ResearchPointAmount> PointCosts = new();
+
+    /// <summary>
     /// A list of <see cref="TechnologyPrototype"/>s that need to be unlocked in order to unlock this technology.
     /// </summary>
     [DataField]
     public List<ProtoId<TechnologyPrototype>> TechnologyPrerequisites = new();
+
+    /// <summary>
+    /// The required experiments that must be completed before this technology can be researched.
+    /// </summary>
+    [DataField]
+    public List<string> RequiredExperiments = new();
+
+    /// <summary>
+    /// Experiments that can reduce the research cost for this technology.
+    /// </summary>
+    [DataField]
+    public List<string> DiscountExperiments = new();
+
+    /// <summary>
+    /// Experiments unlocked when this technology is researched.
+    /// </summary>
+    [DataField]
+    public List<string> UnlockedExperiments = new();
+
+    /// <summary>
+    /// Should this technology be announced to the station when unlocked.
+    /// </summary>
+    [DataField]
+    public bool AnnounceOnUnlock;
+
+    /// <summary>
+    /// Indicates a technology that primarily unlocks R&D infrastructure.
+    /// </summary>
+    [DataField]
+    public bool InfrastructureUnlock;
+
+    /// <summary>
+    /// Infrastructure categories unlocked by this technology.
+    /// </summary>
+    [DataField]
+    public List<string> InfrastructureUnlocks = new();
+
+    /// <summary>
+    /// Additional reveal/discovery requirements for hidden technologies.
+    /// </summary>
+    [DataField]
+    public List<TechnologyRevealRequirement> RevealRequirements = new();
 
     /// <summary>
     /// A list of <see cref="LatheRecipePrototype"/>s that are unlocked by this technology
@@ -95,11 +152,146 @@ public sealed partial class TechnologyPrototype : IPrototype
     public IReadOnlyList<GenericUnlock> GenericUnlocks = new List<GenericUnlock>();
 
     /// <summary>
+    /// Future-proof unlock list for item-discovery style systems.
+    /// </summary>
+    [DataField]
+    public List<string> ItemUnlocks = new();
+
+    /// <summary>
+    /// Future-proof unlock list for deconstruction discovery systems.
+    /// </summary>
+    [DataField]
+    public List<string> DeconstructionUnlocks = new();
+
+    /// <summary>
     /// Goobstation R&D console rework field
     /// Position of this tech in console menu
     /// </summary>
     [DataField(required: true)]
     public Vector2i Position { get; private set; }
+
+    public IEnumerable<ProtoId<TechnologyPrototype>> AllRequiredTechnologies => TechnologyPrerequisites;
+
+    public IEnumerable<ResearchPointAmount> AllPointCosts
+    {
+        get
+        {
+            if (PointCosts.Count > 0)
+                return PointCosts;
+
+            return new[]
+            {
+                new ResearchPointAmount
+                {
+                    Type = "General",
+                    Amount = Cost,
+                }
+            };
+        }
+    }
+}
+
+[Serializable, NetSerializable]
+public enum TechnologyRevealRequirementKind : byte
+{
+    ResearchedTechnology,
+    CompletedExperiment,
+    ScanEntity,
+    MachineInsertion,
+    DeconstructEntity,
+    ServerTrigger,
+}
+
+[DataDefinition, Serializable, NetSerializable]
+[ImplicitDataDefinitionForInheritors]
+public abstract partial record TechnologyRevealRequirement
+{
+    [DataField(required: true)]
+    public string Id = string.Empty;
+
+    [DataField]
+    public TechnologyRevealRequirementKind Kind;
+
+    [DataField]
+    public int Target = 1;
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record ResearchedTechnologyRevealRequirement : TechnologyRevealRequirement
+{
+    [DataField(required: true)]
+    public ProtoId<TechnologyPrototype> Technology;
+
+    public ResearchedTechnologyRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.ResearchedTechnology;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record CompletedExperimentRevealRequirement : TechnologyRevealRequirement
+{
+    [DataField(required: true)]
+    public ProtoId<ResearchExperimentPrototype> Experiment;
+
+    public CompletedExperimentRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.CompletedExperiment;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public partial record ScanEntityRevealRequirement : TechnologyRevealRequirement
+{
+    [DataField]
+    public string? RequiredEntityPrototype;
+
+    [DataField]
+    public List<string> RequiredTags = new();
+
+    public ScanEntityRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.ScanEntity;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record MachineInsertionRevealRequirement : ScanEntityRevealRequirement
+{
+    [DataField]
+    public string? RequiredMachinePrototype;
+
+    public MachineInsertionRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.MachineInsertion;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record DeconstructEntityRevealRequirement : TechnologyRevealRequirement
+{
+    [DataField]
+    public string? RequiredEntityPrototype;
+
+    [DataField]
+    public List<string> RequiredTags = new();
+
+    public DeconstructEntityRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.DeconstructEntity;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record ServerTriggerRevealRequirement : TechnologyRevealRequirement
+{
+    [DataField(required: true)]
+    public string TriggerId = string.Empty;
+
+    public ServerTriggerRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.ServerTrigger;
+    }
 }
 
 [DataDefinition]

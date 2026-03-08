@@ -1,0 +1,43 @@
+- type: researchExperimentatorOperation
+  id: FragmentPulse
+  requiredTags:
+  - ArtifactFragment
+  successChance: 0.65
+  backfireChanceOnFailure: 0.25
+  successReward:
+  - type: General
+    amount: 120
+  - type: Experimental
+    amount: 80
+  failureReward:
+  - type: General
+    amount: 35
+  successExperimentAction: experimentator_fragment_success
+  failureExperimentAction: experimentator_fragment_failure
+  backfireExperimentAction: experimentator_fragment_backfire
+  discoveryTrigger: machine:experimentator-fragment
+  backfireDamage:
+    types:
+      Heat: 8
+
+- type: researchExperimentatorOperation
+  id: AnomalousPulse
+  requiredTags:
+  - Artifact
+  successChance: 0.45
+  backfireChanceOnFailure: 0.5
+  successReward:
+  - type: Experimental
+    amount: 220
+  - type: General
+    amount: 60
+  failureReward:
+  - type: Experimental
+    amount: 20
+  successExperimentAction: experimentator_artifact_success
+  failureExperimentAction: experimentator_artifact_failure
+  backfireExperimentAction: experimentator_artifact_backfire
+  discoveryTrigger: machine:experimentator-artifact
+  backfireDamage:
+    types:
+      Shock: 20

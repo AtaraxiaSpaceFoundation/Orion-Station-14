@@ -28,6 +28,8 @@ using Content.Goobstation.Common.Research;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Research.Components;
+using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Access.Components;
 using Content.Shared.Chat;
 using Content.Shared.Emag.Systems;
@@ -125,40 +127,129 @@ public sealed partial class ResearchSystem
             return;
 
         // R&D Console Rework Start
-        var allTechs = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>().ToList();
         Dictionary<string, ResearchAvailability> techList;
+        Dictionary<string, ResearchTechnologyLockReason> lockReasons;
+        List<ResearchConsoleExperimentData> experiments;
+        var networkId = string.Empty;
+        List<ResearchPointAmount> pointBalances = new();
+        List<ResearchLogEntry> logs = new();
+        TechnologyDatabaseComponent? syncedDb = null;
         var points = 0;
 
         if (TryGetClientServer(uid, out var serverUid, out var server, clientComponent) &&
             TryComp<TechnologyDatabaseComponent>(serverUid, out var db))
         {
-            var unlockedTechs = new HashSet<ProtoId<TechnologyPrototype>>(db.UnlockedTechnologies);
-            techList = allTechs.ToDictionary(
-                proto => proto.ID,
-                proto =>
+            syncedDb = db;
+            networkId = server.NetworkId;
+            pointBalances = server.PointBalances.ToList();
+            logs = server.Logs.ToList();
+            var visible = new HashSet<ProtoId<TechnologyPrototype>>(db.VisibleTechnologies);
+            var available = new HashSet<ProtoId<TechnologyPrototype>>(db.AvailableTechnologies);
+            var researched = new HashSet<ProtoId<TechnologyPrototype>>(db.ResearchedTechnologies);
+
+            techList = visible.ToDictionary(
+                techId => techId,
+                techId =>
                 {
-                    if (unlockedTechs.Contains(proto.ID))
+                    if (researched.Contains(techId))
                         return ResearchAvailability.Researched;
 
-                    var prereqsMet = proto.TechnologyPrerequisites.All(p => unlockedTechs.Contains(p));
-                    var canAfford = server.Points >= proto.Cost;
+                    if (!available.Contains(techId))
+                        return ResearchAvailability.PrereqsMet;
 
-                    return prereqsMet ?
-                        (canAfford ? ResearchAvailability.Available : ResearchAvailability.PrereqsMet)
-                        : ResearchAvailability.Unavailable;
+                    var proto = PrototypeManager.Index<TechnologyPrototype>(techId);
+                    var finalCost = Math.Max(0, proto.Cost - GetTechnologyDiscounts(db, proto));
+                    var canAfford = server.Points >= finalCost;
+
+                    return canAfford
+                        ? ResearchAvailability.Available
+                        : ResearchAvailability.PrereqsMet;
                 });
+
+            lockReasons = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>()
+                .Where(proto => db.SupportedDisciplines.Contains(proto.Discipline))
+                .ToDictionary(proto => proto.ID, proto =>
+                {
+                    var reason = GetTechnologyLockReason(db, proto);
+                    if (reason == ResearchTechnologyLockReason.None)
+                    {
+                        var costs = proto.AllPointCosts.ToList();
+                        var generalFinal = GetTechnologyFinalCost(db, proto);
+                        for (var i = 0; i < costs.Count; i++)
+                        {
+                            if (costs[i].Type != "General")
+                                continue;
+
+                            var updated = costs[i];
+                            updated.Amount = generalFinal;
+                            costs[i] = updated;
+                        }
+
+                        if (!HasSufficientPoints(serverUid.Value, costs, server) && !db.ResearchedTechnologies.Contains(proto.ID))
+                            return ResearchTechnologyLockReason.InsufficientPoints;
+                    }
+
+                    return reason;
+                });
+
+            experiments = BuildExperimentUiData(db);
 
             if (clientComponent != null)
                 points = clientComponent.ConnectedToServer ? server.Points : 0;
         }
         else
         {
-            techList = allTechs.ToDictionary(proto => proto.ID, _ => ResearchAvailability.Unavailable);
+            techList = new Dictionary<string, ResearchAvailability>();
+            lockReasons = new Dictionary<string, ResearchTechnologyLockReason>();
+            experiments = new List<ResearchConsoleExperimentData>();
         }
 
         _uiSystem.SetUiState(uid, ResearchConsoleUiKey.Key,
-            new ResearchConsoleBoundInterfaceState(points, techList));
+            new ResearchConsoleBoundInterfaceState(
+                points,
+                techList,
+                syncedDb?.VisibleTechnologies.ToList() ?? new List<ProtoId<TechnologyPrototype>>(),
+                syncedDb?.AvailableTechnologies.ToList() ?? new List<ProtoId<TechnologyPrototype>>(),
+                syncedDb?.ResearchedTechnologies.ToList() ?? new List<ProtoId<TechnologyPrototype>>(),
+                syncedDb?.CompletedExperiments.ToList() ?? new List<string>(),
+                experiments,
+                lockReasons,
+                networkId,
+                pointBalances,
+                logs));
         // R&D Console Rework End
+    }
+
+    private List<ResearchConsoleExperimentData> BuildExperimentUiData(TechnologyDatabaseComponent database)
+    {
+        var data = new List<ResearchConsoleExperimentData>();
+        foreach (var experiment in PrototypeManager.EnumeratePrototypes<ResearchExperimentPrototype>())
+        {
+            if (experiment.Hidden && !database.ActiveExperiments.Contains(experiment.ID) && !database.CompletedExperiments.Contains(experiment.ID))
+                continue;
+
+            var progress = database.ExperimentProgress.FirstOrDefault(p => p.ExperimentId == experiment.ID);
+            var state = ResearchExperimentState.Unavailable;
+
+            if (database.SkippedExperiments.Contains(experiment.ID))
+                state = ResearchExperimentState.Skipped;
+            else if (database.CompletedExperiments.Contains(experiment.ID))
+                state = ResearchExperimentState.Completed;
+            else if (database.ActiveExperiments.Contains(experiment.ID))
+                state = ResearchExperimentState.Active;
+            else if (database.AvailableExperiments.Contains(experiment.ID))
+                state = ResearchExperimentState.Available;
+
+            if (state == ResearchExperimentState.Unavailable)
+                continue;
+
+            var target = progress.Target > 0 ? progress.Target : Math.Max(1, experiment.Objective.Target);
+            data.Add(new ResearchConsoleExperimentData(experiment.ID, progress.Progress, target, state));
+        }
+
+        return data.OrderByDescending(e => e.State == ResearchExperimentState.Active)
+            .ThenBy(e => e.Id)
+            .ToList();
     }
 
     private void OnPointsChanged(EntityUid uid, ResearchConsoleComponent component, ref ResearchServerPointsChangedEvent args)

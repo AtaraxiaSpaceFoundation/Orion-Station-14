@@ -1,0 +1,77 @@
+- type: researchExperiment
+  id: ExperimentPowerCellScan
+  name: research-experiment-powercell-scan-name
+  description: research-experiment-powercell-scan-desc
+  category: Materials
+  startingExperiment: true
+  objective: !type:ScanEntityExperimentObjective
+    target: 1
+    requiredEntityPrototype: PowerCellSmall
+  reward:
+    researchPoints: 2000
+    flatDiscount: 1500
+
+- type: researchExperiment
+  id: ExperimentIndustrialSurvey
+  name: research-experiment-industrial-survey-name
+  description: research-experiment-industrial-survey-desc
+  category: Materials
+  requiredTechnologies:
+  - SpaceScanning
+  objective: !type:PresentItemExperimentObjective
+    target: 2
+    requiredTags:
+    - Ore
+  reward:
+    researchPoints: 3000
+    unlockExperiments:
+    - ExperimentEngineeringToolkit
+
+- type: researchExperiment
+  id: ExperimentEngineeringToolkit
+  name: research-experiment-engineering-toolkit-name
+  description: research-experiment-engineering-toolkit-desc
+  category: Engineering
+  hidden: true
+  requiredExperiments:
+  - ExperimentIndustrialSurvey
+  objective: !type:PresentItemExperimentObjective
+    target: 1
+    requiredComponents:
+    - ToolComponent
+  reward:
+    researchPoints: 5000
+    percentageDiscount: 0.15
+    revealTechnologies:
+    - AdvancedPowercells
+
+- type: researchExperiment
+  id: ExperimentDestructiveFragmentStudy
+  name: research-experiment-destructive-fragment-study-name
+  description: research-experiment-destructive-fragment-study-desc
+  category: Xenoarchaeology
+  objective: !type:ActionCountExperimentObjective
+    actionId: analyze_artifact_fragment
+    target: 2
+  reward:
+    pointRewards:
+    - type: General
+      amount: 350
+    flatDiscount: 900
+
+- type: researchExperiment
+  id: ExperimentExperimentatorCalibration
+  name: research-experiment-experimentator-calibration-name
+  description: research-experiment-experimentator-calibration-desc
+  category: Experimental
+  requiredExperiments:
+  - ExperimentDestructiveFragmentStudy
+  objective: !type:ActionCountExperimentObjective
+    actionId: experimentator_fragment_success
+    target: 3
+  reward:
+    pointRewards:
+    - type: Experimental
+      amount: 500
+    revealTechnologies:
+    - FringeArtifactMethods

@@ -23,10 +23,11 @@ public static class SharedResearchSystemExtensions
         IPrototypeManager prototypeManager)
     {
         var allTech = prototypeManager.EnumeratePrototypes<TechnologyPrototype>()
-            .Where(p => p.Discipline == techDiscipline.ID && !p.Hidden).ToList();
+            .Where(p => p.Discipline == techDiscipline.ID && !p.Hidden)
+            .ToList();
 
         // Orion-Edit-Start
-        var percentage = component.UnlockedTechnologies
+        var percentage = component.ResearchedTechnologies
             .Count(x => prototypeManager.Index(x).Discipline == techDiscipline.ID) / (float) allTech.Count * 100f;
         // Orion-Edit-End
 

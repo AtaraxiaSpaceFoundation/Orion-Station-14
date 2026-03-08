@@ -9,11 +9,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Client.Research;
 using Content.Client.UserInterface.Controls;
 using Content.Goobstation.Common.Research;
 using Content.Goobstation.Shared.Research;
+using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Access.Systems;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
@@ -123,14 +126,61 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         }
     }
 
-    public void UpdateInformationPanel(int points)
+    public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
     {
-        Points = points;
+        Points = state.Points;
 
         var amountMsg = new FormattedMessage();
         amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
-            ("points", points)));
+            ("points", state.Points)));
+
+        if (!string.IsNullOrWhiteSpace(state.NetworkId))
+        {
+            amountMsg.PushNewline();
+            amountMsg.AddMarkupOrThrow($"[color=lightblue]Network:[/color] {state.NetworkId}");
+        }
+
+        foreach (var balance in state.PointBalances)
+        {
+            amountMsg.PushNewline();
+            amountMsg.AddMarkupOrThrow($"[color=lightgreen]{balance.Type}[/color]: {balance.Amount}");
+        }
         ResearchAmountLabel.SetMessage(amountMsg);
+
+        var experimentsMessage = new FormattedMessage();
+        foreach (var experiment in state.Experiments)
+        {
+            if (!_prototype.TryIndex<ResearchExperimentPrototype>(experiment.Id, out var proto))
+                continue;
+
+            var stateText = experiment.State switch
+            {
+                ResearchExperimentState.Active => Loc.GetString("research-console-experiment-state-active"),
+                ResearchExperimentState.Available => Loc.GetString("research-console-experiment-state-available"),
+                ResearchExperimentState.Completed => Loc.GetString("research-console-experiment-state-completed"),
+                ResearchExperimentState.Skipped => Loc.GetString("research-console-experiment-state-skipped"),
+                _ => Loc.GetString("research-console-experiment-state-unavailable")
+            };
+
+            experimentsMessage.AddMarkupOrThrow($"[color=lightblue]{stateText}[/color] {Loc.GetString(proto.Name)} ({experiment.Progress}/{experiment.Target})");
+            experimentsMessage.PushNewline();
+        }
+
+        if (state.Experiments.Count == 0)
+            experimentsMessage.AddMarkupOrThrow($"[color=gray]{Loc.GetString("research-console-experiments-empty")}[/color]");
+
+        if (state.Logs.Count > 0)
+        {
+            experimentsMessage.PushNewline();
+            experimentsMessage.AddMarkupOrThrow("[color=lightblue]Recent logs:[/color]");
+            foreach (var log in state.Logs.TakeLast(4))
+            {
+                experimentsMessage.PushNewline();
+                experimentsMessage.AddMarkupOrThrow($"[color=gray]{log.Category}[/color] {log.Message}");
+            }
+        }
+
+        ExperimentsLabel.SetMessage(experimentsMessage);
 
         if (!_entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database))
             return;

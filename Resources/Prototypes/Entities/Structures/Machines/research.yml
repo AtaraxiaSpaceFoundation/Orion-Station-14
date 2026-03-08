@@ -71,6 +71,7 @@
     color: "#b211b2"
   - type: LitOnPowered
   - type: ResearchServer
+  - type: ResearchServerControlStatus
   - type: TechnologyDatabase
     supportedDisciplines:
     - Industrial
@@ -125,6 +126,7 @@
     - Science
   - type: ResearchPointSource # Goobstation
     pointspersecond: 15 # Orion-TODO: Change this to 1
+    pointType: General
     active: true
 
 - type: entity
@@ -143,6 +145,7 @@
   - type: ResearchClient
   - type: ResearchPointSource
     pointspersecond: 25
+    pointType: General
     active: true
   - type: PointLight
     radius: 1.5
