@@ -74,8 +74,7 @@ namespace Content.Server.Research.Disk
         {
             foreach (var tech in disk.StoredTechnologies)
             {
-                if (!database.ResearchedTechnologies.Contains(tech))
-                    database.ResearchedTechnologies.Add(tech);
+                _research.AddTechnology(serverUid, tech, database);
             }
 
             if (TryComp<ResearchServerComponent>(serverUid, out var server))

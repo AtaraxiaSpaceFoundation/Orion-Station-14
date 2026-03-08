@@ -302,10 +302,17 @@ public sealed partial class ResearchSystem
         if (!Resolve(uid, ref component, false))
             return new[] { uid };
 
-        return EntityQuery<ResearchServerComponent>()
-            .Where(x => x.Comp.NetworkId == component.NetworkId)
-            .Select(x => x.Owner)
-            .ToList();
+        var servers = new List<EntityUid>();
+        var query = EntityQueryEnumerator<ResearchServerComponent>();
+        while (query.MoveNext(out var serverUid, out var serverComp))
+        {
+            if (serverComp.NetworkId != component.NetworkId)
+                continue;
+
+            servers.Add(serverUid);
+        }
+
+        return servers;
     }
 
     public EntityUid GetNetworkAuthority(EntityUid uid, ResearchServerComponent? component = null)

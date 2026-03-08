@@ -1,11 +1,8 @@
 using System.Linq;
 using Content.Server.Construction.Completions;
-using Content.Server.Research.Components;
 using Content.Shared._Orion.Research;
-using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
-using Content.Shared.Tag;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Research.Systems;
@@ -14,34 +11,17 @@ public sealed partial class ResearchSystem
 {
     private void InitializeDiscovery()
     {
-        SubscribeLocalEvent<ResearchConsoleComponent, AfterInteractUsingEvent>(OnDiscoveryScanByConsole);
         SubscribeLocalEvent<MetaDataComponent, EntInsertedIntoContainerMessage>(OnDiscoveryMachineInsertion);
         SubscribeLocalEvent<MetaDataComponent, ConstructionBeforeDeleteEvent>(OnDiscoveryDeconstruct);
     }
 
-    private void OnDiscoveryScanByConsole(EntityUid uid, ResearchConsoleComponent component, ref AfterInteractUsingEvent args)
-    {
-        if (args.Used == null)
-            return;
-
-        if (!TryGetClientServer(uid, out var serverUid))
-            return;
-
-        NotifyDiscoveryEvent(serverUid.Value,
-            new DiscoveryEventData
-        {
-            Type = ResearchDiscoveryEventType.ScanEntity,
-            Subject = args.Used,
-            User = args.User,
-        });
-    }
-
     private void OnDiscoveryMachineInsertion(EntityUid uid, MetaDataComponent component, ref EntInsertedIntoContainerMessage args)
     {
-        if (!TryGetResearchServerForEntity(uid, out var serverUid))
+        if (!TryGetResearchServerForEntity(uid, out var serverUid) || serverUid is not { } server)
             return;
 
-        NotifyDiscoveryEvent(serverUid.Value, new DiscoveryEventData
+        NotifyDiscoveryEvent(server,
+            new DiscoveryEventData
         {
             Type = ResearchDiscoveryEventType.MachineInsertion,
             Subject = args.Entity,
@@ -51,10 +31,10 @@ public sealed partial class ResearchSystem
 
     private void OnDiscoveryDeconstruct(EntityUid uid, MetaDataComponent component, ref ConstructionBeforeDeleteEvent args)
     {
-        if (!TryGetResearchServerForEntity(uid, out var serverUid))
+        if (!TryGetResearchServerForEntity(uid, out var serverUid) || serverUid is not { } server)
             return;
 
-        NotifyDiscoveryEvent(serverUid.Value,
+        NotifyDiscoveryEvent(server,
             new DiscoveryEventData
         {
             Type = ResearchDiscoveryEventType.DeconstructEntity,
@@ -62,8 +42,7 @@ public sealed partial class ResearchSystem
         });
     }
 
-    public bool NotifyDiscoveryEvent(EntityUid serverUid, DiscoveryEventData data,
-        TechnologyDatabaseComponent? database = null)
+    public bool NotifyDiscoveryEvent(EntityUid serverUid, DiscoveryEventData data, TechnologyDatabaseComponent? database = null)
     {
         if (!Resolve(serverUid, ref database))
             return false;
@@ -77,7 +56,7 @@ public sealed partial class ResearchSystem
             if (database.RevealedTechnologies.Contains(technology.ID))
                 continue;
 
-            if (!Enumerable.Any<TechnologyRevealRequirement>(technology.RevealRequirements))
+            if (!technology.RevealRequirements.Any())
                 continue;
 
             var changed = ProcessTechnologyDiscoveryEvent(database, technology, data);
@@ -100,14 +79,14 @@ public sealed partial class ResearchSystem
         UpdateTechnologyCards(serverUid, database);
         Dirty(serverUid, database);
 
-        if (TryComp<ResearchServerComponent>(serverUid, out var serverComp) &&
-            serverComp.Consoles.Count > 0)
+        if (!TryComp<ResearchServerComponent>(serverUid, out var serverComp) ||
+            serverComp.Clients.Count <= 0)
+            return true;
+
+        foreach (var console in serverComp.Clients)
         {
-            foreach (var console in serverComp.Consoles)
-            {
-                SyncClientWithServer(console);
-                UpdateConsoleInterface(console);
-            }
+            SyncClientWithServer(console);
+            UpdateConsoleInterface(console);
         }
 
         return true;
@@ -115,11 +94,13 @@ public sealed partial class ResearchSystem
 
     public bool TriggerDiscovery(EntityUid serverUid, string triggerId, TechnologyDatabaseComponent? database = null)
     {
-        return NotifyDiscoveryEvent(serverUid, new DiscoveryEventData
+        return NotifyDiscoveryEvent(serverUid,
+            new DiscoveryEventData
         {
             Type = ResearchDiscoveryEventType.ServerTrigger,
-            TriggerId = triggerId
-        }, database);
+            TriggerId = triggerId,
+        },
+        database);
     }
 
     private bool ProcessTechnologyDiscoveryEvent(TechnologyDatabaseComponent database,
@@ -167,10 +148,10 @@ public sealed partial class ResearchSystem
         switch (requirement)
         {
             case ScanEntityRevealRequirement scan when requirement.Kind == TechnologyRevealRequirementKind.ScanEntity:
-                return data.Type == ResearchDiscoveryEventType.ScanEntity && MatchesScanRequirement(scan, data.Subject, null);
+                return data.Type == ResearchDiscoveryEventType.ScanEntity && MatchesScanRequirement(scan, data.Subject);
 
             case MachineInsertionRevealRequirement insertion:
-                return data.Type == ResearchDiscoveryEventType.MachineInsertion && MatchesScanRequirement(insertion, data.Subject, data.Machine)
+                return data.Type == ResearchDiscoveryEventType.MachineInsertion && MatchesScanRequirement(insertion, data.Subject)
                     && (insertion.RequiredMachinePrototype == null || GetPrototypeId(data.Machine) == insertion.RequiredMachinePrototype);
 
             case DeconstructEntityRevealRequirement deconstruct:
@@ -184,7 +165,7 @@ public sealed partial class ResearchSystem
         }
     }
 
-    private bool MatchesScanRequirement(ScanEntityRevealRequirement requirement, EntityUid? subject, EntityUid? machine)
+    private bool MatchesScanRequirement(ScanEntityRevealRequirement requirement, EntityUid? subject)
     {
         if (subject == null)
             return false;
@@ -194,7 +175,7 @@ public sealed partial class ResearchSystem
 
         foreach (var tag in requirement.RequiredTags)
         {
-            if (!_tagSystem.HasTag(subject.Value, tag))
+            if (!_tag.HasTag(subject.Value, tag))
                 return false;
         }
 
@@ -211,7 +192,7 @@ public sealed partial class ResearchSystem
 
         foreach (var tag in requirement.RequiredTags)
         {
-            if (!_tagSystem.HasTag(subject.Value, tag))
+            if (!_tag.HasTag(subject.Value, tag))
                 return false;
         }
 

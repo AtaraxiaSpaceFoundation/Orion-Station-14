@@ -40,8 +40,7 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
         status.GenerationEnabled = !status.GenerationEnabled;
         Dirty(serverUid.Value, status);
 
-        _research.LogNetworkEvent(serverUid.Value, "server-control",
-            $"Point generation {(status.GenerationEnabled ? "enabled" : "disabled")} via control console.");
+        _research.LogNetworkEvent(serverUid.Value, "server-control", $"Point generation {(status.GenerationEnabled ? "enabled" : "disabled")} via control console.");
         UpdateUi(ent);
     }
 
@@ -57,8 +56,8 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
                     status?.GenerationEnabled ?? true,
                     _research.GetPointsPerSecond(s, s.Comp),
                     _research.GetPointGenerationPerSecond(s, s.Comp),
-                    s.Comp.PointBalances.Select(p => new ResearchPointAmount { Type = p.Id, Amount = p.Amount }).ToList(),
-                    s.Comp.NetworkLogs.Count);
+                    s.Comp.PointBalances.Select(p => new ResearchPointAmount { Type = p.Type, Amount = p.Amount }).ToList(),
+                    s.Comp.Logs.Count);
             })
             .OrderBy(s => s.Id)
             .ToList();

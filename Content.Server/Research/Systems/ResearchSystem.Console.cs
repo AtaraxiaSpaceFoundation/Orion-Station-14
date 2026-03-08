@@ -148,7 +148,7 @@ public sealed partial class ResearchSystem
             var researched = new HashSet<ProtoId<TechnologyPrototype>>(db.ResearchedTechnologies);
 
             techList = visible.ToDictionary(
-                techId => techId,
+                techId => techId.ToString(),
                 techId =>
                 {
                     if (researched.Contains(techId))

@@ -20,8 +20,10 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
     private void OnAfterInteractUsing(Entity<DestructiveAnalyzerComponent> ent, ref AfterInteractUsingEvent args)
     {
-        if (args.Handled || args.Used is not { } used)
+        if (args.Handled)
             return;
+
+        var used = args.Used;
 
         if (!TryComp<ResearchAnalyzableComponent>(used, out var analyzable) || analyzable.DestructiveReward.Count == 0)
             return;
@@ -35,7 +37,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
         foreach (var reward in analyzable.DestructiveReward)
         {
-            _research.ModifyServerPoints(server, reward.Id, reward.Amount);
+            _research.ModifyServerPoints(server, reward.Type, reward.Amount);
         }
 
         _research.TryProgressExperimentsWithEntity(server, used, args.User);
@@ -44,19 +46,19 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             _research.TryProgressExperimentsByAction(server, action);
         }
 
-        _research.NotifyDiscoveryEvent(server, new ResearchSystem.DiscoveryEventData
+        _research.NotifyDiscoveryEvent(server,
+            new ResearchSystem.DiscoveryEventData
         {
             Type = ResearchDiscoveryEventType.MachineInsertion,
             Subject = used,
             Machine = ent,
-            User = args.User
+            User = args.User,
         });
 
         if (!string.IsNullOrWhiteSpace(analyzable.DiscoveryTrigger))
             _research.TriggerDiscovery(server, analyzable.DiscoveryTrigger!);
 
-        _research.LogNetworkEvent(server, "destructive-analyzer",
-            $"Destructively analyzed {ToPrettyString(used)} for {analyzable.DestructiveReward.Count} reward channels.", args.User);
+        _research.LogNetworkEvent(server, "destructive-analyzer", $"Destructively analyzed {ToPrettyString(used)} for {analyzable.DestructiveReward.Count} reward channels.", args.User);
 
         Del(used);
         _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, args.User, PopupType.SmallCaution);

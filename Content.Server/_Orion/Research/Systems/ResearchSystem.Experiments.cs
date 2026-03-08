@@ -1,10 +1,10 @@
 using Content.Server.Research.Components;
+using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Content.Shared.Tag;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Research.Systems;
 
@@ -17,23 +17,37 @@ public sealed partial class ResearchSystem
         SubscribeLocalEvent<ResearchConsoleComponent, AfterInteractUsingEvent>(OnConsoleAfterInteractUsing);
     }
 
-    private static void OnConsoleAfterInteractUsing(EntityUid uid, ResearchConsoleComponent component, ref AfterInteractUsingEvent args)
+    private void OnConsoleAfterInteractUsing(EntityUid uid, ResearchConsoleComponent component, ref AfterInteractUsingEvent args)
     {
+        if (TryGetClientServer(uid, out var discoveryServerUid, out _))
+        {
+            var discoveryServer = discoveryServerUid.Value;
+            NotifyDiscoveryEvent(discoveryServer,
+                new DiscoveryEventData
+                {
+                    Type = ResearchDiscoveryEventType.ScanEntity,
+                    Subject = args.Used,
+                    User = args.User,
+                });
+        }
+
         if (args.Handled)
             return;
 
         if (!TryGetClientServer(uid, out var serverUid, out var serverComp))
             return;
 
-        if (!TryComp<TechnologyDatabaseComponent>(serverUid, out var database))
+        var server = serverUid.Value;
+
+        if (!TryComp<TechnologyDatabaseComponent>(server, out var database))
             return;
 
-        if (TryProgressExperimentsWithEntity(serverUid.Value, args.Used.Value, args.User, database, serverComp))
-        {
-            args.Handled = true;
-            SyncClientWithServer(uid);
-            UpdateConsoleInterface(uid, component);
-        }
+        if (!TryProgressExperimentsWithEntity(server, args.Used, args.User, database, serverComp))
+            return;
+
+        args.Handled = true;
+        SyncClientWithServer(uid);
+        UpdateConsoleInterface(uid, component);
     }
 
     public bool TryProgressExperimentsWithEntity(
@@ -83,8 +97,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    public bool TryProgressExperimentsByAction(EntityUid serverUid, string actionId,
-        TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
+    public bool TryProgressExperimentsByAction(EntityUid serverUid, string actionId, TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
     {
         if (!Resolve(serverUid, ref database, ref server))
             return false;
@@ -111,8 +124,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    public bool TryTriggerExperiments(EntityUid serverUid, string triggerId,
-        TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
+    public bool TryTriggerExperiments(EntityUid serverUid, string triggerId, TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
     {
         if (!Resolve(serverUid, ref database, ref server))
             return false;
@@ -139,8 +151,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    public bool TryCompleteExperimentById(EntityUid serverUid, string experimentId, EntityUid? user = null,
-        TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
+    public bool TryCompleteExperimentById(EntityUid serverUid, string experimentId, EntityUid? user = null, TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
     {
         if (!Resolve(serverUid, ref database, ref server))
             return false;
@@ -185,8 +196,7 @@ public sealed partial class ResearchSystem
         ApplyExperimentReward(serverUid, experiment, database, server);
         TriggerDiscovery(serverUid, $"experiment:{experiment.ID}", database);
 
-        _adminLog.Add(LogType.Action, LogImpact.Medium,
-            $"{ToPrettyString(user):player} completed research experiment {experiment.ID} on {ToPrettyString(serverUid)}.");
+        _adminLog.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} completed research experiment {experiment.ID} on {ToPrettyString(serverUid)}.");
     }
 
     private void ApplyExperimentReward(EntityUid serverUid,
@@ -237,15 +247,15 @@ public sealed partial class ResearchSystem
 
         switch (experiment.Objective)
         {
-            case ScanEntityExperimentObjective scanObjective:
-                if (!MatchesEntityObjective(subject, scanObjective))
+            case PresentItemExperimentObjective presentObjective:
+                if (!MatchesEntityObjective(subject, presentObjective))
                     return false;
 
                 delta = 1;
                 return true;
 
-            case PresentItemExperimentObjective presentObjective:
-                if (!MatchesEntityObjective(subject, presentObjective))
+            case ScanEntityExperimentObjective scanObjective:
+                if (!MatchesEntityObjective(subject, scanObjective))
                     return false;
 
                 delta = 1;

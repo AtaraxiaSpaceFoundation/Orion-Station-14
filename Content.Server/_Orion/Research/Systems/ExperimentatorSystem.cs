@@ -20,6 +20,7 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {
@@ -28,8 +29,10 @@ public sealed class ExperimentatorSystem : EntitySystem
 
     private void OnAfterInteractUsing(Entity<ExperimentatorComponent> ent, ref AfterInteractUsingEvent args)
     {
-        if (args.Handled || args.Used is not { } used)
+        if (args.Handled)
             return;
+
+        var used = args.Used;
 
         if (!TryComp<ResearchClientComponent>(ent, out var client))
             return;
@@ -40,7 +43,7 @@ public sealed class ExperimentatorSystem : EntitySystem
 
         foreach (var operationId in ent.Comp.Operations)
         {
-            if (!PrototypeManager.TryIndex(operationId, out ResearchExperimentatorOperationPrototype? operation))
+            if (!_prototype.TryIndex(operationId, out var operation))
                 continue;
 
             if (!OperationMatches(operation, used))
@@ -63,20 +66,24 @@ public sealed class ExperimentatorSystem : EntitySystem
         return true;
     }
 
-    private void RunOperation(Entity<ExperimentatorComponent> machine, EntityUid used, EntityUid user, EntityUid server,
-        ResearchExperimentatorOperationPrototype operation)
+    private void RunOperation(Entity<ExperimentatorComponent> machine, EntityUid used, EntityUid user, EntityUid server, ResearchExperimentatorOperationPrototype operation)
     {
         var success = _random.Prob(operation.SuccessChance);
         var rewards = success ? operation.SuccessReward : operation.FailureReward;
         foreach (var reward in rewards)
         {
-            _research.ModifyServerPoints(server, reward.Id, reward.Amount);
+            _research.ModifyServerPoints(server, reward.Type, reward.Amount);
         }
 
-        if (success && !string.IsNullOrWhiteSpace(operation.SuccessExperimentAction))
-            _research.TryProgressExperimentsByAction(server, operation.SuccessExperimentAction!);
-        else if (!success && !string.IsNullOrWhiteSpace(operation.FailureExperimentAction))
-            _research.TryProgressExperimentsByAction(server, operation.FailureExperimentAction!);
+        switch (success)
+        {
+            case true when !string.IsNullOrWhiteSpace(operation.SuccessExperimentAction):
+                _research.TryProgressExperimentsByAction(server, operation.SuccessExperimentAction!);
+                break;
+            case false when !string.IsNullOrWhiteSpace(operation.FailureExperimentAction):
+                _research.TryProgressExperimentsByAction(server, operation.FailureExperimentAction!);
+                break;
+        }
 
         var backfire = !success && _random.Prob(operation.BackfireChanceOnFailure);
         if (backfire)
@@ -87,20 +94,20 @@ public sealed class ExperimentatorSystem : EntitySystem
         }
 
         _research.TryProgressExperimentsWithEntity(server, used, user);
-        _research.NotifyDiscoveryEvent(server, new ResearchSystem.DiscoveryEventData
+        _research.NotifyDiscoveryEvent(server,
+            new ResearchSystem.DiscoveryEventData
         {
             Type = ResearchDiscoveryEventType.MachineInsertion,
             Subject = used,
             Machine = machine,
-            User = user
+            User = user,
         });
 
         if (!string.IsNullOrWhiteSpace(operation.DiscoveryTrigger))
             _research.TriggerDiscovery(server, operation.DiscoveryTrigger!);
 
         var result = backfire ? "backfire" : (success ? "success" : "failure");
-        _research.LogNetworkEvent(server, "experimentator",
-            $"Experimentator operation {operation.ID} on {ToPrettyString(used)} => {result}.", user);
+        _research.LogNetworkEvent(server, "experimentator", $"Experimentator operation {operation.ID} on {ToPrettyString(used)} => {result}.", user);
         _popup.PopupEntity(Loc.GetString($"research-experimentator-{result}"), machine, user, PopupType.SmallCaution);
 
         Del(used);
