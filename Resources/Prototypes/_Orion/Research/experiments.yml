@@ -6,7 +6,8 @@
   startingExperiment: true
   objective: !type:ScanEntityExperimentObjective
     target: 1
-    requiredEntityPrototype: PowerCellSmall
+    requiredTags:
+    - PowerCellSmall
   reward:
     researchPoints: 2000
     flatDiscount: 1500

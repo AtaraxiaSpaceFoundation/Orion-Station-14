@@ -17,7 +17,7 @@ research-netlog-discovery-hidden-tech = Скрытая технология ра
 research-netlog-server-control-generation-toggled = Генерация очков { $state } через консоль управления.
 research-netlog-server-control-state-enabled = включена
 research-netlog-server-control-state-disabled = выключена
-research-netlog-destructive-analysis-result = Деструктивный анализ завершён методом { $method }, каналов награды: { $channels }.
+research-netlog-destructive-analysis-result = Деструктивный анализ завершён методом { $method } для образца { $subject }, каналов награды: { $channels }.
 research-netlog-experiment-reward-applied = Применён пайплайн награды эксперимента: { $experiment }.
 
 research-netlog-experiment-scanner-started = Экспериментальный деструктивный сканер запущен: образцов { $count }.

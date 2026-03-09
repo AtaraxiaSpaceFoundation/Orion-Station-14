@@ -80,6 +80,14 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         return _loc.TryGetString(key, out var localized) ? localized : category;
     }
 
+    private string GetLogActorSuffix(ResearchLogEntry log)
+    {
+        if (log.Actor is not { } actor || !_entity.TryGetEntity(actor, out var uid) || !_entity.TryGetComponent<MetaDataComponent>(uid, out var meta))
+            return string.Empty;
+
+        return $" [color=#8CB6FF]({FormattedMessage.EscapeText(meta.EntityName)})[/color]";
+    }
+
     public void UpdatePanels(ResearchConsoleBoundInterfaceState state)
     {
         TechnologyCardsContainer.Children.Clear();
@@ -193,7 +201,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
                 _ => Loc.GetString("research-console-experiment-state-unavailable"),
             };
 
-            experimentsMessage.AddMarkupOrThrow($"[color=lightblue]{stateText}[/color] {Loc.GetString(proto.Name)} ({experiment.Progress}/{experiment.Target})");
+            experimentsMessage.AddMarkupOrThrow($"[bold][color=#8FD3FF]{stateText}[/color][/bold] {Loc.GetString(proto.Name)} [color=#AFC3D8]({experiment.Progress}/{experiment.Target})[/color]");
             experimentsMessage.PushNewline();
         }
 
@@ -212,9 +220,10 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
             foreach (var log in state.Logs.TakeLast(4))
             {
                 var timestamp = $"{(int) log.Timestamp.TotalHours:00}:{log.Timestamp.Minutes:00}:{log.Timestamp.Seconds:00}";
-                logsMessage.AddMarkupOrThrow($"[bold][color=#8FA4C7]{timestamp}[/color] [color=#B7C2D1]{LocalizeLogCategory(log.Category)}[/color][/bold]");
+                var category = FormattedMessage.EscapeText(LocalizeLogCategory(log.Category));
+                logsMessage.AddMarkupOrThrow($"[color=#6D788A]┌[/color] [bold][color=#9FC6FF]{timestamp}[/color] [color=#D0D9E8][{category}][/color][/bold]{GetLogActorSuffix(log)}");
                 logsMessage.PushNewline();
-                logsMessage.AddMarkupOrThrow($"[color=white]• {FormattedMessage.EscapeText(log.Message)}[/color]");
+                logsMessage.AddMarkupOrThrow($"[color=#6D788A]└[/color] [color=white]{FormattedMessage.EscapeText(log.Message)}[/color]");
                 logsMessage.PushNewline();
                 logsMessage.PushNewline();
             }

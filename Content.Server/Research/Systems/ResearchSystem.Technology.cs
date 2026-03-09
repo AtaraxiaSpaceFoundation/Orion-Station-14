@@ -163,7 +163,7 @@ public sealed partial class ResearchSystem
     /// <summary>
     ///     Adds a technology to the database without checking if it could be unlocked.
     /// </summary>
-    public void AddTechnology(EntityUid uid, TechnologyPrototype technology, TechnologyDatabaseComponent? component = null)
+    private void AddTechnology(EntityUid uid, TechnologyPrototype technology, TechnologyDatabaseComponent? component = null)
     {
         if (!Resolve(uid, ref component))
             return;
@@ -210,11 +210,7 @@ public sealed partial class ResearchSystem
     ///     taking parent technologies into account.
     /// </summary>
     /// <returns>Whether it could be unlocked or not</returns>
-    public bool CanServerUnlockTechnology(EntityUid uid,
-        TechnologyPrototype technology,
-        out List<ResearchPointAmount> finalCosts,
-        TechnologyDatabaseComponent? database = null,
-        ResearchClientComponent? client = null)
+    private bool CanServerUnlockTechnology(EntityUid uid, TechnologyPrototype technology, out List<ResearchPointAmount> finalCosts, TechnologyDatabaseComponent? database = null, ResearchClientComponent? client = null)
     {
         finalCosts = technology.AllPointCosts
             .Select(cost => new ResearchPointAmount
@@ -230,10 +226,13 @@ public sealed partial class ResearchSystem
         if (!TryGetClientServer(uid, out var serverUid, out var serverComp, client))
             return false;
 
-        if (!CanUnlockTechnology(database, technology))
+        if (!TryComp<TechnologyDatabaseComponent>(serverUid, out var serverDatabase))
             return false;
 
-        var finalGeneralCost = GetTechnologyFinalCost(database, technology);
+        if (!CanUnlockTechnology(serverDatabase, technology))
+            return false;
+
+        var finalGeneralCost = GetTechnologyFinalCost(serverDatabase, technology);
         for (var i = 0; i < finalCosts.Count; i++)
         {
             if (finalCosts[i].Type != "General")
@@ -244,10 +243,7 @@ public sealed partial class ResearchSystem
             finalCosts[i] = cost;
         }
 
-        if (!HasSufficientPoints(serverUid.Value, finalCosts, serverComp))
-            return false;
-
-        return true;
+        return HasSufficientPoints(serverUid.Value, finalCosts, serverComp);
     }
 
     public override bool CanUnlockTechnology(TechnologyDatabaseComponent component, TechnologyPrototype tech)

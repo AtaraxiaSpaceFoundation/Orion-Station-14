@@ -14,6 +14,7 @@ public sealed partial class DestructiveAnalyzerMenu : FancyWindow
     public event Action? OnServerButtonPressed;
     public event Action<string>? OnMethodSelected;
     public event Action? OnAnalyzePressed;
+    public event Action? OnEjectPressed;
 
     public DestructiveAnalyzerMenu()
     {
@@ -22,6 +23,7 @@ public sealed partial class DestructiveAnalyzerMenu : FancyWindow
 
         ServerButton.OnPressed += _ => OnServerButtonPressed?.Invoke();
         AnalyzeButton.OnPressed += _ => OnAnalyzePressed?.Invoke();
+        EjectButton.OnPressed += _ => OnEjectPressed?.Invoke();
         MethodOption.OnItemSelected += args =>
         {
             if (MethodOption.GetItemMetadata(args.Id) is not string id)
@@ -63,9 +65,14 @@ public sealed partial class DestructiveAnalyzerMenu : FancyWindow
         }
 
         var lastOperation = new FormattedMessage();
+        lastOperation.AddText($"{Loc.GetString("research-machine-common-last-subject")}: {(string.IsNullOrWhiteSpace(state.LastSubject)
+            ? Loc.GetString("research-machine-common-none")
+            : state.LastSubject)}\n");
         lastOperation.AddText($"{Loc.GetString("research-machine-common-last-result")}: {(string.IsNullOrWhiteSpace(state.LastResult)
             ? Loc.GetString("research-machine-common-none")
             : state.LastResult)}");
         LastOperationLabel.SetMessage(lastOperation);
+
+        EjectButton.Disabled = state.InsertedItem == null;
     }
 }

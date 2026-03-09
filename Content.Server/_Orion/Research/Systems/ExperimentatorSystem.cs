@@ -6,6 +6,7 @@ using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Item;
 using Content.Shared.Research.Components;
 using Content.Shared.Tag;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
@@ -26,6 +27,7 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -69,18 +71,26 @@ public sealed class ExperimentatorSystem : EntitySystem
         if (ent.Comp.IsProcessing)
         {
             ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-busy");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
         }
 
         if (!TryComp<ResearchClientComponent>(ent, out var client))
+        {
+            ent.Comp.LastSubject = string.Empty;
+            ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
+            UpdateUi(ent);
             return;
+        }
 
         var server = client.Server ?? _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault().Owner;
         if (server == EntityUid.Invalid)
         {
             ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
         }
@@ -93,7 +103,10 @@ public sealed class ExperimentatorSystem : EntitySystem
             _maps.TryGetTileRef(gridUid, gridComp, xform.Coordinates, out var tileRef))
         {
             items = _lookup.GetLocalEntitiesIntersecting(tileRef, 0f)
-                .Where(uid => uid != ent.Owner && HasComp<ItemComponent>(uid) && !HasComp<ResearchClientComponent>(uid))
+                .Where(uid => uid != ent.Owner
+                              && HasComp<ItemComponent>(uid)
+                              && !HasComp<ResearchClientComponent>(uid)
+                              && !_container.TryGetContainingContainer(uid, out _))
                 .Distinct()
                 .ToList();
         }
@@ -102,6 +115,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         {
             ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-no-items");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
         }
@@ -166,14 +180,9 @@ public sealed class ExperimentatorSystem : EntitySystem
                     continue;
 
                 if (operation.SuccessExperimentAction != null && _random.Prob(operation.SuccessChance))
-                {
                     changedAny |= _research.TryProgressExperimentsByAction(server, operation.SuccessExperimentAction);
-                }
             }
         }
-
-        var itemContainer = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
-        _container.EmptyContainer(itemContainer, true, Transform(ent).Coordinates);
 
         ent.Comp.IsProcessing = false;
         UpdateAppearance(ent, ExperimentatorVisualState.Up);
@@ -184,6 +193,9 @@ public sealed class ExperimentatorSystem : EntitySystem
                 if (TerminatingOrDeleted(ent) || ent.Comp.IsProcessing)
                     return;
 
+                var itemContainer = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+                _container.EmptyContainer(itemContainer, true, Transform(ent).Coordinates);
+
                 UpdateAppearance(ent, ExperimentatorVisualState.Idle);
             });
 
@@ -193,6 +205,12 @@ public sealed class ExperimentatorSystem : EntitySystem
             ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-progressed");
         else
             ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-no-matching-experiment");
+
+        _audio.PlayPvs(changedAny || completedCount > 0
+            ? ent.Comp.SuccessSound
+            : ent.Comp.FailureSound,
+            ent,
+            ent.Comp.AudioParams);
 
         _research.LogNetworkEvent(server,
             "experiment-scanner",

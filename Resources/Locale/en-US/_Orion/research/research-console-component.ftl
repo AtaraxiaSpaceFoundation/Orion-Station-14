@@ -17,7 +17,7 @@ research-netlog-discovery-hidden-tech = Hidden technology revealed: { $technolog
 research-netlog-server-control-generation-toggled = Point generation { $state } via control console.
 research-netlog-server-control-state-enabled = enabled
 research-netlog-server-control-state-disabled = disabled
-research-netlog-destructive-analysis-result = Destructive analysis completed by method { $method }, reward channels: { $channels }.
+research-netlog-destructive-analysis-result = Destructive analysis completed by method { $method } for sample { $subject }, reward channels: { $channels }.
 research-netlog-experiment-reward-applied = Experiment reward pipeline applied: { $experiment }.
 
 research-netlog-experiment-scanner-started = Experimental destructive scanner started: { $count } sample(s).

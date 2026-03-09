@@ -1,11 +1,11 @@
 research-experiment-powercell-scan-name = Анализ материала малой батареи
-research-experiment-powercell-scan-desc = Проведите анализ стандартной малой батареи через исследовательскую консоль.
+research-experiment-powercell-scan-desc = Проведите анализ стандартной малой батареи через деструктивный сканер.
 
 research-experiment-industrial-survey-name = Промышленный анализ руды
-research-experiment-industrial-survey-desc = Предъявите исследовательской консоли два образца руды.
+research-experiment-industrial-survey-desc = Проведите анализ образцов руды через деструктивный сканер.
 
 research-experiment-engineering-toolkit-name = Валидация инженерного набора
-research-experiment-engineering-toolkit-desc = Предъявите любой инженерный инструмент для завершения цепочки экспериментов.
+research-experiment-engineering-toolkit-desc = Проведите анализ инженерных инструментов через деструктивный сканер.
 
 research-console-experiments-title = Эксперименты
 research-console-experiments-empty = Нет доступных экспериментов.

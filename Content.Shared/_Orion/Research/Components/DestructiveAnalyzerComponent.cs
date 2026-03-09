@@ -1,3 +1,5 @@
+using Robust.Shared.Audio;
+
 namespace Content.Shared._Orion.Research.Components;
 
 [RegisterComponent]
@@ -12,21 +14,24 @@ public sealed partial class DestructiveAnalyzerComponent : Component
     [DataField]
     public TimeSpan DeconstructAnimationDuration = TimeSpan.FromSeconds(2.43f);
 
-    [DataField]
     public EntityUid? InsertedItem;
 
-    [DataField]
     public string? SelectedMethod;
 
-    [DataField]
     public bool IsProcessing;
 
-    [DataField]
     public bool LastItemAnalyzed;
 
-    [DataField]
     public string LastSubject = string.Empty;
 
-    [DataField]
     public string LastResult = string.Empty;
+
+    [DataField]
+    public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/Machines/high_tech_confirm.ogg");
+
+    [DataField]
+    public SoundSpecifier FailureSound = new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg");
+
+    [DataField]
+    public AudioParams AudioParams = AudioParams.Default.WithVolume(-8f).WithVariation(0.25f);
 }

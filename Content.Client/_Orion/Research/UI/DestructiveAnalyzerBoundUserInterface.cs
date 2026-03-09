@@ -20,6 +20,7 @@ public sealed class DestructiveAnalyzerBoundUserInterface : BoundUserInterface
         _menu.OnServerButtonPressed += () => SendMessage(new OpenResearchServerMenuMessage());
         _menu.OnAnalyzePressed += () => SendMessage(new DestructiveAnalyzerRunMessage());
         _menu.OnMethodSelected += method => SendMessage(new DestructiveAnalyzerSelectMethodMessage(method));
+        _menu.OnEjectPressed += () => SendMessage(new DestructiveAnalyzerEjectMessage());
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

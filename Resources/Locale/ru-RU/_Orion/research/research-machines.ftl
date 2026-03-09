@@ -38,6 +38,7 @@ research-machine-experimentator-no-matching-experiment = Нет активног
 research-machine-experimentator-progressed = Прогресс задачи обновлён.
 research-machine-experimentator-completed = Эксперимент(ы) завершены: {$count}.
 research-machine-destructive-run = Запустить анализ
+research-machine-eject-button = Извлечь предмет
 research-machine-destructive-item-loaded = Образец загружен.
 research-machine-destructive-no-item = Образец не вставлен.
 research-machine-destructive-already-analyzed = Загруженный образец уже проанализирован.

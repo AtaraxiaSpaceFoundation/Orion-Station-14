@@ -1,3 +1,5 @@
+using Robust.Shared.Audio;
+
 namespace Content.Shared._Orion.Research.Components;
 
 [RegisterComponent]
@@ -7,17 +9,23 @@ public sealed partial class ExperimentatorComponent : Component
     public string ContainerId = "experimentator-container";
 
     [DataField]
-    public TimeSpan ScanDuration = TimeSpan.FromSeconds(1.5f);
+    public TimeSpan ScanDuration = TimeSpan.FromSeconds(3.5f);
 
     [DataField]
     public TimeSpan CapsuleStepDuration = TimeSpan.FromSeconds(1.2f);
 
-    [DataField]
     public bool IsProcessing;
 
-    [DataField]
     public string LastSubject = string.Empty;
 
-    [DataField]
     public string LastResult = string.Empty;
+
+    [DataField]
+    public SoundSpecifier SuccessSound = new SoundPathSpecifier("/Audio/Machines/scan_finish.ogg");
+
+    [DataField]
+    public SoundSpecifier FailureSound = new SoundPathSpecifier("/Audio/Machines/buzz-two.ogg");
+
+    [DataField]
+    public AudioParams AudioParams = AudioParams.Default.WithVolume(-8f).WithVariation(0.25f);
 }

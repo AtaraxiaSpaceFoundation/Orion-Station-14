@@ -25,6 +25,11 @@ public sealed class ExperimentScannerPerformMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
+public sealed class DestructiveAnalyzerEjectMessage : BoundUserInterfaceMessage
+{
+}
+
+[Serializable, NetSerializable]
 public sealed class DestructiveAnalyzerSelectMethodMessage : BoundUserInterfaceMessage
 {
     public string MethodId;

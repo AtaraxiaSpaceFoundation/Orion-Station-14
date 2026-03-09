@@ -38,6 +38,7 @@ research-machine-experimentator-no-matching-experiment = No active experiment ma
 research-machine-experimentator-progressed = Objective progress updated.
 research-machine-experimentator-completed = Experiment(s) completed: {$count}.
 research-machine-destructive-run = Run analysis
+research-machine-eject-button = Eject item
 research-machine-destructive-item-loaded = Sample loaded.
 research-machine-destructive-no-item = No sample inserted.
 research-machine-destructive-already-analyzed = The loaded sample is already analyzed.
@@ -54,6 +55,7 @@ research-machine-experiment-scanner-no-items = No items detected on scanner tile
 research-machine-experiment-scanner-busy = Scanner is already processing samples.
 research-machine-experiment-scanner-processing = Scanner closed and started processing { $count } sample(s).
 research-machine-experiment-scanner-state-processing = processing...
+research-machine-experiment-scanner-status = Status
 
 research-machine-destructive-method-deconstruct = Deconstruct
 research-machine-destructive-method-illegaltechnology = Illegal Technology

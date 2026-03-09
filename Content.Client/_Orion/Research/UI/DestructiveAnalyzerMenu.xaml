@@ -18,6 +18,7 @@
                     <OptionButton Name="MethodOption"/>
                 </BoxContainer>
                 <Button Name="AnalyzeButton" Text="{Loc 'research-machine-destructive-run'}"/>
+                <Button Name="EjectButton" Text="{Loc 'research-machine-eject-button'}"/>
 
                 <controls:StripeBack>
                     <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
