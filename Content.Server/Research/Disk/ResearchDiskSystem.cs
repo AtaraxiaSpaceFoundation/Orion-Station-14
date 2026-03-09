@@ -41,7 +41,7 @@ namespace Content.Server.Research.Disk
                 (component.StoredTechnologies.Count > 0 || component.StoredPointBalances.Count > 0))
             {
                 ImportDiskData(args.Target.Value, component, database);
-                _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
+                _popupSystem.PopupEntity(Loc.GetString("research-disk-data-imported", ("count", component.StoredTechnologies.Count)), args.Target.Value, args.User);
                 _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-imported", ("count", component.StoredTechnologies.Count)), args.User);
                 args.Handled = true;
                 return;

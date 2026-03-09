@@ -187,7 +187,7 @@ public partial record struct TechnologyDiscoveryProgress
     public ProtoId<TechnologyPrototype> TechnologyId;
 
     [DataField]
-    public string RequirementId;
+    public string RequirementId = string.Empty;
 
     [DataField]
     public int Progress;

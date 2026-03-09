@@ -64,6 +64,7 @@ public sealed class ExperimentatorSystem : EntitySystem
     {
         if (ent.Comp.IsProcessing)
         {
+            ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-busy");
             UpdateUi(ent);
             return;
@@ -75,6 +76,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         var server = client.Server ?? _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault().Owner;
         if (server == EntityUid.Invalid)
         {
+            ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
             UpdateUi(ent);
             return;
@@ -95,6 +97,7 @@ public sealed class ExperimentatorSystem : EntitySystem
 
         if (items.Count == 0)
         {
+            ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-no-items");
             UpdateUi(ent);
             return;

@@ -117,13 +117,17 @@ public sealed partial class ResearchSystem
     /// <param name="server">The server the client is being registered to</param>
     /// <param name="clientComponent"></param>
     /// <param name="serverComponent"></param>
-    /// <param name="dirtyServer">Whether or not to dirty the server component after registration</param>
+    /// <param name="dirtyServer">Whether to dirty the server component after registration</param>
     private void RegisterClient(EntityUid client, EntityUid server, ResearchClientComponent? clientComponent = null, ResearchServerComponent? serverComponent = null,  bool dirtyServer = true)
     {
         if (!Resolve(client, ref clientComponent, false) || !Resolve(server, ref serverComponent, false))
             return;
 
-        server = GetNetworkAuthority(server, serverComponent);
+        var authorityServer = GetNetworkAuthority(server, serverComponent);
+        if (authorityServer != server)
+            serverComponent = null;
+
+        server = authorityServer;
         if (!Resolve(server, ref serverComponent, false))
             return;
 
