@@ -129,7 +129,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", scannedItems.Count)));
         UpdateUi(ent);
 
-        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.CapsuleStepDurationSeconds),
+        Timer.Spawn(ent.Comp.CapsuleStepDuration,
             () =>
             {
                 if (TerminatingOrDeleted(ent) || !ent.Comp.IsProcessing)
@@ -138,7 +138,7 @@ public sealed class ExperimentatorSystem : EntitySystem
                 UpdateAppearance(ent, ExperimentatorVisualState.Scanning);
             });
 
-        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.ScanDurationSeconds), () => CompleteScan(ent, server, scannedItems));
+        Timer.Spawn(ent.Comp.ScanDuration, () => CompleteScan(ent, server, scannedItems));
     }
 
     private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<EntityUid> scannedItems)
@@ -178,7 +178,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         ent.Comp.IsProcessing = false;
         UpdateAppearance(ent, ExperimentatorVisualState.Up);
 
-        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.CapsuleStepDurationSeconds),
+        Timer.Spawn(ent.Comp.CapsuleStepDuration,
             () =>
             {
                 if (TerminatingOrDeleted(ent) || ent.Comp.IsProcessing)
@@ -194,7 +194,13 @@ public sealed class ExperimentatorSystem : EntitySystem
         else
             ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-no-matching-experiment");
 
-        _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-result", ("completed", completedCount), ("progressed", changedAny)));
+        _research.LogNetworkEvent(server,
+            "experiment-scanner",
+            Loc.GetString("research-netlog-experiment-scanner-result",
+                ("completed", completedCount),
+                ("progressed", Loc.GetString(changedAny
+                    ? "research-netlog-experiment-scanner-progress-yes"
+                    : "research-netlog-experiment-scanner-progress-no"))));
         UpdateUi(ent);
     }
 

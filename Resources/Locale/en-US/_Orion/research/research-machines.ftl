@@ -59,3 +59,5 @@ research-machine-destructive-method-deconstruct = Deconstruct
 research-machine-destructive-method-illegaltechnology = Illegal Technology
 research-machine-destructive-method-alientechnology = Alien Technology
 research-machine-destructive-method-advancedanalysis = Advanced Analysis
+
+research-machine-destructive-living-subject-blocked = Living subjects cannot be destructively analyzed.

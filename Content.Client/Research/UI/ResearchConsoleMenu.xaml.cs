@@ -43,6 +43,8 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
+
     private readonly ResearchSystem _research;
     private readonly SpriteSystem _sprite;
     private readonly AccessReaderSystem _accessReader;
@@ -66,16 +68,16 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         Entity = entity;
     }
 
-    private static string LocalizePointType(string type)
+    private string LocalizePointType(string type)
     {
         var key = $"research-point-type-{type.ToLowerInvariant()}";
-        return Loc.TryGetString(key, out var localized) ? localized : type;
+        return _loc.TryGetString(key, out var localized) ? localized : type;
     }
 
-    private static string LocalizeLogCategory(string category)
+    private string LocalizeLogCategory(string category)
     {
         var key = $"research-log-category-{category.ToLowerInvariant()}";
-        return Loc.TryGetString(key, out var localized) ? localized : category;
+        return _loc.TryGetString(key, out var localized) ? localized : category;
     }
 
     public void UpdatePanels(ResearchConsoleBoundInterfaceState state)
@@ -113,16 +115,12 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     {
         var amountMsg = new FormattedMessage();
 
-        amountMsg.AddMarkupOrThrow($"{Loc.GetString("research-console-network-label")} {(!string.IsNullOrWhiteSpace(state.NetworkId) ? state.NetworkId : Loc.GetString("research-machine-common-none"))}");
-        var firstLine = false;
+        amountMsg.AddMarkupOrThrow($"{Loc.GetString("research-console-network-label")} [color=white]{(!string.IsNullOrWhiteSpace(state.NetworkId) ? state.NetworkId : Loc.GetString("research-machine-common-none"))}[/color]");
 
-        foreach (var balance in state.PointBalances.Where(p => !string.Equals(p.Type, "Experimental", StringComparison.OrdinalIgnoreCase)))
+        foreach (var balance in state.PointBalances.Where(p => !string.Equals(p.Type, "General", StringComparison.OrdinalIgnoreCase)))
         {
-            if (!firstLine)
-                amountMsg.PushNewline();
-
+            amountMsg.PushNewline();
             amountMsg.AddMarkupOrThrow($"[color=lightgreen]{LocalizePointType(balance.Type)}[/color]: {balance.Amount}");
-            firstLine = false;
         }
 
         ResearchAmountLabel.SetMessage(amountMsg);
@@ -192,7 +190,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
                 ResearchExperimentState.Available => Loc.GetString("research-console-experiment-state-available"),
                 ResearchExperimentState.Completed => Loc.GetString("research-console-experiment-state-completed"),
                 ResearchExperimentState.Skipped => Loc.GetString("research-console-experiment-state-skipped"),
-                _ => Loc.GetString("research-console-experiment-state-unavailable")
+                _ => Loc.GetString("research-console-experiment-state-unavailable"),
             };
 
             experimentsMessage.AddMarkupOrThrow($"[color=lightblue]{stateText}[/color] {Loc.GetString(proto.Name)} ({experiment.Progress}/{experiment.Target})");
@@ -213,11 +211,11 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         {
             foreach (var log in state.Logs.TakeLast(4))
             {
-                logsMessage.AddMarkupOrThrow($"[bold][color=#9FA7B3]{LocalizeLogCategory(log.Category)}[/color][/bold]");
+                var timestamp = $"{(int) log.Timestamp.TotalHours:00}:{log.Timestamp.Minutes:00}:{log.Timestamp.Seconds:00}";
+                logsMessage.AddMarkupOrThrow($"[bold][color=#8FA4C7]{timestamp}[/color] [color=#B7C2D1]{LocalizeLogCategory(log.Category)}[/color][/bold]");
                 logsMessage.PushNewline();
-                logsMessage.AddText(log.Message);
+                logsMessage.AddMarkupOrThrow($"[color=white]• {FormattedMessage.EscapeText(log.Message)}[/color]");
                 logsMessage.PushNewline();
-                logsMessage.AddMarkupOrThrow("[color=#3C3F52]────────────────────[/color]");
                 logsMessage.PushNewline();
             }
         }

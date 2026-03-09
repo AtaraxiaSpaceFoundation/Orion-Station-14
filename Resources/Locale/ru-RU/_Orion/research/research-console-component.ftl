@@ -20,5 +20,7 @@ research-netlog-server-control-state-disabled = выключена
 research-netlog-destructive-analysis-result = Деструктивный анализ завершён методом { $method }, каналов награды: { $channels }.
 research-netlog-experiment-reward-applied = Применён пайплайн награды эксперимента: { $experiment }.
 
-research-netlog-experiment-scanner-started = Экспериментальный деструктивный сканер запущен для { $count } образца(ов).
-research-netlog-experiment-scanner-result = Результат экспериментального деструктивного сканера: завершено={ $completed }, прогресс={ $progressed }.
+research-netlog-experiment-scanner-started = Экспериментальный деструктивный сканер запущен: образцов { $count }.
+research-netlog-experiment-scanner-result = Экспериментальный деструктивный сканер завершён: завершено экспериментов { $completed }, прогресс изменён: { $progressed }.
+research-netlog-experiment-scanner-progress-yes = да
+research-netlog-experiment-scanner-progress-no = нет

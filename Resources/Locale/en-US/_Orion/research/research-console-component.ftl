@@ -20,5 +20,7 @@ research-netlog-server-control-state-disabled = disabled
 research-netlog-destructive-analysis-result = Destructive analysis completed by method { $method }, reward channels: { $channels }.
 research-netlog-experiment-reward-applied = Experiment reward pipeline applied: { $experiment }.
 
-research-netlog-experiment-scanner-started = Experimental destructive scanner started for { $count } sample(s).
-research-netlog-experiment-scanner-result = Experimental destructive scanner result: completed={ $completed }, progressed={ $progressed }.
+research-netlog-experiment-scanner-started = Experimental destructive scanner started: { $count } sample(s).
+research-netlog-experiment-scanner-result = Experimental destructive scanner completed: experiments finished { $completed }, progress changed: { $progressed }.
+research-netlog-experiment-scanner-progress-yes = yes
+research-netlog-experiment-scanner-progress-no = no

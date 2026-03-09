@@ -60,3 +60,5 @@ research-machine-destructive-method-deconstruct = Деконструкция
 research-machine-destructive-method-illegaltechnology = Нелегальная технология
 research-machine-destructive-method-alientechnology = Инопланетная технология
 research-machine-destructive-method-advancedanalysis = Продвинутый анализ
+
+research-machine-destructive-living-subject-blocked = Живых существ нельзя деструктивно анализировать.

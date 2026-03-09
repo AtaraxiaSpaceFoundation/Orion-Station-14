@@ -7,10 +7,10 @@ public sealed partial class DestructiveAnalyzerComponent : Component
     public string ContainerId = "destructive-analyzer-container";
 
     [DataField]
-    public float InsertAnimationSeconds = 0.4f;
+    public TimeSpan InsertAnimationDuration = TimeSpan.FromSeconds(1.0f);
 
     [DataField]
-    public float DeconstructAnimationSeconds = 1f;
+    public TimeSpan DeconstructAnimationDuration = TimeSpan.FromSeconds(2.43f);
 
     [DataField]
     public EntityUid? InsertedItem;

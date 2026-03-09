@@ -4,6 +4,8 @@ using Content.Shared._Orion.Research;
 using Content.Shared.Popups;
 using Content.Shared._Orion.Research.Components;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Research.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -81,7 +83,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             : null;
 
         UpdateAppearance(ent, DestructiveAnalyzerVisualState.Inserting);
-        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.InsertAnimationSeconds),
+        Timer.Spawn(ent.Comp.InsertAnimationDuration,
             () =>
             {
                 if (TerminatingOrDeleted(ent) || ent.Comp.InsertedItem != used)
@@ -126,6 +128,13 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         if (!TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
         {
             ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-invalid-item");
+            UpdateUi(ent);
+            return;
+        }
+
+        if (TryComp<MobStateComponent>(used, out var mobState) && mobState.CurrentState == MobState.Alive)
+        {
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-living-subject-blocked");
             UpdateUi(ent);
             return;
         }
@@ -197,7 +206,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", 1));
         UpdateUi(ent);
 
-        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.DeconstructAnimationSeconds),
+        Timer.Spawn(ent.Comp.DeconstructAnimationDuration,
             () =>
             {
                 if (TerminatingOrDeleted(ent))

@@ -7,10 +7,10 @@ public sealed partial class ExperimentatorComponent : Component
     public string ContainerId = "experimentator-container";
 
     [DataField]
-    public float ScanDurationSeconds = 1.5f;
+    public TimeSpan ScanDuration = TimeSpan.FromSeconds(1.5f);
 
     [DataField]
-    public float CapsuleStepDurationSeconds = 0.25f;
+    public TimeSpan CapsuleStepDuration = TimeSpan.FromSeconds(1.2f);
 
     [DataField]
     public bool IsProcessing;
