@@ -171,7 +171,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
         foreach (var technology in analyzable.UnlockTechnologies)
         {
-            _research.UnlockTechnology(server, technology, null, true);
+            _research.AddTechnology(server, technology);
         }
 
         if (!string.IsNullOrWhiteSpace(analyzable.DiscoveryTrigger))
