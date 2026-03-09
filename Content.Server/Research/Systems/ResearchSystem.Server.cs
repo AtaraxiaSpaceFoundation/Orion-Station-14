@@ -31,19 +31,35 @@ public sealed partial class ResearchSystem
         var unusedId = EntityQuery<ResearchServerComponent>(true)
             .Max(s => s.Id) + 1;
         component.Id = unusedId;
+        AssignServerName(component);
 
         EnsurePointBalance(component, "General");
-        LogNetworkEvent(uid, "network", $"Server {component.ServerName} joined network {component.NetworkId}.");
+        LogNetworkEvent(uid, "network", Loc.GetString("research-netlog-server-joined", ("server", component.ServerName)));
         Dirty(uid, component);
     }
 
     private void OnServerShutdown(EntityUid uid, ResearchServerComponent component, ComponentShutdown args)
     {
-        LogNetworkEvent(uid, "network", $"Server {component.ServerName} left network {component.NetworkId}.");
+        LogNetworkEvent(uid, "network", Loc.GetString("research-netlog-server-left", ("server", component.ServerName)));
         foreach (var client in new List<EntityUid>(component.Clients))
         {
             UnregisterClient(client, uid, serverComponent: component, dirtyServer: false);
         }
+    }
+
+    private void AssignServerName(ResearchServerComponent component)
+    {
+        if (!string.IsNullOrWhiteSpace(component.ServerName) && component.ServerName != "RND-Server")
+            return;
+
+        const string charset = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+        var chars = new char[6];
+        for (var i = 0; i < chars.Length; i++)
+        {
+            chars[i] = charset[_random.Next(charset.Length)];
+        }
+
+        component.ServerName = $"RND-Server {new string(chars)}";
     }
 
     private void OnServerDatabaseModified(EntityUid uid, ResearchServerComponent component, ref TechnologyDatabaseModifiedEvent args)

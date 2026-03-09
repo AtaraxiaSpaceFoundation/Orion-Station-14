@@ -1,0 +1,10 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
+                      Title="{Loc 'research-console-journal-window-title'}"
+                      SetSize="620 520">
+    <PanelContainer Margin="8">
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="False">
+            <RichTextLabel Name="JournalLabel" HorizontalExpand="True" VerticalExpand="True"/>
+        </ScrollContainer>
+    </PanelContainer>
+</controls:FancyWindow>

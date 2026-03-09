@@ -17,12 +17,12 @@
   - type: ResearchClient
   - type: DestructiveAnalyzer
   - type: ActivatableUI
-    key: enum.ResearchClientUiKey.Key
+    key: enum.DestructiveAnalyzerUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
-      enum.ResearchClientUiKey.Key:
-        type: ResearchClientBoundUserInterface
+      enum.DestructiveAnalyzerUiKey.Key:
+        type: DestructiveAnalyzerBoundUserInterface
 
 - type: entity
   id: ResearchExperimentator
@@ -46,9 +46,9 @@
     - FragmentPulse
     - AnomalousPulse
   - type: ActivatableUI
-    key: enum.ResearchClientUiKey.Key
+    key: enum.ExperimentatorUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
-      enum.ResearchClientUiKey.Key:
-        type: ResearchClientBoundUserInterface
+      enum.ExperimentatorUiKey.Key:
+        type: ExperimentatorBoundUserInterface

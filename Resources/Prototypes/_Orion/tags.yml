@@ -1,4 +1,7 @@
 - type: Tag
+  id: AnomalyCore
+
+- type: Tag
   id: Cartridge50BMG
 
 - type: Tag

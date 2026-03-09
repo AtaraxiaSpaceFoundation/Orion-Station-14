@@ -8,6 +8,7 @@ using Content.Shared.Damage;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Content.Shared.Tag;
+using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -21,10 +22,66 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
         SubscribeLocalEvent<ExperimentatorComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
+        SubscribeLocalEvent<ExperimentatorComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<ExperimentatorComponent, OpenResearchServerMenuMessage>(OnOpenServerMenu);
+        SubscribeLocalEvent<ExperimentatorComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
+        SubscribeLocalEvent<ExperimentatorComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
+    }
+
+    private void OnUiOpened(Entity<ExperimentatorComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateUi(ent);
+    }
+
+    private void OnOpenServerMenu(Entity<ExperimentatorComponent> ent, ref OpenResearchServerMenuMessage args)
+    {
+        RaiseLocalEvent(ent.Owner, new ConsoleServerSelectionMessage(), true);
+    }
+
+    private void OnPointsChanged(Entity<ExperimentatorComponent> ent, ref ResearchServerPointsChangedEvent args)
+    {
+        if (!_ui.IsUiOpen(ent.Owner, ExperimentatorUiKey.Key))
+            return;
+
+        UpdateUi(ent);
+    }
+
+    private void OnRegistrationChanged(Entity<ExperimentatorComponent> ent, ref ResearchRegistrationChangedEvent args)
+    {
+        UpdateUi(ent);
+    }
+
+    private void UpdateUi(Entity<ExperimentatorComponent> ent)
+    {
+        string? serverName = null;
+        var pointBalances = new List<ResearchPointAmount>();
+        if (_research.TryGetClientServer(ent.Owner, out _, out var server))
+        {
+            serverName = server.ServerName;
+            pointBalances = server.PointBalances.ToList();
+        }
+
+        var operations = new List<ExperimentatorOperationUiData>();
+        foreach (var operationId in ent.Comp.Operations)
+        {
+            if (!_prototype.TryIndex(operationId, out var operation))
+                continue;
+
+            operations.Add(new ExperimentatorOperationUiData(
+                operation.RequiredTags.Select(tag => tag.Id).ToArray(),
+                operation.SuccessReward.ToList(),
+                operation.FailureReward.ToList(),
+                operation.SuccessChance,
+                operation.BackfireChanceOnFailure));
+        }
+
+        var state = new ExperimentatorBoundInterfaceState(serverName, pointBalances, ent.Comp.LastSubject, ent.Comp.LastResult, operations);
+        _ui.SetUiState(ent.Owner, ExperimentatorUiKey.Key, state);
     }
 
     private void OnAfterInteractUsing(Entity<ExperimentatorComponent> ent, ref AfterInteractUsingEvent args)
@@ -39,7 +96,12 @@ public sealed class ExperimentatorSystem : EntitySystem
 
         var server = client.Server ?? _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault().Owner;
         if (server == EntityUid.Invalid)
+        {
+            ent.Comp.LastSubject = ToPrettyString(used);
+            ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
+            UpdateUi(ent);
             return;
+        }
 
         foreach (var operationId in ent.Comp.Operations)
         {
@@ -50,9 +112,14 @@ public sealed class ExperimentatorSystem : EntitySystem
                 continue;
 
             RunOperation(ent, used, args.User, server, operation);
+            UpdateUi(ent);
             args.Handled = true;
             return;
         }
+
+        ent.Comp.LastSubject = ToPrettyString(used);
+        ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-last-result-no-operation");
+        UpdateUi(ent);
     }
 
     private bool OperationMatches(ResearchExperimentatorOperationPrototype operation, EntityUid used)
@@ -106,8 +173,10 @@ public sealed class ExperimentatorSystem : EntitySystem
         if (!string.IsNullOrWhiteSpace(operation.DiscoveryTrigger))
             _research.TriggerDiscovery(server, operation.DiscoveryTrigger!);
 
-        var result = backfire ? "backfire" : (success ? "success" : "failure");
-        _research.LogNetworkEvent(server, "experimentator", $"Experimentator operation {operation.ID} on {ToPrettyString(used)} => {result}.", user);
+        var result = backfire ? Loc.GetString("research-netlog-experimentator-result-backfire") : (success ? Loc.GetString("research-netlog-experimentator-result-success") : Loc.GetString("research-netlog-experimentator-result-failure"));
+        machine.Comp.LastSubject = ToPrettyString(used);
+        machine.Comp.LastResult = Loc.GetString("research-machine-experimentator-last-result", ("result", result));
+        _research.LogNetworkEvent(server, "experimentator", Loc.GetString("research-netlog-experimentator-operation", ("result", result)), user);
         _popup.PopupEntity(Loc.GetString($"research-experimentator-{result}"), machine, user, PopupType.SmallCaution);
 
         Del(used);

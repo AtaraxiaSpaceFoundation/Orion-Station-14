@@ -50,6 +50,7 @@
   - type: Tag
     tags:
     - ForceableFollow
+    - AnomalyCore # Orion
   - type: AnomalyCore
     timeToDecay: 600
     startPrice: 10000

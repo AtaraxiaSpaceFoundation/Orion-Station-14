@@ -42,22 +42,22 @@ namespace Content.Server.Research.Disk
             {
                 ImportDiskData(args.Target.Value, component, database);
                 _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
-                _research.LogNetworkEvent(args.Target.Value, "disk", $"Imported research disk data ({component.StoredTechnologies.Count} technologies).", args.User);
+                _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-imported", ("count", component.StoredTechnologies.Count)), args.User);
                 args.Handled = true;
                 return;
             }
 
-            if (TryComp<TechnologyDatabaseComponent>(args.Target, out database) && component.Points <= 0)
+            if (TryComp(args.Target, out database) && component.Points <= 0)
             {
                 ExportDiskData(uid, args.Target.Value, component, database, server);
                 _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.StoredTechnologies.Count)), args.Target.Value, args.User);
-                _research.LogNetworkEvent(args.Target.Value, "disk", $"Exported research disk data ({component.StoredTechnologies.Count} technologies).", args.User);
+                _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-exported", ("count", component.StoredTechnologies.Count)), args.User);
                 args.Handled = true;
                 return;
             }
 
             _research.ModifyServerPoints(args.Target.Value, component.Points, server);
-            _research.LogNetworkEvent(args.Target.Value, "disk", $"Applied research points from disk: {component.Points}", args.User);
+            _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-points-applied", ("points", component.Points)), args.User);
             _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
             QueueDel(uid);
             args.Handled = true;

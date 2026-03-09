@@ -23,7 +23,7 @@
 - type: researchExperimentatorOperation
   id: AnomalousPulse
   requiredTags:
-  - Artifact
+  - AnomalyCore
   successChance: 0.45
   backfireChanceOnFailure: 0.5
   successReward:

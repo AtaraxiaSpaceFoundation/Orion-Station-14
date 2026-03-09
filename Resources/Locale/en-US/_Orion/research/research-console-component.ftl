@@ -1,1 +1,14 @@
 research-console-unlock-technology-ic = Unlocked: { $technology }, for { $amount } research points.
+research-netlog-server-joined = Server { $server } joined the research network.
+research-netlog-server-left = Server { $server } left the research network.
+research-netlog-technology-unlocked = Technology unlocked: { $technology }.
+research-netlog-disk-imported = Imported research disk data ({ $count } technologies).
+research-netlog-disk-exported = Exported research disk data ({ $count } technologies).
+research-netlog-disk-points-applied = Applied research points from disk: { $points }.
+research-netlog-disk-printed = Printed technology disk for { $points } points.
+research-netlog-experiment-completed = Experiment completed: { $experiment }.
+research-netlog-destructive-analyzed = Sample destructively analyzed for { $channels } reward channels.
+research-netlog-experimentator-operation = Experimentator operation result: { $result }.
+research-netlog-experimentator-result-success = success
+research-netlog-experimentator-result-failure = failure
+research-netlog-experimentator-result-backfire = backfire

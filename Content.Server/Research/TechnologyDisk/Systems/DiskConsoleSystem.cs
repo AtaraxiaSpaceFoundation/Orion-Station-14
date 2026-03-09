@@ -63,7 +63,7 @@ public sealed class DiskConsoleSystem : EntitySystem
             return;
 
         _research.ModifyServerPoints(server.Value, -component.PricePerDisk, serverComp);
-        _research.LogNetworkEvent(server.Value, "disk", $"Printed technology disk for {component.PricePerDisk} points.", args.Actor, serverComp);
+        _research.LogNetworkEvent(server.Value, "disk", Loc.GetString("research-netlog-disk-printed", ("points", component.PricePerDisk)), args.Actor, serverComp);
         _audio.PlayPvs(component.PrintSound, uid);
 
         var printing = EnsureComp<DiskConsolePrintingComponent>(uid);

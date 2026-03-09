@@ -142,8 +142,7 @@ public abstract class SharedResearchSystem : EntitySystem
             var researched = component.ResearchedTechnologies.Contains(tech.ID);
             var prereqsMet = tech.AllRequiredTechnologies.All(prereq => component.ResearchedTechnologies.Contains(prereq));
 
-            var revealed = component.RevealedTechnologies.Contains(tech.ID);
-            var isVisible = researched || !tech.Hidden || revealed;
+            var isVisible = true;
             if (!isVisible)
                 continue;
 
@@ -303,7 +302,7 @@ public abstract class SharedResearchSystem : EntitySystem
             return ResearchTechnologyLockReason.NotSupported;
 
         if (tech.Hidden && !component.RevealedTechnologies.Contains(tech.ID))
-            return ResearchTechnologyLockReason.Hidden;
+            return ResearchTechnologyLockReason.MissingDiscovery;
 
         if (component.ResearchedTechnologies.Contains(tech.ID))
             return ResearchTechnologyLockReason.AlreadyResearched;

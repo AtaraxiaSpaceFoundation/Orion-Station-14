@@ -14,6 +14,7 @@ public sealed class ResearchServerControlBoundUserInterface : BoundUserInterface
     protected override void Open()
     {
         base.Open();
+
         _menu = this.CreateWindow<ResearchServerControlMenu>();
         _menu.OnToggleRequested += id => SendMessage(new ToggleServerGenerationMessage(id));
     }
@@ -21,6 +22,7 @@ public sealed class ResearchServerControlBoundUserInterface : BoundUserInterface
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
+
         if (state is ResearchServerControlBoundInterfaceState cast)
             _menu?.Populate(cast.Servers);
     }

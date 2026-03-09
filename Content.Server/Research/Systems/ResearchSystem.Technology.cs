@@ -142,7 +142,7 @@ public sealed partial class ResearchSystem
 
         _adminLog.Add(LogType.Action, LogImpact.Medium,
             $"{ToPrettyString(user):player} unlocked {prototype.ID} (discipline: {prototype.Discipline}, tier: {prototype.Tier}) at {ToPrettyString(client)}, for server {ToPrettyString(serverEnt.Value)}.");
-        LogNetworkEvent(serverEnt.Value, "technology", $"Technology unlocked: {prototype.ID}", user);
+        LogNetworkEvent(serverEnt.Value, "technology", Loc.GetString("research-netlog-technology-unlocked", ("technology", Loc.GetString(prototype.Name))), user);
         return true;
     }
 

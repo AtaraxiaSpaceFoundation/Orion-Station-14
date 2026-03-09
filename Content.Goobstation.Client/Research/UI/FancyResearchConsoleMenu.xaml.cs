@@ -11,6 +11,7 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Client._Orion.Research.UI;
 using Content.Client.Research;
 using Content.Client.UserInterface.Controls;
 using Content.Goobstation.Common.Research;
@@ -37,6 +38,8 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 {
     public Action<string>? OnTechnologyCardPressed;
     public Action? OnServerButtonPressed;
+    private FancyResearchConsoleLogWindow? _journalWindow;
+    private ResearchConsoleBoundInterfaceState? _lastState;
 
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -63,11 +66,6 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
     public Dictionary<string, ResearchAvailability> List = new();
 
     /// <summary>
-    /// Cached research points
-    /// </summary>
-    public int Points = 0;
-
-    /// <summary>
     /// Is tech currently being dragged
     /// </summary>
     private bool _draggin;
@@ -76,7 +74,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
     /// Global position that all tech relates to.
     /// For dragging mostly
     /// </summary>
-    private Vector2 _position = new Vector2(45, 250);
+    private Vector2 _position = new(45, 250);
     private float _zoom = 1f;
     private const float MinZoom = 0.5f;
     private const float MaxZoom = 2f;
@@ -94,6 +92,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         StaticSprite.DisplayRect.Stretch = TextureRect.StretchMode.Scale;
 
         ServerButton.OnPressed += _ => OnServerButtonPressed?.Invoke();
+        JournalButton.OnPressed += _ => ToggleJournalWindow();
         DragContainer.OnKeyBindDown += OnKeybindDown;
         DragContainer.OnKeyBindUp += OnKeybindUp;
         RecenterButton.OnPressed += _ => Recenter();
@@ -103,7 +102,9 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
     }
 
     public void SetEntity(EntityUid entity)
-        => Entity = entity;
+    {
+        Entity = entity;
+    }
 
     public void UpdatePanels(Dictionary<string, ResearchAvailability> dict)
     {
@@ -128,59 +129,28 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
     public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
     {
-        Points = state.Points;
+        _lastState = state;
 
         var amountMsg = new FormattedMessage();
-        amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
-            ("points", state.Points)));
 
         if (!string.IsNullOrWhiteSpace(state.NetworkId))
         {
             amountMsg.PushNewline();
-            amountMsg.AddMarkupOrThrow($"[color=lightblue]Network:[/color] {state.NetworkId}");
+            amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-network-label"));
         }
+
+        amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
+            ("points", state.Points)));
 
         foreach (var balance in state.PointBalances)
         {
             amountMsg.PushNewline();
-            amountMsg.AddMarkupOrThrow($"[color=lightgreen]{balance.Type}[/color]: {balance.Amount}");
+            var type = GetLocalizedPointType(balance.Type);
+            amountMsg.AddMarkupOrThrow($"[color=lightgreen]{type}[/color]: {balance.Amount}");
         }
         ResearchAmountLabel.SetMessage(amountMsg);
 
-        var experimentsMessage = new FormattedMessage();
-        foreach (var experiment in state.Experiments)
-        {
-            if (!_prototype.TryIndex<ResearchExperimentPrototype>(experiment.Id, out var proto))
-                continue;
-
-            var stateText = experiment.State switch
-            {
-                ResearchExperimentState.Active => Loc.GetString("research-console-experiment-state-active"),
-                ResearchExperimentState.Available => Loc.GetString("research-console-experiment-state-available"),
-                ResearchExperimentState.Completed => Loc.GetString("research-console-experiment-state-completed"),
-                ResearchExperimentState.Skipped => Loc.GetString("research-console-experiment-state-skipped"),
-                _ => Loc.GetString("research-console-experiment-state-unavailable")
-            };
-
-            experimentsMessage.AddMarkupOrThrow($"[color=lightblue]{stateText}[/color] {Loc.GetString(proto.Name)} ({experiment.Progress}/{experiment.Target})");
-            experimentsMessage.PushNewline();
-        }
-
-        if (state.Experiments.Count == 0)
-            experimentsMessage.AddMarkupOrThrow($"[color=gray]{Loc.GetString("research-console-experiments-empty")}[/color]");
-
-        if (state.Logs.Count > 0)
-        {
-            experimentsMessage.PushNewline();
-            experimentsMessage.AddMarkupOrThrow("[color=lightblue]Recent logs:[/color]");
-            foreach (var log in state.Logs.TakeLast(4))
-            {
-                experimentsMessage.PushNewline();
-                experimentsMessage.AddMarkupOrThrow($"[color=gray]{log.Category}[/color] {log.Message}");
-            }
-        }
-
-        ExperimentsLabel.SetMessage(experimentsMessage);
+        UpdateJournalWindow(state);
 
         if (!_entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database))
             return;
@@ -188,14 +158,14 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         TierDisplayContainer.RemoveAllChildren();
         foreach (var disciplineId in database.SupportedDisciplines)
         {
-            var discipline = _prototype.Index<TechDisciplinePrototype>(disciplineId);
+            var discipline = _prototype.Index(disciplineId);
             var tier = _research.GetTierCompletionPercentage(database, discipline, _prototype);
 
             // i'm building the small-ass control here to spare me some mild annoyance in making a new file
             var texture = new TextureRect
             {
                 TextureScale = new Vector2(2, 2),
-                VerticalAlignment = VAlignment.Center
+                VerticalAlignment = VAlignment.Center,
             };
             var label = new RichTextLabel();
             texture.Texture = _sprite.Frame0(discipline.Icon);
@@ -209,12 +179,102 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
                     label,
                     new Control
                     {
-                        MinWidth = 10
-                    }
-                }
+                        MinWidth = 10,
+                    },
+                },
             };
             TierDisplayContainer.AddChild(control);
         }
+    }
+
+    private static string GetLocalizedPointType(string type)
+    {
+        return type switch
+        {
+            "General" => Loc.GetString("research-point-type-general"),
+            "Experimental" => Loc.GetString("research-point-type-experimental"),
+            "Industrial" => Loc.GetString("research-point-type-industrial"),
+            _ => type,
+        };
+    }
+
+    private static string GetLocalizedLogCategory(string category)
+    {
+        return category switch
+        {
+            "network" => Loc.GetString("research-log-category-network"),
+            "technology" => Loc.GetString("research-log-category-technology"),
+            "disk" => Loc.GetString("research-log-category-disk"),
+            "experiment" => Loc.GetString("research-log-category-experiment"),
+            "destructive-analyzer" => Loc.GetString("research-log-category-destructive-analyzer"),
+            "experimentator" => Loc.GetString("research-log-category-experimentator"),
+            _ => category,
+        };
+    }
+
+    private void ToggleJournalWindow()
+    {
+        if (_journalWindow == null)
+        {
+            _journalWindow = new FancyResearchConsoleLogWindow();
+            _journalWindow.OnClose += () => _journalWindow = null;
+        }
+
+        if (_journalWindow.IsOpen)
+            _journalWindow.Close();
+        else
+            _journalWindow.OpenCentered();
+
+        if (_lastState != null)
+            UpdateJournalWindow(_lastState);
+    }
+
+    private void UpdateJournalWindow(ResearchConsoleBoundInterfaceState state)
+    {
+        if (_journalWindow == null)
+            return;
+
+        var message = new FormattedMessage();
+        message.AddMarkupOrThrow($"[color=lightblue]{Loc.GetString("research-console-experiments-title")}[/color]");
+        foreach (var experiment in state.Experiments)
+        {
+            if (!_prototype.TryIndex<ResearchExperimentPrototype>(experiment.Id, out var proto))
+                continue;
+
+            message.PushNewline();
+            var stateText = experiment.State switch
+            {
+                ResearchExperimentState.Active => Loc.GetString("research-console-experiment-state-active"),
+                ResearchExperimentState.Available => Loc.GetString("research-console-experiment-state-available"),
+                ResearchExperimentState.Completed => Loc.GetString("research-console-experiment-state-completed"),
+                ResearchExperimentState.Skipped => Loc.GetString("research-console-experiment-state-skipped"),
+                _ => Loc.GetString("research-console-experiment-state-unavailable"),
+            };
+
+            message.AddMarkupOrThrow($"[color=lightblue]{stateText}[/color] {Loc.GetString(proto.Name)} ({experiment.Progress}/{experiment.Target})");
+        }
+
+        if (state.Experiments.Count == 0)
+        {
+            message.PushNewline();
+            message.AddMarkupOrThrow($"[color=gray]{Loc.GetString("research-console-experiments-empty")}[/color]");
+        }
+
+        if (state.Logs.Count > 0)
+        {
+            message.PushNewline();
+            message.PushNewline();
+            message.AddMarkupOrThrow($"[color=lightblue]{Loc.GetString("research-console-journal-recent-logs") }[/color]");
+
+            foreach (var log in state.Logs.TakeLast(12))
+            {
+                message.PushNewline();
+                var category = GetLocalizedLogCategory(log.Category);
+                message.AddMarkupOrThrow($"[color=gray]{category}[/color] {log.Message}");
+            }
+        }
+
+        _journalWindow.SetJournalMessage(message);
     }
 
     #region Drag handle
@@ -296,9 +356,17 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
             return;
 
         CurrentTech = proto.ID;
-        var control = new FancyTechnologyInfoPanel(proto, _accessReader.IsAllowed(_player.LocalEntity.Value, Entity), availability, _sprite);
+        var lockReason = GetLockReason(proto);
+        var control = new FancyTechnologyInfoPanel(proto, _accessReader.IsAllowed(_player.LocalEntity.Value, Entity), availability, lockReason, _sprite, _prototype);
         control.BuyAction += args => OnTechnologyCardPressed?.Invoke(args.ID);
         InfoContainer.AddChild(control);
+    }
+
+    private ResearchTechnologyLockReason GetLockReason(TechnologyPrototype proto)
+    {
+        return !_entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database)
+            ? ResearchTechnologyLockReason.None
+            : _research.GetTechnologyLockReason(database, proto);
     }
 
     /// <summary>
@@ -322,6 +390,8 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
         DragContainer.RemoveAllChildren();
         InfoContainer.RemoveAllChildren();
+        _journalWindow?.Close();
+        _journalWindow = null;
     }
 
     private sealed partial class DisciplineButton(TechDisciplinePrototype proto) : Button

@@ -231,7 +231,7 @@ public sealed partial class ResearchSystem
             // Foundation hook for future infrastructure unlock rewards.
         }
 
-        LogNetworkEvent(serverUid, "experiment", $"Experiment completed: {experiment.ID}");
+        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-completed", ("experiment", Loc.GetString(experiment.Name))));
     }
 
     private bool TryIncrementExperimentProgress(

@@ -1,0 +1,22 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
+                      Title="{Loc 'research-machine-experimentator-window-title'}"
+                      SetSize="680 520"
+                      MinSize="560 420">
+    <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+        <Label Name="ServerLabel" StyleClasses="LabelHeading"/>
+        <RichTextLabel Name="BalanceLabel"/>
+        <Button Name="ServerButton" Text="{Loc 'research-machine-common-server-list'}"/>
+
+        <PanelContainer VerticalExpand="True">
+            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="8">
+                    <Label Text="{Loc 'research-machine-experimentator-requirements-title'}" StyleClasses="LabelSubText"/>
+                    <RichTextLabel Name="OperationsLabel"/>
+                    <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText"/>
+                    <RichTextLabel Name="LastOperationLabel"/>
+                </BoxContainer>
+            </ScrollContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>
