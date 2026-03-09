@@ -30,7 +30,7 @@ public sealed partial class ResearchSystem
             args.Points += source.Comp.PointsPerSecond;
     }
 
-    public bool CanProduce(Entity<ResearchPointSourceComponent> source)
+    private bool CanProduce(Entity<ResearchPointSourceComponent> source)
     {
         return source.Comp.Active && this.IsPowered(source, EntityManager);
     }
@@ -44,8 +44,8 @@ public sealed partial class ResearchSystem
             return;
 
         if (source.Comp.RequiredInfrastructure != null &&
-            TryComp<TechnologyDatabaseComponent>(args.Server, out var db) &&
-            !db.UnlockedInfrastructure.Contains(source.Comp.RequiredInfrastructure))
+            (!TryComp<TechnologyDatabaseComponent>(args.Server, out var db) ||
+             !db.UnlockedInfrastructure.Contains(source.Comp.RequiredInfrastructure)))
         {
             return;
         }

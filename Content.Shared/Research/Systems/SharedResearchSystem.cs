@@ -142,8 +142,7 @@ public abstract class SharedResearchSystem : EntitySystem
             var researched = component.ResearchedTechnologies.Contains(tech.ID);
             var prereqsMet = tech.AllRequiredTechnologies.All(prereq => component.ResearchedTechnologies.Contains(prereq));
 
-            var isVisible = true;
-            if (!isVisible)
+            if (tech.Hidden && !component.RevealedTechnologies.Contains(tech.ID))
                 continue;
 
             visible.Add(tech.ID);

@@ -53,8 +53,7 @@ public sealed class ResearchServerControlEntry
     public List<ResearchPointAmount> Balances;
     public int LogCount;
 
-    public ResearchServerControlEntry(int id, string name, bool generationEnabled, int totalPointsPerSecond,
-        List<ResearchPointAmount> pointGeneration, List<ResearchPointAmount> balances, int logCount)
+    public ResearchServerControlEntry(int id, string name, bool generationEnabled, int totalPointsPerSecond, List<ResearchPointAmount> pointGeneration, List<ResearchPointAmount> balances, int logCount)
     {
         Id = id;
         Name = name;

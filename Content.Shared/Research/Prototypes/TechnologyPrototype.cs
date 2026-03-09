@@ -172,6 +172,8 @@ public sealed partial class TechnologyPrototype : IPrototype
 
     public IEnumerable<ProtoId<TechnologyPrototype>> AllRequiredTechnologies => TechnologyPrerequisites;
 
+    private ResearchPointAmount[]? _cachedPointCosts;
+
     public IEnumerable<ResearchPointAmount> AllPointCosts
     {
         get
@@ -179,13 +181,13 @@ public sealed partial class TechnologyPrototype : IPrototype
             if (PointCosts.Count > 0)
                 return PointCosts;
 
-            return new[]
+            return _cachedPointCosts ??= new[]
             {
                 new ResearchPointAmount
                 {
                     Type = "General",
                     Amount = Cost,
-                }
+                },
             };
         }
     }

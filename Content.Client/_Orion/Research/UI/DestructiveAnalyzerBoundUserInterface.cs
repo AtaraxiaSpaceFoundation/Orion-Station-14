@@ -16,6 +16,7 @@ public sealed class DestructiveAnalyzerBoundUserInterface : BoundUserInterface
         base.Open();
 
         _menu = this.CreateWindow<DestructiveAnalyzerMenu>();
+        _menu.OnClose += () => _menu = null;
         _menu.OnServerButtonPressed += () => SendMessage(new OpenResearchServerMenuMessage());
         _menu.OnAnalyzePressed += () => SendMessage(new DestructiveAnalyzerRunMessage());
         _menu.OnMethodSelected += method => SendMessage(new DestructiveAnalyzerSelectMethodMessage(method));

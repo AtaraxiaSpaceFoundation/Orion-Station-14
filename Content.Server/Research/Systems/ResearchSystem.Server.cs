@@ -21,6 +21,7 @@ public sealed partial class ResearchSystem
     private void InitializeServer()
     {
         SubscribeLocalEvent<ResearchServerComponent, ComponentStartup>(OnServerStartup);
+        SubscribeLocalEvent<ResearchServerComponent, MapInitEvent>(OnServerMapInit);
         SubscribeLocalEvent<ResearchServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<ResearchServerComponent, TechnologyDatabaseModifiedEvent>(OnServerDatabaseModified);
         SubscribeLocalEvent<ResearchServerComponent, ExaminedEvent>(OnServerExamined); // Orion
@@ -31,16 +32,33 @@ public sealed partial class ResearchSystem
         var unusedId = EntityQuery<ResearchServerComponent>(true)
             .Max(s => s.Id) + 1;
         component.Id = unusedId;
-        AssignServerName(component);
 
         EnsurePointBalance(component, "General");
+        Dirty(uid, component);
+    }
+
+    private void OnServerMapInit(EntityUid uid, ResearchServerComponent component, MapInitEvent args)
+    {
+        AssignServerName(component);
         LogNetworkEvent(uid, "network", Loc.GetString("research-netlog-server-joined", ("server", component.ServerName)));
         Dirty(uid, component);
     }
 
     private void OnServerShutdown(EntityUid uid, ResearchServerComponent component, ComponentShutdown args)
     {
-        LogNetworkEvent(uid, "network", Loc.GetString("research-netlog-server-left", ("server", component.ServerName)));
+        var survivingAuthority = GetNetworkServers(uid, component)
+            .Where(s => s != uid)
+            .OrderBy(ent => TryComp<ResearchServerComponent>(ent, out var comp) ? comp.Id : int.MaxValue)
+            .FirstOrDefault();
+
+        if (survivingAuthority != default)
+        {
+            LogNetworkEvent(
+                survivingAuthority,
+                "network",
+                Loc.GetString("research-netlog-server-left", ("server", component.ServerName)));
+        }
+
         foreach (var client in new List<EntityUid>(component.Clients))
         {
             UnregisterClient(client, uid, serverComponent: component, dirtyServer: false);
@@ -100,8 +118,7 @@ public sealed partial class ResearchSystem
     /// <param name="clientComponent"></param>
     /// <param name="serverComponent"></param>
     /// <param name="dirtyServer">Whether or not to dirty the server component after registration</param>
-    public void RegisterClient(EntityUid client, EntityUid server, ResearchClientComponent? clientComponent = null,
-        ResearchServerComponent? serverComponent = null,  bool dirtyServer = true)
+    private void RegisterClient(EntityUid client, EntityUid server, ResearchClientComponent? clientComponent = null, ResearchServerComponent? serverComponent = null,  bool dirtyServer = true)
     {
         if (!Resolve(client, ref clientComponent, false) || !Resolve(server, ref serverComponent, false))
             return;
@@ -130,7 +147,7 @@ public sealed partial class ResearchSystem
     /// <param name="client"></param>
     /// <param name="clientComponent"></param>
     /// <param name="dirtyServer"></param>
-    public void UnregisterClient(EntityUid client, ResearchClientComponent? clientComponent = null, bool dirtyServer = true)
+    private void UnregisterClient(EntityUid client, ResearchClientComponent? clientComponent = null, bool dirtyServer = true)
     {
         if (!Resolve(client, ref clientComponent))
             return;
@@ -149,8 +166,7 @@ public sealed partial class ResearchSystem
     /// <param name="clientComponent"></param>
     /// <param name="serverComponent"></param>
     /// <param name="dirtyServer"></param>
-    public void UnregisterClient(EntityUid client, EntityUid server, ResearchClientComponent? clientComponent = null,
-        ResearchServerComponent? serverComponent = null, bool dirtyServer = true)
+    private void UnregisterClient(EntityUid client, EntityUid server, ResearchClientComponent? clientComponent = null, ResearchServerComponent? serverComponent = null, bool dirtyServer = true)
     {
         if (!Resolve(client, ref clientComponent, false) || !Resolve(server, ref serverComponent, false))
             return;
@@ -268,7 +284,7 @@ public sealed partial class ResearchSystem
     }
 
     // Orion-Start
-    public int GetPointBalance(EntityUid uid, string type, ResearchServerComponent? component = null)
+    private int GetPointBalance(EntityUid uid, string type, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
             return 0;
@@ -282,12 +298,21 @@ public sealed partial class ResearchSystem
         return 0;
     }
 
-    public bool HasSufficientPoints(EntityUid uid, IEnumerable<ResearchPointAmount> costs, ResearchServerComponent? component = null)
+    private bool HasSufficientPoints(EntityUid uid, IEnumerable<ResearchPointAmount> costs, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
             return false;
 
-        foreach (var cost in costs)
+        var aggregatedCosts = costs
+            .GroupBy(cost => cost.Type)
+            .Select(group => new ResearchPointAmount
+            {
+                Type = group.Key,
+                Amount = group.Sum(cost => cost.Amount),
+            })
+            .ToList();
+
+        foreach (var cost in aggregatedCosts)
         {
             if (GetPointBalance(uid, cost.Type, component) < cost.Amount)
                 return false;
@@ -296,27 +321,33 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    public bool TryConsumePoints(EntityUid uid, IEnumerable<ResearchPointAmount> costs, ResearchServerComponent? component = null)
+    private void TryConsumePoints(EntityUid uid, IEnumerable<ResearchPointAmount> costs, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
-            return false;
+            return;
 
-        var costList = costs.ToList();
+        var costList = costs
+            .GroupBy(cost => cost.Type)
+            .Select(group => new ResearchPointAmount
+            {
+                Type = group.Key,
+                Amount = group.Sum(cost => cost.Amount),
+            })
+            .ToList();
+
         if (!HasSufficientPoints(uid, costList, component))
-            return false;
+            return;
 
         foreach (var cost in costList)
         {
             ModifyServerPoints(uid, cost.Type, -cost.Amount, component);
         }
-
-        return true;
     }
 
-    public IEnumerable<EntityUid> GetNetworkServers(EntityUid uid, ResearchServerComponent? component = null)
+    private IEnumerable<EntityUid> GetNetworkServers(EntityUid uid, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
-            return new[] { uid };
+            return [uid];
 
         var servers = new List<EntityUid>();
         var query = EntityQueryEnumerator<ResearchServerComponent>();
@@ -331,7 +362,7 @@ public sealed partial class ResearchSystem
         return servers;
     }
 
-    public EntityUid GetNetworkAuthority(EntityUid uid, ResearchServerComponent? component = null)
+    private EntityUid GetNetworkAuthority(EntityUid uid, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
             return uid;
@@ -346,7 +377,20 @@ public sealed partial class ResearchSystem
         if (!Resolve(uid, ref component, false))
             return;
 
-        component.Logs.Add(new ResearchLogEntry
+        var authorityUid = GetNetworkAuthority(uid, component);
+        ResearchServerComponent? authorityComponent;
+
+        if (authorityUid == uid)
+        {
+            authorityComponent = component;
+        }
+        else if (!TryComp(authorityUid, out authorityComponent))
+        {
+            authorityUid = uid;
+            authorityComponent = component;
+        }
+
+        authorityComponent!.Logs.Add(new ResearchLogEntry
         {
             Timestamp = _timing.CurTime,
             Category = category,
@@ -354,10 +398,10 @@ public sealed partial class ResearchSystem
             Actor = actor.HasValue ? GetNetEntity(actor.Value) : null
         });
 
-        if (component.Logs.Count > 30)
-            component.Logs.RemoveAt(0);
+        if (authorityComponent.Logs.Count > 30)
+            authorityComponent.Logs.RemoveAt(0);
 
-        Dirty(uid, component);
+        Dirty(authorityUid, authorityComponent);
     }
 
     private static void EnsurePointBalance(ResearchServerComponent component, string type)
@@ -377,10 +421,10 @@ public sealed partial class ResearchSystem
         if (!args.IsInDetailsRange)
             return;
 
-        var points = GetPointsPerSecond(uid, component);
+        var generation = GetPointGenerationPerSecond(uid, component);
+        var points = generation.Sum(x => x.Amount);
         var typePoints = string.Join(", ",
-            GetPointGenerationPerSecond(uid, component)
-                .Select(x => $"{x.Type}: {x.Amount}"));
+            generation.Select(x => $"{x.Type}: {x.Amount}"));
 
         var msg = Loc.GetString("research-server-examine",
             ("name", component.ServerName),

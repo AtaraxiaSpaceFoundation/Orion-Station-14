@@ -63,9 +63,9 @@ public sealed partial class ResearchSystem
         primaryDb.MainDiscipline = otherDb.MainDiscipline;
         primaryDb.CurrentTechnologyCards = otherDb.CurrentTechnologyCards;
         primaryDb.SupportedDisciplines = otherDb.SupportedDisciplines;
-        primaryDb.VisibleTechnologies = otherDb.VisibleTechnologies;
-        primaryDb.AvailableTechnologies = otherDb.AvailableTechnologies;
-        primaryDb.ResearchedTechnologies = otherDb.ResearchedTechnologies;
+        primaryDb.VisibleTechnologies = new List<ProtoId<TechnologyPrototype>>(otherDb.VisibleTechnologies);
+        primaryDb.AvailableTechnologies = new List<ProtoId<TechnologyPrototype>>(otherDb.AvailableTechnologies);
+        primaryDb.ResearchedTechnologies = new List<ProtoId<TechnologyPrototype>>(otherDb.ResearchedTechnologies);
         primaryDb.AvailableExperiments = otherDb.AvailableExperiments;
         primaryDb.UnlockedExperiments = otherDb.UnlockedExperiments;
         primaryDb.ActiveExperiments = otherDb.ActiveExperiments;

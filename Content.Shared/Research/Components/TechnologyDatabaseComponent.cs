@@ -171,10 +171,10 @@ public partial record struct ResearchExperimentProgress
     public int Target;
 
     [DataField]
-    public HashSet<string> UniqueProgressKeys;
+    public HashSet<string> UniqueProgressKeys = new();
 
     [DataField]
-    public HashSet<NetEntity> ScannedEntities;
+    public HashSet<NetEntity> ScannedEntities = new();
 
     [DataField]
     public TimeSpan? CompletedAt;

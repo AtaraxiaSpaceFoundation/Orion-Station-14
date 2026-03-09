@@ -47,10 +47,10 @@ namespace Content.Server.Research.Disk
                 return;
             }
 
-            if (TryComp(args.Target, out database) && component.Points <= 0)
+            if (database != null && component.Points <= 0)
             {
-                ExportDiskData(uid, args.Target.Value, component, database, server);
-                _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.StoredTechnologies.Count)), args.Target.Value, args.User);
+                ExportDiskData(uid, component, database, server);
+                _popupSystem.PopupEntity(Loc.GetString("research-disk-exported", ("count", component.StoredTechnologies.Count)), args.Target.Value, args.User);
                 _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-exported", ("count", component.StoredTechnologies.Count)), args.User);
                 args.Handled = true;
                 return;
@@ -63,7 +63,7 @@ namespace Content.Server.Research.Disk
             args.Handled = true;
         }
 
-        private void ExportDiskData(EntityUid diskUid, EntityUid serverUid, ResearchDiskComponent disk, TechnologyDatabaseComponent database, ResearchServerComponent server)
+        private void ExportDiskData(EntityUid diskUid, ResearchDiskComponent disk, TechnologyDatabaseComponent database, ResearchServerComponent server)
         {
             disk.StoredTechnologies = database.ResearchedTechnologies.Select(x => x.ToString()).ToList();
             disk.StoredPointBalances = server.PointBalances.ToList();

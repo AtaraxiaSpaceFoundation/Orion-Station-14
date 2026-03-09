@@ -99,6 +99,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
 
         RequiredExperimentsLabel.SetMessage(experimentRequirements);
 
+        RequiredTechContainer.RemoveAllChildren();
         foreach (var techId in proto.TechnologyPrerequisites)
         {
             var tech = _proto.Index(techId);

@@ -157,13 +157,13 @@ public sealed partial class ResearchSystem
                     if (!available.Contains(techId))
                         return ResearchAvailability.PrereqsMet;
 
-                    var proto = PrototypeManager.Index<TechnologyPrototype>(techId);
+                    var proto = PrototypeManager.Index(techId);
                     var finalCost = Math.Max(0, proto.Cost - GetTechnologyDiscounts(db, proto));
                     var canAfford = server.Points >= finalCost;
 
                     return canAfford
                         ? ResearchAvailability.Available
-                        : ResearchAvailability.PrereqsMet;
+                        : ResearchAvailability.Unavailable;
                 });
 
             lockReasons = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>()
