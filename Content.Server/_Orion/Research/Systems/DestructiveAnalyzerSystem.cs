@@ -6,6 +6,7 @@ using Content.Shared._Orion.Research.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Research.Systems;
 
@@ -14,6 +15,10 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
+
+    private static readonly TimeSpan InsertAnimationDuration = TimeSpan.FromSeconds(0.4);
+    private static readonly TimeSpan DeconstructAnimationDuration = TimeSpan.FromSeconds(1.0);
 
     public override void Initialize()
     {
@@ -24,6 +29,12 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         SubscribeLocalEvent<DestructiveAnalyzerComponent, DestructiveAnalyzerRunMessage>(OnRun);
         SubscribeLocalEvent<DestructiveAnalyzerComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
         SubscribeLocalEvent<DestructiveAnalyzerComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
+        SubscribeLocalEvent<DestructiveAnalyzerComponent, ComponentStartup>(OnStartup);
+    }
+
+    private void OnStartup(Entity<DestructiveAnalyzerComponent> ent, ref ComponentStartup args)
+    {
+        UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
     }
 
     private void OnUiOpened(Entity<DestructiveAnalyzerComponent> ent, ref BoundUIOpenedEvent args)
@@ -52,13 +63,29 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         if (args.Handled)
             return;
 
-        ent.Comp.InsertedItem = args.Used;
+        var used = args.Used;
+        ent.Comp.InsertedItem = used;
         ent.Comp.LastItemAnalyzed = false;
-        ent.Comp.LastSubject = Name(args.Used);
+        ent.Comp.IsProcessing = false;
+        ent.Comp.LastSubject = Name(used);
         ent.Comp.LastResult = Loc.GetString("research-machine-destructive-item-loaded");
-        ent.Comp.SelectedMethod = TryComp<ResearchAnalyzableComponent>(args.Used, out var analyzable)
+        ent.Comp.SelectedMethod = TryComp<ResearchAnalyzableComponent>(used, out var analyzable)
             ? GetAvailableMethods(analyzable).FirstOrDefault()
             : null;
+
+        UpdateAppearance(ent, DestructiveAnalyzerVisualState.Inserting);
+        Timer.Spawn(InsertAnimationDuration,
+            () =>
+            {
+                if (TerminatingOrDeleted(ent))
+                    return;
+
+                if (ent.Comp.InsertedItem != used)
+                    return;
+
+                UpdateAppearance(ent, DestructiveAnalyzerVisualState.Loaded);
+            });
+
         UpdateUi(ent);
         args.Handled = true;
     }
@@ -71,9 +98,9 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
     private void OnRun(Entity<DestructiveAnalyzerComponent> ent, ref DestructiveAnalyzerRunMessage args)
     {
-        if (ent.Comp.InsertedItem is not { } used)
+        if (ent.Comp.IsProcessing)
         {
-            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-no-item");
+            ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-busy");
             UpdateUi(ent);
             return;
         }
@@ -81,6 +108,13 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         if (ent.Comp.LastItemAnalyzed)
         {
             ent.Comp.LastResult = Loc.GetString("research-machine-destructive-already-analyzed");
+            UpdateUi(ent);
+            return;
+        }
+
+        if (ent.Comp.InsertedItem is not { } used)
+        {
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-no-item");
             UpdateUi(ent);
             return;
         }
@@ -149,14 +183,40 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
                 ("method", method),
                 ("channels", rewards.Count)));
 
-        ent.Comp.LastItemAnalyzed = true;
-        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewards.Count));
+        ent.Comp.IsProcessing = true;
+        UpdateAppearance(ent, DestructiveAnalyzerVisualState.Deconstructing);
+        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", 1));
         UpdateUi(ent);
 
-        Del(used);
+        Timer.Spawn(DeconstructAnimationDuration,
+            () =>
+        {
+            if (TerminatingOrDeleted(ent))
+                return;
 
-        ent.Comp.InsertedItem = null;
-        _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
+            ent.Comp.IsProcessing = false;
+
+            if (TerminatingOrDeleted(used))
+            {
+                ent.Comp.InsertedItem = null;
+                UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
+                UpdateUi(ent);
+                return;
+            }
+
+            ent.Comp.LastItemAnalyzed = true;
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewards.Count));
+            Del(used);
+            ent.Comp.InsertedItem = null;
+            UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
+            UpdateUi(ent);
+            _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
+        });
+    }
+
+    private void UpdateAppearance(Entity<DestructiveAnalyzerComponent> ent, DestructiveAnalyzerVisualState state)
+    {
+        _appearance.SetData(ent.Owner, DestructiveAnalyzerVisuals.State, state);
     }
 
     private static List<string> GetAvailableMethods(ResearchAnalyzableComponent analyzable)

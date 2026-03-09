@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Numerics;
 using Content.Server.Research.Systems;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Components;
@@ -7,7 +6,6 @@ using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Item;
 using Content.Shared.Research.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -20,10 +18,11 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
 
     private static readonly TimeSpan ScanDuration = TimeSpan.FromSeconds(1.5);
+    private static readonly TimeSpan CapsuleStepDuration = TimeSpan.FromSeconds(0.25);
 
     public override void Initialize()
     {
@@ -32,6 +31,12 @@ public sealed class ExperimentatorSystem : EntitySystem
         SubscribeLocalEvent<ExperimentatorComponent, ExperimentScannerPerformMessage>(OnPerform);
         SubscribeLocalEvent<ExperimentatorComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
         SubscribeLocalEvent<ExperimentatorComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
+        SubscribeLocalEvent<ExperimentatorComponent, ComponentStartup>(OnStartup);
+    }
+
+    private void OnStartup(Entity<ExperimentatorComponent> ent, ref ComponentStartup args)
+    {
+        UpdateAppearance(ent, ExperimentatorVisualState.Idle);
     }
 
     private void OnUiOpened(Entity<ExperimentatorComponent> ent, ref BoundUIOpenedEvent args)
@@ -95,23 +100,28 @@ public sealed class ExperimentatorSystem : EntitySystem
             return;
         }
 
-        var hiddenItems = new List<(EntityUid Uid, EntityCoordinates Original)>(items.Count);
-        foreach (var item in items)
-        {
-            hiddenItems.Add((item, Transform(item).Coordinates));
-            _transform.SetCoordinates(item, new EntityCoordinates(ent.Owner, Vector2.Zero));
-        }
+        var scannedItems = new List<EntityUid>(items);
 
         ent.Comp.IsProcessing = true;
+        UpdateAppearance(ent, ExperimentatorVisualState.Down);
         ent.Comp.LastSubject = string.Join(", ", items.Select(uid => Name(uid)));
         ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", items.Count));
         _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", items.Count)));
         UpdateUi(ent);
 
-        Timer.Spawn(ScanDuration, () => CompleteScan(ent, server, hiddenItems));
+        Timer.Spawn(CapsuleStepDuration,
+            () =>
+        {
+            if (TerminatingOrDeleted(ent) || !ent.Comp.IsProcessing)
+                return;
+
+            UpdateAppearance(ent, ExperimentatorVisualState.Scanning);
+        });
+
+        Timer.Spawn(ScanDuration, () => CompleteScan(ent, server, scannedItems));
     }
 
-    private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<(EntityUid Uid, EntityCoordinates Original)> hiddenItems)
+    private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<EntityUid> scannedItems)
     {
         if (TerminatingOrDeleted(ent))
             return;
@@ -119,12 +129,10 @@ public sealed class ExperimentatorSystem : EntitySystem
         var changedAny = false;
         var completedCount = 0;
 
-        foreach (var (item, original) in hiddenItems)
+        foreach (var item in scannedItems)
         {
             if (TerminatingOrDeleted(item))
                 continue;
-
-            _transform.SetCoordinates(item, original);
 
             if (!_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed))
                 continue;
@@ -134,6 +142,16 @@ public sealed class ExperimentatorSystem : EntitySystem
         }
 
         ent.Comp.IsProcessing = false;
+        UpdateAppearance(ent, ExperimentatorVisualState.Up);
+
+        Timer.Spawn(CapsuleStepDuration,
+            () =>
+        {
+            if (TerminatingOrDeleted(ent) || ent.Comp.IsProcessing)
+                return;
+
+            UpdateAppearance(ent, ExperimentatorVisualState.Idle);
+        });
 
         if (completedCount > 0)
             ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-completed", ("count", completedCount));
@@ -144,6 +162,11 @@ public sealed class ExperimentatorSystem : EntitySystem
 
         _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-result", ("completed", completedCount), ("progressed", changedAny)));
         UpdateUi(ent);
+    }
+
+    private void UpdateAppearance(Entity<ExperimentatorComponent> ent, ExperimentatorVisualState state)
+    {
+        _appearance.SetData(ent.Owner, ExperimentatorVisuals.State, state);
     }
 
     private void UpdateUi(Entity<ExperimentatorComponent> ent)

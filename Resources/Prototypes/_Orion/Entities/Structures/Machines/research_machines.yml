@@ -8,6 +8,23 @@
     sprite: _Orion/Structures/Machines/destructive_analyzer.rsi
     layers:
     - state: icon
+      map: ["enum.DestructiveAnalyzerVisualLayers.Base"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.DestructiveAnalyzerVisuals.State:
+        enum.DestructiveAnalyzerVisualLayers.Base:
+          enum.DestructiveAnalyzerVisualState.Idle: { state: icon }
+          enum.DestructiveAnalyzerVisualState.Inserting: { state: inserting }
+          enum.DestructiveAnalyzerVisualState.Loaded: { state: icon-inserted }
+          enum.DestructiveAnalyzerVisualState.Deconstructing: { state: deconstructing }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: true }
+          False: { visible: false }
   - type: Physics
     bodyType: Static
   - type: Transform
@@ -32,8 +49,19 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/destructive_scanner.rsi
+    offset: 0,0.5
     layers:
     - state: icon
+      map: ["enum.ExperimentatorVisualLayers.Base"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ExperimentatorVisuals.State:
+        enum.ExperimentatorVisualLayers.Base:
+          enum.ExperimentatorVisualState.Idle: { state: icon }
+          enum.ExperimentatorVisualState.Up: { state: up }
+          enum.ExperimentatorVisualState.Down: { state: down }
+          enum.ExperimentatorVisualState.Scanning: { state: scanning }
   - type: Physics
     bodyType: Static
   - type: Transform

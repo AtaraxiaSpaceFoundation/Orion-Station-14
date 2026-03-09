@@ -10,6 +10,9 @@ public sealed partial class DestructiveAnalyzerComponent : Component
     public string? SelectedMethod;
 
     [DataField]
+    public bool IsProcessing;
+
+    [DataField]
     public bool LastItemAnalyzed;
 
     [DataField]
