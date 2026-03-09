@@ -66,6 +66,18 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         Entity = entity;
     }
 
+    private static string LocalizePointType(string type)
+    {
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : type;
+    }
+
+    private static string LocalizeLogCategory(string category)
+    {
+        var key = $"research-log-category-{category.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : category;
+    }
+
     public void UpdatePanels(ResearchConsoleBoundInterfaceState state)
     {
         TechnologyCardsContainer.Children.Clear();
@@ -100,19 +112,21 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
     {
         var amountMsg = new FormattedMessage();
-        amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
-            ("points", state.Points)));
 
+        var firstLine = true;
         if (!string.IsNullOrWhiteSpace(state.NetworkId))
         {
-            amountMsg.PushNewline();
-            amountMsg.AddMarkupOrThrow($"[color=lightblue]Network:[/color] {state.NetworkId}");
+            amountMsg.AddMarkupOrThrow($"{Loc.GetString("research-console-network-label")} {state.NetworkId}");
+            firstLine = false;
         }
 
         foreach (var balance in state.PointBalances)
         {
-            amountMsg.PushNewline();
-            amountMsg.AddMarkupOrThrow($"[color=lightgreen]{balance.Type}[/color]: {balance.Amount}");
+            if (!firstLine)
+                amountMsg.PushNewline();
+
+            amountMsg.AddMarkupOrThrow($"[color=lightgreen]{LocalizePointType(balance.Type)}[/color]: {balance.Amount}");
+            firstLine = false;
         }
 
         ResearchAmountLabel.SetMessage(amountMsg);
@@ -191,18 +205,23 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         if (state.Experiments.Count == 0)
             experimentsMessage.AddMarkupOrThrow($"[color=gray]{Loc.GetString("research-console-experiments-empty")}[/color]");
 
-        if (state.Logs.Count > 0)
+        ExperimentsLabel.SetMessage(experimentsMessage);
+
+        var logsMessage = new FormattedMessage();
+        if (state.Logs.Count == 0)
         {
-            experimentsMessage.PushNewline();
-            experimentsMessage.AddMarkupOrThrow("[color=lightblue]Recent logs:[/color]");
+            logsMessage.AddMarkupOrThrow($"[color=gray]{Loc.GetString("research-console-logs-empty")}[/color]");
+        }
+        else
+        {
             foreach (var log in state.Logs.TakeLast(4))
             {
-                experimentsMessage.PushNewline();
-                experimentsMessage.AddMarkupOrThrow($"[color=gray]{log.Category}[/color] {log.Message}");
+                logsMessage.AddMarkupOrThrow($"[color=gray]{LocalizeLogCategory(log.Category)}[/color] [color=lightblue]|[/color] {log.Message}");
+                logsMessage.PushNewline();
             }
         }
 
-        ExperimentsLabel.SetMessage(experimentsMessage);
+        RecentLogsLabel.SetMessage(logsMessage);
     }
 
     /// <summary>

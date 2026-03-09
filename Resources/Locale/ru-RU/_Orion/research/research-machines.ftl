@@ -20,10 +20,13 @@ research-machine-experimentator-window-title = Экспериментатор
 research-machine-experimentator-requirements-title = Операции и требования
 research-machine-experimentator-operations-empty = Нет доступных операций.
 research-machine-experimentator-operation-label = Операция { $index }
-research-machine-experimentator-operation-tags = Требуемые теги
 research-machine-experimentator-operation-success = Шанс успеха
 research-machine-experimentator-operation-backfire = Шанс обратного эффекта
 research-machine-experimentator-last-result = Операция завершена: { $result }.
 research-machine-experimentator-last-result-no-operation = Для этого предмета нет подходящей операции.
 research-machine-experimentator-operation-success-reward = Награда при успехе
 research-machine-experimentator-operation-failure-reward = Награда при неудаче
+
+research-machine-experimentator-operation-subject = Подходящий образец
+research-machine-experimentator-operation-subject-FragmentPulse = фрагмент артефакта
+research-machine-experimentator-operation-subject-AnomalousPulse = ядро аномалии

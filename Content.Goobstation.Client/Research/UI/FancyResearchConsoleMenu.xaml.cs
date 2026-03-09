@@ -132,15 +132,14 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         _lastState = state;
 
         var amountMsg = new FormattedMessage();
+        amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
+            ("points", state.Points)));
 
         if (!string.IsNullOrWhiteSpace(state.NetworkId))
         {
             amountMsg.PushNewline();
             amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-network-label"));
         }
-
-        amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
-            ("points", state.Points)));
 
         foreach (var balance in state.PointBalances)
         {

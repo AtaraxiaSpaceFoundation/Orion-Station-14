@@ -103,7 +103,9 @@ SPDX-License-Identifier: MIT
                     </ScrollContainer>
                 </PanelContainer>
                 <Control MinHeight="8"/>
-                <Label Text="{Loc 'research-console-experiments-title'}" HorizontalAlignment="Center"/>
+                <controls:StripeBack>
+                    <Label Text="{Loc 'research-console-experiments-title'}" HorizontalAlignment="Center" Margin="0 2"/>
+                </controls:StripeBack>
                 <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 8"/>
                 <PanelContainer VerticalExpand="True" MinSize="0 140">
                     <PanelContainer.PanelOverride>
@@ -113,11 +115,19 @@ SPDX-License-Identifier: MIT
                         HScrollEnabled="False"
                         HorizontalExpand="True"
                         VerticalExpand="True">
-                        <RichTextLabel
-                            Name="ExperimentsLabel"
-                            HorizontalExpand="True"
-                            VerticalExpand="True"
-                            Margin="6"/>
+                        <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="6" HorizontalExpand="True" VerticalExpand="True">
+                            <RichTextLabel
+                                Name="ExperimentsLabel"
+                                HorizontalExpand="True"
+                                VerticalExpand="True"/>
+                            <controls:StripeBack>
+                                <Label Text="{Loc 'research-console-journal-recent-logs'}" HorizontalAlignment="Center" Margin="0 2"/>
+                            </controls:StripeBack>
+                            <RichTextLabel
+                                Name="RecentLogsLabel"
+                                HorizontalExpand="True"
+                                VerticalExpand="True"/>
+                        </BoxContainer>
                     </ScrollContainer>
                 </PanelContainer>
             </BoxContainer>

@@ -12,3 +12,8 @@ research-netlog-experimentator-operation = Результат операции �
 research-netlog-experimentator-result-success = успех
 research-netlog-experimentator-result-failure = неудача
 research-netlog-experimentator-result-backfire = обратный эффект
+
+research-netlog-discovery-hidden-tech = Скрытая технология раскрыта: { $technology }.
+research-netlog-server-control-generation-toggled = Генерация очков { $state } через консоль управления.
+research-netlog-server-control-state-enabled = включена
+research-netlog-server-control-state-disabled = выключена

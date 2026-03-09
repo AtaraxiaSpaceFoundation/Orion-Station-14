@@ -56,20 +56,20 @@ public sealed partial class ResearchSystem
             if (database.RevealedTechnologies.Contains(technology.ID))
                 continue;
 
-            if (!technology.RevealRequirements.Any())
+            if (technology.RevealRequirements.Count == 0)
                 continue;
 
             var changed = ProcessTechnologyDiscoveryEvent(database, technology, data);
             if (!changed)
                 continue;
 
-            if (AreRevealRequirementsSatisfied(database, technology))
-            {
-                database.RevealedTechnologies.Add(technology.ID);
-                revealedAny = true;
-                _sawmill.Info($"Revealed hidden technology {technology.ID} via discovery event {data.Type}.");
-                LogNetworkEvent(serverUid, "discovery", $"Hidden technology revealed: {technology.ID}", data.User);
-            }
+            if (!AreRevealRequirementsSatisfied(database, technology))
+                continue;
+
+            database.RevealedTechnologies.Add(technology.ID);
+            revealedAny = true;
+            _sawmill.Info($"Revealed hidden technology {technology.ID} via discovery event {data.Type}.");
+            LogNetworkEvent(serverUid, "discovery", Loc.GetString("research-netlog-discovery-hidden-tech", ("technology", Loc.GetString(technology.Name))), data.User);
         }
 
         if (!revealedAny)
@@ -125,10 +125,7 @@ public sealed partial class ResearchSystem
 
     private bool AreRevealRequirementsSatisfied(TechnologyDatabaseComponent database, TechnologyPrototype technology)
     {
-        if (!technology.RevealRequirements.Any())
-            return true;
-
-        return technology.RevealRequirements.All(req => IsRevealRequirementSatisfied(database, technology.ID, req));
+        return technology.RevealRequirements.Count == 0 || technology.RevealRequirements.All(req => IsRevealRequirementSatisfied(database, technology.ID, req));
     }
 
     private bool IsRevealRequirementSatisfied(TechnologyDatabaseComponent database,
@@ -235,7 +232,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    private int GetDiscoveryProgress(TechnologyDatabaseComponent database, string technologyId, string requirementId)
+    private static int GetDiscoveryProgress(TechnologyDatabaseComponent database, string technologyId, string requirementId)
     {
         foreach (var entry in database.DiscoveryProgress)
         {

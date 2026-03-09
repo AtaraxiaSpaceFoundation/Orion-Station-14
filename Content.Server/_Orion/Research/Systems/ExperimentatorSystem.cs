@@ -73,7 +73,7 @@ public sealed class ExperimentatorSystem : EntitySystem
                 continue;
 
             operations.Add(new ExperimentatorOperationUiData(
-                operation.RequiredTags.Select(tag => tag.Id).ToArray(),
+                operation.ID,
                 operation.SuccessReward.ToList(),
                 operation.FailureReward.ToList(),
                 operation.SuccessChance,

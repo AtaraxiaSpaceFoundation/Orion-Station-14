@@ -12,3 +12,8 @@ research-netlog-experimentator-operation = Experimentator operation result: { $r
 research-netlog-experimentator-result-success = success
 research-netlog-experimentator-result-failure = failure
 research-netlog-experimentator-result-backfire = backfire
+
+research-netlog-discovery-hidden-tech = Hidden technology revealed: { $technology }.
+research-netlog-server-control-generation-toggled = Point generation { $state } via control console.
+research-netlog-server-control-state-enabled = enabled
+research-netlog-server-control-state-disabled = disabled

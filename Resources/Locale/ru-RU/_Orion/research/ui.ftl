@@ -1,7 +1,7 @@
 research-console-menu-journal-button = Логи РнД
 research-console-journal-window-title = Логи РнД
-research-console-journal-recent-logs = Последние записи:
-research-console-network-label = [color=lightblue]Сеть:[/color] Единая исследовательская сеть
+research-console-journal-recent-logs = Последние записи
+research-console-network-label = [color=lightblue]Сеть:[/color]
 research-console-tech-required-experiments-title = Требуемые эксперименты:
 research-point-type-general = Общие
 research-point-type-experimental = Экспериментальные
@@ -12,3 +12,10 @@ research-log-category-disk = Диск
 research-log-category-experiment = Эксперимент
 research-log-category-destructive-analyzer = Анализатор
 research-log-category-experimentator = Экспериментатор
+
+research-console-logs-empty = Нет записей.
+research-server-name-base = РнД-сервер
+research-server-name-with-suffix = РнД-сервер { $suffix }
+
+research-log-category-discovery = Открытие
+research-log-category-server-control = Управление

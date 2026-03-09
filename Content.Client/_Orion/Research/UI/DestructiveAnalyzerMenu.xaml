@@ -1,19 +1,25 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
                       Title="{Loc 'research-machine-destructive-window-title'}"
-                      SetSize="560 460"
-                      MinSize="480 360">
+                      SetSize="580 470"
+                      MinSize="500 380">
     <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
-        <Label Name="ServerLabel" StyleClasses="LabelHeading"/>
+        <controls:StripeBack>
+            <Label Name="ServerLabel" StyleClasses="LabelHeading" Margin="6 4"/>
+        </controls:StripeBack>
         <RichTextLabel Name="BalanceLabel"/>
         <Button Name="ServerButton" Text="{Loc 'research-machine-common-server-list'}"/>
 
         <PanelContainer VerticalExpand="True">
-            <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="4">
-                <Label Text="{Loc 'research-machine-destructive-requirements-title'}" StyleClasses="LabelSubText"/>
+            <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+                <controls:StripeBack>
+                    <Label Text="{Loc 'research-machine-destructive-requirements-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
+                </controls:StripeBack>
                 <RichTextLabel Name="RequirementsLabel"/>
-                <Control MinHeight="8"/>
-                <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText"/>
+
+                <controls:StripeBack>
+                    <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
+                </controls:StripeBack>
                 <RichTextLabel Name="LastOperationLabel"/>
             </BoxContainer>
         </PanelContainer>

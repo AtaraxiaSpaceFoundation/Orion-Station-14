@@ -20,10 +20,13 @@ research-machine-experimentator-window-title = Experimentator
 research-machine-experimentator-requirements-title = Operations and requirements
 research-machine-experimentator-operations-empty = No operations available.
 research-machine-experimentator-operation-label = Operation {$index}
-research-machine-experimentator-operation-tags = Required tags
 research-machine-experimentator-operation-success = Success chance
 research-machine-experimentator-operation-backfire = Backfire chance
 research-machine-experimentator-last-result = Operation completed: { $result }.
 research-machine-experimentator-last-result-no-operation = No matching operation for this item.
 research-machine-experimentator-operation-success-reward = Reward on success
 research-machine-experimentator-operation-failure-reward = Reward on failure
+
+research-machine-experimentator-operation-subject = Suitable sample
+research-machine-experimentator-operation-subject-FragmentPulse = artifact fragment
+research-machine-experimentator-operation-subject-AnomalousPulse = anomaly core

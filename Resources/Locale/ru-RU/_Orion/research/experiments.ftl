@@ -14,3 +14,9 @@ research-console-experiment-state-available = ДОСТУПЕН
 research-console-experiment-state-completed = ЗАВЕРШЁН
 research-console-experiment-state-skipped = ПРОПУЩЕН
 research-console-experiment-state-unavailable = ЗАБЛОКИРОВАН
+
+research-experiment-destructive-fragment-study-name = Исследование деструктивного фрагмента
+research-experiment-destructive-fragment-study-desc = Обработайте фрагменты артефакта в деструктивном анализаторе.
+
+research-experiment-experimentator-calibration-name = Калибровка экспериментатора
+research-experiment-experimentator-calibration-desc = Выполните несколько успешных импульсов экспериментатора на фрагментах.

@@ -42,19 +42,19 @@ public sealed class DestructiveAnalyzerBoundInterfaceState : BoundUserInterfaceS
 [Serializable, NetSerializable]
 public sealed class ExperimentatorOperationUiData
 {
-    public string[] RequiredTags;
+    public string OperationId;
     public List<ResearchPointAmount> SuccessRewards;
     public List<ResearchPointAmount> FailureRewards;
     public float SuccessChance;
     public float BackfireChance;
 
-    public ExperimentatorOperationUiData(string[] requiredTags,
+    public ExperimentatorOperationUiData(string operationId,
         List<ResearchPointAmount> successRewards,
         List<ResearchPointAmount> failureRewards,
         float successChance,
         float backfireChance)
     {
-        RequiredTags = requiredTags;
+        OperationId = operationId;
         SuccessRewards = successRewards;
         FailureRewards = failureRewards;
         SuccessChance = successChance;

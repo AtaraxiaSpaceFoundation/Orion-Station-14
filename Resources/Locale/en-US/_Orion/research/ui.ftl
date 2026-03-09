@@ -1,7 +1,7 @@
 research-console-menu-journal-button = Journal
 research-console-journal-window-title = R&D Journal
-research-console-journal-recent-logs = Recent logs:
-research-console-network-label = [color=lightblue]Network:[/color] Unified research network
+research-console-journal-recent-logs = Recent logs
+research-console-network-label = [color=lightblue]Network:[/color]
 research-console-tech-required-experiments-title = Required experiments:
 research-point-type-general = General
 research-point-type-experimental = Experimental
@@ -12,3 +12,10 @@ research-log-category-disk = Data disk
 research-log-category-experiment = Experiment
 research-log-category-destructive-analyzer = Analyzer
 research-log-category-experimentator = Experimentator
+
+research-console-logs-empty = No log entries.
+research-server-name-base = R&D Server
+research-server-name-with-suffix = R&D Server { $suffix }
+
+research-log-category-discovery = Discovery
+research-log-category-server-control = Server control

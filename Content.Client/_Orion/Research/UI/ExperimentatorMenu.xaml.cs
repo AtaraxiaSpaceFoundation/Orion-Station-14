@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Text.RegularExpressions;
 using Content.Client.UserInterface.Controls;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Components;
@@ -12,6 +13,7 @@ namespace Content.Client._Orion.Research.UI;
 public sealed partial class ExperimentatorMenu : FancyWindow
 {
     public event Action? OnServerButtonPressed;
+    private static readonly Regex SubjectIdRegex = new(@"\s*\([^)]*\)$", RegexOptions.Compiled);
 
     public ExperimentatorMenu()
     {
@@ -20,25 +22,50 @@ public sealed partial class ExperimentatorMenu : FancyWindow
         ServerButton.OnPressed += _ => OnServerButtonPressed?.Invoke();
     }
 
+    private static string LocalizePointType(string type)
+    {
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : type;
+    }
+
+    private static string FormatServerName(string name)
+    {
+        const string prefix = "RND-Server";
+        if (!name.StartsWith(prefix))
+            return name;
+
+        var suffix = name[prefix.Length..].TrimStart();
+        return string.IsNullOrWhiteSpace(suffix)
+            ? Loc.GetString("research-server-name-base")
+            : Loc.GetString("research-server-name-with-suffix", ("suffix", suffix));
+    }
+
+    private static string FormatSubject(string subject)
+    {
+        return string.IsNullOrWhiteSpace(subject)
+            ? Loc.GetString("research-machine-common-none")
+            : SubjectIdRegex.Replace(subject, string.Empty);
+    }
+
     private static string FormatRewards(List<ResearchPointAmount> rewards)
     {
         return rewards.Count == 0
             ? Loc.GetString("research-machine-common-none")
-            : string.Join(", ", rewards.Select(reward => $"{reward.Type}: {reward.Amount}"));
+            : string.Join(", ", rewards.Select(reward => $"{LocalizePointType(reward.Type)}: {reward.Amount}"));
     }
 
     public void UpdateState(ExperimentatorBoundInterfaceState state)
     {
         ServerLabel.Text = state.ConnectedServerName == null
             ? Loc.GetString("research-machine-common-server-none")
-            : Loc.GetString("research-machine-common-server-current", ("name", state.ConnectedServerName));
+            : Loc.GetString("research-machine-common-server-current", ("name", FormatServerName(state.ConnectedServerName)));
 
         var balances = new FormattedMessage();
         balances.AddMarkupOrThrow($"[color=lightblue]{Loc.GetString("research-machine-common-balances-title")}[/color]");
         foreach (var point in state.PointBalances)
         {
             balances.PushNewline();
-            balances.AddMarkupOrThrow($"• [color=lightgreen]{point.Type}[/color]: {point.Amount}");
+            balances.AddMarkupOrThrow($"• [color=lightgreen]{LocalizePointType(point.Type)}[/color]: {point.Amount}");
         }
         if (state.PointBalances.Count == 0)
         {
@@ -58,11 +85,18 @@ public sealed partial class ExperimentatorMenu : FancyWindow
         {
             var operation = state.Operations[index];
             if (index > 0)
+            {
                 operationsMessage.PushNewline();
+                operationsMessage.PushNewline();
+            }
 
-            operationsMessage.AddMarkupOrThrow($"[color=lightblue]{Loc.GetString("research-machine-experimentator-operation-label", ("index", index + 1))}[/color]");
+            operationsMessage.AddMarkupOrThrow($"[bold][color=lightblue]{Loc.GetString("research-machine-experimentator-operation-label", ("index", index + 1))}[/color][/bold]");
             operationsMessage.PushNewline();
-            operationsMessage.AddMarkupOrThrow($"{Loc.GetString("research-machine-experimentator-operation-tags")}: {string.Join(", ", operation.RequiredTags)}");
+            var operationSubjectKey = $"research-machine-experimentator-operation-subject-{operation.OperationId}";
+            var operationSubject = Loc.TryGetString(operationSubjectKey, out var localizedSubject)
+                ? localizedSubject
+                : operation.OperationId;
+            operationsMessage.AddMarkupOrThrow($"{Loc.GetString("research-machine-experimentator-operation-subject")}: {operationSubject}");
             operationsMessage.PushNewline();
             operationsMessage.AddMarkupOrThrow($"{Loc.GetString("research-machine-experimentator-operation-success")}: {(int) (operation.SuccessChance * 100)}%");
             operationsMessage.PushNewline();
@@ -76,7 +110,7 @@ public sealed partial class ExperimentatorMenu : FancyWindow
         OperationsLabel.SetMessage(operationsMessage);
 
         var lastOperation = new FormattedMessage();
-        lastOperation.AddMarkupOrThrow($"{Loc.GetString("research-machine-common-last-subject")}: [color=lightblue]{(string.IsNullOrWhiteSpace(state.LastSubject) ? Loc.GetString("research-machine-common-none") : state.LastSubject)}[/color]");
+        lastOperation.AddMarkupOrThrow($"{Loc.GetString("research-machine-common-last-subject")}: [color=lightblue]{FormatSubject(state.LastSubject)}[/color]");
         lastOperation.PushNewline();
         lastOperation.AddMarkupOrThrow($"{Loc.GetString("research-machine-common-last-result")}: [color=lightblue]{(string.IsNullOrWhiteSpace(state.LastResult) ? Loc.GetString("research-machine-common-none") : state.LastResult)}[/color]");
         LastOperationLabel.SetMessage(lastOperation);
