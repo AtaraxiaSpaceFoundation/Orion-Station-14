@@ -6,6 +6,7 @@ using Content.Shared._Orion.Research.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Research.Systems;
@@ -16,9 +17,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
-
-    private static readonly TimeSpan InsertAnimationDuration = TimeSpan.FromSeconds(0.4);
-    private static readonly TimeSpan DeconstructAnimationDuration = TimeSpan.FromSeconds(1.0);
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -34,6 +33,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
     private void OnStartup(Entity<DestructiveAnalyzerComponent> ent, ref ComponentStartup args)
     {
+        _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
         UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
     }
 
@@ -63,7 +63,14 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         if (args.Handled)
             return;
 
+        if (ent.Comp.InsertedItem != null)
+            return;
+
         var used = args.Used;
+        var itemContainer = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        if (!_container.Insert(used, itemContainer))
+            return;
+
         ent.Comp.InsertedItem = used;
         ent.Comp.LastItemAnalyzed = false;
         ent.Comp.IsProcessing = false;
@@ -74,13 +81,10 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             : null;
 
         UpdateAppearance(ent, DestructiveAnalyzerVisualState.Inserting);
-        Timer.Spawn(InsertAnimationDuration,
+        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.InsertAnimationSeconds),
             () =>
             {
-                if (TerminatingOrDeleted(ent))
-                    return;
-
-                if (ent.Comp.InsertedItem != used)
+                if (TerminatingOrDeleted(ent) || ent.Comp.InsertedItem != used)
                     return;
 
                 UpdateAppearance(ent, DestructiveAnalyzerVisualState.Loaded);
@@ -174,13 +178,18 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             _research.AddTechnology(server, technology);
         }
 
+        foreach (var actionId in analyzable.ExperimentActions)
+        {
+            _research.TryProgressExperimentsByAction(server, actionId);
+        }
+
         if (!string.IsNullOrWhiteSpace(analyzable.DiscoveryTrigger))
             _research.TriggerDiscovery(server, analyzable.DiscoveryTrigger!);
 
         _research.LogNetworkEvent(server,
             "destructive-analyzer",
             Loc.GetString("research-netlog-destructive-analysis-result",
-                ("method", method),
+                ("method", LocalizeMethod(method)),
                 ("channels", rewards.Count)));
 
         ent.Comp.IsProcessing = true;
@@ -188,30 +197,30 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", 1));
         UpdateUi(ent);
 
-        Timer.Spawn(DeconstructAnimationDuration,
+        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.DeconstructAnimationSeconds),
             () =>
-        {
-            if (TerminatingOrDeleted(ent))
-                return;
-
-            ent.Comp.IsProcessing = false;
-
-            if (TerminatingOrDeleted(used))
             {
+                if (TerminatingOrDeleted(ent))
+                    return;
+
+                ent.Comp.IsProcessing = false;
+
+                if (TerminatingOrDeleted(used))
+                {
+                    ent.Comp.InsertedItem = null;
+                    UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
+                    UpdateUi(ent);
+                    return;
+                }
+
+                ent.Comp.LastItemAnalyzed = true;
+                ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewards.Count));
+                Del(used);
                 ent.Comp.InsertedItem = null;
                 UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
                 UpdateUi(ent);
-                return;
-            }
-
-            ent.Comp.LastItemAnalyzed = true;
-            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewards.Count));
-            Del(used);
-            ent.Comp.InsertedItem = null;
-            UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
-            UpdateUi(ent);
-            _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
-        });
+                _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
+            });
     }
 
     private void UpdateAppearance(Entity<DestructiveAnalyzerComponent> ent, DestructiveAnalyzerVisualState state)
@@ -228,6 +237,12 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return analyzable.MethodPointRewards.Keys.ToList();
 
         return new List<string>();
+    }
+
+    private string LocalizeMethod(string methodId)
+    {
+        var key = $"research-machine-destructive-method-{methodId.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : methodId;
     }
 
     private void UpdateUi(Entity<DestructiveAnalyzerComponent> ent)
@@ -250,7 +265,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             pointBalances,
             ent.Comp.LastSubject,
             ent.Comp.LastResult,
-            ent.Comp.InsertedItem is { } item ? ToPrettyString(item) : null,
+            ent.Comp.InsertedItem is { } item ? Name(item) : null,
             ent.Comp.InsertedItem is { } inserted ? GetNetEntity(inserted) : null,
             ent.Comp.SelectedMethod,
             methods);

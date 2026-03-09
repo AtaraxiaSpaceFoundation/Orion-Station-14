@@ -26,7 +26,7 @@ public sealed partial class ExperimentatorMenu : FancyWindow
             ? Loc.GetString("research-machine-common-server-none")
             : Loc.GetString("research-machine-common-server-current", ("name", state.ConnectedServerName));
 
-        InsertedItemLabel.Text = Loc.GetString("research-machine-common-last-subject") + ": " + (state.InsertedItem ?? Loc.GetString("research-machine-common-none"));
+        InsertedItemLabel.Text = Loc.GetString("research-machine-experiment-scanner-status") + ": " + (state.InsertedItem ?? Loc.GetString("research-machine-common-none"));
 
         var experiments = new FormattedMessage();
         foreach (var experiment in state.Experiments)

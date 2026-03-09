@@ -5,9 +5,12 @@ using Content.Shared._Orion.Research.Components;
 using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Item;
 using Content.Shared.Research.Components;
+using Content.Shared.Tag;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Research.Systems;
@@ -20,9 +23,9 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
-
-    private static readonly TimeSpan ScanDuration = TimeSpan.FromSeconds(1.5);
-    private static readonly TimeSpan CapsuleStepDuration = TimeSpan.FromSeconds(0.25);
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -36,6 +39,7 @@ public sealed class ExperimentatorSystem : EntitySystem
 
     private void OnStartup(Entity<ExperimentatorComponent> ent, ref ComponentStartup args)
     {
+        _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
         UpdateAppearance(ent, ExperimentatorVisualState.Idle);
     }
 
@@ -64,7 +68,6 @@ public sealed class ExperimentatorSystem : EntitySystem
     {
         if (ent.Comp.IsProcessing)
         {
-            ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-busy");
             UpdateUi(ent);
             return;
@@ -103,25 +106,39 @@ public sealed class ExperimentatorSystem : EntitySystem
             return;
         }
 
-        var scannedItems = new List<EntityUid>(items);
+        var itemContainer = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        var scannedItems = new List<EntityUid>();
+        foreach (var item in items)
+        {
+            if (_container.Insert(item, itemContainer))
+                scannedItems.Add(item);
+        }
+
+        if (scannedItems.Count == 0)
+        {
+            ent.Comp.LastSubject = string.Empty;
+            ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-no-items");
+            UpdateUi(ent);
+            return;
+        }
 
         ent.Comp.IsProcessing = true;
         UpdateAppearance(ent, ExperimentatorVisualState.Down);
-        ent.Comp.LastSubject = string.Join(", ", items.Select(uid => Name(uid)));
-        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", items.Count));
-        _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", items.Count)));
+        ent.Comp.LastSubject = string.Join(", ", scannedItems.Select(uid => Name(uid)));
+        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", scannedItems.Count));
+        _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", scannedItems.Count)));
         UpdateUi(ent);
 
-        Timer.Spawn(CapsuleStepDuration,
+        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.CapsuleStepDurationSeconds),
             () =>
-        {
-            if (TerminatingOrDeleted(ent) || !ent.Comp.IsProcessing)
-                return;
+            {
+                if (TerminatingOrDeleted(ent) || !ent.Comp.IsProcessing)
+                    return;
 
-            UpdateAppearance(ent, ExperimentatorVisualState.Scanning);
-        });
+                UpdateAppearance(ent, ExperimentatorVisualState.Scanning);
+            });
 
-        Timer.Spawn(ScanDuration, () => CompleteScan(ent, server, scannedItems));
+        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.ScanDurationSeconds), () => CompleteScan(ent, server, scannedItems));
     }
 
     private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<EntityUid> scannedItems)
@@ -137,24 +154,38 @@ public sealed class ExperimentatorSystem : EntitySystem
             if (TerminatingOrDeleted(item))
                 continue;
 
-            if (!_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed))
-                continue;
+            if (_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed))
+            {
+                changedAny |= changed;
+                completedCount += completed.Count;
+            }
 
-            changedAny |= changed;
-            completedCount += completed.Count;
+            foreach (var operation in _prototype.EnumeratePrototypes<ResearchExperimentatorOperationPrototype>())
+            {
+                if (!operation.RequiredTags.All(tag => _tag.HasTag(item, tag)))
+                    continue;
+
+                if (operation.SuccessExperimentAction != null && _random.Prob(operation.SuccessChance))
+                {
+                    changedAny |= _research.TryProgressExperimentsByAction(server, operation.SuccessExperimentAction);
+                }
+            }
         }
+
+        var itemContainer = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        _container.EmptyContainer(itemContainer, true, Transform(ent).Coordinates);
 
         ent.Comp.IsProcessing = false;
         UpdateAppearance(ent, ExperimentatorVisualState.Up);
 
-        Timer.Spawn(CapsuleStepDuration,
+        Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.CapsuleStepDurationSeconds),
             () =>
-        {
-            if (TerminatingOrDeleted(ent) || ent.Comp.IsProcessing)
-                return;
+            {
+                if (TerminatingOrDeleted(ent) || ent.Comp.IsProcessing)
+                    return;
 
-            UpdateAppearance(ent, ExperimentatorVisualState.Idle);
-        });
+                UpdateAppearance(ent, ExperimentatorVisualState.Idle);
+            });
 
         if (completedCount > 0)
             ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-completed", ("count", completedCount));
@@ -204,13 +235,17 @@ public sealed class ExperimentatorSystem : EntitySystem
             }
         }
 
+        var status = ent.Comp.IsProcessing
+            ? Loc.GetString("research-machine-experiment-scanner-state-processing")
+            : Loc.GetString("research-machine-common-none");
+
         var state = new ExperimentatorBoundInterfaceState(
             serverName,
             pointBalances,
             ent.Comp.LastSubject,
             ent.Comp.LastResult,
             experiments,
-            ent.Comp.IsProcessing ? Loc.GetString("research-machine-experiment-scanner-state-processing") : null);
+            status);
 
         _ui.SetUiState(ent.Owner, ExperimentatorUiKey.Key, state);
     }

@@ -31,6 +31,12 @@ public sealed partial class DestructiveAnalyzerMenu : FancyWindow
         };
     }
 
+    private static string LocalizeMethod(string methodId)
+    {
+        var key = $"research-machine-destructive-method-{methodId.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : methodId;
+    }
+
     public void UpdateState(DestructiveAnalyzerBoundInterfaceState state)
     {
         ServerLabel.Text = state.ConnectedServerName == null
@@ -44,10 +50,13 @@ public sealed partial class DestructiveAnalyzerMenu : FancyWindow
             InsertedItemSprite.SetEntity(null);
 
         MethodOption.Clear();
+
+        MethodContainer.Visible = state.Methods.Count > 0;
+        MethodOption.Visible = state.Methods.Count > 0;
         for (var i = 0; i < state.Methods.Count; i++)
         {
             var method = state.Methods[i];
-            MethodOption.AddItem(method, i);
+            MethodOption.AddItem(LocalizeMethod(method), i);
             MethodOption.SetItemMetadata(i, method);
             if (method == state.SelectedMethod)
                 MethodOption.SelectId(i);

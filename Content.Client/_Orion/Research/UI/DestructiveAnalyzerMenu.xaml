@@ -14,7 +14,9 @@
             <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
                 <Label Name="InsertedItemLabel"/>
                 <SpriteView Name="InsertedItemSprite" SetSize="64 64" Scale="2 2" HorizontalAlignment="Center"/>
-                <OptionButton Name="MethodOption"/>
+                <BoxContainer Name="MethodContainer" Orientation="Vertical">
+                    <OptionButton Name="MethodOption"/>
+                </BoxContainer>
                 <Button Name="AnalyzeButton" Text="{Loc 'research-machine-destructive-run'}"/>
 
                 <controls:StripeBack>

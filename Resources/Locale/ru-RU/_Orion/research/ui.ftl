@@ -12,6 +12,7 @@ research-log-category-disk = Диск
 research-log-category-experiment = Эксперимент
 research-log-category-destructive-analyzer = Анализатор
 research-log-category-experimentator = Экспериментатор
+research-log-category-experiment-scanner = Экспериментальный сканер
 
 research-console-logs-empty = Нет записей.
 research-server-name-base = РнД-сервер

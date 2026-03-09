@@ -47,7 +47,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     private readonly SpriteSystem _sprite;
     private readonly AccessReaderSystem _accessReader;
 
-    public EntityUid Entity;
+    private EntityUid Entity;
 
     public ResearchConsoleMenu()
     {
@@ -82,7 +82,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     {
         TechnologyCardsContainer.Children.Clear();
 
-        var availableTech = state.AvailableTechnologies.Select(id => _prototype.Index<TechnologyPrototype>(id));
+        var availableTech = state.AvailableTechnologies.Select(id => _prototype.Index(id));
         SyncTechnologyList(AvailableCardsContainer, availableTech);
 
         if (!_entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database))
@@ -105,7 +105,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
             TechnologyCardsContainer.AddChild(cardControl);
         }
 
-        var unlockedTech = state.ResearchedTechnologies.Select(x => _prototype.Index<TechnologyPrototype>(x));
+        var unlockedTech = state.ResearchedTechnologies.Select(x => _prototype.Index(x));
         SyncTechnologyList(UnlockedCardsContainer, unlockedTech);
     }
 
@@ -113,14 +113,10 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
     {
         var amountMsg = new FormattedMessage();
 
-        var firstLine = true;
-        if (!string.IsNullOrWhiteSpace(state.NetworkId))
-        {
-            amountMsg.AddMarkupOrThrow($"{Loc.GetString("research-console-network-label")} {state.NetworkId}");
-            firstLine = false;
-        }
+        amountMsg.AddMarkupOrThrow($"{Loc.GetString("research-console-network-label")} {(!string.IsNullOrWhiteSpace(state.NetworkId) ? state.NetworkId : Loc.GetString("research-machine-common-none"))}");
+        var firstLine = false;
 
-        foreach (var balance in state.PointBalances)
+        foreach (var balance in state.PointBalances.Where(p => !string.Equals(p.Type, "Experimental", StringComparison.OrdinalIgnoreCase)))
         {
             if (!firstLine)
                 amountMsg.PushNewline();
@@ -145,13 +141,14 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
 
         var msg = new FormattedMessage();
         msg.AddMarkupOrThrow(Loc.GetString("research-console-menu-main-discipline",
-            ("name", disciplineText), ("color", disciplineColor)));
+            ("name", disciplineText),
+            ("color", disciplineColor)));
         MainDisciplineLabel.SetMessage(msg);
 
         TierDisplayContainer.Children.Clear();
         foreach (var disciplineId in database.SupportedDisciplines)
         {
-            var discipline = _prototype.Index<TechDisciplinePrototype>(disciplineId);
+            var discipline = _prototype.Index(disciplineId);
             var tier = _research.GetHighestDisciplineTier(database, discipline);
 
             // don't show tiers with no available tech
@@ -216,7 +213,11 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         {
             foreach (var log in state.Logs.TakeLast(4))
             {
-                logsMessage.AddMarkupOrThrow($"[color=gray]{LocalizeLogCategory(log.Category)}[/color] [color=lightblue]|[/color] {log.Message}");
+                logsMessage.AddMarkupOrThrow($"[bold][color=#9FA7B3]{LocalizeLogCategory(log.Category)}[/color][/bold]");
+                logsMessage.PushNewline();
+                logsMessage.AddText(log.Message);
+                logsMessage.PushNewline();
+                logsMessage.AddMarkupOrThrow("[color=#3C3F52]────────────────────[/color]");
                 logsMessage.PushNewline();
             }
         }
@@ -236,30 +237,25 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         var currentTechControls = new Dictionary<TechnologyPrototype, Control>();
         foreach (var child in container.Children)
         {
-            if (child is MiniTechnologyCardControl)
+            if (child is MiniTechnologyCardControl control)
             {
-                currentTechControls.Add((child as MiniTechnologyCardControl)!.Technology, child);
+                currentTechControls.Add(control.Technology, control);
             }
         }
 
         foreach (var tech in technologies)
         {
-            if (!currentTechControls.ContainsKey(tech))
-            {
-                // Create a card for any technology which doesn't already have one.
-                var mini = new MiniTechnologyCardControl(tech, _prototype, _sprite, _research.GetTechnologyDescription(tech));
-                container.AddChild(mini);
-            }
-            else
-            {
-                // The tech already exists in the UI; remove it from the set, so we won't revisit it below
-                currentTechControls.Remove(tech);
-            }
+            if (currentTechControls.Remove(tech))
+                continue;
+
+            // Create a card for any technology which doesn't already have one.
+            var mini = new MiniTechnologyCardControl(tech, _prototype, _sprite, _research.GetTechnologyDescription(tech));
+            container.AddChild(mini);
         }
 
         // Now, any items left in the dictionary are technologies which were previously
         // available, but now are not. Remove them.
-        foreach (var (tech, techControl) in currentTechControls)
+        foreach (var (_, techControl) in currentTechControls)
         {
             container.Children.Remove(techControl);
         }

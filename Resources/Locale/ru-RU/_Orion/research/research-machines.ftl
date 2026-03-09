@@ -54,6 +54,7 @@ research-machine-experiment-scanner-no-items = На тайле сканера н
 research-machine-experiment-scanner-busy = Сканер уже обрабатывает образцы.
 research-machine-experiment-scanner-processing = Сканер закрылся и начал обработку { $count } образца(ов).
 research-machine-experiment-scanner-state-processing = обработка...
+research-machine-experiment-scanner-status = Статус
 
 research-machine-destructive-method-deconstruct = Деконструкция
 research-machine-destructive-method-illegaltechnology = Нелегальная технология
