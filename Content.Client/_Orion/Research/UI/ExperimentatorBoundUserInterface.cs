@@ -17,6 +17,7 @@ public sealed class ExperimentatorBoundUserInterface : BoundUserInterface
 
         _menu = this.CreateWindow<ExperimentatorMenu>();
         _menu.OnServerButtonPressed += () => SendMessage(new OpenResearchServerMenuMessage());
+        _menu.OnPerformPressed += () => SendMessage(new ExperimentScannerPerformMessage());
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

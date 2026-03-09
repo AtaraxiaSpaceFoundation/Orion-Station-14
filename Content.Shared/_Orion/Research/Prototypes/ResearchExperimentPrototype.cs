@@ -59,6 +59,8 @@ public enum ExperimentObjectiveKind : byte
     ServerTrigger,
     ScanEntity,
     PresentItem,
+    ScanDifferentEntities,
+    ScanSamples,
     ActionCount,
     DebugManual,
 }
@@ -110,6 +112,24 @@ public sealed partial record PresentItemExperimentObjective : ScanEntityExperime
     public PresentItemExperimentObjective()
     {
         Kind = ExperimentObjectiveKind.PresentItem;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record ScanDifferentEntitiesExperimentObjective : ScanEntityExperimentObjective
+{
+    public ScanDifferentEntitiesExperimentObjective()
+    {
+        Kind = ExperimentObjectiveKind.ScanDifferentEntities;
+    }
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record ScanSamplesExperimentObjective : ScanEntityExperimentObjective
+{
+    public ScanSamplesExperimentObjective()
+    {
+        Kind = ExperimentObjectiveKind.ScanSamples;
     }
 }
 

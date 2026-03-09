@@ -153,11 +153,14 @@
     materialComposition:
       ArtifactFragment: 100
   - type: ResearchAnalyzable
-    destructiveReward:
-    - type: General
-      amount: 150
-    - type: Experimental
-      amount: 40
+    supportedMethods:
+    - Deconstruct
+    methodPointRewards:
+      Deconstruct:
+      - type: General
+        amount: 150
+      - type: Experimental
+        amount: 40
     discoveryTrigger: machine:artifact-fragment
     experimentActions:
     - analyze_artifact_fragment

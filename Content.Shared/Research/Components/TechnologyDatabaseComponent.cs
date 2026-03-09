@@ -171,6 +171,12 @@ public partial record struct ResearchExperimentProgress
     public int Target;
 
     [DataField]
+    public HashSet<string> UniqueProgressKeys;
+
+    [DataField]
+    public HashSet<NetEntity> ScannedEntities;
+
+    [DataField]
     public TimeSpan? CompletedAt;
 }
 

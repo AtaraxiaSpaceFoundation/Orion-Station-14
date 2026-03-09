@@ -291,7 +291,9 @@ public abstract class SharedResearchSystem : EntitySystem
             {
                 ExperimentId = experimentId,
                 Progress = 0,
-                Target = Math.Max(1, experiment.Objective.Target)
+                Target = Math.Max(1, experiment.Objective.Target),
+                UniqueProgressKeys = new HashSet<string>(),
+                ScannedEntities = new HashSet<NetEntity>(),
             });
         }
     }

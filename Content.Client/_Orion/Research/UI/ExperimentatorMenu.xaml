@@ -13,6 +13,8 @@
         <PanelContainer VerticalExpand="True">
             <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
                 <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="8">
+                    <Label Name="InsertedItemLabel"/>
+                    <Button Name="PerformButton" Text="{Loc 'research-machine-experimentator-perform'}"/>
                     <controls:StripeBack>
                         <Label Text="{Loc 'research-machine-experimentator-requirements-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
                     </controls:StripeBack>

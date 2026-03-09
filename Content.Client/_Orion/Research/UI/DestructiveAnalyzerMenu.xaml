@@ -12,10 +12,10 @@
 
         <PanelContainer VerticalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
-                <controls:StripeBack>
-                    <Label Text="{Loc 'research-machine-destructive-requirements-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
-                </controls:StripeBack>
-                <RichTextLabel Name="RequirementsLabel"/>
+                <Label Name="InsertedItemLabel"/>
+                <SpriteView Name="InsertedItemSprite" SetSize="64 64" Scale="2 2" HorizontalAlignment="Center"/>
+                <OptionButton Name="MethodOption"/>
+                <Button Name="AnalyzeButton" Text="{Loc 'research-machine-destructive-run'}"/>
 
                 <controls:StripeBack>
                     <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2"/>

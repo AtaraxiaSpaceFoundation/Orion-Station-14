@@ -1,8 +1,8 @@
 - type: entity
-  id: ResearchDestructiveAnalyzer
   parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  id: ResearchDestructiveAnalyzer
   name: destructive analyzer
-  description: Vaporizes samples into actionable R&D points.
+  description: Deconstructs inserted items using selectable analysis methods.
   components:
   - type: Sprite
     sprite: Structures/Machines/artifact_analyzer.rsi
@@ -25,10 +25,10 @@
         type: DestructiveAnalyzerBoundUserInterface
 
 - type: entity
-  id: ResearchExperimentator
   parent: [ BaseMachinePowered, SmallConstructibleMachine ]
-  name: experimentator
-  description: Performs high-risk experiments for potentially high-value outcomes.
+  id: ResearchExperimentalDestructiveScanner
+  name: experimental destructive scanner
+  description: Executes techweb experiments by scanning nearby samples without destroying them.
   components:
   - type: Sprite
     sprite: Structures/Machines/artifact_analyzer.rsi
@@ -42,9 +42,6 @@
     powerLoad: 3000
   - type: ResearchClient
   - type: Experimentator
-    operations:
-    - FragmentPulse
-    - AnomalousPulse
   - type: ActivatableUI
     key: enum.ExperimentatorUiKey.Key
   - type: ActivatableUIRequiresPower

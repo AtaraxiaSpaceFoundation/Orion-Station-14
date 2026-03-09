@@ -21,8 +21,7 @@ public sealed partial class ResearchSystem
     {
         if (TryGetClientServer(uid, out var discoveryServerUid, out _))
         {
-            var discoveryServer = discoveryServerUid.Value;
-            NotifyDiscoveryEvent(discoveryServer,
+            NotifyDiscoveryEvent(discoveryServerUid.Value,
                 new DiscoveryEventData
                 {
                     Type = ResearchDiscoveryEventType.ScanEntity,
@@ -34,15 +33,10 @@ public sealed partial class ResearchSystem
         if (args.Handled)
             return;
 
-        if (!TryGetClientServer(uid, out var serverUid, out var serverComp))
+        if (!TryGetClientServer(uid, out var serverUid, out _))
             return;
 
-        var server = serverUid.Value;
-
-        if (!TryComp<TechnologyDatabaseComponent>(server, out var database))
-            return;
-
-        if (!TryProgressExperimentsWithEntity(server, args.Used, args.User, database, serverComp))
+        if (!TryProgressExperimentsWithEntity(serverUid.Value, args.Used, args.User, out _, out _))
             return;
 
         args.Handled = true;
@@ -50,34 +44,35 @@ public sealed partial class ResearchSystem
         UpdateConsoleInterface(uid, component);
     }
 
-    public bool TryProgressExperimentsWithEntity(
-        EntityUid serverUid,
+    public bool TryProgressExperimentsWithEntity(EntityUid serverUid,
         EntityUid subject,
-        EntityUid user,
+        EntityUid? user,
+        out bool changed,
+        out List<string> completed,
         TechnologyDatabaseComponent? database = null,
         ResearchServerComponent? server = null)
     {
+        changed = false;
+        completed = new List<string>();
+
         if (!Resolve(serverUid, ref database, ref server))
             return false;
 
-        var progressed = false;
-        var activeExperiments = database.ActiveExperiments.ToArray();
-        foreach (var experimentId in activeExperiments)
+        foreach (var experimentId in database.ActiveExperiments.ToArray())
         {
             if (!PrototypeManager.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
                 continue;
 
-            if (!TryIncrementExperimentProgress(database, experiment, subject, out var delta))
+            if (!TryGetExperimentProgress(database, experimentId, out var progressIndex))
+                continue;
+
+            if (!TryIncrementExperimentProgress(database, progressIndex, experiment, subject, out var delta))
                 continue;
 
             if (delta <= 0)
                 continue;
 
-            progressed = true;
-
-            if (!TryGetExperimentProgress(database, experimentId, out var progressIndex))
-                continue;
-
+            changed = true;
             var progress = database.ExperimentProgress[progressIndex];
             progress.Progress = Math.Min(progress.Target, progress.Progress + delta);
             database.ExperimentProgress[progressIndex] = progress;
@@ -85,16 +80,26 @@ public sealed partial class ResearchSystem
             if (progress.Progress < progress.Target)
                 continue;
 
+            completed.Add(experiment.ID);
             CompleteExperiment(serverUid, experiment, user, database, server);
         }
 
-        if (!progressed)
+        if (!changed)
             return false;
 
         RecalculateTechnologyState(serverUid, database);
         UpdateTechnologyCards(serverUid, database);
         Dirty(serverUid, database);
         return true;
+    }
+
+    public bool TryProgressExperimentsWithEntity(EntityUid serverUid,
+        EntityUid subject,
+        EntityUid user,
+        TechnologyDatabaseComponent? database = null,
+        ResearchServerComponent? server = null)
+    {
+        return TryProgressExperimentsWithEntity(serverUid, subject, (EntityUid?) user, out _, out _, database, server);
     }
 
     public bool TryProgressExperimentsByAction(EntityUid serverUid, string actionId, TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
@@ -151,26 +156,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    public bool TryCompleteExperimentById(EntityUid serverUid, string experimentId, EntityUid? user = null, TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
-    {
-        if (!Resolve(serverUid, ref database, ref server))
-            return false;
-
-        if (!PrototypeManager.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
-            return false;
-
-        if (!database.ActiveExperiments.Contains(experimentId))
-            return false;
-
-        CompleteExperiment(serverUid, experiment, user, database, server);
-        RecalculateTechnologyState(serverUid, database);
-        UpdateTechnologyCards(serverUid, database);
-        Dirty(serverUid, database);
-        return true;
-    }
-
-    private void CompleteExperiment(
-        EntityUid serverUid,
+    private void CompleteExperiment(EntityUid serverUid,
         ResearchExperimentPrototype experiment,
         EntityUid? user,
         TechnologyDatabaseComponent database,
@@ -195,7 +181,7 @@ public sealed partial class ResearchSystem
 
         ApplyExperimentReward(serverUid, experiment, database, server);
         TriggerDiscovery(serverUid, $"experiment:{experiment.ID}", database);
-
+        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-completed", ("experiment", Loc.GetString(experiment.Name))), user);
         _adminLog.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} completed research experiment {experiment.ID} on {ToPrettyString(serverUid)}.");
     }
 
@@ -222,48 +208,59 @@ public sealed partial class ResearchSystem
 
         foreach (var technology in reward.RevealTechnologies)
         {
-            if (!database.RevealedTechnologies.Contains(technology))
-                database.RevealedTechnologies.Add(technology);
+            RevealTechnology(serverUid, technology, database);
         }
 
-        if (reward.InfrastructureUnlock)
-        {
-            // Foundation hook for future infrastructure unlock rewards.
-        }
-
-        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-completed", ("experiment", Loc.GetString(experiment.Name))));
+        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-reward-applied", ("experiment", Loc.GetString(experiment.Name))));
     }
 
-    private bool TryIncrementExperimentProgress(
-        TechnologyDatabaseComponent database,
+    private bool TryIncrementExperimentProgress(TechnologyDatabaseComponent database,
+        int progressIndex,
         ResearchExperimentPrototype experiment,
         EntityUid subject,
         out int delta)
     {
         delta = 0;
+        var progress = database.ExperimentProgress[progressIndex];
 
-        if (database.CompletedExperiments.Contains(experiment.ID) && !experiment.Repeatable)
+        if (progress.ScannedEntities.Contains(GetNetEntity(subject)))
             return false;
 
-        switch (experiment.Objective)
+        var objective = experiment.Objective;
+
+        switch (objective)
         {
-            case PresentItemExperimentObjective presentObjective:
-                if (!MatchesEntityObjective(subject, presentObjective))
+            case PresentItemExperimentObjective presentObjective when MatchesEntityObjective(subject, presentObjective):
+            case ScanEntityExperimentObjective scanObjective when MatchesEntityObjective(subject, scanObjective):
+                delta = 1;
+                progress.ScannedEntities.Add(GetNetEntity(subject));
+                break;
+            case ScanDifferentEntitiesExperimentObjective differentObjective when MatchesEntityObjective(subject, differentObjective):
+                var key = GetEntityObjectiveUniqKey(subject);
+                if (!progress.UniqueProgressKeys.Add(key))
                     return false;
 
                 delta = 1;
-                return true;
-
-            case ScanEntityExperimentObjective scanObjective:
-                if (!MatchesEntityObjective(subject, scanObjective))
-                    return false;
-
+                progress.ScannedEntities.Add(GetNetEntity(subject));
+                break;
+            case ScanSamplesExperimentObjective samplesObjective when MatchesEntityObjective(subject, samplesObjective):
                 delta = 1;
-                return true;
-
+                progress.ScannedEntities.Add(GetNetEntity(subject));
+                break;
             default:
                 return false;
         }
+
+        database.ExperimentProgress[progressIndex] = progress;
+        return true;
+    }
+
+    private string GetEntityObjectiveUniqKey(EntityUid subject)
+    {
+        if (TryComp<MetaDataComponent>(subject, out var meta) && meta.EntityPrototype != null)
+            return $"proto:{meta.EntityPrototype.ID}";
+
+        return $"ent:{subject}";
     }
 
     private bool IncrementSimpleProgress(EntityUid serverUid,
@@ -290,9 +287,7 @@ public sealed partial class ResearchSystem
     {
         if (objective.RequiredEntityPrototype != null &&
             (!TryComp<MetaDataComponent>(subject, out var meta) || meta.EntityPrototype?.ID != objective.RequiredEntityPrototype))
-        {
             return false;
-        }
 
         foreach (var tag in objective.RequiredTags)
         {
@@ -312,15 +307,15 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    private bool TryGetExperimentProgress(TechnologyDatabaseComponent database, string experimentId, out int progressIndex)
+    private static bool TryGetExperimentProgress(TechnologyDatabaseComponent database, string experimentId, out int progressIndex)
     {
         for (var i = 0; i < database.ExperimentProgress.Count; i++)
         {
-            if (database.ExperimentProgress[i].ExperimentId == experimentId)
-            {
-                progressIndex = i;
-                return true;
-            }
+            if (database.ExperimentProgress[i].ExperimentId != experimentId)
+                continue;
+
+            progressIndex = i;
+            return true;
         }
 
         progressIndex = -1;

@@ -20,6 +20,8 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         SubscribeLocalEvent<DestructiveAnalyzerComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<DestructiveAnalyzerComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<DestructiveAnalyzerComponent, OpenResearchServerMenuMessage>(OnOpenServerMenu);
+        SubscribeLocalEvent<DestructiveAnalyzerComponent, DestructiveAnalyzerSelectMethodMessage>(OnSelectMethod);
+        SubscribeLocalEvent<DestructiveAnalyzerComponent, DestructiveAnalyzerRunMessage>(OnRun);
         SubscribeLocalEvent<DestructiveAnalyzerComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
         SubscribeLocalEvent<DestructiveAnalyzerComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
     }
@@ -36,10 +38,8 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
     private void OnPointsChanged(Entity<DestructiveAnalyzerComponent> ent, ref ResearchServerPointsChangedEvent args)
     {
-        if (!_ui.IsUiOpen(ent.Owner, DestructiveAnalyzerUiKey.Key))
-            return;
-
-        UpdateUi(ent);
+        if (_ui.IsUiOpen(ent.Owner, DestructiveAnalyzerUiKey.Key))
+            UpdateUi(ent);
     }
 
     private void OnRegistrationChanged(Entity<DestructiveAnalyzerComponent> ent, ref ResearchRegistrationChangedEvent args)
@@ -47,31 +47,62 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         UpdateUi(ent);
     }
 
-    private void UpdateUi(Entity<DestructiveAnalyzerComponent> ent)
-    {
-        string? serverName = null;
-        var pointBalances = new List<ResearchPointAmount>();
-        if (_research.TryGetClientServer(ent.Owner, out _, out var server))
-        {
-            serverName = server.ServerName;
-            pointBalances = server.PointBalances.ToList();
-        }
-
-        var state = new DestructiveAnalyzerBoundInterfaceState(serverName, pointBalances, ent.Comp.LastSubject, ent.Comp.LastResult);
-        _ui.SetUiState(ent.Owner, DestructiveAnalyzerUiKey.Key, state);
-    }
-
     private void OnAfterInteractUsing(Entity<DestructiveAnalyzerComponent> ent, ref AfterInteractUsingEvent args)
     {
         if (args.Handled)
             return;
 
-        var used = args.Used;
+        ent.Comp.InsertedItem = args.Used;
+        ent.Comp.LastItemAnalyzed = false;
+        ent.Comp.LastSubject = Name(args.Used);
+        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-item-loaded");
+        ent.Comp.SelectedMethod = TryComp<ResearchAnalyzableComponent>(args.Used, out var analyzable)
+            ? GetAvailableMethods(analyzable).FirstOrDefault()
+            : null;
+        UpdateUi(ent);
+        args.Handled = true;
+    }
 
-        if (!TryComp<ResearchAnalyzableComponent>(used, out var analyzable) || analyzable.DestructiveReward.Count == 0)
+    private void OnSelectMethod(Entity<DestructiveAnalyzerComponent> ent, ref DestructiveAnalyzerSelectMethodMessage args)
+    {
+        ent.Comp.SelectedMethod = args.MethodId;
+        UpdateUi(ent);
+    }
+
+    private void OnRun(Entity<DestructiveAnalyzerComponent> ent, ref DestructiveAnalyzerRunMessage args)
+    {
+        if (ent.Comp.InsertedItem is not { } used)
         {
-            ent.Comp.LastSubject = ToPrettyString(used);
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-no-item");
+            UpdateUi(ent);
+            return;
+        }
+
+        if (ent.Comp.LastItemAnalyzed)
+        {
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-already-analyzed");
+            UpdateUi(ent);
+            return;
+        }
+
+        if (!TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
+        {
             ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-invalid-item");
+            UpdateUi(ent);
+            return;
+        }
+
+        var methods = GetAvailableMethods(analyzable);
+        var method = ent.Comp.SelectedMethod;
+        if (string.IsNullOrWhiteSpace(method) || !methods.Contains(method))
+        {
+            method = methods.FirstOrDefault();
+            ent.Comp.SelectedMethod = method;
+        }
+
+        if (string.IsNullOrWhiteSpace(method))
+        {
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-unsupported-method");
             UpdateUi(ent);
             return;
         }
@@ -82,43 +113,88 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         var server = client.Server ?? _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault().Owner;
         if (server == EntityUid.Invalid)
         {
-            ent.Comp.LastSubject = ToPrettyString(used);
             ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
             UpdateUi(ent);
             return;
         }
 
-        foreach (var reward in analyzable.DestructiveReward)
+        if (!analyzable.MethodPointRewards.TryGetValue(method, out var rewards))
+        {
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-unsupported-method");
+            UpdateUi(ent);
+            return;
+        }
+
+        foreach (var reward in rewards)
         {
             _research.ModifyServerPoints(server, reward.Type, reward.Amount);
         }
 
-        _research.TryProgressExperimentsWithEntity(server, used, args.User);
-        foreach (var action in analyzable.ExperimentActions)
+        foreach (var technology in analyzable.RevealTechnologies)
         {
-            _research.TryProgressExperimentsByAction(server, action);
+            _research.RevealTechnology(server, technology);
         }
 
-        _research.NotifyDiscoveryEvent(server,
-            new ResearchSystem.DiscoveryEventData
+        foreach (var technology in analyzable.UnlockTechnologies)
         {
-            Type = ResearchDiscoveryEventType.MachineInsertion,
-            Subject = used,
-            Machine = ent,
-            User = args.User,
-        });
+            _research.UnlockTechnology(server, technology, null, true);
+        }
 
         if (!string.IsNullOrWhiteSpace(analyzable.DiscoveryTrigger))
             _research.TriggerDiscovery(server, analyzable.DiscoveryTrigger!);
 
-        _research.LogNetworkEvent(server, "destructive-analyzer", Loc.GetString("research-netlog-destructive-analyzed", ("channels", analyzable.DestructiveReward.Count)), args.User);
+        _research.LogNetworkEvent(server,
+            "destructive-analyzer",
+            Loc.GetString("research-netlog-destructive-analysis-result",
+                ("method", method),
+                ("channels", rewards.Count)));
 
-        ent.Comp.LastSubject = ToPrettyString(used);
-        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", analyzable.DestructiveReward.Count));
+        ent.Comp.LastItemAnalyzed = true;
+        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewards.Count));
         UpdateUi(ent);
 
         Del(used);
-        _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, args.User, PopupType.SmallCaution);
-        args.Handled = true;
+
+        ent.Comp.InsertedItem = null;
+        _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
+    }
+
+    private static List<string> GetAvailableMethods(ResearchAnalyzableComponent analyzable)
+    {
+        if (analyzable.SupportedMethods.Count > 0)
+            return analyzable.SupportedMethods;
+
+        if (analyzable.MethodPointRewards.Count > 0)
+            return analyzable.MethodPointRewards.Keys.ToList();
+
+        return new List<string>();
+    }
+
+    private void UpdateUi(Entity<DestructiveAnalyzerComponent> ent)
+    {
+        string? serverName = null;
+        var pointBalances = new List<ResearchPointAmount>();
+        var methods = new List<string>();
+
+        if (_research.TryGetClientServer(ent.Owner, out _, out var server))
+        {
+            serverName = server.ServerName;
+            pointBalances = server.PointBalances.ToList();
+        }
+
+        if (ent.Comp.InsertedItem is { } used && TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
+            methods = GetAvailableMethods(analyzable);
+
+        var state = new DestructiveAnalyzerBoundInterfaceState(
+            serverName,
+            pointBalances,
+            ent.Comp.LastSubject,
+            ent.Comp.LastResult,
+            ent.Comp.InsertedItem is { } item ? ToPrettyString(item) : null,
+            ent.Comp.InsertedItem is { } inserted ? GetNetEntity(inserted) : null,
+            ent.Comp.SelectedMethod,
+            methods);
+
+        _ui.SetUiState(ent.Owner, DestructiveAnalyzerUiKey.Key, state);
     }
 }
