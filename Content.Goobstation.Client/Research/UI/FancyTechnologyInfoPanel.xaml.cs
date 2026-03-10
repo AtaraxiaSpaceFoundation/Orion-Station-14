@@ -29,6 +29,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
 {
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
 
     public TechnologyPrototype Prototype;
     public Action<TechnologyPrototype>? BuyAction;
@@ -62,12 +63,19 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             ResearchAvailability.Researched => Color.LimeGreen,
             ResearchAvailability.PrereqsMet => Color.Crimson,
             ResearchAvailability.Unavailable => Color.Crimson,
-            _ => null
+            _ => null,
         };
-        TechnologyCostLabel.SetMessage(
-            Loc.GetString("research-console-tech-cost-label", ("cost", proto.Cost)),
-            defaultColor: color
-        );
+
+        var costMessage = new FormattedMessage();
+        costMessage.AddMarkupOrThrow($"[bold]{Loc.GetString("research-console-tech-cost-title")}[/bold]");
+        foreach (var cost in proto.AllPointCosts)
+        {
+            costMessage.PushNewline();
+            var pointType = LocalizePointType(cost.Type);
+            costMessage.AddMarkupOrThrow($"• [color=lightgreen]{pointType}[/color]: [color=orchid]{cost.Amount}[/color]");
+        }
+
+        TechnologyCostLabel.SetMessage(costMessage, defaultColor: color);
 
         ResearchButton.Disabled = !hasAccess || availability != ResearchAvailability.Available;
         ResearchButton.OnPressed += Bought;
@@ -79,25 +87,34 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         NoPrereqLabel.Visible = !hasAnyRequirements;
         PrereqsContainer.Visible = hasAnyRequirements;
 
-        var experimentRequirements = new FormattedMessage();
-
-        if (proto.RequiredExperiments.Count > 0)
+        RequiredExperimentsContainer.RemoveAllChildren();
+        foreach (var experimentId in proto.RequiredExperiments)
         {
-            experimentRequirements.AddMarkupOrThrow($"[color=orchid]{Loc.GetString("research-console-tech-required-experiments-title")}[/color]");
-            foreach (var experimentId in proto.RequiredExperiments)
-            {
-                if (!prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
-                    continue;
+            if (!prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
+                continue;
 
-                experimentRequirements.PushNewline();
-                experimentRequirements.AddMarkupOrThrow($"- {Loc.GetString(experiment.Name)}");
-            }
+            RequiredExperimentsContainer.AddChild(new Label
+            {
+                Text = $"• {Loc.GetString(experiment.Name)}",
+                ClipText = false,
+                HorizontalExpand = true,
+            });
         }
 
         if (lockReason == ResearchTechnologyLockReason.MissingExperiments && proto.RequiredExperiments.Count > 0)
-            experimentRequirements.PushNewline();
+        {
+            MissingExperimentsLabel.Visible = true;
+            var warningMessage = new FormattedMessage();
+            warningMessage.AddMarkupOrThrow(Loc.GetString("research-console-tech-missing-experiments"));
+            MissingExperimentsLabel.SetMessage(warningMessage);
+        }
+        else
+        {
+            MissingExperimentsLabel.Visible = false;
+            MissingExperimentsLabel.SetMessage(string.Empty);
+        }
 
-        RequiredExperimentsLabel.SetMessage(experimentRequirements);
+        RequiredExperimentsBlock.Visible = proto.RequiredExperiments.Count > 0;
 
         RequiredTechContainer.RemoveAllChildren();
         foreach (var techId in proto.TechnologyPrerequisites)
@@ -106,6 +123,14 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             var description = research.GetTechnologyDescription(tech, true, false, true);
             RequiredTechContainer.AddChild(new MiniTechnologyCardControl(tech, _proto, sprite, description));
         }
+
+        RequiredTechnologiesBlock.Visible = proto.TechnologyPrerequisites.Count > 0;
+    }
+
+    private string LocalizePointType(string type)
+    {
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return _loc.TryGetString(key, out var localized) ? localized : type;
     }
 
     private void InitializeRecipeUnlocks(TechnologyPrototype proto, LatheSystem lathe, SpriteSystem sprite)

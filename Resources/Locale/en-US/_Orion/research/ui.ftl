@@ -3,6 +3,9 @@ research-console-journal-window-title = R&D Journal
 research-console-journal-recent-logs = Recent logs
 research-console-network-label = [color=lightblue]Network:[/color]
 research-console-tech-required-experiments-title = Required experiments:
+research-console-tech-cost-title = Cost
+research-console-tech-required-technologies-title = Required technologies
+research-console-tech-missing-experiments = [color=crimson]Required experiments are not completed yet.[/color]
 
 research-point-type-general = General
 research-point-type-experimental = Experimental

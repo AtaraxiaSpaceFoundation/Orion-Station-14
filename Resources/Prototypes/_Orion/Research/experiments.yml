@@ -9,7 +9,9 @@
     requiredTags:
     - PowerCellSmall
   reward:
-    researchPoints: 2000
+    pointRewards:
+    - type: Industrial
+      amount: 500
     flatDiscount: 1500
 
 - type: researchExperiment
@@ -24,7 +26,11 @@
     requiredTags:
     - Ore
   reward:
-    researchPoints: 3000
+    pointRewards:
+    - type: General
+      amount: 350
+    - type: Industrial
+      amount: 500
     unlockExperiments:
     - ExperimentEngineeringToolkit
 
@@ -41,7 +47,9 @@
     requiredComponents:
     - ToolComponent
   reward:
-    researchPoints: 5000
+    pointRewards:
+    - type: Industrial
+      amount: 500
     percentageDiscount: 0.15
     revealTechnologies:
     - AdvancedPowercells

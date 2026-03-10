@@ -3,6 +3,9 @@ research-console-journal-window-title = Логи РнД
 research-console-journal-recent-logs = Последние записи
 research-console-network-label = [color=lightblue]Сеть:[/color]
 research-console-tech-required-experiments-title = Требуемые эксперименты:
+research-console-tech-cost-title = Стоимость
+research-console-tech-required-technologies-title = Требуемые технологии
+research-console-tech-missing-experiments = [color=crimson]Необходимые эксперименты ещё не завершены.[/color]
 
 research-point-type-general = Общие
 research-point-type-experimental = Экспериментальные

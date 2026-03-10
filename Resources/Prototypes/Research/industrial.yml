@@ -120,13 +120,12 @@
     state: icon
   discipline: Industrial
   tier: 1
-  hidden: true
   cost: 7500
   pointCosts:
   - type: General
     amount: 4500
-  - type: Engineering
-    amount: 3000
+  - type: Industrial
+    amount: 500
   recipeUnlocks:
   # Orion-Start
   - InducerScientific
@@ -142,10 +141,6 @@
   position: 1,-6
   technologyPrerequisites:
   - IndustrialEngineering
-  revealRequirements:
-  - !type:CompletedExperimentRevealRequirement
-    id: advanced-powercells-experiment-reveal
-    experiment: ExperimentPowerCellScan
   requiredExperiments:
   - ExperimentIndustrialSurvey
   discountExperiments:
@@ -273,7 +268,6 @@
     state: base
   discipline: Industrial
   tier: 2
-  hidden: true
   cost: 10000
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
@@ -344,8 +338,8 @@
   pointCosts:
   - type: General
     amount: 6500
-  - type: Materials
-    amount: 6000
+  - type: Industrial
+    amount: 1000
   recipeUnlocks:
     - OreBagOfHolding
     - MiningDrillDiamond

@@ -65,24 +65,59 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                           Visible="False">
                 <Label Text="{Loc 'research-console-required-text'}"
                         HorizontalAlignment="Center"/>
-                <RichTextLabel Name="RequiredExperimentsLabel" HorizontalExpand="True" Margin="0 2 0 6"/>
+                <BoxContainer Name="RequiredExperimentsBlock"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="False"
+                              Margin="0 4 0 6"
+                              SeparationOverride="2">
+                    <Label Text="{Loc 'research-console-tech-required-experiments-title'}"
+                           Modulate="#DDA0DD"/>
+                    <PanelContainer MinHeight="64" VerticalExpand="False">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#23232A" BorderThickness="1" BorderColor="#4A4A56"/>
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer
+                            HScrollEnabled="False"
+                            HorizontalExpand="True"
+                            VerticalExpand="True">
+                            <BoxContainer Name="RequiredExperimentsContainer"
+                                          Orientation="Vertical"
+                                          Margin="6"
+                                          SeparationOverride="2"
+                                          HorizontalExpand="True"/>
+                        </ScrollContainer>
+                    </PanelContainer>
+                    <RichTextLabel Name="MissingExperimentsLabel" Visible="False"/>
+                </BoxContainer>
                 <customControls:HSeparator StyleClasses="LowDivider"
                         Margin="0 0 0 10"/>
-                <PanelContainer VerticalExpand="True">
-                    <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
-                    </PanelContainer.PanelOverride>
-                    <ScrollContainer
-                        HScrollEnabled="False"
-                        HorizontalExpand="True"
-                        VerticalExpand="True">
-                        <BoxContainer
-                            Name="RequiredTechContainer"
-                            Orientation="Vertical"
+                <Label Text="{Loc 'research-console-tech-required-technologies-title'}"
+                       HorizontalAlignment="Center"
+                       Margin="0 0 0 4"/>
+                <BoxContainer Name="RequiredTechnologiesBlock"
+                              Orientation="Vertical"
+                              HorizontalExpand="True"
+                              VerticalExpand="True">
+                    <Label Text="{Loc 'research-console-tech-required-technologies-title'}"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4"/>
+                    <PanelContainer VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer
+                            HScrollEnabled="False"
+                            HorizontalExpand="True"
                             VerticalExpand="True">
-                        </BoxContainer>
-                    </ScrollContainer>
-                </PanelContainer>
+                            <BoxContainer
+                                Name="RequiredTechContainer"
+                                Orientation="Vertical"
+                                VerticalExpand="True">
+                            </BoxContainer>
+                        </ScrollContainer>
+                    </PanelContainer>
+                </BoxContainer>
             </BoxContainer>
             <BoxContainer
                 Name="RecipesContainer"

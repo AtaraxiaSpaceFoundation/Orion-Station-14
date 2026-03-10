@@ -44,6 +44,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
 
     private readonly ResearchSystem _research;
     private readonly SpriteSystem _sprite;
@@ -132,14 +133,10 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         _lastState = state;
 
         var amountMsg = new FormattedMessage();
-        amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-menu-research-points-text",
-            ("points", state.Points)));
-
-        if (!string.IsNullOrWhiteSpace(state.NetworkId))
-        {
-            amountMsg.PushNewline();
-            amountMsg.AddMarkupOrThrow(Loc.GetString("research-console-network-label"));
-        }
+        var networkId = !string.IsNullOrWhiteSpace(state.NetworkId)
+            ? FormattedMessage.EscapeText(state.NetworkId)
+            : Loc.GetString("research-machine-common-none");
+        amountMsg.AddMarkupOrThrow($"{Loc.GetString("research-console-network-label")} [color=white]{networkId}[/color]");
 
         foreach (var balance in state.PointBalances)
         {
@@ -186,15 +183,10 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         }
     }
 
-    private static string GetLocalizedPointType(string type)
+    private string GetLocalizedPointType(string type)
     {
-        return type switch
-        {
-            "General" => Loc.GetString("research-point-type-general"),
-            "Experimental" => Loc.GetString("research-point-type-experimental"),
-            "Industrial" => Loc.GetString("research-point-type-industrial"),
-            _ => type,
-        };
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return _loc.TryGetString(key, out var localized) ? localized : type;
     }
 
     private static string GetLocalizedLogCategory(string category)
@@ -206,7 +198,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
             "disk" => Loc.GetString("research-log-category-disk"),
             "experiment" => Loc.GetString("research-log-category-experiment"),
             "destructive-analyzer" => Loc.GetString("research-log-category-destructive-analyzer"),
-            "experimentator" => Loc.GetString("research-log-category-experimentator"),
+            "experiment-scanner" => Loc.GetString("research-log-category-experiment-scanner"),
             _ => category,
         };
     }
