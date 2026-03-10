@@ -21,3 +21,5 @@ research-server-name-with-suffix = РнД-сервер { $suffix }
 
 research-log-category-discovery = Открытие
 research-log-category-server-control = Управление
+
+research-console-unlock-failed-popup = Невозможно исследовать эту технологию.

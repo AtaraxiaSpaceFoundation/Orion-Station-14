@@ -21,3 +21,5 @@ research-server-name-with-suffix = R&D-Server { $suffix }
 
 research-log-category-discovery = Discovery
 research-log-category-server-control = Server control
+
+research-console-unlock-failed-popup = Cannot research this technology yet.

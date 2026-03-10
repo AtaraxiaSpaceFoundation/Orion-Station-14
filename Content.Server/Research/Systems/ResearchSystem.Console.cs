@@ -86,7 +86,12 @@ public sealed partial class ResearchSystem
         }
 
         if (!UnlockTechnology(uid, args.Id, act))
+        {
+            // Orion-Start
+            _popup.PopupEntity(Loc.GetString("research-console-unlock-failed-popup"), act);
+            // Orion-End
             return;
+        }
 
         if (!_emag.CheckFlag(uid, EmagType.Interaction))
         {
@@ -158,8 +163,20 @@ public sealed partial class ResearchSystem
                         return ResearchAvailability.PrereqsMet;
 
                     var proto = PrototypeManager.Index(techId);
-                    var finalCost = Math.Max(0, proto.Cost - GetTechnologyDiscounts(db, proto));
-                    var canAfford = server.Points >= finalCost;
+                    // Orion-Edit-Start
+                    var allCosts = proto.AllPointCosts.ToList();
+                    var generalFinal = GetTechnologyFinalCost(db, proto);
+                    for (var i = 0; i < allCosts.Count; i++)
+                    {
+                        if (allCosts[i].Type != "General")
+                            continue;
+
+                        var c = allCosts[i];
+                        c.Amount = generalFinal;
+                        allCosts[i] = c;
+                    }
+                    var canAfford = HasSufficientPoints(serverUid.Value, allCosts, server);
+                    // Orion-Edit-End
 
                     return canAfford
                         ? ResearchAvailability.Available
@@ -168,7 +185,8 @@ public sealed partial class ResearchSystem
 
             lockReasons = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>()
                 .Where(proto => db.SupportedDisciplines.Contains(proto.Discipline))
-                .ToDictionary(proto => proto.ID, proto =>
+                .ToDictionary(proto => proto.ID,
+                    proto =>
                 {
                     var reason = GetTechnologyLockReason(db, proto);
                     if (reason == ResearchTechnologyLockReason.None)
@@ -204,7 +222,8 @@ public sealed partial class ResearchSystem
             experiments = new List<ResearchConsoleExperimentData>();
         }
 
-        _uiSystem.SetUiState(uid, ResearchConsoleUiKey.Key,
+        _uiSystem.SetUiState(uid,
+            ResearchConsoleUiKey.Key,
             new ResearchConsoleBoundInterfaceState(
                 points,
                 techList,
