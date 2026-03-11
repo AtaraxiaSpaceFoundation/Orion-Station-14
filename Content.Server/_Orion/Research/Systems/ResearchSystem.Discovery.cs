@@ -56,14 +56,16 @@ public sealed partial class ResearchSystem
             if (database.RevealedTechnologies.Contains(technology.ID))
                 continue;
 
-            if (technology.RevealRequirements.Count == 0)
-                continue;
+            var revealedByRequirements = false;
+            if (technology.RevealRequirements.Count > 0)
+            {
+                var changed = ProcessTechnologyDiscoveryEvent(database, technology, data);
+                revealedByRequirements = changed && AreRevealRequirementsSatisfied(database, technology);
+            }
 
-            var changed = ProcessTechnologyDiscoveryEvent(database, technology, data);
-            if (!changed)
-                continue;
+            var revealedByUnlockLists = IsUnlockListRevealSatisfied(technology, data);
 
-            if (!AreRevealRequirementsSatisfied(database, technology))
+            if (!revealedByRequirements && !revealedByUnlockLists)
                 continue;
 
             database.RevealedTechnologies.Add(technology.ID);
@@ -123,12 +125,33 @@ public sealed partial class ResearchSystem
         return changed;
     }
 
-    private bool AreRevealRequirementsSatisfied(TechnologyDatabaseComponent database, TechnologyPrototype technology)
+    private bool IsUnlockListRevealSatisfied(TechnologyPrototype technology, DiscoveryEventData data)
+    {
+        if (data.Subject == null)
+            return false;
+
+        var subjectPrototype = GetPrototypeId(data.Subject);
+        if (subjectPrototype == null)
+            return false;
+
+        return data.Type switch
+        {
+            ResearchDiscoveryEventType.MachineInsertion =>
+                technology.ItemUnlocks.Contains(subjectPrototype) ||
+                technology.RequiredItemsToUnlock.Contains(subjectPrototype),
+            ResearchDiscoveryEventType.DeconstructEntity =>
+                technology.DeconstructionUnlocks.Contains(subjectPrototype) ||
+                technology.RequiredItemsToUnlock.Contains(subjectPrototype),
+            _ => false,
+        };
+    }
+
+    private static bool AreRevealRequirementsSatisfied(TechnologyDatabaseComponent database, TechnologyPrototype technology)
     {
         return technology.RevealRequirements.Count == 0 || technology.RevealRequirements.All(req => IsRevealRequirementSatisfied(database, technology.ID, req));
     }
 
-    private bool IsRevealRequirementSatisfied(TechnologyDatabaseComponent database,
+    private static bool IsRevealRequirementSatisfied(TechnologyDatabaseComponent database,
         string technologyId,
         TechnologyRevealRequirement requirement)
     {

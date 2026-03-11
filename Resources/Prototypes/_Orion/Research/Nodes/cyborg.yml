@@ -1,0 +1,295 @@
+- type: technology
+  id: Augmentation
+  name: research-technology-augmentation-name
+  description: research-technology-augmentation-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  technologyPrerequisites:
+  - Robotics
+  unlockedExperiments:
+  - ScanningPeopleAndroid
+  recipeUnlocks:
+  - CyborgEndoskeleton
+  - LightHeadBorg
+  - LeftArmBorg
+  - RightArmBorg
+  - LeftLegBorg
+  - RightLegBorg
+  - TorsoBorg
+  - ClothingHeadHatCardborg
+  - ClothingOuterCardborg
+  - BasicCyberneticEyes
+  - BasicCyberneticLungs
+  - BasicCyberneticLiver
+  - BasicCyberneticHeart
+  position: 9,0
+
+- type: technology
+  id: Cybernetics
+  name: research-technology-cybernetics-name
+  description: research-technology-cybernetics-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  announceChannels:
+  - Science
+  cost: 2500
+  technologyPrerequisites:
+  - Augmentation
+  recipeUnlocks:
+  - BorgChargerCircuitboard
+  - PositronicBrain
+  - MMI
+  - LeftArmCybernetic
+  - LeftHandCybernetic
+  - RightArmCybernetic
+  - RightHandCybernetic
+  - LeftLegCybernetic
+  - LeftFootCybernetic
+  - RightLegCybernetic
+  - RightFootCybernetic
+  position: 10,2
+
+- type: technology
+  id: BorgServices
+  name: research-technology-borg-services-name
+  description: research-technology-borg-services-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 5000
+  technologyPrerequisites:
+  - Cybernetics
+  # TODO
+  position: 8,1
+
+- type: technology
+  id: BorgMining
+  name: research-technology-borg-mining-name
+  description: research-technology-borg-mining-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 5000
+  technologyPrerequisites:
+  - Cybernetics
+  # TODO
+  position: 7,1
+
+- type: technology
+  id: BorgMedical
+  name: research-technology-borg-medical-name
+  description: research-technology-borg-medical-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - BorgServices
+  - AdvancedSurgery
+  # TODO
+  position: 6,1
+
+- type: technology
+  id: BorgUtility
+  name: research-technology-borg-utility-name
+  description: research-technology-borg-utility-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - BorgServices
+  - Sanitation
+  # TODO
+  position: 9,1
+
+- type: technology
+  id: BorgEngineering
+  name: research-technology-borg-engineering-name
+  description: research-technology-borg-engineering-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - BorgMining
+  - UpgradedParts
+  # TODO
+  position: 5,1
+
+- type: technology
+  id: PassiveImplants
+  name: research-technology-passive-implants-name
+  description: research-technology-passive-implants-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  announceChannels:
+  - Security
+  - Medical
+  cost: 2500
+  technologyPrerequisites:
+  - Augmentation
+  recipeUnlocks:
+  - SadTromboneImplanter
+  - TrackingImplanter
+  - Implanter
+  position: 10,6
+
+- type: technology
+  id: CyberImplants
+  name: research-technology-cyber-implants-name
+  description: research-technology-cyber-implants-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Science
+  - Medical
+  cost: 7500
+  technologyPrerequisites:
+  - PassiveImplants
+  - Cybernetics
+  # TODO
+  position: 6,2
+
+- type: technology
+  id: CombatImplants
+  name: research-technology-combat-implants-name
+  description: research-technology-combat-implants-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Science
+  - Medical
+  cost: 10000
+  technologyPrerequisites:
+  - CyberImplants
+  # TODO
+  position: 2,2
+
+- type: technology
+  id: IntegratedToolsets
+  name: research-technology-integrated-toolsets-name
+  description: research-technology-integrated-toolsets-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Science
+  - Medical
+  cost: 12500
+  technologyPrerequisites:
+  - CombatImplants
+  - ExperimentalTools
+  # TODO
+  position: 5,4
+
+- type: technology
+  id: CyberOrgans
+  name: research-technology-cyber-organs-name
+  description: research-technology-cyber-organs-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Science
+  - Medical
+  cost: 5000
+  technologyPrerequisites:
+  - Cybernetics
+  recipeUnlocks:
+  - UpgradedCyberneticLungs
+  - UpgradedCyberneticHeart
+  position: 7,2
+
+- type: technology
+  id: CyberOrgansUpgraded
+  name: research-technology-cyber-organs-upgraded-name
+  description: research-technology-cyber-organs-upgraded-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Science
+  - Medical
+  cost: 7500
+  technologyPrerequisites:
+  - CyberOrgans
+  requiredExperiments:
+  - ScanningPeopleAugmentedOrgans
+  # TODO
+  position: 9,2
+
+- type: technology
+  id: AdvancedCyberOrgans
+  name: research-technology-advanced-cyber-organs-name
+  description: research-technology-advanced-cyber-organs-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Science
+  - Medical
+  cost: 12500
+  technologyPrerequisites:
+  - CyberOrgansUpgraded
+  - NightVision
+  discountExperiments:
+  - ScanningPeopleAndroid
+  discountExperimentCosts:
+    ScanningPeopleAndroid: 12500
+  # TODO
+  position: 8,2

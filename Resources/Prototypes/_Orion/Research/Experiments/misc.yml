@@ -1,0 +1,7 @@
+- type: researchExperiment
+  id: PhysicalArcadeWinner
+  name: research-experiment-physical-arcade-winner-name
+  description: research-experiment-physical-arcade-winner-desc
+  category: Physical
+  objective: !type:DebugManualExperimentObjective {}
+  reward: {}

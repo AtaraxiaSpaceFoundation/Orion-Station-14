@@ -1,0 +1,92 @@
+- type: technology
+  id: Robotics
+  name: research-technology-robotics-name
+  description: research-technology-robotics-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - ExosuitFabricatorMachineCircuitboard
+  - PersonalAI
+  position: 6,7
+
+- type: technology
+  id: ExplorationDrone
+  name: research-technology-exploration-drone-name
+  description: research-technology-exploration-drone-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  cost: 2500
+  technologyPrerequisites:
+  - Robotics
+  # TODO
+  position: 2,3
+
+- type: technology
+  id: ArtificialIntelligence
+  name: research-technology-artificial-intelligence-name
+  description: research-technology-artificial-intelligence-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  cost: 2500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - StationAiUploadCircuitboard
+  - AsimovCircuitBoard
+  - AiRemoteBrain
+  - CorporateCircuitBoard
+  - NTDefaultCircuitBoard
+#  - DroneLaws
+  - NTCustomLawboard
+  - Intellicard
+  - NutimovCircuitBoard
+  - PaladinCircuitBoard
+  - StationEfficiencyCircuitBoard
+#  - QuarantineLaws
+  - RobocopCircuitBoard
+#  - SafeguardLaws
+  position: 0,0
+
+- type: technology
+  id: ArtificialIntelligenceLaws
+  name: research-technology-artificial-intelligence-laws-name
+  description: research-technology-artificial-intelligence-laws-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Science
+  - Command
+  cost: 7500
+  technologyPrerequisites:
+  - ArtificialIntelligence
+  recipeUnlocks:
+  - AntimovCircuitBoard
+  - GameMasterCircuitBoard
+#  - HyppocraticLaws 
+  - LiveLetLiveCircuitBoard
+  - OverlordCircuitBoard
+  - ArtistCircuitBoard
+#  - ReporterLaws 
+  - CommandmentCircuitBoard
+#  - ThermurderLaws
+#  - ThinkermovLaws
+#  - TyrantLaws
+#  - YesmanLaws
+  position: 1,0

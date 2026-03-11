@@ -1,0 +1,100 @@
+- type: technology
+  id: OldstationSurgery
+  name: research-technology-oldstation-surgery-name
+  description: research-technology-oldstation-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  hidden: true
+  cost: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  # There should be surgery operations
+  position: 5,6
+
+- type: technology
+  id: Surgery
+  name: research-technology-surgery-name
+  description: research-technology-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  announceChannels:
+  - Medical
+  cost: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  # There should be surgery operations
+  position: 11,7
+
+- type: technology
+  id: AdvancedSurgery
+  name: research-technology-advanced-surgery-name
+  description: research-technology-advanced-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Medical
+  cost: 5000
+  technologyPrerequisites:
+  - Surgery
+  discountExperiments:
+  - AutopsyHuman
+  discountExperimentCosts:
+    AutopsyHuman: 5000
+  # There should be surgery operations
+  position: 0,8
+
+- type: technology
+  id: ExperimentalSurgery
+  name: research-technology-experimental-surgery-name
+  description: research-technology-experimental-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 3
+  announceChannels:
+  - Medical
+  cost: 7500
+  technologyPrerequisites:
+  - AdvancedSurgery
+  discountExperiments:
+  - AutopsyNonhuman
+  discountExperimentCosts:
+    AutopsyNonhuman: 7500
+  # There should be surgery operations
+  position: 1,8
+
+- type: technology
+  id: SurgeryTools
+  name: research-technology-surgery-tools-name
+  description: research-technology-surgery-tools-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Medical
+  cost: 10000
+  technologyPrerequisites:
+  - ExperimentalSurgery
+  discountExperiments:
+  - AutopsyXenomorph
+  discountExperimentCosts:
+    AutopsyXenomorph: 10000
+  recipeUnlocks:
+  - EnergyScalpel
+  - EnergyCautery
+  - AdvancedRetractor
+  position: 2,8

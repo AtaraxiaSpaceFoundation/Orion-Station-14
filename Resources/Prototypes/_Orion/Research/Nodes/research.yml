@@ -1,0 +1,138 @@
+- type: technology
+  id: FundamentalScience
+  name: research-technology-fundamental-science-name
+  description: research-technology-fundamental-science-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - ResearchAndDevelopmentServerMachineCircuitboard
+  - ResearchServerControlConsoleCircuitboard
+  - ResearchComputerCircuitboard
+  - ResearchDestructiveAnalyzerMachineCircuitboard
+  - ResearchExperimentalDestructiveScannerMachineCircuitboard
+  - AnomalyVesselCircuitboard
+  position: 9,3
+
+- type: technology
+  id: BluespaceTheory
+  name: research-technology-bluespace-theory-name
+  description: research-technology-bluespace-theory-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 2500
+  technologyPrerequisites:
+  - FundamentalScience
+  recipeUnlocks:
+  - MaterialBSCrystal
+  position: 3,1
+
+- type: technology
+  id: AppliedBluespace
+  name: research-technology-applied-bluespace-name
+  description: research-technology-applied-bluespace-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 2
+  announceChannels:
+  - Science
+  - Medical
+  - Service
+  - Supply
+  cost: 5000
+  technologyPrerequisites:
+  - BluespaceTheory
+  discountExperiments:
+  - ScanningPointsBluespaceCrystal
+  discountExperimentCosts:
+    ScanningPointsBluespaceCrystal: 5000
+  recipeUnlocks:
+  - MaterialSiloMachineCircuitboard
+  - OreBagOfHolding
+  - BluespaceBeaker
+  - SyringeBluespace
+  - BodyBagBluespace
+  - ConstructionBagOfHolding
+  - ClothingBeltChemBagXenobiologyHolding
+  - PlantBagOfHolding
+  position: 7,0
+
+- type: technology
+  id: BluespaceTravel
+  name: research-technology-bluespace-travel-name
+  description: research-technology-bluespace-travel-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - AppliedBluespace
+  recipeUnlocks:
+  - DeviceQuantumSpinInverter
+  - CargoTelepadMachineCircuitboard
+  position: 4,1
+
+- type: technology
+  id: AnomalyResearch
+  name: research-technology-anomaly-research-name
+  description: research-technology-anomaly-research-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - AppliedBluespace
+  recipeUnlocks:
+  - AnomalySynchronizerCircuitboard
+  - AnomalyVesselExperimentalCircuitboard
+  position: 5,0
+
+- type: technology
+  id: AnomalyShells
+  name: research-technology-anomaly-shells-name
+  description: research-technology-anomaly-shells-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 12500
+  technologyPrerequisites:
+  - AnomalyResearch
+  discountExperiments:
+  - ScanningPointsAnomalies
+  discountExperimentCosts:
+    ScanningPointsAnomalies: 12500
+  recipeUnlocks:
+  - ClothingBackpackDuffelHolding
+  - ClothingBackpackMessengerHolding
+  - ClothingBackpackHolding
+  - ClothingBackpackSatchelHolding
+  - WeaponTetherGun
+#  - PolymorphBelt # TODO 
+  position: 6,0

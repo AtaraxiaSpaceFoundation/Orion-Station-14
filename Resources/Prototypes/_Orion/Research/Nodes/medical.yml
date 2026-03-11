@@ -1,0 +1,113 @@
+- type: technology
+  id: MedicalEquipment
+  name: research-technology-medical-equipment-name
+  description: research-technology-medical-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  unlockedExperiments:
+  - AutopsyHuman
+  - AutopsyNonhuman
+  - AutopsyXenomorph
+  - ScanningReagentHaloperidol
+  - ScanningReagentCryostylane
+  recipeUnlocks:
+  - LargeBeaker
+  - Beaker
+  - Bloodpack
+  - Bonesetter
+  - Cautery
+  - SawElectric
+  - Defibrillator
+  - Dropper
+  - Hemostat
+  - PillCanister
+  - Retractor
+  - Scalpel
+  - ClothingNeckStethoscope
+  - MedicalStitches
+  - Drill
+  - Syringe
+  position: 11,5
+
+- type: technology
+  id: ChemSynthesis
+  name: research-technology-chem-synthesis-name
+  description: research-technology-chem-synthesis-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  announceChannels:
+  - Medical
+  cost: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  recipeUnlocks:
+  - Plunger
+  recipeUnlocks:
+  - SprayBottleRed
+  - SprayBottleBlue
+  - SprayBottleOrange
+  - BoneGel
+  - SodaDispenserMachineCircuitboard
+  - BoozeDispenserMachineCircuitboard
+  - ChemDispenserMachineCircuitboard
+  - EnergyChemDispenserMachineCircuitboard
+  - ChemMasterMachineCircuitboard
+  - HotplateMachineCircuitboard
+  position: 0,2
+
+- type: technology
+  id: AdvancedMedicalEquipment
+  name: research-technology-advanced-medical-equipment-name
+  description: research-technology-advanced-medical-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Medical
+  cost: 7500
+  technologyPrerequisites:
+  - ChemSynthesis
+  requiredExperiments:
+  - ScanningReagentHaloperidol
+  recipeUnlocks:
+  - HandheldCrewMonitor
+  position: 0,6
+
+- type: technology
+  id: Cryostasis
+  name: research-technology-cryostasis-name
+  description: research-technology-cryostasis-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Medical
+  cost: 10000
+  technologyPrerequisites:
+  - AdvancedMedicalEquipment
+  - Fusion
+  discountExperiments:
+  - ScanningReagentCryostylane
+  discountExperimentCosts:
+    ScanningReagentCryostylane: 10000
+  recipeUnlocks:
+  - CryoPodMachineCircuitboard
+  - CryostasisBeaker
+  - SyringeCryostasis
+  - StasisOperatingTableCircuitboard
+  - StasisBedMachineCircuitboard
+  position: 5,2

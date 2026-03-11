@@ -24,6 +24,7 @@
 
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Prototypes;
+using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
@@ -46,6 +47,12 @@ public sealed partial class TechnologyPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public LocId Name = string.Empty;
+
+    /// <summary>
+    /// Localized description of the technology.
+    /// </summary>
+    [DataField]
+    public LocId Description = string.Empty;
 
     /// <summary>
     /// An icon used to visually represent the technology in UI.
@@ -110,6 +117,12 @@ public sealed partial class TechnologyPrototype : IPrototype
     public List<string> DiscountExperiments = new();
 
     /// <summary>
+    /// Per-technology discount values keyed by experiment ID.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, int> DiscountExperimentCosts = new();
+
+    /// <summary>
     /// Experiments unlocked when this technology is researched.
     /// </summary>
     [DataField]
@@ -119,10 +132,17 @@ public sealed partial class TechnologyPrototype : IPrototype
     /// Should this technology be announced to the station when unlocked.
     /// </summary>
     [DataField]
-    public bool AnnounceOnUnlock;
+    public bool AnnounceOnUnlock = true;
 
     /// <summary>
-    /// Indicates a technology that primarily unlocks R&D infrastructure.
+    /// Radio channels used for unlock announcements when <see cref="AnnounceOnUnlock"/> is enabled.
+    /// Falls back to the console announcement channel if empty.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<RadioChannelPrototype>> AnnounceChannels = new();
+
+    /// <summary>
+    /// Indicates a technology that primarily unlocks RnD infrastructure.
     /// </summary>
     [DataField]
     public bool InfrastructureUnlock;
@@ -164,7 +184,13 @@ public sealed partial class TechnologyPrototype : IPrototype
     public List<string> DeconstructionUnlocks = new();
 
     /// <summary>
-    /// Goobstation R&D console rework field
+    /// Required item prototype paths to reveal or unlock this technology.
+    /// </summary>
+    [DataField]
+    public List<string> RequiredItemsToUnlock = new();
+
+    /// <summary>
+    /// Goobstation RnD console rework field
     /// Position of this tech in console menu
     /// </summary>
     [DataField(required: true)]

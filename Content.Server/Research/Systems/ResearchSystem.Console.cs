@@ -93,7 +93,7 @@ public sealed partial class ResearchSystem
             return;
         }
 
-        if (!_emag.CheckFlag(uid, EmagType.Interaction))
+        if (!_emag.CheckFlag(uid, EmagType.Interaction) && technologyPrototype.AnnounceOnUnlock)
         {
             var getIdentityEvent = new TryGetIdentityShortInfoEvent(uid, act);
             RaiseLocalEvent(getIdentityEvent);
@@ -113,7 +113,15 @@ public sealed partial class ResearchSystem
                 ("approver", getIdentityEvent.Title ?? string.Empty));
             // Orion-End
 
-            _radio.SendRadioMessage(uid, message, component.AnnouncementChannel, uid, escapeMarkup: false);
+            var announceChannels = technologyPrototype.AnnounceChannels.Count > 0
+                ? technologyPrototype.AnnounceChannels
+                : [component.AnnouncementChannel];
+
+            foreach (var channel in announceChannels)
+            {
+                _radio.SendRadioMessage(uid, message, channel, uid, escapeMarkup: false);
+            }
+
             _chat.TrySendInGameICMessage(uid, messageIC, InGameICChatType.Speak, false); // Orion
         }
 

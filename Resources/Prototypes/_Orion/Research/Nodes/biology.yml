@@ -1,0 +1,150 @@
+- type: technology
+  id: BiologicalScan
+  name: research-technology-biological-scan-name
+  description: research-technology-biological-scan-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Medical
+  cost: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  recipeUnlocks:
+  - HandheldHealthAnalyzer
+  - ChemMasterMachineCircuitboard
+  - ClothingEyesGlassesChemical
+  position: 1,1
+
+- type: technology
+  id: Cytology
+  name: research-technology-cytology-name
+  description: research-technology-cytology-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  hidden: true
+  cost: 5000
+  technologyPrerequisites:
+  - BiologicalScan
+  recipeUnlocks:
+  - MedicalBiofabMachineBoard
+  - DiagnoserMachineCircuitboard
+  - VaccinatorMachineCircuitboard
+  - DiseaseSwab
+  position: 11,2
+
+- type: technology
+  id: Xenobiology
+  name: research-technology-xenobiology-name
+  description: research-technology-xenobiology-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 3
+  hidden: true
+  cost: 7500
+  technologyPrerequisites:
+  - Cytology
+  discountExperiments:
+  - ScanningCytologySlime
+  discountExperimentCosts:
+    ScanningCytologySlime: 7500
+  recipeUnlocks:
+  - XenobiologyBountyComputerCircuitboard
+  - SlimeScannerXenobio
+  position: 4,8
+
+- type: technology
+  id: GeneEngineering
+  name: research-technology-gene-engineering-name
+  description: research-technology-gene-engineering-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Medical
+  cost: 10000
+  technologyPrerequisites:
+  - Selection
+  - Xenobiology
+  discountExperiments:
+  - ScanningPeopleMutant
+  discountExperimentCosts:
+    ScanningPeopleMutant: 10000
+  recipeUnlocks:
+  - MedicalScannerMachineCircuitboard
+  position: 1,4
+
+- type: technology
+  id: BotanyEquipment
+  name: research-technology-botany-equipment-name
+  description: research-technology-botany-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - SeedExtractorMachineCircuitboard
+  - HydroponicsToolSpade
+  - HydroponicsToolMiniHoe
+  - HydroponicsToolClippers
+  - HydroponicsToolHatchet
+  position: 10,1
+
+- type: technology
+  id: Hydroponics
+  name: research-technology-hydroponics-name
+  description: research-technology-hydroponics-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Service
+  cost: 5000
+  technologyPrerequisites:
+  - BotanyEquipment
+  - ChemSynthesis
+  recipeUnlocks:
+  - BiogeneratorMachineCircuitboard
+  - HydroponicsTrayMachineCircuitboard
+  position: 4,4
+
+- type: technology
+  id: ArtificialSelection
+  name: research-technology-artificial-selection-name
+  description: research-technology-artificial-selection-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Service
+  cost: 7500
+  technologyPrerequisites:
+  - Hydroponics
+  requiredExperiments:
+  - ScanningRandomPlantsWild
+  discountExperiments:
+  - ScanningRandomPlantsTraits
+  discountExperimentCosts:
+    ScanningRandomPlantsTraits: 7500
+  # TODO
+  position: 9,7

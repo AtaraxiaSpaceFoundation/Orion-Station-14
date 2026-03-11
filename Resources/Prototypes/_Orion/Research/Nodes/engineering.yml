@@ -1,0 +1,271 @@
+- type: technology
+  id: Parts
+  name: research-technology-parts-name
+  description: research-technology-parts-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - PowerCellSmall
+  - MegaCellSmall
+  - PowerCellHigh
+  - MegaCellHigh
+  - MicroManipulatorStockPart
+  - Igniter
+  - ProximitySensor
+  - RemoteSignaller
+  - TimerTrigger
+  - VoiceSignaller
+  - VoiceTrigger
+  position: 6,6
+
+- type: technology
+  id: UpgradedParts
+  name: research-technology-upgraded-parts-name
+  description: research-technology-upgraded-parts-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 5000
+  technologyPrerequisites:
+  - Parts
+  - EnergyManipulation
+  recipeUnlocks:
+  - PowerCellSuper
+  - MegaCellSuper
+  position: 9,6
+
+- type: technology
+  id: AdvancedParts
+  name: research-technology-advanced-parts-name
+  description: research-technology-advanced-parts-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 7500
+  technologyPrerequisites:
+  - UpgradedParts
+  discountExperiments:
+  - ScanningPointsMachineryTieredScanTier2Any
+  discountExperimentCosts:
+    ScanningPointsMachineryTieredScanTier2Any: 7500
+  recipeUnlocks:
+  - PowerCellHyper
+  - MegaCellHyper
+  position: 7,6
+
+- type: technology
+  id: PartsBluespace
+  name: research-technology-parts-bluespace-name
+  description: research-technology-parts-bluespace-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 10000
+  technologyPrerequisites:
+  - AdvancedParts
+  - BluespaceTravel
+  discountExperiments:
+  - ScanningPointsMachineryTieredScanTier3Any
+  discountExperimentCosts:
+    ScanningPointsMachineryTieredScanTier3Any: 10000
+  recipeUnlocks:
+  - PowerCellBluespace
+  - MegaCellBluespace
+  position: 8,6
+
+- type: technology
+  id: Telecommunications
+  name: research-technology-telecommunications-name
+  description: research-technology-telecommunications-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  cost: 12500
+  technologyPrerequisites:
+  - PartsBluespace
+  recipeUnlocks:
+  - TelecomTransmitterCircuitboard
+  - TelecomServerCircuitboard
+  position: 3,8
+
+- type: technology
+  id: Construction
+  name: research-technology-construction-name
+  description: research-technology-construction-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - CircuitImprinterMachineCircuitboard
+  - SolarControlComputerCircuitboard
+  - SolarTrackerElectronics
+  - PowerComputerCircuitboard
+  - AirAlarmElectronics
+  - FireAlarmElectronics
+  - DoorElectronics
+  - FirelockElectronics
+  - SprayPainter
+  - SprayPainterAmmo
+  - CableStack
+  - CableMVStack
+  - CableHVStack
+  - ClothingHeadHatWelding
+  - Welder
+  - WelderMini
+  - trayScanner
+  - Multitool
+  - Wrench
+  - Crowbar
+  - Screwdriver
+  - Wirecutter
+  - LightBulb
+  - LightTube
+  position: 4,2
+
+- type: technology
+  id: EnergyManipulation
+  name: research-technology-energy-manipulation-name
+  description: research-technology-energy-manipulation-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 2500
+  technologyPrerequisites:
+  - Construction
+  recipeUnlocks:
+  - PowerComputerCircuitboard
+  - SMESMachineCircuitboard
+  - EmitterCircuitboard
+  - TeslaGroundingRod
+  - TeslaCoil
+  - CellRechargerCircuitboard
+  - WeaponCapacitorRechargerCircuitboard
+  - InducerScientific
+  - InducerEngineering
+  - ClothingEyesWelding
+  - GeigerCounter
+  position: 1,3
+
+- type: technology
+  id: ShuttleEngineering
+  name: research-technology-shuttle-engineering-name
+  description: research-technology-shuttle-engineering-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Engineering
+  - Science
+  - Supply
+  cost: 2500
+  technologyPrerequisites:
+  - EnergyManipulation
+  - AppliedBluespace
+  recipeUnlocks:
+  - ShuttleConsoleCircuitboard
+  position: 10,7
+
+- type: technology
+  id: Holographics
+  name: research-technology-holographics-name
+  description: research-technology-holographics-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  cost: 5000
+  technologyPrerequisites:
+  - EnergyManipulation
+  recipeUnlocks:
+  - HolofanProjector
+  - HoloprojectorSecurity
+  - Holoprojector
+  - HoloprojectorField
+  position: 2,4
+
+- type: technology
+  id: HUD
+  name: research-technology-hud-name
+  description: research-technology-hud-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  - Engineering
+  - Security
+  - Science
+  - Medical
+  cost: 7500
+  technologyPrerequisites:
+  - Holographics
+  - CyberImplants
+  recipeUnlocks:
+  - ClothingEyesHudMedical
+  - ClothingEyesHudDiagnostic
+  - ClothingEyesHudSecurity
+  - MedicalCyberneticEyes
+  - DiagnosticCyberneticEyes
+  - SecurityCyberneticEyes
+  position: 3,4
+
+- type: technology
+  id: NightVision
+  name: research-technology-night-vision-name
+  description: research-technology-night-vision-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  hidden: true
+  hidden: true
+  - Engineering
+  - Security
+  - Science
+  - Medical
+  cost: 10000
+  technologyPrerequisites:
+  - HUD
+  recipeUnlocks:
+  # TODO: Departament variations
+  - ClothingEyesNightVisionGoggles
+  position: 3,6

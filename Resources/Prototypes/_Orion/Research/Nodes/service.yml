@@ -1,0 +1,214 @@
+- type: technology
+  id: OfficeEquipment
+  name: research-technology-office-equipment-name
+  description: research-technology-office-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - HandLabeler
+  - ParcelWrap
+  - CutterMachineCircuitboard
+  - RadioHandheld
+  - ClothingHeadset # Without keys!!!
+  - TapeRecorder
+  - CassetteTape
+  - PetCarrier
+  - Bucket
+  - MopItem
+  - Broomstick
+  - TrashBag
+  - WireBrush
+  - FlashlightLantern
+  - Flare
+  - StationRadioCircuitboard
+  position: 4,6
+
+- type: technology
+  id: Sanitation
+  name: research-technology-sanitation-name
+  description: research-technology-sanitation-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  announceChannels:
+  - Service
+  cost: 5000
+  technologyPrerequisites:
+  - OfficeEquipment
+  discountExperiments:
+  - ScanningRandomJanitorTrash
+  discountExperimentCosts:
+    ScanningRandomJanitorTrash: 5000
+  recipeUnlocks:
+  - AdvMopItem
+  - LightReplacer
+  - SprayBottle
+  position: 7,7
+
+- type: technology
+  id: Consoles
+  name: research-technology-consoles-name
+  description: research-technology-consoles-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Service
+  cost: 2500
+  technologyPrerequisites:
+  - OfficeEquipment
+  recipeUnlocks:
+  - CommsComputerCircuitboard
+  - CargoRequestComputerCircuitboard
+  - MedicalRecordsComputerCircuitboard
+  - CrewMonitoringComputerCircuitboard
+  - CargoBountyComputerCircuitboard
+  - ScreenTimerElectronics
+  position: 3,2
+
+- type: technology
+  id: Gaming
+  name: research-technology-gaming-name
+  description: research-technology-gaming-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  hidden: true
+  cost: 5000
+  technologyPrerequisites:
+  - Consoles
+  discountExperiments:
+  - PhysicalArcadeWinner
+  discountExperimentCosts:
+    PhysicalArcadeWinner: 5000
+  recipeUnlocks:
+  - BlockGameArcadeComputerCircuitboard
+  - SpaceVillainArcadeComputerCircuitboard
+  position: 11,3
+
+- type: technology
+  id: CafeteriaEquipment
+  name: research-technology-cafeteria-equipment-name
+  description: research-technology-cafeteria-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - ElectricGrillMachineCircuitboard
+  - MicrowaveMachineCircuitboard
+  - FoodBowlBig
+  - CandyBowl
+  - FoodPlate
+  - FoodPlateSmall
+  - FoodPlatePlastic
+  - FoodPlateSmallPlastic
+  - FoodPlateMuffinTin
+  - FoodPlateTin
+  - BarSpoon
+  - Spoon
+  - SpoonPlastic
+  - Fork
+  - ForkPlastic
+  - KitchenKnife
+  - KnifePlastic
+  - DrinkShaker
+  - DrinkGlass
+  - DrinkGlassCoupeShaped
+  - DrinkShotGlass
+  - Ashtray
+  position: 11,1
+
+- type: technology
+  id: FoodProcessing
+  name: research-technology-food-processing-name
+  description: research-technology-food-processing-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Service
+  cost: 5000
+  technologyPrerequisites:
+  - CafeteriaEquipment
+  recipeUnlocks:
+#  - DeepFryer
+#  - Oven
+#  - Stove 
+  - SlimeGrinderMachineCircuitboard
+  - ReagentGrinderMachineCircuitboard
+  - SheetifierMachineCircuitboard
+  - FatExtractorMachineCircuitboard
+  - PairedChopsticks
+  position: 8,3
+
+- type: technology
+  id: FishingEquip
+  name: research-technology-fishing-equip-name
+  description: research-technology-fishing-equip-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - FishingRod
+  position: 6,3
+
+- type: technology
+  id: FishingEquipAdv
+  name: research-technology-fishing-equip-adv-name
+  description: research-technology-fishing-equip-adv-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 2
+  hidden: true
+  cost: 5000
+  technologyPrerequisites:
+  - FishingEquip
+  requiredExperiments:
+  - ScanningFish
+  # TODO
+  position: 7,3
+
+- type: technology
+  id: MarineUtility
+  name: research-technology-marine-utility-name
+  description: research-technology-marine-utility-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: CivilianServices
+  tier: 3
+  hidden: true
+  cost: 7500
+  technologyPrerequisites:
+  - FishingEquipAdv
+  discountExperiments:
+  - ScanningFishSecond
+  discountExperimentCosts:
+    ScanningFishSecond: 7500
+  # TODO
+  position: 7,4

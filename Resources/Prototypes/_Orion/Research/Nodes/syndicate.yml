@@ -1,0 +1,41 @@
+- type: technology
+  id: IllegalTechnology
+  name: research-technology-illegal-technology-name
+  description: research-technology-illegal-technology-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 5
+  hidden: true
+  cost: 12500
+  technologyPrerequisites:
+  - ExperimentalTools
+  - ExoticAmmo
+  recipeUnlocks:
+  - BorgModuleMartyr
+  - BorgModuleSyndicateWeapon
+  - FoamCrossbow
+  - BodyBagSyndicate
+  - SyndicateMicrowaveMachineCircuitboard
+  - SyndicatePersonalAI
+  position: 1,2
+
+- type: technology
+  id: UnregulatedBluespaceResearch
+  name: research-technology-unregulated-bluespace-research-name
+  description: research-technology-unregulated-bluespace-research-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Experimental
+  tier: 1
+  hidden: true
+  cost: 2500
+  technologyPrerequisites:
+  - PartsBluespace
+  - IllegalTechnology
+  recipeUnlocks:
+  - DeviceDesynchronizer
+  - MedicalBeamGunSyndicate
+  position: 2,2

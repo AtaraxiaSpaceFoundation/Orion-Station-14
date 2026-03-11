@@ -92,7 +92,7 @@ public abstract class SharedResearchSystem : EntitySystem
         Dirty(uid, component);
     }
 
-    public List<TechnologyPrototype> GetAvailableTechnologies(EntityUid uid, TechnologyDatabaseComponent? component = null)
+    private List<TechnologyPrototype> GetAvailableTechnologies(EntityUid uid, TechnologyDatabaseComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
             return new List<TechnologyPrototype>();
@@ -161,7 +161,7 @@ public abstract class SharedResearchSystem : EntitySystem
         Dirty(uid, component);
     }
 
-    public bool HasRequiredExperiments(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    protected static bool HasRequiredExperiments(TechnologyDatabaseComponent component, TechnologyPrototype tech)
     {
         if (tech.RequiredExperiments.Count == 0)
             return true;
@@ -177,7 +177,7 @@ public abstract class SharedResearchSystem : EntitySystem
         return true;
     }
 
-    public int GetTechnologyDiscounts(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    private int GetTechnologyDiscounts(TechnologyDatabaseComponent component, TechnologyPrototype tech)
     {
         if (tech.DiscountExperiments.Count == 0)
             return 0;
@@ -190,6 +190,12 @@ public abstract class SharedResearchSystem : EntitySystem
         {
             if (!component.CompletedExperiments.Contains(experimentId))
                 continue;
+
+            if (tech.DiscountExperimentCosts.TryGetValue(experimentId, out var fixedDiscount))
+            {
+                flatDiscount += fixedDiscount;
+                continue;
+            }
 
             if (!PrototypeManager.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
                 continue;
@@ -204,7 +210,7 @@ public abstract class SharedResearchSystem : EntitySystem
         return Math.Max(0, flatDiscount + percentageValue);
     }
 
-    public int GetTechnologyFinalCost(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    protected int GetTechnologyFinalCost(TechnologyDatabaseComponent component, TechnologyPrototype tech)
     {
         return Math.Max(0, tech.Cost - GetTechnologyDiscounts(component, tech));
     }
@@ -232,7 +238,7 @@ public abstract class SharedResearchSystem : EntitySystem
         var recipes = new HashSet<ProtoId<LatheRecipePrototype>>();
         foreach (var techId in component.ResearchedTechnologies)
         {
-            if (!PrototypeManager.TryIndex<TechnologyPrototype>(techId, out var tech))
+            if (!PrototypeManager.TryIndex(techId, out var tech))
                 continue;
 
             recipes.UnionWith(tech.RecipeUnlocks);
@@ -359,7 +365,7 @@ public abstract class SharedResearchSystem : EntitySystem
         return true;
     }
 
-    public Dictionary<string, int> GetDisciplineTiers(TechnologyDatabaseComponent component)
+    private Dictionary<string, int> GetDisciplineTiers(TechnologyDatabaseComponent component)
     {
         var tiers = new Dictionary<string, int>();
         foreach (var discipline in component.SupportedDisciplines)
@@ -370,7 +376,7 @@ public abstract class SharedResearchSystem : EntitySystem
         return tiers;
     }
 
-    public int GetHighestDisciplineTier(TechnologyDatabaseComponent component, string disciplineId)
+    private int GetHighestDisciplineTier(TechnologyDatabaseComponent component, string disciplineId)
     {
         return GetHighestDisciplineTier(component, PrototypeManager.Index<TechDisciplinePrototype>(disciplineId));
     }
@@ -382,7 +388,7 @@ public abstract class SharedResearchSystem : EntitySystem
         var allUnlocked = new List<TechnologyPrototype>();
         foreach (var recipe in component.ResearchedTechnologies)
         {
-            var proto = PrototypeManager.Index<TechnologyPrototype>(recipe);
+            var proto = PrototypeManager.Index(recipe);
             if (proto.Discipline != techDiscipline.ID)
                 continue;
             allUnlocked.Add(proto);
@@ -430,6 +436,12 @@ public abstract class SharedResearchSystem : EntitySystem
             disciplinePrototype ??= PrototypeManager.Index(technology.Discipline);
             description.AddMarkupOrThrow(Loc.GetString("research-console-tier-discipline-info",
                 ("tier", technology.Tier), ("color", disciplinePrototype.Color), ("discipline", Loc.GetString(disciplinePrototype.Name))));
+            description.PushNewline();
+        }
+
+        if (!string.IsNullOrWhiteSpace(technology.Description))
+        {
+            description.AddMarkupOrThrow(Loc.GetString(technology.Description));
             description.PushNewline();
         }
 
@@ -484,7 +496,7 @@ public abstract class SharedResearchSystem : EntitySystem
     ///     Returns whether a technology is unlocked on this database or not.
     /// </summary>
     /// <returns>Whether it is unlocked or not</returns>
-    public bool IsTechnologyUnlocked(EntityUid uid, string technologyId, TechnologyDatabaseComponent? component = null)
+    private bool IsTechnologyUnlocked(EntityUid uid, string technologyId, TechnologyDatabaseComponent? component = null)
     {
         return Resolve(uid, ref component, false) && component.ResearchedTechnologies.Contains(technologyId);
     }

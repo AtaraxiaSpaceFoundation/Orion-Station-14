@@ -1,0 +1,148 @@
+- type: technology
+  id: Atmospherics
+  name: research-technology-atmospherics-name
+  description: research-technology-atmospherics-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - AlertsComputerCircuitboard
+  - ThermomachineFreezerMachineCircuitBoard
+  - SpaceHeaterMachineCircuitBoard
+  - PortableScrubberMachineCircuitBoard
+  - OxygenTank
+  - WaterVaporTank # DV
+  - PlasmaTank
+  - FireExtinguisher
+  - FireExtinguisherMini
+  - GasAnalyzer
+  position: 8,0
+
+- type: technology
+  id: GasCompression
+  name: research-technology-gas-compression-name
+  description: research-technology-gas-compression-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 2500
+  technologyPrerequisites:
+  - Atmospherics
+  unlockedExperiments:
+  - OrdnanceGaseousPlasma
+  - OrdnanceGaseousNitrousOxide
+  - OrdnanceGaseousBz
+  - OrdnanceGaseousNoblium
+  # TODO
+  position: 0,4
+
+- type: technology
+  id: PlasmaControl
+  name: research-technology-plasma-control-name
+  description: research-technology-plasma-control-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 5000
+  technologyPrerequisites:
+  - GasCompression
+  - EnergyManipulation
+  discountExperiments:
+  - OrdnanceGaseousPlasma
+  discountExperimentCosts:
+    OrdnanceGaseousPlasma: 5000
+  recipeUnlocks:
+  - WeaponPlasmaCutter
+  - MechAirTank
+  recipeUnlocks:
+  - PortableGeneratorPacmanMachineCircuitboard
+  # TODO: No turbine :(
+  position: 11,6
+
+- type: technology
+  id: Fusion
+  name: research-technology-fusion-name
+  description: research-technology-fusion-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 7500
+  technologyPrerequisites:
+  - PlasmaControl
+  discountExperiments:
+  - OrdnanceGaseousNitrousOxide
+  discountExperimentCosts:
+    OrdnanceGaseousNitrousOxide: 7500
+  recipeUnlocks:
+  - ExtinguisherSpray
+  # TODO: No fusion :(
+  position: 10,3
+
+- type: technology
+  id: ExperimentalTools
+  name: research-technology-experimental-tools-name
+  description: research-technology-experimental-tools-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  announceChannels:
+  - Engineering
+  cost: 10000
+  technologyPrerequisites:
+  - Fusion
+  discountExperiments:
+  - OrdnanceGaseousBz
+  discountExperimentCosts:
+    OrdnanceGaseousBz: 10000
+  recipeUnlocks:
+  - FlatpackerMachineCircuitboard
+  - PowerDrill
+  - WelderExperimental
+  - JawsOfLife
+  - ClothingHeadHatWelding
+  - ClothingShoesBootsMag
+  position: 4,3
+
+- type: technology
+  id: RapidConstructionDeviceUpgrade
+  name: research-technology-rapid-construction-device-upgrade-name
+  description: research-technology-rapid-construction-device-upgrade-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Engineering
+  cost: 12500
+  technologyPrerequisites:
+  - ExperimentalTools
+  - PartsBluespace
+  discountExperiments:
+  - OrdnanceGaseousNoblium
+  discountExperimentCosts:
+    OrdnanceGaseousNoblium: 12500
+  # TODO
+  position: 4,7

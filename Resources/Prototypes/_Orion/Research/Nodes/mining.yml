@@ -1,0 +1,126 @@
+- type: technology
+  id: MaterialProcessing
+  name: research-technology-material-processing-name
+  description: research-technology-material-processing-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - Pickaxe
+  - Shovel
+  - ConveyorBeltAssembly
+  - AutolatheMachineCircuitboard
+  - SheetRGlassRaw
+  - SheetPGlass1
+  - SheetRPGlass1
+  - SheetPlasteel1
+  - SheetUGlass1
+  - SheetRUGlass1
+  position: 8,4
+
+- type: technology
+  id: Mining
+  name: research-technology-mining-name
+  description: research-technology-mining-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  announceChannels:
+  - Supply
+  cost: 2500
+  technologyPrerequisites:
+  - MaterialProcessing
+  recipeUnlocks:
+  - MineralScanner
+  - MiningDrill
+  - WeaponMechMeleeDrill
+  - MarkerBeacon
+  - HandheldGPSBasic
+  position: 1,6
+
+- type: technology
+  id: LowPressureExcavation
+  name: research-technology-low-pressure-excavation-name
+  description: research-technology-low-pressure-excavation-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Supply
+  cost: 5000
+  technologyPrerequisites:
+  - Mining
+  - GasCompression
+  recipeUnlocks:
+  - PKAUpgradeDamage
+  - PKAUpgradeRange
+  - PKAUpgradeFireRate
+  position: 6,4
+
+- type: technology
+  id: PlasmaMining
+  name: research-technology-plasma-mining-name
+  description: research-technology-plasma-mining-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Supply
+  cost: 7500
+  technologyPrerequisites:
+  - LowPressureExcavation
+  - PlasmaControl
+  recipeUnlocks:
+  - WeaponPlasmaCutter
+  position: 0,7
+
+- type: technology
+  id: Bitrunning
+  name: research-technology-bitrunning-name
+  description: research-technology-bitrunning-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Supply
+  cost: 7500
+  technologyPrerequisites:
+  - Gaming
+  - AppliedBluespace
+  # TODO
+  position: 2,1
+
+- type: technology
+  id: AdvancedMining
+  name: research-technology-advanced-mining-name
+  description: research-technology-advanced-mining-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Supply
+  cost: 10000
+  technologyPrerequisites:
+  - PlasmaMining
+  recipeUnlocks:
+  - MiningDrillDiamond
+  - WeaponMechMeleeDrillDiamond
+  position: 2,6

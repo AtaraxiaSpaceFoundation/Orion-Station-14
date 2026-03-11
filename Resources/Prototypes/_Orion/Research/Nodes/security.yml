@@ -1,0 +1,171 @@
+- type: technology
+  id: BasicArms
+  name: research-technology-basic-arms-name
+  description: research-technology-basic-arms-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  recipeUnlocks:
+  - MagazineShotgunBeanbag
+  - BoxBeanbag
+  - MagazineBoxShotgunBeanbagHighCaliber 
+  position: 10,0
+
+- type: technology
+  id: SecurityEquipment
+  name: research-technology-security-equipment-name
+  description: research-technology-security-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 1
+  announceChannels:
+  - Security
+  cost: 2500
+  technologyPrerequisites:
+  - BasicArms
+  recipeUnlocks:
+  - SurveillanceWirelessCameraBodySecurity
+  - ContrabandDetectorCircuitboard
+  - PepperSpray
+  - Zipties
+  - FlashlightSeclite
+  - ClothingBackpackElectropack
+  position: 8,7
+
+- type: technology
+  id: RiotSupression
+  name: research-technology-riot-supression-name
+  description: research-technology-riot-supression-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 2
+  announceChannels:
+  - Security
+  cost: 5000
+  technologyPrerequisites:
+  - SecurityEquipment
+  recipeUnlocks:
+  - TelescopicShield
+  - RiotBulletShield
+  - Handcuffs
+  - BolaEnergy
+  position: 5,7
+
+- type: technology
+  id: Explosives
+  name: research-technology-explosives-name
+  description: research-technology-explosives-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Security
+  - Medical
+  cost: 7500
+  technologyPrerequisites:
+  - RiotSupression
+  requiredExperiments:
+  - OrdnanceExplosiveLowyieldbomb
+  recipeUnlocks:
+  - ModularGrenade
+  - SmokeGrenade
+  - FlashPayload
+  - ChemicalPayload
+  - ShrapnelPayload
+  position: 5,3
+
+- type: technology
+  id: ExoticAmmo
+  name: research-technology-exotic-ammo-name
+  description: research-technology-exotic-ammo-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Security
+  cost: 10000
+  technologyPrerequisites:
+  - Explosives
+  discountExperiments:
+  - OrdnanceExplosiveHighyieldbomb
+  discountExperimentCosts:
+    OrdnanceExplosiveHighyieldbomb: 10000
+  recipeUnlocks:
+  # Incendiary
+  - BoxShotgunIncendiary
+  - MagazineRifleIncendiary
+  - MagazinePistolIncendiary
+  - MagazinePistolSubMachineGunIncendiary
+  - MagazineBoxShotgunIncendiaryHighCaliber
+  - SpeedLoaderMagnumIncendiary
+  - MagazineShotgunIncendiary
+  - MagazineBoxPistolIncendiary
+  - MagazineBoxMagnumIncendiary
+  - MagazineBoxRifle762Incendiary
+  - MagazineRifle762Incendiary
+  - MagazineBoxRifleIncendiary
+  # Uranium
+  - MagazineRifleUranium
+  - MagazinePistolUranium
+  - MagazinePistolSubMachineGunUranium
+  - SpeedLoaderMagnumUranium
+  - MagazineBoxPistolUranium
+  - MagazineBoxMagnumUranium
+  - MagazineBoxRifle762Uranium
+  - MagazineRifle762Uranium
+  - MagazineBoxRifleUranium
+  - BoxShotgunUranium
+  - MagazineBoxShotgunUraniumHighCaliber
+  position: 3,3
+
+- type: technology
+  id: ElectricWeapons
+  name: research-technology-electric-weapons-name
+  description: research-technology-electric-weapons-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 3
+  hidden: true
+  announceChannels:
+  - Security
+  cost: 7500
+  technologyPrerequisites:
+  - RiotSupression
+  recipeUnlocks:
+  - WeaponEnergyIonRifle
+  - WeaponTemperatureGun
+  position: 0,3
+
+- type: technology
+  id: BeamWeapons
+  name: research-technology-beam-weapons-name
+  description: research-technology-beam-weapons-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Arsenal
+  tier: 4
+  announceChannels:
+  - Security
+  cost: 10000
+  technologyPrerequisites:
+  - ElectricWeapons
+  recipeUnlocks:
+  - WeaponXrayCannon
+  position: 0,1

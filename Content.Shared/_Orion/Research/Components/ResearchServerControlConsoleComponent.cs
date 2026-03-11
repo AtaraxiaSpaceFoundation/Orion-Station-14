@@ -3,9 +3,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Orion.Research.Components;
 
 [RegisterComponent]
-public sealed partial class ResearchServerControlConsoleComponent : Component
-{
-}
+public sealed partial class ResearchServerControlConsoleComponent : Component;
 
 [RegisterComponent]
 public sealed partial class ResearchServerControlStatusComponent : Component

@@ -1,0 +1,305 @@
+- type: technology
+  id: MechAssembly
+  name: research-technology-mech-assembly-name
+  description: research-technology-mech-assembly-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  startingTechnology: true
+  cost: 500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - RipleyHarness
+  - RipleyLArm
+  - RipleyRArm
+  - RipleyLLeg
+  - RipleyRLeg
+  - MechEquipmentGrabberSmall
+  position: 10,4
+
+- type: technology
+  id: MechEquipment
+  name: research-technology-mech-equipment-name
+  description: research-technology-mech-equipment-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  announceChannels:
+  - Science
+  cost: 2500
+  technologyPrerequisites:
+  - MechAssembly
+  recipeUnlocks:
+  - MechEquipmentGrabber
+  position: 3,5
+
+- type: technology
+  id: MechClown
+  name: research-technology-mech-clown-name
+  description: research-technology-mech-clown-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  hidden: true
+  announceChannels:
+  - Science
+  - Security # The dread upon security when they hear this...
+  cost: 2500
+  technologyPrerequisites:
+  - MechAssembly
+  recipeUnlocks:
+  - HonkerHarness
+  - HonkerLArm
+  - HonkerRArm
+  - HonkerLLeg
+  - HonkerRLeg
+  - MechEquipmentHorn
+  - WeaponMechSpecialBananaMortar
+  - WeaponMechSpecialMousetrapMortar
+  position: 11,4
+
+- type: technology
+  id: MechMedical
+  name: research-technology-mech-medical-name
+  description: research-technology-mech-medical-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  cost: 5000
+  technologyPrerequisites:
+  - MechAssembly
+  - ChemSynthesis
+  # TODO
+  position: 9,5
+
+- type: technology
+  id: MechMining
+  name: research-technology-mech-mining-name
+  description: research-technology-mech-mining-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  announceChannels:
+  - Science
+  - Supply
+  cost: 5000
+  technologyPrerequisites:
+  - MechEquipment
+  - Mining
+  recipeUnlocks:
+  - ClarkeHarness
+  - ClarkeTreads
+  - ClarkeHead
+  - ClarkeLArm
+  - ClarkeRArm
+  - WeaponMechMeleeDrill
+  - WeaponMechIndustrialKineticAccelerator
+  position: 10,5
+
+- type: technology
+  id: MechCombat
+  name: research-technology-mech-combat-name
+  description: research-technology-mech-combat-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 5000
+  technologyPrerequisites:
+  - MechEquipment
+  requiredExperiments:
+  - ScanningRandomMechaEquippedScan
+  recipeUnlocks:
+  - WeaponMechCombatDisabler
+  - WeaponMechCombatFlashbangLauncher
+  position: 0,5
+
+- type: technology
+  id: MechAssault
+  name: research-technology-mech-assault-name
+  description: research-technology-mech-assault-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - MechCombat
+  recipeUnlocks:
+  - DurandHarness
+  - DurandHead
+  - DurandLArm
+  - DurandRArm
+  - DurandLLeg
+  - DurandRLeg
+  position: 9,4
+
+- type: technology
+  id: MechLight
+  name: research-technology-mech-light-name
+  description: research-technology-mech-light-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 3
+  announceChannels:
+  - Science
+  cost: 7500
+  technologyPrerequisites:
+  - MechCombat
+  recipeUnlocks:
+  - GygaxHarness
+  - GygaxHead
+  - GygaxLArm
+  - GygaxRArm
+  - GygaxLLeg
+  - GygaxRLeg
+  position: 8,5
+
+- type: technology
+  id: MechHeavy
+  name: research-technology-mech-heavy-name
+  description: research-technology-mech-heavy-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 10000
+  technologyPrerequisites:
+  - MechAssault
+  # TODO
+  position: 5,5
+
+- type: technology
+  id: MechInfiltrator
+  name: research-technology-mech-infiltrator-name
+  description: research-technology-mech-infiltrator-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 10000
+  technologyPrerequisites:
+  - MechLight
+  - AnomalyResearch
+  # TODO
+  position: 7,5
+
+- type: technology
+  id: MechEnergyGuns
+  name: research-technology-mech-energy-guns-name
+  description: research-technology-mech-energy-guns-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 4
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 10000
+  technologyPrerequisites:
+  - MechCombat
+  - ElectricWeapons
+  discountExperiments:
+  - ScanningRandomMechaDamageScan
+  discountExperimentCosts:
+    ScanningRandomMechaDamageScan: 10000
+  recipeUnlocks:
+  - WeaponMechCombatSolarisLaser
+  - WeaponMechCombatFiredartLaser
+  - WeaponMechCombatImmolationGun
+  - WeaponMechCombatTeslaCannon
+  position: 1,5
+
+- type: technology
+  id: MechFirearms
+  name: research-technology-mech-firearms-name
+  description: research-technology-mech-firearms-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 12500
+  technologyPrerequisites:
+  - MechEnergyGuns
+  - ExoticAmmo
+  recipeUnlocks:
+  - WeaponMechCombatShotgunIncendiary
+  - WeaponMechCombatShotgun
+  - WeaponMechCombatUltraRifle
+  position: 4,5
+
+- type: technology
+  id: MechHeavyArms
+  name: research-technology-mech-heavy-arms-name
+  description: research-technology-mech-heavy-arms-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 12500
+  technologyPrerequisites:
+  - MechHeavy
+  - ExoticAmmo
+  recipeUnlocks:
+  - WeaponMechCombatFlashbangLauncher
+  recipeUnlocks:
+  - WeaponMechCombatMissileRack6
+  - WeaponMechCombatMissileRack8
+  - WeaponMechChainSword
+  position: 6,5
+
+- type: technology
+  id: MechEquipmentBluespace
+  name: research-technology-mech-equipment-bluespace-name
+  description: research-technology-mech-equipment-bluespace-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Science
+  cost: 12500
+  technologyPrerequisites:
+  - MechInfiltrator
+  - BluespaceTravel
+  # TODO
+  position: 2,5
