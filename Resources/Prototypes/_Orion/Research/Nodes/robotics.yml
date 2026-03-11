@@ -3,8 +3,8 @@
   name: research-technology-robotics-name
   description: research-technology-robotics-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/exosuit_fabricator.rsi
+    state: fab-idle
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -35,8 +35,8 @@
   name: research-technology-artificial-intelligence-name
   description: research-technology-artificial-intelligence-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Devices/ai_card.rsi
+    state: base
   discipline: Industrial
   tier: 1
   hidden: true
@@ -65,8 +65,8 @@
   name: research-technology-artificial-intelligence-laws-name
   description: research-technology-artificial-intelligence-laws-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
   discipline: Industrial
   tier: 3
   hidden: true

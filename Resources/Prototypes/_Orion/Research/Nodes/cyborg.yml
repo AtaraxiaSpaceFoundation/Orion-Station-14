@@ -3,8 +3,8 @@
   name: research-technology-augmentation-name
   description: research-technology-augmentation-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Mobs/Silicon/chassis.rsi
+    state: robot
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -34,9 +34,9 @@
   name: research-technology-cybernetics-name
   description: research-technology-cybernetics-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: Objects/Specific/Robotics/mmi.rsi
+    state: robot
+  discipline: posibrain
   tier: 1
   announceChannels:
   - Science
@@ -153,9 +153,9 @@
   name: research-technology-passive-implants-name
   description: research-technology-passive-implants-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
+    sprite: Objects/Specific/Medical/implanter.rsi
     state: experimental
-  discipline: Industrial
+  discipline: implanter0
   tier: 1
   announceChannels:
   - Security
@@ -233,8 +233,8 @@
   name: research-technology-cyber-organs-name
   description: research-technology-cyber-organs-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Shitmed/Mobs/Species/Misc/Cybernetics/organs.rsi
+    state: lung-u-l
   discipline: Industrial
   tier: 2
   hidden: true

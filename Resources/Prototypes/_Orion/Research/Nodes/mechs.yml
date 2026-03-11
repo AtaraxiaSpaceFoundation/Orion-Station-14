@@ -3,8 +3,8 @@
   name: research-technology-mech-assembly-name
   description: research-technology-mech-assembly-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: ripley
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -25,8 +25,8 @@
   name: research-technology-mech-equipment-name
   description: research-technology-mech-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_clamp
   discipline: Industrial
   tier: 1
   announceChannels:
@@ -43,8 +43,8 @@
   name: research-technology-mech-clown-name
   description: research-technology-mech-clown-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: honker
   discipline: Industrial
   tier: 1
   hidden: true
@@ -86,8 +86,8 @@
   name: research-technology-mech-mining-name
   description: research-technology-mech-mining-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: clarke
   discipline: Industrial
   tier: 2
   announceChannels:
@@ -112,8 +112,8 @@
   name: research-technology-mech-combat-name
   description: research-technology-mech-combat-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_disabler
   discipline: Industrial
   tier: 2
   hidden: true
@@ -134,8 +134,8 @@
   name: research-technology-mech-assault-name
   description: research-technology-mech-assault-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: durand
   discipline: Industrial
   tier: 3
   announceChannels:
@@ -150,6 +150,9 @@
   - DurandRArm
   - DurandLLeg
   - DurandRLeg
+#  - DurandCentralElectronics
+  - DurandPeripheralsElectronics
+  - DurandTargetingElectronics
   position: 9,4
 
 - type: technology
@@ -157,8 +160,8 @@
   name: research-technology-mech-light-name
   description: research-technology-mech-light-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: gygax
   discipline: Industrial
   tier: 3
   announceChannels:
@@ -173,6 +176,9 @@
   - GygaxRArm
   - GygaxLLeg
   - GygaxRLeg
+#  - GygaxCentralElectronics
+  - GygaxPeripheralsElectronics
+  - GygaxTargetingElectronics
   position: 8,5
 
 - type: technology
@@ -217,8 +223,8 @@
   name: research-technology-mech-energy-guns-name
   description: research-technology-mech-energy-guns-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_wholegen
   discipline: Industrial
   tier: 4
   hidden: true
@@ -244,8 +250,8 @@
   name: research-technology-mech-firearms-name
   description: research-technology-mech-firearms-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_scatter
   discipline: Industrial
   tier: 5
   hidden: true
@@ -266,8 +272,8 @@
   name: research-technology-mech-heavy-arms-name
   description: research-technology-mech-heavy-arms-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_missilerack_six
   discipline: Industrial
   tier: 5
   hidden: true

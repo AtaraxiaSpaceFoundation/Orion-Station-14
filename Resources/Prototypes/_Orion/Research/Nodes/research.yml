@@ -3,8 +3,8 @@
   name: research-technology-fundamental-science-name
   description: research-technology-fundamental-science-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Orion/Structures/Machines/destructive_analyzer.rsi
+    state: icon
   discipline: Experimental
   tier: 1
   startingTechnology: true
@@ -23,8 +23,8 @@
   name: research-technology-bluespace-theory-name
   description: research-technology-bluespace-theory-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Objects/Materials/materials.rsi
+    state: bluespace_crystal
   discipline: Experimental
   tier: 1
   hidden: true
@@ -42,8 +42,8 @@
   name: research-technology-applied-bluespace-name
   description: research-technology-applied-bluespace-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Structures/Machines/silo.rsi
+    state: ore_silo
   discipline: Experimental
   tier: 2
   announceChannels:
@@ -74,8 +74,8 @@
   name: research-technology-bluespace-travel-name
   description: research-technology-bluespace-travel-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Devices/swapper.rsi
+    state: icon
   discipline: Experimental
   tier: 3
   hidden: true
@@ -94,8 +94,8 @@
   name: research-technology-anomaly-research-name
   description: research-technology-anomaly-research-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/Anomaly/adv_anomaly_vessel.rsi
+    state: base
   discipline: Experimental
   tier: 3
   hidden: true
@@ -114,8 +114,8 @@
   name: research-technology-anomaly-shells-name
   description: research-technology-anomaly-shells-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Clothing/Back/Duffels/holding.rsi
+    state: icon
   discipline: Experimental
   tier: 5
   hidden: true

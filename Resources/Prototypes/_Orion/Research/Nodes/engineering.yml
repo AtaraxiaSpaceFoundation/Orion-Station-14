@@ -3,8 +3,8 @@
   name: research-technology-parts-name
   description: research-technology-parts-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Misc/stock_parts.rsi
+    state: micro_mani
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -28,8 +28,8 @@
   name: research-technology-upgraded-parts-name
   description: research-technology-upgraded-parts-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: super
   discipline: Industrial
   tier: 1
   hidden: true
@@ -49,8 +49,8 @@
   name: research-technology-advanced-parts-name
   description: research-technology-advanced-parts-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: hyper
   discipline: Industrial
   tier: 1
   hidden: true
@@ -73,8 +73,8 @@
   name: research-technology-parts-bluespace-name
   description: research-technology-parts-bluespace-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: bluespace
   discipline: Industrial
   tier: 1
   hidden: true
@@ -98,8 +98,8 @@
   name: research-technology-telecommunications-name
   description: research-technology-telecommunications-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Structures/Machines/comms_transmitter.rsi
+    state: base
   discipline: Industrial
   tier: 1
   hidden: true
@@ -116,8 +116,8 @@
   name: research-technology-construction-name
   description: research-technology-construction-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/circuit_imprinter.rsi
+    state: icon
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -154,8 +154,8 @@
   name: research-technology-energy-manipulation-name
   description: research-technology-energy-manipulation-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Power/smes.rsi
+    state: smes
   discipline: Industrial
   tier: 1
   hidden: true
@@ -183,8 +183,8 @@
   name: research-technology-shuttle-engineering-name
   description: research-technology-shuttle-engineering-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Misc/module.rsi
+    state: cpu_supply
   discipline: Industrial
   tier: 1
   hidden: true
@@ -205,8 +205,8 @@
   name: research-technology-holographics-name
   description: research-technology-holographics-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Devices/Holoprojectors/custodial.rsi
+    state: icon
   discipline: Industrial
   tier: 2
   hidden: true
@@ -225,8 +225,8 @@
   name: research-technology-hud-name
   description: research-technology-hud-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Shitmed/Mobs/Species/Misc/Cybernetics/organs.rsi
+    state: eyes-diagnostic
   discipline: Industrial
   tier: 3
   hidden: true
@@ -252,8 +252,8 @@
   name: research-technology-night-vision-name
   description: research-technology-night-vision-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
+    state: icon
   discipline: Industrial
   tier: 4
   hidden: true

@@ -3,8 +3,8 @@
   name: research-technology-atmospherics-name
   description: research-technology-atmospherics-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Tanks/oxygen.rsi
+    state: icon
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -27,8 +27,8 @@
   name: research-technology-gas-compression-name
   description: research-technology-gas-compression-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/gasrecycler.rsi
+    state: icon
   discipline: Industrial
   tier: 1
   hidden: true
@@ -42,7 +42,8 @@
   - OrdnanceGaseousNitrousOxide
   - OrdnanceGaseousBz
   - OrdnanceGaseousNoblium
-  # TODO
+  recipeUnlocks:
+  - GasRecyclerMachineCircuitboard
   position: 0,4
 
 - type: technology
@@ -50,8 +51,8 @@
   name: research-technology-plasma-control-name
   description: research-technology-plasma-control-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Power/Generation/portable_generator.rsi
+    state: portgen0
   discipline: Industrial
   tier: 2
   hidden: true
@@ -78,8 +79,8 @@
   name: research-technology-fusion-name
   description: research-technology-fusion-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Effects/extinguisherSpray.rsi
+    state: extinguish
   discipline: Industrial
   tier: 3
   hidden: true
@@ -102,8 +103,8 @@
   name: research-technology-experimental-tools-name
   description: research-technology-experimental-tools-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Tools/jaws_of_life.rsi
+    state: jaws_pry
   discipline: Industrial
   tier: 4
   announceChannels:

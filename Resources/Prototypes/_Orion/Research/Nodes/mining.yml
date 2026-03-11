@@ -3,8 +3,8 @@
   name: research-technology-material-processing-name
   description: research-technology-material-processing-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/autolathe.rsi
+    state: icon
   discipline: Industrial
   tier: 1
   startingTechnology: true
@@ -27,8 +27,8 @@
   name: research-technology-mining-name
   description: research-technology-mining-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Mining/mineral_scanner.rsi
+    state: icon
   discipline: Industrial
   tier: 1
   announceChannels:
@@ -49,8 +49,8 @@
   name: research-technology-low-pressure-excavation-name
   description: research-technology-low-pressure-excavation-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Lavaland/Objects/Weapons/upgrade.rsi
+    state: base
   discipline: Industrial
   tier: 2
   hidden: true
@@ -71,8 +71,8 @@
   name: research-technology-plasma-mining-name
   description: research-technology-plasma-mining-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/cutter.rsi
+    state: icon
   discipline: Industrial
   tier: 3
   hidden: true
@@ -110,8 +110,8 @@
   name: research-technology-advanced-mining-name
   description: research-technology-advanced-mining-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Tools/handdrilldiamond.rsi
+    state: handdrill
   discipline: Industrial
   tier: 4
   hidden: true

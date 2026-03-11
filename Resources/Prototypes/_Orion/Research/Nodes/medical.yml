@@ -3,8 +3,8 @@
   name: research-technology-medical-equipment-name
   description: research-technology-medical-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Medical/defib.rsi
+    state: icon
   discipline: CivilianServices
   tier: 1
   startingTechnology: true
@@ -39,8 +39,8 @@
   name: research-technology-chem-synthesis-name
   description: research-technology-chem-synthesis-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/mixer.rsi
+    state: mixer_empty
   discipline: CivilianServices
   tier: 1
   announceChannels:
@@ -68,8 +68,8 @@
   name: research-technology-advanced-medical-equipment-name
   description: research-technology-advanced-medical-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
+    state: scanner
   discipline: CivilianServices
   tier: 3
   hidden: true
@@ -89,8 +89,8 @@
   name: research-technology-cryostasis-name
   description: research-technology-cryostasis-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Chemistry/beaker_cryostasis.rsi
+    state: beakernoreact
   discipline: CivilianServices
   tier: 4
   hidden: true

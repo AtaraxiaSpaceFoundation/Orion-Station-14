@@ -3,8 +3,8 @@
   name: research-technology-illegal-technology-name
   description: research-technology-illegal-technology-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Fun/Foam/foam_crossbow.rsi
+    state: icon
   discipline: Arsenal
   tier: 5
   hidden: true
@@ -26,8 +26,8 @@
   name: research-technology-unregulated-bluespace-research-name
   description: research-technology-unregulated-bluespace-research-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Devices/desynchronizer.rsi
+    state: icon
   discipline: Experimental
   tier: 1
   hidden: true

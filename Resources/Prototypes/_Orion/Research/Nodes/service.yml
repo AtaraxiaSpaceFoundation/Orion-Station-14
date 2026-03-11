@@ -3,8 +3,8 @@
   name: research-technology-office-equipment-name
   description: research-technology-office-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Janitorial/mop.rsi
+    state: mop
   discipline: CivilianServices
   tier: 1
   startingTechnology: true
@@ -33,8 +33,8 @@
   name: research-technology-sanitation-name
   description: research-technology-sanitation-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Janitorial/advmop.rsi
+    state: advmop
   discipline: CivilianServices
   tier: 2
   announceChannels:
@@ -57,8 +57,8 @@
   name: research-technology-consoles-name
   description: research-technology-consoles-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Misc/module.rsi
+    state: charger_APC
   discipline: CivilianServices
   tier: 1
   hidden: true
@@ -81,8 +81,8 @@
   name: research-technology-gaming-name
   description: research-technology-gaming-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/arcade.rsi
+    state: arcade
   discipline: CivilianServices
   tier: 2
   hidden: true
@@ -103,8 +103,8 @@
   name: research-technology-cafeteria-equipment-name
   description: research-technology-cafeteria-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/microwave.rsi
+    state: mw0
   discipline: CivilianServices
   tier: 1
   startingTechnology: true
@@ -139,8 +139,8 @@
   name: research-technology-food-processing-name
   description: research-technology-food-processing-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/grinder.rsi
+    state: grinder_empty
   discipline: CivilianServices
   tier: 2
   hidden: true
@@ -165,8 +165,8 @@
   name: research-technology-fishing-equip-name
   description: research-technology-fishing-equip-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Objects/Specific/Fishing/fishing_rod.rsi
+    state: icon
   discipline: CivilianServices
   tier: 1
   startingTechnology: true

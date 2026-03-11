@@ -79,8 +79,8 @@
   name: research-technology-surgery-tools-name
   description: research-technology-surgery-tools-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    state: e-scalpel-on
   discipline: CivilianServices
   tier: 4
   hidden: true

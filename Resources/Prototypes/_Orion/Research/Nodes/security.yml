@@ -3,8 +3,8 @@
   name: research-technology-basic-arms-name
   description: research-technology-basic-arms-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
+    state: beanbag
   discipline: Arsenal
   tier: 1
   startingTechnology: true
@@ -20,8 +20,8 @@
   name: research-technology-security-equipment-name
   description: research-technology-security-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Tools/seclite.rsi
+    state: seclite
   discipline: Arsenal
   tier: 1
   announceChannels:
@@ -43,8 +43,8 @@
   name: research-technology-riot-supression-name
   description: research-technology-riot-supression-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Objects/Weapons/Throwable/energy_bola.rsi
+    state: icon
   discipline: Arsenal
   tier: 2
   announceChannels:
@@ -64,8 +64,8 @@
   name: research-technology-explosives-name
   description: research-technology-explosives-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Weapons/Grenades/smoke.rsi
+    state: icon
   discipline: Arsenal
   tier: 3
   hidden: true
@@ -90,8 +90,8 @@
   name: research-technology-exotic-ammo-name
   description: research-technology-exotic-ammo-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    state: base
   discipline: Arsenal
   tier: 4
   hidden: true
@@ -137,8 +137,8 @@
   name: research-technology-electric-weapons-name
   description: research-technology-electric-weapons-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/ion_rifle.rsi
+    state: base
   discipline: Arsenal
   tier: 3
   hidden: true
@@ -157,8 +157,8 @@
   name: research-technology-beam-weapons-name
   description: research-technology-beam-weapons-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Weapons/Guns/Battery/xray.rsi
+    state: base
   discipline: Arsenal
   tier: 4
   announceChannels:

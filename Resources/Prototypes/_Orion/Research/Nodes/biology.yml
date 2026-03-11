@@ -3,8 +3,8 @@
   name: research-technology-biological-scan-name
   description: research-technology-biological-scan-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Specific/Medical/healthanalyzer.rsi
+    state: icon
   discipline: CivilianServices
   tier: 1
   hidden: true
@@ -24,8 +24,8 @@
   name: research-technology-cytology-name
   description: research-technology-cytology-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Shitmed/Structures/Machines/limbgrower.rsi
+    state: icon
   discipline: CivilianServices
   tier: 2
   hidden: true
@@ -44,8 +44,8 @@
   name: research-technology-xenobiology-name
   description: research-technology-xenobiology-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Goobstation/Xenobiology/Specific/Xenobiology/slime_scanner.rsi
+    state: icon
   discipline: CivilianServices
   tier: 3
   hidden: true
@@ -66,8 +66,8 @@
   name: research-technology-gene-engineering-name
   description: research-technology-gene-engineering-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/scanner.rsi
+    state: open
   discipline: CivilianServices
   tier: 4
   hidden: true
@@ -90,8 +90,8 @@
   name: research-technology-botany-equipment-name
   description: research-technology-botany-equipment-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Objects/Tools/Hydroponics/spade.rsi
+    state: icon
   discipline: CivilianServices
   tier: 1
   startingTechnology: true
@@ -109,8 +109,8 @@
   name: research-technology-hydroponics-name
   description: research-technology-hydroponics-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: Structures/Machines/biofabricator.rsi
+    state: icon
   discipline: CivilianServices
   tier: 2
   hidden: true
