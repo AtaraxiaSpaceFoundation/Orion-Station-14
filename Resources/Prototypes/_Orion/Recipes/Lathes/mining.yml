@@ -1,0 +1,31 @@
+- type: latheRecipe
+  id: MarkerBeacon
+  result: MarkerBeacon
+  categories:
+  - Supply
+  completetime: 4
+  materials:
+    Steel: 100
+    Plastic: 50
+
+- type: latheRecipe
+  id: MineralScanner
+  result: MineralScanner
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: WeaponMechMeleeDrillDiamond
+  result: WeaponMechMeleeDrillDiamond
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200

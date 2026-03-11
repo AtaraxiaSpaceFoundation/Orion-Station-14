@@ -23,7 +23,6 @@
 #    state: experimental
 #  discipline: Industrial
 #  tier: 2
-#  hidden: true
 #  cost: 2500
 #  technologyPrerequisites:
 #  - Programming
@@ -39,7 +38,6 @@
 #    state: experimental
 #  discipline: Industrial
 #  tier: 2
-#  hidden: true
 #  cost: 5000
 #  technologyPrerequisites:
 #  - CircuitShells
@@ -55,7 +53,6 @@
 #    state: experimental
 #  discipline: Industrial
 #  tier: 3
-#  hidden: true
 #  cost: 7500
 #  technologyPrerequisites:
 #  - BrainComputerInterface

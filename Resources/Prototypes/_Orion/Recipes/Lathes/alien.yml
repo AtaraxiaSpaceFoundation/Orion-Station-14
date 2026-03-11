@@ -1,0 +1,115 @@
+- type: latheRecipe
+  id: CrowbarAbductor
+  result: CrowbarAbductor
+  categories:
+  - Tools
+  completetime: 6
+  materials:
+    Steel: 900
+    Silver: 500
+    Plasma: 250
+    Gold: 250
+
+- type: latheRecipe
+  id: MultitoolAbductor
+  result: MultitoolAbductor
+  categories:
+  - Tools
+  completetime: 6
+  materials:
+    Steel: 900
+    Silver: 500
+    Plasma: 350
+    Gold: 250
+
+- type: latheRecipe
+  id: ScrewdriverAbductor
+  result: ScrewdriverAbductor
+  categories:
+  - Tools
+  completetime: 6
+  materials:
+    Steel: 900
+    Silver: 500
+    Plasma: 250
+    Gold: 250
+
+- type: latheRecipe
+  id: WelderAbductor
+  result: WelderAbductor
+  categories:
+  - Tools
+  completetime: 6
+  materials:
+    Steel: 900
+    Silver: 500
+    Plasma: 450
+    Gold: 250
+
+- type: latheRecipe
+  id: WirecutterAbductor
+  result: WirecutterAbductor
+  categories:
+  - Tools
+  completetime: 6
+  materials:
+    Steel: 900
+    Silver: 500
+    Plasma: 250
+    Gold: 250
+
+- type: latheRecipe
+  id: WrenchAbductor
+  result: WrenchAbductor
+  categories:
+  - Tools
+  completetime: 6
+  materials:
+    Steel: 900
+    Silver: 500
+    Plasma: 250
+    Gold: 250
+
+- type: latheRecipe
+  id: EnergyScalpelAbductor
+  result: EnergyScalpelAbductor
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 700
+    Silver: 450
+    Plasma: 250
+
+- type: latheRecipe
+  id: SearingToolAbductor
+  result: SearingToolAbductor
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 700
+    Silver: 450
+    Plasma: 250
+
+- type: latheRecipe
+  id: MechanicalPinchesAbductor
+  result: MechanicalPinchesAbductor
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 700
+    Silver: 450
+    Plasma: 250
+
+- type: latheRecipe
+  id: BoneManipulatorAbductor
+  result: BoneManipulatorAbductor
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 700
+    Silver: 450
+    Plasma: 250

@@ -7,7 +7,6 @@
     state: icon
   discipline: CivilianServices
   tier: 1
-  hidden: true
   announceChannels:
   - Medical
   cost: 2500
@@ -28,7 +27,6 @@
     state: icon
   discipline: CivilianServices
   tier: 2
-  hidden: true
   cost: 5000
   technologyPrerequisites:
   - BiologicalScan
@@ -48,7 +46,6 @@
     state: icon
   discipline: CivilianServices
   tier: 3
-  hidden: true
   cost: 7500
   technologyPrerequisites:
   - Cytology
@@ -70,7 +67,6 @@
     state: open
   discipline: CivilianServices
   tier: 4
-  hidden: true
   announceChannels:
   - Medical
   cost: 10000
@@ -113,7 +109,6 @@
     state: icon
   discipline: CivilianServices
   tier: 2
-  hidden: true
   announceChannels:
   - Service
   cost: 5000
@@ -134,7 +129,6 @@
     state: experimental
   discipline: CivilianServices
   tier: 3
-  hidden: true
   announceChannels:
   - Service
   cost: 7500

@@ -31,7 +31,6 @@
     state: icon
   discipline: Industrial
   tier: 1
-  hidden: true
   announceChannels:
   - Engineering
   cost: 2500
@@ -55,7 +54,6 @@
     state: portgen0
   discipline: Industrial
   tier: 2
-  hidden: true
   announceChannels:
   - Engineering
   cost: 5000
@@ -66,9 +64,6 @@
   - OrdnanceGaseousPlasma
   discountExperimentCosts:
     OrdnanceGaseousPlasma: 5000
-  recipeUnlocks:
-  - WeaponPlasmaCutter
-  - MechAirTank
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
   # TODO: No turbine :(
@@ -83,7 +78,6 @@
     state: extinguish
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Engineering
   cost: 7500
@@ -134,7 +128,6 @@
     state: experimental
   discipline: Industrial
   tier: 5
-  hidden: true
   announceChannels:
   - Engineering
   cost: 12500

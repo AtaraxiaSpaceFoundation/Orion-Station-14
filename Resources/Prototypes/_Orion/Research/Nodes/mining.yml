@@ -53,7 +53,6 @@
     state: base
   discipline: Industrial
   tier: 2
-  hidden: true
   announceChannels:
   - Supply
   cost: 5000
@@ -75,7 +74,6 @@
     state: icon
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Supply
   cost: 7500
@@ -95,7 +93,6 @@
     state: experimental
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Supply
   cost: 7500
@@ -114,7 +111,6 @@
     state: handdrill
   discipline: Industrial
   tier: 4
-  hidden: true
   announceChannels:
   - Supply
   cost: 10000

@@ -61,7 +61,6 @@
     state: charger_APC
   discipline: CivilianServices
   tier: 1
-  hidden: true
   announceChannels:
   - Service
   cost: 2500
@@ -85,7 +84,6 @@
     state: arcade
   discipline: CivilianServices
   tier: 2
-  hidden: true
   cost: 5000
   technologyPrerequisites:
   - Consoles
@@ -143,7 +141,6 @@
     state: grinder_empty
   discipline: CivilianServices
   tier: 2
-  hidden: true
   announceChannels:
   - Service
   cost: 5000
@@ -184,7 +181,6 @@
     state: experimental
   discipline: CivilianServices
   tier: 2
-  hidden: true
   cost: 5000
   technologyPrerequisites:
   - FishingEquip
@@ -202,7 +198,6 @@
     state: experimental
   discipline: CivilianServices
   tier: 3
-  hidden: true
   cost: 7500
   technologyPrerequisites:
   - FishingEquipAdv

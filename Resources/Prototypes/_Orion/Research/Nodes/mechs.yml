@@ -47,7 +47,6 @@
     state: honker
   discipline: Industrial
   tier: 1
-  hidden: true
   announceChannels:
   - Science
   - Security # The dread upon security when they hear this...
@@ -116,7 +115,6 @@
     state: mecha_disabler
   discipline: Industrial
   tier: 2
-  hidden: true
   announceChannels:
   - Science
   cost: 5000
@@ -190,7 +188,6 @@
     state: experimental
   discipline: Industrial
   tier: 4
-  hidden: true
   announceChannels:
   - Science
   cost: 10000
@@ -208,7 +205,6 @@
     state: experimental
   discipline: Industrial
   tier: 4
-  hidden: true
   announceChannels:
   - Science
   cost: 10000
@@ -227,7 +223,6 @@
     state: mecha_wholegen
   discipline: Industrial
   tier: 4
-  hidden: true
   announceChannels:
   - Science
   cost: 10000
@@ -254,7 +249,6 @@
     state: mecha_scatter
   discipline: Industrial
   tier: 5
-  hidden: true
   announceChannels:
   - Science
   cost: 12500
@@ -276,15 +270,12 @@
     state: mecha_missilerack_six
   discipline: Industrial
   tier: 5
-  hidden: true
   announceChannels:
   - Science
   cost: 12500
   technologyPrerequisites:
   - MechHeavy
   - ExoticAmmo
-  recipeUnlocks:
-  - WeaponMechCombatFlashbangLauncher
   recipeUnlocks:
   - WeaponMechCombatMissileRack6
   - WeaponMechCombatMissileRack8
@@ -300,7 +291,6 @@
     state: experimental
   discipline: Industrial
   tier: 5
-  hidden: true
   announceChannels:
   - Science
   cost: 12500

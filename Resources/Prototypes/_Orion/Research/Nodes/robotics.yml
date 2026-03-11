@@ -23,7 +23,6 @@
     state: experimental
   discipline: Industrial
   tier: 1
-  hidden: true
   cost: 2500
   technologyPrerequisites:
   - Robotics
@@ -39,7 +38,6 @@
     state: base
   discipline: Industrial
   tier: 1
-  hidden: true
   cost: 2500
   technologyPrerequisites:
   - Robotics
@@ -69,7 +67,6 @@
     state: std_mod
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Science
   - Command

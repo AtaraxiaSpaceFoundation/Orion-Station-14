@@ -1,0 +1,47 @@
+- type: latheRecipe
+  id: ModularGrenade
+  result: ModularGrenade
+  categories:
+  - Security
+  completetime: 4
+  materials:
+    Steel: 700
+
+- type: latheRecipe
+  id: PepperSpray
+  result: PepperSpray
+  categories:
+  - Security
+  completetime: 4
+  materials:
+    Steel: 700
+
+- type: latheRecipe
+  id: RiotBulletShield
+  result: RiotBulletShield
+  categories:
+  - Security
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 250
+    Plasma: 150
+
+- type: latheRecipe
+  id: SmokeGrenade
+  result: SmokeGrenade
+  categories:
+  - Security
+  completetime: 4
+  materials:
+    Steel: 700
+
+- type: latheRecipe
+  id: SurveillanceWirelessCameraBodySecurity
+  result: SurveillanceWirelessCameraBodySecurity
+  categories:
+  - Security
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 250

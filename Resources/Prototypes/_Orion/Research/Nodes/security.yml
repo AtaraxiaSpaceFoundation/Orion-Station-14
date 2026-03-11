@@ -68,7 +68,6 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  hidden: true
   announceChannels:
   - Security
   - Medical
@@ -94,7 +93,6 @@
     state: base
   discipline: Arsenal
   tier: 4
-  hidden: true
   announceChannels:
   - Security
   cost: 10000
@@ -141,7 +139,6 @@
     state: base
   discipline: Arsenal
   tier: 3
-  hidden: true
   announceChannels:
   - Security
   cost: 7500

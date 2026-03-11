@@ -7,7 +7,6 @@
     state: experimental
   discipline: CivilianServices
   tier: 1
-  hidden: true
   cost: 2500
   technologyPrerequisites:
   - MedicalEquipment
@@ -40,7 +39,6 @@
     state: experimental
   discipline: CivilianServices
   tier: 2
-  hidden: true
   announceChannels:
   - Medical
   cost: 5000
@@ -83,7 +81,6 @@
     state: e-scalpel-on
   discipline: CivilianServices
   tier: 4
-  hidden: true
   announceChannels:
   - Medical
   cost: 10000

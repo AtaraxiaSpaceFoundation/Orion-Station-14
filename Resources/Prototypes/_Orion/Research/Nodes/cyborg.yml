@@ -66,7 +66,6 @@
     state: experimental
   discipline: Industrial
   tier: 2
-  hidden: true
   announceChannels:
   - Science
   cost: 5000
@@ -84,7 +83,6 @@
     state: experimental
   discipline: Industrial
   tier: 2
-  hidden: true
   announceChannels:
   - Science
   cost: 5000
@@ -138,7 +136,6 @@
     state: experimental
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Science
   cost: 7500
@@ -178,7 +175,6 @@
     state: experimental
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Science
   - Medical
@@ -198,7 +194,6 @@
     state: experimental
   discipline: Industrial
   tier: 4
-  hidden: true
   announceChannels:
   - Science
   - Medical
@@ -217,7 +212,6 @@
     state: experimental
   discipline: Industrial
   tier: 5
-  hidden: true
   announceChannels:
   - Science
   - Medical
@@ -237,7 +231,6 @@
     state: lung-u-l
   discipline: Industrial
   tier: 2
-  hidden: true
   announceChannels:
   - Science
   - Medical
@@ -258,7 +251,6 @@
     state: experimental
   discipline: Industrial
   tier: 3
-  hidden: true
   announceChannels:
   - Science
   - Medical
@@ -279,7 +271,6 @@
     state: experimental
   discipline: Industrial
   tier: 5
-  hidden: true
   announceChannels:
   - Science
   - Medical
