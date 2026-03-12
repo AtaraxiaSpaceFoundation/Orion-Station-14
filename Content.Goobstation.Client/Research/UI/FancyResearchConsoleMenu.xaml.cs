@@ -118,6 +118,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
             var control = new FancyResearchConsoleItem(proto, _sprite, tech.Value);
             DragContainer.AddChild(control);
+            control.SetScale(_zoom);
 
             // Set position for all tech, relating to _position
             LayoutContainer.SetPosition(control, _position + proto.Position * 150 * _zoom);
