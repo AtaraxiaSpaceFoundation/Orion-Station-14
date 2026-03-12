@@ -17,6 +17,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
+using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Client.Research.UI;
 
@@ -26,35 +27,39 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
     // Public fields
     public TechnologyPrototype Prototype;
     public Action<TechnologyPrototype, ResearchAvailability>? SelectAction;
-    public ResearchAvailability Availability;
+    private ResearchAvailability _availability;
 
     // Some visuals
-    public static readonly Color DefaultColor = Color.FromHex("#141F2F");
-    public static readonly Color DefaultBorderColor = Color.FromHex("#4972A1");
-    public static readonly Color DefaultHoveredColor = Color.FromHex("#4972A1");
+    private Color _color;
+    private Color _borderColor;
+    private Color _hoveredColor;
 
-    public Color Color = DefaultColor;
-    public Color BorderColor = DefaultBorderColor;
-    public Color HoveredColor = DefaultHoveredColor;
-
-    public FancyResearchConsoleItem(TechnologyPrototype proto, SpriteSystem sprite, ResearchAvailability availability)
+    public FancyResearchConsoleItem(TechnologyPrototype proto, SpriteSystem sprite, IPrototypeManager prototypeManager, ResearchAvailability availability)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        Availability = availability;
+        _availability = availability;
         Prototype = proto;
 
         ResearchDisplay.Texture = sprite.Frame0(proto.Icon);
+
+        if (prototypeManager.TryIndex(proto.Discipline, out var discipline))
+        {
+            DisciplineDisplay.Texture = sprite.Frame0(discipline.Icon);
+
+            if (DisciplineBadge.PanelOverride is StyleBoxFlat badge)
+                badge.BorderColor = discipline.Color;
+        }
+
         Button.OnPressed += Selected;
         Button.OnDrawModeChanged += UpdateColor;
 
-        (Color, HoveredColor, BorderColor) = availability switch
+        (_color, _hoveredColor, _borderColor) = availability switch
         {
             ResearchAvailability.Researched => (Color.DarkOliveGreen, Color.PaleGreen, Color.LimeGreen),
             ResearchAvailability.Available => (Color.FromHex("#7c7d2a"), Color.FromHex("#ecfa52"), Color.FromHex("#e8fa25")),
             ResearchAvailability.PrereqsMet => (Color.FromHex("#6b572f"), Color.FromHex("#fad398"), Color.FromHex("#cca031")),
-            ResearchAvailability.Unavailable => (Color.DarkRed, Color.PaleVioletRed, Color.Crimson),
             _ => (Color.DarkRed, Color.PaleVioletRed, Color.Crimson)
         };
 
@@ -64,9 +69,9 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
     private void UpdateColor()
     {
         var panel = (StyleBoxFlat) Panel.PanelOverride!;
-        panel.BackgroundColor = Button.IsHovered ? HoveredColor : Color;
+        panel.BackgroundColor = Button.IsHovered ? _hoveredColor : _color;
 
-        panel.BorderColor = BorderColor;
+        panel.BorderColor = _borderColor;
     }
 
     protected override void ExitedTree()
@@ -78,23 +83,22 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
 
     private void Selected(BaseButton.ButtonEventArgs args)
     {
-        SelectAction?.Invoke(Prototype, Availability);
+        SelectAction?.Invoke(Prototype, _availability);
     }
 
     public void SetScale(float scale)
     {
-        var box = (BoxContainer) GetChild(0)!;
-        box.SetSize = new Vector2(80 * scale, 80 * scale);
+        NodeContainer.SetSize = new Vector2(80 * scale, 80 * scale);
+
+        DisciplineBadge.SetSize = new Vector2(20, 20);
+        SetPosition(DisciplineBadge, new Vector2(4, 4));
+        DisciplineDisplay.SetSize = new Vector2(16, 16);
     }
 }
 
 public sealed class DrawButton : Button
 {
     public event Action? OnDrawModeChanged;
-
-    public DrawButton()
-    {
-    }
 
     protected override void DrawModeChanged()
     {

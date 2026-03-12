@@ -116,7 +116,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         {
             var proto = _prototype.Index<TechnologyPrototype>(tech.Key);
 
-            var control = new FancyResearchConsoleItem(proto, _sprite, tech.Value);
+            var control = new FancyResearchConsoleItem(proto, _sprite, _prototype, tech.Value);
             DragContainer.AddChild(control);
             control.SetScale(_zoom);
 
