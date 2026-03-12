@@ -27,7 +27,7 @@
   - BasicCyberneticLungs
   - BasicCyberneticLiver
   - BasicCyberneticHeart
-  position: 9,0
+  position: -4,3
 
 - type: technology
   id: Cybernetics
@@ -55,7 +55,7 @@
   - LeftFootCybernetic
   - RightLegCybernetic
   - RightFootCybernetic
-  position: 10,2
+  position: -3,2
 
 - type: technology
   id: BorgServices
@@ -72,7 +72,7 @@
   technologyPrerequisites:
   - Cybernetics
   # TODO
-  position: 8,1
+  position: -5,2
 
 - type: technology
   id: BorgMining
@@ -89,7 +89,7 @@
   technologyPrerequisites:
   - Cybernetics
   # TODO
-  position: 7,1
+  position: -5,1
 
 - type: technology
   id: BorgMedical
@@ -107,7 +107,7 @@
   - BorgServices
   - AdvancedSurgery
   # TODO
-  position: 6,1
+  position: -5,0
 
 - type: technology
   id: BorgUtility
@@ -125,7 +125,7 @@
   - BorgServices
   - Sanitation
   # TODO
-  position: 9,1
+  position: -5,-1
 
 - type: technology
   id: BorgEngineering
@@ -143,7 +143,7 @@
   - BorgMining
   - UpgradedParts
   # TODO
-  position: 5,1
+  position: -5,-2
 
 - type: technology
   id: PassiveImplants
@@ -164,7 +164,7 @@
   - SadTromboneImplanter
   - TrackingImplanter
   - Implanter
-  position: 10,6
+  position: -6,3
 
 - type: technology
   id: CyberImplants
@@ -183,7 +183,7 @@
   - PassiveImplants
   - Cybernetics
   # TODO
-  position: 6,2
+  position: -7,3
 
 - type: technology
   id: CombatImplants
@@ -201,7 +201,7 @@
   technologyPrerequisites:
   - CyberImplants
   # TODO
-  position: 2,2
+  position: -8,3
 
 - type: technology
   id: IntegratedToolsets
@@ -220,7 +220,7 @@
   - CombatImplants
   - ExperimentalTools
   # TODO
-  position: 5,4
+  position: -8,2
 
 - type: technology
   id: CyberOrgans
@@ -240,7 +240,7 @@
   recipeUnlocks:
   - UpgradedCyberneticLungs
   - UpgradedCyberneticHeart
-  position: 7,2
+  position: -2,3
 
 - type: technology
   id: CyberOrgansUpgraded
@@ -260,7 +260,7 @@
   requiredExperiments:
   - ScanningPeopleAugmentedOrgans
   # TODO
-  position: 9,2
+  position: -2,4
 
 - type: technology
   id: AdvancedCyberOrgans
@@ -283,4 +283,4 @@
   discountExperimentCosts:
     ScanningPeopleAndroid: 12500
   # TODO
-  position: 8,2
+  position: -2,5

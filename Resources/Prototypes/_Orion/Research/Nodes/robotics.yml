@@ -12,7 +12,7 @@
   recipeUnlocks:
   - ExosuitFabricatorMachineCircuitboard
   - PersonalAI
-  position: 6,7
+  position: -4,4
 
 - type: technology
   id: ExplorationDrone
@@ -27,7 +27,7 @@
   technologyPrerequisites:
   - Robotics
   # TODO
-  position: 2,3
+  position: -5,5
 
 - type: technology
   id: ArtificialIntelligence
@@ -56,7 +56,7 @@
 #  - QuarantineLaws
   - RobocopCircuitBoard
 #  - SafeguardLaws
-  position: 0,0
+  position: -3,5
 
 - type: technology
   id: ArtificialIntelligenceLaws
@@ -86,4 +86,4 @@
 #  - ThinkermovLaws
 #  - TyrantLaws
 #  - YesmanLaws
-  position: 1,0
+  position: -3,6

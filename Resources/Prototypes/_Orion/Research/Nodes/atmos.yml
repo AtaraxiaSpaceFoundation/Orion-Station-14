@@ -20,7 +20,7 @@
   - FireExtinguisher
   - FireExtinguisherMini
   - GasAnalyzer
-  position: 8,0
+  position: 12,3
 
 - type: technology
   id: GasCompression
@@ -43,7 +43,7 @@
   - OrdnanceGaseousNoblium
   recipeUnlocks:
   - GasRecyclerMachineCircuitboard
-  position: 0,4
+  position: 11,2
 
 - type: technology
   id: PlasmaControl
@@ -67,7 +67,7 @@
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
   # TODO: No turbine :(
-  position: 11,6
+  position: 13,2
 
 - type: technology
   id: Fusion
@@ -90,7 +90,7 @@
   recipeUnlocks:
   - ExtinguisherSpray
   # TODO: No fusion :(
-  position: 10,3
+  position: 13,1
 
 - type: technology
   id: ExperimentalTools
@@ -117,7 +117,7 @@
   - JawsOfLife
   - ClothingHeadHatWelding
   - ClothingShoesBootsMag
-  position: 4,3
+  position: 14,1
 
 - type: technology
   id: RapidConstructionDeviceUpgrade
@@ -139,4 +139,4 @@
   discountExperimentCosts:
     OrdnanceGaseousNoblium: 12500
   # TODO
-  position: 4,7
+  position: 15,2

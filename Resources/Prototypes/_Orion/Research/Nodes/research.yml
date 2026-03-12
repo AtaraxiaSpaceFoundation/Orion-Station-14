@@ -16,7 +16,7 @@
   - ResearchDestructiveAnalyzerMachineCircuitboard
   - ResearchExperimentalDestructiveScannerMachineCircuitboard
   - AnomalyVesselCircuitboard
-  position: 9,3
+  position: 0,4
 
 - type: technology
   id: BluespaceTheory
@@ -34,7 +34,7 @@
   - FundamentalScience
   recipeUnlocks:
   - MaterialBSCrystal
-  position: 3,1
+  position: 0,5
 
 - type: technology
   id: AppliedBluespace
@@ -66,7 +66,7 @@
   - ConstructionBagOfHolding
   - ClothingBeltChemBagXenobiologyHolding
   - PlantBagOfHolding
-  position: 7,0
+  position: 0,6
 
 - type: technology
   id: BluespaceTravel
@@ -85,7 +85,7 @@
   recipeUnlocks:
   - DeviceQuantumSpinInverter
   - CargoTelepadMachineCircuitboard
-  position: 4,1
+  position: -1,6
 
 - type: technology
   id: AnomalyResearch
@@ -104,7 +104,7 @@
   recipeUnlocks:
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
-  position: 5,0
+  position: 1,6
 
 - type: technology
   id: AnomalyShells
@@ -131,4 +131,4 @@
   - ClothingBackpackSatchelHolding
   - WeaponTetherGun
 #  - PolymorphBelt # TODO 
-  position: 6,0
+  position: 1,8

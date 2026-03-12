@@ -19,7 +19,7 @@
   - SyndicateBodyBag
   - SyndicateMicrowaveMachineCircuitboard
   - SyndicatePersonalAI
-  position: 1,2
+  position: -4,11
 
 - type: technology
   id: UnregulatedBluespaceResearch
@@ -38,4 +38,4 @@
   recipeUnlocks:
   - DeviceDesynchronizer
   - MedicalBeamGunSyndicate
-  position: 1,7
+  position: -4,10

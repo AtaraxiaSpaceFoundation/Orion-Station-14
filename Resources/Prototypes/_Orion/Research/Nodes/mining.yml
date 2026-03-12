@@ -20,7 +20,7 @@
   - SheetPlasteel1
   - SheetUGlass1
   - SheetRUGlass1
-  position: 8,4
+  position: 5,5
 
 - type: technology
   id: Mining
@@ -42,7 +42,7 @@
   - WeaponMechMeleeDrill
   - MarkerBeacon
   - HandheldGPSBasic
-  position: 1,6
+  position: 3,6
 
 - type: technology
   id: LowPressureExcavation
@@ -63,7 +63,7 @@
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
-  position: 6,4
+  position: 7,6
 
 - type: technology
   id: PlasmaMining
@@ -82,7 +82,7 @@
   - PlasmaControl
   recipeUnlocks:
   - WeaponPlasmaCutter
-  position: 0,7
+  position: 5,7
 
 - type: technology
   id: Bitrunning
@@ -100,7 +100,7 @@
   - Gaming
   - AppliedBluespace
   # TODO
-  position: 2,1
+  position: 5,4
 
 - type: technology
   id: AdvancedMining
@@ -119,4 +119,4 @@
   recipeUnlocks:
   - MiningDrillDiamond
   - WeaponMechMeleeDrillDiamond
-  position: 2,6
+  position: 5,8

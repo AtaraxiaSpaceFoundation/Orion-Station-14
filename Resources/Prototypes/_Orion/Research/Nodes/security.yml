@@ -13,7 +13,7 @@
   - MagazineShotgunBeanbag
   - BoxBeanbag
   - MagazineBoxShotgunBeanbagHighCaliber 
-  position: 10,0
+  position: 0,0
 
 - type: technology
   id: SecurityEquipment
@@ -36,7 +36,7 @@
   - Zipties
   - FlashlightSeclite
   - ClothingBackpackElectropack
-  position: 8,7
+  position: -1,1
 
 - type: technology
   id: RiotSuppression
@@ -57,7 +57,7 @@
   - RiotBulletShield
   - Handcuffs
   - BolaEnergy
-  position: 5,7
+  position: 1,1
 
 - type: technology
   id: Explosives
@@ -82,7 +82,7 @@
   - FlashPayload
   - ChemicalPayload
   - ShrapnelPayload
-  position: 5,3
+  position: 1,0
 
 - type: technology
   id: ExoticAmmo
@@ -128,7 +128,7 @@
   - MagazineBoxRifleUranium
   - BoxShotgunUranium
   - MagazineBoxShotgunUraniumHighCaliber
-  position: 3,3
+  position: 2,-1
 
 - type: technology
   id: ElectricWeapons
@@ -147,7 +147,7 @@
   recipeUnlocks:
   - WeaponEnergyIonRifle
   - WeaponTemperatureGun
-  position: 0,3
+  position: 3,1
 
 - type: technology
   id: BeamWeapons
@@ -165,4 +165,4 @@
   - ElectricWeapons
   recipeUnlocks:
   - WeaponXrayCannon
-  position: 0,1
+  position: 4,1

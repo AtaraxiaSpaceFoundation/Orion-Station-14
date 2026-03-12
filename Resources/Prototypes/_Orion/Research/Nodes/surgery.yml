@@ -11,7 +11,7 @@
   technologyPrerequisites:
   - MedicalEquipment
   # There should be surgery operations
-  position: 5,6
+  position: 4,10
 
 - type: technology
   id: Surgery
@@ -28,7 +28,7 @@
   technologyPrerequisites:
   - MedicalEquipment
   # There should be surgery operations
-  position: 11,7
+  position: 4,11
 
 - type: technology
   id: AdvancedSurgery
@@ -49,7 +49,7 @@
   discountExperimentCosts:
     AutopsyHuman: 5000
   # There should be surgery operations
-  position: 0,8
+  position: 4,12
 
 - type: technology
   id: ExperimentalSurgery
@@ -70,7 +70,7 @@
   discountExperimentCosts:
     AutopsyNonhuman: 7500
   # There should be surgery operations
-  position: 1,8
+  position: 4,13
 
 - type: technology
   id: SurgeryTools
@@ -94,4 +94,4 @@
   - EnergyScalpel
   - EnergyCautery
   - AdvancedRetractor
-  position: 2,8
+  position: 4,14

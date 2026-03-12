@@ -32,7 +32,7 @@
   - MedicalStitches
   - Drill
   - Syringe
-  position: 11,5
+  position: 7,10
 
 - type: technology
   id: ChemSynthesis
@@ -59,7 +59,7 @@
   - EnergyChemDispenserMachineCircuitboard
   - ChemMasterMachineCircuitboard
   - HotplateMachineCircuitboard
-  position: 0,2
+  position: 7,9
 
 - type: technology
   id: AdvancedMedicalEquipment
@@ -79,7 +79,7 @@
   - ScanningReagentHaloperidol
   recipeUnlocks:
   - HandheldCrewMonitor
-  position: 0,6
+  position: 8,11
 
 - type: technology
   id: Cryostasis
@@ -106,4 +106,4 @@
   - SyringeCryostasis
   - StasisOperatingTableCircuitboard
   - StasisBedMachineCircuitboard
-  position: 5,2
+  position: 6,11

@@ -26,7 +26,7 @@
   - FlashlightLantern
   - Flare
   - StationRadioCircuitboard
-  position: 4,6
+  position: 8,-8
 
 - type: technology
   id: Sanitation
@@ -50,7 +50,7 @@
   - AdvMopItem
   - LightReplacer
   - SprayBottle
-  position: 7,7
+  position: 8,-7
 
 - type: technology
   id: Consoles
@@ -73,7 +73,7 @@
   - CrewMonitoringComputerCircuitboard
   - CargoBountyComputerCircuitboard
   - ScreenTimerElectronics
-  position: 3,2
+  position: 9,-8
 
 - type: technology
   id: Gaming
@@ -94,7 +94,7 @@
   recipeUnlocks:
   - BlockGameArcadeComputerCircuitboard
   - SpaceVillainArcadeComputerCircuitboard
-  position: 11,3
+  position: 10,-8
 
 - type: technology
   id: CafeteriaEquipment
@@ -130,7 +130,7 @@
   - DrinkGlassCoupeShaped
   - DrinkShotGlass
   - Ashtray
-  position: 11,1
+  position: 8,-9
 
 - type: technology
   id: FoodProcessing
@@ -155,7 +155,7 @@
   - SheetifierMachineCircuitboard
   - FatExtractorMachineCircuitboard
   - PairedChopsticks
-  position: 8,3
+  position: 7,-9
 
 - type: technology
   id: FishingEquip
@@ -170,7 +170,7 @@
   cost: 500
   recipeUnlocks:
   - FishingRod
-  position: 6,3
+  position: 10,-10
 
 - type: technology
   id: FishingEquipAdv
@@ -187,7 +187,7 @@
   requiredExperiments:
   - ScanningFish
   # TODO
-  position: 7,3
+  position: 10,-11
 
 - type: technology
   id: MarineUtility
@@ -206,4 +206,4 @@
   discountExperimentCosts:
     ScanningFishSecond: 7500
   # TODO
-  position: 7,4
+  position: 11,-11

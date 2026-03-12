@@ -18,7 +18,7 @@
   - RipleyLLeg
   - RipleyRLeg
   - MechEquipmentGrabberSmall
-  position: 10,4
+  position: -8,4
 
 - type: technology
   id: MechEquipment
@@ -36,7 +36,7 @@
   - MechAssembly
   recipeUnlocks:
   - MechEquipmentGrabber
-  position: 3,5
+  position: -9,5
 
 - type: technology
   id: MechClown
@@ -62,7 +62,7 @@
   - MechEquipmentHorn
   - WeaponMechSpecialBananaMortar
   - WeaponMechSpecialMousetrapMortar
-  position: 11,4
+  position: -7,5
 
 - type: technology
   id: MechMedical
@@ -78,7 +78,7 @@
   - MechAssembly
   - ChemSynthesis
   # TODO
-  position: 9,5
+  position: -7,6
 
 - type: technology
   id: MechMining
@@ -104,7 +104,7 @@
   - ClarkeRArm
   - WeaponMechMeleeDrill
   - WeaponMechIndustrialKineticAccelerator
-  position: 10,5
+  position: -7,7
 
 - type: technology
   id: MechCombat
@@ -125,7 +125,7 @@
   recipeUnlocks:
   - WeaponMechCombatDisabler
   - WeaponMechCombatFlashbangLauncher
-  position: 0,5
+  position: -9,6
 
 - type: technology
   id: MechAssault
@@ -151,7 +151,7 @@
 #  - DurandCentralElectronics
   - DurandPeripheralsElectronics
   - DurandTargetingElectronics
-  position: 9,4
+  position: -7,8
 
 - type: technology
   id: MechLight
@@ -177,7 +177,7 @@
 #  - GygaxCentralElectronics
   - GygaxPeripheralsElectronics
   - GygaxTargetingElectronics
-  position: 8,5
+  position: -7,9
 
 - type: technology
   id: MechHeavy
@@ -194,7 +194,7 @@
   technologyPrerequisites:
   - MechAssault
   # TODO
-  position: 5,5
+  position: -7,10
 
 - type: technology
   id: MechInfiltrator
@@ -212,7 +212,7 @@
   - MechLight
   - AnomalyResearch
   # TODO
-  position: 7,5
+  position: -7,11
 
 - type: technology
   id: MechEnergyGuns
@@ -238,7 +238,7 @@
   - WeaponMechCombatFiredartLaser
   - WeaponMechCombatImmolationGun
   - WeaponMechCombatTeslaCannon
-  position: 1,5
+  position: -9,7
 
 - type: technology
   id: MechFirearms
@@ -259,7 +259,7 @@
   - WeaponMechCombatShotgunIncendiary
   - WeaponMechCombatShotgun
   - WeaponMechCombatUltraRifle
-  position: 4,5
+  position: -9,8
 
 - type: technology
   id: MechHeavyArms
@@ -280,7 +280,7 @@
   - WeaponMechCombatMissileRack6
   - WeaponMechCombatMissileRack8
   - WeaponMechChainSword
-  position: 6,5
+  position: -9,9
 
 - type: technology
   id: MechEquipmentBluespace
@@ -298,4 +298,4 @@
   - MechInfiltrator
   - BluespaceTravel
   # TODO
-  position: 2,5
+  position: -9,10
