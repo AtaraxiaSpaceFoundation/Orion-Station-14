@@ -31,11 +31,3 @@
     Steel: 200
     Glass: 100
     Plastic: 100
-
-- type: latheRecipe
-  parent: BaseToolRecipe
-  id: HydroponicsToolSprayer
-  result: HydroponicsToolSprayer
-  materials:
-    Steel: 200
-    Plastic: 100
