@@ -22,6 +22,8 @@
     1: 0
     2: 0.75
     3: 0.75
+    4: 0.75
+    5: 0.75
   uiName: IND  # Goobstation
 
 - type: techDiscipline
@@ -35,6 +37,8 @@
     1: 0
     2: 0.75
     3: 0.75
+    4: 0.75
+    5: 0.75
   uiName: SEC  # Goobstation
 
 - type: techDiscipline
@@ -48,6 +52,8 @@
     1: 0
     2: 0.75
     3: 0.75
+    4: 0.75
+    5: 0.75
   uiName: EXP  # Goobstation
 
 - type: techDiscipline
@@ -61,4 +67,6 @@
     1: 0
     2: 0.75
     3: 0.75
+    4: 0.75
+    5: 0.75
   uiName: SRV  # Goobstation
