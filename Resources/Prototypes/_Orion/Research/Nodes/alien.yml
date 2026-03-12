@@ -4,7 +4,7 @@
   description: research-technology-alien-technology-desc
   icon:
     sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
-    state: stun
+    state: stun-icon
   discipline: Experimental
   tier: 2
   hidden: true

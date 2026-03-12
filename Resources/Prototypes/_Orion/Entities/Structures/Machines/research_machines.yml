@@ -31,6 +31,8 @@
     anchored: true
   - type: ApcPowerReceiver
     powerLoad: 2500
+  - type: Machine
+    board: ResearchDestructiveAnalyzerMachineCircuitboard
   - type: ResearchClient
   - type: DestructiveAnalyzer
   - type: ActivatableUI
@@ -69,6 +71,8 @@
     anchored: true
   - type: ApcPowerReceiver
     powerLoad: 3000
+  - type: Machine
+    board: ResearchExperimentalDestructiveScannerMachineCircuitboard
   - type: ResearchClient
   - type: Experimentator
   - type: ActivatableUI

@@ -1,6 +1,6 @@
 - type: latheRecipePack
   id: EmptyMedicalSprayBottlesStatic
   recipes:
-  - SprayBottleRedEmpty
-  - SprayBottleOrangeEmpty
-  - SprayBottleBlueEmpty
+  - SprayBottleRed
+  - SprayBottleOrange
+  - SprayBottleBlue

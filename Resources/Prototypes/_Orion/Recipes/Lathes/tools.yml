@@ -20,13 +20,13 @@
   id: ClothingShoesBootsMag
   result: ClothingShoesBootsMag
   materials:
-    Steel: 250
-    Plastic: 150
+    Steel: 850
+    Plastic: 250
 
 - type: latheRecipe
   parent: BaseToolRecipe
-  id: PlantAnalyzer
-  result: PlantAnalyzer
+  id: PlantBag
+  result: PlantBag
   materials:
     Steel: 200
     Glass: 100
@@ -34,8 +34,8 @@
 
 - type: latheRecipe
   parent: BaseToolRecipe
-  id: WateringCan
-  result: WateringCan
+  id: HydroponicsToolSprayer
+  result: HydroponicsToolSprayer
   materials:
     Steel: 200
     Plastic: 100
