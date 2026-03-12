@@ -2,7 +2,7 @@
   id: WeaponMechChainSword
   result: WeaponMechChainSword
   categories:
-  - Robotics
+  - Mech
   completetime: 4
   materials:
     Steel: 700

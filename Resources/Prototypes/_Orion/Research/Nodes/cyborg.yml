@@ -35,8 +35,8 @@
   description: research-technology-cybernetics-desc
   icon:
     sprite: Objects/Specific/Robotics/mmi.rsi
-    state: robot
-  discipline: posibrain
+    state: posibrain
+  discipline: Industrial
   tier: 1
   announceChannels:
   - Science
@@ -151,8 +151,8 @@
   description: research-technology-passive-implants-desc
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
-    state: experimental
-  discipline: implanter0
+    state: implanter0
+  discipline: Industrial
   tier: 1
   announceChannels:
   - Security

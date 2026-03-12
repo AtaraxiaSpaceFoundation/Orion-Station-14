@@ -12,7 +12,7 @@
   id: MineralScanner
   result: MineralScanner
   categories:
-  - Medical
+  - Mining
   completetime: 4
   materials:
     Steel: 400

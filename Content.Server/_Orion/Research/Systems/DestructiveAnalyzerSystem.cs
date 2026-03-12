@@ -8,6 +8,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Research.Components;
+using Content.Shared.Stacks;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -185,9 +186,13 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return;
         }
 
+        var stackMultiplier = 1;
+        if (TryComp<StackComponent>(used, out var stack))
+            stackMultiplier = stack.Count;
+
         foreach (var reward in rewards)
         {
-            _research.ModifyServerPoints(server, reward.Type, reward.Amount);
+            _research.ModifyServerPoints(server, reward.Type, reward.Amount * stackMultiplier);
         }
 
         foreach (var technology in analyzable.RevealTechnologies)
@@ -278,7 +283,11 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
     private static List<string> GetAvailableMethods(ResearchAnalyzableComponent analyzable)
     {
         if (analyzable.SupportedMethods.Count > 0)
-            return analyzable.SupportedMethods;
+        {
+            return analyzable.SupportedMethods
+                .Where(analyzable.MethodPointRewards.ContainsKey)
+                .ToList();
+        }
 
         if (analyzable.MethodPointRewards.Count > 0)
             return analyzable.MethodPointRewards.Keys.ToList();

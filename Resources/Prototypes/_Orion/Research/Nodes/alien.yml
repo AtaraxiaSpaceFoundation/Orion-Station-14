@@ -37,7 +37,7 @@
   tier: 2
   hidden: true
   announceChannels:
-  - Medical
+  - Engineering
   cost: 5000
   technologyPrerequisites:
   - AlienTechnology
@@ -70,7 +70,7 @@
   tier: 5
   hidden: true
   announceChannels:
-  - Engineering
+  - Medical
   cost: 12500
   technologyPrerequisites:
   - AlienTechnology

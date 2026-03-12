@@ -1,6 +1,8 @@
 - type: latheRecipe
   id: ConfettiGrenade
   result: ConfettiGrenade
+  categories:
+  - Service
   completetime: 3
   materials:
     Steel: 20
@@ -20,7 +22,7 @@
   id: BlockGameArcadeComputerCircuitboard
   result: BlockGameArcadeComputerCircuitboard
   categories:
-  - Service
+  - Circuitry
   completetime: 4
   materials:
     Steel: 300
@@ -157,7 +159,7 @@
   id: PairedChopsticks
   result: PairedChopsticks
   categories:
-  - Robotics
+  - Service
   completetime: 4
   materials:
     Plastic: 300
@@ -205,7 +207,7 @@
   id: SpaceVillainArcadeComputerCircuitboard
   result: SpaceVillainArcadeComputerCircuitboard
   categories:
-  - Robotics
+  - Circuitry
   completetime: 4
   materials:
     Steel: 700

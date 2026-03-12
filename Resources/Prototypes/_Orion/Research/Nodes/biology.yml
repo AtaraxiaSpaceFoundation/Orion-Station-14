@@ -71,7 +71,7 @@
   - Medical
   cost: 10000
   technologyPrerequisites:
-  - Selection
+  - ArtificialSelection
   - Xenobiology
   discountExperiments:
   - ScanningPeopleMutant

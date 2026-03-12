@@ -39,9 +39,9 @@
   position: 8,7
 
 - type: technology
-  id: RiotSupression
-  name: research-technology-riot-supression-name
-  description: research-technology-riot-supression-desc
+  id: RiotSuppression
+  name: research-technology-riot-suppression-name
+  description: research-technology-riot-suppression-desc
   icon:
     sprite: _Goobstation/Objects/Weapons/Throwable/energy_bola.rsi
     state: icon

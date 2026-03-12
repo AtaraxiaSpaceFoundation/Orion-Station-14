@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Construction.Completions;
 using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Components;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Containers;
@@ -11,13 +12,13 @@ public sealed partial class ResearchSystem
 {
     private void InitializeDiscovery()
     {
-        SubscribeLocalEvent<MetaDataComponent, EntInsertedIntoContainerMessage>(OnDiscoveryMachineInsertion);
+        SubscribeLocalEvent<ResearchClientComponent, EntInsertedIntoContainerMessage>(OnDiscoveryMachineInsertion);
         SubscribeLocalEvent<MetaDataComponent, ConstructionBeforeDeleteEvent>(OnDiscoveryDeconstruct);
     }
 
-    private void OnDiscoveryMachineInsertion(EntityUid uid, MetaDataComponent component, ref EntInsertedIntoContainerMessage args)
+    private void OnDiscoveryMachineInsertion(EntityUid uid, ResearchClientComponent component, ref EntInsertedIntoContainerMessage args)
     {
-        if (!TryGetResearchServerForEntity(uid, out var serverUid) || serverUid is not { } server)
+        if (component.Server is not { } server)
             return;
 
         NotifyDiscoveryEvent(server,
@@ -31,6 +32,9 @@ public sealed partial class ResearchSystem
 
     private void OnDiscoveryDeconstruct(EntityUid uid, MetaDataComponent component, ref ConstructionBeforeDeleteEvent args)
     {
+        if (!HasComp<ResearchAnalyzableComponent>(uid))
+            return;
+
         if (!TryGetResearchServerForEntity(uid, out var serverUid) || serverUid is not { } server)
             return;
 
@@ -59,8 +63,8 @@ public sealed partial class ResearchSystem
             var revealedByRequirements = false;
             if (technology.RevealRequirements.Count > 0)
             {
-                var changed = ProcessTechnologyDiscoveryEvent(database, technology, data);
-                revealedByRequirements = changed && AreRevealRequirementsSatisfied(database, technology);
+                ProcessTechnologyDiscoveryEvent(database, technology, data);
+                revealedByRequirements = AreRevealRequirementsSatisfied(database, technology);
             }
 
             var revealedByUnlockLists = IsUnlockListRevealSatisfied(technology, data);
@@ -105,12 +109,8 @@ public sealed partial class ResearchSystem
         database);
     }
 
-    private bool ProcessTechnologyDiscoveryEvent(TechnologyDatabaseComponent database,
-        TechnologyPrototype technology,
-        DiscoveryEventData data)
+    private void ProcessTechnologyDiscoveryEvent(TechnologyDatabaseComponent database, TechnologyPrototype technology, DiscoveryEventData data)
     {
-        var changed = false;
-
         foreach (var requirement in technology.RevealRequirements)
         {
             if (IsRevealRequirementSatisfied(database, technology.ID, requirement))
@@ -119,10 +119,8 @@ public sealed partial class ResearchSystem
             if (!DoesDiscoveryEventMatch(requirement, data))
                 continue;
 
-            changed |= IncrementDiscoveryProgress(database, technology.ID, requirement, 1);
+            IncrementDiscoveryProgress(database, technology.ID, requirement, 1);
         }
-
-        return changed;
     }
 
     private bool IsUnlockListRevealSatisfied(TechnologyPrototype technology, DiscoveryEventData data)
@@ -219,10 +217,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    private bool IncrementDiscoveryProgress(TechnologyDatabaseComponent database,
-        string technologyId,
-        TechnologyRevealRequirement requirement,
-        int amount)
+    private void IncrementDiscoveryProgress(TechnologyDatabaseComponent database, string technologyId, TechnologyRevealRequirement requirement, int amount)
     {
         var target = Math.Max(1, requirement.Target);
 
@@ -233,14 +228,14 @@ public sealed partial class ResearchSystem
                 continue;
 
             if (entry.Progress >= target)
-                return false;
+                return;
 
             entry.Progress = Math.Min(target, entry.Progress + amount);
             if (entry.Progress >= target)
                 entry.CompletedAt = _timing.CurTime;
 
             database.DiscoveryProgress[i] = entry;
-            return true;
+            return;
         }
 
         database.DiscoveryProgress.Add(new TechnologyDiscoveryProgress
@@ -251,8 +246,6 @@ public sealed partial class ResearchSystem
             Target = target,
             CompletedAt = amount >= target ? _timing.CurTime : null
         });
-
-        return true;
     }
 
     private static int GetDiscoveryProgress(TechnologyDatabaseComponent database, string technologyId, string requirementId)

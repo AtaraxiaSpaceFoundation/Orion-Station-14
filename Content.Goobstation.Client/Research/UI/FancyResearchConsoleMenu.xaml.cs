@@ -155,7 +155,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         foreach (var disciplineId in database.SupportedDisciplines)
         {
             var discipline = _prototype.Index(disciplineId);
-            var tier = _research.GetTierCompletionPercentage(database, discipline, _prototype);
+            var tier = SharedResearchSystemExtensions.GetTierCompletionPercentage(database, discipline, _prototype);
 
             // i'm building the small-ass control here to spare me some mild annoyance in making a new file
             var texture = new TextureRect
@@ -261,7 +261,8 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
             {
                 message.PushNewline();
                 var category = GetLocalizedLogCategory(log.Category);
-                message.AddMarkupOrThrow($"[color=gray]{category}[/color] {log.Message}");
+                message.AddMarkupOrThrow($"[color=gray]{FormattedMessage.EscapeText(category)}[/color] ");
+                message.AddText(log.Message);
             }
         }
 

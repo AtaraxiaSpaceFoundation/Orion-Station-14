@@ -55,7 +55,7 @@ public sealed partial class ResearchSystem
     /// <summary>
     /// Syncs the primary entity's database to that of the secondary entity's database.
     /// </summary>
-    public void Sync(EntityUid primaryUid, EntityUid otherUid, TechnologyDatabaseComponent? primaryDb = null, TechnologyDatabaseComponent? otherDb = null)
+    private void Sync(EntityUid primaryUid, EntityUid otherUid, TechnologyDatabaseComponent? primaryDb = null, TechnologyDatabaseComponent? otherDb = null)
     {
         if (!Resolve(primaryUid, ref primaryDb) || !Resolve(otherUid, ref otherDb))
             return;
@@ -89,7 +89,7 @@ public sealed partial class ResearchSystem
     ///     syncs against the research server, and the server against the local database.
     /// </summary>
     /// <returns>Whether it could sync or not</returns>
-    public void SyncClientWithServer(EntityUid uid, TechnologyDatabaseComponent? databaseComponent = null, ResearchClientComponent? clientComponent = null)
+    private void SyncClientWithServer(EntityUid uid, TechnologyDatabaseComponent? databaseComponent = null, ResearchClientComponent? clientComponent = null)
     {
         if (!Resolve(uid, ref databaseComponent, ref clientComponent, false))
             return;
@@ -104,7 +104,7 @@ public sealed partial class ResearchSystem
     /// Tries to add a technology to a database, checking if it is able to
     /// </summary>
     /// <returns>If the technology was successfully added</returns>
-    public bool UnlockTechnology(EntityUid client,
+    private bool UnlockTechnology(EntityUid client,
         string prototypeid,
         EntityUid user,
         ResearchClientComponent? component = null,
@@ -120,7 +120,7 @@ public sealed partial class ResearchSystem
     /// Tries to add a technology to a database, checking if it is able to
     /// </summary>
     /// <returns>If the technology was successfully added</returns>
-    public bool UnlockTechnology(EntityUid client,
+    private bool UnlockTechnology(EntityUid client,
         TechnologyPrototype prototype,
         EntityUid user,
         ResearchClientComponent? component = null,
@@ -232,15 +232,14 @@ public sealed partial class ResearchSystem
         if (!CanUnlockTechnology(serverDatabase, technology))
             return false;
 
-        var finalGeneralCost = GetTechnologyFinalCost(serverDatabase, technology);
-        for (var i = 0; i < finalCosts.Count; i++)
+        var hasExplicitGeneralCost = finalCosts.Any(cost => cost.Type == "General");
+        if (!hasExplicitGeneralCost)
         {
-            if (finalCosts[i].Type != "General")
-                continue;
-
-            var cost = finalCosts[i];
-            cost.Amount = finalGeneralCost;
-            finalCosts[i] = cost;
+            finalCosts.Add(new ResearchPointAmount
+            {
+                Type = "General",
+                Amount = GetTechnologyFinalCost(serverDatabase, technology),
+            });
         }
 
         return HasSufficientPoints(serverUid.Value, finalCosts, serverComp);

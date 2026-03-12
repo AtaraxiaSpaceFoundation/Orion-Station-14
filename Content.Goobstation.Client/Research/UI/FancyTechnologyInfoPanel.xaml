@@ -99,9 +99,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                               Orientation="Vertical"
                               HorizontalExpand="True"
                               VerticalExpand="True">
-                    <Label Text="{Loc 'research-console-tech-required-technologies-title'}"
-                           HorizontalAlignment="Center"
-                           Margin="0 0 0 4"/>
                     <PanelContainer VerticalExpand="True">
                         <PanelContainer.PanelOverride>
                             <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
