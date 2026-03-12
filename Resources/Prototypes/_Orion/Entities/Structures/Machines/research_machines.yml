@@ -33,6 +33,11 @@
     powerLoad: 2500
   - type: Machine
     board: ResearchDestructiveAnalyzerMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      destructive-analyzer-container: !type:Container
   - type: ResearchClient
   - type: DestructiveAnalyzer
   - type: ActivatableUI
@@ -73,6 +78,11 @@
     powerLoad: 3000
   - type: Machine
     board: ResearchExperimentalDestructiveScannerMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      experimentator-container: !type:Container
   - type: ResearchClient
   - type: Experimentator
   - type: ActivatableUI
