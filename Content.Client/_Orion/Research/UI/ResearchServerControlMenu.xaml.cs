@@ -15,6 +15,7 @@ namespace Content.Client._Orion.Research.UI;
 public sealed partial class ResearchServerControlMenu : DefaultWindow
 {
     [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
     private readonly SpriteSystem _sprite;
 
     public event Action<int>? OnToggleRequested;
@@ -27,10 +28,10 @@ public sealed partial class ResearchServerControlMenu : DefaultWindow
         _sprite = _entitySystemManager.GetEntitySystem<SpriteSystem>();
     }
 
-    private static string LocalizePointType(string type)
+    private string LocalizePointType(string type)
     {
         var key = $"research-point-type-{type.ToLowerInvariant()}";
-        return Loc.TryGetString(key, out var localized) ? localized : type;
+        return _loc.TryGetString(key, out var localized) ? localized : type;
     }
 
     private static string FormatServerName(string name)

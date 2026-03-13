@@ -7,6 +7,7 @@ research-machine-common-last-operation-title = Last operation
 research-machine-common-last-subject = Item
 research-machine-common-last-result = Result
 research-machine-common-none = no data
+research-machine-common-labeled-value = { $label }: { $value }
 research-machine-common-no-server = Operation failed: no R&D server connection.
 
 research-machine-destructive-window-title = Destructive Analyzer
@@ -63,3 +64,8 @@ research-machine-destructive-method-alientechnology = Alien Technology
 research-machine-destructive-method-advancedanalysis = Advanced Analysis
 
 research-machine-destructive-living-subject-blocked = Living subjects cannot be destructively analyzed.
+
+research-machine-experiment-progress = { $objective }: { $progress }/{ $target }
+
+research-machine-destructive-method-reveal-technology = Reveal technology: { $technology }
+research-machine-destructive-method-unknown = Unknown method

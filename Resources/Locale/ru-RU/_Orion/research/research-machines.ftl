@@ -7,6 +7,7 @@ research-machine-common-last-operation-title = Последняя операци
 research-machine-common-last-subject = Предмет
 research-machine-common-last-result = Результат
 research-machine-common-none = нет данных
+research-machine-common-labeled-value = { $label }: { $value }
 research-machine-common-no-server = Операция не выполнена: нет подключения к серверу РнД.
 
 research-machine-destructive-window-title = Деструктивный анализатор
@@ -63,3 +64,8 @@ research-machine-destructive-method-alientechnology = Инопланетная �
 research-machine-destructive-method-advancedanalysis = Продвинутый анализ
 
 research-machine-destructive-living-subject-blocked = Живых существ нельзя деструктивно анализировать.
+
+research-machine-experiment-progress = { $objective }: { $progress }/{ $target }
+
+research-machine-destructive-method-reveal-technology = Раскрыть технологию: { $technology }
+research-machine-destructive-method-unknown = Неизвестный метод

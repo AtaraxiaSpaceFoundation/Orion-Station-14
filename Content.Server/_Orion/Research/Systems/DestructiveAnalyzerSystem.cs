@@ -8,10 +8,12 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Research.Components;
+using Content.Shared.Research.Prototypes;
 using Content.Shared.Stacks;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Research.Systems;
@@ -25,6 +27,8 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
 
     public override void Initialize()
     {
@@ -84,9 +88,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         ent.Comp.IsProcessing = false;
         ent.Comp.LastSubject = Name(used);
         ent.Comp.LastResult = Loc.GetString("research-machine-destructive-item-loaded");
-        ent.Comp.SelectedMethod = TryComp<ResearchAnalyzableComponent>(used, out var analyzable)
-            ? GetAvailableMethods(analyzable).FirstOrDefault()
-            : null;
+        ent.Comp.SelectedMethod = null;
 
         UpdateAppearance(ent, DestructiveAnalyzerVisualState.Inserting);
         Timer.Spawn(ent.Comp.InsertAnimationDuration,
@@ -134,10 +136,21 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return;
         }
 
-        if (!TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
+        if (!TryResolveServer(ent, out var server))
         {
-            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-invalid-item");
+            ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
             _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
+            UpdateUi(ent);
+            return;
+        }
+
+        if (!_container.TryGetContainingContainer(used, out var containing) || containing.Owner != ent.Owner)
+        {
+            ent.Comp.InsertedItem = null;
+            ent.Comp.SelectedMethod = null;
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-no-item");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
+            UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
             UpdateUi(ent);
             return;
         }
@@ -150,6 +163,35 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return;
         }
 
+        int rewardChannels;
+        if (TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
+        {
+            if (!TryRunAnalyzableMethod(ent, used, server, analyzable, args.Actor, out rewardChannels))
+                return;
+        }
+        else
+        {
+            if (!TryRunDiscoveryRevealMethod(ent, used, server, args.Actor, out rewardChannels))
+                return;
+        }
+
+        ent.Comp.IsProcessing = true;
+        UpdateAppearance(ent, DestructiveAnalyzerVisualState.Deconstructing);
+        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", 1));
+        UpdateUi(ent);
+
+        Timer.Spawn(ent.Comp.DeconstructAnimationDuration,
+            () => CompleteAnalysis(ent, used, rewardChannels));
+    }
+
+    private bool TryRunAnalyzableMethod(Entity<DestructiveAnalyzerComponent> ent,
+        EntityUid used,
+        EntityUid server,
+        ResearchAnalyzableComponent analyzable,
+        EntityUid actor,
+        out int rewardChannels)
+    {
+        rewardChannels = 0;
         var methods = GetAvailableMethods(analyzable);
         var method = ent.Comp.SelectedMethod;
         if (string.IsNullOrWhiteSpace(method) || !methods.Contains(method))
@@ -158,33 +200,15 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             ent.Comp.SelectedMethod = method;
         }
 
-        if (string.IsNullOrWhiteSpace(method))
+        if (string.IsNullOrWhiteSpace(method) || !analyzable.MethodPointRewards.TryGetValue(method, out var rewards))
         {
             ent.Comp.LastResult = Loc.GetString("research-machine-destructive-unsupported-method");
             _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
-            return;
+            return false;
         }
 
-        if (!TryComp<ResearchClientComponent>(ent, out var client))
-            return;
-
-        var server = client.Server ?? _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault().Owner;
-        if (server == EntityUid.Invalid)
-        {
-            ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
-            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
-            UpdateUi(ent);
-            return;
-        }
-
-        if (!analyzable.MethodPointRewards.TryGetValue(method, out var rewards))
-        {
-            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-unsupported-method");
-            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
-            UpdateUi(ent);
-            return;
-        }
+        rewardChannels = rewards.Count;
 
         var stackMultiplier = 1;
         if (TryComp<StackComponent>(used, out var stack))
@@ -197,7 +221,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
         foreach (var technology in analyzable.RevealTechnologies)
         {
-            _research.RevealTechnology(server, technology);
+            _research.RevealTechnology(server, technology, actor);
         }
 
         foreach (var technology in analyzable.UnlockTechnologies)
@@ -218,39 +242,69 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             Loc.GetString("research-netlog-destructive-analysis-result",
                 ("method", LocalizeMethod(method)),
                 ("channels", rewards.Count),
-                ("subject", Name(used))),
-            args.Actor);
+                ("subject", Name(used)),
+                ("user", _research.GetResearchLogUserName(actor))),
+            actor);
 
-        ent.Comp.IsProcessing = true;
-        UpdateAppearance(ent, DestructiveAnalyzerVisualState.Deconstructing);
-        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", 1));
+        return true;
+    }
+
+    private bool TryRunDiscoveryRevealMethod(Entity<DestructiveAnalyzerComponent> ent, EntityUid used, EntityUid server, EntityUid actor, out int rewardChannels)
+    {
+        rewardChannels = 0;
+        var methods = GetDiscoveryRevealMethods(used, server);
+        var method = ent.Comp.SelectedMethod;
+        if (string.IsNullOrWhiteSpace(method) || !methods.Contains(method))
+        {
+            method = methods.FirstOrDefault();
+            ent.Comp.SelectedMethod = method;
+        }
+
+        if (string.IsNullOrWhiteSpace(method) || !TryGetRevealTechnologyFromMethod(method, out var technologyId))
+        {
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-invalid-item");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
+            UpdateUi(ent);
+            return false;
+        }
+
+        _research.RevealTechnology(server, technologyId, actor);
+        rewardChannels = 1;
+        _research.LogNetworkEvent(server,
+            "destructive-analyzer",
+            Loc.GetString("research-netlog-destructive-analysis-result",
+                ("method", LocalizeMethod(method)),
+                ("channels", rewardChannels),
+                ("subject", Name(used)),
+                ("user", _research.GetResearchLogUserName(actor))),
+            actor);
+
+        return true;
+    }
+
+    private void CompleteAnalysis(Entity<DestructiveAnalyzerComponent> ent, EntityUid used, int rewardChannels)
+    {
+        if (TerminatingOrDeleted(ent))
+            return;
+
+        ent.Comp.IsProcessing = false;
+
+        if (TerminatingOrDeleted(used))
+        {
+            ent.Comp.InsertedItem = null;
+            UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
+            UpdateUi(ent);
+            return;
+        }
+
+        ent.Comp.LastItemAnalyzed = true;
+        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewardChannels));
+        Del(used);
+        ent.Comp.InsertedItem = null;
+        UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
+        _audio.PlayPvs(ent.Comp.SuccessSound, ent, ent.Comp.AudioParams);
         UpdateUi(ent);
-
-        Timer.Spawn(ent.Comp.DeconstructAnimationDuration,
-            () =>
-            {
-                if (TerminatingOrDeleted(ent))
-                    return;
-
-                ent.Comp.IsProcessing = false;
-
-                if (TerminatingOrDeleted(used))
-                {
-                    ent.Comp.InsertedItem = null;
-                    UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
-                    UpdateUi(ent);
-                    return;
-                }
-
-                ent.Comp.LastItemAnalyzed = true;
-                ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewards.Count));
-                Del(used);
-                ent.Comp.InsertedItem = null;
-                UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
-                _audio.PlayPvs(ent.Comp.SuccessSound, ent, ent.Comp.AudioParams);
-                UpdateUi(ent);
-                _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
-            });
+        _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
     }
 
     private void OnEject(Entity<DestructiveAnalyzerComponent> ent, ref DestructiveAnalyzerEjectMessage args)
@@ -275,6 +329,24 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         UpdateUi(ent);
     }
 
+    private bool TryResolveServer(Entity<DestructiveAnalyzerComponent> ent, out EntityUid server)
+    {
+        server = EntityUid.Invalid;
+
+        if (TryComp<ResearchClientComponent>(ent, out var client) && client.Server is { } selected)
+        {
+            server = selected;
+            return true;
+        }
+
+        var fallback = _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault();
+        if (fallback.Owner == EntityUid.Invalid)
+            return false;
+
+        server = fallback.Owner;
+        return true;
+    }
+
     private void UpdateAppearance(Entity<DestructiveAnalyzerComponent> ent, DestructiveAnalyzerVisualState state)
     {
         _appearance.SetData(ent.Owner, DestructiveAnalyzerVisuals.State, state);
@@ -297,8 +369,38 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
     private string LocalizeMethod(string methodId)
     {
+        if (TryGetRevealTechnologyFromMethod(methodId, out var technologyId))
+        {
+            var technologyName = technologyId;
+            if (_prototype.TryIndex<TechnologyPrototype>(technologyId, out var technology))
+                technologyName = Loc.GetString(technology.Name);
+
+            return Loc.GetString("research-machine-destructive-method-reveal-technology", ("technology", technologyName));
+        }
+
         var key = $"research-machine-destructive-method-{methodId.ToLowerInvariant()}";
-        return Loc.TryGetString(key, out var localized) ? localized : methodId;
+        return _loc.TryGetString(key, out var localized)
+        ? localized
+        : Loc.GetString("research-machine-destructive-method-unknown");
+    }
+
+    private static bool TryGetRevealTechnologyFromMethod(string methodId, out string technologyId)
+    {
+        const string prefix = "reveal:";
+        if (!methodId.StartsWith(prefix, StringComparison.Ordinal))
+        {
+            technologyId = string.Empty;
+            return false;
+        }
+
+        technologyId = methodId[prefix.Length..];
+        return !string.IsNullOrWhiteSpace(technologyId);
+    }
+
+    private List<string> GetDiscoveryRevealMethods(EntityUid used, EntityUid server)
+    {
+        var technologies = _research.GetHiddenTechnologiesForRequiredItem(server, used);
+        return technologies.Select(technology => $"reveal:{technology}").ToList();
     }
 
     private void UpdateUi(Entity<DestructiveAnalyzerComponent> ent)
@@ -313,8 +415,16 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             pointBalances = server.PointBalances.ToList();
         }
 
-        if (ent.Comp.InsertedItem is { } used && TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
-            methods = GetAvailableMethods(analyzable);
+        if (ent.Comp.InsertedItem is { } used)
+        {
+            if (TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
+                methods = GetAvailableMethods(analyzable);
+            else if (_research.TryGetClientServer(ent.Owner, out var serverUid, out _))
+                methods = GetDiscoveryRevealMethods(used, serverUid.Value);
+
+            if (ent.Comp.SelectedMethod == null || !methods.Contains(ent.Comp.SelectedMethod))
+                ent.Comp.SelectedMethod = methods.FirstOrDefault();
+        }
 
         var state = new DestructiveAnalyzerBoundInterfaceState(
             serverName,

@@ -40,11 +40,14 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
         status.GenerationEnabled = !status.GenerationEnabled;
         Dirty(serverUid.Value, status);
 
-        _research.LogNetworkEvent(serverUid.Value, "server-control",
+        _research.LogNetworkEvent(serverUid.Value,
+            "server-control",
             Loc.GetString("research-netlog-server-control-generation-toggled",
                 ("state", Loc.GetString(status.GenerationEnabled
                     ? "research-netlog-server-control-state-enabled"
-                    : "research-netlog-server-control-state-disabled"))));
+                    : "research-netlog-server-control-state-disabled")),
+                ("user", _research.GetResearchLogUserName(args.Actor))),
+            args.Actor);
         UpdateUi(ent);
     }
 

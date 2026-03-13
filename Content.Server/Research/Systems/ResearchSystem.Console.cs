@@ -33,7 +33,6 @@ using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Access.Components;
 using Content.Shared.Chat;
 using Content.Shared.Emag.Systems;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using Content.Shared.UserInterface;
@@ -95,22 +94,16 @@ public sealed partial class ResearchSystem
 
         if (!_emag.CheckFlag(uid, EmagType.Interaction) && technologyPrototype.AnnounceOnUnlock)
         {
-            var getIdentityEvent = new TryGetIdentityShortInfoEvent(uid, act);
-            RaiseLocalEvent(getIdentityEvent);
-
             var message = Loc.GetString(
                 "research-console-unlock-technology-radio-broadcast",
                 ("technology", Loc.GetString(technologyPrototype.Name)),
-                ("amount", technologyPrototype.Cost),
-                ("approver", getIdentityEvent.Title ?? string.Empty)
-            );
+                ("amount", technologyPrototype.Cost));
 
             // Orion-Start
             var messageIC = Loc.GetString(
                 "research-console-unlock-technology-ic",
                 ("technology", Loc.GetString(technologyPrototype.Name)),
-                ("amount", technologyPrototype.Cost.ToString()),
-                ("approver", getIdentityEvent.Title ?? string.Empty));
+                ("amount", technologyPrototype.Cost.ToString()));
             // Orion-End
 
             var announceChannels = technologyPrototype.AnnounceChannels.Count > 0

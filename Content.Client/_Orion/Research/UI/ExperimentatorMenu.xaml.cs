@@ -26,7 +26,9 @@ public sealed partial class ExperimentatorMenu : FancyWindow
             ? Loc.GetString("research-machine-common-server-none")
             : Loc.GetString("research-machine-common-server-current", ("name", state.ConnectedServerName));
 
-        InsertedItemLabel.Text = Loc.GetString("research-machine-experiment-scanner-status") + ": " + (state.InsertedItem ?? Loc.GetString("research-machine-common-none"));
+        InsertedItemLabel.Text = Loc.GetString("research-machine-common-labeled-value",
+            ("label", Loc.GetString("research-machine-experiment-scanner-status")),
+            ("value", state.InsertedItem ?? Loc.GetString("research-machine-common-none")));
 
         var experiments = new FormattedMessage();
         foreach (var experiment in state.Experiments)
@@ -35,7 +37,10 @@ public sealed partial class ExperimentatorMenu : FancyWindow
             experiments.PushNewline();
             experiments.AddText(experiment.Description);
             experiments.PushNewline();
-            experiments.AddText($"{experiment.Objective}: {experiment.Progress}/{experiment.Target}");
+            experiments.AddText(Loc.GetString("research-machine-experiment-progress",
+                ("objective", experiment.Objective),
+                ("progress", experiment.Progress),
+                ("target", experiment.Target)));
             experiments.PushNewline();
             experiments.PushNewline();
         }
@@ -45,10 +50,14 @@ public sealed partial class ExperimentatorMenu : FancyWindow
 
         OperationsLabel.SetMessage(experiments);
 
-        var lastOperation = new FormattedMessage();
-        lastOperation.AddText($"{Loc.GetString("research-machine-common-last-result")}: {(string.IsNullOrWhiteSpace(state.LastResult)
+        var result = string.IsNullOrWhiteSpace(state.LastResult)
             ? Loc.GetString("research-machine-common-none")
-            : state.LastResult)}");
+            : state.LastResult;
+
+        var lastOperation = new FormattedMessage();
+        lastOperation.AddText(Loc.GetString("research-machine-common-labeled-value",
+            ("label", Loc.GetString("research-machine-common-last-result")),
+            ("value", result)));
         LastOperationLabel.SetMessage(lastOperation);
     }
 }

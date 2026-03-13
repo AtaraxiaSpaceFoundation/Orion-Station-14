@@ -93,15 +93,6 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    public bool TryProgressExperimentsWithEntity(EntityUid serverUid,
-        EntityUid subject,
-        EntityUid user,
-        TechnologyDatabaseComponent? database = null,
-        ResearchServerComponent? server = null)
-    {
-        return TryProgressExperimentsWithEntity(serverUid, subject, (EntityUid?) user, out _, out _, database, server);
-    }
-
     public bool TryProgressExperimentsByAction(EntityUid serverUid, string actionId, TechnologyDatabaseComponent? database = null, ResearchServerComponent? server = null)
     {
         if (!Resolve(serverUid, ref database, ref server))
@@ -179,14 +170,15 @@ public sealed partial class ResearchSystem
             break;
         }
 
-        ApplyExperimentReward(serverUid, experiment, database, server);
+        ApplyExperimentReward(serverUid, experiment, user, database, server);
         TriggerDiscovery(serverUid, $"experiment:{experiment.ID}", database);
-        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-completed", ("experiment", Loc.GetString(experiment.Name))), user);
+        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-completed", ("experiment", Loc.GetString(experiment.Name)), ("user", GetResearchLogUserName(user))), user);
         _adminLog.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} completed research experiment {experiment.ID} on {ToPrettyString(serverUid)}.");
     }
 
     private void ApplyExperimentReward(EntityUid serverUid,
         ResearchExperimentPrototype experiment,
+        EntityUid? user,
         TechnologyDatabaseComponent database,
         ResearchServerComponent server)
     {
@@ -208,10 +200,10 @@ public sealed partial class ResearchSystem
 
         foreach (var technology in reward.RevealTechnologies)
         {
-            RevealTechnology(serverUid, technology, database);
+            RevealTechnology(serverUid, technology, user, database);
         }
 
-        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-reward-applied", ("experiment", Loc.GetString(experiment.Name))));
+        LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-reward-applied", ("experiment", Loc.GetString(experiment.Name)), ("user", GetResearchLogUserName(user))), user);
     }
 
     private bool TryIncrementExperimentProgress(TechnologyDatabaseComponent database,

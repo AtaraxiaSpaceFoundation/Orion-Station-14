@@ -76,17 +76,7 @@ public sealed class ExperimentatorSystem : EntitySystem
             return;
         }
 
-        if (!TryComp<ResearchClientComponent>(ent, out var client))
-        {
-            ent.Comp.LastSubject = string.Empty;
-            ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
-            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
-            UpdateUi(ent);
-            return;
-        }
-
-        var server = client.Server ?? _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault().Owner;
-        if (server == EntityUid.Invalid)
+        if (!TryResolveServer(ent, out var server))
         {
             ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-common-no-server");
@@ -132,15 +122,18 @@ public sealed class ExperimentatorSystem : EntitySystem
         {
             ent.Comp.LastSubject = string.Empty;
             ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-no-items");
+            _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
         }
+
+        var actor = args.Actor;
 
         ent.Comp.IsProcessing = true;
         UpdateAppearance(ent, ExperimentatorVisualState.Down);
         ent.Comp.LastSubject = string.Join(", ", scannedItems.Select(uid => Name(uid)));
         ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", scannedItems.Count));
-        _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", scannedItems.Count)));
+        _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", scannedItems.Count), ("user", _research.GetResearchLogUserName(args.Actor))), args.Actor);
         UpdateUi(ent);
 
         Timer.Spawn(ent.Comp.CapsuleStepDuration,
@@ -152,10 +145,10 @@ public sealed class ExperimentatorSystem : EntitySystem
                 UpdateAppearance(ent, ExperimentatorVisualState.Scanning);
             });
 
-        Timer.Spawn(ent.Comp.ScanDuration, () => CompleteScan(ent, server, scannedItems));
+        Timer.Spawn(ent.Comp.ScanDuration, () => CompleteScan(ent, server, scannedItems, actor));
     }
 
-    private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<EntityUid> scannedItems)
+    private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<EntityUid> scannedItems, EntityUid? user)
     {
         if (TerminatingOrDeleted(ent))
             return;
@@ -218,8 +211,28 @@ public sealed class ExperimentatorSystem : EntitySystem
                 ("completed", completedCount),
                 ("progressed", Loc.GetString(changedAny
                     ? "research-netlog-experiment-scanner-progress-yes"
-                    : "research-netlog-experiment-scanner-progress-no"))));
+                    : "research-netlog-experiment-scanner-progress-no")),
+                ("user", _research.GetResearchLogUserName(user))),
+            user);
         UpdateUi(ent);
+    }
+
+    private bool TryResolveServer(Entity<ExperimentatorComponent> ent, out EntityUid server)
+    {
+        server = EntityUid.Invalid;
+
+        if (TryComp<ResearchClientComponent>(ent, out var client) && client.Server is { } selected)
+        {
+            server = selected;
+            return true;
+        }
+
+        var fallback = _research.GetServers(ent).OrderBy(s => s.Comp.Id).FirstOrDefault();
+        if (fallback.Owner == EntityUid.Invalid)
+            return false;
+
+        server = fallback.Owner;
+        return true;
     }
 
     private void UpdateAppearance(Entity<ExperimentatorComponent> ent, ExperimentatorVisualState state)

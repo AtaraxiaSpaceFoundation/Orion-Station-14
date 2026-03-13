@@ -1,26 +1,29 @@
 research-console-unlock-technology-ic = Исследовано: { $technology }, за { $amount } очков исследований.
 research-netlog-server-joined = Сервер { $server } подключён к исследовательской сети.
 research-netlog-server-left = Сервер { $server } отключён от исследовательской сети.
-research-netlog-technology-unlocked = Исследована технология: { $technology }.
+research-netlog-technology-unlocked = { $user } исследовал(а) технологию: { $technology }.
 research-netlog-disk-imported = Импортированы данные с диска исследований ({ $count } технологий).
 research-netlog-disk-exported = Экспортированы данные на диск исследований ({ $count } технологий).
 research-netlog-disk-points-applied = Применены очки исследований с диска: { $points }.
-research-netlog-disk-printed = Напечатан технологический диск за { $points } очков.
-research-netlog-experiment-completed = Эксперимент завершён: { $experiment }.
+research-netlog-disk-printing-started = { $user } запустил(а) печать технологического диска за { $points } очков.
+research-netlog-disk-printed = { $user } завершил(а) печать технологического диска за { $points } очков.
+research-netlog-experiment-completed = { $user } завершил(а) эксперимент: { $experiment }.
 research-netlog-destructive-analyzed = Образец деструктивно проанализирован, каналов награды: { $channels }.
 research-netlog-experimentator-operation = Результат операции экспериментатора: { $result }.
 research-netlog-experimentator-result-success = успех
 research-netlog-experimentator-result-failure = неудача
 research-netlog-experimentator-result-backfire = обратный эффект
 
-research-netlog-discovery-hidden-tech = Скрытая технология раскрыта: { $technology }.
-research-netlog-server-control-generation-toggled = Генерация очков { $state } через консоль управления.
+research-netlog-discovery-hidden-tech = { $user } раскрыл(а) скрытую технологию: { $technology }.
+research-netlog-server-control-generation-toggled = { $user } переключил(а) генерацию очков: { $state } через консоль управления.
 research-netlog-server-control-state-enabled = включена
 research-netlog-server-control-state-disabled = выключена
-research-netlog-destructive-analysis-result = Деструктивный анализ завершён методом { $method } для образца { $subject }, каналов награды: { $channels }.
-research-netlog-experiment-reward-applied = Применён пайплайн награды эксперимента: { $experiment }.
+research-netlog-destructive-analysis-result = { $user } завершил(а) деструктивный анализ методом { $method } для образца { $subject }, каналов награды: { $channels }.
+research-netlog-experiment-reward-applied = { $user } применил(а) пайплайн награды эксперимента: { $experiment }.
 
-research-netlog-experiment-scanner-started = Экспериментальный деструктивный сканер запущен: образцов { $count }.
-research-netlog-experiment-scanner-result = Экспериментальный деструктивный сканер завершён: завершено экспериментов { $completed }, прогресс изменён: { $progressed }.
+research-netlog-experiment-scanner-started = { $user } запустил(а) экспериментальный деструктивный сканер: образцов { $count }.
+research-netlog-experiment-scanner-result = { $user } завершил(а) экспериментальный деструктивный сканер: завершено экспериментов { $completed }, прогресс изменён: { $progressed }.
 research-netlog-experiment-scanner-progress-yes = да
 research-netlog-experiment-scanner-progress-no = нет
+
+research-netlog-user-system = Система

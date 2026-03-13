@@ -75,7 +75,7 @@ public sealed partial class ResearchSystem
             database.RevealedTechnologies.Add(technology.ID);
             revealedAny = true;
             _sawmill.Info($"Revealed hidden technology {technology.ID} via discovery event {data.Type}.");
-            LogNetworkEvent(serverUid, "discovery", Loc.GetString("research-netlog-discovery-hidden-tech", ("technology", Loc.GetString(technology.Name))), data.User);
+            LogNetworkEvent(serverUid, "discovery", Loc.GetString("research-netlog-discovery-hidden-tech", ("technology", Loc.GetString(technology.Name)), ("user", GetResearchLogUserName(data.User))), data.User);
         }
 
         if (!revealedAny)
@@ -134,12 +134,8 @@ public sealed partial class ResearchSystem
 
         return data.Type switch
         {
-            ResearchDiscoveryEventType.MachineInsertion =>
-                technology.ItemUnlocks.Contains(subjectPrototype) ||
-                technology.RequiredItemsToUnlock.Contains(subjectPrototype),
-            ResearchDiscoveryEventType.DeconstructEntity =>
-                technology.DeconstructionUnlocks.Contains(subjectPrototype) ||
-                technology.RequiredItemsToUnlock.Contains(subjectPrototype),
+            ResearchDiscoveryEventType.MachineInsertion => technology.ItemUnlocks.Contains(subjectPrototype),
+            ResearchDiscoveryEventType.DeconstructEntity => technology.DeconstructionUnlocks.Contains(subjectPrototype),
             _ => false,
         };
     }
@@ -259,6 +255,34 @@ public sealed partial class ResearchSystem
         return 0;
     }
 
+    public List<string> GetHiddenTechnologiesForRequiredItem(EntityUid serverUid, EntityUid subject, TechnologyDatabaseComponent? database = null)
+    {
+        var result = new List<string>();
+
+        if (!Resolve(serverUid, ref database))
+            return result;
+
+        var subjectPrototype = GetPrototypeId(subject);
+        if (subjectPrototype == null)
+            return result;
+
+        foreach (var technology in PrototypeManager.EnumeratePrototypes<TechnologyPrototype>())
+        {
+            if (!technology.Hidden || !database.SupportedDisciplines.Contains(technology.Discipline))
+                continue;
+
+            if (database.RevealedTechnologies.Contains(technology.ID))
+                continue;
+
+            if (!technology.RequiredItemsToUnlock.Contains(subjectPrototype))
+                continue;
+
+            result.Add(technology.ID);
+        }
+
+        return result;
+    }
+
     private string? GetPrototypeId(EntityUid? uid)
     {
         if (uid == null || !TryComp<MetaDataComponent>(uid.Value, out var meta))
@@ -270,7 +294,20 @@ public sealed partial class ResearchSystem
     private bool TryGetResearchServerForEntity(EntityUid uid, out EntityUid? serverUid)
     {
         serverUid = null;
+
+        if (TryComp<ResearchClientComponent>(uid, out var directClient) && directClient.Server is { } directServer)
+        {
+            serverUid = directServer;
+            return true;
+        }
+
         var transform = Transform(uid);
+        if (TryComp<ResearchClientComponent>(transform.ParentUid, out var ownerClient) && ownerClient.Server is { } ownerServer)
+        {
+            serverUid = ownerServer;
+            return true;
+        }
+
         if (transform.GridUid is not { } grid)
             return false;
 

@@ -9,6 +9,8 @@
 
 using Content.Server.Research.Systems;
 using Content.Server.Research.TechnologyDisk.Components;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Popups;
 using Content.Shared.Research;
 using Content.Shared.Research.Components;
 using Content.Shared.UserInterface;
@@ -24,6 +26,8 @@ public sealed class DiskConsoleSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -46,8 +50,18 @@ public sealed class DiskConsoleSystem : EntitySystem
             if (printing.FinishTime > _timing.CurTime)
                 continue;
 
+            var disk = Spawn(console.DiskPrototype, xform.Coordinates);
+            if (printing.Actor is { } actor && !TerminatingOrDeleted(actor))
+            {
+                if (!_hands.TryPickupAnyHand(actor, disk))
+                    _popup.PopupEntity(Loc.GetString("research-disk-terminal-print-complete"), actor, actor);
+            }
+            if (printing.Server is { } server)
+            {
+                _research.LogNetworkEvent(server, "disk", Loc.GetString("research-netlog-disk-printed", ("points", printing.Price), ("user", _research.GetResearchLogUserName(printing.Actor))), printing.Actor);
+            }
+
             RemComp(uid, printing);
-            Spawn(console.DiskPrototype, xform.Coordinates);
         }
     }
 
@@ -63,11 +77,14 @@ public sealed class DiskConsoleSystem : EntitySystem
             return;
 
         _research.ModifyServerPoints(server.Value, -component.PricePerDisk, serverComp);
-        _research.LogNetworkEvent(server.Value, "disk", Loc.GetString("research-netlog-disk-printed", ("points", component.PricePerDisk)), args.Actor, serverComp);
+        _research.LogNetworkEvent(server.Value, "disk", Loc.GetString("research-netlog-disk-printing-started", ("points", component.PricePerDisk), ("user", _research.GetResearchLogUserName(args.Actor))), args.Actor, serverComp);
         _audio.PlayPvs(component.PrintSound, uid);
 
         var printing = EnsureComp<DiskConsolePrintingComponent>(uid);
         printing.FinishTime = _timing.CurTime + component.PrintDuration;
+        printing.Actor = args.Actor;
+        printing.Server = server.Value;
+        printing.Price = component.PricePerDisk;
         UpdateUserInterface(uid, component);
     }
 

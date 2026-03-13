@@ -1,26 +1,29 @@
 research-console-unlock-technology-ic = Unlocked: { $technology }, for { $amount } research points.
 research-netlog-server-joined = Server { $server } joined the research network.
 research-netlog-server-left = Server { $server } left the research network.
-research-netlog-technology-unlocked = Technology unlocked: { $technology }.
+research-netlog-technology-unlocked = { $user } unlocked technology: { $technology }.
 research-netlog-disk-imported = Imported research disk data ({ $count } technologies).
 research-netlog-disk-exported = Exported research disk data ({ $count } technologies).
 research-netlog-disk-points-applied = Applied research points from disk: { $points }.
-research-netlog-disk-printed = Printed technology disk for { $points } points.
-research-netlog-experiment-completed = Experiment completed: { $experiment }.
+research-netlog-disk-printing-started = { $user } started printing technology disk for { $points } points.
+research-netlog-disk-printed = { $user } completed printing a technology disk for { $points } points.
+research-netlog-experiment-completed = { $user } completed experiment: { $experiment }.
 research-netlog-destructive-analyzed = Sample destructively analyzed for { $channels } reward channels.
 research-netlog-experimentator-operation = Experimentator operation result: { $result }.
 research-netlog-experimentator-result-success = success
 research-netlog-experimentator-result-failure = failure
 research-netlog-experimentator-result-backfire = backfire
 
-research-netlog-discovery-hidden-tech = Hidden technology revealed: { $technology }.
-research-netlog-server-control-generation-toggled = Point generation { $state } via control console.
+research-netlog-discovery-hidden-tech = { $user } revealed hidden technology: { $technology }.
+research-netlog-server-control-generation-toggled = { $user } set point generation to { $state } via control console.
 research-netlog-server-control-state-enabled = enabled
 research-netlog-server-control-state-disabled = disabled
-research-netlog-destructive-analysis-result = Destructive analysis completed by method { $method } for sample { $subject }, reward channels: { $channels }.
-research-netlog-experiment-reward-applied = Experiment reward pipeline applied: { $experiment }.
+research-netlog-destructive-analysis-result = { $user } completed destructive analysis by method { $method } for sample { $subject }, reward channels: { $channels }.
+research-netlog-experiment-reward-applied = { $user } applied experiment reward pipeline: { $experiment }.
 
-research-netlog-experiment-scanner-started = Experimental destructive scanner started: { $count } sample(s).
-research-netlog-experiment-scanner-result = Experimental destructive scanner completed: experiments finished { $completed }, progress changed: { $progressed }.
+research-netlog-experiment-scanner-started = { $user } started experimental destructive scanner: { $count } sample(s).
+research-netlog-experiment-scanner-result = { $user } completed experimental destructive scanner: experiments finished { $completed }, progress changed: { $progressed }.
 research-netlog-experiment-scanner-progress-yes = yes
 research-netlog-experiment-scanner-progress-no = no
+
+research-netlog-user-system = System

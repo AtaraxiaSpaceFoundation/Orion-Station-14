@@ -376,6 +376,16 @@ public sealed partial class ResearchSystem
             .FirstOrDefault(uid);
     }
 
+    public string GetResearchLogUserName(EntityUid? user)
+    {
+        if (user is not { } uid)
+            return Loc.GetString("research-netlog-user-system");
+
+        return TryComp<MetaDataComponent>(uid, out var meta)
+            ? meta.EntityName
+            : ToPrettyString(uid);
+    }
+
     public void LogNetworkEvent(EntityUid uid, string category, string message, EntityUid? actor = null, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
