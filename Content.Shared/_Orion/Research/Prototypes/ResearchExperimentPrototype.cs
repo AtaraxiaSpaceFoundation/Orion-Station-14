@@ -100,10 +100,36 @@ public partial record ScanEntityExperimentObjective : ExperimentObjective
     [DataField]
     public List<string> RequiredComponents = new();
 
+    [DataField]
+    public List<ExperimentEntityCondition> RequiredConditions = new();
+
+    [DataField]
+    public string? RequiredReagent;
+
+    [DataField]
+    public bool RequirePureReagent;
+
+    [DataField]
+    public string? RequiredGas;
+
+    [DataField]
+    public bool RequirePureGas;
+
     public ScanEntityExperimentObjective()
     {
         Kind = ExperimentObjectiveKind.ScanEntity;
     }
+}
+
+[Serializable, NetSerializable]
+public enum ExperimentEntityCondition : byte
+{
+    AnyFish,
+    RareFish,
+    IpcOrCyborg,
+    HasAugmentedOrgans,
+    NonBaselineHumanoid,
+    Damaged,
 }
 
 [DataDefinition, Serializable, NetSerializable]

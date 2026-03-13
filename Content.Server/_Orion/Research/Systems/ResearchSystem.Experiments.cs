@@ -1,7 +1,18 @@
+using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.Fishing.Components;
 using Content.Server.Research.Components;
+using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Prototypes;
+using Content.Shared.Atmos;
+using Content.Shared.Atmos.Piping.Unary.Components;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
+using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Content.Shared.Tag;
@@ -11,6 +22,8 @@ namespace Content.Server.Research.Systems;
 public sealed partial class ResearchSystem
 {
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
 
     private void InitializeExperiments()
     {
@@ -296,7 +309,118 @@ public sealed partial class ResearchSystem
                 return false;
         }
 
+        if (!MatchesReagentObjective(subject, objective))
+            return false;
+
+        if (!MatchesGasObjective(subject, objective))
+            return false;
+
+        foreach (var condition in objective.RequiredConditions)
+        {
+            if (!MatchesEntityCondition(subject, condition))
+                return false;
+        }
+
         return true;
+    }
+
+    private bool MatchesReagentObjective(EntityUid subject, ScanEntityExperimentObjective objective)
+    {
+        if (string.IsNullOrWhiteSpace(objective.RequiredReagent))
+            return true;
+
+        if (!TryComp<SolutionContainerManagerComponent>(subject, out var solutionComp))
+            return false;
+
+        var required = FixedPoint2.Zero;
+        var other = FixedPoint2.Zero;
+
+        foreach (var (_, solution) in _solution.EnumerateSolutions((subject, solutionComp), includeSelf: true))
+        {
+            foreach (var reagent in solution.Comp.Solution.Contents)
+            {
+                if (reagent.Reagent.Prototype == objective.RequiredReagent)
+                    required += reagent.Quantity;
+                else
+                    other += reagent.Quantity;
+            }
+        }
+
+        if (required <= FixedPoint2.Zero)
+            return false;
+
+        return !objective.RequirePureReagent || other <= FixedPoint2.Zero;
+    }
+
+    private bool MatchesGasObjective(EntityUid subject, ScanEntityExperimentObjective objective)
+    {
+        if (string.IsNullOrWhiteSpace(objective.RequiredGas))
+            return true;
+
+        if (!Enum.TryParse<Gas>(objective.RequiredGas, true, out var gas))
+            return false;
+
+        if (!TryComp<GasCanisterComponent>(subject, out var canister))
+            return false;
+
+        var requiredMoles = canister.Air.GetMoles(gas);
+        if (requiredMoles <= 0f)
+            return false;
+
+        if (!objective.RequirePureGas)
+            return true;
+
+        const float epsilon = 0.0001f;
+        return Math.Abs(canister.Air.TotalMoles - requiredMoles) <= epsilon;
+    }
+
+    private bool MatchesEntityCondition(EntityUid subject, ExperimentEntityCondition condition)
+    {
+        return condition switch
+        {
+            ExperimentEntityCondition.AnyFish => HasComp<FishComponent>(subject),
+            ExperimentEntityCondition.RareFish => TryComp<FishComponent>(subject, out var fish) && fish.FishDifficulty >= 0.035f,
+            ExperimentEntityCondition.IpcOrCyborg => IsIpcOrCyborg(subject),
+            ExperimentEntityCondition.HasAugmentedOrgans => HasAugmentedOrgans(subject),
+            ExperimentEntityCondition.NonBaselineHumanoid => IsNonBaselineHumanoid(subject),
+            ExperimentEntityCondition.Damaged => TryComp<DamageableComponent>(subject, out var damageable) && damageable.TotalDamage > FixedPoint2.Zero,
+            _ => false,
+        };
+    }
+
+    private bool IsIpcOrCyborg(EntityUid subject)
+    {
+        if (HasComp<SiliconComponent>(subject))
+            return true;
+
+        return TryComp<HumanoidAppearanceComponent>(subject, out var humanoid) && humanoid.Species == "IPC";
+    }
+
+    private bool IsNonBaselineHumanoid(EntityUid subject)
+    {
+        return TryComp<HumanoidAppearanceComponent>(subject, out var humanoid)
+               && humanoid.Species != "Human"
+               && humanoid.Species != "IPC";
+    }
+
+    private bool HasAugmentedOrgans(EntityUid subject)
+    {
+        if (!TryComp<HumanoidAppearanceComponent>(subject, out _))
+            return false;
+
+        if (!TryComp<BodyComponent>(subject, out var body))
+            return false;
+
+        foreach (var (organUid, _) in _body.GetBodyOrgans(subject, body))
+        {
+            if (!TryComp<MetaDataComponent>(organUid, out var organMeta) || organMeta.EntityPrototype == null)
+                continue;
+
+            if (!organMeta.EntityPrototype.ID.StartsWith("OrganHuman", StringComparison.Ordinal))
+                return true;
+        }
+
+        return false;
     }
 
     private static bool TryGetExperimentProgress(TechnologyDatabaseComponent database, string experimentId, out int progressIndex)
