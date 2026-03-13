@@ -5,6 +5,7 @@ using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
@@ -360,10 +361,16 @@ public sealed partial class ResearchSystem
         if (!Enum.TryParse<Gas>(objective.RequiredGas, true, out var gas))
             return false;
 
-        if (!TryComp<GasCanisterComponent>(subject, out var canister))
+        var gasMix = TryComp<GasCanisterComponent>(subject, out var canister)
+            ? canister.Air
+            : TryComp<GasTankComponent>(subject, out var tank)
+                ? tank.Air
+                : null;
+
+        if (gasMix == null)
             return false;
 
-        var requiredMoles = canister.Air.GetMoles(gas);
+        var requiredMoles = gasMix.GetMoles(gas);
         if (requiredMoles <= 0f)
             return false;
 
@@ -371,7 +378,7 @@ public sealed partial class ResearchSystem
             return true;
 
         const float epsilon = 0.0001f;
-        return Math.Abs(canister.Air.TotalMoles - requiredMoles) <= epsilon;
+        return Math.Abs(gasMix.TotalMoles - requiredMoles) <= epsilon;
     }
 
     private bool MatchesEntityCondition(EntityUid subject, ExperimentEntityCondition condition)

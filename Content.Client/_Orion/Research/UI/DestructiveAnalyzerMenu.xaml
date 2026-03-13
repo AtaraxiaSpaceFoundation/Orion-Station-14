@@ -1,4 +1,5 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
                       Title="{Loc 'research-machine-destructive-window-title'}"
                       SetSize="580 470"
@@ -23,7 +24,15 @@
                 <controls:StripeBack>
                     <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
                 </controls:StripeBack>
-                <RichTextLabel Name="LastOperationLabel"/>
+                <PanelContainer>
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#23232A" BorderThickness="1" BorderColor="#4A4A56"/>
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="2">
+                        <Label Name="LastSubjectLabel" ClipText="True"/>
+                        <Label Name="LastResultLabel" ClipText="True"/>
+                    </BoxContainer>
+                </PanelContainer>
             </BoxContainer>
         </PanelContainer>
     </BoxContainer>

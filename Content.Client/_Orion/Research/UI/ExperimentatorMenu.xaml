@@ -1,4 +1,5 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
                       Title="{Loc 'research-machine-experimentator-window-title'}"
                       SetSize="700 540"
@@ -16,16 +17,27 @@
                     <Label Name="InsertedItemLabel"/>
                     <Button Name="PerformButton" Text="{Loc 'research-machine-experimentator-perform'}"/>
                     <controls:StripeBack>
-                        <Label Text="{Loc 'research-machine-experimentator-requirements-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
+                        <Label Text="{Loc 'research-machine-experimentator-requirements-title'}" StyleClasses="LabelSubText" Margin="6 2" ClipText="True"/>
                     </controls:StripeBack>
-                    <PanelContainer>
-                        <RichTextLabel Name="OperationsLabel" Margin="6"/>
+                    <PanelContainer MinHeight="180" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#23232A" BorderThickness="1" BorderColor="#4A4A56"/>
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                            <BoxContainer Name="OperationsContainer"
+                                          Orientation="Vertical"
+                                          Margin="6"
+                                          SeparationOverride="4"
+                                          HorizontalExpand="True"/>
+                        </ScrollContainer>
                     </PanelContainer>
 
                     <controls:StripeBack>
-                        <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2"/>
+                        <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2" ClipText="True"/>
                     </controls:StripeBack>
-                    <RichTextLabel Name="LastOperationLabel"/>
+                    <PanelContainer>
+                        <RichTextLabel Name="LastOperationLabel" Margin="6"/>
+                    </PanelContainer>
                 </BoxContainer>
             </ScrollContainer>
         </PanelContainer>

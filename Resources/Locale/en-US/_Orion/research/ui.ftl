@@ -26,3 +26,19 @@ research-log-category-discovery = Discovery
 research-log-category-server-control = Server control
 
 research-console-unlock-failed-popup = Cannot research this technology yet.
+research-console-experiments-title = Experiments
+research-console-experiments-empty = No experiments available.
+research-console-experiment-state-unavailable = Unavailable
+research-console-experiment-state-available = Available
+research-console-experiment-state-active = Active
+research-console-experiment-state-completed = Completed
+research-console-experiment-state-skipped = Skipped
+
+research-console-experiment-reward-none = No direct reward
+research-console-experiment-reward-points = {$type} points: {$amount}
+research-console-experiment-reward-flat-discount = Discount on technologies: {$amount}
+research-console-experiment-reward-percent-discount = Discount on technologies: {$percent}%
+research-console-experiment-reward-unlock-experiments = Unlocks experiments: {$count}
+research-console-experiment-reward-reveal-technologies = Reveals technologies: {$count}
+research-console-experiment-reward-technology-discounts = Technology discounts: {$count} (total {$amount})
+research-console-experiment-reward-infrastructure = Infrastructure unlock

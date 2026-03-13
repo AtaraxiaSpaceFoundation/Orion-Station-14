@@ -26,3 +26,19 @@ research-log-category-discovery = Открытие
 research-log-category-server-control = Управление
 
 research-console-unlock-failed-popup = Невозможно исследовать эту технологию.
+research-console-experiments-title = Эксперименты
+research-console-experiments-empty = Нет доступных экспериментов.
+research-console-experiment-state-unavailable = Недоступен
+research-console-experiment-state-available = Доступен
+research-console-experiment-state-active = Активен
+research-console-experiment-state-completed = Завершён
+research-console-experiment-state-skipped = Пропущен
+
+research-console-experiment-reward-none = Награда отсутствует
+research-console-experiment-reward-points = Очки {$type}: {$amount}
+research-console-experiment-reward-flat-discount = Скидка на технологии: {$amount}
+research-console-experiment-reward-percent-discount = Скидка на технологии: {$percent}%
+research-console-experiment-reward-unlock-experiments = Открывает эксперименты: {$count}
+research-console-experiment-reward-reveal-technologies = Открывает технологии: {$count}
+research-console-experiment-reward-technology-discounts = Скидки на технологии: {$count} (суммарно {$amount})
+research-console-experiment-reward-infrastructure = Инфраструктурное улучшение
