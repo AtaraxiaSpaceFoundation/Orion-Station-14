@@ -381,7 +381,7 @@ public sealed partial class ResearchSystem
         if (user is not { } uid)
             return Loc.GetString("research-netlog-user-system");
 
-        return TryComp<MetaDataComponent>(uid, out var meta)
+        return TryComp(uid, out MetaDataComponent? meta)
             ? meta.EntityName
             : ToPrettyString(uid);
     }
@@ -438,7 +438,11 @@ public sealed partial class ResearchSystem
         var generation = GetPointGenerationPerSecond(uid, component);
         var points = generation.Sum(x => x.Amount);
         var typePoints = string.Join(", ",
-            generation.Select(x => $"{x.Type}: {x.Amount}"));
+            generation
+                .OrderBy(x => x.Type)
+                .Select(x => Loc.GetString("research-server-examine-type-entry",
+                    ("type", LocalizePointType(x.Type)),
+                    ("amount", x.Amount))));
 
         var msg = Loc.GetString("research-server-examine",
             ("name", component.ServerName),
@@ -448,6 +452,12 @@ public sealed partial class ResearchSystem
             msg += "\n" + typePoints;
 
         args.PushMarkup(msg);
+    }
+
+    private string LocalizePointType(string type)
+    {
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : type;
     }
     // Orion-End
 }
