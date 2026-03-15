@@ -115,6 +115,9 @@ public partial record ScanEntityExperimentObjective : ExperimentObjective
     [DataField]
     public bool RequirePureGas;
 
+    [DataField]
+    public float? MinExplosiveIntensity;
+
     public ScanEntityExperimentObjective()
     {
         Kind = ExperimentObjectiveKind.ScanEntity;

@@ -13,6 +13,7 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.Explosion.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
@@ -316,6 +317,9 @@ public sealed partial class ResearchSystem
         if (!MatchesGasObjective(subject, objective))
             return false;
 
+        if (!MatchesExplosiveObjective(subject, objective))
+            return false;
+
         foreach (var condition in objective.RequiredConditions)
         {
             if (!MatchesEntityCondition(subject, condition))
@@ -323,6 +327,14 @@ public sealed partial class ResearchSystem
         }
 
         return true;
+    }
+
+    private bool MatchesExplosiveObjective(EntityUid subject, ScanEntityExperimentObjective objective)
+    {
+        if (objective.MinExplosiveIntensity is not { } minIntensity)
+            return true;
+
+        return TryComp<ExplosiveComponent>(subject, out var explosive) && explosive.TotalIntensity >= minIntensity;
     }
 
     private bool MatchesReagentObjective(EntityUid subject, ScanEntityExperimentObjective objective)

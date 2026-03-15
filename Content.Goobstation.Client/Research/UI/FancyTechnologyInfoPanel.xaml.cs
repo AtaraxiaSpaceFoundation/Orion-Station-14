@@ -83,25 +83,21 @@ public sealed partial class FancyTechnologyInfoPanel : Control
 
     private void InitializePrerequisites(TechnologyPrototype proto, ResearchSystem research, SpriteSystem sprite, ResearchTechnologyLockReason lockReason, IPrototypeManager prototype)
     {
-        var hasAnyRequirements = proto.TechnologyPrerequisites.Count > 0 || proto.RequiredExperiments.Count > 0;
-        NoPrereqLabel.Visible = !hasAnyRequirements;
-        PrereqsContainer.Visible = hasAnyRequirements;
-
         RequiredExperimentsContainer.RemoveAllChildren();
+        var hasRequiredExperiments = false;
         foreach (var experimentId in proto.RequiredExperiments)
         {
             if (!prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
                 continue;
 
-            RequiredExperimentsContainer.AddChild(new Label
-            {
-                Text = $"• {Loc.GetString(experiment.Name)}",
-                ClipText = false,
-                HorizontalExpand = true,
-            });
+            var experimentLabel = new RichTextLabel { };
+
+            experimentLabel.SetMessage($"• {Loc.GetString(experiment.Name)}");
+            RequiredExperimentsContainer.AddChild(experimentLabel);
+            hasRequiredExperiments = true;
         }
 
-        if (lockReason == ResearchTechnologyLockReason.MissingExperiments && proto.RequiredExperiments.Count > 0)
+        if (lockReason == ResearchTechnologyLockReason.MissingExperiments && hasRequiredExperiments)
         {
             MissingExperimentsLabel.Visible = true;
             var warningMessage = new FormattedMessage();
@@ -114,20 +110,27 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             MissingExperimentsLabel.SetMessage(string.Empty);
         }
 
-        RequiredExperimentsBlock.Visible = proto.RequiredExperiments.Count > 0;
+        RequiredExperimentsBlock.Visible = hasRequiredExperiments;
 
         RequiredTechContainer.RemoveAllChildren();
+        var hasRequiredTechnologies = false;
         foreach (var techId in proto.TechnologyPrerequisites)
         {
-            var tech = _proto.Index(techId);
+            if (!_proto.TryIndex(techId, out var tech))
+                continue;
+
             var description = research.GetTechnologyDescription(tech, true, false, true);
             RequiredTechContainer.AddChild(new MiniTechnologyCardControl(tech, _proto, sprite, description));
+            hasRequiredTechnologies = true;
         }
 
-        var hasRequiredTechnologies = proto.TechnologyPrerequisites.Count > 0;
         RequiredTechnologiesBlock.Visible = hasRequiredTechnologies;
         RequiredTechnologiesTitle.Visible = hasRequiredTechnologies;
         RequiredTechnologiesSeparator.Visible = hasRequiredTechnologies;
+
+        var hasAnyRequirements = hasRequiredExperiments || hasRequiredTechnologies;
+        NoPrereqLabel.Visible = !hasAnyRequirements;
+        PrereqsContainer.Visible = hasAnyRequirements;
     }
 
     private string LocalizePointType(string type)

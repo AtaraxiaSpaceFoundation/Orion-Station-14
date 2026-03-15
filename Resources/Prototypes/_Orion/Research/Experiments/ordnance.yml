@@ -4,7 +4,9 @@
   description: research-experiment-ordnance-explosive-highyieldbomb-desc
   category: Ordnance
   objective: !type:PresentItemExperimentObjective
-    requiredEntityPrototype: SeismicCharge
+    requiredComponents:
+    - Explosive
+    minExplosiveIntensity: 5
   reward: {}
 
 - type: researchExperiment
@@ -13,7 +15,8 @@
   description: research-experiment-ordnance-explosive-lowyieldbomb-desc
   category: Ordnance
   objective: !type:PresentItemExperimentObjective
-    requiredEntityPrototype: PipeBomb
+    requiredComponents:
+    - Explosive
   reward: {}
 
 - type: researchExperiment
