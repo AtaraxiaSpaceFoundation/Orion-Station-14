@@ -85,18 +85,19 @@ public sealed partial class FancyTechnologyInfoPanel : Control
     {
         RequiredExperimentsContainer.RemoveAllChildren();
         var hasRequiredExperiments = false;
+
         foreach (var experimentId in proto.RequiredExperiments)
         {
             if (!prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
                 continue;
 
-            var experimentLabel = new Label
+            var experimentLabel = new RichTextLabel
             {
-                Text = $"• {Loc.GetString(experiment.Name)}",
                 HorizontalExpand = true,
-                ClipText = true,
+                MaxWidth = 400,
             };
 
+            experimentLabel.SetMessage($"• {Loc.GetString(experiment.Name)}");
             RequiredExperimentsContainer.AddChild(experimentLabel);
             hasRequiredExperiments = true;
         }
