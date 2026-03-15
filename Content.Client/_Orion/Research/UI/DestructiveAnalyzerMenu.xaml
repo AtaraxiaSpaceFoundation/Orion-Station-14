@@ -29,8 +29,8 @@
                         <gfx:StyleBoxFlat BackgroundColor="#23232A" BorderThickness="1" BorderColor="#4A4A56"/>
                     </PanelContainer.PanelOverride>
                     <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="2">
-                        <Label Name="LastSubjectLabel" ClipText="True"/>
-                        <Label Name="LastResultLabel" ClipText="True"/>
+                        <RichTextLabel Name="LastSubjectLabel" HorizontalExpand="True"/>
+                        <RichTextLabel Name="LastResultLabel" HorizontalExpand="True"/>
                     </BoxContainer>
                 </PanelContainer>
             </BoxContainer>

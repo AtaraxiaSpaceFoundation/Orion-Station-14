@@ -12,7 +12,7 @@ public sealed partial class ExperimentatorComponent : Component
     public TimeSpan ScanDuration = TimeSpan.FromSeconds(3.5f);
 
     [DataField]
-    public TimeSpan CapsuleStepDuration = TimeSpan.FromSeconds(1.2f);
+    public TimeSpan CapsuleStepDuration = TimeSpan.FromSeconds(1.15f);
 
     public bool IsProcessing;
 

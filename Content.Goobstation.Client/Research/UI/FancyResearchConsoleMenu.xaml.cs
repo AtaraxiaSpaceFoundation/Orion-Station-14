@@ -286,6 +286,12 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
             MaxWidth = 540,
         };
 
+        var rewardLabel = new RichTextLabel
+        {
+            HorizontalExpand = true,
+            MaxWidth = 540,
+        };
+
         var content = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
@@ -305,19 +311,18 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
                     Text = $"{experiment.Progress}/{experiment.Target}",
                     Modulate = Color.LightGray,
                 },
-                new Label
-                {
-                    Text = rewardText,
-                    Modulate = Color.LightGreen,
-                    ClipText = false,
-                    HorizontalExpand = true,
-                },
+
+                rewardLabel,
             },
         };
 
         var stateMessage = new FormattedMessage();
         stateMessage.AddMarkupOrThrow($"[color=lightblue]{FormattedMessage.EscapeText(stateText)}[/color]");
         stateLabel.SetMessage(stateMessage);
+
+        var rewardMessage = new FormattedMessage();
+        rewardMessage.AddMarkupOrThrow($"[color=lightgreen]{FormattedMessage.EscapeText(rewardText)}[/color]");
+        rewardLabel.SetMessage(rewardMessage);
 
         return new PanelContainer
         {
@@ -352,22 +357,21 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         if (reward.PercentageDiscount > 0)
             parts.Add(Loc.GetString("research-console-experiment-reward-percent-discount", ("percent", MathF.Round(reward.PercentageDiscount * 100f, 1))));
 
-        var discountedTechCount = 0;
-        var totalDiscountAmount = 0;
+        var discountedTechnologies = new List<string>();
         foreach (var technology in _prototype.EnumeratePrototypes<TechnologyPrototype>())
         {
             if (!technology.DiscountExperimentCosts.TryGetValue(experiment.ID, out var discount) || discount <= 0)
                 continue;
 
-            discountedTechCount++;
-            totalDiscountAmount += discount;
+            discountedTechnologies.Add(Loc.GetString("research-console-experiment-reward-technology-discount-entry",
+                ("technology", Loc.GetString(technology.Name)),
+                ("amount", discount)));
         }
 
-        if (discountedTechCount > 0)
+        if (discountedTechnologies.Count > 0)
         {
             parts.Add(Loc.GetString("research-console-experiment-reward-technology-discounts",
-                ("count", discountedTechCount),
-                ("amount", totalDiscountAmount)));
+                ("technologies", string.Join(", ", discountedTechnologies))));
         }
 
         if (reward.UnlockExperiments.Count > 0)
@@ -375,6 +379,21 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
         if (reward.RevealTechnologies.Count > 0)
             parts.Add(Loc.GetString("research-console-experiment-reward-reveal-technologies", ("count", reward.RevealTechnologies.Count)));
+
+        var technologiesUnlockedByCompletion = new List<string>();
+        foreach (var technology in _prototype.EnumeratePrototypes<TechnologyPrototype>())
+        {
+            if (!technology.RequiredExperiments.Contains(experiment.ID))
+                continue;
+
+            technologiesUnlockedByCompletion.Add(Loc.GetString(technology.Name));
+        }
+
+        if (technologiesUnlockedByCompletion.Count > 0)
+        {
+            parts.Add(Loc.GetString("research-console-experiment-reward-unlocked-technologies",
+                ("technologies", string.Join(", ", technologiesUnlockedByCompletion))));
+        }
 
         if (reward.InfrastructureUnlock)
             parts.Add(Loc.GetString("research-console-experiment-reward-infrastructure"));

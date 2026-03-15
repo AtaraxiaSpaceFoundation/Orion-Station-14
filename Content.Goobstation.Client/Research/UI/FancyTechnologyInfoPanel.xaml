@@ -90,9 +90,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     </PanelContainer>
                     <RichTextLabel Name="MissingExperimentsLabel" Visible="False"/>
                 </BoxContainer>
-                <customControls:HSeparator StyleClasses="LowDivider"
-                        Margin="0 0 0 10"/>
-                <Label Text="{Loc 'research-console-tech-required-technologies-title'}"
+                <customControls:HSeparator Name="RequiredTechnologiesSeparator" StyleClasses="LowDivider"
+                                           Margin="0 0 0 10"/>
+                <Label Name="RequiredTechnologiesTitle"
+                       Text="{Loc 'research-console-tech-required-technologies-title'}"
                        HorizontalAlignment="Center"
                        Margin="0 0 0 4"/>
                 <BoxContainer Name="RequiredTechnologiesBlock"

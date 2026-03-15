@@ -8,7 +8,7 @@ research-netlog-disk-points-applied = Применены очки исследо
 research-netlog-disk-printing-started = { $user } запустил(а) печать технологического диска за { $points } очков.
 research-netlog-disk-printed = { $user } завершил(а) печать технологического диска за { $points } очков.
 research-netlog-experiment-completed = { $user } завершил(а) эксперимент: { $experiment }.
-research-netlog-destructive-analyzed = Образец деструктивно проанализирован, каналов награды: { $channels }.
+research-netlog-destructive-analyzed = Образец деструктивно проанализирован, награда применена.
 research-netlog-experimentator-operation = Результат операции экспериментатора: { $result }.
 research-netlog-experimentator-result-success = успех
 research-netlog-experimentator-result-failure = неудача
@@ -18,7 +18,7 @@ research-netlog-discovery-hidden-tech = { $user } раскрыл(а) скрыт�
 research-netlog-server-control-generation-toggled = { $user } переключил(а) генерацию очков: { $state } через консоль управления.
 research-netlog-server-control-state-enabled = включена
 research-netlog-server-control-state-disabled = выключена
-research-netlog-destructive-analysis-result = { $user } завершил(а) деструктивный анализ методом { $method } для образца { $subject }, каналов награды: { $channels }.
+research-netlog-destructive-analysis-result = { $user } завершил(а) деструктивный анализ методом { $method } для образца { $subject }, результат: { $result }.
 research-netlog-experiment-reward-applied = { $user } применил(а) пайплайн награды эксперимента: { $experiment }.
 
 research-netlog-experiment-scanner-started = { $user } запустил(а) экспериментальный деструктивный сканер: образцов { $count }.

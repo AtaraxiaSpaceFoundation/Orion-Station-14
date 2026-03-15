@@ -26,7 +26,11 @@ public sealed class ResearchesContainerPanel : LayoutContainer
 
     protected override void Draw(DrawingHandleScreen handle)
     {
-        var items = Children.OfType<FancyResearchConsoleItem>().ToDictionary(x => x.Prototype.ID, x => x);
+        var items = new Dictionary<string, FancyResearchConsoleItem>();
+        foreach (var child in Children.OfType<FancyResearchConsoleItem>())
+        {
+            items.TryAdd(child.Prototype.ID, child);
+        }
 
         foreach (var item in items.Values)
         {

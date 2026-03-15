@@ -13,8 +13,8 @@ research-machine-common-no-server = Операция не выполнена: н
 research-machine-destructive-window-title = Деструктивный анализатор
 research-machine-destructive-requirements-title = Требования
 research-machine-destructive-requirements-line-1 = • Принимает только исследуемые образцы.
-research-machine-destructive-requirements-line-2 = • Образец должен содержать канал(ы) награды исследований.
-research-machine-destructive-last-result-success = Образец обработан успешно, каналов награды: {$channels}.
+research-machine-destructive-requirements-line-2 = • Образец должен давать исследовательскую награду.
+research-machine-destructive-last-result-success = Образец обработан успешно: { $result }.
 research-machine-destructive-last-result-invalid-item = Предмет не подходит для деструктивного анализа.
 
 research-machine-experimentator-window-title = Экспериментальный деструктивный сканер
@@ -37,7 +37,11 @@ research-machine-experimentator-no-item = Образец не вставлен.
 research-machine-experimentator-already-scanned = Этот образец уже сканировался.
 research-machine-experimentator-no-matching-experiment = Нет активного эксперимента для этого образца.
 research-machine-experimentator-progressed = Прогресс задачи обновлён.
-research-machine-experimentator-completed = Эксперимент(ы) завершены: {$count}.
+research-machine-experimentator-completed = { $count ->
+    [one] Завершён { $count } эксперимент.
+    [few] Завершено { $count } эксперимента.
+   *[many] Завершено { $count } экспериментов.
+}
 research-machine-destructive-run = Запустить анализ
 research-machine-eject-button = Извлечь предмет
 research-machine-destructive-item-loaded = Образец загружен.
@@ -54,7 +58,11 @@ research-experiment-objective-debugmanual = Вручную
 
 research-machine-experiment-scanner-no-items = На тайле сканера не обнаружено предметов.
 research-machine-experiment-scanner-busy = Сканер уже обрабатывает образцы.
-research-machine-experiment-scanner-processing = Сканер закрылся и начал обработку { $count } образца(ов).
+research-machine-experiment-scanner-processing = { $count ->
+    [one] Сканер закрылся и начал обработку { $count } образца.
+    [few] Сканер закрылся и начал обработку { $count } образца.
+   *[many] Сканер закрылся и начал обработку { $count } образцов.
+}
 research-machine-experiment-scanner-state-processing = обработка...
 research-machine-experiment-scanner-status = Статус
 
@@ -69,3 +77,12 @@ research-machine-experiment-progress = { $objective }: { $progress }/{ $target }
 
 research-machine-destructive-method-reveal-technology = Раскрыть технологию: { $technology }
 research-machine-destructive-method-unknown = Неизвестный метод
+
+research-machine-destructive-chat-result = Результат деструктивного анализа: { $result }
+research-machine-destructive-result-generic = награда применена к сети исследований
+research-machine-destructive-result-points = начислены очки: { $points }
+research-machine-destructive-result-points-entry = { $type} { $amount }
+research-machine-destructive-result-revealed-tech = раскрыта технология: { $technology }
+research-machine-destructive-result-unlocked-tech = открыта технология: { $technology }
+
+research-machine-experiment-scanner-chat-result = Результат экспериментального сканера: { $result }

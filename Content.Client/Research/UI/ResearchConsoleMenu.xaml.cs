@@ -82,7 +82,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
 
     private string GetLogActorSuffix(ResearchLogEntry log)
     {
-        if (log.Actor is not { } actor || !_entity.TryGetEntity(actor, out var uid) || !_entity.TryGetComponent<MetaDataComponent>(uid, out var meta))
+        if (log.Actor is not { } actor || !_entity.TryGetEntity(actor, out var uid) || !_entity.TryGetComponent(uid, out MetaDataComponent? meta))
             return string.Empty;
 
         return $" [color=#8CB6FF]({FormattedMessage.EscapeText(meta.EntityName)})[/color]";

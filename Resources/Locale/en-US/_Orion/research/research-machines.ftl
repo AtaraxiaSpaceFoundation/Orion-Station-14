@@ -13,8 +13,8 @@ research-machine-common-no-server = Operation failed: no R&D server connection.
 research-machine-destructive-window-title = Destructive Analyzer
 research-machine-destructive-requirements-title = Requirements
 research-machine-destructive-requirements-line-1 = • Accepts only researchable samples.
-research-machine-destructive-requirements-line-2 = • The sample must include at least one research reward channel.
-research-machine-destructive-last-result-success = Sample processed successfully, reward channels: {$channels}.
+research-machine-destructive-requirements-line-2 = • The sample must provide a research reward.
+research-machine-destructive-last-result-success = Sample processed successfully: { $result }.
 research-machine-destructive-last-result-invalid-item = The item is not suitable for destructive analysis.
 
 research-machine-experimentator-window-title = Experimental Destructive Scanner
@@ -69,3 +69,12 @@ research-machine-experiment-progress = { $objective }: { $progress }/{ $target }
 
 research-machine-destructive-method-reveal-technology = Reveal technology: { $technology }
 research-machine-destructive-method-unknown = Unknown method
+
+research-machine-destructive-chat-result = Destructive analysis result: { $result }
+research-machine-destructive-result-generic = reward applied to the research network
+research-machine-destructive-result-points = points granted: { $points }
+research-machine-destructive-result-points-entry = { $type} { $amount }
+research-machine-destructive-result-revealed-tech = technology revealed: { $technology }
+research-machine-destructive-result-unlocked-tech = technology unlocked: { $technology }
+
+research-machine-experiment-scanner-chat-result = Experimental scanner result: { $result }

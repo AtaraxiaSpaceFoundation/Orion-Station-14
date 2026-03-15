@@ -1,8 +1,10 @@
 using System.Linq;
+using Content.Server.Chat.Systems;
 using Content.Server.Research.Systems;
 using Content.Shared._Orion.Research;
 using Content.Shared.Popups;
 using Content.Shared._Orion.Research.Components;
+using Content.Shared.Chat;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs;
@@ -29,6 +31,8 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly ILocalizationManager _loc = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -56,7 +60,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
     private void OnOpenServerMenu(Entity<DestructiveAnalyzerComponent> ent, ref OpenResearchServerMenuMessage args)
     {
-        RaiseLocalEvent(ent.Owner, new ConsoleServerSelectionMessage(), true);
+        _ui.TryToggleUi(ent.Owner, ResearchClientUiKey.Key, args.Actor);
     }
 
     private void OnPointsChanged(Entity<DestructiveAnalyzerComponent> ent, ref ResearchServerPointsChangedEvent args)
@@ -163,15 +167,15 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return;
         }
 
-        int rewardChannels;
+        string rewardSummary;
         if (TryComp<ResearchAnalyzableComponent>(used, out var analyzable))
         {
-            if (!TryRunAnalyzableMethod(ent, used, server, analyzable, args.Actor, out rewardChannels))
+            if (!TryRunAnalyzableMethod(ent, used, server, analyzable, args.Actor, out rewardSummary))
                 return;
         }
         else
         {
-            if (!TryRunDiscoveryRevealMethod(ent, used, server, args.Actor, out rewardChannels))
+            if (!TryRunDiscoveryRevealMethod(ent, used, server, args.Actor, out rewardSummary))
                 return;
         }
 
@@ -181,7 +185,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         UpdateUi(ent);
 
         Timer.Spawn(ent.Comp.DeconstructAnimationDuration,
-            () => CompleteAnalysis(ent, used, rewardChannels));
+            () => CompleteAnalysis(ent, used, rewardSummary));
     }
 
     private bool TryRunAnalyzableMethod(Entity<DestructiveAnalyzerComponent> ent,
@@ -189,9 +193,9 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         EntityUid server,
         ResearchAnalyzableComponent analyzable,
         EntityUid actor,
-        out int rewardChannels)
+        out string rewardSummary)
     {
-        rewardChannels = 0;
+        rewardSummary = string.Empty;
         var methods = GetAvailableMethods(analyzable);
         var method = ent.Comp.SelectedMethod;
         if (string.IsNullOrWhiteSpace(method) || !methods.Contains(method))
@@ -207,8 +211,6 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             UpdateUi(ent);
             return false;
         }
-
-        rewardChannels = rewards.Count;
 
         var stackMultiplier = 1;
         if (TryComp<StackComponent>(used, out var stack))
@@ -237,21 +239,23 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         if (!string.IsNullOrWhiteSpace(analyzable.DiscoveryTrigger))
             _research.TriggerDiscovery(server, analyzable.DiscoveryTrigger!);
 
+        rewardSummary = BuildAnalyzableRewardSummary(rewards, stackMultiplier, analyzable);
+
         _research.LogNetworkEvent(server,
             "destructive-analyzer",
             Loc.GetString("research-netlog-destructive-analysis-result",
                 ("method", LocalizeMethod(method)),
-                ("channels", rewards.Count),
                 ("subject", Name(used)),
+                ("result", rewardSummary),
                 ("user", _research.GetResearchLogUserName(actor))),
             actor);
 
         return true;
     }
 
-    private bool TryRunDiscoveryRevealMethod(Entity<DestructiveAnalyzerComponent> ent, EntityUid used, EntityUid server, EntityUid actor, out int rewardChannels)
+    private bool TryRunDiscoveryRevealMethod(Entity<DestructiveAnalyzerComponent> ent, EntityUid used, EntityUid server, EntityUid actor, out string rewardSummary)
     {
-        rewardChannels = 0;
+        rewardSummary = string.Empty;
         var methods = GetDiscoveryRevealMethods(used, server);
         var method = ent.Comp.SelectedMethod;
         if (string.IsNullOrWhiteSpace(method) || !methods.Contains(method))
@@ -269,20 +273,21 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         }
 
         _research.RevealTechnology(server, technologyId, actor);
-        rewardChannels = 1;
+        rewardSummary = GetTechnologyName(technologyId);
+
         _research.LogNetworkEvent(server,
             "destructive-analyzer",
             Loc.GetString("research-netlog-destructive-analysis-result",
                 ("method", LocalizeMethod(method)),
-                ("channels", rewardChannels),
                 ("subject", Name(used)),
+                ("result", Loc.GetString("research-machine-destructive-result-revealed-tech", ("technology", rewardSummary))),
                 ("user", _research.GetResearchLogUserName(actor))),
             actor);
 
         return true;
     }
 
-    private void CompleteAnalysis(Entity<DestructiveAnalyzerComponent> ent, EntityUid used, int rewardChannels)
+    private void CompleteAnalysis(Entity<DestructiveAnalyzerComponent> ent, EntityUid used, string rewardSummary)
     {
         if (TerminatingOrDeleted(ent))
             return;
@@ -298,13 +303,14 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         }
 
         ent.Comp.LastItemAnalyzed = true;
-        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("channels", rewardChannels));
+        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-last-result-success", ("result", rewardSummary));
         Del(used);
         ent.Comp.InsertedItem = null;
         UpdateAppearance(ent, DestructiveAnalyzerVisualState.Idle);
         _audio.PlayPvs(ent.Comp.SuccessSound, ent, ent.Comp.AudioParams);
         UpdateUi(ent);
         _popup.PopupEntity(Loc.GetString("research-destructive-analyzer-success"), ent, PopupType.SmallCaution);
+        _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("research-machine-destructive-chat-result", ("result", rewardSummary)), InGameICChatType.Speak, false);
     }
 
     private void OnEject(Entity<DestructiveAnalyzerComponent> ent, ref DestructiveAnalyzerEjectMessage args)
@@ -319,7 +325,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return;
 
         if (!_hands.TryPickupAnyHand(args.Actor, item))
-            Transform(item).Coordinates = Transform(ent).Coordinates;
+            _transform.SetCoordinates(item, Transform(ent).Coordinates);
 
         ent.Comp.InsertedItem = null;
         ent.Comp.SelectedMethod = null;
@@ -365,6 +371,61 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
             return analyzable.MethodPointRewards.Keys.ToList();
 
         return new List<string>();
+    }
+
+    private string BuildAnalyzableRewardSummary(List<ResearchPointAmount> rewards, int stackMultiplier, ResearchAnalyzableComponent analyzable)
+    {
+        var totals = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        foreach (var reward in rewards)
+        {
+            var amount = reward.Amount * stackMultiplier;
+            totals.TryGetValue(reward.Type, out var existing);
+            totals[reward.Type] = existing + amount;
+        }
+
+        var segments = new List<string>();
+        if (totals.Count > 0)
+        {
+            var pointsText = totals
+                .OrderBy(pair => pair.Key)
+                .Select(pair => Loc.GetString("research-machine-destructive-result-points-entry",
+                    ("type", LocalizePointType(pair.Key)),
+                    ("amount", pair.Value)));
+            segments.Add(Loc.GetString("research-machine-destructive-result-points", ("points", string.Join(", ", pointsText))));
+        }
+
+        if (analyzable.RevealTechnologies.Count > 0)
+        {
+            var technologies = analyzable.RevealTechnologies.Select(GetTechnologyName);
+            segments.Add(Loc.GetString("research-machine-destructive-result-revealed-tech",
+                ("technology", string.Join(", ", technologies))));
+        }
+
+        if (analyzable.UnlockTechnologies.Count > 0)
+        {
+            var technologies = analyzable.UnlockTechnologies.Select(GetTechnologyName);
+            segments.Add(Loc.GetString("research-machine-destructive-result-unlocked-tech",
+                ("technology", string.Join(", ", technologies))));
+        }
+
+        if (segments.Count == 0)
+            return Loc.GetString("research-machine-destructive-result-generic");
+
+        return string.Join("; ", segments);
+    }
+
+    private string GetTechnologyName(string technologyId)
+    {
+        if (_prototype.TryIndex<TechnologyPrototype>(technologyId, out var technology))
+            return Loc.GetString(technology.Name);
+
+        return technologyId;
+    }
+
+    private string LocalizePointType(string type)
+    {
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return _loc.TryGetString(key, out var localized) ? localized : type;
     }
 
     private string LocalizeMethod(string methodId)

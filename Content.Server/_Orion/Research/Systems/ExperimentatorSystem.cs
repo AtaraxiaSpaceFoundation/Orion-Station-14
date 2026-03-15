@@ -1,8 +1,10 @@
 using System.Linq;
+using Content.Server.Chat.Systems;
 using Content.Server.Research.Systems;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Components;
 using Content.Shared._Orion.Research.Prototypes;
+using Content.Shared.Chat;
 using Content.Shared.Item;
 using Content.Shared.Research.Components;
 using Content.Shared.Tag;
@@ -28,6 +30,7 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
@@ -52,7 +55,7 @@ public sealed class ExperimentatorSystem : EntitySystem
 
     private void OnOpenServerMenu(Entity<ExperimentatorComponent> ent, ref OpenResearchServerMenuMessage args)
     {
-        RaiseLocalEvent(ent.Owner, new ConsoleServerSelectionMessage(), true);
+        _ui.TryToggleUi(ent.Owner, ResearchClientUiKey.Key, args.Actor);
     }
 
     private void OnPointsChanged(Entity<ExperimentatorComponent> ent, ref ResearchServerPointsChangedEvent args)
@@ -199,6 +202,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         else
             ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-no-matching-experiment");
 
+        _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("research-machine-experiment-scanner-chat-result", ("result", ent.Comp.LastResult)), InGameICChatType.Speak, false);
         _audio.PlayPvs(changedAny || completedCount > 0
             ? ent.Comp.SuccessSound
             : ent.Comp.FailureSound,

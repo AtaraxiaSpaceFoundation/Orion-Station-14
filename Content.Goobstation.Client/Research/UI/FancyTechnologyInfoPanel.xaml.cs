@@ -124,7 +124,10 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             RequiredTechContainer.AddChild(new MiniTechnologyCardControl(tech, _proto, sprite, description));
         }
 
-        RequiredTechnologiesBlock.Visible = proto.TechnologyPrerequisites.Count > 0;
+        var hasRequiredTechnologies = proto.TechnologyPrerequisites.Count > 0;
+        RequiredTechnologiesBlock.Visible = hasRequiredTechnologies;
+        RequiredTechnologiesTitle.Visible = hasRequiredTechnologies;
+        RequiredTechnologiesSeparator.Visible = hasRequiredTechnologies;
     }
 
     private string LocalizePointType(string type)
