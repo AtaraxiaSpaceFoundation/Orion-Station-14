@@ -76,8 +76,14 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
 
     private string LocalizeLogCategory(string category)
     {
-        var key = $"research-log-category-{category.ToLowerInvariant()}";
-        return _loc.TryGetString(key, out var localized) ? localized : category;
+        var normalized = NormalizeLogCategory(category);
+        var key = $"research-log-category-{normalized.ToLowerInvariant()}";
+        return _loc.TryGetString(key, out var localized) ? localized : normalized;
+    }
+
+    private static string NormalizeLogCategory(string category)
+    {
+        return category.Trim().Replace("_", "-").Replace(" ", "-");
     }
 
     private string GetLogActorSuffix(ResearchLogEntry log)

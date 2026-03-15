@@ -4,6 +4,7 @@ using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Components;
 using Content.Shared.Research.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Research.Systems;
 
@@ -11,12 +12,35 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
 {
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    private static readonly TimeSpan UiRefreshInterval = TimeSpan.FromSeconds(1);
+    private TimeSpan _nextUiRefresh;
 
     public override void Initialize()
     {
         SubscribeLocalEvent<ResearchServerControlConsoleComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<ResearchServerControlConsoleComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<ResearchServerControlConsoleComponent, ToggleServerGenerationMessage>(OnToggleGeneration);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_timing.CurTime < _nextUiRefresh)
+            return;
+
+        _nextUiRefresh = _timing.CurTime + UiRefreshInterval;
+
+        var query = EntityQueryEnumerator<ResearchServerControlConsoleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (!_ui.IsUiOpen(uid, ResearchServerControlUiKey.Key))
+                continue;
+
+            UpdateUi((uid, comp));
+        }
     }
 
     private void OnInit(Entity<ResearchServerControlConsoleComponent> ent, ref ComponentInit args)
@@ -53,13 +77,25 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
 
     private void UpdateUi(Entity<ResearchServerControlConsoleComponent> ent)
     {
-        var entries = _research.GetServers(ent)
+        var servers = _research.GetServers(ent).ToList();
+
+        var authorityByNetwork = servers
+            .GroupBy(server => server.Comp.NetworkId)
+            .ToDictionary(group => group.Key, group => group.Min(server => server.Comp.Id));
+
+        var entries = servers
             .Select(s =>
             {
                 var status = CompOrNull<ResearchServerControlStatusComponent>(s);
+                var authorityId = authorityByNetwork[s.Comp.NetworkId];
+
                 return new ResearchServerControlEntry(
                     s.Comp.Id,
+                    GetNetEntity(s),
                     s.Comp.ServerName,
+                    s.Comp.NetworkId,
+                    s.Comp.Id == authorityId,
+                    authorityId,
                     status?.GenerationEnabled ?? true,
                     _research.GetPointsPerSecond(s, s.Comp),
                     _research.GetPointGenerationPerSecond(s, s.Comp),

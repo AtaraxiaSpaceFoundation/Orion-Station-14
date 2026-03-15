@@ -44,17 +44,25 @@ public sealed class ResearchServerControlBoundInterfaceState : BoundUserInterfac
 public sealed class ResearchServerControlEntry
 {
     public int Id;
+    public NetEntity ServerEntity;
     public string Name;
+    public string NetworkId;
+    public bool IsNetworkAuthority;
+    public int NetworkAuthorityId;
     public bool GenerationEnabled;
     public int TotalPointsPerSecond;
     public List<ResearchPointAmount> PointGeneration;
     public List<ResearchPointAmount> Balances;
     public int LogCount;
 
-    public ResearchServerControlEntry(int id, string name, bool generationEnabled, int totalPointsPerSecond, List<ResearchPointAmount> pointGeneration, List<ResearchPointAmount> balances, int logCount)
+    public ResearchServerControlEntry(int id, NetEntity serverEntity, string name, string networkId, bool isNetworkAuthority, int networkAuthorityId, bool generationEnabled, int totalPointsPerSecond, List<ResearchPointAmount> pointGeneration, List<ResearchPointAmount> balances, int logCount)
     {
         Id = id;
+        ServerEntity = serverEntity;
         Name = name;
+        NetworkId = networkId;
+        IsNetworkAuthority = isNetworkAuthority;
+        NetworkAuthorityId = networkAuthorityId;
         GenerationEnabled = generationEnabled;
         TotalPointsPerSecond = totalPointsPerSecond;
         PointGeneration = pointGeneration;

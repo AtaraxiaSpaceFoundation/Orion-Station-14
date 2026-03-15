@@ -47,6 +47,8 @@
     interfaces:
       enum.DestructiveAnalyzerUiKey.Key:
         type: DestructiveAnalyzerBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
 
 - type: entity
   parent: [ BaseMachinePowered, SmallConstructibleMachine ]
@@ -92,3 +94,5 @@
     interfaces:
       enum.ExperimentatorUiKey.Key:
         type: ExperimentatorBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface

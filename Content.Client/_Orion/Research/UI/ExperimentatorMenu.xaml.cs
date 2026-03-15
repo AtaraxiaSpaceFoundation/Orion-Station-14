@@ -23,11 +23,23 @@ public sealed partial class ExperimentatorMenu : FancyWindow
         PerformButton.OnPressed += _ => OnPerformPressed?.Invoke();
     }
 
+    private static string FormatServerName(string name)
+    {
+        const string prefix = "RND-Server";
+        if (!name.StartsWith(prefix, StringComparison.Ordinal))
+            return name;
+
+        var suffix = name[prefix.Length..].TrimStart();
+        return string.IsNullOrWhiteSpace(suffix)
+            ? Loc.GetString("research-server-name-base")
+            : Loc.GetString("research-server-name-with-suffix", ("suffix", suffix));
+    }
+
     public void UpdateState(ExperimentatorBoundInterfaceState state)
     {
         ServerLabel.Text = state.ConnectedServerName == null
             ? Loc.GetString("research-machine-common-server-none")
-            : Loc.GetString("research-machine-common-server-current", ("name", state.ConnectedServerName));
+            : Loc.GetString("research-machine-common-server-current", ("name", FormatServerName(state.ConnectedServerName)));
 
         InsertedItemLabel.Text = Loc.GetString("research-machine-common-labeled-value",
             ("label", Loc.GetString("research-machine-experiment-scanner-status")),
