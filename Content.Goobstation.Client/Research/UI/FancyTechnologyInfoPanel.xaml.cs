@@ -90,9 +90,13 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             if (!prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
                 continue;
 
-            var experimentLabel = new RichTextLabel { };
+            var experimentLabel = new Label
+            {
+                Text = $"• {Loc.GetString(experiment.Name)}",
+                HorizontalExpand = true,
+                ClipText = true,
+            };
 
-            experimentLabel.SetMessage($"• {Loc.GetString(experiment.Name)}");
             RequiredExperimentsContainer.AddChild(experimentLabel);
             hasRequiredExperiments = true;
         }
@@ -113,20 +117,22 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         RequiredExperimentsBlock.Visible = hasRequiredExperiments;
 
         RequiredTechContainer.RemoveAllChildren();
-        var hasRequiredTechnologies = false;
-        foreach (var techId in proto.TechnologyPrerequisites)
+        var shouldDisplayRequiredTechnologies = lockReason == ResearchTechnologyLockReason.MissingPrerequisites;
+        if (shouldDisplayRequiredTechnologies)
         {
-            if (!_proto.TryIndex(techId, out var tech))
-                continue;
+            foreach (var techId in proto.TechnologyPrerequisites)
+            {
+                if (!_proto.TryIndex(techId, out var tech))
+                    continue;
 
-            var description = research.GetTechnologyDescription(tech, true, false, true);
-            RequiredTechContainer.AddChild(new MiniTechnologyCardControl(tech, _proto, sprite, description));
-            hasRequiredTechnologies = true;
+                var description = research.GetTechnologyDescription(tech, true, false, true);
+                RequiredTechContainer.AddChild(new MiniTechnologyCardControl(tech, _proto, sprite, description));
+            }
         }
 
-        RequiredTechnologiesBlock.Visible = hasRequiredTechnologies;
-        RequiredTechnologiesTitle.Visible = hasRequiredTechnologies;
-        RequiredTechnologiesSeparator.Visible = hasRequiredTechnologies;
+        var hasRequiredTechnologies = shouldDisplayRequiredTechnologies && RequiredTechContainer.ChildCount > 0;
+
+        RequiredTechnologiesSection.Visible = hasRequiredTechnologies;
 
         var hasAnyRequirements = hasRequiredExperiments || hasRequiredTechnologies;
         NoPrereqLabel.Visible = !hasAnyRequirements;
@@ -142,11 +148,15 @@ public sealed partial class FancyTechnologyInfoPanel : Control
     private void InitializeRecipeUnlocks(TechnologyPrototype proto, LatheSystem lathe, SpriteSystem sprite)
     {
         UnlocksContainer.RemoveAllChildren();
+        var hasRecipeUnlocks = false;
         foreach (var recipeId in proto.RecipeUnlocks)
         {
             var recipe = _proto.Index(recipeId);
             UnlocksContainer.AddChild(new MiniRecipeCardControl(proto, recipe, _proto, sprite, lathe));
+            hasRecipeUnlocks = true;
         }
+
+        RecipesContainer.Visible = hasRecipeUnlocks;
     }
 
     protected override void ExitedTree()

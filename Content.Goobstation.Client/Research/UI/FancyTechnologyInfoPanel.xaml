@@ -85,36 +85,43 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                           Orientation="Vertical"
                                           Margin="6"
                                           SeparationOverride="2"
-                                          HorizontalExpand="True"/>
+                                          HorizontalExpand="True"
+                                          RectClipContent="True"/>
                         </ScrollContainer>
                     </PanelContainer>
                     <RichTextLabel Name="MissingExperimentsLabel" Visible="False"/>
                 </BoxContainer>
-                <customControls:HSeparator Name="RequiredTechnologiesSeparator" StyleClasses="LowDivider"
-                                           Margin="0 0 0 10"/>
-                <Label Name="RequiredTechnologiesTitle"
-                       Text="{Loc 'research-console-tech-required-technologies-title'}"
-                       HorizontalAlignment="Center"
-                       Margin="0 0 0 4"/>
-                <BoxContainer Name="RequiredTechnologiesBlock"
+                <BoxContainer Name="RequiredTechnologiesSection"
                               Orientation="Vertical"
                               HorizontalExpand="True"
-                              VerticalExpand="True">
-                    <PanelContainer VerticalExpand="True">
-                        <PanelContainer.PanelOverride>
-                            <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
-                        </PanelContainer.PanelOverride>
-                        <ScrollContainer
-                            HScrollEnabled="False"
-                            HorizontalExpand="True"
-                            VerticalExpand="True">
-                            <BoxContainer
-                                Name="RequiredTechContainer"
-                                Orientation="Vertical"
+                              VerticalExpand="False"
+                              Visible="False">
+                    <customControls:HSeparator Name="RequiredTechnologiesSeparator" StyleClasses="LowDivider"
+                                               Margin="0 0 0 10"/>
+                    <Label Name="RequiredTechnologiesTitle"
+                           Text="{Loc 'research-console-tech-required-technologies-title'}"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 4"/>
+                    <BoxContainer Name="RequiredTechnologiesBlock"
+                                  Orientation="Vertical"
+                                  HorizontalExpand="True"
+                                  VerticalExpand="False">
+                        <PanelContainer MinHeight="64" VerticalExpand="False">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#1B1B1E"/>
+                            </PanelContainer.PanelOverride>
+                            <ScrollContainer
+                                HScrollEnabled="False"
+                                HorizontalExpand="True"
                                 VerticalExpand="True">
-                            </BoxContainer>
-                        </ScrollContainer>
-                    </PanelContainer>
+                                <BoxContainer
+                                    Name="RequiredTechContainer"
+                                    Orientation="Vertical"
+                                    VerticalExpand="True">
+                                </BoxContainer>
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
                 </BoxContainer>
             </BoxContainer>
             <BoxContainer
