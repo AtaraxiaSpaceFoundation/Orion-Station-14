@@ -13,6 +13,7 @@
   - MagazineShotgunBeanbag
   - BoxBeanbag
   - MagazineBoxShotgunBeanbagHighCaliber 
+  - ModularReceiver
   position: 0,0
 
 - type: technology
@@ -39,6 +40,26 @@
   position: -1,1
 
 - type: technology
+  id: CombatHUD
+  name: research-technology-combat-hud-name
+  description: research-technology-combat-hud-desc
+  icon:
+    sprite: Objects/Tools/seclite.rsi
+    state: seclite
+  discipline: Arsenal
+  tier: 4
+  announceChannels:
+  - Security
+  cost: 17500
+  technologyPrerequisites:
+  - BeamWeapons
+  - AnomalyShells
+  - NightVision
+  recipeUnlocks:
+  - ClothingEyesThermalVisionGoggles
+  position: -2,1
+
+- type: technology
   id: RiotSuppression
   name: research-technology-riot-suppression-name
   description: research-technology-riot-suppression-desc
@@ -57,6 +78,7 @@
   - RiotBulletShield
   - Handcuffs
   - BolaEnergy
+  - Truncheon
   position: 1,1
 
 - type: technology
@@ -128,6 +150,13 @@
   - MagazineBoxRifleUranium
   - BoxShotgunUranium
   - MagazineBoxShotgunUraniumHighCaliber
+  # Tranquilizer
+  - BoxShellTranquilizer
+  # Shuttle
+  - GrenadeBlast
+  - GrenadeEMP
+  - GrenadeFlash
+  - MagazineGrenadeEmpty
   position: 2,-1
 
 - type: technology
@@ -146,6 +175,7 @@
   - RiotSuppression
   recipeUnlocks:
   - WeaponEnergyIonRifle
+  - PowerCellIonRevolver
   - WeaponTemperatureGun
   position: 3,1
 
@@ -155,7 +185,7 @@
   description: research-technology-beam-weapons-desc
   icon:
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
-    state: base
+    state: icon
   discipline: Arsenal
   tier: 4
   announceChannels:
@@ -165,4 +195,51 @@
   - ElectricWeapons
   recipeUnlocks:
   - WeaponXrayCannon
+  - HoloprojectorSecurityAdvanced
+  - PowerCellXrayRevolver
+  - PowerCellXraySMG
+  - PowerCellXraySniper
+  - AntiMindControlDevice
   position: 4,1
+
+- type: technology
+  id: WeaponizedLaserManipulation
+  name: research-technology-weaponized-laser-manipulation
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 1
+  announceChannels:
+  - Security
+  cost: 7500
+  technologyPrerequisites:
+  - ExoticAmmo
+  recipeUnlocks:
+  - WeaponLaserCarbine
+  - WeaponLaserCannon
+  position: 4,2
+
+- type: technology
+  id: PortableMicrofusionWeaponry
+  name: research-technology-portable-microfusion-weaponry
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  announceChannels:
+  - Security
+  cost: 20000
+  technologyPrerequisites:
+  - BeamWeapons
+  - WeaponizedLaserManipulation
+  - PartsBluespace
+  recipeUnlocks:
+  - WeaponAdvancedLaser
+  - PortableRecharger
+  - EnergyMagRifleOverchargeLethal
+  - PowerCellOverchargedRevolver
+  - PowerCellOverchargedSMG
+  - PowerCellOverchargedSniper
+  position: 4,3

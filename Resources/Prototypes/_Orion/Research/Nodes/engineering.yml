@@ -12,6 +12,7 @@
   recipeUnlocks:
   - PowerCellSmall
   - MegaCellSmall
+  - PowerCellMedium
   - PowerCellHigh
   - MegaCellHigh
   - MicroManipulatorStockPart
@@ -21,6 +22,7 @@
   - TimerTrigger
   - VoiceSignaller
   - VoiceTrigger
+  - ProximitySignaller
   position: 12,4
 
 - type: technology
@@ -88,7 +90,32 @@
   recipeUnlocks:
   - PowerCellBluespace
   - MegaCellBluespace
+  - PowerCellBluespaceReactor
+  - MegaCellBluespaceReactor
   position: 12,7
+
+- type: technology
+  id: PartsVortex
+  name: research-technology-parts-vortex-name
+  description: research-technology-parts-vortex-desc
+  icon:
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: bluespace
+  discipline: Industrial
+  tier: 1
+  announceChannels:
+  - Engineering
+  cost: 12000
+  technologyPrerequisites:
+  - PartsBluespace
+  - AlienTechnology
+  discountExperiments:
+  - ScanningPointsMachineryTieredScanTier3Any
+  discountExperimentCosts:
+    ScanningPointsMachineryTieredScanTier3Any: 2000
+  recipeUnlocks:
+  - PowerCellVortex
+  position: 12,8
 
 - type: technology
   id: Telecommunications
@@ -139,10 +166,42 @@
   - Multitool
   - Wrench
   - Crowbar
+  - CrowbarGreen
+  - NetworkConfigurator
+  - Signaller
+  - TRayScanner
+  - UtilityBelt
+  - ClothingOuterVestTank
   - Screwdriver
   - Wirecutter
   - LightBulb
   - LightTube
+  - ClothingMaskWeldingGas
+  - SignallerAdvanced
+  - FauxTileAstroGrass
+  - FauxTileMowedAstroGrass
+  - FauxTileJungleAstroGrass
+  - FauxTileAstroIce
+  - FauxTileAstroSnow
+  - FauxTileAstroAsteroidSand
+  - ConstructionBag
+  - MailingUnitElectronics
+  - SignalTimerElectronics
+  - APCElectronics
+  - SubstationMachineCircuitboard
+  - WallmountSubstationElectronics
+  - FreezerElectronics
+  - MagazineBoxNail
+  - ToolboxMechanical
+  - SignalTrigger
+  - CondenserMachineCircuitBoard
+  - FloorGreenCircuit
+  - FloorBlueCircuit
+  - FloorRedCircuit
+  - WeaponNailgun
+  - MagazineNailgun
+  - MagazineNailgunEmpty
+  - HolopadMachineCircuitboard
   position: 11,4
 
 - type: technology
@@ -164,13 +223,14 @@
   - SMESMachineCircuitboard
   - EmitterCircuitboard
   - TeslaGroundingRod
-  - TeslaCoil
+  - TeslaCoilCircuitboard
   - CellRechargerCircuitboard
   - WeaponCapacitorRechargerCircuitboard
   - InducerScientific
   - InducerEngineering
   - ClothingEyesWelding
   - GeigerCounter
+  - RadiationCollectorCircuitboard
   position: 10,4
 
 - type: technology
@@ -191,7 +251,12 @@
   - EnergyManipulation
   - AppliedBluespace
   recipeUnlocks:
-  - ShuttleConsoleCircuitboard
+  - ShuttleConsoleCircuitboards
+  - ShuttleGunKineticCircuitboard
+  - ThrusterMachineCircuitboard
+  - GyroscopeMachineCircuitboard
+  - MiniGravityGeneratorCircuitboard
+  - MachineFTLDriveCircuitboard
   position: 13,4
 
 - type: technology
@@ -261,3 +326,75 @@
   # TODO: Departament variations
   - ClothingEyesNightVisionGoggles
   position: 9,2
+
+- type: technology
+  id: LocalizedMagnetism
+  name: research-technology-localized-magnetism-name
+  description: research-technology-localized-magnetism-desc
+  icon:
+    sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
+    state: icon
+  discipline: Industrial
+  tier: 4
+  announceChannels:
+  - Engineering
+  - Science
+  cost: 10000
+#  technologyPrerequisites:
+#  - HUD
+  recipeUnlocks:
+  - ClothingShoesBootsMag
+  - ClothingShoesBootsMagSci
+  - ClothingShoesBootsMoon
+  - ClothingShoesBootsJump
+  position: 9,3
+
+- type: technology
+  id: UpgradeKits
+  name: research-technology-upgrade-kits-name
+  description: research-technology-upgrade-kits-desc
+  icon:
+    sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
+    state: icon
+  discipline: Industrial
+  tier: 4
+  announceChannels:
+  - Engineering
+  - Science
+  cost: 10000
+#  technologyPrerequisites:
+#  - HUD
+  recipeUnlocks:
+  - LatheUpgradeKitHyper
+  - LatheUpgradeKitCryo
+  - AutodocUpgradeKitBluespace
+  - UpgradeKitAutomation
+  position: 9,4
+
+- type: technology
+  id: EnergyManipulationAdvanced
+  name: research-technology-energy-manipulation-advanced-name
+  description: research-technology-energy-manipulation-advanced-desc
+  icon:
+    sprite: Structures/Power/smes.rsi
+    state: smes
+  discipline: Industrial
+  tier: 1
+  announceChannels:
+  - Engineering
+  cost: 2500
+  technologyPrerequisites:
+  - PartsBluespace
+  recipeUnlocks:
+  - TurboItemRechargerCircuitboard
+  - PowerCageRechargerCircuitboard
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  position: 10,3

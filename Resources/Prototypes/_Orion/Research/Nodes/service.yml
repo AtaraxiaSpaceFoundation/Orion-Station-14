@@ -26,6 +26,25 @@
   - FlashlightLantern
   - Flare
   - StationRadioCircuitboard
+  - HandheldStationMap
+  - ClothingHeadHatCone
+  - WeaponHammer
+  - AppraisalTool
+  - LedLightTube
+  - SodiumLightTube
+  - ExteriorLightTube
+  - LedLightBulb
+  - DimLightBulb
+  - WarmLightBulb
+  - DrinkMug
+  - DrinkMugMetal
+  - CustomDrinkJug
+  - FoodKebabSkewer
+  - WetFloorSign
+  - IntercomElectronics
+  - StationMapElectronics
+  - Pen
+  - CrewCassette
   position: 8,-4
 
 - type: technology
@@ -50,6 +69,8 @@
   - AdvMopItem
   - LightReplacer
   - SprayBottle
+  - ClothingBackpackWaterTank
+  - MegaSprayBottle
   position: 8,-2
 
 - type: technology
@@ -156,6 +177,25 @@
   - FatExtractorMachineCircuitboard
   - PairedChopsticks
   position: 7,-4
+
+- type: technology
+  id: MusicalInstruments
+  name: research-technology-musical-instruments-name
+  description: research-technology-musical-instruments-desc
+  icon:
+    sprite: Structures/Machines/grinder.rsi
+    state: grinder_empty
+  discipline: CivilianServices
+  tier: 1
+  announceChannels:
+  - Service
+  cost: 3000
+  technologyPrerequisites:
+  - OfficeEquipment
+  recipeUnlocks:
+  - SynthesizerInstrument
+  - PushHorn
+  position: 7,-3
 
 - type: technology
   id: FishingEquip

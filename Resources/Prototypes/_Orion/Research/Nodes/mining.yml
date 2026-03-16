@@ -20,6 +20,9 @@
   - SheetPlasteel1
   - SheetUGlass1
   - SheetRUGlass1
+  - SheetRGlass
+  - OreProcessorMachineCircuitboard
+  - SalvageMagnetMachineCircuitboard
   position: 5,5
 
 - type: technology
@@ -38,10 +41,16 @@
   - MaterialProcessing
   recipeUnlocks:
   - MineralScanner
+  - MineralScannerEmpty
   - MiningDrill
   - WeaponMechMeleeDrill
   - MarkerBeacon
   - HandheldGPSBasic
+  - HandHeldMassScanner
+  - Fulton
+  - FultonBeacon
+  - OreBag
+  - RadarConsoleCircuitboard
   position: 3,6
 
 - type: technology
@@ -63,6 +72,7 @@
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
+  - PKAUpgradeSpace
   position: 7,6
 
 - type: technology
@@ -117,6 +127,7 @@
   technologyPrerequisites:
   - PlasmaMining
   recipeUnlocks:
+  - AdvancedMineralScannerEmpty
   - MiningDrillDiamond
-  - WeaponMechMeleeDrillDiamond
+  - MechEquipmentDrillDiamond
   position: 5,8

@@ -32,6 +32,13 @@
   - MedicalStitches
   - Drill
   - Syringe
+  - PrescriptionGlasses
+  - BaseChemistryEmptyVial
+  - RollerBedSpawnFolded
+  - CheapRollerBedSpawnFolded
+  - EmergencyRollerBedSpawnFolded
+  - VehicleWheelchairFolded
+  - Cane
   position: 7,10
 
 - type: technology

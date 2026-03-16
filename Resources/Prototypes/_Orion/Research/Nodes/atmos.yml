@@ -20,6 +20,7 @@
   - FireExtinguisher
   - FireExtinguisherMini
   - GasAnalyzer
+  - AirTank
   position: 12,3
 
 - type: technology
@@ -66,6 +67,9 @@
     OrdnanceGaseousPlasma: 5000
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
+  - PortableGeneratorSuperPacmanMachineCircuitboard
+  - PortableGeneratorJrPacmanMachineCircuitboard
+  - SMESAdvancedMachineCircuitboard
   # TODO: No turbine :(
   position: 13,2
 
@@ -88,7 +92,7 @@
   discountExperimentCosts:
     OrdnanceGaseousNitrousOxide: 7500
   recipeUnlocks:
-  - ExtinguisherSpray
+  - HellfireFreezerMachineCircuitBoard
   # TODO: No fusion :(
   position: 13,1
 
