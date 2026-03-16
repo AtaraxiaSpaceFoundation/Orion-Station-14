@@ -56,6 +56,7 @@
   recipeUnlocks:
   - XenobiologyBountyComputerCircuitboard
   - SlimeScannerXenobio
+  - ClothingBackpackXenoBioTank
   position: 10,12
 
 - type: technology
@@ -79,6 +80,7 @@
     ScanningPeopleMutant: 10000
   recipeUnlocks:
   - MedicalScannerMachineCircuitboard
+  - XenoCompatibilityImplanter
   position: 10,13
 
 - type: technology

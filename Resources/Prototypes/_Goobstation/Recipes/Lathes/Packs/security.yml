@@ -68,7 +68,7 @@
   - WeaponLaserCellSMG
   - WeaponLaserCellSniper
   - ClothingBackpackLMGBattery
-  - ClothingEyesGlassesSecurityContraDetect
+#  - ClothingEyesGlassesSecurityContraDetect # Orion-Edit
 
 - type: latheRecipePack
   id: SecurityAmmoGoob

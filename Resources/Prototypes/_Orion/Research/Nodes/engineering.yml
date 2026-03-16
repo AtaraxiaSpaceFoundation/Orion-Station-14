@@ -201,6 +201,32 @@
   - MagazineNailgun
   - MagazineNailgunEmpty
   - HolopadMachineCircuitboard
+  - RoboticArmCircuitboard
+  - ConstructorCircuitboard
+  - StorageBinCircuitboard
+  - InteractorCircuitboard
+  - PlumbingPumpCircuitboard
+  - SurveillanceCameraRouterCircuitboard
+  - SurveillanceCameraMonitorCircuitboard
+  - SurveillanceWirelessCameraMonitorCircuitboard
+  - SurveillanceCameraWirelessRouterCircuitboard
+  - ComputerTelevisionCircuitboard
+  - SurveillanceWirelessCameraMovableCircuitboard
+  - SurveillanceWirelessCameraAnchoredCircuitboard
+  - ShuttleGunDusterCircuitboard
+  - ShuttleGunFriendshipCircuitboard
+  - ShuttleGunPerforatorCircuitboard
+  - ShuttleGunSvalinnMachineGunCircuitboard
+  - UniformPrinterMachineCircuitboard
+  - MassMediaCircuitboard
+  - JukeboxCircuitBoard
+  - DawInstrumentMachineCircuitboard
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   position: 11,4
 
 - type: technology

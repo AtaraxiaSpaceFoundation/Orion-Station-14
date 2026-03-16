@@ -37,7 +37,11 @@
   technologyPrerequisites:
   - MechAssembly
   recipeUnlocks:
+  - MechAirTank
+  - MechThruster
   - MechEquipmentGrabber
+  - RipleyUpgradeKit
+  - RipleyMKIIHarness
   position: -9,5
 
 - type: technology
@@ -65,8 +69,16 @@
   - HonkerPeripheralsElectronics
   - HonkerTargetingElectronics
   - MechEquipmentHorn
-  - WeaponMechSpecialBananaMortar
-  - WeaponMechSpecialMousetrapMortar
+  - MechEquipmentHonkerBananaMortar
+  - MechEquipmentHonkerMousetrapMortar
+  - HamtrHarness
+  - HamtrLArm
+  - HamtrRArm
+  - HamtrLLeg
+  - HamtrRLeg
+  - HamtrCentralElectronics
+  - HamtrPeripheralsElectronics
+  - VimHarness
   position: -7,5
 
 - type: technology
@@ -149,6 +161,7 @@
   technologyPrerequisites:
   - MechCombat
   recipeUnlocks:
+  - DurandArmor
   - DurandHarness
   - DurandHead
   - DurandLArm
@@ -175,6 +188,7 @@
   technologyPrerequisites:
   - MechCombat
   recipeUnlocks:
+  - GygaxArmor
   - GygaxHarness
   - GygaxHead
   - GygaxLArm

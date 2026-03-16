@@ -39,6 +39,66 @@
   - EmergencyRollerBedSpawnFolded
   - VehicleWheelchairFolded
   - Cane
+  - OperatingTableCircuitboard
+  - BiomassReclaimerMachineCircuitboard
+  - BiofabricatorMachineCircuitboard
+  - ReagentGrinderIndustrialMachineCircuitboard
+  - Brutepack
+  - Ointment
+  - Gauze
+  - Jug
+  - ChemistryEmptyBottle01
+  - BodyBag
+  - WhiteCane
+  - OffsetCane
+  - OffsetCaneWood
+  - ClothingHandsGlovesLatex
+  - ClothingHandsGlovesNitrile
+  - ClothingMaskSterile
+  - Medkit
+  - MedkitBurn
+  - MedkitToxin
+  - MedkitO2
+  - MedkitBrute
+  - MedkitAdvanced
+  - MedkitRadiation
+  - Saw
+  - CartridgeAtropine
+  - CartridgeEpinephrine
+  - CartridgeBicaridine
+  - CartridgeDermaline
+  - CartridgeSaline
+  - ParamedHypo
+  - MedicalPatchBasic
+  - MedicalPatchRapid
+  - MedicalPatchTherapeutic
+  - MedicalPatchLarge
+  - MedicalCigPack
+  - SyringeCase
+  - NTBodyBag
+  - PrisonerBodyBag
+  - RadiationBodyBag
+  - MedkitCombat
+  - AdvancedBoneGel
+  - ClothingHandsGlovesSurgical
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   position: 7,10
 
 - type: technology
@@ -66,6 +126,8 @@
   - EnergyChemDispenserMachineCircuitboard
   - ChemMasterMachineCircuitboard
   - HotplateMachineCircuitboard
+  - ElectrolysisUnitMachineCircuitboard
+  - CentrifugeMachineCircuitboard
   position: 7,9
 
 - type: technology
@@ -86,6 +148,8 @@
   - ScanningReagentHaloperidol
   recipeUnlocks:
   - HandheldCrewMonitor
+  - SyringeGun
+  - DefibrillatorCompact
   position: 8,11
 
 - type: technology

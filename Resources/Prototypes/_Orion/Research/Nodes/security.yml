@@ -14,6 +14,44 @@
   - BoxBeanbag
   - MagazineBoxShotgunBeanbagHighCaliber 
   - ModularReceiver
+  - BoxLethalshot
+  - BoxShotgunSlug
+  - MagazineBoxMagnum
+  - MagazineBoxPistol
+  - MagazineBoxRifle
+  - MagazineBoxRifle762
+  - MagazineRifle762
+  - MagazineRifle762Empty
+  - MagazinePistol
+  - MagazinePistolEmpty
+  - MagazinePistolSubMachineGun
+  - MagazinePistolSubMachineGunEmpty
+  - MagazinePistolSubMachineGunTopMounted
+  - MagazinePistolSubMachineGunTopMountedEmpty
+  - MagazineRifle
+  - MagazineRifleEmpty
+  - MagazineShotgun
+  - MagazineShotgunEmpty
+  - MagazineShotgunSlug
+  - SpeedLoaderMagnum
+  - SpeedLoaderMagnumEmpty
+  - MagazineBoxShotgunHighCaliber
+  - MagazineBoxShotgunSlugHighCaliber
+  - MagazineBoxShotgunPracticeHighCaliber
+  - MagazineShotgunLeverRifleEmpty
+  - BoxShotgunPractice
+  - MagazineBoxMagnumPractice
+  - MagazineBoxPistolPractice
+  - MagazineBoxRiflePractice
+  - MagazineBoxRifle762Practice
+  - WeaponDisablerPractice
+  - WeaponLaserCarbinePractice
+  - MagazineLightRiflePractice
+  - MagazineRiflePractice
+  - MagazineRifle762Practice
+  - MagazinePistolPractice
+  - SpeedLoaderMagnumPractice
+  - MagazinePistolSubMachineGunPractice
   position: 0,0
 
 - type: technology
@@ -37,6 +75,21 @@
   - Zipties
   - FlashlightSeclite
   - ClothingBackpackElectropack
+  - ForensicPad
+  - TargetClown
+  - TargetHuman
+  - TargetSyndicate
+  - WeaponFlareGunSecurity
+  - Flash
+  - Stunbaton
+  - CombatKnife
+  - RiotShield
+  - GrenadeFlashBang
+  - SecHypo
+  - PolymerBaton
+  - SpearTelescopic
+  - WeaponDisabler
+  - WeaponDisablerSMG
   position: -1,1
 
 - type: technology
@@ -79,6 +132,8 @@
   - Handcuffs
   - BolaEnergy
   - Truncheon
+  - ClothingMaskMuzzleSecure
+  - ClothingMaskMuzzleShock
   position: 1,1
 
 - type: technology
@@ -157,6 +212,22 @@
   - GrenadeEMP
   - GrenadeFlash
   - MagazineGrenadeEmpty
+  - PowerCageMedium
+  - PowerCageSmall
+  - PowerCageHigh
+  # Other
+  - EnergyMagRifleDisabler
+  - EnergyMagRifleLethal
+  - MagazineSmart
+  - PowerCellIRRevolver
+  - PowerCellIRSMG
+  - PowerCellIonSMG
+  - PowerCellIRSniper
+  - MilitaryPowerCellLMG
+  - PowerCellBluespaceRevolver
+  - PowerCellBluespaceSMG
+  - PowerCellBluespaceSniper
+  - MilitaryPowerCellBluespaceLMG
   position: 2,-1
 
 - type: technology
@@ -176,6 +247,11 @@
   recipeUnlocks:
   - WeaponEnergyIonRifle
   - PowerCellIonRevolver
+  - EnergyMagRifleIon
+  - PowerCellIonSniper
+  - 
+  - 
+  - 
   - WeaponTemperatureGun
   position: 3,1
 
@@ -219,6 +295,10 @@
   recipeUnlocks:
   - WeaponLaserCarbine
   - WeaponLaserCannon
+  - WeaponEnergyRifle
+  - WeaponLaserCellRevolver
+  - WeaponLaserCellSMG
+  - WeaponLaserCellSniper
   position: 4,2
 
 - type: technology
@@ -239,9 +319,68 @@
   - PartsBluespace
   recipeUnlocks:
   - WeaponAdvancedLaser
+  - Terminus
   - PortableRecharger
   - EnergyMagRifleOverchargeLethal
   - PowerCellOverchargedRevolver
   - PowerCellOverchargedSMG
   - PowerCellOverchargedSniper
   position: 4,3
+
+- type: technology
+  id: SmartWeaponry
+  name: research-technology-smart-weaponry
+  description: research-technology-smart-weaponry-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  announceChannels:
+  - Security
+  cost: 20000
+  technologyPrerequisites:
+  - BeamWeapons
+  - WeaponizedLaserManipulation
+  - PartsBluespace
+  recipeUnlocks:
+  - WeaponSubMachineSmart
+  position: 4,4
+
+- type: technology
+  id: HeavyWeaponry
+  name: research-technology-heavy-weaponry
+  description: research-technology-heavy-weaponry-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  announceChannels:
+  - Security
+  cost: 20000
+  technologyPrerequisites:
+  - BeamWeapons
+  - WeaponizedLaserManipulation
+  - PartsBluespace
+  recipeUnlocks:
+  - ClothingBackpackLMGBattery
+  position: 4,4
+
+- type: technology
+  id: EnergyBarriers
+  name: research-technology-energy-barriers
+  description: research-technology-energy-barriers-desc
+  icon:
+    sprite: _Orion/Objects/Tools/EnergyDome/reinhardt.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  announceChannels:
+  - Security
+  cost: 12000
+  technologyPrerequisites:
+  - PortableMicrofusionWeaponry
+  recipeUnlocks:
+  - EnergyDomeTurtle
+  position: 4,5

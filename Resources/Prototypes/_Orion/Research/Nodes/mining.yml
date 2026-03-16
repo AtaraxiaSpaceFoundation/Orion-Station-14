@@ -54,6 +54,28 @@
   position: 3,6
 
 - type: technology
+  id: ProtoKineticAccelerators
+  name: research-technology-proto-kinetic-accelerators-name
+  description: research-technology-proto-kinetic-accelerators-desc
+  icon:
+    sprite: _Lavaland/Objects/Weapons/upgrade.rsi
+    state: base
+  discipline: Industrial
+  tier: 2
+  announceChannels:
+  - Supply
+  cost: 5000
+  technologyPrerequisites:
+  - Mining
+  - GasCompression
+  recipeUnlocks:
+  - WeaponProtoKineticAccelerator
+  - WeaponProtoKineticShotgun
+  - WeaponProtoKineticRepeater
+  - WeaponProtoKineticPistol
+  position: 7,6
+
+- type: technology
   id: LowPressureExcavation
   name: research-technology-low-pressure-excavation-name
   description: research-technology-low-pressure-excavation-desc
@@ -66,7 +88,7 @@
   - Supply
   cost: 5000
   technologyPrerequisites:
-  - Mining
+  - ProtoKineticAccelerators
   - GasCompression
   recipeUnlocks:
   - PKAUpgradeDamage

@@ -21,6 +21,7 @@
   - FireExtinguisherMini
   - GasAnalyzer
   - AirTank
+  - EnvirosuitExtinguisherRefill
   position: 12,3
 
 - type: technology

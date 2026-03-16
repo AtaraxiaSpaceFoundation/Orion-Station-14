@@ -55,6 +55,19 @@
   - LeftFootCybernetic
   - RightLegCybernetic
   - RightFootCybernetic
+  - ChestIPC
+  - GroinIPC
+  - LeftArmIPC
+  - RightArmIPC
+  - LeftLegIPC
+  - RightLegIPC
+  - HeadIPC
+  - LeftHandIPC
+  - RightHandIPC
+  - LeftFootIPC
+  - RightFootIPC
+  - OrganIPCEyes
+  - OrganIPCPump
   position: -3,2
 
 - type: technology
@@ -71,7 +84,10 @@
   cost: 5000
   technologyPrerequisites:
   - Cybernetics
-  # TODO
+  recipeUnlocks:
+  - BorgModuleAdvancedCleaning
+  - BorgModuleAdvancedTool
+  - BorgModuleAdvancedMining
   position: -5,2
 
 - type: technology
@@ -106,7 +122,8 @@
   technologyPrerequisites:
   - BorgServices
   - AdvancedSurgery
-  # TODO
+  recipeUnlocks:
+  - BorgModuleAdvancedSurgery
   position: -5,0
 
 - type: technology
@@ -124,7 +141,8 @@
   technologyPrerequisites:
   - BorgServices
   - Sanitation
-  # TODO
+  recipeUnlocks:
+  - BorgModuleLollypop
   position: -5,-1
 
 - type: technology
@@ -142,7 +160,10 @@
   technologyPrerequisites:
   - BorgMining
   - UpgradedParts
-  # TODO
+  recipeUnlocks:
+  - BorgModuleTool
+  - BorgModuleCable
+  - BorgModuleFireExtinguisher
   position: -5,-2
 
 - type: technology
@@ -182,7 +203,20 @@
   technologyPrerequisites:
   - PassiveImplants
   - Cybernetics
-  # TODO
+  recipeUnlocks:
+  - SpeedLeftLeg
+  - SpeedRightLeg
+  - DexLeftHand
+  - DexRightHand
+  - AugmentPowerCellSlotCasing
+  - AugmentRechargerCasing
+  - AugmentToolPanelCasing
+  - AugmentUtilityPanelElectronics
+  - AugmentBotanyPanelElectronics
+  - AugmentSurgeryPanelElectronics
+  - AugmentPaperworkPanelElectronics
+  - AugmentStrengthCasing
+  - AugmentStrengthElectronics
   position: -7,3
 
 - type: technology
@@ -200,7 +234,9 @@
   cost: 10000
   technologyPrerequisites:
   - CyberImplants
-  # TODO
+  recipeUnlocks:
+  - JawsOfLifeLeftArm
+  - JawsOfLifeRightArm
   position: -8,3
 
 - type: technology

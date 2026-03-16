@@ -45,6 +45,13 @@
   - StationMapElectronics
   - Pen
   - CrewCassette
+  - ConfettiGrenade
+  - FoodShakerSaltEmpty
+  - FoodShakerPepperEmpty
+  - VinylPlayerCircuitboard
+  - TapeDeckCircuitboard
+  - StationRadioServerCircuitboard
+  - StationRadioRigCircuitboard
   position: 8,-4
 
 - type: technology
@@ -69,6 +76,7 @@
   - AdvMopItem
   - LightReplacer
   - SprayBottle
+  - WeaponSprayNozzle
   - ClothingBackpackWaterTank
   - MegaSprayBottle
   position: 8,-2

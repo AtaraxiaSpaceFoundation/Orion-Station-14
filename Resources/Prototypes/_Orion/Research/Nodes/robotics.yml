@@ -12,6 +12,7 @@
   recipeUnlocks:
   - ExosuitFabricatorMachineCircuitboard
   - PersonalAI
+  - SciFlash
   position: -4,4
 
 - type: technology
@@ -26,7 +27,8 @@
   cost: 2500
   technologyPrerequisites:
   - Robotics
-  # TODO
+  recipeUnlocks:
+  - Drone
   position: -5,5
 
 - type: technology
@@ -43,6 +45,7 @@
   - Robotics
   recipeUnlocks:
   - StationAiUploadCircuitboard
+  - PinpointerBorg
   - AsimovCircuitBoard
   - AiRemoteBrain
   - CorporateCircuitBoard
@@ -87,3 +90,24 @@
 #  - TyrantLaws
 #  - YesmanLaws
   position: -3,6
+
+- type: technology
+  id: ModularSuit
+  name: research-technology-modular-suit-name
+  description: research-technology-modular-suit-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Industrial
+  tier: 1
+  cost: 7500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - ModsuitChestplate
+  - ModsuitBoots
+  - ModsuitHelmet
+  - ModsuitGauntlets
+  - ModsuitShell
+  - ModsuitPlatingExternal
+  position: -5,6

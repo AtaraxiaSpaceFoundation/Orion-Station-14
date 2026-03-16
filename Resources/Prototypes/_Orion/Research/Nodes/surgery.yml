@@ -94,4 +94,23 @@
   - EnergyScalpel
   - EnergyCautery
   - AdvancedRetractor
+  - AutodocCircuitboard
   position: 4,14
+
+- type: technology
+  id: SurgeryToolsAdvanced
+  name: research-technology-surgery-tools-advanced-name
+  description: research-technology-surgery-tools-advanced-desc
+  icon:
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    state: e-scalpel-on
+  discipline: CivilianServices
+  tier: 4
+  announceChannels:
+  - Medical
+  cost: 10000
+  technologyPrerequisites:
+  - SurgeryTools
+  recipeUnlocks:
+  - OmnimedTool
+  position: 4,15

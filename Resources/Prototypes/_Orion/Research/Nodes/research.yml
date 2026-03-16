@@ -18,6 +18,15 @@
   - AnomalyVesselCircuitboard
   - TinfoilHats
   - ProtolatheMachineCircuitboard
+  - AnomalyScanner
+  - NodeScanner
+  - AnomalyLocator
+  - TechDiskComputerCircuitboard
+  - AnalysisComputerCircuitboard
+  - APECircuitboard
+  - ArtifactAnalyzerMachineCircuitboard
+  - ArtifactCrusherMachineCircuitboard
+  - ExperimentalCircuitBoard
   position: 0,4
 
 - type: technology
@@ -69,6 +78,8 @@
   - ClothingBeltChemBagXenobiologyHolding
   - PlantBagOfHolding
   - OreProcessorIndustrialMachineCircuitboard
+  - VialBluespace
+  - ClothingBackpackHarmpack
   position: 0,6
 
 - type: technology
@@ -107,6 +118,11 @@
   recipeUnlocks:
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
+  - AnomalyLocatorWide
+  - WeaponPistolCHIMP
+  - Pinpointer
+  - PinpointerArtifact
+  - PinpointerAnomaly
   position: 1,6
 
 - type: technology
@@ -135,6 +151,9 @@
   - WeaponTetherGun
 #  - PolymorphBelt # TODO
   - VehicleHoverchairSci
+  - WeaponParticleDecelerator
+  - WeaponForceGun
+  - WeaponGauntletGorilla
   position: 1,8
 
 - type: technology

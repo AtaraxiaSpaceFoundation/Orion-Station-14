@@ -9,6 +9,7 @@
   - type: Lathe
     dynamicPacks:
     # Orion-Start
+    - TestPack # TEST!!! TEST!!! TEST!!!
     - BodyBagsDynamic
     - OrionService
     - MegaCells
