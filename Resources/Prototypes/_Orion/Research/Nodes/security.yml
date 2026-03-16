@@ -205,6 +205,7 @@
 - type: technology
   id: WeaponizedLaserManipulation
   name: research-technology-weaponized-laser-manipulation
+  description: research-technology-weaponized-laser-manipulation-desc
   icon:
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
     state: icon
@@ -223,6 +224,7 @@
 - type: technology
   id: PortableMicrofusionWeaponry
   name: research-technology-portable-microfusion-weaponry
+  description: research-technology-portable-microfusion-weaponry-desc
   icon:
     sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
     state: icon

@@ -140,6 +140,7 @@
 - type: technology
   id: BasicTranslation
   name: research-technology-basic-translation
+  description: research-technology-basic-translation-desc
   icon:
     sprite: _EinsteinEngines/Objects/Devices/translator.rsi
     state: icon
@@ -168,10 +169,10 @@
   - YowKriolTranslator
   position: -1,8
 
-# Tier 3
 - type: technology
   id: AdvancedTranslation
   name: research-technology-advanced-translation
+  description: research-technology-advanced-translation-desc
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0

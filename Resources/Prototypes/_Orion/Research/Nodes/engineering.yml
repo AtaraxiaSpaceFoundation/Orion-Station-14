@@ -91,7 +91,6 @@
   - PowerCellBluespace
   - MegaCellBluespace
   - PowerCellBluespaceReactor
-  - MegaCellBluespaceReactor
   position: 12,7
 
 - type: technology
@@ -251,7 +250,7 @@
   - EnergyManipulation
   - AppliedBluespace
   recipeUnlocks:
-  - ShuttleConsoleCircuitboards
+  - ShuttleConsoleCircuitboard
   - ShuttleGunKineticCircuitboard
   - ThrusterMachineCircuitboard
   - GyroscopeMachineCircuitboard
