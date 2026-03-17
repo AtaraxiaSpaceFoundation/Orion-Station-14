@@ -362,7 +362,7 @@
   - PartsBluespace
   recipeUnlocks:
   - ClothingBackpackLMGBattery
-  position: 4,4
+  position: 5,6
 
 - type: technology
   id: EnergyBarriers

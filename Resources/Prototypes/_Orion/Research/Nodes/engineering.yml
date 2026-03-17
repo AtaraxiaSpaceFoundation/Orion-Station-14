@@ -322,7 +322,7 @@
   - MedicalCyberneticEyes
   - DiagnosticCyberneticEyes
   - SecurityCyberneticEyes
-  position: 9,3
+  position: 8,2
 
 - type: technology
   id: NightVision
@@ -407,4 +407,4 @@
   recipeUnlocks:
   - TurboItemRechargerCircuitboard
   - PowerCageRechargerCircuitboard
-  position: 10,3
+  position: 13,3

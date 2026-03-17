@@ -73,7 +73,7 @@
   - WeaponProtoKineticShotgun
   - WeaponProtoKineticRepeater
   - WeaponProtoKineticPistol
-  position: 7,6
+  position: 6,6
 
 - type: technology
   id: LowPressureExcavation
