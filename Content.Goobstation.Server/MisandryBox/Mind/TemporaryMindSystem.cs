@@ -36,7 +36,7 @@ public sealed class TemporaryMindSystem : EntitySystem
         if (args.Player.Status != SessionStatus.Disconnected)
             return;
 
-        CleanupDisposableMind(ent.Comp);
+        CleanupDisposableMind(ent, ent.Comp); // Orion-Edit
         RemComp<TemporaryMindComponent>(ent);
     }
 
@@ -86,7 +86,7 @@ public sealed class TemporaryMindSystem : EntitySystem
 
         var coords = _transform.GetMapCoordinates(temporaryBody);
 
-        CleanupDisposableMind(temp);
+        CleanupDisposableMind(temporaryBody, temp); // Orion-Edit
 
         var ghost = Spawn("MobObserver", coords);
         _mind.Visit(temp.OriginalMind, ghost, origMind);
@@ -120,7 +120,7 @@ public sealed class TemporaryMindSystem : EntitySystem
         if (originalBody == null || !Exists(originalBody))
             return false;
 
-        CleanupDisposableMind(temp);
+        CleanupDisposableMind(temporaryBody, temp); // Orion-Edit
 
         if (origMind.UserId is { } userId && _playerManager.TryGetSessionById(userId, out var session))
             _playerManager.SetAttachedEntity(session, originalBody.Value);
@@ -129,8 +129,16 @@ public sealed class TemporaryMindSystem : EntitySystem
         return true;
     }
 
-    private void CleanupDisposableMind(TemporaryMindComponent temp)
+    private void CleanupDisposableMind(EntityUid temporaryBody, TemporaryMindComponent temp) // Orion-Edit
     {
+        // Orion-Start
+        if (TryComp<MindContainerComponent>(temporaryBody, out var tempContainer) && tempContainer.LastMindStored == temp.DisposableMind)
+        {
+            tempContainer.LastMindStored = null;
+            Dirty(temporaryBody, tempContainer);
+        }
+        // Orion-End
+
         if (Exists(temp.DisposableMind))
         {
             _mind.WipeMind(temp.DisposableMind);
