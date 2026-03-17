@@ -63,7 +63,7 @@ public sealed partial class MindContainerComponent : Component
     public EntityUid? Mind { get; set; }
 
     // Orion-Start
-    [DataField, AutoNetworkedField]
+    [DataField]
     [Access(typeof(SharedMindSystem), Other = AccessPermissions.ReadWriteExecute)]
     public EntityUid? LastMindStored { get; set; }
     // Orion-End
