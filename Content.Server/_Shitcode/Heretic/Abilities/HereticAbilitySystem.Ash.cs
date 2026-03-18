@@ -89,7 +89,7 @@ public sealed partial class HereticAbilitySystem
                 !TryComp<MobStateComponent>(look, out var mobstate) || mobstate.CurrentState == MobState.Dead)
                 continue;
 
-            if (mobstate.CurrentState == MobState.Critical)
+            if (mobstate.CurrentState == MobState.SoftCritical) // Orion-Edit
                 _mobstate.ChangeMobState(look, MobState.Dead, mobstate);
 
             toHeal += args.HealAmount;

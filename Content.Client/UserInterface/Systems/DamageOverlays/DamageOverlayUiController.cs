@@ -143,7 +143,8 @@ public sealed class DamageOverlayUiController : UIController
                         _overlay.DeadLevel = 0;
                         break;
                     }
-                case MobState.Critical:
+                case MobState.SoftCritical: // Orion-Edit
+                case MobState.HardCritical: // Orion
                     {
                         if (!_mobThresholdSystem.TryGetDeadPercentage(entity,
                                 FixedPoint2.Max(0.0, _mobThresholdSystem.CheckVitalDamage(entity, damageable)), out var critLevel)) // GoobStation
@@ -198,7 +199,8 @@ public sealed class DamageOverlayUiController : UIController
 
                         break;
                     }
-                case MobState.Critical:
+                case MobState.SoftCritical: // Orion-Edit
+                case MobState.HardCritical: // Orion
                     {
                         _overlay.CritLevel = FixedPoint2.Min(1f,
                             (consciousness.Threshold - consciousness.Consciousness) / consciousness.Threshold)

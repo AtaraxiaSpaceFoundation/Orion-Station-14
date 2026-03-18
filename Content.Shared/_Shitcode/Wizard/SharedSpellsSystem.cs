@@ -1083,9 +1083,9 @@ public abstract class SharedSpellsSystem : EntitySystem
             kill = true;
         }
 
-        if (_threshold.TryGetThresholdForState(ev.Performer, MobState.Critical, out var crit, thresholds) &&
+        if (_threshold.TryGetThresholdForState(ev.Performer, MobState.SoftCritical, out var crit, thresholds) && // Orion-Edit
             targetHealth <= crit)
-            _threshold.SetMobStateThreshold(ev.Performer, targetHealth - 0.01, MobState.Critical, thresholds);
+            _threshold.SetMobStateThreshold(ev.Performer, targetHealth - 0.01, MobState.SoftCritical, thresholds); // Orion-Edit
 
         _threshold.SetMobStateThreshold(ev.Performer, targetHealth, MobState.Dead, thresholds);
 

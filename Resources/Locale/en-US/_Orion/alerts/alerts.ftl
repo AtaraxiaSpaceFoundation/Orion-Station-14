@@ -20,3 +20,8 @@ alerts-disgust-desc = You're not feeling very well...
 # Cortical borer
 alerts-borer-sugar-name = Sugar weakness
 alerts-borer-sugar-desc = Your host is protected by sugar. You are greatly weakened.
+
+alerts-soft-crit-name = [color=red]Critical Condition[/color]
+alerts-soft-crit-desc = You are critically injured, can only crawl, and can barely breathe.
+alerts-hard-crit-name = [color=darkred]Severe Critical Condition[/color]
+alerts-hard-crit-desc = You are in severe critical condition and cannot act.

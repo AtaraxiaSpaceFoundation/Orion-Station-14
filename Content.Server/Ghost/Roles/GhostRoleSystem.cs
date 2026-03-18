@@ -147,8 +147,8 @@ public sealed class GhostRoleSystem : EntitySystem
                         RegisterGhostRole((component, ghostRole));
                     break;
                 }
-            case MobState.Critical:
-            case MobState.Dead:
+            case MobState.SoftCritical: // Orion-Edit
+            case MobState.HardCritical: // Orion
                 UnregisterGhostRole((component, ghostRole));
                 break;
         }

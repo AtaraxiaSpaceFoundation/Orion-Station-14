@@ -83,7 +83,7 @@ public abstract class SharedStealthSystem : EntitySystem
 
     private void OnMobStateChanged(EntityUid uid, StealthComponent component, MobStateChangedEvent args)// Goobstation - Stealth change
     {
-        if (args.NewMobState == MobState.Dead || args.NewMobState == MobState.Critical)
+        if (args.NewMobState is MobState.Dead or MobState.SoftCritical) // Orion-Edit
         {
             if (args.NewMobState == MobState.Dead)
                 component.Enabled = component.EnabledOnDeath;
