@@ -21,7 +21,3 @@ implanter-label-inject = [color=green]{ $implantName }[/color]
 implanter-label-draw = [color=red]{ $implantName }[/color]
     Режим: [color=white]{ $modeString }[/color]
 implanter-contained-implant-text = [color=green]{ $desc }[/color]
-
-## Implant Popups
-
-scramble-implant-activated-popup = Ваша внешность преображается и меняется!

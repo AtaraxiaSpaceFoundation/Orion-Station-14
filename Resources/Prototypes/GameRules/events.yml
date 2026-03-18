@@ -183,7 +183,7 @@
 #    - id: MalignRiftSpawn # DeltaV | Orion-Edit: Removed
     - id: FloorGoblinMidRound # Goobstation
     - id: ClownGoblinMigration # Goobstation - New Midrounds
-    - id: SantaClausSpawn # Goobstation, remove after new year
+    # - id: SantaClausSpawn # Goobstation, remove after new year
 
 - type: entityTable
   id: BasicAntagEventsTable
@@ -211,7 +211,7 @@
     - id: XenomorphsInfestation # WD EDIT
     - id: GreyTideAntagMidround # Goobstation - New Midrounds
     - id: SingulothKnightsMidround # Goobstation - New Midrounds
-    - id: DarkLordMidround # Goobstation - New Midrounds
+    #- id: DarkLordMidround # Goobstation - New Midrounds
     - id: MimeAssassinMidround # Goobstation - New Midrounds
     - id: DarkPriestMidround # Goobstation - New Midrounds
     - id: VoxRaidersMidround # Goobstation - New Midrounds

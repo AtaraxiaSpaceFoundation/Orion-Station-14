@@ -27,6 +27,7 @@ thunderdome-loadout-python = Питон
 thunderdome-loadout-inspector = Инспектор
 thunderdome-loadout-hristov = Христов
 thunderdome-loadout-esword = Энергетический меч
+thunderdome-loadout-capo = Капоэйра
 
 # Weapon descriptions (tooltips)
 thunderdome-desc-shotgun = Дробовик + 1 коробка картечи, 1 коробка ружейных патронов
@@ -39,12 +40,17 @@ thunderdome-desc-python = Заряженный бронебойный револ
 thunderdome-desc-inspector = Револьвер + 2 спидлоадера
 thunderdome-desc-hristov = Анти-материальная снайперская винтовка + 2 пары магазинов
 thunderdome-desc-esword = Энергетический меч + 2 Инъектора стимуляторов
+thunderdome-desc-capo = Капоэйра + 2 Инъектора стимуляторов
 
 # Kill streak announcements
-thunderdome-streak-3 = Серия убийств!
-thunderdome-streak-5 = Зверь!
-thunderdome-streak-7 = Маньяк!
-thunderdome-streak-10 = БЕСПОЩАДНЫЙ!
+thunderdome-streak-3 = {$player} устроил мясную серию!
+thunderdome-streak-4 = {$player} всех нагибает!
+thunderdome-streak-5 = {$player} сделал МЕГА-КИЛЛ!
+thunderdome-streak-6 = {$player} НЕ ОСТАНОВИТЬ!
+thunderdome-streak-7 = {$player} просто БОЛЬНОЙ УБЛЮДОК!
+thunderdome-streak-8 = {$player} сделал МОНСТР-КИЛЛ!
+thunderdome-streak-9 = {$player} ЧЁРТОВ БОГ УБИЙСТВ!
+thunderdome-streak-12 = {$player} ВООБЩЕ ВНЕ УРОВНЯ БОГОВ!
 
 # Revival
 thunderdome-revival-title = Тело Воскрешено

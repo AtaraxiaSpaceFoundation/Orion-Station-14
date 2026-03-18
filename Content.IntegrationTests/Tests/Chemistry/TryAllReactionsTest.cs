@@ -45,8 +45,8 @@ namespace Content.IntegrationTests.Tests.Chemistry
   - type: SolutionContainerManager
     solutions:
       beaker:
-        maxVol: 50
-        canMix: true";
+        maxVol: 500
+        canMix: true"; // Orion-Edit: 50 > 500
 
         [Test]
         public async Task TryAllTest()
