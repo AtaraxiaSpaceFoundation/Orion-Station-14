@@ -545,18 +545,7 @@ public sealed class RespiratorSystem : EntitySystem
         if (ent.Comp.SuffocationCycles >= 2)
             _adminLogger.Add(LogType.Asphyxiation, $"{ToPrettyString(ent):entity} stopped suffocating");
 
-        // Orion-Start
-        var recovery = ent.Comp.DamageRecovery;
-        if (TryComp<CritStateMovementComponent>(ent, out var critConfig))
-        {
-            if (_mobState.IsSoftCritical(ent))
-                recovery *= critConfig.SoftCritSuffocationRecoveryMultiplier;
-            else if (_mobState.IsHardCritical(ent))
-                recovery *= critConfig.HardCritSuffocationRecoveryMultiplier;
-        }
-        // Orion-End
-
-        _damageableSys.TryChangeDamage(ent, recovery); // Orion-Edit
+//        _damageableSys.TryChangeDamage(ent, ent.Comp.DamageRecovery); // Orion-Edit
 
         var ev = new StopSuffocatingEvent();
         RaiseLocalEvent(ent, ref ev);
@@ -603,19 +592,23 @@ public sealed class RespiratorSystem : EntitySystem
             }
         }
 
-        // Orion-Start
-        var recovery = respirator.DamageRecovery;
-        if (TryComp<CritStateMovementComponent>(ent, out var critConfig))
-        {
-            if (_mobState.IsSoftCritical(ent))
-                recovery *= critConfig.SoftCritSuffocationRecoveryMultiplier;
-            else if (_mobState.IsHardCritical(ent))
-                recovery *= critConfig.HardCritSuffocationRecoveryMultiplier;
-        }
-        // Orion-End
-
-        _damageableSys.TryChangeDamage(ent, recovery, targetPart: TargetBodyPart.All, ignoreBlockers: true); // Orion-Edit
+        _damageableSys.TryChangeDamage(ent, CalculateSuffocationRecovery(ent.Owner, respirator), targetPart: TargetBodyPart.All, ignoreBlockers: true); // Orion-Edit
         // Shitmed Change End
+    }
+
+    private DamageSpecifier CalculateSuffocationRecovery(EntityUid ent, RespiratorComponent respirator)
+    {
+        var recovery = respirator.DamageRecovery;
+
+        if (!TryComp<CritStateMovementComponent>(ent, out var critConfig))
+            return recovery;
+
+        if (_mobState.IsSoftCritical(ent))
+            recovery *= critConfig.SoftCritSuffocationRecoveryMultiplier;
+        else if (_mobState.IsHardCritical(ent))
+            recovery *= critConfig.HardCritSuffocationRecoveryMultiplier;
+
+        return recovery;
     }
 
     public void UpdateSaturation(EntityUid uid, float amount, RespiratorComponent? respirator = null)
