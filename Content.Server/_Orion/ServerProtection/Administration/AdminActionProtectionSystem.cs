@@ -10,7 +10,7 @@ namespace Content.Server._Orion.ServerProtection.Administration;
 // License-Identifier: AGPL-3.0-or-later
 //
 
-public sealed class AdminActionProtectionSystem : IPostInjectInit
+public sealed class AdminActionProtectionSystem : EntitySystem
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -40,14 +40,9 @@ public sealed class AdminActionProtectionSystem : IPostInjectInit
         Permission
     }
 
-    public void PostInject()
+    public override void Initialize()
     {
-        Initialize();
-    }
-
-    public void Initialize()
-    {
-        IoCManager.InjectDependencies(this);
+        base.Initialize();
 
         _log = Logger.GetSawmill("serverprotection.admin_action_protection");
 
@@ -99,12 +94,6 @@ public sealed class AdminActionProtectionSystem : IPostInjectInit
 
     private void AnnounceToggle(string systemName, string cvarName, bool enabled)
     {
-        var old = _protectionEnabled;
-        _protectionEnabled = enabled;
-
-        if (!_initialized || old == enabled)
-            return;
-
         var actor = _toggleAudit.TryGetRecentActor(cvarName, TimeSpan.FromSeconds(5), out var knownActor)
             ? knownActor
             : "unknown";
