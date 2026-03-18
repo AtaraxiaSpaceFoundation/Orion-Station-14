@@ -1,8 +1,3 @@
-research-destructive-analyzer-success = Образец успешно деструктивно проанализирован.
-research-experimentator-success = Экспериментальный деструктивный сканер успешно завершил операцию.
-research-experimentator-failure = Операция экспериментального деструктивного сканера завершилась неудачей.
-research-experimentator-backfire = Экспериментальный деструктивный сканер дал опасный обратный эффект!
-
 research-server-control-title = Управление серверами РнД
 research-server-control-enable = Включить генерацию
 research-server-control-disable = Выключить генерацию

@@ -18,13 +18,13 @@ public enum DestructiveAnalyzerVisualState : byte
 }
 
 [Serializable, NetSerializable]
-public enum ExperimentatorVisuals : byte
+public enum ExperimentalDestructiveScannerVisuals : byte
 {
     State,
 }
 
 [Serializable, NetSerializable]
-public enum ExperimentatorVisualState : byte
+public enum ExperimentalDestructiveScannerVisualState : byte
 {
     Idle,
     Up,
@@ -40,7 +40,7 @@ public enum DestructiveAnalyzerVisualLayers : byte
 }
 
 [Serializable, NetSerializable]
-public enum ExperimentatorVisualLayers : byte
+public enum ExperimentalDestructiveScannerVisualLayers : byte
 {
     Base,
 }

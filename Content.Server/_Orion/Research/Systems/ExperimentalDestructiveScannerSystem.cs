@@ -7,18 +7,16 @@ using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Chat;
 using Content.Shared.Item;
 using Content.Shared.Research.Components;
-using Content.Shared.Tag;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Research.Systems;
 
-public sealed class ExperimentatorSystem : EntitySystem
+public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
 {
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
@@ -27,53 +25,51 @@ public sealed class ExperimentatorSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<ExperimentatorComponent, BoundUIOpenedEvent>(OnUiOpened);
-        SubscribeLocalEvent<ExperimentatorComponent, OpenResearchServerMenuMessage>(OnOpenServerMenu);
-        SubscribeLocalEvent<ExperimentatorComponent, ExperimentScannerPerformMessage>(OnPerform);
-        SubscribeLocalEvent<ExperimentatorComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
-        SubscribeLocalEvent<ExperimentatorComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
-        SubscribeLocalEvent<ExperimentatorComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, OpenResearchServerMenuMessage>(OnOpenServerMenu);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ExperimentalDestructiveScannerPerformMessage>(OnPerform);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ComponentStartup>(OnStartup);
     }
 
-    private void OnStartup(Entity<ExperimentatorComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<ExperimentalDestructiveScannerComponent> ent, ref ComponentStartup args)
     {
         _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
-        UpdateAppearance(ent, ExperimentatorVisualState.Idle);
+        UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Idle);
     }
 
-    private void OnUiOpened(Entity<ExperimentatorComponent> ent, ref BoundUIOpenedEvent args)
+    private void OnUiOpened(Entity<ExperimentalDestructiveScannerComponent> ent, ref BoundUIOpenedEvent args)
     {
         UpdateUi(ent);
     }
 
-    private void OnOpenServerMenu(Entity<ExperimentatorComponent> ent, ref OpenResearchServerMenuMessage args)
+    private void OnOpenServerMenu(Entity<ExperimentalDestructiveScannerComponent> ent, ref OpenResearchServerMenuMessage args)
     {
         _ui.TryToggleUi(ent.Owner, ResearchClientUiKey.Key, args.Actor);
     }
 
-    private void OnPointsChanged(Entity<ExperimentatorComponent> ent, ref ResearchServerPointsChangedEvent args)
+    private void OnPointsChanged(Entity<ExperimentalDestructiveScannerComponent> ent, ref ResearchServerPointsChangedEvent args)
     {
-        if (_ui.IsUiOpen(ent.Owner, ExperimentatorUiKey.Key))
+        if (_ui.IsUiOpen(ent.Owner, ExperimentalDestructiveScannerUiKey.Key))
             UpdateUi(ent);
     }
 
-    private void OnRegistrationChanged(Entity<ExperimentatorComponent> ent, ref ResearchRegistrationChangedEvent args)
+    private void OnRegistrationChanged(Entity<ExperimentalDestructiveScannerComponent> ent, ref ResearchRegistrationChangedEvent args)
     {
         UpdateUi(ent);
     }
 
-    private void OnPerform(Entity<ExperimentatorComponent> ent, ref ExperimentScannerPerformMessage args)
+    private void OnPerform(Entity<ExperimentalDestructiveScannerComponent> ent, ref ExperimentalDestructiveScannerPerformMessage args)
     {
         if (ent.Comp.IsProcessing)
         {
-            ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-busy");
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-busy");
             _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
@@ -107,7 +103,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         if (items.Count == 0)
         {
             ent.Comp.LastSubject = string.Empty;
-            ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-no-items");
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-no-items");
             _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
@@ -124,7 +120,7 @@ public sealed class ExperimentatorSystem : EntitySystem
         if (scannedItems.Count == 0)
         {
             ent.Comp.LastSubject = string.Empty;
-            ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-no-items");
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-no-items");
             _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
@@ -133,10 +129,10 @@ public sealed class ExperimentatorSystem : EntitySystem
         var actor = args.Actor;
 
         ent.Comp.IsProcessing = true;
-        UpdateAppearance(ent, ExperimentatorVisualState.Down);
+        UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Down);
         ent.Comp.LastSubject = string.Join(", ", scannedItems.Select(uid => Name(uid)));
-        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", scannedItems.Count));
-        _research.LogNetworkEvent(server, "experiment-scanner", Loc.GetString("research-netlog-experiment-scanner-started", ("count", scannedItems.Count), ("user", _research.GetResearchLogUserName(args.Actor))), args.Actor);
+        ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-processing", ("count", scannedItems.Count));
+        _research.LogNetworkEvent(server, "experimental-destructive-scanner", Loc.GetString("research-netlog-experimental-destructive-scanner-started", ("count", scannedItems.Count), ("user", _research.GetResearchLogUserName(args.Actor))), args.Actor);
         UpdateUi(ent);
 
         Timer.Spawn(ent.Comp.CapsuleStepDuration,
@@ -145,13 +141,13 @@ public sealed class ExperimentatorSystem : EntitySystem
                 if (TerminatingOrDeleted(ent) || !ent.Comp.IsProcessing)
                     return;
 
-                UpdateAppearance(ent, ExperimentatorVisualState.Scanning);
+                UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Scanning);
             });
 
         Timer.Spawn(ent.Comp.ScanDuration, () => CompleteScan(ent, server, scannedItems, actor));
     }
 
-    private void CompleteScan(Entity<ExperimentatorComponent> ent, EntityUid server, List<EntityUid> scannedItems, EntityUid? user)
+    private void CompleteScan(Entity<ExperimentalDestructiveScannerComponent> ent, EntityUid server, List<EntityUid> scannedItems, EntityUid? user)
     {
         if (TerminatingOrDeleted(ent))
             return;
@@ -164,24 +160,15 @@ public sealed class ExperimentatorSystem : EntitySystem
             if (TerminatingOrDeleted(item))
                 continue;
 
-            if (_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed))
-            {
-                changedAny |= changed;
-                completedCount += completed.Count;
-            }
+            if (!_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed))
+                continue;
 
-            foreach (var operation in _prototype.EnumeratePrototypes<ResearchExperimentatorOperationPrototype>())
-            {
-                if (!operation.RequiredTags.All(tag => _tag.HasTag(item, tag)))
-                    continue;
-
-                if (operation.SuccessExperimentAction != null && _random.Prob(operation.SuccessChance))
-                    changedAny |= _research.TryProgressExperimentsByAction(server, operation.SuccessExperimentAction);
-            }
+            changedAny |= changed;
+            completedCount += completed.Count;
         }
 
         ent.Comp.IsProcessing = false;
-        UpdateAppearance(ent, ExperimentatorVisualState.Up);
+        UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Up);
 
         Timer.Spawn(ent.Comp.CapsuleStepDuration,
             () =>
@@ -192,17 +179,17 @@ public sealed class ExperimentatorSystem : EntitySystem
                 var itemContainer = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
                 _container.EmptyContainer(itemContainer, true, Transform(ent).Coordinates);
 
-                UpdateAppearance(ent, ExperimentatorVisualState.Idle);
+                UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Idle);
             });
 
         if (completedCount > 0)
-            ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-completed", ("count", completedCount));
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-completed", ("count", completedCount));
         else if (changedAny)
-            ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-progressed");
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-progressed");
         else
-            ent.Comp.LastResult = Loc.GetString("research-machine-experimentator-no-matching-experiment");
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-no-matching-experiment");
 
-        _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("research-machine-experiment-scanner-chat-result", ("result", ent.Comp.LastResult)), InGameICChatType.Speak, false);
+        _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("research-machine-experimental-destructive-scanner-chat-result", ("result", ent.Comp.LastResult)), InGameICChatType.Speak, false);
         _audio.PlayPvs(changedAny || completedCount > 0
             ? ent.Comp.SuccessSound
             : ent.Comp.FailureSound,
@@ -210,18 +197,18 @@ public sealed class ExperimentatorSystem : EntitySystem
             ent.Comp.AudioParams);
 
         _research.LogNetworkEvent(server,
-            "experiment-scanner",
-            Loc.GetString("research-netlog-experiment-scanner-result",
+            "experimental-destructive-scanner",
+            Loc.GetString("research-netlog-experimental-destructive-scanner-result",
                 ("completed", completedCount),
                 ("progressed", Loc.GetString(changedAny
-                    ? "research-netlog-experiment-scanner-progress-yes"
-                    : "research-netlog-experiment-scanner-progress-no")),
+                    ? "research-netlog-experimental-destructive-scanner-progress-yes"
+                    : "research-netlog-experimental-destructive-scanner-progress-no")),
                 ("user", _research.GetResearchLogUserName(user))),
             user);
         UpdateUi(ent);
     }
 
-    private bool TryResolveServer(Entity<ExperimentatorComponent> ent, out EntityUid server)
+    private bool TryResolveServer(Entity<ExperimentalDestructiveScannerComponent> ent, out EntityUid server)
     {
         server = EntityUid.Invalid;
 
@@ -239,12 +226,12 @@ public sealed class ExperimentatorSystem : EntitySystem
         return true;
     }
 
-    private void UpdateAppearance(Entity<ExperimentatorComponent> ent, ExperimentatorVisualState state)
+    private void UpdateAppearance(Entity<ExperimentalDestructiveScannerComponent> ent, ExperimentalDestructiveScannerVisualState state)
     {
-        _appearance.SetData(ent.Owner, ExperimentatorVisuals.State, state);
+        _appearance.SetData(ent.Owner, ExperimentalDestructiveScannerVisuals.State, state);
     }
 
-    private void UpdateUi(Entity<ExperimentatorComponent> ent)
+    private void UpdateUi(Entity<ExperimentalDestructiveScannerComponent> ent)
     {
         string? serverName = null;
         var pointBalances = new List<ResearchPointAmount>();
@@ -277,10 +264,10 @@ public sealed class ExperimentatorSystem : EntitySystem
         }
 
         var status = ent.Comp.IsProcessing
-            ? Loc.GetString("research-machine-experiment-scanner-state-processing")
+            ? Loc.GetString("research-machine-experimental-destructive-scanner-state-processing")
             : Loc.GetString("research-machine-common-none");
 
-        var state = new ExperimentatorBoundInterfaceState(
+        var state = new ExperimentalDestructiveScannerBoundInterfaceState(
             serverName,
             pointBalances,
             ent.Comp.LastSubject,
@@ -288,6 +275,6 @@ public sealed class ExperimentatorSystem : EntitySystem
             experiments,
             status);
 
-        _ui.SetUiState(ent.Owner, ExperimentatorUiKey.Key, state);
+        _ui.SetUiState(ent.Owner, ExperimentalDestructiveScannerUiKey.Key, state);
     }
 }

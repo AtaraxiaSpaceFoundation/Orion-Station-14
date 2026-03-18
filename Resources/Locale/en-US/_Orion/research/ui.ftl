@@ -16,7 +16,7 @@ research-log-category-technology = Technology
 research-log-category-disk = Data disk
 research-log-category-experiment = Experiment
 research-log-category-destructive-analyzer = Destructive analyzer
-research-log-category-experiment-scanner = Experimental scanner
+research-log-category-experimental-destructive-scanner = Experimental destructive scanner
 
 research-console-logs-empty = No log entries.
 research-server-name-base = R&D-Server

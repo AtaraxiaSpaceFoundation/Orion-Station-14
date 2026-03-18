@@ -10,12 +10,12 @@ using Robust.Shared.Utility;
 namespace Content.Client._Orion.Research.UI;
 
 [GenerateTypedNameReferences]
-public sealed partial class ExperimentatorMenu : FancyWindow
+public sealed partial class ExperimentalDestructiveScannerMenu : FancyWindow
 {
     public event Action? OnServerButtonPressed;
     public event Action? OnPerformPressed;
 
-    public ExperimentatorMenu()
+    public ExperimentalDestructiveScannerMenu()
     {
         RobustXamlLoader.Load(this);
 
@@ -35,14 +35,14 @@ public sealed partial class ExperimentatorMenu : FancyWindow
             : Loc.GetString("research-server-name-with-suffix", ("suffix", suffix));
     }
 
-    public void UpdateState(ExperimentatorBoundInterfaceState state)
+    public void UpdateState(ExperimentalDestructiveScannerBoundInterfaceState state)
     {
         ServerLabel.Text = state.ConnectedServerName == null
             ? Loc.GetString("research-machine-common-server-none")
             : Loc.GetString("research-machine-common-server-current", ("name", FormatServerName(state.ConnectedServerName)));
 
         InsertedItemLabel.Text = Loc.GetString("research-machine-common-labeled-value",
-            ("label", Loc.GetString("research-machine-experiment-scanner-status")),
+            ("label", Loc.GetString("research-machine-experimental-destructive-scanner-status")),
             ("value", state.InsertedItem ?? Loc.GetString("research-machine-common-none")));
 
         OperationsContainer.RemoveAllChildren();
@@ -55,7 +55,7 @@ public sealed partial class ExperimentatorMenu : FancyWindow
         {
             OperationsContainer.AddChild(new Label
             {
-                Text = Loc.GetString("research-machine-experimentator-operations-empty"),
+                Text = Loc.GetString("research-machine-experimental-destructive-scanner-operations-empty"),
                 Modulate = Color.Gray,
             });
         }

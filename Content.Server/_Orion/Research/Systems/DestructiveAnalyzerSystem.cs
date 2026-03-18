@@ -118,7 +118,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
     {
         if (ent.Comp.IsProcessing)
         {
-            ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-busy");
+            ent.Comp.LastResult = Loc.GetString("research-machine-destructive-busy");
             _audio.PlayPvs(ent.Comp.FailureSound, ent, ent.Comp.AudioParams);
             UpdateUi(ent);
             return;
@@ -181,7 +181,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
 
         ent.Comp.IsProcessing = true;
         UpdateAppearance(ent, DestructiveAnalyzerVisualState.Deconstructing);
-        ent.Comp.LastResult = Loc.GetString("research-machine-experiment-scanner-processing", ("count", 1));
+        ent.Comp.LastResult = Loc.GetString("research-machine-destructive-processing", ("count", 1));
         UpdateUi(ent);
 
         Timer.Spawn(ent.Comp.DeconstructAnimationDuration,

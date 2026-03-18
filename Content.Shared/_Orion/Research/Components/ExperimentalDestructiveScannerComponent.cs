@@ -3,10 +3,10 @@ using Robust.Shared.Audio;
 namespace Content.Shared._Orion.Research.Components;
 
 [RegisterComponent]
-public sealed partial class ExperimentatorComponent : Component
+public sealed partial class ExperimentalDestructiveScannerComponent : Component
 {
     [DataField]
-    public string ContainerId = "experimentator-container";
+    public string ContainerId = "experimental-destructive-scanner-container";
 
     [DataField]
     public TimeSpan ScanDuration = TimeSpan.FromSeconds(3.5f);

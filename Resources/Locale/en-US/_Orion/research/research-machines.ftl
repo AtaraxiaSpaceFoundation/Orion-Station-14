@@ -17,27 +17,19 @@ research-machine-destructive-requirements-line-2 = • The sample must provide a
 research-machine-destructive-last-result-success = Sample processed successfully: { $result }.
 research-machine-destructive-last-result-invalid-item = The item is not suitable for destructive analysis.
 
-research-machine-experimentator-window-title = Experimental Destructive Scanner
-research-machine-experimentator-requirements-title = Operations and requirements
-research-machine-experimentator-operations-empty = No operations available.
-research-machine-experimentator-operation-label = Operation {$index}
-research-machine-experimentator-operation-success = Success chance
-research-machine-experimentator-operation-backfire = Backfire chance
-research-machine-experimentator-last-result = Operation completed: { $result }.
-research-machine-experimentator-last-result-no-operation = No matching operation for this item.
-research-machine-experimentator-operation-success-reward = Reward on success
-research-machine-experimentator-operation-failure-reward = Reward on failure
+research-machine-experimental-destructive-scanner-window-title = Experimental Destructive Scanner
+research-machine-experimental-destructive-scanner-requirements-title = Operations and requirements
+research-machine-experimental-destructive-scanner-operations-empty = No operations available.
+research-machine-experimental-destructive-scanner-last-result = Operation completed: { $result }.
+research-machine-experimental-destructive-scanner-last-result-no-operation = No matching operation for this item.
 
-research-machine-experimentator-operation-subject = Suitable sample
-research-machine-experimentator-operation-subject-FragmentPulse = artifact fragment
-research-machine-experimentator-operation-subject-AnomalousPulse = anomaly core
-research-machine-experimentator-perform = Perform experiment
-research-machine-experimentator-item-loaded = Sample loaded.
-research-machine-experimentator-no-item = No sample inserted.
-research-machine-experimentator-already-scanned = This sample was already scanned.
-research-machine-experimentator-no-matching-experiment = No active experiment matches this sample.
-research-machine-experimentator-progressed = Objective progress updated.
-research-machine-experimentator-completed = Experiment(s) completed: {$count}.
+research-machine-experimental-destructive-scanner-perform = Perform experiment
+research-machine-experimental-destructive-scanner-item-loaded = Sample loaded.
+research-machine-experimental-destructive-scanner-no-item = No sample inserted.
+research-machine-experimental-destructive-scanner-already-scanned = This sample was already scanned.
+research-machine-experimental-destructive-scanner-no-matching-experiment = No active experiment matches this sample.
+research-machine-experimental-destructive-scanner-progressed = Objective progress updated.
+research-machine-experimental-destructive-scanner-completed = Experiment(s) completed: {$count}.
 research-machine-destructive-run = Run analysis
 research-machine-eject-button = Eject item
 research-machine-destructive-item-loaded = Sample loaded.
@@ -52,11 +44,11 @@ research-experiment-objective-scansamples = Scan samples
 research-experiment-objective-actioncount = Action count
 research-experiment-objective-debugmanual = Manual
 
-research-machine-experiment-scanner-no-items = No items detected on scanner tile.
-research-machine-experiment-scanner-busy = Scanner is already processing samples.
-research-machine-experiment-scanner-processing = Scanner closed and started processing { $count } sample(s).
-research-machine-experiment-scanner-state-processing = processing...
-research-machine-experiment-scanner-status = Status
+research-machine-experimental-destructive-scanner-no-items = No items detected on scanner tile.
+research-machine-experimental-destructive-scanner-busy = Scanner is already processing samples.
+research-machine-experimental-destructive-scanner-processing = Scanner closed and started processing { $count } sample(s).
+research-machine-experimental-destructive-scanner-state-processing = processing...
+research-machine-experimental-destructive-scanner-status = Status
 
 research-machine-destructive-method-deconstruct = Deconstruct
 research-machine-destructive-method-illegaltechnology = Illegal Technology
@@ -77,4 +69,11 @@ research-machine-destructive-result-points-entry = { $type} { $amount }
 research-machine-destructive-result-revealed-tech = technology revealed: { $technology }
 research-machine-destructive-result-unlocked-tech = technology unlocked: { $technology }
 
-research-machine-experiment-scanner-chat-result = Experimental scanner result: { $result }
+research-machine-experimental-destructive-scanner-chat-result = Experimental destructive scanner result: { $result }
+
+research-machine-destructive-busy = Analyzer is already processing a sample.
+research-machine-destructive-processing = Analyzer started processing the sample.
+
+research-destructive-analyzer-success = Sample destructively analyzed.
+research-experimental-destructive-scanner-success = Experimental destructive scanner run succeeded.
+research-experimental-destructive-scanner-failure = Experimental destructive scanner run failed.

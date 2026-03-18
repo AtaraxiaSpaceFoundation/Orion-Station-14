@@ -9,10 +9,9 @@ research-netlog-disk-printing-started = { $user } started printing technology di
 research-netlog-disk-printed = { $user } completed printing a technology disk for { $points } points.
 research-netlog-experiment-completed = { $user } completed experiment: { $experiment }.
 research-netlog-destructive-analyzed = Sample destructively analyzed, reward applied.
-research-netlog-experimentator-operation = Experimentator operation result: { $result }.
-research-netlog-experimentator-result-success = success
-research-netlog-experimentator-result-failure = failure
-research-netlog-experimentator-result-backfire = backfire
+research-netlog-experimental-destructive-scanner-operation = Experimental destructive scanner operation result: { $result }.
+research-netlog-experimental-destructive-scanner-result-success = success
+research-netlog-experimental-destructive-scanner-result-failure = failure
 
 research-netlog-discovery-hidden-tech = { $user } revealed hidden technology: { $technology }.
 research-netlog-server-control-generation-toggled = { $user } set point generation to { $state } via control console.
@@ -21,9 +20,9 @@ research-netlog-server-control-state-disabled = disabled
 research-netlog-destructive-analysis-result = { $user } completed destructive analysis by method { $method } for sample { $subject }, result: { $result }.
 research-netlog-experiment-reward-applied = { $user } applied experiment reward pipeline: { $experiment }.
 
-research-netlog-experiment-scanner-started = { $user } started experimental destructive scanner: { $count } sample(s).
-research-netlog-experiment-scanner-result = { $user } completed experimental destructive scanner: experiments finished { $completed }, progress changed: { $progressed }.
-research-netlog-experiment-scanner-progress-yes = yes
-research-netlog-experiment-scanner-progress-no = no
+research-netlog-experimental-destructive-scanner-started = { $user } started experimental destructive scanner: { $count } sample(s).
+research-netlog-experimental-destructive-scanner-result = { $user } completed experimental destructive scanner: experiments finished { $completed }, progress changed: { $progressed }.
+research-netlog-experimental-destructive-scanner-progress-yes = yes
+research-netlog-experimental-destructive-scanner-progress-no = no
 
 research-netlog-user-system = System

@@ -9,10 +9,9 @@ research-netlog-disk-printing-started = { $user } запустил(а) печа�
 research-netlog-disk-printed = { $user } завершил(а) печать технологического диска за { $points } очков.
 research-netlog-experiment-completed = { $user } завершил(а) эксперимент: { $experiment }.
 research-netlog-destructive-analyzed = Образец деструктивно проанализирован, награда применена.
-research-netlog-experimentator-operation = Результат операции экспериментального деструктивного сканера: { $result }.
-research-netlog-experimentator-result-success = успех
-research-netlog-experimentator-result-failure = неудача
-research-netlog-experimentator-result-backfire = обратный эффект
+research-netlog-experimental-destructive-scanner-operation = Результат операции экспериментального деструктивного сканера: { $result }.
+research-netlog-experimental-destructive-scanner-result-success = успех
+research-netlog-experimental-destructive-scanner-result-failure = неудача
 
 research-netlog-discovery-hidden-tech = { $user } раскрыл(а) скрытую технологию: { $technology }.
 research-netlog-server-control-generation-toggled = { $user } переключил(а) генерацию очков: { $state } через консоль управления.
@@ -21,9 +20,9 @@ research-netlog-server-control-state-disabled = выключена
 research-netlog-destructive-analysis-result = { $user } завершил(а) деструктивный анализ методом { $method } для образца { $subject }, результат: { $result }.
 research-netlog-experiment-reward-applied = { $user } применил(а) пайплайн награды эксперимента: { $experiment }.
 
-research-netlog-experiment-scanner-started = { $user } запустил(а) экспериментальный деструктивный сканер: образцов { $count }.
-research-netlog-experiment-scanner-result = { $user } завершил(а) экспериментальный деструктивный сканер: завершено экспериментов { $completed }, прогресс изменён: { $progressed }.
-research-netlog-experiment-scanner-progress-yes = да
-research-netlog-experiment-scanner-progress-no = нет
+research-netlog-experimental-destructive-scanner-started = { $user } запустил(а) экспериментальный деструктивный сканер: образцов { $count }.
+research-netlog-experimental-destructive-scanner-result = { $user } завершил(а) экспериментальный деструктивный сканер: завершено экспериментов { $completed }, прогресс изменён: { $progressed }.
+research-netlog-experimental-destructive-scanner-progress-yes = да
+research-netlog-experimental-destructive-scanner-progress-no = нет
 
 research-netlog-user-system = Система

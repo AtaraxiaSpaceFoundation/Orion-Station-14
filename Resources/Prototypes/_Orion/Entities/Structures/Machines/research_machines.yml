@@ -61,12 +61,12 @@
     offset: 0,0.5
     layers:
     - state: icon
-      map: ["enum.ExperimentatorVisualLayers.Base"]
+      map: ["enum.ExperimentalDestructiveScannerVisualLayers.Base"]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.ExperimentatorVisuals.State:
-        enum.ExperimentatorVisualLayers.Base:
+      enum.ExperimentalDestructiveScannerVisuals.State:
+        enum.ExperimentalDestructiveScannerVisualLayers.Base:
           Idle: { state: icon }
           Up: { state: up }
           Down: { state: down }
@@ -84,15 +84,15 @@
     containers:
       machine_board: !type:Container
       machine_parts: !type:Container
-      experimentator-container: !type:Container
+      experimental-destructive-scanner-container: !type:Container
   - type: ResearchClient
-  - type: Experimentator
+  - type: ExperimentalDestructiveScanner
   - type: ActivatableUI
-    key: enum.ExperimentatorUiKey.Key
+    key: enum.ExperimentalDestructiveScannerUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
-      enum.ExperimentatorUiKey.Key:
-        type: ExperimentatorBoundUserInterface
+      enum.ExperimentalDestructiveScannerUiKey.Key:
+        type: ExperimentalDestructiveScannerBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
