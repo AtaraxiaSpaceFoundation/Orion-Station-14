@@ -296,7 +296,7 @@
   - WeaponLaserCellRevolver
   - WeaponLaserCellSMG
   - WeaponLaserCellSniper
-  position: 4,2
+  position: 4,-2
 
 - type: technology
   id: PortableMicrofusionWeaponry
@@ -322,7 +322,7 @@
   - PowerCellOverchargedRevolver
   - PowerCellOverchargedSMG
   - PowerCellOverchargedSniper
-  position: 4,3
+  position: 4,-3
 
 - type: technology
   id: SmartWeaponry
@@ -342,7 +342,7 @@
   - PartsBluespace
   recipeUnlocks:
   - WeaponSubMachineSmart
-  position: 4,4
+  position: 4,-4
 
 - type: technology
   id: HeavyWeaponry
@@ -362,7 +362,7 @@
   - PartsBluespace
   recipeUnlocks:
   - ClothingBackpackLMGBattery
-  position: 5,6
+  position: 5,0
 
 - type: technology
   id: EnergyBarriers
@@ -380,4 +380,4 @@
   - PortableMicrofusionWeaponry
   recipeUnlocks:
   - EnergyDomeTurtle
-  position: 4,5
+  position: 3,0

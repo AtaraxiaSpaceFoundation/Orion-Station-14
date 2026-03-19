@@ -17,7 +17,7 @@
   - SheetRGlass
   - OreProcessorMachineCircuitboard
   - SalvageMagnetMachineCircuitboard
-  position: 5,5
+  position: 5,6
 
 - type: technology
   id: Mining
@@ -45,7 +45,7 @@
   - FultonBeacon
   - OreBag
   - RadarConsoleCircuitboard
-  position: 3,6
+  position: 5,5
 
 - type: technology
   id: ProtoKineticAccelerators
@@ -89,7 +89,7 @@
   - PKAUpgradeRange
   - PKAUpgradeFireRate
   - PKAUpgradeSpace
-  position: 7,6
+  position: 6,7
 
 - type: technology
   id: PlasmaMining
@@ -126,7 +126,7 @@
   - Gaming
   - AppliedBluespace
   # TODO
-  position: 5,4
+  position: 4,6
 
 - type: technology
   id: AdvancedMining

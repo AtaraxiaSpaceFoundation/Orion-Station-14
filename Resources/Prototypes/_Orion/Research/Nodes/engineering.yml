@@ -322,7 +322,7 @@
   - MedicalCyberneticEyes
   - DiagnosticCyberneticEyes
   - SecurityCyberneticEyes
-  position: 8,2
+  position: 10,1
 
 - type: technology
   id: NightVision
@@ -344,7 +344,7 @@
   recipeUnlocks:
   # TODO: Departament variations
   - ClothingEyesNightVisionGoggles
-  position: 9,2
+  position: 11,0
 
 - type: technology
   id: LocalizedMagnetism
@@ -359,14 +359,14 @@
   - Engineering
   - Science
   cost: 10000
-#  technologyPrerequisites:
-#  - HUD
+  technologyPrerequisites:
+  - ExperimentalTools
   recipeUnlocks:
   - ClothingShoesBootsMag
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
   - ClothingShoesBootsJump
-  position: 9,3
+  position: 14,0
 
 - type: technology
   id: UpgradeKits
@@ -381,14 +381,14 @@
   - Engineering
   - Science
   cost: 10000
-#  technologyPrerequisites:
-#  - HUD
+  technologyPrerequisites:
+  - AdvancedParts
   recipeUnlocks:
   - LatheUpgradeKitHyper
   - LatheUpgradeKitCryo
   - AutodocUpgradeKitBluespace
   - UpgradeKitAutomation
-  position: 9,4
+  position: 11,6
 
 - type: technology
   id: EnergyManipulationAdvanced
