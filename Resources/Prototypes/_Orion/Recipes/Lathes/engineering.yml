@@ -96,8 +96,8 @@
   - Engineering
   completetime: 4
   materials:
-    Steel: 500
-    Glass: 300
+    Steel: 1800
+    Glass: 700
 
 - type: latheRecipe
   id: WelderMini
