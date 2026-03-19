@@ -90,6 +90,10 @@
   recipes:
   # Orion-Start
   - EnergyDomeTurtle
+  - SurveillanceWirelessCameraBodySecurity
+  - PepperSpray
+  - FlashlightSeclite
+  - SmokeGrenade
   # Orion-End
   - ClothingBackpackElectropack
   - HoloprojectorSecurity
@@ -163,6 +167,9 @@
   - WeaponXrayCannon
   - WeaponTemperatureGun # Goobstation
   - Terminus # Goobstation
+  # Orion-Start
+  - RiotBulletShield
+  # Orion-End
 
 - type: latheRecipePack
   id: SecurityDisablers

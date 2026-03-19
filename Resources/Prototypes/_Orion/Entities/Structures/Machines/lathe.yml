@@ -9,10 +9,13 @@
   - type: Lathe
     dynamicPacks:
     # Orion-Start
-    - TestPack # TEST!!! TEST!!! TEST!!!
+    - AbductorEngineering
+    - AbductorMedical
+    - AILawboards
     - BodyBagsDynamic
-    - OrionService
+    - BasicService
     - MegaCells
+    - Hydroponic
     # Orion-End
     - AdvancedTools
     - ScienceEquipment

@@ -641,6 +641,7 @@
     idleState: fab-idle
     runningState: fab-active
     dynamicPacks: # Orion-Edit: Static > Dynamic
+    - AILawboards # Orion
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
@@ -867,6 +868,7 @@
     - SurgeryStatic
     # Orion-Start
     - EmptyMedicalSprayBottlesStatic
+    - AbductorMedical
     # Orion-End
     # Goobstation Packs
     - ParamedHypoStatic

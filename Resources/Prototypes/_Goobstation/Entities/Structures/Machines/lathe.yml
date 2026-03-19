@@ -43,6 +43,7 @@
     idleState: icon
     runningState: icon
     dynamicPacks: # Orion-Edit: Static > Dynamic
+    - AbductorEngineering # Orion
     - SharedBoardsStatic
     - EngineeringBoardsStatic
     - CircuitFloorsStatic
@@ -283,7 +284,10 @@
     - ChemistryStatic
     - TapeRecorderStatic
     - CondimentStatic
-    - OrionService # Orion
+    # Orion-Start
+    - BasicService
+    - Hydroponic
+    # Orion-End
     - Janitor
     - Instruments
     - FauxTiles

@@ -49,6 +49,14 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
   - ClothingBackpackHarmpack
+  # Orion-Start
+  - ModularGrenade
+  - TrackingImplanter
+  - SadTromboneImplanter
+  - ClothingEyesHudMedical
+  - ClothingEyesHudDiagnostic
+  - SlimeScannerXenobio
+  # Orion-End
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -115,6 +123,15 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
+  # Orion-Start
+  - ResearchAndDevelopmentServerMachineCircuitboard
+  - ResearchServerControlConsoleCircuitboard
+  - ResearchComputerCircuitboard
+  - ResearchDestructiveAnalyzerMachineCircuitboard
+  - ResearchExperimentalDestructiveScannerMachineCircuitboard
+  - XenobiologyBountyComputerCircuitboard
+  - StationAiUploadCircuitboard
+  # Orion-End
 
 - type: latheRecipePack
   id: CameraBoards
@@ -137,6 +154,10 @@
   - HonkerTargetingElectronics
   - HamtrCentralElectronics
   - HamtrPeripheralsElectronics
+  # Orion-Start
+  - GygaxCentralElectronics
+  - DurandCentralElectronics
+  # Orion-End
 
 - type: latheRecipePack
   id: ShuttleBoards

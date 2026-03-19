@@ -4,3 +4,17 @@
   - SprayBottleRed
   - SprayBottleOrange
   - SprayBottleBlue
+
+- type: latheRecipePack
+  id: BodyBagsDynamic
+  recipes:
+  - NTBodyBag
+  - PrisonerBodyBag
+  - RadiationBodyBag
+  - BluespaceBodyBag
+  - SyndicateBodyBag
+
+- type: latheRecipePack
+  id: BodyBagsSyndicateStatic
+  recipes:
+  - SyndicateBodyBag
