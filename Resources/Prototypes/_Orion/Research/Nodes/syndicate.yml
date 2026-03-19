@@ -12,6 +12,32 @@
   technologyPrerequisites:
   - ExperimentalTools
   - ExoticAmmo
+  requiredItemsToUnlock:
+  - EnergySword
+  - EnergyDagger
+  - ClothingHandsGlovesNorthStar
+  - EnergyShield
+  - WeaponSubMachineGunC20r
+  - WeaponLightMachineGunL6
+  - SyndieMiniBomb
+  - SyndicateBomb
+  - Hypopen
+  - AgentIDCard
+  - ChameleonProjector
+  - EncryptionKeySyndie
+  - AccessBreaker
+  - Emag
+  - RadioJammer
+  - BorgModuleSyndicateWeapon
+  - BorgModuleMartyr
+  - ClothingEyesHudSyndicate
+  - ContractorBaton
+  - MiniatureEnergyCrossbow
+  - BowHardlight
+  - CQCManual
+  - CapoeiraManual
+  - SleepingCarpScroll
+  - ClothingModsuitContractor
   recipeUnlocks:
   - BorgModuleMartyr
   - BorgModuleSyndicateWeapon

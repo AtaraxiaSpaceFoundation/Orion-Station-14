@@ -16,6 +16,7 @@ research-log-category-technology = Технологии
 research-log-category-disk = Диск
 research-log-category-experiment = Эксперимент
 research-log-category-destructive-analyzer = Деструктивный анализатор
+research-log-category-experiment-scanner = Экспери-сканер
 research-log-category-experimental-destructive-scanner = Экспериментальный деструктивный сканер
 
 research-console-logs-empty = Нет записей.

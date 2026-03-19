@@ -200,7 +200,10 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
             "disk" => Loc.GetString("research-log-category-disk"),
             "experiment" => Loc.GetString("research-log-category-experiment"),
             "destructive-analyzer" => Loc.GetString("research-log-category-destructive-analyzer"),
-            "experiment-scanner" => Loc.GetString("research-log-category-experiment-scanner"),
+            "experi-scanner" => Loc.GetString("research-log-category-experiment-scanner"),
+            "experimental-destructive-scanner" => Loc.GetString("research-log-category-experimental-destructive-scanner"),
+            "discovery" => Loc.GetString("research-log-category-discovery"),
+            "server-control" => Loc.GetString("research-log-category-server-control"),
             _ => category,
         };
     }

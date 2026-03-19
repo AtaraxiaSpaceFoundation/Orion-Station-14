@@ -391,31 +391,28 @@ public sealed partial class ResearchSystem
         if (!Resolve(uid, ref component, false))
             return;
 
-        var authorityUid = GetNetworkAuthority(uid, component);
-        ResearchServerComponent? authorityComponent;
+        var servers = GetNetworkServers(uid, component).ToList();
+        if (servers.Count == 0)
+            servers.Add(uid);
 
-        if (authorityUid == uid)
+        foreach (var serverUid in servers)
         {
-            authorityComponent = component;
+            if (!TryComp(serverUid, out ResearchServerComponent? serverComponent))
+                continue;
+
+            serverComponent.Logs.Add(new ResearchLogEntry
+            {
+                Timestamp = _timing.CurTime,
+                Category = category,
+                Message = message,
+                Actor = actor.HasValue ? GetNetEntity(actor.Value) : null,
+            });
+
+            if (serverComponent.Logs.Count > 30)
+                serverComponent.Logs.RemoveAt(0);
+
+            Dirty(serverUid, serverComponent);
         }
-        else if (!TryComp(authorityUid, out authorityComponent))
-        {
-            authorityUid = uid;
-            authorityComponent = component;
-        }
-
-        authorityComponent!.Logs.Add(new ResearchLogEntry
-        {
-            Timestamp = _timing.CurTime,
-            Category = category,
-            Message = message,
-            Actor = actor.HasValue ? GetNetEntity(actor.Value) : null
-        });
-
-        if (authorityComponent.Logs.Count > 30)
-            authorityComponent.Logs.RemoveAt(0);
-
-        Dirty(authorityUid, authorityComponent);
     }
 
     private static void EnsurePointBalance(ResearchServerComponent component, string type)

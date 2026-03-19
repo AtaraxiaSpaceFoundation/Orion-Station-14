@@ -91,8 +91,8 @@ research-destructive-analyzer-success = Образец успешно дестр
 research-experimental-destructive-scanner-success = Экспериментальный деструктивный сканер успешно завершил операцию.
 research-experimental-destructive-scanner-failure = Операция экспериментального деструктивного сканера завершилась неудачей.
 
-research-experi-scanner-progress = Сканирование успешно: прогресс эксперимента обновлён для { $target }.
-research-experi-scanner-completed = Сканирование успешно: с помощью { $target } завершено экспериментов: { $count }.
+research-experi-scanner-progress = Сканирование { $target } успешно, прогресс обновлён.
+research-experi-scanner-completed = Сканирование { $target } успешно. Завершено экспериментов: { $count }.
 research-experi-scanner-no-server = Сканирование не выполнено: нет подключения к серверу РнД.
 research-experi-scanner-no-compatible-experiments = Нет активных экспериментов, совместимых с ручным сканером.
 research-experi-scanner-no-match = Для этой цели нет подходящего активного ручного эксперимента.
