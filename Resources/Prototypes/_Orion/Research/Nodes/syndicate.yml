@@ -58,6 +58,10 @@
   tier: 1
   hidden: true
   cost: 2500
+  revealRequirements:
+  - !type:RevealedTechnologyRevealRequirement
+    id: illegal-technology-revealed
+    technology: IllegalTechnology
   technologyPrerequisites:
   - PartsBluespace
   - IllegalTechnology

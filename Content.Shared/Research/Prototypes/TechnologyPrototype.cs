@@ -222,6 +222,7 @@ public sealed partial class TechnologyPrototype : IPrototype
 [Serializable, NetSerializable]
 public enum TechnologyRevealRequirementKind : byte
 {
+    RevealedTechnology,
     ResearchedTechnology,
     CompletedExperiment,
     ScanEntity,
@@ -242,6 +243,18 @@ public abstract partial record TechnologyRevealRequirement
 
     [DataField]
     public int Target = 1;
+}
+
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial record RevealedTechnologyRevealRequirement : TechnologyRevealRequirement
+{
+    [DataField(required: true)]
+    public ProtoId<TechnologyPrototype> Technology;
+
+    public RevealedTechnologyRevealRequirement()
+    {
+        Kind = TechnologyRevealRequirementKind.RevealedTechnology;
+    }
 }
 
 [DataDefinition, Serializable, NetSerializable]

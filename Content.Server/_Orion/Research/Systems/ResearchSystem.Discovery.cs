@@ -151,6 +151,7 @@ public sealed partial class ResearchSystem
     {
         return requirement switch
         {
+            RevealedTechnologyRevealRequirement revealed => database.RevealedTechnologies.Contains(revealed.Technology) || database.ResearchedTechnologies.Contains(revealed.Technology),
             ResearchedTechnologyRevealRequirement researched => database.ResearchedTechnologies.Contains(researched.Technology),
             CompletedExperimentRevealRequirement completed => database.CompletedExperiments.Contains(completed.Experiment),
             _ => GetDiscoveryProgress(database, technologyId, requirement.Id) >= Math.Max(1, requirement.Target)
