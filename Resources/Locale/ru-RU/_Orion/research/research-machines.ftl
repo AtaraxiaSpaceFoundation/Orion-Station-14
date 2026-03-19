@@ -85,3 +85,11 @@ research-machine-destructive-processing = Анализатор начал обр
 research-destructive-analyzer-success = Образец успешно деструктивно проанализирован.
 research-experimental-destructive-scanner-success = Экспериментальный деструктивный сканер успешно завершил операцию.
 research-experimental-destructive-scanner-failure = Операция экспериментального деструктивного сканера завершилась неудачей.
+
+research-experi-scanner-progress = Сканирование успешно: прогресс эксперимента обновлён для { $target }.
+research-experi-scanner-completed = Сканирование успешно: с помощью { $target } завершено экспериментов: { $count }.
+research-experi-scanner-no-server = Сканирование не выполнено: нет подключения к серверу РнД.
+research-experi-scanner-no-compatible-experiments = Нет активных экспериментов, совместимых с ручным сканером.
+research-experi-scanner-no-match = Для этой цели нет подходящего активного ручного эксперимента.
+research-experi-scanner-already-scanned = Эта цель уже была засчитана для активного ручного эксперимента.
+research-netlog-experi-scanner-scan = { $user } отсканировал { $target } при помощи { $scanner } (прогресс: { $progressed }, завершено: { $completed }).

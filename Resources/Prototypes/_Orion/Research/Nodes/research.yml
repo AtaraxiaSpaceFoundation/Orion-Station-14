@@ -27,6 +27,7 @@
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
   - ExperimentalCircuitBoard
+  - ExperiScanner
   position: 0,4
 
 - type: technology

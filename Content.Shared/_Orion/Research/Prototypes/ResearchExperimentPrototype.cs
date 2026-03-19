@@ -43,6 +43,9 @@ public sealed partial class ResearchExperimentPrototype : IPrototype
     [DataField]
     public List<ProtoId<ResearchExperimentPrototype>> RequiredExperiments = new();
 
+    [DataField]
+    public ExperimentSourceFlags SupportedSources = ExperimentSourceFlags.AnyScanner;
+
     [DataField(required: true)]
     public ExperimentObjective Objective = new ServerTriggerExperimentObjective();
 
@@ -63,6 +66,17 @@ public enum ExperimentObjectiveKind : byte
     ScanSamples,
     ActionCount,
     DebugManual,
+}
+
+[Flags]
+public enum ExperimentSourceFlags : byte
+{
+    None = 0,
+    ResearchConsole = 1 << 0,
+    MachineScanner = 1 << 1,
+    HandheldScanner = 1 << 2,
+    AnyScanner = ResearchConsole | MachineScanner | HandheldScanner,
+    DefaultScanner = ResearchConsole | MachineScanner,
 }
 
 [DataDefinition, Serializable, NetSerializable]

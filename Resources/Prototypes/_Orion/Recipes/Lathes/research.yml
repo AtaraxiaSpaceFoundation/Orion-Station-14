@@ -58,3 +58,14 @@
   materials:
     Steel: 500
     Glass: 300
+
+- type: latheRecipe
+  id: ExperiScanner
+  result: ExperiScanner
+  categories:
+  - Tools
+  completetime: 3
+  materials:
+    Steel: 200
+    Glass: 100
+    Plastic: 100

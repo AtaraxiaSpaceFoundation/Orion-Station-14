@@ -1,0 +1,32 @@
+- type: entity
+  parent: BaseItem
+  id: ExperiScanner
+  name: experi-scanner
+  description: A handheld scanner for performing non-destructive research experiments.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Research/experi_scanner.rsi
+    state: icon
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Clothing
+    sprite: _Orion/Objects/Specific/Research/experi_scanner.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: ActivatableUI
+    key: enum.ResearchClientUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
+  - type: UserInterface
+    interfaces:
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: ResearchClient
+  - type: ExperiScanner
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Glass: 50
+      Plastic: 25

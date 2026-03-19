@@ -77,3 +77,11 @@ research-machine-destructive-processing = Analyzer started processing the sample
 research-destructive-analyzer-success = Sample destructively analyzed.
 research-experimental-destructive-scanner-success = Experimental destructive scanner run succeeded.
 research-experimental-destructive-scanner-failure = Experimental destructive scanner run failed.
+
+research-experi-scanner-progress = Scan successful: experiment progress updated for { $target }.
+research-experi-scanner-completed = Scan successful: { $count } experiment(s) completed using { $target }.
+research-experi-scanner-no-server = Scan failed: no R&D server connection.
+research-experi-scanner-no-compatible-experiments = No active handheld-compatible experiments are available.
+research-experi-scanner-no-match = No active handheld experiment matches this target.
+research-experi-scanner-already-scanned = This target has already been recorded for the active handheld experiment.
+research-netlog-experi-scanner-scan = { $user } scanned { $target } with { $scanner } (progressed: { $progressed }, completed: { $completed }).

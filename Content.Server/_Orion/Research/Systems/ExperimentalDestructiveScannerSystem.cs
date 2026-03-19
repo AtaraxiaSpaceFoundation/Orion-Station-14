@@ -160,7 +160,7 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
             if (TerminatingOrDeleted(item))
                 continue;
 
-            if (!_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed))
+            if (!_research.TryProgressExperimentsWithEntity(server, item, null, out var changed, out var completed, out _, source: ExperimentSourceFlags.MachineScanner))
                 continue;
 
             changedAny |= changed;

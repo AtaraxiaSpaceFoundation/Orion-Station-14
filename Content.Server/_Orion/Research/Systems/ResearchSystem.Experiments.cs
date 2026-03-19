@@ -51,7 +51,7 @@ public sealed partial class ResearchSystem
         if (!TryGetClientServer(uid, out var serverUid, out _))
             return;
 
-        if (!TryProgressExperimentsWithEntity(serverUid.Value, args.Used, args.User, out _, out _))
+        if (!TryProgressExperimentsWithEntity(serverUid.Value, args.Used, args.User, out _, out _, out _, source: ExperimentSourceFlags.ResearchConsole))
             return;
 
         args.Handled = true;
@@ -64,25 +64,43 @@ public sealed partial class ResearchSystem
         EntityUid? user,
         out bool changed,
         out List<string> completed,
+        out ExperimentProgressAttemptResult result,
+        ExperimentSourceFlags source = ExperimentSourceFlags.AnyScanner,
         TechnologyDatabaseComponent? database = null,
         ResearchServerComponent? server = null)
     {
         changed = false;
         completed = new List<string>();
+        result = ExperimentProgressAttemptResult.NoMatchingExperiment;
 
         if (!Resolve(serverUid, ref database, ref server))
             return false;
+
+        var foundCompatibleExperiment = false;
+        var foundDuplicateMatch = false;
 
         foreach (var experimentId in database.ActiveExperiments.ToArray())
         {
             if (!PrototypeManager.TryIndex<ResearchExperimentPrototype>(experimentId, out var experiment))
                 continue;
 
+            if (!SupportsExperimentSource(experiment, source))
+                continue;
+
+            foundCompatibleExperiment = true;
+
             if (!TryGetExperimentProgress(database, experimentId, out var progressIndex))
                 continue;
 
-            if (!TryIncrementExperimentProgress(database, progressIndex, experiment, subject, out var delta))
+            if (!MatchesExperimentObjective(subject, experiment.Objective))
                 continue;
+
+
+            if (!TryIncrementExperimentProgress(database, progressIndex, experiment, subject, out var delta))
+            {
+                foundDuplicateMatch = true;
+                continue;
+            }
 
             if (delta <= 0)
                 continue;
@@ -100,7 +118,16 @@ public sealed partial class ResearchSystem
         }
 
         if (!changed)
+        {
+            result = !foundCompatibleExperiment
+                ? ExperimentProgressAttemptResult.NoSourceCompatibleExperiment
+                : foundDuplicateMatch
+                    ? ExperimentProgressAttemptResult.AlreadyScanned
+                    : ExperimentProgressAttemptResult.NoMatchingExperiment;
             return false;
+        }
+
+        result = ExperimentProgressAttemptResult.Progressed;
 
         RecalculateTechnologyState(serverUid, database);
         UpdateTechnologyCards(serverUid, database);
@@ -221,6 +248,26 @@ public sealed partial class ResearchSystem
         LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-reward-applied", ("experiment", Loc.GetString(experiment.Name)), ("user", GetResearchLogUserName(user))), user);
     }
 
+    private static bool SupportsExperimentSource(ResearchExperimentPrototype experiment, ExperimentSourceFlags source)
+    {
+        if (source == ExperimentSourceFlags.None)
+            return true;
+
+        return (experiment.SupportedSources & source) != 0;
+    }
+
+    private bool MatchesExperimentObjective(EntityUid subject, ExperimentObjective objective)
+    {
+        return objective switch
+        {
+            PresentItemExperimentObjective presentObjective => MatchesEntityObjective(subject, presentObjective),
+            ScanDifferentEntitiesExperimentObjective differentObjective => MatchesEntityObjective(subject, differentObjective),
+            ScanSamplesExperimentObjective samplesObjective => MatchesEntityObjective(subject, samplesObjective),
+            ScanEntityExperimentObjective scanObjective => MatchesEntityObjective(subject, scanObjective),
+            _ => false,
+        };
+    }
+
     private bool TryIncrementExperimentProgress(TechnologyDatabaseComponent database,
         int progressIndex,
         ResearchExperimentPrototype experiment,
@@ -251,6 +298,10 @@ public sealed partial class ResearchSystem
                 progress.ScannedEntities.Add(GetNetEntity(subject));
                 break;
             case ScanSamplesExperimentObjective samplesObjective when MatchesEntityObjective(subject, samplesObjective):
+                delta = 1;
+                progress.ScannedEntities.Add(GetNetEntity(subject));
+                break;
+            case ScanEntityExperimentObjective scanObjective when MatchesEntityObjective(subject, scanObjective):
                 delta = 1;
                 progress.ScannedEntities.Add(GetNetEntity(subject));
                 break;
@@ -456,4 +507,12 @@ public sealed partial class ResearchSystem
         progressIndex = -1;
         return false;
     }
+}
+
+public enum ExperimentProgressAttemptResult : byte
+{
+    Progressed,
+    NoSourceCompatibleExperiment,
+    NoMatchingExperiment,
+    AlreadyScanned,
 }
