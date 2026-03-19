@@ -14,4 +14,7 @@ public sealed partial class ExperiScannerComponent : Component
 
     [DataField]
     public SoundSpecifier FailureSound = new SoundPathSpecifier("/Audio/Machines/scanbuzz.ogg");
+
+    [DataField]
+    public string LastResult = string.Empty;
 }

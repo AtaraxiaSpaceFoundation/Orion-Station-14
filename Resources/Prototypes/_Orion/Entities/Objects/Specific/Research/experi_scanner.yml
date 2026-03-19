@@ -16,15 +16,18 @@
     slots:
     - Belt
   - type: ActivatableUI
-    key: enum.ResearchClientUiKey.Key
+    key: enum.ExperiScannerUiKey.Key
     inHandsOnly: true
     requireActiveHand: false
   - type: UserInterface
     interfaces:
+      enum.ExperiScannerUiKey.Key:
+        type: ExperiScannerBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
   - type: ResearchClient
   - type: ExperiScanner
+  - type: Speech
   - type: PhysicalComposition
     materialComposition:
       Steel: 100

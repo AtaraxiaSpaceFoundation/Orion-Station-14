@@ -15,6 +15,12 @@ public enum ExperimentalDestructiveScannerUiKey : byte
 }
 
 [Serializable, NetSerializable]
+public enum ExperiScannerUiKey : byte
+{
+    Key,
+}
+
+[Serializable, NetSerializable]
 public sealed class OpenResearchServerMenuMessage : BoundUserInterfaceMessage
 {
 }
@@ -100,6 +106,23 @@ public sealed class ExperimentalDestructiveScannerBoundInterfaceState : BoundUse
         LastResult = lastResult;
         Experiments = experiments;
         InsertedItem = insertedItem;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class ExperiScannerBoundInterfaceState : BoundUserInterfaceState
+{
+    public string? ConnectedServerName;
+    public List<ResearchMachineExperimentUiData> Experiments;
+    public string LastResult;
+
+    public ExperiScannerBoundInterfaceState(string? connectedServerName,
+        List<ResearchMachineExperimentUiData> experiments,
+        string lastResult)
+    {
+        ConnectedServerName = connectedServerName;
+        Experiments = experiments;
+        LastResult = lastResult;
     }
 }
 

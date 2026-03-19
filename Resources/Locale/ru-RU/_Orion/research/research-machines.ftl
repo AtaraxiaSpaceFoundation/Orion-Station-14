@@ -34,6 +34,11 @@ research-machine-experimental-destructive-scanner-completed = { $count ->
     [few] Завершено { $count } эксперимента.
    *[many] Завершено { $count } экспериментов.
 }
+research-machine-experimental-destructive-scanner-completed-named = { $count ->
+    [one] Завершён { $count } эксперимент: { $experiments }.
+    [few] Завершено { $count } эксперимента: { $experiments }.
+   *[many] Завершено { $count } экспериментов: { $experiments }.
+}
 research-machine-destructive-run = Запустить анализ
 research-machine-eject-button = Извлечь предмет
 research-machine-destructive-item-loaded = Образец загружен.
@@ -93,3 +98,8 @@ research-experi-scanner-no-compatible-experiments = Нет активных эк
 research-experi-scanner-no-match = Для этой цели нет подходящего активного ручного эксперимента.
 research-experi-scanner-already-scanned = Эта цель уже была засчитана для активного ручного эксперимента.
 research-netlog-experi-scanner-scan = { $user } отсканировал { $target } при помощи { $scanner } (прогресс: { $progressed }, завершено: { $completed }).
+
+research-experi-scanner-window-title = Экспери-сканер
+research-experi-scanner-available-experiments = Доступные эксперименты
+research-experi-scanner-no-experiments = Нет доступных экспериментов, совместимых с ручным сканером.
+research-experi-scanner-completed-named = Сканирование успешно. Завершены эксперименты: { $experiments }.

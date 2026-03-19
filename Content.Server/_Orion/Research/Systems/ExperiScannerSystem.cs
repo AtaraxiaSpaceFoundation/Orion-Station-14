@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Research.Systems;
 using Content.Shared._Orion.Research.Components;
@@ -9,6 +10,7 @@ using Content.Shared.Research.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Orion.Research.Systems;
 
@@ -19,11 +21,25 @@ public sealed class ExperiScannerSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
 
     public override void Initialize()
     {
         SubscribeLocalEvent<ExperiScannerComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<ExperiScannerComponent, OpenResearchServerMenuMessage>(OnOpenServerMenu);
+        SubscribeLocalEvent<ExperiScannerComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<ExperiScannerComponent, ResearchRegistrationChangedEvent>(OnResearchRegistrationChanged);
+    }
+
+    private void OnUiOpened(Entity<ExperiScannerComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateUi(ent);
+    }
+
+    private void OnResearchRegistrationChanged(Entity<ExperiScannerComponent> ent, ref ResearchRegistrationChangedEvent args)
+    {
+        UpdateUi(ent);
     }
 
     private void OnOpenServerMenu(Entity<ExperiScannerComponent> ent, ref OpenResearchServerMenuMessage args)
@@ -71,8 +87,14 @@ public sealed class ExperiScannerSystem : EntitySystem
             ? Loc.GetString("research-experi-scanner-completed", ("count", completed.Count), ("target", targetName))
             : Loc.GetString("research-experi-scanner-progress", ("target", targetName));
 
+        ent.Comp.LastResult = completed.Count > 0
+            ? Loc.GetString("research-experi-scanner-completed-named", ("experiments", string.Join(", ", completed.Select(GetExperimentName))))
+            : popup;
+
         _audio.PlayPvs(ent.Comp.SuccessSound, ent, AudioParams.Default.WithVolume(-2f));
         _popup.PopupEntity(popup, ent, args.User, PopupType.SmallCaution);
+        _chat.TrySendInGameICMessage(ent.Owner, ent.Comp.LastResult, Shared.Chat.InGameICChatType.Speak, false);
+        UpdateUi(ent);
 
         _research.LogNetworkEvent(server,
             "experi-scanner",
@@ -87,8 +109,49 @@ public sealed class ExperiScannerSystem : EntitySystem
 
     private void Fail(Entity<ExperiScannerComponent> ent, EntityUid user, string message)
     {
+        ent.Comp.LastResult = Loc.GetString(message);
         _audio.PlayPvs(ent.Comp.FailureSound, ent, AudioParams.Default.WithVolume(-4f));
-        _popup.PopupEntity(Loc.GetString(message), ent, user);
+        _popup.PopupEntity(ent.Comp.LastResult, ent, user);
+        UpdateUi(ent);
+    }
+
+    private void UpdateUi(Entity<ExperiScannerComponent> ent)
+    {
+        string? serverName = null;
+        var experiments = new List<ResearchMachineExperimentUiData>();
+
+        if (_research.TryGetClientServer(ent.Owner, out var serverUid, out var server) &&
+            TryComp<TechnologyDatabaseComponent>(serverUid, out var db))
+        {
+            serverName = server.ServerName;
+
+            foreach (var experimentId in db.ActiveExperiments)
+            {
+                if (!_prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var prototype) ||
+                    !prototype.SupportedSources.HasFlag(ExperimentSourceFlags.HandheldScanner))
+                    continue;
+
+                var progress = db.ExperimentProgress.FirstOrDefault(p => p.ExperimentId == experimentId);
+                var target = progress.Target > 0 ? progress.Target : Math.Max(1, prototype.Objective.Target);
+                var objective = Loc.GetString($"research-experiment-objective-{prototype.Objective.Kind.ToString().ToLowerInvariant()}");
+                experiments.Add(new ResearchMachineExperimentUiData(
+                    prototype.ID,
+                    Loc.GetString(prototype.Name),
+                    Loc.GetString(prototype.Description),
+                    progress.Progress,
+                    target,
+                    objective));
+            }
+        }
+
+        _ui.SetUiState(ent.Owner, ExperiScannerUiKey.Key, new ExperiScannerBoundInterfaceState(serverName, experiments, ent.Comp.LastResult));
+    }
+
+    private string GetExperimentName(string experimentId)
+    {
+        return _prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var prototype)
+            ? Loc.GetString(prototype.Name)
+            : experimentId;
     }
 
     private bool TryResolveServer(EntityUid uid, out EntityUid server)

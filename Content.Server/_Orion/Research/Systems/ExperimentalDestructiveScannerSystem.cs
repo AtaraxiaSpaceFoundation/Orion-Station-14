@@ -153,7 +153,7 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
             return;
 
         var changedAny = false;
-        var completedCount = 0;
+        var completedExperiments = new HashSet<string>();
 
         foreach (var item in scannedItems)
         {
@@ -164,8 +164,13 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
                 continue;
 
             changedAny |= changed;
-            completedCount += completed.Count;
+            foreach (var completedExperiment in completed)
+            {
+                completedExperiments.Add(completedExperiment);
+            }
         }
+
+        var completedCount = completedExperiments.Count;
 
         ent.Comp.IsProcessing = false;
         UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Up);
@@ -183,7 +188,9 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
             });
 
         if (completedCount > 0)
-            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-completed", ("count", completedCount));
+            ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-completed-named",
+                ("count", completedCount),
+                ("experiments", string.Join(", ", completedExperiments.Select(GetExperimentName))));
         else if (changedAny)
             ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-progressed");
         else
@@ -206,6 +213,13 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
                 ("user", _research.GetResearchLogUserName(user))),
             user);
         UpdateUi(ent);
+    }
+
+    private string GetExperimentName(string experimentId)
+    {
+        return _prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var prototype)
+            ? Loc.GetString(prototype.Name)
+            : experimentId;
     }
 
     private bool TryResolveServer(Entity<ExperimentalDestructiveScannerComponent> ent, out EntityUid server)

@@ -29,6 +29,7 @@
     bodyType: Static
   - type: Transform
     anchored: true
+  - type: Speech
   - type: ApcPowerReceiver
     powerLoad: 2500
   - type: Machine
@@ -76,6 +77,7 @@
     canCollide: false
   - type: Transform
     anchored: true
+  - type: Speech
   - type: ApcPowerReceiver
     powerLoad: 3000
   - type: Machine
