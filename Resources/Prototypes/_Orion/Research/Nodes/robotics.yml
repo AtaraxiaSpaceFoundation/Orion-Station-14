@@ -5,7 +5,7 @@
   icon:
     sprite: Structures/Machines/exosuit_fabricator.rsi
     state: fab-idle
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   startingTechnology: true
   cost: 500
@@ -20,9 +20,9 @@
   name: research-technology-exploration-drone-name
   description: research-technology-exploration-drone-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: _Imp/Drone/drone.rsi
+    state: shell
+  discipline: Robotics
   tier: 1
   cost: 2500
   technologyPrerequisites:
@@ -38,7 +38,7 @@
   icon:
     sprite: Objects/Devices/ai_card.rsi
     state: base
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   cost: 2500
   technologyPrerequisites:
@@ -68,7 +68,7 @@
   icon:
     sprite: Objects/Misc/module.rsi
     state: std_mod
-  discipline: Industrial
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -96,9 +96,9 @@
   name: research-technology-modular-suit-name
   description: research-technology-modular-suit-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: _Goobstation/Objects/Specific/Robotics/modsuit_parts.rsi
+    state: chestplate
+  discipline: Robotics
   tier: 1
   cost: 7500
   technologyPrerequisites:

@@ -5,7 +5,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: CivilianServices
+  discipline: Medical
   tier: 1
   cost: 2500
   technologyPrerequisites:
@@ -20,7 +20,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: CivilianServices
+  discipline: Medical
   tier: 1
   announceChannels:
   - Medical
@@ -37,7 +37,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: CivilianServices
+  discipline: Medical
   tier: 2
   announceChannels:
   - Medical
@@ -58,7 +58,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: CivilianServices
+  discipline: Medical
   tier: 3
   announceChannels:
   - Medical
@@ -79,7 +79,7 @@
   icon:
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
     state: e-scalpel-on
-  discipline: CivilianServices
+  discipline: Medical
   tier: 4
   announceChannels:
   - Medical
@@ -102,9 +102,9 @@
   name: research-technology-surgery-tools-advanced-name
   description: research-technology-surgery-tools-advanced-desc
   icon:
-    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
-    state: e-scalpel-on
-  discipline: CivilianServices
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+    state: omnimed
+  discipline: Medical
   tier: 4
   announceChannels:
   - Medical

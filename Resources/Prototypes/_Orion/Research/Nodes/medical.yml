@@ -5,7 +5,7 @@
   icon:
     sprite: Objects/Specific/Medical/defib.rsi
     state: icon
-  discipline: CivilianServices
+  discipline: Medical
   tier: 1
   startingTechnology: true
   cost: 500
@@ -90,7 +90,7 @@
   icon:
     sprite: Structures/Machines/mixer.rsi
     state: mixer_empty
-  discipline: CivilianServices
+  discipline: Medical
   tier: 1
   announceChannels:
   - Medical
@@ -119,7 +119,7 @@
   icon:
     sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
     state: scanner
-  discipline: CivilianServices
+  discipline: Medical
   tier: 3
   announceChannels:
   - Medical
@@ -141,7 +141,7 @@
   icon:
     sprite: Objects/Specific/Chemistry/beaker_cryostasis.rsi
     state: beakernoreact
-  discipline: CivilianServices
+  discipline: Medical
   tier: 4
   announceChannels:
   - Medical

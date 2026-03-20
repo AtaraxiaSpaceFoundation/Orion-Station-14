@@ -5,7 +5,7 @@
   icon:
     sprite: Mobs/Silicon/chassis.rsi
     state: robot
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   startingTechnology: true
   cost: 500
@@ -36,7 +36,7 @@
   icon:
     sprite: Objects/Specific/Robotics/mmi.rsi
     state: posibrain
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   announceChannels:
   - Science
@@ -75,9 +75,9 @@
   name: research-technology-borg-services-name
   description: research-technology-borg-services-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
   tier: 2
   announceChannels:
   - Science
@@ -95,9 +95,9 @@
   name: research-technology-borg-mining-name
   description: research-technology-borg-mining-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
   tier: 2
   announceChannels:
   - Science
@@ -112,9 +112,9 @@
   name: research-technology-borg-medical-name
   description: research-technology-borg-medical-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -131,9 +131,9 @@
   name: research-technology-borg-utility-name
   description: research-technology-borg-utility-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -150,9 +150,9 @@
   name: research-technology-borg-engineering-name
   description: research-technology-borg-engineering-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -173,7 +173,7 @@
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   announceChannels:
   - Security
@@ -192,9 +192,9 @@
   name: research-technology-cyber-implants-name
   description: research-technology-cyber-implants-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: _Shitmed/Objects/Augments/arm.rsi
+    state: base
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -210,8 +210,6 @@
   - DexRightHand
   - AugmentPowerCellSlotCasing
   - AugmentRechargerCasing
-  - AugmentToolPanelCasing
-  - AugmentUtilityPanelElectronics
   - AugmentBotanyPanelElectronics
   - AugmentSurgeryPanelElectronics
   - AugmentPaperworkPanelElectronics
@@ -224,9 +222,9 @@
   name: research-technology-combat-implants-name
   description: research-technology-combat-implants-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
+    state: l_arm-combined
+  discipline: Robotics
   tier: 4
   announceChannels:
   - Science
@@ -244,9 +242,9 @@
   name: research-technology-integrated-toolsets-name
   description: research-technology-integrated-toolsets-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
-  discipline: Industrial
+    sprite: _Shitmed/Objects/Augments/arm.rsi
+    state: base
+  discipline: Robotics
   tier: 5
   announceChannels:
   - Science
@@ -255,7 +253,9 @@
   technologyPrerequisites:
   - CombatImplants
   - ExperimentalTools
-  # TODO
+  recipeUnlocks:
+  - AugmentToolPanelCasing
+  - AugmentUtilityPanelElectronics
   position: -8,2
 
 - type: technology
@@ -265,7 +265,7 @@
   icon:
     sprite: _Shitmed/Mobs/Species/Misc/Cybernetics/organs.rsi
     state: lung-u-l
-  discipline: Industrial
+  discipline: Robotics
   tier: 2
   announceChannels:
   - Science
@@ -285,7 +285,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -305,7 +305,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Robotics
   tier: 5
   announceChannels:
   - Science

@@ -5,11 +5,12 @@
   icon:
     sprite: _Orion/Structures/Machines/destructive_analyzer.rsi
     state: icon
-  discipline: Experimental
+  discipline: Scientific
   tier: 1
   startingTechnology: true
   cost: 500
   recipeUnlocks:
+  - ExperiScanner
   - ResearchAndDevelopmentServerMachineCircuitboard
   - ResearchServerControlConsoleCircuitboard
   - ResearchComputerCircuitboard
@@ -27,7 +28,6 @@
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
   - ExperimentalCircuitBoard
-  - ExperiScanner
   position: 0,4
 
 - type: technology
@@ -37,7 +37,7 @@
   icon:
     sprite: _Goobstation/Objects/Materials/materials.rsi
     state: bluespace_crystal
-  discipline: Experimental
+  discipline: Scientific
   tier: 1
   announceChannels:
   - Science
@@ -55,7 +55,7 @@
   icon:
     sprite: _Goobstation/Structures/Machines/silo.rsi
     state: ore_silo
-  discipline: Experimental
+  discipline: Scientific
   tier: 2
   announceChannels:
   - Science
@@ -90,7 +90,7 @@
   icon:
     sprite: Objects/Devices/swapper.rsi
     state: icon
-  discipline: Experimental
+  discipline: Scientific
   tier: 3
   announceChannels:
   - Science
@@ -109,7 +109,7 @@
   icon:
     sprite: Structures/Machines/Anomaly/adv_anomaly_vessel.rsi
     state: base
-  discipline: Experimental
+  discipline: Scientific
   tier: 3
   announceChannels:
   - Science
@@ -133,7 +133,7 @@
   icon:
     sprite: Clothing/Back/Duffels/holding.rsi
     state: icon
-  discipline: Experimental
+  discipline: Scientific
   tier: 5
   announceChannels:
   - Science
@@ -164,7 +164,7 @@
   icon:
     sprite: _EinsteinEngines/Objects/Devices/translator.rsi
     state: icon
-  discipline: CivilianServices
+  discipline: Scientific
   tier: 2
   cost: 7500
   technologyPrerequisites:
@@ -196,7 +196,7 @@
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0
-  discipline: CivilianServices
+  discipline: Scientific
   tier: 3
   cost: 10000
   technologyPrerequisites:

@@ -5,7 +5,7 @@
   icon:
     sprite: Objects/Specific/Janitorial/mop.rsi
     state: mop
-  discipline: CivilianServices
+  discipline: Service
   tier: 1
   startingTechnology: true
   cost: 500
@@ -61,7 +61,7 @@
   icon:
     sprite: Objects/Specific/Janitorial/advmop.rsi
     state: advmop
-  discipline: CivilianServices
+  discipline: Service
   tier: 2
   announceChannels:
   - Service
@@ -88,7 +88,7 @@
   icon:
     sprite: Objects/Misc/module.rsi
     state: charger_APC
-  discipline: CivilianServices
+  discipline: Service
   tier: 1
   announceChannels:
   - Service
@@ -111,7 +111,7 @@
   icon:
     sprite: Structures/Machines/arcade.rsi
     state: arcade
-  discipline: CivilianServices
+  discipline: Service
   tier: 2
   cost: 5000
   technologyPrerequisites:
@@ -132,7 +132,7 @@
   icon:
     sprite: Structures/Machines/microwave.rsi
     state: mw0
-  discipline: CivilianServices
+  discipline: Service
   tier: 1
   startingTechnology: true
   cost: 500
@@ -168,7 +168,7 @@
   icon:
     sprite: Structures/Machines/grinder.rsi
     state: grinder_empty
-  discipline: CivilianServices
+  discipline: Service
   tier: 2
   announceChannels:
   - Service
@@ -191,9 +191,9 @@
   name: research-technology-musical-instruments-name
   description: research-technology-musical-instruments-desc
   icon:
-    sprite: Structures/Machines/grinder.rsi
-    state: grinder_empty
-  discipline: CivilianServices
+    sprite: Objects/Fun/Instruments/h_synthesizer.rsi
+    state: icon
+  discipline: Service
   tier: 1
   announceChannels:
   - Service
@@ -212,7 +212,7 @@
   icon:
     sprite: _Goobstation/Objects/Specific/Fishing/fishing_rod.rsi
     state: icon
-  discipline: CivilianServices
+  discipline: Service
   tier: 1
   startingTechnology: true
   cost: 500
@@ -227,7 +227,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: CivilianServices
+  discipline: Service
   tier: 2
   cost: 5000
   technologyPrerequisites:
@@ -244,7 +244,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: CivilianServices
+  discipline: Service
   tier: 3
   cost: 7500
   technologyPrerequisites:

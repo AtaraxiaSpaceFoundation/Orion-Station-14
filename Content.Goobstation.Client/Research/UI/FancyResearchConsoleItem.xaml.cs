@@ -91,7 +91,7 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
         NodeContainer.SetSize = new Vector2(80 * scale, 80 * scale);
 
         DisciplineBadge.SetSize = new Vector2(20, 20);
-        SetPosition(DisciplineBadge, new Vector2(4, 4));
+        SetPosition(DisciplineBadge, new Vector2(16, 16));
         DisciplineDisplay.SetSize = new Vector2(16, 16);
     }
 }

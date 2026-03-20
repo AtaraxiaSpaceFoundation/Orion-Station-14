@@ -5,7 +5,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha.rsi
     state: ripley
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   startingTechnology: true
   cost: 500
@@ -29,7 +29,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_clamp
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   announceChannels:
   - Science
@@ -51,7 +51,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha.rsi
     state: honker
-  discipline: Industrial
+  discipline: Robotics
   tier: 1
   announceChannels:
   - Science
@@ -88,7 +88,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Robotics
   tier: 2
   cost: 5000
   technologyPrerequisites:
@@ -104,7 +104,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha.rsi
     state: clarke
-  discipline: Industrial
+  discipline: Robotics
   tier: 2
   announceChannels:
   - Science
@@ -132,7 +132,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_disabler
-  discipline: Industrial
+  discipline: Robotics
   tier: 2
   announceChannels:
   - Science
@@ -153,7 +153,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha.rsi
     state: durand
-  discipline: Industrial
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -180,7 +180,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha.rsi
     state: gygax
-  discipline: Industrial
+  discipline: Robotics
   tier: 3
   announceChannels:
   - Science
@@ -207,7 +207,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Robotics
   tier: 4
   announceChannels:
   - Science
@@ -224,7 +224,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Robotics
   tier: 4
   announceChannels:
   - Science
@@ -242,7 +242,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_wholegen
-  discipline: Industrial
+  discipline: Robotics
   tier: 4
   announceChannels:
   - Science
@@ -268,7 +268,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_scatter
-  discipline: Industrial
+  discipline: Robotics
   tier: 5
   announceChannels:
   - Science
@@ -289,7 +289,7 @@
   icon:
     sprite: Objects/Specific/Mech/mecha_equipment.rsi
     state: mecha_missilerack_six
-  discipline: Industrial
+  discipline: Robotics
   tier: 5
   announceChannels:
   - Science
@@ -310,7 +310,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Robotics
   tier: 5
   announceChannels:
   - Science

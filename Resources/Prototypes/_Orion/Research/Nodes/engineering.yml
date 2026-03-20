@@ -5,7 +5,7 @@
   icon:
     sprite: Objects/Misc/stock_parts.rsi
     state: micro_mani
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   startingTechnology: true
   cost: 500
@@ -32,7 +32,7 @@
   icon:
     sprite: _Orion/Objects/Power/mega_cells.rsi
     state: super
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -52,7 +52,7 @@
   icon:
     sprite: _Orion/Objects/Power/mega_cells.rsi
     state: hyper
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -75,7 +75,7 @@
   icon:
     sprite: _Orion/Objects/Power/mega_cells.rsi
     state: bluespace
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -98,9 +98,9 @@
   name: research-technology-parts-vortex-name
   description: research-technology-parts-vortex-desc
   icon:
-    sprite: _Orion/Objects/Power/mega_cells.rsi
-    state: bluespace
-  discipline: Industrial
+    sprite: _Orion/Objects/Power/power_cells.rsi
+    state: vortex
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -123,7 +123,7 @@
   icon:
     sprite: _Goobstation/Structures/Machines/comms_transmitter.rsi
     state: base
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   cost: 12500
   technologyPrerequisites:
@@ -140,7 +140,7 @@
   icon:
     sprite: Structures/Machines/circuit_imprinter.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   startingTechnology: true
   cost: 500
@@ -230,7 +230,7 @@
   icon:
     sprite: Structures/Power/smes.rsi
     state: smes
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -257,9 +257,9 @@
   name: research-technology-shuttle-engineering-name
   description: research-technology-shuttle-engineering-desc
   icon:
-    sprite: Objects/Misc/module.rsi
-    state: cpu_supply
-  discipline: Industrial
+    sprite: Structures/Machines/gravity_generator_mini.rsi
+    state: on
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -285,7 +285,7 @@
   icon:
     sprite: Objects/Devices/Holoprojectors/custodial.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 2
   cost: 5000
   technologyPrerequisites:
@@ -304,7 +304,7 @@
   icon:
     sprite: _Shitmed/Mobs/Species/Misc/Cybernetics/organs.rsi
     state: eyes-diagnostic
-  discipline: Industrial
+  discipline: Engineering
   tier: 3
   announceChannels:
   - Engineering
@@ -331,7 +331,7 @@
   icon:
     sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 4
   announceChannels:
   - Engineering
@@ -351,9 +351,9 @@
   name: research-technology-localized-magnetism-name
   description: research-technology-localized-magnetism-desc
   icon:
-    sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
+    sprite: Clothing/Shoes/Boots/magboots.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 4
   announceChannels:
   - Engineering
@@ -373,9 +373,9 @@
   name: research-technology-upgrade-kits-name
   description: research-technology-upgrade-kits-desc
   icon:
-    sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
+    sprite: _DV/Objects/Tools/lathe_upgrade_kit.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 4
   announceChannels:
   - Engineering
@@ -395,9 +395,9 @@
   name: research-technology-energy-manipulation-advanced-name
   description: research-technology-energy-manipulation-advanced-desc
   icon:
-    sprite: Structures/Power/smes.rsi
-    state: smes
-  discipline: Industrial
+    sprite: Structures/Power/turbo_recharger.rsi
+    state: empty
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering

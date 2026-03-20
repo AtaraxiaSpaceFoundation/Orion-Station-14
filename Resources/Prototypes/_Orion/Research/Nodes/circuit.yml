@@ -5,7 +5,7 @@
 #  icon:
 #    sprite: Interface/Misc/research_disciplines.rsi
 #    state: experimental
-#  discipline: Industrial
+#  discipline: Scientific
 #  tier: 1
 #  startingTechnology: true
 #  cost: 500
@@ -21,7 +21,7 @@
 #  icon:
 #    sprite: Interface/Misc/research_disciplines.rsi
 #    state: experimental
-#  discipline: Industrial
+#  discipline: Scientific
 #  tier: 2
 #  cost: 2500
 #  technologyPrerequisites:
@@ -36,7 +36,7 @@
 #  icon:
 #    sprite: Interface/Misc/research_disciplines.rsi
 #    state: experimental
-#  discipline: Industrial
+#  discipline: Scientific
 #  tier: 2
 #  cost: 5000
 #  technologyPrerequisites:
@@ -51,7 +51,7 @@
 #  icon:
 #    sprite: Interface/Misc/research_disciplines.rsi
 #    state: experimental
-#  discipline: Industrial
+#  discipline: Scientific
 #  tier: 3
 #  cost: 7500
 #  technologyPrerequisites:

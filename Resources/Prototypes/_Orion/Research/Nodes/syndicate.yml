@@ -5,7 +5,7 @@
   icon:
     sprite: Objects/Fun/Foam/foam_crossbow.rsi
     state: icon
-  discipline: Arsenal
+  discipline: Syndicate
   tier: 5
   hidden: true
   cost: 12500
@@ -54,7 +54,7 @@
   icon:
     sprite: Objects/Devices/desynchronizer.rsi
     state: icon
-  discipline: Experimental
+  discipline: Syndicate
   tier: 1
   hidden: true
   cost: 2500

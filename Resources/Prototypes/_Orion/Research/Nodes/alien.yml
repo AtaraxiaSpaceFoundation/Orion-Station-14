@@ -5,7 +5,7 @@
   icon:
     sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
     state: stun-icon
-  discipline: Experimental
+  discipline: Scientific
   tier: 2
   hidden: true
   cost: 5000
@@ -33,7 +33,7 @@
   icon:
     sprite: _Shitmed/Objects/Specific/Abductor/crowbar.rsi
     state: abductor
-  discipline: Experimental
+  discipline: Engineering
   tier: 2
   hidden: true
   announceChannels:
@@ -66,7 +66,7 @@
   icon:
     sprite: _Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi
     state: abductor
-  discipline: Experimental
+  discipline: Medical
   tier: 5
   hidden: true
   announceChannels:

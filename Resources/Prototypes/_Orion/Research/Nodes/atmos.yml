@@ -5,7 +5,7 @@
   icon:
     sprite: Objects/Tanks/oxygen.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   startingTechnology: true
   cost: 500
@@ -31,7 +31,7 @@
   icon:
     sprite: Structures/Machines/gasrecycler.rsi
     state: icon
-  discipline: Industrial
+  discipline: Engineering
   tier: 1
   announceChannels:
   - Engineering
@@ -54,7 +54,7 @@
   icon:
     sprite: Structures/Power/Generation/portable_generator.rsi
     state: portgen0
-  discipline: Industrial
+  discipline: Engineering
   tier: 2
   announceChannels:
   - Engineering
@@ -79,9 +79,9 @@
   name: research-technology-fusion-name
   description: research-technology-fusion-desc
   icon:
-    sprite: Effects/extinguisherSpray.rsi
-    state: extinguish
-  discipline: Industrial
+    sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi
+    state: freezerOn
+  discipline: Engineering
   tier: 3
   announceChannels:
   - Engineering
@@ -104,7 +104,7 @@
   icon:
     sprite: Objects/Tools/jaws_of_life.rsi
     state: jaws_pry
-  discipline: Industrial
+  discipline: Engineering
   tier: 4
   announceChannels:
   - Engineering
@@ -130,7 +130,7 @@
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
     state: experimental
-  discipline: Industrial
+  discipline: Engineering
   tier: 5
   announceChannels:
   - Engineering
