@@ -133,6 +133,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared.Damage.ForceSay;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
@@ -434,6 +435,11 @@ public sealed partial class ChatSystem : SharedChatSystem
                 return;
             }
         }
+
+        // Orion-Start
+        if (desiredType == InGameICChatType.Speak && _mobStateSystem.IsSoftCritical(source))
+            desiredType = InGameICChatType.Whisper;
+        // Orion-End
 
         // Otherwise, send whatever type.
         switch (desiredType)
@@ -813,8 +819,24 @@ public sealed partial class ChatSystem : SharedChatSystem
         Color? colorOverride = null // Goobstation
         )
     {
+        // Orion-Start
+        var allowSoftCritWhisper = false;
+        if (!ignoreActionBlocker && _mobStateSystem.IsSoftCritical(source) && !HasComp<AllowNextCritSpeechComponent>(source))
+        {
+            allowSoftCritWhisper = true;
+            EnsureComp<AllowNextCritSpeechComponent>(source);
+        }
+        // Orion-End
+
+        // Orion-Edit-Start
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
+        {
+            if (allowSoftCritWhisper)
+                RemCompDeferred<AllowNextCritSpeechComponent>(source);
+
             return;
+        }
+        // Orion-Edit-End
 
         // Goob edit start
         var message = FormattedMessage.RemoveMarkupOrThrow(originalMessage);
