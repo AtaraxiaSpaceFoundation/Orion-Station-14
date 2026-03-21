@@ -23,10 +23,12 @@ using Content.Goobstation.Shared.CrewMonitoring;
 using Content.Server.Jittering;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
+using Content.Server.Popups;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Bed.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
+using Content.Shared.Emag.Systems;
 using Content.Shared.Jittering;
 using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensor;
@@ -35,6 +37,7 @@ using Content.Shared.Pinpointer;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Medical.CrewMonitoring;
@@ -49,6 +52,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     [Dependency] private readonly JitteringSystem _jitter = default!;
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly ContainerSystem _containerSystem = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
     // Orion-End
 
     public override void Initialize()
@@ -57,6 +61,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, DeviceNetworkPacketEvent>(OnPacketReceived);
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, BoundUIOpenedEvent>(OnUIOpened);
+        SubscribeLocalEvent<CrewMonitoringConsoleComponent, GotEmaggedEvent>(OnEmagged); // Orion
     }
 
     // Orion-Start
@@ -209,9 +214,23 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 : !pair.Value.IsCommandTracker)
             .Select(pair => pair.Value)
             .ToList();
-        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors));
+        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, component.IsEmagged)); // Orion-Edit: Added component.IsEmagged
         // GoobStation - End
         //var allSensors = component.ConnectedSensors.Values.ToList();
         //_uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(allSensors));
     }
+    // Orion-Start
+    private void OnEmagged(EntityUid uid, CrewMonitoringConsoleComponent component, ref GotEmaggedEvent ev)
+    {
+        if (ev.Handled || component.IsEmagged)
+            return;
+
+        _audio.PlayPvs(component.SparkSound, uid);
+        _popup.PopupEntity(Loc.GetString("crew-monitoring-component-upgrade-emag"), uid);
+
+        component.IsEmagged = true;
+        UpdateUserInterface(uid, component);
+        ev.Handled = true;
+    }
+    // Orion-End
 }

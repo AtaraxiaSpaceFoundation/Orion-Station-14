@@ -68,5 +68,20 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
 
     [DataField(serverOnly: true)]
     public float? NormalLightRadius { get; set; }
+
+    /// <summary>
+    ///     It displays everyone in this state, regardless of the sensors.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool IsEmagged = false;
+
+    /// <summary>
+    ///     Emag sound effects.
+    /// </summary>
+    [DataField("sparkSound")]
+    public SoundSpecifier SparkSound = new SoundCollectionSpecifier("sparks")
+    {
+        Params = AudioParams.Default.WithVolume(8),
+    };
     // Orion-End
 }
