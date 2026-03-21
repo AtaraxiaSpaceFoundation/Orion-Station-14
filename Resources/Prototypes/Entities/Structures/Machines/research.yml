@@ -74,10 +74,15 @@
   - type: ResearchServerControlStatus
   - type: TechnologyDatabase
     supportedDisciplines:
-    - Industrial
-    - Arsenal
-    - Experimental
-    - CivilianServices
+    - Engineering
+    - Security
+    - Cargo
+    - Shaft
+    - Scientific
+    - Robotics
+    - Medical
+    - Service
+    - Syndicate
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver
@@ -125,7 +130,7 @@
     guides:
     - Science
   - type: ResearchPointSource # Goobstation
-    pointspersecond: 15 # Orion-TODO: Change this to 1
+    pointspersecond: 1 # Orion-Edit: 15 > 1
     pointType: General
     active: true
 
@@ -144,7 +149,7 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: ResearchClient
   - type: ResearchPointSource
-    pointspersecond: 25
+    pointspersecond: 15 # Orion-Edit: 25 > 15
     pointType: General
     active: true
   - type: PointLight

@@ -130,6 +130,13 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         }
     }
 
+    private bool ShouldShowDisciplineProgress(ResearchConsoleBoundInterfaceState state, TechDisciplinePrototype discipline)
+    {
+        return state.VisibleTechnologies.Any(technologyId => _prototype.Index(technologyId).Discipline == discipline.ID) ||
+               state.AvailableTechnologies.Any(technologyId => _prototype.Index(technologyId).Discipline == discipline.ID) ||
+               state.ResearchedTechnologies.Any(technologyId => _prototype.Index(technologyId).Discipline == discipline.ID);
+    }
+
     public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
     {
         _lastState = state;
@@ -157,6 +164,10 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         foreach (var disciplineId in database.SupportedDisciplines)
         {
             var discipline = _prototype.Index(disciplineId);
+
+            if (!ShouldShowDisciplineProgress(state, discipline))
+                continue;
+
             var tier = SharedResearchSystemExtensions.GetTierCompletionPercentage(database, discipline, _prototype);
 
             // i'm building the small-ass control here to spare me some mild annoyance in making a new file
