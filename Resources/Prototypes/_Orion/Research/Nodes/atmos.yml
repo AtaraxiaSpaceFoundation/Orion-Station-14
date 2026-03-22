@@ -8,7 +8,9 @@
   discipline: Engineering
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - AlertsComputerCircuitboard
   - ThermomachineFreezerMachineCircuitBoard
@@ -35,7 +37,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - Atmospherics
   unlockedExperiments:
@@ -58,7 +62,9 @@
   tier: 2
   announceChannels:
   - Engineering
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - GasCompression
   - EnergyManipulation
@@ -85,7 +91,9 @@
   tier: 3
   announceChannels:
   - Engineering
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - PlasmaControl
   discountExperiments:
@@ -108,7 +116,9 @@
   tier: 4
   announceChannels:
   - Engineering
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - Fusion
   discountExperiments:
@@ -134,7 +144,9 @@
   tier: 5
   announceChannels:
   - Engineering
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - ExperimentalTools
   - PartsBluespace

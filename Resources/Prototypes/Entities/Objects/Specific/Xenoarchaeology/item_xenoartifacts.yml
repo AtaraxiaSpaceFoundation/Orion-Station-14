@@ -159,9 +159,9 @@
     methodPointRewards:
       Deconstruct:
       - type: General
-        amount: 150
+        amount: 250
       - type: Experimental
-        amount: 40
+        amount: 60
     discoveryTrigger: machine:artifact-fragment
     experimentActions:
     - analyze_artifact_fragment

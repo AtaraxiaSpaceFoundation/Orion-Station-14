@@ -221,7 +221,7 @@ public sealed partial class ResearchSystem
     private bool CanServerUnlockTechnology(EntityUid uid, TechnologyPrototype technology, out List<ResearchPointAmount> finalCosts, TechnologyDatabaseComponent? database = null, ResearchClientComponent? client = null) // Orion-Edit: Was public
     {
         // Orion-Start
-        finalCosts = technology.AllPointCosts
+        finalCosts = technology.PointCosts
             .Select(cost => new ResearchPointAmount
             {
                 Type = cost.Type,
@@ -243,14 +243,15 @@ public sealed partial class ResearchSystem
         if (!CanUnlockTechnology(serverDatabase, technology))
             return false;
 
-        var hasExplicitGeneralCost = finalCosts.Any(cost => cost.Type == "General");
-        if (!hasExplicitGeneralCost)
+        for (var i = 0; i < finalCosts.Count; i++)
         {
-            finalCosts.Add(new ResearchPointAmount
-            {
-                Type = "General",
-                Amount = GetTechnologyFinalCost(serverDatabase, technology),
-            });
+            if (finalCosts[i].Type != "General")
+                continue;
+
+            var updated = finalCosts[i];
+            updated.Amount = GetTechnologyFinalCost(serverDatabase, technology);
+            finalCosts[i] = updated;
+            break;
         }
 
         return HasSufficientPoints(serverUid.Value, finalCosts, serverComp);

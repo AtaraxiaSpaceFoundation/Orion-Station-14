@@ -56,7 +56,9 @@
     methodPointRewards:
       Deconstruct:
       - type: General
-        amount: 25
+        amount: 250
+      - type: Experimental
+        amount: 60
     discoveryTrigger: machine:ore-sample
   # Orion-End
   - type: Fixtures

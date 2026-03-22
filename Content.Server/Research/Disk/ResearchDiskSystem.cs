@@ -50,7 +50,11 @@ namespace Content.Server.Research.Disk
                 return;
 
             component.Points = _prototype.EnumeratePrototypes<TechnologyPrototype>()
-                .Sum(tech => tech.Cost);
+                // Orion-Edit-Start
+                .Sum(tech => tech.PointCosts
+                    .Where(cost => cost.Type == "General")
+                    .Sum(cost => cost.Amount));
+                // Orion-Edit-End
         }
     }
 }

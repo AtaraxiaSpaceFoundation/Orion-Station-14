@@ -8,7 +8,9 @@
   discipline: Service
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - HandLabeler
   - ParcelWrap
@@ -65,7 +67,9 @@
   tier: 2
   announceChannels:
   - Service
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - OfficeEquipment
   discountExperiments:
@@ -92,7 +96,9 @@
   tier: 1
   announceChannels:
   - Service
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - OfficeEquipment
   recipeUnlocks:
@@ -113,7 +119,9 @@
     state: arcade
   discipline: Service
   tier: 2
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Consoles
   discountExperiments:
@@ -135,7 +143,9 @@
   discipline: Service
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - ElectricGrillMachineCircuitboard
   - MicrowaveMachineCircuitboard
@@ -172,7 +182,9 @@
   tier: 2
   announceChannels:
   - Service
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - CafeteriaEquipment
   recipeUnlocks:
@@ -197,7 +209,9 @@
   tier: 1
   announceChannels:
   - Service
-  cost: 3000
+  pointCosts:
+  - type: General
+    amount: 3000
   technologyPrerequisites:
   - OfficeEquipment
   recipeUnlocks:
@@ -215,7 +229,9 @@
   discipline: Service
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - FishingRod
   position: 11,-2
@@ -229,7 +245,9 @@
     state: experimental
   discipline: Service
   tier: 2
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - FishingEquip
   requiredExperiments:
@@ -246,7 +264,9 @@
     state: experimental
   discipline: Service
   tier: 3
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - FishingEquipAdv
   discountExperiments:

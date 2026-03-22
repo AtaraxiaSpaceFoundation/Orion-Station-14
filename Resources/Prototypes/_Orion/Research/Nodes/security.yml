@@ -8,7 +8,9 @@
   discipline: Security
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - MagazineShotgunBeanbag
   - BoxBeanbag
@@ -65,7 +67,9 @@
   tier: 1
   announceChannels:
   - Security
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - BasicArms
   recipeUnlocks:
@@ -101,7 +105,9 @@
   tier: 4
   announceChannels:
   - Security
-  cost: 17500
+  pointCosts:
+  - type: General
+    amount: 17500
   technologyPrerequisites:
   - BeamWeapons
   - AnomalyShells
@@ -121,7 +127,9 @@
   tier: 2
   announceChannels:
   - Security
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - SecurityEquipment
   recipeUnlocks:
@@ -148,7 +156,9 @@
   announceChannels:
   - Security
   - Medical
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - RiotSuppression
   requiredExperiments:
@@ -172,7 +182,9 @@
   tier: 4
   announceChannels:
   - Security
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - Explosives
   discountExperiments:
@@ -241,7 +253,9 @@
   tier: 3
   announceChannels:
   - Security
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - RiotSuppression
   recipeUnlocks:
@@ -263,7 +277,9 @@
   tier: 4
   announceChannels:
   - Security
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - ElectricWeapons
   recipeUnlocks:
@@ -286,7 +302,9 @@
   tier: 1
   announceChannels:
   - Security
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - ExoticAmmo
   recipeUnlocks:
@@ -305,7 +323,9 @@
   tier: 3
   announceChannels:
   - Security
-  cost: 20000
+  pointCosts:
+  - type: General
+    amount: 20000
   technologyPrerequisites:
   - BeamWeapons
   - WeaponizedLaserManipulation
@@ -335,7 +355,9 @@
   tier: 3
   announceChannels:
   - Security
-  cost: 20000
+  pointCosts:
+  - type: General
+    amount: 20000
   technologyPrerequisites:
   - BeamWeapons
   - WeaponizedLaserManipulation
@@ -355,7 +377,9 @@
   tier: 3
   announceChannels:
   - Security
-  cost: 20000
+  pointCosts:
+  - type: General
+    amount: 20000
   technologyPrerequisites:
   - BeamWeapons
   - WeaponizedLaserManipulation
@@ -375,7 +399,9 @@
   tier: 2
   announceChannels:
   - Security
-  cost: 12000
+  pointCosts:
+  - type: General
+    amount: 12000
   technologyPrerequisites:
   - PortableMicrofusionWeaponry
   recipeUnlocks:

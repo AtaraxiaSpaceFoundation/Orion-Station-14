@@ -8,7 +8,9 @@
   discipline: Scientific
   tier: 2
   hidden: true
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - BluespaceTravel
   requiredItemsToUnlock:
@@ -38,7 +40,9 @@
   hidden: true
   announceChannels:
   - Engineering
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - AlienTechnology
   - ExperimentalTools
@@ -71,7 +75,9 @@
   hidden: true
   announceChannels:
   - Medical
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - AlienTechnology
   - SurgeryTools

@@ -8,7 +8,9 @@
   discipline: Medical
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   unlockedExperiments:
   - AutopsyHuman
   - AutopsyNonhuman
@@ -94,7 +96,9 @@
   tier: 1
   announceChannels:
   - Medical
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - MedicalEquipment
   recipeUnlocks:
@@ -123,7 +127,9 @@
   tier: 3
   announceChannels:
   - Medical
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - ChemSynthesis
   requiredExperiments:
@@ -145,7 +151,9 @@
   tier: 4
   announceChannels:
   - Medical
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - AdvancedMedicalEquipment
   - Fusion

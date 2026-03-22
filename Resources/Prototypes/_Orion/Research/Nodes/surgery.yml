@@ -7,7 +7,9 @@
     state: experimental
   discipline: Medical
   tier: 1
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - MedicalEquipment
   # There should be surgery operations
@@ -24,7 +26,9 @@
   tier: 1
   announceChannels:
   - Medical
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - MedicalEquipment
   # There should be surgery operations
@@ -41,7 +45,9 @@
   tier: 2
   announceChannels:
   - Medical
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Surgery
   discountExperiments:
@@ -62,7 +68,9 @@
   tier: 3
   announceChannels:
   - Medical
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - AdvancedSurgery
   discountExperiments:
@@ -83,7 +91,9 @@
   tier: 4
   announceChannels:
   - Medical
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - ExperimentalSurgery
   discountExperiments:
@@ -108,7 +118,9 @@
   tier: 4
   announceChannels:
   - Medical
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - SurgeryTools
   recipeUnlocks:

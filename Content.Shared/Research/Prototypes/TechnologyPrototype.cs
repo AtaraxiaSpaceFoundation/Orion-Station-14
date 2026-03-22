@@ -90,17 +90,19 @@ public sealed partial class TechnologyPrototype : IPrototype
     public bool StartingTechnology;
     // Orion-End
 
+/* // Orion-Edit: Use PointCosts
     /// <summary>
     /// How much research is needed to unlock.
     /// </summary>
     [DataField]
     public int Cost = 10000;
+*/
 
     // Orion-Start
     /// <summary>
-    /// Multi-point type costs. If empty, General point cost is derived from <see cref="Cost"/>.
+    /// Multipoint type costs.
     /// </summary>
-    [DataField]
+    [DataField(required: true)]
     public List<ResearchPointAmount> PointCosts = new();
     // Orion-End
 
@@ -208,26 +210,6 @@ public sealed partial class TechnologyPrototype : IPrototype
 
     // Orion-Start
     public IEnumerable<ProtoId<TechnologyPrototype>> AllRequiredTechnologies => TechnologyPrerequisites;
-
-    private ResearchPointAmount[]? _cachedPointCosts;
-
-    public IEnumerable<ResearchPointAmount> AllPointCosts
-    {
-        get
-        {
-            if (PointCosts.Count > 0)
-                return PointCosts;
-
-            return _cachedPointCosts ??= new[]
-            {
-                new ResearchPointAmount
-                {
-                    Type = "General",
-                    Amount = Cost,
-                },
-            };
-        }
-    }
     // Orion-End
 }
 

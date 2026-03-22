@@ -8,7 +8,9 @@
   discipline: Robotics
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   technologyPrerequisites:
   - Robotics
   recipeUnlocks:
@@ -33,7 +35,9 @@
   tier: 1
   announceChannels:
   - Science
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - MechAssembly
   recipeUnlocks:
@@ -56,7 +60,9 @@
   announceChannels:
   - Science
   - Security # The dread upon security when they hear this...
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - MechAssembly
   recipeUnlocks:
@@ -90,7 +96,9 @@
     state: experimental
   discipline: Robotics
   tier: 2
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - MechAssembly
   - ChemSynthesis
@@ -109,7 +117,9 @@
   announceChannels:
   - Science
   - Supply
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - MechEquipment
   - Mining
@@ -136,7 +146,9 @@
   tier: 2
   announceChannels:
   - Science
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - MechEquipment
   requiredExperiments:
@@ -157,7 +169,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - MechCombat
   recipeUnlocks:
@@ -184,7 +198,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - MechCombat
   recipeUnlocks:
@@ -211,7 +227,9 @@
   tier: 4
   announceChannels:
   - Science
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - MechAssault
   # TODO
@@ -228,7 +246,9 @@
   tier: 4
   announceChannels:
   - Science
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - MechLight
   - AnomalyResearch
@@ -246,7 +266,9 @@
   tier: 4
   announceChannels:
   - Science
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - MechCombat
   - ElectricWeapons
@@ -272,7 +294,9 @@
   tier: 5
   announceChannels:
   - Science
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - MechEnergyGuns
   - ExoticAmmo
@@ -293,7 +317,9 @@
   tier: 5
   announceChannels:
   - Science
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - MechHeavy
   - ExoticAmmo
@@ -314,7 +340,9 @@
   tier: 5
   announceChannels:
   - Science
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - MechInfiltrator
   - BluespaceTravel

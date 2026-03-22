@@ -94,16 +94,17 @@ public sealed partial class ResearchSystem
 
         if (!_emag.CheckFlag(uid, EmagType.Interaction) && technologyPrototype.AnnounceOnUnlock) // Orion-Edit
         {
+            var costText = FormatResearchPointAmounts(technologyPrototype.PointCosts); // Orion
             var message = Loc.GetString(
                 "research-console-unlock-technology-radio-broadcast",
                 ("technology", Loc.GetString(technologyPrototype.Name)),
-                ("amount", technologyPrototype.Cost)); // Orion-Edit: Removed approver
+                ("amount", costText)); // Orion-Edit: Removed approver
 
             // Orion-Start
             var messageIC = Loc.GetString(
                 "research-console-unlock-technology-ic",
                 ("technology", Loc.GetString(technologyPrototype.Name)),
-                ("amount", technologyPrototype.Cost.ToString()));
+                ("amount", costText));
             // Orion-End
 
             // Orion-Edit-Start: More than one channel announce
@@ -182,17 +183,7 @@ public sealed partial class ResearchSystem
                         return ResearchAvailability.PrereqsMet;
 
                     var proto = PrototypeManager.Index(techId);
-                    var allCosts = proto.AllPointCosts.ToList();
-                    var generalFinal = GetTechnologyFinalCost(db, proto);
-                    for (var i = 0; i < allCosts.Count; i++)
-                    {
-                        if (allCosts[i].Type != "General")
-                            continue;
-
-                        var c = allCosts[i];
-                        c.Amount = generalFinal;
-                        allCosts[i] = c;
-                    }
+                    var allCosts = GetTechnologyFinalPointCosts(db, proto);
                     var canAfford = HasSufficientPoints(serverUid.Value, allCosts, server);
                     // Orion-End
 
@@ -211,17 +202,7 @@ public sealed partial class ResearchSystem
                     if (reason != ResearchTechnologyLockReason.None)
                         return reason;
 
-                    var costs = proto.AllPointCosts.ToList();
-                    var generalFinal = GetTechnologyFinalCost(db, proto);
-                    for (var i = 0; i < costs.Count; i++)
-                    {
-                        if (costs[i].Type != "General")
-                            continue;
-
-                        var updated = costs[i];
-                        updated.Amount = generalFinal;
-                        costs[i] = updated;
-                    }
+                    var costs = GetTechnologyFinalPointCosts(db, proto);
 
                     if (!HasSufficientPoints(serverUid.Value, costs, server) && !db.ResearchedTechnologies.Contains(proto.ID))
                         return ResearchTechnologyLockReason.InsufficientPoints;

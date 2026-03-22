@@ -185,7 +185,7 @@ public abstract class SharedResearchSystem : EntitySystem
         if (tech.DiscountExperiments.Count == 0)
             return 0;
 
-        var baseCost = tech.Cost;
+        var baseCost = GetTechnologyPointCost(tech, "General"); // Orion-Edit
         var flatDiscount = 0;
         var percentageDiscount = 0f;
 
@@ -215,8 +215,58 @@ public abstract class SharedResearchSystem : EntitySystem
 
     protected int GetTechnologyFinalCost(TechnologyDatabaseComponent component, TechnologyPrototype tech)
     {
-        return Math.Max(0, tech.Cost - GetTechnologyDiscounts(component, tech));
+        return Math.Max(0, GetTechnologyPointCost(tech, "General") - GetTechnologyDiscounts(component, tech)); // Orion-Edit
     }
+
+    // Orion-Start
+    protected List<ResearchPointAmount> GetTechnologyFinalPointCosts(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        var costs = tech.PointCosts
+            .Select(cost => new ResearchPointAmount
+            {
+                Type = cost.Type,
+                Amount = cost.Amount,
+            })
+            .ToList();
+
+        for (var i = 0; i < costs.Count; i++)
+        {
+            if (costs[i].Type != "General")
+                continue;
+
+            var updated = costs[i];
+            updated.Amount = GetTechnologyFinalCost(component, tech);
+            costs[i] = updated;
+            break;
+        }
+
+        return costs;
+    }
+
+    protected int GetTechnologyPointCost(TechnologyPrototype tech, string type)
+    {
+        foreach (var cost in tech.PointCosts)
+        {
+            if (cost.Type == type)
+                return cost.Amount;
+        }
+
+        return 0;
+    }
+
+    protected string FormatResearchPointAmounts(IEnumerable<ResearchPointAmount> amounts)
+    {
+        return string.Join(", ",
+            amounts.Select(amount =>
+            $"{amount.Amount} {LocalizeResearchPointType(amount.Type)}"));
+    }
+
+    protected string LocalizeResearchPointType(string type)
+    {
+        var key = $"research-point-type-{type.ToLowerInvariant()}";
+        return Loc.TryGetString(key, out var localized) ? localized : type;
+    }
+    // Orion-End
 
     public virtual bool CanUnlockTechnology(TechnologyDatabaseComponent component, TechnologyPrototype tech)
     {
@@ -452,7 +502,7 @@ public abstract class SharedResearchSystem : EntitySystem
 
         if (includeCost)
         {
-            description.AddMarkupOrThrow(Loc.GetString("research-console-cost", ("amount", technology.Cost)));
+            description.AddMarkupOrThrow(Loc.GetString("research-console-cost", ("amount", FormatResearchPointAmounts(technology.PointCosts)))); // Orion-Edit
             description.PushNewline();
         }
 

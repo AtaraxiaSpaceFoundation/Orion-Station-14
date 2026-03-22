@@ -8,7 +8,9 @@
   discipline: Robotics
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   technologyPrerequisites:
   - Robotics
   unlockedExperiments:
@@ -40,7 +42,9 @@
   tier: 1
   announceChannels:
   - Science
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - Augmentation
   recipeUnlocks:
@@ -81,7 +85,9 @@
   tier: 2
   announceChannels:
   - Science
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Cybernetics
   recipeUnlocks:
@@ -99,7 +105,9 @@
   tier: 2
   announceChannels:
   - Science
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Cybernetics
   recipeUnlocks:
@@ -117,7 +125,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - BorgServices
   - AdvancedSurgery
@@ -136,7 +146,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - BorgServices
   - Sanitation
@@ -158,7 +170,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - BorgMining
   - UpgradedParts
@@ -178,7 +192,9 @@
   announceChannels:
   - Security
   - Medical
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - Augmentation
   recipeUnlocks:
@@ -199,7 +215,9 @@
   announceChannels:
   - Science
   - Medical
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - PassiveImplants
   - Cybernetics
@@ -229,7 +247,9 @@
   announceChannels:
   - Science
   - Medical
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - CyberImplants
   recipeUnlocks:
@@ -249,7 +269,9 @@
   announceChannels:
   - Science
   - Medical
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - CombatImplants
   - ExperimentalTools
@@ -270,7 +292,9 @@
   announceChannels:
   - Science
   - Medical
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Cybernetics
   recipeUnlocks:
@@ -290,7 +314,9 @@
   announceChannels:
   - Science
   - Medical
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - CyberOrgans
   requiredExperiments:
@@ -310,7 +336,9 @@
   announceChannels:
   - Science
   - Medical
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - CyberOrgansUpgraded
   - NightVision

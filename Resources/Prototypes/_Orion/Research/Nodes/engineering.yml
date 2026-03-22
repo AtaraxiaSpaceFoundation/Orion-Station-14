@@ -8,7 +8,9 @@
   discipline: Engineering
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - PowerCellSmall
   - MegaCellSmall
@@ -36,7 +38,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Parts
   - EnergyManipulation
@@ -56,7 +60,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - UpgradedParts
   discountExperiments:
@@ -79,7 +85,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - AdvancedParts
   - BluespaceTravel
@@ -104,7 +112,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 12000
+  pointCosts:
+  - type: General
+    amount: 12000
   technologyPrerequisites:
   - PartsBluespace
   - AlienTechnology
@@ -125,7 +135,9 @@
     state: base
   discipline: Engineering
   tier: 1
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - PartsBluespace
   recipeUnlocks:
@@ -143,7 +155,9 @@
   discipline: Engineering
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - CircuitImprinterMachineCircuitboard
   - SolarControlComputerCircuitboard
@@ -234,7 +248,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - Construction
   recipeUnlocks:
@@ -265,7 +281,9 @@
   - Engineering
   - Science
   - Supply
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - EnergyManipulation
   - AppliedBluespace
@@ -287,7 +305,9 @@
     state: icon
   discipline: Engineering
   tier: 2
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - EnergyManipulation
   recipeUnlocks:
@@ -311,7 +331,9 @@
   - Security
   - Science
   - Medical
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - Holographics
   - CyberImplants
@@ -338,7 +360,9 @@
   - Security
   - Science
   - Medical
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - HUD
   recipeUnlocks:
@@ -358,7 +382,9 @@
   announceChannels:
   - Engineering
   - Science
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - ExperimentalTools
   recipeUnlocks:
@@ -380,7 +406,9 @@
   announceChannels:
   - Engineering
   - Science
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - AdvancedParts
   recipeUnlocks:
@@ -401,7 +429,9 @@
   tier: 1
   announceChannels:
   - Engineering
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - PartsBluespace
   recipeUnlocks:

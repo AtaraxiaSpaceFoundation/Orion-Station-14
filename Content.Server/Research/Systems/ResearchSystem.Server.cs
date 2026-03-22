@@ -283,6 +283,16 @@ public sealed partial class ResearchSystem
             return;
 
         // Orion-Start
+        var authorityServer = GetNetworkAuthority(uid, component);
+        if (authorityServer != uid)
+        {
+            uid = authorityServer;
+            component = null;
+
+            if (!Resolve(uid, ref component, false))
+                return;
+        }
+
         EnsurePointBalance(component, type);
         var totalByType = 0;
         for (var i = 0; i < component.PointBalances.Count; i++)

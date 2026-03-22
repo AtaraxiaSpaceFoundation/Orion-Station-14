@@ -69,7 +69,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         // Orion-Edit-Start
         var costMessage = new FormattedMessage();
         costMessage.AddMarkupOrThrow($"[bold]{Loc.GetString("research-console-tech-cost-title")}[/bold]");
-        foreach (var cost in proto.AllPointCosts)
+        foreach (var cost in proto.PointCosts)
         {
             costMessage.PushNewline();
             var pointType = LocalizePointType(cost.Type);

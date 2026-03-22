@@ -8,7 +8,9 @@
   discipline: Shaft
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - Pickaxe
   - Shovel
@@ -30,7 +32,9 @@
   tier: 1
   announceChannels:
   - Supply
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - MaterialProcessing
   recipeUnlocks:
@@ -57,7 +61,9 @@
   tier: 2
   announceChannels:
   - Supply
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - Mining
   - GasCompression
@@ -79,7 +85,9 @@
   tier: 2
   announceChannels:
   - Supply
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - ProtoKineticAccelerators
   - GasCompression
@@ -101,7 +109,9 @@
   tier: 3
   announceChannels:
   - Supply
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - LowPressureExcavation
   - PlasmaControl
@@ -120,7 +130,9 @@
   tier: 3
   announceChannels:
   - Supply
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - Gaming
   - AppliedBluespace
@@ -138,7 +150,9 @@
   tier: 4
   announceChannels:
   - Supply
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - PlasmaMining
   recipeUnlocks:

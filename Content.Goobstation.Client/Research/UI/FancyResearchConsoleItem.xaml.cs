@@ -46,12 +46,7 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
 
         // Orion-Start
         if (prototypeManager.TryIndex(proto.Discipline, out var discipline))
-        {
             DisciplineDisplay.Texture = sprite.Frame0(discipline.Icon);
-
-            if (DisciplineBadge.PanelOverride is StyleBoxFlat badge)
-                badge.BorderColor = discipline.Color;
-        }
         // Orion-End
 
         Button.OnPressed += Selected;
@@ -94,9 +89,10 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
         // Orion-Edit-Start
         NodeContainer.SetSize = new Vector2(80 * scale, 80 * scale);
 
-        DisciplineBadge.SetSize = new Vector2(20, 20);
-        SetPosition(DisciplineBadge, new Vector2(16, 16));
-        DisciplineDisplay.SetSize = new Vector2(16, 16);
+        var badgeSize = new Vector2(20 * scale, 20 * scale);
+        DisciplineBadge.SetSize = badgeSize;
+        SetPosition(DisciplineBadge, Vector2.Zero);
+        DisciplineDisplay.SetSize = badgeSize;
         // Orion-Edit-End
     }
 }

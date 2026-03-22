@@ -132,7 +132,7 @@
     guides:
     - Science
   - type: ResearchPointSource # Goobstation
-    pointspersecond: 1 # Orion-Edit: 15 > 1
+    pointspersecond: 5 # Orion-Edit: 15 > 5
     pointType: General # Orion
     active: true
 

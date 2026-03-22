@@ -8,7 +8,9 @@
   discipline: Syndicate
   tier: 5
   hidden: true
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
   technologyPrerequisites:
   - ExperimentalTools
   - ExoticAmmo
@@ -57,7 +59,9 @@
   discipline: Syndicate
   tier: 1
   hidden: true
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   revealRequirements:
   - !type:RevealedTechnologyRevealRequirement
     id: illegal-technology-revealed

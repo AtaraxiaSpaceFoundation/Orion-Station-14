@@ -8,7 +8,9 @@
   discipline: Scientific
   tier: 1
   startingTechnology: true
-  cost: 500
+  pointCosts:
+  - type: General
+    amount: 500
   recipeUnlocks:
   - ExperiScanner
   - ResearchAndDevelopmentServerMachineCircuitboard
@@ -42,7 +44,9 @@
   tier: 1
   announceChannels:
   - Science
-  cost: 2500
+  pointCosts:
+  - type: General
+    amount: 2500
   technologyPrerequisites:
   - FundamentalScience
   recipeUnlocks:
@@ -63,7 +67,9 @@
   - Medical
   - Service
   - Supply
-  cost: 5000
+  pointCosts:
+  - type: General
+    amount: 5000
   technologyPrerequisites:
   - BluespaceTheory
   discountExperiments:
@@ -95,7 +101,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - AppliedBluespace
   recipeUnlocks:
@@ -114,7 +122,9 @@
   tier: 3
   announceChannels:
   - Science
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - AppliedBluespace
   recipeUnlocks:
@@ -138,7 +148,11 @@
   tier: 5
   announceChannels:
   - Science
-  cost: 12500
+  pointCosts:
+  - type: General
+    amount: 12500
+  - type: Experimental
+    amount: 1500
   technologyPrerequisites:
   - AnomalyResearch
   discountExperiments:
@@ -167,7 +181,9 @@
     state: icon
   discipline: Scientific
   tier: 2
-  cost: 7500
+  pointCosts:
+  - type: General
+    amount: 7500
   technologyPrerequisites:
   - FundamentalScience
   recipeUnlocks:
@@ -199,7 +215,9 @@
     state: implanter0
   discipline: Scientific
   tier: 3
-  cost: 10000
+  pointCosts:
+  - type: General
+    amount: 10000
   technologyPrerequisites:
   - BasicTranslation
   recipeUnlocks:

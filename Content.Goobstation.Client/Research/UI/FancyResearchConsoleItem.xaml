@@ -33,19 +33,19 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             <PanelContainer Name="DisciplineBadge"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            SetSize="8 8"
+                            SetSize="16 16"
                             MouseFilter="Ignore">
                 <PanelContainer.PanelOverride>
-                    <graphics:StyleBoxFlat BackgroundColor="#10192A"
-                                           BorderColor="#4E6588"
-                                           BorderThickness="1"/>
+                    <graphics:StyleBoxFlat BackgroundColor="#00000000"
+                                           BorderColor="#00000000"
+                                           BorderThickness="0"/>
                 </PanelContainer.PanelOverride>
                 <TextureRect Name="DisciplineDisplay"
-                             SetSize="8 8"
+                             SetSize="16 16"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Stretch="KeepCentered"
-                             TextureScale="1 1"/>
+                             Stretch="KeepAspectCentered"
+                             TextureScale="2 2"/>
             </PanelContainer>
             <!-- Orion-End -->
         </PanelContainer>

@@ -8,7 +8,9 @@
 #  discipline: Scientific
 #  tier: 1
 #  startingTechnology: true
-#  cost: 500
+#  pointCosts:
+#  - type: General
+#    amount: 500
 #  technologyPrerequisites:
 #  - Robotics
 #  # TODO
@@ -23,7 +25,9 @@
 #    state: experimental
 #  discipline: Scientific
 #  tier: 2
-#  cost: 2500
+#  pointCosts:
+#  - type: General
+#    amount: 2500
 #  technologyPrerequisites:
 #  - Programming
 #  # TODO
@@ -38,7 +42,9 @@
 #    state: experimental
 #  discipline: Scientific
 #  tier: 2
-#  cost: 5000
+#  pointCosts:
+#  - type: General
+#    amount: 5000
 #  technologyPrerequisites:
 #  - CircuitShells
 #  # TODO
@@ -53,7 +59,9 @@
 #    state: experimental
 #  discipline: Scientific
 #  tier: 3
-#  cost: 7500
+#  pointCosts:
+#  - type: General
+#    amount: 7500
 #  technologyPrerequisites:
 #  - BrainComputerInterface
 #  # TODO
