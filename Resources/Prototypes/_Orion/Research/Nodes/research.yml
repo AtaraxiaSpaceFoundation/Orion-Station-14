@@ -28,6 +28,7 @@
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
   - ExperimentalCircuitBoard
+  - ResearchDataDisk
   position: 0,4
 
 - type: technology
