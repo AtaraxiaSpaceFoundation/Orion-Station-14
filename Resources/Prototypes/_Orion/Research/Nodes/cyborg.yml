@@ -86,8 +86,6 @@
   - Cybernetics
   recipeUnlocks:
   - BorgModuleAdvancedCleaning
-  - BorgModuleAdvancedTool
-  - BorgModuleAdvancedMining
   position: -5,2
 
 - type: technology
@@ -104,7 +102,8 @@
   cost: 5000
   technologyPrerequisites:
   - Cybernetics
-  # TODO
+  recipeUnlocks:
+  - BorgModuleAdvancedMining
   position: -5,1
 
 - type: technology
@@ -143,6 +142,9 @@
   - Sanitation
   recipeUnlocks:
   - BorgModuleLollypop
+  - BorgModuleTool
+  - BorgModuleCable
+  - BorgModuleFireExtinguisher
   position: -5,-1
 
 - type: technology
@@ -161,9 +163,7 @@
   - BorgMining
   - UpgradedParts
   recipeUnlocks:
-  - BorgModuleTool
-  - BorgModuleCable
-  - BorgModuleFireExtinguisher
+  - BorgModuleAdvancedTool
   position: -5,-2
 
 - type: technology

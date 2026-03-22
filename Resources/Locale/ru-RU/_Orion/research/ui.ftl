@@ -6,6 +6,7 @@ research-console-tech-required-experiments-title = Требуемые экспе
 research-console-tech-cost-title = Стоимость
 research-console-tech-required-technologies-title = Требуемые технологии
 research-console-tech-missing-experiments = [color=crimson]Необходимые эксперименты ещё не завершены.[/color]
+research-console-tech-empty-unlocks = [НАНОТРЕЙЗЕН]: Результаты недоступны.
 
 research-point-type-general = Общие
 research-point-type-experimental = Экспериментальные

@@ -163,7 +163,15 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             hasRecipeUnlocks = true; // Orion
         }
 
-        RecipesContainer.Visible = hasRecipeUnlocks; // Orion
+        // Orion-Start
+        var hasGenericUnlocks = proto.GenericUnlocks.Count > 0;
+        var hasVisibleUnlocks = hasRecipeUnlocks || hasGenericUnlocks;
+
+        EmptyUnlocksStripe.Visible = !hasVisibleUnlocks;
+        EmptyUnlocksLabel.Text = !hasVisibleUnlocks
+            ? Loc.GetString("research-console-tech-empty-unlocks")
+            : string.Empty;
+        // Orion-End
     }
 
     protected override void ExitedTree()

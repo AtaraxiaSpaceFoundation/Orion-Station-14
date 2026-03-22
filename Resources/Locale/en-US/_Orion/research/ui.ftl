@@ -6,6 +6,7 @@ research-console-tech-required-experiments-title = Required experiments:
 research-console-tech-cost-title = Cost
 research-console-tech-required-technologies-title = Required technologies
 research-console-tech-missing-experiments = [color=crimson]Required experiments are not completed yet.[/color]
+research-console-tech-empty-unlocks = [NANOTRASEN]: Sorry.
 
 research-point-type-general = General
 research-point-type-experimental = Experimental
