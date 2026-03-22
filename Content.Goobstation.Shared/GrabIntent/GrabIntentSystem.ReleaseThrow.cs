@@ -1,6 +1,7 @@
 using Content.Goobstation.Common.Grab;
 using Content.Shared.Hands;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Popups;
@@ -13,6 +14,8 @@ namespace Content.Goobstation.Shared.GrabIntent;
 
 public sealed partial class GrabIntentSystem
 {
+    [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
+
     #region Release/Throw Initialization
 
     private void InitializeReleaseAndThrowEvents()
@@ -56,6 +59,14 @@ public sealed partial class GrabIntentSystem
     {
         if (user == null || user.Value != pullableUid)
             return true;
+
+        // Orion-Start
+        if (!_mobState.IsAlive(pullableUid))
+        {
+            _popup.PopupPredicted(Loc.GetString("popup-grab-release-fail-not-alive"), pullableUid, pullableUid, PopupType.SmallCaution);
+            return false;
+        }
+        // Orion-End
 
         if (!TryComp<GrabbableComponent>(pullableUid, out var grabbable))
             return true;

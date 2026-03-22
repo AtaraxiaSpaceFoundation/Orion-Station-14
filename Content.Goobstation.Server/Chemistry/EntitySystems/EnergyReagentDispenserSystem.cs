@@ -220,7 +220,8 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
                 || !_solutionContainerSystem.TryGetFitsInDispenser(outputContainer, out var solution, out var soln))
                 return;
 
-            var refundedPower = soln.Sum(reagent => GetPowerCostForReagent(reagent.Reagent.Prototype, (int) reagent.Quantity, reagentDispenser));
+            var refundedPower = soln.Sum(reagent => GetPowerCostForReagent(reagent.Reagent.Prototype, (int) reagent.Quantity, reagentDispenser.Comp)) // Orion-Edit
+                                * reagentDispenser.Comp.RefundEnergyEfficiency; // Orion
             if (refundedPower > 0)
                 _battery.AddCharge(reagentDispenser, refundedPower);
 
