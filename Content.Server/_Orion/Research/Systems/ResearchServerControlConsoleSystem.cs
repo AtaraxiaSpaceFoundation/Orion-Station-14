@@ -88,6 +88,7 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
             {
                 var status = CompOrNull<ResearchServerControlStatusComponent>(s);
                 var authorityId = authorityByNetwork[s.Comp.NetworkId];
+                var pointGeneration = _research.GetPointGenerationPerSecond(s, s.Comp);
 
                 return new ResearchServerControlEntry(
                     s.Comp.Id,
@@ -97,8 +98,8 @@ public sealed class ResearchServerControlConsoleSystem : EntitySystem
                     s.Comp.Id == authorityId,
                     authorityId,
                     status?.GenerationEnabled ?? true,
-                    _research.GetPointsPerSecond(s, s.Comp),
-                    _research.GetPointGenerationPerSecond(s, s.Comp),
+                    pointGeneration.Sum(p => p.Amount),
+                    pointGeneration,
                     s.Comp.PointBalances.Select(p => new ResearchPointAmount { Type = p.Type, Amount = p.Amount }).ToList(),
                     s.Comp.Logs.Count);
             })

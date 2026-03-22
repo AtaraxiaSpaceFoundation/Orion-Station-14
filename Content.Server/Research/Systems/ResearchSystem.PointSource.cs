@@ -17,10 +17,11 @@ public sealed partial class ResearchSystem
 {
     private void InitializeSource()
     {
-        SubscribeLocalEvent<ResearchPointSourceComponent, ResearchServerGetPointsPerSecondEvent>(OnGetPointsPerSecond);
+//        SubscribeLocalEvent<ResearchPointSourceComponent, ResearchServerGetPointsPerSecondEvent>(OnGetPointsPerSecond); // Orion-Edit
         SubscribeLocalEvent<ResearchPointSourceComponent, ResearchServerGetPointsPerSecondByTypeEvent>(OnGetPointsPerSecondByType); // Orion
     }
 
+/* // Orion-Edit: Use OnGetPointsPerSecondByType
     private void OnGetPointsPerSecond(Entity<ResearchPointSourceComponent> source, ref ResearchServerGetPointsPerSecondEvent args)
     {
         // Orion-Start
@@ -31,6 +32,7 @@ public sealed partial class ResearchSystem
         if (CanProduce(source))
             args.Points += source.Comp.PointsPerSecond;
     }
+*/
 
     private bool CanProduce(Entity<ResearchPointSourceComponent> source) // Orion-Edit: Was public
     {

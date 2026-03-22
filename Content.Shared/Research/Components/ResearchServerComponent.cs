@@ -116,6 +116,7 @@ public readonly record struct ResearchServerPointsChangedEvent(EntityUid Server,
 public readonly record struct ResearchServerPointTypeChangedEvent(EntityUid Server, string Type, int Total, int Delta);
 // Orion-End
 
+/* // Orion-Edit: Use ResearchServerGetPointsPerSecondByTypeEvent
 /// <summary>
 /// Event raised every second to calculate the amount of points added to the server.
 /// </summary>
@@ -123,8 +124,14 @@ public readonly record struct ResearchServerPointTypeChangedEvent(EntityUid Serv
 /// <param name="Points"></param>
 [ByRefEvent]
 public record struct ResearchServerGetPointsPerSecondEvent(EntityUid Server, int Points);
+*/
 
 // Orion-Start
+/// <summary>
+/// Event raised every second to calculate the amount of points added to the server.
+/// </summary>
+/// <param name="Server"></param>
+/// <param name="Points"></param>
 [ByRefEvent]
 public record struct ResearchServerGetPointsPerSecondByTypeEvent(EntityUid Server, List<ResearchPointAmount> Points);
 // Orion-End
