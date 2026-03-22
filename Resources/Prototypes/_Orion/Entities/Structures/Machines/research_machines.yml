@@ -50,6 +50,9 @@
         type: DestructiveAnalyzerBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - OrionRnDMachines
 
 - type: entity
   parent: [ BaseMachinePowered, SmallConstructibleMachine ]
@@ -98,3 +101,6 @@
         type: ExperimentalDestructiveScannerBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - OrionRnDMachines

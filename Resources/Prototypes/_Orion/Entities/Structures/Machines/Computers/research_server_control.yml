@@ -16,3 +16,6 @@
         type: ResearchServerControlBoundUserInterface
       enum.ResearchClientUiKey.Key:
         type: ResearchClientBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - OrionRnDMachines
