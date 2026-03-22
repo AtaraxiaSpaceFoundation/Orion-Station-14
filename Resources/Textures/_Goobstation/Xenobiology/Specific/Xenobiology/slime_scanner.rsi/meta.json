@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from TG Station",
+    "copyright": "Taken from TG Station | Edited by PuroSlavKing (Github)",
     "states": [
         {
             "name": "analyzer-inhand-left",
@@ -16,7 +16,10 @@
             "directions": 4
         },
         {
-            "name": "icon",
+            "name": "icon"
+        },
+        {
+            "name": "analyzer",
             "delays": [
                 [
                     0.1,
