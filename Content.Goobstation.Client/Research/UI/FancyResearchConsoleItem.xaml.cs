@@ -27,23 +27,24 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
     // Public fields
     public TechnologyPrototype Prototype;
     public Action<TechnologyPrototype, ResearchAvailability>? SelectAction;
-    private ResearchAvailability _availability;
+    private ResearchAvailability _availability; // Orion-Edit: Was public
 
     // Some visuals
-    private Color _color;
-    private Color _borderColor;
-    private Color _hoveredColor;
+    private Color _color; // Orion-Edit
+    private Color _borderColor; // Orion-Edit
+    private Color _hoveredColor; // Orion-Edit
 
-    public FancyResearchConsoleItem(TechnologyPrototype proto, SpriteSystem sprite, IPrototypeManager prototypeManager, ResearchAvailability availability)
+    public FancyResearchConsoleItem(TechnologyPrototype proto, SpriteSystem sprite, IPrototypeManager prototypeManager, ResearchAvailability availability) // Orion-Edit
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        _availability = availability;
+        _availability = availability; // Orion-Edit
         Prototype = proto;
 
         ResearchDisplay.Texture = sprite.Frame0(proto.Icon);
 
+        // Orion-Start
         if (prototypeManager.TryIndex(proto.Discipline, out var discipline))
         {
             DisciplineDisplay.Texture = sprite.Frame0(discipline.Icon);
@@ -51,16 +52,18 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
             if (DisciplineBadge.PanelOverride is StyleBoxFlat badge)
                 badge.BorderColor = discipline.Color;
         }
+        // Orion-End
 
         Button.OnPressed += Selected;
         Button.OnDrawModeChanged += UpdateColor;
 
-        (_color, _hoveredColor, _borderColor) = availability switch
+        (_color, _hoveredColor, _borderColor) = availability switch // Orion-Edit
         {
             ResearchAvailability.Researched => (Color.DarkOliveGreen, Color.PaleGreen, Color.LimeGreen),
             ResearchAvailability.Available => (Color.FromHex("#7c7d2a"), Color.FromHex("#ecfa52"), Color.FromHex("#e8fa25")),
             ResearchAvailability.PrereqsMet => (Color.FromHex("#6b572f"), Color.FromHex("#fad398"), Color.FromHex("#cca031")),
-            _ => (Color.DarkRed, Color.PaleVioletRed, Color.Crimson)
+//            ResearchAvailability.Unavailable => (Color.DarkRed, Color.PaleVioletRed, Color.Crimson), // Orion-Edit
+            _ => (Color.DarkRed, Color.PaleVioletRed, Color.Crimson),
         };
 
         UpdateColor();
@@ -69,9 +72,9 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
     private void UpdateColor()
     {
         var panel = (StyleBoxFlat) Panel.PanelOverride!;
-        panel.BackgroundColor = Button.IsHovered ? _hoveredColor : _color;
+        panel.BackgroundColor = Button.IsHovered ? _hoveredColor : _color; // Orion-Edit
 
-        panel.BorderColor = _borderColor;
+        panel.BorderColor = _borderColor; // Orion-Edit
     }
 
     protected override void ExitedTree()
@@ -83,16 +86,18 @@ public sealed partial class FancyResearchConsoleItem : LayoutContainer
 
     private void Selected(BaseButton.ButtonEventArgs args)
     {
-        SelectAction?.Invoke(Prototype, _availability);
+        SelectAction?.Invoke(Prototype, _availability); // Orion-Edit
     }
 
     public void SetScale(float scale)
     {
+        // Orion-Edit-Start
         NodeContainer.SetSize = new Vector2(80 * scale, 80 * scale);
 
         DisciplineBadge.SetSize = new Vector2(20, 20);
         SetPosition(DisciplineBadge, new Vector2(16, 16));
         DisciplineDisplay.SetSize = new Vector2(16, 16);
+        // Orion-Edit-End
     }
 }
 

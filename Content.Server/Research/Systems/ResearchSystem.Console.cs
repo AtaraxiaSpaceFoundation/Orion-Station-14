@@ -92,12 +92,12 @@ public sealed partial class ResearchSystem
             return;
         }
 
-        if (!_emag.CheckFlag(uid, EmagType.Interaction) && technologyPrototype.AnnounceOnUnlock)
+        if (!_emag.CheckFlag(uid, EmagType.Interaction) && technologyPrototype.AnnounceOnUnlock) // Orion-Edit
         {
             var message = Loc.GetString(
                 "research-console-unlock-technology-radio-broadcast",
                 ("technology", Loc.GetString(technologyPrototype.Name)),
-                ("amount", technologyPrototype.Cost));
+                ("amount", technologyPrototype.Cost)); // Orion-Edit: Removed approver
 
             // Orion-Start
             var messageIC = Loc.GetString(
@@ -106,6 +106,7 @@ public sealed partial class ResearchSystem
                 ("amount", technologyPrototype.Cost.ToString()));
             // Orion-End
 
+            // Orion-Edit-Start: More than one channel announce
             var announceChannels = technologyPrototype.AnnounceChannels.Count > 0
                 ? technologyPrototype.AnnounceChannels
                 : [component.AnnouncementChannel];
@@ -114,6 +115,7 @@ public sealed partial class ResearchSystem
             {
                 _radio.SendRadioMessage(uid, message, channel, uid, escapeMarkup: false);
             }
+            // Orion-Edit-End
 
             _chat.TrySendInGameICMessage(uid, messageIC, InGameICChatType.Speak, false); // Orion
         }
@@ -134,17 +136,26 @@ public sealed partial class ResearchSystem
 
         // R&D Console Rework Start
         Dictionary<string, ResearchAvailability> techList;
+        // Orion-Start
         Dictionary<string, ResearchTechnologyLockReason> lockReasons;
         List<ResearchConsoleExperimentData> experiments;
         var networkId = string.Empty;
         List<ResearchPointAmount> pointBalances = new();
         List<ResearchLogEntry> logs = new();
         TechnologyDatabaseComponent? syncedDb = null;
+        // Orion-End
         var points = 0;
 
         if (TryGetClientServer(uid, out var serverUid, out var server, clientComponent) &&
             TryComp<TechnologyDatabaseComponent>(serverUid, out var db))
         {
+/* // Orion-Edit
+            var unlockedTechs = new HashSet<ProtoId<TechnologyPrototype>>(db.UnlockedTechnologies);
+            techList = allTechs.ToDictionary(
+                proto => proto.ID,
+                proto =>
+*/
+            // Orion-Start
             syncedDb = db;
             networkId = server.NetworkId;
             pointBalances = server.PointBalances.ToList();
@@ -156,15 +167,21 @@ public sealed partial class ResearchSystem
             techList = visible.ToDictionary(
                 techId => techId.ToString(),
                 techId =>
+            // Orion-End
                 {
-                    if (researched.Contains(techId))
+                    if (researched.Contains(techId)) // Orion-Edit
                         return ResearchAvailability.Researched;
 
+/* // Orion-Edit
+                    var prereqsMet = proto.TechnologyPrerequisites.All(p => unlockedTechs.Contains(p));
+                    var canAfford = server.Points >= proto.Cost;
+*/
+
+                    // Orion-Start
                     if (!available.Contains(techId))
                         return ResearchAvailability.PrereqsMet;
 
                     var proto = PrototypeManager.Index(techId);
-                    // Orion-Edit-Start
                     var allCosts = proto.AllPointCosts.ToList();
                     var generalFinal = GetTechnologyFinalCost(db, proto);
                     for (var i = 0; i < allCosts.Count; i++)
@@ -177,52 +194,57 @@ public sealed partial class ResearchSystem
                         allCosts[i] = c;
                     }
                     var canAfford = HasSufficientPoints(serverUid.Value, allCosts, server);
-                    // Orion-Edit-End
+                    // Orion-End
 
-                    return canAfford
-                        ? ResearchAvailability.Available
+                    return canAfford // Orion-Edit
+                        ? ResearchAvailability.Available // Orion-Edit
                         : ResearchAvailability.Unavailable;
                 });
 
+            // Orion-Start
             lockReasons = PrototypeManager.EnumeratePrototypes<TechnologyPrototype>()
                 .Where(proto => db.SupportedDisciplines.Contains(proto.Discipline))
                 .ToDictionary(proto => proto.ID,
                     proto =>
                 {
                     var reason = GetTechnologyLockReason(db, proto);
-                    if (reason == ResearchTechnologyLockReason.None)
+                    if (reason != ResearchTechnologyLockReason.None)
+                        return reason;
+
+                    var costs = proto.AllPointCosts.ToList();
+                    var generalFinal = GetTechnologyFinalCost(db, proto);
+                    for (var i = 0; i < costs.Count; i++)
                     {
-                        var costs = proto.AllPointCosts.ToList();
-                        var generalFinal = GetTechnologyFinalCost(db, proto);
-                        for (var i = 0; i < costs.Count; i++)
-                        {
-                            if (costs[i].Type != "General")
-                                continue;
+                        if (costs[i].Type != "General")
+                            continue;
 
-                            var updated = costs[i];
-                            updated.Amount = generalFinal;
-                            costs[i] = updated;
-                        }
-
-                        if (!HasSufficientPoints(serverUid.Value, costs, server) && !db.ResearchedTechnologies.Contains(proto.ID))
-                            return ResearchTechnologyLockReason.InsufficientPoints;
+                        var updated = costs[i];
+                        updated.Amount = generalFinal;
+                        costs[i] = updated;
                     }
+
+                    if (!HasSufficientPoints(serverUid.Value, costs, server) && !db.ResearchedTechnologies.Contains(proto.ID))
+                        return ResearchTechnologyLockReason.InsufficientPoints;
 
                     return reason;
                 });
 
             experiments = BuildExperimentUiData(db);
+            // Orion-End
 
             if (clientComponent != null)
                 points = clientComponent.ConnectedToServer ? server.Points : 0;
         }
         else
         {
-            techList = new Dictionary<string, ResearchAvailability>();
+            techList = new Dictionary<string, ResearchAvailability>(); // Orion-Edit
+            // Orion-Start
             lockReasons = new Dictionary<string, ResearchTechnologyLockReason>();
             experiments = new List<ResearchConsoleExperimentData>();
+            // Orion-End
         }
 
+        // Orion-Edit-Start
         _uiSystem.SetUiState(uid,
             ResearchConsoleUiKey.Key,
             new ResearchConsoleBoundInterfaceState(
@@ -237,9 +259,11 @@ public sealed partial class ResearchSystem
                 networkId,
                 pointBalances,
                 logs));
+        // Orion-Edit-End
         // R&D Console Rework End
     }
 
+    // Orion-Start
     private List<ResearchConsoleExperimentData> BuildExperimentUiData(TechnologyDatabaseComponent database)
     {
         var data = new List<ResearchConsoleExperimentData>();
@@ -271,6 +295,7 @@ public sealed partial class ResearchSystem
             .ThenBy(e => e.Id)
             .ToList();
     }
+    // Orion-End
 
     private void OnPointsChanged(EntityUid uid, ResearchConsoleComponent component, ref ResearchServerPointsChangedEvent args)
     {

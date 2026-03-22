@@ -18,23 +18,26 @@ public sealed partial class ResearchSystem
     private void InitializeSource()
     {
         SubscribeLocalEvent<ResearchPointSourceComponent, ResearchServerGetPointsPerSecondEvent>(OnGetPointsPerSecond);
-        SubscribeLocalEvent<ResearchPointSourceComponent, ResearchServerGetPointsPerSecondByTypeEvent>(OnGetPointsPerSecondByType);
+        SubscribeLocalEvent<ResearchPointSourceComponent, ResearchServerGetPointsPerSecondByTypeEvent>(OnGetPointsPerSecondByType); // Orion
     }
 
     private void OnGetPointsPerSecond(Entity<ResearchPointSourceComponent> source, ref ResearchServerGetPointsPerSecondEvent args)
     {
+        // Orion-Start
         if (TryComp<ResearchServerControlStatusComponent>(args.Server, out var status) && !status.GenerationEnabled)
             return;
+        // Orion-End
 
         if (CanProduce(source))
             args.Points += source.Comp.PointsPerSecond;
     }
 
-    private bool CanProduce(Entity<ResearchPointSourceComponent> source)
+    private bool CanProduce(Entity<ResearchPointSourceComponent> source) // Orion-Edit: Was public
     {
         return source.Comp.Active && this.IsPowered(source, EntityManager);
     }
 
+    // Orion-Start
     private void OnGetPointsPerSecondByType(Entity<ResearchPointSourceComponent> source, ref ResearchServerGetPointsPerSecondByTypeEvent args)
     {
         if (TryComp<ResearchServerControlStatusComponent>(args.Server, out var status) && !status.GenerationEnabled)
@@ -56,4 +59,5 @@ public sealed partial class ResearchSystem
             Amount = source.Comp.PointsPerSecond,
         });
     }
+    // Orion-End
 }

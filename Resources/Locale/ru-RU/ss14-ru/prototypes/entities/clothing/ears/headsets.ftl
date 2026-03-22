@@ -1,5 +1,6 @@
 ent-ClothingHeadset = гарнитура
     .desc = Модифицированный модульный интерком, надеваемый на голову. Принимает ключи шифрования.
+    .suffix = Пустая
 ent-ClothingHeadsetCargo = гарнитура отдела снабжения
     .desc = Гарнитура, используемая сотрудниками отдела снабжения.
 ent-ClothingHeadsetQM = гарнитура КМ
@@ -32,7 +33,7 @@ ent-ClothingHeadsetService = гарнитура сервисного отдел�
     .desc = Гарнитура, используемая сотрудниками сервисного отдела, которым поручено поддерживать станцию сытой, счастливой, и чистой.
 ent-ClothingHeadsetBrigmedic = гарнитура бригмедика
     .desc = Гарнитура, которая помогает слушать предсмертные крики.
-ent-ClothingHeadsetGrey = гарнитура ассистента
+ent-ClothingHeadsetGrey = гарнитура
     .desc = { ent-ClothingHeadset.desc }
 ent-ClothingHeadsetFreelance = гарнитура фрилансера
     .desc = Такими пользуются группы бродячих фрилансеров.

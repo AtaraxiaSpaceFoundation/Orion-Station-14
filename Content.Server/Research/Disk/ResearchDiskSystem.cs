@@ -37,57 +37,11 @@ namespace Content.Server.Research.Disk
             if (!TryComp<ResearchServerComponent>(args.Target, out var server))
                 return;
 
-            if (TryComp<TechnologyDatabaseComponent>(args.Target, out var database) &&
-                (component.StoredTechnologies.Count > 0 || component.StoredPointBalances.Count > 0))
-            {
-                ImportDiskData(args.Target.Value, component, database);
-                _popupSystem.PopupEntity(Loc.GetString("research-disk-data-imported", ("count", component.StoredTechnologies.Count)), args.Target.Value, args.User);
-                _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-imported", ("count", component.StoredTechnologies.Count)), args.User);
-                args.Handled = true;
-                return;
-            }
-
-            if (database != null && component.Points <= 0)
-            {
-                ExportDiskData(uid, component, database, server);
-                _popupSystem.PopupEntity(Loc.GetString("research-disk-exported", ("count", component.StoredTechnologies.Count)), args.Target.Value, args.User);
-                _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-exported", ("count", component.StoredTechnologies.Count)), args.User);
-                args.Handled = true;
-                return;
-            }
-
             _research.ModifyServerPoints(args.Target.Value, component.Points, server);
-            _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-points-applied", ("points", component.Points)), args.User);
+            _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-points-applied", ("points", component.Points)), args.User); // Orion
             _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
             QueueDel(uid);
             args.Handled = true;
-        }
-
-        private void ExportDiskData(EntityUid diskUid, ResearchDiskComponent disk, TechnologyDatabaseComponent database, ResearchServerComponent server)
-        {
-            disk.StoredTechnologies = database.ResearchedTechnologies.Select(x => x.ToString()).ToList();
-            disk.StoredPointBalances = server.PointBalances.ToList();
-            Dirty(diskUid, disk);
-        }
-
-        private void ImportDiskData(EntityUid serverUid, ResearchDiskComponent disk, TechnologyDatabaseComponent database)
-        {
-            foreach (var tech in disk.StoredTechnologies)
-            {
-                _research.AddTechnology(serverUid, tech, database);
-            }
-
-            if (TryComp<ResearchServerComponent>(serverUid, out var server))
-            {
-                foreach (var point in disk.StoredPointBalances)
-                {
-                    _research.ModifyServerPoints(serverUid, point.Type, point.Amount, server);
-                }
-            }
-
-            _research.RecalculateTechnologyState(serverUid, database);
-            _research.UpdateTechnologyCards(serverUid, database);
-            Dirty(serverUid, database);
         }
 
         private void OnMapInit(EntityUid uid, ResearchDiskComponent component, MapInitEvent args)

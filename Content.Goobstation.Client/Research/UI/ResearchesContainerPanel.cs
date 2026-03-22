@@ -17,13 +17,16 @@ namespace Content.Goobstation.Client.Research.UI;
 /// <summary>
 /// UI element for visualizing technologies prerequisites
 /// </summary>
-public sealed class ResearchesContainerPanel : LayoutContainer
+public sealed class ResearchesContainerPanel : LayoutContainer // Orion-Edit: Was partial
 {
+    // Orion-Start
     private const int DashedLineDistanceThreshold = 6;
     private const int MaxLineDistanceThreshold = 12;
     private const float DashLength = 8f;
     private const float DashGap = 5f;
+    // Orion-End
 
+    // Orion-Edit-Start
     protected override void Draw(DrawingHandleScreen handle)
     {
         var items = new Dictionary<string, FancyResearchConsoleItem>();
@@ -46,7 +49,9 @@ public sealed class ResearchesContainerPanel : LayoutContainer
             }
         }
     }
+    // Orion-Edit-End
 
+    // Orion-Start
     private static void DrawConnection(DrawingHandleScreen handle, FancyResearchConsoleItem item, FancyResearchConsoleItem prerequisite)
     {
         var delta = item.Prototype.Position - prerequisite.Prototype.Position;
@@ -107,4 +112,5 @@ public sealed class ResearchesContainerPanel : LayoutContainer
             handle.DrawLine(start + normalizedDirection * offset, start + normalizedDirection * dashEnd, Color.White);
         }
     }
+    // Orion-End
 }

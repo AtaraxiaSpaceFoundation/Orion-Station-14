@@ -12,7 +12,6 @@
   - type: MachineBoard
     prototype: CircuitImprinterAncient
 
-
 - type: entity
   parent: BaseMachineCircuitboard
   id: ResearchDestructiveAnalyzerMachineCircuitboard

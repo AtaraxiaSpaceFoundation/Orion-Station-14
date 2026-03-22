@@ -58,7 +58,7 @@ public sealed class FancyResearchConsoleBoundUserInterface : BoundUserInterface
             return;
 
         _consoleMenu?.UpdatePanels(rState.Researches);
-        _consoleMenu?.UpdateInformationPanel(rState);
+        _consoleMenu?.UpdateInformationPanel(rState); // Orion-Edit
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
@@ -75,6 +75,6 @@ public sealed class FancyResearchConsoleBoundUserInterface : BoundUserInterface
         if (!_consoleMenu.List.SequenceEqual(castState.Researches))
             _consoleMenu.UpdatePanels(castState.Researches);
 
-        _consoleMenu.UpdateInformationPanel(castState);
+        _consoleMenu.UpdateInformationPanel(castState); // Orion-Edit
     }
 }

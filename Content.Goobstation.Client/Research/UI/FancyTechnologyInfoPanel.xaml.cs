@@ -29,11 +29,11 @@ public sealed partial class FancyTechnologyInfoPanel : Control
 {
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly ILocalizationManager _loc = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!; // Orion
 
     public TechnologyPrototype Prototype;
     public Action<TechnologyPrototype>? BuyAction;
-    public FancyTechnologyInfoPanel(TechnologyPrototype proto, bool hasAccess, ResearchAvailability availability, ResearchTechnologyLockReason lockReason, SpriteSystem sprite, IPrototypeManager prototype)
+    public FancyTechnologyInfoPanel(TechnologyPrototype proto, bool hasAccess, ResearchAvailability availability, ResearchTechnologyLockReason lockReason, SpriteSystem sprite, IPrototypeManager prototype) // Orion-Edit
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
@@ -46,7 +46,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         DisciplineTexture.Texture = sprite.Frame0(_proto.Index(proto.Discipline).Icon);
         TechnologyTexture.Texture = sprite.Frame0(proto.Icon);
 
-        InitializePrerequisites(proto, research, sprite, lockReason, prototype);
+        InitializePrerequisites(proto, research, sprite, lockReason, prototype); // Orion-Edit
 
         InitializeRecipeUnlocks(proto, lathe, sprite);
 
@@ -66,6 +66,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
             _ => null,
         };
 
+        // Orion-Edit-Start
         var costMessage = new FormattedMessage();
         costMessage.AddMarkupOrThrow($"[bold]{Loc.GetString("research-console-tech-cost-title")}[/bold]");
         foreach (var cost in proto.AllPointCosts)
@@ -76,13 +77,15 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         }
 
         TechnologyCostLabel.SetMessage(costMessage, defaultColor: color);
+        // Orion-Edit-End
 
         ResearchButton.Disabled = !hasAccess || availability != ResearchAvailability.Available;
         ResearchButton.OnPressed += Bought;
     }
 
-    private void InitializePrerequisites(TechnologyPrototype proto, ResearchSystem research, SpriteSystem sprite, ResearchTechnologyLockReason lockReason, IPrototypeManager prototype)
+    private void InitializePrerequisites(TechnologyPrototype proto, ResearchSystem research, SpriteSystem sprite, ResearchTechnologyLockReason lockReason, IPrototypeManager prototype) // Orion-Edit
     {
+        // Orion-Edit-Start
         RequiredExperimentsContainer.RemoveAllChildren();
         var hasRequiredExperiments = false;
 
@@ -138,26 +141,29 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         var hasAnyRequirements = hasRequiredExperiments || hasRequiredTechnologies;
         NoPrereqLabel.Visible = !hasAnyRequirements;
         PrereqsContainer.Visible = hasAnyRequirements;
+        // Orion-Edit-End
     }
 
+    // Orion-Start
     private string LocalizePointType(string type)
     {
         var key = $"research-point-type-{type.ToLowerInvariant()}";
         return _loc.TryGetString(key, out var localized) ? localized : type;
     }
+    // Orion-End
 
     private void InitializeRecipeUnlocks(TechnologyPrototype proto, LatheSystem lathe, SpriteSystem sprite)
     {
         UnlocksContainer.RemoveAllChildren();
-        var hasRecipeUnlocks = false;
+        var hasRecipeUnlocks = false; // Orion
         foreach (var recipeId in proto.RecipeUnlocks)
         {
             var recipe = _proto.Index(recipeId);
             UnlocksContainer.AddChild(new MiniRecipeCardControl(proto, recipe, _proto, sprite, lathe));
-            hasRecipeUnlocks = true;
+            hasRecipeUnlocks = true; // Orion
         }
 
-        RecipesContainer.Visible = hasRecipeUnlocks;
+        RecipesContainer.Visible = hasRecipeUnlocks; // Orion
     }
 
     protected override void ExitedTree()

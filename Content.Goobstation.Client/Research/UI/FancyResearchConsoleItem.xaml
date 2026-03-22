@@ -10,7 +10,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                  xmlns:goob="clr-namespace:Content.Goobstation.Client.Research.UI"
                  Margin="5"
                  HorizontalExpand="False">
-    <BoxContainer Name="NodeContainer" Orientation="Vertical" SetSize="80 80">
+    <BoxContainer Name="NodeContainer" Orientation="Vertical" SetSize="80 80"> <!-- Orion-Edit: NodeContainer -->
         <PanelContainer VerticalExpand="True"
                         HorizontalExpand="True"
                         Name="Panel">
@@ -29,6 +29,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 Stretch="KeepAspectCentered">
             </TextureRect>
 
+            <!-- Orion-Start -->
             <PanelContainer Name="DisciplineBadge"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
@@ -46,6 +47,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                              Stretch="KeepCentered"
                              TextureScale="1 1"/>
             </PanelContainer>
+            <!-- Orion-End -->
         </PanelContainer>
     </BoxContainer>
 </LayoutContainer>

@@ -65,6 +65,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                           Visible="False">
                 <Label Text="{Loc 'research-console-required-text'}"
                         HorizontalAlignment="Center"/>
+                <!-- Orion-Edit-Start -->
                 <BoxContainer Name="RequiredExperimentsBlock"
                               Orientation="Vertical"
                               HorizontalExpand="True"
@@ -123,6 +124,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         </PanelContainer>
                     </BoxContainer>
                 </BoxContainer>
+                <!-- Orion-Edit-End -->
             </BoxContainer>
             <BoxContainer
                 Name="RecipesContainer"

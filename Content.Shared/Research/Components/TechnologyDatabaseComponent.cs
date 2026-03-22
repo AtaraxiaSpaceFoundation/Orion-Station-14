@@ -43,8 +43,9 @@ public sealed partial class TechnologyDatabaseComponent : Component
     /// </summary>
     [AutoNetworkedField]
     [DataField]
-    public List<ProtoId<TechnologyPrototype>> VisibleTechnologies = new();
+    public List<ProtoId<TechnologyPrototype>> VisibleTechnologies = new(); // Orion-Edit: Was UnlockedTechnologies
 
+    // Orion-Start
     /// <summary>
     /// Technologies that can be researched right now.
     /// </summary>
@@ -100,6 +101,7 @@ public sealed partial class TechnologyDatabaseComponent : Component
     [AutoNetworkedField]
     [DataField]
     public List<string> SkippedExperiments = new();
+    // Orion-End
 
     /// <summary>
     /// The ids of all the lathe recipes which have been unlocked.
@@ -109,6 +111,7 @@ public sealed partial class TechnologyDatabaseComponent : Component
     [DataField]
     public List<ProtoId<LatheRecipePrototype>> UnlockedRecipes = new();
 
+    // Orion-Start
     /// <summary>
     /// Technologies revealed by non-standard effects (e.g. experiments).
     /// </summary>
@@ -129,8 +132,8 @@ public sealed partial class TechnologyDatabaseComponent : Component
     [AutoNetworkedField]
     [DataField]
     public List<string> UnlockedInfrastructure = new();
+    // Orion-End
 }
-
 
 /// <summary>
 /// Event raised on the database whenever its
@@ -158,6 +161,7 @@ public readonly record struct TechnologyDatabaseModifiedEvent // Goobstation - L
 [ByRefEvent]
 public readonly record struct TechnologyDatabaseSynchronizedEvent;
 
+// Orion-Start
 [DataDefinition, Serializable, NetSerializable]
 public partial record struct ResearchExperimentProgress
 {
@@ -198,3 +202,4 @@ public partial record struct TechnologyDiscoveryProgress
     [DataField]
     public TimeSpan? CompletedAt;
 }
+// Orion-End

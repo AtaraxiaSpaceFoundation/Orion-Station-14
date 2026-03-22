@@ -49,6 +49,7 @@ public sealed partial class ResearchServerComponent : Component
     [DataField("points"), ViewVariables(VVAccess.ReadWrite)]
     public int Points;
 
+    // Orion-Start
     /// <summary>
     /// Multi-point balance for research network economy.
     /// </summary>
@@ -76,6 +77,7 @@ public sealed partial class ResearchServerComponent : Component
     [AutoNetworkedField]
     [DataField]
     public List<ResearchLogEntry> Logs = new();
+    // Orion-End
 
     /// <summary>
     /// A unique numeric id representing the server
@@ -109,8 +111,10 @@ public sealed partial class ResearchServerComponent : Component
 [ByRefEvent]
 public readonly record struct ResearchServerPointsChangedEvent(EntityUid Server, int Total, int Delta);
 
+// Orion-Start
 [ByRefEvent]
 public readonly record struct ResearchServerPointTypeChangedEvent(EntityUid Server, string Type, int Total, int Delta);
+// Orion-End
 
 /// <summary>
 /// Event raised every second to calculate the amount of points added to the server.
@@ -120,5 +124,7 @@ public readonly record struct ResearchServerPointTypeChangedEvent(EntityUid Serv
 [ByRefEvent]
 public record struct ResearchServerGetPointsPerSecondEvent(EntityUid Server, int Points);
 
+// Orion-Start
 [ByRefEvent]
 public record struct ResearchServerGetPointsPerSecondByTypeEvent(EntityUid Server, List<ResearchPointAmount> Points);
+// Orion-End

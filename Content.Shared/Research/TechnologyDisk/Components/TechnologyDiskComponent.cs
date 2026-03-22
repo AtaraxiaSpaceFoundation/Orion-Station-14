@@ -56,6 +56,7 @@ public sealed partial class TechnologyDiskComponent : Component
     [DataField]
     public ProtoId<WeightedRandomPrototype> TierWeightPrototype = "TechDiskTierWeights";
 
+    // Orion-Start
     /// <summary>
     /// Optional technology snapshot that can be imported into another network.
     /// </summary>
@@ -67,4 +68,5 @@ public sealed partial class TechnologyDiskComponent : Component
     /// </summary>
     [DataField]
     public List<ResearchPointAmount>? StoredPointBalances;
+    // Orion-End
 }

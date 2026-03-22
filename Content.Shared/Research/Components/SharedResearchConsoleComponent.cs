@@ -58,6 +58,7 @@ namespace Content.Shared.Research.Components
         /// Goobstation field - all researches and their availablities
         /// </summary>
         public Dictionary<string, ResearchAvailability> Researches;
+        // Orion-Start
         public List<ProtoId<TechnologyPrototype>> VisibleTechnologies;
         public List<ProtoId<TechnologyPrototype>> AvailableTechnologies;
         public List<ProtoId<TechnologyPrototype>> ResearchedTechnologies;
@@ -67,7 +68,9 @@ namespace Content.Shared.Research.Components
         public string NetworkId;
         public List<ResearchPointAmount> PointBalances;
         public List<ResearchLogEntry> Logs;
+        // Orion-End
 
+        // Orion-Edit-Start
         public ResearchConsoleBoundInterfaceState(
             int points,
             Dictionary<string, ResearchAvailability> researches,
@@ -79,10 +82,12 @@ namespace Content.Shared.Research.Components
             Dictionary<string, ResearchTechnologyLockReason> technologyLockReasons,
             string networkId,
             List<ResearchPointAmount> pointBalances,
-            List<ResearchLogEntry> logs)   // Goobstation R&D console rework = researches field
+            List<ResearchLogEntry> logs) // Goobstation R&D console rework = researches field
+        // Orion-Edit-End
         {
             Points = points;
             Researches = researches;    // Goobstation R&D console rework
+            // Orion-Start
             VisibleTechnologies = visibleTechnologies;
             AvailableTechnologies = availableTechnologies;
             ResearchedTechnologies = researchedTechnologies;
@@ -92,9 +97,11 @@ namespace Content.Shared.Research.Components
             NetworkId = networkId;
             PointBalances = pointBalances;
             Logs = logs;
+            // Orion-End
         }
     }
 
+    // Orion-Start
     [Serializable, NetSerializable]
     public sealed class ResearchConsoleExperimentData
     {
@@ -111,4 +118,5 @@ namespace Content.Shared.Research.Components
             State = state;
         }
     }
+    // Orion-End
 }

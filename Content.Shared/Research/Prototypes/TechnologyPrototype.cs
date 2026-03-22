@@ -48,11 +48,13 @@ public sealed partial class TechnologyPrototype : IPrototype
     [DataField(required: true)]
     public LocId Name = string.Empty;
 
+    // Orion-Start
     /// <summary>
     /// Localized description of the technology.
     /// </summary>
     [DataField]
     public LocId Description = string.Empty;
+    // Orion-End
 
     /// <summary>
     /// An icon used to visually represent the technology in UI.
@@ -80,11 +82,13 @@ public sealed partial class TechnologyPrototype : IPrototype
     [DataField]
     public bool Hidden;
 
+    // Orion-Start
     /// <summary>
     /// Should this technology start as researched in every compatible database.
     /// </summary>
     [DataField]
     public bool StartingTechnology;
+    // Orion-End
 
     /// <summary>
     /// How much research is needed to unlock.
@@ -92,11 +96,13 @@ public sealed partial class TechnologyPrototype : IPrototype
     [DataField]
     public int Cost = 10000;
 
+    // Orion-Start
     /// <summary>
     /// Multi-point type costs. If empty, General point cost is derived from <see cref="Cost"/>.
     /// </summary>
     [DataField]
     public List<ResearchPointAmount> PointCosts = new();
+    // Orion-End
 
     /// <summary>
     /// A list of <see cref="TechnologyPrototype"/>s that need to be unlocked in order to unlock this technology.
@@ -104,6 +110,7 @@ public sealed partial class TechnologyPrototype : IPrototype
     [DataField]
     public List<ProtoId<TechnologyPrototype>> TechnologyPrerequisites = new();
 
+    // Orion-Start
     /// <summary>
     /// The required experiments that must be completed before this technology can be researched.
     /// </summary>
@@ -158,6 +165,7 @@ public sealed partial class TechnologyPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<TechnologyRevealRequirement> RevealRequirements = new();
+    // Orion-End
 
     /// <summary>
     /// A list of <see cref="LatheRecipePrototype"/>s that are unlocked by this technology
@@ -171,6 +179,7 @@ public sealed partial class TechnologyPrototype : IPrototype
     [DataField]
     public IReadOnlyList<GenericUnlock> GenericUnlocks = new List<GenericUnlock>();
 
+    // Orion-Start
     /// <summary>
     /// Future-proof unlock list for item-discovery style systems.
     /// </summary>
@@ -188,6 +197,7 @@ public sealed partial class TechnologyPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<string> RequiredItemsToUnlock = new();
+    // Orion-End
 
     /// <summary>
     /// Goobstation RnD console rework field
@@ -196,6 +206,7 @@ public sealed partial class TechnologyPrototype : IPrototype
     [DataField(required: true)]
     public Vector2i Position { get; private set; }
 
+    // Orion-Start
     public IEnumerable<ProtoId<TechnologyPrototype>> AllRequiredTechnologies => TechnologyPrerequisites;
 
     private ResearchPointAmount[]? _cachedPointCosts;
@@ -217,8 +228,10 @@ public sealed partial class TechnologyPrototype : IPrototype
             };
         }
     }
+    // Orion-End
 }
 
+// Orion-Start
 [Serializable, NetSerializable]
 public enum TechnologyRevealRequirementKind : byte
 {
@@ -334,6 +347,7 @@ public sealed partial record ServerTriggerRevealRequirement : TechnologyRevealRe
         Kind = TechnologyRevealRequirementKind.ServerTrigger;
     }
 }
+// Orion-End
 
 [DataDefinition]
 public partial record struct GenericUnlock()

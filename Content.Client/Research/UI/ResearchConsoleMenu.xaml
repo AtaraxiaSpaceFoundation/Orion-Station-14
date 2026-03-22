@@ -102,6 +102,7 @@ SPDX-License-Identifier: MIT
                         </BoxContainer>
                     </ScrollContainer>
                 </PanelContainer>
+                <!-- Orion-Start -->
                 <Control MinHeight="8"/>
                 <controls:StripeBack>
                     <Label Text="{Loc 'research-console-experiments-title'}" HorizontalAlignment="Center" Margin="0 2"/>
@@ -130,6 +131,7 @@ SPDX-License-Identifier: MIT
                         </BoxContainer>
                     </ScrollContainer>
                 </PanelContainer>
+                <!-- Orion-End -->
             </BoxContainer>
         </BoxContainer>
     </BoxContainer>

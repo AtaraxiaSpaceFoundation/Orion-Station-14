@@ -6,8 +6,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using Content.Shared._Orion.Research;
-
 namespace Content.Server.Research.Disk
 {
     [RegisterComponent]
@@ -25,14 +23,5 @@ namespace Content.Server.Research.Disk
         /// </remarks>
         [DataField("unlockAllTech")]
         public bool UnlockAllTech;
-
-        [DataField]
-        public List<string> StoredTechnologies = new();
-
-        [DataField]
-        public List<ResearchPointAmount> StoredPointBalances = new();
-
-        [DataField]
-        public bool MergeMode = true;
     }
 }
