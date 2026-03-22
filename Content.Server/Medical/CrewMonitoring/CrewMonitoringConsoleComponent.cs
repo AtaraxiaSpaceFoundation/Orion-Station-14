@@ -70,10 +70,20 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     public float? NormalLightRadius { get; set; }
 
     /// <summary>
-    ///     It displays everyone in this state, regardless of the sensors.
+    ///     Permanently displays everyone regardless of sensor mode.
+    ///     Set via YAML for special consoles (e.g. death squad monitor).
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool IsEmagged = false;
+
+    /// <summary>
+    ///     Expiry time for a temporary emag triggered by the emag tool.
+    ///     Null if not temporarily emagged. Never set by YAML.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan? EmagExpireTime = null;
+
+    public static readonly TimeSpan EmagDuration = TimeSpan.FromSeconds(60);
 
     /// <summary>
     ///     Emag sound effects.

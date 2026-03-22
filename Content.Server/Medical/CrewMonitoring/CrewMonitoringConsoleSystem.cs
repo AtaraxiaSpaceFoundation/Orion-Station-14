@@ -71,6 +71,15 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
         foreach (var component in EntityQuery<CrewMonitoringConsoleComponent>())
         {
+
+            // Orion-Start: emag expiry timer
+            if (component.EmagExpireTime.HasValue && _gameTiming.CurTime >= component.EmagExpireTime.Value)
+            {
+                component.EmagExpireTime = null;
+                UpdateUserInterface(component.Owner, component);
+            }
+            // Orion-End
+
             if (_gameTiming.CurTime < component.NextAlertTime)
                 continue;
 
@@ -214,7 +223,12 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 : !pair.Value.IsCommandTracker)
             .Select(pair => pair.Value)
             .ToList();
-        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, component.IsEmagged)); // Orion-Edit: Added component.IsEmagged
+        // Orion-Edit-Start: For Emag
+//        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, component.IsEmagged));
+
+        var effectiveIsEmagged = component.IsEmagged || component.EmagExpireTime.HasValue;
+        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, effectiveIsEmagged));
+        // Orion-Edit-End
         // GoobStation - End
         //var allSensors = component.ConnectedSensors.Values.ToList();
         //_uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(allSensors));
@@ -222,13 +236,13 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     // Orion-Start
     private void OnEmagged(EntityUid uid, CrewMonitoringConsoleComponent component, ref GotEmaggedEvent ev)
     {
-        if (ev.Handled || component.IsEmagged)
+        if (ev.Handled || component.IsEmagged || component.EmagExpireTime.HasValue)
             return;
 
         _audio.PlayPvs(component.SparkSound, uid);
         _popup.PopupEntity(Loc.GetString("crew-monitoring-component-upgrade-emag"), uid);
 
-        component.IsEmagged = true;
+        component.EmagExpireTime = _gameTiming.CurTime + CrewMonitoringConsoleComponent.EmagDuration;
         UpdateUserInterface(uid, component);
         ev.Handled = true;
     }

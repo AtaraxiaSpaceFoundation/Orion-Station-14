@@ -141,7 +141,7 @@ public sealed class SuitSensorSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+//    [Dependency] private readonly IPrototypeManager _proto = default!; // Orion-Edit: _proto don't used
     [Dependency] private readonly InventorySystem _inventory = default!;
 
     public override void Initialize()
@@ -506,25 +506,21 @@ public sealed class SuitSensorSystem : EntitySystem
 
         // finally, form suit sensor status
         var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(uid), userName, userJob, userJobIcon, userJobDepartments, sensor.Mode); // Orion-Edit
-        /* Orion-Edit-Start
         switch (sensor.Mode)
         {
             case SuitSensorMode.SensorBinary:
                 status.IsAlive = isAlive;
                 break;
             case SuitSensorMode.SensorVitals:
-        */ // Orion-Edit-End
                 status.IsAlive = isAlive;
                 status.TotalDamage = totalDamage;
                 status.TotalDamageThreshold = totalDamageThreshold;
                 status.Mode = sensor.Mode; // Orion
-                /* Orion-Edit-Start
                 break;
             case SuitSensorMode.SensorCords:
                 status.IsAlive = isAlive;
                 status.TotalDamage = totalDamage;
                 status.TotalDamageThreshold = totalDamageThreshold;
-                */ // Orion-Edit-End
                 EntityCoordinates coordinates;
                 var xformQuery = GetEntityQuery<TransformComponent>();
 
@@ -546,8 +542,8 @@ public sealed class SuitSensorSystem : EntitySystem
 
                 status.Coordinates = GetNetCoordinates(coordinates);
                 status.IsCommandTracker = sensor.CommandTracker; //Goob station
-//                break; // Orion-Edit
-//        }
+                break;
+        }
 
         return status;
     }
