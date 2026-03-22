@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from TGStation | Edited by PuroSlavKing (Github) | variant-inteq sprited by PuroSlavKing (Github)",
+    "states": [
+        {
+            "name": "server"
+
+        },
+        {
+            "name": "server-nopower"
+
+        },
+        {
+            "name": "server-off",
+            "delays": [
+                [
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.8
+                ]
+            ]
+        },
+        {
+            "name": "server-on",
+            "delays": [
+                [
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.8
+                ]
+            ]
+        },
+        {
+            "name": "server_o"
+
+        },
+        {
+            "name": "variant-inteq"
+
+        }
+    ]
+}

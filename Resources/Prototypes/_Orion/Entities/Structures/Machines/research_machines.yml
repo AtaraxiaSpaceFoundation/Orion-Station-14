@@ -104,3 +104,23 @@
   - type: GuideHelp
     guides:
     - OrionRnDMachines
+
+- type: entity
+  parent: ResearchAndDevelopmentServer
+  id: ResearchAndDevelopmentServerInteQ
+  name: InteQ R&D server
+  description: Contains the collective knowledge of the InteQ scientists. Destroying it would send them back to the stone age. You don't want that do you?
+  components:
+  - type: ResearchServer
+    networkId: InteQ
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/inteq-server.rsi
+    snapCardinals: true
+    layers:
+      - state: server-off
+      - state: server-on
+        visible: false
+        map: ["enum.PowerDeviceVisualLayers.Powered"]
+      - state: variant-inteq
+      - state: server_o
+        map: ["enum.WiresVisualLayers.MaintenancePanel"]
