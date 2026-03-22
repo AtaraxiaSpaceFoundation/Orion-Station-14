@@ -515,7 +515,6 @@ public sealed class SuitSensorSystem : EntitySystem
                 status.IsAlive = isAlive;
                 status.TotalDamage = totalDamage;
                 status.TotalDamageThreshold = totalDamageThreshold;
-                status.Mode = sensor.Mode; // Orion
                 break;
             case SuitSensorMode.SensorCords:
                 status.IsAlive = isAlive;

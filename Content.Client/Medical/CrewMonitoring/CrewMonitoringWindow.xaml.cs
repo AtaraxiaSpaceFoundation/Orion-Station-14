@@ -175,20 +175,6 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         if (!isEmagged)
         {
             sensors = sensors.Where(s => s.Mode != SuitSensorMode.SensorOff).ToList();
-            foreach (var sensor in sensors)
-            {
-                switch (sensor.Mode)
-                {
-                    case SuitSensorMode.SensorBinary:
-                        sensor.Coordinates = null;
-                        sensor.TotalDamage = null;
-                        sensor.TotalDamageThreshold = null;
-                        break;
-                    case SuitSensorMode.SensorVitals:
-                        sensor.Coordinates = null;
-                        break;
-                }
-            }
         }
         // Orion-End
 
