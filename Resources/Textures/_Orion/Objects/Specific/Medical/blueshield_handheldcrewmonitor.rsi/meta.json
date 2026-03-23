@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "made by WsWiss",
+    "copyright": "made by WsWiss. Taken from ADT at commit https://github.com/AdventureTimeSS14/space_station_ADT/commit/7d0c21fb2717598819b9c67953f67407023172a5. Resprite by UmbiMax",
     "states": [
         {
             "name": "scanner",
