@@ -39,6 +39,7 @@ namespace Content.Shared.Gravity
         public static readonly ProtoId<AlertPrototype> WeightlessAlert = "Weightless";
 
         private EntityQuery<GravityComponent> _gravityQuery;
+        private readonly Dictionary<EntityUid, HashSet<EntityUid>> _alertsByGrid = new(); // Orion
 
         public bool IsWeightless(EntityUid uid, PhysicsComponent? body = null, TransformComponent? xform = null)
         {
@@ -96,6 +97,10 @@ namespace Content.Shared.Gravity
             base.Initialize();
             SubscribeLocalEvent<GridInitializeEvent>(OnGridInit);
             SubscribeLocalEvent<AlertSyncEvent>(OnAlertsSync);
+            // Orion-Start
+            SubscribeLocalEvent<AlertsComponent, ComponentStartup>(OnAlertsStartup);
+            SubscribeLocalEvent<AlertsComponent, ComponentShutdown>(OnAlertsShutdown);
+            // Orion-End
             SubscribeLocalEvent<AlertsComponent, EntParentChangedMessage>(OnAlertsParentChange);
             SubscribeLocalEvent<GravityChangedEvent>(OnGravityChange);
             SubscribeLocalEvent<GravityComponent, ComponentGetState>(OnGetState);
@@ -122,17 +127,21 @@ namespace Content.Shared.Gravity
             RaiseLocalEvent(uid, ref ev, true);
         }
 
-        private void OnGetState(EntityUid uid, GravityComponent component, ref ComponentGetState args)
+        private static void OnGetState(EntityUid uid, GravityComponent component, ref ComponentGetState args) // Orion-Edit: Static
         {
             args.State = new GravityComponentState(component.EnabledVV);
         }
 
         private void OnGravityChange(ref GravityChangedEvent ev)
         {
-            var alerts = AllEntityQuery<AlertsComponent, TransformComponent>();
-            while(alerts.MoveNext(out var uid, out _, out var xform))
+            // Orion-Edit-Start
+            if (!_alertsByGrid.TryGetValue(ev.ChangedGridIndex, out var entities))
+                return;
+
+            foreach (var uid in entities)
+            // Orion-Edit-End
             {
-                if (xform.GridUid != ev.ChangedGridIndex)
+                if (Deleted(uid) || Terminating(uid)) // Orion-Edit
                     continue;
 
                 if (!ev.HasGravity)
@@ -158,8 +167,32 @@ namespace Content.Shared.Gravity
             }
         }
 
+        // Orion-Start
+        private void OnAlertsStartup(EntityUid uid, AlertsComponent component, ComponentStartup args)
+        {
+            TrackAlertsEntity(uid);
+        }
+
+        private void OnAlertsShutdown(EntityUid uid, AlertsComponent component, ComponentShutdown args)
+        {
+            UntrackAlertsEntity(uid, Transform(uid).GridUid);
+        }
+        // Orion-End
+
         private void OnAlertsParentChange(EntityUid uid, AlertsComponent component, ref EntParentChangedMessage args)
         {
+            // Orion-Start
+            var oldGrid = args.OldParent;
+            if (oldGrid != null)
+            {
+                var oldParentXform = Transform(oldGrid.Value);
+                oldGrid = oldParentXform.GridUid ?? oldGrid;
+            }
+
+            UntrackAlertsEntity(uid, oldGrid);
+            TrackAlertsEntity(uid);
+            // Orion-End
+
             if (IsWeightless(uid))
             {
                 _alerts.ShowAlert(uid, WeightlessAlert);
@@ -174,6 +207,33 @@ namespace Content.Shared.Gravity
         {
             EnsureComp<GravityComponent>(ev.EntityUid);
         }
+
+        // Orion-Start
+        private void TrackAlertsEntity(EntityUid uid)
+        {
+            var gridUid = Transform(uid).GridUid;
+            if (gridUid == null)
+                return;
+
+            if (!_alertsByGrid.TryGetValue(gridUid.Value, out var entities))
+            {
+                entities = new HashSet<EntityUid>();
+                _alertsByGrid[gridUid.Value] = entities;
+            }
+
+            entities.Add(uid);
+        }
+
+        private void UntrackAlertsEntity(EntityUid uid, EntityUid? gridUid)
+        {
+            if (gridUid == null || !_alertsByGrid.TryGetValue(gridUid.Value, out var entities))
+                return;
+
+            entities.Remove(uid);
+            if (entities.Count == 0)
+                _alertsByGrid.Remove(gridUid.Value);
+        }
+        // Orion-End
 
         [Serializable, NetSerializable]
         private sealed class GravityComponentState : ComponentState

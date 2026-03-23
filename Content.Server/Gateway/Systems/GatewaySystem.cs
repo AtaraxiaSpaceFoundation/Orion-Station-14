@@ -41,6 +41,8 @@ public sealed class GatewaySystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly TagSystem _tag = default!; // Goobstation
 
+    private readonly List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)> _gatewaySnapshot = new(); // Orion
+
     public override void Initialize()
     {
         base.Initialize();
@@ -79,21 +81,23 @@ public sealed class GatewaySystem : EntitySystem
 
     public void UpdateAllGateways()
     {
-        var query = AllEntityQuery<GatewayComponent, TransformComponent>();
-
-        while (query.MoveNext(out var uid, out var comp, out var xform))
+        // Orion-Edit-Start
+        BuildGatewaySnapshot();
+        foreach (var (uid, comp, xform) in _gatewaySnapshot)
         {
-            UpdateUserInterface(uid, comp, xform);
+            UpdateUserInterface(uid, comp, xform, _gatewaySnapshot);
         }
+        // Orion-Edit-End
     }
 
-    private void UpdateUserInterface(EntityUid uid, GatewayComponent comp, TransformComponent? xform = null)
+    private void UpdateUserInterface(EntityUid uid, GatewayComponent comp, TransformComponent? xform = null, List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)>? snapshot = null) // Orion-Edit
     {
         if (!Resolve(uid, ref xform))
             return;
 
+        snapshot ??= BuildGatewaySnapshot(); // Orion
         var destinations = new List<GatewayDestinationData>();
-        var query = AllEntityQuery<GatewayComponent, TransformComponent>();
+//        var query = AllEntityQuery<GatewayComponent, TransformComponent>(); // Orion-Edit
 
         var nextUnlock = TimeSpan.Zero;
         var unlockTime = TimeSpan.Zero;
@@ -110,7 +114,7 @@ public sealed class GatewaySystem : EntitySystem
             unlockTime = generatorComp.UnlockCooldown;
         }
 
-        while (query.MoveNext(out var destUid, out var dest, out var destXform))
+        foreach (var (destUid, dest, destXform) in snapshot) // Orion-Edit
         {
             // Goobstation
             if (!dest.Enabled
@@ -148,6 +152,21 @@ public sealed class GatewaySystem : EntitySystem
 
         _ui.SetUiState(uid, GatewayUiKey.Key, state);
     }
+
+    // Orion-Start
+    private List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)> BuildGatewaySnapshot()
+    {
+        _gatewaySnapshot.Clear();
+
+        var query = AllEntityQuery<GatewayComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var comp, out var xform))
+        {
+            _gatewaySnapshot.Add((uid, comp, xform));
+        }
+
+        return _gatewaySnapshot;
+    }
+    // Orion-End
 
     private void UpdateAppearance(EntityUid uid)
     {

@@ -58,6 +58,7 @@ public sealed class ParallaxManager : IParallaxManager
             _sawmill.Debug($"Cancelling loading parallax {name}");
             loading.Cancel();
             _loadingParallaxes.Remove(name, out _);
+            loading.Dispose(); // Orion
             return;
         }
 
@@ -122,7 +123,7 @@ public sealed class ParallaxManager : IParallaxManager
 
             cancel.ThrowIfCancellationRequested();
 
-            _loadingParallaxes.Remove(name);
+//            _loadingParallaxes.Remove(name); // Orion-Edit
 
             _parallaxesLQ[name] = layers[1];
             _parallaxesHQ[name] = layers[0];
@@ -142,6 +143,13 @@ public sealed class ParallaxManager : IParallaxManager
         {
             _sawmill.Error($"Failed to loaded parallax {name}: {ex}");
         }
+        // Orion-Start
+        finally
+        {
+            if (_loadingParallaxes.Remove(name, out var loading))
+                loading.Dispose();
+        }
+        // Orion-End
     }
 
     private async Task<ParallaxLayerPrepared[]> LoadParallaxLayers(

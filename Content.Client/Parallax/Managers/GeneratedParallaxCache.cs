@@ -72,9 +72,13 @@ public sealed class GeneratedParallaxCache : IPostInjectInit
 
             // If we're still loading, cancel the active load.
             datum.CancellationSource.Cancel();
+            // Orion-Start
+            datum.CancellationSource.Dispose();
 
-            // We should probably be unloading the texture here forcibly,
-            // but the previous code didn't so I won't either.
+            if (datum.LoadTask.IsCompletedSuccessfully && datum.LoadTask.Result != Texture.Transparent)
+                datum.LoadTask.Result.Dispose();
+            // Orion-End
+
             _data.Remove(id);
         }
     }
