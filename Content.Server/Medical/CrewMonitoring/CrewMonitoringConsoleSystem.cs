@@ -34,11 +34,13 @@ using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Morgue.Components;
 using Content.Shared.Pinpointer;
+using Content.Shared.Roles;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Medical.CrewMonitoring;
 
@@ -214,15 +216,27 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             EnsureComp<NavMapComponent>(xform.GridUid.Value);
 
         // Update all sensors info
+        // Orion-Start: Filtering by departments
+        var allSensors = component.ConnectedSensors.Values.ToList();
+
+        if (component.Departments.Count > 0)
+        {
+            var allowed = component.Departments.Select(d => d.ToString()).ToHashSet();
+            allSensors = allSensors
+                .Where(s => s.JobDepartments != null && s.JobDepartments.Any(dep => allowed.Contains(dep)))
+                .ToList();
+        }
+        // Orion-End
         // GoobStation - Start
         var isCommandOnly = HasComp<CrewMonitorScanningComponent>(uid);
 
-        var filteredSensors = component.ConnectedSensors
-            .Where(pair => isCommandOnly
-                ? pair.Value.IsCommandTracker
-                : !pair.Value.IsCommandTracker)
-            .Select(pair => pair.Value)
+        // Orion-Edit-Start: use allSensors (already department-filtered) instead of ConnectedSensors
+        var filteredSensors = allSensors
+            .Where(s => isCommandOnly
+                ? s.IsCommandTracker
+                : !s.IsCommandTracker)
             .ToList();
+        // Orion-Edit-End
         // Orion-Edit-Start: For Emag
 //        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, component.IsEmagged));
 

@@ -13,6 +13,8 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Medical.SuitSensor;
+using Content.Shared.Roles;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Audio;
 
 namespace Content.Server.Medical.CrewMonitoring;
@@ -33,6 +35,13 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     public float SensorTimeout = 10f;
 
     // Orion-Start
+    /// <summary>
+    /// What departments this monitor can see. If empty, shows all departments.
+    /// YAML example: departments: [ Medical, Security ]
+    /// </summary>
+    [DataField("departments")]
+    public List<ProtoId<DepartmentPrototype>> Departments = new();
+
     /// <summary>
     ///     Enable or disable alerts.
     /// </summary>

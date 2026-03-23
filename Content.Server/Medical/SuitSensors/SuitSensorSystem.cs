@@ -508,6 +508,11 @@ public sealed class SuitSensorSystem : EntitySystem
         var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(uid), userName, userJob, userJobIcon, userJobDepartments, sensor.Mode); // Orion-Edit
         switch (sensor.Mode)
         {
+            // Orion-Start: SensorOff case for emagged consoles — set IsAlive so player isn't shown as dead
+            case SuitSensorMode.SensorOff:
+                status.IsAlive = isAlive;
+                break;
+            // Orion-End
             case SuitSensorMode.SensorBinary:
                 status.IsAlive = isAlive;
                 break;
