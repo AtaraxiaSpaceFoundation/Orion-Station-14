@@ -44,3 +44,5 @@ guide-entry-sop-security-brigmedic = Бригмедик
 guide-entry-sop-security-detective = Детектив
 guide-entry-sop-security-officer = Офицер
 guide-entry-sop-security-cadet = Кадет
+
+guide-entry-orion-rnd-machines = РнД машины

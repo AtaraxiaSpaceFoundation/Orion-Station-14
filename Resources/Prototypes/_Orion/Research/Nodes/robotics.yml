@@ -1,0 +1,123 @@
+- type: technology
+  id: Robotics
+  name: research-technology-robotics-name
+  description: research-technology-robotics-desc
+  icon:
+    sprite: Structures/Machines/exosuit_fabricator.rsi
+    state: fab-idle
+  discipline: Robotics
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - ExosuitFabricatorMachineCircuitboard
+  - PersonalAI
+  - SciFlash
+  position: -4,4
+
+- type: technology
+  id: ExplorationDrone
+  name: research-technology-exploration-drone-name
+  description: research-technology-exploration-drone-desc
+  icon:
+    sprite: _Imp/Drone/drone.rsi
+    state: shell
+  discipline: Robotics
+  tier: 1
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - Drone
+  position: -5,5
+
+- type: technology
+  id: ArtificialIntelligence
+  name: research-technology-artificial-intelligence-name
+  description: research-technology-artificial-intelligence-desc
+  icon:
+    sprite: Objects/Devices/ai_card.rsi
+    state: base
+  discipline: Robotics
+  tier: 1
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - StationAiUploadCircuitboard
+  - PinpointerBorg
+  - AsimovCircuitBoard
+  - AiRemoteBrain
+  - CorporateCircuitBoard
+  - NTDefaultCircuitBoard
+#  - DroneLaws
+  - NTCustomLawboard
+  - Intellicard
+  - NutimovCircuitBoard
+  - PaladinCircuitBoard
+  - StationEfficiencyCircuitBoard
+#  - QuarantineLaws
+  - RobocopCircuitBoard
+#  - SafeguardLaws
+  position: -3,5
+
+- type: technology
+  id: ArtificialIntelligenceLaws
+  name: research-technology-artificial-intelligence-laws-name
+  description: research-technology-artificial-intelligence-laws-desc
+  icon:
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  - Command
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - ArtificialIntelligence
+  recipeUnlocks:
+  - AntimovCircuitBoard
+  - GameMasterCircuitBoard
+#  - HyppocraticLaws 
+  - LiveLetLiveCircuitBoard
+  - OverlordCircuitBoard
+  - ArtistCircuitBoard
+#  - ReporterLaws 
+  - CommandmentCircuitBoard
+#  - ThermurderLaws
+#  - ThinkermovLaws
+#  - TyrantLaws
+#  - YesmanLaws
+  position: -3,6
+
+- type: technology
+  id: ModularSuit
+  name: research-technology-modular-suit-name
+  description: research-technology-modular-suit-desc
+  icon:
+    sprite: _Goobstation/Objects/Specific/Robotics/modsuit_parts.rsi
+    state: chestplate
+  discipline: Robotics
+  tier: 1
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - ModsuitChestplate
+  - ModsuitBoots
+  - ModsuitHelmet
+  - ModsuitGauntlets
+  - ModsuitShell
+  - ModsuitPlatingExternal
+  position: -5,6

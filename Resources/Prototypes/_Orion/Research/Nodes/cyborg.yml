@@ -1,0 +1,350 @@
+- type: technology
+  id: Augmentation
+  name: research-technology-augmentation-name
+  description: research-technology-augmentation-desc
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: robot
+  discipline: Robotics
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  technologyPrerequisites:
+  - Robotics
+  unlockedExperiments:
+  - ScanningPeopleAndroid
+  recipeUnlocks:
+  - CyborgEndoskeleton
+  - LightHeadBorg
+  - LeftArmBorg
+  - RightArmBorg
+  - LeftLegBorg
+  - RightLegBorg
+  - TorsoBorg
+  - ClothingHeadHatCardborg
+  - ClothingOuterCardborg
+  - BasicCyberneticEyes
+  - BasicCyberneticLungs
+  - BasicCyberneticLiver
+  - BasicCyberneticHeart
+  position: -4,3
+
+- type: technology
+  id: Cybernetics
+  name: research-technology-cybernetics-name
+  description: research-technology-cybernetics-desc
+  icon:
+    sprite: Objects/Specific/Robotics/mmi.rsi
+    state: posibrain
+  discipline: Robotics
+  tier: 1
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - Augmentation
+  recipeUnlocks:
+  - BorgChargerCircuitboard
+  - PositronicBrain
+  - MMI
+  - LeftArmCybernetic
+  - LeftHandCybernetic
+  - RightArmCybernetic
+  - RightHandCybernetic
+  - LeftLegCybernetic
+  - LeftFootCybernetic
+  - RightLegCybernetic
+  - RightFootCybernetic
+  - ChestIPC
+  - GroinIPC
+  - LeftArmIPC
+  - RightArmIPC
+  - LeftLegIPC
+  - RightLegIPC
+  - HeadIPC
+  - LeftHandIPC
+  - RightHandIPC
+  - LeftFootIPC
+  - RightFootIPC
+  - OrganIPCEyes
+  - OrganIPCPump
+  position: -3,2
+
+- type: technology
+  id: BorgServices
+  name: research-technology-borg-services-name
+  description: research-technology-borg-services-desc
+  icon:
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
+  tier: 2
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Cybernetics
+  recipeUnlocks:
+  - BorgModuleAdvancedCleaning
+  position: -5,2
+
+- type: technology
+  id: BorgMining
+  name: research-technology-borg-mining-name
+  description: research-technology-borg-mining-desc
+  icon:
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
+  tier: 2
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Cybernetics
+  recipeUnlocks:
+  - BorgModuleAdvancedMining
+  position: -5,1
+
+- type: technology
+  id: BorgMedical
+  name: research-technology-borg-medical-name
+  description: research-technology-borg-medical-desc
+  icon:
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - BorgServices
+  - AdvancedSurgery
+  recipeUnlocks:
+  - BorgModuleAdvancedSurgery
+  position: -5,0
+
+- type: technology
+  id: BorgUtility
+  name: research-technology-borg-utility-name
+  description: research-technology-borg-utility-desc
+  icon:
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - BorgServices
+  - Sanitation
+  recipeUnlocks:
+  - BorgModuleLollypop
+  - BorgModuleTool
+  - BorgModuleCable
+  - BorgModuleFireExtinguisher
+  position: -5,-1
+
+- type: technology
+  id: BorgEngineering
+  name: research-technology-borg-engineering-name
+  description: research-technology-borg-engineering-desc
+  icon:
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: generic
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - BorgMining
+  - UpgradedParts
+  recipeUnlocks:
+  - BorgModuleAdvancedTool
+  position: -5,-2
+
+- type: technology
+  id: PassiveImplants
+  name: research-technology-passive-implants-name
+  description: research-technology-passive-implants-desc
+  icon:
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
+  discipline: Robotics
+  tier: 1
+  announceChannels:
+  - Security
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - Augmentation
+  recipeUnlocks:
+  - SadTromboneImplanter
+  - TrackingImplanter
+  - Implanter
+  position: -6,3
+
+- type: technology
+  id: CyberImplants
+  name: research-technology-cyber-implants-name
+  description: research-technology-cyber-implants-desc
+  icon:
+    sprite: _Shitmed/Objects/Augments/arm.rsi
+    state: base
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - PassiveImplants
+  - Cybernetics
+  recipeUnlocks:
+  - SpeedLeftLeg
+  - SpeedRightLeg
+  - DexLeftHand
+  - DexRightHand
+  - AugmentPowerCellSlotCasing
+  - AugmentRechargerCasing
+  - AugmentBotanyPanelElectronics
+  - AugmentSurgeryPanelElectronics
+  - AugmentPaperworkPanelElectronics
+  - AugmentStrengthCasing
+  - AugmentStrengthElectronics
+  position: -7,3
+
+- type: technology
+  id: CombatImplants
+  name: research-technology-combat-implants-name
+  description: research-technology-combat-implants-desc
+  icon:
+    sprite: _EinsteinEngines/Mobs/Species/Cybernetics/bishop/bishop_main.rsi
+    state: l_arm-combined
+  discipline: Robotics
+  tier: 4
+  announceChannels:
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - CyberImplants
+  recipeUnlocks:
+  - JawsOfLifeLeftArm
+  - JawsOfLifeRightArm
+  position: -8,3
+
+- type: technology
+  id: IntegratedToolsets
+  name: research-technology-integrated-toolsets-name
+  description: research-technology-integrated-toolsets-desc
+  icon:
+    sprite: _Shitmed/Objects/Augments/arm.rsi
+    state: base
+  discipline: Robotics
+  tier: 5
+  announceChannels:
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - CombatImplants
+  - ExperimentalTools
+  recipeUnlocks:
+  - AugmentToolPanelCasing
+  - AugmentUtilityPanelElectronics
+  position: -8,2
+
+- type: technology
+  id: CyberOrgans
+  name: research-technology-cyber-organs-name
+  description: research-technology-cyber-organs-desc
+  icon:
+    sprite: _Shitmed/Mobs/Species/Misc/Cybernetics/organs.rsi
+    state: lung-u-l
+  discipline: Robotics
+  tier: 2
+  announceChannels:
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Cybernetics
+  recipeUnlocks:
+  - UpgradedCyberneticLungs
+  - UpgradedCyberneticHeart
+  position: -2,3
+
+- type: technology
+  id: CyberOrgansUpgraded
+  name: research-technology-cyber-organs-upgraded-name
+  description: research-technology-cyber-organs-upgraded-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - CyberOrgans
+  requiredExperiments:
+  - ScanningPeopleAugmentedOrgans
+  # TODO
+  position: -2,4
+
+- type: technology
+  id: AdvancedCyberOrgans
+  name: research-technology-advanced-cyber-organs-name
+  description: research-technology-advanced-cyber-organs-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Robotics
+  tier: 5
+  announceChannels:
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - CyberOrgansUpgraded
+  - NightVision
+  discountExperiments:
+  - ScanningPeopleAndroid
+  discountExperimentCosts:
+    ScanningPeopleAndroid: 12500
+  # TODO
+  position: -2,5

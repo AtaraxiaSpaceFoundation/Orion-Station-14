@@ -1,0 +1,10 @@
+- type: researchExperiment
+  id: PhysicalArcadeWinner
+  name: research-experiment-physical-arcade-winner-name
+  description: research-experiment-physical-arcade-winner-desc
+  category: Physical
+  objective: !type:ScanDifferentEntitiesExperimentObjective
+    requiredComponents:
+    - ComputerBoard
+    target: 3
+  reward: {}

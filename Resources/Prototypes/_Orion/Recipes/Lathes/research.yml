@@ -1,0 +1,82 @@
+- type: latheRecipe
+  id: MaterialSiloMachineCircuitboard
+  result: MaterialSiloMachineCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: ResearchAndDevelopmentServerMachineCircuitboard
+  result: ResearchAndDevelopmentServerMachineCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: ResearchComputerCircuitboard
+  result: ResearchComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: ResearchDestructiveAnalyzerMachineCircuitboard
+  result: ResearchDestructiveAnalyzerMachineCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: ResearchExperimentalDestructiveScannerMachineCircuitboard
+  result: ResearchExperimentalDestructiveScannerMachineCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: ResearchServerControlConsoleCircuitboard
+  result: ResearchServerControlConsoleCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: ExperiScanner
+  result: ExperiScanner
+  categories:
+  - Tools
+  completetime: 3
+  materials:
+    Steel: 200
+    Glass: 100
+    Plastic: 100
+
+- type: latheRecipe
+  id: ResearchDataDisk
+  result: ResearchDataDisk
+  categories:
+  - Tools
+  completetime: 3
+  materials:
+    Steel: 150
+    Glass: 100
+    Plastic: 100

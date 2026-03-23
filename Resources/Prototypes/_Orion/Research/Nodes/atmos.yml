@@ -1,0 +1,158 @@
+- type: technology
+  id: Atmospherics
+  name: research-technology-atmospherics-name
+  description: research-technology-atmospherics-desc
+  icon:
+    sprite: Objects/Tanks/oxygen.rsi
+    state: icon
+  discipline: Engineering
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - AlertsComputerCircuitboard
+  - ThermomachineFreezerMachineCircuitBoard
+  - SpaceHeaterMachineCircuitBoard
+  - PortableScrubberMachineCircuitBoard
+  - OxygenTank
+  - WaterVaporTank # DV
+  - PlasmaTank
+  - FireExtinguisher
+  - FireExtinguisherMini
+  - GasAnalyzer
+  - AirTank
+  - EnvirosuitExtinguisherRefill
+  position: 12,3
+
+- type: technology
+  id: GasCompression
+  name: research-technology-gas-compression-name
+  description: research-technology-gas-compression-desc
+  icon:
+    sprite: Structures/Machines/gasrecycler.rsi
+    state: icon
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - Atmospherics
+  unlockedExperiments:
+  - OrdnanceGaseousPlasma
+  - OrdnanceGaseousNitrousOxide
+  - OrdnanceGaseousBz
+  - OrdnanceGaseousFrezon
+  recipeUnlocks:
+  - GasRecyclerMachineCircuitboard
+  position: 11,2
+
+- type: technology
+  id: PlasmaControl
+  name: research-technology-plasma-control-name
+  description: research-technology-plasma-control-desc
+  icon:
+    sprite: Structures/Power/Generation/portable_generator.rsi
+    state: portgen0
+  discipline: Engineering
+  tier: 2
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - GasCompression
+  - EnergyManipulation
+  discountExperiments:
+  - OrdnanceGaseousPlasma
+  discountExperimentCosts:
+    OrdnanceGaseousPlasma: 5000
+  recipeUnlocks:
+  - PortableGeneratorPacmanMachineCircuitboard
+  - PortableGeneratorSuperPacmanMachineCircuitboard
+  - PortableGeneratorJrPacmanMachineCircuitboard
+  - SMESAdvancedMachineCircuitboard
+  # TODO: No turbine :(
+  position: 13,2
+
+- type: technology
+  id: Fusion
+  name: research-technology-fusion-name
+  description: research-technology-fusion-desc
+  icon:
+    sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi
+    state: freezerOn
+  discipline: Engineering
+  tier: 3
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - PlasmaControl
+  discountExperiments:
+  - OrdnanceGaseousNitrousOxide
+  discountExperimentCosts:
+    OrdnanceGaseousNitrousOxide: 7500
+  recipeUnlocks:
+  - HellfireFreezerMachineCircuitBoard
+  # TODO: No fusion :(
+  position: 13,1
+
+- type: technology
+  id: ExperimentalTools
+  name: research-technology-experimental-tools-name
+  description: research-technology-experimental-tools-desc
+  icon:
+    sprite: Objects/Tools/jaws_of_life.rsi
+    state: jaws_pry
+  discipline: Engineering
+  tier: 4
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - Fusion
+  discountExperiments:
+  - OrdnanceGaseousBz
+  discountExperimentCosts:
+    OrdnanceGaseousBz: 10000
+  recipeUnlocks:
+  - FlatpackerMachineCircuitboard
+  - PowerDrill
+  - WelderExperimental
+  - JawsOfLife
+  - ClothingHeadHatWelding
+  position: 14,1
+
+- type: technology
+  id: RapidConstructionDeviceUpgrade
+  name: research-technology-rapid-construction-device-upgrade-name
+  description: research-technology-rapid-construction-device-upgrade-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Engineering
+  tier: 5
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - ExperimentalTools
+  - PartsBluespace
+  discountExperiments:
+  - OrdnanceGaseousFrezon
+  discountExperimentCosts:
+    OrdnanceGaseousFrezon: 12500
+  # TODO
+  position: 15,2

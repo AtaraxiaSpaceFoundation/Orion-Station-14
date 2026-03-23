@@ -1,7 +1,233 @@
 - type: latheRecipe
   id: ConfettiGrenade
   result: ConfettiGrenade
+  categories:
+  - Service
   completetime: 3
   materials:
     Steel: 20
     Plastic: 500
+
+- type: latheRecipe
+  id: BarSpoon
+  result: BarSpoon
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Glass: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: BlockGameArcadeComputerCircuitboard
+  result: BlockGameArcadeComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: Broomstick
+  result: Broomstick
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: CandyBowl
+  result: CandyBowl
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Glass: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: CargoBountyComputerCircuitboard
+  result: CargoBountyComputerCircuitboard
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: CargoRequestComputerCircuitboard
+  result: CargoRequestComputerCircuitboard
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: ClothingHeadset
+  result: ClothingHeadset
+  categories:
+  - Clothing
+  completetime: 4
+  materials:
+    Steel: 300
+
+- type: latheRecipe
+  id: CommsComputerCircuitboard
+  result: CommsComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: CrewMonitoringComputerCircuitboard
+  result: CrewMonitoringComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: DrinkShaker
+  result: DrinkShaker
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 200
+    Plastic: 100
+
+- type: latheRecipe
+  id: FishingRod
+  result: FishingRod
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: Fork
+  result: Fork
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 100
+
+- type: latheRecipe
+  id: ForkPlastic
+  result: ForkPlastic
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Plastic: 100
+
+- type: latheRecipe
+  id: KnifePlastic
+  result: KnifePlastic
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Plastic: 100
+
+- type: latheRecipe
+  id: MedicalRecordsComputerCircuitboard
+  result: MedicalRecordsComputerCircuitboard
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: PairedChopsticks
+  result: PairedChopsticks
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Plastic: 300
+
+- type: latheRecipe
+  id: ParcelWrap
+  result: ParcelWrap
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Plastic: 150
+
+- type: latheRecipe
+  id: PetCarrier
+  result: PetCarrier
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: RadioHandheld
+  result: RadioHandheld
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150
+
+- type: latheRecipe
+  id: ScreenTimerElectronics
+  result: ScreenTimerElectronics
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: SpaceVillainArcadeComputerCircuitboard
+  result: SpaceVillainArcadeComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300
+
+- type: latheRecipe
+  id: Spoon
+  result: Spoon
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 100
+
+- type: latheRecipe
+  id: SpoonPlastic
+  result: SpoonPlastic
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Plastic: 100

@@ -1,0 +1,17 @@
+- type: latheRecipePack
+  id: AILawboards
+  recipes:
+  - AntimovCircuitBoard
+  - GameMasterCircuitBoard
+  - LiveLetLiveCircuitBoard
+  - OverlordCircuitBoard
+  - ArtistCircuitBoard
+  - CommandmentCircuitBoard
+  - AsimovCircuitBoard
+  - CorporateCircuitBoard
+  - NTDefaultCircuitBoard
+  - NTCustomLawboard
+  - NutimovCircuitBoard
+  - PaladinCircuitBoard
+  - StationEfficiencyCircuitBoard
+  - RobocopCircuitBoard

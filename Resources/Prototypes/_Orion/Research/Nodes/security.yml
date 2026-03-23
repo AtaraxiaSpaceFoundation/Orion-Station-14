@@ -1,0 +1,409 @@
+- type: technology
+  id: BasicArms
+  name: research-technology-basic-arms-name
+  description: research-technology-basic-arms-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
+    state: beanbag
+  discipline: Security
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - MagazineShotgunBeanbag
+  - BoxBeanbag
+  - MagazineBoxShotgunBeanbagHighCaliber 
+  - ModularReceiver
+  - BoxLethalshot
+  - BoxShotgunSlug
+  - MagazineBoxMagnum
+  - MagazineBoxPistol
+  - MagazineBoxRifle
+  - MagazineBoxRifle762
+  - MagazineRifle762
+  - MagazineRifle762Empty
+  - MagazinePistol
+  - MagazinePistolEmpty
+  - MagazinePistolSubMachineGun
+  - MagazinePistolSubMachineGunEmpty
+  - MagazinePistolSubMachineGunTopMounted
+  - MagazinePistolSubMachineGunTopMountedEmpty
+  - MagazineRifle
+  - MagazineRifleEmpty
+  - MagazineShotgun
+  - MagazineShotgunEmpty
+  - MagazineShotgunSlug
+  - SpeedLoaderMagnum
+  - SpeedLoaderMagnumEmpty
+  - MagazineBoxShotgunHighCaliber
+  - MagazineBoxShotgunSlugHighCaliber
+  - MagazineBoxShotgunPracticeHighCaliber
+  - MagazineShotgunLeverRifleEmpty
+  - BoxShotgunPractice
+  - MagazineBoxMagnumPractice
+  - MagazineBoxPistolPractice
+  - MagazineBoxRiflePractice
+  - MagazineBoxRifle762Practice
+  - WeaponDisablerPractice
+  - WeaponLaserCarbinePractice
+  - MagazineLightRiflePractice
+  - MagazineRiflePractice
+  - MagazineRifle762Practice
+  - MagazinePistolPractice
+  - SpeedLoaderMagnumPractice
+  - MagazinePistolSubMachineGunPractice
+  position: 0,0
+
+- type: technology
+  id: SecurityEquipment
+  name: research-technology-security-equipment-name
+  description: research-technology-security-equipment-desc
+  icon:
+    sprite: Objects/Tools/seclite.rsi
+    state: seclite
+  discipline: Security
+  tier: 1
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - BasicArms
+  recipeUnlocks:
+  - SurveillanceWirelessCameraBodySecurity
+  - ContrabandDetectorCircuitboard
+  - PepperSpray
+  - Zipties
+  - FlashlightSeclite
+  - ClothingBackpackElectropack
+  - ForensicPad
+  - TargetClown
+  - TargetHuman
+  - TargetSyndicate
+  - WeaponFlareGunSecurity
+  - Flash
+  - Stunbaton
+  - CombatKnife
+  - RiotShield
+  - GrenadeFlashBang
+  - SecHypo
+  - PolymerBaton
+  - SpearTelescopic
+  position: -1,1
+
+- type: technology
+  id: CombatHUD
+  name: research-technology-combat-hud-name
+  description: research-technology-combat-hud-desc
+  icon:
+    sprite: _White/Clothing/Eyes/Goggles/thermal.rsi
+    state: icon
+  discipline: Security
+  tier: 4
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 17500
+  technologyPrerequisites:
+  - BeamWeapons
+  - AnomalyShells
+  - NightVision
+  recipeUnlocks:
+  - ClothingEyesThermalVisionGoggles
+  position: -2,1
+
+- type: technology
+  id: RiotSuppression
+  name: research-technology-riot-suppression-name
+  description: research-technology-riot-suppression-desc
+  icon:
+    sprite: _Goobstation/Objects/Weapons/Throwable/energy_bola.rsi
+    state: icon
+  discipline: Security
+  tier: 2
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - SecurityEquipment
+  recipeUnlocks:
+  - TelescopicShield
+  - RiotBulletShield
+  - Handcuffs
+  - BolaEnergy
+  - Truncheon
+  - ClothingMaskMuzzleSecure
+  - ClothingMaskMuzzleShock
+  - WeaponDisabler
+  - WeaponDisablerSMG
+  position: 1,1
+
+- type: technology
+  id: Explosives
+  name: research-technology-explosives-name
+  description: research-technology-explosives-desc
+  icon:
+    sprite: Objects/Weapons/Grenades/smoke.rsi
+    state: icon
+  discipline: Security
+  tier: 3
+  announceChannels:
+  - Security
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - RiotSuppression
+  requiredExperiments:
+  - OrdnanceExplosiveLowyieldbomb
+  recipeUnlocks:
+  - ModularGrenade
+  - SmokeGrenade
+  - FlashPayload
+  - ChemicalPayload
+  - ShrapnelPayload
+  position: 1,0
+
+- type: technology
+  id: ExoticAmmo
+  name: research-technology-exotic-ammo-name
+  description: research-technology-exotic-ammo-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    state: base
+  discipline: Security
+  tier: 4
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - Explosives
+  discountExperiments:
+  - OrdnanceExplosiveHighyieldbomb
+  discountExperimentCosts:
+    OrdnanceExplosiveHighyieldbomb: 10000
+  recipeUnlocks:
+  # Incendiary
+  - BoxShotgunIncendiary
+  - MagazineRifleIncendiary
+  - MagazinePistolIncendiary
+  - MagazinePistolSubMachineGunIncendiary
+  - MagazineBoxShotgunIncendiaryHighCaliber
+  - SpeedLoaderMagnumIncendiary
+  - MagazineShotgunIncendiary
+  - MagazineBoxPistolIncendiary
+  - MagazineBoxMagnumIncendiary
+  - MagazineBoxRifle762Incendiary
+  - MagazineRifle762Incendiary
+  - MagazineBoxRifleIncendiary
+  # Uranium
+  - MagazineRifleUranium
+  - MagazinePistolUranium
+  - MagazinePistolSubMachineGunUranium
+  - SpeedLoaderMagnumUranium
+  - MagazineBoxPistolUranium
+  - MagazineBoxMagnumUranium
+  - MagazineBoxRifle762Uranium
+  - MagazineRifle762Uranium
+  - MagazineBoxRifleUranium
+  - BoxShotgunUranium
+  - MagazineBoxShotgunUraniumHighCaliber
+  # Tranquilizer
+  - BoxShellTranquilizer
+  # Shuttle
+  - GrenadeBlast
+  - GrenadeEMP
+  - GrenadeFlash
+  - MagazineGrenadeEmpty
+  - PowerCageMedium
+  - PowerCageSmall
+  - PowerCageHigh
+  # Other
+  - EnergyMagRifleDisabler
+  - EnergyMagRifleLethal
+  - MagazineSmart
+  - PowerCellIRRevolver
+  - PowerCellIRSMG
+  - PowerCellIonSMG
+  - PowerCellIRSniper
+  - MilitaryPowerCellLMG
+  - PowerCellBluespaceRevolver
+  - PowerCellBluespaceSMG
+  - PowerCellBluespaceSniper
+  - MilitaryPowerCellBluespaceLMG
+  position: 2,-1
+
+- type: technology
+  id: ElectricWeapons
+  name: research-technology-electric-weapons-name
+  description: research-technology-electric-weapons-desc
+  icon:
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/ion_rifle.rsi
+    state: base
+  discipline: Security
+  tier: 3
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - RiotSuppression
+  recipeUnlocks:
+  - WeaponEnergyIonRifle
+  - PowerCellIonRevolver
+  - EnergyMagRifleIon
+  - PowerCellIonSniper
+  - WeaponTemperatureGun
+  position: 3,1
+
+- type: technology
+  id: BeamWeapons
+  name: research-technology-beam-weapons-name
+  description: research-technology-beam-weapons-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/xray.rsi
+    state: icon
+  discipline: Security
+  tier: 4
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - ElectricWeapons
+  recipeUnlocks:
+  - WeaponXrayCannon
+  - HoloprojectorSecurityAdvanced
+  - PowerCellXrayRevolver
+  - PowerCellXraySMG
+  - PowerCellXraySniper
+  - AntiMindControlDevice
+  position: 4,1
+
+- type: technology
+  id: WeaponizedLaserManipulation
+  name: research-technology-weaponized-laser-manipulation
+  description: research-technology-weaponized-laser-manipulation-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
+    state: base
+  discipline: Security
+  tier: 1
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - ExoticAmmo
+  recipeUnlocks:
+  - WeaponLaserCarbine
+  - WeaponLaserCannon
+  position: 4,-2
+
+- type: technology
+  id: PortableMicrofusionWeaponry
+  name: research-technology-portable-microfusion-weaponry
+  description: research-technology-portable-microfusion-weaponry-desc
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
+    state: base
+  discipline: Security
+  tier: 3
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 20000
+  technologyPrerequisites:
+  - BeamWeapons
+  - WeaponizedLaserManipulation
+  - PartsBluespace
+  recipeUnlocks:
+  - WeaponAdvancedLaser
+  - WeaponEnergyRifle
+  - WeaponLaserCellRevolver
+  - WeaponLaserCellSMG
+  - WeaponLaserCellSniper
+  - Terminus
+  - PortableRecharger
+  - EnergyMagRifleOverchargeLethal
+  - PowerCellOverchargedRevolver
+  - PowerCellOverchargedSMG
+  - PowerCellOverchargedSniper
+  position: 4,-3
+
+- type: technology
+  id: SmartWeaponry
+  name: research-technology-smart-weaponry
+  description: research-technology-smart-weaponry-desc
+  icon:
+    sprite: _Goobstation/Objects/Weapons/Guns/SMGs/smartgun.rsi
+    state: base
+  discipline: Security
+  tier: 3
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 20000
+  technologyPrerequisites:
+  - BeamWeapons
+  - WeaponizedLaserManipulation
+  - PartsBluespace
+  recipeUnlocks:
+  - WeaponSubMachineSmart
+  position: 4,-4
+
+- type: technology
+  id: HeavyWeaponry
+  name: research-technology-heavy-weaponry
+  description: research-technology-heavy-weaponry-desc
+  icon:
+    sprite: _Goobstation/Clothing/Back/Backpacks/lmg_backpack.rsi
+    state: icon
+  discipline: Security
+  tier: 3
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 20000
+  technologyPrerequisites:
+  - BeamWeapons
+  - WeaponizedLaserManipulation
+  - PartsBluespace
+  recipeUnlocks:
+  - ClothingBackpackLMGBattery
+  position: 5,0
+
+- type: technology
+  id: EnergyBarriers
+  name: research-technology-energy-barriers
+  description: research-technology-energy-barriers-desc
+  icon:
+    sprite: _Orion/Objects/Tools/EnergyDome/reinhardt.rsi
+    state: icon
+  discipline: Security
+  tier: 2
+  announceChannels:
+  - Security
+  pointCosts:
+  - type: General
+    amount: 12000
+  technologyPrerequisites:
+  - PortableMicrofusionWeaponry
+  recipeUnlocks:
+  - EnergyDomeTurtle
+  position: 3,0

@@ -27,6 +27,7 @@ using Content.Shared.Research.Components;
 using Content.Shared.Research.Systems;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Research.Systems
@@ -41,6 +42,7 @@ namespace Content.Server.Research.Systems
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly RadioSystem _radio = default!;
+        [Dependency] private readonly IRobustRandom _random = default!; // Orion
 
         public override void Initialize()
         {
@@ -49,6 +51,10 @@ namespace Content.Server.Research.Systems
             InitializeConsole();
             InitializeSource();
             InitializeServer();
+            // Orion-Start
+            InitializeExperiments();
+            InitializeDiscovery();
+            // Orion-End
 
             SubscribeLocalEvent<TechnologyDatabaseComponent, ResearchRegistrationChangedEvent>(OnDatabaseRegistrationChanged);
         }

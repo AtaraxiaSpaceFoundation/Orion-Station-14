@@ -1,0 +1,64 @@
+- type: latheRecipe
+  id: DiagnoserMachineCircuitboard
+  result: DiagnoserMachineCircuitboard
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: MedicalBiofabMachineBoard
+  result: MedicalBiofabMachineBoard
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: MedicalScannerMachineCircuitboard
+  result: MedicalScannerMachineCircuitboard
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: SlimeScannerXenobio
+  result: SlimeScannerXenobio
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: VaccinatorMachineCircuitboard
+  result: VaccinatorMachineCircuitboard
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: XenobiologyBountyComputerCircuitboard
+  result: XenobiologyBountyComputerCircuitboard
+  categories:
+  - Service
+  completetime: 4
+  materials:
+    Steel: 300
+    Plastic: 150

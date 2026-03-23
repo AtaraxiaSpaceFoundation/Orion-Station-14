@@ -49,6 +49,18 @@
   - type: Tag
     tags:
     - Ore
+  # Orion-Start
+  - type: ResearchAnalyzable
+    supportedMethods:
+    - Deconstruct
+    methodPointRewards:
+      Deconstruct:
+      - type: General
+        amount: 250
+      - type: Experimental
+        amount: 60
+    discoveryTrigger: machine:ore-sample
+  # Orion-End
   - type: Fixtures
     fixtures:
       fix1:

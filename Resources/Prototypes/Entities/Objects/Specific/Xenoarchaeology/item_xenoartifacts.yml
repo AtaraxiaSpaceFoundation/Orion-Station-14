@@ -152,6 +152,20 @@
   - type: PhysicalComposition
     materialComposition:
       ArtifactFragment: 100
+  # Orion-Start
+  - type: ResearchAnalyzable
+    supportedMethods:
+    - Deconstruct
+    methodPointRewards:
+      Deconstruct:
+      - type: General
+        amount: 250
+      - type: Experimental
+        amount: 60
+    discoveryTrigger: machine:artifact-fragment
+    experimentActions:
+    - analyze_artifact_fragment
+  # Orion-End
   # Lavaland Change end
 
 - type: entity

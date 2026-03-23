@@ -1,0 +1,86 @@
+- type: latheRecipe
+  id: WeaponMechChainSword
+  result: WeaponMechChainSword
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300
+
+- type: latheRecipe
+  id: WeaponMechCombatMissileRack6
+  result: WeaponMechCombatMissileRack6
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200
+
+- type: latheRecipe
+  id: WeaponMechCombatTeslaCannon
+  result: WeaponMechCombatTeslaCannon
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200
+
+- type: latheRecipe
+  id: WeaponMechIndustrialKineticAccelerator
+  result: WeaponMechIndustrialKineticAccelerator
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200
+
+- type: latheRecipe
+  id: WeaponMechMeleeDrill
+  result: WeaponMechMeleeDrill
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200
+
+- type: latheRecipe
+  id: WeaponMechSpecialBananaMortar
+  result: WeaponMechSpecialBananaMortar
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200
+
+- type: latheRecipe
+  id: WeaponMechSpecialMousetrapMortar
+  result: WeaponMechSpecialMousetrapMortar
+  categories:
+  - Mech
+  completetime: 4
+  materials:
+    Steel: 1200
+    Glass: 400
+    Plasma: 200
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: GygaxCentralElectronics
+  result: GygaxCentralElectronics
+
+- type: latheRecipe
+  parent: BaseSilverCircuitboardRecipe
+  id: DurandCentralElectronics
+  result: DurandCentralElectronics

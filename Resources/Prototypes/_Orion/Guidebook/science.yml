@@ -1,0 +1,5 @@
+- type: guideEntry
+  id: OrionRnDMachines
+  name: guide-entry-orion-rnd-machines
+  priority: 4
+  text: "/ServerInfo/_Orion/Guidebook/Science/RnDMachines.xml"

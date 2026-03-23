@@ -42,7 +42,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
+    - AbductorEngineering # Orion
     - SharedBoardsStatic
     - EngineeringBoardsStatic
     - CircuitFloorsStatic
@@ -57,7 +58,6 @@
     - MiscSignallersStatic
     - NailgunStatic
     - NailsStatic
-    dynamicPacks:
     # Orion-Start
     - MegaCells
     # Orion-End
@@ -114,7 +114,7 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - ToolsStatic
     - SharedBoardsStatic
     - CargoBoardsStatic
@@ -123,7 +123,6 @@
     - MiningToolsStatic
     - MiscSignallersStatic
     - CargoStatic
-    dynamicPacks:
     # Orion-Start
     - MegaCells
     # Orion-End
@@ -181,7 +180,7 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - SharedBoardsStatic
     - EngineeringBoardsStatic
     - CircuitFloorsStatic
@@ -201,7 +200,6 @@
     - ScienceExplosives # Goobstation - Roundstart Grenade Tech
     - GrenadeTriggersStatic # Goobstation - Roundstart Grenade Tech
     - MiscSignallersStatic
-    dynamicPacks:
     # Orion-Start
     - BodyBagsDynamic
     - MegaCells
@@ -275,7 +273,7 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - ServiceBoardsStatic
     - ServiceBoardsStaticGoob
     - MaterialsStatic
@@ -286,8 +284,10 @@
     - ChemistryStatic
     - TapeRecorderStatic
     - CondimentStatic
-    dynamicPacks:
-    - OrionService # Orion
+    # Orion-Start
+    - BasicService
+    - Hydroponic
+    # Orion-End
     - Janitor
     - Instruments
     - FauxTiles

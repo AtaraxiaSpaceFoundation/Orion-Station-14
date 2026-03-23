@@ -1,0 +1,45 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls;assembly=Content.Client"
+                      Title="{Loc 'research-machine-experimental-destructive-scanner-window-title'}"
+                      SetSize="700 540"
+                      MinSize="600 440">
+    <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+        <controls:StripeBack>
+            <Label Name="ServerLabel" StyleClasses="LabelHeading" Margin="6 4"/>
+        </controls:StripeBack>
+        <RichTextLabel Name="BalanceLabel"/>
+        <Button Name="ServerButton" Text="{Loc 'research-machine-common-server-list'}"/>
+
+        <PanelContainer VerticalExpand="True">
+            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="8">
+                    <Label Name="InsertedItemLabel"/>
+                    <Button Name="PerformButton" Text="{Loc 'research-machine-experimental-destructive-scanner-perform'}"/>
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'research-machine-experimental-destructive-scanner-requirements-title'}" StyleClasses="LabelSubText" Margin="6 2" ClipText="True"/>
+                    </controls:StripeBack>
+                    <PanelContainer MinHeight="180" VerticalExpand="True">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BackgroundColor="#23232A" BorderThickness="1" BorderColor="#4A4A56"/>
+                        </PanelContainer.PanelOverride>
+                        <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                            <BoxContainer Name="OperationsContainer"
+                                          Orientation="Vertical"
+                                          Margin="6"
+                                          SeparationOverride="4"
+                                          HorizontalExpand="True"/>
+                        </ScrollContainer>
+                    </PanelContainer>
+
+                    <controls:StripeBack>
+                        <Label Text="{Loc 'research-machine-common-last-operation-title'}" StyleClasses="LabelSubText" Margin="6 2" ClipText="True"/>
+                    </controls:StripeBack>
+                    <PanelContainer>
+                        <RichTextLabel Name="LastOperationLabel" Margin="6"/>
+                    </PanelContainer>
+                </BoxContainer>
+            </ScrollContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>

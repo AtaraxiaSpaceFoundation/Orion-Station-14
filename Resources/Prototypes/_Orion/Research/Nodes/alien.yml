@@ -1,0 +1,100 @@
+- type: technology # AYYYYYYYYLMAOO
+  id: AlienTechnology
+  name: research-technology-alien-technology-name
+  description: research-technology-alien-technology-desc
+  icon:
+    sprite: _Shitmed/Objects/Weapons/Melee/wonderprod.rsi
+    state: stun-icon
+  discipline: Scientific
+  tier: 2
+  hidden: true
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - BluespaceTravel
+  requiredItemsToUnlock:
+  - CrowbarAbductor
+  - WeaponAlien
+  - Wonderprod
+  - MultitoolAbductor
+  - EnergyScalpelAbductor
+  - SearingToolAbductor # TODO: Make normal abductor surgery tools
+  - MechanicalPinchesAbductor # TODO: Make normal abductor surgery tools
+  - BoneManipulatorAbductor # TODO: Make normal abductor surgery tools
+  - ScrewdriverAbductor
+  - WelderAbductor
+  - WirecutterAbductor
+  - WrenchAbductor
+  position: -1,11
+
+- type: technology
+  id: AlienEngineering
+  name: research-technology-alien-engineering-name
+  description: research-technology-alien-engineering-desc
+  icon:
+    sprite: _Shitmed/Objects/Specific/Abductor/crowbar.rsi
+    state: abductor
+  discipline: Engineering
+  tier: 2
+  hidden: true
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - AlienTechnology
+  - ExperimentalTools
+  requiredItemsToUnlock:
+  - CrowbarAbductor
+  - Wonderprod
+  - MultitoolAbductor
+  - ScrewdriverAbductor
+  - WelderAbductor
+  - WirecutterAbductor
+  - WrenchAbductor
+  recipeUnlocks:
+  - CrowbarAbductor
+  - MultitoolAbductor
+  - ScrewdriverAbductor
+  - WelderAbductor
+  - WirecutterAbductor
+  - WrenchAbductor
+  position: 0,11
+
+- type: technology
+  id: AlienSurgery
+  name: research-technology-alien-surgery-name
+  description: research-technology-alien-surgery-desc
+  icon:
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: abductor
+  discipline: Medical
+  tier: 5
+  hidden: true
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - AlienTechnology
+  - SurgeryTools
+  discountExperiments:
+  - ScanningPointsSlimeHard
+  discountExperimentCosts:
+    ScanningPointsSlimeHard: 12500
+  requiredItemsToUnlock:
+  - WeaponAlien
+  - Wonderprod
+  - EnergyScalpelAbductor
+  - SearingToolAbductor # TODO: Make normal abductor surgery tools
+  - MechanicalPinchesAbductor # TODO: Make normal abductor surgery tools
+  - BoneManipulatorAbductor # TODO: Make normal abductor surgery tools
+  recipeUnlocks:
+  - EnergyScalpelAbductor
+  - SearingToolAbductor
+  - MechanicalPinchesAbductor
+  - BoneManipulatorAbductor
+  position: -2,11

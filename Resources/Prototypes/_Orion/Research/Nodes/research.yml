@@ -1,0 +1,243 @@
+- type: technology
+  id: FundamentalScience
+  name: research-technology-fundamental-science-name
+  description: research-technology-fundamental-science-desc
+  icon:
+    sprite: _Orion/Structures/Machines/destructive_analyzer.rsi
+    state: icon
+  discipline: Scientific
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - ExperiScanner
+  - ResearchAndDevelopmentServerMachineCircuitboard
+  - ResearchServerControlConsoleCircuitboard
+  - ResearchComputerCircuitboard
+  - ResearchDestructiveAnalyzerMachineCircuitboard
+  - ResearchExperimentalDestructiveScannerMachineCircuitboard
+  - AnomalyVesselCircuitboard
+  - TinfoilHats
+  - ProtolatheMachineCircuitboard
+  - AnomalyScanner
+  - NodeScanner
+  - AnomalyLocator
+  - TechDiskComputerCircuitboard
+  - AnalysisComputerCircuitboard
+  - APECircuitboard
+  - ArtifactAnalyzerMachineCircuitboard
+  - ArtifactCrusherMachineCircuitboard
+  - ExperimentalCircuitBoard
+  - ResearchDataDisk
+  position: 0,4
+
+- type: technology
+  id: BluespaceTheory
+  name: research-technology-bluespace-theory-name
+  description: research-technology-bluespace-theory-desc
+  icon:
+    sprite: _Goobstation/Objects/Materials/materials.rsi
+    state: bluespace_crystal
+  discipline: Scientific
+  tier: 1
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - FundamentalScience
+  recipeUnlocks:
+  - MaterialBSCrystal
+  position: 0,5
+
+- type: technology
+  id: AppliedBluespace
+  name: research-technology-applied-bluespace-name
+  description: research-technology-applied-bluespace-desc
+  icon:
+    sprite: _Goobstation/Structures/Machines/silo.rsi
+    state: ore_silo
+  discipline: Scientific
+  tier: 2
+  announceChannels:
+  - Science
+  - Medical
+  - Service
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - BluespaceTheory
+  discountExperiments:
+  - ScanningPointsBluespaceCrystal
+  discountExperimentCosts:
+    ScanningPointsBluespaceCrystal: 5000
+  recipeUnlocks:
+  - MaterialSiloMachineCircuitboard
+  - OreBagOfHolding
+  - BluespaceBeaker
+  - SyringeBluespace
+  - BluespaceBodyBag
+  - ConstructionBagOfHolding
+  - ClothingBeltChemBagXenobiologyHolding
+  - PlantBagOfHolding
+  - OreProcessorIndustrialMachineCircuitboard
+  - VialBluespace
+  - ClothingBackpackHarmpack
+  position: 0,6
+
+- type: technology
+  id: BluespaceTravel
+  name: research-technology-bluespace-travel-name
+  description: research-technology-bluespace-travel-desc
+  icon:
+    sprite: Objects/Devices/swapper.rsi
+    state: icon
+  discipline: Scientific
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - AppliedBluespace
+  recipeUnlocks:
+  - DeviceQuantumSpinInverter
+  - CargoTelepadMachineCircuitboard
+  position: -1,6
+
+- type: technology
+  id: AnomalyResearch
+  name: research-technology-anomaly-research-name
+  description: research-technology-anomaly-research-desc
+  icon:
+    sprite: Structures/Machines/Anomaly/adv_anomaly_vessel.rsi
+    state: base
+  discipline: Scientific
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - AppliedBluespace
+  recipeUnlocks:
+  - AnomalySynchronizerCircuitboard
+  - AnomalyVesselExperimentalCircuitboard
+  - AnomalyLocatorWide
+  - WeaponPistolCHIMP
+  - Pinpointer
+  - PinpointerArtifact
+  - PinpointerAnomaly
+  position: 1,6
+
+- type: technology
+  id: AnomalyShells
+  name: research-technology-anomaly-shells-name
+  description: research-technology-anomaly-shells-desc
+  icon:
+    sprite: Clothing/Back/Duffels/holding.rsi
+    state: icon
+  discipline: Scientific
+  tier: 5
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 12500
+  - type: Experimental
+    amount: 1500
+  technologyPrerequisites:
+  - AnomalyResearch
+  discountExperiments:
+  - ScanningPointsAnomalies
+  discountExperimentCosts:
+    ScanningPointsAnomalies: 12500
+  recipeUnlocks:
+  - ClothingBackpackDuffelHolding
+  - ClothingBackpackMessengerHolding
+  - ClothingBackpackHolding
+  - ClothingBackpackSatchelHolding
+  - WeaponTetherGun
+#  - PolymorphBelt # TODO
+  - VehicleHoverchairSci
+  - WeaponParticleDecelerator
+  - WeaponForceGun
+  - WeaponGauntletGorilla
+  position: 1,8
+
+- type: technology
+  id: BasicTranslation
+  name: research-technology-basic-translation
+  description: research-technology-basic-translation-desc
+  icon:
+    sprite: _EinsteinEngines/Objects/Devices/translator.rsi
+    state: icon
+  discipline: Scientific
+  tier: 2
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - FundamentalScience
+  recipeUnlocks:
+  - BasicGalaticCommonTranslatorImplanter
+  - CanilunztTranslator
+  - BubblishTranslator
+  - NekomimeticTranslator
+  - DraconicTranslator
+  - SolCommonTranslator
+  - RootSpeakTranslator
+  - MofficTranslator
+  - ValyrianStandardTranslator
+  - ChittinTranslator
+  - SiikMaasTranslator
+  - MarishTranslator
+  - ChevalTranslatorImplanter
+  - NewKinPidginTranslator
+  - SchechiTranslator
+  - GruntishTranslator
+  - YowKriolTranslator
+  position: -1,8
+
+- type: technology
+  id: AdvancedTranslation
+  name: research-technology-advanced-translation
+  description: research-technology-advanced-translation-desc
+  icon:
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
+  discipline: Scientific
+  tier: 3
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - BasicTranslation
+  recipeUnlocks:
+  - AdvancedGalaticCommonTranslatorImplanter
+  - CanilunztTranslatorImplanter
+  - BubblishTranslatorImplanter
+  - NekomimeticTranslatorImplanter
+  - DraconicTranslatorImplanter
+  - SolCommonTranslatorImplanter
+  - RootSpeakTranslatorImplanter
+  - MofficTranslatorImplanter
+  - ValyrianStandardTranslatorImplanter
+  - ChittinTranslatorImplanter
+  - SiikMaasTranslatorImplanter
+  - MarishTranslatorImplanter
+  - SchechiTranslatorImplanter
+  - NewKinPidginTranslatorImplanter
+  - AnimalTranslator
+  - XenoTranslator
+  - GruntishTranslatorImplanter
+  - YowKriolTranslatorImplanter
+  - SignTranslatorImplanter
+  position: -1,9

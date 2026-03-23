@@ -1,0 +1,128 @@
+- type: technology
+  id: OldstationSurgery
+  name: research-technology-oldstation-surgery-name
+  description: research-technology-oldstation-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Medical
+  tier: 1
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  # There should be surgery operations
+  position: 4,10
+
+- type: technology
+  id: Surgery
+  name: research-technology-surgery-name
+  description: research-technology-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Medical
+  tier: 1
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  # There should be surgery operations
+  position: 4,11
+
+- type: technology
+  id: AdvancedSurgery
+  name: research-technology-advanced-surgery-name
+  description: research-technology-advanced-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Medical
+  tier: 2
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Surgery
+  discountExperiments:
+  - AutopsyHuman
+  discountExperimentCosts:
+    AutopsyHuman: 5000
+  # There should be surgery operations
+  position: 4,12
+
+- type: technology
+  id: ExperimentalSurgery
+  name: research-technology-experimental-surgery-name
+  description: research-technology-experimental-surgery-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Medical
+  tier: 3
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - AdvancedSurgery
+  discountExperiments:
+  - AutopsyNonhuman
+  discountExperimentCosts:
+    AutopsyNonhuman: 7500
+  # There should be surgery operations
+  position: 4,13
+
+- type: technology
+  id: SurgeryTools
+  name: research-technology-surgery-tools-name
+  description: research-technology-surgery-tools-desc
+  icon:
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
+    state: e-scalpel-on
+  discipline: Medical
+  tier: 4
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - ExperimentalSurgery
+  discountExperiments:
+  - AutopsyXenomorph
+  discountExperimentCosts:
+    AutopsyXenomorph: 10000
+  recipeUnlocks:
+  - EnergyScalpel
+  - EnergyCautery
+  - AdvancedRetractor
+  - AutodocCircuitboard
+  position: 4,14
+
+- type: technology
+  id: SurgeryToolsAdvanced
+  name: research-technology-surgery-tools-advanced-name
+  description: research-technology-surgery-tools-advanced-desc
+  icon:
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+    state: omnimed
+  discipline: Medical
+  tier: 4
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - SurgeryTools
+  recipeUnlocks:
+  - OmnimedTool
+  position: 4,15

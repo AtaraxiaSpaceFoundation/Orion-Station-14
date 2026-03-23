@@ -1,0 +1,440 @@
+- type: technology
+  id: Parts
+  name: research-technology-parts-name
+  description: research-technology-parts-desc
+  icon:
+    sprite: Objects/Misc/stock_parts.rsi
+    state: micro_mani
+  discipline: Engineering
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - PowerCellSmall
+  - MegaCellSmall
+  - PowerCellMedium
+  - PowerCellHigh
+  - MegaCellHigh
+  - MicroManipulatorStockPart
+  - Igniter
+  - ProximitySensor
+  - RemoteSignaller
+  - TimerTrigger
+  - VoiceSignaller
+  - VoiceTrigger
+  - ProximitySignaller
+  position: 12,4
+
+- type: technology
+  id: UpgradedParts
+  name: research-technology-upgraded-parts-name
+  description: research-technology-upgraded-parts-desc
+  icon:
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: super
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Parts
+  - EnergyManipulation
+  recipeUnlocks:
+  - PowerCellSuper
+  - MegaCellSuper
+  position: 12,5
+
+- type: technology
+  id: AdvancedParts
+  name: research-technology-advanced-parts-name
+  description: research-technology-advanced-parts-desc
+  icon:
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: hyper
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - UpgradedParts
+  discountExperiments:
+  - ScanningPointsMachineryTieredScanTier2Any
+  discountExperimentCosts:
+    ScanningPointsMachineryTieredScanTier2Any: 7500
+  recipeUnlocks:
+  - PowerCellHyper
+  - MegaCellHyper
+  position: 12,6
+
+- type: technology
+  id: PartsBluespace
+  name: research-technology-parts-bluespace-name
+  description: research-technology-parts-bluespace-desc
+  icon:
+    sprite: _Orion/Objects/Power/mega_cells.rsi
+    state: bluespace
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - AdvancedParts
+  - BluespaceTravel
+  discountExperiments:
+  - ScanningPointsMachineryTieredScanTier3Any
+  discountExperimentCosts:
+    ScanningPointsMachineryTieredScanTier3Any: 10000
+  recipeUnlocks:
+  - PowerCellBluespace
+  - MegaCellBluespace
+  - PowerCellBluespaceReactor
+  position: 12,7
+
+- type: technology
+  id: PartsVortex
+  name: research-technology-parts-vortex-name
+  description: research-technology-parts-vortex-desc
+  icon:
+    sprite: _Orion/Objects/Power/power_cells.rsi
+    state: vortex
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 12000
+  technologyPrerequisites:
+  - PartsBluespace
+  - AlienTechnology
+  discountExperiments:
+  - ScanningPointsMachineryTieredScanTier3Any
+  discountExperimentCosts:
+    ScanningPointsMachineryTieredScanTier3Any: 2000
+  recipeUnlocks:
+  - PowerCellVortex
+  position: 12,8
+
+- type: technology
+  id: Telecommunications
+  name: research-technology-telecommunications-name
+  description: research-technology-telecommunications-desc
+  icon:
+    sprite: _Goobstation/Structures/Machines/comms_transmitter.rsi
+    state: base
+  discipline: Engineering
+  tier: 1
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - PartsBluespace
+  recipeUnlocks:
+  - TelecomTransmitterCircuitboard
+  - TelecomServerCircuitboard
+  position: 13,7
+
+- type: technology
+  id: Construction
+  name: research-technology-construction-name
+  description: research-technology-construction-desc
+  icon:
+    sprite: Structures/Machines/circuit_imprinter.rsi
+    state: icon
+  discipline: Engineering
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - CircuitImprinterMachineCircuitboard
+  - SolarControlComputerCircuitboard
+  - SolarTrackerElectronics
+  - PowerComputerCircuitboard
+  - AirAlarmElectronics
+  - FireAlarmElectronics
+  - DoorElectronics
+  - FirelockElectronics
+  - SprayPainter
+  - SprayPainterAmmo
+  - CableStack
+  - CableMVStack
+  - CableHVStack
+  - ClothingHeadHatWelding
+  - Welder
+  - WelderMini
+  - trayScanner
+  - Multitool
+  - Wrench
+  - Crowbar
+  - CrowbarGreen
+  - NetworkConfigurator
+  - Signaller
+  - TRayScanner
+  - UtilityBelt
+  - ClothingOuterVestTank
+  - Screwdriver
+  - Wirecutter
+  - LightBulb
+  - LightTube
+  - ClothingMaskWeldingGas
+  - SignallerAdvanced
+  - FauxTileAstroGrass
+  - FauxTileMowedAstroGrass
+  - FauxTileJungleAstroGrass
+  - FauxTileAstroIce
+  - FauxTileAstroSnow
+  - FauxTileAstroAsteroidSand
+  - ConstructionBag
+  - MailingUnitElectronics
+  - SignalTimerElectronics
+  - APCElectronics
+  - SubstationMachineCircuitboard
+  - WallmountSubstationElectronics
+  - FreezerElectronics
+  - MagazineBoxNail
+  - ToolboxMechanical
+  - SignalTrigger
+  - CondenserMachineCircuitBoard
+  - FloorGreenCircuit
+  - FloorBlueCircuit
+  - FloorRedCircuit
+  - WeaponNailgun
+  - MagazineNailgun
+  - MagazineNailgunEmpty
+  - HolopadMachineCircuitboard
+  - RoboticArmCircuitboard
+  - ConstructorCircuitboard
+  - StorageBinCircuitboard
+  - InteractorCircuitboard
+  - PlumbingPumpCircuitboard
+  - SurveillanceCameraRouterCircuitboard
+  - SurveillanceCameraMonitorCircuitboard
+  - SurveillanceWirelessCameraMonitorCircuitboard
+  - SurveillanceCameraWirelessRouterCircuitboard
+  - ComputerTelevisionCircuitboard
+  - SurveillanceWirelessCameraMovableCircuitboard
+  - SurveillanceWirelessCameraAnchoredCircuitboard
+  - ShuttleGunDusterCircuitboard
+  - ShuttleGunFriendshipCircuitboard
+  - ShuttleGunPerforatorCircuitboard
+  - ShuttleGunSvalinnMachineGunCircuitboard
+  - UniformPrinterMachineCircuitboard
+  - MassMediaCircuitboard
+  - JukeboxCircuitBoard
+  - DawInstrumentMachineCircuitboard
+  position: 11,4
+
+- type: technology
+  id: EnergyManipulation
+  name: research-technology-energy-manipulation-name
+  description: research-technology-energy-manipulation-desc
+  icon:
+    sprite: Structures/Power/smes.rsi
+    state: smes
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - Construction
+  recipeUnlocks:
+  - PowerComputerCircuitboard
+  - SMESMachineCircuitboard
+  - EmitterCircuitboard
+  - TeslaGroundingRod
+  - TeslaCoilCircuitboard
+  - CellRechargerCircuitboard
+  - WeaponCapacitorRechargerCircuitboard
+  - InducerScientific
+  - InducerEngineering
+  - ClothingEyesWelding
+  - GeigerCounter
+  - RadiationCollectorCircuitboard
+  position: 10,4
+
+- type: technology
+  id: ShuttleEngineering
+  name: research-technology-shuttle-engineering-name
+  description: research-technology-shuttle-engineering-desc
+  icon:
+    sprite: Structures/Machines/gravity_generator_mini.rsi
+    state: on
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  - Science
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - EnergyManipulation
+  - AppliedBluespace
+  recipeUnlocks:
+  - ShuttleConsoleCircuitboard
+  - ShuttleGunKineticCircuitboard
+  - ThrusterMachineCircuitboard
+  - GyroscopeMachineCircuitboard
+  - MiniGravityGeneratorCircuitboard
+  - MachineFTLDriveCircuitboard
+  position: 13,4
+
+- type: technology
+  id: Holographics
+  name: research-technology-holographics-name
+  description: research-technology-holographics-desc
+  icon:
+    sprite: Objects/Devices/Holoprojectors/custodial.rsi
+    state: icon
+  discipline: Engineering
+  tier: 2
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - EnergyManipulation
+  recipeUnlocks:
+  - HolofanProjector
+  - HoloprojectorSecurity
+  - Holoprojector
+  - HoloprojectorField
+  position: 10,3
+
+- type: technology
+  id: HUD
+  name: research-technology-hud-name
+  description: research-technology-hud-desc
+  icon:
+    sprite: _Shitmed/Mobs/Species/Misc/Cybernetics/organs.rsi
+    state: eyes-diagnostic
+  discipline: Engineering
+  tier: 3
+  announceChannels:
+  - Engineering
+  - Security
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - Holographics
+  - CyberImplants
+  recipeUnlocks:
+  - ClothingEyesHudMedical
+  - ClothingEyesHudDiagnostic
+  - ClothingEyesHudSecurity
+  - MedicalCyberneticEyes
+  - DiagnosticCyberneticEyes
+  - SecurityCyberneticEyes
+  position: 10,1
+
+- type: technology
+  id: NightVision
+  name: research-technology-night-vision-name
+  description: research-technology-night-vision-desc
+  icon:
+    sprite: _White/Clothing/Eyes/Goggles/nightvision.rsi
+    state: icon
+  discipline: Engineering
+  tier: 4
+  announceChannels:
+  - Engineering
+  - Security
+  - Science
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - HUD
+  recipeUnlocks:
+  # TODO: Departament variations
+  - ClothingEyesNightVisionGoggles
+  position: 11,0
+
+- type: technology
+  id: LocalizedMagnetism
+  name: research-technology-localized-magnetism-name
+  description: research-technology-localized-magnetism-desc
+  icon:
+    sprite: Clothing/Shoes/Boots/magboots.rsi
+    state: icon
+  discipline: Engineering
+  tier: 4
+  announceChannels:
+  - Engineering
+  - Science
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - ExperimentalTools
+  recipeUnlocks:
+  - ClothingShoesBootsMag
+  - ClothingShoesBootsMagSci
+  - ClothingShoesBootsMoon
+  - ClothingShoesBootsJump
+  position: 14,0
+
+- type: technology
+  id: UpgradeKits
+  name: research-technology-upgrade-kits-name
+  description: research-technology-upgrade-kits-desc
+  icon:
+    sprite: _DV/Objects/Tools/lathe_upgrade_kit.rsi
+    state: icon
+  discipline: Engineering
+  tier: 4
+  announceChannels:
+  - Engineering
+  - Science
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - AdvancedParts
+  recipeUnlocks:
+  - LatheUpgradeKitHyper
+  - LatheUpgradeKitCryo
+  - AutodocUpgradeKitBluespace
+  - UpgradeKitAutomation
+  position: 11,6
+
+- type: technology
+  id: EnergyManipulationAdvanced
+  name: research-technology-energy-manipulation-advanced-name
+  description: research-technology-energy-manipulation-advanced-desc
+  icon:
+    sprite: Structures/Power/turbo_recharger.rsi
+    state: empty
+  discipline: Engineering
+  tier: 1
+  announceChannels:
+  - Engineering
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - PartsBluespace
+  recipeUnlocks:
+  - TurboItemRechargerCircuitboard
+  - PowerCageRechargerCircuitboard
+  position: 13,3

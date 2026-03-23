@@ -30,6 +30,9 @@
   - MineralScannerEmpty
   - AdvancedMineralScannerEmpty
   - OreBagOfHolding
+  # Orion-Start
+  - MarkerBeacon
+  # Orion-End
 
 - type: latheRecipePack
   id: CargoBoards
@@ -37,3 +40,8 @@
   - OreProcessorIndustrialMachineCircuitboard
   - CargoTelepadMachineCircuitboard
   #- ShuttleGunKineticCircuitboard - Goobstation - Moved to MiningBoards
+  # Orion-Start
+  - CargoRequestComputerCircuitboard
+  - CargoBountyComputerCircuitboard
+  - MaterialSiloMachineCircuitboard
+  # Orion-End
