@@ -9,3 +9,6 @@
   - type: Sprite
     sprite: _Orion/Objects/Specific/Medical/brigmedic_handheldcrewmonitor.rsi
     state: scanner
+    layers:
+    - state: scanner-light
+      shader: unshaded

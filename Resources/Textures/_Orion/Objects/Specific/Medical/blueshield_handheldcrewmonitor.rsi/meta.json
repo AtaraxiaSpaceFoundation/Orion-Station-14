@@ -8,8 +8,10 @@
     "copyright": "made by WsWiss. Taken from ADT at commit https://github.com/AdventureTimeSS14/space_station_ADT/commit/7d0c21fb2717598819b9c67953f67407023172a5. Resprite by UmbiMax",
     "states": [
         {
-            "name": "scanner",
-            "directions": 1,
+            "name": "scanner"
+        },
+        {
+            "name": "scanner-light",
             "delays": [
                 [
                     0.4,
@@ -26,8 +28,7 @@
             "directions": 4
         },
         {
-            "name": "icon",
-            "directions": 1
+            "name": "icon"
         }
     ]
 }
