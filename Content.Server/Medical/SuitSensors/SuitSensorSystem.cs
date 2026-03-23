@@ -506,18 +506,7 @@ public sealed class SuitSensorSystem : EntitySystem
 
         // finally, form suit sensor status
         var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(uid), userName, userJob, userJobIcon, userJobDepartments, sensor.Mode); // Orion-Edit
-        switch (sensor.Mode)
-        {
-            case SuitSensorMode.SensorOff: // Orion: SensorOff treated as SensorCords (full data); client filters it out when not emagged
-            case SuitSensorMode.SensorBinary:
-                status.IsAlive = isAlive;
-                break;
-            case SuitSensorMode.SensorVitals:
-                status.IsAlive = isAlive;
-                status.TotalDamage = totalDamage;
-                status.TotalDamageThreshold = totalDamageThreshold;
-                break;
-            case SuitSensorMode.SensorCords:
+        // Orion-Edit-Start: always store full data for all modes; mode-based projection is done server-side in UpdateUserInterface before sending to client
                 status.IsAlive = isAlive;
                 status.TotalDamage = totalDamage;
                 status.TotalDamageThreshold = totalDamageThreshold;
@@ -542,8 +531,7 @@ public sealed class SuitSensorSystem : EntitySystem
 
                 status.Coordinates = GetNetCoordinates(coordinates);
                 status.IsCommandTracker = sensor.CommandTracker; //Goob station
-                break;
-        }
+        // Orion-Edit-End
 
         return status;
     }

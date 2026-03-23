@@ -171,12 +171,6 @@ public sealed partial class CrewMonitoringWindow : FancyWindow
         }
 
         NoServerLabel.Visible = false;
-        // Orion-Start
-        if (!isEmagged)
-        {
-            sensors = sensors.Where(s => s.Mode != SuitSensorMode.SensorOff).ToList();
-        }
-        // Orion-End
 
         // Collect one status per user, using the sensor with the most data available.
         Dictionary<NetEntity, SuitSensorStatus> uniqueSensorsMap = new();
