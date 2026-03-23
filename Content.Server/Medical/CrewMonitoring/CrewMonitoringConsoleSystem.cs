@@ -227,6 +227,37 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 .ToList();
         }
         // Orion-End
+        // Orion-Edit-Start: For Emag
+
+        var effectiveIsEmagged = component.IsEmagged || component.EmagExpireTime.HasValue;
+        if (!effectiveIsEmagged)
+        {
+            allSensors = allSensors
+                .Where(s => s.Mode != SuitSensorMode.SensorOff)
+                .Select(s =>
+                {
+                    var p = new SuitSensorStatus(s.OwnerUid, s.SuitSensorUid, s.Name, s.Job, s.JobIcon, s.JobDepartments, s.Mode)
+                    {
+                        IsAlive = s.IsAlive,
+                        IsCommandTracker = s.IsCommandTracker,
+                        Timestamp = s.Timestamp,
+                    };
+                    switch (s.Mode)
+                    {
+                        case SuitSensorMode.SensorVitals:
+                            p.TotalDamage = s.TotalDamage;
+                            p.TotalDamageThreshold = s.TotalDamageThreshold;
+                            break;
+                        case SuitSensorMode.SensorCords:
+                            p.TotalDamage = s.TotalDamage;
+                            p.TotalDamageThreshold = s.TotalDamageThreshold;
+                            p.Coordinates = s.Coordinates;
+                            break;
+                    }
+                    return p;
+                })
+                .ToList();
+        }
         // GoobStation - Start
         var isCommandOnly = HasComp<CrewMonitorScanningComponent>(uid);
 
@@ -236,11 +267,6 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 ? s.IsCommandTracker
                 : !s.IsCommandTracker)
             .ToList();
-        // Orion-Edit-End
-        // Orion-Edit-Start: For Emag
-//        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, component.IsEmagged));
-
-        var effectiveIsEmagged = component.IsEmagged || component.EmagExpireTime.HasValue;
         _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(filteredSensors, effectiveIsEmagged));
         // Orion-Edit-End
         // GoobStation - End
