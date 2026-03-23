@@ -72,11 +72,30 @@ public sealed class GeneratedParallaxCache : IPostInjectInit
 
             // If we're still loading, cancel the active load.
             datum.CancellationSource.Cancel();
-            datum.CancellationSource.Dispose(); // Orion
+            // Orion-Start
+            _ = DisposeTextureAfterCompletion(datum.LoadTask);
+            datum.CancellationSource.Dispose();
+            // Orion-End
 
             _data.Remove(id);
         }
     }
+
+    // Orion-Start
+    private static async Task DisposeTextureAfterCompletion(Task<Texture> loadTask)
+    {
+        try
+        {
+            var texture = await loadTask;
+            if (!ReferenceEquals(texture, Texture.Transparent) && texture is IDisposable disposable)
+                disposable.Dispose();
+        }
+        catch
+        {
+            // Ignore cancellations and load failures 🥹
+        }
+    }
+    // Orion-End
 
     private async Task<Texture> LoadTask(string id, ResPath configPath, CancellationToken cancel)
     {

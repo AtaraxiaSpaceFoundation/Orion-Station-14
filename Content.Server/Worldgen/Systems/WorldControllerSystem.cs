@@ -9,7 +9,6 @@
 //
 // SPDX-License-Identifier: MIT
 
-using System.Linq;
 using Content.Server.Worldgen.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Mind.Components;
@@ -95,8 +94,9 @@ public sealed class WorldControllerSystem : EntitySystem
         RaiseLocalEvent(chunk.Map, ref ev);
         RaiseLocalEvent(uid, ref ev);
         // Orion-Start
-        ReturnLoaderList(component.Loaders);
+        var oldLoaders = component.Loaders;
         component.Loaders = null;
+        ReturnLoaderList(oldLoaders);
         // Orion-End
         //_sawmill.Debug($"Unloaded chunk {ToPrettyString(uid)} at {coords}");
     }
@@ -109,7 +109,12 @@ public sealed class WorldControllerSystem : EntitySystem
         var controllerEnum = EntityQueryEnumerator<WorldControllerComponent>();
         while (controllerEnum.MoveNext(out var uid, out _))
         {
-            _chunksToLoad[uid] = new Dictionary<Vector2i, List<EntityUid>>(); // Orion-Edit
+            // Orion-Edit-Start
+            if (_chunksToLoad.TryGetValue(uid, out var chunks))
+                chunks.Clear();
+            else
+                _chunksToLoad[uid] = new Dictionary<Vector2i, List<EntityUid>>();
+            // Orion-Edit-End
         }
 
         if (_chunksToLoad.Count == 0) // Orion-Edit
@@ -238,7 +243,11 @@ public sealed class WorldControllerSystem : EntitySystem
                 if (c is not null)
                 {
                     if (c.Loaders != null && !ReferenceEquals(c.Loaders, loaders))
-                        ReturnLoaderList(c.Loaders);
+                    {
+                        var oldLoaders = c.Loaders;
+                        c.Loaders = null;
+                        ReturnLoaderList(oldLoaders);
+                    }
 
                     c.Loaders = loaders;
                 }
@@ -256,6 +265,12 @@ public sealed class WorldControllerSystem : EntitySystem
     // Orion-Start
     private void ClearChunkLoadState()
     {
+        var loadedEnum = EntityQueryEnumerator<LoadedChunkComponent>();
+        while (loadedEnum.MoveNext(out _, out var loaded))
+        {
+            loaded.Loaders = null;
+        }
+
         foreach (var chunks in _chunksToLoad.Values)
         {
             foreach (var loaders in chunks.Values)
@@ -266,8 +281,6 @@ public sealed class WorldControllerSystem : EntitySystem
 
             chunks.Clear();
         }
-
-        _chunksToLoad.Clear();
     }
 
     private List<EntityUid> RentLoaderList()

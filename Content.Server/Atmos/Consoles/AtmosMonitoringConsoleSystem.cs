@@ -142,7 +142,7 @@ public sealed class AtmosMonitoringConsoleSystem : SharedAtmosMonitoringConsoleS
             var query = AllEntityQuery<AtmosMonitoringConsoleComponent, TransformComponent>();
             while (query.MoveNext(out var ent, out var entConsole, out var entXform))
             {
-                if (entXform?.GridUid == null)
+                if (entXform?.GridUid == null || !_userInterfaceSystem.IsUiOpen(ent, AtmosMonitoringConsoleUiKey.Key)) // Orion-Edit
                     continue;
 
                 // Orion-Start

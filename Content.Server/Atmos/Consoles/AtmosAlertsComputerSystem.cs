@@ -132,11 +132,35 @@ public sealed class AtmosAlertsComputerSystem : SharedAtmosAlertsComputerSystem
         if (!TryComp<NavMapComponent>(xform.GridUid, out var navMap))
             return;
 
+        // Orion-Start
+        var netEntity = GetNetEntity(uid);
+
+        if (!isAdding)
+        {
+            UpdateTrackedDevice(uid, component, gridUid.Value, false);
+
+            if (_consolesByGrid.TryGetValue(gridUid.Value, out var trackedConsoles))
+            {
+                foreach (var ent in trackedConsoles)
+                {
+                    if (!TryComp(ent, out AtmosAlertsComputerComponent? entConsole))
+                        continue;
+
+                    entConsole.AtmosDevices.RemoveWhere(x => x.NetEntity == netEntity);
+                    Dirty(ent, entConsole);
+                }
+            }
+
+            _navMapSystem.RemoveNavMapRegion(gridUid.Value, navMap, netEntity);
+            return;
+        }
+        // Orion-End
+
         if (!TryGetAtmosDeviceNavMapData(uid, component, xform, out var data))
             return;
 
-        var netEntity = GetNetEntity(uid);
-        UpdateTrackedDevice(uid, component, gridUid.Value, isAdding); // Orion
+//        var netEntity = GetNetEntity(uid); // Orion-Edit
+        UpdateTrackedDevice(uid, component, gridUid.Value, true); // Orion
 
         // Orion-Edit-Start
         if (!_consolesByGrid.TryGetValue(gridUid.Value, out var consoles))
@@ -148,6 +172,7 @@ public sealed class AtmosAlertsComputerSystem : SharedAtmosAlertsComputerSystem
             if (!TryComp(ent, out AtmosAlertsComputerComponent? entConsole)) // Orion-Edit
                 continue;
 
+/* // Orion-Edit
             if (isAdding)
             {
                 entConsole.AtmosDevices.Add(data.Value);
@@ -158,7 +183,9 @@ public sealed class AtmosAlertsComputerSystem : SharedAtmosAlertsComputerSystem
                 entConsole.AtmosDevices.RemoveWhere(x => x.NetEntity == netEntity);
                 _navMapSystem.RemoveNavMapRegion(gridUid.Value, navMap, netEntity);
             }
+*/
 
+            entConsole.AtmosDevices.Add(data.Value); // Orion
             Dirty(ent, entConsole);
         }
     }
@@ -269,7 +296,7 @@ public sealed class AtmosAlertsComputerSystem : SharedAtmosAlertsComputerSystem
                 continue;
             // Orion-Edit-End
 
-            if (!entXform.Anchored)
+            if (!entXform.Anchored || entXform.GridUid != gridUid) // Orion-Edit
                 continue;
 
             if (entDevice.Group != group)

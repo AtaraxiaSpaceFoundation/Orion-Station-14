@@ -96,6 +96,7 @@ namespace Content.Shared.Gravity
         {
             base.Initialize();
             SubscribeLocalEvent<GridInitializeEvent>(OnGridInit);
+            SubscribeLocalEvent<GridRemovalEvent>(OnGridRemoved); // Orion
             SubscribeLocalEvent<AlertSyncEvent>(OnAlertsSync);
             // Orion-Start
             SubscribeLocalEvent<AlertsComponent, ComponentStartup>(OnAlertsStartup);
@@ -175,7 +176,7 @@ namespace Content.Shared.Gravity
 
         private void OnAlertsShutdown(EntityUid uid, AlertsComponent component, ComponentShutdown args)
         {
-            UntrackAlertsEntity(uid, Transform(uid).GridUid);
+            UntrackAlertsEntity(uid, component.TrackedGridUid);
         }
         // Orion-End
 
@@ -209,9 +210,18 @@ namespace Content.Shared.Gravity
         }
 
         // Orion-Start
+        private void OnGridRemoved(GridRemovalEvent ev)
+        {
+            _alertsByGrid.Remove(ev.EntityUid);
+        }
+
         private void TrackAlertsEntity(EntityUid uid)
         {
+            if (!TryComp<AlertsComponent>(uid, out var alerts))
+                return;
+
             var gridUid = Transform(uid).GridUid;
+            alerts.TrackedGridUid = gridUid;
             if (gridUid == null)
                 return;
 
@@ -226,6 +236,9 @@ namespace Content.Shared.Gravity
 
         private void UntrackAlertsEntity(EntityUid uid, EntityUid? gridUid)
         {
+            if (TryComp<AlertsComponent>(uid, out var alerts) && alerts.TrackedGridUid == gridUid)
+                alerts.TrackedGridUid = null;
+
             if (gridUid == null || !_alertsByGrid.TryGetValue(gridUid.Value, out var entities))
                 return;
 

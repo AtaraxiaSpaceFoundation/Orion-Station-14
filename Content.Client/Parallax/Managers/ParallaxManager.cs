@@ -57,8 +57,13 @@ public sealed class ParallaxManager : IParallaxManager
         {
             _sawmill.Debug($"Cancelling loading parallax {name}");
             loading.Cancel();
-            _loadingParallaxes.Remove(name, out _);
-            loading.Dispose(); // Orion
+            // Orion-Edit-Start
+            if (!_loadingParallaxes.TryGetValue(name, out var current) || !ReferenceEquals(current, loading))
+                return;
+
+            _loadingParallaxes.Remove(name);
+            loading.Dispose();
+            // Orion-Edit-End
             return;
         }
 
@@ -146,8 +151,11 @@ public sealed class ParallaxManager : IParallaxManager
         // Orion-Start
         finally
         {
-            if (_loadingParallaxes.Remove(name, out var loading))
-                loading.Dispose();
+            if (_loadingParallaxes.TryGetValue(name, out var current) && ReferenceEquals(current, token))
+            {
+                _loadingParallaxes.Remove(name);
+                current.Dispose();
+            }
         }
         // Orion-End
     }

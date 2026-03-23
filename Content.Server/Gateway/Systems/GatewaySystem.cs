@@ -41,8 +41,6 @@ public sealed class GatewaySystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly TagSystem _tag = default!; // Goobstation
 
-    private readonly List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)> _gatewaySnapshot = new(); // Orion
-
     public override void Initialize()
     {
         base.Initialize();
@@ -82,15 +80,15 @@ public sealed class GatewaySystem : EntitySystem
     public void UpdateAllGateways()
     {
         // Orion-Edit-Start
-        BuildGatewaySnapshot();
-        foreach (var (uid, comp, xform) in _gatewaySnapshot)
+        var snapshot = BuildGatewaySnapshot();
+        foreach (var (uid, comp, xform) in snapshot)
         {
-            UpdateUserInterface(uid, comp, xform, _gatewaySnapshot);
+            UpdateUserInterface(uid, comp, xform, snapshot);
         }
         // Orion-Edit-End
     }
 
-    private void UpdateUserInterface(EntityUid uid, GatewayComponent comp, TransformComponent? xform = null, List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)>? snapshot = null) // Orion-Edit
+    private void UpdateUserInterface(EntityUid uid, GatewayComponent comp, TransformComponent? xform = null, IReadOnlyList<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)>? snapshot = null) // Orion-Edit
     {
         if (!Resolve(uid, ref xform))
             return;
@@ -154,17 +152,17 @@ public sealed class GatewaySystem : EntitySystem
     }
 
     // Orion-Start
-    private List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)> BuildGatewaySnapshot()
+    private IReadOnlyList<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)> BuildGatewaySnapshot()
     {
-        _gatewaySnapshot.Clear();
+        var snapshot = new List<(EntityUid Uid, GatewayComponent Comp, TransformComponent Xform)>();
 
         var query = AllEntityQuery<GatewayComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var comp, out var xform))
         {
-            _gatewaySnapshot.Add((uid, comp, xform));
+            snapshot.Add((uid, comp, xform));
         }
 
-        return _gatewaySnapshot;
+        return snapshot;
     }
     // Orion-End
 
