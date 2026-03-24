@@ -5,3 +5,5 @@
 
 jetpack-downed = Реактивный ранец отключается
 jetpack-is-down = Нельзя использовать реактивный ранец лёжа на земле
+jetpack-inhand-fly-away = Ваш джетпак улетает!
+jetpack-inhand-arm-torn = Ваш джетпак отрывает вам руку!

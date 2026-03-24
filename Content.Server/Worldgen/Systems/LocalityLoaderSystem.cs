@@ -37,6 +37,10 @@ public sealed class LocalityLoaderSystem : BaseWorldSystem
             }
 
             var coords = GetChunkCoords(uid, xform);
+            // Orion-Start
+            var position = _xformSys.GetWorldPosition(xform);
+            var loadingDistanceSquared = loadable.LoadingDistance * loadable.LoadingDistance;
+            // Orion-End
             var done = false;
             for (var i = -1; i < 2 && !done; i++)
             {
@@ -51,7 +55,7 @@ public sealed class LocalityLoaderSystem : BaseWorldSystem
                         if (!xformQuery.TryGetComponent(loader, out var loaderXform))
                             continue;
 
-                        if ((_xformSys.GetWorldPosition(loaderXform) - _xformSys.GetWorldPosition(xform)).Length() > loadable.LoadingDistance)
+                        if ((_xformSys.GetWorldPosition(loaderXform) - position).LengthSquared() > loadingDistanceSquared) // Orion-Edit
                             continue;
 
                         RaiseLocalEvent(uid, new LocalStructureLoadedEvent());

@@ -110,6 +110,56 @@ public sealed partial class CCVars
         CVarDef.Create("protection.emote_clear_interval", 20f, CVar.SERVERONLY);
     #endregion
 
+    #region Admin Action Protection
+    /// <summary>
+    /// Protect the server from suspiciously aggressive admin actions.
+    /// </summary>
+    public static readonly CVarDef<bool> AdminActionProtectionEnabled =
+        CVarDef.Create("protection.admin_action_enabled", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Number of bans in the configured window that triggers an alert.
+    /// </summary>
+    public static readonly CVarDef<int> AdminActionProtectionBanThreshold =
+        CVarDef.Create("protection.admin_action_ban_threshold", 5, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Ban action window in seconds for sabotage detection.
+    /// </summary>
+    public static readonly CVarDef<float> AdminActionProtectionBanWindowSeconds =
+        CVarDef.Create("protection.admin_action_ban_window_seconds", 220f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Number of permission-removal actions in the configured window that triggers an alert.
+    /// </summary>
+    public static readonly CVarDef<int> AdminActionProtectionPermissionThreshold =
+        CVarDef.Create("protection.admin_action_permission_threshold", 3, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Permission-removal action window in seconds for sabotage detection.
+    /// </summary>
+    public static readonly CVarDef<float> AdminActionProtectionPermissionWindowSeconds =
+        CVarDef.Create("protection.admin_action_permission_window_seconds", 120f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Cooldown in seconds between repeated sabotage alerts for the same admin and action type.
+    /// </summary>
+    public static readonly CVarDef<float> AdminActionProtectionAlertCooldownSeconds =
+        CVarDef.Create("protection.admin_action_alert_cooldown_seconds", 180f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Automatically de-admin a suspected sabotage admin.
+    /// </summary>
+    public static readonly CVarDef<bool> AdminActionProtectionAutoDeAdminEnabled =
+        CVarDef.Create("protection.admin_action_auto_deadmin", true, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Automatically ban a suspected sabotage admin.
+    /// </summary>
+    public static readonly CVarDef<bool> AdminActionProtectionAutoBanEnabled =
+        CVarDef.Create("protection.admin_action_auto_ban", false, CVar.SERVERONLY);
+    #endregion
+
     /*
      * Server Protection - Settings
      */
@@ -125,4 +175,10 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<int> EmoteProtectionBanDuration =
         CVarDef.Create("protection.emote_ban_duration", 0, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Duration of the ban in seconds for admin action violations. Set to 0 for permanent ban.
+    /// </summary>
+    public static readonly CVarDef<int> AdminActionProtectionAutoBanMinutes =
+        CVarDef.Create("protection.admin_action_auto_ban_minutes", 0, CVar.SERVERONLY);
 }

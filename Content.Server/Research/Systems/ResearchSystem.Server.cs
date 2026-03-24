@@ -13,6 +13,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared._Orion.Research;
 using Content.Shared.Examine;
 using Content.Shared.Research.Components;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Research.Systems;
 
@@ -45,6 +46,19 @@ public sealed partial class ResearchSystem
         AssignServerName(component);
         LogNetworkEvent(uid, "network", Loc.GetString("research-netlog-server-joined", ("server", component.ServerName)));
         Dirty(uid, component);
+        Timer.Spawn(0, () => SyncServerClients(uid));
+    }
+
+    private void SyncServerClients(EntityUid uid)
+    {
+        if (!TryComp<ResearchServerComponent>(uid, out var server))
+            return;
+
+        foreach (var client in server.Clients)
+        {
+            if (TryComp<ResearchClientComponent>(client, out var clientComponent))
+                SyncClientWithServer(client, clientComponent: clientComponent);
+        }
     }
     // Orion-End
 

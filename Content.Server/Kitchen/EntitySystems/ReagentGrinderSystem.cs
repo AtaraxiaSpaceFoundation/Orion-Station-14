@@ -120,6 +120,8 @@ namespace Content.Server.Kitchen.EntitySystems
         [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
         [Dependency] private readonly JitteringSystem _jitter = default!;
 
+        private readonly List<EntityUid> _containedEntities = new(); // Orion
+
         public override void Initialize()
         {
             base.Initialize();
@@ -165,7 +167,12 @@ namespace Content.Server.Kitchen.EntitySystems
                 if (outputContainer is null || !_solutionContainersSystem.TryGetFitsInDispenser(outputContainer.Value, out var containerSoln, out var containerSolution))
                     continue;
 
-                foreach (var item in inputContainer.ContainedEntities.ToList())
+                // Orion-Start
+                _containedEntities.Clear();
+                _containedEntities.AddRange(inputContainer.ContainedEntities);
+                // Orion-End
+
+                foreach (var item in _containedEntities) // Orion-Edit
                 {
                     var solution = active.Program switch
                     {
@@ -207,6 +214,8 @@ namespace Content.Server.Kitchen.EntitySystems
 
                     _solutionContainersSystem.TryAddSolution(containerSoln.Value, solution);
                 }
+
+                _containedEntities.Clear(); // Orion
 
                 _userInterfaceSystem.ServerSendUiMessage(uid, ReagentGrinderUiKey.Key,
                     new ReagentGrinderWorkCompleteMessage());

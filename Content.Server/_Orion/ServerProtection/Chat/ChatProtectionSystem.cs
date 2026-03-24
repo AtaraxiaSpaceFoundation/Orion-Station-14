@@ -20,6 +20,7 @@ public sealed class ChatProtectionSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ISharedAdminManager _admin = default!;
     [Dependency] private readonly ServerProtectionPunishmentSystem _punishment = default!;
+    [Dependency] private readonly ServerProtectionAuditManager _toggleAudit = default!;
 
     private ISawmill _log = default!;
     private readonly HashSet<string> _icWords = new();
@@ -32,6 +33,7 @@ public sealed class ChatProtectionSystem : EntitySystem
     private bool _deleteMessagesEnabled;
     private int _banDuration;
     private bool _cacheDone;
+    private bool _initialized;
 
     public override void Initialize()
     {
@@ -40,12 +42,32 @@ public sealed class ChatProtectionSystem : EntitySystem
         _log = Logger.GetSawmill("serverprotection.chat_protection");
         _proto.PrototypesReloaded += OnPrototypesReloaded;
 
-        _cfg.OnValueChanged(CCVars.ChatProtectionEnabled, v => _protectionEnabled = v, true);
+        _cfg.OnValueChanged(CCVars.ChatProtectionEnabled, OnProtectionEnabledChanged, true);
         _cfg.OnValueChanged(CCVars.ChatProtectionEraseEnabled, v => _eraseEnabled = v, true);
         _cfg.OnValueChanged(CCVars.ChatProtectionBanEnabled, v => _banEnabled = v, true);
         _cfg.OnValueChanged(CCVars.ChatProtectionKickEnabled, v => _kickEnabled = v, true);
         _cfg.OnValueChanged(CCVars.ChatProtectionDeleteMessages, v => _deleteMessagesEnabled = v, true);
         _cfg.OnValueChanged(CCVars.ChatProtectionBanDuration, v => _banDuration = v, true);
+
+        _initialized = true;
+    }
+
+    private void OnProtectionEnabledChanged(bool enabled)
+    {
+        var old = _protectionEnabled;
+        _protectionEnabled = enabled;
+
+        if (!_initialized || old == enabled)
+            return;
+
+        var actor = _toggleAudit.TryGetRecentActor(CCVars.ChatProtectionEnabled.Name, TimeSpan.FromSeconds(5), out var knownActor)
+            ? knownActor
+            : "unknown";
+
+        var state = enabled ? "включена" : "ВЫКЛЮЧЕНА";
+        var message = $"[ServerProtection] Система ChatProtection была {state}. Переключил: {actor}.";
+        _punishment.SendAdminAlert(message);
+        _log.Info(message);
     }
 
     private void CachePrototypes()
@@ -75,6 +97,7 @@ public sealed class ChatProtectionSystem : EntitySystem
             }
         }
 
+        _cacheDone = true;
         _log.Info($"Кэшировано {_icWords.Count} IC и {_oocWords.Count} OOC запрещённых слов.");
     }
 
@@ -103,8 +126,6 @@ public sealed class ChatProtectionSystem : EntitySystem
             return true;
         }
 
-        _cacheDone = true;
-
         return false;
     }
 
@@ -124,8 +145,6 @@ public sealed class ChatProtectionSystem : EntitySystem
             HandleViolation(session, word, "OOC");
             return true;
         }
-
-        _cacheDone = true;
 
         return false;
     }

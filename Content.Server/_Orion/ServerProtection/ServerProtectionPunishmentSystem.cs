@@ -23,6 +23,7 @@ using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 
 namespace Content.Server._Orion.ServerProtection;
@@ -35,6 +36,7 @@ public sealed class ServerProtectionPunishmentSystem : EntitySystem
 {
     [Dependency] private readonly IBanManager _banManager = default!;
     [Dependency] private readonly IPlayerLocator _locator = default!;
+    [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly GhostKickManager _ghostKickManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -96,6 +98,51 @@ public sealed class ServerProtectionPunishmentSystem : EntitySystem
         );
 
         _log.Info($"{player.Name} был забанен: {reason}");
+    }
+
+    /// <summary>
+    /// Applies a ban to a player by user id.
+    /// </summary>
+    public async void ApplyBan(NetUserId userId, string? username, string reason, int durationMinutes = 0)
+    {
+        (IPAddress, int)? targetIP = null;
+        ImmutableTypedHwid? targetHWid = null;
+
+        var sessionData = await _locator.LookupIdAsync(userId);
+        if (sessionData != null)
+        {
+            if (sessionData.LastAddress is not null)
+            {
+                var prefix = sessionData.LastAddress.AddressFamily == AddressFamily.InterNetwork ? 32 : 64;
+                targetIP = (sessionData.LastAddress, prefix);
+            }
+
+            targetHWid = sessionData.LastHWId;
+        }
+
+        uint? expires = durationMinutes <= 0 ? null : (uint) durationMinutes;
+
+        _banManager.CreateServerBan(
+            userId,
+            username,
+            null,
+            targetIP,
+            targetHWid,
+            expires,
+            NoteSeverity.High,
+            reason
+        );
+
+        _log.Info($"{username ?? userId.ToString()} был забанен: {reason}");
+    }
+
+    /// <summary>
+    /// De-admins a player session.
+    /// </summary>
+    public void DeAdmin(ICommonSession player, string reason)
+    {
+        _adminManager.DeAdmin(player);
+        _log.Warning($"{player.Name} был deadmin: {reason}");
     }
 
     /// <summary>
