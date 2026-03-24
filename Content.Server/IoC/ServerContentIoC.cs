@@ -165,6 +165,7 @@
 
 using Content.Server._Goobstation.Antag;
 using Content.Server._Orion.ServerProtection;
+using Content.Server._Orion.ServerProtection.Administration;
 using Content.Server._Orion.ServerProtection.Chat;
 using Content.Server._Orion.ServerProtection.Emoting;
 using Content.Server._RMC14.LinkAccount;
@@ -250,9 +251,11 @@ namespace Content.Server.IoC
             IoCManager.Register<LastRolledAntagManager>(); // Goobstation - antag pity
             IoCManager.Register<LinkAccountManager>(); // RMC - Patreon
             // Orion-Start
+            IoCManager.Register<ServerProtectionAuditManager>();
             IoCManager.Register<ServerProtectionPunishmentSystem>();
             IoCManager.Register<ChatProtectionSystem>();
             IoCManager.Register<EmoteProtectionSystem>();
+            IoCManager.Register<AdminActionProtectionSystem>();
             // Orion-End
         }
     }

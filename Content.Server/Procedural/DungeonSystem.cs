@@ -59,6 +59,7 @@ using Content.Shared.Physics;
 using Content.Shared.Procedural;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
@@ -119,6 +120,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
     {
         base.Update(frameTime);
         _dungeonJobQueue.Process();
+        CleanupCompletedJobs(); // Orion
     }
 
     private void OnRoundCleanup(RoundRestartCleanupEvent ev)
@@ -131,6 +133,20 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
 
         _dungeonJobs.Clear();
     }
+
+    // Orion-Start
+    private void CleanupCompletedJobs()
+    {
+        foreach (var (job, token) in _dungeonJobs.ToArray())
+        {
+            if (job.Status != JobStatus.Finished)
+                continue;
+
+            token.Dispose();
+            _dungeonJobs.Remove(job);
+        }
+    }
+    // Orion-End
 
     private void OnRoundStart(RoundStartingEvent ev)
     {

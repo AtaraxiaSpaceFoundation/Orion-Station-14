@@ -25,6 +25,8 @@ public sealed partial class AlertsComponent : Component
     [ViewVariables]
     public Dictionary<AlertKey, AlertState> Alerts = new();
 
+    public EntityUid? TrackedGridUid; // Orion
+
     public override bool SendOnlyToOwner => true;
 }
 

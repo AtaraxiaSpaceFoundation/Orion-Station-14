@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Made by Nimfar11 (GitHub) for Space Station 14 & edited by github:Morb0",
+    "copyright": "Made by Nimfar11 (GitHub) for Space Station 14 & edited by github:Morb0 & re edit by superlowfpss",
     "size": {
         "x": 32,
         "y": 32
@@ -12,8 +12,17 @@
         },
         {
             "name": "closed",
-            "directions": 1,
+            "directions": 4,
             "delays": [
+                [
+                    1.0
+                ],
+                [
+                    1.0
+                ],
+                [
+                    1.0
+                ],
                 [
                     1.0
                 ]
@@ -21,22 +30,35 @@
         },
         {
             "name": "closing",
-            "directions": 1,
+            "directions": 4,
             "delays": [
                 [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
+                    0.2,0.2,0.2,0.2,0.2,0.2
+                ],
+                [
+                    0.2,0.2,0.2,0.2,0.2,0.2
+                ],
+                [
+                    0.2,0.2,0.2,0.2,0.2,0.2
+                ],
+                [
+                    0.2,0.2,0.2,0.2,0.2,0.2
                 ]
             ]
         },
         {
             "name": "open",
-            "directions": 1,
+            "directions": 4,
             "delays": [
+                [
+                    1.0
+                ],
+                [
+                    1.0
+                ],
+                [
+                    1.0
+                ],
                 [
                     1.0
                 ]
@@ -44,15 +66,19 @@
         },
         {
             "name": "opening",
-            "directions": 1,
+            "directions": 4,
             "delays": [
                 [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
+                    0.2,0.2,0.2,0.2,0.2,0.2
+                ],
+                [
+                    0.2,0.2,0.2,0.2,0.2,0.2
+                ],
+                [
+                    0.2,0.2,0.2,0.2,0.2,0.2
+                ],
+                [
+                    0.2,0.2,0.2,0.2,0.2,0.2
                 ]
             ]
         }
