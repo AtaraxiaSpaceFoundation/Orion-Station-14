@@ -186,8 +186,8 @@ namespace Content.Shared.Gravity
             var oldGrid = args.OldParent;
             if (oldGrid != null)
             {
-                var oldParentXform = Transform(oldGrid.Value);
-                oldGrid = oldParentXform.GridUid ?? oldGrid;
+                if (TryComp<TransformComponent>(oldGrid.Value, out var oldParentXform))
+                    oldGrid = oldParentXform.GridUid ?? oldGrid;
             }
 
             UntrackAlertsEntity(uid, oldGrid);
