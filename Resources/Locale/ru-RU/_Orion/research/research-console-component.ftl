@@ -26,3 +26,6 @@ research-netlog-experimental-destructive-scanner-progress-yes = да
 research-netlog-experimental-destructive-scanner-progress-no = нет
 
 research-netlog-user-system = Система
+research-netlog-admin-unlocked-all-technologies = { $user } выполняет админ-операцию разблокировки всех технологий.
+research-netlog-admin-added-points = { $user } добавляет очки исследований: { $type } { $amount }, новый баланс { $balance }.
+research-netlog-user-admin = НаноТрейзен
