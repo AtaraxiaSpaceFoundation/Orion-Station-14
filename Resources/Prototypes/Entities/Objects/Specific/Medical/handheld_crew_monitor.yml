@@ -36,7 +36,10 @@
     heldPrefix: scanner
   - type: Sprite
     sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
-    state: scanner
+    layers: # Orion-Edit
+    - state: scanner
+    - state: scanner-light
+      shader: unshaded
   - type: ActivatableUI
     key: enum.CrewMonitoringUIKey.Key
   - type: UserInterface

@@ -5,21 +5,37 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from tgstation https://github.com/tgstation/tgstation/commit/ab4abf318f293a701754656dd4e9261eb70f8824#diff-9ab5c8a5e47ab7cfaeadd859a23e32b05de1fe839e99ea767fd7e340b6385d67, modified by pheenty",
+    "copyright": "Based on sprite from TG. Sprited by UmbiMax. Inhand sprites taken from ADT at commit https://github.com/AdventureTimeSS14/space_station_ADT/commit/7d0c21fb2717598819b9c67953f67407023172a5.",
     "states": [
         {
-            "name": "scanner",
-            "directions": 1,
+            "name": "scanner"
+        },
+        {
+            "name": "scanner-light",
             "delays": [
                 [
-                    0.4,
-                    0.4
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1
                 ]
             ]
         },
         {
-            "name": "icon",
-            "directions": 1
+            "name": "scanner-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "scanner-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "icon"
         }
     ]
 }

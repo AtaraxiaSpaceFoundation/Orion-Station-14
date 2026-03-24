@@ -5,15 +5,25 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "made by WsWiss",
+    "copyright": "Based on sprite from TG. Sprited by UmbiMax",
     "states": [
         {
-            "name": "scanner",
+            "name": "scanner"
+        },
+        {
+            "name": "scanner-light",
             "directions": 1,
             "delays": [
                 [
-                    0.4,
-                    0.4
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1
                 ]
             ]
         },
@@ -26,8 +36,7 @@
             "directions": 4
         },
         {
-            "name": "icon",
-            "directions": 1
+            "name": "icon"
         }
     ]
 }

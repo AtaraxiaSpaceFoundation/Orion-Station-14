@@ -36,8 +36,11 @@
   description: A handheld crew monitor modified for blueshield officer's needs. Designed to inject a tracking device into command personnel and alarm you about them being in danger. Works on a built-in microreactor cell.
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Specific/Medical/blueshield_handheldcrewmonitor.rsi # Orion-Edit
-    state: scanner
+    sprite: _Goobstation/Objects/Specific/Security/bso_monitor.rsi
+    layers: # Orion-Edit
+    - state: scanner
+    - state: scanner-light
+      shader: unshaded
   - type: Item
     size: Small
   - type: CrewMonitorScanning
