@@ -18,8 +18,8 @@ namespace Content.Server.Research.Disk
         /// If true, the value of this disk will be set to the sum
         /// of all the technologies in the game.
         /// </summary>
-        [DataField("pointType")]
-        public string PointType = "General";
+        [DataField("pointType")]// Orion
+        public string PointType = "General";// Orion
         /// <remarks>
         /// This is for debug purposes only.
         /// </remarks>

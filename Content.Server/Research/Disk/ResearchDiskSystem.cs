@@ -39,7 +39,7 @@ namespace Content.Server.Research.Disk
             if (!TryComp<ResearchServerComponent>(args.Target, out var server))
                 return;
 
-            var pointType = component.PointType;
+            var pointType = component.PointType;// Orion-Edit-Start
             
             bool found = false;
             for (int i = 0; i < server.PointBalances.Count; i++)
@@ -80,7 +80,7 @@ namespace Content.Server.Research.Disk
             }
             
             var typeEv = new ResearchServerPointTypeChangedEvent(args.Target.Value, pointType, newAmount, component.Points);
-            RaiseLocalEvent(args.Target.Value, ref typeEv);
+            RaiseLocalEvent(args.Target.Value, ref typeEv);// Orion-Edit-End
             
             _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
             QueueDel(uid);
@@ -93,9 +93,11 @@ namespace Content.Server.Research.Disk
                 return;
 
             component.Points = _prototype.EnumeratePrototypes<TechnologyPrototype>()
+		// Orion-Edit-Start
                 .Sum(tech => tech.PointCosts
                     .Where(cost => cost.Type == component.PointType)
                     .Sum(cost => cost.Amount));
+	       // Orion-Edit-End
         }
     }
 }
