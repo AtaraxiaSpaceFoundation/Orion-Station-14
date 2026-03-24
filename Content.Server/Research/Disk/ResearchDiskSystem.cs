@@ -14,6 +14,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Prototypes;
+using Content.Shared._Orion.Research;
 
 namespace Content.Server.Research.Disk
 {
@@ -22,6 +23,7 @@ namespace Content.Server.Research.Disk
         [Dependency] private readonly IPrototypeManager _prototype = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
         [Dependency] private readonly ResearchSystem _research = default!;
+        
         public override void Initialize()
         {
             base.Initialize();
@@ -37,8 +39,49 @@ namespace Content.Server.Research.Disk
             if (!TryComp<ResearchServerComponent>(args.Target, out var server))
                 return;
 
-            _research.ModifyServerPoints(args.Target.Value, component.Points, server);
-            _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-points-applied", ("points", component.Points)), args.User); // Orion
+            var pointType = component.PointType;
+            
+            bool found = false;
+            for (int i = 0; i < server.PointBalances.Count; i++)
+            {
+                if (server.PointBalances[i].Type == pointType)
+                {
+                    var existing = server.PointBalances[i];
+                    server.PointBalances[i] = new ResearchPointAmount
+                    {
+                        Type = existing.Type,
+                        Amount = existing.Amount + component.Points
+                    };
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found)
+            {
+                server.PointBalances.Add(new ResearchPointAmount
+                {
+                    Type = pointType,
+                    Amount = component.Points
+                });
+            }
+            
+            var ev = new ResearchServerPointsChangedEvent(args.Target.Value, server.Points, component.Points);
+            RaiseLocalEvent(args.Target.Value, ref ev);
+            
+            int newAmount = 0;
+            foreach (var balance in server.PointBalances)
+            {
+                if (balance.Type == pointType)
+                {
+                    newAmount = balance.Amount;
+                    break;
+                }
+            }
+            
+            var typeEv = new ResearchServerPointTypeChangedEvent(args.Target.Value, pointType, newAmount, component.Points);
+            RaiseLocalEvent(args.Target.Value, ref typeEv);
+            
             _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
             QueueDel(uid);
             args.Handled = true;
@@ -50,11 +93,9 @@ namespace Content.Server.Research.Disk
                 return;
 
             component.Points = _prototype.EnumeratePrototypes<TechnologyPrototype>()
-                // Orion-Edit-Start
                 .Sum(tech => tech.PointCosts
-                    .Where(cost => cost.Type == "General")
+                    .Where(cost => cost.Type == component.PointType)
                     .Sum(cost => cost.Amount));
-                // Orion-Edit-End
         }
     }
 }

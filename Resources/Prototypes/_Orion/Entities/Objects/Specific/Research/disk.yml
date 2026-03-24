@@ -26,3 +26,13 @@
   - type: GuideHelp
     guides:
     - OrionRnDMachines
+    
+- type: entity
+  parent: ResearchDisk
+  id: ResearchDiskExperimentalDebug
+  name: research experimental point disk
+  description: A disk for the R&D server containing all the points you could ever need.
+  components:
+  - type: ResearchDisk
+    unlockAllTech: true
+    pointType: "Experimental"
