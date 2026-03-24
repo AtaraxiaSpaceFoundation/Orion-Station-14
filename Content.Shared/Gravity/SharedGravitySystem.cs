@@ -99,8 +99,8 @@ namespace Content.Shared.Gravity
             SubscribeLocalEvent<GridRemovalEvent>(OnGridRemoved); // Orion
             SubscribeLocalEvent<AlertSyncEvent>(OnAlertsSync);
             // Orion-Start
-            SubscribeLocalEvent<AlertsComponent, ComponentStartup>(OnAlertsStartup);
-            SubscribeLocalEvent<AlertsComponent, ComponentShutdown>(OnAlertsShutdown);
+            SubscribeLocalEvent<AlertsComponent, ComponentInit>(OnAlertsInit);
+            SubscribeLocalEvent<AlertsComponent, ComponentRemove>(OnAlertsRemove);
             // Orion-End
             SubscribeLocalEvent<AlertsComponent, EntParentChangedMessage>(OnAlertsParentChange);
             SubscribeLocalEvent<GravityChangedEvent>(OnGravityChange);
@@ -169,12 +169,12 @@ namespace Content.Shared.Gravity
         }
 
         // Orion-Start
-        private void OnAlertsStartup(EntityUid uid, AlertsComponent component, ComponentStartup args)
+        private void OnAlertsInit(EntityUid uid, AlertsComponent component, ComponentInit args)
         {
             TrackAlertsEntity(uid);
         }
 
-        private void OnAlertsShutdown(EntityUid uid, AlertsComponent component, ComponentShutdown args)
+        private void OnAlertsRemove(EntityUid uid, AlertsComponent component, ComponentRemove args)
         {
             UntrackAlertsEntity(uid, component.TrackedGridUid);
         }
