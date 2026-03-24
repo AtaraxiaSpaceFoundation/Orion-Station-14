@@ -1,0 +1,126 @@
+- type: entity
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  id: ResearchDestructiveAnalyzer
+  name: destructive analyzer
+  description: Deconstructs inserted items using selectable analysis methods.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/destructive_analyzer.rsi
+    layers:
+    - state: icon
+      map: ["enum.DestructiveAnalyzerVisualLayers.Base"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.DestructiveAnalyzerVisuals.State:
+        enum.DestructiveAnalyzerVisualLayers.Base:
+          Idle: { state: icon }
+          Inserting: { state: inserting }
+          Loaded: { state: icon-inserted }
+          Deconstructing: { state: deconstructing }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Speech
+  - type: ApcPowerReceiver
+    powerLoad: 2500
+  - type: Machine
+    board: ResearchDestructiveAnalyzerMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      destructive-analyzer-container: !type:Container
+  - type: ResearchClient
+  - type: DestructiveAnalyzer
+  - type: ActivatableUI
+    key: enum.DestructiveAnalyzerUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.DestructiveAnalyzerUiKey.Key:
+        type: DestructiveAnalyzerBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - OrionRnDMachines
+
+- type: entity
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  id: ResearchExperimentalDestructiveScanner
+  name: experimental destructive scanner
+  description: Executes techweb experiments by scanning nearby samples without destroying them.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/destructive_scanner.rsi
+    offset: 0,0.5
+    layers:
+    - state: icon
+      map: ["enum.ExperimentalDestructiveScannerVisualLayers.Base"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ExperimentalDestructiveScannerVisuals.State:
+        enum.ExperimentalDestructiveScannerVisualLayers.Base:
+          Idle: { state: icon }
+          Up: { state: up }
+          Down: { state: down }
+          Scanning: { state: scanning }
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Transform
+    anchored: true
+  - type: Speech
+  - type: ApcPowerReceiver
+    powerLoad: 3000
+  - type: Machine
+    board: ResearchExperimentalDestructiveScannerMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      experimental-destructive-scanner-container: !type:Container
+  - type: ResearchClient
+  - type: ExperimentalDestructiveScanner
+  - type: ActivatableUI
+    key: enum.ExperimentalDestructiveScannerUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.ExperimentalDestructiveScannerUiKey.Key:
+        type: ExperimentalDestructiveScannerBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - OrionRnDMachines
+
+- type: entity
+  parent: ResearchAndDevelopmentServer
+  id: ResearchAndDevelopmentServerInteQ
+  name: InteQ R&D server
+  description: Contains the collective knowledge of the InteQ scientists. Destroying it would send them back to the stone age. You don't want that do you?
+  components:
+  - type: ResearchServer
+    networkId: InteQ
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/inteq-server.rsi
+    snapCardinals: true
+    layers:
+      - state: server-off
+      - state: server-on
+        visible: false
+        map: ["enum.PowerDeviceVisualLayers.Powered"]
+      - state: variant-inteq
+      - state: server_o
+        map: ["enum.WiresVisualLayers.MaintenancePanel"]

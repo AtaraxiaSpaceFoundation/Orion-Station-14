@@ -1,0 +1,39 @@
+- type: latheRecipe
+  id: ClothingHeadHatCardborg
+  result: ClothingHeadHatCardborg
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Plastic: 300
+
+- type: latheRecipe
+  id: ClothingOuterCardborg
+  result: ClothingOuterCardborg
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Plastic: 300
+
+- type: latheRecipe
+  id: SadTromboneImplanter
+  result: SadTromboneImplanter
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300
+
+- type: latheRecipe
+  id: TrackingImplanter
+  result: TrackingImplanter
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300

@@ -53,6 +53,20 @@ namespace Content.Client.Research.UI
             OnServerDeselected?.Invoke();
         }
 
+        // Orion-Start
+        private static string FormatServerName(string name)
+        {
+            const string prefix = "RND-Server";
+            if (!name.StartsWith(prefix, StringComparison.Ordinal))
+                return name;
+
+            var suffix = name[prefix.Length..].TrimStart();
+            return string.IsNullOrWhiteSpace(suffix)
+                ? Loc.GetString("research-server-name-base")
+                : Loc.GetString("research-server-name-with-suffix", ("suffix", suffix));
+        }
+        // Orion-End
+
         public void Populate(int serverCount, string[] serverNames, int[] serverIds, int selectedServerId)
         {
             _serverCount = serverCount;
@@ -68,7 +82,8 @@ namespace Content.Client.Research.UI
             for (var i = 0; i < _serverCount; i++)
             {
                 var id = _serverIds[i];
-                Servers.AddItem(Loc.GetString("research-client-server-selection-menu-server-entry-text", ("id", id), ("serverName", _serverNames[i])));
+                var localizedName = FormatServerName(_serverNames[i]); // Orion
+                Servers.AddItem(Loc.GetString("research-client-server-selection-menu-server-entry-text", ("id", id), ("serverName", localizedName))); // Orion-Edit
                 if (id == _selectedServerId)
                 {
                     Servers[i].Selected = true;

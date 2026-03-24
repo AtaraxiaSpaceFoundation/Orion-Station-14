@@ -71,12 +71,20 @@
     color: "#b211b2"
   - type: LitOnPowered
   - type: ResearchServer
+  - type: ResearchServerControlStatus # Orion
   - type: TechnologyDatabase
     supportedDisciplines:
-    - Industrial
-    - Arsenal
-    - Experimental
-    - CivilianServices
+    # Orion-Start
+    - Engineering
+    - Security
+    - Cargo
+    - Shaft
+    - Scientific
+    - Robotics
+    - Medical
+    - Service
+    - Syndicate
+    # Orion-End
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver
@@ -124,7 +132,8 @@
     guides:
     - Science
   - type: ResearchPointSource # Goobstation
-    pointspersecond: 15 # Orion-TODO: Change this to 1
+    pointspersecond: 5 # Orion-Edit: 15 > 5
+    pointType: General # Orion
     active: true
 
 - type: entity
@@ -142,7 +151,8 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: ResearchClient
   - type: ResearchPointSource
-    pointspersecond: 25
+    pointspersecond: 15 # Orion-Edit: 25 > 15
+    pointType: General # Orion
     active: true
   - type: PointLight
     radius: 1.5

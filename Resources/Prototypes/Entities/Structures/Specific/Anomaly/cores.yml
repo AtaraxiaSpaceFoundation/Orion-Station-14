@@ -50,12 +50,27 @@
   - type: Tag
     tags:
     - ForceableFollow
+    - AnomalyCore # Orion
   - type: AnomalyCore
     timeToDecay: 600
     startPrice: 10000
     endPrice: 200
   - type: MovedByPressure #Goob - space wind moment
     enabled: false
+  # Orion-Start
+  - type: ResearchAnalyzable
+    supportedMethods:
+    - Deconstruct
+    methodPointRewards:
+      Deconstruct:
+      - type: General
+        amount: 220
+      - type: Experimental
+        amount: 70
+    discoveryTrigger: machine:anomaly-core
+    experimentActions:
+    - analyze_anomaly_core
+  # Orion-End
 
 - type: entity
   parent: BaseAnomalyCore

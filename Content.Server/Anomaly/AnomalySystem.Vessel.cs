@@ -8,6 +8,7 @@
 
 using Content.Server.Anomaly.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._Orion.Research;
 using Content.Shared.Anomaly;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Examine;
@@ -29,7 +30,7 @@ public sealed partial class AnomalySystem
         SubscribeLocalEvent<AnomalyVesselComponent, MapInitEvent>(OnVesselMapInit);
         SubscribeLocalEvent<AnomalyVesselComponent, InteractUsingEvent>(OnVesselInteractUsing);
         SubscribeLocalEvent<AnomalyVesselComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<AnomalyVesselComponent, ResearchServerGetPointsPerSecondEvent>(OnVesselGetPointsPerSecond);
+        SubscribeLocalEvent<AnomalyVesselComponent, ResearchServerGetPointsPerSecondByTypeEvent>(OnVesselGetPointsPerSecond); // Orion-Edit
         SubscribeLocalEvent<AnomalyShutdownEvent>(OnShutdown);
         SubscribeLocalEvent<AnomalyStabilityChangedEvent>(OnStabilityChanged);
     }
@@ -91,12 +92,18 @@ public sealed partial class AnomalySystem
         Popup.PopupEntity(Loc.GetString("anomaly-vessel-component-anomaly-assigned"), uid);
     }
 
-    private void OnVesselGetPointsPerSecond(EntityUid uid, AnomalyVesselComponent component, ref ResearchServerGetPointsPerSecondEvent args)
+    private void OnVesselGetPointsPerSecond(EntityUid uid, AnomalyVesselComponent component, ref ResearchServerGetPointsPerSecondByTypeEvent args) // Orion-Edit
     {
         if (!this.IsPowered(uid, EntityManager) || component.Anomaly is not {} anomaly)
             return;
 
-        args.Points += (int) (GetAnomalyPointValue(anomaly) * component.PointMultiplier);
+        // Orion-Edit-Start
+        args.Points.Add(new ResearchPointAmount
+        {
+            Type = "General",
+            Amount = (int) (GetAnomalyPointValue(anomaly) * component.PointMultiplier),
+        });
+        // Orion-Edit-End
     }
 
     private void OnVesselAnomalyShutdown(ref AnomalyShutdownEvent args)

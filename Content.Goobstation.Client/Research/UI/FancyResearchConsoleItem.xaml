@@ -6,12 +6,11 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
 <LayoutContainer xmlns="https://spacestation14.io"
-                 xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                  xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                  xmlns:goob="clr-namespace:Content.Goobstation.Client.Research.UI"
                  Margin="5"
                  HorizontalExpand="False">
-    <BoxContainer Orientation="Vertical" SetSize="80 80">
+    <BoxContainer Name="NodeContainer" Orientation="Vertical" SetSize="80 80"> <!-- Orion-Edit: NodeContainer -->
         <PanelContainer VerticalExpand="True"
                         HorizontalExpand="True"
                         Name="Panel">
@@ -29,6 +28,26 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 TextureScale="2 2"
                 Stretch="KeepAspectCentered">
             </TextureRect>
+
+            <!-- Orion-Start -->
+            <PanelContainer Name="DisciplineBadge"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            SetSize="16 16"
+                            MouseFilter="Ignore">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#00000000"
+                                           BorderColor="#00000000"
+                                           BorderThickness="0"/>
+                </PanelContainer.PanelOverride>
+                <TextureRect Name="DisciplineDisplay"
+                             SetSize="16 16"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Stretch="KeepAspectCentered"
+                             TextureScale="2 2"/>
+            </PanelContainer>
+            <!-- Orion-End -->
         </PanelContainer>
     </BoxContainer>
 </LayoutContainer>

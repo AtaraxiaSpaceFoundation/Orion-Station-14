@@ -89,6 +89,9 @@ namespace Content.Goobstation.Server.Chemistry.Components
 
         // Orion-Start
         [DataField]
+        public float RefundEnergyEfficiency = 0.5f;
+
+        [DataField]
         public Dictionary<string, float>? ReagentsEmagged = [];
 
         [DataField]

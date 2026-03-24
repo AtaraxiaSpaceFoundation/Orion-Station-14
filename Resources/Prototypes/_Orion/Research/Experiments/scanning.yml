@@ -1,0 +1,203 @@
+- type: researchExperiment
+  id: ScanningCytologySlime
+  name: research-experiment-scanning-cytology-slime-name
+  description: research-experiment-scanning-cytology-slime-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredComponents:
+    - SlimeExtract
+    target: 3
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningFish
+  name: research-experiment-scanning-fish-name
+  description: research-experiment-scanning-fish-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredConditions:
+    - AnyFish
+    target: 3
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningFishSecond
+  name: research-experiment-scanning-fish-second-name
+  description: research-experiment-scanning-fish-second-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredConditions:
+    - RareFish
+    target: 2
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPeopleAndroid
+  name: research-experiment-scanning-people-android-name
+  description: research-experiment-scanning-people-android-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredConditions:
+    - IpcOrCyborg
+    target: 2
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPeopleAugmentedOrgans
+  name: research-experiment-scanning-people-augmented-organs-name
+  description: research-experiment-scanning-people-augmented-organs-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredConditions:
+    - HasAugmentedOrgans
+    target: 2
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPeopleMutant
+  name: research-experiment-scanning-people-mutant-name
+  description: research-experiment-scanning-people-mutant-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredConditions:
+    - NonBaselineHumanoid
+    target: 2
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPeopleSkillchip
+  name: research-experiment-scanning-people-skillchip-name
+  description: research-experiment-scanning-people-skillchip-desc
+  category: Scanning
+  hidden: true # No skill chips :(
+  objective: !type:DebugManualExperimentObjective {}
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPointsAnomalies
+  name: research-experiment-scanning-points-anomalies-name
+  description: research-experiment-scanning-points-anomalies-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredTags:
+    - AnomalyCore
+    target: 2
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPointsBluespaceCrystal
+  name: research-experiment-scanning-points-bluespace-crystal-name
+  description: research-experiment-scanning-points-bluespace-crystal-desc
+  category: Scanning
+  objective: !type:PresentItemExperimentObjective
+    requiredEntityPrototype: AnomalyCoreBluespaceInert
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPointsMachineryTieredScanTier2Any
+  name: research-experiment-scanning-points-machinery-tiered-scan-tier2-any-name
+  description: research-experiment-scanning-points-machinery-tiered-scan-tier2-any-desc
+  category: Scanning
+  objective: !type:ScanDifferentEntitiesExperimentObjective
+    requiredComponents:
+    - MachineBoard
+    target: 3
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPointsMachineryTieredScanTier3Any
+  name: research-experiment-scanning-points-machinery-tiered-scan-tier3-any-name
+  description: research-experiment-scanning-points-machinery-tiered-scan-tier3-any-desc
+  category: Scanning
+  objective: !type:ScanDifferentEntitiesExperimentObjective
+    requiredComponents:
+    - MachineBoard
+    target: 6
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningPointsSlimeHard
+  name: research-experiment-scanning-points-slime-hard-name
+  description: research-experiment-scanning-points-slime-hard-desc
+  category: Scanning
+  objective: !type:ScanDifferentEntitiesExperimentObjective
+    requiredComponents:
+    - SlimeExtract
+    target: 6
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningRandomJanitorTrash
+  name: research-experiment-scanning-random-janitor-trash-name
+  description: research-experiment-scanning-random-janitor-trash-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredTags:
+    - Trash
+    target: 3
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningRandomMechaDamageScan
+  name: research-experiment-scanning-random-mecha-damage-scan-name
+  description: research-experiment-scanning-random-mecha-damage-scan-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredComponents:
+    - Mech
+    requiredConditions:
+    - Damaged
+    target: 1
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningRandomMechaEquippedScan
+  name: research-experiment-scanning-random-mecha-equipped-scan-name
+  description: research-experiment-scanning-random-mecha-equipped-scan-desc
+  category: Scanning
+  objective: !type:ScanSamplesExperimentObjective
+    requiredComponents:
+    - MechEquipment
+    target: 2
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningRandomPlantsTraits
+  name: research-experiment-scanning-random-plants-traits-name
+  description: research-experiment-scanning-random-plants-traits-desc
+  category: Scanning
+  objective: !type:ScanDifferentEntitiesExperimentObjective
+    requiredEntityPrototype: AmbrosiaDeusSeeds
+    target: 1
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningRandomPlantsWild
+  name: research-experiment-scanning-random-plants-wild-name
+  description: research-experiment-scanning-random-plants-wild-desc
+  category: Scanning
+  objective: !type:ScanDifferentEntitiesExperimentObjective
+    requiredComponents:
+    - Seed
+    target: 4
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningReagentCryostylane
+  name: research-experiment-scanning-reagent-cryostylane-name
+  description: research-experiment-scanning-reagent-cryostylane-desc
+  category: Scanning
+  objective: !type:PresentItemExperimentObjective
+    requiredReagent: Cryostylane
+    requirePureReagent: true
+  reward: {}
+
+- type: researchExperiment
+  id: ScanningReagentHaloperidol
+  name: research-experiment-scanning-reagent-haloperidol-name
+  description: research-experiment-scanning-reagent-haloperidol-desc
+  category: Scanning
+  objective: !type:PresentItemExperimentObjective
+    requiredReagent: Haloperidol
+    requirePureReagent: true
+  reward: {}

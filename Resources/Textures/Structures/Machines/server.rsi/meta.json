@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from https://github.com/discordia-space/CEV-Eris/blob/master/icons/obj/machines/excelsior/autolathe.dmi at 40b254106b46981b8ad95ccd5589deb8fa56e765. Variant-research made for Space Station 14 by Nairod(github), variant-biohazard made for Space Station 14 by Ilya246 from icon_biohazard.png at Objects/Misc/books.rsi",
+    "copyright": "Taken from TGStation. Variant-research made for Space Station 14 by Nairod(github), variant-biohazard made for Space Station 14 by Ilya246 from icon_biohazard.png at Objects/Misc/books.rsi | Edited by PuroSlavKing (Github)",
     "states": [
         {
             "name": "server"
@@ -16,12 +16,34 @@
 
         },
         {
-            "name": "server-off"
-
+            "name": "server-off",
+            "delays": [
+                [
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.8
+                ]
+            ]
         },
         {
-            "name": "server-on"
-
+            "name": "server-on",
+            "delays": [
+                [
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.075,
+                    0.8
+                ]
+            ]
         },
         {
             "name": "server_o"

@@ -1,20 +1,54 @@
 - type: latheRecipe
-  id: SprayBottleRedEmpty
-  result: SprayBottleRedEmpty
-  completetime: 2
+  id: Bloodpack
+  result: Bloodpack
+  categories:
+  - Medical
+  completetime: 4
   materials:
-    Plastic: 100
+    Plastic: 200
 
 - type: latheRecipe
-  id: SprayBottleOrangeEmpty
-  result: SprayBottleOrangeEmpty
-  completetime: 2
+  id: ClothingNeckStethoscope
+  result: ClothingNeckStethoscope
+  categories:
+  - Medical
+  completetime: 4
   materials:
-    Plastic: 100
+    Steel: 200
 
 - type: latheRecipe
-  id: SprayBottleBlueEmpty
+  id: SawElectric
+  result: SawElectric
+  categories:
+  - Tools
+  completetime: 4
+  materials:
+    Steel: 400
+    Plastic: 150
+
+- type: latheRecipe
+  id: SprayBottleBlue
   result: SprayBottleBlueEmpty
-  completetime: 2
+  categories:
+  - Medical
+  completetime: 4
   materials:
-    Plastic: 100
+    Plastic: 200
+
+- type: latheRecipe
+  id: SprayBottleOrange
+  result: SprayBottleOrangeEmpty
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Plastic: 200
+
+- type: latheRecipe
+  id: SprayBottleRed
+  result: SprayBottleRedEmpty
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Plastic: 200

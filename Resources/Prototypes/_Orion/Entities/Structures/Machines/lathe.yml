@@ -7,14 +7,15 @@
   - type: Machine
     board: ProtolatheAncientMachineCircuitboard
   - type: Lathe
-    #staticPacks: - Goobstation - Move static recipes to autolathe
-    #- ChemistryStatic
-    #- SurgeryStatic
     dynamicPacks:
     # Orion-Start
+    - AbductorEngineering
+    - AbductorMedical
+    - AILawboards
     - BodyBagsDynamic
-    - OrionService
+    - BasicService
     - MegaCells
+    - Hydroponic
     # Orion-End
     - AdvancedTools
     - ScienceEquipment
@@ -60,7 +61,7 @@
   - type: Machine
     board: CircuitImprinterAncientMachineCircuitboard
   - type: Lathe
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - ScienceBoardsStatic
     - ServiceBoardsStatic
     - ServiceBoardsEvilStatic
@@ -73,7 +74,6 @@
     - MedicalBoardsStaticGoob
     - SecurityBoardsStaticGoob
     # Goob-End
-    dynamicPacks:
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards

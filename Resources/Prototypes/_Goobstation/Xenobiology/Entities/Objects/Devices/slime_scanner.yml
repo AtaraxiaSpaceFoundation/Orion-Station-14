@@ -6,7 +6,7 @@
   components:
   - type: SlimeScanner
   - type: Sprite
-    noRot: true
+#    noRot: true # Orion-Edit
     sprite: _Goobstation/Xenobiology/Specific/Xenobiology/slime_scanner.rsi
     layers:
     - state: icon

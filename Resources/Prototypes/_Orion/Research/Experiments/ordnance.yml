@@ -1,0 +1,61 @@
+- type: researchExperiment
+  id: OrdnanceExplosiveHighyieldbomb
+  name: research-experiment-ordnance-explosive-highyieldbomb-name
+  description: research-experiment-ordnance-explosive-highyieldbomb-desc
+  category: Ordnance
+  objective: !type:PresentItemExperimentObjective
+    requiredComponents:
+    - Explosive
+    minExplosiveIntensity: 5
+  reward: {}
+
+- type: researchExperiment
+  id: OrdnanceExplosiveLowyieldbomb
+  name: research-experiment-ordnance-explosive-lowyieldbomb-name
+  description: research-experiment-ordnance-explosive-lowyieldbomb-desc
+  category: Ordnance
+  objective: !type:PresentItemExperimentObjective
+    requiredComponents:
+    - Explosive
+  reward: {}
+
+- type: researchExperiment
+  id: OrdnanceGaseousBz
+  name: research-experiment-ordnance-gaseous-bz-name
+  description: research-experiment-ordnance-gaseous-bz-desc
+  category: Ordnance
+  objective: !type:PresentItemExperimentObjective
+    requiredGas: BZ
+    requirePureGas: true
+  reward: {}
+
+- type: researchExperiment
+  id: OrdnanceGaseousNitrousOxide
+  name: research-experiment-ordnance-gaseous-nitrous-oxide-name
+  description: research-experiment-ordnance-gaseous-nitrous-oxide-desc
+  category: Ordnance
+  objective: !type:PresentItemExperimentObjective
+    requiredGas: NitrousOxide
+    requirePureGas: true
+  reward: {}
+
+# Like noblium but frezon!
+- type: researchExperiment
+  id: OrdnanceGaseousFrezon
+  name: research-experiment-ordnance-gaseous-frezon-name
+  description: research-experiment-ordnance-gaseous-frezon-desc
+  category: Ordnance
+  objective: !type:PresentItemExperimentObjective
+    requiredGas: Frezon
+    requirePureGas: true
+  reward: {}
+
+- type: researchExperiment
+  id: OrdnanceGaseousPlasma
+  name: research-experiment-ordnance-gaseous-plasma-name
+  description: research-experiment-ordnance-gaseous-plasma-desc
+  category: Ordnance
+  objective: !type:PresentItemExperimentObjective
+    requiredGas: Plasma
+    requirePureGas: true
+  reward: {}

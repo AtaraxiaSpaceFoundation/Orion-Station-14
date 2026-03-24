@@ -6,4 +6,4 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 research-client-server-selection-menu-title = Research Server Selection
-research-client-server-selection-menu-server-entry-text = ID: {$id} || {$serverName}
+research-client-server-selection-menu-server-entry-text = Server #{ $id }: { $serverName }

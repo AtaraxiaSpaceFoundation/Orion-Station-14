@@ -1,0 +1,75 @@
+- type: technology
+  id: IllegalTechnology
+  name: research-technology-illegal-technology-name
+  description: research-technology-illegal-technology-desc
+  icon:
+    sprite: Objects/Fun/Foam/foam_crossbow.rsi
+    state: icon
+  discipline: Syndicate
+  tier: 5
+  hidden: true
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - ExperimentalTools
+  - ExoticAmmo
+  requiredItemsToUnlock:
+  - EnergySword
+  - EnergyDagger
+  - ClothingHandsGlovesNorthStar
+  - EnergyShield
+  - WeaponSubMachineGunC20r
+  - WeaponLightMachineGunL6
+  - SyndieMiniBomb
+  - SyndicateBomb
+  - Hypopen
+  - AgentIDCard
+  - ChameleonProjector
+  - EncryptionKeySyndie
+  - AccessBreaker
+  - Emag
+  - RadioJammer
+  - BorgModuleSyndicateWeapon
+  - BorgModuleMartyr
+  - ClothingEyesHudSyndicate
+  - ContractorBaton
+  - MiniatureEnergyCrossbow
+  - BowHardlight
+  - CQCManual
+  - CapoeiraManual
+  - SleepingCarpScroll
+  - ClothingModsuitContractor
+  recipeUnlocks:
+  - BorgModuleMartyr
+  - BorgModuleSyndicateWeapon
+  - FoamCrossbow
+  - SyndicateBodyBag
+  - SyndicateMicrowaveMachineCircuitboard
+  - SyndicatePersonalAI
+  position: -4,11
+
+- type: technology
+  id: UnregulatedBluespaceResearch
+  name: research-technology-unregulated-bluespace-research-name
+  description: research-technology-unregulated-bluespace-research-desc
+  icon:
+    sprite: Objects/Devices/desynchronizer.rsi
+    state: icon
+  discipline: Syndicate
+  tier: 1
+  hidden: true
+  pointCosts:
+  - type: General
+    amount: 2500
+  revealRequirements:
+  - !type:RevealedTechnologyRevealRequirement
+    id: illegal-technology-revealed
+    technology: IllegalTechnology
+  technologyPrerequisites:
+  - PartsBluespace
+  - IllegalTechnology
+  recipeUnlocks:
+  - DeviceDesynchronizer
+  - MedicalBeamGunSyndicate
+  position: -4,10

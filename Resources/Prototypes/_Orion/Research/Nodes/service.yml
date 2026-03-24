@@ -1,0 +1,277 @@
+- type: technology
+  id: OfficeEquipment
+  name: research-technology-office-equipment-name
+  description: research-technology-office-equipment-desc
+  icon:
+    sprite: Objects/Specific/Janitorial/mop.rsi
+    state: mop
+  discipline: Service
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - HandLabeler
+  - ParcelWrap
+  - CutterMachineCircuitboard
+  - RadioHandheld
+  - ClothingHeadset # Without keys!!!
+  - TapeRecorder
+  - CassetteTape
+  - PetCarrier
+  - Bucket
+  - MopItem
+  - Broomstick
+  - TrashBag
+  - WireBrush
+  - FlashlightLantern
+  - Flare
+  - StationRadioCircuitboard
+  - HandheldStationMap
+  - ClothingHeadHatCone
+  - WeaponHammer
+  - AppraisalTool
+  - LedLightTube
+  - SodiumLightTube
+  - ExteriorLightTube
+  - LedLightBulb
+  - DimLightBulb
+  - WarmLightBulb
+  - DrinkMug
+  - DrinkMugMetal
+  - CustomDrinkJug
+  - FoodKebabSkewer
+  - WetFloorSign
+  - IntercomElectronics
+  - StationMapElectronics
+  - Pen
+  - CrewCassette
+  - ConfettiGrenade
+  - FoodShakerSaltEmpty
+  - FoodShakerPepperEmpty
+  - VinylPlayerCircuitboard
+  - TapeDeckCircuitboard
+  - StationRadioServerCircuitboard
+  - StationRadioRigCircuitboard
+  position: 8,-4
+
+- type: technology
+  id: Sanitation
+  name: research-technology-sanitation-name
+  description: research-technology-sanitation-desc
+  icon:
+    sprite: Objects/Specific/Janitorial/advmop.rsi
+    state: advmop
+  discipline: Service
+  tier: 2
+  announceChannels:
+  - Service
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - OfficeEquipment
+  discountExperiments:
+  - ScanningRandomJanitorTrash
+  discountExperimentCosts:
+    ScanningRandomJanitorTrash: 5000
+  recipeUnlocks:
+  - AdvMopItem
+  - LightReplacer
+  - SprayBottle
+  - WeaponSprayNozzle
+  - ClothingBackpackWaterTank
+  - MegaSprayBottle
+  position: 8,-2
+
+- type: technology
+  id: Consoles
+  name: research-technology-consoles-name
+  description: research-technology-consoles-desc
+  icon:
+    sprite: Objects/Misc/module.rsi
+    state: charger_APC
+  discipline: Service
+  tier: 1
+  announceChannels:
+  - Service
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - OfficeEquipment
+  recipeUnlocks:
+  - CommsComputerCircuitboard
+  - CargoRequestComputerCircuitboard
+  - MedicalRecordsComputerCircuitboard
+  - CrewMonitoringComputerCircuitboard
+  - CargoBountyComputerCircuitboard
+  - ScreenTimerElectronics
+  position: 9,-4
+
+- type: technology
+  id: Gaming
+  name: research-technology-gaming-name
+  description: research-technology-gaming-desc
+  icon:
+    sprite: Structures/Machines/arcade.rsi
+    state: arcade
+  discipline: Service
+  tier: 2
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Consoles
+  discountExperiments:
+  - PhysicalArcadeWinner
+  discountExperimentCosts:
+    PhysicalArcadeWinner: 5000
+  recipeUnlocks:
+  - BlockGameArcadeComputerCircuitboard
+  - SpaceVillainArcadeComputerCircuitboard
+  position: 10,-4
+
+- type: technology
+  id: CafeteriaEquipment
+  name: research-technology-cafeteria-equipment-name
+  description: research-technology-cafeteria-equipment-desc
+  icon:
+    sprite: Structures/Machines/microwave.rsi
+    state: mw0
+  discipline: Service
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - ElectricGrillMachineCircuitboard
+  - MicrowaveMachineCircuitboard
+  - FoodBowlBig
+  - CandyBowl
+  - FoodPlate
+  - FoodPlateSmall
+  - FoodPlatePlastic
+  - FoodPlateSmallPlastic
+  - FoodPlateMuffinTin
+  - FoodPlateTin
+  - BarSpoon
+  - Spoon
+  - SpoonPlastic
+  - Fork
+  - ForkPlastic
+  - KitchenKnife
+  - KnifePlastic
+  - DrinkShaker
+  - DrinkGlass
+  - DrinkGlassCoupeShaped
+  - DrinkShotGlass
+  - Ashtray
+  position: 8,-3
+
+- type: technology
+  id: FoodProcessing
+  name: research-technology-food-processing-name
+  description: research-technology-food-processing-desc
+  icon:
+    sprite: Structures/Machines/grinder.rsi
+    state: grinder_empty
+  discipline: Service
+  tier: 2
+  announceChannels:
+  - Service
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - CafeteriaEquipment
+  recipeUnlocks:
+#  - DeepFryer
+#  - Oven
+#  - Stove
+  - SlimeGrinderMachineCircuitboard
+  - ReagentGrinderMachineCircuitboard
+  - SheetifierMachineCircuitboard
+  - FatExtractorMachineCircuitboard
+  - PairedChopsticks
+  position: 7,-4
+
+- type: technology
+  id: MusicalInstruments
+  name: research-technology-musical-instruments-name
+  description: research-technology-musical-instruments-desc
+  icon:
+    sprite: Objects/Fun/Instruments/h_synthesizer.rsi
+    state: icon
+  discipline: Service
+  tier: 1
+  announceChannels:
+  - Service
+  pointCosts:
+  - type: General
+    amount: 3000
+  technologyPrerequisites:
+  - OfficeEquipment
+  recipeUnlocks:
+  - SynthesizerInstrument
+  - PushHorn
+  position: 7,-3
+
+- type: technology
+  id: FishingEquip
+  name: research-technology-fishing-equip-name
+  description: research-technology-fishing-equip-desc
+  icon:
+    sprite: _Goobstation/Objects/Specific/Fishing/fishing_rod.rsi
+    state: icon
+  discipline: Service
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - FishingRod
+  position: 11,-2
+
+- type: technology
+  id: FishingEquipAdv
+  name: research-technology-fishing-equip-adv-name
+  description: research-technology-fishing-equip-adv-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Service
+  tier: 2
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - FishingEquip
+  requiredExperiments:
+  - ScanningFish
+  # TODO
+  position: 11,-3
+
+- type: technology
+  id: MarineUtility
+  name: research-technology-marine-utility-name
+  description: research-technology-marine-utility-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Service
+  tier: 3
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - FishingEquipAdv
+  discountExperiments:
+  - ScanningFishSecond
+  discountExperimentCosts:
+    ScanningFishSecond: 7500
+  # TODO
+  position: 12,-3

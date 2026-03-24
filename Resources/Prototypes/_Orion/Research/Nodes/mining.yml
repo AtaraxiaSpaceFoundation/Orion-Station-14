@@ -1,0 +1,162 @@
+- type: technology
+  id: MaterialProcessing
+  name: research-technology-material-processing-name
+  description: research-technology-material-processing-desc
+  icon:
+    sprite: Structures/Machines/autolathe.rsi
+    state: icon
+  discipline: Shaft
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  recipeUnlocks:
+  - Pickaxe
+  - Shovel
+  - ConveyorBeltAssembly
+  - AutolatheMachineCircuitboard
+  - SheetRGlass
+  - OreProcessorMachineCircuitboard
+  - SalvageMagnetMachineCircuitboard
+  position: 5,6
+
+- type: technology
+  id: Mining
+  name: research-technology-mining-name
+  description: research-technology-mining-desc
+  icon:
+    sprite: Objects/Specific/Mining/mineral_scanner.rsi
+    state: icon
+  discipline: Shaft
+  tier: 1
+  announceChannels:
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - MaterialProcessing
+  recipeUnlocks:
+  - MineralScannerEmpty
+  - MiningDrill
+  - WeaponMechMeleeDrill
+  - MarkerBeacon
+  - HandheldGPSBasic
+  - HandHeldMassScanner
+  - Fulton
+  - FultonBeacon
+  - OreBag
+  - RadarConsoleCircuitboard
+  position: 5,5
+
+- type: technology
+  id: ProtoKineticAccelerators
+  name: research-technology-proto-kinetic-accelerators-name
+  description: research-technology-proto-kinetic-accelerators-desc
+  icon:
+    sprite: _Lavaland/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
+    state: icon
+  discipline: Shaft
+  tier: 2
+  announceChannels:
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - Mining
+  - GasCompression
+  recipeUnlocks:
+  - WeaponProtoKineticAccelerator
+  - WeaponProtoKineticShotgun
+  - WeaponProtoKineticRepeater
+  - WeaponProtoKineticPistol
+  position: 6,6
+
+- type: technology
+  id: LowPressureExcavation
+  name: research-technology-low-pressure-excavation-name
+  description: research-technology-low-pressure-excavation-desc
+  icon:
+    sprite: _Lavaland/Objects/Weapons/upgrade.rsi
+    state: base
+  discipline: Shaft
+  tier: 2
+  announceChannels:
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - ProtoKineticAccelerators
+  - GasCompression
+  recipeUnlocks:
+  - PKAUpgradeDamage
+  - PKAUpgradeRange
+  - PKAUpgradeFireRate
+  - PKAUpgradeSpace
+  position: 6,7
+
+- type: technology
+  id: PlasmaMining
+  name: research-technology-plasma-mining-name
+  description: research-technology-plasma-mining-desc
+  icon:
+    sprite: _Goobstation/Objects/Weapons/Guns/Battery/cutter.rsi
+    state: icon
+  discipline: Shaft
+  tier: 3
+  announceChannels:
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - LowPressureExcavation
+  - PlasmaControl
+  recipeUnlocks:
+  - WeaponPlasmaCutter
+  position: 5,7
+
+- type: technology
+  id: Bitrunning
+  name: research-technology-bitrunning-name
+  description: research-technology-bitrunning-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Shaft
+  tier: 3
+  announceChannels:
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - Gaming
+  - AppliedBluespace
+  # TODO
+  position: 4,6
+
+- type: technology
+  id: AdvancedMining
+  name: research-technology-advanced-mining-name
+  description: research-technology-advanced-mining-desc
+  icon:
+    sprite: Objects/Tools/handdrilldiamond.rsi
+    state: handdrill
+  discipline: Shaft
+  tier: 4
+  announceChannels:
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - PlasmaMining
+  recipeUnlocks:
+  - AdvancedMineralScannerEmpty
+  - MiningDrillDiamond
+  - MechEquipmentDrillDiamond
+  position: 5,8

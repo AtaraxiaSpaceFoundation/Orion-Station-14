@@ -102,6 +102,36 @@ SPDX-License-Identifier: MIT
                         </BoxContainer>
                     </ScrollContainer>
                 </PanelContainer>
+                <!-- Orion-Start -->
+                <Control MinHeight="8"/>
+                <controls:StripeBack>
+                    <Label Text="{Loc 'research-console-experiments-title'}" HorizontalAlignment="Center" Margin="0 2"/>
+                </controls:StripeBack>
+                <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 8"/>
+                <PanelContainer VerticalExpand="True" MinSize="0 140">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
+                    </PanelContainer.PanelOverride>
+                    <ScrollContainer
+                        HScrollEnabled="False"
+                        HorizontalExpand="True"
+                        VerticalExpand="True">
+                        <BoxContainer Orientation="Vertical" Margin="6" SeparationOverride="6" HorizontalExpand="True" VerticalExpand="True">
+                            <RichTextLabel
+                                Name="ExperimentsLabel"
+                                HorizontalExpand="True"
+                                VerticalExpand="True"/>
+                            <controls:StripeBack>
+                                <Label Text="{Loc 'research-console-journal-recent-logs'}" HorizontalAlignment="Center" Margin="0 2"/>
+                            </controls:StripeBack>
+                            <RichTextLabel
+                                Name="RecentLogsLabel"
+                                HorizontalExpand="True"
+                                VerticalExpand="True"/>
+                        </BoxContainer>
+                    </ScrollContainer>
+                </PanelContainer>
+                <!-- Orion-End -->
             </BoxContainer>
         </BoxContainer>
     </BoxContainer>

@@ -1,0 +1,53 @@
+- type: latheRecipe
+  id: BorgModuleMartyr
+  result: BorgModuleMartyr
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300
+
+- type: latheRecipe
+  id: BorgModuleSyndicateWeapon
+  result: BorgModuleSyndicateWeapon
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300
+
+- type: latheRecipe
+  id: FoamCrossbow
+  result: FoamCrossbow
+  categories:
+  - Security
+  completetime: 4
+  materials:
+    Plastic: 700
+
+- type: latheRecipe
+  id: MedicalBeamGunSyndicate
+  result: MedicalBeamGunSyndicate
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+    Plasma: 850
+
+- type: latheRecipe
+  id: SyndicatePersonalAI
+  result: SyndicatePersonalAI
+  categories:
+  - Robotics
+  completetime: 4
+  materials:
+    Steel: 700
+    Glass: 300
+    Plastic: 300

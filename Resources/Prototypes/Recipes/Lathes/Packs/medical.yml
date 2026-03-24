@@ -59,6 +59,9 @@
   - Drill
   - Saw
   - Hemostat
+  # Orion-Start
+  - SawElectric
+  # Orion-End
 
 - type: latheRecipePack
   id: MedicalStatic
@@ -71,6 +74,12 @@
   - WhiteCane
   - OffsetCane
   - OffsetCaneWood
+  # Orion-Start
+  - Bloodpack
+  - ClothingNeckStethoscope
+  - ClothingEyesHudMedical
+  - MedicalBeamGunSyndicate
+  # Orion-End
 
 - type: latheRecipePack
   id: RollerBedsStatic
@@ -109,6 +118,14 @@
   - CondenserMachineCircuitBoard
   - HotplateMachineCircuitboard
   - EnergyChemDispenserMachineCircuitboard #Goob edit - all things that get base med boards get E-Chem
+  # Orion-Start
+  - MedicalScannerMachineCircuitboard
+  - MedicalRecordsComputerCircuitboard
+  - CrewMonitoringComputerCircuitboard
+  - MedicalBiofabMachineBoard
+  - DiagnoserMachineCircuitboard
+  - VaccinatorMachineCircuitboard
+  # Orion-End
 
 ## Dynamic
 

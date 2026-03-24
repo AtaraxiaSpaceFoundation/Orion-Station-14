@@ -1,0 +1,68 @@
+#- type: technology
+#  id: Programming
+#  name: research-technology-programming-name
+#  description: research-technology-programming-desc
+#  icon:
+#    sprite: Interface/Misc/research_disciplines.rsi
+#    state: experimental
+#  discipline: Scientific
+#  tier: 1
+#  startingTechnology: true
+#  pointCosts:
+#  - type: General
+#    amount: 500
+#  technologyPrerequisites:
+#  - Robotics
+#  # TODO
+#  position: 3,7
+
+#- type: technology
+#  id: CircuitShells
+#  name: research-technology-circuit-shells-name
+#  description: research-technology-circuit-shells-desc
+#  icon:
+#    sprite: Interface/Misc/research_disciplines.rsi
+#    state: experimental
+#  discipline: Scientific
+#  tier: 2
+#  pointCosts:
+#  - type: General
+#    amount: 2500
+#  technologyPrerequisites:
+#  - Programming
+#  # TODO
+#  position: 1,2
+
+#- type: technology
+#  id: ProgrammedRobot
+#  name: research-technology-programmed-robot-name
+#  description: research-technology-programmed-robot-desc
+#  icon:
+#    sprite: Interface/Misc/research_disciplines.rsi
+#    state: experimental
+#  discipline: Scientific
+#  tier: 2
+#  pointCosts:
+#  - type: General
+#    amount: 5000
+#  technologyPrerequisites:
+#  - CircuitShells
+#  # TODO
+#  position: 1,7
+
+#- type: technology
+#  id: ProgrammedServer
+#  name: research-technology-programmed-server-name
+#  description: research-technology-programmed-server-desc
+#  icon:
+#    sprite: Interface/Misc/research_disciplines.rsi
+#    state: experimental
+#  discipline: Scientific
+#  tier: 3
+#  pointCosts:
+#  - type: General
+#    amount: 7500
+#  technologyPrerequisites:
+#  - BrainComputerInterface
+#  # TODO
+#  position: 2,7

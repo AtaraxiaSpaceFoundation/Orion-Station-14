@@ -1,0 +1,59 @@
+- type: latheRecipe
+  id: AlertsComputerCircuitboard
+  result: AlertsComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: ExtinguisherSpray
+  result: ExtinguisherSpray
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: FireExtinguisherMini
+  result: FireExtinguisherMini
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: OxygenTank
+  result: OxygenTank
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: PlasmaTank
+  result: PlasmaTank
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: WaterVaporTank
+  result: WaterVaporTank
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300

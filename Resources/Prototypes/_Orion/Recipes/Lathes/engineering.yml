@@ -1,0 +1,121 @@
+- type: latheRecipe
+  id: ClothingEyesHudDiagnostic
+  result: ClothingEyesHudDiagnostic
+  categories:
+  - Clothing
+  completetime: 4
+  materials:
+    Cloth: 300
+    Steel: 100
+
+- type: latheRecipe
+  id: ClothingEyesHudMedical
+  result: ClothingEyesHudMedical
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200
+
+- type: latheRecipe
+  id: ClothingEyesWelding
+  result: ClothingEyesWelding
+  categories:
+  - Clothing
+  completetime: 4
+  materials:
+    Cloth: 300
+    Steel: 100
+
+- type: latheRecipe
+  id: Crowbar
+  result: Crowbar
+  categories:
+  - Tools
+  completetime: 4
+  materials:
+    Steel: 400
+    Plastic: 150
+
+- type: latheRecipe
+  id: GeigerCounter
+  result: GeigerCounter
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: InducerEngineering
+  result: InducerEngineering
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: PowerComputerCircuitboard
+  result: PowerComputerCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: RemoteSignaller
+  result: RemoteSignaller
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: TeslaCoil
+  result: TeslaCoil
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: TeslaGroundingRod
+  result: TeslaGroundingRod
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 1800
+    Glass: 700
+
+- type: latheRecipe
+  id: WelderMini
+  result: WelderMini
+  categories:
+  - Engineering
+  completetime: 4
+  materials:
+    Steel: 500
+    Glass: 300
+
+- type: latheRecipe
+  id: trayScanner
+  result: trayScanner
+  categories:
+  - Medical
+  completetime: 4
+  materials:
+    Steel: 400
+    Glass: 250
+    Plastic: 200

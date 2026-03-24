@@ -420,7 +420,7 @@
     runningState: building
     unlitIdleState: unlit
     unlitRunningState: unlit-building
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - ToolsStatic
     - PartsStatic
     - AtmosStatic
@@ -578,7 +578,7 @@
     producingSound: /Audio/Machines/circuitprinter.ogg
     idleState: icon
     runningState: building
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     #- ScienceBoardsStatic - Goobstation - Moved to Scifab
     - ServiceBoardsStatic
     - CargoBoardsStatic
@@ -590,7 +590,6 @@
     - MedicalBoardsStaticGoob
     - SecurityBoardsStaticGoob
     - ServiceBoardsStaticGoob
-    dynamicPacks:
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards
@@ -641,7 +640,8 @@
   - type: Lathe
     idleState: fab-idle
     runningState: fab-active
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
+    - AILawboards # Orion
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
@@ -653,7 +653,6 @@
     - PartsStatic
     - CablesStatic
     - PowerCellsStatic
-    dynamicPacks:
     - Robotics
     - BorgModules
     - MechParts
@@ -752,7 +751,7 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
@@ -768,7 +767,6 @@
     - ScienceExplosives
     - GrenadeTriggersStatic
     - SecurityWeaponsStaticGoob
-    dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
     - SecurityEquipment
@@ -823,7 +821,7 @@
     - type: Lathe
       idleState: icon
       runningState: icon
-      staticPacks:
+      dynamicPacks: # Orion-Edit: Static > Dynamic
       - SecurityAmmoStatic
       # Goobstation Packs
       - SecurityAmmoStaticGoob
@@ -860,7 +858,7 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticPacks:
+    dynamicPacks: # Orion-Edit: Static > Dynamic
     - TopicalsStatic
     - ChemistryStatic
     - MedicalStatic
@@ -870,6 +868,7 @@
     - SurgeryStatic
     # Orion-Start
     - EmptyMedicalSprayBottlesStatic
+    - AbductorMedical
     # Orion-End
     # Goobstation Packs
     - ParamedHypoStatic
@@ -882,7 +881,6 @@
     - GrenadeTriggersStatic
     # Einstein Engines Packs
     - SyringeCase
-    dynamicPacks:
     # Orion-Start
     - BodyBagsDynamic
     # Orion-End

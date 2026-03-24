@@ -38,6 +38,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
+using Content.Shared._Orion.Research;
 using Content.Shared.Database;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
@@ -48,10 +50,12 @@ namespace Content.Server.Research.Systems;
 
 public sealed partial class ResearchSystem
 {
+    private readonly ISawmill _sawmill = Logger.GetSawmill("research.techweb"); // Orion
+
     /// <summary>
     /// Syncs the primary entity's database to that of the secondary entity's database.
     /// </summary>
-    public void Sync(EntityUid primaryUid, EntityUid otherUid, TechnologyDatabaseComponent? primaryDb = null, TechnologyDatabaseComponent? otherDb = null)
+    private void Sync(EntityUid primaryUid, EntityUid otherUid, TechnologyDatabaseComponent? primaryDb = null, TechnologyDatabaseComponent? otherDb = null) // Orion-Edit: Was public
     {
         if (!Resolve(primaryUid, ref primaryDb) || !Resolve(otherUid, ref otherDb))
             return;
@@ -59,8 +63,23 @@ public sealed partial class ResearchSystem
         primaryDb.MainDiscipline = otherDb.MainDiscipline;
         primaryDb.CurrentTechnologyCards = otherDb.CurrentTechnologyCards;
         primaryDb.SupportedDisciplines = otherDb.SupportedDisciplines;
-        primaryDb.UnlockedTechnologies = otherDb.UnlockedTechnologies;
+        // Orion-Start
+        primaryDb.VisibleTechnologies = new List<ProtoId<TechnologyPrototype>>(otherDb.VisibleTechnologies);
+        primaryDb.AvailableTechnologies = new List<ProtoId<TechnologyPrototype>>(otherDb.AvailableTechnologies);
+        primaryDb.ResearchedTechnologies = new List<ProtoId<TechnologyPrototype>>(otherDb.ResearchedTechnologies);
+        primaryDb.AvailableExperiments = otherDb.AvailableExperiments;
+        primaryDb.UnlockedExperiments = otherDb.UnlockedExperiments;
+        primaryDb.ActiveExperiments = otherDb.ActiveExperiments;
+        primaryDb.CompletedExperiments = otherDb.CompletedExperiments;
+        primaryDb.SkippedExperiments = otherDb.SkippedExperiments;
+        primaryDb.ExperimentProgress = otherDb.ExperimentProgress;
+        // Orion-End
         primaryDb.UnlockedRecipes = otherDb.UnlockedRecipes;
+        // Orion-Start
+        primaryDb.RevealedTechnologies = otherDb.RevealedTechnologies;
+        primaryDb.DiscoveryProgress = otherDb.DiscoveryProgress;
+        primaryDb.UnlockedInfrastructure = otherDb.UnlockedInfrastructure;
+        // Orion-End
 
         Dirty(primaryUid, primaryDb);
 
@@ -74,7 +93,7 @@ public sealed partial class ResearchSystem
     ///     syncs against the research server, and the server against the local database.
     /// </summary>
     /// <returns>Whether it could sync or not</returns>
-    public void SyncClientWithServer(EntityUid uid, TechnologyDatabaseComponent? databaseComponent = null, ResearchClientComponent? clientComponent = null)
+    private void SyncClientWithServer(EntityUid uid, TechnologyDatabaseComponent? databaseComponent = null, ResearchClientComponent? clientComponent = null) // Orion-Edit: Was public
     {
         if (!Resolve(uid, ref databaseComponent, ref clientComponent, false))
             return;
@@ -89,7 +108,7 @@ public sealed partial class ResearchSystem
     /// Tries to add a technology to a database, checking if it is able to
     /// </summary>
     /// <returns>If the technology was successfully added</returns>
-    public bool UnlockTechnology(EntityUid client,
+    private bool UnlockTechnology(EntityUid client, // Orion-Edit: Was public
         string prototypeid,
         EntityUid user,
         ResearchClientComponent? component = null,
@@ -105,7 +124,7 @@ public sealed partial class ResearchSystem
     /// Tries to add a technology to a database, checking if it is able to
     /// </summary>
     /// <returns>If the technology was successfully added</returns>
-    public bool UnlockTechnology(EntityUid client,
+    private bool UnlockTechnology(EntityUid client, // Orion-Edit: Was public
         TechnologyPrototype prototype,
         EntityUid user,
         ResearchClientComponent? component = null,
@@ -117,16 +136,17 @@ public sealed partial class ResearchSystem
         if (!TryGetClientServer(client, out var serverEnt, out _, component))
             return false;
 
-        if (!CanServerUnlockTechnology(client, prototype, clientDatabase, component))
+        if (!CanServerUnlockTechnology(client, prototype, out var finalCosts, clientDatabase, component)) // Orion-Edit
             return false;
 
         AddTechnology(serverEnt.Value, prototype);
         //TrySetMainDiscipline(prototype, serverEnt.Value); // Goobstation commented
-        ModifyServerPoints(serverEnt.Value, -prototype.Cost);
+        TryConsumePoints(serverEnt.Value, finalCosts); // Orion-Edit
         UpdateTechnologyCards(serverEnt.Value);
 
         _adminLog.Add(LogType.Action, LogImpact.Medium,
             $"{ToPrettyString(user):player} unlocked {prototype.ID} (discipline: {prototype.Discipline}, tier: {prototype.Tier}) at {ToPrettyString(client)}, for server {ToPrettyString(serverEnt.Value)}.");
+        LogNetworkEvent(serverEnt.Value, "technology", Loc.GetString("research-netlog-technology-unlocked", ("technology", Loc.GetString(prototype.Name)), ("user", GetResearchLogUserName(user))), user); // Orion
         return true;
     }
 
@@ -134,7 +154,7 @@ public sealed partial class ResearchSystem
     ///     Adds a technology to the database without checking if it could be unlocked.
     /// </summary>
     [PublicAPI]
-    public void AddTechnology(EntityUid uid, string technology, TechnologyDatabaseComponent? component = null)
+    public void AddTechnology(EntityUid uid, string technology, TechnologyDatabaseComponent? component = null) // Orion-Edit: Was public
     {
         if (!Resolve(uid, ref component))
             return;
@@ -147,7 +167,7 @@ public sealed partial class ResearchSystem
     /// <summary>
     ///     Adds a technology to the database without checking if it could be unlocked.
     /// </summary>
-    public void AddTechnology(EntityUid uid, TechnologyPrototype technology, TechnologyDatabaseComponent? component = null)
+    private void AddTechnology(EntityUid uid, TechnologyPrototype technology, TechnologyDatabaseComponent? component = null)
     {
         if (!Resolve(uid, ref component))
             return;
@@ -159,13 +179,34 @@ public sealed partial class ResearchSystem
                 RaiseLocalEvent(generic.PurchaseEvent);
         }
 
-        component.UnlockedTechnologies.Add(technology.ID);
-        foreach (var unlock in technology.RecipeUnlocks)
+        // Orion-Edit-Start
+        if (!component.ResearchedTechnologies.Contains(technology.ID))
+            component.ResearchedTechnologies.Add(technology.ID);
+
+        foreach (var experiment in technology.UnlockedExperiments)
         {
-            if (component.UnlockedRecipes.Contains(unlock))
+            if (component.CompletedExperiments.Contains(experiment) || component.SkippedExperiments.Contains(experiment))
                 continue;
-            component.UnlockedRecipes.Add(unlock);
+
+            if (!component.AvailableExperiments.Contains(experiment))
+                component.AvailableExperiments.Add(experiment);
         }
+        // Orion-Edit-End
+
+        // Orion-Start
+        foreach (var infrastructure in technology.InfrastructureUnlocks)
+        {
+            if (!component.UnlockedInfrastructure.Contains(infrastructure))
+                component.UnlockedInfrastructure.Add(infrastructure);
+        }
+
+        if (technology.InfrastructureUnlock)
+        {
+            // Foundation hook for future infrastructure unlock effects.
+        }
+
+        RecalculateTechnologyState(uid, component);
+        // Orion-End
         Dirty(uid, component);
 
         var ev = new TechnologyDatabaseModifiedEvent(technology.RecipeUnlocks); // Goobstation - Lathe message on recipes update
@@ -177,26 +218,82 @@ public sealed partial class ResearchSystem
     ///     taking parent technologies into account.
     /// </summary>
     /// <returns>Whether it could be unlocked or not</returns>
-    public bool CanServerUnlockTechnology(EntityUid uid,
-        TechnologyPrototype technology,
-        TechnologyDatabaseComponent? database = null,
-        ResearchClientComponent? client = null)
+    private bool CanServerUnlockTechnology(EntityUid uid, TechnologyPrototype technology, out List<ResearchPointAmount> finalCosts, TechnologyDatabaseComponent? database = null, ResearchClientComponent? client = null) // Orion-Edit: Was public
     {
+        // Orion-Start
+        finalCosts = technology.PointCosts
+            .Select(cost => new ResearchPointAmount
+            {
+                Type = cost.Type,
+                Amount = cost.Amount,
+            })
+            .ToList();
+        // Orion-End
 
         if (!Resolve(uid, ref client, ref database, false))
             return false;
 
-        if (!TryGetClientServer(uid, out _, out var serverComp, client))
+        if (!TryGetClientServer(uid, out var serverUid, out var serverComp, client)) // Orion-Edit
             return false;
 
-        if (!IsTechnologyAvailable(database, technology))
+        // Orion-Start
+        if (!TryComp<TechnologyDatabaseComponent>(serverUid, out var serverDatabase))
             return false;
 
-        if (technology.Cost > serverComp.Points)
+        if (!CanUnlockTechnology(serverDatabase, technology))
             return false;
+
+        for (var i = 0; i < finalCosts.Count; i++)
+        {
+            if (finalCosts[i].Type != "General")
+                continue;
+
+            var updated = finalCosts[i];
+            updated.Amount = GetTechnologyFinalCost(serverDatabase, technology);
+            finalCosts[i] = updated;
+            break;
+        }
+
+        return HasSufficientPoints(serverUid.Value, finalCosts, serverComp);
+        // Orion-End
+    }
+
+    // Orion-Start
+    public override bool CanUnlockTechnology(TechnologyDatabaseComponent component, TechnologyPrototype tech)
+    {
+        if (!component.VisibleTechnologies.Contains(tech.ID))
+        {
+            _sawmill.Debug($"Cannot unlock {tech.ID}: not visible.");
+            return false;
+        }
+
+        if (component.ResearchedTechnologies.Contains(tech.ID))
+        {
+            _sawmill.Debug($"Cannot unlock {tech.ID}: already researched.");
+            return false;
+        }
+
+        if (!tech.AllRequiredTechnologies.All(prereq => component.ResearchedTechnologies.Contains(prereq)))
+        {
+            _sawmill.Debug($"Cannot unlock {tech.ID}: prerequisites not completed.");
+            return false;
+        }
+
+        if (!HasRequiredExperiments(component, tech))
+        {
+            _sawmill.Debug($"Cannot unlock {tech.ID}: required experiments not completed.");
+            return false;
+        }
+
+        if (!component.AvailableTechnologies.Contains(tech.ID))
+        {
+            _sawmill.Debug($"Cannot unlock {tech.ID}: tech is not available.");
+            return false;
+        }
 
         return true;
     }
+    // Orion-End
 
     private void OnDatabaseRegistrationChanged(EntityUid uid, TechnologyDatabaseComponent component, ref ResearchRegistrationChangedEvent args)
     {
@@ -205,8 +302,23 @@ public sealed partial class ResearchSystem
         component.MainDiscipline = null;
         component.CurrentTechnologyCards = new List<string>();
         component.SupportedDisciplines = new List<ProtoId<TechDisciplinePrototype>>();
-        component.UnlockedTechnologies = new List<ProtoId<TechnologyPrototype>>();
+        // Orion-Start
+        component.VisibleTechnologies = new List<ProtoId<TechnologyPrototype>>();
+        component.AvailableTechnologies = new List<ProtoId<TechnologyPrototype>>();
+        component.ResearchedTechnologies = new List<ProtoId<TechnologyPrototype>>();
+        component.AvailableExperiments = new List<string>();
+        component.UnlockedExperiments = new List<string>();
+        component.ActiveExperiments = new List<string>();
+        component.CompletedExperiments = new List<string>();
+        component.SkippedExperiments = new List<string>();
+        component.ExperimentProgress = new List<ResearchExperimentProgress>();
+        // Orion-End
         component.UnlockedRecipes = new List<ProtoId<LatheRecipePrototype>>();
+        // Orion-Start
+        component.RevealedTechnologies = new List<ProtoId<TechnologyPrototype>>();
+        component.DiscoveryProgress = new List<TechnologyDiscoveryProgress>();
+        component.UnlockedInfrastructure = new List<string>();
+        // Orion-End
         Dirty(uid, component);
     }
 }

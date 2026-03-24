@@ -1,0 +1,170 @@
+- type: technology
+  id: MedicalEquipment
+  name: research-technology-medical-equipment-name
+  description: research-technology-medical-equipment-desc
+  icon:
+    sprite: Objects/Specific/Medical/defib.rsi
+    state: icon
+  discipline: Medical
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  unlockedExperiments:
+  - AutopsyHuman
+  - AutopsyNonhuman
+  - AutopsyXenomorph
+  - ScanningReagentHaloperidol
+  - ScanningReagentCryostylane
+  recipeUnlocks:
+  - LargeBeaker
+  - Beaker
+  - Bloodpack
+  - Bonesetter
+  - Cautery
+  - SawElectric
+  - Defibrillator
+  - Dropper
+  - Hemostat
+  - PillCanister
+  - Retractor
+  - Scalpel
+  - ClothingNeckStethoscope
+  - MedicalStitches
+  - Drill
+  - Syringe
+  - PrescriptionGlasses
+  - BaseChemistryEmptyVial
+  - RollerBedSpawnFolded
+  - CheapRollerBedSpawnFolded
+  - EmergencyRollerBedSpawnFolded
+  - VehicleWheelchairFolded
+  - Cane
+  - OperatingTableCircuitboard
+  - BiomassReclaimerMachineCircuitboard
+  - BiofabricatorMachineCircuitboard
+  - ReagentGrinderIndustrialMachineCircuitboard
+  - Brutepack
+  - Ointment
+  - Gauze
+  - Jug
+  - ChemistryEmptyBottle01
+  - BodyBag
+  - WhiteCane
+  - OffsetCane
+  - OffsetCaneWood
+  - ClothingHandsGlovesLatex
+  - ClothingHandsGlovesNitrile
+  - ClothingMaskSterile
+  - Medkit
+  - MedkitBurn
+  - MedkitToxin
+  - MedkitO2
+  - MedkitBrute
+  - MedkitAdvanced
+  - MedkitRadiation
+  - Saw
+  - CartridgeAtropine
+  - CartridgeEpinephrine
+  - CartridgeBicaridine
+  - CartridgeDermaline
+  - CartridgeSaline
+  - ParamedHypo
+  - MedicalPatchBasic
+  - MedicalPatchRapid
+  - MedicalPatchTherapeutic
+  - MedicalPatchLarge
+  - MedicalCigPack
+  - SyringeCase
+  - NTBodyBag
+  - PrisonerBodyBag
+  - RadiationBodyBag
+  - MedkitCombat
+  - AdvancedBoneGel
+  - ClothingHandsGlovesSurgical
+  position: 7,10
+
+- type: technology
+  id: ChemSynthesis
+  name: research-technology-chem-synthesis-name
+  description: research-technology-chem-synthesis-desc
+  icon:
+    sprite: Structures/Machines/mixer.rsi
+    state: mixer_empty
+  discipline: Medical
+  tier: 1
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - MedicalEquipment
+  recipeUnlocks:
+  - SprayBottleRed
+  - SprayBottleBlue
+  - SprayBottleOrange
+  - BoneGel
+  - SodaDispenserMachineCircuitboard
+  - BoozeDispenserMachineCircuitboard
+  - ChemDispenserMachineCircuitboard
+  - EnergyChemDispenserMachineCircuitboard
+  - ChemMasterMachineCircuitboard
+  - HotplateMachineCircuitboard
+  - ElectrolysisUnitMachineCircuitboard
+  - CentrifugeMachineCircuitboard
+  position: 7,9
+
+- type: technology
+  id: AdvancedMedicalEquipment
+  name: research-technology-medical-equipment-adv-name
+  description: research-technology-medical-equipment-adv-desc
+  icon:
+    sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
+    state: scanner
+  discipline: Medical
+  tier: 3
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - ChemSynthesis
+  requiredExperiments:
+  - ScanningReagentHaloperidol
+  recipeUnlocks:
+  - HandheldCrewMonitor
+  - SyringeGun
+  - DefibrillatorCompact
+  position: 8,11
+
+- type: technology
+  id: Cryostasis
+  name: research-technology-cryostasis-name
+  description: research-technology-cryostasis-desc
+  icon:
+    sprite: Objects/Specific/Chemistry/beaker_cryostasis.rsi
+    state: beakernoreact
+  discipline: Medical
+  tier: 4
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - AdvancedMedicalEquipment
+  - Fusion
+  discountExperiments:
+  - ScanningReagentCryostylane
+  discountExperimentCosts:
+    ScanningReagentCryostylane: 10000
+  recipeUnlocks:
+  - CryoPodMachineCircuitboard
+  - CryostasisBeaker
+  - SyringeCryostasis
+  - StasisOperatingTableCircuitboard
+  - StasisBedMachineCircuitboard
+  position: 6,11

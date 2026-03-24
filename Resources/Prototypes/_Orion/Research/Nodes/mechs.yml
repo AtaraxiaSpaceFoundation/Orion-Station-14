@@ -1,0 +1,350 @@
+- type: technology
+  id: MechAssembly
+  name: research-technology-mech-assembly-name
+  description: research-technology-mech-assembly-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: ripley
+  discipline: Robotics
+  tier: 1
+  startingTechnology: true
+  pointCosts:
+  - type: General
+    amount: 500
+  technologyPrerequisites:
+  - Robotics
+  recipeUnlocks:
+  - RipleyHarness
+  - RipleyLArm
+  - RipleyRArm
+  - RipleyLLeg
+  - RipleyRLeg
+  - RipleyCentralElectronics
+  - RipleyPeripheralsElectronics
+  - MechEquipmentGrabberSmall
+  position: -8,4
+
+- type: technology
+  id: MechEquipment
+  name: research-technology-mech-equipment-name
+  description: research-technology-mech-equipment-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_clamp
+  discipline: Robotics
+  tier: 1
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - MechAssembly
+  recipeUnlocks:
+  - MechAirTank
+  - MechThruster
+  - MechEquipmentGrabber
+  - RipleyUpgradeKit
+  - RipleyMKIIHarness
+  position: -9,5
+
+- type: technology
+  id: MechClown
+  name: research-technology-mech-clown-name
+  description: research-technology-mech-clown-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: honker
+  discipline: Robotics
+  tier: 1
+  announceChannels:
+  - Science
+  - Security # The dread upon security when they hear this...
+  pointCosts:
+  - type: General
+    amount: 2500
+  technologyPrerequisites:
+  - MechAssembly
+  recipeUnlocks:
+  - HonkerHarness
+  - HonkerLArm
+  - HonkerRArm
+  - HonkerLLeg
+  - HonkerRLeg
+  - HonkerCentralElectronics
+  - HonkerPeripheralsElectronics
+  - HonkerTargetingElectronics
+  - MechEquipmentHorn
+  - MechEquipmentHonkerBananaMortar
+  - MechEquipmentHonkerMousetrapMortar
+  - HamtrHarness
+  - HamtrLArm
+  - HamtrRArm
+  - HamtrLLeg
+  - HamtrRLeg
+  - HamtrCentralElectronics
+  - HamtrPeripheralsElectronics
+  - VimHarness
+  position: -7,5
+
+- type: technology
+  id: MechMedical
+  name: research-technology-mech-medical-name
+  description: research-technology-mech-medical-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Robotics
+  tier: 2
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - MechAssembly
+  - ChemSynthesis
+  # TODO
+  position: -7,6
+
+- type: technology
+  id: MechMining
+  name: research-technology-mech-mining-name
+  description: research-technology-mech-mining-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: clarke
+  discipline: Robotics
+  tier: 2
+  announceChannels:
+  - Science
+  - Supply
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - MechEquipment
+  - Mining
+  recipeUnlocks:
+  - ClarkeHarness
+  - ClarkeTreads
+  - ClarkeHead
+  - ClarkeLArm
+  - ClarkeRArm
+  - ClarkeCentralElectronics
+  - ClarkePeripheralsElectronics
+  - MechEquipmentDrill
+  - MechEquipmentKineticAccelerator
+  position: -7,7
+
+- type: technology
+  id: MechCombat
+  name: research-technology-mech-combat-name
+  description: research-technology-mech-combat-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_disabler
+  discipline: Robotics
+  tier: 2
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 5000
+  technologyPrerequisites:
+  - MechEquipment
+  requiredExperiments:
+  - ScanningRandomMechaEquippedScan
+  recipeUnlocks:
+  - WeaponMechCombatDisabler
+  - WeaponMechCombatFlashbangLauncher
+  position: -9,6
+
+- type: technology
+  id: MechAssault
+  name: research-technology-mech-assault-name
+  description: research-technology-mech-assault-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: durand
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - MechCombat
+  recipeUnlocks:
+  - DurandArmor
+  - DurandHarness
+  - DurandHead
+  - DurandLArm
+  - DurandRArm
+  - DurandLLeg
+  - DurandRLeg
+  - DurandCentralElectronics
+  - DurandPeripheralsElectronics
+  - DurandTargetingElectronics
+  position: -7,8
+
+- type: technology
+  id: MechLight
+  name: research-technology-mech-light-name
+  description: research-technology-mech-light-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha.rsi
+    state: gygax
+  discipline: Robotics
+  tier: 3
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 7500
+  technologyPrerequisites:
+  - MechCombat
+  recipeUnlocks:
+  - GygaxArmor
+  - GygaxHarness
+  - GygaxHead
+  - GygaxLArm
+  - GygaxRArm
+  - GygaxLLeg
+  - GygaxRLeg
+  - GygaxCentralElectronics
+  - GygaxPeripheralsElectronics
+  - GygaxTargetingElectronics
+  position: -7,9
+
+- type: technology
+  id: MechHeavy
+  name: research-technology-mech-heavy-name
+  description: research-technology-mech-heavy-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Robotics
+  tier: 4
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - MechAssault
+  # TODO
+  position: -7,10
+
+- type: technology
+  id: MechInfiltrator
+  name: research-technology-mech-infiltrator-name
+  description: research-technology-mech-infiltrator-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Robotics
+  tier: 4
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - MechLight
+  - AnomalyResearch
+  # TODO
+  position: -7,11
+
+- type: technology
+  id: MechEnergyGuns
+  name: research-technology-mech-energy-guns-name
+  description: research-technology-mech-energy-guns-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_wholegen
+  discipline: Robotics
+  tier: 4
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 10000
+  technologyPrerequisites:
+  - MechCombat
+  - ElectricWeapons
+  discountExperiments:
+  - ScanningRandomMechaDamageScan
+  discountExperimentCosts:
+    ScanningRandomMechaDamageScan: 10000
+  recipeUnlocks:
+  - WeaponMechCombatSolarisLaser
+  - WeaponMechCombatFiredartLaser
+  - WeaponMechCombatImmolationGun
+  - WeaponMechCombatTeslaCannon
+  position: -9,7
+
+- type: technology
+  id: MechFirearms
+  name: research-technology-mech-firearms-name
+  description: research-technology-mech-firearms-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_scatter
+  discipline: Robotics
+  tier: 5
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - MechEnergyGuns
+  - ExoticAmmo
+  recipeUnlocks:
+  - WeaponMechCombatShotgunIncendiary
+  - WeaponMechCombatShotgun
+  - WeaponMechCombatUltraRifle
+  position: -9,8
+
+- type: technology
+  id: MechHeavyArms
+  name: research-technology-mech-heavy-arms-name
+  description: research-technology-mech-heavy-arms-desc
+  icon:
+    sprite: Objects/Specific/Mech/mecha_equipment.rsi
+    state: mecha_missilerack_six
+  discipline: Robotics
+  tier: 5
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - MechHeavy
+  - ExoticAmmo
+  recipeUnlocks:
+  - WeaponMechCombatMissileRack6
+  - WeaponMechCombatMissileRack8
+  - WeaponMechChainSword
+  position: -9,9
+
+- type: technology
+  id: MechEquipmentBluespace
+  name: research-technology-mech-equipment-bluespace-name
+  description: research-technology-mech-equipment-bluespace-desc
+  icon:
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
+  discipline: Robotics
+  tier: 5
+  announceChannels:
+  - Science
+  pointCosts:
+  - type: General
+    amount: 12500
+  technologyPrerequisites:
+  - MechInfiltrator
+  - BluespaceTravel
+  # TODO
+  position: -9,10
