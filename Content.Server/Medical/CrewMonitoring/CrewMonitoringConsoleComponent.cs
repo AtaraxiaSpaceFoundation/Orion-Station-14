@@ -92,7 +92,7 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan? EmagExpireTime = null;
 
-    public static readonly TimeSpan EmagDuration = TimeSpan.FromSeconds(60);
+    public static readonly TimeSpan EmagDuration = TimeSpan.FromSeconds(15);
 
     /// <summary>
     ///     Emag sound effects.
