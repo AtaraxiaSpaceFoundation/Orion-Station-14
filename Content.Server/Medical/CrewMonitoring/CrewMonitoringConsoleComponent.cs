@@ -39,7 +39,7 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// What departments this monitor can see. If empty, shows all departments.
     /// YAML example: departments: [ Medical, Security ]
     /// </summary>
-    [DataField("departments")]
+    [DataField]
     public List<ProtoId<DepartmentPrototype>> Departments = new();
 
     /// <summary>
