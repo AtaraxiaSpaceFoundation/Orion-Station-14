@@ -1,0 +1,8 @@
+# hop
+
+- type: stealTargetGroup
+  id: HoPClipboardID
+  name: steal-target-groups-hop-clipboard-id
+  sprite:
+    sprite: _Orion/Objects/Devices/hop_clipboard.rsi
+    state: icon

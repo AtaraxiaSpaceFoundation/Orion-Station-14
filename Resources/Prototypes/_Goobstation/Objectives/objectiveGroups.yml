@@ -22,6 +22,7 @@
     LingMagbootsStealObjective: 1
     LingCorgiMeatStealObjective: 1
     LingClipboardStealObjective: 1
+    LingClipboardIDStealObjective: 1000 # Orion
     LingCaptainGunStealObjective: 1
     LingCaptainJetpackStealObjective: 1
     LingHandTeleporterStealObjective: 1

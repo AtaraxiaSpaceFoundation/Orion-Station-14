@@ -1,0 +1,11 @@
+## hop
+
+- type: entity
+  parent: ChangelingStealObjective
+  id: LingClipboardIDStealObjective
+  components:
+  - type: NotJobRequirement
+    job: HeadOfPersonnel
+  - type: StealCondition
+    stealGroup: HoPClipboardID
+    owner: job-name-hop

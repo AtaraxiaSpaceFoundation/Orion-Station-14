@@ -26,6 +26,7 @@
     # CorporateCERocketLauncherStealObjective: 1
     CorporateCorgiMeatStealObjective: 1
     CorporateClipboardStealObjective: 1
+    CorporateClipboardIDStealObjective: 0.5 # Orion
     CorporateCaptainGunStealObjective: 0.5
     CorporateCaptainJetpackStealObjective: 0.5
     CorporateHandTeleporterStealObjective: 0.5
