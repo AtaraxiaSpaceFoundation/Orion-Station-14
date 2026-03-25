@@ -29,6 +29,7 @@ using Content.Shared.Bed.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Emag.Systems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensor;
@@ -74,7 +75,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         foreach (var component in EntityQuery<CrewMonitoringConsoleComponent>())
         {
 
-            if (component.EmagExpireTime.HasValue && _gameTiming.CurTime >= component.EmagExpireTime.Value) // Orion: emag expiry timer
+            if (component.EmagExpireTime.HasValue && _gameTiming.CurTime >= component.EmagExpireTime.Value) // Emag expiry timer
             {
                 component.EmagExpireTime = null;
                 UpdateUserInterface(component.Owner, component);
@@ -249,10 +250,9 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 })
                 .ToList();
         }
-        // Orion-End
-        // Orion-Start: For Emag
 
-        var effectiveIsEmagged = component.IsEmagged || component.EmagExpireTime.HasValue;
+        var temporaryEmagged = component.EmagExpireTime is { } expireAt && _gameTiming.CurTime < expireAt;
+        var effectiveIsEmagged = component.IsEmagged || temporaryEmagged; // For Emag
         if (!effectiveIsEmagged)
         {
             allSensors = allSensors
@@ -301,11 +301,14 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     // Orion-Start
     private void OnEmagged(EntityUid uid, CrewMonitoringConsoleComponent component, ref GotEmaggedEvent ev)
     {
-        if (ev.Handled || component.IsEmagged || component.EmagExpireTime.HasValue)
+        var temporaryEmagged = component.EmagExpireTime is { } expireAt && _gameTiming.CurTime < expireAt;
+        if (ev.Handled || component.IsEmagged || temporaryEmagged)
             return;
 
         _audio.PlayPvs(component.SparkSound, uid);
-        _popup.PopupEntity(Loc.GetString("crew-monitoring-component-upgrade-emag"), uid);
+        _popup.PopupEntity(
+            Loc.GetString("emag-success", ("target", Identity.Entity(uid, EntityManager))),
+            uid);
 
         component.EmagExpireTime = _gameTiming.CurTime + CrewMonitoringConsoleComponent.EmagDuration;
         UpdateUserInterface(uid, component);

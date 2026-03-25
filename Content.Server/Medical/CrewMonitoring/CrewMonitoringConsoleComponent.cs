@@ -89,7 +89,7 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Expiry time for a temporary emag triggered by the emag tool.
     ///     Null if not temporarily emagged. Never set by YAML.
     /// </summary>
-    [DataField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan? EmagExpireTime = null;
 
     public static readonly TimeSpan EmagDuration = TimeSpan.FromSeconds(15);

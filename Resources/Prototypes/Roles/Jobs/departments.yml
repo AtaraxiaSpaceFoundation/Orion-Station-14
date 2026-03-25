@@ -172,7 +172,7 @@
   - SpecialOperationsOfficer
   - Diplomat
   - GovernmentMan # Goobstation - End
-  editorHidden: false # Orion-Edit: true > false
+#  editorHidden: false # Orion-Edit: true > false
 #  weight: 120 # Orion-Edit: Moved
 
 - type: department
