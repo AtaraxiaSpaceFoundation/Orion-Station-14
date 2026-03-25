@@ -82,14 +82,14 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     ///     Permanently displays everyone regardless of sensor mode.
     ///     Set via YAML for special consoles (e.g. death squad monitor).
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public bool IsEmagged = false;
 
     /// <summary>
     ///     Expiry time for a temporary emag triggered by the emag tool.
     ///     Null if not temporarily emagged. Never set by YAML.
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public TimeSpan? EmagExpireTime = null;
 
     public static readonly TimeSpan EmagDuration = TimeSpan.FromSeconds(15);
@@ -97,7 +97,7 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// <summary>
     ///     Emag sound effects.
     /// </summary>
-    [DataField("sparkSound")]
+    [DataField]
     public SoundSpecifier SparkSound = new SoundCollectionSpecifier("sparks")
     {
         Params = AudioParams.Default.WithVolume(8),

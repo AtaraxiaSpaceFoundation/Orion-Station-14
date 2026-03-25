@@ -74,13 +74,11 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         foreach (var component in EntityQuery<CrewMonitoringConsoleComponent>())
         {
 
-            // Orion-Start: emag expiry timer
-            if (component.EmagExpireTime.HasValue && _gameTiming.CurTime >= component.EmagExpireTime.Value)
+            if (component.EmagExpireTime.HasValue && _gameTiming.CurTime >= component.EmagExpireTime.Value) // Orion: emag expiry timer
             {
                 component.EmagExpireTime = null;
                 UpdateUserInterface(component.Owner, component);
             }
-            // Orion-End
 
             if (_gameTiming.CurTime < component.NextAlertTime)
                 continue;
@@ -96,7 +94,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 continue;
             }
 
-            var hasUnsecuredCorpse = HasUnsecuredCorpse(component);
+            var hasUnsecuredCorpse = HasUnsecuredCorpse(uid, component);
             TriggerAlert(uid, component, hasUnsecuredCorpse);
         }
     }
@@ -137,9 +135,18 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         }
     }
 
-    private bool HasUnsecuredCorpse(CrewMonitoringConsoleComponent component)
+
+    private bool HasUnsecuredCorpse(EntityUid uid, CrewMonitoringConsoleComponent component)
     {
-        foreach (var sensor in component.ConnectedSensors.Values)
+        IEnumerable<SuitSensorStatus> sensors = component.ConnectedSensors.Values;
+
+        if (component.Departments.Count > 0)
+        {
+            var allowed = component.Departments.Select(d => d.ToString()).ToHashSet();
+            sensors = sensors.Where(s => s.JobDepartments != null && s.JobDepartments.Any(dep => allowed.Contains(dep)));
+        }
+
+        foreach (var sensor in sensors)
         {
             // Check for corpses with coordinates sensor mode
             if (sensor.IsAlive || sensor.Coordinates == null)
@@ -224,10 +231,26 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             var allowed = component.Departments.Select(d => d.ToString()).ToHashSet();
             allSensors = allSensors
                 .Where(s => s.JobDepartments != null && s.JobDepartments.Any(dep => allowed.Contains(dep)))
+                .Select(s => new SuitSensorStatus(
+                    s.OwnerUid,
+                    s.SuitSensorUid,
+                    s.Name,
+                    s.Job,
+                    s.JobIcon,
+                    s.JobDepartments!.Where(dep => allowed.Contains(dep)).ToList(),
+                    s.Mode)
+                {
+                    IsAlive = s.IsAlive,
+                    TotalDamage = s.TotalDamage,
+                    TotalDamageThreshold = s.TotalDamageThreshold,
+                    Coordinates = s.Coordinates,
+                    IsCommandTracker = s.IsCommandTracker,
+                    Timestamp = s.Timestamp,
+                })
                 .ToList();
         }
         // Orion-End
-        // Orion-Edit-Start: For Emag
+        // Orion-Start: For Emag
 
         var effectiveIsEmagged = component.IsEmagged || component.EmagExpireTime.HasValue;
         if (!effectiveIsEmagged)
@@ -258,6 +281,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 })
                 .ToList();
         }
+        // Orion-End
         // GoobStation - Start
         var isCommandOnly = HasComp<CrewMonitorScanningComponent>(uid);
 
@@ -273,6 +297,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         //var allSensors = component.ConnectedSensors.Values.ToList();
         //_uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(allSensors));
     }
+
     // Orion-Start
     private void OnEmagged(EntityUid uid, CrewMonitoringConsoleComponent component, ref GotEmaggedEvent ev)
     {
