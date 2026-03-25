@@ -146,16 +146,12 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             sensors = sensors.Where(s => s.JobDepartments != null && s.JobDepartments.Any(dep => allowed.Contains(dep)));
         }
 
-        foreach (var sensor in sensors)
+        foreach (var s in sensors)
         {
-            // Check for corpses with coordinates sensor mode
-            if (sensor.IsAlive || sensor.Coordinates == null)
+            if (s.Mode != SuitSensorMode.SensorCords)
                 continue;
 
-            if (!TryGetEntity(sensor.OwnerUid, out var corpse) || Deleted(corpse.Value))
-                continue;
-
-            if (!IsCorpseSecured(corpse.Value))
+            if (!s.IsAlive)
                 return true;
         }
 
