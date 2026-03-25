@@ -133,6 +133,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -141,6 +142,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players;
 using Content.Shared.Players.RateLimiting;
+using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Station.Components;
 using Content.Shared.Whitelist;
@@ -188,6 +190,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
     [Dependency] private readonly ChatProtectionSystem _chatProtection = default!; // Orion
     [Dependency] private readonly EmoteProtectionSystem _emoteProtection = default!; // Orion
+    [Dependency] private readonly SharedPopupSystem _popup = default!; // Orion
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -412,7 +415,18 @@ public sealed partial class ChatSystem : SharedChatSystem
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
         {
-            if (TryProccessRadioMessage(source, message, out var modMessage, out var channel))
+            // Orion-Start
+            if (IsRadioPrefixMessage(message) && !CanUseRadio(source))
+            {
+                if (TryProccessRadioMessage(source, message, out var fallbackMessage, out _, quiet: true))
+                    message = fallbackMessage;
+
+                desiredType = InGameICChatType.Whisper;
+                checkRadioPrefix = false;
+            }
+            // Orion-End
+
+            if (checkRadioPrefix && TryProccessRadioMessage(source, message, out var modMessage, out var channel)) // Orion-Edit
             {
                 SendEntityWhisper(source, modMessage, range, channel, nameOverride, language, hideLog, ignoreActionBlocker, colorOverride); // Goob edit & Einstein Engines - Language
                 return;
@@ -458,6 +472,32 @@ public sealed partial class ChatSystem : SharedChatSystem
                 break;
         }
     }
+
+    // Orion-Start
+    private bool IsRadioPrefixMessage(string message)
+    {
+        return message.StartsWith(RadioCommonPrefix) ||
+               message.StartsWith(RadioChannelPrefix) ||
+               message.StartsWith(RadioChannelAltPrefix);
+    }
+
+    private bool CanUseRadio(EntityUid source)
+    {
+        if (_mobStateSystem.IsCritical(source))
+        {
+            _popupSystem.PopupEntity(Loc.GetString("chat-manager-cannot-radio-while-critical"), source, source);
+            return false;
+        }
+
+        if (TryComp<CuffableComponent>(source, out var cuffable) && cuffable.CuffedHandCount > 0)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("chat-manager-cannot-radio-with-bound-hands"), source, source);
+            return false;
+        }
+
+        return true;
+    }
+    // Orion-End
 
     public void TrySendInGameOOCMessage(
         EntityUid source,
