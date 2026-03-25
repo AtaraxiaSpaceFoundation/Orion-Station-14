@@ -10,6 +10,7 @@
 using System.Linq;
 using Content.Server.Popups;
 using Content.Server.Research.Systems;
+using Content.Shared._Orion.Research;
 using Content.Shared.Interaction;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
@@ -37,7 +38,20 @@ namespace Content.Server.Research.Disk
             if (!TryComp<ResearchServerComponent>(args.Target, out var server))
                 return;
 
-            _research.ModifyServerPoints(args.Target.Value, component.Points, server);
+            // Orion-Edit-Start
+            if (component.PointBalances.Count > 0)
+            {
+                foreach (var balance in component.PointBalances)
+                {
+                    _research.ModifyServerPoints(args.Target.Value, balance.Type, balance.Amount, server);
+                }
+            }
+            else
+            {
+                _research.ModifyServerPoints(args.Target.Value, component.Points, server);
+            }
+            // Orion-Edit-End
+
             _research.LogNetworkEvent(args.Target.Value, "disk", Loc.GetString("research-netlog-disk-points-applied", ("points", component.Points)), args.User); // Orion
             _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
             QueueDel(uid);
@@ -55,6 +69,18 @@ namespace Content.Server.Research.Disk
                     .Where(cost => cost.Type == "General")
                     .Sum(cost => cost.Amount));
                 // Orion-Edit-End
+
+                // Orion-Start
+                component.PointBalances = _prototype.EnumeratePrototypes<TechnologyPrototype>()
+                    .SelectMany(tech => tech.PointCosts)
+                    .GroupBy(cost => cost.Type)
+                    .Select(group => new ResearchPointAmount
+                    {
+                        Type = group.Key,
+                        Amount = group.Sum(cost => cost.Amount),
+                    })
+                    .ToList();
+                // Orion-End
         }
     }
 }

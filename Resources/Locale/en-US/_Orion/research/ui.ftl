@@ -12,20 +12,20 @@ research-point-type-general = General
 research-point-type-experimental = Experimental
 research-point-type-industrial = Industrial
 
-research-log-category-network = Network
-research-log-category-technology = Technology
-research-log-category-disk = Data disk
-research-log-category-experiment = Experiment
-research-log-category-destructive-analyzer = Destructive analyzer
-research-log-category-experiment-scanner = Experi-scanner
-research-log-category-experimental-destructive-scanner = Experimental destructive scanner
+research-log-category-network = [Network]
+research-log-category-technology = [Technology]
+research-log-category-disk = [Data disk]
+research-log-category-experiment = [Experiment]
+research-log-category-destructive-analyzer = [Destructive analyzer]
+research-log-category-experiment-scanner = [Experi-scanner]
+research-log-category-experimental-destructive-scanner = [Experimental destructive scanner]
+research-log-category-discovery = [Discovery]
+research-log-category-server-control = [Server control]
+research-log-category-admin = [Admin]
 
 research-console-logs-empty = No log entries.
 research-server-name-base = R&D-Server
 research-server-name-with-suffix = R&D-Server { $suffix }
-
-research-log-category-discovery = Discovery
-research-log-category-server-control = Server control
 
 research-console-unlock-failed-popup = Cannot research this technology yet.
 research-console-experiments-title = Experiments

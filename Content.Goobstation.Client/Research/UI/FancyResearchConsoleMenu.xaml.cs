@@ -219,21 +219,21 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         return _loc.TryGetString(key, out var localized) ? localized : type;
     }
 
-    private static string GetLocalizedLogCategory(string category)
+    private string GetLocalizedLogCategory(string category)
     {
-        return category switch
-        {
-            "network" => Loc.GetString("research-log-category-network"),
-            "technology" => Loc.GetString("research-log-category-technology"),
-            "disk" => Loc.GetString("research-log-category-disk"),
-            "experiment" => Loc.GetString("research-log-category-experiment"),
-            "destructive-analyzer" => Loc.GetString("research-log-category-destructive-analyzer"),
-            "experi-scanner" => Loc.GetString("research-log-category-experiment-scanner"),
-            "experimental-destructive-scanner" => Loc.GetString("research-log-category-experimental-destructive-scanner"),
-            "discovery" => Loc.GetString("research-log-category-discovery"),
-            "server-control" => Loc.GetString("research-log-category-server-control"),
-            _ => category,
-        };
+        var key = NormalizeLogCategoryKey(category);
+        return _loc.TryGetString(key, out var localized) ? localized : category;
+    }
+
+    private static string NormalizeLogCategoryKey(string category)
+    {
+        const string prefix = "research-log-category-";
+
+        if (category.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+            return category.ToLowerInvariant();
+
+        var normalized = category.Trim().Replace("_", "-").Replace(" ", "-").ToLowerInvariant();
+        return $"{prefix}{normalized}";
     }
 
     private void ToggleJournalWindow()

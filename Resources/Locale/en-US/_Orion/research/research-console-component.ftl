@@ -26,3 +26,6 @@ research-netlog-experimental-destructive-scanner-progress-yes = yes
 research-netlog-experimental-destructive-scanner-progress-no = no
 
 research-netlog-user-system = System
+research-netlog-admin-unlocked-all-technologies = { $user } executed admin unlock-all technologies operation.
+research-netlog-admin-added-points = { $user } added research points: { $type } { $amount }, new balance { $balance }.
+research-netlog-user-admin = NanoTrasen

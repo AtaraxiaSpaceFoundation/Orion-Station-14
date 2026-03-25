@@ -12,20 +12,20 @@ research-point-type-general = Общие
 research-point-type-experimental = Экспериментальные
 research-point-type-industrial = Промышленные
 
-research-log-category-network = Сеть
-research-log-category-technology = Технологии
-research-log-category-disk = Диск
-research-log-category-experiment = Эксперимент
-research-log-category-destructive-analyzer = Деструктивный анализатор
-research-log-category-experiment-scanner = Экспери-сканер
-research-log-category-experimental-destructive-scanner = Экспериментальный деструктивный сканер
+research-log-category-network = [Сеть]
+research-log-category-technology = [Технологии]
+research-log-category-disk = [Диск]
+research-log-category-experiment = [Эксперимент]
+research-log-category-destructive-analyzer = [Деструктивный анализатор]
+research-log-category-experiment-scanner = [Экспери-сканер]
+research-log-category-experimental-destructive-scanner = [Экспериментальный деструктивный сканер]
+research-log-category-discovery = [Открытие]
+research-log-category-server-control = [Управление]
+research-log-category-admin = [Админ]
 
 research-console-logs-empty = Нет записей.
 research-server-name-base = РнД-сервер
 research-server-name-with-suffix = РнД-сервер { $suffix }
-
-research-log-category-discovery = Открытие
-research-log-category-server-control = Управление
 
 research-console-unlock-failed-popup = Невозможно исследовать эту технологию.
 research-console-experiments-title = Эксперименты

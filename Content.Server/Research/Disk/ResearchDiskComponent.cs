@@ -6,6 +6,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared._Orion.Research;
+
 namespace Content.Server.Research.Disk
 {
     [RegisterComponent]
@@ -13,6 +15,11 @@ namespace Content.Server.Research.Disk
     {
         [DataField("points"), ViewVariables(VVAccess.ReadWrite)]
         public int Points = 1000;
+
+        // Orion-Start
+        [DataField]
+        public List<ResearchPointAmount> PointBalances = new();
+        // Orion-End
 
         /// <summary>
         /// If true, the value of this disk will be set to the sum
