@@ -39,7 +39,16 @@
     layers: # Orion-Edit
     - state: scanner
     - state: scanner-light
+      map: ["light"]
       shader: unshaded
+      visible: false
+  - type: GenericVisualizer # Orion
+    visuals:
+      enum.PowerCellSlotVisuals.Enabled:
+        light:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Appearance
   - type: ActivatableUI
     key: enum.CrewMonitoringUIKey.Key
   - type: UserInterface
