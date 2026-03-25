@@ -72,13 +72,20 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var component in EntityQuery<CrewMonitoringConsoleComponent>())
+        var query = EntityQueryEnumerator<CrewMonitoringConsoleComponent>();
+        while (query.MoveNext(out var uid, out var component))
         {
 
             if (component.EmagExpireTime.HasValue && _gameTiming.CurTime >= component.EmagExpireTime.Value) // Emag expiry timer
             {
                 component.EmagExpireTime = null;
-                UpdateUserInterface(component.Owner, component);
+                UpdateUserInterface(uid, component);
+            }
+
+            if (!this.IsPowered(uid, EntityManager))
+            {
+                RemCompDeferred<JitteringComponent>(uid);
+                continue;
             }
 
             if (_gameTiming.CurTime < component.NextAlertTime)
@@ -86,14 +93,6 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
             if (!component.DoAlert)
                 continue;
-
-            var uid = component.Owner;
-
-            if (!this.IsPowered(uid, EntityManager))
-            {
-                RemCompDeferred<JitteringComponent>(uid);
-                continue;
-            }
 
             var hasUnsecuredCorpse = HasUnsecuredCorpse(uid, component);
             TriggerAlert(uid, component, hasUnsecuredCorpse);
