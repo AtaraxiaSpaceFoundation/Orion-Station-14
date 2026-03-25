@@ -123,7 +123,7 @@
     # CERocketLauncherStealObjective: 1
     CorgiMeatStealObjective: 1
     ClipboardStealObjective: 1
-    ClipboardIDStealObjective: 100000 # Orion
+    ClipboardIDStealObjective: 1 # Orion
     CaptainGunStealObjective: 0.5
     CaptainJetpackStealObjective: 0.5
     HandTeleporterStealObjective: 0.5
