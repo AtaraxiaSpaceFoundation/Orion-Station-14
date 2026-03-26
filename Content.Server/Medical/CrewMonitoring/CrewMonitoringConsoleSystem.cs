@@ -151,7 +151,13 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             if (s.Mode != SuitSensorMode.SensorCords)
                 continue;
 
-            if (!s.IsAlive)
+            if (s.IsAlive || s.Coordinates == null)
+                continue;
+
+            if (!TryGetEntity(s.OwnerUid, out var corpse) || Deleted(corpse.Value))
+                continue;
+
+            if (!IsCorpseSecured(corpse.Value))
                 return true;
         }
 
