@@ -505,8 +505,8 @@ public sealed class SuitSensorSystem : EntitySystem
             totalDamageThreshold = critThreshold.Value.Int();
 
         // finally, form suit sensor status
-        var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(uid), userName, userJob, userJobIcon, userJobDepartments, sensor.Mode); // Orion-Edit
         // Orion-Edit-Start: always store full data for all modes; mode-based projection is done server-side in UpdateUserInterface before sending to client
+        var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(uid), userName, userJob, userJobIcon, userJobDepartments, sensor.Mode);
                 status.IsAlive = isAlive;
                 status.TotalDamage = totalDamage;
                 status.TotalDamageThreshold = totalDamageThreshold;
