@@ -38,10 +38,10 @@
       NerveDamage: 0
     modifiers:
       coefficients:
-        Blunt: 0.3
-        Slash: 0.3
+        Blunt: 0.35 # Orion-Edit: 0.3 > 0.35
+        Slash: 0.35 # Orion-Edit: 0.3 > 0.35
         Piercing: 0.4 # Orion-Edit: 0.3 > 0.4
-        Heat: 0.4 # Orion-Edit: 0.3 > 0.4
+        Heat: 0.5 # Orion-Edit: 0.3 > 0.5
         Radiation: 0.75
         Caustic: 0.75
   - type: ExplosionResistance
