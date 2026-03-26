@@ -41,9 +41,9 @@
   description: For a CMO that has been in enough medbays to know that more PPE means less central command dry cleaning visits when the shift is over.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/mantles/cmomantle.rsi
+    sprite: Clothing/Neck/mantles/cmomantle.rsi # Orion-Edit: Reset to base
   - type: Clothing
-    sprite: Clothing/Neck/mantles/cmomantle.rsi
+    sprite: Clothing/Neck/mantles/cmomantle.rsi # Orion-Edit: Reset to base
 
 - type: entity
   parent: [ClothingNeckBase, BaseCommandContraband]

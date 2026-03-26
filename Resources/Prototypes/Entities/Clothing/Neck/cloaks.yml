@@ -100,7 +100,7 @@
   description: A sterile blue cloak with a green cross, radiating with a sense of duty and willingness to help others.
   components:
   - type: Sprite
-    sprite: Clothing/Neck/Cloaks/cmo.rsi
+    sprite: Clothing/Neck/Cloaks/cmo.rsi # Orion-Edit: Reset to base
   - type: StealTarget
     stealGroup: HeadCloak
 
