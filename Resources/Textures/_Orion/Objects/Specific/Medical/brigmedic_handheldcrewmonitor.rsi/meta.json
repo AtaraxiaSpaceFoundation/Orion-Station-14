@@ -5,13 +5,14 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Based on sprite from TG. Sprited by UmbiMax. Inhand sprites taken from ADT at commit https://github.com/AdventureTimeSS14/space_station_ADT/commit/7d0c21fb2717598819b9c67953f67407023172a5.",
+    "copyright": "Based on sprite from TG. Sprited by UmbiMax",
     "states": [
         {
             "name": "scanner"
         },
         {
             "name": "scanner-light",
+            "directions": 1,
             "delays": [
                 [
                     0.2,

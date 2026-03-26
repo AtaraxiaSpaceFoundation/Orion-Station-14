@@ -105,7 +105,7 @@
   description: department-Cargo-description
   color: "#A46106"
   # Orion-Start
-  weight: -5
+  weight: -7
   buttonStyle: ButtonColorCargoDepartment
   # Orion-End
   roles:
@@ -120,7 +120,7 @@
   description: department-Civilian-description
   color: "#9FED58"
   # Orion-Start
-  weight: -4
+  weight: -8
   buttonStyle: ButtonColorCivilianDepartment
   # Orion-End
   roles:
@@ -149,7 +149,7 @@
   description: department-CentralCommand-description
   color: "#0c344d"
   # Orion-Start
-  weight: -1
+  weight: -2
   buttonStyle: ButtonColorCentralCommandDepartment
   # Orion-End
   roles:
@@ -172,7 +172,7 @@
   - SpecialOperationsOfficer
   - Diplomat
   - GovernmentMan # Goobstation - End
-  editorHidden: true
+#  editorHidden: true # Orion-Edit: true > false
 #  weight: 120 # Orion-Edit: Moved
 
 - type: department
@@ -181,7 +181,7 @@
   description: department-Command-description
   color: "#334E6D"
   # Orion-Start
-  weight: -2
+  weight: -1
   buttonStyle: ButtonColorCommandDepartment
   # Orion-End
   roles:
@@ -192,9 +192,11 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
-  - BlueshieldOfficer # Goobstation 
-  - NanotrasenRepresentative # Goobstation
-  - NanotrasenCareerTrainer # Goobstation
+  # Orion-Edit-Start: Now it only in (CentralCommand)
+#  - BlueshieldOfficer # Goobstation
+#  - NanotrasenRepresentative # Goobstation
+#  - NanotrasenCareerTrainer # Goobstation
+  # Orion-Edit-End
   - CentralCommandOfficial
   - CBURN
   - ERTLeader
@@ -215,7 +217,7 @@
   description: department-Engineering-description
   color: "#EFB341"
   # Orion-Start
-  weight: -6
+  weight: -4
   buttonStyle: ButtonColorEngineeringDepartment
   # Orion-End
   roles:
@@ -230,7 +232,7 @@
   description: department-Medical-description
   color: "#52B4E9"
   # Orion-Start
-  weight: -7
+  weight: -6
   buttonStyle: ButtonColorMedicalDepartment
   # Orion-End
   roles:
@@ -266,7 +268,7 @@
   description: department-Science-description
   color: "#D381C9"
   # Orion-Start
-  weight: -8
+  weight: -5
   buttonStyle: ButtonColorScienceDepartment
   # Orion-End
   roles:

@@ -1,0 +1,10 @@
+- type: entity
+  parent: HandheldCrewMonitor
+  id: HandheldCrewMonitorBrigmedic
+  name: brigmedic crew monitor
+  description: A hand-held crew monitor showing security personnel only.
+  components:
+  - type: CrewMonitoringConsole
+    departments: [ Security, Command ]
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Medical/brigmedic_handheldcrewmonitor.rsi

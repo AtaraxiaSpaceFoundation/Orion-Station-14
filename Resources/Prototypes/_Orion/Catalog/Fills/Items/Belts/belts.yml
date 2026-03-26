@@ -27,7 +27,7 @@
       - id: Bloodpack
       - id: SprayBottleStypticPowder
       - id: SprayBottleSilverSulfadiazine
-      - id: HandheldCrewMonitor
+      - id: HandheldCrewMonitorBrigmedic
       - id: PillCanisterBicaridine
       - id: PillCanisterDermaline
       - id: PillCanisterDylovene
