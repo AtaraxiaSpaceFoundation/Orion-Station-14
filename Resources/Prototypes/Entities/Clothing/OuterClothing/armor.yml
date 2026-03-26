@@ -572,7 +572,7 @@
         Blunt: 0.3
         Slash: 0.3
         Piercing: 0.4
-        Heat: 0.3
+        Heat: 0.4 # Orion-Edit: 0.3 > 0.4
         Caustic: 0.75
   - type: ClothingSpeedModifier
     walkModifier: 1.0

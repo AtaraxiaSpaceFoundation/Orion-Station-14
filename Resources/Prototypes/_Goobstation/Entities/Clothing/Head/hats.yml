@@ -40,8 +40,8 @@
       coefficients:
         Blunt: 0.3
         Slash: 0.3
-        Piercing: 0.3
-        Heat: 0.3
+        Piercing: 0.4 # Orion-Edit: 0.3 > 0.4
+        Heat: 0.4 # Orion-Edit: 0.3 > 0.4
         Radiation: 0.75
         Caustic: 0.75
   - type: ExplosionResistance

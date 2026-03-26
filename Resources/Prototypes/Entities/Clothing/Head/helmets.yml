@@ -230,13 +230,13 @@
     modifiers:
       coefficients:
         Blunt: 0.35
-        Slash: 0.35
+        Slash: 0.25 # Orion-Edit: 0.35 > 0.25
         Piercing: 0.35
         Heat: 0.35
         Radiation: 0.75
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.75
+    damageCoefficient: 0.6 # Orion-Edit: 0.75 > 0.6
   - type: FlashSoundSuppression # Goobstation
   - type: FaceHuggerBlocker # Goobstation
   #- type: HideLayerClothing    #Goobstation
