@@ -74,7 +74,9 @@ public sealed partial class ResearchSystem
         primaryDb.ActiveExperiments = new List<string>(otherDb.ActiveExperiments);
         primaryDb.CompletedExperiments = new List<string>(otherDb.CompletedExperiments);
         primaryDb.SkippedExperiments = new List<string>(otherDb.SkippedExperiments);
-        primaryDb.ExperimentProgress = new List<ResearchExperimentProgress>(otherDb.ExperimentProgress);
+        primaryDb.ExperimentProgress = otherDb.ExperimentProgress
+            .Select(CloneExperimentProgress)
+            .ToList();
         // Orion-End
         primaryDb.UnlockedRecipes = new List<ProtoId<LatheRecipePrototype>>(otherDb.UnlockedRecipes); // Orion-Edit
         // Orion-Start
@@ -162,8 +164,7 @@ public sealed partial class ResearchSystem
         TryConsumePoints(serverEnt.Value, finalCosts); // Orion-Edit
         UpdateTechnologyCards(serverEnt.Value);
 
-        _adminLog.Add(LogType.Action, LogImpact.Medium,
-            $"{ToPrettyString(user):player} unlocked {prototype.ID} (discipline: {prototype.Discipline}, tier: {prototype.Tier}) at {ToPrettyString(client)}, for server {ToPrettyString(serverEnt.Value)}.");
+        _adminLog.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} unlocked {prototype.ID} (discipline: {prototype.Discipline}, tier: {prototype.Tier}) at {ToPrettyString(client)}, for server {ToPrettyString(serverEnt.Value)}.");
         LogNetworkEvent(serverEnt.Value, "technology", Loc.GetString("research-netlog-technology-unlocked", ("technology", Loc.GetString(prototype.Name)), ("user", GetResearchLogUserName(user))), user); // Orion
         return true;
     }
@@ -339,4 +340,19 @@ public sealed partial class ResearchSystem
         // Orion-End
         Dirty(uid, component);
     }
+
+    // Orion-Start
+    private static ResearchExperimentProgress CloneExperimentProgress(ResearchExperimentProgress source)
+    {
+        return new ResearchExperimentProgress
+        {
+            ExperimentId = source.ExperimentId,
+            Progress = source.Progress,
+            Target = source.Target,
+            UniqueProgressKeys = new HashSet<string>(source.UniqueProgressKeys),
+            ScannedEntities = new HashSet<NetEntity>(source.ScannedEntities),
+            CompletedAt = source.CompletedAt,
+        };
+    }
+    // Orion-End
 }
