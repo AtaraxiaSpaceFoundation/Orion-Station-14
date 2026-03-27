@@ -46,6 +46,7 @@ public sealed partial class ResearchSystem
         AssignServerName(component);
         LogNetworkEvent(uid, "network", Loc.GetString("research-netlog-server-joined", ("server", component.ServerName)));
         Dirty(uid, component);
+        ConnectUnregisteredClientsOnServerGrid(uid);
         Timer.Spawn(0, () => SyncServerClients(uid));
     }
 
@@ -54,10 +55,26 @@ public sealed partial class ResearchSystem
         if (!TryComp<ResearchServerComponent>(uid, out var server))
             return;
 
-        foreach (var client in server.Clients)
+        foreach (var client in server.Clients.ToArray())
         {
             if (TryComp<ResearchClientComponent>(client, out var clientComponent))
                 SyncClientWithServer(client, clientComponent: clientComponent);
+        }
+    }
+
+    private void ConnectUnregisteredClientsOnServerGrid(EntityUid serverUid)
+    {
+        var serverGrid = Transform(serverUid).GridUid;
+        if (serverGrid is null)
+            return;
+
+        var query = EntityQueryEnumerator<ResearchClientComponent, TransformComponent>();
+        while (query.MoveNext(out var clientUid, out var client, out var xform))
+        {
+            if (client.Server is not null || xform.GridUid != serverGrid)
+                continue;
+
+            TryAutoRegisterClient(clientUid, client);
         }
     }
     // Orion-End

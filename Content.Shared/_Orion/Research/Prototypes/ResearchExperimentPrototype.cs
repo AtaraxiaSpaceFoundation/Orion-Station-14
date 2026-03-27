@@ -106,7 +106,7 @@ public sealed partial record ServerTriggerExperimentObjective : ExperimentObject
 public partial record ScanEntityExperimentObjective : ExperimentObjective
 {
     [DataField]
-    public string? RequiredEntityPrototype;
+    public List<string> RequiredEntityPrototypes = new();
 
     [DataField]
     public List<string> RequiredTags = new();

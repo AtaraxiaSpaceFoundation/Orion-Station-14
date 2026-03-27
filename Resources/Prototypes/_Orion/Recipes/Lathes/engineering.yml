@@ -108,14 +108,3 @@
   materials:
     Steel: 500
     Glass: 300
-
-- type: latheRecipe
-  id: trayScanner
-  result: trayScanner
-  categories:
-  - Medical
-  completetime: 4
-  materials:
-    Steel: 400
-    Glass: 250
-    Plastic: 200

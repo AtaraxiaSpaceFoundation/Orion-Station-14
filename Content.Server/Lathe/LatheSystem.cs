@@ -145,6 +145,7 @@ namespace Content.Server.Lathe
             SubscribeLocalEvent<LatheComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<LatheComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<LatheComponent, TechnologyDatabaseModifiedEvent>(OnDatabaseModified);
+            SubscribeLocalEvent<LatheComponent, TechnologyDatabaseSynchronizedEvent>(OnDatabaseSynchronized); // Orion
             SubscribeLocalEvent<LatheComponent, ResearchRegistrationChangedEvent>(OnResearchRegistrationChanged);
 
             SubscribeLocalEvent<LatheComponent, LatheQueueRecipeMessage>(OnLatheQueueRecipeMessage);
@@ -505,6 +506,13 @@ namespace Content.Server.Lathe
         {
             UpdateUserInterfaceState(uid, component);
         }
+
+        // Orion-Start
+        private void OnDatabaseSynchronized(EntityUid uid, LatheComponent component, ref TechnologyDatabaseSynchronizedEvent args)
+        {
+            UpdateUserInterfaceState(uid, component);
+        }
+        // Orion-End
 
         protected override bool HasRecipe(EntityUid uid, LatheRecipePrototype recipe, LatheComponent component)
         {

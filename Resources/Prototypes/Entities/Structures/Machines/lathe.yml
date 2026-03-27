@@ -579,11 +579,11 @@
     idleState: icon
     runningState: building
     dynamicPacks: # Orion-Edit: Static > Dynamic
-    #- ScienceBoardsStatic - Goobstation - Moved to Scifab
+    - ScienceBoardsStatic # Orion-Edit
     - ServiceBoardsStatic
     - CargoBoardsStatic
-    #- MedicalBoardsStatic - Goobstation - Moved to Scifab and Medfab
-    #- EngineeringBoardsStatic - Goobstation - Moved to Scifab and Engifab
+    - MedicalBoardsStatic # Orion-Edit
+    - EngineeringBoardsStatic # Orion-Edit
     - CircuitFloorsStatic
     # Goobstation Packs
     - SharedBoardsStatic
@@ -594,9 +594,16 @@
     - CargoBoards
     - MedicalBoards
     - ServiceBoards
-    #- ScienceBoards - Goobstation - Moved to Scifab
+    - ScienceBoards # Orion-Edit
     - CameraBoards
-    #- MechBoards - Goobstation - split between departmental lathes
+    # Orion-Start
+    - MechBoards
+    - MechBoardsCargo
+    - MechBoardsCivilian
+    - MedicalBoardsGoob
+    - MechBoardsScience
+    - MechBoardsSecurity
+    # Orion-End
     - ShuttleBoards
     # Goobstation Packs
     - SharedBoards

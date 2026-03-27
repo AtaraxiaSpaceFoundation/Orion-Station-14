@@ -90,7 +90,9 @@
   description: research-experiment-scanning-points-bluespace-crystal-desc
   category: Scanning
   objective: !type:PresentItemExperimentObjective
-    requiredEntityPrototype: AnomalyCoreBluespaceInert
+    requiredEntityPrototypes:
+    - MaterialBSCrystal1
+    - AnomalyCoreBluespaceInert
   reward: {}
 
 - type: researchExperiment
@@ -167,7 +169,8 @@
   description: research-experiment-scanning-random-plants-traits-desc
   category: Scanning
   objective: !type:ScanDifferentEntitiesExperimentObjective
-    requiredEntityPrototype: AmbrosiaDeusSeeds
+    requiredEntityPrototypes:
+    - AmbrosiaDeusSeeds
     target: 1
   reward: {}
 

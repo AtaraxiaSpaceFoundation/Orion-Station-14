@@ -250,7 +250,7 @@ public sealed partial class ResearchSystem
         var data = new List<ResearchConsoleExperimentData>();
         foreach (var experiment in PrototypeManager.EnumeratePrototypes<ResearchExperimentPrototype>())
         {
-            if (experiment.Hidden && !database.ActiveExperiments.Contains(experiment.ID) && !database.CompletedExperiments.Contains(experiment.ID))
+            if (experiment.Hidden)
                 continue;
 
             var progress = database.ExperimentProgress.FirstOrDefault(p => p.ExperimentId == experiment.ID);

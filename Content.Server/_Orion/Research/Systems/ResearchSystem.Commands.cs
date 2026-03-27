@@ -48,6 +48,10 @@ public sealed partial class ResearchSystem
         RecalculateTechnologyState(uid, database);
         UpdateTechnologyCards(uid, database);
         Dirty(uid, database);
+
+        var ev = new TechnologyDatabaseModifiedEvent(database.UnlockedRecipes);
+        RaiseLocalEvent(uid, ref ev);
+
         LogNetworkEvent(uid,
             "admin",
             Loc.GetString("research-netlog-admin-unlocked-all-technologies", ("user", Loc.GetString("research-netlog-user-admin"))),
