@@ -253,6 +253,12 @@
   - type: Construction
     graph: SpesosCounterfeit
     node: start
+  # Orion-Start
+  - type: PhysicalComposition #Goobstation - Recycle update
+    materialComposition:
+      SheetPrinter: 100
+  - type: Material
+  # Orion-End
 
 - type: entity
   name: paper scrap
