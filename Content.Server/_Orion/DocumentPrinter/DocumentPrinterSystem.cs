@@ -10,7 +10,7 @@ using Robust.Shared.Timing;
 namespace Content.Shared.DocumentPrinter;
 public sealed class DocumentPrinterSystem : EntitySystem
 {
-    const int TIME_YEAR_SPACE_STATION = 566;
+    const int SPACE_STATION_YEAR_OFFSET = 540; // real year + offset = station year
 
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -71,7 +71,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
                     break;
                 }
             }
-            DateTime time = DateTime.UtcNow.AddYears(TIME_YEAR_SPACE_STATION).AddHours(3);
+            DateTime time = DateTime.UtcNow.AddYears(SPACE_STATION_YEAR_OFFSET).AddHours(3);
             text = text.Replace("$time$", $"{_gameTiming.CurTime.Subtract(_ticker.RoundStartTimeSpan).ToString("hh\\:mm\\:ss")} | {(time.Day < 10 ? $"0{time.Day}" : time.Day)}.{(time.Month < 10 ? $"0{time.Month}" : time.Month)}.{time.Year}");
             if (pda?.StationName is not null)
             {
