@@ -72,7 +72,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
                 }
             }
             DateTime time = DateTime.UtcNow.AddYears(SPACE_STATION_YEAR_OFFSET).AddHours(3);
-            text = text.Replace("$time$", $"{_gameTiming.CurTime.Subtract(_ticker.RoundStartTimeSpan).ToString("hh\\:mm\\:ss")} | {(time.Day < 10 ? $"0{time.Day}" : time.Day)}.{(time.Month < 10 ? $"0{time.Month}" : time.Month)}.{time.Year}");
+            text = text.Replace("$time$", $"{_gameTiming.CurTime.Subtract(_ticker.RoundStartTimeSpan).ToString("hh\\:mm\\:ss")} / {(time.Day < 10 ? $"0{time.Day}" : time.Day)}.{(time.Month < 10 ? $"0{time.Month}" : time.Month)}.{time.Year}");
             if (pda?.StationName is not null)
             {
                 text = text.Replace("Station XX-000", pda.StationName);
@@ -98,7 +98,6 @@ public sealed class DocumentPrinterSystem : EntitySystem
                 }
             }
             paperComponent.Content = text;
-            // if (!TryComp<MetaDataComponent>(args.Actor, out var comp)) return; // was for test, STFU JUST LEAVE IT HERE
         }
         else
         {
