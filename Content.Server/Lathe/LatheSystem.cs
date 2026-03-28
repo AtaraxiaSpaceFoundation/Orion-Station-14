@@ -93,6 +93,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
+using Content.Shared.DocumentPrinter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
@@ -103,6 +104,7 @@ using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using Content.Shared.UserInterface;
 using JetBrains.Annotations;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -255,7 +257,7 @@ namespace Content.Server.Lathe
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount
-                    ? (int) (-amount * component.MaterialUseMultiplier)
+                    ? (int)(-amount * component.MaterialUseMultiplier) // Orion-Edit: Minor fix
                     : -amount;
 
                 _materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount);
@@ -315,6 +317,15 @@ namespace Content.Server.Lathe
                     else
                     {
                         var result = Spawn(resultProto, Transform(uid).Coordinates);
+                        // Orion-Start
+                        if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))
+                        {
+                            var tuple = printerComponent.Queue.First();
+                            if (tuple.Item2.Result.Equals(resultProto))
+                                RaiseLocalEvent(uid, new PrintingDocumentEvent(result, tuple.Item1));
+                            printerComponent.Queue.Remove(tuple);
+                        }
+                        // Orion-End
                         _stack.TryMergeToContacts(result);
                         if (TryComp<ScannableForPointsComponent>(result, out var scannable)) // Goobstation
                             scannable.Points = 0; // Goobstation, this thing is to prevent ntr duping points via an emagged lathe
@@ -541,6 +552,13 @@ namespace Content.Server.Lathe
                 }
             }
             TryStartProducing(uid, component);
+            // Orion-Start
+            if (TryComp<DocumentPrinterComponent>(uid, out var comp))
+            {
+                if (recipe is not null)
+                    comp.Queue.Add((args.Actor, recipe));
+            }
+            //Orion-End
             UpdateUserInterfaceState(uid, component);
         }
 

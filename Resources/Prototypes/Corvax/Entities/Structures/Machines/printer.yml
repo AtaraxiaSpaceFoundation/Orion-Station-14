@@ -46,4 +46,5 @@
       tags:
       - Document
     storage:
-      SheetPrinter: 1000 # 10 sheets
+      SheetPrinter: 0
+  - type: DocumentPrinter
