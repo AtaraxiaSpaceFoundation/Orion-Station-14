@@ -1,3 +1,7 @@
+ent-SheetPrinter = { ent-Paper }
+    .desc = { ent-Paper.desc }
+ent-SheetPrinter1 = { ent-Paper }
+    .desc = { ent-Paper.desc }
 ent-PrintedDocument = { ent-Paper }
     .desc = Боюрократическая единица. Документ, распечатанный на принтере.
 ent-PrintedDocumentReportStation = Отчёт о ситуации на станции
