@@ -54,7 +54,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
     {
         // check info from id, time and job
         if (!TryComp<PaperComponent>(args.Paper, out var paperComponent)) return;
-        InventoryComponent? inventoryComponent = null;  
+        InventoryComponent? inventoryComponent = null;
         TryComp(args.Actor, out inventoryComponent);
 
         string text = paperComponent.Content;
@@ -64,22 +64,23 @@ public sealed class DocumentPrinterSystem : EntitySystem
             IdCardComponent? idCard = null;
             PdaComponent? pda = null;
             if (inventoryComponent is not null)
-            foreach (var slot in inventoryComponent.Containers)
-            {
-                if (slot.ID == "id") // for checking only PDA
+                foreach (var slot in inventoryComponent.Containers)
                 {
-                    TryComp(slot.ContainedEntity, out pda);
-                    if (pda?.ContainedId is EntityUid idUid)
-                        TryComp<IdCardComponent>(idUid, out idCard);
-                    break;
+                    if (slot.ID == "id")
+                    {
+                        TryComp(slot.ContainedEntity, out pda);
+                        if (pda?.ContainedId is EntityUid idUid)
+                            TryComp<IdCardComponent>(idUid, out idCard);
+                        break;
+                    }
                 }
-            }
+
             DateTime time = _timeSystem.GetStationDate();
             text = text.Replace("$time$", $"{_gameTiming.CurTime.Subtract(_ticker.RoundStartTimeSpan).ToString("hh\\:mm\\:ss")} / {(time.Day < 10 ? $"0{time.Day}" : time.Day)}.{(time.Month < 10 ? $"0{time.Month}" : time.Month)}.{time.Year}");
+
             if (pda?.StationName is not null)
-            {
                 text = text.Replace("Station XX-000", pda.StationName);
-            }
+
             if (idCard is null)
             {
                 text = text.Replace("$name$", "");
@@ -87,17 +88,8 @@ public sealed class DocumentPrinterSystem : EntitySystem
             }
             else
             {
-                int startIndex = idCard.EntityName.IndexOf("("); int endIndex = idCard.EntityName.IndexOf(")");
-                if (startIndex.Equals(-1) || endIndex.Equals(-1))
-                {
-                    text = text.Replace("$name$", "");
-                    text = text.Replace("$job$", "");
-                }
-                else
-                {
-                    text = text.Replace("$name$", idCard?.FullName ?? "");
-                    text = text.Replace("$job$", idCard?.LocalizedJobTitle ?? "");
-                }
+                text = text.Replace("$name$", idCard.FullName ?? "");
+                text = text.Replace("$job$", idCard.LocalizedJobTitle ?? "");
             }
             paperComponent.Content = text;
         }
