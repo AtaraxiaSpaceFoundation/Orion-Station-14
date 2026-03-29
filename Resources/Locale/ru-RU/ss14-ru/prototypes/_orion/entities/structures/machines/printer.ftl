@@ -1,6 +1,6 @@
-ent-PrinterDoc = принтер документов
+ent-DocumentPrinter = принтер документов
     .desc = Бюрократическое совершенство. Хранит базу данных всех документов Nanotrasen и позволяет распечатывать их, пока есть бумага.
-ent-PrinterDocFlatpack = упакованный принтер документов
+ent-DocumentPrinterFlatpack = упакованный принтер документов
     .desc = Упаковка, содержащая принтер для печати документов.
-ent-PrinterDocMachineCircuitboard = плата принтера документов
+ent-DocumentPrinterMachineCircuitboard = плата принтера документов
     .desc = Плата для сборки принтера для печати документов.

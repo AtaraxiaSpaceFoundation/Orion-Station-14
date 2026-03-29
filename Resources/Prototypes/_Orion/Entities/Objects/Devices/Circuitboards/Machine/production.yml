@@ -1,11 +1,11 @@
 - type: entity
-  id: PrinterDocMachineCircuitboard
+  id: DocumentPrinterMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: document printer machine board
   description: A machine printed circuit board for an document printer
   components:
     - type: MachineBoard
-      prototype: PrinterDoc
+      prototype: DocumentPrinter
       requirements:
         MatterBin: 3
         Manipulator: 1

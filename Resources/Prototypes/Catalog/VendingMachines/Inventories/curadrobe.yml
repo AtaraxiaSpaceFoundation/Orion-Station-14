@@ -28,7 +28,7 @@
     ClothingUniformJumpskirtLibrarian: 3
     ClothingShoesBootsLaceup: 2
     ClothingHeadsetService: 2
-    PrinterDocFlatpack: 2 # Orion
+    DocumentPrinterFlatpack: 2 # Orion
   contrabandInventory:
     ToyFigurineLibrarian: 1
   emaggedInventory: # Goobstation

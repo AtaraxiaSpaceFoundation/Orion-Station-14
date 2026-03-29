@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseLathe
-  id: PrinterDoc
+  id: DocumentPrinter
   name: document printer
   description: Bureaucratic perfection. Stores a database of all Nanotrasen documents, and lets you print them as long as you have paper.
   components:
@@ -20,7 +20,7 @@
   - type: Transform
     noRot: false
   - type: Machine
-    board: PrinterDocMachineCircuitboard
+    board: DocumentPrinterMachineCircuitboard
   - type: Lathe
     producingSound: /Audio/Machines/scanning.ogg
     idleState: icon

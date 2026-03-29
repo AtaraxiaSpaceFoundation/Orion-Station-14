@@ -1,4 +1,4 @@
 - type: latheRecipe
-  id: PrinterDocMachineCircuitboard
+  id: DocumentPrinterMachineCircuitboard
   parent: BaseCircuitboardRecipe
-  result: PrinterDocMachineCircuitboard
+  result: DocumentPrinterMachineCircuitboard

@@ -164,7 +164,7 @@ BackmenVendingMachineSovietSoda: RandomVending
 
 FloorHardCatwalkDarkIron: Catwalk
 
-PrinterDoc: null
+DocumentPrinter: null
 Shower: null
 
 AntiPsychicKnife: null
