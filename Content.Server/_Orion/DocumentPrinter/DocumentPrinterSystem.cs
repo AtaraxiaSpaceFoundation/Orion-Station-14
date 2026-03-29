@@ -1,4 +1,6 @@
 using Content.Server.GameTicking;
+using Content.Server._Orion.Time;
+using Content.Shared.Access.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Inventory;
 using Content.Shared.Paper;
@@ -11,10 +13,9 @@ using Robust.Shared.Timing;
 namespace Content.Shared.DocumentPrinter;
 public sealed class DocumentPrinterSystem : EntitySystem
 {
-    const int SPACE_STATION_YEAR_OFFSET = 540; // real year + offset = station year
-
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly TimeSystem _timeSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
 
     public override void Initialize()
@@ -60,7 +61,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
 
         if (component.IsOnAutocomplite)
         {
-            MetaDataComponent? idCard = null;
+            IdCardComponent? idCard = null;
             PdaComponent? pda = null;
             if (inventoryComponent is not null)
             foreach (var slot in inventoryComponent.Containers)
@@ -69,11 +70,11 @@ public sealed class DocumentPrinterSystem : EntitySystem
                 {
                     TryComp(slot.ContainedEntity, out pda);
                     if (pda?.ContainedId is EntityUid idUid)
-                        TryComp(idUid, out idCard);
+                        TryComp<IdCardComponent>(idUid, out idCard);
                     break;
                 }
             }
-            DateTime time = DateTime.UtcNow.AddYears(SPACE_STATION_YEAR_OFFSET).AddHours(3);
+            DateTime time = _timeSystem.GetStationDate();
             text = text.Replace("$time$", $"{_gameTiming.CurTime.Subtract(_ticker.RoundStartTimeSpan).ToString("hh\\:mm\\:ss")} / {(time.Day < 10 ? $"0{time.Day}" : time.Day)}.{(time.Month < 10 ? $"0{time.Month}" : time.Month)}.{time.Year}");
             if (pda?.StationName is not null)
             {
@@ -94,8 +95,8 @@ public sealed class DocumentPrinterSystem : EntitySystem
                 }
                 else
                 {
-                    text = text.Replace("$name$", idCard.FullName ?? "");
-                    text = text.Replace("$job$", idCard.LocalizedJobTitle ?? "");
+                    text = text.Replace("$name$", idCard?.FullName ?? "");
+                    text = text.Replace("$job$", idCard?.LocalizedJobTitle ?? "");
                 }
             }
             paperComponent.Content = text;
