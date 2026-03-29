@@ -1,5 +1,5 @@
 - type: latheRecipePack
-  id: PaperFormsStatic
+  id: PaperForms
   recipes:
     - PrintedDocumentReportStationRecipe
     - PrintedDocumentReportOnEliminationOfViolationsRecipe

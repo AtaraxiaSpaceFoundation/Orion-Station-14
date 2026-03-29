@@ -257,7 +257,7 @@ namespace Content.Server.Lathe
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount
-                    ? (int)(-amount * component.MaterialUseMultiplier) // Orion-Edit: Minor fix
+                    ? (int)(-amount * component.MaterialUseMultiplier)
                     : -amount;
 
                 _materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount);
@@ -536,11 +536,17 @@ namespace Content.Server.Lathe
         {
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
+            TryComp<DocumentPrinterComponent>(uid, out var printer); // Orion
                 var count = 0;
                 for (var i = 0; i < args.Quantity; i++)
                 {
                     if (TryAddToQueue(uid, recipe, component))
-                        count++;
+                // Orion-Edit-Start
+                {
+                    printer?.Queue.Add((args.Actor, recipe));
+                    count++;
+                }
+                // Orion-Edit-End
                     else
                         break;
                 }
@@ -552,13 +558,6 @@ namespace Content.Server.Lathe
                 }
             }
             TryStartProducing(uid, component);
-            // Orion-Start
-            if (TryComp<DocumentPrinterComponent>(uid, out var comp))
-            {
-                if (recipe is not null)
-                    comp.Queue.Add((args.Actor, recipe));
-            }
-            //Orion-End
             UpdateUserInterfaceState(uid, component);
         }
 

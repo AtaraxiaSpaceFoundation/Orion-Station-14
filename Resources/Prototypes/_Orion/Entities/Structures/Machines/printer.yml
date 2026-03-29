@@ -26,7 +26,7 @@
     idleState: icon
     runningState: building
     staticPacks:
-      - PaperFormsStatic
+      - PaperForms
   - type: EmagLatheRecipes
     emagStaticPacks:
     - PaperFormsSyndicateStatic

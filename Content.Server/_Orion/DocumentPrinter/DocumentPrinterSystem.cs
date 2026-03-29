@@ -5,6 +5,7 @@ using Content.Shared.Paper;
 using Content.Shared.PDA;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Localization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.DocumentPrinter;
@@ -29,7 +30,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
         AlternativeVerb verb = new();
         if (component.IsOnAutocomplite)
         {
-            verb.Text = "printer-autofill-off";
+            verb.Text = Loc.GetString("printer-autofill-off");
             verb.Act = () =>
         {
             component.IsOnAutocomplite = false;
@@ -38,7 +39,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
         }
         else
         {
-            verb.Text = "printer-autofill-on";
+            verb.Text = Loc.GetString("printer-autofill-on");
             verb.Act = () =>
         {
             component.IsOnAutocomplite = true;
@@ -52,22 +53,23 @@ public sealed class DocumentPrinterSystem : EntitySystem
     {
         // check info from id, time and job
         if (!TryComp<PaperComponent>(args.Paper, out var paperComponent)) return;
-        if (!TryComp<InventoryComponent>(args.Actor, out var inventoryComponent)) return;
+        InventoryComponent? inventoryComponent = null;  
+        TryComp(args.Actor, out inventoryComponent);
 
         string text = paperComponent.Content;
 
         if (component.IsOnAutocomplite)
         {
-            MetaDataComponent? meta_id = null;
+            MetaDataComponent? idCard = null;
             PdaComponent? pda = null;
+            if (inventoryComponent is not null)
             foreach (var slot in inventoryComponent.Containers)
             {
                 if (slot.ID == "id") // for checking only PDA
                 {
                     TryComp(slot.ContainedEntity, out pda);
-                    TryComp<ItemSlotsComponent>(slot.ContainedEntity, out var itemslots);
-                    if (itemslots is not null)
-                        TryComp(itemslots.Slots["PDA-id"].Item, out meta_id);
+                    if (pda?.ContainedId is EntityUid idUid)
+                        TryComp(idUid, out idCard);
                     break;
                 }
             }
@@ -77,24 +79,23 @@ public sealed class DocumentPrinterSystem : EntitySystem
             {
                 text = text.Replace("Station XX-000", pda.StationName);
             }
-            if (meta_id is null)
+            if (idCard is null)
             {
                 text = text.Replace("$name$", "");
                 text = text.Replace("$job$", "");
             }
             else
             {
-                int startIndex = meta_id.EntityName.IndexOf("("); int endIndex = meta_id.EntityName.IndexOf(")");
-                if (startIndex.Equals(-1) || startIndex.Equals(-1))
+                int startIndex = idCard.EntityName.IndexOf("("); int endIndex = idCard.EntityName.IndexOf(")");
+                if (startIndex.Equals(-1) || endIndex.Equals(-1))
                 {
                     text = text.Replace("$name$", "");
                     text = text.Replace("$job$", "");
                 }
                 else
                 {
-                    string id_card_word = "ID карта ";
-                    text = text.Replace("$name$", meta_id.EntityName.Replace(id_card_word, "").Substring(0, startIndex - id_card_word.Length - 2));
-                    text = text.Replace("$job$", meta_id.EntityName.Substring(startIndex + 1, endIndex - startIndex - 1));
+                    text = text.Replace("$name$", idCard.FullName ?? "");
+                    text = text.Replace("$job$", idCard.LocalizedJobTitle ?? "");
                 }
             }
             paperComponent.Content = text;

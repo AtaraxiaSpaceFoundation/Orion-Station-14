@@ -2,5 +2,5 @@
   id: SheetPrinter
   name: paper
   icon: { sprite: Objects/Misc/bureaucracy.rsi, state: paper }
-  spawn: SheetPrinter1
+  spawn: Paper
   maxCount: 1
