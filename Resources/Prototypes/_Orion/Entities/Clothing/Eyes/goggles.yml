@@ -23,6 +23,8 @@
     sprite: _Orion/Clothing/Eyes/Goggles/security_nightvision.rsi
   - type: Clothing
     sprite: _Orion/Clothing/Eyes/Goggles/security_nightvision.rsi
+  - type: NightVision
+    color: "#E4717A"
 
 - type: entity
   parent: [ ClothingEyesNightVisionGoggles, ClothingEyesHudMedical ]
@@ -33,6 +35,8 @@
     sprite: _Orion/Clothing/Eyes/Goggles/medical_nightvision.rsi
   - type: Clothing
     sprite: _Orion/Clothing/Eyes/Goggles/medical_nightvision.rsi
+  - type: NightVision
+    color: "#ACE5EE"
 
 - type: entity
   parent: [ ClothingEyesNightVisionGoggles, ClothingEyesHudDiagnostic ]
@@ -43,6 +47,8 @@
     sprite: _Orion/Clothing/Eyes/Goggles/diagnostic_nightvision.rsi
   - type: Clothing
     sprite: _Orion/Clothing/Eyes/Goggles/diagnostic_nightvision.rsi
+  - type: NightVision
+    color: "#FCE883"
 
 - type: entity
   parent: ClothingEyesThermalVisionGoggles
