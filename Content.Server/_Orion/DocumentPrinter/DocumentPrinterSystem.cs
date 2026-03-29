@@ -10,7 +10,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Localization;
 using Robust.Shared.Timing;
 
-namespace Content.Shared.DocumentPrinter;
+namespace Content.Server._Orion.DocumentPrinter;
 public sealed class DocumentPrinterSystem : EntitySystem
 {
     [Dependency] private readonly GameTicker _ticker = default!;
