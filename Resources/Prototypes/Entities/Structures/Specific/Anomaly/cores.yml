@@ -64,9 +64,9 @@
     methodPointRewards:
       Deconstruct:
       - type: General
-        amount: 220
+        amount: 900
       - type: Experimental
-        amount: 70
+        amount: 500
     discoveryTrigger: machine:anomaly-core
     experimentActions:
     - analyze_anomaly_core

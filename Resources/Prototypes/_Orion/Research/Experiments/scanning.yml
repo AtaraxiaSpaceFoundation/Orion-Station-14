@@ -192,7 +192,7 @@
   category: Scanning
   objective: !type:PresentItemExperimentObjective
     requiredReagent: Cryostylane
-    requirePureReagent: true
+    minReagentPurity: 0.99
   reward: {}
 
 - type: researchExperiment
@@ -202,5 +202,5 @@
   category: Scanning
   objective: !type:PresentItemExperimentObjective
     requiredReagent: Haloperidol
-    requirePureReagent: true
+    minReagentPurity: 0.98
   reward: {}

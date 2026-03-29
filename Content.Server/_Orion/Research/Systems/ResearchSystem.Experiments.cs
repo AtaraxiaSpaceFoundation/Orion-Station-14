@@ -399,7 +399,15 @@ public sealed partial class ResearchSystem
         if (required <= FixedPoint2.Zero)
             return false;
 
-        return !objective.RequirePureReagent || other <= FixedPoint2.Zero;
+        if (objective.MinReagentPurity is not { } minPurity)
+            return true;
+
+        var total = required + other;
+        if (total <= FixedPoint2.Zero)
+            return false;
+
+        var purity = (float) (required / total);
+        return purity >= minPurity;
     }
 
     private bool MatchesGasObjective(EntityUid subject, ScanEntityExperimentObjective objective)
@@ -423,11 +431,14 @@ public sealed partial class ResearchSystem
         if (requiredMoles <= 0f)
             return false;
 
-        if (!objective.RequirePureGas)
+        if (objective.MinGasPurity is not { } minPurity)
             return true;
 
-        const float epsilon = 0.0001f;
-        return Math.Abs(gasMix.TotalMoles - requiredMoles) <= epsilon;
+        if (gasMix.TotalMoles <= 0f)
+            return false;
+
+        var purity = requiredMoles / gasMix.TotalMoles;
+        return purity >= minPurity;
     }
 
     private bool MatchesEntityCondition(EntityUid subject, ExperimentEntityCondition condition)

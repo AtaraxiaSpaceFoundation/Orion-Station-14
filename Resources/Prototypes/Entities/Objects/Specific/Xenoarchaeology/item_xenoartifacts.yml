@@ -161,7 +161,7 @@
       - type: General
         amount: 250
       - type: Experimental
-        amount: 60
+        amount: 30
     discoveryTrigger: machine:artifact-fragment
     experimentActions:
     - analyze_artifact_fragment

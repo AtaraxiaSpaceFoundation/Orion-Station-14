@@ -71,7 +71,7 @@ public sealed partial class ExperimentalDestructiveScannerMenu : FancyWindow
         LastOperationLabel.SetMessage(lastOperation);
     }
 
-    private Control BuildExperimentEntry(ResearchMachineExperimentUiData experiment)
+    private static Control BuildExperimentEntry(ResearchMachineExperimentUiData experiment)
     {
         var headerLabel = new RichTextLabel();
         var headerMessage = new FormattedMessage();
@@ -86,16 +86,22 @@ public sealed partial class ExperimentalDestructiveScannerMenu : FancyWindow
         var descriptionLabel = new RichTextLabel
         {
             HorizontalExpand = true,
-            MaxWidth = 620,
         };
         var descriptionMessage = new FormattedMessage();
         descriptionMessage.AddText(experiment.Description);
         descriptionLabel.SetMessage(descriptionMessage);
 
+        var goalLabel = new RichTextLabel
+        {
+            HorizontalExpand = true,
+        };
+        var goalMessage = new FormattedMessage();
+        goalMessage.AddMarkupOrThrow($"[color=#D0D0D0]{FormattedMessage.EscapeText(Loc.GetString("research-machine-experiment-goal", ("goal", experiment.Goal)))}[/color]");
+        goalLabel.SetMessage(goalMessage);
+
         var progressLabel = new RichTextLabel
         {
             HorizontalExpand = true,
-            MaxWidth = 620,
         };
         var progressMessage = new FormattedMessage();
         progressMessage.AddMarkupOrThrow($"[color=lightgray]{FormattedMessage.EscapeText(progressText)}[/color]");
@@ -111,6 +117,7 @@ public sealed partial class ExperimentalDestructiveScannerMenu : FancyWindow
             {
                 headerLabel,
                 descriptionLabel,
+                goalLabel,
                 progressLabel,
             },
         };

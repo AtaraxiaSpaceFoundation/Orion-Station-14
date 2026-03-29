@@ -80,16 +80,22 @@ public sealed partial class ExperiScannerMenu : FancyWindow
         var descriptionLabel = new RichTextLabel
         {
             HorizontalExpand = true,
-            MaxWidth = 620,
         };
         var descriptionMessage = new FormattedMessage();
         descriptionMessage.AddText(experiment.Description);
         descriptionLabel.SetMessage(descriptionMessage);
 
+        var goalLabel = new RichTextLabel
+        {
+            HorizontalExpand = true,
+        };
+        var goalMessage = new FormattedMessage();
+        goalMessage.AddMarkupOrThrow($"[color=#D0D0D0]{FormattedMessage.EscapeText(Loc.GetString("research-machine-experiment-goal", ("goal", experiment.Goal)))}[/color]");
+        goalLabel.SetMessage(goalMessage);
+
         var progressLabel = new RichTextLabel
         {
             HorizontalExpand = true,
-            MaxWidth = 620,
         };
         var progressMessage = new FormattedMessage();
         progressMessage.AddMarkupOrThrow($"[color=lightgray]{FormattedMessage.EscapeText(progressText)}[/color]");
@@ -105,6 +111,7 @@ public sealed partial class ExperiScannerMenu : FancyWindow
             {
                 headerLabel,
                 descriptionLabel,
+                goalLabel,
                 progressLabel,
             },
         };

@@ -188,9 +188,11 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
             });
 
         if (completedCount > 0)
+        {
             ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-completed-named",
                 ("count", completedCount),
                 ("experiments", string.Join(", ", completedExperiments.Select(GetExperimentName))));
+        }
         else if (changedAny)
             ent.Comp.LastResult = Loc.GetString("research-machine-experimental-destructive-scanner-progressed");
         else
@@ -263,16 +265,11 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
                     if (!_prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var prototype))
                         continue;
 
+                    if (prototype.Hidden)
+                        continue;
+
                     var progress = db.ExperimentProgress.FirstOrDefault(p => p.ExperimentId == experimentId);
-                    var target = progress.Target > 0 ? progress.Target : Math.Max(1, prototype.Objective.Target);
-                    var objective = Loc.GetString($"research-experiment-objective-{prototype.Objective.Kind.ToString().ToLowerInvariant()}");
-                    experiments.Add(new ResearchMachineExperimentUiData(
-                        prototype.ID,
-                        Loc.GetString(prototype.Name),
-                        Loc.GetString(prototype.Description),
-                        progress.Progress,
-                        target,
-                        objective));
+                    experiments.Add(ResearchExperimentUiData.Create(prototype, progress, _prototype));
                 }
             }
         }

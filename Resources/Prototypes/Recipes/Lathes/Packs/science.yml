@@ -71,6 +71,9 @@
   - ClothingBackpackSatchelHolding
   - ClothingBackpackDuffelHolding
   - ClothingBackpackMessengerHolding # Frontier
+  # Orion-Start
+  - ClothingEyesNightVisionDiagnosticGoggles
+  # Orion-End
 
 - type: latheRecipePack
   id: PowerCells

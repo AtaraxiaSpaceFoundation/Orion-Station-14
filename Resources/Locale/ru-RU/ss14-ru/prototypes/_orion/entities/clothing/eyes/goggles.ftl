@@ -1,0 +1,14 @@
+ent-ClothingEyesGogglessInteQ = жёлтый визор
+    .desc = Используется для защиты глаз. Улучшенное покрытие блокирует множество вспышек.
+ent-ClothingEyesNightVisionSecurityGoggles = прибор ночного видения службы безопасности
+    .suffix = ПНВ
+    .desc = { ent-ClothingEyesNightVisionGoggles.desc }
+ent-ClothingEyesNightVisionMedicalGoggles = прибор ночного видения медицинский
+    .suffix = ПНВ
+    .desc = { ent-ClothingEyesNightVisionGoggles.desc }
+ent-ClothingEyesNightVisionDiagnosticGoggles = прибор ночного видения диагностический
+    .suffix = ПНВ
+    .desc = { ent-ClothingEyesNightVisionGoggles.desc }
+ent-ClothingEyesThermalVisionMonocle = термонокль
+    .suffix = ПТВ
+    .desc = Видение сквозь стены ещё никогда не было таким нежным и личностным.

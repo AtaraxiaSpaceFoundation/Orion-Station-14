@@ -26,7 +26,7 @@
   category: Ordnance
   objective: !type:PresentItemExperimentObjective
     requiredGas: BZ
-    requirePureGas: true
+    minGasPurity: 1.0
   reward: {}
 
 - type: researchExperiment
@@ -36,7 +36,7 @@
   category: Ordnance
   objective: !type:PresentItemExperimentObjective
     requiredGas: NitrousOxide
-    requirePureGas: true
+    minGasPurity: 1.0
   reward: {}
 
 # Like noblium but frezon!
@@ -47,7 +47,7 @@
   category: Ordnance
   objective: !type:PresentItemExperimentObjective
     requiredGas: Frezon
-    requirePureGas: true
+    minGasPurity: 1.0
   reward: {}
 
 - type: researchExperiment
@@ -57,5 +57,5 @@
   category: Ordnance
   objective: !type:PresentItemExperimentObjective
     requiredGas: Plasma
-    requirePureGas: true
+    minGasPurity: 1.0
   reward: {}

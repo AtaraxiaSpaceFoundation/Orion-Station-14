@@ -1,20 +1,4 @@
 - type: entity
-  parent: [ClothingEyesBase, BaseMinorContraband]
-  id: ClothingEyesGogglessInteQ
-  name: yellow goggles
-  description: Used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes.
-  components:
-  - type: Sprite
-    sprite: _Orion/Clothing/Eyes/inteq_goggles.rsi
-  - type: Clothing
-    sprite: _Orion/Clothing/Eyes/inteq_goggles.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
-  - type: ShowJobIcons
-  - type: ScannableForPoints # Goob
-    points: 1
-
-- type: entity
   parent: ClothingEyesGlassesMed
   id: ClothingEyesAdvancedMedVisor
   name: advanced medical visor

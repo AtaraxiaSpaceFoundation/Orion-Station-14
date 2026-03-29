@@ -128,19 +128,12 @@ public sealed class ExperiScannerSystem : EntitySystem
             foreach (var experimentId in db.ActiveExperiments)
             {
                 if (!_prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var prototype) ||
+                    prototype.Hidden ||
                     !prototype.SupportedSources.HasFlag(ExperimentSourceFlags.HandheldScanner))
                     continue;
 
                 var progress = db.ExperimentProgress.FirstOrDefault(p => p.ExperimentId == experimentId);
-                var target = progress.Target > 0 ? progress.Target : Math.Max(1, prototype.Objective.Target);
-                var objective = Loc.GetString($"research-experiment-objective-{prototype.Objective.Kind.ToString().ToLowerInvariant()}");
-                experiments.Add(new ResearchMachineExperimentUiData(
-                    prototype.ID,
-                    Loc.GetString(prototype.Name),
-                    Loc.GetString(prototype.Description),
-                    progress.Progress,
-                    target,
-                    objective));
+                experiments.Add(ResearchExperimentUiData.Create(prototype, progress, _prototype));
             }
         }
 

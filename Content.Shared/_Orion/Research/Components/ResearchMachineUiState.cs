@@ -135,8 +135,9 @@ public sealed class ResearchMachineExperimentUiData
     public int Progress;
     public int Target;
     public string Objective;
+    public string Goal;
 
-    public ResearchMachineExperimentUiData(string id, string name, string description, int progress, int target, string objective)
+    public ResearchMachineExperimentUiData(string id, string name, string description, int progress, int target, string objective, string goal)
     {
         Id = id;
         Name = name;
@@ -144,5 +145,6 @@ public sealed class ResearchMachineExperimentUiData
         Progress = progress;
         Target = target;
         Objective = objective;
+        Goal = goal;
     }
 }

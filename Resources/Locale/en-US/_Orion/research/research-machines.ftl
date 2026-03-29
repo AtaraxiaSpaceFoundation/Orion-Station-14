@@ -59,6 +59,8 @@ research-machine-destructive-method-advancedanalysis = Advanced Analysis
 research-machine-destructive-living-subject-blocked = Living subjects cannot be destructively analyzed.
 
 research-machine-experiment-progress = { $objective }: { $progress }/{ $target }
+research-machine-experiment-goal = Goal: { $goal }.
+research-experiment-goal-with-details = { $action }. { $details }
 
 research-machine-destructive-method-reveal-technology = Reveal technology: { $technology }
 research-machine-destructive-method-unknown = Unknown method
