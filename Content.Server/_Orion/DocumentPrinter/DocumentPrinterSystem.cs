@@ -11,7 +11,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Localization;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Orion.DocumentPrinter;
+namespace Content.Server._Orion.DocumentPrinter;
 public sealed class DocumentPrinterSystem : EntitySystem
 {
     [Dependency] private readonly GameTicker _ticker = default!;
@@ -75,6 +75,8 @@ public sealed class DocumentPrinterSystem : EntitySystem
                         TryComp(slot.ContainedEntity, out pda);
                         if (pda?.ContainedId is EntityUid idUid)
                             TryComp<IdCardComponent>(idUid, out idCard);
+                    else
+                        TryComp<IdCardComponent>(slot.ContainedEntity, out idCard);
                         break;
                     }
                 }
