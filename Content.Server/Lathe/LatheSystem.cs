@@ -93,7 +93,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
-using Content.Shared.DocumentPrinter;
+using namespace Content.Server._Orion.DocumentPrinter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;

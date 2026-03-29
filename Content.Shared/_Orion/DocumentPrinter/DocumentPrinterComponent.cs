@@ -2,7 +2,7 @@ using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared.DocumentPrinter;
+namespace namespace Content.Server._Orion.DocumentPrinter;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class DocumentPrinterComponent : Component
