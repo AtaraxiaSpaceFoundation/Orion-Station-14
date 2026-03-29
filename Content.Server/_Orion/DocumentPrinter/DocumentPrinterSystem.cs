@@ -11,7 +11,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Localization;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Orion.DocumentPrinter;
+namespace Content.Shared._Orion.DocumentPrinter;
 public sealed class DocumentPrinterSystem : EntitySystem
 {
     [Dependency] private readonly GameTicker _ticker = default!;
@@ -29,6 +29,9 @@ public sealed class DocumentPrinterSystem : EntitySystem
 
     public void AddVerbOnOff(EntityUid uid, DocumentPrinterComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
+    if (!args.CanInteract || !args.CanAccess)
+        return;
+
         AlternativeVerb verb = new();
         if (component.IsOnAutocomplete)
         {
