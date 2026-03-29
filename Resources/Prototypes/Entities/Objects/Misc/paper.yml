@@ -256,7 +256,7 @@
   # Orion-Start
   - type: PhysicalComposition
     materialComposition:
-      SheetPrinter: 100
+      SheetPaper: 100
   - type: Material
   # Orion-End
 

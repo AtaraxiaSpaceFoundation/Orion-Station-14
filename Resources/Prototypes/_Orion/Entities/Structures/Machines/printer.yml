@@ -46,5 +46,5 @@
       tags:
       - Document
     storage:
-      SheetPrinter: 0
+      SheetPaper: 0
   - type: DocumentPrinter
