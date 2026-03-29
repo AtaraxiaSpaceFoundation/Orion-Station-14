@@ -9,7 +9,7 @@ public sealed partial class DocumentPrinterComponent : Component
 {
     public List<(EntityUid, LatheRecipePrototype)> Queue { get; set; } = new();
     public SoundSpecifier SwitchSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
-    public bool IsOnAutocomplite = true;
+    public bool IsOnAutocomplete = true;
 }
 
 public sealed class PrintingDocumentEvent : EntityEventArgs

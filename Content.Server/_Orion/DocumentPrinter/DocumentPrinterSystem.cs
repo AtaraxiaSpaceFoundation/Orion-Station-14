@@ -29,12 +29,12 @@ public sealed class DocumentPrinterSystem : EntitySystem
     public void AddVerbOnOff(EntityUid uid, DocumentPrinterComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
         AlternativeVerb verb = new();
-        if (component.IsOnAutocomplite)
+        if (component.IsOnAutocomplete)
         {
             verb.Text = Loc.GetString("printer-autofill-off");
             verb.Act = () =>
         {
-            component.IsOnAutocomplite = false;
+            component.IsOnAutocomplete = false;
             _audioSystem.PlayPvs(component.SwitchSound, uid);
         };
         }
@@ -43,7 +43,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
             verb.Text = Loc.GetString("printer-autofill-on");
             verb.Act = () =>
         {
-            component.IsOnAutocomplite = true;
+            component.IsOnAutocomplete = true;
             _audioSystem.PlayPvs(component.SwitchSound, uid);
         };
         }
@@ -59,7 +59,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
 
         string text = paperComponent.Content;
 
-        if (component.IsOnAutocomplite)
+        if (component.IsOnAutocomplete)
         {
             IdCardComponent? idCard = null;
             PdaComponent? pda = null;
