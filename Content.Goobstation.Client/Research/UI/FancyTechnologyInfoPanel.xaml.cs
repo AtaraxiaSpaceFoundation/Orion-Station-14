@@ -35,7 +35,8 @@ public sealed partial class FancyTechnologyInfoPanel : Control
 
     public TechnologyPrototype Prototype;
     public Action<TechnologyPrototype>? BuyAction;
-    public FancyTechnologyInfoPanel(TechnologyPrototype proto, bool hasAccess, ResearchAvailability availability, ResearchTechnologyLockReason lockReason, SpriteSystem sprite, IPrototypeManager prototype, TechnologyDatabaseComponent? database) // Orion-Edit
+
+    public FancyTechnologyInfoPanel(TechnologyPrototype proto, bool hasAccess, ResearchAvailability availability, ResearchTechnologyLockReason lockReason, SpriteSystem sprite, IPrototypeManager prototype, TechnologyDatabaseComponent? database = null) // Orion-Edit
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
@@ -97,7 +98,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
                 ? (cost.Amount - finalCost) * 100f / cost.Amount
                 : 0f;
 
-            costMessage.AddMarkupOrThrow($"• [color=lightgreen]{pointType}[/color]: [color=lightgray]{ToStrikethrough(cost.Amount.ToString())}[/color] [color=orchid]{finalCost}[/color] [color=gray]({discountPercent:0.#}%)[/color]");
+            costMessage.AddMarkupOrThrow($"• [color=lightgreen]{pointType}[/color]: [font size=10][color=lightgray]{ToStrikethrough(cost.Amount.ToString())}[/color][/font] [color=orchid]{finalCost}[/color] [color=yellow]([bold]{discountPercent:0.#}%[/bold])[/color]");
         }
 
         TechnologyCostLabel.SetMessage(costMessage, defaultColor: color);
@@ -178,7 +179,7 @@ public sealed partial class FancyTechnologyInfoPanel : Control
     private static string ToStrikethrough(string value)
     {
         const char strike = '\u0336';
-        return string.Concat(value.Select(character => $"{character}{strike}"));
+        return string.Concat(value.Select(character => $"{character}{strike}")) + '\u200B';
     }
     // Orion-End
 
