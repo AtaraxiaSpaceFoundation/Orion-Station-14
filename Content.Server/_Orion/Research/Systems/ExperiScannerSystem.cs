@@ -83,13 +83,8 @@ public sealed class ExperiScannerSystem : EntitySystem
         }
 
         var targetName = Name(target);
-        var popup = completed.Count > 0
-            ? Loc.GetString("research-experi-scanner-completed", ("count", completed.Count), ("target", targetName))
-            : Loc.GetString("research-experi-scanner-progress", ("target", targetName));
-
-        ent.Comp.LastResult = completed.Count > 0
-            ? Loc.GetString("research-experi-scanner-completed-named", ("experiments", string.Join(", ", completed.Select(GetExperimentName))))
-            : popup;
+        var popup = Loc.GetString("research-experi-scanner-progress", ("target", targetName));
+        ent.Comp.LastResult = popup;
 
         _audio.PlayPvs(ent.Comp.SuccessSound, ent, AudioParams.Default.WithVolume(-2f));
         _popup.PopupEntity(popup, ent, args.User, PopupType.SmallCaution);
@@ -138,13 +133,6 @@ public sealed class ExperiScannerSystem : EntitySystem
         }
 
         _ui.SetUiState(ent.Owner, ExperiScannerUiKey.Key, new ExperiScannerBoundInterfaceState(serverName, experiments, ent.Comp.LastResult));
-    }
-
-    private string GetExperimentName(string experimentId)
-    {
-        return _prototype.TryIndex<ResearchExperimentPrototype>(experimentId, out var prototype)
-            ? Loc.GetString(prototype.Name)
-            : experimentId;
     }
 
     private bool TryResolveServer(EntityUid uid, out EntityUid server)

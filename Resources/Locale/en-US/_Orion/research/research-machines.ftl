@@ -82,7 +82,6 @@ research-experimental-destructive-scanner-success = Experimental destructive sca
 research-experimental-destructive-scanner-failure = Experimental destructive scanner run failed.
 
 research-experi-scanner-progress = Scan successful: experiment progress updated for { $target }.
-research-experi-scanner-completed = Scan successful: { $count } experiment(s) completed using { $target }.
 research-experi-scanner-no-server = Scan failed: no R&D server connection.
 research-experi-scanner-no-compatible-experiments = No active handheld-compatible experiments are available.
 research-experi-scanner-no-match = No active handheld experiment matches this target.
@@ -92,4 +91,3 @@ research-netlog-experi-scanner-scan = { $user } scanned { $target } with { $scan
 research-experi-scanner-window-title = Experi-Scanner
 research-experi-scanner-available-experiments = Available experiments
 research-experi-scanner-no-experiments = No handheld-compatible experiments available.
-research-experi-scanner-completed-named = Scan successful. Completed: { $experiments }.

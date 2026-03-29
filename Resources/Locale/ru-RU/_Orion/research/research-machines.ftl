@@ -94,7 +94,6 @@ research-experimental-destructive-scanner-success = Эксперименталь
 research-experimental-destructive-scanner-failure = Операция экспериментального деструктивного сканера завершилась неудачей.
 
 research-experi-scanner-progress = Сканирование { $target } успешно, прогресс обновлён.
-research-experi-scanner-completed = Сканирование { $target } успешно. Завершено экспериментов: { $count }.
 research-experi-scanner-no-server = Сканирование не выполнено: нет подключения к серверу РнД.
 research-experi-scanner-no-compatible-experiments = Нет активных экспериментов, совместимых с ручным сканером.
 research-experi-scanner-no-match = Для этой цели нет подходящего активного ручного эксперимента.
@@ -104,4 +103,3 @@ research-netlog-experi-scanner-scan = { $user } отсканировал { $targ
 research-experi-scanner-window-title = Экспери-сканер
 research-experi-scanner-available-experiments = Доступные эксперименты
 research-experi-scanner-no-experiments = Нет доступных экспериментов, совместимых с ручным сканером.
-research-experi-scanner-completed-named = Сканирование успешно. Завершены эксперименты: { $experiments }.
