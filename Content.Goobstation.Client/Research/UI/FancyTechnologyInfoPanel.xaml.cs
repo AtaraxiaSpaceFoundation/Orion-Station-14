@@ -79,15 +79,8 @@ public sealed partial class FancyTechnologyInfoPanel : Control
         {
             costMessage.PushNewline();
             var pointType = LocalizePointType(cost.Type);
-            var finalCost = cost.Amount;
-            foreach (var value in finalCosts)
-            {
-                if (value.Type != cost.Type)
-                    continue;
-
-                finalCost = value.Amount;
-                break;
-            }
+            var match = finalCosts.FirstOrDefault(v => v.Type == cost.Type);
+            var finalCost = match == default ? cost.Amount : match.Amount;
             if (finalCost >= cost.Amount)
             {
                 costMessage.AddMarkupOrThrow($"• [color=lightgreen]{pointType}[/color]: [color=orchid]{cost.Amount}[/color]");

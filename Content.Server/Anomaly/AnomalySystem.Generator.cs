@@ -219,8 +219,8 @@ public sealed partial class AnomalySystem
         SpawnOnRandomGridLocation(grid, component.SpawnerPrototype);
 
         // Orion-Start
-        var fallbackServer = _research.GetServers(uid).OrderBy(server => server.Comp.Id).FirstOrDefault();
-        if (fallbackServer.Owner != EntityUid.Invalid)
+        var fallbackServer = _research.GetServers(grid).OrderBy(server => server.Comp.Id).FirstOrDefault();
+        if (fallbackServer != default && fallbackServer.Owner != EntityUid.Invalid && EntityManager.EntityExists(fallbackServer.Owner))
             _research.LogNetworkEvent(fallbackServer.Owner, "anomaly", Loc.GetString("research-netlog-anomaly-generator-spawned", ("generator", MetaData(uid).EntityName)));
         // Orion-End
 

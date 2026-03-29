@@ -194,6 +194,7 @@ public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // t
         if (component.PulseTime > 0f)
         {
             component.PulseAccumulator = activate ? 0f : component.PulseTime;
+            UpdateVisuals(uid, component); // Orion
             return;
         }
 

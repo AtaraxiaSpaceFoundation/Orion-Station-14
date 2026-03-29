@@ -14,7 +14,7 @@ public static class ResearchExperimentUiHelpers
         if (!name.StartsWith(prefix, StringComparison.Ordinal))
             return name;
 
-        var suffix = name[prefix.Length..].TrimStart();
+        var suffix = name[prefix.Length..].Trim();
         return string.IsNullOrWhiteSpace(suffix)
             ? Loc.GetString("research-server-name-base")
             : Loc.GetString("research-server-name-with-suffix", ("suffix", suffix));

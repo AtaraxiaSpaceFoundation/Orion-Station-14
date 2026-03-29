@@ -144,6 +144,7 @@ public sealed partial class ResearchSystem
         var intrusionMessage = Loc.GetString("research-netlog-emag-device-interference", ("device", MetaData(uid).EntityName));
         var message = BuildCorruptedMessage(intrusionMessage);
         LogNetworkEvent(serverUid.Value, "security", message);
+        args.Handled = true;
     }
     // Orion-End
 
