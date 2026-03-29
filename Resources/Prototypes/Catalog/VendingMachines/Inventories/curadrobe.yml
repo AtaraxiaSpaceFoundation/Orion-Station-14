@@ -18,6 +18,7 @@
     BooksBag: 2
     BriefcaseBrown: 2
     HandLabeler: 2
+    DocumentPrinterFlatpack: 2 # Orion
     Cane: 3
     ClothingEyesGlasses: 2
     ClothingEyesGlassesJamjar: 2
@@ -28,7 +29,6 @@
     ClothingUniformJumpskirtLibrarian: 3
     ClothingShoesBootsLaceup: 2
     ClothingHeadsetService: 2
-    DocumentPrinterFlatpack: 2 # Orion
   contrabandInventory:
     ToyFigurineLibrarian: 1
   emaggedInventory: # Goobstation

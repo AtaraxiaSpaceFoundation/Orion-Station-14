@@ -61,7 +61,7 @@
     - PrintedDocumentDecisionToStartTrialRecipe
 
 - type: latheRecipePack
-  id: PaperFormsSyndicateStatic
+  id: PaperFormsSyndicate
   recipes:
     - PrintedDocumentErrorLoadingFormHeaderRecipe
     - PrintedDocumentNoticeOfLiquidationRecipe

@@ -29,7 +29,7 @@
       - PaperForms
   - type: EmagLatheRecipes
     emagStaticPacks:
-    - PaperFormsSyndicateStatic
+    - PaperFormsSyndicate
   - type: Fixtures
     fixtures:
       fix1:
@@ -45,6 +45,6 @@
     whitelist:
       tags:
       - Document
-    storage:
-      SheetPaper: 0
+#    storage:
+#      SheetPaper: 0
   - type: DocumentPrinter
