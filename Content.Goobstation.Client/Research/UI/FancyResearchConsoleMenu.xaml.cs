@@ -283,7 +283,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         }
         else
         {
-            foreach (var log in state.Logs.TakeLast(12))
+            foreach (var log in state.Logs)
             {
                 if (!logsMessage.IsEmpty)
                     logsMessage.PushNewline();
@@ -431,7 +431,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
         return parts.Count == 0
             ? Loc.GetString("research-console-experiment-reward-none")
-            : string.Join("; ", parts);
+            : string.Join(", ", parts);
     }
     // Orion-End
 

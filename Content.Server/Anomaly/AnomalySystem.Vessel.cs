@@ -90,6 +90,11 @@ public sealed partial class AnomalySystem
         _radiation.SetSourceEnabled(uid, true);
         UpdateVesselAppearance(uid,  component);
         Popup.PopupEntity(Loc.GetString("anomaly-vessel-component-anomaly-assigned"), uid);
+
+        // Orion-Start
+        if (_research.TryGetClientServer(uid, out var serverUid, out _))
+            _research.LogNetworkEvent(serverUid.Value, "anomaly", Loc.GetString("research-netlog-anomaly-vessel-bound", ("vessel", MetaData(uid).EntityName), ("anomaly", MetaData(anomaly).EntityName)));
+        // Orion-End
     }
 
     private void OnVesselGetPointsPerSecond(EntityUid uid, AnomalyVesselComponent component, ref ResearchServerGetPointsPerSecondByTypeEvent args) // Orion-Edit

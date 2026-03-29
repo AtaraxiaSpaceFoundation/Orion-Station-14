@@ -12,6 +12,9 @@ research-netlog-destructive-analyzed = Образец деструктивно �
 research-netlog-experimental-destructive-scanner-operation = Результат операции экспериментального деструктивного сканера: { $result }.
 research-netlog-experimental-destructive-scanner-result-success = успех
 research-netlog-experimental-destructive-scanner-result-failure = неудача
+research-netlog-emag-device-interference = обнаружено вмешательство в прошивку устройства { $device }.
+research-netlog-anomaly-vessel-bound = К сосуду { $vessel } привязана аномалия { $anomaly }.
+research-netlog-anomaly-generator-spawned = Генератор аномалий { $generator } завершил создание аномалии.
 
 research-netlog-discovery-hidden-tech = { $user } раскрыл(а) скрытую технологию: { $technology }.
 research-netlog-server-control-generation-toggled = { $user } переключил(а) генерацию очков: { $state } через консоль управления.

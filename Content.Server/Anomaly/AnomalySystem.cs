@@ -22,6 +22,7 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Server.Materials;
 using Content.Server.Radiation.Systems;
 using Content.Server.Radio.EntitySystems;
+using Content.Server.Research.Systems;
 using Content.Server.Station.Systems;
 using Content.Shared.Anomaly;
 using Content.Shared.Anomaly.Components;
@@ -57,6 +58,7 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
     [Dependency] private readonly RadiationSystem _radiation = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly ResearchSystem _research = default!; // Orion
 
     public const float MinParticleVariation = 0.8f;
     public const float MaxParticleVariation = 1.2f;

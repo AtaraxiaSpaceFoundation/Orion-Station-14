@@ -7,7 +7,12 @@
     requiredComponents:
     - Explosive
     minExplosiveIntensity: 5
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: OrdnanceExplosiveLowyieldbomb
@@ -17,7 +22,12 @@
   objective: !type:PresentItemExperimentObjective
     requiredComponents:
     - Explosive
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: OrdnanceGaseousBz
@@ -27,7 +37,12 @@
   objective: !type:PresentItemExperimentObjective
     requiredGas: BZ
     minGasPurity: 1.0
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: OrdnanceGaseousNitrousOxide
@@ -37,7 +52,12 @@
   objective: !type:PresentItemExperimentObjective
     requiredGas: NitrousOxide
     minGasPurity: 1.0
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 # Like noblium but frezon!
 - type: researchExperiment
@@ -48,7 +68,12 @@
   objective: !type:PresentItemExperimentObjective
     requiredGas: Frezon
     minGasPurity: 1.0
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: OrdnanceGaseousPlasma
@@ -58,4 +83,9 @@
   objective: !type:PresentItemExperimentObjective
     requiredGas: Plasma
     minGasPurity: 1.0
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
