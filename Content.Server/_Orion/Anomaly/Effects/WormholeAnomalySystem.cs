@@ -1,4 +1,5 @@
 using Content.Server.Anomaly.Components;
+using Content.Shared.Teleportation.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -10,6 +11,7 @@ public sealed class WormholeAnomalySystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
+    [Dependency] private readonly LinkedEntitySystem _linked = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -19,6 +21,7 @@ public sealed class WormholeAnomalySystem : EntitySystem
 
     private void OnInit(EntityUid uid, WormholeAnomalyComponent component, ComponentInit args)
     {
+        LinkWithOtherWormholes(uid);
         StartPulseTimer(uid, component);
     }
 
@@ -41,5 +44,17 @@ public sealed class WormholeAnomalySystem : EntitySystem
         _audio.PlayPvs(component.TeleportSound, uid);
 
         StartPulseTimer(uid, component);
+    }
+
+    private void LinkWithOtherWormholes(EntityUid wormhole)
+    {
+        var query = EntityQueryEnumerator<WormholeAnomalyComponent>();
+        while (query.MoveNext(out var otherWormhole, out _))
+        {
+            if (otherWormhole == wormhole)
+                continue;
+
+            _linked.TryLink(wormhole, otherWormhole);
+        }
     }
 }
