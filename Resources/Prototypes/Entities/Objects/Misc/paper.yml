@@ -254,7 +254,7 @@
     graph: SpesosCounterfeit
     node: start
   # Orion-Start
-  - type: PhysicalComposition #Goobstation - Recycle update
+  - type: PhysicalComposition
     materialComposition:
       SheetPrinter: 100
   - type: Material

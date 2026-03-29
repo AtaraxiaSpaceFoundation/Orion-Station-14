@@ -57,7 +57,7 @@
     - PrintedDocumentClosingIndictmentRecipe
     - PrintedDocumentSentenceRecipe
     - PrintedDocumentJudgmentRecipe
-    - PrintedDocumentStatementHealtheRecipe
+    - PrintedDocumentStatementHealthRecipe
     - PrintedDocumentDecisionToStartTrialRecipe
 
 - type: latheRecipePack
