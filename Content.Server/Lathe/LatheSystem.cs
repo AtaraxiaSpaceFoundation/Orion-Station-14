@@ -320,10 +320,13 @@ namespace Content.Server.Lathe
                         // Orion-Start
                         if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))
                         {
-                            var tuple = printerComponent.Queue.First();
-                            if (tuple.Item2.Result.Equals(resultProto))
+                            if (printerComponent.Queue.Count > 0 &&
+                                printerComponent.Queue[0].Item2.Result == resultProto)
+                            {
+                                var tuple = printerComponent.Queue[0];
                                 RaiseLocalEvent(uid, new PrintingDocumentEvent(result, tuple.Item1));
-                            printerComponent.Queue.Remove(tuple);
+                                printerComponent.Queue.RemoveAt(0);
+                            }
                         }
                         // Orion-End
                         _stack.TryMergeToContacts(result);
