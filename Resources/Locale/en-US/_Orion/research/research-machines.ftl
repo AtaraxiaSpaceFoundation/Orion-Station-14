@@ -59,6 +59,8 @@ research-machine-destructive-method-advancedanalysis = Advanced Analysis
 research-machine-destructive-living-subject-blocked = Living subjects cannot be destructively analyzed.
 
 research-machine-experiment-progress = { $objective }: { $progress }/{ $target }
+research-machine-experiment-goal = Goal: { $goal }.
+research-experiment-goal-with-details = { $action }. { $details }
 
 research-machine-destructive-method-reveal-technology = Reveal technology: { $technology }
 research-machine-destructive-method-unknown = Unknown method
@@ -80,7 +82,6 @@ research-experimental-destructive-scanner-success = Experimental destructive sca
 research-experimental-destructive-scanner-failure = Experimental destructive scanner run failed.
 
 research-experi-scanner-progress = Scan successful: experiment progress updated for { $target }.
-research-experi-scanner-completed = Scan successful: { $count } experiment(s) completed using { $target }.
 research-experi-scanner-no-server = Scan failed: no R&D server connection.
 research-experi-scanner-no-compatible-experiments = No active handheld-compatible experiments are available.
 research-experi-scanner-no-match = No active handheld experiment matches this target.
@@ -90,4 +91,3 @@ research-netlog-experi-scanner-scan = { $user } scanned { $target } with { $scan
 research-experi-scanner-window-title = Experi-Scanner
 research-experi-scanner-available-experiments = Available experiments
 research-experi-scanner-no-experiments = No handheld-compatible experiments available.
-research-experi-scanner-completed-named = Scan successful. Completed: { $experiments }.

@@ -62,6 +62,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/destructive_scanner.rsi
+    drawdepth: LargeObjects
     offset: 0,0.5
     layers:
     - state: icon

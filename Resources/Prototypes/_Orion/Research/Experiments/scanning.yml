@@ -7,7 +7,12 @@
     requiredComponents:
     - SlimeExtract
     target: 3
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningFish
@@ -18,7 +23,12 @@
     requiredConditions:
     - AnyFish
     target: 3
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningFishSecond
@@ -29,7 +39,12 @@
     requiredConditions:
     - RareFish
     target: 2
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPeopleAndroid
@@ -40,7 +55,12 @@
     requiredConditions:
     - IpcOrCyborg
     target: 2
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPeopleAugmentedOrgans
@@ -51,7 +71,12 @@
     requiredConditions:
     - HasAugmentedOrgans
     target: 2
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPeopleMutant
@@ -62,7 +87,12 @@
     requiredConditions:
     - NonBaselineHumanoid
     target: 2
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPeopleSkillchip
@@ -71,7 +101,12 @@
   category: Scanning
   hidden: true # No skill chips :(
   objective: !type:DebugManualExperimentObjective {}
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPointsAnomalies
@@ -82,7 +117,12 @@
     requiredTags:
     - AnomalyCore
     target: 2
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPointsBluespaceCrystal
@@ -93,7 +133,12 @@
     requiredEntityPrototypes:
     - MaterialBSCrystal1
     - AnomalyCoreBluespaceInert
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPointsMachineryTieredScanTier2Any
@@ -104,7 +149,12 @@
     requiredComponents:
     - MachineBoard
     target: 3
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPointsMachineryTieredScanTier3Any
@@ -115,7 +165,12 @@
     requiredComponents:
     - MachineBoard
     target: 6
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningPointsSlimeHard
@@ -126,7 +181,12 @@
     requiredComponents:
     - SlimeExtract
     target: 6
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningRandomJanitorTrash
@@ -137,7 +197,12 @@
     requiredTags:
     - Trash
     target: 3
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningRandomMechaDamageScan
@@ -150,7 +215,12 @@
     requiredConditions:
     - Damaged
     target: 1
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningRandomMechaEquippedScan
@@ -161,7 +231,12 @@
     requiredComponents:
     - MechEquipment
     target: 2
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningRandomPlantsTraits
@@ -172,7 +247,12 @@
     requiredEntityPrototypes:
     - AmbrosiaDeusSeeds
     target: 1
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningRandomPlantsWild
@@ -183,7 +263,12 @@
     requiredComponents:
     - Seed
     target: 4
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningReagentCryostylane
@@ -192,8 +277,13 @@
   category: Scanning
   objective: !type:PresentItemExperimentObjective
     requiredReagent: Cryostylane
-    requirePureReagent: true
-  reward: {}
+    minReagentPurity: 0.99
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150
 
 - type: researchExperiment
   id: ScanningReagentHaloperidol
@@ -202,5 +292,10 @@
   category: Scanning
   objective: !type:PresentItemExperimentObjective
     requiredReagent: Haloperidol
-    requirePureReagent: true
-  reward: {}
+    minReagentPurity: 0.98
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150

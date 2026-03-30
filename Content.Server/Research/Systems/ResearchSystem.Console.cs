@@ -53,7 +53,7 @@ public sealed partial class ResearchSystem
         SubscribeLocalEvent<ResearchConsoleComponent, ResearchRegistrationChangedEvent>(OnConsoleRegistrationChanged);
         SubscribeLocalEvent<ResearchConsoleComponent, TechnologyDatabaseModifiedEvent>(OnConsoleDatabaseModified);
         SubscribeLocalEvent<ResearchConsoleComponent, TechnologyDatabaseSynchronizedEvent>(OnConsoleDatabaseSynchronized);
-        SubscribeLocalEvent<ResearchConsoleComponent, GotEmaggedEvent>(OnEmagged);
+//        SubscribeLocalEvent<ResearchConsoleComponent, GotEmaggedEvent>(OnEmagged); // Orion-Edit
     }
 
     private void OnConsoleUnlock(EntityUid uid, ResearchConsoleComponent component, ConsoleUnlockTechnologyMessage args)
@@ -302,6 +302,7 @@ public sealed partial class ResearchSystem
         UpdateConsoleInterface(uid, component);
     }
 
+/* // Orion-Edit
     private void OnEmagged(Entity<ResearchConsoleComponent> ent, ref GotEmaggedEvent args)
     {
         if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
@@ -312,6 +313,40 @@ public sealed partial class ResearchSystem
 
         args.Handled = true;
     }
+*/
+
+    // Orion-Start
+    private static string BuildCorruptedMessage(string message)
+    {
+        const string symbols = "!@#$%^&*?№";
+        var chars = message.ToCharArray();
+        var replaced = 0;
+
+        for (var i = 0; i < chars.Length; i++)
+        {
+            if (!char.IsLetter(chars[i]) || Random.Shared.NextDouble() > 0.24)
+                continue;
+
+            chars[i] = symbols[Random.Shared.Next(symbols.Length)];
+            replaced++;
+        }
+
+        if (replaced != 0)
+            return new string(chars);
+        {
+            for (var i = 0; i < chars.Length; i++)
+            {
+                if (!char.IsLetter(chars[i]))
+                    continue;
+
+                chars[i] = symbols[Random.Shared.Next(symbols.Length)];
+                break;
+            }
+        }
+
+        return new string(chars);
+    }
+    // Orion-End
 }
 
 public sealed class ResearchConsoleUnlockEvent : CancellableEntityEventArgs { }

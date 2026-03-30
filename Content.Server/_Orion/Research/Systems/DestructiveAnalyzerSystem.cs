@@ -411,7 +411,7 @@ public sealed class DestructiveAnalyzerSystem : EntitySystem
         if (segments.Count == 0)
             return Loc.GetString("research-machine-destructive-result-generic");
 
-        return string.Join("; ", segments);
+        return string.Join(", ", segments);
     }
 
     private string GetTechnologyName(string technologyId)

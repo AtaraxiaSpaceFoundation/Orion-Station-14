@@ -7,4 +7,9 @@
     requiredComponents:
     - ComputerBoard
     target: 3
-  reward: {}
+  reward:
+    pointRewards:
+    - type: General
+      amount: 500
+    - type: Experimental
+      amount: 150

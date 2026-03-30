@@ -89,6 +89,7 @@
   id: SecurityEquipment
   recipes:
   # Orion-Start
+  - ClothingEyesNightVisionSecurityGoggles
   - EnergyDomeTurtle
   - SurveillanceWirelessCameraBodySecurity
   - PepperSpray

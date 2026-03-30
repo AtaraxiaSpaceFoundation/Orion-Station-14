@@ -52,3 +52,16 @@
   completetime: 4
   materials:
     Plastic: 200
+
+- type: latheRecipe
+  id: ClothingEyesNightVisionMedicalGoggles
+  result: ClothingEyesNightVisionMedicalGoggles
+  categories:
+  - Medical
+  completetime: 7
+  materials:
+    Steel: 300
+    Glass: 300
+    Silver: 100
+    Gold: 100
+    Plasma: 200

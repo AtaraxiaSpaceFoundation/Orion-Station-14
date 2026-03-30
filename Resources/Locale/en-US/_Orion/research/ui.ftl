@@ -22,6 +22,8 @@ research-log-category-experimental-destructive-scanner = [Experimental destructi
 research-log-category-discovery = [Discovery]
 research-log-category-server-control = [Server control]
 research-log-category-admin = [Admin]
+research-log-category-security = [Security]
+research-log-category-anomaly = [Anomaly]
 
 research-console-logs-empty = No log entries.
 research-server-name-base = R&D-Server

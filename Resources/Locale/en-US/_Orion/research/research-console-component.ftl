@@ -19,11 +19,16 @@ research-netlog-server-control-state-enabled = enabled
 research-netlog-server-control-state-disabled = disabled
 research-netlog-destructive-analysis-result = { $user } completed destructive analysis by method { $method } for sample { $subject }, result: { $result }.
 research-netlog-experiment-reward-applied = { $user } applied experiment reward pipeline: { $experiment }.
+research-netlog-emag-device-interference = Device tampering detected { $device }.
+research-netlog-anomaly-vessel-bound = Anomaly { $anomaly } was bound to vessel { $vessel }.
+research-netlog-anomaly-generator-spawned = Anomaly generator { $generator } completed anomaly generation.
 
 research-netlog-experimental-destructive-scanner-started = { $user } started experimental destructive scanner: { $count } sample(s).
 research-netlog-experimental-destructive-scanner-result = { $user } completed experimental destructive scanner: experiments finished { $completed }, progress changed: { $progressed }.
 research-netlog-experimental-destructive-scanner-progress-yes = yes
 research-netlog-experimental-destructive-scanner-progress-no = no
+
+research-experiment-completed-ic = Experiment completed { $experiment }.
 
 research-netlog-user-system = System
 research-netlog-admin-unlocked-all-technologies = { $user } executed admin unlock-all technologies operation.

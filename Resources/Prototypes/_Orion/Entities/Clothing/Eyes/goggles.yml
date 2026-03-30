@@ -1,0 +1,62 @@
+- type: entity
+  parent: [ ClothingEyesBase, BaseMinorContraband ]
+  id: ClothingEyesGogglessInteQ
+  name: yellow goggles
+  description: Used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Goggles/inteq_goggles.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Goggles/inteq_goggles.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: ShowJobIcons
+  - type: ScannableForPoints # Goob
+    points: 1
+
+- type: entity
+  parent: [ ClothingEyesNightVisionGoggles, ShowSecurityIcons ]
+  id: ClothingEyesNightVisionSecurityGoggles
+  name: night vision security goggles
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Goggles/security_nightvision.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Goggles/security_nightvision.rsi
+  - type: NightVision
+    color: "#E4717A"
+
+- type: entity
+  parent: [ ClothingEyesNightVisionGoggles, ClothingEyesHudMedical ]
+  id: ClothingEyesNightVisionMedicalGoggles
+  name: night vision medical goggles
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Goggles/medical_nightvision.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Goggles/medical_nightvision.rsi
+  - type: NightVision
+    color: "#ACE5EE"
+
+- type: entity
+  parent: [ ClothingEyesNightVisionGoggles, ClothingEyesHudDiagnostic ]
+  id: ClothingEyesNightVisionDiagnosticGoggles
+  name: night vision diagnostic goggles
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Goggles/diagnostic_nightvision.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Goggles/diagnostic_nightvision.rsi
+  - type: NightVision
+    color: "#FCE883"
+
+- type: entity
+  parent: ClothingEyesThermalVisionGoggles
+  id: ClothingEyesThermalVisionMonocle
+  name: thermonocle
+  description: Never before has seeing through walls felt so gentlepersonly.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Eyes/Goggles/monocle_thermal.rsi
+  - type: Clothing
+    sprite: _Orion/Clothing/Eyes/Goggles/monocle_thermal.rsi

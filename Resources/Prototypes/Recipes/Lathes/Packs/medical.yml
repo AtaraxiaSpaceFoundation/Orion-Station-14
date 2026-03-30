@@ -94,6 +94,9 @@
   - ClothingHandsGlovesLatex
   - ClothingHandsGlovesNitrile
   - ClothingMaskSterile
+  # Orion-Start
+  - ClothingEyesNightVisionMedicalGoggles
+  # Orion-End
 
 # These are all empty
 - type: latheRecipePack

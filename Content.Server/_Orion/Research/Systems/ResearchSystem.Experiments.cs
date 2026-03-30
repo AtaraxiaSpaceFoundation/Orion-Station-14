@@ -3,12 +3,14 @@ using Content.Goobstation.Shared.Fishing.Components;
 using Content.Server.Research.Components;
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared._Orion.Research;
+using Content.Shared._Orion.Research.Components;
 using Content.Shared._Orion.Research.Prototypes;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
@@ -201,6 +203,18 @@ public sealed partial class ResearchSystem
         }
 
         ApplyExperimentReward(serverUid, experiment, user, database, server);
+
+        var completionMessage = Loc.GetString("research-experiment-completed-ic", ("experiment", Loc.GetString(experiment.Name)));
+        foreach (var client in server.Clients)
+        {
+            if (!HasComp<ResearchConsoleComponent>(client) &&
+                !HasComp<ExperiScannerComponent>(client) &&
+                !HasComp<ExperimentalDestructiveScannerComponent>(client))
+                continue;
+
+            _chat.TrySendInGameICMessage(client, completionMessage, InGameICChatType.Speak, hideChat: false);
+        }
+
         TriggerDiscovery(serverUid, $"experiment:{experiment.ID}", database);
         LogNetworkEvent(serverUid, "experiment", Loc.GetString("research-netlog-experiment-completed", ("experiment", Loc.GetString(experiment.Name)), ("user", GetResearchLogUserName(user))), user);
         _adminLog.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(user):player} completed research experiment {experiment.ID} on {ToPrettyString(serverUid)}.");
@@ -399,7 +413,15 @@ public sealed partial class ResearchSystem
         if (required <= FixedPoint2.Zero)
             return false;
 
-        return !objective.RequirePureReagent || other <= FixedPoint2.Zero;
+        if (objective.MinReagentPurity is not { } minPurity)
+            return true;
+
+        var total = required + other;
+        if (total <= FixedPoint2.Zero)
+            return false;
+
+        var purity = (float) (required / total);
+        return purity >= minPurity;
     }
 
     private bool MatchesGasObjective(EntityUid subject, ScanEntityExperimentObjective objective)
@@ -423,11 +445,14 @@ public sealed partial class ResearchSystem
         if (requiredMoles <= 0f)
             return false;
 
-        if (!objective.RequirePureGas)
+        if (objective.MinGasPurity is not { } minPurity)
             return true;
 
-        const float epsilon = 0.0001f;
-        return Math.Abs(gasMix.TotalMoles - requiredMoles) <= epsilon;
+        if (gasMix.TotalMoles <= 0f)
+            return false;
+
+        var purity = requiredMoles / gasMix.TotalMoles;
+        return purity >= minPurity;
     }
 
     private bool MatchesEntityCondition(EntityUid subject, ExperimentEntityCondition condition)

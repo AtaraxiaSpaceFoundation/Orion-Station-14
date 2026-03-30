@@ -45,3 +45,15 @@
   materials:
     Steel: 700
     Glass: 250
+
+- type: latheRecipe
+  id: ClothingEyesNightVisionSecurityGoggles
+  result: ClothingEyesNightVisionSecurityGoggles
+  categories:
+  - Security
+  completetime: 5
+  materials:
+    Steel: 500
+    Glass: 300
+    Silver: 100
+    Gold: 100

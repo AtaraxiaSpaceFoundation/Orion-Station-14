@@ -11,6 +11,7 @@
 using System.Linq;
 using Content.Server.Power.EntitySystems;
 using Content.Shared._Orion.Research;
+using Content.Shared.Emag.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Research.Components;
 using Robust.Shared.Timing;
@@ -26,6 +27,7 @@ public sealed partial class ResearchSystem
         SubscribeLocalEvent<ResearchServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<ResearchServerComponent, TechnologyDatabaseModifiedEvent>(OnServerDatabaseModified);
         SubscribeLocalEvent<ResearchServerComponent, ExaminedEvent>(OnServerExamined); // Orion
+        SubscribeLocalEvent<ResearchClientComponent, GotEmaggedEvent>(OnResearchClientEmagged); // Orion
     }
 
     private void OnServerStartup(EntityUid uid, ResearchServerComponent component, ComponentStartup args)
@@ -126,6 +128,25 @@ public sealed partial class ResearchSystem
             RaiseLocalEvent(client, ref args);
         }
     }
+
+    // Orion-Start
+    private void OnResearchClientEmagged(EntityUid uid, ResearchClientComponent component, ref GotEmaggedEvent args)
+    {
+        if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
+            return;
+
+        if (_emag.CheckFlag(uid, EmagType.Interaction))
+            return;
+
+        if (!TryGetClientServer(uid, out var serverUid, out _))
+            return;
+
+        var intrusionMessage = Loc.GetString("research-netlog-emag-device-interference", ("device", MetaData(uid).EntityName));
+        var message = BuildCorruptedMessage(intrusionMessage);
+        LogNetworkEvent(serverUid.Value, "security", message);
+        args.Handled = true;
+    }
+    // Orion-End
 
     private bool CanRun(EntityUid uid)
     {
@@ -471,7 +492,7 @@ public sealed partial class ResearchSystem
                 Actor = actor.HasValue ? GetNetEntity(actor.Value) : null,
             });
 
-            if (serverComponent.Logs.Count > 30)
+            if (serverComponent.Logs.Count > 100)
                 serverComponent.Logs.RemoveAt(0);
 
             Dirty(serverUid, serverComponent);

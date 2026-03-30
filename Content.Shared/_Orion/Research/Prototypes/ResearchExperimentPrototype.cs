@@ -121,13 +121,13 @@ public partial record ScanEntityExperimentObjective : ExperimentObjective
     public string? RequiredReagent;
 
     [DataField]
-    public bool RequirePureReagent;
+    public float? MinReagentPurity;
 
     [DataField]
     public string? RequiredGas;
 
     [DataField]
-    public bool RequirePureGas;
+    public float? MinGasPurity;
 
     [DataField]
     public float? MinExplosiveIntensity;

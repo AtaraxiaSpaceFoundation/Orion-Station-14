@@ -283,7 +283,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         }
         else
         {
-            foreach (var log in state.Logs.TakeLast(12))
+            foreach (var log in state.Logs)
             {
                 if (!logsMessage.IsEmpty)
                     logsMessage.PushNewline();
@@ -431,7 +431,7 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
 
         return parts.Count == 0
             ? Loc.GetString("research-console-experiment-reward-none")
-            : string.Join("; ", parts);
+            : string.Join(", ", parts);
     }
     // Orion-End
 
@@ -519,7 +519,8 @@ public sealed partial class FancyResearchConsoleMenu : FancyWindow
         // Orion-Edit-Start
         _currentTech = proto.ID;
         var lockReason = GetLockReason(proto);
-        var control = new FancyTechnologyInfoPanel(proto, _accessReader.IsAllowed(_player.LocalEntity.Value, Entity), availability, lockReason, _sprite, _prototype);
+        _entity.TryGetComponent(Entity, out TechnologyDatabaseComponent? database);
+        var control = new FancyTechnologyInfoPanel(proto, _accessReader.IsAllowed(_player.LocalEntity.Value, Entity), availability, lockReason, _sprite, _prototype, database);
         // Orion-Edit-End
         control.BuyAction += args => OnTechnologyCardPressed?.Invoke(args.ID);
         InfoContainer.AddChild(control);
