@@ -9,6 +9,7 @@
     snapCardinals: true
     layers:
     - state: icon
+    - state: building
       map: ["enum.LatheVisualLayers.IsRunning"]
     - state: idle
       shader: unshaded
@@ -27,6 +28,7 @@
     runningState: building
     staticPacks:
       - PaperForms
+  - type: DocumentPrinter
   - type: EmagLatheRecipes
     emagStaticPacks:
     - PaperFormsSyndicate
@@ -47,4 +49,3 @@
       - Document
 #    storage:
 #      SheetPaper: 0
-  - type: DocumentPrinter
