@@ -4,3 +4,6 @@ custom-lawboard-up-arrow = ↑
 custom-lawboard-down-arrow = ↓
 
 custom-lawboard-updated = Законы обновлены
+
+custom-lawboard-import = Импортировать
+custom-lawboard-export = Экспортировать

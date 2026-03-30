@@ -51,6 +51,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
+using Content.Server.Atmos.Piping.EntitySystems;
 
 namespace Content.Server.Atmos.EntitySystems;
 
@@ -74,6 +75,7 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] public readonly PuddleSystem Puddle = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private readonly AtmosDeviceSystem _atmosDeviceSys = default!;
 
     private const float ExposedUpdateDelay = 1f;
     private float _exposedTimer;
@@ -98,8 +100,8 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
         InitializeGridAtmosphere();
         InitializeMap();
 
-        _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>();
         _atmosQuery = GetEntityQuery<GridAtmosphereComponent>();
+        _mapAtmosQuery = GetEntityQuery<MapAtmosphereComponent>();
         _airtightQuery = GetEntityQuery<AirtightComponent>();
         _firelockQuery = GetEntityQuery<FirelockComponent>();
 

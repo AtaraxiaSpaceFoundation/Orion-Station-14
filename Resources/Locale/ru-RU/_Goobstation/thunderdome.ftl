@@ -28,6 +28,7 @@ thunderdome-loadout-inspector = Инспектор
 thunderdome-loadout-hristov = Христов
 thunderdome-loadout-esword = Энергетический меч
 thunderdome-loadout-capo = Капоэйра
+thunderdome-loadout-mosin = Кардашев-Мосин
 
 # Weapon descriptions (tooltips)
 thunderdome-desc-shotgun = Дробовик + 1 коробка картечи, 1 коробка ружейных патронов
@@ -41,6 +42,7 @@ thunderdome-desc-inspector = Револьвер + 2 спидлоадера
 thunderdome-desc-hristov = Анти-материальная снайперская винтовка + 2 пары магазинов
 thunderdome-desc-esword = Энергетический меч + 2 Инъектора стимуляторов
 thunderdome-desc-capo = Капоэйра + 2 Инъектора стимуляторов
+thunderdome-desc-mosin = Кардашев-Мосин + 2 запасных магазина + ушанка + водка
 
 # Kill streak announcements
 thunderdome-streak-3 = {$player} устроил мясную серию!

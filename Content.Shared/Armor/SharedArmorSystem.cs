@@ -37,6 +37,7 @@ using System.Linq;
 using Content.Shared._Orion.Localizations;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
+using Content.Shared.Localizations;
 
 namespace Content.Shared.Armor;
 
@@ -136,6 +137,7 @@ public abstract class SharedArmorSystem : EntitySystem
 
         if (!component.ArmourCoverageHidden)
         {
+
             // Orion-Start
             var coveredParts = coverage
                 .Where(coveragePart => coveragePart != BodyPartType.Other)
@@ -150,6 +152,18 @@ public abstract class SharedArmorSystem : EntitySystem
                 msg.AddMarkupOrThrow(Loc.GetString("armor-coverage-list-value", ("parts", string.Join(", ", coveredParts))));
             }
             // Orion-Edit-End
+
+/* // Orion-Edit: We did it better!
+            // <Trauma>
+            var coveredParts = coverage.Where(coveragePart => coveragePart != BodyPartType.Other).ToList();
+            List<string> coverageText = [];
+            foreach (var part in coveredParts)
+                coverageText.Add(Loc.GetString("armor-coverage-type-" + part.ToString().ToLower()));
+
+            msg.PushNewline();
+            msg.AddMarkupOrThrow(Loc.GetString("armor-coverage-value", ("type", ContentLocalizationManager.FormatList(coverageText))));
+            // </Trauma>
+*/
         }
 
         if (!component.ArmourModifiersHidden)

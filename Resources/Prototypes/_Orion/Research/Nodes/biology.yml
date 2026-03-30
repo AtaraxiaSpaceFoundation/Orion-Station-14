@@ -92,6 +92,33 @@
   position: 10,13
 
 - type: technology
+  id: Cloning
+  name: research-technology-cloning-name
+  description: research-technology-cloning-desc
+  icon:
+    sprite: Structures/Machines/cloning.rsi
+    state: pod_0
+  discipline: Medical
+  tier: 4
+  announceChannels:
+  - Medical
+  pointCosts:
+  - type: General
+    amount: 10000
+  discountExperiments:
+  - ScanningPeopleMutant
+  discountExperimentCosts:
+    ScanningPeopleMutant: 4500
+  recipeUnlocks:
+  - CloningPodMachineCircuitboardRecipe
+  - MedicalScannerMachineCircuitboardRecipe
+  - CloningConsoleComputerCircuitboardRecipe
+  technologyPrerequisites:
+  - GeneEngineering
+  - AdvancedMedicalEquipment
+  position: 10,14
+
+- type: technology
   id: BotanyEquipment
   name: research-technology-botany-equipment-name
   description: research-technology-botany-equipment-desc

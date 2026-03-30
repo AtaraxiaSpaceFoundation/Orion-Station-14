@@ -65,7 +65,6 @@ using Content.Shared._EinsteinEngines.Revolutionary;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
-using Content.Shared.Heretic;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mind.Components;
@@ -83,7 +82,6 @@ using Content.Shared.Zombies;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Goobstation.Shared.Changeling.Components;
 using Content.Goobstation.Common.Conversion;
 using Content.Shared._EinsteinEngines.Revolutionary.Components;
 
@@ -243,8 +241,8 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             return;
 
         // goob - event instead of whatever the fuck the hascomp obelisk below is (whoever did this needs to be flogged)
-        var convEv = new BeforeConversionEvent();
-        RaiseLocalEvent(ev.Target, ref convEv);
+        var convEv = new BeforeConversionEvent(ev.Target);
+        RaiseLocalEvent(ev.Target, ref convEv, true);
 
         if (HasComp<RevolutionaryComponent>(ev.Target) ||
             HasComp<MindShieldComponent>(ev.Target) ||
@@ -252,7 +250,6 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             !alwaysConvertible ||
             !_mobState.IsAlive(ev.Target) ||
             HasComp<ZombieComponent>(ev.Target) ||
-            HasComp<HereticComponent>(ev.Target) || // goob edit - no more heretic revs
             HasComp<AntagImmuneComponent>(ev.Target)) // Antag immune MEANS antag immune.
         {
             if (ev.User != null)

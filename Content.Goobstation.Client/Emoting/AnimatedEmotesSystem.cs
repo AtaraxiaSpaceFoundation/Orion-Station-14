@@ -13,12 +13,14 @@ using System.Linq;
 using System.Numerics;
 using Content.Client.DamageState;
 using Content.Goobstation.Shared.Emoting;
+using Content.Shared._Goobstation.Wizard.SupermatterHalberd;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Animations;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Emoting;
 
@@ -26,6 +28,10 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _anim = default!;
     [Dependency] private readonly IPrototypeManager _prot = default!;
+    [Dependency] private readonly RaysSystem _rays = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!; // cranberry?
 
     private const int TweakAnimationDurationMs = 1100; // 11 frames * 100ms per frame
     private const int FlexAnimationDurationMs = 200 * 7; // 7 frames * 200ms per frame
@@ -41,7 +47,8 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationJumpEmoteEvent>(OnJump);
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationTweakEmoteEvent>(OnTweak);
         SubscribeLocalEvent<AnimatedEmotesComponent, AnimationFlexEmoteEvent>(OnFlex);
-//        SubscribeNetworkEvent<BibleFartSmiteEvent>(OnBibleSmite); // Orion-Edit: Removed
+//        SubscribeNetworkEvent<BibleFartSmiteEvent>(OnBibleSmite); // Orion-Edit
+        SubscribeLocalEvent<AnimatedEmotesComponent, SpriteOverrideEvent>(OnSpriteOverride);
     }
 
 /* // Orion-Edit: Removed
@@ -248,5 +255,18 @@ public sealed partial class AnimatedEmotesSystem : SharedAnimatedEmotesSystem
             }
         };
         PlayEmote(ent, a);
+    }
+
+    // Hardcoded cause i can't be bothered to put up with this.
+    private void OnSpriteOverride(EntityUid ent, AnimatedEmotesComponent _, ref SpriteOverrideEvent args)
+    {
+        var sprite = CompOrNull<SpriteComponent>(ent);
+        if (sprite == null)
+            return;
+
+        _anim.Stop(ent, "emoteAnimSpin");
+
+        if (sprite.Rotation != 90)
+            _sprite.SetRotation(ent, 90);
     }
 }
