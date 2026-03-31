@@ -15,3 +15,13 @@
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Back/Backpacks/spaceninja_backpack.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackDelivery
+  name: delivery bag
+  description: A food delivery service backpack with aluminum foiling on the inside, which sustains heat.
+  components:
+  - type: Sprite
+    sprite: _Orion/Clothing/Back/Backpacks/delivery.rsi
+  - type: AntiRottingContainer # Anti-rotting food, etc.
