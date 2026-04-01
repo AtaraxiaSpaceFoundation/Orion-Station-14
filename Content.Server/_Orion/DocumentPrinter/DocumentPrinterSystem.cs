@@ -37,19 +37,19 @@ public sealed class DocumentPrinterSystem : EntitySystem
         {
             verb.Text = Loc.GetString("printer-autofill-off");
             verb.Act = () =>
-        {
-            component.IsOnAutocomplete = false;
-            _audioSystem.PlayPvs(component.SwitchSound, uid);
-        };
+            {
+                component.IsOnAutocomplete = false;
+                _audioSystem.PlayPvs(component.SwitchSound, uid);
+            };
         }
         else
         {
             verb.Text = Loc.GetString("printer-autofill-on");
             verb.Act = () =>
-        {
-            component.IsOnAutocomplete = true;
-            _audioSystem.PlayPvs(component.SwitchSound, uid);
-        };
+            {
+                component.IsOnAutocomplete = true;
+                _audioSystem.PlayPvs(component.SwitchSound, uid);
+            };
         }
         args.Verbs.Add(verb);
     }
@@ -59,8 +59,7 @@ public sealed class DocumentPrinterSystem : EntitySystem
         // check info from id, time and job
         if (!TryComp<PaperComponent>(args.Paper, out var paperComponent))
             return;
-        InventoryComponent? inventoryComponent = null;
-        TryComp(args.Actor, out inventoryComponent);
+        TryComp<InventoryComponent>(args.Actor, out var inventoryComponent);
 
         string text = paperComponent.Content;
 
@@ -75,9 +74,13 @@ public sealed class DocumentPrinterSystem : EntitySystem
                     {
                         TryComp(slot.ContainedEntity, out pda);
                         if (pda?.ContainedId is EntityUid idUid)
+                        {
                             TryComp<IdCardComponent>(idUid, out idCard);
-                    else
-                        TryComp<IdCardComponent>(slot.ContainedEntity, out idCard);
+                        }
+                        else
+                        {
+                            TryComp<IdCardComponent>(slot.ContainedEntity, out idCard);
+                        }
                         break;
                     }
                 }
