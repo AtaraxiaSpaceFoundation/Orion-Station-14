@@ -3,4 +3,3 @@
   name: paper
   spawn: PaperStack
   maxCount: 1
-  itemSize: 1
