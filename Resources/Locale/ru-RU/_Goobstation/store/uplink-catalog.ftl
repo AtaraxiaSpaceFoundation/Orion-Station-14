@@ -165,7 +165,7 @@ uplink-m90-ammo-name = Магазин (5.56мм винтовочные)
 uplink-m90-ammo-desc = 25 патронов калибра 5.56мм. Для Лектера и M-90.
 uplink-high-caliber-shotgun-box-sarin-desc = 16 патронов 8 калибра с газом зарин для боевого дробовика, выпускающих небольшое облако газа.
 uplink-estoc-ammo-name = Магазин (5.45мм)
-uplink-estoc-ammo-desc = 25 патронов калибра 5.56мм. Совместим с Эсток.
+uplink-estoc-ammo-desc = Магазин калибра 5.56мм. Совместим с Эсток.
 
 # Grenades
 
