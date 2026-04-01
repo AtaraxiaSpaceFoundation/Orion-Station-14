@@ -33,6 +33,7 @@ public sealed partial class JukeboxMenu : FancyWindow
     /// </summary>
     public event Action<bool>? OnPlayPressed;
     public event Action? OnStopPressed;
+    public event Action? OnLoopToggled; // Orion
     public event Action<ProtoId<JukeboxPrototype>>? OnSongSelected;
     public event Action<float>? SetTime;
     public event Action<float>? SetVolume; // Orion
@@ -40,6 +41,8 @@ public sealed partial class JukeboxMenu : FancyWindow
     private EntityUid? _audio;
 
     private float _lockTimer;
+
+    private bool _loopState; // Orion
 
     public JukeboxMenu()
     {
@@ -66,10 +69,18 @@ public sealed partial class JukeboxMenu : FancyWindow
         {
             OnStopPressed?.Invoke();
         };
-        PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
-        VolumeSlider.OnReleased += VolumeSliderKeyUp; /// Orion
 
-        VolumeSlider.MaxValue = 100f; /// Orion
+        // Orion-Start
+        LoopButton.OnPressed += args =>
+        {
+            OnLoopToggled?.Invoke();
+        };
+        // Orion-Start
+
+        PlaybackSlider.OnReleased += PlaybackSliderKeyUp;
+        VolumeSlider.OnReleased += VolumeSliderKeyUp; // Orion
+
+        VolumeSlider.MaxValue = 100f; // Orion
 
         SetPlayPauseButton(_audioSystem.IsPlaying(_audio), force: true);
     }
@@ -127,6 +138,26 @@ public sealed partial class JukeboxMenu : FancyWindow
 
         PlayButton.Text = Loc.GetString("jukebox-menu-buttonplay");
     }
+
+    // Orion-Start
+    public void SetLoopButton(bool loopEnabled)
+    {
+        if (_loopState == loopEnabled)
+            return;
+
+        _loopState = loopEnabled;
+
+        if (loopEnabled)
+        {
+            LoopButton.Text = Loc.GetString("jukebox-menu-button-loop-enabled");
+            LoopButton.Pressed = true;
+            return;
+        }
+
+        LoopButton.Text = Loc.GetString("jukebox-menu-button-loop");
+        LoopButton.Pressed = false;
+    }
+    // Orion-End
 
     public void SetSelectedSong(string name, float length)
     {
