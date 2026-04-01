@@ -158,6 +158,14 @@ public sealed partial class StrapComponent : Component
     [DataField, AutoNetworkedField]
     public Vector2 BuckleOffset = Vector2.Zero;
 
+    // Orion-Start
+    /// <summary>
+    /// Per-entity buckle offsets keyed by buckled entity.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Dictionary<EntityUid, Vector2> BuckleOffsets = new();
+    // Orion-End
+
     /// <summary>
     /// The angle to rotate the player by when they get strapped
     /// </summary>

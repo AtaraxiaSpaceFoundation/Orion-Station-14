@@ -57,6 +57,7 @@ public sealed class DoubleBedSystem : EntitySystem
             return;
 
         var offset = strap.BuckledEntities.Count == 0 ? ent.Comp.LeftOffset : ent.Comp.RightOffset;
+        strap.BuckleOffsets[args.Buckle.Owner] = offset;
         strap.BuckleOffset = offset;
         Dirty(ent, strap);
     }
@@ -66,7 +67,15 @@ public sealed class DoubleBedSystem : EntitySystem
         if (!TryComp<StrapComponent>(ent, out var strap))
             return;
 
+        strap.BuckleOffsets.Remove(args.Buckle.Owner);
+
         strap.BuckleOffset = ent.Comp.LeftOffset;
+        foreach (var buckledEntity in strap.BuckledEntities)
+        {
+            strap.BuckleOffset = strap.BuckleOffsets.GetValueOrDefault(buckledEntity, ent.Comp.LeftOffset);
+            break;
+        }
+
         Dirty(ent, strap);
     }
 
@@ -86,12 +95,9 @@ public sealed class DoubleBedSystem : EntitySystem
         var hasDoubleBedsheet = false;
 
         var doubleBedsheetQuery = EntityQueryEnumerator<DoubleBedSheetComponent, TransformComponent>();
-        while (doubleBedsheetQuery.MoveNext(out var currentBedUid, out _, out var doubleBedsheetXform))
+        while (doubleBedsheetQuery.MoveNext(out _, out _, out var doubleBedsheetXform))
         {
             if (doubleBedsheetXform.ParentUid != ent.Owner)
-                continue;
-
-            if (!HasComp<DoubleBedSheetComponent>(currentBedUid))
                 continue;
 
             hasDoubleBedsheet = true;
