@@ -3,7 +3,7 @@
   recipes:
     - PrintedDocumentReportStationRecipe
     - PrintedDocumentReportOnEliminationOfViolationsRecipe
-    - PrintedDocumentReporDepartmentRecipe
+    - PrintedDocumentReportDepartmentRecipe
     - PrintedDocumentReportEmployeePerformanceRecipe
     - PrintedDocumentReportOnTheChaptersMeetingRecipe
     - PrintedDocumentInternalAffairsAgentsReportRecipe

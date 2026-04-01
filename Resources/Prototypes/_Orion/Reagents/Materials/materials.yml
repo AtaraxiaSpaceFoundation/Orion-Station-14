@@ -1,5 +1,6 @@
 - type: material
   id: SheetPaper
+  stackEntity: Paper
   name: materials-paper
   icon: { sprite: Objects/Misc/bureaucracy.rsi, state: paper }
   color: "#ffffff"

@@ -57,7 +57,8 @@ public sealed class DocumentPrinterSystem : EntitySystem
     public void OnPrinting(EntityUid uid, DocumentPrinterComponent component, PrintingDocumentEvent args)
     {
         // check info from id, time and job
-        if (!TryComp<PaperComponent>(args.Paper, out var paperComponent)) return;
+        if (!TryComp<PaperComponent>(args.Paper, out var paperComponent))
+            return;
         InventoryComponent? inventoryComponent = null;
         TryComp(args.Actor, out inventoryComponent);
 

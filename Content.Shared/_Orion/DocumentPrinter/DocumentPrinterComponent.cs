@@ -1,14 +1,19 @@
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
+using Robust.Shared.Serialization.Manager.Attributes;
 
 namespace Content.Shared._Orion.DocumentPrinter;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class DocumentPrinterComponent : Component
 {
+    [DataField]
     public List<(EntityUid, LatheRecipePrototype)> Queue { get; set; } = new();
+
+    [DataField]
     public SoundSpecifier SwitchSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
+
+    [DataField]
     public bool IsOnAutocomplete = true;
 }
 
