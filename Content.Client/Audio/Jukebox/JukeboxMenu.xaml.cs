@@ -60,18 +60,18 @@ public sealed partial class JukeboxMenu : FancyWindow
             OnSongSelected?.Invoke(juke);
         };
 
-        PlayButton.OnPressed += args =>
+        PlayButton.OnPressed += _ =>
         {
             OnPlayPressed?.Invoke(!_playState);
         };
 
-        StopButton.OnPressed += args =>
+        StopButton.OnPressed += _ =>
         {
             OnStopPressed?.Invoke();
         };
 
         // Orion-Start
-        LoopButton.OnPressed += args =>
+        LoopButton.OnPressed += _ =>
         {
             OnLoopToggled?.Invoke();
         };
@@ -194,7 +194,7 @@ public sealed partial class JukeboxMenu : FancyWindow
             DurationLabel.Text = $"00:00 / 00:00";
         }
 
-        VolumeNumberLabel.Text = $"{VolumeSlider.Value.ToString("0.##")} %"; // Orion
+        VolumeNumberLabel.Text = $"{VolumeSlider.Value:0.##} %"; // Orion
 
         if (PlaybackSlider.Grabbed)
             return;

@@ -28,7 +28,6 @@ SPDX-License-Identifier: MIT
             </BoxContainer>
             <Slider Name="VolumeSlider" HorizontalExpand="True" />
             <!-- Added volume slider and volume label -->
-            </BoxContainer>
         </BoxContainer>
         <BoxContainer Orientation="Vertical">
             <PanelContainer StyleClasses="LowDivider" />
@@ -36,7 +35,7 @@ SPDX-License-Identifier: MIT
                           VerticalExpand="False" SizeFlagsStretchRatio="1" HorizontalAlignment="Center">
                 <Button Name="PlayButton" Text="{Loc 'jukebox-menu-buttonplay'}" />
                 <Button Name="StopButton" Text="{Loc 'jukebox-menu-buttonstop'}" />
-                <Button Name="LoopButton" Text="{Loc 'jukebox-menu-buttonloop'}" />
+                <Button Name="LoopButton" Text="{Loc 'jukebox-menu-button-loop'}" />
             </BoxContainer>
         </BoxContainer>
         <!-- Orion-Edit-End-->
