@@ -63,7 +63,10 @@ public abstract class SharedBedSystem : EntitySystem
             _sleepingSystem.TryWaking(args.Buckle.Owner);
         }
 
-        RemComp<HealOnBuckleHealingComponent>(bed);
+        // Orion-Edit-Start: Check for double bed
+        if (args.Strap.Comp.BuckledEntities.Count == 0)
+            RemComp<HealOnBuckleHealingComponent>(bed);
+        // Orion-Edit-End
     }
 
     private void OnStasisStrapped(Entity<StasisBedComponent> ent, ref StrappedEvent args)

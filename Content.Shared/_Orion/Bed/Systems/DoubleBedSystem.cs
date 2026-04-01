@@ -12,6 +12,7 @@ public sealed class DoubleBedSystem : EntitySystem
 {
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly PlaceableSurfaceSystem _placeableSurface = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -33,7 +34,7 @@ public sealed class DoubleBedSystem : EntitySystem
                 continue;
 
             args.Handled = true;
-            Transform(bedsheetUid).Coordinates = Transform(args.User).Coordinates;
+            _transform.SetCoordinates(bedsheetUid, Transform(args.User).Coordinates);
             return;
         }
     }
@@ -84,6 +85,19 @@ public sealed class DoubleBedSystem : EntitySystem
         var bedsheetCount = 0;
         var hasDoubleBedsheet = false;
 
+        var doubleBedsheetQuery = EntityQueryEnumerator<DoubleBedSheetComponent, TransformComponent>();
+        while (doubleBedsheetQuery.MoveNext(out var currentBedUid, out _, out var doubleBedsheetXform))
+        {
+            if (doubleBedsheetXform.ParentUid != ent.Owner)
+                continue;
+
+            if (!HasComp<DoubleBedSheetComponent>(currentBedUid))
+                continue;
+
+            hasDoubleBedsheet = true;
+            break;
+        }
+
         var query = EntityQueryEnumerator<TagComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var xform))
         {
@@ -92,12 +106,6 @@ public sealed class DoubleBedSystem : EntitySystem
 
             if (!_tagSystem.HasTag(uid, bedsheetTag))
                 continue;
-
-            if (HasComp<DoubleBedSheetComponent>(uid))
-            {
-                hasDoubleBedsheet = true;
-                break;
-            }
 
             var bedsheetCoords = xform.Coordinates;
             if (bedsheetCoords.TryDistance(EntityManager, bedCoords, out var distance) && distance < 0.5f)
