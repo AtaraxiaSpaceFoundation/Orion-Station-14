@@ -21,6 +21,7 @@ public sealed class PrintingDocumentEvent : EntityEventArgs
 {
     public EntityUid Paper { get; private set; }
     public EntityUid Actor { get; private set; }
+
     public PrintingDocumentEvent(EntityUid paper, EntityUid actor)
     {
         Paper = paper;

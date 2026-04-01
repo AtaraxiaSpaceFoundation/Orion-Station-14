@@ -93,11 +93,11 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
-using Content.Shared._Orion.DocumentPrinter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Lathe;
 using Content.Shared.Lathe.Prototypes;
 using Content.Shared.Materials;
+using Content.Shared._Orion.DocumentPrinter;
 using Content.Shared.Power;
 using Content.Shared.ReagentSpeed;
 using Content.Shared.Research.Components;
@@ -256,7 +256,7 @@ namespace Content.Server.Lathe
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount
-                    ? (int)(-amount * component.MaterialUseMultiplier)
+                    ? (int) (-amount * component.MaterialUseMultiplier)
                     : -amount;
 
                 _materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount);

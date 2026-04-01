@@ -29,8 +29,8 @@ public sealed class DocumentPrinterSystem : EntitySystem
 
     public void AddVerbOnOff(EntityUid uid, DocumentPrinterComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
-    if (!args.CanInteract || !args.CanAccess)
-        return;
+        if (!args.CanInteract || !args.CanAccess)
+            return;
 
         AlternativeVerb verb = new();
         if (component.IsOnAutocomplete)
