@@ -94,7 +94,7 @@ public sealed class DroppableBorgModuleSystem : EntitySystem
             }
             else
             {
-                _interaction.DoContactInteraction(chassis, item); // for potential forensics or other systems (why does hands system not do this)
+                _interaction.DoContactInteraction(chassis, item, null, true); // for potential forensics or other systems (why does hands system not do this) | Orion-Edit
                 _placeholder.SetEnabled(item, true);
             }
         }
