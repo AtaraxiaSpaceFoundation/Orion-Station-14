@@ -82,7 +82,7 @@ public sealed class InteractionParticleSystem : EntitySystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(startRotation, 0f),
-                        new AnimationTrackProperty.KeyFrame(endRotation, (float)rotationLength.TotalSeconds, Easings.OutBounce),
+                        new AnimationTrackProperty.KeyFrame(endRotation, (float)rotationLength.TotalSeconds),
                     },
                 },
                 new AnimationTrackComponentProperty()
@@ -92,7 +92,7 @@ public sealed class InteractionParticleSystem : EntitySystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(startScale, 0f),
-                        new AnimationTrackProperty.KeyFrame(endScale, (float)rotationLength.TotalSeconds, Easings.OutBounce),
+                        new AnimationTrackProperty.KeyFrame(endScale, (float)rotationLength.TotalSeconds),
                     },
                 },
                 new AnimationTrackComponentProperty()
@@ -102,7 +102,7 @@ public sealed class InteractionParticleSystem : EntitySystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(startOffset, 0f),
-                        new AnimationTrackProperty.KeyFrame(endOffset, (float)offsetLength.TotalSeconds, Easings.OutBounce),
+                        new AnimationTrackProperty.KeyFrame(endOffset, (float)offsetLength.TotalSeconds),
                     },
                 },
                 new AnimationTrackComponentProperty()
@@ -113,7 +113,7 @@ public sealed class InteractionParticleSystem : EntitySystem
                     {
                         new AnimationTrackProperty.KeyFrame(startColor, 0f),
                         new AnimationTrackProperty.KeyFrame(startColor, (float)rotationLength.TotalSeconds),
-                        new AnimationTrackProperty.KeyFrame(endColor, (float)offsetLength.TotalSeconds, Easings.InOutCirc),
+                        new AnimationTrackProperty.KeyFrame(endColor, (float)offsetLength.TotalSeconds),
                     },
                 },
             },
