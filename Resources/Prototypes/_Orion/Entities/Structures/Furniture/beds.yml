@@ -1,0 +1,21 @@
+- type: entity
+  parent: Bed
+  id: DoubleBed
+  name: double bed
+  description: A large bed for two people.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Furniture/double_bed.rsi
+    state: bed
+  - type: Construction
+    graph: bed
+    node: double_bed_complete
+  - type: DoubleBed
+  - type: Appearance
+  - type: Strap
+    position: Down
+    rotation: -90
+    size: 200
+    buckleOffset: "0,-0.25"
+  - type: PlaceableSurface
+    placeCentered: true

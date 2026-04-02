@@ -21,13 +21,13 @@ SPDX-License-Identifier: MIT
             <!-- Added Interface to change the music volume in Jukebox.
                 Added volume slider and Volume label to show the volume -->
             <Slider Name="PlaybackSlider" HorizontalExpand="True" />
-            <Label Name="VolumeNumberLabel" Text="0" HorizontalAlignment="Right" HorizontalExpand="True"/>
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True"
                           VerticalExpand="False" SizeFlagsStretchRatio="1">
                 <Label Name="VolumeLabel" Text="{Loc 'jukebox-menu-volume'} " />
-                <Slider Name="VolumeSlider" HorizontalExpand="True" />
-            <!-- Added volume slider and volume label -->
+                <Label Name="VolumeNumberLabel" Text="0" HorizontalAlignment="Right" HorizontalExpand="True"/>
             </BoxContainer>
+            <Slider Name="VolumeSlider" HorizontalExpand="True" />
+            <!-- Added volume slider and volume label -->
         </BoxContainer>
         <BoxContainer Orientation="Vertical">
             <PanelContainer StyleClasses="LowDivider" />
@@ -35,6 +35,7 @@ SPDX-License-Identifier: MIT
                           VerticalExpand="False" SizeFlagsStretchRatio="1" HorizontalAlignment="Center">
                 <Button Name="PlayButton" Text="{Loc 'jukebox-menu-buttonplay'}" />
                 <Button Name="StopButton" Text="{Loc 'jukebox-menu-buttonstop'}" />
+                <Button Name="LoopButton" Text="{Loc 'jukebox-menu-button-loop'}" />
             </BoxContainer>
         </BoxContainer>
         <!-- Orion-Edit-End-->
