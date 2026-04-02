@@ -13,12 +13,26 @@ public sealed class TracerSystem : EntitySystem
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+    private TracerOverlay? _tracerOverlay;
+
     public override void Initialize()
     {
         base.Initialize();
-        _overlay.AddOverlay(new TracerOverlay(this));
+        _tracerOverlay = new TracerOverlay(this);
+        _overlay.AddOverlay(_tracerOverlay);
 
         SubscribeLocalEvent<TracerComponent, ComponentStartup>(OnTracerStart);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        if (_tracerOverlay == null)
+            return;
+
+        _overlay.RemoveOverlay(_tracerOverlay);
+        _tracerOverlay = null;
     }
 
     private void OnTracerStart(Entity<TracerComponent> ent, ref ComponentStartup args)
@@ -41,18 +55,20 @@ public sealed class TracerSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var tracer, out var xform))
         {
-            if (curTime > tracer.Data.EndTime)
+            var data = tracer.Data;
+
+            if (curTime > data.EndTime)
             {
                 RemCompDeferred<TracerComponent>(uid);
                 continue;
             }
 
             var currentPos = _transform.GetWorldPosition(xform);
-            tracer.Data.PositionHistory.Add(currentPos);
+            data.PositionHistory.Add(currentPos);
 
-            while (tracer.Data.PositionHistory.Count > 2 &&GetTrailLength(tracer.Data.PositionHistory) > tracer.Length)
+            while (data.PositionHistory.Count > 2 && GetTrailLength(data.PositionHistory) > tracer.Length)
             {
-                tracer.Data.PositionHistory.RemoveAt(0);
+                data.PositionHistory.RemoveAt(0);
             }
         }
     }
@@ -77,10 +93,11 @@ public sealed class TracerSystem : EntitySystem
             if (xform.MapID != currentMap)
                 continue;
 
-            var positions = tracer.Data.PositionHistory;
-
-            if (positions.Count < 2)
+            var data = tracer.Data;
+            if (data.PositionHistory.Count < 2)
                 continue;
+
+            var positions = data.PositionHistory;
 
             handle.SetTransform(Matrix3x2.Identity);
 

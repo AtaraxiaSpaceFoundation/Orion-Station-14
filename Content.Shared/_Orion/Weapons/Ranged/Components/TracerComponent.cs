@@ -1,10 +1,8 @@
 using System.Numerics;
-using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._Orion.Weapons.Ranged.Components;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class TracerComponent : Component
 {
     [DataField]
@@ -26,8 +24,8 @@ public sealed partial class TracerComponent : Component
     public TracerData Data = default!;
 }
 
-[Serializable, NetSerializable, DataRecord]
-public partial struct TracerData(List<Vector2> positionHistory, TimeSpan endTime)
+[DataRecord]
+public sealed partial class TracerData(List<Vector2> positionHistory, TimeSpan endTime)
 {
     public List<Vector2> PositionHistory = positionHistory;
 

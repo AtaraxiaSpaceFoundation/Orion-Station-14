@@ -13,7 +13,6 @@ public sealed class TracerOverlay : Overlay
     public TracerOverlay(TracerSystem tracer)
     {
         _tracer = tracer;
-        IoCManager.InjectDependencies(this);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
