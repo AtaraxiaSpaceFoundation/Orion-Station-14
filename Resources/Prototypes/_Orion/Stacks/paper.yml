@@ -1,5 +1,5 @@
 - type: stack
   id: PaperWritable
-  name: paper
+  name: stack-paper
   spawn: PaperStack
   maxCount: 1
