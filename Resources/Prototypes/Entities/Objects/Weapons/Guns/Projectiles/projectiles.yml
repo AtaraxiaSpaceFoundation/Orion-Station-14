@@ -7,8 +7,8 @@
 # SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
 # SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <zddm@outlook.es>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <zddm@outlook.es>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 V ctor Aguilera Puerto <zddm@outlook.es>
 # SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
 # SPDX-FileCopyrightText: 2021 Kara D <lunarautomaton6@gmail.com>
@@ -211,6 +211,9 @@
       path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
   - type: TimedDespawn
     lifetime: 10
+  - type: Tracer # Orion
+    color: "#FFFFFFFF"
+    length: 3
 
 - type: entity
   id: BaseBulletTrigger # Trigger-on-collide bullets
@@ -250,6 +253,9 @@
     damage:
       types:
         Blunt: 1
+  - type: Tracer # Orion
+    color: "#CCCCCCFF"
+    length: 3
 
 - type: entity
   id: BaseBulletIncendiary
@@ -268,6 +274,9 @@
     energy: 7.0
   - type: IgniteOnCollide
     fireStacks: 0.5
+  - type: Tracer # Orion
+    color: "#D1B479FF"
+    length: 3
 
 - type: entity
   id: BaseBulletAP
@@ -284,6 +293,9 @@
       types:
         Piercing: 11 # 20% decrease
     ignoreResistances: true
+  - type: Tracer # Orion
+    color: "#71C978FF"
+    length: 3
 
 - type: entity
   id: BaseBulletUranium
@@ -299,6 +311,9 @@
     damage:
       types:
         Radiation: 11
+  - type: Tracer # Orion
+    color: "#71C978FF"
+    length: 3
 
 # Energy projectiles
 - type: entity
