@@ -1,0 +1,8 @@
+- type: entity
+  id: SpawnPodDocumentPrinterFlatpack
+  categories: [ HideSpawnMenu ]
+  name: SpawnSupplyDocumentPrinter
+  parent: SpawnSupplyEmpty
+  components:
+  - type: SpawnOnDespawn
+    prototype: DocumentPrinterFlatpack
