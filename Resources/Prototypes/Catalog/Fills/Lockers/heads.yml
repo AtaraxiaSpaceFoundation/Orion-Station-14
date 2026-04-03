@@ -403,6 +403,11 @@
     - id: RubberStampCMO
     # Goobstation Start
     - id: ChemistryHotplateFlatPack
+    # Orion-Start
+    - id: CloningpodFlatpack
+    - id: MedicalScannerFlatpack
+    - id: ComputerCloningConsoleFlatpack
+    # Orion-End
     - id: BiomassReclaimerFlatpack
     - id: Multitool
     - id: MedTekCartridge
