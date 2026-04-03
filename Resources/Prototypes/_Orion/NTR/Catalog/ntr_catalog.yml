@@ -10,7 +10,7 @@
     NTLoyaltyPoint: 0
   categories:
   - NTRBoards
-  restockTime: 120
+  restockTime: 60
   resetRestockOnPurchase: true
   restockAfterPurchase: 600
   conditions:
