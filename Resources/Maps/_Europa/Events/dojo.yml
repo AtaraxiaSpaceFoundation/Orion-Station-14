@@ -5787,7 +5787,7 @@ entities:
     - type: Transform
       pos: -11.614638,13.505766
       parent: 2
-- proto: EuropaShinai
+- proto: Shinai
   entities:
   - uid: 642
     components:
@@ -5799,7 +5799,7 @@ entities:
     - type: Transform
       pos: 10.5,19.5
       parent: 2
-- proto: EuropaWallPaper
+- proto: WallPaper
   entities:
   - uid: 644
     components:

@@ -333,7 +333,7 @@ ClothingHeadHatFedoraBlack: null
 ClothingHeadHatFedoraChoc: null
 ClothingHeadHatFezMantis: null
 ClothingHeadPrisonGuard: null
-ClothingUniformMartialGi: null
+ClothingUniformMartialGi: ClothingUniformGi # Orion-Edit
 ClothingUniformTShirtKhakiPants: null
 ComputerShipyard: null
 CourierBag: null
@@ -408,7 +408,7 @@ Roboisseur: null
 SalvagePartsSpawnerLow: null
 SalvagePartsSpawnerMid: null
 SecBreachingHammer: null
-Shinai: null
+#Shinai: null # Orion-Edit: Removed
 ShockCollar: null
 shuttle_manipulator: null
 SignConspiracyBoard: null

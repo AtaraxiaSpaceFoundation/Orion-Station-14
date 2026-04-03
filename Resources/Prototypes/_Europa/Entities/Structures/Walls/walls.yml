@@ -1,7 +1,6 @@
-## euro-japan upd
 - type: entity
   parent: BaseWall
-  id: EuropaWallPaper
+  id: WallPaper
   name: paper wall
   description: Helps to contain the repeated screams of martial artists.
   components:
