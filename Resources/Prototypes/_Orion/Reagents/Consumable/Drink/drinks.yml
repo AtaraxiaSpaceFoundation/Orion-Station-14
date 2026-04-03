@@ -1,7 +1,7 @@
 - type: reagent
+  parent: BaseDrink
   id: Kvass
   name: reagent-name-kvass
-  parent: BaseDrink
   desc: reagent-desc-kvass
   physicalDesc: reagent-physical-desc-bubbly
   flavor: bread

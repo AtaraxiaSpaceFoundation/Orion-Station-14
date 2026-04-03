@@ -1,2 +1,2 @@
-ent-FoodCrateKvassTank = { ent-CrateFoodKvassTank }
-    .desc = { ent-CrateFoodKvassTank.desc }
+ent-FoodCrateKvassTank = { ent-KvassTankFull }
+    .desc = { ent-KvassTankFull.desc }

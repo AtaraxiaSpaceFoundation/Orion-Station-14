@@ -1,7 +1,7 @@
 # Kvass
 - type: entity
-  id: KvassTank
   parent: StorageTank
+  id: KvassTank
   suffix: Empty
   components:
     - type: Sprite
@@ -18,4 +18,4 @@
         tank:
           reagents:
             - ReagentId: Kvass
-              Quantity: 1500
+              Quantity: 500
