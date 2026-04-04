@@ -552,11 +552,13 @@
   - ActionResetStarGazerConsciousness
 
 ### side paths
-#- type: hereticKnowledge
-#  id: RitualOfKnowledge
-#  sideKnowledge: true
-#  ritualPrototypes:
-#  - RitualOfKnowledge
+# Orion-Edit-Start: Revert
+- type: hereticKnowledge
+  id: RitualOfKnowledge
+  sideKnowledge: true
+  ritualPrototypes:
+  - RitualOfKnowledge
+# Orion-Edit-End
 
 ## stage 3
 - type: hereticKnowledge

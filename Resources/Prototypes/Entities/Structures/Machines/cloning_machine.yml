@@ -47,7 +47,7 @@
   description: A Cloning Pod. 50% reliable.
   components:
   - type: CloningPod
-    cloningTime: 90 # Goobstation
+    cloningTime: 30 # Goobstation # Orion-Edit: 90 > 30
   - type: DeviceList
   - type: DeviceNetwork
     deviceNetId: Wired

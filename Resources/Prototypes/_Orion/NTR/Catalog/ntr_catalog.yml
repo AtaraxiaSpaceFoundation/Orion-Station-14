@@ -1,0 +1,18 @@
+- type: listing
+  id: NTRExecutiveDocumentPrinter
+  name: ntr-executive-document-printer-name
+  description: ntr-executive-document-printer-desc
+  productEntity: SpawnPodDocumentPrinterFlatpack
+  icon:
+    sprite: Objects/Devices/flatpack.rsi
+    state: base
+  cost:
+    NTLoyaltyPoint: 0
+  categories:
+  - NTRBoards
+  restockTime: 60
+  resetRestockOnPurchase: true
+  restockAfterPurchase: 600
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5

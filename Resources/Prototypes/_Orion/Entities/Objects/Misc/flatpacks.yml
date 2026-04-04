@@ -1,0 +1,8 @@
+- type: entity
+  parent: BaseFlatpack
+  id: DocumentPrinterFlatpack
+  name: document printer flatpack
+  description: A flatpack used for constructing a document printer.
+  components:
+  - type: Flatpack
+    entity: DocumentPrinter
