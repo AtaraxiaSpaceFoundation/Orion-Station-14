@@ -1,4 +1,16 @@
 - type: entity
+  id: PaperStack
+  parent: Paper
+  suffix: Stack
+  components:
+  - type: Stack
+    stackType: PaperWritable
+    count: 1
+  - type: PhysicalComposition
+    materialComposition:
+      SheetPaper: 100
+
+- type: entity
   parent: RubberStampWarden
   id: RubberStampInteQ
   name: InteQ rubber stamp
