@@ -10175,7 +10175,7 @@ entities:
     - type: Transform
       pos: 16.5,-3.5
       parent: 2
-- proto: tatamisingle
+- proto: TatamiSingle
   entities:
   - uid: 1111
     components:

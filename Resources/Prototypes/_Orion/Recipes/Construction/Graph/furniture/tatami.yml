@@ -22,7 +22,7 @@
               doAfter: 4
 
     - node: tatamiSquare
-      entity: tatamisingle
+      entity: TatamiSingle
       edges:
         - to: start
           completed:
@@ -34,7 +34,7 @@
               doAfter: 8
 
     - node: tatamiPart
-      entity: tatamimat
+      entity: TatamiMat
       edges:
         - to: start
           completed:

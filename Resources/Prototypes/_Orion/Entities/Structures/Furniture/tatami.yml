@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseStructure
-  id: tatamibase
+  id: TatamiBase
   abstract: true
   components:
   - type: Sprite
@@ -13,8 +13,8 @@
   - type: Fixtures
 
 - type: entity
-  parent: tatamibase
-  id: tatamisingle
+  parent: TatamiBase
+  id: TatamiSingle
   name: tatami square
   description: It's tatami, but a square.
   components:
@@ -25,8 +25,8 @@
     node: tatamiSquare
 
 - type: entity
-  parent: tatamibase
-  id: tatamimat
+  parent: TatamiBase
+  id: TatamiMat
   name: tatami mat
   description: It's a portion of a tatami mat.
   components:

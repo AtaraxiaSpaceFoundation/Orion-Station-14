@@ -360,7 +360,7 @@ GunSafeEnergyGunMini: null
 GunSafeVulcanRifle: null
 HatSpawner: null
 KitchenDeepFryer: null
-KvassTankFull: null
+#KvassTankFull: null # Orion-Edit: Removed
 LockerForensicMantisFilled: null
 LunchboxSecurityFilledRandom: null
 MagazineBoxSpecialPractice: null
@@ -370,23 +370,23 @@ PaintingMothBigCatch: null
 PaintingSpoon: null
 PlushieMothMusician: null
 PlushieMothRandom: null
-PosterContrabandBreadLies: null
+#PosterContrabandBreadLies: null # Orion-Edit: Removed
 PosterContrabandGotWood: null
 PosterContrabandSafetyMothSyndie: null
 PosterContrabandSaucerNumberOne: null
-PosterLegitBarDrinks: null
-PosterLegitBotanyFood: null
+#PosterLegitBarDrinks: null # Orion-Edit: Removed
+#PosterLegitBotanyFood: null # Orion-Edit: Removed
 PosterLegitChknDnnr: null
 PosterLegitCornzza: null
 PosterLegitDejaVu: null
 PosterLegitDontPanic: null
-PosterLegitEatMeat: null
+#PosterLegitEatMeat: null # Orion-Edit: Removed
 PosterLegitFuckAround: null
-PosterLegitHotDonkExplosion: null
+#PosterLegitHotDonkExplosion: null # Orion-Edit: Removed
 PosterLegitMedicate: null
 PosterLegitNoTouching: null
-PosterLegitPieSlice: null
-PosterLegitPizzaHope: null
+#PosterLegitPieSlice: null # Orion-Edit: Removed
+#PosterLegitPizzaHope: null # Orion-Edit: Removed
 PosterLegitSafetyMothBoH: null
 PosterLegitSafetyMothFires: null
 PosterLegitSafetyMothGlimmer: null
@@ -433,7 +433,7 @@ SpeedLoaderSpecialPractice: null
 SuitStorageCorpsman: null
 SuitStorageParamedic: null
 TableWoodReinforced: TableWood
-tatamimat: null
+TatamiMat: null # Orion-Edit
 ToyRenault: null
 ToySiobhan: null
 VendingMachineBoozeUnlocked: null
@@ -891,8 +891,8 @@ CentcomPDAFake: null
 CentcomIDCardSyndie: null
 
 # 2024-09-06
-AntimovCircuitBoard: null
-OverlordCircuitBoard: null
+#AntimovCircuitBoard: null # Orion-Edit: Removed
+#OverlordCircuitBoard: null # Orion-Edit: Removed
 
 # 2024-09-08
 HatBase: null
@@ -1015,7 +1015,7 @@ BorgModuleAdvancedTreatment: null
 FoodCondimentPacketFrostoil: FoodCondimentPacketColdsauce
 
 # 2025-02-05
-WeaponSubMachineGunVector: null
+#WeaponSubMachineGunVector: null # Orion-Edit: Removed
 WeaponSubMachineGunVectorRubber: null
 
 # 2025-02-11
