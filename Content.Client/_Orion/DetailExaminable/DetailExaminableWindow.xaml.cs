@@ -255,6 +255,7 @@ public sealed partial class DetailExaminableWindow : FancyWindow
             url.StartsWith("https://disk.yandex.ru", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://docs.yandex.by", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://docs.yandex.ru", StringComparison.OrdinalIgnoreCase) ||
+            url.StartsWith("https://eblo.id", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://ru.imgbb.com", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://gyazo.com", StringComparison.OrdinalIgnoreCase) ||
             url.StartsWith("https://i.gyazo.com", StringComparison.OrdinalIgnoreCase) ||
