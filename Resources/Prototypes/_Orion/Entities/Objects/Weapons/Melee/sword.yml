@@ -1,7 +1,7 @@
 - type: entity
-  name: shinai
   parent: BaseItem
   id: Shinai
+  name: shinai
   description: A bamboo sword, commonly used in kendo. Made some time after the realization that wooden swords hurt a lot.
   components:
   - type: Sprite
@@ -26,9 +26,9 @@
   - type: DisarmMalus
 
 - type: entity
-  name: wakizashi
   parent: BaseItem
   id: Wakizashi
+  name: wakizashi
   description: A short, multi-purpose sword of plasteel construction.
   components:
   - type: Sprite

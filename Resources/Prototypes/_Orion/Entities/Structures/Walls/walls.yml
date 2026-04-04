@@ -12,23 +12,23 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300 
+        damage: 100
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 50
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          path: /Audio/_Orion/Effects/paper_tear.ogg
       - !type:ChangeConstructionNodeBehavior
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
     destroySound:
-      path: /Audio/Effects/metalbreak.ogg
+      path: /Audio/_Orion/Effects/paper_tear.ogg
   - type: IconSmooth
     key: walls
     base: paperwall

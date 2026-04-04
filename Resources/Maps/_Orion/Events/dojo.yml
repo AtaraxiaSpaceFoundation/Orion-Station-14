@@ -5004,7 +5004,7 @@ entities:
         solution@food: !type:ContainerSlot
           ent: 1909
     - type: InsideEntityStorage
-- proto: ClothingKimonoBlue
+- proto: ClothingUniformKimonoBlue
   entities:
   - uid: 595
     components:
@@ -5021,7 +5021,7 @@ entities:
       sprite: _Europa/Clothing/Uniforms/Costume/kimono-blue.rsi
     - type: Physics
       canCollide: False
-- proto: ClothingKimonoGreen
+- proto: ClothingUniformKimonoGreen
   entities:
   - uid: 598
     components:
@@ -5038,7 +5038,7 @@ entities:
       parent: 2
     - type: Clothing
       sprite: _Europa/Clothing/Uniforms/Costume/kimono-green.rsi
-- proto: ClothingKimonoPink
+- proto: ClothingUniformKimonoPink
   entities:
   - uid: 603
     components:
@@ -5055,7 +5055,7 @@ entities:
       sprite: _Europa/Clothing/Uniforms/Costume/kimono-pink.rsi
     - type: Physics
       canCollide: False
-- proto: ClothingKimonoSky
+- proto: ClothingUniformKimonoSky
   entities:
   - uid: 606
     components:

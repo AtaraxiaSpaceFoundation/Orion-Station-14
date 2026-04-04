@@ -1,19 +1,19 @@
-ent-ClothingUniformGi = кимоно для единоборств
+ent-ClothingUniformGi = белое кимоно
     .desc = Белая куртка и штаны, традиционно используемые в боевых искусствах, часто носятся с поясом.
 
-ent-ClothingKimonoBlue = синее кимоно
-    .desc = I'm blue da ba dee da ba da-ee!
+ent-ClothingUniformKimonoBlue = синее кимоно
+    .desc = Синее, как даль. Или как песня, застрявшая в голове на три дня.
 
-ent-ClothingKimonoPink = розовое кимоно
+ent-ClothingUniformKimonoPink = розовое кимоно
     .desc = Довольно гламурно, не правда ли?
 
-ent-ClothingKimonoPurple = фиолетовое кимоно
+ent-ClothingUniformKimonoPurple = фиолетовое кимоно
     .desc = В этом ты точно не будешь выглядеть как неудачник.
 
-ent-ClothingKimonoSky = небесно-голубое кимоно
+ent-ClothingUniformKimonoSky = небесно-голубое кимоно
     .desc = Напоминает о летнем фестивале (нацу мацури).
 
-ent-ClothingKimonoGreen = морское зеленое кимоно
+ent-ClothingUniformKimonoGreen = морское зелёное кимоно
     .desc = Цвета и текстуры, напоминающие морские водоросли.
 
 ent-ClothingUniformKendoHakama = хакама

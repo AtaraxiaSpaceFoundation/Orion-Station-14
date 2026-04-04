@@ -129,11 +129,11 @@
     ClothingUniformJumpsuitMegaManX: 1
     ClothingNeckMantleElderLizards: 2
     ClothingUniformGi: 2
-    ClothingKimonoBlue: 2
-    ClothingKimonoPink: 2
-    ClothingKimonoPurple: 2
-    ClothingKimonoSky: 2
-    ClothingKimonoGreen: 2
+    ClothingUniformKimonoBlue: 2
+    ClothingUniformKimonoPink: 2
+    ClothingUniformKimonoPurple: 2
+    ClothingUniformKimonoSky: 2
+    ClothingUniformKimonoGreen: 2
     ClothingUniformKendoHakama: 1
     # Orion-End
     ClothingOuterSuitHotDog: 1 # Goob
