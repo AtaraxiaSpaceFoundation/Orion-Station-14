@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseWall
-  id: WallPaper
+  id: WallPaper 
   name: paper wall
   description: Helps to contain the repeated screams of martial artists.
   components:
@@ -27,8 +27,6 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
-    destroySound:
-      path: /Audio/_Orion/Effects/paper_tear.ogg
   - type: IconSmooth
     key: walls
     base: paperwall

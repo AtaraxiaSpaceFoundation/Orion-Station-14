@@ -1,0 +1,46 @@
+- type: constructionGraph
+  id: tatami
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DeleteEntity {}
+      edges:
+        - to: tatamiSquare
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Paper
+              amount: 10
+              doAfter: 8
+        - to: tatamiPart
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Paper
+              amount: 5
+              doAfter: 4
+
+    - node: tatamiSquare
+      entity: tatamisingle
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetPaper1
+              amount: 10
+          steps:
+            - tool: Anchoring
+              doAfter: 8
+
+    - node: tatamiPart
+      entity: tatamimat
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetPaper1
+              amount: 5
+          steps:
+            - tool: Anchoring
+              doAfter: 4

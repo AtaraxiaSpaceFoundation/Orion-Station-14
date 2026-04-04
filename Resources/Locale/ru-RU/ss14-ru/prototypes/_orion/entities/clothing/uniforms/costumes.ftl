@@ -22,5 +22,5 @@ ent-ClothingUniformKendoHakama = хакама
 ent-ClothingOuterArmorKendoBogu = богу
     .desc = Комплект доспехов, используемый в кендо. Покрывает талию, торс и руки.
 
-ent-ClothingHeadHelmetKendoMen = мэн
+ent-ClothingHeadHelmetKendoMen = фехтовальная маска
     .desc = Квинтэссенция головного доспеха практикующего кендо.
