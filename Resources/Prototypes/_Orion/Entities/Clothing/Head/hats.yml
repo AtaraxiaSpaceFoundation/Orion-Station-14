@@ -249,6 +249,6 @@
       BoneDamage: 0.8
     modifiers:
       coefficients:
-        Blunt: 0.80
-        Slash: 0.95
-        Piercing: 0.95
+        Blunt: 0.6
+        Slash: 0.8
+        Piercing: 0.9
