@@ -1,4 +1,30 @@
-# euro-japan upd
+- type: entity
+  name: shinai
+  parent: BaseItem
+  id: Shinai
+  description: A bamboo sword, commonly used in kendo. Made some time after the realization that wooden swords hurt a lot.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Weapons/Melee/shinai.rsi
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 1.2
+    range: 1.75
+    bluntStaminaDamageFactor: 2.0
+    damage:
+      types:
+        Blunt: 4
+    soundHit:
+      collection: MetalThud
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 2
+  - type: StaminaDamageOnHit
+    damage: 10
+  - type: DisarmMalus
+
 - type: entity
   name: wakizashi
   parent: BaseItem
@@ -6,11 +32,11 @@
   description: A short, multi-purpose sword of plasteel construction.
   components:
   - type: Sprite
-    sprite: _Europa/Objects/Weapons/Melee/wakizashi.rsi
+    sprite: _Orion/Objects/Weapons/Melee/wakizashi.rsi
     state: icon
   - type: Item
     size: Normal
-    sprite: _Europa/Objects/Weapons/Melee/wakizashi.rsi
+    sprite: _Orion/Objects/Weapons/Melee/wakizashi.rsi
   - type: Execution
     doAfterDuration: 14.0
   - type: Sharp

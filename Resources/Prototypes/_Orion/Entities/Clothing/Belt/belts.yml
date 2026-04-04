@@ -93,19 +93,18 @@
   - type: Clothing
     sprite: _Orion/Clothing/Belt/centcomm_sheath.rsi
 
-## euro-japan upd
 - type: entity
   parent: ClothingBeltSheath
-  suffix: Filled
   id: ClothingBeltKatanaSheath
   name: katana sheaths
   description: An ornate belt designed to hold a pair of samurai's blades, or daisho.
+  suffix: Filled
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Belt/katanasheath.rsi
+    sprite: _Orion/Clothing/Belt/katanasheath.rsi
     state: sheath-wakizashi
   - type: Clothing
-    sprite: _Europa/Clothing/Belt/katanasheath.rsi
+    sprite: _Orion/Clothing/Belt/katanasheath.rsi
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

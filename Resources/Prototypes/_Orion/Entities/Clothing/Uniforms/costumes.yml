@@ -6,9 +6,9 @@
   description: A white top and bottom traditionally used in martial arts, often paired with a belt.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/gi.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/gi.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/gi.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/gi.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -17,9 +17,9 @@
   description: I'm blue da ba dee da ba da-ee!
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-blue.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-blue.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-blue.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-blue.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -28,9 +28,9 @@
   description: Pretty in pink, isn't she?
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-pink.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-pink.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-pink.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-pink.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -39,9 +39,9 @@
   description: You definitely won't look like a maroon in this.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-purple.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-purple.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-purple.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-purple.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -50,9 +50,9 @@
   description: Reminds you of natsu matsuri.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-sky.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-sky.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-sky.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-sky.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -61,9 +61,9 @@
   description: Colors and textures reminiscent of seaweed.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-green.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-green.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/kimono-green.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/kimono-green.rsi
     
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -72,6 +72,6 @@
   description: An elegant black and blue hakama that could be worn for kendo or formal events.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Uniforms/Costume/hakama.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/hakama.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Uniforms/Costume/hakama.rsi
+    sprite: _Orion/Clothing/Uniforms/Costume/hakama.rsi

@@ -5,7 +5,7 @@
   components:
   - type: Sprite
     drawdepth: FloorTiles
-    sprite: _Europa/Structures/Furniture/tatami.rsi
+    sprite: _Orion/Structures/Furniture/tatami.rsi
   - type: Tag
     tags: [ Carpet ]
   - type: Physics

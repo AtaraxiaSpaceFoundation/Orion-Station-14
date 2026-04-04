@@ -239,10 +239,14 @@
   description: The quintessential head armor of the kendo practitioner.
   components:
   - type: Sprite
-    sprite: _Europa/Clothing/Head/Helmets/men.rsi
+    sprite: _Orion/Clothing/Head/Helmets/men.rsi
   - type: Clothing
-    sprite: _Europa/Clothing/Head/Helmets/men.rsi
+    sprite: _Orion/Clothing/Head/Helmets/men.rsi
   - type: Armor
+    coverage:
+    - Head
+    traumaDeductions:
+      BoneDamage: 0.8
     modifiers:
       coefficients:
         Blunt: 0.80

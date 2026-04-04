@@ -442,7 +442,7 @@ VendingMachineBoxingDrobe: null
 VendingMachineCourierDrobe: null
 VendingMachineMNKDrobe: null
 VendingMachineRepDrobe: null
-WallPaper: null
+#WallPaper: null # Orion-Edit
 WarpPointAI: null
 WarpPointArrivals: null
 WarpPointAtmos: null
