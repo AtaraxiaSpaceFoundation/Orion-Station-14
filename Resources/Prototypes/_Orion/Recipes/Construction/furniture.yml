@@ -11,3 +11,31 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  id: TatamiSingleRecipe
+  name: construction-name-tatami-single
+  description: construction-desc-tatami
+  graph: tatami
+  startNode: start
+  targetNode: tatamiSquare
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: TatamiMatRecipe
+  name: construction-name-tatami-mat
+  description: construction-desc-tatami
+  graph: tatami
+  startNode: start
+  targetNode: tatamiPart
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

@@ -1,7 +1,7 @@
 - type: construction
   id: WallPaperRecipe
-  name: paper wall
-  description: Helps to contain the repeated screams of martial artists.
+  name: construction-name-double-bed
+  description: construction-desc-double-bed
   graph: wallPaper
   startNode: start
   targetNode: wallPaper
