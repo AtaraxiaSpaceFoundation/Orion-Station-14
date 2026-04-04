@@ -1,0 +1,45 @@
+using Content.Shared._Orion.Mood;
+using Content.Shared._Orion.Traits.Components;
+using Robust.Shared.Random;
+
+namespace Content.Shared._Orion.Traits.Systems;
+
+public sealed class MoodTraitSystem : EntitySystem
+{
+    [Dependency] private readonly IRobustRandom _random = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<MoodTraitComponent, ComponentStartup>(OnMoodTraitStartup);
+        SubscribeLocalEvent<ManicComponent, OnSetMoodEvent>(OnManicMood);
+        SubscribeLocalEvent<MercurialComponent, OnSetMoodEvent>(OnMercurialMood);
+        SubscribeLocalEvent<DeadEmotionsComponent, OnSetMoodEvent>(OnDeadEmotionsMood);
+    }
+
+    private void OnMoodTraitStartup(Entity<MoodTraitComponent> ent, ref ComponentStartup args)
+    {
+        foreach (var moodlet in ent.Comp.MoodEffects)
+        {
+            var ev = new MoodEffectEvent(moodlet);
+            RaiseLocalEvent(ent.Owner, ev);
+        }
+    }
+
+    private void OnManicMood(EntityUid uid, ManicComponent component, ref OnSetMoodEvent args)
+    {
+        args.MoodChangedAmount *= _random.NextFloat(component.LowerMultiplier, component.UpperMultiplier);
+    }
+
+    private void OnMercurialMood(EntityUid uid, MercurialComponent component, ref OnSetMoodEvent args)
+    {
+        args.MoodOffset += _random.NextFloat(component.LowerMood, component.UpperMood);
+    }
+
+    private static void OnDeadEmotionsMood(EntityUid uid, DeadEmotionsComponent component, ref OnSetMoodEvent args)
+    {
+        args.MoodChangedAmount = 0f;
+        args.MoodOffset = 0f;
+    }
+}

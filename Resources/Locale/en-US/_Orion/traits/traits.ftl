@@ -1,0 +1,10 @@
+trait-saturnine-name = Saturnine
+trait-saturnine-desc = You are naturally dour and morose. Your mood is permanently decreased by a large amount.
+trait-sanguine-name = Sanguine
+trait-sanguine-desc = You are naturally upbeat and cheerful! Your mood is permanently increased by a large amount.
+trait-manic-name = Manic
+trait-manic-desc = Your perception of the world is subject to varying intensities. Anything that affects your mood will have its effects multiplied by between 0.7 and 1.3.
+trait-mercurial-name = Mercurial
+trait-mercurial-desc = Your mood fluctuates regularly, causing you to have a random modifier to your mood that is always somewhere between -10 and +10.
+trait-dead-emotions-name = Dead Emotions
+trait-dead-emotions-desc = You feel nothing, and are completely unaffected by all positive or negative mood modifiers.

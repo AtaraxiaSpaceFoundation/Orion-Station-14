@@ -598,6 +598,7 @@
     - Bacterial
     - Parasite
   # </Goobstation>
+  - type: Mood # Orion
 
 - type: entity
   save: false

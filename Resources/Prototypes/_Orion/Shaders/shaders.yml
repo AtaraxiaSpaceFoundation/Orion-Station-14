@@ -2,3 +2,8 @@
   id: LightingOverlay
   kind: source
   path: "/Textures/_Orion/Shaders/light.swsl"
+
+- type: shader
+  id: SaturationScale
+  kind: source
+  path: "/Textures/_Orion/Shaders/saturationscale.swsl"

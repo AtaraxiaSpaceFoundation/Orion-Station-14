@@ -88,13 +88,17 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Orion.Mood;
 using Content.Shared.Alert;
+using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusIcon;
+using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -111,6 +115,8 @@ public sealed class HungerSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
+    [Dependency] private readonly IConfigurationManager _config = default!; // Orion
+    [Dependency] private readonly INetManager _net = default!; // Orion
 
     private static readonly ProtoId<SatiationIconPrototype> HungerIconOverfedId = "HungerIconOverfed";
     private static readonly ProtoId<SatiationIconPrototype> HungerIconPeckishId = "HungerIconPeckish";
@@ -167,6 +173,11 @@ public sealed class HungerSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, HungerComponent component, RefreshMovementSpeedModifiersEvent args)
     {
+        // Orion-Start
+        if (_config.GetCVar(CCVars.MoodEnabled))
+            return;
+        // Orion-End
+
         if (component.CurrentThreshold > HungerThreshold.Starving)
             return;
 
@@ -258,7 +269,12 @@ public sealed class HungerSystem : EntitySystem
 
         if (GetMovementThreshold(component.CurrentThreshold) != GetMovementThreshold(component.LastThreshold))
         {
-            _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
+            // Orion-Edit-Start
+            if (!_config.GetCVar(CCVars.MoodEnabled))
+                _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
+            else if (_net.IsServer)
+                RaiseLocalEvent(uid, new MoodEffectEvent("Hunger" + component.CurrentThreshold));
+            // Orion-Edit-End
         }
 
         if (component.HungerThresholdAlerts.TryGetValue(component.CurrentThreshold, out var alertId))
