@@ -29,7 +29,13 @@ public sealed class MoodTraitSystem : EntitySystem
 
     private void OnManicMood(EntityUid uid, ManicComponent component, ref OnSetMoodEvent args)
     {
-        args.MoodChangedAmount *= _random.NextFloat(component.LowerMultiplier, component.UpperMultiplier);
+        var lower = MathF.Max(0f, component.LowerMultiplier);
+        var upper = MathF.Max(0f, component.UpperMultiplier);
+
+        if (lower > upper)
+            (lower, upper) = (upper, lower);
+
+        args.MoodChangedAmount *= _random.NextFloat(lower, upper);
     }
 
     private void OnMercurialMood(EntityUid uid, MercurialComponent component, ref OnSetMoodEvent args)

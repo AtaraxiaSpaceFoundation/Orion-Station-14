@@ -21,7 +21,7 @@ namespace Content.Server._Orion.Mood;
 
 public sealed class MoodSystem : EntitySystem
 {
-    [Dependency] private readonly IChatManager _сhatManager = default!;
+    [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -73,7 +73,7 @@ public sealed class MoodSystem : EntitySystem
             msg += $"[font size=10][color={color}]{proto.Description}[/color][/font]\n";
         }
 
-        _сhatManager.ChatMessageToOne(
+        _chatManager.ChatMessageToOne(
             ChatChannel.Emotes,
             msg,
             msg,
@@ -176,9 +176,7 @@ public sealed class MoodSystem : EntitySystem
             if (moodChange == 0)
                 return;
 
-            // Don't send the moodlet popup if we already have the moodlet.
-            if (!component.UncategorisedEffects.ContainsKey(prototype.ID))
-                SendEffectText(uid, prototype);
+            SendEffectText(uid, prototype);
 
             component.UncategorisedEffects.Add(prototype.ID, moodChange);
 
@@ -314,9 +312,9 @@ public sealed class MoodSystem : EntitySystem
         if (!force)
         {
             newMoodLevel = Math.Clamp(
-                amount + neutral,
+                amount + neutral + ev.MoodOffset,
                 component.MoodThresholds[MoodThreshold.Dead],
-                component.MoodThresholds[MoodThreshold.Perfect]);
+                component.MoodThresholds[MoodThreshold.Insane]);
         }
 
         component.CurrentMoodLevel = newMoodLevel;
@@ -327,7 +325,7 @@ public sealed class MoodSystem : EntitySystem
             mood.NeutralMoodThreshold = component.MoodThresholds.GetValueOrDefault(MoodThreshold.Neutral);
         }
 
-        RefreshShaders(uid, component.CurrentMoodLevel);
+        RefreshShaders(uid, component.CurrentMoodLevel, component.MoodThresholds[MoodThreshold.Neutral]);
         UpdateCurrentThreshold(uid, component);
     }
 
@@ -369,10 +367,11 @@ public sealed class MoodSystem : EntitySystem
         component.LastThreshold = component.CurrentMoodThreshold;
     }
 
-    private void RefreshShaders(EntityUid uid, float mood)
+    private void RefreshShaders(EntityUid uid, float mood, float neutralThreshold)
     {
         EnsureComp<SaturationScaleOverlayComponent>(uid, out var comp);
-        comp.SaturationScale = mood / 50;
+        comp.NeutralMoodThreshold = neutralThreshold;
+        comp.SaturationScale = mood / comp.NeutralMoodThreshold;
         Dirty(uid, comp);
     }
 
@@ -390,7 +389,9 @@ public sealed class MoodSystem : EntitySystem
             _ => component.CritThresholdBeforeModify,
         };
 
-        component.CritThresholdBeforeModify = key.Value;
+        if (component.CritThresholdBeforeModify == default)
+            component.CritThresholdBeforeModify = key.Value;
+
         _mobThreshold.SetMobStateThreshold(uid, newKey, MobState.Critical, mobThresholds);
     }
 
@@ -398,7 +399,7 @@ public sealed class MoodSystem : EntitySystem
     {
         moodLevel ??= component.CurrentMoodLevel;
         var result = MoodThreshold.Dead;
-        var value = component.MoodThresholds[MoodThreshold.Perfect];
+        var value = component.MoodThresholds[MoodThreshold.Insane];
 
         foreach (var threshold in component.MoodThresholds)
         {

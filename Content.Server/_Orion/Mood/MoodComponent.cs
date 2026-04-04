@@ -54,6 +54,7 @@ public sealed partial class MoodComponent : Component
     [DataField(customTypeSerializer: typeof(DictionarySerializer<MoodThreshold, float>))]
     public Dictionary<MoodThreshold, float> MoodThresholds = new()
     {
+        { MoodThreshold.Insane, 120f },
         { MoodThreshold.Perfect, 100f },
         { MoodThreshold.Exceptional, 80f },
         { MoodThreshold.Great, 70f },
@@ -98,15 +99,15 @@ public sealed partial class MoodComponent : Component
 [Serializable]
 public enum MoodThreshold : ushort
 {
-    Insane = 1,
-    Horrible = 2,
-    Terrible = 3,
-    Bad = 4,
-    Meh = 5,
-    Neutral = 6,
-    Good = 7,
-    Great = 8,
-    Exceptional = 9,
-    Perfect = 10,
     Dead = 0,
+    Horrible = 1,
+    Terrible = 2,
+    Bad = 3,
+    Meh = 4,
+    Neutral = 5,
+    Good = 6,
+    Great = 7,
+    Exceptional = 8,
+    Perfect = 9,
+    Insane = 10,
 }

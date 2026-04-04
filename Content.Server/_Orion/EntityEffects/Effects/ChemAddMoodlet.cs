@@ -13,10 +13,10 @@ public sealed partial class ChemAddMoodlet : EntityEffect
 {
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
-        var protoMan = IoCManager.Resolve<IPrototypeManager>();
+        var moodPrototype = prototype.Index<MoodEffectPrototype>(MoodPrototype.Id);
         return Loc.GetString("reagent-effect-guidebook-add-moodlet",
-            ("amount", protoMan.Index<MoodEffectPrototype>(MoodPrototype.Id).MoodChange),
-            ("timeout", protoMan.Index<MoodEffectPrototype>(MoodPrototype.Id).Timeout));
+            ("amount", moodPrototype.MoodChange),
+            ("timeout", moodPrototype.Timeout));
     }
 
     /// <summary>

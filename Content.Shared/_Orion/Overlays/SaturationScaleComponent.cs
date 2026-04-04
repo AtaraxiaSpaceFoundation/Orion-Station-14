@@ -6,6 +6,9 @@ namespace Content.Shared._Orion.Overlays;
 public sealed partial class SaturationScaleOverlayComponent : Component
 {
     [DataField, AutoNetworkedField]
+    public float NeutralMoodThreshold = 50f;
+
+    [DataField, AutoNetworkedField]
     public float SaturationScale = 1f;
 
     /// <summary>

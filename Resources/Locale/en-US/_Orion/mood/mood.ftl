@@ -11,7 +11,7 @@ mood-effect-ThirstThirsty = My lips are a little dry.
 mood-effect-ThirstParched = I NEED WATER!
 
 mood-effect-HealthNoDamage = I'm in no pain.
-mood-effect-HealthLightDamage = It's just a scratch, but it hurts nonetheless
+mood-effect-HealthLightDamage = It's just a scratch, but it hurts nonetheless.
 mood-effect-HealthSevereDamage = The pain is almost unbearable!
 mood-effect-HealthHeavyDamage = Agony gnaws at my soul!
 
@@ -45,7 +45,7 @@ mood-effect-GotBlessed = I was blessed.
 
 mood-effect-PetAnimal = Animals are so cute, I can't stop petting them!
 
-mood-effect-SavedLife = It's so nice to save someone's life
+mood-effect-SavedLife = It's so nice to save someone's life.
 
 mood-effect-TraitorFocused = I have a goal, and I will accomplish it no matter what.
 

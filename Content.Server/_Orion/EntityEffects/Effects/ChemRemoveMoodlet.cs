@@ -13,9 +13,9 @@ public sealed partial class ChemRemoveMoodlet : EntityEffect
 {
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
-        var protoMan = IoCManager.Resolve<IPrototypeManager>();
+        var moodPrototype = prototype.Index<MoodEffectPrototype>(MoodPrototype.Id);
         return Loc.GetString("reagent-effect-guidebook-remove-moodlet",
-            ("name", protoMan.Index<MoodEffectPrototype>(MoodPrototype.Id)));
+            ("name", moodPrototype.Name));
     }
 
     /// <summary>

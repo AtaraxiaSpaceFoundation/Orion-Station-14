@@ -12,7 +12,7 @@ public sealed class SaturationScaleOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] IEntityManager _entityManager = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -63,7 +63,9 @@ public sealed class SaturationScaleOverlay : Overlay
             ? deltaTSlower
             : -deltaTSlower;
 
-        _currentSaturation += saturationFadeIn;
+        var minSaturation = Math.Min(_currentSaturation, saturationComp.SaturationScale);
+        var maxSaturation = Math.Max(_currentSaturation, saturationComp.SaturationScale);
+        _currentSaturation = Math.Clamp(_currentSaturation + saturationFadeIn, minSaturation, maxSaturation);
         _shader.SetParameter("saturation", _currentSaturation);
     }
 }

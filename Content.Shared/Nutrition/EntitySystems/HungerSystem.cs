@@ -270,9 +270,9 @@ public sealed class HungerSystem : EntitySystem
         if (GetMovementThreshold(component.CurrentThreshold) != GetMovementThreshold(component.LastThreshold))
         {
             // Orion-Edit-Start
-            if (!_config.GetCVar(CCVars.MoodEnabled))
-                _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
-            else if (_net.IsServer)
+            _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
+
+            if (_config.GetCVar(CCVars.MoodEnabled) && _net.IsServer)
                 RaiseLocalEvent(uid, new MoodEffectEvent("Hunger" + component.CurrentThreshold));
             // Orion-Edit-End
         }
@@ -292,9 +292,10 @@ public sealed class HungerSystem : EntitySystem
             var newDecayRate = component.BaseDecayRate * modifier;
             if (Math.Abs(component.ActualDecayRate - newDecayRate) > 0.001f)
             {
+                var currentHunger = GetHunger(component);
                 component.ActualDecayRate = newDecayRate;
                 DirtyField(uid, component, nameof(HungerComponent.ActualDecayRate));
-                SetAuthoritativeHungerValue((uid, component), GetHunger(component));
+                SetAuthoritativeHungerValue((uid, component), currentHunger);
             }
             // Orion-Edit-End
         }

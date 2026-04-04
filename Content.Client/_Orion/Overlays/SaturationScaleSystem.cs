@@ -33,6 +33,13 @@ public sealed class SaturationScaleSystem : EntitySystem
         SubscribeNetworkEvent<RoundRestartCleanupEvent>(RoundRestartCleanup);
     }
 
+    public override void Shutdown()
+    {
+        _cfgMan.UnsubValueChanged(CCVars.MoodVisualEffects, HandleMoodEffectsUpdated);
+
+        base.Shutdown();
+    }
+
     private void HandleMoodEffectsUpdated(bool moodEffectsEnabled)
     {
         if (_overlayMan.HasOverlay<SaturationScaleOverlay>() && !moodEffectsEnabled)
@@ -62,7 +69,8 @@ public sealed class SaturationScaleSystem : EntitySystem
         if (!_moodEffectsEnabled)
             return;
 
-        _overlayMan.AddOverlay(_overlay);
+        if (!_overlayMan.HasOverlay<SaturationScaleOverlay>())
+            _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnShutdown(EntityUid uid, SaturationScaleOverlayComponent component, ComponentShutdown args)
@@ -78,6 +86,7 @@ public sealed class SaturationScaleSystem : EntitySystem
         if (uid != _playerMan.LocalEntity || !_moodEffectsEnabled)
             return;
 
-        _overlayMan.AddOverlay(_overlay);
+        if (!_overlayMan.HasOverlay<SaturationScaleOverlay>())
+            _overlayMan.AddOverlay(_overlay);
     }
 }

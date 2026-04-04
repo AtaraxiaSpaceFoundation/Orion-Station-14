@@ -26,7 +26,7 @@ alerts-mood-great-name = Great
 alerts-mood-great-desc = My strength is restored, and the world seems to be the lesser evil and pain.
 
 alerts-mood-exceptional-name = Exceptional
-alerts-mood-exceptional-desc = Strength and hope fills me, despite the threats that lurk around me.
+alerts-mood-exceptional-desc = Strength and hope fill me, despite the threats that lurk around me.
 
 alerts-mood-perfect-name = Perfect
 alerts-mood-perfect-desc = My soul is full of light and power, and I am ready to fight the darkness in this cruel world.
