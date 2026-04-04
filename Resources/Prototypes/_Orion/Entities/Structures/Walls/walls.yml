@@ -27,6 +27,12 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Construction
+    graph: wallPaper
+    node: wallPaper
   - type: IconSmooth
     key: walls
     base: paperwall

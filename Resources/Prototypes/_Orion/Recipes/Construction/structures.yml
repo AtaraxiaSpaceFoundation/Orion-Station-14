@@ -1,0 +1,13 @@
+- type: construction
+  id: WallPaperRecipe
+  name: paper wall
+  description: Helps to contain the repeated screams of martial artists.
+  graph: wallPaper
+  startNode: start
+  targetNode: wallPaper
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

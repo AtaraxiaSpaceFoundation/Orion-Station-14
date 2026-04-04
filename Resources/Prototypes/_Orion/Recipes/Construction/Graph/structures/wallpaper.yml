@@ -1,0 +1,28 @@
+- type: constructionGraph
+  id: wallPaper
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DeleteEntity {}
+      edges:
+        - to: wallPaper
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          steps:
+            - material: Paper
+              amount: 10
+              doAfter: 8
+
+    - node: wallPaper
+      entity: WallPaper
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetPaper1
+              amount: 10
+          steps:
+            - tool: Anchoring
+              doAfter: 8
