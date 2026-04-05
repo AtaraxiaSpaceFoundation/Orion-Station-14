@@ -43,11 +43,13 @@
 - type: moodEffect
   id: Dead
   moodChange: -1000
+  specialAlert: MoodDead
+  specialAlertReplace: true
 
 # Surgery
 - type: moodEffect
   id: SurgeryPain
-  moodChange: -30 # lol too lazy to make a category of ramping surgery moods, wonder how bad this will be.
+  moodChange: -30
   timeout: 90
 
 - type: moodEffect

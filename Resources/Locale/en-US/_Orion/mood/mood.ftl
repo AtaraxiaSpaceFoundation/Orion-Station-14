@@ -1,4 +1,5 @@
 mood-show-effects-start = [font size=12]Mood:[/font]
+mood-show-sanity-line = [font size=10]Sanity: { $sanity }[/font]
 
 mood-effect-HungerOverfed = I ate so much, I feel as though I'm about to burst!
 mood-effect-HungerOkay = I am feeling full.

@@ -268,14 +268,12 @@ public sealed class HungerSystem : EntitySystem
             return;
 
         if (GetMovementThreshold(component.CurrentThreshold) != GetMovementThreshold(component.LastThreshold))
-        {
-            // Orion-Edit-Start
             _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
 
-            if (_config.GetCVar(CCVars.MoodEnabled) && _net.IsServer)
-                RaiseLocalEvent(uid, new MoodEffectEvent("Hunger" + component.CurrentThreshold));
-            // Orion-Edit-End
-        }
+        // Orion-Start
+        if (_config.GetCVar(CCVars.MoodEnabled) && _net.IsServer)
+            RaiseLocalEvent(uid, new MoodEffectEvent("Hunger" + component.CurrentThreshold));
+        // Orion-End
 
         if (component.HungerThresholdAlerts.TryGetValue(component.CurrentThreshold, out var alertId))
         {

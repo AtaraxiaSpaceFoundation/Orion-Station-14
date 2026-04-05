@@ -15,7 +15,7 @@ public sealed partial class ChemRemoveMoodlet : EntityEffect
     {
         var moodPrototype = prototype.Index<MoodEffectPrototype>(MoodPrototype.Id);
         return Loc.GetString("reagent-effect-guidebook-remove-moodlet",
-            ("name", moodPrototype.Name));
+            ("name", moodPrototype.Description));
     }
 
     /// <summary>

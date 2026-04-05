@@ -1,3 +1,4 @@
+using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Mood;
@@ -42,4 +43,16 @@ public sealed partial class MoodEffectPrototype : IPrototype
     /// </summary>
     [DataField]
     public ProtoId<MoodEffectPrototype>? MoodletOnEnd;
+
+    /// <summary>
+    ///     Optional alert override used by high-priority mood effects.
+    /// </summary>
+    [DataField]
+    public ProtoId<AlertPrototype>? SpecialAlert;
+
+    /// <summary>
+    ///     If true, this mood effect can replace the normal mood alert icon.
+    /// </summary>
+    [DataField]
+    public bool SpecialAlertReplace;
 }

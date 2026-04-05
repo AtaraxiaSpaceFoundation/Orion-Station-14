@@ -9,6 +9,12 @@ namespace Content.Server._Orion.Mood;
 public sealed partial class MoodComponent : Component
 {
     [DataField]
+    public float CurrentMood;
+
+    [DataField]
+    public float CurrentShownMood;
+
+    [DataField]
     public float CurrentMoodLevel;
 
     [DataField]
@@ -16,6 +22,24 @@ public sealed partial class MoodComponent : Component
 
     [DataField]
     public MoodThreshold LastThreshold;
+
+    [DataField]
+    public float CurrentSanity = 100f;
+
+    [DataField]
+    public float MinSanity;
+
+    [DataField]
+    public float MaxSanity = 150f;
+
+    [DataField]
+    public float UnstableFloorSanity = 50f;
+
+    [DataField]
+    public SanityThreshold CurrentSanityThreshold = SanityThreshold.Disturbed;
+
+    [DataField]
+    public SanityThreshold LastSanityThreshold = SanityThreshold.Disturbed;
 
     public readonly Dictionary<string, string> CategorisedEffects = new();
 
@@ -46,7 +70,9 @@ public sealed partial class MoodComponent : Component
     [DataField]
     public float DecreaseCritThreshold = 0.9f;
 
-    public FixedPoint2 CritThresholdBeforeModify;
+    public FixedPoint2 SoftCritThresholdBeforeModify;
+    public FixedPoint2 HardCritThresholdBeforeModify;
+    public FixedPoint2 DeadThresholdBeforeModify;
 
     [DataField]
     public ProtoId<AlertCategoryPrototype> MoodCategory = "Mood";
@@ -83,6 +109,32 @@ public sealed partial class MoodComponent : Component
         { MoodThreshold.Insane, "Insane" },
     };
 
+    [DataField(customTypeSerializer: typeof(DictionarySerializer<SanityThreshold, float>))]
+    public Dictionary<SanityThreshold, float> SanityThresholds = new()
+    {
+        { SanityThreshold.Great, 125f },
+        { SanityThreshold.Disturbed, 100f },
+        { SanityThreshold.Unstable, 75f },
+        { SanityThreshold.Crazy, 50f },
+        { SanityThreshold.Insane, 25f },
+    };
+
+    [DataField(customTypeSerializer: typeof(DictionarySerializer<MoodThreshold, float>))]
+    public Dictionary<MoodThreshold, float> SanityDeltaPerSecond = new()
+    {
+        { MoodThreshold.Insane, -0.30f },
+        { MoodThreshold.Perfect, 0.60f },
+        { MoodThreshold.Exceptional, 0.40f },
+        { MoodThreshold.Great, 0.30f },
+        { MoodThreshold.Good, 0.20f },
+        { MoodThreshold.Neutral, 0f },
+        { MoodThreshold.Meh, -0.05f },
+        { MoodThreshold.Bad, -0.10f },
+        { MoodThreshold.Terrible, -0.15f },
+        { MoodThreshold.Horrible, -0.30f },
+        { MoodThreshold.Dead, 0f },
+    };
+
     /// <summary>
     ///     These thresholds represent a percentage of Crit-Threshold, 0.8 corresponding with 80%.
     /// </summary>
@@ -110,4 +162,14 @@ public enum MoodThreshold : ushort
     Exceptional = 8,
     Perfect = 9,
     Insane = 10,
+}
+
+[Serializable]
+public enum SanityThreshold : ushort
+{
+    Insane = 0,
+    Crazy = 1,
+    Unstable = 2,
+    Disturbed = 3,
+    Great = 4,
 }

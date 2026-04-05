@@ -19,11 +19,13 @@ public sealed class SaturationScaleOverlay : Overlay
     private readonly ShaderInstance _shader;
     private float _currentSaturation = 1f;
 
+    private static readonly ProtoId<ShaderPrototype> SaturationShaderId = "SaturationScale";
+
     public SaturationScaleOverlay()
     {
         IoCManager.InjectDependencies(this);
 
-        _shader = _prototypeManager.Index<ShaderPrototype>("SaturationScale").Instance().Duplicate();
+        _shader = _prototypeManager.Index(SaturationShaderId).Instance().Duplicate();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -55,17 +57,14 @@ public sealed class SaturationScaleOverlay : Overlay
     {
         if (ScreenTexture is null || _playerManager.LocalEntity is not { Valid: true } player
             || !_entityManager.TryGetComponent(player, out SaturationScaleOverlayComponent? saturationComp)
-            || _currentSaturation == saturationComp.SaturationScale)
+            || MathHelper.CloseTo(_currentSaturation, saturationComp.SaturationScale))
             return;
 
         var deltaTSlower = args.DeltaSeconds * saturationComp.FadeInMultiplier;
-        var saturationFadeIn = saturationComp.SaturationScale > _currentSaturation
-            ? deltaTSlower
-            : -deltaTSlower;
-
-        var minSaturation = Math.Min(_currentSaturation, saturationComp.SaturationScale);
-        var maxSaturation = Math.Max(_currentSaturation, saturationComp.SaturationScale);
-        _currentSaturation = Math.Clamp(_currentSaturation + saturationFadeIn, minSaturation, maxSaturation);
+        var target = saturationComp.SaturationScale;
+        _currentSaturation = MathHelper.CloseTo(_currentSaturation, target, deltaTSlower)
+            ? target
+            : MathHelper.Lerp(_currentSaturation, target, Math.Clamp(deltaTSlower, 0f, 1f));
         _shader.SetParameter("saturation", _currentSaturation);
     }
 }

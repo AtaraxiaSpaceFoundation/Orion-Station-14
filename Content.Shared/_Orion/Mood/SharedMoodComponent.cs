@@ -10,8 +10,17 @@ namespace Content.Shared._Orion.Mood;
 public sealed partial class NetMoodComponent : Component
 {
     [DataField, AutoNetworkedField]
+    public float CurrentMood;
+
+    [DataField, AutoNetworkedField]
+    public float CurrentShownMood;
+
+    [DataField, AutoNetworkedField]
     public float CurrentMoodLevel;
 
     [DataField, AutoNetworkedField]
     public float NeutralMoodThreshold;
+
+    [DataField, AutoNetworkedField]
+    public float CurrentSanity;
 }

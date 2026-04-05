@@ -273,11 +273,13 @@ public sealed class ThirstSystem : EntitySystem
             // Orion-Edit-Start
             if (!_config.GetCVar(CCVars.MoodEnabled))
                 _movement.RefreshMovementSpeedModifiers(uid, movementSlowdownComponent);
-
-            if (_config.GetCVar(CCVars.MoodEnabled) && _net.IsServer)
-                RaiseLocalEvent(uid, new MoodEffectEvent("Thirst" + component.CurrentThirstThreshold));
             // Orion-Edit-End
         }
+
+        // Orion-Start
+        if (_config.GetCVar(CCVars.MoodEnabled) && _net.IsServer)
+            RaiseLocalEvent(uid, new MoodEffectEvent("Thirst" + component.CurrentThirstThreshold));
+        // Orion-End
 
         // Update UI
         if (ThirstComponent.ThirstThresholdAlertTypes.TryGetValue(component.CurrentThirstThreshold, out var alertId))

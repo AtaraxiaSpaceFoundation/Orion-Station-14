@@ -1,4 +1,7 @@
+using Content.Goobstation.Common.Medical;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.Atmos.Events;
+using Content.Server.Body.Systems;
 using Content.Server.Chat.Managers;
 using Content.Server.Popups;
 using Content.Shared.Alert;
@@ -10,12 +13,15 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared._Orion.Mood;
 using Content.Shared._Orion.Overlays;
+using Content.Shared.Atmos;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
 using Timer = Robust.Shared.Timing.Timer;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Content.Shared.CCVar;
+using Content.Shared.Cuffs.Components;
+using Content.Shared.Slippery;
 
 namespace Content.Server._Orion.Mood;
 
@@ -44,6 +50,32 @@ public sealed class MoodSystem : EntitySystem
         SubscribeLocalEvent<MoodComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMoveSpeed);
         SubscribeLocalEvent<MoodComponent, MoodRemoveEffectEvent>(OnRemoveEffect);
         SubscribeLocalEvent<MoodComponent, ShowMoodAlertEvent>(OnShowMoodAlert);
+        SubscribeLocalEvent<MoodComponent, CuffedStateChangeEvent>(OnCuffedStateChanged);
+        SubscribeLocalEvent<MoodComponent, SuffocationEvent>(OnSuffocationStarted);
+        SubscribeLocalEvent<MoodComponent, StopSuffocatingEvent>(OnSuffocationStopped);
+        SubscribeLocalEvent<MoodComponent, IgnitedEvent>(OnIgnited);
+        SubscribeLocalEvent<MoodComponent, ExtinguishedEvent>(OnExtinguished);
+        SubscribeLocalEvent<MoodComponent, BeforeVomitEvent>(OnBeforeVomit);
+        SubscribeLocalEvent<MoodComponent, ResistPressureEvent>(OnPressureDanger);
+        SubscribeLocalEvent<MoodComponent, SendSafePressureEvent>(OnPressureSafe);
+        SubscribeLocalEvent<SlipEvent>(OnSlip);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_config.GetCVar(CCVars.MoodEnabled))
+            return;
+
+        var query = EntityQueryEnumerator<MoodComponent, MobStateComponent>();
+        while (query.MoveNext(out var uid, out var mood, out var mobState))
+        {
+            if (mobState.CurrentState == MobState.Dead)
+                continue;
+
+            ProcessSanity(uid, mood, frameTime);
+        }
     }
 
     private void OnShowMoodAlert(EntityUid uid, MoodComponent component, ShowMoodAlertEvent args)
@@ -51,7 +83,8 @@ public sealed class MoodSystem : EntitySystem
         if (!_playerManager.TryGetSessionByEntity(uid, out var session))
             return;
 
-        var msg = $"{Loc.GetString("mood-show-effects-start")}\n";
+        var sanity = Loc.GetString("mood-show-sanity-line", ("sanity", MathF.Round(component.CurrentSanity, 1)));
+        var msg = $"{Loc.GetString("mood-show-effects-start")}\n{sanity}\n";
 
         foreach (var (_, protoId) in component.CategorisedEffects)
         {
@@ -86,6 +119,7 @@ public sealed class MoodSystem : EntitySystem
     {
         _alerts.ClearAlertCategory(uid, component.MoodCategory);
         RemComp<SaturationScaleOverlayComponent>(uid);
+        ResetCritThresholds(uid, component);
     }
 
     private void OnRemoveEffect(EntityUid uid, MoodComponent component, MoodRemoveEffectEvent args)
@@ -111,22 +145,35 @@ public sealed class MoodSystem : EntitySystem
     private void OnRefreshMoveSpeed(EntityUid uid, MoodComponent component, RefreshMovementSpeedModifiersEvent args)
     {
         if (!_config.GetCVar(CCVars.MoodEnabled)
-            || component.CurrentMoodThreshold is > MoodThreshold.Meh and < MoodThreshold.Good or MoodThreshold.Dead
             || _jetpack.IsUserFlying(uid))
             return;
 
-        // This ridiculous math serves a purpose making high mood less impactful on movement speed than low mood
-        var modifier =
-            Math.Clamp(
-                (component.CurrentMoodLevel >= component.MoodThresholds[MoodThreshold.Neutral])
-                    ? _config.GetCVar(CCVars.MoodIncreasesSpeed)
-                        ? MathF.Pow(1.003f, component.CurrentMoodLevel - component.MoodThresholds[MoodThreshold.Neutral])
-                        : 1
-                    : _config.GetCVar(CCVars.MoodDecreasesSpeed)
-                        ? 2 - component.MoodThresholds[MoodThreshold.Neutral] / component.CurrentMoodLevel
-                        : 1,
-                component.MinimumSpeedModifier,
-                component.MaximumSpeedModifier);
+        var modifier = 1f;
+        if (component.CurrentMoodThreshold != MoodThreshold.Dead && component.CurrentMoodThreshold is <= MoodThreshold.Meh or >= MoodThreshold.Good)
+        {
+            // This ridiculous math serves a purpose making high mood less impactful on movement speed than low mood
+            modifier =
+                Math.Clamp(
+                    (component.CurrentMoodLevel >= component.MoodThresholds[MoodThreshold.Neutral])
+                        ? _config.GetCVar(CCVars.MoodIncreasesSpeed)
+                            ? MathF.Pow(component.SpeedBonusGrowth, component.CurrentMoodLevel - component.MoodThresholds[MoodThreshold.Neutral])
+                            : 1
+                        : _config.GetCVar(CCVars.MoodDecreasesSpeed)
+                            ? 2 - component.MoodThresholds[MoodThreshold.Neutral] / MathF.Max(component.CurrentMoodLevel, 1f)
+                            : 1,
+                    component.MinimumSpeedModifier,
+                    component.MaximumSpeedModifier);
+        }
+
+        switch (component.CurrentSanityThreshold)
+        {
+            case <= SanityThreshold.Crazy:
+                modifier *= 0.9f;
+                break;
+            case SanityThreshold.Unstable:
+                modifier *= 0.95f;
+                break;
+        }
 
         args.ModifySpeed(1, modifier);
     }
@@ -245,13 +292,76 @@ public sealed class MoodSystem : EntitySystem
         {
             var ev = new MoodEffectEvent("Dead");
             RaiseLocalEvent(uid, ev);
+            component.CurrentSanity = component.SanityThresholds[SanityThreshold.Disturbed];
         }
         else if (args.OldMobState == MobState.Dead && args.NewMobState != MobState.Dead)
         {
             var ev = new MoodRemoveEffectEvent("Dead");
             RaiseLocalEvent(uid, ev);
+            component.CurrentSanity = component.SanityThresholds[SanityThreshold.Disturbed];
+            component.CurrentSanityThreshold = SanityThreshold.Disturbed;
+            component.LastSanityThreshold = SanityThreshold.Disturbed;
         }
+
         RefreshMood(uid, component);
+    }
+
+    private void OnCuffedStateChanged(EntityUid uid, MoodComponent component, ref CuffedStateChangeEvent args)
+    {
+        if (!TryComp<CuffableComponent>(uid, out var cuffable) || cuffable.CuffedHandCount <= 0)
+        {
+            RaiseLocalEvent(uid, new MoodRemoveEffectEvent("Handcuffed"));
+            return;
+        }
+
+        RaiseLocalEvent(uid, new MoodEffectEvent("Handcuffed"));
+    }
+
+    private void OnSuffocationStarted(EntityUid uid, MoodComponent component, ref SuffocationEvent args)
+    {
+        RaiseLocalEvent(uid, new MoodEffectEvent("Suffocating"));
+    }
+
+    private void OnSuffocationStopped(EntityUid uid, MoodComponent component, ref StopSuffocatingEvent args)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent("Suffocating"));
+    }
+
+    private void OnIgnited(EntityUid uid, MoodComponent component, ref IgnitedEvent args)
+    {
+        RaiseLocalEvent(uid, new MoodEffectEvent("OnFire"));
+    }
+
+    private void OnExtinguished(EntityUid uid, MoodComponent component, ref ExtinguishedEvent args)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent("OnFire"));
+    }
+
+    private void OnBeforeVomit(EntityUid uid, MoodComponent component, ref BeforeVomitEvent args)
+    {
+        RaiseLocalEvent(uid, new MoodEffectEvent("MobVomit"));
+    }
+
+    private void OnPressureDanger(EntityUid uid, MoodComponent component, ref ResistPressureEvent args)
+    {
+        var effect = args.Pressure <= Atmospherics.WarningLowPressure
+            ? "MobLowPressure"
+            : "MobHighPressure";
+        RaiseLocalEvent(uid, new MoodEffectEvent(effect));
+    }
+
+    private void OnPressureSafe(EntityUid uid, MoodComponent component, ref SendSafePressureEvent args)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent("MobLowPressure"));
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent("MobHighPressure"));
+    }
+
+    private void OnSlip(ref SlipEvent args)
+    {
+        if (!HasComp<MoodComponent>(args.Slipped))
+            return;
+
+        RaiseLocalEvent(args.Slipped, new MoodEffectEvent("MobSlipped"));
     }
 
     // <summary>
@@ -259,22 +369,33 @@ public sealed class MoodSystem : EntitySystem
     // </summary>
     private void RefreshMood(EntityUid uid, MoodComponent component)
     {
-        var amount = 0f;
+        var totalMood = 0f;
+        var shownMood = 0f;
 
         foreach (var (_, protoId) in component.CategorisedEffects)
         {
             if (!_prototypeManager.TryIndex<MoodEffectPrototype>(protoId, out var prototype))
                 continue;
 
-            amount += prototype.MoodChange;
+            totalMood += prototype.MoodChange;
+            if (!prototype.Hidden)
+                shownMood += prototype.MoodChange;
         }
 
-        foreach (var (_, value) in component.UncategorisedEffects)
+        foreach (var (protoId, value) in component.UncategorisedEffects)
         {
-            amount += value;
+            totalMood += value;
+
+            if (!_prototypeManager.TryIndex<MoodEffectPrototype>(protoId, out var prototype)
+                || prototype.Hidden)
+                continue;
+
+            shownMood += value;
         }
 
-        SetMood(uid, amount, component, refresh: true);
+        component.CurrentMood = totalMood;
+        component.CurrentShownMood = shownMood;
+        SetMood(uid, totalMood, component, refresh: true);
     }
 
     private void OnInit(EntityUid uid, MoodComponent component, ComponentStartup args)
@@ -283,12 +404,13 @@ public sealed class MoodSystem : EntitySystem
             return;
 
         if (_config.GetCVar(CCVars.MoodModifiesThresholds)
-            && TryComp<MobThresholdsComponent>(uid, out var mobThresholdsComponent)
-            && _mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var critThreshold, mobThresholdsComponent))
-            component.CritThresholdBeforeModify = critThreshold.Value;
+            && TryComp<MobThresholdsComponent>(uid, out var mobThresholdsComponent))
+            TryCacheBaselineThresholds(uid, component, mobThresholdsComponent);
 
         EnsureComp<NetMoodComponent>(uid);
         RefreshMood(uid, component);
+        DoMoodThresholdsEffects(uid, component, force: true);
+        SetCritThreshold(uid, component, GetMovementThreshold(component.CurrentMoodThreshold));
     }
 
     private void SetMood(EntityUid uid, float amount, MoodComponent? component = null, bool force = false, bool refresh = false)
@@ -308,21 +430,23 @@ public sealed class MoodSystem : EntitySystem
         uid = ev.Receiver;
         amount = ev.MoodChangedAmount;
 
-        var newMoodLevel = amount + neutral + ev.MoodOffset;
-        if (!force)
-        {
-            newMoodLevel = Math.Clamp(
-                amount + neutral + ev.MoodOffset,
+        var targetMoodLevel = amount + neutral + ev.MoodOffset;
+        var newMoodLevel = force
+            ? targetMoodLevel
+            : Math.Clamp(targetMoodLevel,
                 component.MoodThresholds[MoodThreshold.Dead],
                 component.MoodThresholds[MoodThreshold.Insane]);
-        }
 
         component.CurrentMoodLevel = newMoodLevel;
 
         if (TryComp<NetMoodComponent>(uid, out var mood))
         {
             mood.CurrentMoodLevel = component.CurrentMoodLevel;
+            mood.CurrentMood = component.CurrentMood;
+            mood.CurrentShownMood = component.CurrentShownMood;
             mood.NeutralMoodThreshold = component.MoodThresholds.GetValueOrDefault(MoodThreshold.Neutral);
+            mood.CurrentSanity = component.CurrentSanity;
+            Dirty(uid, mood);
         }
 
         RefreshShaders(uid, component.CurrentMoodLevel, component.MoodThresholds[MoodThreshold.Neutral]);
@@ -359,7 +483,9 @@ public sealed class MoodSystem : EntitySystem
         }
 
         // Modify interface
-        if (component.MoodThresholdsAlerts.TryGetValue(component.CurrentMoodThreshold, out var alertId))
+        if (TryGetPriorityMoodAlert(component, out var priorityAlert))
+            _alerts.ShowAlert(uid, priorityAlert);
+        else if (component.MoodThresholdsAlerts.TryGetValue(component.CurrentMoodThreshold, out var alertId))
             _alerts.ShowAlert(uid, alertId);
         else
             _alerts.ClearAlertCategory(uid, component.MoodCategory);
@@ -369,30 +495,179 @@ public sealed class MoodSystem : EntitySystem
 
     private void RefreshShaders(EntityUid uid, float mood, float neutralThreshold)
     {
+        if (neutralThreshold <= 0f)
+            return;
+
         EnsureComp<SaturationScaleOverlayComponent>(uid, out var comp);
         comp.NeutralMoodThreshold = neutralThreshold;
         comp.SaturationScale = mood / comp.NeutralMoodThreshold;
         Dirty(uid, comp);
     }
 
+    private bool TryGetPriorityMoodAlert(MoodComponent component, out ProtoId<AlertPrototype> alert)
+    {
+        alert = default;
+        var bestMagnitude = float.MinValue;
+
+        foreach (var (_, protoId) in component.CategorisedEffects)
+        {
+            if (!TryUpdatePriorityAlert(protoId, ref alert, ref bestMagnitude))
+                continue;
+        }
+
+        foreach (var (protoId, _) in component.UncategorisedEffects)
+        {
+            if (!TryUpdatePriorityAlert(protoId, ref alert, ref bestMagnitude))
+                continue;
+        }
+
+        return bestMagnitude > float.MinValue;
+    }
+
+    private bool TryUpdatePriorityAlert(string protoId, ref ProtoId<AlertPrototype> bestAlert, ref float bestMagnitude)
+    {
+        if (!_prototypeManager.TryIndex<MoodEffectPrototype>(protoId, out var prototype)
+            || prototype.SpecialAlert is not { } specialAlert
+            || !prototype.SpecialAlertReplace)
+            return false;
+
+        var magnitude = MathF.Abs(prototype.MoodChange);
+        if (magnitude <= bestMagnitude)
+            return false;
+
+        bestMagnitude = magnitude;
+        bestAlert = specialAlert;
+        return true;
+    }
+
+    private void ProcessSanity(EntityUid uid, MoodComponent component, float frameTime)
+    {
+        if (component.CurrentMoodThreshold == MoodThreshold.Dead
+            || !component.SanityDeltaPerSecond.TryGetValue(component.CurrentMoodThreshold, out var deltaPerSecond))
+            return;
+
+        var sanityTarget = component.MaxSanity;
+        if (deltaPerSecond < 0f)
+        {
+            sanityTarget = component.CurrentMoodThreshold switch
+            {
+                MoodThreshold.Insane or MoodThreshold.Horrible => component.MinSanity,
+                MoodThreshold.Terrible => component.SanityThresholds[SanityThreshold.Crazy],
+                _ => component.UnstableFloorSanity,
+            };
+        }
+        else
+        {
+            sanityTarget = component.CurrentMoodThreshold switch
+            {
+                <= MoodThreshold.Great => component.UnstableFloorSanity,
+                MoodThreshold.Exceptional => component.SanityThresholds[SanityThreshold.Disturbed],
+                _ => sanityTarget,
+            };
+        }
+
+        SetSanity(uid, component, component.CurrentSanity + deltaPerSecond * frameTime, sanityTarget);
+    }
+
+    private void SetSanity(EntityUid uid, MoodComponent component, float value, float target)
+    {
+        var min = Math.Min(component.MinSanity, target);
+        var max = Math.Max(component.MaxSanity, target);
+        var clamped = Math.Clamp(value, min, max);
+
+        if (target > component.CurrentSanity && clamped < target)
+            clamped = Math.Min(clamped + 0.7f, target);
+
+        if (Math.Abs(clamped - component.CurrentSanity) < 0.001f)
+            return;
+
+        component.CurrentSanity = clamped;
+        component.CurrentSanityThreshold = GetSanityThreshold(component);
+
+        if (component.CurrentSanityThreshold != component.LastSanityThreshold)
+        {
+            _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
+            component.LastSanityThreshold = component.CurrentSanityThreshold;
+        }
+
+        if (!TryComp<NetMoodComponent>(uid, out var mood))
+            return;
+
+        mood.CurrentSanity = component.CurrentSanity;
+        Dirty(uid, mood);
+    }
+
+    private static SanityThreshold GetSanityThreshold(MoodComponent component)
+    {
+        if (component.CurrentSanity <= component.SanityThresholds[SanityThreshold.Insane])
+            return SanityThreshold.Insane;
+
+        if (component.CurrentSanity <= component.SanityThresholds[SanityThreshold.Crazy])
+            return SanityThreshold.Crazy;
+
+        if (component.CurrentSanity <= component.SanityThresholds[SanityThreshold.Unstable])
+            return SanityThreshold.Unstable;
+
+        return component.CurrentSanity <= component.SanityThresholds[SanityThreshold.Disturbed]
+            ? SanityThreshold.Disturbed
+            : SanityThreshold.Great;
+    }
+
     private void SetCritThreshold(EntityUid uid, MoodComponent component, int modifier)
     {
         if (!_config.GetCVar(CCVars.MoodModifiesThresholds)
             || !TryComp<MobThresholdsComponent>(uid, out var mobThresholds)
-            || !_mobThreshold.TryGetThresholdForState(uid, MobState.Critical, out var key))
+            || !TryCacheBaselineThresholds(uid, component, mobThresholds))
             return;
 
-        var newKey = modifier switch
+        var multiplier = modifier switch
         {
-            1 => FixedPoint2.New(key.Value.Float() * component.IncreaseCritThreshold),
-            -1 => FixedPoint2.New(key.Value.Float() * component.DecreaseCritThreshold),
-            _ => component.CritThresholdBeforeModify,
+            1 => component.IncreaseCritThreshold,
+            -1 => component.DecreaseCritThreshold,
+            _ => 1f,
         };
 
-        if (component.CritThresholdBeforeModify == default)
-            component.CritThresholdBeforeModify = key.Value;
+        var soft = component.SoftCritThresholdBeforeModify.Float() * multiplier;
+        var hard = component.HardCritThresholdBeforeModify.Float() * multiplier;
+        var dead = component.DeadThresholdBeforeModify.Float() * multiplier;
 
-        _mobThreshold.SetMobStateThreshold(uid, newKey, MobState.Critical, mobThresholds);
+        // Keep threshold ordering valid after scaling.
+        hard = MathF.Max(hard, soft + 0.01f);
+        dead = MathF.Max(dead, hard + 0.01f);
+
+        _mobThreshold.SetMobStateThreshold(uid, FixedPoint2.New(soft), MobState.SoftCritical, mobThresholds);
+        _mobThreshold.SetMobStateThreshold(uid, FixedPoint2.New(hard), MobState.HardCritical, mobThresholds);
+        _mobThreshold.SetMobStateThreshold(uid, FixedPoint2.New(dead), MobState.Dead, mobThresholds);
+    }
+
+    private bool TryCacheBaselineThresholds(EntityUid uid, MoodComponent component, MobThresholdsComponent thresholds)
+    {
+        if (component.SoftCritThresholdBeforeModify != default
+            && component.HardCritThresholdBeforeModify != default
+            && component.DeadThresholdBeforeModify != default)
+            return true;
+
+        if (!_mobThreshold.TryGetThresholdForState(uid, MobState.SoftCritical, out var soft, thresholds)
+            || !_mobThreshold.TryGetThresholdForState(uid, MobState.HardCritical, out var hard, thresholds)
+            || !_mobThreshold.TryGetThresholdForState(uid, MobState.Dead, out var dead, thresholds))
+            return false;
+
+        component.SoftCritThresholdBeforeModify = soft.Value;
+        component.HardCritThresholdBeforeModify = hard.Value;
+        component.DeadThresholdBeforeModify = dead.Value;
+        return true;
+    }
+
+    private void ResetCritThresholds(EntityUid uid, MoodComponent component)
+    {
+        if (!_config.GetCVar(CCVars.MoodModifiesThresholds)
+            || !TryComp<MobThresholdsComponent>(uid, out var thresholds)
+            || !TryCacheBaselineThresholds(uid, component, thresholds))
+            return;
+
+        _mobThreshold.SetMobStateThreshold(uid, component.SoftCritThresholdBeforeModify, MobState.SoftCritical, thresholds);
+        _mobThreshold.SetMobStateThreshold(uid, component.HardCritThresholdBeforeModify, MobState.HardCritical, thresholds);
+        _mobThreshold.SetMobStateThreshold(uid, component.DeadThresholdBeforeModify, MobState.Dead, thresholds);
     }
 
     private static MoodThreshold GetMoodThreshold(MoodComponent component, float? moodLevel = null)
