@@ -1,7 +1,7 @@
 - type: construction
   id: WallPaperRecipe
-  name: construction-name-double-bed
-  description: construction-desc-double-bed
+  name: construction-name-paper-wall
+  description: construction-desc-paper-wall
   graph: wallPaper
   startNode: start
   targetNode: wallPaper
