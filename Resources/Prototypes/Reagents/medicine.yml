@@ -912,6 +912,11 @@
           conditions:
             - !type:ReagentThreshold
               min: 10
+        - !type:ChemRemoveMoodlet # Orion
+          moodPrototype: RomerolEffect
+          conditions:
+          - !type:ReagentThreshold
+            min: 10
 
 - type: reagent
   id: AmbuzolPlus
@@ -929,6 +934,11 @@
           conditions:
             - !type:ReagentThreshold
               min: 5
+        - !type:ChemRemoveMoodlet # Orion
+          moodPrototype: RomerolEffect
+          conditions:
+          - !type:ReagentThreshold
+            min: 5
 
 - type: reagent
   id: PulpedBananaPeel
@@ -1044,6 +1054,11 @@
         effectProto: StatusEffectSeeingRainbow
         time: 15.0
         type: Remove
+      - !type:ChemPurgeMoodlets # Orion
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Synaptizine
+          min: 10
 
 - type: reagent
   id: TranexamicAcid
