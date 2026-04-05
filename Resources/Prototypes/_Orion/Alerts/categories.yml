@@ -1,2 +1,5 @@
 - type: alertCategory
   id: Pain
+
+- type: alertCategory
+  id: Mood

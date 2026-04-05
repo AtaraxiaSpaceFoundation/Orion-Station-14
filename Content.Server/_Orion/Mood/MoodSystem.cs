@@ -725,7 +725,7 @@ public sealed class MoodSystem : EntitySystem
         if (!_mobThreshold.TryGetPercentageForState(uid, MobState.Critical, args.Damageable.TotalDamage, out var damage))
             return;
 
-        var protoId = "HealthNoDamage";
+        ProtoId<MoodEffectPrototype> protoId = "HealthNoDamage";
         var value = component.HealthMoodEffectsThresholds["HealthNoDamage"];
 
         foreach (var threshold in component.HealthMoodEffectsThresholds)

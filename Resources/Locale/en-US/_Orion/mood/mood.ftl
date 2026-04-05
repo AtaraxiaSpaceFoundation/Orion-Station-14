@@ -94,11 +94,11 @@ mood-effect-PlasmamanIngestMilk =
 
 # Floor Juice
 mood-effect-DrankBlood =
-    I've just drank salty, lukewarm blood. That's disgusting!
+    I've just drunk salty, lukewarm blood. That's disgusting!
 mood-effect-DrankBloodVampiric =
     Oh what sweet nectar is this, like a fine vintage.
 mood-effect-DrankInsectBlood =
-    I've just drank slimy insect goop. That's disgusting!
+    I've just drunk slimy insect goop. That's disgusting!
 mood-effect-DrankVomit =
     Why did I just drink that vomit? It tastes like vomit!
 mood-effect-DrankZombieBlood =
@@ -126,7 +126,7 @@ mood-effect-LacerinolEffect =
 mood-effect-PuncturaseEffect =
     MY BODY IS FULL OF NEEDLES, GET THEM OUT!
 mood-effect-BruizineEffect =
-    I FEEL LIKE I'M BEING CRUSHED BY A THOUSAND TON SPACE SHIP!
+    I FEEL LIKE I'M BEING CRUSHED BY A THOUSAND TON SPACESHIP!
 mood-effect-TearGasEffect =
     MY EYES ARE BURNING, IT HURTS SO MUCH!
 mood-effect-BuzzochloricBeesEffect =

@@ -1,4 +1,5 @@
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._Orion.Mood;
 using Content.Shared.Alert;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Generic;
@@ -138,8 +139,8 @@ public sealed partial class MoodComponent : Component
     /// <summary>
     ///     These thresholds represent a percentage of Crit-Threshold, 0.8 corresponding with 80%.
     /// </summary>
-    [DataField(customTypeSerializer: typeof(DictionarySerializer<string, float>))]
-    public Dictionary<string, float> HealthMoodEffectsThresholds = new()
+    [DataField(customTypeSerializer: typeof(DictionarySerializer<ProtoId<MoodEffectPrototype>, float>))]
+    public Dictionary<ProtoId<MoodEffectPrototype>, float> HealthMoodEffectsThresholds = new()
     {
         { "HealthHeavyDamage", 0.8f },
         { "HealthSevereDamage", 0.5f },

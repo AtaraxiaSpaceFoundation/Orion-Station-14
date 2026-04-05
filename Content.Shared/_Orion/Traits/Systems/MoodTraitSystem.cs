@@ -40,7 +40,13 @@ public sealed class MoodTraitSystem : EntitySystem
 
     private void OnMercurialMood(EntityUid uid, MercurialComponent component, ref OnSetMoodEvent args)
     {
-        args.MoodOffset += _random.NextFloat(component.LowerMood, component.UpperMood);
+        var lower = component.LowerMood;
+        var upper = component.UpperMood;
+
+        if (lower > upper)
+            (lower, upper) = (upper, lower);
+
+        args.MoodOffset += _random.NextFloat(lower, upper);
     }
 
     private static void OnDeadEmotionsMood(EntityUid uid, DeadEmotionsComponent component, ref OnSetMoodEvent args)

@@ -60,7 +60,8 @@ public sealed class SaturationScaleOverlay : Overlay
             || MathHelper.CloseTo(_currentSaturation, saturationComp.SaturationScale))
             return;
 
-        var deltaTSlower = args.DeltaSeconds * saturationComp.FadeInMultiplier;
+        var fadeInMultiplier = Math.Max(saturationComp.FadeInMultiplier, 1e-6f);
+        var deltaTSlower = args.DeltaSeconds * fadeInMultiplier;
         var target = saturationComp.SaturationScale;
         _currentSaturation = MathHelper.CloseTo(_currentSaturation, target, deltaTSlower)
             ? target
