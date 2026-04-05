@@ -59,6 +59,7 @@ mood-effect-TraitSanguine = I have nothing to worry about. I'm sure everything w
 
 mood-effect-HeirloomSecure = My heirloom is safe, and with it the memories of the ones before me.
 mood-effect-HeirloomLost = I can't seem to find my heirloom, how will the past be safe now?
+mood-effect-HeirloomNeutral = My heirloom is gone, but maybe it will return someday.
 
 # Addictions
 mood-effect-LotoTranscendence =

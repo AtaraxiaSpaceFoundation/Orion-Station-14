@@ -12,7 +12,13 @@ public sealed partial class MoodEffectPrototype : IPrototype
     [IdDataField]
     public string ID { get; } = default!;
 
-    public string Description => Loc.GetString($"mood-effect-{ID}");
+    public string Description(EntityUid? entity = null)
+    {
+        if (entity is { } uid)
+            return Loc.GetString($"mood-effect-{ID}", ("entity", uid));
+
+        return Loc.GetString($"mood-effect-{ID}", ("entity", EntityUid.Invalid));
+    }
 
     /// <summary>
     ///     If they already have an effect with the same category, the new one will replace the old one.

@@ -84,11 +84,11 @@ public sealed class MoodSystem : EntitySystem
         if (!_playerManager.TryGetSessionByEntity(uid, out var session))
             return;
 
-        var msg = BuildMoodExamineMessage(component);
+        var msg = BuildMoodExamineMessage(uid, component);
         _chatManager.ChatMessageToOne(ChatChannel.Emotes, msg, msg, EntityUid.Invalid, false, session.Channel);
     }
 
-    private string BuildMoodExamineMessage(MoodComponent component)
+    private string BuildMoodExamineMessage(EntityUid uid, MoodComponent component)
     {
         var msg = "[examineborder]\n";
         msg += Loc.GetString("mood-show-effects-start");
@@ -110,7 +110,7 @@ public sealed class MoodSystem : EntitySystem
 
             hadVisibleEffects = true;
             var color = proto.MoodChange > 0 ? "#008000" : "#BA0000";
-            msg += $"[font size=10][color={color}]{proto.Description}[/color][/font]\n";
+            msg += $"[font size=10][color={color}]{proto.Description(uid)}[/color][/font]\n";
         }
 
         foreach (var (protoId, _) in component.UncategorisedEffects)
@@ -121,7 +121,7 @@ public sealed class MoodSystem : EntitySystem
 
             hadVisibleEffects = true;
             var color = proto.MoodChange > 0 ? "#008000" : "#BA0000";
-            msg += $"[font size=10][color={color}]{proto.Description}[/color][/font]\n";
+            msg += $"[font size=10][color={color}]{proto.Description(uid)}[/color][/font]\n";
         }
 
         if (!hadVisibleEffects)
@@ -279,7 +279,7 @@ public sealed class MoodSystem : EntitySystem
         if (prototype.Hidden)
             return;
 
-        _popup.PopupEntity(prototype.Description, uid, uid, (prototype.MoodChange > 0) ? PopupType.Medium : PopupType.MediumCaution);
+        _popup.PopupEntity(prototype.Description(uid), uid, uid, (prototype.MoodChange > 0) ? PopupType.Medium : PopupType.MediumCaution);
     }
 
     private void RemoveEffect(EntityUid uid, string prototypeId, string? category, MoodEffectRemovalReason reason)
