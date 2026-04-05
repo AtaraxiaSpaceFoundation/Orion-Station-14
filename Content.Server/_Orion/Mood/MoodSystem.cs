@@ -129,7 +129,7 @@ public sealed class MoodSystem : EntitySystem
             return;
 
         if (component.UncategorisedEffects.TryGetValue(args.EffectId, out _))
-            RemoveTimedOutEffect(uid, args.EffectId);
+            RemoveEffect(uid, args.EffectId, null, args.Reason);
         else
         {
             foreach (var (category, id) in component.CategorisedEffects)
@@ -137,7 +137,7 @@ public sealed class MoodSystem : EntitySystem
                 if (id != args.EffectId)
                     continue;
 
-                RemoveTimedOutEffect(uid, args.EffectId, category);
+                RemoveEffect(uid, args.EffectId, category, args.Reason);
                 return;
             }
         }
@@ -230,10 +230,13 @@ public sealed class MoodSystem : EntitySystem
                     component.CategorisedEffects[prototype.Category] = prototype.ID;
             }
             else
+            {
                 component.CategorisedEffects.Add(prototype.Category, prototype.ID);
+                SendEffectText(uid, prototype);
+            }
 
             if (prototype.Timeout != 0)
-                Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout), () => RemoveTimedOutEffect(uid, prototype.ID, prototype.Category));
+                Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout), () => RemoveEffect(uid, prototype.ID, prototype.Category, MoodEffectRemovalReason.Expired));
         }
         // Apply uncategorized effect
         else
@@ -250,7 +253,7 @@ public sealed class MoodSystem : EntitySystem
             component.UncategorisedEffects.Add(prototype.ID, moodChange);
 
             if (prototype.Timeout != 0)
-                Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout), () => RemoveTimedOutEffect(uid, prototype.ID));
+                Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout), () => RemoveEffect(uid, prototype.ID, null, MoodEffectRemovalReason.Expired));
         }
 
         RefreshMood(uid, component);
@@ -264,7 +267,7 @@ public sealed class MoodSystem : EntitySystem
         _popup.PopupEntity(prototype.Description, uid, uid, (prototype.MoodChange > 0) ? PopupType.Medium : PopupType.MediumCaution);
     }
 
-    private void RemoveTimedOutEffect(EntityUid uid, string prototypeId, string? category = null)
+    private void RemoveEffect(EntityUid uid, string prototypeId, string? category, MoodEffectRemovalReason reason)
     {
         if (!TryComp<MoodComponent>(uid, out var comp))
             return;
@@ -283,7 +286,9 @@ public sealed class MoodSystem : EntitySystem
             comp.CategorisedEffects.Remove(category);
         }
 
-        ReplaceMood(uid, prototypeId);
+        if (reason == MoodEffectRemovalReason.Expired)
+            ReplaceMood(uid, prototypeId);
+
         RefreshMood(uid, comp);
     }
 
@@ -442,7 +447,6 @@ public sealed class MoodSystem : EntitySystem
             || component.CurrentMoodThreshold == MoodThreshold.Dead && !refresh)
             return;
 
-        var neutral = component.MoodThresholds[MoodThreshold.Neutral];
         var ev = new OnSetMoodEvent(uid, amount, false);
         RaiseLocalEvent(uid, ref ev);
 
@@ -451,6 +455,11 @@ public sealed class MoodSystem : EntitySystem
 
         uid = ev.Receiver;
         amount = ev.MoodChangedAmount;
+
+        if (!Resolve(uid, ref component))
+            return;
+
+        var neutral = component.MoodThresholds[MoodThreshold.Neutral];
 
         var targetMoodLevel = amount + neutral + ev.MoodOffset;
         var newMoodLevel = force
@@ -588,17 +597,22 @@ public sealed class MoodSystem : EntitySystem
             };
         }
 
-        SetSanity(uid, component, component.CurrentSanity + deltaPerSecond * frameTime, sanityTarget);
+        SetSanity(uid, component, component.CurrentSanity + deltaPerSecond * frameTime, sanityTarget, frameTime);
     }
 
-    private void SetSanity(EntityUid uid, MoodComponent component, float value, float target)
+    private void SetSanity(EntityUid uid, MoodComponent component, float value, float target, float frameTime)
     {
-        var min = Math.Min(component.MinSanity, target);
-        var max = Math.Max(component.MaxSanity, target);
+        var min = component.MinSanity;
+        var max = component.MaxSanity;
+        var boundedTarget = Math.Clamp(target, min, max);
+
         var clamped = Math.Clamp(value, min, max);
 
-        if (target > component.CurrentSanity && clamped < target)
-            clamped = Math.Min(clamped + 0.7f, target);
+        if (boundedTarget > component.CurrentSanity && clamped < boundedTarget)
+        {
+            var step = Math.Max(component.SanityRecoveryRate * frameTime, 0f);
+            clamped = Math.Min(clamped + step, boundedTarget);
+        }
 
         if (Math.Abs(clamped - component.CurrentSanity) < 0.001f)
             return;

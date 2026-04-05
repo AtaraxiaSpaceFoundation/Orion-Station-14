@@ -37,11 +37,20 @@ public sealed class MoodEffectEvent : EntityEventArgs
 public sealed class MoodRemoveEffectEvent : EntityEventArgs
 {
     public string EffectId;
+    public MoodEffectRemovalReason Reason;
 
-    public MoodRemoveEffectEvent(string effectId)
+    public MoodRemoveEffectEvent(string effectId, MoodEffectRemovalReason reason = MoodEffectRemovalReason.Manual)
     {
         EffectId = effectId;
+        Reason = reason;
     }
+}
+
+[Serializable, NetSerializable]
+public enum MoodEffectRemovalReason : byte
+{
+    Manual = 0,
+    Expired = 1,
 }
 
 [Serializable, NetSerializable]

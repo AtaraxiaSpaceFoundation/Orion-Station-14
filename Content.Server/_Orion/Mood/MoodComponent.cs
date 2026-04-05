@@ -34,6 +34,9 @@ public sealed partial class MoodComponent : Component
     public float MaxSanity = 150f;
 
     [DataField]
+    public float SanityRecoveryRate = 42f;
+
+    [DataField]
     public float UnstableFloorSanity = 50f;
 
     [DataField]
