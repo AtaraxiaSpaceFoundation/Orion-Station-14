@@ -44,6 +44,17 @@ public sealed class MoodRemoveEffectEvent : EntityEventArgs
     }
 }
 
+[Serializable, NetSerializable]
+public sealed class MoodPurgeEffectsEvent : EntityEventArgs
+{
+    public bool RemovePermanentMoodlets;
+
+    public MoodPurgeEffectsEvent(bool removePermanentMoodlets)
+    {
+        RemovePermanentMoodlets = removePermanentMoodlets;
+    }
+}
+
 /// <summary>
 ///     This event is raised whenever an entity sets their mood, allowing other systems to modify the end result of mood math.
 ///     EG: The end result after tallying up all Moodlets comes out to 70, but a trait multiplies it by 0.8 to make it 56.

@@ -1,9 +1,9 @@
-using Content.Shared.EntityEffects;
 using Content.Shared._Orion.Mood;
+using Content.Shared.EntityEffects;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Orion.EntityEffects.Effects;
+namespace Content.Shared._Orion.EntityEffects.Effects;
 
 /// <summary>
 ///     Removes a moodlet from an entity if present.

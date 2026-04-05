@@ -49,6 +49,7 @@ public sealed class MoodSystem : EntitySystem
         SubscribeLocalEvent<MoodComponent, DamageChangedEvent>(OnDamageChange);
         SubscribeLocalEvent<MoodComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMoveSpeed);
         SubscribeLocalEvent<MoodComponent, MoodRemoveEffectEvent>(OnRemoveEffect);
+        SubscribeLocalEvent<MoodComponent, MoodPurgeEffectsEvent>(OnPurgeEffects);
         SubscribeLocalEvent<MoodComponent, ShowMoodAlertEvent>(OnShowMoodAlert);
         SubscribeLocalEvent<MoodComponent, CuffedStateChangeEvent>(OnCuffedStateChanged);
         SubscribeLocalEvent<MoodComponent, SuffocationEvent>(OnSuffocationStarted);
@@ -139,6 +140,27 @@ public sealed class MoodSystem : EntitySystem
                 RemoveTimedOutEffect(uid, args.EffectId, category);
                 return;
             }
+        }
+    }
+
+    private void OnPurgeEffects(EntityUid uid, MoodComponent component, MoodPurgeEffectsEvent args)
+    {
+        if (!_config.GetCVar(CCVars.MoodEnabled))
+            return;
+
+        var moodletList = new List<string>();
+        foreach (var moodlet in component.UncategorisedEffects)
+        {
+            if (!_prototypeManager.TryIndex(moodlet.Key, out MoodEffectPrototype? moodProto)
+                || moodProto.Timeout == 0 && !args.RemovePermanentMoodlets)
+                continue;
+
+            moodletList.Add(moodlet.Key);
+        }
+
+        foreach (var moodId in moodletList)
+        {
+            RaiseLocalEvent(uid, new MoodRemoveEffectEvent(moodId));
         }
     }
 
