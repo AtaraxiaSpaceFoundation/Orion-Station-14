@@ -76,6 +76,6 @@ public record struct OnSetMoodEvent(EntityUid Receiver, float MoodChangedAmount,
 ///     Allows for other systems to pick and choose specific events to modify.
 /// </summary>
 [ByRefEvent]
-public record struct OnMoodEffect(EntityUid Receiver, string EffectId, float EffectModifier = 1, float EffectOffset = 0);
+public record struct OnMoodEffect(EntityUid Receiver, string EffectId, float EffectModifier = 1f, float EffectOffset = 0f);
 
 public sealed partial class ShowMoodAlertEvent : BaseAlertEvent;

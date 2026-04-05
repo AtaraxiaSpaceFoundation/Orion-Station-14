@@ -141,6 +141,8 @@
         showInChat: true
         showInGuidebook: true
         probability: 0.05
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: PepperEffect
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -212,6 +214,8 @@
       - !type:AdjustReagent
         reagent: Nutriment
         amount: 0.75
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: OilyEffect
 
 - type: reagent
   id: Oil
@@ -246,6 +250,8 @@
       - !type:AdjustReagent
         reagent: Nutriment #Oils enhance nutrition
         amount: 0.75
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: SpicyEffect
     Poison:
       effects:
         - !type:AdjustTemperature
@@ -284,6 +290,8 @@
       - !type:AdjustReagent
          reagent: Theobromine
          amount: 0.02
+      - !type:ChemAddMoodlet
+        moodPrototype: ChocolateEffect
       # Orion-End
   plantMetabolism:
   - !type:PlantAdjustNutrition
@@ -310,6 +318,8 @@
       - !type:AdjustReagent
         reagent: Nutriment
         amount: 0.75
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: ButterEffect
 
 - type: reagent
   id: TeaPowder

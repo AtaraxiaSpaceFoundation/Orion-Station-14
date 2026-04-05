@@ -115,6 +115,22 @@
           - !type:OrganType
             type: Human
             shouldHave: false
+      # Orion-Start
+      - !type:ChemAddMoodlet
+        moodPrototype: DrankBloodVampiric
+        conditions:
+        - !type:OrganType
+          type: Bloodsucker
+      - !type:ChemAddMoodlet
+        moodPrototype: DrankBlood
+        conditions:
+        - !type:OrganType
+          type: Bloodsucker
+          shouldHave: false
+        - !type:ReagentThreshold
+          reagent: Blood
+          min: 0.1
+      # Orion-End
     Food:
       effects:
         - !type:AdjustReagent
@@ -148,6 +164,13 @@
   color: "#808A51"
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
+  # Orion-Start
+  metabolisms:
+    Drink:
+      effects:
+      - !type:ChemAddMoodlet
+        moodPrototype: DrankInsectBlood
+  # Orion-End
 
 - type: reagent
   id: Slime
@@ -233,6 +256,8 @@
       effects:
       - !type:SatiateThirst
         factor: -0.5
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: DrankZombieBlood
     Poison:
       effects:
       - !type:HealthChange
@@ -267,7 +292,7 @@
         time: 28
       - !type:HealthChange # Goobstation - Make Ichor less shit
         damage:
-          types: 
+          types:
             Heat: -5
             Shock: -5
             Cold: -5
@@ -278,11 +303,11 @@
             Bloodloss: -5
             Blunt: -5
             Slash: -5
-            Piercing: -5 
-   
+            Piercing: -5
+
       - !type:ModifyBloodLevel
             amount: 3
-  
+
       - !type:ModifyBleedAmount
             amount: -1.5
   # Goobstation, just in case you REALLY  REALLY want to water your plants
@@ -326,6 +351,8 @@
       - !type:AdjustReagent
         reagent: Nutriment
         amount: 0.1
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: DrankVomit
   footstepSound:
     collection: FootstepBlood
     params:

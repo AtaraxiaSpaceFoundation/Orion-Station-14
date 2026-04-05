@@ -15,6 +15,9 @@
   id: NicotineAddiction
 
 - type: moodCategory
+  id: MorphineAddiction
+
+- type: moodCategory
   id: PositiveInteraction
 
 - type: moodCategory

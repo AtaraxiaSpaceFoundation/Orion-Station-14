@@ -60,3 +60,7 @@
         identifier: Suffocation
         amount: -2
         time: 12
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: MorphineBenefit
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: StrongPainkiller

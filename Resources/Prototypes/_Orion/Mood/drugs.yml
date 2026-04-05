@@ -27,6 +27,19 @@
   moodChange: -7 #No timeout
   category: "NicotineAddiction"
 
+# Morphine
+- type: moodEffect
+  id: MorphineBenefit
+  moodChange: 8
+  timeout: 1020 #17 minutes
+  moodletOnEnd: MorphineWithdrawal
+  category: "MorphineAddiction"
+
+- type: moodEffect
+  id: MorphineWithdrawal
+  moodChange: -10 #No timeout
+  category: "MorphineAddiction"
+
 # Non-Addictive Drugs
 - type: moodEffect
   id: EthanolBenefit

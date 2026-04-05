@@ -1,5 +1,6 @@
-mood-show-effects-start = [font size=12]Настроение:[/font]
+mood-show-effects-start = [font size=12][color=DarkGray]Вы оцениваете своё настроение.[/color][/font]
 mood-show-sanity-line = [font size=10]Рассудок: { $sanity }[/font]
+mood-show-no-effects = Я не чувствую ничего особенного.
 
 mood-effect-HungerOverfed = Я так много съел, что чувствую, будто вот-вот лопну!
 mood-effect-HungerOkay = Я сыт.
@@ -34,7 +35,7 @@ mood-effect-MobHighPressure = Я чувствую, будто меня со вс
 
 mood-effect-TraitSaturnine = Всё просто отстой. Я ненавижу эту работу.
 
-mood-effect-Dead = Вы мертвы.
+mood-effect-Dead = Я мёртв.
 
 mood-effect-BeingHugged = Обнимашки — это здорово.
 
@@ -54,7 +55,7 @@ mood-effect-RevolutionFocused = ДА ЗДРАВСТВУЕТ РЕВОЛЮЦИЯ!!
 
 mood-effect-CultFocused = Тёмные боги, дайте мне силы!
 
-mood-effect-TraitSanguine = Мне нечего бояться. Уверен(а), в конце концов всё будет хорошо!
+mood-effect-TraitSanguine = Мне нечего бояться. В конце концов всё определённо будет хорошо!
 
 mood-effect-HeirloomSecure = Моя реликвия в безопасности, а с ней и воспоминания о тех, кто был до меня.
 mood-effect-HeirloomLost = Я не могу найти свою реликвию, как же теперь прошлое будет в безопасности?

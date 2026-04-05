@@ -84,8 +84,23 @@ public sealed class MoodSystem : EntitySystem
         if (!_playerManager.TryGetSessionByEntity(uid, out var session))
             return;
 
+        var msg = BuildMoodExamineMessage(component);
+        _chatManager.ChatMessageToOne(ChatChannel.Emotes, msg, msg, EntityUid.Invalid, false, session.Channel);
+    }
+
+    private string BuildMoodExamineMessage(MoodComponent component)
+    {
+        var msg = "[examineborder]\n";
+        msg += Loc.GetString("mood-show-effects-start");
+        msg += $"\n[color=#282D31]{Loc.GetString("examine-border-line")}[/color]\n";
+
+#if DEBUG
+        // Keep sanity visible only in debug/development workflows.
         var sanity = Loc.GetString("mood-show-sanity-line", ("sanity", MathF.Round(component.CurrentSanity, 1)));
-        var msg = $"{Loc.GetString("mood-show-effects-start")}\n{sanity}\n";
+        msg += $"{sanity}\n";
+#endif
+
+        var hadVisibleEffects = false;
 
         foreach (var (_, protoId) in component.CategorisedEffects)
         {
@@ -93,6 +108,7 @@ public sealed class MoodSystem : EntitySystem
                 || proto.Hidden)
                 continue;
 
+            hadVisibleEffects = true;
             var color = proto.MoodChange > 0 ? "#008000" : "#BA0000";
             msg += $"[font size=10][color={color}]{proto.Description}[/color][/font]\n";
         }
@@ -103,17 +119,16 @@ public sealed class MoodSystem : EntitySystem
                 || proto.Hidden)
                 continue;
 
+            hadVisibleEffects = true;
             var color = proto.MoodChange > 0 ? "#008000" : "#BA0000";
             msg += $"[font size=10][color={color}]{proto.Description}[/color][/font]\n";
         }
 
-        _chatManager.ChatMessageToOne(
-            ChatChannel.Emotes,
-            msg,
-            msg,
-            EntityUid.Invalid,
-            false,
-            session.Channel);
+        if (!hadVisibleEffects)
+            msg += $"[font size=10][color=#808080]{Loc.GetString("mood-show-no-effects")}[/color][/font]\n";
+
+        msg += "[/examineborder]";
+        return msg;
     }
 
     private void OnShutdown(EntityUid uid, MoodComponent component, ComponentShutdown args)

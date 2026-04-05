@@ -179,6 +179,8 @@
         - !type:HasTag
           invert: true
           tag: Bee
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: BuzzochloricBeesEffect
 
 - type: reagent
   id: GroundBee
