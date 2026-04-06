@@ -125,6 +125,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Server._Chaos.Discord;
 
 /*
  * TODO: Remove baby jail code once a more mature gateway process is established. This code is only being issued as a stopgap to help with potential tiding in the immediate future.
@@ -169,6 +170,7 @@ namespace Content.Server.Connection
         [Dependency] private readonly IChatManager _chatManager = default!;
         [Dependency] private readonly IHttpClientHolder _http = default!;
         [Dependency] private readonly IAdminManager _adminManager = default!;
+        [Dependency] private readonly DiscordAuthManager _discordAuthManager = default!;
 
         private ISawmill _sawmill = default!;
         private readonly Dictionary<NetUserId, TimeSpan> _temporaryBypasses = [];
@@ -347,6 +349,40 @@ namespace Content.Server.Connection
             }
 
             var adminData = await _db.GetAdminDataForAsync(e.UserId);
+
+            // Chaos-Station-Start: Check Auth for Discord ID
+            // if (_cfg.GetCVar(CCVars.DiscordAuthEnable) && adminData == null)
+            // Chaos-Station-Start: Check Auth for Discord ID + красивое окно с кодом
+            if (_cfg.GetCVar(CCVars.DiscordAuthEnable))
+            {
+                var discordId = await _discordAuthManager.GetDiscordId(userId);
+
+                if (discordId != null)
+                {
+                    _sawmill.Info($"Discord ID for user {userId}: {discordId}");
+                }
+                else
+                {
+                    var code = _discordAuthManager.GenerateUserCode(userId);
+                    _sawmill.Warning($"Generated auth code for unauthorized user {userId}: {code}");
+
+                    // Отправляем код боту (чтобы он мог проверить команду от игрока)
+                    await _discordAuthManager.SendAuthCodeToBot(userId, code, _cfg.GetCVar(CCVars.DiscordAuthSendSecretTokenBot));
+
+                    var denyMessage = $"DISCORD_AUTH_DENY|{code}|" +
+                                      "Вы не авторизованы через Discord!\n\n" +
+                                      "Присоединитесь к нашему Discord-серверу:\n" +
+                                      "https://discord.gg/9MkcRcFCPb\n\n" +
+                                      "И авторизуйтесь в этом канале:\n" +
+                                      "https://discord.com/channels/1475918847759356117/1481280582368493761\n\n" +
+                                      $"Ваш код авторизации: {code}\n\n" +
+                                      "Введите этот код командой боту в Discord.\n" +
+                                      "ВНИМАНИЕ: Не показывайте этот код никому, кроме администрации!";
+
+                    return (ConnectionDenyReason.DiscordAuth, denyMessage, null);
+                }
+            }
+            // Chaos-Station-End
 
             if (_cfg.GetCVar(CCVars.PanicBunkerEnabled) && adminData == null)
             {

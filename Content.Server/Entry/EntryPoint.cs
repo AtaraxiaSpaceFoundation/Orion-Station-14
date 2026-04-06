@@ -168,6 +168,7 @@ using Robust.Shared.ContentPack;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Server._Chaos.Discord;
 
 namespace Content.Server.Entry
 {
@@ -255,6 +256,7 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<PlayerRateLimitManager>().Initialize();
                 _lastAntagManager = IoCManager.Resolve<LastRolledAntagManager>(); // Goobstation
                 _lastAntagManager.Initialize(); // Goobstation
+                IoCManager.Resolve<DiscordAuthManager>().Initialize(); // Chaos-Tweak: Discord Auth
             }
         }
 

@@ -180,6 +180,7 @@ namespace Content.Server.Database
         public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
+        public DbSet<DiscordUser> DiscordUser { get; set; } = null!; // Chaos-Station-Tweak: DiscordAuth
 
         // RMC14
         public DbSet<RMCDiscordAccount> RMCDiscordAccounts { get; set; } = default!;
@@ -611,6 +612,11 @@ namespace Content.Server.Database
             modelBuilder.Entity<PollVote>()
                 .HasIndex(v => new { v.PollId, v.PlayerUserId, v.PollOptionId })
                 .IsUnique();
+            // Chaos-Station-Start: DiscordAuth
+            modelBuilder.Entity<DiscordUser>()
+                .HasIndex(p => new { p.UserId, p.DiscordId })
+                .IsUnique();
+            // Chaos-Station-End
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -1256,7 +1262,9 @@ namespace Content.Server.Database
         /// Results from rejected connections with external API checking tools
         IPChecks = 5,
         /// Results from rejected connections who are authenticated but have no modern hwid associated with them.
-        NoHwid = 6
+        NoHwid = 6,
+        // Chaos-Station-Tweak: Add DiscordAuth as a connection denial reason for accounts that are authenticated but don't have a linked Discord account, or whose linked Discord account doesn't meet certain criteria (e.g. not being in the official SS14 Discord server).
+        DiscordAuth = 7
     }
 
     public class ServerBanHit
@@ -1597,4 +1605,15 @@ namespace Content.Server.Database
         /// </summary>
         public float Score { get; set; }
     }
+
+    // Chaos-Station-Start: DiscordAuth
+    public class DiscordUser
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public Guid UserId { get; set; }
+        [MaxLength(32)]
+        public string DiscordId { get; set; } = default!;
+    }
+    // Chaos-Station-End
 }
