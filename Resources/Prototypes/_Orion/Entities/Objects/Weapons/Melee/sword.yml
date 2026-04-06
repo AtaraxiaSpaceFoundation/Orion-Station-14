@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: BaseKnife
   id: Shinai
   name: shinai
   description: A bamboo sword, commonly used in kendo. Made some time after the realization that wooden swords hurt a lot.
@@ -26,7 +26,7 @@
   - type: DisarmMalus
 
 - type: entity
-  parent: BaseItem
+  parent: BaseKnife
   id: Wakizashi
   name: wakizashi
   description: A short, multi-purpose sword of plasteel construction.
@@ -39,23 +39,12 @@
     sprite: _Orion/Objects/Weapons/Melee/wakizashi.rsi
   - type: Execution
     doAfterDuration: 14.0
-  - type: Sharp
   - type: DisarmMalus
   - type: MeleeWeapon
     attackRate: 2
     damage:
       types:
         Slash: 12
-    soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
-  - type: Tool
-    qualities:
-      - Slicing
-    useSound:
-      path: /Audio/Items/Culinary/chop.ogg
-  - type: Utensil
-    types:
-      - Knife
   - type: Tag
     tags:
     - Wakizashi
