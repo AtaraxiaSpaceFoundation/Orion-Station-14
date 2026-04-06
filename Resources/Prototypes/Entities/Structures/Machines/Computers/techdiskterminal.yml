@@ -20,6 +20,14 @@
       state: icon
     - map: ["computerLayerScreen"]
       state: unshaded
+  - type: GenericVisualizer # Orion
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+          East: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+          West: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
+          East, West: { state: icon, sprite: Structures/Machines/tech_disk_printer.rsi }
   - type: DiskConsole
   - type: ResearchClient
   - type: ActivatableUI

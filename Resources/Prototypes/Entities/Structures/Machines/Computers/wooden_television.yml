@@ -12,6 +12,14 @@
       state: television
     - map: ["computerLayerScreen"]
       state: detective_television
+  - type: GenericVisualizer # Orion
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: television, sprite: Structures/Machines/computers.rsi }
+          East: { state: television, sprite: Structures/Machines/computers.rsi }
+          West: { state: television, sprite: Structures/Machines/computers.rsi }
+          East, West: { state: television, sprite: Structures/Machines/computers.rsi }
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight

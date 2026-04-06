@@ -243,6 +243,14 @@
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: false }
           False: { visible: true }
+      # Orion-Start
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer, sprite: Structures/Machines/computers.rsi }
+          West: { state: computer_r, sprite: _Orion/Structures/Machines/computers.rsi }
+          East: { state: computer_l, sprite: _Orion/Structures/Machines/computers.rsi }
+          East, West: { state: computer_l_r, sprite: _Orion/Structures/Machines/computers.rsi }
+      # Orion-End
   - type: AtmosAlertsComputer
   - type: ActivatableUI
     singleUser: true
@@ -930,7 +938,7 @@
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
   - type: DeviceNetwork
-    deviceNetId: Wireless    
+    deviceNetId: Wireless
     transmitFrequencyId: ShuttleTimer
   - type: ActivatableUI
     key: enum.CommunicationsConsoleUiKey.Key
@@ -1507,6 +1515,14 @@
           enum.WiresVisualLayers.MaintenancePanel:
             True: { visible: false }
             False: { visible: true }
+        # Orion-Start
+        enum.EdgeConnectionVisuals.ConnectionMask:
+          computerLayerBody:
+            None: { state: computer, sprite: Structures/Machines/computers.rsi }
+            West: { state: computer_r, sprite: _Orion/Structures/Machines/computers.rsi }
+            East: { state: computer_l, sprite: _Orion/Structures/Machines/computers.rsi }
+            East, West: { state: computer_l_r, sprite: _Orion/Structures/Machines/computers.rsi }
+        # Orion-End
     - type: SalvageExpeditionConsole
     - type: ActivatableUI
       key: enum.SalvageConsoleUiKey.Expedition
