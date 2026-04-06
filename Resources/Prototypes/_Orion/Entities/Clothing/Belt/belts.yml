@@ -98,11 +98,10 @@
   id: ClothingBeltKatanaSheath
   name: katana sheaths
   description: An ornate belt designed to hold a pair of samurai's blades, or daisho.
-  suffix: Filled
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Belt/katanasheath.rsi
-    state: sheath-wakizashi
+    state: sheath
   - type: Clothing
     sprite: _Orion/Clothing/Belt/katanasheath.rsi
   - type: ContainerContainer
@@ -133,8 +132,12 @@
           - Wakizashi
   - type: ItemMapper
     mapLayers:
-      sheath-both:
+      sheath-katana:
         whitelist:
           tags:
           - Katana
+      sheath-wakizashi:
+        whitelist:
+          tags:
+          - Wakizashi
   - type: Appearance
