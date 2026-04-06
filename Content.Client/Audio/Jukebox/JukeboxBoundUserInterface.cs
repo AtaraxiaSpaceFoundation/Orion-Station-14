@@ -49,6 +49,13 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
             SendMessage(new JukeboxStopMessage());
         };
 
+        // Orion-Start
+        _menu.OnLoopToggled += () =>
+        {
+            SendMessage(new JukeboxToggleLoopMessage());
+        };
+        // Orion-End
+
         _menu.OnSongSelected += SelectSong;
 
         _menu.SetTime += SetTime;
@@ -67,6 +74,7 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
 
         _menu.SetAudioStream(jukebox.AudioStream);
         _menu.SetVolumeSlider(jukebox.Volume); // Orion
+        _menu.SetLoopButton(jukebox.LoopEnabled); // Orion
 
         if (_protoManager.TryIndex(jukebox.SelectedSongId, out var songProto))
         {

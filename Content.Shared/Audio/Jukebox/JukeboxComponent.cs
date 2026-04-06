@@ -51,6 +51,15 @@ public sealed partial class JukeboxComponent : Component
     public float MaxVolume = 0f;
     public float MinSlider = 0f;
     public float MaxSlider = 100f;
+
+    [DataField, AutoNetworkedField]
+    public bool LoopEnabled;
+
+    [DataField]
+    public TimeSpan? PlaybackStartTime;
+
+    [DataField]
+    public float CurrentPlaybackOffset;
     // Orion-End
 }
 
@@ -81,6 +90,9 @@ public sealed class JukeboxSetVolumeMessage(float volume) : BoundUserInterfaceMe
 {
     public float Volume { get; } = volume;
 }
+
+[Serializable, NetSerializable]
+public sealed class JukeboxToggleLoopMessage : BoundUserInterfaceMessage;
 // Orion-End
 
 [Serializable, NetSerializable]

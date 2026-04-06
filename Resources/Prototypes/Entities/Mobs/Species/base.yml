@@ -342,8 +342,8 @@
     bounds: -0.5,-0.5,0.5,0.5
   - type: HasJobIcons # Goobstation
   - type: RotationVisuals
-    defaultRotation: 90
-    horizontalRotation: 90
+    defaultRotation: -90 # Orion-Edit
+    horizontalRotation: -90 # Orion-Edit
   - type: HumanoidAppearance
     species: Human
   - type: TypingIndicator
