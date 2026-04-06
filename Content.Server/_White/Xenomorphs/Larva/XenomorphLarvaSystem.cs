@@ -14,6 +14,8 @@ using Content.Shared.Popups;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
+using Content.Shared.Damage;
+using Content.Shared._Shitmed.Targeting;
 
 namespace Content.Server._White.Xenomorphs.Larva;
 
@@ -26,6 +28,7 @@ public sealed class XenomorphLarvaSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
     [Dependency] private readonly DeathgaspSystem _deathgasp = default!; // Orion
+    [Dependency] private readonly DamageableSystem _damageableSystem = default!; // Omu
 
     public override void Initialize()
     {
@@ -79,13 +82,18 @@ public sealed class XenomorphLarvaSystem : EntitySystem
             return;
 
         _container.Remove(uid, container);
-        // Orion-Start
-        if (!_mobState.IsDead(victim))
-        {
-            _mobState.ChangeMobState(victim, MobState.Dead);
-            _deathgasp.Deathgasp(victim);
-        }
+
+        var damage = new DamageSpecifier(); // Omu start
+        damage.DamageDict.Add("Blunt", 120);
+        damage.DamageDict.Add("Piercing", 80);
+        _damageableSystem.TryChangeDamage(uid: victim, damage: damage, ignoreResistances: true, interruptsDoAfters: false, targetPart: TargetBodyPart.Chest);
+
+        // Orion-Start: Be sure they die!
+        if (_mobState.IsDead(victim))
+            return;
+
+        _mobState.ChangeMobState(victim, MobState.Dead);
+        _deathgasp.Deathgasp(victim);
         // Orion-End
-//        _body.GibBody(victim); // Orion-Edit: Fuck you.
     }
 }

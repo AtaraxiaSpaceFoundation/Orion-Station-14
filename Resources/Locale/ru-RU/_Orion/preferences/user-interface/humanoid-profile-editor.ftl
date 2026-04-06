@@ -18,3 +18,5 @@ humanoid-profile-editor-gyr-red = Запрещённые темы
 humanoid-profile-editor-link-tooltip =
     Нажмите чтобы открыть: {$url}
     Примечание: Если ссылка содержит в себе вредоносные материалы — сообщите об этом администрации.
+
+trait-category-mood = Черты настроения

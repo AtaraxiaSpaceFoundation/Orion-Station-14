@@ -757,11 +757,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         DoLungeAnimation(user, weapon, component.Angle, TransformSystem.ToMapCoordinates(target.Value.ToCoordinates()), rangeEv.Range, component.Animation, component.AnimationRotation, component.FlipAnimation); // Goobstation - Edit
         // We skip weapon -> target interaction, as forensics system applies DNA on hit
-        Interaction.DoContactInteraction(user, weapon, null, true); // Orion-Edit
+        Interaction.DoContactInteraction(user, weapon);
 
         // If the user is using a long-range weapon, this probably shouldn't be happening? But I'll interpret melee as a
         // somewhat messy scuffle. See also, heavy attacks.
-        Interaction.DoContactInteraction(user, target, weapon, true); // Orion-Edit
+        Interaction.DoContactInteraction(user, target);
 
         // For stuff that cares about it being attacked.
         var attackedEvent = new AttackedEvent(meleeUid, user, targetXform.Coordinates);
@@ -919,7 +919,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var weapon = GetEntity(ev.Weapon);
 
-        Interaction.DoContactInteraction(user, weapon, null, true); // Orion-Edit
+        Interaction.DoContactInteraction(user, weapon);
 
         // For stuff that cares about it being attacked.
         foreach (var target in targets)
@@ -928,7 +928,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
             // If the user is using a long-range weapon, this probably shouldn't be happening? But I'll interpret melee as a
             // somewhat messy scuffle. See also, light attacks.
-            Interaction.DoContactInteraction(user, target, weapon, true); // Orion-Edit
+            Interaction.DoContactInteraction(user, target);
         }
 
         var appliedDamage = new DamageSpecifier();
@@ -1153,7 +1153,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         // Goobstation end
 
         PhysicalShove(user, target);
-        Interaction.DoContactInteraction(user, target, null, true); // Orion-Edit
+        Interaction.DoContactInteraction(user, target);
 
         if (MobState.IsIncapacitated(target))
             return true;

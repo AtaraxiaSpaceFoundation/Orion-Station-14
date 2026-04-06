@@ -38,6 +38,8 @@
         amount: -0.1
       - !type:ModifyBloodLevel
         amount: 0.25 #GOOBEND
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: TastyEffect
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 1.5
@@ -122,6 +124,8 @@
         type: Add
         time: 3 # May be too much, needs testing
         refresh: false
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: SweetenerEffect
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 0.1

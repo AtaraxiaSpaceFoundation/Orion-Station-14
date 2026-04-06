@@ -244,6 +244,8 @@
             Radiation: -3
           groups:
             Brute: 0.5
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: StrongPaincauser
 
 - type: reagent
   id: Bicaridine
@@ -301,6 +303,8 @@
         identifier: Suffocation
         amount: -1.2
         time: 12
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: MildPainkiller
 
 - type: reagent
   id: Cryoxadone
@@ -577,6 +581,10 @@
           min: 1
         reagent: Histamine
         amount: 4
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: EpinephrineEffect
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: MildPaincauser
       - !type:GenericStatusEffect
         key: Stun
         time: 0.75
@@ -912,6 +920,11 @@
           conditions:
             - !type:ReagentThreshold
               min: 10
+        - !type:ChemRemoveMoodlet # Orion
+          moodPrototype: RomerolEffect
+          conditions:
+          - !type:ReagentThreshold
+            min: 10
 
 - type: reagent
   id: AmbuzolPlus
@@ -929,6 +942,11 @@
           conditions:
             - !type:ReagentThreshold
               min: 5
+        - !type:ChemRemoveMoodlet # Orion
+          moodPrototype: RomerolEffect
+          conditions:
+          - !type:ReagentThreshold
+            min: 5
 
 - type: reagent
   id: PulpedBananaPeel
@@ -1044,6 +1062,11 @@
         effectProto: StatusEffectSeeingRainbow
         time: 15.0
         type: Remove
+      - !type:ChemPurgeMoodlets # Orion
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Synaptizine
+          min: 10
 
 - type: reagent
   id: TranexamicAcid
@@ -1357,6 +1380,8 @@
         damage:
           types:
             Cold: 3
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: LacerinolEffect
 
 - type: reagent
   id: Puncturase
@@ -1384,6 +1409,8 @@
         damage:
           types:
             Blunt: 5
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: PuncturaseEffect
 
 - type: reagent
   id: Bruizine
@@ -1410,6 +1437,8 @@
         damage:
           types:
             Poison: 4
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: BruizineEffect
 
 - type: reagent
   id: Holywater

@@ -1,0 +1,63 @@
+﻿# Hunger
+- type: moodEffect
+  id: HungerOverfed
+  moodChange: 0
+  category: "Hunger"
+
+- type: moodEffect
+  id: HungerOkay
+  moodChange: 5
+  category: "Hunger"
+
+- type: moodEffect
+  id: HungerPeckish
+  moodChange: -3
+  category: "Hunger"
+
+- type: moodEffect
+  id: HungerStarving
+  moodChange: -10
+  category: "Hunger"
+
+# Thirst
+- type: moodEffect
+  id: ThirstOverHydrated
+  moodChange: 0
+  category: "Thirst"
+
+- type: moodEffect
+  id: ThirstOkay
+  moodChange: 4
+  category: "Thirst"
+
+- type: moodEffect
+  id: ThirstThirsty
+  moodChange: -4
+  category: "Thirst"
+
+- type: moodEffect
+  id: ThirstParched
+  moodChange: -10
+  category: "Thirst"
+
+# Health
+- type: moodEffect
+  id: HealthNoDamage
+  moodChange: 0
+  hidden: true
+  category: "Health"
+
+- type: moodEffect
+  id: HealthLightDamage
+  moodChange: -3
+  category: "Health"
+
+- type: moodEffect
+  id: HealthSevereDamage
+  moodChange: -7
+  category: "Health"
+
+- type: moodEffect
+  id: HealthHeavyDamage
+  moodChange: -20
+  category: "Health"

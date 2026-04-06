@@ -311,6 +311,8 @@
         - !type:OrganType # Goobstation - Yowie
           type: Yowie
           shouldHave: false
+      - !type:ChemAddMoodlet # Orion
+        moodPrototype: EthanolBenefit
       - !type:Drunk
         boozePower: 2
 

@@ -111,6 +111,10 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Orion.Mood;
+using Content.Shared.CCVar;
+using Robust.Shared.Configuration;
+using Robust.Shared.Network;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -123,6 +127,8 @@ public sealed class ThirstSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
+    [Dependency] private readonly IConfigurationManager _config = default!; // Orion
+    [Dependency] private readonly INetManager _net = default!; // Orion
 
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconOverhydratedId = "ThirstIconOverhydrated";
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconThirstyId = "ThirstIconThirsty";
@@ -182,6 +188,11 @@ public sealed class ThirstSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, ThirstComponent component, RefreshMovementSpeedModifiersEvent args)
     {
+        // Orion-Start
+        if (_config.GetCVar(CCVars.MoodEnabled))
+            return;
+        // Orion-End
+
         // TODO: This should really be taken care of somewhere else
         if (_jetpack.IsUserFlying(uid))
             return;
@@ -259,8 +270,16 @@ public sealed class ThirstSystem : EntitySystem
 
         if (wasMovementAffected != isMovementAffected && TryComp(uid, out MovementSpeedModifierComponent? movementSlowdownComponent)) // Orion-Edit
         {
-            _movement.RefreshMovementSpeedModifiers(uid, movementSlowdownComponent);
+            // Orion-Edit-Start
+            if (!_config.GetCVar(CCVars.MoodEnabled))
+                _movement.RefreshMovementSpeedModifiers(uid, movementSlowdownComponent);
+            // Orion-Edit-End
         }
+
+        // Orion-Start
+        if (_config.GetCVar(CCVars.MoodEnabled) && _net.IsServer)
+            RaiseLocalEvent(uid, new MoodEffectEvent("Thirst" + component.CurrentThirstThreshold));
+        // Orion-End
 
         // Update UI
         if (ThirstComponent.ThirstThresholdAlertTypes.TryGetValue(component.CurrentThirstThreshold, out var alertId))

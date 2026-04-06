@@ -1,0 +1,48 @@
+- type: trait
+  id: Saturnine
+  name: trait-saturnine-name
+  description: trait-saturnine-desc
+  category: MoodTraits
+  cost: 3
+  components:
+  - type: MoodTrait
+    moodEffects:
+    - TraitSaturnine
+
+- type: trait
+  id: Sanguine
+  name: trait-sanguine-name
+  description: trait-sanguine-desc
+  category: MoodTraits
+  cost: -2
+  components:
+  - type: MoodTrait
+    moodEffects:
+    - TraitSanguine
+
+- type: trait
+  id: Manic
+  name: trait-manic-name
+  description: trait-manic-desc
+  category: MoodTraits
+  cost: 2
+  components:
+  - type: Manic
+
+- type: trait
+  id: Mercurial
+  name: trait-mercurial-name
+  description: trait-mercurial-desc
+  category: MoodTraits
+  cost: 2
+  components:
+  - type: Mercurial
+
+- type: trait
+  id: DeadEmotions
+  name: trait-dead-emotions-name
+  description: trait-dead-emotions-desc
+  category: MoodTraits
+  cost: -4
+  components:
+  - type: DeadEmotions

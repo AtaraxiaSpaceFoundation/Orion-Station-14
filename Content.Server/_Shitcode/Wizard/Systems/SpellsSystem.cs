@@ -14,6 +14,7 @@ using System.Numerics;
 using Content.Goobstation.Common.Actions;
 using Content.Goobstation.Common.Bloodstream;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Shared.Teleportation.Systems;
 using Content.Server._Goobstation.Wizard.Components;
 using Content.Server.Antag;
 using Content.Server.Body.Systems;
@@ -38,11 +39,13 @@ using Content.Shared._Goobstation.Wizard.Chuuni;
 using Content.Shared._Goobstation.Wizard.FadingTimedDespawn;
 using Content.Shared._Goobstation.Wizard.SpellCards;
 using Content.Shared._Shitmed.Damage;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Actions.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Construction.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Friction;
@@ -56,8 +59,10 @@ using Content.Shared.Maps;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Physics;
+using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Speech.Components;
 using Content.Shared.Tag;
@@ -74,7 +79,6 @@ using Robust.Shared.Random;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Goobstation.Shared.Teleportation.Systems;
 
 namespace Content.Server._Goobstation.Wizard.Systems; //todo refactor wiz
 
@@ -100,6 +104,11 @@ public sealed class SpellsSystem : SharedSpellsSystem
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly TileFrictionController _tileFriction = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly WoundSystem _wounds = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly PuddleSystem _puddle = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
 
     public override void Initialize()
     {
@@ -664,4 +673,62 @@ public sealed class SpellsSystem : SharedSpellsSystem
 
         _teleport.RandomTeleport(ev.Performer, ev.Radius);
     }
+
+/* // Orion-Edit
+    protected override void Rathen(RathenEvent ev)
+    {
+        base.Rathen(ev);
+
+        var mapPos = TransformSystem.GetMapCoordinates(ev.Performer);
+        var stunTime = ev.StunTime;
+
+        foreach (var (target, _) in Lookup.GetEntitiesInRange<FartComponent>(mapPos, ev.MaxRange))
+        {
+            if (target == ev.Performer)
+                continue;
+
+            if (!TryComp<FartComponent>(target, out var fart)
+                || !TryComp<BodyComponent>(target, out var body)
+                || _mobState.IsDead(target))
+                continue;
+
+            Stun.KnockdownOrStun(target, stunTime, true);
+
+            if (!fart.SuperFarted)
+            {
+                fart.FartInhale = true;
+                _chat.TryEmoteWithChat(target, "FartSuper", ignoreActionBlocker: true, forceEmote: true);
+            }
+            else
+            {
+                _popup.PopupEntity(
+                Loc.GetString("spell-rathen-gut-popup"),
+                target,
+                target,
+                PopupType.LargeCaution);
+
+                Damageable.TryChangeDamage(target,
+                    ev.SuperFartDamage,
+                    true,
+                    origin: ev.Performer);
+
+                if (TryComp<BloodstreamComponent>(target, out var bloodstream)
+                    && _solutionContainer.ResolveSolution(target, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution))
+                {
+                    var toSpill = _solutionContainer.SplitSolution(bloodstream.BloodSolution.Value, 15);
+                    _puddle.TrySpillAt(target, toSpill, out _);
+                }
+
+                foreach (var limbType in new[] { BodyPartType.Arm, BodyPartType.Leg })
+                    foreach (var (partId, _) in Body.GetBodyChildrenOfType(target, limbType, body))
+                    {
+                        if (Random.Prob(ev.LimbTearChance)
+                            && TryComp<WoundableComponent>(partId, out var woundable)
+                            && woundable.ParentWoundable.HasValue)
+                            _wounds.AmputateWoundable(woundable.ParentWoundable.Value, partId, woundable);
+                    }
+            }
+        }
+    }
+*/
 }
