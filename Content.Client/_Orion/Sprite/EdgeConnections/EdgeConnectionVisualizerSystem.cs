@@ -14,6 +14,6 @@ public sealed class EdgeConnectionVisualizerSystem : EntitySystem
 
     private void OnAppearanceChange(Entity<EdgeConnectionComponent> ent, ref AppearanceChangeEvent args)
     {
-        _appearance.TryGetData(ent, EdgeConnectionVisuals.ConnectionMask, out EdgeConnectionDirections _, args.Component);
+        _ = _appearance.TryGetData(ent, EdgeConnectionVisuals.ConnectionMask, out EdgeConnectionDirections _, args.Component);
     }
 }
