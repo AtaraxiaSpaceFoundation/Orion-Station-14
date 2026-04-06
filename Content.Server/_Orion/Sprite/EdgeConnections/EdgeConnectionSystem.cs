@@ -91,6 +91,10 @@ public sealed class EdgeConnectionSystem : EntitySystem
         }
 
         var localMask = RotateDirections(mask, xform.LocalRotation, clockwise: false);
+
+        if (GetQuarterTurns(xform.LocalRotation) % 2 != 0)
+            localMask = FlipEastWest(localMask);
+
         _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, localMask);
     }
 
@@ -212,5 +216,18 @@ public sealed class EdgeConnectionSystem : EntitySystem
     private static int GetQuarterTurns(Angle rotation)
     {
         return ((int) Math.Round(rotation.Degrees / 90.0) % 4 + 4) % 4;
+    }
+
+    private static EdgeConnectionDirections FlipEastWest(EdgeConnectionDirections flags)
+    {
+        var result = flags & ~(EdgeConnectionDirections.East | EdgeConnectionDirections.West);
+
+        if ((flags & EdgeConnectionDirections.East) != 0)
+            result |= EdgeConnectionDirections.West;
+
+        if ((flags & EdgeConnectionDirections.West) != 0)
+            result |= EdgeConnectionDirections.East;
+
+        return result;
     }
 }
