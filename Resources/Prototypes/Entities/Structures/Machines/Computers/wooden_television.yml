@@ -17,6 +17,9 @@
       enum.EdgeConnectionVisuals.ConnectionMask:
         computerLayerBody:
           None: { state: television, sprite: Structures/Machines/television.rsi }
+          East: { state: television, sprite: Structures/Machines/television.rsi }
+          West: { state: television, sprite: Structures/Machines/television.rsi }
+          East, West: { state: television, sprite: Structures/Machines/television.rsi }
   - type: Computer
     board: ComputerTelevisionCircuitboard
   - type: PointLight

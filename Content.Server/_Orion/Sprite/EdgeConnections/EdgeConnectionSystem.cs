@@ -86,7 +86,7 @@ public sealed class EdgeConnectionSystem : EntitySystem
             if ((worldAllowed & direction) == 0)
                 continue;
 
-            if (HasMatchingNeighbor(ent, gridUid, grid, tile + offset, ent.Comp.ConnectionKey, opposite))
+            if (HasMatchingNeighbor(ent, xform.LocalRotation, gridUid, grid, tile + offset, ent.Comp.ConnectionKey, opposite))
                 mask |= direction;
         }
 
@@ -94,10 +94,10 @@ public sealed class EdgeConnectionSystem : EntitySystem
         _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, localMask);
     }
 
-    private bool HasMatchingNeighbor(EntityUid self, EntityUid gridUid, MapGridComponent grid, Vector2i tile, string key, EdgeConnectionDirections requiredDirection)
+    private bool HasMatchingNeighbor(EntityUid self, Angle selfLocalRotation, EntityUid gridUid, MapGridComponent grid, Vector2i tile, string key, EdgeConnectionDirections requiredDirection)
     {
         var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
-        var selfQuarterTurns = GetQuarterTurns(Transform(self).LocalRotation);
+        var selfQuarterTurns = GetQuarterTurns(selfLocalRotation);
 
         while (anchored.MoveNext(out var otherNullable))
         {
@@ -114,12 +114,13 @@ public sealed class EdgeConnectionSystem : EntitySystem
             if (!otherXform.Anchored)
                 continue;
 
+            var otherQuarterTurns = GetQuarterTurns(otherXform.LocalRotation);
+            if (selfQuarterTurns % 2 != otherQuarterTurns % 2)
+                continue;
+
             var otherAllowed = RotateDirections(edge.AllowedDirections, otherXform.LocalRotation, clockwise: true);
             if ((otherAllowed & requiredDirection) != 0)
-            {
-                if (selfQuarterTurns == GetQuarterTurns(otherXform.LocalRotation))
-                    return true;
-            }
+                return true;
         }
 
         return false;
