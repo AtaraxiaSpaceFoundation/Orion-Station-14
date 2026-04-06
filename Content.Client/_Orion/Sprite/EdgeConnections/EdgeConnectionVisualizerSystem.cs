@@ -3,17 +3,13 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._Orion.Sprite.EdgeConnections;
 
-public sealed class EdgeConnectionVisualizerSystem : EntitySystem
+public sealed class EdgeConnectionVisualizerSystem : VisualizerSystem<EdgeConnectionComponent>
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-
-    public override void Initialize()
+    protected override void OnAppearanceChange(EntityUid uid, EdgeConnectionComponent component, ref AppearanceChangeEvent args)
     {
-        SubscribeLocalEvent<EdgeConnectionComponent, AppearanceChangeEvent>(OnAppearanceChange);
-    }
+        if (args.Sprite == null)
+            return;
 
-    private void OnAppearanceChange(Entity<EdgeConnectionComponent> ent, ref AppearanceChangeEvent args)
-    {
-        _ = _appearance.TryGetData(ent, EdgeConnectionVisuals.ConnectionMask, out EdgeConnectionDirections _, args.Component);
+        AppearanceSystem.TryGetData<EdgeConnectionDirections>(uid, EdgeConnectionVisuals.ConnectionMask, out _, args.Component);
     }
 }
