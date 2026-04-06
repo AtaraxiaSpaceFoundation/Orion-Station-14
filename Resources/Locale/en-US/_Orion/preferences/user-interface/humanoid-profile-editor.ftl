@@ -18,3 +18,5 @@ humanoid-profile-editor-gyr-red = Prohibited topics
 humanoid-profile-editor-link-tooltip =
     Click to open: { $url }
     Note: If the link contains harmful content, please report it to the administration.
+
+trait-category-mood = Mood traits

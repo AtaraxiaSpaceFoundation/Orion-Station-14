@@ -2,8 +2,8 @@
   id: Saturnine
   name: trait-saturnine-name
   description: trait-saturnine-desc
-  category: Quirks
-  cost: 2
+  category: MoodTraits
+  cost: 3
   components:
   - type: MoodTrait
     moodEffects:
@@ -13,7 +13,7 @@
   id: Sanguine
   name: trait-sanguine-name
   description: trait-sanguine-desc
-  category: Quirks
+  category: MoodTraits
   cost: -2
   components:
   - type: MoodTrait
@@ -24,7 +24,8 @@
   id: Manic
   name: trait-manic-name
   description: trait-manic-desc
-  category: Quirks
+  category: MoodTraits
+  cost: 2
   components:
   - type: Manic
 
@@ -32,7 +33,8 @@
   id: Mercurial
   name: trait-mercurial-name
   description: trait-mercurial-desc
-  category: Quirks
+  category: MoodTraits
+  cost: 2
   components:
   - type: Mercurial
 
@@ -40,7 +42,7 @@
   id: DeadEmotions
   name: trait-dead-emotions-name
   description: trait-dead-emotions-desc
-  category: Quirks
-  cost: -5
+  category: MoodTraits
+  cost: -4
   components:
   - type: DeadEmotions
