@@ -302,7 +302,7 @@ AirlockZookeeperGlassLocked: AirlockServiceGlassLocked
 AirlockZookeeperLocked: AirlockServiceLocked
 AlwaysPoweredLightPostSmallRed: null
 AsteroidAltRock: AsteroidRock
-# Orion-Edit-Start: Removed for mapping
+# Orion-Edit-Start: Returned for mapping
 #BenchParkBambooMiddle: null
 #BenchParkLeft: null
 #BenchParkMiddle: null
