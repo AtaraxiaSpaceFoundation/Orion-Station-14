@@ -360,7 +360,7 @@ GunSafeEnergyGunMini: null
 GunSafeVulcanRifle: null
 HatSpawner: null
 KitchenDeepFryer: null
-#KvassTankFull: null # Orion-Edit: Removed
+KvassTankFull: null
 LockerForensicMantisFilled: null
 LunchboxSecurityFilledRandom: null
 MagazineBoxSpecialPractice: null
@@ -370,23 +370,23 @@ PaintingMothBigCatch: null
 PaintingSpoon: null
 PlushieMothMusician: null
 PlushieMothRandom: null
-#PosterContrabandBreadLies: null # Orion-Edit: Removed
+PosterContrabandBreadLies: null
 PosterContrabandGotWood: null
 PosterContrabandSafetyMothSyndie: null
 PosterContrabandSaucerNumberOne: null
-#PosterLegitBarDrinks: null # Orion-Edit: Removed
-#PosterLegitBotanyFood: null # Orion-Edit: Removed
+PosterLegitBarDrinks: null
+PosterLegitBotanyFood: null
 PosterLegitChknDnnr: null
 PosterLegitCornzza: null
 PosterLegitDejaVu: null
 PosterLegitDontPanic: null
-#PosterLegitEatMeat: null # Orion-Edit: Removed
+PosterLegitEatMeat: null
 PosterLegitFuckAround: null
-#PosterLegitHotDonkExplosion: null # Orion-Edit: Removed
+PosterLegitHotDonkExplosion: null
 PosterLegitMedicate: null
 PosterLegitNoTouching: null
-#PosterLegitPieSlice: null # Orion-Edit: Removed
-#PosterLegitPizzaHope: null # Orion-Edit: Removed
+PosterLegitPieSlice: null
+PosterLegitPizzaHope: null
 PosterLegitSafetyMothBoH: null
 PosterLegitSafetyMothFires: null
 PosterLegitSafetyMothGlimmer: null
@@ -433,7 +433,7 @@ SpeedLoaderSpecialPractice: null
 SuitStorageCorpsman: null
 SuitStorageParamedic: null
 TableWoodReinforced: TableWood
-TatamiMat: null # Orion-Edit
+#TatamiMat: null # Orion-Edit: Removed
 ToyRenault: null
 ToySiobhan: null
 VendingMachineBoozeUnlocked: null
