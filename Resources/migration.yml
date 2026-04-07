@@ -302,24 +302,26 @@ AirlockZookeeperGlassLocked: AirlockServiceGlassLocked
 AirlockZookeeperLocked: AirlockServiceLocked
 AlwaysPoweredLightPostSmallRed: null
 AsteroidAltRock: AsteroidRock
-BenchParkBambooMiddle: null
-BenchParkLeft: null
-BenchParkMiddle: null
-BenchParkRight: null
-BenchPewLeft: null
-BenchPewMiddle: null
-BenchPewRight: null
+# Orion-Edit-Start: Removed for mapping
+#BenchParkBambooMiddle: null
+#BenchParkLeft: null
+#BenchParkMiddle: null
+#BenchParkRight: null
+#BenchPewLeft: null
+#BenchPewMiddle: null
+#BenchPewRight: null
 #BenchSofaCorpLeft: null # Goob edit
 #BenchSofaCorpMiddle: null # Goob edit
 #BenchSofaCorpRight: null # Goob edit
-BenchSofaLeft: null
-BenchSofaRight: null
-BenchSteelLeft: null
-BenchSteelMiddle: null
-BenchSteelRight: null
-BenchSteelWhiteLeft: null
-BenchSteelWhiteMiddle: null
-BenchSteelWhiteRight: null
+#BenchSofaLeft: null
+#BenchSofaRight: null
+#BenchSteelLeft: null
+#BenchSteelMiddle: null
+#BenchSteelRight: null
+#BenchSteelWhiteLeft: null
+#BenchSteelWhiteMiddle: null
+#BenchSteelWhiteRight: null
+# Orion-Edit-End
 BoardGameSpawner: null
 BoxColoredLighttube: BoxLighttube
 BoxEncryptionKeyPrisoner: BoxEncryptionKeyPassenger
@@ -360,7 +362,7 @@ GunSafeEnergyGunMini: null
 GunSafeVulcanRifle: null
 HatSpawner: null
 KitchenDeepFryer: null
-KvassTankFull: null
+#KvassTankFull: null # Orion-Edit: Removed
 LockerForensicMantisFilled: null
 LunchboxSecurityFilledRandom: null
 MagazineBoxSpecialPractice: null
@@ -370,23 +372,23 @@ PaintingMothBigCatch: null
 PaintingSpoon: null
 PlushieMothMusician: null
 PlushieMothRandom: null
-PosterContrabandBreadLies: null
+#PosterContrabandBreadLies: null # Orion-Edit: Removed
 PosterContrabandGotWood: null
 PosterContrabandSafetyMothSyndie: null
 PosterContrabandSaucerNumberOne: null
-PosterLegitBarDrinks: null
-PosterLegitBotanyFood: null
+#PosterLegitBarDrinks: null # Orion-Edit: Removed
+#PosterLegitBotanyFood: null # Orion-Edit: Removed
 PosterLegitChknDnnr: null
 PosterLegitCornzza: null
 PosterLegitDejaVu: null
 PosterLegitDontPanic: null
-PosterLegitEatMeat: null
+#PosterLegitEatMeat: null # Orion-Edit: Removed
 PosterLegitFuckAround: null
-PosterLegitHotDonkExplosion: null
+#PosterLegitHotDonkExplosion: null # Orion-Edit: Removed
 PosterLegitMedicate: null
 PosterLegitNoTouching: null
-PosterLegitPieSlice: null
-PosterLegitPizzaHope: null
+#PosterLegitPieSlice: null # Orion-Edit: Removed
+#PosterLegitPizzaHope: null # Orion-Edit: Removed
 PosterLegitSafetyMothBoH: null
 PosterLegitSafetyMothFires: null
 PosterLegitSafetyMothGlimmer: null
@@ -623,10 +625,10 @@ CrystalSubspaceStockPart: null
 TransmitterSubspaceStockPart: null
 
 # 2024-01-10
-ClothingHeadHatHoodRad: null
+#ClothingHeadHatHoodRad: null # Orion-Edit: Removed
 
 # 2024-01-12
-SpaceMedipen: null
+#SpaceMedipen: null # Orion-Edit: Removed
 
 # 2024-01-18
 ClothingHeadHelmetVoidParamed: null
@@ -670,8 +672,8 @@ ActionVehicleHorn: null
 #CrateFunSyndicateSegway: null Goobstation - Re-add vehicles
 MobTaxiBot: null
 # MobSupplyBot: null
-SpawnVehicleMotobike: null
-SpawnVehicleATV: null
+#SpawnVehicleMotobike: null # Orion-Edit: Removed
+#SpawnVehicleATV: null # Orion-Edit: Removed
 #SpawnVehicleSecway: null Goobstation - Re-add vehicles
 #SpawnVehicleJanicart: null Goobstation - Re-add vehicles
 #VehicleJanicart: null Goobstation - Re-add vehicles
@@ -891,8 +893,8 @@ CentcomPDAFake: null
 CentcomIDCardSyndie: null
 
 # 2024-09-06
-AntimovCircuitBoard: null
-OverlordCircuitBoard: null
+#AntimovCircuitBoard: null # Orion-Edit: Removed
+#OverlordCircuitBoard: null # Orion-Edit: Removed
 
 # 2024-09-08
 HatBase: null
@@ -1015,7 +1017,7 @@ BorgModuleAdvancedTreatment: null
 FoodCondimentPacketFrostoil: FoodCondimentPacketColdsauce
 
 # 2025-02-05
-WeaponSubMachineGunVector: null
+#WeaponSubMachineGunVector: null # Orion-Edit: Removed
 WeaponSubMachineGunVectorRubber: null
 
 # 2025-02-11
@@ -1026,9 +1028,9 @@ PosterContrabandLustyExomorph: PosterContrabandLustyXenomorph
 PosterContrabandBustyBackdoorExoBabes6: PosterContrabandBustyBackdoorXenoBabes6
 
 # 2025-02-20
-MagazineBoxAntiMaterielBig: null
-MagazineBoxCaselessRifle10x24: null
-MagazineBoxCaselessRifleBig: null
+#MagazineBoxAntiMaterielBig: null # Orion-Edit: Removed
+#MagazineBoxCaselessRifle10x24: null # Orion-Edit: Removed
+#MagazineBoxCaselessRifleBig: null # Orion-Edit: Removed
 MagazinePistolHighCapacityRubber: null
 
 # 2025-03-09 - Shitmed Woundmed, separating torsos into chest and groin
@@ -1059,7 +1061,7 @@ CargoMailTeleporter: MailTeleporter
 ClothingMaskBlushingMime: ClothingMaskSexyMime
 ClothingMaskBlushingClown: ClothingMaskSexyMime
 MachineMaterialSilo: null
-CrateMaterialSilo: null
+#CrateMaterialSilo: null # Orion-Edit: Removed
 
 # 2025-03-29
 ClothingBackpackDuffelSyndicateRaidBundle: ClothingBackpackSyndicateRaidBundle
