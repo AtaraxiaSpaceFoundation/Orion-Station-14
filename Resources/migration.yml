@@ -891,8 +891,8 @@ CentcomPDAFake: null
 CentcomIDCardSyndie: null
 
 # 2024-09-06
-#AntimovCircuitBoard: null # Orion-Edit: Removed
-#OverlordCircuitBoard: null # Orion-Edit: Removed
+AntimovCircuitBoard: null
+OverlordCircuitBoard: null
 
 # 2024-09-08
 HatBase: null
@@ -1015,7 +1015,7 @@ BorgModuleAdvancedTreatment: null
 FoodCondimentPacketFrostoil: FoodCondimentPacketColdsauce
 
 # 2025-02-05
-#WeaponSubMachineGunVector: null # Orion-Edit: Removed
+WeaponSubMachineGunVector: null
 WeaponSubMachineGunVectorRubber: null
 
 # 2025-02-11
