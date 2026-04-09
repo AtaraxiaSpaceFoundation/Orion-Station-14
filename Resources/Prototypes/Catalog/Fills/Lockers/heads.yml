@@ -298,9 +298,10 @@
     - id: RubberStampHop
     - id: WeaponDisabler
     - id: ClothingEyesHudCommand
+    - id: Multitool # Orion
+    - id: DocumentPrinterFlatpack # Orion
     - id: ServiceTechFabCircuitboard # Goobstation - Service Techfab
     - id: CommandMegaphone # goob - loudspeakers
-    - id: DocumentPrinterFlatpack # Orion
 
 - type: entity
   id: LockerHeadOfPersonnelFilled

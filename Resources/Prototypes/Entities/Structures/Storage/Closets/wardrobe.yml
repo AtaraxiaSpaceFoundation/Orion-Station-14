@@ -141,8 +141,8 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: sec_wardrobe_door # Orion-Edit
-    stateDoorClosed: red_door
+    stateDoorOpen: generic_open
+    stateDoorClosed: sec_wardrobe_door # Orion-Edit
 
 - type: entity
   id: WardrobeAtmospherics

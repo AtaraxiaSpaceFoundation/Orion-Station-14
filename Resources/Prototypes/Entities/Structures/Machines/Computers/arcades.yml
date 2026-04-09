@@ -74,6 +74,14 @@
     - map: ["enum.WiresVisualLayers.MaintenancePanel"]
       state: panel
       visible: false
+  - type: GenericVisualizer # Orion
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: icon, sprite: Structures/Machines/arcade.rsi }
+          East: { state: icon, sprite: Structures/Machines/arcade.rsi }
+          West: { state: icon, sprite: Structures/Machines/arcade.rsi }
+          East, West: { state: icon, sprite: Structures/Machines/arcade.rsi }
   - type: Icon
     sprite: Structures/Machines/arcade.rsi
     state: arcade
