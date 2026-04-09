@@ -202,6 +202,8 @@
     castShadows: false
   - type: Tag # Orion
     tags:
+    - ForceableFollow
+    - AnomalyCore
     - BluespaceAnomalyCore
 
 - type: entity
