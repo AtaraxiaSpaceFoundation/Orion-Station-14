@@ -6,3 +6,20 @@
   components:
   - type: Sprite
     sprite: _Orion/Clothing/Back/Satchels/inteq_satchel.rsi
+
+- type: entity
+  parent: BaseItem
+  id: ClothingBackpackSatchelHoldingInert
+  name: inert satchel of holding
+  description: What is currently just an unwieldy block of metal with a slot ready to accept a bluespace anomaly core.
+  components:
+  - type: Sprite
+    sprite: Clothing/Back/Satchels/holding.rsi
+    state: broken
+  - type: Item
+    size: Ginormous
+    sprite: Clothing/Back/Satchels/holding.rsi
+    heldPrefix: broken
+  - type: Tag
+    tags:
+    - InertBagOfHoldingSatchel

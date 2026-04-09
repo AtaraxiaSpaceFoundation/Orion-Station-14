@@ -213,6 +213,9 @@
     maxItemSize: Huge
     grid:
     - 0,0,14,5 #Goob
+  - type: Construction # Orion
+    graph: BagOfHoldingSatchel
+    node: bag_of_holding
 
 - type: entity
   parent: ClothingBackpackSatchelHolding

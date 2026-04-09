@@ -75,3 +75,18 @@
 
 - type: Tag
   id: Wakizashi
+
+- type: Tag
+  id: BluespaceAnomalyCore
+
+- type: Tag
+  id: InertBagOfHoldingBackpack
+
+- type: Tag
+  id: InertBagOfHoldingSatchel
+
+- type: Tag
+  id: InertBagOfHoldingDuffel
+
+- type: Tag
+  id: InertBagOfHoldingMessenger

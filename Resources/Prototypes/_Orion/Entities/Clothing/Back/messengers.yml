@@ -34,3 +34,20 @@
         color: "#484b4f"
       - state: clasp-inhand-right
         color: "#aa6600"
+
+- type: entity
+  parent: BaseItem
+  id: ClothingBackpackMessengerHoldingInert
+  name: inert messenger bag of holding
+  description: What is currently just an unwieldy block of metal with a slot ready to accept a bluespace anomaly core.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Back/Messenger/holding.rsi
+    state: broken
+  - type: Item
+    size: Ginormous
+    sprite: _NF/Clothing/Back/Messenger/holding.rsi
+    heldPrefix: broken
+  - type: Tag
+    tags:
+    - InertBagOfHoldingMessenger

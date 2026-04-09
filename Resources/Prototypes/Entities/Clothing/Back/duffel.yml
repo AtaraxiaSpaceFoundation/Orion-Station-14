@@ -309,6 +309,9 @@
   - type: StaticPrice #Goobstation - Recycle update
     price: 1850
   - type: HideContrabandContent #Goobstation Contraband detector
+  - type: Construction # Orion
+    graph: BagOfHoldingDuffel
+    node: bag_of_holding
 
 - type: entity
   parent: [ ClothingBackpackDuffel, BaseCentcommContraband ]
