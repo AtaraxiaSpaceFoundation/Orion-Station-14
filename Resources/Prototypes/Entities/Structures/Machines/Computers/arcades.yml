@@ -78,10 +78,10 @@
     visuals:
       enum.EdgeConnectionVisuals.ConnectionMask:
         computerLayerBody:
-          None: { state: icon, sprite: Structures/Machines/arcade.rsi }
-          East: { state: icon, sprite: Structures/Machines/arcade.rsi }
-          West: { state: icon, sprite: Structures/Machines/arcade.rsi }
-          East, West: { state: icon, sprite: Structures/Machines/arcade.rsi }
+          None: { state: arcade, sprite: Structures/Machines/arcade.rsi }
+          East: { state: arcade, sprite: Structures/Machines/arcade.rsi }
+          West: { state: arcade, sprite: Structures/Machines/arcade.rsi }
+          East, West: { state: arcade, sprite: Structures/Machines/arcade.rsi }
   - type: Icon
     sprite: Structures/Machines/arcade.rsi
     state: arcade
