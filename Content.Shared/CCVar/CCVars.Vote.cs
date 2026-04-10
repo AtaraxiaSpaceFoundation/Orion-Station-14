@@ -37,13 +37,13 @@ public sealed partial class CCVars
     ///     See vote.enabled, but specific to preset votes
     /// </summary>
     public static readonly CVarDef<bool> VotePresetEnabled =
-        CVarDef.Create("vote.preset_enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("vote.preset_enabled", false, CVar.SERVERONLY); // Orion-Edit: true > false
 
     /// <summary>
     ///     See vote.enabled, but specific to map votes
     /// </summary>
     public static readonly CVarDef<bool> VoteMapEnabled =
-        CVarDef.Create("vote.map_enabled", false, CVar.SERVERONLY);
+        CVarDef.Create("vote.map_enabled", true, CVar.SERVERONLY); // Orion-Edit: false > true
 
     /// <summary>
     ///     The required ratio of the server that must agree for a restart round vote to go through.
@@ -61,13 +61,13 @@ public sealed partial class CCVars
     ///     The delay which two votes of the same type are allowed to be made by separate people, in seconds.
     /// </summary>
     public static readonly CVarDef<float> VoteSameTypeTimeout =
-        CVarDef.Create("vote.same_type_timeout", 240f, CVar.SERVERONLY);
+        CVarDef.Create("vote.same_type_timeout", 3600f, CVar.SERVERONLY); // Orion-Edit: 240 > 3600
 
     /// <summary>
     ///     Sets the duration of the map vote timer.
     /// </summary>
     public static readonly CVarDef<int>
-        VoteTimerMap = CVarDef.Create("vote.timermap", 90, CVar.SERVERONLY);
+        VoteTimerMap = CVarDef.Create("vote.timermap", 60, CVar.SERVERONLY); // Orion-Edit: 90 > 60
 
     /// <summary>
     ///     Sets the duration of the restart vote timer.
@@ -79,7 +79,7 @@ public sealed partial class CCVars
     ///     Sets the duration of the gamemode/preset vote timer.
     /// </summary>
     public static readonly CVarDef<int>
-        VoteTimerPreset = CVarDef.Create("vote.timerpreset", 30, CVar.SERVERONLY);
+        VoteTimerPreset = CVarDef.Create("vote.timerpreset", 60, CVar.SERVERONLY); // Orion-Edit: 30 > 60
 
     /// <summary>
     ///     Sets the duration of the map vote timer when ALONE.
