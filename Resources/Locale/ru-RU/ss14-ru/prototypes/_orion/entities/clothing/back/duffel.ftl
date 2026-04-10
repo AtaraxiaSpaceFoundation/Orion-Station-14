@@ -6,3 +6,5 @@ ent-ClothingBackpackDuffelInteQMedical = { ent-ClothingBackpackDuffelInteQ }
     .desc = Просторный вещмешок для оружия и медикаментов.
 ent-ClothingBackpackDuffelWhiteCaptain = белый вещмешок капитана
     .desc = Большой белый вещмешок для хранения дополнительных капитанских вещей.
+ent-ClothingBackpackDuffelHoldingInert = инертный блюспейс вещмешок
+    .desc = Громоздкий металлический блок с контейнером под блюспейс ядро.

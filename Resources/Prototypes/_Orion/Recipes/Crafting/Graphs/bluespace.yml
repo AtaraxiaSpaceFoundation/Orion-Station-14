@@ -1,0 +1,83 @@
+- type: constructionGraph
+  id: BagOfHoldingBackpack
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bag_of_holding
+      steps:
+      - tag: InertBagOfHoldingBackpack
+        name: construction-graph-tag-inert-bag-backpack
+        icon:
+          sprite: Clothing/Back/Backpacks/holding.rsi
+          state: holding-broken
+      - tag: BluespaceAnomalyCore
+        name: construction-graph-tag-bluespace-anomaly-core
+        icon:
+          sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+          state: core
+  - node: bag_of_holding
+    entity: ClothingBackpackHolding
+
+- type: constructionGraph
+  id: BagOfHoldingSatchel
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bag_of_holding
+      steps:
+      - tag: InertBagOfHoldingSatchel
+        name: construction-graph-tag-inert-bag-satchel
+        icon:
+          sprite: Clothing/Back/Satchels/holding.rsi
+          state: broken
+      - tag: BluespaceAnomalyCore
+        name: construction-graph-tag-bluespace-anomaly-core
+        icon:
+          sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+          state: core
+  - node: bag_of_holding
+    entity: ClothingBackpackSatchelHolding
+
+- type: constructionGraph
+  id: BagOfHoldingDuffel
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bag_of_holding
+      steps:
+      - tag: InertBagOfHoldingDuffel
+        name: construction-graph-tag-inert-bag-duffel
+        icon:
+          sprite: Clothing/Back/Duffels/holding.rsi
+          state: broken
+      - tag: BluespaceAnomalyCore
+        name: construction-graph-tag-bluespace-anomaly-core
+        icon:
+          sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+          state: core
+  - node: bag_of_holding
+    entity: ClothingBackpackDuffelHolding
+
+- type: constructionGraph
+  id: BagOfHoldingMessenger
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: bag_of_holding
+      steps:
+      - tag: InertBagOfHoldingMessenger
+        name: construction-graph-tag-inert-bag-messenger
+        icon:
+          sprite: _NF/Clothing/Back/Messenger/holding.rsi
+          state: broken
+      - tag: BluespaceAnomalyCore
+        name: construction-graph-tag-bluespace-anomaly-core
+        icon:
+          sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+          state: core
+  - node: bag_of_holding
+    entity: ClothingBackpackMessengerHolding
