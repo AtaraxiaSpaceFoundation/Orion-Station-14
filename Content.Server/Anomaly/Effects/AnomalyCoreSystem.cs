@@ -68,7 +68,13 @@ public sealed class AnomalyCoreSystem : EntitySystem
             return;
 
         if (TryHandleReactivationSolution(ent, args.User, coreSolutionEnt.Value, coreSolution, out var handled))
+        {
             args.Handled = handled;
+            return;
+        }
+
+        PopupResult(ent, args.User, "anomaly-core-reactivation-failed", PopupType.SmallCaution);
+        args.Handled = true;
     }
 
     private void OnSolutionChanged(Entity<AnomalyCoreComponent> ent, ref SolutionContainerChangedEvent args)
@@ -92,8 +98,6 @@ public sealed class AnomalyCoreSystem : EntitySystem
 
     private bool TryHandleReactivationSolution(Entity<AnomalyCoreComponent> ent, EntityUid? user, Entity<SolutionComponent> solutionEnt, Solution solution, out bool handled)
     {
-        var attempted = false;
-
         foreach (var reagent in ent.Comp.ReactivationReagents)
         {
             var reagentId = new ReagentId(reagent, null);
@@ -103,11 +107,10 @@ public sealed class AnomalyCoreSystem : EntitySystem
             if (quantity < ent.Comp.ReactivationReagentAmount)
                 continue;
 
-            attempted = true;
             _solutions.RemoveReagent(solutionEnt, reagentId, ent.Comp.ReactivationReagentAmount);
             if (!ReactivateCore(ent))
             {
-                handled = false;
+                handled = true;
                 return true;
             }
 
@@ -125,7 +128,6 @@ public sealed class AnomalyCoreSystem : EntitySystem
             if (quantity < ent.Comp.ReactivationReagentAmount)
                 continue;
 
-            attempted = true;
             _solutions.RemoveReagent(solutionEnt, reagentId, ent.Comp.ReactivationReagentAmount);
 
             if (_random.Prob(ent.Comp.HazardousFailureChance))
@@ -137,19 +139,12 @@ public sealed class AnomalyCoreSystem : EntitySystem
 
             if (!ReactivateCore(ent))
             {
-                handled = false;
+                handled = true;
                 return true;
             }
 
             PopupResult(ent, user, "anomaly-core-reactivated", PopupType.Medium);
             handled = true;
-            return true;
-        }
-
-        if (attempted)
-        {
-            PopupResult(ent, user, "anomaly-core-reactivation-failed", PopupType.SmallCaution);
-            handled = false;
             return true;
         }
 
