@@ -59,22 +59,15 @@ public sealed class AnomalyCoreSystem : EntitySystem
 
     // Orion-Start
     #region Reactivation
-     private void OnAfterInteractUsing(Entity<AnomalyCoreComponent> ent, ref AfterInteractUsingEvent args)
+    private void OnAfterInteractUsing(Entity<AnomalyCoreComponent> ent, ref AfterInteractUsingEvent args)
     {
         if (args.Handled || !args.CanReach || !ent.Comp.IsDecayed)
             return;
 
-        if (_solutions.TryGetSolution(args.Used, null, out var solutionEnt, out var solution)
-            && TryHandleReactivationSolution(ent, args.User, solutionEnt.Value, solution, out var handled))
-        {
-            args.Handled = handled;
-            return;
-        }
-
         if (!_solutions.TryGetSolution(ent.Owner, "reactivation", out var coreSolutionEnt, out var coreSolution))
             return;
 
-        if (TryHandleReactivationSolution(ent, args.User, coreSolutionEnt.Value, coreSolution, out handled))
+        if (TryHandleReactivationSolution(ent, args.User, coreSolutionEnt.Value, coreSolution, out var handled))
             args.Handled = handled;
     }
 
@@ -107,10 +100,10 @@ public sealed class AnomalyCoreSystem : EntitySystem
             if (!solution.TryGetReagentQuantity(reagentId, out var quantity))
                 continue;
 
-            attempted = true;
             if (quantity < ent.Comp.ReactivationReagentAmount)
                 continue;
 
+            attempted = true;
             _solutions.RemoveReagent(solutionEnt, reagentId, ent.Comp.ReactivationReagentAmount);
             if (!ReactivateCore(ent))
             {
@@ -129,10 +122,10 @@ public sealed class AnomalyCoreSystem : EntitySystem
             if (!solution.TryGetReagentQuantity(reagentId, out var quantity))
                 continue;
 
-            attempted = true;
             if (quantity < ent.Comp.ReactivationReagentAmount)
                 continue;
 
+            attempted = true;
             _solutions.RemoveReagent(solutionEnt, reagentId, ent.Comp.ReactivationReagentAmount);
 
             if (_random.Prob(ent.Comp.HazardousFailureChance))
