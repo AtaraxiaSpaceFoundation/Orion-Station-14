@@ -233,6 +233,16 @@ public sealed class MoodSystem : EntitySystem
         ApplyEffect(uid, component, prototype, ev.EffectModifier, ev.EffectOffset);
     }
 
+    public void AddEffect(EntityUid uid, string effectId, float modifier = 1f, float offset = 0f)
+    {
+        RaiseLocalEvent(uid, new MoodEffectEvent(effectId, modifier, offset));
+    }
+
+    public void RemoveEffect(EntityUid uid, string effectId, MoodEffectRemovalReason reason = MoodEffectRemovalReason.Manual)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent(effectId, reason));
+    }
+
     private void ApplyEffect(EntityUid uid, MoodComponent component, MoodEffectPrototype prototype, float eventModifier = 1, float eventOffset = 0)
     {
         // Apply categorized effect
@@ -255,9 +265,6 @@ public sealed class MoodSystem : EntitySystem
                 component.CategorisedEffects.Add(prototype.Category, prototype.ID);
                 SendEffectText(uid, prototype);
             }
-
-            if (prototype.Timeout != 0)
-                Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout), () => RemoveEffect(uid, prototype.ID, prototype.Category, MoodEffectRemovalReason.Expired));
         }
         // Apply uncategorized effect
         else
@@ -272,10 +279,9 @@ public sealed class MoodSystem : EntitySystem
             SendEffectText(uid, prototype);
 
             component.UncategorisedEffects.Add(prototype.ID, moodChange);
-
-            if (prototype.Timeout != 0)
-                Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout), () => RemoveEffect(uid, prototype.ID, null, MoodEffectRemovalReason.Expired));
         }
+
+        ScheduleTimedRemoval(uid, component, prototype);
 
         RefreshMood(uid, component);
     }
@@ -288,6 +294,47 @@ public sealed class MoodSystem : EntitySystem
         _popup.PopupEntity(prototype.Description(uid), uid, uid, (prototype.MoodChange > 0) ? PopupType.Medium : PopupType.MediumCaution);
     }
 
+    private void ScheduleTimedRemoval(EntityUid uid, MoodComponent component, MoodEffectPrototype prototype)
+    {
+        if (prototype.Timeout == 0)
+            return;
+
+        if (prototype.Category != null)
+        {
+            component.CategorisedEffectTimerGenerations.TryGetValue(prototype.Category, out var currentGeneration);
+            var generation = currentGeneration + 1;
+            component.CategorisedEffectTimerGenerations[prototype.Category] = generation;
+
+            Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout),
+                () =>
+            {
+                if (!TryComp(uid, out MoodComponent? currentComponent)
+                    || !currentComponent.CategorisedEffectTimerGenerations.TryGetValue(prototype.Category, out var activeGeneration)
+                    || activeGeneration != generation)
+                    return;
+
+                RemoveEffect(uid, prototype.ID, prototype.Category, MoodEffectRemovalReason.Expired);
+            });
+
+            return;
+        }
+
+        component.UncategorisedEffectTimerGenerations.TryGetValue(prototype.ID, out var uncategorisedGeneration);
+        var newGeneration = uncategorisedGeneration + 1;
+        component.UncategorisedEffectTimerGenerations[prototype.ID] = newGeneration;
+
+        Timer.Spawn(TimeSpan.FromSeconds(prototype.Timeout),
+            () =>
+        {
+            if (!TryComp(uid, out MoodComponent? currentComponent)
+                || !currentComponent.UncategorisedEffectTimerGenerations.TryGetValue(prototype.ID, out var activeGeneration)
+                || activeGeneration != newGeneration)
+                return;
+
+            RemoveEffect(uid, prototype.ID, null, MoodEffectRemovalReason.Expired);
+        });
+    }
+
     private void RemoveEffect(EntityUid uid, string prototypeId, string? category, MoodEffectRemovalReason reason)
     {
         if (!TryComp<MoodComponent>(uid, out var comp))
@@ -297,6 +344,8 @@ public sealed class MoodSystem : EntitySystem
         {
             if (!comp.UncategorisedEffects.Remove(prototypeId))
                 return;
+
+            comp.UncategorisedEffectTimerGenerations.Remove(prototypeId);
         }
         else
         {
@@ -304,7 +353,9 @@ public sealed class MoodSystem : EntitySystem
                 || currentProtoId != prototypeId
                 || !_prototypeManager.HasIndex<MoodEffectPrototype>(currentProtoId))
                 return;
+
             comp.CategorisedEffects.Remove(category);
+            comp.CategorisedEffectTimerGenerations.Remove(category);
         }
 
         if (reason == MoodEffectRemovalReason.Expired)
@@ -328,7 +379,7 @@ public sealed class MoodSystem : EntitySystem
             return;
 
         var ev = new MoodEffectEvent(proto.MoodletOnEnd);
-        EntityManager.EventBus.RaiseLocalEvent(uid, ev);
+        RaiseLocalEvent(uid, ev);
     }
 
     private void OnMobStateChanged(EntityUid uid, MoodComponent component, MobStateChangedEvent args)
@@ -593,14 +644,12 @@ public sealed class MoodSystem : EntitySystem
 
         foreach (var (_, protoId) in component.CategorisedEffects)
         {
-            if (!TryUpdatePriorityAlert(protoId, ref alert, ref bestMagnitude))
-                continue;
+            TryUpdatePriorityAlert(protoId, ref alert, ref bestMagnitude);
         }
 
         foreach (var (protoId, _) in component.UncategorisedEffects)
         {
-            if (!TryUpdatePriorityAlert(protoId, ref alert, ref bestMagnitude))
-                continue;
+            TryUpdatePriorityAlert(protoId, ref alert, ref bestMagnitude);
         }
 
         return bestMagnitude > float.MinValue;

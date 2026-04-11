@@ -200,6 +200,11 @@
     energy: 3.5
     color: "#00ccff"
     castShadows: false
+  - type: Tag # Orion
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - BluespaceAnomalyCore
 
 - type: entity
   parent: BaseAnomalyCore

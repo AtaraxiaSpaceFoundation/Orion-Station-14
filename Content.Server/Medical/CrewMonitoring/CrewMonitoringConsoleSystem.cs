@@ -20,7 +20,6 @@
 
 using System.Linq;
 using Content.Goobstation.Shared.CrewMonitoring;
-using Content.Server.Jittering;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
 using Content.Server.Popups;
@@ -30,18 +29,14 @@ using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Jittering;
 using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Morgue.Components;
 using Content.Shared.Pinpointer;
-using Content.Shared.Roles;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Medical.CrewMonitoring;
 
@@ -52,7 +47,6 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     // Orion-Start
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly JitteringSystem _jitter = default!;
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly ContainerSystem _containerSystem = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
@@ -83,10 +77,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             }
 
             if (!this.IsPowered(uid, EntityManager))
-            {
-                RemCompDeferred<JitteringComponent>(uid);
                 continue;
-            }
 
             if (_gameTiming.CurTime < component.NextAlertTime)
                 continue;
@@ -94,7 +85,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             if (!component.DoAlert)
                 continue;
 
-            var hasUnsecuredCorpse = HasUnsecuredCorpse(uid, component);
+            var hasUnsecuredCorpse = HasUnsecuredCorpse(component);
             TriggerAlert(uid, component, hasUnsecuredCorpse);
         }
     }
@@ -117,7 +108,6 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
             }
 
             _audio.PlayPvs(component.AlertSound, uid, component.AlertAudioParams);
-            _jitter.AddJitter(uid, 10, 15);
         }
         else
         {
@@ -130,20 +120,17 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
                 if (component.NormalLightRadius != null)
                     _light.SetRadius(uid, component.NormalLightRadius.Value, light);
             }
-
-            RemCompDeferred<JitteringComponent>(uid);
         }
     }
 
-
-    private bool HasUnsecuredCorpse(EntityUid uid, CrewMonitoringConsoleComponent component)
+    private bool HasUnsecuredCorpse(CrewMonitoringConsoleComponent component)
     {
         IEnumerable<SuitSensorStatus> sensors = component.ConnectedSensors.Values;
 
         if (component.Departments.Count > 0)
         {
             var allowed = component.Departments.Select(d => d.ToString()).ToHashSet();
-            sensors = sensors.Where(s => s.JobDepartments != null && s.JobDepartments.Any(dep => allowed.Contains(dep)));
+            sensors = sensors.Where(s => s.JobDepartments.Any(dep => allowed.Contains(dep)));
         }
 
         foreach (var s in sensors)
@@ -232,7 +219,7 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         {
             var allowed = component.Departments.Select(d => d.ToString()).ToHashSet();
             allSensors = allSensors
-                .Where(s => s.JobDepartments != null && s.JobDepartments.Any(dep => allowed.Contains(dep)))
+                .Where(s => s.JobDepartments.Any(dep => allowed.Contains(dep)))
                 .Select(s => new SuitSensorStatus(
                     s.OwnerUid,
                     s.SuitSensorUid,

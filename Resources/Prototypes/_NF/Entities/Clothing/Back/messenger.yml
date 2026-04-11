@@ -509,6 +509,9 @@
       - state: inhand-right
       - state: inhand-right-unlit
         shader: unshaded
+  - type: Construction # Orion
+    graph: BagOfHoldingMessenger
+    node: bag_of_holding
 
 # ANTAGONISTS
 - type: entity
