@@ -55,6 +55,25 @@
     timeToDecay: 600
     startPrice: 10000
     endPrice: 200
+    # Orion-Start
+    reactivationReagentAmount: 5
+    reactivationReagents:
+    - Bluespace
+    hazardousReactivationReagents:
+    - Plasma
+    - UnstableMutagen
+    hazardousFailureChance: 0.65
+    # Orion-End
+  # Orion-Start
+  - type: SolutionContainerManager
+    solutions:
+      reactivation:
+        maxVol: 5
+  - type: RefillableSolution
+    solution: reactivation
+  - type: InjectableSolution
+    solution: reactivation
+  # Orion-End
   - type: MovedByPressure #Goob - space wind moment
     enabled: false
   # Orion-Start
@@ -321,6 +340,8 @@
     energy: 1.5
     color: "#fca3c0"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCorePyroclastic
   - type: Enchanter # Goobstation
     maxLevel: 1
     enchants:
@@ -340,6 +361,8 @@
     energy: 10
     color: "#1e070e"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreGravity
   - type: Enchanter # Goobstation
     maxLevel: 1
     enchants:
@@ -358,6 +381,8 @@
     energy: 1.5
     color: "#befaff"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreIce
   - type: Enchanter # Goobstation
     maxLevel: 2
     enchants:
@@ -377,6 +402,8 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreFlesh
   - type: Enchanter # Goobstation
     maxLevel: 3
     enchants:
@@ -395,6 +422,8 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreRock
   - type: Enchanter # Goobstation
     maxLevel: 1
     enchants:
@@ -414,6 +443,8 @@
     energy: 3.5
     color: "#ffffff"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreLiquid
   - type: Enchanter # Goobstation
     maxLevel: 2 # Non-inert cores can roll max level
     enchants:
@@ -433,6 +464,8 @@
     energy: 3.5
     color: "#00ccff"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreBluespace
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -447,6 +480,8 @@
     energy: 2.0
     color: "#ffffaa"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreElectricity
   - type: Enchanter # Goobstation
     maxLevel: 4 # Insuls rolling
     enchants:
@@ -467,6 +502,8 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreFlora
   - type: Enchanter # Goobstation
     maxLevel: 2
     enchants:
@@ -485,6 +522,8 @@
     energy: 2.0
     color: "#793a80"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreShadow
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -499,6 +538,8 @@
     energy: 2.0
     color: "#56c1e8"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreTech
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -513,6 +554,8 @@
     energy: 2.0
     color: "#fc0303"
     castShadows: false
+  - type: AnomalyCore # Orion
+    reactivationPrototype: AnomalyCoreSanta
   - type: Enchanter # Goobstation
     maxLevel: 2
     enchants:

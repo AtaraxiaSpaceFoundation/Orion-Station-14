@@ -12,6 +12,8 @@ using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
 using Content.Shared.Weapons.Melee.Components;
+using Robust.Shared.Containers;
+using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
@@ -26,6 +28,10 @@ public sealed class SharedAnomalyCoreSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
+    // Orion-Start
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly INetManager _net = default!;
+    // Orion-End
 
     public override void Initialize()
     {
@@ -114,6 +120,26 @@ public sealed class SharedAnomalyCoreSystem : EntitySystem
 
     private void Decay(EntityUid uid, AnomalyCoreComponent component)
     {
+        // Orion-Start
+        if (_net.IsServer && component.DecayPrototype is { } decayPrototype)
+        {
+            var decayed = Spawn(decayPrototype, Transform(uid).Coordinates);
+
+            if (TryComp<AnomalyCoreComponent>(decayed, out var decayedCore) && MetaData(uid).EntityPrototype?.ID is { } activePrototypeId)
+            {
+                decayedCore.ReactivationPrototype = activePrototypeId;
+                decayedCore.HazardousAnomalyPrototype = component.HazardousAnomalyPrototype;
+                Dirty(decayed, decayedCore);
+            }
+
+            if (_container.TryGetContainingContainer(uid, out var container))
+                _container.Insert(decayed, container, force: true);
+
+            QueueDel(uid);
+            return;
+        }
+        // Orion-End
+
         _appearance.SetData(uid, AnomalyCoreVisuals.Decaying, false);
         component.IsDecayed = true;
         Dirty(uid, component);
