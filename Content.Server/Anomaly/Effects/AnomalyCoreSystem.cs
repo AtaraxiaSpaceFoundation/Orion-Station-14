@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Cargo.Systems;
 using Content.Server.Electrocution;
@@ -16,6 +17,7 @@ using Content.Shared.Damage;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Containers;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -35,6 +37,7 @@ public sealed class AnomalyCoreSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     // Orion-End
 
     private readonly HashSet<EntityUid> _processingInjected = new(); // Orion
@@ -168,53 +171,98 @@ public sealed class AnomalyCoreSystem : EntitySystem
 
     private void DoHazardousFailure(Entity<AnomalyCoreComponent> ent, EntityUid? user)
     {
-        var target = ResolveHazardTarget(ent.Owner, user);
-        var popupTarget = user ?? target;
-        var effect = _random.Next(5);
-        switch (effect)
+        var targets = ResolveHazardTargets(ent.Owner);
+        var popupTarget = user ?? ent.Owner;
+
+        var effects = new List<Func<bool>>
         {
-            case 0:
-                var damage = new DamageSpecifier
-                {
-                    DamageDict = new Dictionary<string, FixedPoint2>
-                    {
-                        ["Heat"] = 15,
-                        ["Poison"] = 10,
-                    },
-                };
-                _damageable.TryChangeDamage(target, damage, true, origin: ent);
-                break;
-            case 1:
-                _flammable.Ignite(target, ent);
-                break;
-            case 2:
-                _electrocution.TryDoElectrocution(target, ent, 30, TimeSpan.FromSeconds(2), true, ignoreInsulation: false);
-                break;
-            case 3:
-                if (ent.Comp.HazardousAnomalyPrototype is { } anomalyPrototype)
-                    Spawn(anomalyPrototype, Transform(ent).Coordinates);
-                QueueDel(ent);
-                break;
-            default:
-                QueueDel(ent);
-                break;
-        }
+            () => TryApplyHazardDamage(targets, ent),
+            () => TryIgniteHazardTargets(targets, ent),
+            () => TryElectrocuteHazardTargets(targets, ent),
+            () => TrySpawnHazardousAnomaly(ent),
+        };
+
+        var effect = effects[_random.Next(effects.Count)];
+        var effectApplied = effect();
+        if (!effectApplied)
+            TrySpawnHazardousAnomaly(ent);
 
         PopupResult(ent, popupTarget, "anomaly-core-reactivation-hazard", PopupType.MediumCaution);
     }
 
-    private EntityUid ResolveHazardTarget(EntityUid core, EntityUid? user)
+    private List<EntityUid> ResolveHazardTargets(EntityUid core)
     {
-        if (user is { } userUid)
-            return userUid;
+        var targets = new List<EntityUid>();
+        var coordinates = Transform(core).Coordinates;
 
-        var current = core;
-        while (_container.TryGetContainingContainer((current, null, null), out var container))
+        foreach (var uid in _lookup.GetEntitiesInRange(coordinates, 3f))
         {
-            current = container.Owner;
+            if (uid == core || !HasComp<ActorComponent>(uid))
+                continue;
+
+            targets.Add(uid);
         }
 
-        return current;
+        return targets;
+    }
+
+    private bool TryApplyHazardDamage(List<EntityUid> targets, Entity<AnomalyCoreComponent> core)
+    {
+        var applied = false;
+        var damage = new DamageSpecifier
+        {
+            DamageDict = new Dictionary<string, FixedPoint2>
+            {
+                ["Heat"] = 15,
+                ["Poison"] = 10,
+            },
+        };
+
+        foreach (var targetUid in targets)
+        {
+            if (!HasComp<DamageableComponent>(targetUid))
+                continue;
+
+            applied |= _damageable.TryChangeDamage(targetUid, damage, origin: core) != null;
+        }
+
+        return applied;
+    }
+
+    private bool TryIgniteHazardTargets(List<EntityUid> targets, Entity<AnomalyCoreComponent> core)
+    {
+        var applied = false;
+        foreach (var targetUid in targets)
+        {
+            if (!HasComp<FlammableComponent>(targetUid))
+                continue;
+
+            _flammable.Ignite(targetUid, core);
+            applied = true;
+        }
+
+        return applied;
+    }
+
+    private bool TryElectrocuteHazardTargets(List<EntityUid> targets, Entity<AnomalyCoreComponent> core)
+    {
+        var applied = false;
+        foreach (var targetUid in targets)
+        {
+            applied |= _electrocution.TryDoElectrocution(targetUid, core, 30, TimeSpan.FromSeconds(2), true, ignoreInsulation: false);
+        }
+
+        return applied;
+    }
+
+    private bool TrySpawnHazardousAnomaly(Entity<AnomalyCoreComponent> ent)
+    {
+        if (ent.Comp.HazardousAnomalyPrototype is not { } anomalyPrototype)
+            return false;
+
+        Spawn(anomalyPrototype, Transform(ent).Coordinates);
+        QueueDel(ent);
+        return true;
     }
 
     private void PopupResult(EntityUid core, EntityUid? user, string message, PopupType popupType)
