@@ -460,6 +460,8 @@
       right:
       - state: inhand-right
         color: "#940000"
+  - type: MartialArtBlocked # Orion
+    form: SleepingCarp
   - type: GrabModifier
     startingGrabStage: Hard
     grabEscapeModifier: -0.1

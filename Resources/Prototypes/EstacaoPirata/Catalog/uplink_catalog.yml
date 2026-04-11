@@ -9,6 +9,6 @@
   description: uplink-syndicate-deck-desc
   productEntity: CardBoxSyndicate
   cost:
-    Telecrystal: 3 # goob
+    Telecrystal: 1 # goob # Orion-Edit: 3 > 1
   categories:
   - UplinkPointless

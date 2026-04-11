@@ -345,8 +345,8 @@
         Blunt: 0.3
         Slash: 0.3
         Piercing: 0.3
-        Heat: 0.3
-        Caustic: 0.3
+        Heat: 0.6 # Orion-Edit: 0.3 > 0.6
+        Caustic: 0.7 # Orion-Edit: 0.3 > 0.7
   - type: ExplosionResistance
     damageCoefficient: 0.35
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere

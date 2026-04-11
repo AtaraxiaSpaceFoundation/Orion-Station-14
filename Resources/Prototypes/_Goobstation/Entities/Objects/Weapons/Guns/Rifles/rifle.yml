@@ -113,7 +113,7 @@
     zeroVisible: true
   - type: Appearance
   - type: Gun
-    fireRate: 6
+    fireRate: 6.5 # Orion-Edit: 6 > 6.5
 
 - type: entity
   name: Annie

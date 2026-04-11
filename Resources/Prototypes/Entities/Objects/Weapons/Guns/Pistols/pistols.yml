@@ -173,9 +173,9 @@
   - type: StaticPrice
     price: 500
   - type: Multishot # Goobstation V
-    missChance: 0.4
+    missChance: 0.2 # Orion-Edit: 4 > 2
     spreadMultiplier: 2
-    spreadAddition: 40
+    spreadAddition: 20 # Orion-Edit: 40 > 20
   - type: RestrictGunshotsByUserTag # Goobstation
     doesntContain:
     - Oni

@@ -161,7 +161,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
-    projectileSpeed: 20 # Orion
+    projectileSpeed: 26 # Orion
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -821,6 +821,7 @@
   - type: Gun
     fireRate: 2
     #projectileSpeed: 35 # Goobstation - nuh uh
+    projectileSpeed: 20 # Orion
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
@@ -892,6 +893,7 @@
   - type: Gun
     selectedMode: FullAuto
     fireRate: 4.5
+    projectileSpeed: 20 # Orion
     availableModes:
       - SemiAuto
       - FullAuto

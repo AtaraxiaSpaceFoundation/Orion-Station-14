@@ -92,6 +92,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    projectileSpeed: 35 # Orion
     cameraRecoilScalar: 2 # Orion
     selectedMode: SemiAuto
     availableModes:
@@ -104,7 +105,7 @@
     whitelist:
       tags:
       - ShellShotgun
-    capacity: 7
+    capacity: 9 # Orion-Edit: 7 > 9
     proto: ShellShotgun
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
@@ -263,7 +264,7 @@
     shape: # Goobstation
     - 0,0,4,1
   - type: BallisticAmmoProvider
-    capacity: 9 # Orion
+    capacity: 8 # Orion
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1.7 # Goobstation
@@ -300,7 +301,7 @@
       path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg
     # fireRate: 1 # goob
   - type: GunSpreadModifier
-    spread: 0.6
+    spread: 0.65 # Orion-Edit: 0.6 > 0.65
   - type: Tag
     tags:
     - WeaponShotgunKammerer
