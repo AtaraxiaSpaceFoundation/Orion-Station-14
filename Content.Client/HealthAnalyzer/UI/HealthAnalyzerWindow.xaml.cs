@@ -100,6 +100,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using System.Globalization;
 using Content.Goobstation.Shared.Disease.Components;
+using Content.Shared.Eye.Blinding.Components;
 
 namespace Content.Client.HealthAnalyzer.UI
 {
@@ -349,6 +350,17 @@ namespace Content.Client.HealthAnalyzer.UI
                     });
                 }
             }
+
+            // Orion-Start
+            if (_entityManager.TryGetComponent<BlindableComponent>(_target, out var blindable) && blindable.IsBlind)
+            {
+                ConditionsListContainer.AddChild(new RichTextLabel
+                {
+                    Text = Loc.GetString("health-analyzer-window-entity-blind-text"),
+                    Margin = new Thickness(0, 4),
+                });
+            }
+            // Orion-End
 
             /*foreach (var (woundablePain, pain) in msg.NervePainFeels)
             {

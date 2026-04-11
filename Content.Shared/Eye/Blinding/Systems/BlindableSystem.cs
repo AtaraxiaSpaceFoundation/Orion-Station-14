@@ -26,6 +26,7 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas.Systems;
+using Content.Shared.HealthExaminable;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 
@@ -43,6 +44,7 @@ public sealed class BlindableSystem : EntitySystem
         SubscribeLocalEvent<BlindableComponent, EyeDamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<BlindableComponent, GetEyePvsScaleAttemptEvent>(OnGetEyePvsScaleAttemptEvent);
         SubscribeLocalEvent<BlindableComponent, GetEyeOffsetAttemptEvent>(OnGetEyeOffsetAttemptEvent);
+        SubscribeLocalEvent<BlindableComponent, HealthBeingExaminedEvent>(OnHealthBeingExamined); // Orion
     }
 
     // Might need to keep this one because of slimes since their eyes arent an organ, so they wouldnt get rejuvenated.
@@ -68,6 +70,17 @@ public sealed class BlindableSystem : EntitySystem
         if (ent.Comp.IsBlind)
             args.Cancelled = true;
     }
+
+    // Orion-Start
+    private void OnHealthBeingExamined(Entity<BlindableComponent> ent, ref HealthBeingExaminedEvent args)
+    {
+        if (ent.Comp.EyeDamage <= 0)
+            return;
+
+        args.Message.PushNewline();
+        args.Message.AddMarkupOrThrow(Loc.GetString("blindable-component-eye-damage", ("target", ent.Owner)));
+    }
+    // Orion-End
 
     [PublicAPI]
     public void UpdateIsBlind(Entity<BlindableComponent?> blindable)
