@@ -47,7 +47,11 @@ public sealed partial class MoodComponent : Component
 
     public readonly Dictionary<string, string> CategorisedEffects = new();
 
+    public readonly Dictionary<string, int> CategorisedEffectTimerGenerations = new();
+
     public readonly Dictionary<string, float> UncategorisedEffects = new();
+
+    public readonly Dictionary<string, int> UncategorisedEffectTimerGenerations = new();
 
     /// <summary>
     ///     The formula for the movement speed modifier is SpeedBonusGrowth ^ (MoodLevel - MoodThreshold.Neutral).
