@@ -269,7 +269,7 @@ public abstract class SharedAnomalySystem : EntitySystem
     /// <param name="supercritical">Whether or not the anomaly ended via supercritical event</param>
     /// <param name="spawnCore">Create anomaly cores based on the result of completing an anomaly?</param>
     /// <param name="logged">Whether or not the anomaly decaying/going supercritical is logged</param>
-    public void EndAnomaly(EntityUid uid, AnomalyComponent? component = null, bool supercritical = false, bool spawnCore = true, bool logged = false)
+    protected void EndAnomaly(EntityUid uid, AnomalyComponent? component = null, bool supercritical = false, bool spawnCore = true, bool logged = false) // Orion-Edit: Protected
     {
         if (logged)
         {
@@ -292,7 +292,17 @@ public abstract class SharedAnomalySystem : EntitySystem
 
         if (spawnCore)
         {
-            var core = Spawn(supercritical ? component.CorePrototype : component.CoreInertPrototype, Transform(uid).Coordinates);
+            var core = Spawn(component.CorePrototype, Transform(uid).Coordinates); // Orion-Edit
+
+            // Orion-Start
+            if (TryComp<AnomalyCoreComponent>(core, out var coreComp))
+            {
+                coreComp.DecayPrototype = component.CoreInertPrototype;
+                coreComp.HazardousAnomalyPrototype = MetaData(uid).EntityPrototype?.ID;
+                Dirty(core, coreComp);
+            }
+            // Orion-End
+
             _transform.PlaceNextTo(core, uid);
         }
 
@@ -308,7 +318,7 @@ public abstract class SharedAnomalySystem : EntitySystem
     /// <param name="uid"></param>
     /// <param name="change"></param>
     /// <param name="component"></param>
-    public void ChangeAnomalyStability(EntityUid uid, float change, AnomalyComponent? component = null)
+    protected void ChangeAnomalyStability(EntityUid uid, float change, AnomalyComponent? component = null) // Orion-Edit: Protected
     {
         if (!Resolve(uid, ref component))
             return;

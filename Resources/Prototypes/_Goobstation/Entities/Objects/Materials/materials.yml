@@ -49,6 +49,34 @@
     tags:
     - Ore
     - Ingot
+  # Orion-Start
+  - type: Extractable
+    grindableSolutionName: bluespace
+  - type: SolutionContainerManager
+    solutions:
+      bluespace:
+        reagents:
+        - ReagentId: Bluespace
+          Quantity: 20
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  # Orion-End
 
 - type: entity
   parent: MaterialBSCrystal
@@ -68,6 +96,34 @@
     stackType: BSCrystalUnprocessed
   - type: UnclaimedOre
     miningPoints: 250
+  # Orion-Start
+  - type: Extractable
+    grindableSolutionName: bluespace
+  - type: SolutionContainerManager
+    solutions:
+      bluespace:
+        reagents:
+        - ReagentId: Bluespace
+          Quantity: 5
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  # Orion-End
 
 - type: entity
   parent: MaterialBSCrystalUnprocessed
