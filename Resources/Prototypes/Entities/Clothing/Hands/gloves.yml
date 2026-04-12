@@ -547,7 +547,7 @@
   - type: MeleeWeapon
     altDisarm: true
     autoAttack: true # Orion
-    attackRate: 10 # Orion-Edit: 10 > 8
+    attackRate: 8 # Orion-Edit: 10 > 8
     damage:
       types:
        Blunt: 5 # Orion-Edit: 3 > 5
