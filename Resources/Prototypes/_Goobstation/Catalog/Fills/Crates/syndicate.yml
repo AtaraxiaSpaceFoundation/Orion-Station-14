@@ -130,7 +130,7 @@
     - SyndicateImplantsSet
     - SyndicateHackerSet
     - SyndicateDeswordSet
-#    - SyndicateGrenadierSet # Orion-Edit: Removed. Destroys a third of the station and too loud for the agent.
+    - SyndicateGrenadierSet
     - SyndicateFluclearSet
     - SyndicateFriendshipSet
     - SyndicateCarpSet

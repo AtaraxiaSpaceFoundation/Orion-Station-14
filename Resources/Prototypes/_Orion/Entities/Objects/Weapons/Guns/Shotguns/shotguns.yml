@@ -59,7 +59,7 @@
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunPaladin
   name: Paladin pump shotgun
-  description: A nine-round pump action shotgun. A shotgun used for hunting, home defence and police work, many versions of it exist and are used by just about anyone.
+  description: A seven-round pump action shotgun. A shotgun used for hunting, home defence and police work, many versions of it exist and are used by just about anyone.
   suffix: Shotgun
   components:
   - type: Sprite

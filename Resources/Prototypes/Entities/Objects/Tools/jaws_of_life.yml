@@ -154,7 +154,7 @@
       - state: syn_inhand-right
     size: Normal
   - type: Prying
-    speedModifier: 4.0 # Orion-Edit: 3 > 4
+    speedModifier: 3.0
   - type: MultipleTool
     entries:
       - behavior: Prying

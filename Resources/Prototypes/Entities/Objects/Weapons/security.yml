@@ -178,7 +178,7 @@
     damage:
       types:
         Blunt: 10 # Orion-Edit: 7 > 10
-    bluntStaminaDamageFactor: 2.0
+    bluntStaminaDamageFactor: 1.5 # Orion-Edit: 2.0 > 1.5
     angle: 0
     animation: WeaponArcThrust
   - type: StaminaDamageOnHit # goob edited

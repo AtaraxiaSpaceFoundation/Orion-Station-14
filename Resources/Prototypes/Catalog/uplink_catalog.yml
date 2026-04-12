@@ -355,7 +355,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_shield.rsi, state: eshield-on }
   productEntity: EnergyShield
   cost:
-    Telecrystal: 15 # goob
+    Telecrystal: 18 # goob # Orion-Edit: 15 > 18
   categories:
   - UplinkWeaponry
 
@@ -799,7 +799,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi, state: red-icon }
   productEntity: MagazinePistolCaselessRifle
   cost:
-    Telecrystal: 3 # goob
+    Telecrystal: 2 # goob # Orion-Edit: 3 > 2
   categories:
   - UplinkAmmo
   #Goobstation
@@ -1662,7 +1662,7 @@
   icon: { sprite: /Textures/Actions/Implants/implants.rsi, state: freedom }
   productEntity: FreedomImplanter
   cost:
-    Telecrystal: 18 # goob - not quite worth any more than that # Orion-Edit: 18 > 12
+    Telecrystal: 12 # goob - not quite worth any more than that # Orion-Edit: 18 > 12
   categories:
     - UplinkImplants
 
@@ -1891,7 +1891,7 @@
   description: uplink-holster-desc
   productEntity: ClothingBeltSyndieHolster
   cost:
-    Telecrystal: 8 # goob - holster rework
+    Telecrystal: 2 # goob - holster rework # Orion-Edit: 8 > 2
   categories:
   - UplinkWearables
 

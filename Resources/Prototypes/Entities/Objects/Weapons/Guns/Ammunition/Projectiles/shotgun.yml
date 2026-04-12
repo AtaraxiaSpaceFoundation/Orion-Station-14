@@ -155,7 +155,7 @@
       types:
         Piercing: 10
         Structural: 15
-      armorPenetration: -0.1
+      armorPenetration: -0.1 # Orion
 
 
 - type: entity
