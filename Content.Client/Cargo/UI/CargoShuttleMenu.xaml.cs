@@ -68,15 +68,15 @@ namespace Content.Client.Cargo.UI
                      // Orion-Edit-Start
                      DeliveryDestination =
                      {
-                         Text = Loc.GetString("cargo-console-menu-order-delivery-destination",
-                         ("destination", order.DeliveryDestination ?? Loc.GetString("cargo-console-paper-delivery-destination-default"))),
+                         Text = Loc.GetString("cargo-console-menu-order-row-product-delivery-destination",
+                             ("destination", order.DeliveryDestination ?? Loc.GetString("cargo-console-paper-delivery-destination-default"))),
                      },
                      // Orion-Edit-End
                      // Orion-Start
                      Note =
                      {
-                         Text = Loc.GetString("cargo-console-menu-order-note",
-                         ("note", order.Note ?? Loc.GetString("cargo-console-paper-note-default"))),
+                         Text = Loc.GetString("cargo-console-menu-order-row-product-note",
+                             ("note", order.Note ?? Loc.GetString("cargo-console-paper-note-default"))),
                      },
                      // Orion-End
                  };

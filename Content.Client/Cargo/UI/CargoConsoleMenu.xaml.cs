@@ -323,7 +323,7 @@ namespace Content.Client.Cargo.UI
                 row.Cancel.OnPressed += (args) => { OnOrderCanceled?.Invoke(args); };
 
                 // TODO: Disable based on access.
-                row.SetApproveVisible(orderConsole.Mode != CargoOrderConsoleMode.SendToPrimary);
+                row.SetApproveVisible(orderConsole.Mode == CargoOrderConsoleMode.DirectOrder); // Orion-Edit
                 row.Approve.OnPressed += (args) => { OnOrderApproved?.Invoke(args); };
                 Requests.AddChild(row);
             }
@@ -417,7 +417,7 @@ namespace Content.Client.Cargo.UI
 
                 var balanceLabel = new RichTextLabel
                 {
-                    Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", bank.Accounts[accountProto])),
+                    Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", bank.Accounts[account])), // Orion-Edit
                     HorizontalExpand = true,
                     HorizontalAlignment = HAlignment.Center,
                     Margin = new Thickness(5, 0),
