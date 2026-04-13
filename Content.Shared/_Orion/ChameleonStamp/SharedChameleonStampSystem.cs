@@ -7,7 +7,7 @@ namespace Content.Shared._Orion.ChameleonStamp;
 
 public abstract class SharedChameleonStampSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] protected readonly IPrototypeManager Proto = default!;
 
     private List<ProtoId<EntityPrototype>> _stampsPresets = new();
 
@@ -15,7 +15,7 @@ public abstract class SharedChameleonStampSystem : EntitySystem
     {
         _stampsPresets.Clear();
 
-        var prototypes = _proto.EnumeratePrototypes<EntityPrototype>();
+        var prototypes = Proto.EnumeratePrototypes<EntityPrototype>();
 
         foreach (var proto in prototypes)
         {
@@ -32,12 +32,15 @@ public abstract class SharedChameleonStampSystem : EntitySystem
         presetStampComponent = null;
 
         if (!_stampsPresets.Contains(preset.Id)
-            || !_proto.TryIndex<EntityPrototype>(preset, out presetPrototype)
+            || !Proto.TryIndex<EntityPrototype>(preset, out presetPrototype)
             || !presetPrototype.TryGetComponent(out presetStampComponent))
             return false;
 
         return true;
     }
 
-    public List<ProtoId<EntityPrototype>> GetAllPresets() => _stampsPresets;
+    public IReadOnlyList<ProtoId<EntityPrototype>> GetAllPresets()
+    {
+        return _stampsPresets;
+    }
 }

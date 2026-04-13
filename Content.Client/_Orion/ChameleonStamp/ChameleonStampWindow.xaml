@@ -2,8 +2,8 @@
             xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
             xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
             Title="{Loc 'ui-chameleon-stamp-title'}"
-            MinSize="770 270"
-            SetSize="770 270">
+            MinSize="770 310"
+            SetSize="770 310">
     <BoxContainer Orientation="Horizontal">
         <BoxContainer Orientation="Vertical" Margin="10 10">
             <PanelContainer SetSize="180 180" MaxSize="180 180">
@@ -21,11 +21,14 @@
         </BoxContainer>
             <BoxContainer Margin="0 10" Orientation="Horizontal" HorizontalExpand="True">
                 <BoxContainer Orientation="Vertical" >
+                    <RichTextLabel Text="{Loc 'ui-chameleon-stamp-meta-name'}"/>
                     <LineEdit Name="StampMetaDataName" MinSize="100 0" HorizontalExpand="True" Access="Public"/>
+                    <RichTextLabel Text="{Loc 'ui-chameleon-stamp-meta-description'}" Margin="0 5 0 0"/>
                     <LineEdit Name="StampMetaDataDescription" MinSize="100 0" HorizontalExpand="True" Margin="0 5 0 0" Access="Public"/>
                     <ColorSelectorSliders Name="StampColorSelector" Access="Public" SetSize="250 120" Margin="0 5"/>
                 </BoxContainer>
                 <BoxContainer Margin="10 0" Orientation="Vertical" HorizontalExpand="True" >
+                    <RichTextLabel Text="{Loc 'ui-chameleon-stamp-stamped-name'}"/>
                     <LineEdit Name="StampedNameLineEdit" MinSize="150 0" HorizontalExpand="True" Margin="0 0 0 0" Access="Public"/>
 
                     <RichTextLabel Text="{Loc 'ui-chameleon-stamp-color'}"/>

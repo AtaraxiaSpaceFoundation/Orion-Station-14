@@ -21,7 +21,7 @@ public sealed partial class ChameleonStampSystem : SharedChameleonStampSystem
         if (!TryComp<StampComponent>(entity, out var stamp))
             return;
 
-        GetAllPresets();
+        _ = GetAllPresets();
 
         if (!ValidatePreset(args.SelectedStampColorPrototype, out _, out var stampColorComponent))
             return;
@@ -60,7 +60,6 @@ public sealed partial class ChameleonStampSystem : SharedChameleonStampSystem
 
         Dirty(entity);
         Dirty(entity, stamp);
-        return;
 
         void ApplyDescription(Entity<ChameleonStampComponent> stampEntity, string value, bool applyToComponent = false)
         {

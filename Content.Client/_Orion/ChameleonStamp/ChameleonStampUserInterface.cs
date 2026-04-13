@@ -19,6 +19,7 @@ public sealed class ChameleonStampUserInterface : BoundUserInterface
         _window = this.CreateWindow<ChameleonStampWindow>();
 
         _window.SetOwner(Owner);
+        _window.OnClose += Close;
         _window.ApplyButton.OnButtonDown += ApplyButton_OnButtonDown;
 
         _window.OpenCentered();
@@ -46,9 +47,11 @@ public sealed class ChameleonStampUserInterface : BoundUserInterface
         chameleonStamp.CustomDescription = _window.StampMetaDataDescription.Text == "" ? null : _window.StampMetaDataDescription.Text;
         chameleonStamp.StampedName = _window.StampedNameLineEdit.Text == "" ? null : _window.StampedNameLineEdit.Text;
 
+        var selectedColor = chameleonStamp.CustomStampColor ?? _window.StampColorSelector.Color;
+
         SendMessage(new ChameleonStampApplySettingsMessage(
             chameleonStamp.SelectedStampColorPrototype,
-            chameleonStamp.CustomStampColor.Value,
+            selectedColor,
             chameleonStamp.CustomName,
             chameleonStamp.CustomDescription,
             chameleonStamp.StampedName,
@@ -56,5 +59,18 @@ public sealed class ChameleonStampUserInterface : BoundUserInterface
             chameleonStamp.SelectedStampStatePrototype));
 
         _window.UpdateVisuals();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && _window != null)
+        {
+            _window.OnClose -= Close;
+            _window.ApplyButton.OnButtonDown -= ApplyButton_OnButtonDown;
+            _window.Dispose();
+            _window = null;
+        }
+
+        base.Dispose(disposing);
     }
 }

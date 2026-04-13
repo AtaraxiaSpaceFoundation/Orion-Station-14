@@ -26,6 +26,10 @@ public sealed partial class ChameleonStampWindow : FancyWindow
         IoCManager.InjectDependencies(this);
 
         _chameleonStampSystem = _entMan.System<ChameleonStampSystem>();
+
+        StampColorOptionButton.OnItemSelected += ColorOptionButton_OnItemSelected;
+        StampSpriteOptionButton.OnItemSelected += StampSpriteOptionButton_OnItemSelected;
+        StampStateOptionButton.OnItemSelected += StateOptionButton_OnItemSelected;
     }
 
     public void UpdateVisuals()
@@ -68,9 +72,11 @@ public sealed partial class ChameleonStampWindow : FancyWindow
             i++;
         }
 
-        StampColorOptionButton.OnItemSelected += ColorOptionButton_OnItemSelected;
-        StampSpriteOptionButton.OnItemSelected += StampSpriteOptionButton_OnItemSelected;
-        StampStateOptionButton.OnItemSelected += StateOptionButton_OnItemSelected;
+        if (_preview != null)
+        {
+            _entMan.DeleteEntity(_preview.Value);
+            _preview = null;
+        }
 
         _preview = _entMan.Spawn(chameleonStamp.SelectedStampSpritePrototype, MapCoordinates.Nullspace);
 
@@ -93,7 +99,7 @@ public sealed partial class ChameleonStampWindow : FancyWindow
         if (meta is null)
             return;
 
-        if (!_proto.Index<EntityPrototype>((string) meta).TryGetComponent<SpriteComponent>(out var presetSprite))
+        if (!_proto.Index<EntityPrototype>((string) meta).TryGetComponent<SpriteComponent>(out _))
             return;
 
         StampStateOptionButton.Select(obj.Id);
@@ -139,5 +145,16 @@ public sealed partial class ChameleonStampWindow : FancyWindow
     {
         _owner = owner;
         UpdateVisuals();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && _preview != null)
+        {
+            _entMan.DeleteEntity(_preview.Value);
+            _preview = null;
+        }
+
+        base.Dispose(disposing);
     }
 }
