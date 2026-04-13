@@ -1104,7 +1104,7 @@
     - SheetifierStatic
 
 - type: entity
-  parent: BaseLathe
+  parent: [ BaseLatheLube, BaseSiloUtilizer ] # Orion-Edit: BaseSiloUtilizer
   id: CutterMachine
   name: cutter machine
   description: This is a cutter. It cuts. Add variety to your station floor with eye-pleasing patterns! Don't stick your fingers in.
