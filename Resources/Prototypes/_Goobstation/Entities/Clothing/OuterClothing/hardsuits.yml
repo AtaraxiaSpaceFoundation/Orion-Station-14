@@ -229,6 +229,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - NoSlimeExtractSlowReset
     - WhitelistChameleon
   - type: ClothingGrantComponent
     component:
