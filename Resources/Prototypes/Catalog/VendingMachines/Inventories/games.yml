@@ -31,6 +31,7 @@
     MysteryFigureBox: 2
     BooksBag: 3
     CardBoxBlack: 3 # GoobStation
+    PokerChipsBox: 1 # Orion
   contrabandInventory:
     Basketball: 1
     FoodSnackBoritos: 3

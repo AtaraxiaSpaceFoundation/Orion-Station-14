@@ -133,6 +133,7 @@
   categories:
     - UplinkAllies
   conditions:
+<<<<<<< balance
   - !type:StoreWhitelistCondition
     whitelist:
       tags:
@@ -140,3 +141,22 @@
     blacklist:
       tags:
       - ContravendUplink
+=======
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+      blacklist:
+        tags:
+        - ContravendUplink
+
+- type: listing
+  id: UplinkRubberStampChameleon
+  name: uplink-stamp-chameleon-name
+  description: uplink-stamp-chameleon-desc
+  productEntity: RubberStampChameleon
+  cost:
+    Telecrystal: 20
+  categories:
+  - UplinkDeception
+>>>>>>> master

@@ -65,8 +65,20 @@ namespace Content.Client.Cargo.UI
                              ("accountColor", account.Color),
                              ("account", Loc.GetString(account.Code)))
                      },
-                     Description = {Text = Loc.GetString("cargo-console-menu-order-reason-description",
-                         ("reason", order.Reason))}
+                     // Orion-Edit-Start
+                     DeliveryDestination =
+                     {
+                         Text = Loc.GetString("cargo-console-menu-order-row-product-delivery-destination",
+                             ("destination", order.DeliveryDestination ?? Loc.GetString("cargo-console-paper-delivery-destination-default"))),
+                     },
+                     // Orion-Edit-End
+                     // Orion-Start
+                     Note =
+                     {
+                         Text = Loc.GetString("cargo-console-menu-order-row-product-note",
+                             ("note", order.Note ?? Loc.GetString("cargo-console-paper-note-default"))),
+                     },
+                     // Orion-End
                  };
 
                  row.Approve.Visible = false;

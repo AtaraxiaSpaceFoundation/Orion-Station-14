@@ -22,8 +22,10 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Globalization;
 using System.Linq;
 using Content.Client.Cargo.Systems;
+using Content.Client.Message;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
@@ -54,6 +56,11 @@ namespace Content.Client.Cargo.UI
 
         private readonly EntityQuery<CargoOrderConsoleComponent> _orderConsoleQuery;
         private readonly EntityQuery<StationBankAccountComponent> _bankQuery;
+
+        // Orion-Start
+        private TimeSpan _nextAccountsPopulateTime = TimeSpan.Zero;
+        private readonly TimeSpan _accountPopulateInterval = TimeSpan.FromSeconds(5);
+        // Orion-End
 
         public event Action<ButtonEventArgs>? OnItemSelected;
         public event Action<ButtonEventArgs>? OnOrderApproved;
@@ -288,29 +295,35 @@ namespace Content.Client.Cargo.UI
                             ("account", Loc.GetString(account.Code)))
                     },
 
-                    Description =
+                    // Orion-Edit-Start
+                    DeliveryDestination =
                     {
+                        Text = !string.IsNullOrEmpty(order.DeliveryDestination)
+                            ? Loc.GetString(
+                                "cargo-console-menu-order-row-product-delivery-destination",
+                                ("destination", order.DeliveryDestination))
+                            : Loc.GetString(
+                                "cargo-console-menu-order-row-product-delivery-destination",
+                                ("destination", Loc.GetString("cargo-console-paper-delivery-destination-default")))
+                    },
 
-                        // Goobstation start - Cargo UI
-
-                        Text = !string.IsNullOrEmpty(order.Reason) ?
-                            Loc.GetString(
-                                "cargo-console-menu-order-row-product-description",
-                                ("orderReason", order.Reason))
-                        :
-                            Loc.GetString(
-                                "cargo-console-menu-order-row-product-description",
-                                ("orderReason", Loc.GetString("cargo-console-menu-order-row-alerts-reason-absent")))
-
-                        // END
-
-                    }
+                    Note =
+                    {
+                        Text = !string.IsNullOrEmpty(order.Note)
+                            ? Loc.GetString(
+                                "cargo-console-menu-order-row-product-note",
+                                ("note", order.Note))
+                            : Loc.GetString(
+                                "cargo-console-menu-order-row-product-note",
+                                ("note", Loc.GetString("cargo-console-paper-note-default")))
+                    },
+                    // Orion-Edit-End
                 };
 
                 row.Cancel.OnPressed += (args) => { OnOrderCanceled?.Invoke(args); };
 
                 // TODO: Disable based on access.
-                row.SetApproveVisible(orderConsole.Mode != CargoOrderConsoleMode.SendToPrimary);
+                row.SetApproveVisible(orderConsole.Mode == CargoOrderConsoleMode.DirectOrder); // Orion-Edit
                 row.Approve.OnPressed += (args) => { OnOrderApproved?.Invoke(args); };
                 Requests.AddChild(row);
             }
@@ -339,6 +352,91 @@ namespace Content.Client.Cargo.UI
             }
         }
 
+        // Orion-Start
+        public void PopulateAccounts()
+        {
+            if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank) ||
+                !_entityManager.TryGetComponent<CargoOrderConsoleComponent>(_owner, out var console))
+                return;
+
+            EntriesContainer.RemoveAllChildren();
+
+            var accountHeadNameLabel = new RichTextLabel
+            {
+                HorizontalAlignment = HAlignment.Center,
+            };
+            accountHeadNameLabel.SetMarkup(Loc.GetString("cargo-funding-alloc-console-label-account"));
+            EntriesContainer.AddChild(accountHeadNameLabel);
+
+            var accountHeadCodeLabel = new RichTextLabel
+            {
+                HorizontalAlignment = HAlignment.Center,
+            };
+            accountHeadCodeLabel.SetMarkup(Loc.GetString("cargo-funding-alloc-console-label-code"));
+            EntriesContainer.AddChild(accountHeadCodeLabel);
+
+            var accountHeadBalanceLabel = new RichTextLabel
+            {
+                HorizontalAlignment = HAlignment.Center,
+            };
+            accountHeadBalanceLabel.SetMarkup(Loc.GetString("cargo-funding-alloc-console-label-balance"));
+            EntriesContainer.AddChild(accountHeadBalanceLabel);
+
+            var accountHeadCutLabel = new RichTextLabel
+            {
+                HorizontalAlignment = HAlignment.Center,
+            };
+            accountHeadCutLabel.SetMarkup(Loc.GetString("cargo-funding-alloc-console-label-cut"));
+            EntriesContainer.AddChild(accountHeadCutLabel);
+
+            LockboxCut.PlaceHolder = (100 - (int) (bank.LockboxCut * 100)).ToString();
+            PrimaryCut.PlaceHolder = ((int) (bank.PrimaryCut * 100)).ToString();
+
+            foreach (var account in bank.Accounts.Keys)
+            {
+                if (account == console.Account)
+                    continue;
+
+                var accountProto = _protoManager.Index(account);
+
+                var accountNameLabel = new RichTextLabel
+                {
+                    Modulate = accountProto.Color,
+                    Margin = new Thickness(0, 0, 10, 0)
+                };
+                accountNameLabel.SetMarkup($"[bold]{Loc.GetString(accountProto.Name)}[/bold]");
+                EntriesContainer.AddChild(accountNameLabel);
+
+                var codeLabel = new RichTextLabel
+                {
+                    Text = $"[font=\"Monospace\"]{Loc.GetString(accountProto.Code)}[/font]",
+                    HorizontalAlignment = HAlignment.Center,
+                    Margin = new Thickness(5, 0),
+                };
+                EntriesContainer.AddChild(codeLabel);
+
+                var balanceLabel = new RichTextLabel
+                {
+                    Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", bank.Accounts[account])), // Orion-Edit
+                    HorizontalExpand = true,
+                    HorizontalAlignment = HAlignment.Center,
+                    Margin = new Thickness(5, 0),
+                };
+                EntriesContainer.AddChild(balanceLabel);
+
+                var box = new LineEdit
+                {
+                    HorizontalAlignment = HAlignment.Center,
+                    HorizontalExpand = true,
+                    PlaceHolder = (bank.RevenueDistribution[account] * 100).ToString(CultureInfo.InvariantCulture),
+                    Editable = false,
+                    MinWidth = 30,
+                };
+                EntriesContainer.AddChild(box);
+            }
+        }
+        // Orion-End
+
         public void UpdateStation(EntityUid station)
         {
             _station = station;
@@ -365,6 +463,14 @@ namespace Content.Client.Cargo.UI
                                            _timing.CurTime < orderConsole.NextAccountActionTime;
 
             RightPart.Visible = orderConsole.Mode != CargoOrderConsoleMode.PrintSlip; // Goobstation
+
+            // Orion-Start
+            if (_nextAccountsPopulateTime > _timing.CurTime)
+                return;
+
+            _nextAccountsPopulateTime = _timing.CurTime + _accountPopulateInterval;
+            PopulateAccounts();
+            // Orion-End
         }
     }
 }

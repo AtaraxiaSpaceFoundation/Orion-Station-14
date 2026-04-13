@@ -397,3 +397,10 @@
     sprite: _Orion/Structures/Storage/Crates/waffle_secure.rsi
   - type: Sprite
     sprite: _Orion/Structures/Storage/Crates/waffle_secure.rsi
+
+- type: entity
+  parent: CratePrivateSecure
+  id: CratePrivateCargoSecure
+  components:
+  - type: AccessReader
+    access: [["Cargo"]]

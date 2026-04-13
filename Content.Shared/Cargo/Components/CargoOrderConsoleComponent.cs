@@ -80,6 +80,14 @@ public sealed partial class CargoOrderConsoleComponent : Component
     [DataField]
     public ProtoId<StackPrototype> CashType = "Credit";
 
+    // Orion-Start
+    [DataField]
+    public int SecureOrderCost = 100;
+
+    [DataField, AutoNetworkedField]
+    public bool EditableRequesterName;
+    // Orion-End
+
     /// <summary>
     /// All of the <see cref="CargoProductPrototype.Group"/>s that are supported.
     /// </summary>

@@ -41,6 +41,8 @@ namespace Content.Client.Cargo.BUI
 {
     public sealed class CargoOrderConsoleBoundUserInterface : BoundUserInterface
     {
+        [Dependency] private readonly IPrototypeManager _protoManager = default!; // Orion
+
         private readonly SharedCargoSystem _cargoSystem;
 
         [ViewVariables]
@@ -85,12 +87,14 @@ namespace Content.Client.Cargo.BUI
             var localPlayer = dependencies.Resolve<IPlayerManager>().LocalEntity;
             var description = new FormattedMessage();
 
+/* // Orion-Edit
             string orderRequester;
 
             if (EntMan.EntityExists(localPlayer))
                 orderRequester = Identity.Name(localPlayer.Value, EntMan);
             else
                 orderRequester = string.Empty;
+*/
 
             _orderMenu = new CargoConsoleOrderMenu();
 
@@ -101,6 +105,8 @@ namespace Content.Client.Cargo.BUI
                 if (args.Button.Parent?.Parent is not CargoProductRow row) // Goobstation
                     return;
 
+                _orderMenu.ToggleDepartmentSecureCrate.Pressed = false; // Orion
+
                 description.Clear();
                 description.PushColor(Color.White); // Rich text default color is grey
                 if (row.MainButton.ToolTip != null)
@@ -110,14 +116,36 @@ namespace Content.Client.Cargo.BUI
                 _product = row.Product;
                 _orderMenu.ProductName.Text = row.ProductName.Text;
                 _orderMenu.PointCost.Text = row.PointCost.Text;
+/* // Orion-Edit
                 _orderMenu.Requester.Text = orderRequester;
                 _orderMenu.Reason.Text = "";
+*/
                 _orderMenu.Amount.Value = 1;
+
+                // Orion-Start
+                if (EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
+                {
+                    _orderMenu.Requester.Editable = orderConsole.EditableRequesterName;
+
+                    if (_protoManager.TryIndex<CargoAccountPrototype>(orderConsole.Account, out var accountPrototype))
+                        _orderMenu.DeliveryDestination.PlaceHolder = Loc.GetString(accountPrototype.DepartmentDestinationName ?? "cargo-console-paper-delivery-destination-default");
+
+                    _orderMenu.Requester.Text = localPlayer.HasValue ? _cargoSystem.GenerateRequesterName((Owner, orderConsole), localPlayer.Value) : string.Empty;
+
+                    _orderMenu.ToggleDepartmentSecureCrate.Text = Loc.GetString("cargo-console-secure-order-checkbox", ("cost", orderConsole.SecureOrderCost));
+
+                    if (_product is not null && _protoManager.TryIndex<EntityPrototype>(_product.Product, out var cargoProductEntPrototype))
+                        _orderMenu.ToggleDepartmentSecureCrate.Disabled = !_cargoSystem.CanBeSecuredDelivery((Owner, orderConsole), cargoProductEntPrototype);
+                }
+                // Orion-End
 
                 _orderMenu.OpenCentered();
             };
             _menu.OnOrderApproved += ApproveOrder;
             _menu.OnOrderCanceled += RemoveOrder;
+
+            _orderMenu.ToggleDepartmentSecureCrate.OnToggled += ToggleDepartmentSecureCrate_OnToggled; // Orion
+
             _orderMenu.SubmitButton.OnPressed += (_) =>
             {
                 if (AddOrder())
@@ -139,6 +167,20 @@ namespace Content.Client.Cargo.BUI
             _menu.OpenCentered();
         }
 
+        // Orion-Start
+        private void ToggleDepartmentSecureCrate_OnToggled(ButtonToggledEventArgs obj)
+        {
+            if (_product is null
+                || _orderMenu is null
+                || !EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
+                return;
+
+            int cost = obj.Pressed ? _product.Cost + orderConsole.SecureOrderCost : _product.Cost;
+
+            _orderMenu.PointCost.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", cost));
+        }
+        // Orion-End
+
         private void Populate(List<CargoOrderData> orders)
         {
             if (_menu == null)
@@ -148,6 +190,7 @@ namespace Content.Client.Cargo.BUI
             _menu.PopulateCategories();
             _menu.PopulateOrders(orders);
             _menu.PopulateAccountActions();
+            _menu.PopulateAccounts(); // Orion
         }
 
         protected override void UpdateState(BoundUserInterfaceState state)
@@ -186,6 +229,11 @@ namespace Content.Client.Cargo.BUI
 
         private bool AddOrder()
         {
+            // Orion-Start
+            if (!EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
+                return false;
+            // Orion-End
+
             var orderAmt = _orderMenu?.Amount.Value ?? 0;
             if (orderAmt < 1 || orderAmt > OrderCapacity)
             {
@@ -193,10 +241,12 @@ namespace Content.Client.Cargo.BUI
             }
 
             SendMessage(new CargoConsoleAddOrderMessage(
-                _orderMenu?.Requester.Text ?? "",
-                _orderMenu?.Reason.Text ?? "",
+                orderConsole.EditableRequesterName ? _orderMenu?.Requester.Text : null, // Orion
+                _orderMenu?.DeliveryDestination.Text == "" ? _orderMenu?.DeliveryDestination.PlaceHolder : _orderMenu?.DeliveryDestination.Text, // Orion
+                _orderMenu?.Note.Text == "" ? null : _orderMenu?.Note.Text, // Orion
                 _product?.ID ?? "",
-                orderAmt));
+                orderAmt,
+                _orderMenu?.ToggleDepartmentSecureCrate.Pressed ?? false)); // Orion
 
             return true;
         }
