@@ -21,11 +21,16 @@ public sealed partial class CargoSlipComponent : Component
     [DataField]
     public string Requester;
 
-    /// <summary>
-    /// The provided value for the reason form field
-    /// </summary>
+    // Orion-Start
     [DataField]
-    public string Reason;
+    public string? DeliveryDestination;
+
+    [DataField]
+    public string? Note;
+
+    [DataField]
+    public bool SecuredDelivery;
+    // Orion-End
 
     /// <summary>
     /// How many of the product to order

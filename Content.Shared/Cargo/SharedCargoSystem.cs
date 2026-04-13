@@ -7,8 +7,14 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Shared.Access.Components;
+using Content.Shared.Access.Systems;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Cargo.Prototypes;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Item;
+using Content.Shared.Prototypes;
+using Content.Shared.Storage.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -19,6 +25,11 @@ namespace Content.Shared.Cargo;
 public abstract class SharedCargoSystem : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
+    // Orion-Start
+    [Dependency] protected readonly IPrototypeManager Proto = default!;
+    [Dependency] protected readonly AccessReaderSystem AccessReader = default!;
+    [Dependency] protected readonly SharedIdCardSystem IdCard = default!;
+    // Orion-End
 
     public override void Initialize()
     {
@@ -64,6 +75,49 @@ public abstract class SharedCargoSystem : EntitySystem
         }
         return distribution;
     }
+
+    // Orion-Start
+    public bool CanBeSecuredDelivery(Entity<CargoOrderConsoleComponent> entity, CargoProductPrototype productId)
+    {
+        var product = Proto.Index<EntityPrototype>(productId.Product);
+
+        return CanBeSecuredDelivery(entity, product);
+    }
+
+    public bool CanBeSecuredDelivery(Entity<CargoOrderConsoleComponent> entity, EntityPrototype productProto)
+    {
+        var access = Proto.Index(entity.Comp.Account).SecureCrateOrderAccess;
+
+        if (productProto.HasComponent<StorageFillComponent>())
+        {
+            if (productProto.TryGetComponent<AccessReaderComponent>(out var reader)
+            && !AccessReader.AreAccessTagsAllowed(access, reader))
+                return false;
+        }
+        else if (!productProto.HasComponent<ItemComponent>())
+            return false;
+
+        return true;
+    }
+
+    public string GenerateRequesterName(Entity<CargoOrderConsoleComponent> entity, EntityUid requester)
+    {
+        var name = string.Empty;
+
+        if (AccessReader.FindAccessItemsInventory(requester, out var items))
+        {
+            foreach (var item in items)
+            {
+                if (IdCard.TryGetIdCard(item, out var idCard))
+                    name = Loc.GetString("cargo-console-menu-order-requester-format", ("name", idCard.Comp.FullName ?? ""), ("job", idCard.Comp.JobTitle ?? idCard.Comp.LocalizedJobTitle ?? ""));
+            }
+        }
+        else
+            name = Identity.Name(requester, EntityManager);
+
+        return name;
+    }
+    // Orion-End
 }
 
 [NetSerializable, Serializable]
