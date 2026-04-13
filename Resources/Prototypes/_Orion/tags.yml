@@ -90,3 +90,6 @@
 
 - type: Tag
   id: InertBagOfHoldingMessenger
+
+- type: Tag
+  id: PokerChip
