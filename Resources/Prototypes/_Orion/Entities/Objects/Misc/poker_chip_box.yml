@@ -5,7 +5,7 @@
   description: Please put them in the right places.
   components:
   - type: Sprite
-    sprite: _Orion/Objects/Storages/pokerchipsbox.rsi
+    sprite: _Orion/Objects/Storage/pokerchipsbox.rsi
     state: box-closed
     layers:
       - state: box-closed
