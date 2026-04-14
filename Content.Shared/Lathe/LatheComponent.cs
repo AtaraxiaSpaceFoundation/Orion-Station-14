@@ -127,6 +127,27 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
         public float MaterialUseMultiplier = 1;
+
+        // Orion-Start
+        [DataField]
+        public float FinalTimeMultiplier = 1;
+
+        [DataField]
+        public float FinalMaterialUseMultiplier = 1;
+
+        [DataField]
+        public string MachinePartPrintSpeed = "Manipulator";
+
+        [DataField]
+        public string MachinePartMaterialUse = "Manipulator";
+
+        [DataField]
+        public float PartRatingPrintTimeMultiplier = 0.5f;
+
+        [DataField]
+        public float PartRatingMaterialUseMultiplier = 0.85f;
+        // Orion-End
+
         #endregion
 
         // Goobstation change start

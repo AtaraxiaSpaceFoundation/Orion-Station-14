@@ -1,0 +1,69 @@
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: CapacitorStockPart
+  result: CapacitorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: MatterBinStockPart
+  result: MatterBinStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: NanoManipulatorStockPart
+  result: NanoManipulatorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: AdvancedCapacitorStockPart
+  result: AdvancedCapacitorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: AdvancedMatterBinStockPart
+  result: AdvancedMatterBinStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: PicoManipulatorStockPart
+  result: PicoManipulatorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: SuperCapacitorStockPart
+  result: SuperCapacitorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: SuperMatterBinStockPart
+  result: SuperMatterBinStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: FemtoManipulatorStockPart
+  result: FemtoManipulatorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: BluespaceCapacitorStockPart
+  result: BluespaceCapacitorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: BluespaceMatterBinStockPart
+  result: BluespaceMatterBinStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: QuantumManipulatorStockPart
+  result: QuantumManipulatorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: QuantumCapacitorStockPart
+  result: QuantumCapacitorStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: QuantumMatterBinStockPart
+  result: QuantumMatterBinStockPart

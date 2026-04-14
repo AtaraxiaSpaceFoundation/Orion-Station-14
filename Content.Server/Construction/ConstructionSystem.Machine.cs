@@ -33,6 +33,7 @@ public sealed partial class ConstructionSystem
     private void OnMachineMapInit(EntityUid uid, MachineComponent component, MapInitEvent args)
     {
         CreateBoardAndStockParts(uid, component);
+        RefreshParts(uid, component); // Orion
     }
 
     private void CreateBoardAndStockParts(EntityUid uid, MachineComponent component)
