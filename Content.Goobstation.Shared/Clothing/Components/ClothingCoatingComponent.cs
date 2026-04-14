@@ -1,4 +1,3 @@
-using Content.Shared.Whitelist; // Orion
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -14,11 +13,4 @@ public sealed partial class ClothingCoatingComponent : Component
     [DataField(required: true)]
     [AlwaysPushInheritance]
     public ComponentRegistry Components { get; private set; } = new();
-    // Orion-Start
-
-    /// <summary>
-    ///     Entities on this blacklist cannot be coated.
-    /// </summary>
-    [DataField] public EntityWhitelist? Blacklist;
-    // Orion-End
 }

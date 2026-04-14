@@ -230,7 +230,6 @@
     tags:
     - Hardsuit
     - WhitelistChameleon
-    - NoSlimeExtractSlowReset # Orion
   - type: ClothingGrantComponent
     component:
     - type: DamageOverTime
