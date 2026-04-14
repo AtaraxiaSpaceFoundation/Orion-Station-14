@@ -50,6 +50,20 @@ public sealed partial class MartialArtsKnowledgeComponent : GrabStagesOverrideCo
     [DataField]
     [AutoNetworkedField]
     public string OriginalFistDamageType;
+// Orion-Start
+
+/// <summary>
+/// Saved reflect state before MartialArtBlocked item was equipped. Null = no reflect was present.
+/// </summary>
+[DataField]
+public float? SavedReflectProb;
+
+[DataField]
+public Angle? SavedReflectSpread;
+
+[DataField]
+public bool? SavedReflectExaminable;
+// Orion-End
 
 }
 

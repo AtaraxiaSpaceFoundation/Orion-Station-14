@@ -56,6 +56,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Weapons.Reflect; // Orion
 using Content.Shared.Speech;
 using Content.Shared.Standing;
 using Content.Shared.StatusEffect;
@@ -66,6 +67,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers; // Orion
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
@@ -130,6 +132,10 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         SubscribeLocalEvent<MartialArtsKnowledgeComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<MartialArtsKnowledgeComponent, CheckGrabOverridesEvent>(CheckGrabStageOverride);
         SubscribeLocalEvent<MartialArtsKnowledgeComponent, ShotAttemptedEvent>(OnShotAttempt);
+        // Orion-Start
+        SubscribeLocalEvent<MartialArtBlockedComponent, EntGotInsertedIntoContainerMessage>(OnBlockedInserted);
+        SubscribeLocalEvent<MartialArtBlockedComponent, EntGotRemovedFromContainerMessage>(OnBlockedRemoved);
+        // Orion-End
         SubscribeLocalEvent<MartialArtsKnowledgeComponent, ComboAttackPerformedEvent>(OnComboAttackPerformed);
 
         SubscribeLocalEvent<KravMagaSilencedComponent, SpeakAttemptEvent>(OnSilencedSpeakAttempt);
@@ -434,6 +440,65 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         _popupSystem.PopupClient(Loc.GetString("gun-disabled"), ent, ent);
         args.Cancel();
     }
+
+    // Orion-Start
+    private void OnBlockedInserted(Entity<MartialArtBlockedComponent> ent, ref EntGotInsertedIntoContainerMessage args)
+    {
+        var wearer = args.Container.Owner;
+        if (!TryComp<MartialArtsKnowledgeComponent>(wearer, out var knowledge)
+            || ent.Comp.Form != MartialArtsForms.SleepingCarp
+            || knowledge.MartialArtsForm != MartialArtsForms.SleepingCarp
+            || knowledge.Blocked)
+            return;
+
+        knowledge.Blocked = true;
+
+        if (TryComp<ReflectComponent>(wearer, out var existingReflect))
+        {
+            knowledge.SavedReflectProb = existingReflect.ReflectProb;
+            knowledge.SavedReflectSpread = existingReflect.Spread;
+            knowledge.SavedReflectExaminable = existingReflect.Examinable;
+            RemCompDeferred<ReflectComponent>(wearer);
+        }
+
+        Dirty(wearer, knowledge);
+    }
+
+    private void OnBlockedRemoved(Entity<MartialArtBlockedComponent> ent, ref EntGotRemovedFromContainerMessage args)
+    {
+        var wearer = args.Container.Owner;
+        if (!TryComp<MartialArtsKnowledgeComponent>(wearer, out var knowledge)
+            || ent.Comp.Form != MartialArtsForms.SleepingCarp
+            || knowledge.MartialArtsForm != MartialArtsForms.SleepingCarp
+            || !knowledge.Blocked)
+            return;
+
+        foreach (var held in _hands.EnumerateHeld(wearer))
+        {
+            if (held == ent.Owner)
+                continue;
+            if (TryComp<MartialArtBlockedComponent>(held, out var other) && other.Form == MartialArtsForms.SleepingCarp)
+                return;
+        }
+
+        knowledge.Blocked = false;
+
+        if (knowledge.SavedReflectProb.HasValue)
+        {
+            var reflect = EnsureComp<ReflectComponent>(wearer);
+            reflect.ReflectProb = knowledge.SavedReflectProb.Value;
+            reflect.Spread = knowledge.SavedReflectSpread ?? Angle.FromDegrees(60);
+            reflect.Examinable = knowledge.SavedReflectExaminable ?? false;
+            Dirty(wearer, reflect);
+
+            knowledge.SavedReflectProb = null;
+            knowledge.SavedReflectSpread = null;
+            knowledge.SavedReflectExaminable = null;
+        }
+
+        Dirty(wearer, knowledge);
+    }
+    // Orion-End
 
     private void ComboPopup(EntityUid user, EntityUid target, string comboName)
     {
