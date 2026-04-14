@@ -99,6 +99,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedContainerSystem _containerSystem = default!; // Orion
     [Dependency] private readonly INetManager _netManager = default!;
     [Dependency] private readonly StandingStateSystem _standingState = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
@@ -473,12 +474,18 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             || !knowledge.Blocked)
             return;
 
-        foreach (var held in _hands.EnumerateHeld(wearer))
+        if (TryComp<ContainerManagerComponent>(wearer, out var containerManager))
         {
-            if (held == ent.Owner)
-                continue;
-            if (TryComp<MartialArtBlockedComponent>(held, out var other) && other.Form == MartialArtsForms.SleepingCarp)
-                return;
+            foreach (var container in _containerSystem.GetAllContainers(wearer, containerManager))
+            {
+                foreach (var contained in container.ContainedEntities)
+                {
+                    if (contained == ent.Owner)
+                        continue;
+                    if (TryComp<MartialArtBlockedComponent>(contained, out var other) && other.Form == MartialArtsForms.SleepingCarp)
+                        return;
+                }
+            }
         }
 
         knowledge.Blocked = false;
