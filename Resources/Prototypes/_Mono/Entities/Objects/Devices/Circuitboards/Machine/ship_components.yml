@@ -11,7 +11,7 @@
     stackRequirements:
       Glass: 10
       Steel: 10
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator
 
 - type: entity
   id: MachineGCSMediumCircuitboard
@@ -26,7 +26,7 @@
     stackRequirements:
       Glass: 10
       Steel: 10
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator
 
 - type: entity
   id: MachineGCSHighCircuitboard
@@ -41,7 +41,7 @@
     stackRequirements:
       Glass: 10
       Steel: 10
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator
 
 - type: entity
   id: MachineGCSUltraCircuitboard
@@ -56,4 +56,4 @@
     stackRequirements:
       Glass: 10
       Steel: 10
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator

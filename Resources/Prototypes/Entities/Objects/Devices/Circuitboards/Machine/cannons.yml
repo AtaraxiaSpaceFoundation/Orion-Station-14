@@ -89,7 +89,7 @@
   - type: MachineBoard
     prototype: ShuttleGunSvalinnMachineGun
     stackRequirements:
-      Manipulator: 6
+      Servo: 6 # Orion-Edit: Replaced manipulator
       Steel: 5
       CableHV: 5
 
@@ -106,7 +106,7 @@
   - type: MachineBoard
     prototype: ShuttleGunPerforator
     stackRequirements:
-      Manipulator: 10
+      Servo: 1 # Orion-Edit: Replaced manipulator0
       Steel: 10
       CableHV: 5
 
@@ -123,7 +123,7 @@
   - type: MachineBoard
     prototype: ShuttleGunFriendship
     stackRequirements:
-      Manipulator: 5
+      Servo: 5 # Orion-Edit: Replaced manipulator
       Steel: 7
       CableHV: 5
 
@@ -140,7 +140,7 @@
   - type: MachineBoard
     prototype: ShuttleGunDuster
     stackRequirements:
-      Manipulator: 10
+      Servo: 1 # Orion-Edit: Replaced manipulator0
       Steel: 10
       CableHV: 5
       Uranium: 2
@@ -158,6 +158,6 @@
   - type: MachineBoard
     prototype: ShuttleGunKinetic
     stackRequirements:
-      Manipulator: 5
+      Servo: 5 # Orion-Edit: Replaced manipulator
       Steel: 5
       CableHV: 2

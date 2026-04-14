@@ -18,7 +18,7 @@
   - type: MachineBoard
     prototype: RoboticArm
     stackRequirements:
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator
       Steel: 6
       Cable: 5
     tagRequirements:
@@ -37,7 +37,7 @@
   - type: MachineBoard
     prototype: Constructor
     stackRequirements:
-      Manipulator: 5
+      Servo: 5 # Orion-Edit: Replaced manipulator
       Steel: 10
       Cable: 5
     tagRequirements:
@@ -54,7 +54,7 @@
   - type: MachineBoard
     prototype: StorageBin
     stackRequirements:
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator
       Steel: 1
 
 - type: entity
@@ -68,7 +68,7 @@
   - type: MachineBoard
     prototype: Interactor
     stackRequirements:
-      Manipulator: 4
+      Servo: 4 # Orion-Edit: Replaced manipulator
       Plastic: 4
       Cable: 5
     tagRequirements:
@@ -87,7 +87,7 @@
   - type: MachineBoard
     prototype: VinylPlayer
     stackRequirements:
-      Manipulator: 1
+      Servo: 1 # Orion-Edit: Replaced manipulator
       Steel: 1
       WoodPlank: 3
 
@@ -102,7 +102,7 @@
   - type: MachineBoard
     prototype: TapeDeck
     stackRequirements:
-      Manipulator: 2
+      Servo: 2 # Orion-Edit: Replaced manipulator
       Plastic: 3
       WoodPlank: 5
 
@@ -117,7 +117,7 @@
   - type: MachineBoard
     prototype: StationRadioServer
     stackRequirements:
-      Manipulator: 1
+      Servo: 1 # Orion-Edit: Replaced manipulator
       Steel: 10
       Plastic: 10
       Plasma: 5
@@ -134,7 +134,7 @@
   - type: MachineBoard
     prototype: StationRadioRig
     stackRequirements:
-      Manipulator: 3
+      Servo: 3 # Orion-Edit: Replaced manipulator
       Steel: 5
       Glass: 5
       Cable: 2
@@ -150,7 +150,7 @@
   - type: MachineBoard
     prototype: StationRadioReceiver
     stackRequirements:
-      Manipulator: 1
+      Servo: 1 # Orion-Edit: Replaced manipulator
       Cable: 2
 
 - type: entity

@@ -7,7 +7,7 @@
     - type: MachineBoard
       prototype: DocumentPrinter
       stackRequirements:
-        Manipulator: 2
+        Servo: 2 # Orion-Edit: Replaced manipulator
         Glass: 1
 
 - type: entity
@@ -35,7 +35,7 @@
   - type: MachineBoard
     prototype: ResearchDestructiveAnalyzer
     stackRequirements:
-      Manipulator: 2
+      Servo: 2 # Orion-Edit: Replaced manipulator
       Cable: 5
 
 - type: entity
@@ -49,6 +49,6 @@
   - type: MachineBoard
     prototype: ResearchExperimentalDestructiveScanner
     stackRequirements:
-      Manipulator: 2
+      Servo: 2 # Orion-Edit: Replaced manipulator
       Glass: 5
       Cable: 5

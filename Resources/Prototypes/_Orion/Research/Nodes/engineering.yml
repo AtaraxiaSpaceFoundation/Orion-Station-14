@@ -17,7 +17,7 @@
   - PowerCellMedium
   - PowerCellHigh
   - MegaCellHigh
-  - MicroManipulatorStockPart
+  - MicroServoStockPart
   - Igniter
   - ProximitySensor
   - RemoteSignaller

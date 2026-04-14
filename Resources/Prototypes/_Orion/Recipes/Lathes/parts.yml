@@ -5,13 +5,23 @@
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: MatterBinStockPart
-  result: MatterBinStockPart
+  id: ScanningModuleStockPart
+  result: ScanningModuleStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: NanoManipulatorStockPart
-  result: NanoManipulatorStockPart
+  id: MicroServoStockPart
+  result: MicroServoStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: MicroLaserStockPart
+  result: MicroLaserStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: MatterBinStockPart
+  result: MatterBinStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
@@ -20,13 +30,23 @@
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: AdvancedMatterBinStockPart
-  result: AdvancedMatterBinStockPart
+  id: AdvancedScanningModuleStockPart
+  result: AdvancedScanningModuleStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: PicoManipulatorStockPart
-  result: PicoManipulatorStockPart
+  id: NanoServoStockPart
+  result: NanoServoStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: HighPowerMicroLaserStockPart
+  result: HighPowerMicroLaserStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: AdvancedMatterBinStockPart
+  result: AdvancedMatterBinStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
@@ -35,18 +55,33 @@
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
+  id: PhasicScanningModuleStockPart
+  result: PhasicScanningModuleStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: PicoServoStockPart
+  result: PicoServoStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: UltraHighPowerMicroLaserStockPart
+  result: UltraHighPowerMicroLaserStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
   id: SuperMatterBinStockPart
   result: SuperMatterBinStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: FemtoManipulatorStockPart
-  result: FemtoManipulatorStockPart
+  id: TriphasicScanningModuleStockPart
+  result: TriphasicScanningModuleStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: BluespaceCapacitorStockPart
-  result: BluespaceCapacitorStockPart
+  id: FemtoServoStockPart
+  result: FemtoServoStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
@@ -55,8 +90,13 @@
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: QuantumManipulatorStockPart
-  result: QuantumManipulatorStockPart
+  id: QuadUltraMicroLaserStockPart
+  result: QuadUltraMicroLaserStockPart
+
+- type: latheRecipe
+  parent: BaseStockPartRecipe
+  id: BluespaceMatterBinStockPart
+  result: BluespaceMatterBinStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe

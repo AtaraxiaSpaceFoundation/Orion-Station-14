@@ -9,7 +9,7 @@
   - type: MachineBoard
     prototype: SlimeGrinder
     stackRequirements:
-      Manipulator: 5
+      Servo: 5 # Orion-Edit: Replaced manipulator
       Steel: 5
     tagRequirements:
       Knife:
