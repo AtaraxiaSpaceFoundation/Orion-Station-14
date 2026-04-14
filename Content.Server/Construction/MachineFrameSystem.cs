@@ -17,6 +17,8 @@
 
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
+using Content.Shared._Orion.Construction.Components;
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Construction.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -78,12 +80,23 @@ public sealed class MachineFrameSystem : EntitySystem
         // If this changes in the future, then RegenerateProgress() also needs to be updated.
         // Note that one entity is ALLOWED to satisfy more than one kind of component or tag requirements. This is
         // necessary in order to avoid weird entity-ordering shenanigans in RegenerateProgress().
-        if (TryComp<StackComponent>(args.Used, out var stack))
+        if (TryComp<StackComponent>(args.Used, out var stack)
+            && TryInsertStack(uid, args.Used, component, stack)) // Orion
         {
-            if (TryInsertStack(uid, args.Used, component, stack))
-                args.Handled = true;
+            // Orion-Edit-Start
+            args.Handled = true;
+            // Orion-Edit-End
             return;
         }
+
+        // Orion-Start
+        if (TryComp<MachinePartComponent>(args.Used, out var machinePart)
+            && TryInsertMachinePart(uid, args.Used, component, machinePart))
+        {
+            args.Handled = true;
+            return;
+        }
+        // Orion-End
 
         // Handle component requirements
         foreach (var (compName, info) in component.ComponentRequirements)
@@ -214,6 +227,31 @@ public sealed class MachineFrameSystem : EntitySystem
         return true;
     }
 
+    // Orion-Start
+    private bool TryInsertMachinePart(EntityUid uid, EntityUid used, MachineFrameComponent component, MachinePartComponent machinePart)
+    {
+        if (!component.PartRequirements.TryGetValue(machinePart.Part, out var requirement))
+            return false;
+
+        var progress = component.PartProgress[machinePart.Part];
+        if (progress >= requirement)
+            return false;
+
+        if (!_container.TryRemoveFromContainer(used, false, out var wasInContainer) && wasInContainer)
+            return false;
+
+        if (!_container.Insert(used, component.PartContainer))
+            return true;
+
+        component.PartProgress[machinePart.Part]++;
+
+        if (IsComplete(component))
+            _popupSystem.PopupEntity(Loc.GetString("machine-frame-component-on-complete"), uid);
+
+        return true;
+    }
+    // Orion-End
+
     public bool IsComplete(MachineFrameComponent component)
     {
         if (!component.HasBoard)
@@ -224,6 +262,14 @@ public sealed class MachineFrameSystem : EntitySystem
             if (component.MaterialProgress[type] < amount)
                 return false;
         }
+
+        // Orion-Start
+        foreach (var (type, amount) in component.PartRequirements)
+        {
+            if (component.PartProgress[type] < amount)
+                return false;
+        }
+        // Orion-End
 
         foreach (var (compName, info) in component.ComponentRequirements)
         {
@@ -243,10 +289,12 @@ public sealed class MachineFrameSystem : EntitySystem
     public void ResetProgressAndRequirements(MachineFrameComponent component, MachineBoardComponent machineBoard)
     {
         component.MaterialRequirements = new Dictionary<ProtoId<StackPrototype>, int>(machineBoard.StackRequirements);
+        component.PartRequirements = new Dictionary<ProtoId<MachinePartPrototype>, int>(machineBoard.PartRequirements); // Orion
         component.ComponentRequirements = new Dictionary<string, GenericPartInfo>(machineBoard.ComponentRequirements);
         component.TagRequirements = new Dictionary<ProtoId<TagPrototype>, GenericPartInfo>(machineBoard.TagRequirements);
 
         component.MaterialProgress.Clear();
+        component.PartProgress.Clear(); // Orion
         component.ComponentProgress.Clear();
         component.TagProgress.Clear();
 
@@ -254,6 +302,13 @@ public sealed class MachineFrameSystem : EntitySystem
         {
             component.MaterialProgress[stackType] = 0;
         }
+
+        // Orion-Start
+        foreach (var (partType, _) in component.PartRequirements)
+        {
+            component.PartProgress[partType] = 0;
+        }
+        // Orion-End
 
         foreach (var (compName, _) in component.ComponentRequirements)
         {
@@ -272,9 +327,11 @@ public sealed class MachineFrameSystem : EntitySystem
         {
             component.TagRequirements.Clear();
             component.MaterialRequirements.Clear();
+            component.PartRequirements.Clear(); // Orion
             component.ComponentRequirements.Clear();
             component.TagRequirements.Clear();
             component.MaterialProgress.Clear();
+            component.PartProgress.Clear(); // Orion
             component.ComponentProgress.Clear();
             component.TagProgress.Clear();
 
@@ -292,12 +349,15 @@ public sealed class MachineFrameSystem : EntitySystem
 
         foreach (var part in component.PartContainer.ContainedEntities)
         {
-            if (TryComp<StackComponent>(part, out var stack))
+            if (TryComp<StackComponent>(part, out var stack)
+                && component.MaterialRequirements.ContainsKey(stack.StackTypeId)) // Orion
             {
                 var type = stack.StackTypeId;
 
+/* // Orion-Edit
                 if (!component.MaterialRequirements.ContainsKey(type))
                     continue;
+*/
 
                 if (!component.MaterialProgress.ContainsKey(type))
                     component.MaterialProgress[type] = stack.Count;
@@ -306,6 +366,19 @@ public sealed class MachineFrameSystem : EntitySystem
 
                 continue;
             }
+
+            // Orion-Start
+            if (TryComp<MachinePartComponent>(part, out var machinePart))
+            {
+                if (!component.PartRequirements.ContainsKey(machinePart.Part))
+                    continue;
+
+                if (!component.PartProgress.TryAdd(machinePart.Part, 1))
+                    component.PartProgress[machinePart.Part]++;
+
+                continue;
+            }
+            // Orion-End
 
             // I have many regrets.
             foreach (var (compName, _) in component.ComponentRequirements)

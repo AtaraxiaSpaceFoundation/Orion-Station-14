@@ -18,13 +18,14 @@
   - type: MachineBoard
     prototype: RoboticArm
     stackRequirements:
-      Servo: 4 # Orion-Edit: Replaced manipulator
       Steel: 6
       Cable: 5
     tagRequirements:
       BorgArm:
         amount: 2
         defaultPrototype: LeftArmBorg
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -37,13 +38,14 @@
   - type: MachineBoard
     prototype: Constructor
     stackRequirements:
-      Servo: 5 # Orion-Edit: Replaced manipulator
       Steel: 10
       Cable: 5
     tagRequirements:
       BorgArm:
         amount: 4
         defaultPrototype: LeftArmBorg
+    partRequirements: # Orion
+      Servo: 5
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -54,8 +56,9 @@
   - type: MachineBoard
     prototype: StorageBin
     stackRequirements:
-      Servo: 4 # Orion-Edit: Replaced manipulator
       Steel: 1
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -68,13 +71,14 @@
   - type: MachineBoard
     prototype: Interactor
     stackRequirements:
-      Servo: 4 # Orion-Edit: Replaced manipulator
       Plastic: 4
       Cable: 5
     tagRequirements:
       BorgArm:
         amount: 1
         defaultPrototype: LeftArmBorg
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -87,9 +91,10 @@
   - type: MachineBoard
     prototype: VinylPlayer
     stackRequirements:
-      Servo: 1 # Orion-Edit: Replaced manipulator
       Steel: 1
       WoodPlank: 3
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -102,9 +107,10 @@
   - type: MachineBoard
     prototype: TapeDeck
     stackRequirements:
-      Servo: 2 # Orion-Edit: Replaced manipulator
       Plastic: 3
       WoodPlank: 5
+    partRequirements: # Orion
+      Servo: 2
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -117,11 +123,12 @@
   - type: MachineBoard
     prototype: StationRadioServer
     stackRequirements:
-      Servo: 1 # Orion-Edit: Replaced manipulator
       Steel: 10
       Plastic: 10
       Plasma: 5
       CableHV: 4
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -134,10 +141,11 @@
   - type: MachineBoard
     prototype: StationRadioRig
     stackRequirements:
-      Servo: 3 # Orion-Edit: Replaced manipulator
       Steel: 5
       Glass: 5
       Cable: 2
+    partRequirements: # Orion
+      Servo: 3
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -150,8 +158,9 @@
   - type: MachineBoard
     prototype: StationRadioReceiver
     stackRequirements:
-      Servo: 1 # Orion-Edit: Replaced manipulator
       Cable: 2
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   id: VirologyServerMachineCircuitboard

@@ -85,8 +85,8 @@
 
 - type: latheRecipe
   parent: BaseStockPartRecipe
-  id: BluespaceMatterBinStockPart
-  result: BluespaceMatterBinStockPart
+  id: BluespaceCapacitorStockPart
+  result: BluespaceCapacitorStockPart
 
 - type: latheRecipe
   parent: BaseStockPartRecipe

@@ -4,11 +4,12 @@
   name: document printer machine board
   description: A machine printed circuit board for a document printer
   components:
-    - type: MachineBoard
-      prototype: DocumentPrinter
-      stackRequirements:
-        Servo: 2 # Orion-Edit: Replaced manipulator
-        Glass: 1
+  - type: MachineBoard
+    prototype: DocumentPrinter
+    stackRequirements:
+      Glass: 1
+    partRequirements:
+      Servo: 2
 
 - type: entity
   parent: ProtolatheMachineCircuitboard
@@ -35,8 +36,9 @@
   - type: MachineBoard
     prototype: ResearchDestructiveAnalyzer
     stackRequirements:
-      Servo: 2 # Orion-Edit: Replaced manipulator
       Cable: 5
+    partRequirements:
+      Servo: 2
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -49,6 +51,7 @@
   - type: MachineBoard
     prototype: ResearchExperimentalDestructiveScanner
     stackRequirements:
-      Servo: 2 # Orion-Edit: Replaced manipulator
       Glass: 5
       Cable: 5
+    partRequirements:
+      Servo: 2

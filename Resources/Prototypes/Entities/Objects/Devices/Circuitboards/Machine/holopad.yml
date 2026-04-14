@@ -12,6 +12,7 @@
     - type: MachineBoard
       prototype: Holopad
       stackRequirements:
-        Servo: 4 # Orion-Edit: Replaced manipulator
         Cable: 4
         Glass: 2
+      partRequirements: # Orion
+        Servo: 4

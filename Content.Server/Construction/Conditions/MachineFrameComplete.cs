@@ -16,6 +16,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Construction.Components;
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Construction;
 using Content.Shared.Examine;
 using JetBrains.Annotations;
@@ -81,6 +82,31 @@ namespace Content.Server.Construction.Conditions
                                            ("amount", amount),
                                            ("elementName", stackEnt.Name)));
             }
+
+            // Orion-Start
+            foreach (var (partType, required) in machineFrame.PartRequirements)
+            {
+                var amount = required - machineFrame.PartProgress[partType];
+
+                if (amount == 0)
+                    continue;
+
+                string elementName;
+                if (protoManager.TryIndex(partType, out var machinePart))
+                {
+                    var partEnt = protoManager.Index(machinePart.StockPartPrototype);
+                    elementName = partEnt.Name;
+                }
+                else
+                {
+                    elementName = partType;
+                }
+
+                args.PushMarkup(Loc.GetString("construction-condition-machine-frame-required-element-entry",
+                    ("amount", amount),
+                    ("elementName", elementName)));
+            }
+            // Orion-End
 
             foreach (var (compName, info) in machineFrame.ComponentRequirements)
             {
