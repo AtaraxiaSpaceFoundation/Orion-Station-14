@@ -71,6 +71,9 @@
   id: SlotMinigunEnergy
 
 - type: Tag
+  id: TapeRecorderCoin
+
+- type: Tag
   id: UnitedEarthGovernment
 
 - type: Tag

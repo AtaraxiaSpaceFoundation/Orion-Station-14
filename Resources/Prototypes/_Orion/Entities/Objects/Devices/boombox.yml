@@ -41,3 +41,56 @@
           SheetSteel1:
             min: 1
             max: 3
+
+- type: entity
+  parent: BaseItem
+  id: Jukebox
+  name: jukebox
+  description: Альфа-Шкварки
+  suffix: Empty
+  components:
+    - type: Jukebox
+    - type: Sprite
+      sprite: _Orion/Objects/Devices/boombox.rsi
+      layers:
+        - state: boombox
+        - state: boombox_working_overlay
+          map: ["bars"]
+      netsync: false
+    - type: Item
+      sprite: _Orion/Objects/Devices/boombox.rsi
+      heldPrefix: boombox
+      size: 500
+    - type: UserInterface
+      interfaces:
+        - key: enum.JukeboxUIKey.Key
+          type: JukeboxBUI
+    - type: ActivatableUI
+      key: enum.JukeboxUIKey.Key
+
+- type: entity
+  parent: BaseItem
+  id: TapeRecorder
+  name: tape recorder
+  suffix: Empty
+  components:
+    - type: TapeCreator
+      coins: 3
+    - type: Sprite
+      scale: 0.7, 0.7
+      sprite: White/Objects/Devices/tapeRecorder.rsi
+      layers:
+        - state: base
+        - state: tape
+          map: ["tape"]
+          visible: false
+      netsync: false
+    - type: Item
+      sprite: White/Objects/Devices/tapeRecorder.rsi
+      heldPrefix: tapeRecorder
+    - type: UserInterface
+      interfaces:
+        - key: enum.TapeCreatorUIKey.Key
+          type: TapeCreatorBUI
+    - type: ActivatableUI
+      key: enum.TapeCreatorUIKey.Key

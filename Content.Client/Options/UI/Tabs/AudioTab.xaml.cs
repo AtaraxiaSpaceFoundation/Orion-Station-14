@@ -87,7 +87,7 @@ public sealed partial class AudioTab : Control
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        var masterVolume = Control.AddOptionPercentSlider(
+        var masterVolume = Control.AddOptionPercentSlider( // TODO залить изменения в данный файл
             CVars.AudioMasterVolume,
             SliderVolumeMaster,
             scale: ContentAudioSystem.MasterVolumeMultiplier);

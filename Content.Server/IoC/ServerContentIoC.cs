@@ -193,6 +193,7 @@ using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
 using Content.Server.Voting.Managers;
+using Content.Server.White.Jukebox; // Orion
 using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
@@ -256,6 +257,7 @@ namespace Content.Server.IoC
             IoCManager.Register<ChatProtectionSystem>();
             IoCManager.Register<EmoteProtectionSystem>();
             IoCManager.Register<AdminActionProtectionSystem>();
+            IoCManager.Register<ServerJukeboxSongsSyncManager>();
             // Orion-End
         }
     }

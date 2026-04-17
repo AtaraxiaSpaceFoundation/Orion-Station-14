@@ -1,0 +1,27 @@
+﻿- type: entity
+  parent: BaseItem
+  id: BaseTape
+  name: baseTape
+  abstract: true
+  noSpawn: true
+  description: это база
+  suffix: Empty
+  components:
+    - type: Tape
+    - type: Sprite
+      sprite: Objects/Devices/jukeboxStuff/tape.rsi
+      layers:
+        - state: tape
+      netsync: false
+    - type: Item
+      sprite: Objects/Devices/jukeboxStuff/tape.rsi
+      heldPrefix: tape
+    - type: EmitSoundOnLand
+      sound:
+        path: /Audio/_Orion/Jukebox/tape_fall.ogg
+
+- type: entity
+  parent: BaseTape
+  id: TapeEmpty
+  name: Old tape
+  description: Ligma balls
