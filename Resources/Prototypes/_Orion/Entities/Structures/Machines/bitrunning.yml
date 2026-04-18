@@ -47,7 +47,7 @@
   description: Neural link pod for bitrunning avatar sessions.
   components:
   - type: Sprite
-    sprite: _Orion/Structures/Machines/quantum_server.rsi
+    sprite: _Orion/Structures/Machines/netpod.rsi
     state: netpod
   - type: ContainerContainer
     containers:
