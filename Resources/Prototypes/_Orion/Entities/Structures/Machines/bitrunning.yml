@@ -1,0 +1,62 @@
+- type: entity
+  parent: BaseMachinePowered
+  id: QuantumServer
+  name: quantum server
+  description: High density simulation hardware for virtual domains.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/quantum_server.rsi
+    layers:
+    - state: qserver
+  - type: QuantumServer
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  parent: BaseComputer
+  id: QuantumConsole
+  name: quantum console
+  description: Console for selecting and controlling bitrunning domains.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/computers.rsi
+    state: generic
+  - type: ActivatableUI
+    key: enum.QuantumConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.QuantumConsoleUiKey.Key:
+        type: QuantumConsoleBoundUserInterface
+  - type: QuantumConsole
+
+- type: entity
+  parent: BaseMachinePowered
+  id: Netpod
+  name: netpod
+  description: Neural link pod for bitrunning avatar sessions.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/quantum_server.rsi
+    state: netpod
+  - type: ContainerContainer
+    containers:
+      netpod-body:
+        !type:ContainerSlot
+        showEnts: true
+  - type: EmptyOnMachineDeconstruct
+    containers:
+      - netpod-body
+  - type: Climbable
+    vaultable: false
+  - type: Netpod

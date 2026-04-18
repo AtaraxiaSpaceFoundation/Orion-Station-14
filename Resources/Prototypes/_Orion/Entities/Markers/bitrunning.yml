@@ -1,0 +1,43 @@
+- type: entity
+  parent: MarkerBase
+  id: BitrunningExitMarker
+  name: exit marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: BitrunningExitMarker
+
+- type: entity
+  parent: MarkerBase
+  id: BitrunningGoalMarker
+  name: goal marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: BitrunningGoalMarker
+
+- type: entity
+  parent: MarkerBase
+  id: BitrunningCacheMarker
+  name: cache marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: BitrunningCacheMarker
+
+- type: entity
+  parent: MarkerBase
+  id: BitrunningSpawnMarker
+  name: spawn marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: BitrunningSpawnMarker

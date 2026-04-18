@@ -1,0 +1,145 @@
+using Content.Shared._Orion.Bitrunning;
+using Content.Shared._Orion.Bitrunning.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Timing;
+
+namespace Content.Server._Orion.Bitrunning.Systems;
+
+public sealed class QuantumConsoleSystem : EntitySystem
+{
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly QuantumServerSystem _server = default!;
+    [Dependency] private readonly BitrunningDomainSystem _domains = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    private static readonly TimeSpan UiRefresh = TimeSpan.FromSeconds(1);
+    private TimeSpan _nextRefresh;
+
+    public override void Initialize()
+    {
+        SubscribeLocalEvent<QuantumConsoleComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleLoadDomainMessage>(OnLoadDomain);
+        SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleRandomDomainMessage>(OnRandomDomain);
+        SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleStopDomainMessage>(OnStopDomain);
+        SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleRefreshMessage>(OnRefresh);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_timing.CurTime < _nextRefresh)
+            return;
+
+        _nextRefresh = _timing.CurTime + UiRefresh;
+        var query = EntityQueryEnumerator<QuantumConsoleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (!_ui.IsUiOpen(uid, QuantumConsoleUiKey.Key))
+                continue;
+
+            UpdateUi((uid, comp));
+        }
+    }
+
+    private void OnUiOpened(Entity<QuantumConsoleComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateUi(ent);
+    }
+
+    private void OnLoadDomain(Entity<QuantumConsoleComponent> ent, ref QuantumConsoleLoadDomainMessage args)
+    {
+        var server = FindServer(ent);
+        if (server == null)
+            return;
+
+        _server.TryColdBoot(server.Value, args.DomainId);
+        UpdateUi(ent);
+    }
+
+    private void OnRandomDomain(Entity<QuantumConsoleComponent> ent, ref QuantumConsoleRandomDomainMessage args)
+    {
+        var server = FindServer(ent);
+        if (server == null)
+            return;
+
+        var domain = _server.GetRandomDomainId(server.Value);
+        if (domain == null)
+            return;
+
+        _server.TryColdBoot(server.Value, domain, true);
+        UpdateUi(ent);
+    }
+
+    private void OnStopDomain(Entity<QuantumConsoleComponent> ent, ref QuantumConsoleStopDomainMessage args)
+    {
+        var serverUid = FindServer(ent);
+        if (serverUid == null || !TryComp<QuantumServerComponent>(serverUid, out var serverComp))
+            return;
+
+        _server.StopDomain((serverUid.Value, serverComp));
+        UpdateUi(ent);
+    }
+
+    private void OnRefresh(Entity<QuantumConsoleComponent> ent, ref QuantumConsoleRefreshMessage args)
+    {
+        UpdateUi(ent);
+    }
+
+    private void UpdateUi(Entity<QuantumConsoleComponent> ent)
+    {
+        var serverUid = FindServer(ent);
+        if (serverUid == null || !TryComp<QuantumServerComponent>(serverUid, out var server))
+        {
+            _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key,
+                new QuantumConsoleBoundUiState(false, null, null, 0, 0, 0, BitrunningServerState.Ready,
+                    new List<BitrunningDomainListing>(), new List<BitrunningOccupantListing>()));
+            return;
+        }
+
+        var domains = new List<BitrunningDomainListing>();
+        foreach (var domain in _domains.GetAllDomains())
+        {
+            domains.Add(new BitrunningDomainListing(
+                domain.ID,
+                _domains.GetDisplayName(domain, server.ScannerTier, server.Points),
+                _domains.GetDisplayDescription(domain, server.ScannerTier, server.Points),
+                domain.Cost,
+                _domains.GetDisplayReward(domain, server.ScannerTier, server.Points),
+                domain.Difficulty.ToString(),
+                domain.IsModular,
+                domain.HasSecondaryObjectives));
+        }
+
+        var occupants = new List<BitrunningOccupantListing>();
+        foreach (var uid in server.Occupants)
+        {
+            if (!Exists(uid))
+                continue;
+
+            var name = Name(uid);
+            var noHit = CompOrNull<AvatarConnectionComponent>(uid)?.NoHit ?? false;
+            occupants.Add(new BitrunningOccupantListing(name, noHit));
+        }
+
+        _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key,
+            new QuantumConsoleBoundUiState(true, GetNetEntity(serverUid.Value), server.CurrentDomain, server.Occupants.Count,
+                server.Points, server.ScannerTier, server.State, domains, occupants));
+    }
+
+    private EntityUid? FindServer(Entity<QuantumConsoleComponent> ent)
+    {
+        var nearby = _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.LinkRange);
+        foreach (var uid in nearby)
+        {
+            if (uid == ent.Owner)
+                continue;
+
+            if (HasComp<QuantumServerComponent>(uid))
+                return uid;
+        }
+
+        return null;
+    }
+}

@@ -44,4 +44,7 @@
   - CargoRequestComputerCircuitboard
   - CargoBountyComputerCircuitboard
   - MaterialSiloMachineCircuitboard
+  - QuantumConsoleCircuitboard
+  - QuantumServerMachineCircuitboard
+  - NetpodMachineCircuitboard
   # Orion-End

@@ -1,0 +1,13 @@
+- type: entity
+  parent: MarkerBase
+  id: BitrunningEncryptedCacheObjectiveSpawner
+  name: encrypted cache spawner
+  suffix: Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: RandomSpawner
+    prototypes:
+      - EncryptedCacheNode

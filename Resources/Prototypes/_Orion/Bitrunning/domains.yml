@@ -1,0 +1,9 @@
+- type: bitrunningVirtualDomain
+  id: TrainingDomain
+  name: bitrunning-domain-training-name
+  description: bitrunning-domain-training-desc
+  cost: 0
+  rewardPoints: 4
+  mapPath: /Maps/_Lavaland/Shelters/shelter_5x5.yml
+  objectiveGoalPoints: 3
+  flags: [ "safehouse", "entry-protected" ]

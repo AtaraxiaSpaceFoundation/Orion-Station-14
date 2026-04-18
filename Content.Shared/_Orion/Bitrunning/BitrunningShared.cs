@@ -1,0 +1,31 @@
+using Robust.Shared.Serialization;
+
+namespace Content.Shared._Orion.Bitrunning;
+
+[NetSerializable, Serializable]
+public enum BitrunningServerState : byte
+{
+    Ready,
+    Running,
+    CoolingDown,
+}
+
+[NetSerializable, Serializable]
+public enum BitrunningGrade : byte
+{
+    D,
+    C,
+    B,
+    A,
+    S,
+}
+
+[NetSerializable, Serializable]
+public enum BitrunningDifficulty : byte
+{
+    Trivial,
+    Easy,
+    Medium,
+    Hard,
+    Extreme,
+}

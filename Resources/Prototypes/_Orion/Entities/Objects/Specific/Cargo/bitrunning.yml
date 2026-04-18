@@ -1,0 +1,15 @@
+- type: entity
+  id: EncryptedCacheNode
+  name: encrypted cache
+  description: Broken matrix, watafa pepe?
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Cargo/Bitrunning/encrypted_cache.rsi
+    state: icon
+    layers:
+      - state: icon
+        shader: unshaded
+      - state: overlay
+        shader: unshaded
+  - type: Physics
+    bodyType: Static
