@@ -101,4 +101,10 @@
     entryDelay: 1
   - type: ExitContainerOnMove
     containerId: netpod-body
+  - type: ActivatableUI
+    key: enum.NetpodUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.NetpodUiKey.Key:
+        type: NetpodBoundUserInterface
   - type: Netpod

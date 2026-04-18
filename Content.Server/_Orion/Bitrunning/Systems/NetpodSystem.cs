@@ -2,8 +2,13 @@ using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared.Implants;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Power;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Bitrunning.Systems;
@@ -15,6 +20,8 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.5);
 
@@ -24,6 +31,9 @@ public sealed class NetpodSystem : EntitySystem
         SubscribeLocalEvent<NetpodComponent, EntityTerminatingEvent>(OnDestroyed);
         SubscribeLocalEvent<NetpodComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<NetpodComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
+        SubscribeLocalEvent<NetpodComponent, PowerChangedEvent>(OnPowerChanged);
+        SubscribeLocalEvent<NetpodComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<NetpodComponent, NetpodSelectOutfitMessage>(OnSelectOutfit);
     }
 
     private void OnInit(Entity<NetpodComponent> ent, ref ComponentInit args)
@@ -36,11 +46,22 @@ public sealed class NetpodSystem : EntitySystem
 
     private void OnDestroyed(Entity<NetpodComponent> ent, ref EntityTerminatingEvent args)
     {
-        if (TryComp<NetpodContainerComponent>(ent, out var containerComp) && containerComp.BodyContainer.ContainedEntity is { } contained)
-            _container.Remove(contained, containerComp.BodyContainer);
+        EjectOccupant(ent.Owner);
 
         if (ent.Comp.Avatar != null)
             _server.DisconnectAvatar(ent.Comp.Avatar.Value, true);
+    }
+
+    private void OnPowerChanged(Entity<NetpodComponent> ent, ref PowerChangedEvent args)
+    {
+        if (args.Powered)
+            return;
+
+        if (ent.Comp.Avatar != null)
+            _server.DisconnectAvatar(ent.Comp.Avatar.Value, true);
+
+        EjectOccupant(ent.Owner);
+        UpdateVisuals(ent);
     }
 
     private void OnEntInserted(Entity<NetpodComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -50,6 +71,14 @@ public sealed class NetpodSystem : EntitySystem
 
         ent.Comp.Occupant = args.Entity;
         Dirty(ent);
+
+        if (TryComp<MobStateComponent>(args.Entity, out var mobState) && mobState.CurrentState == MobState.Dead)
+        {
+            EjectOccupant(ent.Owner);
+            _popup.PopupEntity(Loc.GetString("bitrunning-netpod-enter-failed"), ent, args.Entity);
+            return;
+        }
+
         if (ent.Comp.Avatar != null)
         {
             UpdateVisuals(ent);
@@ -90,6 +119,45 @@ public sealed class NetpodSystem : EntitySystem
 
             UpdateVisuals(ent);
         });
+    }
+
+    private void OnUiOpened(Entity<NetpodComponent> ent, ref BoundUIOpenedEvent args)
+    {
+        UpdateUi(ent);
+    }
+
+    private void OnSelectOutfit(Entity<NetpodComponent> ent, ref NetpodSelectOutfitMessage args)
+    {
+        if (!_prototype.HasIndex<ChameleonOutfitPrototype>(args.OutfitId))
+            return;
+
+        ent.Comp.PreferredOutfit = args.OutfitId;
+        Dirty(ent);
+        UpdateUi(ent);
+    }
+
+    private void UpdateUi(Entity<NetpodComponent> ent)
+    {
+        var outfits = new List<NetpodOutfitEntry>();
+        foreach (var outfit in _prototype.EnumeratePrototypes<ChameleonOutfitPrototype>())
+        {
+            var displayName = outfit.LoadoutName ?? outfit.Name ?? outfit.ID;
+            outfits.Add(new NetpodOutfitEntry(outfit.ID, Loc.GetString(displayName)));
+        }
+
+        outfits.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
+        _ui.SetUiState(ent.Owner, NetpodUiKey.Key, new NetpodBoundUiState(ent.Comp.PreferredOutfit, outfits));
+    }
+
+    public bool EjectOccupant(EntityUid podUid)
+    {
+        if (!TryComp<NetpodContainerComponent>(podUid, out var containerComp))
+            return false;
+
+        if (containerComp.BodyContainer.ContainedEntity is not { } contained)
+            return false;
+
+        return _container.Remove(contained, containerComp.BodyContainer);
     }
 
     private EntityUid? ResolveServer(Entity<NetpodComponent> ent)

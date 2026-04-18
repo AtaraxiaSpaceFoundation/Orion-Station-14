@@ -14,12 +14,14 @@ namespace Content.Client._Orion.Bitrunning.UI;
 public sealed partial class QuantumConsoleWindow : DefaultWindow
 {
     public Action<string>? OnLoadDomain;
+    public Action<bool>? OnBroadcastToggle;
     public Action? OnRandomDomain;
     public Action? OnStopDomain;
     public Action? OnRefresh;
 
     private QuantumConsoleBoundUiState? _lastState;
     private string? _selectedDifficulty;
+    private bool _updatingToggle;
 
     public QuantumConsoleWindow()
     {
@@ -31,7 +33,13 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         RandomButton.OnPressed += _ => OnRandomDomain?.Invoke();
         StopButton.OnPressed += _ => OnStopDomain?.Invoke();
         RefreshButton.OnPressed += _ => OnRefresh?.Invoke();
-        BroadcastToggle.Disabled = true;
+        BroadcastToggle.OnToggled += args =>
+        {
+            if (_updatingToggle)
+                return;
+
+            OnBroadcastToggle?.Invoke(args.Pressed);
+        };
     }
 
     public void UpdateState(QuantumConsoleBoundUiState state)
@@ -46,16 +54,57 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         PointsValue.Text = Loc.GetString("bitrunning-ui-points-badge", ("points", state.Points.ToString(CultureInfo.InvariantCulture)));
         ClientsHeader.Text = Loc.GetString("bitrunning-ui-clients-header-count", ("count", state.Occupants.ToString(CultureInfo.InvariantCulture)));
         ScannerValue.Text = Loc.GetString("bitrunning-ui-scanner-inline", ("scanner", state.ScannerTier.ToString(CultureInfo.InvariantCulture)));
-        StateValue.Text = Loc.GetString("bitrunning-ui-server-state", ("state", state.State.ToString()));
+        StateValue.Text = GetStateText(state);
 
         CurrentDomainValue.Text = state.CurrentDomain ?? Loc.GetString("bitrunning-ui-current-domain-none");
         CurrentDomainValue.FontColorOverride = state.CurrentDomain == null ? Color.Silver : Color.AliceBlue;
 
+        _updatingToggle = true;
+        BroadcastToggle.Pressed = state.Broadcast;
+        _updatingToggle = false;
+
         StopButton.Disabled = state.State != BitrunningServerState.Running;
 
+        UpdateCooldown(state);
         RebuildDomainList(state);
         RebuildClientList(state);
         UpdateDifficultySelectionVisuals();
+    }
+
+    private static string GetStateText(QuantumConsoleBoundUiState state)
+    {
+        var text = state.State switch
+        {
+            BitrunningServerState.Ready => Loc.GetString("bitrunning-ui-state-ready"),
+            BitrunningServerState.Running => Loc.GetString("bitrunning-ui-state-running"),
+            BitrunningServerState.CoolingDown => Loc.GetString("bitrunning-ui-state-cooling"),
+            _ => state.State.ToString(),
+        };
+
+        if (state.State != BitrunningServerState.CoolingDown)
+            return Loc.GetString("bitrunning-ui-server-state", ("state", text));
+
+        var remaining = TimeSpan.FromSeconds(state.CooldownRemainingSeconds);
+        var formatted = $"{remaining.Minutes:D2}:{remaining.Seconds:D2}";
+        text = Loc.GetString("bitrunning-ui-state-cooling-time", ("time", formatted));
+
+        return Loc.GetString("bitrunning-ui-server-state", ("state", text));
+    }
+
+    private void UpdateCooldown(QuantumConsoleBoundUiState state)
+    {
+        if (state.State != BitrunningServerState.CoolingDown || state.CooldownTotalSeconds <= 0)
+        {
+            CooldownLabel.Text = Loc.GetString("bitrunning-ui-cooldown-ready");
+            CooldownBar.Value = 1f;
+            CooldownBar.ModulateSelfOverride = Color.FromHex("#3fa34d");
+            return;
+        }
+
+        var progress = 1f - Math.Clamp(state.CooldownRemainingSeconds / state.CooldownTotalSeconds, 0f, 1f);
+        CooldownLabel.Text = Loc.GetString("bitrunning-ui-cooldown-active");
+        CooldownBar.Value = progress;
+        CooldownBar.ModulateSelfOverride = Color.FromHex("#d19b2a");
     }
 
     private void RebuildDomainList(QuantumConsoleBoundUiState state)
@@ -78,10 +127,10 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         if (state.ConnectedAvatars.Count == 0)
         {
             ClientList.AddChild(new Label
-                {
-                    Text = Loc.GetString("bitrunning-ui-no-clients"),
-                    FontColorOverride = Color.FromHex("#8d8d8d"),
-                });
+            {
+                Text = Loc.GetString("bitrunning-ui-no-clients"),
+                FontColorOverride = Color.FromHex("#8d8d8d"),
+            });
             return;
         }
 
@@ -109,14 +158,10 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             Text = Loc.GetString("bitrunning-ui-domain-entry-tg", ("name", domain.Name)),
             TextAlign = Label.AlignMode.Left,
             MinSize = new Vector2(0f, 23f),
-            ToolTip = Loc.GetString("bitrunning-ui-domain-info",
-                ("description", domain.Description),
-                ("reward", domain.Reward),
-                ("difficulty", domain.Difficulty)),
             ModulateSelfOverride = GetDifficultyColor(domain.Difficulty),
-            Disabled = !canDeploy,
         };
-        domainButton.OnPressed += _ => OnLoadDomain?.Invoke(domain.Id);
+        domainButton.OnPressed += _ => SelectedDomainInfo.Text = Loc.GetString("bitrunning-ui-domain-info",
+            ("description", domain.Description));
 
         var deployText = isCurrent && state.State == BitrunningServerState.Running
             ? Loc.GetString("bitrunning-ui-button-deployed")
@@ -152,19 +197,49 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             HorizontalExpand = true,
         });
 
-        row.AddChild(new Label
+        var icons = new BoxContainer
         {
-            Text = client.NoHit
-                ? Loc.GetString("bitrunning-ui-client-icons-nohit")
-                : Loc.GetString("bitrunning-ui-client-icons-default"),
-            FontColorOverride = Color.Silver,
-        });
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            SeparationOverride = 3,
+        };
 
+        icons.AddChild(CreateIconBadge("•", "bitrunning-ui-client-icon-linked"));
+        icons.AddChild(CreateIconBadge("◔", "bitrunning-ui-client-icon-signal"));
+        icons.AddChild(CreateIconBadge("◕", "bitrunning-ui-client-icon-active"));
+
+        if (client.NoHit)
+            icons.AddChild(CreateIconBadge("✓", "bitrunning-ui-client-icon-nohit"));
+
+        row.AddChild(icons);
         row.AddChild(CreatePercentBadge(client.NoHit
             ? Loc.GetString("bitrunning-ui-client-percent-perfect")
             : Loc.GetString("bitrunning-ui-client-percent-online")));
 
         return row;
+    }
+
+    private static Control CreateIconBadge(string icon, string tooltipKey)
+    {
+        var panel = new PanelContainer
+        {
+            PanelOverride = new StyleBoxFlat
+            {
+                BackgroundColor = Color.FromHex("#1f2537"),
+                ContentMarginLeftOverride = 4,
+                ContentMarginRightOverride = 4,
+                ContentMarginTopOverride = 0,
+                ContentMarginBottomOverride = 0,
+            },
+            ToolTip = Loc.GetString(tooltipKey),
+        };
+
+        panel.AddChild(new Label
+        {
+            Text = icon,
+            FontColorOverride = Color.Silver,
+        });
+
+        return panel;
     }
 
     private static Control CreatePercentBadge(string text)
@@ -268,6 +343,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         PointsValue.FontColorOverride = Color.HotPink;
         VirtualDomainsHeader.FontColorOverride = Color.White;
         ClientsHeader.FontColorOverride = Color.White;
+        SelectedDomainInfo.FontColorOverride = Color.Silver;
         MetaRow.Visible = true;
     }
 

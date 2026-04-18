@@ -42,18 +42,27 @@
         </PanelContainer>
 
         <PanelContainer Name="ActiveDomainPanel">
-            <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="6 4 6 4">
-                <PanelContainer Name="ActiveDomainBadge" HorizontalExpand="True">
-                    <Label Name="CurrentDomainValue" Margin="6 2 6 2" HorizontalExpand="True" Text="-"/>
-                </PanelContainer>
-                <Button Name="StopButton" Text="{Loc 'bitrunning-ui-button-stop'}"/>
+            <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="6 4 6 4">
+                <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                    <PanelContainer Name="ActiveDomainBadge" HorizontalExpand="True">
+                        <Label Name="CurrentDomainValue" Margin="6 2 6 2" HorizontalExpand="True" Text="-"/>
+                    </PanelContainer>
+                    <Button Name="StopButton" Text="{Loc 'bitrunning-ui-button-stop'}"/>
+                </BoxContainer>
+                <Label Name="SelectedDomainInfo" Text="-" ClipText="True"/>
             </BoxContainer>
         </PanelContainer>
 
-        <BoxContainer Name="MetaRow" Orientation="Horizontal" SeparationOverride="8">
-            <Label Name="ConnectedValue" HorizontalExpand="True" Text="-"/>
-            <Label Name="ScannerValue" Text="-"/>
-            <Label Name="StateValue" Text="-"/>
+        <BoxContainer Name="MetaRow" Orientation="Vertical" SeparationOverride="4">
+            <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                <Label Name="ConnectedValue" HorizontalExpand="True" Text="-"/>
+                <Label Name="ScannerValue" Text="-"/>
+                <Label Name="StateValue" Text="-"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                <Label Name="CooldownLabel" Text="-"/>
+                <ProgressBar Name="CooldownBar" HorizontalExpand="True" MinValue="0" MaxValue="1" Value="1"/>
+            </BoxContainer>
         </BoxContainer>
     </BoxContainer>
 </DefaultWindow>

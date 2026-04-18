@@ -1,4 +1,6 @@
+using Content.Shared.Implants;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
 
@@ -13,4 +15,7 @@ public sealed partial class NetpodComponent : Component
 
     [DataField, AutoNetworkedField]
     public EntityUid? Avatar;
+
+    [DataField, AutoNetworkedField]
+    public ProtoId<ChameleonOutfitPrototype>? PreferredOutfit;
 }

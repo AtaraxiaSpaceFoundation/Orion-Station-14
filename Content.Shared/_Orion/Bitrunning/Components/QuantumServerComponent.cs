@@ -33,6 +33,12 @@ public sealed partial class QuantumServerComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan Cooldown = TimeSpan.FromMinutes(2);
 
+    [DataField, AutoNetworkedField]
+    public TimeSpan CooldownEndTime;
+
+    [DataField, AutoNetworkedField]
+    public bool BroadcastEnabled;
+
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<BitrunningVirtualDomainPrototype>)), AutoNetworkedField]
     public string? CurrentDomain;
 

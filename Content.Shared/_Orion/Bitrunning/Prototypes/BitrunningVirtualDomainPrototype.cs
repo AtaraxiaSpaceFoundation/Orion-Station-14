@@ -1,3 +1,4 @@
+using Content.Shared.Implants;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
@@ -87,4 +88,16 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// </summary>
     [DataField]
     public string[] OptionalGhostRoles { get; private set; } = [];
+
+    /// <summary>
+    /// If true, avatar entities are deleted once a bitrunner disconnects from them.
+    /// </summary>
+    [DataField]
+    public bool DeleteAvatarOnDisconnect { get; private set; }
+
+    /// <summary>
+    /// Optional forced chameleon outfit for this domain. Has priority over netpod selection.
+    /// </summary>
+    [DataField]
+    public ProtoId<ChameleonOutfitPrototype>? ForcedOutfit { get; private set; }
 }

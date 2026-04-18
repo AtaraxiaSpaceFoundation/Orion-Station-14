@@ -23,6 +23,7 @@ public sealed class QuantumConsoleSystem : EntitySystem
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleRandomDomainMessage>(OnRandomDomain);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleStopDomainMessage>(OnStopDomain);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleRefreshMessage>(OnRefresh);
+        SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleBroadcastMessage>(OnBroadcast);
     }
 
     public override void Update(float frameTime)
@@ -87,14 +88,22 @@ public sealed class QuantumConsoleSystem : EntitySystem
         UpdateUi(ent);
     }
 
+    private void OnBroadcast(Entity<QuantumConsoleComponent> ent, ref QuantumConsoleBroadcastMessage args)
+    {
+        var serverUid = FindServer(ent);
+        if (serverUid == null || !HasComp<QuantumServerComponent>(serverUid))
+            return;
+
+        _server.SetBroadcastState(serverUid.Value, args.Enabled);
+        UpdateUi(ent);
+    }
+
     private void UpdateUi(Entity<QuantumConsoleComponent> ent)
     {
         var serverUid = FindServer(ent);
         if (serverUid == null || !TryComp<QuantumServerComponent>(serverUid, out var server))
         {
-            _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key,
-                new QuantumConsoleBoundUiState(false, null, null, 0, 0, 0, BitrunningServerState.Ready,
-                    new List<BitrunningDomainListing>(), new List<BitrunningOccupantListing>()));
+            _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key, new QuantumConsoleBoundUiState(false, null, null, 0, 0, 0, BitrunningServerState.Ready, false, 0f, 0f, new List<BitrunningDomainListing>(), new List<BitrunningOccupantListing>()));
             return;
         }
 
@@ -123,9 +132,10 @@ public sealed class QuantumConsoleSystem : EntitySystem
             occupants.Add(new BitrunningOccupantListing(name, noHit));
         }
 
-        _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key,
-            new QuantumConsoleBoundUiState(true, GetNetEntity(serverUid.Value), server.CurrentDomain, server.Occupants.Count,
-                server.Points, server.ScannerTier, server.State, domains, occupants));
+        var cooldownTotal = (float) server.Cooldown.TotalSeconds;
+        var cooldownRemaining = Math.Max(0f, (float) (server.CooldownEndTime - _timing.CurTime).TotalSeconds);
+
+        _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key, new QuantumConsoleBoundUiState(true, GetNetEntity(serverUid.Value), server.CurrentDomain, server.Occupants.Count, server.Points, server.ScannerTier, server.State, server.BroadcastEnabled, cooldownTotal, cooldownRemaining, domains, occupants));
     }
 
     private EntityUid? FindServer(Entity<QuantumConsoleComponent> ent)

@@ -12,6 +12,10 @@ bitrunning-netpod-connected = Нейросессия установлена.
 bitrunning-netpod-disconnected = Сессия аватара завершена.
 bitrunning-netpod-connect-failed = Не удалось установить связь с аватаром.
 
+bitrunning-netpod-ui-title = Нэтпод
+bitrunning-netpod-ui-select-outfit = Выберите снаряжение
+bitrunning-netpod-ui-search = Поиск
+
 bitrunning-training-instructions = Соберите зашифрованный кэш, после этого награда будет засчитана автоматически.
 bitrunning-certificate-template = Домен: { $domain }. Время прохождения: { $time }. Базовая награда: { $reward }. Бонус: { $bonus }x. Угрозы: { $threats }. Оценка: { $grade }
 
@@ -46,7 +50,7 @@ bitrunning-ui-cannot-deploy = Недостаточно очков или сер�
 
 bitrunning-ui-domain-button = { $name } ({ $cost })
 bitrunning-ui-domain-entry = { $name } ({ $cost })
-bitrunning-ui-domain-info = { $description }. Награда: { $reward }. Сложность: { $difficulty }
+bitrunning-ui-domain-info = { $description }
 
 bitrunning-ui-virtual-domains = Виртуальные домены
 bitrunning-ui-broadcast = Вещание
@@ -60,5 +64,15 @@ bitrunning-ui-client-icons-nohit = ✓ ◔ ◕ ⌘
 bitrunning-ui-client-icons-default = • ◔ ◕
 bitrunning-ui-client-percent-perfect = 100%
 bitrunning-ui-client-percent-online = ОНЛАЙН
+bitrunning-ui-client-icon-linked = Сессия подключена
+bitrunning-ui-client-icon-signal = Нейросигнал стабилен
+bitrunning-ui-client-icon-active = Аватар активен
+bitrunning-ui-client-icon-nohit = Режим без урона
+bitrunning-ui-state-ready = Готов
+bitrunning-ui-state-running = Выполняется
+bitrunning-ui-state-cooling = Охлаждение
+bitrunning-ui-state-cooling-time = Охлаждение ({ $time })
+bitrunning-ui-cooldown-ready = Охлаждение завершено
+bitrunning-ui-cooldown-active = Идёт охлаждение
 
 bitrunning-ui-clients-header-count = Подключённые клиенты ({ $count })

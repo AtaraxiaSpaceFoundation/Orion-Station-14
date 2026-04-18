@@ -12,6 +12,10 @@ bitrunning-netpod-connected = Neural session established.
 bitrunning-netpod-disconnected = Avatar session disconnected.
 bitrunning-netpod-connect-failed = Unable to establish avatar connection.
 
+bitrunning-netpod-ui-title = Net Pod
+bitrunning-netpod-ui-select-outfit = Select an outfit
+bitrunning-netpod-ui-search = Search
+
 bitrunning-training-instructions = Collect encrypted cache nodes. Reward and completion will trigger automatically.
 bitrunning-certificate-template = Domain: { $domain }. Completion time: { $time }. Base reward: { $reward }. Bonus: { $bonus }x. Threats: { $threats }. Grade: { $grade }
 
@@ -46,7 +50,7 @@ bitrunning-ui-cannot-deploy = Not enough points or server is active.
 
 bitrunning-ui-domain-button = { $name } ({ $cost })
 bitrunning-ui-domain-entry = { $name } ({ $cost })
-bitrunning-ui-domain-info = { $description }. Reward: { $reward }. Difficulty: { $difficulty }
+bitrunning-ui-domain-info = { $description }
 
 bitrunning-ui-virtual-domains = Virtual Domains
 bitrunning-ui-broadcast = Broadcast
@@ -60,5 +64,15 @@ bitrunning-ui-client-icons-nohit = ✓ ◔ ◕ ⌘
 bitrunning-ui-client-icons-default = • ◔ ◕
 bitrunning-ui-client-percent-perfect = 100%
 bitrunning-ui-client-percent-online = ONLINE
+bitrunning-ui-client-icon-linked = Session linked
+bitrunning-ui-client-icon-signal = Neural signal stable
+bitrunning-ui-client-icon-active = Avatar active
+bitrunning-ui-client-icon-nohit = No-hit run active
+bitrunning-ui-state-ready = Ready
+bitrunning-ui-state-running = Running
+bitrunning-ui-state-cooling = Cooling down
+bitrunning-ui-state-cooling-time = Cooling down ({ $time })
+bitrunning-ui-cooldown-ready = Cooldown complete
+bitrunning-ui-cooldown-active = Cooldown in progress
 
 bitrunning-ui-clients-header-count = Connected Clients ({ $count })

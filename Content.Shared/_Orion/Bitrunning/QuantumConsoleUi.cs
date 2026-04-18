@@ -18,6 +18,9 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
     public int Points;
     public int ScannerTier;
     public BitrunningServerState State;
+    public bool Broadcast;
+    public float CooldownTotalSeconds;
+    public float CooldownRemainingSeconds;
     public List<BitrunningDomainListing> Domains;
     public List<BitrunningOccupantListing> ConnectedAvatars;
 
@@ -29,6 +32,9 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
         int points,
         int scannerTier,
         BitrunningServerState state,
+        bool broadcast,
+        float cooldownTotalSeconds,
+        float cooldownRemainingSeconds,
         List<BitrunningDomainListing> domains,
         List<BitrunningOccupantListing> connectedAvatars)
     {
@@ -39,6 +45,9 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
         Points = points;
         ScannerTier = scannerTier;
         State = state;
+        Broadcast = broadcast;
+        CooldownTotalSeconds = cooldownTotalSeconds;
+        CooldownRemainingSeconds = cooldownRemainingSeconds;
         Domains = domains;
         ConnectedAvatars = connectedAvatars;
     }
@@ -96,3 +105,9 @@ public sealed class QuantumConsoleStopDomainMessage : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
 public sealed class QuantumConsoleRefreshMessage : BoundUserInterfaceMessage;
+
+[Serializable, NetSerializable]
+public sealed class QuantumConsoleBroadcastMessage(bool enabled) : BoundUserInterfaceMessage
+{
+    public bool Enabled = enabled;
+}

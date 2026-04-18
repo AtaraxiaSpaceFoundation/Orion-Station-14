@@ -18,6 +18,9 @@ public sealed partial class AvatarConnectionComponent : Component
     [DataField, AutoNetworkedField]
     public bool NoHit = true;
 
+    [DataField, AutoNetworkedField]
+    public bool DeleteOnDisconnect;
+
     [DataField]
     public EntProtoId DisconnectActionPrototype = "ActionBitrunningDisconnectAvatar";
 

@@ -13,4 +13,5 @@
         shader: unshaded
   - type: Physics
     bodyType: Static
+  - type: InteractionOutline
   - type: BitrunningObjectivePoint
