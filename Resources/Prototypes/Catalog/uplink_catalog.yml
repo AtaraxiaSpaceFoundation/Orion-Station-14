@@ -985,7 +985,7 @@
 
 
 - type: listing
-  id: UplinkCombatMedipen
+  id: AgentUplinkCombatMedipen
   name: uplink-combat-medipen-name
   description: uplink-combat-medipen-desc
   productEntity: CombatMedipen
@@ -993,7 +993,7 @@
     Telecrystal: 12 # Goobstation - Combat pen rebalance
   categories:
   - UplinkChemicals
-  # Orion-Start: Low price for agents
+  # Orion-Start: Low price for traitors
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
