@@ -7,7 +7,28 @@
   - type: Sprite
     sprite: _Orion/Structures/Machines/quantum_server.rsi
     layers:
-    - state: qserver
+    - state: qserver_off
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: qserver_on
+      visible: false
+      map: ["qserver_on"]
+    - state: qserver_panel
+      visible: false
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: false }
+          False: { visible: true }
+        qserver_on:
+          True: { visible: true }
+          False: { visible: false }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: true }
+          False: { visible: false }
   - type: QuantumServer
   - type: Physics
     bodyType: Static
@@ -48,15 +69,36 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/netpod.rsi
-    state: netpod
+    layers:
+    - state: netpod
+      map: ["base"]
+    - state: netpod_panel
+      visible: false
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.NetpodVisuals.State:
+        base:
+          Open: { state: netpod }
+          Closed: { state: netpod_closed }
+          Active: { state: netpod_closed_active }
+          Opening: { state: netpod_opening }
+          Closing: { state: netpod_closing }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: true }
+          False: { visible: false }
   - type: ContainerContainer
     containers:
       netpod-body:
         !type:ContainerSlot
-        showEnts: true
   - type: EmptyOnMachineDeconstruct
     containers:
       - netpod-body
-  - type: Climbable
-    vaultable: false
+  - type: DragInsertContainer
+    containerId: netpod-body
+    entryDelay: 1
+  - type: ExitContainerOnMove
+    containerId: netpod-body
   - type: Netpod

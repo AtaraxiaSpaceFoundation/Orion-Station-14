@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
 
@@ -16,4 +17,10 @@ public sealed partial class AvatarConnectionComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool NoHit = true;
+
+    [DataField]
+    public EntProtoId DisconnectActionPrototype = "ActionBitrunningDisconnectAvatar";
+
+    [DataField]
+    public EntityUid? DisconnectActionEntity;
 }

@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
+using Content.Server.Actions;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Damage;
@@ -29,6 +30,8 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly NetpodSystem _netpod = default!;
 
     public override void Initialize()
     {
@@ -37,6 +40,7 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<QuantumServerComponent, EntityTerminatingEvent>(OnServerTerminating);
         SubscribeLocalEvent<AvatarConnectionComponent, DamageChangedEvent>(OnAvatarDamaged);
         SubscribeLocalEvent<AvatarConnectionComponent, MobStateChangedEvent>(OnAvatarStateChanged);
+        SubscribeLocalEvent<AvatarConnectionComponent, BitrunningDisconnectAvatarActionEvent>(OnAvatarDisconnectAction);
     }
 
     private void OnServerShutdown(Entity<QuantumServerComponent> ent, ref ComponentShutdown args)
@@ -216,6 +220,7 @@ public sealed class QuantumServerSystem : EntitySystem
         connection.NoHit = true;
 
         _mind.TransferTo(mindId, avatar, mind: mind);
+        _actions.AddAction(avatar, ref connection.DisconnectActionEntity, connection.DisconnectActionPrototype, avatar);
         _popup.PopupEntity(Loc.GetString("bitrunning-training-instructions"), avatar, avatar);
 
         pod.Occupant = user;
@@ -226,6 +231,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.Occupants.Add(avatar);
 
         Dirty(podUid, pod);
+        _netpod.UpdateVisuals((podUid, pod));
         Dirty(serverUid, server);
         Dirty(avatar, connection);
         return true;
@@ -235,6 +241,8 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         if (!TryComp<AvatarConnectionComponent>(avatarUid, out var connection))
             return;
+
+        _actions.RemoveAction(avatarUid, connection.DisconnectActionEntity);
 
         var originalBody = connection.OriginalBody;
         var serverUid = connection.Server;
@@ -259,6 +267,7 @@ public sealed class QuantumServerSystem : EntitySystem
                 : null;
             pod.Avatar = null;
             Dirty(podUid.Value, pod);
+            _netpod.UpdateVisuals((podUid.Value, pod));
         }
 
         if (serverUid != null && TryComp<QuantumServerComponent>(serverUid.Value, out var server))
@@ -370,6 +379,15 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         DisconnectAvatar(ent, true);
+    }
+
+    private void OnAvatarDisconnectAction(Entity<AvatarConnectionComponent> ent, ref BitrunningDisconnectAvatarActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        DisconnectAvatar(ent, false);
+        args.Handled = true;
     }
 
     public string? GetRandomDomainId(EntityUid serverUid)

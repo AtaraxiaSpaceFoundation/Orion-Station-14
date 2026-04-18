@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseAction
+  id: ActionBitrunningDisconnectAvatar
+  name: Disconnect avatar
+  description: Return to your body and end the current avatar session.
+  components:
+  - type: Action
+    icon:
+      sprite: _Orion/Structures/Machines/netpod.rsi
+      state: netpod_closed_active
+  - type: InstantAction
+    event: !type:BitrunningDisconnectAvatarActionEvent

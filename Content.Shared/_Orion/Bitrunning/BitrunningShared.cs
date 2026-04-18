@@ -29,3 +29,19 @@ public enum BitrunningDifficulty : byte
     Hard,
     Extreme,
 }
+
+[NetSerializable, Serializable]
+public enum NetpodVisuals : byte
+{
+    State,
+}
+
+[NetSerializable, Serializable]
+public enum NetpodVisualState : byte
+{
+    Open,
+    Closed,
+    Active,
+    Opening,
+    Closing,
+}
