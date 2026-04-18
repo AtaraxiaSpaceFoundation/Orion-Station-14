@@ -41,7 +41,7 @@
       - ContravendUplink
 
 - type: listing
-  id: UplinkScramImplanter
+  id: NukeOpsUplinkScramImplanter
   name: uplink-scram-implanter-name
   description: uplink-scram-implanter-desc
   icon: { sprite: /Textures/Structures/Specific/anomaly.rsi, state: anom4 }
