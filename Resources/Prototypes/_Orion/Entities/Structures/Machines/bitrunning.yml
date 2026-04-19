@@ -83,6 +83,7 @@
           Open: { state: netpod }
           Closed: { state: netpod_closed }
           Active: { state: netpod_closed_active }
+          OpenActive: { state: netpod_open_active }
           Opening: { state: netpod_opening }
           Closing: { state: netpod_closing }
       enum.WiresVisuals.MaintenancePanelState:

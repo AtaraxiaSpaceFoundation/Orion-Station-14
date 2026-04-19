@@ -42,6 +42,7 @@ public enum NetpodVisualState : byte
     Open,
     Closed,
     Active,
+    OpenActive,
     Opening,
     Closing,
 }

@@ -12,6 +12,7 @@ public sealed partial class NetpodWindow : DefaultWindow
     public Action<string>? OnSelectOutfit;
 
     private NetpodBoundUiState? _state;
+    private bool _suppressSelectionEvents;
 
     public NetpodWindow()
     {
@@ -28,14 +29,18 @@ public sealed partial class NetpodWindow : DefaultWindow
 
     private void Rebuild()
     {
+        _suppressSelectionEvents = true;
         OutfitList.Clear();
-        if (_state == null)
-            return;
 
-        var filter = Search.Text.Trim().ToString();
-        for (var i = 0; i < _state.Outfits.Count; i++)
+        if (_state == null)
         {
-            var outfit = _state.Outfits[i];
+            _suppressSelectionEvents = false;
+            return;
+        }
+
+        var filter = Search.Text.Trim();
+        foreach (var outfit in _state.Outfits)
+        {
             if (!string.IsNullOrEmpty(filter) &&
                 outfit.Name.IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0 &&
                 outfit.Id.IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0)
@@ -50,12 +55,17 @@ public sealed partial class NetpodWindow : DefaultWindow
             OutfitList.Add(item);
 
             if (_state.SelectedOutfit == outfit.Id)
-                OutfitList[OutfitList.Count - 1].Selected = true;
+                OutfitList[^1].Selected = true;
         }
+
+        _suppressSelectionEvents = false;
     }
 
     private void OnItemSelected(ItemList.ItemListSelectedEventArgs args)
     {
+        if (_suppressSelectionEvents)
+            return;
+
         if (args.ItemList[args.ItemIndex].Metadata is not string id)
             return;
 

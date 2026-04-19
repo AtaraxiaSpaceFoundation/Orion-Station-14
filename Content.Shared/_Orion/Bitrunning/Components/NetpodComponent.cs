@@ -17,5 +17,5 @@ public sealed partial class NetpodComponent : Component
     public EntityUid? Avatar;
 
     [DataField, AutoNetworkedField]
-    public ProtoId<ChameleonOutfitPrototype>? PreferredOutfit;
+    public ProtoId<ChameleonOutfitPrototype>? PreferredOutfit = "ShaftMinerChameleonOutfit";
 }

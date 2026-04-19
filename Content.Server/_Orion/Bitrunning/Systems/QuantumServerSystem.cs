@@ -229,7 +229,13 @@ public sealed class QuantumServerSystem : EntitySystem
             return false;
 
         if (pod.Avatar != null)
-            return TryReconnectRunner((podUid, pod), user);
+        {
+            if (TryReconnectRunner((podUid, pod), user))
+                return true;
+
+            pod.Avatar = null;
+            Dirty(podUid, pod);
+        }
 
         if (server.ExitCoordinates == null)
             return false;
@@ -529,9 +535,18 @@ public sealed class QuantumServerSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
-        if (ent.Comp.OriginalBody is { } body && TryComp<DamageableComponent>(ent, out var avatarDamage) && avatarDamage.TotalDamage > 0)
+        if (ent.Comp.OriginalBody is { } body && TryComp<DamageableComponent>(ent, out var avatarDamage))
         {
-            var scaledDamage = avatarDamage.Damage * 0.5f;
+            var scaledDamage = avatarDamage.TotalDamage > 0
+                ? avatarDamage.Damage * 0.5f
+                : new DamageSpecifier
+                {
+                    DamageDict =
+                    {
+                        ["Blunt"] = 40f,
+                    },
+                };
+
             _damageable.TryChangeDamage(body, scaledDamage, ignoreResistances: true);
         }
 

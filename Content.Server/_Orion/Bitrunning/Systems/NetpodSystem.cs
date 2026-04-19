@@ -82,6 +82,7 @@ public sealed class NetpodSystem : EntitySystem
         if (ent.Comp.Avatar != null)
         {
             UpdateVisuals(ent);
+            TryAutoConnect(ent, args.Entity);
             return;
         }
 
@@ -141,6 +142,9 @@ public sealed class NetpodSystem : EntitySystem
         var outfits = new List<NetpodOutfitEntry>();
         foreach (var outfit in _prototype.EnumeratePrototypes<ChameleonOutfitPrototype>())
         {
+            if (!outfit.ID.EndsWith("ChameleonOutfit", StringComparison.Ordinal))
+                continue;
+
             var displayName = outfit.LoadoutName ?? outfit.Name ?? outfit.ID;
             outfits.Add(new NetpodOutfitEntry(outfit.ID, Loc.GetString(displayName)));
         }
@@ -200,7 +204,9 @@ public sealed class NetpodSystem : EntitySystem
     public void UpdateVisuals(Entity<NetpodComponent> ent)
     {
         var state = ent.Comp.Avatar != null
-            ? NetpodVisualState.Active
+            ? ent.Comp.Occupant != null
+                ? NetpodVisualState.Active
+                : NetpodVisualState.OpenActive
             : ent.Comp.Occupant != null
                 ? NetpodVisualState.Closed
                 : NetpodVisualState.Open;
