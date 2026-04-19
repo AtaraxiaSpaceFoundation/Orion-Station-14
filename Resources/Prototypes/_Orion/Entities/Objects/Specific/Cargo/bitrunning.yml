@@ -1,7 +1,7 @@
 - type: entity
   id: EncryptedCacheNode
   name: encrypted cache
-  description: Broken matrix, watafa pepe?
+  description: A secured objective cache containing encrypted bitrunning verification data.
   components:
   - type: Sprite
     sprite: _Orion/Objects/Specific/Cargo/Bitrunning/encrypted_cache.rsi
@@ -14,4 +14,5 @@
   - type: Physics
     bodyType: Static
   - type: InteractionOutline
+  - type: Clickable
   - type: BitrunningObjectivePoint

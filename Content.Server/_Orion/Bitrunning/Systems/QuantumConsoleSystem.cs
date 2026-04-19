@@ -1,5 +1,6 @@
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared.Emag.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 
@@ -108,8 +109,12 @@ public sealed class QuantumConsoleSystem : EntitySystem
         }
 
         var domains = new List<BitrunningDomainListing>();
+        var emagged = HasComp<EmaggedComponent>(serverUid.Value);
         foreach (var domain in _domains.GetAllDomains())
         {
+            if (domain.Difficulty == BitrunningDifficulty.Extreme && !emagged)
+                continue;
+
             domains.Add(new BitrunningDomainListing(
                 domain.ID,
                 _domains.GetDisplayName(domain, server.ScannerTier, server.Points),
@@ -140,16 +145,36 @@ public sealed class QuantumConsoleSystem : EntitySystem
 
     private EntityUid? FindServer(Entity<QuantumConsoleComponent> ent)
     {
-        var nearby = _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.LinkRange);
-        foreach (var uid in nearby)
+        if (ent.Comp.LinkedServerId is { } linkedUid && Exists(linkedUid) && HasComp<QuantumServerComponent>(linkedUid))
+            return linkedUid;
+
+        EntityUid? nearestServer = null;
+        var nearestDistance = float.MaxValue;
+        foreach (var uid in _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.LinkRange))
         {
             if (uid == ent.Owner)
                 continue;
 
-            if (HasComp<QuantumServerComponent>(uid))
-                return uid;
+            if (!HasComp<QuantumServerComponent>(uid))
+                continue;
+
+            if (!Transform(uid).Coordinates.TryDistance(EntityManager, Transform(ent.Owner).Coordinates, out var distance))
+                continue;
+
+            distance *= distance;
+            if (distance >= nearestDistance)
+                continue;
+
+            nearestDistance = distance;
+            nearestServer = uid;
         }
 
-        return null;
+        if (ent.Comp.LinkedServerId == nearestServer)
+            return nearestServer;
+
+        ent.Comp.LinkedServerId = nearestServer;
+        Dirty(ent);
+
+        return nearestServer;
     }
 }

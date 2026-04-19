@@ -66,6 +66,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         _updatingToggle = false;
 
         StopButton.Disabled = state.State != BitrunningServerState.Running;
+        RandomButton.Disabled = state.State != BitrunningServerState.Ready;
 
         UpdateCooldown(state);
         RebuildDomainList(state);
@@ -160,7 +161,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             MinSize = new Vector2(0f, 23f),
         };
 
-        var canDeploy = state.State != BitrunningServerState.Running && state.Points >= domain.Cost;
+        var canDeploy = state.State == BitrunningServerState.Ready && state.Points >= domain.Cost;
         var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.OrdinalIgnoreCase);
 
         var expanded = _expandedDomainId == domain.Id;
@@ -202,15 +203,17 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
         holder.AddChild(row);
 
-        if (expanded)
+        if (!expanded)
+            return holder;
+
+        var description = new RichTextLabel
         {
-            holder.AddChild(new Label
-            {
-                Text = domain.Description,
-                Margin = new Thickness(8, 0, 4, 3),
-                FontColorOverride = Color.Silver,
-            });
-        }
+            MaxWidth = 420,
+            Margin = new Thickness(8, 0, 4, 3),
+            HorizontalExpand = true,
+        };
+        description.SetMessage(domain.Description);
+        holder.AddChild(description);
 
         return holder;
     }
@@ -361,6 +364,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             "Easy" => Loc.GetString("bitrunning-ui-difficulty-easy"),
             "Medium" => Loc.GetString("bitrunning-ui-difficulty-medium"),
             "Hard" => Loc.GetString("bitrunning-ui-difficulty-hard-skull"),
+            "Extreme" => Loc.GetString("bitrunning-ui-difficulty-extreme"),
             _ => difficulty,
         };
 
@@ -414,7 +418,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             "peaceful" => DifficultyColor.Peaceful,
             "easy" => DifficultyColor.Easy,
             "medium" => DifficultyColor.Medium,
-            "hard" => DifficultyColor.Hard,
+            "hard" or "extreme" => DifficultyColor.Hard,
             _ => Color.FromHex("#B03030"),
         };
     }

@@ -44,6 +44,7 @@ bitrunning-ui-difficulty-peaceful = Мирный
 bitrunning-ui-difficulty-easy = Лёгкий
 bitrunning-ui-difficulty-medium = Средний
 bitrunning-ui-difficulty-hard = Сложный
+bitrunning-ui-difficulty-extreme = Экстремальный
 
 bitrunning-ui-server-state = Состояние: { $state }
 bitrunning-ui-cannot-deploy = Недостаточно очков или сервер уже активен.

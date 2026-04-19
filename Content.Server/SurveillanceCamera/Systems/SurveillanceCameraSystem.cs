@@ -46,6 +46,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.DeviceNetwork.Systems;
@@ -61,6 +62,7 @@ using Content.Shared.SurveillanceCamera;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
+using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -114,6 +116,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
     private const float AiViewerActivationRange = 7f;
     private const float VisualRefreshInterval = 1f;
     private float _visualRefreshAccumulator;
+    private readonly List<(MapId Map, Vector2 Position)> _activeAiObservers = new();
 
     public override void Update(float frameTime)
     {
@@ -124,6 +127,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
             return;
 
         _visualRefreshAccumulator = 0f;
+        RefreshActiveAiObservers();
 
         var query = EntityQueryEnumerator<SurveillanceCameraComponent>();
         while (query.MoveNext(out var uid, out var camera))
@@ -205,9 +209,9 @@ public sealed class SurveillanceCameraSystem : EntitySystem
                     {
                         // Orion-Start
                         var sourceUid = uid;
-                        if (TryComp<AvatarNavRelayComponent>(uid, out var relay) && relay.RelayEntity != EntityUid.Invalid && TryComp<TransformComponent>(relay.RelayEntity, out var relayTransform))
+                        if (TryComp<AvatarNavRelayComponent>(uid, out var relay) && relay.RelayEntity is { } relayUid && TryComp<TransformComponent>(relayUid, out var relayTransform))
                         {
-                            sourceUid = relay.RelayEntity;
+                            sourceUid = relayUid;
                             transformComponent = relayTransform;
                         }
                         // Orion-End
@@ -519,13 +523,9 @@ public sealed class SurveillanceCameraSystem : EntitySystem
     }
 
     // Orion-Start
-    private bool HasActiveAiViewerInRange(EntityUid camera)
+    private void RefreshActiveAiObservers()
     {
-        if (!TryComp(camera, out TransformComponent? cameraXform))
-            return false;
-
-        var cameraMap = cameraXform.MapID;
-        var cameraPos = _transformSystem.GetWorldPosition(cameraXform);
+        _activeAiObservers.Clear();
 
         var coreQuery = EntityQueryEnumerator<StationAiCoreComponent>();
         while (coreQuery.MoveNext(out var coreUid, out var coreComp))
@@ -537,11 +537,27 @@ public sealed class SurveillanceCameraSystem : EntitySystem
             if (!_stationAiSystem.TryGetHeld((coreUid, coreComp), out var held) || !HasComp<ActorComponent>(held))
                 continue;
 
-            if (!TryComp(coreComp.RemoteEntity.Value, out TransformComponent? observerXform) || observerXform.MapID != cameraMap)
+            if (!TryComp(coreComp.RemoteEntity.Value, out TransformComponent? observerXform))
                 continue;
 
-            var observerPos = _transformSystem.GetWorldPosition(observerXform);
-            if ((observerPos - cameraPos).Length() <= AiViewerActivationRange)
+            _activeAiObservers.Add((observerXform.MapID, _transformSystem.GetWorldPosition(observerXform)));
+        }
+    }
+
+    private bool HasActiveAiViewerInRange(EntityUid camera)
+    {
+        if (!TryComp(camera, out TransformComponent? cameraXform))
+            return false;
+
+        var cameraMap = cameraXform.MapID;
+        var cameraPos = _transformSystem.GetWorldPosition(cameraXform);
+        var activationRangeSquared = AiViewerActivationRange * AiViewerActivationRange;
+        foreach (var observer in _activeAiObservers)
+        {
+            if (observer.Map != cameraMap)
+                continue;
+
+            if ((observer.Position - cameraPos).LengthSquared() <= activationRangeSquared)
                 return true;
         }
 

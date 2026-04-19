@@ -1,24 +1,23 @@
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class AvatarConnectionComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityUid? OriginalBody;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityUid? Server;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityUid? Netpod;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public bool NoHit = true;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public bool DeleteOnDisconnect;
 
     [DataField]

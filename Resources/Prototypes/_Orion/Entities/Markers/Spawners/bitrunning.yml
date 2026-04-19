@@ -8,6 +8,6 @@
   - type: Sprite
     layers:
     - state: red
-  - type: RandomSpawner
+  - type: ConditionalSpawner
     prototypes:
       - EncryptedCacheNode

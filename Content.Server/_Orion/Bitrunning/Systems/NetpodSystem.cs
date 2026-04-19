@@ -69,8 +69,8 @@ public sealed class NetpodSystem : EntitySystem
         if (args.Container.ID != "netpod-body")
             return;
 
-        ent.Comp.Occupant = args.Entity;
-        Dirty(ent);
+        if (args.Entity == EntityUid.Invalid || !Exists(args.Entity))
+            return;
 
         if (TryComp<MobStateComponent>(args.Entity, out var mobState) && mobState.CurrentState == MobState.Dead)
         {
@@ -78,6 +78,9 @@ public sealed class NetpodSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString("bitrunning-netpod-enter-failed"), ent, args.Entity);
             return;
         }
+
+        ent.Comp.Occupant = args.Entity;
+        Dirty(ent);
 
         if (ent.Comp.Avatar != null)
         {
@@ -132,6 +135,9 @@ public sealed class NetpodSystem : EntitySystem
         if (!_prototype.HasIndex<ChameleonOutfitPrototype>(args.OutfitId))
             return;
 
+        if (!args.OutfitId.EndsWith("ChameleonOutfit", StringComparison.Ordinal))
+            return;
+
         ent.Comp.PreferredOutfit = args.OutfitId;
         Dirty(ent);
         UpdateUi(ent);
@@ -169,18 +175,36 @@ public sealed class NetpodSystem : EntitySystem
         if (ent.Comp.LinkedServer is { } linked && Exists(linked) && HasComp<QuantumServerComponent>(linked))
             return linked;
 
-        var nearby = _lookup.GetEntitiesInRange(ent.Owner, 2f);
-        foreach (var uid in nearby)
+        var podCoords = Transform(ent.Owner).Coordinates;
+        EntityUid? nearestServer = null;
+        var nearestDistance = float.MaxValue;
+
+        foreach (var uid in _lookup.GetEntitiesInRange(ent.Owner, 6f))
         {
             if (!HasComp<QuantumServerComponent>(uid))
                 continue;
 
-            ent.Comp.LinkedServer = uid;
-            Dirty(ent);
-            return uid;
+            if (!Transform(uid).Coordinates.TryDistance(EntityManager, podCoords, out var distance))
+                continue;
+
+            distance *= distance;
+            if (distance >= nearestDistance)
+                continue;
+
+            nearestDistance = distance;
+            nearestServer = uid;
         }
 
-        return null;
+        if (nearestServer == null)
+            return null;
+
+        if (ent.Comp.LinkedServer == nearestServer)
+            return nearestServer;
+
+        ent.Comp.LinkedServer = nearestServer;
+        Dirty(ent);
+
+        return nearestServer;
     }
 
     private void TryAutoConnect(Entity<NetpodComponent> ent, EntityUid user)

@@ -23,7 +23,6 @@ public enum BitrunningGrade : byte
 [NetSerializable, Serializable]
 public enum BitrunningDifficulty : byte
 {
-    Trivial,
     Easy,
     Medium,
     Hard,

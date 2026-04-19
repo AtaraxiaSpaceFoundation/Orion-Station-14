@@ -1,3 +1,4 @@
+using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -38,6 +39,17 @@ public sealed partial class QuantumServerComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool BroadcastEnabled;
+
+    [DataField]
+    public float BroadcastWirelessRange = 6767f;
+
+    [DataField]
+    public List<Vector2> CacheSpawnOffsets = new()
+    {
+        Vector2.Zero,
+        new Vector2(1f, 0f),
+        new Vector2(0f, 1f),
+    };
 
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<BitrunningVirtualDomainPrototype>)), AutoNetworkedField]
     public string? CurrentDomain;

@@ -44,6 +44,7 @@ bitrunning-ui-difficulty-peaceful = Peaceful
 bitrunning-ui-difficulty-easy = Easy
 bitrunning-ui-difficulty-medium = Medium
 bitrunning-ui-difficulty-hard = Hard
+bitrunning-ui-difficulty-extreme = Extreme
 
 bitrunning-ui-server-state = State: { $state }
 bitrunning-ui-cannot-deploy = Not enough points or server is active.

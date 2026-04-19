@@ -62,8 +62,8 @@
   - type: MachineBoard
     prototype: QuantumServer
     stackRequirements:
-      Capacitor: 2
-      ScanningModule: 1
+#      Capacitor: 2
+#      ScanningModule: 1
       Manipulator: 2
       Cable: 5
       Glass: 4
