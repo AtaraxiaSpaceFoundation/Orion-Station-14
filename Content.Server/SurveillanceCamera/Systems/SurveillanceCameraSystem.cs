@@ -46,6 +46,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Emp;
@@ -202,10 +203,19 @@ public sealed class SurveillanceCameraSystem : EntitySystem
                     // Goobstation start
                     if (TryComp(uid, out TransformComponent? transformComponent))
                     {
+                        // Orion-Start
+                        var sourceUid = uid;
+                        if (TryComp<AvatarNavRelayComponent>(uid, out var relay) && relay.RelayEntity != EntityUid.Invalid && TryComp<TransformComponent>(relay.RelayEntity, out var relayTransform))
+                        {
+                            sourceUid = relay.RelayEntity;
+                            transformComponent = relayTransform;
+                        }
+                        // Orion-End
+
                         // Decoupling the bodycam/nopro from the wearer, otherwise we'll just keep seeing the last known owner move around on the map
-                        payload[CameraNetEntity] = component.Mobile ?
-                            (GetNetEntity(uid), GetNetCoordinates(_transformSystem.ToCoordinates(uid, _transformSystem.ToMapCoordinates(transformComponent.Coordinates)))) :
-                            (GetNetEntity(uid), GetNetCoordinates(transformComponent.Coordinates));
+                        payload[CameraNetEntity] = component.Mobile
+                            ? (GetNetEntity(uid), GetNetCoordinates(_transformSystem.ToCoordinates(sourceUid, _transformSystem.ToMapCoordinates(transformComponent.Coordinates)))) // Orion-Edit
+                            : (GetNetEntity(uid), GetNetCoordinates(transformComponent.Coordinates));
                         payload[CameraMobile] = component.Mobile;
                     }
                     // Goobstation end

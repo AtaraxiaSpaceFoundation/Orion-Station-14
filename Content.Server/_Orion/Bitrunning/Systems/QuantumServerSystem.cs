@@ -13,6 +13,7 @@ using Content.Shared.Damage;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Implants;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -54,6 +55,8 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<AvatarConnectionComponent, DamageChangedEvent>(OnAvatarDamaged);
         SubscribeLocalEvent<AvatarConnectionComponent, MobStateChangedEvent>(OnAvatarStateChanged);
         SubscribeLocalEvent<AvatarConnectionComponent, BitrunningDisconnectAvatarActionEvent>(OnAvatarDisconnectAction);
+        SubscribeLocalEvent<AvatarConnectionComponent, SuicideGhostEvent>(OnAvatarSuicideGhost);
+        SubscribeLocalEvent<AvatarConnectionComponent, SuicideEvent>(OnAvatarSuicide);
     }
 
     private void OnServerShutdown(Entity<QuantumServerComponent> ent, ref ComponentShutdown args)
@@ -253,6 +256,7 @@ public sealed class QuantumServerSystem : EntitySystem
         connection.Netpod = podUid;
         connection.NoHit = true;
         connection.DeleteOnDisconnect = GetDeleteOnDisconnect(server);
+        EnsureComp<AvatarNavRelayComponent>(avatar).RelayEntity = podUid;
 
         _mind.TransferTo(mindId, avatar, mind: mind);
         TryApplyAvatarOutfit(avatar, server, pod);
@@ -293,6 +297,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
         _mind.TransferTo(mindId, avatarUid, mind: mind);
         _actions.AddAction(avatarUid, ref connection.DisconnectActionEntity, connection.DisconnectActionPrototype, avatarUid);
+        EnsureComp<AvatarNavRelayComponent>(avatarUid).RelayEntity = pod.Owner;
 
         if (connection.Server != null && TryComp<QuantumServerComponent>(connection.Server.Value, out var server))
         {
@@ -554,6 +559,21 @@ public sealed class QuantumServerSystem : EntitySystem
     }
 
     private void OnAvatarDisconnectAction(Entity<AvatarConnectionComponent> ent, ref BitrunningDisconnectAvatarActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        DisconnectAvatar(ent, false);
+        args.Handled = true;
+    }
+
+    private static void OnAvatarSuicideGhost(Entity<AvatarConnectionComponent> ent, ref SuicideGhostEvent args)
+    {
+        args.Handled = true;
+        args.CanReturnToBody = true;
+    }
+
+    private void OnAvatarSuicide(Entity<AvatarConnectionComponent> ent, ref SuicideEvent args)
     {
         if (args.Handled)
             return;

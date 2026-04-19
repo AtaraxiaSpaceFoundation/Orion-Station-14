@@ -123,9 +123,6 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
         if (_expandedDomainId != null && state.Domains.All(d => d.Id != _expandedDomainId))
             _expandedDomainId = null;
-
-        if (_expandedDomainId == null)
-            SelectedDomainInfo.Text = "-";
     }
 
     private void RebuildClientList(QuantumConsoleBoundUiState state)
@@ -182,7 +179,6 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         domainButton.OnPressed += _ =>
         {
             _expandedDomainId = _expandedDomainId == domain.Id ? null : domain.Id;
-            SelectedDomainInfo.Text = Loc.GetString("bitrunning-ui-domain-info", ("description", domain.Description));
 
             if (_lastState != null)
                 RebuildDomainList(_lastState);
@@ -398,7 +394,6 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         PointsValue.FontColorOverride = Color.HotPink;
         VirtualDomainsHeader.FontColorOverride = Color.White;
         ClientsHeader.FontColorOverride = Color.White;
-        SelectedDomainInfo.FontColorOverride = Color.Silver;
         MetaRow.Visible = true;
     }
 

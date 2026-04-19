@@ -42,14 +42,11 @@
         </PanelContainer>
 
         <PanelContainer Name="ActiveDomainPanel">
-            <BoxContainer Orientation="Vertical" SeparationOverride="4" Margin="6 4 6 4">
-                <BoxContainer Orientation="Horizontal" SeparationOverride="4">
-                    <PanelContainer Name="ActiveDomainBadge" HorizontalExpand="True">
-                        <Label Name="CurrentDomainValue" Margin="6 2 6 2" HorizontalExpand="True" Text="-"/>
-                    </PanelContainer>
-                    <Button Name="StopButton" Text="{Loc 'bitrunning-ui-button-stop'}"/>
-                </BoxContainer>
-                <Label Name="SelectedDomainInfo" Text="-" ClipText="True"/>
+            <BoxContainer Orientation="Horizontal" SeparationOverride="4" Margin="6 4 6 4">
+                <PanelContainer Name="ActiveDomainBadge" HorizontalExpand="True">
+                    <Label Name="CurrentDomainValue" Margin="6 2 6 2" HorizontalExpand="True" Text="-"/>
+                </PanelContainer>
+                <Button Name="StopButton" Text="{Loc 'bitrunning-ui-button-stop'}"/>
             </BoxContainer>
         </PanelContainer>
 
