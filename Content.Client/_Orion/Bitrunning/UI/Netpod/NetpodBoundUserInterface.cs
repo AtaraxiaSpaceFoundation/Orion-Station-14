@@ -14,7 +14,7 @@ public sealed class NetpodBoundUserInterface(EntityUid owner, Enum uiKey) : Boun
         base.Open();
 
         _window = this.CreateWindow<NetpodWindow>();
-        _window.OnSelectOutfit += outfitId => SendMessage(new NetpodSelectOutfitMessage(outfitId));
+        _window.OnSelectLoadout += loadoutId => SendMessage(new NetpodSelectLoadoutMessage(loadoutId));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

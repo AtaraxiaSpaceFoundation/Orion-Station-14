@@ -1,11 +1,13 @@
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Interaction;
+using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._Orion.Bitrunning.Systems;
 
 public sealed class BitrunningObjectiveSystem : EntitySystem
 {
     [Dependency] private readonly QuantumServerSystem _server = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -28,6 +30,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
                 continue;
 
             _server.AddObjectivePoint(serverUid, ent.Comp.Points);
+            _audio.PlayPvs(ent.Comp.PickupSound, ent);
             if (ent.Comp.ConsumeOnUse)
                 QueueDel(ent.Owner);
 

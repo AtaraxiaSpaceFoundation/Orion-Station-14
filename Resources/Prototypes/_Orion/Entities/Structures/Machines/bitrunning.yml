@@ -109,3 +109,12 @@
       enum.NetpodUiKey.Key:
         type: NetpodBoundUserInterface
   - type: Netpod
+    allowedLoadout:
+    - ShaftMinerGear
+    - SalvageSpecialistGear
+    - StationEngineerGear
+    - ResearchAssistantGear
+    - ScientistGear
+    - MedicalInternGear
+    - SecurityCadetGear
+    - PassengerGear

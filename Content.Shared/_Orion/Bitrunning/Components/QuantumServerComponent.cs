@@ -4,6 +4,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared._Orion.Bitrunning.Prototypes;
+using Robust.Shared.Audio;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
 
@@ -42,6 +43,15 @@ public sealed partial class QuantumServerComponent : Component
 
     [DataField]
     public float BroadcastWirelessRange = 6767f;
+
+    [DataField]
+    public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
+
+    [DataField]
+    public TimeSpan ExitParalyzeTime = TimeSpan.FromSeconds(1.5);
+
+    [DataField]
+    public TimeSpan ExitBlindnessTime = TimeSpan.FromSeconds(2.5);
 
     [DataField]
     public List<Vector2> CacheSpawnOffsets = new()

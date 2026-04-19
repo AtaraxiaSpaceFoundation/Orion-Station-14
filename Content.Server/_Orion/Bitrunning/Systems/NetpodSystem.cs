@@ -2,11 +2,12 @@ using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
-using Content.Shared.Implants;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Power;
+using Content.Shared.Roles;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -22,6 +23,7 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.5);
 
@@ -33,7 +35,7 @@ public sealed class NetpodSystem : EntitySystem
         SubscribeLocalEvent<NetpodComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
         SubscribeLocalEvent<NetpodComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<NetpodComponent, BoundUIOpenedEvent>(OnUiOpened);
-        SubscribeLocalEvent<NetpodComponent, NetpodSelectOutfitMessage>(OnSelectOutfit);
+        SubscribeLocalEvent<NetpodComponent, NetpodSelectLoadoutMessage>(OnSelectLoadout);
     }
 
     private void OnInit(Entity<NetpodComponent> ent, ref ComponentInit args)
@@ -90,6 +92,7 @@ public sealed class NetpodSystem : EntitySystem
         }
 
         SetVisualState(ent, NetpodVisualState.Opening);
+        _audio.PlayPvs(ent.Comp.CloseSound, ent);
         TryAutoConnect(ent, args.Entity);
         Timer.Spawn(PodAnimationDuration,
             () =>
@@ -115,6 +118,7 @@ public sealed class NetpodSystem : EntitySystem
         }
 
         SetVisualState(ent, NetpodVisualState.Closing);
+        _audio.PlayPvs(ent.Comp.OpenSound, ent);
         Timer.Spawn(PodAnimationDuration,
             () =>
         {
@@ -130,33 +134,32 @@ public sealed class NetpodSystem : EntitySystem
         UpdateUi(ent);
     }
 
-    private void OnSelectOutfit(Entity<NetpodComponent> ent, ref NetpodSelectOutfitMessage args)
+    private void OnSelectLoadout(Entity<NetpodComponent> ent, ref NetpodSelectLoadoutMessage args)
     {
-        if (!_prototype.HasIndex<ChameleonOutfitPrototype>(args.OutfitId))
+        if (!_prototype.HasIndex<StartingGearPrototype>(args.LoadoutId))
             return;
 
-        if (!args.OutfitId.EndsWith("ChameleonOutfit", StringComparison.Ordinal))
+        if (!ent.Comp.AllowedLoadout.Contains(args.LoadoutId))
             return;
 
-        ent.Comp.PreferredOutfit = args.OutfitId;
+        ent.Comp.PreferredLoadout = args.LoadoutId;
         Dirty(ent);
         UpdateUi(ent);
     }
 
     private void UpdateUi(Entity<NetpodComponent> ent)
     {
-        var outfits = new List<NetpodOutfitEntry>();
-        foreach (var outfit in _prototype.EnumeratePrototypes<ChameleonOutfitPrototype>())
+        var loadouts = new List<NetpodLoadoutEntry>();
+        foreach (var loadoutId in ent.Comp.AllowedLoadout)
         {
-            if (!outfit.ID.EndsWith("ChameleonOutfit", StringComparison.Ordinal))
+            if (!_prototype.TryIndex(loadoutId, out _))
                 continue;
 
-            var displayName = outfit.LoadoutName ?? outfit.Name ?? outfit.ID;
-            outfits.Add(new NetpodOutfitEntry(outfit.ID, Loc.GetString(displayName)));
+            loadouts.Add(new NetpodLoadoutEntry(loadoutId, loadoutId));
         }
 
-        outfits.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
-        _ui.SetUiState(ent.Owner, NetpodUiKey.Key, new NetpodBoundUiState(ent.Comp.PreferredOutfit, outfits));
+        loadouts.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
+        _ui.SetUiState(ent.Owner, NetpodUiKey.Key, new NetpodBoundUiState(ent.Comp.PreferredLoadout, loadouts));
     }
 
     public bool EjectOccupant(EntityUid podUid)

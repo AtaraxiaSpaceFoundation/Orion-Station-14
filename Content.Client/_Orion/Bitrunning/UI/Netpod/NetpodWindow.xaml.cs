@@ -9,7 +9,7 @@ namespace Content.Client._Orion.Bitrunning.UI.Netpod;
 [GenerateTypedNameReferences]
 public sealed partial class NetpodWindow : DefaultWindow
 {
-    public Action<string>? OnSelectOutfit;
+    public Action<string>? OnSelectLoadout;
 
     private NetpodBoundUiState? _state;
     private bool _suppressSelectionEvents;
@@ -39,22 +39,22 @@ public sealed partial class NetpodWindow : DefaultWindow
         }
 
         var filter = Search.Text.Trim();
-        foreach (var outfit in _state.Outfits)
+        foreach (var loadout in _state.Loadouts)
         {
             if (!string.IsNullOrEmpty(filter) &&
-                outfit.Name.IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0 &&
-                outfit.Id.IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0)
+                loadout.Name.IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0 &&
+                loadout.Id.IndexOf(filter, StringComparison.OrdinalIgnoreCase) < 0)
                 continue;
 
             var item = new ItemList.Item(OutfitList)
             {
-                Text = outfit.Name,
-                Metadata = outfit.Id,
+                Text = loadout.Name,
+                Metadata = loadout.Id,
             };
 
             OutfitList.Add(item);
 
-            if (_state.SelectedOutfit == outfit.Id)
+            if (_state.SelectedLoadout == loadout.Id)
                 OutfitList[^1].Selected = true;
         }
 
@@ -69,6 +69,6 @@ public sealed partial class NetpodWindow : DefaultWindow
         if (args.ItemList[args.ItemIndex].Metadata is not string id)
             return;
 
-        OnSelectOutfit?.Invoke(id);
+        OnSelectLoadout?.Invoke(id);
     }
 }

@@ -6,13 +6,14 @@ using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.Actions;
 using Content.Server.Clothing.Systems;
 using Content.Server.DeviceNetwork.Components;
+using Content.Server.Stunnable;
 using Content.Server.SurveillanceCamera;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Damage;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Emag.Components;
-using Content.Shared.Implants;
+using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
@@ -20,12 +21,13 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -45,7 +47,9 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly NetpodSystem _netpod = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly OutfitSystem _outfit = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
 
     public override void Initialize()
     {
@@ -131,6 +135,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.CooldownEndTime = TimeSpan.Zero;
 
         ResolveDomainMarkers((serverUid, server));
+        _audio.PlayPvs(server.DomainStartSound, serverUid);
         Dirty(serverUid, server);
         return true;
     }
@@ -162,13 +167,25 @@ public sealed class QuantumServerSystem : EntitySystem
             serverEnt.Comp.GoalCoordinates ??= Transform(uid).Coordinates;
         }
 
+        var cacheCoordinates = new List<EntityCoordinates>();
         var caches = EntityQueryEnumerator<BitrunningCacheMarkerComponent, TransformComponent>();
         while (caches.MoveNext(out var uid, out _, out var xform))
         {
             if (xform.MapUid != mapUid)
                 continue;
 
-            serverEnt.Comp.CacheCoordinates ??= Transform(uid).Coordinates;
+            var coordinates = Transform(uid).Coordinates;
+            serverEnt.Comp.CacheCoordinates ??= coordinates;
+            cacheCoordinates.Add(coordinates);
+        }
+
+        var spawnMarkers = EntityQueryEnumerator<BitrunningSpawnMarkerComponent, TransformComponent>();
+        while (spawnMarkers.MoveNext(out var uid, out _, out var xform))
+        {
+            if (xform.MapUid != mapUid)
+                continue;
+
+            serverEnt.Comp.ExitCoordinates ??= Transform(uid).Coordinates;
         }
 
         if (serverEnt.Comp.ExitCoordinates == null && serverEnt.Comp.DomainGridUid is { } gridUid)
@@ -184,13 +201,23 @@ public sealed class QuantumServerSystem : EntitySystem
         if (serverEnt.Comp.GoalCoordinates is not { } goal)
             return;
 
+        if (cacheCoordinates.Count > 0)
+        {
+            foreach (var cacheCoordinatesValue in cacheCoordinates)
+            {
+                if (cacheCoordinatesValue.IsValid(EntityManager))
+                    Spawn("BitrunningEncryptedCacheObjectiveSpawner", cacheCoordinatesValue);
+            }
+            return;
+        }
+
         foreach (var offset in serverEnt.Comp.CacheSpawnOffsets)
         {
-            var spawnCoords = new EntityCoordinates(goal.EntityId, goal.Position + offset);
-            if (!spawnCoords.IsValid(EntityManager))
+            var spawnCoordinates = new EntityCoordinates(goal.EntityId, goal.Position + offset);
+            if (!spawnCoordinates.IsValid(EntityManager))
                 continue;
 
-            Spawn("BitrunningEncryptedCacheObjectiveSpawner", spawnCoords);
+            Spawn("BitrunningEncryptedCacheObjectiveSpawner", spawnCoordinates);
         }
     }
 
@@ -346,48 +373,28 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void TryApplyAvatarOutfit(EntityUid avatar, QuantumServerComponent server, NetpodComponent pod)
     {
-        if (!TryResolveOutfit(server, pod, out var outfitId))
+        if (!TryResolveLoadout(server, pod, out var loadoutId))
             return;
 
-        _outfit.SetOutfit(avatar, outfitId);
+        _outfit.SetOutfit(avatar, loadoutId);
     }
 
-    private bool TryResolveOutfit(QuantumServerComponent server, NetpodComponent pod, out string outfit)
+    private bool TryResolveLoadout(QuantumServerComponent server, NetpodComponent pod, out string loadout)
     {
-        outfit = string.Empty;
+        loadout = string.Empty;
 
         if (server.CurrentDomain != null &&
             _domains.TryGetDomain(server.CurrentDomain, out var domain) &&
             domain != null &&
-            domain.ForcedOutfit != null &&
-            TryGetStartingGear(domain.ForcedOutfit.Value, out outfit))
+            domain.ForcedLoadout != null)
         {
+            loadout = domain.ForcedLoadout.Value;
             return true;
         }
 
-        if (pod.PreferredOutfit != null && TryGetStartingGear(pod.PreferredOutfit.Value, out outfit))
-            return true;
-
-        return false;
-    }
-
-    private bool TryGetStartingGear(ProtoId<ChameleonOutfitPrototype> outfitId, out string gear)
-    {
-        gear = string.Empty;
-        if (!_prototype.TryIndex(outfitId, out var outfit))
-            return false;
-
-        if (outfit.StartingGear != null)
+        if (pod.PreferredLoadout != null)
         {
-            gear = outfit.StartingGear.Value;
-            return true;
-        }
-
-        if (outfit.Job != null &&
-            _prototype.TryIndex(outfit.Job.Value, out var job) &&
-            job.StartingGear != null)
-        {
-            gear = job.StartingGear;
+            loadout = pod.PreferredLoadout.Value;
             return true;
         }
 
@@ -442,6 +449,21 @@ public sealed class QuantumServerSystem : EntitySystem
             Dirty(podUid.Value, pod);
             _netpod.UpdateVisuals((podUid.Value, pod));
             _netpod.EjectOccupant(podUid.Value);
+        }
+
+        if (!harmful && originalBody is { } body && serverUid is { } currentServerUid && TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
+        {
+            _stun.TryAddParalyzeDuration(body, currentServer.ExitParalyzeTime);
+
+            if (TryComp<StatusEffectsComponent>(body, out var status))
+            {
+                _statusEffects.TryAddStatusEffect<TemporaryBlindnessComponent>(
+                    body,
+                    "TemporaryBlindness",
+                    currentServer.ExitBlindnessTime,
+                    true,
+                    status);
+            }
         }
 
         if (serverUid != null && TryComp<QuantumServerComponent>(serverUid.Value, out var server))

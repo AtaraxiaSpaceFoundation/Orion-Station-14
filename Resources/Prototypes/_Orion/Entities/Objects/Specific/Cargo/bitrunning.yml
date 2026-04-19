@@ -15,4 +15,14 @@
     bodyType: Static
   - type: InteractionOutline
   - type: Clickable
+  - type: AmbientSound
+    volume: -8
+    range: 4
+    sound:
+      path: /Audio/Ambience/ambitech3.ogg
+  - type: PointLight
+    enabled: true
+    radius: 1.7
+    power: 1.3
+    color: "#67e8ff"
   - type: BitrunningObjectivePoint

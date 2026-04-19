@@ -9,21 +9,21 @@ public enum NetpodUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class NetpodOutfitEntry(string id, string name)
+public sealed class NetpodLoadoutEntry(string id, string name)
 {
     public string Id = id;
     public string Name = name;
 }
 
 [Serializable, NetSerializable]
-public sealed class NetpodBoundUiState(string? selectedOutfit, List<NetpodOutfitEntry> outfits) : BoundUserInterfaceState
+public sealed class NetpodBoundUiState(string? selectedLoadout, List<NetpodLoadoutEntry> loadouts) : BoundUserInterfaceState
 {
-    public string? SelectedOutfit = selectedOutfit;
-    public List<NetpodOutfitEntry> Outfits = outfits;
+    public string? SelectedLoadout = selectedLoadout;
+    public List<NetpodLoadoutEntry> Loadouts = loadouts;
 }
 
 [Serializable, NetSerializable]
-public sealed class NetpodSelectOutfitMessage(string outfitId) : BoundUserInterfaceMessage
+public sealed class NetpodSelectLoadoutMessage(string loadoutId) : BoundUserInterfaceMessage
 {
-    public string OutfitId = outfitId;
+    public string LoadoutId = loadoutId;
 }
