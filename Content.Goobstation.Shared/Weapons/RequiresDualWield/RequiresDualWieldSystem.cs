@@ -49,16 +49,15 @@ public sealed class RequiresDualWieldSystem : EntitySystem
         if (handsComp.Count != 2)
             return;
 
-        var EnumeratedItems = _handsSystem.EnumerateHeld((args.User, handsComp));
+        // Orion-Edit-Start
+        var heldItems = _handsSystem.EnumerateHeld((args.User, handsComp));
+        var heldCount = 0;
+        var hasInvalidOffhand = false;
 
-        if (EnumeratedItems.ToList().Count <= 1)
+        foreach (var held in heldItems)
         {
-            args.Cancel();
-            DualWieldPopup(component, ref args);
-        }
+            heldCount++;
 
-        foreach (var held in EnumeratedItems)
-        {
             if (held == uid)
                 continue;
 
@@ -68,11 +67,16 @@ public sealed class RequiresDualWieldSystem : EntitySystem
                     continue;
             }
 
-            args.Cancel();
-
-            DualWieldPopup(component, ref args);
+            hasInvalidOffhand = true;
             break;
         }
+
+        if (heldCount > 1 && !hasInvalidOffhand)
+            return;
+
+        args.Cancel();
+        DualWieldPopup(component, ref args);
+        // Orion-Edit-End
     }
 
     private void OnExamineRequires(Entity<RequiresDualWieldComponent> entity, ref ExaminedEvent args)

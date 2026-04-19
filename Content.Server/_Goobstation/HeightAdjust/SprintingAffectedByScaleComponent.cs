@@ -26,4 +26,8 @@ public sealed partial class SprintingAffectedByScaleComponent : Component
     /// <remarks>
     [DataField]
     public float Min = 0.75f, Max = 1.05f;
+
+    // Orion-Start
+    public float? BaseSprintSpeedMultiplier;
+    // Orion-End
 }

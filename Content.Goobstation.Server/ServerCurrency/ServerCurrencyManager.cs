@@ -8,6 +8,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.ServerCurrency;
 using Content.Server.Database;
@@ -22,7 +23,12 @@ namespace Content.Goobstation.Server.ServerCurrency
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly ITaskManager _task = default!;
         [Dependency] private readonly IPlayerManager _player = default!;
-        private readonly List<Task> _pendingSaveTasks = new();
+        private readonly HashSet<Task> _pendingSaveTasks = new(); // Orion-Edit
+        // Orion-Start
+        private readonly Dictionary<NetUserId, int> _balanceCache = new();
+        private readonly object _pendingSaveLock = new();
+        private readonly object _cacheLock = new();
+        // Orion-End
 
         public event Action? ClientBalanceChange;
         public event Action<PlayerBalanceChangeEvent>? BalanceChange;
@@ -36,8 +42,17 @@ namespace Content.Goobstation.Server.ServerCurrency
         /// <inheritdoc/>
         public void Shutdown()
         {
-            _task.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
+            // Orion-Edit-Start
+            Task[] pendingTasks;
+            lock (_pendingSaveLock)
+            {
+                pendingTasks = _pendingSaveTasks.ToArray();
+            }
+
+            _task.BlockWaitOnTask(Task.WhenAll(pendingTasks));
+            // Orion-Edit-End
         }
+
 
         /// <inheritdoc/>
         public bool CanAfford(NetUserId? userId, int amount, out int balance)
@@ -78,7 +93,17 @@ namespace Content.Goobstation.Server.ServerCurrency
         /// <inheritdoc/>
         public int SetBalance(NetUserId userId, int amount)
         {
-            var oldBalance = Task.Run(() => SetBalanceAsync(userId, amount)).GetAwaiter().GetResult();
+            var oldBalance = GetBalance(userId); // Orion-Edit
+            // Orion-Start
+            lock (_cacheLock)
+            {
+                _balanceCache[userId] = amount;
+            }
+
+            var saveTask = _db.SetServerCurrency(userId, amount);
+            _ = TrackPendingAsync(saveTask, userId, oldBalance);
+            // Orion-End
+
             if (_player.TryGetSessionById(userId, out var userSession))
                 BalanceChange?.Invoke(new PlayerBalanceChangeEvent(userSession, userId, amount, oldBalance));
             _sawmill.Info($"Setting {userId} account balance to {amount} from {oldBalance}");
@@ -88,7 +113,23 @@ namespace Content.Goobstation.Server.ServerCurrency
         /// <inheritdoc/>
         public int GetBalance(NetUserId? userId = null)
         {
-            return userId == null ? 0 : Task.Run(() => GetBalanceAsync(userId.Value)).GetAwaiter().GetResult();
+            // Orion-Start
+            if (userId == null)
+                return 0;
+
+            lock (_cacheLock)
+            {
+                if (_balanceCache.TryGetValue(userId.Value, out var cached))
+                    return cached;
+            }
+
+            var balance = _db.GetServerCurrency(userId.Value).GetAwaiter().GetResult();
+            lock (_cacheLock)
+            {
+                _balanceCache[userId.Value] = balance;
+            }
+            return balance;
+            // Orion-End
         }
 
         #region Internal/Async tasks
@@ -102,12 +143,23 @@ namespace Content.Goobstation.Server.ServerCurrency
         /// <remarks>Use the return value instead of calling <see cref="GetBalance(NetUserId)"/> after to this.</remarks>
         private int ModifyBalance(NetUserId userId, int amountDelta)
         {
-            var result = Task.Run(() => ModifyBalanceAsync(userId, amountDelta)).GetAwaiter().GetResult();
+            // Orion-Start
+            var oldBalance = GetBalance(userId);
+            var modifyTask = _db.ModifyServerCurrency(userId, amountDelta);
+            _ = TrackPendingAsync(modifyTask, userId, oldBalance);
+
+            var result = modifyTask.GetAwaiter().GetResult(); // Orion-Edit
+            lock (_cacheLock)
+            {
+                _balanceCache[userId] = result;
+            }
+            // Orion-End
             if (_player.TryGetSessionById(userId, out var userSession))
                 BalanceChange?.Invoke(new PlayerBalanceChangeEvent(userSession, userId, result, result - amountDelta));
             return result;
         }
 
+/* // Orion-Edit
         /// <summary>
         /// Sets a player's balance.
         /// </summary>
@@ -157,23 +209,40 @@ namespace Content.Goobstation.Server.ServerCurrency
             TrackPending(task);
             return await task;
         }
+*/
 
         /// <summary>
         /// Track a database save task to make sure we block server shutdown on it.
         /// </summary>
-        private async void TrackPending(Task task)
+        // Orion-Edit-Start
+        private async Task TrackPendingAsync(Task task, NetUserId userId, int oldBalance)
         {
-            _pendingSaveTasks.Add(task);
+            lock (_pendingSaveLock)
+            {
+                _pendingSaveTasks.Add(task);
+            }
 
             try
             {
                 await task;
             }
+            catch (Exception e)
+            {
+                lock (_cacheLock)
+                {
+                    _balanceCache[userId] = oldBalance;
+                }
+                _sawmill.Error($"Error while saving server currency for {userId}: {e}");
+            }
             finally
             {
-                _pendingSaveTasks.Remove(task);
+                lock (_pendingSaveLock)
+                {
+                    _pendingSaveTasks.Remove(task);
+                }
             }
         }
+        // Orion-Edit-End
 
         #endregion
     }

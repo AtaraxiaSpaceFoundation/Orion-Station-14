@@ -38,13 +38,26 @@ public sealed class SmartLinkSystem : EntitySystem
             return;
 
         var arms = _body.GetBodyChildrenOfType(part.Body.Value, BodyPartType.Arm);
-        if (arms.Count() != arms.Where(x => HasComp<SmartLinkArmComponent>(x.Id)).Count())
+        // Orion-Edit-Start
+        var armCount = 0;
+        var smartLinkArms = 0;
+
+        foreach (var arm in arms)
+        {
+            armCount++;
+
+            if (HasComp<SmartLinkArmComponent>(arm.Id))
+                smartLinkArms++;
+        }
+
+        if (armCount == 0 || armCount != smartLinkArms)
         {
             RemComp<SmartLinkComponent>(part.Body.Value);
             return;
         }
-        else
-            EnsureComp<SmartLinkComponent>(part.Body.Value);
+
+        EnsureComp<SmartLinkComponent>(part.Body.Value);
+        // Orion-Edit-End
     }
 
     private void OnShot(Entity<SmartLinkComponent> ent, ref AmmoShotUserEvent args)

@@ -107,9 +107,7 @@ public sealed class ClosePollCommand : LocalizedEntityCommands
     {
         if (args.Length == 1)
         {
-#pragma warning disable RA0004
-            var polls = Task.Run(_pollManager.GetActivePolls).Result;
-#pragma warning restore RA0004
+            var polls = _pollManager.GetActivePolls().GetAwaiter().GetResult(); // Orion-Edit
             var options = polls.Select(p => new CompletionOption(p.PollId.ToString(), p.Title));
             return CompletionResult.FromHintOptions(options, "Active poll ID");
         }
@@ -204,9 +202,7 @@ public sealed class PollInfoCommand : LocalizedEntityCommands
     {
         if (args.Length == 1)
         {
-#pragma warning disable RA0004
-            var polls = Task.Run(_pollManager.GetActivePolls).Result;
-#pragma warning restore RA0004
+            var polls = _pollManager.GetActivePolls().GetAwaiter().GetResult(); // Orion-Edit
             var options = polls.Select(p => new CompletionOption(p.PollId.ToString(), p.Title));
             return CompletionResult.FromHintOptions(options, "Poll ID");
         }

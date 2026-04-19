@@ -41,7 +41,10 @@ public sealed class MovementAdjustSystem : EntitySystem
         var factor = (xscale + yscale) / 2;
         factor = Math.Clamp(factor, ent.Comp.Min, ent.Comp.Max);
 
-        var newSprintSpeedMultiplier = sprinting.SprintSpeedMultiplier * factor;
+        // Orion-Edit-Start
+        ent.Comp.BaseSprintSpeedMultiplier ??= sprinting.SprintSpeedMultiplier;
+        var newSprintSpeedMultiplier = ent.Comp.BaseSprintSpeedMultiplier.Value * factor;
+        // Orion-Edit-End
 
         sprinting.SprintSpeedMultiplier = newSprintSpeedMultiplier;
 
@@ -70,8 +73,13 @@ public sealed class MovementAdjustSystem : EntitySystem
         var staminaDrainFactor = Math.Clamp(factor, ent.Comp.MinStaminaDrainFactor, ent.Comp.MaxStaminaDrainFactor);
         var speedFactor = Math.Clamp(factor, ent.Comp.MinSpeedFactor, ent.Comp.MaxSpeedFactor);
 
-        var newStaminaDrainMultiplier = flight.StaminaDrainMultiplier * staminaDrainFactor;
-        var newFlightSpeedMultiplier = flight.SpeedModifier * speedFactor;
+        // Orion-Edit-Start
+        ent.Comp.BaseStaminaDrainMultiplier ??= flight.StaminaDrainMultiplier;
+        ent.Comp.BaseFlightSpeedModifier ??= flight.SpeedModifier;
+
+        var newStaminaDrainMultiplier = ent.Comp.BaseStaminaDrainMultiplier.Value * staminaDrainFactor;
+        var newFlightSpeedMultiplier = ent.Comp.BaseFlightSpeedModifier.Value * speedFactor;
+        // Orion-Edit-End
 
         flight.StaminaDrainMultiplier = newStaminaDrainMultiplier;
         flight.SpeedModifier = newFlightSpeedMultiplier;

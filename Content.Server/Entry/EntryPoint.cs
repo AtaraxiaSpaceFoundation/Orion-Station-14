@@ -319,6 +319,7 @@ namespace Content.Server.Entry
 
         protected override void Dispose(bool disposing)
         {
+            _lastAntagManager?.Shutdown(); // Orion
             _playTimeTracking?.Shutdown();
             _dbManager?.Shutdown();
             IoCManager.Resolve<ServerApi>().Shutdown();

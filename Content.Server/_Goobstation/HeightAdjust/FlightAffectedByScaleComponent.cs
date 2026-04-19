@@ -34,4 +34,9 @@ public sealed partial class FlightAffectedByScaleComponent : Component
     /// </summary>
     [DataField]
     public float MinStaminaDrainFactor = 0.95f, MaxStaminaDrainFactor = 1.25f;
+
+    // Orion-Start
+    public float? BaseFlightSpeedModifier;
+    public float? BaseStaminaDrainMultiplier;
+    // Orion-End
 }

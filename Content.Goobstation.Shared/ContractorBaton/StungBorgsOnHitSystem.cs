@@ -7,7 +7,6 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Jittering;
 using Content.Shared.Silicons.Borgs.Components;
@@ -34,10 +33,15 @@ public sealed class StungBorgsOnHitSystem : EntitySystem
         if (!_toggle.IsActivated(ent.Owner))
             return;
 
-        foreach (var borg in args.HitEntities.Where(HasComp<BorgChassisComponent>))
+        // Orion-Edit-Start
+        foreach (var target in args.HitEntities)
         {
-            _stun.TryUpdateParalyzeDuration(borg, ent.Comp.ParalyzeDuration);
-            _jitter.DoJitter(borg, ent.Comp.ParalyzeDuration, true);
+            if (!HasComp<BorgChassisComponent>(target))
+                continue;
+
+            _stun.TryUpdateParalyzeDuration(target, ent.Comp.ParalyzeDuration);
+            _jitter.DoJitter(target, ent.Comp.ParalyzeDuration, true);
         }
+        // Orion-Edit-End
     }
 }

@@ -4,9 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Database;
-using Robust.Server.Player;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Network;
 
@@ -17,8 +17,12 @@ namespace Content.Server._Goobstation.Antag
     {
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly ITaskManager _task = default!;
-        [Dependency] private readonly IPlayerManager _player = default!;
-        private readonly List<Task> _pendingSaveTasks = new();
+        private readonly HashSet<Task> _pendingSaveTasks = new(); // Orion-Edit
+        // Orion-Start
+        private readonly Dictionary<NetUserId, TimeSpan> _lastRollCache = new();
+        private readonly object _pendingSaveLock = new();
+        private readonly object _cacheLock = new();
+        // Orion-End
         private ISawmill _sawmill = default!;
 
         public void Initialize()
@@ -31,7 +35,15 @@ namespace Content.Server._Goobstation.Antag
         /// </summary>
         public void Shutdown()
         {
-            _task.BlockWaitOnTask(Task.WhenAll(_pendingSaveTasks));
+            // Orion-Start
+            Task[] pendingTasks;
+            lock (_pendingSaveLock)
+            {
+                pendingTasks = _pendingSaveTasks.ToArray();
+            }
+
+            _task.BlockWaitOnTask(Task.WhenAll(pendingTasks));
+            // Orion-End
         }
 
         /// <summary>
@@ -39,16 +51,43 @@ namespace Content.Server._Goobstation.Antag
         /// </summary>
         public TimeSpan SetLastRolled(NetUserId userId, TimeSpan to)
         {
-            var oldTime = Task.Run(() => SetTimeAsync(userId, to)).GetAwaiter().GetResult();
+            // Orion-Edit-Start
+            var oldTime = GetLastRolled(userId);
+            lock (_cacheLock)
+            {
+                _lastRollCache[userId] = to;
+            }
+
+            var setTimeTask = _db.SetLastRolledAntag(userId, to);
+            _ = TrackPendingAsync(setTimeTask, userId, oldTime, to);
+
             _sawmill.Info($"Setting {userId} last rolled antag to {to} from {oldTime}");
             return oldTime;
+            // Orion-Edit-End
         }
 
         /// <summary>
         /// Gets a player's last rolled antag time.
         /// </summary>
         public TimeSpan GetLastRolled(NetUserId userId)
+        // Orion-Start
         {
+            lock (_cacheLock)
+            {
+                if (_lastRollCache.TryGetValue(userId, out var cached))
+                    return cached;
+            }
+
+            var rolled = _db.GetLastRolledAntag(userId).GetAwaiter().GetResult();
+            lock (_cacheLock)
+            {
+                _lastRollCache[userId] = rolled;
+            }
+            return rolled;
+        }
+        // Orion-End
+
+/* // Orion-Edit
             return Task.Run(() => GetTimeAsync(userId)).GetAwaiter().GetResult();
         }
 
@@ -83,23 +122,46 @@ namespace Content.Server._Goobstation.Antag
         /// Gets a player's last rolled antag time.
         /// </summary>
         private async Task<TimeSpan> GetTimeAsync(NetUserId userId) => await _db.GetLastRolledAntag(userId);
+*/
+
+        // Orion
+        #region Internal/Async tasks
 
         /// <summary>
         /// Track a database save task to make sure we block server shutdown on it.
         /// </summary>
-        private async void TrackPending(Task task)
+        // Orion-Edit-Start
+        private async Task TrackPendingAsync(Task<bool> task, NetUserId userId, TimeSpan oldTime, TimeSpan newTime)
         {
-            _pendingSaveTasks.Add(task);
+            lock (_pendingSaveLock)
+            {
+                _pendingSaveTasks.Add(task);
+            }
 
             try
             {
-                await task;
+                var success = await task;
+                _sawmill.Debug(success
+                    ? $"Successfully set LastRolledAntag for {userId} from {oldTime} to {newTime}"
+                    : $"Failed to set LastRolledAntag for {userId}. Player not found or other issue.");
+            }
+            catch (Exception e)
+            {
+                lock (_cacheLock)
+                {
+                    _lastRollCache[userId] = oldTime;
+                }
+                _sawmill.Error($"Error while saving LastRolledAntag for {userId}: {e}");
             }
             finally
             {
-                _pendingSaveTasks.Remove(task);
+                lock (_pendingSaveLock)
+                {
+                    _pendingSaveTasks.Remove(task);
+                }
             }
         }
+        // Orion-Edit-End
 
         #endregion
     }
