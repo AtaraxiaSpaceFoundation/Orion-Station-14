@@ -8,15 +8,15 @@
       scale: 2,2
       scrolling: "0, -0.4"
       shader: "unshaded"
-      worldAdjustPosition: "10, 0"
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_Orion/Parallaxes/Cyber/digital2.png"
-      slowness: 0.6
-      scale: 2,2
-      scrolling: "0, -0.8"
-      shader: "unshaded"
-      worldAdjustPosition: "30, 0"
+#      worldAdjustPosition: "10, 0"
+#    - texture:
+#        !type:ImageParallaxTextureSource
+#        path: "/Textures/_Orion/Parallaxes/Cyber/digital2.png"
+#      slowness: 0.6
+#      scale: 2,2
+#      scrolling: "0, -0.8"
+#      shader: "unshaded"
+#      worldAdjustPosition: "30, 0"
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/_Orion/Parallaxes/Cyber/digital3.png"
@@ -36,15 +36,15 @@
       scale: 2,2
       scrolling: "0, -0.4"
       shader: "unshaded"
-      worldAdjustPosition: "10, 0"
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_Orion/Parallaxes/CyberRed/digital2.png"
-      slowness: 0.6
-      scale: 2,2
-      scrolling: "0, -0.8"
-      shader: "unshaded"
-      worldAdjustPosition: "30, 0"
+#      worldAdjustPosition: "10, 0"
+#    - texture:
+#        !type:ImageParallaxTextureSource
+#        path: "/Textures/_Orion/Parallaxes/CyberRed/digital2.png"
+#      slowness: 0.6
+#      scale: 2,2
+#      scrolling: "0, -0.8"
+#      shader: "unshaded"
+#      worldAdjustPosition: "30, 0"
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/_Orion/Parallaxes/CyberRed/digital3.png"
@@ -64,15 +64,15 @@
       scale: 2,2
       scrolling: "0, -0.4"
       shader: "unshaded"
-      worldAdjustPosition: "10, 0"
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_Orion/Parallaxes/CyberRedTwo/digital2.png"
-      slowness: 0.6
-      scale: 2,2
-      scrolling: "0, -0.8"
-      shader: "unshaded"
-      worldAdjustPosition: "30, 0"
+#      worldAdjustPosition: "10, 0"
+#    - texture:
+#        !type:ImageParallaxTextureSource
+#        path: "/Textures/_Orion/Parallaxes/CyberRedTwo/digital2.png"
+#      slowness: 0.6
+#      scale: 2,2
+#      scrolling: "0, -0.8"
+#      shader: "unshaded"
+#      worldAdjustPosition: "30, 0"
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/_Orion/Parallaxes/CyberRedTwo/digital3.png"
@@ -92,15 +92,15 @@
       scale: 2,2
       scrolling: "0, -0.4"
       shader: "unshaded"
-      worldAdjustPosition: "10, 0"
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_Orion/Parallaxes/CyberBlue/digital2.png"
-      slowness: 0.6
-      scale: 2,2
-      scrolling: "0, -0.8"
-      shader: "unshaded"
-      worldAdjustPosition: "30, 0"
+#      worldAdjustPosition: "10, 0"
+#    - texture:
+#        !type:ImageParallaxTextureSource
+#        path: "/Textures/_Orion/Parallaxes/CyberBlue/digital2.png"
+#      slowness: 0.6
+#      scale: 2,2
+#      scrolling: "0, -0.8"
+#      shader: "unshaded"
+#      worldAdjustPosition: "30, 0"
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/_Orion/Parallaxes/CyberBlue/digital3.png"

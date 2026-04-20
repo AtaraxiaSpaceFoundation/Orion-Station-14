@@ -16,12 +16,14 @@ using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Emag.Components;
+using Content.Shared.Emag.Systems;
 using Content.Shared.EntityTable;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Parallax;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.StatusEffectNew;
@@ -71,6 +73,7 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<QuantumServerComponent, MapInitEvent>(OnServerMapInit);
         SubscribeLocalEvent<QuantumServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<QuantumServerComponent, InteractUsingEvent>(OnServerInteractUsing);
+        SubscribeLocalEvent<QuantumServerComponent, GotEmaggedEvent>(OnServerEmagged);
         SubscribeLocalEvent<QuantumServerComponent, EntityTerminatingEvent>(OnServerTerminating);
         SubscribeLocalEvent<QuantumServerComponent, PowerChangedEvent>(OnServerPowerChanged);
         SubscribeLocalEvent<QuantumServerComponent, NewLinkEvent>(OnServerNewLink);
@@ -109,6 +112,11 @@ public sealed class QuantumServerSystem : EntitySystem
 
         args.Handled = true;
         _popup.PopupEntity(Loc.GetString("bitrunning-server-active"), ent, args.User);
+    }
+
+    private void OnServerEmagged(Entity<QuantumServerComponent> ent, ref GotEmaggedEvent args)
+    {
+        args.Handled = true;
     }
 
     private void OnServerPowerChanged(Entity<QuantumServerComponent> ent, ref PowerChangedEvent args)
@@ -181,6 +189,13 @@ public sealed class QuantumServerSystem : EntitySystem
 
         var mapEntity = _map.CreateMap(out var mapId, runMapInit: true);
         EnsureComp<BitrunningDomainRuntimeComponent>(mapEntity);
+        _metaData.SetEntityName(mapEntity, Loc.GetString(domain.Name));
+
+        var parallax = EnsureComp<ParallaxComponent>(mapEntity);
+        parallax.Parallax = HasComp<EmaggedComponent>(serverUid)
+            ? "CyberRed"
+            : "Cyber";
+        Dirty(mapEntity, parallax);
 
         if (!_mapLoader.TryLoadGrid(mapId, domain.MapPath, out var grid, offset: Vector2.Zero))
         {
@@ -667,7 +682,7 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         var tableId = GetDeliveryLootTable(server);
-        if (!_prototype.TryIndex(tableId, out EntityTablePrototype? table))
+        if (!_prototype.TryIndex(tableId, out var table))
             return;
 
         var coordinates = Transform(cargoUid).Coordinates;
