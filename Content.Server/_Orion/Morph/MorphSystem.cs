@@ -140,16 +140,7 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnDestroy(EntityUid uid, MorphComponent morph, ref BeingGibbedEvent args)
     {
-        if (!TryComp<DevourerComponent>(uid, out var devourer))
-            return;
-
-        foreach (var ent in devourer.Stomach.ContainedEntities.ToArray())
-        {
-            if (!_container.Remove(ent, devourer.Stomach))
-                continue;
-
-            _transform.SetCoordinates(ent, Transform(uid).Coordinates);
-        }
+        TryEjectStomachContents(uid);
     }
 
     private void OnDamage(EntityUid uid, MorphComponent morph, DamageChangedEvent args)
@@ -449,9 +440,6 @@ public sealed class MorphSystem : SharedMorphSystem
         if (!TryComp<MobStateComponent>(target, out var targetMobState))
             return;
 
-        if (_container.TryGetContainingContainer(target, out var container) && container.Owner == morph.Owner)
-            _transform.SetCoordinates(target, new EntityCoordinates(EntityUid.Invalid, Vector2.Zero));
-
         var wasAlive = !_mobState.IsDead(target, targetMobState);
         if (wasAlive)
             _mobState.ChangeMobState(target, MobState.Dead, targetMobState, morph.Owner);
@@ -617,6 +605,8 @@ public sealed class MorphSystem : SharedMorphSystem
 
     private void OnTerminating(Entity<MorphComponent> morph, ref EntityTerminatingEvent args)
     {
+        TryEjectStomachContents(morph.Owner);
+
         if (!_terminatedMorphs.Add(morph.Owner))
             return;
 
@@ -628,6 +618,22 @@ public sealed class MorphSystem : SharedMorphSystem
 
         parentMorph.Children = Math.Max(0, parentMorph.Children - 1);
         Dirty(parent, parentMorph);
+    }
+
+    private void TryEjectStomachContents(EntityUid uid)
+    {
+        if (!TryComp<DevourerComponent>(uid, out var devourer))
+            return;
+
+        var coordinates = Transform(uid).Coordinates;
+
+        foreach (var ent in devourer.Stomach.ContainedEntities.ToArray())
+        {
+            if (!_container.Remove(ent, devourer.Stomach))
+                continue;
+
+            _transform.SetCoordinates(ent, coordinates);
+        }
     }
 
     #endregion
