@@ -13,7 +13,6 @@ using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Damage;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Emag.Components;
-using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
@@ -21,13 +20,14 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -50,6 +50,8 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
+
+    private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
 
     public override void Initialize()
     {
@@ -225,7 +227,7 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         foreach (var connection in serverEnt.Comp.ActiveConnections.ToArray())
         {
-            DisconnectAvatar(connection, true);
+            DisconnectAvatar(connection, false);
         }
 
         if (serverEnt.Comp.DomainMapUid is { } mapUid)
@@ -455,15 +457,10 @@ public sealed class QuantumServerSystem : EntitySystem
         {
             _stun.TryAddParalyzeDuration(body, currentServer.ExitParalyzeTime);
 
-            if (TryComp<StatusEffectsComponent>(body, out var status))
-            {
-                _statusEffects.TryAddStatusEffect<TemporaryBlindnessComponent>(
-                    body,
-                    "TemporaryBlindness",
-                    currentServer.ExitBlindnessTime,
-                    true,
-                    status);
-            }
+            _statusEffects.TryUpdateStatusEffectDuration(
+                body,
+                ExitBlindnessStatusEffect,
+                currentServer.ExitBlindnessTime);
         }
 
         if (serverUid != null && TryComp<QuantumServerComponent>(serverUid.Value, out var server))

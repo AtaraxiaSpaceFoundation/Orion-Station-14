@@ -48,10 +48,10 @@ public sealed partial class QuantumServerComponent : Component
     public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 
     [DataField]
-    public TimeSpan ExitParalyzeTime = TimeSpan.FromSeconds(1.5);
+    public TimeSpan ExitParalyzeTime = TimeSpan.FromSeconds(3.5);
 
     [DataField]
-    public TimeSpan ExitBlindnessTime = TimeSpan.FromSeconds(2.5);
+    public TimeSpan ExitBlindnessTime = TimeSpan.FromSeconds(3.5);
 
     [DataField]
     public List<Vector2> CacheSpawnOffsets = new()

@@ -6,6 +6,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/quantum_server.rsi
+    noRot: true
     layers:
     - state: qserver_off
       map: ["enum.PowerDeviceVisualLayers.Powered"]
@@ -69,6 +70,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/netpod.rsi
+    noRot: true
     layers:
     - state: netpod
       map: ["base"]

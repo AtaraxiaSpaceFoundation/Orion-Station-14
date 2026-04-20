@@ -91,7 +91,7 @@ public sealed class NetpodSystem : EntitySystem
             return;
         }
 
-        SetVisualState(ent, NetpodVisualState.Opening);
+        SetVisualState(ent, NetpodVisualState.Closing);
         _audio.PlayPvs(ent.Comp.CloseSound, ent);
         TryAutoConnect(ent, args.Entity);
         Timer.Spawn(PodAnimationDuration,
@@ -117,7 +117,7 @@ public sealed class NetpodSystem : EntitySystem
             return;
         }
 
-        SetVisualState(ent, NetpodVisualState.Closing);
+        SetVisualState(ent, NetpodVisualState.Opening);
         _audio.PlayPvs(ent.Comp.OpenSound, ent);
         Timer.Spawn(PodAnimationDuration,
             () =>

@@ -30,7 +30,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
                 continue;
 
             _server.AddObjectivePoint(serverUid, ent.Comp.Points);
-            _audio.PlayPvs(ent.Comp.PickupSound, ent);
+            _audio.PlayPvs(ent.Comp.PickupSound, Transform(ent).Coordinates);
             if (ent.Comp.ConsumeOnUse)
                 QueueDel(ent.Owner);
 
