@@ -30,7 +30,7 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// Base server points rewarded on successful completion.
     /// </summary>
     [DataField]
-    public int RewardPoints { get; private set; } = 1;
+    public int RewardPoints { get; private set; }
 
     [DataField(required: true, customTypeSerializer: typeof(ResPathSerializer))]
     public ResPath MapPath { get; private set; }
@@ -75,7 +75,7 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// Objective progress needed to trigger reward flow.
     /// </summary>
     [DataField]
-    public int ObjectiveTarget { get; private set; } = 10;
+    public int ObjectiveTarget { get; private set; } = 1;
 
     /// <summary>
     /// Free-form semantic flags for domain behavior gates.
