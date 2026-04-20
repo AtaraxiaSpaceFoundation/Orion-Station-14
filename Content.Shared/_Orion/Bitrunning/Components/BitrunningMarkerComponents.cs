@@ -3,18 +3,33 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
 
+/// <summary>
+/// Marks entities that belong to an active bitrunning domain runtime and should be cleaned up when the run ends.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningDomainRuntimeComponent : Component;
 
+/// <summary>
+/// Marker used by the domain loader to place the return point where disconnects avatars.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningExitMarkerComponent : Component;
 
+/// <summary>
+/// Marker that indicates the primary objective area for a generated domain.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningGoalMarkerComponent : Component;
 
+/// <summary>
+/// Marker that defines preferred spawn positions for encrypted cache objectives.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningCacheMarkerComponent : Component;
 
+/// <summary>
+/// Marker that defines where delivery objective crates are spawned and which crate prototype is used.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningCacheCrateMarkerComponent : Component
 {
@@ -22,9 +37,15 @@ public sealed partial class BitrunningCacheCrateMarkerComponent : Component
     public EntProtoId CratePrototype = "CrateBitrunSecure";
 }
 
+/// <summary>
+/// Marker that defines player/avatar spawn positions if no dedicated objective marker is available.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningSpawnMarkerComponent : Component;
 
+/// <summary>
+/// Objective point that grants progress when interacted with, typically used by encrypted cache objective entities.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningObjectivePointComponent : Component
 {
@@ -38,6 +59,9 @@ public sealed partial class BitrunningObjectivePointComponent : Component
     public SoundSpecifier PickupSound = new SoundPathSpecifier("/Audio/Machines/scan_finish.ogg");
 }
 
+/// <summary>
+/// Delivery target sensor that grants objective progress when valid cargo enters it.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningObjectiveDeliveryPointComponent : Component
 {
@@ -45,12 +69,21 @@ public sealed partial class BitrunningObjectiveDeliveryPointComponent : Componen
     public int Points = 1;
 }
 
+/// <summary>
+/// Marks an entity as valid cargo for delivery-type bitrunning objectives.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningObjectiveCargoComponent : Component;
 
+/// <summary>
+/// Marks cargo that has already been delivered to prevent duplicate scoring.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningDeliveredObjectiveCargoComponent : Component;
 
+/// <summary>
+/// Marks enemies that grant objective progress when killed in eliminate-target domains.
+/// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningDomainEnemyObjectiveComponent : Component
 {

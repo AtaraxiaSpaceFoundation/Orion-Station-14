@@ -3,6 +3,7 @@ using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
 
 namespace Content.Server._Orion.Bitrunning.Systems;
@@ -14,9 +15,24 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
 
     public override void Initialize()
     {
+        SubscribeLocalEvent<BitrunningExitMarkerComponent, StartCollideEvent>(OnExitCollide);
         SubscribeLocalEvent<BitrunningObjectivePointComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<BitrunningObjectiveDeliveryPointComponent, StartCollideEvent>(OnDeliveryCollide);
         SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, MobStateChangedEvent>(OnEnemyStateChanged);
+    }
+
+    private void OnExitCollide(Entity<BitrunningExitMarkerComponent> ent, ref StartCollideEvent args)
+    {
+        if (!HasComp<AvatarConnectionComponent>(args.OtherEntity))
+            return;
+
+        if (!TryResolveDomainMapUid(ent.Owner, args.OtherEntity, out var mapUid))
+            return;
+
+        if (!_server.TryGetServerByDomainMap(mapUid, out _, out _))
+            return;
+
+        _server.DisconnectAvatar(args.OtherEntity, false);
     }
 
     private void OnInteract(Entity<BitrunningObjectivePointComponent> ent, ref InteractHandEvent args)
@@ -24,8 +40,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (args.Handled)
             return;
 
-        var mapUid = Transform(ent).MapUid;
-        if (mapUid == null)
+        if (!TryResolveDomainMapUid(ent.Owner, args.User, out var mapUid, out var coordinates))
             return;
 
         var query = EntityQueryEnumerator<QuantumServerComponent>();
@@ -38,7 +53,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
                 continue;
 
             _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
-            _audio.PlayPvs(ent.Comp.PickupSound, Transform(ent).Coordinates);
+            _audio.PlayPvs(ent.Comp.PickupSound, coordinates);
             if (ent.Comp.ConsumeOnUse)
                 QueueDel(ent.Owner);
 
@@ -49,11 +64,10 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
 
     private void OnDeliveryCollide(Entity<BitrunningObjectiveDeliveryPointComponent> ent, ref StartCollideEvent args)
     {
-        var mapUid = Transform(ent).MapUid;
-        if (mapUid == null)
+        if (!TryResolveDomainMapUid(ent.Owner, args.OtherEntity, out var mapUid))
             return;
 
-        if (!_server.TryGetServerByDomainMap(mapUid.Value, out var serverUid, out var server))
+        if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
             return;
 
         if (server.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
@@ -76,16 +90,41 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
-        var mapUid = Transform(ent).MapUid;
-        if (mapUid == null)
+        if (!TryResolveDomainMapUid(ent.Owner, null, out var mapUid))
             return;
 
-        if (!_server.TryGetServerByDomainMap(mapUid.Value, out var serverUid, out var server))
+        if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
             return;
 
         if (server.ObjectiveType != BitrunningObjectiveType.EliminateEnemies)
             return;
 
         _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
+    }
+
+    private bool TryResolveDomainMapUid(EntityUid primaryUid, EntityUid? fallbackUid, out EntityUid mapUid, out EntityCoordinates coordinates)
+    {
+        coordinates = default;
+        if (TryComp(primaryUid, out TransformComponent? primaryXform) && primaryXform.MapUid is { } primaryMapUid)
+        {
+            mapUid = primaryMapUid;
+            coordinates = primaryXform.Coordinates;
+            return true;
+        }
+
+        if (fallbackUid != null && TryComp(fallbackUid.Value, out TransformComponent? fallbackXform) && fallbackXform.MapUid is { } fallbackMapUid)
+        {
+            mapUid = fallbackMapUid;
+            coordinates = fallbackXform.Coordinates;
+            return true;
+        }
+
+        mapUid = default;
+        return false;
+    }
+
+    private bool TryResolveDomainMapUid(EntityUid primaryUid, EntityUid? fallbackUid, out EntityUid mapUid)
+    {
+        return TryResolveDomainMapUid(primaryUid, fallbackUid, out mapUid, out _);
     }
 }

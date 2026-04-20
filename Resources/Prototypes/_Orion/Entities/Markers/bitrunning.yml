@@ -1,3 +1,4 @@
+# Extraction point for avatars when a domain run is completed or aborted.
 - type: entity
   parent: MarkerBase
   id: BitrunningExitMarker
@@ -7,8 +8,19 @@
   - type: Sprite
     layers:
     - state: red
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      sensor:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 0
+        hard: false
   - type: BitrunningExitMarker
 
+# Anchor point for the domain's main objective area.
 - type: entity
   parent: MarkerBase
   id: BitrunningGoalMarker
@@ -20,6 +32,7 @@
     - state: red
   - type: BitrunningGoalMarker
 
+# Spawn point for collectible encrypted cache objectives.
 - type: entity
   parent: MarkerBase
   id: BitrunningCacheMarker
@@ -31,6 +44,7 @@
     - state: red
   - type: BitrunningCacheMarker
 
+# Spawn point for objective crates used by delivery missions.
 - type: entity
   parent: MarkerBase
   id: BitrunningCacheCrateMarker
@@ -42,6 +56,7 @@
     - state: red
   - type: BitrunningCacheCrateMarker
 
+# Spawn point used for avatars placement.
 - type: entity
   parent: MarkerBase
   id: BitrunningSpawnMarker
@@ -53,6 +68,7 @@
     - state: red
   - type: BitrunningSpawnMarker
 
+# Physical delivery zone sensor.
 - type: entity
   parent: MarkerBase
   id: BitrunningDeliveryMarker
