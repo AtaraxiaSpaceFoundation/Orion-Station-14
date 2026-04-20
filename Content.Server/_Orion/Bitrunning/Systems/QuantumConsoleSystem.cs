@@ -178,16 +178,14 @@ public sealed class QuantumConsoleSystem : EntitySystem
             return;
 
         ent.Comp.LinkedServerId = args.Source;
-        Dirty(ent);
     }
 
-    private void OnPortDisconnected(Entity<QuantumConsoleComponent> ent, ref PortDisconnectedEvent args)
+    private static void OnPortDisconnected(Entity<QuantumConsoleComponent> ent, ref PortDisconnectedEvent args)
     {
         if (args.Port != ServerSinkPort || ent.Comp.LinkedServerId != args.RemovedPortUid)
             return;
 
         ent.Comp.LinkedServerId = null;
-        Dirty(ent);
     }
 
     private void RefreshLinkedServer(Entity<QuantumConsoleComponent> ent)
@@ -201,11 +199,9 @@ public sealed class QuantumConsoleSystem : EntitySystem
                 continue;
 
             ent.Comp.LinkedServerId = source;
-            Dirty(ent);
             return;
         }
 
         ent.Comp.LinkedServerId = null;
-        Dirty(ent);
     }
 }

@@ -30,6 +30,7 @@
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: true }
           False: { visible: false }
+  - type: WiresPanel
   - type: QuantumServer
   - type: DeviceLinkSource
     ports:
@@ -85,6 +86,7 @@
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: true }
           False: { visible: false }
+  - type: WiresPanel
   - type: ContainerContainer
     containers:
       netpod-body:
@@ -152,6 +154,7 @@
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: true }
           False: { visible: false }
+  - type: WiresPanel
   - type: Byteforge
   - type: DeviceLinkSink
     ports:

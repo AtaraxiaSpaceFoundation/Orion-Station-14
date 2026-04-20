@@ -1,5 +1,6 @@
 using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
+using Content.Server.Power.Components;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.DeviceLinking;
@@ -74,7 +75,12 @@ public sealed class NetpodSystem : EntitySystem
         if (ent.Comp.Avatar != null)
             _server.DisconnectAvatar(ent.Comp.Avatar.Value, true);
 
-        EjectOccupant(ent.Owner);
+        Timer.Spawn(TimeSpan.Zero,
+            () =>
+        {
+            if (Exists(ent.Owner))
+                EjectOccupant(ent.Owner);
+        });
         UpdateVisuals(ent);
     }
 
@@ -86,9 +92,25 @@ public sealed class NetpodSystem : EntitySystem
         if (args.Entity == EntityUid.Invalid || !Exists(args.Entity))
             return;
 
+        if (TryComp<ApcPowerReceiverComponent>(ent.Owner, out var power) && !power.Powered)
+        {
+            Timer.Spawn(TimeSpan.Zero,
+                () =>
+            {
+                if (Exists(ent.Owner))
+                    EjectOccupant(ent.Owner);
+            });
+            return;
+        }
+
         if (TryComp<MobStateComponent>(args.Entity, out var mobState) && mobState.CurrentState == MobState.Dead)
         {
-            EjectOccupant(ent.Owner);
+            Timer.Spawn(TimeSpan.Zero,
+                () =>
+            {
+                if (Exists(ent.Owner))
+                    EjectOccupant(ent.Owner);
+            });
             _popup.PopupEntity(Loc.GetString("bitrunning-netpod-enter-failed"), ent, args.Entity);
             return;
         }
@@ -167,7 +189,7 @@ public sealed class NetpodSystem : EntitySystem
             if (!_prototype.TryIndex(loadoutId, out _))
                 continue;
 
-            loadouts.Add(new NetpodLoadoutEntry(loadoutId, loadoutId));
+            loadouts.Add(new NetpodLoadoutEntry(loadoutId, GetLoadoutDisplayName(loadoutId)));
         }
 
         loadouts.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.Ordinal));
@@ -268,5 +290,26 @@ public sealed class NetpodSystem : EntitySystem
     private void SetVisualState(Entity<NetpodComponent> ent, NetpodVisualState state)
     {
         _appearance.SetData(ent, NetpodVisuals.State, state);
+    }
+
+    private string GetLoadoutDisplayName(ProtoId<StartingGearPrototype> loadoutId)
+    {
+        if (_prototype.TryIndex(loadoutId, out var _))
+        {
+            foreach (var job in _prototype.EnumeratePrototypes<JobPrototype>())
+            {
+                if (job.StartingGear != loadoutId)
+                    continue;
+
+                return Loc.TryGetString(job.Name, out var localizedJobName)
+                    ? localizedJobName
+                    : job.Name;
+            }
+        }
+
+        var fallbackKey = $"loadout-{loadoutId.ToString().ToLowerInvariant()}";
+        return Loc.TryGetString(fallbackKey, out var localizedLoadoutName)
+            ? localizedLoadoutName
+            : loadoutId.ToString();
     }
 }

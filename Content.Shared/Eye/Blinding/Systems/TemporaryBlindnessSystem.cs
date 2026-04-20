@@ -62,7 +62,8 @@ public sealed class TemporaryBlindnessSystem : EntitySystem
 
     private static void OnBlindTrySeeRelayed(Entity<TemporaryBlindnessComponent> ent, ref StatusEffectRelayedEvent<CanSeeAttemptEvent> args)
     {
-        args.Args.Cancel();
+        if (ent.Comp.LifeStage <= ComponentLifeStage.Running)
+            args.Args.Cancel();
     }
 
     private EntityUid GetBlindnessTarget(EntityUid uid)

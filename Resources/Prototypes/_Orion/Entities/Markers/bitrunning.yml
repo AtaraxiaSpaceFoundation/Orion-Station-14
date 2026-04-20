@@ -16,6 +16,10 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
         density: 0
         hard: false
   - type: BitrunningExitMarker
@@ -86,6 +90,10 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
         density: 0
         hard: false
   - type: BitrunningObjectiveDeliveryPoint
