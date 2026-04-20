@@ -16,7 +16,9 @@ bitrunning-netpod-ui-title = Net Pod
 bitrunning-netpod-ui-select-outfit = Select an outfit
 bitrunning-netpod-ui-search = Search
 
-bitrunning-training-instructions = Collect encrypted cache nodes. Reward and completion will trigger automatically.
+bitrunning-training-instructions-collect = Collect { $target } encrypted cache nodes.
+bitrunning-training-instructions-delivery = Deliver cache crates { $target } times.
+bitrunning-training-instructions-eliminate = Eliminate { $target } domain threats.
 bitrunning-certificate-template = Domain: { $domain }. Completion time: { $time }. Base reward: { $reward }. Bonus: { $bonus }x. Threats: { $threats }. Grade: { $grade }
 
 bitrunning-ui-title = Quantum Console

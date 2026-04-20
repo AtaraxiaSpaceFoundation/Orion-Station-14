@@ -66,10 +66,16 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public int RequiredPointsToRevealReward { get; private set; }
 
     /// <summary>
-    /// Objective points needed to trigger cache reveal/completion flow.
+    /// Defines how the domain is completed.
     /// </summary>
     [DataField]
-    public int ObjectiveGoalPoints { get; private set; } = 10;
+    public BitrunningObjectiveType ObjectiveType { get; private set; } = BitrunningObjectiveType.CollectEncryptedCaches;
+
+    /// <summary>
+    /// Objective progress needed to trigger reward flow.
+    /// </summary>
+    [DataField]
+    public int ObjectiveTarget { get; private set; } = 10;
 
     /// <summary>
     /// Free-form semantic flags for domain behavior gates.

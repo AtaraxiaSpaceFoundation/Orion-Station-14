@@ -140,6 +140,7 @@
   - QuantumConsoleCircuitboard
   - QuantumServerMachineCircuitboard
   - NetpodMachineCircuitboard
+  - ByteforgeMachineCircuitboard
   position: 4,6
 
 - type: technology

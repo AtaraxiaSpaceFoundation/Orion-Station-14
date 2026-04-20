@@ -33,6 +33,17 @@
 
 - type: entity
   parent: MarkerBase
+  id: BitrunningCacheCrateMarker
+  name: cache crate marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: BitrunningCacheCrateMarker
+
+- type: entity
+  parent: MarkerBase
   id: BitrunningSpawnMarker
   name: spawn marker
   suffix: Bitrunning
@@ -41,3 +52,24 @@
     layers:
     - state: red
   - type: BitrunningSpawnMarker
+
+- type: entity
+  parent: MarkerBase
+  id: BitrunningDeliveryMarker
+  name: delivery marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      sensor:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 0
+        hard: false
+  - type: BitrunningObjectiveDeliveryPoint

@@ -1,0 +1,9 @@
+- type: sourcePort
+  id: BitrunningServerSource
+  name: signal-port-name-bitrunning-server-source
+  description: signal-port-description-bitrunning-server-source
+
+- type: sinkPort
+  id: BitrunningServerSink
+  name: signal-port-name-bitrunning-server-sink
+  description: signal-port-description-bitrunning-server-sink

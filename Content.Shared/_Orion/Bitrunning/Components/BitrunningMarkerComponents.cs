@@ -1,4 +1,5 @@
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
 
@@ -15,6 +16,13 @@ public sealed partial class BitrunningGoalMarkerComponent : Component;
 public sealed partial class BitrunningCacheMarkerComponent : Component;
 
 [RegisterComponent]
+public sealed partial class BitrunningCacheCrateMarkerComponent : Component
+{
+    [DataField]
+    public EntProtoId CratePrototype = "CrateBitrunSecure";
+}
+
+[RegisterComponent]
 public sealed partial class BitrunningSpawnMarkerComponent : Component;
 
 [RegisterComponent]
@@ -28,4 +36,24 @@ public sealed partial class BitrunningObjectivePointComponent : Component
 
     [DataField]
     public SoundSpecifier PickupSound = new SoundPathSpecifier("/Audio/Machines/scan_finish.ogg");
+}
+
+[RegisterComponent]
+public sealed partial class BitrunningObjectiveDeliveryPointComponent : Component
+{
+    [DataField]
+    public int Points = 1;
+}
+
+[RegisterComponent]
+public sealed partial class BitrunningObjectiveCargoComponent : Component;
+
+[RegisterComponent]
+public sealed partial class BitrunningDeliveredObjectiveCargoComponent : Component;
+
+[RegisterComponent]
+public sealed partial class BitrunningDomainEnemyObjectiveComponent : Component
+{
+    [DataField]
+    public int Points = 1;
 }

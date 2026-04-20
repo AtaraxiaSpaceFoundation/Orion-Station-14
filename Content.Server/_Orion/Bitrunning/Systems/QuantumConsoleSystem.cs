@@ -1,5 +1,7 @@
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared.DeviceLinking;
+using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Emag.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
@@ -11,20 +13,35 @@ public sealed class QuantumConsoleSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly QuantumServerSystem _server = default!;
     [Dependency] private readonly BitrunningDomainSystem _domains = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly TimeSpan UiRefresh = TimeSpan.FromSeconds(1);
+    private const string ServerSinkPort = "BitrunningServerSink";
     private TimeSpan _nextRefresh;
 
     public override void Initialize()
     {
+        SubscribeLocalEvent<QuantumConsoleComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<QuantumConsoleComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<QuantumConsoleComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleLoadDomainMessage>(OnLoadDomain);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleRandomDomainMessage>(OnRandomDomain);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleStopDomainMessage>(OnStopDomain);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleRefreshMessage>(OnRefresh);
         SubscribeLocalEvent<QuantumConsoleComponent, QuantumConsoleBroadcastMessage>(OnBroadcast);
+        SubscribeLocalEvent<QuantumConsoleComponent, NewLinkEvent>(OnNewLink);
+        SubscribeLocalEvent<QuantumConsoleComponent, PortDisconnectedEvent>(OnPortDisconnected);
+    }
+
+    private void OnInit(Entity<QuantumConsoleComponent> ent, ref ComponentInit args)
+    {
+        _deviceLink.EnsureSinkPorts(ent.Owner, ServerSinkPort);
+    }
+
+    private void OnMapInit(Entity<QuantumConsoleComponent> ent, ref MapInitEvent args)
+    {
+        RefreshLinkedServer(ent);
     }
 
     public override void Update(float frameTime)
@@ -148,33 +165,47 @@ public sealed class QuantumConsoleSystem : EntitySystem
         if (ent.Comp.LinkedServerId is { } linkedUid && Exists(linkedUid) && HasComp<QuantumServerComponent>(linkedUid))
             return linkedUid;
 
-        EntityUid? nearestServer = null;
-        var nearestDistance = float.MaxValue;
-        foreach (var uid in _lookup.GetEntitiesInRange(ent.Owner, ent.Comp.LinkRange))
+        RefreshLinkedServer(ent);
+        return ent.Comp.LinkedServerId;
+    }
+
+    private void OnNewLink(Entity<QuantumConsoleComponent> ent, ref NewLinkEvent args)
+    {
+        if (args.Sink != ent.Owner || args.SinkPort != ServerSinkPort)
+            return;
+
+        if (!HasComp<QuantumServerComponent>(args.Source))
+            return;
+
+        ent.Comp.LinkedServerId = args.Source;
+        Dirty(ent);
+    }
+
+    private void OnPortDisconnected(Entity<QuantumConsoleComponent> ent, ref PortDisconnectedEvent args)
+    {
+        if (args.Port != ServerSinkPort || ent.Comp.LinkedServerId != args.RemovedPortUid)
+            return;
+
+        ent.Comp.LinkedServerId = null;
+        Dirty(ent);
+    }
+
+    private void RefreshLinkedServer(Entity<QuantumConsoleComponent> ent)
+    {
+        if (!TryComp<DeviceLinkSinkComponent>(ent.Owner, out var sink))
+            return;
+
+        foreach (var source in sink.LinkedSources)
         {
-            if (uid == ent.Owner)
+            if (!HasComp<QuantumServerComponent>(source))
                 continue;
 
-            if (!HasComp<QuantumServerComponent>(uid))
-                continue;
-
-            if (!Transform(uid).Coordinates.TryDistance(EntityManager, Transform(ent.Owner).Coordinates, out var distance))
-                continue;
-
-            distance *= distance;
-            if (distance >= nearestDistance)
-                continue;
-
-            nearestDistance = distance;
-            nearestServer = uid;
+            ent.Comp.LinkedServerId = source;
+            Dirty(ent);
+            return;
         }
 
-        if (ent.Comp.LinkedServerId == nearestServer)
-            return nearestServer;
-
-        ent.Comp.LinkedServerId = nearestServer;
+        ent.Comp.LinkedServerId = null;
         Dirty(ent);
-
-        return nearestServer;
     }
 }

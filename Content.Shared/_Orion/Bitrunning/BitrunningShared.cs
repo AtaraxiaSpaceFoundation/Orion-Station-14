@@ -30,6 +30,14 @@ public enum BitrunningDifficulty : byte
 }
 
 [NetSerializable, Serializable]
+public enum BitrunningObjectiveType : byte
+{
+    CollectEncryptedCaches,
+    DeliveryCacheCrate,
+    EliminateEnemies,
+}
+
+[NetSerializable, Serializable]
 public enum NetpodVisuals : byte
 {
     State,

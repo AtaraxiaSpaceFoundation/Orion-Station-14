@@ -1,0 +1,43 @@
+- type: entityTable
+  id: BitrunningDeliveryEasyLoot
+  table: !type:GroupSelector
+    rolls: !type:RangeNumberSelector
+      range: 2, 3
+    children:
+    - id: SpaceCash100
+      weight: 3
+    - id: SpaceCash500
+      weight: 1
+
+- type: entityTable
+  id: BitrunningDeliveryMediumLoot
+  table: !type:GroupSelector
+    rolls: !type:RangeNumberSelector
+      range: 3, 4
+    children:
+    - id: SpaceCash100
+      weight: 3
+    - id: SpaceCash500
+      weight: 1
+
+- type: entityTable
+  id: BitrunningDeliveryHardLoot
+  table: !type:GroupSelector
+    rolls: !type:RangeNumberSelector
+      range: 4, 5
+    children:
+    - id: SpaceCash100
+      weight: 3
+    - id: SpaceCash500
+      weight: 1
+
+- type: entityTable
+  id: BitrunningDeliveryExtremeLoot
+  table: !type:GroupSelector
+    rolls: !type:RangeNumberSelector
+      range: 5, 6
+    children:
+    - id: SpaceCash100
+      weight: 3
+    - id: SpaceCash500
+      weight: 1

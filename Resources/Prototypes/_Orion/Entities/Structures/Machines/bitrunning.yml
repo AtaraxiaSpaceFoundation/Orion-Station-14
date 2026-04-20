@@ -31,19 +31,9 @@
           True: { visible: true }
           False: { visible: false }
   - type: QuantumServer
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
-        density: 1000
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
+  - type: DeviceLinkSource
+    ports:
+    - BitrunningServerSource
 
 - type: entity
   parent: BaseComputer
@@ -61,6 +51,9 @@
       enum.QuantumConsoleUiKey.Key:
         type: QuantumConsoleBoundUserInterface
   - type: QuantumConsole
+  - type: DeviceLinkSink
+    ports:
+    - BitrunningServerSink
 
 - type: entity
   parent: BaseMachinePowered
@@ -110,6 +103,9 @@
     interfaces:
       enum.NetpodUiKey.Key:
         type: NetpodBoundUserInterface
+  - type: DeviceLinkSink
+    ports:
+    - BitrunningServerSink
   - type: Netpod
     allowedLoadout:
     - ShaftMinerGear
@@ -120,3 +116,43 @@
     - MedicalInternGear
     - SecurityCadetGear
     - PassengerGear
+
+- type: entity
+  parent: BaseMachinePowered
+  id: Byteforge
+  name: byteforge
+  description: A quantum processor that recompiles delivered cache crates into physical rewards.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/byteforge.rsi
+    noRot: true
+    layers:
+    - state: byteforge
+      map: ["byteforge_base"]
+    - state: on_overlay
+      visible: false
+      map: ["byteforge_on"]
+    - state: on_particles
+      visible: false
+      map: ["byteforge_particles"]
+    - state: byteforge_panel
+      visible: false
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        byteforge_on:
+          True: { visible: true }
+          False: { visible: false }
+        byteforge_particles:
+          True: { visible: true }
+          False: { visible: false }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Byteforge
+  - type: DeviceLinkSink
+    ports:
+    - BitrunningServerSink

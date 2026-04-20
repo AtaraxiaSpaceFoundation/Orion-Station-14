@@ -50,3 +50,14 @@
     Steel: 450
     Glass: 300
     Plastic: 100
+
+- type: latheRecipe
+  id: ByteforgeMachineCircuitboard
+  result: ByteforgeMachineCircuitboard
+  categories:
+  - Circuitry
+  completetime: 4
+  materials:
+    Steel: 550
+    Glass: 350
+    Plastic: 150

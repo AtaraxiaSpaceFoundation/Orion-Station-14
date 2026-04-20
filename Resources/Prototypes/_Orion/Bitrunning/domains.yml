@@ -5,5 +5,6 @@
   cost: 0
   rewardPoints: 4
   mapPath: /Maps/_Lavaland/Shelters/shelter_5x5.yml
-  objectiveGoalPoints: 3
+  objectiveType: CollectEncryptedCaches
+  objectiveTarget: 3
   flags: [ "safehouse", "entry-protected" ]

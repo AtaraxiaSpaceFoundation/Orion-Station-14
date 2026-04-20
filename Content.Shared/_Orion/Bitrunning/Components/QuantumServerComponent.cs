@@ -4,6 +4,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared._Orion.Bitrunning.Prototypes;
+using Content.Shared.EntityTable;
 using Robust.Shared.Audio;
 
 namespace Content.Shared._Orion.Bitrunning.Components;
@@ -48,6 +49,18 @@ public sealed partial class QuantumServerComponent : Component
     public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 
     [DataField]
+    public ProtoId<EntityTablePrototype> DeliveryEasyLootTable = "BitrunningDeliveryEasyLoot";
+
+    [DataField]
+    public ProtoId<EntityTablePrototype> DeliveryMediumLootTable = "BitrunningDeliveryMediumLoot";
+
+    [DataField]
+    public ProtoId<EntityTablePrototype> DeliveryHardLootTable = "BitrunningDeliveryHardLoot";
+
+    [DataField]
+    public ProtoId<EntityTablePrototype> DeliveryExtremeLootTable = "BitrunningDeliveryExtremeLoot";
+
+    [DataField]
     public TimeSpan ExitParalyzeTime = TimeSpan.FromSeconds(3.5);
 
     [DataField]
@@ -64,36 +77,31 @@ public sealed partial class QuantumServerComponent : Component
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<BitrunningVirtualDomainPrototype>)), AutoNetworkedField]
     public string? CurrentDomain;
 
-    [ViewVariables]
     public EntityUid? DomainMapUid;
 
-    [ViewVariables]
     public EntityUid? DomainGridUid;
 
-    [ViewVariables]
     public readonly HashSet<EntityUid> ActiveConnections = new();
 
-    [ViewVariables]
     public readonly HashSet<EntityUid> Occupants = new();
 
-    [ViewVariables]
     public EntityCoordinates? ExitCoordinates;
 
-    [ViewVariables]
     public EntityCoordinates? CacheCoordinates;
 
-    [ViewVariables]
     public EntityCoordinates? GoalCoordinates;
 
-    [ViewVariables]
+    public EntityCoordinates? SpawnCoordinates;
+
+    public EntityUid? LinkedByteforge;
+
     public TimeSpan DomainStartTime;
 
-    [ViewVariables]
     public int ObjectivePoints;
 
-    [ViewVariables]
     public int ObjectiveGoal = 10;
 
-    [ViewVariables]
+    public BitrunningObjectiveType ObjectiveType = BitrunningObjectiveType.CollectEncryptedCaches;
+
     public int ThreatsSpawned;
 }

@@ -16,7 +16,9 @@ bitrunning-netpod-ui-title = Нэтпод
 bitrunning-netpod-ui-select-outfit = Выберите снаряжение
 bitrunning-netpod-ui-search = Поиск
 
-bitrunning-training-instructions = Соберите зашифрованный кэш, после этого награда будет засчитана автоматически.
+bitrunning-training-instructions-collect = Соберите { $target } узлов зашифрованного кэша.
+bitrunning-training-instructions-delivery = Доставьте ящики кэша { $target } раз.
+bitrunning-training-instructions-eliminate = Устраните { $target } угроз домена.
 bitrunning-certificate-template = Домен: { $domain }. Время прохождения: { $time }. Базовая награда: { $reward }. Бонус: { $bonus }x. Угрозы: { $threats }. Оценка: { $grade }
 
 bitrunning-ui-title = Квантовая консоль

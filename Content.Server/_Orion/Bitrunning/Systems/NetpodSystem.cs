@@ -2,6 +2,8 @@ using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared.DeviceLinking;
+using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Power;
@@ -17,7 +19,7 @@ namespace Content.Server._Orion.Bitrunning.Systems;
 public sealed class NetpodSystem : EntitySystem
 {
     [Dependency] private readonly QuantumServerSystem _server = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
@@ -25,25 +27,35 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.5);
+    private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.3);
+    private const string ServerSinkPort = "BitrunningServerSink";
 
     public override void Initialize()
     {
         SubscribeLocalEvent<NetpodComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<NetpodComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<NetpodComponent, EntityTerminatingEvent>(OnDestroyed);
         SubscribeLocalEvent<NetpodComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<NetpodComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
         SubscribeLocalEvent<NetpodComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<NetpodComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<NetpodComponent, NetpodSelectLoadoutMessage>(OnSelectLoadout);
+        SubscribeLocalEvent<NetpodComponent, NewLinkEvent>(OnNewLink);
+        SubscribeLocalEvent<NetpodComponent, PortDisconnectedEvent>(OnPortDisconnected);
     }
 
     private void OnInit(Entity<NetpodComponent> ent, ref ComponentInit args)
     {
+        _deviceLink.EnsureSinkPorts(ent.Owner, ServerSinkPort);
         var containerComp = EnsureComp<NetpodContainerComponent>(ent);
         containerComp.BodyContainer = _container.EnsureContainer<ContainerSlot>(ent, "netpod-body");
         ent.Comp.Occupant = containerComp.BodyContainer.ContainedEntity;
         UpdateVisuals(ent);
+    }
+
+    private void OnMapInit(Entity<NetpodComponent> ent, ref MapInitEvent args)
+    {
+        RefreshLinkedServer(ent);
     }
 
     private void OnDestroyed(Entity<NetpodComponent> ent, ref EntityTerminatingEvent args)
@@ -178,36 +190,48 @@ public sealed class NetpodSystem : EntitySystem
         if (ent.Comp.LinkedServer is { } linked && Exists(linked) && HasComp<QuantumServerComponent>(linked))
             return linked;
 
-        var podCoords = Transform(ent.Owner).Coordinates;
-        EntityUid? nearestServer = null;
-        var nearestDistance = float.MaxValue;
+        RefreshLinkedServer(ent);
+        return ent.Comp.LinkedServer;
+    }
 
-        foreach (var uid in _lookup.GetEntitiesInRange(ent.Owner, 6f))
+    private void OnNewLink(Entity<NetpodComponent> ent, ref NewLinkEvent args)
+    {
+        if (args.Sink != ent.Owner || args.SinkPort != ServerSinkPort)
+            return;
+
+        if (!HasComp<QuantumServerComponent>(args.Source))
+            return;
+
+        ent.Comp.LinkedServer = args.Source;
+        Dirty(ent);
+    }
+
+    private void OnPortDisconnected(Entity<NetpodComponent> ent, ref PortDisconnectedEvent args)
+    {
+        if (args.Port != ServerSinkPort || ent.Comp.LinkedServer != args.RemovedPortUid)
+            return;
+
+        ent.Comp.LinkedServer = null;
+        Dirty(ent);
+    }
+
+    private void RefreshLinkedServer(Entity<NetpodComponent> ent)
+    {
+        if (!TryComp<DeviceLinkSinkComponent>(ent.Owner, out var sink))
+            return;
+
+        foreach (var source in sink.LinkedSources)
         {
-            if (!HasComp<QuantumServerComponent>(uid))
+            if (!HasComp<QuantumServerComponent>(source))
                 continue;
 
-            if (!Transform(uid).Coordinates.TryDistance(EntityManager, podCoords, out var distance))
-                continue;
-
-            distance *= distance;
-            if (distance >= nearestDistance)
-                continue;
-
-            nearestDistance = distance;
-            nearestServer = uid;
+            ent.Comp.LinkedServer = source;
+            Dirty(ent);
+            return;
         }
 
-        if (nearestServer == null)
-            return null;
-
-        if (ent.Comp.LinkedServer == nearestServer)
-            return nearestServer;
-
-        ent.Comp.LinkedServer = nearestServer;
+        ent.Comp.LinkedServer = null;
         Dirty(ent);
-
-        return nearestServer;
     }
 
     private void TryAutoConnect(Entity<NetpodComponent> ent, EntityUid user)
