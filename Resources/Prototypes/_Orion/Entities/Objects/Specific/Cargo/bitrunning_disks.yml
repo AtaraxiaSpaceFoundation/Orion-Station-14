@@ -1,0 +1,153 @@
+- type: entity
+  parent: BaseItem
+  id: BaseBitrunningSupplyDisk
+  abstract: true
+  name: bitrunning data disk
+  description: A specialized data disk for bitrunning supply systems.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Research/data_disk.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: UserInterface
+    interfaces:
+      enum.BitrunningDiskUiKey.Key:
+        type: BitrunningDiskBoundUserInterface
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearSimpleDisk
+  name: "bitrunning gear: simple"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Pizza box: FoodBoxPizza
+      Medical beam gun: MedicalBeamGun
+      C-4: C4
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearComplexDisk
+  name: "bitrunning gear: complex"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Luxury medipen: LuxuryMedipen
+      Makarov: WeaponPistolViper
+      Armor vest: ClothingOuterArmorBasic
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearAdvancedDisk
+  name: "bitrunning gear: advanced"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Advanced laser gun: WeaponAdvancedLaser
+      Double energy sword: EnergySwordDouble
+      Energy scythe: PlasmaScythe
+      Syndicate mini-bomb: SyndieMiniBomb
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningProgramBasicDisk
+  name: "bitrunning program: basic"
+  description: Use in hand to choose one program action.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Action
+    options:
+      Summon cheese: ActionBitrunningProgramBasicCheese
+      Lesser heal: ActionBitrunningProgramBasicLesserHeal
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningProgramComplexDisk
+  name: "bitrunning program: complex"
+  description: Use in hand to choose one program action.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Action
+    options:
+      Fireball: ActionFireball
+      Lightning bolt: ActionLightningBolt
+      Force wall: ActionForceWall
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningProgramEliteDisk
+  name: "bitrunning program: elite"
+  description: Use in hand to choose one program action.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Action
+    options:
+      Dragon morph: ActionBitrunningProgramEliteDragon
+      Bear morph: ActionBitrunningProgramEliteBear
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGimmickSportsDisk
+  name: "bitrunning gimmick: sports"
+  description: Will grant a selectable sports loadout case in a future update.
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGimmickDungeonCrawlingDisk
+  name: "bitrunning gimmick: dungeon crawling"
+  description: Will grant a selectable dungeon crawling loadout case in a future update.
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearPKAModsDisk
+  name: "bitrunning gear: proto-kinetic accelerator mods"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Range modkit: PKAUpgradeRange
+      Fire rate modkit: PKAUpgradeFireRate
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearPremiumPKAModsDisk
+  name: "bitrunning gear: premium proto-kinetic accelerator mods"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Damage modkit: PKAUpgradeDamage
+      Space modkit: PKAUpgradeSpace
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearCrusherModsDisk
+  name: "bitrunning gear: proto-kinetic crusher mods"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Proto-kinetic crusher: WeaponCrusher
+      Proto-kinetic glaive: WeaponCrusherGlaive
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
+  id: BitrunningGearPremiumCrusherModsDisk
+  name: "bitrunning gear: premium proto-kinetic crusher mods"
+  description: Use in hand to choose a one-time gear package.
+  components:
+  - type: BitrunningAbilityDisk
+    grantMode: Item
+    options:
+      Proto-kinetic hammer: WeaponCrusherHammer
+      Proto-kinetic machete: LavalandWeaponKineticMachete

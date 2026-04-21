@@ -106,4 +106,8 @@ public sealed partial class QuantumServerComponent : Component
     public BitrunningObjectiveType ObjectiveType = BitrunningObjectiveType.CollectEncryptedCaches;
 
     public int ThreatsSpawned;
+
+    public bool AllowDiskModifications = true;
+
+    public readonly HashSet<EntityUid> GrantedItemDisks = new();
 }

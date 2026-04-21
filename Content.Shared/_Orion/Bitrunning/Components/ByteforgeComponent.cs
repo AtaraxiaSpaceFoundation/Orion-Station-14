@@ -4,4 +4,6 @@ namespace Content.Shared._Orion.Bitrunning.Components;
 public sealed partial class ByteforgeComponent : Component
 {
     public EntityUid? LinkedServer;
+
+    public int VisualPulseSerial;
 }

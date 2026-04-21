@@ -72,3 +72,25 @@
     color: "#05DAF2"
   - type: AccessReader
     access: [["Captain"]]
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineBitrunning
+  name: Bitrunning Supplies Order
+  description: A supplies order console that exchanges bitrunning points for tactical support goods.
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/VendingMachines/bitrun.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    color: "#4f8dcf"
+  - type: ShopVendor
+    pack: BitrunningVendorInventory
+  - type: BitrunningPointsVendor

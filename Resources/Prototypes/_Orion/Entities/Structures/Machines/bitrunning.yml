@@ -8,24 +8,19 @@
     sprite: _Orion/Structures/Machines/quantum_server.rsi
     noRot: true
     layers:
-    - state: qserver_off
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-    - state: qserver_on
-      visible: false
-      map: ["qserver_on"]
+    - state: qserver
+      map: ["qserver_base"]
     - state: qserver_panel
       visible: false
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: false }
-          False: { visible: true }
-        qserver_on:
-          True: { visible: true }
-          False: { visible: false }
+      enum.BitrunningVisuals.QuantumServerState:
+        qserver_base:
+          Unpowered: { state: qserver }
+          Cooling: { state: qserver_off }
+          Running: { state: qserver_on }
       enum.WiresVisuals.MaintenancePanelState:
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: true }
@@ -143,13 +138,20 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.PowerDeviceVisuals.Powered:
+      enum.BitrunningVisuals.ByteforgeActive:
         byteforge_on:
           True: { visible: true }
           False: { visible: false }
         byteforge_particles:
           True: { visible: true }
           False: { visible: false }
+      enum.BitrunningVisuals.ByteforgeAngry:
+        byteforge_on:
+          True: { state: on_overlay_angry }
+          False: { state: on_overlay }
+        byteforge_particles:
+          True: { state: on_particles_angry }
+          False: { state: on_particles }
       enum.WiresVisuals.MaintenancePanelState:
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: true }

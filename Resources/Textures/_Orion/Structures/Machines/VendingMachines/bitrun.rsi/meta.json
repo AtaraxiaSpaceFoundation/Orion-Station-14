@@ -8,11 +8,11 @@
     },
     "states": [
         {
-            "name": "vendor_off",
+            "name": "off",
             "directions": 4
         },
         {
-            "name": "vendor",
+            "name": "normal-unshaded",
             "directions": 4,
             "delays": [
                 [
@@ -72,6 +72,9 @@
                     0.1
                 ]
             ]
+        },
+        {
+            "name": "panel"
         }
     ]
 }

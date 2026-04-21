@@ -23,6 +23,13 @@ bitrunning-training-instructions-eliminate = Устраните { $target } уг
 bitrunning-training-instructions-none = Этот домен запущен без целей.
 bitrunning-objective-completed = Цель выполнена.
 
+bitrunning-disk-ui-title = Выбор битран-диска
+bitrunning-disk-popup-already-selected = Выбранный вариант: { $option }
+bitrunning-disk-popup-modifications-blocked = В этом домене изменение битран-дисков запрещено.
+bitrunning-disk-popup-selected = Выбрано: { $option }
+bitrunning-disk-examine-unselected = [color=yellow]Используйте в руке, чтобы выбрать один вариант.[/color]
+bitrunning-disk-examine-selected = [color=lightblue]Выбрано: { $option }.[/color]
+
 bitrunning-ui-title = Квантовая консоль
 bitrunning-ui-label-status = Статус:
 bitrunning-ui-label-domain = Домен:

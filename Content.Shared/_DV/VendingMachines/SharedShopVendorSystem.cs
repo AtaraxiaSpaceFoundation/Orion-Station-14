@@ -21,6 +21,8 @@
 
 using Content.Shared.Access.Systems;
 using Content.Shared._DV.Salvage.Systems;
+using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared._Orion.Bitrunning.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -44,6 +46,7 @@ public abstract class SharedShopVendorSystem : EntitySystem
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
+    [Dependency] private readonly BitrunningPointsSystem _bitrunningPoints = default!; // Orion
 
     public override void Initialize()
     {
@@ -51,6 +54,10 @@ public abstract class SharedShopVendorSystem : EntitySystem
 
         SubscribeLocalEvent<PointsVendorComponent, ShopVendorBalanceEvent>(OnPointsBalance);
         SubscribeLocalEvent<PointsVendorComponent, ShopVendorPurchaseEvent>(OnPointsPurchase);
+        // Orion-Start
+        SubscribeLocalEvent<BitrunningPointsVendorComponent, ShopVendorBalanceEvent>(OnBitrunningPointsBalance);
+        SubscribeLocalEvent<BitrunningPointsVendorComponent, ShopVendorPurchaseEvent>(OnBitrunningPointsPurchase);
+        // Orion-End
 
         SubscribeLocalEvent<ShopVendorComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<ShopVendorComponent, BreakageEventArgs>(OnBreak);
@@ -85,6 +92,18 @@ public abstract class SharedShopVendorSystem : EntitySystem
             args.Paid = true;
     }
 
+    // Orion-Start
+    private void OnBitrunningPointsBalance(Entity<BitrunningPointsVendorComponent> ent, ref ShopVendorBalanceEvent args)
+    {
+        args.Balance = _bitrunningPoints.GetPointComp(args.User)?.Comp?.Points ?? 0;
+    }
+
+    private void OnBitrunningPointsPurchase(Entity<BitrunningPointsVendorComponent> ent, ref ShopVendorPurchaseEvent args)
+    {
+        if (_bitrunningPoints.GetPointComp(args.User) is {} account && _bitrunningPoints.RemovePoints(account, args.Cost))
+            args.Paid = true;
+    }
+    // Orion-End
     #endregion
 
     private void OnPowerChanged(Entity<ShopVendorComponent> ent, ref PowerChangedEvent args)

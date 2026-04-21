@@ -114,6 +114,12 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public bool DeleteAvatarOnDisconnect { get; private set; }
 
     /// <summary>
+    /// If false, bitrunning disk modifications are disabled in this domain.
+    /// </summary>
+    [DataField]
+    public bool AllowDiskModifications { get; private set; } = true;
+
+    /// <summary>
     /// Optional forced loadout for this domain. Has priority over netpod selection.
     /// </summary>
     [DataField]

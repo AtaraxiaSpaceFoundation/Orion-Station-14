@@ -23,6 +23,13 @@ bitrunning-training-instructions-eliminate = Eliminate { $target } domain threat
 bitrunning-training-instructions-none = This domain is running without objectives.
 bitrunning-objective-completed = Objective completed.
 
+bitrunning-disk-ui-title = Bitrunning Disk Selection
+bitrunning-disk-popup-already-selected = Selected option: { $option }
+bitrunning-disk-popup-modifications-blocked = This domain blocks bitrunning disk modifications.
+bitrunning-disk-popup-selected = Selected: { $option }
+bitrunning-disk-examine-unselected = [color=yellow]Use in hand to choose one option.[/color]
+bitrunning-disk-examine-selected = [color=lightblue]Selected: { $option }.[/color]
+
 bitrunning-ui-title = Quantum Console
 bitrunning-ui-label-status = Status:
 bitrunning-ui-label-domain = Domain:

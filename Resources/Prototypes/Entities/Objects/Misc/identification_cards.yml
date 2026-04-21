@@ -176,6 +176,7 @@
   - type: StealTarget
     stealGroup: IDCard
   - type: MiningPoints # DeltaV
+  - type: BitrunningPoints # Orion
   - type: NanoChatCard # DeltaV
   # Goobstation edit start
   - type: EmitSoundOnPickup
