@@ -20,6 +20,7 @@ bitrunning-netpod-ui-search = Поиск
 bitrunning-training-instructions-collect = Соберите { $target } узлов зашифрованного кэша.
 bitrunning-training-instructions-delivery = Доставьте ящики кэша { $target } раз.
 bitrunning-training-instructions-eliminate = Устраните { $target } угроз домена.
+bitrunning-training-instructions-none = Этот домен запущен без целей.
 bitrunning-objective-completed = Цель выполнена.
 
 bitrunning-ui-title = Квантовая консоль

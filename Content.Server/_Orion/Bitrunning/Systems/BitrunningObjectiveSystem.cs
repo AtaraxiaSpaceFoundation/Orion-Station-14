@@ -74,9 +74,6 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
             return;
 
-        if (server.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
-            return;
-
         if (!HasComp<BitrunningObjectiveCargoComponent>(args.OtherEntity))
             return;
 
@@ -95,7 +92,8 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (!_server.TryDeliverObjectiveCargoToByteforge(serverUid, args.OtherEntity))
             return;
 
-        _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
+        if (server.ObjectiveType == BitrunningObjectiveType.DeliveryCacheCrate)
+            _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
     }
 
     private void OnEnemyStateChanged(Entity<BitrunningDomainEnemyObjectiveComponent> ent, ref MobStateChangedEvent args)

@@ -20,6 +20,7 @@ bitrunning-netpod-ui-search = Search
 bitrunning-training-instructions-collect = Collect { $target } encrypted cache nodes.
 bitrunning-training-instructions-delivery = Deliver cache crates { $target } times.
 bitrunning-training-instructions-eliminate = Eliminate { $target } domain threats.
+bitrunning-training-instructions-none = This domain is running without objectives.
 bitrunning-objective-completed = Objective completed.
 
 bitrunning-ui-title = Quantum Console

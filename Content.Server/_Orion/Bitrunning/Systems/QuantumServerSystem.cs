@@ -210,7 +210,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.State = BitrunningServerState.Running;
         server.DomainStartTime = _timing.CurTime;
         server.ObjectivePoints = 0;
-        server.ObjectiveGoal = domain.ObjectiveTarget;
+        server.ObjectiveGoal = Math.Max(domain.ObjectiveTarget, 0);
         server.ObjectiveType = domain.ObjectiveType;
         server.ObjectiveCompleted = false;
         server.Points -= domain.Cost;
@@ -251,8 +251,9 @@ public sealed class QuantumServerSystem : EntitySystem
             serverEnt.Comp.GoalCoordinates ??= Transform(uid).Coordinates;
         }
 
+        var hasObjective = HasActiveObjective(serverEnt.Comp);
         var cacheCoordinates = new List<EntityCoordinates>();
-        if (serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.CollectEncryptedCaches)
+        if (hasObjective && serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.CollectEncryptedCaches)
         {
             var caches = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
             while (caches.MoveNext(out var uid, out _, out var xform))
@@ -287,6 +288,9 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.SpawnCoordinates ??= serverEnt.Comp.ExitCoordinates;
 
         if (serverEnt.Comp.GoalCoordinates is not { } goal)
+            return;
+
+        if (!hasObjective)
             return;
 
         if (cacheCoordinates.Count > 0)
@@ -607,6 +611,9 @@ public sealed class QuantumServerSystem : EntitySystem
         if (server.ObjectiveCompleted)
             return;
 
+        if (!HasActiveObjective(server))
+            return;
+
         server.ObjectivePoints += points;
         if (server.ObjectivePoints >= server.ObjectiveGoal)
             CompleteObjective((serverUid, server));
@@ -728,6 +735,9 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private string GetObjectiveInstructions(QuantumServerComponent server)
     {
+        if (!HasActiveObjective(server))
+            return Loc.GetString("bitrunning-training-instructions-none");
+
         var target = server.ObjectiveGoal.ToString();
         return server.ObjectiveType switch
         {
@@ -746,7 +756,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.ObjectiveCompleted = true;
         var rewardMultiplier = CalculateRewards(serverEnt.Comp);
 
-        if (serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
+        if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) && serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
             Spawn(serverEnt.Comp.RewardCachePrototype, serverEnt.Comp.CacheCoordinates.Value);
 
         serverEnt.Comp.Points += (int) MathF.Round(GetDomainReward(serverEnt.Comp) * rewardMultiplier);
@@ -786,6 +796,19 @@ public sealed class QuantumServerSystem : EntitySystem
             return false;
 
         return domain.AutoStopOnObjectiveComplete;
+    }
+
+    private bool ShouldSpawnCompletionRewardCache(QuantumServerComponent server)
+    {
+        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
+            return true;
+
+        return domain.SpawnRewardCacheOnObjectiveComplete;
+    }
+
+    private static bool HasActiveObjective(QuantumServerComponent server)
+    {
+        return server.ObjectiveGoal > 0;
     }
 
     private float CalculateRewards(QuantumServerComponent server)

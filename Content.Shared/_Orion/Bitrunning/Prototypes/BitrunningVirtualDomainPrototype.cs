@@ -78,6 +78,12 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public int ObjectiveTarget { get; private set; } = 1;
 
     /// <summary>
+    /// If true, objective completion spawns a reward cache crate in the domain.
+    /// </summary>
+    [DataField]
+    public bool SpawnRewardCacheOnObjectiveComplete { get; private set; } = true;
+
+    /// <summary>
     /// Free-form semantic flags for domain behavior gates.
     /// </summary>
     [DataField]
