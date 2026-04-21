@@ -54,7 +54,7 @@
   - type: QuantumConsole
   - type: DeviceLinkSink
     ports:
-    - BitrunningServerSink
+    - BitrunningConsoleSink
 
 - type: entity
   parent: BaseMachinePowered
@@ -107,7 +107,7 @@
         type: NetpodBoundUserInterface
   - type: DeviceLinkSink
     ports:
-    - BitrunningServerSink
+    - BitrunningNetpodSink
   - type: Netpod
     allowedLoadout:
     - ShaftMinerGear
@@ -160,4 +160,4 @@
   - type: Byteforge
   - type: DeviceLinkSink
     ports:
-    - BitrunningServerSink
+    - BitrunningByteforgeSink

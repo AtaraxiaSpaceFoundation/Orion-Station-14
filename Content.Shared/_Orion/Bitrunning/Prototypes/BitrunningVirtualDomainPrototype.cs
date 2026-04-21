@@ -96,6 +96,12 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public string[] OptionalGhostRoles { get; private set; } = [];
 
     /// <summary>
+    /// If true, the run is automatically stopped after objective completion.
+    /// </summary>
+    [DataField]
+    public bool AutoStopOnObjectiveComplete { get; private set; }
+
+    /// <summary>
     /// If true, avatar entities are deleted once a bitrunner disconnects from them.
     /// </summary>
     [DataField]

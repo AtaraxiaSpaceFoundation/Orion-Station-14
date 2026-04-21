@@ -32,7 +32,7 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
 
     private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.3);
-    private const string ServerSinkPort = "BitrunningServerSink";
+    private const string ServerSinkPort = "BitrunningNetpodSink";
 
     public override void Initialize()
     {

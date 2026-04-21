@@ -17,7 +17,7 @@ public sealed class QuantumConsoleSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly TimeSpan UiRefresh = TimeSpan.FromSeconds(1);
-    private const string ServerSinkPort = "BitrunningServerSink";
+    private const string ServerSinkPort = "BitrunningConsoleSink";
     private TimeSpan _nextRefresh;
 
     public override void Initialize()

@@ -11,6 +11,7 @@ bitrunning-netpod-enter-failed = You cannot enter the netpod right now.
 bitrunning-netpod-connected = Neural session established.
 bitrunning-netpod-disconnected = Avatar session disconnected.
 bitrunning-netpod-connect-failed = Unable to establish avatar connection.
+bitrunning-delivery-byteforge-required = Cache delivery failed: connect a byteforge to the bitrunning server.
 
 bitrunning-netpod-ui-title = Net Pod
 bitrunning-netpod-ui-select-outfit = Select an outfit
@@ -19,7 +20,7 @@ bitrunning-netpod-ui-search = Search
 bitrunning-training-instructions-collect = Collect { $target } encrypted cache nodes.
 bitrunning-training-instructions-delivery = Deliver cache crates { $target } times.
 bitrunning-training-instructions-eliminate = Eliminate { $target } domain threats.
-bitrunning-certificate-template = Domain: { $domain }. Completion time: { $time }. Base reward: { $reward }. Bonus: { $bonus }x. Threats: { $threats }. Grade: { $grade }
+bitrunning-objective-completed = Objective completed.
 
 bitrunning-ui-title = Quantum Console
 bitrunning-ui-label-status = Status:

@@ -1,4 +1,8 @@
 signal-port-name-bitrunning-server-source = Сервер битранна
 signal-port-description-bitrunning-server-source = Порт-источник для подключения клиентов битранна.
-signal-port-name-bitrunning-server-sink = Сервер битранна
-signal-port-description-bitrunning-server-sink = Порт-приёмник для подключения к серверу битранна.
+signal-port-name-bitrunning-console-sink = Квантовая консоль
+signal-port-description-bitrunning-console-sink = Порт-приёмник для подключения квантовой консоли к серверу битранна.
+signal-port-name-bitrunning-netpod-sink = Нейрокапсула
+signal-port-description-bitrunning-netpod-sink = Порт-приёмник для подключения нейрокапсулы к серверу битранна.
+signal-port-name-bitrunning-byteforge-sink = Байтфордж
+signal-port-description-bitrunning-byteforge-sink = Порт-приёмник для подключения байтфорджа к серверу битранна.

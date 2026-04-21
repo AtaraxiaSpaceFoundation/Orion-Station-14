@@ -101,6 +101,8 @@ public sealed partial class QuantumServerComponent : Component
 
     public int ObjectiveGoal = 10;
 
+    public bool ObjectiveCompleted;
+
     public BitrunningObjectiveType ObjectiveType = BitrunningObjectiveType.CollectEncryptedCaches;
 
     public int ThreatsSpawned;

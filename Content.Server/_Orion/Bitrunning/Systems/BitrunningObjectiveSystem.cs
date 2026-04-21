@@ -2,9 +2,12 @@ using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs;
+using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Player;
 
 namespace Content.Server._Orion.Bitrunning.Systems;
 
@@ -12,6 +15,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
 {
     [Dependency] private readonly QuantumServerSystem _server = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -79,6 +83,15 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (HasComp<BitrunningDeliveredObjectiveCargoComponent>(args.OtherEntity))
             return;
 
+        if (!HasLinkedByteforge(serverUid, server))
+        {
+            if (TryComp<MapComponent>(mapUid, out var mapComp))
+            {
+                _popup.PopupEntity(Loc.GetString("bitrunning-delivery-byteforge-required"), ent, Filter.BroadcastMap(mapComp.MapId), true, PopupType.LargeCaution);
+                return;
+            }
+        }
+
         if (!_server.TryDeliverObjectiveCargoToByteforge(serverUid, args.OtherEntity))
             return;
 
@@ -126,5 +139,13 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
     private bool TryResolveDomainMapUid(EntityUid primaryUid, EntityUid? fallbackUid, out EntityUid mapUid)
     {
         return TryResolveDomainMapUid(primaryUid, fallbackUid, out mapUid, out _);
+    }
+
+    private bool HasLinkedByteforge(EntityUid serverUid, QuantumServerComponent server)
+    {
+        if (server.LinkedByteforge is not { } byteforgeUid || !Exists(byteforgeUid))
+            return false;
+
+        return TryComp<ByteforgeComponent>(byteforgeUid, out var byteforge) && byteforge.LinkedServer == serverUid;
     }
 }

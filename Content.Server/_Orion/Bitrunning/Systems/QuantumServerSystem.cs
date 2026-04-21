@@ -62,12 +62,11 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
-    private const string ServerSinkPort = "BitrunningServerSink";
+    private const string ByteforgeSinkPort = "BitrunningByteforgeSink";
 
     public override void Initialize()
     {
@@ -134,7 +133,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void OnServerNewLink(Entity<QuantumServerComponent> ent, ref NewLinkEvent args)
     {
-        if (args.Source != ent.Owner || args.SourcePort != ServerSourcePort || args.SinkPort != ServerSinkPort)
+        if (args.Source != ent.Owner || args.SourcePort != ServerSourcePort || args.SinkPort != ByteforgeSinkPort)
             return;
 
         if (!TryComp<ByteforgeComponent>(args.Sink, out var byteforge))
@@ -213,6 +212,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.ObjectivePoints = 0;
         server.ObjectiveGoal = domain.ObjectiveTarget;
         server.ObjectiveType = domain.ObjectiveType;
+        server.ObjectiveCompleted = false;
         server.Points -= domain.Cost;
         server.ThreatsSpawned = 0;
         server.CooldownEndTime = TimeSpan.Zero;
@@ -360,6 +360,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.CacheCoordinates = null;
         serverEnt.Comp.SpawnCoordinates = null;
         serverEnt.Comp.ObjectivePoints = 0;
+        serverEnt.Comp.ObjectiveCompleted = false;
 
         if (immediate)
         {
@@ -433,7 +434,10 @@ public sealed class QuantumServerSystem : EntitySystem
         TryApplyAvatarOutfit(avatar, server, pod);
         SetAvatarBroadcastEnabled(avatar, server, server.BroadcastEnabled);
         _actions.AddAction(avatar, ref connection.DisconnectActionEntity, connection.DisconnectActionPrototype, avatar);
-        _popup.PopupEntity(GetObjectiveInstructions(server), avatar, avatar);
+        var objectivePopupText = server.ObjectiveCompleted
+            ? Loc.GetString("bitrunning-objective-completed")
+            : GetObjectiveInstructions(server);
+        _popup.PopupEntity(objectivePopupText, avatar, avatar, PopupType.Large);
 
         pod.Occupant = user;
         pod.Avatar = avatar;
@@ -474,6 +478,10 @@ public sealed class QuantumServerSystem : EntitySystem
         {
             server.ActiveConnections.Add(avatarUid);
             server.Occupants.Add(avatarUid);
+            var objectivePopupText = server.ObjectiveCompleted
+                ? Loc.GetString("bitrunning-objective-completed")
+                : GetObjectiveInstructions(server);
+            _popup.PopupEntity(objectivePopupText, avatarUid, avatarUid, PopupType.Large);
             Dirty(connection.Server.Value, server);
         }
 
@@ -596,6 +604,9 @@ public sealed class QuantumServerSystem : EntitySystem
         if (server.State != BitrunningServerState.Running)
             return;
 
+        if (server.ObjectiveCompleted)
+            return;
+
         server.ObjectivePoints += points;
         if (server.ObjectivePoints >= server.ObjectiveGoal)
             CompleteObjective((serverUid, server));
@@ -643,10 +654,9 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!TryComp<TransformComponent>(byteforgeUid, out var byteforgeXform))
             return false;
 
-        _transform.SetCoordinates(cargoUid, byteforgeXform.Coordinates);
-        EnsureComp<BitrunningDeliveredObjectiveCargoComponent>(cargoUid);
-
-        FillDeliveredCargoWithLoot(cargoUid, server);
+        var rewardCargoUid = Spawn(server.RewardCachePrototype, byteforgeXform.Coordinates);
+        FillDeliveredCargoWithLoot(rewardCargoUid, server);
+        QueueDel(cargoUid);
         return true;
     }
 
@@ -730,37 +740,36 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void CompleteObjective(Entity<QuantumServerComponent> serverEnt)
     {
-        if (serverEnt.Comp.CacheCoordinates == null)
+        if (serverEnt.Comp.ObjectiveCompleted || serverEnt.Comp.CacheCoordinates == null)
             return;
 
+        serverEnt.Comp.ObjectiveCompleted = true;
         var rewardMultiplier = CalculateRewards(serverEnt.Comp);
-        var grade = GradeCompletion(serverEnt.Comp);
 
-        Spawn(serverEnt.Comp.RewardCachePrototype, serverEnt.Comp.CacheCoordinates.Value);
+        if (serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
+            Spawn(serverEnt.Comp.RewardCachePrototype, serverEnt.Comp.CacheCoordinates.Value);
+
         serverEnt.Comp.Points += (int) MathF.Round(GetDomainReward(serverEnt.Comp) * rewardMultiplier);
 
-        var reportText = Loc.GetString("bitrunning-certificate-template",
-            ("domain", serverEnt.Comp.CurrentDomain ?? "unknown"),
-            ("time", (_timing.CurTime - serverEnt.Comp.DomainStartTime).ToString("g")),
-            ("reward", GetDomainReward(serverEnt.Comp)),
-            ("bonus", rewardMultiplier.ToString("0.0")),
-            ("threats", serverEnt.Comp.ThreatsSpawned),
-            ("grade", grade.ToString()));
+        var objectiveCompletedText = Loc.GetString("bitrunning-objective-completed");
 
         if (serverEnt.Comp.BroadcastEnabled)
         {
             foreach (var avatar in serverEnt.Comp.Occupants)
             {
                 if (Exists(avatar))
-                    _popup.PopupEntity(reportText, serverEnt.Owner, avatar, PopupType.LargeCaution);
+                    _popup.PopupEntity(objectiveCompletedText, serverEnt.Owner, avatar, PopupType.LargeCaution);
             }
         }
         else if (serverEnt.Comp.Occupants.FirstOrDefault() is { } avatar)
         {
-            _popup.PopupEntity(reportText, serverEnt.Owner, avatar, PopupType.LargeCaution);
+            _popup.PopupEntity(objectiveCompletedText, serverEnt.Owner, avatar, PopupType.LargeCaution);
         }
 
-        StopDomain(serverEnt);
+        if (ShouldAutoStopOnObjectiveComplete(serverEnt.Comp))
+            StopDomain(serverEnt);
+
+        Dirty(serverEnt);
     }
 
     private int GetDomainReward(QuantumServerComponent server)
@@ -771,6 +780,14 @@ public sealed class QuantumServerSystem : EntitySystem
         return domain.RewardPoints;
     }
 
+    private bool ShouldAutoStopOnObjectiveComplete(QuantumServerComponent server)
+    {
+        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
+            return false;
+
+        return domain.AutoStopOnObjectiveComplete;
+    }
+
     private float CalculateRewards(QuantumServerComponent server)
     {
         var total = 0.8f;
@@ -779,33 +796,6 @@ public sealed class QuantumServerSystem : EntitySystem
         total += server.ActiveConnections.Count(uid => CompOrNull<AvatarConnectionComponent>(uid)?.NoHit == true) * 0.4f;
         total += server.ThreatsSpawned * 0.5f;
         return Math.Max(0.5f, total);
-    }
-
-    private BitrunningGrade GradeCompletion(QuantumServerComponent server)
-    {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
-            return BitrunningGrade.D;
-
-        var seconds = (_timing.CurTime - server.DomainStartTime).TotalSeconds;
-        var score = (int) domain.Difficulty * 2 + domain.RewardPoints + server.ThreatsSpawned * 3;
-        switch (seconds)
-        {
-            case < 120:
-                score += 4;
-                break;
-            case < 300:
-                score += 2;
-                break;
-        }
-
-        return score switch
-        {
-            <= 4 => BitrunningGrade.D,
-            <= 7 => BitrunningGrade.C,
-            <= 10 => BitrunningGrade.B,
-            <= 13 => BitrunningGrade.A,
-            _ => BitrunningGrade.S,
-        };
     }
 
     private void OnAvatarDamaged(Entity<AvatarConnectionComponent> ent, ref DamageChangedEvent args)

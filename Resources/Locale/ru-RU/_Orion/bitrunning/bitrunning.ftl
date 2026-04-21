@@ -11,6 +11,7 @@ bitrunning-netpod-enter-failed = Сейчас вы не можете залез�
 bitrunning-netpod-connected = Нейросессия установлена.
 bitrunning-netpod-disconnected = Сессия аватара завершена.
 bitrunning-netpod-connect-failed = Не удалось установить связь с аватаром.
+bitrunning-delivery-byteforge-required = Невозможно доставить кэш: подключите байтфордж к серверу битранна.
 
 bitrunning-netpod-ui-title = Нэтпод
 bitrunning-netpod-ui-select-outfit = Выберите снаряжение
@@ -19,7 +20,7 @@ bitrunning-netpod-ui-search = Поиск
 bitrunning-training-instructions-collect = Соберите { $target } узлов зашифрованного кэша.
 bitrunning-training-instructions-delivery = Доставьте ящики кэша { $target } раз.
 bitrunning-training-instructions-eliminate = Устраните { $target } угроз домена.
-bitrunning-certificate-template = Домен: { $domain }. Время прохождения: { $time }. Базовая награда: { $reward }. Бонус: { $bonus }x. Угрозы: { $threats }. Оценка: { $grade }
+bitrunning-objective-completed = Цель выполнена.
 
 bitrunning-ui-title = Квантовая консоль
 bitrunning-ui-label-status = Статус:

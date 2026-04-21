@@ -26,9 +26,6 @@
         - MobLayer
         density: 0
         hard: false
-  - type: Tag
-    tags:
-      - HideContextMenu
   - type: BitrunningExitMarker
 
 # Anchor point for the domain's main objective area.
@@ -83,9 +80,6 @@
       shader: unshaded
   - type: Physics
     bodyType: Static
-  - type: Tag
-    tags:
-      - HideContextMenu
   - type: BitrunningSpawnMarker
 
 # Physical delivery zone sensor.
@@ -116,7 +110,4 @@
         - SlipLayer
         density: 0
         hard: false
-  - type: Tag
-    tags:
-      - HideContextMenu
   - type: BitrunningObjectiveDeliveryPoint
