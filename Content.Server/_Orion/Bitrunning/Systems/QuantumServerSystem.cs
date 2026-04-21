@@ -254,7 +254,7 @@ public sealed class QuantumServerSystem : EntitySystem
         var cacheCoordinates = new List<EntityCoordinates>();
         if (serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.CollectEncryptedCaches)
         {
-            var caches = EntityQueryEnumerator<BitrunningCacheMarkerComponent, TransformComponent>();
+            var caches = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
             while (caches.MoveNext(out var uid, out _, out var xform))
             {
                 if (xform.MapUid != mapUid)
@@ -266,7 +266,7 @@ public sealed class QuantumServerSystem : EntitySystem
             }
         }
 
-        var spawnMarkers = EntityQueryEnumerator<BitrunningSpawnMarkerComponent, TransformComponent>();
+        var spawnMarkers = EntityQueryEnumerator<BitrunningAvatarSpawnMarkerComponent, TransformComponent>();
         while (spawnMarkers.MoveNext(out var uid, out _, out var xform))
         {
             if (xform.MapUid != mapUid)
@@ -321,7 +321,7 @@ public sealed class QuantumServerSystem : EntitySystem
     private void SpawnDeliveryCacheCrates(QuantumServerComponent server, EntityCoordinates fallbackCoordinates)
     {
         var hasMarker = false;
-        var markers = EntityQueryEnumerator<BitrunningCacheCrateMarkerComponent, TransformComponent>();
+        var markers = EntityQueryEnumerator<BitrunningObjectiveCacheCrateSpawnMarkerComponent, TransformComponent>();
         while (markers.MoveNext(out var uid, out var marker, out var xform))
         {
             if (xform.MapUid != server.DomainMapUid)
@@ -550,7 +550,7 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!TryComp<AvatarConnectionComponent>(avatarUid, out var connection))
             return;
 
-        _actions.RemoveAction(avatarUid, connection.DisconnectActionEntity);
+        _actions.RemoveAction(connection.DisconnectActionEntity);
 
         var originalBody = connection.OriginalBody;
         var serverUid = connection.Server;

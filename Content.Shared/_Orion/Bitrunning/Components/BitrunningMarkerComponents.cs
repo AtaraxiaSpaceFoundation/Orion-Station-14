@@ -25,13 +25,13 @@ public sealed partial class BitrunningGoalMarkerComponent : Component;
 /// Marker that defines preferred spawn positions for encrypted cache objectives.
 /// </summary>
 [RegisterComponent]
-public sealed partial class BitrunningCacheMarkerComponent : Component;
+public sealed partial class BitrunningObjectiveEncryptedCacheSpawnMarkerComponent : Component;
 
 /// <summary>
 /// Marker that defines where delivery objective crates are spawned and which crate prototype is used.
 /// </summary>
 [RegisterComponent]
-public sealed partial class BitrunningCacheCrateMarkerComponent : Component
+public sealed partial class BitrunningObjectiveCacheCrateSpawnMarkerComponent : Component
 {
     [DataField]
     public EntProtoId CratePrototype = "CrateBitrunSecure";
@@ -41,7 +41,7 @@ public sealed partial class BitrunningCacheCrateMarkerComponent : Component
 /// Marker that defines player/avatar spawn positions if no dedicated objective marker is available.
 /// </summary>
 [RegisterComponent]
-public sealed partial class BitrunningSpawnMarkerComponent : Component;
+public sealed partial class BitrunningAvatarSpawnMarkerComponent : Component;
 
 /// <summary>
 /// Objective point that grants progress when interacted with, typically used by encrypted cache objective entities.

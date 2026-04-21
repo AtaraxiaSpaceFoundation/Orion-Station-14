@@ -256,14 +256,14 @@ entities:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
-- proto: BitrunningCacheCrateMarker
+- proto: BitrunningObjectiveCacheCrateSpawnMarker
   entities:
   - uid: 117
     components:
     - type: Transform
       pos: -5.5,-6.5
       parent: 1
-- proto: BitrunningDeliveryMarker
+- proto: BitrunningObjectiveCacheDeliveryPointMarker
   entities:
   - uid: 27
     components:
@@ -277,7 +277,7 @@ entities:
     - type: Transform
       pos: -0.5,-14.5
       parent: 1
-- proto: BitrunningSpawnMarker
+- proto: BitrunningAvatarSpawnMarker
   entities:
   - uid: 29
     components:
