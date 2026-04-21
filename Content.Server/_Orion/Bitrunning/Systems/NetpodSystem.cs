@@ -12,6 +12,8 @@ using Content.Shared.Roles;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -27,6 +29,7 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
 
     private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.3);
     private const string ServerSinkPort = "BitrunningServerSink";
@@ -290,6 +293,12 @@ public sealed class NetpodSystem : EntitySystem
     private void SetVisualState(Entity<NetpodComponent> ent, NetpodVisualState state)
     {
         _appearance.SetData(ent, NetpodVisuals.State, state);
+
+        if (!TryComp<PhysicsComponent>(ent, out var physics))
+            return;
+
+        var canCollide = state == NetpodVisualState.Closed;
+        _physics.SetCanCollide(ent, canCollide, body: physics);
     }
 
     private string GetLoadoutDisplayName(ProtoId<StartingGearPrototype> loadoutId)

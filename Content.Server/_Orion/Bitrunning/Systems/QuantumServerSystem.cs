@@ -28,6 +28,7 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Storage;
+using Content.Shared.Storage.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.EntitySerialization.Systems;
@@ -58,6 +59,7 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly StorageSystem _storage = default!;
+    [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -678,9 +680,6 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void FillDeliveredCargoWithLoot(EntityUid cargoUid, QuantumServerComponent server)
     {
-        if (!TryComp<StorageComponent>(cargoUid, out var storage))
-            return;
-
         var tableId = GetDeliveryLootTable(server);
         if (!_prototype.TryIndex(tableId, out var table))
             return;
@@ -689,7 +688,13 @@ public sealed class QuantumServerSystem : EntitySystem
         foreach (var prototypeId in _entityTable.GetSpawns(table))
         {
             var loot = Spawn(prototypeId, coordinates);
-            if (_storage.Insert(cargoUid, loot, out _, storageComp: storage, playSound: false))
+
+            if (TryComp<StorageComponent>(cargoUid, out var storage) &&
+                _storage.Insert(cargoUid, loot, out _, storageComp: storage, playSound: false))
+                continue;
+
+            if (TryComp<EntityStorageComponent>(cargoUid, out var entityStorage) &&
+                _entityStorage.Insert(loot, cargoUid, entityStorage))
                 continue;
 
             QueueDel(loot);

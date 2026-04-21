@@ -155,6 +155,8 @@
           True: { visible: true }
           False: { visible: false }
   - type: WiresPanel
+  - type: Physics
+    canCollide: false
   - type: Byteforge
   - type: DeviceLinkSink
     ports:
