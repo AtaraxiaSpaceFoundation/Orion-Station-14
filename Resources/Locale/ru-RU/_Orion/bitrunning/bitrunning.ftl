@@ -11,7 +11,7 @@ bitrunning-netpod-enter-failed = Сейчас вы не можете залез�
 bitrunning-netpod-connected = Нейросессия установлена.
 bitrunning-netpod-disconnected = Сессия аватара завершена.
 bitrunning-netpod-connect-failed = Не удалось установить связь с аватаром.
-bitrunning-delivery-byteforge-required = Невозможно доставить кэш: подключите байтфордж к серверу битранна.
+bitrunning-delivery-byteforge-required = Невозможно доставить кэш! Подключите материализатор данных к квантовому серверу.
 
 bitrunning-netpod-ui-title = Нэтпод
 bitrunning-netpod-ui-select-outfit = Выберите снаряжение
