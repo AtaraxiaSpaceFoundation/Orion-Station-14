@@ -6,7 +6,6 @@ using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.Actions;
 using Content.Server.Clothing.Systems;
 using Content.Server.DeviceNetwork.Components;
-using Content.Server.Storage.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Server.SurveillanceCamera;
 using Content.Shared._Orion.Bitrunning;
@@ -14,11 +13,8 @@ using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning.Systems;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking;
-using Content.Shared.DeviceLinking.Events;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Emag.Components;
-using Content.Shared.Emag.Systems;
-using Content.Shared.EntityTable;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
@@ -29,8 +25,6 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.StatusEffectNew;
-using Content.Shared.Storage;
-using Content.Shared.Storage.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.EntitySerialization.Systems;
@@ -60,18 +54,14 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly StorageSystem _storage = default!;
-    [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
-    [Dependency] private readonly EntityTableSystem _entityTable = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
     [Dependency] private readonly BitrunningPointsSystem _bitrunningPoints = default!;
+    [Dependency] private readonly ByteforgeSystem _byteforge = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
-    private const string ByteforgeSinkPort = "BitrunningByteforgeSink";
 
     public override void Initialize()
     {
@@ -79,23 +69,13 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<QuantumServerComponent, MapInitEvent>(OnServerMapInit);
         SubscribeLocalEvent<QuantumServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<QuantumServerComponent, InteractUsingEvent>(OnServerInteractUsing);
-        SubscribeLocalEvent<QuantumServerComponent, GotEmaggedEvent>(OnServerEmagged);
         SubscribeLocalEvent<QuantumServerComponent, EntityTerminatingEvent>(OnServerTerminating);
         SubscribeLocalEvent<QuantumServerComponent, PowerChangedEvent>(OnServerPowerChanged);
-        SubscribeLocalEvent<QuantumServerComponent, NewLinkEvent>(OnServerNewLink);
-        SubscribeLocalEvent<QuantumServerComponent, PortDisconnectedEvent>(OnServerPortDisconnected);
         SubscribeLocalEvent<AvatarConnectionComponent, DamageChangedEvent>(OnAvatarDamaged);
         SubscribeLocalEvent<AvatarConnectionComponent, MobStateChangedEvent>(OnAvatarStateChanged);
         SubscribeLocalEvent<AvatarConnectionComponent, BitrunningDisconnectAvatarActionEvent>(OnAvatarDisconnectAction);
         SubscribeLocalEvent<AvatarConnectionComponent, SuicideGhostEvent>(OnAvatarSuicideGhost);
         SubscribeLocalEvent<AvatarConnectionComponent, SuicideEvent>(OnAvatarSuicide);
-        SubscribeLocalEvent<ByteforgeComponent, MapInitEvent>(OnByteforgeMapInit);
-    }
-
-    private void OnByteforgeMapInit(Entity<ByteforgeComponent> ent, ref MapInitEvent args)
-    {
-        _appearance.SetData(ent, BitrunningVisuals.ByteforgeActive, false);
-        _appearance.SetData(ent, BitrunningVisuals.ByteforgeAngry, IsLinkedServerEmagged(ent.Comp));
     }
 
     private void OnServerInit(Entity<QuantumServerComponent> ent, ref ComponentInit args)
@@ -106,7 +86,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void OnServerMapInit(Entity<QuantumServerComponent> ent, ref MapInitEvent args)
     {
-        RefreshLinkedByteforge(ent);
+        _byteforge.RefreshLinkedByteforge(ent);
         UpdateServerVisuals(ent);
     }
 
@@ -129,12 +109,6 @@ public sealed class QuantumServerSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("bitrunning-server-active"), ent, args.User);
     }
 
-    private void OnServerEmagged(Entity<QuantumServerComponent> ent, ref GotEmaggedEvent args)
-    {
-        args.Handled = true;
-        UpdateByteforgeEmagVisual(ent.Comp);
-    }
-
     private void OnServerPowerChanged(Entity<QuantumServerComponent> ent, ref PowerChangedEvent args)
     {
         UpdateServerVisuals(ent);
@@ -146,49 +120,6 @@ public sealed class QuantumServerSystem : EntitySystem
         {
             DisconnectAvatar(connection, true);
         }
-    }
-
-    private void OnServerNewLink(Entity<QuantumServerComponent> ent, ref NewLinkEvent args)
-    {
-        if (args.Source != ent.Owner || args.SourcePort != ServerSourcePort || args.SinkPort != ByteforgeSinkPort)
-            return;
-
-        if (!TryComp<ByteforgeComponent>(args.Sink, out var byteforge))
-            return;
-
-        if (ent.Comp.LinkedByteforge is { } oldByteforge &&
-            oldByteforge != args.Sink &&
-            TryComp<ByteforgeComponent>(oldByteforge, out var oldByteforgeComp))
-        {
-            oldByteforgeComp.LinkedServer = null;
-            _appearance.SetData(oldByteforge, BitrunningVisuals.ByteforgeAngry, false);
-            Dirty(oldByteforge, oldByteforgeComp);
-        }
-
-        ent.Comp.LinkedByteforge = args.Sink;
-        byteforge.LinkedServer = ent.Owner;
-        UpdateByteforgeEmagVisual(ent.Comp);
-        Dirty(ent);
-        Dirty(args.Sink, byteforge);
-    }
-
-    private void OnServerPortDisconnected(Entity<QuantumServerComponent> ent, ref PortDisconnectedEvent args)
-    {
-        if (args.Port != ServerSourcePort || ent.Comp.LinkedByteforge != args.RemovedPortUid)
-            return;
-
-        if (TryComp<ByteforgeComponent>(args.RemovedPortUid, out var byteforge))
-        {
-            byteforge.LinkedServer = null;
-            Dirty(args.RemovedPortUid, byteforge);
-        }
-
-        if (ent.Comp.LinkedByteforge is { } oldLinked && Exists(oldLinked))
-            _appearance.SetData(oldLinked, BitrunningVisuals.ByteforgeAngry, false);
-
-        ent.Comp.LinkedByteforge = null;
-        _appearance.SetData(args.RemovedPortUid, BitrunningVisuals.ByteforgeAngry, false);
-        Dirty(ent);
     }
 
     public bool TryColdBoot(EntityUid serverUid, string domainId, bool randomized = false)
@@ -579,7 +510,7 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
         }
 
-        EnsureComp<WirelessNetworkComponent>(avatar).Range = (int)server.BroadcastWirelessRange;
+        EnsureComp<WirelessNetworkComponent>(avatar).Range = server.BroadcastWirelessRange;
 
         var device = EnsureComp<DeviceNetworkComponent>(avatar);
         device.NetIdEnum = DeviceNetworkComponent.DeviceNetIdDefaults.Wireless;
@@ -684,130 +615,6 @@ public sealed class QuantumServerSystem : EntitySystem
         return false;
     }
 
-    public bool TryDeliverObjectiveCargoToByteforge(EntityUid serverUid, EntityUid cargoUid)
-    {
-        if (!TryComp<QuantumServerComponent>(serverUid, out var server))
-            return false;
-
-        if (HasComp<BitrunningDeliveredObjectiveCargoComponent>(cargoUid))
-            return false;
-
-        if (server.LinkedByteforge is not { } byteforgeUid || !Exists(byteforgeUid))
-            return false;
-
-        if (!TryComp<ByteforgeComponent>(byteforgeUid, out var byteforge) || byteforge.LinkedServer != serverUid)
-            return false;
-
-        if (!TryComp<TransformComponent>(byteforgeUid, out var byteforgeXform))
-            return false;
-
-        var rewardCargoUid = Spawn(server.RewardCachePrototype, byteforgeXform.Coordinates);
-        FillDeliveredCargoWithLoot(rewardCargoUid, server);
-        PulseByteforge(byteforgeUid);
-        QueueDel(cargoUid);
-        return true;
-    }
-
-    private void PulseByteforge(EntityUid byteforgeUid)
-    {
-        if (!TryComp<ByteforgeComponent>(byteforgeUid, out var byteforge))
-            return;
-
-        byteforge.VisualPulseSerial++;
-        var pulseSerial = byteforge.VisualPulseSerial;
-
-        _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeAngry, IsLinkedServerEmagged(byteforge));
-        _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeActive, true);
-
-        Timer.Spawn(TimeSpan.FromSeconds(1.4f), () =>
-        {
-            if (!TryComp<ByteforgeComponent>(byteforgeUid, out var byteforgeComp) || byteforgeComp.VisualPulseSerial != pulseSerial)
-                return;
-
-            _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeActive, false);
-        });
-    }
-
-    private bool IsLinkedServerEmagged(ByteforgeComponent byteforge)
-    {
-        return byteforge.LinkedServer is { } serverUid && HasComp<EmaggedComponent>(serverUid);
-    }
-
-    private void UpdateByteforgeEmagVisual(QuantumServerComponent server)
-    {
-        if (server.LinkedByteforge is not { } byteforgeUid || !Exists(byteforgeUid) || !TryComp<ByteforgeComponent>(byteforgeUid, out var byteforge))
-            return;
-
-        _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeAngry, IsLinkedServerEmagged(byteforge));
-    }
-
-    private void RefreshLinkedByteforge(Entity<QuantumServerComponent> ent)
-    {
-        ent.Comp.LinkedByteforge = null;
-
-        if (!TryComp<DeviceLinkSourceComponent>(ent.Owner, out var source))
-        {
-            Dirty(ent);
-            return;
-        }
-
-        foreach (var outputs in source.Outputs.Values)
-        {
-            foreach (var linkedEntity in outputs)
-            {
-                if (!TryComp<ByteforgeComponent>(linkedEntity, out var byteforge))
-                    continue;
-
-                ent.Comp.LinkedByteforge = linkedEntity;
-                byteforge.LinkedServer = ent.Owner;
-                UpdateByteforgeEmagVisual(ent.Comp);
-                Dirty(linkedEntity, byteforge);
-                Dirty(ent);
-                return;
-            }
-        }
-
-        Dirty(ent);
-    }
-
-    private void FillDeliveredCargoWithLoot(EntityUid cargoUid, QuantumServerComponent server)
-    {
-        var tableId = GetDeliveryLootTable(server);
-        if (!_prototype.TryIndex(tableId, out var table))
-            return;
-
-        var coordinates = Transform(cargoUid).Coordinates;
-        foreach (var prototypeId in _entityTable.GetSpawns(table))
-        {
-            var loot = Spawn(prototypeId, coordinates);
-
-            if (TryComp<StorageComponent>(cargoUid, out var storage) &&
-                _storage.Insert(cargoUid, loot, out _, storageComp: storage, playSound: false))
-                continue;
-
-            if (TryComp<EntityStorageComponent>(cargoUid, out var entityStorage) &&
-                _entityStorage.Insert(loot, cargoUid, entityStorage))
-                continue;
-
-            QueueDel(loot);
-        }
-    }
-
-    private ProtoId<EntityTablePrototype> GetDeliveryLootTable(QuantumServerComponent server)
-    {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
-            return server.DeliveryEasyLootTable;
-
-        return domain.Difficulty switch
-        {
-            BitrunningDifficulty.Easy => server.DeliveryEasyLootTable,
-            BitrunningDifficulty.Medium => server.DeliveryMediumLootTable,
-            BitrunningDifficulty.Hard => server.DeliveryHardLootTable,
-            BitrunningDifficulty.Extreme => server.DeliveryExtremeLootTable,
-            _ => server.DeliveryEasyLootTable,
-        };
-    }
-
     private string GetObjectiveInstructions(QuantumServerComponent server)
     {
         if (!HasActiveObjective(server))
@@ -825,14 +632,16 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void CompleteObjective(Entity<QuantumServerComponent> serverEnt)
     {
-        if (serverEnt.Comp.ObjectiveCompleted || serverEnt.Comp.CacheCoordinates == null)
+        if (serverEnt.Comp.ObjectiveCompleted)
             return;
 
         serverEnt.Comp.ObjectiveCompleted = true;
         var rewardMultiplier = CalculateRewards(serverEnt.Comp);
 
-        if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) && serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
-            Spawn(serverEnt.Comp.RewardCachePrototype, serverEnt.Comp.CacheCoordinates.Value);
+        if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) &&
+            serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate &&
+            serverEnt.Comp.CacheCoordinates is { } cacheCoordinates)
+            Spawn(serverEnt.Comp.RewardCachePrototype, cacheCoordinates);
 
         var reward = (uint) Math.Max(1, (int) MathF.Round(GetDomainReward(serverEnt.Comp) * rewardMultiplier));
         serverEnt.Comp.Points += (int) reward;
@@ -913,10 +722,17 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private float CalculateRewards(QuantumServerComponent server)
     {
+        var noHitCount = 0;
+        foreach (var uid in server.ActiveConnections)
+        {
+            if (CompOrNull<AvatarConnectionComponent>(uid)?.NoHit == true)
+                noHitCount++;
+        }
+
         var total = 0.8f;
         total += server.QualityBonus;
         total += Math.Max(0, server.Occupants.Count - 1) * 0.5f;
-        total += server.ActiveConnections.Count(uid => CompOrNull<AvatarConnectionComponent>(uid)?.NoHit == true) * 0.4f;
+        total += noHitCount * 0.4f;
         total += server.ThreatsSpawned * 0.5f;
         return Math.Max(0.5f, total);
     }

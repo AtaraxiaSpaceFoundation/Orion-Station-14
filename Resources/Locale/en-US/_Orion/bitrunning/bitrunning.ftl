@@ -11,6 +11,7 @@ bitrunning-netpod-enter-failed = You cannot enter the netpod right now.
 bitrunning-netpod-connected = Neural session established.
 bitrunning-netpod-disconnected = Avatar session disconnected.
 bitrunning-netpod-connect-failed = Unable to establish avatar connection.
+bitrunning-netpod-no-power = The netpod has no power.
 bitrunning-delivery-byteforge-required = Cache delivery failed: connect a byteforge to the bitrunning server.
 
 bitrunning-netpod-ui-title = Net Pod
@@ -24,11 +25,38 @@ bitrunning-training-instructions-none = This domain is running without objective
 bitrunning-objective-completed = Objective completed.
 
 bitrunning-disk-ui-title = Bitrunning Disk Selection
-bitrunning-disk-popup-already-selected = Selected option: { $option }
+bitrunning-disk-ui-selected = Selected: { $option }
+bitrunning-disk-popup-already-selected = Selected { $option }!
 bitrunning-disk-popup-modifications-blocked = This domain blocks bitrunning disk modifications.
 bitrunning-disk-popup-selected = Selected: { $option }
 bitrunning-disk-examine-unselected = [color=yellow]Use in hand to choose one option.[/color]
 bitrunning-disk-examine-selected = [color=lightblue]Selected: { $option }.[/color]
+
+bitrunning-disk-option-pizza-box = Pizza box
+bitrunning-disk-option-medical-beam-gun = Medical beam gun
+bitrunning-disk-option-c4 = C-4
+bitrunning-disk-option-luxury-medipen = Luxury medipen
+bitrunning-disk-option-viper = Viper
+bitrunning-disk-option-armor-vest = Armor vest
+bitrunning-disk-option-advanced-laser-gun = Advanced laser gun
+bitrunning-disk-option-double-energy-sword = Double energy sword
+bitrunning-disk-option-energy-scythe = Energy scythe
+bitrunning-disk-option-syndicate-mini-bomb = Syndicate mini-bomb
+bitrunning-disk-option-summon-cheese = Summon cheese
+bitrunning-disk-option-lesser-heal = Lesser heal
+bitrunning-disk-option-fireball = Fireball
+bitrunning-disk-option-lightning-bolt = Lightning bolt
+bitrunning-disk-option-force-wall = Force wall
+bitrunning-disk-option-dragon-morph = Dragon morph
+bitrunning-disk-option-bear-morph = Bear morph
+bitrunning-disk-option-range-modkit = Range modkit
+bitrunning-disk-option-fire-rate-modkit = Fire rate modkit
+bitrunning-disk-option-damage-modkit = Damage modkit
+bitrunning-disk-option-space-modkit = Space modkit
+bitrunning-disk-option-proto-kinetic-crusher = Proto-kinetic crusher
+bitrunning-disk-option-proto-kinetic-glaive = Proto-kinetic glaive
+bitrunning-disk-option-proto-kinetic-hammer = Proto-kinetic hammer
+bitrunning-disk-option-proto-kinetic-machete = Proto-kinetic machete
 
 bitrunning-ui-title = Quantum Console
 bitrunning-ui-label-status = Status:

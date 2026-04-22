@@ -8,11 +8,14 @@ namespace Content.Client._Orion.Bitrunning.UI.Disk;
 [GenerateTypedNameReferences]
 public sealed partial class BitrunningDiskWindow : DefaultWindow
 {
+    private readonly ILocalizationManager _loc;
     public event Action<string>? OnSelected;
 
     public BitrunningDiskWindow()
     {
         RobustXamlLoader.Load(this);
+
+        _loc = IoCManager.Resolve<ILocalizationManager>();
     }
 
     public void SetState(List<string> options, string? selectedOption)
@@ -23,7 +26,7 @@ public sealed partial class BitrunningDiskWindow : DefaultWindow
         {
             var selectedLabel = new Label
             {
-                Text = $"Selected: {selectedOption}",
+                Text = Loc.GetString("bitrunning-disk-ui-selected", ("option", LocalizeOption(selectedOption))),
             };
             OptionsContainer.AddChild(selectedLabel);
             return;
@@ -33,11 +36,18 @@ public sealed partial class BitrunningDiskWindow : DefaultWindow
         {
             var button = new Button
             {
-                Text = option,
+                Text = LocalizeOption(option),
             };
 
             button.OnPressed += _ => OnSelected?.Invoke(option);
             OptionsContainer.AddChild(button);
         }
+    }
+
+    private string LocalizeOption(string optionKey)
+    {
+        return _loc.TryGetString(optionKey, out var localizedOption)
+            ? localizedOption
+            : optionKey;
     }
 }

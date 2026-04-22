@@ -24,9 +24,9 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Pizza box: FoodBoxPizza
-      Medical beam gun: MedicalBeamGun
-      C-4: C4
+      bitrunning-disk-option-pizza-box: FoodBoxPizza
+      bitrunning-disk-option-medical-beam-gun: MedicalBeamGun
+      bitrunning-disk-option-c4: C4
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -37,9 +37,9 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Luxury medipen: LuxuryMedipen
-      Makarov: WeaponPistolViper
-      Armor vest: ClothingOuterArmorBasic
+      bitrunning-disk-option-luxury-medipen: LuxuryMedipen
+      bitrunning-disk-option-viper: WeaponPistolViper
+      bitrunning-disk-option-armor-vest: ClothingOuterArmorBasic
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -50,10 +50,10 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Advanced laser gun: WeaponAdvancedLaser
-      Double energy sword: EnergySwordDouble
-      Energy scythe: PlasmaScythe
-      Syndicate mini-bomb: SyndieMiniBomb
+      bitrunning-disk-option-advanced-laser-gun: WeaponAdvancedLaser
+      bitrunning-disk-option-double-energy-sword: EnergySwordDouble
+      bitrunning-disk-option-energy-scythe: PlasmaScythe
+      bitrunning-disk-option-syndicate-mini-bomb: SyndieMiniBomb
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -64,8 +64,8 @@
   - type: BitrunningAbilityDisk
     grantMode: Action
     options:
-      Summon cheese: ActionBitrunningProgramBasicCheese
-      Lesser heal: ActionBitrunningProgramBasicLesserHeal
+      bitrunning-disk-option-summon-cheese: ActionBitrunningProgramBasicCheese
+      bitrunning-disk-option-lesser-heal: ActionBitrunningProgramBasicLesserHeal
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -76,9 +76,9 @@
   - type: BitrunningAbilityDisk
     grantMode: Action
     options:
-      Fireball: ActionFireball
-      Lightning bolt: ActionLightningBolt
-      Force wall: ActionForceWall
+      bitrunning-disk-option-fireball: ActionFireball
+      bitrunning-disk-option-lightning-bolt: ActionLightningBolt
+      bitrunning-disk-option-force-wall: ActionForceWall
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -89,8 +89,8 @@
   - type: BitrunningAbilityDisk
     grantMode: Action
     options:
-      Dragon morph: ActionBitrunningProgramEliteDragon
-      Bear morph: ActionBitrunningProgramEliteBear
+      bitrunning-disk-option-dragon-morph: ActionBitrunningProgramEliteDragon
+      bitrunning-disk-option-bear-morph: ActionBitrunningProgramEliteBear
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -113,8 +113,8 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Range modkit: PKAUpgradeRange
-      Fire rate modkit: PKAUpgradeFireRate
+      bitrunning-disk-option-range-modkit: PKAUpgradeRange
+      bitrunning-disk-option-fire-rate-modkit: PKAUpgradeFireRate
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -125,8 +125,8 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Damage modkit: PKAUpgradeDamage
-      Space modkit: PKAUpgradeSpace
+      bitrunning-disk-option-damage-modkit: PKAUpgradeDamage
+      bitrunning-disk-option-space-modkit: PKAUpgradeSpace
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -137,8 +137,8 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Proto-kinetic crusher: WeaponCrusher
-      Proto-kinetic glaive: WeaponCrusherGlaive
+      bitrunning-disk-option-proto-kinetic-crusher: WeaponCrusher
+      bitrunning-disk-option-proto-kinetic-glaive: WeaponCrusherGlaive
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
@@ -149,5 +149,5 @@
   - type: BitrunningAbilityDisk
     grantMode: Item
     options:
-      Proto-kinetic hammer: WeaponCrusherHammer
-      Proto-kinetic machete: LavalandWeaponKineticMachete
+      bitrunning-disk-option-proto-kinetic-hammer: WeaponCrusherHammer
+      bitrunning-disk-option-proto-kinetic-machete: LavalandWeaponKineticMachete

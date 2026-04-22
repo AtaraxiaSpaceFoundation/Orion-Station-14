@@ -142,6 +142,7 @@
         byteforge_on:
           True: { visible: true }
           False: { visible: false }
+      enum.BitrunningVisuals.ByteforgePowered:
         byteforge_particles:
           True: { visible: true }
           False: { visible: false }

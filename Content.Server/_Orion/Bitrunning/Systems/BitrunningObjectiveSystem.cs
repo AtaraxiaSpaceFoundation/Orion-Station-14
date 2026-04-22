@@ -14,6 +14,7 @@ namespace Content.Server._Orion.Bitrunning.Systems;
 public sealed class BitrunningObjectiveSystem : EntitySystem
 {
     [Dependency] private readonly QuantumServerSystem _server = default!;
+    [Dependency] private readonly ByteforgeSystem _byteforge = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
@@ -47,23 +48,18 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (!TryResolveDomainMapUid(ent.Owner, args.User, out var mapUid, out var coordinates))
             return;
 
-        var query = EntityQueryEnumerator<QuantumServerComponent>();
-        while (query.MoveNext(out var serverUid, out var server))
-        {
-            if (server.DomainMapUid != mapUid)
-                continue;
-
-            if (server.ObjectiveType != BitrunningObjectiveType.CollectEncryptedCaches)
-                continue;
-
-            _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
-            _audio.PlayPvs(ent.Comp.PickupSound, coordinates);
-            if (ent.Comp.ConsumeOnUse)
-                QueueDel(ent.Owner);
-
-            args.Handled = true;
+        if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
             return;
-        }
+
+        if (server.ObjectiveType != BitrunningObjectiveType.CollectEncryptedCaches)
+            return;
+
+        _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
+        _audio.PlayPvs(ent.Comp.PickupSound, coordinates);
+        if (ent.Comp.ConsumeOnUse)
+            QueueDel(ent.Owner);
+
+        args.Handled = true;
     }
 
     private void OnDeliveryCollide(Entity<BitrunningObjectiveDeliveryPointComponent> ent, ref StartCollideEvent args)
@@ -80,16 +76,15 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (HasComp<BitrunningDeliveredObjectiveCargoComponent>(args.OtherEntity))
             return;
 
-        if (!HasLinkedByteforge(serverUid, server))
+        if (!_byteforge.HasLinkedByteforge(serverUid, server))
         {
             if (TryComp<MapComponent>(mapUid, out var mapComp))
-            {
                 _popup.PopupEntity(Loc.GetString("bitrunning-delivery-byteforge-required"), ent, Filter.BroadcastMap(mapComp.MapId), true, PopupType.LargeCaution);
-                return;
-            }
+
+            return;
         }
 
-        if (!_server.TryDeliverObjectiveCargoToByteforge(serverUid, args.OtherEntity))
+        if (!_byteforge.TryDeliverObjectiveCargoToByteforge(serverUid, args.OtherEntity))
             return;
 
         if (server.ObjectiveType == BitrunningObjectiveType.DeliveryCacheCrate)
@@ -137,13 +132,5 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
     private bool TryResolveDomainMapUid(EntityUid primaryUid, EntityUid? fallbackUid, out EntityUid mapUid)
     {
         return TryResolveDomainMapUid(primaryUid, fallbackUid, out mapUid, out _);
-    }
-
-    private bool HasLinkedByteforge(EntityUid serverUid, QuantumServerComponent server)
-    {
-        if (server.LinkedByteforge is not { } byteforgeUid || !Exists(byteforgeUid))
-            return false;
-
-        return TryComp<ByteforgeComponent>(byteforgeUid, out var byteforge) && byteforge.LinkedServer == serverUid;
     }
 }

@@ -28,6 +28,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
 
     public override void Initialize()
     {
@@ -106,7 +107,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
         ent.Comp.SelectedOption = args.Option;
         Dirty(ent);
 
-        _popup.PopupEntity(Loc.GetString("bitrunning-disk-popup-selected", ("option", args.Option)), ent, user, PopupType.Medium);
+        _popup.PopupEntity(Loc.GetString("bitrunning-disk-popup-selected", ("option", LocalizeOption(args.Option))), ent, user, PopupType.Medium);
         _ui.SetUiState(ent.Owner, BitrunningDiskUiKey.Key, new BitrunningDiskBoundUiState(ent.Comp.Options.Keys.ToList(), ent.Comp.SelectedOption));
 
         if (TryFindAvatarOwner(ent.Owner, out avatarUid, out avatarComp))
@@ -123,7 +124,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
         else
         {
             args.PushMarkup(Loc.GetString("bitrunning-disk-examine-selected",
-                ("option", ent.Comp.SelectedOption)));
+                ("option", LocalizeOption(ent.Comp.SelectedOption))));
         }
     }
 
@@ -214,12 +215,17 @@ public sealed class BitrunningDiskSystem : EntitySystem
 
         foreach (var (diskUid, itemProto) in selectedItemDisks)
         {
-            if (!server.GrantedItemDisks.Add(diskUid))
+            if (server.GrantedItemDisks.Contains(diskUid))
                 continue;
 
             var spawned = Spawn(itemProto, Transform(avatar.Owner).Coordinates);
             if (TryInsertIntoInventoryOrHands(avatar.Owner, spawned))
+            {
+                server.GrantedItemDisks.Add(diskUid);
                 continue;
+            }
+
+            QueueDel(spawned);
         }
 
         Dirty(serverUid, server);
@@ -280,12 +286,13 @@ public sealed class BitrunningDiskSystem : EntitySystem
         args.Handled = true;
 
         var origin = Transform(args.Performer).Coordinates;
-        for (var x = -1; x <= 1; x++)
+        var radius = Math.Max(0, args.Radius);
+        for (var x = -radius; x <= radius; x++)
         {
-            for (var y = -1; y <= 1; y++)
+            for (var y = -radius; y <= radius; y++)
             {
                 var spawnCoords = new EntityCoordinates(origin.EntityId, origin.Position + new Vector2(x, y));
-                Spawn("FoodCheese", spawnCoords);
+                Spawn(args.PrototypeId, spawnCoords);
             }
         }
     }
@@ -301,5 +308,12 @@ public sealed class BitrunningDiskSystem : EntitySystem
         heal.DamageDict["Blunt"] = -12f;
         heal.DamageDict["Heat"] = -12f;
         _damageable.TryChangeDamage(args.Performer, heal, ignoreResistances: true);
+    }
+
+    private string LocalizeOption(string optionKey)
+    {
+        return _loc.TryGetString(optionKey, out var localizedOption)
+            ? localizedOption
+            : optionKey;
     }
 }

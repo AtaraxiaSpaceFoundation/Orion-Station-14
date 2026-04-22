@@ -28,8 +28,11 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+
+    private Dictionary<ProtoId<StartingGearPrototype>, string>? _startingGearToJobName;
 
     private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.3);
     private const string ServerSinkPort = "BitrunningNetpodSink";
@@ -54,6 +57,7 @@ public sealed class NetpodSystem : EntitySystem
         var containerComp = EnsureComp<NetpodContainerComponent>(ent);
         containerComp.BodyContainer = _container.EnsureContainer<ContainerSlot>(ent, "netpod-body");
         ent.Comp.Occupant = containerComp.BodyContainer.ContainedEntity;
+        Dirty(ent);
         UpdateVisuals(ent);
     }
 
@@ -103,6 +107,7 @@ public sealed class NetpodSystem : EntitySystem
                 if (Exists(ent.Owner))
                     EjectOccupant(ent.Owner);
             });
+            _popup.PopupEntity(Loc.GetString("bitrunning-netpod-no-power"), ent, args.Entity);
             return;
         }
 
@@ -186,6 +191,7 @@ public sealed class NetpodSystem : EntitySystem
 
     private void UpdateUi(Entity<NetpodComponent> ent)
     {
+        _startingGearToJobName ??= BuildStartingGearLookup();
         var loadouts = new List<NetpodLoadoutEntry>();
         foreach (var loadoutId in ent.Comp.AllowedLoadout)
         {
@@ -303,22 +309,29 @@ public sealed class NetpodSystem : EntitySystem
 
     private string GetLoadoutDisplayName(ProtoId<StartingGearPrototype> loadoutId)
     {
-        if (_prototype.TryIndex(loadoutId, out var _))
-        {
-            foreach (var job in _prototype.EnumeratePrototypes<JobPrototype>())
-            {
-                if (job.StartingGear != loadoutId)
-                    continue;
-
-                return Loc.TryGetString(job.Name, out var localizedJobName)
-                    ? localizedJobName
-                    : job.Name;
-            }
-        }
+        _startingGearToJobName ??= BuildStartingGearLookup();
+        if (_startingGearToJobName.TryGetValue(loadoutId, out var name))
+            return name;
 
         var fallbackKey = $"loadout-{loadoutId.ToString().ToLowerInvariant()}";
-        return Loc.TryGetString(fallbackKey, out var localizedLoadoutName)
+        return _loc.TryGetString(fallbackKey, out var localizedLoadoutName)
             ? localizedLoadoutName
             : loadoutId.ToString();
+    }
+
+    private Dictionary<ProtoId<StartingGearPrototype>, string> BuildStartingGearLookup()
+    {
+        var lookup = new Dictionary<ProtoId<StartingGearPrototype>, string>();
+        foreach (var job in _prototype.EnumeratePrototypes<JobPrototype>())
+        {
+            if (job.StartingGear == null || lookup.ContainsKey(job.StartingGear.Value))
+                continue;
+
+            lookup[job.StartingGear.Value] = _loc.TryGetString(job.Name, out var localizedJobName)
+                ? localizedJobName
+                : job.Name;
+        }
+
+        return lookup;
     }
 }

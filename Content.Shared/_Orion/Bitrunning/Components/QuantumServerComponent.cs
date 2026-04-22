@@ -43,7 +43,7 @@ public sealed partial class QuantumServerComponent : Component
     public bool BroadcastEnabled;
 
     [DataField]
-    public float BroadcastWirelessRange = 6767f;
+    public int BroadcastWirelessRange = 6767;
 
     [DataField]
     public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");

@@ -10,7 +10,7 @@ namespace Content.Shared._Orion.Bitrunning.Components;
 public sealed partial class BitrunningDomainRuntimeComponent : Component;
 
 /// <summary>
-/// Marker used by the domain loader to place the return point where disconnects avatars.
+/// Marker used by the domain loader to place the return point where disconnecting avatars.
 /// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningExitMarkerComponent : Component;

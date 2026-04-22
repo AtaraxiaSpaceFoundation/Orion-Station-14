@@ -11,9 +11,10 @@ bitrunning-netpod-enter-failed = Сейчас вы не можете залез�
 bitrunning-netpod-connected = Нейросессия установлена.
 bitrunning-netpod-disconnected = Сессия аватара завершена.
 bitrunning-netpod-connect-failed = Не удалось установить связь с аватаром.
+bitrunning-netpod-no-power = Нейрокапсула обесточена.
 bitrunning-delivery-byteforge-required = Невозможно доставить кэш! Подключите материализатор данных к квантовому серверу.
 
-bitrunning-netpod-ui-title = Нэтпод
+bitrunning-netpod-ui-title = Нейрокапсула
 bitrunning-netpod-ui-select-outfit = Выберите снаряжение
 bitrunning-netpod-ui-search = Поиск
 
@@ -24,11 +25,38 @@ bitrunning-training-instructions-none = Этот домен запущен бе�
 bitrunning-objective-completed = Цель выполнена.
 
 bitrunning-disk-ui-title = Выбор битран-диска
-bitrunning-disk-popup-already-selected = Выбранный вариант: { $option }
+bitrunning-disk-ui-selected = Выбрано: { $option }
+bitrunning-disk-popup-already-selected = Выбранно { $option }!
 bitrunning-disk-popup-modifications-blocked = В этом домене изменение битран-дисков запрещено.
 bitrunning-disk-popup-selected = Выбрано: { $option }
 bitrunning-disk-examine-unselected = [color=yellow]Используйте в руке, чтобы выбрать один вариант.[/color]
 bitrunning-disk-examine-selected = [color=lightblue]Выбрано: { $option }.[/color]
+
+bitrunning-disk-option-pizza-box = Коробка пиццы
+bitrunning-disk-option-medical-beam-gun = Медицинский лучемёт
+bitrunning-disk-option-c4 = C-4
+bitrunning-disk-option-luxury-medipen = Люксовый медипен
+bitrunning-disk-option-viper = Вайпер
+bitrunning-disk-option-armor-vest = Бронежилет
+bitrunning-disk-option-advanced-laser-gun = Продвинутый лазерный пистолет
+bitrunning-disk-option-double-energy-sword = Двойной энергетический меч
+bitrunning-disk-option-energy-scythe = Энергетическая коса
+bitrunning-disk-option-syndicate-mini-bomb = Мини-бомба Синдиката
+bitrunning-disk-option-summon-cheese = Призыв сыра
+bitrunning-disk-option-lesser-heal = Малое исцеление
+bitrunning-disk-option-fireball = Огненный шар
+bitrunning-disk-option-lightning-bolt = Удар молнии
+bitrunning-disk-option-force-wall = Силовая стена
+bitrunning-disk-option-dragon-morph = Превращение в дракона
+bitrunning-disk-option-bear-morph = Превращение в медведя
+bitrunning-disk-option-range-modkit = Модуль дальности
+bitrunning-disk-option-fire-rate-modkit = Модуль скорострельности
+bitrunning-disk-option-damage-modkit = Модуль урона
+bitrunning-disk-option-space-modkit = Космический модуль
+bitrunning-disk-option-proto-kinetic-crusher = Протокинетический дробитель
+bitrunning-disk-option-proto-kinetic-glaive = Протокинетическая глефа
+bitrunning-disk-option-proto-kinetic-hammer = Протокинетический молот
+bitrunning-disk-option-proto-kinetic-machete = Протокинетическое мачете
 
 bitrunning-ui-title = Квантовая консоль
 bitrunning-ui-label-status = Статус:

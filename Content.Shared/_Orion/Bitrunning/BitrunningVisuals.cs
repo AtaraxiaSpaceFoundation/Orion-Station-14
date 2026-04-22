@@ -14,6 +14,7 @@ public enum QuantumServerVisualState : byte
 public enum BitrunningVisuals : byte
 {
     QuantumServerState,
+    ByteforgePowered,
     ByteforgeActive,
     ByteforgeAngry,
 }
