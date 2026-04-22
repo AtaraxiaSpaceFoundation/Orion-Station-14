@@ -29,10 +29,10 @@
     cost: 974
   - id: BitrunningProgramEliteDisk
     cost: 1625
-  - id: BitrunningGimmickSportsDisk
-    cost: 487
-  - id: BitrunningGimmickDungeonCrawlingDisk
-    cost: 812
+#  - id: BitrunningGimmickSportsDisk # TODO
+#    cost: 487
+#  - id: BitrunningGimmickDungeonCrawlingDisk # TODO
+#    cost: 812
   - id: BitrunningGearPKAModsDisk
     cost: 487
   - id: BitrunningGearPremiumPKAModsDisk

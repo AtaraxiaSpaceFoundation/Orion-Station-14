@@ -109,5 +109,7 @@ public sealed partial class QuantumServerComponent : Component
 
     public bool AllowDiskModifications = true;
 
+    public bool WasRandomizedRun;
+
     public readonly HashSet<EntityUid> GrantedItemDisks = new();
 }

@@ -23,6 +23,7 @@ bitrunning-training-instructions-delivery = Deliver cache crates { $target } tim
 bitrunning-training-instructions-eliminate = Eliminate { $target } domain threats.
 bitrunning-training-instructions-none = This domain is running without objectives.
 bitrunning-objective-completed = Objective completed.
+bitrunning-objective-completed-rewards = Objective completed. Server points: +{ $server }, NP: +{ $np }.
 
 bitrunning-disk-ui-title = Bitrunning Disk Selection
 bitrunning-disk-ui-selected = Selected: { $option }
@@ -86,7 +87,8 @@ bitrunning-ui-difficulty-hard = Hard
 bitrunning-ui-difficulty-extreme = Extreme
 
 bitrunning-ui-server-state = State: { $state }
-bitrunning-ui-cannot-deploy = Not enough points or server is active.
+bitrunning-ui-cannot-deploy-server-busy = Server is not ready to deploy a domain.
+bitrunning-ui-cannot-deploy-not-enough-server-points = Not enough server points to deploy this domain.
 
 bitrunning-ui-domain-button = { $name } ({ $cost })
 bitrunning-ui-domain-entry = { $name } ({ $cost })
@@ -94,7 +96,8 @@ bitrunning-ui-domain-info = { $description }
 
 bitrunning-ui-virtual-domains = Virtual Domains
 bitrunning-ui-broadcast = Broadcast
-bitrunning-ui-points-badge = { $points } §
+bitrunning-ui-server-points-badge = { $points } §
+bitrunning-ui-domain-reward = Server { $server } / NP { $np }
 bitrunning-ui-scanner-inline = Scanner: { $scanner }
 bitrunning-ui-difficulty-hard-skull = Hard ☠
 bitrunning-ui-difficulty-selected = ▾ { $name }

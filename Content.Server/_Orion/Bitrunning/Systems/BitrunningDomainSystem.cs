@@ -35,11 +35,14 @@ public sealed class BitrunningDomainSystem : EntitySystem
         }
     }
 
-    public IReadOnlyList<BitrunningVirtualDomainPrototype> GetAllDomains() => _allDomains;
+    public IReadOnlyList<BitrunningVirtualDomainPrototype> GetAllDomains()
+    {
+        return _allDomains;
+    }
 
     public bool TryGetDomain(string id, out BitrunningVirtualDomainPrototype? domain)
     {
-        return _prototype.TryIndex<BitrunningVirtualDomainPrototype>(id, out domain);
+        return _prototype.TryIndex(id, out domain);
     }
 
     public string GetDisplayName(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)
@@ -61,12 +64,16 @@ public sealed class BitrunningDomainSystem : EntitySystem
     public string GetDisplayReward(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)
     {
         if (CanViewReward(domain, scannerTier, points))
-            return domain.RewardPoints.ToString();
+        {
+            return Loc.GetString("bitrunning-ui-domain-reward",
+                ("server", domain.ServerRewardPoints),
+                ("np", domain.BitrunningRewardPoints));
+        }
 
         return Loc.GetString("bitrunning-console-redacted");
     }
 
-    public bool CanViewName(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)
+    private static bool CanViewName(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)
     {
         if (!domain.HiddenUntilScanned)
             return true;
@@ -74,7 +81,7 @@ public sealed class BitrunningDomainSystem : EntitySystem
         return scannerTier >= domain.RequiredScannerTier && points + 5 >= domain.Cost;
     }
 
-    public bool CanViewReward(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)
+    private static bool CanViewReward(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)
     {
         return scannerTier >= domain.RequiredScannerTier + 1 && points >= domain.RequiredPointsToRevealReward;
     }

@@ -53,7 +53,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             : Loc.GetString("bitrunning-console-disconnected");
         ConnectedValue.FontColorOverride = state.Connected ? Color.SpringGreen : Color.IndianRed;
 
-        PointsValue.Text = Loc.GetString("bitrunning-ui-points-badge", ("points", state.Points.ToString(CultureInfo.InvariantCulture)));
+        PointsValue.Text = Loc.GetString("bitrunning-ui-server-points-badge", ("points", state.ServerPoints.ToString(CultureInfo.InvariantCulture)));
         ClientsHeader.Text = Loc.GetString("bitrunning-ui-clients-header-count", ("count", state.Occupants.ToString(CultureInfo.InvariantCulture)));
         ScannerValue.Text = Loc.GetString("bitrunning-ui-scanner-inline", ("scanner", state.ScannerTier.ToString(CultureInfo.InvariantCulture)));
         StateValue.Text = GetStateText(state);
@@ -161,7 +161,9 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             MinSize = new Vector2(0f, 23f),
         };
 
-        var canDeploy = state.State == BitrunningServerState.Ready && state.Points >= domain.Cost;
+        var serverReady = state.State == BitrunningServerState.Ready;
+        var enoughServerPoints = state.ServerPoints >= domain.Cost;
+        var canDeploy = serverReady && enoughServerPoints;
         var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.OrdinalIgnoreCase);
 
         var expanded = _expandedDomainId == domain.Id;
@@ -194,7 +196,11 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             Text = deployText,
             MinSize = new Vector2(90f, 23f),
             Disabled = !canDeploy,
-            ToolTip = canDeploy ? null : Loc.GetString("bitrunning-ui-cannot-deploy"),
+            ToolTip = canDeploy
+                ? null
+                : !serverReady
+                    ? Loc.GetString("bitrunning-ui-cannot-deploy-server-busy")
+                    : Loc.GetString("bitrunning-ui-cannot-deploy-not-enough-server-points"),
         };
         deployButton.OnPressed += _ => OnLoadDomain?.Invoke(domain.Id);
 

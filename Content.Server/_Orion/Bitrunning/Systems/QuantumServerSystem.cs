@@ -10,7 +10,9 @@ using Content.Server.Stunnable;
 using Content.Server.SurveillanceCamera;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared._Orion.Bitrunning.Prototypes;
 using Content.Shared._Orion.Bitrunning.Systems;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceNetwork.Components;
@@ -172,6 +174,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.ThreatsSpawned = 0;
         server.CooldownEndTime = TimeSpan.Zero;
         server.AllowDiskModifications = domain.AllowDiskModifications;
+        server.WasRandomizedRun = randomized;
         server.GrantedItemDisks.Clear();
 
         ResolveDomainMarkers((serverUid, server));
@@ -335,6 +338,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.ObjectivePoints = 0;
         serverEnt.Comp.ObjectiveCompleted = false;
         serverEnt.Comp.GrantedItemDisks.Clear();
+        serverEnt.Comp.WasRandomizedRun = false;
 
         if (immediate)
         {
@@ -533,11 +537,10 @@ public sealed class QuantumServerSystem : EntitySystem
         var originalBody = connection.OriginalBody;
         var serverUid = connection.Server;
         var podUid = connection.Netpod;
+        var canRedirectToBitrunner = CanRedirectToBitrunnerBody(connection, originalBody);
 
-        if (TryComp<MindContainerComponent>(avatarUid, out var container) && container.Mind is { } mindId && originalBody != null)
-        {
-            _mind.TransferTo(mindId, originalBody);
-        }
+        if (canRedirectToBitrunner && TryComp<MindContainerComponent>(avatarUid, out var container) && container.Mind is { } mindId && originalBody is { } bodyToTransfer)
+            _mind.TransferTo(mindId, bodyToTransfer);
 
         if (podUid != null && TryComp<NetpodComponent>(podUid.Value, out var pod))
         {
@@ -553,7 +556,7 @@ public sealed class QuantumServerSystem : EntitySystem
             _netpod.EjectOccupant(podUid.Value);
         }
 
-        if (!harmful && originalBody is { } body && serverUid is { } currentServerUid && TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
+        if (!harmful && canRedirectToBitrunner && originalBody is { } body && serverUid is { } currentServerUid && TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
         {
             _stun.TryAddParalyzeDuration(body, currentServer.ExitParalyzeTime);
 
@@ -639,19 +642,36 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         serverEnt.Comp.ObjectiveCompleted = true;
-        var rewardMultiplier = CalculateRewards(serverEnt.Comp);
+        var serverRewardMultiplier = CalculateServerRewardMultiplier(serverEnt.Comp);
+        var bitrunningRewardMultiplier = CalculateBitrunningRewardMultiplier(serverEnt.Comp);
 
         if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) &&
             serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate &&
             serverEnt.Comp.CacheCoordinates is { } cacheCoordinates)
             Spawn(serverEnt.Comp.RewardCachePrototype, cacheCoordinates);
 
-        var reward = (uint) Math.Max(1, (int) MathF.Round(GetDomainReward(serverEnt.Comp) * rewardMultiplier));
-        serverEnt.Comp.Points += (int) reward;
+        var baseServerReward = GetDomainServerReward(serverEnt.Comp);
+        var baseBitrunningReward = GetDomainBitrunningReward(serverEnt.Comp);
+        var randomServerBonus = GetRandomServerBonusReward(serverEnt.Comp);
+        var randomBitrunningBonus = GetRandomBitrunningBonusReward(serverEnt.Comp);
 
-        AwardParticipants(serverEnt.Comp, reward);
+        var serverReward = Math.Max(0, (int) MathF.Round(baseServerReward * serverRewardMultiplier));
+        var bitrunningReward = Math.Max(0, (int) MathF.Round(baseBitrunningReward * bitrunningRewardMultiplier));
 
-        var objectiveCompletedText = Loc.GetString("bitrunning-objective-completed");
+        if (serverEnt.Comp.WasRandomizedRun)
+        {
+            serverReward += randomServerBonus;
+            bitrunningReward += randomBitrunningBonus;
+        }
+
+        if (serverReward > 0)
+            serverEnt.Comp.Points += serverReward;
+
+        AwardParticipants(serverEnt.Comp, (uint) bitrunningReward);
+
+        var objectiveCompletedText = Loc.GetString("bitrunning-objective-completed-rewards",
+            ("server", serverReward),
+            ("np", bitrunningReward));
 
         if (serverEnt.Comp.BroadcastEnabled)
         {
@@ -674,9 +694,12 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void AwardParticipants(QuantumServerComponent server, uint reward)
     {
+        if (reward == 0)
+            return;
+
         var rewarded = new HashSet<EntityUid>();
 
-        foreach (var avatarUid in server.Occupants)
+        foreach (var avatarUid in server.ActiveConnections)
         {
             if (!TryComp<AvatarConnectionComponent>(avatarUid, out var connection))
                 continue;
@@ -694,12 +717,44 @@ public sealed class QuantumServerSystem : EntitySystem
         }
     }
 
-    private int GetDomainReward(QuantumServerComponent server)
+    private bool TryGetCurrentDomain(QuantumServerComponent server, out BitrunningVirtualDomainPrototype? domain)
     {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
-            return 1;
+        domain = null;
+        return server.CurrentDomain != null &&
+               _domains.TryGetDomain(server.CurrentDomain, out domain) &&
+               domain != null;
+    }
 
-        return domain.RewardPoints;
+    private int GetDomainServerReward(QuantumServerComponent server)
+    {
+        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
+            return 0;
+
+        return domain.ServerRewardPoints;
+    }
+
+    private int GetDomainBitrunningReward(QuantumServerComponent server)
+    {
+        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
+            return 0;
+
+        return domain.BitrunningRewardPoints;
+    }
+
+    private int GetRandomServerBonusReward(QuantumServerComponent server)
+    {
+        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
+            return 0;
+
+        return domain.RandomServerBonusPoints;
+    }
+
+    private int GetRandomBitrunningBonusReward(QuantumServerComponent server)
+    {
+        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
+            return 0;
+
+        return domain.RandomBitrunningBonusPoints;
     }
 
     private bool ShouldAutoStopOnObjectiveComplete(QuantumServerComponent server)
@@ -723,7 +778,17 @@ public sealed class QuantumServerSystem : EntitySystem
         return server.ObjectiveGoal > 0;
     }
 
-    private float CalculateRewards(QuantumServerComponent server)
+    private float CalculateServerRewardMultiplier(QuantumServerComponent server)
+    {
+        return CalculateBaseRewardMultiplier(server);
+    }
+
+    private float CalculateBitrunningRewardMultiplier(QuantumServerComponent server)
+    {
+        return CalculateBaseRewardMultiplier(server);
+    }
+
+    private float CalculateBaseRewardMultiplier(QuantumServerComponent server)
     {
         var noHitCount = 0;
         foreach (var uid in server.ActiveConnections)
@@ -734,7 +799,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
         var total = 0.8f;
         total += server.QualityBonus;
-        total += Math.Max(0, server.Occupants.Count - 1) * 0.5f;
+        total += Math.Max(0, server.ActiveConnections.Count - 1) * 0.5f;
         total += noHitCount * 0.4f;
         total += server.ThreatsSpawned * 0.5f;
         return Math.Max(0.5f, total);
@@ -754,19 +819,20 @@ public sealed class QuantumServerSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
-        if (ent.Comp.OriginalBody is { } body && TryComp<DamageableComponent>(ent, out var avatarDamage))
+        if (CanRedirectToBitrunnerBody(ent.Comp, ent.Comp.OriginalBody) && ent.Comp.OriginalBody is { } body && TryComp<DamageableComponent>(ent, out var avatarDamage))
         {
             var scaledDamage = avatarDamage.TotalDamage > 0
-                ? avatarDamage.Damage * 0.5f
+                ? avatarDamage.Damage * 0.40f
                 : new DamageSpecifier
                 {
                     DamageDict =
                     {
-                        ["Blunt"] = 40f,
+                        ["Blunt"] = 20f,
+                        ["Cellular"] = 2f, // No brain damage, lol 🥹
                     },
                 };
 
-            _damageable.TryChangeDamage(body, scaledDamage, ignoreResistances: true);
+            _damageable.TryChangeDamage(body, scaledDamage, ignoreResistances: true, targetPart: TargetBodyPart.Head);
         }
 
         DisconnectAvatar(ent, true);
@@ -792,8 +858,19 @@ public sealed class QuantumServerSystem : EntitySystem
         if (args.Handled)
             return;
 
-        DisconnectAvatar(ent, false);
+        DisconnectAvatar(ent, true);
         args.Handled = true;
+    }
+
+    private bool CanRedirectToBitrunnerBody(AvatarConnectionComponent connection, EntityUid? originalBody)
+    {
+        if (originalBody is not { } bodyUid || connection.Netpod is not { } podUid)
+            return false;
+
+        if (!TryComp<NetpodContainerComponent>(podUid, out var containerComp))
+            return false;
+
+        return containerComp.BodyContainer.ContainedEntity == bodyUid;
     }
 
     public void SetBroadcastState(EntityUid serverUid, bool enabled)

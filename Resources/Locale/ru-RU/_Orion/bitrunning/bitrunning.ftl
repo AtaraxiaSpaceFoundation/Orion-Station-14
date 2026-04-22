@@ -23,6 +23,7 @@ bitrunning-training-instructions-delivery = Доставьте ящики кэш
 bitrunning-training-instructions-eliminate = Устраните { $target } угроз домена.
 bitrunning-training-instructions-none = Этот домен запущен без целей.
 bitrunning-objective-completed = Цель выполнена.
+bitrunning-objective-completed-rewards = Начислены очки сервера: +{ $server }, СО: +{ $np }.
 
 bitrunning-disk-ui-title = Выбор битран-диска
 bitrunning-disk-ui-selected = Выбрано: { $option }
@@ -86,7 +87,8 @@ bitrunning-ui-difficulty-hard = Сложный
 bitrunning-ui-difficulty-extreme = Экстремальный
 
 bitrunning-ui-server-state = Состояние: { $state }
-bitrunning-ui-cannot-deploy = Недостаточно очков или сервер уже активен.
+bitrunning-ui-cannot-deploy-server-busy = Сервер сейчас не готов к запуску домена.
+bitrunning-ui-cannot-deploy-not-enough-server-points = Недостаточно очков сервера для запуска этого домена.
 
 bitrunning-ui-domain-button = { $name } ({ $cost })
 bitrunning-ui-domain-entry = { $name } ({ $cost })
@@ -94,7 +96,8 @@ bitrunning-ui-domain-info = { $description }
 
 bitrunning-ui-virtual-domains = Виртуальные домены
 bitrunning-ui-broadcast = Вещание
-bitrunning-ui-points-badge = { $points } §
+bitrunning-ui-server-points-badge = { $points } §
+bitrunning-ui-domain-reward = Сервер { $server } / СО { $np }
 bitrunning-ui-scanner-inline = Сканер: { $scanner }
 bitrunning-ui-difficulty-hard-skull = Сложный ☠
 bitrunning-ui-difficulty-selected = ▾ { $name }

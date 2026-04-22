@@ -3,6 +3,9 @@
   name: bitrunning-domain-training-name
   description: bitrunning-domain-training-desc
   difficulty: Easy
+  serverRewardPoints: 1000 # Debug? Uhh hiss~
+  bitrunningRewardPoints: 1000 # Debug? Uhh ahhh~
+  randomBitrunningBonusPoints: 10
   mapPath: /Maps/_Lavaland/Shelters/shelter_5x5.yml
   objectiveType: CollectEncryptedCaches
   objectiveTarget: 3
@@ -12,7 +15,9 @@
   id: Syndicate
   name: bitrunning-domain-syndicate-name
   description: bitrunning-domain-syndicate-desc
-  rewardPoints: 2
   difficulty: Medium
+  serverRewardPoints: 2
+  bitrunningRewardPoints: 100
+  randomBitrunningBonusPoints: 20
   mapPath: /Maps/_Orion/Bitrun/syndicate.yml
   objectiveType: DeliveryCacheCrate

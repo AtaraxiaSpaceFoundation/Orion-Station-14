@@ -27,10 +27,28 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public BitrunningDifficulty Difficulty { get; private set; } = BitrunningDifficulty.Easy;
 
     /// <summary>
-    /// Base server points rewarded on successful completion.
+    /// Server/domain reward for successful completion.
     /// </summary>
     [DataField]
-    public int RewardPoints { get; private set; }
+    public int ServerRewardPoints { get; private set; }
+
+    /// <summary>
+    /// Personal bitrunning points reward granted per participant on successful completion.
+    /// </summary>
+    [DataField]
+    public int BitrunningRewardPoints { get; private set; }
+
+    /// <summary>
+    /// Additional server points granted for successful completion of a randomized run.
+    /// </summary>
+    [DataField]
+    public int RandomServerBonusPoints { get; private set; }
+
+    /// <summary>
+    /// Additional personal bitrunning points granted per participant for successful completion of a randomized run.
+    /// </summary>
+    [DataField]
+    public int RandomBitrunningBonusPoints { get; private set; }
 
     [DataField(required: true, customTypeSerializer: typeof(ResPathSerializer))]
     public ResPath MapPath { get; private set; }

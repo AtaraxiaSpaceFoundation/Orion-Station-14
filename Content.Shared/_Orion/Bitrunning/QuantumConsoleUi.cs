@@ -15,7 +15,7 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
     public NetEntity? Server;
     public string? CurrentDomain;
     public int Occupants;
-    public int Points;
+    public int ServerPoints;
     public int ScannerTier;
     public BitrunningServerState State;
     public bool Broadcast;
@@ -29,7 +29,7 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
         NetEntity? server,
         string? currentDomain,
         int occupants,
-        int points,
+        int serverPoints,
         int scannerTier,
         BitrunningServerState state,
         bool broadcast,
@@ -42,7 +42,7 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
         Server = server;
         CurrentDomain = currentDomain;
         Occupants = occupants;
-        Points = points;
+        ServerPoints = serverPoints;
         ScannerTier = scannerTier;
         State = state;
         Broadcast = broadcast;

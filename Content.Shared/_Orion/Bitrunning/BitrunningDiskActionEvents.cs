@@ -9,7 +9,7 @@ public sealed partial class BitrunningSpawnCheeseActionEvent : InstantActionEven
     public EntProtoId PrototypeId = "FoodCheese";
 
     [DataField]
-    public int Radius = 3;
+    public int Radius = 1;
 }
 
 public sealed partial class BitrunningLesserHealActionEvent : InstantActionEvent;
