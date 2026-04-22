@@ -114,6 +114,8 @@ public sealed class ByteforgeSystem : EntitySystem
         if (!HasLinkedByteforge(serverUid, server))
             return false;
 
+        EnsureComp<BitrunningDeliveredObjectiveCargoComponent>(cargoUid);
+
         var byteforgeUid = server.LinkedByteforge!.Value;
         if (!TryComp<TransformComponent>(byteforgeUid, out var byteforgeXform))
             return false;

@@ -33,8 +33,6 @@ public sealed class BitrunningDiskSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<AvatarConnectionComponent, ComponentStartup>(OnAvatarStartup);
-        SubscribeLocalEvent<AvatarConnectionComponent, EntInsertedIntoContainerMessage>(OnAvatarInsertedIntoContainer);
-        SubscribeLocalEvent<AvatarConnectionComponent, EntRemovedFromContainerMessage>(OnAvatarRemovedFromContainer);
 
         SubscribeLocalEvent<BitrunningAbilityDiskComponent, EntInsertedIntoContainerMessage>(OnDiskInsertedIntoContainer);
         SubscribeLocalEvent<BitrunningAbilityDiskComponent, EntRemovedFromContainerMessage>(OnDiskRemovedFromContainer);
@@ -52,16 +50,6 @@ public sealed class BitrunningDiskSystem : EntitySystem
     }
 
     private void OnAvatarStartup(Entity<AvatarConnectionComponent> ent, ref ComponentStartup args)
-    {
-        UpdateAvatarEffects(ent);
-    }
-
-    private void OnAvatarInsertedIntoContainer(Entity<AvatarConnectionComponent> ent, ref EntInsertedIntoContainerMessage args)
-    {
-        UpdateAvatarEffects(ent);
-    }
-
-    private void OnAvatarRemovedFromContainer(Entity<AvatarConnectionComponent> ent, ref EntRemovedFromContainerMessage args)
     {
         UpdateAvatarEffects(ent);
     }
@@ -132,13 +120,13 @@ public sealed class BitrunningDiskSystem : EntitySystem
     {
         var holder = EnsureComp<BitrunningAvatarAbilityHolderComponent>(avatar);
 
-        if (!IsDiskModificationAllowed(avatar.Comp))
+        if (!IsDiskModificationAllowed(avatar.Comp) || avatar.Comp.OriginalBody is not { } bitrunnerUid)
         {
             RemoveAllGrantedActions(holder);
             return;
         }
 
-        var selectedActionDisks = FindSelectedDisks(avatar.Owner, BitrunningDiskGrantMode.Action);
+        var selectedActionDisks = FindSelectedDisks(bitrunnerUid, BitrunningDiskGrantMode.Action);
 
         foreach (var (diskUid, actionUid) in holder.ActionsByDisk.ToArray())
         {
@@ -159,7 +147,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
             holder.ActionsByDisk[diskUid] = actionUid;
         }
 
-        var selectedItemDisks = FindSelectedDisks(avatar.Owner, BitrunningDiskGrantMode.Item);
+        var selectedItemDisks = FindSelectedDisks(bitrunnerUid, BitrunningDiskGrantMode.Item);
         TryGrantDomainItems((avatar.Owner, avatar.Comp), selectedItemDisks);
     }
 
@@ -173,12 +161,12 @@ public sealed class BitrunningDiskSystem : EntitySystem
         holder.ActionsByDisk.Clear();
     }
 
-    private Dictionary<EntityUid, EntProtoId> FindSelectedDisks(EntityUid avatarUid, BitrunningDiskGrantMode mode)
+    private Dictionary<EntityUid, EntProtoId> FindSelectedDisks(EntityUid bitrunnerUid, BitrunningDiskGrantMode mode)
     {
         var found = new Dictionary<EntityUid, EntProtoId>();
         var visited = new HashSet<EntityUid>();
         var queue = new Queue<EntityUid>();
-        queue.Enqueue(avatarUid);
+        queue.Enqueue(bitrunnerUid);
 
         while (queue.TryDequeue(out var current))
         {
@@ -261,20 +249,34 @@ public sealed class BitrunningDiskSystem : EntitySystem
         var current = entity;
         while (TryComp<TransformComponent>(current, out var xform))
         {
+            if (TryFindAvatarByOriginalBody(current, out avatarUid, out avatarComp))
+                return true;
+
             var parent = xform.ParentUid;
             if (parent == EntityUid.Invalid || parent == current)
                 break;
 
-            if (TryComp<AvatarConnectionComponent>(parent, out var avatarConnection))
-            {
-                avatarComp = avatarConnection;
-                avatarUid = parent;
-                return true;
-            }
-
             current = parent;
         }
 
+        return false;
+    }
+
+    private bool TryFindAvatarByOriginalBody(EntityUid bodyUid, out EntityUid avatarUid, out AvatarConnectionComponent avatarComp)
+    {
+        var query = EntityQueryEnumerator<AvatarConnectionComponent>();
+        while (query.MoveNext(out var uid, out var connection))
+        {
+            if (connection.OriginalBody != bodyUid)
+                continue;
+
+            avatarUid = uid;
+            avatarComp = connection;
+            return true;
+        }
+
+        avatarUid = default;
+        avatarComp = default!;
         return false;
     }
 

@@ -93,4 +93,8 @@
     color: "#4f8dcf"
   - type: ShopVendor
     pack: BitrunningVendorInventory
+  - type: UserInterface
+    interfaces:
+      enum.VendingMachineUiKey.Key:
+        type: ShopVendorBoundUserInterface
   - type: BitrunningPointsVendor
