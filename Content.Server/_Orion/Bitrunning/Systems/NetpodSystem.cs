@@ -303,7 +303,7 @@ public sealed class NetpodSystem : EntitySystem
         if (!TryComp<PhysicsComponent>(ent, out var physics))
             return;
 
-        var canCollide = state == NetpodVisualState.Closed;
+        var canCollide = state is NetpodVisualState.Closed or NetpodVisualState.Active;
         _physics.SetCanCollide(ent, canCollide, body: physics);
     }
 

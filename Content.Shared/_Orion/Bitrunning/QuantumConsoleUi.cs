@@ -61,11 +61,11 @@ public sealed class BitrunningDomainListing
     public string Description;
     public int Cost;
     public string Reward;
-    public string Difficulty;
+    public BitrunningDifficulty Difficulty;
     public bool IsModular;
     public bool HasSecondaryObjectives;
 
-    public BitrunningDomainListing(string id, string name, string description, int cost, string reward, string difficulty, bool isModular, bool hasSecondaryObjectives)
+    public BitrunningDomainListing(string id, string name, string description, int cost, string reward, BitrunningDifficulty difficulty, bool isModular, bool hasSecondaryObjectives)
     {
         Id = id;
         Name = name;

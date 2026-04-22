@@ -130,13 +130,16 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!TryComp<QuantumServerComponent>(serverUid, out var server))
             return false;
 
+        if (!_power.IsPowered(serverUid))
+            return false;
+
         if (server.State != BitrunningServerState.Ready)
             return false;
 
         if (server.CurrentDomain != null || server.DomainMapUid != null)
             return false;
 
-        if (!_domains.TryGetDomain(domainId, out var domain) || domain == null)
+        if (!_domains.TryGetDomain(domainId, out var domain))
             return false;
 
         if (domain.Difficulty == BitrunningDifficulty.Extreme && !HasComp<EmaggedComponent>(serverUid))
@@ -372,6 +375,9 @@ public sealed class QuantumServerSystem : EntitySystem
     public bool TryConnectRunner(EntityUid serverUid, EntityUid podUid, EntityUid user)
     {
         if (!TryComp<QuantumServerComponent>(serverUid, out var server) || !TryComp<NetpodComponent>(podUid, out var pod))
+            return false;
+
+        if (!_power.IsPowered(serverUid))
             return false;
 
         if (server.State != BitrunningServerState.Running)

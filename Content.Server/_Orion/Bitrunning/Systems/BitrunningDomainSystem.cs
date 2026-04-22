@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Orion.Bitrunning.Prototypes;
 using Robust.Shared.Prototypes;
 
@@ -40,7 +41,7 @@ public sealed class BitrunningDomainSystem : EntitySystem
         return _allDomains;
     }
 
-    public bool TryGetDomain(string id, out BitrunningVirtualDomainPrototype? domain)
+    public bool TryGetDomain(string id, [NotNullWhen(true)] out BitrunningVirtualDomainPrototype? domain)
     {
         return _prototype.TryIndex(id, out domain);
     }
@@ -78,7 +79,7 @@ public sealed class BitrunningDomainSystem : EntitySystem
         if (!domain.HiddenUntilScanned)
             return true;
 
-        return scannerTier >= domain.RequiredScannerTier && points + 5 >= domain.Cost;
+        return scannerTier >= domain.RequiredScannerTier && points + domain.NameRevealPointBuffer >= domain.Cost;
     }
 
     private static bool CanViewReward(BitrunningVirtualDomainPrototype domain, int scannerTier, int points)

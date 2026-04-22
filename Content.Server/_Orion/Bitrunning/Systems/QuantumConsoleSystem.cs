@@ -138,7 +138,7 @@ public sealed class QuantumConsoleSystem : EntitySystem
                 _domains.GetDisplayDescription(domain, server.ScannerTier, server.Points),
                 domain.Cost,
                 _domains.GetDisplayReward(domain, server.ScannerTier, server.Points),
-                domain.Difficulty.ToString(),
+                domain.Difficulty,
                 domain.IsModular,
                 domain.HasSecondaryObjectives));
         }

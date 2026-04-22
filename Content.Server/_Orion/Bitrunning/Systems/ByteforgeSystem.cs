@@ -114,14 +114,25 @@ public sealed class ByteforgeSystem : EntitySystem
         if (!HasLinkedByteforge(serverUid, server))
             return false;
 
-        EnsureComp<BitrunningDeliveredObjectiveCargoComponent>(cargoUid);
-
         var byteforgeUid = server.LinkedByteforge!.Value;
         if (!TryComp<TransformComponent>(byteforgeUid, out var byteforgeXform))
             return false;
 
+        if (!_prototype.HasIndex<EntityPrototype>(server.RewardCachePrototype))
+        {
+            Log.Warning($"Invalid reward cache prototype '{server.RewardCachePrototype}' on server {ToPrettyString(serverUid)}.");
+            return false;
+        }
+
         var rewardCargoUid = Spawn(server.RewardCachePrototype, byteforgeXform.Coordinates);
-        FillDeliveredCargoWithLoot(rewardCargoUid, server);
+        if (!FillDeliveredCargoWithLoot(rewardCargoUid, server))
+        {
+            Log.Warning($"Failed to fill delivered cargo reward crate for server {ToPrettyString(serverUid)}.");
+            QueueDel(rewardCargoUid);
+            return false;
+        }
+
+        EnsureComp<BitrunningDeliveredObjectiveCargoComponent>(cargoUid);
         PulseByteforge(byteforgeUid);
         QueueDel(cargoUid);
         return true;
@@ -190,11 +201,11 @@ public sealed class ByteforgeSystem : EntitySystem
         Dirty(ent);
     }
 
-    private void FillDeliveredCargoWithLoot(EntityUid cargoUid, QuantumServerComponent server)
+    private bool FillDeliveredCargoWithLoot(EntityUid cargoUid, QuantumServerComponent server)
     {
         var tableId = GetDeliveryLootTable(server);
         if (!_prototype.TryIndex(tableId, out var table))
-            return;
+            return false;
 
         var coordinates = Transform(cargoUid).Coordinates;
         foreach (var prototypeId in _entityTable.GetSpawns(table))
@@ -211,6 +222,8 @@ public sealed class ByteforgeSystem : EntitySystem
 
             QueueDel(loot);
         }
+
+        return true;
     }
 
     private ProtoId<EntityTablePrototype> GetDeliveryLootTable(QuantumServerComponent server)

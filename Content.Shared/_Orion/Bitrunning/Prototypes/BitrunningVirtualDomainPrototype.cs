@@ -78,6 +78,12 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public int RequiredScannerTier { get; private set; } = 1;
 
     /// <summary>
+    /// Extra server points buffer applied when revealing hidden domain names.
+    /// </summary>
+    [DataField]
+    public int NameRevealPointBuffer { get; private set; } = 5;
+
+    /// <summary>
     /// Minimum server points required to reveal reward value in UI.
     /// </summary>
     [DataField]

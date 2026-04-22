@@ -26,8 +26,8 @@ bitrunning-objective-completed = Цель выполнена.
 bitrunning-objective-completed-rewards = Начислены очки сервера: +{ $server }, СО: +{ $np }.
 
 bitrunning-disk-ui-title = Выбор битран-диска
-bitrunning-disk-ui-selected = Выбрано: { $option }
-bitrunning-disk-popup-already-selected = Выбранно { $option }!
+bitrunning-disk-ui-selected = Применено: { $option }
+bitrunning-disk-popup-already-selected = Выбрано { $option }!
 bitrunning-disk-popup-modifications-blocked = В этом домене изменение битран-дисков запрещено.
 bitrunning-disk-popup-selected = Выбрано: { $option }
 bitrunning-disk-examine-unselected = [color=yellow]Используйте в руке, чтобы выбрать один вариант.[/color]

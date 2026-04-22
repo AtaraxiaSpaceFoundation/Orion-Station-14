@@ -65,8 +65,8 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         BroadcastToggle.Pressed = state.Broadcast;
         _updatingToggle = false;
 
-        StopButton.Disabled = state.State != BitrunningServerState.Running;
-        RandomButton.Disabled = state.State != BitrunningServerState.Ready;
+        StopButton.Disabled = !state.Connected || state.State != BitrunningServerState.Running;
+        RandomButton.Disabled = !state.Connected || state.State != BitrunningServerState.Ready;
 
         UpdateCooldown(state);
         RebuildDomainList(state);
@@ -116,7 +116,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
         foreach (var domain in state.Domains)
         {
-            if (_selectedDifficulty != null && !domain.Difficulty.Equals(_selectedDifficulty, StringComparison.OrdinalIgnoreCase))
+            if (_selectedDifficulty != null && !domain.Difficulty.ToString().Equals(_selectedDifficulty, StringComparison.OrdinalIgnoreCase))
                 continue;
 
             DomainList.AddChild(CreateDomainRow(domain, state));
@@ -163,7 +163,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
         var serverReady = state.State == BitrunningServerState.Ready;
         var enoughServerPoints = state.ServerPoints >= domain.Cost;
-        var canDeploy = serverReady && enoughServerPoints;
+        var canDeploy = state.Connected && serverReady && enoughServerPoints;
         var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.OrdinalIgnoreCase);
 
         var expanded = _expandedDomainId == domain.Id;
@@ -417,14 +417,13 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         };
     }
 
-    private static Color GetDifficultyColor(string difficulty)
+    private static Color GetDifficultyColor(BitrunningDifficulty difficulty)
     {
-        return difficulty.ToLowerInvariant() switch
+        return difficulty switch
         {
-            "peaceful" => DifficultyColor.Peaceful,
-            "easy" => DifficultyColor.Easy,
-            "medium" => DifficultyColor.Medium,
-            "hard" or "extreme" => DifficultyColor.Hard,
+            BitrunningDifficulty.Easy => DifficultyColor.Easy,
+            BitrunningDifficulty.Medium => DifficultyColor.Medium,
+            BitrunningDifficulty.Hard or BitrunningDifficulty.Extreme => DifficultyColor.Hard,
             _ => Color.FromHex("#B03030"),
         };
     }

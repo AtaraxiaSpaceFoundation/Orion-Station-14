@@ -32,6 +32,8 @@ public sealed class BitrunningDiskSystem : EntitySystem
 
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<AvatarConnectionComponent, ComponentStartup>(OnAvatarStartup);
 
         SubscribeLocalEvent<BitrunningAbilityDiskComponent, EntInsertedIntoContainerMessage>(OnDiskInsertedIntoContainer);
@@ -92,7 +94,8 @@ public sealed class BitrunningDiskSystem : EntitySystem
         if (ent.Comp.SelectedOption != null || !ent.Comp.Options.ContainsKey(args.Option))
             return;
 
-        if (TryFindAvatarOwner(ent.Owner, out var avatarUid, out var avatarComp) && !IsDiskModificationAllowed(avatarComp))
+        var foundAvatar = TryFindAvatarOwner(ent.Owner, out var avatarUid, out var avatarComp);
+        if (foundAvatar && !IsDiskModificationAllowed(avatarComp))
         {
             _popup.PopupEntity(Loc.GetString("bitrunning-disk-popup-modifications-blocked"), ent, user, PopupType.SmallCaution);
             return;
@@ -104,7 +107,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString("bitrunning-disk-popup-selected", ("option", LocalizeOption(args.Option))), ent, user, PopupType.Medium);
         _ui.SetUiState(ent.Owner, BitrunningDiskUiKey.Key, new BitrunningDiskBoundUiState(ent.Comp.Options.Keys.ToList(), ent.Comp.SelectedOption));
 
-        if (TryFindAvatarOwner(ent.Owner, out avatarUid, out avatarComp))
+        if (foundAvatar)
             UpdateAvatarEffects((avatarUid, avatarComp));
     }
 
@@ -294,7 +297,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
         args.Handled = true;
 
         var origin = Transform(args.Performer).Coordinates;
-        var radius = Math.Max(0, args.Radius);
+        var radius = Math.Clamp(args.Radius, 0, 8);
         for (var x = -radius; x <= radius; x++)
         {
             for (var y = -radius; y <= radius; y++)
