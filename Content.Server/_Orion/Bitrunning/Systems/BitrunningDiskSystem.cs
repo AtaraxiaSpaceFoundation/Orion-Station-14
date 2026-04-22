@@ -49,6 +49,12 @@ public sealed class BitrunningDiskSystem : EntitySystem
         SubscribeLocalEvent<BitrunningLesserHealActionEvent>(OnLesserHealAction);
     }
 
+    public void RefreshAvatarEffects(EntityUid avatarUid)
+    {
+        if (TryComp<AvatarConnectionComponent>(avatarUid, out var avatarConnection))
+            UpdateAvatarEffects((avatarUid, avatarConnection));
+    }
+
     private void OnAvatarStartup(Entity<AvatarConnectionComponent> ent, ref ComponentStartup args)
     {
         UpdateAvatarEffects(ent);

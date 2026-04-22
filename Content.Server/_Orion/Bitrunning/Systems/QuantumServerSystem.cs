@@ -59,6 +59,7 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly SharedPowerReceiverSystem _power = default!;
     [Dependency] private readonly BitrunningPointsSystem _bitrunningPoints = default!;
     [Dependency] private readonly ByteforgeSystem _byteforge = default!;
+    [Dependency] private readonly BitrunningDiskSystem _bitrunningDisk = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
@@ -425,6 +426,7 @@ public sealed class QuantumServerSystem : EntitySystem
         _netpod.UpdateVisuals((podUid, pod));
         Dirty(serverUid, server);
         Dirty(avatar, connection);
+        _bitrunningDisk.RefreshAvatarEffects(avatar);
         return true;
     }
 
@@ -461,6 +463,7 @@ public sealed class QuantumServerSystem : EntitySystem
         }
 
         Dirty(avatarUid, connection);
+        _bitrunningDisk.RefreshAvatarEffects(avatarUid);
         return true;
     }
 
