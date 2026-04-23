@@ -17,6 +17,8 @@
     cost: 650
   - id: ClothingShoesBootsJack
     cost: 650
+  - id: BitrunningExtensionPlayerAppearance
+    cost: 100
   - id: BitrunningGearSimpleDisk
     cost: 487
   - id: BitrunningGearComplexDisk

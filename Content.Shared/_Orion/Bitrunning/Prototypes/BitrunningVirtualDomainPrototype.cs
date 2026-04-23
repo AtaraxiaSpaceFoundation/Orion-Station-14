@@ -93,7 +93,7 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// Defines how the domain is completed.
     /// </summary>
     [DataField]
-    public BitrunningObjectiveType ObjectiveType { get; private set; } = BitrunningObjectiveType.CollectEncryptedCaches;
+    public BitrunningObjectiveType ObjectiveType { get; private set; } = BitrunningObjectiveType.None;
 
     /// <summary>
     /// Objective progress needed to trigger reward flow.
@@ -142,6 +142,12 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool AllowDiskModifications { get; private set; } = true;
+
+    /// <summary>
+    /// If false, loading avatar appearance/species from the player selected profile is disabled in this domain.
+    /// </summary>
+    [DataField]
+    public bool AllowProfileLoad { get; private set; } = true;
 
     /// <summary>
     /// Optional forced loadout for this domain. Has priority over netpod selection.

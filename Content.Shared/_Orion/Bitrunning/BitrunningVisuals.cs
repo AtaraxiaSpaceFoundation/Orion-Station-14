@@ -6,6 +6,7 @@ namespace Content.Shared._Orion.Bitrunning;
 public enum QuantumServerVisualState : byte
 {
     Unpowered,
+    Ready,
     Cooling,
     Running,
 }

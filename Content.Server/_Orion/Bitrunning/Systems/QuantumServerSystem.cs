@@ -1,13 +1,19 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
+using Content.Server._Orion.CloningAppearance.Systems;
 using Content.Server.Actions;
 using Content.Server.Clothing.Systems;
 using Content.Server.DeviceNetwork.Components;
+using Content.Server.Ghost.Roles.Components;
+using Content.Server.NPC.HTN;
+using Content.Server.Preferences.Managers;
 using Content.Server.Stunnable;
 using Content.Server.SurveillanceCamera;
+using Content.Shared._Lavaland.Mobs;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning.Prototypes;
@@ -22,15 +28,18 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.NPC.Components;
 using Content.Shared.Parallax;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
+using Content.Shared.Preferences;
 using Content.Shared.StatusEffectNew;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -65,6 +74,8 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly ByteforgeSystem _byteforge = default!;
     [Dependency] private readonly BitrunningDiskSystem _bitrunningDisk = default!;
     [Dependency] private readonly SurveillanceCameraSystem _surveillanceCamera = default!;
+    [Dependency] private readonly IServerPreferencesManager _preferences = default!;
+    [Dependency] private readonly CloningAppearanceSystem _cloningAppearance = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
@@ -181,6 +192,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.ThreatsSpawned = 0;
         server.CooldownEndTime = TimeSpan.Zero;
         server.AllowDiskModifications = domain.AllowDiskModifications;
+        server.AllowProfileLoad = domain.AllowProfileLoad;
         server.WasRandomizedRun = randomized;
         server.GrantedItemDisks.Clear();
 
@@ -197,7 +209,9 @@ public sealed class QuantumServerSystem : EntitySystem
             ? QuantumServerVisualState.Unpowered
             : serverEnt.Comp.State == BitrunningServerState.Running
                 ? QuantumServerVisualState.Running
-                : QuantumServerVisualState.Cooling;
+                : serverEnt.Comp.State == BitrunningServerState.CoolingDown
+                    ? QuantumServerVisualState.Cooling
+                    : QuantumServerVisualState.Ready;
 
         _appearance.SetData(serverEnt, BitrunningVisuals.QuantumServerState, visualState);
     }
@@ -266,7 +280,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.CacheCoordinates ??= serverEnt.Comp.GoalCoordinates;
         serverEnt.Comp.SpawnCoordinates ??= serverEnt.Comp.ExitCoordinates;
 
-        if (serverEnt.Comp.GoalCoordinates is not { } goal)
+        if (serverEnt.Comp.GoalCoordinates == null)
             return;
 
         if (!hasObjective)
@@ -282,44 +296,16 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
         }
 
-        if (serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.DeliveryCacheCrate)
-        {
-            SpawnDeliveryCacheCrates(serverEnt.Comp, goal);
-            return;
-        }
-
-        if (serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.CollectEncryptedCaches)
+        if (serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
             return;
 
-        foreach (var offset in serverEnt.Comp.CacheSpawnOffsets)
-        {
-            var spawnCoordinates = new EntityCoordinates(goal.EntityId, goal.Position + offset);
-            if (!spawnCoordinates.IsValid(EntityManager))
-                continue;
-
-            Spawn("BitrunningEncryptedCacheObjectiveSpawner", spawnCoordinates);
-        }
-    }
-
-    private void SpawnDeliveryCacheCrates(QuantumServerComponent server, EntityCoordinates fallbackCoordinates)
-    {
-        var hasMarker = false;
         var markers = EntityQueryEnumerator<BitrunningObjectiveCacheCrateSpawnMarkerComponent, TransformComponent>();
         while (markers.MoveNext(out var uid, out var marker, out var xform))
         {
-            if (xform.MapUid != server.DomainMapUid)
+            if (xform.MapUid != serverEnt.Comp.DomainMapUid)
                 continue;
 
             Spawn(marker.CratePrototype, Transform(uid).Coordinates);
-            hasMarker = true;
-        }
-
-        if (hasMarker)
-            return;
-
-        for (var i = 0; i < Math.Max(server.ObjectiveGoal, 1); i++)
-        {
-            Spawn("CrateBitrunSecure", fallbackCoordinates);
         }
     }
 
@@ -345,6 +331,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.ObjectivePoints = 0;
         serverEnt.Comp.ObjectiveCompleted = false;
         serverEnt.Comp.GrantedItemDisks.Clear();
+        serverEnt.Comp.AllowProfileLoad = true;
         serverEnt.Comp.WasRandomizedRun = false;
 
         if (immediate)
@@ -408,7 +395,7 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!_mind.TryGetMind(user, out var mindId, out var mind))
             return false;
 
-        var avatar = Spawn(server.AvatarPrototype, server.SpawnCoordinates ?? server.ExitCoordinates.Value);
+        var avatar = SpawnAvatarForRunner(server, user, server.SpawnCoordinates ?? server.ExitCoordinates.Value);
         EnsureComp<BitrunningDomainRuntimeComponent>(avatar);
         _metaData.SetEntityName(avatar, Name(user));
 
@@ -644,16 +631,14 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private string GetObjectiveInstructions(QuantumServerComponent server)
     {
-        if (!HasActiveObjective(server))
-            return Loc.GetString("bitrunning-training-instructions-none");
-
         var target = server.ObjectiveGoal.ToString();
         return server.ObjectiveType switch
         {
+            BitrunningObjectiveType.None => Loc.GetString("bitrunning-training-instructions-none"),
             BitrunningObjectiveType.CollectEncryptedCaches => Loc.GetString("bitrunning-training-instructions-collect", ("target", target)),
             BitrunningObjectiveType.DeliveryCacheCrate => Loc.GetString("bitrunning-training-instructions-delivery", ("target", target)),
             BitrunningObjectiveType.EliminateEnemies => Loc.GetString("bitrunning-training-instructions-eliminate", ("target", target)),
-            _ => Loc.GetString("bitrunning-training-instructions-collect", ("target", target)),
+            _ => Loc.GetString("bitrunning-training-instructions-none"),
         };
     }
 
@@ -792,7 +777,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private static bool HasActiveObjective(QuantumServerComponent server)
     {
-        return server.ObjectiveGoal > 0;
+        return server.ObjectiveType != BitrunningObjectiveType.None && server.ObjectiveGoal > 0;
     }
 
     private float CalculateServerRewardMultiplier(QuantumServerComponent server)
@@ -898,6 +883,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
         _actions.RemoveAction(ent.Comp.DisconnectActionEntity);
         _actions.AddAction(newAvatarUid, ref newConnection.DisconnectActionEntity, newConnection.DisconnectActionPrototype, newAvatarUid);
+        StripNonAvatarPolymorphComponents(newAvatarUid);
         EnsureComp<AvatarNavRelayComponent>(newAvatarUid).RelayEntity = newConnection.Netpod;
 
         if (newConnection.Server is { } serverUid && TryComp<QuantumServerComponent>(serverUid, out var server))
@@ -923,6 +909,71 @@ public sealed class QuantumServerSystem : EntitySystem
         RemCompDeferred<AvatarConnectionComponent>(ent);
         Dirty(newAvatarUid, newConnection);
         _bitrunningDisk.RefreshAvatarEffects(newAvatarUid);
+    }
+
+    private EntityUid SpawnAvatarForRunner(QuantumServerComponent server, EntityUid user, EntityCoordinates coordinates)
+    {
+        if (!ShouldLoadProfileAvatar(server, user) || !TryGetHumanoidProfile(user, out var profile))
+            return Spawn(server.AvatarPrototype, coordinates);
+
+        return _cloningAppearance.SpawnProfileEntity(coordinates, profile, null);
+    }
+
+    private bool TryGetHumanoidProfile(EntityUid user, out HumanoidCharacterProfile profile)
+    {
+        profile = default!;
+
+        if (!TryComp<ActorComponent>(user, out var actor))
+            return false;
+
+        if (_preferences.GetPreferences(actor.PlayerSession.UserId).SelectedCharacter is not HumanoidCharacterProfile selected)
+            return false;
+
+        profile = selected;
+        return true;
+    }
+
+    private bool ShouldLoadProfileAvatar(QuantumServerComponent server, EntityUid user)
+    {
+        return server.AllowProfileLoad && HasCompInContainerTree<BitrunningProfileDiskComponent>(user);
+    }
+
+    private bool HasCompInContainerTree<T>(EntityUid root) where T : Component
+    {
+        var queue = new Queue<EntityUid>();
+        var visited = new HashSet<EntityUid>();
+        queue.Enqueue(root);
+
+        while (queue.TryDequeue(out var current))
+        {
+            if (!visited.Add(current))
+                continue;
+
+            if (HasComp<T>(current))
+                return true;
+
+            if (!TryComp<ContainerManagerComponent>(current, out var manager))
+                continue;
+
+            foreach (var container in manager.Containers.Values)
+            {
+                foreach (var contained in container.ContainedEntities)
+                {
+                    queue.Enqueue(contained);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private void StripNonAvatarPolymorphComponents(EntityUid avatar)
+    {
+        RemComp<GhostRoleComponent>(avatar);
+        RemComp<GhostTakeoverAvailableComponent>(avatar);
+        RemComp<HTNComponent>(avatar);
+        RemComp<NpcFactionMemberComponent>(avatar);
+        RemComp<FaunaComponent>(avatar);
     }
 
     private bool CanRedirectToBitrunnerBody(AvatarConnectionComponent connection, EntityUid? originalBody)

@@ -2,20 +2,22 @@
   id: BitrunningAvatarDragonPolymorph
   configuration:
     entity: MobDragonDungeon
-    forced: true
-    inventory: Transfer
+    forced: false
+    inventory: None
     transferName: true
     transferDamage: true
     revertOnCrit: true
     revertOnDeath: true
+    allowRepeatedMorphs: false
 
 - type: polymorph
   id: BitrunningAvatarBearPolymorph
   configuration:
     entity: MobBearGoon
-    forced: true
-    inventory: Transfer
+    forced: false
+    inventory: None
     transferName: true
     transferDamage: true
     revertOnCrit: true
     revertOnDeath: true
+    allowRepeatedMorphs: false

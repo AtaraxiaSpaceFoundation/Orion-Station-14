@@ -24,6 +24,7 @@ public sealed class ByteforgeSystem : EntitySystem
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+
     private const string ServerSourcePort = "BitrunningServerSource";
     private const string ByteforgeSinkPort = "BitrunningByteforgeSink";
 
@@ -228,7 +229,7 @@ public sealed class ByteforgeSystem : EntitySystem
 
     private ProtoId<EntityTablePrototype> GetDeliveryLootTable(QuantumServerComponent server)
     {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
+        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain))
             return server.DeliveryEasyLootTable;
 
         return domain.Difficulty switch

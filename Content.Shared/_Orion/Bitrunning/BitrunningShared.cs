@@ -32,6 +32,7 @@ public enum BitrunningDifficulty : byte
 [NetSerializable, Serializable]
 public enum BitrunningObjectiveType : byte
 {
+    None,
     CollectEncryptedCaches,
     DeliveryCacheCrate,
     EliminateEnemies,

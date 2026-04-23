@@ -66,14 +66,6 @@ public sealed partial class QuantumServerComponent : Component
     [DataField]
     public TimeSpan ExitBlindnessTime = TimeSpan.FromSeconds(3.5);
 
-    [DataField]
-    public List<Vector2> CacheSpawnOffsets = new()
-    {
-        Vector2.Zero,
-        new Vector2(1f, 0f),
-        new Vector2(0f, 1f),
-    };
-
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<BitrunningVirtualDomainPrototype>)), AutoNetworkedField]
     public string? CurrentDomain;
 
@@ -99,15 +91,17 @@ public sealed partial class QuantumServerComponent : Component
 
     public int ObjectivePoints;
 
-    public int ObjectiveGoal = 10;
+    public int ObjectiveGoal;
 
     public bool ObjectiveCompleted;
 
-    public BitrunningObjectiveType ObjectiveType = BitrunningObjectiveType.CollectEncryptedCaches;
+    public BitrunningObjectiveType ObjectiveType = BitrunningObjectiveType.None;
 
     public int ThreatsSpawned;
 
     public bool AllowDiskModifications = true;
+
+    public bool AllowProfileLoad = true;
 
     public bool WasRandomizedRun;
 

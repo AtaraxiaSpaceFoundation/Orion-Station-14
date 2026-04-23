@@ -19,6 +19,7 @@
       enum.BitrunningVisuals.QuantumServerState:
         qserver_base:
           Unpowered: { state: qserver }
+          Ready: { state: qserver }
           Cooling: { state: qserver_off }
           Running: { state: qserver_on }
       enum.WiresVisuals.MaintenancePanelState:

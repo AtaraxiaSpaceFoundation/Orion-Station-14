@@ -17,6 +17,14 @@
 
 - type: entity
   parent: BaseBitrunningSupplyDisk
+  id: BitrunningExtensionPlayerAppearance
+  name: "bitrunning extension: digital appearance"
+  description: Lets your avatar load your appearance instead of the default human shell.
+  components:
+  - type: BitrunningProfileDisk
+
+- type: entity
+  parent: BaseBitrunningSupplyDisk
   id: BitrunningGearSimpleDisk
   name: "bitrunning gear: simple"
   description: Use in hand to choose a one-time gear package.
