@@ -4,7 +4,7 @@ using Content.Shared.Body.Events;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Destructible; // Goobstation
+using Content.Shared.Destructible;
 using Content.Shared.Devour.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Mobs;
@@ -93,11 +93,19 @@ public sealed class DevourSystem : EntitySystem
             return;
         }
 
+        // Orion-Start
+        if (IsIndestructibleStructure(target))
+        {
+            _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-fail-target-indestructible"), ent.Owner, ent.Owner);
+            return;
+        }
+        // Orion-End
+
         _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-structure"), ent.Owner, ent.Owner);
 
         // Orion-Start
         var canDevourStructure = new DestructionAttemptEvent();
-        RaiseLocalEvent(target, ref canDevourStructure);
+        RaiseLocalEvent(target, canDevourStructure);
         if (canDevourStructure.Cancelled)
         {
             _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-fail-target-indestructible"), ent.Owner, ent.Owner);
@@ -157,7 +165,14 @@ public sealed class DevourSystem : EntitySystem
         else // Orion-Edit
         {
 //            PredictedQueueDel(args.Args.Target.Value); // Orion-Edit
-            // Orion-Start
+
+            // Orion-Start: Protect indestructible from devour
+            if (IsIndestructibleStructure(args.Args.Target.Value))
+            {
+                _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-fail-target-indestructible"), ent.Owner, ent.Owner);
+                return;
+            }
+
             if (!_destructible.DestroyEntity(args.Args.Target.Value))
             {
                 _popupSystem.PopupClient(Loc.GetString("devour-action-popup-message-fail-target-indestructible"), ent.Owner, ent.Owner);
@@ -182,6 +197,14 @@ public sealed class DevourSystem : EntitySystem
         _audioSystem.PlayPredicted(ent.Comp.SoundDevour, ent.Owner, ent.Owner);
     }
 
+    // Orion-Start
+    private bool IsIndestructibleStructure(EntityUid target)
+    {
+        var prototypeId = MetaData(target).EntityPrototype?.ID;
+        return prototypeId != null && prototypeId.Contains("Indestructible", StringComparison.OrdinalIgnoreCase);
+    }
+    // Orion-End
+
     private void OnGibContents(Entity<DevourerComponent> ent, ref BeingGibbedEvent args)
     {
         if (ent.Comp.StomachStorageWhitelist == null)
@@ -190,7 +213,9 @@ public sealed class DevourSystem : EntitySystem
         // Goobstation start
 
         foreach (var entity in ent.Comp.Stomach.ContainedEntities)
+        {
             RemComp<PreventSelfRevivalComponent>(entity);
+        }
 
         // Goobstation end
 

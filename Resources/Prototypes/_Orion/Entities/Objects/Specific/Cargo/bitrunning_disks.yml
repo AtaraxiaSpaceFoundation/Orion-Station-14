@@ -1,8 +1,8 @@
 - type: entity
   parent: BaseItem
-  id: BaseBitrunningSupplyDisk
+  id: BaseBitrunningDisk
   abstract: true
-  name: bitrunning data disk
+  name: bitrunning disk
   description: A specialized data disk for bitrunning supply systems.
   components:
   - type: Sprite
@@ -16,15 +16,15 @@
         type: BitrunningDiskBoundUserInterface
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
-  id: BitrunningExtensionPlayerAppearance
+  parent: BaseBitrunningDisk
+  id: BitrunningExtensionPlayerAppearanceDisk
   name: "bitrunning extension: digital appearance"
   description: Lets your avatar load your appearance instead of the default human shell.
   components:
   - type: BitrunningProfileDisk
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearSimpleDisk
   name: "bitrunning gear: simple"
   description: Use in hand to choose a one-time gear package.
@@ -37,7 +37,7 @@
       bitrunning-disk-option-c4: C4
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearComplexDisk
   name: "bitrunning gear: complex"
   description: Use in hand to choose a one-time gear package.
@@ -50,7 +50,7 @@
       bitrunning-disk-option-armor-vest: ClothingOuterArmorBasic
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearAdvancedDisk
   name: "bitrunning gear: advanced"
   description: Use in hand to choose a one-time gear package.
@@ -64,7 +64,7 @@
       bitrunning-disk-option-syndicate-mini-bomb: SyndieMiniBomb
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningProgramBasicDisk
   name: "bitrunning program: basic"
   description: Use in hand to choose one program action.
@@ -76,7 +76,7 @@
       bitrunning-disk-option-lesser-heal: ActionBitrunningProgramBasicLesserHeal
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningProgramComplexDisk
   name: "bitrunning program: complex"
   description: Use in hand to choose one program action.
@@ -89,7 +89,7 @@
       bitrunning-disk-option-force-wall: ActionForceWall
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningProgramEliteDisk
   name: "bitrunning program: elite"
   description: Use in hand to choose one program action.
@@ -101,19 +101,19 @@
       bitrunning-disk-option-bear-morph: ActionBitrunningProgramEliteBear
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGimmickSportsDisk
   name: "bitrunning gimmick: sports"
   description: Will grant a selectable sports loadout case in a future update.
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGimmickDungeonCrawlingDisk
   name: "bitrunning gimmick: dungeon crawling"
   description: Will grant a selectable dungeon crawling loadout case in a future update.
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearPKAModsDisk
   name: "bitrunning gear: proto-kinetic accelerator mods"
   description: Use in hand to choose a one-time gear package.
@@ -125,7 +125,7 @@
       bitrunning-disk-option-fire-rate-modkit: PKAUpgradeFireRate
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearPremiumPKAModsDisk
   name: "bitrunning gear: premium proto-kinetic accelerator mods"
   description: Use in hand to choose a one-time gear package.
@@ -137,7 +137,7 @@
       bitrunning-disk-option-space-modkit: PKAUpgradeSpace
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearCrusherModsDisk
   name: "bitrunning gear: proto-kinetic crusher mods"
   description: Use in hand to choose a one-time gear package.
@@ -149,7 +149,7 @@
       bitrunning-disk-option-proto-kinetic-glaive: WeaponCrusherGlaive
 
 - type: entity
-  parent: BaseBitrunningSupplyDisk
+  parent: BaseBitrunningDisk
   id: BitrunningGearPremiumCrusherModsDisk
   name: "bitrunning gear: premium proto-kinetic crusher mods"
   description: Use in hand to choose a one-time gear package.
