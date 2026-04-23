@@ -103,6 +103,14 @@
   - type: DeviceLinkSink
     ports:
     - BitrunningNetpodSink
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SurveillanceCameraEntertainment
+    transmitFrequencyId: SurveillanceCamera
+  - type: SurveillanceCamera
+    networkSet: true
+    nameSet: true
+    mobile: true
   - type: Netpod
     allowedLoadout:
     - ShaftMinerGear

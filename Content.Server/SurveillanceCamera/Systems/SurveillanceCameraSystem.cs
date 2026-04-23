@@ -46,11 +46,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Emp;
+using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
@@ -59,7 +61,6 @@ using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.SurveillanceCamera;
-using Content.Shared.Tag;
 using Content.Shared.Verbs;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -214,12 +215,14 @@ public sealed class SurveillanceCameraSystem : EntitySystem
                             sourceUid = relayUid;
                             transformComponent = relayTransform;
                         }
+
+                        var subscribeTarget = ResolveSubscribeTarget(uid);
                         // Orion-End
 
                         // Decoupling the bodycam/nopro from the wearer, otherwise we'll just keep seeing the last known owner move around on the map
                         payload[CameraNetEntity] = component.Mobile
-                            ? (GetNetEntity(uid), GetNetCoordinates(_transformSystem.ToCoordinates(sourceUid, _transformSystem.ToMapCoordinates(transformComponent.Coordinates)))) // Orion-Edit
-                            : (GetNetEntity(uid), GetNetCoordinates(transformComponent.Coordinates));
+                            ? (GetNetEntity(subscribeTarget), GetNetCoordinates(_transformSystem.ToCoordinates(sourceUid, _transformSystem.ToMapCoordinates(transformComponent.Coordinates)))) // Orion-Edit
+                            : (GetNetEntity(subscribeTarget), GetNetCoordinates(transformComponent.Coordinates)); // Orion-Edit
                         payload[CameraMobile] = component.Mobile;
                     }
                     // Goobstation end
@@ -406,8 +409,11 @@ public sealed class SurveillanceCameraSystem : EntitySystem
             return;
         }
 
-        _viewSubscriberSystem.AddViewSubscriber(camera, actor.PlayerSession);
+        // Orion-Edit-Start
+        var subscribeTarget = ResolveSubscribeTarget(camera);
+        _viewSubscriberSystem.AddViewSubscriber(subscribeTarget, actor.PlayerSession);
         component.ActiveViewers.Add(player);
+        // Orion-Edit-End
 
         if (monitor != null)
         {
@@ -466,8 +472,9 @@ public sealed class SurveillanceCameraSystem : EntitySystem
         if (!Resolve(camera, ref component))
             return;
 
+        var subscribeTarget = ResolveSubscribeTarget(camera); // Orion
         if (Resolve(player, ref actor))
-            _viewSubscriberSystem.RemoveViewSubscriber(camera, actor.PlayerSession);
+            _viewSubscriberSystem.RemoveViewSubscriber(subscribeTarget, actor.PlayerSession); // Orion-Edit
 
         component.ActiveViewers.Remove(player);
 
@@ -478,6 +485,37 @@ public sealed class SurveillanceCameraSystem : EntitySystem
 
         UpdateVisuals(camera, component);
     }
+
+    // Orion-Start
+    public void ClearActiveViewers(EntityUid camera, SurveillanceCameraComponent? component = null)
+    {
+        if (!Resolve(camera, ref component))
+            return;
+
+        var subscribeTarget = ResolveSubscribeTarget(camera);
+        foreach (var viewer in component.ActiveViewers.ToArray())
+        {
+            if (!TryComp<ActorComponent>(viewer, out var actor))
+                continue;
+
+            _viewSubscriberSystem.RemoveViewSubscriber(subscribeTarget, actor.PlayerSession);
+        }
+
+        component.ActiveViewers.Clear();
+        UpdateVisuals(camera, component);
+    }
+
+    private EntityUid ResolveSubscribeTarget(EntityUid camera)
+    {
+        if (!TryComp<NetpodComponent>(camera, out var pod))
+            return camera;
+
+        if (pod.Avatar is not { } avatar || !Exists(avatar))
+            return camera;
+
+        return avatar;
+    }
+    // Orion-End
 
     public void RemoveActiveViewers(EntityUid camera, HashSet<EntityUid> players, EntityUid? monitor = null, SurveillanceCameraComponent? component = null)
     {

@@ -14,6 +14,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -44,6 +45,7 @@ public sealed class NetpodSystem : EntitySystem
         SubscribeLocalEvent<NetpodComponent, EntityTerminatingEvent>(OnDestroyed);
         SubscribeLocalEvent<NetpodComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<NetpodComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
+        SubscribeLocalEvent<NetpodComponent, ContainerIsRemovingAttemptEvent>(OnOccupantRemoveAttempt);
         SubscribeLocalEvent<NetpodComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<NetpodComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<NetpodComponent, NetpodSelectLoadoutMessage>(OnSelectLoadout);
@@ -169,6 +171,22 @@ public sealed class NetpodSystem : EntitySystem
 
             UpdateVisuals(ent);
         });
+    }
+
+    private void OnOccupantRemoveAttempt(Entity<NetpodComponent> ent, ref ContainerIsRemovingAttemptEvent args)
+    {
+        if (args.Container.ID != "netpod-body")
+            return;
+
+        if (!IsAvatarSessionActive(ent.Comp.Avatar))
+            return;
+
+        args.Cancel();
+    }
+
+    private bool IsAvatarSessionActive(EntityUid? avatarUid)
+    {
+        return avatarUid is { } uid && Exists(uid) && HasComp<ActorComponent>(uid);
     }
 
     private void OnUiOpened(Entity<NetpodComponent> ent, ref BoundUIOpenedEvent args)

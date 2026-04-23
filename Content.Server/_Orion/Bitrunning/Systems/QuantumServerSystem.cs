@@ -23,11 +23,13 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Parallax;
+using Content.Shared.Polymorph;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.StatusEffectNew;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
@@ -62,6 +64,7 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly BitrunningPointsSystem _bitrunningPoints = default!;
     [Dependency] private readonly ByteforgeSystem _byteforge = default!;
     [Dependency] private readonly BitrunningDiskSystem _bitrunningDisk = default!;
+    [Dependency] private readonly SurveillanceCameraSystem _surveillanceCamera = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
@@ -79,6 +82,7 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<AvatarConnectionComponent, BitrunningDisconnectAvatarActionEvent>(OnAvatarDisconnectAction);
         SubscribeLocalEvent<AvatarConnectionComponent, SuicideGhostEvent>(OnAvatarSuicideGhost);
         SubscribeLocalEvent<AvatarConnectionComponent, SuicideEvent>(OnAvatarSuicide);
+        SubscribeLocalEvent<AvatarConnectionComponent, PolymorphedEvent>(OnAvatarPolymorphed);
     }
 
     private void OnServerInit(Entity<QuantumServerComponent> ent, ref ComponentInit args)
@@ -418,7 +422,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
         _mind.TransferTo(mindId, avatar, mind: mind);
         TryApplyAvatarOutfit(avatar, server, pod);
-        SetAvatarBroadcastEnabled(avatar, server, server.BroadcastEnabled);
+        SetAvatarBroadcastEnabled((avatar, connection), server, server.BroadcastEnabled);
         _actions.AddAction(avatar, ref connection.DisconnectActionEntity, connection.DisconnectActionPrototype, avatar);
         var objectivePopupText = server.ObjectiveCompleted
             ? Loc.GetString("bitrunning-objective-completed")
@@ -479,7 +483,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private bool GetDeleteOnDisconnect(QuantumServerComponent server)
     {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
+        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain))
             return false;
 
         return domain.DeleteAvatarOnDisconnect;
@@ -513,24 +517,28 @@ public sealed class QuantumServerSystem : EntitySystem
 
     }
 
-    private void SetAvatarBroadcastEnabled(EntityUid avatar, QuantumServerComponent server, bool enabled)
+    private void SetAvatarBroadcastEnabled(Entity<AvatarConnectionComponent> avatar, QuantumServerComponent server, bool enabled)
     {
+        var cameraEntity = avatar.Comp.Netpod is { } podUid && Exists(podUid)
+            ? podUid
+            : avatar.Owner;
+
         if (!enabled)
         {
-            RemCompDeferred<SurveillanceCameraComponent>(avatar);
-            RemCompDeferred<DeviceNetworkComponent>(avatar);
-            RemCompDeferred<WirelessNetworkComponent>(avatar);
+            RemCompDeferred<SurveillanceCameraComponent>(cameraEntity);
+            RemCompDeferred<DeviceNetworkComponent>(cameraEntity);
+            RemCompDeferred<WirelessNetworkComponent>(cameraEntity);
             return;
         }
 
-        EnsureComp<WirelessNetworkComponent>(avatar).Range = server.BroadcastWirelessRange;
+        EnsureComp<WirelessNetworkComponent>(cameraEntity).Range = server.BroadcastWirelessRange;
 
-        var device = EnsureComp<DeviceNetworkComponent>(avatar);
+        var device = EnsureComp<DeviceNetworkComponent>(cameraEntity);
         device.NetIdEnum = DeviceNetworkComponent.DeviceNetIdDefaults.Wireless;
         device.ReceiveFrequencyId = "SurveillanceCameraEntertainment";
         device.TransmitFrequencyId = "SurveillanceCamera";
 
-        EnsureComp<SurveillanceCameraComponent>(avatar);
+        EnsureComp<SurveillanceCameraComponent>(cameraEntity);
     }
 
     public void DisconnectAvatar(EntityUid avatarUid, bool harmful)
@@ -550,6 +558,8 @@ public sealed class QuantumServerSystem : EntitySystem
 
         if (podUid != null && TryComp<NetpodComponent>(podUid.Value, out var pod))
         {
+            _surveillanceCamera.ClearActiveViewers(podUid.Value);
+
             pod.Occupant = TryComp<NetpodContainerComponent>(podUid.Value, out var containerComp)
                 ? containerComp.BodyContainer.ContainedEntity
                 : null;
@@ -559,10 +569,12 @@ public sealed class QuantumServerSystem : EntitySystem
 
             Dirty(podUid.Value, pod);
             _netpod.UpdateVisuals((podUid.Value, pod));
-            _netpod.EjectOccupant(podUid.Value);
+
+            if (!canRedirectToBitrunner)
+                _netpod.EjectOccupant(podUid.Value);
         }
 
-        if (!harmful && canRedirectToBitrunner && originalBody is { } body && serverUid is { } currentServerUid && TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
+        if (canRedirectToBitrunner && originalBody is { } body && serverUid is { } currentServerUid && TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
         {
             _stun.TryAddParalyzeDuration(body, currentServer.ExitParalyzeTime);
 
@@ -679,18 +691,15 @@ public sealed class QuantumServerSystem : EntitySystem
             ("server", serverReward),
             ("np", bitrunningReward));
 
-        if (serverEnt.Comp.BroadcastEnabled)
+        foreach (var avatar in serverEnt.Comp.Occupants)
         {
-            foreach (var avatar in serverEnt.Comp.Occupants)
-            {
-                if (Exists(avatar))
-                    _popup.PopupEntity(objectiveCompletedText, serverEnt.Owner, avatar, PopupType.LargeCaution);
-            }
+            if (!Exists(avatar))
+                continue;
+
+            _popup.PopupEntity(objectiveCompletedText, avatar, avatar, PopupType.LargeCaution);
         }
-        else if (serverEnt.Comp.Occupants.FirstOrDefault() is { } avatar)
-        {
-            _popup.PopupEntity(objectiveCompletedText, serverEnt.Owner, avatar, PopupType.LargeCaution);
-        }
+
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/beep.ogg"), serverEnt.Owner);
 
         if (ShouldAutoStopOnObjectiveComplete(serverEnt.Comp))
             StopDomain(serverEnt);
@@ -727,8 +736,7 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         domain = null;
         return server.CurrentDomain != null &&
-               _domains.TryGetDomain(server.CurrentDomain, out domain) &&
-               domain != null;
+               _domains.TryGetDomain(server.CurrentDomain, out domain);
     }
 
     private int GetDomainServerReward(QuantumServerComponent server)
@@ -765,7 +773,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private bool ShouldAutoStopOnObjectiveComplete(QuantumServerComponent server)
     {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
+        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain))
             return false;
 
         return domain.AutoStopOnObjectiveComplete;
@@ -773,7 +781,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private bool ShouldSpawnCompletionRewardCache(QuantumServerComponent server)
     {
-        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain) || domain == null)
+        if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain))
             return true;
 
         return domain.SpawnRewardCacheOnObjectiveComplete;
@@ -868,6 +876,50 @@ public sealed class QuantumServerSystem : EntitySystem
         args.Handled = true;
     }
 
+    private void OnAvatarPolymorphed(Entity<AvatarConnectionComponent> ent, ref PolymorphedEvent args)
+    {
+        if (args.IsRevert || args.OldEntity != ent.Owner)
+            return;
+
+        var newAvatarUid = args.NewEntity;
+        if (newAvatarUid == EntityUid.Invalid || Deleted(newAvatarUid))
+            return;
+
+        var newConnection = EnsureComp<AvatarConnectionComponent>(newAvatarUid);
+        newConnection.OriginalBody = ent.Comp.OriginalBody;
+        newConnection.Server = ent.Comp.Server;
+        newConnection.Netpod = ent.Comp.Netpod;
+        newConnection.NoHit = ent.Comp.NoHit;
+        newConnection.DisconnectActionPrototype = ent.Comp.DisconnectActionPrototype;
+        newConnection.DeleteOnDisconnect = ent.Comp.DeleteOnDisconnect;
+
+        _actions.RemoveAction(ent.Comp.DisconnectActionEntity);
+        _actions.AddAction(newAvatarUid, ref newConnection.DisconnectActionEntity, newConnection.DisconnectActionPrototype, newAvatarUid);
+        EnsureComp<AvatarNavRelayComponent>(newAvatarUid).RelayEntity = newConnection.Netpod;
+
+        if (newConnection.Server is { } serverUid && TryComp<QuantumServerComponent>(serverUid, out var server))
+        {
+            server.ActiveConnections.Remove(ent.Owner);
+            server.ActiveConnections.Add(newAvatarUid);
+            server.Occupants.Remove(ent.Owner);
+            server.Occupants.Add(newAvatarUid);
+            Dirty(serverUid, server);
+        }
+
+        if (newConnection.Netpod is { } podUid && TryComp<NetpodComponent>(podUid, out var pod))
+        {
+            if (pod.Avatar == ent.Owner)
+                pod.Avatar = newAvatarUid;
+
+            Dirty(podUid, pod);
+            _netpod.UpdateVisuals((podUid, pod));
+        }
+
+        RemCompDeferred<AvatarConnectionComponent>(ent);
+        Dirty(newAvatarUid, newConnection);
+        _bitrunningDisk.RefreshAvatarEffects(newAvatarUid);
+    }
+
     private bool CanRedirectToBitrunnerBody(AvatarConnectionComponent connection, EntityUid? originalBody)
     {
         if (originalBody is not { } bodyUid || connection.Netpod is not { } podUid)
@@ -889,8 +941,10 @@ public sealed class QuantumServerSystem : EntitySystem
 
         foreach (var avatar in server.ActiveConnections)
         {
-            if (Exists(avatar))
-                SetAvatarBroadcastEnabled(avatar, server, enabled);
+            if (!TryComp<AvatarConnectionComponent>(avatar, out var connection))
+                continue;
+
+            SetAvatarBroadcastEnabled((avatar, connection), server, enabled);
         }
     }
 
