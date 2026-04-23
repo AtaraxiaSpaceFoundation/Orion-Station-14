@@ -866,7 +866,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void OnAvatarPolymorphed(Entity<AvatarConnectionComponent> ent, ref PolymorphedEvent args)
     {
-        if (args.IsRevert || args.OldEntity != ent.Owner)
+        if (args.OldEntity != ent.Owner)
             return;
 
         var newAvatarUid = args.NewEntity;
