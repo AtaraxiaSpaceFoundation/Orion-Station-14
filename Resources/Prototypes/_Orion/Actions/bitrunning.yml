@@ -22,7 +22,7 @@
     itemIconStyle: BigAction
     icon:
       sprite: Objects/Consumable/Food/ingredients.rsi
-      state: cheese
+      state: cheesewheel
   - type: InstantAction
     event: !type:BitrunningSpawnCheeseActionEvent
 
@@ -36,8 +36,8 @@
     useDelay: 20
     itemIconStyle: BigAction
     icon:
-      sprite: Interface/Actions/actions_revenant.rsi
-      state: overcharge
+      sprite: Interface/Actions/actions_borg.rsi
+      state: treatment-module
   - type: InstantAction
     event: !type:BitrunningLesserHealActionEvent
 
@@ -51,8 +51,8 @@
     useDelay: 8
     itemIconStyle: BigAction
     icon:
-      sprite: Interface/Actions/actions_dragon.rsi
-      state: dragon_breath
+      sprite: Mobs/Aliens/Carps/space.rsi
+      state: icon
   - type: InstantAction
     event: !type:PolymorphSpellEvent
       protoId: BitrunningAvatarDragonPolymorph
@@ -68,8 +68,8 @@
     useDelay: 8
     itemIconStyle: BigAction
     icon:
-      sprite: Interface/Actions/actions_xeno.rsi
-      state: xeno_rest
+      sprite: Mobs/Animals/bear.rsi
+      state: bear
   - type: InstantAction
     event: !type:PolymorphSpellEvent
       protoId: BitrunningAvatarBearPolymorph

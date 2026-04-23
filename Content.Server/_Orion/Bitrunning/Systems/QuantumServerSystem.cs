@@ -419,6 +419,7 @@ public sealed class QuantumServerSystem : EntitySystem
         connection.NoHit = true;
         connection.DeleteOnDisconnect = GetDeleteOnDisconnect(server);
         EnsureComp<AvatarNavRelayComponent>(avatar).RelayEntity = podUid;
+        EnsureComp<AvatarNavRelayComponent>(podUid).RelayEntity = avatar;
 
         _mind.TransferTo(mindId, avatar, mind: mind);
         TryApplyAvatarOutfit(avatar, server, pod);
@@ -464,6 +465,7 @@ public sealed class QuantumServerSystem : EntitySystem
         _mind.TransferTo(mindId, avatarUid, mind: mind);
         _actions.AddAction(avatarUid, ref connection.DisconnectActionEntity, connection.DisconnectActionPrototype, avatarUid);
         EnsureComp<AvatarNavRelayComponent>(avatarUid).RelayEntity = pod.Owner;
+        EnsureComp<AvatarNavRelayComponent>(pod.Owner).RelayEntity = avatarUid;
 
         if (connection.Server != null && TryComp<QuantumServerComponent>(connection.Server.Value, out var server))
         {
@@ -559,6 +561,7 @@ public sealed class QuantumServerSystem : EntitySystem
         if (podUid != null && TryComp<NetpodComponent>(podUid.Value, out var pod))
         {
             _surveillanceCamera.ClearActiveViewers(podUid.Value);
+            EnsureComp<AvatarNavRelayComponent>(podUid.Value).RelayEntity = null;
 
             pod.Occupant = TryComp<NetpodContainerComponent>(podUid.Value, out var containerComp)
                 ? containerComp.BodyContainer.ContainedEntity
@@ -910,6 +913,8 @@ public sealed class QuantumServerSystem : EntitySystem
         {
             if (pod.Avatar == ent.Owner)
                 pod.Avatar = newAvatarUid;
+
+            EnsureComp<AvatarNavRelayComponent>(podUid).RelayEntity = newAvatarUid;
 
             Dirty(podUid, pod);
             _netpod.UpdateVisuals((podUid, pod));

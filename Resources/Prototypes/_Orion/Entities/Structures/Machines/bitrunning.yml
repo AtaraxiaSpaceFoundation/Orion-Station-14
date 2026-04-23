@@ -107,6 +107,7 @@
     deviceNetId: Wireless
     receiveFrequencyId: SurveillanceCameraEntertainment
     transmitFrequencyId: SurveillanceCamera
+  - type: Eye # Fallback
   - type: SurveillanceCamera
     networkSet: true
     nameSet: true

@@ -75,6 +75,7 @@ using System.Runtime.InteropServices;
 using Content.Goobstation.Common.SurveillanceCamera;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.DeviceNetwork.Systems;
+using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
@@ -681,9 +682,15 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
         var activeCamera = monitor.ActiveCamera;
         if (activeCamera is { } activeCameraUid)
         {
-            var activeForUi = activeCameraUid;
+            EntityUid? activeForUi = activeCameraUid;
             if (TryComp<AvatarNavRelayComponent>(activeCameraUid, out var relay) && relay.RelayEntity is { } relayUid && Exists(relayUid))
                 activeForUi = relayUid;
+            else if (TryComp<NetpodComponent>(activeCameraUid, out var pod))
+            {
+                activeForUi = pod.Avatar is { } avatarUid && Exists(avatarUid)
+                    ? avatarUid
+                    : null;
+            }
 
             activeCamera = activeForUi;
         }
