@@ -683,9 +683,14 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
         if (activeCamera is { } activeCameraUid)
         {
             EntityUid? activeForUi = activeCameraUid;
-            if (TryComp<AvatarNavRelayComponent>(activeCameraUid, out var relay) && relay.RelayEntity is { } relayUid && Exists(relayUid))
-                activeForUi = relayUid;
-            else if (TryComp<NetpodComponent>(activeCameraUid, out var pod))
+            if (TryComp<AvatarNavRelayComponent>(activeCameraUid, out var relay))
+            {
+                activeForUi = relay.RelayEntity is { } relayUid && Exists(relayUid)
+                    ? relayUid
+                    : null;
+            }
+
+            if (activeForUi == null && TryComp<NetpodComponent>(activeCameraUid, out var pod))
             {
                 activeForUi = pod.Avatar is { } avatarUid && Exists(avatarUid)
                     ? avatarUid

@@ -21,9 +21,10 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
     public Action? OnRefresh;
 
     private QuantumConsoleBoundUiState? _lastState;
-    private string? _selectedDifficulty;
+    private BitrunningDifficulty? _selectedDifficulty;
     private string? _expandedDomainId;
     private bool _updatingToggle;
+    private readonly Dictionary<string, DomainRowWidgets> _domainRows = new();
 
     public QuantumConsoleWindow()
     {
@@ -58,7 +59,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         ScannerValue.Text = Loc.GetString("bitrunning-ui-scanner-inline", ("scanner", state.ScannerTier.ToString(CultureInfo.InvariantCulture)));
         StateValue.Text = GetStateText(state);
 
-        CurrentDomainValue.Text = ResolveCurrentDomainName(state);
+        CurrentDomainValue.Text = ResolveCurrentDomainName(state.CurrentDomain, state.Domains);
         CurrentDomainValue.FontColorOverride = state.CurrentDomain == null ? Color.Silver : Color.AliceBlue;
 
         _updatingToggle = true;
@@ -112,14 +113,41 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
     private void RebuildDomainList(QuantumConsoleBoundUiState state)
     {
-        DomainList.RemoveAllChildren();
+        var seenDomains = new HashSet<string>();
 
         foreach (var domain in state.Domains)
         {
-            if (_selectedDifficulty != null && !domain.Difficulty.ToString().Equals(_selectedDifficulty, StringComparison.OrdinalIgnoreCase))
+            seenDomains.Add(domain.Id);
+
+            if (!_domainRows.TryGetValue(domain.Id, out var row))
+            {
+                row = CreateDomainRow(domain.Id);
+                _domainRows[domain.Id] = row;
+            }
+
+            UpdateDomainRow(row, domain, state);
+
+            if (_selectedDifficulty != null && domain.Difficulty != _selectedDifficulty.Value)
+            {
+                if (row.Holder.Parent == DomainList)
+                    DomainList.RemoveChild(row.Holder);
+
+                continue;
+            }
+
+            if (row.Holder.Parent != DomainList)
+                DomainList.AddChild(row.Holder);
+        }
+
+        foreach (var (domainId, row) in _domainRows.ToArray())
+        {
+            if (seenDomains.Contains(domainId))
                 continue;
 
-            DomainList.AddChild(CreateDomainRow(domain, state));
+            if (row.Holder.Parent == DomainList)
+                DomainList.RemoveChild(row.Holder);
+
+            _domainRows.Remove(domainId);
         }
 
         if (_expandedDomainId != null && state.Domains.All(d => d.Id != _expandedDomainId))
@@ -146,7 +174,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         }
     }
 
-    private Control CreateDomainRow(BitrunningDomainListing domain, QuantumConsoleBoundUiState state)
+    private DomainRowWidgets CreateDomainRow(string domainId)
     {
         var holder = new BoxContainer
         {
@@ -161,56 +189,30 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             MinSize = new Vector2(0f, 23f),
         };
 
-        var serverReady = state.State == BitrunningServerState.Ready;
-        var enoughServerPoints = state.ServerPoints >= domain.Cost;
-        var canDeploy = state.Connected && serverReady && enoughServerPoints;
-        var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.OrdinalIgnoreCase);
-
-        var expanded = _expandedDomainId == domain.Id;
-        var domainTitle = expanded
-            ? $"▾ {domain.Name}"
-            : $"▸ {domain.Name}";
-
         var domainButton = new Button
         {
             HorizontalExpand = true,
-            Text = domainTitle,
             TextAlign = Label.AlignMode.Left,
             MinSize = new Vector2(0f, 23f),
-            ModulateSelfOverride = GetDifficultyColor(domain.Difficulty),
         };
         domainButton.OnPressed += _ =>
         {
-            _expandedDomainId = _expandedDomainId == domain.Id ? null : domain.Id;
+            _expandedDomainId = _expandedDomainId == domainId ? null : domainId;
 
             if (_lastState != null)
                 RebuildDomainList(_lastState);
         };
 
-        var deployText = isCurrent && state.State == BitrunningServerState.Running
-            ? Loc.GetString("bitrunning-ui-button-deployed")
-            : Loc.GetString("bitrunning-ui-button-deploy");
-
         var deployButton = new Button
         {
-            Text = deployText,
             MinSize = new Vector2(90f, 23f),
-            Disabled = !canDeploy,
-            ToolTip = canDeploy
-                ? null
-                : !serverReady
-                    ? Loc.GetString("bitrunning-ui-cannot-deploy-server-busy")
-                    : Loc.GetString("bitrunning-ui-cannot-deploy-not-enough-server-points"),
         };
-        deployButton.OnPressed += _ => OnLoadDomain?.Invoke(domain.Id);
+        deployButton.OnPressed += _ => OnLoadDomain?.Invoke(domainId);
 
         row.AddChild(domainButton);
         row.AddChild(deployButton);
 
         holder.AddChild(row);
-
-        if (!expanded)
-            return holder;
 
         var description = new RichTextLabel
         {
@@ -218,10 +220,36 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
             Margin = new Thickness(8, 0, 4, 3),
             HorizontalExpand = true,
         };
-        description.SetMessage(domain.Description);
         holder.AddChild(description);
 
-        return holder;
+        return new DomainRowWidgets(holder, domainButton, deployButton, description);
+    }
+
+    private void UpdateDomainRow(DomainRowWidgets row, BitrunningDomainListing domain, QuantumConsoleBoundUiState state)
+    {
+        var serverReady = state.State == BitrunningServerState.Ready;
+        var enoughServerPoints = state.ServerPoints >= domain.Cost;
+        var canDeploy = state.Connected && serverReady && enoughServerPoints;
+        var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.OrdinalIgnoreCase);
+        var expanded = _expandedDomainId == domain.Id;
+
+        row.DomainButton.Text = expanded
+            ? $"▾ {domain.Name}"
+            : $"▸ {domain.Name}";
+        row.DomainButton.ModulateSelfOverride = GetDifficultyColor(domain.Difficulty);
+
+        row.DeployButton.Text = isCurrent && state.State == BitrunningServerState.Running
+            ? Loc.GetString("bitrunning-ui-button-deployed")
+            : Loc.GetString("bitrunning-ui-button-deploy");
+        row.DeployButton.Disabled = !canDeploy;
+        row.DeployButton.ToolTip = canDeploy
+            ? null
+            : !serverReady
+                ? Loc.GetString("bitrunning-ui-cannot-deploy-server-busy")
+                : Loc.GetString("bitrunning-ui-cannot-deploy-not-enough-server-points");
+
+        row.Description.SetMessage(domain.Description);
+        row.Description.Visible = expanded;
     }
 
     private static Control CreateClientRow(BitrunningOccupantListing client)
@@ -313,18 +341,18 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         return panel;
     }
 
-    private static string ResolveCurrentDomainName(QuantumConsoleBoundUiState state)
+    private static string ResolveCurrentDomainName(string? currentDomainId, IReadOnlyList<BitrunningDomainListing> domains)
     {
-        if (state.CurrentDomain == null)
+        if (currentDomainId == null)
             return Loc.GetString("bitrunning-ui-current-domain-none");
 
-        foreach (var domain in state.Domains)
+        var domainNames = new Dictionary<string, string>();
+        foreach (var domain in domains)
         {
-            if (domain.Id == state.CurrentDomain)
-                return domain.Name;
+            domainNames[domain.Id] = domain.Name;
         }
 
-        return state.CurrentDomain;
+        return domainNames.GetValueOrDefault(currentDomainId, currentDomainId);
     }
 
     private void ConfigureDifficultyTabs()
@@ -334,13 +362,27 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         DifficultyMedium.Text = Loc.GetString("bitrunning-ui-difficulty-medium");
         DifficultyHard.Text = Loc.GetString("bitrunning-ui-difficulty-hard-skull");
 
-        ConfigureDifficultyButton(DifficultyPeaceful, "Peaceful", DifficultyColor.Peaceful);
-        ConfigureDifficultyButton(DifficultyEasy, "Easy", DifficultyColor.Easy);
-        ConfigureDifficultyButton(DifficultyMedium, "Medium", DifficultyColor.Medium);
-        ConfigureDifficultyButton(DifficultyHard, "Hard", DifficultyColor.Hard);
+        ConfigureClearDifficultyButton(DifficultyPeaceful, DifficultyColor.Peaceful);
+        ConfigureDifficultyButton(DifficultyEasy, BitrunningDifficulty.Easy, DifficultyColor.Easy);
+        ConfigureDifficultyButton(DifficultyMedium, BitrunningDifficulty.Medium, DifficultyColor.Medium);
+        ConfigureDifficultyButton(DifficultyHard, BitrunningDifficulty.Hard, DifficultyColor.Hard);
     }
 
-    private void ConfigureDifficultyButton(Button button, string difficulty, Color color)
+    private void ConfigureClearDifficultyButton(Button button, Color color)
+    {
+        button.ModulateSelfOverride = color;
+        button.OnPressed += _ =>
+        {
+            _selectedDifficulty = null;
+
+            if (_lastState != null)
+                RebuildDomainList(_lastState);
+
+            UpdateDifficultySelectionVisuals();
+        };
+    }
+
+    private void ConfigureDifficultyButton(Button button, BitrunningDifficulty difficulty, Color color)
     {
         button.ModulateSelfOverride = color;
         button.OnPressed += _ =>
@@ -356,25 +398,22 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
     private void UpdateDifficultySelectionVisuals()
     {
-        ApplyDifficultyState(DifficultyPeaceful, "Peaceful");
-        ApplyDifficultyState(DifficultyEasy, "Easy");
-        ApplyDifficultyState(DifficultyMedium, "Medium");
-        ApplyDifficultyState(DifficultyHard, "Hard");
+        ApplyDifficultyState(DifficultyEasy, BitrunningDifficulty.Easy);
+        ApplyDifficultyState(DifficultyMedium, BitrunningDifficulty.Medium);
+        ApplyDifficultyState(DifficultyHard, BitrunningDifficulty.Hard);
     }
 
-    private void ApplyDifficultyState(Button button, string difficulty)
+    private void ApplyDifficultyState(Button button, BitrunningDifficulty? difficulty)
     {
         var baseText = difficulty switch
         {
-            "Peaceful" => Loc.GetString("bitrunning-ui-difficulty-peaceful"),
-            "Easy" => Loc.GetString("bitrunning-ui-difficulty-easy"),
-            "Medium" => Loc.GetString("bitrunning-ui-difficulty-medium"),
-            "Hard" => Loc.GetString("bitrunning-ui-difficulty-hard-skull"),
-            "Extreme" => Loc.GetString("bitrunning-ui-difficulty-extreme"),
-            _ => difficulty,
+            BitrunningDifficulty.Easy => Loc.GetString("bitrunning-ui-difficulty-easy"),
+            BitrunningDifficulty.Medium => Loc.GetString("bitrunning-ui-difficulty-medium"),
+            BitrunningDifficulty.Hard => Loc.GetString("bitrunning-ui-difficulty-hard-skull"),
+            BitrunningDifficulty.Extreme => Loc.GetString("bitrunning-ui-difficulty-extreme"),
         };
 
-        var selected = _selectedDifficulty != null && _selectedDifficulty.Equals(difficulty, StringComparison.OrdinalIgnoreCase);
+        var selected = _selectedDifficulty == difficulty;
         button.Text = selected
             ? Loc.GetString("bitrunning-ui-difficulty-selected", ("name", baseText))
             : baseText;
@@ -434,5 +473,21 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         public static readonly Color Easy = Color.FromHex("#d4b300");
         public static readonly Color Medium = Color.FromHex("#d78500");
         public static readonly Color Hard = Color.FromHex("#d12a2a");
+    }
+
+    private sealed class DomainRowWidgets
+    {
+        public BoxContainer Holder { get; }
+        public Button DomainButton { get; }
+        public Button DeployButton { get; }
+        public RichTextLabel Description { get; }
+
+        public DomainRowWidgets(BoxContainer holder, Button domainButton, Button deployButton, RichTextLabel description)
+        {
+            Holder = holder;
+            DomainButton = domainButton;
+            DeployButton = deployButton;
+            Description = description;
+        }
     }
 }

@@ -30,11 +30,14 @@ public sealed class BitrunningDiskSystem : EntitySystem
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly ILocalizationManager _loc = default!;
 
+    private readonly Dictionary<EntityUid, EntityUid> _avatarByBody = new();
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<AvatarConnectionComponent, ComponentStartup>(OnAvatarStartup);
+        SubscribeLocalEvent<AvatarConnectionComponent, ComponentShutdown>(OnAvatarShutdown);
 
         SubscribeLocalEvent<BitrunningAbilityDiskComponent, EntInsertedIntoContainerMessage>(OnDiskInsertedIntoContainer);
         SubscribeLocalEvent<BitrunningAbilityDiskComponent, EntRemovedFromContainerMessage>(OnDiskRemovedFromContainer);
@@ -59,7 +62,16 @@ public sealed class BitrunningDiskSystem : EntitySystem
 
     private void OnAvatarStartup(Entity<AvatarConnectionComponent> ent, ref ComponentStartup args)
     {
+        if (ent.Comp.OriginalBody is { } bodyUid)
+            _avatarByBody[bodyUid] = ent.Owner;
+
         UpdateAvatarEffects(ent);
+    }
+
+    private void OnAvatarShutdown(Entity<AvatarConnectionComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.OriginalBody is { } bodyUid && _avatarByBody.TryGetValue(bodyUid, out var avatarUid) && avatarUid == ent.Owner)
+            _avatarByBody.Remove(bodyUid);
     }
 
     private void OnDiskInsertedIntoContainer(Entity<BitrunningAbilityDiskComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -135,7 +147,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
             return;
         }
 
-        var selectedActionDisks = FindSelectedDisks(bitrunnerUid, BitrunningDiskGrantMode.Action);
+        FindSelectedDisks(bitrunnerUid, out var selectedActionDisks, out var selectedItemDisks);
 
         foreach (var (diskUid, actionUid) in holder.ActionsByDisk.ToArray())
         {
@@ -156,7 +168,6 @@ public sealed class BitrunningDiskSystem : EntitySystem
             holder.ActionsByDisk[diskUid] = actionUid;
         }
 
-        var selectedItemDisks = FindSelectedDisks(bitrunnerUid, BitrunningDiskGrantMode.Item);
         TryGrantDomainItems((avatar.Owner, avatar.Comp), selectedItemDisks);
     }
 
@@ -170,9 +181,10 @@ public sealed class BitrunningDiskSystem : EntitySystem
         holder.ActionsByDisk.Clear();
     }
 
-    private Dictionary<EntityUid, EntProtoId> FindSelectedDisks(EntityUid bitrunnerUid, BitrunningDiskGrantMode mode)
+    private void FindSelectedDisks(EntityUid bitrunnerUid, out Dictionary<EntityUid, EntProtoId> actionDisks, out Dictionary<EntityUid, EntProtoId> itemDisks)
     {
-        var found = new Dictionary<EntityUid, EntProtoId>();
+        actionDisks = new Dictionary<EntityUid, EntProtoId>();
+        itemDisks = new Dictionary<EntityUid, EntProtoId>();
         var visited = new HashSet<EntityUid>();
         var queue = new Queue<EntityUid>();
         queue.Enqueue(bitrunnerUid);
@@ -182,12 +194,17 @@ public sealed class BitrunningDiskSystem : EntitySystem
             if (!visited.Add(current))
                 continue;
 
-            if (TryComp<BitrunningAbilityDiskComponent>(current, out var disk) &&
-                disk.GrantMode == mode &&
-                disk.SelectedOption is { } selected &&
-                disk.Options.TryGetValue(selected, out var prototype))
+            if (TryComp<BitrunningAbilityDiskComponent>(current, out var disk) && disk.SelectedOption is { } selected && disk.Options.TryGetValue(selected, out var prototype))
             {
-                found[current] = prototype;
+                switch (disk.GrantMode)
+                {
+                    case BitrunningDiskGrantMode.Action:
+                        actionDisks[current] = prototype;
+                        break;
+                    case BitrunningDiskGrantMode.Item:
+                        itemDisks[current] = prototype;
+                        break;
+                }
             }
 
             if (!TryComp<ContainerManagerComponent>(current, out var manager))
@@ -201,8 +218,6 @@ public sealed class BitrunningDiskSystem : EntitySystem
                 }
             }
         }
-
-        return found;
     }
 
     private void TryGrantDomainItems(Entity<AvatarConnectionComponent> avatar, Dictionary<EntityUid, EntProtoId> selectedItemDisks)
@@ -224,8 +239,6 @@ public sealed class BitrunningDiskSystem : EntitySystem
 
             QueueDel(spawned);
         }
-
-        Dirty(serverUid, server);
     }
 
     private bool TryInsertIntoInventoryOrHands(EntityUid avatarUid, EntityUid itemUid)
@@ -255,11 +268,11 @@ public sealed class BitrunningDiskSystem : EntitySystem
         avatarUid = default;
         avatarComp = default!;
 
+        var ancestors = new HashSet<EntityUid>();
         var current = entity;
         while (TryComp<TransformComponent>(current, out var xform))
         {
-            if (TryFindAvatarByOriginalBody(current, out avatarUid, out avatarComp))
-                return true;
+            ancestors.Add(current);
 
             var parent = xform.ParentUid;
             if (parent == EntityUid.Invalid || parent == current)
@@ -268,25 +281,36 @@ public sealed class BitrunningDiskSystem : EntitySystem
             current = parent;
         }
 
-        return false;
-    }
-
-    private bool TryFindAvatarByOriginalBody(EntityUid bodyUid, out EntityUid avatarUid, out AvatarConnectionComponent avatarComp)
-    {
-        var query = EntityQueryEnumerator<AvatarConnectionComponent>();
-        while (query.MoveNext(out var uid, out var connection))
+        foreach (var ancestor in ancestors)
         {
-            if (connection.OriginalBody != bodyUid)
+            if (!TryFindAvatarByOriginalBody(ancestor, out avatarUid, out avatarComp))
                 continue;
 
-            avatarUid = uid;
-            avatarComp = connection;
             return true;
         }
 
         avatarUid = default;
         avatarComp = default!;
         return false;
+    }
+
+    private bool TryFindAvatarByOriginalBody(EntityUid bodyUid, out EntityUid avatarUid, out AvatarConnectionComponent avatarComp)
+    {
+        avatarUid = default;
+        avatarComp = default!;
+
+        if (!_avatarByBody.TryGetValue(bodyUid, out var foundUid))
+            return false;
+
+        if (!TryComp(foundUid, out AvatarConnectionComponent? foundComp))
+        {
+            _avatarByBody.Remove(bodyUid);
+            return false;
+        }
+
+        avatarComp = foundComp;
+        avatarUid = foundUid;
+        return true;
     }
 
     private void OnSpawnCheeseAction(BitrunningSpawnCheeseActionEvent args)
@@ -316,8 +340,8 @@ public sealed class BitrunningDiskSystem : EntitySystem
         args.Handled = true;
 
         var heal = new DamageSpecifier();
-        heal.DamageDict["Blunt"] = -12f;
-        heal.DamageDict["Heat"] = -12f;
+        heal.DamageDict["Blunt"] = -20f;
+        heal.DamageDict["Heat"] = -20f;
         _damageable.TryChangeDamage(args.Performer, heal, ignoreResistances: true);
     }
 

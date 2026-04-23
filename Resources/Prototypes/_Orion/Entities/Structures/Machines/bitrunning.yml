@@ -48,6 +48,8 @@
       enum.QuantumConsoleUiKey.Key:
         type: QuantumConsoleBoundUserInterface
   - type: QuantumConsole
+  - type: Computer
+    board: QuantumConsoleCircuitboard
   - type: DeviceLinkSink
     ports:
     - BitrunningConsoleSink

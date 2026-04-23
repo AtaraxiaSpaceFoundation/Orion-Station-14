@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Server.Mind;
@@ -84,7 +83,6 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         SubscribeLocalEvent<QuantumServerComponent, ComponentInit>(OnServerInit);
         SubscribeLocalEvent<QuantumServerComponent, MapInitEvent>(OnServerMapInit);
-        SubscribeLocalEvent<QuantumServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<QuantumServerComponent, InteractUsingEvent>(OnServerInteractUsing);
         SubscribeLocalEvent<QuantumServerComponent, EntityTerminatingEvent>(OnServerTerminating);
         SubscribeLocalEvent<QuantumServerComponent, PowerChangedEvent>(OnServerPowerChanged);
@@ -106,11 +104,6 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         _byteforge.RefreshLinkedByteforge(ent);
         UpdateServerVisuals(ent);
-    }
-
-    private void OnServerShutdown(Entity<QuantumServerComponent> ent, ref ComponentShutdown args)
-    {
-        StopDomain(ent, true);
     }
 
     private void OnServerTerminating(Entity<QuantumServerComponent> ent, ref EntityTerminatingEvent args)
@@ -151,7 +144,7 @@ public sealed class QuantumServerSystem : EntitySystem
         if (server.State != BitrunningServerState.Ready)
             return false;
 
-        if (server.CurrentDomain != null || server.DomainMapUid != null)
+        if (server.CurrentDomain != null)
             return false;
 
         if (!_domains.TryGetDomain(domainId, out var domain))
@@ -207,11 +200,12 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         var visualState = !_power.IsPowered(serverEnt.Owner)
             ? QuantumServerVisualState.Unpowered
-            : serverEnt.Comp.State == BitrunningServerState.Running
-                ? QuantumServerVisualState.Running
-                : serverEnt.Comp.State == BitrunningServerState.CoolingDown
-                    ? QuantumServerVisualState.Cooling
-                    : QuantumServerVisualState.Ready;
+            : serverEnt.Comp.State switch
+            {
+                BitrunningServerState.Running => QuantumServerVisualState.Running,
+                BitrunningServerState.CoolingDown => QuantumServerVisualState.Cooling,
+                _ => QuantumServerVisualState.Ready,
+            };
 
         _appearance.SetData(serverEnt, BitrunningVisuals.QuantumServerState, visualState);
     }
@@ -227,21 +221,23 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         var exits = EntityQueryEnumerator<BitrunningExitMarkerComponent, TransformComponent>();
-        while (exits.MoveNext(out var uid, out _, out var xform))
+        while (exits.MoveNext(out _, out _, out var xform))
         {
             if (xform.MapUid != mapUid)
                 continue;
 
-            serverEnt.Comp.ExitCoordinates ??= Transform(uid).Coordinates;
+            serverEnt.Comp.ExitCoordinates ??= xform.Coordinates;
+            break;
         }
 
         var goals = EntityQueryEnumerator<BitrunningGoalMarkerComponent, TransformComponent>();
-        while (goals.MoveNext(out var uid, out _, out var xform))
+        while (goals.MoveNext(out _, out _, out var xform))
         {
             if (xform.MapUid != mapUid)
                 continue;
 
-            serverEnt.Comp.GoalCoordinates ??= Transform(uid).Coordinates;
+            serverEnt.Comp.GoalCoordinates ??= xform.Coordinates;
+            break;
         }
 
         var hasObjective = HasActiveObjective(serverEnt.Comp);
@@ -249,24 +245,26 @@ public sealed class QuantumServerSystem : EntitySystem
         if (hasObjective && serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.CollectEncryptedCaches)
         {
             var caches = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
-            while (caches.MoveNext(out var uid, out _, out var xform))
+            while (caches.MoveNext(out _, out _, out var xform))
             {
                 if (xform.MapUid != mapUid)
                     continue;
 
-                var coordinates = Transform(uid).Coordinates;
-                serverEnt.Comp.CacheCoordinates ??= coordinates;
-                cacheCoordinates.Add(coordinates);
+                cacheCoordinates.Add(xform.Coordinates);
             }
+
+            if (cacheCoordinates.Count > 0)
+                serverEnt.Comp.CacheCoordinates = cacheCoordinates[0];
         }
 
         var spawnMarkers = EntityQueryEnumerator<BitrunningAvatarSpawnMarkerComponent, TransformComponent>();
-        while (spawnMarkers.MoveNext(out var uid, out _, out var xform))
+        while (spawnMarkers.MoveNext(out _, out _, out var xform))
         {
             if (xform.MapUid != mapUid)
                 continue;
 
-            serverEnt.Comp.SpawnCoordinates ??= Transform(uid).Coordinates;
+            serverEnt.Comp.SpawnCoordinates ??= xform.Coordinates;
+            break;
         }
 
         if (serverEnt.Comp.ExitCoordinates == null && serverEnt.Comp.DomainGridUid is { } gridUid)
@@ -300,12 +298,12 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         var markers = EntityQueryEnumerator<BitrunningObjectiveCacheCrateSpawnMarkerComponent, TransformComponent>();
-        while (markers.MoveNext(out var uid, out var marker, out var xform))
+        while (markers.MoveNext(out _, out var marker, out var xform))
         {
             if (xform.MapUid != serverEnt.Comp.DomainMapUid)
                 continue;
 
-            Spawn(marker.CratePrototype, Transform(uid).Coordinates);
+            Spawn(marker.CratePrototype, xform.Coordinates);
         }
     }
 
@@ -322,7 +320,6 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.DomainMapUid = null;
         serverEnt.Comp.DomainGridUid = null;
         serverEnt.Comp.CurrentDomain = null;
-        serverEnt.Comp.Occupants.Clear();
         serverEnt.Comp.ActiveConnections.Clear();
         serverEnt.Comp.ExitCoordinates = null;
         serverEnt.Comp.GoalCoordinates = null;
@@ -377,6 +374,12 @@ public sealed class QuantumServerSystem : EntitySystem
         if (pod.Occupant != null && pod.Occupant != user)
             return false;
 
+        if (server.ExitCoordinates == null)
+            return false;
+
+        if (!_mind.TryGetMind(user, out var mindId, out var mind))
+            return false;
+
         if (pod.Avatar != null)
         {
             if (TryReconnectRunner((podUid, pod), user))
@@ -388,12 +391,6 @@ public sealed class QuantumServerSystem : EntitySystem
             pod.Avatar = null;
             Dirty(podUid, pod);
         }
-
-        if (server.ExitCoordinates == null)
-            return false;
-
-        if (!_mind.TryGetMind(user, out var mindId, out var mind))
-            return false;
 
         var avatar = SpawnAvatarForRunner(server, user, server.SpawnCoordinates ?? server.ExitCoordinates.Value);
         EnsureComp<BitrunningDomainRuntimeComponent>(avatar);
@@ -422,7 +419,6 @@ public sealed class QuantumServerSystem : EntitySystem
         pod.LinkedServer = serverUid;
 
         server.ActiveConnections.Add(avatar);
-        server.Occupants.Add(avatar);
 
         Dirty(podUid, pod);
         _netpod.UpdateVisuals((podUid, pod));
@@ -457,7 +453,6 @@ public sealed class QuantumServerSystem : EntitySystem
         if (connection.Server != null && TryComp<QuantumServerComponent>(connection.Server.Value, out var server))
         {
             server.ActiveConnections.Add(avatarUid);
-            server.Occupants.Add(avatarUid);
             var objectivePopupText = server.ObjectiveCompleted
                 ? Loc.GetString("bitrunning-objective-completed")
                 : GetObjectiveInstructions(server);
@@ -577,7 +572,6 @@ public sealed class QuantumServerSystem : EntitySystem
         if (serverUid != null && TryComp<QuantumServerComponent>(serverUid.Value, out var server))
         {
             server.ActiveConnections.Remove(avatarUid);
-            server.Occupants.Remove(avatarUid);
             Dirty(serverUid.Value, server);
         }
 
@@ -604,11 +598,6 @@ public sealed class QuantumServerSystem : EntitySystem
             CompleteObjective((serverUid, server));
 
         Dirty(serverUid, server);
-    }
-
-    public void AddObjectivePoint(EntityUid serverUid, int points)
-    {
-        AddObjectiveProgress(serverUid, points);
     }
 
     public bool TryGetServerByDomainMap(EntityUid mapUid, out EntityUid serverUid, out QuantumServerComponent server)
@@ -638,7 +627,6 @@ public sealed class QuantumServerSystem : EntitySystem
             BitrunningObjectiveType.CollectEncryptedCaches => Loc.GetString("bitrunning-training-instructions-collect", ("target", target)),
             BitrunningObjectiveType.DeliveryCacheCrate => Loc.GetString("bitrunning-training-instructions-delivery", ("target", target)),
             BitrunningObjectiveType.EliminateEnemies => Loc.GetString("bitrunning-training-instructions-eliminate", ("target", target)),
-            _ => Loc.GetString("bitrunning-training-instructions-none"),
         };
     }
 
@@ -648,18 +636,25 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         serverEnt.Comp.ObjectiveCompleted = true;
-        var serverRewardMultiplier = CalculateServerRewardMultiplier(serverEnt.Comp);
-        var bitrunningRewardMultiplier = CalculateBitrunningRewardMultiplier(serverEnt.Comp);
+        var serverRewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
+        var bitrunningRewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
 
         if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) &&
             serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate &&
             serverEnt.Comp.CacheCoordinates is { } cacheCoordinates)
             Spawn(serverEnt.Comp.RewardCachePrototype, cacheCoordinates);
 
-        var baseServerReward = GetDomainServerReward(serverEnt.Comp);
-        var baseBitrunningReward = GetDomainBitrunningReward(serverEnt.Comp);
-        var randomServerBonus = GetRandomServerBonusReward(serverEnt.Comp);
-        var randomBitrunningBonus = GetRandomBitrunningBonusReward(serverEnt.Comp);
+        var baseServerReward = 0;
+        var baseBitrunningReward = 0;
+        var randomServerBonus = 0;
+        var randomBitrunningBonus = 0;
+        if (TryGetCurrentDomain(serverEnt.Comp, out var domain) && domain != null)
+        {
+            baseServerReward = domain.ServerRewardPoints;
+            baseBitrunningReward = domain.BitrunningRewardPoints;
+            randomServerBonus = domain.RandomServerBonusPoints;
+            randomBitrunningBonus = domain.RandomBitrunningBonusPoints;
+        }
 
         var serverReward = Math.Max(0, (int) MathF.Round(baseServerReward * serverRewardMultiplier));
         var bitrunningReward = Math.Max(0, (int) MathF.Round(baseBitrunningReward * bitrunningRewardMultiplier));
@@ -679,7 +674,7 @@ public sealed class QuantumServerSystem : EntitySystem
             ("server", serverReward),
             ("np", bitrunningReward));
 
-        foreach (var avatar in serverEnt.Comp.Occupants)
+        foreach (var avatar in serverEnt.Comp.ActiveConnections)
         {
             if (!Exists(avatar))
                 continue;
@@ -727,38 +722,6 @@ public sealed class QuantumServerSystem : EntitySystem
                _domains.TryGetDomain(server.CurrentDomain, out domain);
     }
 
-    private int GetDomainServerReward(QuantumServerComponent server)
-    {
-        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
-            return 0;
-
-        return domain.ServerRewardPoints;
-    }
-
-    private int GetDomainBitrunningReward(QuantumServerComponent server)
-    {
-        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
-            return 0;
-
-        return domain.BitrunningRewardPoints;
-    }
-
-    private int GetRandomServerBonusReward(QuantumServerComponent server)
-    {
-        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
-            return 0;
-
-        return domain.RandomServerBonusPoints;
-    }
-
-    private int GetRandomBitrunningBonusReward(QuantumServerComponent server)
-    {
-        if (!TryGetCurrentDomain(server, out var domain) || domain == null)
-            return 0;
-
-        return domain.RandomBitrunningBonusPoints;
-    }
-
     private bool ShouldAutoStopOnObjectiveComplete(QuantumServerComponent server)
     {
         if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain))
@@ -778,16 +741,6 @@ public sealed class QuantumServerSystem : EntitySystem
     private static bool HasActiveObjective(QuantumServerComponent server)
     {
         return server.ObjectiveType != BitrunningObjectiveType.None && server.ObjectiveGoal > 0;
-    }
-
-    private float CalculateServerRewardMultiplier(QuantumServerComponent server)
-    {
-        return CalculateBaseRewardMultiplier(server);
-    }
-
-    private float CalculateBitrunningRewardMultiplier(QuantumServerComponent server)
-    {
-        return CalculateBaseRewardMultiplier(server);
     }
 
     private float CalculateBaseRewardMultiplier(QuantumServerComponent server)
@@ -890,8 +843,6 @@ public sealed class QuantumServerSystem : EntitySystem
         {
             server.ActiveConnections.Remove(ent.Owner);
             server.ActiveConnections.Add(newAvatarUid);
-            server.Occupants.Remove(ent.Owner);
-            server.Occupants.Add(newAvatarUid);
             Dirty(serverUid, server);
         }
 

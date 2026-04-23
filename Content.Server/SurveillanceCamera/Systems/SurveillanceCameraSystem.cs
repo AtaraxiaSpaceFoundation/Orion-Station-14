@@ -209,20 +209,13 @@ public sealed class SurveillanceCameraSystem : EntitySystem
                     if (TryComp(uid, out TransformComponent? transformComponent))
                     {
                         // Orion-Start
-                        var sourceUid = uid;
-                        if (TryComp<AvatarNavRelayComponent>(uid, out var relay) && relay.RelayEntity is { } relayUid && TryComp<TransformComponent>(relayUid, out var relayTransform))
-                        {
-                            sourceUid = relayUid;
-                            transformComponent = relayTransform;
-                        }
-
-                        var subscribeTarget = ResolveSubscribeTarget(uid);
+                        var resolvedEntity = ResolveSubscribeTarget(uid);
+                        if (TryComp<TransformComponent>(resolvedEntity, out var resolvedTransform))
+                            transformComponent = resolvedTransform;
                         // Orion-End
 
                         // Decoupling the bodycam/nopro from the wearer, otherwise we'll just keep seeing the last known owner move around on the map
-                        payload[CameraNetEntity] = component.Mobile
-                            ? (GetNetEntity(subscribeTarget), GetNetCoordinates(_transformSystem.ToCoordinates(sourceUid, _transformSystem.ToMapCoordinates(transformComponent.Coordinates)))) // Orion-Edit
-                            : (GetNetEntity(subscribeTarget), GetNetCoordinates(transformComponent.Coordinates)); // Orion-Edit
+                        payload[CameraNetEntity] = (GetNetEntity(resolvedEntity), GetNetCoordinates(transformComponent.Coordinates)); // Orion-Edit
                         payload[CameraMobile] = component.Mobile;
                     }
                     // Goobstation end
@@ -507,13 +500,13 @@ public sealed class SurveillanceCameraSystem : EntitySystem
 
     private EntityUid ResolveSubscribeTarget(EntityUid camera)
     {
-        if (!TryComp<NetpodComponent>(camera, out var pod))
-            return camera;
+        if (TryComp<AvatarNavRelayComponent>(camera, out var relay) && relay.RelayEntity is { } relayUid && Exists(relayUid))
+            return relayUid;
 
-        if (pod.Avatar is not { } avatar || !Exists(avatar))
-            return camera;
+        if (TryComp<NetpodComponent>(camera, out var pod) && pod.Avatar is { } avatar && Exists(avatar))
+            return avatar;
 
-        return avatar;
+        return camera;
     }
     // Orion-End
 

@@ -92,7 +92,6 @@ public sealed class ByteforgeSystem : EntitySystem
             _appearance.SetData(oldLinked, BitrunningVisuals.ByteforgeAngry, false);
 
         ent.Comp.LinkedByteforge = null;
-        _appearance.SetData(args.RemovedPortUid, BitrunningVisuals.ByteforgeAngry, false);
         Dirty(ent);
     }
 

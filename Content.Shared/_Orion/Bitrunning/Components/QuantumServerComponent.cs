@@ -1,4 +1,3 @@
-using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -12,6 +11,9 @@ namespace Content.Shared._Orion.Bitrunning.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class QuantumServerComponent : Component
 {
+    // This is intentionally unbounded so avatars and linked pods always remain viewable on camera networks.
+    public const int UnboundedBroadcastRange = int.MaxValue;
+
     [DataField, AutoNetworkedField]
     public BitrunningServerState State = BitrunningServerState.Ready;
 
@@ -43,7 +45,7 @@ public sealed partial class QuantumServerComponent : Component
     public bool BroadcastEnabled;
 
     [DataField]
-    public int BroadcastWirelessRange = 6767;
+    public int BroadcastWirelessRange = UnboundedBroadcastRange;
 
     [DataField]
     public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
@@ -69,13 +71,12 @@ public sealed partial class QuantumServerComponent : Component
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<BitrunningVirtualDomainPrototype>)), AutoNetworkedField]
     public string? CurrentDomain;
 
+    // Server-only runtime state. These fields are not synchronized to clients.
     public EntityUid? DomainMapUid;
 
     public EntityUid? DomainGridUid;
 
     public readonly HashSet<EntityUid> ActiveConnections = new();
-
-    public readonly HashSet<EntityUid> Occupants = new();
 
     public EntityCoordinates? ExitCoordinates;
 
