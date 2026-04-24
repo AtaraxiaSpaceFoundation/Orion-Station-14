@@ -1,7 +1,10 @@
+using Content.Goobstation.Common.Effects;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -17,6 +20,8 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
     [Dependency] private readonly ByteforgeSystem _byteforge = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly HungerSystem _hunger = default!;
+    [Dependency] private readonly SparksSystem _sparks = default!;
 
     public override void Initialize()
     {
@@ -24,6 +29,30 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         SubscribeLocalEvent<BitrunningObjectivePointComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<BitrunningObjectiveDeliveryPointComponent, StartCollideEvent>(OnDeliveryCollide);
         SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, MobStateChangedEvent>(OnEnemyStateChanged);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var servers = EntityQueryEnumerator<QuantumServerComponent>();
+        while (servers.MoveNext(out var serverUid, out var server))
+        {
+            if (server.State != BitrunningServerState.Running || server.ObjectiveType != BitrunningObjectiveType.FillStomach || server.ObjectiveCompleted || server.ObjectivePoints > 0)
+                continue;
+
+            foreach (var avatar in server.ActiveConnections)
+            {
+                if (!TryComp<HungerComponent>(avatar, out var hunger))
+                    continue;
+
+                if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Overfed)
+                    continue;
+
+                _server.AddObjectiveProgress(serverUid, 1);
+                break;
+            }
+        }
     }
 
     private void OnExitCollide(Entity<BitrunningExitMarkerComponent> ent, ref StartCollideEvent args)
@@ -86,6 +115,8 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
 
         if (!_byteforge.TryDeliverObjectiveCargoToByteforge(serverUid, args.OtherEntity))
             return;
+
+        _sparks.DoSparks(Transform(ent).Coordinates);
 
         if (server.ObjectiveType == BitrunningObjectiveType.DeliveryCacheCrate)
             _server.AddObjectiveProgress(serverUid, ent.Comp.Points);

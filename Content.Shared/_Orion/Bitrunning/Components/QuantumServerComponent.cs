@@ -82,6 +82,8 @@ public sealed partial class QuantumServerComponent : Component
 
     public EntityCoordinates? CacheCoordinates;
 
+    public bool HasExplicitCacheMarker;
+
     public EntityCoordinates? GoalCoordinates;
 
     public EntityCoordinates? SpawnCoordinates;

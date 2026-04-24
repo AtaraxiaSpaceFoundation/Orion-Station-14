@@ -1,3 +1,4 @@
+using Content.Goobstation.Common.Effects;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
@@ -24,6 +25,7 @@ public sealed class ByteforgeSystem : EntitySystem
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly EntityTableSystem _entityTable = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly SparksSystem _sparks = default!;
 
     private const string ServerSourcePort = "BitrunningServerSource";
     private const string ByteforgeSinkPort = "BitrunningByteforgeSink";
@@ -125,6 +127,8 @@ public sealed class ByteforgeSystem : EntitySystem
         }
 
         var rewardCargoUid = Spawn(server.RewardCachePrototype, byteforgeXform.Coordinates);
+        _sparks.DoSparks(byteforgeXform.Coordinates);
+
         if (!FillDeliveredCargoWithLoot(rewardCargoUid, server))
         {
             Log.Warning($"Failed to fill delivered cargo reward crate for server {ToPrettyString(serverUid)}.");

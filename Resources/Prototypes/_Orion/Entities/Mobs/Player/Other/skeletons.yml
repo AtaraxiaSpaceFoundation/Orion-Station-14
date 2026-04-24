@@ -1,0 +1,11 @@
+- type: entity
+  parent: MobSkeletonPerson
+  id: MobSkeletonBartender
+  name: skeleton bartender
+  components:
+  - type: Loadout
+    prototypes: [ VisitorBartender ]
+  - type: RandomHumanoidAppearance
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen

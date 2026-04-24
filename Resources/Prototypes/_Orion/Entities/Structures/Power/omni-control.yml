@@ -1,0 +1,19 @@
+# APC that provides power with gravity (compact? uhh uhh...)
+- type: entity
+  parent: DebugAPCRecharging
+  id: OmniControlUnit
+  name: omni-control unit
+  description: A compact all-in-one utility core that provides power and local gravity.
+  suffix: DEBUG, Power-Gravity
+  components:
+  - type: GravitySource
+
+- type: entity
+  parent: OmniControlUnit
+  id: OmniControlUnitUnlocked
+  name: omni-control unit
+  description: A compact all-in-one utility core that provides power and local gravity.
+  suffix: DEBUG, Power-Gravity, Unlocked
+  components:
+  - type: AccessReader
+    access: [ ]

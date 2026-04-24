@@ -48,3 +48,26 @@
       - state: green
       - sprite: _Orion/Mobs/Aliens/cortical_borer.rsi
         state: cortical_borer
+
+- type: entity
+  parent: BaseStructure
+  id: SpawnPointSkeletonBartender
+  name: skeleton bartender sleeper
+  suffix: Spawner, Ghost Role
+  categories: [ Spawner ]
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-bartender-name
+    description: ghost-role-information-skeleton-bartender-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: default
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+  - type: GhostRoleMobSpawner
+    prototype: MobSkeletonBartender
+  - type: Sprite
+    layers:
+    - sprite: _Orion/Structures/cryostasis_sleeper.rsi
+      state: sleeper_1
+      map: [ "base" ]

@@ -28,3 +28,6 @@ ghost-role-information-morph-description = Размножайтесь и куш�
 ghost-role-information-morph-rules =
     Вы [color=red][bold]Командный антагонист[/bold][/color]. Ваши намерения ясны, и они несут вред станции и её экипажу.
     Вы [bold]должны слушаться остальных морфов и помогать им[/bold] в выполнении своей задачи, пожирая всё живое на станции.
+
+ghost-role-information-skeleton-bartender-name = Скелет-бармен
+ghost-role-information-skeleton-bartender-description = Поддерживайте работу пляжного бара, подавайте напитки и следите, чтобы гостям было весело.

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Goobstation.Common.Effects;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
@@ -75,6 +76,7 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly SurveillanceCameraSystem _surveillanceCamera = default!;
     [Dependency] private readonly IServerPreferencesManager _preferences = default!;
     [Dependency] private readonly CloningAppearanceSystem _cloningAppearance = default!;
+    [Dependency] private readonly SparksSystem _sparks = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
@@ -215,6 +217,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.ExitCoordinates = null;
         serverEnt.Comp.GoalCoordinates = null;
         serverEnt.Comp.CacheCoordinates = null;
+        serverEnt.Comp.HasExplicitCacheMarker = false;
         serverEnt.Comp.SpawnCoordinates = null;
 
         if (serverEnt.Comp.DomainMapUid is not { } mapUid)
@@ -240,21 +243,20 @@ public sealed class QuantumServerSystem : EntitySystem
             break;
         }
 
-        var hasObjective = HasActiveObjective(serverEnt.Comp);
         var cacheCoordinates = new List<EntityCoordinates>();
-        if (hasObjective && serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.CollectEncryptedCaches)
+        var caches = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
+        while (caches.MoveNext(out _, out _, out var xform))
         {
-            var caches = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
-            while (caches.MoveNext(out _, out _, out var xform))
-            {
-                if (xform.MapUid != mapUid)
-                    continue;
+            if (xform.MapUid != mapUid)
+                continue;
 
-                cacheCoordinates.Add(xform.Coordinates);
-            }
+            cacheCoordinates.Add(xform.Coordinates);
+        }
 
-            if (cacheCoordinates.Count > 0)
-                serverEnt.Comp.CacheCoordinates = cacheCoordinates[0];
+        if (cacheCoordinates.Count > 0)
+        {
+            serverEnt.Comp.CacheCoordinates = cacheCoordinates[0];
+            serverEnt.Comp.HasExplicitCacheMarker = true;
         }
 
         var spawnMarkers = EntityQueryEnumerator<BitrunningAvatarSpawnMarkerComponent, TransformComponent>();
@@ -281,6 +283,7 @@ public sealed class QuantumServerSystem : EntitySystem
         if (serverEnt.Comp.GoalCoordinates == null)
             return;
 
+        var hasObjective = HasActiveObjective(serverEnt.Comp);
         if (!hasObjective)
             return;
 
@@ -304,6 +307,7 @@ public sealed class QuantumServerSystem : EntitySystem
                 continue;
 
             Spawn(marker.CratePrototype, xform.Coordinates);
+            _sparks.DoSparks(xform.Coordinates);
         }
     }
 
@@ -324,6 +328,7 @@ public sealed class QuantumServerSystem : EntitySystem
         serverEnt.Comp.ExitCoordinates = null;
         serverEnt.Comp.GoalCoordinates = null;
         serverEnt.Comp.CacheCoordinates = null;
+        serverEnt.Comp.HasExplicitCacheMarker = false;
         serverEnt.Comp.SpawnCoordinates = null;
         serverEnt.Comp.ObjectivePoints = 0;
         serverEnt.Comp.ObjectiveCompleted = false;
@@ -542,7 +547,9 @@ public sealed class QuantumServerSystem : EntitySystem
 
         if (podUid != null && TryComp<NetpodComponent>(podUid.Value, out var pod))
         {
-            _surveillanceCamera.ClearActiveViewers(podUid.Value);
+            if (TryComp<SurveillanceCameraComponent>(podUid.Value, out var camera))
+                _surveillanceCamera.ClearActiveViewers(podUid.Value, camera);
+
             EnsureComp<AvatarNavRelayComponent>(podUid.Value).RelayEntity = null;
 
             pod.Occupant = TryComp<NetpodContainerComponent>(podUid.Value, out var containerComp)
@@ -627,6 +634,7 @@ public sealed class QuantumServerSystem : EntitySystem
             BitrunningObjectiveType.CollectEncryptedCaches => Loc.GetString("bitrunning-training-instructions-collect", ("target", target)),
             BitrunningObjectiveType.DeliveryCacheCrate => Loc.GetString("bitrunning-training-instructions-delivery", ("target", target)),
             BitrunningObjectiveType.EliminateEnemies => Loc.GetString("bitrunning-training-instructions-eliminate", ("target", target)),
+            BitrunningObjectiveType.FillStomach => Loc.GetString("bitrunning-training-instructions-fill-stomach", ("target", target)),
         };
     }
 
@@ -639,10 +647,27 @@ public sealed class QuantumServerSystem : EntitySystem
         var serverRewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
         var bitrunningRewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
 
-        if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) &&
-            serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate &&
-            serverEnt.Comp.CacheCoordinates is { } cacheCoordinates)
-            Spawn(serverEnt.Comp.RewardCachePrototype, cacheCoordinates);
+        if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) && serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
+        {
+            if (serverEnt.Comp.HasExplicitCacheMarker && serverEnt.Comp.CacheCoordinates is { } markerCoordinates)
+                SpawnRewardCache(serverEnt.Comp, markerCoordinates);
+            else
+            {
+                var spawnedNearAvatar = false;
+                foreach (var avatar in serverEnt.Comp.ActiveConnections)
+                {
+                    if (!TryComp<TransformComponent>(avatar, out var xform))
+                        continue;
+
+                    SpawnRewardCache(serverEnt.Comp, xform.Coordinates);
+                    spawnedNearAvatar = true;
+                    break;
+                }
+
+                if (!spawnedNearAvatar && serverEnt.Comp.CacheCoordinates is { } fallbackCoordinates)
+                    SpawnRewardCache(serverEnt.Comp, fallbackCoordinates);
+            }
+        }
 
         var baseServerReward = 0;
         var baseBitrunningReward = 0;
@@ -758,6 +783,12 @@ public sealed class QuantumServerSystem : EntitySystem
         total += noHitCount * 0.4f;
         total += server.ThreatsSpawned * 0.5f;
         return Math.Max(0.5f, total);
+    }
+
+    private void SpawnRewardCache(QuantumServerComponent server, EntityCoordinates coordinates)
+    {
+        Spawn(server.RewardCachePrototype, coordinates);
+        _sparks.DoSparks(coordinates);
     }
 
     private void OnAvatarDamaged(Entity<AvatarConnectionComponent> ent, ref DamageChangedEvent args)
