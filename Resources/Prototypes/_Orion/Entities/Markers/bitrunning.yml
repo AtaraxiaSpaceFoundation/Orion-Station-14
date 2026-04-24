@@ -107,11 +107,10 @@
   - type: Transform
     anchored: true
   - type: Sprite
-    drawdepth: Overdoors
-    sprite: _Orion/Structures/Machines/byteforge.rsi
+    drawdepth: BelowFloor
+    sprite: _Orion/Structures/Specific/Cargo/Bitrunning/bitrunning_circuit_floor.rsi
     layers:
-    - state: on_particles
-      shader: unshaded
+    - state: icon
   - type: Physics
     bodyType: Static
   - type: Fixtures
