@@ -1,4 +1,2 @@
-bitrunning-domain-training-name = Учебное убежище
-bitrunning-domain-training-desc = Базовый виртуальный домен с безопасным контуром и обязательной целью.
-bitrunning-domain-syndicate-name = Синдикат
-bitrunning-domain-syndicate-desc = Синдикат йооо....
+bitrunning-domain-beach-bar-name = Бар на пляже
+bitrunning-domain-beach-bar-desc = Весёлое приморское местечко, где дружелюбные скелеты подают напитки. Чуваки вы как ваще померли?

@@ -1,4 +1,2 @@
-bitrunning-domain-training-name = Training Sanctuary
-bitrunning-domain-training-desc = Introductory virtual safehouse with a protected objective loop.
-bitrunning-domain-syndicate-name = Syndicate
-bitrunning-domain-syndicate-desc = Syndicate yooo....
+bitrunning-domain-beach-bar-name = Beach Bar
+bitrunning-domain-beach-bar-desc = A cheerful seaside haven where friendly skeletons serve up drinks. Say, how'd you guys get so dead?

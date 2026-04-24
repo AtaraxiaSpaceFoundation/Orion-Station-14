@@ -45,6 +45,7 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Walls/binary.rsi
+    noRot: true
     layers:
     - state: full
       shader: unshaded

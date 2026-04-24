@@ -1,23 +1,9 @@
 - type: bitrunningVirtualDomain
-  id: TrainingDomain
-  name: bitrunning-domain-training-name
-  description: bitrunning-domain-training-desc
+  id: BeachBar
+  name: bitrunning-domain-beach-bar-name
+  description: bitrunning-domain-beach-bar-desc
   difficulty: Easy
-  serverRewardPoints: 1000 # Debug? Uhh hiss~
-  bitrunningRewardPoints: 1000 # Debug? Uhh ahhh~
-  randomBitrunningBonusPoints: 10
-  mapPath: /Maps/_Lavaland/Shelters/shelter_5x5.yml
-  objectiveType: CollectEncryptedCaches
-  objectiveTarget: 3
-  flags: [ "safehouse", "entry-protected" ]
-
-- type: bitrunningVirtualDomain
-  id: Syndicate
-  name: bitrunning-domain-syndicate-name
-  description: bitrunning-domain-syndicate-desc
-  difficulty: Medium
-  serverRewardPoints: 2
-  bitrunningRewardPoints: 100
-  randomBitrunningBonusPoints: 20
-  mapPath: /Maps/_Orion/Bitrun/syndicate.yml
+  serverRewardPoints: 1
+  bitrunningRewardPoints: 50
+  mapPath: /Maps/_Orion/Bitrun/beach-bar.yml
   objectiveType: DeliveryCacheCrate
