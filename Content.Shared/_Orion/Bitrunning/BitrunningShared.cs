@@ -37,6 +37,7 @@ public enum BitrunningObjectiveType : byte
     DeliveryCacheCrate,
     EliminateEnemies,
     FillStomach,
+    OverhydrateStomach,
 }
 
 [NetSerializable, Serializable]

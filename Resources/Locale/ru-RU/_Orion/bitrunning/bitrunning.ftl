@@ -22,6 +22,7 @@ bitrunning-training-instructions-collect = Соберите { $target } узло
 bitrunning-training-instructions-delivery = Доставьте ящики кэша { $target } раз.
 bitrunning-training-instructions-eliminate = Устраните { $target } угроз домена.
 bitrunning-training-instructions-fill-stomach = Доведите сытость до предела { $target } раз.
+bitrunning-training-instructions-overhydrate-stomach = Переполните желудок жидкостями { $target } раз.
 bitrunning-training-instructions-none = Этот домен запущен без целей.
 bitrunning-objective-completed = Цель выполнена.
 bitrunning-objective-completed-rewards = Цель выполнена. Начислены очки сервера: +{ $server }, битраннерские очки: +{ $np }.

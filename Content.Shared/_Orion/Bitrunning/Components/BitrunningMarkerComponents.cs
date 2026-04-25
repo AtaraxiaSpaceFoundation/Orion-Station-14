@@ -38,6 +38,12 @@ public sealed partial class BitrunningObjectiveCacheCrateSpawnMarkerComponent : 
 }
 
 /// <summary>
+/// Marker that defines an explicit spawn position for completion reward cache crates.
+/// </summary>
+[RegisterComponent]
+public sealed partial class BitrunningRewardCacheSpawnMarkerComponent : Component;
+
+/// <summary>
 /// Marker that defines player/avatar spawn positions if no dedicated objective marker is available.
 /// </summary>
 [RegisterComponent]

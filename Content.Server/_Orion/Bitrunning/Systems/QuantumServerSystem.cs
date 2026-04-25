@@ -243,19 +243,19 @@ public sealed class QuantumServerSystem : EntitySystem
             break;
         }
 
-        var cacheCoordinates = new List<EntityCoordinates>();
-        var caches = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
-        while (caches.MoveNext(out _, out _, out var xform))
+        var rewardCacheCoordinates = new List<EntityCoordinates>();
+        var rewardCacheMarkers = EntityQueryEnumerator<BitrunningRewardCacheSpawnMarkerComponent, TransformComponent>();
+        while (rewardCacheMarkers.MoveNext(out _, out _, out var xform))
         {
             if (xform.MapUid != mapUid)
                 continue;
 
-            cacheCoordinates.Add(xform.Coordinates);
+            rewardCacheCoordinates.Add(xform.Coordinates);
         }
 
-        if (cacheCoordinates.Count > 0)
+        if (rewardCacheCoordinates.Count > 0)
         {
-            serverEnt.Comp.CacheCoordinates = cacheCoordinates[0];
+            serverEnt.Comp.CacheCoordinates = rewardCacheCoordinates[0];
             serverEnt.Comp.HasExplicitCacheMarker = true;
         }
 
@@ -286,16 +286,6 @@ public sealed class QuantumServerSystem : EntitySystem
         var hasObjective = HasActiveObjective(serverEnt.Comp);
         if (!hasObjective)
             return;
-
-        if (cacheCoordinates.Count > 0)
-        {
-            foreach (var cacheCoordinatesValue in cacheCoordinates)
-            {
-                if (cacheCoordinatesValue.IsValid(EntityManager))
-                    Spawn("BitrunningEncryptedCacheObjectiveSpawner", cacheCoordinatesValue);
-            }
-            return;
-        }
 
         if (serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
             return;
@@ -635,6 +625,7 @@ public sealed class QuantumServerSystem : EntitySystem
             BitrunningObjectiveType.DeliveryCacheCrate => Loc.GetString("bitrunning-training-instructions-delivery", ("target", target)),
             BitrunningObjectiveType.EliminateEnemies => Loc.GetString("bitrunning-training-instructions-eliminate", ("target", target)),
             BitrunningObjectiveType.FillStomach => Loc.GetString("bitrunning-training-instructions-fill-stomach", ("target", target)),
+            BitrunningObjectiveType.OverhydrateStomach => Loc.GetString("bitrunning-training-instructions-overhydrate-stomach", ("target", target)),
         };
     }
 

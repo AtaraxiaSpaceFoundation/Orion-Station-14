@@ -71,6 +71,18 @@
     - state: red
   - type: BitrunningObjectiveCacheCrateSpawnMarker
 
+# Spawn point for reward cache crate that appears when objective is completed.
+- type: entity
+  parent: MarkerBase
+  id: BitrunningRewardCacheSpawnMarker
+  name: reward cache spawn marker
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: BitrunningRewardCacheSpawnMarker
+
 # Spawn point used for avatars placement.
 - type: entity
   id: BitrunningAvatarSpawnMarker

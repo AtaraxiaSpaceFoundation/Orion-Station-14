@@ -38,15 +38,16 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         var servers = EntityQueryEnumerator<QuantumServerComponent>();
         while (servers.MoveNext(out var serverUid, out var server))
         {
-            if (server.State != BitrunningServerState.Running || server.ObjectiveType != BitrunningObjectiveType.FillStomach || server.ObjectiveCompleted || server.ObjectivePoints > 0)
+            if (server.State != BitrunningServerState.Running
+                || server.ObjectiveCompleted
+                || server.ObjectivePoints > 0
+                || (server.ObjectiveType != BitrunningObjectiveType.FillStomach
+                    && server.ObjectiveType != BitrunningObjectiveType.OverhydrateStomach))
                 continue;
 
             foreach (var avatar in server.ActiveConnections)
             {
-                if (!TryComp<HungerComponent>(avatar, out var hunger))
-                    continue;
-
-                if (_hunger.GetHungerThreshold(hunger) < HungerThreshold.Overfed)
+                if (!IsAvatarMeetingSatiationObjective(avatar, server.ObjectiveType))
                     continue;
 
                 _server.AddObjectiveProgress(serverUid, 1);
@@ -163,5 +164,17 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
     private bool TryResolveDomainMapUid(EntityUid primaryUid, EntityUid? fallbackUid, out EntityUid mapUid)
     {
         return TryResolveDomainMapUid(primaryUid, fallbackUid, out mapUid, out _);
+    }
+
+    private bool IsAvatarMeetingSatiationObjective(EntityUid avatarUid, BitrunningObjectiveType objectiveType)
+    {
+        return objectiveType switch
+        {
+            BitrunningObjectiveType.FillStomach => TryComp<HungerComponent>(avatarUid, out var hunger) &&
+                                                   _hunger.GetHungerThreshold(hunger) >= HungerThreshold.Overfed,
+            BitrunningObjectiveType.OverhydrateStomach => TryComp<ThirstComponent>(avatarUid, out var thirst) &&
+                                                          thirst.CurrentThirstThreshold >= ThirstThreshold.OverHydrated,
+            _ => false,
+        };
     }
 }

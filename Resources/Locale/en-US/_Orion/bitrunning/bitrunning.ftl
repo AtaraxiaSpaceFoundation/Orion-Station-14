@@ -22,6 +22,7 @@ bitrunning-training-instructions-collect = Collect { $target } encrypted cache n
 bitrunning-training-instructions-delivery = Deliver cache crates { $target } times.
 bitrunning-training-instructions-eliminate = Eliminate { $target } domain threats.
 bitrunning-training-instructions-fill-stomach = Reach overfed satiation { $target } times.
+bitrunning-training-instructions-overhydrate-stomach = Reach overhydrated satiation { $target } times.
 bitrunning-training-instructions-none = This domain is running without objectives.
 bitrunning-objective-completed = Objective completed.
 bitrunning-objective-completed-rewards = Objective completed. Server points: +{ $server }, NP: +{ $np }.

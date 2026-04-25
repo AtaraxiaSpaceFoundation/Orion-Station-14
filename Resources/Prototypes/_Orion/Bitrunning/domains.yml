@@ -6,4 +6,4 @@
   serverRewardPoints: 1
   bitrunningRewardPoints: 50
   mapPath: /Maps/_Orion/Bitrun/beach-bar.yml
-  objectiveType: FillStomach
+  objectiveType: OverhydrateStomach

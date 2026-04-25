@@ -6,6 +6,8 @@
   description: A compact all-in-one utility core that provides power and local gravity.
   suffix: DEBUG, Power-Gravity
   components:
+  - type: Battery
+    startingCharge: 50000
   - type: GravitySource
 
 - type: entity
