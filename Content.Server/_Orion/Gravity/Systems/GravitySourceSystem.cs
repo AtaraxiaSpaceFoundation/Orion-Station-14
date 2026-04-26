@@ -5,6 +5,9 @@ using Content.Shared.Gravity;
 
 namespace Content.Server._Orion.Gravity.Systems;
 
+/// <summary>
+///     System that... uhh... provides gravity by every ent with component without useless shit
+/// </summary>
 public sealed class GravitySourceSystem : EntitySystem
 {
     [Dependency] private readonly GravitySystem _gravity = default!;
@@ -60,7 +63,7 @@ public sealed class GravitySourceSystem : EntitySystem
             return;
 
         var xform = Transform(ent);
-        _gravity.RefreshGravity(xform.ParentUid);
+        RefreshParentGravity(xform.ParentUid, false);
     }
 
     private void RefreshParentGravity(EntityUid parentUid, bool enable)

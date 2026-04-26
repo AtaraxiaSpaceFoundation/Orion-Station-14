@@ -1,0 +1,86 @@
+# Xeno spawners for mapping
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphLarva
+  name: xenomorph larva spawner
+  suffix: Cant Evolve
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _White/Mobs/Aliens/Xenomorphs/larva.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphLarvaDungeon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphDrone
+  name: xenomorph drone spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _White/Mobs/Aliens/Xenomorphs/drone.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphDroneDungeon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphHunter
+  name: xenomorph hunter spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _White/Mobs/Aliens/Xenomorphs/hunter.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphHunterDungeon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphPraetorian
+  name: xenomorph praetorian spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _White/Mobs/Aliens/Xenomorphs/praetorian.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphPraetorianDungeon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphSentinel
+  name: xenomorph sentinel spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _White/Mobs/Aliens/Xenomorphs/sentinel.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphSentinelDungeon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphQueen
+  name: xenomorph queen spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _White/Mobs/Aliens/Xenomorphs/queen.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphQueenDungeon

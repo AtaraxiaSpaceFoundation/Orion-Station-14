@@ -11,33 +11,24 @@ public enum BitrunningServerState : byte
 }
 
 [NetSerializable, Serializable]
-public enum BitrunningGrade : byte
-{
-    D,
-    C,
-    B,
-    A,
-    S,
-}
-
-[NetSerializable, Serializable]
 public enum BitrunningDifficulty : byte
 {
+    Peaceful,
     Easy,
     Medium,
     Hard,
-    Extreme,
+    Extreme, // Visible only when server emagged!!!
 }
 
 [NetSerializable, Serializable]
 public enum BitrunningObjectiveType : byte
 {
     None,
-    CollectEncryptedCaches,
-    DeliveryCacheCrate,
-    EliminateEnemies,
-    FillStomach,
-    OverhydrateStomach,
+    CollectEncryptedCaches, // Collect all caches
+    DeliveryCacheCrate, // Delivery cache crate to markers
+    EliminateEnemies, // Kill all marked enemy
+    FillStomach, // Overfeed avatar
+    OverhydrateStomach, // Overhydrate avatar
 }
 
 [NetSerializable, Serializable]

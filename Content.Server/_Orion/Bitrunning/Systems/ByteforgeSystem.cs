@@ -237,6 +237,7 @@ public sealed class ByteforgeSystem : EntitySystem
 
         return domain.Difficulty switch
         {
+            BitrunningDifficulty.Peaceful => server.DeliveryEasyLootTable,
             BitrunningDifficulty.Easy => server.DeliveryEasyLootTable,
             BitrunningDifficulty.Medium => server.DeliveryMediumLootTable,
             BitrunningDifficulty.Hard => server.DeliveryHardLootTable,

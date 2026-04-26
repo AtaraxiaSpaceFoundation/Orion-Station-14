@@ -7,7 +7,8 @@
   suffix: DEBUG, Power-Gravity
   components:
   - type: Battery
-    startingCharge: 50000
+    autoRechargeRate: 50000
+    autoRecharge: True
   - type: GravitySource
 
 - type: entity

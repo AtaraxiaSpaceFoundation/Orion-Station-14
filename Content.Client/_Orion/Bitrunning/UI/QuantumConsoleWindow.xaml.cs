@@ -362,24 +362,10 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         DifficultyMedium.Text = Loc.GetString("bitrunning-ui-difficulty-medium");
         DifficultyHard.Text = Loc.GetString("bitrunning-ui-difficulty-hard-skull");
 
-        ConfigureClearDifficultyButton(DifficultyPeaceful, DifficultyColor.Peaceful);
+        ConfigureDifficultyButton(DifficultyPeaceful, BitrunningDifficulty.Peaceful, DifficultyColor.Peaceful);
         ConfigureDifficultyButton(DifficultyEasy, BitrunningDifficulty.Easy, DifficultyColor.Easy);
         ConfigureDifficultyButton(DifficultyMedium, BitrunningDifficulty.Medium, DifficultyColor.Medium);
         ConfigureDifficultyButton(DifficultyHard, BitrunningDifficulty.Hard, DifficultyColor.Hard);
-    }
-
-    private void ConfigureClearDifficultyButton(Button button, Color color)
-    {
-        button.ModulateSelfOverride = color;
-        button.OnPressed += _ =>
-        {
-            _selectedDifficulty = null;
-
-            if (_lastState != null)
-                RebuildDomainList(_lastState);
-
-            UpdateDifficultySelectionVisuals();
-        };
     }
 
     private void ConfigureDifficultyButton(Button button, BitrunningDifficulty difficulty, Color color)
@@ -398,6 +384,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
     private void UpdateDifficultySelectionVisuals()
     {
+        ApplyDifficultyState(DifficultyPeaceful, BitrunningDifficulty.Peaceful);
         ApplyDifficultyState(DifficultyEasy, BitrunningDifficulty.Easy);
         ApplyDifficultyState(DifficultyMedium, BitrunningDifficulty.Medium);
         ApplyDifficultyState(DifficultyHard, BitrunningDifficulty.Hard);
@@ -407,6 +394,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
     {
         var baseText = difficulty switch
         {
+            BitrunningDifficulty.Peaceful => Loc.GetString("bitrunning-ui-difficulty-peaceful"),
             BitrunningDifficulty.Easy => Loc.GetString("bitrunning-ui-difficulty-easy"),
             BitrunningDifficulty.Medium => Loc.GetString("bitrunning-ui-difficulty-medium"),
             BitrunningDifficulty.Hard => Loc.GetString("bitrunning-ui-difficulty-hard-skull"),
@@ -460,6 +448,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
     {
         return difficulty switch
         {
+            BitrunningDifficulty.Peaceful => DifficultyColor.Peaceful,
             BitrunningDifficulty.Easy => DifficultyColor.Easy,
             BitrunningDifficulty.Medium => DifficultyColor.Medium,
             BitrunningDifficulty.Hard or BitrunningDifficulty.Extreme => DifficultyColor.Hard,
