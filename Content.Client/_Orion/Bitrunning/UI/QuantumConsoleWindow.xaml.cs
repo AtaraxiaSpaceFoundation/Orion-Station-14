@@ -49,6 +49,11 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
     {
         _lastState = state;
 
+        if (!state.ExtremeDifficultyUnlocked && _selectedDifficulty == BitrunningDifficulty.Extreme)
+            _selectedDifficulty = null;
+
+        DifficultyExtreme.Visible = state.ExtremeDifficultyUnlocked;
+
         ConnectedValue.Text = state.Connected
             ? Loc.GetString("bitrunning-console-connected")
             : Loc.GetString("bitrunning-console-disconnected");

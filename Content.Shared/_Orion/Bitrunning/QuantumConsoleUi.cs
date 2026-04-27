@@ -19,6 +19,7 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
     public int ScannerTier;
     public BitrunningServerState State;
     public bool Broadcast;
+    public bool ExtremeDifficultyUnlocked;
     public float CooldownTotalSeconds;
     public float CooldownRemainingSeconds;
     public List<BitrunningDomainListing> Domains;
@@ -33,6 +34,7 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
         int scannerTier,
         BitrunningServerState state,
         bool broadcast,
+        bool extremeDifficultyUnlocked,
         float cooldownTotalSeconds,
         float cooldownRemainingSeconds,
         List<BitrunningDomainListing> domains,
@@ -46,6 +48,7 @@ public sealed class QuantumConsoleBoundUiState : BoundUserInterfaceState
         ScannerTier = scannerTier;
         State = state;
         Broadcast = broadcast;
+        ExtremeDifficultyUnlocked = extremeDifficultyUnlocked;
         CooldownTotalSeconds = cooldownTotalSeconds;
         CooldownRemainingSeconds = cooldownRemainingSeconds;
         Domains = domains;
