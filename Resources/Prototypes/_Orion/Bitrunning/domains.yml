@@ -1,3 +1,7 @@
+# --- --- ---
+#  PEACEFUL
+# --- --- ---
+
 - type: bitrunningVirtualDomain
   id: BeachBar
   name: bitrunning-domain-beach-bar-name
@@ -8,6 +12,10 @@
   mapPath: /Maps/_Orion/Bitrun/beach-bar.yml
   objectiveType: OverhydrateStomach
 
+# --- --- ---
+#    EASY
+# --- --- ---
+
 - type: bitrunningVirtualDomain
   id: XenomorphInfestation
   name: bitrunning-domain-xenomorph-infestation-name
@@ -17,3 +25,30 @@
   bitrunningRewardPoints: 100
   mapPath: /Maps/_Orion/Bitrun/xenomorph-infestation.yml
   objectiveType: DeliveryCacheCrate
+
+# --- --- ---
+#   MEDIUM
+# --- --- ---
+
+- type: bitrunningVirtualDomain
+  id: AbductorShip
+  name: bitrunning-domain-abductor-ship-name
+  description: bitrunning-domain-abductor-ship-desc
+  difficulty: Medium
+  serverRewardPoints: 1
+  bitrunningRewardPoints: 150
+  isModular: true
+  mapPath: /Maps/_Orion/Bitrun/abductor-ship.yml
+  objectiveType: DeliveryCacheCrate
+
+# --- --- ---
+#    HARD
+# --- --- ---
+
+
+
+# --- --- ---
+#  EXTREME 🗣️
+# --- --- ---
+
+

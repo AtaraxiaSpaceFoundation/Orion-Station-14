@@ -74,3 +74,35 @@
   - type: ConditionalSpawner
     prototypes:
     - MobSimpleSyndicateSMG
+
+# ---- Abductor Simple Mobs ----
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleAbductorAgentPistol
+  name: spawner Simple Abductor Agent Pistol
+  suffix: AI, Alien Pistol
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Shitmed/Mobs/Species/Abductor/parts.rsi
+      state: full
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleAbductorAgentPistol
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSimpleAbductorAgentWonderprod
+  name: spawner Simple Abductor Agent Wonderprod
+  suffix: AI, Wonderprod
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Shitmed/Mobs/Species/Abductor/parts.rsi
+      state: full
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSimpleAbductorAgentWonderprod
