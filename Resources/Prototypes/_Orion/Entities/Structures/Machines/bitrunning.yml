@@ -143,6 +143,7 @@
       map: ["byteforge_on"]
     - state: on_particles
       visible: false
+      drawDepth: Effects
       map: ["byteforge_particles"]
     - state: byteforge_panel
       visible: false

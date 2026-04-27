@@ -1,4 +1,4 @@
-# APC that provides power with gravity (compact? uhh uhh...)
+# APC that provides OMNI-power with gravity (compact? uhh uhh...)
 - type: entity
   parent: DebugAPCRecharging
   id: OmniControlUnit
@@ -9,6 +9,11 @@
   - type: Battery
     autoRechargeRate: 50000
     autoRecharge: True
+  - type: PowerNetworkBattery
+    maxSupply: 2147483647
+    maxChargeRate: 2147483647
+    supplyRampTolerance: 2147483647
+    supplyRampRate: 2147483647
   - type: GravitySource
 
 - type: entity

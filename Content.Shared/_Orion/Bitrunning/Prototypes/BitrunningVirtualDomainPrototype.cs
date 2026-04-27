@@ -55,6 +55,7 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
 
     /// <summary>
     /// Marks this domain as modular in UI/data for future modular segment pipelines.
+    /// Also randomize spawn of encrypted cache and cache crate if grid have multiple marks!
     /// </summary>
     [DataField]
     public bool IsModular { get; private set; }

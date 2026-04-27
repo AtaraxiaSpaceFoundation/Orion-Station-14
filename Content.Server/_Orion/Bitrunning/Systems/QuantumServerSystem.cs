@@ -287,17 +287,73 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!hasObjective)
             return;
 
-        if (serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
-            return;
+        var isModular = TryGetCurrentDomain(serverEnt.Comp, out var domain) && domain?.IsModular == true;
+        var objectiveTarget = Math.Max(1, serverEnt.Comp.ObjectiveGoal);
 
+        switch (serverEnt.Comp.ObjectiveType)
+        {
+            case BitrunningObjectiveType.DeliveryCacheCrate:
+                SpawnDeliveryObjectiveCaches(serverEnt, isModular, objectiveTarget);
+                break;
+            case BitrunningObjectiveType.CollectEncryptedCaches:
+                SpawnEncryptedObjectiveCaches(serverEnt, isModular, objectiveTarget);
+                break;
+        }
+    }
+
+    private void SpawnDeliveryObjectiveCaches(Entity<QuantumServerComponent> serverEnt, bool isModular, int objectiveTarget)
+    {
+        var markerCandidates = new List<(EntProtoId Prototype, EntityCoordinates Coordinates)>();
         var markers = EntityQueryEnumerator<BitrunningObjectiveCacheCrateSpawnMarkerComponent, TransformComponent>();
         while (markers.MoveNext(out _, out var marker, out var xform))
         {
             if (xform.MapUid != serverEnt.Comp.DomainMapUid)
                 continue;
 
-            Spawn(marker.CratePrototype, xform.Coordinates);
-            _sparks.DoSparks(xform.Coordinates);
+            markerCandidates.Add((marker.CratePrototype, xform.Coordinates));
+        }
+
+        SpawnObjectiveMarkers(markerCandidates, isModular, objectiveTarget);
+    }
+
+    private void SpawnEncryptedObjectiveCaches(Entity<QuantumServerComponent> serverEnt, bool isModular, int objectiveTarget)
+    {
+        var markerCandidates = new List<(EntProtoId Prototype, EntityCoordinates Coordinates)>();
+        var markers = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
+        while (markers.MoveNext(out _, out _, out var xform))
+        {
+            if (xform.MapUid != serverEnt.Comp.DomainMapUid)
+                continue;
+
+            markerCandidates.Add(("EncryptedCacheNode", xform.Coordinates));
+        }
+
+        SpawnObjectiveMarkers(markerCandidates, isModular, objectiveTarget);
+    }
+
+    private void SpawnObjectiveMarkers(List<(EntProtoId Prototype, EntityCoordinates Coordinates)> markerCandidates, bool isModular, int objectiveTarget)
+    {
+        if (markerCandidates.Count == 0)
+            return;
+
+        _random.Shuffle(markerCandidates);
+
+        if (!isModular)
+        {
+            foreach (var marker in markerCandidates)
+            {
+                Spawn(marker.Prototype, marker.Coordinates);
+                _sparks.DoSparks(marker.Coordinates);
+            }
+
+            return;
+        }
+
+        for (var i = 0; i < objectiveTarget; i++)
+        {
+            var marker = markerCandidates[i % markerCandidates.Count];
+            Spawn(marker.Prototype, marker.Coordinates);
+            _sparks.DoSparks(marker.Coordinates);
         }
     }
 
@@ -556,15 +612,7 @@ public sealed class QuantumServerSystem : EntitySystem
                 _netpod.EjectOccupant(podUid.Value);
         }
 
-        if (canRedirectToBitrunner && originalBody is { } body && serverUid is { } currentServerUid && TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
-        {
-            _stun.TryAddParalyzeDuration(body, currentServer.ExitParalyzeTime);
-
-            _statusEffects.TryUpdateStatusEffectDuration(
-                body,
-                ExitBlindnessStatusEffect,
-                currentServer.ExitBlindnessTime);
-        }
+        ApplyBitrunningExitEffects(originalBody, serverUid);
 
         if (serverUid != null && TryComp<QuantumServerComponent>(serverUid.Value, out var server))
         {
@@ -780,6 +828,18 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         Spawn(server.RewardCachePrototype, coordinates);
         _sparks.DoSparks(coordinates);
+    }
+
+    private void ApplyBitrunningExitEffects(EntityUid? originalBody, EntityUid? serverUid)
+    {
+        if (originalBody is not { } bodyUid || !Exists(bodyUid))
+            return;
+
+        if (serverUid is not { } currentServerUid || !TryComp<QuantumServerComponent>(currentServerUid, out var currentServer))
+            return;
+
+        _stun.TryAddParalyzeDuration(bodyUid, currentServer.ExitParalyzeTime);
+        _statusEffects.TryUpdateStatusEffectDuration(bodyUid, ExitBlindnessStatusEffect, currentServer.ExitBlindnessTime);
     }
 
     private void OnAvatarDamaged(Entity<AvatarConnectionComponent> ent, ref DamageChangedEvent args)
