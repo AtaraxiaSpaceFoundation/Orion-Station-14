@@ -16,7 +16,7 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.BitrunningVisuals.QuantumServerState:
+      enum.QuantumServerVisuals.QuantumServerState:
         qserver_base:
           Unpowered: { state: qserver }
           Ready: { state: qserver }
@@ -151,15 +151,15 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.BitrunningVisuals.ByteforgeActive:
+      enum.ByteforgeVisuals.ByteforgeActive:
         byteforge_on:
           True: { visible: true }
           False: { visible: false }
-      enum.BitrunningVisuals.ByteforgePowered:
+      enum.ByteforgeVisuals.ByteforgePowered:
         byteforge_particles:
           True: { visible: true }
           False: { visible: false }
-      enum.BitrunningVisuals.ByteforgeAngry:
+      enum.ByteforgeVisuals.ByteforgeAngry:
         byteforge_on:
           True: { state: on_overlay_angry }
           False: { state: on_overlay }

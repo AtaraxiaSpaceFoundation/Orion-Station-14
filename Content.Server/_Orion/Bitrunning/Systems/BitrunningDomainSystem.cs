@@ -38,7 +38,7 @@ public sealed class BitrunningDomainSystem : EntitySystem
 
     public IReadOnlyList<BitrunningVirtualDomainPrototype> GetAllDomains()
     {
-        return _allDomains;
+        return _allDomains.AsReadOnly();
     }
 
     public bool TryGetDomain(string id, [NotNullWhen(true)] out BitrunningVirtualDomainPrototype? domain)

@@ -35,12 +35,22 @@ public sealed class TemporaryBlindnessSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, TemporaryBlindnessComponent component, ComponentStartup args)
     {
-        _blindableSystem.UpdateIsBlind(GetBlindnessTarget(uid)); // Orion-Edit
+        // Orion-Edit-Start
+        if (!TryComp<StatusEffectComponent>(uid, out var status) || status.AppliedTo == null)
+            return;
+
+        _blindableSystem.UpdateIsBlind(status.AppliedTo.Value);
+        // Orion-Edit-End
     }
 
     private void OnShutdown(EntityUid uid, TemporaryBlindnessComponent component, ComponentShutdown args)
     {
-        _blindableSystem.UpdateIsBlind(GetBlindnessTarget(uid)); // Orion-Edit
+        // Orion-Edit-Start
+        if (!TryComp<StatusEffectComponent>(uid, out var status) || status.AppliedTo == null)
+            return;
+
+        _blindableSystem.UpdateIsBlind(status.AppliedTo.Value);
+        // Orion-Edit-End
     }
 
     private static void OnBlindTrySee(EntityUid uid, TemporaryBlindnessComponent component, CanSeeAttemptEvent args) // Orion-Edit: Static
@@ -64,14 +74,6 @@ public sealed class TemporaryBlindnessSystem : EntitySystem
     {
         if (ent.Comp.LifeStage <= ComponentLifeStage.Running)
             args.Args.Cancel();
-    }
-
-    private EntityUid GetBlindnessTarget(EntityUid uid)
-    {
-        if (TryComp<StatusEffectComponent>(uid, out var status) && status.AppliedTo is { } target)
-            return target;
-
-        return uid;
     }
     // Orion-End
 }

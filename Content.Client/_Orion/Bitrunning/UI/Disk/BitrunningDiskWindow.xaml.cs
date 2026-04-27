@@ -26,7 +26,7 @@ public sealed partial class BitrunningDiskWindow : DefaultWindow
         {
             var selectedLabel = new Label
             {
-                Text = Loc.GetString("bitrunning-disk-ui-selected", ("option", LocalizeOption(selectedOption))),
+                Text = _loc.GetString("bitrunning-disk-ui-selected", ("option", LocalizeOption(selectedOption))),
             };
             OptionsContainer.AddChild(selectedLabel);
             return;

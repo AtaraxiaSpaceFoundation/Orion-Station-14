@@ -152,6 +152,9 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!_domains.TryGetDomain(domainId, out var domain))
             return false;
 
+        if (!CanAccessDomain(server, domain))
+            return false;
+
         if (domain.Difficulty == BitrunningDifficulty.Extreme && !HasComp<EmaggedComponent>(serverUid))
             return false;
 
@@ -180,6 +183,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.State = BitrunningServerState.Running;
         server.DomainStartTime = _timing.CurTime;
         server.ObjectivePoints = 0;
+        server.NextSatiationProgressTime = _timing.CurTime;
         server.ObjectiveGoal = Math.Max(domain.ObjectiveTarget, 0);
         server.ObjectiveType = domain.ObjectiveType;
         server.ObjectiveCompleted = false;
@@ -209,7 +213,7 @@ public sealed class QuantumServerSystem : EntitySystem
                 _ => QuantumServerVisualState.Ready,
             };
 
-        _appearance.SetData(serverEnt, BitrunningVisuals.QuantumServerState, visualState);
+        _appearance.SetData(serverEnt, QuantumServerVisuals.QuantumServerState, visualState);
     }
 
     private void ResolveDomainMarkers(Entity<QuantumServerComponent> serverEnt)
@@ -320,12 +324,12 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         var markerCandidates = new List<(EntProtoId Prototype, EntityCoordinates Coordinates)>();
         var markers = EntityQueryEnumerator<BitrunningObjectiveEncryptedCacheSpawnMarkerComponent, TransformComponent>();
-        while (markers.MoveNext(out _, out _, out var xform))
+        while (markers.MoveNext(out _, out var marker, out var xform))
         {
             if (xform.MapUid != serverEnt.Comp.DomainMapUid)
                 continue;
 
-            markerCandidates.Add(("EncryptedCacheNode", xform.Coordinates));
+            markerCandidates.Add((marker.CachePrototype, xform.Coordinates));
         }
 
         SpawnObjectiveMarkers(markerCandidates, isModular, objectiveTarget);
@@ -675,6 +679,7 @@ public sealed class QuantumServerSystem : EntitySystem
             BitrunningObjectiveType.CatchFish => Loc.GetString("bitrunning-training-instructions-catch-fish", ("target", target)),
             BitrunningObjectiveType.FillStomach => Loc.GetString("bitrunning-training-instructions-fill-stomach", ("target", target)),
             BitrunningObjectiveType.OverhydrateStomach => Loc.GetString("bitrunning-training-instructions-overhydrate-stomach", ("target", target)),
+            _ => Loc.GetString("bitrunning-training-instructions-none"),
         };
     }
 
@@ -684,8 +689,7 @@ public sealed class QuantumServerSystem : EntitySystem
             return;
 
         serverEnt.Comp.ObjectiveCompleted = true;
-        var serverRewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
-        var bitrunningRewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
+        var rewardMultiplier = CalculateBaseRewardMultiplier(serverEnt.Comp);
 
         if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) && serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
         {
@@ -721,8 +725,9 @@ public sealed class QuantumServerSystem : EntitySystem
             randomBitrunningBonus = domain.RandomBitrunningBonusPoints;
         }
 
-        var serverReward = Math.Max(0, (int) MathF.Round(baseServerReward * serverRewardMultiplier));
-        var bitrunningReward = Math.Max(0, (int) MathF.Round(baseBitrunningReward * bitrunningRewardMultiplier));
+        // Reward multipliers intentionally share the same base scaling rules.
+        var serverReward = Math.Max(0, (int) MathF.Round(baseServerReward * rewardMultiplier));
+        var bitrunningReward = Math.Max(0, (int) MathF.Round(baseBitrunningReward * rewardMultiplier));
 
         if (serverEnt.Comp.WasRandomizedRun)
         {
@@ -1046,6 +1051,7 @@ public sealed class QuantumServerSystem : EntitySystem
         var emagged = HasComp<EmaggedComponent>(serverUid);
         var allowed = _domains.GetAllDomains()
             .Where(d => d.Cost <= server.Points)
+            .Where(d => CanAccessDomain(server, d))
             .Where(d => emagged || d.Difficulty != BitrunningDifficulty.Extreme)
             .Select(d => d.ID)
             .ToList();
@@ -1053,5 +1059,13 @@ public sealed class QuantumServerSystem : EntitySystem
         return allowed.Count == 0
             ? null
             : _random.Pick(allowed);
+    }
+
+    private static bool CanAccessDomain(QuantumServerComponent server, BitrunningVirtualDomainPrototype domain)
+    {
+        if (!domain.HiddenUntilScanned)
+            return true;
+
+        return server.ScannerTier >= domain.RequiredScannerTier;
     }
 }

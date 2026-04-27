@@ -41,14 +41,14 @@ public sealed class ByteforgeSystem : EntitySystem
 
     private void OnByteforgeMapInit(Entity<ByteforgeComponent> ent, ref MapInitEvent args)
     {
-        _appearance.SetData(ent, BitrunningVisuals.ByteforgePowered, _power.IsPowered(ent.Owner));
-        _appearance.SetData(ent, BitrunningVisuals.ByteforgeActive, false);
-        _appearance.SetData(ent, BitrunningVisuals.ByteforgeAngry, IsLinkedServerEmagged(ent.Comp));
+        _appearance.SetData(ent, ByteforgeVisuals.ByteforgePowered, _power.IsPowered(ent.Owner));
+        _appearance.SetData(ent, ByteforgeVisuals.ByteforgeActive, false);
+        _appearance.SetData(ent, ByteforgeVisuals.ByteforgeAngry, IsLinkedServerEmagged(ent.Comp));
     }
 
     private void OnByteforgePowerChanged(Entity<ByteforgeComponent> ent, ref PowerChangedEvent args)
     {
-        _appearance.SetData(ent, BitrunningVisuals.ByteforgePowered, args.Powered);
+        _appearance.SetData(ent, ByteforgeVisuals.ByteforgePowered, args.Powered);
     }
 
     private void OnServerEmagged(Entity<QuantumServerComponent> ent, ref GotEmaggedEvent args)
@@ -68,7 +68,7 @@ public sealed class ByteforgeSystem : EntitySystem
         if (ent.Comp.LinkedByteforge is { } oldByteforge && oldByteforge != args.Sink && TryComp<ByteforgeComponent>(oldByteforge, out var oldByteforgeComp))
         {
             oldByteforgeComp.LinkedServer = null;
-            _appearance.SetData(oldByteforge, BitrunningVisuals.ByteforgeAngry, false);
+            _appearance.SetData(oldByteforge, ByteforgeVisuals.ByteforgeAngry, false);
             Dirty(oldByteforge, oldByteforgeComp);
         }
 
@@ -91,7 +91,7 @@ public sealed class ByteforgeSystem : EntitySystem
         }
 
         if (ent.Comp.LinkedByteforge is { } oldLinked && Exists(oldLinked))
-            _appearance.SetData(oldLinked, BitrunningVisuals.ByteforgeAngry, false);
+            _appearance.SetData(oldLinked, ByteforgeVisuals.ByteforgeAngry, false);
 
         ent.Comp.LinkedByteforge = null;
         Dirty(ent);
@@ -150,8 +150,8 @@ public sealed class ByteforgeSystem : EntitySystem
         byteforge.VisualPulseSerial++;
         var pulseSerial = byteforge.VisualPulseSerial;
 
-        _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeAngry, IsLinkedServerEmagged(byteforge));
-        _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeActive, true);
+        _appearance.SetData(byteforgeUid, ByteforgeVisuals.ByteforgeAngry, IsLinkedServerEmagged(byteforge));
+        _appearance.SetData(byteforgeUid, ByteforgeVisuals.ByteforgeActive, true);
 
         Timer.Spawn(TimeSpan.FromSeconds(1.4f),
             () =>
@@ -159,7 +159,7 @@ public sealed class ByteforgeSystem : EntitySystem
             if (!TryComp<ByteforgeComponent>(byteforgeUid, out var byteforgeComp) || byteforgeComp.VisualPulseSerial != pulseSerial)
                 return;
 
-            _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeActive, false);
+            _appearance.SetData(byteforgeUid, ByteforgeVisuals.ByteforgeActive, false);
         });
     }
 
@@ -173,7 +173,7 @@ public sealed class ByteforgeSystem : EntitySystem
         if (server.LinkedByteforge is not { } byteforgeUid || !Exists(byteforgeUid) || !TryComp<ByteforgeComponent>(byteforgeUid, out var byteforge))
             return;
 
-        _appearance.SetData(byteforgeUid, BitrunningVisuals.ByteforgeAngry, IsLinkedServerEmagged(byteforge));
+        _appearance.SetData(byteforgeUid, ByteforgeVisuals.ByteforgeAngry, IsLinkedServerEmagged(byteforge));
     }
 
     public void RefreshLinkedByteforge(Entity<QuantumServerComponent> ent)

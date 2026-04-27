@@ -1,6 +1,6 @@
 <DefaultWindow xmlns="https://spacestation14.io"
-               MinSize="500 640"
-               SetSize="500 640"
+               MinSize="640 640"
+               SetSize="640 640"
                Title="{Loc 'bitrunning-ui-title'}">
     <BoxContainer Orientation="Vertical" SeparationOverride="3">
         <PanelContainer Name="DomainsPanel">
@@ -21,6 +21,7 @@
                     <Button Name="DifficultyEasy" HorizontalExpand="True"/>
                     <Button Name="DifficultyMedium" HorizontalExpand="True"/>
                     <Button Name="DifficultyHard" HorizontalExpand="True"/>
+                    <Button Name="DifficultyExtreme" HorizontalExpand="True"/>
                 </BoxContainer>
 
                 <ScrollContainer VerticalExpand="True" MinSize="0 285">

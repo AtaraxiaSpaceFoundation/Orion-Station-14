@@ -94,6 +94,8 @@ public sealed partial class QuantumServerComponent : Component
 
     public int ObjectivePoints;
 
+    public TimeSpan NextSatiationProgressTime;
+
     public int ObjectiveGoal;
 
     public bool ObjectiveCompleted;

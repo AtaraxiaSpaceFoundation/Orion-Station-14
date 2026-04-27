@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.DeviceLinking;
@@ -151,7 +152,21 @@ public sealed class QuantumConsoleSystem : EntitySystem
         var serverUid = FindServer(ent);
         if (serverUid == null || !TryComp<QuantumServerComponent>(serverUid, out var server))
         {
-            _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key, new QuantumConsoleBoundUiState(false, null, null, 0, 0, 0, BitrunningServerState.Ready, false, 0f, 0f, new List<BitrunningDomainListing>(), new List<BitrunningOccupantListing>()));
+            _ui.SetUiState(ent.Owner,
+                QuantumConsoleUiKey.Key,
+                new QuantumConsoleBoundUiState(
+                connected: false,
+                server: null,
+                currentDomain: null,
+                occupants: 0,
+                serverPoints: 0,
+                scannerTier: 0,
+                state: BitrunningServerState.Ready,
+                broadcast: false,
+                cooldownTotalSeconds: 0f,
+                cooldownRemainingSeconds: 0f,
+                domains: new List<BitrunningDomainListing>(),
+                connectedAvatars: new List<BitrunningOccupantListing>()));
             return;
         }
 
@@ -187,7 +202,21 @@ public sealed class QuantumConsoleSystem : EntitySystem
         var cooldownTotal = (float) server.Cooldown.TotalSeconds;
         var cooldownRemaining = Math.Max(0f, (float) (server.CooldownEndTime - _timing.CurTime).TotalSeconds);
 
-        _ui.SetUiState(ent.Owner, QuantumConsoleUiKey.Key, new QuantumConsoleBoundUiState(true, GetNetEntity(serverUid.Value), server.CurrentDomain, server.ActiveConnections.Count, server.Points, server.ScannerTier, server.State, server.BroadcastEnabled, cooldownTotal, cooldownRemaining, _domainBuffer.ToList(), _occupantBuffer.ToList()));
+        _ui.SetUiState(ent.Owner,
+            QuantumConsoleUiKey.Key,
+            new QuantumConsoleBoundUiState(
+            connected: true,
+            server: GetNetEntity(serverUid.Value),
+            currentDomain: server.CurrentDomain,
+            occupants: server.ActiveConnections.Count,
+            serverPoints: server.Points,
+            scannerTier: server.ScannerTier,
+            state: server.State,
+            broadcast: server.BroadcastEnabled,
+            cooldownTotalSeconds: cooldownTotal,
+            cooldownRemainingSeconds: cooldownRemaining,
+            domains: _domainBuffer.ToList(),
+            connectedAvatars: _occupantBuffer.ToList()));
     }
 
     private EntityUid? FindServer(Entity<QuantumConsoleComponent> ent)

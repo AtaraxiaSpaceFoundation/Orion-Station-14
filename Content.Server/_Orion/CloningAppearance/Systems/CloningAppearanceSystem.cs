@@ -40,12 +40,12 @@ public sealed class CloningAppearanceSystem : EntitySystem
         SubscribeLocalEvent<CloningAppearanceEvent>(OnPlayerSpawn);
     }
 
-    public EntityUid SpawnProfileEntity(EntityCoordinates coordinates, HumanoidCharacterProfile profile, EntityUid? stationUid)
+    public EntityUid SpawnProfileEntity(EntityCoordinates coordinates, HumanoidCharacterProfile profile, EntityUid? stationUid = null)
     {
         return _spawning.SpawnPlayerMob(coordinates, null, profile, stationUid);
     }
 
-    public EntityUid SpawnProfileEntity(EntityCoordinates coordinates, ICommonSession player, EntityUid? stationUid)
+    public EntityUid SpawnProfileEntity(EntityCoordinates coordinates, ICommonSession player, EntityUid? stationUid = null)
     {
         var profile = _ticker.GetPlayerProfile(player);
         return SpawnProfileEntity(coordinates, profile, stationUid);

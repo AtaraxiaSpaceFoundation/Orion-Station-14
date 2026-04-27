@@ -230,7 +230,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         var serverReady = state.State == BitrunningServerState.Ready;
         var enoughServerPoints = state.ServerPoints >= domain.Cost;
         var canDeploy = state.Connected && serverReady && enoughServerPoints;
-        var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.OrdinalIgnoreCase);
+        var isCurrent = state.CurrentDomain != null && state.CurrentDomain.Equals(domain.Id, StringComparison.Ordinal);
         var expanded = _expandedDomainId == domain.Id;
 
         row.DomainButton.Text = expanded
@@ -361,11 +361,13 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         DifficultyEasy.Text = Loc.GetString("bitrunning-ui-difficulty-easy");
         DifficultyMedium.Text = Loc.GetString("bitrunning-ui-difficulty-medium");
         DifficultyHard.Text = Loc.GetString("bitrunning-ui-difficulty-hard-skull");
+        DifficultyExtreme.Text = Loc.GetString("bitrunning-ui-difficulty-extreme");
 
         ConfigureDifficultyButton(DifficultyPeaceful, BitrunningDifficulty.Peaceful, DifficultyColor.Peaceful);
         ConfigureDifficultyButton(DifficultyEasy, BitrunningDifficulty.Easy, DifficultyColor.Easy);
         ConfigureDifficultyButton(DifficultyMedium, BitrunningDifficulty.Medium, DifficultyColor.Medium);
         ConfigureDifficultyButton(DifficultyHard, BitrunningDifficulty.Hard, DifficultyColor.Hard);
+        ConfigureDifficultyButton(DifficultyExtreme, BitrunningDifficulty.Extreme, DifficultyColor.Hard);
     }
 
     private void ConfigureDifficultyButton(Button button, BitrunningDifficulty difficulty, Color color)
@@ -388,6 +390,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         ApplyDifficultyState(DifficultyEasy, BitrunningDifficulty.Easy);
         ApplyDifficultyState(DifficultyMedium, BitrunningDifficulty.Medium);
         ApplyDifficultyState(DifficultyHard, BitrunningDifficulty.Hard);
+        ApplyDifficultyState(DifficultyExtreme, BitrunningDifficulty.Extreme);
     }
 
     private void ApplyDifficultyState(Button button, BitrunningDifficulty? difficulty)

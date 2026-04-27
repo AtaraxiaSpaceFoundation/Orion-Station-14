@@ -72,6 +72,9 @@ public sealed class NetpodSystem : EntitySystem
 
     private void OnDestroyed(Entity<NetpodComponent> ent, ref DestructionEventArgs args)
     {
+        if (ent.Comp.Avatar != null)
+            _server.DisconnectAvatar(ent.Comp.Avatar.Value, true);
+
         EjectOccupant(ent.Owner);
     }
 

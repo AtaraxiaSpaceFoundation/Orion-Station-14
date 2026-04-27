@@ -12,6 +12,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Bitrunning.Systems;
 
@@ -23,6 +24,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly SparksSystem _sparks = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -47,12 +49,16 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
                     && server.ObjectiveType != BitrunningObjectiveType.OverhydrateStomach))
                 continue;
 
+            if (_timing.CurTime < server.NextSatiationProgressTime)
+                continue;
+
             foreach (var avatar in server.ActiveConnections)
             {
                 if (!IsAvatarMeetingSatiationObjective(avatar, server.ObjectiveType))
                     continue;
 
                 _server.AddObjectiveProgress(serverUid, 1);
+                server.NextSatiationProgressTime = _timing.CurTime + TimeSpan.FromSeconds(1);
                 break;
             }
         }
@@ -144,8 +150,6 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
 
     private void OnFishCaught(Entity<AvatarConnectionComponent> ent, ref FishCaughtEvent args)
     {
-        _ = args.FishId;
-
         if (!TryResolveDomainMapUid(ent.Owner, null, out var mapUid))
             return;
 

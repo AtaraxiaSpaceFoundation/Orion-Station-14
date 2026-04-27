@@ -19,6 +19,8 @@ public sealed class BitrunningDiskBoundUserInterface(EntityUid owner, Enum uiKey
 
     protected override void UpdateState(BoundUserInterfaceState state)
     {
+        base.UpdateState(state);
+
         if (state is not BitrunningDiskBoundUiState cast || _window == null)
             return;
 

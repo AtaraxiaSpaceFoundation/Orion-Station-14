@@ -1,3 +1,4 @@
+using Content.Shared.Ghost.Roles;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
@@ -118,13 +119,13 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// Secondary loot prototype IDs available for reward pipeline extensions.
     /// </summary>
     [DataField]
-    public string[] OptionalSecondaryLoot { get; private set; } = [];
+    public EntProtoId[] OptionalSecondaryLoot { get; private set; } = [];
 
     /// <summary>
     /// Optional ghost-role prototype IDs used by domain-specific ghost integration.
     /// </summary>
     [DataField]
-    public string[] OptionalGhostRoles { get; private set; } = [];
+    public ProtoId<GhostRolePrototype>[] OptionalGhostRoles { get; private set; } = [];
 
     /// <summary>
     /// If true, the run is automatically stopped after objective completion.

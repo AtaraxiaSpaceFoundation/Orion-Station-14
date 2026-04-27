@@ -10,7 +10,7 @@ namespace Content.Shared._Orion.Bitrunning.Components;
 public sealed partial class BitrunningDomainRuntimeComponent : Component;
 
 /// <summary>
-/// Marker used by the domain loader to place the return point where disconnecting avatars.
+/// Marker used by the domain loader to place the return point where triggering disconnecting.
 /// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningExitMarkerComponent : Component;
@@ -25,7 +25,11 @@ public sealed partial class BitrunningGoalMarkerComponent : Component;
 /// Marker that defines preferred spawn positions for encrypted cache objectives.
 /// </summary>
 [RegisterComponent]
-public sealed partial class BitrunningObjectiveEncryptedCacheSpawnMarkerComponent : Component;
+public sealed partial class BitrunningObjectiveEncryptedCacheSpawnMarkerComponent : Component
+{
+    [DataField]
+    public EntProtoId CachePrototype = "EncryptedCacheNode";
+}
 
 /// <summary>
 /// Marker that defines where delivery objective crates are spawned and which crate prototype is used.

@@ -12,9 +12,14 @@ public enum QuantumServerVisualState : byte
 }
 
 [Serializable, NetSerializable]
-public enum BitrunningVisuals : byte
+public enum QuantumServerVisuals : byte
 {
     QuantumServerState,
+}
+
+[Serializable, NetSerializable]
+public enum ByteforgeVisuals : byte
+{
     ByteforgePowered,
     ByteforgeActive,
     ByteforgeAngry,

@@ -53,7 +53,8 @@
   name: bitrunning-domain-xenomorph-infestation-name
   description: bitrunning-domain-xenomorph-infestation-desc
   difficulty: Easy
-  serverRewardPoints: 1
+  cost: 1
+  serverRewardPoints: 2
   bitrunningRewardPoints: 150
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/xenomorph-infestation.yml
@@ -68,7 +69,8 @@
   name: bitrunning-domain-abductor-ship-name
   description: bitrunning-domain-abductor-ship-desc
   difficulty: Medium
-  serverRewardPoints: 1
+  cost: 2
+  serverRewardPoints: 4
   bitrunningRewardPoints: 250
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/abductor-ship.yml
@@ -83,7 +85,8 @@
   name: bitrunning-domain-zealot-arena-name
   description: bitrunning-domain-zealot-arena-desc
   difficulty: Hard
-  serverRewardPoints: 3
+  cost: 3
+  serverRewardPoints: 6
   bitrunningRewardPoints: 600
   mapPath: /Maps/_Orion/Bitrun/zealot-arena.yml
   objectiveType: EliminateEnemies

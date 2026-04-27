@@ -353,7 +353,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
 
         var ev = new SurveillanceCameraDeactivateEvent(camera);
 
-        RemoveActiveViewers(camera, new(component.ActiveViewers), null, component);
+        RemoveActiveViewers(camera, new(component.ActiveViewers.Keys), null, component); // Orion-Edit
         component.Active = false;
 
         // Send a targetted event to all monitors.
@@ -405,7 +405,7 @@ public sealed class SurveillanceCameraSystem : EntitySystem
         // Orion-Edit-Start
         var subscribeTarget = ResolveSubscribeTarget(camera);
         _viewSubscriberSystem.AddViewSubscriber(subscribeTarget, actor.PlayerSession);
-        component.ActiveViewers.Add(player);
+        component.ActiveViewers[player] = subscribeTarget;
         // Orion-Edit-End
 
         if (monitor != null)
@@ -465,7 +465,12 @@ public sealed class SurveillanceCameraSystem : EntitySystem
         if (!Resolve(camera, ref component))
             return;
 
-        var subscribeTarget = ResolveSubscribeTarget(camera); // Orion
+        // Orion-Start
+        var subscribeTarget = ResolveSubscribeTarget(camera);
+        if (component.ActiveViewers.TryGetValue(player, out var storedTarget))
+            subscribeTarget = storedTarget;
+        // Orion-End
+
         if (Resolve(player, ref actor))
             _viewSubscriberSystem.RemoveViewSubscriber(subscribeTarget, actor.PlayerSession); // Orion-Edit
 
@@ -485,8 +490,8 @@ public sealed class SurveillanceCameraSystem : EntitySystem
         if (!Resolve(camera, ref component))
             return;
 
-        var subscribeTarget = ResolveSubscribeTarget(camera);
-        foreach (var viewer in component.ActiveViewers.ToArray())
+//        var subscribeTarget = ResolveSubscribeTarget(camera); // Orion-Edit
+        foreach (var (viewer, subscribeTarget) in component.ActiveViewers.ToArray()) // Orion-Edit
         {
             if (!TryComp<ActorComponent>(viewer, out var actor))
                 continue;

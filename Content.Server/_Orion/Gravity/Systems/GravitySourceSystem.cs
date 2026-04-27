@@ -52,7 +52,7 @@ public sealed class GravitySourceSystem : EntitySystem
             return;
 
         if (args.OldParent is { } oldParent)
-            _gravity.RefreshGravity(oldParent);
+            RefreshParentGravity(oldParent, false);
 
         RefreshParentGravity(args.Transform.ParentUid, true);
     }

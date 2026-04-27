@@ -92,7 +92,7 @@ public sealed class BitrunningDiskSystem : EntitySystem
 
         if (ent.Comp.SelectedOption != null)
         {
-            _popup.PopupEntity(Loc.GetString("bitrunning-disk-popup-already-selected", ("option", ent.Comp.SelectedOption)), ent, args.User, PopupType.SmallCaution);
+            _popup.PopupEntity(Loc.GetString("bitrunning-disk-popup-already-selected", ("option", LocalizeOption(ent.Comp.SelectedOption))), ent, args.User, PopupType.SmallCaution);
             return;
         }
 

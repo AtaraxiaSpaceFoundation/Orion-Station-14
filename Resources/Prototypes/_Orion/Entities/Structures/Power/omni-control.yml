@@ -4,16 +4,16 @@
   id: OmniControlUnit
   name: omni-control unit
   description: A compact all-in-one utility core that provides power and local gravity.
-  suffix: DEBUG, Power-Gravity
+  suffix: Power-Gravity
   components:
   - type: Battery
     autoRechargeRate: 50000
     autoRecharge: True
   - type: PowerNetworkBattery
-    maxSupply: 2147483647
-    maxChargeRate: 2147483647
-    supplyRampTolerance: 2147483647
-    supplyRampRate: 2147483647
+    maxSupply: 1.0e9
+    maxChargeRate: 1.0e9
+    supplyRampTolerance: 1.0e9
+    supplyRampRate: 1.0e9
   - type: GravitySource
 
 - type: entity
@@ -21,7 +21,7 @@
   id: OmniControlUnitUnlocked
   name: omni-control unit
   description: A compact all-in-one utility core that provides power and local gravity.
-  suffix: DEBUG, Power-Gravity, Unlocked
+  suffix: Power-Gravity, Unlocked
   components:
   - type: AccessReader
     access: [ ]
