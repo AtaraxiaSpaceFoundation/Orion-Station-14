@@ -121,7 +121,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 40
+        Piercing: 45 # Orion-Edit: 40 > 45
         Structural: 20 # Orion-Edit: 15 > 20
 
 
@@ -180,8 +180,9 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 3
-        Heat: 3
+        Blunt: 4 # Orion-Edit: 3 > 4
+        Heat: 6 # Orion-Edit: 3 > 6
+      armorPenetration: -0.1 # Orion
   - type: IgnitionSource
     ignited: true
 
@@ -332,8 +333,9 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 5
+        Radiation: 2 # Orion-Edit: 5 > 2
         Piercing: 5
+      armorPenetration: 0.15 # Orion
 
 - type: entity
   id: PelletShotgunUraniumSpread

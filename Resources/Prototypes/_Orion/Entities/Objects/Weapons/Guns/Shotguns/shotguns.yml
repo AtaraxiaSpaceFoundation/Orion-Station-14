@@ -42,6 +42,7 @@
     capacity: 6
   - type: GunRequiresWield
   - type: Gun
+    fireRate: 1.7
     cameraRecoilScalar: 2
     soundGunshot:
       path: /Audio/_Orion/Weapons/Guns/Shotguns/sh39.ogg
