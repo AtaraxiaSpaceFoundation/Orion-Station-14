@@ -21,6 +21,7 @@
   bitrunningRewardPoints: 60
   mapPath: /Maps/_Orion/Bitrun/breeze-bay.yml
   objectiveType: CatchFish
+  objectiveTarget: 5
 
 # --- --- ---
 #    EASY
@@ -33,6 +34,7 @@
   difficulty: Easy
   serverRewardPoints: 1
   bitrunningRewardPoints: 150
+  isModular: true
   mapPath: /Maps/_Orion/Bitrun/xenomorph-infestation.yml
   objectiveType: DeliveryCacheCrate
 

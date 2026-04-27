@@ -3,6 +3,7 @@ using Content.Server._Orion.Bitrunning.Components;
 using Content.Server.Power.Components;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
+using Content.Shared.Destructible;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Mobs;
@@ -42,7 +43,8 @@ public sealed class NetpodSystem : EntitySystem
     {
         SubscribeLocalEvent<NetpodComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<NetpodComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<NetpodComponent, EntityTerminatingEvent>(OnDestroyed);
+        SubscribeLocalEvent<NetpodComponent, DestructionEventArgs>(OnDestroyed);
+        SubscribeLocalEvent<NetpodComponent, EntityTerminatingEvent>(OnTerminating);
         SubscribeLocalEvent<NetpodComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
         SubscribeLocalEvent<NetpodComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
         SubscribeLocalEvent<NetpodComponent, ContainerIsRemovingAttemptEvent>(OnOccupantRemoveAttempt);
@@ -68,10 +70,13 @@ public sealed class NetpodSystem : EntitySystem
         RefreshLinkedServer(ent);
     }
 
-    private void OnDestroyed(Entity<NetpodComponent> ent, ref EntityTerminatingEvent args)
+    private void OnDestroyed(Entity<NetpodComponent> ent, ref DestructionEventArgs args)
     {
         EjectOccupant(ent.Owner);
+    }
 
+    private void OnTerminating(Entity<NetpodComponent> ent, ref EntityTerminatingEvent args)
+    {
         if (ent.Comp.Avatar != null)
             _server.DisconnectAvatar(ent.Comp.Avatar.Value, true);
     }

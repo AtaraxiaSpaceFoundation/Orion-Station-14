@@ -2,6 +2,8 @@
   id: EncryptedCacheNode
   name: encrypted cache
   description: A secured objective cache containing encrypted bitrunning verification data.
+  placement:
+    mode: SnapgridCenter
   components:
   - type: Sprite
     sprite: _Orion/Objects/Specific/Cargo/Bitrunning/encrypted_cache.rsi
