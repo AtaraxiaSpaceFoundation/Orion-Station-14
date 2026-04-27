@@ -23,6 +23,17 @@
   objectiveType: CatchFish
   objectiveTarget: 5
 
+- type: bitrunningVirtualDomain
+  id: GrasslandHunt
+  name: bitrunning-domain-grassland-hunt-name
+  description: bitrunning-domain-grassland-hunt-desc
+  difficulty: Peaceful
+  serverRewardPoints: 1
+  bitrunningRewardPoints: 45
+  mapPath: /Maps/_Orion/Bitrun/grassland-hunt.yml
+  objectiveType: EliminateEnemies
+  objectiveTarget: 8
+
 # --- --- ---
 #    EASY
 # --- --- ---

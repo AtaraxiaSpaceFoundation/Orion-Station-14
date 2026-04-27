@@ -22,3 +22,25 @@
   - type: ConditionalSpawner
     prototypes:
       - MobHierophantBitrunning
+
+- type: entity
+  parent: SpawnMobReindeerBuck
+  id: SpawnMobReindeerBuckBitrunning
+  name: Reindeer Buck Spawner
+  suffix: Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+      - MobReindeerBuckBitrunning
+
+- type: entity
+  parent: SpawnMobReindeerDoe
+  id: SpawnMobReindeerDoeBitrunning
+  name: Reindeer Doe Spawner
+  suffix: Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+      - MobReindeerDoeBitrunning
