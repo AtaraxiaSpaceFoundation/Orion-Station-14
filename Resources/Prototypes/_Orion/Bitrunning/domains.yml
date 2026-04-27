@@ -34,6 +34,16 @@
   objectiveType: EliminateEnemies
   objectiveTarget: 8
 
+- type: bitrunningVirtualDomain
+  id: CosmicVestige
+  name: bitrunning-domain-cosmic-vestige-name
+  description: bitrunning-domain-cosmic-vestige-desc
+  difficulty: Peaceful
+  cost: 20
+  bitrunningRewardPoints: 600
+  mapPath: /Maps/_Orion/Bitrun/cosmic-vestige.yml
+  objectiveType: DeliveryCacheCrate
+
 # --- --- ---
 #    EASY
 # --- --- ---
