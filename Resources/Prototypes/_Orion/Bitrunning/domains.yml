@@ -45,7 +45,15 @@
 #    HARD
 # --- --- ---
 
-
+- type: bitrunningVirtualDomain
+  id: ZealotArena
+  name: bitrunning-domain-zealot-arena-name
+  description: bitrunning-domain-zealot-arena-desc
+  difficulty: Hard
+  serverRewardPoints: 3
+  bitrunningRewardPoints: 500
+  mapPath: /Maps/_Orion/Bitrun/zealot-arena.yml
+  objectiveType: EliminateEnemies
 
 # --- --- ---
 #  EXTREME 🗣️

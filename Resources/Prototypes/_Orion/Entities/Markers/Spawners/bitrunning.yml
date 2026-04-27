@@ -11,3 +11,14 @@
   - type: ConditionalSpawner
     prototypes:
       - EncryptedCacheNode
+
+- type: entity
+  parent: SpawnMobHierophant
+  id: SpawnMobHierophantBitrunning
+  name: Hierophant spawner
+  suffix: Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+      - MobHierophantBitrunning
