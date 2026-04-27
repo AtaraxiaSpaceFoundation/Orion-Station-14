@@ -1,4 +1,5 @@
 using Content.Goobstation.Common.Effects;
+using Content.Goobstation.Shared.Fishing.Events;
 using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared.Interaction;
@@ -29,6 +30,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         SubscribeLocalEvent<BitrunningObjectivePointComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<BitrunningObjectiveDeliveryPointComponent, StartCollideEvent>(OnDeliveryCollide);
         SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, MobStateChangedEvent>(OnEnemyStateChanged);
+        SubscribeLocalEvent<AvatarConnectionComponent, FishCaughtEvent>(OnFishCaught);
     }
 
     public override void Update(float frameTime)
@@ -138,6 +140,22 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
             return;
 
         _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
+    }
+
+    private void OnFishCaught(Entity<AvatarConnectionComponent> ent, ref FishCaughtEvent args)
+    {
+        _ = args.FishId;
+
+        if (!TryResolveDomainMapUid(ent.Owner, null, out var mapUid))
+            return;
+
+        if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
+            return;
+
+        if (server.ObjectiveType != BitrunningObjectiveType.CatchFish)
+            return;
+
+        _server.AddObjectiveProgress(serverUid, 1);
     }
 
     private bool TryResolveDomainMapUid(EntityUid primaryUid, EntityUid? fallbackUid, out EntityUid mapUid, out EntityCoordinates coordinates)

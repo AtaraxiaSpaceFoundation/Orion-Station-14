@@ -21,6 +21,7 @@ bitrunning-netpod-ui-search = Поиск
 bitrunning-training-instructions-collect = Соберите { $target } узлов зашифрованного кэша.
 bitrunning-training-instructions-delivery = Доставьте ящики кэша { $target } раз.
 bitrunning-training-instructions-eliminate = Устраните { $target } угроз домена.
+bitrunning-training-instructions-catch-fish = Поймайте рыбу { $target } раз.
 bitrunning-training-instructions-fill-stomach = Доведите сытость до предела { $target } раз.
 bitrunning-training-instructions-overhydrate-stomach = Переполните желудок жидкостями { $target } раз.
 bitrunning-training-instructions-none = Этот домен запущен без целей.

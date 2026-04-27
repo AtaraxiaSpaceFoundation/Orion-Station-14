@@ -21,6 +21,7 @@ bitrunning-netpod-ui-search = Search
 bitrunning-training-instructions-collect = Collect { $target } encrypted cache nodes.
 bitrunning-training-instructions-delivery = Deliver cache crates { $target } times.
 bitrunning-training-instructions-eliminate = Eliminate { $target } domain threats.
+bitrunning-training-instructions-catch-fish = Catch fish { $target } times.
 bitrunning-training-instructions-fill-stomach = Reach overfed satiation { $target } times.
 bitrunning-training-instructions-overhydrate-stomach = Reach overhydrated satiation { $target } times.
 bitrunning-training-instructions-none = This domain is running without objectives.

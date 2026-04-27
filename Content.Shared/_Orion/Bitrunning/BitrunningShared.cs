@@ -27,6 +27,7 @@ public enum BitrunningObjectiveType : byte
     CollectEncryptedCaches, // Collect all caches
     DeliveryCacheCrate, // Delivery cache crate to markers
     EliminateEnemies, // Kill all marked enemy
+    CatchFish, // Catch fish
     FillStomach, // Overfeed avatar
     OverhydrateStomach, // Overhydrate avatar
 }
