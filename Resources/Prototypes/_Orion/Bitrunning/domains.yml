@@ -58,7 +58,12 @@
   bitrunningRewardPoints: 150
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/xenomorph-infestation.yml
-  objectiveType: DeliveryCacheCrate
+  objectiveTypePool:
+  - DeliveryCacheCrate
+  - EliminateEnemies
+  objectiveTargetByType:
+    DeliveryCacheCrate: 1
+    EliminateEnemies: 20
 
 # --- --- ---
 #   MEDIUM

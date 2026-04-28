@@ -106,3 +106,61 @@
   - type: ConditionalSpawner
     prototypes:
     - MobSimpleAbductorAgentWonderprod
+
+# ---- Assistant Mobs ----
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantBat
+  name: spawner Assistant Bat
+  categories: [ Spawner ]
+  suffix: AI, Bat
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveBat
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantAxe
+  name: spawner Assistant Axe
+  categories: [ Spawner ]
+  suffix: AI, Axe
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveAxe
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantToolbox
+  name: spawner Assistant Toolbox
+  categories: [ Spawner ]
+  suffix: AI, Toolbox
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveToolbox
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantSpear
+  name: spawner Assistant Spear
+  categories: [ Spawner ]
+  suffix: AI, Spear
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveSpear

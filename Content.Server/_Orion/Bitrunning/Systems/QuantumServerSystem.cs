@@ -177,6 +177,8 @@ public sealed class QuantumServerSystem : EntitySystem
             return false;
         }
 
+        var objectiveType = PickObjectiveType(domain);
+
         server.DomainMapUid = mapEntity;
         server.DomainGridUid = grid.Value;
         server.CurrentDomain = domainId;
@@ -184,8 +186,8 @@ public sealed class QuantumServerSystem : EntitySystem
         server.DomainStartTime = _timing.CurTime;
         server.ObjectivePoints = 0;
         server.NextSatiationProgressTime = _timing.CurTime;
-        server.ObjectiveGoal = Math.Max(domain.ObjectiveTarget, 0);
-        server.ObjectiveType = domain.ObjectiveType;
+        server.ObjectiveType = objectiveType;
+        server.ObjectiveGoal = ResolveObjectiveGoal((serverUid, server), domain, objectiveType);
         server.ObjectiveCompleted = false;
         server.Points -= domain.Cost;
         server.ThreatsSpawned = 0;
@@ -196,6 +198,7 @@ public sealed class QuantumServerSystem : EntitySystem
         server.GrantedItemDisks.Clear();
 
         ResolveDomainMarkers((serverUid, server));
+        CleanupObjectiveArtifacts((serverUid, server));
         _audio.PlayPvs(server.DomainStartSound, serverUid);
         UpdateServerVisuals((serverUid, server));
         Dirty(serverUid, server);
@@ -1067,5 +1070,64 @@ public sealed class QuantumServerSystem : EntitySystem
             return true;
 
         return server.ScannerTier >= domain.RequiredScannerTier;
+    }
+
+    private BitrunningObjectiveType PickObjectiveType(BitrunningVirtualDomainPrototype domain)
+    {
+        if (domain.ObjectiveTypePool.Length == 0)
+            return domain.ObjectiveType;
+
+        return _random.Pick(domain.ObjectiveTypePool);
+    }
+
+    private int ResolveObjectiveGoal(Entity<QuantumServerComponent> serverEnt, BitrunningVirtualDomainPrototype domain, BitrunningObjectiveType objectiveType)
+    {
+        var explicitTarget = domain.ObjectiveTargetByType.TryGetValue(objectiveType, out var byTypeTarget)
+            ? Math.Max(byTypeTarget, 0)
+            : Math.Max(domain.ObjectiveTarget, 0);
+        if (explicitTarget > 0 || objectiveType != BitrunningObjectiveType.EliminateEnemies)
+            return explicitTarget;
+
+        if (serverEnt.Comp.DomainMapUid is not { } mapUid)
+            return 0;
+
+        var target = 0;
+        var enemies = EntityQueryEnumerator<BitrunningDomainEnemyObjectiveComponent, TransformComponent>();
+        while (enemies.MoveNext(out _, out _, out var xform))
+        {
+            if (xform.MapUid != mapUid)
+                continue;
+
+            target++;
+        }
+
+        return target;
+    }
+
+    private void CleanupObjectiveArtifacts(Entity<QuantumServerComponent> serverEnt)
+    {
+        if (serverEnt.Comp.DomainMapUid is not { } mapUid)
+            return;
+
+        var keepEncryptedCaches = serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.CollectEncryptedCaches;
+        var keepDeliveryCaches = serverEnt.Comp.ObjectiveType == BitrunningObjectiveType.DeliveryCacheCrate;
+
+        var objectivePoints = EntityQueryEnumerator<BitrunningObjectivePointComponent, TransformComponent>();
+        while (objectivePoints.MoveNext(out var uid, out _, out var xform))
+        {
+            if (xform.MapUid != mapUid || keepEncryptedCaches)
+                continue;
+
+            QueueDel(uid);
+        }
+
+        var deliveryObjectives = EntityQueryEnumerator<BitrunningObjectiveCargoComponent, TransformComponent>();
+        while (deliveryObjectives.MoveNext(out var uid, out _, out var xform))
+        {
+            if (xform.MapUid != mapUid || keepDeliveryCaches)
+                continue;
+
+            QueueDel(uid);
+        }
     }
 }

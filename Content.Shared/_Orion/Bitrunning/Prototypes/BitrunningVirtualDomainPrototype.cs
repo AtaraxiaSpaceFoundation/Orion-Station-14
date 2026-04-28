@@ -98,10 +98,22 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public BitrunningObjectiveType ObjectiveType { get; private set; } = BitrunningObjectiveType.None;
 
     /// <summary>
+    /// Optional objective pool. If set, one objective is selected randomly on run start.
+    /// </summary>
+    [DataField]
+    public BitrunningObjectiveType[] ObjectiveTypePool { get; private set; } = [];
+
+    /// <summary>
     /// Objective progress needed to trigger reward flow.
     /// </summary>
     [DataField]
     public int ObjectiveTarget { get; private set; } = 1;
+
+    /// <summary>
+    /// Optional objective-specific target overrides.
+    /// </summary>
+    [DataField]
+    public Dictionary<BitrunningObjectiveType, int> ObjectiveTargetByType { get; private set; } = [];
 
     /// <summary>
     /// If true, objective completion spawns a reward cache crate in the domain.

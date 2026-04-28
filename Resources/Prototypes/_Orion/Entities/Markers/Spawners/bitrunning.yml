@@ -44,3 +44,149 @@
   - type: ConditionalSpawner
     prototypes:
       - MobReindeerDoeBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantBatBitrunning
+  name: Assistant Bat spawner
+  suffix: AI, Bat, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveBatBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantAxeBitrunning
+  name: Assistant Axe spawner
+  suffix: AI, Axe, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveAxeBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantToolboxBitrunning
+  name: Assistant Toolbox spawner
+  suffix: AI, Toolbox, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveToolboxBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAssistantSpearBitrunning
+  name: Assistant Spear spawner
+  suffix: AI, Spear, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAssistantAggressiveSpearBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphLarvaBitrunning
+  name: xenomorph larva spawner
+  suffix: Bitrunning, Cant Evolve
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _White/Mobs/Aliens/Xenomorphs/larva.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphLarvaBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphDroneBitrunning
+  name: xenomorph drone spawner
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _White/Mobs/Aliens/Xenomorphs/drone.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphDroneBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphHunterBitrunning
+  name: xenomorph hunter spawner
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _White/Mobs/Aliens/Xenomorphs/hunter.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphHunterBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphPraetorianBitrunning
+  name: xenomorph praetorian spawner
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _White/Mobs/Aliens/Xenomorphs/praetorian.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphPraetorianBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphSentinelBitrunning
+  name: xenomorph sentinel spawner
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _White/Mobs/Aliens/Xenomorphs/sentinel.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphSentinelBitrunning
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobXenomorphQueenBitrunning
+  name: xenomorph queen spawner
+  suffix: Bitrunning
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _White/Mobs/Aliens/Xenomorphs/queen.rsi
+      state: xenomorph
+  - type: ConditionalSpawner
+    prototypes:
+    - MobXenomorphQueenBitrunning

@@ -173,7 +173,10 @@ public sealed class QuantumConsoleSystem : EntitySystem
 
         _domainBuffer.Clear();
         var emagged = HasComp<EmaggedComponent>(serverUid.Value);
-        foreach (var domain in _domains.GetAllDomains())
+        foreach (var domain in _domains.GetAllDomains()
+                     .OrderBy(d => d.Difficulty)
+                     .ThenBy(d => d.Cost)
+                     .ThenBy(d => d.ID))
         {
             if (domain.Difficulty == BitrunningDifficulty.Extreme && !emagged)
                 continue;
