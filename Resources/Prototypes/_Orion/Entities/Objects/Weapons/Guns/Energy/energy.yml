@@ -24,7 +24,7 @@
     minAngle: 24
     maxAngle: 45
     cameraRecoilScalar: 0.5
-    fireRate: 3
+    fireRate: 2.5
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -40,7 +40,7 @@
     startingCharge: 2000
   - type: HitscanBatteryAmmoProvider
     proto: RedMediumLaser
-    fireCost: 56
+    fireCost: 40
   - type: Wieldable
 
 - type: entity
@@ -69,7 +69,7 @@
   - type: Gun
     maxAngle: 50
     minAngle: 50
-    fireRate: 8
+    fireRate: 7
     selectedMode: FullAuto
     availableModes:
     - FullAuto
@@ -84,7 +84,7 @@
     startingCharge: 7500
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
-    fireCost: 50
+    fireCost: 60
   - type: Wieldable
   - type: UseDelay
     delay: 1
@@ -120,7 +120,7 @@
     minAngle: 7
     maxAngle: 45
     cameraRecoilScalar: 2
-    fireRate: 4
+    fireRate: 3.5
     selectedMode: FullAuto
     availableModes:
     - SemiAuto
@@ -136,7 +136,7 @@
     startingCharge: 1000
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
-    fireCost: 40
+    fireCost: 35
   - type: Wieldable
 
 - type: entity
