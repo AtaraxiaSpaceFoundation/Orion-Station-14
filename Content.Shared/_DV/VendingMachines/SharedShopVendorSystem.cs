@@ -88,6 +88,11 @@ public abstract class SharedShopVendorSystem : EntitySystem
 
     private void OnPointsPurchase(Entity<PointsVendorComponent> ent, ref ShopVendorPurchaseEvent args)
     {
+        // Orion-Start
+        if (args.Paid)
+            return;
+        // Orion-End
+
         if (_points.GetPointComp(args.User) is {} idCard && _points.RemovePoints(idCard, args.Cost)) // Goobstation - borg Miningpoints
             args.Paid = true;
     }
@@ -100,6 +105,9 @@ public abstract class SharedShopVendorSystem : EntitySystem
 
     private void OnBitrunningPointsPurchase(Entity<BitrunningPointsVendorComponent> ent, ref ShopVendorPurchaseEvent args)
     {
+        if (args.Paid)
+            return;
+
         if (_bitrunningPoints.GetPointComp(args.User) is {} account && _bitrunningPoints.RemovePoints(account, args.Cost))
             args.Paid = true;
     }

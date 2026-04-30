@@ -690,7 +690,7 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
                     : null;
             }
 
-            if (activeForUi == null && TryComp<NetpodComponent>(activeCameraUid, out var pod))
+            if (TryComp<NetpodComponent>(activeCameraUid, out var pod) && activeForUi == null)
             {
                 activeForUi = pod.Avatar is { } avatarUid && Exists(avatarUid)
                     ? avatarUid

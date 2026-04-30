@@ -164,3 +164,50 @@
   - type: ConditionalSpawner
     prototypes:
     - MobAssistantSpear
+
+# ---- Pirate Mobs ----
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobPirateEvaCutlass
+  name: pirate spawner
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
+      state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateEvaCutlass
+
+- type: entity
+  parent: SpawnMobPirateEvaCutlass
+  id: SpawnMobPirateEvaLaserCarbine
+  name: pirate spawner
+  suffix: Laser Carbine
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateEvaLaserCarbine
+
+- type: entity
+  parent: SpawnMobPirateEvaCutlass
+  id: SpawnMobPirateCutlass
+  name: pirate spawner
+  suffix: EnergyCutlass
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateCutlass
+
+- type: entity
+  parent: SpawnMobPirateEvaCutlass
+  id: SpawnMobPirateFlintlock
+  name: pirate spawner
+  suffix: WeaponPistolFlintlock
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateFlintlock

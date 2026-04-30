@@ -63,21 +63,25 @@ public sealed class QuantumConsoleSystem : EntitySystem
         if (_openUis.Count == 0)
             return;
 
-        foreach (var uid in _openUis.ToArray())
+        List<EntityUid>? removedUids = null;
+        foreach (var uid in _openUis)
         {
-            if (!TryComp<QuantumConsoleComponent>(uid, out var comp))
+            if (!TryComp<QuantumConsoleComponent>(uid, out var comp) || !_ui.IsUiOpen(uid, QuantumConsoleUiKey.Key))
             {
-                _openUis.Remove(uid);
-                continue;
-            }
-
-            if (!_ui.IsUiOpen(uid, QuantumConsoleUiKey.Key))
-            {
-                _openUis.Remove(uid);
+                removedUids ??= new();
+                removedUids.Add(uid);
                 continue;
             }
 
             UpdateUi((uid, comp));
+        }
+
+        if (removedUids == null)
+            return;
+
+        foreach (var uid in removedUids)
+        {
+            _openUis.Remove(uid);
         }
     }
 

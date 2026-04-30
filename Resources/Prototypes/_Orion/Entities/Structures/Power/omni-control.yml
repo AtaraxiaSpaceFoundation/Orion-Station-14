@@ -7,8 +7,9 @@
   suffix: Power-Gravity
   components:
   - type: Battery
+  - type: BatterySelfRecharger
+    autoRecharge: true
     autoRechargeRate: 50000
-    autoRecharge: True
   - type: PowerNetworkBattery
     maxSupply: 1.0e9
     maxChargeRate: 1.0e9

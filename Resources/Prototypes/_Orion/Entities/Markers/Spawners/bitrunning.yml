@@ -61,7 +61,7 @@
     - state: red
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveBatBitrunning
+    - MobAssistantBatBitrunning
 
 - type: entity
   parent: MarkerBase
@@ -75,7 +75,7 @@
     - state: red
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveAxeBitrunning
+    - MobAssistantAxeBitrunning
 
 - type: entity
   parent: MarkerBase
@@ -89,7 +89,7 @@
     - state: red
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveToolboxBitrunning
+    - MobAssistantToolboxBitrunning
 
 - type: entity
   parent: MarkerBase
@@ -103,7 +103,7 @@
     - state: red
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveSpearBitrunning
+    - MobAssistantSpearBitrunning
 
 - type: entity
   parent: MarkerBase
@@ -194,3 +194,67 @@
   - type: ConditionalSpawner
     prototypes:
     - MobXenomorphQueenBitrunning
+
+- type: entity
+  parent: SpawnMobPirateEvaCutlass
+  id: SpawnMobPirateEvaCutlassBitrunning
+  name: pirate spawner
+  suffix: AI, EVA, EnergyCutlass, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
+      state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateEvaCutlassBitrunning
+
+- type: entity
+  parent: SpawnMobPirateEvaLaserCarbine
+  id: SpawnMobPirateEvaLaserCarbineBitrunning
+  name: pirate spawner
+  suffix: AI, EVA, Laser Carbine, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
+      state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateEvaLaserCarbineBitrunning
+
+- type: entity
+  parent: SpawnMobPirateCutlass
+  id: SpawnMobPirateCutlassBitrunning
+  name: pirate spawner
+  suffix: AI, EnergyCutlass, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Clothing/OuterClothing/Coats/pirate.rsi
+      state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateCutlassBitrunning
+
+- type: entity
+  parent: SpawnMobPirateFlintlock
+  id: SpawnMobPirateFlintlockBitrunning
+  name: pirate spawner
+  suffix: AI, WeaponPistolFlintlock, Bitrunning
+  categories: [ Spawner ]
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Clothing/Neck/Cloaks/pirate_cap.rsi
+      state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPirateFlintlockBitrunning

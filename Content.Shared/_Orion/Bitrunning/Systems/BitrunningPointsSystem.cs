@@ -40,7 +40,11 @@ public sealed class BitrunningPointsSystem : EntitySystem
         if (!_query.Resolve(ent, ref ent.Comp))
             return false;
 
-        ent.Comp.Points += amount;
+        if (amount > uint.MaxValue - ent.Comp.Points)
+            ent.Comp.Points = uint.MaxValue;
+        else
+            ent.Comp.Points += amount;
+
         Dirty(ent);
         return true;
     }

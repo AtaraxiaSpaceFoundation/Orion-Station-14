@@ -212,22 +212,23 @@ public sealed class ByteforgeSystem : EntitySystem
             return false;
 
         var coordinates = Transform(cargoUid).Coordinates;
+        var insertedAny = false;
         foreach (var prototypeId in _entityTable.GetSpawns(table))
         {
             var loot = Spawn(prototypeId, coordinates);
 
             if (TryComp<StorageComponent>(cargoUid, out var storage) &&
-                _storage.Insert(cargoUid, loot, out _, storageComp: storage, playSound: false))
-                continue;
-
-            if (TryComp<EntityStorageComponent>(cargoUid, out var entityStorage) &&
+                _storage.Insert(cargoUid, loot, out _, storageComp: storage, playSound: false) || TryComp<EntityStorageComponent>(cargoUid, out var entityStorage) &&
                 _entityStorage.Insert(loot, cargoUid, entityStorage))
+            {
+                insertedAny = true;
                 continue;
+            }
 
             QueueDel(loot);
         }
 
-        return true;
+        return insertedAny;
     }
 
     private ProtoId<EntityTablePrototype> GetDeliveryLootTable(QuantumServerComponent server)
