@@ -1,5 +1,3 @@
 - type: startingGear
-  id: BitrunnerSecurityModOfficerGear
   parent: SecurityOfficerModSuit
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitSeniorOfficer
+  id: BitrunnerSecurityModOfficerGear

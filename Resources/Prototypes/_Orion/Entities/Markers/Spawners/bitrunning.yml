@@ -1,3 +1,5 @@
+# Objectives
+
 - type: entity
   parent: MarkerBase
   id: BitrunningEncryptedCacheObjectiveSpawner
@@ -11,6 +13,8 @@
   - type: ConditionalSpawner
     prototypes:
       - EncryptedCacheNode
+
+# Mobs
 
 - type: entity
   parent: SpawnMobHierophant
