@@ -99,6 +99,17 @@
   mapPath: /Maps/_Orion/Bitrun/abductor-ship.yml
   objectiveType: DeliveryCacheCrate
 
+- type: bitrunningVirtualDomain
+  id: PizzaParty
+  name: bitrunning-domain-pizza-party-name
+  description: bitrunning-domain-pizza-party-desc
+  difficulty: Medium
+  cost: 2
+  serverRewardPoints: 4
+  bitrunningRewardPoints: 180
+  mapPath: /Maps/_Orion/Bitrun/pizza-party.yml
+  objectiveType: DeliveryCacheCrate
+
 # --- --- ---
 #    HARD
 # --- --- ---
