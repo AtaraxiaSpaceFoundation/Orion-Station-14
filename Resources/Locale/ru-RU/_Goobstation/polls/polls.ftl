@@ -31,6 +31,12 @@ poll-command-create-fail = Ошибка создания опроса.
 poll-command-close-success = Опрос { $id } был завершён.
 poll-command-list-no-polls = Нет активных опросов.
 poll-command-info-not-found = Опрос { $id } не найден.
+
+poll-control-seen-by = Просмотрено {$count} {$count ->
+    [one] игроком
+   *[other] игроками
+}
+
 # Client Commands
 cmd-polls-desc = Открыть управление опросами.
 cmd-polls-help = Использование: polls

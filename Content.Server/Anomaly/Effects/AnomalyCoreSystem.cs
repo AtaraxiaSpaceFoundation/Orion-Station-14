@@ -5,11 +5,11 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Goobstation.Maths.FixedPoint;
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Cargo.Systems;
 using Content.Server.Electrocution;
 using Content.Shared.Anomaly.Components;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Chemistry.Components;
