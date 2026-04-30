@@ -22,6 +22,8 @@ using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Heretic;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Atmos.Components;
+using Robust.Shared.Map.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;

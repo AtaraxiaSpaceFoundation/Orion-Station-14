@@ -15,6 +15,7 @@ using Content.Goobstation.Common.Actions;
 using Content.Goobstation.Common.Bloodstream;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Goobstation.Shared.Teleportation.Systems;
+using Content.Goobstation.Shared.Religion;
 using Content.Server._Goobstation.Wizard.Components;
 using Content.Server.Antag;
 using Content.Server.Body.Systems;
@@ -109,6 +110,7 @@ public sealed class SpellsSystem : SharedSpellsSystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private readonly DivineInterventionSystem _divineIntervention = default!;
 
     public override void Initialize()
     {
@@ -186,8 +188,12 @@ public sealed class SpellsSystem : SharedSpellsSystem
         var coords = TransformSystem.GetMapCoordinates(ev.Performer);
         foreach (var uid in Lookup.GetEntitiesInRange(coords, ev.Range))
         {
+            if (_divineIntervention.TouchSpellDenied(uid))
+                continue;
+
             _emp.TryEmpEffects(uid, ev.EnergyConsumption, ev.DisableDuration);
         }
+
 
         Spawn(ev.Effect, coords);
     }
@@ -239,6 +245,9 @@ public sealed class SpellsSystem : SharedSpellsSystem
                 continue;
 
             if (entity == ev.Performer)
+                continue;
+
+            if (_divineIntervention.TouchSpellDenied(entity))
                 continue;
 
             if (!_gravityWell.CanGravPulseAffect(entity))
@@ -685,6 +694,9 @@ public sealed class SpellsSystem : SharedSpellsSystem
         foreach (var (target, _) in Lookup.GetEntitiesInRange<FartComponent>(mapPos, ev.MaxRange))
         {
             if (target == ev.Performer)
+                continue;
+
+            if (_divineIntervention.TouchSpellDenied(target))
                 continue;
 
             if (!TryComp<FartComponent>(target, out var fart)

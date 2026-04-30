@@ -31,7 +31,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         if (ui == null)
             return;
 
-        var timeOffset = _gameTiming.CurTime - ghostComponent.TimeOfDeath;
+        var timeOffset = _gameTiming.RealTime - ghostComponent.TimeOfDeath;
         var rawTimeLeft = GhostRespawnTime - timeOffset;
         var timeLeft = rawTimeLeft > TimeSpan.Zero ? rawTimeLeft : TimeSpan.Zero;
         var canReturn = timeLeft == TimeSpan.Zero;

@@ -57,7 +57,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
             return;
         }
 
-        var timeOffset = GameTiming.CurTime - ent.Comp.TimeOfDeath;
+        var timeOffset = GameTiming.RealTime - ent.Comp.TimeOfDeath;
         if (timeOffset < GhostRespawnTime)
         {
             SendChatMsg(session,
