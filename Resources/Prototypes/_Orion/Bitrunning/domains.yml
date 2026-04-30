@@ -63,7 +63,25 @@
   - EliminateEnemies
   objectiveTargetByType:
     DeliveryCacheCrate: 1
-    EliminateEnemies: 20
+    EliminateEnemies: 0
+
+- type: bitrunningVirtualDomain
+  id: MetaCentral
+  name: bitrunning-domain-meta-central-name
+  description: bitrunning-domain-meta-central-desc
+  difficulty: Easy
+  cost: 1
+  serverRewardPoints: 2
+  bitrunningRewardPoints: 150
+  forcedLoadout: BitrunnerSecurityModOfficerGear
+  isModular: true
+  mapPath: /Maps/_Orion/Bitrun/meta-central.yml
+  objectiveTypePool:
+  - DeliveryCacheCrate
+  - EliminateEnemies
+  objectiveTargetByType:
+    DeliveryCacheCrate: 1
+    EliminateEnemies: 0
 
 # --- --- ---
 #   MEDIUM

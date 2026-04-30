@@ -121,7 +121,7 @@
     - state: green
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveBat
+    - MobAssistantBat
 
 - type: entity
   parent: MarkerBase
@@ -135,7 +135,7 @@
     - state: green
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveAxe
+    - MobAssistantAxe
 
 - type: entity
   parent: MarkerBase
@@ -149,7 +149,7 @@
     - state: green
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveToolbox
+    - MobAssistantToolbox
 
 - type: entity
   parent: MarkerBase
@@ -163,4 +163,4 @@
     - state: green
   - type: ConditionalSpawner
     prototypes:
-    - MobAssistantAggressiveSpear
+    - MobAssistantSpear
