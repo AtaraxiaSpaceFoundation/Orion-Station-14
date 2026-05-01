@@ -2,7 +2,6 @@
   id: PirateEvaCutlassGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
-    back: ClothingBackpackPirate
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadHelmetHardsuitPirateEVA
     outerClothing: ClothingOuterHardsuitPirateEVA
@@ -13,7 +12,6 @@
   id: PirateEvaLaserCarbineGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
-    back: ClothingBackpackPirate
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadHelmetHardsuitPirateEVA
     outerClothing: ClothingOuterHardsuitPirateEVA
@@ -24,7 +22,6 @@
   id: PirateCutlassGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
-    back: ClothingBackpackPirate
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadBandRed
     outerClothing: ClothingOuterCoatPirate
@@ -35,7 +32,6 @@
   id: PirateFlintlockGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
-    back: ClothingBackpackPirate
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadBandRed
     neck: ClothingNeckCloakPirateCap

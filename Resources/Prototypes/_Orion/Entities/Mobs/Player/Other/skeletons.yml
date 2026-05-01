@@ -9,3 +9,15 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
+
+- type: entity
+  parent: MobSkeletonPerson
+  id: MobSkeletonPirate
+  name: skeleton pirate
+  components:
+  - type: Loadout
+    prototypes: [ PirateEvaLaserCarbineGear ]
+  - type: RandomHumanoidAppearance
+  - type: NpcFactionMember
+    factions:
+    - PirateFaction

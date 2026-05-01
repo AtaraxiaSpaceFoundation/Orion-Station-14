@@ -199,14 +199,14 @@
   parent: SpawnMobPirateEvaCutlass
   id: SpawnMobPirateEvaCutlassBitrunning
   name: pirate spawner
-  suffix: AI, EVA, EnergyCutlass, Bitrunning
+  suffix: AI, EVA, Energy Cutlass, Bitrunning
   categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
     - state: red
-    - sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
-      state: icon
+    - sprite: Mobs/Species/Skeleton/parts.rsi
+      state: full
   - type: ConditionalSpawner
     prototypes:
     - MobPirateEvaCutlassBitrunning
@@ -221,8 +221,8 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
-      state: icon
+    - sprite: Mobs/Species/Skeleton/parts.rsi
+      state: full
   - type: ConditionalSpawner
     prototypes:
     - MobPirateEvaLaserCarbineBitrunning
@@ -231,14 +231,14 @@
   parent: SpawnMobPirateCutlass
   id: SpawnMobPirateCutlassBitrunning
   name: pirate spawner
-  suffix: AI, EnergyCutlass, Bitrunning
+  suffix: AI, Energy Cutlass, Bitrunning
   categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
     - state: red
-    - sprite: Clothing/OuterClothing/Coats/pirate.rsi
-      state: icon
+    - sprite: Mobs/Species/Skeleton/parts.rsi
+      state: full
   - type: ConditionalSpawner
     prototypes:
     - MobPirateCutlassBitrunning
@@ -247,14 +247,14 @@
   parent: SpawnMobPirateFlintlock
   id: SpawnMobPirateFlintlockBitrunning
   name: pirate spawner
-  suffix: AI, WeaponPistolFlintlock, Bitrunning
+  suffix: AI, Pistol Flintlock, Bitrunning
   categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
     - state: red
-    - sprite: Clothing/Neck/Cloaks/pirate_cap.rsi
-      state: icon
+    - sprite: Mobs/Species/Skeleton/parts.rsi
+      state: full
   - type: ConditionalSpawner
     prototypes:
     - MobPirateFlintlockBitrunning

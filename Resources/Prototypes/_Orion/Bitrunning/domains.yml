@@ -110,6 +110,22 @@
   mapPath: /Maps/_Orion/Bitrun/pizza-party.yml
   objectiveType: DeliveryCacheCrate
 
+- type: bitrunningVirtualDomain
+  id: CorsairCove
+  name: bitrunning-domain-corsair-cove-name
+  description: bitrunning-domain-corsair-cove-desc
+  difficulty: Medium
+  cost: 2
+  serverRewardPoints: 4
+  bitrunningRewardPoints: 220
+  mapPath: /Maps/_Orion/Bitrun/corsair-cove.yml
+  objectiveTypePool:
+  - DeliveryCacheCrate
+  - EliminateEnemies
+  objectiveTargetByType:
+    DeliveryCacheCrate: 1
+    EliminateEnemies: 0
+
 # --- --- ---
 #    HARD
 # --- --- ---

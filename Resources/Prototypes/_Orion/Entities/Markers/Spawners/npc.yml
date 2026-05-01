@@ -171,13 +171,14 @@
   parent: MarkerBase
   id: SpawnMobPirateEvaCutlass
   name: pirate spawner
+  suffix: Cutlass
   categories: [ Spawner ]
   components:
   - type: Sprite
     layers:
     - state: green
-    - sprite: Clothing/OuterClothing/Hardsuits/pirateeva.rsi
-      state: icon
+    - sprite: Mobs/Species/Skeleton/parts.rsi
+      state: full
   - type: ConditionalSpawner
     prototypes:
     - MobPirateEvaCutlass
@@ -196,7 +197,7 @@
   parent: SpawnMobPirateEvaCutlass
   id: SpawnMobPirateCutlass
   name: pirate spawner
-  suffix: EnergyCutlass
+  suffix: Energy Cutlass
   components:
   - type: ConditionalSpawner
     prototypes:
@@ -206,7 +207,7 @@
   parent: SpawnMobPirateEvaCutlass
   id: SpawnMobPirateFlintlock
   name: pirate spawner
-  suffix: WeaponPistolFlintlock
+  suffix: Pistol Flintlock
   components:
   - type: ConditionalSpawner
     prototypes:
