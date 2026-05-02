@@ -1807,13 +1807,18 @@
   categories:
   - UplinkWearables
   conditions:
-  # Orion-Edit-Start: Another cost for nukies
+  # Orion-Edit-Start
+#  - !type:BuyerSpeciesCondition
+#    whitelist:
+#    - Human
+  # Orion-Edit-End
+  # Orion-Start: Another cost for nukies
   - !type:StoreWhitelistCondition
     blacklist:
       tags:
         - NukeOpsUplink
         - ContravendUplink
-  # Orion-Edit-End
+  # Orion-End
 
 - type: listing
   id: UplinkUndeterminedBundle
