@@ -134,7 +134,7 @@
         mask:
         - ItemMask
         layer:
-        - MobLayer
+        - SlipLayer
         density: 0
         hard: false
   - type: PointLight
