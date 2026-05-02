@@ -79,8 +79,13 @@
   name: Bitrunning Supplies Order
   description: A supplies order console that exchanges bitrunning points for tactical support goods.
   components:
+  - type: VendingMachine
+    pack: EmptyVendingMachineInventory
+    offState: off
+    normalState: normal-unshaded
   - type: Sprite
     sprite: _Orion/Structures/Machines/VendingMachines/bitrun.rsi
+    noRot: true
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -91,6 +96,12 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: PointLight
     color: "#4f8dcf"
+    autoRot: true
+  - type: Transform
+    noRot: false
+  - type: Rotatable
+    rotateWhileAnchored: false
+    rotateWhilePulling: true
   - type: ShopVendor
     pack: BitrunningVendorInventory
   - type: UserInterface

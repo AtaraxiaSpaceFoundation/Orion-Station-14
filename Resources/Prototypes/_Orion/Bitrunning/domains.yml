@@ -40,7 +40,7 @@
   description: bitrunning-domain-cosmic-vestige-desc
   difficulty: Peaceful
   cost: 20
-  bitrunningRewardPoints: 600
+  bitrunningRewardPoints: 600 # Because cost overprice etc...
   mapPath: /Maps/_Orion/Bitrun/cosmic-vestige.yml
   objectiveType: DeliveryCacheCrate
 
@@ -73,7 +73,7 @@
   cost: 1
   serverRewardPoints: 2
   bitrunningRewardPoints: 150
-  forcedLoadout: BitrunnerSecurityModOfficerGear
+  forcedLoadout: BitrunnerAvatarSecurityOfficerMODGear
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/meta-central.yml
   objectiveTypePool:

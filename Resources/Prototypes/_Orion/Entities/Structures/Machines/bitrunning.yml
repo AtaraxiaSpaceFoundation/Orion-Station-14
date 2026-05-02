@@ -117,14 +117,17 @@
     mobile: true
   - type: Netpod
     allowedLoadout:
-    - ShaftMinerGear
-    - SalvageSpecialistGear
-    - StationEngineerGear
-    - ResearchAssistantGear
-    - ScientistGear
-    - MedicalInternGear
-    - SecurityCadetGear
-    - PassengerGear
+    - BitrunnerAvatarPassengerGear
+    - BitrunnerAvatarClownGear
+    - BitrunnerAvatarMimeGear
+    - BitrunnerAvatarCaptainGear
+    - BitrunnerAvatarEngineerGear
+    - BitrunnerAvatarMedicalDoctorGear
+    - BitrunnerAvatarScientistGear
+    - BitrunnerAvatarSecurityOfficerGear
+    - BitrunnerAvatarCargoTechnicianGear
+    - BitrunnerAvatarSalvageSpecialistGear
+    - BitrunnerAvatarShaftMinerGear
 
 - type: entity
   parent: BaseMachinePowered
