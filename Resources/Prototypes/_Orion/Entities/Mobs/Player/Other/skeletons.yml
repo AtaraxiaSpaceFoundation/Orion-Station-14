@@ -12,7 +12,7 @@
 
 - type: entity
   parent: MobSkeletonPerson
-  id: MobSkeletonPirate
+  id: MobSkeletonPirateBitrun
   name: skeleton pirate
   components:
   - type: Loadout

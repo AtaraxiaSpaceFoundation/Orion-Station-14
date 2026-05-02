@@ -75,12 +75,12 @@
     prototypes:
     - MobSimpleSyndicateSMG
 
-# ---- Abductor Simple Mobs ----
+# ---- Abductor Mobs ----
 
 - type: entity
   parent: MarkerBase
-  id: SpawnMobSimpleAbductorAgentPistol
-  name: spawner Simple Abductor Agent Pistol
+  id: SpawnMobAbductorAgentPistol
+  name: spawner Abductor Agent Pistol
   suffix: AI, Alien Pistol
   components:
   - type: Sprite
@@ -94,8 +94,8 @@
 
 - type: entity
   parent: MarkerBase
-  id: SpawnMobSimpleAbductorAgentWonderprod
-  name: spawner Simple Abductor Agent Wonderprod
+  id: SpawnMobAbductorAgentWonderprod
+  name: spawner Abductor Agent Wonderprod
   suffix: AI, Wonderprod
   components:
   - type: Sprite

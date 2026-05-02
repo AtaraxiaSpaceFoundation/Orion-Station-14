@@ -77,7 +77,7 @@
   parent: VendingMachine
   id: VendingMachineBitrunning
   name: Bitrunning Supplies Order
-  description: A supplies order console that exchanges bitrunning points for tactical support goods.
+  description: A supplies order vending that exchanges bitrunning points for bitrunning goods.
   components:
   - type: VendingMachine
     pack: EmptyVendingMachineInventory

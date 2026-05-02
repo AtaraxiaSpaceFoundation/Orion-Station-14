@@ -2282,14 +2282,14 @@ entities:
     - type: Transform
       pos: 8.5,3.5
       parent: 1
-- proto: SpawnMobSimpleAbductorAgentPistol
+- proto: SpawnMobAbductorAgentPistol
   entities:
   - uid: 880
     components:
     - type: Transform
       pos: -13.5,1.5
       parent: 1
-- proto: SpawnMobSimpleAbductorAgentWonderprod
+- proto: SpawnMobAbductorAgentWonderprod
   entities:
   - uid: 879
     components:

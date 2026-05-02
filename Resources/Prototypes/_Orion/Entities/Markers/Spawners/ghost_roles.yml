@@ -88,7 +88,7 @@
     mindRoles:
     - MindRoleGhostRoleFreeAgent
   - type: GhostRoleMobSpawner
-    prototype: MobSkeletonPirate
+    prototype: MobSkeletonPirateBitrun
   - type: Sprite
     layers:
     - sprite: _Orion/Structures/cryostasis_sleeper.rsi
