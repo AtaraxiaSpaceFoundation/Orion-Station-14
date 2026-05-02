@@ -6,11 +6,9 @@ using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
-using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
 using Robust.Server.Player;
 using Robust.Shared.Console;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
 
 namespace Content.Server._Orion.Ghost;
@@ -22,6 +20,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly SharedGhostSystem _ghostSystem = default!;
 
     private int _ghostRespawnMaxPlayers;
 
@@ -41,7 +40,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         _console.RegisterCommand("returntoround", ReturnToRoundCommand, ReturnToRoundCompletion);
     }
 
-    public void TryGhostReturnToRound(EntityUid uid, Entity<GhostComponent> ent)
+    private void TryGhostReturnToRound(EntityUid uid, Entity<GhostComponent> ent)
     {
         if (TerminatingOrDeleted(ent))
             return;
@@ -57,7 +56,16 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
             return;
         }
 
-        var timeOffset = GameTiming.RealTime - ent.Comp.TimeOfDeath;
+        var now = GameTiming.CurTime;
+        var timeOffset = now - ent.Comp.TimeOfDeath;
+
+        if (timeOffset < TimeSpan.Zero)
+        {
+            Entity<GhostComponent?> ghostEnt = (ent.Owner, ent.Comp);
+            _ghostSystem.SetTimeOfDeath(ghostEnt, now);
+            timeOffset = TimeSpan.Zero;
+        }
+
         if (timeOffset < GhostRespawnTime)
         {
             SendChatMsg(session,
@@ -84,7 +92,7 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
         TryGhostReturnToRound(ghost, (ghost, ghostComponent));
     }
 
-    private CompletionResult ReturnToRoundCompletion(IConsoleShell shell, string[] args)
+    private static CompletionResult ReturnToRoundCompletion(IConsoleShell shell, string[] args)
     {
         return CompletionResult.Empty;
     }
@@ -94,21 +102,21 @@ public sealed class GhostReturnToRoundSystem : SharedGhostReturnToRoundSystem
     {
         if (shell.Player?.AttachedEntity is not { } ghost || !TryComp<GhostComponent>(ghost, out var ghostComponent))
         {
-            shell.WriteError("This command can only be run by a player with an attached entity.");
+            shell.WriteError(Loc.GetString("ghost-respawn-command-no-entity"));
             return;
         }
 
         TryGhostReturnToRound(ghost, (ghost, ghostComponent));
     }
 
-    private void SendChatMsg(ICommonSession sess, string message)
+    private void SendChatMsg(ICommonSession session, string message)
     {
         _chatManager.ChatMessageToOne(ChatChannel.Server,
             message,
             Loc.GetString("chat-manager-server-wrap-message", ("message", message)),
             default,
             false,
-            sess.Channel,
+            session.Channel,
             Color.Red);
     }
 }
