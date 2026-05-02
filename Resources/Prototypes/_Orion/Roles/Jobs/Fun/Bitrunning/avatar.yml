@@ -116,8 +116,8 @@
   id: BitrunnerAvatarSecurityOfficerMODGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitSec
-    head: ClothingModsuitHelmetSecurity
-    shoes: ClothingModsuitBootsSecurity
-    gloves: ClothingModsuitGauntletsSecurity
-    outerClothing: ClothingModsuitChestplateSecurity
+#    head: ClothingModsuitHelmetSecurity
+#    shoes: ClothingModsuitBootsSecurity
+#    gloves: ClothingModsuitGauntletsSecurity
+#    outerClothing: ClothingModsuitChestplateSecurity
     back: ClothingModsuitSecurityPowerCell

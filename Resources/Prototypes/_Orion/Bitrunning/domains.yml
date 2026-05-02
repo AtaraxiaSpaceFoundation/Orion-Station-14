@@ -107,6 +107,7 @@
   cost: 2
   serverRewardPoints: 4
   bitrunningRewardPoints: 180
+  isModular: true
   mapPath: /Maps/_Orion/Bitrun/pizza-party.yml
   objectiveType: DeliveryCacheCrate
 
