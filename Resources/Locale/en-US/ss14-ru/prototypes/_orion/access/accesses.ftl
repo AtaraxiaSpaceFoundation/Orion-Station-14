@@ -5,3 +5,5 @@ id-card-access-level-united-earth-government-general = UEG General
 id-card-access-level-united-earth-government-medic = UEG Medic
 id-card-access-level-united-earth-government-specialist = UEG Specialist
 id-card-access-level-united-earth-government-command = UEG Command
+
+id-card-access-level-bitrun = Bitrunning

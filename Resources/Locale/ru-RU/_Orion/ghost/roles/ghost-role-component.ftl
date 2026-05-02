@@ -31,5 +31,5 @@ ghost-role-information-morph-rules =
 
 ghost-role-information-skeleton-bartender-name = Скелет-бармен
 ghost-role-information-skeleton-bartender-description = Поддерживайте работу пляжного бара, подавайте напитки и следите, чтобы гостям было весело.
-ghost-role-information-skeleton-pirate-name = Скелет-пират
-ghost-role-information-skeleton-pirate-description = Вы пират, враждебный к битранерам. Грабьте их и не давайте им спокойно завершить рейд.
+ghost-role-information-skeleton-pirate-bitrunning-name = Скелет пират
+ghost-role-information-skeleton-pirate-bitrunning-description = Вы пират, враждебный к битраннерам. Грабьте их и не давайте им спокойно завершить рейд.

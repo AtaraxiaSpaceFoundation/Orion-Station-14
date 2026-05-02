@@ -173,7 +173,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
         if (!_mapLoader.TryLoadGrid(mapId, domain.MapPath, out var grid, offset: Vector2.Zero))
         {
-            QueueDel(mapEntity);
+            _map.DeleteMap(mapId);
             return false;
         }
 
@@ -561,9 +561,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
     private void SetAvatarBroadcastEnabled(Entity<AvatarConnectionComponent> avatar, QuantumServerComponent server, bool enabled)
     {
-        var cameraEntity = avatar.Comp.Netpod is { } podUid && Exists(podUid)
-            ? podUid
-            : avatar.Owner;
+        var cameraEntity = avatar.Owner;
 
         if (!enabled)
         {
@@ -577,10 +575,8 @@ public sealed class QuantumServerSystem : EntitySystem
 
         var device = EnsureComp<DeviceNetworkComponent>(cameraEntity);
         device.NetIdEnum = DeviceNetworkComponent.DeviceNetIdDefaults.Wireless;
-        device.ReceiveFrequencyId = "SurveillanceCameraEntertainment";
-        device.TransmitFrequencyId = "SurveillanceCamera";
-
         EnsureComp<SurveillanceCameraComponent>(cameraEntity);
+        _surveillanceCamera.ConfigureCameraNetwork(cameraEntity, "SurveillanceCameraEntertainment", "SurveillanceCamera");
     }
 
     public void DisconnectAvatar(EntityUid avatarUid, bool harmful)
@@ -958,7 +954,7 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!ShouldLoadProfileAvatar(server, user) || !TryGetHumanoidProfile(user, out var profile))
             return Spawn(server.AvatarPrototype, coordinates);
 
-        return _cloningAppearance.SpawnProfileEntity(coordinates, profile, null);
+        return _cloningAppearance.SpawnProfileEntity(coordinates, profile);
     }
 
     private bool TryGetHumanoidProfile(EntityUid user, out HumanoidCharacterProfile profile)

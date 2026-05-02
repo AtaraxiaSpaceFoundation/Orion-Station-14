@@ -122,3 +122,5 @@ bitrunning-ui-cooldown-ready = Охлаждение завершено
 bitrunning-ui-cooldown-active = Идёт охлаждение
 
 bitrunning-ui-clients-header-count = Подключённые клиенты ({ $count })
+bitrunning-ui-domain-cost = § { $cost }
+bitrunning-ui-domain-cost-tooltip = Необходимое количество очков сервера для запуска домена.

@@ -163,6 +163,7 @@ public sealed class QuantumConsoleSystem : EntitySystem
                 server: null,
                 currentDomain: null,
                 occupants: 0,
+                connectedPods: 0,
                 serverPoints: 0,
                 scannerTier: 0,
                 state: BitrunningServerState.Ready,
@@ -209,6 +210,13 @@ public sealed class QuantumConsoleSystem : EntitySystem
 
         var cooldownTotal = (float) server.Cooldown.TotalSeconds;
         var cooldownRemaining = Math.Max(0f, (float) (server.CooldownEndTime - _timing.CurTime).TotalSeconds);
+        var connectedPods = 0;
+        var netpodQuery = EntityQueryEnumerator<NetpodComponent>();
+        while (netpodQuery.MoveNext(out _, out var pod))
+        {
+            if (pod.LinkedServer == serverUid)
+                connectedPods++;
+        }
 
         _ui.SetUiState(ent.Owner,
             QuantumConsoleUiKey.Key,
@@ -217,6 +225,7 @@ public sealed class QuantumConsoleSystem : EntitySystem
             server: GetNetEntity(serverUid.Value),
             currentDomain: server.CurrentDomain,
             occupants: server.ActiveConnections.Count,
+            connectedPods: connectedPods,
             serverPoints: server.Points,
             scannerTier: server.ScannerTier,
             state: server.State,

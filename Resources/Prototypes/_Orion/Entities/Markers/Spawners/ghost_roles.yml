@@ -80,8 +80,8 @@
   categories: [ Spawner ]
   components:
   - type: GhostRole
-    name: ghost-role-information-skeleton-pirate-name
-    description: ghost-role-information-skeleton-pirate-description
+    name: ghost-role-information-skeleton-pirate-bitrunning-name
+    description: ghost-role-information-skeleton-pirate-bitrunning-description
     rules: ghost-role-information-antagonist-rules
     raffle:
       settings: default

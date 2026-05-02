@@ -61,7 +61,7 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
         PointsValue.Text = Loc.GetString("bitrunning-ui-server-points-badge", ("points", state.ServerPoints.ToString(CultureInfo.InvariantCulture)));
         ClientsHeader.Text = Loc.GetString("bitrunning-ui-clients-header-count", ("count", state.Occupants.ToString(CultureInfo.InvariantCulture)));
-        ScannerValue.Text = Loc.GetString("bitrunning-ui-scanner-inline", ("scanner", state.ScannerTier.ToString(CultureInfo.InvariantCulture)));
+        ScannerValue.Text = Loc.GetString("bitrunning-ui-scanner-inline", ("scanner", state.ConnectedPods.ToString(CultureInfo.InvariantCulture)));
         StateValue.Text = GetStateText(state);
 
         CurrentDomainValue.Text = ResolveCurrentDomainName(state.CurrentDomain, state.Domains);
@@ -219,15 +219,32 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
 
         holder.AddChild(row);
 
-        var description = new RichTextLabel
+        var detailsRow = new BoxContainer
         {
-            MaxWidth = 420,
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            SeparationOverride = 8,
             Margin = new Thickness(8, 0, 4, 3),
             HorizontalExpand = true,
         };
-        holder.AddChild(description);
 
-        return new DomainRowWidgets(holder, domainButton, deployButton, description);
+        var description = new RichTextLabel
+        {
+            MaxWidth = 360,
+            HorizontalExpand = true,
+        };
+
+        var costLabel = new Label
+        {
+            HorizontalAlignment = HAlignment.Right,
+            MinSize = new Vector2(70f, 0f),
+            MouseFilter = MouseFilterMode.Stop,
+        };
+
+        detailsRow.AddChild(description);
+        detailsRow.AddChild(costLabel);
+        holder.AddChild(detailsRow);
+
+        return new DomainRowWidgets(holder, domainButton, deployButton, detailsRow, description, costLabel);
     }
 
     private void UpdateDomainRow(DomainRowWidgets row, BitrunningDomainListing domain, QuantumConsoleBoundUiState state)
@@ -254,7 +271,9 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
                 : Loc.GetString("bitrunning-ui-cannot-deploy-not-enough-server-points");
 
         row.Description.SetMessage(domain.Description);
-        row.Description.Visible = expanded;
+        row.CostLabel.Text = Loc.GetString("bitrunning-ui-domain-cost", ("cost", domain.Cost.ToString(CultureInfo.InvariantCulture)));
+        row.CostLabel.ToolTip = Loc.GetString("bitrunning-ui-domain-cost-tooltip");
+        row.DetailsRow.Visible = expanded;
     }
 
     private static Control CreateClientRow(BitrunningOccupantListing client)
@@ -477,14 +496,18 @@ public sealed partial class QuantumConsoleWindow : DefaultWindow
         public BoxContainer Holder { get; }
         public Button DomainButton { get; }
         public Button DeployButton { get; }
+        public BoxContainer DetailsRow { get; }
         public RichTextLabel Description { get; }
+        public Label CostLabel { get; }
 
-        public DomainRowWidgets(BoxContainer holder, Button domainButton, Button deployButton, RichTextLabel description)
+        public DomainRowWidgets(BoxContainer holder, Button domainButton, Button deployButton, BoxContainer detailsRow, RichTextLabel description, Label costLabel)
         {
             Holder = holder;
             DomainButton = domainButton;
             DeployButton = deployButton;
+            DetailsRow = detailsRow;
             Description = description;
+            CostLabel = costLabel;
         }
     }
 }
