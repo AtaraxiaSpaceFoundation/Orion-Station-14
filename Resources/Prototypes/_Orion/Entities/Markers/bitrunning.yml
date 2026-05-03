@@ -6,8 +6,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: Transform
-    anchored: true
   - type: Sprite
     drawdepth: Overdoors
     sprite: _Orion/Structures/Machines/byteforge.rsi
@@ -16,7 +14,6 @@
       shader: unshaded
   - type: Physics
     bodyType: Static
-    canCollide: true
   - type: Fixtures
     fixtures:
       sensor:
@@ -92,8 +89,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: Transform
-    anchored: true
   - type: Sprite
     drawdepth: Overdoors
     sprite: _Orion/Structures/Machines/byteforge.rsi
@@ -117,8 +112,6 @@
   placement:
     mode: SnapgridCenter
   components:
-  - type: Transform
-    anchored: true
   - type: Sprite
     drawdepth: BelowFloor
     sprite: _Orion/Structures/Specific/Cargo/Bitrunning/bitrunning_circuit_floor.rsi
