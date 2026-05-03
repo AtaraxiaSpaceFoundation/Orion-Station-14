@@ -16,7 +16,7 @@
   name: skeleton pirate
   components:
   - type: Loadout
-    prototypes: [ PirateEvaLaserCarbineGear ]
+    prototypes: [ PirateCaptainLaserCarbineGear ]
   - type: RandomHumanoidAppearance
   - type: NpcFactionMember
     factions:

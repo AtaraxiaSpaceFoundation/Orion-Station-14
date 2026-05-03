@@ -19,12 +19,21 @@
   - WeaponLaserCarbine
 
 - type: startingGear
+  id: PirateCaptainLaserCarbineGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPirate
+    shoes: ClothingShoesBootsLaceup
+    head: ClothingHeadBandRed
+    outerClothing: ClothingOuterHardsuitPirateCap
+  inhand:
+  - WeaponLaserCarbine
+
+- type: startingGear
   id: PirateCutlassGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitPirate
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadBandRed
-    outerClothing: ClothingOuterCoatPirate
   inhand:
   - EnergyCutlass
 
