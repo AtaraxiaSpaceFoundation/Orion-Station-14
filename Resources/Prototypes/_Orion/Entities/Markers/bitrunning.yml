@@ -95,8 +95,6 @@
     layers:
     - state: on_particles_angry
       shader: unshaded
-  - type: Physics
-    bodyType: Static
   - type: PointLight
     enabled: true
     radius: 1
