@@ -135,14 +135,6 @@ public sealed class NetpodSystem : EntitySystem
 
         ent.Comp.Occupant = args.Entity;
         Dirty(ent);
-
-        if (ent.Comp.Avatar != null)
-        {
-            UpdateVisuals(ent);
-            TryAutoConnect(ent, args.Entity);
-            return;
-        }
-
         SetVisualState(ent, NetpodVisualState.Closing);
         _audio.PlayPvs(ent.Comp.CloseSound, ent);
         TryAutoConnect(ent, args.Entity);
@@ -163,12 +155,6 @@ public sealed class NetpodSystem : EntitySystem
 
         ent.Comp.Occupant = null;
         Dirty(ent);
-        if (ent.Comp.Avatar != null)
-        {
-            UpdateVisuals(ent);
-            return;
-        }
-
         SetVisualState(ent, NetpodVisualState.Opening);
         _audio.PlayPvs(ent.Comp.OpenSound, ent);
         Timer.Spawn(PodAnimationDuration,
