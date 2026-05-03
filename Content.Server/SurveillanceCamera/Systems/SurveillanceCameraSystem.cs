@@ -208,14 +208,8 @@ public sealed class SurveillanceCameraSystem : EntitySystem
                     // Goobstation start
                     if (TryComp(uid, out TransformComponent? transformComponent))
                     {
-                        // Orion-Start
-                        var resolvedEntity = ResolveSubscribeTarget(uid);
-                        if (TryComp<TransformComponent>(resolvedEntity, out var resolvedTransform))
-                            transformComponent = resolvedTransform;
-                        // Orion-End
-
                         // Decoupling the bodycam/nopro from the wearer, otherwise we'll just keep seeing the last known owner move around on the map
-                        payload[CameraNetEntity] = (GetNetEntity(resolvedEntity), GetNetCoordinates(transformComponent.Coordinates)); // Orion-Edit
+                        payload[CameraNetEntity] = (GetNetEntity(uid), GetNetCoordinates(transformComponent.Coordinates)); // Orion-Edit
                         payload[CameraMobile] = component.Mobile;
                     }
                     // Goobstation end
