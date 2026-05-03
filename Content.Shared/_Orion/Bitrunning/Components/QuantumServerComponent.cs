@@ -12,7 +12,7 @@ namespace Content.Shared._Orion.Bitrunning.Components;
 public sealed partial class QuantumServerComponent : Component
 {
     // This is intentionally unbounded so avatars and linked pods always remain viewable on camera networks.
-    public const int UnboundedBroadcastRange = int.MaxValue;
+    private const int UnboundedBroadcastRange = int.MaxValue;
 
     [DataField, AutoNetworkedField]
     public BitrunningServerState State = BitrunningServerState.Ready;
@@ -46,9 +46,6 @@ public sealed partial class QuantumServerComponent : Component
 
     [DataField]
     public int BroadcastWirelessRange = UnboundedBroadcastRange;
-
-    [DataField]
-    public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 
     [DataField]
     public ProtoId<EntityTablePrototype> DeliveryEasyLootTable = "BitrunningDeliveryEasyLoot";
@@ -111,4 +108,19 @@ public sealed partial class QuantumServerComponent : Component
     public bool WasRandomizedRun;
 
     public readonly HashSet<EntityUid> GrantedItemDisks = new();
+
+    [DataField]
+    public SoundSpecifier DomainStartSound = new SoundPathSpecifier("/Audio/_Orion/Machines/terminal/terminal_processing.ogg");
+
+    [DataField]
+    public SoundSpecifier DomainLoadedSound = new SoundPathSpecifier("/Audio/_Orion/Machines/terminal/terminal_insert_disc.ogg");
+
+    [DataField]
+    public SoundSpecifier DomainStopSound = new SoundPathSpecifier("/Audio/_Orion/Machines/terminal/terminal_off.ogg");
+
+    [DataField]
+    public SoundSpecifier DomainAlertSound = new SoundPathSpecifier("/Audio/_Orion/Machines/terminal/terminal_alert.ogg");
+
+    [DataField]
+    public SoundSpecifier ObjectiveRewardSound = new SoundPathSpecifier("/Audio/_Orion/Machines/terminal/terminal_success.ogg");
 }

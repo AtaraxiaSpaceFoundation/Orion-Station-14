@@ -200,6 +200,7 @@ public sealed class QuantumServerSystem : EntitySystem
         ResolveDomainMarkers((serverUid, server));
         CleanupObjectiveArtifacts((serverUid, server));
         _audio.PlayPvs(server.DomainStartSound, serverUid);
+        _audio.PlayPvs(server.DomainLoadedSound, serverUid);
         UpdateServerVisuals((serverUid, server));
         Dirty(serverUid, server);
         return true;
@@ -366,8 +367,14 @@ public sealed class QuantumServerSystem : EntitySystem
 
     public bool StopDomain(Entity<QuantumServerComponent> serverEnt, bool immediate = false)
     {
+        if (serverEnt.Comp.ActiveConnections.Count > 0)
+            _audio.PlayPvs(serverEnt.Comp.DomainAlertSound, serverEnt.Owner);
+        else
+            _audio.PlayPvs(serverEnt.Comp.DomainStopSound, serverEnt.Owner);
+
         foreach (var connection in serverEnt.Comp.ActiveConnections.ToArray())
         {
+            PlayAvatarLocalSound(connection, serverEnt.Comp.DomainAlertSound);
             DisconnectAvatar(connection, false);
         }
 
@@ -464,6 +471,8 @@ public sealed class QuantumServerSystem : EntitySystem
         EnsureComp<AvatarNavRelayComponent>(podUid).RelayEntity = avatar;
 
         _mind.TransferTo(mindId, avatar, mind: mind);
+        PlayLocalSound(user, pod.ConnectStasisSound);
+        PlayLocalSound(avatar, pod.ConnectAvatarSound);
         TryApplyAvatarOutfit(avatar, server, pod);
         SetAvatarBroadcastEnabled((avatar, connection), server, server.BroadcastEnabled);
         _actions.AddAction(avatar, ref connection.DisconnectActionEntity, connection.DisconnectActionPrototype, avatar);
@@ -591,6 +600,9 @@ public sealed class QuantumServerSystem : EntitySystem
         var podUid = connection.Netpod;
         var canRedirectToBitrunner = CanRedirectToBitrunnerBody(connection, originalBody);
 
+        if (originalBody is { } bodyUid && podUid is { } netpodUid && TryComp<NetpodComponent>(netpodUid, out var podComp))
+            PlayLocalSound(bodyUid, podComp.DisconnectSound);
+
         if (canRedirectToBitrunner && TryComp<MindContainerComponent>(avatarUid, out var container) && container.Mind is { } mindId && originalBody is { } bodyToTransfer)
             _mind.TransferTo(mindId, bodyToTransfer);
 
@@ -692,7 +704,7 @@ public sealed class QuantumServerSystem : EntitySystem
 
         if (ShouldSpawnCompletionRewardCache(serverEnt.Comp) && serverEnt.Comp.ObjectiveType != BitrunningObjectiveType.DeliveryCacheCrate)
         {
-            if (serverEnt.Comp.HasExplicitCacheMarker && serverEnt.Comp.CacheCoordinates is { } markerCoordinates)
+            if (serverEnt.Comp is { HasExplicitCacheMarker: true, CacheCoordinates: { } markerCoordinates })
                 SpawnRewardCache(serverEnt.Comp, markerCoordinates);
             else
             {
@@ -751,7 +763,7 @@ public sealed class QuantumServerSystem : EntitySystem
             _popup.PopupEntity(objectiveCompletedText, avatar, avatar, PopupType.LargeCaution);
         }
 
-        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/beep.ogg"), serverEnt.Owner);
+        _audio.PlayPvs(serverEnt.Comp.ObjectiveRewardSound, serverEnt.Owner);
 
         if (ShouldAutoStopOnObjectiveComplete(serverEnt.Comp))
             StopDomain(serverEnt);
@@ -797,6 +809,22 @@ public sealed class QuantumServerSystem : EntitySystem
             return false;
 
         return domain.AutoStopOnObjectiveComplete;
+    }
+
+    private void PlayAvatarLocalSound(EntityUid avatarUid, SoundSpecifier sound)
+    {
+        if (!TryComp<AvatarConnectionComponent>(avatarUid, out var connection) || connection.OriginalBody is not { } bodyUid)
+            return;
+
+        PlayLocalSound(bodyUid, sound);
+    }
+
+    private void PlayLocalSound(EntityUid listenerUid, SoundSpecifier sound)
+    {
+        if (!TryComp<ActorComponent>(listenerUid, out var actor))
+            return;
+
+        _audio.PlayEntity(sound, actor.PlayerSession, listenerUid);
     }
 
     private bool ShouldSpawnCompletionRewardCache(QuantumServerComponent server)
