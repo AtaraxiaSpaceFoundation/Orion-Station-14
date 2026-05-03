@@ -129,7 +129,7 @@ public sealed class ByteforgeSystem : EntitySystem
         var rewardCargoUid = Spawn(server.RewardCachePrototype, byteforgeXform.Coordinates);
         _sparks.DoSparks(byteforgeXform.Coordinates);
 
-        if (!FillDeliveredCargoWithLoot(rewardCargoUid, server))
+        if (!TryFillRewardCacheWithLoot(rewardCargoUid, server))
         {
             Log.Warning($"Failed to fill delivered cargo reward crate for server {ToPrettyString(serverUid)}.");
             QueueDel(rewardCargoUid);
@@ -205,9 +205,9 @@ public sealed class ByteforgeSystem : EntitySystem
         Dirty(ent);
     }
 
-    private bool FillDeliveredCargoWithLoot(EntityUid cargoUid, QuantumServerComponent server)
+    public bool TryFillRewardCacheWithLoot(EntityUid cargoUid, QuantumServerComponent server)
     {
-        var tableId = GetDeliveryLootTable(server);
+        var tableId = GetDifficultyLootTable(server);
         if (!_prototype.TryIndex(tableId, out var table))
             return false;
 
@@ -231,7 +231,7 @@ public sealed class ByteforgeSystem : EntitySystem
         return insertedAny;
     }
 
-    private ProtoId<EntityTablePrototype> GetDeliveryLootTable(QuantumServerComponent server)
+    private ProtoId<EntityTablePrototype> GetDifficultyLootTable(QuantumServerComponent server)
     {
         if (server.CurrentDomain == null || !_domains.TryGetDomain(server.CurrentDomain, out var domain))
             return server.DeliveryEasyLootTable;

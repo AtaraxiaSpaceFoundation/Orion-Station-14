@@ -1,4 +1,3 @@
-using Content.Shared.Ghost.Roles;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
@@ -122,24 +121,6 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     public bool SpawnRewardCacheOnObjectiveComplete { get; private set; } = true;
 
     /// <summary>
-    /// Free-form semantic flags for domain behavior gates.
-    /// </summary>
-    [DataField]
-    public string[] Flags { get; private set; } = [];
-
-    /// <summary>
-    /// Secondary loot prototype IDs available for reward pipeline extensions.
-    /// </summary>
-    [DataField]
-    public EntProtoId[] OptionalSecondaryLoot { get; private set; } = [];
-
-    /// <summary>
-    /// Optional ghost-role prototype IDs used by domain-specific ghost integration.
-    /// </summary>
-    [DataField]
-    public ProtoId<GhostRolePrototype>[] OptionalGhostRoles { get; private set; } = [];
-
-    /// <summary>
     /// If true, the run is automatically stopped after objective completion.
     /// </summary>
     [DataField]
@@ -168,4 +149,11 @@ public sealed class BitrunningVirtualDomainPrototype : IPrototype
     /// </summary>
     [DataField]
     public ProtoId<StartingGearPrototype>? ForcedLoadout { get; private set; }
+
+    /// <summary>
+    /// Fixed domain completion loot to spawn in decrypted cache.
+    /// Key: entity prototype, Value: amount.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, int> CompletionLoot { get; private set; } = [];
 }

@@ -849,17 +849,18 @@ public sealed class QuantumServerSystem : EntitySystem
                 noHitCount++;
         }
 
-        var total = 0.8f;
+        var total = 1f;
         total += server.QualityBonus;
         total += Math.Max(0, server.ActiveConnections.Count - 1) * 0.5f;
         total += noHitCount * 0.4f;
         total += server.ThreatsSpawned * 0.5f;
-        return Math.Max(0.5f, total);
+        return Math.Max(1f, total);
     }
 
     private void SpawnRewardCache(QuantumServerComponent server, EntityCoordinates coordinates)
     {
-        Spawn(server.RewardCachePrototype, coordinates);
+        var cache = Spawn(server.RewardCachePrototype, coordinates);
+        _byteforge.TryFillRewardCacheWithLoot(cache, server);
         _sparks.DoSparks(coordinates);
     }
 

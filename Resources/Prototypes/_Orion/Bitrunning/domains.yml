@@ -9,6 +9,8 @@
   difficulty: Peaceful
   serverRewardPoints: 1
   bitrunningRewardPoints: 30
+  completionLoot:
+    BeachBall: 1
   mapPath: /Maps/_Orion/Bitrun/beach-bar.yml
   objectiveType: OverhydrateStomach
 
@@ -39,8 +41,11 @@
   name: bitrunning-domain-cosmic-vestige-name
   description: bitrunning-domain-cosmic-vestige-desc
   difficulty: Peaceful
+  serverRewardPoints: 6
   cost: 20
   bitrunningRewardPoints: 600 # Because cost overprice etc...
+  completionLoot:
+    SpaceCash500: 4
   mapPath: /Maps/_Orion/Bitrun/cosmic-vestige.yml
   objectiveType: DeliveryCacheCrate
 
@@ -54,8 +59,10 @@
   description: bitrunning-domain-xenomorph-infestation-desc
   difficulty: Easy
   cost: 1
-  serverRewardPoints: 2
+  serverRewardPoints: 3
   bitrunningRewardPoints: 150
+  completionLoot:
+    PlushieRouny: 1
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/xenomorph-infestation.yml
   objectiveTypePool:
@@ -71,7 +78,7 @@
   description: bitrunning-domain-meta-central-desc
   difficulty: Easy
   cost: 1
-  serverRewardPoints: 2
+  serverRewardPoints: 3
   bitrunningRewardPoints: 150
   forcedLoadout: BitrunnerAvatarSecurityOfficerMODGear
   isModular: true
@@ -95,6 +102,8 @@
   cost: 2
   serverRewardPoints: 4
   bitrunningRewardPoints: 250
+  completionLoot:
+    PlushieAbductor: 1
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/abductor-ship.yml
   objectiveType: DeliveryCacheCrate
@@ -107,6 +116,8 @@
   cost: 2
   serverRewardPoints: 4
   bitrunningRewardPoints: 180
+  completionLoot:
+    FoodPizzaMeatSlice: 1
   isModular: true
   mapPath: /Maps/_Orion/Bitrun/pizza-party.yml
   objectiveType: DeliveryCacheCrate
@@ -119,6 +130,8 @@
   cost: 2
   serverRewardPoints: 4
   bitrunningRewardPoints: 220
+  completionLoot:
+    IngotGold1: 1
   mapPath: /Maps/_Orion/Bitrun/corsair-cove.yml
   objectiveTypePool:
   - DeliveryCacheCrate
@@ -146,4 +159,4 @@
 #  EXTREME 🗣️
 # --- --- ---
 
-
+# TODO
