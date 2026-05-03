@@ -35,6 +35,7 @@
       bitrunning-disk-option-pizza-box: FoodBoxPizza
       bitrunning-disk-option-medical-beam-gun: MedicalBeamGun
       bitrunning-disk-option-c4: C4
+      bitrunning-disk-option-boombox: HandledBoomBox
 
 - type: entity
   parent: BaseBitrunningDisk

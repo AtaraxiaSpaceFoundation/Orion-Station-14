@@ -28,9 +28,13 @@
           False: { visible: false }
   - type: WiresPanel
   - type: QuantumServer
+  - type: Machine
+    board: QuantumServerMachineCircuitboard
   - type: DeviceLinkSource
     ports:
     - BitrunningServerSource
+  - type: AutoLinkTransmitter
+    channel: BitrunningHub
 
 - type: entity
   parent: BaseComputer
@@ -53,6 +57,8 @@
   - type: DeviceLinkSink
     ports:
     - BitrunningConsoleSink
+  - type: AutoLinkReceiver
+    channel: BitrunningHub
 
 - type: entity
   parent: BaseMachinePowered
@@ -103,9 +109,13 @@
     interfaces:
       enum.NetpodUiKey.Key:
         type: NetpodBoundUserInterface
+  - type: Machine
+    board: NetpodMachineCircuitboard
   - type: DeviceLinkSink
     ports:
     - BitrunningNetpodSink
+  - type: AutoLinkReceiver
+    channel: BitrunningHub
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: SurveillanceCameraEntertainment
@@ -177,6 +187,10 @@
   - type: Physics
     canCollide: false
   - type: Byteforge
+  - type: Machine
+    board: ByteforgeMachineCircuitboard
   - type: DeviceLinkSink
     ports:
     - BitrunningByteforgeSink
+  - type: AutoLinkReceiver
+    channel: BitrunningHub

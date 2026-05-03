@@ -39,6 +39,7 @@ bitrunning-disk-examine-selected = [color=lightblue]Выбрано: { $option }.
 bitrunning-disk-option-pizza-box = Коробка пиццы
 bitrunning-disk-option-medical-beam-gun = Медицинский лучемёт
 bitrunning-disk-option-c4 = C-4
+bitrunning-disk-option-boombox = Бумбокс
 bitrunning-disk-option-luxury-medipen = Люксовый медипен
 bitrunning-disk-option-viper = Вайпер
 bitrunning-disk-option-armor-vest = Бронежилет
