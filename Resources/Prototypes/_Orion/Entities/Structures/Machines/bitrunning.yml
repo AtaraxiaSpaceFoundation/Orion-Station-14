@@ -27,6 +27,10 @@
           True: { visible: true }
           False: { visible: false }
   - type: WiresPanel
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
   - type: QuantumServer
   - type: Machine
     board: QuantumServerMachineCircuitboard
@@ -91,10 +95,14 @@
           True: { visible: true }
           False: { visible: false }
   - type: WiresPanel
+  - type: Physics
+    canCollide: false
   - type: ContainerContainer
     containers:
       netpod-body:
         !type:ContainerSlot
+      machine_board: !type:Container
+      machine_parts: !type:Container
   - type: EmptyOnMachineDeconstruct
     containers:
       - netpod-body
@@ -103,6 +111,7 @@
     entryDelay: 1
   - type: ExitContainerOnMove
     containerId: netpod-body
+  - type: NetpodContainer
   - type: ActivatableUI
     key: enum.NetpodUiKey.Key
   - type: UserInterface
@@ -186,6 +195,10 @@
   - type: WiresPanel
   - type: Physics
     canCollide: false
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
   - type: Byteforge
   - type: Machine
     board: ByteforgeMachineCircuitboard

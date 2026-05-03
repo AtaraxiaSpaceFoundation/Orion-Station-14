@@ -16,6 +16,7 @@
         shader: unshaded
   - type: Physics
     bodyType: Static
+    canCollide: false
   - type: InteractionOutline
   - type: Clickable
   - type: AmbientSound
