@@ -15,6 +15,9 @@ public sealed partial class AvatarConnectionComponent : Component
     public EntityUid? Netpod;
 
     [DataField]
+    public EntityUid? RunnerMind;
+
+    [DataField]
     public bool NoHit = true;
 
     [DataField]

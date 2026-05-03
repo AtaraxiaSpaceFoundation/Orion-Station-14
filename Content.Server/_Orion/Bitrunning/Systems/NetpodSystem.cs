@@ -15,7 +15,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -33,10 +32,13 @@ public sealed class NetpodSystem : EntitySystem
     [Dependency] private readonly ILocalizationManager _loc = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private Dictionary<ProtoId<StartingGearPrototype>, string>? _startingGearToJobName;
 
     private static readonly TimeSpan PodAnimationDuration = TimeSpan.FromSeconds(1.3);
+    private static readonly TimeSpan StateValidationInterval = TimeSpan.FromSeconds(5);
+    private TimeSpan _nextValidationTime;
     private const string ServerSinkPort = "BitrunningNetpodSink";
 
     public override void Initialize()
@@ -53,6 +55,47 @@ public sealed class NetpodSystem : EntitySystem
         SubscribeLocalEvent<NetpodComponent, NetpodSelectLoadoutMessage>(OnSelectLoadout);
         SubscribeLocalEvent<NetpodComponent, NewLinkEvent>(OnNewLink);
         SubscribeLocalEvent<NetpodComponent, PortDisconnectedEvent>(OnPortDisconnected);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_timing.CurTime < _nextValidationTime)
+            return;
+
+        _nextValidationTime = _timing.CurTime + StateValidationInterval;
+
+        var query = EntityQueryEnumerator<NetpodComponent, NetpodContainerComponent>();
+        while (query.MoveNext(out var uid, out var pod, out var container))
+        {
+            var dirty = false;
+
+            var contained = container.BodyContainer.ContainedEntity;
+            if (pod.Occupant != contained)
+            {
+                pod.Occupant = contained;
+                dirty = true;
+            }
+
+            if (pod.Avatar is { } avatar && !Exists(avatar))
+            {
+                pod.Avatar = null;
+                dirty = true;
+            }
+
+            if (pod.LinkedServer is { } server && (!Exists(server) || !HasComp<QuantumServerComponent>(server)))
+            {
+                pod.LinkedServer = null;
+                dirty = true;
+            }
+
+            if (!dirty)
+                continue;
+
+            Dirty(uid, pod);
+            UpdateVisuals((uid, pod));
+        }
     }
 
     private void OnInit(Entity<NetpodComponent> ent, ref ComponentInit args)
@@ -172,15 +215,18 @@ public sealed class NetpodSystem : EntitySystem
         if (args.Container.ID != "netpod-body")
             return;
 
-        if (!IsAvatarSessionActive(ent.Comp.Avatar))
+        if (ent.Comp.Avatar is not { } avatar)
             return;
 
-        args.Cancel();
-    }
+        if (Exists(avatar))
+            _server.DisconnectAvatar(avatar, true);
 
-    private bool IsAvatarSessionActive(EntityUid? avatarUid)
-    {
-        return avatarUid is { } uid && Exists(uid) && HasComp<ActorComponent>(uid);
+        ent.Comp.Avatar = null;
+        ent.Comp.Occupant = TryComp<NetpodContainerComponent>(ent.Owner, out var containerComp)
+            ? containerComp.BodyContainer.ContainedEntity
+            : null;
+        Dirty(ent);
+        UpdateVisuals(ent);
     }
 
     private void OnUiOpened(Entity<NetpodComponent> ent, ref BoundUIOpenedEvent args)

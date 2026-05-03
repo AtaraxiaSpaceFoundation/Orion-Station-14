@@ -465,6 +465,7 @@ public sealed class QuantumServerSystem : EntitySystem
         connection.OriginalBody = user;
         connection.Server = serverUid;
         connection.Netpod = podUid;
+        connection.RunnerMind = mindId;
         connection.NoHit = true;
         connection.DeleteOnDisconnect = GetDeleteOnDisconnect(server);
         EnsureComp<AvatarNavRelayComponent>(avatar).RelayEntity = podUid;
@@ -593,6 +594,8 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!TryComp<AvatarConnectionComponent>(avatarUid, out var connection))
             return;
 
+        harmful |= IsAvatarInCriticalState(avatarUid);
+
         _actions.RemoveAction(connection.DisconnectActionEntity);
 
         var originalBody = connection.OriginalBody;
@@ -603,7 +606,10 @@ public sealed class QuantumServerSystem : EntitySystem
         if (originalBody is { } bodyUid && podUid is { } netpodUid && TryComp<NetpodComponent>(netpodUid, out var podComp))
             PlayLocalSound(bodyUid, podComp.DisconnectSound);
 
-        if (canRedirectToBitrunner && TryComp<MindContainerComponent>(avatarUid, out var container) && container.Mind is { } mindId && originalBody is { } bodyToTransfer)
+        if (canRedirectToBitrunner && originalBody is { } redirectedBody)
+            TransferAvatarDamageToBitrunner((avatarUid, connection), redirectedBody, harmful);
+
+        if (originalBody is { } bodyToTransfer && TryResolveRunnerMind((avatarUid, connection), out var mindId))
             _mind.TransferTo(mindId, bodyToTransfer);
 
         if (podUid != null && TryComp<NetpodComponent>(podUid.Value, out var pod))
@@ -890,23 +896,38 @@ public sealed class QuantumServerSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
-        if (CanRedirectToBitrunnerBody(ent.Comp, ent.Comp.OriginalBody) && ent.Comp.OriginalBody is { } body && TryComp<DamageableComponent>(ent, out var avatarDamage))
-        {
-            var scaledDamage = avatarDamage.TotalDamage > 0
-                ? avatarDamage.Damage * 0.40f
-                : new DamageSpecifier
-                {
-                    DamageDict =
-                    {
-                        ["Blunt"] = 20f,
-                        ["Cellular"] = 2f, // No brain damage, lol 🥹
-                    },
-                };
-
-            _damageable.TryChangeDamage(body, scaledDamage, ignoreResistances: true, targetPart: TargetBodyPart.Head);
-        }
+        if (CanRedirectToBitrunnerBody(ent.Comp, ent.Comp.OriginalBody) && ent.Comp.OriginalBody is { } body)
+            TransferAvatarDamageToBitrunner(ent, body, true);
 
         DisconnectAvatar(ent, true);
+    }
+
+    private bool IsAvatarInCriticalState(EntityUid avatarUid)
+    {
+        return TryComp<MobStateComponent>(avatarUid, out var mobState) && mobState.CurrentState == MobState.Critical;
+    }
+
+    private void TransferAvatarDamageToBitrunner(Entity<AvatarConnectionComponent> avatar, EntityUid bodyUid, bool fatal)
+    {
+        if (!TryComp<DamageableComponent>(avatar, out var avatarDamage))
+            return;
+
+        var scaledDamage = avatarDamage.TotalDamage > 0
+            ? avatarDamage.Damage * 0.20f
+            : new DamageSpecifier
+            {
+                DamageDict =
+                {
+                    ["Blunt"] = fatal
+                        ? 20f
+                        : 10f,
+                    ["Cellular"] = fatal // No brain damage, lol 🥹
+                        ? 2f
+                        : 1f,
+                },
+            };
+
+        _damageable.TryChangeDamage(bodyUid, scaledDamage, ignoreResistances: true, targetPart: TargetBodyPart.Head);
     }
 
     private void OnAvatarDisconnectAction(Entity<AvatarConnectionComponent> ent, ref BitrunningDisconnectAvatarActionEvent args)
@@ -946,6 +967,7 @@ public sealed class QuantumServerSystem : EntitySystem
         newConnection.OriginalBody = ent.Comp.OriginalBody;
         newConnection.Server = ent.Comp.Server;
         newConnection.Netpod = ent.Comp.Netpod;
+        newConnection.RunnerMind = ent.Comp.RunnerMind;
         newConnection.NoHit = ent.Comp.NoHit;
         newConnection.DisconnectActionPrototype = ent.Comp.DisconnectActionPrototype;
         newConnection.DeleteOnDisconnect = ent.Comp.DeleteOnDisconnect;
@@ -1041,6 +1063,24 @@ public sealed class QuantumServerSystem : EntitySystem
         RemComp<HTNComponent>(avatar);
         RemComp<NpcFactionMemberComponent>(avatar);
         RemComp<FaunaComponent>(avatar);
+    }
+
+    private bool TryResolveRunnerMind(Entity<AvatarConnectionComponent> avatar, out EntityUid mindId)
+    {
+        if (avatar.Comp.RunnerMind is { } storedMind && Exists(storedMind))
+        {
+            mindId = storedMind;
+            return true;
+        }
+
+        if (TryComp<MindContainerComponent>(avatar, out var container) && container.Mind is { } avatarMind)
+        {
+            mindId = avatarMind;
+            return true;
+        }
+
+        mindId = default;
+        return false;
     }
 
     private bool CanRedirectToBitrunnerBody(AvatarConnectionComponent connection, EntityUid? originalBody)

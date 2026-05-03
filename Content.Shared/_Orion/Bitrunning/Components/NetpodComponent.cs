@@ -8,13 +8,13 @@ namespace Content.Shared._Orion.Bitrunning.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class NetpodComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityUid? LinkedServer;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityUid? Occupant;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public EntityUid? Avatar;
 
     [DataField, AutoNetworkedField]
