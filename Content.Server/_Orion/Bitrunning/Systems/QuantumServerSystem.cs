@@ -8,6 +8,7 @@ using Content.Server._Orion.CloningAppearance.Systems;
 using Content.Server.Actions;
 using Content.Server.Clothing.Systems;
 using Content.Server.DeviceNetwork.Components;
+using Content.Server.Ghost;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.Preferences.Managers;
@@ -91,7 +92,7 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<AvatarConnectionComponent, DamageChangedEvent>(OnAvatarDamaged);
         SubscribeLocalEvent<AvatarConnectionComponent, MobStateChangedEvent>(OnAvatarStateChanged);
         SubscribeLocalEvent<AvatarConnectionComponent, BitrunningDisconnectAvatarActionEvent>(OnAvatarDisconnectAction);
-        SubscribeLocalEvent<AvatarConnectionComponent, SuicideGhostEvent>(OnAvatarSuicideGhost);
+        SubscribeLocalEvent<GhostAttemptHandleEvent>(OnGhostAttemptForAvatar);
         SubscribeLocalEvent<AvatarConnectionComponent, SuicideEvent>(OnAvatarSuicide);
         SubscribeLocalEvent<AvatarConnectionComponent, PolymorphedEvent>(OnAvatarPolymorphed);
     }
@@ -939,10 +940,18 @@ public sealed class QuantumServerSystem : EntitySystem
         args.Handled = true;
     }
 
-    private static void OnAvatarSuicideGhost(Entity<AvatarConnectionComponent> ent, ref SuicideGhostEvent args)
+    private void OnGhostAttemptForAvatar(GhostAttemptHandleEvent ev)
     {
-        args.Handled = true;
-        args.CanReturnToBody = true;
+        if (ev.Handled)
+            return;
+
+        var currentEntity = ev.Mind.CurrentEntity;
+        if (currentEntity == null || !HasComp<AvatarConnectionComponent>(currentEntity.Value))
+            return;
+
+        ev.Handled = true;
+        ev.Result = true;
+        DisconnectAvatar(currentEntity.Value, true);
     }
 
     private void OnAvatarSuicide(Entity<AvatarConnectionComponent> ent, ref SuicideEvent args)
