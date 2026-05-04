@@ -176,10 +176,7 @@ public sealed class ByteforgeSystem : EntitySystem
         ent.Comp.LinkedByteforge = null;
 
         if (!TryComp<DeviceLinkSourceComponent>(ent.Owner, out var source))
-        {
-            Dirty(ent);
             return;
-        }
 
         foreach (var outputs in source.Outputs.Values)
         {
@@ -191,12 +188,9 @@ public sealed class ByteforgeSystem : EntitySystem
                 ent.Comp.LinkedByteforge = linkedEntity;
                 byteforge.LinkedServer = ent.Owner;
                 UpdateByteforgeEmagVisual(ent.Comp);
-                Dirty(ent);
                 return;
             }
         }
-
-        Dirty(ent);
     }
 
     public bool TryFillRewardCacheWithLoot(EntityUid cargoUid, QuantumServerComponent server)
