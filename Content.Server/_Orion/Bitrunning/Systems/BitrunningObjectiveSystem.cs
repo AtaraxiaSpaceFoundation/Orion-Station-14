@@ -174,6 +174,9 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
             return;
 
+        if (server.State != BitrunningServerState.Running)
+            return;
+
         if (resolvedMapUid == null)
         {
             ent.Comp.DomainMapUid = mapUid;
