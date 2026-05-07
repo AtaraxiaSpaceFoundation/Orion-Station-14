@@ -99,6 +99,9 @@ public sealed partial class BitrunningDomainEnemyObjectiveComponent : Component
 {
     [DataField]
     public int Points = 1;
+
+    [DataField]
+    public EntityUid? DomainMapUid;
 }
 
 /// <summary>

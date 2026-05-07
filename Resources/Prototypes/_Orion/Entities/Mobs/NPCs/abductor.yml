@@ -21,6 +21,8 @@
   - type: Loadout
     prototypes:
     - AbductorAgentNpcGear
+  - type: Perishable # Nuh, no.
+    molsPerSecondPerUnitMass: 0
 
 - type: entity
   parent: [ MobAbductor, MobBaseNPC ]
@@ -45,3 +47,5 @@
   - type: Loadout
     prototypes:
     - AbductorAgentNpcGear
+  - type: Perishable # Nuh, no.
+    molsPerSecondPerUnitMass: 0

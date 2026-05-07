@@ -31,6 +31,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         SubscribeLocalEvent<BitrunningExitMarkerComponent, StartCollideEvent>(OnExitCollide);
         SubscribeLocalEvent<BitrunningObjectivePointComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<BitrunningObjectiveDeliveryPointComponent, StartCollideEvent>(OnDeliveryCollide);
+        SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, ComponentStartup>(OnEnemyObjectiveStartup);
         SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, MobStateChangedEvent>(OnEnemyStateChanged);
         SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, EntityTerminatingEvent>(OnEnemyTerminating);
         SubscribeLocalEvent<AvatarConnectionComponent, FishCaughtEvent>(OnFishCaught);
@@ -132,6 +133,18 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
             _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
     }
 
+    private void OnEnemyObjectiveStartup(Entity<BitrunningDomainEnemyObjectiveComponent> ent, ref ComponentStartup args)
+    {
+        if (ent.Comp.DomainMapUid != null)
+            return;
+
+        if (!TryComp<TransformComponent>(ent, out var xform) || xform.MapUid is not { } mapUid)
+            return;
+
+        ent.Comp.DomainMapUid = mapUid;
+        Dirty(ent);
+    }
+
     private void OnEnemyStateChanged(Entity<BitrunningDomainEnemyObjectiveComponent> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)
@@ -150,11 +163,22 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (HasComp<BitrunningEnemyObjectiveCountedComponent>(ent))
             return;
 
-        if (!TryResolveDomainMapUid(ent.Owner, null, out var mapUid))
+        var resolvedMapUid = ent.Comp.DomainMapUid;
+        EntityUid mapUid;
+
+        if (resolvedMapUid is { } storedMapUid)
+            mapUid = storedMapUid;
+        else if (!TryResolveDomainMapUid(ent.Owner, null, out mapUid))
             return;
 
         if (!_server.TryGetServerByDomainMap(mapUid, out var serverUid, out var server))
             return;
+
+        if (resolvedMapUid == null)
+        {
+            ent.Comp.DomainMapUid = mapUid;
+            Dirty(ent);
+        }
 
         if (server.ObjectiveType != BitrunningObjectiveType.EliminateEnemies)
             return;
