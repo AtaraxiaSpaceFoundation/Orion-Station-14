@@ -100,3 +100,9 @@ public sealed partial class BitrunningDomainEnemyObjectiveComponent : Component
     [DataField]
     public int Points = 1;
 }
+
+/// <summary>
+/// Marks an enemy objective entity that already granted elimination progress.
+/// </summary>
+[RegisterComponent]
+public sealed partial class BitrunningEnemyObjectiveCountedComponent : Component;

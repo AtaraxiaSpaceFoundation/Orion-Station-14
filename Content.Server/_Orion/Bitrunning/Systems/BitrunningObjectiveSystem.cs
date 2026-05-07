@@ -32,6 +32,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         SubscribeLocalEvent<BitrunningObjectivePointComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<BitrunningObjectiveDeliveryPointComponent, StartCollideEvent>(OnDeliveryCollide);
         SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, MobStateChangedEvent>(OnEnemyStateChanged);
+        SubscribeLocalEvent<BitrunningDomainEnemyObjectiveComponent, EntityTerminatingEvent>(OnEnemyTerminating);
         SubscribeLocalEvent<AvatarConnectionComponent, FishCaughtEvent>(OnFishCaught);
     }
 
@@ -136,6 +137,19 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
+        TryAwardEnemyEliminationProgress(ent);
+    }
+
+    private void OnEnemyTerminating(Entity<BitrunningDomainEnemyObjectiveComponent> ent, ref EntityTerminatingEvent args)
+    {
+        TryAwardEnemyEliminationProgress(ent);
+    }
+
+    private void TryAwardEnemyEliminationProgress(Entity<BitrunningDomainEnemyObjectiveComponent> ent)
+    {
+        if (HasComp<BitrunningEnemyObjectiveCountedComponent>(ent))
+            return;
+
         if (!TryResolveDomainMapUid(ent.Owner, null, out var mapUid))
             return;
 
@@ -145,6 +159,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (server.ObjectiveType != BitrunningObjectiveType.EliminateEnemies)
             return;
 
+        EnsureComp<BitrunningEnemyObjectiveCountedComponent>(ent);
         _server.AddObjectiveProgress(serverUid, ent.Comp.Points);
     }
 

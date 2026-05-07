@@ -1,11 +1,13 @@
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Common.Effects;
+using Content.Goobstation.Common.Mind;
 using Content.Server.Mind;
 using Content.Server.Popups;
 using Content.Server._Orion.Bitrunning.Components;
 using Content.Server._Orion.CloningAppearance.Systems;
 using Content.Server.Actions;
+using Content.Server.Chat.Systems;
 using Content.Server.Clothing.Systems;
 using Content.Server.DeviceNetwork.Components;
 using Content.Server.Ghost;
@@ -24,8 +26,10 @@ using Content.Shared.Damage;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceNetwork.Components;
 using Content.Shared.Emag.Components;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -78,6 +82,7 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly IServerPreferencesManager _preferences = default!;
     [Dependency] private readonly CloningAppearanceSystem _cloningAppearance = default!;
     [Dependency] private readonly SparksSystem _sparks = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
@@ -95,6 +100,9 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<GhostAttemptHandleEvent>(OnGhostAttemptForAvatar);
         SubscribeLocalEvent<AvatarConnectionComponent, SuicideEvent>(OnAvatarSuicide);
         SubscribeLocalEvent<AvatarConnectionComponent, PolymorphedEvent>(OnAvatarPolymorphed);
+        SubscribeLocalEvent<AvatarConnectionComponent, EntitySpokeEvent>(OnAvatarSpoke);
+        SubscribeLocalEvent<AvatarConnectionComponent, GetAntagSelectionBlockerEvent>(OnAvatarGetAntagSelectionBlocker);
+        SubscribeLocalEvent<AvatarConnectionComponent, EntityTerminatingEvent>(OnAvatarTerminating);
     }
 
     private void OnServerInit(Entity<QuantumServerComponent> ent, ref ComponentInit args)
@@ -597,6 +605,8 @@ public sealed class QuantumServerSystem : EntitySystem
 
         harmful |= IsAvatarInCriticalState(avatarUid);
 
+        ReleaseAvatarHands(avatarUid);
+
         _actions.RemoveAction(connection.DisconnectActionEntity);
 
         var originalBody = connection.OriginalBody;
@@ -607,8 +617,8 @@ public sealed class QuantumServerSystem : EntitySystem
         if (originalBody is { } bodyUid && podUid is { } netpodUid && TryComp<NetpodComponent>(netpodUid, out var podComp))
             PlayLocalSound(bodyUid, podComp.DisconnectSound);
 
-        if (canRedirectToBitrunner && originalBody is { } redirectedBody)
-            TransferAvatarDamageToBitrunner((avatarUid, connection), redirectedBody, harmful);
+        if (harmful && canRedirectToBitrunner && originalBody is { } redirectedBody)
+            TransferAvatarDamageToBitrunner((avatarUid, connection), redirectedBody, true);
 
         if (originalBody is { } bodyToTransfer && TryResolveRunnerMind((avatarUid, connection), out var mindId))
             _mind.TransferTo(mindId, bodyToTransfer);
@@ -624,14 +634,13 @@ public sealed class QuantumServerSystem : EntitySystem
                 ? containerComp.BodyContainer.ContainedEntity
                 : null;
 
-            if (harmful || connection.DeleteOnDisconnect)
+            if (connection.DeleteOnDisconnect)
                 pod.Avatar = null;
 
             Dirty(podUid.Value, pod);
             _netpod.UpdateVisuals((podUid.Value, pod));
 
-            if (!canRedirectToBitrunner)
-                _netpod.EjectOccupant(podUid.Value);
+            _netpod.EjectOccupant(podUid.Value);
         }
 
         ApplyBitrunningExitEffects(originalBody, serverUid);
@@ -642,7 +651,7 @@ public sealed class QuantumServerSystem : EntitySystem
             Dirty(serverUid.Value, server);
         }
 
-        if (harmful || connection.DeleteOnDisconnect)
+        if (connection.DeleteOnDisconnect)
             QueueDel(avatarUid);
     }
 
@@ -954,6 +963,20 @@ public sealed class QuantumServerSystem : EntitySystem
         DisconnectAvatar(currentEntity.Value, true);
     }
 
+    private void OnAvatarTerminating(Entity<AvatarConnectionComponent> ent, ref EntityTerminatingEvent args)
+    {
+        if (ent.Comp.OriginalBody is not { } bodyUid || TerminatingOrDeleted(bodyUid))
+            return;
+
+        if (CanRedirectToBitrunnerBody(ent.Comp, bodyUid))
+            TransferAvatarDamageToBitrunner(ent, bodyUid, true);
+
+        if (!TryResolveRunnerMind(ent, out var mindId))
+            return;
+
+        _mind.TransferTo(mindId, bodyUid);
+    }
+
     private void OnAvatarSuicide(Entity<AvatarConnectionComponent> ent, ref SuicideEvent args)
     {
         if (args.Handled)
@@ -1007,6 +1030,17 @@ public sealed class QuantumServerSystem : EntitySystem
         RemCompDeferred<AvatarConnectionComponent>(ent);
         Dirty(newAvatarUid, newConnection);
         _bitrunningDisk.RefreshAvatarEffects(newAvatarUid);
+    }
+
+    private static void OnAvatarGetAntagSelectionBlocker(Entity<AvatarConnectionComponent> ent, ref GetAntagSelectionBlockerEvent args)
+    {
+        args.Blocked = true;
+    }
+
+    private static void OnAvatarSpoke(Entity<AvatarConnectionComponent> ent, ref EntitySpokeEvent args)
+    {
+        if (args.Channel != null)
+            args.Channel = null;
     }
 
     private EntityUid SpawnAvatarForRunner(QuantumServerComponent server, EntityUid user, EntityCoordinates coordinates)
@@ -1202,6 +1236,21 @@ public sealed class QuantumServerSystem : EntitySystem
                 continue;
 
             QueueDel(uid);
+        }
+    }
+
+    private void ReleaseAvatarHands(EntityUid avatarUid)
+    {
+        foreach (var hand in _hands.EnumerateHands(avatarUid))
+        {
+            if (!_hands.TryGetHeldItem(avatarUid, hand, out var held))
+                continue;
+
+            if (_hands.TryDrop(avatarUid, hand))
+                continue;
+
+            if (TryComp<VirtualItemComponent>(held, out _))
+                QueueDel(held.Value);
         }
     }
 }
