@@ -23,7 +23,7 @@
     children:
     - id: SteelOre1
       weight: 30
-    - id: SteelOre1
+    - id: SpaceQuartz1
       weight: 20
     - id: SilverOre1
       weight: 7
@@ -37,9 +37,9 @@
     rolls: !type:RangeNumberSelector
       range: 24, 36
     children:
-    - id: SheetSteel1
+    - id: SteelOre1
       weight: 25
-    - id: SheetGlass1
+    - id: SpaceQuartz1
       weight: 18
     - id: SilverOre1
       weight: 10
@@ -65,9 +65,9 @@
     rolls: !type:RangeNumberSelector
       range: 33, 48
     children:
-    - id: SheetSteel1
+    - id: SteelOre1
       weight: 22
-    - id: SheetGlass1
+    - id: SpaceQuartz1
       weight: 16
     - id: SilverOre1
       weight: 10
@@ -91,9 +91,9 @@
     rolls: !type:RangeNumberSelector
       range: 42, 60
     children:
-    - id: SheetSteel1
+    - id: SteelOre1
       weight: 20
-    - id: SheetGlass1
+    - id: SpaceQuartz1
       weight: 14
     - id: SilverOre1
       weight: 10
