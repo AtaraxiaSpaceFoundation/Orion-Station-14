@@ -142,7 +142,6 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
             return;
 
         ent.Comp.DomainMapUid = mapUid;
-        Dirty(ent);
     }
 
     private void OnEnemyStateChanged(Entity<BitrunningDomainEnemyObjectiveComponent> ent, ref MobStateChangedEvent args)
