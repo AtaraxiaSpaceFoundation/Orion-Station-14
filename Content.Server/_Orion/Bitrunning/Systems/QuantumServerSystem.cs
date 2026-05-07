@@ -626,14 +626,16 @@ public sealed class QuantumServerSystem : EntitySystem
         if (originalBody is { } bodyUid && podUid is { } netpodUid && TryComp<NetpodComponent>(netpodUid, out var podComp))
             PlayLocalSound(bodyUid, podComp.DisconnectSound);
 
-        if (harmful && canRedirectToBitrunner && originalBody is { } redirectedBody)
+        if (originalBody is { } bodyToTransfer && TryResolveRunnerMind((avatarUid, connection), out var mindId))
+            _mind.TransferTo(mindId, bodyToTransfer);
+
+        connection.OriginalBody = null;
+
+        if (harmful && canRedirectToBitrunner && originalBody is { } redirectedBody && !IsAvatarInCriticalState(redirectedBody))
             TransferAvatarDamageToBitrunner((avatarUid, connection), redirectedBody, true);
 
         if (harmful && IsAvatarInCriticalState(avatarUid))
             KillAvatar(avatarUid);
-
-        if (originalBody is { } bodyToTransfer && TryResolveRunnerMind((avatarUid, connection), out var mindId))
-            _mind.TransferTo(mindId, bodyToTransfer);
 
         if (podUid != null && TryComp<NetpodComponent>(podUid.Value, out var pod))
         {
