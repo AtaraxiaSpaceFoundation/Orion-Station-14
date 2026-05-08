@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Goobstation.Common.Effects;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Orion.Bitrunning;
@@ -244,7 +245,12 @@ public sealed class ByteforgeSystem : EntitySystem
         if (TryComp<StorageComponent>(cargoUid, out var storage))
             _container.EmptyContainer(storage.Container, destination: dropCoordinates);
 
-        if (TryComp<EntityStorageComponent>(cargoUid, out var entityStorage))
-            _entityStorage.EmptyContents(cargoUid, entityStorage);
+        if (!TryComp<EntityStorageComponent>(cargoUid, out var entityStorage))
+            return;
+
+        foreach (var contained in entityStorage.Contents.ContainedEntities.ToList())
+        {
+            _container.Remove(contained, entityStorage.Contents, destination: dropCoordinates, reparent: true);
+        }
     }
 }
