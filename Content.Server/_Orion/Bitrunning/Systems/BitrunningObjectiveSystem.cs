@@ -177,10 +177,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
             return;
 
         if (resolvedMapUid == null)
-        {
             ent.Comp.DomainMapUid = mapUid;
-            Dirty(ent);
-        }
 
         if (server.ObjectiveType != BitrunningObjectiveType.EliminateEnemies)
             return;

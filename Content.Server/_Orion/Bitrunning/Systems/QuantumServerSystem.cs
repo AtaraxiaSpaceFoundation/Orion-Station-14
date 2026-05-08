@@ -1002,6 +1002,8 @@ public sealed class QuantumServerSystem : EntitySystem
             if (pod.Avatar == ent.Owner)
                 pod.Avatar = null;
 
+            EnsureComp<AvatarNavRelayComponent>(podUid).RelayEntity = null;
+
             pod.Occupant = TryComp<NetpodContainerComponent>(podUid, out var containerComp)
                 ? containerComp.BodyContainer.ContainedEntity
                 : null;
