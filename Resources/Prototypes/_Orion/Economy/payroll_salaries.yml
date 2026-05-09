@@ -1,0 +1,234 @@
+# Command
+- type: payrollSalary
+  id: Captain
+  job: Captain
+  salary: 140
+  departmentAccount: Command
+
+- type: payrollSalary
+  id: Quartermaster
+  job: Quartermaster
+  salary: 100
+  departmentAccount: Command
+
+- type: payrollSalary
+  id: ChiefEngineer
+  job: ChiefEngineer
+  salary: 120
+  departmentAccount: Command
+
+- type: payrollSalary
+  id: ChiefMedicalOfficer
+  job: ChiefMedicalOfficer
+  salary: 120
+  departmentAccount: Command
+
+- type: payrollSalary
+  id: ResearchDirector
+  job: ResearchDirector
+  salary: 120
+  departmentAccount: Command
+
+- type: payrollSalary
+  id: HeadOfSecurity
+  job: HeadOfSecurity
+  salary: 120
+  departmentAccount: Command
+
+- type: payrollSalary
+  id: HeadOfPersonnel
+  job: HeadOfPersonnel
+  salary: 110
+  departmentAccount: Command
+
+# Cargo
+- type: payrollSalary
+  id: CargoTechnician
+  job: CargoTechnician
+  salary: 70
+  departmentAccount: Cargo
+
+- type: payrollSalary
+  id: SalvageSpecialist
+  job: SalvageSpecialist
+  salary: 85
+  departmentAccount: Cargo
+
+# Engineering
+- type: payrollSalary
+  id: AtmosphericTechnician
+  job: AtmosphericTechnician
+  salary: 85
+  departmentAccount: Engineering
+
+- type: payrollSalary
+  id: StationEngineer
+  job: StationEngineer
+  salary: 80
+  departmentAccount: Engineering
+
+- type: payrollSalary
+  id: TechnicalAssistant
+  job: TechnicalAssistant
+  salary: 35
+  departmentAccount: Engineering
+
+# Medical
+- type: payrollSalary
+  id: Chemist
+  job: Chemist
+  salary: 85
+  departmentAccount: Medical
+
+- type: payrollSalary
+  id: MedicalDoctor
+  job: MedicalDoctor
+  salary: 80
+  departmentAccount: Medical
+
+- type: payrollSalary
+  id: MedicalIntern
+  job: MedicalIntern
+  salary: 35
+  departmentAccount: Medical
+
+- type: payrollSalary
+  id: Paramedic
+  job: Paramedic
+  salary: 75
+  departmentAccount: Medical
+
+- type: payrollSalary
+  id: Psychologist
+  job: Psychologist
+  salary: 60
+  departmentAccount: Medical
+
+# Science
+- type: payrollSalary
+  id: ResearchAssistant
+  job: ResearchAssistant
+  salary: 40
+  departmentAccount: Science
+
+- type: payrollSalary
+  id: Scientist
+  job: Scientist
+  salary: 80
+  departmentAccount: Science
+
+# Security
+- type: payrollSalary
+  id: Detective
+  job: Detective
+  salary: 80
+  departmentAccount: Security
+
+- type: payrollSalary
+  id: SecurityCadet
+  job: SecurityCadet
+  salary: 45
+  departmentAccount: Security
+
+- type: payrollSalary
+  id: SecurityOfficer
+  job: SecurityOfficer
+  salary: 85
+  departmentAccount: Security
+
+- type: payrollSalary
+  id: Warden
+  job: Warden
+  salary: 90
+  departmentAccount: Security
+
+# Service
+- type: payrollSalary
+  id: Bartender
+  job: Bartender
+  salary: 55
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Botanist
+  job: Botanist
+  salary: 55
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Boxer
+  job: Boxer
+  salary: 40
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Chaplain
+  job: Chaplain
+  salary: 55
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Chef
+  job: Chef
+  salary: 55
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Clown
+  job: Clown
+  salary: 30
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Janitor
+  job: Janitor
+  salary: 45
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Lawyer
+  job: Lawyer
+  salary: 50
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Librarian
+  job: Librarian
+  salary: 45
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Mime
+  job: Mime
+  salary: 30
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Musician
+  job: Musician
+  salary: 35
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Reporter
+  job: Reporter
+  salary: 40
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: ServiceWorker
+  job: ServiceWorker
+  salary: 45
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Visitor
+  job: Visitor
+  salary: 20
+  departmentAccount: Service
+
+- type: payrollSalary
+  id: Zookeeper
+  job: Zookeeper
+  salary: 50
+  departmentAccount: Service

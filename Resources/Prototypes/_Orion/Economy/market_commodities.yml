@@ -1,0 +1,29 @@
+- type: marketCommodity
+  id: Plasma
+  material: Plasma
+  highDemandMultiplier: 2.0
+  lowDemandMultiplier: 0.75
+
+- type: marketCommodity
+  id: Gold
+  material: Gold
+  highDemandMultiplier: 1.8
+  lowDemandMultiplier: 0.8
+
+- type: marketCommodity
+  id: Uranium
+  material: Uranium
+  highDemandMultiplier: 1.6
+  lowDemandMultiplier: 0.85
+
+- type: marketCommodity
+  id: Silver
+  material: Silver
+  highDemandMultiplier: 1.5
+  lowDemandMultiplier: 0.85
+
+- type: marketCommodity
+  id: Plastic
+  material: Plastic
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9

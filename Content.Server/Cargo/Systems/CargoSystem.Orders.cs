@@ -118,6 +118,7 @@ using Content.Shared.Item;
 using Content.Shared.Labels.Components;
 using Content.Shared.Paper;
 using Content.Shared.Prototypes;
+using Content.Shared.Stacks;
 using Content.Shared.Station.Components;
 using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
@@ -155,18 +156,25 @@ namespace Content.Server.Cargo.Systems
 
         private void OnInteractUsingCash(EntityUid uid, CargoOrderConsoleComponent component, ref InteractUsingEvent args)
         {
-            var price = _pricing.GetPrice(args.Used);
-
-            if (price == 0)
+            // Orion-Edit-Start
+            if (!TryComp<CashComponent>(args.Used, out var cash))
                 return;
 
-            var stationUid = _station.GetOwningStation(args.Used);
+            var amount = cash.Value;
+            if (TryComp<StackComponent>(args.Used, out var stack))
+                amount *= stack.Count;
+
+            if (amount <= 0)
+                return;
+            // Orion-Edit-End
+
+            var stationUid = _station.GetOwningStation(uid); // Orion-Edit
 
             if (!TryComp(stationUid, out StationBankAccountComponent? bank))
                 return;
 
             _audio.PlayPvs(ApproveSound, uid);
-            UpdateBankAccount((stationUid.Value, bank), (int) price, component.Account);
+            UpdateBankAccount((stationUid.Value, bank), amount, component.Account); // Orion-Edit
             QueueDel(args.Used);
             args.Handled = true;
         }

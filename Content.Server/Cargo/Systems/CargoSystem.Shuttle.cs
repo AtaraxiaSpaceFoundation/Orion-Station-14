@@ -71,7 +71,14 @@ public sealed partial class CargoSystem
                 new CargoPalletConsoleInterfaceState(0, 0, false));
             return;
         }
-        GetPalletGoods(gridUid, out var toSell, out var goods);
+
+        // Orion-Start
+        var station = _station.GetOwningStation(uid);
+        if (station == null)
+            return;
+        // Orion-End
+
+        GetPalletGoods(gridUid, station.Value, out var toSell, out var goods); // Orion-Edit
         var totalAmount = goods.Sum(t => t.Item3);
         _uiSystem.SetUiState(uid,
             CargoPalletConsoleUiKey.Sale,
@@ -163,7 +170,7 @@ public sealed partial class CargoSystem
 
     private bool SellPallets(EntityUid gridUid, EntityUid station, out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
     {
-        GetPalletGoods(gridUid, out var toSell, out goods);
+        GetPalletGoods(gridUid, station, out var toSell, out goods); // Orion-Edit
 
         if (toSell.Count == 0)
             return false;
@@ -179,7 +186,7 @@ public sealed partial class CargoSystem
         return true;
     }
 
-    private void GetPalletGoods(EntityUid gridUid, out HashSet<EntityUid> toSell,  out HashSet<(EntityUid, OverrideSellComponent?, double)> goods)
+    private void GetPalletGoods(EntityUid gridUid, EntityUid station, out HashSet<EntityUid> toSell,  out HashSet<(EntityUid, OverrideSellComponent?, double)> goods) // Orion-Edit
     {
         goods = new HashSet<(EntityUid, OverrideSellComponent?, double)>();
         toSell = new HashSet<EntityUid>();
@@ -210,7 +217,8 @@ public sealed partial class CargoSystem
                 if (_blacklistQuery.HasComponent(ent))
                     continue;
 
-                var price = _pricing.GetPrice(ent);
+                var basePrice = _pricing.GetPrice(ent); // Orion
+                var price = _market.AdjustSellPrice(station, ent, basePrice); // Orion-Edit
                 if (price == 0)
                     continue;
                 toSell.Add(ent);

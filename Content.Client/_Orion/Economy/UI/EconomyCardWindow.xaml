@@ -1,0 +1,14 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        MinSize="260 250"
+                        SetSize="260 250"
+                        Title="{Loc 'economy-card-window-title'}">
+    <BoxContainer Orientation="Vertical" Margin="8">
+        <Label Text="{Loc 'economy-card-account-label'}"/>
+        <LineEdit Name="AccountId" Access="Public"/>
+        <Label Name="BalanceLabel" Access="Public" Margin="0 8 0 8"/>
+        <Label Text="{Loc 'economy-card-withdraw-amount-label'}"/>
+        <SpinBox Name="Amount" Access="Public" Value="1"/>
+        <Button Name="Withdraw" Access="Public" Margin="0 8 0 0" Text="{Loc 'economy-card-withdraw-button'}"/>
+    </BoxContainer>
+</DefaultWindow>

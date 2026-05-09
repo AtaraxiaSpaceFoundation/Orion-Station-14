@@ -1,0 +1,7 @@
+- type: cargoAccount
+  id: Command
+  name: cargo-account-command-name
+  code: cargo-account-command-code
+  color: "#ffd35b"
+  radioChannel: Command
+  acquisitionSlip: PaperAcquisitionSlipSecurity # Poxyu
