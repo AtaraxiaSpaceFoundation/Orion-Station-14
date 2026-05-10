@@ -14,6 +14,7 @@ public sealed class BankSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    private readonly ISawmill _sawmill = Logger.GetSawmill("economy-bank");
 
     public override void Initialize()
     {
@@ -30,11 +31,22 @@ public sealed class BankSystem : EntitySystem
     {
         var account = EnsureComp<StationAccountComponent>(mindUid);
 
-        if (!IsValidAccountId(account.AccountId))
-            account.AccountId = GenerateUniqueAccountId();
+        var dirty = false;
 
-        if (Resolve(mindUid, ref mind, false) && !string.IsNullOrWhiteSpace(mind.CharacterName))
+        if (!IsValidAccountId(account.AccountId))
+        {
+            account.AccountId = GenerateUniqueAccountId();
+            dirty = true;
+        }
+
+        if (Resolve(mindUid, ref mind, false) && !string.IsNullOrWhiteSpace(mind.CharacterName) && account.OwnerName != mind.CharacterName)
+        {
             account.OwnerName = mind.CharacterName;
+            dirty = true;
+        }
+
+        if (dirty)
+            Dirty(mindUid, account);
 
         return account;
     }
@@ -105,7 +117,7 @@ public sealed class BankSystem : EntitySystem
         if (amount <= 0)
             return;
 
-        AdjustBalance(account, amount, reason, counterparty);
+        _ = AdjustBalance(account, amount, reason, counterparty);
     }
 
     public bool Withdraw(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null)
@@ -113,8 +125,7 @@ public sealed class BankSystem : EntitySystem
         if (amount <= 0 || account.Comp.Balance < amount)
             return false;
 
-        AdjustBalance(account, -amount, reason, counterparty);
-        return true;
+        return AdjustBalance(account, -amount, reason, counterparty);
     }
 
     public bool Transfer(Entity<StationAccountComponent> from, Entity<StationAccountComponent> to, int amount, string reason)
@@ -126,16 +137,29 @@ public sealed class BankSystem : EntitySystem
         return true;
     }
 
-    private void AdjustBalance(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty = null)
+    private bool AdjustBalance(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty = null)
     {
         if (delta == 0)
-            return;
+            return true;
 
-        account.Comp.Balance += delta;
-        AddTransaction(account, delta, reason, counterparty);
-        Dirty(account);
+        try
+        {
+            checked
+            {
+                account.Comp.Balance += delta;
+            }
 
-        _adminLog.Add(LogType.Action, LogImpact.Low, $"Economy account {account.Comp.AccountId} ({account.Comp.OwnerName}) adjusted by {delta}. Reason: {reason}. New balance: {account.Comp.Balance}");
+            AddTransaction(account, delta, reason, counterparty);
+            Dirty(account);
+
+            _adminLog.Add(LogType.Action, LogImpact.Low, $"Account {account.Comp.AccountId} ({account.Comp.OwnerName}) adjusted by {delta}. Reason: {reason}. New balance: {account.Comp.Balance}");
+            return true;
+        }
+        catch (OverflowException)
+        {
+            _sawmill.Error($"Failed to adjust account {account.Comp.AccountId} by {delta}: integer overflow.");
+            return false;
+        }
     }
 
     private void AddTransaction(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty)

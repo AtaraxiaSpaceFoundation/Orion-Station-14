@@ -19,6 +19,7 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    private readonly ISawmill _sawmill = Logger.GetSawmill("economy-card");
 
     public override void Initialize()
     {
@@ -70,7 +71,9 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!_bank.Withdraw(account, args.Amount, "Card withdrawal", GetNetEntity(user)))
             return;
 
-        var stackProto = _proto.Index<StackPrototype>("Credit");
+        if (!_proto.TryIndex<StackPrototype>("Credit", out var stackProto))
+            return;
+
         _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
 
         _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(ent.Comp.BankAccountId, account.Comp.Balance));

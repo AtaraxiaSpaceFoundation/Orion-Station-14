@@ -75,7 +75,10 @@ public sealed partial class CargoSystem
         // Orion-Start
         var station = _station.GetOwningStation(uid);
         if (station == null)
+        {
+            _uiSystem.SetUiState(uid, CargoPalletConsoleUiKey.Sale, new CargoPalletConsoleInterfaceState(0, 0, false));
             return;
+        }
         // Orion-End
 
         GetPalletGoods(gridUid, station.Value, out var toSell, out var goods); // Orion-Edit

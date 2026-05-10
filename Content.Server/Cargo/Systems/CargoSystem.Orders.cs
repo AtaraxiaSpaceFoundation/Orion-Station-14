@@ -879,7 +879,7 @@ namespace Content.Server.Cargo.Systems
                 var spawns = EntitySpawnCollection.GetSpawns(storageFill.Contents, _random);
                 foreach (var contentItem in spawns)
                 {
-                    if (crateEntityStorage.Contents.Count >= crateEntityStorage.Capacity && spawns.Count <= crateEntityStorage.Capacity)
+                    if (crateEntityStorage.Contents.Count >= crateEntityStorage.Capacity || spawns.Count > crateEntityStorage.Capacity) // Orion-Edit
                         doExcessFill = true;
 
                     if (doExcessFill)

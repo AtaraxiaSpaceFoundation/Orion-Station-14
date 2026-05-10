@@ -17,6 +17,9 @@ public sealed class MarketSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
+    private const int HighDemandCount = 3;
+    private const int LowDemandCount = 2;
+
     public override void Update(float frameTime)
     {
         var stationQuery = EntityQueryEnumerator<StationDataComponent>();
@@ -70,8 +73,8 @@ public sealed class MarketSystem : EntitySystem
         if (commodities.Count == 0)
             return;
 
-        var highCount = Math.Min(3, commodities.Count);
-        var lowCount = Math.Min(2, Math.Max(0, commodities.Count - highCount));
+        var highCount = Math.Min(HighDemandCount, commodities.Count);
+        var lowCount = Math.Min(LowDemandCount, Math.Max(0, commodities.Count - highCount));
 
         for (var i = 0; i < highCount; i++)
         {
@@ -84,8 +87,6 @@ public sealed class MarketSystem : EntitySystem
             var pick = _random.PickAndTake(commodities);
             ent.Comp.MaterialMultipliers[pick.Material] = pick.LowDemandMultiplier;
         }
-
-        Dirty(ent);
     }
 
     private void SendStationEconomicReport(Entity<StationMarketComponent> ent)

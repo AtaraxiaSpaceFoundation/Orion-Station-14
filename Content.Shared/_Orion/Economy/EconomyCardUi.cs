@@ -11,13 +11,13 @@ public enum EconomyCardUiKey : byte
 [Serializable, NetSerializable]
 public sealed class EconomyCardWithdrawMessage(int amount, string? accountIdOverride) : BoundUserInterfaceMessage
 {
-    public int Amount = amount;
-    public string? AccountIdOverride = accountIdOverride;
+    public readonly int Amount = amount;
+    public readonly string? AccountIdOverride = accountIdOverride;
 }
 
 [Serializable, NetSerializable]
 public sealed class EconomyCardBoundUiState(string? accountId, int balance) : BoundUserInterfaceState
 {
-    public string? AccountId = accountId;
-    public int Balance = balance;
+    public readonly string? AccountId = accountId;
+    public readonly int Balance = balance;
 }

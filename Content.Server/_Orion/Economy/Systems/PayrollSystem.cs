@@ -4,7 +4,6 @@ using Content.Server.Popups;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
-using Content.Shared.Roles.Jobs;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Systems;
 using Content.Shared.Cargo.Prototypes;
@@ -28,11 +27,17 @@ public sealed class PayrollSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
+    private readonly ISawmill _sawmill = Logger.GetSawmill("economy-payroll");
 
     private TimeSpan _nextPayroll;
     private readonly TimeSpan _payrollDelay = TimeSpan.FromMinutes(6);
 
     private static readonly SoundSpecifier PayrollSound = new SoundPathSpecifier("/Audio/Effects/chime.ogg");
+
+    public override void Initialize()
+    {
+        _nextPayroll = _timing.CurTime + _payrollDelay;
+    }
 
     public void UpdatePayroll()
     {
@@ -66,12 +71,30 @@ public sealed class PayrollSystem : EntitySystem
                 continue;
 
             var paid = Math.Min(salary, departmentBalance);
-            _cargo.UpdateBankAccount((stationUid.Value, stationBank), -paid, departmentAccount);
+
+            if (!TryWithdrawDepartmentPayroll((stationUid.Value, stationBank), departmentAccount, paid))
+            {
+                _sawmill.Warning($"Payroll withdrawal failed for station {stationUid.Value} department {departmentAccount} amount {paid}.");
+                continue;
+            }
 
             account.Department = departmentAccount;
             _bank.Deposit((mindUid, account), paid, $"Payroll: {job.ID}", GetNetEntity(stationUid.Value));
             NotifyPayroll(owned, account.AccountId, paid);
         }
+    }
+
+    private bool TryWithdrawDepartmentPayroll(Entity<StationBankAccountComponent?> stationBank, ProtoId<CargoAccountPrototype> departmentAccount, int amount)
+    {
+        if (amount <= 0)
+            return false;
+
+        var current = _cargo.GetBalanceFromAccount(stationBank, departmentAccount);
+        if (current < amount)
+            return false;
+
+        _cargo.UpdateBankAccount(stationBank, -amount, departmentAccount);
+        return true;
     }
 
     private (JobPrototype Job, int Salary, ProtoId<CargoAccountPrototype> DepartmentAccount)? GetPayrollData(Entity<MindComponent> mind)
