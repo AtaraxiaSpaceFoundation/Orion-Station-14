@@ -4,6 +4,8 @@ using Content.Server.Mind;
 using Content.Server.Stack;
 using Content.Shared.Access.Components;
 using Content.Shared._Orion.Economy;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Interaction;
 using Content.Shared.Mind.Components;
 using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
@@ -19,11 +21,16 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+
+    private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
 
     public override void Initialize()
     {
         SubscribeLocalEvent<MindContainerComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<IdCardComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<IdCardComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<IdCardComponent, AfterInteractEvent>(OnAfterInteract);
 
         Subs.BuiEvents<IdCardComponent>(EconomyCardUiKey.Key,
             subs =>
@@ -70,12 +77,47 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!_bank.Withdraw(account, args.Amount, "Card withdrawal", GetNetEntity(user)))
             return;
 
-        if (!_proto.TryIndex<StackPrototype>("Credit", out var stackProto))
+        if (!_proto.TryIndex(CreditStackId, out var stackProto))
             return;
 
-        _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
+        var credits = _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
+        _hands.PickupOrDrop(user, credits);
 
         _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(ent.Comp.BankAccountId, account.Comp.Balance));
+    }
+
+    private void OnInteractUsing(Entity<IdCardComponent> ent, ref InteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp(args.Used, out StackComponent? usedStack) || usedStack.StackTypeId != CreditStackId || usedStack.Count <= 0)
+            return;
+
+        args.Handled = TryDepositStackToCard(ent, args.User, args.Used, usedStack);
+    }
+
+    private void OnAfterInteract(Entity<IdCardComponent> ent, ref AfterInteractEvent args)
+    {
+        if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
+            return;
+
+        if (!TryComp(target, out StackComponent? targetStack) || targetStack.StackTypeId != CreditStackId || targetStack.Count <= 0)
+            return;
+
+        args.Handled = TryDepositStackToCard(ent, args.User, target, targetStack);
+    }
+
+    private bool TryDepositStackToCard(Entity<IdCardComponent> card, EntityUid user, EntityUid stackUid, StackComponent stack)
+    {
+        if (!ResolveAccount(card, user, out var account))
+            return false;
+
+        var amount = stack.Count;
+        _bank.Deposit(account, amount, "Card deposit", GetNetEntity(user));
+        _stack.SetCount(stackUid, 0, stack);
+        _ui.SetUiState(card.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.Comp.BankAccountId, account.Comp.Balance));
+        return true;
     }
 
     private bool ResolveAccount(Entity<IdCardComponent> card, EntityUid user, out Entity<StationAccountComponent> account, string? accountOverride = null)
