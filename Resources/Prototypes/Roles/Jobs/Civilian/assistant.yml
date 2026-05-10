@@ -85,6 +85,10 @@
   icon: "JobIconPassenger"
   supervisors: job-supervisors-everyone
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 35
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Maintenance
   special: # Goobstation

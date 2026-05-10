@@ -74,6 +74,10 @@
   guides: # goobstation
   - Atmospherics
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 85
+  payrollDepartmentAccount: Engineering
+  # Orion-End
   access:
   - Maintenance
   - Engineering

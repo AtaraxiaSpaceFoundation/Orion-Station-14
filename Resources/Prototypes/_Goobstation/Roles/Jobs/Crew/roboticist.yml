@@ -12,6 +12,10 @@
   supervisors: job-supervisors-rd
   guides: [ Robotics ]
   goobcoins: 20
+  # Orion-Start
+  salary: 80
+  payrollDepartmentAccount: Science
+  # Orion-End
   access:
   - Research
   - Maintenance

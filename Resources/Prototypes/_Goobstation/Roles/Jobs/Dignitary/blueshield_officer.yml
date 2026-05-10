@@ -53,6 +53,10 @@
 #  - Command
 #  - Succession
   goobcoins: 45
+  # Orion-Start
+  salary: 120
+  payrollDepartmentAccount: Command
+  # Orion-End
   weight: 20
   startingGear: BlueshieldOfficerGear
   icon: "JobIconBlueshield"

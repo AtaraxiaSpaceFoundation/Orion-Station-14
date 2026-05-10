@@ -77,6 +77,10 @@
   - Power
   - Networking
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 35
+  payrollDepartmentAccount: Engineering
+  # Orion-End
   access:
   - Maintenance
   - Engineering

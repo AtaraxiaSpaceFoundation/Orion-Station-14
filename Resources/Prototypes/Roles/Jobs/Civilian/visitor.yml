@@ -16,6 +16,10 @@
   icon: JobIconVisitor
   setPreference: false
   overrideConsoleVisibility: true
+  # Orion-Start
+  salary: 15
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Maintenance
   extendedAccess:

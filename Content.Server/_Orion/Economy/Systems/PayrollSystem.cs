@@ -1,11 +1,20 @@
 using System.Linq;
 using Content.Server.Cargo.Systems;
+using Content.Server.Chat.Systems;
+using Content.Server.Popups;
 using Content.Shared.Cargo.Components;
 using Content.Shared._Orion.Economy.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Server.Station.Systems;
+using Content.Shared.Access.Components;
+using Content.Shared.Access.Systems;
+using Content.Shared.Cargo.Prototypes;
+using Content.Shared.Chat;
+using Content.Shared.Popups;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -18,9 +27,15 @@ public sealed class PayrollSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly SharedIdCardSystem _idCard = default!;
 
     private TimeSpan _nextPayroll;
     private readonly TimeSpan _payrollDelay = TimeSpan.FromMinutes(6);
+
+    private static readonly SoundSpecifier PayrollSound = new SoundPathSpecifier("/Audio/Effects/chime.ogg");
 
     public override void Update(float frameTime)
     {
@@ -33,8 +48,6 @@ public sealed class PayrollSystem : EntitySystem
 
     private void ProcessPayroll()
     {
-        var salaries = _proto.EnumeratePrototypes<PayrollSalaryPrototype>().ToDictionary(p => p.Job, p => p);
-
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindUid, out var mindComp))
         {
@@ -46,33 +59,49 @@ public sealed class PayrollSystem : EntitySystem
                 continue;
 
             var account = _bank.EnsurePlayerAccount(mindUid, mindComp);
-            var salary = GetSalaryData((mindUid, mindComp), salaries);
-            if (salary == null)
+            var payrollData = GetPayrollData((mindUid, mindComp));
+            if (payrollData == null)
                 continue;
 
-            var departmentBalance = _cargo.GetBalanceFromAccount((stationUid.Value, stationBank), salary.DepartmentAccount);
+            var (job, salary, departmentAccount) = payrollData.Value;
+            var departmentBalance = _cargo.GetBalanceFromAccount((stationUid.Value, stationBank), departmentAccount);
             if (departmentBalance <= 0)
                 continue;
 
-            var paid = Math.Min(salary.Salary, departmentBalance);
-            _cargo.UpdateBankAccount((stationUid.Value, stationBank), -paid, salary.DepartmentAccount);
+            var paid = Math.Min(salary, departmentBalance);
+            _cargo.UpdateBankAccount((stationUid.Value, stationBank), -paid, departmentAccount);
 
-            account.Department = salary.DepartmentAccount;
-            _bank.Deposit((mindUid, account), paid, $"Payroll: {salary.Job}", GetNetEntity(stationUid.Value));
+            account.Department = departmentAccount;
+            _bank.Deposit((mindUid, account), paid, $"Payroll: {job.ID}", GetNetEntity(stationUid.Value));
+            NotifyPayroll(owned, account.AccountId, paid);
         }
     }
 
-    private PayrollSalaryPrototype? GetSalaryData(Entity<MindComponent> mind, Dictionary<ProtoId<JobPrototype>, PayrollSalaryPrototype> salaries)
+    private (JobPrototype Job, int Salary, ProtoId<CargoAccountPrototype> DepartmentAccount)? GetPayrollData(Entity<MindComponent> mind)
     {
         foreach (var role in mind.Comp.MindRoles)
         {
             if (!TryComp<JobRoleComponent>(role, out _) || !TryComp<MindRoleComponent>(role, out var mindRole) || mindRole.JobPrototype == null)
                 continue;
 
-            if (salaries.TryGetValue(mindRole.JobPrototype.Value, out var data))
-                return data;
+            var job = _proto.Index(mindRole.JobPrototype.Value);
+            if (job.Salary == null || job.PayrollDepartmentAccount == null || job.Salary <= 0)
+                continue;
+
+            return (job, job.Salary.Value, job.PayrollDepartmentAccount.Value);
         }
 
         return null;
+    }
+
+    private void NotifyPayroll(EntityUid recipient, string accountId, int amount)
+    {
+        if (!_idCard.TryFindIdCard(recipient, out var idCard) || idCard.Comp.BankAccountId != accountId)
+            return;
+
+        var popupText = Loc.GetString("payroll-popup-received", ("amount", amount));
+        _popup.PopupEntity(popupText, recipient, recipient, PopupType.Medium);
+        _chat.TrySendInGameICMessage(recipient, popupText, InGameICChatType.Speak, ChatTransmitRange.HideChat, hideLog: true);
+        _audio.PlayPvs(PayrollSound, Transform(recipient).Coordinates);
     }
 }

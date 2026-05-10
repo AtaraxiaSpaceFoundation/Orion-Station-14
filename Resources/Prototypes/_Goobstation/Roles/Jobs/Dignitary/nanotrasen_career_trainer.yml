@@ -4,6 +4,10 @@
   description: job-description-nct
   playTimeTracker: JobNanotrasenCareerTrainer
   goobcoins: 45
+  # Orion-Start
+  salary: 80
+  payrollDepartmentAccount: Command
+  # Orion-End
   weight: 20
   startingGear: NanotrasenCareerTrainerGear
   icon: "JobIconNanotrasenTrainer"

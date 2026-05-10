@@ -83,6 +83,10 @@
   supervisors: job-supervisors-hop
   guides: [ Janitorial ] # goobstation
   goobcoins: 20 # Goobstation
+  # Orion-Start
+  salary: 45
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Service
   - Janitor

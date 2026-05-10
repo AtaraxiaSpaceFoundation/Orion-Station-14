@@ -76,6 +76,10 @@
 #  - Chemist # Orion-Edit: Removed because dont have this SOP
   - Chemicals
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 85
+  payrollDepartmentAccount: Medical
+  # Orion-End
   access:
   - Medical
   - Chemistry

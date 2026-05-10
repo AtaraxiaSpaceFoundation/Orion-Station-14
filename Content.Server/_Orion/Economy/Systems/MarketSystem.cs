@@ -47,21 +47,25 @@ public sealed class MarketSystem : EntitySystem
         if (!TryComp<StationMarketComponent>(stationUid, out var market) || !TryComp<PhysicalCompositionComponent>(soldEntity, out var composition))
             return basePrice;
 
-        var multiplier = 1f;
+        var totalWeight = composition.MaterialComposition.Values.Sum();
+        if (totalWeight <= 0f)
+            return basePrice;
+
+        var weightedMultiplier = 0f;
         foreach (var (material, amount) in composition.MaterialComposition)
         {
-            if (!market.MaterialMultipliers.TryGetValue(material, out var materialMultiplier))
-                continue;
-
-            multiplier += (materialMultiplier - 1f) * amount;
+            var multiplier = market.MaterialMultipliers.GetValueOrDefault(material, 1f);
+            weightedMultiplier += multiplier * amount;
         }
 
-        return basePrice * Math.Max(0.2f, multiplier);
+        weightedMultiplier /= totalWeight;
+        return basePrice * Math.Max(0.2f, weightedMultiplier);
     }
 
     private void RegenerateDemand(Entity<StationMarketComponent> ent)
     {
         ent.Comp.MaterialMultipliers.Clear();
+
         var commodities = _proto.EnumeratePrototypes<MarketCommodityPrototype>().ToList();
         if (commodities.Count == 0)
             return;
