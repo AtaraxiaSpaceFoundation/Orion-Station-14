@@ -19,7 +19,6 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    private readonly ISawmill _sawmill = Logger.GetSawmill("economy-card");
 
     public override void Initialize()
     {

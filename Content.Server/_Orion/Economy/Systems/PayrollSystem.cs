@@ -1,5 +1,4 @@
 using Content.Server.Cargo.Systems;
-using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Mind;
@@ -7,7 +6,6 @@ using Content.Shared.Roles;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Systems;
 using Content.Shared.Cargo.Prototypes;
-using Content.Shared.Chat;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -25,14 +23,13 @@ public sealed class PayrollSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
     private readonly ISawmill _sawmill = Logger.GetSawmill("economy-payroll");
 
     private TimeSpan _nextPayroll;
-    private readonly TimeSpan _payrollDelay = TimeSpan.FromMinutes(6);
+    private readonly TimeSpan _payrollDelay = TimeSpan.FromMinutes(5);
 
-    private static readonly SoundSpecifier PayrollSound = new SoundPathSpecifier("/Audio/Effects/chime.ogg");
+    private static readonly SoundSpecifier PayrollSound = new SoundPathSpecifier("/Audio/_Orion/Machines/twobeep_high.ogg");
 
     public override void Initialize()
     {
@@ -121,7 +118,6 @@ public sealed class PayrollSystem : EntitySystem
 
         var popupText = Loc.GetString("payroll-popup-received", ("amount", amount));
         _popup.PopupEntity(popupText, recipient, recipient, PopupType.Medium);
-        _chat.TrySendInGameICMessage(recipient, popupText, InGameICChatType.Speak, ChatTransmitRange.HideChat, hideLog: true);
         _audio.PlayPvs(PayrollSound, Transform(recipient).Coordinates);
     }
 }

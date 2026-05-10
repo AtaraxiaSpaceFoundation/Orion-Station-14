@@ -198,7 +198,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
         foreach (var (account, percent) in accountDistribution)
         {
             var accountBalancedAdded = (int) Math.Round(percent * balanceAdded);
-            ent.Comp.Accounts[account] += accountBalancedAdded;
+            ent.Comp.Accounts[account] = ent.Comp.Accounts.GetValueOrDefault(account) + accountBalancedAdded; // Orion-Edit
         }
 
         var ev = new BankBalanceUpdatedEvent(ent, ent.Comp.Accounts);
