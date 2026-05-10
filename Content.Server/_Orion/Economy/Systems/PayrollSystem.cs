@@ -1,14 +1,11 @@
-using System.Linq;
 using Content.Server.Cargo.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Cargo.Components;
-using Content.Shared._Orion.Economy.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Server.Station.Systems;
-using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Chat;
@@ -37,7 +34,7 @@ public sealed class PayrollSystem : EntitySystem
 
     private static readonly SoundSpecifier PayrollSound = new SoundPathSpecifier("/Audio/Effects/chime.ogg");
 
-    public override void Update(float frameTime)
+    public void UpdatePayroll()
     {
         if (_timing.CurTime < _nextPayroll)
             return;
@@ -81,7 +78,7 @@ public sealed class PayrollSystem : EntitySystem
     {
         foreach (var role in mind.Comp.MindRoles)
         {
-            if (!TryComp<JobRoleComponent>(role, out _) || !TryComp<MindRoleComponent>(role, out var mindRole) || mindRole.JobPrototype == null)
+            if (!TryComp<MindRoleComponent>(role, out var mindRole) || mindRole.JobPrototype == null)
                 continue;
 
             var job = _proto.Index(mindRole.JobPrototype.Value);

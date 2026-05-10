@@ -73,9 +73,6 @@ public sealed class EconomyCardSystem : EntitySystem
         var stackProto = _proto.Index<StackPrototype>("Credit");
         _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
 
-        ent.Comp.BankAccountId = account.Comp.AccountId;
-        Dirty(ent);
-
         _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(ent.Comp.BankAccountId, account.Comp.Balance));
     }
 
@@ -93,14 +90,10 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!string.IsNullOrWhiteSpace(accountId) && string.Equals(accountId, ensured.AccountId, StringComparison.OrdinalIgnoreCase) && _bank.TryFindAccountById(accountId, out account))
             return true;
 
+        if (string.IsNullOrWhiteSpace(card.Comp.BankAccountId))
+            return false;
+
         account = (mindUid, ensured);
-
-        if (!string.IsNullOrWhiteSpace(card.Comp.BankAccountId))
-            return true;
-
-        card.Comp.BankAccountId = ensured.AccountId;
-        Dirty(card);
-
         return true;
     }
 }
