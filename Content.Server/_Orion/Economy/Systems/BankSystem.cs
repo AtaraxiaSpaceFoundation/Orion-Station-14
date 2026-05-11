@@ -112,20 +112,20 @@ public sealed class BankSystem : EntitySystem
         return account.Comp.Balance;
     }
 
-    public void Deposit(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null)
+    public void Deposit(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null, string? reasonData = null)
     {
         if (amount <= 0)
             return;
 
-        _ = AdjustBalance(account, amount, reason, counterparty);
+        _ = AdjustBalance(account, amount, reason, counterparty, reasonData);
     }
 
-    public bool Withdraw(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null)
+    public bool Withdraw(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null, string? reasonData = null)
     {
         if (amount <= 0 || account.Comp.Balance < amount)
             return false;
 
-        return AdjustBalance(account, -amount, reason, counterparty);
+        return AdjustBalance(account, -amount, reason, counterparty, reasonData);
     }
 
     public bool Transfer(Entity<StationAccountComponent> from, Entity<StationAccountComponent> to, int amount, string reason)
@@ -137,7 +137,7 @@ public sealed class BankSystem : EntitySystem
         return true;
     }
 
-    private bool AdjustBalance(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty = null)
+    private bool AdjustBalance(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty = null, string? reasonData = null)
     {
         if (delta == 0)
             return true;
@@ -149,7 +149,7 @@ public sealed class BankSystem : EntitySystem
                 account.Comp.Balance += delta;
             }
 
-            AddTransaction(account, delta, reason, counterparty);
+            AddTransaction(account, delta, reason, reasonData, counterparty);
             Dirty(account);
 
             _adminLog.Add(LogType.Action, LogImpact.Low, $"Account {account.Comp.AccountId} ({account.Comp.OwnerName}) adjusted by {delta}. Reason: {reason}. New balance: {account.Comp.Balance}");
@@ -162,9 +162,9 @@ public sealed class BankSystem : EntitySystem
         }
     }
 
-    private void AddTransaction(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty)
+    private void AddTransaction(Entity<StationAccountComponent> account, int delta, string reason, string? reasonData, NetEntity? counterparty)
     {
-        account.Comp.History.Add(new AccountTransaction(_timing.CurTime, delta, account.Comp.Balance, reason, counterparty));
+        account.Comp.History.Add(new AccountTransaction(_timing.CurTime, delta, account.Comp.Balance, reason, reasonData, counterparty));
         if (account.Comp.History.Count <= account.Comp.MaxHistory)
             return;
 

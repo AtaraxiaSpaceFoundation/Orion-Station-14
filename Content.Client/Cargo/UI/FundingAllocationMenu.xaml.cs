@@ -133,7 +133,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         {
             var code = new RichTextLabel
             {
-                Text = $"[font=\"Monospace\"]{account.AccountId}[/font]",
+                Text = $"[font=\"Monospace\"]{MaskAccountCode(account.AccountId)}[/font]",
                 HorizontalAlignment = HAlignment.Center,
             };
 
@@ -197,8 +197,8 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 },
                 new RichTextLabel { Text = from, HorizontalAlignment = HAlignment.Center },
                 new RichTextLabel { Text = to, HorizontalAlignment = HAlignment.Center },
-                new RichTextLabel { Text = transaction.Reason, HorizontalAlignment = HAlignment.Center },
-                new RichTextLabel { Text = transaction.Time.ToString(), HorizontalAlignment = HAlignment.Center },
+                new RichTextLabel { Text = LocalizeReason(transaction.Reason, transaction.ReasonData), HorizontalAlignment = HAlignment.Center },
+                new RichTextLabel { Text = transaction.Time.ToString(@"hh\:mm\:ss"), HorizontalAlignment = HAlignment.Center },
             };
 
             foreach (var control in controls)
@@ -207,6 +207,24 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 _transactionControls.Add(control);
             }
         }
+    }
+
+    private static string MaskAccountCode(string accountId)
+    {
+        return accountId.Length <= 4
+            ? "####"
+            : $"######{accountId[^4..]}";
+    }
+
+    private static string LocalizeReason(string reason, string? reasonData)
+    {
+        return reason switch
+        {
+            "card_deposit" => Loc.GetString("cargo-funding-alloc-console-reason-card-deposit"),
+            "card_withdrawal" => Loc.GetString("cargo-funding-alloc-console-reason-card-withdrawal"),
+            "payroll" => Loc.GetString("cargo-funding-alloc-console-reason-payroll", ("job", Loc.GetString($"job-name-{reasonData}"))),
+            _ => Loc.GetString("cargo-funding-alloc-console-reason-generic", ("reason", reason)),
+        };
     }
     // Orion-End
 

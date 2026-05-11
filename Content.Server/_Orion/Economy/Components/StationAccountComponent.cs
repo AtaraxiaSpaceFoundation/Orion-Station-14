@@ -26,4 +26,4 @@ public sealed partial class StationAccountComponent : Component
 }
 
 [Serializable]
-public sealed record AccountTransaction(TimeSpan Time, int Delta, int ResultBalance, string Reason, NetEntity? Receiver);
+public sealed record AccountTransaction(TimeSpan Time, int Delta, int ResultBalance, string Reason, string? ReasonData, NetEntity? Receiver);

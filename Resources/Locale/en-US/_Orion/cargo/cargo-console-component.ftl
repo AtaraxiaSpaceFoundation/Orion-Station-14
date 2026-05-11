@@ -15,3 +15,8 @@ cargo-funding-alloc-console-economy-time = Time
 cargo-funding-alloc-console-economy-operation-income = Credit
 cargo-funding-alloc-console-economy-operation-expense = Debit
 cargo-funding-alloc-console-economy-unknown = Unknown
+
+cargo-funding-alloc-console-reason-card-deposit = Card deposit
+cargo-funding-alloc-console-reason-card-withdrawal = Card withdrawal
+cargo-funding-alloc-console-reason-payroll = Payroll: { $job }
+cargo-funding-alloc-console-reason-generic = { $reason }

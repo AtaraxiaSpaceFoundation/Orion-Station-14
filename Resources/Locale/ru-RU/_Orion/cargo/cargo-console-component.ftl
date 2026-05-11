@@ -31,3 +31,8 @@ cargo-funding-alloc-console-economy-time = Время
 cargo-funding-alloc-console-economy-operation-income = Зачисление
 cargo-funding-alloc-console-economy-operation-expense = Списание
 cargo-funding-alloc-console-economy-unknown = Неизвестно
+
+cargo-funding-alloc-console-reason-card-deposit = Внесение с карты
+cargo-funding-alloc-console-reason-card-withdrawal = Снятие с карты
+cargo-funding-alloc-console-reason-payroll = Зарплата: { $job }
+cargo-funding-alloc-console-reason-generic = { $reason }

@@ -74,7 +74,7 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
             return;
 
-        if (!_bank.Withdraw(account, args.Amount, "Card withdrawal", GetNetEntity(user)))
+        if (!_bank.Withdraw(account, args.Amount, "card_withdrawal", GetNetEntity(user)))
             return;
 
         if (!_proto.TryIndex(CreditStackId, out var stackProto))
@@ -114,7 +114,7 @@ public sealed class EconomyCardSystem : EntitySystem
             return false;
 
         var amount = stack.Count;
-        _bank.Deposit(account, amount, "Card deposit", GetNetEntity(user));
+        _bank.Deposit(account, amount, "card_deposit", GetNetEntity(user));
         _stack.SetCount(stackUid, 0, stack);
         _ui.SetUiState(card.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.Comp.BankAccountId, account.Comp.Balance));
         return true;

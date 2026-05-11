@@ -72,7 +72,7 @@ public sealed partial class CargoPalletMenu : FancyWindow
             RecentContainer.AddChild(BuildChangeLabel(change, true));
         }
 
-        NoChangesLabel.Visible = state.ActiveChanges.Count == 0;
+        NoChangesLabel.Visible = state.ActiveChanges.Count == 0 && state.RecentChanges.Count == 0;
     }
 
     private Control BuildChangeLabel(CargoPalletMarketChangeData change, bool withSequence = false)
@@ -81,38 +81,38 @@ public sealed partial class CargoPalletMenu : FancyWindow
         if (_prototype.TryIndex<MaterialPrototype>(change.MaterialProto, out var material) && !string.IsNullOrWhiteSpace(material.Name))
             materialName = Loc.GetString(material.Name);
 
-        var direction = change.Multiplier >= 1f
-            ? Loc.GetString("cargo-pallet-market-direction-up")
-            : Loc.GetString("cargo-pallet-market-direction-down");
-
         var percent = (change.Multiplier - 1f) * 100f;
         var sequence = withSequence && change.Sequence > 0
             ? Loc.GetString("cargo-pallet-market-sequence", ("sequence", change.Sequence))
             : string.Empty;
+        var roundedPercent = MathF.Round(MathF.Abs(percent), 1);
+        var roundedMultiplier = MathF.Round(change.Multiplier, 2);
+        var key = change.Multiplier >= 1f
+            ? "cargo-pallet-market-change-up"
+            : "cargo-pallet-market-change-down";
 
         return new Label
         {
-            Text = Loc.GetString("cargo-pallet-market-change-row",
+            Text = Loc.GetString(key,
                 ("material", materialName),
-                ("direction", direction),
-                ("percent", MathF.Round(percent, 1)),
-                ("multiplier", MathF.Round(change.Multiplier, 2)),
+                ("percent", roundedPercent),
+                ("multiplier", roundedMultiplier),
                 ("sequence", sequence)),
         };
     }
     // Orion-End
 
-    public void SetAppraisal(int amount)
+    private void SetAppraisal(int amount) // Orion-Edit: Was public
     {
         AppraisalLabel.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", amount.ToString()));
     }
 
-    public void SetCount(int count)
+    private void SetCount(int count) // Orion-Edit: Was public
     {
         CountLabel.Text = count.ToString();
     }
 
-    public void SetEnabled(bool enabled)
+    private void SetEnabled(bool enabled) // Orion-Edit: Was public
     {
         AppraiseButton.Disabled = !enabled;
         SellButton.Disabled = !enabled;

@@ -79,15 +79,17 @@ public sealed class FundingAllocationTransactionData
     public TimeSpan Time;
     public int Delta;
     public string Reason;
+    public string? ReasonData;
     public NetEntity Account;
     public NetEntity? Counterparty;
 
-    public FundingAllocationTransactionData(int index, TimeSpan time, int delta, string reason, NetEntity account, NetEntity? counterparty)
+    public FundingAllocationTransactionData(int index, TimeSpan time, int delta, string reason, string? reasonData, NetEntity account, NetEntity? counterparty)
     {
         Index = index;
         Time = time;
         Delta = delta;
         Reason = reason;
+        ReasonData = reasonData;
         Account = account;
         Counterparty = counterparty;
     }

@@ -6,11 +6,9 @@ using Content.Shared.Roles;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Systems;
 using Content.Shared.Cargo.Prototypes;
-using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Economy.Systems;
 
@@ -20,32 +18,14 @@ public sealed class PayrollSystem : EntitySystem
     [Dependency] private readonly CargoSystem _cargo = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedIdCardSystem _idCard = default!;
     private readonly ISawmill _sawmill = Logger.GetSawmill("economy-payroll");
 
-    private TimeSpan _nextPayroll;
-    private readonly TimeSpan _payrollDelay = TimeSpan.FromMinutes(5);
-
     private static readonly SoundSpecifier PayrollSound = new SoundPathSpecifier("/Audio/_Orion/Machines/twobeep_high.ogg");
 
-    public override void Initialize()
-    {
-        _nextPayroll = _timing.CurTime + _payrollDelay;
-    }
-
-    public void UpdatePayroll()
-    {
-        if (_timing.CurTime < _nextPayroll)
-            return;
-
-        _nextPayroll = _timing.CurTime + _payrollDelay;
-        ProcessPayroll();
-    }
-
-    private void ProcessPayroll()
+    public void ProcessPayroll()
     {
         var query = EntityQueryEnumerator<MindComponent>();
         while (query.MoveNext(out var mindUid, out var mindComp))
@@ -76,7 +56,7 @@ public sealed class PayrollSystem : EntitySystem
             }
 
             account.Department = departmentAccount;
-            _bank.Deposit((mindUid, account), paid, $"Payroll: {job.ID}", GetNetEntity(stationUid.Value));
+            _bank.Deposit((mindUid, account), paid, "payroll", GetNetEntity(stationUid.Value), job.ID);
             NotifyPayroll(owned, account.AccountId, paid);
         }
     }

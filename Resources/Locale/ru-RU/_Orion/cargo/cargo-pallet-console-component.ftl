@@ -8,3 +8,5 @@ cargo-pallet-market-direction-up = повышение
 cargo-pallet-market-direction-down = понижение
 cargo-pallet-market-sequence = №{ $sequence }
 cargo-pallet-market-change-row = { $material }: { $direction }, { $percent }% (x{ $multiplier }) { $sequence }
+cargo-pallet-market-change-up = { $material } — спрос повышен: +{ $percent }% (x{ $multiplier }) { $sequence }
+cargo-pallet-market-change-down = { $material } — спрос понижен: -{ $percent }% (x{ $multiplier }) { $sequence }

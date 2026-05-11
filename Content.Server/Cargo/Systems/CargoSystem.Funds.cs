@@ -188,6 +188,7 @@ public sealed partial class CargoSystem
                     transaction.Time,
                     transaction.Delta,
                     transaction.Reason,
+                    transaction.ReasonData,
                     GetNetEntity(accountUid),
                     transaction.Receiver));
             }
