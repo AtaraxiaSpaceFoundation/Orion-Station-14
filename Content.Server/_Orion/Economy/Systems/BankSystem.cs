@@ -31,22 +31,11 @@ public sealed class BankSystem : EntitySystem
     {
         var account = EnsureComp<StationAccountComponent>(mindUid);
 
-        var dirty = false;
-
         if (!IsValidAccountId(account.AccountId))
-        {
             account.AccountId = GenerateUniqueAccountId();
-            dirty = true;
-        }
 
         if (Resolve(mindUid, ref mind, false) && !string.IsNullOrWhiteSpace(mind.CharacterName) && account.OwnerName != mind.CharacterName)
-        {
             account.OwnerName = mind.CharacterName;
-            dirty = true;
-        }
-
-        if (dirty)
-            Dirty(mindUid, account);
 
         return account;
     }
@@ -150,7 +139,6 @@ public sealed class BankSystem : EntitySystem
             }
 
             AddTransaction(account, delta, reason, reasonData, counterparty);
-            Dirty(account);
 
             _adminLog.Add(LogType.Action, LogImpact.Low, $"Account {account.Comp.AccountId} ({account.Comp.OwnerName}) adjusted by {delta}. Reason: {reason}. New balance: {account.Comp.Balance}");
             return true;

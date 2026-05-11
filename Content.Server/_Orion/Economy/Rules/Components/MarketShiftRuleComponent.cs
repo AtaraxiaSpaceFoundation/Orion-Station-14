@@ -30,10 +30,10 @@ public sealed partial class MarketShiftRuleComponent : Component
     public float IncreasedMultiplierMax = 1.8f;
 
     [DataField]
-    public float DecreasedMultiplierMin = 0.8f;
+    public float DecreasedMultiplierMin = 0.2f;
 
     [DataField]
-    public float DecreasedMultiplierMax = 2f;
+    public float DecreasedMultiplierMax = 0.9f;
 
     [DataField]
     public bool AnnouncementsEnabled = true;

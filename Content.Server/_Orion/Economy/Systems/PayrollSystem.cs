@@ -49,7 +49,7 @@ public sealed class PayrollSystem : EntitySystem
 
             var paid = Math.Min(salary, departmentBalance);
 
-            if (!TryWithdrawDepartmentPayroll((stationUid.Value, stationBank), departmentAccount, paid))
+            if (!TryWithdrawDepartmentPayroll((stationUid.Value, stationBank), departmentAccount, departmentBalance, paid))
             {
                 _sawmill.Warning($"Payroll withdrawal failed for station {stationUid.Value} department {departmentAccount} amount {paid}.");
                 continue;
@@ -61,16 +61,18 @@ public sealed class PayrollSystem : EntitySystem
         }
     }
 
-    private bool TryWithdrawDepartmentPayroll(Entity<StationBankAccountComponent?> stationBank, ProtoId<CargoAccountPrototype> departmentAccount, int amount)
+    private bool TryWithdrawDepartmentPayroll(Entity<StationBankAccountComponent?> stationBank, ProtoId<CargoAccountPrototype> departmentAccount, int departmentBalance, int amount)
     {
         if (amount <= 0)
             return false;
 
-        var current = _cargo.GetBalanceFromAccount(stationBank, departmentAccount);
-        if (current < amount)
+        if (departmentBalance < amount)
             return false;
 
-        _cargo.UpdateBankAccount(stationBank, -amount, departmentAccount);
+        if (!TryComp<StationBankAccountComponent>(stationBank.Owner, out var resolvedBank))
+            return false;
+
+        _cargo.UpdateBankAccount((stationBank.Owner, resolvedBank), -amount, departmentAccount);
         return true;
     }
 

@@ -17,7 +17,8 @@ public sealed class MarketSystem : EntitySystem
         var stationQuery = EntityQueryEnumerator<StationDataComponent>();
         while (stationQuery.MoveNext(out var stationUid, out _))
         {
-            EnsureComp<StationMarketComponent>(stationUid);
+            if (!HasComp<StationMarketComponent>(stationUid))
+                EnsureComp<StationMarketComponent>(stationUid);
         }
     }
 

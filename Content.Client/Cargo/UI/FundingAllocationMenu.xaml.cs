@@ -94,10 +94,26 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
         // Orion-Edit-Start
         _cfg.OnValueChanged(CCVars.AllowPrimaryAccountAllocation,
-            enabled => _allowPrimaryAccountAllocation = enabled,
+            enabled =>
+            {
+                _allowPrimaryAccountAllocation = enabled;
+                RefreshUi();
+            },
             true);
-        _cfg.OnValueChanged(CCVars.AllowPrimaryCutAdjustment, enabled => _allowPrimaryCutAdjustment = enabled, true);
-        _cfg.OnValueChanged(CCVars.LockboxCutEnabled, enabled => _lockboxCutEnabled = enabled, true);
+        _cfg.OnValueChanged(CCVars.AllowPrimaryCutAdjustment,
+            enabled =>
+        {
+            _allowPrimaryCutAdjustment = enabled;
+            RefreshUi();
+        },
+            true);
+        _cfg.OnValueChanged(CCVars.LockboxCutEnabled,
+            enabled =>
+        {
+            _lockboxCutEnabled = enabled;
+            RefreshUi();
+        },
+            true);
         // Orion-Edit-End
 
         BuildEntries();
@@ -174,7 +190,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             row.AddChild(CreateCell(from, 1f));
             row.AddChild(CreateCell(to, 1f));
             row.AddChild(CreateCell(LocalizeReason(transaction.Reason, transaction.ReasonData), 2f));
-            row.AddChild(CreateCell(transaction.Time.ToString(@"hh\:mm\:ss"), 90f));
+            row.AddChild(CreateCell(FormatDuration(transaction.Time), 90f));
 
             TransactionsContainer.AddChild(row);
             _transactionControls.Add(row);
@@ -288,6 +304,20 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             return Loc.GetString(job.Name);
 
         return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+    }
+
+    private static string FormatDuration(TimeSpan time)
+    {
+        return $"{(int) time.TotalHours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+    }
+
+    private void RefreshUi()
+    {
+        if (_station == null)
+            return;
+
+        BuildEntries();
+        UpdateButtonDisabled();
     }
     // Orion-End
 
