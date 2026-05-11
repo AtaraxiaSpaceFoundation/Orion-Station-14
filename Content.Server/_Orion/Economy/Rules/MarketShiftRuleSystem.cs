@@ -68,6 +68,11 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
             return;
         }
 
+        var increasedMin = Math.Min(component.IncreasedMultiplierMin, component.IncreasedMultiplierMax);
+        var increasedMax = Math.Max(component.IncreasedMultiplierMin, component.IncreasedMultiplierMax);
+        var decreasedMin = Math.Min(component.DecreasedMultiplierMin, component.DecreasedMultiplierMax);
+        var decreasedMax = Math.Max(component.DecreasedMultiplierMin, component.DecreasedMultiplierMax);
+
         var increasedCount = Math.Clamp(_random.Next(component.MinIncreased, component.MaxIncreased + 1), 0, commodities.Count);
         var picked = new List<MarketCommodityPrototype>(commodities);
         var increased = new List<string>();
@@ -77,7 +82,7 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
         for (var i = 0; i < increasedCount; i++)
         {
             var item = _random.PickAndTake(picked);
-            modifiers[item.Material] = component.IncreasedMultiplier;
+            modifiers[item.Material] = NextIncreasedMultiplier(increasedMin, increasedMax);
             increased.Add(item.Material);
         }
 
@@ -86,13 +91,32 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
         for (var i = 0; i < decreasedCount; i++)
         {
             var item = _random.PickAndTake(picked);
-            modifiers[item.Material] = component.DecreasedMultiplier;
+            modifiers[item.Material] = NextDecreasedMultiplier(decreasedMin, decreasedMax);
             decreased.Add(item.Material);
         }
 
         _market.SetMarketModifiers(stationUid, modifiers);
         if (component.AnnouncementsEnabled)
             _market.AnnounceMarketChanges(stationUid, increased, decreased);
+    }
+
+    private float NextIncreasedMultiplier(float min, float max)
+    {
+        var low = MathF.Max(min, 1f);
+        var high = MathF.Max(max, low);
+        var value = _random.NextFloat(low, high);
+        return MathF.Max(value, 1.01f);
+    }
+
+    private float NextDecreasedMultiplier(float min, float max)
+    {
+        var low = MathF.Min(min, 0.99f);
+        var high = MathF.Min(max, 1f);
+        if (high <= low)
+            return low;
+
+        var value = _random.NextFloat(low, high);
+        return MathF.Min(value, 0.99f);
     }
 
     private void ScheduleNextShift(MarketShiftRuleComponent component)

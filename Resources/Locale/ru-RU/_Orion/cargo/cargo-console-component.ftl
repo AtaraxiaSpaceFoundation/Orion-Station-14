@@ -37,3 +37,8 @@ cargo-funding-alloc-console-reason-card-deposit = Внесение с карты
 cargo-funding-alloc-console-reason-card-withdrawal = Снятие с карты
 cargo-funding-alloc-console-reason-payroll = Зарплата: { $job }
 cargo-funding-alloc-console-reason-generic = { $reason }
+
+cargo-funding-alloc-console-economy-number = Номер
+cargo-funding-alloc-console-economy-user = Пользователь
+cargo-funding-alloc-console-economy-balance = Баланс
+cargo-funding-alloc-console-money = { $amount }$

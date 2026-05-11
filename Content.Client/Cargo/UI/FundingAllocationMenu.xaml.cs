@@ -140,7 +140,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             row.AddChild(CreateCell(MaskAccountCode(account.AccountId), 130f));
             row.AddChild(CreateCell(account.AccountName, 1f));
             row.AddChild(CreateCell(roleText, 1f));
-            row.AddChild(CreateCell(Loc.GetString("cargo-console-menu-points-amount", ("amount", account.Balance)), 130f));
+            row.AddChild(CreateCell(Loc.GetString("cargo-funding-alloc-console-money", ("amount", account.Balance)), 130f));
 
             EconomyAccountsContainer.AddChild(row);
             _economyAccountControls.Add(row);
@@ -165,12 +165,12 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 ? mainAccount?.AccountName ?? unknownText
                 : counterpartyAccount?.AccountName ?? unknownText;
 
-            if (incoming && transaction.Reason == "payroll" && counterpartyAccount == null && mainAccount?.DepartmentId is { } departmentId && _prototypeManager.TryIndex<CargoAccountPrototype>(departmentId, out var departmentAccount))
-                from = Loc.GetString(departmentAccount.Name);
+            if (incoming && transaction.Reason == "payroll")
+                from = LocalizeJob(transaction.ReasonData);
 
             var row = CreateRowContainer();
             row.AddChild(CreateCell(operationType, 110f));
-            row.AddChild(CreateCell(Loc.GetString("cargo-console-menu-points-amount", ("amount", transaction.Delta)), 110f));
+            row.AddChild(CreateCell(Loc.GetString("cargo-funding-alloc-console-money", ("amount", transaction.Delta)), 110f));
             row.AddChild(CreateCell(from, 1f));
             row.AddChild(CreateCell(to, 1f));
             row.AddChild(CreateCell(LocalizeReason(transaction.Reason, transaction.ReasonData), 2f));
@@ -186,10 +186,10 @@ public sealed partial class FundingAllocationMenu : FancyWindow
     {
         var accountHeader = CreateHeaderRow(new[]
         {
-            Loc.GetString("cargo-funding-alloc-console-label-code"),
-            Loc.GetString("cargo-funding-alloc-console-label-account"),
+            Loc.GetString("cargo-funding-alloc-console-economy-number"),
+            Loc.GetString("cargo-funding-alloc-console-economy-user"),
             Loc.GetString("cargo-funding-alloc-console-economy-role"),
-            Loc.GetString("cargo-funding-alloc-console-label-balance"),
+            Loc.GetString("cargo-funding-alloc-console-economy-balance"),
         },
         new[] { 130f, 1f, 1f, 130f });
 
