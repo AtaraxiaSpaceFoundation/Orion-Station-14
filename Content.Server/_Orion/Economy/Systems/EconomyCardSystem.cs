@@ -25,6 +25,8 @@ public sealed class EconomyCardSystem : EntitySystem
 
     private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
 
+    private float _uiRefreshAccumulator;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<MindContainerComponent, MindAddedMessage>(OnMindAdded);
@@ -39,12 +41,39 @@ public sealed class EconomyCardSystem : EntitySystem
         });
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        _uiRefreshAccumulator += frameTime;
+        if (_uiRefreshAccumulator < 1f)
+            return;
+
+        _uiRefreshAccumulator = 0f;
+
+        var query = EntityQueryEnumerator<IdCardComponent>();
+        while (query.MoveNext(out var uid, out var card))
+        {
+            if (!_ui.IsUiOpen(uid, EconomyCardUiKey.Key))
+                continue;
+
+            if (string.IsNullOrWhiteSpace(card.BankAccountId) || !_bank.TryFindAccountById(card.BankAccountId, out var account))
+            {
+                _ui.SetUiState(uid, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.BankAccountId, 0));
+                continue;
+            }
+
+            _ui.SetUiState(uid, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.BankAccountId, account.Comp.Balance));
+        }
+    }
+
     private void OnMindAdded(Entity<MindContainerComponent> ent, ref MindAddedMessage args)
     {
+        var account = _bank.EnsurePlayerAccount(args.Mind.Owner, args.Mind.Comp);
+
         if (!_idCard.TryFindIdCard(ent, out var idCard))
             return;
 
-        var account = _bank.EnsurePlayerAccount(args.Mind.Owner, args.Mind.Comp);
         if (idCard.Comp.BankAccountId == account.AccountId)
             return;
 

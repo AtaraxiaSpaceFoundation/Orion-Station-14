@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Orion.Economy.Components;
+using Content.Server.Cargo.Components;
 using Content.Shared.Cargo.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -224,6 +225,12 @@ public sealed partial class CargoSystem
                 continue;
 
             _uiSystem.SetUiState(uid, FundingAllocationConsoleUiKey.Key, BuildFundingState(station));
+        }
+
+        var palletQuery = EntityQueryEnumerator<CargoPalletConsoleComponent>();
+        while (palletQuery.MoveNext(out var palletUid, out _))
+        {
+            UpdatePalletConsoleInterface(palletUid);
         }
     }
     // Orion-End
