@@ -185,7 +185,7 @@ public sealed partial class CargoSystem
         var accountQuery = EntityQueryEnumerator<StationAccountComponent>();
         while (accountQuery.MoveNext(out var accountUid, out var account))
         {
-            if (_station.GetOwningStation(accountUid) != station)
+            if (account.OwningStation != station)
                 continue;
 
             var departmentId = account.Department is { } department ? department.Id : null;

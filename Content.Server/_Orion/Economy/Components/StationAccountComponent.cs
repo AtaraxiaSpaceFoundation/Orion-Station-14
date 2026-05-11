@@ -19,6 +19,9 @@ public sealed partial class StationAccountComponent : Component
     public ProtoId<CargoAccountPrototype>? Department;
 
     [DataField]
+    public EntityUid? OwningStation;
+
+    [DataField]
     public int MaxHistory = 67;
 
     [DataField]

@@ -12,7 +12,7 @@ public sealed partial class MarketShiftRuleComponent : Component
     public TimeSpan MaxInterval = TimeSpan.FromMinutes(6);
 
     [DataField]
-    public int MinIncreased = 2;
+    public int MinIncreased = 1;
 
     [DataField]
     public int MaxIncreased = 4;
@@ -21,7 +21,7 @@ public sealed partial class MarketShiftRuleComponent : Component
     public int MinDecreased = 1;
 
     [DataField]
-    public int MaxDecreased = 3;
+    public int MaxDecreased = 5;
 
     [DataField]
     public float IncreasedMultiplierMin = 1.1f;

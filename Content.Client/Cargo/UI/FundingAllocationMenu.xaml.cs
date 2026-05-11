@@ -450,7 +450,6 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         _station = _entityManager.GetEntity(state.Station);
 
         BuildEntries();
-        BuildEconomyHeaders(); // Orion
         BuildEconomy(state); // Orion
         UpdateButtonDisabled();
     }
