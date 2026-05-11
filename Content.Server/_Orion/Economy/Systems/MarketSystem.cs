@@ -1,24 +1,16 @@
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server._Orion.Economy.Components;
-using Content.Shared._Orion.Economy.Prototypes;
 using Content.Shared.Materials;
 using Content.Shared.Station.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Orion.Economy.Systems;
 
 public sealed class MarketSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-
-    private const int HighDemandCount = 3;
-    private const int LowDemandCount = 2;
 
     public override void Update(float frameTime)
     {
@@ -26,22 +18,6 @@ public sealed class MarketSystem : EntitySystem
         while (stationQuery.MoveNext(out var stationUid, out _))
         {
             EnsureComp<StationMarketComponent>(stationUid);
-        }
-
-        var query = EntityQueryEnumerator<StationMarketComponent>();
-        while (query.MoveNext(out var stationUid, out var market))
-        {
-            if (_timing.CurTime >= market.NextMarketUpdate)
-            {
-                market.NextMarketUpdate = _timing.CurTime + market.MarketUpdateDelay;
-                RegenerateDemand((stationUid, market));
-            }
-
-            if (_timing.CurTime < market.NextReportUpdate)
-                continue;
-
-            market.NextReportUpdate = _timing.CurTime + market.ReportDelay;
-            SendStationEconomicReport((stationUid, market));
         }
     }
 
@@ -65,45 +41,60 @@ public sealed class MarketSystem : EntitySystem
         return basePrice * Math.Max(0.2f, weightedMultiplier);
     }
 
-    private void RegenerateDemand(Entity<StationMarketComponent> ent)
+    public void SetMarketModifiers(EntityUid stationUid, Dictionary<string, float> modifiers)
     {
-        ent.Comp.MaterialMultipliers.Clear();
+        var market = EnsureComp<StationMarketComponent>(stationUid);
+        market.MaterialMultipliers.Clear();
 
-        var commodities = _proto.EnumeratePrototypes<MarketCommodityPrototype>().ToList();
-        if (commodities.Count == 0)
-            return;
-
-        var highCount = Math.Min(HighDemandCount, commodities.Count);
-        var lowCount = Math.Min(LowDemandCount, Math.Max(0, commodities.Count - highCount));
-
-        for (var i = 0; i < highCount; i++)
+        foreach (var (material, multiplier) in modifiers)
         {
-            var pick = _random.PickAndTake(commodities);
-            ent.Comp.MaterialMultipliers[pick.Material] = pick.HighDemandMultiplier;
+            market.MaterialMultipliers[material] = multiplier;
+            market.RecentChanges.Add(new MarketChangeSnapshot(material, multiplier, ++market.ChangeSequence));
         }
 
-        for (var i = 0; i < lowCount; i++)
-        {
-            var pick = _random.PickAndTake(commodities);
-            ent.Comp.MaterialMultipliers[pick.Material] = pick.LowDemandMultiplier;
-        }
+        if (market.RecentChanges.Count > market.MaxRecentChanges)
+            market.RecentChanges.RemoveRange(0, market.RecentChanges.Count - market.MaxRecentChanges);
+
+        Dirty(stationUid, market);
     }
 
-    private void SendStationEconomicReport(Entity<StationMarketComponent> ent)
+    public void ClearMarketModifiers(EntityUid stationUid)
     {
-        var boosted = ent.Comp.MaterialMultipliers.Where(p => p.Value > 1f).Select(p => p.Key).ToList();
-
-        if (boosted.Count > 0)
-        {
-            var joined = string.Join(", ", boosted);
-            _chat.DispatchStationAnnouncement(ent.Owner,
-                Loc.GetString("economy-report-high-demand", ("materials", joined)),
-                Loc.GetString("economy-report-sender"));
+        if (!TryComp<StationMarketComponent>(stationUid, out var market))
             return;
-        }
 
-        _chat.DispatchStationAnnouncement(ent.Owner,
-            Loc.GetString("economy-report-crisis"),
+        market.MaterialMultipliers.Clear();
+        Dirty(stationUid, market);
+    }
+
+    public Dictionary<string, float> GetActiveMarketModifiers(EntityUid stationUid)
+    {
+        return !TryComp<StationMarketComponent>(stationUid, out var market)
+            ? new Dictionary<string, float>()
+            : new Dictionary<string, float>(market.MaterialMultipliers);
+    }
+
+    public List<MarketChangeSnapshot> GetRecentMarketChanges(EntityUid stationUid)
+    {
+        return !TryComp<StationMarketComponent>(stationUid, out var market)
+            ? new()
+            : new List<MarketChangeSnapshot>(market.RecentChanges);
+    }
+
+    public void AnnounceMarketChanges(EntityUid stationUid, IReadOnlyList<string> increased, IReadOnlyList<string> decreased)
+    {
+        _chat.DispatchStationAnnouncement(stationUid,
+            Loc.GetString("economy-report-market-changes",
+                ("increased", increased.Count > 0 ? string.Join(", ", increased.Select(LocalizeMaterial)) : Loc.GetString("economy-report-none")),
+                ("decreased", decreased.Count > 0 ? string.Join(", ", decreased.Select(LocalizeMaterial)) : Loc.GetString("economy-report-none"))),
             Loc.GetString("economy-report-sender"));
+    }
+
+    private string LocalizeMaterial(string materialId)
+    {
+        if (_proto.TryIndex<MaterialPrototype>(materialId, out var material) && !string.IsNullOrWhiteSpace(material.Name))
+            return Loc.GetString(material.Name);
+
+        return materialId;
     }
 }

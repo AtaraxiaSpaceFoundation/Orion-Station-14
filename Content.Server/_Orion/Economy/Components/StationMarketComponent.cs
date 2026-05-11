@@ -2,21 +2,21 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server._Orion.Economy.Components;
 
-[RegisterComponent, AutoGenerateComponentPause]
+[RegisterComponent]
 public sealed partial class StationMarketComponent : Component
 {
     [DataField]
     public Dictionary<string, float> MaterialMultipliers = new();
 
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan NextMarketUpdate;
-
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan NextReportUpdate;
+    [DataField]
+    public List<MarketChangeSnapshot> RecentChanges = new();
 
     [DataField]
-    public TimeSpan MarketUpdateDelay = TimeSpan.FromMinutes(6);
+    public int MaxRecentChanges = 20;
 
     [DataField]
-    public TimeSpan ReportDelay = TimeSpan.FromMinutes(5);
+    public int ChangeSequence;
 }
+
+[Serializable]
+public sealed record MarketChangeSnapshot(string Material, float Multiplier, int Sequence);

@@ -1,8 +1,9 @@
 economy-report-sender = Аналитика рынка НаноТрейзен
-
 economy-report-high-demand = НаноТрейзен повысила закупочный спрос на: { $materials }.
-
 economy-report-crisis = Обнаружена нестабильность галактического рынка. Действует экономический кризисный протокол.
+economy-report-market-changes = Цена повышена на: { $increased }.
+    Цена понижена на: { $decreased }.
+economy-report-none = нет
 
 economy-card-window-title = Банковский счёт
 economy-card-account-label = Номер счёта

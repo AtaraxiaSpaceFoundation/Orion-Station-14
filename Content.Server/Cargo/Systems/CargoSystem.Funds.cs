@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Orion.Economy.Components;
 using Content.Shared.Cargo.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -161,7 +162,40 @@ public sealed partial class CargoSystem
 
     private void OnFundAllocationBuiOpen(Entity<FundingAllocationConsoleComponent> ent, ref BeforeActivatableUIOpenEvent args)
     {
+/* // Orion-Edit
         if (_station.GetOwningStation(ent) is { } station)
             _uiSystem.SetUiState(ent.Owner, FundingAllocationConsoleUiKey.Key, new FundingAllocationConsoleBuiState(GetNetEntity(station)));
+*/
+
+        // Orion-Start
+        if (_station.GetOwningStation(ent) is not { } station)
+            return;
+
+        var accounts = new List<FundingAllocationEconomyAccountData>();
+        var transactions = new List<FundingAllocationTransactionData>();
+        var transactionIndex = 0;
+
+        var accountQuery = EntityQueryEnumerator<StationAccountComponent>();
+        while (accountQuery.MoveNext(out var accountUid, out var account))
+        {
+            var departmentId = account.Department is { } department ? department.Id : null;
+            accounts.Add(new FundingAllocationEconomyAccountData(GetNetEntity(accountUid), account.AccountId, account.OwnerName, account.Balance, departmentId));
+
+            foreach (var transaction in account.History)
+            {
+                transactions.Add(new FundingAllocationTransactionData(
+                    transactionIndex++,
+                    transaction.Time,
+                    transaction.Delta,
+                    transaction.Reason,
+                    GetNetEntity(accountUid),
+                    transaction.Receiver));
+            }
+        }
+
+        transactions.Sort((a, b) => a.Time.CompareTo(b.Time));
+
+        _uiSystem.SetUiState(ent.Owner, FundingAllocationConsoleUiKey.Key, new FundingAllocationConsoleBuiState(GetNetEntity(station), accounts, transactions));
+        // Orion-End
     }
 }

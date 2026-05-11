@@ -39,15 +39,63 @@ public sealed class SetFundingAllocationBuiMessage : BoundUserInterfaceMessage
 public sealed class FundingAllocationConsoleBuiState : BoundUserInterfaceState
 {
     public NetEntity Station;
+    // Orion-Start
+    public List<FundingAllocationEconomyAccountData> EconomyAccounts;
+    public List<FundingAllocationTransactionData> Transactions;
+    // Orion-End
 
-    public FundingAllocationConsoleBuiState(NetEntity station)
+    public FundingAllocationConsoleBuiState(NetEntity station, List<FundingAllocationEconomyAccountData> economyAccounts, List<FundingAllocationTransactionData> transactions) // Orion-Edit
     {
         Station = station;
+        EconomyAccounts = economyAccounts; // Orion
+        Transactions = transactions; // Orion
+    }
+}
+
+// Orion-Start
+[Serializable, NetSerializable]
+public sealed class FundingAllocationEconomyAccountData
+{
+    public NetEntity Account;
+    public string AccountId;
+    public string AccountName;
+    public int Balance;
+    public string? DepartmentId;
+
+    public FundingAllocationEconomyAccountData(NetEntity account, string accountId, string accountName, int balance, string? departmentId)
+    {
+        Account = account;
+        AccountId = accountId;
+        AccountName = accountName;
+        Balance = balance;
+        DepartmentId = departmentId;
     }
 }
 
 [Serializable, NetSerializable]
+public sealed class FundingAllocationTransactionData
+{
+    public int Index;
+    public TimeSpan Time;
+    public int Delta;
+    public string Reason;
+    public NetEntity Account;
+    public NetEntity? Counterparty;
+
+    public FundingAllocationTransactionData(int index, TimeSpan time, int delta, string reason, NetEntity account, NetEntity? counterparty)
+    {
+        Index = index;
+        Time = time;
+        Delta = delta;
+        Reason = reason;
+        Account = account;
+        Counterparty = counterparty;
+    }
+}
+// Orion-End
+
+[Serializable, NetSerializable]
 public enum FundingAllocationConsoleUiKey : byte
 {
-    Key
+    Key,
 }

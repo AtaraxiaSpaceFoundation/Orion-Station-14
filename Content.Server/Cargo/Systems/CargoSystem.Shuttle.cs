@@ -29,6 +29,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Server._Orion.Economy.Components;
 using Content.Server.Cargo.Components;
 using Content.Shared.Cargo;
 using Content.Shared.Cargo.BUI;
@@ -83,9 +84,28 @@ public sealed partial class CargoSystem
 
         GetPalletGoods(gridUid, station.Value, out var toSell, out var goods); // Orion-Edit
         var totalAmount = goods.Sum(t => t.Item3);
+
+        // Orion-Start
+        var activeChanges = new List<CargoPalletMarketChangeData>();
+        var recentChanges = new List<CargoPalletMarketChangeData>();
+
+        if (TryComp<StationMarketComponent>(station.Value, out var market))
+        {
+            foreach (var (material, multiplier) in market.MaterialMultipliers)
+            {
+                activeChanges.Add(new CargoPalletMarketChangeData(material, multiplier, 0));
+            }
+
+            foreach (var change in market.RecentChanges)
+            {
+                recentChanges.Add(new CargoPalletMarketChangeData(change.Material, change.Multiplier, change.Sequence));
+            }
+        }
+        // Orion-End
+
         _uiSystem.SetUiState(uid,
             CargoPalletConsoleUiKey.Sale,
-            new CargoPalletConsoleInterfaceState((int) totalAmount, toSell.Count, true));
+            new CargoPalletConsoleInterfaceState((int) totalAmount, toSell.Count, true, activeChanges, recentChanges)); // Orion-Edit
     }
 
     private void OnPalletUIOpen(EntityUid uid, CargoPalletConsoleComponent component, BoundUIOpenedEvent args)

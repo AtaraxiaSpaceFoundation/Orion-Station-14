@@ -33,7 +33,14 @@ public sealed partial class FundingAllocationMenu : FancyWindow
     private double _primaryCut;
     private double _lockboxCut;
 
-    private readonly HashSet<Control> _addedControls = new();
+//    private readonly HashSet<Control> _addedControls = new(); // Orion-Edit
+    // Orion-Start
+    private readonly HashSet<Control> _distributionControls = new();
+    private readonly HashSet<Control> _economyAccountControls = new();
+
+    private readonly HashSet<Control> _transactionControls = new();
+
+    // Orion-End
     private readonly List<SpinBox> _spinBoxes = new();
     private readonly Dictionary<ProtoId<CargoAccountPrototype>, RichTextLabel> _balanceLabels = new();
 
@@ -44,15 +51,20 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
         _bankQuery = _entityManager.GetEntityQuery<StationBankAccountComponent>();
 
+        // Orion-Start
+        TabContainer.SetTabTitle(0, Loc.GetString("cargo-funding-alloc-console-tab-distribution"));
+        TabContainer.SetTabTitle(1, Loc.GetString("cargo-funding-alloc-console-tab-economy"));
+        // Orion-End
+
         PrimaryCut.ValueChanged += args =>
         {
-            _primaryCut = (double)args.Value / 100.0;
+            _primaryCut = args.Value / 100.0; // Orion-Edit
             UpdateButtonDisabled();
         };
 
         LockboxCut.ValueChanged += args =>
         {
-            _lockboxCut = 1.0 - (double)args.Value / 100.0;
+            _lockboxCut = 1.0 - args.Value / 100.0; // Orion-Edit
             UpdateButtonDisabled();
         };
 
@@ -60,20 +72,31 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         {
             if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank))
                 return;
-            var accounts = EditableAccounts(bank).OrderBy(p => p.Key).Select(p => p.Key).ToList();
-            var dicts = new Dictionary<ProtoId<CargoAccountPrototype>, int>();
-            for (var i = 0; i< accounts.Count; i++)
+
+            // Orion-Edit-Start
+            var accounts = EditableAccounts(bank)
+                .OrderBy(p => p.Key)
+                .Select(p => p.Key)
+                .ToList();
+
+            var editedPercents = new Dictionary<ProtoId<CargoAccountPrototype>, int>();
+            for (var i = 0; i < accounts.Count; i++)
             {
-                dicts.Add(accounts[i], _spinBoxes[i].Value);
+                editedPercents.Add(accounts[i], _spinBoxes[i].Value);
             }
 
-            OnSavePressed?.Invoke(dicts, _primaryCut, _lockboxCut);
+            OnSavePressed?.Invoke(editedPercents, _primaryCut, _lockboxCut);
+            // Orion-Edit-End
             SaveButton.Disabled = true;
         };
 
-        _cfg.OnValueChanged(CCVars.AllowPrimaryAccountAllocation, enabled => { _allowPrimaryAccountAllocation = enabled; }, true);
-        _cfg.OnValueChanged(CCVars.AllowPrimaryCutAdjustment, enabled => { _allowPrimaryCutAdjustment = enabled; }, true);
-        _cfg.OnValueChanged(CCVars.LockboxCutEnabled, enabled => { _lockboxCutEnabled = enabled; }, true);
+        // Orion-Edit-Start
+        _cfg.OnValueChanged(CCVars.AllowPrimaryAccountAllocation,
+            enabled => _allowPrimaryAccountAllocation = enabled,
+            true);
+        _cfg.OnValueChanged(CCVars.AllowPrimaryCutAdjustment, enabled => _allowPrimaryCutAdjustment = enabled, true);
+        _cfg.OnValueChanged(CCVars.LockboxCutEnabled, enabled => _lockboxCutEnabled = enabled, true);
+        // Orion-Edit-End
 
         BuildEntries();
     }
@@ -83,41 +106,135 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         foreach (var kvp in bank.Accounts)
         {
             if (_allowPrimaryAccountAllocation || kvp.Key != bank.PrimaryAccount)
-            {
                 yield return kvp;
-            }
         }
     }
 
+    // Orion-Start
+    private void BuildEconomy(FundingAllocationConsoleBuiState state)
+    {
+        foreach (var control in _economyAccountControls)
+        {
+            control.Orphan();
+        }
+
+        foreach (var control in _transactionControls)
+        {
+            control.Orphan();
+        }
+
+        _economyAccountControls.Clear();
+        _transactionControls.Clear();
+
+        var accountsByEntity = state.EconomyAccounts.ToDictionary(a => a.Account);
+
+        NoAccountsLabel.Visible = state.EconomyAccounts.Count == 0;
+        foreach (var account in state.EconomyAccounts.OrderBy(a => a.AccountId))
+        {
+            var code = new RichTextLabel
+            {
+                Text = $"[font=\"Monospace\"]{account.AccountId}[/font]",
+                HorizontalAlignment = HAlignment.Center,
+            };
+
+            var name = new RichTextLabel
+            {
+                Text = account.AccountName,
+                HorizontalAlignment = HAlignment.Center,
+            };
+
+            var roleText = account.DepartmentId is { } dep &&
+                           _prototypeManager.TryIndex<CargoAccountPrototype>(dep, out var proto)
+                ? Loc.GetString(proto.Name)
+                : Loc.GetString("cargo-funding-alloc-console-economy-role-none");
+
+            var role = new RichTextLabel
+            {
+                Text = roleText,
+                HorizontalAlignment = HAlignment.Center,
+            };
+
+            var balance = new RichTextLabel
+            {
+                Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", account.Balance)),
+                HorizontalAlignment = HAlignment.Center,
+            };
+
+            EconomyAccountsContainer.AddChild(code);
+            EconomyAccountsContainer.AddChild(name);
+            EconomyAccountsContainer.AddChild(role);
+            EconomyAccountsContainer.AddChild(balance);
+
+            _economyAccountControls.UnionWith(new Control[] { code, name, role, balance });
+        }
+
+        NoTransactionsLabel.Visible = state.Transactions.Count == 0;
+        foreach (var transaction in state.Transactions.OrderByDescending(t => t.Time).ThenByDescending(t => t.Index))
+        {
+            accountsByEntity.TryGetValue(transaction.Account, out var mainAccount);
+            accountsByEntity.TryGetValue(transaction.Counterparty ?? default, out var counterpartyAccount);
+
+            var incoming = transaction.Delta > 0;
+            var operationType = incoming
+                ? Loc.GetString("cargo-funding-alloc-console-economy-operation-income")
+                : Loc.GetString("cargo-funding-alloc-console-economy-operation-expense");
+
+            var unknownText = Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+            var from = incoming
+                ? counterpartyAccount?.AccountName ?? unknownText
+                : mainAccount?.AccountName ?? unknownText;
+            var to = incoming
+                ? mainAccount?.AccountName ?? unknownText
+                : counterpartyAccount?.AccountName ?? unknownText;
+
+            var controls = new Control[]
+            {
+                new RichTextLabel { Text = operationType, HorizontalAlignment = HAlignment.Center },
+                new RichTextLabel
+                {
+                    Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", transaction.Delta)),
+                    HorizontalAlignment = HAlignment.Center,
+                },
+                new RichTextLabel { Text = from, HorizontalAlignment = HAlignment.Center },
+                new RichTextLabel { Text = to, HorizontalAlignment = HAlignment.Center },
+                new RichTextLabel { Text = transaction.Reason, HorizontalAlignment = HAlignment.Center },
+                new RichTextLabel { Text = transaction.Time.ToString(), HorizontalAlignment = HAlignment.Center },
+            };
+
+            foreach (var control in controls)
+            {
+                TransactionsContainer.AddChild(control);
+                _transactionControls.Add(control);
+            }
+        }
+    }
+    // Orion-End
+
+    // Orion-Edit-Start
     private void BuildEntries()
     {
         if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank))
             return;
 
-        if (_allowPrimaryCutAdjustment)
-        {
-            HelpLabel.Text = Loc.GetString("cargo-funding-alloc-console-label-help-adjustible");
-        }
-        else
-        {
-            HelpLabel.Text = Loc.GetString("cargo-funding-alloc-console-label-help-non-adjustible",
+        HelpLabel.Text = _allowPrimaryCutAdjustment
+            ? Loc.GetString("cargo-funding-alloc-console-label-help-adjustible")
+            : Loc.GetString("cargo-funding-alloc-console-label-help-non-adjustible",
                 ("percent", (int) (bank.PrimaryCut * 100)));
-        }
 
-        foreach (var ctrl in _addedControls)
+        foreach (var control in _distributionControls)
         {
-            ctrl.Orphan();
+            control.Orphan();
         }
 
-        _addedControls.Clear();
+        _distributionControls.Clear();
         _spinBoxes.Clear();
         _balanceLabels.Clear();
 
         _primaryCut = bank.PrimaryCut;
         _lockboxCut = bank.LockboxCut;
 
-        LockboxCut.OverrideValue(100 - (int)(_lockboxCut * 100));
-        PrimaryCut.OverrideValue((int)(_primaryCut * 100));
+        LockboxCut.OverrideValue(100 - (int) (_lockboxCut * 100));
+        PrimaryCut.OverrideValue((int) (_primaryCut * 100));
 
         LockboxCut.IsValid = val => val is >= 0 and <= 100;
         PrimaryCut.IsValid = val => val is >= 0 and <= 100;
@@ -130,23 +247,22 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         var accounts = EditableAccounts(bank).OrderBy(p => p.Key);
         foreach (var (account, balance) in accounts)
         {
-            var accountProto = _prototypeManager.Index(account);
+            var proto = _prototypeManager.Index(account);
 
-            var accountNameLabel = new RichTextLabel
+            var accountName = new RichTextLabel
             {
-                Modulate = accountProto.Color,
-                Margin = new Thickness(0, 0, 10, 0)
+                Modulate = proto.Color,
+                Margin = new Thickness(0, 0, 10, 0),
             };
-            accountNameLabel.SetMarkup($"[bold]{Loc.GetString(accountProto.Name)}[/bold]");
-            EntriesContainer.AddChild(accountNameLabel);
 
-            var codeLabel = new RichTextLabel
+            accountName.SetMarkup($"[bold]{Loc.GetString(proto.Name)}[/bold]");
+
+            var code = new RichTextLabel
             {
-                Text = $"[font=\"Monospace\"]{Loc.GetString(accountProto.Code)}[/font]",
+                Text = $"[font=\"Monospace\"]{Loc.GetString(proto.Code)}[/font]",
                 HorizontalAlignment = HAlignment.Center,
                 Margin = new Thickness(5, 0),
             };
-            EntriesContainer.AddChild(codeLabel);
 
             var balanceLabel = new RichTextLabel
             {
@@ -155,27 +271,30 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 HorizontalAlignment = HAlignment.Center,
                 Margin = new Thickness(5, 0),
             };
-            EntriesContainer.AddChild(balanceLabel);
 
-            var box = new SpinBox
+            var cutSpinBox = new SpinBox
             {
                 HorizontalAlignment = HAlignment.Center,
                 HorizontalExpand = true,
                 Value = (int) (bank.RevenueDistribution[account] * 100),
                 IsValid = val => val is >= 0 and <= 100,
             };
-            box.ValueChanged += _ => UpdateButtonDisabled();
-            EntriesContainer.AddChild(box);
 
-            _spinBoxes.Add(box);
+            cutSpinBox.ValueChanged += _ => UpdateButtonDisabled();
+
+            EntriesContainer.AddChild(accountName);
+            EntriesContainer.AddChild(code);
+            EntriesContainer.AddChild(balanceLabel);
+            EntriesContainer.AddChild(cutSpinBox);
+
+            _spinBoxes.Add(cutSpinBox);
             _balanceLabels.Add(account, balanceLabel);
-            _addedControls.Add(accountNameLabel);
-            _addedControls.Add(codeLabel);
-            _addedControls.Add(balanceLabel);
-            _addedControls.Add(box);
+            _distributionControls.UnionWith([accountName, code, balanceLabel, cutSpinBox]);
         }
     }
+    // Orion-Edit-End
 
+    // Orion-Edit-Start
     private void UpdateButtonDisabled()
     {
         if (!_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank))
@@ -185,31 +304,42 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         var incorrectSum = sum != 100;
 
         var differs = false;
-        var accounts = EditableAccounts(bank).OrderBy(p => p.Key).Select(p => p.Key).ToList();
+        var accounts = EditableAccounts(bank)
+            .OrderBy(p => p.Key)
+            .Select(p => p.Key)
+            .ToList();
+
         for (var i = 0; i < accounts.Count; i++)
         {
-            var percent = _spinBoxes[i].Value;
-            if (percent != (int) Math.Round(bank.RevenueDistribution[accounts[i]] * 100))
-            {
-                differs = true;
-                break;
-            }
+            var currentPercent = _spinBoxes[i].Value;
+            var expectedPercent = (int) Math.Round(bank.RevenueDistribution[accounts[i]] * 100);
+
+            if (currentPercent == expectedPercent)
+                continue;
+
+            differs = true;
+            break;
         }
+
         differs = differs || _primaryCut != bank.PrimaryCut || _lockboxCut != bank.LockboxCut;
 
         SaveButton.Disabled = !differs || incorrectSum;
 
         var diff = sum - 100;
         SaveAlertLabel.Visible = incorrectSum;
-        SaveAlertLabel.SetMarkup(Loc.GetString("cargo-funding-alloc-console-label-save-fail",
+        SaveAlertLabel.SetMarkup(Loc.GetString(
+            "cargo-funding-alloc-console-label-save-fail",
             ("pos", Math.Sign(diff)),
             ("val", Math.Abs(diff))));
     }
+    // Orion-Edit-End
 
     public void Update(FundingAllocationConsoleBuiState state)
     {
         _station = _entityManager.GetEntity(state.Station);
+
         BuildEntries();
+        BuildEconomy(state); // Orion
         UpdateButtonDisabled();
     }
 
