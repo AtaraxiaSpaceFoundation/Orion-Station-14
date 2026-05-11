@@ -5,3 +5,4 @@
   color: "#ffd35b"
   radioChannel: Command
   acquisitionSlip: PaperAcquisitionSlipSecurity # Poxyu
+  budgetFundingAmount: 700

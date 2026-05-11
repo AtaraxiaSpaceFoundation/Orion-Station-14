@@ -36,7 +36,7 @@ cargo-funding-alloc-console-economy-unknown = Неизвестно
 cargo-funding-alloc-console-reason-card-deposit = Депозит на карту
 cargo-funding-alloc-console-reason-card-withdrawal = Снятие с карты
 cargo-funding-alloc-console-reason-payroll = Зарплата: { $job }
-cargo-funding-alloc-console-reason-starting-payroll = Первый взнос
+cargo-funding-alloc-console-reason-starting-payroll = Аванс
 cargo-funding-alloc-console-reason-generic = { $reason }
 
 cargo-funding-alloc-console-economy-number = Номер

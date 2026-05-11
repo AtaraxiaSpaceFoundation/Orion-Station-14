@@ -76,6 +76,14 @@ public sealed partial class StationBankAccountComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan IncomeDelay = TimeSpan.FromSeconds(50);
+
+    // Orion-Start
+    /// <summary>
+    /// Next payout time for prototype-driven periodic budget funding.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<CargoAccountPrototype>, TimeSpan> NextBudgetFundingTime = new();
+    // Orion-End
 }
 
 /// <summary>

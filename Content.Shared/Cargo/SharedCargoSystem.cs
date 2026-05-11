@@ -41,6 +41,18 @@ public abstract class SharedCargoSystem : EntitySystem
     private void OnMapInit(Entity<StationBankAccountComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.NextIncomeTime = Timing.CurTime + ent.Comp.IncomeDelay;
+        // Orion-Start
+        ent.Comp.NextBudgetFundingTime.Clear();
+
+        foreach (var account in ent.Comp.Accounts.Keys)
+        {
+            if (!Proto.TryIndex(account, out var accountProto) || accountProto.BudgetFundingAmount <= 0)
+                continue;
+
+            ent.Comp.NextBudgetFundingTime[account] = Timing.CurTime + accountProto.BudgetFundingDelay;
+        }
+        // Orion-End
+
         Dirty(ent);
     }
 

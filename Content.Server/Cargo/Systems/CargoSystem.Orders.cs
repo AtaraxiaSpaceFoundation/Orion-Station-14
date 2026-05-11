@@ -255,12 +255,35 @@ namespace Content.Server.Cargo.Systems
             var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
             while (stationQuery.MoveNext(out var uid, out var bank))
             {
-                if (Timing.CurTime < bank.NextIncomeTime)
-                    continue;
-                bank.NextIncomeTime += bank.IncomeDelay;
+                // Orion-Edit-Start
+                if (Timing.CurTime >= bank.NextIncomeTime)
+                {
+                    bank.NextIncomeTime += bank.IncomeDelay;
 
-                var balanceToAdd = (int) Math.Round(bank.IncreasePerSecond * bank.IncomeDelay.TotalSeconds);
-                UpdateBankAccount((uid, bank), balanceToAdd, bank.RevenueDistribution);
+                    var balanceToAdd = (int) Math.Round(bank.IncreasePerSecond * bank.IncomeDelay.TotalSeconds);
+                    UpdateBankAccount((uid, bank), balanceToAdd, bank.RevenueDistribution);
+                }
+
+                foreach (var (account, nextFundingTime) in bank.NextBudgetFundingTime.ToArray())
+                {
+                    if (Timing.CurTime < nextFundingTime)
+                        continue;
+
+                    if (!_protoMan.TryIndex(account, out var accountProto) || accountProto.BudgetFundingAmount <= 0)
+                    {
+                        bank.NextBudgetFundingTime.Remove(account);
+                        continue;
+                    }
+
+                    bank.NextBudgetFundingTime[account] = nextFundingTime + accountProto.BudgetFundingDelay;
+                    UpdateBankAccount((uid, bank),
+                        accountProto.BudgetFundingAmount,
+                        new Dictionary<ProtoId<CargoAccountPrototype>, double>
+                    {
+                        { account, 1.0 },
+                    });
+                }
+                // Orion-Edit-End
             }
         }
 
