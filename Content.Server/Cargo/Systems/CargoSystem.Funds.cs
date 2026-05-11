@@ -171,6 +171,13 @@ public sealed partial class CargoSystem
         if (_station.GetOwningStation(ent) is not { } station)
             return;
 
+        _uiSystem.SetUiState(ent.Owner, FundingAllocationConsoleUiKey.Key, BuildFundingState(station));
+        // Orion-End
+    }
+
+    // Orion-Start
+    private FundingAllocationConsoleBuiState BuildFundingState(EntityUid station)
+    {
         var accounts = new List<FundingAllocationEconomyAccountData>();
         var transactions = new List<FundingAllocationTransactionData>();
         var transactionIndex = 0;
@@ -196,7 +203,25 @@ public sealed partial class CargoSystem
 
         transactions.Sort((a, b) => a.Time.CompareTo(b.Time));
 
-        _uiSystem.SetUiState(ent.Owner, FundingAllocationConsoleUiKey.Key, new FundingAllocationConsoleBuiState(GetNetEntity(station), accounts, transactions));
-        // Orion-End
+        return new FundingAllocationConsoleBuiState(GetNetEntity(station), accounts, transactions);
     }
+
+    private void UpdateEconomyInterfaces(float frameTime)
+    {
+        _uiRefreshAccumulator += frameTime;
+        if (_uiRefreshAccumulator < 1f)
+            return;
+
+        _uiRefreshAccumulator = 0f;
+
+        var query = EntityQueryEnumerator<FundingAllocationConsoleComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            if (_station.GetOwningStation(uid) is not { } station)
+                continue;
+
+            _uiSystem.SetUiState(uid, FundingAllocationConsoleUiKey.Key, BuildFundingState(station));
+        }
+    }
+    // Orion-End
 }

@@ -141,6 +141,8 @@ public sealed partial class CargoSystem : SharedCargoSystem
     private List<EntityUid> _listEnts = new();
     private List<(EntityUid, CargoPalletComponent, TransformComponent)> _pads = new();
 
+    private float _uiRefreshAccumulator; // Orion
+
     public override void Initialize()
     {
         base.Initialize();
@@ -163,6 +165,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
         UpdateConsole();
         UpdateTelepad(frameTime);
         UpdateBounty();
+        UpdateEconomyInterfaces(frameTime); // Orion
     }
 
     public void UpdateBankAccount(

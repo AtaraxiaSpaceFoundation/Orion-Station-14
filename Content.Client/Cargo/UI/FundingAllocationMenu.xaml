@@ -42,12 +42,7 @@
                     <PanelContainer.PanelOverride>
                         <graphics:StyleBoxFlat BackgroundColor="#1B1B1E"/>
                     </PanelContainer.PanelOverride>
-                    <controls:TableContainer Name="EconomyAccountsContainer" Columns="4" HorizontalExpand="True" Margin="5 0">
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-label-code'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-label-account'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-role'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-label-balance'}" HorizontalAlignment="Center"/>
-                    </controls:TableContainer>
+                    <BoxContainer Name="EconomyAccountsContainer" Orientation="Vertical" HorizontalExpand="True" Margin="5 4" SeparationOverride="2"/>
                 </PanelContainer>
             </ScrollContainer>
             <Label Name="NoAccountsLabel" Text="{Loc 'cargo-funding-alloc-console-no-accounts'}" HorizontalAlignment="Center" Visible="False" Margin="0 5"/>
@@ -60,14 +55,7 @@
                     <PanelContainer.PanelOverride>
                         <graphics:StyleBoxFlat BackgroundColor="#1B1B1E"/>
                     </PanelContainer.PanelOverride>
-                    <controls:TableContainer Name="TransactionsContainer" Columns="6" HorizontalExpand="True" Margin="5 0">
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-operation'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-amount'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-from'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-to'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-reason'}" HorizontalAlignment="Center"/>
-                        <RichTextLabel Text="{Loc 'cargo-funding-alloc-console-economy-time'}" HorizontalAlignment="Center"/>
-                    </controls:TableContainer>
+                    <BoxContainer Name="TransactionsContainer" Orientation="Vertical" HorizontalExpand="True" Margin="5 4" SeparationOverride="2"/>
                 </PanelContainer>
             </ScrollContainer>
             <Label Name="NoTransactionsLabel" Text="{Loc 'cargo-funding-alloc-console-no-transactions'}" HorizontalAlignment="Center" Visible="False" Margin="0 5"/>

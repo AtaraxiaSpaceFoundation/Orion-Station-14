@@ -1,5 +1,6 @@
 cargo-pallet-tab-sales = Commodity Sales
 cargo-pallet-tab-analytics = Market Analytics
+
 cargo-pallet-market-increased-demand = Increased Demand
 cargo-pallet-market-decreased-demand = Decreased Demand
 cargo-pallet-market-recent-changes = Recent Changes

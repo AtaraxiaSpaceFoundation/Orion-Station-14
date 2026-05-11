@@ -16,10 +16,11 @@ cargo-console-secure-order-checkbox = Поместить заказ в защи�
 
 cargo-funding-alloc-console-tab-distribution = Распределение финансов
 cargo-funding-alloc-console-tab-economy = Экономика
+
 cargo-funding-alloc-console-economy-accounts = Счета
 cargo-funding-alloc-console-economy-transactions = История операций
 cargo-funding-alloc-console-economy-role = Должность
-cargo-funding-alloc-console-economy-role-none = —
+cargo-funding-alloc-console-economy-role-none = Неизвестно
 cargo-funding-alloc-console-no-transactions = Операций пока нет
 cargo-funding-alloc-console-no-accounts = Счета экономики не найдены
 cargo-funding-alloc-console-economy-operation = Операция

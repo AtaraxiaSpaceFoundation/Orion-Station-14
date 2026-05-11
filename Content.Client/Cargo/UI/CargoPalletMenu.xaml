@@ -10,8 +10,8 @@ SPDX-License-Identifier: MIT
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       Title="{Loc 'cargo-pallet-console-menu-title'}"
-                      SetSize="620 420"
-                      MinSize="620 420">
+                      SetSize="620 620"
+                      MinSize="620 620">
     <TabContainer Name="TabContainer" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="8">
             <BoxContainer Orientation="Horizontal">
@@ -29,11 +29,11 @@ SPDX-License-Identifier: MIT
 
         <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6" VerticalExpand="True">
             <controls:StripeBack><Label Text="{Loc 'cargo-pallet-market-increased-demand'}" Margin="4"/></controls:StripeBack>
-            <ScrollContainer MinHeight="80" VerticalExpand="True"><BoxContainer Name="IncreasedContainer" Orientation="Vertical"/></ScrollContainer>
+            <ScrollContainer MinHeight="80" VerticalExpand="True"><BoxContainer Name="IncreasedContainer" Orientation="Vertical" SeparationOverride="2"/></ScrollContainer>
             <controls:StripeBack><Label Text="{Loc 'cargo-pallet-market-decreased-demand'}" Margin="4"/></controls:StripeBack>
-            <ScrollContainer MinHeight="80" VerticalExpand="True"><BoxContainer Name="DecreasedContainer" Orientation="Vertical"/></ScrollContainer>
+            <ScrollContainer MinHeight="80" VerticalExpand="True"><BoxContainer Name="DecreasedContainer" Orientation="Vertical" SeparationOverride="2"/></ScrollContainer>
             <controls:StripeBack><Label Text="{Loc 'cargo-pallet-market-recent-changes'}" Margin="4"/></controls:StripeBack>
-            <ScrollContainer MinHeight="100" VerticalExpand="True"><BoxContainer Name="RecentContainer" Orientation="Vertical"/></ScrollContainer>
+            <ScrollContainer MinHeight="100" VerticalExpand="True"><BoxContainer Name="RecentContainer" Orientation="Vertical" SeparationOverride="2"/></ScrollContainer>
             <Label Name="NoChangesLabel" Text="{Loc 'cargo-pallet-market-no-active-changes'}" HorizontalAlignment="Center" Visible="False"/>
         </BoxContainer>
     </TabContainer>
