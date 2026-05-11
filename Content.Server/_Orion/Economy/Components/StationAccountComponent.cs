@@ -29,6 +29,9 @@ public sealed partial class StationAccountComponent : Component
 
     [DataField]
     public List<AccountTransaction> History = new();
+
+    [DataField]
+    public bool StartingPayrollReceived;
 }
 
 [Serializable]

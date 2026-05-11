@@ -19,6 +19,7 @@ cargo-funding-alloc-console-economy-unknown = Unknown
 cargo-funding-alloc-console-reason-card-deposit = Card deposit
 cargo-funding-alloc-console-reason-card-withdrawal = Card withdrawal
 cargo-funding-alloc-console-reason-payroll = Payroll: { $job }
+cargo-funding-alloc-console-reason-starting-payroll = Down payment
 cargo-funding-alloc-console-reason-generic = { $reason }
 
 cargo-funding-alloc-console-economy-number = Number

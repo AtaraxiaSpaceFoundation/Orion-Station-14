@@ -35,6 +35,7 @@ public sealed class EconomyCardSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<MindContainerComponent, MindAddedMessage>(OnMindAdded);
+        SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdded);
         SubscribeLocalEvent<IdCardComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<IdCardComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<IdCardComponent, AfterInteractEvent>(OnAfterInteract);
@@ -79,11 +80,7 @@ public sealed class EconomyCardSystem : EntitySystem
         if (args.Mind.Comp.OwnedEntity is { } owned && _station.GetOwningStation(owned) is { } stationUid)
             account.OwningStation ??= stationUid;
 
-        if ((account.Department == null || account.JobId == null) && TryGetStartingPayrollData(args.Mind.Comp, out var payrollData))
-        {
-            account.Department ??= payrollData.Department;
-            account.JobId ??= payrollData.JobId;
-        }
+        EnsureStartingPayroll(args.Mind.Owner, args.Mind.Comp, account);
 
         if (!_idCard.TryFindIdCard(ent, out var idCard))
             return;
@@ -95,7 +92,24 @@ public sealed class EconomyCardSystem : EntitySystem
         Dirty(idCard);
     }
 
-    private bool TryGetStartingPayrollData(MindComponent mind, out (ProtoId<CargoAccountPrototype> Department, string JobId) payrollData)
+    private void OnRoleAdded(RoleAddedEvent args)
+    {
+        var account = _bank.EnsurePlayerAccount(args.MindId, args.Mind);
+        EnsureStartingPayroll(args.MindId, args.Mind, account);
+    }
+
+    private void EnsureStartingPayroll(EntityUid mindUid, MindComponent mind, StationAccountComponent account)
+    {
+        if (account.StartingPayrollReceived || !TryGetStartingPayrollData(mind, out var payrollData))
+            return;
+
+        account.Department ??= payrollData.Department;
+        account.JobId ??= payrollData.JobId;
+        _bank.Deposit((mindUid, account), payrollData.Salary, "starting-payroll", reasonData: payrollData.JobId);
+        account.StartingPayrollReceived = true;
+    }
+
+    private bool TryGetStartingPayrollData(MindComponent mind, out (ProtoId<CargoAccountPrototype> Department, string JobId, int Salary) payrollData)
     {
         foreach (var roleUid in mind.MindRoles)
         {
@@ -103,10 +117,10 @@ public sealed class EconomyCardSystem : EntitySystem
                 continue;
 
             var job = _proto.Index(role.JobPrototype.Value);
-            if (job.PayrollDepartmentAccount == null)
+            if (job.PayrollDepartmentAccount == null || job.Salary == null || job.Salary <= 0)
                 continue;
 
-            payrollData = (job.PayrollDepartmentAccount.Value, job.ID);
+            payrollData = (job.PayrollDepartmentAccount.Value, job.ID, job.Salary.Value);
             return true;
         }
 
@@ -136,7 +150,7 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
             return;
 
-        if (!_bank.Withdraw(account, args.Amount, "card_withdrawal", GetNetEntity(user)))
+        if (!_bank.Withdraw(account, args.Amount, "card-withdrawal", GetNetEntity(user)))
             return;
 
         if (!_proto.TryIndex(CreditStackId, out var stackProto))
@@ -176,7 +190,7 @@ public sealed class EconomyCardSystem : EntitySystem
             return false;
 
         var amount = stack.Count;
-        _bank.Deposit(account, amount, "card_deposit", GetNetEntity(user));
+        _bank.Deposit(account, amount, "card-deposit", GetNetEntity(user));
         _stack.SetCount(stackUid, 0, stack);
         _ui.SetUiState(card.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.Comp.BankAccountId, account.Comp.Balance));
         return true;

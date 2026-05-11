@@ -287,9 +287,10 @@ public sealed partial class FundingAllocationMenu : FancyWindow
     {
         return reason switch
         {
-            "card_deposit" => Loc.GetString("cargo-funding-alloc-console-reason-card-deposit"),
-            "card_withdrawal" => Loc.GetString("cargo-funding-alloc-console-reason-card-withdrawal"),
+            "card-deposit" => Loc.GetString("cargo-funding-alloc-console-reason-card-deposit"),
+            "card-withdrawal" => Loc.GetString("cargo-funding-alloc-console-reason-card-withdrawal"),
             "payroll" => Loc.GetString("cargo-funding-alloc-console-reason-payroll", ("job", LocalizeJob(reasonData))),
+            "starting-payroll" => Loc.GetString("cargo-funding-alloc-console-reason-starting-payroll"),
             _ => Loc.GetString("cargo-funding-alloc-console-reason-generic", ("reason", reason)),
         };
     }
