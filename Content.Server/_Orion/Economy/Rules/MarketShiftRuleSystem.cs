@@ -21,8 +21,8 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
     protected override void Started(EntityUid uid, MarketShiftRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
+
         ScheduleNextShift(component);
-        ApplyShiftToAllStations(component);
     }
 
     protected override void ActiveTick(EntityUid uid, MarketShiftRuleComponent component, GameRuleComponent gameRule, float frameTime)

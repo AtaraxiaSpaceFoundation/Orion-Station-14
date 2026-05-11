@@ -2,11 +2,15 @@ using Content.Server.Access.Systems;
 using Content.Server._Orion.Economy.Components;
 using Content.Server.Mind;
 using Content.Server.Stack;
+using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared._Orion.Economy;
+using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Roles;
 using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -22,6 +26,7 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly StationSystem _station = default!;
 
     private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
 
@@ -71,6 +76,15 @@ public sealed class EconomyCardSystem : EntitySystem
     {
         var account = _bank.EnsurePlayerAccount(args.Mind.Owner, args.Mind.Comp);
 
+        if (args.Mind.Comp.OwnedEntity is { } owned && _station.GetOwningStation(owned) is { } stationUid)
+            account.OwningStation ??= stationUid;
+
+        if ((account.Department == null || account.JobId == null) && TryGetStartingPayrollData(args.Mind.Comp, out var payrollData))
+        {
+            account.Department ??= payrollData.Department;
+            account.JobId ??= payrollData.JobId;
+        }
+
         if (!_idCard.TryFindIdCard(ent, out var idCard))
             return;
 
@@ -79,6 +93,25 @@ public sealed class EconomyCardSystem : EntitySystem
 
         idCard.Comp.BankAccountId = account.AccountId;
         Dirty(idCard);
+    }
+
+    private bool TryGetStartingPayrollData(MindComponent mind, out (ProtoId<CargoAccountPrototype> Department, string JobId) payrollData)
+    {
+        foreach (var roleUid in mind.MindRoles)
+        {
+            if (!TryComp<MindRoleComponent>(roleUid, out var role) || role.JobPrototype == null)
+                continue;
+
+            var job = _proto.Index(role.JobPrototype.Value);
+            if (job.PayrollDepartmentAccount == null)
+                continue;
+
+            payrollData = (job.PayrollDepartmentAccount.Value, job.ID);
+            return true;
+        }
+
+        payrollData = default;
+        return false;
     }
 
     private void OnUiOpened(Entity<IdCardComponent> ent, ref BoundUIOpenedEvent args)
