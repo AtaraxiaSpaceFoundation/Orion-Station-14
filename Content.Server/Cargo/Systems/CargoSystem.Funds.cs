@@ -189,7 +189,7 @@ public sealed partial class CargoSystem
                 continue;
 
             var departmentId = account.Department is { } department ? department.Id : null;
-            accounts.Add(new FundingAllocationEconomyAccountData(GetNetEntity(accountUid), account.AccountId, account.OwnerName, account.Balance, departmentId));
+            accounts.Add(new FundingAllocationEconomyAccountData(GetNetEntity(accountUid), account.AccountId, account.OwnerName, account.Balance, departmentId, account.JobId));
 
             foreach (var transaction in account.History)
             {

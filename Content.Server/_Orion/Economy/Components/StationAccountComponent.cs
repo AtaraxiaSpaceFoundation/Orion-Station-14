@@ -22,6 +22,9 @@ public sealed partial class StationAccountComponent : Component
     public EntityUid? OwningStation;
 
     [DataField]
+    public string? JobId;
+
+    [DataField]
     public int MaxHistory = 67;
 
     [DataField]

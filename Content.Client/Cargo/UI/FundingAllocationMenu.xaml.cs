@@ -144,10 +144,9 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         NoAccountsLabel.Visible = state.EconomyAccounts.Count == 0;
         foreach (var account in state.EconomyAccounts.OrderBy(a => a.AccountId))
         {
-            var roleText = account.DepartmentId is { } dep &&
-                           _prototypeManager.TryIndex<CargoAccountPrototype>(dep, out var proto)
-                ? Loc.GetString(proto.Name)
-                : Loc.GetString("cargo-funding-alloc-console-economy-role-none");
+            var roleText = string.IsNullOrWhiteSpace(account.JobId)
+                ? Loc.GetString("cargo-funding-alloc-console-economy-role-none")
+                : LocalizeJob(account.JobId);
 
             if (string.IsNullOrWhiteSpace(roleText))
                 roleText = Loc.GetString("cargo-funding-alloc-console-economy-role-none");
@@ -182,7 +181,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 : counterpartyAccount?.AccountName ?? unknownText;
 
             if (incoming && transaction.Reason == "payroll")
-                from = LocalizeJob(transaction.ReasonData);
+                from = LocalizeDepartment(mainAccount?.DepartmentId);
 
             var row = CreateRowContainer();
             row.AddChild(CreateCell(operationType, 110f));
@@ -302,6 +301,17 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
         if (_prototypeManager.TryIndex<JobPrototype>(jobId, out var job))
             return Loc.GetString(job.Name);
+
+        return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+    }
+
+    private string LocalizeDepartment(string? departmentId)
+    {
+        if (string.IsNullOrWhiteSpace(departmentId))
+            return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+
+        if (_prototypeManager.TryIndex<CargoAccountPrototype>(departmentId, out var proto))
+            return Loc.GetString(proto.Name);
 
         return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
     }

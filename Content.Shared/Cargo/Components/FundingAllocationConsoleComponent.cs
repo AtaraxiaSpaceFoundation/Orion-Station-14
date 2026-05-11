@@ -61,14 +61,16 @@ public sealed class FundingAllocationEconomyAccountData
     public string AccountName;
     public int Balance;
     public string? DepartmentId;
+    public string? JobId;
 
-    public FundingAllocationEconomyAccountData(NetEntity account, string accountId, string accountName, int balance, string? departmentId)
+    public FundingAllocationEconomyAccountData(NetEntity account, string accountId, string accountName, int balance, string? departmentId, string? jobId)
     {
         Account = account;
         AccountId = accountId;
         AccountName = accountName;
         Balance = balance;
         DepartmentId = departmentId;
+        JobId = jobId;
     }
 }
 

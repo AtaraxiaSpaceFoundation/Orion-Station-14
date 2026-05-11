@@ -57,6 +57,7 @@ public sealed class PayrollSystem : EntitySystem
 
             account.Department = departmentAccount;
             account.OwningStation = stationUid;
+            account.JobId = job.ID;
             _bank.Deposit((mindUid, account), paid, "payroll", GetNetEntity(stationUid.Value), job.ID);
             NotifyPayroll(owned, account.AccountId, paid);
         }
