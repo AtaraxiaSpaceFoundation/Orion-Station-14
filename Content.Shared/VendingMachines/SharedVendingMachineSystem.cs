@@ -32,6 +32,7 @@ using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
+using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -52,6 +53,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     [Dependency] protected readonly SharedUserInterfaceSystem UISystem = default!;
     [Dependency] protected readonly IRobustRandom Randomizer = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private   readonly INetManager _net = default!; // Orion
 
     public override void Initialize()
     {
@@ -148,6 +150,11 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
 
     private void OnInventoryEjectMessage(Entity<VendingMachineComponent> entity, ref VendingMachineEjectMessage args)
     {
+        // Orion-Start
+        if (!_net.IsServer)
+            return;
+        // Orion-End
+
         if (!_receiver.IsPowered(entity.Owner) || Deleted(entity))
             return;
 
