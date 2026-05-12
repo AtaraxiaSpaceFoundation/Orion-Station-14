@@ -117,7 +117,6 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         // Orion-Edit-End
 
         BuildEntries();
-        BuildEconomyHeaders(); // Orion
     }
 
     private IEnumerable<KeyValuePair<ProtoId<CargoAccountPrototype>, int>> EditableAccounts(StationBankAccountComponent bank)

@@ -58,7 +58,14 @@ public sealed class PayrollSystem : EntitySystem
             account.Department = departmentAccount;
             account.OwningStation = stationUid;
             account.JobId = job.ID;
-            _bank.Deposit((mindUid, account), paid, "payroll", GetNetEntity(stationUid.Value), job.ID);
+
+            if (!_bank.Deposit((mindUid, account), paid, "payroll", GetNetEntity(stationUid.Value), job.ID))
+            {
+                _sawmill.Error($"Payroll deposit failed for station {stationUid.Value} department {departmentAccount} recipient {mindUid} amount {paid}. Attempting rollback.");
+                _cargo.UpdateBankAccount((stationUid.Value, stationBank), paid, departmentAccount);
+                continue;
+            }
+
             NotifyPayroll(owned, account.AccountId, paid);
         }
     }

@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server._Orion.Economy.Components;
 using Content.Server.Cargo.Components;
 using Content.Shared.Cargo.Components;
+using Content.Shared.Cargo.Prototypes;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Emag.Systems;
@@ -15,16 +16,39 @@ public sealed partial class CargoSystem
     private bool _allowPrimaryAccountAllocation;
     private bool _allowPrimaryCutAdjustment;
 
-    public void InitializeFunds()
+    private void InitializeFunds()
     {
         SubscribeLocalEvent<CargoOrderConsoleComponent, CargoConsoleWithdrawFundsMessage>(OnWithdrawFunds);
         SubscribeLocalEvent<CargoOrderConsoleComponent, CargoConsoleToggleLimitMessage>(OnToggleLimit);
         SubscribeLocalEvent<FundingAllocationConsoleComponent, SetFundingAllocationBuiMessage>(OnSetFundingAllocation);
         SubscribeLocalEvent<FundingAllocationConsoleComponent, BeforeActivatableUIOpenEvent>(OnFundAllocationBuiOpen);
+        SubscribeLocalEvent<StationBankAccountComponent, ComponentStartup>(OnStationBankStartup);
 
         _cfg.OnValueChanged(CCVars.AllowPrimaryAccountAllocation, enabled => { _allowPrimaryAccountAllocation = enabled; }, true);
         _cfg.OnValueChanged(CCVars.AllowPrimaryCutAdjustment, enabled => { _allowPrimaryCutAdjustment = enabled; }, true);
     }
+
+    // Orion-Start
+    private void OnStationBankStartup(Entity<StationBankAccountComponent> ent, ref ComponentStartup args)
+    {
+        var changed = false;
+
+        foreach (var (account, _) in ent.Comp.Accounts)
+        {
+            if (!_protoMan.TryIndex(account, out var proto) || proto.BudgetFundingAmount <= 0)
+                continue;
+
+            if (ent.Comp.NextBudgetFundingTime.ContainsKey(account))
+                continue;
+
+            ent.Comp.NextBudgetFundingTime[account] = Timing.CurTime + proto.BudgetFundingDelay;
+            changed = true;
+        }
+
+        if (changed)
+            Dirty(ent);
+    }
+    // Orion-End
 
     private void OnWithdrawFunds(Entity<CargoOrderConsoleComponent> ent, ref CargoConsoleWithdrawFundsMessage args)
     {
@@ -132,7 +156,7 @@ public sealed partial class CargoSystem
         if (args.Percents.Values.Sum() != 100)
             return;
 
-        var primaryCut = bank.RevenueDistribution[bank.PrimaryAccount];
+//        var primaryCut = bank.RevenueDistribution[bank.PrimaryAccount]; // Orion-Edit
         bank.RevenueDistribution.Clear();
         foreach (var (account, percent )in args.Percents)
         {

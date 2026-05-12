@@ -160,12 +160,14 @@ namespace Content.Server.Cargo.Systems
             if (!TryComp<CashComponent>(args.Used, out var cash))
                 return;
 
-            var amount = cash.Value;
+            var total = (long) cash.Value;
             if (TryComp<StackComponent>(args.Used, out var stack))
-                amount *= stack.Count;
+                total *= stack.Count;
 
-            if (amount <= 0)
+            if (total <= 0)
                 return;
+
+            var amount = (int) Math.Min(total, int.MaxValue);
             // Orion-Edit-End
 
             var stationUid = _station.GetOwningStation(uid); // Orion-Edit

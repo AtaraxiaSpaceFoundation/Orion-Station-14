@@ -31,11 +31,21 @@ public sealed class BankSystem : EntitySystem
     {
         var account = EnsureComp<StationAccountComponent>(mindUid);
 
+        var dirty = false;
         if (!IsValidAccountId(account.AccountId))
+        {
             account.AccountId = GenerateUniqueAccountId();
+            dirty = true;
+        }
 
         if (Resolve(mindUid, ref mind, false) && !string.IsNullOrWhiteSpace(mind.CharacterName) && account.OwnerName != mind.CharacterName)
+        {
             account.OwnerName = mind.CharacterName;
+            dirty = true;
+        }
+
+        if (dirty)
+            Dirty(mindUid, account);
 
         return account;
     }
@@ -101,12 +111,12 @@ public sealed class BankSystem : EntitySystem
         return account.Comp.Balance;
     }
 
-    public void Deposit(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null, string? reasonData = null)
+    public bool Deposit(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null, string? reasonData = null)
     {
         if (amount <= 0)
-            return;
+            return false;
 
-        _ = AdjustBalance(account, amount, reason, counterparty, reasonData);
+        return AdjustBalance(account, amount, reason, counterparty, reasonData);
     }
 
     public bool Withdraw(Entity<StationAccountComponent> account, int amount, string reason, NetEntity? counterparty = null, string? reasonData = null)

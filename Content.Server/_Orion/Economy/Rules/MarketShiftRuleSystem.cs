@@ -22,6 +22,7 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
     {
         base.Started(uid, component, gameRule, args);
 
+        ApplyShiftToAllStations(component);
         ScheduleNextShift(component);
     }
 

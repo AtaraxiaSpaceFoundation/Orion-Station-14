@@ -113,10 +113,9 @@ public sealed class EconomyCardSystem : EntitySystem
     {
         foreach (var roleUid in mind.MindRoles)
         {
-            if (!TryComp<MindRoleComponent>(roleUid, out var role) || role.JobPrototype == null)
+            if (!TryComp<MindRoleComponent>(roleUid, out var role) || role.JobPrototype == null || string.IsNullOrWhiteSpace(role.JobPrototype.Value) || !_proto.TryIndex(role.JobPrototype.Value, out var job))
                 continue;
 
-            var job = _proto.Index(role.JobPrototype.Value);
             if (job.PayrollDepartmentAccount == null || job.Salary == null || job.Salary <= 0)
                 continue;
 
@@ -150,10 +149,10 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
             return;
 
-        if (!_bank.Withdraw(account, args.Amount, "card-withdrawal", GetNetEntity(user)))
+        if (!_proto.TryIndex(CreditStackId, out var stackProto))
             return;
 
-        if (!_proto.TryIndex(CreditStackId, out var stackProto))
+        if (!_bank.Withdraw(account, args.Amount, "card-withdrawal", GetNetEntity(user)))
             return;
 
         var credits = _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
@@ -203,16 +202,14 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!_mind.TryGetMind(user, out var mindUid, out var mindComp))
             return false;
 
+        var accountId = string.IsNullOrWhiteSpace(accountOverride)
+            ? card.Comp.BankAccountId
+            : accountOverride.Trim();
+
+        if (!string.IsNullOrWhiteSpace(accountId))
+            return _bank.TryFindAccountById(accountId, out account);
+
         var ensured = _bank.EnsurePlayerAccount(mindUid, mindComp);
-
-        var accountId = string.IsNullOrWhiteSpace(accountOverride) ? card.Comp.BankAccountId : accountOverride.Trim();
-
-        if (!string.IsNullOrWhiteSpace(accountId) && string.Equals(accountId, ensured.AccountId, StringComparison.OrdinalIgnoreCase) && _bank.TryFindAccountById(accountId, out account))
-            return true;
-
-        if (string.IsNullOrWhiteSpace(card.Comp.BankAccountId))
-            return false;
-
         account = (mindUid, ensured);
         return true;
     }
