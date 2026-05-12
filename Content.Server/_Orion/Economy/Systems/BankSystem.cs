@@ -31,21 +31,11 @@ public sealed class BankSystem : EntitySystem
     {
         var account = EnsureComp<StationAccountComponent>(mindUid);
 
-        var dirty = false;
         if (!IsValidAccountId(account.AccountId))
-        {
             account.AccountId = GenerateUniqueAccountId();
-            dirty = true;
-        }
 
         if (Resolve(mindUid, ref mind, false) && !string.IsNullOrWhiteSpace(mind.CharacterName) && account.OwnerName != mind.CharacterName)
-        {
             account.OwnerName = mind.CharacterName;
-            dirty = true;
-        }
-
-        if (dirty)
-            Dirty(mindUid, account);
 
         return account;
     }
