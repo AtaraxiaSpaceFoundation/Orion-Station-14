@@ -180,8 +180,15 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 ? mainAccount?.AccountName ?? unknownText
                 : counterpartyAccount?.AccountName ?? unknownText;
 
-            if (incoming && transaction.Reason == "payroll")
-                from = LocalizeDepartment(mainAccount?.DepartmentId);
+            switch (incoming)
+            {
+                case true when transaction.Reason == "payroll":
+                    from = LocalizeDepartment(mainAccount?.DepartmentId);
+                    break;
+                case false when transaction.Reason == "vending-purchase":
+                    to = LocalizeDepartmentCode(ParseVendingPurchaseData(transaction.ReasonData).DepartmentId);
+                    break;
+            }
 
             var row = CreateRowContainer();
             row.AddChild(CreateCell(operationType, 110f));
@@ -285,14 +292,36 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
     private string LocalizeReason(string reason, string? reasonData)
     {
+        var vendingData = ParseVendingPurchaseData(reasonData);
         return reason switch
         {
             "card-deposit" => Loc.GetString("cargo-funding-alloc-console-reason-card-deposit"),
             "card-withdrawal" => Loc.GetString("cargo-funding-alloc-console-reason-card-withdrawal"),
             "payroll" => Loc.GetString("cargo-funding-alloc-console-reason-payroll", ("job", LocalizeJob(reasonData))),
             "starting-payroll" => Loc.GetString("cargo-funding-alloc-console-reason-starting-payroll"),
+            "vending-purchase" => Loc.GetString("cargo-funding-alloc-console-reason-vending-purchase", ("item", LocalizeVendingItem(vendingData.ItemId))),
             _ => Loc.GetString("cargo-funding-alloc-console-reason-generic", ("reason", reason)),
         };
+    }
+
+    private static (string? ItemId, string? DepartmentId) ParseVendingPurchaseData(string? reasonData)
+    {
+        if (string.IsNullOrWhiteSpace(reasonData))
+            return (null, null);
+
+        var split = reasonData.Split('|', 2, StringSplitOptions.TrimEntries);
+        return split.Length == 2 ? (split[0], split[1]) : (reasonData, null);
+    }
+
+    private string LocalizeVendingItem(string? itemId)
+    {
+        if (string.IsNullOrWhiteSpace(itemId))
+            return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+
+        if (_prototypeManager.TryIndex<EntityPrototype>(itemId, out var proto))
+            return Loc.GetString(proto.Name);
+
+        return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
     }
 
     private string LocalizeJob(string? jobId)
@@ -313,6 +342,17 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
         if (_prototypeManager.TryIndex<CargoAccountPrototype>(departmentId, out var proto))
             return Loc.GetString(proto.Name);
+
+        return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+    }
+
+    private string LocalizeDepartmentCode(string? departmentId)
+    {
+        if (string.IsNullOrWhiteSpace(departmentId))
+            return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+
+        if (_prototypeManager.TryIndex<CargoAccountPrototype>(departmentId, out var proto))
+            return Loc.GetString(proto.Code);
 
         return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
     }

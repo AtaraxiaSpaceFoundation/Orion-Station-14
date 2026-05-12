@@ -68,11 +68,16 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Server._Orion.Economy.Systems;
+using Content.Server.Access.Systems;
 using Content.Server.Cargo.Systems;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Station.Systems;
 using Content.Server.Vocalization.Systems;
+using Content.Shared._Orion.VendingMachines.Components;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
@@ -98,6 +103,12 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly PricingSystem _pricing = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
+        // Orion-Start
+        [Dependency] private readonly BankSystem _bank = default!;
+        [Dependency] private readonly CargoSystem _cargo = default!;
+        [Dependency] private readonly IdCardSystem _idCard = default!;
+        [Dependency] private readonly StationSystem _station = default!;
+        // Orion-End
 
         private const float WallVendEjectDistanceFromWall = 1f;
 
@@ -119,7 +130,63 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, RestockDoAfterEvent>(OnDoAfter);
 
             SubscribeLocalEvent<VendingMachineRestockComponent, PriceCalculationEvent>(OnPriceCalculation);
+            SubscribeLocalEvent<VendingMachineComponent, VendingMachineBeforeEjectEvent>(OnBeforeEject); // Orion
         }
+
+        // Orion-Start
+        private void OnBeforeEject(Entity<VendingMachineComponent> ent, ref VendingMachineBeforeEjectEvent args)
+        {
+            if (args.User is not { } user || args.Price <= 0)
+                return;
+
+            var hasPricing = TryComp<VendingMachinePricingComponent>(ent.Owner, out var pricing);
+            if (hasPricing && pricing!.AllProductsFree)
+                return;
+
+            if (!_idCard.TryFindIdCard(user, out var idCard) || string.IsNullOrWhiteSpace(idCard.Comp.BankAccountId))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-no-id"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            if (!_bank.TryFindAccountById(idCard.Comp.BankAccountId, out var account))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-no-account"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            if (account.Comp.Balance < args.Price)
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-insufficient-funds"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            if (_station.GetOwningStation(ent.Owner) is not { } station ||
+                !TryComp<StationBankAccountComponent>(station, out var bankAcc))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-payment-failed"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            var department = hasPricing && pricing!.DepartmentAccount is { } configuredDepartment
+                ? configuredDepartment
+                : bankAcc.PrimaryAccount;
+
+            var reasonData = $"{args.ItemId}|{department.Id}";
+            if (!_bank.Withdraw(account, args.Price, "vending-purchase", reasonData: reasonData))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-payment-failed"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            _cargo.UpdateBankAccount((station, bankAcc), args.Price, department);
+        }
+        // Orion-End
 
         private void OnVendingPrice(EntityUid uid, VendingMachineComponent component, ref PriceCalculationEvent args)
         {

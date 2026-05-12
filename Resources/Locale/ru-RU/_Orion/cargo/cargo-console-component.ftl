@@ -37,6 +37,7 @@ cargo-funding-alloc-console-reason-card-deposit = Депозит на карту
 cargo-funding-alloc-console-reason-card-withdrawal = Снятие с карты
 cargo-funding-alloc-console-reason-payroll = Зарплата: { $job }
 cargo-funding-alloc-console-reason-starting-payroll = Аванс
+cargo-funding-alloc-console-reason-vending-purchase = Покупка: { $item }
 cargo-funding-alloc-console-reason-generic = { $reason }
 
 cargo-funding-alloc-console-economy-number = Номер
