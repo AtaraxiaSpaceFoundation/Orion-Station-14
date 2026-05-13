@@ -16,6 +16,12 @@ public sealed class EconomyCardWithdrawMessage(int amount, string? accountIdOver
 }
 
 [Serializable, NetSerializable]
+public sealed class EconomyCardSelectAccountMessage(string? accountIdOverride) : BoundUserInterfaceMessage
+{
+    public readonly string? AccountIdOverride = accountIdOverride;
+}
+
+[Serializable, NetSerializable]
 public sealed class EconomyCardBoundUiState(string? accountId, int balance) : BoundUserInterfaceState
 {
     public readonly string? AccountId = accountId;

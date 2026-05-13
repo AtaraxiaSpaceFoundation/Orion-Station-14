@@ -47,6 +47,7 @@ public sealed class EconomyCardSystem : EntitySystem
             subs =>
         {
             subs.Event<EconomyCardWithdrawMessage>(OnWithdrawMessage);
+            subs.Event<EconomyCardSelectAccountMessage>(OnSelectAccountMessage);
         });
     }
 
@@ -179,6 +180,26 @@ public sealed class EconomyCardSystem : EntitySystem
         _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
     }
 
+    private void OnSelectAccountMessage(Entity<IdCardComponent> ent, ref EconomyCardSelectAccountMessage args)
+    {
+        if (args.Actor is not { Valid: true } user)
+            return;
+
+        if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
+        {
+            var accountId = string.IsNullOrWhiteSpace(args.AccountIdOverride)
+                ? ent.Comp.BankAccountId
+                : args.AccountIdOverride.Trim();
+
+            _openUiAccounts[ent.Owner] = accountId ?? string.Empty;
+            _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(accountId, 0));
+            return;
+        }
+
+        _openUiAccounts[ent.Owner] = account.Comp.AccountId;
+        _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
+    }
+
     private void OnInteractUsing(Entity<IdCardComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)
@@ -226,18 +247,16 @@ public sealed class EconomyCardSystem : EntitySystem
     {
         account = default;
 
-        if (!_mind.TryGetMind(user, out var mindUid, out var mindComp))
+        if (!_mind.TryGetMind(user, out _, out _))
             return false;
 
         var accountId = string.IsNullOrWhiteSpace(accountOverride)
             ? card.Comp.BankAccountId
             : accountOverride.Trim();
 
-        if (!string.IsNullOrWhiteSpace(accountId))
-            return _bank.TryFindAccountById(accountId, out account);
+        if (string.IsNullOrWhiteSpace(accountId))
+            return false;
 
-        var ensured = _bank.EnsurePlayerAccount(mindUid, mindComp);
-        account = (mindUid, ensured);
-        return true;
+        return _bank.TryFindAccountById(accountId, out account);
     }
 }

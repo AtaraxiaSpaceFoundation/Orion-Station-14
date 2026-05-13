@@ -63,6 +63,8 @@ public sealed class EconomyCardBoundUserInterface(EntityUid owner, Enum uiKey) :
             _accountOverrideEdited = !string.Equals(input, _lastAccountId, StringComparison.Ordinal);
         }
 
+        SendMessage(new EconomyCardSelectAccountMessage(GetEffectiveAccountId()));
+
         UpdateDisplayedAccount();
         UpdateWithdrawAvailability();
     }
