@@ -81,7 +81,6 @@ public sealed partial class StationBankAccountComponent : Component
     /// <summary>
     /// Next payout time for prototype-driven periodic budget funding.
     /// </summary>
-    [DataField, AutoNetworkedField]
     public Dictionary<ProtoId<CargoAccountPrototype>, TimeSpan> NextBudgetFundingTime = new();
     // Orion-End
 }
