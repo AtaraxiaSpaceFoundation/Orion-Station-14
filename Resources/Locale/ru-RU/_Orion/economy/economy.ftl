@@ -28,3 +28,6 @@ economy-card-status-no-funds = Недостаточно средств
 character-info-job-with-account = { $job } | Счёт: { $account }
 
 payroll-popup-received = +{ $amount } кр
+
+credit-holochip-name = голочип { $amount } кредитов
+credit-holochip-emp-destroyed = Голочип искрит и исчезает!

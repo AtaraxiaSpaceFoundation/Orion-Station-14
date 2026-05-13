@@ -28,3 +28,6 @@ economy-card-status-no-funds = Insufficient funds
 character-info-job-with-account = { $job } | Account: { $account }
 
 payroll-popup-received = +{ $amount } cr
+
+credit-holochip-name = credit holochip { $amount }
+credit-holochip-emp-destroyed = The holochip fizzles out and disappears!

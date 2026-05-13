@@ -28,6 +28,7 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly StationSystem _station = default!;
 
+    private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
 
     private float _uiRefreshAccumulator;
@@ -165,14 +166,14 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
             return;
 
-        if (!_proto.TryIndex(CreditStackId, out var stackProto))
-            return;
-
         if (!_bank.Withdraw(account, args.Amount, "card-withdrawal", GetNetEntity(user)))
             return;
 
-        var credits = _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
-        _hands.PickupOrDrop(user, credits);
+        if (!_proto.TryIndex(HolochipStackId, out var stackProto))
+            return;
+
+        var holochip = _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
+        _hands.PickupOrDrop(user, holochip);
 
         _openUiAccounts[ent.Owner] = account.Comp.AccountId;
         _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
@@ -183,7 +184,10 @@ public sealed class EconomyCardSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (!TryComp(args.Used, out StackComponent? usedStack) || usedStack.StackTypeId != CreditStackId || usedStack.Count <= 0)
+        if (!TryComp(args.Used, out StackComponent? usedStack) || usedStack.Count <= 0)
+            return;
+
+        if (usedStack.StackTypeId != HolochipStackId && usedStack.StackTypeId != CreditStackId)
             return;
 
         args.Handled = TryDepositStackToCard(ent, args.User, args.Used, usedStack);
@@ -194,7 +198,10 @@ public sealed class EconomyCardSystem : EntitySystem
         if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
             return;
 
-        if (!TryComp(target, out StackComponent? targetStack) || targetStack.StackTypeId != CreditStackId || targetStack.Count <= 0)
+        if (!TryComp(target, out StackComponent? targetStack) || targetStack.Count <= 0)
+            return;
+
+        if (targetStack.StackTypeId != HolochipStackId && targetStack.StackTypeId != CreditStackId)
             return;
 
         args.Handled = TryDepositStackToCard(ent, args.User, target, targetStack);
