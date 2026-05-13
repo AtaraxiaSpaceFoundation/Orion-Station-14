@@ -1,4 +1,4 @@
-guide-entry-orion = Orion
+guide-entry-orion = Руководства
 
 guide-entry-server-rules = Правила сервера
 guide-entry-server-rules-punishment = Наказания

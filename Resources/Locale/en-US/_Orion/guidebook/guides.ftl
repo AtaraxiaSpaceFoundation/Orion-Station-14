@@ -1,4 +1,4 @@
-guide-entry-orion = Orion
+guide-entry-orion = Guides
 
 guide-entry-server-rules = Server rules
 guide-entry-server-rules-punishment = Rule Punishment

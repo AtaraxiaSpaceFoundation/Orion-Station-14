@@ -312,3 +312,7 @@ config.json
 
 # IDE
 qodana.yaml
+
+wiki_data/
+
+CLAUDE.md

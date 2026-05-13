@@ -39,4 +39,3 @@ export localise_personal_token="..."
 python3 translationsassembler.py
 ```
 
-<h1 align="right"> <img alt="Orion Station" src="https://raw.githubusercontent.com/AtaraxiaSpaceFoundation/asset-dump/refs/heads/master/OrionStation/Orion-Banner-Small.png" />  </h1>
