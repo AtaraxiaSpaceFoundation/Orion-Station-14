@@ -91,8 +91,6 @@ public sealed class EconomyCardSystem : EntitySystem
         if (args.Mind.Comp.OwnedEntity is { } owned && _station.GetOwningStation(owned) is { } stationUid)
             account.OwningStation = stationUid;
 
-        Dirty(args.Mind.Owner, account);
-
         EnsureStartingPayroll(args.Mind.Owner, args.Mind.Comp, account);
 
         if (!_idCard.TryFindIdCard(ent, out var idCard))
@@ -120,7 +118,6 @@ public sealed class EconomyCardSystem : EntitySystem
         account.JobId ??= payrollData.JobId;
         _bank.Deposit((mindUid, account), payrollData.Salary, "starting-payroll", reasonData: payrollData.JobId);
         account.StartingPayrollReceived = true;
-        Dirty(mindUid, account);
     }
 
     private bool TryGetStartingPayrollData(MindComponent mind, out (ProtoId<CargoAccountPrototype> Department, string JobId, int Salary) payrollData)
