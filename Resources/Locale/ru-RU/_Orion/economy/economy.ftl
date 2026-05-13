@@ -6,10 +6,24 @@ economy-report-market-changes = Цена повышена на: { $increased }.
 economy-report-none = нет
 
 economy-card-window-title = Банковский счёт
-economy-card-account-label = Номер счёта
-economy-card-balance-label = Баланс: { $balance } кр
-economy-card-withdraw-amount-label = Сумма вывода
-economy-card-withdraw-button = Вывести
+economy-card-brand = Банковский счёт Пэйдекс
+economy-card-no-account = Счёт не привязан
+economy-card-masked-account = Счёт карты
+economy-card-available-balance = Доступный баланс:
+economy-card-balance-value = { $balance } кр
+economy-card-withdraw-section = Снятие наличных
+economy-card-withdraw-amount-label = Сумма
+economy-card-withdraw-button = Снять
+economy-card-withdraw-hint = Средства будут выданы кредитными голочипами.
+economy-card-quick-amount-10 = 10
+economy-card-quick-amount-50 = 50
+economy-card-quick-amount-100 = 100
+economy-card-quick-amount-max = МАКС
+economy-card-manual-account-toggle = Изменение счёта
+economy-card-manual-account-warning = Техническое поле. Используйте только если хотите сменить счёт карты.
+economy-card-account-override-placeholder = Введите ID счёта
+economy-card-status-no-account = Нет привязанного счёта
+economy-card-status-no-funds = Недостаточно средств
 
 character-info-job-with-account = { $job } | Счёт: { $account }
 
