@@ -55,8 +55,6 @@ public sealed class MarketSystem : EntitySystem
 
         if (market.RecentChanges.Count > market.MaxRecentChanges)
             market.RecentChanges.RemoveRange(0, market.RecentChanges.Count - market.MaxRecentChanges);
-
-        Dirty(stationUid, market);
     }
 
     public void ClearMarketModifiers(EntityUid stationUid)
@@ -65,7 +63,6 @@ public sealed class MarketSystem : EntitySystem
             return;
 
         market.MaterialMultipliers.Clear();
-        Dirty(stationUid, market);
     }
 
     public Dictionary<string, float> GetActiveMarketModifiers(EntityUid stationUid)

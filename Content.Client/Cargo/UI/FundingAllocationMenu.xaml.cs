@@ -42,6 +42,8 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
     private readonly HashSet<Control> _transactionControls = new();
 
+    private EntityUid? _entriesStation;
+    private List<ProtoId<CargoAccountPrototype>> _entriesAccounts = new();
     // Orion-End
     private readonly List<SpinBox> _spinBoxes = new();
     private readonly Dictionary<ProtoId<CargoAccountPrototype>, RichTextLabel> _balanceLabels = new();
@@ -499,10 +501,45 @@ public sealed partial class FundingAllocationMenu : FancyWindow
     {
         _station = _entityManager.GetEntity(state.Station);
 
-        BuildEntries();
+        // Orion-Edit-Start
+        if (ShouldRebuildEntries())
+            BuildEntries();
+        // Orion-Edit-End
+
         BuildEconomy(state); // Orion
         UpdateButtonDisabled();
     }
+
+    // Orion-Start
+    private bool ShouldRebuildEntries()
+    {
+        if (_station == null || !_entityManager.TryGetComponent<StationBankAccountComponent>(_station, out var bank))
+            return false;
+
+        var accounts = EditableAccounts(bank)
+            .OrderBy(p => p.Key)
+            .Select(p => p.Key)
+            .ToList();
+
+        if (_entriesStation != _station || _entriesAccounts.Count != accounts.Count)
+        {
+            _entriesStation = _station;
+            _entriesAccounts = accounts;
+            return true;
+        }
+
+        for (var i = 0; i < accounts.Count; i++)
+        {
+            if (_entriesAccounts[i].Equals(accounts[i]))
+                continue;
+
+            _entriesAccounts = accounts;
+            return true;
+        }
+
+        return false;
+    }
+    // Orion-End
 
     protected override void FrameUpdate(FrameEventArgs args)
     {

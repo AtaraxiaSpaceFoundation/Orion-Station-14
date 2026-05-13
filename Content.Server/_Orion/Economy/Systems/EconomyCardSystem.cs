@@ -31,12 +31,14 @@ public sealed class EconomyCardSystem : EntitySystem
     private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
 
     private float _uiRefreshAccumulator;
+    private readonly Dictionary<EntityUid, string> _openUiAccounts = new();
 
     public override void Initialize()
     {
         SubscribeLocalEvent<MindContainerComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<RoleAddedEvent>(OnRoleAdded);
         SubscribeLocalEvent<IdCardComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<IdCardComponent, BoundUIClosedEvent>(OnUiClosed);
         SubscribeLocalEvent<IdCardComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<IdCardComponent, AfterInteractEvent>(OnAfterInteract);
 
@@ -57,19 +59,27 @@ public sealed class EconomyCardSystem : EntitySystem
 
         _uiRefreshAccumulator = 0f;
 
-        var query = EntityQueryEnumerator<IdCardComponent>();
-        while (query.MoveNext(out var uid, out var card))
+        var closedUis = new List<EntityUid>();
+        foreach (var (uid, accountId) in _openUiAccounts)
         {
             if (!_ui.IsUiOpen(uid, EconomyCardUiKey.Key))
-                continue;
-
-            if (string.IsNullOrWhiteSpace(card.BankAccountId) || !_bank.TryFindAccountById(card.BankAccountId, out var account))
             {
-                _ui.SetUiState(uid, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.BankAccountId, 0));
+                closedUis.Add(uid);
                 continue;
             }
 
-            _ui.SetUiState(uid, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.BankAccountId, account.Comp.Balance));
+            if (string.IsNullOrWhiteSpace(accountId) || !_bank.TryFindAccountById(accountId, out var account))
+            {
+                _ui.SetUiState(uid, EconomyCardUiKey.Key, new EconomyCardBoundUiState(accountId, 0));
+                continue;
+            }
+
+            _ui.SetUiState(uid, EconomyCardUiKey.Key, new EconomyCardBoundUiState(accountId, account.Comp.Balance));
+        }
+
+        foreach (var uid in closedUis)
+        {
+            _openUiAccounts.Remove(uid);
         }
     }
 
@@ -138,7 +148,13 @@ public sealed class EconomyCardSystem : EntitySystem
             return;
         }
 
-        _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(ent.Comp.BankAccountId, account.Comp.Balance));
+        _openUiAccounts[ent.Owner] = account.Comp.AccountId;
+        _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
+    }
+
+    private void OnUiClosed(Entity<IdCardComponent> ent, ref BoundUIClosedEvent args)
+    {
+        _openUiAccounts.Remove(ent.Owner);
     }
 
     private void OnWithdrawMessage(Entity<IdCardComponent> ent, ref EconomyCardWithdrawMessage args)
@@ -158,7 +174,8 @@ public sealed class EconomyCardSystem : EntitySystem
         var credits = _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
         _hands.PickupOrDrop(user, credits);
 
-        _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(ent.Comp.BankAccountId, account.Comp.Balance));
+        _openUiAccounts[ent.Owner] = account.Comp.AccountId;
+        _ui.SetUiState(ent.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
     }
 
     private void OnInteractUsing(Entity<IdCardComponent> ent, ref InteractUsingEvent args)
@@ -191,7 +208,8 @@ public sealed class EconomyCardSystem : EntitySystem
         var amount = stack.Count;
         _bank.Deposit(account, amount, "card-deposit", GetNetEntity(user));
         _stack.SetCount(stackUid, 0, stack);
-        _ui.SetUiState(card.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(card.Comp.BankAccountId, account.Comp.Balance));
+        _openUiAccounts[card.Owner] = account.Comp.AccountId;
+        _ui.SetUiState(card.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
         return true;
     }
 

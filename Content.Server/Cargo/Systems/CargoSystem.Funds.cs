@@ -135,18 +135,26 @@ public sealed partial class CargoSystem
             !TryComp<StationBankAccountComponent>(station, out var bank))
             return;
 
-        var expectedCount = _allowPrimaryAccountAllocation ? bank.RevenueDistribution.Count : bank.RevenueDistribution.Count - 1;
-        if (args.Percents.Count != expectedCount)
+        // Orion-Edit-Start
+        var expectedEditableKeys = bank.RevenueDistribution.Keys
+            .Where(account => _allowPrimaryAccountAllocation || account != bank.PrimaryAccount)
+            .ToHashSet();
+        var expectedCount = expectedEditableKeys.Count;
+
+        if (args.Percents.Count != expectedCount || !args.Percents.Keys.ToHashSet().SetEquals(expectedEditableKeys))
             return;
+        // Orion-Edit-End
 
         var differs = false;
         foreach (var (account, percent) in args.Percents)
         {
-            if (percent != (int) Math.Round(bank.RevenueDistribution[account] * 100))
-            {
-                differs = true;
-                break;
-            }
+            // Orion-Edit-Start
+            if (bank.RevenueDistribution.TryGetValue(account, out var currentPercent) && percent == (int) Math.Round(currentPercent * 100))
+                continue;
+
+            differs = true;
+            break;
+            // Orion-Edit-End
         }
         differs = differs || args.PrimaryCut != bank.PrimaryCut || args.LockboxCut != bank.LockboxCut;
 
@@ -157,15 +165,15 @@ public sealed partial class CargoSystem
             return;
 
 //        var primaryCut = bank.RevenueDistribution[bank.PrimaryAccount]; // Orion-Edit
-        bank.RevenueDistribution.Clear();
-        foreach (var (account, percent )in args.Percents)
-        {
-            bank.RevenueDistribution.Add(account, percent / 100.0);
-        }
+
+        // Orion-Edit-Start
+        var updatedDistribution = args.Percents.ToDictionary(kv => kv.Key, kv => kv.Value / 100.0);
+
         if (!_allowPrimaryAccountAllocation)
-        {
-            bank.RevenueDistribution.Add(bank.PrimaryAccount, 0);
-        }
+            updatedDistribution[bank.PrimaryAccount] = 0;
+
+        bank.RevenueDistribution = updatedDistribution;
+        // Orion-Edit-End
 
         if (_allowPrimaryCutAdjustment && args.PrimaryCut is >= 0.0 and <= 1.0)
         {

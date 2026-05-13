@@ -400,6 +400,18 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     }
 
     // Orion-Start
+    /// <summary>
+    /// Resolves item price for a vending inventory entry.
+    /// Resolution order is:
+    /// <list type="number">
+    /// <item><description><see cref="VendingMachinePricingComponent.AllProductsFree"/> returns 0 for all items.</description></item>
+    /// <item><description>Per-type prices from <see cref="VendingMachineInventoryPrototype"/> (Prices, ContrabandPrices, EmaggedPrices).</description></item>
+    /// <item><description><paramref name="packPrototype"/> values: DefaultPrice and ExtraPrice.</description></item>
+    /// <item><description>Fallback to <see cref="VendingMachinePricingComponent"/> DefaultPrice and ExtraPrice when pack values are not positive.</description></item>
+    /// </list>
+    /// <see cref="InventoryType.Regular"/> uses default price, other types prefer extra price when it's greater than zero.
+    /// Final result is clamped via <see cref="Math.Max(int, int)"/> so negative values become zero.
+    /// </summary>
     private int ResolveItemPrice(EntityUid uid, InventoryType type, string id, VendingMachineInventoryPrototype packPrototype)
     {
         if (TryComp<VendingMachinePricingComponent>(uid, out var pricing) && pricing.AllProductsFree)
@@ -418,16 +430,17 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         var defaultPrice = packPrototype.DefaultPrice;
         var extraPrice = packPrototype.ExtraPrice;
 
-        if (pricing == null)
-            return Math.Max(0, type == InventoryType.Regular ? defaultPrice : (extraPrice > 0 ? extraPrice : defaultPrice));
+        if (pricing != null)
+        {
+            if (defaultPrice <= 0)
+                defaultPrice = pricing.DefaultPrice;
 
-        if (defaultPrice <= 0)
-            defaultPrice = pricing.DefaultPrice;
+            if (extraPrice <= 0)
+                extraPrice = pricing.ExtraPrice;
+        }
 
-        if (extraPrice <= 0)
-            extraPrice = pricing.ExtraPrice;
-
-        return Math.Max(0, type == InventoryType.Regular ? defaultPrice : (extraPrice > 0 ? extraPrice : defaultPrice));
+        var finalPrice = type == InventoryType.Regular ? defaultPrice : (extraPrice > 0 ? extraPrice : defaultPrice);
+        return Math.Max(0, finalPrice);
     }
     // Orion-End
 
