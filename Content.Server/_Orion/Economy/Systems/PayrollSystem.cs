@@ -104,8 +104,14 @@ public sealed class PayrollSystem : EntitySystem
 
     private void NotifyPayroll(EntityUid recipient, string accountId, int amount)
     {
-        if (!_idCard.TryFindIdCard(recipient, out var idCard) || idCard.Comp.BankAccountId != accountId)
+        if (!_idCard.TryFindIdCard(recipient, out var idCard))
             return;
+
+        if (idCard.Comp.BankAccountId != accountId)
+        {
+            idCard.Comp.BankAccountId = accountId;
+            Dirty(idCard);
+        }
 
         var popupText = Loc.GetString("payroll-popup-received", ("amount", amount));
         _popup.PopupEntity(popupText, recipient, recipient);

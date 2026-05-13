@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server._Orion.Economy.Components;
+using Content.Server.Station.Events;
 using Content.Shared.Materials;
 using Content.Shared.Station.Components;
 using Robust.Shared.Prototypes;
@@ -12,14 +13,15 @@ public sealed class MarketSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
 
-    public override void Update(float frameTime)
+    public override void Initialize()
     {
-        var stationQuery = EntityQueryEnumerator<StationDataComponent>();
-        while (stationQuery.MoveNext(out var stationUid, out _))
-        {
-            if (!HasComp<StationMarketComponent>(stationUid))
-                EnsureComp<StationMarketComponent>(stationUid);
-        }
+        SubscribeLocalEvent<StationPostInitEvent>(OnStationPostInit);
+    }
+
+    private void OnStationPostInit(ref StationPostInitEvent args)
+    {
+        if (!HasComp<StationMarketComponent>(args.Station))
+            EnsureComp<StationMarketComponent>(args.Station);
     }
 
     public double AdjustSellPrice(EntityUid stationUid, EntityUid soldEntity, double basePrice)

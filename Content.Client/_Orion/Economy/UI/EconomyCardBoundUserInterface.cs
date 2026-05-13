@@ -10,6 +10,7 @@ public sealed class EconomyCardBoundUserInterface(EntityUid owner, Enum uiKey) :
     private int _lastBalance;
     private bool _manualExpanded;
     private bool _accountOverrideEdited;
+    private bool _suppressAccountEditTracking;
 
     protected override void Open()
     {
@@ -42,7 +43,11 @@ public sealed class EconomyCardBoundUserInterface(EntityUid owner, Enum uiKey) :
         UpdateDisplayedAccount();
 
         if (!_manualExpanded && !_accountOverrideEdited && string.IsNullOrWhiteSpace(_window.AccountId.Text))
+        {
+            _suppressAccountEditTracking = true;
             _window.AccountId.Text = _lastAccountId ?? string.Empty;
+            _suppressAccountEditTracking = false;
+        }
 
         UpdateWithdrawAvailability();
     }
@@ -51,6 +56,12 @@ public sealed class EconomyCardBoundUserInterface(EntityUid owner, Enum uiKey) :
     {
         if (_window == null)
             return;
+
+        if (!_suppressAccountEditTracking)
+        {
+            var input = string.IsNullOrWhiteSpace(_window.AccountId.Text) ? null : _window.AccountId.Text.Trim();
+            _accountOverrideEdited = !string.Equals(input, _lastAccountId, StringComparison.Ordinal);
+        }
 
         UpdateDisplayedAccount();
         UpdateWithdrawAvailability();
@@ -134,6 +145,9 @@ public sealed class EconomyCardBoundUserInterface(EntityUid owner, Enum uiKey) :
 
         _manualExpanded = !_manualExpanded;
         _window.ManualAccountContainer.Visible = _manualExpanded;
+
+        if (!_manualExpanded)
+            _accountOverrideEdited = false;
     }
 
     private void UpdateWithdrawAvailability()

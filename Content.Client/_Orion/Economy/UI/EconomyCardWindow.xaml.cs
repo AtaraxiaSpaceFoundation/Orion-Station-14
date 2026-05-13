@@ -52,8 +52,7 @@ public sealed partial class EconomyCardWindow : DefaultWindow
 
     public string FormatCredits(int amount)
     {
-        var safe = Math.Max(0, amount);
-        return Loc.GetString("economy-card-balance-value", ("balance", safe.ToString("N0", CultureInfo.InvariantCulture)));
+        return Loc.GetString("economy-card-balance-value", ("balance", amount.ToString("N0", CultureInfo.InvariantCulture)));
     }
 
     public string MaskAccountId(string? accountId)

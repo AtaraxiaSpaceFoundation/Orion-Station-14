@@ -42,8 +42,8 @@ public sealed class CreditHolochipSystem : EntitySystem
 
     private void OnEmpPulse(Entity<CreditHolochipComponent> ent, ref EmpPulseEvent args)
     {
-        var severity = MathF.Max(0.1f, (float) args.Duration.TotalSeconds);
-        var chance = Math.Clamp(0.6f / severity, 0f, 1f);
+        var power = MathF.Max(0.1f, (float) args.EnergyConsumption);
+        var chance = Math.Clamp(0.6f / power, 0f, 1f);
 
         if (!_random.Prob(chance))
             return;

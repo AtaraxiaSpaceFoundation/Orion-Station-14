@@ -439,7 +439,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             {
                 HorizontalAlignment = HAlignment.Center,
                 HorizontalExpand = true,
-                Value = (int) (bank.RevenueDistribution[account] * 100),
+                Value = (int) ((bank.RevenueDistribution.TryGetValue(account, out var pct) ? pct : 0) * 100),
                 IsValid = val => val is >= 0 and <= 100,
             };
 
@@ -475,7 +475,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         for (var i = 0; i < accounts.Count; i++)
         {
             var currentPercent = _spinBoxes[i].Value;
-            var expectedPercent = (int) Math.Round(bank.RevenueDistribution[accounts[i]] * 100);
+            var expectedPercent = (int) Math.Round((bank.RevenueDistribution.TryGetValue(accounts[i], out var pct) ? pct : 0) * 100);
 
             if (currentPercent == expectedPercent)
                 continue;

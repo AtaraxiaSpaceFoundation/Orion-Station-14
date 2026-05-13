@@ -1,5 +1,5 @@
 - type: stack
   id: CreditHolochip
   name: credit-holochip-name
-  icon: { sprite: /Textures/_Orion/Economy/holochip.rsi, state: holochip }
+  icon: { sprite: _Orion/Objects/Economy/holochip.rsi, state: holochip }
   spawn: CreditHolochip

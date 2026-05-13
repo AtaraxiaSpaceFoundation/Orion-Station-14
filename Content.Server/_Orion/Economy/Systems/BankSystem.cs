@@ -122,8 +122,15 @@ public sealed class BankSystem : EntitySystem
         if (!Withdraw(from, amount, reason, GetNetEntity(to.Owner)))
             return false;
 
-        Deposit(to, amount, reason, GetNetEntity(from.Owner));
-        return true;
+        if (Deposit(to, amount, reason, GetNetEntity(from.Owner)))
+            return true;
+
+        _sawmill.Error($"Transfer deposit failed. Attempting rollback from {to.Comp.AccountId} to {from.Comp.AccountId}. Amount: {amount}. Reason: {reason}");
+
+        if (!Deposit(from, amount, $"rollback: {reason}", GetNetEntity(to.Owner)))
+            _sawmill.Error($"Transfer rollback failed for account {from.Comp.AccountId}. Manual intervention may be required.");
+
+        return false;
     }
 
     private bool AdjustBalance(Entity<StationAccountComponent> account, int delta, string reason, NetEntity? counterparty = null, string? reasonData = null)

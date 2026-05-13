@@ -200,8 +200,16 @@ public sealed partial class CargoSystem : SharedCargoSystem
 
         foreach (var (account, percent) in accountDistribution)
         {
+            // Orion-Edit-Start
             var accountBalancedAdded = (int) Math.Round(percent * balanceAdded);
-            ent.Comp.Accounts[account] = ent.Comp.Accounts.GetValueOrDefault(account) + accountBalancedAdded; // Orion-Edit
+            if (!ent.Comp.Accounts.TryGetValue(account, out var currentBalance))
+            {
+                Log.Warning($"Attempted to update missing cargo account '{account}' on station {ToPrettyString(ent.Owner)}.");
+                continue;
+            }
+
+            ent.Comp.Accounts[account] = currentBalance + accountBalancedAdded;
+            // Orion-Edit-End
         }
 
         var ev = new BankBalanceUpdatedEvent(ent, ent.Comp.Accounts);

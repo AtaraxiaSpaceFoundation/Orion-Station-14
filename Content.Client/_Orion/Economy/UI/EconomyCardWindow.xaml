@@ -26,7 +26,7 @@
                 <PanelContainer Name="BalancePanel" Access="Public">
                     <BoxContainer Orientation="Vertical" Margin="9" SeparationOverride="2">
                         <Label Name="AvailableBalanceTitleLabel" Access="Public" StyleClasses="LabelSubText" Text="{Loc 'economy-card-available-balance'}"/>
-                        <Label Name="BalanceValueLabel" Access="Public" StyleClasses="LabelHeading" Text="0 cr"/>
+                        <Label Name="BalanceValueLabel" Access="Public" StyleClasses="LabelHeading"/>
                     </BoxContainer>
                 </PanelContainer>
 

@@ -1,5 +1,5 @@
 economy-report-sender = NanoTrasen Market Analytics
-economy-report-high-demand = Nanotrasen has increased buy demand for: { $materials }.
+economy-report-high-demand = NanoTrasen has increased buy demand for: { $materials }.
 economy-report-crisis = Galactic market volatility detected. Economic crisis protocols are active.
 economy-report-market-changes = Price increased for: { $increased }.
     Price decreased for: { $decreased }.

@@ -89,7 +89,9 @@ public sealed class EconomyCardSystem : EntitySystem
         var account = _bank.EnsurePlayerAccount(args.Mind.Owner, args.Mind.Comp);
 
         if (args.Mind.Comp.OwnedEntity is { } owned && _station.GetOwningStation(owned) is { } stationUid)
-            account.OwningStation ??= stationUid;
+            account.OwningStation = stationUid;
+
+        Dirty(args.Mind.Owner, account);
 
         EnsureStartingPayroll(args.Mind.Owner, args.Mind.Comp, account);
 
@@ -118,6 +120,7 @@ public sealed class EconomyCardSystem : EntitySystem
         account.JobId ??= payrollData.JobId;
         _bank.Deposit((mindUid, account), payrollData.Salary, "starting-payroll", reasonData: payrollData.JobId);
         account.StartingPayrollReceived = true;
+        Dirty(mindUid, account);
     }
 
     private bool TryGetStartingPayrollData(MindComponent mind, out (ProtoId<CargoAccountPrototype> Department, string JobId, int Salary) payrollData)
@@ -166,10 +169,10 @@ public sealed class EconomyCardSystem : EntitySystem
         if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
             return;
 
-        if (!_bank.Withdraw(account, args.Amount, "card-withdrawal", GetNetEntity(user)))
+        if (!_proto.TryIndex(HolochipStackId, out var stackProto))
             return;
 
-        if (!_proto.TryIndex(HolochipStackId, out var stackProto))
+        if (!_bank.Withdraw(account, args.Amount, "card-withdrawal", GetNetEntity(user)))
             return;
 
         var holochip = _stack.Spawn(args.Amount, stackProto, Transform(user).Coordinates);
@@ -213,7 +216,9 @@ public sealed class EconomyCardSystem : EntitySystem
             return false;
 
         var amount = stack.Count;
-        _bank.Deposit(account, amount, "card-deposit", GetNetEntity(user));
+        if (!_bank.Deposit(account, amount, "card-deposit", GetNetEntity(user)))
+            return false;
+
         _stack.SetCount(stackUid, 0, stack);
         _openUiAccounts[card.Owner] = account.Comp.AccountId;
         _ui.SetUiState(card.Owner, EconomyCardUiKey.Key, new EconomyCardBoundUiState(account.Comp.AccountId, account.Comp.Balance));
