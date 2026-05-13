@@ -408,6 +408,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         PrimaryCutLabel.Visible = _allowPrimaryCutAdjustment;
 
         var accounts = EditableAccounts(bank).OrderBy(p => p.Key);
+        var revenueDistribution = bank.RevenueDistribution;
         foreach (var (account, balance) in accounts)
         {
             var proto = _prototypeManager.Index(account);
@@ -439,7 +440,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             {
                 HorizontalAlignment = HAlignment.Center,
                 HorizontalExpand = true,
-                Value = (int) ((bank.RevenueDistribution.TryGetValue(account, out var pct) ? pct : 0) * 100),
+                Value = (int) ((revenueDistribution.TryGetValue(account, out var pct) ? pct : 0) * 100),
                 IsValid = val => val is >= 0 and <= 100,
             };
 
@@ -467,6 +468,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         var incorrectSum = sum != 100;
 
         var differs = false;
+        var revenueDistribution = bank.RevenueDistribution;
         var accounts = EditableAccounts(bank)
             .OrderBy(p => p.Key)
             .Select(p => p.Key)
@@ -475,7 +477,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         for (var i = 0; i < accounts.Count; i++)
         {
             var currentPercent = _spinBoxes[i].Value;
-            var expectedPercent = (int) Math.Round((bank.RevenueDistribution.TryGetValue(accounts[i], out var pct) ? pct : 0) * 100);
+            var expectedPercent = (int) Math.Round((revenueDistribution.TryGetValue(accounts[i], out var pct) ? pct : 0) * 100);
 
             if (currentPercent == expectedPercent)
                 continue;
