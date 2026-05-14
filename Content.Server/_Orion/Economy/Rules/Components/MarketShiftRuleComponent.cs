@@ -6,10 +6,10 @@ namespace Content.Server._Orion.Economy.Rules.Components;
 public sealed partial class MarketShiftRuleComponent : Component
 {
     [DataField]
-    public TimeSpan MinInterval = TimeSpan.FromMinutes(5);
+    public TimeSpan MinInterval = TimeSpan.FromMinutes(10);
 
     [DataField]
-    public TimeSpan MaxInterval = TimeSpan.FromMinutes(6);
+    public TimeSpan MaxInterval = TimeSpan.FromMinutes(60);
 
     [DataField]
     public int MinIncreased = 1;
