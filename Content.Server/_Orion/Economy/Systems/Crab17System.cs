@@ -22,6 +22,7 @@ using Robust.Shared.Timing;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
 using Content.Shared.Station.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 
 namespace Content.Server._Orion.Economy.Systems;
@@ -43,6 +44,7 @@ public sealed class Crab17System : EntitySystem
     [Dependency] private readonly SpecialRespawnSystem _respawn = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly CargoSystem _cargo = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private string? _pendingActivatorAccountId;
@@ -86,7 +88,7 @@ public sealed class Crab17System : EntitySystem
 
     private void OnMarketTerminating(Entity<Crab17MarketComponent> ent, ref EntityTerminatingEvent args)
     {
-        FinalizeMarket(ent);
+        _chat.DispatchStationAnnouncement(ent, Loc.GetString("protocol-crab17-announcement-stop"), Loc.GetString("protocol-crab17-confirm-title"));
     }
 
     private void FinalizeMarket(Entity<Crab17MarketComponent> ent)
@@ -109,8 +111,12 @@ public sealed class Crab17System : EntitySystem
         if (ent.Comp.StoredCredits <= 0)
             return;
 
-        if (_prototype.TryIndex(HolochipStackId, out var holo))
-            _stack.Spawn(ent.Comp.StoredCredits, holo, Transform(ent).Coordinates);
+        if (!_prototype.TryIndex(HolochipStackId, out var holo))
+            return;
+
+        var mapCoordinates = _transform.GetMapCoordinates(ent);
+        var holochip = Spawn(holo.Spawn, mapCoordinates);
+        _stack.SetCount(holochip, ent.Comp.StoredCredits);
     }
 
     private void OnUseInHand(Entity<ProtocolCrab17PhoneComponent> ent, ref UseInHandEvent args)
