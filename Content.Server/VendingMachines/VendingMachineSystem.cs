@@ -210,13 +210,37 @@ namespace Content.Server.VendingMachines
         {
             base.OnMapInit(uid, component, args);
 
+            InitializeOffStationFreePricing(uid);
+
             if (HasComp<ApcPowerReceiverComponent>(uid))
             {
                 TryUpdateVisualState((uid, component));
             }
         }
 
-        private void OnActivatableUIOpenAttempt(EntityUid uid, VendingMachineComponent component, ActivatableUIOpenAttemptEvent args)
+        // Orion-Start
+        private void InitializeOffStationFreePricing(EntityUid uid)
+        {
+            if (!TryComp<VendingMachinePricingComponent>(uid, out var pricing))
+                return;
+
+            if (pricing.AllProductsFreeOverride is { } allProductsFreeOverride)
+            {
+                pricing.AllProductsFree = allProductsFreeOverride;
+
+                Dirty(uid, pricing);
+                return;
+            }
+
+            if (_station.GetOwningStation(uid) != null)
+                return;
+
+            pricing.AllProductsFree = true;
+            Dirty(uid, pricing);
+        }
+        // Orion-End
+
+        private static void OnActivatableUIOpenAttempt(EntityUid uid, VendingMachineComponent component, ActivatableUIOpenAttemptEvent args) // Orion-Edit: static
         {
             if (component.Broken)
                 args.Cancel();

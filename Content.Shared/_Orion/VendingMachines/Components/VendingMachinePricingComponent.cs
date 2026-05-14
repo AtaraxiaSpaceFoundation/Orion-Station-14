@@ -14,6 +14,13 @@ public sealed partial class VendingMachinePricingComponent : Component
     public bool AllProductsFree;
 
     /// <summary>
+    /// Explicit per-entity override for free vending behavior.
+    /// Null means mapload auto-detection may set <see cref="AllProductsFree"/> for off-station map entities.
+    /// </summary>
+    [DataField]
+    public bool? AllProductsFreeOverride;
+
+    /// <summary>
     /// Station department account that receives funds from successful purchases.
     /// </summary>
     [DataField]
