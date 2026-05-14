@@ -4,13 +4,13 @@ namespace Content.Shared._Orion.Economy.Components;
 public sealed partial class Crab17MarketComponent : Component
 {
     [DataField]
-    public TimeSpan NextDrainTime;
+    public TimeSpan NextDrainTime = TimeSpan.MaxValue;
 
     [DataField]
     public TimeSpan DrainInterval = TimeSpan.FromSeconds(15);
 
     [DataField]
-    public TimeSpan DeleteAt;
+    public TimeSpan DeleteAt = TimeSpan.MaxValue;
 
     [DataField]
     public TimeSpan LifeTime = TimeSpan.FromMinutes(8);

@@ -19,9 +19,6 @@ public sealed partial class ProtocolCrab17PhoneComponent : Component
     public TimeSpan PendingConfirmationUntil;
 
     [DataField]
-    public EntProtoId LandingIndicatorPrototype = "Crab17LandingSpawner";
-
-    [DataField]
     public EntProtoId MarketPrototype = "CheckoutMachine";
 
     [DataField]

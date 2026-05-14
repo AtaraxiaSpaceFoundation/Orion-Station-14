@@ -3,6 +3,8 @@ using Content.Shared._Orion.Economy.Components;
 using Content.Server._Orion.Mood;
 using Content.Server.Popups;
 using Content.Server.Chat.Systems;
+using Content.Server.Pinpointer;
+using Content.Server.Respawn;
 using Content.Server.Station.Systems;
 using Content.Shared.Access.Components;
 using Content.Shared.Interaction;
@@ -16,6 +18,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
+using Content.Shared.Station.Components;
+using Robust.Shared.Map;
 
 namespace Content.Server._Orion.Economy.Systems;
 
@@ -33,6 +37,8 @@ public sealed class Crab17System : EntitySystem
     [Dependency] private readonly MoodSystem _mood = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SpecialRespawnSystem _respawn = default!;
+    [Dependency] private readonly NavMapSystem _navMap = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private string? _pendingActivatorAccountId;
@@ -51,17 +57,17 @@ public sealed class Crab17System : EntitySystem
         var query = EntityQueryEnumerator<Crab17MarketComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (now >= comp.DeleteAt)
+            if (comp.DeleteAt != TimeSpan.Zero && now >= comp.DeleteAt)
             {
                 QueueDel(uid);
                 continue;
             }
 
-            if (now < comp.NextDrainTime)
-                continue;
-
             if (!comp.IsReady && now >= comp.StartupNextStageAt)
                 AdvanceStartup((uid, comp));
+
+            if (now < comp.NextDrainTime)
+                continue;
 
             comp.NextDrainTime = now + comp.DrainInterval;
             DrainTick((uid, comp));
@@ -124,19 +130,15 @@ public sealed class Crab17System : EntitySystem
 
     private void SpawnMarket(EntityUid user, string? activatorAccount, ProtocolCrab17PhoneComponent comp)
     {
-        var coordinates = Transform(user).Coordinates;
-        if (_station.GetOwningStation(user) is { } station)
+        if (!TryGetStationSpawnCoordinates(user, out var coordinates))
         {
-            var stationCoords = Transform(station).Coordinates;
-            if (stationCoords.IsValid(EntityManager))
-                coordinates = stationCoords;
+            _popup.PopupEntity(Loc.GetString("protocol-crab17-area-unknown"), user, user, PopupType.MediumCaution);
+            return;
         }
 
-        Spawn(comp.LandingIndicatorPrototype, coordinates);
-
         _pendingActivatorAccountId = activatorAccount;
+        Spawn(comp.MarketPrototype, coordinates);
     }
-
 
     private void OnMarketMapInit(Entity<Crab17MarketComponent> ent, ref MapInitEvent args)
     {
@@ -157,9 +159,6 @@ public sealed class Crab17System : EntitySystem
         var query = EntityQueryEnumerator<StationAccountComponent>();
         while (query.MoveNext(out _, out var account))
         {
-            if (account.Department != null)
-                continue;
-
             if (!string.IsNullOrWhiteSpace(ent.Comp.ActivatorAccountId) && account.AccountId == ent.Comp.ActivatorAccountId)
                 continue;
 
@@ -265,9 +264,30 @@ public sealed class Crab17System : EntitySystem
 
     private string ResolveAnnouncementArea(EntityUid source)
     {
-        if (_station.GetOwningStation(source) is { } station)
-            return MetaData(station).EntityName;
+        if (_navMap.TryGetNearestBeacon((source, Transform(source)), out var beacon, out _) && beacon?.Comp.Text is { Length: > 0 } markerName)
+            return markerName;
 
         return Loc.GetString("protocol-crab17-area-unknown");
+    }
+
+    private bool TryGetStationSpawnCoordinates(EntityUid user, out EntityCoordinates coordinates)
+    {
+        coordinates = EntityCoordinates.Invalid;
+
+        if (_station.GetOwningStation(user) is not { } stationUid || !TryComp<StationDataComponent>(stationUid, out var stationData))
+            return false;
+
+        var targetGrid = _station.GetLargestGrid(stationUid);
+        if (targetGrid == null && stationData.Grids.Count > 0)
+            targetGrid = _random.Pick(stationData.Grids);
+
+        if (targetGrid == null)
+            return false;
+
+        var mapUid = Transform(targetGrid.Value).MapUid;
+        if (mapUid == null)
+            return false;
+
+        return _respawn.TryFindRandomTile(targetGrid.Value, mapUid.Value, 60, out coordinates);
     }
 }

@@ -64,6 +64,11 @@
   - type: HTN
     rootTask:
       task: EscapeCompound
+  - type: PointLight
+    radius: 1.5
+    energy: 1
+    color: "#00CF00"
+    castShadows: false
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
