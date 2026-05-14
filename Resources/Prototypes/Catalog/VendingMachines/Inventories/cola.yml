@@ -42,10 +42,3 @@
     DrinkChangelingStingCan: 2
   emaggedInventory:
     DrinkNukieCan: 2
-  # Orion-Start
-  defaultPrice: 8
-  extraPrice: 14
-  prices:
-    DrinkColaCan: 6
-    DrinkLemonLimeCan: 6
-  # Orion-End

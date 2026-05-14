@@ -16,13 +16,13 @@ public sealed partial class CargoSystem
     private bool _allowPrimaryAccountAllocation;
     private bool _allowPrimaryCutAdjustment;
 
-    private void InitializeFunds()
+    private void InitializeFunds() // Orion-Edit: Was public
     {
         SubscribeLocalEvent<CargoOrderConsoleComponent, CargoConsoleWithdrawFundsMessage>(OnWithdrawFunds);
         SubscribeLocalEvent<CargoOrderConsoleComponent, CargoConsoleToggleLimitMessage>(OnToggleLimit);
         SubscribeLocalEvent<FundingAllocationConsoleComponent, SetFundingAllocationBuiMessage>(OnSetFundingAllocation);
         SubscribeLocalEvent<FundingAllocationConsoleComponent, BeforeActivatableUIOpenEvent>(OnFundAllocationBuiOpen);
-        SubscribeLocalEvent<StationBankAccountComponent, ComponentStartup>(OnStationBankStartup);
+        SubscribeLocalEvent<StationBankAccountComponent, ComponentStartup>(OnStationBankStartup); // Orion
 
         _cfg.OnValueChanged(CCVars.AllowPrimaryAccountAllocation, enabled => { _allowPrimaryAccountAllocation = enabled; }, true);
         _cfg.OnValueChanged(CCVars.AllowPrimaryCutAdjustment, enabled => { _allowPrimaryCutAdjustment = enabled; }, true);
