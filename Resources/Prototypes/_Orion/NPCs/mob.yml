@@ -1,10 +1,21 @@
+- type: utilityQuery
+  id: EscapePlayersNearby
+  query:
+    - !type:NearbyPlayersQuery
+  considerations:
+    - !type:TargetIsDeadCon
+      curve: !type:InverseBoolCurve
+    - !type:TargetDistanceCon
+      curve: !type:PresetCurve
+        preset: TargetDistance
+
 - type: htnCompound
   id: EscapePlayersCompound
   branches:
   - tasks:
     - !type:HTNPrimitiveTask
       operator: !type:UtilityOperator
-        proto: NearbyMeleeTargets
+        proto: EscapePlayersNearby
     - !type:HTNPrimitiveTask
       operator: !type:PickFleeCoordinatesOperator
         targetKey: Target

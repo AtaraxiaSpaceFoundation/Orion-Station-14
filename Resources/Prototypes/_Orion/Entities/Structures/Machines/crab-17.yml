@@ -6,6 +6,8 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/checkout_machine.rsi
+    drawdepth: Effects
+    noRot: true
     layers:
     - state: bogdanoff
       map: [ "base" ]
@@ -63,6 +65,7 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
+  - type: Eye
   - type: NpcFactionMember
     factions:
     - SimpleHostile
