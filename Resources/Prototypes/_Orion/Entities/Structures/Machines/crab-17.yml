@@ -57,9 +57,9 @@
         - MobLayer
   - type: Crab17Market
   - type: InteractionOutline
+  - type: Clickable
   - type: InputMover
   - type: MobMover
-  - type: Npc
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
@@ -68,7 +68,7 @@
     - SimpleHostile
   - type: HTN
     rootTask:
-      task: EscapeCompound
+      task: EscapePlayersCompound
   - type: PointLight
     radius: 1.5
     energy: 1
@@ -84,7 +84,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 30
+        damage: 3000
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
