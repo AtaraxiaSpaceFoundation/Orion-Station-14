@@ -292,6 +292,7 @@
     - RobotTalk
   # Orion-Start
   - type: VendingMachinePricing
+    departmentAccount: Cargo
     defaultPrice: 25
     extraPrice: 50
   # Orion-End
