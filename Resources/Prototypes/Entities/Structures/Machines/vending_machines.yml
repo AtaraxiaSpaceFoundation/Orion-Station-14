@@ -740,7 +740,6 @@
     rotateWhilePulling: true
   # Orion-Start
   - type: VendingMachinePricing
-    defaultPrice: 25
     extraPrice: 60
   # Orion-End
 
@@ -1451,11 +1450,6 @@
     color: "#326e3f"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-  # Orion-Start
-  - type: VendingMachinePricing
-    defaultPrice: 25
-    extraPrice: 50
-  # Orion-End
 
 - type: entity
   parent: VendingMachineSeedsUnlocked
@@ -1680,10 +1674,6 @@
     rotateWhileAnchored: false
     rotateWhilePulling: true
   - type: RussianAccent
-  # Orion-Start
-  - type: VendingMachinePricing
-    defaultPrice: 25
-  # Orion-End
 
 - type: entity
   parent: VendingMachine
