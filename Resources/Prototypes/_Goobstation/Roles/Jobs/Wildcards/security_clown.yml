@@ -14,6 +14,10 @@
   supervisors: job-supervisors-security
   canBeAntag: false
   setPreference: false
+  # Orion-Start
+  salary: 45
+  payrollDepartmentAccount: Security
+  # Orion-End
   access:
   - Security
   - Brig

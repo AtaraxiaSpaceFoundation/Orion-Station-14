@@ -249,6 +249,13 @@ namespace Content.Shared.Roles
 
         [DataField]
         public ProtoId<CargoAccountPrototype>? PayrollDepartmentAccount { get; private set; }
+
+        /// <summary>
+        /// If true payment will be from department account.
+        /// If false payment will be from deep-deep space, money from nothing!
+        /// </summary>
+        [DataField]
+        public bool PayrollFromStationBudget { get; private set; } = true;
         // Orion-End
 
         [DataField]

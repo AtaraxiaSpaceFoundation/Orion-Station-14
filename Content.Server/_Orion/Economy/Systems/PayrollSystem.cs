@@ -33,36 +33,49 @@ public sealed class PayrollSystem : EntitySystem
             if (mindComp.UserId == null || mindComp.OwnedEntity is not { } owned)
                 continue;
 
-            var stationUid = _station.GetOwningStation(owned);
-            if (stationUid == null || !TryComp<StationBankAccountComponent>(stationUid, out var stationBank))
-                continue;
-
             var account = _bank.EnsurePlayerAccount(mindUid, mindComp);
             var payrollData = GetPayrollData((mindUid, mindComp));
             if (payrollData == null)
                 continue;
 
-            var (job, salary, departmentAccount) = payrollData.Value;
-            var departmentBalance = _cargo.GetBalanceFromAccount((stationUid.Value, stationBank), departmentAccount);
-            if (departmentBalance <= 0)
-                continue;
+            var (job, salary, departmentAccount, payrollFromStationBudget) = payrollData.Value;
+            var stationUid = _station.GetOwningStation(owned);
+            var paid = salary;
 
-            var paid = Math.Min(salary, departmentBalance);
-
-            if (!TryWithdrawDepartmentPayroll((stationUid.Value, stationBank), departmentAccount, departmentBalance, paid))
+            if (payrollFromStationBudget)
             {
-                _sawmill.Warning($"Payroll withdrawal failed for station {stationUid.Value} department {departmentAccount} amount {paid}.");
-                continue;
+                if (stationUid == null || !TryComp<StationBankAccountComponent>(stationUid, out var stationBank))
+                    continue;
+
+                var departmentBalance = _cargo.GetBalanceFromAccount((stationUid.Value, stationBank), departmentAccount!.Value);
+                if (departmentBalance <= 0)
+                    continue;
+
+                paid = Math.Min(salary, departmentBalance);
+
+                if (!TryWithdrawDepartmentPayroll((stationUid.Value, stationBank), departmentAccount.Value, departmentBalance, paid))
+                {
+                    _sawmill.Warning($"Payroll withdrawal failed for station {stationUid.Value} department {departmentAccount} amount {paid}.");
+                    continue;
+                }
+
+                account.Department = departmentAccount;
+                account.OwningStation = stationUid;
             }
 
-            account.Department = departmentAccount;
-            account.OwningStation = stationUid;
             account.JobId = job.ID;
 
-            if (!_bank.Deposit((mindUid, account), paid, "payroll", GetNetEntity(stationUid.Value), job.ID))
+            var deposited = stationUid != null
+                ? _bank.Deposit((mindUid, account), paid, "payroll", GetNetEntity(stationUid.Value), job.ID)
+                : _bank.Deposit((mindUid, account), paid, "payroll", reasonData: job.ID);
+
+            if (!deposited)
             {
-                _sawmill.Error($"Payroll deposit failed for station {stationUid.Value} department {departmentAccount} recipient {mindUid} amount {paid}. Attempting rollback.");
-                _cargo.UpdateBankAccount((stationUid.Value, stationBank), paid, departmentAccount);
+                _sawmill.Error($"Payroll deposit failed for job {job.ID} recipient {mindUid} amount {paid}. Attempting rollback.");
+
+                if (payrollFromStationBudget && stationUid != null && TryComp<StationBankAccountComponent>(stationUid, out var stationBank))
+                    _cargo.UpdateBankAccount((stationUid.Value, stationBank), paid, departmentAccount!.Value);
+
                 continue;
             }
 
@@ -85,7 +98,7 @@ public sealed class PayrollSystem : EntitySystem
         return true;
     }
 
-    private (JobPrototype Job, int Salary, ProtoId<CargoAccountPrototype> DepartmentAccount)? GetPayrollData(Entity<MindComponent> mind)
+    private (JobPrototype Job, int Salary, ProtoId<CargoAccountPrototype>? DepartmentAccount, bool PayrollFromStationBudget)? GetPayrollData(Entity<MindComponent> mind)
     {
         foreach (var role in mind.Comp.MindRoles)
         {
@@ -93,10 +106,13 @@ public sealed class PayrollSystem : EntitySystem
                 continue;
 
             var job = _proto.Index(mindRole.JobPrototype.Value);
-            if (job.Salary == null || job.PayrollDepartmentAccount == null || job.Salary <= 0)
+            if (job.Salary is null or <= 0)
                 continue;
 
-            return (job, job.Salary.Value, job.PayrollDepartmentAccount.Value);
+            if (job is { PayrollFromStationBudget: true, PayrollDepartmentAccount: null })
+                continue;
+
+            return (job, job.Salary.Value, job.PayrollDepartmentAccount, job.PayrollFromStationBudget);
         }
 
         return null;
