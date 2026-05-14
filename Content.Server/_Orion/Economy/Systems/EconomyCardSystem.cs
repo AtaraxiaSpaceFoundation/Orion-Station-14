@@ -7,10 +7,12 @@ using Content.Shared.Access.Components;
 using Content.Shared._Orion.Economy;
 using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
+using Content.Shared.Roles.Jobs;
 using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -27,6 +29,7 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly SharedJobSystem _jobs = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
@@ -87,6 +90,9 @@ public sealed class EconomyCardSystem : EntitySystem
 
     private void OnMindAdded(Entity<MindContainerComponent> ent, ref MindAddedMessage args)
     {
+        if (!IsHumanoidMind(args.Mind.Comp))
+            return;
+
         var account = _bank.EnsurePlayerAccount(args.Mind.Owner, args.Mind.Comp);
 
         if (args.Mind.Comp.OwnedEntity is { } owned && _station.GetOwningStation(owned) is { } stationUid)
@@ -106,13 +112,16 @@ public sealed class EconomyCardSystem : EntitySystem
 
     private void OnRoleAdded(RoleAddedEvent args)
     {
+        if (!IsHumanoidMind(args.Mind))
+            return;
+
         var account = _bank.EnsurePlayerAccount(args.MindId, args.Mind);
         EnsureStartingPayroll(args.MindId, args.Mind, account);
     }
 
     private void EnsureStartingPayroll(EntityUid mindUid, MindComponent mind, StationAccountComponent account)
     {
-        if (account.StartingPayrollReceived || !TryGetStartingPayrollData(mind, out var payrollData))
+        if (account.StartingPayrollReceived || !TryGetStartingPayrollData((mindUid, mind), out var payrollData))
             return;
 
         account.Department ??= payrollData.Department;
@@ -121,17 +130,11 @@ public sealed class EconomyCardSystem : EntitySystem
         account.StartingPayrollReceived = true;
     }
 
-    private bool TryGetStartingPayrollData(MindComponent mind, out (ProtoId<CargoAccountPrototype> Department, string JobId, int Salary) payrollData)
+    private bool TryGetStartingPayrollData(Entity<MindComponent> mind, out (ProtoId<CargoAccountPrototype>? Department, string JobId, int Salary) payrollData)
     {
-        foreach (var roleUid in mind.MindRoles)
+        if (_jobs.MindTryGetJob(mind.Owner, out var job) && job.Salary is > 0)
         {
-            if (!TryComp<MindRoleComponent>(roleUid, out var role) || role.JobPrototype == null || string.IsNullOrWhiteSpace(role.JobPrototype.Value) || !_proto.TryIndex(role.JobPrototype.Value, out var job))
-                continue;
-
-            if (job.PayrollDepartmentAccount == null || job.Salary == null || job.Salary <= 0)
-                continue;
-
-            payrollData = (job.PayrollDepartmentAccount.Value, job.ID, job.Salary.Value);
+            payrollData = (job.PayrollDepartmentAccount, job.ID, job.Salary.Value);
             return true;
         }
 
@@ -258,5 +261,10 @@ public sealed class EconomyCardSystem : EntitySystem
             return false;
 
         return _bank.TryFindAccountById(accountId, out account);
+    }
+
+    private bool IsHumanoidMind(MindComponent mind)
+    {
+        return mind.OwnedEntity is { } owned && HasComp<HumanoidAppearanceComponent>(owned);
     }
 }

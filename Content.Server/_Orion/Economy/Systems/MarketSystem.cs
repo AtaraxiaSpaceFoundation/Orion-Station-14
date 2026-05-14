@@ -3,7 +3,6 @@ using Content.Server.Chat.Systems;
 using Content.Server._Orion.Economy.Components;
 using Content.Server.Station.Events;
 using Content.Shared.Materials;
-using Content.Shared.Station.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Orion.Economy.Systems;

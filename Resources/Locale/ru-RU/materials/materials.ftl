@@ -3,6 +3,7 @@ materials-glass = стекло
 materials-reinforced-glass = бронестекло
 materials-plasma-glass = плазменное стекло
 materials-reinforced-plasma-glass = плазменное бронестекло
+materials-clockwork-glass = латунное стекло
 # Metals
 materials-steel = сталь
 materials-uranium-glass = урановое стекло
@@ -10,6 +11,7 @@ materials-reinforced-uranium-glass = укреплённое урановое с�
 materials-gold = золото
 materials-silver = серебро
 materials-plasteel = пласталь
+materials-brass = латунь
 # Other
 materials-biomass = биомасса
 materials-cardboard = картон

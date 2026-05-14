@@ -77,14 +77,18 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.Station.Systems;
 using Content.Server.Vocalization.Systems;
 using Content.Shared._Orion.VendingMachines.Components;
+using Content.Shared.Administration.Logs;
 using Content.Shared.Cargo.Components;
+using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Damage;
+using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Throwing;
 using Content.Shared.UserInterface;
 using Content.Shared.VendingMachines;
@@ -108,9 +112,11 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly CargoSystem _cargo = default!;
         [Dependency] private readonly IdCardSystem _idCard = default!;
         [Dependency] private readonly StationSystem _station = default!;
+        [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
         // Orion-End
 
         private const float WallVendEjectDistanceFromWall = 1f;
+        private static readonly ProtoId<CargoAccountPrototype> CargoDepartmentAccount = "Cargo"; // Orion
 
         public override void Initialize()
         {
@@ -145,6 +151,11 @@ namespace Content.Server.VendingMachines
 
             if (!_idCard.TryFindIdCard(user, out var idCard) || string.IsNullOrWhiteSpace(idCard.Comp.BankAccountId))
             {
+                // Orion-Start
+                if (TryBorgPay(ent, user, args.Price, args.ItemId))
+                    return;
+                // Orion-End
+
                 Popup.PopupClient(Loc.GetString("vending-machine-purchase-no-id"), ent, user);
                 args.Cancelled = true;
                 return;
@@ -186,6 +197,26 @@ namespace Content.Server.VendingMachines
 
             _cargo.UpdateBankAccount((station, bankAcc), args.Price, department);
         }
+
+        private bool TryBorgPay(Entity<VendingMachineComponent> ent, EntityUid user, int price, string itemId)
+        {
+            if (!HasComp<BorgChassisComponent>(user))
+                return false;
+
+            if (_station.GetOwningStation(ent.Owner) is not { } station || !TryComp<StationBankAccountComponent>(station, out var bankAcc))
+                return false;
+
+            var cargoBalance = _cargo.GetBalanceFromAccount((station, bankAcc), CargoDepartmentAccount);
+            if (cargoBalance < price)
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-insufficient-funds"), ent, user);
+                return false;
+            }
+
+            _cargo.UpdateBankAccount((station, bankAcc), -price, CargoDepartmentAccount);
+            _adminLogger.Add(LogType.Action, LogImpact.Low, $"Borg purchase charged cargo account. Item: {itemId}. Amount: {price}. Station: {station}.");
+            return true;
+        }
         // Orion-End
 
         private void OnVendingPrice(EntityUid uid, VendingMachineComponent component, ref PriceCalculationEvent args)
@@ -210,7 +241,7 @@ namespace Content.Server.VendingMachines
         {
             base.OnMapInit(uid, component, args);
 
-            InitializeOffStationFreePricing(uid);
+            InitializeOffStationFreePricing(uid); // Orion
 
             if (HasComp<ApcPowerReceiverComponent>(uid))
             {
