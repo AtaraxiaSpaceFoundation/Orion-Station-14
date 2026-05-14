@@ -1,6 +1,8 @@
+using System.Linq;
 using Content.Server._Orion.Economy.Components;
 using Content.Shared._Orion.Economy.Components;
 using Content.Server._Orion.Mood;
+using Content.Server.Cargo.Systems;
 using Content.Server.Popups;
 using Content.Server.Chat.Systems;
 using Content.Server.Pinpointer;
@@ -11,6 +13,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Server.Stack;
 using Content.Shared._Orion.Economy;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 using Robust.Server.Audio;
@@ -39,6 +42,7 @@ public sealed class Crab17System : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SpecialRespawnSystem _respawn = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
+    [Dependency] private readonly CargoSystem _cargo = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private string? _pendingActivatorAccountId;
@@ -49,6 +53,7 @@ public sealed class Crab17System : EntitySystem
         SubscribeLocalEvent<Crab17MarketComponent, InteractUsingEvent>(OnMarketInteractUsing);
         SubscribeLocalEvent<Crab17MarketComponent, MapInitEvent>(OnMarketMapInit);
         SubscribeLocalEvent<Crab17MarketComponent, ComponentShutdown>(OnMarketShutdown);
+        SubscribeLocalEvent<Crab17MarketComponent, EntityTerminatingEvent>(OnMarketTerminating);
     }
 
     public override void Update(float frameTime)
@@ -76,6 +81,20 @@ public sealed class Crab17System : EntitySystem
 
     private void OnMarketShutdown(Entity<Crab17MarketComponent> ent, ref ComponentShutdown args)
     {
+        FinalizeMarket(ent);
+    }
+
+    private void OnMarketTerminating(Entity<Crab17MarketComponent> ent, ref EntityTerminatingEvent args)
+    {
+        FinalizeMarket(ent);
+    }
+
+    private void FinalizeMarket(Entity<Crab17MarketComponent> ent)
+    {
+        if (ent.Comp.ShutdownHandled)
+            return;
+
+        ent.Comp.ShutdownHandled = true;
         var query = EntityQueryEnumerator<StationAccountComponent>();
         while (query.MoveNext(out var uid, out var account))
         {
@@ -115,29 +134,36 @@ public sealed class Crab17System : EntitySystem
             return;
         }
 
+        var spawned = SpawnMarket(args.User,
+            _bank.TryGetPlayerAccount(args.User, out _, out var account)
+                ? account.AccountId
+                : null,
+            ent.Comp);
+
+        if (!spawned)
+        {
+            args.Handled = true;
+            return;
+        }
+
         ent.Comp.Used = true;
         args.Handled = true;
 
         _audio.PlayPvs(ent.Comp.ActivateSound, ent);
         _popup.PopupEntity(Loc.GetString("protocol-crab17-activated"), ent, args.User, PopupType.LargeCaution);
-
-        SpawnMarket(args.User,
-            _bank.TryGetPlayerAccount(args.User, out _, out var account)
-                ? account.AccountId
-                : null,
-            ent.Comp);
     }
 
-    private void SpawnMarket(EntityUid user, string? activatorAccount, ProtocolCrab17PhoneComponent comp)
+    private bool SpawnMarket(EntityUid user, string? activatorAccount, ProtocolCrab17PhoneComponent comp)
     {
-        if (!TryGetStationSpawnCoordinates(user, out var coordinates))
+        if (!TryGetStationSpawnCoordinates(user, out var coordinates) && !TryGetAnyStationSpawnCoordinates(out coordinates))
         {
-            _popup.PopupEntity(Loc.GetString("protocol-crab17-area-unknown"), user, user, PopupType.MediumCaution);
-            return;
+            _popup.PopupEntity(Loc.GetString("protocol-crab17-activation-error"), user, user, PopupType.MediumCaution);
+            return false;
         }
 
         _pendingActivatorAccountId = activatorAccount;
         Spawn(comp.MarketPrototype, coordinates);
+        return true;
     }
 
     private void OnMarketMapInit(Entity<Crab17MarketComponent> ent, ref MapInitEvent args)
@@ -155,27 +181,24 @@ public sealed class Crab17System : EntitySystem
         _appearance.SetData(ent, Crab17Visuals.StartupStage, ent.Comp.StartupStage);
         ent.Comp.ActivatorAccountId = _pendingActivatorAccountId;
         _pendingActivatorAccountId = null;
-
-        var query = EntityQueryEnumerator<StationAccountComponent>();
-        while (query.MoveNext(out _, out var account))
-        {
-            if (!string.IsNullOrWhiteSpace(ent.Comp.ActivatorAccountId) && account.AccountId == ent.Comp.ActivatorAccountId)
-                continue;
-
-            account.BeingCrabbed = true;
-            account.MoneyCrabbed = 0;
-            account.CurrentCrab17Machine = ent;
-        }
     }
 
     private void DrainTick(Entity<Crab17MarketComponent> market)
     {
         var hasTargets = false;
-        var query = EntityQueryEnumerator<StationAccountComponent>();
-        while (query.MoveNext(out var uid, out var account))
+
+        var personalQuery = EntityQueryEnumerator<StationAccountComponent>();
+        while (personalQuery.MoveNext(out var uid, out var account))
         {
-            if (!account.BeingCrabbed || account.CurrentCrab17Machine != market.Owner)
+            if (!string.IsNullOrWhiteSpace(market.Comp.ActivatorAccountId) && account.AccountId == market.Comp.ActivatorAccountId)
                 continue;
+
+            if (!account.BeingCrabbed || account.CurrentCrab17Machine != market.Owner)
+            {
+                account.BeingCrabbed = true;
+                account.MoneyCrabbed = 0;
+                account.CurrentCrab17Machine = market.Owner;
+            }
 
             hasTargets = true;
             var percent = _random.NextFloat(0.05f, 0.15f);
@@ -193,6 +216,33 @@ public sealed class Crab17System : EntitySystem
                 _bank.Deposit(activator, amount, "?VIVA¿: !LA CRABBE¡", GetNetEntity(uid));
             else
                 market.Comp.StoredCredits += amount;
+        }
+
+        var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
+        while (stationQuery.MoveNext(out var stationUid, out var bankComp))
+        {
+            if (bankComp.Accounts.Count == 0)
+                continue;
+
+            hasTargets = true;
+            foreach (var accountKey in bankComp.Accounts.Keys.ToList())
+            {
+                var balance = bankComp.Accounts[accountKey];
+                if (balance <= 0)
+                    continue;
+
+                var percent = _random.NextFloat(0.02f, 0.08f);
+                var amount = (int) MathF.Round(balance * percent);
+                if (amount <= 0)
+                    continue;
+
+                _cargo.UpdateBankAccount((stationUid, bankComp), -amount, accountKey);
+
+                if (market.Comp.ActivatorAccountId != null && _bank.TryFindAccountById(market.Comp.ActivatorAccountId, out var activatorDept))
+                    _bank.Deposit(activatorDept, amount, "?VIVA¿: !LA CRABBE¡", GetNetEntity(stationUid));
+                else
+                    market.Comp.StoredCredits += amount;
+            }
         }
 
         if (!hasTargets)
@@ -274,7 +324,39 @@ public sealed class Crab17System : EntitySystem
     {
         coordinates = EntityCoordinates.Invalid;
 
-        if (_station.GetOwningStation(user) is not { } stationUid || !TryComp<StationDataComponent>(stationUid, out var stationData))
+        if (_station.GetOwningStation(user) is not { } stationUid)
+            return false;
+
+        return TryGetStationSpawnCoordinatesForStation(stationUid, out coordinates);
+    }
+
+    private bool TryGetAnyStationSpawnCoordinates(out EntityCoordinates coordinates)
+    {
+        coordinates = EntityCoordinates.Invalid;
+
+        var stations = _station.GetStations();
+        if (stations.Count == 0)
+            return false;
+
+        var shuffledStations = stations.ToList();
+        _random.Shuffle(shuffledStations);
+
+        foreach (var stationUid in shuffledStations)
+        {
+            if (!TryGetStationSpawnCoordinatesForStation(stationUid, out coordinates))
+                continue;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryGetStationSpawnCoordinatesForStation(EntityUid stationUid, out EntityCoordinates coordinates)
+    {
+        coordinates = EntityCoordinates.Invalid;
+
+        if (!TryComp<StationDataComponent>(stationUid, out var stationData))
             return false;
 
         var targetGrid = _station.GetLargestGrid(stationUid);

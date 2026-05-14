@@ -15,3 +15,5 @@ protocol-crab17-not-ready = Market is not ready to accept transactions yet!
 protocol-crab17-bank-card-warning = Withdrawals are blocked while this account is under Protocol CRAB-17.
 
 protocol-crab17-area-unknown = an unknown area
+
+protocol-crab17-activation-error = Cannot find station!

@@ -15,3 +15,5 @@ protocol-crab17-not-ready = Маркет ещё не готов принимат
 protocol-crab17-bank-card-warning = Вывод средств заблокирован, пока этот счёт находится под протоколом КРАБ-17.
 
 protocol-crab17-area-unknown = неизвестная зона
+
+protocol-crab17-activation-error = Невозможно найти станцию!

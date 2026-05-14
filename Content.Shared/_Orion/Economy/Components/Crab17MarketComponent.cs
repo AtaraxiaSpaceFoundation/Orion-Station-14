@@ -32,4 +32,7 @@ public sealed partial class Crab17MarketComponent : Component
 
     [DataField]
     public int StartupStage;
+
+    [DataField]
+    public bool ShutdownHandled;
 }

@@ -49,7 +49,8 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.4"
-        density: 190
+          radius: 0.35
+        density: 50
         mask:
         - MobMask
         layer:
@@ -58,6 +59,10 @@
   - type: InteractionOutline
   - type: InputMover
   - type: MobMover
+  - type: Npc
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
   - type: NpcFactionMember
     factions:
     - SimpleHostile
@@ -69,6 +74,9 @@
     energy: 1
     color: "#00CF00"
     castShadows: false
+  - type: Penetratable # Goobstation - Better snipers
+    penetrateDamage: 15
+    damagePenalty: 0.05
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
@@ -76,7 +84,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 2500
+        damage: 30
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
