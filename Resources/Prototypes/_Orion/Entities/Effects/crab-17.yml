@@ -1,0 +1,54 @@
+- type: entity
+  id: Crab17LandingSpawner
+  name: CRAB-17 landing indicator
+  description: A holographic landing zone marker.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Effects/medi_holo.rsi
+    state: medi_holo
+    drawdepth: FloorObjects
+  - type: TimedDespawn
+    lifetime: 10
+  - type: SpawnOnDespawn
+    prototype: Crab17FallingVisual
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/alert.ogg
+      params:
+        maxDistance: 12
+  - type: TriggerOnSpawn
+  - type: Marker
+
+- type: entity
+  id: Crab17FallingVisual
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/DropPod/landingpod.rsi
+    state: landing
+    offset: -1.7, 4.3
+    drawdepth: FloorObjects
+  - type: TimedDespawn
+    lifetime: 1.8
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/whistle_2.ogg
+      params:
+        maxDistance: 12
+  - type: TriggerOnSpawn
+  - type: SpawnOnDespawn
+    prototype: Crab17LandingImpact
+
+- type: entity
+  id: Crab17LandingImpact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: MetalThud
+      params:
+        maxDistance: 12
+  - type: SpawnOnTrigger
+    proto: CheckoutMachine
+  - type: TriggerOnSpawn

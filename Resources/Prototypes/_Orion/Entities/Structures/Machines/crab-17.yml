@@ -6,7 +6,40 @@
   components:
   - type: Sprite
     sprite: _Orion/Structures/Machines/checkout_machine.rsi
-    state: bogdanoff
+    layers:
+    - state: bogdanoff
+      map: [ "base" ]
+    - state: flaps
+      map: [ "flaps" ]
+    - state: hatch
+      map: [ "hatch" ]
+    - state: legs_retracted
+      map: [ "legs_retracted" ]
+    - state: legs_extending
+      map: [ "legs_extending" ]
+      visible: false
+    - state: legs_extended
+      map: [ "legs_extended" ]
+      visible: false
+    - state: legs
+      map: [ "legs" ]
+      visible: false
+    - state: hologram
+      map: [ "hologram" ]
+      visible: false
+    - state: holosign
+      map: [ "holosign" ]
+      visible: false
+    - state: screen_lines
+      map: [ "screen_lines" ]
+      visible: false
+    - state: screen
+      map: [ "screen" ]
+      visible: false
+    - state: text
+      map: [ "text" ]
+      visible: false
+  - type: Appearance
   - type: MobCollision
   - type: Physics
     bodyType: KinematicController

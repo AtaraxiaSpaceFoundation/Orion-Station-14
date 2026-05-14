@@ -23,4 +23,13 @@ public sealed partial class Crab17MarketComponent : Component
 
     [DataField]
     public string? ActivatorAccountId;
+
+    [DataField]
+    public bool IsReady;
+
+    [DataField]
+    public TimeSpan StartupNextStageAt;
+
+    [DataField]
+    public int StartupStage;
 }

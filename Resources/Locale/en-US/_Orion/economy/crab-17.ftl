@@ -10,6 +10,7 @@ protocol-crab17-announcement-stop = The CRAB-17 market collapse has ended.
 protocol-crab17-card-no-account = Card has no registered account!
 protocol-crab17-funds-safe = Funds are safe.
 protocol-crab17-funds-already-safe = Funds are already safe!
+protocol-crab17-not-ready = Market is not ready to accept transactions yet!
 
 protocol-crab17-bank-card-warning = Withdrawals are blocked while this account is under Protocol CRAB-17.
 

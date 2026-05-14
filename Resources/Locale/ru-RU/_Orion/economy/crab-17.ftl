@@ -10,6 +10,7 @@ protocol-crab17-announcement-stop = Обвал рынка по протокол�
 protocol-crab17-card-no-account = У карты нет привязанного банковского счёта!
 protocol-crab17-funds-safe = Средства в безопасности.
 protocol-crab17-funds-already-safe = Средства уже в безопасности!
+protocol-crab17-not-ready = Маркет ещё не готов принимать транзакции!
 
 protocol-crab17-bank-card-warning = Вывод средств заблокирован, пока этот счёт находится под протоколом КРАБ-17.
 

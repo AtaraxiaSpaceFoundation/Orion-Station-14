@@ -8,6 +8,7 @@ using Content.Shared.Access.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Server.Stack;
+using Content.Shared._Orion.Economy;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 using Robust.Server.Audio;
@@ -31,6 +32,7 @@ public sealed class Crab17System : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly MoodSystem _mood = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private string? _pendingActivatorAccountId;
@@ -57,6 +59,9 @@ public sealed class Crab17System : EntitySystem
 
             if (now < comp.NextDrainTime)
                 continue;
+
+            if (!comp.IsReady && now >= comp.StartupNextStageAt)
+                AdvanceStartup((uid, comp));
 
             comp.NextDrainTime = now + comp.DrainInterval;
             DrainTick((uid, comp));
@@ -142,6 +147,10 @@ public sealed class Crab17System : EntitySystem
 
         ent.Comp.DeleteAt = _timing.CurTime + ent.Comp.LifeTime;
         ent.Comp.NextDrainTime = _timing.CurTime + ent.Comp.DrainInterval;
+        ent.Comp.IsReady = false;
+        ent.Comp.StartupStage = 0;
+        ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.35);
+        _appearance.SetData(ent, Crab17Visuals.StartupStage, ent.Comp.StartupStage);
         ent.Comp.ActivatorAccountId = _pendingActivatorAccountId;
         _pendingActivatorAccountId = null;
 
@@ -193,6 +202,12 @@ public sealed class Crab17System : EntitySystem
 
     private void OnMarketInteractUsing(Entity<Crab17MarketComponent> ent, ref InteractUsingEvent args)
     {
+        if (!ent.Comp.IsReady)
+        {
+            _sharedPopup.PopupEntity(Loc.GetString("protocol-crab17-not-ready"), ent, args.User, PopupType.MediumCaution);
+            return;
+        }
+
         if (!TryComp<IdCardComponent>(args.Used, out var id) || string.IsNullOrWhiteSpace(id.BankAccountId) || !_bank.TryFindAccountById(id.BankAccountId, out var account))
         {
             _sharedPopup.PopupEntity(Loc.GetString("protocol-crab17-card-no-account"), ent, args.User, PopupType.Medium);
@@ -216,6 +231,36 @@ public sealed class Crab17System : EntitySystem
 
         if (account.Comp.MoneyCrabbed >= 10000 && TryComp<MindComponent>(account.Owner, out var mind) && mind.OwnedEntity is { } owned)
             _mood.AddEffect(owned, "LostMoneyCrab17");
+    }
+
+    private void AdvanceStartup(Entity<Crab17MarketComponent> ent)
+    {
+        switch (ent.Comp.StartupStage)
+        {
+            case 0:
+            case 1:
+                _audio.PlayPvs("/Audio/Items/pen_click.ogg", ent);
+                ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.35);
+                break;
+            case 2:
+                _audio.PlayPvs("/Audio/_Orion/Machines/twobeep_high.ogg", ent);
+                ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.45);
+                break;
+            case 3:
+                ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.35);
+                break;
+            case 4:
+            case 5:
+                ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.25);
+                break;
+            case 6:
+                _audio.PlayPvs("/Audio/Machines/beep.ogg", ent);
+                ent.Comp.IsReady = true;
+                break;
+        }
+
+        ent.Comp.StartupStage++;
+        _appearance.SetData(ent, Crab17Visuals.StartupStage, ent.Comp.StartupStage);
     }
 
     private string ResolveAnnouncementArea(EntityUid source)
