@@ -11,6 +11,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Popups;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Stacks;
@@ -30,6 +31,7 @@ public sealed class EconomyCardSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly SharedJobSystem _jobs = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private static readonly ProtoId<StackPrototype> CreditStackId = "Credit";
@@ -169,6 +171,12 @@ public sealed class EconomyCardSystem : EntitySystem
 
         if (!ResolveAccount(ent, user, out var account, args.AccountIdOverride))
             return;
+
+        if (account.Comp.BeingCrabbed)
+        {
+            _popup.PopupEntity(Loc.GetString("protocol-crab17-bank-card-warning"), ent, user, PopupType.MediumCaution);
+            return;
+        }
 
         if (!_proto.TryIndex(HolochipStackId, out var stackProto))
             return;

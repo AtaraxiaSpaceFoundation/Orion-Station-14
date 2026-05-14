@@ -61,3 +61,10 @@
   id: HeirloomNeutral
   moodChange: -5
   category: Heirloom
+
+# Crab-17
+- type: moodEffect
+  id: LostMoneyCrab17
+  moodChange: -8
+  timeout: 600
+  description: mood-effect-crab17-lost-money

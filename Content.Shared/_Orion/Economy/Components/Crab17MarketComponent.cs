@@ -1,0 +1,26 @@
+namespace Content.Shared._Orion.Economy.Components;
+
+[RegisterComponent]
+public sealed partial class Crab17MarketComponent : Component
+{
+    [DataField]
+    public TimeSpan NextDrainTime;
+
+    [DataField]
+    public TimeSpan DrainInterval = TimeSpan.FromSeconds(15);
+
+    [DataField]
+    public TimeSpan DeleteAt;
+
+    [DataField]
+    public TimeSpan LifeTime = TimeSpan.FromMinutes(8);
+
+    [DataField]
+    public int StoredCredits;
+
+    [DataField]
+    public EntityUid? ActivatorMind;
+
+    [DataField]
+    public string? ActivatorAccountId;
+}

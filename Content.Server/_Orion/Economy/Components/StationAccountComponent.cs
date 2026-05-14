@@ -32,6 +32,15 @@ public sealed partial class StationAccountComponent : Component
 
     [DataField]
     public bool StartingPayrollReceived;
+
+    [DataField]
+    public bool BeingCrabbed;
+
+    [DataField]
+    public int MoneyCrabbed;
+
+    [DataField]
+    public EntityUid? CurrentCrab17Machine;
 }
 
 [Serializable]

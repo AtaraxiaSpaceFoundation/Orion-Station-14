@@ -1,0 +1,44 @@
+- type: entity
+  id: CheckoutMachine
+  name: NanoTrasen Space-Coin Market
+  description: This is good for spacecoin because.
+  suffix: Crab-17
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/checkout_machine.rsi
+    state: bogdanoff
+  - type: MobCollision
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Crab17Market
+  - type: InteractionOutline
+  - type: InputMover
+  - type: MobMover
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: EscapeCompound
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
