@@ -38,9 +38,22 @@ cargo-funding-alloc-console-reason-card-withdrawal = Снятие с карты
 cargo-funding-alloc-console-reason-payroll = Зарплата: { $job }
 cargo-funding-alloc-console-reason-starting-payroll = Аванс
 cargo-funding-alloc-console-reason-vending-purchase = Покупка: { $item }
+cargo-funding-alloc-console-reason-cargo-private-purchase = Личный заказ: №{ $order }, { $product }
 cargo-funding-alloc-console-reason-generic = { $reason }
 
 cargo-funding-alloc-console-economy-number = Номер
 cargo-funding-alloc-console-economy-user = Пользователь
 cargo-funding-alloc-console-economy-balance = Баланс
 cargo-funding-alloc-console-money = { $amount }$
+
+cargo-console-menu-populate-orders-cargo-order-row-product-name-private-text = Заказал: { $orderRequester }, оплата с личного счёта
+
+cargo-console-order-private-checkbox = Оплатить с личного счёта
+cargo-console-order-private-tooltip = Списывает деньги с банковского счёта, привязанного к вашей ID-карте. Личные заказы стоят на 10% дороже, наценка уходит в бюджет снабжения.
+cargo-console-no-id-detected = ID-карта не обнаружена.
+cargo-console-no-linked-bank-account = К этой ID-карте не привязан банковский счёт.
+cargo-console-invalid-bank-account = Недействительный банковский счёт.
+cargo-console-private-insufficient-funds = На личном счёте недостаточно средств. Требуется: { $cost }.
+cargo-console-payment-failed = Ошибка списания средств.
+cargo-console-menu-order-private-buyer = Лично оплачивает: { $buyer }
+cargo-console-paper-private-buyer = {"[bold]Оплачено лично:[/bold]"} { $buyer }

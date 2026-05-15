@@ -7,6 +7,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Emag.Systems;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Roles;
 using Content.Shared.UserInterface;
 
 namespace Content.Server.Cargo.Systems;
@@ -221,6 +222,9 @@ public sealed partial class CargoSystem
             if (account.OwningStation != station)
                 continue;
 
+            if (!ShouldShowEconomyAccount(account))
+                continue;
+
             var departmentId = account.Department is { } department ? department.Id : null;
             accounts.Add(new FundingAllocationEconomyAccountData(GetNetEntity(accountUid), account.AccountId, account.OwnerName, account.Balance, departmentId, account.JobId));
 
@@ -265,5 +269,17 @@ public sealed partial class CargoSystem
             UpdatePalletConsoleInterface(palletUid);
         }
     }
+
+    private bool ShouldShowEconomyAccount(StationAccountComponent account)
+    {
+        if (string.IsNullOrWhiteSpace(account.JobId))
+            return true;
+
+        if (!_protoMan.TryIndex<JobPrototype>(account.JobId, out var job))
+            return true;
+
+        return job.PayrollFromStationBudget;
+    }
+
     // Orion-End
 }

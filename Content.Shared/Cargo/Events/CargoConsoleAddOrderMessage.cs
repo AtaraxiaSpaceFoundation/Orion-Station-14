@@ -21,17 +21,19 @@ public sealed class CargoConsoleAddOrderMessage : BoundUserInterfaceMessage
     public string? DeliveryDestination;
     public string? Note;
     public bool SecuredDelivery;
+    public bool PayPrivately;
     // Orion-End
     public string CargoProductId;
     public int Amount;
 
-    public CargoConsoleAddOrderMessage(string? requester, string? deliveryDestination, string? note, string cargoProductId, int amount, bool securedDelivery = false) // Orion-Edit
+    public CargoConsoleAddOrderMessage(string? requester, string? deliveryDestination, string? note, string cargoProductId, int amount, bool securedDelivery = false, bool payPrivately = false) // Orion-Edit
     {
         Requester = requester;
         // Orion-Start
         DeliveryDestination = deliveryDestination;
         Note = note;
         SecuredDelivery = securedDelivery;
+        PayPrivately = payPrivately;
         // Orion-End
         CargoProductId = cargoProductId;
         Amount = amount;

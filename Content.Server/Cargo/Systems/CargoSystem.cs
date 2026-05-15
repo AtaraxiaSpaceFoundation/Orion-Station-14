@@ -131,6 +131,7 @@ public sealed partial class CargoSystem : SharedCargoSystem
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly MarketSystem _market = default!; // Orion
+    [Dependency] private readonly BankSystem _bank = default!; // Orion
 
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<CargoSellBlacklistComponent> _blacklistQuery;

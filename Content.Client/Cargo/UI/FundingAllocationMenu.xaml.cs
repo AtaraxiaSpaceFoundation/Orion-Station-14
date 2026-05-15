@@ -294,6 +294,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
     private string LocalizeReason(string reason, string? reasonData)
     {
         var vendingData = ParseVendingPurchaseData(reasonData);
+        var cargoOrderData = ParseCargoPrivatePurchaseData(reasonData);
         return reason switch
         {
             "card-deposit" => Loc.GetString("cargo-funding-alloc-console-reason-card-deposit"),
@@ -301,6 +302,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             "payroll" => Loc.GetString("cargo-funding-alloc-console-reason-payroll", ("job", LocalizeJob(reasonData))),
             "starting-payroll" => Loc.GetString("cargo-funding-alloc-console-reason-starting-payroll"),
             "vending-purchase" => Loc.GetString("cargo-funding-alloc-console-reason-vending-purchase", ("item", LocalizeVendingItem(vendingData.ItemId))),
+            "cargo-private-purchase" => Loc.GetString("cargo-funding-alloc-console-reason-cargo-private-purchase", ("order", cargoOrderData.OrderId ?? Loc.GetString("cargo-funding-alloc-console-economy-unknown")), ("product", LocalizeCargoProduct(cargoOrderData.ProductId))),
             _ => Loc.GetString("cargo-funding-alloc-console-reason-generic", ("reason", reason)),
         };
     }
@@ -314,12 +316,51 @@ public sealed partial class FundingAllocationMenu : FancyWindow
         return split.Length == 2 ? (split[0], split[1]) : (reasonData, null);
     }
 
+    private static (string? OrderId, string? ProductId) ParseCargoPrivatePurchaseData(string? reasonData)
+    {
+        if (string.IsNullOrWhiteSpace(reasonData))
+            return (null, null);
+
+        string? orderId = null;
+        string? productId = null;
+        var entries = reasonData.Split('|', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+        foreach (var entry in entries)
+        {
+            var pair = entry.Split(':', 2, StringSplitOptions.TrimEntries);
+            if (pair.Length != 2)
+                continue;
+
+            switch (pair[0])
+            {
+                case "order":
+                    orderId = pair[1];
+                    break;
+                case "product":
+                    productId = pair[1];
+                    break;
+            }
+        }
+
+        return (orderId, productId);
+    }
+
     private string LocalizeVendingItem(string? itemId)
     {
         if (string.IsNullOrWhiteSpace(itemId))
             return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
 
         if (_prototypeManager.TryIndex<EntityPrototype>(itemId, out var proto))
+            return Loc.GetString(proto.Name);
+
+        return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+    }
+
+    private string LocalizeCargoProduct(string? productId)
+    {
+        if (string.IsNullOrWhiteSpace(productId))
+            return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
+
+        if (_prototypeManager.TryIndex<EntityPrototype>(productId, out var proto))
             return Loc.GetString(proto.Name);
 
         return Loc.GetString("cargo-funding-alloc-console-economy-unknown");

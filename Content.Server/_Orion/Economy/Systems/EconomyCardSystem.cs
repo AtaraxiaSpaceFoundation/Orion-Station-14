@@ -65,6 +65,7 @@ public sealed class EconomyCardSystem : EntitySystem
             return;
 
         _uiRefreshAccumulator = 0f;
+        SyncAccountsOwningStations();
 
         var closedUis = new List<EntityUid>();
         foreach (var (uid, accountId) in _openUiAccounts)
@@ -87,6 +88,28 @@ public sealed class EconomyCardSystem : EntitySystem
         foreach (var uid in closedUis)
         {
             _openUiAccounts.Remove(uid);
+        }
+    }
+
+    private void SyncAccountsOwningStations()
+    {
+        var query = EntityQueryEnumerator<MindComponent>();
+        while (query.MoveNext(out var mindUid, out var mind))
+        {
+            if (!IsHumanoidMind(mind))
+                continue;
+
+            if (mind.OwnedEntity is not { } owned)
+                continue;
+
+            if (_station.GetOwningStation(owned) is not { } stationUid)
+                continue;
+
+            var account = _bank.EnsurePlayerAccount(mindUid, mind);
+            if (account.OwningStation == stationUid)
+                continue;
+
+            account.OwningStation = stationUid;
         }
     }
 
