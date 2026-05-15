@@ -151,12 +151,6 @@ namespace Content.Shared.Cargo
         // Orion-Start
         public void SetPrivateBuyerData(string accountId, string buyerName)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (buyerName == null)
-                throw new ArgumentNullException(nameof(buyerName));
-
             if (string.IsNullOrWhiteSpace(accountId))
                 throw new ArgumentException("Private buyer account ID cannot be empty.", nameof(accountId));
 
