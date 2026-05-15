@@ -88,7 +88,10 @@ public sealed class Crab17System : EntitySystem
 
     private void OnMarketTerminating(Entity<Crab17MarketComponent> ent, ref EntityTerminatingEvent args)
     {
-        _chat.DispatchStationAnnouncement(ent, Loc.GetString("protocol-crab17-announcement-stop"), Loc.GetString("protocol-crab17-confirm-title"));
+        if (!ent.Comp.ShutdownHandled)
+            _chat.DispatchStationAnnouncement(ent, Loc.GetString("protocol-crab17-announcement-stop"), Loc.GetString("protocol-crab17-confirm-title"));
+
+        _pendingActivatorData.Remove(ent);
     }
 
     private void FinalizeMarket(Entity<Crab17MarketComponent> ent)
@@ -111,15 +114,16 @@ public sealed class Crab17System : EntitySystem
         if (ent.Comp.StoredCredits <= 0)
             return;
 
-        var survivedLifetime = ent.Comp.DeleteAt != TimeSpan.Zero && _timing.CurTime >= ent.Comp.DeleteAt;
-        switch (survivedLifetime)
-        {
-            case true when !string.IsNullOrWhiteSpace(ent.Comp.ActivatorAccountId) &&
-                           _bank.TryFindAccountById(ent.Comp.ActivatorAccountId, out var activator) &&
-                           _bank.Deposit(activator, ent.Comp.StoredCredits, "?VIVA¿: !LA CRABBE¡", GetNetEntity(ent.Owner)):
-            case false:
-                return;
-        }
+        var finished = ent.Comp.DeleteAt != TimeSpan.Zero && _timing.CurTime >= ent.Comp.DeleteAt;
+        if (!finished)
+            return;
+
+        var paid = false;
+        if (!string.IsNullOrWhiteSpace(ent.Comp.ActivatorAccountId) && _bank.TryFindAccountById(ent.Comp.ActivatorAccountId, out var activator))
+            paid = _bank.Deposit(activator, ent.Comp.StoredCredits, "?VIVA¿: !LA CRABBE¡", GetNetEntity(ent.Owner));
+
+        if (paid)
+            return;
 
         if (!_prototype.TryIndex(HolochipStackId, out var holo))
             return;
@@ -207,6 +211,7 @@ public sealed class Crab17System : EntitySystem
     private void DrainTick(Entity<Crab17MarketComponent> market)
     {
         var hasTargets = false;
+        CleanupProtectedAccounts(market);
 
         var personalQuery = EntityQueryEnumerator<StationAccountComponent>();
         while (personalQuery.MoveNext(out var uid, out var account))
@@ -215,6 +220,9 @@ public sealed class Crab17System : EntitySystem
                 continue;
 
             if (!string.IsNullOrWhiteSpace(market.Comp.ActivatorAccountId) && account.AccountId == market.Comp.ActivatorAccountId)
+                continue;
+
+            if (!string.IsNullOrWhiteSpace(account.AccountId) && market.Comp.ProtectedUntil.TryGetValue(account.AccountId, out var protectedUntil) && _timing.CurTime < protectedUntil)
                 continue;
 
             if (!account.BeingCrabbed || account.CurrentCrab17Machine != market.Owner)
@@ -234,8 +242,8 @@ public sealed class Crab17System : EntitySystem
             if (!_bank.Withdraw((uid, account), amount, "?VIVA¿: !LA CRABBE¡", GetNetEntity(market.Owner)))
                 continue;
 
-            account.MoneyCrabbed += amount;
-            market.Comp.StoredCredits += amount;
+            account.MoneyCrabbed = checked(account.MoneyCrabbed + amount);
+            market.Comp.StoredCredits = checked(market.Comp.StoredCredits + amount);
         }
 
         var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
@@ -258,7 +266,7 @@ public sealed class Crab17System : EntitySystem
 
                 _cargo.UpdateBankAccount((stationUid, bankComp), -amount, accountKey);
 
-                market.Comp.StoredCredits += amount;
+                market.Comp.StoredCredits = checked(market.Comp.StoredCredits + amount);
             }
         }
 
@@ -287,6 +295,7 @@ public sealed class Crab17System : EntitySystem
         }
 
         StopDump(account);
+        ent.Comp.ProtectedUntil[id.BankAccountId] = _timing.CurTime + ent.Comp.ProtectionTtl;
         _sharedPopup.PopupEntity(Loc.GetString("protocol-crab17-funds-safe"), ent, args.User, PopupType.Medium);
     }
 
@@ -388,5 +397,17 @@ public sealed class Crab17System : EntitySystem
             return false;
 
         return _respawn.TryFindRandomTile(targetGrid.Value, mapUid.Value, 60, out coordinates);
+    }
+
+    private void CleanupProtectedAccounts(Entity<Crab17MarketComponent> market)
+    {
+        if (market.Comp.ProtectedUntil.Count == 0)
+            return;
+
+        var now = _timing.CurTime;
+        foreach (var account in market.Comp.ProtectedUntil.Where(entry => entry.Value <= now).ToList())
+        {
+            market.Comp.ProtectedUntil.Remove(account.Key);
+        }
     }
 }

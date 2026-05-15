@@ -35,4 +35,10 @@ public sealed partial class Crab17MarketComponent : Component
 
     [DataField]
     public bool ShutdownHandled;
+
+    [DataField]
+    public TimeSpan ProtectionTtl = TimeSpan.FromMinutes(4);
+
+    [DataField]
+    public Dictionary<string, TimeSpan> ProtectedUntil = new();
 }
