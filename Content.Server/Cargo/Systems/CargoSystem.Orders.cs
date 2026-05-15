@@ -262,7 +262,7 @@ namespace Content.Server.Cargo.Systems
             while (stationQuery.MoveNext(out var uid, out var bank))
             {
                 // Orion-Edit-Start
-                if (Timing.CurTime >= bank.NextIncomeTime)
+                while (Timing.CurTime >= bank.NextIncomeTime)
                 {
                     bank.NextIncomeTime += bank.IncomeDelay;
 
@@ -275,13 +275,17 @@ namespace Content.Server.Cargo.Systems
                     if (Timing.CurTime < nextFundingTime)
                         continue;
 
-                    if (!_protoMan.TryIndex(account, out var accountProto) || accountProto.BudgetFundingAmount <= 0)
+                    if (!_protoMan.TryIndex(account, out var accountProto))
                     {
                         bank.NextBudgetFundingTime.Remove(account);
                         continue;
                     }
 
                     bank.NextBudgetFundingTime[account] = nextFundingTime + accountProto.BudgetFundingDelay;
+
+                    if (accountProto.BudgetFundingAmount <= 0)
+                        continue;
+
                     UpdateBankAccount((uid, bank),
                         accountProto.BudgetFundingAmount,
                         new Dictionary<ProtoId<CargoAccountPrototype>, double>
@@ -442,12 +446,32 @@ namespace Content.Server.Cargo.Systems
             RaiseLocalEvent(ref ev);
             ev.FulfillmentEntity ??= station.Value;
 
+            // Orion-Start
+            var privatePaymentTaken = false;
+            if (order.PaidPrivately)
+            {
+                if (privateAccount == null || !_bank.Withdraw(privateAccount.Value, finalCost, "cargo-private-purchase", reasonData: $"order:{order.OrderId}|product:{order.ProductId}"))
+                {
+                    ConsolePopup(args.Actor, Loc.GetString("cargo-console-payment-failed"));
+                    PlayDenySound(uid, component);
+                    return;
+                }
+
+                privatePaymentTaken = true;
+            }
+            // Orion-End
+
             if (!ev.Handled)
             {
                 ev.FulfillmentEntity = TryFulfillOrder((station.Value, stationData), order.Account, order, orderDatabase);
 
                 if (ev.FulfillmentEntity == null)
                 {
+                    // Orion-Start
+                    if (privatePaymentTaken && privateAccount != null)
+                        _bank.Deposit(privateAccount.Value, finalCost, "cargo-private-purchase-refund", reasonData: $"order:{order.OrderId}|product:{order.ProductId}");
+                    // Orion-End
+
                     ConsolePopup(args.Actor, Loc.GetString("cargo-console-unfulfilled"));
                     PlayDenySound(uid, component);
                     return;
@@ -489,13 +513,6 @@ namespace Content.Server.Cargo.Systems
             // Orion-Start
             if (order.PaidPrivately)
             {
-                if (privateAccount == null || !_bank.Withdraw(privateAccount.Value, finalCost, "cargo-private-purchase", reasonData: $"order:{order.OrderId}|product:{order.ProductId}"))
-                {
-                    ConsolePopup(args.Actor, Loc.GetString("cargo-console-payment-failed"));
-                    PlayDenySound(uid, component);
-                    return;
-                }
-
                 var fee = finalCost - baseCost;
                 if (fee > 0)
                     UpdateBankAccount((station.Value, bank), fee, order.Account);

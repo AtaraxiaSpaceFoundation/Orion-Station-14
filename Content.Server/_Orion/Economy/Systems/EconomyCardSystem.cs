@@ -137,9 +137,6 @@ public sealed class EconomyCardSystem : EntitySystem
 
     private void OnRoleAdded(RoleAddedEvent args)
     {
-        if (!IsHumanoidMind(args.Mind))
-            return;
-
         var account = _bank.EnsurePlayerAccount(args.MindId, args.Mind);
         EnsureStartingPayroll(args.MindId, args.Mind, account);
     }
@@ -149,9 +146,11 @@ public sealed class EconomyCardSystem : EntitySystem
         if (account.StartingPayrollReceived || !TryGetStartingPayrollData((mindUid, mind), out var payrollData))
             return;
 
+        if (!_bank.Deposit((mindUid, account), payrollData.Salary, "starting-payroll", reasonData: payrollData.JobId))
+            return;
+
         account.Department ??= payrollData.Department;
         account.JobId ??= payrollData.JobId;
-        _bank.Deposit((mindUid, account), payrollData.Salary, "starting-payroll", reasonData: payrollData.JobId);
         account.StartingPayrollReceived = true;
     }
 

@@ -181,8 +181,9 @@ public sealed class Crab17System : EntitySystem
             return false;
         }
 
-        var market = Spawn(comp.MarketPrototype, coordinates);
+        var market = EntityManager.CreateEntityUninitialized(comp.MarketPrototype, coordinates);
         _pendingActivatorData[market] = (user, activatorAccount);
+        EntityManager.InitializeAndStartEntity(market);
 
         return true;
     }
@@ -228,11 +229,13 @@ public sealed class Crab17System : EntitySystem
             if (!account.BeingCrabbed || account.CurrentCrab17Machine != market.Owner)
             {
                 account.BeingCrabbed = true;
-                account.MoneyCrabbed = 0;
+
+                if (account.MoneyCrabbed < 0)
+                    account.MoneyCrabbed = 0;
+
                 account.CurrentCrab17Machine = market.Owner;
             }
 
-            hasTargets = true;
             var percent = _random.NextFloat(0.05f, 0.15f);
             var amount = (int) MathF.Round(account.Balance * percent);
 
@@ -242,8 +245,9 @@ public sealed class Crab17System : EntitySystem
             if (!_bank.Withdraw((uid, account), amount, "?VIVA¿: !LA CRABBE¡", GetNetEntity(market.Owner)))
                 continue;
 
-            account.MoneyCrabbed = checked(account.MoneyCrabbed + amount);
-            market.Comp.StoredCredits = checked(market.Comp.StoredCredits + amount);
+            hasTargets = true;
+            account.MoneyCrabbed = SaturatingAdd(account.MoneyCrabbed, amount);
+            market.Comp.StoredCredits = SaturatingAdd(market.Comp.StoredCredits, amount);
         }
 
         var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
@@ -252,7 +256,6 @@ public sealed class Crab17System : EntitySystem
             if (bankComp.Accounts.Count == 0)
                 continue;
 
-            hasTargets = true;
             foreach (var accountKey in bankComp.Accounts.Keys.ToList())
             {
                 var balance = bankComp.Accounts[accountKey];
@@ -266,7 +269,8 @@ public sealed class Crab17System : EntitySystem
 
                 _cargo.UpdateBankAccount((stationUid, bankComp), -amount, accountKey);
 
-                market.Comp.StoredCredits = checked(market.Comp.StoredCredits + amount);
+                hasTargets = true;
+                market.Comp.StoredCredits = SaturatingAdd(market.Comp.StoredCredits, amount);
             }
         }
 
@@ -306,6 +310,14 @@ public sealed class Crab17System : EntitySystem
 
         if (account.Comp.MoneyCrabbed >= 10000 && TryComp<MindComponent>(account.Owner, out var mind) && mind.OwnedEntity is { } owned)
             _mood.AddEffect(owned, "LostMoneyCrab17");
+
+        account.Comp.MoneyCrabbed = 0;
+    }
+
+    private static int SaturatingAdd(int a, int b)
+    {
+        var sum = (long) a + b;
+        return (int) Math.Clamp(sum, int.MinValue, int.MaxValue);
     }
 
     private void AdvanceStartup(Entity<Crab17MarketComponent> ent)
