@@ -47,7 +47,7 @@ public sealed class Crab17System : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
-    private string? _pendingActivatorAccountId;
+    private readonly Dictionary<EntityUid, string> _pendingActivatorAccountIds = new();
 
     public override void Initialize()
     {
@@ -111,6 +111,12 @@ public sealed class Crab17System : EntitySystem
         if (ent.Comp.StoredCredits <= 0)
             return;
 
+        var survivedLifetime = ent.Comp.DeleteAt != TimeSpan.Zero && _timing.CurTime >= ent.Comp.DeleteAt;
+        if (survivedLifetime && !string.IsNullOrWhiteSpace(ent.Comp.ActivatorAccountId) &&
+            _bank.TryFindAccountById(ent.Comp.ActivatorAccountId, out var activator) &&
+            _bank.Deposit(activator, ent.Comp.StoredCredits, "?VIVA¿: !LA CRABBE¡", GetNetEntity(ent.Owner)))
+            return;
+
         if (!_prototype.TryIndex(HolochipStackId, out var holo))
             return;
 
@@ -167,8 +173,10 @@ public sealed class Crab17System : EntitySystem
             return false;
         }
 
-        _pendingActivatorAccountId = activatorAccount;
-        Spawn(comp.MarketPrototype, coordinates);
+        var market = Spawn(comp.MarketPrototype, coordinates);
+        if (activatorAccount != null)
+            _pendingActivatorAccountIds[market] = activatorAccount;
+
         return true;
     }
 
@@ -185,8 +193,9 @@ public sealed class Crab17System : EntitySystem
         ent.Comp.StartupStage = 0;
         ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.35);
         _appearance.SetData(ent, Crab17Visuals.StartupStage, ent.Comp.StartupStage);
-        ent.Comp.ActivatorAccountId = _pendingActivatorAccountId;
-        _pendingActivatorAccountId = null;
+
+        if (_pendingActivatorAccountIds.Remove(ent, out var activatorAccountId))
+            ent.Comp.ActivatorAccountId = activatorAccountId;
     }
 
     private void DrainTick(Entity<Crab17MarketComponent> market)
@@ -217,11 +226,7 @@ public sealed class Crab17System : EntitySystem
                 continue;
 
             account.MoneyCrabbed += amount;
-
-            if (market.Comp.ActivatorAccountId != null && _bank.TryFindAccountById(market.Comp.ActivatorAccountId, out var activator))
-                _bank.Deposit(activator, amount, "?VIVA¿: !LA CRABBE¡", GetNetEntity(uid));
-            else
-                market.Comp.StoredCredits += amount;
+            market.Comp.StoredCredits += amount;
         }
 
         var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
@@ -244,10 +249,7 @@ public sealed class Crab17System : EntitySystem
 
                 _cargo.UpdateBankAccount((stationUid, bankComp), -amount, accountKey);
 
-                if (market.Comp.ActivatorAccountId != null && _bank.TryFindAccountById(market.Comp.ActivatorAccountId, out var activatorDept))
-                    _bank.Deposit(activatorDept, amount, "?VIVA¿: !LA CRABBE¡", GetNetEntity(stationUid));
-                else
-                    market.Comp.StoredCredits += amount;
+                market.Comp.StoredCredits += amount;
             }
         }
 

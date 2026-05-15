@@ -65,7 +65,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Atmos.Components;
 using Content.Server.Nutrition.EntitySystems;
-using Robust.Shared.Player;
 
 namespace Content.Server.NPC.Systems;
 
@@ -539,22 +538,6 @@ public sealed class NPCUtilitySystem : EntitySystem
                 }
                 break;
             }
-            // Orion-Start
-            case NearbyPlayersQuery:
-            {
-                var mapPos = _transform.GetMapCoordinates(owner, xform: _xformQuery.GetComponent(owner));
-
-                _entitySet.Clear();
-                _lookup.GetEntitiesInRange(typeof(ActorComponent), mapPos, vision, _entitySet);
-
-                foreach (var ent in _entitySet)
-                {
-                    entities.Add(ent.Owner);
-                }
-
-                break;
-            }
-            // Orion-End
             default:
                 throw new NotImplementedException();
         }

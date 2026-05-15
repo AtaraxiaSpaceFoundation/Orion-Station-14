@@ -73,7 +73,10 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
         var decreasedMin = Math.Min(component.DecreasedMultiplierMin, component.DecreasedMultiplierMax);
         var decreasedMax = Math.Max(component.DecreasedMultiplierMin, component.DecreasedMultiplierMax);
 
-        var increasedCount = Math.Clamp(_random.Next(component.MinIncreased, component.MaxIncreased + 1), 0, commodities.Count);
+        var increasedMinCount = Math.Min(component.MinIncreased, component.MaxIncreased);
+        var increasedMaxCount = Math.Max(component.MinIncreased, component.MaxIncreased);
+        var increasedCount = Math.Clamp(_random.Next(increasedMinCount, increasedMaxCount + 1), 0, commodities.Count);
+
         var picked = new List<MarketCommodityPrototype>(commodities);
         var increased = new List<string>();
         var decreased = new List<string>();
@@ -87,7 +90,10 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
         }
 
         var maxDecreasedPool = Math.Max(0, picked.Count);
-        var decreasedCount = Math.Clamp(_random.Next(component.MinDecreased, component.MaxDecreased + 1), 0, maxDecreasedPool);
+        var decreasedMinCount = Math.Min(component.MinDecreased, component.MaxDecreased);
+        var decreasedMaxCount = Math.Max(component.MinDecreased, component.MaxDecreased);
+        var decreasedCount = Math.Clamp(_random.Next(decreasedMinCount, decreasedMaxCount + 1), 0, maxDecreasedPool);
+
         for (var i = 0; i < decreasedCount; i++)
         {
             var item = _random.PickAndTake(picked);
@@ -121,7 +127,10 @@ public sealed class MarketShiftRuleSystem : GameRuleSystem<MarketShiftRuleCompon
 
     private void ScheduleNextShift(MarketShiftRuleComponent component)
     {
-        var seconds = _random.NextFloat((float) component.MinInterval.TotalSeconds, (float) component.MaxInterval.TotalSeconds);
+        var minSeconds = MathF.Min((float) component.MinInterval.TotalSeconds, (float) component.MaxInterval.TotalSeconds);
+        var maxSeconds = MathF.Max((float) component.MinInterval.TotalSeconds, (float) component.MaxInterval.TotalSeconds);
+        var seconds = _random.NextFloat(minSeconds, maxSeconds);
+
         component.NextShiftTime = _timing.CurTime + TimeSpan.FromSeconds(seconds);
     }
 }

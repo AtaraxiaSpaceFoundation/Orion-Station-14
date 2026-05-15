@@ -55,6 +55,8 @@
 - type: marketCommodity
   id: ReinforcedGlass
   material: ReinforcedGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
 
 - type: marketCommodity
   id: PlasmaGlass

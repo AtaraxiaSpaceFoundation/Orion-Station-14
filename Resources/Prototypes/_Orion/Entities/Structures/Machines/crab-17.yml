@@ -63,18 +63,14 @@
   - type: InputMover
   - type: MobMover
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2
-    baseSprintSpeed: 2
-  - type: Eye
-  - type: NpcFactionMember
-    factions:
-    - SimpleHostile
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
   - type: HTN
     rootTask:
-      task: EscapePlayersCompound
+      task: IdleCompound
   - type: PointLight
     radius: 1.5
-    energy: 1
+    energy: 2
     color: "#00CF00"
     castShadows: false
   - type: Penetratable # Goobstation - Better snipers
