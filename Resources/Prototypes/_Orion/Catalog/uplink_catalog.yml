@@ -191,7 +191,7 @@
   cost:
     Telecrystal: 35 # TODO: 7
   categories:
-  - UplinkDeception
+  - UplinkDisruption
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
