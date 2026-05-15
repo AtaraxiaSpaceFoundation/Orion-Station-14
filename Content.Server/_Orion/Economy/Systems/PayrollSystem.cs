@@ -131,6 +131,6 @@ public sealed class PayrollSystem : EntitySystem
 
         var popupText = Loc.GetString("payroll-popup-received", ("amount", amount));
         _popup.PopupEntity(popupText, recipient, recipient);
-        _audio.PlayPvs(PayrollSound, Transform(recipient).Coordinates);
+        _audio.PlayPvs(PayrollSound, Transform(recipient).Coordinates, AudioParams.Default.WithVolume(-2f));
     }
 }

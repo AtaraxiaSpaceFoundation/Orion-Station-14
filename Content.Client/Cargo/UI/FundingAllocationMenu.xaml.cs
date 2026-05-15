@@ -184,7 +184,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             switch (incoming)
             {
                 case true when transaction.Reason == "payroll":
-                    from = LocalizeDepartment(mainAccount?.DepartmentId);
+                    from = LocalizeDepartmentCode(mainAccount?.DepartmentId);
                     break;
                 case false when transaction.Reason == "vending-purchase":
                     to = LocalizeDepartmentCode(ParseVendingPurchaseData(transaction.ReasonData).DepartmentId);
