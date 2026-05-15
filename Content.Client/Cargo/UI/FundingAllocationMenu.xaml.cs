@@ -189,6 +189,9 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 case false when transaction.Reason == "vending-purchase":
                     to = LocalizeDepartmentCode(ParseVendingPurchaseData(transaction.ReasonData).DepartmentId);
                     break;
+                case false when transaction.Reason == "cargo-private-purchase":
+                    to = LocalizeDepartmentCode("Cargo");
+                    break;
             }
 
             var row = CreateRowContainer();
@@ -373,17 +376,6 @@ public sealed partial class FundingAllocationMenu : FancyWindow
 
         if (_prototypeManager.TryIndex<JobPrototype>(jobId, out var job))
             return Loc.GetString(job.Name);
-
-        return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
-    }
-
-    private string LocalizeDepartment(string? departmentId)
-    {
-        if (string.IsNullOrWhiteSpace(departmentId))
-            return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
-
-        if (_prototypeManager.TryIndex<CargoAccountPrototype>(departmentId, out var proto))
-            return Loc.GetString(proto.Name);
 
         return Loc.GetString("cargo-funding-alloc-console-economy-unknown");
     }
