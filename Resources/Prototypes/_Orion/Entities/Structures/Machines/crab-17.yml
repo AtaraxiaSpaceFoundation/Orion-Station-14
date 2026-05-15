@@ -59,6 +59,14 @@
   - type: Crab17Market
   - type: InteractionOutline
   - type: Clickable
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    understands:
+    - TauCetiBasic
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Vending
   - type: InputMover
   - type: MobMover
   - type: MovementSpeedModifier

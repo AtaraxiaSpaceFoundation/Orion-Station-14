@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: Crab17BragPhrases
+  values:
+    prefix: crab-17-say-
+    count: 100

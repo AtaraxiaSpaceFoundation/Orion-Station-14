@@ -1,3 +1,6 @@
+using Content.Shared.Dataset;
+using Robust.Shared.Prototypes;
+
 namespace Content.Shared._Orion.Economy.Components;
 
 [RegisterComponent]
@@ -41,4 +44,16 @@ public sealed partial class Crab17MarketComponent : Component
 
     [DataField]
     public Dictionary<string, TimeSpan> ProtectedUntil = new();
+
+    [DataField]
+    public TimeSpan BragInterval = TimeSpan.FromSeconds(11);
+
+    [DataField]
+    public TimeSpan NextBragTime = TimeSpan.MaxValue;
+
+    [DataField]
+    public int CreditsSinceLastBrag;
+
+    [DataField]
+    public ProtoId<LocalizedDatasetPrototype> BragPhraseDataset = "Crab17BragPhrases";
 }

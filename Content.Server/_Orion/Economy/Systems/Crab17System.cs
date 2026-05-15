@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Linq;
 using Content.Server._Orion.Economy.Components;
 using Content.Shared._Orion.Economy.Components;
@@ -14,6 +15,8 @@ using Content.Shared.Popups;
 using Content.Server.Stack;
 using Content.Shared._Orion.Economy;
 using Content.Shared.Cargo.Components;
+using Content.Shared.Chat;
+using Content.Shared.Destructible;
 using Content.Shared.Stacks;
 using Robust.Shared.Prototypes;
 using Robust.Server.Audio;
@@ -21,6 +24,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -45,6 +49,7 @@ public sealed class Crab17System : EntitySystem
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly CargoSystem _cargo = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
 
     private static readonly ProtoId<StackPrototype> HolochipStackId = "CreditHolochip";
     private readonly Dictionary<EntityUid, (EntityUid ActivatorMind, string? ActivatorAccountId)> _pendingActivatorData = new();
@@ -55,6 +60,7 @@ public sealed class Crab17System : EntitySystem
         SubscribeLocalEvent<Crab17MarketComponent, InteractUsingEvent>(OnMarketInteractUsing);
         SubscribeLocalEvent<Crab17MarketComponent, MapInitEvent>(OnMarketMapInit);
         SubscribeLocalEvent<Crab17MarketComponent, ComponentShutdown>(OnMarketShutdown);
+        SubscribeLocalEvent<Crab17MarketComponent, DestructionEventArgs>(OnMarketDestroyed);
         SubscribeLocalEvent<Crab17MarketComponent, EntityTerminatingEvent>(OnMarketTerminating);
     }
 
@@ -73,6 +79,8 @@ public sealed class Crab17System : EntitySystem
             if (!comp.IsReady && now >= comp.StartupNextStageAt)
                 AdvanceStartup((uid, comp));
 
+            TryAnnounceBrag((uid, comp), now);
+
             if (now < comp.NextDrainTime)
                 continue;
 
@@ -82,6 +90,11 @@ public sealed class Crab17System : EntitySystem
     }
 
     private void OnMarketShutdown(Entity<Crab17MarketComponent> ent, ref ComponentShutdown args)
+    {
+        FinalizeMarket(ent);
+    }
+
+    private void OnMarketDestroyed(Entity<Crab17MarketComponent> ent, ref DestructionEventArgs args)
     {
         FinalizeMarket(ent);
     }
@@ -114,10 +127,6 @@ public sealed class Crab17System : EntitySystem
         if (ent.Comp.StoredCredits <= 0)
             return;
 
-        var finished = ent.Comp.DeleteAt != TimeSpan.Zero && _timing.CurTime >= ent.Comp.DeleteAt;
-        if (!finished)
-            return;
-
         var paid = false;
         if (!string.IsNullOrWhiteSpace(ent.Comp.ActivatorAccountId) && _bank.TryFindAccountById(ent.Comp.ActivatorAccountId, out var activator))
             paid = _bank.Deposit(activator, ent.Comp.StoredCredits, "?VIVA¿: !LA CRABBE¡", GetNetEntity(ent.Owner));
@@ -128,8 +137,15 @@ public sealed class Crab17System : EntitySystem
         if (!_prototype.TryIndex(HolochipStackId, out var holo))
             return;
 
-        var mapCoordinates = _transform.GetMapCoordinates(ent);
-        var holochip = Spawn(holo.Spawn, mapCoordinates);
+        var spawnCoordinates = _transform.GetMapCoordinates(ent);
+        if (spawnCoordinates.MapId == MapId.Nullspace || !_mapSystem.MapExists(spawnCoordinates.MapId))
+            return;
+
+        var mapUid = Transform(ent).MapUid;
+        if (mapUid != null && TerminatingOrDeleted(mapUid.Value))
+            return;
+
+        var holochip = Spawn(holo.Spawn, spawnCoordinates);
         _stack.SetCount(holochip, ent.Comp.StoredCredits);
     }
 
@@ -200,6 +216,7 @@ public sealed class Crab17System : EntitySystem
         ent.Comp.IsReady = false;
         ent.Comp.StartupStage = 0;
         ent.Comp.StartupNextStageAt = _timing.CurTime + TimeSpan.FromSeconds(0.35);
+        ent.Comp.NextBragTime = _timing.CurTime + ent.Comp.BragInterval;
         _appearance.SetData(ent, Crab17Visuals.StartupStage, ent.Comp.StartupStage);
 
         if (!_pendingActivatorData.Remove(ent, out var activatorData))
@@ -248,6 +265,7 @@ public sealed class Crab17System : EntitySystem
             hasTargets = true;
             account.MoneyCrabbed = SaturatingAdd(account.MoneyCrabbed, amount);
             market.Comp.StoredCredits = SaturatingAdd(market.Comp.StoredCredits, amount);
+            market.Comp.CreditsSinceLastBrag = SaturatingAdd(market.Comp.CreditsSinceLastBrag, amount);
         }
 
         var stationQuery = EntityQueryEnumerator<StationBankAccountComponent>();
@@ -268,9 +286,11 @@ public sealed class Crab17System : EntitySystem
                     continue;
 
                 _cargo.UpdateBankAccount((stationUid, bankComp), -amount, accountKey);
+                var stolen = Math.Min(amount, balance);
 
                 hasTargets = true;
-                market.Comp.StoredCredits = SaturatingAdd(market.Comp.StoredCredits, amount);
+                market.Comp.StoredCredits = SaturatingAdd(market.Comp.StoredCredits, stolen);
+                market.Comp.CreditsSinceLastBrag = SaturatingAdd(market.Comp.CreditsSinceLastBrag, stolen);
             }
         }
 
@@ -312,6 +332,27 @@ public sealed class Crab17System : EntitySystem
             _mood.AddEffect(owned, "LostMoneyCrab17");
 
         account.Comp.MoneyCrabbed = 0;
+    }
+
+    private void TryAnnounceBrag(Entity<Crab17MarketComponent> market, TimeSpan now)
+    {
+        if (now < market.Comp.NextBragTime)
+            return;
+
+        market.Comp.NextBragTime = now + market.Comp.BragInterval;
+
+        if (market.Comp.CreditsSinceLastBrag <= 0)
+            return;
+
+        var amount = market.Comp.CreditsSinceLastBrag.ToString("N0", CultureInfo.InvariantCulture);
+        if (!_prototype.TryIndex(market.Comp.BragPhraseDataset, out var phraseDataset))
+            return;
+
+        var phrase = _random.Pick(phraseDataset);
+
+        _chat.TrySendInGameICMessage(market, Loc.GetString("protocol-crab17-brag-announcement", ("credits", amount), ("line", phrase)), InGameICChatType.Speak, hideChat: false);
+
+        market.Comp.CreditsSinceLastBrag = 0;
     }
 
     private static int SaturatingAdd(int a, int b)
