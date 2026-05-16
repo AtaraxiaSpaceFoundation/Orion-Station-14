@@ -77,7 +77,7 @@ public sealed class BitrunningObjectiveSystem : EntitySystem
         if (!_server.TryGetServerByDomainMap(mapUid, out _, out _))
             return;
 
-        _server.DisconnectAvatar(args.OtherEntity, false);
+        _server.TryRequestDisconnectAvatar(args.OtherEntity, args.OtherEntity, true);
     }
 
     private void OnInteract(Entity<BitrunningObjectivePointComponent> ent, ref InteractHandEvent args)

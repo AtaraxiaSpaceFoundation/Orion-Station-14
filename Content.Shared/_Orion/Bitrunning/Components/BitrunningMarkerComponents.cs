@@ -38,7 +38,7 @@ public sealed partial class BitrunningObjectiveEncryptedCacheSpawnMarkerComponen
 public sealed partial class BitrunningObjectiveCacheCrateSpawnMarkerComponent : Component
 {
     [DataField]
-    public EntProtoId CratePrototype = "CrateBitrunSecure";
+    public EntProtoId CratePrototype = "BitrunningObjectiveCacheStructure";
 }
 
 /// <summary>

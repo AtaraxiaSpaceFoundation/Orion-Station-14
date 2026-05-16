@@ -33,7 +33,7 @@ public sealed partial class QuantumServerComponent : Component
     public EntProtoId AvatarPrototype = "MobHuman";
 
     [DataField, AutoNetworkedField]
-    public EntProtoId RewardCachePrototype = "CrateBitrunSecure";
+    public EntProtoId RewardCachePrototype = "BitrunningObjectiveCacheStructure";
 
     [DataField, AutoNetworkedField]
     public TimeSpan Cooldown = TimeSpan.FromMinutes(2);
