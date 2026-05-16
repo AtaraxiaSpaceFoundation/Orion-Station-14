@@ -238,15 +238,15 @@ public sealed class BitrunningDiskSystem : EntitySystem
         }
     }
 
-    private bool TryInsertIntoAvatarInventory(EntityUid avatarUid, EntityUid itemUid)
+    private void TryInsertIntoAvatarInventory(EntityUid avatarUid, EntityUid itemUid)
     {
         if (TryEquipOnAvatar(avatarUid, itemUid))
-            return true;
+            return;
 
         if (_inventory.TryGetSlotEntity(avatarUid, "back", out var backUid) && TryComp<StorageComponent>(backUid.Value, out var storage) && _storage.Insert(backUid.Value, itemUid, out _, storageComp: storage, playSound: false))
-            return true;
+            return;
 
-        return _hands.TryPickupAnyHand(avatarUid, itemUid, checkActionBlocker: false) || true;
+        _hands.TryPickupAnyHand(avatarUid, itemUid, checkActionBlocker: false);
     }
 
     private bool TryEquipOnAvatar(EntityUid avatarUid, EntityUid itemUid)
