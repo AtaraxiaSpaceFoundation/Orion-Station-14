@@ -108,3 +108,9 @@ public sealed partial class BitrunningDomainEnemyObjectiveComponent : Component
 /// </summary>
 [RegisterComponent]
 public sealed partial class BitrunningEnemyObjectiveCountedComponent : Component;
+
+/// <summary>
+/// Marks a reward cache crate that should disappear immediately after being opened.
+/// </summary>
+[RegisterComponent]
+public sealed partial class BitrunningDespawnOnOpenComponent : Component;

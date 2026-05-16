@@ -544,6 +544,7 @@ public sealed class QuantumServerSystem : EntitySystem
         EnsureComp<AvatarNavRelayComponent>(pod.Owner).RelayEntity = avatarUid;
 
         connection.Netpod = pod.Owner;
+        connection.OriginalBody = user;
         if (pod.Comp.LinkedServer != null)
             connection.Server = pod.Comp.LinkedServer;
 
