@@ -1,4 +1,4 @@
-SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 # Common Prototype Components
 

@@ -1,4 +1,4 @@
-SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 @AGENTS.md
 @.agents/rules/ss14-skill-preflight-and-refresh.md

@@ -1,4 +1,4 @@
-SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 ---
 description: C# ECS, events, prediction, and upstream-maintenance rules for SS14 gameplay code.

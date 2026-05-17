@@ -1,4 +1,4 @@
-SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 # Try Can Do Pattern
 

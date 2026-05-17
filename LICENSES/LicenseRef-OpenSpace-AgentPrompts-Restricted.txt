@@ -3,7 +3,7 @@ https://github.com/ss14-art/open-space
 
 The files marked with:
 
-SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 are not licensed under AGPL-3.0-or-later.
 

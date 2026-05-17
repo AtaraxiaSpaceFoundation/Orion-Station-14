@@ -1,4 +1,4 @@
-SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 ---
 applyTo: "Content.Client/**/*.cs,Content.Client/**/*.xaml,Content.Client/**/*.xaml.cs"
