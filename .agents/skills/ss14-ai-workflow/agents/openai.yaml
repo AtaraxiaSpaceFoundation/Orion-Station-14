@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 AI Workflow"
+  short_description: "Prompting, delegation boundaries, and verification for SS14 AI coding"
+  default_prompt: "Use $ss14-ai-workflow to structure AI-assisted work in this repo."

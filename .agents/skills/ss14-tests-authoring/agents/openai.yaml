@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 Tests"
+  short_description: "Choose and write SS14 content or integration tests"
+  default_prompt: "Use $ss14-tests-authoring to choose or add the right SS14 test coverage."

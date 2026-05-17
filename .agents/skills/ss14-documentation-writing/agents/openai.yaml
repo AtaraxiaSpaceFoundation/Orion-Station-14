@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 Documentation Writing"
+  short_description: "Short technical notes for large SS14 changes"
+  default_prompt: "Use $ss14-documentation-writing to write concise technical notes for a larger SS14 change."
