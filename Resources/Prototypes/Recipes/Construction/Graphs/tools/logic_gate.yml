@@ -54,8 +54,16 @@
         doAfter: 1
     - to: memory_cell
       steps:
-      - material: Manipulator
-        amount: 2
+      # Orion-Start
+      - machinePart: Servo
+        icon:
+          sprite: "Objects/Misc/stock_parts.rsi"
+          state: "micro_mani"
+      - machinePart: Servo
+        icon:
+          sprite: "Objects/Misc/stock_parts.rsi"
+          state: "micro_mani"
+      # Orion-End
       - material: Cable
         amount: 2
         doAfter: 1

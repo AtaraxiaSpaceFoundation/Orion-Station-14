@@ -1,5 +1,6 @@
 using Content.Shared._Orion.Construction.Components;
 using Content.Shared._Orion.Construction.Prototypes;
+using Content.Shared.Construction;
 using Content.Shared.Construction.Steps;
 using Content.Shared.Examine;
 using Robust.Shared.Prototypes;
@@ -20,9 +21,17 @@ public sealed partial class MachinePartConstructionGraphStep : ArbitraryInsertCo
     public override void DoExamine(ExaminedEvent examinedEvent)
     {
         examinedEvent.PushMarkup(string.IsNullOrEmpty(Name)
-            ? Loc.GetString("construction-insert-entity-with-component",
-                ("componentName", MachinePart.Id))
-            : Loc.GetString("construction-insert-exact-entity",
-                ("entityName", Loc.GetString(Name))));
+            ? Loc.GetString("construction-insert-entity-with-component", ("componentName", MachinePart.Id))
+            : Loc.GetString("construction-insert-exact-entity", ("entityName", Loc.GetString(Name))));
+    }
+
+    public override ConstructionGuideEntry GenerateGuideEntry()
+    {
+        return new ConstructionGuideEntry
+        {
+            Localization = "construction-presenter-arbitrary-step",
+            Arguments = [("name", MachinePart.Id)],
+            Icon = Icon,
+        };
     }
 }

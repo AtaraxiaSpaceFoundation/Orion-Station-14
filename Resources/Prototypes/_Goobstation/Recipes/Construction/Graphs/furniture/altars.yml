@@ -119,9 +119,13 @@
       - !type:SnapToGrid
         southRotation: true
       steps:
-      - material: Manipulator
-        amount: 1
+      # Orion-Start
+      - machinePart: Servo
+        icon:
+          sprite: "Objects/Misc/stock_parts.rsi"
+          state: "micro_mani"
         doAfter: 3
+      # Orion-End
     - to: ToolAltarNode
       completed:
       - !type:SnapToGrid

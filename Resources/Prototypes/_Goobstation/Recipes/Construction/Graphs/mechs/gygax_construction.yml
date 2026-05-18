@@ -86,8 +86,12 @@
           key: "enum.MechAssemblyVisuals.State"
           data: 9
 
-      - material: Manipulator
-        amount: 1
+      # Orion-Start
+      - machinePart: Servo
+        icon:
+          sprite: "Objects/Misc/stock_parts.rsi"
+          state: "micro_mani"
+      # Orion-End
         completed:
         - !type:VisualizerDataInt
           key: "enum.MechAssemblyVisuals.State"
