@@ -1,5 +1,3 @@
-machine-part-name-capacitor = Capacitor
-machine-part-name-matter-bin = Matter bin
 machine-part-name-servo = Servo
 machine-part-name-scanning-module = Scanning Module
 machine-part-name-micro-laser = Micro-laser
