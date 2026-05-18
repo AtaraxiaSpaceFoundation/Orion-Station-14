@@ -70,7 +70,7 @@
   playTimeTracker: JobChaplain
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 18000 # 15 hours
+      time: 3600 #1 hrs # Siberia-Roletime
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop

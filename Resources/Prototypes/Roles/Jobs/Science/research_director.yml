@@ -137,12 +137,11 @@
   description: job-description-rd
   playTimeTracker: JobResearchDirector
   requirements:
-  - !type:RoleTimeRequirement
-    role: JobScientist
-    time: 21600 #6 hrs
   - !type:DepartmentTimeRequirement
     department: Science
     time: 36000 #10 hrs
+  - !type:OverallPlaytimeRequirement
+    time: 72000 #20 hrs # Siberia-Roletime
   weight: 10
   startingGear: ResearchDirectorGear
   icon: "JobIconResearchDirector"

@@ -141,19 +141,22 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 14400 # 4 hours
+      time: 36000 #10 hrs # Siberia-Roletime
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 14400 # 4 hours
+      time: 36000 #10 hrs # Siberia-Roletime
     - !type:DepartmentTimeRequirement
       department: Science
-      time: 14400 # 4 hours
+      time: 36000 #10 hrs # Siberia-Roletime
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 21600 # 6 hours
+      time: 36000 #10 hrs # Siberia-Roletime
     - !type:DepartmentTimeRequirement
       department: Command
-      time: 28000 # 8 hours
+      time: 54000 #15 hrs # Siberia-Roletime
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 180000 #50 hrs # Siberia-Roletime
       #any MRP using our code might eventually want to use it
     # - !type:SaturationRequirement # MisandryBox - no neon hair on captain
     #   hairColorSaturation: 0.30

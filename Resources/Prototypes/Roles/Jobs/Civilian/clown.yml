@@ -124,6 +124,9 @@
   name: job-name-clown
   description: job-description-clown
   playTimeTracker: JobClown
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 54000 #15 hrs # Siberia-Roletime
   startingGear: ClownGear
   icon: "JobIconClown"
   supervisors: job-supervisors-hop

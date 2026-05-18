@@ -16,7 +16,7 @@ zombie-round-end-initial-count =
         [one] Единственным нулевым пациентом был:
        *[other] Нулевых пациентов было { $initialCount }, ими были:
     }
-zombie-round-end-user-was-initial = - [color=plum]{ $name }[/color] ([color=gray]{ $username }[/color]) был одним из нулевых пациентов.
+zombie-round-end-user-was-initial = - [color=plum]{ $name }[/color] ([color=gray]{ $name }[/color]) был одним из нулевых пациентов.
 zombie-round-end-amount-none = [color=green]Все зомби были уничтожены![/color]
 zombie-round-end-amount-low = [color=green]Почти все зомби были уничтожены.[/color]
 zombie-round-end-amount-medium = [color=yellow]{ $percent }% экипажа были обращены в зомби.[/color]
@@ -27,4 +27,4 @@ zombie-round-end-survivor-count =
         [one] Единственным выжившим стал:
        *[other] Осталось всего { $count } выживших, это:
     }
-zombie-round-end-user-was-survivor = - [color=White]{ $name }[/color] ([color=gray]{ $username }[/color]) пережил заражение.
+zombie-round-end-user-was-survivor = - [color=White]{ $name }[/color] ([color=gray]{ $name }[/color]) пережил заражение.

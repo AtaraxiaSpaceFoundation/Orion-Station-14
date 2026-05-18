@@ -141,16 +141,16 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobWarden
-      time: 18000 #5 hr
+      time: 18000 #5 hrs
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
-      time: 36000 #10 hrs
+      time: 18000 #5 hrs # Siberia-Roletime
     - !type:RoleTimeRequirement
       role: JobDetective
-      time: 3600 #1 hrs
+      time: 7200 #2 hrs # Siberia-Roletime
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 36000 # 10 hrs
+      time: 72000 # 20 hrs # Siberia-Roletime
   #  - !type:StyleRequirement
   #    styles:
   #    - HumanHairFloorlengthBedhead
