@@ -63,6 +63,10 @@
   icon: "JobIconZookeeper"
   supervisors: job-supervisors-hop
   goobcoins: 15 #Goob content
+  # Orion-Start
+  salary: 50
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Service
   - Maintenance

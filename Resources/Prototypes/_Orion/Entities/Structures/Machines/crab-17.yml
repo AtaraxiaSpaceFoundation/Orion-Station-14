@@ -1,0 +1,96 @@
+- type: entity
+  id: CheckoutMachine
+  name: NanoTrasen Space-Coin Market
+  description: This is good for spacecoin because.
+  suffix: Crab-17
+  components:
+  - type: Sprite
+    sprite: _Orion/Structures/Machines/checkout_machine.rsi
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - state: bogdanoff
+      map: [ "base" ]
+    - state: flaps
+      map: [ "flaps" ]
+    - state: hatch
+      map: [ "hatch" ]
+    - state: legs_retracted
+      map: [ "legs_retracted" ]
+    - state: legs_extending
+      map: [ "legs_extending" ]
+      visible: false
+    - state: legs_extended
+      map: [ "legs_extended" ]
+      visible: false
+    - state: legs
+      map: [ "legs" ]
+      visible: false
+    - state: hologram
+      map: [ "hologram" ]
+      visible: false
+    - state: holosign
+      map: [ "holosign" ]
+      visible: false
+    - state: screen_lines
+      map: [ "screen_lines" ]
+      visible: false
+    - state: screen
+      map: [ "screen" ]
+      visible: false
+    - state: text
+      map: [ "text" ]
+      visible: false
+  - type: Appearance
+  - type: MobCollision
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Crab17Market
+  - type: InteractionOutline
+  - type: Clickable
+  - type: LanguageKnowledge
+    speaks:
+    - TauCetiBasic
+    understands:
+    - TauCetiBasic
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Vending
+  - type: InputMover
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: PointLight
+    radius: 1.5
+    energy: 2
+    color: "#00CF00"
+    castShadows: false
+  - type: Penetratable # Goobstation - Better snipers
+    penetrateDamage: 15
+    damagePenalty: 0.05
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

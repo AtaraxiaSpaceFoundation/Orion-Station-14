@@ -203,6 +203,8 @@
   - type: Gun
 #    minAngle: 21 # Base SMG already has minAngle: 2 maxAngle: 16
 #    maxAngle: 32 # Goob - one-handed C20R - end
+    maxAngle: 11 # Orion
+    angleIncrease: 1.5 # Orion
     shotsPerBurst: 5
     availableModes:
     - Burst

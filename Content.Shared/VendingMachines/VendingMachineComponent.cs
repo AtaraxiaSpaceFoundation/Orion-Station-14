@@ -223,11 +223,17 @@ namespace Content.Shared.VendingMachines
         [DataField]
         public uint Amount;
 
-        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount)
+        // Orion-Start
+        [DataField]
+        public int Price;
+        // Orion-End
+
+        public VendingMachineInventoryEntry(InventoryType type, string id, uint amount, int price = 0) // Orion-Edit
         {
             Type = type;
             ID = id;
             Amount = amount;
+            Price = price; // Orion
         }
 
         public VendingMachineInventoryEntry(VendingMachineInventoryEntry entry)
@@ -235,6 +241,7 @@ namespace Content.Shared.VendingMachines
             Type = entry.Type;
             ID = entry.ID;
             Amount = entry.Amount;
+            Price = entry.Price; // Orion
         }
     }
 
@@ -313,4 +320,9 @@ namespace Content.Shared.VendingMachines
 
         public TimeSpan? DispenseOnHitEnd;
     }
+
+    // Orion-Start
+    [ByRefEvent]
+    public record struct VendingMachineBeforeEjectEvent(EntityUid VendingMachine, EntityUid? User, InventoryType InventoryType, string ItemId, int Price, bool Cancelled = false);
+    // Orion-End
 }

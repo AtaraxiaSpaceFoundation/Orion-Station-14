@@ -156,6 +156,10 @@
 #  - Command
 #  - EmergenciesSOP
   goobcoins: 40 #Goob content
+  # Orion-Start
+  salary: 120
+  payrollDepartmentAccount: Command
+  # Orion-End
   access:
   - Maintenance
   - Engineering

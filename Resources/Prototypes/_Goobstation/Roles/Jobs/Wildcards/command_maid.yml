@@ -13,6 +13,10 @@
   icon: "JobIconCommandMaid"
   supervisors: job-supervisors-command
   setPreference: false
+  # Orion-Start
+  salary: 80
+  payrollDepartmentAccount: Command
+  # Orion-End
   access:
   - Service
   - Janitor

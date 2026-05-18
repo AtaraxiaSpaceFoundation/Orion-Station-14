@@ -53,6 +53,8 @@
       contents:
         - id: WeaponSniperMosin
           amount: 10
+        - id: SpeedLoaderLightRifle # Orion
+          amount: 10
         - id: ClothingHeadHatUshanka
           amount: 5
         - id: DrinkVodkaBottleFull

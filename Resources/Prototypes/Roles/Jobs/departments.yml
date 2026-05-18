@@ -113,6 +113,7 @@
   - Quartermaster
   - SalvageSpecialist
   - ShaftMiner # Lavaland Change
+  - Bitrunner # Orion
 
 - type: department
   id: Civilian

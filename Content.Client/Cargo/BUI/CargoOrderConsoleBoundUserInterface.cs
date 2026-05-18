@@ -105,7 +105,10 @@ namespace Content.Client.Cargo.BUI
                 if (args.Button.Parent?.Parent is not CargoProductRow row) // Goobstation
                     return;
 
-                _orderMenu.ToggleDepartmentSecureCrate.Pressed = false; // Orion
+                // Orion-Start
+                _orderMenu.ToggleDepartmentSecureCrate.Pressed = false;
+                _orderMenu.TogglePrivatePurchase.Pressed = false;
+                // Orion-End
 
                 description.Clear();
                 description.PushColor(Color.White); // Rich text default color is grey
@@ -137,6 +140,8 @@ namespace Content.Client.Cargo.BUI
                     if (_product is not null && _protoManager.TryIndex<EntityPrototype>(_product.Product, out var cargoProductEntPrototype))
                         _orderMenu.ToggleDepartmentSecureCrate.Disabled = !_cargoSystem.CanBeSecuredDelivery((Owner, orderConsole), cargoProductEntPrototype);
                 }
+
+                UpdateOrderCost();
                 // Orion-End
 
                 _orderMenu.OpenCentered();
@@ -144,7 +149,10 @@ namespace Content.Client.Cargo.BUI
             _menu.OnOrderApproved += ApproveOrder;
             _menu.OnOrderCanceled += RemoveOrder;
 
-            _orderMenu.ToggleDepartmentSecureCrate.OnToggled += ToggleDepartmentSecureCrate_OnToggled; // Orion
+            // Orion-Start
+            _orderMenu.ToggleDepartmentSecureCrate.OnToggled += ToggleDepartmentSecureCrate_OnToggled;
+            _orderMenu.TogglePrivatePurchase.OnToggled += TogglePrivatePurchase_OnToggled;
+            // Orion-End
 
             _orderMenu.SubmitButton.OnPressed += (_) =>
             {
@@ -170,12 +178,24 @@ namespace Content.Client.Cargo.BUI
         // Orion-Start
         private void ToggleDepartmentSecureCrate_OnToggled(ButtonToggledEventArgs obj)
         {
+            UpdateOrderCost();
+        }
+
+        private void TogglePrivatePurchase_OnToggled(ButtonToggledEventArgs obj)
+        {
+            UpdateOrderCost();
+        }
+
+        private void UpdateOrderCost()
+        {
             if (_product is null
                 || _orderMenu is null
                 || !EntMan.TryGetComponent<CargoOrderConsoleComponent>(Owner, out var orderConsole))
                 return;
 
-            int cost = obj.Pressed ? _product.Cost + orderConsole.SecureOrderCost : _product.Cost;
+            var cost = _product.Cost + (_orderMenu.ToggleDepartmentSecureCrate.Pressed ? orderConsole.SecureOrderCost : 0);
+            if (_orderMenu.TogglePrivatePurchase.Pressed)
+                cost = (int) Math.Round(cost * 1.10, MidpointRounding.AwayFromZero);
 
             _orderMenu.PointCost.Text = Loc.GetString("cargo-console-menu-points-amount", ("amount", cost));
         }
@@ -246,7 +266,8 @@ namespace Content.Client.Cargo.BUI
                 _orderMenu?.Note.Text == "" ? null : _orderMenu?.Note.Text, // Orion
                 _product?.ID ?? "",
                 orderAmt,
-                _orderMenu?.ToggleDepartmentSecureCrate.Pressed ?? false)); // Orion
+                _orderMenu?.ToggleDepartmentSecureCrate.Pressed ?? false, // Orion
+                _orderMenu?.TogglePrivatePurchase.Pressed ?? false)); // Orion
 
             return true;
         }

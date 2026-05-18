@@ -1,0 +1,19 @@
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+---
+description: Prototype, localization, and resource rules for SS14 content data.
+globs:
+  - Resources/**/*.yml
+  - Resources/**/*.ftl
+  - Resources/**/*.json
+alwaysApply: false
+---
+
+Read these skills before editing matching files:
+
+- @.agents/skills/ss14-naming-conventions/SKILL.md
+- @.agents/skills/ss14-upstream-maintenance/SKILL.md
+- @.agents/skills/ss14-ecs-prototypes/SKILL.md
+- @.agents/skills/ss14-localization-strings/SKILL.md
+- @.agents/skills/ss14-prototypes-locale/SKILL.md
+- @.agents/skills/ss14-graphics-generic-visualizer-appearance/SKILL.md

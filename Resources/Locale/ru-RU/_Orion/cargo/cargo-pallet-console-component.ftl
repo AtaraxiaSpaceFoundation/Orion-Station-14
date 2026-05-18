@@ -1,0 +1,12 @@
+cargo-pallet-tab-sales = Продажа товаров
+cargo-pallet-tab-analytics = Аналитика рынка
+cargo-pallet-market-increased-demand = Повышенный спрос
+cargo-pallet-market-decreased-demand = Пониженный спрос
+cargo-pallet-market-recent-changes = Последние изменения
+cargo-pallet-market-no-active-changes = Активных изменений рынка нет
+cargo-pallet-market-direction-up = повышение
+cargo-pallet-market-direction-down = понижение
+cargo-pallet-market-sequence = №{ $sequence }
+cargo-pallet-market-change-row = { $material }: { $direction }, { $percent }% (x{ $multiplier }) { $sequence }
+cargo-pallet-market-change-up = { $material } — спрос повышен: +{ $percent }% (x{ $multiplier }) { $sequence }
+cargo-pallet-market-change-down = { $material } — спрос понижен: -{ $percent }% (x{ $multiplier }) { $sequence }

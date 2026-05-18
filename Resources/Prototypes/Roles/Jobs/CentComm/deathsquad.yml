@@ -21,6 +21,10 @@
   icon: "JobIconDeathSquad" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 300
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:

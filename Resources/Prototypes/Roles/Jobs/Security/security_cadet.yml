@@ -117,6 +117,10 @@
   - SOP-Security
   # Orion-Edit-End
   goobcoins: 30 #Goob content
+  # Orion-Start
+  salary: 45
+  payrollDepartmentAccount: Security
+  # Orion-End
   access:
   - Security
   - Brig

@@ -49,8 +49,11 @@ public sealed class CargoPalletConsoleBoundUserInterface : BoundUserInterface
         if (state is not CargoPalletConsoleInterfaceState palletState)
             return;
 
+/* // Orion-Edit
         _menu?.SetEnabled(palletState.Enabled);
         _menu?.SetAppraisal(palletState.Appraisal);
         _menu?.SetCount(palletState.Count);
+*/
+        _menu?.UpdateState(palletState); // Orion
     }
 }

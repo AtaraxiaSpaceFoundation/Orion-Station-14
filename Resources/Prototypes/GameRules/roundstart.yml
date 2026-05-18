@@ -667,6 +667,14 @@
   id: BasicRoundstartVariation
   parent: BaseGameRule
   components:
+  # Orion-Start
+  - type: SubGamemodes
+    rules:
+    - id: Payday
+      prob: 1
+    - id: MarketShift
+      prob: 1
+  # Orion-End
   - type: RoundstartStationVariationRule
     rules:
     - id: BasicPoweredLightVariationPass

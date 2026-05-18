@@ -82,6 +82,10 @@
   supervisors: job-supervisors-ce
   guides: [ Engineering ] # goobstation
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 80
+  payrollDepartmentAccount: Engineering
+  # Orion-End
   access:
   - Maintenance
   - Engineering

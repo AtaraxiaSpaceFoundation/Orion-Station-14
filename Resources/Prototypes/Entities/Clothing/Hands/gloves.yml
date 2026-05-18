@@ -546,10 +546,11 @@
     sprite: Clothing/Hands/Gloves/northstar.rsi
   - type: MeleeWeapon
     altDisarm: true
-    attackRate: 10
+    autoAttack: true # Orion
+    attackRate: 8 # Orion-Edit: 10 > 8
     damage:
       types:
-       Blunt: 3
+       Blunt: 5 # Orion-Edit: 3 > 5
        Slash: 3
     soundHit:
       collection: Punch

@@ -209,6 +209,14 @@
     access: [["Salvage"]] # No Bitrunning :(
 
 - type: entity
+  parent: CrateBitrunSecure
+  id: CrateBitrunSecureReward
+  name: cache crate
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BitrunningDespawnOnOpen
+
+- type: entity
   parent: [ CrateBaseSecure, CrateCargo ]
   id: CrateCargoSecure
   components:

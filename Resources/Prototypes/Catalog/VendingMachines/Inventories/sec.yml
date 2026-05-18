@@ -84,3 +84,10 @@
   emaggedInventory: # Goobstation
     SarinGasGrenade: 1
     WeaponFlareGunSecurity: 2
+  # Orion-Start
+  prices:
+    Handcuffs: 35
+    Zipties: 35
+    BolaEnergy: 35
+    ClothingBeltSecurityWebbing: 300
+  # Orion-End

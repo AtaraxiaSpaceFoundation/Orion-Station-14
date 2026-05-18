@@ -18,3 +18,9 @@
 
 - type: playTimeTracker
   id: JobDeathSquadLeader
+
+- type: playTimeTracker
+  id: JobBitrunner
+
+- type: playTimeTracker
+  id: JobBitrunAvatar

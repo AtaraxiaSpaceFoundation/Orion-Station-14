@@ -67,7 +67,7 @@
   description: uplink-gondola-desc
   productEntity: CrateNPCGondola
   cost:
-    Telecrystal: 15 # Orion-Edit: 30 > 15
+    Telecrystal: 9 # Orion-Edit: 30 > 9
   categories:
     -  UplinkDisruption
   conditions:
@@ -97,7 +97,7 @@
   description: uplink-box-reagent-grenades-desc # Orion-Edit: Localization
   productEntity: BoxReagentGrenades
   cost:
-    Telecrystal: 30
+    Telecrystal: 21 # Orion-Edit: 30 > 21
   categories:
     -  UplinkDisruption
 
@@ -348,7 +348,7 @@
   icon: { sprite: _Goobstation/Clothing/Hands/Gloves/knuckleduster.rsi, state: syndicateknuckleduster }
   productEntity: ClothingHandsKnuckleDustersSyndicate
   cost:
-    Telecrystal: 20
+    Telecrystal: 22 # Orion-Edit: 20 > 22
   categories:
   - UplinkWeaponry
 
@@ -359,7 +359,7 @@
   icon: { sprite: /Textures/_Goobstation/Objects/Weapons/Guns/Rifles/m90.rsi, state: icon }
   productEntity: WeaponRifleM90
   cost:
-    Telecrystal: 50
+    Telecrystal: 60 # Orion-Edit: 50 > 60
   categories:
   - UplinkWeaponry
 
@@ -370,7 +370,7 @@
   icon: { sprite: _EinsteinEngines/Objects/Weapons/Guns/Battery/syndicate-disabler.rsi, state: base }
   productEntity: WeaponDisablerSyndicate
   cost:
-    Telecrystal: 20
+    Telecrystal: 15 # Orion-Edit: 20 > 15
   categories:
   - UplinkWeaponry
 
@@ -380,7 +380,7 @@
   description: uplink-fire-axe-flaming-desc
   productEntity: FireAxeFlaming
   cost:
-    Telecrystal: 60
+    Telecrystal: 48 # Orion-Edit: 60 > 48
   categories:
   - UplinkWeaponry
   conditions:
@@ -490,7 +490,7 @@
   description: uplink-anaconda-desc
   productEntity: WeaponPistolAnaconda
   cost:
-    Telecrystal: 38 # This + esword = 75 TC
+    Telecrystal: 36 # This + esword = 75 TC # Orion-Edit: 38 > 36
   categories:
   - UplinkWeaponry
   conditions:
@@ -552,7 +552,7 @@
   description: uplink-combat-shotgun-desc
   productEntity: WeaponShotgunCombat
   cost:
-    Telecrystal: 50
+    Telecrystal: 75 # Orion-Edit: 50 > 75
   categories:
     -  UplinkWeaponry
   conditions:
@@ -678,7 +678,7 @@
   icon: { sprite: /Textures/_Goobstation/Clothing/Hands/Gloves/guerrilla.rsi, state: icon }
   productEntity: ClothingHandsGlovesGuerrilla
   cost:
-    Telecrystal: 30
+    Telecrystal: 45 # Orion-Edit: 30 > 45
   categories:
   - UplinkWearables
   conditions:
@@ -819,7 +819,7 @@
   icon: { sprite: _Goobstation/Objects/Devices/communication.rsi, state: radio-syndiroach }
   productEntity: ReinforcementRadioSyndicateSyndiRoach
   cost:
-    Telecrystal: 30
+    Telecrystal: 23 # Orion-Edit: 30 > 23
   categories:
     - UplinkAllies
   conditions:
@@ -1188,7 +1188,7 @@
   icon: { sprite: Objects/Weapons/Guns/LMGs/l6.rsi, state: icon }
   productEntity: AutosurgeonRecoilAbsorber
   cost:
-    Telecrystal: 40
+    Telecrystal: 55 # Orion-Edit: 40 > 55
   categories:
   - UplinkImplants
   conditions:
@@ -1204,7 +1204,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/berserker_heart.rsi, state: icon }
   productEntity: AutosurgeonBerserker
   cost:
-    Telecrystal: 45 # Orion-Edit: 66 > 45
+    Telecrystal: 40 # Orion-Edit: 66 > 40
   categories:
   - UplinkImplants
   conditions:
@@ -1220,7 +1220,7 @@
   icon: { sprite: _Goobstation/Objects/Misc/jumpstarter_heart.rsi, state: icon }
   productEntity: AutosurgeonJumpstarter
   cost:
-    Telecrystal: 60
+    Telecrystal: 50 # Orion-Edit: 60 > 50
   categories:
   - UplinkImplants
   conditions:
@@ -1357,7 +1357,7 @@
   icon: { sprite: _Goobstation/Objects/Weapons/Guns/Ammunition/Magazine/heavy_rifle_mags.rsi, state: red }
   productEntity: MagazineHighCaliberExplosive
   cost:
-    Telecrystal: 12
+    Telecrystal: 7 # Orion-Edit: 12 > 7
   categories:
   - UplinkAmmo
   conditions:
@@ -1474,7 +1474,7 @@
   description: uplink-syndicate-weapon-module-advanced-desc
   productEntity: BorgModuleSyndicateWeaponAdvanced
   cost:
-    Telecrystal: 40 # goob
+    Telecrystal: 19 # goob # Orion-Edit: 40 > 19
   categories:
   - UplinkDisruption
   conditions:
@@ -1683,7 +1683,7 @@
   description: uplink-capoeira-desc
   productEntity: CapoeiraManual
   cost:
-    Telecrystal: 35
+    Telecrystal: 31 # Orion-Edit: 35 > 31
   categories:
   - UplinkWeaponry
 
@@ -1693,7 +1693,7 @@
   description: uplink-sleeping-carp-desc
   productEntity: SleepingCarpScroll
   cost:
-    Telecrystal: 70
+    Telecrystal: 76 # Orion-Edit: 70 > 76
   categories:
   - UplinkWeaponry
   conditions:
@@ -1807,9 +1807,18 @@
   categories:
   - UplinkWearables
   conditions:
-  - !type:BuyerSpeciesCondition
-    whitelist:
-    - Human
+  # Orion-Edit-Start
+#  - !type:BuyerSpeciesCondition
+#    whitelist:
+#    - Human
+  # Orion-Edit-End
+  # Orion-Start: Another cost for nukies
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+        - NukeOpsUplink
+        - ContravendUplink
+  # Orion-End
 
 - type: listing
   id: UplinkUndeterminedBundle
@@ -1857,7 +1866,7 @@
   icon: { sprite: _Goobstation/Objects/Fun/bloodred_cassette_player.rsi, state: icon }
   productEntity: BloodredCassette
   cost:
-    Telecrystal: 3
+    Telecrystal: 1 # Orion-Edit: 3 > 1
   categories:
   - UplinkPointless
 

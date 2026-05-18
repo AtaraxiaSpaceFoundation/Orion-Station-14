@@ -149,7 +149,7 @@
         Blunt: 26
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.5
-    baseSprintSpeed: 3.5 #Goobedit
+    baseSprintSpeed: 4 #Goobedit # Orion-Edit: 3.5 > 4
   - type: CanMoveInAir
   - type: MovementAlwaysTouching
   - type: StaticPrice
@@ -223,7 +223,7 @@
   - type: MovementAlwaysTouching
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
-    baseSprintSpeed: 2 #Goobedit
+    baseSprintSpeed: 2.6 #Goobedit # Orion-Edit: 2 > 2.6
   - type: StaticPrice
     price: 3000
   - type: Tag
@@ -349,7 +349,7 @@
         Structural: 200
   - type: MovementSpeedModifier
     baseWalkSpeed: 1
-    baseSprintSpeed: 1 #Goobedit
+    baseSprintSpeed: 1.5 #Goobedit # Orion-Edit: 1 > 1.5
   - type: Damageable
     damageModifierSet: HeavyArmorNT
   - type: CanMoveInAir
@@ -422,7 +422,7 @@
         Structural: 400
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.2
-    baseSprintSpeed: 2.2 
+    baseSprintSpeed: 3 # Orion-Edit: 2.2 > 3
   - type: Damageable
     damageModifierSet: HeavyArmorNT
   - type: CanMoveInAir
@@ -498,7 +498,7 @@
         Structural: 200
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.2
-    baseSprintSpeed: 2.2 #Goobedit
+    baseSprintSpeed: 3.7 #Goobedit # Orion-Edit: 2.2 > 3.7
   - type: Damageable
     damageModifierSet: MediumArmorSyndi
   - type: CanMoveInAir
@@ -571,7 +571,7 @@
         Structural: 400
   - type: MovementSpeedModifier
     baseWalkSpeed: 1
-    baseSprintSpeed: 1 #Goobedit
+    baseSprintSpeed: 1.5 #Goobedit # Orion-Edit: 1 > 1.5
   - type: Damageable
     damageModifierSet: HeavyArmorSyndi
   - type: CanMoveInAir

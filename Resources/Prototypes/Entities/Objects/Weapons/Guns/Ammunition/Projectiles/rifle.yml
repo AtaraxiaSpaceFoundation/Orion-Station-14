@@ -65,7 +65,7 @@
     damage:
       types:
         Blunt: 3
-        Heat: 3 # Orion-Edit: 2 > 3
+        Heat: 5 # Orion-Edit: 2 > 5
       armorPenetration: 0.1 # Orion
 
 - type: entity
@@ -77,6 +77,6 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 9
+        Radiation: 5 # Orion-Edit: 9 > 5
         Piercing: 10
-      armorPenetration: 0.1 # Orion
+      armorPenetration: 0.25 # Orion

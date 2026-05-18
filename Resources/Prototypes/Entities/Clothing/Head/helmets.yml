@@ -672,8 +672,8 @@
         Blunt: 0.35
         Slash: 0.35
         Piercing: 0.35
-        Heat: 0.35
-        Caustic: 0.35
+        Heat: 0.55 # Orion-Edit: 0.35 > 0.55
+        Caustic: 0.75 # Orion-Edit: 0.35 > 0.75
  # - type: HideLayerClothing  #Goobstation
  #   layers:
  #     Hair: HEAD

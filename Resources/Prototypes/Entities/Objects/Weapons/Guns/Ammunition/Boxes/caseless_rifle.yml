@@ -61,7 +61,7 @@
   name: ammunition box (9.5mm HP) # Goob edit
   components:
   - type: BallisticAmmoProvider
-    capacity: 200
+    capacity: 60 # Orion-Edit: 200 > 60
     proto: CartridgeCaselessRifle
   - type: Sprite
     layers:

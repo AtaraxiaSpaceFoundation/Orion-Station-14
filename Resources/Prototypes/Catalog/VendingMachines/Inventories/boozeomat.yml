@@ -147,3 +147,23 @@
     ChemistryBottleEthanol: 3
     DrinkBottleOfNothingFull: 1
     DrinkPoisonWinebottleFull: 2
+  # Orion-Start
+  prices:
+    DrinkGlass: 25
+    DrinkShotGlass: 20
+    DrinkGlassCoupeShaped: 25
+    DrinkFlaskBar: 200
+    DrinkVacuumFlask: 200
+    ChemistryBottleEthanol: 100
+    DrinkJuiceLemonCarton: 50
+    DrinkJuiceLimeCarton: 50
+    DrinkJuiceOrangeCarton: 50
+    DrinkMilkCarton: 50
+    DrinkCreamCarton: 50
+    DrinkJuiceTomatoCarton: 50
+    DrinkSodaWaterCan: 45
+    DrinkSolDryCan: 45
+    DrinkColaBottleFull: 45
+    DrinkBeerBottleFull: 45
+    DrinkBeerCan: 45
+  # Orion-End

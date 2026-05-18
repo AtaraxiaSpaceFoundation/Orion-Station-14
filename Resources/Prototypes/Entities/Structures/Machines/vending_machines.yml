@@ -290,6 +290,12 @@
     understands:
     - TauCetiBasic
     - RobotTalk
+  # Orion-Start
+  - type: VendingMachinePricing
+    departmentAccount: Cargo
+    defaultPrice: 25
+    extraPrice: 50
+  # Orion-End
 
 - type: entity
   id: VendingMachineWallmount
@@ -449,6 +455,11 @@
     guides:
     - Bartender
     - Drinks
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 55
+    extraPrice: 155
+  # Orion-End
 
 - type: entity
   parent: VendingMachineBooze
@@ -521,6 +532,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 100
+    extraPrice: 150
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -592,6 +608,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 150
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -628,6 +649,11 @@
   - type: Tag
     tags:
       - DroneUsable # Goobstation
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 35
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -713,6 +739,10 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    extraPrice: 60
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -757,6 +787,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineCola
@@ -829,6 +864,11 @@
     color: "#44964A"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineCola
@@ -863,6 +903,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -892,6 +937,11 @@
     autoRot: true
   - type: Transform
     noRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -928,6 +978,11 @@
     color: "#66538F"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -966,6 +1021,11 @@
     color: "#6927C5"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1004,6 +1064,11 @@
     color: "#D82929"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 45
+    extraPrice: 95
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1082,6 +1147,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 40
+    extraPrice: 75
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -1122,6 +1192,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 0
+    extraPrice: 0
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -1198,6 +1273,11 @@
   - type: Tag
     tags:
     - DroneUsable # Goobstation
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 150
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -1280,6 +1360,11 @@
     color: "#326e3f"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 40
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1326,7 +1411,11 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
-
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 150
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -1413,6 +1502,10 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 30
+  # Orion-End
 
 - type: entity
   parent: [VendingMachineSnack, VendingMachineOld] # Orion-Edit
@@ -1445,6 +1538,11 @@
     color: "#737785"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 0
+    extraPrice: 0
+  # Orion-End
 
 - type: entity
   parent: VendingMachineSnack
@@ -1624,6 +1722,11 @@
   - type: Tag
     tags:
     - DroneUsable # Goobstation
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 40
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1664,6 +1767,10 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 35
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1709,6 +1816,10 @@
   - type: GuideHelp
     guides:
     - Robotics
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 20
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1748,6 +1859,11 @@
   - type: Tag
     tags:
     - DroneUsable # Goobstation
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 150
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2017,6 +2133,11 @@
     color: "#d82929"
   - type: AccessReader
     access: [["Security"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2135,6 +2256,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Medical"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2163,6 +2289,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Chemistry"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2191,6 +2322,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Service"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2223,6 +2359,11 @@
     color: "#b89e2a"
   - type: AccessReader
     access: [["Engineering"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2255,6 +2396,11 @@
     color: "#b89e2a"
   - type: AccessReader
     access: [["Engineering"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2283,6 +2429,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Kitchen"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2311,6 +2462,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Detective"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2345,6 +2501,11 @@
     color: "#6927C5"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2373,6 +2534,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Research"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2405,6 +2571,11 @@
     color: "#d82929"
   - type: AccessReader
     access: [["NuclearOperative"], ["SyndicateAgent"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2433,6 +2604,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Research"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2461,6 +2637,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Medical"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2489,6 +2670,11 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Medical"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 50
+    extraPrice: 100
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2519,6 +2705,11 @@
     autoRot: true
   - type: AccessReader
     access: [["CentralCommand"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    defaultPrice: 150
+    extraPrice: 300
+  # Orion-End
 
 - type: entity
   parent: VendingMachine

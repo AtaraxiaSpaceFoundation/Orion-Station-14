@@ -24,7 +24,7 @@
     shape:
     - 0,0,2,1
   - type: Gun
-    fireRate: 12.5 # Reduced fireRate and increased projectileSpeed
+    fireRate: 13.5 # Reduced fireRate and increased projectileSpeed # Orion-Edit: 12.5 > 13.5
     projectileSpeed: 30
     minAngle: 15 # More controlled than before
     maxAngle: 55

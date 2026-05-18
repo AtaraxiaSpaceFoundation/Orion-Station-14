@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 XAML UI"
+  short_description: "XAML windows, controls, styles, and localized UI layout"
+  default_prompt: "Use $ss14-ui-xaml for SS14 XAML windows, controls, styles, and UI layout work."

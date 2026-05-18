@@ -53,3 +53,12 @@
     ClothingHandsGlovesColorYellow: 1
   emaggedInventory: # goob
     ClothingHandsGlovesExplosiveShock: 1
+  # Orion-Start
+  prices:
+    CableApcStack: 20
+    GasAnalyzer: 25
+    trayScanner: 20
+    ClothingBeltUtility: 100
+    Multitool: 150
+    ClothingHandsGlovesColorYellow: 600
+  # Orion-End

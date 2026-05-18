@@ -130,3 +130,17 @@
   icon:
     sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
     state: SalvageSpecialist
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBitrunner
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: Bitrunner
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBitrunAvatar
+  icon:
+    sprite: /Textures/_Orion/Interface/Misc/job_icons.rsi
+    state: Bitrun-Avatar
