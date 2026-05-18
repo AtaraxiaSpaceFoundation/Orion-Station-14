@@ -17,7 +17,11 @@
   - PowerCellMedium
   - PowerCellHigh
   - MegaCellHigh
+  - CapacitorStockPart
+  - ScanningModuleStockPart
   - MicroServoStockPart
+  - MicroLaserStockPart
+  - MatterBinStockPart
   - Igniter
   - ProximitySensor
   - RemoteSignaller
@@ -47,6 +51,11 @@
   recipeUnlocks:
   - PowerCellSuper
   - MegaCellSuper
+  - AdvancedCapacitorStockPart
+  - AdvancedScanningModuleStockPart
+  - NanoServoStockPart
+  - HighPowerMicroLaserStockPart
+  - AdvancedMatterBinStockPart
   position: 12,5
 
 - type: technology
@@ -72,6 +81,11 @@
   recipeUnlocks:
   - PowerCellHyper
   - MegaCellHyper
+  - SuperCapacitorStockPart
+  - PhasicScanningModuleStockPart
+  - PicoServoStockPart
+  - UltraHighPowerMicroLaserStockPart
+  - SuperMatterBinStockPart
   position: 12,6
 
 - type: technology
@@ -99,6 +113,11 @@
   - PowerCellBluespace
   - MegaCellBluespace
   - PowerCellBluespaceReactor
+  - BluespaceCapacitorStockPart
+  - TriphasicScanningModuleStockPart
+  - FemtoServoStockPart
+  - QuadUltraMicroLaserStockPart
+  - BluespaceMatterBinStockPart
   position: 12,7
 
 - type: technology
@@ -124,6 +143,7 @@
     ScanningPointsMachineryTieredScanTier3Any: 2000
   recipeUnlocks:
   - PowerCellVortex
+  # TODO: Tier 5
   position: 12,8
 
 - type: technology
