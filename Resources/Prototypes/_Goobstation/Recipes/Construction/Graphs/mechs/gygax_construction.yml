@@ -88,6 +88,7 @@
 
       # Orion-Start
       - machinePart: Servo
+        name: construction-graph-tag-servo
         icon:
           sprite: "Objects/Misc/stock_parts.rsi"
           state: "micro_mani"
