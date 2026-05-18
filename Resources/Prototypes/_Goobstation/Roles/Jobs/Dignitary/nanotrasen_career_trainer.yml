@@ -12,6 +12,10 @@
   canBeAntag: false
   whitelisted: true # 1984
   setPreference: false # 1984 x2
+  # Orion-Start
+  salary: 120
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:

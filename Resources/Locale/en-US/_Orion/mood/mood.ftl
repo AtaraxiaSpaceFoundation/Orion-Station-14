@@ -159,3 +159,6 @@ mood-effect-DeepFriedEffect =
     I ate something deep fried! It was the tastiest thing I've ever had in my life!
 mood-effect-TastyEffect =
     That was really tasty!
+
+# Crab-17
+mood-effect-LostMoneyCrab17 = I lost a lot of money in that market crash...

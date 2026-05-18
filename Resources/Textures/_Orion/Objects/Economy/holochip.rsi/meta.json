@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from TG Station",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+        "name": "holochip"
+    },
+    {
+        "name": "holochip-color"
+    },
+    {
+        "name": "holochip_kilo"
+    },
+    {
+        "name": "holochip_kilo-color"
+    },
+    {
+        "name": "holochip_mega"
+    },
+    {
+        "name": "holochip_mega-color"
+    },
+    {
+        "name": "holochip_giga"
+    },
+    {
+        "name": "holochip_giga-color"
+    }
+  ]
+}

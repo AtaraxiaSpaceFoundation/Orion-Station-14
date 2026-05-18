@@ -151,6 +151,10 @@
 #  - CargoSOP
 #  - Command
   goobcoins: 40 #Goob content
+  # Orion-Start
+  salary: 100
+  payrollDepartmentAccount: Command
+  # Orion-End
   access:
   - Cargo
   - Salvage

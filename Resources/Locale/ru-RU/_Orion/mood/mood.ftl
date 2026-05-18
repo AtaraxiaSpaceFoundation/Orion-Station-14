@@ -259,3 +259,6 @@ mood-effect-DeepFriedEffect =
     }
 mood-effect-TastyEffect =
     Это было очень вкусно!
+
+# Crab-17
+mood-effect-LostMoneyCrab17 = Я потерял слишком много денег из-за этого обвала...

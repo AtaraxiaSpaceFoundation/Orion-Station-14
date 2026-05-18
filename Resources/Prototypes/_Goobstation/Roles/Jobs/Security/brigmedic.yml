@@ -25,6 +25,10 @@
   # Orion-Edit-End
   - Medicine
   goobcoins: 35
+  # Orion-Start
+  salary: 80
+  payrollDepartmentAccount: Security
+  # Orion-End
   access: # EE parity, make corpsman able function.
   - Security
   - Brig

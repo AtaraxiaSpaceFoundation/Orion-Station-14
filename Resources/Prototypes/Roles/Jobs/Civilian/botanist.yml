@@ -71,6 +71,10 @@
   supervisors: job-supervisors-hop
   guides: [ Botany ] # goobstation
   goobcoins: 15 #Goob content
+  # Orion-Start
+  salary: 55
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Service
   - Maintenance

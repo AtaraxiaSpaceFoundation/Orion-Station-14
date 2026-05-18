@@ -83,6 +83,10 @@
 #  - Salvage
 #  - Cargo
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 85
+  payrollDepartmentAccount: Cargo
+  # Orion-End
   supervisors: job-supervisors-qm
   access:
   - Cargo

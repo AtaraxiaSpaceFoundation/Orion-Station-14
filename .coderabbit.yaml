@@ -1,27 +1,205 @@
 language: ru-RU
 
 early_access: true
+tone_instructions: "Пиши кратко, технически и по делу. Приоритет: баги, регрессии, prediction, локализация, assembly placement и рискованные upstream-правки. Избегай поэм и пустых похвал. Всегда отвечай на русском языке (ru-RU) во всех review-комментариях, summary и suggested changes."
 
 chat:
   auto_reply: true
 
 reviews:
   auto_apply_labels: true
-  drafts: true
+  review_status: true
+  review_details: true
+  collapse_walkthrough: false
+  in_progress_fortune: false
+  poem: false
+  suggested_labels: false
+  enable_prompt_for_ai_agents: true
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  high_level_summary_in_walkthrough: true
+  high_level_summary_instructions: |
+    При составлении summary учитывай особенности этого SS14-форка.
+
+    Включай только применимые блоки:
+    - Главное изменение: что реально поменялось для кода, контента или воркфлоу.
+    - Prediction / networking: что ушло в Shared, что стало сетевым, где есть риск миспредикта.
+    - Resources / localization: какие прототипы, FTL, RSI meta или другие ресурсные данные были затронуты.
+    - Validation / risk: что проверено, чего не хватает, где есть риск регрессии.
+
+    Явно отмечай:
+    - breaking prototype IDs или переезды файлов;
+    - missing locale updates для player-facing изменений;
+    - engine-side или широкие upstream-правки;
+    - отсутствие тестов или runtime-проверки, если изменение выглядит рискованным.
+
+    Не пересказывай diff построчно и не засоряй summary общими словами.
+
   labeling_instructions:
     - label: "Feature"
-      instructions: "Применить лейбл, если название PR содержит [Feature], или чекбокс рядом с Feature, в описании PR имеет [x]."
+      instructions: "Применить лейбл, если название PR содержит [Feature], или чекбокс рядом с Feature, в описании PR имеет [x]. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Fix"
-      instructions: "Применить лейбл, если название PR содержит [Fix], или чекбокс рядом с Fix, в описании PR имеет [x]. Также добавляется, если в описании PR есть текст о том что это исправление с ссылкой на PR/коммит в котором была ошибка."
+      instructions: "Применить лейбл, если название PR содержит [Fix], или чекбокс рядом с Fix, в описании PR имеет [x]. Также добавляется, если в описании PR есть текст о том что это исправление с ссылкой на PR/коммит в котором была ошибка. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Port"
-      instructions: "Применить лейбл, если название PR содержит [Port], или чекбокс рядом с Port, в описании PR имеет [x]. Также добавляется, если в описании PR есть ссылка на оригинальный PR/коммит, с которого были взяты изменения."
+      instructions: "Применить лейбл, если название PR содержит [Port], или чекбокс рядом с Port, в описании PR имеет [x]. Также добавляется, если в описании PR есть ссылка на оригинальный PR/коммит, с которого были взяты изменения. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Tweak"
-      instructions: "Применить лейбл, если название PR содержит [Tweak], или чекбокс рядом с Tweak, в описании PR имеет [x]."
+      instructions: "Применить лейбл, если название PR содержит [Tweak], или чекбокс рядом с Tweak, в описании PR имеет [x]. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Balance"
-      instructions: "Применить лейбл, если название PR содержит [Balance], или чекбокс рядом с Balance, в описании PR имеет [x]. Также добавляется, если вносятся множественные изменения в существующие предметы, урон, значения, здоровье и так далее."
+      instructions: "Применить лейбл, если название PR содержит [Balance], или чекбокс рядом с Balance, в описании PR имеет [x]. Также добавляется, если вносятся множественные изменения в существующие предметы, урон, значения, здоровье и так далее. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Refactor"
-      instructions: "Применить лейбл, если название PR содержит [Refactor], или чекбокс рядом с Refactor, в описании PR имеет [x]. Также добавляется, если происходит рефактор кода, а именно изменение больше чем 50% кода, при этом не изменяя его логики."
+      instructions: "Применить лейбл, если название PR содержит [Refactor], или чекбокс рядом с Refactor, в описании PR имеет [x]. Также добавляется, если происходит рефактор кода, а именно изменение больше чем 50% кода, при этом не изменяя его логики. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Translate"
-      instructions: "Применить лейбл, если название PR содержит [Translate], или чекбокс рядом с Translate, в описании PR имеет [x]. Также добавляется, если вносятся новые локализации."
+      instructions: "Применить лейбл, если название PR содержит [Translate], или чекбокс рядом с Translate, в описании PR имеет [x]. Также добавляется, если вносятся новые локализации. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
     - label: "Resprite"
-      instructions: "Применить лейбл, если название PR содержит [Resprite], или чекбокс рядом с Resprite, в описании PR имеет [x]."
+      instructions: "Применить лейбл, если название PR содержит [Resprite], или чекбокс рядом с Resprite, в описании PR имеет [x]. Не нужно удалять тэг, если он всё ещё актуален для этого PR."
+
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    auto_pause_after_reviewed_commits: 10
+    drafts: true
+    ignore_title_keywords:
+      - "WIP"
+      - "DO NOT MERGE"
+      - "[skip review]"
+    ignore_usernames:
+      - "dependabot[bot]"
+      - "renovate[bot]"
+      - "github-actions[bot]"
+  pre_merge_checks:
+    description:
+      mode: warning
+    issue_assessment:
+      mode: warning
+    docstrings:
+      mode: off
+  path_filters:
+    - "!**/*.DotSettings"
+  path_instructions:
+    - path: "Content.Shared/**/*.cs"
+      instructions: |
+        Review Content.Shared as shared gameplay and prediction code:
+        - Shared owns replicated state, shared events, prediction, and data both client and server must understand.
+        - Flag client-only or server-only dependencies in Shared.
+        - For local-player actions, verify prediction support instead of accepting delayed server-only UX.
+        - When state is networked, check NetworkedComponent, AutoGenerateComponentState, AutoNetworkedField, and Dirty/DirtyField usage.
+        - Prefer entity-system APIs and Entity<T?> / Resolve patterns over ad-hoc tuples or old-style access.
+        - Flag EntityUid.Invalid used as a "missing" sentinel.
+
+    - path: "Content.Server/**/*.cs"
+      instructions: |
+        Review Content.Server for authority and fork-maintenance discipline:
+        - Server owns authority, persistence, round logic, and non-predicted side effects.
+        - If a player action should feel immediate, call out missing shared prediction rather than accepting a server-only path.
+        - Keep upstream diffs narrow and prefer fork-scoped extensions over broad edits to upstream behavior.
+        - When player-visible behavior changes, check whether matching prototype and locale updates are missing.
+
+    - path: "Content.Client/**/*.cs"
+      instructions: |
+        Review Content.Client for presentation-only behavior:
+        - Keep authority out of the client.
+        - Prefer reading already-networked component state instead of duplicating BUI state unless the pattern requires it.
+        - Flag missing localization for player-visible text.
+        - Prefer nearby established UI and visual patterns over custom one-off structures.
+
+    - path: "Content.Client/**/*.xaml"
+      instructions: |
+        Review XAML with SS14 UI conventions in mind:
+        - Prefer XAML-first UI instead of building full layouts in C#.
+        - Reuse nearby FancyWindow, stylesheet, and control patterns.
+        - Flag unlocalized player-facing text and unnecessary duplication of existing layout or styling patterns.
+
+    - path: "Resources/Prototypes/**/*.yml"
+      instructions: |
+        Review SS14 prototypes carefully:
+        - Use the narrowest existing subtree and avoid duplicating nearby prototype files or parent trees.
+        - Keep entity field order as: type, abstract, parent, id, categories, name, suffix, description, components.
+        - Prefer base.yml for parent trees and sibling files for variants.
+        - Do not add blank lines inside components lists.
+        - Call out broken inheritance, risky prototype ID changes, missing paired locale updates, and Appearance / GenericVisualizer mismatches.
+
+    - path: "Resources/Locale/**/*.ftl"
+      instructions: |
+        Treat localization as mandatory:
+        - Every player-facing string should be localized.
+        - Prefer specific kebab-case keys.
+        - Flag raw strings in code or gameplay/resource changes that are missing locale updates.
+        - Check consistency when prototype names, descriptions, markings, or UI text changed.
+
+    - path: "Resources/**/*.json"
+      instructions: |
+        Review resource JSON files for path correctness and consistency.
+        For RSI meta.json files, check ordering, state/layout consistency, and whether referenced prototypes or visualizers still match the available states.
+
+    - path: "Content.Tests/**/*.cs"
+      instructions: |
+        Prefer the smallest meaningful test layer:
+        - Use Content.Tests for shared logic, parsing, prototype loading, and focused content validation.
+        - Flag tests that are much broader than necessary.
+        - If a risky gameplay or resource change is untested, call out the missing focused coverage.
+
+    - path: "Content.IntegrationTests/**/*.cs"
+      instructions: |
+        Integration tests should justify their runtime cost:
+        - Flag scenarios that could be covered in Content.Tests instead.
+        - Check fixture usage, determinism, and whether the test really needs runtime orchestration or multi-side interaction.
+
+    - path: ".agents/**/*.md"
+      instructions: |
+        These files are the canonical AI guidance pack for the repository.
+        Review for broken relative links, stale file paths, conflicting instructions, and drift against AGENTS.md, .github instructions, .cursor rules, CLAUDE.md, and GEMINI.md.
+
+    - path: ".github/**/*.md"
+      instructions: |
+        Review repository-facing docs and templates for consistency with AGENTS.md and this .coderabbit.yaml.
+        If a template could improve CodeRabbit output or linked-issue validation, call that out explicitly.
+
+    - path: ".github/workflows/**/*.yml"
+      instructions: |
+        Review workflows for trigger correctness, referenced file paths, action usage, and overlap with existing validation jobs.
+        Flag workflow logic that is brittle, redundant, or accidentally inconsistent with this repo's actual validation paths.
+
+  tools:
+    ast-grep:
+      enabled: true
+      essential_rules: true
+    actionlint:
+      enabled: true
+    github-checks:
+      enabled: true
+      timeout_ms: 180000
+    gitleaks:
+      enabled: true
+    markdownlint:
+      enabled: true
+    psscriptanalyzer:
+      enabled: true
+    shellcheck:
+      enabled: true
+    yamllint:
+      enabled: true
+
+knowledge_base:
+  code_guidelines:
+    enabled: true
+  learnings:
+    scope: "local"
+  issues:
+    scope: "local"
+  pull_requests:
+    scope: "local"
+  web_search:
+    enabled: true
+
+issue_enrichment:
+  auto_enrich:
+    enabled: true
+  planning:
+    enabled: true
+    auto_planning:
+      enabled: true
+      labels:
+        - "plan-me"
+        - "feature"
+        - "!no-plan"

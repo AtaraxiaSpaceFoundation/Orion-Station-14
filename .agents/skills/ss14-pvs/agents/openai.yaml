@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 PVS"
+  short_description: "PVS, visibility, networking interest, and ghost/debug visibility"
+  default_prompt: "Use $ss14-pvs for SS14 PVS, visibility, and network-interest work."

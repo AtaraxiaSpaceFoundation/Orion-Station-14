@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 Atmos"
+  short_description: "Atmospherics, gases, fire, pipes, and atmos UI"
+  default_prompt: "Use $ss14-atmos for SS14 atmospherics, gas, fire, pipe, and atmos device work."

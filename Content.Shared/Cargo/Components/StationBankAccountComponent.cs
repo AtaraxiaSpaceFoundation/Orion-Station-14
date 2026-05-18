@@ -41,6 +41,7 @@ public sealed partial class StationBankAccountComponent : Component
         { "Science",     1000 },
         { "Security",    1000 },
         { "Service",     1000 },
+        { "Command",     3000 }, // Orion
     };
 
     /// <summary>
@@ -55,6 +56,7 @@ public sealed partial class StationBankAccountComponent : Component
         { "Science",     0.20 },
         { "Security",    0.20 },
         { "Service",     0.20 },
+        { "Command",     0.00 }, // Orion
     };
 
     /// <summary>
@@ -74,6 +76,13 @@ public sealed partial class StationBankAccountComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan IncomeDelay = TimeSpan.FromSeconds(50);
+
+    // Orion-Start
+    /// <summary>
+    /// Next payout time for prototype-driven periodic budget funding.
+    /// </summary>
+    public Dictionary<ProtoId<CargoAccountPrototype>, TimeSpan> NextBudgetFundingTime = new();
+    // Orion-End
 }
 
 /// <summary>

@@ -78,6 +78,7 @@ cargo-console-paper-print-text = [head=2]Order #{$orderNumber}[/head]
 
     {"[head=3]Order Information[/head]"}
     {"[bold]Payer[/bold]:"} {$account} [font="Monospace"]\[{$accountcode}\][/font]
+    { $privateBuyerLine }
     {"[bold]Approved by:[/bold]"} {$approver}
     {"[bold]Reason:[/bold]"} {$reason}
 

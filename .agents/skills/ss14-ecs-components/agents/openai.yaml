@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 ECS Components"
+  short_description: "Component design, fields, and networking for SS14"
+  default_prompt: "Use $ss14-ecs-components to create or review SS14 ECS components in this repo."

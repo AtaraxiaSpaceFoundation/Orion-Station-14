@@ -124,6 +124,10 @@
   icon: "JobIconERTLeader" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 200
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:
@@ -204,6 +208,10 @@
   icon: "JobIconERTChaplain" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 180
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:
@@ -306,6 +314,10 @@
   icon: "JobIconERTEngineer" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 180
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:
@@ -394,6 +406,10 @@
   icon: "JobIconERTOfficer" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 180
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:
@@ -501,6 +517,10 @@
   icon: "JobIconERTMedical" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 180
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:
@@ -587,6 +607,10 @@
   icon: "JobIconERTJanitor" # Orion-Edit: Custom icon
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 180
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:

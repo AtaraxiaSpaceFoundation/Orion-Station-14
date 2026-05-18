@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 Prototypes and Locale"
+  short_description: "Resources, prototypes, YAML, FTL, and RSIs"
+  default_prompt: "Use $ss14-prototypes-locale to edit SS14 resources, prototypes, localization, or sprite metadata."

@@ -1,0 +1,91 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from TG Station",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "hologram"
+        },
+        {
+            "name": "screen_lines",
+            "delays": [
+                [
+                    0.9,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "screen",
+            "delays": [
+                [
+                    0.9,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "text",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "holosign",
+            "delays": [
+                [
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15
+                ]
+            ]
+        },
+        {
+            "name": "flaps"
+        },
+        {
+            "name": "hatch"
+        },
+        {
+            "name": "legs",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "legs_retracted"
+        },
+        {
+            "name": "bogdanoff"
+        },
+        {
+            "name": "legs_extending"
+        },
+        {
+            "name": "legs_extended"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: SuspiciousPhone
+  name: suspicious phone
+  description: This device raises pink levels to unknown highs.
+  suffix: Crab-17
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Devices/suspicious_phone.rsi
+    state: icon
+  - type: ProtocolCrab17Phone

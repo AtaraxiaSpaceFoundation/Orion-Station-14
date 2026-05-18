@@ -1,0 +1,111 @@
+# <!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+# SS14 repository execution policy.
+
+prefix_rule(
+    pattern = ["dotnet", ["restore", "build", "test"]],
+    decision = "allow",
+    justification = "Restore, build, and test are standard repository-local SS14 workflows.",
+    match = [
+        "dotnet restore",
+        "dotnet build --configuration DebugOpt --no-restore /m",
+        "dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj",
+    ],
+)
+
+prefix_rule(
+    pattern = ["dotnet", "run", "--project", "Content.YAMLLinter/Content.YAMLLinter.csproj"],
+    decision = "allow",
+    justification = "The repo YAML linter is a safe local validation step.",
+    match = [
+        "dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj",
+        "dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build",
+    ],
+)
+
+prefix_rule(
+    pattern = ["py", "-3", "Schemas/validate_rsis.py"],
+    decision = "allow",
+    justification = "The repo RSI validator is a safe local validation step.",
+    match = [
+        "py -3 Schemas/validate_rsis.py Resources",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", ["status", "diff", "show", "log"]],
+    decision = "allow",
+    justification = "Read-only git inspection is safe.",
+    match = [
+        "git status",
+        "git diff",
+        "git show HEAD~1",
+        "git log --oneline -5",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Pushing publishes work to a remote and should stay explicit.",
+    match = [
+        "git push",
+        "git push origin my-branch",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", ["pr", "issue", "repo"]],
+    decision = "prompt",
+    justification = "GitHub operations against the remote should stay explicit.",
+    match = [
+        "gh pr view 10",
+        "gh pr create --fill",
+        "gh issue view 42",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", ["switch", "checkout", "pull", "merge", "rebase", "stash", "submodule"]],
+    decision = "prompt",
+    justification = "Git commands that move the worktree, rewrite history, or update submodules can disrupt in-progress SS14 work.",
+    match = [
+        "git switch master",
+        "git checkout -b test-branch",
+        "git pull --rebase",
+        "git merge master",
+        "git rebase master",
+        "git stash push -u",
+        "git submodule update --init --recursive",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "forbidden",
+    justification = "Hard reset discards local work. Use git status/diff or restore specific files intentionally.",
+    match = [
+        "git reset --hard",
+        "git reset --hard HEAD~1",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "clean"],
+    decision = "prompt",
+    justification = "git clean can delete local maps, assets, generated files, and test output. Preview with git clean -nd first.",
+    match = [
+        "git clean -fd",
+        "git clean -fdx",
+    ],
+)
+
+prefix_rule(
+    pattern = ["rm", ["-rf", "-fr"]],
+    decision = "forbidden",
+    justification = "Recursive delete is too risky in this repo. Remove files explicitly and review the target first.",
+    match = [
+        "rm -rf .",
+        "rm -fr Resources/Textures",
+    ],
+)

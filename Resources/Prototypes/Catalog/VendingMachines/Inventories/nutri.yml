@@ -50,3 +50,8 @@
     Chainsaw: 1 #Goob
     Joint: 1
     ChemistryBottleLeft4Zed: 1
+  # Orion-Start
+  prices:
+    Dropper: 25
+    Syringe: 25
+  # Orion-End

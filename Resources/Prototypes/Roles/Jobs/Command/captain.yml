@@ -163,6 +163,10 @@
 #  - StandardProceduresSOP
 #  - CaptainSOP
   goobcoins: 50 #Goob content
+  # Orion-Start
+  salary: 140
+  payrollDepartmentAccount: Command
+  # Orion-End
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"

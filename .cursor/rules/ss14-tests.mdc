@@ -1,0 +1,18 @@
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+---
+description: Test-layer selection and authoring rules for SS14 content and integration coverage.
+globs:
+  - Content.Tests/**/*.cs
+  - Content.IntegrationTests/**/*.cs
+alwaysApply: false
+---
+
+Read these skills before editing matching files:
+
+- @.agents/skills/ss14-tests-authoring/SKILL.md
+- @.agents/skills/ss14-naming-conventions/SKILL.md
+- @.agents/skills/ss14-upstream-maintenance/SKILL.md
+
+- Prefer the smallest test layer that covers the risk.
+- Keep test additions focused on the changed behavior.

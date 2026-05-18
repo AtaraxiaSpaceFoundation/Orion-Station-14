@@ -64,6 +64,10 @@
   supervisors: job-supervisors-science
   guides: [ Science ] # goobstation
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 40
+  payrollDepartmentAccount: Science
+  # Orion-End
   access:
   - Research
   - Maintenance

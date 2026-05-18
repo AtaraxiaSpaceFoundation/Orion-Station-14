@@ -11,6 +11,10 @@
   icon: "JobIconVirologist"
   supervisors: job-supervisors-cmo
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 85
+  payrollDepartmentAccount: Medical
+  # Orion-End
   guides:
   - MedicalDoctor
   - Medical

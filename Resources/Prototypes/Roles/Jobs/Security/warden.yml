@@ -157,6 +157,10 @@
   # Orion-Edit-End
   - KravMaga
   goobcoins: 35 #Goob content
+  # Orion-Start
+  salary: 90
+  payrollDepartmentAccount: Security
+  # Orion-End
   access:
   - Security
   - Brig

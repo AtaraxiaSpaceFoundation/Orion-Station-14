@@ -1,0 +1,27 @@
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+---
+description: C# ECS, events, prediction, and upstream-maintenance rules for SS14 gameplay code.
+globs:
+  - Content.Shared/**/*.cs
+  - Content.Server/**/*.cs
+  - Content.Client/**/*.cs
+  - Content.Tests/**/*.cs
+  - Content.IntegrationTests/**/*.cs
+alwaysApply: false
+---
+
+Apply @.agents/rules/ss14-interaction-flow.md
+Apply @.agents/rules/ss14-csharp-style.md
+
+Read these skills before editing matching files:
+
+- @.agents/skills/ss14-naming-conventions/SKILL.md
+- @.agents/skills/ss14-upstream-maintenance/SKILL.md
+- @.agents/skills/ss14-ecs-components/SKILL.md
+- @.agents/skills/ss14-ecs-entities/SKILL.md
+- @.agents/skills/ss14-ecs-systems/SKILL.md
+- @.agents/skills/ss14-events/SKILL.md
+- @.agents/skills/ss14-prediction/SKILL.md
+- @.agents/skills/ss14-netcode/SKILL.md
+- @.agents/skills/ss14-localization-code/SKILL.md

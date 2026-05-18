@@ -156,14 +156,18 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
         }
 
-        var (entity, job, objectives, briefing, entityName) = data;
+        var (entity, job, objectives, briefing, bankAccountId, entityName) = data; // Orion-Edit
 
         _window.SpriteView.SetEntity(entity);
 
         UpdateRoleType();
 
         _window.NameLabel.Text = entityName;
-        _window.SubText.Text = job;
+        // Orion-Edit-Start
+        _window.SubText.Text = bankAccountId == null
+            ? job
+            : Loc.GetString("character-info-job-with-account", ("job", job), ("account", bankAccountId));
+        // Orion-Edit-End
         _window.Objectives.RemoveAllChildren();
         _window.ObjectivesLabel.Visible = objectives.Any();
 

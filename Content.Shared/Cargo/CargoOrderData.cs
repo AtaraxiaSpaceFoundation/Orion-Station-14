@@ -91,6 +91,14 @@ namespace Content.Shared.Cargo
         public string? Note { get; private set; }
 
         public bool SecuredDelivery;
+
+        [DataField]
+        public string? PrivateBuyerAccountId { get; private set; }
+
+        [DataField]
+        public string? PrivateBuyerName { get; private set; }
+
+        public bool PaidPrivately => !string.IsNullOrWhiteSpace(PrivateBuyerAccountId);
         // Orion-End
 
         [DataField]
@@ -139,5 +147,19 @@ namespace Content.Shared.Cargo
             }
             Approver = sb.ToString();
         }
+
+        // Orion-Start
+        public void SetPrivateBuyerData(string accountId, string buyerName)
+        {
+            if (string.IsNullOrWhiteSpace(accountId))
+                throw new ArgumentException("Private buyer account ID cannot be empty.", nameof(accountId));
+
+            if (string.IsNullOrWhiteSpace(buyerName))
+                throw new ArgumentException("Private buyer name cannot be empty.", nameof(buyerName));
+
+            PrivateBuyerAccountId = accountId;
+            PrivateBuyerName = buyerName;
+        }
+        // Orion-End
     }
 }
