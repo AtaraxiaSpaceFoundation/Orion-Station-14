@@ -508,7 +508,7 @@ namespace Content.Server.Lathe
             if (component.Queue.Count > 0)
             {
                 // Orion-Edit-Start
-                var totalMaterials = new Dictionary<ProtoId<MaterialPrototype>, int>();
+                var totalMaterials = new Dictionary<string, int>();
 
                 foreach (var refund in component.QueuedMaterialRefunds)
                 {
@@ -519,7 +519,7 @@ namespace Content.Server.Lathe
                 }
                 // Orion-Edit-End
 
-                if(_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
+                if (_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
                 {
                     foreach (var (mat, amount) in totalMaterials)
                     {
