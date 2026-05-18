@@ -45,7 +45,7 @@ public sealed class PartExchangerSystem : EntitySystem
         if (args.Target is not { } target)
             return;
 
-        if (!HasComp<MachineComponent>(target))
+        if (!HasComp<MachineComponent>(target) && !HasComp<MachineFrameComponent>(target))
             return;
 
         if (TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
@@ -163,6 +163,41 @@ public sealed class PartExchangerSystem : EntitySystem
             }
 
             if (requiredCount > 0)
+                continue;
+
+            var selectedParts = selected
+                .Select(partUid => _construction.GetMachinePartState(partUid, out var state) ? state : (MachinePartState?) null)
+                .Where(state => state != null)
+                .Select(state => state!.Value)
+                .OrderByDescending(state => state.Part.Tier)
+                .ToList();
+            var currentParts = current
+                .Select(part => part.State)
+                .OrderByDescending(state => state.Part.Tier)
+                .ToList();
+
+            if (selectedParts.Count != currentParts.Count)
+                continue;
+
+            var hasUpgrade = false;
+            var hasDowngrade = false;
+
+            for (var i = 0; i < currentParts.Count; i++)
+            {
+                var tierDelta = selectedParts[i].Part.Tier - currentParts[i].Part.Tier;
+
+                switch (tierDelta)
+                {
+                    case > 0:
+                        hasUpgrade = true;
+                        break;
+                    case < 0:
+                        hasDowngrade = true;
+                        break;
+                }
+            }
+
+            if (hasDowngrade || !hasUpgrade)
                 continue;
 
             foreach (var newUid in selected)
