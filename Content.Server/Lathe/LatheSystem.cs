@@ -527,6 +527,11 @@ namespace Content.Server.Lathe
                     }
                     component.Queue.Clear();
                     component.QueuedMaterialRefunds.Clear(); // Orion
+
+                    // Orion-Start
+                    if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))
+                        printerComponent.Queue.Clear();
+                    // Orion-End
                 }
                 else
                 {

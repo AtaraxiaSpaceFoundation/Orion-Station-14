@@ -66,11 +66,11 @@
       - id: ToolboxElectricalFilled
       - id: ToolboxMechanicalFilled
       # Orion-Start
-      - CapacitorStockPart
-      - ScanningModuleStockPart
-      - MicroServoStockPart # Orion-Edit: Servo
-      - MicroLaserStockPart
-      - MatterBinStockPart
+      - id: CapacitorStockPart
+      - id: ScanningModuleStockPart
+      - id: MicroServoStockPart # Orion-Edit: Servo
+      - id: MicroLaserStockPart
+      - id: MatterBinStockPart
       # Orion-End
     # Rare Group
     - !type:GroupSelector

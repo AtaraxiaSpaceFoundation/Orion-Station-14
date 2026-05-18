@@ -15,4 +15,4 @@
         Cable: 4
         Glass: 2
       partRequirements: # Orion
-        Servo: 4
+        Capacitor: 1

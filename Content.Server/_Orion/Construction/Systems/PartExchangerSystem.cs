@@ -153,15 +153,21 @@ public sealed class PartExchangerSystem : EntitySystem
             if (requiredCount > 0)
                 continue;
 
+            foreach (var newUid in selected)
+            {
+                _container.TryRemoveFromContainer(newUid, force: true);
+            }
+
             foreach (var (oldUid, _) in current)
             {
                 _container.RemoveEntity(target, oldUid);
-                _storage.Insert(uid, oldUid, out _, playSound: false);
+
+                if (!_storage.Insert(uid, oldUid, out _, playSound: false))
+                    _container.Insert(oldUid, machine.PartContainer, force: true);
             }
 
             foreach (var newUid in selected)
             {
-                _container.TryRemoveFromContainer(newUid, force: true);
                 _container.Insert(newUid, machine.PartContainer, force: true);
             }
 
