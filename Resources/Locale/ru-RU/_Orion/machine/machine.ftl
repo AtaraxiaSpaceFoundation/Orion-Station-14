@@ -1,3 +1,5 @@
+machine-part-name-capacitor = Конденсатор
+machine-part-name-matter-bin = Ёмкость материи
 machine-part-name-servo = Сервопривод
 machine-part-name-scanning-module = Сканирующий модуль
 machine-part-name-micro-laser = Микролазер

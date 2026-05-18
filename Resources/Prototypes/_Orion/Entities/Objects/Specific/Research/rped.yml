@@ -23,3 +23,22 @@
       components:
         - MachinePart
         - Stack
+
+- type: entity
+  parent: RapidPartExchanger
+  id: BluespaceRapidPartExchanger
+  name: bluespace RPED
+  description: An upgraded RPED that can replace parts remotely and bypasses panel restrictions.
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    sprite: _Orion/Objects/Specific/Research/rped.rsi # TODO
+  - type: PartExchanger
+    doDistanceCheck: false
+    requireOpenPanel: false
+    exchangeSound:
+      path: /Audio/Effects/teleport_arrival.ogg
+  - type: Storage
+    grid:
+      - 0,0,12,8

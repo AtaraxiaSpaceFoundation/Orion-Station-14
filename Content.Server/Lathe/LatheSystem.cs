@@ -263,7 +263,7 @@ namespace Content.Server.Lathe
             {
                 // Orion-Edit-Start
                 var deductedQuantity = recipe.ApplyMaterialDiscount
-                    ? (int) Math.Ceiling(amount * component.FinalMaterialMultiplier)
+                    ? Math.Max(1, (int) Math.Ceiling(amount * component.FinalMaterialMultiplier))
                     : amount;
                 // Orion-Edit-End
                 var adjustedAmount = -deductedQuantity; // Orion
@@ -293,7 +293,11 @@ namespace Content.Server.Lathe
 
             var recipe = _proto.Index(recipeProto);
 
-            var time = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime) * component.FinalTimeMultiplier; // Orion-Edit
+            // Orion-Start
+            var baseTime = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime).TotalSeconds;
+            var adjustedTime = MathF.Pow(MathF.Max(0.1f, (float) baseTime * component.FinalTimeMultiplier), component.MachinePartEfficiencyExponent);
+            // Orion-End
+            var time = TimeSpan.FromSeconds(Math.Max(0.1f, adjustedTime)); // Orion-Edit
 
             var lathe = EnsureComp<LatheProducingComponent>(uid);
             lathe.StartTime = _timing.CurTime;
@@ -555,11 +559,14 @@ namespace Content.Server.Lathe
 
         private static void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args) // Orion-Edit: Static
         {
-            var printRating = args.PartRatings.GetValueOrDefault(component.MachinePartPrintSpeed, 1f);
-            var materialRating = args.PartRatings.GetValueOrDefault(component.MachinePartMaterialUse, 1f);
+            // Orion-Edit-Start
+            var servoRating = args.PartRatings.GetValueOrDefault("Servo", 1f);
+            var efficiency = component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep;
+            efficiency = MathF.Max(component.MinMachinePartEfficiency, efficiency);
 
-            component.FinalTimeMultiplier = component.TimeMultiplier * MathF.Pow(component.PartRatingPrintTimeMultiplier, printRating - 1f);
-            component.FinalMaterialMultiplier = component.MaterialUseMultiplier * MathF.Pow(component.PartRatingMaterialMultiplier, materialRating - 1f); // Orion-Edit
+            component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
+            component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;
+            // Orion-Edit-End
         }
 
         private static void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args) // Orion-Edit: Static

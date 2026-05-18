@@ -624,9 +624,10 @@
   - type: MachineBoard
     prototype: SpaceHeater
     stackRequirements:
-      Cable: 5
+      Cable: 3 # Orion-Edit: 5 > 3
     partRequirements: # Orion
-      Servo: 3
+      MicroLaser: 1
+      Capacitor: 1
 
 - type: entity
   id: CloningPodMachineCircuitboard

@@ -48,7 +48,7 @@ public sealed class PartExchangerSystem : EntitySystem
         if (!HasComp<MachineComponent>(target) && !HasComp<MachineFrameComponent>(target))
             return;
 
-        if (TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
+        if (component.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
         {
             _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
             args.Handled = true;
@@ -137,88 +137,31 @@ public sealed class PartExchangerSystem : EntitySystem
 
             available.Sort((a, b) => b.State.Part.Tier.CompareTo(a.State.Part.Tier));
 
-            var requiredCount = current.Sum(x => x.State.Quantity());
-            var selected = new List<EntityUid>();
-
-            foreach (var candidate in available)
+            foreach (var currentPart in current.OrderBy(part => part.State.Part.Tier))
             {
-                if (requiredCount <= 0)
-                    break;
+                var replacementIndex = available.FindIndex(part => part.State.Part.Tier > currentPart.State.Part.Tier);
+                if (replacementIndex < 0)
+                    continue;
 
-                if (candidate.State.Stack is { } stack && stack.Count > requiredCount)
+                var replacement = available[replacementIndex];
+                var replacementUid = replacement.Uid;
+                available.RemoveAt(replacementIndex);
+
+                if (!_container.TryRemoveFromContainer(replacementUid, force: true))
+                    continue;
+
+                _container.RemoveEntity(target, currentPart.Uid);
+
+                if (!_storage.Insert(uid, currentPart.Uid, out _, playSound: false))
                 {
-                    var split = _stack.Split(candidate.Uid, requiredCount, Transform(uid).Coordinates, stack);
-                    if (split != null)
-                    {
-                        selected.Add(split.Value);
-                        requiredCount = 0;
-                        break;
-                    }
-
+                    _container.Insert(currentPart.Uid, machine.PartContainer, force: true);
+                    _container.Insert(replacementUid, storage.Container, force: true);
                     continue;
                 }
 
-                selected.Add(candidate.Uid);
-                requiredCount -= candidate.State.Quantity();
+                _container.Insert(replacementUid, machine.PartContainer, force: true);
+                changed = true;
             }
-
-            if (requiredCount > 0)
-                continue;
-
-            var selectedParts = selected
-                .Select(partUid => _construction.GetMachinePartState(partUid, out var state) ? state : (MachinePartState?) null)
-                .Where(state => state != null)
-                .Select(state => state!.Value)
-                .OrderByDescending(state => state.Part.Tier)
-                .ToList();
-            var currentParts = current
-                .Select(part => part.State)
-                .OrderByDescending(state => state.Part.Tier)
-                .ToList();
-
-            if (selectedParts.Count != currentParts.Count)
-                continue;
-
-            var hasUpgrade = false;
-            var hasDowngrade = false;
-
-            for (var i = 0; i < currentParts.Count; i++)
-            {
-                var tierDelta = selectedParts[i].Part.Tier - currentParts[i].Part.Tier;
-
-                switch (tierDelta)
-                {
-                    case > 0:
-                        hasUpgrade = true;
-                        break;
-                    case < 0:
-                        hasDowngrade = true;
-                        break;
-                }
-            }
-
-            if (hasDowngrade || !hasUpgrade)
-                continue;
-
-            foreach (var newUid in selected)
-            {
-                _container.TryRemoveFromContainer(newUid, force: true);
-            }
-
-            foreach (var (oldUid, _) in current)
-            {
-                _container.RemoveEntity(target, oldUid);
-
-                if (!_storage.Insert(uid, oldUid, out _, playSound: false))
-                    _container.Insert(oldUid, machine.PartContainer, force: true);
-            }
-
-            foreach (var newUid in selected)
-            {
-                _container.Insert(newUid, machine.PartContainer, force: true);
-            }
-
-            changed = true;
         }
 
         if (changed)
@@ -257,7 +200,10 @@ public sealed class PartExchangerSystem : EntitySystem
                 }
 
                 if (!_container.Insert(partToInsert, machineFrame.PartContainer))
+                {
+                    _container.Insert(partToInsert, storage.Container, force: true);
                     continue;
+                }
 
                 machineFrame.PartProgress[machinePart.Part] += amount;
                 changed = true;
@@ -288,7 +234,10 @@ public sealed class PartExchangerSystem : EntitySystem
             }
 
             if (!_container.Insert(stackToInsert, machineFrame.PartContainer))
+            {
+                _container.Insert(stackToInsert, storage.Container, force: true);
                 continue;
+            }
 
             machineFrame.MaterialProgress[stack.StackTypeId] += materialAmount;
             changed = true;

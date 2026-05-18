@@ -7,10 +7,12 @@
   suffix: Tier 1
   components:
   - type: Sprite
+    sprite: _Orion/Objects/Misc/stock_parts.rsi
     state: capacitor
   - type: MachinePart
     part: Capacitor
     tier: 1
+    energyRating: 1
 
 - type: entity
   parent: BaseStockPart
@@ -19,10 +21,12 @@
   suffix: Tier 1
   components:
   - type: Sprite
+    sprite: _Orion/Objects/Misc/stock_parts.rsi
     state: scan_module
   - type: MachinePart
     part: ScanningModule
     tier: 1
+    energyRating: 1
 
 - type: entity
   parent: BaseStockPart
@@ -31,10 +35,12 @@
   suffix: Tier 1
   components:
   - type: Sprite
-    state: micro_mani
+    sprite: _Orion/Objects/Misc/stock_parts.rsi
+    state: micro_servo
   - type: MachinePart
     part: Servo
     tier: 1
+    energyRating: 1
 
 - type: entity
   parent: BaseStockPart
@@ -43,10 +49,12 @@
   suffix: Tier 1
   components:
   - type: Sprite
+    sprite: _Orion/Objects/Misc/stock_parts.rsi
     state: micro_laser
   - type: MachinePart
     part: MicroLaser
     tier: 1
+    energyRating: 1
 
 - type: entity
   parent: BaseStockPart
@@ -55,10 +63,12 @@
   suffix: Tier 1
   components:
   - type: Sprite
+    sprite: _Orion/Objects/Misc/stock_parts.rsi
     state: matter_bin
   - type: MachinePart
     part: MatterBin
     tier: 1
+    energyRating: 1
 
 # Tier 2
 
@@ -73,6 +83,7 @@
   - type: MachinePart
     part: Capacitor
     tier: 2
+    energyRating: 3
 
 - type: entity
   parent: ScanningModuleStockPart
@@ -85,6 +96,7 @@
   - type: MachinePart
     part: ScanningModule
     tier: 2
+    energyRating: 3
 
 - type: entity
   parent: MicroServoStockPart
@@ -93,10 +105,11 @@
   suffix: Tier 2
   components:
   - type: Sprite
-    state: nano_mani
+    state: nano_servo
   - type: MachinePart
     part: Servo
     tier: 2
+    energyRating: 3
 
 - type: entity
   parent: MicroLaserStockPart
@@ -109,6 +122,7 @@
   - type: MachinePart
     part: MicroLaser
     tier: 2
+    energyRating: 3
 
 - type: entity
   parent: MatterBinStockPart
@@ -121,6 +135,7 @@
   - type: MachinePart
     part: MatterBin
     tier: 2
+    energyRating: 3
 
 # Tier 3
 
@@ -135,6 +150,7 @@
   - type: MachinePart
     part: Capacitor
     tier: 3
+    energyRating: 5
 
 - type: entity
   parent: ScanningModuleStockPart
@@ -147,6 +163,7 @@
   - type: MachinePart
     part: ScanningModule
     tier: 3
+    energyRating: 5
 
 - type: entity
   parent: MicroServoStockPart
@@ -155,10 +172,11 @@
   suffix: Tier 3
   components:
   - type: Sprite
-    state: pico_mani
+    state: pico_servo
   - type: MachinePart
     part: Servo
     tier: 3
+    energyRating: 5
 
 - type: entity
   parent: MicroLaserStockPart
@@ -171,6 +189,7 @@
   - type: MachinePart
     part: MicroLaser
     tier: 3
+    energyRating: 5
 
 - type: entity
   parent: MatterBinStockPart
@@ -183,6 +202,7 @@
   - type: MachinePart
     part: MatterBin
     tier: 3
+    energyRating: 5
 
 # Tier 4
 
@@ -197,6 +217,7 @@
   - type: MachinePart
     part: Capacitor
     tier: 4
+    energyRating: 10
 
 - type: entity
   parent: ScanningModuleStockPart
@@ -209,6 +230,7 @@
   - type: MachinePart
     part: ScanningModule
     tier: 4
+    energyRating: 10
 
 - type: entity
   parent: MicroServoStockPart
@@ -217,10 +239,11 @@
   suffix: Tier 4
   components:
   - type: Sprite
-    state: femto_mani
+    state: femto_servo
   - type: MachinePart
     part: Servo
     tier: 4
+    energyRating: 10
 
 - type: entity
   parent: MicroLaserStockPart
@@ -233,6 +256,7 @@
   - type: MachinePart
     part: MicroLaser
     tier: 4
+    energyRating: 10
 
 - type: entity
   parent: MatterBinStockPart
@@ -245,3 +269,4 @@
   - type: MachinePart
     part: MatterBin
     tier: 4
+    energyRating: 10

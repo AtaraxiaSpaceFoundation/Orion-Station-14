@@ -3,8 +3,8 @@
   name: research-technology-parts-name
   description: research-technology-parts-desc
   icon:
-    sprite: Objects/Misc/stock_parts.rsi
-    state: micro_mani
+    sprite: _Orion/Objects/Misc/stock_parts.rsi
+    state: micro_servo
   discipline: Engineering
   tier: 1
   startingTechnology: true

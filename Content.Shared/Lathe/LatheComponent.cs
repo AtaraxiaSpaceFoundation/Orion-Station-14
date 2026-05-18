@@ -146,13 +146,16 @@ namespace Content.Shared.Lathe
         public ProtoId<MachinePartPrototype> MachinePartPrintSpeed = "Servo";
 
         [DataField]
-        public ProtoId<MachinePartPrototype> MachinePartMaterialUse = "MatterBin";
+        public float BaseMachinePartEfficiency = 1.2f;
 
         [DataField]
-        public float PartRatingPrintTimeMultiplier = 0.5f;
+        public float MachinePartEfficiencyTierStep = 0.1f;
 
         [DataField]
-        public float PartRatingMaterialMultiplier = 0.85f;
+        public float MachinePartEfficiencyExponent = 0.8f;
+
+        [DataField]
+        public float MinMachinePartEfficiency = 0.1f;
         // Orion-End
 
         #endregion
