@@ -268,7 +268,18 @@ namespace Content.Server.Lathe
                 // Orion-Edit-End
                 var adjustedAmount = -deductedQuantity; // Orion
 
-                _materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount);
+                // Orion-Edit-Start
+                if (!_materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount))
+                {
+                    foreach (var (refundMat, refundAmount) in queuedRefund)
+                    {
+                        _materialStorage.TryChangeMaterialAmount(uid, refundMat, refundAmount);
+                    }
+
+                    return false;
+                }
+                // Orion-Edit-End
+
                 queuedRefund[mat] = deductedQuantity; // Orion
             }
             component.Queue.Enqueue(recipe);

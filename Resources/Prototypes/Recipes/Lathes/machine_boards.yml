@@ -409,11 +409,12 @@
   icon: { sprite: Structures/Machines/protolathe.rsi, state: icon } # Goobstation
   result: ProtolatheMachineCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
-  id: ProtolatheHyperConvectionMachineCircuitboard
-  icon: { sprite: Structures/Machines/protolathe_hypercon.rsi, state: icon } # Goobstation
-  result: ProtolatheHyperConvectionMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: latheRecipe
+#  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
+#  id: ProtolatheHyperConvectionMachineCircuitboard
+#  icon: { sprite: Structures/Machines/protolathe_hypercon.rsi, state: icon } # Goobstation
+#  result: ProtolatheHyperConvectionMachineCircuitboard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
@@ -421,11 +422,12 @@
   icon: { sprite: Structures/Machines/circuit_imprinter.rsi, state: icon } # Goobstation
   result: CircuitImprinterMachineCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
-  id: CircuitImprinterHyperConvectionMachineCircuitboard
-  icon: { sprite: Structures/Machines/circuit_imprinter_hypercon.rsi, state: icon } # Goobstation
-  result: CircuitImprinterHyperConvectionMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: latheRecipe
+#  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
+#  id: CircuitImprinterHyperConvectionMachineCircuitboard
+#  icon: { sprite: Structures/Machines/circuit_imprinter_hypercon.rsi, state: icon } # Goobstation
+#  result: CircuitImprinterHyperConvectionMachineCircuitboard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
@@ -451,11 +453,12 @@
   icon: { sprite: Structures/Machines/ore_processor.rsi, state: icon } # Goobstation
   result: OreProcessorMachineCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseSupplyMachineRecipeCategory ]
-  id: OreProcessorIndustrialMachineCircuitboard
-  icon: { sprite: Structures/Machines/ore_processor_industrial.rsi, state: icon } # Goobstation
-  result: OreProcessorIndustrialMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: latheRecipe
+#  parent: [ BaseGoldCircuitboardRecipe, BaseSupplyMachineRecipeCategory ]
+#  id: OreProcessorIndustrialMachineCircuitboard
+#  icon: { sprite: Structures/Machines/ore_processor_industrial.rsi, state: icon } # Goobstation
+#  result: OreProcessorIndustrialMachineCircuitboard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
@@ -463,11 +466,12 @@
   icon: { sprite: Structures/Machines/autolathe.rsi, state: icon } # Goobstation
   result: AutolatheMachineCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
-  id: AutolatheHyperConvectionMachineCircuitboard
-  icon: { sprite: Structures/Machines/autolathe_hypercon.rsi, state: icon } # Goobstation
-  result: AutolatheHyperConvectionMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: latheRecipe
+#  parent: [ BaseGoldCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
+#  id: AutolatheHyperConvectionMachineCircuitboard
+#  icon: { sprite: Structures/Machines/autolathe_hypercon.rsi, state: icon } # Goobstation
+#  result: AutolatheHyperConvectionMachineCircuitboard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
