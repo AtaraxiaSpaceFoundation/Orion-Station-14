@@ -648,7 +648,10 @@
     idleState: fab-idle
     runningState: fab-active
     dynamicPacks: # Orion-Edit: Static > Dynamic
-    - AILawboards # Orion
+    # Orion-Start
+    - AILawboards
+    - PartsDynamic
+    # Orion-End
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic

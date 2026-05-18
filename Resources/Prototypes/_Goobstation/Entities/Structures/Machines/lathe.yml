@@ -61,6 +61,7 @@
     - NailsStatic
     # Orion-Start
     - MegaCells
+    - PartsDynamic
     # Orion-End
     - ConstructionBagOfHolding
     - AdvancedTools
@@ -208,6 +209,7 @@
     # Orion-Start
     - BodyBagsDynamic
     - MegaCells
+    - PartsDynamic
     # Orion-End
     - AdvancedTools
     - ScienceEquipment

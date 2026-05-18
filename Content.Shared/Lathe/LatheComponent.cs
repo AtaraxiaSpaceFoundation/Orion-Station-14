@@ -49,6 +49,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Lathe.Prototypes;
+using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -79,6 +80,11 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField]
         public Queue<ProtoId<LatheRecipePrototype>> Queue = new();
+
+        // Orion-Start
+        [DataField]
+        public Queue<Dictionary<ProtoId<MaterialPrototype>, int>> QueuedMaterialRefunds = new();
+        // Orion-End
 
         /// <summary>
         /// The sound that plays when the lathe is producing an item, if any
@@ -133,19 +139,19 @@ namespace Content.Shared.Lathe
         public float FinalTimeMultiplier = 1;
 
         [DataField]
-        public float FinalMaterialUseMultiplier = 1;
+        public float FinalMaterialMultiplier = 1;
 
         [DataField]
-        public string MachinePartPrintSpeed = "Manipulator";
+        public string MachinePartPrintSpeed = "Servo";
 
         [DataField]
-        public string MachinePartMaterialUse = "Manipulator";
+        public string MachinePartMaterialUse = "MatterBin";
 
         [DataField]
         public float PartRatingPrintTimeMultiplier = 0.5f;
 
         [DataField]
-        public float PartRatingMaterialUseMultiplier = 0.85f;
+        public float PartRatingMaterialMultiplier = 0.85f;
         // Orion-End
 
         #endregion
@@ -155,7 +161,7 @@ namespace Content.Shared.Lathe
         // Output to MaterialStorage instead of spawning it
         // </summary>
         [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public bool OutputToStorage = false;
+        public bool OutputToStorage;
         // Goobstation change end
     }
 
@@ -164,7 +170,7 @@ namespace Content.Shared.Lathe
         public readonly EntityUid Lathe;
         public readonly LatheComponent Comp;
 
-        public bool GetUnavailable;
+        public readonly bool GetUnavailable; // Orion-Edit: readonly
 
         public HashSet<ProtoId<LatheRecipePrototype>> Recipes = new();
 

@@ -54,8 +54,8 @@
     state: science
   - type: MachineBoard
     prototype: ScienceTechFab
-    stackRequirements:
-      Servo: 4 # Orion-Edit: Replaced manipulator
+    partRequirements: # Orion
+      Servo: 4
     tagRequirements:
       GlassBeaker:
         amount: 2

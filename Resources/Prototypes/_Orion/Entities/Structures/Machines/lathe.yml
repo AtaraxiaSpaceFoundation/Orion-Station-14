@@ -16,6 +16,7 @@
     - BasicService
     - MegaCells
     - Hydroponic
+    - PartsDynamic
     # Orion-End
     - AdvancedTools
     - ScienceEquipment

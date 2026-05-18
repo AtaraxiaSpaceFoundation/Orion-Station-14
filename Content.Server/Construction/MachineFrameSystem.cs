@@ -237,13 +237,32 @@ public sealed class MachineFrameSystem : EntitySystem
         if (progress >= requirement)
             return false;
 
-        if (!_container.TryRemoveFromContainer(used, false, out var wasInContainer) && wasInContainer)
+        var remaining = requirement - progress;
+        var stackCount = TryComp<StackComponent>(used, out var stack) ? stack.Count : 1;
+        var delta = Math.Min(stackCount, remaining);
+        if (delta <= 0)
             return false;
 
-        if (!_container.Insert(used, component.PartContainer))
+        EntityUid partToInsert;
+        if (TryComp(used, out stack) && stack.Count > delta)
+        {
+            var split = _stack.Split(used, delta, Transform(uid).Coordinates, stack);
+            if (split == null)
+                return false;
+
+            partToInsert = split.Value;
+        }
+        else
+        {
+            partToInsert = used;
+            if (!_container.TryRemoveFromContainer(used, false, out var wasInContainer) && wasInContainer)
+                return false;
+        }
+
+        if (!_container.Insert(partToInsert, component.PartContainer))
             return true;
 
-        component.PartProgress[machinePart.Part]++;
+        component.PartProgress[machinePart.Part] += delta;
 
         if (IsComplete(component))
             _popupSystem.PopupEntity(Loc.GetString("machine-frame-component-on-complete"), uid);
@@ -286,7 +305,7 @@ public sealed class MachineFrameSystem : EntitySystem
         return true;
     }
 
-    public void ResetProgressAndRequirements(MachineFrameComponent component, MachineBoardComponent machineBoard)
+    private static void ResetProgressAndRequirements(MachineFrameComponent component, MachineBoardComponent machineBoard) // Orion-Edit: Make private static
     {
         component.MaterialRequirements = new Dictionary<ProtoId<StackPrototype>, int>(machineBoard.StackRequirements);
         component.PartRequirements = new Dictionary<ProtoId<MachinePartPrototype>, int>(machineBoard.PartRequirements); // Orion
@@ -373,8 +392,12 @@ public sealed class MachineFrameSystem : EntitySystem
                 if (!component.PartRequirements.ContainsKey(machinePart.Part))
                     continue;
 
-                if (!component.PartProgress.TryAdd(machinePart.Part, 1))
-                    component.PartProgress[machinePart.Part]++;
+                var quantity = 1;
+                if (TryComp<StackComponent>(part, out var partStack))
+                    quantity = partStack.Count;
+
+                if (!component.PartProgress.TryAdd(machinePart.Part, quantity))
+                    component.PartProgress[machinePart.Part] += quantity;
 
                 continue;
             }

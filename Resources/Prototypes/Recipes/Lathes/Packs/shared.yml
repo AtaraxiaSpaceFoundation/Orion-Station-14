@@ -16,7 +16,14 @@
   recipes:
   - Igniter
   - ModularReceiver
-  - MicroManipulatorStockPart
+  # Orion-Start
+  # Tier 1
+  - CapacitorStockPart
+  - ScanningModuleStockPart
+  - MicroServoStockPart # Orion-Edit: Servo
+  - MicroLaserStockPart
+  - MatterBinStockPart
+  # Orion-End
   - ConveyorBeltAssembly
 
 - type: latheRecipePack

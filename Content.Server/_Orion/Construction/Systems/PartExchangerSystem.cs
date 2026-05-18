@@ -53,16 +53,24 @@ public sealed class PartExchangerSystem : EntitySystem
         }
 
         var stream = _audio.PlayPvs(component.ExchangeSound, uid);
-        if (stream != null)
-            component.AudioStream = stream.Value.Entity;
 
-        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
+        var started = _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
         });
 
-        args.Handled = true;
+        if (started)
+        {
+            if (stream != null)
+                component.AudioStream = stream.Value.Entity;
+
+            args.Handled = true;
+        }
+        else if (stream != null)
+        {
+            _audio.Stop(stream.Value.Entity);
+        }
     }
 
     private void OnDoAfter(EntityUid uid, PartExchangerComponent component, DoAfterEvent args)
@@ -129,10 +137,13 @@ public sealed class PartExchangerSystem : EntitySystem
                 {
                     var split = _stack.Split(candidate.Uid, requiredCount, Transform(uid).Coordinates, stack);
                     if (split != null)
+                    {
                         selected.Add(split.Value);
+                        requiredCount = 0;
+                        break;
+                    }
 
-                    requiredCount = 0;
-                    break;
+                    continue;
                 }
 
                 selected.Add(candidate.Uid);

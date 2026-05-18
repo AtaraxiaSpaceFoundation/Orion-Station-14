@@ -86,7 +86,7 @@ namespace Content.Server.Construction.Conditions
             // Orion-Start
             foreach (var (partType, required) in machineFrame.PartRequirements)
             {
-                var amount = required - machineFrame.PartProgress[partType];
+                var amount = required - machineFrame.PartProgress.GetValueOrDefault(partType, 0);
 
                 if (amount == 0)
                     continue;
