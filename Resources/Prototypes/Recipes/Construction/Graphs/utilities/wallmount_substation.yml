@@ -71,7 +71,7 @@
             sprite: "Objects/Power/power_cells.rsi"
             state: "medium"
           doAfter: 0.5
-        - prototype: MicroServoStockPart # Orion-Edit: Servo
+        - machinePart: Servo # Orion-Edit: Servo
           amount: 1
           doAfter: 0.5
       - to: frame
