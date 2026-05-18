@@ -1,3 +1,4 @@
+# Tier 1
 - type: latheRecipe
   parent: BaseStockPartRecipe
   id: CapacitorStockPart
@@ -23,6 +24,7 @@
   id: MatterBinStockPart
   result: MatterBinStockPart
 
+# Tier 2
 - type: latheRecipe
   parent: BaseStockPartRecipe
   id: AdvancedCapacitorStockPart
@@ -48,6 +50,7 @@
   id: AdvancedMatterBinStockPart
   result: AdvancedMatterBinStockPart
 
+# Tier 3
 - type: latheRecipe
   parent: BaseStockPartRecipe
   id: SuperCapacitorStockPart
@@ -73,6 +76,7 @@
   id: SuperMatterBinStockPart
   result: SuperMatterBinStockPart
 
+# Tier 4
 - type: latheRecipe
   parent: BaseStockPartRecipe
   id: TriphasicScanningModuleStockPart
@@ -97,13 +101,3 @@
   parent: BaseStockPartRecipe
   id: BluespaceMatterBinStockPart
   result: BluespaceMatterBinStockPart
-
-- type: latheRecipe
-  parent: BaseStockPartRecipe
-  id: QuantumCapacitorStockPart
-  result: QuantumCapacitorStockPart
-
-- type: latheRecipe
-  parent: BaseStockPartRecipe
-  id: QuantumMatterBinStockPart
-  result: QuantumMatterBinStockPart

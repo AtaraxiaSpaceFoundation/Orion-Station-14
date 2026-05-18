@@ -114,7 +114,7 @@
         doAfter: 2
       completed:
       - !type:SpawnPrototype
-        prototype: MicroManipulatorStockPart
+        prototype: MicroServoStockPart # Orion-Edit: Servo
       - !type:SpawnPrototype
         prototype: CableApcStack1
         amount: 2

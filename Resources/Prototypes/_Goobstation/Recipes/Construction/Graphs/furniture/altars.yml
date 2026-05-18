@@ -270,7 +270,7 @@
     - to: AltarConvertNode
       completed:
       - !type:SpawnPrototype
-        prototype: MicroManipulatorStockPart
+        prototype: MicroServoStockPart # Orion-Edit: Servo
         amount: 1
       steps:
       - tool: Prying

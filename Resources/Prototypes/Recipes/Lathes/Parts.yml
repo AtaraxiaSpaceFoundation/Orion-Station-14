@@ -82,7 +82,8 @@
     Steel: 50
     Plastic: 50
 
-- type: latheRecipe
-  parent: BaseStockPartRecipe
-  id: MicroManipulatorStockPart
-  result: MicroManipulatorStockPart
+# Orion-Edit: Replaced with Servo
+#- type: latheRecipe
+#  parent: BaseStockPartRecipe
+#  id: MicroManipulatorStockPart
+#  result: MicroManipulatorStockPart
