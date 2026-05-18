@@ -84,7 +84,7 @@
   playTimeTracker: JobChef
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1800 # 30 Minutes
+      time: 3600 #1 hrs # Siberia-Roletime
   startingGear: ChefGear
   icon: "JobIconChef"
   supervisors: job-supervisors-hop

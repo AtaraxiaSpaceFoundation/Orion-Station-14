@@ -66,6 +66,9 @@
   name: job-name-botanist
   description: job-description-botanist
   playTimeTracker: JobBotanist
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 3600 #1 hrs # Siberia-Roletime
   startingGear: BotanistGear
   icon: "JobIconBotanist"
   supervisors: job-supervisors-hop

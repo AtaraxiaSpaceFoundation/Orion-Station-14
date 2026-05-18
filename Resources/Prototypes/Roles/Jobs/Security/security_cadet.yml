@@ -101,11 +101,7 @@
   playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 36000 #10 hrs
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 36000 #10 hrs
-      inverted: true # stop playing intern if you're good at security!
+      time: 18000 #5 hrs # Siberia-Roletime
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security

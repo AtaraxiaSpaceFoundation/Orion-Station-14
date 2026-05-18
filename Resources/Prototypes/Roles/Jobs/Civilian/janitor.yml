@@ -78,6 +78,9 @@
   name: job-name-janitor
   description: job-description-janitor
   playTimeTracker: JobJanitor
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 3600 #1 hrs # Siberia-Roletime
   startingGear: JanitorGear
   icon: "JobIconJanitor"
   supervisors: job-supervisors-hop
