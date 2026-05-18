@@ -4,12 +4,14 @@ using Content.Server.Construction;
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._Orion.Construction.Components;
 using Content.Shared._Orion.Construction.Events;
 using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Exchanger;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
+using Content.Shared.Stacks;
 using Content.Shared.Storage;
 using Content.Shared.Wires;
 using Robust.Shared.Audio.Systems;
@@ -27,6 +29,7 @@ public sealed class PartExchangerSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private readonly MachineFrameSystem _machineFrame = default!;
 
     public override void Initialize()
     {
@@ -84,7 +87,16 @@ public sealed class PartExchangerSystem : EntitySystem
         if (args.Handled || args.Args.Target is not { } target)
             return;
 
-        if (!TryComp<MachineComponent>(target, out var machine) || !TryComp<StorageComponent>(uid, out var storage))
+        if (!TryComp<StorageComponent>(uid, out var storage))
+            return;
+
+        if (TryComp<MachineFrameComponent>(target, out var machineFrame))
+        {
+            args.Handled = TryInsertIntoMachineFrame(uid, target, storage, machineFrame);
+            return;
+        }
+
+        if (!TryComp<MachineComponent>(target, out var machine))
             return;
 
         var machineParts = new Dictionary<ProtoId<MachinePartPrototype>, List<(EntityUid Uid, MachinePartState State)>>();
@@ -178,5 +190,82 @@ public sealed class PartExchangerSystem : EntitySystem
             _construction.RefreshParts(target, machine);
 
         args.Handled = true;
+    }
+
+    private bool TryInsertIntoMachineFrame(EntityUid user, EntityUid frameUid, StorageComponent storage, MachineFrameComponent machineFrame)
+    {
+        var changed = false;
+
+        foreach (var partUid in storage.Container.ContainedEntities.ToArray())
+        {
+            if (TryComp<MachinePartComponent>(partUid, out var machinePart) && machineFrame.PartRequirements.TryGetValue(machinePart.Part, out var partRequirement) && machineFrame.PartProgress.TryGetValue(machinePart.Part, out var partProgress) && partProgress < partRequirement)
+            {
+                var remaining = partRequirement - partProgress;
+                var count = TryComp<StackComponent>(partUid, out var partStack) ? partStack.Count : 1;
+                var amount = Math.Min(remaining, count);
+                var partToInsert = partUid;
+
+                if (amount <= 0)
+                    continue;
+
+                if (partStack != null && partStack.Count > amount)
+                {
+                    var split = _stack.Split(partUid, amount, Transform(frameUid).Coordinates, partStack);
+                    if (split == null)
+                        continue;
+
+                    partToInsert = split.Value;
+                }
+                else if (!_container.TryRemoveFromContainer(partUid, force: true))
+                {
+                    continue;
+                }
+
+                if (!_container.Insert(partToInsert, machineFrame.PartContainer))
+                    continue;
+
+                machineFrame.PartProgress[machinePart.Part] += amount;
+                changed = true;
+                continue;
+            }
+
+            if (!TryComp<StackComponent>(partUid, out var stack) || !machineFrame.MaterialRequirements.TryGetValue(stack.StackTypeId, out var materialRequirement) || !machineFrame.MaterialProgress.TryGetValue(stack.StackTypeId, out var materialProgress) || materialProgress >= materialRequirement)
+                continue;
+
+            var materialRemaining = materialRequirement - materialProgress;
+            var materialAmount = Math.Min(materialRemaining, stack.Count);
+            var stackToInsert = partUid;
+
+            if (materialAmount <= 0)
+                continue;
+
+            if (stack.Count > materialAmount)
+            {
+                var split = _stack.Split(partUid, materialAmount, Transform(frameUid).Coordinates, stack);
+                if (split == null)
+                    continue;
+
+                stackToInsert = split.Value;
+            }
+            else if (!_container.TryRemoveFromContainer(partUid, force: true))
+            {
+                continue;
+            }
+
+            if (!_container.Insert(stackToInsert, machineFrame.PartContainer))
+                continue;
+
+            machineFrame.MaterialProgress[stack.StackTypeId] += materialAmount;
+            changed = true;
+        }
+
+        if (!changed)
+            return false;
+
+        if (_machineFrame.IsComplete(machineFrame))
+            _popup.PopupEntity(Loc.GetString("machine-frame-component-on-complete"), frameUid, user);
+
+        _machineFrame.RegenerateProgress(machineFrame);
+        return true;
     }
 }
