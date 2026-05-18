@@ -68,18 +68,27 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Server._Orion.Economy.Systems;
+using Content.Server.Access.Systems;
 using Content.Server.Cargo.Systems;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Server.Station.Systems;
 using Content.Server.Vocalization.Systems;
+using Content.Shared._Orion.VendingMachines.Components;
+using Content.Shared.Administration.Logs;
+using Content.Shared.Cargo.Components;
+using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Damage;
+using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Throwing;
 using Content.Shared.UserInterface;
 using Content.Shared.VendingMachines;
@@ -98,8 +107,16 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly PricingSystem _pricing = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
+        // Orion-Start
+        [Dependency] private readonly BankSystem _bank = default!;
+        [Dependency] private readonly CargoSystem _cargo = default!;
+        [Dependency] private readonly IdCardSystem _idCard = default!;
+        [Dependency] private readonly StationSystem _station = default!;
+        [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+        // Orion-End
 
         private const float WallVendEjectDistanceFromWall = 1f;
+        private static readonly ProtoId<CargoAccountPrototype> CargoDepartmentAccount = "Cargo"; // Orion
 
         public override void Initialize()
         {
@@ -119,7 +136,88 @@ namespace Content.Server.VendingMachines
             SubscribeLocalEvent<VendingMachineComponent, RestockDoAfterEvent>(OnDoAfter);
 
             SubscribeLocalEvent<VendingMachineRestockComponent, PriceCalculationEvent>(OnPriceCalculation);
+            SubscribeLocalEvent<VendingMachineComponent, VendingMachineBeforeEjectEvent>(OnBeforeEject); // Orion
         }
+
+        // Orion-Start
+        private void OnBeforeEject(Entity<VendingMachineComponent> ent, ref VendingMachineBeforeEjectEvent args)
+        {
+            if (args.User is not { } user || args.Price <= 0)
+                return;
+
+            var hasPricing = TryComp<VendingMachinePricingComponent>(ent.Owner, out var pricing);
+            if (hasPricing && pricing!.AllProductsFree)
+                return;
+
+            if (!_idCard.TryFindIdCard(user, out var idCard) || string.IsNullOrWhiteSpace(idCard.Comp.BankAccountId))
+            {
+                // Orion-Start
+                if (TryBorgPay(ent, user, args.Price, args.ItemId))
+                    return;
+                // Orion-End
+
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-no-id"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            if (!_bank.TryFindAccountById(idCard.Comp.BankAccountId, out var account))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-no-account"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            if (account.Comp.Balance < args.Price)
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-insufficient-funds"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            if (_station.GetOwningStation(ent.Owner) is not { } station ||
+                !TryComp<StationBankAccountComponent>(station, out var bankAcc))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-payment-failed"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            var department = hasPricing && pricing!.DepartmentAccount is { } configuredDepartment
+                ? configuredDepartment
+                : bankAcc.PrimaryAccount;
+
+            var reasonData = $"{args.ItemId}|{department.Id}";
+            if (!_bank.Withdraw(account, args.Price, "vending-purchase", reasonData: reasonData))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-payment-failed"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
+
+            _cargo.UpdateBankAccount((station, bankAcc), args.Price, department);
+        }
+
+        private bool TryBorgPay(Entity<VendingMachineComponent> ent, EntityUid user, int price, string itemId)
+        {
+            if (!HasComp<BorgChassisComponent>(user))
+                return false;
+
+            if (_station.GetOwningStation(ent.Owner) is not { } station || !TryComp<StationBankAccountComponent>(station, out var bankAcc))
+                return false;
+
+            var cargoBalance = _cargo.GetBalanceFromAccount((station, bankAcc), CargoDepartmentAccount);
+            if (cargoBalance < price)
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-insufficient-funds"), ent, user);
+                return false;
+            }
+
+            _cargo.UpdateBankAccount((station, bankAcc), -price, CargoDepartmentAccount);
+            _adminLogger.Add(LogType.Action, LogImpact.Low, $"Borg purchase charged cargo account. Item: {itemId}. Amount: {price}. Station: {station}.");
+            return true;
+        }
+        // Orion-End
 
         private void OnVendingPrice(EntityUid uid, VendingMachineComponent component, ref PriceCalculationEvent args)
         {
@@ -143,13 +241,37 @@ namespace Content.Server.VendingMachines
         {
             base.OnMapInit(uid, component, args);
 
+            InitializeOffStationFreePricing(uid); // Orion
+
             if (HasComp<ApcPowerReceiverComponent>(uid))
             {
                 TryUpdateVisualState((uid, component));
             }
         }
 
-        private void OnActivatableUIOpenAttempt(EntityUid uid, VendingMachineComponent component, ActivatableUIOpenAttemptEvent args)
+        // Orion-Start
+        private void InitializeOffStationFreePricing(EntityUid uid)
+        {
+            if (!TryComp<VendingMachinePricingComponent>(uid, out var pricing))
+                return;
+
+            if (pricing.AllProductsFreeOverride is { } allProductsFreeOverride)
+            {
+                pricing.AllProductsFree = allProductsFreeOverride;
+
+                Dirty(uid, pricing);
+                return;
+            }
+
+            if (_station.GetOwningStation(uid) != null)
+                return;
+
+            pricing.AllProductsFree = true;
+            Dirty(uid, pricing);
+        }
+        // Orion-End
+
+        private static void OnActivatableUIOpenAttempt(EntityUid uid, VendingMachineComponent component, ActivatableUIOpenAttemptEvent args) // Orion-Edit: static
         {
             if (component.Broken)
                 args.Cancel();

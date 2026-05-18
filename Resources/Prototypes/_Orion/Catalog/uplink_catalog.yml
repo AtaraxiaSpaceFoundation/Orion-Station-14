@@ -182,3 +182,20 @@
     Telecrystal: 20
   categories:
   - UplinkDeception
+
+- type: listing
+  id: UplinkProtocolCrab17Phone
+  name: protocol-crab17-phone-name
+  description: protocol-crab17-phone-desc
+  productEntity: SuspiciousPhone
+  cost:
+    Telecrystal: 35 # TODO: 7
+  categories:
+  - UplinkDisruption
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - ContravendUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1

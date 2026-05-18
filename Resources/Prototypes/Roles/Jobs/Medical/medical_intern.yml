@@ -74,6 +74,10 @@
   - Cloning
   - Medicine
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 35
+  payrollDepartmentAccount: Medical
+  # Orion-End
   access:
   - Medical
   - Maintenance

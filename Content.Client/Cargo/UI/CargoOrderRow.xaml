@@ -71,6 +71,13 @@ SPDX-License-Identifier: MIT
                        VerticalExpand="True"
                        StyleClasses="LabelSubText"
                        ClipText="True" />
+                <Label Name="PrivateBuyer"
+                       Access="Public"
+                       HorizontalExpand="True"
+                       VerticalExpand="True"
+                       StyleClasses="LabelSubText"
+                       ClipText="True"
+                       Visible="False" />
                 <!-- Orion-End -->
             </BoxContainer>
         </BoxContainer>

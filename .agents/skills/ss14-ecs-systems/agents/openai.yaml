@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 ECS Systems"
+  short_description: "System placement, handlers, and gameplay APIs"
+  default_prompt: "Use $ss14-ecs-systems to implement or review SS14 entity systems in this repo."

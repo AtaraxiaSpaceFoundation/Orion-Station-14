@@ -1,0 +1,20 @@
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+---
+description: Shared SS14 rules for replicated state, shared events, localization identifiers, and prediction-aware gameplay code.
+globs:
+  - Content.Shared/**/*.cs
+alwaysApply: false
+---
+
+Apply @.agents/rules/ss14-csharp-style.md
+
+Read these skills before editing matching files:
+
+- @.agents/skills/ss14-ecs-components/SKILL.md
+- @.agents/skills/ss14-ecs-entities/SKILL.md
+- @.agents/skills/ss14-ecs-systems/SKILL.md
+- @.agents/skills/ss14-events/SKILL.md
+- @.agents/skills/ss14-prediction/SKILL.md
+- @.agents/skills/ss14-netcode/SKILL.md
+- @.agents/skills/ss14-localization-code/SKILL.md

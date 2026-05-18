@@ -80,6 +80,10 @@
   - SpaceLaw
 #  - LegalSOP # Orion-Edit: Removed because dont have this SOP
   goobcoins: 10 #Goob content
+  # Orion-Start
+  salary: 50
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Service
   - Lawyer

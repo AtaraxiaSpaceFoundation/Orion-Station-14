@@ -167,6 +167,14 @@
     storedRotation: -90
   - type: Access
   - type: IdCard
+  # Orion-Start
+  - type: ActivatableUI
+    key: enum.EconomyCardUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.EconomyCardUiKey.Key:
+        type: EconomyCardBoundUserInterface
+  # Orion-End
   - type: StationRecordKeyStorage
   - type: Tag
     tags:

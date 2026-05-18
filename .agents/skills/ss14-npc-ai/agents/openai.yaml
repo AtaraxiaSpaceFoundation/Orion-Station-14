@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 NPC and AI"
+  short_description: "NPC, HTN, mindless mobs, AI logic, and server authority"
+  default_prompt: "Use $ss14-npc-ai for SS14 NPC, mob AI, HTN, and AI behavior work."

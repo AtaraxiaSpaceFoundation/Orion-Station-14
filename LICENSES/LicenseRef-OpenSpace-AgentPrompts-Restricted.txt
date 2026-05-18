@@ -1,0 +1,16 @@
+Open Space Agent Prompts Restricted Permission
+https://github.com/ss14-art/open-space
+
+The files marked with:
+
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+are not licensed under AGPL-3.0-or-later.
+
+These files are included in Orion-Station-14 only by explicit permission from the original rights holder.
+
+Permission is granted only to use, modify, and distribute these files as part of the Orion-Station-14 repository and its official builds.
+
+You may not extract, redistribute, sublicense, reuse, or port these files to any other project without separate written permission from the original rights holder.
+
+All rights not expressly granted are reserved.

@@ -53,5 +53,17 @@ public sealed partial class CargoAccountPrototype : IPrototype
 
     [DataField]
     public EntProtoId? SecureCratePrototype;
+
+    /// <summary>
+    /// Amount of periodic direct budget funding for this account. Set to 0 to disable.
+    /// </summary>
+    [DataField]
+    public int BudgetFundingAmount;
+
+    /// <summary>
+    /// Delay between periodic direct budget funding payouts.
+    /// </summary>
+    [DataField]
+    public TimeSpan BudgetFundingDelay = TimeSpan.FromMinutes(10);
     // Orion-End
 }

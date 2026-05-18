@@ -16,6 +16,10 @@
   icon: JobIconVisitor
   setPreference: false
   overrideConsoleVisibility: true
+  # Orion-Start
+  salary: 25
+  payrollFromStationBudget: false
+  # Orion-End
   access:
   - Maintenance
   extendedAccess:

@@ -19,6 +19,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  # Orion-Start
+  salary: 180
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:

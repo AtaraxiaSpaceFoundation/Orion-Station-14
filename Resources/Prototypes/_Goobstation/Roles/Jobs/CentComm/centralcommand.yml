@@ -21,6 +21,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
   canBeAntag: false
+  # Orion-Start
+  salary: 160
+  payrollFromStationBudget: false
+  # Orion-End
   accessGroups:
   - AllAccess
   access:
@@ -67,6 +71,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-null
   canBeAntag: false
+  # Orion-Start
+  salary: 200
+  payrollFromStationBudget: false
+  # Orion-End
   requirements:
     - !type:AgeRequirement
       requiredAge: 21
@@ -117,6 +125,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
   canBeAntag: false
+  # Orion-Start
+  salary: 160
+  payrollFromStationBudget: false
+  # Orion-End
   requirements:
     - !type:AgeRequirement
       requiredAge: 21
@@ -168,6 +180,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
   canBeAntag: false
+  # Orion-Start
+  salary: 300
+  payrollFromStationBudget: false
+  # Orion-End
   requirements:
     - !type:AgeRequirement
       requiredAge: 21
@@ -219,6 +235,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
   canBeAntag: false
+  # Orion-Start
+  salary: 100
+  payrollFromStationBudget: false
+  # Orion-End
   requirements:
   - !type:AgeRequirement
     requiredAge: 21
@@ -266,6 +286,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
   canBeAntag: false
+  # Orion-Start
+  salary: 120
+  payrollFromStationBudget: false
+  # Orion-End
   requirements:
   - !type:AgeRequirement
     requiredAge: 21
@@ -328,6 +352,10 @@
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
   canBeAntag: false
+  # Orion-Start
+  salary: 160
+  payrollFromStationBudget: false
+  # Orion-End
   requirements:
     - !type:AgeRequirement
       requiredAge: 21

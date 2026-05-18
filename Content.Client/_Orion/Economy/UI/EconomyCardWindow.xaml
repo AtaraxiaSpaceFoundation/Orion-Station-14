@@ -1,0 +1,60 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               MinSize="620 460"
+               SetSize="640 460"
+               Title="{Loc 'economy-card-window-title'}">
+    <BoxContainer Orientation="Vertical" Margin="10" SeparationOverride="6">
+        <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+            <BoxContainer Orientation="Vertical" SeparationOverride="6">
+                <PanelContainer Name="CardPanel" Access="Public">
+                    <BoxContainer Orientation="Vertical" Margin="9" SeparationOverride="5">
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="8">
+                            <Label Name="BrandLabel" Access="Public" StyleClasses="LabelHeading" HorizontalExpand="True" Text="{Loc 'economy-card-brand'}"/>
+                        </BoxContainer>
+
+                        <PanelContainer Name="ShineLine" SetHeight="2"/>
+
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="10">
+                            <BoxContainer Orientation="Vertical" SeparationOverride="1" HorizontalExpand="True">
+                                <Label Name="MaskedAccountLabel" Access="Public" StyleClasses="LabelHeading" Text="••••"/>
+                                <Label Name="AccountCaptionLabel" Access="Public" StyleClasses="LabelSubText" Text="{Loc 'economy-card-masked-account'}"/>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <PanelContainer Name="BalancePanel" Access="Public">
+                    <BoxContainer Orientation="Vertical" Margin="9" SeparationOverride="2">
+                        <Label Name="AvailableBalanceTitleLabel" Access="Public" StyleClasses="LabelSubText" Text="{Loc 'economy-card-available-balance'}"/>
+                        <Label Name="BalanceValueLabel" Access="Public" StyleClasses="LabelHeading"/>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <PanelContainer Name="WithdrawPanel" Access="Public">
+                    <BoxContainer Orientation="Vertical" Margin="9" SeparationOverride="5">
+                        <Label Name="WithdrawTitleLabel" Access="Public" StyleClasses="LabelHeading" Text="{Loc 'economy-card-withdraw-section'}"/>
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                            <LineEdit Name="AmountInput" Access="Public" HorizontalExpand="True" PlaceHolder="{Loc 'economy-card-withdraw-amount-label'}"/>
+                            <Button Name="QuickMaxPrimaryButton" Access="Public" Text="{Loc 'economy-card-quick-amount-max'}"/>
+                        </BoxContainer>
+
+                        <BoxContainer Orientation="Horizontal" SeparationOverride="4">
+                            <Button Name="Quick10Button" Access="Public" HorizontalExpand="True" Text="{Loc 'economy-card-quick-amount-10'}"/>
+                            <Button Name="Quick50Button" Access="Public" HorizontalExpand="True" Text="{Loc 'economy-card-quick-amount-50'}"/>
+                            <Button Name="Quick100Button" Access="Public" HorizontalExpand="True" Text="{Loc 'economy-card-quick-amount-100'}"/>
+                        </BoxContainer>
+
+                        <Button Name="WithdrawButton" Access="Public" Text="{Loc 'economy-card-withdraw-button'}"/>
+                        <Label Name="WithdrawStatusLabel" Access="Public" StyleClasses="LabelSubText" Text="{Loc 'economy-card-withdraw-hint'}"/>
+
+                        <Button Name="ManualAccountToggle" Access="Public" Text="{Loc 'economy-card-manual-account-toggle'}"/>
+                        <BoxContainer Name="ManualAccountContainer" Access="Public" Orientation="Vertical" SeparationOverride="3" Visible="False">
+                            <Label Name="ManualAccountWarning" Access="Public" StyleClasses="LabelSubText" Text="{Loc 'economy-card-manual-account-warning'}"/>
+                            <LineEdit Name="AccountId" Access="Public" PlaceHolder="{Loc 'economy-card-account-override-placeholder'}"/>
+                        </BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+            </BoxContainer>
+        </ScrollContainer>
+    </BoxContainer>
+</DefaultWindow>

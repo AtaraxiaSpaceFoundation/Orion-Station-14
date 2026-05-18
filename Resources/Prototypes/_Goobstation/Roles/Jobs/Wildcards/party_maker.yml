@@ -7,6 +7,10 @@
   icon: "JobIconPartyMaker"
   supervisors: job-supervisors-hop
   setPreference: false
+  # Orion-Start
+  salary: 40
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Service
   - Maintenance

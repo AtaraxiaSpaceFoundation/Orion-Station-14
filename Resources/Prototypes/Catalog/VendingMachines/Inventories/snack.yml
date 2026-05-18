@@ -34,4 +34,9 @@
     FoodSnackSyndi: 3
   emaggedInventory:
     FoodSnackLollypopWrappedMysteryEvil: 2 # Goobstation
-
+  # Orion-Start
+  prices:
+    FoodSnackRaisins: 35
+    FoodSnackSemki: 10
+    FoodSnackSwirlLollipop: 50
+  # Orion-End

@@ -76,6 +76,10 @@
   supervisors: job-supervisors-hop
   guides: [ Chaplain ] # goobstation
   goobcoins: 25 #Goob content
+  # Orion-Start
+  salary: 55
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Chapel
   - Maintenance

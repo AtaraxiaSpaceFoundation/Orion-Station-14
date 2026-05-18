@@ -118,6 +118,10 @@
   - SOP-Alerts
   # Orion-Edit-End
   goobcoins: 40
+  # Orion-Start
+  salary: 120
+  payrollDepartmentAccount: Command
+  # Orion-End
   access:
   - Security
   - Brig

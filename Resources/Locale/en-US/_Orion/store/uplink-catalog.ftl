@@ -15,3 +15,6 @@ uplink-rpd-box-desc = 80 rounds of 7.62mm ammunition for the light machine gun.
 
 uplink-reinforcement-radio-cyborg-saboteur-name = Syndicate Saboteur Cyborg Teleporter
 uplink-reinforcement-radio-cyborg-saboteur-desc = An engineering cyborg designed for repair, sabotage, and support. Equipped with a backup pistol and an energy sword for self-defense.
+
+protocol-crab17-phone-name = Protocol CRAB-17 Phone
+protocol-crab17-phone-desc = The Protocol CRAB-17 Phone, a phone borrowed from an unknown third party, it can be used to crash the space market, funneling the losses of the crew to your bank account. The crew can move their funds to a new banking site though, unless they HODL, in which case they deserve it.

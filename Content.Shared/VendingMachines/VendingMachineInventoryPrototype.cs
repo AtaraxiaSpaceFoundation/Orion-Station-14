@@ -36,5 +36,38 @@ namespace Content.Shared.VendingMachines
 
         [DataField("contrabandInventory", customTypeSerializer:typeof(PrototypeIdDictionarySerializer<uint, EntityPrototype>))]
         public Dictionary<string, uint>? ContrabandInventory { get; private set; }
+
+        // Orion-Start
+        /// <summary>
+        /// Default item price for regular inventory entries when no per-item override exists.
+        /// </summary>
+        [DataField]
+        public int DefaultPrice { get; private set; }
+
+        /// <summary>
+        /// Default item price for contraband and emagged entries when no category override exists.
+        /// Falls back to <see cref="DefaultPrice"/> if not set.
+        /// </summary>
+        [DataField]
+        public int ExtraPrice { get; private set; }
+
+        /// <summary>
+        /// Per-item price overrides for regular inventory entries.
+        /// </summary>
+        [DataField(customTypeSerializer: typeof(PrototypeIdDictionarySerializer<int, EntityPrototype>))]
+        public Dictionary<string, int>? Prices { get; private set; }
+
+        /// <summary>
+        /// Per-item price overrides for contraband inventory entries.
+        /// </summary>
+        [DataField(customTypeSerializer: typeof(PrototypeIdDictionarySerializer<int, EntityPrototype>))]
+        public Dictionary<string, int>? ContrabandPrices { get; private set; }
+
+        /// <summary>
+        /// Per-item price overrides for emagged inventory entries.
+        /// </summary>
+        [DataField(customTypeSerializer: typeof(PrototypeIdDictionarySerializer<int, EntityPrototype>))]
+        public Dictionary<string, int>? EmaggedPrices { get; private set; }
+        // Orion-End
     }
 }

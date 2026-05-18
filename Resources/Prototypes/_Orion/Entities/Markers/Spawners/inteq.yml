@@ -159,6 +159,7 @@
     name: ghost-role-information-inteq-vanguard-leader
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
+    job: InteQVanguardLeader
   - type: CloningAppearance
     startingGear: InteQVanguardLeaderGear
     components:
@@ -185,6 +186,7 @@
     name: ghost-role-information-inteq-vanguard-operative
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
+    job: InteQVanguard
   - type: CloningAppearance
     startingGear: InteQVanguardOperativeGear
     components:
@@ -206,6 +208,7 @@
     name: ghost-role-information-inteq-vanguard-soldier
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
+    job: InteQVanguard
   - type: CloningAppearance
     startingGear: InteQVanguardSoldierGear
     components:
@@ -227,6 +230,7 @@
     name: ghost-role-information-inteq-vanguard-medic
     description: ghost-role-information-inteq-vanguard-description
     rules: ghost-role-information-rules-team-antagonist
+    job: InteQVanguard
   - type: CloningAppearance
     startingGear: InteQVanguardMedicGear
     components:
@@ -250,6 +254,7 @@
     name: ghost-role-information-inteq-vanguard-leader
     description: ghost-role-information-inteq-vanguard-leader-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
+    job: InteQVanguardLeader
     requirements:
     - !type:OverallPlaytimeRequirement
       time: 76000
@@ -288,6 +293,7 @@
     name: ghost-role-information-inteq-vanguard-operative
     description: ghost-role-information-inteq-vanguard-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
+    job: InteQVanguard
     requirements:
     - !type:OverallPlaytimeRequirement
       time: 36000
@@ -326,6 +332,7 @@
     name: ghost-role-information-inteq-vanguard-soldier
     description: ghost-role-information-inteq-vanguard-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
+    job: InteQVanguard
     requirements:
     - !type:OverallPlaytimeRequirement
       time: 36000
@@ -364,6 +371,7 @@
     name: ghost-role-information-inteq-vanguard-medic
     description: ghost-role-information-inteq-vanguard-SIZO-description
     rules: ghost-role-information-inteq-SIZO-rules
+    job: InteQVanguard
     requirements:
     - !type:OverallPlaytimeRequirement
       time: 36000

@@ -1,0 +1,8 @@
+[agents]
+max_threads = 6
+max_depth = 1
+
+[features]
+# Hooks are still disabled on Windows in current Codex docs, but keeping this
+# enabled makes the repo config ready for Linux/macOS and future Windows support.
+codex_hooks = true

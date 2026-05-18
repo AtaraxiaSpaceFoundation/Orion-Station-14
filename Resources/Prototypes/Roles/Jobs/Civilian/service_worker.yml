@@ -87,6 +87,10 @@
   supervisors: job-supervisors-service
   guides: [ Service ] # goobstation
   goobcoins: 10 #Goob content
+  # Orion-Start
+  salary: 45
+  payrollDepartmentAccount: Service
+  # Orion-End
   access:
   - Service
   - Maintenance

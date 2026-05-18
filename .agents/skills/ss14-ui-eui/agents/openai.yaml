@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 EUI"
+  short_description: "Admin/debug EUI windows and EuiState flows"
+  default_prompt: "Use $ss14-ui-eui for SS14 EUI windows, states, and admin/debug UI flows."

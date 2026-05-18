@@ -89,6 +89,10 @@
 #  - Medical # Orion-Edit: Removed because dont have this SOP
   - Medicine
   goobcoins: 20 #Goob content
+  # Orion-Start
+  salary: 80
+  payrollDepartmentAccount: Medical
+  # Orion-End
   access:
   - Medical
   - Maintenance
