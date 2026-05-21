@@ -568,7 +568,7 @@ namespace Content.Server.Lathe
             UpdateUserInterfaceState(uid, component);
         }
 
-        private static void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
+        private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
         {
             var servoRating = args.PartRatings.GetValueOrDefault("Servo", 1f);
             var efficiency = component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep;
@@ -576,6 +576,9 @@ namespace Content.Server.Lathe
 
             component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
             component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;
+
+            Dirty(uid, component);
+            UpdateUserInterfaceState(uid, component);
         }
 
         private static void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args)

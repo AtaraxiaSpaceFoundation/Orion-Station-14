@@ -139,7 +139,7 @@ namespace Content.Shared.Lathe
         [DataField]
         public float FinalTimeMultiplier = 1;
 
-        [DataField]
+        [DataField, AutoNetworkedField]
         public float FinalMaterialMultiplier = 1;
 
         [DataField]

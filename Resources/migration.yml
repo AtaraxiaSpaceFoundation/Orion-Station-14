@@ -280,6 +280,15 @@ SodaDispenserEmpty: SodaDispenser
 
 MicroManipulatorStockPart: MicroServoStockPart
 
+AutolatheHyperConvection: Autolathe
+ProtolatheHyperConvection: Protolathe
+CircuitImprinterHyperConvection: CircuitImprinter
+OreProcessorIndustrial: OreProcessor
+AutolatheHyperConvectionMachineCircuitboard: AutolatheMachineCircuitboard
+ProtolatheHyperConvectionMachineCircuitboard: ProtolatheMachineCircuitboard
+CircuitImprinterHyperConvectionMachineCircuitboard: CircuitImprinterMachineCircuitboard
+OreProcessorIndustrialMachineCircuitboard: OreProcessorMachineCircuitboard
+
 # Orion-End
 
 # Goobstation - Submarine from DeltaV
