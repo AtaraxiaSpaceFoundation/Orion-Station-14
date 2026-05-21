@@ -1,6 +1,8 @@
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared._Orion.Construction.Components;
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Stacks;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Orion.Construction.Events;
@@ -19,7 +21,46 @@ public struct MachinePartState
 public sealed class RefreshPartsEvent : EntityEventArgs
 {
     public IReadOnlyList<MachinePartState> Parts = new List<MachinePartState>();
-    public Dictionary<string, float> PartRatings = new();
+    public Dictionary<ProtoId<MachinePartPrototype>, float> PartRatings = new();
+
+    public float GetPartRating(ProtoId<MachinePartPrototype> partId, float defaultValue = 1f)
+    {
+        return PartRatings.GetValueOrDefault(partId, defaultValue);
+    }
+
+    public float GetPartRatingSum(ProtoId<MachinePartPrototype> partId)
+    {
+        var sum = 0f;
+        foreach (var state in Parts)
+        {
+            if (state.Part.Part != partId)
+                continue;
+
+            sum += state.Part.Tier * state.Quantity();
+        }
+
+        return sum;
+    }
+
+    public static float GetTgCooldownMultiplierFromCapacitor(float tier)
+    {
+        return Math.Clamp(1.15f - tier * 0.15f, 0.1f, 1f);
+    }
+
+    public static float GetServoEfficiencyMultiplier(float tier)
+    {
+        return Math.Clamp(1.2f - tier * 0.1f, 0.1f, 1.2f);
+    }
+
+    public static float GetLinearMultiplier(float tier, float step, float min, float max)
+    {
+        return Math.Clamp(1.2f - tier * step, min, max);
+    }
+
+    public static float GetPositiveTierMultiplier(float tier, float @base = 1f)
+    {
+        return Math.Max(@base, tier);
+    }
 }
 
 public sealed class UpgradeExamineEvent : EntityEventArgs

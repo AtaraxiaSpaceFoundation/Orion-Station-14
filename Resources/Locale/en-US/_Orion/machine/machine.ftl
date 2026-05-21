@@ -5,3 +5,19 @@ machine-part-name-micro-laser = Micro-laser
 machine-upgrade-increased-by-percentage-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] increased by [color={ $color }]{ $percent }%[/color].
 machine-upgrade-decreased-by-percentage-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] decreased by [color={ $color }]{ $percent }%[/color].
 machine-upgrade-not-upgraded-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] unchanged.
+
+machine-upgrade-charging-efficiency = charging efficiency
+machine-upgrade-quantum-cooldown = quantum cooldown time
+machine-upgrade-quantum-reward-bonus = quantum reward bonus
+machine-upgrade-quantum-exit-injury = unsafe ejection injury
+machine-upgrade-charging-speed = recharge speed
+machine-upgrade-power-input = power input throughput
+machine-upgrade-power-output = power output throughput
+machine-upgrade-process-speed = processing speed
+machine-upgrade-capacity = capacity
+machine-upgrade-energy-cost = energy cost per unit
+machine-upgrade-cook-speed = cooking speed
+machine-upgrade-research-cooldown = research cooldown
+machine-upgrade-scan-quality = scan quality
+machine-upgrade-malfunction-reduction = malfunction chance
+machine-upgrade-quantum-scanner-tier = quantum scanner tier

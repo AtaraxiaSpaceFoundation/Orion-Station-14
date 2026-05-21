@@ -10,6 +10,8 @@
       Glass: 1
     partRequirements:
       Servo: 2
+      ScanningModule: 4
+      MicroLaser: 4
 
 - type: entity
   parent: ProtolatheMachineCircuitboard
@@ -39,6 +41,8 @@
       Cable: 5
     partRequirements:
       Servo: 2
+      ScanningModule: 2
+      MicroLaser: 2
 
 - type: entity
   parent: BaseMachineCircuitboard

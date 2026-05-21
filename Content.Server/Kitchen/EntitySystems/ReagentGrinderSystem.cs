@@ -83,6 +83,7 @@ using Content.Server.Jittering;
 using Content.Server.Kitchen.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
@@ -140,6 +141,10 @@ namespace Content.Server.Kitchen.EntitySystems
             SubscribeLocalEvent<ReagentGrinderComponent, ReagentGrinderStartMessage>(OnStartMessage);
             SubscribeLocalEvent<ReagentGrinderComponent, ReagentGrinderEjectChamberAllMessage>(OnEjectChamberAllMessage);
             SubscribeLocalEvent<ReagentGrinderComponent, ReagentGrinderEjectChamberContentMessage>(OnEjectChamberContentMessage);
+            // Orion-Start
+            SubscribeLocalEvent<ReagentGrinderComponent, RefreshPartsEvent>(OnPartsRefresh);
+            SubscribeLocalEvent<ReagentGrinderComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+            // Orion-End
         }
 
         private void OnToggleAutoModeMessage(Entity<ReagentGrinderComponent> entity, ref ReagentGrinderToggleAutoModeMessage message)
@@ -430,5 +435,32 @@ namespace Content.Server.Kitchen.EntitySystems
         {
             return CompOrNull<ExtractableComponent>(uid)?.JuiceSolution is not null;
         }
+
+        // Orion-Start
+        private void OnPartsRefresh(EntityUid uid, ReagentGrinderComponent component, RefreshPartsEvent args)
+        {
+            var servoTier = args.GetPartRating(component.ServoPart, 1f);
+            var matterBinTier = args.GetPartRating(component.MatterBinPart, 1f);
+
+            component.WorkTimeMultiplier = RefreshPartsEvent.GetLinearMultiplier(servoTier, 0.1f, 0.5f, 1.2f);
+            component.StorageMaxEntities = (int)MathF.Round(component.BaseStorageMaxEntities * RefreshPartsEvent.GetPositiveTierMultiplier(matterBinTier));
+
+            Dirty(uid, component);
+            UpdateUiState(uid);
+        }
+
+        private static void OnUpgradeExamine(EntityUid uid, ReagentGrinderComponent component, UpgradeExamineEvent args)
+        {
+            var speedMultiplier = component.WorkTimeMultiplier <= 0f
+                ? 1f
+                : 1f / component.WorkTimeMultiplier;
+            var capacityMultiplier = component.BaseStorageMaxEntities <= 0
+                ? 1f
+                : (float) component.StorageMaxEntities / component.BaseStorageMaxEntities;
+
+            args.AddPercentageUpgrade("machine-upgrade-process-speed", speedMultiplier);
+            args.AddPercentageUpgrade("machine-upgrade-capacity", capacityMultiplier);
+        }
+        // Orion-End
     }
 }

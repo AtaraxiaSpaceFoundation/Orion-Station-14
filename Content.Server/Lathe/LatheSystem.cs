@@ -87,6 +87,7 @@ using Content.Server.Materials;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
+using Content.Shared._Orion.Construction;
 using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -570,9 +571,9 @@ namespace Content.Server.Lathe
 
         private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
         {
-            var servoRating = args.PartRatings.GetValueOrDefault("Servo", 1f);
-            var efficiency = component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep;
-            efficiency = MathF.Max(component.MinMachinePartEfficiency, efficiency);
+            var servoRating = args.GetPartRating(MachinePartIds.Servo, 1f);
+            var efficiency = RefreshPartsEvent.GetServoEfficiencyMultiplier(servoRating);
+            efficiency = Math.Clamp(efficiency, component.MinMachinePartEfficiency, 1.2f);
 
             component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
             component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;

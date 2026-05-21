@@ -71,9 +71,9 @@ public sealed partial class ConstructionSystem
         return parts;
     }
 
-    private Dictionary<string, float> GetPartRatings(List<MachinePartState> partStates)
+    private Dictionary<ProtoId<MachinePartPrototype>, float> GetPartRatings(List<MachinePartState> partStates)
     {
-        var result = new Dictionary<string, float>();
+        var result = new Dictionary<ProtoId<MachinePartPrototype>, float>();
 
         foreach (var type in _prototypeManager.EnumeratePrototypes<MachinePartPrototype>())
         {
