@@ -34,6 +34,9 @@ public sealed partial class ConstructionSystem
         if (!FormattedMessage.TryFromMarkup(markup.ToMarkup().TrimEnd('\n'), out markup))
             markup = FormattedMessage.Empty;
 
+        if (markup.IsEmpty)
+            return;
+
         args.Verbs.Add(new ExamineVerb
         {
             Act = () => _examineSystem.SendExamineTooltip(args.User, uid, markup, getVerbs: false, centerAtCursor: false),
@@ -56,7 +59,7 @@ public sealed partial class ConstructionSystem
         return true;
     }
 
-    public List<MachinePartState> GetAllParts(MachineComponent component)
+    private List<MachinePartState> GetAllParts(MachineComponent component)
     {
         var parts = new List<MachinePartState>();
         foreach (var entity in component.PartContainer.ContainedEntities)
@@ -68,7 +71,7 @@ public sealed partial class ConstructionSystem
         return parts;
     }
 
-    public Dictionary<string, float> GetPartRatings(List<MachinePartState> partStates)
+    private Dictionary<string, float> GetPartRatings(List<MachinePartState> partStates)
     {
         var result = new Dictionary<string, float>();
 
@@ -93,11 +96,13 @@ public sealed partial class ConstructionSystem
     public void RefreshParts(EntityUid uid, MachineComponent component)
     {
         var parts = GetAllParts(component);
+        var partRatings = GetPartRatings(parts);
+
         RaiseLocalEvent(uid,
             new RefreshPartsEvent
         {
             Parts = parts,
-            PartRatings = GetPartRatings(parts),
+            PartRatings = partRatings,
         },
         broadcast: true);
     }

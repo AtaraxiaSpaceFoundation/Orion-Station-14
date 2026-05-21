@@ -545,7 +545,7 @@ namespace Content.Server.Lathe
 
                     // Orion-Start
                     if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))
-                        printerComponent.Queue.Clear();
+                        printerComponent.Queue.RemoveRange(1, Math.Max(0, printerComponent.Queue.Count - 1));
                     // Orion-End
                 }
                 else

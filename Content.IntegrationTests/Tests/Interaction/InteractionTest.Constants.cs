@@ -37,7 +37,16 @@ public abstract partial class InteractionTest
     protected const string Rod = "MetalRod";
 
     // Parts
-    protected const string Manipulator1 = "MicroManipulatorStockPart";
+    protected const string Servo1 = "MicroServoStockPart"; // Orion-Edit
+    // Orion-Start
+    protected const string Servo2 = "NanoServoStockPart";
+    protected const string Servo3 = "PicoServoStockPart";
+    protected const string Servo4 = "FemtoServoStockPart";
+    protected const string MatterBin1 = "MatterBinStockPart";
+    protected const string MatterBin2 = "AdvancedMatterBinStockPart";
+    protected const string MatterBin3 = "SuperMatterBinStockPart";
+    protected const string MatterBin4 = "BluespaceMatterBinStockPart";
+    // Orion-End
     protected const string Battery1 = "PowerCellSmall";
     protected const string Battery4 = "PowerCellHyper";
 }

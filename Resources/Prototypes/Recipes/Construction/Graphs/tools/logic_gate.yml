@@ -125,6 +125,7 @@
       completed:
       - !type:SpawnPrototype
         prototype: MicroServoStockPart # Orion-Edit: Servo
+        amount: 2 # Orion
       - !type:SpawnPrototype
         prototype: CableApcStack1
         amount: 2

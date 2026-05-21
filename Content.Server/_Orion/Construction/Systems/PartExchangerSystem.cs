@@ -78,11 +78,10 @@ public sealed class PartExchangerSystem : EntitySystem
 
     private void OnDoAfter(EntityUid uid, PartExchangerComponent component, DoAfterEvent args)
     {
+        component.AudioStream = _audio.Stop(component.AudioStream);
+
         if (args.Cancelled)
-        {
-            component.AudioStream = _audio.Stop(component.AudioStream);
             return;
-        }
 
         if (args.Handled || args.Args.Target is not { } target)
             return;
@@ -139,27 +138,106 @@ public sealed class PartExchangerSystem : EntitySystem
 
             foreach (var currentPart in current.OrderBy(part => part.State.Part.Tier))
             {
-                var replacementIndex = available.FindIndex(part => part.State.Part.Tier > currentPart.State.Part.Tier);
-                if (replacementIndex < 0)
+                var needed = currentPart.State.Quantity();
+                var collected = new List<(EntityUid Uid, int Amount, MachinePartState State)>();
+                var collectedTotal = 0;
+
+                for (var i = 0; i < available.Count && collectedTotal < needed; i++)
+                {
+                    var candidate = available[i];
+                    if (candidate.State.Part.Tier <= currentPart.State.Part.Tier)
+                        continue;
+
+                    var candidateQuantity = candidate.State.Quantity();
+                    var used = Math.Min(needed - collectedTotal, candidateQuantity);
+                    if (used <= 0)
+                        continue;
+
+                    collected.Add((candidate.Uid, used, candidate.State));
+                    collectedTotal += used;
+                }
+
+                if (collectedTotal < needed)
                     continue;
 
-                var replacement = available[replacementIndex];
-                var replacementUid = replacement.Uid;
-                available.RemoveAt(replacementIndex);
+                var replacementUids = new List<EntityUid>();
+                var removed = new List<(EntityUid Uid, int Amount)>();
+                var reservationFailed = false;
+                foreach (var (replacementUid, amount, state) in collected)
+                {
+                    if (!_container.TryRemoveFromContainer(replacementUid, force: true))
+                    {
+                        reservationFailed = true;
+                        break;
+                    }
 
-                if (!_container.TryRemoveFromContainer(replacementUid, force: true))
+                    if (state.Stack != null && state.Stack.Count > amount)
+                    {
+                        var split = _stack.Split(replacementUid, amount, Transform(uid).Coordinates, state.Stack);
+                        if (split == null)
+                        {
+                            _container.Insert(replacementUid, storage.Container, force: true);
+                            reservationFailed = true;
+                            break;
+                        }
+
+                        replacementUids.Add(split.Value);
+                        _container.Insert(replacementUid, storage.Container, force: true);
+                    }
+                    else
+                    {
+                        replacementUids.Add(replacementUid);
+                    }
+
+                    removed.Add((Uid: replacementUid, Amount: amount));
+                }
+
+                if (reservationFailed)
+                {
+                    foreach (var reservedUid in replacementUids)
+                    {
+                        if (TerminatingOrDeleted(reservedUid))
+                            continue;
+
+                        _container.Insert(reservedUid, storage.Container, force: true);
+                    }
+
                     continue;
+                }
 
                 _container.RemoveEntity(target, currentPart.Uid);
 
                 if (!_storage.Insert(uid, currentPart.Uid, out _, playSound: false))
                 {
                     _container.Insert(currentPart.Uid, machine.PartContainer, force: true);
-                    _container.Insert(replacementUid, storage.Container, force: true);
+                    foreach (var reservedUid in replacementUids)
+                    {
+                        if (TerminatingOrDeleted(reservedUid))
+                            continue;
+
+                        _container.Insert(reservedUid, storage.Container, force: true);
+                    }
+
                     continue;
                 }
 
-                _container.Insert(replacementUid, machine.PartContainer, force: true);
+                foreach (var replacementUid in replacementUids)
+                {
+                    if (!_container.Insert(replacementUid, machine.PartContainer, force: true))
+                        _container.Insert(replacementUid, storage.Container, force: true);
+                }
+
+                foreach (var (removedUid, amount) in removed)
+                {
+                    var index = available.FindIndex(p => p.Uid == removedUid);
+                    if (index < 0)
+                        continue;
+
+                    var stack = available[index].State.Stack;
+                    if (stack == null || stack.Count <= amount)
+                        available.RemoveAt(index);
+                }
+
                 changed = true;
             }
         }
