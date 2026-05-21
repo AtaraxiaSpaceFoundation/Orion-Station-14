@@ -146,7 +146,7 @@ namespace Content.Shared.Lathe
         public ProtoId<MachinePartPrototype> MachinePartPrintSpeed = "Servo";
 
         [DataField]
-        public float BaseMachinePartEfficiency = 1.2f;
+        public float BaseMachinePartEfficiency = 1.1f;
 
         [DataField]
         public float MachinePartEfficiencyTierStep = 0.1f;

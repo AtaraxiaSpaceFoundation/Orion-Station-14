@@ -568,22 +568,24 @@ namespace Content.Server.Lathe
             UpdateUserInterfaceState(uid, component);
         }
 
-        private static void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args) // Orion-Edit: Static
+        private static void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
         {
-            // Orion-Edit-Start
             var servoRating = args.PartRatings.GetValueOrDefault("Servo", 1f);
             var efficiency = component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep;
             efficiency = MathF.Max(component.MinMachinePartEfficiency, efficiency);
 
             component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
             component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;
-            // Orion-Edit-End
         }
 
-        private static void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args) // Orion-Edit: Static
+        private static void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args)
         {
-            args.AddPercentageUpgrade("lathe-component-upgrade-speed", component.FinalTimeMultiplier, component.TimeMultiplier);
-            args.AddPercentageUpgrade("lathe-component-upgrade-material-use", component.FinalMaterialMultiplier, component.MaterialUseMultiplier); // Orion-Edit
+            var speedMultiplier = component.FinalTimeMultiplier > 0f
+                ? component.TimeMultiplier / component.FinalTimeMultiplier
+                : 1f;
+
+            args.AddPercentageUpgrade("lathe-component-upgrade-speed", speedMultiplier, component.TimeMultiplier);
+            args.AddPercentageUpgrade("lathe-component-upgrade-material-use", component.FinalMaterialMultiplier, component.MaterialUseMultiplier);
         }
         // Orion-End
 
@@ -598,17 +600,17 @@ namespace Content.Server.Lathe
         {
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
-            TryComp<DocumentPrinterComponent>(uid, out var printer); // Orion
+                TryComp<DocumentPrinterComponent>(uid, out var printer); // Orion
                 var count = 0;
                 for (var i = 0; i < args.Quantity; i++)
                 {
                     if (TryAddToQueue(uid, recipe, component))
-                // Orion-Edit-Start
-                {
-                    printer?.Queue.Add((args.Actor, recipe));
-                    count++;
-                }
-                // Orion-Edit-End
+                    // Orion-Edit-Start
+                    {
+                        printer?.Queue.Add((args.Actor, recipe));
+                        count++;
+                    }
+                    // Orion-Edit-End
                     else
                         break;
                 }
