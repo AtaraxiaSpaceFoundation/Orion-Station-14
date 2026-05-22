@@ -384,7 +384,6 @@ internal sealed class ChargerSystem : EntitySystem
         component.FinalChargeRate = component.BaseChargeRate * RefreshPartsEvent.GetPositiveTierMultiplier(capTier);
         component.ChargeRate = component.FinalChargeRate;
 
-        Dirty(uid, component);
         UpdateStatus(uid, component);
     }
 
