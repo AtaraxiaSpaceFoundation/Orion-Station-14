@@ -359,7 +359,6 @@ namespace Content.Server.Kitchen.EntitySystems
             component.ExplosionChance = MathF.Max(0f, component.BaseExplosionChance - microLaserTier * 0.05f);
             component.Capacity = (int)MathF.Round(component.BaseCapacity * RefreshPartsEvent.GetPositiveTierMultiplier(matterBinTier));
 
-            Dirty(uid, component);
             UpdateUserInterfaceState(uid, component);
         }
 
