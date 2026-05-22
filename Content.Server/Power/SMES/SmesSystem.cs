@@ -72,7 +72,7 @@ public sealed class SmesSystem : EntitySystem // goob edit - made public
         netBattery.MaxSupply = component.FinalMaxSupply;
         netBattery.MaxChargeRate = component.FinalMaxChargeRate;
 
-        Dirty(uid, component);
+        UpdateSmesState(uid, component);
     }
 
     private static void OnUpgradeExamine(EntityUid uid, SmesComponent component, UpgradeExamineEvent args)
