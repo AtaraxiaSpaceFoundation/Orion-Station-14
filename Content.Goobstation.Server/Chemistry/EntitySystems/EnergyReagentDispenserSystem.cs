@@ -269,7 +269,6 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
             component.FinalRechargeRate = component.BaseRechargeRate * RefreshPartsEvent.GetPositiveTierMultiplier(capacitorTier);
             component.FinalEnergyCostMultiplier = RefreshPartsEvent.GetLinearMultiplier(matterBinTier, 0.1f, 0.5f, 1.2f);
 
-            Dirty(uid, component);
             UpdateUiState((uid, component));
         }
 
