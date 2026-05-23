@@ -307,7 +307,6 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
         component.FinalFailureChance = MathF.Max(0f, component.BaseFailureChance - scanningTier * 0.02f - microTier * 0.01f);
         component.FinalScanQuality = component.BaseScanQuality + scanningTier * 2f + microTier;
 
-        Dirty(uid, component);
         UpdateUi((uid, component));
     }
 
