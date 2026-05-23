@@ -12,7 +12,6 @@ namespace Content.Server.Construction;
 
 public sealed partial class ConstructionSystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
 
     private void InitializeMachineUpgrades()
@@ -73,21 +72,22 @@ public sealed partial class ConstructionSystem
 
     private Dictionary<ProtoId<MachinePartPrototype>, float> GetPartRatings(List<MachinePartState> partStates)
     {
-        var result = new Dictionary<ProtoId<MachinePartPrototype>, float>();
+        var weightedRatings = new Dictionary<ProtoId<MachinePartPrototype>, float>();
+        var quantities = new Dictionary<ProtoId<MachinePartPrototype>, float>();
 
-        foreach (var type in _prototypeManager.EnumeratePrototypes<MachinePartPrototype>())
+        foreach (var state in partStates)
         {
-            var quantity = 0f;
-            var weightedRating = 0f;
+            var id = state.Part.Part;
+            var count = state.Quantity();
 
-            foreach (var state in partStates.Where(part => part.Part.Part == type.ID))
-            {
-                var count = state.Quantity();
-                quantity += count;
-                weightedRating += state.Part.Tier * count;
-            }
+            quantities[id] = quantities.GetValueOrDefault(id) + count;
+            weightedRatings[id] = weightedRatings.GetValueOrDefault(id) + state.Part.Tier * count;
+        }
 
-            result[type.ID] = quantity > 0 ? weightedRating / quantity : 1f;
+        var result = new Dictionary<ProtoId<MachinePartPrototype>, float>();
+        foreach (var (id, quantity) in quantities)
+        {
+            result[id] = quantity > 0 ? weightedRatings[id] / quantity : 1f;
         }
 
         return result;

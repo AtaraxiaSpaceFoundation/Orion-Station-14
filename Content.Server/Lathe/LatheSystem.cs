@@ -308,7 +308,7 @@ namespace Content.Server.Lathe
 
             // Orion-Start
             var baseTime = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime).TotalSeconds;
-            var adjustedTime = MathF.Pow(MathF.Max(0.1f, (float) baseTime * component.FinalTimeMultiplier), component.MachinePartEfficiencyExponent);
+            var adjustedTime = baseTime * MathF.Pow(MathF.Max(0.1f, component.FinalTimeMultiplier), component.MachinePartEfficiencyExponent);
             // Orion-End
             var time = TimeSpan.FromSeconds(Math.Max(0.1f, adjustedTime)); // Orion-Edit
 
@@ -534,6 +534,14 @@ namespace Content.Server.Lathe
                 // Orion-Edit-Start
                 var totalMaterials = new Dictionary<string, int>();
 
+                if (component.ActiveMaterialRefund != null)
+                {
+                    foreach (var (mat, amount) in component.ActiveMaterialRefund)
+                    {
+                        totalMaterials[mat] = totalMaterials.GetValueOrDefault(mat) + amount;
+                    }
+                }
+
                 foreach (var refund in component.QueuedMaterialRefunds)
                 {
                     foreach (var (mat, amount) in refund)
@@ -582,7 +590,7 @@ namespace Content.Server.Lathe
 
         private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
         {
-            var servoRating = args.GetPartRating(MachinePartIds.Servo);
+            var servoRating = args.GetPartRating(component.MachinePartPrintSpeed);
             var efficiency = Math.Clamp(component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep,
                 component.MinMachinePartEfficiency,
                 component.BaseMachinePartEfficiency);

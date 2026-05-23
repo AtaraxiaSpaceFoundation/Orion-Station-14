@@ -39,6 +39,9 @@ public sealed class PartExchangerSystem : EntitySystem
 
     private void OnAfterInteract(EntityUid uid, PartExchangerComponent component, AfterInteractEvent args)
     {
+        if (args.Handled)
+            return;
+
         if (component.DoDistanceCheck && !args.CanReach)
             return;
 
@@ -182,6 +185,7 @@ public sealed class PartExchangerSystem : EntitySystem
                         }
 
                         replacementUids.Add(split.Value);
+                        available.Add((split.Value, state));
                         _container.Insert(replacementUid, storage.Container, force: true);
                     }
                     else
@@ -283,7 +287,6 @@ public sealed class PartExchangerSystem : EntitySystem
                     continue;
                 }
 
-                machineFrame.PartProgress[machinePart.Part] += amount;
                 changed = true;
                 continue;
             }
@@ -317,7 +320,6 @@ public sealed class PartExchangerSystem : EntitySystem
                 continue;
             }
 
-            machineFrame.MaterialProgress[stack.StackTypeId] += materialAmount;
             changed = true;
         }
 

@@ -261,7 +261,11 @@ public sealed class MachineFrameSystem : EntitySystem
 
         if (!_container.Insert(partToInsert, component.PartContainer))
         {
-            QueueDel(partToInsert); // Orion
+            // Orion-Start
+            if (partToInsert != used)
+                QueueDel(partToInsert);
+            // Orion-End
+
             return false;
         }
 
