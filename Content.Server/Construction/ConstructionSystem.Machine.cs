@@ -36,6 +36,9 @@ public sealed partial class ConstructionSystem
     // Orion-Start
     private void OnMachineStartup(EntityUid uid, MachineComponent component, ComponentStartup args)
     {
+        if (MetaData(uid).EntityLifeStage < EntityLifeStage.MapInitialized)
+            return;
+
         RefreshParts(uid, component);
     }
     // Orion-End
