@@ -99,16 +99,16 @@ namespace Content.Goobstation.Server.Chemistry.Components
         [DataField]
         public bool Emagged;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseRechargeRate = 25f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float FinalRechargeRate = 25f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseEnergyCostMultiplier = 1f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float FinalEnergyCostMultiplier = 1f;
 
         [DataField]

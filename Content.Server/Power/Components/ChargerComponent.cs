@@ -37,10 +37,10 @@ namespace Content.Server.Power.Components
         public float ChargeRate = 20.0f;
 
         // Orion-Start
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseChargeRate = 20.0f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float FinalChargeRate = 20.0f;
 
         [DataField]

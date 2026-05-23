@@ -80,16 +80,16 @@ namespace Content.Server.Chemistry.Components
         public ReagentDispenserDispenseAmount DispenseAmount = ReagentDispenserDispenseAmount.U10;
 
         // Orion-Start
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseRechargeRate = 1f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float FinalRechargeRate = 1f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseEnergyCostPerUnit = 1f;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float FinalEnergyCostPerUnit = 1f;
 
         [DataField]

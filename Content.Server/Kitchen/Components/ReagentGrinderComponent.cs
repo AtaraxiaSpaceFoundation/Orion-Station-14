@@ -53,10 +53,10 @@ namespace Content.Server.Kitchen.Components
         public float WorkTimeMultiplier = 1;
 
         // Orion-Start
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseWorkTimeMultiplier = 1;
 
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public int BaseStorageMaxEntities = 6;
         // Orion-End
 

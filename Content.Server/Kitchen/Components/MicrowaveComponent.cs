@@ -77,7 +77,7 @@ namespace Content.Server.Kitchen.Components
         public float CookTimeMultiplier = 1;
 
         // Orion-Start
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseCookTimeMultiplier = 1;
         // Orion-End
 
@@ -153,7 +153,7 @@ namespace Content.Server.Kitchen.Components
         public int Capacity = 10;
 
         // Orion-Start
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public int BaseCapacity = 10;
         // Orion-End
 
@@ -173,7 +173,7 @@ namespace Content.Server.Kitchen.Components
         public float ExplosionChance = .1f;
 
         // Orion-Start
-        [DataField]
+        [ViewVariables(VVAccess.ReadWrite)]
         public float BaseExplosionChance = .1f;
 
         [DataField]
