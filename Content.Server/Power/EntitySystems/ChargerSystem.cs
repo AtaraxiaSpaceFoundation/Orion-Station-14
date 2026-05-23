@@ -384,6 +384,9 @@ internal sealed class ChargerSystem : EntitySystem
         component.FinalChargeRate = component.BaseChargeRate * RefreshPartsEvent.GetPositiveTierMultiplier(capTier);
         component.ChargeRate = component.FinalChargeRate;
 
+        if (TryComp<ApcPowerReceiverComponent>(uid, out var receiver))
+            receiver.Load = component.Status == CellChargerStatus.Charging ? component.ChargeRate : 0f;
+
         UpdateStatus(uid, component);
     }
 

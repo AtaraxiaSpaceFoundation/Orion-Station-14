@@ -38,10 +38,10 @@ namespace Content.Server.Power.Components
 
         // Orion-Start
         [ViewVariables(VVAccess.ReadWrite)]
-        public float BaseChargeRate = 20.0f;
+        public float BaseChargeRate;
 
         [ViewVariables(VVAccess.ReadWrite)]
-        public float FinalChargeRate = 20.0f;
+        public float FinalChargeRate;
 
         [DataField]
         public ProtoId<MachinePartPrototype> ChargePart = "Capacitor";

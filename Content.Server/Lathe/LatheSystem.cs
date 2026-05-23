@@ -299,8 +299,9 @@ namespace Content.Server.Lathe
             var recipeProto = component.Queue.Dequeue();
 
             // Orion-Start
+            component.ActiveMaterialRefund = null;
             if (component.QueuedMaterialRefunds.Count > 0)
-                component.QueuedMaterialRefunds.Dequeue();
+                component.ActiveMaterialRefund = component.QueuedMaterialRefunds.Dequeue();
             // Orion-End
 
             var recipe = _proto.Index(recipeProto);
@@ -388,6 +389,7 @@ namespace Content.Server.Lathe
                 }
             }
 
+            comp.ActiveMaterialRefund = null; // Orion
             comp.CurrentRecipe = null;
             prodComp.StartTime = _timing.CurTime;
 
@@ -484,6 +486,12 @@ namespace Content.Server.Lathe
         {
             if (!args.Powered)
             {
+                // Orion-Start
+                if (component.ActiveMaterialRefund != null)
+                    component.QueuedMaterialRefunds.Enqueue(component.ActiveMaterialRefund);
+                // Orion-End
+
+                component.ActiveMaterialRefund = null; // Orion
                 RemComp<LatheProducingComponent>(uid);
                 UpdateRunningAppearance(uid, false);
             }
@@ -542,7 +550,10 @@ namespace Content.Server.Lathe
                         _materialStorage.TryChangeMaterialAmount(uid, mat, amount);
                     }
                     component.Queue.Clear();
-                    component.QueuedMaterialRefunds.Clear(); // Orion
+                    // Orion-Start
+                    component.QueuedMaterialRefunds.Clear();
+                    component.ActiveMaterialRefund = null;
+                    // Orion-End
 
                     // Orion-Start
                     if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))

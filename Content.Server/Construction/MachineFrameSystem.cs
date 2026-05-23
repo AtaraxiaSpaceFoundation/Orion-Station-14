@@ -260,7 +260,10 @@ public sealed class MachineFrameSystem : EntitySystem
         }
 
         if (!_container.Insert(partToInsert, component.PartContainer))
-            return true;
+        {
+            QueueDel(partToInsert); // Orion
+            return false;
+        }
 
         component.PartProgress[machinePart.Part] += delta;
 

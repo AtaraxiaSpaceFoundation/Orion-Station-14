@@ -85,6 +85,8 @@ namespace Content.Shared.Lathe
         // Orion-Start
         [DataField]
         public Queue<Dictionary<ProtoId<MaterialPrototype>, int>> QueuedMaterialRefunds = new();
+
+        public Dictionary<ProtoId<MaterialPrototype>, int>? ActiveMaterialRefund;
         // Orion-End
 
         /// <summary>

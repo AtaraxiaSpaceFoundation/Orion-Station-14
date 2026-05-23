@@ -355,7 +355,7 @@ namespace Content.Server.Kitchen.EntitySystems
         {
             var microLaserTier = args.GetPartRating(component.MicroLaserPart);
             var matterBinTier = args.GetPartRating(component.MatterBinPart);
-            component.CookTimeMultiplier = RefreshPartsEvent.GetLinearMultiplier(microLaserTier, 0.1f, 0.5f, 1.2f);
+            component.CookTimeMultiplier = component.BaseCookTimeMultiplier * RefreshPartsEvent.GetLinearMultiplier(microLaserTier, 0.1f, 0.5f, 1.2f);
             component.ExplosionChance = MathF.Max(0f, component.BaseExplosionChance - microLaserTier * 0.05f);
             component.Capacity = (int)MathF.Round(component.BaseCapacity * RefreshPartsEvent.GetPositiveTierMultiplier(matterBinTier));
 

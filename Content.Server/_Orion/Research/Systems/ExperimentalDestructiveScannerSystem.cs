@@ -304,8 +304,12 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
         var microTier = args.GetPartRating(component.MicroLaserPart);
 
         component.ScanDuration = TimeSpan.FromSeconds(MathF.Max(0.5f, (float)component.BaseScanDuration.TotalSeconds / MathF.Max(servoTier, 1f)));
-        component.FinalFailureChance = MathF.Max(0f, component.BaseFailureChance - scanningTier * 0.02f - microTier * 0.01f);
-        component.FinalScanQuality = component.BaseScanQuality + scanningTier * 2f + microTier;
+
+        var scanningDelta = MathF.Max(0f, scanningTier - 1f);
+        var microDelta = MathF.Max(0f, microTier - 1f);
+
+        component.FinalFailureChance = MathF.Max(0f, component.BaseFailureChance - scanningDelta * 0.02f - microDelta * 0.01f);
+        component.FinalScanQuality = component.BaseScanQuality + scanningDelta * 2f + microDelta;
 
         UpdateUi((uid, component));
     }

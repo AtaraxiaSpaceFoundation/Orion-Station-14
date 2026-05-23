@@ -234,7 +234,7 @@ public sealed class PartExchangerSystem : EntitySystem
                         continue;
 
                     var stack = available[index].State.Stack;
-                    if (stack == null || stack.Count <= amount)
+                    if (stack == null || stack.Count == 0)
                         available.RemoveAt(index);
                 }
 
