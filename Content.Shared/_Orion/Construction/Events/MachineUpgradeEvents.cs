@@ -42,14 +42,9 @@ public sealed class RefreshPartsEvent : EntityEventArgs
         return sum;
     }
 
-    public static float GetTgCooldownMultiplierFromCapacitor(float tier)
+    public static float GetPartCooldownMultiplier(float tier)
     {
         return Math.Clamp(1.15f - tier * 0.15f, 0.1f, 1f);
-    }
-
-    public static float GetServoEfficiencyMultiplier(float tier)
-    {
-        return Math.Clamp(1.2f - tier * 0.1f, 0.1f, 1.2f);
     }
 
     public static float GetLinearMultiplier(float tier, float step, float min, float max)
@@ -97,12 +92,22 @@ public sealed class UpgradeExamineEvent : EntityEventArgs
             > 1 => "machine-upgrade-increased-by-percentage-extra",
         };
 
-        FixedPoint2 percent = multiplier switch
+        var percentValue = 0f;
+
+        if (float.IsFinite(multiplier) && float.IsFinite(timeModifier) && timeModifier > 0f)
         {
-            < 1 => 100 * timeModifier * MathF.Abs(multiplier - 1),
-            1 or float.NaN => 100 / timeModifier,
-            > 1 => 100 / timeModifier * MathF.Abs(multiplier - 1),
-        };
+            percentValue = multiplier switch
+            {
+                < 1 => 100f * timeModifier * MathF.Abs(multiplier - 1f),
+                > 1 => 100f / timeModifier * MathF.Abs(multiplier - 1f),
+                _ => 100f / timeModifier,
+            };
+
+            if (!float.IsFinite(percentValue))
+                percentValue = 0f;
+        }
+
+        FixedPoint2 percent = percentValue;
 
         var color = timeModifier switch
         {

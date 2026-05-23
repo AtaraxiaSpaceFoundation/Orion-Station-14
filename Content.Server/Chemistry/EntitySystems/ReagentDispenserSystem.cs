@@ -246,7 +246,6 @@ namespace Content.Server.Chemistry.EntitySystems
             var energyMultiplier = RefreshPartsEvent.GetLinearMultiplier(matterBinTier, 0.1f, 0.5f, 1.2f);
             component.FinalEnergyCostPerUnit = MathF.Max(0.01f, component.BaseEnergyCostPerUnit * energyMultiplier);
 
-            Dirty(uid, component);
             UpdateUiState((uid, component));
         }
 

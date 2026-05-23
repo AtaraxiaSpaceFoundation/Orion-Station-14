@@ -136,7 +136,7 @@ namespace Content.Shared.Lathe
         public float MaterialUseMultiplier = 1;
 
         // Orion-Start
-        [DataField]
+        [DataField, AutoNetworkedField]
         public float FinalTimeMultiplier = 1;
 
         [DataField, AutoNetworkedField]

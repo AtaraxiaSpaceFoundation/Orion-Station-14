@@ -20,13 +20,9 @@ public sealed partial class MachinePartConstructionGraphStep : ArbitraryInsertCo
 
     public override void DoExamine(ExaminedEvent examinedEvent)
     {
-        var partName = MachinePart.Id;
-        var localizedPartName = partName;
+        var localizedPartName = MachinePart.Id;
         if (IoCManager.Resolve<IPrototypeManager>().TryIndex(MachinePart, out var machinePartProto) && !string.IsNullOrWhiteSpace(machinePartProto.Name))
-        {
-            partName = machinePartProto.Name;
-            localizedPartName = Loc.GetString(partName);
-        }
+            localizedPartName = Loc.GetString(machinePartProto.Name);
 
         examinedEvent.PushMarkup(string.IsNullOrEmpty(Name)
             ? Loc.GetString("construction-insert-entity-with-component", ("componentName", localizedPartName))

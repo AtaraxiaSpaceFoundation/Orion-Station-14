@@ -348,7 +348,7 @@ public sealed class MachineFrameSystem : EntitySystem
             component.MaterialRequirements.Clear();
             component.PartRequirements.Clear(); // Orion
             component.ComponentRequirements.Clear();
-            component.TagRequirements.Clear();
+//            component.TagRequirements.Clear(); // Orion-Edit
             component.MaterialProgress.Clear();
             component.PartProgress.Clear(); // Orion
             component.ComponentProgress.Clear();

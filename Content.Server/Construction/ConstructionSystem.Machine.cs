@@ -83,7 +83,10 @@ public sealed partial class ConstructionSystem
             {
                 var stack = _stackSystem.Spawn(amount, stackType, xform.Coordinates);
                 if (!_container.Insert(stack, partContainer))
+                {
+                    Del(stack);
                     throw new Exception($"Couldn't insert machine material of type {stackType} to machine with prototype {Prototype(uid)?.ID ?? "N/A"}");
+                }
 
                 continue;
             }

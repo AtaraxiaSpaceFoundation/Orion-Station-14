@@ -16,7 +16,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Construction.Components;
-using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Construction;
 using Content.Shared.Examine;
 using JetBrains.Annotations;
@@ -117,7 +116,7 @@ namespace Content.Server.Construction.Conditions
 
                 var examineName = constructionSys.GetExamineName(info);
                 args.PushMarkup(Loc.GetString("construction-condition-machine-frame-required-element-entry",
-                                                ("amount", info.Amount),
+                                                ("amount", amount), // Orion-Edit
                                                 ("elementName", examineName)));
             }
 
@@ -130,7 +129,7 @@ namespace Content.Server.Construction.Conditions
 
                 var examineName = constructionSys.GetExamineName(info);
                 args.PushMarkup(Loc.GetString("construction-condition-machine-frame-required-element-entry",
-                                    ("amount", info.Amount),
+                                    ("amount", amount), // Orion-Edit
                                     ("elementName", examineName))
                                 + "\n");
             }

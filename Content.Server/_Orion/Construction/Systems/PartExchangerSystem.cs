@@ -83,7 +83,7 @@ public sealed class PartExchangerSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        if (args.Handled || args.Args.Target is not { } target)
+        if (args.Args.Target is not { } target)
             return;
 
         if (!TryComp<StorageComponent>(uid, out var storage))
@@ -324,10 +324,11 @@ public sealed class PartExchangerSystem : EntitySystem
         if (!changed)
             return false;
 
+        _machineFrame.RegenerateProgress(machineFrame);
+
         if (_machineFrame.IsComplete(machineFrame))
             _popup.PopupEntity(Loc.GetString("machine-frame-component-on-complete"), frameUid, user);
 
-        _machineFrame.RegenerateProgress(machineFrame);
         return true;
     }
 }

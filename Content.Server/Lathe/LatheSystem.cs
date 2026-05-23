@@ -571,9 +571,10 @@ namespace Content.Server.Lathe
 
         private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
         {
-            var servoRating = args.GetPartRating(MachinePartIds.Servo, 1f);
-            var efficiency = RefreshPartsEvent.GetServoEfficiencyMultiplier(servoRating);
-            efficiency = Math.Clamp(efficiency, component.MinMachinePartEfficiency, 1.2f);
+            var servoRating = args.GetPartRating(MachinePartIds.Servo);
+            var efficiency = Math.Clamp(component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep,
+                component.MinMachinePartEfficiency,
+                component.BaseMachinePartEfficiency);
 
             component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
             component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;

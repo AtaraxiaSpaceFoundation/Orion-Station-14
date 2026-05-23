@@ -165,7 +165,7 @@ public sealed class QuantumServerSystem : EntitySystem
     {
         var previousScannerTier = component.ScannerTier;
         var capacitorTier = args.GetPartRating(MachinePartIds.Capacitor);
-        component.CooldownMultiplier = RefreshPartsEvent.GetTgCooldownMultiplierFromCapacitor(capacitorTier);
+        component.CooldownMultiplier = RefreshPartsEvent.GetPartCooldownMultiplier(capacitorTier);
 
         var scannerTier = args.GetPartRating(MachinePartIds.ScanningModule);
         component.ScannerTier = Math.Max(1, (int) MathF.Round(scannerTier));
