@@ -113,6 +113,7 @@ using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Orion.Mood;
 using Content.Shared.CCVar;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 
@@ -129,6 +130,7 @@ public sealed class ThirstSystem : EntitySystem
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
     [Dependency] private readonly IConfigurationManager _config = default!; // Orion
     [Dependency] private readonly INetManager _net = default!; // Orion
+    [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
 
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconOverhydratedId = "ThirstIconOverhydrated";
     private static readonly ProtoId<SatiationIconPrototype> ThirstIconThirstyId = "ThirstIconThirsty";
@@ -325,6 +327,11 @@ public sealed class ThirstSystem : EntitySystem
                 continue;
 
             thirst.NextUpdateTime += thirst.UpdateRate;
+
+            // Orion-Start
+            if (_mobState.IsDead(uid))
+                continue;
+            // Orion-End
 
             var oldThirst = thirst.CurrentThirst; // Orion
             ModifyThirst(uid, thirst, -thirst.ActualDecayRate);
