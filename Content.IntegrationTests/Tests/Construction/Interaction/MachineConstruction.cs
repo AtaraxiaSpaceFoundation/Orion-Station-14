@@ -60,7 +60,7 @@ public sealed class MachineConstruction : InteractionTest
         // Change it into an autolathe
         await InteractUsing("AutolatheMachineCircuitboard");
         AssertPrototype(MachineFrame);
-        await Interact(MatterBin1, MatterBin1, MatterBin1, Capacitor1, Glass, Screw); // Orion-Edit
+        await Interact(MatterBin1, MatterBin1, MatterBin1, Servo1, Glass, Screw); // Orion-Edit
         AssertPrototype("Autolathe");
     }
 }

@@ -51,6 +51,8 @@ public sealed class PartExchangerSystem : EntitySystem
         if (!HasComp<MachineComponent>(target) && !HasComp<MachineFrameComponent>(target))
             return;
 
+        args.Handled = true;
+
         if (component.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
         {
             _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
@@ -58,14 +60,11 @@ public sealed class PartExchangerSystem : EntitySystem
             return;
         }
 
-        var started = _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
+        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
         });
-
-        if (started)
-            args.Handled = true;
     }
 
     private void OnDoAfter(EntityUid uid, PartExchangerComponent component, DoAfterEvent args)

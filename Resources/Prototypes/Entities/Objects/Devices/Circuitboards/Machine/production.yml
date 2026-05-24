@@ -734,9 +734,8 @@
           amount: 2
           defaultPrototype: Beaker
       partRequirements: # Orion
-        MatterBin: 2
-        Capacitor: 1
-        Servo: 1
+        Servo: 2
+        Capacitor: 2
 
 - type: entity
   id: BiomassReclaimerMachineCircuitboard
@@ -1435,6 +1434,9 @@
       prototype: BoozeDispenser # Orion-Edit
       stackRequirements:
         Steel: 5
+      partRequirements: # Orion
+        Servo: 2
+        Capacitor: 1
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1485,6 +1487,9 @@
       prototype: SodaDispenser # Orion-Edit
       stackRequirements:
         Steel: 5
+      partRequirements: # Orion
+        Servo: 2
+        Capacitor: 1
       tagRequirements:
           GlassBeaker:
             amount: 1
