@@ -21,3 +21,4 @@ machine-upgrade-research-cooldown = research cooldown
 machine-upgrade-scan-quality = scan quality
 machine-upgrade-malfunction-reduction = malfunction chance
 machine-upgrade-quantum-scanner-tier = quantum scanner tier
+machine-upgrade-seed-extraction = seed extraction output

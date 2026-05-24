@@ -442,7 +442,7 @@ namespace Content.Server.Kitchen.EntitySystems
             var servoTier = args.GetPartRating(component.ServoPart, 1f);
             var matterBinTier = args.GetPartRating(component.MatterBinPart, 1f);
 
-            component.WorkTimeMultiplier = RefreshPartsEvent.GetLinearMultiplier(servoTier, 0.1f, 0.5f, 1.2f);
+            component.WorkTimeMultiplier = 1f / MathF.Max(servoTier, 1f);
             component.StorageMaxEntities = (int)MathF.Round(component.BaseStorageMaxEntities * RefreshPartsEvent.GetPositiveTierMultiplier(matterBinTier));
 
             UpdateUiState(uid);

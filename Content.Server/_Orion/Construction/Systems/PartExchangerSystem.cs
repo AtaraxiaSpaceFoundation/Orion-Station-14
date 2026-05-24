@@ -58,8 +58,6 @@ public sealed class PartExchangerSystem : EntitySystem
             return;
         }
 
-        var stream = _audio.PlayPvs(component.ExchangeSound, uid);
-
         var started = _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
         {
             BreakOnMove = true,
@@ -67,22 +65,11 @@ public sealed class PartExchangerSystem : EntitySystem
         });
 
         if (started)
-        {
-            if (stream != null)
-                component.AudioStream = stream.Value.Entity;
-
             args.Handled = true;
-        }
-        else if (stream != null)
-        {
-            _audio.Stop(stream.Value.Entity);
-        }
     }
 
     private void OnDoAfter(EntityUid uid, PartExchangerComponent component, DoAfterEvent args)
     {
-        component.AudioStream = _audio.Stop(component.AudioStream);
-
         if (args.Cancelled)
             return;
 
@@ -95,6 +82,10 @@ public sealed class PartExchangerSystem : EntitySystem
         if (TryComp<MachineFrameComponent>(target, out var machineFrame))
         {
             args.Handled = TryInsertIntoMachineFrame(uid, target, storage, machineFrame);
+
+            if (args.Handled)
+                _audio.PlayPvs(component.ExchangeSound, uid);
+
             return;
         }
 
@@ -176,7 +167,7 @@ public sealed class PartExchangerSystem : EntitySystem
 
                     if (state.Stack != null && state.Stack.Count > amount)
                     {
-                        var split = _stack.Split(replacementUid, amount, Transform(uid).Coordinates, state.Stack);
+                        var split = _stack.Split(replacementUid, amount, Transform(target).Coordinates, state.Stack);
                         if (split == null)
                         {
                             _container.Insert(replacementUid, storage.Container, force: true);
@@ -247,7 +238,10 @@ public sealed class PartExchangerSystem : EntitySystem
         }
 
         if (changed)
+        {
             _construction.RefreshParts(target, machine);
+            _audio.PlayPvs(component.ExchangeSound, uid);
+        }
 
         args.Handled = true;
     }

@@ -18,6 +18,7 @@
 using Content.Server.Botany.Components;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Robust.Shared.Random;
@@ -35,6 +36,10 @@ public sealed class SeedExtractorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SeedExtractorComponent, InteractUsingEvent>(OnInteractUsing);
+        // Orion-Start
+        SubscribeLocalEvent<SeedExtractorComponent, RefreshPartsEvent>(OnPartsRefresh);
+        SubscribeLocalEvent<SeedExtractorComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+        // Orion-End
     }
 
     private void OnInteractUsing(EntityUid uid, SeedExtractorComponent seedExtractor, InteractUsingEvent args)
@@ -57,7 +62,8 @@ public sealed class SeedExtractorSystem : EntitySystem
         QueueDel(args.Used);
         args.Handled = true;
 
-        var amount = _random.Next(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1);
+        var baseAmount = _random.Next(seedExtractor.BaseMinSeeds, seedExtractor.BaseMaxSeeds + 1); // Orion
+        var amount = Math.Max(1, (int) MathF.Round(baseAmount * seedExtractor.SeedMultiplier)); // Orion-Edit
         var coords = Transform(uid).Coordinates;
 
         var packetSeed = seed;
@@ -69,4 +75,17 @@ public sealed class SeedExtractorSystem : EntitySystem
             _botanySystem.SpawnSeedPacket(packetSeed, coords, args.User);
         }
     }
+
+    // Orion-Start
+    private static void OnPartsRefresh(EntityUid uid, SeedExtractorComponent component, RefreshPartsEvent args)
+    {
+        var servoTier = MathF.Max(1f, args.GetPartRating(component.ServoPart, 1f));
+        component.SeedMultiplier = servoTier;
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, SeedExtractorComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("machine-upgrade-seed-extraction", component.SeedMultiplier);
+    }
+    // Orion-End
 }

@@ -138,7 +138,7 @@
         Glass: 1
       partRequirements: # Orion
         MatterBin: 3
-        Capacitor: 1
+        Servo: 1
 
 # Orion-Edit: Redundant
 #- type: entity
@@ -795,7 +795,6 @@
         Glass: 1
 #        Cable: 2 # Orion-Edit
       partRequirements: # Orion
-        MatterBin: 1
         Servo: 1
 
 - type: entity

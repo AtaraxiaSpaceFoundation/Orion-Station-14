@@ -87,7 +87,6 @@ using Content.Server.Materials;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
-using Content.Shared._Orion.Construction;
 using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -590,13 +589,25 @@ namespace Content.Server.Lathe
 
         private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
         {
-            var servoRating = args.GetPartRating(component.MachinePartPrintSpeed);
-            var efficiency = Math.Clamp(component.BaseMachinePartEfficiency - servoRating * component.MachinePartEfficiencyTierStep,
+            var servoTierSum = args.GetPartRatingSum(component.MachinePartPrintSpeed);
+            var efficiency = Math.Clamp(component.BaseMachinePartEfficiency - servoTierSum * component.MachinePartEfficiencyTierStep,
                 component.MinMachinePartEfficiency,
                 component.BaseMachinePartEfficiency);
 
             component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
             component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;
+
+            if (TryComp<MaterialStorageComponent>(uid, out var materialStorage))
+            {
+                component.BaseStorageLimit ??= materialStorage.StorageLimit;
+
+                if (component.BaseStorageLimit != null)
+                {
+                    var matterBinTierSum = args.GetPartRatingSum(component.MachinePartMaterialCapacity);
+                    var newLimit = component.BaseStorageLimit.Value + (int) MathF.Round(matterBinTierSum * component.MaterialStorageTierCapacityBonus);
+                    _materialStorage.SetStorageLimit(uid, Math.Max(component.BaseStorageLimit.Value, newLimit), materialStorage);
+                }
+            }
 
             Dirty(uid, component);
             UpdateUserInterfaceState(uid, component);

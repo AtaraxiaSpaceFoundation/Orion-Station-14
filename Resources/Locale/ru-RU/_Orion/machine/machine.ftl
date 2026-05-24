@@ -21,3 +21,4 @@ machine-upgrade-research-cooldown = время перезарядки скани
 machine-upgrade-scan-quality = качество сканирования
 machine-upgrade-malfunction-reduction = вероятность сбоя
 machine-upgrade-quantum-scanner-tier = уровень сканера квантового сервера
+machine-upgrade-seed-extraction = количество извлекаемых семян
