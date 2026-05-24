@@ -84,12 +84,12 @@
     - id: ThermomachineHeaterMachineCircuitBoard
       orGroup: Board
       prob: 0.5
-    - id: HellfireFreezerMachineCircuitBoard
-      orGroup: Board
-      prob: 0.25
-    - id: HellfireHeaterMachineCircuitBoard
-      orGroup: Board
-      prob: 0.25
+#    - id: HellfireFreezerMachineCircuitBoard # Orion-Edit: Redundant
+#      orGroup: Board
+#      prob: 0.25
+#    - id: HellfireHeaterMachineCircuitBoard # Orion-Edit: Redundant
+#      orGroup: Board
+#      prob: 0.25
     - id: CryoPodMachineCircuitboard
       orGroup: Board
       prob: 0.5
@@ -108,9 +108,9 @@
     - id: BiofabricatorMachineCircuitboard
       orGroup: Board
       prob: 0.25
-    - id: TurboItemRechargerCircuitboard
-      orGroup: Board
-      prob: 0.5
+#    - id: TurboItemRechargerCircuitboard # Orion-Edit: Redundant
+#      orGroup: Board
+#      prob: 0.5
 #    - id: AutolatheHyperConvectionMachineCircuitboard # Orion-Edit: Redundant
 #      orGroup: Board
 #      prob: 0.25
