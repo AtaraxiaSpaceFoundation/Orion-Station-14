@@ -113,7 +113,7 @@
   id: EngineeringBoards
   recipes:
   - ThermomachineFreezerMachineCircuitBoard
-  - HellfireFreezerMachineCircuitBoard
+#  - HellfireFreezerMachineCircuitBoard # Orion-Edit: Redundant
   - PortableScrubberMachineCircuitBoard
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics

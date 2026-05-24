@@ -130,11 +130,12 @@
   icon: { sprite: Structures/Piping/Atmospherics/thermomachine.rsi, state: freezerOff } # Goobstation
   result: ThermomachineFreezerMachineCircuitBoard
 
-- type: latheRecipe
-  parent: [ BaseSilverCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
-  id: HellfireFreezerMachineCircuitBoard
-  icon: { sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi, state: freezerOff } # Goobstation
-  result: HellfireFreezerMachineCircuitBoard
+# Orion-Edit: Redundant
+#- type: latheRecipe
+#  parent: [ BaseSilverCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
+#  id: HellfireFreezerMachineCircuitBoard
+#  icon: { sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi, state: freezerOff } # Goobstation
+#  result: HellfireFreezerMachineCircuitBoard
 
 - type: latheRecipe
   parent: [ BaseGoldCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
@@ -498,11 +499,12 @@
   icon: { sprite: Structures/Power/borg_charger.rsi, state: borgcharger-u1 } # Goobstation
   result: BorgChargerCircuitboard
 
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
-  id: TurboItemRechargerCircuitboard
-  icon: { sprite: Structures/Power/turbo_recharger.rsi, state: empty } # Goobstation
-  result: TurboItemRechargerCircuitboard
+# Orion-Edit: Redundant
+#- type: latheRecipe
+#  parent: [ BaseGoldCircuitboardRecipe, BaseGeneralMachineRecipeCategory ]
+#  id: TurboItemRechargerCircuitboard
+#  icon: { sprite: Structures/Power/turbo_recharger.rsi, state: empty } # Goobstation
+#  result: TurboItemRechargerCircuitboard
 
 # Comms and Cameras
 - type: latheRecipe

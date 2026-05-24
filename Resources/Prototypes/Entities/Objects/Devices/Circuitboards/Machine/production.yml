@@ -546,43 +546,45 @@
     deconstructionTarget: null
     node: heater
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: HellfireFreezerMachineCircuitBoard
-  name: hellfire freezer machine board
-  description: Looks like you could use a screwdriver to change the board type.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: GasThermoMachineHellfireFreezer
-    stackRequirements:
-      Plasma: 1
-    partRequirements: # Orion
-      Servo: 4
-  - type: Construction
-    deconstructionTarget: null
-    graph: ThermomachineBoard
-    node: hellfirefreezer
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: HellfireFreezerMachineCircuitBoard
+#  name: hellfire freezer machine board
+#  description: Looks like you could use a screwdriver to change the board type.
+#  components:
+#  - type: Sprite
+#    state: engineering
+#  - type: MachineBoard
+#    prototype: GasThermoMachineHellfireFreezer
+#    stackRequirements:
+#      Plasma: 1
+#    partRequirements: # Orion
+#      Servo: 4
+#  - type: Construction
+#    deconstructionTarget: null
+#    graph: ThermomachineBoard
+#    node: hellfirefreezer
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: HellfireHeaterMachineCircuitBoard
-  name: hellfire heater machine board
-  description: Looks like you could use a screwdriver to change the board type.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: GasThermoMachineHellfireHeater
-    stackRequirements:
-      Plasma: 1
-    partRequirements: # Orion
-      Servo: 4
-  - type: Construction
-    graph: ThermomachineBoard
-    deconstructionTarget: null
-    node: hellfireheater
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: HellfireHeaterMachineCircuitBoard
+#  name: hellfire heater machine board
+#  description: Looks like you could use a screwdriver to change the board type.
+#  components:
+#  - type: Sprite
+#    state: engineering
+#  - type: MachineBoard
+#    prototype: GasThermoMachineHellfireHeater
+#    stackRequirements:
+#      Plasma: 1
+#    partRequirements: # Orion
+#      Servo: 4
+#  - type: Construction
+#    graph: ThermomachineBoard
+#    deconstructionTarget: null
+#    node: hellfireheater
 
 - type: entity
   id: CondenserMachineCircuitBoard
@@ -943,26 +945,27 @@
     - type: StaticPrice
       price: 15
 
-- type: entity
-  id: TurboItemRechargerCircuitboard
-  parent: BaseMachineCircuitboard
-  name: turbo recharger machine board
-  description: A machine printed circuit board for a turbo recharger.
-  components:
-  - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: charger_APC
-  - type: MachineBoard
-    prototype: TurboItemRecharger
-    stackRequirements:
-      CableMV: 5
-    partRequirements: # Orion
-      Servo: 2
-  - type: PhysicalComposition #Goobstation - Recycle update
-    materialComposition:
-      Steel: 25
-      Glass: 125
-      Gold: 25
+# Orion-Edit: Redundant
+#- type: entity
+#  id: TurboItemRechargerCircuitboard
+#  parent: BaseMachineCircuitboard
+#  name: turbo recharger machine board
+#  description: A machine printed circuit board for a turbo recharger.
+#  components:
+#  - type: Sprite
+#    sprite: Objects/Misc/module.rsi
+#    state: charger_APC
+#  - type: MachineBoard
+#    prototype: TurboItemRecharger
+#    stackRequirements:
+#      CableMV: 5
+#    partRequirements: # Orion
+#      Servo: 2
+#  - type: PhysicalComposition #Goobstation - Recycle update
+#    materialComposition:
+#      Steel: 25
+#      Glass: 125
+#      Gold: 25
 
 - type: entity
   id: SubstationMachineCircuitboard

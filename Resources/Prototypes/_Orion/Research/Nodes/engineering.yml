@@ -433,8 +433,6 @@
   technologyPrerequisites:
   - AdvancedParts
   recipeUnlocks:
-  - LatheUpgradeKitHyper
-  - LatheUpgradeKitCryo
   - AutodocUpgradeKitBluespace
   - UpgradeKitAutomation
   position: 11,6
@@ -456,6 +454,5 @@
   technologyPrerequisites:
   - PartsBluespace
   recipeUnlocks:
-  - TurboItemRechargerCircuitboard
   - PowerCageRechargerCircuitboard
   position: 13,3
