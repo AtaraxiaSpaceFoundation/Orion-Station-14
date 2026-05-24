@@ -22,6 +22,7 @@ cargo-funding-alloc-console-reason-payroll = Payroll: { $job }
 cargo-funding-alloc-console-reason-starting-payroll = Down payment
 cargo-funding-alloc-console-reason-vending-purchase = Purchase: { $item }
 cargo-funding-alloc-console-reason-cargo-private-purchase = Private cargo: №{ $order }, { $product }
+cargo-funding-alloc-console-reason-cargo-private-purchase-refund = Private cargo refund: №{ $order }, { $product }
 cargo-funding-alloc-console-reason-generic = { $reason }
 
 cargo-funding-alloc-console-economy-number = Number

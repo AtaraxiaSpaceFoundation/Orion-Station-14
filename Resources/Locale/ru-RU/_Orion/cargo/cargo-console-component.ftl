@@ -39,6 +39,7 @@ cargo-funding-alloc-console-reason-payroll = Зарплата: { $job }
 cargo-funding-alloc-console-reason-starting-payroll = Аванс
 cargo-funding-alloc-console-reason-vending-purchase = Покупка: { $item }
 cargo-funding-alloc-console-reason-cargo-private-purchase = Личный заказ: №{ $order }, { $product }
+cargo-funding-alloc-console-reason-cargo-private-purchase-refund = Возврат личного заказа: №{ $order }, { $product }
 cargo-funding-alloc-console-reason-generic = { $reason }
 
 cargo-funding-alloc-console-economy-number = Номер
