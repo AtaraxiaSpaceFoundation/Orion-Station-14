@@ -60,6 +60,7 @@ public sealed partial class NanoTaskDeleteTask : INanoTaskUiMessagePayload
     }
 }
 
+/* // Orion-Edit
 /// <summary>
 ///     Dispatched when a task is requested to be printed
 /// </summary>
@@ -76,6 +77,7 @@ public sealed partial class NanoTaskPrintTask : INanoTaskUiMessagePayload
         Item = item;
     }
 }
+*/
 
 /// <summary>
 ///     Cartridge message event carrying the NanoTask UI messages
