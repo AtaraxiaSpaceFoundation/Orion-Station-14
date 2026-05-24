@@ -21,8 +21,10 @@
     areaInsert: true
     whitelist:
       components:
-        - MachinePart
-        - Stack
+      - MachinePart
+      - MachineBoard
+      - ComputerBoard
+      - Stack
 
 - type: entity
   parent: RapidPartExchanger

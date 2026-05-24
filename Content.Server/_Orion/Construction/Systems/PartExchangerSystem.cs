@@ -30,37 +30,39 @@ public sealed class PartExchangerSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly MachineFrameSystem _machineFrame = default!;
+    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<PartExchangerComponent, AfterInteractEvent>(OnAfterInteract);
+        SubscribeLocalEvent<MachineComponent, InteractUsingEvent>(OnMachineInteractUsing);
         SubscribeLocalEvent<PartExchangerComponent, ExchangerDoAfterEvent>(OnDoAfter);
     }
 
-    private void OnAfterInteract(EntityUid uid, PartExchangerComponent component, AfterInteractEvent args)
+    private void OnMachineInteractUsing(EntityUid uid, MachineComponent component, InteractUsingEvent args)
+    {
+        TryStartExchange(uid, args);
+    }
+
+    private void TryStartExchange(EntityUid target, InteractUsingEvent args)
     {
         if (args.Handled)
             return;
 
-        if (component.DoDistanceCheck && !args.CanReach)
-            return;
-
-        if (args.Target is not { } target)
-            return;
-
-        if (!HasComp<MachineComponent>(target) && !HasComp<MachineFrameComponent>(target))
+        if (!TryComp<PartExchangerComponent>(args.Used, out var exchanger))
             return;
 
         args.Handled = true;
 
-        if (component.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
+        if (exchanger.DoDistanceCheck && !_interactionSystem.InRangeUnobstructed(args.User, target))
+            return;
+
+        if (exchanger.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
         {
             _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
-            args.Handled = true;
             return;
         }
 
-        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
+        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, exchanger.ExchangeDuration, new ExchangerDoAfterEvent(), args.Used, target: target, used: args.Used)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -221,7 +223,7 @@ public sealed class PartExchangerSystem : EntitySystem
                         _container.Insert(replacementUid, storage.Container, force: true);
                 }
 
-                foreach (var (removedUid, amount) in removed)
+                foreach (var (removedUid, _) in removed)
                 {
                     var index = available.FindIndex(p => p.Uid == removedUid);
                     if (index < 0)
