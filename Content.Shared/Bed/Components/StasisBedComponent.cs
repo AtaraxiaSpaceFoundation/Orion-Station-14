@@ -15,4 +15,12 @@ public sealed partial class StasisBedComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float Multiplier = 10f;
+
+    // Orion-Start
+    [DataField]
+    public float BasePowerLoad = 1000f;
+
+    [DataField]
+    public float PowerLoad = 1000f;
+    // Orion-End
 }

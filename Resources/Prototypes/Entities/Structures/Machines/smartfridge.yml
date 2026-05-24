@@ -40,6 +40,8 @@
   - type: LitOnPowered
   - type: ApcPowerReceiver
     powerLoad: 200
+  - type: Machine # Orion
+    board: SmartFridgeMachineCircuitboard
   - type: ExtensionCableReceiver
   - type: SmartFridge
     whitelist:

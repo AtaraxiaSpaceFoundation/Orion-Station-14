@@ -46,8 +46,6 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
         _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
 
         ent.Comp.BaseScanDuration = ent.Comp.ScanDuration;
-        ent.Comp.FinalFailureChance = ent.Comp.BaseFailureChance;
-        ent.Comp.FinalScanQuality = ent.Comp.BaseScanQuality;
 
         UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Idle);
     }
@@ -300,16 +298,7 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
     private void OnPartsRefresh(EntityUid uid, ExperimentalDestructiveScannerComponent component, RefreshPartsEvent args)
     {
         var servoTier = args.GetPartRating(component.ServoPart);
-        var scanningTier = args.GetPartRating(component.ScanningModulePart);
-        var microTier = args.GetPartRating(component.MicroLaserPart);
-
         component.ScanDuration = TimeSpan.FromSeconds(MathF.Max(0.5f, (float)component.BaseScanDuration.TotalSeconds / MathF.Max(servoTier, 1f)));
-
-        var scanningDelta = MathF.Max(0f, scanningTier - 1f);
-        var microDelta = MathF.Max(0f, microTier - 1f);
-
-        component.FinalFailureChance = MathF.Max(0f, component.BaseFailureChance - scanningDelta * 0.02f - microDelta * 0.01f);
-        component.FinalScanQuality = component.BaseScanQuality + scanningDelta * 2f + microDelta;
 
         UpdateUi((uid, component));
     }
@@ -319,15 +308,7 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
         var cooldownMultiplier = component.ScanDuration.TotalSeconds <= 0
             ? 1f
             : (float)(component.BaseScanDuration.TotalSeconds / component.ScanDuration.TotalSeconds);
-        var qualityMultiplier = component.BaseScanQuality <= 0f
-            ? 1f
-            : component.FinalScanQuality / component.BaseScanQuality;
-        var malfunctionMultiplier = component.BaseFailureChance <= 0f
-            ? 1f
-            : component.FinalFailureChance / component.BaseFailureChance;
 
         args.AddPercentageUpgrade("machine-upgrade-research-cooldown", cooldownMultiplier);
-        args.AddPercentageUpgrade("machine-upgrade-scan-quality", qualityMultiplier);
-        args.AddPercentageUpgrade("machine-upgrade-malfunction-reduction", malfunctionMultiplier);
     }
 }
