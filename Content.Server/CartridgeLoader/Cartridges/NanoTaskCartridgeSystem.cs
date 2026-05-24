@@ -1,12 +1,6 @@
 using Content.Shared.CartridgeLoader;
 using Content.Shared.CartridgeLoader.Cartridges;
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Shared.Paper;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Server.CartridgeLoader.Cartridges;
 
