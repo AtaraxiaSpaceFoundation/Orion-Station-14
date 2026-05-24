@@ -27,6 +27,10 @@ public abstract partial class InteractionTest
     protected const string Weld = "WelderExperimental";
     protected const string Pry = "Crowbar";
     protected const string Cut = "Wirecutter";
+    // Orion-Start
+    protected const string RapidPartExchanger = "RapidPartExchanger";
+    protected const string BluespaceRapidPartExchanger = "BluespaceRapidPartExchanger";
+    // Orion-End
 
     // Materials/stacks
     protected const string Steel = "Steel";
