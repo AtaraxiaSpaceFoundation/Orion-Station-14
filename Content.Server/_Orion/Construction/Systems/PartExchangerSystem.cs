@@ -43,23 +43,23 @@ public sealed class PartExchangerSystem : EntitySystem
         TryStartExchange(uid, args);
     }
 
-    private void TryStartExchange(EntityUid target, InteractUsingEvent args)
+    public bool TryStartExchange(EntityUid target, InteractUsingEvent args)
     {
         if (args.Handled)
-            return;
+            return false;
 
         if (!TryComp<PartExchangerComponent>(args.Used, out var exchanger))
-            return;
+            return false;
 
         args.Handled = true;
 
         if (exchanger.DoDistanceCheck && !_interactionSystem.InRangeUnobstructed(args.User, target))
-            return;
+            return true;
 
         if (exchanger.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
         {
             _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
-            return;
+            return true;
         }
 
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, exchanger.ExchangeDuration, new ExchangerDoAfterEvent(), args.Used, target: target, used: args.Used)
@@ -67,6 +67,8 @@ public sealed class PartExchangerSystem : EntitySystem
             BreakOnMove = true,
             BreakOnDamage = true,
         });
+
+        return true;
     }
 
     private void OnDoAfter(EntityUid uid, PartExchangerComponent component, DoAfterEvent args)
@@ -250,6 +252,21 @@ public sealed class PartExchangerSystem : EntitySystem
     private bool TryInsertIntoMachineFrame(EntityUid user, EntityUid frameUid, StorageComponent storage, MachineFrameComponent machineFrame)
     {
         var changed = false;
+
+        if (!machineFrame.HasBoard)
+        {
+            foreach (var itemUid in storage.Container.ContainedEntities.ToArray())
+            {
+                if (!_machineFrame.TryInsertBoard(frameUid, itemUid, machineFrame))
+                    continue;
+
+                changed = true;
+                break;
+            }
+
+            if (!machineFrame.HasBoard)
+                return changed;
+        }
 
         foreach (var partUid in storage.Container.ContainedEntities.ToArray())
         {

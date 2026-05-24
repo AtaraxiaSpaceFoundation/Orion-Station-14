@@ -15,6 +15,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Orion.Construction.Systems;
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
 using Content.Shared._Orion.Construction.Components;
@@ -37,6 +38,7 @@ public sealed class MachineFrameSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ConstructionSystem _construction = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly PartExchangerSystem _partExchanger = default!; // Orion
 
     public override void Initialize()
     {
@@ -69,6 +71,11 @@ public sealed class MachineFrameSystem : EntitySystem
     {
         if (args.Handled)
             return;
+
+        // Orion-Start
+        if (_partExchanger.TryStartExchange(uid, args))
+            return;
+        // Orion-End
 
         if (!component.HasBoard)
         {
@@ -164,7 +171,7 @@ public sealed class MachineFrameSystem : EntitySystem
     }
 
     /// <returns>Whether or not the function had any effect. Does not indicate success.</returns>
-    private bool TryInsertBoard(EntityUid uid, EntityUid used, MachineFrameComponent component)
+    public  bool TryInsertBoard(EntityUid uid, EntityUid used, MachineFrameComponent component) // Orion-Edit: Was private
     {
         if (!TryComp<MachineBoardComponent>(used, out var machineBoard))
             return false;
