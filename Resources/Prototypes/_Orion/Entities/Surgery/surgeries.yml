@@ -58,3 +58,33 @@
       - type: Pacified  
   - type: SurgeryPartCondition  
     parts: [ Head ]
+
+- type: entity
+  parent: BaseSurgeryRemoveOrgan
+  id: SurgeryRemoveKidneys
+  name: Remove Kidneys
+  components:
+  - type: SurgeryPartCondition
+    parts: [ Groin ]
+  - type: SurgeryOrganSlotCondition
+    organSlot: kidneys
+  - type: SurgeryOrganCondition
+    organ:
+    - type: Kidney
+
+- type: entity
+  parent: BaseSurgeryInsertOrgan
+  id: SurgeryInsertKidneys
+  name: Insert Kidneys
+  components:
+  - type: Surgery
+    steps:
+    - SurgeryStepInsertOrgan
+    - SurgeryStepSealOrganWound
+  - type: SurgeryPartCondition
+    parts: [ Groin ]
+  - type: SurgeryOrganSlotCondition
+    organSlot: kidneys
+  - type: SurgeryOrganCondition
+    organ:
+    - type: Kidney
