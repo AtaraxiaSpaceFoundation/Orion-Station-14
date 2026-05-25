@@ -33,9 +33,10 @@
   description: An upgraded RPED that can replace parts remotely and bypasses panel restrictions.
   components:
   - type: Sprite
+    sprite: _Orion/Objects/Specific/Research/bluespace_rped.rsi
     state: icon
   - type: Item
-    sprite: _Orion/Objects/Specific/Research/rped.rsi # TODO
+    sprite: _Orion/Objects/Specific/Research/bluespace_rped.rsi
   - type: PartExchanger
     doDistanceCheck: false
     requireOpenPanel: false
