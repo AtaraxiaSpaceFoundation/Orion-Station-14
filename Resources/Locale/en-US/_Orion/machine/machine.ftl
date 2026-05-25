@@ -5,6 +5,12 @@ machine-part-name-micro-laser = Micro-laser
 machine-upgrade-examinable-verb-text = Upgrades
 machine-upgrade-examinable-verb-message = List upgrades installed in this machine.
 
+machine-upgrade-increased-by-percentage = [color=yellow]{CAPITALIZE($upgraded)}[/color] increased by {$percent}%.
+machine-upgrade-decreased-by-percentage = [color=yellow]{CAPITALIZE($upgraded)}[/color] decreased by {$percent}%.
+machine-upgrade-increased-by-amount = [color=yellow]{CAPITALIZE($upgraded)}[/color] increased by {$difference}.
+machine-upgrade-decreased-by-amount = [color=yellow]{CAPITALIZE($upgraded)}[/color] decreased by {$difference}.
+machine-upgrade-not-upgraded = [color=yellow]{CAPITALIZE($upgraded)}[/color] not upgraded.
+
 machine-upgrade-increased-by-percentage-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] increased by [color={ $color }]{ $percent }%[/color].
 machine-upgrade-decreased-by-percentage-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] decreased by [color={ $color }]{ $percent }%[/color].
 machine-upgrade-not-upgraded-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] unchanged.
