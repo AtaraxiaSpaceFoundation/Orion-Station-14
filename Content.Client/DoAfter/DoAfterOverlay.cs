@@ -159,7 +159,7 @@ public sealed class DoAfterOverlay : Overlay
                     yOffset / scale + offset / EyeManager.PixelsPerMeter * scale);
 
                 // Orion-Start
-                var cogTexture = _entManager.System<SpriteSystem>().GetFrame(_cogTexture, curTime);
+                var cogTexture = _sprite.GetFrame(_cogTexture, curTime);
                 // Orion-End
 
                 // Orion-Edit-Start
