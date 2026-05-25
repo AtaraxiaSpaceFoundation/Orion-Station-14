@@ -50,6 +50,16 @@
   id: AdvancedMatterBinStockPart
   result: AdvancedMatterBinStockPart
 
+- type: latheRecipe
+  id: RapidPartExchanger
+  result: RapidPartExchanger
+  categories:
+  - Parts
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 250
+
 # Tier 3
 - type: latheRecipe
   parent: BaseStockPartRecipe
@@ -101,3 +111,15 @@
   parent: BaseStockPartRecipe
   id: BluespaceMatterBinStockPart
   result: BluespaceMatterBinStockPart
+
+- type: latheRecipe
+  id: BluespaceRapidPartExchanger
+  result: BluespaceRapidPartExchanger
+  categories:
+  - Parts
+  completetime: 2
+  materials:
+    Steel: 750
+    Glass: 250
+    Silver: 125
+    BSCrystal: 150

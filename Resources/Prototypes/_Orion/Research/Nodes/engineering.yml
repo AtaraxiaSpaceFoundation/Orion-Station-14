@@ -56,6 +56,7 @@
   - NanoServoStockPart
   - HighPowerMicroLaserStockPart
   - AdvancedMatterBinStockPart
+  - RapidPartExchanger
   position: 12,5
 
 - type: technology
@@ -118,6 +119,7 @@
   - FemtoServoStockPart
   - QuadUltraMicroLaserStockPart
   - BluespaceMatterBinStockPart
+  - BluespaceRapidPartExchanger
   position: 12,7
 
 - type: technology

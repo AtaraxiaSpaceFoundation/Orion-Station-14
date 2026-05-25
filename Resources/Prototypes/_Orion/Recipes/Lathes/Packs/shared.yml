@@ -7,6 +7,7 @@
   - NanoServoStockPart
   - HighPowerMicroLaserStockPart
   - AdvancedMatterBinStockPart
+  - RapidPartExchanger
   # Tier 3
   - SuperCapacitorStockPart
   - PhasicScanningModuleStockPart
@@ -19,3 +20,4 @@
   - FemtoServoStockPart
   - QuadUltraMicroLaserStockPart
   - BluespaceMatterBinStockPart
+  - BluespaceRapidPartExchanger
