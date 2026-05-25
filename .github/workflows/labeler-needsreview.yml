@@ -13,10 +13,26 @@ on:
 jobs:
   add_label:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-    - uses: actions-ecosystem/action-add-labels@v1
+    - uses: actions/github-script@v7
       with:
-        labels: "S: Требуется ревью"
-    - uses: actions-ecosystem/action-remove-labels@v1
-      with:
-        labels: "S: Ожидание изменений"
+        script: |
+          const issue_number = context.payload.pull_request.number;
+          await github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number,
+            labels: ["S: Требуется ревью"]
+          });
+          try {
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              name: "S: Ожидание изменений"
+            });
+          } catch (e) {
+            // Label might not exist on this PR, ignore
+          }

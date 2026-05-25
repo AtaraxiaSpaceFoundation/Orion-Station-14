@@ -22,6 +22,8 @@ jobs:
   Label:
     if: ( github.event.pull_request.draft == false )
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Check for Merge Conflicts
         uses: eps1lon/actions-label-merge-conflict@v3.0.0
