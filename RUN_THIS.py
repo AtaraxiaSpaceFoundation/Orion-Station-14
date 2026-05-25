@@ -19,4 +19,6 @@ if version.major < 3 or (version.major == 3 and version.minor < 5):
     print("ERROR: You need at least Python 3.5 to build SS14.")
     sys.exit(1)
 
+# -- run
+
 subprocess.run([sys.executable, "git_helper.py"], cwd="BuildChecker")
