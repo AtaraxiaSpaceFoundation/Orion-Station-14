@@ -40,12 +40,50 @@ public sealed class PartExchangerSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<MachineComponent, InteractUsingEvent>(OnMachineInteractUsing);
+        SubscribeLocalEvent<PartExchangerComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<PartExchangerComponent, ExchangerDoAfterEvent>(OnDoAfter);
     }
 
     private void OnMachineInteractUsing(EntityUid uid, MachineComponent component, InteractUsingEvent args)
     {
         TryStartExchange(uid, args);
+    }
+
+    private void OnAfterInteract(EntityUid uid, PartExchangerComponent component, AfterInteractEvent args)
+    {
+        if (args.Handled || args.CanReach)
+            return;
+
+        if (component.DoDistanceCheck)
+            return;
+
+        if (args.Target is not { } target)
+            return;
+
+        if (!HasComp<MachineComponent>(target) && !HasComp<MachineFrameComponent>(target))
+            return;
+
+        args.Handled = true;
+
+        if (component.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
+        {
+            _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
+            return;
+        }
+
+        if (component.ExchangeBeamPrototype is { } beamPrototype)
+            _beam.TryCreateBeam(args.User, target, beamPrototype, accumulateIndex: false);
+
+        var started = _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            RequireCanInteract = false,
+            DistanceThreshold = null,
+        });
+
+        if (started)
+            _audio.PlayPvs(component.ExchangeSound, uid);
     }
 
     public bool TryStartExchange(EntityUid target, InteractUsingEvent args)
