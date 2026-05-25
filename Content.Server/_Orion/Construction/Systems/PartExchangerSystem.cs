@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server._Orion.Construction.Components;
+using Content.Server.Beam;
 using Content.Server.Construction;
 using Content.Server.Construction.Components;
 using Content.Server.Stack;
@@ -34,6 +35,7 @@ public sealed class PartExchangerSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly IComponentFactory _factory = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly BeamSystem _beam = default!;
 
     public override void Initialize()
     {
@@ -65,10 +67,17 @@ public sealed class PartExchangerSystem : EntitySystem
             return true;
         }
 
+        if (exchanger.ExchangeBeamPrototype is { } beamPrototype)
+            _beam.TryCreateBeam(args.User, target, beamPrototype, accumulateIndex: false);
+
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, exchanger.ExchangeDuration, new ExchangerDoAfterEvent(), args.Used, target: target, used: args.Used)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
+            DistanceThreshold = exchanger.DoDistanceCheck
+                ? 1.2f
+                : null,
+            RequireCanInteract = exchanger.DoDistanceCheck,
         });
 
         return true;
