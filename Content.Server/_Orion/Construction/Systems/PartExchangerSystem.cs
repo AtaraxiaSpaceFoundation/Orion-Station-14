@@ -49,12 +49,37 @@ public sealed class PartExchangerSystem : EntitySystem
         TryStartExchange(uid, args);
     }
 
+    private bool CanStartExchange(EntityUid user, EntityUid target, PartExchangerComponent exchanger)
+    {
+        if (exchanger.DoDistanceCheck && !_interactionSystem.InRangeUnobstructed(user, target))
+            return false;
+
+        if (!exchanger.RequireOpenPanel || !TryComp<WiresPanelComponent>(target, out var panel) || panel.Open)
+            return true;
+
+        _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, user);
+        return false;
+    }
+
+    private bool TryStartExchangeDoAfter(EntityUid user, EntityUid used, EntityUid target, PartExchangerComponent exchanger)
+    {
+        if (exchanger.ExchangeBeamPrototype is { } beamPrototype)
+            _beam.TryCreateBeam(user, target, beamPrototype, accumulateIndex: false);
+
+        return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, exchanger.ExchangeDuration, new ExchangerDoAfterEvent(), used, target: target, used: used)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            DistanceThreshold = exchanger.DoDistanceCheck
+                ? 1.2f
+                : null,
+            RequireCanInteract = exchanger.DoDistanceCheck,
+        });
+    }
+
     private void OnAfterInteract(EntityUid uid, PartExchangerComponent component, AfterInteractEvent args)
     {
-        if (args.Handled || args.CanReach)
-            return;
-
-        if (component.DoDistanceCheck)
+        if (args.Handled || args.CanReach || component.DoDistanceCheck)
             return;
 
         if (args.Target is not { } target)
@@ -65,24 +90,10 @@ public sealed class PartExchangerSystem : EntitySystem
 
         args.Handled = true;
 
-        if (component.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
-        {
-            _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
+        if (!CanStartExchange(args.User, target, component))
             return;
-        }
 
-        if (component.ExchangeBeamPrototype is { } beamPrototype)
-            _beam.TryCreateBeam(args.User, target, beamPrototype, accumulateIndex: false);
-
-        var started = _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.ExchangeDuration, new ExchangerDoAfterEvent(), uid, target: target, used: uid)
-        {
-            BreakOnMove = true,
-            BreakOnDamage = true,
-            RequireCanInteract = false,
-            DistanceThreshold = null,
-        });
-
-        if (started)
+        if (TryStartExchangeDoAfter(args.User, uid, target, component))
             _audio.PlayPvs(component.ExchangeSound, uid);
     }
 
@@ -96,28 +107,10 @@ public sealed class PartExchangerSystem : EntitySystem
 
         args.Handled = true;
 
-        if (exchanger.DoDistanceCheck && !_interactionSystem.InRangeUnobstructed(args.User, target))
+        if (!CanStartExchange(args.User, target, exchanger))
             return true;
 
-        if (exchanger.RequireOpenPanel && TryComp<WiresPanelComponent>(target, out var panel) && !panel.Open)
-        {
-            _popup.PopupEntity(Loc.GetString("construction-step-condition-wire-panel-open"), target, args.User);
-            return true;
-        }
-
-        if (exchanger.ExchangeBeamPrototype is { } beamPrototype)
-            _beam.TryCreateBeam(args.User, target, beamPrototype, accumulateIndex: false);
-
-        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, exchanger.ExchangeDuration, new ExchangerDoAfterEvent(), args.Used, target: target, used: args.Used)
-        {
-            BreakOnMove = true,
-            BreakOnDamage = true,
-            DistanceThreshold = exchanger.DoDistanceCheck
-                ? 1.2f
-                : null,
-            RequireCanInteract = exchanger.DoDistanceCheck,
-        });
-
+        TryStartExchangeDoAfter(args.User, args.Used, target, exchanger);
         return true;
     }
 

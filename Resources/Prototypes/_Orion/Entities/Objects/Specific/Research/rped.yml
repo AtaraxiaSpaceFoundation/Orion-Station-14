@@ -50,7 +50,7 @@
   - type: Item
     sprite: _Orion/Objects/Specific/Research/bluespace_rped.rsi
   - type: PartExchanger
-    exchangeDuration: 1 
+    exchangeDuration: 1.5
     doDistanceCheck: false
     requireOpenPanel: false
     exchangeSound:
