@@ -39,7 +39,7 @@ public sealed class PayrollSystem : EntitySystem
                 continue;
 
             var (job, salary, departmentAccount, payrollFromStationBudget) = payrollData.Value;
-            var stationUid = _station.GetOwningStation(owned);
+            var stationUid = _station.GetOwningStation(owned) ?? account.OwningStation;
             var paid = salary;
 
             if (payrollFromStationBudget)
