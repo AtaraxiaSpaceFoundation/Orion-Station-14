@@ -2,10 +2,15 @@ machine-part-name-servo = Servo
 machine-part-name-scanning-module = Scanning Module
 machine-part-name-micro-laser = Micro-laser
 
+machine-upgrade-examinable-verb-text = Upgrades
+machine-upgrade-examinable-verb-message = List upgrades installed in this machine.
+
 machine-upgrade-increased-by-percentage-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] increased by [color={ $color }]{ $percent }%[/color].
 machine-upgrade-decreased-by-percentage-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] decreased by [color={ $color }]{ $percent }%[/color].
 machine-upgrade-not-upgraded-extra = [color=yellow]{CAPITALIZE( $upgraded )}[/color] unchanged.
 
+lathe-component-upgrade-speed = printing speed
+lathe-component-upgrade-material-use = material use
 machine-upgrade-charging-efficiency = charging efficiency
 machine-upgrade-quantum-cooldown = quantum cooldown time
 machine-upgrade-quantum-reward-bonus = quantum reward bonus
