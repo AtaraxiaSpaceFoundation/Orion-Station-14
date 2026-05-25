@@ -28,6 +28,18 @@
 
 - type: entity
   parent: RapidPartExchanger
+  id: RapidPartExchangerBorg
+  name: RPED
+  description: A Rapid Part Exchange Device, perfect for quickly upgrading machines.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Research/borg_rped.rsi
+    state: icon
+  - type: Item
+    sprite: _Orion/Objects/Specific/Research/borg_rped.rsi
+
+- type: entity
+  parent: RapidPartExchanger
   id: BluespaceRapidPartExchanger
   name: bluespace RPED
   description: An upgraded RPED that can replace parts remotely and bypasses panel restrictions.
