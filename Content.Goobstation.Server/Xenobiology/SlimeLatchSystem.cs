@@ -86,8 +86,9 @@ public sealed partial class SlimeLatchSystem : EntitySystem
         var damage = ent.Comp.Damage;
         if (HasComp<SiliconComponent>(ent) || HasComp<BorgChassisComponent>(ent))
         {
+            var totalDamage = damage.GetTotal();
             damage = new DamageSpecifier();
-            damage.DamageDict["Blunt"] = damage.GetTotal();
+            damage.DamageDict["Blunt"] = totalDamage;
         }
 
         _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, targetPart: TargetBodyPart.All);
