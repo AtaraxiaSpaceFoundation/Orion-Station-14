@@ -146,11 +146,12 @@ This repository is a large Space Station 14 fork with a clear split between game
 
 - Do not edit `RobustToolbox/` or other engine-side files unless the task explicitly requires it.
 - Prefer fixing gameplay behavior in content code before assuming an engine change is needed.
-- For fork-only behavior, prefer extending `_Orion` or another clearly fork-scoped area instead of hiding fork logic in unrelated upstream files.
+- For fork-only behavior, prefer extending `_Orion`, `_Siberia`, or another clearly fork-scoped area instead of hiding fork logic in unrelated upstream files.
 - When you must touch an upstream content file, keep the diff narrow and preserve surrounding structure and style.
-- When adding or changing Orion-specific code in a file outside any `_Orion` path, mark it:
-  - Single added or changed line: append `// Orion` as an inline comment.
-  - Multiple lines: wrap with block markers:
+- When adding or changing fork-specific code in a file outside any `_Orion` or `_Siberia` path, mark it with the appropriate fork prefix:
+  - For Orion-scoped changes:
+    - Single added or changed line: append `// Orion` as an inline comment.
+    - Multiple lines: wrap with block markers:
 
 ```csharp
 // Orion-Edit-Start
@@ -158,7 +159,17 @@ This repository is a large Space Station 14 fork with a clear split between game
 // Orion-Edit-End
 ```
 
-- Keep edit-marker ranges as narrow as practical. For files that do not use `//` comments, use the native comment syntax while preserving `Orion-Edit-Start`, `Orion-Edit-End`, and `Orion`.
+  - For Siberia-scoped changes:
+    - Single added or changed line: append `// Siberia` as an inline comment.
+    - Multiple lines: wrap with block markers:
+
+```csharp
+// Siberia-Edit-Start
+...code here...
+// Siberia-Edit-End
+```
+
+- Keep edit-marker ranges as narrow as practical. For files that do not use `//` comments, use the native comment syntax while preserving the edit-start/end and inline markers.
 
 ## Assembly Placement
 
