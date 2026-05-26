@@ -462,22 +462,27 @@ public sealed partial class ResearchSystem
 
     private bool MatchesMachineTierObjective(EntityUid subject, ScanEntityExperimentObjective objective)
     {
-        if (objective.RequiredMachinePartTier is not { } requiredTier)
-            return true;
-
         if (!TryComp<MachineComponent>(subject, out var machine))
             return false;
+
+        var hasRequiredParts = objective.RequiredMachineParts.Count > 0;
+        var requiredTier = objective.RequiredMachinePartTier;
+
+        if (!hasRequiredParts && requiredTier == null)
+            return true;
 
         foreach (var partEntity in machine.PartContainer.ContainedEntities)
         {
             if (!TryComp<MachinePartComponent>(partEntity, out var part))
                 continue;
 
-            if (part.Tier < requiredTier)
+            if (hasRequiredParts && !objective.RequiredMachineParts.Contains(part.Part))
                 continue;
 
-            if (objective.RequiredMachineParts.Count == 0 || objective.RequiredMachineParts.Contains(part.Part))
-                return true;
+            if (requiredTier is { } tier && part.Tier < tier)
+                continue;
+
+            return true;
         }
 
         return false;
