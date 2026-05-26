@@ -24,10 +24,16 @@ public sealed partial class QuantumServerComponent : Component
     public int ScannerTier = 1;
 
     [DataField, AutoNetworkedField]
-    public float CooldownEfficiency = 1f;
+    public float CooldownMultiplier = 1f;
 
     [DataField, AutoNetworkedField]
     public float QualityBonus;
+
+    [DataField]
+    public float BaseExitDamageScale = 0.20f;
+
+    [DataField, AutoNetworkedField]
+    public float FinalExitDamageMultiplier = 1f;
 
     [DataField, AutoNetworkedField]
     public EntProtoId AvatarPrototype = "MobHuman";

@@ -33,7 +33,7 @@
 - type: latheRecipePack
   id: SharedBoards
   recipes:
-  - TurboItemRechargerCircuitboard
+#  - TurboItemRechargerCircuitboard # Orion-Edit: Redundant
   - FlatpackerMachineCircuitboard
   - SheetifierMachineCircuitboard
   - PowerCageRechargerCircuitboard

@@ -112,6 +112,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Server.Emp;
 using Content.Server.Power.Components;
 using Content.Server.PowerCell;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -144,12 +145,21 @@ internal sealed class ChargerSystem : EntitySystem
         SubscribeLocalEvent<ChargerComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
         SubscribeLocalEvent<ChargerComponent, InsertIntoEntityStorageAttemptEvent>(OnEntityStorageInsertAttempt);
         SubscribeLocalEvent<ChargerComponent, ExaminedEvent>(OnChargerExamine);
+        // Orion-Start
+        SubscribeLocalEvent<ChargerComponent, RefreshPartsEvent>(OnPartsRefresh);
+        SubscribeLocalEvent<ChargerComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+        // Orion-End
 
         SubscribeLocalEvent<ChargerComponent, EmpPulseEvent>(OnEmpPulse);
     }
 
     private void OnStartup(EntityUid uid, ChargerComponent component, ComponentStartup args)
     {
+        // Orion-Start
+        component.BaseChargeRate = component.ChargeRate;
+        component.FinalChargeRate = component.ChargeRate;
+        // Orion-End
+
         UpdateStatus(uid, component);
     }
 
@@ -158,7 +168,7 @@ internal sealed class ChargerSystem : EntitySystem
         using (args.PushGroup(nameof(ChargerComponent)))
         {
             // rate at which the charger charges
-            args.PushMarkup(Loc.GetString("charger-examine", ("color", "yellow"), ("chargeRate", (int) component.ChargeRate)));
+            args.PushMarkup(Loc.GetString("charger-examine", ("color", "yellow"), ("chargeRate", (int) component.FinalChargeRate))); // Orion-Edit
 
             // try to get contents of the charger
             if (!_container.TryGetContainer(uid, component.SlotId, out var container))
@@ -299,7 +309,7 @@ internal sealed class ChargerSystem : EntitySystem
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Empty, appearance);
                 break;
             case CellChargerStatus.Charging:
-                receiver.Load = component.ChargeRate;
+                receiver.Load = component.FinalChargeRate; // Orion-Edit
                 _appearance.SetData(uid, CellVisual.Light, CellChargerStatus.Charging, appearance);
                 break;
             case CellChargerStatus.Charged:
@@ -363,9 +373,32 @@ internal sealed class ChargerSystem : EntitySystem
         if (!SearchForBattery(targetEntity, out var batteryUid, out var heldBattery))
             return;
 
-        _battery.SetCharge(batteryUid.Value, heldBattery.CurrentCharge + component.ChargeRate * frameTime, heldBattery);
+        _battery.SetCharge(batteryUid.Value, heldBattery.CurrentCharge + component.FinalChargeRate * frameTime, heldBattery); // Orion-Edit
         UpdateStatus(uid, component);
     }
+
+    // Orion-Start
+    private void OnPartsRefresh(EntityUid uid, ChargerComponent component, RefreshPartsEvent args)
+    {
+        var capTier = args.GetPartRating(component.ChargePart);
+        component.FinalChargeRate = component.BaseChargeRate * RefreshPartsEvent.GetPositiveTierMultiplier(capTier);
+        component.ChargeRate = component.FinalChargeRate;
+
+        if (TryComp<ApcPowerReceiverComponent>(uid, out var receiver))
+            receiver.Load = component.Status == CellChargerStatus.Charging ? component.ChargeRate : 0f;
+
+        UpdateStatus(uid, component);
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, ChargerComponent component, UpgradeExamineEvent args)
+    {
+        var efficiency = component.BaseChargeRate <= 0f
+            ? 1f
+            : component.FinalChargeRate / component.BaseChargeRate;
+
+        args.AddPercentageUpgrade("machine-upgrade-charging-efficiency", efficiency);
+    }
+    // Orion-End
 
     // Goobstation - made public
     public bool SearchForBattery(EntityUid uid, [NotNullWhen(true)] out EntityUid? batteryUid, [NotNullWhen(true)] out BatteryComponent? component)

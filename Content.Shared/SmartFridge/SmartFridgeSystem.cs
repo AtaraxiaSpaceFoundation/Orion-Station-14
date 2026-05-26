@@ -1,4 +1,5 @@
-using Content.Shared.Access.Components;
+using Content.Shared._Orion.Construction;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Access.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
@@ -8,7 +9,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.SmartFridge;
@@ -29,6 +29,10 @@ public sealed class SmartFridgeSystem : EntitySystem
 
         SubscribeLocalEvent<SmartFridgeComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<SmartFridgeComponent, EntRemovedFromContainerMessage>(OnItemRemoved);
+        // Orion-Start
+        SubscribeLocalEvent<SmartFridgeComponent, RefreshPartsEvent>(OnRefreshParts);
+        SubscribeLocalEvent<SmartFridgeComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+        // Orion-End
 
         SubscribeLocalEvent<SmartFridgeComponent, GetDumpableVerbEvent>(OnGetDumpableVerb);
         SubscribeLocalEvent<SmartFridgeComponent, DumpEvent>(OnDump);
@@ -53,6 +57,12 @@ public sealed class SmartFridgeSystem : EntitySystem
         {
             if (!_whitelist.CheckBoth(used, ent.Comp.Blacklist, ent.Comp.Whitelist))
                 continue;
+
+            // Orion-Start
+            if (CountContained(ent) >= ent.Comp.Capacity)
+                continue;
+            // Orion-End
+
             anyInserted = true;
 
             _container.Insert(used, container);
@@ -95,6 +105,31 @@ public sealed class SmartFridgeSystem : EntitySystem
 
         Dirty(ent);
     }
+
+    // Orion-Start
+    private static int CountContained(Entity<SmartFridgeComponent> ent)
+    {
+        var count = 0;
+        foreach (var set in ent.Comp.ContainedEntries.Values)
+        {
+            count += set.Count;
+        }
+
+        return count;
+    }
+
+    private void OnRefreshParts(EntityUid uid, SmartFridgeComponent component, RefreshPartsEvent args)
+    {
+        var matterTier = args.GetPartRating(MachinePartIds.MatterBin);
+        component.Capacity = (int) MathF.Round(component.BaseCapacity * RefreshPartsEvent.GetPositiveTierMultiplier(matterTier));
+        Dirty(uid, component);
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, SmartFridgeComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("machine-upgrade-smartfridge-capacity", component.Capacity / (float) component.BaseCapacity);
+    }
+    // Orion-End
 
     private bool Allowed(Entity<SmartFridgeComponent> machine, EntityUid user)
     {

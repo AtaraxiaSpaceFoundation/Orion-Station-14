@@ -281,4 +281,16 @@ public sealed class QuantumConsoleSystem : EntitySystem
 
         ent.Comp.LinkedServerId = null;
     }
+
+    public void RefreshServerConsoles(EntityUid serverUid)
+    {
+        var query = EntityQueryEnumerator<QuantumConsoleComponent>();
+        while (query.MoveNext(out var uid, out var console))
+        {
+            if (FindServer((uid, console)) != serverUid)
+                continue;
+
+            UpdateUi((uid, console));
+        }
+    }
 }

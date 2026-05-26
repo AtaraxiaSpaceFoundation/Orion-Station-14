@@ -147,9 +147,11 @@ public sealed class DoAfterOverlay : Overlay
                     alpha = 0.5f;
                 }
 
-                // Use the sprite itself if we know its bounds. This means short or tall sprites don't get overlapped
-                // by the bar.
-                var yOffset = _sprite.GetLocalBounds((uid, sprite)).Height / 2f + 0.05f;
+                // Orion-Edit-Start
+                // Use sprite bounds to avoid overlap, but clamp the offset so oversized layers
+                // (e.g. tails) do not push the indicator too far upward.
+                var yOffset = MathF.Min(_sprite.GetLocalBounds((uid, sprite)).Height / 2f, 0.5f) + 0.05f;
+                // Orion-Edit-End
 
                 // Position above the entity (we've already applied the matrix transform to the entity itself)
                 // Offset by the texture size for every do_after we have.
@@ -157,38 +159,51 @@ public sealed class DoAfterOverlay : Overlay
                     yOffset / scale + offset / EyeManager.PixelsPerMeter * scale);
 
                 // Orion-Start
-                var cogPos = new Vector2(position.X + _barTexture.Width / scale / EyeManager.PixelsPerMeter, position.Y + _barTexture.Height * 2 / scale) / EyeManager.PixelsPerMeter;
-                var cogTexture = _entManager.System<SpriteSystem>().GetFrame(_cogTexture, curTime);
+                var cogTexture = _sprite.GetFrame(_cogTexture, curTime);
                 // Orion-End
 
-                // Draw the underlying bar texture
-                handle.DrawTexture(_barTexture, position);
-                handle.DrawTexture(cogTexture, cogPos); // Orion
+                // Orion-Edit-Start
+                // Draw the cog for everyone, but keep the progress bar client-only.
+                var showProgressBar = uid == localEnt;
+                const float cogOffsetY = 0f;
+                var cogPos = showProgressBar
+                    ? new Vector2(position.X + _barTexture.Width / 2f / scale / EyeManager.PixelsPerMeter, position.Y + cogOffsetY)
+                    : position with { Y = position.Y + cogOffsetY };
 
-                Color color;
-                float elapsedRatio;
+                if (showProgressBar)
+                    handle.DrawTexture(_barTexture, position);
 
-                // if we're cancelled then flick red / off.
-                if (doAfter.CancelledTime != null)
+                handle.DrawTexture(cogTexture, cogPos);
+
+                if (showProgressBar)
                 {
-                    var elapsed = doAfter.CancelledTime.Value - doAfter.StartTime;
-                    elapsedRatio = (float)Math.Min(1, elapsed.TotalSeconds / doAfter.Args.Delay.TotalSeconds);
-                    var cancelElapsed = (time - doAfter.CancelledTime.Value).TotalSeconds;
-                    var flash = Math.Floor(cancelElapsed / FlashTime) % 2 == 0;
-                    color = GetProgressColor(0, flash ? alpha : 0);
-                }
-                else
-                {
-                    var elapsed = time - doAfter.StartTime;
-                    elapsedRatio = (float)Math.Min(1, elapsed.TotalSeconds / doAfter.Args.Delay.TotalSeconds);
-                    color = GetProgressColor(elapsedRatio, alpha);
+                    Color color;
+                    float elapsedRatio;
+
+                    // if we're canceled then flick red / off.
+                    if (doAfter.CancelledTime != null)
+                    {
+                        var elapsed = doAfter.CancelledTime.Value - doAfter.StartTime;
+                        elapsedRatio = (float)Math.Min(1, elapsed.TotalSeconds / doAfter.Args.Delay.TotalSeconds);
+                        var cancelElapsed = (time - doAfter.CancelledTime.Value).TotalSeconds;
+                        var flash = Math.Floor(cancelElapsed / FlashTime) % 2 == 0;
+                        color = GetProgressColor(0, flash ? alpha : 0);
+                    }
+                    else
+                    {
+                        var elapsed = time - doAfter.StartTime;
+                        elapsedRatio = (float)Math.Min(1, elapsed.TotalSeconds / doAfter.Args.Delay.TotalSeconds);
+                        color = GetProgressColor(elapsedRatio, alpha);
+                    }
+
+                    var xProgress = (EndX - StartX) * elapsedRatio + StartX;
+                    var box = new Box2(new Vector2(StartX, 3f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 4f) / EyeManager.PixelsPerMeter);
+                    box = box.Translated(position);
+                    handle.DrawRect(box, doAfter.Args.ColorOverride ?? color); // Goob edit
                 }
 
-                var xProgress = (EndX - StartX) * elapsedRatio + StartX;
-                var box = new Box2(new Vector2(StartX, 3f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 4f) / EyeManager.PixelsPerMeter);
-                box = box.Translated(position);
-                handle.DrawRect(box, doAfter.Args.ColorOverride ?? color); // Goob edit
                 offset += _barTexture.Height / scale;
+                // Orion-Edit-End
             }
         }
 
@@ -196,7 +211,7 @@ public sealed class DoAfterOverlay : Overlay
         handle.SetTransform(Matrix3x2.Identity);
     }
 
-    public Color GetProgressColor(float progress, float alpha = 1f)
+    private Color GetProgressColor(float progress, float alpha = 1f) // Orion-Edit: Was public
     {
         return _progressColor.GetProgressColor(progress).WithAlpha(alpha);
     }

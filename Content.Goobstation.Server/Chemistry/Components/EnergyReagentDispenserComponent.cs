@@ -61,7 +61,9 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Goobstation.Server.Chemistry.EntitySystems;
 using Content.Goobstation.Shared.Chemistry;
+using Content.Shared._Orion.Construction.Prototypes;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Server.Chemistry.Components
 {
@@ -96,6 +98,24 @@ namespace Content.Goobstation.Server.Chemistry.Components
 
         [DataField]
         public bool Emagged;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float BaseRechargeRate = 25f;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float FinalRechargeRate = 25f;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float BaseEnergyCostMultiplier = 1f;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float FinalEnergyCostMultiplier = 1f;
+
+        [DataField]
+        public ProtoId<MachinePartPrototype> CapacitorPart = "Capacitor";
+
+        [DataField]
+        public ProtoId<MachinePartPrototype> MatterBinPart = "MatterBin";
         // Orion-End
     }
 }

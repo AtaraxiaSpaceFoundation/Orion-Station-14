@@ -15,6 +15,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Stacks;
 using Content.Shared.Tag;
 using Robust.Shared.GameStates;
@@ -30,6 +31,14 @@ public sealed partial class MachineBoardComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<ProtoId<StackPrototype>, int> StackRequirements = new();
+
+    // Orion-Start
+    /// <summary>
+    /// The machine parts needed to construct this machine.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<MachinePartPrototype>, int> PartRequirements = new();
+    // Orion-End
 
     /// <summary>
     /// Entities needed to construct this machine, discriminated by tag.

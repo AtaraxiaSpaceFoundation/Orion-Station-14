@@ -29,7 +29,9 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Silicons.Borgs.Components;
 
 namespace Content.Goobstation.Server.Xenobiology;
 
@@ -80,17 +82,29 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             return;
 
         ent.Comp.NextTickTime = _gameTiming.CurTime + ent.Comp.Interval;
-        _damageable.TryChangeDamage(ent, ent.Comp.Damage, ignoreResistances: true, targetPart: TargetBodyPart.All);
+        // Orion-Edit-Start
+        var damage = ent.Comp.Damage;
+        if (HasComp<SiliconComponent>(ent) || HasComp<BorgChassisComponent>(ent))
+        {
+            var totalDamage = damage.GetTotal();
+            damage = new DamageSpecifier();
+            damage.DamageDict["Blunt"] = totalDamage;
+        }
+
+        _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, targetPart: TargetBodyPart.All);
+        // Orion-Edit-End
 
         if (ent.Comp.SourceEntityUid is not { } source)
             return;
 
+/* // Orion-Edit
         var addedHunger = (float) ent.Comp.Damage.GetTotal();
         if (TryComp<HungerComponent>(source, out var hunger))
         {
             _hunger.ModifyHunger(source, addedHunger, hunger);
             Dirty(source, hunger);
         }
+*/
 
         var stomachList = _body.GetBodyOrganEntityComps<StomachComponent>(source);
 
@@ -112,13 +126,26 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             FixedPoint2 chemProportion = 1 - bloodProportion;
             FixedPoint2 bloodTransfer = FixedPoint2.Min(ent.Comp.SuctionUnits * bloodProportion, availabaleVolume * bloodProportion);
             FixedPoint2 chemTransfer = FixedPoint2.Min(ent.Comp.SuctionUnits * chemProportion, availabaleVolume * chemProportion);
+            var totalTransferred = FixedPoint2.Zero; // Orion
             foreach (var stomach in stomachList)
             {
                 var bloodSolution = blood.SplitSolutionWithout(bloodTransfer/FixedPoint2.New(stomachList.Count), ent.Comp.ToxinReagent); // we don't want slime sucking it's own toxin instad of drinking blood
                 _stomach.TryTransferSolution(stomach.Owner, bloodSolution, stomach); // blood first, other chemicals later
-                var chemSolution = blood.SplitSolution(chemTransfer/FixedPoint2.New(stomachList.Count));
+                totalTransferred += bloodSolution.Volume; // Orion
+
+                var chemSolution = chem.SplitSolution(chemTransfer/FixedPoint2.New(stomachList.Count)); // Orion-Edit
                 _stomach.TryTransferSolution(stomach.Owner, chemSolution, stomach);
+                totalTransferred += chemSolution.Volume; // Orion
             }
+
+            // Orion-Start
+            if (totalTransferred > FixedPoint2.Zero && TryComp<HungerComponent>(source, out var hunger))
+            {
+                _hunger.ModifyHunger(source, (float) totalTransferred, hunger);
+                Dirty(source, hunger);
+            }
+            // Orion-End
+
             chem.AddReagent(ent.Comp.ToxinReagent, ent.Comp.ToxinUnits);
         }
     }

@@ -14,6 +14,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Orion.Construction;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Components;
@@ -87,6 +89,10 @@ public abstract partial class SharedCryoPodSystem : EntitySystem
         SubscribeLocalEvent<CryoPodComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<CryoPodComponent, PowerChangedEvent>(OnPowerChanged);
         SubscribeLocalEvent<CryoPodComponent, ActivatableUIOpenAttemptEvent>(OnActivateUIAttempt);
+        // Orion-Start
+        SubscribeLocalEvent<CryoPodComponent, RefreshPartsEvent>(OnRefreshParts);
+        SubscribeLocalEvent<CryoPodComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+        // Orion-End
 
         _bloodstreamQuery = GetEntityQuery<BloodstreamComponent>();
         _itemSlotsQuery = GetEntityQuery<ItemSlotsComponent>();
@@ -126,6 +132,12 @@ public abstract partial class SharedCryoPodSystem : EntitySystem
                 && _bloodstreamQuery.TryComp(patient, out var bloodstream))
             {
                 var solutionToInject = _solutionContainer.SplitSolution(containerSolution.Value, cryoPod.BeakerTransferAmount);
+
+                // Orion-Start
+                if (cryoPod.CoolingEfficiency > 1f)
+                    solutionToInject.ScaleSolution(cryoPod.CoolingEfficiency);
+                // Orion-End
+
                 _bloodstream.TryAddToChemicals((patient.Value, bloodstream), solutionToInject);
                 _reactive.DoEntityReaction(patient.Value, solutionToInject, ReactionMethod.Injection);
             }
@@ -372,4 +384,20 @@ public abstract partial class SharedCryoPodSystem : EntitySystem
 
     [Serializable, NetSerializable]
     public sealed partial class CryoPodDragFinished : SimpleDoAfterEvent;
+
+    // Orion-Start
+    private static void OnRefreshParts(EntityUid uid, CryoPodComponent component, RefreshPartsEvent args)
+    {
+        var matter = args.GetPartRating(MachinePartIds.MatterBin);
+        var laser = args.GetPartRating(MachinePartIds.MicroLaser);
+        component.BeakerTransferAmount = component.BaseBeakerTransferAmount * RefreshPartsEvent.GetPositiveTierMultiplier(matter);
+        component.CoolingEfficiency = RefreshPartsEvent.GetPositiveTierMultiplier(laser);
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, CryoPodComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("machine-upgrade-cryo-transfer", component.BeakerTransferAmount.Float() / component.BaseBeakerTransferAmount.Float());
+        args.AddPercentageUpgrade("machine-upgrade-cryo-cooling", component.CoolingEfficiency);
+    }
+    // Orion-End
 }

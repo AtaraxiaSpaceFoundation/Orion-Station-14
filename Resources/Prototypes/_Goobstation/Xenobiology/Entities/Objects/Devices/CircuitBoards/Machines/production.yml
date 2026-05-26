@@ -9,10 +9,11 @@
   - type: MachineBoard
     prototype: SlimeGrinder
     stackRequirements:
-      Manipulator: 5
       Steel: 5
     tagRequirements:
       Knife:
         amount: 2
         defaultPrototype: KitchenKnife
         examineName: construction-insert-info-examine-name-knife
+    partRequirements: # Orion
+      Servo: 5

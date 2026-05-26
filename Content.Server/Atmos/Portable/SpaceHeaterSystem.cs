@@ -46,6 +46,8 @@ using Content.Server.Atmos.Piping.Components;
 using Content.Server.Popups;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._Orion.Construction;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Atmos.Piping.Portable.Components;
 using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Atmos.Visuals;
@@ -78,6 +80,10 @@ public sealed class SpaceHeaterSystem : EntitySystem
         SubscribeLocalEvent<SpaceHeaterComponent, SpaceHeaterChangePowerLevelMessage>(OnPowerLevelChanged);
         SubscribeLocalEvent<SpaceHeaterComponent, SpaceHeaterChangeTemperatureMessage>(OnTemperatureChanged);
         SubscribeLocalEvent<SpaceHeaterComponent, SpaceHeaterToggleMessage>(OnToggle);
+        // Orion-Start
+        SubscribeLocalEvent<SpaceHeaterComponent, RefreshPartsEvent>(OnRefreshParts);
+        SubscribeLocalEvent<SpaceHeaterComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+        // Orion-End
     }
 
     private void OnInit(EntityUid uid, SpaceHeaterComponent spaceHeater, MapInitEvent args)
@@ -233,4 +239,32 @@ public sealed class SpaceHeaterSystem : EntitySystem
             _appearance.SetData(uid, SpaceHeaterVisuals.State, SpaceHeaterState.StandBy);
         }
     }
+
+    // Orion-Start
+    private void OnRefreshParts(EntityUid uid, SpaceHeaterComponent component, RefreshPartsEvent args)
+    {
+        var capacitor = args.GetPartRating(MachinePartIds.Capacitor);
+        var laser = args.GetPartRating(MachinePartIds.MicroLaser);
+
+        component.PowerConsumption = component.BasePowerConsumption * RefreshPartsEvent.GetPositiveTierMultiplier(capacitor);
+        var rangeBonus = (laser - 1f) * 10f;
+        component.MinTemperature = component.BaseMinTemperature - rangeBonus;
+        component.MaxTemperature = component.BaseMaxTemperature + rangeBonus;
+
+        if (TryComp<GasThermoMachineComponent>(uid, out var thermo))
+        {
+            thermo.TargetTemperature = Math.Clamp(thermo.TargetTemperature, component.MinTemperature, component.MaxTemperature);
+            OnPowerLevelChanged(uid, component, new SpaceHeaterChangePowerLevelMessage(component.PowerLevel));
+            Dirty(uid, thermo);
+        }
+
+        DirtyUI(uid, component);
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, SpaceHeaterComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("machine-upgrade-spaceheater-power", component.PowerConsumption / component.BasePowerConsumption);
+        args.AddPercentageUpgrade("machine-upgrade-spaceheater-temp-range", (component.MaxTemperature - component.MinTemperature) / (component.BaseMaxTemperature - component.BaseMinTemperature));
+    }
+    // Orion-End
 }

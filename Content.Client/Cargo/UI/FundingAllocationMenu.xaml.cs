@@ -192,6 +192,9 @@ public sealed partial class FundingAllocationMenu : FancyWindow
                 case false when transaction.Reason == "cargo-private-purchase":
                     to = LocalizeDepartmentCode("Cargo");
                     break;
+                case true when transaction.Reason == "cargo-private-purchase-refund":
+                    from = LocalizeDepartmentCode("Cargo");
+                    break;
             }
 
             var row = CreateRowContainer();
@@ -306,6 +309,7 @@ public sealed partial class FundingAllocationMenu : FancyWindow
             "starting-payroll" => Loc.GetString("cargo-funding-alloc-console-reason-starting-payroll"),
             "vending-purchase" => Loc.GetString("cargo-funding-alloc-console-reason-vending-purchase", ("item", LocalizeVendingItem(vendingData.ItemId))),
             "cargo-private-purchase" => Loc.GetString("cargo-funding-alloc-console-reason-cargo-private-purchase", ("order", cargoOrderData.OrderId ?? Loc.GetString("cargo-funding-alloc-console-economy-unknown")), ("product", LocalizeCargoProduct(cargoOrderData.ProductId))),
+            "cargo-private-purchase-refund" => Loc.GetString("cargo-funding-alloc-console-reason-cargo-private-purchase-refund", ("order", cargoOrderData.OrderId ?? Loc.GetString("cargo-funding-alloc-console-economy-unknown")), ("product", LocalizeCargoProduct(cargoOrderData.ProductId))),
             _ => Loc.GetString("cargo-funding-alloc-console-reason-generic", ("reason", reason)),
         };
     }

@@ -48,7 +48,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Lathe.Prototypes;
+using Content.Shared.Materials;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -79,6 +81,13 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField]
         public Queue<ProtoId<LatheRecipePrototype>> Queue = new();
+
+        // Orion-Start
+        [DataField]
+        public Queue<Dictionary<ProtoId<MaterialPrototype>, int>> QueuedMaterialRefunds = new();
+
+        public Dictionary<ProtoId<MaterialPrototype>, int>? ActiveMaterialRefund;
+        // Orion-End
 
         /// <summary>
         /// The sound that plays when the lathe is producing an item, if any
@@ -127,6 +136,39 @@ namespace Content.Shared.Lathe
         /// </summary>
         [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
         public float MaterialUseMultiplier = 1;
+
+        // Orion-Start
+        [DataField, AutoNetworkedField]
+        public float FinalTimeMultiplier = 1;
+
+        [DataField, AutoNetworkedField]
+        public float FinalMaterialMultiplier = 1;
+
+        [DataField]
+        public ProtoId<MachinePartPrototype> MachinePartPrintSpeed = "Servo";
+
+        [DataField]
+        public float BaseMachinePartEfficiency = 1.2f;
+
+        [DataField]
+        public float MachinePartEfficiencyTierStep = 0.1f;
+
+        [DataField]
+        public float MachinePartEfficiencyExponent = 0.8f;
+
+        [DataField]
+        public float MinMachinePartEfficiency = 0.1f;
+
+        [DataField]
+        public ProtoId<MachinePartPrototype> MachinePartMaterialCapacity = "MatterBin";
+
+        [DataField]
+        public int MaterialStorageTierCapacityBonus = 3750;
+
+        [DataField]
+        public int? BaseStorageLimit;
+        // Orion-End
+
         #endregion
 
         // Goobstation change start
@@ -134,7 +176,7 @@ namespace Content.Shared.Lathe
         // Output to MaterialStorage instead of spawning it
         // </summary>
         [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public bool OutputToStorage = false;
+        public bool OutputToStorage;
         // Goobstation change end
     }
 
@@ -143,7 +185,7 @@ namespace Content.Shared.Lathe
         public readonly EntityUid Lathe;
         public readonly LatheComponent Comp;
 
-        public bool GetUnavailable;
+        public readonly bool GetUnavailable; // Orion-Edit: readonly
 
         public HashSet<ProtoId<LatheRecipePrototype>> Recipes = new();
 

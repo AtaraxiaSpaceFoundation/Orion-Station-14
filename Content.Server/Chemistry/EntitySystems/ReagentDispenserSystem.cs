@@ -37,6 +37,7 @@ using System.Linq;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Server.Chemistry.Components;
 using Content.Server.Hands.Systems;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
@@ -85,6 +86,11 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<ReagentDispenserComponent, ReagentDispenserClearContainerSolutionMessage>(OnClearContainerSolutionMessage);
 
             SubscribeLocalEvent<ReagentDispenserComponent, MapInitEvent>(OnMapInit, before: new[] { typeof(ItemSlotsSystem) });
+
+            // Orion-Start
+            SubscribeLocalEvent<ReagentDispenserComponent, RefreshPartsEvent>(OnPartsRefresh);
+            SubscribeLocalEvent<ReagentDispenserComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+            // Orion-End
         }
 
         private void SubscribeUpdateUiState<T>(Entity<ReagentDispenserComponent> ent, ref T ev)
@@ -228,5 +234,33 @@ namespace Content.Server.Chemistry.EntitySystems
         {
             _itemSlotsSystem.AddItemSlot(ent.Owner, SharedReagentDispenser.OutputSlotName, ent.Comp.BeakerSlot);
         }
+
+        // Orion-Start
+        private void OnPartsRefresh(EntityUid uid, ReagentDispenserComponent component, RefreshPartsEvent args)
+        {
+            var capacitorTier = args.GetPartRating(component.CapacitorPart);
+            var matterBinTier = args.GetPartRating(component.MatterBinPart);
+
+            component.FinalRechargeRate = component.BaseRechargeRate * RefreshPartsEvent.GetPositiveTierMultiplier(capacitorTier);
+
+            var energyMultiplier = RefreshPartsEvent.GetLinearMultiplier(matterBinTier, 0.1f, 0.5f, 1.2f);
+            component.FinalEnergyCostPerUnit = MathF.Max(0.01f, component.BaseEnergyCostPerUnit * energyMultiplier);
+
+            UpdateUiState((uid, component));
+        }
+
+        private static void OnUpgradeExamine(EntityUid uid, ReagentDispenserComponent component, UpgradeExamineEvent args)
+        {
+            var rechargeMultiplier = component.BaseRechargeRate <= 0f
+                ? 1f
+                : component.FinalRechargeRate / component.BaseRechargeRate;
+            var costMultiplier = component.BaseEnergyCostPerUnit <= 0f
+                ? 1f
+                : component.FinalEnergyCostPerUnit / component.BaseEnergyCostPerUnit;
+
+            args.AddPercentageUpgrade("machine-upgrade-charging-speed", rechargeMultiplier);
+            args.AddPercentageUpgrade("machine-upgrade-energy-cost", costMultiplier);
+        }
+        // Orion-End
     }
 }

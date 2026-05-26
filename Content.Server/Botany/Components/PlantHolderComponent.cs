@@ -95,8 +95,27 @@ public sealed partial class PlantHolderComponent : Component
     [DataField]
     public float WaterLevel = 100f;
 
+    // Orion-Start
+    [DataField]
+    public float BaseMaxWater = 100f;
+
+    [DataField]
+    public float MaxWater = 100f;
+    // Orion-End
+
     [DataField]
     public float NutritionLevel = 100f;
+
+    // Orion-Start
+    [DataField]
+    public float BaseMaxNutrition = 100f;
+
+    [DataField]
+    public float MaxNutrition = 100f;
+
+    [DataField]
+    public float NutrientConsumptionMultiplier = 1f;
+    // Orion-End
 
     [DataField]
     public float PestLevel;

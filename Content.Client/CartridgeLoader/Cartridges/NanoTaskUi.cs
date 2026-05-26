@@ -64,10 +64,12 @@ public sealed partial class NanoTaskUi : UIFragment
             userInterface.SendMessage(new CartridgeUiMessage(new NanoTaskUiMessageEvent(new NanoTaskAddTask(data))));
             _popup.Close();
         };
+/* // Orion-Edit
         _popup.TaskPrinted += data =>
         {
             userInterface.SendMessage(new CartridgeUiMessage(new NanoTaskUiMessageEvent(new NanoTaskPrintTask(data))));
         };
+*/
     }
 
     public override void UpdateState(BoundUserInterfaceState state)

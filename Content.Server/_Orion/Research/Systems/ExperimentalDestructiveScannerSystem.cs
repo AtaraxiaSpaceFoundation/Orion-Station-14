@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Research.Systems;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Components;
 using Content.Shared._Orion.Research.Prototypes;
@@ -36,11 +37,16 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
         SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ResearchServerPointsChangedEvent>(OnPointsChanged);
         SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ResearchRegistrationChangedEvent>(OnRegistrationChanged);
         SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, RefreshPartsEvent>(OnPartsRefresh);
+        SubscribeLocalEvent<ExperimentalDestructiveScannerComponent, UpgradeExamineEvent>(OnUpgradeExamine);
     }
 
     private void OnStartup(Entity<ExperimentalDestructiveScannerComponent> ent, ref ComponentStartup args)
     {
         _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+
+        ent.Comp.BaseScanDuration = ent.Comp.ScanDuration;
+
         UpdateAppearance(ent, ExperimentalDestructiveScannerVisualState.Idle);
     }
 
@@ -287,5 +293,22 @@ public sealed class ExperimentalDestructiveScannerSystem : EntitySystem
             status);
 
         _ui.SetUiState(ent.Owner, ExperimentalDestructiveScannerUiKey.Key, state);
+    }
+
+    private void OnPartsRefresh(EntityUid uid, ExperimentalDestructiveScannerComponent component, RefreshPartsEvent args)
+    {
+        var servoTier = args.GetPartRating(component.ServoPart);
+        component.ScanDuration = TimeSpan.FromSeconds(MathF.Max(0.5f, (float)component.BaseScanDuration.TotalSeconds / MathF.Max(servoTier, 1f)));
+
+        UpdateUi((uid, component));
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, ExperimentalDestructiveScannerComponent component, UpgradeExamineEvent args)
+    {
+        var cooldownMultiplier = component.ScanDuration.TotalSeconds <= 0
+            ? 1f
+            : (float)(component.BaseScanDuration.TotalSeconds / component.ScanDuration.TotalSeconds);
+
+        args.AddPercentageUpgrade("machine-upgrade-research-cooldown", cooldownMultiplier);
     }
 }

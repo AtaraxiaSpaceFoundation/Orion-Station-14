@@ -25,6 +25,8 @@ using Content.Shared._Orion.Bitrunning;
 using Content.Shared._Orion.Bitrunning.Components;
 using Content.Shared._Orion.Bitrunning.Prototypes;
 using Content.Shared._Orion.Bitrunning.Systems;
+using Content.Shared._Orion.Construction;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking;
@@ -91,6 +93,7 @@ public sealed class QuantumServerSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly DeathgaspSystem _deathgasp = default!;
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly QuantumConsoleSystem _console = default!;
 
     private static readonly EntProtoId ExitBlindnessStatusEffect = "StatusEffectBitrunningExitBlindness";
     private const string ServerSourcePort = "BitrunningServerSource";
@@ -105,6 +108,8 @@ public sealed class QuantumServerSystem : EntitySystem
         SubscribeLocalEvent<QuantumServerComponent, InteractUsingEvent>(OnServerInteractUsing);
         SubscribeLocalEvent<QuantumServerComponent, EntityTerminatingEvent>(OnServerTerminating);
         SubscribeLocalEvent<QuantumServerComponent, PowerChangedEvent>(OnServerPowerChanged);
+        SubscribeLocalEvent<QuantumServerComponent, RefreshPartsEvent>(OnPartsRefresh);
+        SubscribeLocalEvent<QuantumServerComponent, UpgradeExamineEvent>(OnUpgradeExamine);
         SubscribeLocalEvent<AvatarConnectionComponent, DamageChangedEvent>(OnAvatarDamaged);
         SubscribeLocalEvent<AvatarConnectionComponent, MobStateChangedEvent>(OnAvatarStateChanged);
         SubscribeLocalEvent<AvatarConnectionComponent, BitrunningDisconnectAvatarActionEvent>(OnAvatarDisconnectAction);
@@ -154,6 +159,32 @@ public sealed class QuantumServerSystem : EntitySystem
         {
             DisconnectAvatar(connection, true);
         }
+    }
+
+    private void OnPartsRefresh(EntityUid uid, QuantumServerComponent component, RefreshPartsEvent args)
+    {
+        var previousScannerTier = component.ScannerTier;
+        var capacitorTier = args.GetPartRating(MachinePartIds.Capacitor);
+        component.CooldownMultiplier = RefreshPartsEvent.GetPartCooldownMultiplier(capacitorTier);
+
+        var scannerTier = args.GetPartRating(MachinePartIds.ScanningModule);
+        component.ScannerTier = Math.Max(1, (int) MathF.Round(scannerTier));
+
+        var servoBonus = args.GetPartRatingSum(MachinePartIds.Servo) * 0.1f;
+        component.QualityBonus = servoBonus;
+        component.FinalExitDamageMultiplier = Math.Clamp(1f - servoBonus, 0.2f, 1f);
+
+        Dirty(uid, component);
+
+        if (previousScannerTier != component.ScannerTier)
+            _console.RefreshServerConsoles(uid);
+    }
+
+    private static void OnUpgradeExamine(EntityUid uid, QuantumServerComponent component, UpgradeExamineEvent args)
+    {
+        args.AddPercentageUpgrade("machine-upgrade-quantum-cooldown", 1f / Math.Max(component.CooldownMultiplier, 0.001f));
+        args.AddPercentageUpgrade("machine-upgrade-quantum-reward-bonus", 1f + component.QualityBonus);
+        args.AddPercentageUpgrade("machine-upgrade-quantum-exit-injury", 1f / Math.Max(component.FinalExitDamageMultiplier, 0.001f));
     }
 
     public bool TryColdBoot(EntityUid serverUid, string domainId, bool randomized = false)
@@ -427,8 +458,7 @@ public sealed class QuantumServerSystem : EntitySystem
         }
         else
         {
-            var effectiveEfficiency = Math.Max(serverEnt.Comp.CooldownEfficiency, 0.001f);
-            var delay = TimeSpan.FromSeconds(serverEnt.Comp.Cooldown.TotalSeconds / effectiveEfficiency);
+            var delay = TimeSpan.FromSeconds(serverEnt.Comp.Cooldown.TotalSeconds * serverEnt.Comp.CooldownMultiplier);
             serverEnt.Comp.CooldownEndTime = _timing.CurTime + delay;
             Timer.Spawn(delay,
                 () =>
@@ -960,8 +990,12 @@ public sealed class QuantumServerSystem : EntitySystem
         if (!TryComp<DamageableComponent>(avatar, out var avatarDamage))
             return;
 
+        var serverDamageScale = 0.20f;
+        if (avatar.Comp.Server is { } serverUid && TryComp<QuantumServerComponent>(serverUid, out var server))
+            serverDamageScale = server.BaseExitDamageScale * server.FinalExitDamageMultiplier;
+
         var scaledDamage = avatarDamage.TotalDamage > 0
-            ? avatarDamage.Damage * 0.20f
+            ? avatarDamage.Damage * serverDamageScale
             : new DamageSpecifier
             {
                 DamageDict =

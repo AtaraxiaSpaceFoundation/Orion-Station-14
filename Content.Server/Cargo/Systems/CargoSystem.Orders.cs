@@ -446,37 +446,26 @@ namespace Content.Server.Cargo.Systems
             RaiseLocalEvent(ref ev);
             ev.FulfillmentEntity ??= station.Value;
 
-            // Orion-Start
-            var privatePaymentTaken = false;
-            if (order.PaidPrivately)
-            {
-                if (privateAccount == null || !_bank.Withdraw(privateAccount.Value, finalCost, "cargo-private-purchase", reasonData: $"order:{order.OrderId}|product:{order.ProductId}"))
-                {
-                    ConsolePopup(args.Actor, Loc.GetString("cargo-console-payment-failed"));
-                    PlayDenySound(uid, component);
-                    return;
-                }
-
-                privatePaymentTaken = true;
-            }
-            // Orion-End
-
             if (!ev.Handled)
             {
                 ev.FulfillmentEntity = TryFulfillOrder((station.Value, stationData), order.Account, order, orderDatabase);
 
                 if (ev.FulfillmentEntity == null)
                 {
-                    // Orion-Start
-                    if (privatePaymentTaken && privateAccount != null)
-                        _bank.Deposit(privateAccount.Value, finalCost, "cargo-private-purchase-refund", reasonData: $"order:{order.OrderId}|product:{order.ProductId}");
-                    // Orion-End
-
                     ConsolePopup(args.Actor, Loc.GetString("cargo-console-unfulfilled"));
                     PlayDenySound(uid, component);
                     return;
                 }
             }
+
+            // Orion-Start
+            if (order.PaidPrivately && (privateAccount == null || !_bank.Withdraw(privateAccount.Value, finalCost, "cargo-private-purchase", reasonData: $"order:{order.OrderId}|product:{order.ProductId}")))
+            {
+                ConsolePopup(args.Actor, Loc.GetString("cargo-console-payment-failed"));
+                PlayDenySound(uid, component);
+                return;
+            }
+            // Orion-End
 
             // GoobStation - cooldown on Cargo Orders (specifically gamba)
             if (order.Cooldown > 0)

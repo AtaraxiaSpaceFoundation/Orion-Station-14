@@ -8,7 +8,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: BaseStructureDynamic
+  parent: [ BaseStructureDynamic, ConstructibleMachine ] # Orion-Edit
   id: SmartFridge
   name: SmartFridge
   description: A refrigerated storage unit for keeping items cold and fresh.
@@ -37,9 +37,13 @@
   - type: ContainerContainer
     containers:
       smart_fridge_inventory: !type:Container
+      machine_board: !type:Container # Orion
+      machine_parts: !type:Container # Orion
   - type: LitOnPowered
   - type: ApcPowerReceiver
     powerLoad: 200
+  - type: Machine # Orion
+    board: SmartFridgeMachineCircuitboard
   - type: ExtensionCableReceiver
   - type: SmartFridge
     whitelist:

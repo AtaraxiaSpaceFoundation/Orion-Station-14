@@ -17,7 +17,7 @@
     thrusterType: Angular # These are overpowered thruster-shuttle-console-hybrids that require no power grid. As such, they cannot be anchored or meaningfully taken outside of their intended use.
     requireSpace: false
     thrust: 4000
-    machinePartThrust: Manipulator
+    machinePartThrust: Servo # Orion-Edit
   - type: ShuttleConsole
   - type: ActivatableUI
     key: enum.ShuttleConsoleUiKey.Key

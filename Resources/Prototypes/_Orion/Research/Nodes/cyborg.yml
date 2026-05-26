@@ -178,6 +178,7 @@
   - UpgradedParts
   recipeUnlocks:
   - BorgModuleAdvancedTool
+  - BorgModuleRPED
   position: -5,-2
 
 - type: technology

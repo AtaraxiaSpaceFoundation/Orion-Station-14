@@ -71,9 +71,14 @@
             sprite: "Objects/Power/power_cells.rsi"
             state: "medium"
           doAfter: 0.5
-        - material: Manipulator
-          amount: 1
+        # Orion-Start
+        - machinePart: Servo
+          name: construction-graph-tag-servo
+          icon:
+            sprite: "Objects/Misc/stock_parts.rsi"
+            state: "micro_mani"
           doAfter: 0.5
+        # Orion-End
       - to: frame
         completed:
         - !type:GivePrototype

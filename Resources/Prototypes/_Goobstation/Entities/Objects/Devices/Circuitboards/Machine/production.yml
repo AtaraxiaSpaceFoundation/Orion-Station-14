@@ -20,12 +20,12 @@
     state: engineering
   - type: MachineBoard
     prototype: EngineeringTechFab
-    stackRequirements:
-      Manipulator: 4
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: CargoTechFabCircuitboard
@@ -37,12 +37,12 @@
     state: engineering
   - type: MachineBoard
     prototype: CargoTechFab
-    stackRequirements:
-      Manipulator: 4
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: ScienceTechFabCircuitboard
@@ -54,8 +54,8 @@
     state: science
   - type: MachineBoard
     prototype: ScienceTechFab
-    stackRequirements:
-      Manipulator: 4
+    partRequirements: # Orion
+      Servo: 4
     tagRequirements:
       GlassBeaker:
         amount: 2
@@ -71,12 +71,12 @@
     state: service
   - type: MachineBoard
     prototype: ServiceTechFab
-    stackRequirements:
-      Manipulator: 4
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: ERTTechFabCircuitboard
@@ -88,12 +88,12 @@
     state: ert
   - type: MachineBoard
     prototype: ERTTechFab
-    stackRequirements:
-      Manipulator: 4
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: TeslaCoilCircuitboard
@@ -105,9 +105,10 @@
     - type: MachineBoard
       prototype: TeslaCoil
       stackRequirements:
-        Manipulator: 5
         Steel: 10
         CableHV: 10
+      partRequirements: # Orion
+        Servo: 5
 
 - type: entity
   id: RadiationCollectorCircuitboard
@@ -119,10 +120,11 @@
     - type: MachineBoard
       prototype: RadiationCollector
       stackRequirements:
-        Manipulator: 5
         Steel: 5
         CableHV: 10
         Plasma: 5
+      partRequirements: # Orion
+        Servo: 5
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -134,12 +136,13 @@
   - type: MachineBoard
     prototype: PlumbingPump
     stackRequirements:
-      Manipulator: 4
       Steel: 5
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: EnergyChemDispenserMachineCircuitboard
@@ -152,14 +155,15 @@
     - type: MachineBoard
       prototype: EnergyChemDispenser
       stackRequirements:
-        Manipulator: 1
         Glass: 1
         Steel: 3
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
-          
+      partRequirements: # Orion
+        Servo: 1
+
 - type: entity
   id: TelecomTransmitterCircuitboard
   parent: BaseMachineCircuitboard

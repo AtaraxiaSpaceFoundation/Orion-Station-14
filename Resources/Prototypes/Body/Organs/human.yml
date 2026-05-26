@@ -483,6 +483,7 @@
   description: "Filters toxins from the bloodstream."
   components:
   - type: Food # Orion
+  - type: Kidney # Orion
   - type: Organ # Shitmed
     intCap: 21
     integrity: 21

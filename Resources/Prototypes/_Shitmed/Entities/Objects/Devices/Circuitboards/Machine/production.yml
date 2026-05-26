@@ -15,12 +15,13 @@
     prototype: Autodoc
     stackRequirements:
       Cable: 3
-      Manipulator: 4
       Steel: 10
     tagRequirements:
       BorgArm:
         amount: 3
         defaultPrototype: LeftArmBorg
+    partRequirements:
+      Servo: 4
 
 - type: entity
   parent: AutodocCircuitboard

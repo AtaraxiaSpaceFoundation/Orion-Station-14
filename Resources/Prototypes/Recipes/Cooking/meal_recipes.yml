@@ -507,7 +507,7 @@
   group: Savory
   solids:
     FoodBreadBun: 1
-    MicroManipulatorStockPart: 2
+    MicroServoStockPart: 2 # Orion-Edit
     # i would add steel to this recipe but the microwave explodes
 
 - type: microwaveMealRecipe
@@ -2697,4 +2697,3 @@
     Fiber: 10
   solids:
     FoodCakePlain: 1
-    

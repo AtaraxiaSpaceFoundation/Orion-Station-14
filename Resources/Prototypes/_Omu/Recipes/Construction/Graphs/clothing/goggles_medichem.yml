@@ -34,9 +34,20 @@
                 sprite: Objects/Devices/communication.rsi
                 state: walkietalkie
               doAfter: 5
-            - material: Manipulator
-              amount: 2
+            # Orion-Start
+            - machinePart: Servo
+              name: construction-graph-tag-servo
+              icon:
+                sprite: "Objects/Misc/stock_parts.rsi"
+                state: "micro_mani"
               doAfter: 5
+            - machinePart: Servo
+              name: construction-graph-tag-servo
+              icon:
+                sprite: "Objects/Misc/stock_parts.rsi"
+                state: "micro_mani"
+              doAfter: 5
+            # Orion-End
 
     - node: gogglesMedChem
       entity: ClothingEyesGlassesMedChem
