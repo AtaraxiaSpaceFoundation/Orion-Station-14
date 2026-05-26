@@ -1,0 +1,167 @@
+- type: jukebox
+  id: WhoWasI
+  name: Who_Was_I-
+  path:
+    path: /Audio/_Siberia/Jukebox/Who_Was_I-.ogg
+
+- type: jukebox
+  id: BrungIt
+  name: Bring It On Home To Me
+  path:
+    path: /Audio/_Siberia/Jukebox/Bring_It_On_Home_To_Me.ogg
+
+- type: jukebox
+  id: InstrumentOfSurrender
+  name: British Sea Power - Instrument of Surrender
+  path:
+    path: /Audio/_Siberia/Jukebox/British_Sea_Power_-_Instrument_of_Surrender.ogg
+
+- type: jukebox
+  id: WhirlingRagsAM
+  name: British Sea Power - Whirling In Rags, 8 AM
+  path:
+    path: /Audio/_Siberia/Jukebox/British_Sea_Power_-_Whirling_In_Rags,_8_AM.ogg
+
+- type: jukebox
+  id: WhirlingRagsPM
+  name: British Sea Power - Whirling In Rags, 8 PM
+  path:
+    path: /Audio/_Siberia/Jukebox/British_Sea_Power_-_Whirling_In_Rags,_8_PM.ogg
+
+- type: jukebox
+  id: BurninForYou
+  name: Burnin' For You
+  path:
+    path: /Audio/_Siberia/Jukebox/Burnin'_For_You.ogg
+
+- type: jukebox
+  id: SilverLights
+  name: Coconuts - Silver Lights
+  path:
+    path: /Audio/_Siberia/Jukebox/Coconuts_-_Silver_Lights.ogg
+
+- type: jukebox
+  id: CrocodileRock
+  name: Crocodile Rock
+  path:
+    path: /Audio/_Siberia/Jukebox/Crocodile_Rock.ogg
+
+- type: jukebox
+  id: Dreams
+  name: Dreams
+  path:
+    path: /Audio/_Siberia/Jukebox/Dreams.ogg
+
+- type: jukebox
+  id: FooledAround
+  name: Fooled Around And Fell In Love
+  path:
+    path: /Audio/_Siberia/Jukebox/Fooled_Around_And_Fell_In_Love.ogg
+
+- type: jukebox
+  id: FoxOnTheRun
+  name: Fox On The Run
+  path:
+    path: /Audio/_Siberia/Jukebox/Fox_On_The_Run.ogg
+
+- type: jukebox
+  id: GoAllTheWay
+  name: Go All The Way
+  path:
+    path: /Audio/_Siberia/Jukebox/Go_All_The_Way.ogg
+
+- type: jukebox
+  id: HarvestMoon
+  name: Harvest Moon
+  path:
+    path: /Audio/_Siberia/Jukebox/Harvest_Moon.ogg
+
+- type: jukebox
+  id: IWillSurvive
+  name: I Will Survive
+  path:
+    path: /Audio/_Siberia/Jukebox/I_Will_Survive.ogg
+
+- type: jukebox
+  id: LondonCalling
+  name: London Calling
+  path:
+    path: /Audio/_Siberia/Jukebox/London_Calling.ogg
+
+- type: jukebox
+  id: AceOfSpades
+  name: Motorhead - Ace Of Spades
+  path:
+    path: /Audio/_Siberia/Jukebox/Motorhead_-_Ace_Of_Spades.ogg
+
+- type: jukebox
+  id: BadWoman
+  name: Motorhead - Bad Woman
+  path:
+    path: /Audio/_Siberia/Jukebox/Motorhead_-_Bad_Woman.ogg
+
+- type: jukebox
+  id: Liar
+  name: Motorhead - Liar
+  path:
+    path: /Audio/_Siberia/Jukebox/Motorhead_-_Liar.ogg
+
+- type: jukebox
+  id: Child
+  name: O-o-h Child
+  path:
+    path: /Audio/_Siberia/Jukebox/O-o-h_Child.ogg
+
+- type: jukebox
+  id: FishingVillage
+  name: Rust - Fishing Village
+  path:
+    path: /Audio/_Siberia/Jukebox/Rust_-_Fishing_Village.ogg
+
+- type: jukebox
+  id: Reinforcements
+  name: Sparks - Reinforcements
+  path:
+    path: /Audio/_Siberia/Jukebox/Sparks_-_Reinforcements.ogg
+
+- type: jukebox
+  id: SultansOfSwing
+  name: Sultans Of Swing
+  path:
+    path: /Audio/_Siberia/Jukebox/Sultans_Of_Swing.ogg
+
+- type: jukebox
+  id: WakeMeUp 
+  name: Wake Me Up Before You Go-Go
+  path:
+    path: /Audio/_Siberia/Jukebox/Wake_Me_Up_Before_You_Go-Go.ogg
+
+- type: jukebox
+  id: WeBuiltCity
+  name: We Built This City
+  path:
+    path: /Audio/_Siberia/Jukebox/We_Built_This_City.ogg
+
+- type: jukebox
+  id: DidntFire
+  name: We Didn't Start The Fire
+  path:
+    path: /Audio/_Siberia/Jukebox/We_Didn't_Start_The_Fire.ogg
+
+- type: jukebox
+  id: Vintovka
+  name: Гражданская Оборона - Винтовка
+  path:
+    path: /Audio/_Siberia/Jukebox/Grazdanskaya_Oborona_Vintovka.ogg
+
+- type: jukebox
+  id: ZliePistoleti
+  name: Красные Звёзды - Злые пистолеты
+  path:
+    path: /Audio/_Siberia/Jukebox/KrasnieZvezdi_ZliePistoleti.ogg
+
+- type: jukebox
+  id: PlachGrinki
+  name: Монгол Шуудан - Плач атамана Гриньки
+  path:
+    path: /Audio/_Siberia/Jukebox/MongolShutan_PlachAtomanaGrinki.ogg

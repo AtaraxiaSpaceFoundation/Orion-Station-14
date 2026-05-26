@@ -191,12 +191,6 @@
     path: /Audio/_Orion/Jukebox/RikiMusic/RikiMusic_Pogonya.ogg
 
 - type: jukebox
-  id: AsgoreRunsOverDessCover
-  name: Не Запоминай - Asgore Runs Over Dess
-  path:
-    path: /Audio/_Orion/Jukebox/NeZapominay/NeZapominay_AsgoreRunsOverDess.ogg
-
-- type: jukebox
   id: ClintEastwood
   name: Gorillaz - Clint Eastwood
   path:
