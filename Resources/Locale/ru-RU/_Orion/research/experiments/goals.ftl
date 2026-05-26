@@ -11,6 +11,7 @@ research-experiment-goal-detail-entities = Субъекты: { $names }
 research-experiment-goal-detail-conditions = Условия: { $names }
 research-experiment-goal-detail-purity = { $name } не ниже { $value }%
 research-experiment-goal-detail-intensity = Интенсивность взрыва не ниже { $value } кг
+research-experiment-goal-detail-machine-tier = Улучшенная машина с деталью уровня { $tier } или выше
 research-experiment-goal-purity-reagent = чистота реагента
 research-experiment-goal-purity-gas = чистота газа
 research-experiment-goal-condition-anyfish = любая рыба
