@@ -45,11 +45,14 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         Entry("(=", "chatsan-smiles"),
         Entry("[=", "chatsan-smiles"),
         Entry("^^", "chatsan-smiles"),
+        Entry(")", "chatsan-smiles"), // Siberia
+        Entry(")))", "chatsan-laughs"), // Siberia
         Entry("^-^", "chatsan-smiles"),
         Entry(":(", "chatsan-frowns"),
         Entry(":[", "chatsan-frowns"),
         Entry("=(", "chatsan-frowns"),
         Entry("=[", "chatsan-frowns"),
+        Entry("((", "chatsan-frowns"), // Siberia
         Entry("):", "chatsan-frowns"),
         Entry(")=", "chatsan-frowns"),
         Entry("]:", "chatsan-frowns"),
@@ -60,8 +63,11 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         Entry(":3", "chatsan-smiles"),
         Entry(":S", "chatsan-uncertain"),
         Entry(":>", "chatsan-grins"),
+        Entry("хех", "chatsan-grins"), // Siberia
         Entry(":<", "chatsan-pouts"),
         Entry("xD", "chatsan-laughs"),
+        Entry("хд", "chatsan-laughs"), // Siberia
+        Entry("ахах", "chatsan-laughs"), // Siberia
         Entry(":'(", "chatsan-cries"),
         Entry(":'[", "chatsan-cries"),
         Entry("='(", "chatsan-cries"),
@@ -70,6 +76,7 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         Entry("]':", "chatsan-cries"),
         Entry(")'=", "chatsan-cries"),
         Entry("]'=", "chatsan-cries"),
+        Entry("(((", "chatsan-cries"), // Siberia
         Entry(";-;", "chatsan-cries"),
         Entry(";_;", "chatsan-cries"),
         Entry("qwq", "chatsan-cries"),
@@ -78,6 +85,7 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         Entry(">:i", "chatsan-annoyed"),
         Entry(":i", "chatsan-sighs"),
         Entry(":|", "chatsan-sighs"),
+        Entry("эхх", "chatsan-sighs"), // Siberia
         Entry(":p", "chatsan-stick-out-tongue"),
         Entry(";p", "chatsan-stick-out-tongue"),
         Entry(":b", "chatsan-stick-out-tongue"),
@@ -89,17 +97,21 @@ public sealed class ChatSanitizationManager : IChatSanitizationManager
         Entry(".-.", "chatsan-confused"),
         Entry("-_-", "chatsan-unimpressed"),
         Entry("smh", "chatsan-unimpressed"),
+        Entry("пфф", "chatsan-unimpressed"), // Siberia
         Entry("o/", "chatsan-waves"),
         Entry("^^/", "chatsan-waves"),
+        Entry("хмм", "chatsan-uncertain"), // Siberia
         Entry(":/", "chatsan-uncertain"),
         Entry(":\\", "chatsan-uncertain"),
         Entry("lmao", "chatsan-laughs"),
         Entry("lmfao", "chatsan-laughs"),
         Entry("lol", "chatsan-laughs"),
+        Entry("лол", "chatsan-laughs"), // Siberia
         Entry("lel", "chatsan-laughs"),
         Entry("kek", "chatsan-laughs"),
         Entry("rofl", "chatsan-laughs"),
         Entry("o7", "chatsan-salutes"),
+        Entry("о7", "chatsan-salutes"), // Siberia
         Entry(";_;7", "chatsan-tearfully-salutes"),
         Entry("idk", "chatsan-shrugs"),
         Entry(";)", "chatsan-winks"),
