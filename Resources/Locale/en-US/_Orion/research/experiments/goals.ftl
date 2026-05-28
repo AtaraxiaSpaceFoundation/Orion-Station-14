@@ -11,6 +11,7 @@ research-experiment-goal-detail-entities = Subjects: { $names }
 research-experiment-goal-detail-conditions = Conditions: { $names }
 research-experiment-goal-detail-purity = { $name } at least { $value }%
 research-experiment-goal-detail-intensity = explosive intensity at least { $value } kg
+research-experiment-goal-detail-machine-tier = Upgraded machine with a tier { $tier } part or higher
 research-experiment-goal-purity-reagent = reagent purity
 research-experiment-goal-purity-gas = gas purity
 research-experiment-goal-condition-anyfish = any fish

@@ -21,6 +21,7 @@
     - NodeScanner
     - Multitool
     - Igniter
+    - SlimeScannerXenobio # Goob edit
     rareChance: 0.1
     prototypes:
     - ClothingHandsGlovesLatex
@@ -72,6 +73,7 @@
       - id: MicroLaserStockPart
       - id: MatterBinStockPart
       # Orion-End
+      - id: SlimeScannerXenobio # Goob edit
     # Rare Group
     - !type:GroupSelector
       weight: 10

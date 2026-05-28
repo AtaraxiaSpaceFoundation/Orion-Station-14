@@ -146,8 +146,7 @@
   description: research-experiment-scanning-points-machinery-tiered-scan-tier2-any-desc
   category: Scanning
   objective: !type:ScanDifferentEntitiesExperimentObjective
-    requiredComponents:
-    - MachineBoard
+    requiredMachinePartTier: 2
     target: 3
   reward:
     pointRewards:
@@ -162,8 +161,7 @@
   description: research-experiment-scanning-points-machinery-tiered-scan-tier3-any-desc
   category: Scanning
   objective: !type:ScanDifferentEntitiesExperimentObjective
-    requiredComponents:
-    - MachineBoard
+    requiredMachinePartTier: 3
     target: 6
   reward:
     pointRewards:

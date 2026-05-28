@@ -1,3 +1,4 @@
+station-beacon-ruin-lavaland = Лаваленд
 station-beacon-ruin-abductor = Инопланетный сигнал
 station-beacon-ruin-arrivals = Сигнал шаттла эвакуации
 station-beacon-ruin-beach-biodome = Пляжная сфера

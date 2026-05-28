@@ -168,6 +168,7 @@
     - ScienceEquipment
     - ScienceWeapons
     - ScienceBoards
+    - ScienceBoardsGoob
     - MedicalBoardsGoob
     - ExperimentalScienceGoob
     - MechBoardsScience

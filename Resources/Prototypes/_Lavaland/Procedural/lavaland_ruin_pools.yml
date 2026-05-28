@@ -26,6 +26,8 @@
 
 - type: lavalandRuinPool
   id: LavalandRuins
+  ruinDistance: 14
+  maxDistance: 172
   gridRuins:
     # Orion-Start
     InteQSizo: 1
@@ -60,5 +62,5 @@
     Generator: 3
     Mug: 1
     Temple: 1
-  dungeonRuins:
-    CommonRuin5x5: 60
+  markerRuins:
+    CommonRuin5x5: 50

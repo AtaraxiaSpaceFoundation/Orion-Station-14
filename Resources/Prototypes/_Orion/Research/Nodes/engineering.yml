@@ -436,7 +436,6 @@
   - AdvancedParts
   recipeUnlocks:
   - AutodocUpgradeKitBluespace
-  - UpgradeKitAutomation
   position: 11,6
 
 - type: technology

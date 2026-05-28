@@ -8,9 +8,9 @@
 using System.Linq;
 using Content.Goobstation.Shared.CloneProjector;
 using Content.Goobstation.Shared.CloneProjector.Clone;
+using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Shared._DV.Carrying;
-using Content.Shared._EinsteinEngines.Silicon.IPC;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -61,7 +61,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
     [Dependency] private readonly CarryingSystem _carrying = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly MobThresholdSystem _thresholds = default!;
-    [Dependency] private readonly InternalEncryptionKeySpawner _encryptionKeySpawner = default!;
+    [Dependency] private readonly GhostRoleSystem _ghost = default!;
 
     private ISawmill _sawmill = default!;
     public override void Initialize()
@@ -290,6 +290,14 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         roleComp.RoleName = Loc.GetString(projector.Comp.GhostRoleName);
         roleComp.RoleDescription = Loc.GetString(projector.Comp.GhostRoleDescription);
         roleComp.RoleRules = Loc.GetString(projector.Comp.GhostRoleRules);
+
+        if (projector.Comp.RequiredRole != null)
+        {
+            var requirement = projector.Comp.GhostRoleRequirement = new();
+            requirement.Role = projector.Comp.RequiredRole.Value;
+            requirement.Time = projector.Comp.TimeNeeded;
+            _ghost.AddRoleRequirements((clone, roleComp), requirement);
+        }
 
         Dirty(projector);
         return true;
