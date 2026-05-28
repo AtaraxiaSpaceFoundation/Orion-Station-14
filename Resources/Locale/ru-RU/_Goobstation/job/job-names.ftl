@@ -10,7 +10,7 @@
 job-name-futureagent = агент будущего
 job-name-salvagediver = спасатель
 job-name-ntr = представитель НаноТрейзен
-job-name-bs = офицер Синего Щита
+job-name-bs = офицер "Синий Щит"
 job-name-overall = общее
 job-name-tider = грейтайд
 job-name-exec = служебный доступ
@@ -45,7 +45,7 @@ job-name-radiohost = управляющий радиостанцией
 
 # Role timers - Make these alphabetical or I cut you (dont listen to upstream, i copied and pasted this, make it very un-alphabetical :godo:)
 
-JobBlueshieldOfficer = офицер Синего Щита
+JobBlueshieldOfficer = офицер "Синий Щит"
 JobNanotrasenRepresentative = представитель НаноТрейзен
 JobNanotrasenCareerTrainer = наставник ЦК
 JobHecuOperative = агент ХЕКУ
@@ -57,6 +57,6 @@ JobRoboticist = робототехник
 JobGovernmentMan = Джи-Мэн
 JobConquest = Конквест
 JobInspector = инспектор ЦК
-JobMercenaryCaptain = капитан Наёмников
+JobMercenaryCaptain = капитан наёмников
 JobRadioHost = управляющий радиостанцией
 JobVirologist = вирусолог
