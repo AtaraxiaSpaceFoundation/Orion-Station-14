@@ -1,0 +1,82 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseVehicle
+  id: MotorcycleMora12
+  name: Мора-12
+  description: Мора-12. Первый рабочий грави-байк в серии от компании KitsuneArms. Макс скорость доведена до 360 км/ч. Работает на плазменом топливе.
+  components:
+    - type: Vehicle
+      renderOver: North, East, South, West
+    - type: Sprite
+      sprite: _Siberia/Vehicle/mora_12.rsi
+      state: vehicle
+      noRot: true
+    - type: MovementSpeedModifier
+      acceleration: 3
+      friction: 1.5
+      baseWalkSpeed: 6
+      baseSprintSpeed: 8.5
+    - type: UnpoweredFlashlight
+    - type: MovementAlwaysTouching
+    - type: PointLight
+      enabled: false
+      color: "#42A4AEFF"
+      radius: 10.5
+      softness: 2
+      mask: /Textures/Effects/LightMasks/cone.png
+      autoRot: true
+    - type: ItemSlots
+      slots:
+        key_slot:
+          name: vehicle-slot-component-slot-name-keys
+          whitelist:
+            requireAll: true
+            tags:
+              - VehicleKey
+              - Mora12Key
+          insertSound:
+            path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+            params:
+              volume: -3
+              
+              
+- type: entity
+  parent: BaseKey
+  id: Mora12Key
+  name: Ключи от Мора-12
+  description:  Ключ от грави-байка Мора-12, на нём весит брелок в форме лисьей мордочки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Vehicle/mora_12.rsi
+    state: keys
+  - type: Tag
+    tags:
+    - VehicleKey
+    - Mora12Key
+    
+- type: Tag
+  id: Mora12Key
+  
+- type: entity
+  id: CrateMora12
+  parent: CrateGenericSteel
+  name: Ящик грави-байка Мора-12
+  description: Ящик с передовой моделью гравитационного мотоцикла Мора-12 от KitsuneArms.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MotorcycleMora12
+      - id: Mora12Key
+
+- type: cargoProduct
+  id: Mora12Variety
+  icon:
+    sprite: _Siberia/Vehicle/mora_12.rsi
+    state: icon
+  product: CrateMora12
+  cost: 12000
+  category: cargoproduct-category-name-fun
+  group: market
