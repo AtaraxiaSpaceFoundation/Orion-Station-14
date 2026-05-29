@@ -21,6 +21,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     xmlns:co="clr-namespace:Content.Client.UserInterface.Controls"
     MinHeight="210">
     <BoxContainer Name="MainContainer" Orientation="Vertical">
+        <Label Name="BalanceLabel" Margin="4 4 4 0" Visible="False" /> <!-- Orion -->
         <LineEdit Name="SearchBar" PlaceHolder="{Loc 'vending-machine-component-search-filter'}" HorizontalExpand="True"  Margin ="4 4"/>
         <co:SearchListContainer Name="VendingContents" VerticalExpand="True" Margin="4 4"/>
          <!-- Footer -->

@@ -169,6 +169,13 @@ public sealed partial class CargoSystem : SharedCargoSystem
         UpdateEconomyInterfaces(frameTime); // Orion
     }
 
+    // Orion-Start
+    public bool HasAccount(Entity<StationBankAccountComponent?> ent, ProtoId<CargoAccountPrototype> account)
+    {
+        return Resolve(ent, ref ent.Comp) && ent.Comp.Accounts.ContainsKey(account);
+    }
+    // Orion-End
+
     public void UpdateBankAccount(
         Entity<StationBankAccountComponent?> ent,
         int balanceAdded,

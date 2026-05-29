@@ -1,3 +1,5 @@
+vending-machine-balance = Баланс: { $amount } кредитов
+
 vending-machine-price-free = Бесплатно
 vending-machine-price-credits = { $amount } кредитов
 
