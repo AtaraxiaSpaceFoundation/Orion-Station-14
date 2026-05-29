@@ -34,6 +34,7 @@ using Content.Server.GameTicking;
 using Content.Server.MassMedia.Components;
 using Content.Server.Popups;
 using Content.Server.Station.Systems;
+using Content.Shared._Orion.RichText;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.CartridgeLoader;
@@ -198,7 +199,7 @@ public sealed class NewsSystem : SharedNewsSystem
         string? authorName = tryGetIdentityShortInfoEvent.Title;
 
         var title = FormattedMessage.EscapeText(msg.Title.Trim()); // Goob Sanitize Text
-        var content = FormattedMessage.EscapeText(msg.Content.Trim()); // Goob Sanitize Text
+        var content = SafeMarkup.SanitizeNewsArticle(msg.Content.Trim()); // Goob Sanitize Text | Orion-Edit
 
         if (TryAddNews(ent, title, content, out var article, authorName, msg.Actor))
         {
