@@ -265,7 +265,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         Dirty(uid, vendComponent);
         UpdateUI((uid, vendComponent));
         TryUpdateVisualState((uid, vendComponent));
-        Audio.PlayPredicted(vendComponent.SoundVend, uid, user);
+        Audio.PlayPvs(vendComponent.SoundVend, uid); // Orion-Edit: Was Predicted
     }
 
     public void Deny(Entity<VendingMachineComponent?> entity, EntityUid? user = null)

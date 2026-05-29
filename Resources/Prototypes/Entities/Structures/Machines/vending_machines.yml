@@ -2760,7 +2760,6 @@
 #    access: [["CentralCommand"]]
   # Orion-Start
   - type: VendingMachinePricing
-    discountDepartment: CentralCommand
     defaultPrice: 150
     extraPrice: 300
   # Orion-End
