@@ -6,7 +6,7 @@ public static class SafeMarkup
 {
     private static readonly Regex MarkupTagRegex = new(@"(?<!\\)\[/?(?<tag>[a-zA-Z][a-zA-Z0-9-]*)(?:=[^\]\r\n]*)?/?\]", RegexOptions.Compiled);
 
-    private static readonly string[] BasicMarkupTags =
+    private static readonly HashSet<string> BasicMarkupTags = new(StringComparer.OrdinalIgnoreCase)
     {
         "bolditalic",
         "bold",
@@ -17,16 +17,7 @@ public static class SafeMarkup
         "mono",
     };
 
-    private static readonly string[] NewsArticleMarkupTags =
-    {
-        "bolditalic",
-        "bold",
-        "bullet",
-        "color",
-        "head",
-        "italic",
-        "mono",
-    };
+    private static readonly HashSet<string> NewsArticleMarkupTags = BasicMarkupTags;
 
     public static string SanitizeBasic(string text)
     {
@@ -38,7 +29,7 @@ public static class SafeMarkup
         return Sanitize(text, NewsArticleMarkupTags);
     }
 
-    private static string Sanitize(string text, string[] allowedTags)
+    private static string Sanitize(string text, HashSet<string> allowedTags)
     {
         if (string.IsNullOrEmpty(text))
             return text;
@@ -53,31 +44,8 @@ public static class SafeMarkup
         });
     }
 
-    private static bool IsAllowedTag(string tag, string[] allowedTags)
+    private static bool IsAllowedTag(string tag, HashSet<string> allowedTags)
     {
-        foreach (var allowedTag in allowedTags)
-        {
-            if (tag.Length != allowedTag.Length)
-                continue;
-
-            var matches = true;
-            for (var i = 0; i < tag.Length; i++)
-            {
-                var c = tag[i];
-                if (c is >= 'A' and <= 'Z')
-                    c = (char) (c - 'A' + 'a');
-
-                if (c == allowedTag[i])
-                    continue;
-
-                matches = false;
-                break;
-            }
-
-            if (matches)
-                return true;
-        }
-
-        return false;
+        return allowedTags.Contains(tag);
     }
 }
