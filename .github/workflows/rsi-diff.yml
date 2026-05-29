@@ -42,6 +42,9 @@ on:
     paths:
       - '**.rsi/**.png'
 
+permissions:
+  pull-requests: write
+
 jobs:
   diff:
     name: Diff
