@@ -6,7 +6,7 @@ public static class SafeMarkup
 {
     private static readonly Regex MarkupTagRegex = new(@"(?<!\\)\[/?(?<tag>[a-zA-Z][a-zA-Z0-9-]*)(?:=[^\]\r\n]*)?/?\]", RegexOptions.Compiled);
 
-    private static readonly HashSet<string> BasicMarkupTags = new(StringComparer.OrdinalIgnoreCase)
+    private static readonly string[] BasicMarkupTags =
     {
         "bolditalic",
         "bold",
@@ -17,7 +17,7 @@ public static class SafeMarkup
         "mono",
     };
 
-    private static readonly HashSet<string> NewsArticleMarkupTags = BasicMarkupTags;
+    private static readonly string[] NewsArticleMarkupTags = BasicMarkupTags;
 
     public static string SanitizeBasic(string text)
     {
@@ -29,7 +29,7 @@ public static class SafeMarkup
         return Sanitize(text, NewsArticleMarkupTags);
     }
 
-    private static string Sanitize(string text, HashSet<string> allowedTags)
+    private static string Sanitize(string text, IReadOnlyList<string> allowedTags)
     {
         if (string.IsNullOrEmpty(text))
             return text;
@@ -44,8 +44,14 @@ public static class SafeMarkup
         });
     }
 
-    private static bool IsAllowedTag(string tag, HashSet<string> allowedTags)
+    private static bool IsAllowedTag(string tag, IReadOnlyList<string> allowedTags)
     {
-        return allowedTags.Contains(tag);
+        foreach (var allowedTag in allowedTags)
+        {
+            if (string.Equals(tag, allowedTag, StringComparison.OrdinalIgnoreCase))
+                return true;
+        }
+
+        return false;
     }
 }
