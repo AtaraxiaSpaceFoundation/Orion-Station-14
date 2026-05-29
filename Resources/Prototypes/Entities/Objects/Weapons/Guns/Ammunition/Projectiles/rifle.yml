@@ -40,8 +40,11 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 17
+        Piercing: 34 # Siberia edit
       armorPenetration: 0.15 # Goobstation
+  - type: StaminaDamageOnCollide
+    damage: 34 # Siberia edit
+
 
 - type: entity
   id: BulletRiflePractice
@@ -52,7 +55,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 4 # Orion-Edit: 2 > 4
+        Blunt: 8  # Siberia edit
       armorPenetration: -0.5 # Orion
 
 - type: entity
@@ -64,9 +67,12 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 3
-        Heat: 5 # Orion-Edit: 2 > 5
+        Blunt: 6 # Siberia edit
+        Heat: 10 # Siberia edit
       armorPenetration: 0.1 # Orion
+  - type: StaminaDamageOnCollide
+    damage: 16 # Siberia edit
+
 
 - type: entity
   id: BulletRifleUranium
@@ -77,6 +83,9 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 5 # Orion-Edit: 9 > 5
-        Piercing: 10
+        Radiation: 10 # Siberia edit
+        Piercing: 20 # Siberia edit
       armorPenetration: 0.25 # Orion
+  - type: StaminaDamageOnCollide
+    damage: 30 # Siberia edit
+

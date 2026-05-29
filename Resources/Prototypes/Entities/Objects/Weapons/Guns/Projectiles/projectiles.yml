@@ -423,7 +423,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 33 # Goob edit # Orion-Edit: 20 > 33
+    damage: 50 # Siberia edit
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1305,7 +1305,7 @@
       fly-by: *flybyfixture
   - type: Ammo
   - type: StaminaDamageOnCollide
-    damage: 15 # Goob edit # Orion-Edit: 12 > 15
+    damage: 32 # Siberia edit
   - type: Projectile
     impactEffect: BulletImpactEffectDisabler
     damage:
@@ -1364,7 +1364,7 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 20 #goob, 28 > 20
+        Heat: 40 # Siberia edit
 
 - type: entity
   name : disabler bolt
@@ -1461,7 +1461,7 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 13
+        Heat: 26 # Siberia edit
 
 - type: entity
   name: wide laser barrage

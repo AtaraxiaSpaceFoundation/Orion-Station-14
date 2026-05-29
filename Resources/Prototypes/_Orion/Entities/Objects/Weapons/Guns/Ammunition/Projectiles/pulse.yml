@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseBullet
   id: PulseBullet
@@ -15,11 +19,13 @@
     impactEffect: BulletPulseEffect
     damage:
       types:
-        Heat: 8
-        Shock: 7
-        Piercing: 4
+        Heat: 16 # Siberia edit
+        Shock: 14 # Siberia edit
+        Piercing: 8 # Siberia edit
     soundHit:
       path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
+  - type: StaminaDamageOnCollide
+    damage: 38 # Siberia edit
   - type: Tag
     tags:
       - PulseBullet
@@ -52,9 +58,11 @@
   - type: Projectile
     damage:
       types:
-        Heat: 4
-        Shock: 2
-        Piercing: 2
+        Heat: 8 # Siberia edit
+        Shock: 4 # Siberia edit
+        Piercing: 4 # Siberia edit
+  - type: StaminaDamageOnCollide
+    damage: 16 # Siberia edit
   - type: ProjectileSpread
     proto: PulseBulletSpreadShotgun
     count: 9
@@ -69,6 +77,9 @@
   - type: Projectile
     damage:
       types:
-        Heat: 4
-        Shock: 2
-        Piercing: 2
+        Heat: 8 # Siberia edit
+        Shock: 4 # Siberia edit
+        Piercing: 4 # Siberia edit
+  - type: StaminaDamageOnCollide
+    damage: 16 # Siberia edit
+

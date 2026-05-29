@@ -22,7 +22,10 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 19
+        Piercing: 38 # Siberia edit
+  - type: StaminaDamageOnCollide # Siberia edit
+    damage: 38
+
 
 - type: entity
   id: BulletMinigun
@@ -33,4 +36,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 6 # Orion-Edit: 5 > 6
+        Piercing: 12 # Siberia edit
+  - type: StaminaDamageOnCollide
+    damage: 12 # Siberia edit
+

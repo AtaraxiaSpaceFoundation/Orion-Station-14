@@ -104,7 +104,7 @@
   id: PTL
   damage:
     types:
-      Heat: 30
+      Heat: 60 # Siberia edit
   muzzleFlash:
     sprite: _Goobstation/Structures/Machines/PTL/pt_beam.rsi
     state: ptl_beam

@@ -159,8 +159,8 @@
   id: HeavyPulse
   damage:
     types:
-      Heat: 35 # Damage nerfed slightly to give you a BIT of a chance. You're still fucked though.
-      Blunt: 10
+      Heat: 70 # Siberia edit
+      Blunt: 20 # Siberia edit
       Structural: 80
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -176,8 +176,8 @@
   id: LightPulse
   damage:
     types:
-      Heat: 20 # Slightly nerfing damage, otherwise people will bitch about how I'm giving the pulse pistol out like candy
-      Blunt: 5 # Split damage is cool.
+      Heat: 40 # Siberia edit
+      Blunt: 10 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -192,8 +192,8 @@
   id: LaserSniper
   damage:
     types:
-      Heat: 30
-      Shock: 10
+      Heat: 60 # Siberia edit
+      Shock: 20 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -208,8 +208,8 @@
   id: RedMediumSplitLaser
   damage:
     types:
-      Heat: 17
-      Shock: 2 # Lecter is slightly armor-piercing and so is this
+      Heat: 34 # Siberia edit
+      Shock: 4 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -230,7 +230,7 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 8
+        Heat: 16 # Siberia edit
 
 - type: entity
   name: heavy laser bolt
@@ -242,7 +242,7 @@
     impactEffect: BulletImpactEffectOrangeDisabler
     damage:
       types:
-        Heat: 12
+        Heat: 24 # Siberia edit
         Structural: 10
 
 - type: entity
@@ -356,7 +356,7 @@
     impactEffect: BulletImpactEffectDisabler
     damage:
       types:
-        Ion: 20
+        Ion: 40 # Siberia edit
     soundHit:
       collection: WeakHit
     forceSound: true
@@ -428,7 +428,7 @@
     damage:
       types:
         Burn: 3
-        Holy: 20
+        Holy: 40 # Siberia edit
     effect: { sprite: /Textures/_ShitChap/Effects/holy_beam.rsi, state: beam }
     sound: /Audio/Effects/holy.ogg
   - type: Projectile
@@ -489,7 +489,7 @@
     impactEffect: BulletImpactEffectDisabler
     damage:
       types:
-        Heat: 10
+        Heat: 20 # Siberia edit
     soundHit:
       collection: WeakHit
     forceSound: true
@@ -521,7 +521,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 40
+        Piercing: 80 # Siberia edit
   - type: EntityEffectOnProjectileHit
     effects:
     - !type:GenericStatusEffect

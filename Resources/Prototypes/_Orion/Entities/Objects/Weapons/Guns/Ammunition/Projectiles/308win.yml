@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseBullet
   id: Bullet308win
@@ -7,8 +11,11 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 38
+        Piercing: 76 # Siberia edit
       armorPenetration: 0.45
+  - type: StaminaDamageOnCollide
+    damage: 76 # Siberia edit
+
 
 - type: entity
   parent: BaseBullet
@@ -19,8 +26,11 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 35
+        Piercing: 70 # Siberia edit
       armorPenetration: 0.85
+  - type: StaminaDamageOnCollide
+    damage: 70 # Siberia edit
+
 
 - type: entity
   parent: BaseBulletUranium
@@ -31,9 +41,12 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 18
-        Radiation: 12
+        Piercing: 36 # Siberia edit
+        Radiation: 24 # Siberia edit
       armorPenetration: 0.55
+  - type: StaminaDamageOnCollide
+    damage: 60 # Siberia edit
+
 
 - type: entity
   parent: BaseBulletPractice

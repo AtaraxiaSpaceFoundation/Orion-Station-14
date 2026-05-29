@@ -38,7 +38,7 @@
     onlyCollideWhenShot: true
     damage:
       types:
-        Heat: 45
+        Heat: 90 # Siberia edit
   - type: TimedDespawn
     lifetime: 10
   - type: PointLight
@@ -102,7 +102,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 15
+        Heat: 30 # Siberia edit
   - type: IgniteOnCollide
     fireStacks: 4
 
@@ -165,7 +165,7 @@
     - BlobImpassable
     damage:
       types:
-        Heat: 30
+        Heat: 60 # Siberia edit
   - type: Fixtures
     fixtures:
       projectile:
@@ -215,7 +215,7 @@
   - type: Projectile
     damage:
       types:
-        Ion: 60
+        Ion: 120 # Siberia edit
   - type: TriggerOnCollide
     fixtureID: projectile
   - type: EmpOnTrigger

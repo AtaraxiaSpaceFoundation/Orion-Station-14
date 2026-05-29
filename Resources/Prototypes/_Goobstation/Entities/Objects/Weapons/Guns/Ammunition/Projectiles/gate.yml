@@ -16,7 +16,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 30
+        Piercing: 60 # Siberia edit
         Structural: 1000
     ignoreResistances: true
     penetrationThreshold: 1337
@@ -36,7 +36,7 @@
   - type: Projectile
     damage:
       types:
-        Ion: 65 # 65
+        Ion: 130 # Siberia edit
     deleteOnCollide: false
   - type: Electrified
     shockDamage: 1

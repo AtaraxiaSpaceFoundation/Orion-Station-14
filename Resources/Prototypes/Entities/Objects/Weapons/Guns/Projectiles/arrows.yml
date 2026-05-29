@@ -52,7 +52,7 @@
     onlyCollideWhenShot: true
     damage:
       types:
-        Piercing: 25
+        Piercing: 50 # Siberia edit
   - type: SolutionContainerManager
     solutions:
       ammo:
@@ -91,7 +91,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 35
+        Piercing: 70 # Siberia edit
 
 - type: entity
   parent: BaseArrow
@@ -114,7 +114,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25
+        Piercing: 50 # Siberia edit
   - type: Construction
     graph: ImprovisedArrow
     node: ImprovisedArrow
@@ -140,7 +140,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 30
+        Piercing: 60 # Siberia edit
   - type: Construction
     graph: ImprovisedArrowPlasma
     node: ImprovisedArrowPlasma
@@ -166,8 +166,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25
-        Radiation: 5
+        Piercing: 50 # Siberia edit
+        Radiation: 10 # Siberia edit
   - type: Construction
     graph: ImprovisedArrowUranium
     node: ImprovisedArrowUranium
@@ -193,7 +193,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 30
+        Piercing: 60 # Siberia edit
   - type: Construction
     graph: ImprovisedArrowCarp
     node: ImprovisedArrowCarp

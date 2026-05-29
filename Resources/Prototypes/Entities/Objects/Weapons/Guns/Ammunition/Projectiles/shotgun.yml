@@ -121,8 +121,11 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 45 # Orion-Edit: 40 > 45
+        Piercing: 90 # Siberia edit
         Structural: 20 # Orion-Edit: 15 > 20
+  - type: StaminaDamageOnCollide
+    damage: 90 # Siberia edit
+
 
 
 - type: entity
@@ -137,7 +140,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 10
+        Blunt: 20 # Siberia edit
   - type: StaminaDamageOnCollide
     damage: 60 # Goob edit
 
@@ -153,9 +156,12 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 10
-        Structural: 15
+        Piercing: 20 # Siberia edit
+        Structural: 30 # Siberia edit
       armorPenetration: -0.1 # Orion
+  - type: StaminaDamageOnCollide
+    damage: 25 # Siberia edit
+
 
 
 - type: entity
@@ -180,11 +186,14 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 4 # Orion-Edit: 3 > 4
-        Heat: 6 # Orion-Edit: 3 > 6
+        Blunt: 8 # Siberia edit
+        Heat: 12 # Siberia edit
       armorPenetration: -0.1 # Orion
   - type: IgnitionSource
     ignited: true
+  - type: StaminaDamageOnCollide
+    damage: 20 # Siberia edit
+
 
 - type: entity
   id: PelletShotgunIncendiarySpread
@@ -232,10 +241,10 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 3
-        Slash: 3
+        Piercing: 6 # Siberia edit
+        Slash: 6 # Siberia edit
   - type: StaminaDamageOnCollide # Orion
-    damage: 3
+    damage: 12 # Siberia edit
 
 - type: entity
   id: PelletShotgunImprovisedSpread
@@ -333,9 +342,12 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 2 # Orion-Edit: 5 > 2
-        Piercing: 5
+        Radiation: 4 # Siberia edit
+        Piercing: 10 # Siberia edit
       armorPenetration: 0.15 # Orion
+  - type: StaminaDamageOnCollide
+    damage: 14 # Siberia edit
+
 
 - type: entity
   id: PelletShotgunUraniumSpread
@@ -362,8 +374,11 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 25
+        Piercing: 50 # Siberia edit
         Structural: 5
+  - type: StaminaDamageOnCollide
+    damage: 50 # Siberia edit
+
 
 - type: entity
   id: PelletGrapeshotSpread
@@ -393,7 +408,10 @@
     deleteOnCollide: false
     damage:
       types:
-        Slash: 25
+        Slash: 50 # Siberia edit
+  - type: StaminaDamageOnCollide
+    damage: 50 # Siberia edit
+
 
 - type: entity
   id: PelletGlassSpread

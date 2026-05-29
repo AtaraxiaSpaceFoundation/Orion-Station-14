@@ -54,7 +54,7 @@
   id: RedLaser
   damage:
     types:
-      Heat: 14
+      Heat: 28 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -84,7 +84,7 @@
   id: RedMediumLaser
   damage:
     types:
-      Heat: 17
+      Heat: 34  # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -99,7 +99,7 @@
   id: RedLightLaser
   damage:
     types:
-      Heat: 7
+      Heat: 14 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -114,9 +114,9 @@
   id: XrayLaser
   damage:
     types:
-      Heat: 10
-      Radiation: 10
-      Ion: 15 #Goobstation
+      Heat: 20 # Siberia edit
+      Radiation: 20 # Siberia edit
+      Ion: 30 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_xray
@@ -131,7 +131,7 @@
   id: RedHeavyLaser
   damage:
     types:
-      Heat: 28
+      Heat: 56 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_beam_heavy
@@ -146,8 +146,8 @@
   id: Pulse
   damage:
     types:
-      Heat: 30 # Goobstation
-      Blunt: 5 # Split damage is cool. - Goobstation
+      Heat: 60 # Siberia edit
+      Blunt: 10 # Siberia edit
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -163,7 +163,7 @@
   maxLength: 60
   damage:
     types:
-      Heat: 45
+      Heat: 90 # Siberia edit
       Structural: 10
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
