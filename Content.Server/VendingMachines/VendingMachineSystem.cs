@@ -238,9 +238,7 @@ namespace Content.Server.VendingMachines
                 buyerDepartment != discountDepartment)
                 return basePrice;
 
-            var discount = pricing.DepartmentDiscount > 0
-                ? pricing.DepartmentDiscount
-                : DefaultDepartmentDiscount;
+            var discount = pricing.DepartmentDiscount ?? DefaultDepartmentDiscount;
 
             return Math.Max((int) Math.Round(basePrice * discount, MidpointRounding.AwayFromZero), 1);
         }

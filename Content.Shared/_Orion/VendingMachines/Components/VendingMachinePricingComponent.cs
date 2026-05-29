@@ -36,7 +36,7 @@ public sealed partial class VendingMachinePricingComponent : Component
     /// Multiplier applied to regular product prices for matching department employees.
     /// </summary>
     [DataField]
-    public float DepartmentDiscount = 0.2f;
+    public float? DepartmentDiscount;
 
     /// <summary>
     /// Fallback default price for regular inventory entries when pack prototype does not define one.

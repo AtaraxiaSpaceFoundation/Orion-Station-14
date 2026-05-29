@@ -112,6 +112,7 @@ public sealed class BankSystem : EntitySystem
         if (TryGetJobDepartment(account.Comp.JobId, out department))
         {
             account.Comp.Department = department;
+            Dirty(account);
             return true;
         }
 
@@ -128,7 +129,14 @@ public sealed class BankSystem : EntitySystem
 
             department = payrollDepartment;
             account.Comp.Department = department;
-            account.Comp.JobId ??= job.ID;
+            Dirty(account);
+
+            if (account.Comp.JobId != null)
+                return true;
+
+            account.Comp.JobId = job.ID;
+            Dirty(account);
+
             return true;
         }
 

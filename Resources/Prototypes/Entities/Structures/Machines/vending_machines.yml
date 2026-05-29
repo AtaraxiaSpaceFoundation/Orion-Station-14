@@ -576,7 +576,7 @@
     autoRot: true
   # Orion-Start
   - type: VendingMachinePricing
-    discountDepartment: Command
+    discountDepartment: Service
   # Orion-End
 
 - type: entity
@@ -1155,7 +1155,7 @@
     rotateWhilePulling: true
   # Orion-Start
   - type: VendingMachinePricing
-    discountDepartment: Command
+    discountDepartment: Service
     defaultPrice: 40
     extraPrice: 75
   # Orion-End
