@@ -2,3 +2,8 @@
   license: "CC-BY-SA-3.0"
   copyright: "SpadesSlick"
   source: "https://github.com/discordia-space/CEV-Eris/blob/f702afa271136d093ddeb415423240a2ceb212f0/sound/machines/vending_drop.ogg"
+
+- files: ["airlock_open_force.ogg", "airlock_close_force.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Beestation12"
+  source: "https://github.com/Baystation12/Baystation12/commit/41c3cfd386b11aee101b3f89ab7fefe77a57a1ba"
