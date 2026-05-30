@@ -226,13 +226,13 @@ public sealed partial class DoorComponent : Component
     /// The length of the door's opening animation.
     /// </summary>
     [DataField]
-    public TimeSpan OpeningAnimationTime = TimeSpan.FromSeconds(0.8);
+    public TimeSpan OpeningAnimationTime = TimeSpan.FromSeconds(0.6);
 
     /// <summary>
     /// The length of the door's closing animation.
     /// </summary>
     [DataField]
-    public TimeSpan ClosingAnimationTime = TimeSpan.FromSeconds(0.8);
+    public TimeSpan ClosingAnimationTime = TimeSpan.FromSeconds(0.6);
 
     /// <summary>
     /// The length of the door's emagging animation.
