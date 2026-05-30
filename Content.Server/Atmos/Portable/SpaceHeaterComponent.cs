@@ -64,4 +64,15 @@ public sealed partial class SpaceHeaterComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float PowerConsumption = 3500f;
+
+    // Orion-Start
+    [DataField]
+    public float BasePowerConsumption = 3500f;
+
+    [DataField]
+    public float BaseMinTemperature = Atmospherics.T0C - 10;
+
+    [DataField]
+    public float BaseMaxTemperature = Atmospherics.T20C + 20;
+    // Orion-End
 }

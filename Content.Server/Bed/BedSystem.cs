@@ -82,7 +82,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.Power.Components;
 using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._Orion.Construction;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Bed;
@@ -106,6 +109,11 @@ namespace Content.Server.Bed
             base.Initialize();
 
             _sleepingQuery = GetEntityQuery<SleepingComponent>();
+
+            // Orion-Start
+            SubscribeLocalEvent<StasisBedComponent, RefreshPartsEvent>(OnStasisRefreshParts);
+            SubscribeLocalEvent<StasisBedComponent, UpgradeExamineEvent>(OnStasisUpgradeExamine);
+            // Orion-End
         }
 
         public override void Update(float frameTime)
@@ -138,5 +146,21 @@ namespace Content.Server.Bed
                 }
             }
         }
+
+        // Orion-Start
+        private void OnStasisRefreshParts(EntityUid uid, StasisBedComponent component, RefreshPartsEvent args)
+        {
+            var capacitorTier = args.GetPartRating(MachinePartIds.Capacitor);
+            component.PowerLoad = component.BasePowerLoad * RefreshPartsEvent.GetLinearMultiplier(capacitorTier, 0.1f, 0.5f, 1.2f);
+
+            if (TryComp<ApcPowerReceiverComponent>(uid, out var receiver))
+                receiver.Load = component.PowerLoad;
+        }
+
+        private static void OnStasisUpgradeExamine(EntityUid uid, StasisBedComponent component, UpgradeExamineEvent args)
+        {
+            args.AddPercentageUpgrade("machine-upgrade-stasis-bed-power", component.PowerLoad / component.BasePowerLoad);
+        }
+        // Orion-End
     }
 }

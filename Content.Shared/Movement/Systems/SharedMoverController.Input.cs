@@ -183,7 +183,11 @@ namespace Content.Shared.Movement.Systems
             args.State = new InputMoverComponentState()
             {
                 CanMove = entity.Comp.CanMove,
-                RelativeEntity = GetNetEntity(entity.Comp.RelativeEntity),
+                // Orion-Edit-Start
+                RelativeEntity = entity.Comp.RelativeEntity is { } relative && Exists(relative)
+                    ? GetNetEntity(relative)
+                    : null,
+                // Orion-Edit-End
                 LerpTarget = entity.Comp.LerpTarget,
                 HeldMoveButtons = entity.Comp.HeldMoveButtons,
                 RelativeRotation = entity.Comp.RelativeRotation,

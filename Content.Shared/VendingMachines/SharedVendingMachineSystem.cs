@@ -19,6 +19,7 @@
 using Content.Shared.Emag.Components;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using Content.Shared._Orion.VendingMachines.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Advertise.Components;
@@ -31,6 +32,7 @@ using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
+using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -51,6 +53,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
     [Dependency] protected readonly SharedUserInterfaceSystem UISystem = default!;
     [Dependency] protected readonly IRobustRandom Randomizer = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private   readonly INetManager _net = default!; // Orion
 
     public override void Initialize()
     {
@@ -147,6 +150,11 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
 
     private void OnInventoryEjectMessage(Entity<VendingMachineComponent> entity, ref VendingMachineEjectMessage args)
     {
+        // Orion-Start
+        if (!_net.IsServer)
+            return;
+        // Orion-End
+
         if (!_receiver.IsPowered(entity.Owner) || Deleted(entity))
             return;
 
@@ -234,6 +242,17 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
             return;
         }
 
+        // Orion-Start
+        var beforeEject = new VendingMachineBeforeEjectEvent(uid, user, type, itemId, entry.Price);
+        RaiseLocalEvent(uid, ref beforeEject);
+
+        if (beforeEject.Cancelled)
+        {
+            Deny((uid, vendComponent), user);
+            return;
+        }
+        // Orion-End
+
         // Start Ejecting, and prevent users from ordering while anim playing
         vendComponent.EjectEnd = Timing.CurTime + vendComponent.EjectDelay;
         vendComponent.NextItemToEject = entry.ID;
@@ -246,7 +265,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         Dirty(uid, vendComponent);
         UpdateUI((uid, vendComponent));
         TryUpdateVisualState((uid, vendComponent));
-        Audio.PlayPredicted(vendComponent.SoundVend, uid, user);
+        Audio.PlayPvs(vendComponent.SoundVend, uid); // Orion-Edit: Was Predicted
     }
 
     public void Deny(Entity<VendingMachineComponent?> entity, EntityUid? user = null)
@@ -258,7 +277,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
             return;
 
         entity.Comp.DenyEnd = Timing.CurTime + entity.Comp.DenyDelay;
-        Audio.PlayPredicted(entity.Comp.SoundDeny, entity.Owner, user, AudioParams.Default.WithVolume(-2f));
+        Audio.PlayPvs(entity.Comp.SoundDeny, entity.Owner, AudioParams.Default.WithVolume(-2f)); // Orion-Edit: Was Predicted
         TryUpdateVisualState(entity);
         Dirty(entity);
     }
@@ -328,9 +347,11 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         if (!PrototypeManager.TryIndex(component.PackPrototypeId, out VendingMachineInventoryPrototype? packPrototype))
             return;
 
-        AddInventoryFromPrototype(uid, packPrototype.StartingInventory, InventoryType.Regular, component, restockQuality);
-        AddInventoryFromPrototype(uid, packPrototype.EmaggedInventory, InventoryType.Emagged, component, restockQuality);
-        AddInventoryFromPrototype(uid, packPrototype.ContrabandInventory, InventoryType.Contraband, component, restockQuality);
+        // Orion-Edit-Start
+        AddInventoryFromPrototype(uid, packPrototype.StartingInventory, InventoryType.Regular, packPrototype, component, restockQuality);
+        AddInventoryFromPrototype(uid, packPrototype.EmaggedInventory, InventoryType.Emagged, packPrototype, component, restockQuality);
+        AddInventoryFromPrototype(uid, packPrototype.ContrabandInventory, InventoryType.Contraband, packPrototype, component, restockQuality);
+        // Orion-Edit-End
         Dirty(uid, component);
     }
 
@@ -378,8 +399,54 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
         return GetAllInventory(uid, component).Where(_ => _.Amount > 0).ToList();
     }
 
+    // Orion-Start
+    /// <summary>
+    /// Resolves item price for a vending inventory entry.
+    /// Resolution order is:
+    /// <list type="number">
+    /// <item><description><see cref="VendingMachinePricingComponent.AllProductsFree"/> returns 0 for all items.</description></item>
+    /// <item><description>Per-type prices from <see cref="VendingMachineInventoryPrototype"/> (Prices, ContrabandPrices, EmaggedPrices).</description></item>
+    /// <item><description><paramref name="packPrototype"/> values: DefaultPrice and ExtraPrice.</description></item>
+    /// <item><description>Fallback to <see cref="VendingMachinePricingComponent"/> DefaultPrice and ExtraPrice when pack values are not positive.</description></item>
+    /// </list>
+    /// <see cref="InventoryType.Regular"/> uses default price, other types prefer extra price when it's greater than zero.
+    /// Final result is clamped via <see cref="Math.Max(int, int)"/> so negative values become zero.
+    /// </summary>
+    private int ResolveItemPrice(EntityUid uid, InventoryType type, string id, VendingMachineInventoryPrototype packPrototype)
+    {
+        if (TryComp<VendingMachinePricingComponent>(uid, out var pricing) && pricing.AllProductsFree)
+            return 0;
+
+        switch (type)
+        {
+            case InventoryType.Regular when packPrototype.Prices != null && packPrototype.Prices.TryGetValue(id, out var regularPrice):
+                return Math.Max(0, regularPrice);
+            case InventoryType.Contraband when packPrototype.ContrabandPrices != null && packPrototype.ContrabandPrices.TryGetValue(id, out var contrabandPrice):
+                return Math.Max(0, contrabandPrice);
+            case InventoryType.Emagged when packPrototype.EmaggedPrices != null && packPrototype.EmaggedPrices.TryGetValue(id, out var emaggedPrice):
+                return Math.Max(0, emaggedPrice);
+        }
+
+        var defaultPrice = packPrototype.DefaultPrice;
+        var extraPrice = packPrototype.ExtraPrice;
+
+        if (pricing != null)
+        {
+            if (defaultPrice <= 0)
+                defaultPrice = pricing.DefaultPrice;
+
+            if (extraPrice <= 0)
+                extraPrice = pricing.ExtraPrice;
+        }
+
+        var finalPrice = type == InventoryType.Regular ? defaultPrice : (extraPrice > 0 ? extraPrice : defaultPrice);
+        return Math.Max(0, finalPrice);
+    }
+    // Orion-End
+
     private void AddInventoryFromPrototype(EntityUid uid, Dictionary<string, uint>? entries,
         InventoryType type,
+        VendingMachineInventoryPrototype packPrototype, // Orion
         VendingMachineComponent? component = null, float restockQuality = 1.0f)
     {
         if (!Resolve(uid, ref component) || entries == null)
@@ -425,7 +492,7 @@ public abstract partial class SharedVendingMachineSystem : EntitySystem
                     // losing the rest of the restock.
                     entry.Amount = Math.Min(entry.Amount + amount, 3 * restock);
                 else
-                    inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock));
+                    inventory.Add(id, new VendingMachineInventoryEntry(type, id, restock, ResolveItemPrice(uid, type, id, packPrototype)));
             }
         }
     }

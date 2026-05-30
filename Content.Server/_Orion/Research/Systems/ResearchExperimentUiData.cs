@@ -90,6 +90,9 @@ public static class ResearchExperimentUiData
         if (scan.MinExplosiveIntensity is { } minIntensity)
             details.Add(Loc.GetString("research-experiment-goal-detail-intensity", ("value", minIntensity.ToString("0.##", CultureInfo.InvariantCulture))));
 
+        if (scan.RequiredMachinePartTier is { } machineTier)
+            details.Add(Loc.GetString("research-experiment-goal-detail-machine-tier", ("tier", machineTier)));
+
         return string.Join(", ", details);
     }
 

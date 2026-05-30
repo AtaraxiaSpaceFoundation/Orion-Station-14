@@ -53,6 +53,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Power.Components;
 
@@ -89,7 +90,11 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
 
             SubscribeLocalEvent<EnergyReagentDispenserComponent, MapInitEvent>(OnMapInit, before: [typeof(ItemSlotsSystem)]);
 
-            SubscribeLocalEvent<EnergyReagentDispenserComponent, GotEmaggedEvent>(OnEmaged); // Orion
+            // Orion-Start
+            SubscribeLocalEvent<EnergyReagentDispenserComponent, RefreshPartsEvent>(OnPartsRefresh);
+            SubscribeLocalEvent<EnergyReagentDispenserComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+            SubscribeLocalEvent<EnergyReagentDispenserComponent, GotEmaggedEvent>(OnEmaged);
+            // Orion-End
         }
 
         private void SubscribeUpdateUiState<T>(Entity<EnergyReagentDispenserComponent> ent, ref T ev) => UpdateUiState(ent);
@@ -236,13 +241,47 @@ namespace Content.Goobstation.Server.Chemistry.EntitySystems
         private static float GetPowerCostForReagent(string reagentId, int amount, EnergyReagentDispenserComponent comp)
         {
             return comp.Reagents.TryGetValue(reagentId, out var cost)
-                ? cost * amount
+                ? cost * amount * comp.FinalEnergyCostMultiplier // Orion-Edit
                 : float.MaxValue;
         }
-        private void OnMapInit(Entity<EnergyReagentDispenserComponent> entity, ref MapInitEvent args) =>
-            _itemSlotsSystem.AddItemSlot(entity.Owner, SharedEnergyReagentDispenser.OutputSlotName, entity.Comp.EnergyBeakerSlot);
+
+        private void OnMapInit(Entity<EnergyReagentDispenserComponent> entity, ref MapInitEvent args)
+        {
+            _itemSlotsSystem.AddItemSlot(entity.Owner,
+                SharedEnergyReagentDispenser.OutputSlotName,
+                entity.Comp.EnergyBeakerSlot);
+
+            // Orion-Start
+            if (!TryComp<ApcPowerReceiverBatteryComponent>(entity, out var apcBattery))
+                return;
+
+            entity.Comp.BaseRechargeRate = apcBattery.BatteryRechargeRate;
+            entity.Comp.FinalRechargeRate = apcBattery.BatteryRechargeRate;
+            // Orion-End
+        }
 
         // Orion-Start
+        private void OnPartsRefresh(EntityUid uid, EnergyReagentDispenserComponent component, RefreshPartsEvent args)
+        {
+            var capacitorTier = args.GetPartRating(component.CapacitorPart);
+            var matterBinTier = args.GetPartRating(component.MatterBinPart);
+
+            component.FinalRechargeRate = component.BaseRechargeRate * RefreshPartsEvent.GetPositiveTierMultiplier(capacitorTier);
+            component.FinalEnergyCostMultiplier = RefreshPartsEvent.GetLinearMultiplier(matterBinTier, 0.1f, 0.5f, 1.2f);
+
+            UpdateUiState((uid, component));
+        }
+
+        private static void OnUpgradeExamine(EntityUid uid, EnergyReagentDispenserComponent component, UpgradeExamineEvent args)
+        {
+            var rechargeMultiplier = component.BaseRechargeRate <= 0f
+                ? 1f
+                : component.FinalRechargeRate / component.BaseRechargeRate;
+
+            args.AddPercentageUpgrade("machine-upgrade-charging-speed", rechargeMultiplier);
+            args.AddPercentageUpgrade("machine-upgrade-energy-cost", component.FinalEnergyCostMultiplier);
+        }
+
         private void OnEmaged(Entity<EnergyReagentDispenserComponent> ent, ref GotEmaggedEvent args)
         {
             if (ent.Comp.ReagentsEmagged == null || ent.Comp.Emagged)

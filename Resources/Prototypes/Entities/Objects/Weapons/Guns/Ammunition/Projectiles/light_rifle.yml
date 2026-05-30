@@ -65,8 +65,8 @@
     damage:
       types:
         Blunt: 4
-        Heat: 4
-      armorPenetration: 0.15 # Orion
+        Heat: 5 # Orion-Edit: 4 > 5
+      armorPenetration: 0.10 # Orion
 
 - type: entity
   id: BulletLightRifleUranium
@@ -77,6 +77,6 @@
   - type: Projectile
     damage:
       types:
-        Radiation: 10
+        Radiation: 5 # Orion-Edit: 10 > 5
         Piercing: 11
-      armorPenetration: 0.15 # Orion
+      armorPenetration: 0.30 # Orion

@@ -185,6 +185,16 @@ namespace Content.Client.VendingMachines.UI
             button.Disabled = !_enabled || _amounts[protoID] == 0;
         }
 
+        // Orion-Start
+        public void SetBalance(int? balance)
+        {
+            BalanceLabel.Visible = balance != null;
+
+            if (balance != null)
+                BalanceLabel.Text = Loc.GetString("vending-machine-balance", ("amount", balance.Value));
+        }
+        // Orion-End
+
         /// <summary>
         /// Populates the list of available items on the vending machine interface
         /// and sets icons based on their prototypes
@@ -236,7 +246,7 @@ namespace Content.Client.VendingMachines.UI
                 }
 
                 var itemName = Identity.Name(dummy, _entityManager);
-                var itemText = $"{itemName} [{entry.Amount}]";
+                var itemText = GetItemText(itemName, entry.Amount, entry.DisplayPrice); // Orion-Edit
                 _amounts[entry.ID] = entry.Amount;
 
                 if (itemText.Length > longestEntry.Length)
@@ -270,18 +280,22 @@ namespace Content.Client.VendingMachines.UI
                     continue;
                 var amount = entry.Amount;
                 // Could be better? Problem is all inventory entries get squashed.
-                var text = GetItemText(dummy, amount);
+                var text = GetItemText(Identity.Name(dummy, _entityManager), amount, entry.DisplayPrice); // Orion-Edit
 
                 button.Item.SetText(text);
                 button.Button.Disabled = !enabled || amount == 0;
             }
         }
 
-        private string GetItemText(EntityUid dummy, uint amount)
+        // Orion-Edit-Start
+        private static string GetItemText(string itemName, uint amount, int price)
         {
-            var itemName = Identity.Name(dummy, _entityManager);
-            return $"{itemName} [{amount}]";
+            var priceText = price <= 0
+                ? Loc.GetString("vending-machine-price-free")
+                : Loc.GetString("vending-machine-price-credits", ("amount", price));
+            return $"{itemName} [{amount}] - {priceText}";
         }
+        // Orion-Edit-End
 
         private void SetSizeAfterUpdate(int longestEntryLength, int contentCount)
         {

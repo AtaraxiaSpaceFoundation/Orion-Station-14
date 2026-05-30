@@ -60,6 +60,7 @@
   # - BorgModuleAdvancedChemical # Goob edit
   - BorgModuleAdvancedMining
   # Orion-Start
+  - BorgModuleRPED
   - BorgModuleMartyr
   - BorgModuleSyndicateWeapon
   # Orion-End

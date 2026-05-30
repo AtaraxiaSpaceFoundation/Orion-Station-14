@@ -124,8 +124,8 @@
   name: research-technology-bitrunning-name
   description: research-technology-bitrunning-desc
   icon:
-    sprite: Interface/Misc/research_disciplines.rsi
-    state: experimental
+    sprite: _Orion/Objects/Specific/Cargo/Bitrunning/encrypted_cache.rsi
+    state: icon
   discipline: Shaft
   tier: 3
   announceChannels:
@@ -136,7 +136,11 @@
   technologyPrerequisites:
   - Gaming
   - AppliedBluespace
-  # TODO
+  recipeUnlocks:
+  - QuantumConsoleCircuitboard
+  - QuantumServerMachineCircuitboard
+  - NetpodMachineCircuitboard
+  - ByteforgeMachineCircuitboard
   position: 4,6
 
 - type: technology

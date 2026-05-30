@@ -47,6 +47,8 @@
   pointCosts:
   - type: General
     amount: 2500
+  - type: Experimental
+    amount: 50
   technologyPrerequisites:
   - FundamentalScience
   recipeUnlocks:
@@ -70,6 +72,8 @@
   pointCosts:
   - type: General
     amount: 5000
+  - type: Experimental
+    amount: 550
   technologyPrerequisites:
   - BluespaceTheory
   discountExperiments:
@@ -85,9 +89,9 @@
   - ConstructionBagOfHolding
   - ClothingBeltChemBagXenobiologyHolding
   - PlantBagOfHolding
-  - OreProcessorIndustrialMachineCircuitboard
   - VialBluespace
   - ClothingBackpackHarmpack
+  - CrayonRainbowLarge
   position: 0,6
 
 - type: technology
@@ -104,6 +108,8 @@
   pointCosts:
   - type: General
     amount: 7500
+  - type: Experimental
+    amount: 80
   technologyPrerequisites:
   - AppliedBluespace
   recipeUnlocks:
@@ -125,6 +131,8 @@
   pointCosts:
   - type: General
     amount: 7500
+  - type: Experimental
+    amount: 150
   technologyPrerequisites:
   - AppliedBluespace
   recipeUnlocks:

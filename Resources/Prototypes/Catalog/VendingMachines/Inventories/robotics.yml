@@ -53,3 +53,7 @@
     FoodBurgerRobot: 1
   emaggedInventory: # goob
     JawsOfLife: 1
+  # Orion-Start
+  prices:
+    CableApcStack: 5
+  # Orion-End

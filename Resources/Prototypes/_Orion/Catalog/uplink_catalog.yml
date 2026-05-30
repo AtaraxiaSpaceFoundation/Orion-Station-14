@@ -15,14 +15,46 @@
   description: uplink-energy-dome-desc
   productEntity: EnergyDomeGeneratorPersonalSyndie
   cost:
-    Telecrystal: 10
+    Telecrystal: 30
   categories:
     - UplinkWearables
   conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - NukeOpsUplink
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: NukeOpsUplinkHoloCigar
+  name: uplink-holo-cigar-name
+  description: uplink-holo-cigar-desc
+  productEntity: HoloCigar
+  cost:
+    Telecrystal: 70
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+      - ContravendUplink
+
+- type: listing
+  id: NukeOpsUplinkScramImplanter
+  name: uplink-scram-implanter-name
+  description: uplink-scram-implanter-desc
+  icon: { sprite: /Textures/Structures/Specific/anomaly.rsi, state: anom4 }
+  productEntity: ScramImplanter
+  cost:
+    Telecrystal: 40
+  categories:
+    - UplinkImplants
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
 
 - type: listing
   id: UplinkCorticalBorerEgg
@@ -35,11 +67,11 @@
   categories:
   - UplinkAllies
   conditions:
-    - !type:StoreWhitelistCondition
-      blacklist:
-        tags:
-          - NukeOpsUplink
-          - ContravendUplink
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+      - ContravendUplink
 
 - type: listing # Cost for NukeOps
   id: NukeOpsUplinkCorticalBorerEgg
@@ -52,10 +84,26 @@
   categories:
   - UplinkAllies
   conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - NukeOpsUplink
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: NukeOpsUplinkCombatMedipen
+  name: uplink-combat-medipen-name
+  description: uplink-combat-medipen-desc
+  productEntity: CombatMedipen
+  cost:
+    Telecrystal: 19
+  categories:
+  - UplinkChemicals
+  conditions: # Orion: Too expensive for Nukies
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+      - ContravendUplink
 
 - type: listing
   id: NukeOpsUplinkAdvancedCombatMedipen
@@ -63,15 +111,15 @@
   description: uplink-advanced-combat-medipen-desc
   productEntity: AdvancedCombatMedipen
   cost:
-    Telecrystal: 54
+    Telecrystal: 40
   categories:
   - UplinkChemicals
-  conditions: # Orion: Only for agents
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - NukeOpsUplink
-          - ContravendUplink
+  conditions: # Orion: Too expensive for Nukies
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+      - ContravendUplink
 
 - type: listing
   id: UplinkZauer
@@ -80,7 +128,7 @@
   icon: { sprite: _Orion/Objects/Weapons/Guns/Shotguns/zauer/big.rsi, state: icon }
   productEntity: WeaponShotgunZauer
   cost:
-    Telecrystal: 60
+    Telecrystal: 80
   categories:
   - UplinkWeaponry
 
@@ -91,7 +139,7 @@
   icon: { sprite: _Orion/Objects/Weapons/Guns/LMGs/rpd/big.rsi, state: icon }
   productEntity: WeaponLightMachineGunRPD
   cost:
-    Telecrystal: 110
+    Telecrystal: 115
   categories:
   - UplinkWeaponry
 
@@ -113,17 +161,17 @@
   productEntity: ReinforcementRadioSyndicateCyborgSaboteur
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-saboteur }
   cost:
-    Telecrystal: 280
+    Telecrystal: 220
   categories:
     - UplinkAllies
   conditions:
-    - !type:StoreWhitelistCondition
-      whitelist:
-        tags:
-          - NukeOpsUplink
-      blacklist:
-        tags:
-        - ContravendUplink
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+    blacklist:
+      tags:
+      - ContravendUplink
 
 - type: listing
   id: UplinkRubberStampChameleon
@@ -134,3 +182,20 @@
     Telecrystal: 20
   categories:
   - UplinkDeception
+
+- type: listing
+  id: UplinkProtocolCrab17Phone
+  name: protocol-crab17-phone-name
+  description: protocol-crab17-phone-desc
+  productEntity: SuspiciousPhone
+  cost:
+    Telecrystal: 35 # TODO: 7
+  categories:
+  - UplinkDisruption
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - ContravendUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1

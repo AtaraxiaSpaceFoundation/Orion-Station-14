@@ -18,13 +18,14 @@
   - type: MachineBoard
     prototype: RoboticArm
     stackRequirements:
-      Manipulator: 4
       Steel: 6
       Cable: 5
     tagRequirements:
       BorgArm:
         amount: 2
         defaultPrototype: LeftArmBorg
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -37,13 +38,14 @@
   - type: MachineBoard
     prototype: Constructor
     stackRequirements:
-      Manipulator: 5
       Steel: 10
       Cable: 5
     tagRequirements:
       BorgArm:
         amount: 4
         defaultPrototype: LeftArmBorg
+    partRequirements: # Orion
+      Servo: 5
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -54,8 +56,9 @@
   - type: MachineBoard
     prototype: StorageBin
     stackRequirements:
-      Manipulator: 4
       Steel: 1
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -68,13 +71,14 @@
   - type: MachineBoard
     prototype: Interactor
     stackRequirements:
-      Manipulator: 4
       Plastic: 4
       Cable: 5
     tagRequirements:
       BorgArm:
         amount: 1
         defaultPrototype: LeftArmBorg
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -87,9 +91,10 @@
   - type: MachineBoard
     prototype: VinylPlayer
     stackRequirements:
-      Manipulator: 1
       Steel: 1
       WoodPlank: 3
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -102,9 +107,10 @@
   - type: MachineBoard
     prototype: TapeDeck
     stackRequirements:
-      Manipulator: 2
       Plastic: 3
       WoodPlank: 5
+    partRequirements: # Orion
+      Servo: 2
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -117,11 +123,12 @@
   - type: MachineBoard
     prototype: StationRadioServer
     stackRequirements:
-      Manipulator: 1
       Steel: 10
       Plastic: 10
       Plasma: 5
       CableHV: 4
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -134,10 +141,11 @@
   - type: MachineBoard
     prototype: StationRadioRig
     stackRequirements:
-      Manipulator: 3
       Steel: 5
       Glass: 5
       Cable: 2
+    partRequirements: # Orion
+      Servo: 3
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -150,8 +158,9 @@
   - type: MachineBoard
     prototype: StationRadioReceiver
     stackRequirements:
-      Manipulator: 1
       Cable: 2
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   id: VirologyServerMachineCircuitboard
@@ -164,3 +173,20 @@
       stackRequirements:
         Steel: 1
         Cable: 2
+
+- type: entity  # Food synthesizer
+  parent: BaseMachineCircuitboard
+  id: ServiceEnergyChemMachineCircuitboard
+  name: energy food synthesizer machine board
+  description: A machine printed circuit board for a energy food synthesizer.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: ServiceEnergyChemDispenser
+    partRequirements: # Orion
+      Servo: 3
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker

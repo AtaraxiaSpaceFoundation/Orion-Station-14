@@ -85,8 +85,8 @@
   name: research-technology-fusion-name
   description: research-technology-fusion-desc
   icon:
-    sprite: Structures/Piping/Atmospherics/hellfirethermomachine.rsi
-    state: freezerOn
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: experimental
   discipline: Engineering
   tier: 3
   announceChannels:
@@ -100,8 +100,6 @@
   - OrdnanceGaseousNitrousOxide
   discountExperimentCosts:
     OrdnanceGaseousNitrousOxide: 7500
-  recipeUnlocks:
-  - HellfireFreezerMachineCircuitBoard
   # TODO: No fusion :(
   position: 13,1
 

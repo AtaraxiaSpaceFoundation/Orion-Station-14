@@ -82,6 +82,31 @@ namespace Content.Server.Construction.Conditions
                                            ("elementName", stackEnt.Name)));
             }
 
+            // Orion-Start
+            foreach (var (partType, required) in machineFrame.PartRequirements)
+            {
+                var amount = required - machineFrame.PartProgress.GetValueOrDefault(partType, 0);
+
+                if (amount == 0)
+                    continue;
+
+                string elementName;
+                if (protoManager.TryIndex(partType, out var machinePart))
+                {
+                    var partEnt = protoManager.Index(machinePart.StockPartPrototype);
+                    elementName = partEnt.Name;
+                }
+                else
+                {
+                    elementName = partType;
+                }
+
+                args.PushMarkup(Loc.GetString("construction-condition-machine-frame-required-element-entry",
+                    ("amount", amount),
+                    ("elementName", elementName)));
+            }
+            // Orion-End
+
             foreach (var (compName, info) in machineFrame.ComponentRequirements)
             {
                 var amount = info.Amount - machineFrame.ComponentProgress[compName];
@@ -91,7 +116,7 @@ namespace Content.Server.Construction.Conditions
 
                 var examineName = constructionSys.GetExamineName(info);
                 args.PushMarkup(Loc.GetString("construction-condition-machine-frame-required-element-entry",
-                                                ("amount", info.Amount),
+                                                ("amount", amount), // Orion-Edit
                                                 ("elementName", examineName)));
             }
 
@@ -104,7 +129,7 @@ namespace Content.Server.Construction.Conditions
 
                 var examineName = constructionSys.GetExamineName(info);
                 args.PushMarkup(Loc.GetString("construction-condition-machine-frame-required-element-entry",
-                                    ("amount", info.Amount),
+                                    ("amount", amount), // Orion-Edit
                                     ("elementName", examineName))
                                 + "\n");
             }

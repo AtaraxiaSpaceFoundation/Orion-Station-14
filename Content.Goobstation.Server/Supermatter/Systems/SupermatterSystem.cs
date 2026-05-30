@@ -50,6 +50,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Timing;
+using Robust.Shared.Player;
 
 namespace Content.Goobstation.Server.Supermatter.Systems;
 
@@ -590,6 +591,9 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
     {
         var target = args.OtherEntity;
 
+        if (args.OurEntity != uid || !args.OtherFixture.Hard)
+            return;
+
         // Stop immune entities from activating the sm.
         if (args.OtherBody.BodyType == BodyType.Static
             || HasComp<SupermatterImmuneComponent>(target)
@@ -600,8 +604,12 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
         {
             // Extra logging for supermatter
             var activator = ToPrettyString(args.OtherEntity);
-            var isMob = HasComp<MobStateComponent>(args.OtherEntity);
-            var impact = isMob ? LogImpact.Extreme : LogImpact.High;
+            // Orion-Edit-Start
+            var activatorIsMob = HasComp<MobStateComponent>(args.OtherEntity);
+            var impact = activatorIsMob
+                ? LogImpact.Extreme
+                : LogImpact.High;
+            // Orion-Edit-End
 
             // Original log entry
             _adminLog.Add(LogType.Supermatter, impact,
@@ -614,6 +622,7 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
             sm.Activated = true;
         }
 
+/* // Orion-Edit
         if (TryComp<SupermatterFoodComponent>(target, out var food))
             sm.Power += food.Energy;
         else if (TryComp<ProjectileComponent>(target, out var projectile))
@@ -622,6 +631,20 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
             sm.Power++;
 
         sm.MatterPower += HasComp<MobStateComponent>(target) ? 200 : 0;
+*/
+
+        // Orion-Start
+        var isMob = HasComp<MobStateComponent>(target);
+        if (!isMob)
+        {
+            if (TryComp<SupermatterFoodComponent>(target, out var food))
+                sm.Power += food.Energy;
+            else if (TryComp<ProjectileComponent>(target, out var projectile))
+                sm.Power += (float) projectile.Damage.GetTotal();
+            else
+                sm.Power++;
+        }
+        // Orion-End
 
         if (!HasComp<ProjectileComponent>(target))
         {
@@ -643,7 +666,7 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
         if (!sm.Activated)
             sm.Activated = true;
 
-        sm.MatterPower += 200;
+//        sm.MatterPower += 200; // Orion-Edit
 
         EntityManager.SpawnEntity("Ash", Transform(target).Coordinates);
         _audio.PlayPvs(sm.DustSound, uid);
@@ -686,7 +709,7 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
         sm.Damage += sm.DelaminationPoint / 10;
         sm.DamageArchived += sm.DelaminationPoint / 10;
         sm.SliverRemoved = true;
-        
+
         var integrity = GetIntegrity(sm).ToString("0.00");
         SupermatterAnnouncement(uid, Loc.GetString("supermatter-announcement-cc-tamper", ("integrity", integrity)), true, "Central Command");
 

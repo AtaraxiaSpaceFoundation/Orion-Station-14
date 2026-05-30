@@ -25,6 +25,11 @@ job-name-deathsquad-leader = Deathsquad Leader
 job-description-deathsquad-leader = Get them boy.
 JobDeathSquadLeader = { job-name-deathsquad-leader }
 
+job-name-bitrunner = Bitrunner
+job-description-bitrunner = Run virtual domains, gather points, and keep the bitrunning network stable.
+job-name-bitrun-avatar = Bitrun Avatar
+job-description-bitrun-avatar = A projected operator body used by a bitrunner inside virtual domains.
+
 job-title-private = Private
 job-title-capral = Capral
 job-title-sergeant = Sergeant

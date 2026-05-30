@@ -119,9 +119,14 @@
       - !type:SnapToGrid
         southRotation: true
       steps:
-      - material: Manipulator
-        amount: 1
+      # Orion-Start
+      - machinePart: Servo
+        name: construction-graph-tag-servo
+        icon:
+          sprite: "Objects/Misc/stock_parts.rsi"
+          state: "micro_mani"
         doAfter: 3
+      # Orion-End
     - to: ToolAltarNode
       completed:
       - !type:SnapToGrid
@@ -270,7 +275,7 @@
     - to: AltarConvertNode
       completed:
       - !type:SpawnPrototype
-        prototype: MicroManipulatorStockPart
+        prototype: MicroServoStockPart # Orion-Edit: Servo
         amount: 1
       steps:
       - tool: Prying

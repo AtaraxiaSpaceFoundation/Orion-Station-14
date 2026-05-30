@@ -35,6 +35,8 @@
       damage:
           types:
             Heat: 15
+    - type: Perishable # Nuh, no.
+      molsPerSecondPerUnitMass: 0
 
 - type: entity
   parent: MobBaseNPC
@@ -70,6 +72,8 @@
           types:
             Blunt: 5
             Piercing: 5
+    - type: Perishable # Nuh, no.
+      molsPerSecondPerUnitMass: 0
 
 - type: entity
   parent: MobBaseNPC
@@ -113,6 +117,8 @@
         path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
         params:
           volume: -100
+    - type: Perishable # Nuh, no.
+      molsPerSecondPerUnitMass: 0
 
 - type: entity
   parent: MobBaseNPC
@@ -156,6 +162,8 @@
         path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
         params:
           volume: -100
+    - type: Perishable # Nuh, no.
+      molsPerSecondPerUnitMass: 0
 
 - type: entity
   parent: MobBaseNPC
@@ -199,3 +207,5 @@
         path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
         params:
           volume: -100
+    - type: Perishable # Nuh, no.
+      molsPerSecondPerUnitMass: 0

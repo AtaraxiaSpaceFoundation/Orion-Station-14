@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted
+
+interface:
+  display_name: "SS14 BUI"
+  short_description: "Bound UI state, messages, and prediction"
+  default_prompt: "Use $ss14-ui-bui for SS14 Bound User Interface state, messages, and predicted UI flows."

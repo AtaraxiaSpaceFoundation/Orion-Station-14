@@ -161,7 +161,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
-    projectileSpeed: 20 # Orion
+    projectileSpeed: 26 # Orion
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -514,13 +514,13 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
   - type: Gun
-    fireRate: 4 # Goobstation
+    fireRate: 2 # Goobstation # Orion-Edit: 4 > 2
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
   - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
-    fireCost: 50 # Goobstation
+    proto: RedMediumLaser # Orion-Edit
+    fireCost: 25 # Goobstation # Orion-Edit: 50 > 25
   - type: Item
     size: Large
 
@@ -766,11 +766,12 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
   - type: Gun
+    fireRate: 1.7 # Orion
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: HitscanBatteryAmmoProvider
     proto: XrayLaser
-    fireCost: 100
+    fireCost: 40 # Orion-Edit: 100 > 40
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -821,6 +822,7 @@
   - type: Gun
     fireRate: 2
     #projectileSpeed: 35 # Goobstation - nuh uh
+    projectileSpeed: 20 # Orion
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
@@ -892,6 +894,7 @@
   - type: Gun
     selectedMode: FullAuto
     fireRate: 4.5
+    projectileSpeed: 20 # Orion
     availableModes:
       - SemiAuto
       - FullAuto

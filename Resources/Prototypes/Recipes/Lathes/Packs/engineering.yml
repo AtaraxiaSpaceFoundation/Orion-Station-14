@@ -22,6 +22,7 @@
   - NetworkConfigurator
   - Signaller
   - SprayPainter
+  - GeigerCounter #Goob station
   - SprayPainterAmmo
   - FlashlightLantern
   - HandheldGPSBasic
@@ -112,7 +113,7 @@
   id: EngineeringBoards
   recipes:
   - ThermomachineFreezerMachineCircuitBoard
-  - HellfireFreezerMachineCircuitBoard
+#  - HellfireFreezerMachineCircuitBoard # Orion-Edit: Redundant
   - PortableScrubberMachineCircuitBoard
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics

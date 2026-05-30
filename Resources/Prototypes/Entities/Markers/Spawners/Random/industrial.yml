@@ -49,7 +49,13 @@
           state: icon
     - type: RandomSpawner
       rarePrototypes:
-        - MicroManipulatorStockPart
+        # Orion-Start
+        - CapacitorStockPart
+        - ScanningModuleStockPart
+        - MicroServoStockPart # Orion-Edit: Servo
+        - MicroLaserStockPart
+        - MatterBinStockPart
+        # Orion-End
         - CableHVStack10
         - WelderIndustrial
         - PowerCellHigh

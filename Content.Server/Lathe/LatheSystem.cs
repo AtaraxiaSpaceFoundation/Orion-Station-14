@@ -87,6 +87,7 @@ using Content.Server.Materials;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stack;
+using Content.Shared._Orion.Construction.Events;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
@@ -155,6 +156,10 @@ namespace Content.Server.Lathe
 
             SubscribeLocalEvent<LatheComponent, BeforeActivatableUIOpenEvent>((u, c, _) => UpdateUserInterfaceState(u, c));
             SubscribeLocalEvent<LatheComponent, MaterialAmountChangedEvent>(OnMaterialAmountChanged);
+            // Orion-Start
+            SubscribeLocalEvent<LatheComponent, RefreshPartsEvent>(OnPartsRefresh);
+            SubscribeLocalEvent<LatheComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+            // Orion-End
             SubscribeLocalEvent<TechnologyDatabaseComponent, LatheGetRecipesEvent>(OnGetRecipes);
             SubscribeLocalEvent<EmagLatheRecipesComponent, LatheGetRecipesEvent>(GetEmagLatheRecipes);
             SubscribeLocalEvent<LatheHeatProducingComponent, LatheStartPrintingEvent>(OnHeatStartPrinting);
@@ -253,15 +258,32 @@ namespace Content.Server.Lathe
             if (!CanProduce(uid, recipe, 1, component))
                 return false;
 
+            var queuedRefund = new Dictionary<ProtoId<MaterialPrototype>, int>(); // Orion
             foreach (var (mat, amount) in recipe.Materials)
             {
-                var adjustedAmount = recipe.ApplyMaterialDiscount
-                    ? (int) (-amount * component.MaterialUseMultiplier)
-                    : -amount;
+                // Orion-Edit-Start
+                var deductedQuantity = recipe.ApplyMaterialDiscount
+                    ? Math.Max(1, (int) Math.Ceiling(amount * component.FinalMaterialMultiplier))
+                    : amount;
+                // Orion-Edit-End
+                var adjustedAmount = -deductedQuantity; // Orion
 
-                _materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount);
+                // Orion-Edit-Start
+                if (!_materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount))
+                {
+                    foreach (var (refundMat, refundAmount) in queuedRefund)
+                    {
+                        _materialStorage.TryChangeMaterialAmount(uid, refundMat, refundAmount);
+                    }
+
+                    return false;
+                }
+                // Orion-Edit-End
+
+                queuedRefund[mat] = deductedQuantity; // Orion
             }
             component.Queue.Enqueue(recipe);
+            component.QueuedMaterialRefunds.Enqueue(queuedRefund); // Orion
 
             return true;
         }
@@ -274,9 +296,20 @@ namespace Content.Server.Lathe
                 return false;
 
             var recipeProto = component.Queue.Dequeue();
+
+            // Orion-Start
+            component.ActiveMaterialRefund = null;
+            if (component.QueuedMaterialRefunds.Count > 0)
+                component.ActiveMaterialRefund = component.QueuedMaterialRefunds.Dequeue();
+            // Orion-End
+
             var recipe = _proto.Index(recipeProto);
 
-            var time = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime) * component.TimeMultiplier;
+            // Orion-Start
+            var baseTime = _reagentSpeed.ApplySpeed(uid, recipe.CompleteTime).TotalSeconds;
+            var adjustedTime = baseTime * MathF.Pow(MathF.Max(0.1f, component.FinalTimeMultiplier), component.MachinePartEfficiencyExponent);
+            // Orion-End
+            var time = TimeSpan.FromSeconds(Math.Max(0.1f, adjustedTime)); // Orion-Edit
 
             var lathe = EnsureComp<LatheProducingComponent>(uid);
             lathe.StartTime = _timing.CurTime;
@@ -297,7 +330,7 @@ namespace Content.Server.Lathe
             return true;
         }
 
-        public void FinishProducing(EntityUid uid, LatheComponent? comp = null, LatheProducingComponent? prodComp = null)
+        private void FinishProducing(EntityUid uid, LatheComponent? comp = null, LatheProducingComponent? prodComp = null) // Orion-Edit: Was public
         {
             if (!Resolve(uid, ref comp, ref prodComp, false))
                 return;
@@ -355,6 +388,7 @@ namespace Content.Server.Lathe
                 }
             }
 
+            comp.ActiveMaterialRefund = null; // Orion
             comp.CurrentRecipe = null;
             prodComp.StartTime = _timing.CurTime;
 
@@ -383,7 +417,7 @@ namespace Content.Server.Lathe
         /// <summary>
         /// Adds every unlocked recipe from each pack to the recipes list.
         /// </summary>
-        public void AddRecipesFromDynamicPacks(ref LatheGetRecipesEvent args, TechnologyDatabaseComponent database, IEnumerable<ProtoId<LatheRecipePackPrototype>> packs)
+        private void AddRecipesFromDynamicPacks(ref LatheGetRecipesEvent args, TechnologyDatabaseComponent database, IEnumerable<ProtoId<LatheRecipePackPrototype>> packs) // Orion-Edit: Was public
         {
             foreach (var id in packs)
             {
@@ -451,6 +485,12 @@ namespace Content.Server.Lathe
         {
             if (!args.Powered)
             {
+                // Orion-Start
+                if (component.ActiveMaterialRefund != null)
+                    component.QueuedMaterialRefunds.Enqueue(component.ActiveMaterialRefund);
+                // Orion-End
+
+                component.ActiveMaterialRefund = null; // Orion
                 RemComp<LatheProducingComponent>(uid);
                 UpdateRunningAppearance(uid, false);
             }
@@ -490,24 +530,45 @@ namespace Content.Server.Lathe
         {
             if (component.Queue.Count > 0)
             {
-                var allMaterials = component.Queue.SelectMany(q => _proto.Index(q).Materials);
+                // Orion-Edit-Start
                 var totalMaterials = new Dictionary<string, int>();
 
-                foreach (var (mat, amount) in allMaterials)
+                if (component.ActiveMaterialRefund != null)
                 {
-                    if(!totalMaterials.ContainsKey(mat))
-                        totalMaterials[mat] = 0;
-                    totalMaterials[mat] += amount;
+                    foreach (var (mat, amount) in component.ActiveMaterialRefund)
+                    {
+                        totalMaterials[mat] = totalMaterials.GetValueOrDefault(mat) + amount;
+                    }
                 }
 
-                if(_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
+                foreach (var refund in component.QueuedMaterialRefunds)
+                {
+                    foreach (var (mat, amount) in refund)
+                    {
+                        totalMaterials[mat] = totalMaterials.GetValueOrDefault(mat) + amount;
+                    }
+                }
+                // Orion-Edit-End
+
+                if (_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
                 {
                     foreach (var (mat, amount) in totalMaterials)
                     {
                         _materialStorage.TryChangeMaterialAmount(uid, mat, amount);
                     }
                     component.Queue.Clear();
-                } else {
+                    // Orion-Start
+                    component.QueuedMaterialRefunds.Clear();
+                    component.ActiveMaterialRefund = null;
+                    // Orion-End
+
+                    // Orion-Start
+                    if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))
+                        printerComponent.Queue.RemoveRange(1, Math.Max(0, printerComponent.Queue.Count - 1));
+                    // Orion-End
+                }
+                else
+                {
                     _popup.PopupEntity(Loc.GetString("lathe-queue-reset-material-overflow"), uid);
                 }
             }
@@ -525,6 +586,42 @@ namespace Content.Server.Lathe
         {
             UpdateUserInterfaceState(uid, component);
         }
+
+        private void OnPartsRefresh(EntityUid uid, LatheComponent component, RefreshPartsEvent args)
+        {
+            var servoTierSum = args.GetPartRatingSum(component.MachinePartPrintSpeed);
+            var efficiency = Math.Clamp(component.BaseMachinePartEfficiency - servoTierSum * component.MachinePartEfficiencyTierStep,
+                component.MinMachinePartEfficiency,
+                component.BaseMachinePartEfficiency);
+
+            component.FinalTimeMultiplier = component.TimeMultiplier * efficiency;
+            component.FinalMaterialMultiplier = component.MaterialUseMultiplier * efficiency;
+
+            if (TryComp<MaterialStorageComponent>(uid, out var materialStorage))
+            {
+                component.BaseStorageLimit ??= materialStorage.StorageLimit;
+
+                if (component.BaseStorageLimit != null)
+                {
+                    var matterBinTierSum = args.GetPartRatingSum(component.MachinePartMaterialCapacity);
+                    var newLimit = component.BaseStorageLimit.Value + (int) MathF.Round(matterBinTierSum * component.MaterialStorageTierCapacityBonus);
+                    _materialStorage.SetStorageLimit(uid, Math.Max(component.BaseStorageLimit.Value, newLimit), materialStorage);
+                }
+            }
+
+            Dirty(uid, component);
+            UpdateUserInterfaceState(uid, component);
+        }
+
+        private static void OnUpgradeExamine(EntityUid uid, LatheComponent component, UpgradeExamineEvent args)
+        {
+            var speedMultiplier = component.FinalTimeMultiplier > 0f
+                ? component.TimeMultiplier / component.FinalTimeMultiplier
+                : 1f;
+
+            args.AddPercentageUpgrade("lathe-component-upgrade-speed", speedMultiplier, component.TimeMultiplier);
+            args.AddPercentageUpgrade("lathe-component-upgrade-material-use", component.FinalMaterialMultiplier, component.MaterialUseMultiplier);
+        }
         // Orion-End
 
         protected override bool HasRecipe(EntityUid uid, LatheRecipePrototype recipe, LatheComponent component)
@@ -538,17 +635,17 @@ namespace Content.Server.Lathe
         {
             if (_proto.TryIndex(args.ID, out LatheRecipePrototype? recipe))
             {
-            TryComp<DocumentPrinterComponent>(uid, out var printer); // Orion
+                TryComp<DocumentPrinterComponent>(uid, out var printer); // Orion
                 var count = 0;
                 for (var i = 0; i < args.Quantity; i++)
                 {
                     if (TryAddToQueue(uid, recipe, component))
-                // Orion-Edit-Start
-                {
-                    printer?.Queue.Add((args.Actor, recipe));
-                    count++;
-                }
-                // Orion-Edit-End
+                    // Orion-Edit-Start
+                    {
+                        printer?.Queue.Add((args.Actor, recipe));
+                        count++;
+                    }
+                    // Orion-Edit-End
                     else
                         break;
                 }

@@ -135,24 +135,28 @@
     - type: MachineBoard
       prototype: Autolathe
       stackRequirements:
-        Manipulator: 4
         Glass: 1
+      partRequirements: # Orion
+        MatterBin: 3
+        Servo: 1
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: AutolatheHyperConvectionMachineCircuitboard
-  name: hyper convection autolathe machine board
-  description: A machine printed circuit board for a hyper convection autolathe.
-  components:
-  - type: MachineBoard
-    prototype: AutolatheHyperConvection
-    stackRequirements:
-      Manipulator: 3
-      Glass: 1
-    tagRequirements:
-      Igniter:
-        amount: 1
-        defaultPrototype: Igniter
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: AutolatheHyperConvectionMachineCircuitboard
+#  name: hyper convection autolathe machine board
+#  description: A machine printed circuit board for a hyper convection autolathe.
+#  components:
+#  - type: MachineBoard
+#    prototype: AutolatheHyperConvection
+#    stackRequirements:
+#      Glass: 1
+#    tagRequirements:
+#      Igniter:
+#        amount: 1
+#        defaultPrototype: Igniter
+#    partRequirements: # Orion
+#      Servo: 3
 
 - type: entity
   id: ProtolatheMachineCircuitboard
@@ -164,32 +168,35 @@
     state: science
   - type: MachineBoard
     prototype: Protolathe
-    stackRequirements:
-      Manipulator: 4
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      MatterBin: 2
+      Servo: 2
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: ProtolatheHyperConvectionMachineCircuitboard
-  name: hyper convection protolathe machine board
-  description: A machine printed circuit board for a hyper convection protolathe.
-  components:
-  - type: Sprite
-    state: science
-  - type: MachineBoard
-    prototype: ProtolatheHyperConvection
-    stackRequirements:
-      Manipulator: 4
-    tagRequirements:
-      GlassBeaker:
-        amount: 2
-        defaultPrototype: Beaker
-      Igniter:
-        amount: 1
-        defaultPrototype: Igniter
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: ProtolatheHyperConvectionMachineCircuitboard
+#  name: hyper convection protolathe machine board
+#  description: A machine printed circuit board for a hyper convection protolathe.
+#  components:
+#  - type: Sprite
+#    state: science
+#  - type: MachineBoard
+#    prototype: ProtolatheHyperConvection
+#    tagRequirements:
+#      GlassBeaker:
+#        amount: 2
+#        defaultPrototype: Beaker
+#      Igniter:
+#        amount: 1
+#        defaultPrototype: Igniter
+#    partRequirements: # Orion
+#      MatterBin: 2
+#      Servo: 2
 
 - type: entity
   id: BiofabricatorMachineCircuitboard
@@ -202,8 +209,9 @@
   - type: MachineBoard
     prototype: Biofabricator
     stackRequirements:
-      Manipulator: 4
       Glass: 1
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: SecurityTechFabCircuitboard
@@ -215,12 +223,13 @@
       state: security
     - type: MachineBoard
       prototype: SecurityTechFab
-      stackRequirements:
-        Manipulator: 4
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
+      partRequirements: # Orion
+        MatterBin: 2
+        Servo: 2
 
 - type: entity
   id: AmmoTechFabCircuitboard
@@ -232,8 +241,9 @@
       state: security
     - type: MachineBoard
       prototype: AmmoTechFab
-      stackRequirements:
-        Manipulator: 2
+      partRequirements: # Orion
+        MatterBin: 2
+        Servo: 2
 
 - type: entity
   id: MedicalTechFabCircuitboard
@@ -245,12 +255,13 @@
       state: medical
     - type: MachineBoard
       prototype: MedicalTechFab
-      stackRequirements:
-        Manipulator: 4
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
+      partRequirements: # Orion
+        MatterBin: 2
+        Servo: 2
     - type: StealTarget
       stealGroup: MedicalTechFabCircuitboard
 
@@ -263,32 +274,35 @@
     state: science
   - type: MachineBoard
     prototype: CircuitImprinter
-    stackRequirements:
-      Manipulator: 2
     tagRequirements:
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+    partRequirements: # Orion
+      MatterBin: 1
+      Servo: 1
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: CircuitImprinterHyperConvectionMachineCircuitboard
-  name: hyper convection circuit imprinter machine board
-  description: A machine printed circuit board for a hyper convection circuit imprinter.
-  components:
-  - type: Sprite
-    state: science
-  - type: MachineBoard
-    prototype: CircuitImprinterHyperConvection
-    stackRequirements:
-      Manipulator: 2
-    tagRequirements:
-      GlassBeaker:
-        amount: 2
-        defaultPrototype: Beaker
-      Igniter:
-        amount: 1
-        defaultPrototype: Igniter
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: CircuitImprinterHyperConvectionMachineCircuitboard
+#  name: hyper convection circuit imprinter machine board
+#  description: A machine printed circuit board for a hyper convection circuit imprinter.
+#  components:
+#  - type: Sprite
+#    state: science
+#  - type: MachineBoard
+#    prototype: CircuitImprinterHyperConvection
+#    tagRequirements:
+#      GlassBeaker:
+#        amount: 2
+#        defaultPrototype: Beaker
+#      Igniter:
+#        amount: 1
+#        defaultPrototype: Igniter
+#    partRequirements: # Orion
+#      MatterBin: 1
+#      Servo: 1
 
 - type: entity
   id: ExosuitFabricatorMachineCircuitboard
@@ -300,8 +314,11 @@
   - type: MachineBoard
     prototype: ExosuitFabricator
     stackRequirements:
-      Manipulator: 4
-      Glass: 5
+      Glass: 1 # Orion-Edit: 5 > 1
+    partRequirements: # Orion
+      MatterBin: 2
+      Servo: 1
+      MicroLaser: 1
   - type: GuideHelp
     guides:
     - Robotics
@@ -330,12 +347,18 @@
     state: service
   - type: MachineBoard
     prototype: Biogenerator
-    stackRequirements:
-      Manipulator: 2
     tagRequirements:
       GlassBeaker:
         amount: 1
         defaultPrototype: Beaker
+    # Orion-Start
+    stackRequirements:
+      Cable: 1
+      Glass: 1
+    # Orion-End
+    partRequirements: # Orion
+      MatterBin: 1
+      Servo: 1
 
 - type: entity
   id: UniformPrinterMachineCircuitboard
@@ -344,8 +367,8 @@
   components:
   - type: MachineBoard
     prototype: UniformPrinter
-    stackRequirements:
-      Manipulator: 3
+    partRequirements: # Orion
+      Servo: 3
 
 - type: entity
   id: VaccinatorMachineCircuitboard
@@ -357,12 +380,13 @@
   - type: MachineBoard
     prototype: Vaccinator
     stackRequirements:
-      Manipulator: 2
       Cable: 5
     tagRequirements:
         GlassBeaker:
           amount: 1
           defaultPrototype: Beaker
+    partRequirements: # Orion
+      Servo: 2
 
 - type: entity
   id: DiagnoserMachineCircuitboard
@@ -395,8 +419,9 @@
     - type: MachineBoard
       prototype: MachineArtifactAnalyzer
       stackRequirements:
-        Manipulator: 1
         Glass: 5
+      partRequirements: # Orion
+        Capacitor: 1
 
 - type: entity
   id: ArtifactCrusherMachineCircuitboard
@@ -409,9 +434,10 @@
   - type: MachineBoard
     prototype: MachineArtifactCrusher
     stackRequirements:
-      Manipulator: 2
       Glass: 1
       Steel: 5
+    partRequirements: # Orion
+      Servo: 2
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -424,9 +450,10 @@
     - type: MachineBoard
       prototype: MachineAnomalyVessel
       stackRequirements:
-        Manipulator: 3
         Cable: 1
         PlasmaGlass: 10
+      partRequirements: # Orion
+        Servo: 3
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -439,10 +466,11 @@
   - type: MachineBoard
     prototype: MachineAnomalyVesselExperimental
     stackRequirements:
-      Manipulator: 3
       Cable: 5
       PlasmaGlass: 15
       MetalRod: 4
+    partRequirements: # Orion
+      Servo: 3
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -455,9 +483,10 @@
     - type: MachineBoard
       prototype: MachineAnomalySynchronizer
       stackRequirements:
-        Manipulator: 7
         PlasmaGlass: 5
         Cable: 5
+      partRequirements: # Orion
+        Servo: 7
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -470,9 +499,10 @@
     - type: MachineBoard
       prototype: MachineAPE
       stackRequirements:
-        Manipulator: 2
         Cable: 1
         Glass: 1
+      partRequirements: # Orion
+        Servo: 2
 
 - type: entity
   id: ThermomachineFreezerMachineCircuitBoard
@@ -485,8 +515,11 @@
   - type: MachineBoard
     prototype: GasThermoMachineFreezer
     stackRequirements:
-      Manipulator: 4
-      Cable: 5
+      Cable: 1 # Orion-Edit: 5 > 1
+      Glass: 1 # Orion
+    partRequirements: # Orion
+      MatterBin: 2
+      MicroLaser: 2
   - type: Construction
     deconstructionTarget: null
     graph: ThermomachineBoard
@@ -503,48 +536,55 @@
   - type: MachineBoard
     prototype: GasThermoMachineHeater
     stackRequirements:
-      Manipulator: 4
-      Cable: 5
+      Cable: 1 # Orion-Edit: 5 > 1
+      Glass: 1 # Orion
+    partRequirements: # Orion
+      MatterBin: 2
+      MicroLaser: 2
   - type: Construction
     graph: ThermomachineBoard
     deconstructionTarget: null
     node: heater
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: HellfireFreezerMachineCircuitBoard
-  name: hellfire freezer machine board
-  description: Looks like you could use a screwdriver to change the board type.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: GasThermoMachineHellfireFreezer
-    stackRequirements:
-      Manipulator: 4
-      Plasma: 1
-  - type: Construction
-    deconstructionTarget: null
-    graph: ThermomachineBoard
-    node: hellfirefreezer
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: HellfireFreezerMachineCircuitBoard
+#  name: hellfire freezer machine board
+#  description: Looks like you could use a screwdriver to change the board type.
+#  components:
+#  - type: Sprite
+#    state: engineering
+#  - type: MachineBoard
+#    prototype: GasThermoMachineHellfireFreezer
+#    stackRequirements:
+#      Plasma: 1
+#    partRequirements: # Orion
+#      Servo: 4
+#  - type: Construction
+#    deconstructionTarget: null
+#    graph: ThermomachineBoard
+#    node: hellfirefreezer
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: HellfireHeaterMachineCircuitBoard
-  name: hellfire heater machine board
-  description: Looks like you could use a screwdriver to change the board type.
-  components:
-  - type: Sprite
-    state: engineering
-  - type: MachineBoard
-    prototype: GasThermoMachineHellfireHeater
-    stackRequirements:
-      Manipulator: 4
-      Plasma: 1
-  - type: Construction
-    graph: ThermomachineBoard
-    deconstructionTarget: null
-    node: hellfireheater
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: HellfireHeaterMachineCircuitBoard
+#  name: hellfire heater machine board
+#  description: Looks like you could use a screwdriver to change the board type.
+#  components:
+#  - type: Sprite
+#    state: engineering
+#  - type: MachineBoard
+#    prototype: GasThermoMachineHellfireHeater
+#    stackRequirements:
+#      Plasma: 1
+#    partRequirements: # Orion
+#      Servo: 4
+#  - type: Construction
+#    graph: ThermomachineBoard
+#    deconstructionTarget: null
+#    node: hellfireheater
 
 - type: entity
   id: CondenserMachineCircuitBoard
@@ -557,8 +597,9 @@
   - type: MachineBoard
     prototype: BaseGasCondenser
     stackRequirements:
-      Manipulator: 1
       Glass: 1
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   id: PortableScrubberMachineCircuitBoard
@@ -571,9 +612,11 @@
   - type: MachineBoard
     prototype: PortableScrubber
     stackRequirements:
-      Manipulator: 3
       Cable: 5
       Glass: 2
+    partRequirements: # Orion
+      MicroLaser: 2
+      Capacitor: 2
 
 - type: entity
   id: SpaceHeaterMachineCircuitBoard
@@ -586,8 +629,10 @@
   - type: MachineBoard
     prototype: SpaceHeater
     stackRequirements:
-      Manipulator: 3
-      Cable: 5
+      Cable: 3 # Orion-Edit: 5 > 3
+    partRequirements: # Orion
+      MicroLaser: 2
+      Capacitor: 2
 
 - type: entity
   id: CloningPodMachineCircuitboard
@@ -600,9 +645,10 @@
     - type: MachineBoard
       prototype: CloningPod
       stackRequirements:
-        Manipulator: 4
         Glass: 1
-        Cable: 1
+#        Cable: 1 # Orion-Edit
+      partRequirements: # Orion
+        Capacitor: 1
 
 - type: entity
   id: MedicalScannerMachineCircuitboard
@@ -615,9 +661,10 @@
     - type: MachineBoard
       prototype: MedicalScanner
       stackRequirements:
-        Manipulator: 1
         Glass: 5
         Cable: 1
+      partRequirements: # Orion
+        Servo: 1
 
 - type: entity
   id: CrewMonitoringServerMachineCircuitboard
@@ -644,6 +691,9 @@
       stackRequirements:
         Glass: 5
         Cable: 1
+      partRequirements: # Orion
+        MatterBin: 2
+        MicroLaser: 1
 
 - type: entity
   id: ChemMasterMachineCircuitboard
@@ -656,13 +706,14 @@
     - type: MachineBoard
       prototype: ChemMaster
       stackRequirements:
-        Manipulator: 1
         Glass: 1
         Cable: 1
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
+      partRequirements: # Orion
+        Servo: 1
 
 - type: entity
   id: ChemDispenserMachineCircuitboard
@@ -675,13 +726,21 @@
     - type: MachineBoard
       prototype: ChemDispenserEmpty
       stackRequirements:
-        Manipulator: 1
         Glass: 1
-        Steel: 3
+#        Steel: 3 # Orion-Edit
+      # Orion-Start
+      componentRequirements:
+        PowerCell:
+          amount: 1
+          defaultPrototype: PowerCellSmall
+      # Orion-End
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
+      partRequirements: # Orion
+        Servo: 2
+        Capacitor: 2
 
 - type: entity
   id: BiomassReclaimerMachineCircuitboard
@@ -694,13 +753,14 @@
   - type: MachineBoard
     prototype: BiomassReclaimer
     stackRequirements:
-      Manipulator: 3
       Steel: 5
     tagRequirements:
       Knife:
         amount: 2
         defaultPrototype: KitchenKnife
         examineName: construction-insert-info-examine-name-knife
+    partRequirements: # Orion
+      Servo: 3
 
 - type: entity
   id: HydroponicsTrayMachineCircuitboard
@@ -714,12 +774,15 @@
       prototype: HydroponicsTrayEmpty
       stackRequirements:
         # replacing the console screen
-        Glass: 5
-        Cable: 2
+        Glass: 1 # Orion-Edit: 5 > 1
+#        Cable: 2 # Orion-Edit
       tagRequirements:
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
+      partRequirements: # Orion
+        MatterBin: 2
+        Servo: 2
 
 - type: entity
   id: SeedExtractorMachineCircuitboard
@@ -732,10 +795,11 @@
     - type: MachineBoard
       prototype: SeedExtractor
       stackRequirements:
-        Manipulator: 3
         # replacing the console screen
         Glass: 1
-        Cable: 2
+#        Cable: 2 # Orion-Edit
+      partRequirements: # Orion
+        Servo: 1
 
 - type: entity
   id: SMESMachineCircuitboard
@@ -749,12 +813,13 @@
     - type: MachineBoard
       prototype: SMESBasicEmpty
       stackRequirements:
-        Manipulator: 1
-        CableHV: 10
+        CableHV: 5 # Orion-Edit: 10 > 5
       componentRequirements:
         MegaCell: # Orion-Edit
-          amount: 4
+          amount: 5 # Orion-Edit: 4 > 5
           defaultPrototype: MegaCellSmall # Orion-Edit
+      partRequirements: # Orion
+        Capacitor: 1
 
 - type: entity
   id: SMESAdvancedMachineCircuitboard
@@ -768,12 +833,13 @@
   - type: MachineBoard
     prototype: SMESAdvancedEmpty
     stackRequirements:
-      Manipulator: 2
       CableHV: 20
     componentRequirements:
       MegaCell: # Orion-Edit
         amount: 4
         defaultPrototype: MegaCellHigh # Orion-Edit
+    partRequirements: # Orion
+      Capacitor: 1
 
 - type: entity
   id: CellRechargerCircuitboard
@@ -787,8 +853,9 @@
     - type: MachineBoard
       prototype: PowerCellRecharger
       stackRequirements:
-        Manipulator: 2
         Cable: 5
+      partRequirements: # Orion
+        Capacitor: 1
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Steel: 12
@@ -812,9 +879,10 @@
     - type: MachineBoard
       prototype: PowerCageRecharger
       stackRequirements:
-        Manipulator: 4
         Steel: 5
         Cable: 10
+      partRequirements: # Orion
+        Servo: 4
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Steel: 25
@@ -834,8 +902,16 @@
     - type: MachineBoard
       prototype: BorgCharger
       stackRequirements:
-        Manipulator: 2
         Cable: 5
+      # Orion-Start
+      componentRequirements:
+        PowerCell:
+          amount: 1
+          defaultPrototype: PowerCellSmall
+      # Orion-End
+      partRequirements: # Orion
+        Capacitor: 2
+        Servo: 1
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Steel: 12
@@ -859,8 +935,9 @@
     - type: MachineBoard
       prototype: WeaponCapacitorRecharger
       stackRequirements:
-        Manipulator: 2
         CableMV: 5
+      partRequirements: # Orion
+        Capacitor: 1
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Steel: 12
@@ -868,25 +945,27 @@
     - type: StaticPrice
       price: 15
 
-- type: entity
-  id: TurboItemRechargerCircuitboard
-  parent: BaseMachineCircuitboard
-  name: turbo recharger machine board
-  description: A machine printed circuit board for a turbo recharger.
-  components:
-  - type: Sprite
-    sprite: Objects/Misc/module.rsi
-    state: charger_APC
-  - type: MachineBoard
-    prototype: TurboItemRecharger
-    stackRequirements:
-      Manipulator: 2
-      CableMV: 5
-  - type: PhysicalComposition #Goobstation - Recycle update
-    materialComposition:
-      Steel: 25
-      Glass: 125
-      Gold: 25
+# Orion-Edit: Redundant
+#- type: entity
+#  id: TurboItemRechargerCircuitboard
+#  parent: BaseMachineCircuitboard
+#  name: turbo recharger machine board
+#  description: A machine printed circuit board for a turbo recharger.
+#  components:
+#  - type: Sprite
+#    sprite: Objects/Misc/module.rsi
+#    state: charger_APC
+#  - type: MachineBoard
+#    prototype: TurboItemRecharger
+#    stackRequirements:
+#      CableMV: 5
+#    partRequirements: # Orion
+#      Servo: 2
+#  - type: PhysicalComposition #Goobstation - Recycle update
+#    materialComposition:
+#      Steel: 25
+#      Glass: 125
+#      Gold: 25
 
 - type: entity
   id: SubstationMachineCircuitboard
@@ -897,13 +976,14 @@
     - type: MachineBoard
       prototype: SubstationBasicEmpty
       stackRequirements:
-        Manipulator: 1
         CableMV: 5
         CableHV: 5
       componentRequirements:
         MegaCell: # Orion-Edit
           amount: 1
           defaultPrototype: MegaCellSmall # Orion-Edit
+      partRequirements: # Orion
+        Servo: 1
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Glass: 125
@@ -957,8 +1037,9 @@
     - type: MachineBoard
       prototype: PortableGeneratorPacman
       stackRequirements:
-        Manipulator: 1
         CableHV: 5
+      partRequirements: # Orion
+        Servo: 1
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Glass: 125
@@ -977,8 +1058,9 @@
   - type: MachineBoard
     prototype: Thruster
     stackRequirements:
-      Manipulator: 4
       Steel: 5
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: GyroscopeMachineCircuitboard
@@ -990,8 +1072,9 @@
   - type: MachineBoard
     prototype: Gyroscope
     stackRequirements:
-      Manipulator: 3
       Glass: 2
+    partRequirements: # Orion
+      Servo: 3
 
 - type: entity
   id: PortableGeneratorSuperPacmanMachineCircuitboard
@@ -1003,8 +1086,9 @@
     - type: MachineBoard
       prototype: PortableGeneratorSuperPacman
       stackRequirements:
-        Manipulator: 2
         CableHV: 10
+      partRequirements: # Orion
+        Servo: 2
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Glass: 125
@@ -1023,8 +1107,9 @@
     - type: MachineBoard
       prototype: PortableGeneratorJrPacman
       stackRequirements:
-        Manipulator: 1
         Cable: 10
+      partRequirements: # Orion
+        Servo: 1
     - type: PhysicalComposition #Goobstation - Recycle update
       materialComposition:
         Glass: 125
@@ -1041,12 +1126,13 @@
   components:
     - type: MachineBoard
       prototype: KitchenReagentGrinder
-      stackRequirements:
-        Manipulator: 4
       tagRequirements:
         GlassBeaker:
           amount: 1
           defaultPrototype: Beaker
+      partRequirements: # Orion
+        Servo: 1
+        MatterBin: 1
 
 - type: entity
   id: HotplateMachineCircuitboard
@@ -1059,8 +1145,9 @@
   - type: MachineBoard
     prototype: ChemistryHotplate
     stackRequirements:
-      Manipulator: 2
       Glass: 1
+    partRequirements: # Orion
+      MicroLaser: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1073,9 +1160,10 @@
   - type: MachineBoard
     prototype: KitchenElectricGrill
     stackRequirements:
-      Manipulator: 4
       Glass: 2
       Cable: 5
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: StasisBedMachineCircuitboard
@@ -1087,9 +1175,11 @@
     - type: MachineBoard
       prototype: StasisBed
       stackRequirements:
-        Manipulator: 2
         Cable: 3
         Steel: 2
+      partRequirements: # Orion
+        Servo: 1
+        Capacitor: 1
 
 - type: entity
   id: ElectrolysisUnitMachineCircuitboard
@@ -1102,8 +1192,11 @@
   - type: MachineBoard
     prototype: MachineElectrolysisUnit
     stackRequirements:
-      Manipulator: 2
-      Cable: 1
+      Cable: 5 # Orion-Edit: 1 > 5
+      Glass: 1 # Orion
+    partRequirements: # Orion
+      Servo: 2
+      Capacitor: 2
 
 - type: entity
   id: CentrifugeMachineCircuitboard
@@ -1116,8 +1209,9 @@
   - type: MachineBoard
     prototype: MachineCentrifuge
     stackRequirements:
-      Manipulator: 1
       Steel: 1
+    partRequirements: # Orion
+      Servo: 1
 
 - type: entity
   id: MaterialSiloMachineCircuitboard
@@ -1129,8 +1223,9 @@
   - type: MachineBoard
     prototype: MaterialSilo #Goobstation - Silo
     stackRequirements:
-      Manipulator: 4
       Cable: 1
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   id: OreProcessorMachineCircuitboard
@@ -1142,21 +1237,28 @@
     - type: MachineBoard
       prototype: OreProcessor
       stackRequirements:
-        Manipulator: 4
         Glass: 1
+      partRequirements: # Orion
+        MatterBin: 1
+        MicroLaser: 1
+        Servo: 1
 
-- type: entity
-  parent: BaseMachineCircuitboard
-  id: OreProcessorIndustrialMachineCircuitboard
-  name: industrial ore processor machine board
-  components:
-  - type: Sprite
-    state: supply
-  - type: MachineBoard
-    prototype: OreProcessorIndustrial
-    stackRequirements:
-      Manipulator: 4
-      Glass: 1
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: BaseMachineCircuitboard
+#  id: OreProcessorIndustrialMachineCircuitboard
+#  name: industrial ore processor machine board
+#  components:
+#  - type: Sprite
+#    state: supply
+#  - type: MachineBoard
+#    prototype: OreProcessorIndustrial
+#    stackRequirements:
+#      Glass: 1
+#    partRequirements: # Orion
+#      MatterBin: 1
+#      MicroLaser: 1
+#      Servo: 1
 
 - type: entity
   id: SheetifierMachineCircuitboard
@@ -1165,8 +1267,9 @@
   components:
   - type: MachineBoard
     prototype: Sheetifier
-    stackRequirements:
-      Manipulator: 2
+    partRequirements: # Orion
+      Servo: 2
+      MatterBin: 2
 
 - type: entity
   id: MicrowaveMachineCircuitboard
@@ -1178,9 +1281,12 @@
     - type: MachineBoard
       prototype: KitchenMicrowave
       stackRequirements:
-        Manipulator: 1
         Glass: 2
         Cable: 2
+      partRequirements: # Orion
+        MicroLaser: 1
+        MatterBin: 1
+        Capacitor: 1
     - type: Tag
       tags:
       - DroneUsable # Goobstation
@@ -1196,9 +1302,12 @@
     - type: MachineBoard
       prototype: SyndicateMicrowave
       stackRequirements:
-        Manipulator: 1
         Glass: 2
         Cable: 2
+      partRequirements: # Orion
+        MicroLaser: 1
+        MatterBin: 1
+        Capacitor: 1
 
 - type: entity
   id: FatExtractorMachineCircuitboard
@@ -1209,13 +1318,13 @@
       state: service
     - type: MachineBoard
       prototype: FatExtractor
-      stackRequirements:
-        Manipulator: 1
       componentRequirements:
         Utensil:
           amount: 1
           defaultPrototype: ForkPlastic
           examineName: construction-insert-info-examine-name-utensil
+      partRequirements: # Orion
+        MicroLaser: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1225,8 +1334,12 @@
   - type: MachineBoard
     prototype: MachineFlatpacker
     stackRequirements:
-      Manipulator: 3
-      Steel: 1
+#      Steel: 1 # Orion-Edit
+      Plasteel: 5 # Orion
+    partRequirements: # Orion
+      MatterBin: 2
+      MicroLaser: 2
+      Servo: 1
 
 - type: entity
   id: EmitterCircuitboard
@@ -1238,9 +1351,11 @@
     - type: MachineBoard
       prototype: Emitter
       stackRequirements:
-        Manipulator: 2
         CableHV: 5
         Glass: 2
+      partRequirements: # Orion
+        MicroLaser: 1
+        Servo: 1
 
 - type: entity
   id: SurveillanceCameraRouterCircuitboard
@@ -1308,9 +1423,10 @@
   - type: MachineBoard
     prototype: GasRecycler
     stackRequirements:
-      Manipulator: 2
       Steel: 10
       Plasma: 5
+    partRequirements: # Orion
+      Servo: 2
 
 - type: entity
   id: BoozeDispenserMachineCircuitboard
@@ -1324,6 +1440,9 @@
       prototype: BoozeDispenser # Orion-Edit
       stackRequirements:
         Steel: 5
+      partRequirements: # Orion
+        Servo: 2
+        Capacitor: 1
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1340,9 +1459,10 @@
     - type: MachineBoard
       prototype: CargoTelepad
       stackRequirements:
-        Manipulator: 2
         Steel: 5
         BSCrystal: 2 # Goobstation
+      partRequirements: # Orion
+        Servo: 1
 
 - type: entity
   id: MailTeleporterMachineCircuitboard
@@ -1355,8 +1475,11 @@
   - type: MachineBoard
     prototype: MailTeleporter #Goobstation
     stackRequirements:
-      Manipulator: 2
-      Steel: 5
+#      Steel: 5 # Orion-Edit
+      Glass: 1 # Orion
+    partRequirements: # Orion
+      MatterBin: 2
+      ScanningModule: 1
 
 - type: entity
   id: SodaDispenserMachineCircuitboard
@@ -1370,6 +1493,9 @@
       prototype: SodaDispenser # Orion-Edit
       stackRequirements:
         Steel: 5
+      partRequirements: # Orion
+        Servo: 2
+        Capacitor: 1
       tagRequirements:
           GlassBeaker:
             amount: 1
@@ -1400,10 +1526,12 @@
   - type: MachineBoard
     prototype: SalvageMagnet
     stackRequirements:
-      Manipulator: 4
       Steel: 5
       CableHV: 5
       Cable: 2
+    partRequirements: # Orion
+      Servo: 1
+      MatterBin: 1
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1416,10 +1544,11 @@
   - type: MachineBoard
     prototype: GravityGeneratorMini
     stackRequirements:
-      Manipulator: 7
       Steel: 5
       CableHV: 5
       Uranium: 2
+    partRequirements: # Orion
+      Servo: 7
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1430,11 +1559,12 @@
   - type: MachineBoard
     prototype: StationAnchor
     stackRequirements:
-      Manipulator: 7
       Steel: 10
       Glass: 5
       CableHV: 8
       Uranium: 2
+    partRequirements: # Orion
+      Servo: 7
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1444,8 +1574,9 @@
   - type: MachineBoard
     prototype: ReagentGrinderIndustrial
     stackRequirements:
-      Manipulator: 4
       Glass: 1
+    partRequirements: # Orion
+      Servo: 4
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -1472,8 +1603,9 @@
     prototype: CutterMachine
     stackRequirements:
       Steel: 2
-      Manipulator: 2
       Cable: 1
+    partRequirements: # Orion
+      Servo: 2
 
 # Shitmed Change Start
 - type: entity
@@ -1486,6 +1618,6 @@
       state: medical
     - type: MachineBoard
       prototype: MedicalBiofabricator
-      stackRequirements:
-        Manipulator: 4
+      partRequirements: # Orion
+        Servo: 4
 # Shitmed Change End

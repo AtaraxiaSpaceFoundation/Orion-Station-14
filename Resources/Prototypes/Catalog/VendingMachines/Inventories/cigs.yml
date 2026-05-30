@@ -46,3 +46,11 @@
   emaggedInventory:
     CigPackSyndicate: 1 #Goob station
     CybersunFlippo: 1 # Goob
+  # Orion-Start
+  prices:
+    Matchbox: 20
+    CheapLighter: 55
+    PackPaperRollingFilters: 25
+    FlippoLighter: 155
+  # Orion-End
+

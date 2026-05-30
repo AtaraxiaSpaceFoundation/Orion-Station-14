@@ -262,7 +262,7 @@
       spawnerPrototype: SpawnPointNukeopsCommander
       startingGear: SyndicateCommanderGearFull
       unequipOldGear: true
-      chaosScore: 300 # Goobstation
+      chaosScore: 300
       roleLoadout:
       - RoleSurvivalNukie
       components:
@@ -667,6 +667,14 @@
   id: BasicRoundstartVariation
   parent: BaseGameRule
   components:
+  # Orion-Start
+  - type: SubGamemodes
+    rules:
+    - id: Payday
+      prob: 1
+    - id: MarketShift
+      prob: 1
+  # Orion-End
   - type: RoundstartStationVariationRule
     rules:
     - id: BasicPoweredLightVariationPass

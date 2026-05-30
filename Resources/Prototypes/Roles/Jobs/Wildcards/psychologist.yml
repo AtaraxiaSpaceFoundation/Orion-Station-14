@@ -107,6 +107,10 @@
   icon: "JobIconPsychologist"
   supervisors: job-supervisors-cmo
   goobcoins: 15 #Goob content
+  # Orion-Start
+  salary: 60
+  payrollDepartmentAccount: Medical
+  # Orion-End
   access:
   - Medical
   - Maintenance

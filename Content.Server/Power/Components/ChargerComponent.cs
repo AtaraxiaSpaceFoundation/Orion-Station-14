@@ -17,8 +17,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Power;
 using Content.Shared.Whitelist;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Power.Components
 {
@@ -33,6 +35,17 @@ namespace Content.Server.Power.Components
         /// </summary>
         [DataField("chargeRate")]
         public float ChargeRate = 20.0f;
+
+        // Orion-Start
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float BaseChargeRate;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float FinalChargeRate;
+
+        [DataField]
+        public ProtoId<MachinePartPrototype> ChargePart = "Capacitor";
+        // Orion-End
 
         /// <summary>
         /// The container ID that is holds the entities being charged.

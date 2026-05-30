@@ -31,9 +31,9 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 20
-        Radiation: 15
-      armorPenetration: 0.35
+        Piercing: 18
+        Radiation: 12
+      armorPenetration: 0.55
 
 - type: entity
   parent: BaseBulletPractice

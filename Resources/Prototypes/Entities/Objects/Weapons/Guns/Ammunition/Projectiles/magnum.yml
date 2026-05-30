@@ -70,7 +70,7 @@
     damage:
       types:
         Blunt: 7
-        Heat: 7
+        Heat: 10 # Orion-Edit: 7 > 10
 
 - type: entity
   id: BulletMagnumAP
@@ -92,6 +92,7 @@
   components:
   - type: Projectile
     damage:
-      types:
-        Radiation: 15
+      types: 
+        Radiation: 10 # Orion-Edit: 15 > 10
         Piercing: 20
+      armorPenetration: 0.25 # Orion

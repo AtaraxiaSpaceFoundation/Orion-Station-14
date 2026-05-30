@@ -6,3 +6,5 @@ secretplus-admeme-title = Секрет+ Хаос
 secretplus-admeme-description = Если это может случиться — оно случится.
 survivalplus-title = Выживание+
 survivalplus-description = Начинается довольно спокойно. Заканчивается... не совсем.
+secretplus-lowpop-title = Секрет+ Лоу-поп
+secretplus-lowpop-description = Более активный, но менее опасный. Для малого количества экипажа.

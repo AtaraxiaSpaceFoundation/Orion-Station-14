@@ -12,8 +12,8 @@ namespace Content.Shared.MassMedia.Systems;
 
 public abstract class SharedNewsSystem : EntitySystem
 {
-    public const int MaxTitleLength = 25;
-    public const int MaxContentLength = 2048;
+    public const int MaxTitleLength = 48; // Orion-Edit: 25 > 48
+    public const int MaxContentLength = 4048; // Orion-Edit: 2048 > 4048
 }
 
 [Serializable, NetSerializable]

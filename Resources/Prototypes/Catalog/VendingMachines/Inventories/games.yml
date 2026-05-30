@@ -32,6 +32,7 @@
     BooksBag: 3
     CardBoxBlack: 3 # GoobStation
     PokerChipsBox: 1 # Orion
+#    PokerChips100: 6 # GoobStation | Orion-Edit: Duplicate
   contrabandInventory:
     Basketball: 1
     FoodSnackBoritos: 3

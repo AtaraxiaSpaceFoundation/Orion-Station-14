@@ -1,0 +1,19 @@
+<!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
+
+---
+description: UI, XAML, BUI, and predicted client-state rules for SS14 client work.
+globs:
+  - Content.Client/**/*.cs
+  - Content.Client/**/*.xaml
+  - Content.Client/**/*.xaml.cs
+alwaysApply: false
+---
+
+Read these skills before editing matching files:
+
+- @.agents/skills/ss14-naming-conventions/SKILL.md
+- @.agents/skills/ss14-upstream-maintenance/SKILL.md
+- @.agents/skills/ss14-prediction/SKILL.md
+- @.agents/skills/ss14-localization-strings/SKILL.md
+- @.agents/skills/ss14-localization-code/SKILL.md
+- @.agents/skills/ss14-ui-bui/SKILL.md

@@ -26,8 +26,8 @@
     examinable: false
   - type: Explosive
     explosionType: Default
-    maxIntensity: 8
-    intensitySlope: 5
+    maxIntensity: 12 # Orion-Edit: 8 > 12
+    intensitySlope: 15 # Orion-Edit: 5 > 15
     totalIntensity: 20
     canCreateVacuum: false
   - type: ActivateOnPaperOpened

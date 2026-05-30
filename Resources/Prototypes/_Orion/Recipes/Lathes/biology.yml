@@ -32,17 +32,6 @@
     Plastic: 200
 
 - type: latheRecipe
-  id: SlimeScannerXenobio
-  result: SlimeScannerXenobio
-  categories:
-  - Medical
-  completetime: 4
-  materials:
-    Steel: 400
-    Glass: 250
-    Plastic: 200
-
-- type: latheRecipe
   id: VaccinatorMachineCircuitboard
   result: VaccinatorMachineCircuitboard
   categories:
@@ -52,13 +41,3 @@
     Steel: 400
     Glass: 250
     Plastic: 200
-
-- type: latheRecipe
-  id: XenobiologyBountyComputerCircuitboard
-  result: XenobiologyBountyComputerCircuitboard
-  categories:
-  - Service
-  completetime: 4
-  materials:
-    Steel: 300
-    Plastic: 150

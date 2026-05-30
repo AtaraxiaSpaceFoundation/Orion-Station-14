@@ -1,0 +1,16 @@
+- type: entity
+  parent: [ BaseBorgModuleEngineering, BaseProviderBorgModule ]
+  id: BorgModuleRPED
+  name: RPED cyborg module
+  description: Engineering module containing a rapid part exchange device.
+  components:
+  - type: Sprite
+    layers:
+    - state: engineering
+    - state: icon-tools-adv
+  - type: ItemBorgModule
+    moduleId: RPED
+    items:
+    - RapidPartExchangerBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Orion/Interface/Actions/actions_borg.rsi, state: rped-module }

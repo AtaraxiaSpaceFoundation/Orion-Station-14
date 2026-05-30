@@ -11,3 +11,7 @@ ent-CBURNLeaderIDcard = ID карта Лидер РХБЗЗ
     .suffix = Лидер РХБЗЗ
 ent-CentcomIDCardDeathsquadLeader = ID карта Лидер Эскадрона
     .desc = { ent-CentcomIDCardDeathsquad.desc }
+ent-BitrunnerIDCard = ID карта битраннера
+    .desc = { ent-IDCardStandard.desc }
+ent-BitrunAvatarIDCard = ID карта аватара битрана
+    .desc = { ent-IDCardStandard.desc }

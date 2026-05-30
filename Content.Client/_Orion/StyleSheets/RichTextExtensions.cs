@@ -1,7 +1,6 @@
-using System.Linq;
-using System.Text.RegularExpressions;
+using Content.Client._Orion.RichText;
+using Content.Shared._Orion.RichText;
 using Robust.Client.UserInterface.Controls;
-using Robust.Client.UserInterface.RichText;
 using Robust.Shared.Utility;
 
 namespace Content.Client._Orion.StyleSheets;
@@ -16,33 +15,15 @@ namespace Content.Client._Orion.StyleSheets;
 /// </summary>
 public static class RichTextExtensions
 {
-    private static readonly Regex TagRegex = new(@"\[/?(?<tag>[a-zA-Z]+)(?:=[^\\\]]+)?\]", RegexOptions.Compiled);
-
-    private static readonly Type[] AllowedTags = new[]
-    {
-        typeof(BoldItalicTag), // [bolditalic]
-        typeof(BoldTag), // [bold]
-        typeof(ColorTag), // [color=Red] / [color=#FF0000]
-        typeof(ItalicTag), // [italic]
-    };
-
     /// <summary>
     /// Sanitizes the input string by removing unsupported BBCode tags (e.g. [font=...]), keeping only whitelisted ones.
     /// Prevents client crashes caused by malicious or malformed BBCode.
     /// </summary>
     /// <param name="text">Input text containing BBCode tags.</param>
     /// <returns>Text with only allowed tags remaining.</returns>
-    public static string SanitizeMarkup(string text)
+    private static string SanitizeMarkup(string text)
     {
-        if (string.IsNullOrEmpty(text))
-            return text;
-
-        return TagRegex.Replace(text,
-            match =>
-        {
-            var tag = match.Groups["tag"].Value;
-            return AllowedTags.Any(t => t.Name.Replace("Tag", "").Equals(tag, StringComparison.OrdinalIgnoreCase)) ? match.Value : "";
-        });
+        return SafeMarkup.SanitizeBasic(text);
     }
 
     /// <summary>
@@ -54,6 +35,6 @@ public static class RichTextExtensions
     public static void SetMarkup(this RichTextLabel label, string message)
     {
         var safeMessage = SanitizeMarkup(message);
-        label.SetMessage(FormattedMessage.FromMarkupPermissive(safeMessage));
+        label.SetMessage(FormattedMessage.FromMarkupPermissive(safeMessage), SafeMarkupTags.Basic);
     }
 }

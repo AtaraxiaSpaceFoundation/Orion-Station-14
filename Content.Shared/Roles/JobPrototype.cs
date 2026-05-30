@@ -97,6 +97,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Access;
+using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
@@ -241,6 +242,21 @@ namespace Content.Shared.Roles
 
         [DataField("extendedAccessGroups")]
         public IReadOnlyCollection<ProtoId<AccessGroupPrototype>> ExtendedAccessGroups { get; private set; } = Array.Empty<ProtoId<AccessGroupPrototype>>();
+
+        // Orion-Start
+        [DataField]
+        public int? Salary { get; private set; }
+
+        [DataField]
+        public ProtoId<CargoAccountPrototype>? PayrollDepartmentAccount { get; private set; }
+
+        /// <summary>
+        /// If true payment will be from department account.
+        /// If false payment will be from deep-deep space, money from nothing!
+        /// </summary>
+        [DataField]
+        public bool PayrollFromStationBudget { get; private set; } = true;
+        // Orion-End
 
         [DataField]
         public bool Whitelisted;

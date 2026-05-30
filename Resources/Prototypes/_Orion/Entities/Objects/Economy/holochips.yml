@@ -1,0 +1,79 @@
+- type: entity
+  parent: BaseItem
+  id: CreditHolochip
+  name: credit holochip
+  description: A holographic credit carrier.
+  components:
+  - type: Cash
+  - type: CreditHolochip
+  - type: Stack
+    stackType: CreditHolochip
+    count: 1
+    baseLayer: base
+    layerStates:
+    - holochip-color
+    - holochip_kilo-color
+    - holochip_mega-color
+    - holochip_giga-color
+    layerFunction: Threshold
+  - type: StackLayerThreshold
+    thresholds: [1000, 1000000, 1000000000]
+  - type: Sprite
+    sprite: _Orion/Objects/Economy/holochip.rsi
+    state: holochip
+    layers:
+    - state: holochip-color
+      map: ["base"]
+    - state: holochip
+      map: ["overlay"]
+  - type: Appearance
+  - type: StaticPrice
+    price: 0
+
+- type: entity
+  parent: CreditHolochip
+  id: CreditHolochip10
+  suffix: 10
+  components:
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: CreditHolochip
+  id: CreditHolochip100
+  suffix: 100
+  components:
+  - type: Stack
+    count: 100
+
+- type: entity
+  parent: CreditHolochip
+  id: CreditHolochip500
+  suffix: 500
+  components:
+  - type: Stack
+    count: 500
+
+- type: entity
+  parent: CreditHolochip
+  id: CreditHolochip1000
+  suffix: 1000
+  components:
+  - type: Stack
+    count: 1000
+
+- type: entity
+  parent: CreditHolochip
+  id: CreditHolochip5000
+  suffix: 5000
+  components:
+  - type: Stack
+    count: 5000
+
+- type: entity
+  parent: CreditHolochip
+  id: CreditHolochip10000
+  suffix: 10000
+  components:
+  - type: Stack
+    count: 10000

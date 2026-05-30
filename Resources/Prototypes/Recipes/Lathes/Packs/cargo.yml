@@ -37,11 +37,15 @@
 - type: latheRecipePack
   id: CargoBoards
   recipes:
-  - OreProcessorIndustrialMachineCircuitboard
+#  - OreProcessorIndustrialMachineCircuitboard # Orion-Edit: Redundant
   - CargoTelepadMachineCircuitboard
   #- ShuttleGunKineticCircuitboard - Goobstation - Moved to MiningBoards
   # Orion-Start
   - CargoRequestComputerCircuitboard
   - CargoBountyComputerCircuitboard
   - MaterialSiloMachineCircuitboard
+  - QuantumConsoleCircuitboard
+  - QuantumServerMachineCircuitboard
+  - NetpodMachineCircuitboard
+  - ByteforgeMachineCircuitboard
   # Orion-End

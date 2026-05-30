@@ -37,7 +37,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
-    projectileSpeed: 20 # Orion
+    projectileSpeed: 26 # Orion
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto

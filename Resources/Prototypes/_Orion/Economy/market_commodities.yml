@@ -1,0 +1,137 @@
+- type: marketCommodity
+  id: Plasma
+  material: Plasma
+  highDemandMultiplier: 2.0
+  lowDemandMultiplier: 0.75
+
+- type: marketCommodity
+  id: Gold
+  material: Gold
+  highDemandMultiplier: 1.8
+  lowDemandMultiplier: 0.8
+
+- type: marketCommodity
+  id: Uranium
+  material: Uranium
+  highDemandMultiplier: 1.6
+  lowDemandMultiplier: 0.85
+
+- type: marketCommodity
+  id: Silver
+  material: Silver
+  highDemandMultiplier: 1.5
+  lowDemandMultiplier: 0.85
+
+- type: marketCommodity
+  id: Plastic
+  material: Plastic
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Steel
+  material: Steel
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Brass
+  material: Brass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Plasteel
+  material: Plasteel
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Glass
+  material: Glass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: ReinforcedGlass
+  material: ReinforcedGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: PlasmaGlass
+  material: PlasmaGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: ReinforcedPlasmaGlass
+  material: ReinforcedPlasmaGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: BrassGlass
+  material: BrassGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: UraniumGlass
+  material: UraniumGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: ReinforcedUraniumGlass
+  material: ReinforcedUraniumGlass
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Cardboard
+  material: Cardboard
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Cloth
+  material: Cloth
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Durathread
+  material: Durathread
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Paper
+  material: Paper
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Wood
+  material: Wood
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Bananium
+  material: Bananium
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Bones
+  material: Bones
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9
+
+- type: marketCommodity
+  id: Gunpowder
+  material: Gunpowder
+  highDemandMultiplier: 1.35
+  lowDemandMultiplier: 0.9

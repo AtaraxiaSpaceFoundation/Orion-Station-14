@@ -742,7 +742,7 @@
         components:
         - Electronics
         - MachineBoard
-    - id: MicroManipulatorStockPart
+    - id: MicroServoStockPart # Orion-Edit: Servo
       whitelist:
         components:
         - StockPart

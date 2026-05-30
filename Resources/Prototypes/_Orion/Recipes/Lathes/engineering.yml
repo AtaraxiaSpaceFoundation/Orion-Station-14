@@ -40,16 +40,6 @@
     Plastic: 150
 
 - type: latheRecipe
-  id: GeigerCounter
-  result: GeigerCounter
-  categories:
-  - Engineering
-  completetime: 4
-  materials:
-    Steel: 500
-    Glass: 300
-
-- type: latheRecipe
   id: InducerEngineering
   result: InducerEngineering
   categories:

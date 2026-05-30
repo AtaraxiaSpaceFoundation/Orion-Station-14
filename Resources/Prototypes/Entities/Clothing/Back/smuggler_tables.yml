@@ -225,8 +225,8 @@
     - id: DawInstrumentMachineCircuitboard
     - id: PortableGeneratorPacmanMachineCircuitboard
     - id: PortableGeneratorSuperPacmanMachineCircuitboard
-    - id: HellfireFreezerMachineCircuitBoard
-    - id: HellfireHeaterMachineCircuitBoard
+#    - id: HellfireFreezerMachineCircuitBoard # Orion-Edit: Redundant
+#    - id: HellfireHeaterMachineCircuitBoard # Orion-Edit: Redundant
     - id: ReagentGrinderMachineCircuitboard
     - id: ReagentGrinderIndustrialMachineCircuitboard
     - id: BoozeDispenserMachineCircuitboard
@@ -235,7 +235,7 @@
     - id: CryoPodMachineCircuitboard
     - id: PowerCageRechargerCircuitboard
     - id: ShuttleConsoleCircuitboard
-    - id: TurboItemRechargerCircuitboard
+#    - id: TurboItemRechargerCircuitboard # Orion-Edit: Redundant
 
 - type: entityTable
   id: RandomSatchelTable3

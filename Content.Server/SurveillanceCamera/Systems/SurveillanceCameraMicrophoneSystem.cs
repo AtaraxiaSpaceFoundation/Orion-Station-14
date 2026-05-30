@@ -50,7 +50,7 @@ public sealed class SurveillanceCameraMicrophoneSystem : EntitySystem
             if (range < 0 || range > ev.VoiceRange)
                 continue;
 
-            foreach (var viewer in camera.ActiveViewers)
+            foreach (var viewer in camera.ActiveViewers.Keys) // Orion-Edit
             {
                 // if the player has not already received the chat message, send it to them but don't log it to the chat
                 // window. This is simply so that it appears in camera.

@@ -1,7 +1,9 @@
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Goobstation.Shared.Fishing.Components;
+using Content.Server.Construction.Components;
 using Content.Server.Research.Components;
 using Content.Shared._EinsteinEngines.Silicon.Components;
+using Content.Shared._Orion.Construction.Components;
 using Content.Shared._Orion.Research;
 using Content.Shared._Orion.Research.Components;
 using Content.Shared._Orion.Research.Prototypes;
@@ -371,6 +373,9 @@ public sealed partial class ResearchSystem
         if (!MatchesExplosiveObjective(subject, objective))
             return false;
 
+        if (!MatchesMachineTierObjective(subject, objective))
+            return false;
+
         foreach (var condition in objective.RequiredConditions)
         {
             if (!MatchesEntityCondition(subject, condition))
@@ -453,6 +458,34 @@ public sealed partial class ResearchSystem
 
         var purity = requiredMoles / gasMix.TotalMoles;
         return purity >= minPurity;
+    }
+
+    private bool MatchesMachineTierObjective(EntityUid subject, ScanEntityExperimentObjective objective)
+    {
+        if (!TryComp<MachineComponent>(subject, out var machine))
+            return false;
+
+        var hasRequiredParts = objective.RequiredMachineParts.Count > 0;
+        var requiredTier = objective.RequiredMachinePartTier;
+
+        if (!hasRequiredParts && requiredTier == null)
+            return true;
+
+        foreach (var partEntity in machine.PartContainer.ContainedEntities)
+        {
+            if (!TryComp<MachinePartComponent>(partEntity, out var part))
+                continue;
+
+            if (hasRequiredParts && !objective.RequiredMachineParts.Contains(part.Part))
+                continue;
+
+            if (requiredTier is { } tier && part.Tier < tier)
+                continue;
+
+            return true;
+        }
+
+        return false;
     }
 
     private bool MatchesEntityCondition(EntityUid subject, ExperimentEntityCondition condition)

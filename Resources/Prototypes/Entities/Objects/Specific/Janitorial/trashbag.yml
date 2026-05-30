@@ -59,9 +59,11 @@
     maxFillLevels: 4
     fillBaseName: icon
   - type: Dumpable
-  - type: Clothing
-    slots: [belt]
-    sprite: Objects/Specific/Janitorial/trashbag.rsi
+  # Orion-Edit-Start: Removed
+#  - type: Clothing
+#    slots: [belt]
+#    sprite: Objects/Specific/Janitorial/trashbag.rsi
+  # Orion-Edit-End
   - type: Item
     size: Normal
   - type: PhysicalComposition #Goobstation - Recycle update
@@ -81,6 +83,9 @@
     heldPrefix: blue
   - type: StorageFillVisualizer
     fillBaseName: blue-icon
+  - type: Storage # Orion
+    grid:
+    - 0,0,14,5
 
 - type: entity
   name: spell of all-consuming cleanliness

@@ -10,7 +10,8 @@
     prototype: MachineFTLDrive
     stackRequirements:
       Steel: 5
-      Manipulator: 5
+    partRequirements: # Orion
+      Servo: 5
 
 - type: entity
   id: MachineFTLDriveHighCircuitboard
@@ -24,4 +25,5 @@
     prototype: MachineFTLDriveHigh
     stackRequirements:
       Steel: 15
-      Manipulator: 5
+    partRequirements: # Orion
+      Servo: 5

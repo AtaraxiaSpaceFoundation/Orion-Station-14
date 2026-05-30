@@ -92,6 +92,7 @@
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
+    projectileSpeed: 30 # Orion
     cameraRecoilScalar: 2 # Orion
     selectedMode: SemiAuto
     availableModes:
@@ -104,7 +105,7 @@
     whitelist:
       tags:
       - ShellShotgun
-    capacity: 7
+    capacity: 9 # Orion-Edit: 7 > 9
     proto: ShellShotgun
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/shotgun_insert.ogg
@@ -263,7 +264,7 @@
     shape: # Goobstation
     - 0,0,4,1
   - type: BallisticAmmoProvider
-    capacity: 9 # Orion
+    capacity: 8 # Orion
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1.7 # Goobstation
@@ -282,7 +283,7 @@
   name: Kammerer
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunKammerer
-  description: An old and faithful pump action, the Kammerer is cheap, light, and would probably still function if you left it in the burn chamber for a week. Popular for civilian use, and loved by NanoTrasen for its minuscule price tag. Loads 7 rounds of 12 Gauge. # Goobstation
+  description: An old and faithful pump action, the Kammerer is cheap, light, and would probably still function if you left it in the burn chamber for a week. Popular for civilian use, and loved by NanoTrasen for its minuscule price tag. Loads 12 Gauge rounds. # Goobstation # Orion-Edit
   components: # intend for Kammerer to have tighter choke for slower fire rate and/or manual cycling
   - type: Item
     size: Normal
@@ -300,7 +301,7 @@
       path: /Audio/_Orion/Weapons/Guns/Shotguns/t35.ogg
     # fireRate: 1 # goob
   - type: GunSpreadModifier
-    spread: 0.6
+    spread: 0.65 # Orion-Edit: 0.6 > 0.65
   - type: Tag
     tags:
     - WeaponShotgunKammerer

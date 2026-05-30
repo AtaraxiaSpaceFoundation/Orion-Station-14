@@ -156,6 +156,10 @@
 #  - Command
 #  - EmergenciesSOP
   goobcoins: 40 #Goob content
+  # Orion-Start
+  salary: 120
+  payrollDepartmentAccount: Command
+  # Orion-End
   access:
   - Maintenance
   - Engineering
@@ -192,7 +196,7 @@
   equipment:
     head: ClothingHeadHatBeretEngineering
     mask: ClothingMaskBreath
-    neck: ClothingNeckCloakCe
+    neck: ClothingNeckCloakWhiteCe
     outerClothing: ClothingOuterWinterCE
     gloves: ClothingHandsGlovesColorYellow
     shoes: ClothingShoesBootsMagAdv

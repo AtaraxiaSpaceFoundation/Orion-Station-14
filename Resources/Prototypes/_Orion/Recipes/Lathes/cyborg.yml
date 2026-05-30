@@ -37,3 +37,8 @@
     Steel: 700
     Glass: 300
     Plastic: 300
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleRPED
+  result: BorgModuleRPED

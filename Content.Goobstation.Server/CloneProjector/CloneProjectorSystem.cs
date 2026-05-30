@@ -8,9 +8,9 @@
 using System.Linq;
 using Content.Goobstation.Shared.CloneProjector;
 using Content.Goobstation.Shared.CloneProjector.Clone;
+using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Shared._DV.Carrying;
-using Content.Shared._EinsteinEngines.Silicon.IPC;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Containers.ItemSlots;
@@ -61,7 +61,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
     [Dependency] private readonly CarryingSystem _carrying = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly MobThresholdSystem _thresholds = default!;
-    [Dependency] private readonly InternalEncryptionKeySpawner _encryptionKeySpawner = default!;
+    [Dependency] private readonly GhostRoleSystem _ghost = default!;
 
     private ISawmill _sawmill = default!;
     public override void Initialize()
@@ -291,6 +291,14 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         roleComp.RoleDescription = Loc.GetString(projector.Comp.GhostRoleDescription);
         roleComp.RoleRules = Loc.GetString(projector.Comp.GhostRoleRules);
 
+        if (projector.Comp.RequiredRole != null)
+        {
+            var requirement = projector.Comp.GhostRoleRequirement = new();
+            requirement.Role = projector.Comp.RequiredRole.Value;
+            requirement.Time = projector.Comp.TimeNeeded;
+            _ghost.AddRoleRequirements((clone, roleComp), requirement);
+        }
+
         Dirty(projector);
         return true;
     }
@@ -298,7 +306,7 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
     public bool TryInsertClone(Entity<CloneProjectorComponent> projector, bool doCooldown = false)
     {
         if (projector.Comp.CloneUid is not { } clone
-            || _container.IsEntityOrParentInContainer(clone))
+            || !IsCloneDeployed(projector))
             return false;
 
         CleanClone(clone);
@@ -322,10 +330,18 @@ public sealed partial class CloneProjectorSystem : SharedCloneProjectorSystem
         return true;
     }
 
+    private bool IsCloneDeployed(CloneProjectorComponent projector)
+    {
+        if (projector.CloneUid is not { } clone)
+            return false;
+
+        return !_container.IsEntityOrParentInContainer(clone);
+    }
+
     private bool TryDeployClone(CloneProjectorComponent projector)
     {
         if (projector.CloneUid is not { } clone
-            || !_container.IsEntityOrParentInContainer(clone))
+            || IsCloneDeployed(projector))
             return false;
 
         return _container.TryRemoveFromContainer(clone);

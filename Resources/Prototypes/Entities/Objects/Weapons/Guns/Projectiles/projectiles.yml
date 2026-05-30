@@ -1024,7 +1024,7 @@
   - type: Explosive
     explosionType: Default
     totalIntensity: 150 # a ~2 tile radius
-    intensitySlope: 5
+    intensitySlope: 10 # Orion-Edit: 5 > 10
     maxIntensity: 10
     canCreateVacuum: false
   - type: SmartLinkBlacklist  # Goobstation
@@ -1070,7 +1070,7 @@
       cluster-payload: !type:Container
   - type: ProjectileGrenade
     fillPrototype: PelletClusterLessLethal
-    capacity: 30
+    capacity: 50 # Orion-Edit: 30 > 50
   - type: SmartLinkBlacklist  # Goobstation
 
 - type: entity

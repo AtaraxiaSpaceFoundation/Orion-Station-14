@@ -227,6 +227,9 @@ public sealed class MoodSystem : EntitySystem
             || !_prototypeManager.TryIndex<MoodEffectPrototype>(args.EffectId, out var prototype) )
             return;
 
+        if (TryComp<MobStateComponent>(uid, out var mobState) && mobState.CurrentState == MobState.Dead && args.EffectId != "Dead")
+            return;
+
         var ev = new OnMoodEffect(uid, args.EffectId, args.EffectModifier, args.EffectOffset);
         RaiseLocalEvent(uid, ref ev);
 

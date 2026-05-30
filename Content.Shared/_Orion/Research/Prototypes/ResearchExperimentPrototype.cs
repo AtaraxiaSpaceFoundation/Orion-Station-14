@@ -1,3 +1,4 @@
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Research.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -131,6 +132,12 @@ public partial record ScanEntityExperimentObjective : ExperimentObjective
 
     [DataField]
     public float? MinExplosiveIntensity;
+
+    [DataField]
+    public int? RequiredMachinePartTier;
+
+    [DataField]
+    public List<ProtoId<MachinePartPrototype>> RequiredMachineParts = new();
 
     public ScanEntityExperimentObjective()
     {

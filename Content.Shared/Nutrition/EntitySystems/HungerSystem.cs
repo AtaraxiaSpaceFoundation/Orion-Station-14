@@ -390,14 +390,14 @@ public sealed class HungerSystem : EntitySystem
                 continue;
             hunger.NextThresholdUpdateTime = _timing.CurTime + hunger.ThresholdUpdateRate;
 
-            var previousThreshold = hunger.CurrentThreshold; // Orion
-            UpdateCurrentThreshold(uid, hunger);
+//            UpdateCurrentThreshold(uid, hunger); // Orion-Edit
 
             // Orion-Start
-            if (hunger.CurrentThreshold == HungerThreshold.Dead && previousThreshold == HungerThreshold.Dead && _mobState.IsDead(uid))
+            if (_mobState.IsDead(uid))
                 continue;
             // Orion-End
 
+            UpdateCurrentThreshold(uid, hunger); // Orion
             DoContinuousHungerEffects(uid, hunger);
         }
     }

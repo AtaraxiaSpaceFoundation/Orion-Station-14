@@ -270,7 +270,7 @@ namespace Content.Client.Cargo.UI
                             "cargo-console-menu-order-row-title",
                             ("productName", productName),
                             ("orderAmount", order.OrderQuantity),
-                            ("orderPrice", order.Price)),
+                            ("orderPrice", order.PaidPrivately ? (int) Math.Round(order.Price * 1.10, MidpointRounding.AwayFromZero) : order.Price)), // Orion-Edit
                     },
 
                     Stride =
@@ -288,11 +288,17 @@ namespace Content.Client.Cargo.UI
 
                     ProductName =
                     {
-                        Text = Loc.GetString(
-                            "cargo-console-menu-populate-orders-cargo-order-row-product-name-text",
-                            ("orderRequester", requester), // Goobstation
-                            ("accountColor", account.Color),
-                            ("account", Loc.GetString(account.Code)))
+                        // Orion-Edit-Start
+                        Text = order.PaidPrivately
+                            ? Loc.GetString(
+                                "cargo-console-menu-populate-orders-cargo-order-row-product-name-private-text",
+                                ("orderRequester", requester))
+                            : Loc.GetString(
+                                "cargo-console-menu-populate-orders-cargo-order-row-product-name-text",
+                                ("orderRequester", requester), // Goobstation
+                                ("accountColor", account.Color),
+                                ("account", Loc.GetString(account.Code))),
+                        // Orion-Edit-End
                     },
 
                     // Orion-Edit-Start
@@ -319,6 +325,14 @@ namespace Content.Client.Cargo.UI
                     },
                     // Orion-Edit-End
                 };
+
+                // Orion-Start
+                if (order.PaidPrivately && !string.IsNullOrWhiteSpace(order.PrivateBuyerName))
+                {
+                    row.PrivateBuyer.Visible = true;
+                    row.PrivateBuyer.Text = Loc.GetString("cargo-console-menu-order-private-buyer", ("buyer", order.PrivateBuyerName));
+                }
+                // Orion-End
 
                 row.Cancel.OnPressed += (args) => { OnOrderCanceled?.Invoke(args); };
 

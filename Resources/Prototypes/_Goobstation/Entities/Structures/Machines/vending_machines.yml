@@ -197,12 +197,16 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Cargo"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Cargo"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
     color: "#4b93ad"
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Cargo
+  # Orion-End
 
 - type: entity
   id: VendingMachineSweetToof

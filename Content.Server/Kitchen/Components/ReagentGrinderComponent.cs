@@ -27,8 +27,10 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Kitchen.EntitySystems;
+using Content.Shared._Orion.Construction.Prototypes;
 using Content.Shared.Kitchen;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Kitchen.Components
 {
@@ -50,6 +52,14 @@ namespace Content.Server.Kitchen.Components
         [DataField]
         public float WorkTimeMultiplier = 1;
 
+        // Orion-Start
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float BaseWorkTimeMultiplier = 1;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public int BaseStorageMaxEntities = 6;
+        // Orion-End
+
         [DataField]
         public SoundSpecifier ClickSound { get; set; } = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 
@@ -63,6 +73,14 @@ namespace Content.Server.Kitchen.Components
         public GrinderAutoMode AutoMode = GrinderAutoMode.Off;
 
         public EntityUid? AudioStream;
+
+        // Orion-Start
+        [DataField]
+        public ProtoId<MachinePartPrototype> ServoPart = "Servo";
+
+        [DataField]
+        public ProtoId<MachinePartPrototype> MatterBinPart = "MatterBin";
+        // Orion-End
     }
 
     [Access(typeof(ReagentGrinderSystem)), RegisterComponent]

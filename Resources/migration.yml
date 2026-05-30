@@ -278,6 +278,24 @@ MobRatKingBuff: MobRatKing
 BoozeDispenserEmpty: BoozeDispenser
 SodaDispenserEmpty: SodaDispenser
 
+MicroManipulatorStockPart: MicroServoStockPart
+
+AutolatheHyperConvection: Autolathe
+ProtolatheHyperConvection: Protolathe
+CircuitImprinterHyperConvection: CircuitImprinter
+OreProcessorIndustrial: OreProcessor
+TurboItemRecharger: WeaponCapacitorRecharger
+GasThermoMachineHellfireFreezer: GasThermoMachineFreezer
+GasThermoMachineHellfireHeater: GasThermoMachineHeater
+AutolatheHyperConvectionMachineCircuitboard: AutolatheMachineCircuitboard
+ProtolatheHyperConvectionMachineCircuitboard: ProtolatheMachineCircuitboard
+CircuitImprinterHyperConvectionMachineCircuitboard: CircuitImprinterMachineCircuitboard
+OreProcessorIndustrialMachineCircuitboard: OreProcessorMachineCircuitboard
+TurboItemRechargerCircuitboard: WeaponCapacitorRechargerCircuitboard
+HellfireFreezerMachineCircuitBoard: ThermomachineFreezerMachineCircuitBoard
+HellfireHeaterMachineCircuitBoard: ThermomachineHeaterMachineCircuitBoard
+LatheUpgradeKitHyper: null
+
 # Orion-End
 
 # Goobstation - Submarine from DeltaV
@@ -611,8 +629,8 @@ SalvagePartsT2Spawner: SalvageLootSpawner
 #SuperCapacitorStockPart: CapacitorStockPart
 #QuadraticCapacitorStockPart: CapacitorStockPart
 #NanoManipulatorStockPart: MicroManipulatorStockPart
-PicoManipulatorStockPart: MicroManipulatorStockPart
-FemtoManipulatorStockPart: MicroManipulatorStockPart
+#PicoManipulatorStockPart: MicroManipulatorStockPart # Orion-Edit
+#FemtoManipulatorStockPart: MicroManipulatorStockPart # Orion-Edit
 #AdvancedMatterBinStockPart: MatterBinStockPart
 #SuperMatterBinStockPart: MatterBinStockPart
 #BluespaceMatterBinStockPart: MatterBinStockPart
@@ -1141,8 +1159,8 @@ SuitStorageBasic: SuitStorageEVA
 ClothingNeckCloakMiner: null
 
 # 2025-05-22
-MatterBinStockPart: MicroManipulatorStockPart
-CapacitorStockPart: MicroManipulatorStockPart
+#MatterBinStockPart: MicroManipulatorStockPart # Orion-Edit
+#CapacitorStockPart: MicroManipulatorStockPart # Orion-Edit
 
 # 2025-05-26 Turrets
 WeaponEnergyTurretStation: WeaponEnergyTurretSecurity

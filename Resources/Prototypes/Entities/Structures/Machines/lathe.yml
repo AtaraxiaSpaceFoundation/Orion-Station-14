@@ -282,7 +282,7 @@
 
 - type: entity
   id: BaseLathe
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, BaseAutomatedMachine ] # Goob: Automation
   abstract: true
   name: lathe
   components:
@@ -375,18 +375,19 @@
   - type: ExaminableSolution
     solution: lube
 
-- type: entity
-  abstract: true
-  id: BaseHyperlathe
-  components:
-  - type: Lathe
-    materialUseMultiplier: 0.5
-    timeMultiplier: 1.5
-  - type: LatheHeatProducing
-  - type: ReagentSpeed
-    modifiers:
-      SpaceLube: 0.8 # being faster means less heat so lube needs to be nerfed
-      SpaceGlue: 5 # no change from normal lathe, overheat!!!
+# Orion-Edit: Redundant
+#- type: entity
+#  abstract: true
+#  id: BaseHyperlathe
+#  components:
+#  - type: Lathe
+#    materialUseMultiplier: 0.5
+#    timeMultiplier: 1.5
+#  - type: LatheHeatProducing
+#  - type: ReagentSpeed
+#    modifiers:
+#      SpaceLube: 0.8 # being faster means less heat so lube needs to be nerfed
+#      SpaceGlue: 5 # no change from normal lathe, overheat!!!
 
 - type: entity
   id: Autolathe
@@ -462,16 +463,17 @@
     containers:
     - blueprint
 
-- type: entity
-  id: AutolatheHyperConvection
-  parent: [Autolathe, BaseHyperlathe]
-  name: hyper convection autolathe
-  description: A highly-experimental autolathe that harnesses the power of extreme heat to slowly create objects more cost-effectively.
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/autolathe_hypercon.rsi
-  - type: Machine
-    board: AutolatheHyperConvectionMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: entity
+#  id: AutolatheHyperConvection
+#  parent: [Autolathe, BaseHyperlathe]
+#  name: hyper convection autolathe
+#  description: A highly-experimental autolathe that harnesses the power of extreme heat to slowly create objects more cost-effectively.
+#  components:
+#  - type: Sprite
+#    sprite: Structures/Machines/autolathe_hypercon.rsi
+#  - type: Machine
+#    board: AutolatheHyperConvectionMachineCircuitboard
 
 - type: entity
   id: Protolathe
@@ -544,16 +546,17 @@
     - RestraintTechnology
     - MiningWeapons
 
-- type: entity
-  id: ProtolatheHyperConvection
-  parent: [Protolathe, BaseHyperlathe]
-  name: hyper convection protolathe
-  description: A highly-experimental protolathe that harnesses the power of extreme heat to slowly create objects more cost-effectively.
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/protolathe_hypercon.rsi
-  - type: Machine
-    board: ProtolatheHyperConvectionMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: entity
+#  id: ProtolatheHyperConvection
+#  parent: [Protolathe, BaseHyperlathe]
+#  name: hyper convection protolathe
+#  description: A highly-experimental protolathe that harnesses the power of extreme heat to slowly create objects more cost-effectively.
+#  components:
+#  - type: Sprite
+#    sprite: Structures/Machines/protolathe_hypercon.rsi
+#  - type: Machine
+#    board: ProtolatheHyperConvectionMachineCircuitboard
 
 - type: entity
   id: CircuitImprinter
@@ -616,16 +619,17 @@
         - Ingot
   - type: RequireProjectileTarget
 
-- type: entity
-  id: CircuitImprinterHyperConvection
-  parent: [CircuitImprinter, BaseHyperlathe]
-  name: hyper convection circuit imprinter
-  description: A highly-experimental circuit imprinter that harnesses the power of extreme heat to slowly create objects more cost-effectively.
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/circuit_imprinter_hypercon.rsi
-  - type: Machine
-    board: CircuitImprinterHyperConvectionMachineCircuitboard
+# Orion-Edit: Redundant
+#- type: entity
+#  id: CircuitImprinterHyperConvection
+#  parent: [CircuitImprinter, BaseHyperlathe]
+#  name: hyper convection circuit imprinter
+#  description: A highly-experimental circuit imprinter that harnesses the power of extreme heat to slowly create objects more cost-effectively.
+#  components:
+#  - type: Sprite
+#    sprite: Structures/Machines/circuit_imprinter_hypercon.rsi
+#  - type: Machine
+#    board: CircuitImprinterHyperConvectionMachineCircuitboard
 
 - type: entity
   id: ExosuitFabricator
@@ -648,7 +652,10 @@
     idleState: fab-idle
     runningState: fab-active
     dynamicPacks: # Orion-Edit: Static > Dynamic
-    - AILawboards # Orion
+    # Orion-Start
+    - AILawboards
+    - PartsDynamic
+    # Orion-End
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
@@ -1054,23 +1061,24 @@
     - type: MiningPointsLathe # DeltaV
     - type: MaterialStorageMagnetPickup # Frontier
 
-- type: entity
-  parent: OreProcessor
-  id: OreProcessorIndustrial
-  name: industrial ore processor
-  description: An ore processor specifically designed for mass-producing metals in industrial applications.
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/ore_processor_industrial.rsi
-  - type: Machine
-    board: OreProcessorIndustrialMachineCircuitboard
-  - type: Lathe
-    materialUseMultiplier: 0.75
-    timeMultiplier: 0.5
-    staticPacks:
-    - OreSmelting
-    - RGlassSmelting
-    - AdvancedSmelting
+# Orion-Edit: Redundant
+#- type: entity
+#  parent: OreProcessor
+#  id: OreProcessorIndustrial
+#  name: industrial ore processor
+#  description: An ore processor specifically designed for mass-producing metals in industrial applications.
+#  components:
+#  - type: Sprite
+#    sprite: Structures/Machines/ore_processor_industrial.rsi
+#  - type: Machine
+#    board: OreProcessorIndustrialMachineCircuitboard
+#  - type: Lathe
+#    materialUseMultiplier: 0.75
+#    timeMultiplier: 0.5
+#    staticPacks:
+#    - OreSmelting
+#    - RGlassSmelting
+#    - AdvancedSmelting
 
 - type: entity
   parent: BaseLathe

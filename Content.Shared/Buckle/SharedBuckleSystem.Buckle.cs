@@ -181,6 +181,14 @@ public abstract partial class SharedBuckleSystem
         if (args.Cancelled || !ent.Comp.Buckled)
             return;
 
+        // Orion-Start
+        if (args.Puller != ent.Owner)
+        {
+            args.Cancel();
+            return;
+        }
+        // Orion-End
+
         if (!CanUnbuckle(ent!, args.Puller, false))
         {
             args.Cancel();

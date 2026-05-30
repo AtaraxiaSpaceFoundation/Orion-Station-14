@@ -171,6 +171,17 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         return component.StorageLimit == null || GetTotalMaterialAmount(uid, component) + volume <= component.StorageLimit;
     }
 
+    // Orion-Start
+    public void SetStorageLimit(EntityUid uid, int? storageLimit, MaterialStorageComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        component.StorageLimit = storageLimit;
+        Dirty(uid, component);
+    }
+    // Orion-End
+
     /// <summary>
     /// Checks if the specified material can be changed by the specified volume.
     /// </summary>

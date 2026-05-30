@@ -74,6 +74,7 @@ namespace Content.Server.Construction
             InitializeInteractions();
             InitializeInitial();
             InitializeMachines();
+            InitializeMachineUpgrades(); // Orion
 
             SubscribeLocalEvent<ConstructionComponent, ComponentInit>(OnConstructionInit);
             SubscribeLocalEvent<ConstructionComponent, ComponentStartup>(OnConstructionStartup);

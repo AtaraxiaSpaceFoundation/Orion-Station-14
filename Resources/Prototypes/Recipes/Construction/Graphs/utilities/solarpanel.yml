@@ -22,9 +22,14 @@
         # Goobstation - allow from-materials construction
         - to: solarassembly
           steps:
-            - material: Manipulator
-              amount: 1
+            # Orion-Start
+            - machinePart: Servo
+              name: construction-graph-tag-servo
+              icon:
+                sprite: "Objects/Misc/stock_parts.rsi"
+                state: "micro_mani"
               doAfter: 1
+            # Orion-End
             - material: Steel
               amount: 2
               doAfter: 1

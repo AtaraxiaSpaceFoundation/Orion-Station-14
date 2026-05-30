@@ -28,6 +28,7 @@ using Content.Shared._NF.Storage.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
 using Content.Shared.Database;
+using Content.Shared.Ghost;
 using Content.Shared.Materials;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
@@ -76,6 +77,11 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     {
         if (args.SenderSession.AttachedEntity is not { } player)
             return;
+
+        // Orion-Start
+        if (TryComp<GhostComponent>(player, out var ghost) && !ghost.CanGhostInteract)
+            return;
+        // Orion-End
 
         var uid = GetEntity(msg.Entity);
 

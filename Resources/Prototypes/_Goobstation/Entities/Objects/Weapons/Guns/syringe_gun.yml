@@ -105,5 +105,9 @@
     shape:
     - 0,0,1,0
     - 0,1,0,1
+  - type: Storage # Orion
+    maxItemSize: Tiny
+    grid:
+    - 0,0,0,1
   - type: SyringeGun
     injectionSpeedMultiplier: 2
