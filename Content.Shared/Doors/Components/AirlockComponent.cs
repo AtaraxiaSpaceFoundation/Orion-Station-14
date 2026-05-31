@@ -61,13 +61,13 @@ public sealed partial class AirlockComponent : Component
     /// Sound to play when the airlock is force-opened.
     /// </summary>
     [DataField]
-    public SoundSpecifier? ForceOpenSound = new SoundPathSpecifier("/Audio/_Orion/Machines/airlock_open_force.ogg");
+    public SoundSpecifier? ForceOpenSound;
 
     /// <summary>
     /// Sound to play when the airlock is force-closed.
     /// </summary>
     [DataField]
-    public SoundSpecifier? ForceCloseSound = new SoundPathSpecifier("/Audio/_Orion/Machines/airlock_close_force.ogg");
+    public SoundSpecifier? ForceCloseSound;
     // Orion-End
 
     /// <summary>
