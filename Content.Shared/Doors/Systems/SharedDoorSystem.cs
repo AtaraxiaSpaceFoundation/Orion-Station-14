@@ -288,7 +288,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     /// </summary>
     private void OnAfterPry(EntityUid uid, DoorComponent door, ref PriedEvent args)
     {
-        // Orion-Start: use force sounds when airlock is unpowered (pried by tools/hands)
+        // Orion-Start: use force sounds when prying airlocks 
         SoundSpecifier? forceOpen = null;
         SoundSpecifier? forceClose = null;
         if (TryComp<AirlockComponent>(uid, out var airlock))
