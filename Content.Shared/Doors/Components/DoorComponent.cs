@@ -78,7 +78,7 @@ public sealed partial class DoorComponent : Component
     /// Opening time until fully open. Total time is this plus <see cref="OpenTimeOne"/>.
     /// </summary>
     [DataField]
-    public TimeSpan OpenTimeTwo = TimeSpan.FromSeconds(0.4f); // Orion-Edit: 0.2 > 0.3
+    public TimeSpan OpenTimeTwo = TimeSpan.FromSeconds(0.4f); // Orion-Edit: 0.2 > 0.4
 
     /// <summary>
     ///     Interval between deny sounds & visuals;
