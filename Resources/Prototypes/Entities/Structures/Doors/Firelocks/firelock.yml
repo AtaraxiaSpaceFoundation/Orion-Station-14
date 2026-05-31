@@ -298,6 +298,16 @@
     - type: Tag
       tags:
       - ForceNoFixRotations # Prevent fixrotations from targeting these, since the base Firelock is targeted
+    # Orion-Start
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+    # Orion-End
     - type: Door
       occludes: false
     - type: Physics
