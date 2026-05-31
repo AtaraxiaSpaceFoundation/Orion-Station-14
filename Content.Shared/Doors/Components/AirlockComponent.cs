@@ -56,6 +56,20 @@ public sealed partial class AirlockComponent : Component
     [DataField]
     public SoundSpecifier EmergencyOffSound = new SoundPathSpecifier("/Audio/Machines/airlock_emergencyoff.ogg");
 
+    // Orion-Start
+    /// <summary>
+    /// Sound to play when the airlock is force-opened.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? ForceOpenSound = new SoundPathSpecifier("/Audio/_Orion/Machines/airlock_open_force.ogg");
+
+    /// <summary>
+    /// Sound to play when the airlock is force-closed.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? ForceCloseSound = new SoundPathSpecifier("/Audio/_Orion/Machines/airlock_close_force.ogg");
+    // Orion-End
+
     /// <summary>
     /// Pry modifier for a powered airlock.
     /// Most anything that can pry powered has a pry speed bonus,
