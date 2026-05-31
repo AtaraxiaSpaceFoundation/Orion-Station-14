@@ -458,7 +458,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
         SetCollidable(uid, false, door);
         door.Partial = true;
-        door.NextStateChange = GameTiming.CurTime + door.CloseTimeTwo;
+        door.NextStateChange = GameTiming.CurTime + door.OpenTimeTwo; // Orion-Edit: fix
         _activeDoors.Add((uid, door));
         Dirty(uid, door);
 
