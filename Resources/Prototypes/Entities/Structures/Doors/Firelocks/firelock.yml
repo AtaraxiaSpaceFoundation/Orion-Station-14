@@ -170,9 +170,9 @@
         types:
           Blunt: 15
       openSound:
-        path: /Audio/_Orion/Machines/firedoor_openclose.ogg
+        path: /Audio/_Orion/Machines/firedoor_openclose.ogg # Orion-Edit
       closeSound:
-        path: /Audio/_Orion/Machines/firedoor_openclose.ogg
+        path: /Audio/_Orion/Machines/firedoor_openclose.ogg # Orion-Edit
       denySound:
         path: /Audio/Machines/airlock_deny.ogg
       openingAnimationTime: 0.6
