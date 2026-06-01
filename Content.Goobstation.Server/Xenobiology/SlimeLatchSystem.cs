@@ -122,7 +122,16 @@ public sealed partial class SlimeLatchSystem : EntitySystem
             && _solutionContainer.ResolveSolution(ent.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var blood)
             && _solutionContainer.ResolveSolution(ent.Owner, bloodstream.ChemicalSolutionName, ref bloodstream.ChemicalSolution, out var chem))
         {
-            FixedPoint2 bloodProportion = blood.Volume/(chem.Volume + blood.Volume);
+            // Orion-Start
+            var totalBloodstreamVolume = chem.Volume + blood.Volume;
+            if (totalBloodstreamVolume <= FixedPoint2.Zero)
+            {
+                chem.AddReagent(ent.Comp.ToxinReagent, ent.Comp.ToxinUnits);
+                return;
+            }
+            // Orion-End
+
+            FixedPoint2 bloodProportion = blood.Volume / totalBloodstreamVolume; // Orion-Edit
             FixedPoint2 chemProportion = 1 - bloodProportion;
             FixedPoint2 bloodTransfer = FixedPoint2.Min(ent.Comp.SuctionUnits * bloodProportion, availabaleVolume * bloodProportion);
             FixedPoint2 chemTransfer = FixedPoint2.Min(ent.Comp.SuctionUnits * chemProportion, availabaleVolume * chemProportion);
