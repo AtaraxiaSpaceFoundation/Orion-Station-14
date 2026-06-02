@@ -25,6 +25,14 @@
     - bubbling
     - bubbled
     # End Frontier: emote consistency
+    # Orion-Start
+    - пускает пузыри
+    - пускает пузыри.
+    - пускает пузыри!
+    - пузырится
+    - пузырится.
+    - пузырится!
+    # Orion-End
 
 - type: emote
   id: Pop
@@ -47,6 +55,17 @@
     - popping
     - popped
     # End Frontier: emote consistency
+    # Orion-Start
+    - лопается
+    - лопается.
+    - лопается!
+    - лопнул
+    - лопнул.
+    - лопнул!
+    - лопнула
+    - лопнула.
+    - лопнула!
+    # Orion-End
 
 # hand emotes
 - type: emote
@@ -70,3 +89,11 @@
     - cracks her knuckles
     - cracks his knuckles
     - cracks its knuckles
+    # Orion-Start
+    - хрустит костяшками
+    - хрустит костяшками.
+    - хрустит костяшками!
+    - хрустит суставами
+    - хрустит суставами.
+    - хрустит суставами!
+    # Orion-End

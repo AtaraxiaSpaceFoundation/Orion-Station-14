@@ -31,7 +31,7 @@
 
 - type: emote
   id: Meow
-  name: Meow
+  name: chat-emote-name-catmeow # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/meow.png
   whitelist:
@@ -53,10 +53,27 @@
     - nyas
     - mraow
     - mraows
+    # Orion-Start
+    - мяу
+    - мяу.
+    - мяу!
+    - мяукает
+    - мяукает.
+    - мяукает!
+    - мяв
+    - мяв.
+    - мяв!
+    - ня
+    - ня.
+    - ня!
+    - мрау
+    - мрау.
+    - мрау!
+    # Orion-End
 
 - type: emote
   id: Mew
-  name: Mew
+  name: chat-emote-name-mew # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/mew.png
   whitelist:
@@ -72,10 +89,21 @@
     - mews
     - mewing
     - mewed
+    # Orion-Start
+    - мью
+    - мью.
+    - мью!
+    - мяукнул
+    - мяукнул.
+    - мяукнул!
+    - мяукнула
+    - мяукнула.
+    - мяукнула!
+    # Orion-End
 
 - type: emote
   id: Growl
-  name: Growl
+  name: chat-emote-name-growl # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/growl.png
   whitelist:
@@ -91,10 +119,21 @@
     - growls
     - growling
     - growled
+    # Orion-Start
+    - рычит
+    - рычит.
+    - рычит!
+    - зарычал
+    - зарычал.
+    - зарычал!
+    - зарычала
+    - зарычала.
+    - зарычала!
+    # Orion-End
 
 - type: emote
   id: Purr
-  name: Purr
+  name: chat-emote-name-purr # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/purr.png
   whitelist:
@@ -110,3 +149,17 @@
     - purrs
     - purring
     - purred
+    # Orion-Start
+    - мурчит
+    - мурчит.
+    - мурчит!
+    - мурлыкает
+    - мурлыкает.
+    - мурлыкает!
+    - замурчал
+    - замурчал.
+    - замурчал!
+    - замурчала
+    - замурчала.
+    - замурчала!
+    # Orion-End
