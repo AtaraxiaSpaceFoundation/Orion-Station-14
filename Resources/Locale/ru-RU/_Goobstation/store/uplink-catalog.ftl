@@ -345,8 +345,6 @@ uplink-capoeira-desc = Учебник, обучающий одного поль�
 
 uplink-syndicate-weapon-module-advanced-name = Продвинутый боевой модуль
 uplink-syndicate-weapon-module-advanced-desc = Улучшает борга, давая ему энергетический меч и пистолет Анаконда.
-uplink-box-reagent-grenades-name = Ящик противных гранат
-uplink-box-reagent-grenades-desc = Содержит две клеевые да две смазочные гранаты
 
 # Martial Arts
 

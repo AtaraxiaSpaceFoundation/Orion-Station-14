@@ -331,8 +331,6 @@ uplink-syndicate-weapon-module-advanced-desc = Upgrades a cyborg with an energy 
 uplink-carpcaller-name = Space Carp Caller
 uplink-carpcaller-desc = A device exploiting carp psychology that, when anchored, powered, and exposed to open space, will attract wild space carp. Keep in mind you're not their friend.
 
-uplink-box-reagent-grenades-name = Box of reagent grenades
-uplink-box-reagent-grenades-desc = Contains 2 glue grenades and 2 lube grenades
 # Martial Arts
 
 uplink-cqc-name = CQC Manual

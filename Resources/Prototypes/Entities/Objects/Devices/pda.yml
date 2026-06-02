@@ -1932,6 +1932,30 @@
   name: CBURN PDA
   description: Smells like rotten flesh.
   components:
+  # Orion-Start
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: pda_base
+      color: "#A32D26"
+    - state: pda_buttons
+    - state: pda_stripe_thick
+      color: "#447987"
+    - state: pda_stripe_double
+      color: "#447987"
+    - map: [ "enum.PdaVisualLayers.Screen" ]
+      state: pda_screen_borders
+    - state: light_overlay
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: unshaded
+      visible: false
+    - state: id_overlay
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: unshaded
+      visible: false
+    - state: "insert_overlay" # Goob
+      map: [ "enum.PdaVisualLayers.Pen" ]
+  # Orion-End
   - type: Pda
     id: CBURNIDcard
   - type: PdaBorderColor
@@ -1939,13 +1963,6 @@
     accentHColor: "#447987"
     accentVColor: "#447987"
 # CorvaxGoob-changes-start: fix the "leader" suffix
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-ert
-  - type: Icon
-    state: pda-ert
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:

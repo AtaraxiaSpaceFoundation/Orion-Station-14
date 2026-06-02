@@ -11,4 +11,3 @@ ui-options-lock-action-bar-drag = Разрешать перетаскивани�
 ui-options-hud-theme-coscult = Космический культ
 ui-options-admin-notifications-title = Админ уведомления
 ui-options-admin-notifications-volume = Громкость админ уведомлений
-ui-options-lock-action-bar-drag = Разрешить перетаскивание действий на хотбаре только при открытом меню действий
