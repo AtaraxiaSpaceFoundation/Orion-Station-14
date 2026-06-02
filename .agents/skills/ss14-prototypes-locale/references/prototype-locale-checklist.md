@@ -42,8 +42,8 @@
 
 ## Validation
 
-- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- `py -3 Schemas/validate_rsis.py Resources` after RSI edits
+- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- `python3 RobustToolbox/Schemas/validate_rsis.py Resources/` after RSI edits
 - Run targeted gameplay or UI verification when a prototype changes behavior rather than only data values
 
 ## Common Mistakes

@@ -4,12 +4,12 @@
 
 ## Purpose
 
-Use this file to place prototype, localization, texture, audio, and map edits in the correct `Resources/` subtree for the `open-space` fork.
+Use this file to place prototype, localization, texture, audio, and map edits in the correct `Resources/` subtree for the `Orion` fork.
 
 ## Main Resource Roots
 
 - `Resources/Prototypes/`: data definitions for entities, reagents, recipes, objectives, roles, maps, loadouts, sound collections, and other game content.
-- `Resources/Locale/<culture>/`: Fluent localization files, usually starting with `en-US`.
+- `Resources/Locale/<culture>/`: Fluent localization files. The repo currently has `en-US` and `ru-RU`; start with `en-US` and update `ru-RU` when the feature already has Russian locale or the wording is known.
 - `Resources/Textures/`: sprites, RSIs, decals, and other visual assets.
 - `Resources/Audio/`: sound files plus attribution or organization by feature area.
 - `Resources/Maps/`: map YAML and related data.
@@ -24,8 +24,8 @@ The repo already uses a broad set of top-level prototype families. Common ones i
 - `Catalog/`, `Datasets/`, `EntityLists/`: reusable data pools and lookup content.
 - `Polymorphs/`, `NPCs/`, `Procedural/`, `Maps/`: runtime content generation and special behaviors.
 - `SoundCollections/`, `Shaders/`, `StatusIcon/`: reusable presentation data.
-- `_Orion/`: fork-specific prototypes.
-- `_Corvax/`: additional fork/vendor subtree already present in this repo.
+- `_Orion/`: Orion-specific prototypes and local feature data.
+- Other inherited/vendor subtrees currently present include `_Goobstation`, `_EinsteinEngines`, `_Shitmed`, `_DV`, `_NF`, `_Mono`, `_RMC14`, `_White`, `_Lavaland`, `_Corvax*`, and several smaller trees. Extend the subtree that already owns the feature instead of moving content between forks.
 
 Use the most specific existing subtree instead of inventing a new top-level folder.
 
@@ -39,15 +39,13 @@ Locale folder names do not always mirror prototype folder names one-to-one.
 
 Do not assume the FTL path from the prototype path. Search nearby locale folders and follow the local convention.
 
-## Fork-Specific Open-Space Content
+## Fork-Specific Orion Content
 
-Current `_Orion` resource content already includes:
+Current `_Orion` resource content is broad. It includes prototype folders such as `Access`, `Actions`, `Alerts`, `Bitrunning`, `Catalog`, `Chemistry`, `Economy`, `Entities`, `GameRules`, `Guidebook`, `Language`, `Loadouts`, `Mood`, `Reagents`, `Recipes`, `Research`, `Roles`, `SoundCollections`, `Tiles`, and `Traits`.
 
-- `Resources/Prototypes/_Orion/Entities/Mobs/Customization/Markings/`: fork-specific marking prototypes.
-- `Resources/Locale/en-US/_Orion/commands/`: custom admin or server command strings.
-- `Resources/Locale/en-US/_Orion/markings/`: localized names for fork-specific markings.
+Locale exists under both `Resources/Locale/en-US/_Orion/` and `Resources/Locale/ru-RU/_Orion/` with feature subfolders such as `actions`, `administration`, `bitrunning`, `chemistry`, `economy`, `guidebook`, `language`, `markings`, `medical`, `mood`, `objectives`, `reagents`, `recruitment`, `research`, `station-events`, `station-goal`, `traits`, and `vending-machines`.
 
-When adding more fork-specific content, prefer extending the `_Orion` subtree for both prototypes and locale so the fork delta stays discoverable.
+When adding Orion-specific content, prefer the matching `_Orion` subtree for prototypes, locale, textures, audio, maps, or server info. If the feature is inherited from another subtree, keep it in that subtree unless the task is explicitly to Orion-localize or fork it.
 
 ## Prototype Placement Heuristics
 
@@ -66,6 +64,6 @@ When adding more fork-specific content, prefer extending the `_Orion` subtree fo
 
 ## Validation Hooks
 
-- Prototype or locale edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- RSI edits: `py -3 Schemas/validate_rsis.py Resources`
+- Prototype or locale edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- RSI edits: `python3 RobustToolbox/Schemas/validate_rsis.py Resources/`
 - Map edits: rely on schema validation in CI and keep map-only changes isolated when practical

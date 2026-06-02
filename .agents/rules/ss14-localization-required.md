@@ -7,7 +7,7 @@ Treat localization as mandatory work for gameplay, UI, admin-facing, and prototy
 ## Required
 
 - Localize every player-facing string.
-- Add or update FTL in `Resources/Locale/en-US/` first.
+- Add or update FTL in `Resources/Locale/en-US/` first. Add/update `ru-RU` when the touched feature already has Russian locale or the wording is known.
 - Use specific feature-scoped `kebab-case` keys.
 - Store reusable localization keys in data as `LocId` when the surrounding pattern already does that.
 

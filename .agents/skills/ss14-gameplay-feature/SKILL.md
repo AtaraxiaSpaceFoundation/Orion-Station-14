@@ -13,7 +13,7 @@ Open nearby examples first, then use the reference files to route the task befor
 
 ## Workflow
 
-1. Open [open-space-gameplay-map.md](references/open-space-gameplay-map.md) first.
+1. Open [orion-gameplay-map.md](references/orion-gameplay-map.md) first.
 - Use it to map the request to assemblies, domain folders, paired resource files, and fork-specific `_Orion` areas.
 
 2. Open [prediction-and-cross-assembly.md](references/prediction-and-cross-assembly.md) when the feature crosses networking or UI.
@@ -46,17 +46,17 @@ Open nearby examples first, then use the reference files to route the task befor
 - Localize every player-facing string.
 - Follow existing feature-folder placement instead of inventing a new top-level area.
 
-7. Validate the smallest meaningful slice.
+7. Validate the smallest meaningful slice. If `RobustToolbox/` may be uninitialized, run `git submodule update --init --recursive` before any .NET restore/build/test commands.
 - Baseline build: `dotnet restore` then `dotnet build --configuration DebugOpt --no-restore /m`
-- Unit/content tests: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj`
-- Integration tests: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj`
-- YAML/resource edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- RSI edits: `py -3 Schemas/validate_rsis.py Resources`
+- Unit/content tests: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0`
+- Integration tests: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed`
+- YAML/resource edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- RSI edits: `python3 RobustToolbox/Schemas/validate_rsis.py Resources/`
 - If you cannot run in-game verification for gameplay or UI behavior, say so explicitly.
 
 ## Reference Map
 
-- `references/open-space-gameplay-map.md`: repo-specific subsystem map, folder routing, `_Orion` extensions, and common pairings between code and resources.
+- `references/orion-gameplay-map.md`: repo-specific subsystem map, folder routing, `_Orion` extensions, and common pairings between code and resources.
 - `references/prediction-and-cross-assembly.md`: prediction checklist, network state rules, BUI flow, and validation guidance.
 - `references/feature-checklist.md`: end-to-end gameplay feature checklist for code, resources, locale, and validation.
 - `../ss14-client-server-shared/references/client-server-primer.md`: assembly ownership and trust boundaries.

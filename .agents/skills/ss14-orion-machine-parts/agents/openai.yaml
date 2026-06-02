@@ -1,0 +1,4 @@
+interface:
+  display_name: "SS14 Orion Machine Parts"
+  short_description: "Orion machine parts, part exchangers, and upgrades"
+  default_prompt: "Use $ss14-orion-machine-parts for Orion machine part rating, part exchanger, construction graph, and machine upgrade work."
