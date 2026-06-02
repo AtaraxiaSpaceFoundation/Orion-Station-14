@@ -1,0 +1,5 @@
+interface:
+  display_name: "SS14 Orion Economy"
+  short_description: "Orion economy, Paydex, banking, and vending pricing"
+  default_prompt: "Use $ss14-orion-economy-banking-vending for Orion economy, Paydex, banking, station account, vending price, and discount work."
+  

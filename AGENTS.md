@@ -116,6 +116,21 @@ If the task touches NPCs, HTN, pathfinding, steering, mob AI, AI debug overlays,
 
 - `ss14-npc-ai`
 
+If the task touches Orion research/R&D, destructive analyzers, experiments, research points, technology nodes, research unlocks, or research-gated recipes:
+
+- `ss14-orion-research`
+- `ss14-prototypes-locale` when nodes, technologies, recipes, or research locale are involved
+
+If the task touches Orion machine parts, part exchangers, machine upgrades, construction graph steps, machine frames, or multipart machine construction:
+
+- `ss14-orion-machine-parts`
+- `ss14-tests-authoring` when changing upgrade or part interaction behavior
+
+If the task touches Orion banking, Paydex, vending economy, station accounts, payday, financial UI, prices, or department discounts:
+
+- `ss14-orion-economy-banking-vending`
+- `ss14-ui-bui` when economy or vending BUI state/messages are involved
+
 If a task spans multiple gameplay/resource areas and you need a broad map first:
 
 - `ss14-gameplay-feature`
@@ -127,12 +142,13 @@ If another skill clearly matches the request, load it too.
 
 This repository is a large Space Station 14 fork with a clear split between gameplay code, client code, and content data:
 
-- `Content.Shared/`: shared gameplay logic, networked components, shared events, predicted systems.
-- `Content.Server/`: server-authoritative simulation, round logic, persistence, and server-only behavior.
-- `Content.Client/`: client visuals, overlays, XAML UI, BUIs, and client-only polish.
-- `Resources/`: prototypes, locale, maps, textures, audio, and other content data.
-- `Content.Tests/`: fast unit/content tests.
-- `Content.IntegrationTests/`: game/integration coverage.
+- `Content.Shared/`, `Content.Server/`, `Content.Client/`: main shared/server/client content assemblies.
+- `Content.Goobstation.Shared/`, `Content.Goobstation.Server/`, `Content.Goobstation.Client/`, plus `Content.Goobstation.Common/`, `Content.Goobstation.Maths/`, and `Content.Goobstation.UIKit/`: real module assemblies included in `SpaceStation14.sln`; check references before moving code across them.
+- `Content.Server.Database/` and `Content.Shared.Database/`: database and persistence projects.
+- `Resources/`: prototypes, locale, maps, textures, audio, guidebook/server info, and other content data.
+- `Content.Tests/`: NUnit content/unit tests.
+- `Content.IntegrationTests/`: NUnit integration tests that boot larger client/server slices.
+- `Content.YAMLLinter/`: repository YAML/prototype/content validation tool.
 
 ## Working Style
 
@@ -146,9 +162,9 @@ This repository is a large Space Station 14 fork with a clear split between game
 
 - Do not edit `RobustToolbox/` or other engine-side files unless the task explicitly requires it.
 - Prefer fixing gameplay behavior in content code before assuming an engine change is needed.
-- For fork-only behavior, prefer extending `_Orion` or another clearly fork-scoped area instead of hiding fork logic in unrelated upstream files.
+- For Orion-only behavior, prefer existing `_Orion` folders when they exist. This repository also contains inherited/vendor-specific trees such as `_Goobstation`, `_EinsteinEngines`, `_Shitmed`, `_DV`, `_NF`, `_Mono`, `_RMC14`, `_White`, and others; extend the tree that already owns the feature instead of assuming all fork code belongs under `_Orion`.
 - When you must touch an upstream content file, keep the diff narrow and preserve surrounding structure and style.
-- When adding or changing Orion-specific code in a file outside any `_Orion` path, mark it:
+- When adding or changing Orion-specific code in an inherited file outside any `_Orion` path, mark it when the surrounding file already uses edit markers or the change would otherwise be hard to distinguish:
   - Single added or changed line: append `// Orion` as an inline comment.
   - Multiple lines: wrap with block markers:
 
@@ -162,10 +178,10 @@ This repository is a large Space Station 14 fork with a clear split between game
 
 ## Assembly Placement
 
-- Put shared data, shared events, networked state, and predicted logic in `Content.Shared/`.
-- Put server-only authority and non-predicted server simulation in `Content.Server/`.
-- Put client-only visuals, overlays, XAML, and BUI front-ends in `Content.Client/`.
-- Do not make `Content.Shared` depend on client-only or server-only projects.
+- Put main shared data, shared events, networked state, and predicted logic in `Content.Shared/`; use `Content.Goobstation.Shared/` only for code that belongs to that existing module path.
+- Put main server-only authority and non-predicted server simulation in `Content.Server/`; use `Content.Goobstation.Server/` for features already rooted in that module.
+- Put main client-only visuals, overlays, XAML, and BUI front-ends in `Content.Client/`; use `Content.Goobstation.Client/` or `Content.Goobstation.UIKit/` only when matching existing references and ownership.
+- Do not make shared projects depend on client-only or server-only projects.
 
 ## ECS Rules
 
@@ -235,7 +251,7 @@ When a local player action should feel immediate, check whether it should be pre
 ## Localization
 
 - Every player-facing string must be localized.
-- Add or update FTL entries under `Resources/Locale/`, usually starting with `en-US`.
+- Add or update FTL entries under `Resources/Locale/`, starting with `en-US`; add/update matching `ru-RU` entries when the same feature already maintains Russian locale or the change is Orion-facing and you can do so without guessing translations.
 - Use specific `kebab-case` localization IDs.
 - Do not compare localized strings or expose raw enum `ToString()` output to players.
 - Treat localization as mandatory work, not optional polish.
@@ -258,11 +274,15 @@ If Rider MCP is not available, use the normal shell/file tools.
 
 Pick the smallest verification that meaningfully covers the change.
 
-- Baseline build: `dotnet restore` then `dotnet build --configuration DebugOpt --no-restore /m`
-- Unit/content tests: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj`
-- Integration tests: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj`
-- YAML/resource edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- RSI edits: `py -3 Schemas/validate_rsis.py Resources`
+- SDK: `global.json` pins .NET SDK `9.0.100` with `latestFeature` roll-forward.
+- Submodules: run `git submodule update --init --recursive` before restore/build/test when `RobustToolbox/` is not initialized; CI also pulls engine updates before building.
+- Baseline build: `dotnet restore` then `dotnet build --configuration DebugOpt --no-restore /m`.
+- Content tests after build: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0`.
+- Integration tests after build: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed`.
+- Standalone content test run without a prior build: `dotnet test --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0`.
+- Standalone integration test run without a prior build: `dotnet test --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed`.
+- YAML/resource edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`. CI builds Release first and then runs `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build`.
+- RSI edits: `python3 RobustToolbox/Schemas/validate_rsis.py Resources/` after initializing the `RobustToolbox` submodule and installing the script dependencies (`pillow` and `jsonschema`).
 - Gameplay/UI fixes should ideally be verified in-game; if you cannot do that locally, say so explicitly.
 - If code touches prototypes or FTL, run the YAML linter.
 - If code touches C#, build the affected project or the repo slice that covers it.

@@ -58,11 +58,13 @@ Prefer reading already-networked component state on the client instead of invent
 
 ## Validation Matrix
 
+Initialize `RobustToolbox` submodules before .NET commands when needed.
+
 - Gameplay logic only: `dotnet build --configuration DebugOpt --no-restore /m`
-- Unit/content behavior: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj`
-- Integration or end-to-end roundflow: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj`
-- Prototype or locale edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- RSI edits: `py -3 Schemas/validate_rsis.py Resources`
+- Unit/content behavior: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0`
+- Integration or end-to-end roundflow: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed`
+- Prototype or locale edits: `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- RSI edits: `python3 RobustToolbox/Schemas/validate_rsis.py Resources/`
 - Predicted or UI behavior: perform an in-game pass when possible and say explicitly when you could not
 
 ## Related References

@@ -4,9 +4,12 @@
 
 ## Good Starting Points
 
-- `Content.IntegrationTests/Fixtures/GameTest.cs`
 - `Content.IntegrationTests/PoolManager.cs`
-- `Content.IntegrationTests/Tests/CargoTest.cs`
+- `Content.IntegrationTests/Pair/TestPair.cs`
+- `Content.IntegrationTests/Tests/ResearchTest.cs`
+- `Content.IntegrationTests/Tests/Station/StationJobsTest.cs`
+- `Content.IntegrationTests/Tests/Goobstation/UplinkPreferenceTests.cs`
+- `Content.IntegrationTests/Tests/_Orion/CustomGhostDefaultTest.cs`
 
 ## Use These For
 

@@ -25,7 +25,7 @@ Prefer data-driven sprite and appearance patterns before writing custom renderin
 
 3. Preserve asset conventions.
 - Keep RSI `meta.json` ordering and indentation consistent with repo rules.
-- Put fork-only textures under `_Orion` when applicable.
+- Put Orion-only textures under `_Orion` when applicable, or under the existing inherited/vendor subtree that owns the feature.
 - Check license and attribution for new or ported art.
 
 4. Watch render hot paths.

@@ -6,6 +6,12 @@ globs:
   - Content.Client/**/*.cs
   - Content.Client/**/*.xaml
   - Content.Client/**/*.xaml.cs
+  - Content.Goobstation.Client/**/*.cs
+  - Content.Goobstation.Client/**/*.xaml
+  - Content.Goobstation.Client/**/*.xaml.cs
+  - Content.Goobstation.UIKit/**/*.cs
+  - Content.Goobstation.UIKit/**/*.xaml
+  - Content.Goobstation.UIKit/**/*.xaml.cs
 alwaysApply: false
 ---
 

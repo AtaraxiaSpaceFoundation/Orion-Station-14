@@ -1,7 +1,7 @@
 language: ru-RU
 
 early_access: true
-tone_instructions: "Пиши кратко, технически и по делу. Приоритет: баги, регрессии, prediction, локализация, assembly placement и рискованные upstream-правки. Избегай поэм и пустых похвал. Всегда отвечай на русском языке (ru-RU) во всех review-комментариях, summary и suggested changes."
+tone_instructions: "Пиши кратко, технически и по делу на русском (ru-RU). Приоритет: баги, регрессии, prediction, локализация, assembly placement и рискованные upstream-правки. Без поэм и пустых похвал."
 
 chat:
   auto_reply: true

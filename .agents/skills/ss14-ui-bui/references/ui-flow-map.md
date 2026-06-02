@@ -44,9 +44,9 @@ When searching, check both the domain folder and the generic `UserInterface` hel
 - Update predicted client UI from shared state and `AfterAutoHandleStateEvent` where that pattern already exists.
 - Do not put server-only effects directly in predicted shared code paths.
 
-## Open-Space Caveat
+## Orion Caveat
 
-The fork currently has `_Orion` client code for effects, but not a broad custom UI subtree. If a new fork-specific UI is required, prefer either:
+The fork has broad `_Orion` client UI areas such as administration, bitrunning, economy, lobby, morph, recruitment, research, custom controls, and windows. If a new Orion-specific UI is required, prefer either:
 
 - extending the existing domain folder when the feature belongs to a normal SS14 system, or
 - adding a clearly named `_Orion` domain only when the behavior is genuinely fork-specific

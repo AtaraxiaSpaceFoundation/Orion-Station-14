@@ -19,7 +19,7 @@
 
 ## Commands
 
-- `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj`
-- `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj`
-- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- `py -3 Schemas/validate_rsis.py Resources`
+- `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0`
+- `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed`
+- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- `python3 RobustToolbox/Schemas/validate_rsis.py Resources/`
