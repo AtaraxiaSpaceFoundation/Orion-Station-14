@@ -229,7 +229,7 @@
   - type: Tag
     tags:
     - Hardsuit
-    - NoSlimeExtractSlowReset
+    - NoSlimeExtractSlowReset # Orion
     - WhitelistChameleon
   - type: ClothingGrantComponent
     component:
