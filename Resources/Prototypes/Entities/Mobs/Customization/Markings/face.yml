@@ -90,7 +90,7 @@
 
 - type: marking
   id: FaceCrowRight
-  bodyPart: Face
+  bodyPart: Eyes
   markingCategory: Face
   speciesRestriction: [Dwarf, Human, SlimePerson, Felinid, Oni, Harpy, Reptilian, Vulpkanin, Arachne, Yowie] # goob edit - yowies
   coloring:
@@ -104,7 +104,7 @@
 
 - type: marking
   id: FaceCrowLeft
-  bodyPart: Face
+  bodyPart: Eyes
   markingCategory: Face
   speciesRestriction: [Dwarf, Human, SlimePerson, Felinid, Oni, Harpy, Reptilian, Vulpkanin, Arachne, Yowie] # goob edit - yowies
   coloring:
