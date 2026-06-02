@@ -2,7 +2,7 @@
 
 ---
 name: ss14-porting-and-licensing
-description: Port features safely into this fork and respect the repository's license model. Use when importing code or assets from another repo, checking whether a source is acceptable, planning attribution, or deciding how fork-specific changes should be isolated and documented in `open-space`.
+description: Port features safely into this fork and respect the repository's license model. Use when importing code or assets from another repo, checking whether a source is acceptable, planning attribution, or deciding how fork-specific changes should be isolated and documented in `Orion`.
 ---
 
 # SS14 Porting And Licensing

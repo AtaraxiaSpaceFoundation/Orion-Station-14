@@ -6,6 +6,14 @@ globs:
   - Content.Shared/**/*.cs
   - Content.Server/**/*.cs
   - Content.Client/**/*.cs
+  - Content.Goobstation.Shared/**/*.cs
+  - Content.Goobstation.Server/**/*.cs
+  - Content.Goobstation.Client/**/*.cs
+  - Content.Goobstation.Common/**/*.cs
+  - Content.Goobstation.Maths/**/*.cs
+  - Content.Goobstation.UIKit/**/*.cs
+  - Content.Server.Database/**/*.cs
+  - Content.Shared.Database/**/*.cs
   - Content.Tests/**/*.cs
   - Content.IntegrationTests/**/*.cs
 alwaysApply: false

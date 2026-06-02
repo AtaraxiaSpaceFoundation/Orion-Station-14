@@ -13,7 +13,7 @@ This map is for the current Orion repository shape. Orion is not a plain upstrea
 1. Name the player-facing mechanic, admin behavior, UI, entity family, or resource family.
 2. Search for the mechanic in this order:
    - Orion-local code and data: `Content.Shared/_Orion/`, `Content.Server/_Orion/`, `Content.Client/_Orion/`, `Resources/Prototypes/_Orion/`, `Resources/Locale/*/_Orion/`, `Resources/Maps/_Orion/`, `Resources/Textures/_Orion/`, `Resources/Audio/_Orion/`.
-   - Goob inherited code and data: `Content.Goobstation.*`, `Content.* / _Goobstation`, `Resources/Prototypes/_Goobstation/`, `Resources/ServerInfo/_Goobstation/`, and matching locale/resource folders.
+   - Goob inherited code and data: `Content.Goobstation.*` assemblies, the existing `Content.Server/_Goobstation/` subtree, `Resources/Prototypes/_Goobstation/`, `Resources/ServerInfo/_Goobstation/`, and matching locale/resource folders.
    - Other inherited fork overlays when the feature clearly belongs there: `_DV`, `_EinsteinEngines`, `_Impstation`, `_Shitcode`, or similar prefixed folders.
    - Unprefixed upstream-style domains under `Content.Shared/`, `Content.Server/`, `Content.Client/`, and `Resources/`.
 3. Start from `Content.Shared/<Domain>/` or `Content.Shared/_Orion/<Domain>/` when the feature crosses networking, prediction, BUI state/messages, actions, appearance, or client/server event contracts.
@@ -176,7 +176,7 @@ Mood is Orion-local. Do not assume upstream mood behavior exists:
 
 Inspect `_Orion` first for these systems:
 
-- `Content.*_Orion/Morph/` and `Resources/Prototypes/_Orion/Actions/morph.yml` for morph/antag action logic.
+- `Content.Shared/_Orion/Morph/`, `Content.Server/_Orion/Morph/`, `Content.Client/_Orion/Morph/` and `Resources/Prototypes/_Orion/Actions/morph.yml` for morph/antag action logic.
 - `Content.Server/_Orion/CorticalBorer/`, `Resources/Prototypes/_Orion/Alerts/cortical_borer.yml`, and related entity/locale data for cortical borer work.
 - `Content.Shared/_Orion/Recruitment/`, `Content.Server/_Orion/Recruitment/`, and `Content.Client/_Orion/Recruitment/` for recruitment/member-list UI and state.
 - `Content.Shared/_Orion/Posing/` and `Content.Server/_Orion/Posing/` for posing mechanics.
@@ -232,8 +232,8 @@ Treat these as shared primitives that other domains compose. Keep them generic a
 
 Before handing off a patch, choose the relevant subset:
 
-- Build: `dotnet build --configuration Tools` or the project-specific build command used by the repo.
-- Code tests: `dotnet test Content.Tests` and/or `dotnet test Content.IntegrationTests` when behavior changed.
+- Build: `dotnet build --configuration DebugOpt --no-restore /m` after `dotnet restore`, or a narrower project build.
+- Code tests: `dotnet test --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0` and/or `dotnet test --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed` when behavior changed.
 - Prototype/YAML changes: run the repo's YAML/content validation path if available, and at minimum check IDs, parents, components, enum values, resource paths, and localization keys.
 - UI changes: open the BUI/window in-game or through the nearest existing debug/admin path; check scaling, missing loc strings, disabled buttons, and stale state updates.
 - Resource changes: verify RSI state names, sprite paths, audio paths, licenses/meta files, and casing.

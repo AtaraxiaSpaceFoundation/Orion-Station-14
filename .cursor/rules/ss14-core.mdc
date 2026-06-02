@@ -1,7 +1,7 @@
 <!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 ---
-description: Core SS14 open-space repo guidance, skill routing, and validation rules.
+description: Core SS14 Orion repo guidance, skill routing, and validation rules.
 alwaysApply: true
 ---
 

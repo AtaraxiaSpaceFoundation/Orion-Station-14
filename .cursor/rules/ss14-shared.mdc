@@ -4,6 +4,10 @@
 description: Shared SS14 rules for replicated state, shared events, localization identifiers, and prediction-aware gameplay code.
 globs:
   - Content.Shared/**/*.cs
+  - Content.Goobstation.Shared/**/*.cs
+  - Content.Goobstation.Common/**/*.cs
+  - Content.Goobstation.Maths/**/*.cs
+  - Content.Shared.Database/**/*.cs
 alwaysApply: false
 ---
 
