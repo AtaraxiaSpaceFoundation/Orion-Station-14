@@ -116,6 +116,21 @@ If the task touches NPCs, HTN, pathfinding, steering, mob AI, AI debug overlays,
 
 - `ss14-npc-ai`
 
+If the task touches Orion research/R&D, destructive analyzers, experiments, research points, technology nodes, research unlocks, or research-gated recipes:
+
+- `ss14-orion-research`
+- `ss14-prototypes-locale` when nodes, technologies, recipes, or research locale are involved
+
+If the task touches Orion machine parts, part exchangers, machine upgrades, construction graph steps, machine frames, or multipart machine construction:
+
+- `ss14-orion-machine-parts`
+- `ss14-tests-authoring` when changing upgrade or part interaction behavior
+
+If the task touches Orion banking, Paydex, vending economy, station accounts, payday, financial UI, prices, or department discounts:
+
+- `ss14-orion-economy-banking-vending`
+- `ss14-ui-bui` when economy or vending BUI state/messages are involved
+
 If a task spans multiple gameplay/resource areas and you need a broad map first:
 
 - `ss14-gameplay-feature`

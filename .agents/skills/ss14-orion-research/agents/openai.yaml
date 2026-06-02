@@ -1,0 +1,4 @@
+interface:
+  display_name: "SS14 Orion Research"
+  short_description: "Orion R&D, experiments, research nodes, and unlocks"
+  default_prompt: "Use $ss14-orion-research for Orion R&D, destructive analyzer, experiment, research node, and research unlock work."

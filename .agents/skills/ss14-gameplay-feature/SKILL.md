@@ -46,7 +46,7 @@ Open nearby examples first, then use the reference files to route the task befor
 - Localize every player-facing string.
 - Follow existing feature-folder placement instead of inventing a new top-level area.
 
-7. Validate the smallest meaningful slice. Initialize `RobustToolbox` submodules before .NET commands when needed.
+7. Validate the smallest meaningful slice. If `RobustToolbox/` may be uninitialized, run `git submodule update --init --recursive` before any .NET restore/build/test commands.
 - Baseline build: `dotnet restore` then `dotnet build --configuration DebugOpt --no-restore /m`
 - Unit/content tests: `dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0`
 - Integration tests: `dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed`

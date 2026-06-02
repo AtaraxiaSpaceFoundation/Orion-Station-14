@@ -29,5 +29,6 @@ Choose the smallest meaningful verification for the files you touched.
 ## Reporting
 
 - State exactly what you ran.
+- For multiline checks or regex-heavy helper commands, avoid inline Markdown that can be parsed as math; use a fenced block or report a short wrapper command plus the purpose.
 - State what you could not run.
 - If runtime verification was not possible, call that out explicitly instead of implying full coverage.
