@@ -6,3 +6,5 @@
 
 silicon-emote-deathgasp = судорожно дёргается и выключается, { POSS-ADJ($entity) } огни мерцают и гаснут...
 chat-emote-msg-deathgasp-silicon = внезапно смолкает, с шипением скрежещущих сервоприводов и визгом умирающих миомеров.
+chat-emote-msg-boop = бупает.
+chat-emote-msg-whirr = жужжит.

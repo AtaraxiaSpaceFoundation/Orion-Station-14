@@ -47,8 +47,8 @@ Keep prototype structure, localization, and asset metadata consistent with SS14 
 - Keep assets self-hosted in the repo; do not point docs or content at random external hosts.
 
 7. Validate the change.
-- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- `py -3 Schemas/validate_rsis.py Resources` after RSI edits
+- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- `python3 RobustToolbox/Schemas/validate_rsis.py Resources/` after RSI edits
 - If map files changed, expect schema validation in CI and keep map-only changes isolated when practical
 
 ## Reference Map

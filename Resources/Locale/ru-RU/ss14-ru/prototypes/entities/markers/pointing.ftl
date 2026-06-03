@@ -1,2 +1,2 @@
-ent-PointingArrow = указывающая стрелка
+ent-PointingArrow = указывающая стрелочка
     .desc = { "" }

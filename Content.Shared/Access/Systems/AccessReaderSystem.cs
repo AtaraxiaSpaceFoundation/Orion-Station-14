@@ -189,7 +189,7 @@ public sealed class AccessReaderSystem : EntitySystem
         args.Handled = true;
         accessReader.Value.Comp.AccessLists.Clear();
         accessReader.Value.Comp.AccessLog.Clear();
-        Dirty(uid, reader);
+        Dirty(accessReader.Value); // Orion-Edit: fix door desynchronization
     }
 
     /// <summary>

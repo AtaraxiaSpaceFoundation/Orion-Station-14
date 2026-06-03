@@ -68,6 +68,7 @@
 
 using System.Linq;
 using System.Numerics;
+using Content.Server._Orion.Economy.Components;
 using Content.Server._Orion.Economy.Systems;
 using Content.Server.Access.Systems;
 using Content.Server.Cargo.Systems;
@@ -93,6 +94,7 @@ using Content.Shared.Throwing;
 using Content.Shared.UserInterface;
 using Content.Shared.VendingMachines;
 using Content.Shared.Wall;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -113,9 +115,11 @@ namespace Content.Server.VendingMachines
         [Dependency] private readonly IdCardSystem _idCard = default!;
         [Dependency] private readonly StationSystem _station = default!;
         [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+        [Dependency] private readonly UserInterfaceSystem _ui = default!;
         // Orion-End
 
         private const float WallVendEjectDistanceFromWall = 1f;
+        private const float DefaultDepartmentDiscount = 0.2f; // Orion
         private static readonly ProtoId<CargoAccountPrototype> CargoDepartmentAccount = "Cargo"; // Orion
 
         public override void Initialize()
@@ -137,24 +141,30 @@ namespace Content.Server.VendingMachines
 
             SubscribeLocalEvent<VendingMachineRestockComponent, PriceCalculationEvent>(OnPriceCalculation);
             SubscribeLocalEvent<VendingMachineComponent, VendingMachineBeforeEjectEvent>(OnBeforeEject); // Orion
+            SubscribeLocalEvent<VendingMachineComponent, BoundUIOpenedEvent>(OnBoundUiOpened); // Orion
         }
 
         // Orion-Start
         private void OnBeforeEject(Entity<VendingMachineComponent> ent, ref VendingMachineBeforeEjectEvent args)
         {
-            if (args.User is not { } user || args.Price <= 0)
+            if (args.User is not { } user)
                 return;
 
-            var hasPricing = TryComp<VendingMachinePricingComponent>(ent.Owner, out var pricing);
-            if (hasPricing && pricing!.AllProductsFree)
+            args.Price = GetFinalPrice(ent, user, args.InventoryType, args.Price);
+
+            if (args.Price <= 0)
+            {
+                SendInventoryUpdate(ent, user);
                 return;
+            }
 
             if (!_idCard.TryFindIdCard(user, out var idCard) || string.IsNullOrWhiteSpace(idCard.Comp.BankAccountId))
             {
-                // Orion-Start
                 if (TryBorgPay(ent, user, args.Price, args.ItemId))
+                {
+                    SendInventoryUpdate(ent, user);
                     return;
-                // Orion-End
+                }
 
                 Popup.PopupClient(Loc.GetString("vending-machine-purchase-no-id"), ent, user);
                 args.Cancelled = true;
@@ -183,9 +193,16 @@ namespace Content.Server.VendingMachines
                 return;
             }
 
-            var department = hasPricing && pricing!.DepartmentAccount is { } configuredDepartment
+            var department = TryComp<VendingMachinePricingComponent>(ent.Owner, out var pricing) && pricing.DepartmentAccount is { } configuredDepartment
                 ? configuredDepartment
                 : bankAcc.PrimaryAccount;
+
+            if (!_cargo.HasAccount((station, bankAcc), department))
+            {
+                Popup.PopupClient(Loc.GetString("vending-machine-purchase-payment-failed"), ent, user);
+                args.Cancelled = true;
+                return;
+            }
 
             var reasonData = $"{args.ItemId}|{department.Id}";
             if (!_bank.Withdraw(account, args.Price, "vending-purchase", reasonData: reasonData))
@@ -196,6 +213,60 @@ namespace Content.Server.VendingMachines
             }
 
             _cargo.UpdateBankAccount((station, bankAcc), args.Price, department);
+            SendInventoryUpdate(ent, user);
+        }
+
+        private void OnBoundUiOpened(Entity<VendingMachineComponent> ent, ref BoundUIOpenedEvent args)
+        {
+            SendInventoryUpdate(ent, args.Actor);
+        }
+
+        private int GetFinalPrice(Entity<VendingMachineComponent> ent, EntityUid? user, InventoryType type, int basePrice)
+        {
+            if (basePrice <= 0)
+                return 0;
+
+            if (!TryComp<VendingMachinePricingComponent>(ent.Owner, out var pricing))
+                return basePrice;
+
+            if (pricing.AllProductsFree)
+                return 0;
+
+            if (type != InventoryType.Regular || pricing.DiscountDepartment is not { } discountDepartment || user == null ||
+                !TryGetAccount(user.Value, out var account) ||
+                !_bank.TryGetDepartment(account, out var buyerDepartment) ||
+                buyerDepartment != discountDepartment)
+                return basePrice;
+
+            var discount = pricing.DepartmentDiscount ?? DefaultDepartmentDiscount;
+
+            return Math.Max((int) Math.Round(basePrice * discount, MidpointRounding.AwayFromZero), 1);
+        }
+
+        private bool TryGetAccount(EntityUid user, out Entity<StationAccountComponent> account)
+        {
+            account = default;
+            if (!_idCard.TryFindIdCard(user, out var idCard) || string.IsNullOrWhiteSpace(idCard.Comp.BankAccountId))
+                return false;
+
+            return _bank.TryFindAccountById(idCard.Comp.BankAccountId, out account);
+        }
+
+        private void SendInventoryUpdate(Entity<VendingMachineComponent> ent, EntityUid user)
+        {
+            var inventory = GetAllInventory(ent.Owner, ent.Comp);
+            for (var i = 0; i < inventory.Count; i++)
+            {
+                var entry = new VendingMachineInventoryEntry(inventory[i]);
+                entry.DisplayPrice = GetFinalPrice(ent, user, entry.Type, entry.Price);
+                inventory[i] = entry;
+            }
+
+            int? balance = TryGetAccount(user, out var account)
+                ? account.Comp.Balance
+                : null;
+
+            _ui.ServerSendUiMessage(ent.Owner, VendingMachineUiKey.Key, new VendingMachineInventoryUpdateMessage(inventory, balance), user);
         }
 
         private bool TryBorgPay(Entity<VendingMachineComponent> ent, EntityUid user, int price, string itemId)

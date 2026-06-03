@@ -65,12 +65,29 @@ namespace Content.Client.VendingMachines
             _menu?.Populate(_cachedInventory, enabled);
         }
 
+        // Orion-Start
+        protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+        {
+            if (message is not VendingMachineInventoryUpdateMessage update)
+                return;
+
+            _cachedInventory = update.Inventory;
+            var enabled = EntMan.TryGetComponent(Owner, out VendingMachineComponent? bendy) && !bendy.Ejecting;
+            _menu?.SetBalance(update.Balance);
+            _menu?.Populate(_cachedInventory, enabled);
+        }
+        // Orion-End
+
         public void UpdateAmounts()
         {
             var enabled = EntMan.TryGetComponent(Owner, out VendingMachineComponent? bendy) && !bendy.Ejecting;
 
             var system = EntMan.System<VendingMachineSystem>();
-            _cachedInventory = system.GetAllInventory(Owner);
+            // Orion-Start
+            var updatedInventory = system.GetAllInventory(Owner);
+            ApplyDisplayPrices(updatedInventory);
+            // Orion-End
+            _cachedInventory = updatedInventory; // Orion-Edit
             _menu?.UpdateAmounts(_cachedInventory, enabled);
         }
 
@@ -92,6 +109,19 @@ namespace Content.Client.VendingMachines
 
             SendPredictedMessage(new VendingMachineEjectMessage(selectedItem.Type, selectedItem.ID));
         }
+
+        // Orion-Start
+        private void ApplyDisplayPrices(List<VendingMachineInventoryEntry> updatedInventory)
+        {
+            foreach (var updated in updatedInventory)
+            {
+                var current = _cachedInventory.FirstOrDefault(entry => entry.ID == updated.ID && entry.Type == updated.Type);
+
+                if (current != null)
+                    updated.DisplayPrice = current.DisplayPrice;
+            }
+        }
+        // Orion-End
 
         protected override void Dispose(bool disposing)
         {

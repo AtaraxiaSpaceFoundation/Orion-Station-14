@@ -26,6 +26,6 @@ Use this skill when touching `EntitySystem` classes or moving behavior out of co
 - `references/dependency-and-subscription-style.md`
 - `references/shared-server-client-split.md`
 - `references/try-can-do-pattern.md`
-- `../ss14-gameplay-feature/references/open-space-gameplay-map.md`
+- `../ss14-gameplay-feature/references/orion-gameplay-map.md`
 - `../ss14-ecs-basics/references/ecs-primer.md`
 - `../ss14-ecs-basics/references/simple-system-walkthrough.md`

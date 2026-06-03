@@ -544,7 +544,6 @@ public sealed class QuantumServerSystem : EntitySystem
         Dirty(podUid, pod);
         _netpod.UpdateVisuals((podUid, pod));
         Dirty(serverUid, server);
-        Dirty(avatar, connection);
         _bitrunningDisk.RefreshAvatarEffects(avatar);
         return true;
     }
@@ -588,7 +587,6 @@ public sealed class QuantumServerSystem : EntitySystem
             Dirty(connection.Server.Value, server);
         }
 
-        Dirty(avatarUid, connection);
         _bitrunningDisk.RefreshAvatarEffects(avatarUid);
         return true;
     }
@@ -964,8 +962,6 @@ public sealed class QuantumServerSystem : EntitySystem
 
         if (ent.Comp.DisconnectActionEntity is { } disconnectAction)
             _actions.SetCooldown(disconnectAction, _timing.CurTime, ent.Comp.DisconnectBlockedUntil);
-
-        Dirty(ent);
     }
 
     private void OnAvatarStateChanged(Entity<AvatarConnectionComponent> ent, ref MobStateChangedEvent args)
@@ -1177,7 +1173,6 @@ public sealed class QuantumServerSystem : EntitySystem
         }
 
         RemCompDeferred<AvatarConnectionComponent>(ent);
-        Dirty(newAvatarUid, newConnection);
         _bitrunningDisk.RefreshAvatarEffects(newAvatarUid);
     }
 

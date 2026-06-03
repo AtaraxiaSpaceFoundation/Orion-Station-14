@@ -70,7 +70,7 @@ guide-entry-sop-emergencyresponseteam = ОБР (Отряд Быстрого Ре
 # guide-entry-sop-shaft-miner = Шахтёр
 # - Командование
 # guide-entry-sop-ntr = Представитель НаноТрейзен
-# guide-entry-sop-bso = Офицер Синего Щита
+# guide-entry-sop-bso = Офицер "Синий Щит"
 # guide-entry-sop-captain = Капитан
 # guide-entry-sop-hop = Глава Персонала
 # guide-entry-sop-hos = Глава Службы Безопасности

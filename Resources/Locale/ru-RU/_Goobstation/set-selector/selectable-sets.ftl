@@ -53,7 +53,7 @@ selectable-set-syndicate-hitman-name = Набор наёмника
 selectable-set-syndicate-hitman-description =
     Находи и устраняй цели тихо и эффективно с этим набором.
     Включает: пистолет Кобра с 3 запасными магазинами, руководство по CQC,
-    специальный бронежилет, нескользящую обувь, пакет трав Interdyne,
+    специальный бронежилет, подкованную обувь, пакет трав Interdyne,
     боевой набор медикаментов, стильный прикид и ключ шифрования синдиката.
 selectable-set-syndicate-implants-name = Набор киберпсихоза
 selectable-set-syndicate-implants-description =
@@ -113,7 +113,7 @@ selectable-set-syndicate-builder-description =
 
 # Blueshield
 
-selectable-set-blueshield-shield-name = Набор Синего Щита
+selectable-set-blueshield-shield-name = Набор "Синий Щит"
 selectable-set-blueshield-shield-description =
     Знаковое снаряжение этих солдат.
     Содержит: большой щит и кастомизированную дубинку DT-3 "Злодей".
@@ -148,7 +148,7 @@ selectable-set-blueshield-syringe-description =
 
 selectable-set-blueshield-hardsuit-light-name = бронированный боевой костюм
 selectable-set-blueshield-hardsuit-light-description = Бронированный боевой костюм, дающий больше скорости за счет меньшей защиты.
-selectable-set-blueshield-modsuit-name = MOD Синего Щита
+selectable-set-blueshield-modsuit-name = MOD "Синий Щит"
 selectable-set-blueshield-modsuit-description = MOD требующий питания.
 
 # ERT

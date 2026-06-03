@@ -27,6 +27,18 @@ public sealed partial class VendingMachinePricingComponent : Component
     public ProtoId<CargoAccountPrototype>? DepartmentAccount;
 
     /// <summary>
+    /// Salary department account that receives discounted regular products.
+    /// </summary>
+    [DataField]
+    public ProtoId<CargoAccountPrototype>? DiscountDepartment;
+
+    /// <summary>
+    /// Multiplier applied to regular product prices for matching department employees.
+    /// </summary>
+    [DataField]
+    public float? DepartmentDiscount;
+
+    /// <summary>
     /// Fallback default price for regular inventory entries when pack prototype does not define one.
     /// </summary>
     [DataField]

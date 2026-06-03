@@ -103,6 +103,10 @@
       shader: unshaded
       visible: false
       map: ["enum.ElectrifiedLayers.Sparks"]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: AnimationPlayer
   - type: Physics
   - type: Fixtures
@@ -136,7 +140,13 @@
     fuel: 10
     time: 10
   - type: Airlock
-    openUnlitVisible: true # Orion
+    # Orion-Start
+    openUnlitVisible: true
+    forceOpenSound:
+      path: /Audio/_Orion/Machines/airlock_open_force.ogg
+    forceCloseSound:
+      path: /Audio/_Orion/Machines/airlock_close_force.ogg
+    # Orion-End
   - type: NavMapDoor
   - type: DoorBolt
   - type: AccessReader

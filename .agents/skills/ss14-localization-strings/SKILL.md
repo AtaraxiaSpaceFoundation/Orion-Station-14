@@ -19,6 +19,12 @@ Use this skill for FTL changes and localized string usage from C# or prototypes.
 3. Add FTL whenever a player-facing string changes.
 4. Keep localization IDs specific and feature-scoped.
 
+## FTL Formatting Notes
+
+- Keep Fluent selectors, variables, functions, and SS14 grammar helpers such as `THE(...)` as syntax/helpers; do not translate or copy them as visible text.
+- When a feature already maintains `ru-RU` locale, update matching `ru-RU` entries in the same change instead of leaving raw English player-facing text nearby.
+- Preserve FTL structure while translating text: keep key names, variable names, select cases, and helper calls stable unless the code/prototype contract also changes.
+
 ## Reference Map
 
 - `references/localization-policy.md`

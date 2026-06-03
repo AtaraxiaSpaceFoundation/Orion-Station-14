@@ -185,6 +185,16 @@ namespace Content.Client.VendingMachines.UI
             button.Disabled = !_enabled || _amounts[protoID] == 0;
         }
 
+        // Orion-Start
+        public void SetBalance(int? balance)
+        {
+            BalanceLabel.Visible = balance != null;
+
+            if (balance != null)
+                BalanceLabel.Text = Loc.GetString("vending-machine-balance", ("amount", balance.Value));
+        }
+        // Orion-End
+
         /// <summary>
         /// Populates the list of available items on the vending machine interface
         /// and sets icons based on their prototypes
@@ -236,7 +246,7 @@ namespace Content.Client.VendingMachines.UI
                 }
 
                 var itemName = Identity.Name(dummy, _entityManager);
-                var itemText = GetItemText(itemName, entry.Amount, entry.Price); // Orion-Edit
+                var itemText = GetItemText(itemName, entry.Amount, entry.DisplayPrice); // Orion-Edit
                 _amounts[entry.ID] = entry.Amount;
 
                 if (itemText.Length > longestEntry.Length)
@@ -270,7 +280,7 @@ namespace Content.Client.VendingMachines.UI
                     continue;
                 var amount = entry.Amount;
                 // Could be better? Problem is all inventory entries get squashed.
-                var text = GetItemText(Identity.Name(dummy, _entityManager), amount, entry.Price); // Orion-Edit
+                var text = GetItemText(Identity.Name(dummy, _entityManager), amount, entry.DisplayPrice); // Orion-Edit
 
                 button.Item.SetText(text);
                 button.Button.Disabled = !enabled || amount == 0;

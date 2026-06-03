@@ -1,8 +1,11 @@
 using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server._Orion.Economy.Components;
+using Content.Shared.Cargo.Prototypes;
 using Content.Shared.Database;
 using Content.Shared.Mind;
+using Content.Shared.Roles;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
 
@@ -14,6 +17,8 @@ public sealed class BankSystem : EntitySystem
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPrototypeManager _proto = default!;
+
     private readonly ISawmill _sawmill = Logger.GetSawmill("economy-bank");
 
     public override void Initialize()
@@ -94,6 +99,58 @@ public sealed class BankSystem : EntitySystem
 
         account = default;
         return false;
+    }
+
+    public bool TryGetDepartment(Entity<StationAccountComponent> account, out ProtoId<CargoAccountPrototype> department)
+    {
+        if (account.Comp.Department is { } accountDepartment)
+        {
+            department = accountDepartment;
+            return true;
+        }
+
+        if (TryGetJobDepartment(account.Comp.JobId, out department))
+        {
+            account.Comp.Department = department;
+            Dirty(account);
+            return true;
+        }
+
+        if (!TryComp<MindComponent>(account.Owner, out var mind))
+            return false;
+
+        foreach (var role in mind.MindRoles)
+        {
+            if (!TryComp<MindRoleComponent>(role, out var mindRole) || mindRole.JobPrototype == null)
+                continue;
+
+            if (!_proto.TryIndex(mindRole.JobPrototype.Value, out var job) || job.PayrollDepartmentAccount is not { } payrollDepartment)
+                continue;
+
+            department = payrollDepartment;
+            account.Comp.Department = department;
+            Dirty(account);
+
+            if (account.Comp.JobId != null)
+                return true;
+
+            account.Comp.JobId = job.ID;
+            Dirty(account);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryGetJobDepartment(string? jobId, out ProtoId<CargoAccountPrototype> department)
+    {
+        department = default;
+        if (string.IsNullOrWhiteSpace(jobId) || !_proto.TryIndex<JobPrototype>(jobId, out var job) || job.PayrollDepartmentAccount is not { } payrollDepartment)
+            return false;
+
+        department = payrollDepartment;
+        return true;
     }
 
     public static int GetBalance(Entity<StationAccountComponent> account)

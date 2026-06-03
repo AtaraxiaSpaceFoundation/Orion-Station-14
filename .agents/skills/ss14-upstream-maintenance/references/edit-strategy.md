@@ -13,8 +13,8 @@ Use this file when deciding where and how to implement a change in a fork.
 - Prefer extending content code before changing engine code.
 - Keep diffs narrow inside upstream files.
 - Preserve existing ordering, spacing, and local style in touched files.
-- When creating fork-only behavior, prefer `_Orion` paths that mirror the upstream feature layout.
-- When adding or changing Orion-specific code in a file outside any `_Orion` path, mark it:
+- When creating Orion-only behavior, prefer `_Orion` paths that mirror the upstream feature layout. When the feature already belongs to another inherited tree, extend that owner instead.
+- When adding or changing Orion-specific code in an inherited file outside the owning `_Orion` path, mark it when the surrounding style uses edit markers or the change would otherwise be hard to distinguish:
   - Single added or changed line: append `// Orion` as an inline comment.
   - Multiple lines: wrap with block markers:
 
@@ -41,6 +41,6 @@ Use this file when deciding where and how to implement a change in a fork.
 
 - Moving a large amount of upstream code into fork-only files without need.
 - Refactoring unrelated upstream code while fixing a small gameplay issue.
-- Leaving unmarked Orion-specific code in files outside `_Orion`.
+- Leaving hard-to-identify Orion-specific code in inherited files when nearby style expects edit markers.
 - Editing engine code because it feels cleaner than respecting content boundaries.
 - Solving one call site with hardcoded IDs, strings, paths, or special-case branches when the code should stay reusable.

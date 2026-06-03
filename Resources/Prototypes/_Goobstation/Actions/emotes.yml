@@ -28,6 +28,17 @@
   - does a flip
   - does a flip.
   - does a flip!
+  # Orion-Start
+  - сальто
+  - сальто.
+  - сальто!
+  - делает сальто
+  - делает сальто.
+  - делает сальто!
+  - кувыркается
+  - кувыркается.
+  - кувыркается!
+  # Orion-End
   event: !type:AnimationFlipEmoteEvent
 
 - type: emote
@@ -42,6 +53,14 @@
   - tweaks
   - tweaks.
   - tweaks!
+  # Orion-Start
+  - дёргается
+  - дёргается.
+  - дёргается!
+  - дергается
+  - дергается.
+  - дергается!
+  # Orion-End
   event: !type:AnimationTweakEmoteEvent
 
 - type: emote
@@ -60,6 +79,17 @@
   - shows off muscles
   - shows off its muscles
   - intimidates
+  # Orion-Start
+  - напрягает мышцы
+  - напрягает мышцы.
+  - напрягает мышцы!
+  - демонстрирует мышцы
+  - демонстрирует мышцы.
+  - демонстрирует мышцы!
+  - красуется
+  - красуется.
+  - красуется!
+  # Orion-End
   event: !type:AnimationFlexEmoteEvent
 
 - type: emote
@@ -72,6 +102,14 @@
   - spins
   - spins.
   - spins!
+  # Orion-Start
+  - крутится
+  - крутится.
+  - крутится!
+  - кружится
+  - кружится.
+  - кружится!
+  # Orion-End
   event: !type:AnimationSpinEmoteEvent
 
 - type: emote
@@ -84,4 +122,12 @@
   - jumps
   - jumps.
   - jumps!
+  # Orion-Start
+  - прыгает
+  - прыгает.
+  - прыгает!
+  - подпрыгивает
+  - подпрыгивает.
+  - подпрыгивает!
+  # Orion-End
   event: !type:AnimationJumpEmoteEvent

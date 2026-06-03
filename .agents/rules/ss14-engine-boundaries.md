@@ -13,7 +13,7 @@ Use this rule whenever a task smells like it might require engine work.
 ## Before Touching Engine Code
 
 1. Confirm the issue cannot be solved in `Content.Shared/`, `Content.Server/`, `Content.Client/`, or `Resources/`.
-2. Check whether the fork already has an `_Orion` extension point.
+2. Check whether Orion already has a matching `_Orion` extension point, or whether the feature belongs to an existing inherited subtree such as `_Goobstation`, `_EinsteinEngines`, `_Shitmed`, `_DV`, `_NF`, or another present owner.
 3. Prefer extending an existing public content API over patching engine internals.
 
 ## When Upstream Content Must Change
