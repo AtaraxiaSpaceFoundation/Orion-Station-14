@@ -905,7 +905,7 @@ public abstract partial class SharedSurgerySystem
         var ev = new SurgeryDoAfterEvent(surgeryId, stepId, toolUsed);
         var duration = GetSurgeryDuration(step, user, body, speed);
 
-        /* Orion-Edit-Start: moved to GetSurgeryDuration
+        /*// Orion-Edit-Start: Moved to GetSurgeryDuration
         if (TryComp(user, out SurgerySpeedModifierComponent? surgerySpeedMod))
             duration = duration / surgerySpeedMod.SpeedModifier;
         */// Orion-Edit-End
