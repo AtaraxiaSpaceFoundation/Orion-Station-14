@@ -449,14 +449,15 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Bar"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Bar"]]
   - type: GuideHelp
     guides:
     - Bartender
     - Drinks
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Service
     defaultPrice: 55
     extraPrice: 155
   # Orion-End
@@ -488,8 +489,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["SyndicateAgent"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["SyndicateAgent"]]
   - type: GuideHelp
     guides:
     - Bartender
@@ -525,8 +526,8 @@
     color: "#ffb0b0"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-  - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["HeadOfPersonnel"]]
   - type: Transform
     noRot: false
   - type: Rotatable
@@ -534,6 +535,7 @@
     rotateWhilePulling: true
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Command
     defaultPrice: 100
     extraPrice: 150
   # Orion-End
@@ -564,14 +566,18 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Service"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Service"]]
   - type: PointLight
     radius: 2
     energy: 1.6
     color: "#4b93ad"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Service
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -1134,8 +1140,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Kitchen"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Kitchen"]]
   - type: PointLight
     radius: 2
     energy: 1.6
@@ -1149,6 +1155,7 @@
     rotateWhilePulling: true
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Service
     defaultPrice: 40
     extraPrice: 75
   # Orion-End
@@ -1257,8 +1264,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Engineering"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Engineering"]]
   - type: PointLight
     radius: 2
     energy: 1.6
@@ -1275,6 +1282,7 @@
     - DroneUsable # Goobstation
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Engineering
     defaultPrice: 50
     extraPrice: 150
   # Orion-End
@@ -1308,8 +1316,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Medical"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Medical"]]
   - type: PointLight
     radius: 2
     energy: 1.6
@@ -1324,6 +1332,10 @@
   - type: Rotatable
     rotateWhileAnchored: false
     rotateWhilePulling: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Medical
+  # Orion-End
 
 - type: entity
   parent: VendingMachineOld # Orion-Edit
@@ -1352,8 +1364,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Hydroponics"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Hydroponics"]]
   - type: PointLight
     radius: 2
     energy: 1.6
@@ -1362,6 +1374,7 @@
     autoRot: true
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Service
     defaultPrice: 40
     extraPrice: 100
   # Orion-End
@@ -1394,8 +1407,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Security"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Security"]]
   - type: PointLight
     radius: 2
     energy: 1.8
@@ -1413,6 +1426,7 @@
     rotateWhilePulling: true
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Security
     defaultPrice: 50
     extraPrice: 150
   # Orion-End
@@ -1457,8 +1471,12 @@
   id: VendingMachineSeeds
   suffix: Hydroponics
   components:
-  - type: AccessReader
-    access: [["Hydroponics"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Hydroponics"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Service
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -1800,8 +1818,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Research"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Research"]]
   - type: PointLight
     radius: 2
     energy: 1.6
@@ -1818,6 +1836,7 @@
     - Robotics
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Science
     defaultPrice: 20
   # Orion-End
 
@@ -1861,6 +1880,7 @@
     - DroneUsable # Goobstation
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Engineering
     defaultPrice: 50
     extraPrice: 150
   # Orion-End
@@ -2071,8 +2091,12 @@
     radius: 1.5
     energy: 1.6
     color: "#326e3f"
-  - type: AccessReader
-    access: [["Hydroponics"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Hydroponics"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Service
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2099,8 +2123,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Lawyer"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Lawyer"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Security
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2131,10 +2159,11 @@
     radius: 1.5
     energy: 1.6
     color: "#d82929"
-  - type: AccessReader
-    access: [["Security"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Security"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Security
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2164,8 +2193,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Bar"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Bar"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Service
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2188,14 +2221,18 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Chapel"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Chapel"]]
   - type: PointLight
     radius: 2
     energy: 1.6
     color: "#CCCCCC" #The holy C
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Service
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2226,8 +2263,12 @@
     radius: 1.5
     energy: 1.6
     color: "#b89e2a"
-  - type: AccessReader
-    access: [["Cargo"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Cargo"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Cargo
+  # Orion-End
 
 - type: entity
   parent: VendingMachine
@@ -2254,10 +2295,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Medical"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Medical"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Medical
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2287,10 +2329,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Chemistry"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Chemistry"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Medical
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2320,10 +2363,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Service"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Service"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Service
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2357,10 +2401,11 @@
     radius: 1.5
     energy: 1.6
     color: "#b89e2a"
-  - type: AccessReader
-    access: [["Engineering"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Engineering"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Engineering
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2394,10 +2439,11 @@
     radius: 1.5
     energy: 1.6
     color: "#b89e2a"
-  - type: AccessReader
-    access: [["Engineering"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Engineering"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Engineering
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2427,10 +2473,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Kitchen"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Kitchen"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Service
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2460,10 +2507,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Detective"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Detective"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Security
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2493,8 +2541,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Janitor"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Janitor"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -2503,6 +2551,7 @@
     autoRot: true
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Service
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2532,10 +2581,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Research"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Research"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Science
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2602,10 +2652,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Research"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Research"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Science
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2635,10 +2686,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Medical"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Medical"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Medical
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2668,10 +2720,11 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Medical"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Medical"]]
   # Orion-Start
   - type: VendingMachinePricing
+    discountDepartment: Medical
     defaultPrice: 50
     extraPrice: 100
   # Orion-End
@@ -2703,8 +2756,8 @@
     color: "#48CF48"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-  - type: AccessReader
-    access: [["CentralCommand"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["CentralCommand"]]
   # Orion-Start
   - type: VendingMachinePricing
     defaultPrice: 150
@@ -2748,8 +2801,8 @@
     dataset: HappyHonkAds
   - type: SpeakOnUIClosed
     pack: HappyHonkGoodbyes
-  - type: AccessReader
-    access: [["Kitchen"], ["Theatre"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Kitchen"], ["Theatre"]]
 
 # Pride Vending Machine | No, fuck you
 
@@ -2837,12 +2890,16 @@
       map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: AccessReader
-    access: [["Chemistry"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Chemistry"]]
   - type: GuideHelp
     guides:
     - Chemicals
     - Chemist
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Medical
+  # Orion-End
 
 - type: entity
   parent: VendingMachineChemicals
@@ -2887,8 +2944,12 @@
     radius: 1.3
     energy: 1.6
     color: "#43ccb5"
-  - type: AccessReader
-    access: [["Medical"]]
+#  - type: AccessReader # Orion-Edit
+#    access: [["Medical"]]
   - type: GuideHelp
     guides:
     - Medical
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Medical
+  # Orion-End

@@ -1,7 +1,7 @@
 # Research Director
-loadout-group-research-director-envirohelm = экошлем научного руководителя
-loadout-group-research-director-envirosuit = экокостюм научного руководителя
-loadout-group-research-director-envirogloves = экоперчатки научного руководителя
+loadout-group-research-director-envirohelm = Экошлем НР
+loadout-group-research-director-envirosuit = Экокостюм НР
+loadout-group-research-director-envirogloves = Экоперчатки НР
 # Scientist
 loadout-group-scientist-envirohelm = экошлем ученого
 loadout-group-scientist-envirosuit = экокостюм ученого
@@ -11,9 +11,9 @@ loadout-group-research-assistant-envirohelm = экошлем научного а
 loadout-group-research-assistant-envirosuit = экокостюм научного ассистента
 loadout-group-research-assistant-envirogloves = экоперчатки научного ассистента
 # Chief Medical Officer
-loadout-group-chief-medical-officer-envirohelm = экошлем главного врача
-loadout-group-chief-medical-officer-envirosuit = экокостюм главного врача
-loadout-group-chief-medical-officer-envirogloves = экоперчатки главного врача
+loadout-group-chief-medical-officer-envirohelm = Экошлем ГВ
+loadout-group-chief-medical-officer-envirosuit = Экокостюм ГВ
+loadout-group-chief-medical-officer-envirogloves = Экоперчатки ГВ
 # Medical Doctor
 loadout-group-medical-doctor-envirohelm = экошлем врача
 loadout-group-medical-doctor-envirosuit = экокостюм врача
@@ -76,10 +76,10 @@ loadout-group-warden-envirohelm = экошлем смотрителя
 loadout-group-warden-envirosuit = экокостюм смотрителя
 loadout-group-warden-envirogloves = экоперчатки смотрителя
 # Head of Personnel
-loadout-group-hop-envirohelm = экошлем главы персонала
-loadout-group-hop-envirosuit = экокостюм главы персонала
-loadout-group-hop-envirogloves = экоперчатки главы персонала
-loadout-group-hop-gloves = перчатки главы персонала
+loadout-group-hop-envirohelm = ГП
+loadout-group-hop-envirosuit = Экокостюм ГП
+loadout-group-hop-envirogloves = Экоперчатки ГП
+loadout-group-hop-gloves = ГП, перчатки
 # CentCom Officer
 loadout-group-centcom-officer-envirohelm = экошлем обр
 loadout-group-centcom-officer-envirosuit = экокостюм обр
@@ -133,15 +133,15 @@ loadout-group-lawyer-envirohelm = экошлем адвоката
 loadout-group-lawyer-envirosuit = экокостюм адвоката
 loadout-group-lawyer-envirogloves = экоперчатки адвоката
 # NanoTrasen Representative
-loadout-group-ntr-envirohelm = экошлем представителя НаноТрейзен
-loadout-group-ntr-envirosuit = экокостюм представителя НаноТрейзен
-loadout-group-ntr-envirogloves = экоперчатки представителя НаноТрейзен
-loadout-group-ntr-gloves = перчатки представителя НаноТрейзен
+loadout-group-ntr-envirohelm = Экошлем ПНТ
+loadout-group-ntr-envirosuit = Экокостюм ПНТ
+loadout-group-ntr-envirogloves = Экоперчатки ПНТ
+loadout-group-ntr-gloves = ПНТ, перчатки
 # Blueshield Officer
-loadout-group-bso-envirohelm = экошлем офицера синего щита
-loadout-group-bso-envirosuit = экокостюм офицера синего щита
-loadout-group-bso-envirogloves = экоперчатки офицера синего щита
-loadout-group-bso-gloves = перчатки офицера синего щита
+loadout-group-bso-envirohelm = Экошлем ОСЩ
+loadout-group-bso-envirosuit = Экокостюм ОСЩ
+loadout-group-bso-envirogloves = Экоперчатки ОСЩ
+loadout-group-bso-gloves = ОСЩ, перчатки
 # Reporter
 loadout-group-reporter-envirohelm = экошлем репортера
 loadout-group-reporter-envirosuit = экокостюм репортера
@@ -161,10 +161,10 @@ loadout-group-chemist-envirohelm = экошлем химика
 loadout-group-chemist-envirosuit = экокостюм химика
 loadout-group-chemist-envirogloves = экоперчатки химика
 # Head of Security
-loadout-group-head-of-security-envirohelm = экошлем гсб
-loadout-group-head-of-security-envirosuit = экокостюм гсб
-loadout-group-head-of-security-envirogloves = экоперчатки гсб
-loadout-group-head-of-security-gloves = перчатки гсб
+loadout-group-head-of-security-envirohelm = Экошлем ГСБ
+loadout-group-head-of-security-envirosuit = Экокостюм ГСБ
+loadout-group-head-of-security-envirogloves = Экоперчатки ГСБ
+loadout-group-head-of-security-gloves = ГСБ, перчатки
 # Brigmedic
 loadout-group-brigmedic-envirohelm = экошлем бригмедика
 loadout-group-brigmedic-envirosuit = экокостюм бригмедика

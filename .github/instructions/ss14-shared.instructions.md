@@ -1,10 +1,10 @@
 <!-- SPDX-License-Identifier: LicenseRef-OpenSpace-AgentPrompts-Restricted -->
 
 ---
-applyTo: "Content.Shared/**/*.cs"
+applyTo: "Content.Shared/**/*.cs,Content.Goobstation.Shared/**/*.cs,Content.Goobstation.Common/**/*.cs,Content.Goobstation.Maths/**/*.cs"
 ---
 
-For `Content.Shared` code:
+For shared content code (`Content.Shared` and existing shared Goobstation modules):
 
 - Load `ss14-ecs-components`, `ss14-ecs-entities`, `ss14-ecs-systems`, `ss14-events`, `ss14-prediction`, and `ss14-netcode`.
 - Also load `ss14-localization-code` when the shared code stores `LocId` or emits player-facing text.

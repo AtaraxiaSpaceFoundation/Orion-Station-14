@@ -115,6 +115,10 @@
       shader: unshaded
       visible: false
       map: ["enum.ElectrifiedLayers.Sparks"]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: AnimationPlayer
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
@@ -177,6 +181,7 @@
       board: !type:Container
   - type: Door
     canCrush: false
+    pryTime: 0 # Orion
     openingAnimationTime: 0.9
     closingAnimationTime: 0.9
     openSound:
@@ -272,6 +277,10 @@
       shader: unshaded
       visible: false
       map: [ "enum.ElectrifiedLayers.Sparks" ]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: Damageable
     damageModifierSet: RGlass
   - type: Destructible
@@ -296,6 +305,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Door
+    pryTime: 1 # Orion
   - type: Construction
     graph: Windoor
     node: windoorSecure
@@ -345,6 +356,10 @@
       shader: unshaded
       visible: false
       map: [ "enum.ElectrifiedLayers.Sparks" ]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: Destructible
     thresholds:
     - trigger:
@@ -367,6 +382,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Door
+    pryTime: 0.25 # Orion
   - type: Construction
     graph: Windoor
     node: pwindoor
@@ -412,6 +429,10 @@
       shader: unshaded
       visible: false
       map: [ "enum.ElectrifiedLayers.Sparks" ]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: Destructible
     thresholds:
     - trigger:
@@ -434,6 +455,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Door
+    pryTime: 1.25 # Orion
   - type: Construction
     graph: Windoor
     node: pwindoorSecure
@@ -485,6 +508,10 @@
       shader: unshaded
       visible: false
       map: [ "enum.ElectrifiedLayers.Sparks" ]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: Destructible
     thresholds:
     - trigger:
@@ -507,6 +534,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Door
+    pryTime: 0.5 # Orion
   - type: Construction
     graph: Windoor
     node: uwindoor
@@ -554,6 +583,10 @@
       shader: unshaded
       visible: false
       map: [ "enum.ElectrifiedLayers.Sparks" ]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: Destructible
     thresholds:
     - trigger:
@@ -576,6 +609,8 @@
             max: 2
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Door
+    pryTime: 1.5 # Orion
   - type: Construction
     graph: Windoor
     node: uwindoorSecure

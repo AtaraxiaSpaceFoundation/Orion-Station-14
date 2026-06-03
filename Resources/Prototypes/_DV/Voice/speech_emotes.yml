@@ -13,7 +13,7 @@
 # Harpy
 - type: emote
   id: Ring
-  name: Ring
+  name: chat-emote-name-ring # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/ring.png
   whitelist:
@@ -22,16 +22,27 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [rings.]
+  chatMessages: ["chat-emote-msg-ring"] # Orion-Edit: Localization
   chatTriggers:
     - ring
     - rings
     - ringing
     - ringed
+    # Orion-Start
+    - звенит
+    - звенит.
+    - звенит!
+    - зазвенел
+    - зазвенел.
+    - зазвенел!
+    - зазвенела
+    - зазвенела.
+    - зазвенела!
+    # Orion-End
 
 - type: emote
   id: Pew
-  name: Pew
+  name: chat-emote-name-pew # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/pew.png
   whitelist:
@@ -40,14 +51,22 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [pews.]
+  chatMessages: ["chat-emote-msg-pew"] # Orion-Edit: Localization
   chatTriggers:
     - pew
     - pews
+    # Orion-Start
+    - пиу
+    - пиу.
+    - пиу!
+    - пью
+    - пью.
+    - пью!
+    # Orion-End
 
 - type: emote
   id: Bang
-  name: Bang
+  name: chat-emote-name-bang # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/bang.png
   whitelist:
@@ -56,12 +75,23 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [bangs.]
+  chatMessages: ["chat-emote-msg-bang"] # Orion-Edit: Localization
   chatTriggers:
     - bangs
     - bang
     - banging
     - banged
+    # Orion-Start
+    - бах
+    - бах.
+    - бах!
+    - бабах
+    - бабах.
+    - бабах!
+    - хлоп
+    - хлоп.
+    - хлоп!
+    # Orion-End
 
 #- type: emote
 #  id: Beep
@@ -75,7 +105,7 @@
 
 - type: emote
   id: Rev
-  name: Rev
+  name: chat-emote-name-rev # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/rev.png
   whitelist:
@@ -84,12 +114,26 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [revs.]
+  chatMessages: ["chat-emote-msg-rev"] # Orion-Edit: Localization
   chatTriggers:
     - revs
     - rev
     - revving
     - revved
+    # Orion-Start
+    - газует
+    - газует.
+    - газует!
+    - ревёт
+    - ревёт.
+    - ревёт!
+    - ревёт мотором
+    - ревёт мотором.
+    - ревёт мотором!
+    - ревет мотором
+    - ревет мотором.
+    - ревет мотором!
+    # Orion-End
 
 #- type: emote
 #  id: Click
@@ -103,7 +147,7 @@
 
 - type: emote
   id: Caw
-  name: Caw
+  name: chat-emote-name-caw # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/caw.png
   whitelist:
@@ -112,17 +156,28 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [caws.]
+  chatMessages: ["chat-emote-msg-caw"] # Orion-Edit: Localization
   chatTriggers:
     - caws
     - caw
     - cawing
     - cawed
+    # Orion-Start
+    - каркает
+    - каркает.
+    - каркает!
+    - каркнул
+    - каркнул.
+    - каркнул!
+    - каркнула
+    - каркнула.
+    - каркнула!
+    # Orion-End
 
 #Vulpkanin
 - type: emote
   id: Bark
-  name: Bark
+  name: chat-emote-name-bark # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/bark.png
   whitelist:
@@ -132,16 +187,30 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [barks.]
+  chatMessages: ["chat-emote-msg-bark"] # Orion-Edit: Localization
   chatTriggers:
     - bark
     - barks
     - barked
     - barking
+    # Orion-Start
+    - лает
+    - лает.
+    - лает!
+    - гавкает
+    - гавкает.
+    - гавкает!
+    - гавкнул
+    - гавкнул.
+    - гавкнул!
+    - гавкнула
+    - гавкнула.
+    - гавкнула!
+    # Orion-End
 
 - type: emote
   id: Snarl
-  name: Snarl
+  name: chat-emote-name-snarl # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/snarl.png
   whitelist:
@@ -151,16 +220,27 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [snarls.]
+  chatMessages: ["chat-emote-msg-snarl"] # Orion-Edit: Localization
   chatTriggers:
     - snarl
     - snarls
     - snarled
     - snarling
+    # Orion-Start
+    - скалится
+    - скалится.
+    - скалится!
+    - оскаливается
+    - оскаливается.
+    - оскаливается!
+    - угрожающе рычит
+    - угрожающе рычит.
+    - угрожающе рычит!
+    # Orion-End
 
 - type: emote
   id: Whine
-  name: Whine
+  name: chat-emote-name-whine # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/whine.png
   whitelist:
@@ -170,16 +250,30 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [whines.]
+  chatMessages: ["chat-emote-msg-whine"] # Orion-Edit: Localization
   chatTriggers:
     - whine
     - whines
     - whined
     - whining
+    # Orion-Start
+    - скулит
+    - скулит.
+    - скулит!
+    - поскуливает
+    - поскуливает.
+    - поскуливает!
+    - заскулил
+    - заскулил.
+    - заскулил!
+    - заскулила
+    - заскулила.
+    - заскулила!
+    # Orion-End
 
 - type: emote
   id: Howl
-  name: Howl
+  name: chat-emote-name-howl # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/howl.png
   whitelist:
@@ -189,16 +283,30 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [howls.]
+  chatMessages: ["chat-emote-msg-howl"] # Orion-Edit: Localization
   chatTriggers:
     - howl
     - howls
     - howling
     - howled
+    # Orion-Start
+    - воет
+    - воет.
+    - воет!
+    - завывает
+    - завывает.
+    - завывает!
+    - завыл
+    - завыл.
+    - завыл!
+    - завыла
+    - завыла.
+    - завыла!
+    # Orion-End
 
 - type: emote
   id: Awoo
-  name: Awoo
+  name: chat-emote-name-awoo # Orion-Edit: Localization
   category: Vocal
   icon: _Goobstation/Interface/Emotes/awoo.png
   whitelist:
@@ -208,12 +316,26 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [awoos.]
+  chatMessages: ["chat-emote-msg-awoo"] # Orion-Edit: Localization
   chatTriggers:
     - awoo
     - awoos
     - awooing
     - awooed
+    # Orion-Start
+    - аву
+    - аву.
+    - аву!
+    - ауу
+    - ауу.
+    - ауу!
+    - аууу
+    - аууу.
+    - аууу!
+    - жалобно воет
+    - жалобно воет.
+    - жалобно воет!
+    # Orion-End
 
 # Feroxi
 - type: emote
@@ -227,7 +349,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: [gnashes.]
+  chatMessages: ["chat-emote-msg-gnash"] # Orion-Edit: Localization
   chatTriggers:
     - gnash
     - gnashes
@@ -249,3 +371,17 @@
     - gnashed her teeth
     - gnashed his teeth
     - gnashed its teeth
+    # Orion-Start
+    - скрежещет зубами
+    - скрежещет зубами.
+    - скрежещет зубами!
+    - скрипит зубами
+    - скрипит зубами.
+    - скрипит зубами!
+    - скрежетнул зубами
+    - скрежетнул зубами.
+    - скрежетнул зубами!
+    - скрежетнула зубами
+    - скрежетнула зубами.
+    - скрежетнула зубами!
+    # Orion-End

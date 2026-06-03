@@ -231,6 +231,9 @@ uplink-RPOA-desc = A single shot disposable thermobaric rocket launcher, which l
 uplink-ExplosivePayloadBlueprint-name = Explosive Payload Blueprint
 uplink-ExplosivePayloadBlueprint-desc = A blueprint that will allow a single lathe to print explosive payloads, an illegal and dangerous device that can be used in grenades.
 
+uplink-box-reagent-grenades-name = Box of reagent grenades
+uplink-box-reagent-grenades-desc = Contains 2 glue grenades and 2 lube grenades
+
 # Mechs
 
 uplink-mech-teleporter-heavy-name = Heavy Mech teleporter
@@ -328,8 +331,6 @@ uplink-syndicate-weapon-module-advanced-desc = Upgrades a cyborg with an energy 
 uplink-carpcaller-name = Space Carp Caller
 uplink-carpcaller-desc = A device exploiting carp psychology that, when anchored, powered, and exposed to open space, will attract wild space carp. Keep in mind you're not their friend.
 
-uplink-box-reagent-grenades-name = Box of reagent grenades
-uplink-box-reagent-grenades-desc = Contains 2 glue grenades and 2 lube grenades
 # Martial Arts
 
 uplink-cqc-name = CQC Manual

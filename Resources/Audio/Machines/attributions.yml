@@ -156,6 +156,11 @@
   copyright: "/tg/station"
   source: "https://github.com/tgstation/tgstation/tree/5f5002b21253354c20ea224be3f604d79299b37e/sound/machines"
 
+- files: ["boltsup.ogg", "boltsdown.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Baystation12"
+  source: "https://github.com/Baystation12/Baystation12/commit/41c3cfd386b11aee101b3f89ab7fefe77a57a1ba"
+
 - files: ["machine_vend_hot_drink.ogg"]
   license: "CC0-1.0"
   copyright: "waxsocks on freesound.org"

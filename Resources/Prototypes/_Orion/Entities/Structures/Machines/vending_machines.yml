@@ -70,8 +70,14 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: PointLight
     color: "#05DAF2"
-  - type: AccessReader
-    access: [["Captain"]]
+#  - type: AccessReader
+#    access: [["Captain"]]
+  # Orion-Start
+  - type: VendingMachinePricing
+    discountDepartment: Command
+    defaultPrice: 100
+    extraPrice: 200
+  # Orion-End
 
 - type: entity
   parent: VendingMachine

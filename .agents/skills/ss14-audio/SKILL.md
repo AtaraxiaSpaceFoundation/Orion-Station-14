@@ -21,7 +21,7 @@ Audio changes usually cross code, prototypes, localization, and asset licensing.
 2. Prefer data-driven sound references.
 - Use `SoundSpecifier`, component fields, prototypes, and sound collections for reusable sounds.
 - Avoid hardcoded raw paths in systems when the sound should be configurable by content.
-- Put new audio assets in the narrowest existing `Resources/Audio` subtree and keep fork-only assets under `_Orion` when applicable.
+- Put new audio assets in the narrowest existing `Resources/Audio` subtree; use `_Orion` for Orion-only assets and the existing inherited/vendor subtree for features that already own one.
 
 3. Keep prediction and PVS aligned.
 - Use predicted audio APIs for local player actions that should feel immediate.

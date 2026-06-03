@@ -9,7 +9,10 @@ prefix_rule(
     match = [
         "dotnet restore",
         "dotnet build --configuration DebugOpt --no-restore /m",
-        "dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj",
+        "dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0",
+        "dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed",
+        "dotnet test --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0",
+        "dotnet test --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed",
     ],
 )
 
@@ -18,17 +21,17 @@ prefix_rule(
     decision = "allow",
     justification = "The repo YAML linter is a safe local validation step.",
     match = [
-        "dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj",
+        "dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt",
         "dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build",
     ],
 )
 
 prefix_rule(
-    pattern = ["py", "-3", "Schemas/validate_rsis.py"],
+    pattern = ["python3", "RobustToolbox/Schemas/validate_rsis.py"],
     decision = "allow",
     justification = "The repo RSI validator is a safe local validation step.",
     match = [
-        "py -3 Schemas/validate_rsis.py Resources",
+        "python3 RobustToolbox/Schemas/validate_rsis.py Resources/",
     ],
 )
 

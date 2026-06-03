@@ -4,9 +4,9 @@ station-ai-hologram-dog = Внешность корги
 station-ai-hologram-kobold = Внешность кобольда
 station-ai-hologram-monkey = Внешность обезьяны
 
-station-ai-earlyleave-button = Выключение ИИ
-station-ai-earlyleave-menu-title = Выключение ИИ
-station-ai-earlyleave-menu-text = Вы уверены? Вы покинете раунд, а ваш слот работы станет доступен.
+station-ai-earlyleave-button = Отключение ИИ
+station-ai-earlyleave-menu-title = Отключение ИИ
+station-ai-earlyleave-menu-text = Вы уверены? Вы будете удалены из раунда, и ваш слот роли будет освобождён.
 station-ai-earlyleave-menu-confirm = Подтвердить
 station-ai-earlyleave-menu-deny = Отмена
 station-ai-earlyleave-announcement = { $character } вошёл в гибернацию!

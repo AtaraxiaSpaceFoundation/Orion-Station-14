@@ -65,6 +65,20 @@
     - bowel howling
     - bowel howled
     - accelerates climate change
+    # Orion-Start
+    - пукает
+    - пукает.
+    - пукает!
+    - пук
+    - пук.
+    - пук!
+    - пердит
+    - пердит.
+    - пердит!
+    - выпускает газы
+    - выпускает газы.
+    - выпускает газы!
+    # Orion-End
 
 - type: emote
   id: FartInhale
@@ -107,6 +121,17 @@
     - inhales through ass
     - buttreathes in
     - breathes in through butt
+    # Orion-Start
+    - вдыхает пук
+    - вдыхает пук.
+    - вдыхает пук!
+    - вдыхает задом
+    - вдыхает задом.
+    - вдыхает задом!
+    - втягивает газы
+    - втягивает газы.
+    - втягивает газы!
+    # Orion-End
 
 - type: emote
   id: FartSuper
@@ -139,6 +164,17 @@
     - ultra farts
     - ultra farted
     - ultra farting
+    # Orion-Start
+    - суперпук
+    - суперпук.
+    - суперпук!
+    - суперпердёж
+    - суперпердёж.
+    - суперпердёж!
+    - суперпердеж
+    - суперпердеж.
+    - суперпердеж!
+    # Orion-End
 
 - type: emote
   id: Flap
@@ -160,6 +196,14 @@
    - flaps her wings
    - flaps their wings
    - flaps its wings
+   # Orion-Start
+   - машет крыльями
+   - машет крыльями.
+   - машет крыльями!
+   - хлопает крыльями
+   - хлопает крыльями.
+   - хлопает крыльями!
+   # Orion-End
 
 - type: emote
   id: Trill
@@ -179,6 +223,17 @@
     - trills
     - trilling
     - trilled
+    # Orion-Start
+    - издаёт трель
+    - издаёт трель.
+    - издаёт трель!
+    - издает трель
+    - издает трель.
+    - издает трель!
+    - трелит
+    - трелит.
+    - трелит!
+    # Orion-End
 
 - type: emote
   id: Warble
@@ -198,6 +253,14 @@
     - warbles
     - warbling
     - warbled
+    # Orion-Start
+    - переливчато поёт
+    - переливчато поёт.
+    - переливчато поёт!
+    - переливчато поет
+    - переливчато поет.
+    - переливчато поет!
+    # Orion-End
 
 - type: emote
   id: Wurble
@@ -220,6 +283,14 @@
     - wurbles
     - wurbling
     - wurbled
+    # Orion-Start
+    - журчит
+    - журчит.
+    - журчит!
+    - урчит переливами
+    - урчит переливами.
+    - урчит переливами!
+    # Orion-End
 
 - type: emote # Mono
   id: Bagawk
@@ -239,6 +310,14 @@
   - bagawks
   - bawk
   - bawks
+  # Orion-Start
+  - багаук
+  - багаук.
+  - багаук!
+  - кудахчет
+  - кудахчет.
+  - кудахчет!
+  # Orion-End
 
 - type: emote
   id: Gulp
@@ -255,6 +334,14 @@
   chatTriggers:
     - gulps
     - gulp
+    # Orion-Start
+    - глотает
+    - глотает.
+    - глотает!
+    - сглатывает
+    - сглатывает.
+    - сглатывает!
+    # Orion-End
 
 - type: emote
   id: Surprised
@@ -270,3 +357,14 @@
     - is surprised
     - exclamation marks
     - exclamation mark
+    # Orion-Start
+    - удивляется
+    - удивляется.
+    - удивляется!
+    - выглядит удивлённым
+    - выглядит удивлённым.
+    - выглядит удивлённым!
+    - выглядит удивленным
+    - выглядит удивленным.
+    - выглядит удивленным!
+    # Orion-End

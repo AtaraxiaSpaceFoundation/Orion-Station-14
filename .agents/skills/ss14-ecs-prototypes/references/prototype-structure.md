@@ -10,7 +10,7 @@ Use this file to place and structure new or edited prototypes correctly.
 
 - Use the most specific existing subtree in `Resources/Prototypes/`.
 - Put parent trees in `base.yml` when creating a new parent family.
-- Keep fork-specific content under `_Orion/` when it is genuinely fork-only.
+- Keep Orion-specific content under `_Orion/` when it is genuinely Orion-only; otherwise extend the existing inherited/vendor subtree that owns the feature.
 
 ## Entity Prototype Order
 
@@ -34,5 +34,5 @@ Keep the header order:
 
 ## Validation
 
-- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj`
-- `py -3 Schemas/validate_rsis.py Resources` after RSI edits
+- `dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj -c DebugOpt`
+- `python3 RobustToolbox/Schemas/validate_rsis.py Resources/` after RSI edits

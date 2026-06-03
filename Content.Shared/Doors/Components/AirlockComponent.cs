@@ -43,7 +43,7 @@ public sealed partial class AirlockComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField, AutoNetworkedField]
     public bool EmergencyAccess = false;
-	
+
     /// <summary>
     /// Sound to play when the airlock emergency access is turned on.
     /// </summary>
@@ -55,6 +55,20 @@ public sealed partial class AirlockComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier EmergencyOffSound = new SoundPathSpecifier("/Audio/Machines/airlock_emergencyoff.ogg");
+
+    // Orion-Start
+    /// <summary>
+    /// Sound to play when the airlock is force-opened.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? ForceOpenSound;
+
+    /// <summary>
+    /// Sound to play when the airlock is force-closed.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? ForceCloseSound;
+    // Orion-End
 
     /// <summary>
     /// Pry modifier for a powered airlock.
@@ -133,6 +147,13 @@ public sealed partial class AirlockComponent : Component
     /// </summary>
     [DataField]
     public string OpeningPanelSpriteState = "panel_opening";
+
+    /// <summary>
+    /// The sprite state to use for the wire panel when the airlock is open. The
+    /// first frame will be used for when the airlock is closed.
+    /// </summary>
+    [DataField]
+    public string OpenPanelSpriteState = "panel_open";
 
     /// <summary>
     /// The sprite state used to animate the airlock frame when the airlock closes.

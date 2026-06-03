@@ -5,7 +5,7 @@
 ## Rules
 
 - Every player-facing string must be localized.
-- Add new text to `Resources/Locale/en-US/` first.
+- Add new text to `Resources/Locale/en-US/` first. Add/update `ru-RU` when the touched feature already has Russian locale or the wording is known.
 - Use specific `kebab-case` IDs.
 - Do not compare localized strings in code.
 - Do not expose raw enum `ToString()` output to players.

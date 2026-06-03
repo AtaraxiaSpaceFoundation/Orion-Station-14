@@ -1,3 +1,5 @@
+vending-machine-balance = Balance: { $amount } cr
+
 vending-machine-price-free = Free
 vending-machine-price-credits = { $amount } cr
 
