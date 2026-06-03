@@ -952,6 +952,11 @@ public abstract partial class SharedSurgerySystem
         if (TryComp(user, out SurgerySpeedModifierComponent? surgerySpeedMod))
             speed *= surgerySpeedMod.SpeedModifier;
 
+        // Orion-Start: self-surgery penalty
+        if (user == target && TryComp<SurgeryTargetComponent>(target, out var surgTarget))
+            speed *= surgTarget.SelfSurgerySpeedModifier;
+        // Orion-End
+
         return stepComp.Duration / speed;
     }
     private (Entity<SurgeryComponent> Surgery, int Step)? GetNextStep(EntityUid body, EntityUid part, Entity<SurgeryComponent?> surgery, List<EntityUid> requirements, EntityUid user)
