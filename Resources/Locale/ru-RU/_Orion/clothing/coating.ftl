@@ -1,1 +1,1 @@
-clothing-coating-blocked = Нельзя покрыть { $target } с { $source }!
+clothing-coating-blocked = Невозможно покрыть { $target } данным { $source }!
