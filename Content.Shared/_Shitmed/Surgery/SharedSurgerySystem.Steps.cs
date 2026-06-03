@@ -905,8 +905,10 @@ public abstract partial class SharedSurgerySystem
         var ev = new SurgeryDoAfterEvent(surgeryId, stepId, toolUsed);
         var duration = GetSurgeryDuration(step, user, body, speed);
 
+        /* Orion-Edit-Start: moved to GetSurgeryDuration
         if (TryComp(user, out SurgerySpeedModifierComponent? surgerySpeedMod))
             duration = duration / surgerySpeedMod.SpeedModifier;
+        */// Orion-Edit-End
 
         var doAfter = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(duration), ev, body, part)
         {
@@ -957,7 +959,7 @@ public abstract partial class SharedSurgerySystem
             speed *= surgTarget.SelfSurgerySpeedModifier;
         // Orion-End
 
-        return stepComp.Duration / speed;
+        return stepComp.Duration / MathF.Max(speed, 0.01f); // Orion-Edit: guard against zero/invalid values
     }
     private (Entity<SurgeryComponent> Surgery, int Step)? GetNextStep(EntityUid body, EntityUid part, Entity<SurgeryComponent?> surgery, List<EntityUid> requirements, EntityUid user)
     {
