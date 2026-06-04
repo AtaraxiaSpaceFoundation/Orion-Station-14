@@ -1,4 +1,4 @@
-using Content.Shared.Whitelist; // Orion
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
