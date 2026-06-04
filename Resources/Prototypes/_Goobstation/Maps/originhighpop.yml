@@ -76,7 +76,8 @@
             Virologist: [ 1, 1 ]
             #science
             ResearchDirector: [ 1, 1 ]
-            Scientist: [ 10, 10 ]
+            Scientist: [ 8, 8 ] # Orion-Edit: 10, 10 > 8, 8
+            Roboticist: [ 2, 2 ] # Orion
             ResearchAssistant: [ -1, -1 ]
             Borg: [ 4, 4 ]
             #security

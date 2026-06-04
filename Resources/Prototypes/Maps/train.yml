@@ -142,6 +142,7 @@
             #science
             ResearchDirector: [ 1, 1 ]
             Scientist: [ 4, 4 ]
+            Roboticist: [ 2, 2 ] # Orion
             ResearchAssistant: [ 2, 2 ]
             #security
             HeadOfSecurity: [ 1, 1 ]

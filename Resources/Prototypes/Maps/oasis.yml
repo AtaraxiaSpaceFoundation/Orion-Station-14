@@ -140,6 +140,7 @@
             #science
             ResearchDirector: [ 1, 1 ]
             Scientist: [ 5, 5 ]
+            Roboticist: [ 2, 2 ] # Orion
             ResearchAssistant: [ 6, 6 ]
             Borg: [ 2, 2 ]
             #security

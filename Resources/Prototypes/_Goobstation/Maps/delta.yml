@@ -45,7 +45,8 @@
             Chemist: [ 2, 2 ]
             # science
             ResearchDirector: [ 1, 1 ]
-            Scientist: [ 6, 7 ]
+            Scientist: [ 5, 6 ] # Orion-Edit: 6, 7 > 5, 6
+            Roboticist: [ 2, 2 ] # Orion
             ResearchAssistant: [ 3, 3 ]
             # security
             HeadOfSecurity: [ 1, 1 ]

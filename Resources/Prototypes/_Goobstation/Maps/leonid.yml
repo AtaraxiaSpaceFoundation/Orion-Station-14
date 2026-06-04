@@ -85,8 +85,9 @@
             Virologist: [ 2, 2 ]
             #science
             ResearchDirector: [ 1, 1 ]
-            Scientist: [ 6, 6 ]
-            ResearchAssistant: [ 6, 6 ]
+            Scientist: [ 5, 5 ] # Orion-Edit: 6, 6 > 5, 5
+            Roboticist: [ 2, 2 ] # Orion
+            ResearchAssistant: [ 3, 3 ] # Orion-Edit: 6, 6 > 3, 3
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
