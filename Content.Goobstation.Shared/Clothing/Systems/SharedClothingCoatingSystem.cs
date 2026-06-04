@@ -3,7 +3,7 @@ using Content.Shared.Clothing.Components;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.Whitelist; // Orion
+using Content.Shared.Whitelist;
 using System.Text;
 
 namespace Content.Goobstation.Shared.Clothing.Systems;
