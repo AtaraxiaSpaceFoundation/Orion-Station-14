@@ -202,6 +202,7 @@ namespace Content.IntegrationTests.Tests
             // if upstreaming take ours here and edit manually.
             "Amber",
             "Atlas",
+            "Aspid", // Orion
             "Bagel",
             "Barratry",
             "Box",            // Not in pool
@@ -244,6 +245,7 @@ namespace Content.IntegrationTests.Tests
             // order this list alphabetically, mark dev maps
               "Amber",
               "Atlas",
+              "Aspid", // Orion
               "Bagel",
               "Barratry",
             //"Box",            // Not in pool
