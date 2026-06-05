@@ -13,7 +13,6 @@ using Robust.Shared.Random;
 using Content.Shared.Body.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Chemistry.Components;
 using Robust.Shared.Prototypes;
 
@@ -26,6 +25,8 @@ public partial class XenobiologySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly StomachSystem _stomach = default!;
+
+    private readonly List<EntityUid> _slimesReadyForMitosis = []; // Orion
 
     private void SubscribeBreeding()
     {
@@ -69,6 +70,7 @@ public partial class XenobiologySystem
     /// </summary>
     private void UpdateMitosis()
     {
+        _slimesReadyForMitosis.Clear(); // Orion
         var query = EntityQueryEnumerator<SlimeComponent, MobGrowthComponent, HungerComponent>();
         while (query.MoveNext(out var uid, out var slime, out var growthComp, out var hungerComp))
         {
@@ -82,6 +84,16 @@ public partial class XenobiologySystem
 
             if (_hunger.GetHunger(hungerComp) < slime.MitosisHunger)
                 continue;
+
+            // Orion-Start
+            _slimesReadyForMitosis.Add(uid);
+        }
+
+        foreach (var uid in _slimesReadyForMitosis)
+        {
+            if (!TryComp<SlimeComponent>(uid, out var slime))
+                continue;
+            // Orion-End
 
             DoMitosis((uid, slime));
             slime.NextUpdateTime = _gameTiming.CurTime + slime.UpdateInterval;
