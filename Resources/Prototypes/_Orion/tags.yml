@@ -56,6 +56,9 @@
   id: MagazineRifle762Sniper
 
 - type: Tag
+  id: NoSlimeExtractSlowReset
+
+- type: Tag
   id: PowerpackRifle
 
 - type: Tag
