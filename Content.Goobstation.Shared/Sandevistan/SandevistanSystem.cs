@@ -66,15 +66,26 @@ public sealed class SandevistanSystem : EntitySystem
     {
         base.Update(frameTime);
 
+/* // Orion-Edit: Moved down
         var cleanupQuery = EntityQueryEnumerator<SandevistanSlowedComponent>();
         while (cleanupQuery.MoveNext(out var target, out var slowed))
         {
             if (!slowed.IsSlowed)
                 RemComp(target, slowed);
         }
+*/
 
         if (_netManager.IsServer)
         {
+            // Orion-Start
+            var cleanupQuery = EntityQueryEnumerator<SandevistanSlowedComponent>();
+            while (cleanupQuery.MoveNext(out var target, out var slowed))
+            {
+                if (!slowed.IsSlowed)
+                    RemComp(target, slowed);
+            }
+            // Orion-End
+
             var glitchQuery = EntityQueryEnumerator<SandevistanGlitchComponent>();
             while (glitchQuery.MoveNext(out var glitchUid, out var glitchComp))
             {
@@ -109,8 +120,10 @@ public sealed class SandevistanSystem : EntitySystem
 
             var filteredStates = new List<int>();
             foreach (var stateThreshold in comp.Thresholds)
+            {
                 if (comp.CurrentLoad >= stateThreshold.Value)
                     filteredStates.Add((int) stateThreshold.Key);
+            }
 
             filteredStates.Sort((a, b) => b.CompareTo(a));
             foreach (var state in filteredStates)
@@ -119,7 +132,9 @@ public sealed class SandevistanSystem : EntitySystem
                     continue;
 
                 foreach (var effect in effects)
+                {
                     effect.Effect(uid, comp, EntityManager, frameTime);
+                }
             }
 
             if (comp.NextPopupTime > _timing.CurTime)
@@ -130,8 +145,10 @@ public sealed class SandevistanSystem : EntitySystem
 
             var popup = -1;
             foreach (var state in filteredStates)
+            {
                 if (state > popup && state < 4) // Goida
                     popup = state;
+            }
 
             if (popup == -1)
                 continue;
@@ -212,8 +229,10 @@ public sealed class SandevistanSystem : EntitySystem
             args.Cancelled = true;
     }
 
-    private void OnMobStateChanged(Entity<SandevistanUserComponent> ent, ref MobStateChangedEvent args) =>
+    private void OnMobStateChanged(Entity<SandevistanUserComponent> ent, ref MobStateChangedEvent args)
+    {
         Disable(ent, ent.Comp);
+    }
 
     private void OnShutdown(Entity<SandevistanUserComponent> ent, ref ComponentShutdown args)
     {
@@ -228,7 +247,7 @@ public sealed class SandevistanSystem : EntitySystem
         {
             if (comp.SlowfieldEnabled)
             {
-                DestroySlowfieldFixture(uid, comp);
+                DestroySlowfieldFixture(uid); // Orion-Edit: Removed redundant comp var
 
                 // Remove slowdown from all affected entities
                 var query = EntityQueryEnumerator<SandevistanSlowedComponent>();
@@ -262,7 +281,7 @@ public sealed class SandevistanSystem : EntitySystem
     /// <summary>
     /// Update afterimages for sandevistan user
     /// </summary>
-    public void UpdateAfterimages(EntityUid uid, SandevistanUserComponent comp)
+    private void UpdateAfterimages(EntityUid uid, SandevistanUserComponent comp) // Orion-Edit: Was public
     {
         if (_timing.CurTime >= comp.NextAfterimageTime)
         {
@@ -293,10 +312,11 @@ public sealed class SandevistanSystem : EntitySystem
     /// <summary>
     /// Deletes all afterimages for a given source entity
     /// </summary>
-    public void DeleteAfterimages(EntityUid sourceUid)
+    private void DeleteAfterimages(EntityUid sourceUid) // Orion-Edit: Was public
     {
         // Sometimes it doesn't capture the last afterimage. This just makes sure the timing isn't off.
-        Timer.Spawn(TimeSpan.FromSeconds(1), () =>
+        Timer.Spawn(TimeSpan.FromSeconds(1),
+            () =>
         {
             var query = EntityQueryEnumerator<SandevistanAfterimageComponent>();
             while (query.MoveNext(out var afterimageUid, out var afterimageComp))
@@ -316,20 +336,23 @@ public sealed class SandevistanSystem : EntitySystem
     /// <summary>
     /// Play looped audio for sandevistan user
     /// </summary>
-    public void PlayLoopedAudio(EntityUid uid, SandevistanUserComponent comp)
+    private void PlayLoopedAudio(EntityUid uid, SandevistanUserComponent comp) // Orion-Edit: Was public
     {
         if (!_netManager.IsServer || comp.LoopSound == null || comp.PlayingStream != null)
             return;
 
-        Timer.Spawn(TimeSpan.FromSeconds(comp.LoopSoundDelay), () =>
-        {
-            if (!Deleted(uid) && comp.Active && comp.PlayingStream == null)
+        // Orion-Edit-Start
+        Timer.Spawn(TimeSpan.FromSeconds(comp.LoopSoundDelay),
+            () =>
             {
+                if (Deleted(uid) || comp is not { Active: true, PlayingStream: null })
+                    return;
+
                 var stream = _audio.PlayPvs(comp.LoopSound, uid);
                 if (stream?.Entity is { } entity)
                     comp.PlayingStream = entity;
-            }
-        });
+            });
+        // Orion-Edit-End
     }
     /// <summary>
     /// Stop looped audio for sandevistan user
@@ -348,11 +371,15 @@ public sealed class SandevistanSystem : EntitySystem
 
     private void OnAmmoShot(Entity<ActiveSandevistanUserComponent> ent, ref AmmoShotUserEvent args)
     {
-        if (!TryComp<SandevistanUserComponent>(ent, out var comp) || !comp.SlowfieldEnabled)
+        // Orion-Edit-Start: IsServer
+        if (!_netManager.IsServer || !TryComp<SandevistanUserComponent>(ent, out var comp) || !comp.SlowfieldEnabled)
             return;
+        // Orion-Edit-End
 
         foreach (var projectile in args.FiredProjectiles)
+        {
             ApplySlowdown(ent, projectile, comp);
+        }
     }
 
     private void CreateSlowfieldFixture(EntityUid uid, SandevistanUserComponent comp)
@@ -372,7 +399,7 @@ public sealed class SandevistanSystem : EntitySystem
             body: physics);
     }
 
-    private void DestroySlowfieldFixture(EntityUid uid, SandevistanUserComponent comp)
+    private void DestroySlowfieldFixture(EntityUid uid) // Orion-Edit: Removed unused comp var
     {
         if (!TryComp<PhysicsComponent>(uid, out var physics))
             return;
@@ -382,8 +409,10 @@ public sealed class SandevistanSystem : EntitySystem
 
     private void OnStartCollide(Entity<ActiveSandevistanUserComponent> ent, ref StartCollideEvent args)
     {
-        if (!TryComp<SandevistanUserComponent>(ent, out var comp) || !comp.SlowfieldEnabled)
+        // Orion-Edit-Start: IsServer
+        if (!_netManager.IsServer || !TryComp<SandevistanUserComponent>(ent, out var comp) || !comp.SlowfieldEnabled)
             return;
+        // Orion-Edit-End
 
         var target = args.OtherEntity;
 
@@ -396,6 +425,11 @@ public sealed class SandevistanSystem : EntitySystem
 
     private void OnEndCollide(Entity<ActiveSandevistanUserComponent> ent, ref EndCollideEvent args)
     {
+        // Orion-Start
+        if (!_netManager.IsServer)
+            return;
+        // Orion-End
+
         var target = args.OtherEntity;
 
         if (!TryComp<SandevistanSlowedComponent>(target, out var slowed) || slowed.Source != ent.Owner)
@@ -422,20 +456,29 @@ public sealed class SandevistanSystem : EntitySystem
 
     private void ApplySlowdown(EntityUid source, EntityUid target, SandevistanUserComponent comp)
     {
+        // Orion-Start
+        if (!_netManager.IsServer)
+            return;
+        // Orion-End
+
         if (TryComp<SandevistanSlowedComponent>(target, out var existing) && existing.IsSlowed)
             return;
 
         if (HasComp<ActiveSandevistanUserComponent>(target))
             return;
 
+/* // Orion-Edit
         var slowed = EnsureComp<SandevistanSlowedComponent>(target);
         slowed.IsSlowed = true;
         slowed.Source = source;
+*/
+
+        SandevistanSlowedComponent slowed; // Orion
 
         // Mobs
         if (HasComp<MobStateComponent>(target))
         {
-            slowed.SpeedMultiplier = comp.MobSpeedMultiplier;
+            slowed = EnsureSlowdownComponent(source, target, comp.MobSpeedMultiplier); // Orion-Edit
             _speed.RefreshMovementSpeedModifiers(target);
             EnsureComp<DogVisionComponent>(target);
         }
@@ -443,16 +486,20 @@ public sealed class SandevistanSystem : EntitySystem
         // Bullets
         else if (TryComp<ProjectileComponent>(target, out _))
         {
-            slowed.SpeedMultiplier = comp.ProjectileSpeedMultiplier;
+            slowed = EnsureSlowdownComponent(source, target, comp.ProjectileSpeedMultiplier); // Orion-Edit
             ApplyProjectileSlowdown(target, slowed);
         }
 
         // Thrown items
         else if (TryComp<ThrownItemComponent>(target, out var thrown))
         {
-            slowed.SpeedMultiplier = comp.ThrownItemSpeedMultiplier;
+            slowed = EnsureSlowdownComponent(source, target, comp.ThrownItemSpeedMultiplier); // Orion-Edit
             ApplyThrownItemSlowdown(target, slowed, thrown);
         }
+        // Orion-Start
+        else
+            return;
+        // Orion-End
 
         Dirty(target, slowed);
     }
@@ -485,6 +532,11 @@ public sealed class SandevistanSystem : EntitySystem
 
     private void OnRemoveSlowdown(Entity<SandevistanSlowedComponent> ent, ref RemoveSandevistanSlowdownEvent args)
     {
+        // Orion-Start
+        if (!_netManager.IsServer)
+            return;
+        // Orion-End
+
         if (ent.Comp.Source != args.Source)
             return;
 
@@ -529,6 +581,11 @@ public sealed class SandevistanSystem : EntitySystem
     /// </summary>
     private void OnPhysicsUpdateAfterSolve(ref PhysicsUpdateAfterSolveEvent args)
     {
+        // Orion-Start
+        if (!_netManager.IsServer)
+            return;
+        // Orion-End
+
         var query = EntityQueryEnumerator<SandevistanSlowedComponent>();
         while (query.MoveNext(out var uid, out var slowed))
         {
@@ -541,6 +598,17 @@ public sealed class SandevistanSystem : EntitySystem
                 _physics.SetLinearVelocity(uid, targetVelocity, body: physics);
         }
     }
+
+    // Orion-Start
+    private SandevistanSlowedComponent EnsureSlowdownComponent(EntityUid source, EntityUid target, float speedMultiplier)
+    {
+        var slowed = EnsureComp<SandevistanSlowedComponent>(target);
+        slowed.IsSlowed = true;
+        slowed.Source = source;
+        slowed.SpeedMultiplier = speedMultiplier;
+        return slowed;
+    }
+    // Orion-End
 
     #endregion
 }
