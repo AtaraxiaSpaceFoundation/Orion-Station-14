@@ -193,6 +193,7 @@
   showInVote: true
   rules:
     - SecretPlusLow
+    - BasicRoundstartVariation # Siberia-change
 
 - type: gamePreset
   id: SecretPlusMid
@@ -205,6 +206,7 @@
   showInVote: true
   rules:
     - SecretPlusMid
+    - BasicRoundstartVariation # Siberia-change
 
 - type: gamePreset
   id: SecretPlusAdmeme
@@ -218,6 +220,7 @@
   showInVote: false # 1984
   rules:
     - SecretPlusAdmeme
+    - BasicRoundstartVariation # Siberia-change
 
 - type: gamePreset
   id: SurvivalPlusMid
@@ -230,6 +233,7 @@
   showInVote: true
   rules:
     - SecretPlusRampingMid
+    - BasicRoundstartVariation # Siberia-change
 
 - type: gamePreset
   id: Xenomorphs
@@ -273,3 +277,4 @@
   maxPlayers: 40
   rules:
     - SecretPlusLowpop
+    - BasicRoundstartVariation # Siberia-change
