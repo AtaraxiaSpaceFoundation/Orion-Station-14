@@ -164,6 +164,11 @@ namespace Content.Server.Body.Systems
         {
             _organQuery.Resolve(ent, ref ent.Comp2, logMissing: false);
 
+            // Orion-Start: Fixes metabolizing organs crash on surgery
+            if (ent.Comp2 is not null && (!ent.Comp2.Enabled || ent.Comp2.Body is null))
+                return;
+            // Orion-End
+
             // First step is get the solution we actually care about
             var solutionName = ent.Comp1.SolutionName;
             Solution? solution = null;

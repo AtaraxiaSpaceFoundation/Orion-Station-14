@@ -300,6 +300,11 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (_timing.ApplyingState)
             return;
 
+        // Orion-Start
+        if (TerminatingOrDeleted(toggleable.Owner))
+            return;
+        // Orion-End
+
         _clothing.SetEquippedPrefix(toggleable, null);
 
         // Check if container exists and we have linked clothings
@@ -414,6 +419,11 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (!TryComp(comp.AttachedUid, out ToggleableClothingComponent? toggleableComp))
             return;
 
+        // Orion-Start
+        if (TerminatingOrDeleted(comp.AttachedUid))
+            return;
+        // Orion-End
+
         if (toggleableComp.LifeStage > ComponentLifeStage.Running)
             return;
 
@@ -446,6 +456,11 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         if (!TryComp(comp.AttachedUid, out ToggleableClothingComponent? toggleableComp))
             return;
+
+        // Orion-Start
+        if (TerminatingOrDeleted(comp.AttachedUid))
+            return;
+        // Orion-End
 
         if (toggleableComp.LifeStage > ComponentLifeStage.Running)
             return;
