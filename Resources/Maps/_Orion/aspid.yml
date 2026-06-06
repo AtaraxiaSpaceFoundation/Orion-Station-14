@@ -17728,8 +17728,6 @@ entities:
       pos: -0.5,-11.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 73
   - uid: 468
