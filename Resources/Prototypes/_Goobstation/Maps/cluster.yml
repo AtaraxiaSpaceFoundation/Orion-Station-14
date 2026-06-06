@@ -78,7 +78,6 @@
             #science
             ResearchDirector: [ 1, 1 ]
             Scientist: [ 3, 3 ]
-            Roboticist: [ 1, 2 ] # Orion
             ResearchAssistant: [ 2, 2 ]
             Borg: [ 1, 1 ]
             #security

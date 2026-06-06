@@ -104,6 +104,6 @@
         # Goobstation blob-config-start SMALL+
         - type: StationBlobConfig
           stageBegin: 25
-          stageCritical: 250 # Orion-Edit: 350 > 250
-          stageTheEnd: 400 # Orion-Edit: 700 > 400
+          stageCritical: 350
+          stageTheEnd: 700
         # Goobstation blob-config-end

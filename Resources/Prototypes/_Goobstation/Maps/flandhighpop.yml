@@ -80,8 +80,7 @@
             Virologist: [ 1, 1 ]
             #science
             ResearchDirector: [ 1, 1 ]
-            Scientist: [ 8, 8 ] # Orion-Edit: 10, 10 > 8, 8
-            Roboticist: [ 2, 2 ] # Orion
+            Scientist: [ 10, 10 ]
             ResearchAssistant: [ -1, -1 ]
             #security
             HeadOfSecurity: [ 1, 1 ]

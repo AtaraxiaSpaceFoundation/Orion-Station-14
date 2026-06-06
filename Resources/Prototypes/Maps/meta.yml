@@ -129,8 +129,7 @@
             Paramedic: [ 1, 1 ]
             #science
             ResearchDirector: [ 1, 1 ]
-            Scientist: [ 4, 6 ] # Orion-Edit: 5, 7 > 4, 6
-            Roboticist: [ 2, 2 ] # Orion
+            Scientist: [ 5, 7 ]
             ResearchAssistant: [ 3, 6 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
