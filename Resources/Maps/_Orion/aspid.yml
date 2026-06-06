@@ -127371,6 +127371,13 @@ entities:
     - type: Transform
       pos: 11.5,40.5
       parent: 2
+- proto: SpawnPointPsychologist
+  entities:
+  - uid: 20676
+    components:
+    - type: Transform
+      pos: -8.5,11.5
+      parent: 2
 - proto: SpawnPointQuartermaster
   entities:
   - uid: 17241
@@ -127425,6 +127432,13 @@ entities:
     components:
     - type: Transform
       pos: -1.5,82.5
+      parent: 2
+- proto: SpawnPointRoboticist
+  entities:
+  - uid: 20677
+    components:
+    - type: Transform
+      pos: -16.5,33.5
       parent: 2
 - proto: SpawnPointSalvageSpecialist
   entities:
@@ -127540,6 +127554,23 @@ entities:
     - type: Transform
       pos: 7.5,-1.5
       parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 20678
+    components:
+    - type: Transform
+      pos: 6.5,-2.5
+      parent: 2
+  - uid: 20679
+    components:
+    - type: Transform
+      pos: 7.5,-2.5
+      parent: 2
+  - uid: 20680
+    components:
+    - type: Transform
+      pos: 8.5,-2.5
+      parent: 2
 - proto: SpawnPointStationEngineer
   entities:
   - uid: 17270
@@ -127613,6 +127644,13 @@ entities:
     components:
     - type: Transform
       pos: 10.5,-6.5
+      parent: 2
+- proto: SpawnPointVirologist
+  entities:
+  - uid: 20681
+    components:
+    - type: Transform
+      pos: 20.5,20.5
       parent: 2
 - proto: SpawnPointWarden
   entities:
