@@ -22,6 +22,7 @@ public sealed class StationPowerTests
     [ // Goobstation only maps in rotation
         "Atlas",
         "Amber",
+        "Aspid", // Orion
         "Bagel",
         "Box",
         "Cluster",

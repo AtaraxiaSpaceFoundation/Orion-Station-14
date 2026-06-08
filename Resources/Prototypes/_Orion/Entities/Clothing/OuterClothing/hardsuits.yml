@@ -67,3 +67,10 @@
   - type: ToggleableClothing
     clothingPrototypes: #goobstation change
       head: ClothingHeadHelmetHardsuitOTAAlliance
+
+- type: entity
+  parent: ClothingOuterHardsuitDeathsquad
+  id: ClothingOuterHardsuitDeathsquadUnremovable
+  suffix: Unremoveable
+  components:
+  - type: Unremoveable

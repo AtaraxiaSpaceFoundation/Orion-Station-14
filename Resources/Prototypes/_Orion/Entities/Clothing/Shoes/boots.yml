@@ -76,3 +76,12 @@
       params:
         volume: -6
         variation: 0.09
+
+- type: entity
+  parent: ClothingShoesBootsMagDeathsquad
+  id: ClothingShoesBootsMagDeathsquadOn
+  suffix: Unremoveable, On
+  components:
+  - type: ItemToggle
+    activated: true
+  - type: Unremoveable
