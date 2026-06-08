@@ -23,6 +23,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+using Content.Client._Shitcode.Heretic.UI;
 using Content.Client.Hands.Systems;
 using Content.Client.NPC.HTN;
 using Content.Shared.CCVar;
@@ -62,9 +63,9 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         base.Initialize();
 
         SubscribeLocalEvent<CombatModeComponent, AfterAutoHandleStateEvent>(OnHandleState);
-        SubscribeLocalEvent<CombatModeComponent, GetStatusIconsEvent>(UpdateCombatModeIndicator); // Orion
+    //    SubscribeLocalEvent<CombatModeComponent, GetStatusIconsEvent>(UpdateCombatModeIndicator); // Orion // Siberia-change
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
-        Subs.CVar(_cfg, CCVars.CombatIndicator, (bool value) => OnShowCombatIndicatorChanged(value), true); // Orion
+    //    Subs.CVar(_cfg, CCVars.CombatIndicator, (bool value) => OnShowCombatIndicatorChanged(value), true); // Orion // Siberia-change
 
         // Orion-Start
         _spriteQuery = GetEntityQuery<SpriteComponent>();
@@ -113,7 +114,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         }
 
         var inCombatMode = IsInCombatMode();
-        TryPlayCombatModeSound(entity); // Orion
+    //    TryPlayCombatModeSound(entity); // Orion // Siberia-Change
         LocalPlayerCombatModeUpdated?.Invoke(inCombatMode);
     }
 
@@ -134,6 +135,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         }
     }
 
+    /* Siberia-start
     // Orion-Start
     private bool _combatIndicatorEnabled = false;
 
@@ -206,4 +208,5 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         }
     }
     // Orion-End
+    */ // Siberia-end
 }
