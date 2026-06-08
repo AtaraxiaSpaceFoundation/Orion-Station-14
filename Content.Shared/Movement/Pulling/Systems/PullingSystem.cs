@@ -104,9 +104,7 @@ using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
-using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
-using Content.Shared.Damage.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Cuffs;
 using Content.Shared.Cuffs.Components;
@@ -158,7 +156,6 @@ public sealed class PullingSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedVirtualItemSystem _virtualSystem = default!;
     [Dependency] private readonly SharedCombatModeSystem _combatMode = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!; // Orion
 
     public override void Initialize()
     {
@@ -752,13 +749,6 @@ public sealed class PullingSystem : EntitySystem
         // Goobstation - Grab Intent
         if (!ignoreGrab)
         {
-            // Orion-Start
-            if (user == pullableUid
-                && (_mobState.IsIncapacitated(pullableUid)
-                    || HasComp<SleepingComponent>(pullableUid)
-                    || (TryComp<StaminaComponent>(pullableUid, out var stamina) && stamina.Critical)))
-                return false;
-            // Orion-End
             var tryReleaseEv = new GrabAttemptReleaseEvent(user, pullerUidNull.Value);
             RaiseLocalEvent(pullableUid, ref tryReleaseEv);
             if (!tryReleaseEv.Released)
