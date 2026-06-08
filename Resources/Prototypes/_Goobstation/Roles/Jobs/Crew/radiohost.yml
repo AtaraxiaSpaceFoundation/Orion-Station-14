@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: RadioHost
   name: job-name-radiohost
@@ -23,6 +27,9 @@
     belt: ClothingBeltStorageWaistbag
     shoes: ClothingShoesColorBlack
     id: RadioHostPDA
+  storage:
+    back:
+    - BoxTapeRecorder
 
 - type: chameleonOutfit
   id: RadioHostChameleonOutfit

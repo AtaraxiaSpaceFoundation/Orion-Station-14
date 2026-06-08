@@ -107,6 +107,7 @@
 #    - id: FlashlightSeclite # Orion-Edit: Removed
     #- id: WeaponDisabler # Goobstation (Disablers in belts)
     - id: ClothingBeltSecurityFilled
+    - id: BoxTapeRecorder
 #    - id: Flash # Orion-Edit: Removed
     - id: ClothingEyesGlassesSecurity
     - id: ClothingHandsGlovesCombat
