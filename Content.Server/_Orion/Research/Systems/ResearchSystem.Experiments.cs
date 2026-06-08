@@ -337,7 +337,7 @@ public sealed partial class ResearchSystem
         return true;
     }
 
-    private bool MatchesEntityObjective(EntityUid subject, ScanEntityExperimentObjective objective)
+    internal bool MatchesEntityObjective(EntityUid subject, ScanEntityExperimentObjective objective)
     {
         if (objective.RequiredEntityPrototypes.Count > 0)
         {
@@ -462,14 +462,14 @@ public sealed partial class ResearchSystem
 
     private bool MatchesMachineTierObjective(EntityUid subject, ScanEntityExperimentObjective objective)
     {
-        if (!TryComp<MachineComponent>(subject, out var machine))
-            return false;
-
         var hasRequiredParts = objective.RequiredMachineParts.Count > 0;
         var requiredTier = objective.RequiredMachinePartTier;
 
         if (!hasRequiredParts && requiredTier == null)
             return true;
+
+        if (!TryComp<MachineComponent>(subject, out var machine))
+            return false;
 
         foreach (var partEntity in machine.PartContainer.ContainedEntities)
         {
