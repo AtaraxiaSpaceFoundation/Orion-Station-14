@@ -7,7 +7,7 @@ namespace Content.Goobstation.Shared.Slasher.Components;
 /// <summary>
 /// Grants the Slasher the ability to instantly spawn a meat spike.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class SlasherSummonMeatSpikeComponent : Component
 {
     [ViewVariables]
@@ -19,7 +19,7 @@ public sealed partial class SlasherSummonMeatSpikeComponent : Component
     /// <summary>
     /// Prototype id of the spike to spawn.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public EntProtoId MeatSpikePrototype = "SlasherMeatSpike";
 
     /// <summary>

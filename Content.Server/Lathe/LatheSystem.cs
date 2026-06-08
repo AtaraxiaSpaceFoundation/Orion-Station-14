@@ -114,7 +114,7 @@ using Robust.Shared.Timing;
 namespace Content.Server.Lathe
 {
     [UsedImplicitly]
-    public sealed class LatheSystem : SharedLatheSystem
+    public sealed partial class LatheSystem : SharedLatheSystem // Goobstation edit - made partial
     {
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IPrototypeManager _proto = default!;
@@ -132,8 +132,6 @@ namespace Content.Server.Lathe
         [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
         [Dependency] private readonly StackSystem _stack = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
-        [Dependency] private readonly ChatSystem _chatSystem = default!; // Goobstation - New recipes message
-        [Dependency] private readonly IComponentFactory _factory = default!; // Goobstation - Output to material storage
 
         /// <summary>
         /// Per-tick cache
@@ -325,6 +323,11 @@ namespace Content.Server.Lathe
 
             if (time == TimeSpan.Zero)
             {
+                // Goobstation edit start: handle special case with lots of 0-time recipes that insert into storage
+                if (component.OutputToStorage)
+                    FinishProducingManyStorage((uid, component, lathe));
+                // Goobstation edit end
+
                 FinishProducing(uid, component, lathe);
             }
             return true;
@@ -523,58 +526,6 @@ namespace Content.Server.Lathe
                 _chatSystem.TrySendInGameICMessage(uid, Loc.GetString("lathe-technology-recipes-update-message", ("count", recipesCount)), InGameICChatType.Speak, hideChat: true);
             // Goobstation - Lathe message on recipes update - End
         }
-
-
-        // Goobstation - Lathe Queue Reset
-        private void OnLatheQueueResetMessage(EntityUid uid, LatheComponent component, LatheQueueResetMessage args)
-        {
-            if (component.Queue.Count > 0)
-            {
-                // Orion-Edit-Start
-                var totalMaterials = new Dictionary<string, int>();
-
-                if (component.ActiveMaterialRefund != null)
-                {
-                    foreach (var (mat, amount) in component.ActiveMaterialRefund)
-                    {
-                        totalMaterials[mat] = totalMaterials.GetValueOrDefault(mat) + amount;
-                    }
-                }
-
-                foreach (var refund in component.QueuedMaterialRefunds)
-                {
-                    foreach (var (mat, amount) in refund)
-                    {
-                        totalMaterials[mat] = totalMaterials.GetValueOrDefault(mat) + amount;
-                    }
-                }
-                // Orion-Edit-End
-
-                if (_materialStorage.CanChangeMaterialAmount(uid, totalMaterials))
-                {
-                    foreach (var (mat, amount) in totalMaterials)
-                    {
-                        _materialStorage.TryChangeMaterialAmount(uid, mat, amount);
-                    }
-                    component.Queue.Clear();
-                    // Orion-Start
-                    component.QueuedMaterialRefunds.Clear();
-                    component.ActiveMaterialRefund = null;
-                    // Orion-End
-
-                    // Orion-Start
-                    if (TryComp<DocumentPrinterComponent>(uid, out var printerComponent))
-                        printerComponent.Queue.RemoveRange(1, Math.Max(0, printerComponent.Queue.Count - 1));
-                    // Orion-End
-                }
-                else
-                {
-                    _popup.PopupEntity(Loc.GetString("lathe-queue-reset-material-overflow"), uid);
-                }
-            }
-            UpdateUserInterfaceState(uid, component);
-        }
-        // Goobstation - Lathe Queue Reset
 
         private void OnResearchRegistrationChanged(EntityUid uid, LatheComponent component, ref ResearchRegistrationChangedEvent args)
         {
