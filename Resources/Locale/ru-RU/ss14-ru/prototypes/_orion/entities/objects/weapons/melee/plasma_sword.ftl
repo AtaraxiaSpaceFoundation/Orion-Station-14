@@ -7,5 +7,5 @@ ent-PlasmaSwordAlt = { ent-PlasmaSword }
     .desc = { ent-PlasmaSword.desc }
     .suffix = энергетический меч
 ent-PlasmaScythe = плазменная коса
-    .desc = Может уместится в карман.
+    .desc = Может уместиться в кармане.
     .suffix = двойной энергетический меч
