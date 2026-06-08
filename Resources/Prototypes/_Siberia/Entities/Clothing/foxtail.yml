@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckFoxTail
+  name: clothing-neck-foxtail-name
+  description: clothing-neck-foxtail-description
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/foxtail.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/foxtail.rsi
