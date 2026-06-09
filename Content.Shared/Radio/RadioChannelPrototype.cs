@@ -69,3 +69,4 @@ public sealed partial class RadioChannelPrototype : IPrototype
     [DataField]
     public SoundSpecifier? OnSendSound = null;
     // Orion-End
+}
