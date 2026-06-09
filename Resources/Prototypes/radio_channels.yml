@@ -157,7 +157,7 @@
   color: "#539c00"
   # Orion-Start
   onSendSound:
-    path: /Audio/_Orion/Radio/servise.ogg
+    path: /Audio/_Orion/Radio/service.ogg
     params:
       volume: -6
       maxDistance: 2
