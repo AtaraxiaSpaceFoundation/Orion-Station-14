@@ -65,6 +65,14 @@ public sealed partial class CCVars
         public static readonly CVarDef<float> InterfaceVolume =
             CVarDef.Create("audio.interface_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
+        // Orion-Start
+        /// <summary>
+        ///     Volume of radio barks.
+        /// </summary>
+        public static readonly CVarDef<float> RadioVolume =
+            CVarDef.Create("audio.radio_volume", 0.50f, CVar.ARCHIVE | CVar.CLIENTONLY);
+        // Orion-End
+
     /// <summary>
     ///     Lobby music collection string
     /// </summary>

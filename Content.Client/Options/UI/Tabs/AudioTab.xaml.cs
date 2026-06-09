@@ -100,6 +100,13 @@ public sealed partial class AudioTab : Control
             scale: ContentAudioSystem.BarksMultiplier);
         // Goob Station - Barks-end
 
+        // Orion-Start
+        Control.AddOptionPercentSlider(
+            CCVars.RadioVolume,
+            SliderVolumeRadio,
+            scale: ContentAudioSystem.RadioMultiplier);
+        // Orion-End
+
         Control.AddOptionPercentSlider(
             CVars.MidiVolume,
             SliderVolumeMidi,
