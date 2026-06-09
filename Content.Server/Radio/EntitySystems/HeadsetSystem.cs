@@ -188,7 +188,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             );
 
             var sound = args.Channel.OnSendSound ?? DefaultOnSound;
-            _audio.PlayPredicted(sound, uid, uid);
+            _audio.PlayEntity(sound, uid, uid);
 
             args.Channel = null;
             break;

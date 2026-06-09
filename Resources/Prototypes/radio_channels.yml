@@ -103,7 +103,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/eng.ogg
     params:
-      volume: -6
+      volume: -7
       maxDistance: 2
   # Orion-End
 
@@ -117,7 +117,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/med.ogg
     params:
-      volume: -6
+      volume: -5
       maxDistance: 2
   # Orion-End
 
@@ -131,7 +131,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/science.ogg
     params:
-      volume: -6
+      volume: -9
       maxDistance: 2
   # Orion-End
 
@@ -159,7 +159,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/service.ogg
     params:
-      volume: -3
+      volume: -6
       maxDistance: 2
   # Orion-End
 
@@ -188,7 +188,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/syndie.ogg
     params:
-      volume: -1
+      volume: -3
       maxDistance: 2
   # Orion-End
 
