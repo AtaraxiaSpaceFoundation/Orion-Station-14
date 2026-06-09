@@ -56,6 +56,12 @@ preload_grids = false
 [admin]
 see_own_notes = true
 
+# Orion-Start
+[vote]
+map_autovote_enabled = false
+preset_autovote_enabled = false
+# Orion-End
+
 [lavaland] # Lavaland Change
 enabled = false
 
