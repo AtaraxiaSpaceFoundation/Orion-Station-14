@@ -1,2 +1,2 @@
-clothing-neck-foxtail-name = Fox Tail
-clothing-neck-foxtail-description = Oh my... where does it attach?!
+ent-ClothingNeckFoxTail = Fox Tail
+    .desc = Oh my... where does it attach?!

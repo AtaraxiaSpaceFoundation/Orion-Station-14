@@ -1,2 +1,2 @@
-clothing-neck-foxtail-name = Лисий хвост
-clothing-neck-foxtail-description = Боже... куда он крепится?!
+ent-ClothingNeckFoxTail = Лисий хвост
+    .desc = Боже... куда он крепится?!
