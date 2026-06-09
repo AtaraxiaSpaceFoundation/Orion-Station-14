@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckFoxTail
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/foxtail.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/foxtail.rsi

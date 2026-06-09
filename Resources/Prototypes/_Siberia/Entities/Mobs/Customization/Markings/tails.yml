@@ -1,0 +1,40 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Siberia unique tail markings
+
+- type: marking
+  id: FoxTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human, Felinid, Vulpkanin, SlimePerson]
+  sprites:
+    - sprite: _Siberia/Clothing/foxtail.rsi
+      state: equipped-NECKindexbrown
+    - sprite: _Siberia/Clothing/foxtail.rsi
+      state: equipped-NECKindexorange
+    - sprite: _Siberia/Clothing/foxtail.rsi
+      state: equipped-NECKindexcarrot
+    - sprite: _Siberia/Clothing/foxtail.rsi
+      state: equipped-NECKindexwhite
+
+- type: marking
+  id: TifTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: _Siberia/Mobs/Customization/tiftail.rsi
+      state: tif_Easterntail_w
+
+- type: marking
+  id: RaccoonTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Vulpkanin]
+  sprites:
+    - sprite: _Siberia/Mobs/Customization/tail.rsi
+      state: raccoon
+    - sprite: _Siberia/Mobs/Customization/tail.rsi
+      state: raccoon-tip

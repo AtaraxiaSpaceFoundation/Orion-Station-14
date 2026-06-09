@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Siberia unique horn markings
+
+- type: marking
+  id: DragonHorn
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: _Siberia/Mobs/Customization/dragonhorn.rsi
+      state: dragon
+
+- type: marking
+  id: DemonHorn2
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: _Siberia/Mobs/Customization/demonhorn2.rsi
+      state: demon2
+
+- type: marking
+  id: SingleHorn
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: _Siberia/Mobs/Customization/horn_single-side.rsi
+      state: horn_single-side-horn
+
+- type: marking
+  id: Horn3
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Human]
+  sprites:
+    - sprite: _Siberia/Mobs/Customization/horn3.rsi
+      state: horn3_synthhorns_plain
