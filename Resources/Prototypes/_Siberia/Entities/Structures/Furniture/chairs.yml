@@ -1,0 +1,66 @@
+- type: entity
+  name: chair
+  id: SiberiaSeatBase
+  abstract: true
+  description: You sit in this. Either by will or force.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - TableMask
+  - type: Sprite
+    sprite: _Siberia/Structures/Furniture/poledance.rsi
+    noRot: true
+  - type: Strap
+    position: Stand
+    buckleOffset: "0,0.15"
+  - type: Pullable
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/metalbreak.ogg
+  - type: StaticPrice
+    price: 10
+
+- type: entity
+  name: шест для полденса
+  id: poledance
+  parent: SiberiaSeatBase
+  components:
+  - type: Transform
+    anchored: true
+  - type: Rotatable
+    rotateWhileAnchored: true
+  - type: Anchorable
+  - type: Strap
+    position: Stand
+    buckleOffset: "0,0.3"
+  - type: Sprite
+    state: poledance
