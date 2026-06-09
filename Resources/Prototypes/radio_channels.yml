@@ -60,7 +60,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/common.ogg
     params:
-      volume: -6
+      volume: -7
       maxDistance: 2
   # Orion-End
 
@@ -145,7 +145,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/security.ogg
     params:
-      volume: -6
+      volume: -7
       maxDistance: 2
   # Orion-End
 
@@ -159,7 +159,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/service.ogg
     params:
-      volume: -6
+      volume: -3
       maxDistance: 2
   # Orion-End
 
@@ -173,7 +173,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/cargo.ogg
     params:
-      volume: -6
+      volume: -4
       maxDistance: 2
   # Orion-End
 
@@ -188,7 +188,7 @@
   onSendSound:
     path: /Audio/_Orion/Radio/syndie.ogg
     params:
-      volume: -6
+      volume: -1
       maxDistance: 2
   # Orion-End
 
