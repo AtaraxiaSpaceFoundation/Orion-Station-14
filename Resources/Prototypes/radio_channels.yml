@@ -85,8 +85,8 @@
   keycode: 'к' # Orion-Edit
   frequency: 1353
   color: "#fcdf03"
-  onSendSound:
   # Orion-Start
+  onSendSound:
     path: /Audio/_Orion/Radio/command.ogg
     params:
       volume: -6
@@ -99,8 +99,8 @@
   keycode: 'и' # Orion-Edit
   frequency: 1357
   color: "#ff733c"
-  onSendSound:
   # Orion-Start
+  onSendSound:
     path: /Audio/_Orion/Radio/eng.ogg
     params:
       volume: -6
@@ -113,8 +113,8 @@
   keycode: 'м' # Orion-Edit
   frequency: 1355
   color: "#57b8f0"
-  onSendSound:
   # Orion-Start
+  onSendSound:
     path: /Audio/_Orion/Radio/med.ogg
     params:
       volume: -6
@@ -127,8 +127,8 @@
   keycode: 'н' # Orion-Edit
   frequency: 1351
   color: "#cd7ccd"
-  onSendSound:
   # Orion-Start
+  onSendSound:
     path: /Audio/_Orion/Radio/science.ogg
     params:
       volume: -6
@@ -141,8 +141,8 @@
   keycode: 'о' # Orion-Edit
   frequency: 1359
   color: "#ff4242"
-  onSendSound:
   # Orion-Start
+  onSendSound:
     path: /Audio/_Orion/Radio/security.ogg
     params:
       volume: -6
