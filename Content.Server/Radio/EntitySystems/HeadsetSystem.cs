@@ -18,7 +18,6 @@ using Content.Server._EinsteinEngines.Language;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
-using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -29,7 +28,6 @@ using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -41,7 +39,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
-    [Dependency] private readonly IConfigurationManager _cfg = default!; // Orion
     [Dependency] private readonly InventorySystem _inventory = default!; // Orion
     [Dependency] private readonly SharedAudioSystem _audio = default!; // Orion
 
@@ -191,9 +188,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             );
 
             var sound = args.Channel.OnSendSound ?? DefaultOnSound;
-            var volumeOffset = SharedAudioSystem.GainToVolume(_cfg.GetCVar(CCVars.RadioVolume));
-            var adjustedParams = sound.Params.WithVolume(sound.Params.Volume + volumeOffset);
-            _audio.PlayEntity(sound, uid, uid, adjustedParams);
+            _audio.PlayEntity(sound, uid, uid);
 
             args.Channel = null;
             break;
