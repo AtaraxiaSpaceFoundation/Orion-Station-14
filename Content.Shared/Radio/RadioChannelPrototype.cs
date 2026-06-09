@@ -62,11 +62,10 @@ public sealed partial class RadioChannelPrototype : IPrototype
     [DataField]
     public EntityWhitelist? ReceiveWhitelist = null;
 
-    // Orion-Start: radio sound
+    // Orion-Start: Radio sound
     /// <summary>
     /// Sound played when a radio message is sent
     /// </summary>
     [DataField]
     public SoundSpecifier? OnSendSound = null;
-    // Orion-End: Radio sound
-}
+    // Orion-End
