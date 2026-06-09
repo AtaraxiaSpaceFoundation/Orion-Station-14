@@ -56,7 +56,7 @@
   keycode: ";"
   frequency: 1459
   color: "#2cdb2c"
-  # Orion-Start: Radio sound
+  # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/common.ogg
     params:
