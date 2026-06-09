@@ -155,6 +155,13 @@
   keycode: 'с' # Orion-Edit
   frequency: 1349
   color: "#539c00"
+  # Orion-Start
+  onSendSound:
+    path: /Audio/_Orion/Radio/servise.ogg
+    params:
+      volume: -6
+      maxDistance: 2
+  # Orion-End
 
 - type: radioChannel
   id: Supply
