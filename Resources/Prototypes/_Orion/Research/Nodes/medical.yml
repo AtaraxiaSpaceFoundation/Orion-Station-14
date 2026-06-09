@@ -83,6 +83,7 @@
   - MedkitCombat
   - AdvancedBoneGel
   - ClothingHandsGlovesSurgical
+  - ECigarette
   position: 7,10
 
 - type: technology
@@ -166,6 +167,7 @@
   - CryoPodMachineCircuitboard
   - CryostasisBeaker
   - SyringeCryostasis
+  - CryostasisCigarette
   - StasisOperatingTableCircuitboard
   - StasisBedMachineCircuitboard
   position: 6,11

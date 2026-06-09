@@ -261,6 +261,7 @@
     - id: Betty # Goobstation
     - id: BoxTapeRecorder # DeltaV
     - id: PoliceBaton # Goobstation
+    - id: ObraDinnClock # Goobstation
 
 - type: entity
   id: ClosetBombFilled
