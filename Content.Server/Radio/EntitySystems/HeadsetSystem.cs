@@ -18,6 +18,7 @@ using Content.Server._EinsteinEngines.Language;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
+using Content.Shared._Orion.Radio;
 using Content.Shared.Chat;
 using Content.Shared.Examine;
 using Content.Shared.Inventory;
@@ -187,8 +188,10 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                 headsetEntity.Value
             );
 
-            var sound = args.Channel.OnSendSound ?? DefaultOnSound;
-            _audio.PlayEntity(sound, uid, uid);
+        var sound = args.Channel.OnSendSound ?? DefaultOnSound;
+        var stream = _audio.PlayEntity(sound, uid, uid);
+        if (stream.HasValue)
+            EnsureComp<RadioBarkAudioComponent>(stream.Value.Entity);
 
             args.Channel = null;
             break;
