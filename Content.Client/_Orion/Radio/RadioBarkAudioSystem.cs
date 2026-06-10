@@ -5,6 +5,7 @@ using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
+using Robust.Shared.GameStates;
 
 namespace Content.Client._Orion.Radio;
 public sealed class RadioBarkAudioSystem : EntitySystem
@@ -15,10 +16,10 @@ public sealed class RadioBarkAudioSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<RadioBarkAudioComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<RadioBarkAudioComponent, ComponentHandleState>(OnHandleState);
     }
 
-    private void OnInit(EntityUid uid, RadioBarkAudioComponent _, ComponentInit args)
+    private void OnHandleState(EntityUid uid, RadioBarkAudioComponent _, ComponentHandleState args)
     {
         if (!TryComp<AudioComponent>(uid, out var audio))
             return;
