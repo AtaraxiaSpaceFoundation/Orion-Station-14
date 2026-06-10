@@ -17,6 +17,7 @@ public sealed class RadioBarkAudioSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<RadioBarkAudioComponent, ComponentHandleState>(OnHandleState);
+        Subs.CVar(_cfg, CCVars.RadioVolume, _ => UpdateAllGains());
     }
 
     private void OnHandleState(EntityUid uid, RadioBarkAudioComponent _, ComponentHandleState args)
@@ -25,6 +26,16 @@ public sealed class RadioBarkAudioSystem : EntitySystem
             return;
 
         var multiplier = _cfg.GetCVar(CCVars.RadioVolume) * ContentAudioSystem.RadioMultiplier;
-        _audio.SetGain(uid, audio.Gain * multiplier, audio);
+        _audio.SetGain(uid, multiplier, audio);
+    }
+
+    private void UpdateAllGains()
+    {
+        var query = EntityQueryEnumerator<RadioBarkAudioComponent, AudioComponent>();
+        while (query.MoveNext(out var uid, out _, out var audio))
+        {
+            var multiplier = _cfg.GetCVar(CCVars.RadioVolume) * ContentAudioSystem.RadioMultiplier;
+            _audio.SetGain(uid, multiplier, audio);
+        }
     }
 }
