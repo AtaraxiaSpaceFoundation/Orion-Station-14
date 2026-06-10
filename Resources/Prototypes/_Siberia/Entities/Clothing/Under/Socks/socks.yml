@@ -1,0 +1,336 @@
+# Siberia socks, stockings, and tights
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksBlack
+  name: Чёрные носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/black.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/black.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksBlue
+  name: Синие носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/blue.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/blue.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksBrown
+  name: Коричневые носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/brown.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/brown.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksGreen
+  name: Зелёные носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/green.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/green.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksMime
+  name: Носки мима
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/mime.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/mime.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksPink
+  name: Розовые носки
+  description: Маленькое, розовое зло.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/pink.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/pink.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksPurple
+  name: Фиолетовые носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/purple.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/purple.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksRed
+  name: Красные носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/red.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/red.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksWhite
+  name: Белые носки
+  description: Носки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/white.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/white.rsi
+
+# Stockings
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsBlue
+  name: Синие чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/blue.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/blue.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsBrown
+  name: Коричневые чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/brown.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/brown.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsFlesh
+  name: Телесные чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/flesh.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/flesh.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsGreen
+  name: Зелёные чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/green.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/green.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsMesh
+  name: Сетчатые чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/mesh.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/mesh.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsRed
+  name: Красные чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/red.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/red.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsWhite
+  name: Белые чулки
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/white.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/white.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderStockingsWhiteBlack
+  name: Чулки белые с чёрной полосой
+  description: Чулки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/white-black.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Stockings/white-black.rsi
+  - type: StaticPrice
+    price: 50
+
+# Tights
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsBlack
+  name: Чёрные колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/black.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/black.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsBlue
+  name: Синие колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/blue.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/blue.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsBrown
+  name: Коричневые колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/brown.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/brown.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsFlesh
+  name: Телесные колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/flesh.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/flesh.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsGreen
+  name: Зелёные колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/green.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/green.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsRed
+  name: Красные колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/red.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/red.rsi
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderTightsWhite
+  name: Белые колготки
+  description: Колготки.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/Tights/white.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/Tights/white.rsi
+  - type: StaticPrice
+    price: 50
+
+# Special socks
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksNeko
+  name: Неко носки
+  description: Носки в стиле неко.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/neko.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/neko.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingSocksBase
+  id: ClothingUnderSocksMegu
+  name: Чулок и бинт
+  description: Странное сочетание чулка и бинта на ногу, кому это нужно?
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Socks/meguminsocks.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Socks/meguminsocks.rsi
+  - type: StaticPrice
+    price: 60

@@ -1,0 +1,675 @@
+# Siberia underwear bottoms
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomWhiteU
+  name: Белые унисекс трусы
+  description: Mr White!
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/whiteunisex.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/whiteunisex.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomGalaxy
+  name: Нижнее бельё Galaxy
+  description: Бельё с галактическим принтом.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/galaxy.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/galaxy.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomNeko
+  name: Чёрные неко трусики
+  description: Чёрные трусики в стиле неко.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/neko.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/neko.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomSchool
+  name: Школьные трусики
+  description: Трусики школьного фасона.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/school.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/school.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomTactic
+  name: Тёмные трусики
+  description: Тёмные трусики.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/tacticbottom.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/tacticbottom.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomSyndicate
+  name: Тактические трусики
+  description: Трусики в тактическом стиле.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/lacebottom.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/lacebottom.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomHos
+  name: Трусы службы безопасности
+  description: Трусы службы безопасности.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Male/HOS.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Male/HOS.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomTiger
+  name: Тигриные трусы
+  description: Трусы с тигриным принтом.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/tiger.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/tiger.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomBatya
+  name: Батины труханы
+  description: Поношенные батины труханы.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Male/batya.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Male/batya.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomFlower
+  name: Зелёные трусы с цветочками
+  description: Зелёные трусы с принтом цветочков.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Male/flower.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Male/flower.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomPinkMan
+  name: Розовые мужские трусы
+  description: Розовые мужские трусы.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Male/pink.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Male/pink.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomPantaloons
+  name: Панталоны
+  description: Старомодные панталоны.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/pantaloons.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/pantaloons.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomPink
+  name: Розовые трусики
+  description: Розовые трусики.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/pinkD.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/pinkD.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomDisco
+  name: Диско трусики
+  description: Трусики в стиле диско.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/discobottom.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/discobottom.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomTigerFemale
+  name: Тигриные трусики
+  description: Трусики с тигриным принтом.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/tigerbottom.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/tigerbottom.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomSanta
+  name: Новогодние трусики
+  description: Праздничные новогодние трусики.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Female/santabottom.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Female/santabottom.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomBlackPanties
+  name: Чёрные унисекс-трусы
+  description: Классические чёрные унисекс-трусы.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Male/blackpanties.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Male/blackpanties.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomWhitePanties
+  name: Белые унисекс-трусы
+  description: Классические белые унисекс-трусы.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/Male/whitepanties.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/Male/whitepanties.rsi
+  - type: StaticPrice
+    price: 40
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBottomZebra
+  name: Трусы Зебра
+  description: Стандартные трусы для Объединённой федерации мимов.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/zebra.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/zebra.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBottomElephant
+  name: Трусы Слоник
+  description: Эластичные трусы со странным карманом.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elephant.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elephant.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBottomLether
+  name: Кожаные трусы
+  description: Эти трусы сделаны из прочной синтетической кожи.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/lether.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/lether.rsi
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBottomMice
+  name: Трусы с мышкой
+  description: На трусах красуется прекрасная мышка.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/mice.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/mice.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBottomSailor
+  name: Трусы Моряка
+  description: Стандартные трусы с красивым принтом.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/sailor.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/sailor.rsi
+  - type: StaticPrice
+    price: 60
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBottomSailorSpecial
+  name: Трусы Моряка MK-2
+  description: Улучшенные стандартные трусы с красивым принтом.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/sailor-special.rsi
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/sailor-special.rsi
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBlackPiquantBottom
+  name: Чёрные пикантные трусики
+  description: Фривольное бельё для тех дам, что желают порадовать своих мужчин.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    layers:
+    - state: icon
+    - state: icon-color
+      color: "#28273A"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: color-inhand-left
+        color: "#28273A"
+      right:
+      - state: inhand-right
+      - state: color-inhand-right
+        color: "#28273A"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#28273A"
+      - state: equipped-UNDERWEAR
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingRedPiquantBottom
+  name: Красные пикантные трусики
+  description: Фривольное бельё для тех дам, что желают порадовать своих мужчин.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    layers:
+    - state: icon
+    - state: icon-color
+      color: "#910000"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: color-inhand-left
+        color: "#910000"
+      right:
+      - state: inhand-right
+      - state: color-inhand-right
+        color: "#910000"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#910000"
+      - state: equipped-UNDERWEAR
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBluePiquantBottom
+  name: Синие пикантные трусики
+  description: Фривольное бельё для тех дам, что желают порадовать своих мужчин.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    layers:
+    - state: icon
+    - state: icon-color
+      color: "#416DAF"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: color-inhand-left
+        color: "#416DAF"
+      right:
+      - state: inhand-right
+      - state: color-inhand-right
+        color: "#416DAF"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#416DAF"
+      - state: equipped-UNDERWEAR
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingPurplePiquantBottom
+  name: Фиолетовые пикантные трусики
+  description: Фривольное бельё для тех дам, что желают порадовать своих мужчин.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    layers:
+    - state: icon
+    - state: icon-color
+      color: "#341255"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: color-inhand-left
+        color: "#341255"
+      right:
+      - state: inhand-right
+      - state: color-inhand-right
+        color: "#341255"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#341255"
+      - state: equipped-UNDERWEAR
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingOrangePiquantBottom
+  name: Оранжевые пикантные трусики
+  description: Фривольное бельё для тех дам, что желают порадовать своих мужчин.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    layers:
+    - state: icon
+    - state: icon-color
+      color: "#F5AA5B"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      - state: color-inhand-left
+        color: "#F5AA5B"
+      right:
+      - state: inhand-right
+      - state: color-inhand-right
+        color: "#F5AA5B"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/piquantbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#F5AA5B"
+      - state: equipped-UNDERWEAR
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomKitsuneArms
+  name: Элитные трусики купальника Kitsune Arms
+  description: Лимитированное нижнее бельё от компании Kitsune Arms для лучших её клиентов.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/kitsunearmsbottom.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/kitsunearmsbottom.rsi
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBlackElegantSwimsuitBottom
+  name: Чёрный элегантный купальник
+  description: Покажи всем красоту своего тела.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    layers:
+    - state: icon
+      color: "#212030"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#212030"
+      right:
+      - state: inhand-right
+        color: "#212030"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#212030"
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingRedElegantSwimsuitBottom
+  name: Красный элегантный купальник
+  description: Покажи всем красоту своего тела.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    layers:
+    - state: icon
+      color: "#680000"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#680000"
+      right:
+      - state: inhand-right
+        color: "#680000"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#680000"
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingGreenElegantSwimsuitBottom
+  name: Зелёный элегантный купальник
+  description: Покажи всем красоту своего тела.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    layers:
+    - state: icon
+      color: "#1B5437"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#1B5437"
+      right:
+      - state: inhand-right
+        color: "#1B5437"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#1B5437"
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingBlueElegantSwimsuitBottom
+  name: Синий элегантный купальник
+  description: Покажи всем красоту своего тела.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    layers:
+    - state: icon
+      color: "#416DAF"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#416DAF"
+      right:
+      - state: inhand-right
+        color: "#416DAF"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#416DAF"
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingPurpleElegantSwimsuitBottom
+  name: Фиолетовый элегантный купальник
+  description: Покажи всем красоту своего тела.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    layers:
+    - state: icon
+      color: "#341255"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#341255"
+      right:
+      - state: inhand-right
+        color: "#341255"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#341255"
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingOrangeElegantSwimsuitBottom
+  name: Оранжевый элегантный купальник
+  description: Покажи всем красоту своего тела.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    layers:
+    - state: icon
+      color: "#F5AA5B"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#F5AA5B"
+      right:
+      - state: inhand-right
+        color: "#F5AA5B"
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/elegantswimsuitbottom.rsi
+    clothingVisuals:
+      underwear:
+      - state: color-equipped-UNDERWEAR
+        color: "#F5AA5B"
+  - type: StaticPrice
+    price: 80
+
+- type: entity
+  parent: ClothingUnderwearBase
+  id: ClothingUnderBottomAzure
+  name: Лазурные трусики купальника
+  description: Синева неба хорошо сочетается с морской гладью.
+  components:
+  - type: Sprite
+    sprite: _Siberia/Clothing/Under/Bottom/azurebottom.rsi
+    layers:
+    - state: icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Clothing
+    sprite: _Siberia/Clothing/Under/Bottom/azurebottom.rsi
+  - type: StaticPrice
+    price: 80

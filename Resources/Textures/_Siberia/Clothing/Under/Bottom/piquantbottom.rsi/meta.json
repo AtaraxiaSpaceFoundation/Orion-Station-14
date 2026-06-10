@@ -1,0 +1,41 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Add new piquant bottom by Bollo",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "icon-color"
+        },
+        {
+            "name": "color-equipped-UNDERWEAR",
+            "directions": 4
+        },
+        {
+            "name": "equipped-UNDERWEAR",
+            "directions": 4
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "color-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "color-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        }
+    ]
+}
