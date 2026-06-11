@@ -187,17 +187,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                 headsetEntity.Value
             );
         }
-
-        var sound = args.Channel.OnSendSound ?? DefaultOnSound;
-        if (sound is SoundPathSpecifier sps)
-        {
-            RaiseNetworkEvent(new PlayRadioBarkEvent
-            {
-                Path = sps.Path.ToString(),
-                Params = sps.Params,
-                Source = GetNetEntity(uid)
-            }, component.PlayerSession.Channel);
-        }
     }
     // Orion-End
 
@@ -258,6 +247,17 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                 Message = canUnderstand ? args.OriginalChatMsg : args.LanguageObfuscatedChatMsg
             };
             _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
+
+            var sound = args.Channel.OnSendSound ?? DefaultOnSound;
+            if (sound is SoundPathSpecifier sps)
+            {
+                RaiseNetworkEvent(new PlayRadioBarkEvent
+                {
+                    Path = sps.Path.ToString(),
+                    Params = sps.Params,
+                    Source = GetNetEntity(uid)
+                }, actor.PlayerSession.Channel);
+            }
         }
         // Einstein Engines - Language end
     }
