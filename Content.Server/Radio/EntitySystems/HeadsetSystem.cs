@@ -236,7 +236,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     // Orion-Start: Radio sound
 
     private static readonly SoundSpecifier DefaultOnSound =
-        new SoundPathSpecifier("/Audio/_Orion/Radio/basic.ogg", AudioParams.Default.WithVolume(-6).WithMaxDistance(2));
+        new SoundPathSpecifier("/Audio/_Orion/Radio/basic.ogg");
 
     // Orion-End
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)

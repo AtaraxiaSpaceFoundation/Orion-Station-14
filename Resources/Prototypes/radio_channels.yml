@@ -59,9 +59,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/common.ogg
-    params:
-      volume: -7
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -74,9 +71,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/cc.ogg
-    params:
-      volume: -6
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -88,9 +82,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/command.ogg
-    params:
-      volume: -6
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -102,9 +93,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/eng.ogg
-    params:
-      volume: -7
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -116,9 +104,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/med.ogg
-    params:
-      volume: -5
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -130,9 +115,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/science.ogg
-    params:
-      volume: -9
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -144,9 +126,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/security.ogg
-    params:
-      volume: -7
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -158,9 +137,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/service.ogg
-    params:
-      volume: -6
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -172,9 +148,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/cargo.ogg
-    params:
-      volume: -4
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -187,9 +160,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/syndie.ogg
-    params:
-      volume: -3
-      maxDistance: 2
   # Orion-End
 
 - type: radioChannel
@@ -202,9 +172,6 @@
   # Orion-Start
   onSendSound:
     path: /Audio/_Orion/Radio/handheld.ogg
-    params:
-      volume: -6
-      maxDistance: 2
   # Orion-End
 
 # Goobstation - replaced with collective mind
