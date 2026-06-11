@@ -26,6 +26,6 @@ public sealed class RadioBarkAudioSystem : EntitySystem
         var multiplier = _cfg.GetCVar(CCVars.RadioVolume) * ContentAudioSystem.RadioMultiplier;
         var volume = SharedAudioSystem.GainToVolume(multiplier);
         var audioParams = ev.Params.WithVolume(volume);
-        _audio.PlayEntity(new SoundPathSpecifier(ev.Path), Filter.Local(), GetEntity(ev.Source), false, audioParams);
+        _audio.PlayGlobal(new SoundPathSpecifier(ev.Path), Filter.Local(), false, audioParams);
     }
 }
