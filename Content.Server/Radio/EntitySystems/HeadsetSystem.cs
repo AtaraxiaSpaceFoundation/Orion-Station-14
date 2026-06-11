@@ -258,6 +258,10 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                     Params = sps.Params,
                 }, actor.PlayerSession.Channel);
             }
+            else if (sound is SoundCollectionSpecifier)
+            {
+                Log.Warning($"Radio channel {args.Channel.ID} uses SoundCollectionSpecifier, which is not supported for PlayRadioBarkEvent. Falling back to silent playback.");
+            }
             // Orion-End
         }
         // Einstein Engines - Language end
