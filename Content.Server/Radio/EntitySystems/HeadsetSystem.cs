@@ -41,7 +41,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
     [Dependency] private readonly InventorySystem _inventory = default!; // Orion
-    [Dependency] private readonly SharedAudioSystem _audio = default!; // Orion
 
     public override void Initialize()
     {
@@ -187,14 +186,17 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                 args.Channel,
                 headsetEntity.Value
             );
+        }
 
         var sound = args.Channel.OnSendSound ?? DefaultOnSound;
-        var stream = _audio.PlayEntity(sound, uid, uid);
-        if (stream.HasValue)
-            EnsureComp<RadioBarkAudioComponent>(stream.Value.Entity);
-
-            args.Channel = null;
-            break;
+        if (sound is SoundPathSpecifier sps)
+        {
+            RaiseNetworkEvent(new PlayRadioBarkEvent
+            {
+                Path = sps.Path.ToString(),
+                Params = sps.Params,
+                Source = GetNetEntity(uid)
+            }, component.PlayerSession.Channel);
         }
     }
     // Orion-End
