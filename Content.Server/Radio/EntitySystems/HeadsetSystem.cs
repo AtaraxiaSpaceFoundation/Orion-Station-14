@@ -248,6 +248,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
             };
             _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
 
+            // Orion-Start
             var sound = args.Channel.OnSendSound ?? DefaultOnSound;
             if (sound is SoundPathSpecifier sps)
             {
@@ -258,6 +259,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                     Source = GetNetEntity(uid)
                 }, actor.PlayerSession.Channel);
             }
+            // Orion-End
         }
         // Einstein Engines - Language end
     }
