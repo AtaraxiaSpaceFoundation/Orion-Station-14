@@ -256,7 +256,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
                 {
                     Path = sps.Path.ToString(),
                     Params = sps.Params,
-                    Source = GetNetEntity(uid)
                 }, actor.PlayerSession.Channel);
             }
             // Orion-End
