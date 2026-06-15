@@ -21,7 +21,7 @@ bitrunning-domain-corsair-cove-desc = Battle your way to the hidden treasure, se
 
 bitrunning-domain-zealot-arena-name = Zealot Arena
 bitrunning-domain-zealot-arena-desc = Dance, puppets, dance!
-bitrunning-domain-experimental-soldier-name = Experimental soldier
+bitrunning-domain-experimental-soldier-name = Experimental Soldier
 bitrunning-domain-experimental-soldier-desc = The Syndicate has new developments. Deliver the data to benefit Nanotrasen!
 
 bitrunning-domain-special-squad-name = Special Squad

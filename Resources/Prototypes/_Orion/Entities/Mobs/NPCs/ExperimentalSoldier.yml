@@ -11,6 +11,7 @@
 - type: entity
   parent: MobSyndicateSoldierBitrunning
   id: MobNukeopsSoldierBitrunning
+  name: Syndicate soldier
   suffix: Bitrunning
   components:
   - type: Loadout
