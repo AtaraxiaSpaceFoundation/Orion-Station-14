@@ -4,5 +4,7 @@
   noSpawn: true
   components:
   - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    fixVacuum: false
   - type: Transform
     anchored: true
