@@ -1,7 +1,6 @@
 using Content.Server._Orion.Doors.Components;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
-using Content.Shared._Orion.Doors.Components;
 using Robust.Shared.Map.Components;
 using System.Numerics;
 
@@ -39,6 +38,7 @@ public sealed class MultiTileAirlockAirtightSystem : EntitySystem
 
     private void OnAirtightChanged(Entity<MultiTileAirlockAirtightComponent> ent, ref AirtightChanged args)
     {
+        // Fix Error 1: use PhantomEntities (List), not PhantomEntity
         if (!TryComp<AirtightComponent>(ent, out var parentAirtight))
             return;
 
@@ -47,6 +47,7 @@ public sealed class MultiTileAirlockAirtightSystem : EntitySystem
             if (!TryComp<AirtightComponent>(phantom, out var phantomAirtight))
                 continue;
 
+            // Fix Error 2: (EntityUid, AirtightComponent) tuple — matches Entity<T> implicit cast
             _airtight.SetAirblocked((phantom, phantomAirtight), parentAirtight.AirBlocked);
         }
     }
@@ -80,9 +81,6 @@ public sealed class MultiTileAirlockAirtightSystem : EntitySystem
             var phantomTile = anchorTile + snapped;
             var phantomCoords = _mapSystem.GridTileToLocal(xform.GridUid.Value, grid, phantomTile);
             var phantom = EntityManager.SpawnEntity(PhantomPrototype, phantomCoords);
-
-            var parentComp = EnsureComp<PhantomAirtightParentComponent>(phantom);
-            parentComp.ParentUid = GetNetEntity(ent.Owner);
 
             if (TryComp<AirtightComponent>(phantom, out var phantomAirtight))
                 _airtight.SetAirblocked((phantom, phantomAirtight), parentAirtight.AirBlocked);
