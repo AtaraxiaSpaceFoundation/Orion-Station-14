@@ -1,8 +1,0 @@
-- type: entity
-  id: OrionPhantomAirtight
-  name: phantom airtight blocker
-  noSpawn: true
-  components:
-  - type: Airtight
-  - type: Transform
-    anchored: true
