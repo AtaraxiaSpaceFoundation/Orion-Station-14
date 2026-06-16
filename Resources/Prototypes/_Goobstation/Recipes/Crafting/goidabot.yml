@@ -1,6 +1,8 @@
-- type: construction
-  id: GoidaBot
-  graph: GoidaBot
-  targetNode: bot
-  category: construction-category-utilities
-  objectType: Item
+# Orion-Edit-Start: Removed
+#- type: construction
+#  id: GoidaBot
+#  graph: GoidaBot
+#  targetNode: bot
+#  category: construction-category-utilities
+#  objectType: Item
+# Orion-Edit-End

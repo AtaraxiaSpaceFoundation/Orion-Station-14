@@ -41,7 +41,7 @@
     thresholds:
       0: Alive
       220: Dead
-  # Orion-Edit-Start
+  # Orion-Edit-Start: Removed
 #  - type: Construction
 #    graph: GoidaBot
 #    node: bot
