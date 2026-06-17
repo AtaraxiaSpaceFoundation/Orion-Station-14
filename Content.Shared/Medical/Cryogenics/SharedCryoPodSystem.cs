@@ -350,10 +350,10 @@ public abstract partial class SharedCryoPodSystem : EntitySystem
         if (!args.CanAccess || !args.CanInteract)
             return;
 
-        // Orion-Edit-Start
+        // Orion-Start
         if (TryComp<GhostComponent>(args.User, out var ghost) && !ghost.CanGhostInteract)
             return;
-        // Orion-Edit-End
+        // Orion-End
 
         // Eject verb
         if (cryoPodComponent.BodyContainer.ContainedEntity != null)
