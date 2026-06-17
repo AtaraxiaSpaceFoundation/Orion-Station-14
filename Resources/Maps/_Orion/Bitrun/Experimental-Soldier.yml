@@ -4,8 +4,8 @@ meta:
   engineVersion: 266.0.0
   forkId: Orion
   forkVersion: ""
-  time: 06/15/2026 19:49:07
-  entityCount: 1177
+  time: 06/17/2026 13:43:47
+  entityCount: 1179
 maps: []
 grids:
 - 1
@@ -581,13 +581,13 @@ entities:
             0: 65262
           -1,0:
             0: 57343
-            2: 8192
+            1: 8192
           0,1:
             0: 45602
-            1: 128
+            2: 128
           -1,1:
             0: 47240
-            1: 48
+            2: 48
           0,2:
             0: 49083
           -1,2:
@@ -602,9 +602,9 @@ entities:
             0: 58606
           1,0:
             0: 4369
-            1: 17408
+            2: 17408
           1,1:
-            1: 112
+            2: 112
             0: 53248
           1,2:
             0: 61917
@@ -612,7 +612,7 @@ entities:
             0: 63487
           1,-1:
             0: 4096
-            1: 544
+            2: 544
           2,1:
             0: 12288
           2,2:
@@ -627,7 +627,7 @@ entities:
             0: 32768
           -2,1:
             0: 61440
-            1: 192
+            2: 192
           -2,2:
             0: 4095
           -2,3:
@@ -635,32 +635,32 @@ entities:
           -2,4:
             0: 48049
           -2,0:
-            1: 17408
+            2: 17408
           -1,-1:
             0: 54510
-            2: 8192
+            1: 8192
           -1,4:
             0: 48057
           -2,-1:
-            1: 2176
+            2: 2176
           -1,-2:
-            1: 258
+            2: 258
             0: 60608
           -1,-3:
-            1: 64
+            2: 64
             0: 34944
           -1,-4:
-            1: 32768
+            2: 32768
           0,-3:
             0: 13105
-            1: 64
+            2: 64
           0,-2:
             0: 59249
-            1: 8
+            2: 8
           0,-4:
-            1: 8192
+            2: 8192
           1,-2:
-            1: 256
+            2: 256
           0,5:
             0: 65288
           -1,5:
@@ -712,10 +712,10 @@ entities:
           - 0
           - 0
         - volume: 2500
-          immutable: True
+          temperature: 293.14975
           moles:
-          - 0
-          - 0
+          - 20.078888
+          - 75.53487
           - 0
           - 0
           - 0
@@ -731,10 +731,10 @@ entities:
           - 0
           - 0
         - volume: 2500
-          temperature: 293.14975
+          immutable: True
           moles:
-          - 20.078888
-          - 75.53487
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -822,6 +822,12 @@ entities:
       rot: 3.141592653589793 rad
       pos: 1.5,5.5
       parent: 1
+    - type: DeviceLinkSource
+      lastSignals:
+        DoorStatus: True
+    - type: Door
+      secondsUntilStateChange: -5.6318436
+      state: Opening
 - proto: AirlockSyndicate
   entities:
   - uid: 743
@@ -888,7 +894,7 @@ entities:
       pos: 0.5,21.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -73662.17
+      secondsUntilStateChange: -74909.2
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1301,36 +1307,6 @@ entities:
     - type: Transform
       pos: 7.314889,20.737291
       parent: 1
-- proto: BoxLethalshot
-  entities:
-  - uid: 381
-    components:
-    - type: Transform
-      parent: 380
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 388
-    components:
-    - type: Transform
-      parent: 380
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 389
-    components:
-    - type: Transform
-      parent: 380
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 391
-    components:
-    - type: Transform
-      parent: 380
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: C4
   entities:
   - uid: 515
@@ -2838,11 +2814,11 @@ entities:
     - type: InsideEntityStorage
 - proto: CombatKnife
   entities:
-  - uid: 696
+  - uid: 486
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 4.5,8.5
+      rot: -1.5707963267948966 rad
+      pos: 4.5356917,8.668157
       parent: 1
   - uid: 1109
     components:
@@ -3522,18 +3498,18 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 392
+          - 389
           - 391
           - 390
-          - 389
           - 388
           - 387
           - 381
-          - 382
-          - 383
-          - 384
-          - 385
           - 386
+          - 385
+          - 384
+          - 383
+          - 382
+          - 392
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -3571,36 +3547,26 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 475
-          - 474
-          - 473
-          - 472
-          - 438
-          - 398
-          - 476
-          - 485
-          - 486
-          - 487
-          - 488
-          - 547
-          - 549
+          - 696
           - 558
+          - 549
+          - 1097
+          - 1091
+          - 547
+          - 488
+          - 487
+          - 474
+          - 485
+          - 476
+          - 398
+          - 438
+          - 472
+          - 473
+          - 475
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
           ent: null
-- proto: HeadOfSecurityWeaponUndetermined
-  entities:
-  - uid: 1108
-    components:
-    - type: Transform
-      pos: -0.3396623,0.017878532
-      parent: 1
-  - uid: 1128
-    components:
-    - type: Transform
-      pos: -0.6834123,0.0022535324
-      parent: 1
 - proto: HighSecCentralCommandLocked
   entities:
   - uid: 276
@@ -3814,6 +3780,50 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: MagazineRifle
+  entities:
+  - uid: 547
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 549
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 558
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 696
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1091
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 1097
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MagazineRifleSR50
   entities:
   - uid: 396
@@ -3836,52 +3846,49 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -0.6772125,1.1227337
       parent: 1
+- proto: MagazineShotgun
+  entities:
+  - uid: 381
+    components:
+    - type: Transform
+      parent: 380
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 387
+    components:
+    - type: Transform
+      parent: 380
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 388
+    components:
+    - type: Transform
+      parent: 380
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 390
+    components:
+    - type: Transform
+      parent: 380
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: MagazineSMGP90
   entities:
-  - uid: 486
+  - uid: 1100
     components:
     - type: Transform
-      parent: 397
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 547
-    components:
-    - type: Transform
-      parent: 397
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 549
-    components:
-    - type: Transform
-      parent: 397
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 558
-    components:
-    - type: Transform
-      parent: 397
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: MagazineSMGVectorExtended
-  entities:
-  - uid: 1146
-    components:
-    - type: Transform
-      pos: -3.183815,2.6404982
+      rot: 1.5707963267948966 rad
+      pos: -3.2652876,2.2033608
       parent: 1
   - uid: 1147
     components:
     - type: Transform
-      pos: -3.35569,2.6248732
-      parent: 1
-  - uid: 1148
-    components:
-    - type: Transform
-      pos: -3.246315,1.8123732
+      rot: -1.5707963267948966 rad
+      pos: -3.3746624,2.5314858
       parent: 1
 - proto: MedicalBed
   entities:
@@ -3967,7 +3974,7 @@ entities:
   - uid: 1164
     components:
     - type: Transform
-      pos: -1.7890344,3.7643352
+      pos: -1.8035955,3.7477903
       parent: 1
 - proto: PenCentcom
   entities:
@@ -7847,13 +7854,12 @@ entities:
       parent: 1
 - proto: WeaponPistolAnaconda
   entities:
-  - uid: 1097
+  - uid: 1148
     components:
     - type: Transform
-      pos: -5.592839,12.450333
+      rot: 1.5707963267948966 rad
+      pos: 4.2856917,8.371282
       parent: 1
-    - type: Gun
-      burstCooldownModified: 0.25
 - proto: WeaponPistolN1984
   entities:
   - uid: 384
@@ -7870,15 +7876,20 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: WeaponPistolViper
+- proto: WeaponPulsePistol
   entities:
-  - uid: 1091
+  - uid: 1178
     components:
     - type: Transform
-      pos: 6.514852,12.407021
+      rot: -1.5707963267948966 rad
+      pos: -0.2939701,0.022321701
       parent: 1
-    - type: Gun
-      burstCooldownModified: 0.25
+  - uid: 1179
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -0.6064701,0.0379467
+      parent: 1
 - proto: WeaponRevolverDeckard
   entities:
   - uid: 1131
@@ -7927,6 +7938,31 @@ entities:
       parent: 1
     - type: Gun
       burstCooldownModified: 0.25
+- proto: WeaponRifleM16A4
+  entities:
+  - uid: 487
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+  - uid: 488
+    components:
+    - type: Transform
+      parent: 397
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: WeaponRifleM90GrenadeLauncher
+  entities:
+  - uid: 1146
+    components:
+    - type: Transform
+      pos: 6.3740163,18.459131
+      parent: 1
+    - type: Gun
+      burstCooldownModified: 0.25
 - proto: WeaponRifleSR127
   entities:
   - uid: 338
@@ -7944,23 +7980,30 @@ entities:
       parent: 1
     - type: Gun
       burstCooldownModified: 0.25
-- proto: WeaponShotgunSpas
+- proto: WeaponShotgunBulldogLegallyDistinct
   entities:
-  - uid: 1100
+  - uid: 1128
     components:
     - type: Transform
-      pos: 8.497709,13.545374
+      pos: -5.58105,12.471012
       parent: 1
-- proto: WeaponShotgunXM1014
+- proto: WeaponShotgunCombat
   entities:
-  - uid: 387
+  - uid: 1108
+    components:
+    - type: Transform
+      pos: 8.477943,13.506343
+      parent: 1
+- proto: WeaponShotgunZauer
+  entities:
+  - uid: 389
     components:
     - type: Transform
       parent: 380
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 390
+  - uid: 391
     components:
     - type: Transform
       parent: 380
@@ -7972,7 +8015,7 @@ entities:
   - uid: 1115
     components:
     - type: Transform
-      pos: 6.5701385,18.392366
+      pos: 6.446594,12.506343
       parent: 1
     - type: Gun
       burstCooldownModified: 0.25
@@ -7987,27 +8030,11 @@ entities:
       burstCooldownModified: 0.25
 - proto: WeaponSubMachineGunP90
   entities:
-  - uid: 487
-    components:
-    - type: Transform
-      parent: 397
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 488
-    components:
-    - type: Transform
-      parent: 397
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: WeaponSubMachineGunVector
-  entities:
   - uid: 1133
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -3.7324505,2.4241285
+      pos: -3.8121624,2.3283608
       parent: 1
 - proto: WeaponTurretNanoTrasen
   entities:

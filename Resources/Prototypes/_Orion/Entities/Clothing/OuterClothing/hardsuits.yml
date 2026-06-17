@@ -89,7 +89,7 @@
         types:
           Blunt: -1.0
           Slash: -1.0
-          Piercing: -2.5
+          Piercing: -2.0
           Asphyxiation: -10.0
           Bloodloss: -10.0
-          Heat: -2.0
+          Heat: -0.5
