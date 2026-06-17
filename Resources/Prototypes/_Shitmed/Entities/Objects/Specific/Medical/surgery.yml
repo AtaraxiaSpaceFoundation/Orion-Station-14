@@ -67,7 +67,7 @@
   - type: Scalpel
     speed: 3
   - type: BoneSaw
-    speed: 3
+    speed: 0.6 # Orion-Edit: 3 > 0.6
   - type: ItemSwitch
     showLabel: true
     state: scalpel
