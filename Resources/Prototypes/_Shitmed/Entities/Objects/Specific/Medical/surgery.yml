@@ -95,10 +95,10 @@
           sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
           state: e-scalpel-on
         components:
-        # Orion-Edit-Start
+        # Orion-Start
         - type: BoneSaw
           speed: 3
-        # Orion-Edit-End
+        # Orion-End
         - type: Drill
           speed: 3
         soundStateActivate:
