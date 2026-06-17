@@ -41,11 +41,9 @@
     thresholds:
       0: Alive
       220: Dead
-  # Orion-Edit-Start
-#  - type: Construction
-#    graph: GoidaBot
-#    node: bot
-  # Orion-Edit-End
+  - type: Construction
+    graph: GoidaBot
+    node: bot
   - type: InteractionPopup
     interactSuccessString: goida-1
     interactFailureString: goida-1
