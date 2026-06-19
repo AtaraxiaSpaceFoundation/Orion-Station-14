@@ -1,0 +1,25 @@
+- type: reagent
+  id: Convermol
+  name: reagent-name-convermol
+  group: Medicine
+  desc: reagent-desc-convermol
+  physicalDesc: reagent-physical-desc-convermol
+  flavor: medicine
+  color: "#FF6464"
+  metabolisms:
+    Medicine:
+      rate: 0.2
+      effects:
+      - !type:ChemConvermol
+        healDamageType: Asphyxiation
+        toxDamageType: Poison
+        healPerTick: 6.5
+        buffer: 0.5
+        toxRatio: 5
+        overdoseThreshold: 35
+      - !type:AdjustReagent
+        reagent: Convermol
+        amount: -0.5
+        conditions:
+        - !type:ReagentThreshold
+          min: 35
