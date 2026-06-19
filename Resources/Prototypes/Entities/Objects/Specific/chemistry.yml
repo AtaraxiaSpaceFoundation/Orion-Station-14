@@ -485,7 +485,7 @@
       - state: beakernoreact
   # Orion-Start
   - type: Item
-    sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
+    sprite: Objects/Specific/Chemistry/beaker_cryostasis.rsi
   # Orion-End
   - type: SolutionContainerVisuals
     maxFillLevels: 0
