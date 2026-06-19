@@ -47,8 +47,18 @@
   description: Console for selecting and controlling bitrunning domains.
   components:
   - type: Sprite
-    sprite: Structures/Machines/computers.rsi
     state: generic
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: bitrunning
+    - map: ["computerLayerKeys"]
+      state: mining_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
   - type: ActivatableUI
     key: enum.QuantumConsoleUiKey.Key
   - type: UserInterface

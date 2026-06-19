@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/1592a112e3d33eec4a0704b518a138d5a976f455, inhand-left and inhand-right by SlamBamActionman (Github). Dog states modified from base states by Sparlight (GitHub).",
+    "copyright": "Sprited by SmArtKar. Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/b68c9677ce7589197ec48171a0089e5b0c34c1ee, inhand-left and inhand-right by SlamBamActionman (Github). Dog states modified from base states by Sparlight (GitHub).",
     "size": {
         "x": 32,
         "y": 32
