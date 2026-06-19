@@ -17,6 +17,14 @@
     layers:
     - map: ["console"]
       state: console
+  - type: GenericVisualizer # Orion
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: console, sprite: _Shitmed/Structures/Machines/abductor_console.rsi }
+          East: { state: console, sprite: _Shitmed/Structures/Machines/abductor_console.rsi }
+          West: { state: console, sprite: _Shitmed/Structures/Machines/abductor_console.rsi }
+          East, West: { state: console, sprite: _Shitmed/Structures/Machines/abductor_console.rsi }
   - type: ActivatableUI
     key: enum.AbductorConsoleUIKey.Key
   - type: UserInterface
@@ -52,6 +60,14 @@
     layers:
     - map: ["console"]
       state: console
+  - type: GenericVisualizer # Orion
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: console, sprite: _Shitmed/Structures/Machines/abductor_camera_console.rsi }
+          East: { state: console, sprite: _Shitmed/Structures/Machines/abductor_camera_console.rsi }
+          West: { state: console, sprite: _Shitmed/Structures/Machines/abductor_camera_console.rsi }
+          East, West: { state: console, sprite: _Shitmed/Structures/Machines/abductor_camera_console.rsi }
   - type: AbductorHumanObservationConsole
   - type: ActivatableUI
     key: enum.AbductorCameraConsoleUIKey.Key

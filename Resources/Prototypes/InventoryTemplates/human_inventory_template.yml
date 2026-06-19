@@ -169,7 +169,7 @@
       fullTextureName: template_small
       slotFlags: SOCKS
       slotGroup: Extra
-      uiWindowPos: 0,2
+      uiWindowPos: 0,1
       strippingWindowPos: 3,3
       displayName: Socks
       stripTime: 3
@@ -178,7 +178,7 @@
       fullTextureName: template_small
       slotFlags: UNDERWEAR
       slotGroup: Extra
-      uiWindowPos: 0,1
+      uiWindowPos: 0,2
       strippingWindowPos: 3,1
       displayName: Underwear
       stripTime: 6
