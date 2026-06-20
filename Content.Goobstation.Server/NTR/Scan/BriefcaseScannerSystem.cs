@@ -103,7 +103,7 @@ namespace Content.Goobstation.Server.NTR.Scan
                     store);
                     _chatManager.TrySendInGameICMessage(uid, Loc.GetString("ntr-scan-success", ("amount", points)), InGameICChatType.Speak, true);
 
-                    QueueDel(target);
+                    QueueDel(target); // Orion
                     Spawn("BluespaceTeleportationEffect", Transform(target).Coordinates);
                 }
             }
