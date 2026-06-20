@@ -1,0 +1,31 @@
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledFormaldehyde
+  name: anti-rot patch
+  suffix: Formaldehyde
+  components:
+  - type: Label
+    currentLabel: Formaldehyde 30u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+          - ReagentId: Formaldehyde
+            Quantity: 30
+
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledHyronalin
+  name: anti-radiation patch
+  suffix: Hyronalin
+  components:
+  - type: Label
+    currentLabel: Hyronalin 30u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+          - ReagentId: Hyronalin
+            Quantity: 30

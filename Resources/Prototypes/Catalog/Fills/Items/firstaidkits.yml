@@ -37,11 +37,13 @@
   components:
   - type: StorageFill
     contents:
+      # Orion-Edit-Start
+      - id: Gauze
       - id: Brutepack
       - id: Ointment
-      - id: Gauze
       - id: PillCanisterTricordrazine
-      - id: PillCanisterIron # Goobstation
+      - id: EmergencyMedipen
+      # Orion-Edit-End
       # see https://github.com/tgstation/blob/master/code/game/objects/items/storage/firstaid.dm for example contents
 
 - type: entity
@@ -51,11 +53,14 @@
   components:
   - type: StorageFill
     contents:
+      # Orion-Edit-Start
       - id: Ointment
+      - id: SprayBottleSilverSulfadiazine
+      - id: MedicalPatchPrefilledDermaline
         amount: 2
-      - id: SprayBottleSilverSulfadiazine # Goobstation
-      - id: BurnAutoInjector # Goobstation
-      - id: PillCanisterDermaline
+      - id: BurnAutoInjector
+      - id: PillCanisterHercuri
+      # Orion-Edit-End
 
 - type: entity
   id: MedkitBruteFilled
@@ -64,11 +69,14 @@
   components:
   - type: StorageFill
     contents:
-      - id: Brutepack
+      # Orion-Edit-Start
       - id: Gauze
-      - id: SprayBottleStypticPowder # Goobstation
-      - id: BruteAutoInjector # Goobstation
-      - id: PillCanisterIron
+      - id: SprayBottleStypticPowder
+      - id: MedicalPatchPrefilledBicaridine
+        amount: 2
+      - id: BruteAutoInjector
+      - id: PillCanisterProbital
+      # Orion-Edit-End
 
 - type: entity
   id: MedkitToxinFilled
@@ -77,11 +85,16 @@
   components:
   - type: StorageFill
     contents:
-      - id: SyringeIpecac
+      # Orion-Edit-Start
+      - id: PillAmmoniatedMercury
+      - id: PillSyriniver
+      - id: PillCanisterMultiver
+      - id: ChemistryBottleIpecac
+      - id: SyringeHaloperidol
       - id: SyringeEthylredoxrazine
       - id: AntiPoisonMedipen
       - id: PillCanisterDylovene
-      - id: PillCanisterCharcoal
+      # Orion-Edit-End
 
 - type: entity
   id: MedkitOxygenFilled
@@ -90,11 +103,16 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingMaskBreathMedical
-      - id: EmergencyOxygenTankFilled
+      # Orion-Edit-Start
+      - id: SyringeConvermol
+      - id: AirlossAutoInjector
       - id: EmergencyMedipen
-      - id: SyringeInaprovaline
       - id: PillCanisterDexalin
+      - id: SyringeConvermol
+        amount: 2
+      - id: SyringeInaprovaline
+      - id: PillCanisterIron
+      # Orion-Edit-End
 
 - type: entity
   id: MedkitRadiationFilled
@@ -103,10 +121,16 @@
   components:
   - type: StorageFill
     contents:
+      # Orion-Edit-Start
       - id: SyringePhalanximine
-      - id: RadAutoInjector
+      - id: PillGenecide
       - id: PillCanisterPotassiumIodide
-      - id: PillCanisterHyronalin
+      - id: PillPentenicAcid
+      - id: MedicalPatchPrefilledFormaldehyde
+      - id: RadAutoInjector
+      - id: MedicalPatchPrefilledHyronalin
+        amount: 2
+      # Orion-Edit-End
 
 - type: entity
   id: MedkitAdvancedFilled
@@ -115,11 +139,13 @@
   components:
   - type: StorageFill
     contents:
+      # Orion-Edit-Start
       - id: MedicatedSuture
       - id: RegenerativeMesh
       - id: Bloodpack
         amount: 2
       - id: Tourniquet # Shitmed Change
+      # Orion-Edit-End
 
 - type: entity
   id: MedkitCombatFilled
@@ -128,12 +154,14 @@
   components:
   - type: StorageFill
     contents:
+      # Orion-Edit-Start
       - id: MedicatedSuture
       - id: RegenerativeMesh
       - id: SyringeEphedrine
       - id: SyringeSaline
       - id: BruteAutoInjector
       - id: BurnAutoInjector
+      # Orion-Edit-End
 
 - type: entity
   id: StimkitFilled
