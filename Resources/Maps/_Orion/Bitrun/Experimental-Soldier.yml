@@ -7994,7 +7994,7 @@ entities:
     - type: Transform
       pos: 8.477943,13.506343
       parent: 1
-- proto: WeaponShotgunZauer
+- proto: WeaponShotgunBulldog
   entities:
   - uid: 389
     components:
