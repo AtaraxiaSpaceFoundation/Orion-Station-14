@@ -1,9 +1,7 @@
 {
 	"version": 1,
 	"license": "CC-BY-SA-3.0",
-  "copyright": "Taken from cev-eris at https://github.com/discordia-space/CEV-Eris/commit/740ff31a81313086cf16761f3677cf1e2ab46c93 and Taken from tgstation at https://github.com/tgstation/tgstation/blob/623290915c2292b56da11048deb62d758e1e3fb4/icons/obj/bloodpack.dmi, Blood pack redone by Ubaser",
-  "copyright": "Taken from https://github.com/tgstation/tgstation/blob/a3568da5634e756d0849480104afda402c6f1c3c/icons/obj/medical/stack_medical.dmi",
-  "copyright": "Tourniquet Sprite by PoorMansDreams, in-hand sprites of tourniquet, gauze, and bloodpack made by SeamLesss (github)",
+    "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/blob/623290915c2292b56da11048deb62d758e1e3fb4/icons/obj/bloodpack.dmi and https://github.com/tgstation/tgstation/commit/0b8f4dc9cebe5f8413d25860050a38b4fcc5c217, Blood pack redone by Ubaser, Tourniquet Sprite by PoorMansDreams, in-hand sprites of tourniquet, gauze, and bloodpack made by SeamLesss (github)",
 	"size": {
 		"x": 32,
 		"y": 32
@@ -11,6 +9,12 @@
 	"states": [
 		{
 			"name": "brutepack"
+		},
+		{
+			"name": "brutepack-2"
+		},
+		{
+			"name": "brutepack-3"
 		},
 		{
 			"name": "brutepack-inhand-left",
@@ -25,6 +29,12 @@
 		},
 		{
 			"name": "gauze"
+		},
+		{
+			"name": "gauze-2"
+		},
+		{
+			"name": "gauze-3"
 		},
 		{
 			"name": "gauze-inhand-left",
@@ -52,6 +62,12 @@
 			"name": "ointment"
 		},
 		{
+			"name": "ointment-2"
+		},
+		{
+			"name": "ointment-3"
+		},
+		{
 			"name": "ointment-inhand-left",
 			"directions": 4
 		},
@@ -71,7 +87,30 @@
 			"directions": 4
 		},
 		{
+			"name": "suture"
+		},
+		{
+			"name": "suture-2"
+		},
+		{
+			"name": "suture-3"
+		},
+		{
+			"name": "suture-inhand-left",
+			"directions": 4
+		},
+		{
+			"name": "suture-inhand-right",
+			"directions": 4
+		},
+		{
 			"name": "medicated-suture"
+		},
+		{
+			"name": "medicated-suture-2"
+		},
+		{
+			"name": "medicated-suture-3"
 		},
 		{
 			"name": "medicated-suture-inhand-left",
@@ -84,12 +123,41 @@
 		{
 			"name": "regenerative-mesh"
 		},
+		{
+			"name": "regenerative-mesh-2"
+		},
+		{
+			"name": "regenerative-mesh-3"
+		},
+		{
+			"name": "regenerative-mesh-closed"
+		},
         {
 			"name": "regenerative-mesh-inhand-right",
 			"directions": 4
 		},
         {
 			"name": "regenerative-mesh-inhand-left",
+			"directions": 4
+		},
+		{
+			"name": "aloe-mesh"
+		},
+		{
+			"name": "aloe-mesh-2"
+		},
+		{
+			"name": "aloe-mesh-3"
+		},
+		{
+			"name": "aloe-mesh-closed"
+		},
+        {
+			"name": "aloe-mesh-inhand-right",
+			"directions": 4
+		},
+        {
+			"name": "aloe-mesh-inhand-left",
 			"directions": 4
 		},
 		{

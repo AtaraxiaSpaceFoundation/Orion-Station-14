@@ -96,9 +96,14 @@
     tags:
     - Ointment
   - type: Sprite
-    state: ointment
+    state: ointment-3 # Orion-Edit
+    # Orion-Start
+    layers:
+    - state: ointment-3
+      map: ["base"]
+    # Orion-End
   - type: Item
-    heldPrefix: ointment
+    heldPrefix: ointment-3
   - type: Healing
     damageContainers:
       - Biological
@@ -121,6 +126,13 @@
   - type: Stack
     stackType: Ointment
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+    # Orion-Start
+    baseLayer: base
+    layerStates:
+    - ointment
+    - ointment-2
+    - ointment-3
+    # Orion-End
   - type: StackPrice
     price: 5
 
@@ -153,7 +165,8 @@
     tags:
     - Ointment
   - type: Sprite
-    state: regenerative-mesh
+    state: regenerative-mesh-3 # Orion-Edit
+    map: ["base"] # Orion
   - type: Item
     heldPrefix: regenerative-mesh
   - type: Healing
@@ -178,6 +191,13 @@
   - type: Stack
     stackType: RegenerativeMesh
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+    # Orion-Start
+    baseLayer: base
+    layerStates:
+    - regenerative-mesh
+    - regenerative-mesh-2
+    - regenerative-mesh-3
+    # Orion-End
   - type: StackPrice
     price: 20
 
@@ -264,7 +284,8 @@
     tags:
     - Brutepack
   - type: Sprite
-    state: medicated-suture
+    state: medicated-suture-3 # Orion-Edit
+    map: ["base"] # Orion
   - type: Item
     heldPrefix: medicated-suture
     storedRotation: -90
@@ -288,6 +309,13 @@
   - type: Stack
     stackType: MedicatedSuture
     count: 15 #Was 10, Buffed due to surgery changes (Goobstation)
+    # Orion-Start
+    baseLayer: base
+    layerStates:
+    - medicated-suture
+    - medicated-suture-2
+    - medicated-suture-3
+    # Orion-End
   - type: StackPrice
     price: 20
   # <Shitmed>
@@ -407,7 +435,8 @@
     tags:
     - Gauze
   - type: Sprite
-    state: gauze
+    state: gauze-3
+    map: ["base"] # Orion
   - type: Clothing # Orion
     sprite: _Orion/Clothing/Hands/Gloves/gauze.rsi
     slots: gloves
@@ -437,6 +466,13 @@
   - type: Stack
     stackType: Gauze
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+    # Orion-Start
+    baseLayer: base
+    layerStates:
+    - gauze
+    - gauze-2
+    - gauze-3
+    # Orion-End
   - type: StackPrice
     price: 10
 
