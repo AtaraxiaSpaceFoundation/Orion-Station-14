@@ -67,7 +67,7 @@
   - type: Scalpel
     speed: 3
   - type: BoneSaw
-    speed: 3
+    speed: 0.6 # Orion-Edit: 3 > 0.6
   - type: ItemSwitch
     showLabel: true
     state: scalpel
@@ -82,7 +82,7 @@
           - type: Scalpel
             speed: 3
           - type: BoneSaw
-            speed: 3
+            speed: 0.6 # Orion-Edit: 3 > 0.6
         soundStateActivate:
           collection: sparks
           params:
@@ -95,6 +95,10 @@
           sprite: _Shitmed/Objects/Specific/Medical/Surgery/e-scalpel.rsi
           state: e-scalpel-on
         components:
+        # Orion-Start
+        - type: BoneSaw
+          speed: 3
+        # Orion-End
         - type: Drill
           speed: 3
         soundStateActivate:
