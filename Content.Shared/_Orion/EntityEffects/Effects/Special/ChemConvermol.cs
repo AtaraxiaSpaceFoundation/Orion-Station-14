@@ -56,7 +56,7 @@ public sealed partial class ChemConvermol : EntityEffect
 
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-convermol",
-            ("heal", HealPerTick),
+            ("rate", HealPerTick),
             ("ratio", ToxRatio),
             ("od", OverdoseThreshold));
 
