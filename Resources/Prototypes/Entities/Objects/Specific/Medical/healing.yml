@@ -81,6 +81,7 @@
     size: Small
     sprite: Objects/Specific/Medical/medical.rsi
     heldPrefix: ointment
+  - type: Appearance # Orion
   # Inherited
   - type: StaticPrice
     price: 0
@@ -166,7 +167,11 @@
     - Ointment
   - type: Sprite
     state: regenerative-mesh-3 # Orion-Edit
-    map: ["base"] # Orion
+    # Orion-Start
+    layers:
+    - state: regenerative-mesh-3
+      map: ["base"]
+    # Orion-End
   - type: Item
     heldPrefix: regenerative-mesh
   - type: Healing
@@ -230,7 +235,12 @@
     tags:
     - Brutepack
   - type: Sprite
-    state: brutepack
+    state: brutepack-3
+    # Orion-Start
+    layers:
+    - state: brutepack-3
+      map: ["base"]
+    # Orion-End
   - type: Item
     heldPrefix: brutepack
   - type: Healing
@@ -252,6 +262,13 @@
   - type: Stack
     stackType: Brutepack
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+    # Orion-Start
+    baseLayer: base
+    layerStates:
+    - brutepack
+    - brutepack-2
+    - brutepack-3
+    # Orion-End
   - type: StackPrice
     price: 5
 
@@ -285,7 +302,11 @@
     - Brutepack
   - type: Sprite
     state: medicated-suture-3 # Orion-Edit
-    map: ["base"] # Orion
+    # Orion-Start
+    layers:
+    - state: medicated-suture-3
+      map: ["base"]
+    # Orion-End
   - type: Item
     heldPrefix: medicated-suture
     storedRotation: -90
@@ -436,7 +457,11 @@
     - Gauze
   - type: Sprite
     state: gauze-3
-    map: ["base"] # Orion
+    # Orion-Start
+    layers:
+    - state: gauze-3
+      map: ["base"]
+    # Orion-End
   - type: Clothing # Orion
     sprite: _Orion/Clothing/Hands/Gloves/gauze.rsi
     slots: gloves
