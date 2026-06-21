@@ -418,14 +418,47 @@ public sealed class HealingSystem : EntitySystem
             // Iterate over the parts in the predefined order until we run out of parts or run out of healing
             var woundablesQueue = new Queue<EntityUid>();
             woundablesQueue.Enqueue(targetedWoundable);
-            for (var i = 0; i < _partHealingOrder.Length; i++)
+            // Orion-Start
+            if (healing.PrioritizeBleeding)
             {
-                var (partType, symmetry) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
-                var targetedBodyPart = _bodySystem.GetBodyChildrenOfType(ent, partType, comp, symmetry).ToList().FirstOrDefault();
-                if (targetedBodyPart.Id == targetedWoundable)
-                    continue;
-                woundablesQueue.Enqueue(targetedBodyPart.Id);
+                // Collect all other parts with bleed amounts
+                var bleeding = new List<(EntityUid Id, FixedPoint2 Bleed)>();
+                var nonBleeding = new List<EntityUid>();
+
+                for (var i = 0; i < _partHealingOrder.Length; i++)
+                {
+                    var (pt, sym) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
+                    var bp = _bodySystem.GetBodyChildrenOfType(ent, pt, comp, sym).ToList().FirstOrDefault();
+                    if (bp.Id == targetedWoundable || bp.Id == EntityUid.Invalid)
+                        continue;
+
+                    if (TryComp<WoundableComponent>(bp.Id, out var wc) && wc.Bleeds > FixedPoint2.Zero)
+                        bleeding.Add((bp.Id, wc.Bleeds));
+                    else
+                        nonBleeding.Add(bp.Id);
+                }
+
+                // Bleeding limbs first, sorted by severity desc. Then damage-only limbs
+                bleeding.Sort((a, b) => b.Bleed.CompareTo(a.Bleed));
+                foreach (var (id, _) in bleeding)
+                    woundablesQueue.Enqueue(id);
+                foreach (var id in nonBleeding)
+                    woundablesQueue.Enqueue(id);
             }
+            // Orion-End
+            // Orion-Edit-Start
+            else
+            {
+                for (var i = 0; i < _partHealingOrder.Length; i++)
+                {
+                    var (partType, symmetry) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
+                    var targetedBodyPart = _bodySystem.GetBodyChildrenOfType(ent, partType, comp, symmetry).ToList().FirstOrDefault();
+                    if (targetedBodyPart.Id == targetedWoundable)
+                        continue;
+                    woundablesQueue.Enqueue(targetedBodyPart.Id);
+                }
+            }
+            // Orion-Edit-End
             while (woundablesQueue.Count > 0 && healingLeft.GetTotal() < 0.0)
             {
                 canHeal = true;
