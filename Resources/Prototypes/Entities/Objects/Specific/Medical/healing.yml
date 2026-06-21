@@ -103,7 +103,7 @@
       map: ["base"]
     # Orion-End
   - type: Item
-    heldPrefix: ointment-3
+    heldPrefix: ointment
   - type: Healing
     damageContainers:
       - Biological
