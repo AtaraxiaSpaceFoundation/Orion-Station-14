@@ -31,6 +31,16 @@ public sealed partial class HealingComponent : Component
     [DataField, AutoNetworkedField]
     public float ModifyBloodLevel = 0.0f;
 
+    // Orion-Start
+    /// <summary>
+    /// If true, when auto-targeting body parts, bleeding limbs are prioritized
+    /// (sorted descending by bleed amount) over damage-only limbs.
+    /// Only falls back to damage priority when no limb has active bleeding.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool PrioritizeBleeding = false;
+    // Orion-End
+
     /// <remarks>
     /// The supported damage types are specified using a <see cref="DamageContainerPrototype"/>s. For a
     /// HealingComponent this filters what damage container type this component should work on. If null,
