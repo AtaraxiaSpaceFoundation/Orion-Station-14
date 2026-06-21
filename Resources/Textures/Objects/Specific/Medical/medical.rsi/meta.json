@@ -1,7 +1,7 @@
 {
 	"version": 1,
 	"license": "CC-BY-SA-3.0",
-    "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/blob/623290915c2292b56da11048deb62d758e1e3fb4/icons/obj/bloodpack.dmi and https://github.com/tgstation/tgstation/commit/0b8f4dc9cebe5f8413d25860050a38b4fcc5c217, Blood pack redone by Ubaser, Tourniquet Sprite by PoorMansDreams, in-hand sprites of tourniquet, gauze, and bloodpack made by SeamLesss (github)",
+    "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/blob/623290915c2292b56da11048deb62d758e1e3fb4/icons/obj/bloodpack.dmi and https://github.com/tgstation/tgstation/commit/0b8f4dc9cebe5f8413d25860050a38b4fcc5c217, Blood pack redone by Ubaser, Tourniquet Sprite by PoorMansDreams. All another in-hand and upgraded sprites by UmbiMax",
 	"size": {
 		"x": 32,
 		"y": 32
