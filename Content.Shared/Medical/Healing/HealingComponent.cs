@@ -59,7 +59,7 @@ public sealed partial class HealingComponent : Component
     /// Delay multiplier when healing yourself.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float SelfHealPenaltyMultiplier = 2f; //Was 3f, changed due to Surgery Changes (Goobstation)
+    public float SelfHealPenaltyMultiplier = 5f; //Was 3f, changed due to Surgery Changes (Goobstation) # Orion-Edit: 2 > 5
 
     /// <summary>
     /// Sound played on healing begin.

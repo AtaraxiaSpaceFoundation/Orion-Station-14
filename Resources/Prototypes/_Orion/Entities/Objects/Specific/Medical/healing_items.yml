@@ -9,12 +9,12 @@
     tags:
     - Brutepack
   - type: Sprite
-    state: medicated-suture-3
+    state: suture-3
     layers:
-    - state: medicated-suture-3
+    - state: suture-3
       map: ["base"]
   - type: Item
-    heldPrefix: medicated-suture
+    heldPrefix: suture
     storedRotation: -90
   - type: Healing
     damageContainers:
@@ -38,9 +38,9 @@
     count: 10
     baseLayer: base
     layerStates:
-    - medicated-suture
-    - medicated-suture-2
-    - medicated-suture-3
+    - suture
+    - suture-2
+    - suture-3
   - type: StackPrice
     price: 20
   - type: Stitches

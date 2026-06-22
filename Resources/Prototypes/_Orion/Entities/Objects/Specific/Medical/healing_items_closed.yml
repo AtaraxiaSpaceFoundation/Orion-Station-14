@@ -24,6 +24,7 @@
 - type: entity
   parent: BaseHealingItemClosed
   id: RegenerativeMesh
+  name: regenerative mesh
   description: Used to treat even the nastiest burns. Also effective against caustic burns. It's still in a wrapper.
   components:
   - type: StaticPrice
@@ -32,6 +33,7 @@
 - type: entity
   parent: BaseHealingItemClosed
   id: AdvancedRegenerativeMesh
+  name: advanced regenerative mesh
   description: An advanced mesh made with aloe extracts and sterilizing chemicals, used to treat burns. It's still in a wrapper.
   components:
   - type: Sprite
