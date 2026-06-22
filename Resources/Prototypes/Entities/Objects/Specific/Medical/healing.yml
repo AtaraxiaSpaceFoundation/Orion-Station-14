@@ -208,7 +208,7 @@
 
 - type: entity
   id: OintmentAdvanced1
-  parent: RegenerativeMesh
+  parent: AdvancedRegenerativeMeshOpened # Orion-Edit
   suffix: Single
   components:
   - type: Stack
@@ -216,7 +216,7 @@
     count: 1
 
 - type: entity
-  parent: RegenerativeMesh
+  parent: AdvancedRegenerativeMeshOpened # Orion-Edit
   id: RegenerativeMeshLingering0
   suffix: 0, Lingering
   components:
