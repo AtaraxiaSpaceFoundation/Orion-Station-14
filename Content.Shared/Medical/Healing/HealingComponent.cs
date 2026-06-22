@@ -72,4 +72,12 @@ public sealed partial class HealingComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier? HealingEndSound = null;
+
+    // Orion-Start
+    /// <summary>
+    /// Sound played on full healing end.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? HealingFullEndSound = null;
+    // Orion-End
 }
