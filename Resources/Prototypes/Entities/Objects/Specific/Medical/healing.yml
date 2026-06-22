@@ -184,15 +184,25 @@
         Shock: -15
         Caustic: -15 #Was 10 per type, Buffed due to limb damage changes (Goobstation)
     healingBeginSound:
-      path: "/Audio/Items/Medical/ointment_begin.ogg"
+      collection: RegenerativeMeshBegin # Orion-Edit
       params:
-        volume: 1.0
+        volume: 2.0 # Orion-Edit: 1.0 > 2.0
         variation: 0.125
     healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
+      collection: RegenerativeMeshContinuous # Orion-Edit
       params:
-        volume: 1.0
+        volume: 2.0 # Orion-Edit: 1.0 > 2.0
         variation: 0.125
+    # Orion-Start
+    healingFullEndSound:
+      collection: RegenerativeMeshEnd
+      params:
+        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        variation: 0.125
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+    # Orion-End
   - type: Stack
     stackType: AdvancedRegenerativeMesh # Orion-Edit
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
@@ -204,7 +214,7 @@
     - aloe-mesh-3
     # Orion-End
   - type: StackPrice
-    price: 40
+    price: 40 # Orion-Edit: 20 > 40
 
 - type: entity
   id: OintmentAdvanced1
@@ -318,15 +328,25 @@
         Brute: -45 # was 10 for each, Buffed due to Limb Damage Changes (Goobstation)
     bloodlossModifier: -10 # a suture should stop ongoing bleeding
     healingBeginSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      collection: SutureBegin # Orion-Edit
       params:
-        volume: 1.0
+        volume: 2.0 # Orion-Edit: 1.0 > 2.0
         variation: 0.125
     healingEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      collection: SutureContinuous # Orion-Edit
       params:
-        volume: 1.0
+        volume: 2.0 # Orion-Edit: 1.0 > 2.0
         variation: 0.125
+    # Orion-Start
+    healingFullEndSound:
+      collection: SutureEnd
+      params:
+        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        variation: 0.125
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+    # Orion-End
   - type: Stack
     stackType: MedicatedSuture
     count: 10 #Was 10, Buffed due to surgery changes (Goobstation) # Orion-Edit: 15 > 10
@@ -338,19 +358,19 @@
     - medicated-suture-3
     # Orion-End
   - type: StackPrice
-    price: 20
+    price: 40 # Orion-Edit: 20 > 40
   # <Shitmed>
   - type: Stitches
     speed: 2 # actual stitches cost nothing to use so these are faster, shits expensive
     used: true
   - type: SurgeryTool
     startSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      collection: SutureBegin # Orion-Edit
       params:
         volume: 1.0
         variation: 0.125
     endSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      collection: SutureContinuous # Orion-Edit
       params:
         volume: 1.0
         variation: 0.125

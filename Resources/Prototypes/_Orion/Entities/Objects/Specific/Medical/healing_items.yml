@@ -5,9 +5,6 @@
   description: A suture soaked in medicine, treats blunt-force trauma effectively and closes wounds.
   suffix: Full
   components:
-  - type: Tag
-    tags:
-    - Brutepack
   - type: Sprite
     state: suture-3
     layers:
@@ -23,20 +20,8 @@
       groups:
         Brute: -30
     bloodlossModifier: -2.5
-    healingBeginSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
-    healingEndSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
   - type: Stack
     stackType: Suture
-    count: 10
-    baseLayer: base
     layerStates:
     - suture
     - suture-2
@@ -45,18 +30,6 @@
     price: 20
   - type: Stitches
     speed: 1
-    used: true
-  - type: SurgeryTool
-    startSound:
-      path: "/Audio/Items/Medical/brutepack_begin.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
-    endSound:
-      path: "/Audio/Items/Medical/brutepack_end.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
 
 - type: entity
   parent: AdvancedRegenerativeMeshOpened
@@ -65,9 +38,6 @@
   description: Used to treat even the nastiest burns. Also effective against caustic burns.
   suffix: Full
   components:
-  - type: Tag
-    tags:
-    - Ointment
   - type: Sprite
     state: regenerative-mesh-3
     layers:
@@ -84,20 +54,8 @@
         Cold: -9
         Shock: -8
         Caustic: -7.5
-    healingBeginSound:
-      path: "/Audio/Items/Medical/ointment_begin.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
-    healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
   - type: Stack
     stackType: RegenerativeMesh
-    count: 15
-    baseLayer: base
     layerStates:
     - regenerative-mesh
     - regenerative-mesh-2
