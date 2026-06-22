@@ -17,7 +17,7 @@
     items:
     - id: RegenerativeMeshOpened
     sound:
-      path: /Audio/Effects/unwrap.ogg
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_ripped.ogg
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
@@ -48,7 +48,6 @@
   - type: Item
     sprite: Objects/Specific/Medical/medical.rsi
     heldPrefix: aloe-mesh
-    size: Small
   - type: SpawnItemsOnUse
     items:
     - id: AdvancedRegenerativeMeshOpened
