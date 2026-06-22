@@ -202,6 +202,12 @@
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_pickup1.ogg
     # Orion-End
   - type: Stack
     stackType: AdvancedRegenerativeMesh # Orion-Edit
@@ -346,6 +352,12 @@
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Orion/Items/Medical/suture/needle_pickup1.ogg
     # Orion-End
   - type: Stack
     stackType: MedicatedSuture

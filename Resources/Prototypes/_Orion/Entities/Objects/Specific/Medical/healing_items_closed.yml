@@ -18,6 +18,12 @@
     - id: RegenerativeMeshOpened
     sound:
       path: /Audio/Effects/unwrap.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_drop1.ogg
   - type: StaticPrice
     price: 0
 
