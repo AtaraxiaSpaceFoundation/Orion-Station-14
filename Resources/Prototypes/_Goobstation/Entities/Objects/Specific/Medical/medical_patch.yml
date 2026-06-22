@@ -101,7 +101,7 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 20
+        maxVol: 40 # Orion-Edit: 20 > 40
   - type: ExaminableSolution
     solution: drink
   - type: Sticky
@@ -146,7 +146,7 @@
   - type: SolutionContainerManager
     solutions:
       drink:  #drink is the same as Bottle solution, this is to prevent recoding chem master. TODO: recode chem master
-        maxVol: 20
+        maxVol: 40 # Orion-Edit: 20 > 40
   - type: Tag
     tags:
     - MedicalPatch
@@ -236,7 +236,7 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 40 # +50% from basic
+        maxVol: 80 # +50% from basic # Orion-Edit: 40 > 80
   - type: MedicalPatch
     injectPercentageOnAttatch: 10 # 4u when full
   - type: Item
@@ -258,7 +258,7 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 20  # lasts for 40 seconds, effectively half as good as a normal patch
+        maxVol: 30  # lasts for 40 seconds, effectively half as good as a normal patch # Orion-Edit: 20 > 30
   - type: Construction
     graph: MedicalPatchMakeshift
     node: medicalPatchMakeshift
