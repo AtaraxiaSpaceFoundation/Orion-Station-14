@@ -3,7 +3,7 @@
   name: stack-medicated-suture
   icon: {sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: suture}
   spawn: Suture
-  maxCount: 15
+  maxCount: 10
 
 - type: stack
   id: AdvancedRegenerativeMesh

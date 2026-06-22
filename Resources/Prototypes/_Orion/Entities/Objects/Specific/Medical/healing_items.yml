@@ -1,20 +1,18 @@
 - type: entity
-  name: medicated suture
-  description: A suture soaked in medicine, treats blunt-force trauma effectively and closes wounds.
   parent: MedicatedSuture
   id: Suture
+  name: suture
+  description: A suture soaked in medicine, treats blunt-force trauma effectively and closes wounds.
   suffix: Full
   components:
   - type: Tag
     tags:
     - Brutepack
   - type: Sprite
-    state: medicated-suture-3 # Orion-Edit
-    # Orion-Start
+    state: medicated-suture-3
     layers:
     - state: medicated-suture-3
       map: ["base"]
-    # Orion-End
   - type: Item
     heldPrefix: medicated-suture
     storedRotation: -90
@@ -36,19 +34,17 @@
         volume: 1.0
         variation: 0.125
   - type: Stack
-    stackType: MedicatedSuture
-    count: 15 #Was 10, Buffed due to surgery changes (Goobstation)
-    # Orion-Start
+    stackType: Suture
+    count: 10
     baseLayer: base
     layerStates:
     - medicated-suture
     - medicated-suture-2
     - medicated-suture-3
-    # Orion-End
   - type: StackPrice
     price: 20
   - type: Stitches
-    speed: 2 # actual stitches cost nothing to use so these are faster, shits expensive
+    speed: 1
     used: true
   - type: SurgeryTool
     startSound:
@@ -63,22 +59,20 @@
         variation: 0.125
 
 - type: entity
-  name: regenerative mesh
-  description: Used to treat even the nastiest burns. Also effective against caustic burns.
   parent: AdvancedRegenerativeMeshOpened
   id: RegenerativeMeshOpened
+  name: regenerative mesh
+  description: Used to treat even the nastiest burns. Also effective against caustic burns.
   suffix: Full
   components:
   - type: Tag
     tags:
     - Ointment
   - type: Sprite
-    state: regenerative-mesh-3 # Orion-Edit
-    # Orion-Start
+    state: regenerative-mesh-3
     layers:
     - state: regenerative-mesh-3
       map: ["base"]
-    # Orion-End
   - type: Item
     heldPrefix: regenerative-mesh
   - type: Healing
@@ -87,8 +81,8 @@
     damage:
       types:
         Heat: -10
-        Cold: -10
-        Shock: -10
+        Cold: -9
+        Shock: -8
         Caustic: -7.5
     healingBeginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
@@ -102,7 +96,7 @@
         variation: 0.125
   - type: Stack
     stackType: RegenerativeMesh
-    count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+    count: 15
     baseLayer: base
     layerStates:
     - regenerative-mesh
