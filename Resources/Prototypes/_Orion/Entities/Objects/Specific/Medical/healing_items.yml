@@ -1,0 +1,112 @@
+- type: entity
+  name: medicated suture
+  description: A suture soaked in medicine, treats blunt-force trauma effectively and closes wounds.
+  parent: MedicatedSuture
+  id: Suture
+  suffix: Full
+  components:
+  - type: Tag
+    tags:
+    - Brutepack
+  - type: Sprite
+    state: medicated-suture-3 # Orion-Edit
+    # Orion-Start
+    layers:
+    - state: medicated-suture-3
+      map: ["base"]
+    # Orion-End
+  - type: Item
+    heldPrefix: medicated-suture
+    storedRotation: -90
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      groups:
+        Brute: -30
+    bloodlossModifier: -2.5
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+  - type: Stack
+    stackType: MedicatedSuture
+    count: 15 #Was 10, Buffed due to surgery changes (Goobstation)
+    # Orion-Start
+    baseLayer: base
+    layerStates:
+    - medicated-suture
+    - medicated-suture-2
+    - medicated-suture-3
+    # Orion-End
+  - type: StackPrice
+    price: 20
+  - type: Stitches
+    speed: 2 # actual stitches cost nothing to use so these are faster, shits expensive
+    used: true
+  - type: SurgeryTool
+    startSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    endSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+
+- type: entity
+  name: regenerative mesh
+  description: Used to treat even the nastiest burns. Also effective against caustic burns.
+  parent: AdvancedRegenerativeMeshOpened
+  id: RegenerativeMeshOpened
+  suffix: Full
+  components:
+  - type: Tag
+    tags:
+    - Ointment
+  - type: Sprite
+    state: regenerative-mesh-3 # Orion-Edit
+    # Orion-Start
+    layers:
+    - state: regenerative-mesh-3
+      map: ["base"]
+    # Orion-End
+  - type: Item
+    heldPrefix: regenerative-mesh
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Heat: -10
+        Cold: -10
+        Shock: -10
+        Caustic: -7.5
+    healingBeginSound:
+      path: "/Audio/Items/Medical/ointment_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/ointment_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+  - type: Stack
+    stackType: RegenerativeMesh
+    count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+    baseLayer: base
+    layerStates:
+    - regenerative-mesh
+    - regenerative-mesh-2
+    - regenerative-mesh-3
+  - type: StackPrice
+    price: 20

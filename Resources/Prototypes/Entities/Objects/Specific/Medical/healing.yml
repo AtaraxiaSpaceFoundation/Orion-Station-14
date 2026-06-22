@@ -156,24 +156,24 @@
     count: 10
 
 - type: entity
-  name: regenerative mesh
+  name: aloe mesh # Orion-Edit: Med rework
   description: Used to treat even the nastiest burns. Also effective against caustic burns.
   parent: BaseHealingItem
-  id: RegenerativeMesh
+  id: AdvancedRegenerativeMeshOpened # Orion-Edit
   suffix: Full
   components:
   - type: Tag
     tags:
     - Ointment
   - type: Sprite
-    state: regenerative-mesh-3 # Orion-Edit
+    state:aloe-mesh-3 # Orion-Edit
     # Orion-Start
     layers:
-    - state: regenerative-mesh-3
+    - state: aloe-mesh-3
       map: ["base"]
     # Orion-End
   - type: Item
-    heldPrefix: regenerative-mesh
+    heldPrefix: aloe-mesh
   - type: Healing
     damageContainers:
       - Biological
@@ -199,12 +199,12 @@
     # Orion-Start
     baseLayer: base
     layerStates:
-    - regenerative-mesh
-    - regenerative-mesh-2
-    - regenerative-mesh-3
+    - aloe-mesh
+    - aloe-mesh-2
+    - aloe-mesh-3
     # Orion-End
   - type: StackPrice
-    price: 20
+    price: 40
 
 - type: entity
   id: OintmentAdvanced1
