@@ -428,14 +428,14 @@ public sealed class HealingSystem : EntitySystem
                 for (var i = 0; i < _partHealingOrder.Length; i++)
                 {
                     var (pt, sym) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
-                    var bp = _bodySystem.GetBodyChildrenOfType(ent, pt, comp, sym).ToList().FirstOrDefault();
-                    if (bp.Id == targetedWoundable || bp.Id == EntityUid.Invalid)
+                    var bp = _bodySystem.GetBodyChildrenOfType(ent, pt, comp, sym).ToList().FirstOrNull();
+                    if (bp == null || bp.Value.Id == targetedWoundable)
                         continue;
 
-                    if (TryComp<WoundableComponent>(bp.Id, out var wc) && wc.Bleeds > FixedPoint2.Zero)
-                        bleeding.Add((bp.Id, wc.Bleeds));
+                    if (TryComp<WoundableComponent>(bp.Value.Id, out var wc) && wc.Bleeds > FixedPoint2.Zero)
+                        bleeding.Add((bp.Value.Id, wc.Bleeds));
                     else
-                        nonBleeding.Add(bp.Id);
+                        nonBleeding.Add(bp.Value.Id);
                 }
 
                 // Bleeding limbs first, sorted by severity desc. Then damage-only limbs
