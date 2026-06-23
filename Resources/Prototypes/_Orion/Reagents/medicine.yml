@@ -31,7 +31,7 @@
   desc: reagent-desc-salbutamol
   physicalDesc: reagent-physical-desc-salbutamol
   flavor: medicine
-  color: "`#00FFFF`"
+  color: "#00FFFF"
   metabolisms:
     Medicine:
       rate: 0.15
