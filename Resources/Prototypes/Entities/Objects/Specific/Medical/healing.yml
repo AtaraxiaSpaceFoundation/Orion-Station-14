@@ -228,7 +228,7 @@
   suffix: Single
   components:
   - type: Stack
-    stackType: RegenerativeMesh
+    stackType: AdvancedRegenerativeMesh # Orion-Edit
     count: 1
 
 - type: entity
