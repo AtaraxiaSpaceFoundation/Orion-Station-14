@@ -598,6 +598,9 @@
           - !type:OrganType # Orion
             type: AnthroAnimal
             shouldHave: false
+          - !type:OrganType # Mono - Hydrakin
+            type: Hydrakin
+            shouldHave: false
           - !type:OrganType
             type: Vox
             shouldHave: false
@@ -617,6 +620,9 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
+          - !type:OrganType # Mono - Hydrakin
+            type: Hydrakin
+            shouldHave: false
           - !type:OrganType
             type: Vox
             shouldHave: false
@@ -634,6 +640,9 @@
         - !type:OrganType # Orion
           type: AnthroAnimal
           shouldHave: true
+        - !type:OrganType # Mono - Hydrakin
+          type: Hydrakin
+          shouldHave: false
         - !type:OrganType
           type: Vox
           shouldHave: false
@@ -662,6 +671,12 @@
         conditions:
         - !type:OrganType
           type: XenobioSlime
+        reagent: Protein
+        amount: 0.5
+      - !type:AdjustReagent # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent

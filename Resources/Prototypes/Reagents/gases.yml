@@ -51,6 +51,10 @@
         conditions:
         - !type:OrganType
           type: Human
+      - !type:Oxygenate # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
       - !type:Oxygenate
         conditions:
         - !type:OrganType
@@ -118,6 +122,10 @@
         conditions:
         - !type:OrganType
           type: Human
+      - !type:Oxygenate # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
       - !type:Oxygenate
         conditions:
         - !type:OrganType
@@ -261,6 +269,9 @@
         - !type:OrganType # Shitmed - Cybernetic Organs
           type: Cybernetic
           shouldHave: false
+        - !type:OrganType
+          type: Hydrakin
+          shouldHave: false
         scaleByQuantity: true
         ignoreResistances: true
         damage:
@@ -283,6 +294,11 @@
         conditions:
         - !type:OrganType
           type: Plasmaman
+      - !type:Oxygenate # Mono - Hydrakin
+        factor: 4
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
       - !type:ModifyLungGas
         conditions:
         - !type:OrganType
@@ -300,6 +316,13 @@
           types:
             Poison:
               0.5
+      - !type:HealthChange # Mono
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
+        damage:
+          types:
+            Heat: -0.8
     Medicine: # EE Plasmeme
       effects:
       - !type:HealthChange
@@ -357,10 +380,17 @@
             Radiation: 1.5
     Gas:
       effects:
+      - !type:Oxygenate # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
       - !type:HealthChange
         conditions:
         - !type:OrganType # Shitmed - Cybernetic Organs
           type: Cybernetic
+          shouldHave: false
+        - !type:OrganType # Mono
+          type: Hydrakin
           shouldHave: false
         scaleByQuantity: true
         ignoreResistances: true
@@ -386,6 +416,17 @@
           types:
             Radiation:
               0.5
+      - !type:HealthChange # Mono
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
+        - !type:ReagentThreshold
+          reagent: Tritium
+          min: 0.01
+        damage:
+          types:
+            Heat: -0.5
+            Poison: -0.5
 
 - type: reagent
   id: CarbonDioxide
@@ -441,6 +482,9 @@
         - !type:OrganType
           type: Vox
           shouldHave: false
+        - !type:OrganType
+          type: Hydrakin
+          shouldHave: false
         - !type:OrganType # Goobstation - Yowie
           type: Yowie
           shouldHave: false
@@ -461,6 +505,9 @@
         conditions:
         - !type:OrganType
           type: Plant
+          shouldHave: false
+        - !type:OrganType
+          type: Hydrakin
           shouldHave: false
         - !type:OrganType # Shitmed - Cybernetic Organs
           type: Cybernetic
@@ -492,6 +539,10 @@
         conditions:
         - !type:OrganType
           type: Vox
+      - !type:Oxygenate # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
       - !type:Oxygenate
         conditions:
         - !type:OrganType
@@ -541,6 +592,19 @@
             Poison: 2
     Gas:
       effects:
+      - !type:Oxygenate # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
+      - !type:MovespeedModifier # Mono - Hydrakin
+        walkSpeedModifier: 1.15
+        sprintSpeedModifier: 1.15
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
+        - !type:ReagentThreshold
+          reagent: NitrousOxide
+          min: 0.05
       - !type:Emote
         conditions:
         - !type:ReagentThreshold
@@ -563,6 +627,9 @@
           min: 0.5
         - !type:OrganType
           type: Slime
+          shouldHave: false
+        - !type:OrganType # Mono - Hydrakin
+          type: Hydrakin
           shouldHave: false
         - !type:OrganType # Shitmed - Cybernetic Organs
           type: Cybernetic
@@ -591,6 +658,9 @@
         - !type:BloodReagentThreshold #  Assmos - /tg/ gases
           reagent: NitrosylPlasmide
           max: 0.1
+        - !type:OrganType # Mono - Hydrakin
+          type: Hydrakin
+          shouldHave: false
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
       - !type:ModifyStatusEffect
@@ -610,6 +680,9 @@
         - !type:BloodReagentThreshold #  Assmos - /tg/ gases
           reagent: NitrosylPlasmide
           max: 0.1
+        - !type:OrganType # Mono - Hydrakin
+          type: Hydrakin
+          shouldHave: false
         effectProto: StatusEffectForcedSleeping
         time: 3
         type: Add
@@ -626,6 +699,9 @@
           min: 3.5
         - !type:OrganType
           type: Slime
+          shouldHave: false
+        - !type:OrganType # Mono - Hydrakin
+          type: Hydrakin
           shouldHave: false
         ignoreResistances: true
         damage:
@@ -676,10 +752,26 @@
           min: 1
     Gas:
       effects:
+      - !type:Oxygenate # Mono - Hydrakin
+        conditions:
+        - !type:OrganType
+          type: Hydrakin
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
           type: Yowie
+        damage:
+          groups:
+            Brute: -1
+          types:
+            Heat: -0.5
+            Shock: -0.5
+            Cold: -0.5
+            Radiation: -0.5
+      - !type:HealthChange
+        conditions:
+        - !type:OrganType # Goobstation - Hydrakin
+          type: Hydrakin
         damage:
           groups:
             Brute: -1
@@ -695,6 +787,9 @@
           shouldHave: false
         - !type:OrganType # Shitmed - Cybernetic Organs
           type: Cybernetic
+          shouldHave: false
+        - !type:OrganType # Mono - Hydrakin
+          type: Hydrakin
           shouldHave: false
         - !type:ReagentThreshold
           reagent: Frezon
@@ -721,6 +816,9 @@
         - !type:ReagentThreshold
           reagent: Frezon
           min: 1
+        - !type:OrganType # Mono
+          type: Hydrakin
+          shouldHave: false
         effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 500
@@ -731,6 +829,9 @@
         - !type:ReagentThreshold
           reagent: Frezon
           min: 1
+        - !type:OrganType # Mono
+          type: Hydrakin
+          shouldHave: false
       - !type:PopupMessage
         type: Local
         messages: [ "frezon-lungs-cold" ]
@@ -739,6 +840,9 @@
         - !type:ReagentThreshold
           reagent: Frezon
           min: 0.5
+        - !type:OrganType # Mono
+          type: Hydrakin
+          shouldHave: false
       - !type:PopupMessage
         type: Local
         visualType: Medium
@@ -748,3 +852,17 @@
         - !type:ReagentThreshold
           reagent: Frezon
           min: 1
+        - !type:OrganType # Mono
+          type: Hydrakin
+          shouldHave: false
+      - !type:AdjustTemperature # Mono - Hydrakin
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Frezon
+          min: 0.045
+        - !type:Temperature
+          min: 215.15
+        - !type:OrganType
+          type: Hydrakin
+        amount: -10000
+

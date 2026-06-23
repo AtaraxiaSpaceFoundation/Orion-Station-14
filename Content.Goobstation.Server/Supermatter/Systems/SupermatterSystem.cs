@@ -591,7 +591,9 @@ public sealed class SupermatterSystem : SharedSupermatterSystem
     {
         var target = args.OtherEntity;
 
-        if (args.OurEntity != uid || !args.OtherFixture.Hard)
+        if (args.OurEntity != uid)
+            return;
+        if (!args.OtherFixture.Hard && !HasComp<ProjectileComponent>(args.OtherEntity))
             return;
 
         // Stop immune entities from activating the sm.
