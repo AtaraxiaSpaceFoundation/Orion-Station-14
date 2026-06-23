@@ -105,8 +105,8 @@
   - type: ExaminableSolution
     solution: drink
   - type: Sticky
-    stickDelay: 3
-    unstickDelay: 2
+    stickDelay: 2 # Orion-Edit: 3 > 2
+    unstickDelay: 1.5 # Orion-Edit 2 > 1.5
     stickPopupStart: goobstation-medicalpatch-sticy-trystick
     stickPopupSuccess: goobstation-medicalpatch-sticy-trystick-success
     unstickPopupStart: goobstation-medicalpatch-sticy-tryremove

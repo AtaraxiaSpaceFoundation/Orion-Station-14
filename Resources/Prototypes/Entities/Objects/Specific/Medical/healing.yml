@@ -507,8 +507,9 @@
       - Biological
     damage:
       types:
-        Slash: -10 # Was 5
-        Piercing: -15 # Was 10, Buffed due to limb damage changes (Goobstation)
+        Slash: -1 # Was 5 # Orion-Edit: -10 > -2
+        Piercing: -2 # Was 10, Buffed due to limb damage changes (Goobstation) # Orion-Edit: -15 > -4
+    delay: 1 # Orion
     bloodlossModifier: -10
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
@@ -562,6 +563,15 @@
   - type: Stack
     stackType: AloeCream
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
+  # Orion-Start
+  - type: Healing
+    damage:
+      types:
+        Heat: -7
+        Cold: -6
+        Shock: -6
+        Caustic: -5
+  # Orion-End
 
 - type: entity
   parent: BaseHealingItem
