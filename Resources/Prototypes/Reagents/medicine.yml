@@ -1159,7 +1159,7 @@
       - !type:HealthChange
         conditions:
         - !type:TotalDamage
-          max: 100 # Goobstation
+          max: 60 # Goobstation # Orion-Edit: 100 > 60
         damage:
           groups:
             Brute: -1

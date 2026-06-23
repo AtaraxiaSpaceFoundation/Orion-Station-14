@@ -8,10 +8,10 @@
   color: "#FF6464"
   metabolisms:
     Medicine:
-      rate: 0.2
+      metabolismRate: 0.2
       effects:
       - !type:ChemConvermol
-        healDamageType: Asphyxiation
+        healDamageGroup: Airloss
         toxDamageType: Poison
         healPerTick: 6.5
         buffer: 0.5
@@ -23,6 +23,20 @@
         conditions:
         - !type:ReagentThreshold
           min: 35
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Dylovene
+          min: 0.5
+        reagent: Histamine
+        amount: 0.5
+      - !type:AdjustReagent
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Dylovene
+          min: 0.5
+        reagent: Dylovene
+        amount: -0.5
 
 - type: reagent
   id: Salbutamol
@@ -34,7 +48,7 @@
   color: "#00FFFF"
   metabolisms:
     Medicine:
-      rate: 0.15
+      metabolismRate: 0.15
       effects:
       - !type:HealthChange
         damage:
