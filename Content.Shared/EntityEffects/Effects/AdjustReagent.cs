@@ -48,6 +48,9 @@ namespace Content.Shared.EntityEffects.Effects
         [DataField(required: true)]
         public FixedPoint2 Amount;
 
+        [DataField]
+        public bool ExcludeSelf = false;
+
         public override void Effect(EntityEffectBaseArgs args)
         {
             if (args is EntityEffectReagentArgs reagentArgs)
@@ -70,6 +73,11 @@ namespace Content.Shared.EntityEffects.Effects
                     var prototypeMan = IoCManager.Resolve<IPrototypeManager>();
                     foreach (var quant in reagentArgs.Source.Contents.ToArray())
                     {
+                        // Orion-Edit-Start
+                        if (ExcludeSelf && reagentArgs.Reagent != null &&
+                            quant.Reagent.Prototype == reagentArgs.Reagent.ID)
+                            continue;
+                        // Orion-Edit-End
                         var proto = prototypeMan.Index<ReagentPrototype>(quant.Reagent.Prototype);
                         if (proto.Metabolisms != null && proto.Metabolisms.ContainsKey(Group))
                         {

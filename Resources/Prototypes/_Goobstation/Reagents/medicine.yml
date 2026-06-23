@@ -502,12 +502,18 @@
       - !type:AdjustReagent
         group: Medicine
         amount: -3
+        excludeSelf: true # Orion
         conditions:
         - !type:UniqueBloodstreamChemThreshold
           max: 2
       - !type:AdjustReagent
         group: Poison
         amount: -3
+      # Orion-Start
+        conditions:
+        - !type:UniqueBloodstreamChemThreshold
+          max: 3
+      # Orion-End
       - !type:AdjustReagent
         group: Narcotic
         amount: -3
