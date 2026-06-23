@@ -1,6 +1,7 @@
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.EntityEffects;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
@@ -20,7 +21,7 @@ public sealed partial class ChemConvermol : EntityEffect
     /// Damage type to heal (default: Asphyxiation).
     /// </summary>
     [DataField]
-    public string HealDamageType = "Asphyxiation";
+    public ProtoId<DamageGroupPrototype> HealDamageGroup = "Airloss";
 
     /// <summary>
     /// Damage type for toxic byproduct (default: Poison).
@@ -63,41 +64,46 @@ public sealed partial class ChemConvermol : EntityEffect
 
     public override void Effect(EntityEffectBaseArgs args)
     {
-        if (args is not EntityEffectReagentArgs r)
-            return;
+        var groupProto = args.EntityManager.System<IPrototypeManager>();
+        var prototype = IoCManager.Resolve<IPrototypeManager>();
+        var groupProto = prototype.Index(HealDamageGroup);
 
-        if (!args.EntityManager.TryGetComponent<DamageableComponent>(args.TargetEntity, out var dmg))
-            return;
+        float currentDamage = 0f;
+        var damageByType = new Dictionary<string, float>();
 
-        var damSys = args.EntityManager.System<DamageableSystem>();
-        var quantity = (float) r.Quantity;
-        var overdosed = quantity >= OverdoseThreshold;
-
-        // Flat rate × purity — no quantity multiplication (SS14 HealthChange pattern)
-        var potential = HealPerTick * (float) r.Scale;
+        foreach (var damageTypeId in groupProto.DamageTypes)
+        {
+            if (!dmg.Damage.DamageDict.TryGetValue(damageTypeId, out var v))
+                continue;
+            var val = v.Float();
+            if (val <= 0f)
+                continue;
+            damageByType[damageTypeId] = val;
+            currentDamage += val;
+        }
 
         float actualHeal;
         if (!overdosed)
         {
-            var current = dmg.Damage.DamageDict.TryGetValue(HealDamageType, out var v) ? v.Float() : 0f;
-            // Buffer=0.5 → minimum ~0.1 tox at 0 oxy damage (mirrors SS13 behaviour)
-            actualHeal = Math.Max(0f, Math.Min(potential, current + Buffer));
+            actualHeal = Math.Max(0f, Math.Min(potential, currentDamage + Buffer));
         }
         else
         {
             actualHeal = potential;
         }
 
-        if (actualHeal > 0f)
+        // Применяем лечение пропорционально (только если есть что лечить)
+        if (actualHeal > 0f && currentDamage > 0f)
         {
-            var healSpec = new DamageSpecifier
+            var healSpec = new DamageSpecifier();
+            foreach (var (typeId, damage) in damageByType)
             {
-                DamageDict = new Dictionary<string, FixedPoint2> { { HealDamageType, -actualHeal } }
-            };
+                healSpec.DamageDict[typeId] = -(FixedPoint2)(actualHeal * damage / currentDamage);
+            }
             damSys.TryChangeDamage(args.TargetEntity, healSpec, true, interruptsDoAfters: false);
         }
 
-        // Tox proportional to ACTUAL heal — coupling handled here
+        // Токсин — один раз от actualHeal, не меняется
         var tox = actualHeal / ToxRatio;
         if (tox > 0f)
         {
