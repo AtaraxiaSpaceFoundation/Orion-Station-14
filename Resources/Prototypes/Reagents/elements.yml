@@ -95,7 +95,7 @@
           shouldHave: false
         damage:
           types:
-            Poison: 2
+            Blunt: 3 # Orion-Edit: "Poison: 2" > "Blunt: 3"
 
 - type: reagent
   id: Copper
