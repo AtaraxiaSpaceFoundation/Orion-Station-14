@@ -1058,7 +1058,7 @@
       - !type:HealthChange
         damage:
           types:
-            Caustic: -5
+            Caustic: -6 # Orion-Edit: -5 > -6
 
 - type: reagent
   id: Stellibinin
@@ -1102,6 +1102,7 @@
         - !type:OrganType # Goobstation - Yowie
           type: Yowie
           shouldHave: false
+        probability: 0.3 # Orion
         damage:
           types:
             Poison: 2
@@ -1113,6 +1114,16 @@
         key: KnockedDown
         time: 3.0
         type: Remove
+      # Orion-Start
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Haloperidol
+          max: 0.01
+        effectProto: StatusEffectDrowsiness
+        time: 3
+        type: Remove
+      # Orion-End
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
         time: 15.0
@@ -1360,7 +1371,7 @@
       - !type:HealthChange
         damage:
           types:
-            Caustic: -3
+            Caustic: -4 # Orion-Edit: -3 > -4
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
