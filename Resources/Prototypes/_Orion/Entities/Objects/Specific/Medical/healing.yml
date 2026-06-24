@@ -220,9 +220,9 @@
   id: PillBicaIbup
   components:
   - type: Pill
-    pillType: 9
+    pillType: 6
   - type: Sprite
-    state: pill9
+    state: pill6
   - type: Label
     currentLabel: anti-brute 20u
   - type: SolutionContainerManager
@@ -231,24 +231,26 @@
         reagents:
         - ReagentId: Bicaridine
           Quantity: 10
-        - ReagentId: AmmoniatedMercury
+        - ReagentId: Ibuprofen
           Quantity: 10
 
 - type: entity
   name: pill
-  suffix: Ammoniated mercury 20u
+  suffix: Anti-burn 20u
   parent: Pill
   id: PillKeloDerma
   components:
   - type: Pill
-    pillType: 9
+    pillType: 8
   - type: Sprite
-    state: pill9
+    state: pill8
   - type: Label
-    currentLabel: ammoniated mercury 20u
+    currentLabel: anti-burn 20u
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
-        - ReagentId: AmmoniatedMercury
-          Quantity: 20
+        - ReagentId: Dermaline
+          Quantity: 10
+        - ReagentId: Kelotane
+          Quantity: 10
