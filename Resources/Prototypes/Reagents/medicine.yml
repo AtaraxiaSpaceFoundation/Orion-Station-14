@@ -353,6 +353,7 @@
               Airloss: -6
               Brute: -3
               Burn: -3
+            types:
               Poison: -1.5
         # Orion-Edit-End
         - !type:GenericStatusEffect # Mono edit
@@ -1697,7 +1698,6 @@
               Brute: -20.0 # Orion-Edit: -5.0 > -20.0
               Burn: -15.0 # Orion-Edit: -5.0 > -15.0
               Toxin: -10.0 # Orion-Edit: -5.0 > -10.0
-              Radiation: -5 # Orion
         - !type:GenericStatusEffect # Mono edit
           conditions:
           - !type:OrganType
