@@ -77,7 +77,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Brute: -6 # Lower than Bicardine, offloading healing onto mitotrophin # Orion-Edit: 1.5 > 6
+            Brute: -6 # Lower than Bicardine, offloading healing onto mitotrophin # Orion-Edit: -1.5 > -6
       - !type:TakeStaminaDamage
         conditions:
         - !type:ReagentThreshold
