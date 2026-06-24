@@ -184,7 +184,7 @@
       effects:
       - !type:AdjustReagent
         reagent: Histamine
-        amount: -3.0
+        amount: -4.0 # Orion-Edit: -3.0 > -4.0
       - !type:GenericStatusEffect
         key: Jitter
         time: 3.0
@@ -424,9 +424,9 @@
       - !type:HealthChange
         damage:
           types:
-            Heat: -2
-            Shock: -2
-            Cold: -2 # Was 1.5, Buffed due to limb damage changes(GoobStation)
+            Heat: -1.5 # Orion-Edit: -2 > -1.5
+            Shock: -1.5 # Orion-Edit: -2 > -1.5
+            Cold: -1.5 # Was 1.5, Buffed due to limb damage changes(GoobStation) # Orion-Edit: -2 > -1.5
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
@@ -1562,7 +1562,7 @@
       - !type:HealthChange
         damage:
           types:
-            Heat: -1
+            Heat: -1.5 # Orion-Edit: -1 > -1.5
       # od causes massive bleeding
       - !type:HealthChange
         conditions:
@@ -1608,7 +1608,7 @@
       - !type:HealthChange
         damage:
           types:
-            Shock: -4
+            Shock: -6 # Orion-Edit: -4 > -6
       - !type:AdjustReagent
         reagent: Licoxide
         amount: -4
