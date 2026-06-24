@@ -19,6 +19,11 @@ public sealed partial class MobStateCondition : EntityEffectCondition
     {
         if (args.EntityManager.TryGetComponent(args.TargetEntity, out MobStateComponent? mobState))
         {
+            // Orion-Start
+            if (Mobstate == MobState.Critical)
+                return mobState.CurrentState == MobState.SoftCritical
+                    || mobState.CurrentState == MobState.HardCritical;
+            // Orion-End
             if (mobState.CurrentState == Mobstate)
                 return true;
         }
