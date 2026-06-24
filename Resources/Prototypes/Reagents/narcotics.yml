@@ -129,7 +129,7 @@
         locale: reagent-effect-guidebook-remove-delayed-knockdown
       - !type:ChemAddMoodlet # Orion
         moodPrototype: StrongStimulant
-      # Orion-Edit-Start
+      # Orion-Start
       - !type:AdjustReagent
         groups:
         - Narcotic
@@ -138,7 +138,6 @@
         - Dylovene
         - Tricordrazine
         amount: -0.5
-        excludeSelf: true
         conditions:
         - !type:ReagentThreshold
           reagents:
@@ -151,7 +150,7 @@
         conditions:
         - !type:UniqueBloodstreamChemThreshold
           min: 4
-      # Orion-Edit-End
+      # Orion-End
     Medicine:
       effects:
       - !type:ResetNarcolepsy

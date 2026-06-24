@@ -161,6 +161,16 @@ namespace Content.Shared.EntityEffects.Effects
                     ("group", groupProto.LocalizedName),
                     ("amount", MathF.Abs(Amount.Float())));
             }
+            // Orion-Start
+            if (Reagents != null || Groups != null)
+            {
+                return Loc.GetString("reagent-effect-guidebook-adjust-reagent-group",
+                    ("chance", Probability),
+                    ("deltasign", MathF.Sign(Amount.Float())),
+                    ("group", "..."),
+                    ("amount", MathF.Abs(Amount.Float())));
+            }
+            // Orion-End
 
             throw new NotImplementedException();
         }

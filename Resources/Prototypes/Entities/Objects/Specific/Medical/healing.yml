@@ -560,6 +560,13 @@
   - type: Sprite
     sprite: Objects/Specific/Hydroponics/aloe.rsi
     state: cream
+    # Orion-Start
+    layers:
+    - state: cream
+  - type: Item
+    sprite: Objects/Specific/Hydroponics/aloe.rsi
+    heldPrefix: produce
+    # Orion-End
   - type: Stack
     stackType: AloeCream
     count: 15 #Was 10, Buffed due to limb damage changes (Goobstation)
