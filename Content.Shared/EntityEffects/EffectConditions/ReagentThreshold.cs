@@ -28,6 +28,14 @@ public sealed partial class ReagentThreshold : EntityEffectCondition
     [DataField]
     public string? Reagent;
 
+    // Orion-Start
+    /// <summary>
+    /// Multiple reagent IDs, checked with OR logic (any one meeting Min/Max passes the condition).
+    /// </summary>
+    [DataField]
+    public List<string>? Reagents;
+    // Orion-End
+
     public override bool Condition(EntityEffectBaseArgs args)
     {
         if (args is EntityEffectReagentArgs reagentArgs)
@@ -35,6 +43,21 @@ public sealed partial class ReagentThreshold : EntityEffectCondition
             var reagent = Reagent ?? reagentArgs.Reagent?.ID;
             if (reagent == null)
                 return true; // No condition to apply.
+
+            // Orion-Start
+            if (Reagents != null)
+            {
+                foreach (var r in Reagents)
+                {
+                    var q = FixedPoint2.Zero;
+                    if (reagentArgs.Source != null)
+                        q = reagentArgs.Source.GetTotalPrototypeQuantity(r);
+                    if (q >= Min && q <= Max)
+                        return true;
+                }
+                return false;
+            }
+            // Orion-End
 
             var quant = FixedPoint2.Zero;
             if (reagentArgs.Source != null)
