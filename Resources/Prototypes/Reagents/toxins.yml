@@ -449,12 +449,13 @@
   color: "#FA6464"
   metabolisms:
     Poison:
+      metabolismRate: 0.1 # Orion
       effects:
       - !type:HealthChange
         probability: 0.1
         damage:
           groups:
-            Brute: 2
+            Brute: 6 # Orion-Edit: 2 > 6
       # todo: cough, sneeze
       - !type:HealthChange
         conditions:
@@ -462,11 +463,11 @@
           type: Yowie
           shouldHave: false
         - !type:ReagentThreshold
-          min: 45
+          min: 30 # Orion-Edit: 45 > 30
         damage:
           groups:
-            Brute: 2
-            Airloss: 2
+            Brute: 6 # Orion-Edit: 2 > 6
+            Airloss: 6 # Orion-Edit: 2 > 6
           types:
             Poison: 2
       - !type:PopupMessage
@@ -476,7 +477,7 @@
       - !type:PopupMessage
         conditions:
         - !type:ReagentThreshold
-          min: 45
+          min: 30 # Orion-Edit: 45 > 30
         type: Local
         visualType: Medium
         messages: [ "histamine-effect-heavy-itchiness" ]

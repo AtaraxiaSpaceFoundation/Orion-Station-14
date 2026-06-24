@@ -134,10 +134,7 @@
         groups:
         - Narcotic
         - Stimulant
-        reagents:
-        - Dylovene
-        - Tricordrazine
-        amount: -0.5
+        amount: -1
         conditions:
         - !type:ReagentThreshold
           reagents:
@@ -146,7 +143,7 @@
           min: 0.5
       - !type:AdjustReagent
         reagent: Histamine
-        amount: 0.5
+        amount: 5
         conditions:
         - !type:UniqueBloodstreamChemThreshold
           min: 4

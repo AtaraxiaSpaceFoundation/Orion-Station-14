@@ -29,7 +29,7 @@
           reagent: Dylovene
           min: 0.5
         reagent: Histamine
-        amount: 0.5
+        amount: 4
       - !type:AdjustReagent
         conditions:
         - !type:ReagentThreshold

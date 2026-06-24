@@ -130,7 +130,7 @@
       - !type:HealthChange
         damage:
           types:
-            Poison: -1.5 # Was 1, Slight Buff as it should heal for half the amount as Dip or Stelli(GoobStation)
+            Poison: -1 # Was 1, Slight Buff as it should heal for half the amount as Dip or Stelli(GoobStation) # Orion-Edit: -1.5 > -1
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
@@ -573,7 +573,7 @@
         conditions:
         - !type:ReagentThreshold
           reagent: Histamine
-          min: 45
+          min: 30 # Orion-Edit: 45 > 30
         reagent: Histamine
         amount: -5
       - !type:HealthChange
