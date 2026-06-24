@@ -54,6 +54,16 @@
   physicalDesc: reagent-physical-desc-cold
   flavor: cold
   color: skyblue
+  # Orion-Start
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustTemperature
+        amount: -25
+        conditions:
+        - !type:Temperature
+          min: 270
+  # Orion-End
 
 - type: reagent
   id: Cornoil
