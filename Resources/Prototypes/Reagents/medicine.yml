@@ -1039,7 +1039,7 @@
             type: Feroxi
           factor: 2
         - !type:ModifyBloodLevel
-          amount: 12 # Goobstation - buffed by two times due to shitmed changes
+          amount: 6 # Goobstation - buffed by two times due to shitmed changes # Orion-Edit: 12 > 6
 
 - type: reagent
   id: Siderlac
