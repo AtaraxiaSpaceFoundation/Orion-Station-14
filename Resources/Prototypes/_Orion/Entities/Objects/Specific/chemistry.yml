@@ -44,6 +44,9 @@
     sprite: _Orion/Objects/Specific/Chemistry/beaker_metamaterial.rsi
     layers:
       - state: beakermetamaterial
+      - state: beakermetamaterial1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
   - type: Item
     sprite: _Orion/Objects/Specific/Chemistry/beaker_metamaterial.rsi
   - type: SolutionContainerVisuals
@@ -57,9 +60,9 @@
         maxVol: 200
   - type: PhysicalComposition
     materialComposition:
-      Glass: 0.62
-      Plastic: 0.75
-      Gold: 0.25
-      Silver: 0.25
+      Glass: 62
+      Plastic: 75
+      Gold: 25
+      Silver: 25
   - type: StaticPrice
     price: 40
