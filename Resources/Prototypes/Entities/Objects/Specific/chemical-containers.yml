@@ -144,10 +144,18 @@
       solution: beaker
     - type: Appearance
     - type: SolutionContainerVisuals
-      maxFillLevels: 6
+      maxFillLevels: 11 # Orion-Edit: 6 > 11
       fillBaseName: jug
       inHandsMaxFillLevels: 5
       inHandsFillBaseName: -fill-
+    # Orion-Start
+    - type: Openable
+      sound:
+        collection: bottleOpenSounds
+      closeable: true
+      closeSound:
+        collection: bottleCloseSounds
+    # Orion-End
     - type: StaticPrice
       price: 60
     - type: Damageable
