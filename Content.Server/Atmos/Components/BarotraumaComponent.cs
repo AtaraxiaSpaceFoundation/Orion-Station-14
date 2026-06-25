@@ -96,6 +96,15 @@ namespace Content.Server.Atmos.Components
         [ViewVariables(VVAccess.ReadWrite)]
         public bool HasImmunity = false;
 
+        // Orion-Start
+        /// <summary>
+        ///     Tracks how long the entity has continuously been in hazardous low pressure.
+        ///     Used to ramp low-pressure damage over time.
+        /// </summary>
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float SecondsInLowPressure = 0f;
+        // Orion-End
+
         [DataField]
         public ProtoId<AlertPrototype> HighPressureAlert = "HighPressure";
 
