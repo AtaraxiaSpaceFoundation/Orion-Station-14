@@ -1,5 +1,24 @@
 - type: entity
-  parent: BaseBeakerMetallic
+  abstract: true
+  id: BaseOpenableBeaker
+  components:
+  - type: Openable
+    opened: true
+    closeable: true
+    sound:
+      collection: bottleOpenSounds
+    closeSound:
+      collection: bottleCloseSounds
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: { visible: false }
+          False: { visible: true }
+
+- type: entity
+  parent: [BaseBeakerMetallic, BaseOpenableBeaker]
   id: XLargeBeaker
   name: X-large beaker
   description: An extra-large beaker.
@@ -9,10 +28,13 @@
   - type: Sprite
     sprite: _Orion/Objects/Specific/Chemistry/beaker_x_large.rsi
     layers:
-      - state: beakerxlarge
-      - state: beakerxlarge1
-        map: ["enum.SolutionContainerLayers.Fill"]
-        visible: false
+    - state: beakerxlarge
+    - state: beakerxlarge1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: lid_beakerxlarge
+      map: ["enum.OpenableVisuals.Layer"]
+      visible: false
   - type: Item
     sprite: _Orion/Objects/Specific/Chemistry/beaker_x_large.rsi
     size: Normal
@@ -46,6 +68,9 @@
       - state: beakermetamaterial
       - state: beakermetamaterial1
         map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+      - state: lid_beakermetamaterial
+        map: ["enum.OpenableVisuals.Layer"]
         visible: false
   - type: Item
     sprite: _Orion/Objects/Specific/Chemistry/beaker_metamaterial.rsi
