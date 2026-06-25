@@ -111,6 +111,7 @@
       sprite: Objects/Specific/Chemistry/jug.rsi
       layers:
         - state: jug
+          map: ["enum.OpenableVisuals.Layer"] # Orion
         - state: jug1
           map: [ "enum.SolutionContainerLayers.Fill" ]
           visible: false
@@ -143,6 +144,14 @@
     - type: Spillable
       solution: beaker
     - type: Appearance
+    # Orion-Start
+    - type: GenericVisualizer
+      visuals:
+        enum.OpenableVisuals.Opened:
+          enum.OpenableVisuals.Layer:
+            True: { state: "icon_open" }
+            False: { state: "icon" }
+    # Orion-End
     - type: SolutionContainerVisuals
       maxFillLevels: 11 # Orion-Edit: 6 > 11
       fillBaseName: jug
