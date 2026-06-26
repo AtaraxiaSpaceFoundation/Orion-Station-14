@@ -344,7 +344,7 @@ namespace Content.Server.Atmos.EntitySystems
                     var lowPressureScale = MathF.Min(1f + (barotrauma.SecondsInLowPressure / LowPressureRampTime), LowPressureMaxMultiplier); // Orion
 
                     // Deal damage and ignore resistances. Resistance to pressure damage should be done via pressure protection gear.
-                    _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * Atmospherics.LowPressureDamage * lowPressureScale, true, false, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic); // Shitmed Change // Orion-Edit
+                    _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * Atmospherics.LowPressureDamage * lowPressureScale, true, false, targetPart: TargetBodyPart.All); // Shitmed Change // Orion-Edit
 
                     barotrauma.SecondsInLowPressure += UpdateTimer; // Orion
 
@@ -384,7 +384,7 @@ namespace Content.Server.Atmos.EntitySystems
                     barotrauma.SecondsInLowPressure = 0f; // Orion
 
                     // Deal damage and ignore resistances. Resistance to pressure damage should be done via pressure protection gear.
-                    _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * damageScale, true, false, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic); // Shitmed Change // Orion-Edit
+                    _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * damageScale, true, false, targetPart: TargetBodyPart.All); // Shitmed Change // Orion-Edit
 
                     if (!barotrauma.TakingDamage)
                     {
