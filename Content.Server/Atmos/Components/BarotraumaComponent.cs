@@ -65,7 +65,7 @@ namespace Content.Server.Atmos.Components
 
         [DataField("maxDamage")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public FixedPoint2 MaxDamage = 350; // Orion-Edit: 200 > 350
+        public FixedPoint2 MaxDamage = 300; // Orion-Edit: 200 > 300
 
         /// <summary>
         ///     Used to keep track of when damage starts/stops. Useful for logs.
