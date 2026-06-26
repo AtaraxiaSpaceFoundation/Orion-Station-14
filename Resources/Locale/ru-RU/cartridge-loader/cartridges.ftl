@@ -5,13 +5,13 @@ nano-task-program-name = НаноЗадачи
 news-read-program-name = НаноНовости
 crew-manifest-program-name = Манифест
 crew-manifest-cartridge-loading = Загрузка ...
-net-probe-program-name = NetProbe
+net-probe-program-name = Зонд сетей
 net-probe-scan = { $device } просканирован!
 net-probe-label-name = Название
 net-probe-label-address = Адрес
 net-probe-label-frequency = Частота
 net-probe-label-network = Сеть
-log-probe-program-name = LogProbe
+log-probe-program-name = Зонд логов
 log-probe-scan = Логи { $device } скачались!
 log-probe-label-time = Время
 log-probe-label-accessor = Получен доступ
@@ -20,8 +20,8 @@ log-probe-print-button = Распечатать логи
 log-probe-printout-device = Сканированное устройство: { $name }
 log-probe-printout-header = Последние логи:
 log-probe-printout-entry = #{ $number } / { $time } / { $accessor }
-astro-nav-program-name = AstroNav
-med-tek-program-name = MedTek
+astro-nav-program-name = АстроНав
+med-tek-program-name = МедТек
 
 # NanoTask cartridge
 
