@@ -164,6 +164,7 @@
       closeable: true
       closeSound:
         collection: bottleCloseSounds
+    - type: OpenableHeldPrefix
     # Orion-End
     - type: StaticPrice
       price: 60
