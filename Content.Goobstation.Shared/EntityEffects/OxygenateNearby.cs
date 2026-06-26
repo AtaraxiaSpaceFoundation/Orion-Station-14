@@ -34,8 +34,12 @@ public sealed partial class OxygenateNearby : EventEntityEffect<OxygenateNearby>
 
     public override bool ShouldLog => true;
 
+    // Orion-Edit-Start
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-ignite", ("chance", Probability)); //In due time...
+        => Loc.GetString("reagent-effect-guidebook-oxygenate",
+            ("chance", Probability),
+            ("factor", Factor));
+    // Orion-Edit-End
 
     public override LogImpact LogImpact => LogImpact.Medium;
 

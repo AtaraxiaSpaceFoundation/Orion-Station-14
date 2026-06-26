@@ -14,7 +14,9 @@ public sealed partial class Oxygenate : EventEntityEffect<Oxygenate>
             ("factor", Factor));
     // Orion-End
 
+    /* Orion-Edit-Start
     // JUSTIFICATION: This is internal magic that players never directly interact with.
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => null;
+    */ // Orion-Edit-End
 }
