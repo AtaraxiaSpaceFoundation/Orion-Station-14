@@ -149,7 +149,7 @@
       visuals:
         enum.OpenableVisuals.Opened:
           enum.OpenableVisuals.Layer:
-            True: { state: "icon_open" }
+            True: { state: "icon-open" }
             False: { state: "icon" }
     # Orion-End
     - type: SolutionContainerVisuals
