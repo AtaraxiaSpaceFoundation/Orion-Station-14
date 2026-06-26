@@ -111,10 +111,14 @@
       sprite: Objects/Specific/Chemistry/jug.rsi
       layers:
         - state: jug
-          map: ["enum.OpenableVisuals.Layer"] # Orion
         - state: jug1
           map: [ "enum.SolutionContainerLayers.Fill" ]
           visible: false
+        # Orion-Start
+        - state: lid
+          map: ["enum.OpenableVisuals.Layer"]
+          visible: false
+        # Orion-End
     - type: Item
       size: Normal
       sprite: Objects/Specific/Chemistry/jug.rsi
@@ -149,8 +153,8 @@
       visuals:
         enum.OpenableVisuals.Opened:
           enum.OpenableVisuals.Layer:
-            True: { state: "icon-open" }
-            False: { state: "icon" }
+            True: { visible: false }
+            False: { visible: true }
     # Orion-End
     - type: SolutionContainerVisuals
       maxFillLevels: 11 # Orion-Edit: 6 > 11
@@ -159,12 +163,12 @@
       inHandsFillBaseName: -fill-
     # Orion-Start
     - type: Openable
+      opened: true
+      closeable: true
       sound:
         collection: bottleOpenSounds
-      closeable: true
       closeSound:
         collection: bottleCloseSounds
-    - type: OpenableHeldPrefix
     # Orion-End
     - type: StaticPrice
       price: 60
