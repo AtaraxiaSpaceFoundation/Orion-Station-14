@@ -9,3 +9,8 @@ reagent-effect-guidebook-convermol =
         [1] Heals asphyxiation ({ $rate } u/u reagent), producing toxins at a 1:{ $ratio } ratio. Overdose threshold: { $od } u.
        *[other] With { NATURALPERCENT($chance, 1) } chance, heals asphyxiation with toxic side effects.
     }
+
+reagent-name-salbutamol = salbutamol
+reagent-desc-salbutamol = Helps prevent further asphyxiation and stabilizes the patient's breathing. Good for emergency stabilization.
+reagent-physical-desc-salbutamol = clear
+
