@@ -166,15 +166,9 @@
       # Orion-Start
       capacityBeaker1:
         locked: true
-        whitelist:
-          components:
-          - FitsInDispenser
         startingItem: Beaker
       capacityBeaker2:
         locked: true
-        whitelist:
-          components:
-          - FitsInDispenser
         startingItem: Beaker
       # Orion-End
   - type: AutomationSlots # Goobstation

@@ -33,8 +33,8 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
     private void OnMapInit(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
     {
-        TransferBeakersToBuffer(ent);
         RecalculateCapacity(ent);
+        TransferBeakersToBuffer(ent);
     }
 
     private void OnInserted(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -61,7 +61,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
     private void RecalculateCapacity(Entity<ChemMasterBeakerCapacityComponent> ent)
     {
-        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer))
+        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out var buffer))
             return;
 
         var total = FixedPoint2.Zero;
@@ -76,9 +76,12 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
                 total += sol.MaxVolume;
         }
 
-        buffer.MaxVolume = total == FixedPoint2.Zero
+        var targetCapacity = total == FixedPoint2.Zero
             ? ent.Comp.FallbackCapacity
             : total * ent.Comp.Multiplier;
+
+        targetCapacity = FixedPoint2.Max(targetCapacity, buffer.Volume);
+        _solutions.SetCapacity(bufferSoln.Value, targetCapacity);
     }
 
     // On MapInit: transfers any pre-existing reagents in the capacity beakers into the buffer.
@@ -98,7 +101,6 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
                 continue;
 
             // Temporarily expand buffer to accept all beaker contents before capping
-            buffer.MaxVolume += beakerSol.Volume;
             var split = beakerSol.SplitSolution(beakerSol.Volume);
             _solutions.TryAddSolution(bufSoln.Value, split);
         }
