@@ -83,7 +83,7 @@
     - map: [ "enum.SolutionContainerLayers.Fill" ]
       state: beakerSlot1
     # Orion-Start
-    - state: industrial-working
+    - state: grinder_on
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
