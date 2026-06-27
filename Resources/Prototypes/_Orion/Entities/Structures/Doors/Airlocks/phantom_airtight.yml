@@ -1,7 +1,7 @@
 - type: entity
   id: PhantomAirtight
   name: phantom airtight blocker
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Airtight
     noAirWhenFullyAirBlocked: false
