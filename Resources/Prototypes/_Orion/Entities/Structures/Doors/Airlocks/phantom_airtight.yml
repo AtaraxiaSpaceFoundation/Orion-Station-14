@@ -1,0 +1,10 @@
+- type: entity
+  id: PhantomAirtight
+  name: phantom airtight blocker
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    fixVacuum: false
+  - type: Transform
+    anchored: true

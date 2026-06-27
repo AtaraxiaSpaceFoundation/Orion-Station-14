@@ -4,6 +4,7 @@
   name: Double Glass Airlock
   description: It opens, it closes, and maybe crushes you, but it's bigger than normal door.
   components:
+  - type: MultiTileAirlockAirtight
   - type: Door
     closeTimeOne: 0.4
     closeTimeTwo: 0.2
