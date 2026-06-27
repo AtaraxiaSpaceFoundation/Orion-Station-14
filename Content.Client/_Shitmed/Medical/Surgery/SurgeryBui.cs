@@ -348,9 +348,11 @@ public sealed class SurgeryBui : BoundUserInterface
         _window.Steps.Visible = type == ViewType.Steps;
         _window.StepsButton.Disabled = type != ViewType.Steps || _previousSurgeries.Count == 0;
 
-        if (_entities.TryGetComponent(_part, out MetaDataComponent? partMeta) &&
-            _entities.TryGetComponent(_surgery?.Ent, out MetaDataComponent? surgeryMeta))
         // Orion-Edit-Start
+        _entities.TryGetComponent(_part, out MetaDataComponent? partMeta);
+        _entities.TryGetComponent(_surgery?.Ent, out MetaDataComponent? surgeryMeta);
+
+        if (partMeta != null && surgeryMeta != null)
         {
             _window.Title = Loc.GetString("surgery-ui-window-title-part-surgery",
                 ("part", partMeta.EntityName),
@@ -360,6 +362,11 @@ public sealed class SurgeryBui : BoundUserInterface
         {
             _window.Title = Loc.GetString("surgery-ui-window-title-part",
                 ("part", partMeta.EntityName));
+        }
+        else if (surgeryMeta != null)
+        {
+            _window.Title = Loc.GetString("surgery-ui-window-title-surgery",
+                ("surgery", surgeryMeta.EntityName));
         }
         else
         {
