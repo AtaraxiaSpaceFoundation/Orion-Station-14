@@ -168,14 +168,6 @@
           - Bottle
           - PillCanister
           - MedicalPatch # Goobstation
-      # Orion-Start
-      capacityBeaker1:
-        locked: true
-        startingItem: Beaker
-      capacityBeaker2:
-        locked: true
-        startingItem: Beaker
-      # Orion-End
   - type: AutomationSlots # Goobstation
     slots:
     - !type:AutomatedSolution
@@ -208,6 +200,8 @@
     maxFillLevels: 10
     fillBaseName: mixer_fill-
     changeColor: true
+  - type: ChemMasterTransferOverride
+  - type: ChemMasterTransferTarget
   # Orion-End
   - type: DumpableSolution
     solution: buffer
