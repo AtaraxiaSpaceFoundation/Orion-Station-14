@@ -146,6 +146,10 @@
       outputSlot: !type:ContainerSlot
       machine_board: !type:Container
       machine_parts: !type:Container
+      # Orion-Start
+      capacityBeaker1: !type:ContainerSlot
+      capacityBeaker2: !type:ContainerSlot
+      # Orion-End
   - type: ItemSlots
     slots:
       beakerSlot:
@@ -159,6 +163,20 @@
           - Bottle
           - PillCanister
           - MedicalPatch # Goobstation
+      # Orion-Start
+      capacityBeaker1:
+        locked: true
+        whitelist:
+          components:
+          - FitsInDispenser
+        startingItem: Beaker
+      capacityBeaker2:
+        locked: true
+        whitelist:
+          components:
+          - FitsInDispenser
+        startingItem: Beaker
+      # Orion-End
   - type: AutomationSlots # Goobstation
     slots:
     - !type:AutomatedSolution
@@ -179,7 +197,10 @@
   - type: SolutionContainerManager
     solutions:
       buffer: # Goobstation - solution shitcode doesnt like max volume 0 and i dont want to rewrite AddSolution
-        maxVol: 1000000
+        maxVol: 1000 # Orion-Edit: 1000000 > 1000
+  # Orion-Start
+  - type: ChemMasterBeakerCapacity
+  # Orion-End
   - type: DumpableSolution
     solution: buffer
     unlimited: true
