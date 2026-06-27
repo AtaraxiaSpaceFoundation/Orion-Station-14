@@ -243,7 +243,7 @@
     prototypes:
     - MobDeathSquadPhoronSabreBitrunning
 
-# ---- DeathSquad Mobs ----
+# ---- ExperimentalSoldier Mobs ----
 
 - type: entity
   parent: SpawnMobDeathSquadPhoronSabre
