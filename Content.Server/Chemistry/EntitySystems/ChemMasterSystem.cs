@@ -81,6 +81,8 @@ namespace Content.Server.Chemistry.EntitySystems
 
             SubscribeLocalEvent<ChemMasterComponent, ComponentStartup>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ChemMasterComponent, SolutionContainerChangedEvent>(SubscribeUpdateUiState);
+            SubscribeLocalEvent<ChemMasterComponent, SolutionChangedEvent>(SubscribeUpdateUiState); // Orion
+            SubscribeLocalEvent<ChemMasterComponent, SolutionTransferredEvent>(SubscribeUpdateUiState); // Orion
             SubscribeLocalEvent<ChemMasterComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ChemMasterComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ChemMasterComponent, BoundUIOpenedEvent>(SubscribeUpdateUiState);
@@ -179,7 +181,7 @@ namespace Content.Server.Chemistry.EntitySystems
                 return;
             }
 
-            if (fromBuffer) // Buffer to container
+            if (fromBuffer) // Buffer -> container
             {
                 amount = FixedPoint2.Min(amount, containerSolution.AvailableVolume);
                 if (amount <= FixedPoint2.Zero)
@@ -191,7 +193,7 @@ namespace Content.Server.Chemistry.EntitySystems
 
                 _solutionContainerSystem.TryAddReagent(containerSoln.Value, id, amount, out _);
             }
-            else // Container to buffer
+            else // Container -> buffer
             {
                 var available = FixedPoint2.Max(bufferSolution.AvailableVolume, FixedPoint2.Zero);
                 amount = FixedPoint2.Min(amount, containerSolution.GetReagentQuantity(id), available);
