@@ -350,11 +350,22 @@ public sealed class SurgeryBui : BoundUserInterface
 
         if (_entities.TryGetComponent(_part, out MetaDataComponent? partMeta) &&
             _entities.TryGetComponent(_surgery?.Ent, out MetaDataComponent? surgeryMeta))
-            _window.Title = $"{Loc.GetString("surgery-ui-window-title")} - {partMeta.EntityName}, {surgeryMeta.EntityName}"; // Orion-Edit: Localization
+        // Orion-Edit-Start
+        {
+            _window.Title = Loc.GetString("surgery-ui-window-title-part-surgery",
+                ("part", partMeta.EntityName),
+                ("surgery", surgeryMeta.EntityName));
+        }
         else if (partMeta != null)
-            _window.Title = $"{Loc.GetString("surgery-ui-window-title")} - {partMeta.EntityName}"; // Orion-Edit: Localization
+        {
+            _window.Title = Loc.GetString("surgery-ui-window-title-part",
+                ("part", partMeta.EntityName));
+        }
         else
-            _window.Title = $"{Loc.GetString("surgery-ui-window-title")}"; // Orion-Edit: Localization
+        {
+            _window.Title = Loc.GetString("surgery-ui-window-title");
+        }
+        // Orion-Edit-End
     }
 
     private enum ViewType

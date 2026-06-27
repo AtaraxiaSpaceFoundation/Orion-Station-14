@@ -1,0 +1,11 @@
+surgery-tool-bonegel = bone gel
+surgery-tool-bonesaw = saw
+surgery-tool-bonesetter = bone setter
+surgery-tool-cautery = cautery
+surgery-tool-drill = drill
+surgery-tool-hemostat = hemostat
+surgery-tool-retractor = retractor
+surgery-tool-scalpel = scalpel
+surgery-tool-woundtender = woundtender
+surgery-tool-tweezers = tweezers
+surgery-tool-stitches = stitches
