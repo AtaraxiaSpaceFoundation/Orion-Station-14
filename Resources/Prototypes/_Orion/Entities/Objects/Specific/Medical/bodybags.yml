@@ -32,6 +32,36 @@
 
 - type: entity
   parent: BodyBag
+  id: BodyBagBluespaceCompact
+  name: compact bluespace body bag
+  description: Durable bluespace bag designed for storing and transporting corpses, preventing decomposition.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Medical/BodyBags/bluespacecompact.rsi
+    layers:
+    - state: bscompactbag
+      map: ["unfoldedLayer", "enum.StorageVisualLayers.Base"]
+    - state: bscompactbag_folded
+      map: ["foldedLayer"]
+      visible: false
+    - state: open_overlay
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: Icon
+    sprite: _Orion/Objects/Specific/Medical/BodyBags/bluespacecompact.rsi
+    state: bscompactbag
+
+- type: entity
+  parent: BodyBagBluespaceCompact
+  id: BodyBagBluespaceCompactFolded
+  suffix: Folded
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  parent: BodyBag
   id: BodyBagNanoTrasen
   name: blue body bag
   description: Plastic NT bag designed for storing and transporting corpses, preventing decomposition.
