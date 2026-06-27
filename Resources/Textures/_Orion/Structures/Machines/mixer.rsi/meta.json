@@ -8,36 +8,16 @@
   "copyright": "Taken from TG https://github.com/tgstation/tgstation/blob/master/icons/obj/medical/chemical.dmi, rework by UmbiMax",
   "states": [
     {
-      "name": "mixer_empty",
-      "delays": [
-        [
-          1
-        ]
-      ]
+      "name": "mixer_empty"
     },
     {
-      "name": "mixer_empty_screen",
-      "delays": [
-        [
-          1
-        ]
-      ]
+      "name": "mixer_empty_screen"
     },
     {
-      "name": "mixer_broken",
-      "delays": [
-        [
-          1
-        ]
-      ]
+      "name": "mixer_broken"
     },
     {
-      "name": "mixer_loaded",
-      "delays": [
-        [
-          1
-        ]
-      ]
+      "name": "mixer_loaded"
     },
     {
       "name": "mixer_loaded[removed]",
@@ -121,12 +101,37 @@
       ]
     },
     {
-      "name": "mixer_screen_broken",
-      "delays": [
-        [
-          1
-        ]
-      ]
+      "name": "mixer_screen_broken"
+    },
+    {
+      "name": "mixer_fill-1"
+    },
+    {
+      "name": "mixer_fill-2"
+    },
+    {
+      "name": "mixer_fill-3"
+    },
+    {
+      "name": "mixer_fill-4"
+    },
+    {
+      "name": "mixer_fill-5"
+    },
+    {
+      "name": "mixer_fill-6"
+    },
+    {
+      "name": "mixer_fill-7"
+    },
+    {
+      "name": "mixer_fill-8"
+    },
+    {
+      "name": "mixer_fill-9"
+    },
+    {
+      "name": "mixer_fill-10"
     }
   ]
 }
