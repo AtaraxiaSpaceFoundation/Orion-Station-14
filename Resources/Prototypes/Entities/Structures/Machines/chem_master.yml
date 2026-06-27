@@ -200,12 +200,11 @@
     maxFillLevels: 10
     fillBaseName: mixer_fill-
     changeColor: true
-  - type: ChemMasterTransferOverride
   - type: ChemMasterTransferTarget
   # Orion-End
   - type: DumpableSolution
     solution: buffer
-    unlimited: true
+    unlimited: false # Orion-Edit: true > false
   - type: GuideHelp
     guides:
     - Chemicals

@@ -175,19 +175,23 @@ namespace Content.Server.Chemistry.EntitySystems
         // Orion-Start
         private void OnInsertedIntoContainer(Entity<ChemMasterComponent> ent, ref EntInsertedIntoContainerMessage args)
         {
-            UpdateUiState(ent);
-
             if (args.Container.ID != SharedChemMaster.InputSlotName)
+            {
+                UpdateUiState(ent);
                 return;
-
-            if (!TryComp<FitsInDispenserComponent>(args.Entity, out var fits))
-                return;
+            }
 
             if (!_solutionContainerSystem.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out var bufferSolution))
+            {
+                UpdateUiState(ent);
                 return;
+            }
 
-            if (!_solutionContainerSystem.TryGetSolution(args.Entity, fits.Solution, out _, out var insertedSolution))
+            if (!_solutionContainerSystem.TryGetFitsInDispenser(args.Entity, out _, out var insertedSolution))
+            {
+                UpdateUiState(ent);
                 return;
+            }
 
             var available = FixedPoint2.Max(bufferSolution.AvailableVolume, FixedPoint2.Zero);
             if (available <= FixedPoint2.Zero || insertedSolution.Volume <= FixedPoint2.Zero)
@@ -405,11 +409,10 @@ namespace Content.Server.Chemistry.EntitySystems
             if (container is not { Valid: true })
                 return null;
 
-            if (!TryComp(container, out FitsInDispenserComponent? fits)
-                || !_solutionContainerSystem.TryGetSolution(container.Value, fits.Solution, out _, out var solution))
-            {
+            // Orion-Start
+            if (!_solutionContainerSystem.TryGetFitsInDispenser(container.Value, out _, out var solution))
                 return null;
-            }
+            // Orion-End
 
             return BuildContainerInfo(Name(container.Value), solution);
         }
