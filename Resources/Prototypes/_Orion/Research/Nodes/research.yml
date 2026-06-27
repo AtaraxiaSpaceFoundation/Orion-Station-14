@@ -83,16 +83,14 @@
   recipeUnlocks:
   - MaterialSiloMachineCircuitboard
   - OreBagOfHolding
-  - BluespaceBeaker
-  - SyringeBluespace
   - BluespaceBodyBag
   - ConstructionBagOfHolding
   - ClothingBeltChemBagXenobiologyHolding
   - PlantBagOfHolding
-  - VialBluespace
   - ClothingBackpackHarmpack
+  - WeaponParticleDecelerator
+  - VehicleHoverchairSci
   - CrayonRainbowLarge
-  - DrinkShakerBluespace
   position: 0,6
 
 - type: technology
@@ -173,10 +171,12 @@
   - ClothingBackpackMessengerHolding
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
+  - BluespaceBeaker
+  - DrinkShakerBluespace
+  - VialBluespace
+  - SyringeBluespace
   - WeaponTetherGun
 #  - PolymorphBelt # TODO
-  - VehicleHoverchairSci
-  - WeaponParticleDecelerator
   - WeaponForceGun
   - WeaponGauntletGorilla
   position: 1,8
