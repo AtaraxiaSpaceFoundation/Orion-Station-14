@@ -110,10 +110,11 @@ namespace Content.Server.Chemistry.EntitySystems
 
             var bufferReagents = bufferSolution.Contents;
             var bufferCurrentVolume = bufferSolution.Volume;
+            var bufferMaxVolume = bufferSolution.MaxVolume; // Orion
 
             var state = new ChemMasterBoundUserInterfaceState(
                 chemMaster.Mode, chemMaster.SortingType, BuildInputContainerInfo(inputContainer), BuildOutputContainerInfo(outputContainer),
-                bufferReagents, bufferCurrentVolume, chemMaster.PillType, chemMaster.PillDosageLimit, updateLabel);
+                bufferReagents, bufferCurrentVolume, chemMaster.PillType, chemMaster.PillDosageLimit, updateLabel, bufferMaxVolume); // Orion-Edit
 
             _userInterfaceSystem.SetUiState(owner, ChemMasterUiKey.Key, state);
         }
