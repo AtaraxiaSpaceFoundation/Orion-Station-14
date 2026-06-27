@@ -168,6 +168,18 @@
           - Bottle
           - PillCanister
           - MedicalPatch # Goobstation
+      # Orion-Start
+      capacityBeaker1:
+        locked: true
+        whitelist:
+          components:
+          - FitsInDispenser
+      capacityBeaker2:
+        locked: true
+        whitelist:
+          components:
+          - FitsInDispenser
+      # Orion-End
   - type: AutomationSlots # Goobstation
     slots:
     - !type:AutomatedSolution
