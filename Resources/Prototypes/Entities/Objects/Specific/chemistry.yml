@@ -260,6 +260,26 @@
     damage:
       types:
         Blunt: 5
+  # Orion-Start
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_pickup.ogg
+      params:
+        volume: -6
+        variation: 0.125
+  # Orion-End
   - type: StaticPrice
     price: 30
   - type: DnaSubstanceTrace
@@ -399,6 +419,26 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass
+  # Orion-Start
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_pickup.ogg
+      params:
+        volume: -6
+        variation: 0.125
+  # Orion-End
   - type: StaticPrice
     price: 30
   - type: DnaSubstanceTrace
