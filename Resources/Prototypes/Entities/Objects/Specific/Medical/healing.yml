@@ -186,18 +186,18 @@
     healingBeginSound:
       collection: RegenerativeMeshBegin # Orion-Edit
       params:
-        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        volume: 4.0 # Orion-Edit: 1.0 > 4.0
         variation: 0.125
     healingEndSound:
       collection: RegenerativeMeshContinuous # Orion-Edit
       params:
-        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        volume: 4.0 # Orion-Edit: 1.0 > 4.0
         variation: 0.125
     # Orion-Start
     healingFullEndSound:
       collection: RegenerativeMeshEnd
       params:
-        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        volume: 4.0 # Orion-Edit: 1.0 > 4.0
         variation: 0.125
   - type: EmitSoundOnDrop
     sound:
@@ -336,18 +336,18 @@
     healingBeginSound:
       collection: SutureBegin # Orion-Edit
       params:
-        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        volume: 4.0 # Orion-Edit: 1.0 > 4.0
         variation: 0.125
     healingEndSound:
       collection: SutureContinuous # Orion-Edit
       params:
-        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        volume: 4.0 # Orion-Edit: 1.0 > 4.0
         variation: 0.125
     # Orion-Start
     healingFullEndSound:
       collection: SutureEnd
       params:
-        volume: 2.0 # Orion-Edit: 1.0 > 2.0
+        volume: 4.0 # Orion-Edit: 1.0 > 4.0
         variation: 0.125
   - type: EmitSoundOnDrop
     sound:
