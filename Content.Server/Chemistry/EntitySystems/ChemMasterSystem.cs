@@ -83,7 +83,7 @@ namespace Content.Server.Chemistry.EntitySystems
             SubscribeLocalEvent<ChemMasterComponent, SolutionContainerChangedEvent>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ChemMasterComponent, SolutionChangedEvent>(SubscribeUpdateUiState); // Orion
             SubscribeLocalEvent<ChemMasterComponent, SolutionTransferredEvent>(SubscribeUpdateUiState); // Orion
-            SubscribeLocalEvent<ChemMasterComponent, EntInsertedIntoContainerMessage>(OnInsertedIntoContainer); // Orion-Edit
+            SubscribeLocalEvent<ChemMasterComponent, EntInsertedIntoContainerMessage>(SubscribeUpdateUiState); // Orion-Edit
             SubscribeLocalEvent<ChemMasterComponent, EntRemovedFromContainerMessage>(SubscribeUpdateUiState);
             SubscribeLocalEvent<ChemMasterComponent, BoundUIOpenedEvent>(SubscribeUpdateUiState);
 
@@ -171,48 +171,6 @@ namespace Content.Server.Chemistry.EntitySystems
 
             ClickSound(chemMaster);
         }
-
-        // Orion-Start
-        private void OnInsertedIntoContainer(Entity<ChemMasterComponent> ent, ref EntInsertedIntoContainerMessage args)
-        {
-            if (args.Container.ID != SharedChemMaster.InputSlotName)
-            {
-                UpdateUiState(ent);
-                return;
-            }
-
-            if (!_solutionContainerSystem.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out var bufferSolution))
-            {
-                UpdateUiState(ent);
-                return;
-            }
-
-            if (!_solutionContainerSystem.TryGetFitsInDispenser(args.Entity, out _, out var insertedSolution))
-            {
-                UpdateUiState(ent);
-                return;
-            }
-
-            var available = FixedPoint2.Max(bufferSolution.AvailableVolume, FixedPoint2.Zero);
-            if (available <= FixedPoint2.Zero || insertedSolution.Volume <= FixedPoint2.Zero)
-            {
-                UpdateUiState(ent, updateLabel: true);
-                return;
-            }
-
-            var transferAmount = FixedPoint2.Min(insertedSolution.Volume, available);
-            if (transferAmount <= FixedPoint2.Zero)
-            {
-                UpdateUiState(ent, updateLabel: true);
-                return;
-            }
-
-            var split = insertedSolution.SplitSolution(transferAmount);
-            _solutionContainerSystem.TryAddSolution(bufferSoln.Value, split);
-
-            UpdateUiState(ent, updateLabel: true);
-        }
-        // Orion-End
 
         private void TransferReagents(Entity<ChemMasterComponent> chemMaster, ReagentId id, FixedPoint2 amount, bool fromBuffer, EntityUid? actor = null)
         {

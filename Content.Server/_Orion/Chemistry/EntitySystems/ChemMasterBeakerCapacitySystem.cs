@@ -1,8 +1,10 @@
 using Content.Server._Orion.Chemistry.Components;
+using Content.Server.Containers;
 using Content.Server.Fluids.EntitySystems;
 using Content.Shared.Chemistry;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Construction;
 using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -12,14 +14,14 @@ namespace Content.Server._Orion.Chemistry.EntitySystems;
 /// <summary>
 /// Manages buffer capacity of ChemMaster based on two internal capacity beakers.
 /// On MapInit: transfers beaker contents to buffer and sets capacity.
-/// On ComponentShutdown: distributes buffer back to beakers and ejects them.
-/// Remainder is spilled on the floor.
 /// </summary>
 public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 {
     [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
-    [Dependency] private readonly ItemSlotsSystem _slots = default!;
+    [Dependency] private readonly SharedContainerSystem _containers = default!;
     [Dependency] private readonly PuddleSystem _puddle = default!;
+
+    private const string MachinePartsContainerName = "machine_parts";
 
     public override void Initialize()
     {
@@ -28,35 +30,79 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntRemovedFromContainerMessage>(OnRemoved);
+
+        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, MachineDeconstructedEvent>(
+            OnMachineDeconstructed,
+            before: [typeof(EmptyOnMachineDeconstructSystem)]);
+
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, ComponentShutdown>(OnShutdown);
     }
 
     private void OnMapInit(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
     {
         RecalculateCapacity(ent);
-        TransferBeakersToBuffer(ent);
+        TransferConstructionBeakersToBuffer(ent);
     }
 
     private void OnInserted(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
-        if (args.Container.ID != ent.Comp.CapacitySlot1 && args.Container.ID != ent.Comp.CapacitySlot2)
+        if (args.Container.ID != MachinePartsContainerName)
             return;
+
+        if (!HasComp<FitsInDispenserComponent>(args.Entity))
+            return;
+
         RecalculateCapacity(ent);
     }
 
     private void OnRemoved(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntRemovedFromContainerMessage args)
     {
-        if (args.Container.ID != ent.Comp.CapacitySlot1 && args.Container.ID != ent.Comp.CapacitySlot2)
+        if (args.Container.ID != MachinePartsContainerName)
             return;
+
+        if (!HasComp<FitsInDispenserComponent>(args.Entity))
+            return;
+
         RecalculateCapacity(ent);
+    }
+
+    private void OnMachineDeconstructed(Entity<ChemMasterBeakerCapacityComponent> ent, ref MachineDeconstructedEvent args)
+    {
+        ReturnBufferToConstructionBeakers(ent);
     }
 
     private void OnShutdown(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentShutdown args)
     {
-        ReturnBufferToBeakers(ent);
+        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
+            || buffer.Volume == FixedPoint2.Zero)
+        {
+            return;
+        }
 
-        _slots.TryEject(ent.Owner, ent.Comp.CapacitySlot1, null, out _);
-        _slots.TryEject(ent.Owner, ent.Comp.CapacitySlot2, null, out _);
+        var coords = Transform(ent.Owner).Coordinates;
+        _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
+    }
+
+    private IEnumerable<EntityUid> GetConstructionBeakers(EntityUid uid)
+    {
+        if (!TryComp<ContainerManagerComponent>(uid, out var manager))
+            yield break;
+
+        if (!_containers.TryGetContainer(uid, MachinePartsContainerName, out var container, manager))
+            yield break;
+
+        var found = 0;
+        foreach (var entity in container.ContainedEntities)
+        {
+            if (!HasComp<FitsInDispenserComponent>(entity))
+                continue;
+
+            yield return entity;
+            found++;
+
+            if (found >= 2)
+                yield break;
+        }
     }
 
     private void RecalculateCapacity(Entity<ChemMasterBeakerCapacityComponent> ent)
@@ -66,14 +112,10 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
         var total = FixedPoint2.Zero;
 
-        foreach (var slotId in new[] { ent.Comp.CapacitySlot1, ent.Comp.CapacitySlot2 })
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
         {
-            var beaker = _slots.GetItemOrNull(ent.Owner, slotId);
-            if (beaker == null)
-                continue;
-
-            if (_solutions.TryGetFitsInDispenser(beaker.Value, out _, out var sol))
-                total += sol.MaxVolume;
+            if (_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution))
+                total += beakerSolution.MaxVolume;
         }
 
         var targetCapacity = total == FixedPoint2.Zero
@@ -84,48 +126,41 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         _solutions.SetCapacity(bufferSoln.Value, targetCapacity);
     }
 
-    // On MapInit: transfers any pre-existing reagents in the capacity beakers into the buffer.
-    private void TransferBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
+    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
     {
-        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufSoln, out var buffer))
+        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
             return;
 
-        foreach (var slotId in new[] { ent.Comp.CapacitySlot1, ent.Comp.CapacitySlot2 })
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
         {
-            var beaker = _slots.GetItemOrNull(ent.Owner, slotId);
-            if (beaker == null)
+            if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
+                || beakerSolution.Volume == FixedPoint2.Zero)
+            {
                 continue;
+            }
 
-            if (!_solutions.TryGetFitsInDispenser(beaker.Value, out _, out var beakerSol)
-                || beakerSol.Volume == FixedPoint2.Zero)
-                continue;
-
-            // Temporarily expand buffer to accept all beaker contents before capping
-            var split = beakerSol.SplitSolution(beakerSol.Volume);
-            _solutions.TryAddSolution(bufSoln.Value, split);
+            var split = beakerSolution.SplitSolution(beakerSolution.Volume);
+            _solutions.TryAddSolution(bufferSoln.Value, split);
         }
     }
 
-    // On shutdown: distributes buffer contents back into the two capacity beakers. Any remainder that doesn't fit is spilled on the floor.
-    private void ReturnBufferToBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
+    private void ReturnBufferToConstructionBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
     {
         if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
             || buffer.Volume == FixedPoint2.Zero)
+        {
             return;
+        }
 
-        foreach (var slotId in new[] { ent.Comp.CapacitySlot1, ent.Comp.CapacitySlot2 })
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
         {
             if (buffer.Volume == FixedPoint2.Zero)
                 return;
 
-            var beaker = _slots.GetItemOrNull(ent.Owner, slotId);
-            if (beaker == null)
+            if (!_solutions.TryGetFitsInDispenser(beaker, out var beakerSoln, out var beakerSolution))
                 continue;
 
-            if (!_solutions.TryGetFitsInDispenser(beaker.Value, out var beakerSoln, out var beakerSol))
-                continue;
-
-            var canFit = beakerSol.AvailableVolume;
+            var canFit = beakerSolution.AvailableVolume;
             if (canFit <= FixedPoint2.Zero)
                 continue;
 
@@ -133,8 +168,10 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
             _solutions.TryAddSolution(beakerSoln.Value, buffer.SplitSolution(toTransfer));
         }
 
-        // Spill leftover on the floor
         if (buffer.Volume > FixedPoint2.Zero)
-            _puddle.TrySpillAt(ent.Owner, buffer.SplitSolution(buffer.Volume), out _);
+        {
+            var coords = Transform(ent.Owner).Coordinates;
+            _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
+        }
     }
 }
