@@ -123,6 +123,11 @@
         node: machineFrame
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  # Orion-Start
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - machine_parts
+  # Orion-End
   - type: ActivatableUI
     key: enum.ChemMasterUiKey.Key
   - type: ActivatableUIRequiresPower
