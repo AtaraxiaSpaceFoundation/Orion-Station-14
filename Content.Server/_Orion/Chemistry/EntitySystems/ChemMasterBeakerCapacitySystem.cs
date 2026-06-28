@@ -7,7 +7,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Construction;
 using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Containers;
-using System.Collections.Generic;
+using Robust.Shared.Map;
 
 namespace Content.Server._Orion.Chemistry.EntitySystems;
 
@@ -27,7 +27,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, MapInitEvent>(OnStartup);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntRemovedFromContainerMessage>(OnRemoved);
 
@@ -38,7 +38,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, ComponentShutdown>(OnShutdown);
     }
 
-    private void OnStartup(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
     {
         EnsureInitialized(ent);
     }
@@ -75,6 +75,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (ent.Comp.Deconstructing)
             return;
 
+        // Orion: Use MapCoordinates to avoid "Parent is invalid" on entity deletion
         var coords = Transform(ent.Owner).Coordinates;
 
         if (_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
