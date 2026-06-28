@@ -41,12 +41,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     private void OnStartup(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
     {
         RecalculateCapacity(ent);
-
-        var beakers = new List<EntityUid>(GetConstructionBeakers(ent.Owner));
-        if (beakers.Count < 2)
-            return;
-
-        TransferConstructionBeakersToBuffer(ent, beakers);
+        TransferConstructionBeakersToBuffer(ent);
     }
 
     private void OnInserted(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -77,21 +72,26 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     }
     private void OnShutdown(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentShutdown args)
     {
+        // Вернуть химикаты буфера в мензурки конструкции
+        ReturnBufferToConstructionBeakers(ent);
+
         var coords = Transform(ent.Owner).Coordinates;
 
+        // Выбросить мензурки конструкции на пол (с химикатами внутри)
+        if (TryComp<ContainerManagerComponent>(ent.Owner, out var cm))
+        {
+            if (_containers.TryGetContainer(ent.Owner, MachinePartsContainerName, out var partsContainer, cm))
+                _containers.EmptyContainer(partsContainer, true, coords);
+
+            if (_containers.TryGetContainer(ent.Owner, SharedChemMaster.InputSlotName, out var beakerSlot, cm))
+                _containers.EmptyContainer(beakerSlot, true, coords);
+        }
+
+        // Пролить остаток буфера на пол
         if (_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
             && buffer.Volume > FixedPoint2.Zero)
         {
             _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
-        }
-
-        foreach (var beaker in GetConstructionBeakers(ent.Owner))
-        {
-            if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
-                || beakerSolution.Volume == FixedPoint2.Zero)
-                continue;
-
-            _puddle.TrySpillAt(coords, beakerSolution.SplitSolution(beakerSolution.Volume), out _);
         }
     }
 
@@ -103,27 +103,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     public void EnsureInitialized(Entity<ChemMasterBeakerCapacityComponent> ent)
     {
         RecalculateCapacity(ent);
-
-        if (ent.Comp.InitializedFromConstructionBeakers)
-            return;
-
-        var beakers = new List<EntityUid>(GetConstructionBeakers(ent.Owner));
-        if (beakers.Count < 2)
-            return;
-
-        var readyBeakers = new List<EntityUid>(2);
-        foreach (var beaker in beakers)
-        {
-            if (_solutions.TryGetFitsInDispenser(beaker, out _, out _))
-                readyBeakers.Add(beaker);
-        }
-
-        if (readyBeakers.Count < 2)
-            return;
-
-        TransferConstructionBeakersToBuffer(ent, readyBeakers);
-        ent.Comp.InitializedFromConstructionBeakers = true;
-
+        TransferConstructionBeakersToBuffer(ent);
         RecalculateCapacity(ent);
     }
 
