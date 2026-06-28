@@ -40,8 +40,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
     private void OnStartup(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentStartup args)
     {
-        RecalculateCapacity(ent);
-        TransferConstructionBeakersToBuffer(ent);
+        EnsureInitialized(ent);
     }
 
     private void OnInserted(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -52,7 +51,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (!HasComp<FitsInDispenserComponent>(args.Entity))
             return;
 
-        RecalculateCapacity(ent);
+        RefreshFromConstructionBeakers(ent);
     }
 
     private void OnRemoved(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -63,7 +62,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (!HasComp<FitsInDispenserComponent>(args.Entity))
             return;
 
-        RecalculateCapacity(ent);
+        RefreshFromConstructionBeakers(ent);
     }
 
     private void OnMachineDeconstructed(Entity<ChemMasterBeakerCapacityComponent> ent, ref MachineDeconstructedEvent args)
@@ -81,6 +80,25 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
         var coords = Transform(ent.Owner).Coordinates;
         _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
+    }
+
+    public void RefreshFromConstructionBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
+    {
+        RecalculateCapacity(ent);
+    }
+
+    public void EnsureInitialized(Entity<ChemMasterBeakerCapacityComponent> ent)
+    {
+        RecalculateCapacity(ent);
+
+        if (ent.Comp.InitializedFromConstructionBeakers)
+            return;
+
+        TransferConstructionBeakersToBuffer(ent);
+        ent.Comp.InitializedFromConstructionBeakers = true;
+
+        // После стартового переноса capacity мог увеличиться/зажаться относительно объёма.
+        RecalculateCapacity(ent);
     }
 
     private IEnumerable<EntityUid> GetConstructionBeakers(EntityUid uid)
