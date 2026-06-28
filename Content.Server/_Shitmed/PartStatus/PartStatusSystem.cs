@@ -171,9 +171,13 @@ public sealed class PartStatusSystem : EntitySystem
                 || wound.Comp.WoundSeverity == WoundSeverity.Healed)
                 continue;
 
-            if (!damageSeverities.TryGetValue(wound.Comp.DamageType, out var existingSeverity) ||
+            // Orion-Edit-Start
+            var damageKey = wound.Comp.DamageGroup;
+
+            if (!damageSeverities.TryGetValue(damageKey, out var existingSeverity) ||
                 wound.Comp.WoundSeverity > existingSeverity)
-                damageSeverities[_proto.Index(wound.Comp.DamageGroup).LocalizedName] = wound.Comp.WoundSeverity;
+                damageSeverities[damageKey] = wound.Comp.WoundSeverity;
+            // Orion-Edit-End
 
             if (TryComp<BleedInflicterComponent>(wound, out var bleeds) && bleeds.IsBleeding)
                 isBleeding = true;
@@ -321,7 +325,8 @@ public sealed class PartStatusSystem : EntitySystem
                 continue;
 
             var cappedSeverity = severity > WoundSeverity.Severe ? WoundSeverity.Severe : severity;
-            var localeText = $"inspect-wound-{type}-{cappedSeverity.ToString().ToLower()}";
+            var prefix = inspectingSelf ? "self-inspect-wound" : "inspect-wound"; // Orion
+            var localeText = $"{prefix}-{type}-{cappedSeverity.ToString().ToLower()}"; // Orion-Edit
             descriptions.Add(Loc.GetString(localeText));
         }
 
@@ -350,7 +355,8 @@ public sealed class PartStatusSystem : EntitySystem
         // Add bleeding status
         if (partStatus.Bleeding)
         {
-            var localeText = "inspect-wound-Bleeding-moderate";
+            var prefix = inspectingSelf ? "self-inspect-wound" : "inspect-wound"; // Orion
+            var localeText = $"{prefix}-Bleeding-moderate"; // Orion-Edit
             descriptions.Add(Loc.GetString(localeText));
         }
 
