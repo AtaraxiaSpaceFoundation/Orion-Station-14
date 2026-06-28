@@ -112,7 +112,17 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (beakers.Count < 2)
             return;
 
-        TransferConstructionBeakersToBuffer(ent, beakers);
+        var readyBeakers = new List<EntityUid>(2);
+        foreach (var beaker in beakers)
+        {
+            if (_solutions.TryGetFitsInDispenser(beaker, out _, out _))
+                readyBeakers.Add(beaker);
+        }
+
+        if (readyBeakers.Count < 2)
+            return;
+
+        TransferConstructionBeakersToBuffer(ent, readyBeakers);
         ent.Comp.InitializedFromConstructionBeakers = true;
 
         RecalculateCapacity(ent);
@@ -161,12 +171,12 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         _solutions.SetCapacity(bufferSoln.Value, targetCapacity);
     }
 
-    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent, IReadOnlyList<EntityUid> beakers) // Orion-Edit
+    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent, IReadOnlyList<EntityUid> beakers)
     {
         if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
             return;
 
-        foreach (var beaker in beakers) // Orion-Edit
+        foreach (var beaker in beakers)
         {
             if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
                 || beakerSolution.Volume == FixedPoint2.Zero)
