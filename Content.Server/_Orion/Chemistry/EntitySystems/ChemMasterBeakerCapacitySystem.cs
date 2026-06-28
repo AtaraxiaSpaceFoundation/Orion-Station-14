@@ -7,7 +7,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Construction;
 using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
+using System.Collections.Generic;
 
 namespace Content.Server._Orion.Chemistry.EntitySystems;
 
@@ -51,7 +51,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (!HasComp<FitsInDispenserComponent>(args.Entity))
             return;
 
-        RefreshFromConstructionBeakers(ent);
+        EnsureInitialized(ent); // Orion-Edit
     }
 
     private void OnRemoved(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -67,19 +67,32 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
     private void OnMachineDeconstructed(Entity<ChemMasterBeakerCapacityComponent> ent, ref MachineDeconstructedEvent args)
     {
+        ent.Comp.Deconstructing = true;
         ReturnBufferToConstructionBeakers(ent);
     }
-
     private void OnShutdown(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentShutdown args)
     {
-        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
-            || buffer.Volume == FixedPoint2.Zero)
-        {
+        if (ent.Comp.Deconstructing)
             return;
-        }
 
         var coords = Transform(ent.Owner).Coordinates;
-        _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
+
+        if (_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
+            && buffer.Volume > FixedPoint2.Zero)
+        {
+            _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
+        }
+
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
+        {
+            if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
+                || beakerSolution.Volume == FixedPoint2.Zero)
+            {
+                continue;
+            }
+
+            _puddle.TrySpillAt(coords, beakerSolution.SplitSolution(beakerSolution.Volume), out _);
+        }
     }
 
     public void RefreshFromConstructionBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
@@ -94,10 +107,13 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (ent.Comp.InitializedFromConstructionBeakers)
             return;
 
-        TransferConstructionBeakersToBuffer(ent);
+        var beakers = new List<EntityUid>(GetConstructionBeakers(ent.Owner));
+        if (beakers.Count < 2)
+            return;
+
+        TransferConstructionBeakersToBuffer(ent, beakers);
         ent.Comp.InitializedFromConstructionBeakers = true;
 
-        // После стартового переноса capacity мог увеличиться/зажаться относительно объёма.
         RecalculateCapacity(ent);
     }
 
@@ -144,12 +160,12 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         _solutions.SetCapacity(bufferSoln.Value, targetCapacity);
     }
 
-    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
+    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent, IReadOnlyList<EntityUid> beakers) // Orion-Edit
     {
         if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
             return;
 
-        foreach (var beaker in GetConstructionBeakers(ent.Owner))
+        foreach (var beaker in beakers) // Orion-Edit
         {
             if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
                 || beakerSolution.Volume == FixedPoint2.Zero)

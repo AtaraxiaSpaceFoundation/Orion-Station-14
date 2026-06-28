@@ -17,4 +17,5 @@ public sealed partial class ChemMasterBeakerCapacityComponent : Component
     public FixedPoint2 FallbackCapacity = FixedPoint2.New(1000);
 
     public bool InitializedFromConstructionBeakers;
+    public bool Deconstructing;
 }
