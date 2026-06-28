@@ -72,7 +72,6 @@ namespace Content.Server.Chemistry.EntitySystems
         [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _userInterfaceSystem = default!;
         [Dependency] private readonly StorageSystem _storageSystem = default!;
-        [Dependency] private readonly ChemMasterBeakerCapacitySystem _chemMasterBeakerCapacity = default!; // Orion
         [Dependency] private readonly LabelSystem _labelSystem = default!;
         [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
 
@@ -106,10 +105,6 @@ namespace Content.Server.Chemistry.EntitySystems
         private void UpdateUiState(Entity<ChemMasterComponent> ent, bool updateLabel = false)
         {
             var (owner, chemMaster) = ent;
-            // Orion-Start
-            if (TryComp<ChemMasterBeakerCapacityComponent>(owner, out var beakerCapacity))
-                _chemMasterBeakerCapacity.EnsureInitialized((owner, beakerCapacity));
-            // Orion-End
             if (!_solutionContainerSystem.TryGetSolution(owner, SharedChemMaster.BufferSolutionName, out _, out var bufferSolution))
                 return;
             var inputContainer = _itemSlotsSystem.GetItemOrNull(owner, SharedChemMaster.InputSlotName);
