@@ -7,7 +7,6 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Construction;
 using Content.Goobstation.Maths.FixedPoint;
 using Robust.Shared.Containers;
-// using Robust.Shared.Map;
 
 namespace Content.Server._Orion.Chemistry.EntitySystems;
 
@@ -73,10 +72,6 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
     private void OnShutdown(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentShutdown args)
     {
-        // При нормальной разборке (prying) OnMachineDeconstructed уже перенёс буфер в мензурки,
-        // поэтому буфер пуст и этот метод — no-op.
-        // При разрушении (топор) machine_parts уже перенесён в новую MachineFrame сущность,
-        // поэтому просто льём буфер на пол.
         if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
             || buffer.Volume == FixedPoint2.Zero)
         {

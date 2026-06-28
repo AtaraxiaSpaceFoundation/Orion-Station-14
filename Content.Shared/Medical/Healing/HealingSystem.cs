@@ -215,9 +215,7 @@ public sealed class HealingSystem : EntitySystem
         if (!args.Repeat)
         {
             _popupSystem.PopupClient(Loc.GetString("medical-item-finished-using", ("item", args.Used)), target.Owner, args.User);
-            // Orion-Edit-Start
-            _audio.PlayPredicted(healing.HealingFullEndSound, target.Owner, args.User);
-            // Orion-Edit-End
+            _audio.PlayPredicted(healing.HealingFullEndSound, target.Owner, args.User); // Orion
             return;
         }
 
@@ -552,9 +550,7 @@ public sealed class HealingSystem : EntitySystem
         if (modifiedBleedStopAbility != -healing.BloodlossModifier)
             // Goobstation predicted --> client
             _popupSystem.PopupClient(Loc.GetString("medical-item-finished-using", ("item", args.Used)), ent, args.User, PopupType.Medium);
-        // Orion-Start
-        _audio.PlayPredicted(healing.HealingFullEndSound, ent, args.User);
-        // Orion-End
+        _audio.PlayPredicted(healing.HealingFullEndSound, ent, args.User); // Orion
     }
 
     // Shitmed Change End
