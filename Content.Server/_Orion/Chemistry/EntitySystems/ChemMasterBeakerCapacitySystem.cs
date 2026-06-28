@@ -27,7 +27,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntRemovedFromContainerMessage>(OnRemoved);
 
@@ -38,7 +38,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, ComponentShutdown>(OnShutdown);
     }
 
-    private void OnMapInit(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
+    private void OnStartup(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentStartup args)
     {
         RecalculateCapacity(ent);
         TransferConstructionBeakersToBuffer(ent);

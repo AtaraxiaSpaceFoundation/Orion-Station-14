@@ -182,18 +182,18 @@ namespace Content.Server.Chemistry.EntitySystems
                 return;
             }
 
+            // Orion-Edit-Start
             if (fromBuffer) // Buffer -> container
             {
-                amount = FixedPoint2.Min(amount, containerSolution.AvailableVolume);
-                if (amount <= FixedPoint2.Zero)
+                var removed = FixedPoint2.Min(amount, bufferSolution.GetReagentQuantity(id), containerSolution.AvailableVolume);
+                if (removed <= FixedPoint2.Zero)
                     return;
 
-                amount = bufferSolution.RemoveReagent(id, amount, preserveOrder: true);
-                if (amount <= FixedPoint2.Zero)
-                    return;
-
-                _solutionContainerSystem.TryAddReagent(containerSoln.Value, id, amount, out _);
+                _solutionContainerSystem.RemoveReagent(bufferSoln.Value, id, removed);
+                _solutionContainerSystem.TryAddReagent(containerSoln.Value, id, removed, out _);
+                amount = removed;
             }
+
             else // Container -> buffer
             {
                 var available = FixedPoint2.Max(bufferSolution.AvailableVolume, FixedPoint2.Zero);
@@ -213,30 +213,30 @@ namespace Content.Server.Chemistry.EntitySystems
                     $"{ToPrettyString(actor)} transferred {amount}u of {id} {(!fromBuffer ? "from" : "to")}" +
                     $" {ToPrettyString(containerSoln)} {(fromBuffer ? "from" : "to")} {ToPrettyString(chemMaster)}");
             }
+            // Orion-Edit-End
 
             UpdateUiState(chemMaster, updateLabel: true);
         }
 
         private void DiscardReagents(Entity<ChemMasterComponent> chemMaster, ReagentId id, FixedPoint2 amount, bool fromBuffer)
         {
+            // Orion-Edit-Start
             if (fromBuffer)
             {
-                if (_solutionContainerSystem.TryGetSolution(chemMaster.Owner, SharedChemMaster.BufferSolutionName, out _, out var bufferSolution))
-                    bufferSolution.RemoveReagent(id, amount, preserveOrder: true);
-                else
-                    return;
-            }
-            else
-            {
-                var container = _itemSlotsSystem.GetItemOrNull(chemMaster, SharedChemMaster.InputSlotName);
-                if (container is not null &&
-                    _solutionContainerSystem.TryGetFitsInDispenser(container.Value, out var containerSolution, out _))
+                if (_solutionContainerSystem.TryGetSolution(chemMaster.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out var bufferSolution))
                 {
-                    _solutionContainerSystem.RemoveReagent(containerSolution.Value, id, amount);
+                    var removed = FixedPoint2.Min(amount, bufferSolution.GetReagentQuantity(id));
+                    if (removed <= FixedPoint2.Zero)
+                        return;
+
+                    _solutionContainerSystem.RemoveReagent(bufferSoln.Value, id, removed);
                 }
                 else
+                {
                     return;
+                }
             }
+            // Orion-Edit-End
 
             UpdateUiState(chemMaster, updateLabel: fromBuffer);
         }
