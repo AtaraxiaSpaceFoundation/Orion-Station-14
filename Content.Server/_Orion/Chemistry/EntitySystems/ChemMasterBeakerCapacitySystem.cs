@@ -70,29 +70,21 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     {
         ReturnBufferToConstructionBeakers(ent);
     }
+
     private void OnShutdown(Entity<ChemMasterBeakerCapacityComponent> ent, ref ComponentShutdown args)
     {
-        // Вернуть химикаты буфера в мензурки конструкции
-        ReturnBufferToConstructionBeakers(ent);
+        // При нормальной разборке (prying) OnMachineDeconstructed уже перенёс буфер в мензурки,
+        // поэтому буфер пуст и этот метод — no-op.
+        // При разрушении (топор) machine_parts уже перенесён в новую MachineFrame сущность,
+        // поэтому просто льём буфер на пол.
+        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
+            || buffer.Volume == FixedPoint2.Zero)
+        {
+            return;
+        }
 
         var coords = Transform(ent.Owner).Coordinates;
-
-        // Выбросить мензурки конструкции на пол (с химикатами внутри)
-        if (TryComp<ContainerManagerComponent>(ent.Owner, out var cm))
-        {
-            if (_containers.TryGetContainer(ent.Owner, MachinePartsContainerName, out var partsContainer, cm))
-                _containers.EmptyContainer(partsContainer, true, coords);
-
-            if (_containers.TryGetContainer(ent.Owner, SharedChemMaster.InputSlotName, out var beakerSlot, cm))
-                _containers.EmptyContainer(beakerSlot, true, coords);
-        }
-
-        // Пролить остаток буфера на пол
-        if (_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out _, out var buffer)
-            && buffer.Volume > FixedPoint2.Zero)
-        {
-            _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
-        }
+        _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
     }
 
     public void RefreshFromConstructionBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
