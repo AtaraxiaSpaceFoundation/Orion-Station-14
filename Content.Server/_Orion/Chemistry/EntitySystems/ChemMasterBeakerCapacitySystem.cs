@@ -62,7 +62,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (!HasComp<FitsInDispenserComponent>(args.Entity))
             return;
 
-        RecalculateCapacity(ent);
+        RefreshFromConstructionBeakers(ent);
     }
 
     private void OnMachineDeconstructed(Entity<ChemMasterBeakerCapacityComponent> ent, ref MachineDeconstructedEvent args)
