@@ -13,7 +13,7 @@ namespace Content.Server._Orion.Chemistry.EntitySystems;
 
 /// <summary>
 /// Manages buffer capacity of ChemMaster based on two internal capacity beakers.
-/// On MapInit: transfers beaker contents to buffer and sets capacity.
+/// Transfers beaker contents to buffer and sets capacity.
 /// </summary>
 public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 {
@@ -73,7 +73,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
         RecalculateCapacity(ent);
 
-        if (TryTransferConstructionBeakersToBuffer(ent))
+        if (TransferConstructionBeakersToBuffer(ent))
         {
             ent.Comp.InitializedFromConstructionBeakers = true;
             RecalculateCapacity(ent);
@@ -140,33 +140,20 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         _solutions.SetCapacity(bufferSoln.Value, targetCapacity);
     }
 
-    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
-    {
-        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
-            return;
-
-        foreach (var beaker in GetConstructionBeakers(ent.Owner))
-        {
-            if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
-                || beakerSolution.Volume == FixedPoint2.Zero)
-                continue;
-
-            var split = beakerSolution.SplitSolution(beakerSolution.Volume);
-            _solutions.TryAddSolution(bufferSoln.Value, split);
-        }
-    }
-
-    private bool TryTransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
+    private bool TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
     {
         if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
             return false;
 
-        var beakers = new System.Collections.Generic.List<EntityUid>(GetConstructionBeakers(ent.Owner));
-        if (beakers.Count < 2)
+        var count = 0;
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
+            count++;
+
+        if (count < 2)
             return false;
 
         var transferred = false;
-        foreach (var beaker in beakers)
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
         {
             if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
                 || beakerSolution.Volume == FixedPoint2.Zero)
