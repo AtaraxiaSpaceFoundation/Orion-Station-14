@@ -12,7 +12,7 @@ namespace Content.Shared._Shitmed.Medical.Surgery.Tools;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class RetractorComponent : Component, ISurgeryToolComponent
 {
-    public string ToolName => "a retractor";
+    public string ToolName => Loc.GetString("surgery-tool-retractor"); // Orion-Edit: Localization
     [DataField]
     public bool? Used { get; set; } = null;
     [DataField]

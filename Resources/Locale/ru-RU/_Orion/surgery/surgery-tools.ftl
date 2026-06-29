@@ -1,0 +1,11 @@
+surgery-tool-bonegel = костяной гель
+surgery-tool-bonesaw = пила
+surgery-tool-bonesetter = костоправ
+surgery-tool-cautery = прижигатель
+surgery-tool-drill = дрель
+surgery-tool-hemostat = гемостат
+surgery-tool-retractor = ретрактор
+surgery-tool-scalpel = скальпель
+surgery-tool-woundtender = зажим ран
+surgery-tool-tweezers = пинцет
+surgery-tool-stitches = нить
