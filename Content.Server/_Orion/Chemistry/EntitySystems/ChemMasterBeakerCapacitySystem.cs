@@ -26,7 +26,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, MapInitEvent>(OnStartup);
+        SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, EntRemovedFromContainerMessage>(OnRemoved);
 
@@ -37,10 +37,16 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         SubscribeLocalEvent<ChemMasterBeakerCapacityComponent, ComponentShutdown>(OnShutdown);
     }
 
-    private void OnStartup(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<ChemMasterBeakerCapacityComponent> ent, ref MapInitEvent args)
     {
         RecalculateCapacity(ent);
-        TransferConstructionBeakersToBuffer(ent);
+
+        if (!ent.Comp.InitializedFromConstructionBeakers)
+        {
+            TransferConstructionBeakersToBuffer(ent);
+            ent.Comp.InitializedFromConstructionBeakers = true;
+            RecalculateCapacity(ent);
+        }
     }
 
     private void OnInserted(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntInsertedIntoContainerMessage args)
@@ -62,7 +68,7 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
         if (!HasComp<FitsInDispenserComponent>(args.Entity))
             return;
 
-        RefreshFromConstructionBeakers(ent);
+        RecalculateCapacity(ent);
     }
 
     private void OnMachineDeconstructed(Entity<ChemMasterBeakerCapacityComponent> ent, ref MachineDeconstructedEvent args)
@@ -80,18 +86,6 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
         var coords = Transform(ent.Owner).Coordinates;
         _puddle.TrySpillAt(coords, buffer.SplitSolution(buffer.Volume), out _);
-    }
-
-    public void RefreshFromConstructionBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
-    {
-        RecalculateCapacity(ent);
-    }
-
-    public void EnsureInitialized(Entity<ChemMasterBeakerCapacityComponent> ent)
-    {
-        RecalculateCapacity(ent);
-        TransferConstructionBeakersToBuffer(ent);
-        RecalculateCapacity(ent);
     }
 
     private IEnumerable<EntityUid> GetConstructionBeakers(EntityUid uid)
@@ -139,16 +133,10 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
     private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
     {
-        var beakers = new List<EntityUid>(GetConstructionBeakers(ent.Owner));
-        TransferConstructionBeakersToBuffer(ent, beakers);
-    }
-
-    private void TransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent, IReadOnlyList<EntityUid> beakers)
-    {
         if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
             return;
 
-        foreach (var beaker in beakers)
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
         {
             if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
                 || beakerSolution.Volume == FixedPoint2.Zero)
