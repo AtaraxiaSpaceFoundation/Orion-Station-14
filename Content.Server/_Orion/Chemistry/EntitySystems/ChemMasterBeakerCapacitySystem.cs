@@ -43,9 +43,11 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
 
         if (!ent.Comp.InitializedFromConstructionBeakers)
         {
-            TransferConstructionBeakersToBuffer(ent);
-            ent.Comp.InitializedFromConstructionBeakers = true;
-            RecalculateCapacity(ent);
+            if (TryTransferConstructionBeakersToBuffer(ent))
+            {
+                ent.Comp.InitializedFromConstructionBeakers = true;
+                RecalculateCapacity(ent);
+            }
         }
     }
 
@@ -58,6 +60,15 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
             return;
 
         RecalculateCapacity(ent);
+
+        if (!ent.Comp.InitializedFromConstructionBeakers)
+        {
+            if (TryTransferConstructionBeakersToBuffer(ent))
+            {
+                ent.Comp.InitializedFromConstructionBeakers = true;
+                RecalculateCapacity(ent);
+            }
+        }
     }
 
     private void OnRemoved(Entity<ChemMasterBeakerCapacityComponent> ent, ref EntRemovedFromContainerMessage args)
@@ -145,6 +156,27 @@ public sealed class ChemMasterBeakerCapacitySystem : EntitySystem
             var split = beakerSolution.SplitSolution(beakerSolution.Volume);
             _solutions.TryAddSolution(bufferSoln.Value, split);
         }
+    }
+
+    private bool TryTransferConstructionBeakersToBuffer(Entity<ChemMasterBeakerCapacityComponent> ent)
+    {
+        if (!_solutions.TryGetSolution(ent.Owner, SharedChemMaster.BufferSolutionName, out var bufferSoln, out _))
+            return false;
+
+        var transferred = false;
+
+        foreach (var beaker in GetConstructionBeakers(ent.Owner))
+        {
+            if (!_solutions.TryGetFitsInDispenser(beaker, out _, out var beakerSolution)
+                || beakerSolution.Volume == FixedPoint2.Zero)
+                continue;
+
+            var split = beakerSolution.SplitSolution(beakerSolution.Volume);
+            _solutions.TryAddSolution(bufferSoln.Value, split);
+            transferred = true;
+        }
+
+        return transferred;
     }
 
     private void ReturnBufferToConstructionBeakers(Entity<ChemMasterBeakerCapacityComponent> ent)
