@@ -62,3 +62,15 @@
     - regenerative-mesh-3
   - type: StackPrice
     price: 20
+
+# --------------------
+# --- Quantitative ---
+# --------------------
+
+- type: entity
+  id: Gauze5
+  parent: Gauze
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5

@@ -122,6 +122,10 @@
     - type: Item
       size: Normal
       sprite: Objects/Specific/Chemistry/jug.rsi
+      # Orion-Start
+      shape:
+      - 0,0,2,1
+      # Orion-End
     - type: MixableSolution
       solution: beaker
     - type: RefillableSolution
@@ -163,7 +167,7 @@
       inHandsFillBaseName: -fill-
     # Orion-Start
     - type: Openable
-      opened: true
+      opened: false
       closeable: true
       sound:
         collection: bottleOpenSounds
