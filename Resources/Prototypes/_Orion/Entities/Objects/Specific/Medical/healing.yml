@@ -32,6 +32,38 @@
 
 - type: entity
   name: pill
+  suffix: Herignis 10u
+  parent: Pill
+  id: PillHerignis
+  components:
+  - type: Pill
+    pillType: 14
+  - type: Sprite
+    state: pill14
+  - type: Label
+    currentLabel: herignis 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Herignis
+          Quantity: 10
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterHerignis
+  suffix: Herignis 10u, 15
+  components:
+  - type: Label
+    currentLabel: herignis 10u
+  - type: StorageFill
+    contents:
+    - id: PillHerignis
+      amount: 15
+
+- type: entity
+  name: pill
   suffix: Probital 10u
   parent: Pill
   id: PillProbital
@@ -215,42 +247,46 @@
 
 - type: entity
   name: pill
-  suffix: Anti-brute 20u
+  suffix: Anti-brute 25u
   parent: Pill
-  id: PillBicaIbup
+  id: PillAntiBrute
   components:
   - type: Pill
     pillType: 6
   - type: Sprite
     state: pill6
   - type: Label
-    currentLabel: anti-brute 20u
+    currentLabel: anti-brute 25u
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
         - ReagentId: Bicaridine
-          Quantity: 10
+          Quantity: 14
         - ReagentId: Ibuprofen
-          Quantity: 10
+          Quantity: 11
 
 - type: entity
   name: pill
-  suffix: Anti-burn 20u
+  suffix: Anti-burn 30u
   parent: Pill
-  id: PillKeloDerma
+  id: PillAntiBurn
   components:
   - type: Pill
     pillType: 8
   - type: Sprite
     state: pill8
   - type: Label
-    currentLabel: anti-burn 20u
+    currentLabel: anti-burn 30u
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
-        - ReagentId: Dermaline
-          Quantity: 10
         - ReagentId: Kelotane
-          Quantity: 10
+          Quantity: 15
+        - ReagentId: Dermaline
+          Quantity: 7
+        - ReagentId: Pyrazine
+          Quantity: 2
+        - ReagentId: Tehifin
+          Quantity: 1
