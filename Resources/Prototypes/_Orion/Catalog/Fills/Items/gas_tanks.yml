@@ -1,0 +1,48 @@
+- type: entity
+  parent: EmergencyNitriumTank
+  id: EmergencyNitriumTankFilled
+  suffix: Filled
+  components:
+  - type: GasTank
+    outputPressure: 40
+    air:
+      # 2/1.5 minute
+      volume: 0.66
+      moles:
+        - 0 # oxygen
+        - 0 # nitrogen
+        - 0 # CO2
+        - 0 # Plasma
+        - 0 # Tritium
+        - 0 # Water vapor
+        - 0 # Miasma
+        - 0 # N2O
+        - 0 # Frezon
+        - 0 # BZ
+        - 0 # Healium
+        - 0.270782035 # Nitrium
+      temperature: 293.15
+
+- type: entity
+  parent: EmergencyHealiumTank
+  id: EmergencyHealiumTankFilled
+  suffix: Filled
+  components:
+  - type: GasTank
+    outputPressure: 60
+    air:
+      # 1.33 minute
+      volume: 0.66
+      moles:
+        - 0 # oxygen
+        - 0 # nitrogen
+        - 0 # CO2
+        - 0 # Plasma
+        - 0 # Tritium
+        - 0 # Water vapor
+        - 0 # Miasma
+        - 0 # N2O
+        - 0 # Frezon
+        - 0 # BZ
+        - 0.270782035 # Healium
+      temperature: 293.15
