@@ -155,12 +155,12 @@
   - type: StorageFill
     contents:
       # Orion-Edit-Start
-      - id: MedicatedSuture
+      - id: Suture
       - id: RegenerativeMesh
       - id: SyringeEphedrine
       - id: SyringeSaline
-      - id: BruteAutoInjector
-      - id: BurnAutoInjector
+      - id: PillAntiBrute
+      - id: PillAntiBurn
       # Orion-Edit-End
 
 - type: entity
