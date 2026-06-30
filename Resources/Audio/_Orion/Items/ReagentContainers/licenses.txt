@@ -1,0 +1,1 @@
+All sounds in this folder are taken from TG GitHub (licensed under CC-BY-SA 3.0) at commit https://github.com/tgstation/tgstation/commit/02ca535d03d7cab937f927e366719aa84ee88823 Edited by UmbiMax

@@ -1,0 +1,25 @@
+- type: entity
+  parent: EmergencyOxygenTank
+  id: EmergencyNitriumTank
+  name: emergency nitrium tank
+  description: Speed and stamina in a can. Overdose? You'll be fast enough to regret it. It can hold 0.66 L of gas. # Скорость и стамина в баллоне. Передоз? Будешь достаточно быстрым, чтобы пожалеть.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Tanks/emergency_brown.rsi
+  - type: Item
+    sprite: _Orion/Objects/Tanks/emergency_brown.rsi
+  - type: Clothing
+    sprite: _Orion/Objects/Tanks/emergency_brown.rsi
+
+- type: entity
+  parent: EmergencyOxygenTank
+  id: EmergencyHealiumTank
+  name: emergency healium tank
+  description: Heals what's broken. Overdose, and it breaks what's not. Don't be greedy. It can hold 0.66 L of gas. # Лечит то, что сломано. Передоз ломает то, что цело. Не жадничай.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Tanks/emergency_green_red.rsi
+  - type: Item
+    sprite: _Orion/Objects/Tanks/emergency_green_red.rsi
+  - type: Clothing
+    sprite: _Orion/Objects/Tanks/emergency_green_red.rsi

@@ -305,7 +305,7 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 1000
+        maxVol: 250 # Orion-Edit: 1000 > 250
   - type: Sprite
     sprite: _Goobstation/Objects/Consumable/Drinks/shaker_bluespace.rsi
     state: icon

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by HoofedEar",
+  "copyright": "Sprited by Krysonism and taken from https://github.com/tgstation/tgstation/commit/2a30c6da708e5546db2c049431e0f6c83ddfe6e3",
   "size": {
     "x": 32,
     "y": 32
@@ -11,7 +11,17 @@
       "name": "jug"
     },
     {
+      "name": "icon"
+    },
+    {
+      "name": "lid"
+    },
+    {
       "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "lid-inhand-left",
       "directions": 4
     },
 	{
@@ -36,6 +46,10 @@
     },
     {
       "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "lid-inhand-right",
       "directions": 4
     },
 	{
@@ -75,6 +89,21 @@
     },
     {
       "name": "jug6"
+    },
+    {
+      "name": "jug7"
+    },
+    {
+      "name": "jug8"
+    },
+    {
+      "name": "jug9"
+    },
+    {
+      "name": "jug10"
+    },
+    {
+      "name": "jug11"
     }
   ]
 }

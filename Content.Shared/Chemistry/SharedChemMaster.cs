@@ -191,6 +191,9 @@ namespace Content.Shared.Chemistry
         public readonly ChemMasterSortingType SortingType;
 
         public readonly FixedPoint2? BufferCurrentVolume;
+
+        public readonly FixedPoint2? BufferMaxVolume; // Orion
+
         public readonly uint SelectedPillType;
 
         public readonly uint PillDosageLimit;
@@ -200,7 +203,8 @@ namespace Content.Shared.Chemistry
         public ChemMasterBoundUserInterfaceState(
             ChemMasterMode mode, ChemMasterSortingType sortingType, ContainerInfo? inputContainerInfo, ContainerInfo? outputContainerInfo,
             IReadOnlyList<ReagentQuantity> bufferReagents, FixedPoint2 bufferCurrentVolume,
-            uint selectedPillType, uint pillDosageLimit, bool updateLabel)
+            uint selectedPillType, uint pillDosageLimit, bool updateLabel, // Orion-Edit
+            FixedPoint2 bufferMaxVolume = default) // Orion
         {
             InputContainerInfo = inputContainerInfo;
             OutputContainerInfo = outputContainerInfo;
@@ -208,6 +212,7 @@ namespace Content.Shared.Chemistry
             Mode = mode;
             SortingType = sortingType;
             BufferCurrentVolume = bufferCurrentVolume;
+            BufferMaxVolume = bufferMaxVolume; // Orion
             SelectedPillType = selectedPillType;
             PillDosageLimit = pillDosageLimit;
             UpdateLabel = updateLabel;

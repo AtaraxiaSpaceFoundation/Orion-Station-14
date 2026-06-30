@@ -215,10 +215,34 @@ public sealed class SolutionTransferSystem : EntitySystem
             && _solution.TryGetRefillableSolution((target, targetRefill, null), out targetSoln, out _)
             && _solution.TryGetDrainableSolution(uid, out ownerSoln, out _))
         {
+            // Orion-Start
+            var isChemMasterTarget = HasComp<ChemMasterTransferTargetComponent>(target);
+            var isInsertableBeaker = HasComp<FitsInDispenserComponent>(uid);
+
+            if (isChemMasterTarget && isInsertableBeaker)
+                return;
+            // Orion-End
+
             var transferAmount = comp.TransferAmount;
 
             if (targetRefill?.MaxRefill is {} maxRefill)
                 transferAmount = FixedPoint2.Min(transferAmount, maxRefill);
+
+            // Orion-Start
+            if (isChemMasterTarget)
+            {
+                var targetSolution = targetSoln.Value.Comp.Solution;
+                var ownerSolution = ownerSoln.Value.Comp.Solution;
+
+                var available = FixedPoint2.Max(targetSolution.AvailableVolume, FixedPoint2.Zero);
+                if (available <= FixedPoint2.Zero || ownerSolution.Volume <= FixedPoint2.Zero)
+                    return;
+
+                transferAmount = FixedPoint2.Min(transferAmount, ownerSolution.Volume, available);
+                if (transferAmount <= FixedPoint2.Zero)
+                    return;
+            }
+            // Orion-End
 
             var transferred = Transfer(args.User, uid, ownerSoln.Value, target, targetSoln.Value, transferAmount);
             args.Handled = true;

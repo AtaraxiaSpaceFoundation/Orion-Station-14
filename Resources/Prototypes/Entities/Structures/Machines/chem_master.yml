@@ -60,6 +60,11 @@
     snapCardinals: true
     layers:
     - state: mixer_empty
+    # Orion-Start
+    - state: mixer_fill-1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    # Orion-End
     - state: mixer_screens
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
@@ -179,10 +184,23 @@
   - type: SolutionContainerManager
     solutions:
       buffer: # Goobstation - solution shitcode doesnt like max volume 0 and i dont want to rewrite AddSolution
-        maxVol: 1000000
+        maxVol: 1000 # Orion-Edit: 1000000 > 1000
+  # Orion-Start
+  - type: ChemMasterBeakerCapacity
+  - type: RefillableSolution
+    solution: buffer
+  - type: DrainableSolution
+    solution: buffer
+  - type: SolutionContainerVisuals
+    solutionName: buffer
+    maxFillLevels: 10
+    fillBaseName: mixer_fill-
+    changeColor: true
+  - type: ChemMasterTransferTarget
+  # Orion-End
   - type: DumpableSolution
     solution: buffer
-    unlimited: true
+    unlimited: false # Orion-Edit: true > false
   - type: GuideHelp
     guides:
     - Chemicals

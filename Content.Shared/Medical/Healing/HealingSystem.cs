@@ -215,6 +215,7 @@ public sealed class HealingSystem : EntitySystem
         if (!args.Repeat)
         {
             _popupSystem.PopupClient(Loc.GetString("medical-item-finished-using", ("item", args.Used)), target.Owner, args.User);
+            _audio.PlayPredicted(healing.HealingFullEndSound, target.Owner, args.User); // Orion
             return;
         }
 
@@ -418,14 +419,47 @@ public sealed class HealingSystem : EntitySystem
             // Iterate over the parts in the predefined order until we run out of parts or run out of healing
             var woundablesQueue = new Queue<EntityUid>();
             woundablesQueue.Enqueue(targetedWoundable);
-            for (var i = 0; i < _partHealingOrder.Length; i++)
+            // Orion-Start
+            if (healing.PrioritizeBleeding)
             {
-                var (partType, symmetry) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
-                var targetedBodyPart = _bodySystem.GetBodyChildrenOfType(ent, partType, comp, symmetry).ToList().FirstOrDefault();
-                if (targetedBodyPart.Id == targetedWoundable)
-                    continue;
-                woundablesQueue.Enqueue(targetedBodyPart.Id);
+                // Collect all other parts with bleed amounts
+                var bleeding = new List<(EntityUid Id, FixedPoint2 Bleed)>();
+                var nonBleeding = new List<EntityUid>();
+
+                for (var i = 0; i < _partHealingOrder.Length; i++)
+                {
+                    var (pt, sym) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
+                    var bp = _bodySystem.GetBodyChildrenOfType(ent, pt, comp, sym).ToList().FirstOrNull();
+                    if (bp == null || bp.Value.Id == targetedWoundable)
+                        continue;
+
+                    if (TryComp<WoundableComponent>(bp.Value.Id, out var wc) && wc.Bleeds > FixedPoint2.Zero)
+                        bleeding.Add((bp.Value.Id, wc.Bleeds));
+                    else
+                        nonBleeding.Add(bp.Value.Id);
+                }
+
+                // Bleeding limbs first, sorted by severity desc. Then damage-only limbs
+                bleeding.Sort((a, b) => b.Bleed.CompareTo(a.Bleed));
+                foreach (var (id, _) in bleeding)
+                    woundablesQueue.Enqueue(id);
+                foreach (var id in nonBleeding)
+                    woundablesQueue.Enqueue(id);
             }
+            // Orion-End
+            // Orion-Edit-Start
+            else
+            {
+                for (var i = 0; i < _partHealingOrder.Length; i++)
+                {
+                    var (partType, symmetry) = _bodySystem.ConvertTargetBodyPart(_partHealingOrder[i]);
+                    var targetedBodyPart = _bodySystem.GetBodyChildrenOfType(ent, partType, comp, symmetry).ToList().FirstOrDefault();
+                    if (targetedBodyPart.Id == targetedWoundable)
+                        continue;
+                    woundablesQueue.Enqueue(targetedBodyPart.Id);
+                }
+            }
+            // Orion-Edit-End
             while (woundablesQueue.Count > 0 && healingLeft.GetTotal() < 0.0)
             {
                 canHeal = true;
@@ -507,7 +541,7 @@ public sealed class HealingSystem : EntitySystem
         _audio.PlayPredicted(healing.HealingEndSound, ent, ent, AudioParams.Default.WithVariation(0.125f).WithVolume(1f)); // Goob edit
 
         // Logic to determine whether or not to repeat the healing action
-        args.Repeat = IsAnythingToHeal(args.User, ent, (args.Used.Value, healing)); // GOOBEDIT
+        args.Repeat = IsAnythingToHeal(args.User, ent, (args.Used.Value, healing)) && !dontRepeat; // GOOBEDIT // Orion-Edit
         args.Handled = true;
 
         if (args.Repeat || dontRepeat)
@@ -516,6 +550,7 @@ public sealed class HealingSystem : EntitySystem
         if (modifiedBleedStopAbility != -healing.BloodlossModifier)
             // Goobstation predicted --> client
             _popupSystem.PopupClient(Loc.GetString("medical-item-finished-using", ("item", args.Used)), ent, args.User, PopupType.Medium);
+        _audio.PlayPredicted(healing.HealingFullEndSound, ent, args.User); // Orion
     }
 
     // Shitmed Change End

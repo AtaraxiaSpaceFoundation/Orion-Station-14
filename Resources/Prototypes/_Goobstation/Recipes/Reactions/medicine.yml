@@ -298,9 +298,9 @@
     Synthflesh:
       amount: 6
   products:
-    Synthcells: 4
-    Sodium: 1
-    Carbon: 1
+    Synthcells: 2 # Orion-Edit: 4 > 2
+    Sodium: 2 # Orion-Edit: 1 > 2
+    Carbon: 2 # Orion-Edit: 1 > 2
 
 - type: reaction
   id: SalicylicAcid

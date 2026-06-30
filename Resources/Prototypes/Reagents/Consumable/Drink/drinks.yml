@@ -275,6 +275,11 @@
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.01
+      - !type:AdjustTemperature
+        amount: -15
+        conditions:
+        - !type:Temperature
+          min: 310.15
       # Orion-End
 
 - type: reagent
@@ -314,6 +319,13 @@
       - !type:AdjustReagent
         reagent: Theobromine
         amount: 0.01 # Orion-Edit: 0.05 > 0.01
+      # Orion-Start
+      - !type:AdjustTemperature
+        amount: -15
+        conditions:
+        - !type:Temperature
+          min: 310.15
+      # Orion-End
 
 - type: reagent
   id: JuiceBerryPoison
@@ -656,6 +668,18 @@
   metamorphicMaxFillLevels: 3
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
+  # Orion-Start
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 3
+      - !type:AdjustTemperature
+        amount: -20
+        conditions:
+        - !type:Temperature
+          min: 310.15
+  # Orion-End
 
 - type: reagent
   id: DryRamen

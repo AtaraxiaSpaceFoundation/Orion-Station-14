@@ -55,6 +55,12 @@
         grinder:
           True: {state: "grinder_beaker_attached"}
           False: {state: "grinder_empty"}
+      # Orion-Start
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+      # Orion-End
   - type: Physics
   - type: Fixtures
     fixtures:
@@ -76,6 +82,12 @@
       state: "grinder_empty"
     - map: [ "enum.SolutionContainerLayers.Fill" ]
       state: beakerSlot1
+    # Orion-Start
+    - state: grinder_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      visible: false
+    # Orion-End
   - type: SolutionContainerVisuals # Goobstation
     maxFillLevels: 4
     insertedItemSlotID: beakerSlot

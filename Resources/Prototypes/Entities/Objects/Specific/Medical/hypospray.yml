@@ -444,8 +444,10 @@
         reagents:
         - ReagentId: Oxandrolone # Goobstation
           Quantity: 10
+        - ReagentId: Dermaline # Orion
+          Quantity: 5
         - ReagentId: Leporazine
-          Quantity: 10
+          Quantity: 5 # Orion-Edit: 10 > 5
         - ReagentId: Tramadol # goobstation
           Quantity: 5
 

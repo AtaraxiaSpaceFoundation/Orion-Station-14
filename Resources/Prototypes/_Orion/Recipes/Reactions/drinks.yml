@@ -1,0 +1,17 @@
+- type: reaction
+  id: WaterFreezing
+  reactants:
+    Water:
+      amount: 1
+  products:
+    Ice: 1
+  maxTemp: 274
+
+- type: reaction
+  id: IceMelting
+  reactants:
+    Ice:
+      amount: 1
+  products:
+    Water: 1
+  minTemp: 300

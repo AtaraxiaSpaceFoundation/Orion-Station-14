@@ -29,3 +29,56 @@
     heldPrefix: surgerykit
     shape:
     - 0,0,3,2
+
+- type: entity
+  parent: Medkit
+  id: MedkitEmergency
+  name: emergency medical kit
+  description: For emergencies. Not for fighting.
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
+    state: emergencykit
+  - type: Item
+    sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
+    heldPrefix: emergencykit
+    shape:
+    - 0,0,2,1
+  - type: Storage
+    grid:
+    - 0,0,2,1
+
+- type: entity
+  parent: MedkitCombat
+  id: MedkitCombatStandard
+  name: standard combat medical kit
+  description: "For the big weapons among us."
+  components:
+  - type: Sprite
+    sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
+    state: blackkitstandard
+  - type: Item
+    sprite: _Orion/Objects/Specific/Medical/firstaidkits.rsi
+    heldPrefix: blackkitstandard
+    shape:
+    - 0,0,2,1
+  - type: Storage
+    grid:
+    - 0,0,3,2
+
+- type: entity
+  parent: MedkitCombatStandard
+  id: MedkitCombatAdvanced
+  name: advanced combat medical kit
+  description: "For the big weapons among us."
+  components:
+  - type: Sprite
+    state: blackkitadv
+  - type: Item
+    heldPrefix: blackkitadv
+    shape:
+    - 0,0,2,2
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,5,2

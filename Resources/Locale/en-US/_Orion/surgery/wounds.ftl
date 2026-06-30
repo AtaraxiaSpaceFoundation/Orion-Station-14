@@ -1,0 +1,9 @@
+self-inspect-wound-Bleeding-minor = bleeding a little
+self-inspect-wound-Bleeding-moderate = bleeding
+self-inspect-wound-Bleeding-severe = bleeding profusely
+self-inspect-wound-Brute-minor = bruised and sore
+self-inspect-wound-Brute-moderate = badly bruised
+self-inspect-wound-Brute-severe = badly mangled
+self-inspect-wound-Burn-minor = slightly burned
+self-inspect-wound-Burn-moderate = covered in painful blisters
+self-inspect-wound-Burn-severe = skin is peeling away

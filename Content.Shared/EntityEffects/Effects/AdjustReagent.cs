@@ -45,6 +45,23 @@ namespace Content.Shared.EntityEffects.Effects
         [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<MetabolismGroupPrototype>))]
         public string? Group;
 
+        // Orion-Start
+        /// <summary>
+        /// Multiple reagent IDs to adjust. Used alongside or instead of <see cref="Reagent"/>.
+        /// </summary>
+        [DataField]
+        public List<string>? Reagents;
+
+        /// <summary>
+        /// Multiple metabolism groups to adjust. Used alongside or instead of <see cref="Group"/>.
+        /// </summary>
+        [DataField]
+        public List<string>? Groups;
+
+        [DataField]
+        public bool ExcludeSelf = false;
+        // Orion-End
+
         [DataField(required: true)]
         public FixedPoint2 Amount;
 
@@ -70,6 +87,11 @@ namespace Content.Shared.EntityEffects.Effects
                     var prototypeMan = IoCManager.Resolve<IPrototypeManager>();
                     foreach (var quant in reagentArgs.Source.Contents.ToArray())
                     {
+                        // Orion-Start
+                        if (ExcludeSelf && reagentArgs.Reagent != null &&
+                            quant.Reagent.Prototype == reagentArgs.Reagent.ID)
+                            continue;
+                        // Orion-End
                         var proto = prototypeMan.Index<ReagentPrototype>(quant.Reagent.Prototype);
                         if (proto.Metabolisms != null && proto.Metabolisms.ContainsKey(Group))
                         {
@@ -80,6 +102,39 @@ namespace Content.Shared.EntityEffects.Effects
                         }
                     }
                 }
+                // Orion-Start
+                if (Reagents != null)
+                {
+                    foreach (var reagentId in Reagents)
+                    {
+                        if (amount < 0 && reagentArgs.Source.ContainsPrototype(reagentId))
+                            reagentArgs.Source.RemoveReagent(reagentId, -amount);
+                        if (amount > 0)
+                            reagentArgs.Source.AddReagent(reagentId, amount);
+                    }
+                }
+                if (Groups != null)
+                {
+                    var protoMan = IoCManager.Resolve<IPrototypeManager>();
+                    foreach (var groupId in Groups)
+                    {
+                        foreach (var quant in reagentArgs.Source.Contents.ToArray())
+                        {
+                            if (ExcludeSelf && reagentArgs.Reagent != null &&
+                                quant.Reagent.Prototype == reagentArgs.Reagent.ID)
+                                continue;
+                            var proto = protoMan.Index<ReagentPrototype>(quant.Reagent.Prototype);
+                            if (proto.Metabolisms != null && proto.Metabolisms.ContainsKey(groupId))
+                            {
+                                if (amount < 0)
+                                    reagentArgs.Source.RemoveReagent(quant.Reagent, -amount);
+                                if (amount > 0)
+                                    reagentArgs.Source.AddReagent(quant.Reagent, amount);
+                            }
+                        }
+                    }
+                }
+                // Orion-End
                 return;
             }
 
@@ -106,6 +161,16 @@ namespace Content.Shared.EntityEffects.Effects
                     ("group", groupProto.LocalizedName),
                     ("amount", MathF.Abs(Amount.Float())));
             }
+            // Orion-Start
+            if (Reagents != null || Groups != null)
+            {
+                return Loc.GetString("reagent-effect-guidebook-adjust-reagent-group",
+                    ("chance", Probability),
+                    ("deltasign", MathF.Sign(Amount.Float())),
+                    ("group", "..."),
+                    ("amount", MathF.Abs(Amount.Float())));
+            }
+            // Orion-End
 
             throw new NotImplementedException();
         }

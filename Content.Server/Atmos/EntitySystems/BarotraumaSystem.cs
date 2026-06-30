@@ -46,6 +46,7 @@ using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
 using Content.Shared._Goobstation.Wizard.Spellblade;
+using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
@@ -66,6 +67,10 @@ namespace Content.Server.Atmos.EntitySystems
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
         [Dependency] private readonly SpellbladeSystem _spellblade = default!; // Goobstation
         private const float UpdateTimer = 1f;
+        // Orion-Start
+        private const float LowPressureRampTime = 40f;
+        private const float LowPressureMaxMultiplier = 2.5f;
+        // Orion-End
         private float _timer;
 
         public override void Initialize()
@@ -320,11 +325,28 @@ namespace Content.Server.Atmos.EntitySystems
                     RaiseLocalEvent(uid, ref resistEv);
 
                     if (resistEv.Cancelled)
-                        return;
+                    // Orion-Edit-Start
+                    {
+                        barotrauma.SecondsInLowPressure = 0f;
+
+                        if (barotrauma.TakingDamage)
+                        {
+                            barotrauma.TakingDamage = false;
+                            _adminLogger.Add(LogType.Barotrauma, $"{ToPrettyString(uid):entity} stopped taking pressure damage");
+                        }
+
+                        _alertsSystem.ClearAlertCategory(uid, barotrauma.PressureAlertCategory);
+                        continue;
+                    }
+                    // Orion-Edit-End
                     // goob end
 
+                    var lowPressureScale = MathF.Min(1f + (barotrauma.SecondsInLowPressure / LowPressureRampTime), LowPressureMaxMultiplier); // Orion
+
                     // Deal damage and ignore resistances. Resistance to pressure damage should be done via pressure protection gear.
-                    _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * Atmospherics.LowPressureDamage, true, false, targetPart: TargetBodyPart.All); // Shitmed Change
+                    _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * Atmospherics.LowPressureDamage * lowPressureScale, true, false, targetPart: TargetBodyPart.All); // Shitmed Change // Orion-Edit
+
+                    barotrauma.SecondsInLowPressure += UpdateTimer; // Orion
 
                     if (!barotrauma.TakingDamage)
                     {
@@ -342,10 +364,24 @@ namespace Content.Server.Atmos.EntitySystems
                     RaiseLocalEvent(uid, ref resistEv);
 
                     if (resistEv.Cancelled)
-                        return;
+                    // Orion-Edit-Start
+                    {
+                        barotrauma.SecondsInLowPressure = 0f;
+
+                        if (barotrauma.TakingDamage)
+                        {
+                            barotrauma.TakingDamage = false;
+                            _adminLogger.Add(LogType.Barotrauma, $"{ToPrettyString(uid):entity} stopped taking pressure damage");
+                        }
+
+                        _alertsSystem.ClearAlertCategory(uid, barotrauma.PressureAlertCategory);
+                        continue;
+                    }
+                    // Orion-Edit-End
                     // goob end
 
                     var damageScale = MathF.Min(((pressure / Atmospherics.HazardHighPressure) - 1) * Atmospherics.PressureDamageCoefficient, Atmospherics.MaxHighPressureDamage);
+                    barotrauma.SecondsInLowPressure = 0f; // Orion
 
                     // Deal damage and ignore resistances. Resistance to pressure damage should be done via pressure protection gear.
                     _damageableSystem.TryChangeDamage(uid, barotrauma.Damage * damageScale, true, false, targetPart: TargetBodyPart.All); // Shitmed Change
@@ -364,6 +400,8 @@ namespace Content.Server.Atmos.EntitySystems
                     var pressureEv = new SendSafePressureEvent(pressure);
                     RaiseLocalEvent(uid, ref pressureEv);
                     // goob end
+
+                    barotrauma.SecondsInLowPressure = 0f; // Orion
 
                     // Within safe pressure limits
                     if (barotrauma.TakingDamage)

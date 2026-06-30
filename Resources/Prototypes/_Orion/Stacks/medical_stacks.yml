@@ -1,0 +1,13 @@
+- type: stack
+  id: Suture
+  name: stack-medicated-suture
+  icon: {sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: suture}
+  spawn: Suture
+  maxCount: 10
+
+- type: stack
+  id: AdvancedRegenerativeMesh
+  name: stack-regenerative-mesh
+  icon: {sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: aloe-mesh}
+  spawn: AdvancedRegenerativeMeshOpened
+  maxCount: 15

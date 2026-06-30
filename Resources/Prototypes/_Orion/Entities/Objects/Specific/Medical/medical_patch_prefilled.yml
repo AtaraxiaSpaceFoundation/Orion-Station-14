@@ -1,0 +1,95 @@
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledProcenylLazide
+  name: anti-brute patch
+  suffix: Procenyl Lazide
+  components:
+  - type: Label
+    currentLabel: Procenyl Lazide 10u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 10
+        reagents:
+          - ReagentId: ProcenylLazide
+            Quantity: 10
+
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledEbifin
+  name: anti-brute patch
+  suffix: Ebifin
+  components:
+  - type: Label
+    currentLabel: Ebifin 10u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 10
+        reagents:
+          - ReagentId: Ebifin
+            Quantity: 10
+
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledSalbutamol
+  name: air patch
+  suffix: Salbutamol
+  components:
+  - type: Label
+    currentLabel: Salbutamol 30u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+          - ReagentId: Salbutamol
+            Quantity: 30
+
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledSyriniver
+  name: anti-tox patch
+  suffix: Syriniver
+  components:
+  - type: Label
+    currentLabel: Syriniver 10u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 10
+        reagents:
+          - ReagentId: Syriniver
+            Quantity: 10
+
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledHyronalin
+  name: anti-radiation patch
+  suffix: Hyronalin
+  components:
+  - type: Label
+    currentLabel: Hyronalin 30u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+          - ReagentId: Hyronalin
+            Quantity: 30
+
+- type: entity
+  parent: MedicalPatchPrefilledBase
+  id: MedicalPatchPrefilledFormaldehyde
+  name: anti-rot patch
+  suffix: Formaldehyde
+  components:
+  - type: Label
+    currentLabel: Formaldehyde 30u
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+          - ReagentId: Formaldehyde
+            Quantity: 30

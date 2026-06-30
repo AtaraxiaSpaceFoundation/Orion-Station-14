@@ -204,6 +204,14 @@
         transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  # Orion-Start
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  # Orion-End
   - type: DnaSubstanceTrace
   - type: ThrowableBlocked # Goobstation
     behavior: Damage

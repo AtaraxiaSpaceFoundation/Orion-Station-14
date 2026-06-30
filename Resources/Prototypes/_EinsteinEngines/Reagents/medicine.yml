@@ -20,7 +20,7 @@
           max: 11
         amount: -1
       - !type:ModifyBloodLevel
-        amount: 8 # at least you still make blood while ODing :]
+        amount: 12 # at least you still make blood while ODing :] # Orion-Edit: 8 > 12
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold

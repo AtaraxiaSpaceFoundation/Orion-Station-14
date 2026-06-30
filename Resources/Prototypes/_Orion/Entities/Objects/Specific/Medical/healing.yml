@@ -1,0 +1,292 @@
+- type: entity
+  name: pill
+  suffix: Hercuri 10u
+  parent: Pill
+  id: PillHercuri
+  components:
+  - type: Pill
+    pillType: 7
+  - type: Sprite
+    state: pill7
+  - type: Label
+    currentLabel: hercuri 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Hercuri
+          Quantity: 10
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterHercuri
+  suffix: Hercuri 10u, 15
+  components:
+  - type: Label
+    currentLabel: hercuri 10u
+  - type: StorageFill
+    contents:
+    - id: PillHercuri
+      amount: 15
+
+- type: entity
+  name: pill
+  suffix: Herignis 10u
+  parent: Pill
+  id: PillHerignis
+  components:
+  - type: Pill
+    pillType: 14
+  - type: Sprite
+    state: pill14
+  - type: Label
+    currentLabel: herignis 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Herignis
+          Quantity: 10
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterHerignis
+  suffix: Herignis 10u, 15
+  components:
+  - type: Label
+    currentLabel: herignis 10u
+  - type: StorageFill
+    contents:
+    - id: PillHerignis
+      amount: 15
+
+- type: entity
+  name: pill
+  suffix: Probital 10u
+  parent: Pill
+  id: PillProbital
+  components:
+  - type: Pill
+    pillType: 12
+  - type: Sprite
+    state: pill12
+  - type: Label
+    currentLabel: probital 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Probital
+          Quantity: 10
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterProbital
+  suffix: Probital 10u, 15
+  components:
+  - type: Label
+    currentLabel: probital 10u
+  - type: StorageFill
+    contents:
+    - id: PillProbital
+      amount: 15
+
+- type: entity
+  name: pill
+  suffix: Pentenic acid 5u
+  parent: Pill
+  id: PillPentenicAcid
+  components:
+  - type: Pill
+    pillType: 17
+  - type: Sprite
+    state: pill17
+  - type: Label
+    currentLabel: pentenic acid 5u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: PentenicAcid
+          Quantity: 5
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterPentenicAcid
+  suffix: Pentenic acid 5u, 15
+  components:
+  - type: Label
+    currentLabel: pentenic acid 5u
+  - type: StorageFill
+    contents:
+    - id: PillPentenicAcid
+      amount: 15
+
+- type: entity
+  name: pill
+  suffix: Multiver 10u
+  parent: Pill
+  id: PillMultiver
+  components:
+  - type: Pill
+    pillType: 11
+  - type: Sprite
+    state: pill11
+  - type: Label
+    currentLabel: multiver 10u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Multiver
+          Quantity: 10
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterMultiver
+  suffix: Multiver 10u, 15
+  components:
+  - type: Label
+    currentLabel: multiver 10u
+  - type: StorageFill
+    contents:
+    - id: PillMultiver
+      amount: 15
+
+- type: entity
+  name: pill
+  suffix: Syriniver 3u
+  parent: Pill
+  id: PillSyriniver
+  components:
+  - type: Pill
+    pillType: 2
+  - type: Sprite
+    state: pill2
+  - type: Label
+    currentLabel: syriniver 3u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Syriniver
+          Quantity: 3
+
+- type: entity
+  suffix: haloperidol
+  parent: PrefilledSyringe
+  id: SyringeHaloperidol
+  components:
+  - type: Label
+    currentLabel: reagent-name-haloperidol
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Haloperidol
+          Quantity: 15
+
+- type: entity
+  name: pill
+  suffix: Genecide 3u
+  parent: Pill
+  id: PillGenecide
+  components:
+  - type: Pill
+    pillType: 19
+  - type: Sprite
+    state: pill19
+  - type: Label
+    currentLabel: genecide 3u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Genecide
+          Quantity: 3
+
+- type: entity
+  suffix: convermol
+  parent: PrefilledSyringe
+  id: SyringeConvermol
+  components:
+  - type: Label
+    currentLabel: reagent-name-convermol
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Convermol
+          Quantity: 15
+
+- type: entity
+  name: pill
+  suffix: Ammoniated mercury 5u
+  parent: Pill
+  id: PillAmmoniatedMercury
+  components:
+  - type: Pill
+    pillType: 9
+  - type: Sprite
+    state: pill9
+  - type: Label
+    currentLabel: ammoniated mercury 5u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: AmmoniatedMercury
+          Quantity: 5
+
+- type: entity
+  name: pill
+  suffix: Anti-brute 25u
+  parent: Pill
+  id: PillAntiBrute
+  components:
+  - type: Pill
+    pillType: 6
+  - type: Sprite
+    state: pill6
+  - type: Label
+    currentLabel: anti-brute 25u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Bicaridine
+          Quantity: 14
+        - ReagentId: Ibuprofen
+          Quantity: 11
+
+- type: entity
+  name: pill
+  suffix: Anti-burn 30u
+  parent: Pill
+  id: PillAntiBurn
+  components:
+  - type: Pill
+    pillType: 8
+  - type: Sprite
+    state: pill8
+  - type: Label
+    currentLabel: anti-burn 30u
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Kelotane
+          Quantity: 15
+        - ReagentId: Dermaline
+          Quantity: 7
+        - ReagentId: Pyrazine
+          Quantity: 2
+        - ReagentId: Tehifin
+          Quantity: 1

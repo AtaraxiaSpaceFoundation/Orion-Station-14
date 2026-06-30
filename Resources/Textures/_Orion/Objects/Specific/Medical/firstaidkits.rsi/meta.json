@@ -1,7 +1,7 @@
 {
 	"version": 1,
 	"license": "CC-BY-SA-3.0",
-	"copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/tree/727eb0a445bccbdc2d472e158e96b87fc0e997a1, inhands resprite by UmbiMax",
+	"copyright": "Sprited by MTandi and taken from TG at https://github.com/tgstation/tgstation/commit/e3933ba938a75942766033558c1df261d33c3377.",
 	"size": {
 		"x": 32,
 		"y": 32
@@ -11,12 +11,45 @@
 		"name": "surgerykit"
 	},
 	{
-		"name": "surgerykit-inhand-right",
-		"directions": 4
+	"name": "surgerykit-inhand-right",
+	"directions": 4
 	},
 	{
-		"name": "surgerykit-inhand-left",
-		"directions": 4
+	"name": "surgerykit-inhand-left",
+	"directions": 4
+	},
+	{
+		"name": "emergencykit"
+	},
+	{
+	"name": "emergencykit-inhand-right",
+	"directions": 4
+	},
+	{
+	"name": "emergencykit-inhand-left",
+	"directions": 4
+	},
+	{
+		"name": "blackkitstandard"
+	},
+	{
+	"name": "blackkitstandard-inhand-right",
+	"directions": 4
+	},
+	{
+	"name": "blackkitstandard-inhand-left",
+	"directions": 4
+	},
+	{
+		"name": "blackkitadv"
+	},
+	{
+	"name": "blackkitadv-inhand-right",
+	"directions": 4
+	},
+	{
+	"name": "blackkitadv-inhand-left",
+	"directions": 4
 	}
-	]
+]
 }

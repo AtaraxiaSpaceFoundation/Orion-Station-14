@@ -114,9 +114,18 @@
         - state: jug1
           map: [ "enum.SolutionContainerLayers.Fill" ]
           visible: false
+        # Orion-Start
+        - state: lid
+          map: ["enum.OpenableVisuals.Layer"]
+          visible: false
+        # Orion-End
     - type: Item
       size: Normal
       sprite: Objects/Specific/Chemistry/jug.rsi
+      # Orion-Start
+      shape:
+      - 0,0,2,1
+      # Orion-End
     - type: MixableSolution
       solution: beaker
     - type: RefillableSolution
@@ -143,11 +152,28 @@
     - type: Spillable
       solution: beaker
     - type: Appearance
+    # Orion-Start
+    - type: GenericVisualizer
+      visuals:
+        enum.OpenableVisuals.Opened:
+          enum.OpenableVisuals.Layer:
+            True: { visible: false }
+            False: { visible: true }
+    # Orion-End
     - type: SolutionContainerVisuals
-      maxFillLevels: 6
+      maxFillLevels: 11 # Orion-Edit: 6 > 11
       fillBaseName: jug
       inHandsMaxFillLevels: 5
       inHandsFillBaseName: -fill-
+    # Orion-Start
+    - type: Openable
+      opened: false
+      closeable: true
+      sound:
+        collection: bottleOpenSounds
+      closeSound:
+        collection: bottleCloseSounds
+    # Orion-End
     - type: StaticPrice
       price: 60
     - type: Damageable

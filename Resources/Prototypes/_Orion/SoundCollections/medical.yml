@@ -1,0 +1,41 @@
+- type: soundCollection
+  id: SutureBegin
+  files:
+  - /Audio/_Orion/Items/Medical/suture/suture_begin1.ogg
+
+- type: soundCollection
+  id: SutureContinuous
+  files:
+  - /Audio/_Orion/Items/Medical/suture/suture_continuous1.ogg
+  - /Audio/_Orion/Items/Medical/suture/suture_continuous2.ogg
+  - /Audio/_Orion/Items/Medical/suture/suture_continuous3.ogg
+
+- type: soundCollection
+  id: SutureEnd
+  files:
+  - /Audio/_Orion/Items/Medical/suture/suture_end1.ogg
+  - /Audio/_Orion/Items/Medical/suture/suture_end2.ogg
+  - /Audio/_Orion/Items/Medical/suture/suture_end3.ogg
+
+- type: soundCollection
+  id: RegenerativeMeshBegin
+  files:
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_begin1.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_begin2.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_begin3.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_begin4.ogg
+
+- type: soundCollection
+  id: RegenerativeMeshContinuous
+  files:
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_continuous1.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_continuous2.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_continuous3.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_continuous4.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_continuous5.ogg
+
+- type: soundCollection
+  id: RegenerativeMeshEnd
+  files:
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_end1.ogg
+  - /Audio/_Orion/Items/Medical/regenerative_mesh/regen_mesh_end2.ogg

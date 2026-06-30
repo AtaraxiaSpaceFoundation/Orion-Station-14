@@ -65,7 +65,7 @@ namespace Content.Server.Atmos.Components
 
         [DataField("maxDamage")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public FixedPoint2 MaxDamage = 200;
+        public FixedPoint2 MaxDamage = 350; // Orion-Edit: 200 > 350
 
         /// <summary>
         ///     Used to keep track of when damage starts/stops. Useful for logs.
@@ -95,6 +95,15 @@ namespace Content.Server.Atmos.Components
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite)]
         public bool HasImmunity = false;
+
+        // Orion-Start
+        /// <summary>
+        ///     Tracks how long the entity has continuously been in hazardous low pressure.
+        ///     Used to ramp low-pressure damage over time.
+        /// </summary>
+        [ViewVariables(VVAccess.ReadWrite)]
+        public float SecondsInLowPressure = 0f;
+        // Orion-End
 
         [DataField]
         public ProtoId<AlertPrototype> HighPressureAlert = "HighPressure";

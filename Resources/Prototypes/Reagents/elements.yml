@@ -95,7 +95,7 @@
           shouldHave: false
         damage:
           types:
-            Poison: 2
+            Blunt: 3 # Orion-Edit: "Poison: 2" > "Blunt: 3"
 
 - type: reagent
   id: Copper
@@ -129,7 +129,7 @@
         - !type:OrganType
           type: Arachnid
           shouldHave: true
-        amount: 0.4
+        amount: 1.2 # Orion-Edit: 0.4 > 1.2
 
 - type: reagent
   id: Fluorine
@@ -228,7 +228,7 @@
         - !type:OrganType
           type: Arachnid
           shouldHave: false
-        amount: 0.4
+        amount: 1.2 # Orion-Edit: 0.4 > 1.2
 
 - type: reagent
   id: Lithium

@@ -1,2 +1,16 @@
 reagent-general = General
 reagent-incendiary = Incendiary
+
+reagent-name-convermol = convermol
+reagent-desc-convermol = Rapidly treats asphyxiation, producing toxins as a byproduct. Both effects scale with reagent quantity in the bloodstream. Overdose removes the healing cap, which can increase toxin output.
+reagent-physical-desc-convermol = tart
+reagent-effect-guidebook-convermol =
+    { $chance ->
+        [1] Heals asphyxiation ({ $rate } u/u reagent), producing toxins at a 1:{ $ratio } ratio. Overdose threshold: { $od } u.
+       *[other] With { NATURALPERCENT($chance, 1) } chance, heals asphyxiation with toxic side effects.
+    }
+
+reagent-name-salbutamol = salbutamol
+reagent-desc-salbutamol = Helps prevent further asphyxiation and stabilizes the patient's breathing. Good for emergency stabilization.
+reagent-physical-desc-salbutamol = clear
+

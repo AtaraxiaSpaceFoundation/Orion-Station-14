@@ -260,6 +260,26 @@
     damage:
       types:
         Blunt: 5
+  # Orion-Start
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_pickup.ogg
+      params:
+        volume: -6
+        variation: 0.125
+  # Orion-End
   - type: StaticPrice
     price: 30
   - type: DnaSubstanceTrace
@@ -399,16 +419,48 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass
+  # Orion-Start
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_place.ogg
+      params:
+        volume: -4
+        variation: 0.125
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Orion/Items/ReagentContainers/beaker_pickup.ogg
+      params:
+        volume: -6
+        variation: 0.125
+  # Orion-End
   - type: StaticPrice
     price: 30
   - type: DnaSubstanceTrace
 
 - type: entity
   name: beaker
-  parent: BaseBeaker
+  parent: [BaseBeaker, BaseOpenableBeaker] # Orion-Edit
   description: Used to contain a moderate amount of chemicals and solutions.
   id: Beaker
   components:
+  # Orion-Start
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/beaker.rsi
+    layers:
+      - state: beaker
+      - state: beaker1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+      - state: lid_beaker
+        map: ["enum.OpenableVisuals.Layer"]
+        visible: false
+  # Orion-End
   - type: Spillable
     solution: beaker
   - type: StaticPrice
@@ -439,7 +491,7 @@
 
 - type: entity
   name: large beaker
-  parent: BaseBeaker
+  parent: [BaseBeaker, BaseOpenableBeaker] # Orion-Edit
   description: Used to contain a large amount of chemicals or solutions.
   id: LargeBeaker
   components:
@@ -452,6 +504,11 @@
       - state: beakerlarge1
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
+      # Orion-Start
+      - state: lid_beakerlarge
+        map: ["enum.OpenableVisuals.Layer"]
+        visible: false
+      # Orion-End
   - type: Item
     size: Normal
     sprite: Objects/Specific/Chemistry/beaker_large.rsi
@@ -473,7 +530,7 @@
 
 - type: entity
   name: cryostasis beaker
-  parent: BaseBeakerMetallic
+  parent: [BaseBeakerMetallic, BaseOpenableBeaker] # Orion-Edit
   description: Used to contain chemicals or solutions without reactions.
   id: CryostasisBeaker
   components:
@@ -483,6 +540,11 @@
     sprite: Objects/Specific/Chemistry/beaker_cryostasis.rsi
     layers:
       - state: beakernoreact
+      # Orion-Start
+      - state: lid_beakernoreact
+        map: ["enum.OpenableVisuals.Layer"]
+        visible: false
+      # Orion-End
   # Orion-Start
   - type: Item
     sprite: Objects/Specific/Chemistry/beaker_cryostasis.rsi
@@ -501,7 +563,7 @@
 
 - type: entity
   name: bluespace beaker
-  parent: BaseBeakerMetallic
+  parent: [BaseBeakerMetallic, BaseOpenableBeaker] # Orion-Edit
   description: Powered by experimental bluespace technology.
   id: BluespaceBeaker
   components:
@@ -511,8 +573,14 @@
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
     layers:
       - state: beakerbluespace
+      # Orion-Start
+      - state: lid_beakerbluespace
+        map: ["enum.OpenableVisuals.Layer"]
+        visible: false
+      # Orion-End
   # Orion-Start
   - type: Item
+    size: Normal
     sprite: Objects/Specific/Chemistry/beaker_bluespace.rsi
   # Orion-End
   - type: SolutionContainerVisuals
@@ -520,7 +588,7 @@
   - type: SolutionContainerManager
     solutions:
       beaker:
-        maxVol: 1000
+        maxVol: 300 # Orion-Edit: 1000 > 300
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Steel: 125

@@ -123,26 +123,26 @@
         components:
         - FitsInDispenser
     reagents:
-      Aluminium: 8
-      Carbon: 3
-      Chlorine: 9 # Orion-Edit: 12 > 9
-      Copper: 5
+      Aluminium: 3 # Orion-Edit: 8 > 3
+      Carbon: 2 # Orion-Edit: 3 > 2
+      Chlorine: 5 # Orion-Edit: 12 > 5
+      Copper: 3 # Orion-Edit: 5 > 3
       Ethanol: 8
-      Fluorine: 12
+      Fluorine: 10 # Orion-Edit: 12 > 10
       Hydrogen: 5 # Orion-Edit: 3 > 5
-      Iodine: 8
-      Iron: 5
-      Lithium: 6 # Orion-Edit: 12 > 6
-      Mercury: 12
-      Nitrogen: 3
+      Iodine: 5 # Orion-Edit: 8 > 5
+      Iron: 3 # Orion-Edit: 5 > 3
+      Lithium: 4 # Orion-Edit: 12 > 4
+      Mercury: 8 # Orion-Edit: 12 > 8
+      Nitrogen: 3 # Orion-Edit:
       Oxygen: 4 # Orion-Edit: 3 > 4
-      Phosphorus: 14 # Orion-Edit: 5 > 14
+      Phosphorus: 10 # Orion-Edit: 5 > 10
       Potassium: 8
       Radium: 9 # Orion-Edit: 15 > 9
       Silicon: 3
       Sodium: 5
-      Sugar: 5
-      Sulfur: 5
+      Sugar: 3 # Orion-Edit: 5 > 3
+      Sulfur: 7 # Orion-Edit: 5 > 7
     # Orion-Start
     reagentsEmagged:
       Puncturase: 18

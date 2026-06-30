@@ -1,0 +1,76 @@
+- type: entity
+  parent: MedicatedSuture
+  id: Suture
+  name: suture
+  description: A suture soaked in medicine, treats blunt-force trauma effectively and closes wounds.
+  suffix: Full
+  components:
+  - type: Sprite
+    state: suture-3
+    layers:
+    - state: suture-3
+      map: ["base"]
+  - type: Item
+    heldPrefix: suture
+    storedRotation: -90
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      groups:
+        Brute: -30
+    bloodlossModifier: -2.5
+  - type: Stack
+    stackType: Suture
+    layerStates:
+    - suture
+    - suture-2
+    - suture-3
+  - type: StackPrice
+    price: 20
+  - type: Stitches
+    speed: 1
+
+- type: entity
+  parent: AdvancedRegenerativeMeshOpened
+  id: RegenerativeMeshOpened
+  name: regenerative mesh
+  description: Used to treat even the nastiest burns. Also effective against caustic burns.
+  suffix: Full
+  components:
+  - type: Sprite
+    state: regenerative-mesh-3
+    layers:
+    - state: regenerative-mesh-3
+      map: ["base"]
+  - type: Item
+    heldPrefix: regenerative-mesh
+  - type: Healing
+    damageContainers:
+      - Biological
+    damage:
+      types:
+        Heat: -10
+        Cold: -9
+        Shock: -8
+        Caustic: -7.5
+  - type: Stack
+    stackType: RegenerativeMesh
+    layerStates:
+    - regenerative-mesh
+    - regenerative-mesh-2
+    - regenerative-mesh-3
+  - type: StackPrice
+    price: 20
+
+# --------------------
+# --- Quantitative ---
+# --------------------
+
+- type: entity
+  id: Gauze5
+  parent: Gauze
+  suffix: 5
+  components:
+  - type: Stack
+    count: 5
